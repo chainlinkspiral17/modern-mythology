@@ -1,0 +1,143 @@
+{
+  "id": "dw_2008-10-01_wish_you_were_here",
+  "title": "Wish you were here",
+  "strip": "drift_wood",
+  "date": "2008-10-01",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Long Way Back",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Long Way Back · deepening)",
+  "logline": "Wednesday. A postcard to Gully from sixty-one miles away. 'Wish you were here. It's far.' Gully pins it to the corkboard next to the 2003 rough and writes '61 mi' on it in marker.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. GULLY reading a postcard at the counter. BARNABY under the end stool — the dog came home Tuesday; the travelogue didn't.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "reading a postcard",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "under the stool",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a postcard"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a man in an apron reading a postcard at his counter while an old dog lies beneath the end stool",
+        "negative": "",
+        "notes": "The dog is home; Wood is 'away' at Coos Bay. The strip lets the dog opt out of the bit."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The postcard: COOS BAY, a photo of a bridge. The back, in Wood's hand: 'Wish you were here. It's far. —W.'",
+      "characters": [],
+      "props": [
+        "the postcard"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close-up of a postcard showing a bridge with a short handwritten message on its back",
+        "negative": "",
+        "notes": "Letter after: 'Wish you were here. It's far. —W.'"
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully with a marker. Writing on the postcard's front, over the bridge: 61 MI.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "writing on the card",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "61 MI"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a man in an apron writing a distance in marker across the front of a postcard",
+        "negative": "",
+        "notes": "Letter after: 61 MI."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The card pinned beside the 2003 rough. The dog looking up at it. Gully to the dog.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "looking up",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the corkboard"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "He'll be back Friday. He's got a shift."
+        },
+        {
+          "who": "GULLY",
+          "text": "...It's sixty-one miles, Barnaby. I've driven farther for bait."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a man in an apron speaking to an old dog while looking at a postcard he has pinned to a corkboard",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "'It's far.' '61 MI' in marker. Pinned. (Gully's corkboard inventory.)"
+}

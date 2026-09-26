@@ -1,0 +1,133 @@
+{
+  "id": "dw_2010-02-15_reprint_the_rain_2001",
+  "title": "Reprint · the Rain, 2001",
+  "strip": "drift_wood",
+  "date": "2010-02-15",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Reprints",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Reprints · deepening)",
+  "logline": "The papers run the 2001 Rain re-inked. Same script: the frame shop's rain alley, the dog, silent. The 2010 hand is steadier and sadder and the book runs it beside the original.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": "A second, smaller date under the gull: 2001."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The frame shop's rain alley, 2001, as drawn in 2010: the buckets, the rain, the dog — one — at the door. The line cleaner than 2001 could manage.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "one, at the door",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the rain alley",
+        "two buckets"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a narrow rain alley behind a frame shop with two upturned buckets and a small dog at a door, drawn in a clean steady brush line, no words",
+        "negative": "",
+        "notes": "A reprint: the script of dw_2001-01-12 in the 2010 hand. The book prints the 2001 original beside it."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD, twenty, in the doorway with a mat, looking at the rain. The 2010 hand draws the twenty-year-old with more care than the twenty-year-old did.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "in the doorway with a mat",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a mat"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a young man in a frame-shop doorway holding a mat and looking out at rain, drawn with careful affection, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The dog going out into it. The young man not calling him back.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "going out into the rain",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a small dog walking out into a rainy alley while a young man in a doorway watches without calling it back, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The alley, the rain, the dog small in it, the doorway. Silent. On purpose, twice.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "small in the rain",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the alley"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a rain-filled alley with a small dog far down it and an empty lit doorway, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "the 2010 hand re-inking the 2001 script",
+    "palette": "gray wash",
+    "paper": "bristol"
+  },
+  "notes": "Reprint pair, the Rain. The 2010 hand on the 2001 script."
+}

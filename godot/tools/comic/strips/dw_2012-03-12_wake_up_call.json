@@ -1,0 +1,143 @@
+{
+  "id": "dw_2012-03-12_wake_up_call",
+  "title": "Wake-up call",
+  "strip": "drift_wood",
+  "date": "2012-03-12",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Night Audit",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Night Audit · deepening)",
+  "logline": "Monday. The 5 AM wake-up call to room 3. A voice on the phone Wood has never seen the face of. He draws the face anyway, from the voice, and then checks it against the man at checkout. He was close.",
+  "cast": [
+    "wood_34",
+    "motel_guest"
+  ],
+  "location": "dw_motel_desk",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The desk, 5 AM. WOOD on the phone. The pad beside him. The hum line.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "on the phone",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the phone",
+        "hum line"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Five o'clock, sir. This is your — yes. Yes. You're welcome."
+        },
+        {
+          "who": "PHONE",
+          "text": "(a voice, drawn as a jagged small balloon)"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a night clerk making a wake-up call at 5 AM with a pad beside him, a flat line beneath the panel",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The pad: a face, drawn from the voice. Heavy jaw. Tired. A mustache, guessed.",
+      "characters": [],
+      "props": [
+        "the guessed face"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of a pad with a quick ink portrait of a heavy-jawed tired man with a mustache, drawn from imagination",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "7 AM. Checkout. The GUEST at the desk. Heavy jaw. Tired. No mustache. Wood's eyes going from the man to the pad.",
+      "characters": [
+        {
+          "id": "motel_guest",
+          "pose": "at checkout, no mustache",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "comparing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the pad"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a tired heavy-jawed guest at a motel desk at checkout while the clerk glances from him to a drawing on a pad, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The guest gone. Wood adding one stroke to the pad. Removing the mustache. Close.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "correcting the drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the pad"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "(thinks) Close."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a clerk making a single correcting stroke to a portrait on his pad",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "A face from a voice. No mustache. 'Close.'"
+}

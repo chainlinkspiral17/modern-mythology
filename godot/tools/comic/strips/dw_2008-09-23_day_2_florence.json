@@ -1,0 +1,136 @@
+{
+  "id": "dw_2008-09-23_day_2_florence",
+  "title": "Day 2 · Florence",
+  "strip": "drift_wood",
+  "date": "2008-09-23",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Long Way Back",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Long Way Back · deepening)",
+  "logline": "Tuesday. The travelogue's second day. Florence, Oregon, forty miles from home, captioned like Marrakesh. A gas station. The dog in the window. The strip commits to the bit.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_101",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "A gas station on 101 in Florence, drawn with the awe of a foreign capital: low light, a pump, a Sitka spruce. The Datsun. BARNABY's head out the window.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "head out the window",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a gas station",
+        "the Datsun"
+      ],
+      "balloons": [],
+      "caption": "DAY 2 · FLORENCE. The light here is different. Nobody knows my name.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a coastal gas station beneath Sitka spruce drawn with the grandeur of a foreign capital, a rusted small car at the pump with a dog's head out the window",
+        "negative": "",
+        "notes": "Caption in a travelogue face. The bit: forty miles as abroad."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD at the pump. A local in a cap, nodding. Wood nodding back, gravely, as to a foreign customs officer.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "nodding gravely",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a local in a cap"
+      ],
+      "balloons": [],
+      "caption": "A local. We communicate by nodding. It is enough.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man at a gas pump exchanging a grave nod with a local man in a cap",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The receipt. FLORENCE OR. Wood holding it like a passport stamp.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "holding the receipt",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the receipt"
+      ],
+      "balloons": [],
+      "caption": "Proof of passage.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close-up of a man holding a gas receipt reverently like a passport stamp",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The Datsun on 101 south, the sea, the dog. The caption box, huge. Forty miles.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "driving",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "101",
+        "the sea"
+      ],
+      "balloons": [],
+      "caption": "South. Into the unknown. Coos Bay by nightfall, God willing.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a rusted small car driving south on a coastal highway with the sea beyond and a dog's head out the window, a large caption box over the sky",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "Florence as Marrakesh. 'Proof of passage.'"
+}

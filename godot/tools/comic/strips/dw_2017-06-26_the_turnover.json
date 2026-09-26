@@ -1,0 +1,147 @@
+{
+  "id": "dw_2017-06-26_the_turnover",
+  "title": "The turnover",
+  "strip": "drift_wood",
+  "date": "2017-06-26",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Lockboxes",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Lockboxes · deepening)",
+  "logline": "Monday. Saturday's turnover, seen Monday: cleaners' vans, a lockbox dial, strangers with roller bags on her porch. Four doors down. The strip stops one panel longer than a stranger would, again.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii",
+    "extra_tourists"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Main street. A cleaner's van. A woman with a bucket at a door, spinning a lockbox dial. WOOD walking past with BARNABY II.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "walking past",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a cleaner's van",
+        "a lockbox dial"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a small-town street with a cleaner's van and a woman spinning the dial of a key lockbox on a house door, a man and a small three-legged dog walking past",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Four doors down: her porch. TOURISTS with roller bags on the step. The lockbox open on the knob.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "on the porch with roller bags",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "her porch",
+        "the lockbox open"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, tourists with roller bags standing on the porch of an old wooden house with a key lockbox hanging open on the doorknob",
+        "negative": "",
+        "notes": "The porch of Oct 2000 and Aug 2017."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, one panel longer. The pup pulling. The tourists going in. The door closing on the step where he sat.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "stopped, one panel longer",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "pulling",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the step"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man stopped on a sidewalk looking at a porch as a door closes behind tourists, a small dog pulling at the leash, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Walking on. Behind him: the cleaner locking the box on the next door. Twelve boxes. A Saturday's worth of strangers.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "walking on",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lockboxes"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man and a small three-legged dog walking on down a street while a cleaner locks a key box on a door behind them, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "Her porch, a rental. One panel longer."
+}

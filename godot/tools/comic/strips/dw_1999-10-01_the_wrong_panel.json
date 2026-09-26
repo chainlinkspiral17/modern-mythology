@@ -1,0 +1,153 @@
+{
+  "id": "dw_1999-10-01_the_wrong_panel",
+  "title": "The wrong panel",
+  "strip": "drift_wood",
+  "date": "1999-10-01",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Newport",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Newport · deepening)",
+  "logline": "Friday. The laundromat owner reads the second digest at the counter. She laughs — at panel two, which isn't the joke. Wood, in the doorway, decides panel two is the joke now.",
+  "cast": [
+    "wood_20",
+    "laundromat_owner"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The laundromat. The rack by the door, the second digest in it. The OWNER in a cardigan at the counter, reading one, folding a towel with the other hand.",
+      "characters": [
+        {
+          "id": "laundromat_owner",
+          "pose": "reading, folding a towel",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the rack",
+        "a digest"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a laundromat with a small zine rack by the door and a woman in a cardigan at the counter reading a zine while folding a towel",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Her laugh. At the page. Her thumb on panel two.",
+      "characters": [
+        {
+          "id": "laundromat_owner",
+          "pose": "laughing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "her thumb on panel two"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "ha",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, close-up of a woman laughing at a small comic page with her thumb resting on its second panel",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD in the doorway, seeing which panel. His face: it wasn't that one.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "in the doorway",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "(thinks) Panel two. Panel two isn't the —"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a young man in a laundromat doorway watching a woman laugh at his comic with a puzzled expression",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood at the counter. The owner looking up.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "laundromat_owner",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "OWNER",
+          "text": "The dog one. With the — the face he makes."
+        },
+        {
+          "who": "WOOD",
+          "text": "...That's the one."
+        },
+        {
+          "who": "OWNER",
+          "text": "You should do more of those."
+        },
+        {
+          "who": "WOOD",
+          "text": "(thinks) Panel two's the joke now."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a woman in a cardigan at a laundromat counter telling a young man which part of his comic she liked",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen now — the weekday deadline teaches the hand to commit; still xeroxed, still black and white",
+    "palette": "",
+    "paper": "the college paper's newsprint; the digest's quarter-letter xerox"
+  },
+  "notes": "The wrong panel is the right panel. The first reader."
+}

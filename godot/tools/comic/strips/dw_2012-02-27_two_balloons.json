@@ -1,0 +1,142 @@
+{
+  "id": "dw_2012-02-27_two_balloons",
+  "title": "Two balloons",
+  "strip": "drift_wood",
+  "date": "2012-02-27",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Night Audit",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Night Audit · deepening)",
+  "logline": "Monday. Room 6, 2 AM. A couple fighting. The strip draws the wall and two balloons coming through it, their text cut by the plaster. Wood at the desk, drawing the wall.",
+  "cast": [
+    "wood_34"
+  ],
+  "location": "dw_motel_desk",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The motel hallway, 2 AM. Room 6's door. Two balloons coming through the wall beside it, their text lost in the plaster. WOOD at the hall's end.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "at the hall's end",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "room 6",
+        "two balloons in the wall",
+        "hum line"
+      ],
+      "balloons": [
+        {
+          "who": "VOICE 1",
+          "text": "— never once —"
+        },
+        {
+          "who": "VOICE 2",
+          "text": "— every time you —"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a motel hallway at night with two speech balloons emerging through the plaster wall beside a door, their text partly cut off, a night clerk at the hall's end, a flat line beneath",
+        "negative": "",
+        "notes": "Balloons cut by the wall. Letter the fragments after."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The wall. The balloons overlapping. The fragments.",
+      "characters": [],
+      "props": [
+        "overlapping balloons"
+      ],
+      "balloons": [
+        {
+          "who": "VOICE 1",
+          "text": "— said you'd —"
+        },
+        {
+          "who": "VOICE 2",
+          "text": "— I DID —"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of a plaster wall with two overlapping speech balloons pushing through it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The desk. Wood drawing. The pad: the wall. Two balloons. No words in them; he doesn't put words in other people's balloons.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "drawing the wall",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the pad: the wall, two empty balloons"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a night clerk drawing a plaster wall with two empty speech balloons on his pad",
+        "negative": "",
+        "notes": "On the pad, the balloons are empty. The strip's rule about strangers' words."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The hallway. Quiet. Room 6's door. One balloon now, small, through the wall. The hum line.",
+      "characters": [],
+      "props": [
+        "one small balloon",
+        "hum line"
+      ],
+      "balloons": [
+        {
+          "who": "VOICE 2",
+          "text": "— okay."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a quiet motel hallway with one small speech balloon coming through a wall beside a door, a flat line beneath",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "Two balloons through the plaster. On the pad, empty. '— okay.'"
+}

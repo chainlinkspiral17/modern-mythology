@@ -1,0 +1,164 @@
+{
+  "id": "dw_2020-03-24_six_feet",
+  "title": "Six feet",
+  "strip": "drift_wood",
+  "date": "2020-03-24",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Empty Town",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Empty Town · deepening)",
+  "logline": "Tuesday. Gully's. A line of tape on the floor, six feet from the counter. The strip draws the tape, exactly, and never says what it's for. Wood on the end stool, which is on the wrong side of the tape.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. A strip of blue tape across the floor. GULLY behind the counter. WOOD on the end stool — the stool on the far side of the tape from the counter. BARNABY II on the tape.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "the end stool, beyond the tape",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "on the tape",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "blue tape on the floor"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a bait-shop interior with a line of blue tape across the floor, a stocky man behind the counter, a thin man on the end stool on the far side of the tape, a small dog standing on the tape",
+        "negative": "",
+        "notes": "The tape is never explained. Six feet. Reserved."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The tape. The dog's paw on it.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "paw on the tape",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the tape"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of a small dog's paw resting on a line of blue tape on a wooden floor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully sliding a coffee down the counter's length to the end. It stops at the edge. Wood reaching. Six feet.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "sliding a coffee",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "reaching",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the coffee, slid"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Regular."
+        },
+        {
+          "who": "WOOD",
+          "text": "Regular."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a stocky man sliding a coffee the length of a counter to a thin man reaching for it from a stool set back from the counter",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The two of them, the counter's length apart. The dog between, on the tape. The shop otherwise empty. Regular.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the tape"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, two men at opposite ends of a shop counter with a small dog on a line of tape between them, the shop otherwise empty, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "The tape, unexplained. The coffee slid six feet."
+}

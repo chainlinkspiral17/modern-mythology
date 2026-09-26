@@ -1,0 +1,153 @@
+{
+  "id": "dw_2008-10-15_the_dog_objects",
+  "title": "The dog objects",
+  "strip": "drift_wood",
+  "date": "2008-10-15",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Long Way Back",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Long Way Back · deepening)",
+  "logline": "Wednesday. Week four. The travelogue is going to Bandon. The dog will not get in the car. Four panels of a dog sitting on the alley's gravel with his back to a Datsun. The travelogue stalls at Yachats.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The alley. The Datsun, door open. WOOD in the driver's seat. BARNABY on the gravel, sitting, facing away from the car.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "in the driver's seat",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "sitting, back to the car",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the Datsun, door open"
+      ],
+      "balloons": [],
+      "caption": "DAY 17. The expedition prepares for Bandon.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, an old dog sitting on alley gravel with its back turned to a rusted small car whose door is open, a thin man in the driver's seat waiting",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Wood out of the car. Crouching. The dog's back.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "crouching",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "back turned",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "It's Bandon. There's a cheese factory."
+        },
+        {
+          "who": "BARNABY",
+          "text": "",
+          "kind": "thought"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man crouching to speak to an old dog who keeps his back turned, the dog's thought balloon empty",
+        "negative": "",
+        "notes": "Empty thought balloon."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood back in the car. The engine. The dog, sitting. Not moving. The car not moving either.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "in the car, engine on",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "sitting",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a rusted car idling in an alley with its door open and an old dog sitting motionless on the gravel outside it, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The engine off. Wood on the gravel beside the dog, both facing away from the car. The caption, small.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "sitting on the gravel beside the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "The expedition is postponed. Yachats will stand as our farthest point.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man sitting on alley gravel beside an old dog with both of their backs to a parked car, a small caption box",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "The dog ends the travelogue. Yachats: the farthest point."
+}

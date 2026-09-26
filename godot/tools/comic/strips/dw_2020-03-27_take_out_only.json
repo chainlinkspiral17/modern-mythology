@@ -1,0 +1,135 @@
+{
+  "id": "dw_2020-03-27_take_out_only",
+  "title": "Take-out only",
+  "strip": "drift_wood",
+  "date": "2020-03-27",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Empty Town",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Empty Town · deepening)",
+  "logline": "Friday. Gully's corkboard: a new hand-lettered sign, TAKE-OUT ONLY, pinned beside the 2003 rough, the 61 MI postcard, the printout. Wood lettered it. It's the best lettering on the board and the strip won't say why it's there.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. WOOD lettering a sign at the counter — from the tape line, the sign passed across. GULLY. BARNABY II.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "lettering",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a sign in progress",
+        "the tape"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a thin man lettering a small sign at a bait-shop counter while a stocky man watches from behind it and a small dog sits on a line of tape",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The sign: TAKE-OUT ONLY, in the display face, the crab flyer's face. A crab in the corner, eight legs. Habit.",
+      "characters": [],
+      "props": [
+        "TAKE-OUT ONLY"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of a hand-lettered sign in bold display capitals with a small eight-legged crab drawn in one corner",
+        "negative": "",
+        "notes": "Letter after: TAKE-OUT ONLY. The crab: habit."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully pinning it to the corkboard above the register, beside twenty-two years of things.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "pinning the sign",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the corkboard"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a stocky man pinning a lettered sign to a crowded corkboard above a shop register",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The corkboard, whole: the 2003 rough, the printout on its hook, 61 MI, the red-framed crab, and the new sign. The dog looking up at it. The strip won't say why it's there.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "looking up",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the corkboard, whole"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a crowded corkboard above a shop register with a pencil sketch, a stick-figure printout on a fishing hook, a postcard, a small red-framed drawing and a newly lettered sign, a small dog looking up at it, no words",
+        "negative": "",
+        "notes": "Gully's corkboard inventory: TAKE-OUT ONLY, Mar 2020, Wood's lettering."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "TAKE-OUT ONLY, lettered in the flyer's face. Why: not said."
+}

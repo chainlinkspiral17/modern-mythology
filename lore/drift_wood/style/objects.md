@@ -90,6 +90,7 @@ by year of arrival. Photo-side out is the default for postcards;
 | 2014 | the invitation, framed in cedar with a cream-and-green mat | on the wall beside "Lanes" |
 | 2016 | a printed card with a dog "named after nothing" | **face-in** (the second) |
 
+| 1999 | the backward digest (the print tech's misfold, Sept 30, 1999) | kept; on the board through 2027 |
 | 2019 | one glossy stick-figure sticker (the helicopter figure), stuck by nose-transfer, upside down, below the yearbook photo | the only sticker of thirty the pup didn't eat (Nov 2019); stays |
 
 Gully's corkboard (above the register, 2003–): starts with one
@@ -248,6 +249,8 @@ the word can be read as a gap.
 - **The ramp** (Oct 28, 2014–): two planks and roofing felt beside
   the shack steps, "for the crab traps." Barnaby used it once.
   Stays through 2027.
+- **The 61 MI postcard** (Oct 1, 2008): Coos Bay's bridge, 'Wish you were here. It's far. —W.', with 61 MI in Gully's marker across the front. Pinned beside the 2003 rough.
+- **TAKE-OUT ONLY** (Mar 27, 2020): lettered by Wood in the flyer's face, a crab in the corner. Never explained.
 - **The muffler-shop printout** (Nov 2006): the Boise nephew's
   inkjet of the stick figure, pinned to Gully's corkboard with a
   fishing hook beside the 2003 rough. Still there.

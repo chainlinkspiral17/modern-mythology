@@ -1,0 +1,125 @@
+{
+  "id": "dw_2015-11-09_the_scuttle",
+  "title": "The scuttle",
+  "strip": "drift_wood",
+  "date": "2015-11-09",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Three Legs",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Three Legs · deepening)",
+  "logline": "Monday. The beach at full scuttle. The pup's gait drawn as a rhythm across four panels — two-one, two-one — the strip learning the new animal's weight by learning its time signature.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The beach. BARNABY II at full speed along the tideline. The gait: front two, hind one. The prints behind him: two, one, two, one.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "full scuttle",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "prints: two, one"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a small three-legged dog running at full speed along a tideline leaving a trail of prints in a two-one rhythm, no words",
+        "negative": "",
+        "notes": "The prints are the point: two front, one hind, repeated. Draw them exactly."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "wide",
+      "composition": "Closer. The body's roll. The ears back. The joy of it drawn without a face doing joy.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "the roll of the gait",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a small three-legged dog mid-stride with its body rolling and ears back, running with evident joy, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "wide",
+      "composition": "The prints only. Two, one. Two, one. To the panel's edge. A gull's prints crossing them once.",
+      "characters": [],
+      "props": [
+        "prints",
+        "a gull's prints"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a trail of small three-legged dog prints in a two-one rhythm crossing wet sand with a gull's prints cutting across once, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "WOOD far behind on the sand, walking, at the dog's old pace — the sixteen-year-old's — out of habit. The pup a dot ahead. The strip catching him at the wrong speed.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "walking slowly, out of habit",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "a dot ahead",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man walking slowly along a beach far behind a small dog that is a distant dot ahead, no words",
+        "negative": "",
+        "notes": "Wood at the old dog's pace. The strip doesn't say so."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "Wordless. Two, one. Wood at the old dog's pace."
+}
