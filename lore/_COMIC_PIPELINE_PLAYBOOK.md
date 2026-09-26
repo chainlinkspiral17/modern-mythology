@@ -114,6 +114,31 @@ a page says "fifty" check it against the year first.
 
 ## Recent lessons
 
+### 2026-09-26 · Deepening xiii · the short sequences to their share · 1,024 → 1,090
+
+Sixty-six private pages. The Stone Head, The Dock, Spring, What People
+Framed, From Behind, The Ridge and Absent each reached or nearly reached
+their book share; The Bird and The Mill took five more each; the
+unsequenced pages went to 131. Nothing failed the up-front check.
+
+- **A sequence's late pages find what the strip drew first.** The stone
+  head turns up in three strokes behind a dog in a 1999 daily; the mill is
+  drawn once from the ridge where the glow will be. The private work is
+  allowed to notice the public run, and the note names the strip so the
+  render prompt can quote its shape without inventing a date.
+- **Pairs and counts stay auditable.** Two cans then four; two rings and
+  the bird in one; two leashes; three chairs then the stool. Each count
+  is in the logline and the compare note, so a later page can be checked
+  against it with grep rather than memory.
+- **A person arrives as a part before a whole.** Chloe on the dock is
+  boots, then hands with a pale ring band, then a figure from the side,
+  then a small back through a window. The rule that held for Wood from
+  2021 holds for anyone the private pages let in.
+- **One page a volume may admit the device.** "The bird, not here" draws
+  four empty places and says it looked; "The crab in the margin" is mostly
+  margin. One each, unsequenced, and no more; the book's restraint is the
+  point and a second such page would spend it.
+
 ### 2026-09-26 · Deepening xii · past a thousand · 961 → 1,024
 
 Fifty-seven private pages and six Sundays. The private pages took the

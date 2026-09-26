@@ -1,0 +1,57 @@
+{
+  "id": "ro_2024-12-22_the_plaque",
+  "title": "The plaque",
+  "strip": "roflcopter",
+  "date": "2024-12-22",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Stone Head",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiii)",
+  "logline": "A bronze plaque in the grass at the face's base, found by the pup's digging: its lettering worn to nothing, the page drawing the bumps where words were. Who it was: reserved by the weather.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_stone_head",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A small bronze plaque half-uncovered in the grass at the base of the carved stone face, its lettering worn smooth, a small three-legged dog's muddy paws at the edge of the hole.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "muddy paws",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the plaque, worn"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a small bronze plaque half uncovered in the grass at the base of a moss-grown carved stone face with its lettering worn smooth, a small three-legged dog's muddy paws at the edge of the hole, no words legible",
+        "negative": "",
+        "notes": "Worn blank: reserved by the weather."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The bumps where words were.",
+  "layout": "single page, no borders"
+}
