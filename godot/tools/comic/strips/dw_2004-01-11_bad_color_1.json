@@ -1,0 +1,128 @@
+{
+  "id": "dw_2004-01-11_bad_color_1",
+  "title": "Sunday · the first color",
+  "strip": "drift_wood",
+  "date": "2004-01-11",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (newspaper cadence: six dailies + a Sunday)",
+  "arc": "Bad Color / The Rain",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004)",
+  "logline": "The first Sunday. The first watercolor. Over-wet. The Rain, in a color that doesn't know what it's doing yet.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": "The gull, in ink, over a color that bled into it."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the beach in January rain, watercolor. The wash has bled past the ink everywhere. The sky is a puddle. It is, unmistakably, the first time.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "walking, small",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "beach",
+        "rain",
+        "over-wet wash"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wide beach in January rain as a first attempt at watercolor: the washes bleeding far past the ink lines, the sky a gray puddle, two small figures, over-wet and uncertain, brush-pen ink under it",
+        "negative": "",
+        "notes": "Deliberately over-wet. The book keeps this to show the learning."
+      },
+      "stage": null,
+      "name": "The beach"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the spruce grove. The green has run into the black. A man and a dog at its foot.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "at the grove's foot",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "spruce",
+        "bleeding green"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a spruce grove in watercolor where the green wash has run into the black ink, a man and a small dog at its foot, over-wet, rain",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "The grove"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the two of them from behind, walking back. The color slightly better in this tier than the first, as if he learned during the page.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "from behind",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "beach",
+        "rain, controlled"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man and a dog seen from behind walking down a rainy beach, the watercolor noticeably more controlled than the tiers above it, gray and sea-green washes, no words",
+        "negative": "",
+        "notes": "Improvement within the page. That's the point of keeping it."
+      },
+      "stage": null,
+      "name": "Back"
+    }
+  ],
+  "art": {
+    "line": "brush-pen",
+    "palette": "first watercolor: gray, sea-green, everything bleeding",
+    "paper": "cheap watercolor paper, buckled"
+  },
+  "notes": "The first Sunday, the first color, the first Rain in watercolor. Kept for the learning.",
+  "layout": "tiers, portrait page"
+}

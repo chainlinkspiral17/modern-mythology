@@ -1,0 +1,139 @@
+{
+  "id": "dw_2004-11-15_dog_night_2004",
+  "title": "The Dog Night, 2004",
+  "strip": "drift_wood",
+  "date": "2004-11-15",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (newspaper cadence: six dailies + a Sunday)",
+  "arc": "The Dog Night",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004)",
+  "logline": "Five years. In color. The bulb is yellow now; it was always yellow.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The dumpster, night, in muddy color: the bulb a warm smear, the dumpster rust, the chain-link gray. WOOD and BARNABY.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "dumpster",
+        "bulb, yellow",
+        "chain-link"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man and a small dog behind a bowling alley at night before a rusted dumpster under a bare yellow bulb, muddy digital color for the first time in this recurring scene, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The rope loop. Gone. Just the chain-link. Wood's hand where it was.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "hand on the fence",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "chain-link, no rope"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a hand touching a chain-link fence where a loop of rope used to be, no words",
+        "negative": "",
+        "notes": "The rope is gone this year. Nobody says so."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The dog, five, sitting, gray coming in on the muzzle. Drawn honestly.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "sitting, gray on the muzzle",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a scruffy dog sitting under a bulb with gray beginning on its muzzle, honest and tender, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Walking away. The neon: SMALL WOOD LANES, all lit, in color — pink and blue, cheap, beautiful.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "neon in pink and blue"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man and a dog walking away under a bowling alley's neon sign in cheap pink and blue, all letters lit, night, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy early-digital flats begin",
+    "palette": "limited, muddy; Sundays in over-wet watercolor",
+    "paper": "bristol, scanned; the browser"
+  },
+  "notes": ""
+}

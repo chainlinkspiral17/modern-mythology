@@ -1,0 +1,141 @@
+{
+  "id": "dw_2004-01-05_online",
+  "title": "Monday, online",
+  "strip": "drift_wood",
+  "date": "2004-01-05",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site (newspaper cadence: six dailies + a Sunday)",
+  "arc": "Six and a Sunday",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004)",
+  "logline": "The strip goes online. It announces nothing. The reader of the book sees the grid change: six a week now, and color coming.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Wood's bedroom. A scanner, new, beige, on the floor because there's no room. A beige computer. WOOD feeding a strip into the scanner. BARNABY watching the light.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "feeding a page into a scanner",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "watching the scan light",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "flatbed scanner on the floor",
+        "beige computer",
+        "CRT monitor"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man kneeling to feed a comic strip into a beige flatbed scanner on a bedroom floor beside a bulky computer, a small dog watching the scanner's light, brush-pen ink with muddy digital flat colors",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The CRT. The strip appearing line by line. Grainier than the xerox.",
+      "characters": [],
+      "props": [
+        "CRT showing a strip loading"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a CRT monitor with a scanned comic strip appearing line by line, early-2000s interface chrome around it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood typing. A page with a title bar: DRIFT WOOD — daily. A counter at the bottom: 3 visitors.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "typing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "monitor: a bare webpage with a hit counter"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Six a week. Sunday's the big one. Like a newspaper. Like the ones I grew up on."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man typing at a bulky computer, the screen showing a bare early web page with a comic strip and a visitor counter reading a single digit",
+        "negative": "",
+        "notes": "Counter: 3 visitors. Letter after."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The dog asleep on the scanner lid. The monitor glow. Wood already drawing tomorrow's. The panels have a faint, wrong, digital gray fill for the first time.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep on the scanner",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "scanner",
+        "monitor glow"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small dog asleep on a closed flatbed scanner in monitor glow while a young man draws at his table, the panel filled with a faint muddy digital gray for the first time, no words",
+        "negative": "",
+        "notes": "The first digital fill. Make it slightly wrong."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy early-digital flats begin",
+    "palette": "limited, muddy; Sundays in over-wet watercolor",
+    "paper": "bristol, scanned; the browser"
+  },
+  "notes": "Run 3 begins. No announcement. The counter says 3."
+}

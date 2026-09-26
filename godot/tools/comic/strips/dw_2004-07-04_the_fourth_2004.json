@@ -1,0 +1,156 @@
+{
+  "id": "dw_2004-07-04_the_fourth_2004",
+  "title": "The Fourth, 2004",
+  "strip": "drift_wood",
+  "date": "2004-07-04",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (newspaper cadence: six dailies + a Sunday)",
+  "arc": "The Fourth on the Bay",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004)",
+  "logline": "The strip is in color now. The fireworks can be red. Wood draws them white anyway.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the dock, night, crowded, Sunday page, in color — the sky Prussian blue, the shack warm, the cups white. The fireworks: white. Deliberately. GULLY pouring. WOOD on the steps.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "pouring at the door",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "on the steps",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "fireworks, white",
+        "crowd",
+        "Prussian blue sky"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a crowded wooden dock at night in watercolor with a deep Prussian blue sky and warm lamplight from a shingle shack, fireworks bursting pure white, a young man in an apron pouring coffee, another on the steps with a small dog",
+        "negative": "",
+        "notes": "Color everywhere except the fireworks. That's the strip's joke on itself."
+      },
+      "stage": null,
+      "name": "White"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: Gully on the steps for his one minute. Looking up.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "beside him, looking up",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "You've got color now."
+        },
+        {
+          "who": "WOOD",
+          "text": "I've got color now."
+        },
+        {
+          "who": "GULLY",
+          "text": "They're white."
+        },
+        {
+          "who": "WOOD",
+          "text": "They were white in mine. I'm not changing history."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two young men on shack steps at night looking up, watercolor, fireworks light",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "History"
+    },
+    {
+      "n": 3,
+      "shot": "close tier",
+      "composition": "Tier 3: the lawn chair under the eave, in color for the first time: faded green webbing, rust on the frame.",
+      "characters": [],
+      "props": [
+        "lawn chair in color"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of an old folding lawn chair with faded green webbing and a rusted frame under a shingle eave at night, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "The chair"
+    },
+    {
+      "n": 4,
+      "shot": "wide tier",
+      "composition": "Tier 4: the finale. White on blue. The dock. The chair. The two on the steps. The one red thing in the panel: a child's balloon, far end of the dock.",
+      "characters": [],
+      "props": [
+        "finale white on blue",
+        "a single red balloon"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a fireworks finale in pure white over a Prussian blue night sky above a crowded dock, and one small red balloon at the far end of the dock, watercolor, no words",
+        "negative": "",
+        "notes": "The single red balloon: the only concession. It's a child's."
+      },
+      "stage": null,
+      "name": "One red thing"
+    }
+  ],
+  "art": {
+    "line": "brush-pen",
+    "palette": "Prussian blue, warm lamp yellow, white; one red",
+    "paper": "watercolor paper"
+  },
+  "notes": "The first Fourth in color. The fireworks stay white. One red balloon.",
+  "layout": "tiers, portrait page"
+}
