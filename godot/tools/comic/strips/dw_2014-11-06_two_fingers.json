@@ -1,0 +1,160 @@
+{
+  "id": "dw_2014-11-06_two_fingers",
+  "title": "Two fingers",
+  "strip": "drift_wood",
+  "date": "2014-11-06",
+  "run": 5,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies (the trilogy ran in print in three papers)",
+  "arc": "The Table Lowered",
+  "source": "lore/drift_wood/_SOURCE_BRIEF.md (The Table Lowered · deepening)",
+  "logline": "Thursday. Maria checks the dog's leg with two fingers. She's done it for years. This time she keeps them there a beat longer and looks at Wood, and the strip draws the beat.",
+  "cast": [
+    "wood_34",
+    "extra_maria",
+    "barnaby",
+    "gully_35"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. BARNABY in the basket on the counter. MARIA's two fingers on his hind leg. WOOD on the stool. GULLY behind.",
+      "characters": [
+        {
+          "id": "extra_maria",
+          "pose": "two fingers on the leg",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "in the basket",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the basket"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, a practical woman pressing two fingers to an old dog's hind leg as it lies in a basket on a bait-shop counter, a thin man on a stool and a man in an apron watching",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The two fingers. Held. A beat longer than usual.",
+      "characters": [
+        {
+          "id": "extra_maria",
+          "pose": "fingers",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, close-up of two fingers pressed to an old dog's leg, held, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Maria looking at Wood. The look. Not the head-shake — that's for Gully. This one's new.",
+      "characters": [
+        {
+          "id": "extra_maria",
+          "pose": "looking at Wood",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, a practical woman looking up at a thin man with a new quiet expression, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Maria's hand off the leg, onto Wood's forearm, once, and gone to the register. Gully looking at the counter. The dog asleep in the basket.",
+      "characters": [
+        {
+          "id": "extra_maria",
+          "pose": "hand on his forearm, going",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "looking at the counter",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, a woman's hand briefly on a thin man's forearm as she moves toward a register, a stocky man looking down at the counter, an old dog asleep in a basket, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "quiet; water bleeding over the ink edge to suggest rain and fading light",
+    "palette": "desaturated wet-on-wet: raw umber, Payne's gray, Prussian blue, raw sienna",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for the Sundays"
+  },
+  "notes": "Wordless. The two fingers, held. The hand on the forearm."
+}

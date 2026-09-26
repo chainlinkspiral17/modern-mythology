@@ -1,0 +1,123 @@
+{
+  "id": "dw_2014-07-25_the_night_before",
+  "title": "The night before",
+  "strip": "drift_wood",
+  "date": "2014-07-25",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Glass Pavilion (Arc 3, week 2)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Glass Pavilion · deepening)",
+  "logline": "Friday. Wood alone on the dock at midnight, the night before. He draws the dock empty for the Sunday he doesn't know is coming. The strip draws him drawing the place where Sunday's panel will be.",
+  "cast": [
+    "wood_34"
+  ],
+  "location": "dw_pavilion_dock",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The dock at midnight, the pavilion dark behind, the Sound black, the far lights of Vancouver Island. WOOD alone at the end, suit jacket off, sketchbook on his knee.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "alone at the dock's end",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the dock",
+        "far lights"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink with pristine architectural perspective, blinding clear summer light in soft cerulean and pale linen watercolor, a cedar dock at midnight with a dark glass pavilion behind and distant lights across black water, a thin man alone at the end with his jacket off and a sketchbook on his knee",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The sketchbook: the dock, from the shore, empty. The planks. Where two people will sit on Sunday: planks.",
+      "characters": [],
+      "props": [
+        "the sketchbook: the dock, empty"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink with pristine architectural perspective, blinding clear summer light in soft cerulean and pale linen watercolor, close-up of a sketchbook page with an ink drawing of an empty dock seen from the shore",
+        "negative": "",
+        "notes": "The composition of dw_2014-07-27 without the figures. He draws it two nights early."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood looking at the drawing, then at the dock's planks beside him. Measuring the space. Two people's worth.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "measuring the planks with his eyes",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the planks beside him"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink with pristine architectural perspective, blinding clear summer light in soft cerulean and pale linen watercolor, a thin man looking from his sketchbook to the empty dock planks beside him as if measuring them, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The dock from the shore, midnight: one figure at the end. Tomorrow a wedding. Sunday, the panel. The strip holds on him not knowing.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "far, at the end",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the dock from the shore"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink with pristine architectural perspective, blinding clear summer light in soft cerulean and pale linen watercolor, an empty cedar dock at midnight seen from the shore with one small figure seated at its far end, dark water, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "He draws Sunday's dock two nights early, empty."
+}

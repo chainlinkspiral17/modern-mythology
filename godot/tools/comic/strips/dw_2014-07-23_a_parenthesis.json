@@ -1,0 +1,190 @@
+{
+  "id": "dw_2014-07-23_a_parenthesis",
+  "title": "A parenthesis",
+  "strip": "drift_wood",
+  "date": "2014-07-23",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Glass Pavilion (Arc 3, week 2)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Glass Pavilion · deepening)",
+  "logline": "Wednesday. Julian introduces himself. The strip draws him as it always has: a pleasant shape, a neutral face, a linen shirt. He is kind. That's the hardest thing the strip has ever had to draw, and it draws it fair.",
+  "cast": [
+    "wood_34",
+    "extra_julian",
+    "chloe_34"
+  ],
+  "location": "dw_pavilion_dock",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The pavilion's lawn. JULIAN, a pleasant shape in linen, hand out. WOOD, the suit, the sketchbook under his arm. CHLOE a step behind, watching both.",
+      "characters": [
+        {
+          "id": "extra_julian",
+          "pose": "hand out, pleasant, neutral",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "chloe_34",
+          "pose": "a step behind",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "JULIAN",
+          "text": "Arthur. Finally. She's — I've heard a great deal."
+        },
+        {
+          "who": "WOOD",
+          "text": "Woody's fine."
+        },
+        {
+          "who": "JULIAN",
+          "text": "Woody. She said you'd say that."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink with pristine architectural perspective, blinding clear summer light in soft cerulean and pale linen watercolor, a pleasant indistinct man in a linen shirt offering his hand to a thin man in a dark suit on a bright lawn while a woman watches a step behind",
+        "negative": "",
+        "notes": "Julian: neutral, kind, deliberately unmemorable. The strip's fairness is the point. He says 'Arthur' once."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The handshake. Julian's hand: normal. Wood's: ink on the fingers.",
+      "characters": [],
+      "props": [
+        "the handshake",
+        "ink on the fingers"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink with pristine architectural perspective, blinding clear summer light in soft cerulean and pale linen watercolor, close-up of a handshake between a clean hand and a hand with ink stains on the fingers",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Julian, kind, meaning it.",
+      "characters": [
+        {
+          "id": "extra_julian",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "JULIAN",
+          "text": "The dog. The one at the top of the stairs — the March Sunday. I read it in the office and had to go for a walk."
+        },
+        {
+          "who": "WOOD",
+          "text": "...You read the Sundays."
+        },
+        {
+          "who": "JULIAN",
+          "text": "All of them. I'm — sorry. I'm getting ahead."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's fine. It's — thank you."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink with pristine architectural perspective, blinding clear summer light in soft cerulean and pale linen watercolor, a pleasant man speaking earnestly to a thin man who is caught off guard",
+        "negative": "",
+        "notes": "Julian names dw_2014-03-16 (the dog at the top of the steps). He has read all of it, before Chloe says so in 2024."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Julian called away by a caterer. Wood and Chloe. Chloe looking at Wood's face, checking it.",
+      "characters": [
+        {
+          "id": "chloe_34",
+          "pose": "checking his face",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "Well?"
+        },
+        {
+          "who": "WOOD",
+          "text": "He's kind."
+        },
+        {
+          "who": "CHLOE",
+          "text": "I know."
+        },
+        {
+          "who": "WOOD",
+          "text": "I was hoping for worse."
+        },
+        {
+          "who": "CHLOE",
+          "text": "I know that too."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink with pristine architectural perspective, blinding clear summer light in soft cerulean and pale linen watercolor, a woman checking a thin man's face on a lawn as a pleasant man walks away toward a caterer",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "'He's kind.' 'I was hoping for worse.' Drawn fair."
+}

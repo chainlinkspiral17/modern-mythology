@@ -1,0 +1,209 @@
+{
+  "id": "dw_2015-09-23_return_2015_3",
+  "title": "Return, iii",
+  "strip": "drift_wood",
+  "date": "2015-09-23",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Return",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Return · deepening)",
+  "logline": "Wednesday. Gully's. The pup meets the end stool. He can't get up it. Wood lifts him. Gully looks at the stool's height and says nothing yet; the crate is three weeks off.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "barnaby_ii",
+    "extra_gully_kid"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. WOOD on the end stool. BARNABY II at its foot, looking up the leg like a cliff. GULLY. The girl, five, on the counter.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "looking up the stool",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_gully_kid",
+          "pose": "on the counter",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the end stool"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a small three-legged puppy at the foot of a tall shop stool looking up its leg, a thin man on the stool, a man in an apron, a five-year-old girl sitting on the counter",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Wood reaching down. Lifting. The pup onto the lap, instantly asleep — no. Instantly awake, looking at the girl.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "lifting the pup",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "on the lap, looking at the girl",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a thin man lifting a small three-legged puppy onto his lap on a stool where it looks alertly at a girl on the counter",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The girl and the pup, eye to eye. Gully watching the stool's height. Measuring, in his head.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "eye to eye with the pup",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "measuring the stool",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GIRL",
+          "text": "He's got three."
+        },
+        {
+          "who": "WOOD",
+          "text": "He's got three."
+        },
+        {
+          "who": "GIRL",
+          "text": "Where's the other one?"
+        },
+        {
+          "who": "WOOD",
+          "text": "Nobody knows. He came that way."
+        },
+        {
+          "who": "GIRL",
+          "text": "Okay."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a five-year-old girl and a small three-legged puppy looking at each other at a counter while a man in an apron eyes the stool's height",
+        "negative": "",
+        "notes": "'He came that way.' The leg: reserved beyond this."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Gully, pouring. The word.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "pouring",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "coffee"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Regular."
+        },
+        {
+          "who": "WOOD",
+          "text": "Regular."
+        },
+        {
+          "who": "GULLY",
+          "text": "And one for him."
+        },
+        {
+          "who": "WOOD",
+          "text": "He doesn't drink coffee."
+        },
+        {
+          "who": "GULLY",
+          "text": "He's a regular. He gets a cup."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man in an apron pouring a coffee and setting a second small cup beside it for a puppy on a thin man's lap",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "'He came that way.' 'He's a regular. He gets a cup.'"
+}

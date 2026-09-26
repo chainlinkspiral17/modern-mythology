@@ -1,0 +1,131 @@
+{
+  "id": "dw_2000-10-23_the_schedule",
+  "title": "The schedule",
+  "strip": "drift_wood",
+  "date": "2000-10-23",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Driftwood Ledger (Arc 1, week 4)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Driftwood Ledger · deepening)",
+  "logline": "Monday. The Greyhound schedule from 1999, still on the corkboard. The departure circled in pencil. Wood un-pins it, reads it, and pins it back with the circle facing the wall.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The bedroom. The corkboard. WOOD unpinning a folded bus schedule, yellowing already. BARNABY on the bed.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "unpinning the schedule",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "on the bed",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the Greyhound schedule"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, a young man unpinning a folded yellowing bus schedule from a corkboard in a small bedroom, a small dog on the bed",
+        "negative": "",
+        "notes": "The schedule from dw_1999-04-09. Departure circled: 4:10 (objects.md)."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The schedule open. A column of times. One circled in pencil, 1999: 4:10. Saturday.",
+      "characters": [],
+      "props": [
+        "4:10 circled"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, close-up of a bus schedule with a column of times and one time circled in pencil",
+        "negative": "",
+        "notes": "Letter after: 4:10, circled."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood looking at the circle. A long time. The dog watching him look.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "looking",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "watching",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, a young man staring at a circled time on a schedule while a small dog watches him, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The schedule pinned back. Folded so the circle faces the cork. The blank side out.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "pinning it back",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the schedule, blank side out"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, a folded bus schedule pinned to a corkboard with its blank side facing out, a young man's hand leaving it, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "4:10, circled, turned to the wall."
+}

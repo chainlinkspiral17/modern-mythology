@@ -1,0 +1,136 @@
+{
+  "id": "dw_2014-11-20_the_appointment_card",
+  "title": "The appointment card",
+  "strip": "drift_wood",
+  "date": "2014-11-20",
+  "run": 5,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies (the trilogy ran in print in three papers)",
+  "arc": "The Clinic",
+  "source": "lore/drift_wood/_SOURCE_BRIEF.md (The Clinic · deepening)",
+  "logline": "Thursday. An appointment card on the corkboard: MON 24 · 9:00. Pinned beside the 1999 schedule and the 2010 program. The third folded thing. This one faces out.",
+  "cast": [
+    "wood_34",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. WOOD pinning a small card to the corkboard. BARNABY in the bed under the low table.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "pinning a card",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "in the bed",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a small card"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, a thin man pinning a small card to a crowded corkboard in a garage while an old dog lies in a bed beneath a lowered table",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The card: COUNTY ANIMAL CLINIC · MON NOV 24 · 9:00 AM. Beside it the schedule and the program, both blank sides out. This one faces out.",
+      "characters": [],
+      "props": [
+        "the card, facing out"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, close-up of a corkboard with two folded papers pinned blank side out and a small clinic appointment card pinned facing outward beside them",
+        "negative": "",
+        "notes": "Letter after: COUNTY ANIMAL CLINIC · MON NOV 24 · 9:00 AM. The only one of the three that faces out."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood stepping back. Looking at it. The dog lifting his head, looking at Wood looking at it.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking at the card",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "head up",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, a thin man looking at a card on a corkboard while an old dog lifts its head to look at him, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The garage. Four days. The strip draws this one, and stops.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the corkboard"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, a garage studio with a man standing before a corkboard and an old dog in a bed beneath a low table, muted wash, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "quiet; water bleeding over the ink edge to suggest rain and fading light",
+    "palette": "desaturated wet-on-wet: raw umber, Payne's gray, Prussian blue, raw sienna",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for the Sundays"
+  },
+  "notes": "Wordless. The card that faces out."
+}

@@ -1,0 +1,133 @@
+{
+  "id": "dw_2014-12-24_december_2014",
+  "title": "December, 2014",
+  "strip": "drift_wood",
+  "date": "2014-12-24",
+  "run": 5,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies (the trilogy ran in print in three papers)",
+  "arc": "Low Tide at Alsea Bay (Arc 4)",
+  "source": "lore/drift_wood/_SOURCE_BRIEF.md (Low Tide at Alsea Bay · deepening)",
+  "logline": "Wednesday. Does Chloe come home. A card, printed, from the island — the first with two names on it. Inside, handwritten: 'I heard. —C.' Wood pins it beside the schedule. The pup pulls it down twice. Wood pins it higher.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab, beside the scruff."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. WOOD opening a card: a printed photo of the pavilion in snow, two names. BARNABY II at his boot, already interested in the envelope.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "opening a card",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "at the envelope",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a card: the pavilion, two names"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, a thin man opening a printed holiday card showing a glass pavilion in snow while a small three-legged puppy noses the envelope at his boot",
+        "negative": "",
+        "notes": "Two names on the card; the second is a neutral shape of letters. Reserved: Julian's surname."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Inside. Her hand: 'I heard. —C.' Three words.",
+      "characters": [],
+      "props": [
+        "the card: I heard. —C."
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, close-up of the inside of a card with three handwritten words and an initial",
+        "negative": "",
+        "notes": "Letter after: I heard. —C."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The card pinned beside the 1999 schedule. The pup jumping — three legs, all of them — and pulling it down. Twice, in one panel, drawn as two pups.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "jumping, twice",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the card, pulled down"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, a small three-legged puppy jumping at a corkboard and pulling down a card, drawn twice in the same panel to show two attempts",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The card pinned higher. Out of reach. The pup sitting under it, looking up. Wood sitting beside him, looking up too. She does not come home; the card did.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "sitting, looking up",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "sitting, looking up",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the card, high"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, a thin man and a small puppy sitting side by side on a garage floor both looking up at a card pinned high on a corkboard, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "quiet; water bleeding over the ink edge to suggest rain and fading light",
+    "palette": "desaturated wet-on-wet: raw umber, Payne's gray, Prussian blue, raw sienna",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for the Sundays"
+  },
+  "notes": "'I heard. —C.' Pulled down twice. Pinned higher."
+}

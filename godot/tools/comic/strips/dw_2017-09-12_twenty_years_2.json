@@ -1,0 +1,148 @@
+{
+  "id": "dw_2017-09-12_twenty_years_2",
+  "title": "Twenty years, ii",
+  "strip": "drift_wood",
+  "date": "2017-09-12",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Twenty Years",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Twenty Years · deepening)",
+  "logline": "Tuesday, September 12. Twenty. The corn. The garage. The pup. #1 on the wall — and today, beside it, the Timberline's new back page, which the kid gave him yesterday. Two first strips, twenty years apart.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. Corn. WOOD. BARNABY II in the bed. On the wall: #1, yellowed, and beside it a fresh newsprint back page — the napkin kid's first strip in the Timberline.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "in the bed",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "corn",
+        "#1",
+        "the kid's back page"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man at a drafting table with a tray of corn, a small three-legged dog in a bed, a yellowed old strip and a fresh newsprint page pinned side by side on the wall",
+        "negative": "",
+        "notes": "Two back pages: Sept 12, 1997 and Sept 2017. The kid's strip is reserved in content; draw it as a four-panel shape."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The two pages, close. The same masthead: THE TIMBERLINE. Twenty years of newsprint between them; the font the same.",
+      "characters": [],
+      "props": [
+        "two back pages, one masthead"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of two newspaper back pages pinned side by side with the same masthead, one yellowed and one fresh",
+        "negative": "",
+        "notes": "Letter after: THE TIMBERLINE on both."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, to the dog.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Twenty years. He's got the back page. He's got the corn. He's got a girl who proofs the drawing and not the text."
+        },
+        {
+          "who": "WOOD",
+          "text": "I didn't tell him about the drawing part. Somebody should've told me."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man speaking to a small dog while looking at two pages on a wall, rueful",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Alone at the long surface. Corn. The pup. Two first strips on the wall. Twenty.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "back turned",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "corn",
+        "two pages"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man with his back turned at a long drafting table with a tray of corn, a small dog in a bed, two pages on the wall above, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "Two first strips on the wall. 'Somebody should've told me.'"
+}

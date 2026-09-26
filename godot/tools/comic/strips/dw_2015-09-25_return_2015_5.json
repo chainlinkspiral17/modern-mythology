@@ -1,0 +1,132 @@
+{
+  "id": "dw_2015-09-25_return_2015_5",
+  "title": "Return, v",
+  "strip": "drift_wood",
+  "date": "2015-09-25",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Return",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Return · deepening)",
+  "logline": "Friday. The Sunday ruled — the first new landscape since the reruns. The pup on the Arches. Pawprints. Wood leaves them and paints around them. The strip's first Sunday back will have three-toed prints in the sky.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. A sheet of Arches on the board, tiers ruled. WOOD turning to the sill. BARNABY II climbing the table. Wet paws.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "turning away",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "climbing onto the table, wet paws",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "Arches, ruled"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a small three-legged puppy with wet paws climbing onto a drafting table where a ruled watercolor sheet lies, a man turned toward the windowsill",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The sheet. Three-toed prints across the top tier. Wet. Perfect.",
+      "characters": [],
+      "props": [
+        "three-toed pawprints on the sheet"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of a blank ruled watercolor sheet with a trail of small three-toed wet pawprints across its top tier",
+        "negative": "",
+        "notes": "Three-toed prints: the pup's front paws are two; the hind is one; draw the trail uneven."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood turning back. Looking at the prints. The pup looking at him: nothing to declare.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking at the prints",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "nothing to declare",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man looking at pawprints on his blank sheet while a small puppy looks back with an innocent expression, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood dipping the brush. Painting the sky around the prints. Leaving them. The first Sunday back will have him in it that way.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "painting around the prints",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the brush",
+        "the sky, the prints"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man laying a watercolor wash onto a sheet while carefully painting around a trail of small pawprints in the sky area, no words",
+        "negative": "",
+        "notes": "Sunday Sept 27, 2015 (not in the batch): the bay with three-toed prints in the sky."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "Pawprints on the Arches. Painted around. The pup in the first Sunday back."
+}

@@ -1,0 +1,152 @@
+{
+  "id": "dw_2000-10-26_the_porch_narrowest",
+  "title": "The porch, narrowest",
+  "strip": "drift_wood",
+  "date": "2000-10-26",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Driftwood Ledger (Arc 1, week 4)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Driftwood Ledger · deepening)",
+  "logline": "Thursday. The bags on the porch again, three days before the bus. The panels narrow all the way down: four panels, each thinner, the fourth a line. The device's last daily use.",
+  "cast": [
+    "wood_20",
+    "chloe_17"
+  ],
+  "location": "dw_chloe_porch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Chloe's porch. The bags. CHLOE on the top step, WOOD on the bottom. Rain. Full width.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "top step",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "bottom step",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the bags"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "Saturday. 4:10."
+        },
+        {
+          "who": "WOOD",
+          "text": "I know when."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, a young woman on a porch's top step and a young man on the bottom step beside two packed bags in rain",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "narrow",
+      "composition": "Same, two-thirds width. Closer.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "You could just say you'll be there."
+        },
+        {
+          "who": "WOOD",
+          "text": "I could."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, a narrower panel of the same porch scene, closer, a young woman and a young man on the steps",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "narrow",
+      "composition": "Same, one-third width. Just the two heads.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, a very narrow panel showing only two young people's heads in profile in rain, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "narrow",
+      "composition": "A line. A single vertical black stroke with rain hatching either side. Nothing else fits.",
+      "characters": [],
+      "props": [
+        "a vertical stroke"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, an extremely narrow panel that is almost only a single vertical black stroke between rain hatching, no words",
+        "negative": "",
+        "notes": "Panel 4 is a line. The narrowing device ends here; the oversized cover Sunday is the answer."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Four panels narrowing to a line. 'I could.'"
+}

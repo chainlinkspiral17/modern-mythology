@@ -1,0 +1,153 @@
+{
+  "id": "dw_2000-10-05_three_and_a_half",
+  "title": "Three and a half",
+  "strip": "drift_wood",
+  "date": "2000-10-05",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Driftwood Ledger (Arc 1, week 1)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Driftwood Ledger · deepening)",
+  "logline": "Thursday. Wood measures main street with his feet. It is three and a half blocks. The strip draws it that way: the panel is three and a half panels wide, and the fourth is cut.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Main street in rain. WOOD walking heel-to-toe, counting. BARNABY, one, behind him, not counting.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "heel-to-toe, counting",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "behind",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "main street"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "...two hundred and eleven, two hundred and twelve —"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, a young man walking heel-to-toe down a rainy small-town street counting under his breath, a small dog behind him",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The seawall end. Wood stopping. The count.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "stopped",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the seawall"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Three and a half. It was four in September."
+        },
+        {
+          "who": "WOOD",
+          "text": "(to the dog) You were here. You saw it."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, a young man stopped at a seawall in rain speaking to a small dog",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The dog. Looking at the seawall. The seawall is where it always was.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "looking at the wall",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the seawall"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, a small dog looking at a concrete seawall in rain, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "narrow",
+      "composition": "The fourth panel: half width. The street, the two of them, cut off by the border mid-dog.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "cut by the border",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the border cutting the panel"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, a half-width panel of a rainy street with a young man and a small dog partly cut off by the panel's right border, no words",
+        "negative": "",
+        "notes": "Panel 4 is drawn at half width. The strip's narrowing device (dw_2000-10-02), now structural."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Three and a half blocks. The fourth panel half a panel."
+}

@@ -1,0 +1,112 @@
+{
+  "id": "dw_2014-07-19_the_suit_on_the_madrone",
+  "title": "The suit on the madrone",
+  "strip": "drift_wood",
+  "date": "2014-07-19",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Glass Pavilion (Arc 3, week 1)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Glass Pavilion · deepening)",
+  "logline": "Saturday. The suit, aired on a madrone branch behind the motel. It smells of damp mothballs. A deer looks at it. The strip's one landscape daily of the trip.",
+  "cast": [
+    "wood_34"
+  ],
+  "location": "dw_pavilion_dock",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Behind the island motel: a madrone, red bark peeling, and hung from a branch on its hanger, the dark wool suit. Sunlight through it. A DEER at the edge of the trees, looking.",
+      "characters": [],
+      "props": [
+        "the suit on a madrone",
+        "a deer"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink with pristine architectural perspective, blinding clear summer light in soft cerulean and pale linen watercolor, a dark wool suit hanging from the peeling red branch of a madrone tree behind a motel in bright light with a deer at the tree line looking at it, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The suit's shoulder. A moth hole, small, mended in 2009 with the wrong thread. The nine-dollar suit, five years on.",
+      "characters": [],
+      "props": [
+        "the mended moth hole"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink with pristine architectural perspective, blinding clear summer light in soft cerulean and pale linen watercolor, close-up of a wool suit's shoulder with a small moth hole mended in slightly wrong-colored thread",
+        "negative": "",
+        "notes": "The 2009 nine-dollar suit (dw_2009-06-09), mended."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD in the motel doorway in a t-shirt, looking at the suit and the deer. Neither moves.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "in the doorway",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the suit",
+        "the deer"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink with pristine architectural perspective, blinding clear summer light in soft cerulean and pale linen watercolor, a thin man in a t-shirt standing in a motel doorway looking at a suit on a tree and a deer looking at the suit, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The deer gone. The suit turning slightly on its hanger. The madrone. The light. Held.",
+      "characters": [],
+      "props": [
+        "the suit, turning"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink with pristine architectural perspective, blinding clear summer light in soft cerulean and pale linen watercolor, a wool suit turning slightly on its hanger in a madrone tree in bright island light, the deer gone, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "The suit on the madrone. The deer. The mended hole."
+}

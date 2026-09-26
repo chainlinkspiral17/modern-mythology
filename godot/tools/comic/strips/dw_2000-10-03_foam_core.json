@@ -1,0 +1,140 @@
+{
+  "id": "dw_2000-10-03_foam_core",
+  "title": "Foam core",
+  "strip": "drift_wood",
+  "date": "2000-10-03",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Driftwood Ledger (Arc 1, week 1)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Driftwood Ledger · deepening)",
+  "logline": "Tuesday. The backroom of Heceta Frame & Matting. Foam core, a dull utility knife, and the word 'racket' for the first time. The Owner in the doorway, hearing it.",
+  "cast": [
+    "wood_20",
+    "extra_owner_heceta"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The backroom: foam core sheets, a cutting table, a dull utility knife. WOOD cutting, the blade dragging. Rain in vertical hatching through a small window.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "cutting foam core",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "foam core",
+        "utility knife"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Art school is a commercial racket designed to castrate raw vision."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, a young man in a frame shop's backroom dragging a dull utility knife through foam core on a cutting table, rain hatched through a small window",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The knife tearing the foam instead of cutting it. A ragged edge.",
+      "characters": [],
+      "props": [
+        "a ragged cut"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, close-up of a dull utility knife tearing a ragged edge in white foam core",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The OWNER in the doorway, glasses on a cord, a fresh blade in her fingers, held out.",
+      "characters": [
+        {
+          "id": "extra_owner_heceta",
+          "pose": "holding out a blade",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a fresh blade"
+      ],
+      "balloons": [
+        {
+          "who": "OWNER",
+          "text": "Raw vision needs a sharp blade, Arthur. Everything does."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, an older woman with glasses on a cord standing in a doorway holding out a fresh utility blade between two fingers",
+        "negative": "",
+        "notes": "The owner's first 'Arthur' (see characters.md: Jan 2001 is her first in the book's order; this one is earlier — update: Oct 2000, the blade)."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood taking the blade. The cut, clean. The word 'racket' in a small balloon, said to nobody, quieter.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "cutting clean",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a clean cut"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "...Racket.",
+          "kind": "small"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, a young man making a clean cut in foam core with a fresh blade, muttering",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Racket,' first. The blade. Her first 'Arthur.'"
+}

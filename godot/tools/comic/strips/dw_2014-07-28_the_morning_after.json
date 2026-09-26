@@ -1,0 +1,145 @@
+{
+  "id": "dw_2014-07-28_the_morning_after",
+  "title": "The morning after",
+  "strip": "drift_wood",
+  "date": "2014-07-28",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Glass Pavilion (Arc 3, week 3)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Glass Pavilion · deepening)",
+  "logline": "Monday. The morning after the dock. Coffee at the island's one café. The line. The dialect of the place — 'oat milk?' — and Wood's answer. The strip is still on the island for three more days and already leaving.",
+  "cast": [
+    "wood_34"
+  ],
+  "location": "dw_pavilion_dock",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "An island café, white, morning. A line of linen. WOOD at the counter in the chore coat, the suit gone back to its hanger.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "at the counter",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a café"
+      ],
+      "balloons": [
+        {
+          "who": "BARISTA",
+          "text": "Oat, almond, macadamia, or —"
+        },
+        {
+          "who": "WOOD",
+          "text": "Regular."
+        },
+        {
+          "who": "BARISTA",
+          "text": "...Regular what?"
+        },
+        {
+          "who": "WOOD",
+          "text": "Regular's a whole order where I'm from."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink with pristine architectural perspective, blinding clear summer light in soft cerulean and pale linen watercolor, a bright white island café with a line of guests in linen and a thin man in a canvas chore coat at the counter",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The cup. A leaf drawn in the foam. Wood looking at the leaf like it's a strip somebody else drew.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking at the foam",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a leaf in foam"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink with pristine architectural perspective, blinding clear summer light in soft cerulean and pale linen watercolor, close-up of a coffee with a leaf drawn in its foam and a thin man's skeptical eyes above it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood at a window table. The sketchbook open. The page: last night's dock — the two of them, from the shore, her head on his shoulder. Drawn from memory this morning. One panel of it.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "drawing from memory",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the sketchbook: the dock, two figures"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink with pristine architectural perspective, blinding clear summer light in soft cerulean and pale linen watercolor, a thin man at a café window drawing in a sketchbook a small scene of two figures on a dock at night seen from the shore, one head resting on the other's shoulder",
+        "negative": "",
+        "notes": "The Sunday's panel 5, redrawn from memory the morning after, in the sketchbook. The strip shows it once, small."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood closing the book on it. The coffee. The leaf gone. The window: the ferry, far off, coming.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "closing the book",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the ferry, far"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink with pristine architectural perspective, blinding clear summer light in soft cerulean and pale linen watercolor, a thin man closing a sketchbook at a café window with a ferry visible far off through the glass, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "'Regular's a whole order where I'm from.' The dock, redrawn from memory, closed on."
+}

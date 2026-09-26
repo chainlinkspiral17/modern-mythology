@@ -1,0 +1,164 @@
+{
+  "id": "dw_2017-09-15_the_back_page_2017",
+  "title": "The back page, 2017",
+  "strip": "drift_wood",
+  "date": "2017-09-15",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Twenty Years",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Twenty Years · deepening)",
+  "logline": "Friday. The Timberline comes out. Wood reads the back page at Gully's. The kid's strip. The strip shows Wood reading it and shows the reader nothing of it. Gully reads it over his shoulder and laughs, once, at something we don't see.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. WOOD on the end stool with a school paper folded to the back page. GULLY behind him. BARNABY II.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "reading the back page",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "reading over his shoulder",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the Timberline"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a graying man on a shop stool reading a school newspaper's back page with a stocky man reading over his shoulder, a small three-legged dog beneath",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The back page from behind: the newsprint, the light through it, a four-panel shape. Unreadable. The kid's strip, as a silhouette.",
+      "characters": [],
+      "props": [
+        "the back page, from behind"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of a newspaper page seen from behind with light through it showing the silhouette of a four-panel comic strip, unreadable",
+        "negative": "",
+        "notes": "The kid's strip is never shown. Reserved."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully laughing. Once. Short. Wood looking up at him.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "laughing once",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "looking up",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Ha."
+        },
+        {
+          "who": "WOOD",
+          "text": "What."
+        },
+        {
+          "who": "GULLY",
+          "text": "Panel three."
+        },
+        {
+          "who": "WOOD",
+          "text": "...Yeah."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a stocky man giving one short laugh while a graying man looks up at him from a newspaper",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood folding the paper. Putting it in the chore coat's pocket, the deep one. The pup. Gully pouring. Twenty years and one week.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "folding the paper into his pocket",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "pouring",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the paper in the pocket"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a graying man folding a school newspaper into the deep pocket of his chore coat while a stocky man pours coffee and a small dog watches, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "'Panel three.' The kid's strip, a silhouette. Into the deep pocket."
+}

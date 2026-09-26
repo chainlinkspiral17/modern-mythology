@@ -1,0 +1,147 @@
+{
+  "id": "dw_2000-10-24_saturday_asked",
+  "title": "Saturday, asked",
+  "strip": "drift_wood",
+  "date": "2000-10-24",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Driftwood Ledger (Arc 1, week 4)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Driftwood Ledger · deepening)",
+  "logline": "Tuesday. The Owner asks about Saturday. She asks it as a scheduling question. Wood says he's working Saturday. She says the shop's closed Saturday. He says he'll open it.",
+  "cast": [
+    "wood_20",
+    "extra_owner_heceta"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The frame shop. The OWNER at the calendar on the wall, pen up. WOOD at the counter.",
+      "characters": [
+        {
+          "id": "extra_owner_heceta",
+          "pose": "at the calendar",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the wall calendar"
+      ],
+      "balloons": [
+        {
+          "who": "OWNER",
+          "text": "Saturday. You need it?"
+        },
+        {
+          "who": "WOOD",
+          "text": "I'm working Saturday."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, an older woman at a wall calendar with a pen and a young man at a frame-shop counter",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The calendar. Saturday: CLOSED, printed. Her pen over it.",
+      "characters": [],
+      "props": [
+        "CLOSED"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, close-up of a wall calendar where Saturday is printed CLOSED with a pen hovering over it",
+        "negative": "",
+        "notes": "Letter after: CLOSED."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The Owner, not turning.",
+      "characters": [
+        {
+          "id": "extra_owner_heceta",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "OWNER",
+          "text": "We're closed Saturdays, Arthur."
+        },
+        {
+          "who": "WOOD",
+          "text": "I'll open it."
+        },
+        {
+          "who": "OWNER",
+          "text": "...Alright."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, an older woman speaking to a young man without turning from a calendar",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The pen writing on Saturday, small, under CLOSED: A. The calendar. The rain in the window.",
+      "characters": [],
+      "props": [
+        "the calendar: A. under CLOSED"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, close-up of a wall calendar with a small pencilled initial written beneath the printed word CLOSED, rain in a window beyond",
+        "negative": "",
+        "notes": "Letter after: 'A.' under CLOSED."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'I'll open it.' 'A.' under CLOSED."
+}

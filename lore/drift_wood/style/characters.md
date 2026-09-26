@@ -310,13 +310,13 @@ step.
 | **lunch_lady** | 1997 cafeteria; a second one in 2017 | white smock, hairnet, steel ladle, never looks up (the 2017 one does — that's the joke) |
 | **security_guard** | Newport, 1999–2001 | navy windbreaker with a reflective strip, cap, clipboard, bent to a car window |
 | **laundromat_owner** | 1999–2003 | cardigan, reading glasses on a cord, folding a towel |
-| **extra_owner_heceta** | Heceta Frame & Matting, 2000–2011 | a woman in reading glasses (on a cord by 2011), at the mat cutter, says "Arthur" four times: Jan 2001 (the two-window mat), twice in the last week (May 16 and 19, 2011: "Friday's the last day, Arthur" / "It's a good lamp, Arthur"), and once in June 2016 with Wood as a customer ("I remember everything, Arthur") |
+| **extra_owner_heceta** | Heceta Frame & Matting, 2000–2011 | a woman in reading glasses (on a cord by 2011), at the mat cutter, says "Arthur" five times: Oct 2000 (the fresh blade), Jan 2001 (the two-window mat), twice in the last week (May 16 and 19, 2011: "Friday's the last day, Arthur" / "It's a good lamp, Arthur"), and once in June 2016 with Wood as a customer ("I remember everything, Arthur") |
 | **extra_uncle** | Gully's uncle, 1998–2001 | weathered, rain hood, flat face; from July 2000 a lawn chair and an oxygen line; dead off-page Feb 2001; the chair stays |
 | **extra_maria** | Maria, from 2006 | practical; county-issue rain shell; checks the dog's leg with two fingers; the one head-shake that stops Gully; the lawn chair in 2013 with the baby; letters the 2013 crab flyer herself, five legs; says "Arthur" once (Feb 2013), flat and practical |
 | **extra_gully_kid** | Gully's daughter (b. 2010), a baby (b. 2013) | on his shoulders; a red balloon; draws a twelve-legged crab at six |
 | **extra_mother** | Wood's mother, 1998–2003 | **a hand and a voice**, never a face; sets down toast; says "Arthur" |
 | **extra_father** | Wood's father, 2005 | **a back**, in a faded mill jacket, in the coffee line, walking slowly away; never a face |
-| **extra_julian** | Julian, 2006–2021 | a parenthesis; a gray coat on a hook (2009); a pleasant printed face on a card (2011, 2016) drawn with deliberate neutrality; never on a dock |
+| **extra_julian** | Julian, 2006–2021 | a parenthesis; a gray coat on a hook (2009; on a bait hook, Mar 2013); a pleasant printed face on a card (2011, 2016) drawn with deliberate neutrality; in person once, July 2014, a pleasant shape in linen who is kind and says "Arthur" once and has read all the Sundays; never on a dock |
 | **motel_guest** | 2012 | white bathrobe, hair flat on one side |
 | **tech_guest_1 / 2** | the pavilion, 2014 | slim navy suit no tie; linen jumpsuit; cider glasses |
 | **the_editor** | 2026 | late twenties, dark green coat, tote, notebook, looking up at the boxes; unnamed |

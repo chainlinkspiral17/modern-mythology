@@ -1,0 +1,50 @@
+{
+  "id": "dw_2000-10-06_digest_cover_week_1",
+  "title": "The digest cover · the bags",
+  "strip": "drift_wood",
+  "date": "2000-10-06",
+  "run": 2,
+  "era": "era1",
+  "format": "digest_cover",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Driftwood Ledger (Arc 1, week 1)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Driftwood Ledger · deepening)",
+  "logline": "Friday's digest cover, week one: the two bags on Chloe's porch in vertical rain, no people, drawn from the street. The arc's first cover.",
+  "cast": [],
+  "location": "dw_chloe_porch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "cover",
+      "composition": "A single image: a porch four houses down, two packed bags by the door, rain in frantic vertical hatching, the street empty. Heavy black. No one.",
+      "characters": [],
+      "props": [
+        "two bags",
+        "the porch",
+        "rain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, a zine cover of two packed bags on the porch of an old wooden house in heavy vertical rain, no people, heavy black spotting, no words",
+        "negative": "",
+        "notes": "Quarter-letter digest cover. Title DRIFT WOOD lettered after. The crab in the margin, facing the bags."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Cover, week 1. The bags without her."
+}

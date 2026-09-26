@@ -1,0 +1,164 @@
+{
+  "id": "dw_2006-11-23_thanksgiving_printout",
+  "title": "Thanksgiving, the printout",
+  "strip": "drift_wood",
+  "date": "2006-11-23",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Two-Thirds",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Two-Thirds · deepening)",
+  "logline": "Thursday. Thanksgiving at Gully's. The muffler-shop printout from Wednesday is already on the corkboard, pinned by Gully, above the register, beside the 2003 rough. Wood, small, eats around it.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's, closed for the holiday, a turkey on the bait counter, two plates. GULLY carving. WOOD, small, on the stool. BARNABY under it with a leg already.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "carving",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "small",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "with a turkey leg",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a turkey on the bait counter"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with saturated neon monitor glow cutting through a dark garage, jagged hyperactive linework, muddy digital flats, a closed bait shop on Thanksgiving with a roast turkey on the counter, a man in an apron carving, a small thin man on the end stool and a dog beneath with a drumstick",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The corkboard above the register: the 2003 pencil rough, and beside it, new, a printout — the stick figure, a Boise nephew's inkjet. Pinned with a fishing hook.",
+      "characters": [],
+      "props": [
+        "the printout, pinned with a hook"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with saturated neon monitor glow cutting through a dark garage, jagged hyperactive linework, muddy digital flats, close-up of a corkboard above a shop register with a pencil sketch of a man on a ladder and beside it a fresh inkjet printout of a crude stick figure pinned with a fishing hook",
+        "negative": "",
+        "notes": "Gully's corkboard inventory: the muffler-shop printout, Nov 2006, pinned with a hook (objects.md)."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, small, looking up at it. Gully, not looking at him.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "looking up",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "not looking",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "You pinned it."
+        },
+        {
+          "who": "GULLY",
+          "text": "It's from Boise."
+        },
+        {
+          "who": "WOOD",
+          "text": "That's not a reason."
+        },
+        {
+          "who": "GULLY",
+          "text": "It's the reason I've got. Eat."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with saturated neon monitor glow cutting through a dark garage, jagged hyperactive linework, muddy digital flats, a small thin man looking up at a corkboard while a man in an apron avoids looking at him",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The two of them eating. The dog. The printout above them. The pencil rough beside it. The corkboard doesn't rank things.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "eating, small",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "eating",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the corkboard"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with saturated neon monitor glow cutting through a dark garage, jagged hyperactive linework, muddy digital flats, two men eating Thanksgiving at a shop counter with a dog beneath and a corkboard above holding both a pencil sketch and an inkjet printout of a stick figure, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "The printout on Gully's board, pinned with a hook. 'It's the reason I've got.'"
+}

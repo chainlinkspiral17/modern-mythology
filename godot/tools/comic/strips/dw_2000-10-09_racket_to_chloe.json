@@ -1,0 +1,169 @@
+{
+  "id": "dw_2000-10-09_racket_to_chloe",
+  "title": "The racket, to Chloe",
+  "strip": "drift_wood",
+  "date": "2000-10-09",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Driftwood Ledger (Arc 1, week 2)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Driftwood Ledger · deepening)",
+  "logline": "Monday. Wood gives Chloe the speech. Eight sentences about art school as a racket. She lets him finish. Then she asks what the scholarship was for. He says foam core. She says that's not what she asked.",
+  "cast": [
+    "wood_20",
+    "chloe_17",
+    "extra_owner_heceta"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The frame shop. CHLOE at the counter in a rain jacket. WOOD behind it with foam core, talking, the balloon spilling over the panel border.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "talking, the balloon spilling",
+          "expression": ""
+        },
+        {
+          "id": "chloe_17",
+          "pose": "listening",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "foam core"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "— a four-year cohort in an air-conditioned loft. Daumier didn't. Melville didn't get an MFA. It's a racket. It's a — it's a racket designed to —"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, a young man behind a frame-shop counter talking with a speech balloon that spills over the panel border, a young woman in a rain jacket listening",
+        "negative": "",
+        "notes": "The balloon breaks the border on purpose: the arc's over-talking device."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Chloe, letting him finish. The Owner at the back, not looking up, listening.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "letting him finish",
+          "expression": ""
+        },
+        {
+          "id": "extra_owner_heceta",
+          "pose": "not looking up",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, a young woman waiting for a young man to finish talking, an older woman at the back not looking up, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Chloe.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "What was the scholarship for."
+        },
+        {
+          "who": "WOOD",
+          "text": "Foam core. This. Cutting."
+        },
+        {
+          "who": "CHLOE",
+          "text": "That's not what I asked."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, a young woman asking a young man a flat question across a counter",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The shop. The two of them. The rain hatched hard in the window. The Owner's mat cutter going. Nobody answers.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "chloe_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_owner_heceta",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "rain in the window"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, a small frame shop with a young man and a young woman at the counter and an older woman at a mat cutter, heavy rain in the window, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The racket speech, delivered. 'That's not what I asked.'"
+}

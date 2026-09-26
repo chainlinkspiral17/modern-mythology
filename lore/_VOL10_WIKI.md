@@ -378,7 +378,7 @@ strip's own panel grid as the presentation. Decision reserved.
 
 ## Status
 
-A rough batch of the full run exists, deepened three times: 505 strip scripts (browse them with `godot/tools/comic/comic_inspector.py`) in
+A rough batch of the full run exists, deepened four times: 578 strip scripts (browse them with `godot/tools/comic/comic_inspector.py`) in
 `godot/tools/comic/strips/` from Drift Wood #1 (Sept 12, 1997) to
 the final ROFLCOPTER page (April 25, 2027), every year and every
 sequence represented, with the style guides in `drift_wood/style/`
