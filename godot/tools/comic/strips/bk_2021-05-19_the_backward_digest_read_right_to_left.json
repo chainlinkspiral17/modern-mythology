@@ -1,0 +1,64 @@
+{
+  "id": "bk_2021-05-19_the_backward_digest_read_right_to_left",
+  "title": "THE BACKWARD DIGEST · Read right to left",
+  "strip": "backup",
+  "series": "THE BACKWARD DIGEST",
+  "date": "2021-05-19",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "private · after the print tech's misfold of Sept 30, 1999 · Box 23 onward",
+  "arc": "THE BACKWARD DIGEST",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The walk drawn right to left: the log, the stairs, the post, the road, the alley, in that order across the page, the figures walking leftward, the margin's word on the wrong side. The reader who reads it the usual way arrives home first. The page lets them.",
+  "cast": [
+    "wood_44",
+    "barnaby_ii"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A page drawn to read right to left: five scenes across it in reverse order — a log, stairs, a post, a road, an alley — a man in plaid from behind and a small three-legged dog walking leftward through each, the margin signature placed at the bottom left instead of the right.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "walking leftward, from behind",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the walk, reversed"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a page drawn to read right to left with five scenes in a row, a log, stairs, a post, a road and an alley, a man in plaid flannel seen from behind and a small three-legged dog walking leftward through each, the signature at the bottom left",
+        "negative": "",
+        "notes": "The walk map's route (canon), reversed. The mark on the wrong side is the device."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "the private line, turned: mirrored, overlaid, folded",
+    "palette": "the private washes; the 1997 xerox black where 1997 is quoted",
+    "paper": "Arches; one page on a printed misfold"
+  },
+  "notes": "Arrives home first.",
+  "layout": "right to left"
+}

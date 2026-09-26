@@ -1,0 +1,59 @@
+{
+  "id": "bk_2001-04-16_slash_the_registration",
+  "title": "SLASH · The registration",
+  "strip": "backup",
+  "series": "SLASH",
+  "date": "2001-04-16",
+  "run": 2,
+  "era": "era1",
+  "format": "page",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Box 4B · sixty pages · never lettered for print",
+  "arc": "SLASH",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The photograph's back: a boat's registration number and a home port the framer has never heard of — GRAUSTARK, LA — in a hand that isn't the woman's. He measures the back as told and copies the number onto his cuff.",
+  "cast": [
+    "extra_framer"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Full page: the photograph's back filling the top two-thirds, a registration number and a port name in pen; below, the framer's cuff with the number copied onto it in ballpoint, the mat cutter's blade beside his wrist.",
+      "characters": [
+        {
+          "id": "extra_framer",
+          "pose": "copying onto his cuff",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the photograph's back",
+        "the mat cutter"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white noir comic page, brush-pen over blue pencil, rain as dense vertical hatching, stark black spotting, the blank back of a photograph filling most of the page with a handwritten registration number and a port name, and below it a man's shirt cuff with the same number copied in ballpoint beside a mat cutter's blade",
+        "negative": "",
+        "notes": "Graustark, LA: Vol 5's town. The page never says what it is. Letter the number after; the port name stays a shape."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; rain in frantic vertical hatching; stark spotting; Arc 1's aesthetic pushed to noir",
+    "palette": "black and white; one gray wash for the wet",
+    "paper": "bristol, sixty pages, Box 4B"
+  },
+  "notes": "A port he's never heard of.",
+  "layout": "two panels, top two-thirds and bottom third"
+}

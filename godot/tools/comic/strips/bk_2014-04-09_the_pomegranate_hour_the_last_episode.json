@@ -1,0 +1,125 @@
+{
+  "id": "bk_2014-04-09_the_pomegranate_hour_the_last_episode",
+  "title": "THE POMEGRANATE HOUR, 3 AM · The last episode",
+  "strip": "backup",
+  "series": "THE POMEGRANATE HOUR, 3 AM",
+  "date": "2014-04-09",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the motel · the lobby TV at 3 AM · recaps never run · Box 13",
+  "arc": "THE POMEGRANATE HOUR, 3 AM",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The channel gone: the lobby TV at 3 AM showing the motel's own lobby from a camera the motel doesn't have — the desk, the bell, a clerk in a maroon polo from behind — and the host's voice, drawn as a balloon from nowhere, blank. Wood turns around. The lobby is empty. He draws the screen. The recaps end.",
+  "cast": [
+    "wood_34"
+  ],
+  "location": "dw_motel_desk",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The TV: the motel's own lobby on the screen, the desk, the bell, a clerk in a maroon polo from behind.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "on the screen, from behind",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the lobby on the screen"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a lobby television showing the same motel lobby it hangs in with a clerk in a maroon polo seen from behind at the desk",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "A balloon from nowhere over the desk, blank.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "HOST",
+          "text": ""
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a motel desk with an empty speech balloon floating above it from no visible source",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD turning around in his chair. The lobby behind him empty.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "turning around",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man in a maroon polo turning around in a chair to look at an empty motel lobby",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD drawing the screen on the pad: a rectangle with a rectangle in it with a back in it.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "drawing the screen",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the pad"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man drawing on a pad a rectangle containing a smaller rectangle containing a tiny figure seen from behind",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the TV as a rounded rectangle; the host in three strokes",
+    "palette": "black ink and one spot tone: the screen's blue",
+    "paper": "the motel's pad, then bristol"
+  },
+  "notes": "The lobby on the screen from a camera the motel doesn't have. The recaps end. Three months before the pavilion.",
+  "layout": "four panels"
+}

@@ -1,0 +1,53 @@
+{
+  "id": "bk_2025-01-08_the_scumm_stick_open_box_40",
+  "title": "THE SCUMM STICK · OPEN box",
+  "strip": "backup",
+  "series": "THE SCUMM STICK",
+  "date": "2025-01-08",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "B",
+  "selection": "full",
+  "venue": "private · after the machine in the pizza window · Box 32",
+  "arc": "THE SCUMM STICK",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The garage again, the wall of boxes, one outlined — the last one — and the sentence line OPEN box, and beneath the verb bar the engine's answer drawn as a small balloon from nowhere: a blank line. The page draws the response the machine gives when a thing can't be opened yet. The box isn't numbered on this page.",
+  "cast": [],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A page in a screen's 4:3 proportion: the scene fills the top two-thirds; below it a verb bar in a monospaced hand (LOOK AT · PICK UP · TALK TO · USE · OPEN · GIVE · WALK TO) with one verb marked; beneath that an inventory strip of small drawn objects: the thermos, a coffee, the green lamp, a key. The sentence line above the verbs reads: OPEN box. Scene: the garage's wall of boxes with the last box outlined as a hotspot, and beneath the verb bar a small speech balloon from no one containing a single blank line.",
+      "characters": [],
+      "props": [
+        "the last box",
+        "a key, in the inventory",
+        "the verb bar",
+        "the inventory strip"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a page laid out like an old point-and-click adventure screen with a scene in the upper two-thirds, a row of verbs in a monospaced hand beneath it with one marked, and a strip of small drawn inventory objects along the bottom, a garage wall of numbered cardboard boxes with the last box outlined as a hotspot and a small empty speech balloon beneath the verb row, no words legible",
+        "negative": "",
+        "notes": "The engine's 'I can't open that yet.' The box is Box 40 (canon: Nov 2026). The key in the inventory: the other key (Mill)."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "the private line inside a screen's proportions; a verb bar in a monospaced hand; an inventory strip of the strip's objects",
+    "palette": "the private washes, quantized to sixteen colors",
+    "paper": "Arches cut to 4:3"
+  },
+  "notes": "Can't open that yet.",
+  "layout": "4:3 screen with verb bar and inventory"
+}

@@ -1,0 +1,140 @@
+{
+  "id": "bk_2012-06-13_the_pomegranate_hour_the_host",
+  "title": "THE POMEGRANATE HOUR, 3 AM · The host",
+  "strip": "backup",
+  "series": "THE POMEGRANATE HOUR, 3 AM",
+  "date": "2012-06-13",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the motel · the lobby TV at 3 AM · recaps never run · Box 13",
+  "arc": "THE POMEGRANATE HOUR, 3 AM",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The lobby TV at 3 AM on a channel the motel doesn't get: a woman at a table with a cassette deck, talking to the camera in a room with brass rails, and a title the strip draws as a fruit cut open. Wood draws the recap on the pad. The hum line under the panels. The host says a name the strip doesn't hear.",
+  "cast": [
+    "wood_34",
+    "extra_host"
+  ],
+  "location": "dw_motel_desk",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The motel desk at 3 AM, the lobby TV on a bracket showing a woman at a table with a cassette deck, brass rails behind her, a title card drawn as a cut fruit.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "at the desk, looking up",
+          "expression": ""
+        },
+        {
+          "id": "extra_host",
+          "pose": "on the screen",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the lobby TV",
+        "the cassette deck"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a motel night desk with a lobby television on a wall bracket showing a woman at a table with a cassette deck and brass rails behind her, a title card drawn as a cut fruit, a man in a maroon polo looking up",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The screen, close: the host pressing play. The deck's reels drawn turning.",
+      "characters": [
+        {
+          "id": "extra_host",
+          "pose": "pressing play",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the reels"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close on a television screen showing a woman pressing play on a cassette deck with its reels turning",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD drawing on the pad: the host in three strokes, the deck in two.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the pad"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man in a maroon polo drawing a quick three-stroke figure and a cassette deck on a pad",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The screen: the host listening to the tape, a balloon from the deck drawn empty.",
+      "characters": [
+        {
+          "id": "extra_host",
+          "pose": "listening",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "DECK",
+          "text": ""
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a television screen showing a woman listening to a cassette deck with an empty speech balloon rising from the deck",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the TV as a rounded rectangle; the host in three strokes",
+    "palette": "black ink and one spot tone: the screen's blue",
+    "paper": "the motel's pad, then bristol"
+  },
+  "notes": "Vol 5: Elicia Temple, the Pomegranate Hour, the cassette archive. The voice on the tape (Anya): an empty balloon. Hum line under.",
+  "layout": "four panels"
+}

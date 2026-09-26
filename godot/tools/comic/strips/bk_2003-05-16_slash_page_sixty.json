@@ -1,0 +1,70 @@
+{
+  "id": "bk_2003-05-16_slash_page_sixty",
+  "title": "SLASH · Page sixty",
+  "strip": "backup",
+  "series": "SLASH",
+  "date": "2003-05-16",
+  "run": 2,
+  "era": "era1",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Box 4B · sixty pages · never lettered for print",
+  "arc": "SLASH",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The last page drawn: the framer at the counter with a mat cut to the size of a card, empty, and the green coat's photograph gone, and the shop's owner's voice from the front saying the name. He doesn't answer to it. He puts the empty mat in a black 8×10 frame and hangs it. Box 4B closes here; the rug's corner takes the box.",
+  "cast": [
+    "extra_framer",
+    "extra_owner_heceta"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Full page: a frame shop's counter with a cream mat cut to a card-sized window with nothing in it, the framer setting it into a black frame, the owner's balloon coming from off-page, and on the wall behind, the frame hung, empty, catching the window's light.",
+      "characters": [
+        {
+          "id": "extra_framer",
+          "pose": "hanging the empty frame",
+          "expression": ""
+        },
+        {
+          "id": "extra_owner_heceta",
+          "pose": "off-page",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the empty mat",
+        "the black 8×10 frame"
+      ],
+      "balloons": [
+        {
+          "who": "OWNER",
+          "text": "Arthur? Someone here about a photo."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white noir comic page, brush-pen over blue pencil, rain as dense vertical hatching, stark black spotting, a frame shop counter with a cream mat cut to a small empty window being set into a black frame by a man, and the same frame hung on the wall behind him catching the light with nothing inside",
+        "negative": "",
+        "notes": "The 8×10 black frame from March 2001 (canon: What People Framed). SLASH's last page gives it a reason the canon never does. The unlettered name: the owner's 'Arthur' is canon's; the framer doesn't answer."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; rain in frantic vertical hatching; stark spotting; Arc 1's aesthetic pushed to noir",
+    "palette": "black and white; one gray wash for the wet",
+    "paper": "bristol, sixty pages, Box 4B"
+  },
+  "notes": "Page sixty. Box 4B closes.",
+  "layout": "single image"
+}

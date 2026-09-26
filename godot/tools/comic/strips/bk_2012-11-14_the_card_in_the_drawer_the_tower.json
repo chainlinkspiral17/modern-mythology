@@ -1,0 +1,52 @@
+{
+  "id": "bk_2012-11-14_the_card_in_the_drawer_the_tower",
+  "title": "THE CARD IN THE DRAWER · The stack",
+  "strip": "backup",
+  "series": "THE CARD IN THE DRAWER",
+  "date": "2012-11-14",
+  "run": 4,
+  "era": "era3",
+  "format": "page",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the motel · a card left in room twelve's nightstand each month by a guest never seen · Box 12",
+  "arc": "THE CARD IN THE DRAWER",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The sixth card, November: a tower struck by lightning. He redraws it as the mill's stack in 1994 with the whistle's jagged shape coming off its top instead of lightning, and two lunch pails falling. He had to invent the pails. He didn't know yet they'd be forty.",
+  "cast": [],
+  "location": "dw_cedar_mill",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A single tall card filling the page, its border drawn as the wooden edge of a motel nightstand drawer; inside the border: a brick mill stack with a jagged whistle shape bursting from its top like lightning and two lunch pails falling past it, the yard below. No numeral, no title; the card's name is the thing.",
+      "characters": [],
+      "props": [
+        "the stack",
+        "two pails, falling",
+        "the drawer-edge border"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black ink comic page with one spot tone, a single tall card filling the page with a border drawn as a wooden drawer's edge, inside it a brick mill stack with a jagged sound shape bursting from its top like a lightning strike and two lunch pails falling past it, a mill yard below, no words legible",
+        "negative": "",
+        "notes": "XVI, the Tower — the mill's stack and whistle (canon: The Mill, 1994, drawn ten years later). He invents the pails here first."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; one card per page, the card's border drawn as the motel nightstand's drawer edge",
+    "palette": "black ink and one spot tone per card",
+    "paper": "bristol, the motel's pad first, then bristol"
+  },
+  "notes": "Invents the pails first.",
+  "layout": "a single card"
+}

@@ -1,0 +1,52 @@
+{
+  "id": "bk_2012-05-09_the_card_in_the_drawer_the_hanged_man",
+  "title": "THE CARD IN THE DRAWER · The hat on the hook",
+  "strip": "backup",
+  "series": "THE CARD IN THE DRAWER",
+  "date": "2012-05-09",
+  "run": 4,
+  "era": "era3",
+  "format": "page",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the motel · a card left in room twelve's nightstand each month by a guest never seen · Box 12",
+  "arc": "THE CARD IN THE DRAWER",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The fourth card, May: a man hanging by one foot, calm. He redraws it as the tavern regular's hat on its hook by the door — the 2007 regular's, the man gone, the hat hanging by its band, calm. The card's figure is a hat. He's not sure that's allowed. He does it.",
+  "cast": [],
+  "location": "dw_tavern",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A single tall card filling the page, its border drawn as the wooden edge of a motel nightstand drawer; inside the border: a worn hat hanging by its band from a single hook on a tavern's wall beside a door, drawn upside down as if hung by one foot, the bare bulb above it. No numeral, no title; the card's name is the thing.",
+      "characters": [],
+      "props": [
+        "the hat",
+        "the hook",
+        "the drawer-edge border"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black ink comic page with one spot tone, a single tall card filling the page with a border drawn as a wooden drawer's edge, inside it a worn hat hanging by its band from a single hook on a tavern wall beside a door drawn as if suspended by one foot, a bare bulb above, no words legible",
+        "negative": "",
+        "notes": "XII, the Hanged Man — the 2007 regular's hat (canon: ro_2025-06-22, drawn there thirteen years later as the person)."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; one card per page, the card's border drawn as the motel nightstand's drawer edge",
+    "palette": "black ink and one spot tone per card",
+    "paper": "bristol, the motel's pad first, then bristol"
+  },
+  "notes": "The figure is a hat.",
+  "layout": "a single card"
+}

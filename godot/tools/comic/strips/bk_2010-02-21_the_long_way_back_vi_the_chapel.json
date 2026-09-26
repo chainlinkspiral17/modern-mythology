@@ -1,0 +1,98 @@
+{
+  "id": "bk_2010-02-21_the_long_way_back_vi_the_chapel",
+  "title": "THE LONG WAY BACK · VI · The chapel",
+  "strip": "backup",
+  "series": "THE LONG WAY BACK",
+  "date": "2010-02-21",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the sabbatical · never posted · found in Box 9",
+  "arc": "THE LONG WAY BACK",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "Stop six: a wedding chapel on 101 with a sign that promises no waiting, two cars in the lot, and through the window two people at an altar with their backs turned and a third figure between them the traveler can't make out. The card: two figures, a third above. He doesn't go in. He draws the lot.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_101",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: a roadside wedding chapel with a hand-painted sign and two cars in the lot, rain.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "in the truck",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the chapel"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small roadside wedding chapel with a hand-painted sign and two cars in a wet lot, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Road"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: through the chapel's window: two backs at an altar and a third figure between them, indistinct.",
+      "characters": [],
+      "props": [
+        "the third figure"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "through a chapel window two figures with their backs turned at an altar and a third indistinct figure between them, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Stop"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the card: two figures below, a third above with wings that might be a coat, the strip's line.",
+      "characters": [],
+      "props": [
+        "the Lovers"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small illustrated card showing two figures below and a winged or coated figure above drawn in a scratchy pen line, watercolor, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Drawer"
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the sabbatical hand, unsteady in the first stops and not by the last",
+    "palette": "watercolor; the road's grays, one color per stop",
+    "paper": "Arches, ruled for tiers and then not"
+  },
+  "notes": "VI. The Lovers (Vol 5: the Roberts house, the loom). He draws the lot.",
+  "layout": "tiers, portrait page"
+}

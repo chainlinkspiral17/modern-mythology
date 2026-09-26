@@ -1,0 +1,145 @@
+{
+  "id": "bk_1998-10-16_the_halloween_issue_the_cafeteria_at_night",
+  "title": "THE HALLOWEEN ISSUE · The cafeteria at night",
+  "strip": "backup",
+  "series": "THE HALLOWEEN ISSUE",
+  "date": "1998-10-16",
+  "run": 1,
+  "era": "era1",
+  "format": "biweekly",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the Timberline · an unpublished Halloween issue · Box 1",
+  "arc": "THE HALLOWEEN ISSUE",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "An issue that never went to the copier: the cafeteria at night, the tables up, the lunch lady's hairnet on a hook, and the tray line moving with no one at it. Wood and Gully in with a flashlight because Chloe dared them. The spotting is the horror. Two by two.",
+  "cast": [
+    "wood_17",
+    "gully_17",
+    "lunch_lady"
+  ],
+  "location": "dw_cafeteria",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The cafeteria at night, tables upended, a flashlight beam. WOOD and GULLY in the doorway.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "with a flashlight",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "behind him",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the flashlight"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "She dared us. That's not the same as us having to."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white comic panel, scratchy crow-quill and ballpoint, harsh xerox contrast, heavy black spotting, 1990s zine horror parody, two teenage boys in a dark school cafeteria doorway with a flashlight beam across upended tables",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "A hairnet on a hook by the tray line. The tray line's rollers turning with nothing on them.",
+      "characters": [],
+      "props": [
+        "the hairnet",
+        "the tray line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white comic panel, scratchy crow-quill and ballpoint, harsh xerox contrast, heavy black spotting, 1990s zine horror parody, a hairnet on a hook beside a cafeteria tray line whose rollers turn with nothing on them",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The LUNCH LADY at the far end in the dark, not moving, holding a ladle.",
+      "characters": [
+        {
+          "id": "lunch_lady",
+          "pose": "in the dark with a ladle",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a ladle"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white comic panel, scratchy crow-quill and ballpoint, harsh xerox contrast, heavy black spotting, 1990s zine horror parody, a lunch lady standing motionless at the far end of a dark cafeteria holding a ladle",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD and GULLY in the hallway, running, the flashlight beam behind them.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "running",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "running",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "LUNCH LADY",
+          "text": "Tuesday's meatloaf."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white comic panel, scratchy crow-quill and ballpoint, harsh xerox contrast, heavy black spotting, 1990s zine horror parody, two teenage boys running down a dark school hallway with a flashlight beam swinging behind them",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "scratchy crow-quill and ballpoint on cardstock, xerox; heavier spotting than the run; the horror is the spotting",
+    "palette": "black and white; the blacks blacker",
+    "paper": "cardstock; an issue that never went to the copier; Box 1"
+  },
+  "notes": "Tuesday's meatloaf. The horror is the spotting.",
+  "layout": "2x2 half-page"
+}

@@ -1,0 +1,71 @@
+{
+  "id": "bk_2003-08-03_the_sinkhole_the_diner",
+  "title": "THE SINKHOLE · The diner",
+  "strip": "backup",
+  "series": "THE SINKHOLE",
+  "date": "2003-08-03",
+  "run": 2,
+  "era": "era1",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "The Unprinted · a Sunday page from a paper he never drew for, found in Box 5 in the private years",
+  "arc": "THE SINKHOLE",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "A Sunday page in a line almost Wood's, from a Louisiana paper's Sunday section, folded in Box 5 among the unprinted: a diner late at night, a bartender behind a well, a man at Table 14 smoothing his lapels, a dog under a booth. The signature in the margin is a mark nobody at Gully's recognizes. Wood never drew it. It's in his box.",
+  "cast": [
+    "extra_lapels",
+    "extra_bartender",
+    "extra_diner_dog"
+  ],
+  "location": "bk_graustark_diner",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A full Sunday page in three tiers, black and white: a diner late at night from the door; a man at a numbered table smoothing his lapels; a dog asleep under a booth with a cassette player on the table above it. The margin's signature is a mark, not a name.",
+      "characters": [
+        {
+          "id": "extra_lapels",
+          "pose": "smoothing his lapels at Table 14",
+          "expression": ""
+        },
+        {
+          "id": "extra_bartender",
+          "pose": "behind the well",
+          "expression": ""
+        },
+        {
+          "id": "extra_diner_dog",
+          "pose": "under a booth",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "Table 14",
+        "a cassette player"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white comic page, brush-pen over blue pencil, rain as dense vertical hatching, stark black spotting, a full comic page in three tiers showing a diner late at night from the door, a man at a numbered table smoothing his lapels, and a dog asleep under a booth beneath a table with a cassette player on it, a small unreadable mark in the margin",
+        "negative": "",
+        "notes": "Vol 5: D'Ambrosio's diner, Mr. D. Dean at Table 14, Faith under the booth, Elicia's cassettes. The page is not Wood's; the line is 'almost'. Whose: reserved."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white — but the line is not quite his",
+    "palette": "black and white",
+    "paper": "newsprint, a Louisiana paper's Sunday page, folded in Box 5"
+  },
+  "notes": "Not his. In his box.",
+  "layout": "three tiers"
+}

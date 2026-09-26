@@ -1,0 +1,65 @@
+{
+  "id": "bk_2003-08-17_the_sinkhole_the_table_after",
+  "title": "THE SINKHOLE · The table, after",
+  "strip": "backup",
+  "series": "THE SINKHOLE",
+  "date": "2003-08-17",
+  "run": 2,
+  "era": "era1",
+  "format": "page",
+  "tier": "B",
+  "selection": "full",
+  "venue": "The Unprinted · a Sunday page from a paper he never drew for, found in Box 5 in the private years",
+  "arc": "THE SINKHOLE",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The third found page: the diner the morning after, Table 14 set and empty, a coffee poured for it, a bartender who has worked there since '83 not looking at it, and the dog under the booth looking at the door. The page Wood will draw with a stool and a saucer, years later, without having seen this. Or having.",
+  "cast": [
+    "extra_bartender",
+    "extra_diner_dog"
+  ],
+  "location": "bk_graustark_diner",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A full Sunday page in three tiers: a diner in morning light with one numbered table set and empty and a full coffee before its chair; a bartender behind the well wiping a glass with his back to the table; a dog under a booth looking at the door.",
+      "characters": [
+        {
+          "id": "extra_bartender",
+          "pose": "back to the table",
+          "expression": ""
+        },
+        {
+          "id": "extra_diner_dog",
+          "pose": "looking at the door",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "Table 14, set",
+        "a full coffee"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white comic page, brush-pen over blue pencil, stark black spotting, a full comic page in three tiers showing a diner in morning light with one numbered table set and empty and a full coffee before its chair, a bartender wiping a glass with his back to it, and a dog under a booth watching the door",
+        "negative": "",
+        "notes": "Vol 5: Sammy behind the well since '83. Compare canon dw_2005-07-05 (the saucer over the coffee) and ro_2021-06-09 (the coffee poured). Which came first: reserved."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white — but the line is not quite his",
+    "palette": "black and white",
+    "paper": "newsprint, a Louisiana paper's Sunday page, folded in Box 5"
+  },
+  "notes": "Or having.",
+  "layout": "three tiers"
+}

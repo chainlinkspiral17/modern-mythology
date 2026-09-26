@@ -1,0 +1,104 @@
+{
+  "id": "bk_2017-04-16_cedar_the_ring_with_the_whistle_in_it",
+  "title": "CEDAR · The ring with the whistle in it",
+  "strip": "backup",
+  "series": "CEDAR",
+  "date": "2017-04-16",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the novel of the timber country · never past the corner box · Box 14",
+  "arc": "CEDAR",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "A cedar round on a sawhorse and a man with a stethoscope to it, listening to the 1994 ring, and the page drawing what he hears: the whistle's jagged shape, tiny, curled inside that one ring like a fossil. He marks the ring with a notch. The same notch as the woman's.",
+  "cast": [
+    "extra_listener"
+  ],
+  "location": "dw_cedar_mill",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: a cedar round on a sawhorse in a yard, a man with a stethoscope pressed to its face, eyes closed.",
+      "characters": [
+        {
+          "id": "extra_listener",
+          "pose": "listening",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the stethoscope",
+        "the round"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man with a stethoscope pressed to the cut face of a cedar round on a sawhorse with his eyes closed, wet-on-wet watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Road"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the rings, close, and inside one ring a tiny jagged whistle shape curled like a fossil.",
+      "characters": [],
+      "props": [
+        "the whistle in the ring"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a cedar round's growth rings with a tiny jagged sound shape curled inside one ring like a fossil, wet-on-wet watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Stop"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the man cutting a small notch into that ring with a knife.",
+      "characters": [
+        {
+          "id": "extra_listener",
+          "pose": "notching the ring",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the notch"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man cutting a small notch into one growth ring of a cedar round with a pocketknife, wet-on-wet watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Drawer"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "cedar red, moss, fog, the glow's ochre bleeding in",
+    "paper": "Arches; the twelve Cedar Sundays' paper, used again"
+  },
+  "notes": "The same notch. The novel's one rule: the notch.",
+  "layout": "tiers, portrait page"
+}

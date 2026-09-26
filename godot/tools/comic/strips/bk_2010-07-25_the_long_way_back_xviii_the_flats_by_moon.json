@@ -1,0 +1,99 @@
+{
+  "id": "bk_2010-07-25_the_long_way_back_xviii_the_flats_by_moon",
+  "title": "THE LONG WAY BACK · XVIII · The flats by moon",
+  "strip": "backup",
+  "series": "THE LONG WAY BACK",
+  "date": "2010-07-25",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the sabbatical · never posted · found in Box 9",
+  "arc": "THE LONG WAY BACK",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "Stop eighteen: a bay at night under a full moon with two dogs on the flats, one his and one not, howling at nothing, and a crab climbing out of a channel between them. The card: a moon, two dogs, a crab. The traveler has drawn this card before without knowing it was one.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_mudflats",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: mudflats at night under a full moon, two dogs far apart with their heads up, a channel between them.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "head up",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the moon",
+        "a second dog"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "tidal mudflats at night under a full moon with two dogs far apart with their heads raised and a channel between them, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Road"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the channel, close: a crab climbing out onto the mud.",
+      "characters": [],
+      "props": [
+        "a crab"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a tidal channel at night with a crab climbing out onto the mud in moonlight, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Stop"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the card: a moon between two towers, two dogs, a crab at the bottom climbing from water, the strip's line.",
+      "characters": [],
+      "props": [
+        "the Moon"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small illustrated card showing a moon between two towers with two dogs below and a crab climbing from water at the bottom drawn in a scratchy pen line, watercolor, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Drawer"
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the sabbatical hand, unsteady in the first stops and not by the last",
+    "palette": "watercolor; the road's grays, one color per stop",
+    "paper": "Arches, ruled for tiers and then not"
+  },
+  "notes": "XVIII. The Moon. The crab flyer's crab, the strip's dog, the flats: he'd drawn the card for twelve years.",
+  "layout": "tiers, portrait page"
+}

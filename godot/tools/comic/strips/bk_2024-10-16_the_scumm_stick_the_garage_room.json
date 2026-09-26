@@ -1,0 +1,61 @@
+{
+  "id": "bk_2024-10-16_the_scumm_stick_the_garage_room",
+  "title": "THE SCUMM STICK · The garage (room 1)",
+  "strip": "backup",
+  "series": "THE SCUMM STICK",
+  "date": "2024-10-16",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "private · after the machine in the pizza window · Box 32",
+  "arc": "THE SCUMM STICK",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The garage as the first room of an adventure that doesn't exist: the lamp, the boxes, the door, the pup's bed, each drawn as a hotspot with a faint outline. The verb marked is LOOK AT. The sentence line: LOOK AT lamp. The inventory strip holds nothing yet. The page is a screen; the screen is a page.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A page in a screen's 4:3 proportion: the scene fills the top two-thirds; below it a verb bar in a monospaced hand (LOOK AT · PICK UP · TALK TO · USE · OPEN · GIVE · WALK TO) with one verb marked; beneath that an inventory strip of small drawn objects: (empty). The sentence line above the verbs reads: LOOK AT lamp. Scene: the garage from the doorway with the drafting table, the green lamp, the wall of boxes, the pup's bed by the door and the casement window, each object with a faint hotspot outline.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "in the bed, a hotspot",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the lamp",
+        "the boxes",
+        "the verb bar",
+        "the inventory strip"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a page laid out like an old point-and-click adventure screen with a scene in the upper two-thirds, a row of verbs in a monospaced hand beneath it with one marked, and a strip of small drawn inventory objects along the bottom, a garage studio with a drafting table, a green lamp, a wall of numbered boxes and a small three-legged dog in a bed, each object faintly outlined as a hotspot, no words legible",
+        "negative": "",
+        "notes": "Vol 7: the SCUMM Machine (Sal's; Kai's). The verbs are the old engine's. The page never explains the form."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "the private line inside a screen's proportions; a verb bar in a monospaced hand; an inventory strip of the strip's objects",
+    "palette": "the private washes, quantized to sixteen colors",
+    "paper": "Arches cut to 4:3"
+  },
+  "notes": "LOOK AT lamp.",
+  "layout": "4:3 screen with verb bar and inventory"
+}

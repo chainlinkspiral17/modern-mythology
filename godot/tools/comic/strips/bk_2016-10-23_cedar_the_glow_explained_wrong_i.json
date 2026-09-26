@@ -1,0 +1,97 @@
+{
+  "id": "bk_2016-10-23_cedar_the_glow_explained_wrong_i",
+  "title": "CEDAR · The glow, explained wrong · I",
+  "strip": "backup",
+  "series": "CEDAR",
+  "date": "2016-10-23",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the novel of the timber country · never past the corner box · Box 14",
+  "arc": "CEDAR",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The first of three explanations, each given by someone sure: a logger says it's the slash pile they never put out in 1994, burning underground still. The page draws the slash pile burning under the ridge like a coal under ash, and the logger's certainty, and doesn't say it's wrong. The next page will.",
+  "cast": [
+    "extra_logger"
+  ],
+  "location": "dw_the_ridge",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: a logger at a tailgate pointing up at the ridge with a coffee, certain.",
+      "characters": [
+        {
+          "id": "extra_logger",
+          "pose": "pointing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a coffee"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a logger at a pickup's tailgate pointing up at a wooded ridge with a coffee in his other hand, wet-on-wet watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Road"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the ridge cut away like a diagram: under the trees a slash pile burning red under ash, roots above it.",
+      "characters": [],
+      "props": [
+        "the buried fire"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wooded ridge drawn in cutaway with a pile of brush burning red beneath ash under the tree roots, wet-on-wet watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Stop"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the ridge from town at night with the glow over it, the same as always.",
+      "characters": [],
+      "props": [
+        "the glow"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wooded ridge beyond a small town at night with a warm glow above it, wet-on-wet watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Drawer"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "cedar red, moss, fog, the glow's ochre bleeding in",
+    "paper": "Arches; the twelve Cedar Sundays' paper, used again"
+  },
+  "notes": "I: the slash pile of 1994. Certain. Wrong.",
+  "layout": "tiers, portrait page"
+}

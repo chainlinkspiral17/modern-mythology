@@ -1,0 +1,122 @@
+{
+  "id": "bk_2006-11-01_rust_code_bbs_sixty_four",
+  "title": "RUST_CODE.BBS · Sixty-four",
+  "strip": "backup",
+  "series": "RUST_CODE.BBS",
+  "date": "2006-11-01",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site · drawn during Message Boards · never posted",
+  "arc": "RUST_CODE.BBS",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The banner's number goes down by one every night the strip looks — 64, 63, 62 — and the chorus on the desk is one fewer each morning. The strip counts what it can see: four, then three. The strip doesn't say where they go. The dog looks under the desk.",
+  "cast": [
+    "wood_26",
+    "extra_stick_chorus",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The banner: the number's last digit drawn as one shape less than before.",
+      "characters": [],
+      "props": [
+        "the number, down one"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close on a green block banner on a screen with a two-digit number whose last shape has changed",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The desk: three stick figures where there were four.",
+      "characters": [
+        {
+          "id": "extra_stick_chorus",
+          "pose": "three",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, three tiny stick figures on a desk with an empty space where a fourth stood",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "BARNABY looking under the desk.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "looking under the desk",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a dog peering under a desk",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD writing the count on a scrap: two shapes, then two shapes, then two shapes, each one less.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "writing counts",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a scrap of counts"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man writing a column of two-digit counts on a scrap of paper each one less than the last",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "digitized brush-pen on bristol; the stick figures in ballpoint; the screen as a gray rectangle with a banner in it",
+    "palette": "muddy early-digital flats; the screen's phosphor green, once",
+    "paper": "bristol scanned; never posted"
+  },
+  "notes": "ACTIVE NODES going down. Where they go: not said.",
+  "layout": "four panels"
+}

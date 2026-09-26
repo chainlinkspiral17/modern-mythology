@@ -1,0 +1,101 @@
+{
+  "id": "bk_2010-09-26_the_long_way_back_xxi_the_town_again",
+  "title": "THE LONG WAY BACK · XXI · The town, again",
+  "strip": "backup",
+  "series": "THE LONG WAY BACK",
+  "date": "2010-09-26",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the sabbatical · never posted · found in Box 9",
+  "arc": "THE LONG WAY BACK",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "Stop twenty-one: Small Wood from the road in, the same view as stop zero from the other direction, the dog asleep, the last motel's drawer holding the last card — a figure inside a wreath, the four corners of the world in the strip's line: a gull, a crab, a dog, a stick figure. He tears the card in half and keeps both halves. A week later he's back in the paper.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_101",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: 101 north into town at dusk, the town ahead, the Datsun's hood, the dog asleep on the seat.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "driving",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a coastal highway at dusk from behind a pickup's hood with a small town ahead and a dog asleep on the seat, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Road"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the last card: a figure in a wreath with four small figures at the corners — a gull, a crab, a dog, a stick figure — the strip's line.",
+      "characters": [],
+      "props": [
+        "the World"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small illustrated card showing a figure inside a wreath with four small figures at the corners, a gull, a crab, a dog and a stick figure, drawn in a scratchy pen line, watercolor, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Stop"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the card torn in half on the nightstand, both halves kept, the pen beside them.",
+      "characters": [],
+      "props": [
+        "the card, torn"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an illustrated card torn in half on a motel nightstand with both halves laid side by side and a pen beside them, watercolor, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Drawer"
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the sabbatical hand, unsteady in the first stops and not by the last",
+    "palette": "watercolor; the road's grays, one color per stop",
+    "paper": "Arches, ruled for tiers and then not"
+  },
+  "notes": "XXI. The World. The four corners are the strip's marks. Torn; both halves kept. Return is Oct 4, 2010.",
+  "layout": "tiers, portrait page"
+}

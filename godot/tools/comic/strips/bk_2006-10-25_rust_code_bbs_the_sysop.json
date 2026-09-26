@@ -1,0 +1,119 @@
+{
+  "id": "bk_2006-10-25_rust_code_bbs_the_sysop",
+  "title": "RUST_CODE.BBS · The sysop",
+  "strip": "backup",
+  "series": "RUST_CODE.BBS",
+  "date": "2006-10-25",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site · drawn during Message Boards · never posted",
+  "arc": "RUST_CODE.BBS",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "A message on the board addressed to the strip: the sender's handle is the wandering one's, and the message is four lines of blocks and one legible word — the town's name, spelled the old way, the way the road sign spelled it before the county fixed it. Wood turns the monitor off. The chorus stays lit.",
+  "cast": [
+    "wood_26",
+    "extra_stick_chorus"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The screen: a message in green blocks, four lines, and one word legible in the last line.",
+      "characters": [],
+      "props": [
+        "the message"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a computer screen with four lines of green blocks and one legible-looking word in the last line drawn as a shape",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The wandering stick figure on the desk, looking up at its own handle on the screen.",
+      "characters": [
+        {
+          "id": "extra_stick_chorus",
+          "pose": "the wanderer, looking up",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a tiny stick figure on a desk looking up at a green word on a screen above it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD reaching for the monitor's switch.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "reaching for the switch",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man reaching for the power switch of a computer monitor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The monitor dark. The four stick figures on the desk faintly green in the dark.",
+      "characters": [
+        {
+          "id": "extra_stick_chorus",
+          "pose": "faintly green",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a dark computer monitor with four tiny stick figures on the desk before it glowing faintly green",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "digitized brush-pen on bristol; the stick figures in ballpoint; the screen as a gray rectangle with a banner in it",
+    "palette": "muddy early-digital flats; the screen's phosphor green, once",
+    "paper": "bristol scanned; never posted"
+  },
+  "notes": "The word: Smolvud, the old spelling (Vol 7's town = Small Wood). As a shape. The chorus stays lit.",
+  "layout": "four panels"
+}
