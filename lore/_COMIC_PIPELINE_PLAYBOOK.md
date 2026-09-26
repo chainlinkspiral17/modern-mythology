@@ -114,6 +114,32 @@ a page says "fifty" check it against the year first.
 
 ## Recent lessons
 
+### 2026-09-26 · Deepening xv · the unsequenced pages reach their share · 1,168 → 1,219
+
+Fifty-one unsequenced private pages, seven a year, on free Wednesdays and
+Sundays. The private volume's unsequenced count is now 242 against the
+catalogue's ~240; every sequence but The Bird and The Mill (38 and 34 of
+40) is at or past its share. The corkboard drift check ran as a standard
+post-check and flagged one false positive (the Florence weekly on
+Gully's counter), which is the check working.
+
+- **Pick dates from a computed free list, not from memory.** A one-line
+  script printing the free Wednesdays and Sundays per year makes the
+  date choice mechanical and the collision check redundant; the batch
+  passed first time.
+- **The small objects carry the years better than the people.** The rain
+  gauge (three Januaries, its number never lettered), the thermos, the
+  worn rail, the cracked seat, the pen's wear in three places twice, the
+  blanket's corner becoming a hole. Each one is a clock the reader can
+  read without a caption, which is what the private pages are for.
+- **Every "three" has its two on the page.** Three coffee cans (2020,
+  2025, 2026), the flag up three times, three Januaries of the gauge,
+  the third mailbox flag with the envelope's corner. The compare note
+  lists the earlier pages so the count is checkable.
+- **The volume's end is a hard edge.** The book ends April 25, 2027; the
+  free-date list after that is not free, it is after the book. No page is
+  dated past the final page, whatever the boxes hold.
+
 ### 2026-09-26 · Deepening xiv · the missing public fixtures; two corkboards · 1,090 → 1,168
 
 Eleven public fixtures the year-by-fixture table showed missing (Last

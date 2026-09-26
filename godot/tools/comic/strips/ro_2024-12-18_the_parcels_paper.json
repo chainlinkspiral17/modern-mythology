@@ -1,0 +1,50 @@
+{
+  "id": "ro_2024-12-18_the_parcels_paper",
+  "title": "The parcel's paper",
+  "strip": "roflcopter",
+  "date": "2024-12-18",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xv)",
+  "logline": "Brown paper folded square on the drafting table, the string wound neatly beside it, and what was in it not on the page. A parcel came; the page keeps the wrapping and reserves the gift.",
+  "cast": [],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A square of folded brown paper on a drafting table with a length of string wound neatly beside it, the lamp, nothing else on the table.",
+      "characters": [],
+      "props": [
+        "the folded paper",
+        "the string"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a square of folded brown paper on a drafting table with a length of string wound neatly beside it under a lamp, nothing else on the table, no words",
+        "negative": "",
+        "notes": "Contents reserved. A second parcel comes at ro_2025-11-23."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The wrapping kept; the gift reserved.",
+  "layout": "single page, no borders"
+}

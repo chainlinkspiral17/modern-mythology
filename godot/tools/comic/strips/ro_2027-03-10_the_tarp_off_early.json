@@ -1,0 +1,49 @@
+{
+  "id": "ro_2027-03-10_the_tarp_off_early",
+  "title": "The tarp, off early",
+  "strip": "roflcopter",
+  "date": "2027-03-10",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xv)",
+  "logline": "The lawn chair's tarp off in March, a month early, folded with its stone, and the chair not yet moved to the dock's end. Three weeks before it is. The page prepares the chair without knowing for what.",
+  "cast": [],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "An old lawn chair on a dock in March with a folded blue tarp and a stone beside it, the chair still in its place by the shingle shack, gray light.",
+      "characters": [],
+      "props": [
+        "the tarp, off early"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, an old lawn chair on a wooden dock in March with a folded blue tarp and a stone beside it, the chair still beside a shingle shack, gray light, no people, no words",
+        "negative": "",
+        "notes": "Compare ro_2027-04-01."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Prepared without knowing for what.",
+  "layout": "single page, no borders"
+}

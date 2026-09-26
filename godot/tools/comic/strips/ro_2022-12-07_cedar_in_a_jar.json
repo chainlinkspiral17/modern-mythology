@@ -1,0 +1,50 @@
+{
+  "id": "ro_2022-12-07_cedar_in_a_jar",
+  "title": "Cedar in a jar",
+  "strip": "roflcopter",
+  "date": "2022-12-07",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xv)",
+  "logline": "The garage's Christmas: a sprig of cedar in the fourth jar on the sill, water in it, the rain outside. No tree, no lights. The page's whole December in a jar the nib usually lives in.",
+  "cast": [],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A garage window sill in December rain with three jars and a fourth holding a sprig of cedar in water, the chewed nib handle set beside it on the sill.",
+      "characters": [],
+      "props": [
+        "cedar in a jar",
+        "the nib, set aside"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a garage window sill in December rain with three jars and a fourth holding a sprig of cedar in water, a small chewed wooden pen handle set beside it, no words",
+        "negative": "",
+        "notes": "The nib's jar (ro_2023-01-08) borrowed for a month."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "December in a jar.",
+  "layout": "single page, no borders"
+}

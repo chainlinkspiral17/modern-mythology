@@ -1,0 +1,57 @@
+{
+  "id": "ro_2025-12-31_the_last_night_of_2025",
+  "title": "The last night of 2025",
+  "strip": "roflcopter",
+  "date": "2025-12-31",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xv)",
+  "logline": "The garage on the last night of the year: the lamp unlit, the boxes to thirty-five, the pup in the bed by the door, the window with a firework's white from the dock in it. One more year of pages; the page knows and the boxes don't.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The garage at night with an unlit lamp on the drafting table, a wall of numbered boxes ending at thirty-five, an old three-legged dog in a bed by the door, and a small window holding a firework's white flash.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "in the bed by the door",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "boxes to 35"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a garage studio at night with an unlit lamp on a drafting table, a wall of numbered cardboard boxes and an old three-legged dog in a bed by the door, a small window holding a firework's white flash, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "One more year of pages.",
+  "layout": "single page, no borders"
+}
