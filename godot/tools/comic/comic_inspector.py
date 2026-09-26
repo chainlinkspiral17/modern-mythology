@@ -25,6 +25,7 @@ before. Nothing here talks to the network itself; the subprocess does.
 """
 import argparse
 import json
+import re
 import mimetypes
 import os
 import subprocess
@@ -76,10 +77,7 @@ def _renders_index():
         for png in sorted(d.glob("*.png")):
             if png.name in seen:
                 continue
-            slug = png.stem
-            for suf in ("_v1", "_v2", "_v3", "_v4", "_v5", "_v6", "_v7", "_v8", "_v9"):
-                if slug.endswith(suf):
-                    slug = slug[: -len(suf)]
+            slug = re.sub(r"(_v\d+)?(_t\d+)?$", "", png.stem)
             idx.setdefault(slug, []).append({"slug": slug, "file": str(png.relative_to(REPO)), "provider": prov, "provider_dir": prov,
                                              "exists": True, "url": f"/asset/{prov}/{png.name}", "rendered_at": time.strftime("%Y-%m-%dT%H:%M:%S", time.localtime(png.stat().st_mtime)), "prompt": ""})
     return idx
@@ -158,6 +156,11 @@ def api_refs():
         d["url"] = _ref_url(r)
         out.append(d)
     return {"policy": refs.get("policy", {}), "references": out}
+
+
+def api_models():
+    import comic_render as cr
+    return {"models": cr.MODELS}
 
 
 def api_keys():
@@ -308,6 +311,8 @@ class H(BaseHTTPRequestHandler):
                 return self._send(200, api_refs())
             if path == "/api/keys":
                 return self._send(200, api_keys())
+            if path == "/api/models":
+                return self._send(200, api_models())
             if path == "/api/jobs":
                 return self._send(200, api_jobs())
             if path.startswith("/asset/"):
@@ -419,7 +424,7 @@ kbd{border:1px solid var(--rule);padding:0 4px;color:var(--dim)}
 <div id="lightbox"><img id="lbimg"></div>
 <script>
 const $=s=>document.querySelector(s);const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-let MODE='strips',STRIPS=[],SHEETS=[],REFS=null,SEL=null,TAB='sheet',KEYS={},VIEW=[];
+let MODE='strips',STRIPS=[],SHEETS=[],REFS=null,SEL=null,TAB='sheet',KEYS={},VIEW=[],MODELS={runway:[],google:[]};
 const api=(p,o)=>fetch(p,o).then(r=>r.json());
 function md(src){const L=src.split('\n'),out=[];let i=0,inT=false;while(i<L.length){let l=L[i];
  if(l.startsWith('|')){const rows=[];while(i<L.length&&L[i].startsWith('|')){rows.push(L[i]);i++;}const cells=r=>r.replace(/^\||\|$/g,'').split('|').map(c=>inl(c.trim()));
@@ -434,7 +439,7 @@ function md(src){const L=src.split('\n'),out=[];let i=0,inT=false;while(i<L.leng
  const p=[];while(i<L.length&&L[i].trim()!==''&&!/^(#|\||```|> |\s*[-*]\s|---)/.test(L[i])){p.push(L[i]);i++;}out.push('<p>'+inl(p.join(' '))+'</p>');}
  return out.join('\n');}
 function inl(s){return esc(s).replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>').replace(/\*([^*]+)\*/g,'<i>$1</i>').replace(/\[([^\]]+)\]\(([^)]+)\)/g,'$1');}
-async function loadKeys(){KEYS=await api('/api/keys');$('#keys').innerHTML=`keys · runway ${KEYS.runway?'<b>found</b>':'<s>none</s>'} · google ${KEYS.google?'<b>found</b>':'<s>none</s>'}`;}
+async function loadKeys(){KEYS=await api('/api/keys');try{MODELS=(await api('/api/models')).models;}catch(e){}$('#keys').innerHTML=`keys · runway ${KEYS.runway?'<b>found</b>':'<s>none</s>'} · google ${KEYS.google?'<b>found</b>':'<s>none</s>'}`;}
 async function loadStrips(){const d=await api('/api/strips');STRIPS=d.strips;const ys=[...new Set(STRIPS.map(s=>s.date.slice(0,4)))];$('#f-year').innerHTML='<option value="">year</option>'+ys.map(y=>`<option>${y}</option>`).join('');render();}
 async function loadSheets(){SHEETS=(await api('/api/sheets')).sheets;render();}
 async function loadRefs(){REFS=await api('/api/refs');render();}
@@ -455,16 +460,20 @@ async function open(id){SEL=id;render();const el=$('#detail');el.innerHTML='<p c
  if(MODE==='strips'){const d=await api('/api/strip?id='+encodeURIComponent(id));if(d.error){el.innerHTML='<p class="empty">'+esc(d.error)+'</p>';return;}renderStrip(d);}
  else if(MODE==='sheets'){renderSheet(SHEETS.find(s=>s.id===id));}
  else if(MODE==='refs'){renderRef(REFS.references.find(r=>r.id===id));}}
-function genForm(kind,id,fmt){const mdl=`<label>model <select id="g-model"><option value="">default</option><option>gemini-2.5-flash-image</option><option>imagen-4.0-generate-001</option></select></label>`;
- return `<div class="gen"><label>provider <select id="g-prov"><option value="runway" ${KEYS.runway?'':'disabled'}>runway${KEYS.runway?'':' (no key)'}</option><option value="google" ${KEYS.google?'':'disabled'} ${!KEYS.runway&&KEYS.google?'selected':''}>google${KEYS.google?'':' (no key)'}</option></select></label>
- ${mdl}<label>variants <input type="number" id="g-var" min="1" max="6" value="1"></label><label>seed <input type="number" id="g-seed" placeholder="random"></label>
+function modelOptions(prov){const ms=MODELS[prov]||[];return '<option value="">default ('+(ms[0]?ms[0].id:'provider default')+')</option>'+ms.map(m=>`<option value="${m.id}" title="${esc(m.note)}">${esc(m.label)}${m.verified?'':' · unverified id'}</option>`).join('')+'<option value="__custom">other id…</option>';}
+function onProv(){const p=$('#g-prov').value;$('#g-model').innerHTML=modelOptions(p);$('#g-custom').style.display='none';onModel();}
+function onModel(){const v=$('#g-model').value;$('#g-custom').style.display=v==='__custom'?'inline-block':'none';const p=$('#g-prov').value;const m=(MODELS[p]||[]).find(x=>x.id===v);$('#g-note').textContent=m?m.note:(v==='__custom'?'type the exact id from the provider\'s docs; it is passed through unchanged':'');}
+function genForm(kind,id,fmt){const prov=KEYS.runway?'runway':'google';
+ return `<div class="gen"><label>provider <select id="g-prov" onchange="onProv()"><option value="runway" ${KEYS.runway?'':'disabled'} ${prov==='runway'?'selected':''}>runway${KEYS.runway?'':' (no key)'}</option><option value="google" ${KEYS.google?'':'disabled'} ${prov==='google'?'selected':''}>google${KEYS.google?'':' (no key)'}</option></select></label>
+ <label>model <select id="g-model" onchange="onModel()">${modelOptions(prov)}</select><input type="text" id="g-custom" placeholder="exact model id" style="display:none;width:200px"></label>
+ <label>variants <input type="number" id="g-var" min="1" max="6" value="1"></label><label>seed <input type="number" id="g-seed" placeholder="random"></label>
  ${kind==='strip'?`<label><input type="checkbox" id="g-letter" checked> letter balloons</label><label><input type="checkbox" id="g-refs" checked> attach references</label><label><input type="checkbox" id="g-draft"> allow draft refs</label>`:''}
- <label><input type="checkbox" id="g-over"> overwrite</label><label><input type="checkbox" id="g-dry"> dry run</label>
- <button class="go" id="g-go" onclick="generate('${kind}','${id}')">GENERATE</button><span class="empty" id="g-msg"></span></div>`;}
-async function generate(kind,id){const b={kind,id,provider:$('#g-prov').value,model:$('#g-model').value,variants:+$('#g-var').value,seed:$('#g-seed').value,overwrite:$('#g-over').checked,dry_run:$('#g-dry').checked};
+ <label><input type="checkbox" id="g-over"> replace take 1 (else: new take)</label><label><input type="checkbox" id="g-dry"> dry run</label>
+ <button class="go" id="g-go" onclick="generate('${kind}','${id}')">GENERATE</button><span class="empty" id="g-msg"></span><div class="empty" id="g-note" style="grid-column:1/-1"></div></div>`;}
+async function generate(kind,id){let model=$('#g-model').value;if(model==='__custom')model=$('#g-custom').value.trim();const b={kind,id,provider:$('#g-prov').value,model,variants:+$('#g-var').value,seed:$('#g-seed').value,overwrite:$('#g-over').checked,dry_run:$('#g-dry').checked};
  if(kind==='strip'){b.letter=$('#g-letter').checked;b.refs=$('#g-refs').checked;b.include_draft=$('#g-draft').checked;}
  $('#g-go').disabled=true;const r=await api('/api/generate',{method:'POST',body:JSON.stringify(b)});$('#g-go').disabled=false;
- $('#g-msg').textContent=r.error?('✗ '+r.error):'queued → JOBS';if(!r.error)watch(r.job.id,()=>{if(SEL===id)open(id);if(MODE==='strips')loadStrips();else loadSheets();});}
+ $('#g-msg').textContent=r.error?('✗ '+r.error):'queued → JOBS · every run is a new take';if(!r.error)watch(r.job.id,()=>{if(SEL===id)open(id);if(MODE==='strips')loadStrips();else loadSheets();});}
 function watch(jid,done){const t=setInterval(async()=>{const j=(await api('/api/jobs')).jobs.find(x=>x.id===jid);if(!j)return clearInterval(t);const m=$('#g-msg');if(m)m.textContent=`${j.status} · ${j.log.slice(-1)[0]||''}`;if(j.status==='done'||j.status==='failed'){clearInterval(t);done&&done();}},2000);}
 function gallery(rs){if(!rs.length)return '<p class="empty">no renders on disk yet</p>';return '<div class="gal">'+rs.map(r=>`<div class="card ${r.exists?'':'missing'}">${r.exists?`<img src="${r.url}" onclick="lb('${r.url}')">`:'<div class="empty">file not on disk (see manifest / fetch_concept.py)</div>'}<div class="cap"><b>${esc(r.provider||r.provider_dir)}${r.model?' · '+esc(r.model):''}${r.seed!=null?' · seed '+r.seed:''}</b><span>${esc((r.rendered_at||'').slice(0,16))}</span></div><div class="cap"><span>${esc(r.file||'')}</span></div></div>`).join('')+'</div>';}
 function lb(u){$('#lbimg').src=u;$('#lightbox').style.display='flex';}$('#lightbox').onclick=()=>$('#lightbox').style.display='none';

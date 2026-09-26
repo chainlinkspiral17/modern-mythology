@@ -8,12 +8,19 @@ godot/assets/comic/vol10/<provider>/<slug>.png. Mirrors runway_render.py's
 conventions (stdlib only, key from env or key file, --dry-run, --only).
 
 Providers:
-  runway   Runway text_to_image (gen4_image). Key: RUNWAYML_API_KEY or
-           godot/tools/.runway_key (same file runway_render.py uses).
-  google   Google Imagen via the Gemini API (imagen-4.0-generate-001 by
-           default; --model gemini-2.5-flash-image switches to the Gemini
-           image model, which letters text more reliably). Key:
-           GOOGLE_API_KEY / GEMINI_API_KEY or godot/tools/.google_key.
+  runway   Runway dev API text_to_image. --model picks the model (gen4_image
+           by default; gen4_image_turbo, gemini_2.5_flash, or any id Runway
+           lists today — unknown ids are passed through). Key:
+           RUNWAYML_API_KEY or godot/tools/.runway_key.
+  google   Google Gemini API. --model imagen-4.0-generate-001 (default),
+           imagen-4.0-ultra-generate-001, imagen-4.0-fast-generate-001,
+           gemini-2.5-flash-image (letters text; takes references), or any
+           id. Key: GOOGLE_API_KEY / GEMINI_API_KEY or godot/tools/.google_key.
+
+  --list-models prints what the runner knows. Every run is a NEW TAKE:
+  an existing file is never skipped or overwritten; the next _t2, _t3…
+  is written (use --take skip for the old behaviour, --overwrite to
+  replace).
 
 Usage:
   python3 godot/tools/comic/comic_render.py --provider runway
@@ -48,6 +55,33 @@ DEFAULT_QUEUE = HERE / "out" / "strip_prompts.json"
 RUNWAY_BASE = "https://api.dev.runwayml.com/v1"
 RUNWAY_API_VERSION = "2024-11-06"
 RUNWAY_MODEL = "gen4_image"
+
+# Models the runners know about. `--model` accepts ANY id, known or not — the
+# id is passed straight through to the provider, so a model Runway or Google
+# added after this file was written works without editing it; `known` here
+# only drives the inspector's menu and the notes. Runway's dev API and its
+# MCP use different ids for the same models (the MCP's nano-banana-pro is the
+# dev API's gemini_2.5_flash family); the dev-API ids are the ones this
+# runner sends. Check https://docs.dev.runwayml.com for the current list.
+MODELS = {
+    "runway": [
+        {"id": "gen4_image", "label": "Gen-4 Image", "note": "Runway's own; up to 3 reference images with @tags; pixel ratios", "verified": True},
+        {"id": "gen4_image_turbo", "label": "Gen-4 Image Turbo", "note": "faster/cheaper Gen-4; needs at least one reference image", "verified": True},
+        {"id": "gemini_2.5_flash", "label": "Gemini 2.5 Flash Image (nano banana)", "note": "letters text well; references as @tags", "verified": True},
+        {"id": "gemini_3_pro", "label": "Gemini 3 Pro Image (nano banana pro)", "note": "the concept run's model via the MCP; dev-API id may differ — edit if the API 400s", "verified": False},
+        {"id": "gpt_image_2", "label": "GPT Image 2", "note": "strong lettering and layout; id as listed by the MCP, unverified on the dev API", "verified": False},
+        {"id": "seedream_5", "label": "Seedream 5", "note": "unverified id", "verified": False},
+        {"id": "ideogram_4", "label": "Ideogram 4", "note": "typography-first; unverified id", "verified": False},
+        {"id": "flux_2", "label": "FLUX 2", "note": "unverified id", "verified": False},
+    ],
+    "google": [
+        {"id": "imagen-4.0-generate-001", "label": "Imagen 4", "note": "no reference images; negative prompt supported", "verified": True},
+        {"id": "imagen-4.0-ultra-generate-001", "label": "Imagen 4 Ultra", "note": "higher fidelity, slower", "verified": True},
+        {"id": "imagen-4.0-fast-generate-001", "label": "Imagen 4 Fast", "note": "cheap drafts", "verified": True},
+        {"id": "gemini-2.5-flash-image", "label": "Gemini 2.5 Flash Image", "note": "letters text reliably; takes reference images inline", "verified": True},
+        {"id": "gemini-3-pro-image-preview", "label": "Gemini 3 Pro Image (preview)", "note": "unverified id; try it", "verified": False},
+    ],
+}
 RUNWAY_RATIOS = {"1920:1080", "1080:1920", "1024:1024", "1360:768", "1080:1080", "1168:880",
                  "1440:1080", "1080:1440", "1808:768", "2112:912", "1280:720", "720:1280",
                  "720:720", "960:720", "720:960", "1680:720"}
@@ -128,11 +162,11 @@ def _ref_inline_parts(job, limit=4):
 
 # ── runway ───────────────────────────────────────────────────────────────
 
-def runway_generate(job, key, seed=None):
+def runway_generate(job, key, model=RUNWAY_MODEL, seed=None):
     ratio = job.get("runway_ratio", "1920:1080")
-    if ratio not in RUNWAY_RATIOS:
-        ratio = "1920:1080"
-    body = {"model": RUNWAY_MODEL, "promptText": job["prompt"][:1000], "ratio": ratio}
+    if ratio not in RUNWAY_RATIOS and model.startswith("gen4"):
+        ratio = "1920:1080"  # gen4 has a fixed ratio set; other models get the strip's ratio as-is
+    body = {"model": model, "promptText": job["prompt"][:1000], "ratio": ratio}
     if seed is not None:
         body["seed"] = int(seed)
     ref_payload = _ref_uris(job, limit=3)
@@ -141,7 +175,7 @@ def runway_generate(job, key, seed=None):
     h = {"Authorization": f"Bearer {key}", "X-Runway-Version": RUNWAY_API_VERSION}
     st, raw = _http(f"{RUNWAY_BASE}/text_to_image", "POST", h, body)
     if st not in (200, 201):
-        raise RuntimeError(f"runway submit {st}: {raw[:400]!r}")
+        raise RuntimeError(f"runway submit {st} (model {model}): {raw[:400]!r}")
     task_id = json.loads(raw)["id"]
     t0 = time.time()
     while time.time() - t0 < POLL_TIMEOUT:
@@ -157,7 +191,7 @@ def runway_generate(job, key, seed=None):
             st, img = _http(url, "GET", {}, None, timeout=300)
             if st != 200:
                 raise RuntimeError(f"runway download {st}")
-            return img, {"task_id": task_id, "ratio": ratio, "model": RUNWAY_MODEL}
+            return img, {"task_id": task_id, "ratio": ratio, "model": model}
     raise RuntimeError("runway poll timeout")
 
 
@@ -209,9 +243,11 @@ def google_generate(job, key, model, seed=None):
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--provider", choices=["runway", "google"], required=True)
+    ap.add_argument("--provider", choices=["runway", "google"], help="required unless --list-models")
     ap.add_argument("--queue", default=str(DEFAULT_QUEUE))
-    ap.add_argument("--model", help="google: imagen-4.0-generate-001 (default) or gemini-2.5-flash-image")
+    ap.add_argument("--model", help="model id for either provider; any id is passed through (see --list-models)")
+    ap.add_argument("--list-models", action="store_true", help="print the known model ids per provider and exit")
+    ap.add_argument("--take", choices=["new", "skip"], default="new", help="new (default): if the file exists, write the next _t2/_t3… take; skip: leave existing files alone")
     ap.add_argument("--only", help="glob on slug")
     ap.add_argument("--limit", type=int)
     ap.add_argument("--variants", type=int, default=1, help="renders per strip (different seeds)")
@@ -219,6 +255,15 @@ def main(argv=None):
     ap.add_argument("--overwrite", action="store_true")
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args(argv)
+    if not args.provider and not args.list_models:
+        ap.error("--provider is required")
+    if args.list_models:
+        for prov, ms in MODELS.items():
+            print(prov)
+            for m in ms:
+                print(f"  {m['id']:32s} {m['label']:36s} {'' if m['verified'] else '(unverified id) '}{m['note']}")
+        print("any other id is passed through as given.")
+        return 0
 
     q = json.loads(Path(args.queue).read_text(encoding="utf-8"))
     jobs = [j for j in q["jobs"] if not args.only or fnmatch.fnmatch(j["slug"], args.only)]
@@ -247,13 +292,18 @@ def main(argv=None):
             suffix = f"_v{v+1}" if args.variants > 1 else ""
             out_p = out_dir / f"{j['slug']}{suffix}.png"
             if out_p.exists() and not args.overwrite:
-                print(f"· {out_p.name} exists, skip")
-                continue
+                if args.take == "skip":
+                    print(f"· {out_p.name} exists, skip")
+                    continue
+                t = 2
+                while (out_dir / f"{j['slug']}{suffix}_t{t}.png").exists():
+                    t += 1
+                out_p = out_dir / f"{j['slug']}{suffix}_t{t}.png"  # a new take, never a silent skip
             seed = (args.seed + v) if args.seed is not None else (j.get("seed") if v == 0 else None)
             print(f"→ {j['slug']}{suffix} via {args.provider}/{model} …", flush=True)
             try:
                 if args.provider == "runway":
-                    img, meta = runway_generate(j, key, seed)
+                    img, meta = runway_generate(j, key, model, seed)
                 else:
                     img, meta = google_generate(j, key, model, seed)
             except Exception as e:  # noqa: BLE001
@@ -266,7 +316,7 @@ def main(argv=None):
                 "slug": j["slug"], "file": str(out_p.relative_to(REPO)), "provider": args.provider,
                 "kind": j.get("kind"), "tags": j.get("tags", []), "references": [r.get("id") for r in (j.get("reference_images") or []) if isinstance(r, dict)],
                 "strip_id": j.get("strip_id"), "date": j.get("date"), "format": j.get("format"),
-                "lettered": j.get("lettered"), "seed": seed, "prompt": j["prompt"],
+                "lettered": j.get("lettered"), "seed": seed, "take": out_p.stem.split("_t")[-1] if "_t" in out_p.stem[len(j["slug"]):] else "1", "prompt": j["prompt"],
                 "rendered_at": datetime.now(timezone.utc).isoformat(timespec="seconds"), **meta})
             manifest_p.write_text(json.dumps(manifest, indent=2, ensure_ascii=False), encoding="utf-8")
             print(f"  ✓ {out_p.relative_to(REPO)} ({len(img)//1024} KB)")
