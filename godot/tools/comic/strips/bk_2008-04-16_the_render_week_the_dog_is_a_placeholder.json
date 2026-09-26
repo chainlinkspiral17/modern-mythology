@@ -1,0 +1,137 @@
+{
+  "id": "bk_2008-04-16_the_render_week_the_dog_is_a_placeholder",
+  "title": "THE RENDER WEEK · The dog is a placeholder",
+  "strip": "backup",
+  "series": "THE RENDER WEEK",
+  "date": "2008-04-16",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · a science-fiction week the papers declined · posted once, taken down",
+  "arc": "THE RENDER WEEK",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "Wednesday: the dog renders as a gray box for three panels — a placeholder with a label the strip draws as a shape — while everything around him is finished, and Wood puts a hand on the box where the dog's back would be. The fourth panel the dog is the dog. The hand hasn't moved.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage fully rendered; where the dog sleeps, a gray box with a label-shape on it. WOOD's hand resting on the box.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "hand on the box",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "a gray box",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the placeholder box"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a finished garage interior with a plain gray box on the floor where a dog would lie and a man's hand resting on the box, a thin progress bar drawn beneath the panel partly filled",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The box, close, the label a shape.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "a box",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the label"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close on a plain gray box on a floor with a small label shape on its side and a man's hand on top, a thin progress bar drawn beneath the panel partly filled",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD not moving the hand.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "hand still on the box",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a man sitting beside a gray box on a garage floor with his hand resting on it, a thin progress bar drawn beneath the panel partly filled nearly full",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The dog, rendered, asleep, the hand on his back exactly where it was.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "hand on the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a dog asleep on a garage floor with a man's hand resting on its back, a thin progress bar drawn beneath the panel partly filled full",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "digitized brush-pen; one panel per strip in wireframe; a progress bar under every panel",
+    "palette": "muddy early-digital flats; the wireframe in phosphor green",
+    "paper": "bristol scanned; a genre week the coastal weeklies declined"
+  },
+  "notes": "The hand-on-the-dog panel with a placeholder under it. The hand hasn't moved.",
+  "layout": "four panels with a bar beneath each"
+}

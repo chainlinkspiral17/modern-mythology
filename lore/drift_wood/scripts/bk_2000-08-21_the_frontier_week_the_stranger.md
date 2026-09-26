@@ -1,0 +1,93 @@
+# THE FRONTIER WEEK · The stranger
+
+`bk_2000-08-21_the_frontier_week_the_stranger` · **BACKUP** · 2000-08-21 · daily4 (1x4 strip) · run 2 · The High School Zine Era · tier A · selection full
+Venue: the Newport paper · a western week the editor cut · Box 3 · arc: *THE FRONTIER WEEK* · backup series: **THE FRONTIER WEEK**
+
+*A western week the editor cut: Small Wood in 1871, the bait shack a trading post, the seawall a boardwalk, a stranger riding in on a mule with a dog trotting beside, and Gully in a shopkeeper's apron asking his name. The stranger says the town's. Every strip this week he'll be asked, and every strip he'll say the town's.*
+
+**Line.** brush-pen, committed; xerox; black and white; the town in 1871 by way of a TV western  
+**Palette.** black and white; dust as stipple  
+**Paper.** newsprint / the digest — a genre week that ran nowhere; Box 3
+
+Cast: `extra_stranger`, `gully_17`, `barnaby`
+
+---
+
+## Panel 1
+
+*wide.* A frontier main street: a trading post with a shingle wall and a row of hand-painted notices, a boardwalk, a stranger on a mule with a small dog trotting beside.
+
+- **extra_stranger** · on a mule
+- **barnaby** · trotting beside
+
+Props: the notices; the mule
+
+<details><summary>image generation</summary>
+
+**prompt.** black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones, black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a frontier main street with a shingle trading post bearing a row of hand-painted notices and a stranger on a mule with a small dog trotting beside, no text, no lettering, no speech balloons, no signature
+
+**negative.** color, gray gradients, photorealistic, 3D render, smooth digital line, text, letters, watermark, signature, extra fingers
+
+</details>
+
+## Panel 2
+
+*medium.* GULLY in a shopkeeper's apron on the trading post's step.
+
+- **gully_17** · in a shopkeeper's apron
+
+> **GULLY**: Name, stranger?
+
+<details><summary>image generation</summary>
+
+**prompt.** black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones, black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a stocky young man in a shopkeeper's apron on a trading post's step asking a question, no text, no lettering, no speech balloons, no signature
+
+**negative.** color, gray gradients, photorealistic, 3D render, smooth digital line, text, letters, watermark, signature, extra fingers
+
+</details>
+
+## Panel 3
+
+*medium.* The STRANGER, hat low.
+
+- **extra_stranger** · hat low
+
+> **STRANGER**: Small Wood.
+
+<details><summary>image generation</summary>
+
+**prompt.** black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones, black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a stranger with his hat brim low answering from a mule, no text, no lettering, no speech balloons, no signature
+
+**negative.** color, gray gradients, photorealistic, 3D render, smooth digital line, text, letters, watermark, signature, extra fingers
+
+</details>
+
+## Panel 4
+
+*wide.* The ridge beyond the town, plain, a single stump on it.
+
+Props: the ridge; a stump
+
+<details><summary>image generation</summary>
+
+**prompt.** black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones, black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a wooded ridge beyond a frontier town with a single stump visible on it, dust as stipple, no text, no lettering, no speech balloons, no signature
+
+**negative.** color, gray gradients, photorealistic, 3D render, smooth digital line, text, letters, watermark, signature, extra fingers
+
+</details>
+
+---
+
+<details><summary>whole-strip prompt (concept run)</summary>
+
+**prompt.** a four-panel newspaper comic strip, four equal panels in a single horizontal row with thin black gutters (4 panels). Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. Title of the strip: BACKUP. The strip: A western week the editor cut: Small Wood in 1871, the bait shack a trading post, the seawall a boardwalk, a stranger riding in on a mule with a dog trotting beside, and Gully in a shopkeeper's apron asking his name. The stranger says the town's. Every strip this week he'll be asked, and every strip he'll say the town's. Panel 1: black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a frontier main street with a shingle trading post bearing a row of hand-painted notices and a stranger on a mule with a small dog trotting beside. No dialogue in this panel. Panel 2: black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a stocky young man in a shopkeeper's apron on a trading post's step asking a question. Gully says "Name, stranger?". Panel 3: black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a stranger with his hat brim low answering from a mule. Stranger says "Small Wood.". Panel 4: black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a wooded ridge beyond a frontier town with a single stump visible on it, dust as stipple. No dialogue in this panel. Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; no words other than the ones given. Bottom right margin: tiny signature "A. Finch — Small Wood, OR" beside a tiny stylized gull, two strokes.
+
+**negative.** color, gray gradients, photorealistic, 3D render, smooth digital line, watermark, extra fingers
+
+</details>
+
+**Margin.** A. Finch — Small Wood, OR · mark: *gull* — a tiny stylized gull, two strokes
+
+*Notes.* The stranger's name is the town's, every strip. The ridge closes every strip with one thing on it: a stump.
+
+Source: lore/drift_wood/_BACKUPS.md

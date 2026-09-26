@@ -1,0 +1,71 @@
+{
+  "id": "bk_2020-01-12_postcards_from_the_other_town_viii",
+  "title": "POSTCARDS FROM THE OTHER TOWN · VIII",
+  "strip": "backup",
+  "series": "POSTCARDS FROM THE OTHER TOWN",
+  "date": "2020-01-12",
+  "run": 6,
+  "era": "era3",
+  "format": "spread",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · a romance the strip never ran · eight cards · Box 19",
+  "arc": "POSTCARDS FROM THE OTHER TOWN",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The last card, unsigned, in neither hand: the front is the lighthouse and the bus shelter side by side on one headland at one scale, the lamp lit, the shelter's bench with two shapes on it; the back, one word, and a stamp with no numeral. Eight words: wish you were here, it's far, come, stay. The strip never ran it. Two weeks later the Rain.",
+  "cast": [],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "left page",
+      "composition": "The postcard's front: a lighthouse and a bus shelter side by side on one headland at one scale, the lamp lit, two small shapes on the shelter's bench.",
+      "characters": [],
+      "props": [
+        "the front"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two-color coastal weekly illustration, a lighthouse and a roadside bus shelter side by side on one headland at the same scale with the lamp lit and two small figures seated on the shelter's bench, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Front"
+    },
+    {
+      "n": 2,
+      "shot": "right page",
+      "composition": "The postcard's back: the message side with the eighth word legible in a third hand, and a stamp with no numeral in its corner.",
+      "characters": [],
+      "props": [
+        "the stamp",
+        "the writing as shapes"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the back of a postcard drawn in ink, a divided back with an address side and a message side, the handwriting rendered as strokes with one word left legible, a small stamp with a tiny numeral in its corner, a stamp with its corner blank, no words legible but one",
+        "negative": "",
+        "notes": "The eighth word is the one the canon never says. Neither hand. The stamp's numeral missing: the deck's last card is not numbered here. The one legible word: stay. Stamp numeral: —."
+      },
+      "stage": null,
+      "name": "Back"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink for the fronts; the backs in a stranger's hand, drawn as shapes but for one word each",
+    "palette": "the fronts in the coastal weekly's two-color; the stamps in one color each",
+    "paper": "cardstock cut to postcard size, drawn both sides, photographed as spreads"
+  },
+  "notes": "Word: stay. Stamp: —.",
+  "layout": "two facing pages: front, back"
+}

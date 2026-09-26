@@ -55,6 +55,9 @@ year they were drawn.
 | **THE HALLOWEEN ISSUE** | 1998 (unpublished) | era1 biweeklies | pulp horror · the cafeteria at night | the lunch lady; the stone head walks; the sign spells | 4 |
 | **RUST_CODE.BBS** | 2006–07 | era2 dailies | weird · the stick chorus gets handles | a banner; ACTIVE NODES: 64; a sysop named vagrant | 6 |
 | **THE POMEGRANATE HOUR, 3 AM** | 2012–14 (the motel TV) | era3 dailies | occult talk-show · recaps | a host; a cassette archive; a voice named Anya | 5 |
+| **THE RENDER WEEK** | 2008 (posted once, taken down) | era2 dailies with a progress bar under every panel | science fiction · the town as a render in progress | a watermark; a node count as a frame counter; a scrolling log | 6 |
+| **THE FRONTIER WEEK** | 2000 (the editor cut it) | era1 dailies; the ridge closes every strip with one more thing on it | western · Small Wood in 1871 | a stranger whose name is the town's; a riverboat gambler with a lapel habit; a card face down on a stump | 6 |
+| **POSTCARDS FROM THE OTHER TOWN** | 2019–20 (never ran) | spreads: a postcard's front and back; one legible word per card | romance · a lighthouse keeper's daughter and a northbound driver | the stamps numbered like a deck; eight words that end in the one the canon never says | 8 |
 
 ## Redundancy guard
 
@@ -65,3 +68,8 @@ letters, the corkboards, the box lids, the mailbox flag. A backup
 that needs one of those must use it as a *quotation* inside its own
 device (a card that is the lamp; a verb bar under the dock), not as
 the image.
+
+The shingle check: six-word shingles of each backup prompt against
+every canon prompt, era prefix stripped. Anything above five shared
+shingles that is not stock phrasing or a declared quotation is a page
+to rewrite. Fifteen series, 101 pages, as of the last run: none.

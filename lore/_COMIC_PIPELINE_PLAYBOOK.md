@@ -114,15 +114,16 @@ a page says "fifty" check it against the year first.
 
 ## Recent lessons
 
-### 2026-09-26 · The backups · twelve series outside the canon · 81 pages
+### 2026-09-26 · The backups · fifteen series outside the canon · 101 pages
 
 The catalogue complete, the run got a second shelf: `bk_` ids, `strip:
 "backup"`, a required `series` field, catalogued in
-`lore/drift_wood/_BACKUPS.md`. Twelve series: the three phantom graphic
+`lore/drift_wood/_BACKUPS.md`. Fifteen series: the three phantom graphic
 novels (SLASH, THE LONG WAY BACK, CEDAR), a found Sunday (THE SINKHOLE),
 four private experiments (THE FREQUENCY BENEATH, THE SCUMM STICK, THE
-BACKWARD DIGEST, THE CARD IN THE DRAWER), and four genre weeks (NOIR WEEK
-II, THE HALLOWEEN ISSUE, RUST_CODE.BBS, THE POMEGRANATE HOUR, 3 AM). The
+BACKWARD DIGEST, THE CARD IN THE DRAWER), and seven genre weeks (NOIR WEEK
+II, THE HALLOWEEN ISSUE, RUST_CODE.BBS, THE POMEGRANATE HOUR, 3 AM, THE
+RENDER WEEK, THE FRONTIER WEEK, POSTCARDS FROM THE OTHER TOWN). The
 validator, sheets, inspector and render tool take them as strips; the
 wiki's canon count excludes them.
 
@@ -150,6 +151,12 @@ wiki's canon count excludes them.
   Halloween sign spells a word into a blank balloon; the sinkhole Sunday's
   fourth page carries Wood's only note, "not mine. keep."; SLASH puts a
   port on a boat and a number on a cuff, never a name on the tavern.
+- **A genre week gets one closing device and keeps it.** The western's
+  ridge ends every strip with one more thing on it (a stump, a crow, a
+  stake, a paddlewheel that can't be there, a card). The render week's
+  bar fills and empties. The postcards give one word each and the words
+  are the canon's sentences rearranged, ending on the one word the canon
+  never says. The device is the week's plot; the plot is optional.
 - **The backups quote the canon forward and backward.** The whistle's
   shape is drawn from a tape in 2013 before the Mill sequence draws it
   from memory in 2022; the box is drawn empty in 2012 with the dog alive;

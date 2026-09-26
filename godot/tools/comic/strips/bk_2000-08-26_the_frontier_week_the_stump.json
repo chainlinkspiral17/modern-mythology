@@ -1,0 +1,140 @@
+{
+  "id": "bk_2000-08-26_the_frontier_week_the_stump",
+  "title": "THE FRONTIER WEEK · The stump",
+  "strip": "backup",
+  "series": "THE FRONTIER WEEK",
+  "date": "2000-08-26",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the Newport paper · a western week the editor cut · Box 3",
+  "arc": "THE FRONTIER WEEK",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "Saturday: the stranger at the stump on the ridge at last, the crow leaving, the stake pulled and laid down, the dog sitting, and the stranger taking the card from his hatband and setting it face down on the stump and walking away. The last panel is the stump with the card on it, and no ridge, because the panel is the ridge. His name was the town's.",
+  "cast": [
+    "extra_stranger",
+    "barnaby"
+  ],
+  "location": "dw_the_ridge",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The stump on the ridge, close, the crow lifting off, the STRANGER arriving with the dog.",
+      "characters": [
+        {
+          "id": "extra_stranger",
+          "pose": "arriving",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the stump",
+        "the crow, leaving"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a stranger and a small dog arriving at a single stump on a ridge as a crow lifts off it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The STRANGER pulling the survey stake and laying it flat.",
+      "characters": [
+        {
+          "id": "extra_stranger",
+          "pose": "pulling the stake",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the stake, laid flat"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a stranger pulling a wooden survey stake from the ground beside a stump and laying it flat",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The STRANGER setting the card face down on the stump's top.",
+      "characters": [
+        {
+          "id": "extra_stranger",
+          "pose": "setting the card down",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the card, face down"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a stranger placing a single card face down on top of a stump",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The stump with the card on it, the dog sitting beside it, the stranger walking away small. The town below, nothing over it.",
+      "characters": [
+        {
+          "id": "extra_stranger",
+          "pose": "walking away, small",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "sitting by the stump",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a stump with a card face down on top and a small dog sitting beside it, a stranger walking away small, a frontier town below, dust as stipple",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white; the town in 1871 by way of a TV western",
+    "palette": "black and white; dust as stipple",
+    "paper": "newsprint / the digest — a genre week that ran nowhere; Box 3"
+  },
+  "notes": "The card face down on the stump: reserved. The dog stays. The ridge with nothing over it, in 1871.",
+  "layout": "four panels"
+}

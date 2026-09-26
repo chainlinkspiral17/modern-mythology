@@ -1,0 +1,71 @@
+{
+  "id": "bk_2019-12-01_postcards_from_the_other_town_vii",
+  "title": "POSTCARDS FROM THE OTHER TOWN · VII",
+  "strip": "backup",
+  "series": "POSTCARDS FROM THE OTHER TOWN",
+  "date": "2019-12-01",
+  "run": 6,
+  "era": "era3",
+  "format": "spread",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · a romance the strip never ran · eight cards · Box 19",
+  "arc": "POSTCARDS FROM THE OTHER TOWN",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "Hers: the front is the lighthouse with its lamp lit, drawn at the right scale for the first time, a bus stopped at the headland's foot the right scale too; the back, one word, and the address side blank.",
+  "cast": [],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "left page",
+      "composition": "The postcard's front: a lighthouse at its true scale on a headland with its lamp lit and a bus stopped at the headland's foot at its true scale, the first card where the sizes agree.",
+      "characters": [],
+      "props": [
+        "the front"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two-color coastal weekly illustration, a lighthouse and a bus stopped at the foot of its headland both drawn at true scale with the lamp lit, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Front"
+    },
+    {
+      "n": 2,
+      "shot": "right page",
+      "composition": "The postcard's back: the address side blank, the message side one word legible and nothing else.",
+      "characters": [],
+      "props": [
+        "the stamp",
+        "the writing as shapes"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the back of a postcard drawn in ink, a divided back with an address side and a message side, the handwriting rendered as strokes with one word left legible, a small stamp with a tiny numeral in its corner, an address side left entirely blank, no words legible but one",
+        "negative": "",
+        "notes": "The seventh word is the canon's 2013 note's word. The address blank: not sent, or hand-delivered; reserved. The one legible word: come. Stamp numeral: VI."
+      },
+      "stage": null,
+      "name": "Back"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink for the fronts; the backs in a stranger's hand, drawn as shapes but for one word each",
+    "palette": "the fronts in the coastal weekly's two-color; the stamps in one color each",
+    "paper": "cardstock cut to postcard size, drawn both sides, photographed as spreads"
+  },
+  "notes": "Word: come. Stamp: VI.",
+  "layout": "two facing pages: front, back"
+}

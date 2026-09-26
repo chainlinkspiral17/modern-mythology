@@ -1,0 +1,135 @@
+{
+  "id": "bk_2000-08-23_the_frontier_week_the_boundary_stone",
+  "title": "THE FRONTIER WEEK · The boundary stone",
+  "strip": "backup",
+  "series": "THE FRONTIER WEEK",
+  "date": "2000-08-23",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the Newport paper · a western week the editor cut · Box 3",
+  "arc": "THE FRONTIER WEEK",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "A surveyor with a chain and a stake at the edge of town, and in the grass a carved stone face the surveyor's map doesn't have, and the stranger saying it was here first. The surveyor drives the stake beside it anyway. The dog lifts a leg on the stake.",
+  "cast": [
+    "extra_stranger",
+    "extra_surveyor",
+    "barnaby"
+  ],
+  "location": "dw_stone_head",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "A SURVEYOR with a chain and a stake at the grass's edge; in the grass a carved stone face, moss on it already.",
+      "characters": [
+        {
+          "id": "extra_surveyor",
+          "pose": "with a stake",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the stone face",
+        "the stake"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a surveyor with a measuring chain and a wooden stake beside a carved stone face half sunk in grass",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The STRANGER, arms folded.",
+      "characters": [
+        {
+          "id": "extra_stranger",
+          "pose": "arms folded",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "STRANGER",
+          "text": "That was here first."
+        },
+        {
+          "who": "SURVEYOR",
+          "text": "It's not on the map."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a stranger with folded arms speaking to a surveyor who holds up a map",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The stake driven in beside the face. The dog lifting a leg on the stake.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "leg up on the stake",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the stake"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a wooden survey stake driven into grass beside a carved stone face with a small dog lifting its leg on the stake",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The ridge, the stump, the crow, and now a stake beside the stump.",
+      "characters": [],
+      "props": [
+        "the stump",
+        "a stake"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a wooded ridge with a single stump, a crow on it and a survey stake driven beside it, dust as stipple",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white; the town in 1871 by way of a TV western",
+    "palette": "black and white; dust as stipple",
+    "paper": "newsprint / the digest — a genre week that ran nowhere; Box 3"
+  },
+  "notes": "The stone head (canon 2024–25; Halloween 1998) as a boundary marker the map doesn't have.",
+  "layout": "four panels"
+}

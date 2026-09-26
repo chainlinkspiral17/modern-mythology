@@ -1,0 +1,138 @@
+{
+  "id": "bk_2008-04-18_the_render_week_the_log",
+  "title": "THE RENDER WEEK · The log",
+  "strip": "backup",
+  "series": "THE RENDER WEEK",
+  "date": "2008-04-18",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · a science-fiction week the papers declined · posted once, taken down",
+  "arc": "THE RENDER WEEK",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "Friday: the render fails. The panels fill with lines of text-shapes — a log, scrolling, a number in it the strip draws as two shapes — and the town behind the log going back to wireframe one thing at a time, the shack, the wall, the bench, until only Wood and the dog are solid and the bar under the last panel is empty. The week ends. The papers were right.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The seawall solid, and over it lines of text-shapes scrolling like a log, one two-shape number repeated.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "on the bench",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the log"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a seawall scene with lines of small text shapes scrolling over it like a log, a man and a dog on a bench, a thin progress bar drawn beneath the panel partly filled",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "wide",
+      "composition": "The shack going back to wireframe behind the log.",
+      "characters": [],
+      "props": [
+        "the shack, unrendering"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a bait shack reverting from solid to green wireframe behind scrolling text shapes, a thin progress bar drawn beneath the panel partly filled emptying",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "wide",
+      "composition": "The wall going back to wireframe; the bench too; WOOD and BARNABY still solid on it.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "solid on a wireframe bench",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "solid",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a seawall and bench reverting to green wireframe with a man and a small dog still drawn solid sitting on it, a thin progress bar drawn beneath the panel partly filled nearly empty",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Only the two of them, solid, on nothing, the bar empty, the log stopped.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "solid, on nothing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "solid",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the bar, empty"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man and a small dog drawn solid sitting on a bench that is only a faint green outline in an empty field, a thin empty bar beneath the panel",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "digitized brush-pen; one panel per strip in wireframe; a progress bar under every panel",
+    "palette": "muddy early-digital flats; the wireframe in phosphor green",
+    "paper": "bristol scanned; a genre week the coastal weeklies declined"
+  },
+  "notes": "RENDER_FARM_LOG_47 (Vol 5, the Tower) as scrolling shapes; the number as two shapes. The week ends on the two of them, solid, on nothing.",
+  "layout": "four panels with a bar beneath each"
+}
