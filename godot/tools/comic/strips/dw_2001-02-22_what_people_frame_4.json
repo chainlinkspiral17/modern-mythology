@@ -1,0 +1,151 @@
+{
+  "id": "dw_2001-02-22_what_people_frame_4",
+  "title": "What people frame, iv",
+  "strip": "drift_wood",
+  "date": "2001-02-22",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "What People Frame",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2000–2001)",
+  "logline": "A death certificate. Gully's uncle's. Gully brings it. Wood cuts the mat with the dog on his foot.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The frame shop counter. GULLY in his regular clothes, no apron, holding a folded certificate. WOOD.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "holding a folded document, no cap",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a folded certificate",
+        "counter"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man without his usual cap standing at a frame-shop counter holding a folded document, the clerk looking at him, brush-pen black and white",
+        "negative": "",
+        "notes": "Gully without the cap. The only time in the run until 2014."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The document on the counter, unfolded a quarter-inch: an official seal. The strip does not show the words.",
+      "characters": [],
+      "props": [
+        "a document with an official seal, mostly folded"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of an official document unfolded only a quarter inch on a counter, a seal visible, the words hidden",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood choosing a frame without asking. Cedar. Plain. The same as the fishing license.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "taking down a plain cedar frame",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "cedar frame"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Cedar."
+        },
+        {
+          "who": "WOOD",
+          "text": "Cedar."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man taking a plain cedar frame down from a wall of frames while his friend watches",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The two of them on the spackle buckets in the alley. No clams. Rain. Barnaby's chin on Gully's boot this time.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "on a bucket",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "on a bucket",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "chin on Gully's boot",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "buckets",
+        "alley",
+        "rain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two young men sitting on spackle buckets in a rain alley with no food, a small dog resting its chin on one man's boot, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The uncle dies off the page, in February 2001. The shack is Gully's. Nobody says either thing."
+}

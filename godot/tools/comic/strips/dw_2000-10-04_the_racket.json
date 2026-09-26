@@ -1,0 +1,158 @@
+{
+  "id": "dw_2000-10-04_the_racket",
+  "title": "The racket",
+  "strip": "drift_wood",
+  "date": "2000-10-04",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Driftwood Ledger (Arc 1, week 1)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2000–2001)",
+  "logline": "The scholarship's reply deadline was yesterday. Wood hides out in the backroom and says the word 'racket' four times.",
+  "cast": [
+    "wood_20",
+    "extra_owner_heceta"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The frame shop backroom. WOOD cutting foam core, badly. A wall calendar with yesterday's date circled and then scribbled out.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "cutting foam core, jaw set",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "wall calendar with a scribbled-out date",
+        "foam core",
+        "dull knife"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Art school is a commercial racket designed to castrate raw vision."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man cutting foam core with a dull utility knife in a framing backroom, a wall calendar behind him with one date circled and scribbled out, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The OWNER in the doorway, reading glasses.",
+      "characters": [
+        {
+          "id": "extra_owner_heceta",
+          "pose": "in the doorway",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "OWNER",
+          "text": "Who are you talking to."
+        },
+        {
+          "who": "WOOD",
+          "text": "The foam core."
+        },
+        {
+          "who": "OWNER",
+          "text": "Talk quieter. It's a racket."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman in reading glasses standing in a backroom doorway looking at a young man who is talking to foam core",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood, the knife going through the foam core and into the table.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "knife in the table",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "knife stuck in the table"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "A racket."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a utility knife driven through foam core and stuck into a wooden worktable",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood pulling the knife out. The calendar. The circled date, scribbled, but the circle still visible under the scribble. It's drawn so the reader can see both.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "pulling the knife free",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "calendar close"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "...Racket.",
+          "kind": "small"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man pulling a knife free from a table beside a wall calendar where a scribbled-out date still shows its circle underneath, black and white",
+        "negative": "",
+        "notes": "The scribble doesn't fully cover the circle. Both must read."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The deadline passes off the page. The calendar is the only record."
+}

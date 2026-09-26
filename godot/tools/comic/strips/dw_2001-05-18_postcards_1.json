@@ -1,0 +1,135 @@
+{
+  "id": "dw_2001-05-18_postcards_1",
+  "title": "The postcard run, i",
+  "strip": "drift_wood",
+  "date": "2001-05-18",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Postcard Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2000–2001)",
+  "logline": "Chloe's postcards as strips. The strip redraws her handwriting. Wood's replies are never shown.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The corkboard. Five postcards now, pinned photo-out. WOOD adding a sixth: a Chicago skyline.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "pinning a postcard",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "corkboard with postcards",
+        "a Chicago postcard"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man pinning a sixth postcard, a city skyline, to a corkboard already holding five, all photo-side out, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The back of the Chicago card, redrawn in the strip in her tiny capitals — the whole panel is her handwriting: 'W — Chicago. Guerrilla theater in a parking garage, level 3. They performed Chekhov to a Honda. The Honda wept. You would have — no. You wouldn't have come. — C.'",
+      "characters": [],
+      "props": [
+        "handwritten postcard back"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a whole panel that is the back of a postcard covered in tiny cramped handwritten capitals, redrawn in ink",
+        "negative": "",
+        "notes": "Letter the text after; it's the panel."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood at the table with a blank postcard of the bay. The pen. The dog.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "pen over a blank card",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "blank postcard of the bay"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man holding a pen over a blank postcard of a bay at his drawing table, a dog under it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "close",
+      "composition": "The card going into the mailbox slot. Written side hidden. As always.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "hand at the slot",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "mailbox",
+        "card"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a hand sliding a postcard into a mailbox slot with its written side hidden, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The Postcard Run begins. Her side of the correspondence is the strip; his is never shown."
+}

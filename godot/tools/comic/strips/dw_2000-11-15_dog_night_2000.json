@@ -1,0 +1,139 @@
+{
+  "id": "dw_2000-11-15_dog_night_2000",
+  "title": "The Dog Night, 2000",
+  "strip": "drift_wood",
+  "date": "2000-11-15",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Dog Night",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2000–2001)",
+  "logline": "A year since the dumpster. A wordless daily. It will run every November.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The dumpster behind SMALL WOOD LANES at night. The chain-link. The bare bulb. Nothing tied there. WOOD and BARNABY standing where the dog was.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "standing, leash slack",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "looking at the dumpster",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "dumpster",
+        "chain-link",
+        "bare bulb"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man and a small dog standing behind a bowling alley at night in front of a rusted dumpster and chain-link fence under a bare bulb, brush-pen black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The chain-link. The spot. A wet ring of rope, left from something else.",
+      "characters": [],
+      "props": [
+        "chain-link",
+        "a loop of rope"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a chain-link fence with a wet loop of rope tied to it, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The dog looking up at Wood.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "looking up",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "looking down",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small dog looking up at a young man who looks down at it, night, bare bulb, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Walking away, the two of them, the neon sign lit above the roofline: SMALL WOOD LANES, all letters on.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "walking away",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "beside him",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "neon sign fully lit"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man and a dog walking away from behind a bowling alley with its neon sign fully lit above the roofline, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The Dog Night fixture: wordless, every November. All letters lit — for now."
+}

@@ -1,0 +1,171 @@
+{
+  "id": "dw_2000-10-11_the_portfolio",
+  "title": "The portfolio",
+  "strip": "drift_wood",
+  "date": "2000-10-11",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Driftwood Ledger (Arc 1, week 2)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2000–2001)",
+  "logline": "Chloe asks to see the portfolio he told her about. There are two drawings in it. One is the crab.",
+  "cast": [
+    "wood_20",
+    "chloe_17",
+    "barnaby"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Wood's bedroom. CHLOE holding a portfolio case — cheap, black, new. WOOD not stopping her. BARNABY watching from the bed.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "opening a portfolio case",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "standing, arms crossed",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "on the bed",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "black portfolio case",
+        "corkboard",
+        "the scholarship letter still pinned"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "The portfolio. You said you were 'working on it.'"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young woman opening a cheap black portfolio case in a bedroom while a young man stands with his arms crossed and a small dog watches from the bed, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Inside: two sheets. The crab flyer, original. And the estuary from the spring special, 1998.",
+      "characters": [],
+      "props": [
+        "two drawings in a portfolio: a crab and an estuary"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of an open portfolio case holding exactly two drawings: a large hatched crab and a wide estuary landscape",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Chloe, holding up the crab.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "holding up the crab",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "A crab."
+        },
+        {
+          "who": "WOOD",
+          "text": "A crab of consequence."
+        },
+        {
+          "who": "CHLOE",
+          "text": "And a marsh."
+        },
+        {
+          "who": "WOOD",
+          "text": "Estuary."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young woman holding up a drawing of a crab with a flat expression while a young man corrects her",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Chloe putting them back with more care than she wants to show. Wood watching her hands.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "sliding the drawings back carefully",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "watching her hands",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "portfolio"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "They're good, Wood. That's the problem. They're good and there are two of them."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young woman carefully sliding two drawings back into a portfolio case while a young man watches her hands, black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Two drawings. Both from years ago. Chloe's line is the arc's thesis."
+}

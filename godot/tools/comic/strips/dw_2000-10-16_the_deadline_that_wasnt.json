@@ -1,0 +1,161 @@
+{
+  "id": "dw_2000-10-16_the_deadline_that_wasnt",
+  "title": "The deadline that wasn't",
+  "strip": "drift_wood",
+  "date": "2000-10-16",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Driftwood Ledger (Arc 1, week 3)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2000–2001)",
+  "logline": "Wood tells Chloe the deadline passed. Chloe tells him deadlines have phone numbers.",
+  "cast": [
+    "wood_20",
+    "chloe_17"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The dock at the boat launch. October dusk. CHLOE and WOOD at the end, feet over the water. Gully's uncle's shack behind, dark.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "dock end",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "dock end, pad closed",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "dock",
+        "dark shack",
+        "dusk"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "It's done. The deadline was the third."
+        },
+        {
+          "who": "CHLOE",
+          "text": "Deadlines have phone numbers."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two young people sitting at the end of a wooden dock at October dusk with their feet over the water, a dark shingle shack behind them, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "I'm not calling Portland to beg a racket for a partial."
+        },
+        {
+          "who": "CHLOE",
+          "text": "You'd be calling Portland to accept a yes."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a young man on a dock, stubborn, dusk light",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Chloe, standing up. Looking down at him.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "standing over him",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "You're going to stay. You were always going to stay. I wrote it in your yearbook and I hated being right in advance."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young woman standing on a dock looking down at a young man who stays seated",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Chloe walking back up the dock. Wood at the end, not turning. The water. The strip's narrow panel again — the dock drawn longer than it is.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "walking away up the dock",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "seated, not turning",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "dock, long",
+        "water"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young woman walking away up a long wooden dock at dusk while a young man stays seated at its end without turning, the dock drawn longer than it is, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Chloe cites the yearbook (#18). The strip cites itself for the first time."
+}
