@@ -1,0 +1,176 @@
+{
+  "id": "dw_2018-09-19_the_card_in_the_cooler",
+  "title": "The card, in the cooler",
+  "strip": "drift_wood",
+  "date": "2018-09-19",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "The Pitch Meeting That Isn't",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Pitch Meeting That Isn't · deepening)",
+  "logline": "Wednesday. Gully's daughter, eight, finds the card in the bait cooler and reads the logo aloud. It's the first time the name is said in the strip. The balloon is drawn, and the word in it is a blank shape.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "extra_gully_kid",
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. The girl, eight, in the bait cooler up to her elbows, coming up with a damp white card. GULLY. WOOD on the stool. BARNABY II.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "with the card",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the card"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, an eight-year-old girl pulling a damp white business card out of a bait cooler, a stocky man in an apron, a thin man on a stool, a small three-legged dog",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The girl reading it. The balloon: a blank shape where the name goes. Then, lettered: '...that's the one with the shows!'",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "reading aloud",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GIRL",
+          "text": "[      ] — that's the one with the shows!"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of a girl reading a card aloud with a speech balloon that contains a blank shape followed by a few words",
+        "negative": "",
+        "notes": "The blank shape in the balloon. The name is said and never lettered."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully taking the card. Wood not looking. The girl looking from one to the other, learning something about adults.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "taking the card",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "not looking",
+          "expression": ""
+        },
+        {
+          "id": "extra_gully_kid",
+          "pose": "learning",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GIRL",
+          "text": "Why's it in the crawlers?"
+        },
+        {
+          "who": "GULLY",
+          "text": "It's where it goes."
+        },
+        {
+          "who": "GIRL",
+          "text": "...Okay."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a stocky man taking a card from a girl who looks between him and a thin man on a stool",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The card back in the cooler. The lid. The girl on the crate, drawing — a crab. Eight legs. Nobody's asked her to.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "drawing a crab",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the cooler, closed",
+        "a crab drawing"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a girl on a crate drawing a crab while a bait cooler's lid is closed behind her, a small dog watching, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "The name said, never lettered. 'It's where it goes.'"
+}

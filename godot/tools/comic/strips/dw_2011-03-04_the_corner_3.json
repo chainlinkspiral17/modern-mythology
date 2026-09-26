@@ -1,0 +1,129 @@
+{
+  "id": "dw_2011-03-04_the_corner_3",
+  "title": "The corner, iii",
+  "strip": "drift_wood",
+  "date": "2011-03-04",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Corner",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Corner · deepening)",
+  "logline": "Friday, week two. The hardware store's sale sign in the background of a strip about the dog's vet appointment. EVERYTHING MUST GO, behind the Datsun, unremarked. The strip is about the dog.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Main street. The Datsun at the curb. WOOD lifting BARNABY, eleven, into it. Behind: Wagner's window, a sign — EVERYTHING MUST GO — half visible.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "lifting the dog into the car",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a sale sign, half visible"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man lifting an old dog into a rusted car at a curb while a hardware store's window behind shows a half-visible closing-sale sign",
+        "negative": "",
+        "notes": "Letter after: EVERYTHING MUST GO, partly cut by the car. The strip's subject is the dog."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The dog on the seat. The vet's card on the dash.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "on the seat",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the vet's card"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close-up of an old dog on a car seat with a vet's appointment card on the dashboard",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood at the wheel. In the mirror: Wagner's. A man carrying a ladder out of it. Unremarked.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "driving",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "Wagner's in the mirror",
+        "a ladder"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man driving with a hardware store visible in his mirror where a man carries a ladder out the door, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The car pulling away. The corner. The sign, whole now, in the window behind, as the car leaves the panel. The strip still about the dog.",
+      "characters": [],
+      "props": [
+        "EVERYTHING MUST GO, whole"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a rusted car leaving a street corner with a hardware store's closing-sale sign fully visible in the window behind, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; the Sundays the point now",
+    "palette": "limited; Sundays in watercolor",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "EVERYTHING MUST GO, behind the dog's vet trip."
+}

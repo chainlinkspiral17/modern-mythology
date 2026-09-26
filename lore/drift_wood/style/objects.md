@@ -90,6 +90,8 @@ by year of arrival. Photo-side out is the default for postcards;
 | 2014 | the invitation, framed in cedar with a cream-and-green mat | on the wall beside "Lanes" |
 | 2016 | a printed card with a dog "named after nothing" | **face-in** (the second) |
 
+| 2007 | the walk map (alley, road, post, stairs, log; dotted line; '1999–') beside the 1999 schedule | Jul 13, 2007 |
+| 2008 | the Florence weekly with the gull printed huge, pinned over the Feb 25 page, both over the parody printout | Mar 2008 |
 | 1999 | the backward digest (the print tech's misfold, Sept 30, 1999) | kept; on the board through 2027 |
 | 2019 | one glossy stick-figure sticker (the helicopter figure), stuck by nose-transfer, upside down, below the yearbook photo | the only sticker of thirty the pup didn't eat (Nov 2019); stays |
 
@@ -267,6 +269,7 @@ the racket weeks of October 2000; Gully's key got it out (Nov 12,
 | box | lid | strip |
 |---|---|---|
 | 5 | BOX 5 · JUN 03–DEC 03 · NONE OF IT RAN | dw_2003-12-12 |
+| 6 | BOX 6 · FOUR BOOKS · NO (four of the five phantom novels; The Ridge stays out) | dw_2005-11-04 |
 | 8 | BOX 8 · THE RIDGE · UNFINISHED (the phantom novel's pages, off the wall Nov 24, 2006) | dw_2006-11-24 |
 | 21 | BOX 21 · JAN–JUN 2021 + the pencil register | ro_2026-10-18 |
 

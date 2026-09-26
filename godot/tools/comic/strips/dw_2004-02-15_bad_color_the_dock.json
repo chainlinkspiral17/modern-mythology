@@ -1,0 +1,88 @@
+{
+  "id": "dw_2004-02-15_bad_color_the_dock",
+  "title": "Sunday · bad color · the dock",
+  "strip": "drift_wood",
+  "date": "2004-02-15",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site (newspaper cadence: six dailies + a Sunday)",
+  "arc": "Bad Color",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Bad Color · deepening)",
+  "logline": "The fourth Sunday the book keeps of the bad spring: the dock, the water bleeding into the planks, the shack's roof one wrong red. The reader can watch the paper buckle.",
+  "cast": [],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the dock from the water, the paint pooling, the planks and the bay the same wet gray because he couldn't wait for one to dry.",
+      "characters": [],
+      "props": [
+        "the dock, bleeding"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, a wooden dock and bay water bleeding into each other in the same wet gray, the paper visibly buckled, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Bleed"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the shack's roof, a red that is not the roof's red — the set's only red, used because it's the only red.",
+      "characters": [],
+      "props": [
+        "the wrong red"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, a shingle shack roof painted in a single wrong bright red, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Wrong red"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the bay. Gray, and where the paper buckled, a ridge of darker gray across the water like a wave that isn't there. Held. He posts it.",
+      "characters": [],
+      "props": [
+        "a buckle ridge"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, gray bay water with a dark ridge of pooled paint across it where the paper buckled, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Buckle"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy early-digital flats begin",
+    "palette": "limited, muddy; Sundays in over-wet watercolor",
+    "paper": "bristol, scanned; the browser"
+  },
+  "notes": "Bad color, the dock. The set's only red. Posted anyway.",
+  "layout": "tiers, portrait page"
+}

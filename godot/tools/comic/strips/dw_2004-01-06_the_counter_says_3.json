@@ -1,0 +1,151 @@
+{
+  "id": "dw_2004-01-06_the_counter_says_3",
+  "title": "The counter says 3",
+  "strip": "drift_wood",
+  "date": "2004-01-06",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (newspaper cadence: six dailies + a Sunday)",
+  "arc": "Six and a Sunday",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Six and a Sunday · deepening)",
+  "logline": "Tuesday. Day two online. The visitor counter: 3. One is Wood. One is Gully. The third is a mystery the strip will spend four years on.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The bedroom. A CRT. WOOD at it. The counter on the page: 3. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "at the CRT",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the counter: 3"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a young man at a CRT monitor in a small bedroom looking at a web page's visitor counter reading three, a small dog",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The counter. 3. Wood's finger on the glass.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "finger on the glass",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "3"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close-up of a finger touching a CRT screen where a visitor counter reads three",
+        "negative": "",
+        "notes": "Letter after: 3."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, to the dog, doing the arithmetic.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Me. Gully. And —"
+        },
+        {
+          "who": "WOOD",
+          "text": "...Somebody's out there."
+        },
+        {
+          "who": "BARNABY",
+          "text": "",
+          "kind": "thought"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a young man counting on his fingers to a small dog, stopping at the third",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood refreshing. 3. Refreshing. 4. His own refresh. The strip's first joke about itself online.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "refreshing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the counter: 4"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a young man at a keyboard pressing a key as the on-screen counter ticks from three to four",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy early-digital flats begin",
+    "palette": "limited, muddy; Sundays in over-wet watercolor",
+    "paper": "bristol, scanned; the browser"
+  },
+  "notes": "3. Then 4, which is him. The third visitor: reserved."
+}

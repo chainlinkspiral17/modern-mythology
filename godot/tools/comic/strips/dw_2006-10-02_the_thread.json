@@ -1,0 +1,148 @@
+{
+  "id": "dw_2006-10-02_the_thread",
+  "title": "The thread",
+  "strip": "drift_wood",
+  "date": "2006-10-02",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Message Boards",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Message Boards · deepening)",
+  "logline": "Monday. A thread about the strip on someone else's board. Forty replies. The chorus reads them aloud in a round. Wood draws the round as a wave of balloons and doesn't letter one of them.",
+  "cast": [
+    "wood_26",
+    "barnaby",
+    "extra_stick_chorus"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. The CRT: a thread, forty replies, scrolling. WOOD. The chorus, twelve, reading.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_chorus",
+          "pose": "twelve, reading",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the thread"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a man at a CRT showing a long forum thread while twelve stick figures at the back read it aloud, a small dog",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "wide",
+      "composition": "The chorus's balloons: forty, overlapping, a wave across the panel. None lettered. The shape of talk.",
+      "characters": [
+        {
+          "id": "extra_stick_chorus",
+          "pose": "a wave of balloons",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "forty empty balloons"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a panel filled with forty overlapping empty speech balloons rising from a row of stick figures like a wave, no words",
+        "negative": "",
+        "notes": "Forty balloons, all empty. The strip doesn't letter strangers' words."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, under the wave, drawing the dog.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the pad: the dog"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a man drawing a small dog on a pad beneath a mass of empty speech balloons",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The wave receding. Twelve figures. One balloon left, small, lettered — the only one: 'the dog tho.'",
+      "characters": [
+        {
+          "id": "extra_stick_chorus",
+          "pose": "twelve, one balloon",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "STICK",
+          "text": "the dog tho"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, twelve stick figures with a single small speech balloon remaining among them",
+        "negative": "",
+        "notes": "The one lettered balloon: 'the dog tho.'"
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "Forty balloons, one lettered. 'the dog tho.'"
+}

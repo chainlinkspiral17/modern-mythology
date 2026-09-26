@@ -1,0 +1,138 @@
+{
+  "id": "dw_2017-02-15_the_thumb",
+  "title": "The thumb",
+  "strip": "drift_wood",
+  "date": "2017-02-15",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "The Scroll",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Scroll · deepening)",
+  "logline": "Wednesday. The thumb, drawn enormous on Monday, becomes the week's subject: four panels of thumbs on four phones at four tables at Gully's, each scrolling something, one of them him.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "barnaby_ii",
+    "extra_tourists"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "A thumb on a phone. Scrolling. A tourist's, at Gully's window table.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "a thumb",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a phone"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of a thumb scrolling a phone screen at a café table",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "A second thumb. A second phone. A local's, at the counter. Scrolling a boat listing.",
+      "characters": [],
+      "props": [
+        "a second phone"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of a different thumb scrolling a boat listing on a phone at a counter",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "A third. A kid's. Scrolling fast — the strip, sliced, flying past in a blur, a Sunday's tiers as vertical smears.",
+      "characters": [],
+      "props": [
+        "a third phone: the strip, sliced"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of a child's thumb scrolling fast past vertical smears of watercolor comic tiers on a phone",
+        "negative": "",
+        "notes": "Wood's Sundays going by as smears."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD on the end stool. No phone. Drawing the three thumbs. GULLY looking at the drawing. BARNABY II. The one table without a screen.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "looking",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the pad: three thumbs"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Three thumbs."
+        },
+        {
+          "who": "WOOD",
+          "text": "Four. One's mine. It's holding a pen."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a thin man drawing three thumbs on a pad while a stocky man looks over, a small three-legged dog beneath, the only table in the shop without a phone",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "Four thumbs. 'One's mine. It's holding a pen.'"
+}

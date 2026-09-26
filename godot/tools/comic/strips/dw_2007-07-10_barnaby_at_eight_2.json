@@ -1,0 +1,127 @@
+{
+  "id": "dw_2007-07-10_barnaby_at_eight_2",
+  "title": "Barnaby at eight, ii",
+  "strip": "drift_wood",
+  "date": "2007-07-10",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Barnaby at Eight",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Barnaby at Eight · deepening)",
+  "logline": "Tuesday. The gray. One hair. Wood finds it on the dog's chin and the strip gives the hair a panel, and then gives the dog's whole face a panel so the reader can see it's one.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. WOOD on the floor with BARNABY, scratching the chin. Stopping.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "scratching the dog's chin, stopping",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a man sitting on a garage floor scratching a dog's chin and stopping suddenly, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "One gray hair. On the chin. The panel is the hair.",
+      "characters": [],
+      "props": [
+        "one gray hair"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, extreme close-up of a single gray hair among dark fur on a dog's chin",
+        "negative": "",
+        "notes": "One hair. The panel is the hair."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The dog's whole face. The hair somewhere on it. The reader looks for it.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "the whole face",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close-up of a middle-aged dog's whole face with a single gray hair somewhere on the chin, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood, not saying it. Scratching the chin again. The dog's eyes closed. The strip closing its own.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "scratching again",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "eyes closed",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a man scratching a contented dog's chin on a garage floor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "Wordless. One gray hair. The reader looks for it."
+}

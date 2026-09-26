@@ -1,0 +1,174 @@
+{
+  "id": "dw_2005-10-18_page_one",
+  "title": "Page one",
+  "strip": "drift_wood",
+  "date": "2005-10-18",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Five Hundred Pages",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Five Hundred Pages · deepening)",
+  "logline": "Tuesday. After 'Of what.' Gully picks up page one. Reads the first line. Puts it down. Says it's good. Wood asks which part. Gully says the part where it stops.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage floor, still covered. GULLY crouching, picking up a page. WOOD frozen. BARNABY on page 300.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "picking up a page",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "frozen",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "on a page",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "five hundred pages"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a man in an apron crouching to pick up one typed page from a garage floor covered in pages while a thin man watches frozen and a dog lies on the pages",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Gully reading. His lips moving on the first line. The strip draws the page's text as gray.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "reading",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "page one"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close-up of a stocky man reading a typed page with his lips moving slightly, the text rendered as gray texture",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully setting it down. Exactly where it was.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "setting it down exactly",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "It's good."
+        },
+        {
+          "who": "WOOD",
+          "text": "Which part."
+        },
+        {
+          "who": "GULLY",
+          "text": "The part where it stops."
+        },
+        {
+          "who": "WOOD",
+          "text": "...It's page one, Gully."
+        },
+        {
+          "who": "GULLY",
+          "text": "I know."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a stocky man setting a page down precisely in its place while a thin man asks him something",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The two of them looking at the floor. The dog asleep on the novel. Nobody picks up page two.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep on the pages",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the floor of pages"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, two men looking down at a floor covered in typed pages with a dog asleep on them, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "'The part where it stops.' Nobody picks up page two."
+}

@@ -1,0 +1,135 @@
+{
+  "id": "dw_2004-02-09_the_sunday_learned",
+  "title": "The Sunday, learned",
+  "strip": "drift_wood",
+  "date": "2004-02-09",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (newspaper cadence: six dailies + a Sunday)",
+  "arc": "Six and a Sunday",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Six and a Sunday · deepening)",
+  "logline": "Monday, week six. What a Sunday is: the strip draws Wood learning it — tiers, not panels; a page, not a row; watercolor he hasn't got. He buys a set. Cheap. The bad color begins.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The bedroom. WOOD with a library book: newspaper Sundays, a century of them. A tier layout traced onto the pad. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "tracing tiers",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a library book",
+        "the pad: tiers"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a young man tracing a Sunday comic's tier layout onto a pad from a library book of old newspaper pages, a small dog",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The pad: three tiers ruled. Beside it, a cheap watercolor set, eight pans, still shrink-wrapped.",
+      "characters": [],
+      "props": [
+        "three tiers",
+        "a cheap watercolor set"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close-up of a ruled pad and an eight-pan watercolor set still in shrink-wrap",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The wrap off. The first brush in water. The first wash on the top tier: too wet. Immediately too wet.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "laying a wash",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a too-wet wash"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a young man laying a watercolor wash across a ruled tier that is visibly too wet and pooling",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The page, curling. The dog looking at it. Wood looking at it. The first bad color, on a Monday; Sunday's will be worse and the book keeps it.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "looking at the curling page",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "looking",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the page, curling"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a young man and a small dog both looking at a watercolor page curling on a desk, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy early-digital flats begin",
+    "palette": "limited, muddy; Sundays in over-wet watercolor",
+    "paper": "bristol, scanned; the browser"
+  },
+  "notes": "Tiers, not panels. The cheap set. Too wet at once."
+}

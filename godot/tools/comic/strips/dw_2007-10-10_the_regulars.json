@@ -1,0 +1,170 @@
+{
+  "id": "dw_2007-10-10_the_regulars",
+  "title": "The regulars",
+  "strip": "drift_wood",
+  "date": "2007-10-10",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Tavern",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Tavern · deepening)",
+  "logline": "Wednesday. The tavern's regulars, seen from the garage: through the shared wall, as shapes and sounds. Wood draws them without seeing them. Gully names them; the strip doesn't.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby",
+    "extra_regulars"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage, evening. Through the wall, drawn as shapes in the plaster: four REGULARS at a bar, glasses, a jukebox. WOOD drawing them. GULLY visiting. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing the wall",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_regulars",
+          "pose": "shapes in the plaster",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "shapes in the wall"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a garage at evening where four figures at a bar are drawn as shapes inside the shared plaster wall, a man drawing them, another man in an apron visiting, a dog",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The pad: four figures at a bar, from behind, drawn from sound. One with a hat. One who laughs on the beat.",
+      "characters": [],
+      "props": [
+        "the pad: four backs"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close-up of a drawing pad showing four figures at a bar from behind, one in a hat",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully looking at the pad. Knowing them.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "looking at the pad",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "That's Dale. That's — the hat's Dale."
+        },
+        {
+          "who": "WOOD",
+          "text": "Don't tell me."
+        },
+        {
+          "who": "GULLY",
+          "text": "You drew him."
+        },
+        {
+          "who": "WOOD",
+          "text": "I drew a hat."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a man in an apron recognizing figures on a pad while the thin man who drew them refuses the names",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The wall. The jukebox shape. Nine o'clock: the Springsteen. Wood and Gully and the dog, listening to the wall.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the jukebox in the plaster"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, two men and a dog in a garage listening to a wall where a jukebox is drawn as a shape in the plaster, no words",
+        "negative": "",
+        "notes": "The regulars' names: reserved; Gully knows them, the strip doesn't."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "'I drew a hat.' The regulars as shapes."
+}

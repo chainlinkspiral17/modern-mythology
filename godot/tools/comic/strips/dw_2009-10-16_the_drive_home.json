@@ -1,0 +1,133 @@
+{
+  "id": "dw_2009-10-16_the_drive_home",
+  "title": "The drive home",
+  "strip": "drift_wood",
+  "date": "2009-10-16",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Ranch House",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Ranch House · deepening)",
+  "logline": "Friday. The drive back to the garage. Six minutes. The strip draws it as long. The Datsun, the dog, the hemlocks in the mirror, the tavern's back wall, the garage door. Home is the smaller place.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The Datsun on the ranch house's gravel, leaving. The hemlocks in the mirror. BARNABY on the seat.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "driving",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "on the seat",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "hemlocks in the mirror"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a rusted small car pulling away from a ranch house with hemlocks in its mirror, a dog on the seat",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "101, briefly. The sea. Six minutes drawn as if sixty.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "driving",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the sea"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a small car on a coastal highway at dusk with the sea beyond, drawn as a long journey, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The alley. The tavern's back wall. The garage door. Smaller than the house by exactly the amount the strip doesn't measure.",
+      "characters": [],
+      "props": [
+        "the garage door"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a garage door beside a tavern's back wall in an alley at dusk, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Inside. The lamp on. The dog in the bed. Wood at the table. The sill. The one jar — no, two now. The strip very quiet about the difference between a home and this.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "at the table",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "in the bed",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "two jars"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a man at a drafting table in a garage with a lamp on, a dog in a bed, two jars on a windowsill, no words",
+        "negative": "",
+        "notes": "Two jars by 2009 (one in 2004; three by 2013)."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; the Sundays the point now",
+    "palette": "limited; Sundays in watercolor",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "Wordless. Six minutes drawn long. Two jars."
+}

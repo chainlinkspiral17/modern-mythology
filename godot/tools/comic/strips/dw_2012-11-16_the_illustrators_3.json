@@ -1,0 +1,131 @@
+{
+  "id": "dw_2012-11-16_the_illustrators_3",
+  "title": "The illustrators, iii",
+  "strip": "drift_wood",
+  "date": "2012-11-16",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Illustrators",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Illustrators · deepening)",
+  "logline": "Friday. Montreal's letter, opened last: not a drawing of the strip — a drawing of Wood, from the strip's descriptions, which never describe him. It's close. It's the first portrait of him by a stranger and the strip hides it face-down.",
+  "cast": [
+    "wood_34",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. WOOD opening the Montreal envelope. BARNABY. Three drawings on the wall already.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "opening an envelope",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the Montreal envelope"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man opening an envelope in a garage studio with three strangers' drawings pinned on the wall, an old dog",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The drawing: a thin man in a chore coat from behind, at a drafting table. No face — the stranger knew not to. The coat exactly right.",
+      "characters": [],
+      "props": [
+        "the drawing: Wood from behind"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of a stranger's ink drawing of a thin man in a canvas chore coat seen from behind at a drafting table, no face shown",
+        "negative": "",
+        "notes": "The first portrait of Wood by a reader. From behind. The stranger knew the rule."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood looking at it. A long time. The dog looking at him looking.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "looking at him",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man looking at a drawing of himself from behind for a long moment while an old dog watches him, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The drawing set face-down on the table. Not pinned. The three on the wall. The fourth, hidden. The strip's rule, kept by a stranger, and then by Wood.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "setting it face down",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the drawing, face down"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man laying a drawing face down on a drafting table beneath a wall with three pinned drawings, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "Montreal drew him from behind. Face down, unpinned."
+}

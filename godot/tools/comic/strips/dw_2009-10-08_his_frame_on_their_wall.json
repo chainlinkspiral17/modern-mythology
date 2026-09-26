@@ -1,0 +1,174 @@
+{
+  "id": "dw_2009-10-08_his_frame_on_their_wall",
+  "title": "His frame on their wall",
+  "strip": "drift_wood",
+  "date": "2009-10-08",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Ranch House",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Ranch House · deepening)",
+  "logline": "Thursday. The living room. On the wall: the 2003 rough, framed — Gully had it done in Newport, badly, a plastic frame, a mat the wrong color. Wood looks at it for the whole strip and says it's a good frame.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "extra_maria",
+    "barnaby"
+  ],
+  "location": "dw_ranch_house",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The ranch house's living room. A couch, a lamp, and on the wall, a small frame: the pencil rough of Gully hanging the sign. Plastic frame. Cream mat, wrong. WOOD in front of it.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "in front of the frame",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_maria",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "on the couch",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the framed rough, badly done"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man standing before a small badly framed pencil sketch on a living-room wall, a stocky man and a practical woman behind him, a dog on the couch",
+        "negative": "",
+        "notes": "The 2003 rough (dw_2003-07-08), framed in Newport. Wrong mat. Note: Gully re-frames it properly in May 2011 (dw_2011-05-18)."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The frame. The mat's edge cut crooked. A bubble under the glass. Wood's eyes, cataloguing every fault.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "cataloguing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the crooked mat"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close-up of a cheap plastic frame with a crookedly cut mat and a bubble under the glass, a man's eyes on it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully, behind him, waiting for it.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "waiting",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Newport did it."
+        },
+        {
+          "who": "WOOD",
+          "text": "..."
+        },
+        {
+          "who": "GULLY",
+          "text": "Say it."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's a good frame, Gully."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a stocky man waiting for a verdict from a thin man who is looking at a frame",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Maria, from the kitchen door, the head-shake — at Gully, for asking. Wood still looking at the rough. The dog asleep on a couch he's not allowed on.",
+      "characters": [
+        {
+          "id": "extra_maria",
+          "pose": "head-shake at Gully",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "still looking",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "on the couch",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a practical woman in a kitchen doorway giving a small head-shake to a stocky man while a thin man keeps looking at a framed sketch, a dog asleep on the couch, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; the Sundays the point now",
+    "palette": "limited; Sundays in watercolor",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "'It's a good frame, Gully.' The head-shake. He'll re-do it in 2011."
+}

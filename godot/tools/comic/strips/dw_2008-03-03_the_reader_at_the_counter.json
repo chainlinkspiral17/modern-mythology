@@ -1,0 +1,154 @@
+{
+  "id": "dw_2008-03-03_the_reader_at_the_counter",
+  "title": "The reader at the counter",
+  "strip": "drift_wood",
+  "date": "2008-03-03",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Newsprint",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Newsprint · deepening)",
+  "logline": "Monday. A stranger at Gully's reads the strip in the weekly and laughs. Not a tourist; a local. The first local reader the strip has seen since the laundromat. Wood draws the laugh and not the man.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby",
+    "extra_reader"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. A LOCAL in a rain hood at the counter with the weekly. WOOD on the end stool, three seats down. GULLY. BARNABY.",
+      "characters": [
+        {
+          "id": "extra_reader",
+          "pose": "in a rain hood, reading",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "three seats down",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the weekly"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a local in a rain hood reading a newspaper at a bait-shop counter three stools from a thin man, a man in an apron, a dog",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The laugh. Drawn as a small shape over the hood. The paper shaking.",
+      "characters": [
+        {
+          "id": "extra_reader",
+          "pose": "laughing",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "hh",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close-up of a newspaper shaking in a reader's hands with a small laugh shape above a rain hood",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood not looking. Looking. The pad: the laugh shape, alone, no face.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing the laugh",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the pad: a laugh shape"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man drawing a small laugh shape on a pad without drawing the person who laughed",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The local folding the paper. Leaving it on the counter for the next one. Gully sliding it down to Wood. Wood sliding it back up.",
+      "characters": [
+        {
+          "id": "extra_reader",
+          "pose": "leaving",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "sliding the paper",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "sliding it back",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the weekly"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a newspaper being slid along a counter from a man in an apron to a thin man who slides it back, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "A local laughs. The laugh drawn, not the man. The paper slid back."
+}
