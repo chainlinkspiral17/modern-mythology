@@ -114,6 +114,33 @@ a page says "fifty" check it against the year first.
 
 ## Recent lessons
 
+### 2026-09-26 · Deepening xii · past a thousand · 961 → 1,024
+
+Fifty-seven private pages and six Sundays. The private pages took the
+unsequenced count to 105, The Bird to 32, The Mill to 30, and gave An
+August, The Reading Room, The Boxes and The Tavern their next pages; the
+Sundays filled 2004 and 2006 to twelve and thirteen. The queue-then-check
+shape caught a duplicate date inside the batch itself (two pages on
+2022-07-24) before a file was written.
+
+- **Keep the batch script in the scratchpad, not only in the heredoc.**
+  When the check fails the fix is one edit and a re-run, not a re-send of
+  sixty pages. The Sunday half of the same command had already written
+  its six files; independent halves should be independent scripts.
+- **Two Rain pages a year is fine when they are different pages.** The
+  Rain, 2024 (the jars) and the bird on the sill a week later are both
+  January pages; the fixture and the sequence can share a month as long
+  as they do not share a date or a subject.
+- **The private volume's small canon is now dense enough to check
+  against.** Two leashes, two cans, two tins, two mugs, two chairs, two
+  keys: each pair has its first page and its second, and a note that
+  names the other. New pages should look for the pair before inventing a
+  third.
+- **Sundays in a thin year go to the fixtures, not the arcs.** 2004 got a
+  Bad Color flat, a seawall from the water and the first mailbox Sunday;
+  2006 got nine flyers, Last Bell with the stick chorus and the logging
+  road. The arcs in those years are already at their key weeks.
+
 ### 2026-09-26 · Deepening xi · the thin sequences and the private seasons · 904 → 961
 
 Fifty-seven private pages: The Bird to 26, The Mill to 24, The Route

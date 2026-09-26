@@ -1,0 +1,49 @@
+{
+  "id": "ro_2022-07-31_the_glass_no_reflection",
+  "title": "The glass, no reflection",
+  "strip": "roflcopter",
+  "date": "2022-07-31",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Reading Room",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xii)",
+  "logline": "The reading room's glass door from the hall, and in it, this time, no reflection — the sequence's first page had him in the glass; the last takes him out. The room beyond, the lamp on, the chair empty.",
+  "cast": [],
+  "location": "dw_library_back_room",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A reading room's glass door from a hallway with no reflection in it, the room beyond with a green lamp lit and an empty chair, metal shelves.",
+      "characters": [],
+      "props": [
+        "the glass, empty"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a library reading room's glass door seen from a hallway with no reflection in the glass, the room beyond with a green-shaded lamp lit and an empty chair, metal shelves, no words",
+        "negative": "",
+        "notes": "Compare ro_2022-03-06 (his reflection in the glass)."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Taken out of the glass.",
+  "layout": "single page, no borders"
+}

@@ -1,0 +1,58 @@
+{
+  "id": "ro_2025-06-01_the_stool_by_the_jukebox",
+  "title": "The stool by the jukebox",
+  "strip": "roflcopter",
+  "date": "2025-06-01",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Tavern, Named",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xii)",
+  "logline": "A stool by the jukebox with the wall behind it — the wall his garage is on the other side of. A man in plaid on the stool from behind, his hand flat on the plaster. The other side of twenty years.",
+  "cast": [
+    "wood_44"
+  ],
+  "location": "dw_tavern",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Inside the tavern: a stool beside a chrome jukebox against a plaster wall, a man in plaid from behind on it with one hand flat on the plaster, the jukebox's cracked light.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "on the stool, hand on the wall",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the jukebox",
+        "the wall"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, inside a tavern a man in plaid flannel seen from behind on a stool beside a chrome jukebox with one hand flat on the plaster wall, the jukebox's cracked light glowing, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "His hand on the other side of the wall.",
+  "layout": "single page, no borders"
+}

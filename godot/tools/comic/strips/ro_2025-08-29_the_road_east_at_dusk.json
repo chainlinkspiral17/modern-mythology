@@ -1,0 +1,49 @@
+{
+  "id": "ro_2025-08-29_the_road_east_at_dusk",
+  "title": "The road east at dusk",
+  "strip": "roflcopter",
+  "date": "2025-08-29",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "An August",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xii)",
+  "logline": "The logging road at dusk, two days after the girl walked up it: empty, the glow above the trees, a zine's page blown against the gate's chain. The page lets the summer go up the road.",
+  "cast": [],
+  "location": "dw_logging_road",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A gravel logging road at dusk climbing toward trees with a warm glow above them, a chained gate with a loose zine page caught against the chain, no one.",
+      "characters": [],
+      "props": [
+        "the page on the chain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a gravel logging road at dusk climbing toward trees with a warm glow above them and a chained gate with a loose paper page caught against the chain, no people, no words legible",
+        "negative": "",
+        "notes": "Compare ro_2025-08-27."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The summer goes up the road.",
+  "layout": "single page, no borders"
+}

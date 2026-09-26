@@ -1,0 +1,111 @@
+{
+  "id": "dw_2006-10-08_the_logging_road_2006",
+  "title": "Sunday · the logging road, October 2006",
+  "strip": "drift_wood",
+  "date": "2006-10-08",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2006 · Sundays · deepening xii)",
+  "logline": "The logging road in October, yellow maples in the cut, a man and a dog walking up, the gate at the top. Between Message Boards and the Protocol; the strip goes up the hill to be quiet.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_logging_road",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: a gravel road climbing through a clear-cut with yellow maples at the edges.",
+      "characters": [],
+      "props": [
+        "the road"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a gravel logging road climbing through a clear-cut with yellow maples at its edges in October, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Cut"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: a man in a chore coat and a dog walking up the road, small.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "walking up",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "ahead",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small man in a canvas chore coat and a dog walking up a gravel logging road, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Up"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the gate at the top with its chain, the ridge beyond, the two of them stopped.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "stopped",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "sitting",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the gate"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man and a dog stopped at a chained steel gate at the top of a logging road with a wooded ridge beyond, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Gate"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "Up the hill to be quiet.",
+  "layout": "tiers, portrait page"
+}

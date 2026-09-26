@@ -1,0 +1,69 @@
+{
+  "id": "ro_2024-07-21_the_kite",
+  "title": "The kite",
+  "strip": "roflcopter",
+  "date": "2024-07-21",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xii)",
+  "logline": "Tourist Season: a kite over the seawall, a tourist child holding the line, and its shadow on the wall crossing a man in plaid from behind and an old dog. The shadow's the only touch.",
+  "cast": [
+    "wood_44",
+    "barnaby_ii",
+    "extra_tourists"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A seawall in July with a kite high above it on a line held by a tourist child, the kite's shadow falling across a man in plaid seen from behind and a small three-legged dog at his boot.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "from behind",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_tourists",
+          "pose": "a child with a kite",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the kite's shadow"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a seawall in July with a kite high above on a line held by a child and the kite's shadow falling across a man in plaid flannel seen from behind with a small three-legged dog at his boot, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The shadow's the only touch.",
+  "layout": "single page, no borders"
+}

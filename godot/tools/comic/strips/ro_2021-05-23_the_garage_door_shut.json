@@ -1,0 +1,49 @@
+{
+  "id": "ro_2021-05-23_the_garage_door_shut",
+  "title": "The garage door, shut",
+  "strip": "roflcopter",
+  "date": "2021-05-23",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xii)",
+  "logline": "The garage from the alley in May: the door shut, the window dark by day, the dog's bowl outside, full. Someone fills it. The page doesn't show who.",
+  "cast": [],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A plain garage door shut beside a tavern's back wall in May light, its small window dark, a dog's bowl outside the door, full of water.",
+      "characters": [],
+      "props": [
+        "the bowl, full"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a plain shut garage door beside a tavern's back wall in May light with a dark window and a dog's bowl full of water outside it, no people, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Absent. The bowl full.",
+  "layout": "single page, no borders"
+}

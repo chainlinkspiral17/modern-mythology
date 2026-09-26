@@ -1,0 +1,63 @@
+{
+  "id": "ro_2025-08-22_the_eye_sign_from_inside",
+  "title": "The eye sign, from inside",
+  "strip": "roflcopter",
+  "date": "2025-08-22",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "An August",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xii)",
+  "logline": "The eye sign from inside the shop window, backward, and through it the street: the seawall, the crow, a man in plaid from behind with an old dog, looking in. The page is on the other side of the town's other story, looking out.",
+  "cast": [
+    "wood_44",
+    "barnaby_ii"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "From inside a shop: a hand-painted eye sign in the window seen from its back, and through the glass a main street with a seawall, a crow, and a man in plaid from behind with an old three-legged dog looking in.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "outside, looking in, from behind",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the eye sign, backward"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, from inside a shop, a hand-painted eye sign seen from its back in the window and through the glass a street with a seawall and a crow and a man in plaid flannel seen from behind with an old three-legged dog looking in, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "From the other side, looking out.",
+  "layout": "single page, no borders"
+}

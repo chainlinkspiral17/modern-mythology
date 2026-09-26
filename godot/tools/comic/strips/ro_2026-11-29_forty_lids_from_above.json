@@ -1,0 +1,57 @@
+{
+  "id": "ro_2026-11-29_forty_lids_from_above",
+  "title": "Forty lids, from above",
+  "strip": "roflcopter",
+  "date": "2026-11-29",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Boxes",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xii)",
+  "logline": "The boxes from above, straight down, forty lids in rows, the numbers, the register lines, the pup on Box 1 again as a small shape. The count, drawn as a floor plan.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Straight down onto forty cardboard box lids arranged in rows on a garage floor and along a wall, numbered, pencilled lines on the newer ones, an old three-legged dog curled on the first.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "on Box 1, from above",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "forty lids"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a straight-down view of forty numbered cardboard box lids arranged in rows on a garage floor with pencilled lines on the newer ones and an old three-legged dog curled on the first, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The count as a floor plan.",
+  "layout": "single page, no borders"
+}

@@ -1,0 +1,57 @@
+{
+  "id": "ro_2023-04-09_the_ramp_rebuilt",
+  "title": "The ramp, rebuilt",
+  "strip": "roflcopter",
+  "date": "2023-04-09",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xii)",
+  "logline": "Gully's ramp with new planks, April 2023, pale beside the old gray ones, the pup, eight, on it. Built in 2014 for a dog with three legs; rebuilt for the same dog. The page counts the pale boards: three.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A plank ramp at a shingle shack's door with three new pale boards among the old gray ones, a small three-legged dog standing on the new boards, sawdust on the dock.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "on the new boards",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "three new planks"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a plank ramp at a shingle shack's door with three new pale boards among old gray ones, a small three-legged dog standing on the new boards and sawdust on the dock, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Three pale boards.",
+  "layout": "single page, no borders"
+}

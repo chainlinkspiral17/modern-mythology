@@ -1,0 +1,49 @@
+{
+  "id": "ro_2022-07-03_the_green_lamp_off",
+  "title": "The green lamp, off",
+  "strip": "roflcopter",
+  "date": "2022-07-03",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Reading Room",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xii)",
+  "logline": "The reading room at closing: the green lamp off, the chair pushed in, the cardigan gone from it, the folder back on the shelf with its spine out. The page from the door, the light off behind it.",
+  "cast": [],
+  "location": "dw_library_back_room",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A library reading room at closing: a green-shaded lamp switched off, a chair pushed in with no cardigan on it, metal shelves with a gray folder's spine among the boxes, dim.",
+      "characters": [],
+      "props": [
+        "the lamp, off"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a library reading room at closing with a green-shaded lamp switched off, a chair pushed in and metal shelves holding archive boxes and one gray folder's spine, dim light, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The cardigan gone from the chair.",
+  "layout": "single page, no borders"
+}
