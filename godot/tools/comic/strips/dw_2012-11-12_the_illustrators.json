@@ -1,0 +1,134 @@
+{
+  "id": "dw_2012-11-12_the_illustrators",
+  "title": "The illustrators",
+  "strip": "drift_wood",
+  "date": "2012-11-12",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Illustrators",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014)",
+  "logline": "Letters from strangers who draw. Wood pins them up. The strip's first awareness that someone is looking closely.",
+  "cast": [
+    "wood_34",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. Three envelopes on the drafting table, hand-addressed, foreign stamps: Lyon, Montreal, Osaka. WOOD opening one. BARNABY in the bed.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "opening a letter",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "three envelopes with foreign stamps"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man at a garage drafting table opening one of three hand-addressed envelopes with foreign stamps, an old dog in a bed beneath, clean confident ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The letter: a drawing, not words. Someone in Lyon has redrawn 'Lanes' in their own hand. Under it, one line: 'the third tier. how did you know to leave it empty.'",
+      "characters": [],
+      "props": [
+        "a letter with a redrawn Sunday tier and one handwritten line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a letter that is mostly a stranger's careful ink redrawing of a bowling-alley night scene with a single handwritten line beneath",
+        "negative": "",
+        "notes": "Letter after: 'the third tier. how did you know to leave it empty.'"
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood holding the drawing up beside his own 'Lanes' on the wall. Comparing. Someone in Lyon drew the ridge glow too.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "holding a letter beside a page on the wall",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "'Lanes' on the wall",
+        "the letter"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man holding a stranger's drawing up beside his own framed watercolor on a garage wall, comparing them closely, no words",
+        "negative": "",
+        "notes": "The Lyon redraw includes the ridge glow. The strip notes it by not noting it."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The corkboard. Three drawings pinned. Wood at the table, and for the first time in the run he is drawn looking over his shoulder at the reader's side of the panel — as if someone's there.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking over his shoulder toward the reader",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "corkboard with three strangers' drawings"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man at a drafting table glancing over his shoulder toward the viewer as if aware of being watched, three strangers' drawings pinned on a corkboard behind, an old dog, no words",
+        "negative": "",
+        "notes": "The only over-the-shoulder-at-the-reader panel in the public run."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "Someone is looking closely. Lyon drew the glow. Wood looks over his shoulder, once."
+}

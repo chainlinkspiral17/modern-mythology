@@ -1,0 +1,178 @@
+{
+  "id": "dw_2013-03-11_the_ring_1",
+  "title": "The ring, i",
+  "strip": "drift_wood",
+  "date": "2013-03-11",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Ring",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014)",
+  "logline": "Chloe visits with a ring. Wood draws it too small to see. For a week.",
+  "cast": [
+    "wood_34",
+    "chloe_34",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. CHLOE at the counter — thirty-three, tailored gray, hair pinned, the eyeliner faint now — her left hand around a cup. WOOD on the stool. BARNABY under it. On her hand, drawn so small it could be a fleck of ink: a ring.",
+      "characters": [
+        {
+          "id": "chloe_34",
+          "pose": "at the counter, hand on a cup",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "on the stool",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "cup",
+        "a ring drawn as a dot"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "I'm here till Sunday. Julian's in Seattle. He sends—"
+        },
+        {
+          "who": "WOOD",
+          "text": "His regards. I got the card."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman in a tailored gray sweater with her dark hair pinned up holding a cup at a bait-and-espresso counter, a thin man on the end stool, an old dog beneath, razor-sharp ink, the ring on her hand drawn as a barely visible dot",
+        "negative": "",
+        "notes": "The ring is drawn as a single dot. Not a ring. For five dailies."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Her hand on the cup. The dot.",
+      "characters": [
+        {
+          "id": "chloe_34",
+          "pose": "hand on cup",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the dot"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a woman's hand around a coffee cup, a tiny ink dot where a ring would be, clean line",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Chloe, catching him looking at her hand.",
+      "characters": [
+        {
+          "id": "chloe_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "looking away",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "You can see it."
+        },
+        {
+          "who": "WOOD",
+          "text": "See what."
+        },
+        {
+          "who": "CHLOE",
+          "text": "Wood."
+        },
+        {
+          "who": "WOOD",
+          "text": "I see a cup."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman catching a thin man looking at her hand, the man looking away at nothing",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The two of them at the counter from behind. Gully in the background pretending to clean the machine. The dot on her hand, from this angle, invisible. That's the strip's position.",
+      "characters": [
+        {
+          "id": "chloe_34",
+          "pose": "from behind",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "from behind",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "cleaning the machine, background",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman and a thin man seen from behind at a shop counter, a stocky man in the background wiping an espresso machine, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "The ring as a dot. 'I see a cup.' Five dailies of refusal."
+}
