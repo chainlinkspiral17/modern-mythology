@@ -40,6 +40,19 @@
   .key { font: 10px monospace; padding: 1px 6px; border: 1px solid var(--border); border-radius: 3px; color: var(--fg-dim); }
   .key.ok { color: var(--green-ok); border-color: var(--green-ok); }
   .key.bad { color: var(--red-bad); border-color: var(--red-bad); }
+  .rec-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin-top: 10px; }
+  .rec { background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; padding: 8px; display: flex; flex-direction: column; gap: 6px; }
+  .rec img { width: 100%; aspect-ratio: 1; object-fit: contain; background: #000; border-radius: 3px; }
+  .rec .none { aspect-ratio: 1; display: grid; place-items: center; color: var(--fg-dim); background: #000; font-size: 11px; }
+  .rec code { font-size: 10px; color: var(--fg-dim); word-break: break-all; }
+  .rec input, .rec select { width: 100%; box-sizing: border-box; background: var(--code-bg); color: var(--fg); border: 1px solid var(--border); border-radius: 3px; padding: 5px; font: 11px monospace; }
+  .rec label { font-size: 11px; color: var(--fg-dim); display: flex; gap: 6px; align-items: center; }
+  .rec .msg { font-size: 11px; min-height: 14px; }
+  .rec .msg.ok { color: var(--green-ok); } .rec .msg.err { color: var(--red-bad); }
+  .rec.done { opacity: 0.45; }
+  button.save { margin-left: 10px; letter-spacing: 1px; }
+  button.save.dirty { background: var(--red-bad); color: #fff; }
+  button.save.clean { background: transparent; color: var(--green-ok); border: 1px solid var(--green-ok); }
 
   .banner {
     margin: 12px 20px 0; padding: 10px 14px; border-left: 3px solid var(--brass);
@@ -163,9 +176,10 @@
   <div class="conn">
     <div id="conn-dot" class="conn-dot"></div>
     <span id="conn-text">not connected</span>
-    <a href="recovered.html" title="assign models pulled back from the Meshy account to their characters" style="color:var(--brass);margin-right:10px;font-size:11px;letter-spacing:1px">RECOVERED</a>
+    <button id="btn-recovered" class="secondary small" title="models pulled back from the Meshy account (meshy_recover.py fetch-all) waiting to be given to a character" style="display:none">recovered</button>
     <span class="keys" id="keys" title="click to set / test API keys" style="cursor:pointer"></span>
     <button id="btn-keys" class="secondary small">keys</button>
+    <button id="btn-save" class="save small" title="git add + commit + push everything the tool produced (models, chosen pictures, manifest, roster) to the current branch" style="display:none">SAVE</button>
   </div>
 </header>
 
@@ -187,6 +201,14 @@
     <span style="font-size:11px">CLI: <code>python3 godot/tools/meshy_pipeline.py doctor</code></span>
   </div>
   <div id="keys-status" style="margin-top:8px;font:11px monospace;white-space:pre-wrap"></div>
+</div>
+
+<div id="recovered-panel" class="banner" style="display:none">
+  <strong>Recovered models.</strong> Pulled back from the Meshy account into <code>concept/meshy/recovered/</code> by
+  <code>python3 godot/tools/meshy_recover.py fetch-all --days 7</code>. They are not in the game until given to a character:
+  pick one and click <em>assign</em> (the GLB moves to the character's canonical path, the picture becomes its front image).
+  Anything left here is kept on disk, as it is, until you decide.
+  <div class="rec-grid" id="rec-grid"></div>
 </div>
 
 <div id="banner-offline" class="banner" style="display:none">
@@ -376,6 +398,8 @@ async function boot() {
     }
     log('ok', `Roster loaded from the runner: ${state.roster.entries.length} entries.`);
     startJobPolling();
+    startGitPolling();
+    loadRecovered();
   } catch (err) {
     state.connected = false;
     $('banner-offline').style.display = '';
@@ -654,6 +678,95 @@ async function api(method, path, body, ctype) {
   return data;
 }
 
+// ── SAVE (git add + commit + push, from the runner) ──────────────
+let gitTimer = null;
+function renderGit(st) {
+  const b = $('btn-save'); if (!b) return;
+  b.style.display = '';
+  if (st.error) { b.className = 'save small'; b.textContent = 'SAVE (no git)'; b.disabled = true; b.title = st.error; return; }
+  const n = st.unsaved.length, up = st.unpushed;
+  b.disabled = false;
+  if (n === 0 && up === 0) { b.className = 'save small clean'; b.textContent = 'SAVED ✓'; b.title = `everything the tool produced is committed and pushed to origin/${st.branch}`; }
+  else {
+    b.className = 'save small dirty';
+    b.textContent = n ? `SAVE · ${n} unsaved` : (up > 0 ? `SAVE · ${up} unpushed` : 'SAVE · not pushed yet');
+    b.title = (n ? `${n} file(s) not in git yet:\n${st.unsaved.slice(0, 12).join('\n')}${n > 12 ? '\n…' : ''}` : `${up} commit(s) not on the server`) + `\n\nclick: commit + push to origin/${st.branch}`;
+  }
+}
+async function refreshGit() {
+  if (!state.connected) return;
+  try { renderGit(await api('GET', '/api/git')); } catch (e) { /* runner busy — next tick */ }
+}
+function startGitPolling() { refreshGit(); if (!gitTimer) gitTimer = setInterval(refreshGit, 20000); }
+
+// ── RECOVERED (models fetched back from the Meshy account, not yet anyone's) ──
+// (esc() is defined above)
+function recHeroes() {
+  return (state.roster?.entries || []).filter(e => e.kind !== 'prop')
+    .map(e => ({ slug: e.slug, name: e.name, tag: e.tag, kind: e.kind, base: e.base, look: e.look, installed: !!e.status?.glb_installed }))
+    .sort((a, b) => a.name.localeCompare(b.name));
+}
+function recOptions(filter) {
+  const q = (filter || '').toLowerCase();
+  return recHeroes().filter(h => !q || (h.slug + ' ' + h.name + ' ' + (h.tag || '')).toLowerCase().includes(q))
+    .map(h => `<option value="${esc(h.slug)}">${esc(h.name)}${h.installed ? ' ✓' : ''}${h.base ? ' ↳ ' + esc(h.look?.label || 'look') : ''}${h.kind === 'demon' ? ' (demon)' : ''}</option>`).join('');
+}
+function recCard(m) {
+  const c = document.createElement('div'); c.className = 'rec';
+  c.innerHTML = `${m.thumb ? `<img src="${m.thumb}" alt="">` : '<div class="none">no thumbnail</div>'}
+    <code>${esc(m.task_id)} · ${(m.size / 1048576).toFixed(1)} MB</code>
+    <input placeholder="filter characters…">
+    <select>${recOptions('')}</select>
+    <label><input type="checkbox" class="ow"> replace a model already there</label>
+    <button class="small">assign</button>
+    <div class="msg"></div>`;
+  const filt = c.querySelector('input[placeholder]'), sel = c.querySelector('select'), btn = c.querySelector('button'), msg = c.querySelector('.msg');
+  filt.addEventListener('input', () => { sel.innerHTML = recOptions(filt.value); });
+  btn.addEventListener('click', async () => {
+    btn.disabled = true; msg.className = 'msg'; msg.textContent = 'assigning…';
+    try {
+      const r = await api('POST', '/api/assign', { task_id: m.task_id, slug: sel.value, overwrite: c.querySelector('.ow').checked });
+      msg.className = 'msg ok'; msg.textContent = `→ ${r.glb}`; c.classList.add('done');
+      log('ok', `Recovered model ${m.task_id.slice(0, 8)}… assigned to ${r.slug} → ${r.glb}`);
+      state.recoveredLeft = Math.max(0, (state.recoveredLeft || 1) - 1); renderRecoveredButton();
+      await refreshRoster(); refreshGit();
+    } catch (err) { msg.className = 'msg err'; msg.textContent = err.message; btn.disabled = false; }
+  });
+  return c;
+}
+function renderRecoveredButton() {
+  const b = $('btn-recovered'); if (!b) return;
+  const n = state.recoveredLeft || 0;
+  b.style.display = ''; b.textContent = n ? `recovered · ${n}` : 'recovered · 0';
+}
+async function loadRecovered() {
+  if (!state.connected) return;
+  try {
+    const rec = await api('GET', '/api/recovered');
+    const grid = $('rec-grid'); grid.innerHTML = '';
+    if (!rec.recovered.length) grid.innerHTML = '<div style="color:var(--fg-dim);padding:12px">nothing in recovered/ — run: <code>python3 godot/tools/meshy_recover.py fetch-all --days 7</code></div>';
+    for (const m of rec.recovered) grid.appendChild(recCard(m));
+    state.recoveredLeft = rec.recovered.length; renderRecoveredButton();
+  } catch (e) { /* no runner */ }
+}
+function toggleRecovered() {
+  const k = $('recovered-panel'); const show = k.style.display === 'none';
+  k.style.display = show ? '' : 'none';
+  if (show) loadRecovered();
+}
+async function saveToGit() {
+  const b = $('btn-save'); b.disabled = true; b.textContent = 'SAVING…';
+  log('info', 'SAVE: committing and pushing…');
+  try {
+    const r = await api('POST', '/api/git/push', {});
+    for (const s of r.steps) log('ok', `SAVE: ${s}`);
+    renderGit(r.status);
+  } catch (err) {
+    log('err', `SAVE failed: ${err.message}`);
+    refreshGit();
+  }
+}
+
 async function refreshRoster(keepSelection = true) {
   if (!state.connected) return;
   const data = await api('GET', '/api/roster');
@@ -798,6 +911,8 @@ function bind() {
   const toggleKeys = () => { const k = $('keys-panel'); k.style.display = k.style.display === 'none' ? '' : 'none'; if (k.style.display === '') renderKeyStatus(state.roster?.key_report || {}); };
   $('btn-keys').addEventListener('click', toggleKeys);
   $('keys').addEventListener('click', toggleKeys);
+  $('btn-save').addEventListener('click', saveToGit);
+  $('btn-recovered').addEventListener('click', toggleRecovered);
   $('btn-keys-save').addEventListener('click', saveKeys);
   $('btn-keys-test').addEventListener('click', testKeys);
   $('o-provider').addEventListener('change', onProviderChange);

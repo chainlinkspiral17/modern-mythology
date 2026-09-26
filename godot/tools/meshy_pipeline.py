@@ -383,6 +383,90 @@ def _git_head():
         return "?"
 
 
+# ── SAVE TO GIT (the page's button) ─────────────────────────────────
+# What Hero Studio produces that git should keep: the installed GLBs,
+# each character's chosen front image + the manifest (un-ignored
+# 2026-09-26), and the roster. Candidates and recovered/ stay ignored.
+GIT_SAVE_PATHS = [
+    "godot/assets/3d/characters",
+    "godot/assets/3d/props",
+    "godot/assets/concept/meshy",
+    "godot/tools/meshy_roster.json",
+]
+_git_lock = threading.Lock()
+
+
+def _git(*args, timeout=60):
+    import subprocess
+    r = subprocess.run(["git", "-C", str(REPO.parent), *args], capture_output=True, text=True, timeout=timeout)
+    return r.returncode, (r.stdout or "").strip(), (r.stderr or "").strip()
+
+
+def git_status():
+    """{branch, head, unsaved: [paths], unpushed: n, error?} for the page's badge."""
+    try:
+        code, branch, err = _git("rev-parse", "--abbrev-ref", "HEAD", timeout=10)
+        if code:
+            return {"error": err or "not a git checkout", "unsaved": [], "unpushed": 0}
+        _, porcelain, _ = _git("status", "--porcelain", "--untracked-files=all", "--", *GIT_SAVE_PATHS, timeout=30)
+        unsaved = [ln[3:] for ln in porcelain.splitlines() if ln.strip()]
+        unpushed = 0
+        code, out, _ = _git("rev-list", "--count", "@{u}..HEAD", timeout=10)
+        if code == 0 and out.isdigit():
+            unpushed = int(out)
+        elif branch != "HEAD":
+            code2, out2, _ = _git("rev-list", "--count", f"origin/{branch}..HEAD", timeout=10)
+            unpushed = int(out2) if code2 == 0 and out2.isdigit() else -1   # -1: no remote branch yet
+        return {"branch": branch, "head": _git_head(), "unsaved": unsaved, "unpushed": unpushed}
+    except Exception as ex:  # noqa: BLE001
+        return {"error": str(ex), "unsaved": [], "unpushed": 0}
+
+
+def git_save_push(message=None):
+    """git add the Hero Studio paths, commit, push to the current branch.
+    A rejected push (someone else pushed) is rebased once and retried.
+    Returns what happened, step by step, for the page's log."""
+    steps = []
+    with _git_lock:
+        st = git_status()
+        if st.get("error"):
+            return {"ok": False, "steps": [st["error"]], "status": st}
+        branch = st["branch"]
+        if branch == "HEAD":
+            return {"ok": False, "steps": ["the checkout is not on a branch (detached HEAD) — check out a branch first"], "status": st}
+        if st["unsaved"]:
+            code, out, err = _git("add", "-A", "--", *GIT_SAVE_PATHS)
+            if code:
+                return {"ok": False, "steps": [f"git add failed: {err}"], "status": git_status()}
+            n = len(st["unsaved"])
+            msg = message or f"Hero Studio: {n} file{'s' if n != 1 else ''} saved from the tool ({datetime.now().strftime('%Y-%m-%d %H:%M')})"
+            code, out, err = _git("commit", "-q", "-m", msg)
+            if code:
+                return {"ok": False, "steps": [f"git commit failed: {err or out}"], "status": git_status()}
+            steps.append(f"committed {n} file{'s' if n != 1 else ''}: {msg}")
+        else:
+            steps.append("nothing new to commit")
+        for attempt in (1, 2):
+            code, out, err = _git("push", "-u", "origin", f"HEAD:{branch}", timeout=300)
+            if code == 0:
+                steps.append(f"pushed to origin/{branch}")
+                return {"ok": True, "steps": steps, "status": git_status()}
+            text = (err or out)
+            if attempt == 1 and ("rejected" in text or "fetch first" in text or "non-fast-forward" in text):
+                steps.append("push rejected (the branch moved on the server) — rebasing onto it")
+                # --autostash: the Deck usually has an unrelated dirty file (project.godot); it must not block the save
+                code2, out2, err2 = _git("pull", "--rebase", "--autostash", "origin", branch, timeout=300)
+                if code2:
+                    _git("rebase", "--abort", timeout=30)
+                    steps.append(f"rebase failed and was undone: {(err2 or out2)[-400:]}")
+                    return {"ok": False, "steps": steps, "status": git_status()}
+                steps.append("rebased; pushing again")
+                continue
+            steps.append(f"push failed: {text[-400:]}")
+            return {"ok": False, "steps": steps, "status": git_status()}
+    return {"ok": False, "steps": steps, "status": git_status()}
+
+
 def cmd_doctor(args):
     print(f"repo: {REPO.parent}   git: {_git_head()}   python: {sys.version.split()[0]}")
     print(f"key files live in: {rel(TOOLS)}/  (.google_key  .runway_key  .meshy_key — gitignored)\n")
@@ -636,7 +720,7 @@ def texture_prompt_for(entry):
 # ── Recovered models (2026-09-26) ───────────────────────────────────────────
 # meshy_recover.py fetch-all pulls the account's finished tasks into
 # concept/meshy/recovered/<task>.glb (+ <task>.png thumbnail) when the
-# runner's own files are lost; the page hero_uploader/recovered.html lets
+# runner's own files are lost; the main page (header: "recovered · n") lets
 # each be assigned to a roster entry, which is what these two do.
 
 RECOVERED_DIR = CONCEPT_ROOT / "recovered"
@@ -1316,6 +1400,8 @@ def make_handler(runner, roster_path):
             p = urllib.parse.urlparse(self.path).path
             if p == "/api/recovered":
                 return self._json({"recovered": list_recovered()})
+            if p == "/api/git":
+                return self._json(git_status())
             if p == "/api/roster":
                 roster = load_roster(roster_path)
                 for e in roster["entries"]:
@@ -1370,6 +1456,14 @@ def make_handler(runner, roster_path):
             p = urllib.parse.urlparse(self.path).path
             roster = load_roster(roster_path)
             by_slug = {e["slug"]: e for e in roster["entries"]}
+            if p == "/api/git/push":
+                # the SAVE button: add + commit + push what the tool produced
+                try:
+                    req = json.loads(self._body().decode("utf-8") or "{}")
+                except json.JSONDecodeError:
+                    req = {}
+                res = git_save_push(str(req.get("message") or "").strip() or None)
+                return self._json(res, 200 if res.get("ok") else 409)
             if p == "/api/assign":
                 # a recovered model (concept/meshy/recovered/<task>.glb) → a roster entry's canonical GLB
                 try:

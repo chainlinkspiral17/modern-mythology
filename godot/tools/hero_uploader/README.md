@@ -168,8 +168,8 @@ cd /home/deck/Downloads/modern-mythology && python3 godot/tools/meshy_recover.py
 ```
 
 They land in `concept/meshy/recovered/<task_id>.glb` + `.png` and
-are NOT in the game until named: the **RECOVERED** link in the
-page's header lists them with a character picker, or write a
+are NOT in the game until named: the **recovered · n** button in the
+page's header opens them with a character picker, or write a
 `<task_id> <slug>` file and run
 `meshy_recover.py assign <file>` (the 2026-09-25 batch's is
 `godot/tools/recovered_mapping_2026-09-26.txt`). Meshy runs the
@@ -181,6 +181,27 @@ adjacent tasks; the later one is the redo. Whatever is left in
 Lesson: **commit the GLBs as they install** (the heroes folder is
 tracked) and never hand the user a `reset --hard` while the runner's
 outputs are uncommitted.
+
+## SAVE — the button that puts it in git (2026-09-26)
+
+The header's **SAVE** button is the assurance that closing the tool
+loses nothing: it runs `git add` on what the tool produces (the
+installed GLBs, each character's chosen front image, the manifest,
+the roster), commits, and pushes to the branch the checkout is on.
+The badge polls every 20 s: red `SAVE · n unsaved` when files are
+not in git yet, `SAVE · n unpushed` when commits are local only,
+green `SAVED ✓` when the server has everything. A push rejected
+because the branch moved is rebased (with `--autostash`, so a dirty
+`project.godot` never blocks it) and pushed again; a rebase that
+fails is undone and reported in the log. Candidate images and
+`recovered/` are not saved (they stay ignored, by design).
+
+CLI equivalent of the badge and the button:
+
+```bash
+curl -s 127.0.0.1:8765/api/git
+curl -s -X POST 127.0.0.1:8765/api/git/push -d '{}'
+```
 
 ## Offline mode
 
