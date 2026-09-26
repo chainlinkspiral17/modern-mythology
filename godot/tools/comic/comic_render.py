@@ -69,7 +69,7 @@ MODELS = {
         {"id": "gen4_image_turbo", "label": "Gen-4 Image Turbo", "note": "faster/cheaper Gen-4; needs at least one reference image", "verified": True},
         {"id": "gemini_2.5_flash", "label": "Gemini 2.5 Flash Image (nano banana)", "note": "letters text well; references as @tags", "verified": True},
         {"id": "gemini_3_pro", "label": "Gemini 3 Pro Image (nano banana pro)", "note": "the concept run's model via the MCP; dev-API id may differ — edit if the API 400s", "verified": False},
-        {"id": "gpt_image_2", "label": "GPT Image 2", "note": "strong lettering and layout; id as listed by the MCP, unverified on the dev API", "verified": False},
+        {"id": "gpt_image_2", "label": "GPT Image 2", "note": "strong lettering and layout; its own size list (learned on first use)", "verified": True},
         {"id": "seedream_5", "label": "Seedream 5", "note": "unverified id", "verified": False},
         {"id": "ideogram_4", "label": "Ideogram 4", "note": "typography-first; unverified id", "verified": False},
         {"id": "flux_2", "label": "FLUX 2", "note": "unverified id", "verified": False},
@@ -162,20 +162,79 @@ def _ref_inline_parts(job, limit=4):
 
 # ── runway ───────────────────────────────────────────────────────────────
 
+RATIO_CACHE = HERE / "out" / "runway_ratios.json"
+
+
+def _load_ratio_cache():
+    try:
+        return json.loads(RATIO_CACHE.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+
+def _closest_ratio(want, allowed):
+    """Pick the allowed 'W:H' whose aspect is nearest the wanted 'W:H'."""
+    import math
+    def asp(r):
+        w, h = r.split(":"); return int(w) / int(h)
+    target = asp(want)
+    return min(allowed, key=lambda r: abs(math.log(asp(r) / target)))
+
+
+def _allowed_from_400(raw):
+    """Runway's validation error lists the values a field accepts; pull the
+    'W:H' list out of it so we can retry with the closest one."""
+    try:
+        d = json.loads(raw)
+    except (json.JSONDecodeError, TypeError):
+        return None
+    for issue in d.get("issues") or []:
+        vals = issue.get("values") or issue.get("options") or []
+        vals = [v for v in vals if isinstance(v, str) and ":" in v and v.replace(":", "").isdigit()]
+        if vals:
+            return vals
+    return None
+
+
 def runway_generate(job, key, model=RUNWAY_MODEL, seed=None):
-    ratio = job.get("runway_ratio", "1920:1080")
-    if ratio not in RUNWAY_RATIOS and model.startswith("gen4"):
-        ratio = "1920:1080"  # gen4 has a fixed ratio set; other models get the strip's ratio as-is
-    body = {"model": model, "promptText": job["prompt"][:1000], "ratio": ratio}
-    if seed is not None:
-        body["seed"] = int(seed)
-    ref_payload = _ref_uris(job, limit=3)
-    if ref_payload:
-        body["referenceImages"] = ref_payload
+    """Submit to text_to_image and poll. Ratios differ per model; the strip's
+    ratio is tried first (or the cached closest for this model), and on a
+    400 that lists the model's allowed sizes we pick the nearest and retry
+    once, caching the list in out/runway_ratios.json."""
+    want = job.get("runway_ratio", "1920:1080")
+    cache = _load_ratio_cache()
+    if model in cache and cache[model]:
+        ratio = _closest_ratio(want, cache[model])
+    elif model.startswith("gen4"):
+        ratio = want if want in RUNWAY_RATIOS else "1920:1080"
+    else:
+        ratio = want
     h = {"Authorization": f"Bearer {key}", "X-Runway-Version": RUNWAY_API_VERSION}
-    st, raw = _http(f"{RUNWAY_BASE}/text_to_image", "POST", h, body)
+    ref_payload = _ref_uris(job, limit=3)
+
+    def submit(r):
+        body = {"model": model, "promptText": job["prompt"][:1000], "ratio": r}
+        if seed is not None:
+            body["seed"] = int(seed)
+        if ref_payload:
+            body["referenceImages"] = ref_payload
+        return _http(f"{RUNWAY_BASE}/text_to_image", "POST", h, body)
+
+    st, raw = submit(ratio)
+    if st == 400:
+        allowed = _allowed_from_400(raw)
+        if allowed and ratio not in allowed:
+            cache[model] = allowed
+            try:
+                RATIO_CACHE.parent.mkdir(parents=True, exist_ok=True)
+                RATIO_CACHE.write_text(json.dumps(cache, indent=2), encoding="utf-8")
+            except OSError:
+                pass
+            ratio = _closest_ratio(want, allowed)
+            print(f"  · {model} doesn't take {want}; using its closest size {ratio} (list cached for next time)")
+            st, raw = submit(ratio)
     if st not in (200, 201):
-        raise RuntimeError(f"runway submit {st} (model {model}): {raw[:400]!r}")
+        raise RuntimeError(f"runway submit {st} (model {model}, ratio {ratio}): {raw[:400]!r}")
     task_id = json.loads(raw)["id"]
     t0 = time.time()
     while time.time() - t0 < POLL_TIMEOUT:
