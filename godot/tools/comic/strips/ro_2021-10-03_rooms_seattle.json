@@ -1,0 +1,52 @@
+{
+  "id": "ro_2021-10-03_rooms_seattle",
+  "title": "Rooms he never saw · Seattle",
+  "strip": "roflcopter",
+  "date": "2021-10-03",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "Rooms He Never Saw",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences)",
+  "logline": "Chloe's Seattle apartment, empty, boxes by the door. A room the author never entered, drawn from a postcard and the divorce.",
+  "cast": [],
+  "location": "dw_seattle_hill",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "An apartment interior, imagined: tall windows, a city gray beyond, hardwood, a room emptied to its outlets. Three cardboard boxes by the door. On one, in her cramped capitals: BOOKS. On the windowsill, propped: a hand-drawn map of a city, folded and unfolded so many times it's soft — his 1999 map, in a room he never saw, the only object left. No people.",
+      "characters": [],
+      "props": [
+        "tall windows",
+        "three boxes",
+        "BOOKS in her hand",
+        "the 1999 map on the sill"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an emptied apartment with tall windows onto a gray city, bare hardwood, three cardboard boxes by the door, and on the windowsill a hand-drawn map folded soft with age, no people, spare ink with muted slate watercolor, no panel borders, no words",
+        "negative": "",
+        "notes": "The 1999 map (#33), kept, in a room he invents. Letter BOOKS after."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Drawn from nothing. The map on the sill is the sequence's argument.",
+  "layout": "single page, no borders"
+}

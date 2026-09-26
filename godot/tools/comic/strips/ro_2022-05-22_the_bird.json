@@ -1,0 +1,71 @@
+{
+  "id": "ro_2022-05-22_the_bird",
+  "title": "The bird · first page",
+  "strip": "roflcopter",
+  "date": "2022-05-22",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Bird",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences)",
+  "logline": "A small rainbow bird on the seawall, wrong for the coast. Not explained. It stays.",
+  "cast": [
+    "wood_44",
+    "barnaby_ii",
+    "the_bird"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The seawall, May morning. WOOD from behind on the wall with BARNABY II. Three feet away, where the crow was in July: a small plump bird, teal head, rose breast, green wing, long teal tail. A painted bunting. The only saturated color on the page. Wood's head turned toward it, just; we see the side of his jaw. The pup hasn't noticed.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "from behind, head turned slightly",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "beside him, unaware",
+          "expression": ""
+        },
+        {
+          "id": "the_bird",
+          "pose": "on the wall",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "seawall",
+        "the bird",
+        "the bay"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man seen from behind sitting on a stone seawall with a three-legged dog, his head turned slightly toward a small plump rainbow songbird perched three feet away on the wall, the bird the only saturated color on a page of muted slate and ochre watercolor, no panel borders, no words",
+        "negative": "",
+        "notes": "The bird replaces the crow's spot. Never explained. The afterword will have to speak to it."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The Bird sequence begins. Where the crow was.",
+  "layout": "single page, no borders"
+}

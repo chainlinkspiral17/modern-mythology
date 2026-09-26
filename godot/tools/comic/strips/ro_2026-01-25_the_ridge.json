@@ -1,0 +1,67 @@
+{
+  "id": "ro_2026-01-25_the_ridge",
+  "title": "The ridge",
+  "strip": "roflcopter",
+  "date": "2026-01-25",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Ridge",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences)",
+  "logline": "The glow, drawn closer than the strip ever went. The woods east of town. The sequence stops before it arrives.",
+  "cast": [
+    "wood_44",
+    "barnaby_ii"
+  ],
+  "location": "dw_the_ridge",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A logging road climbing into the woods east of town, January, fog. WOOD from behind, small, walking up it with BARNABY II. Ahead, through the spruce, the glow — pale, sourceless, filling the fog between the trunks like a second dawn from the wrong direction. The road bends. The page ends before the bend. Every page in this sequence ends before the bend.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "from behind, small, walking up",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "logging road",
+        "fog",
+        "spruce",
+        "the glow between the trunks",
+        "the bend"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a logging road climbing into dark spruce woods in January fog, a man seen from behind walking up it with a small three-legged dog, and ahead between the trunks a pale sourceless glow filling the fog like a dawn from the wrong direction, the road bending out of sight, spare ink and slate watercolor, no panel borders, no words",
+        "negative": "",
+        "notes": "Sixteen pages; none arrives. Reserved: what's there. The strip never asks."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The Ridge sequence. Stops before the bend, every time.",
+  "layout": "single page, no borders"
+}

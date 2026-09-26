@@ -378,9 +378,12 @@ strip's own panel grid as the presentation. Decision reserved.
 
 ## Status
 
-Outlining, now fleshing out; the comic pipeline exists
-(`godot/tools/comic/`) with nineteen complete strip scripts and a
-renderer for the concept run. The brief is transcribed; the
+A rough batch of the full run exists: 255 strip scripts in
+`godot/tools/comic/strips/` from Drift Wood #1 (Sept 12, 1997) to
+the final ROFLCOPTER page (April 25, 2027), every year and every
+sequence represented, with the style guides in `drift_wood/style/`
+and a tagged reference registry. Next passes deepen the years the
+complete run budgets more pages to (Runs 3 and 6), and render. The brief is transcribed; the
 reference files are drafted from it and from the user's notes on
 cadence, the authorial rule, and the bookends; sample strips exist
 for every era. No scene JSON exists. The engine's volume slot exists and is locked.

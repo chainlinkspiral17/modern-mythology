@@ -1,0 +1,71 @@
+{
+  "id": "ro_2024-11-10_stone_head",
+  "title": "The stone head",
+  "strip": "roflcopter",
+  "date": "2024-11-10",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Stone Head",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences)",
+  "logline": "A moss-grown carved face by a shingle wall, half sunk in grass. The concept sheet's landmark. Drawn from every side; this is the front.",
+  "cast": [
+    "wood_44",
+    "barnaby_ii"
+  ],
+  "location": "dw_stone_head",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A bench by a shingle wall near the water. Beside it, half sunk in grass: a carved stone head the size of a barrel, moss over the eyes, a broad calm face. WOOD on the bench with a mug, from three-quarters behind — we get the side of his face for the first time in the private work. BARNABY II asleep against the stone. The bird on the head's crown.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "on the bench, three-quarters from behind",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "asleep against the stone",
+          "expression": ""
+        },
+        {
+          "id": "the_bird",
+          "pose": "on the head's crown",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "stone head, moss over the eyes",
+        "bench",
+        "shingle wall",
+        "mug"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man seen three-quarters from behind sitting on a bench with a mug beside a shingle wall, next to a large moss-grown carved stone head half sunk in grass with a calm broad face, a three-legged dog asleep against the stone, a small rainbow bird on the head's crown, spare ink and muted watercolor, no panel borders, no words",
+        "negative": "",
+        "notes": "The concept sheet's 'But Small Wood has its moments' bench. The head is never explained."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The stone head. Where it came from is reserved. The strip sits with it.",
+  "layout": "single page, no borders"
+}

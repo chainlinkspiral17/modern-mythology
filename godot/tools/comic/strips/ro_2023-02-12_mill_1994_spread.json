@@ -1,0 +1,60 @@
+{
+  "id": "ro_2023-02-12_mill_1994_spread",
+  "title": "The mill, 1994 · pages 12–13",
+  "strip": "roflcopter",
+  "date": "2023-02-12",
+  "run": 7,
+  "era": "era4",
+  "format": "spread",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Mill, 1994",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences)",
+  "logline": "The last shift. Everyone from the 1994 group photo, aged nothing. Gully's uncle with the shack's keys. The one sentence.",
+  "cast": [
+    "extra_uncle"
+  ],
+  "location": "dw_cedar_mill",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "two-page spread",
+      "composition": "The mill floor on the last shift, 1994, drawn in the 2023 hand with Era I's black spotting brought back on purpose. The great saw. Twenty-odd workers in caps and suspenders, every face from a group photograph, none aged. Cedar dust hanging in the rafters as the page's only wash, a pale ochre. In the foreground, the one figure not from the photo: GULLY'S UNCLE, young, forty, holding a ring of keys — the shack's — looking at the saw. Hand-lettered below the spread, the only sentence in the private work: 'I was fourteen and I thought this was the end of something. It was the end of something. I just had the wrong something.'",
+      "characters": [
+        {
+          "id": "extra_uncle",
+          "pose": "young, forty, holding keys, foreground",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the great saw",
+        "twenty workers",
+        "cedar dust as ochre wash",
+        "a ring of keys"
+      ],
+      "balloons": [],
+      "caption": "I was fourteen and I thought this was the end of something. It was the end of something. I just had the wrong something.",
+      "sfx": "",
+      "image": {
+        "prompt": "a two-page spread of a cedar mill floor on its last shift in 1994: a great saw, twenty-odd workers in caps and suspenders drawn from a group photograph, cedar dust hanging in the rafters as a pale ochre wash, and in the foreground a fisherman of forty holding a ring of keys and looking at the saw, spare confident ink with heavy black spotting, one hand-lettered sentence beneath",
+        "negative": "",
+        "notes": "The only sentence in ROFLCOPTER. Letter after. The uncle is the only invention in the spread."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Forty pages; the book takes 40 of ~140. This is the spread. Researched in the reading room.",
+  "layout": "two facing pages"
+}
