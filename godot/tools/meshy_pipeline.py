@@ -633,6 +633,55 @@ def texture_prompt_for(entry):
     return tp[:600]
 
 
+# ── Recovered models (2026-09-26) ───────────────────────────────────────────
+# meshy_recover.py fetch-all pulls the account's finished tasks into
+# concept/meshy/recovered/<task>.glb (+ <task>.png thumbnail) when the
+# runner's own files are lost; the page hero_uploader/recovered.html lets
+# each be assigned to a roster entry, which is what these two do.
+
+RECOVERED_DIR = CONCEPT_ROOT / "recovered"
+
+
+def list_recovered():
+    out = []
+    if not RECOVERED_DIR.exists():
+        return out
+    for glb in sorted(RECOVERED_DIR.glob("*.glb"), key=lambda p: p.stat().st_mtime, reverse=True):
+        png = glb.with_suffix(".png")
+        out.append({"task_id": glb.stem, "glb": rel(glb), "size": glb.stat().st_size,
+                    "thumb": ("/assets/concept/meshy/recovered/" + png.name) if png.exists() else None})
+    return out
+
+
+def assign_recovered(entry, task_id, overwrite=False):
+    """Move recovered/<task>.glb to the entry's canonical GLB; file its
+    thumbnail as a concept candidate and as front.png if none is chosen."""
+    import shutil
+    if not re.fullmatch(r"[0-9a-f-]{20,}", task_id or ""):
+        raise ValueError("bad task id")
+    src = RECOVERED_DIR / f"{task_id}.glb"
+    if not src.exists():
+        raise ValueError(f"{task_id} is not in recovered/ (run meshy_recover.py fetch-all)")
+    out = entry_out_path(entry)
+    if out.exists() and not overwrite:
+        raise ValueError(f"{entry['slug']} already has {rel(out)} — tick overwrite to replace it")
+    out.parent.mkdir(parents=True, exist_ok=True)
+    shutil.move(str(src), str(out))
+    thumb = RECOVERED_DIR / f"{task_id}.png"
+    cand = None
+    if thumb.exists():
+        d = entry_dir(entry)
+        d.mkdir(parents=True, exist_ok=True)
+        cand = d / f"{entry['slug']}_front_meshy_recovered.png"
+        shutil.copy2(str(thumb), str(cand))
+        front = d / "front.png"
+        if not front.exists():
+            shutil.copy2(str(thumb), str(front))
+        thumb.unlink()
+    append_manifest({"at": now_iso(), "stage": "assign", "slug": entry["slug"], "kind": entry["kind"], "task_id": task_id, "glb": rel(out)})
+    return {"ok": True, "slug": entry["slug"], "glb": rel(out), "candidate": rel(cand) if cand else None, "status": entry_status(entry)}
+
+
 # ── Manifest ────────────────────────────────────────────────────────────────
 
 _manifest_lock = threading.Lock()
@@ -1265,6 +1314,8 @@ def make_handler(runner, roster_path):
 
         def do_GET(self):
             p = urllib.parse.urlparse(self.path).path
+            if p == "/api/recovered":
+                return self._json({"recovered": list_recovered()})
             if p == "/api/roster":
                 roster = load_roster(roster_path)
                 for e in roster["entries"]:
@@ -1319,6 +1370,19 @@ def make_handler(runner, roster_path):
             p = urllib.parse.urlparse(self.path).path
             roster = load_roster(roster_path)
             by_slug = {e["slug"]: e for e in roster["entries"]}
+            if p == "/api/assign":
+                # a recovered model (concept/meshy/recovered/<task>.glb) → a roster entry's canonical GLB
+                try:
+                    req = json.loads(self._body().decode("utf-8") or "{}")
+                except json.JSONDecodeError:
+                    return self._json({"error": "bad json"}, 400)
+                e = by_slug.get(req.get("slug", ""))
+                if e is None:
+                    return self._json({"error": "unknown slug"}, 400)
+                try:
+                    return self._json(assign_recovered(e, str(req.get("task_id", "")), overwrite=bool(req.get("overwrite"))))
+                except (OSError, ValueError) as ex:
+                    return self._json({"error": str(ex)}, 400)
             if p == "/api/prompt":
                 try:
                     req = json.loads(self._body().decode("utf-8") or "{}")
