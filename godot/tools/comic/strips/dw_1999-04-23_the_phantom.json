@@ -1,0 +1,176 @@
+{
+  "id": "dw_1999-04-23_the_phantom",
+  "title": "Drift Wood #35 · the phantom",
+  "strip": "drift_wood",
+  "date": "1999-04-23",
+  "run": 1,
+  "era": "era1",
+  "format": "biweekly",
+  "tier": "B",
+  "selection": "full",
+  "venue": "The Timberline (Small Wood High)",
+  "arc": "The Phantom · first mention",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1998–99)",
+  "logline": "The graphic novel is mentioned for the first time. It already has a title. It changes by the fourth panel.",
+  "cast": [
+    "wood_17",
+    "chloe_17",
+    "gully_17"
+  ],
+  "location": "dw_cafeteria",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The cafeteria. WOOD with a spiral notebook held to his chest like the overcoat isn't enough. CHLOE and GULLY across the table.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "clutching a notebook",
+          "expression": ""
+        },
+        {
+          "id": "chloe_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "spiral notebook",
+        "trays"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "I've begun the real work. A graphic novel. It's called SLASH."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage boy in an overcoat clutching a spiral notebook to his chest at a cafeteria table across from a girl with eyeliner and a boy in a backwards cap",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Chloe.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "What's it about."
+        },
+        {
+          "who": "WOOD",
+          "text": "A timber town. A crime. A man who—"
+        },
+        {
+          "who": "CHLOE",
+          "text": "How many pages."
+        },
+        {
+          "who": "WOOD",
+          "text": "Conceptually, hundreds."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a teenage girl asking flat questions across a cafeteria table",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Gully, reaching for the notebook. Wood pulling it back.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "reaching",
+          "expression": ""
+        },
+        {
+          "id": "wood_17",
+          "pose": "pulling the notebook away",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "notebook"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Lemme see."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's not ready. Also the title's changing. It's called THE LONG WAY BACK now."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a boy in a backwards cap reaching for a spiral notebook that another boy pulls protectively away",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood, alone at the end of lunch, opening the notebook. Page one. Two lines of pencil and the title, crossed out twice, and a third one: CEDAR.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "opening the notebook",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "notebook page one with crossed-out titles"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage boy alone at a cafeteria table opening a spiral notebook to its first page: two pencil lines and a title crossed out twice with a third written beneath, black and white",
+        "negative": "",
+        "notes": "The three titles — SLASH, THE LONG WAY BACK, CEDAR — are the corner boxes of 2002, 2008, 2016. Letter after if needed."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "All three phantom titles in one panel, seventeen years early. Nobody in the strip will remember.",
+  "layout": "2x2"
+}

@@ -1,0 +1,168 @@
+{
+  "id": "dw_1998-12-18_still_here",
+  "title": "Drift Wood #27 · December, still here",
+  "strip": "drift_wood",
+  "date": "1998-12-18",
+  "run": 1,
+  "era": "era1",
+  "format": "biweekly",
+  "tier": "B",
+  "selection": "full",
+  "venue": "The Timberline (Small Wood High)",
+  "arc": "December",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1998–99)",
+  "logline": "Last issue before break. Chloe's still here. It's the last December that's true.",
+  "cast": [
+    "wood_17",
+    "chloe_17"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Main street, December, the same half-dead lights on the hardware store. WOOD and CHLOE walking. Just the two of them this time.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "walking, hands in coat",
+          "expression": ""
+        },
+        {
+          "id": "chloe_17",
+          "pose": "walking, no headphones",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "hardware store lights",
+        "rain",
+        "wet street"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Where's Gully?"
+        },
+        {
+          "who": "CHLOE",
+          "text": "Crab bait. His uncle. He said it like it was a job."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two teenagers walking down a small timber-town main street in December rain past a hardware store with half its Christmas lights dead, black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Chloe, looking at the street, not at him.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "looking ahead",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "Applications are due in January. I sent four."
+        },
+        {
+          "who": "WOOD",
+          "text": "Four is a lot of places to not be."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage girl walking and looking straight ahead down a rainy street, a boy beside her",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Chloe, turning.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "turning to him",
+          "expression": "level"
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "How many did you send?"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a teenage girl turning to ask a level question, rain on her hair",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The corner where they split. Chloe walking on. Wood standing under the hardware store's lights, which choose this moment to go all the way out.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "walking on",
+          "expression": ""
+        },
+        {
+          "id": "wood_17",
+          "pose": "standing under the sign",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "hardware store lights going dark",
+        "the corner"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "...I'm working on the portfolio.",
+          "kind": "small"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a rainy street corner at night, a girl walking away, a boy standing under a hardware store's Christmas lights as they all go out, black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "The last December she's simply here. The strip lets the lights answer for him.",
+  "layout": "2x2"
+}

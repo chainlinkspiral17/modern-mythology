@@ -1,0 +1,167 @@
+{
+  "id": "dw_1999-02-12_crab_derby_ii",
+  "title": "Drift Wood #30 · the Crab Derby, ii",
+  "strip": "drift_wood",
+  "date": "1999-02-12",
+  "run": 1,
+  "era": "era1",
+  "format": "biweekly",
+  "tier": "B",
+  "selection": "full",
+  "venue": "The Timberline (Small Wood High)",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1998–99)",
+  "logline": "Fifteenth annual. The uncle wants the same crab. Wood wants to grow.",
+  "cast": [
+    "wood_17",
+    "gully_17",
+    "extra_uncle"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack. Last year's flyer still on the wall, weathered. The UNCLE tapping it.",
+      "characters": [
+        {
+          "id": "extra_uncle",
+          "pose": "tapping last year's flyer",
+          "expression": ""
+        },
+        {
+          "id": "wood_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "last year's crab flyer, weathered",
+        "shack wall"
+      ],
+      "balloons": [
+        {
+          "who": "UNCLE",
+          "text": "Same crab. Change the number. Fifteen."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an older fisherman tapping a weathered year-old flyer with a large crab on a shingle shack wall, two teenagers beside him",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Wood, wounded.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "hand to chest",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "An artist doesn't repeat himself. This year the crab could be seen from below. Looming. A crab of consequence."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage boy in an overcoat with a hand to his chest, wounded, proposing something to a fisherman",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The uncle. Gully, behind him, shaking his head at Wood: don't.",
+      "characters": [
+        {
+          "id": "extra_uncle",
+          "pose": "flat",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "behind, shaking his head",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "UNCLE",
+          "text": "Same crab. Twenty bucks."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a fisherman's flat face with a boy in a backwards cap behind him shaking his head in warning",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The new flyer beside the old one. The same crab, exactly, but the hatching is finer, the shadow deeper, the number says 15. Only Gully notices it's better.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "looking closely at the two flyers",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "two flyers side by side"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "...You changed it."
+        },
+        {
+          "who": "WOOD",
+          "text": "I changed nothing. Twenty bucks."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two nearly identical crab flyers side by side on a shingle wall, the newer one more finely hatched, a boy in a backwards cap leaning in to compare them",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "The second commission. Same crab, better. The pattern of the whole life, in a flyer.",
+  "layout": "2x2"
+}

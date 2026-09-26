@@ -1,0 +1,135 @@
+{
+  "id": "dw_1998-11-06_gone",
+  "title": "Drift Wood #24 · gone",
+  "strip": "drift_wood",
+  "date": "1998-11-06",
+  "run": 1,
+  "era": "era1",
+  "format": "biweekly",
+  "tier": "B",
+  "selection": "full",
+  "venue": "The Timberline (Small Wood High)",
+  "arc": "The Scholarship Letter",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1998–99)",
+  "logline": "The envelope is gone. The strip does not say where.",
+  "cast": [
+    "wood_17"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Wood's bedroom. The drawing table. The jar of pens. No envelope. WOOD drawing.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "jar of pens",
+        "the table, clear"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage boy drawing at a bedroom table, a jar of pens on a clear tabletop where something used to be, black and white",
+        "negative": "",
+        "notes": "The absence is the panel. Compose so the empty spot beside the jar reads."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The wastebasket under the table. Crumpled drafts. Nothing else visible.",
+      "characters": [],
+      "props": [
+        "wastebasket",
+        "crumpled drafts"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a wastebasket under a drawing table full of crumpled paper drafts",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood pinning a new strip to the corkboard above the table. Among the pinned things: a Timberline back page, the crab flyer, the yearbook photo. No letter.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "pinning a page to a corkboard",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "corkboard",
+        "back page",
+        "crab flyer",
+        "yearbook photo"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "There. A body of work."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage boy pinning a new comic strip to a crowded corkboard above his drawing table that holds a newspaper page, a crab flyer and a yearbook photo",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Wide. The room. The window. Rain. Wood at the table. The corkboard. Whatever happened to the envelope happened off the page.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "at the table, back to us",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "window",
+        "rain",
+        "corkboard"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wide quiet view of a teenage boy's bedroom at night from the door, the boy at his drawing table with his back turned, a crowded corkboard, rain in the window, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "Opened, answered, thrown away, or kept — the strip doesn't say. The afterword can.",
+  "layout": "2x2"
+}

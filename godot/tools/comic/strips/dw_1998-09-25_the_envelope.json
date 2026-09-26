@@ -1,0 +1,151 @@
+{
+  "id": "dw_1998-09-25_the_envelope",
+  "title": "Drift Wood #21 · the envelope",
+  "strip": "drift_wood",
+  "date": "1998-09-25",
+  "run": 1,
+  "era": "era1",
+  "format": "biweekly",
+  "tier": "B",
+  "selection": "full",
+  "venue": "The Timberline (Small Wood High)",
+  "arc": "The Scholarship Letter",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1998–99)",
+  "logline": "An envelope from Portland arrives in the background. Nobody in the strip mentions it.",
+  "cast": [
+    "wood_17",
+    "extra_mother"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Wood's childhood bedroom. Drawing table by the window. On the dresser, in the background, an envelope with a Portland return address, propped against a lamp. WOOD drawing. His MOTHER's hand setting a plate of toast on the table.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "drawing at the table",
+          "expression": ""
+        },
+        {
+          "id": "extra_mother",
+          "pose": "hand only, setting down a plate",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "envelope on the dresser",
+        "lamp",
+        "toast",
+        "drawing table",
+        "band posters"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "I'm working."
+        },
+        {
+          "who": "MOTHER",
+          "text": "It's toast, Arthur.",
+          "kind": "small"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage boy's bedroom with a drawing table by the window, an envelope propped against a lamp on the dresser in the background, a mother's hand setting down a plate of toast, black and white",
+        "negative": "",
+        "notes": "The mother is a hand and a voice, never a face — she stays at the edge all run. Her balloon uses his real name; that's a fact of the house, not the author on the page."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The drawing under his pen: a strip about a cashier. The envelope out of focus behind.",
+      "characters": [],
+      "props": [
+        "the drawing in progress",
+        "envelope, blurred"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a pen drawing a cartoon cashier on bristol, an unopened envelope soft in the background",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood eating toast, drawing with the other hand. The envelope.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "toast in one hand, pen in the other",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "envelope"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Cashiers are the Greek chorus of this town. They see everyone and comment on nothing."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage boy eating toast with one hand and drawing with the other, an envelope still propped on the dresser behind him",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The room at night. Wood asleep at the table. The envelope, unopened, in the lamp's cone.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "asleep on his arms at the table",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lamp cone",
+        "envelope",
+        "the pad"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage boy asleep on his arms at a drawing table at night, a desk lamp's cone of light falling on an unopened envelope propped against it, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "Four strips with the envelope in the background. This is the first.",
+  "layout": "2x2"
+}

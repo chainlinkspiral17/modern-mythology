@@ -1,0 +1,166 @@
+{
+  "id": "dw_1999-03-26_the_map",
+  "title": "Drift Wood #33 · the map",
+  "strip": "drift_wood",
+  "date": "1999-03-26",
+  "run": 1,
+  "era": "era1",
+  "format": "biweekly",
+  "tier": "B",
+  "selection": "full",
+  "venue": "The Timberline (Small Wood High)",
+  "arc": "Seattle, Said",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1998–99)",
+  "logline": "Chloe got in. Wood draws her a map of a city he's never seen.",
+  "cast": [
+    "wood_17",
+    "chloe_17"
+  ],
+  "location": "dw_timberline_newsroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The newsroom. A thick envelope, opened, on CHLOE's desk. Seattle. She is not looking at it. WOOD is.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "typing, not looking at the envelope",
+          "expression": ""
+        },
+        {
+          "id": "wood_17",
+          "pose": "looking at the envelope",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "opened thick envelope",
+        "computer"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "It's thick."
+        },
+        {
+          "who": "CHLOE",
+          "text": "Thick is yes."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a school newsroom, a thick opened envelope on a desk beside a teenage girl typing who won't look at it, a boy in an overcoat staring at the envelope",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Wood, already drawing on the back of a proof.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "drawing fast on the back of a proof",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "proof sheet"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "I'm making you a map."
+        },
+        {
+          "who": "CHLOE",
+          "text": "You've never been to Seattle."
+        },
+        {
+          "who": "WOOD",
+          "text": "Neither had the people who named the streets."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage boy drawing rapidly on the back of a newspaper proof sheet while a girl watches skeptically",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The map: a city invented from nothing, hills, water, a needle-shaped tower drawn from a postcard, and, in the middle, a small X labeled in his hand: YOU. Off the edge, an arrow: ME, 250 MI.",
+      "characters": [],
+      "props": [
+        "a hand-drawn imaginary map of Seattle"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a hand-drawn imaginary city map on the back of a proof sheet: hills, water, a needle-shaped tower, an X in the middle and an arrow pointing off the page",
+        "negative": "",
+        "notes": "Labels YOU and ME, 250 MI may be lettered after."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Chloe holding the map. Not saying anything for a panel. Then folding it into the thick envelope with the acceptance letter.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "folding the map into the envelope",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the envelope",
+        "the map"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "It's wrong."
+        },
+        {
+          "who": "WOOD",
+          "text": "I know."
+        },
+        {
+          "who": "CHLOE",
+          "text": "I'm keeping it."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage girl carefully folding a hand-drawn map into a thick acceptance envelope, a boy beside her, school newsroom",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "The map of a city he'll never live in. She keeps it. The strip will remember the envelope in 2021.",
+  "layout": "2x2"
+}

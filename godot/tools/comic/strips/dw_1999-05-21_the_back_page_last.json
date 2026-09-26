@@ -1,0 +1,162 @@
+{
+  "id": "dw_1999-05-21_the_back_page_last",
+  "title": "Drift Wood #37 · the back page, last",
+  "strip": "drift_wood",
+  "date": "1999-05-21",
+  "run": 1,
+  "era": "era1",
+  "format": "biweekly",
+  "tier": "B",
+  "selection": "full",
+  "venue": "The Timberline (Small Wood High)",
+  "arc": "The Last Issue",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1998–99)",
+  "logline": "The penultimate issue. Chloe lays out the last back page she'll ever give him.",
+  "cast": [
+    "wood_17",
+    "chloe_17"
+  ],
+  "location": "dw_timberline_newsroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The newsroom. The paste-up board for the final issue. CHLOE taping the rectangle. Same gesture as #4. WOOD watching. Same.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "taping a rectangle to the board",
+          "expression": ""
+        },
+        {
+          "id": "wood_17",
+          "pose": "watching, hands in coat",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "paste-up board",
+        "tape",
+        "rectangle"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "Back page. Bottom half. Last one."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage girl taping a blank rectangle onto a newspaper paste-up board while a boy in an overcoat watches, school newsroom, the same scene as two years before",
+        "negative": "",
+        "notes": "Compose as a repeat of #4 panel 1. The reader should feel the rhyme."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood, not magnanimous this time.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "What happens to the back page after."
+        },
+        {
+          "who": "CHLOE",
+          "text": "Someone else edits it. Danny Voss, probably. He'll fill it with ads."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a teenage boy in an overcoat asking a quiet question",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Chloe stepping back from the board. The rectangle blank.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "stepping back",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "blank rectangle"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "So make it count."
+        },
+        {
+          "who": "WOOD",
+          "text": "I've been making it count."
+        },
+        {
+          "who": "CHLOE",
+          "text": "I know. I'm the one who read them."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage girl stepping back from a paste-up board with a blank rectangle taped to it, a boy beside her",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood alone at the board. He draws, in the corner of the rectangle, the gull — and beside it, small, a crab. The first time both.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "drawing in the corner of the rectangle",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "rectangle with a gull and a crab in the corner"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage boy alone leaning over a paste-up board drawing a tiny gull and a tiny crab in the corner of an empty rectangle, newsroom lamp",
+        "negative": "",
+        "notes": "Both marks. The margin below carries only the crab; the gull-and-crab is inside the panel."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "Rhymes with #4. Both marks drawn inside the panel; the margin keeps the crab.",
+  "layout": "2x2"
+}
