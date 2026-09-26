@@ -45,6 +45,34 @@ manifest. Nothing is overwritten unless `--overwrite`. Concept
 renders made through the Runway MCP from a Claude session are saved
 under `godot/assets/comic/vol10/concept/` with their own manifest.
 
+## The inspector (browse + generate on your machine)
+
+```bash
+cd /home/deck/Downloads/modern-mythology && git pull origin main && python3 godot/tools/comic/comic_inspector.py --open
+```
+
+One stdlib script, no install. It serves `http://127.0.0.1:8765/`
+over the run on disk:
+
+- **STRIPS** — every strip, filterable by year / strip / format /
+  tier / rendered / review; per strip the script sheet, the panels,
+  the whole-strip prompt (lettered and unlettered, copyable), the
+  references each provider would attach, every render on disk
+  (`godot/assets/comic/vol10/{runway,google,concept}/`), and the
+  raw JSON. `j`/`k` walk the list, `1`–`6` switch tabs, `/` searches.
+- **GENERATE** (RENDERS tab) — provider, model, variants, seed,
+  letter / references / draft-refs / overwrite / dry-run; it runs
+  `comic_tool.py strip-prompts` then `comic_render.py` for that one
+  strip, streams the log under JOBS, and the image appears in the
+  gallery when it lands. Same outputs and manifests as the CLI.
+  Keys as before: `godot/tools/.runway_key` / `.google_key` or the env.
+- **Review** — mark a strip *ok* / *revise* with a note. It's written
+  into the strip JSON as a `review` block (the validator ignores it,
+  the md sheet shows it), so it travels with a commit and I see it.
+- **SHEETS** — the 36 reference sheets with their status and renders;
+  generate one, then approve it, and it becomes attachable.
+- **REFS** — the registry, approve / reject / draft.
+
 ## The files
 
 | file | what |
@@ -56,6 +84,7 @@ under `godot/assets/comic/vol10/concept/` with their own manifest.
 | `references.json` | the tagged reference-image registry and the auto-selection policy (see References below) |
 | `style_sheets.json` | the reference-sheet queue (characters by era, era swatches, hero locations, objects); `comic_tool.py sheets` composes the prompts; the human guides are `lore/drift_wood/style/` |
 | `comic_render.py` | the runner: `--provider runway` (gen4_image on the dev API) or `--provider google` (Imagen 4, or `--model gemini-2.5-flash-image`) |
+| `comic_inspector.py` | the local page: browse every strip, sheet and reference with their renders; generate one at a time through the two scripts above; mark strips for revision |
 | `out/` | generated queues (gitignored) |
 
 ## Strip schema (strips/*.json)
