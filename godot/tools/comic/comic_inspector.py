@@ -163,10 +163,85 @@ def api_models():
     return {"models": cr.MODELS}
 
 
+KEY_FILES = {"runway": (".runway_key", ["RUNWAYML_API_KEY"]), "google": (".google_key", ["GOOGLE_API_KEY", "GEMINI_API_KEY"])}
+
+
+def _read_key(provider):
+    fname, envs = KEY_FILES[provider]
+    for e in envs:
+        if os.environ.get(e, "").strip():
+            return os.environ[e].strip(), f"env {e}"
+    p = ct.HERE.parent / fname
+    if p.exists():
+        lines = [l.strip() for l in p.read_text().splitlines() if l.strip()]
+        if lines:
+            return lines[0], f"godot/tools/{fname}"
+    return "", ""
+
+
 def api_keys():
-    def has(env_names, fname):
-        return any(os.environ.get(e) for e in env_names) or (ct.HERE.parent / fname).exists()
-    return {"runway": has(["RUNWAYML_API_KEY"], ".runway_key"), "google": has(["GOOGLE_API_KEY", "GEMINI_API_KEY"], ".google_key")}
+    out = {}
+    for prov in KEY_FILES:
+        key, src = _read_key(prov)
+        hint = ""
+        if key and prov == "runway" and not key.startswith("key_"):
+            hint = "Runway developer-API keys start with key_ — this one doesn't; it may be a key for a different Runway product (the app or the MCP), which the API refuses."
+        if key and prov == "google" and not key.startswith("AIza"):
+            hint = "Google AI Studio keys start with AIza — this one doesn't."
+        out[prov] = {"present": bool(key), "source": src, "masked": (key[:6] + "…" + key[-3:]) if len(key) > 12 else ("set" if key else ""), "hint": hint,
+                     "file": f"godot/tools/{KEY_FILES[prov][0]}"}
+    out["runway_ok"] = out["runway"]["present"]; out["google_ok"] = out["google"]["present"]
+    return out
+
+
+def set_key(provider, key):
+    if provider not in KEY_FILES:
+        return {"error": "provider must be runway or google"}
+    key = (key or "").strip().strip('"').strip("'")
+    p = ct.HERE.parent / KEY_FILES[provider][0]
+    if not key:
+        if p.exists():
+            p.unlink()
+        return {"ok": True, "removed": True}
+    p.write_text(key + "\n", encoding="utf-8")
+    try:
+        os.chmod(p, 0o600)
+    except OSError:
+        pass
+    return {"ok": True, "file": f"godot/tools/{KEY_FILES[provider][0]}"}
+
+
+def test_key(provider):
+    """One cheap authenticated call per provider: Runway GET /organization
+    (credits), Google GET /models (also yields the live image-model list)."""
+    import comic_render as cr
+    key, src = _read_key(provider)
+    if not key:
+        return {"ok": False, "why": "no key saved"}
+    try:
+        if provider == "runway":
+            st, raw = cr._http(f"{cr.RUNWAY_BASE}/organization", "GET", {"Authorization": f"Bearer {key}", "X-Runway-Version": cr.RUNWAY_API_VERSION}, None, timeout=30)
+            body = raw.decode("utf-8", "replace")[:600]
+            if st == 200:
+                try:
+                    d = json.loads(body); credits = d.get("creditBalance", d.get("credits"))
+                except json.JSONDecodeError:
+                    credits = None
+                return {"ok": True, "status": st, "why": f"key accepted{f' · {credits} credits' if credits is not None else ''}", "body": body}
+            why = {401: "key refused (401): wrong key, or a key for a different Runway product. The developer API wants a key made at dev.runwayml.com (starts with key_).",
+                   403: "key refused (403): the key is valid but not allowed to do this; check the organization/plan at dev.runwayml.com.",
+                   404: "the /organization probe isn't available on this API version; the key may still work for generation."}.get(st, f"HTTP {st}")
+            return {"ok": False, "status": st, "why": why, "body": body}
+        st, raw = cr._http(f"{cr.GOOGLE_BASE}/models?pageSize=200", "GET", {"x-goog-api-key": key}, None, timeout=30)
+        body = raw.decode("utf-8", "replace")
+        if st == 200:
+            names = [m.get("name", "").split("/")[-1] for m in json.loads(body).get("models", [])]
+            imgs = [n for n in names if "image" in n or "imagen" in n]
+            return {"ok": True, "status": st, "why": f"key accepted · {len(names)} models visible · image models: {', '.join(imgs) or 'none listed'}", "models": imgs, "body": body[:300]}
+        why = {400: "key refused (400): malformed or not an AI Studio key.", 403: "key refused (403): the key is valid but the Generative Language API isn't enabled for it, or it's restricted."}.get(st, f"HTTP {st}")
+        return {"ok": False, "status": st, "why": why, "body": body[:600]}
+    except Exception as e:  # noqa: BLE001
+        return {"ok": False, "why": f"could not reach the provider: {e}"}
 
 
 def set_review(sid, status, note):
@@ -337,6 +412,10 @@ class H(BaseHTTPRequestHandler):
                 return self._send(200, set_review(body.get("id"), body.get("status"), body.get("note")))
             if u.path == "/api/ref_status":
                 return self._send(200, set_ref_status(body.get("id"), body.get("status"), body.get("note")))
+            if u.path == "/api/keys":
+                return self._send(200, set_key(body.get("provider"), body.get("key")))
+            if u.path == "/api/keys/test":
+                return self._send(200, test_key(body.get("provider")))
             if u.path == "/api/md":
                 subprocess.run([PY, "comic_tool.py", "md"], cwd=str(ct.HERE), check=False)
                 return self._send(200, {"ok": True})
@@ -407,7 +486,7 @@ kbd{border:1px solid var(--rule);padding:0 4px;color:var(--dim)}
 @media (max-width:900px){main{grid-template-columns:1fr}aside{max-height:40vh}}
 </style></head><body>
 <header><h1>COMIC INSPECTOR</h1><span class="sub">Drift Wood / ROFLCOPTER · vol 10 · the run on disk</span>
-<div class="mode"><button id="m-strips" class="on">STRIPS</button><button id="m-sheets">SHEETS</button><button id="m-refs">REFS</button><button id="m-jobs">JOBS</button></div>
+<div class="mode"><button id="m-strips" class="on">STRIPS</button><button id="m-sheets">SHEETS</button><button id="m-refs">REFS</button><button id="m-jobs">JOBS</button><button id="m-keys">KEYS</button></div>
 <div class="keys" id="keys"></div></header>
 <main><aside>
 <div class="filters">
@@ -439,7 +518,7 @@ function md(src){const L=src.split('\n'),out=[];let i=0,inT=false;while(i<L.leng
  const p=[];while(i<L.length&&L[i].trim()!==''&&!/^(#|\||```|> |\s*[-*]\s|---)/.test(L[i])){p.push(L[i]);i++;}out.push('<p>'+inl(p.join(' '))+'</p>');}
  return out.join('\n');}
 function inl(s){return esc(s).replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>').replace(/\*([^*]+)\*/g,'<i>$1</i>').replace(/\[([^\]]+)\]\(([^)]+)\)/g,'$1');}
-async function loadKeys(){KEYS=await api('/api/keys');try{MODELS=(await api('/api/models')).models;}catch(e){}$('#keys').innerHTML=`keys · runway ${KEYS.runway?'<b>found</b>':'<s>none</s>'} · google ${KEYS.google?'<b>found</b>':'<s>none</s>'}`;}
+async function loadKeys(){const k=await api('/api/keys');KEYS={runway:k.runway_ok,google:k.google_ok,info:k};try{MODELS=(await api('/api/models')).models;}catch(e){}$('#keys').innerHTML=`<a href="#" onclick="setMode('keys');return false" style="color:inherit">keys · runway ${KEYS.runway?'<b>found</b>':'<s>none</s>'} · google ${KEYS.google?'<b>found</b>':'<s>none</s>'}</a>`;}
 async function loadStrips(){const d=await api('/api/strips');STRIPS=d.strips;const ys=[...new Set(STRIPS.map(s=>s.date.slice(0,4)))];$('#f-year').innerHTML='<option value="">year</option>'+ys.map(y=>`<option>${y}</option>`).join('');render();}
 async function loadSheets(){SHEETS=(await api('/api/sheets')).sheets;render();}
 async function loadRefs(){REFS=await api('/api/refs');render();}
@@ -464,7 +543,7 @@ function modelOptions(prov){const ms=MODELS[prov]||[];return '<option value="">d
 function onProv(){const p=$('#g-prov').value;$('#g-model').innerHTML=modelOptions(p);$('#g-custom').style.display='none';onModel();}
 function onModel(){const v=$('#g-model').value;$('#g-custom').style.display=v==='__custom'?'inline-block':'none';const p=$('#g-prov').value;const m=(MODELS[p]||[]).find(x=>x.id===v);$('#g-note').textContent=m?m.note:(v==='__custom'?'type the exact id from the provider\'s docs; it is passed through unchanged':'');}
 function genForm(kind,id,fmt){const prov=KEYS.runway?'runway':'google';const nokey=!KEYS.runway&&!KEYS.google;
- return `${nokey?'<div class="job" style="border-color:var(--red)"><span class="st failed">NO KEYS</span> · nothing can generate until a key file exists. Runway: put the key on one line in <code>godot/tools/.runway_key</code>. Google: <code>godot/tools/.google_key</code>. Then reload this page.</div>':''}<div class="gen"><label>provider <select id="g-prov" onchange="onProv()"><option value="runway" ${KEYS.runway?'':'disabled'} ${prov==='runway'?'selected':''}>runway${KEYS.runway?'':' (no key)'}</option><option value="google" ${KEYS.google?'':'disabled'} ${prov==='google'?'selected':''}>google${KEYS.google?'':' (no key)'}</option></select></label>
+ return `${nokey?'<div class="job" style="border-color:var(--red)"><span class="st failed">NO KEYS</span> · nothing can generate until a key is saved. <a href=\"#\" onclick=\"setMode('keys');return false\" style=\"color:var(--gold-hi)\">Open KEYS</a> to paste one and test it.</div>':''}<div class="gen"><label>provider <select id="g-prov" onchange="onProv()"><option value="runway" ${KEYS.runway?'':'disabled'} ${prov==='runway'?'selected':''}>runway${KEYS.runway?'':' (no key)'}</option><option value="google" ${KEYS.google?'':'disabled'} ${prov==='google'?'selected':''}>google${KEYS.google?'':' (no key)'}</option></select></label>
  <label>model <select id="g-model" onchange="onModel()">${modelOptions(prov)}</select><input type="text" id="g-custom" placeholder="exact model id" style="display:none;width:200px"></label>
  <label>variants <input type="number" id="g-var" min="1" max="6" value="1"></label><label>seed <input type="number" id="g-seed" placeholder="random"></label>
  ${kind==='strip'?`<label><input type="checkbox" id="g-letter" checked> letter balloons</label><label><input type="checkbox" id="g-refs" checked> attach references</label><label><input type="checkbox" id="g-draft"> allow draft refs</label>`:''}
@@ -515,6 +594,12 @@ function showLastRun(id){api('/api/jobs').then(d=>{const box=$('#lastrun');if(!b
  const j=js[0];const bad=j.log.filter(l=>/✗|error|Error|Traceback|FAILED|400|401|403|429|500/.test(l));const why=explain(j);
  box.innerHTML=`<div class="job" style="border-color:${j.status==='failed'?'var(--red)':j.status==='done'?'var(--em)':'var(--gold)'}"><span class="st ${j.status}">${j.status.toUpperCase()}</span> · ${esc(j.target)} · ${j.provider}${j.commands[1].includes('--model')?' · '+esc(j.commands[1].split('--model ')[1].split(' ')[0]):''}<div style="margin:6px 0;color:var(--text)">${esc(why)}</div>${bad.length?'<pre style="border-color:var(--red)">'+esc(bad.join('\n'))+'</pre>':''}<details><summary style="cursor:pointer;color:var(--dim)">full log</summary><pre>${esc(j.commands.join('\n'))}\n\n${esc(j.log.join('\n'))}</pre></details>${js.length>1?'<div class="empty">'+(js.length-1)+' earlier run'+(js.length>2?'s':'')+' under JOBS</div>':''}</div>`;
  if(j.status==='running'||j.status==='queued')setTimeout(()=>{if(SEL===id)showLastRun(id);},2000);});}
+function renderKeys(){const k=KEYS.info||{};const row=p=>{const i=k[p]||{};return `<div class="job" style="border-color:${i.present?'var(--em)':'var(--rule)'}"><span class="st ${i.present?'done':''}">${p.toUpperCase()}</span> · ${i.present?'saved · '+esc(i.masked)+' · from '+esc(i.source):'no key'}${i.hint?'<div style="color:#ff9a8a;margin-top:4px">'+esc(i.hint)+'</div>':''}
+ <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap"><input type="password" id="k-${p}" placeholder="${p==='runway'?'paste the developer-API key (starts with key_)':'paste the AI Studio key (starts with AIza)'}" style="flex:1;min-width:280px;background:var(--ink);border:1px solid var(--rule);color:var(--text);font:inherit;padding:4px 6px"><button class="sm ok" onclick="saveKey('${p}')">save</button><button class="sm" onclick="testKey('${p}')">test</button><button class="sm bad" onclick="if(confirm('remove the saved ${p} key?'))saveKey('${p}',true)">remove</button></div>
+ <div class="empty" style="margin-top:6px">saved to <code>${esc(i.file)}</code> on this machine only (git ignores it)</div><div id="kr-${p}" style="margin-top:6px"></div></div>`;};
+ $('#detail').innerHTML='<h2>keys</h2><p class="empty">Two providers. Save a key, then press test: Runway answers with your credit balance; Google answers with the image models your key can see (those go straight into the model menu).</p>'+row('runway')+row('google')+'<h2>where keys come from</h2><ul class="md"><li><b>Runway</b>: dev.runwayml.com → API Keys → New. Developer-API keys start with <code>key_</code>. A key from the Runway app or the MCP is a different thing and the API refuses it with 401.</li><li><b>Google</b>: aistudio.google.com → Get API key. Starts with <code>AIza</code>. Imagen and Gemini image models bill to that key.</li></ul>';}
+async function saveKey(p,remove){const v=remove?'':$('#k-'+p).value;const r=await api('/api/keys',{method:'POST',body:JSON.stringify({provider:p,key:v})});await loadKeys();renderKeys();$('#kr-'+p).innerHTML=r.error?'<span style="color:#ff9a8a">'+esc(r.error)+'</span>':(remove?'removed':'saved · now press test');if(!remove&&!r.error)testKey(p);}
+async function testKey(p){const b=$('#kr-'+p);b.innerHTML='testing…';const r=await api('/api/keys/test',{method:'POST',body:JSON.stringify({provider:p})});b.innerHTML=`<span style="color:${r.ok?'var(--em-hi)':'#ff9a8a'}">${esc(r.why||'')}</span>`+(r.body&&!r.ok?'<pre style="margin-top:4px">'+esc(r.body)+'</pre>':'');if(r.ok&&r.models&&r.models.length){MODELS.google=r.models.map(id=>({id,label:id,note:'listed by your key',verified:true}));}}
 function renderJobs(){api('/api/jobs').then(d=>{const el=$('#detail');el.innerHTML='<h2>jobs (this session)</h2><div class="jobs">'+(d.jobs.length?d.jobs.map(j=>`<div class="job"><span class="st ${j.status}">${j.status.toUpperCase()}</span> · ${j.kind} · <b>${esc(j.target)}</b> · ${j.provider}<pre>${esc(j.commands.join('\n'))}\n\n${esc(j.log.join('\n'))}</pre></div>`).join(''):'<p class="empty">nothing run yet · pick a strip → RENDERS → GENERATE</p>')+'</div>';});}
 function tab(t){TAB=t;document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('on',p.id==='p-'+t));document.querySelectorAll('.tabs button').forEach((b,i)=>b.classList.toggle('on',['sheet','panels','prompt','refs','renders','json'][i]===t));}
 function copy(id){navigator.clipboard.writeText($('#'+id).textContent);}
@@ -522,8 +607,8 @@ async function review(id,status){const note=$('#rv-note')?.value||'';await api('
 async function refStatus(id,status){await api('/api/ref_status',{method:'POST',body:JSON.stringify({id,status})});if(MODE==='sheets'){await loadSheets();open(id);}else if(MODE==='refs'){await loadRefs();open(id);}else open(SEL);}
 async function regenMd(){await api('/api/md',{method:'POST',body:'{}'});$('#g-msg')&&($('#g-msg').textContent='md regenerated');}
 function setMode(m){MODE=m;SEL=null;document.querySelectorAll('.mode button').forEach(b=>b.classList.toggle('on',b.id==='m-'+m));$('#detail').innerHTML='<p class="empty">pick one</p>';
- if(m==='strips')loadStrips();else if(m==='sheets')loadSheets();else if(m==='refs')loadRefs();else{render();renderJobs();setTimeout(()=>{if(MODE==='jobs')renderJobs();},3000);}}
-['m-strips','m-sheets','m-refs','m-jobs'].forEach(id=>$('#'+id).onclick=()=>setMode(id.slice(2)));
+ if(m==='strips')loadStrips();else if(m==='sheets')loadSheets();else if(m==='refs')loadRefs();else if(m==='keys'){render();renderKeys();}else{render();renderJobs();setTimeout(()=>{if(MODE==='jobs')renderJobs();},3000);}}
+['m-strips','m-sheets','m-refs','m-jobs','m-keys'].forEach(id=>$('#'+id).onclick=()=>setMode(id.slice(2)));
 ['#q','#f-year','#f-strip','#f-format','#f-tier','#f-render','#f-review'].forEach(s=>$(s).addEventListener('input',render));
 document.addEventListener('keydown',e=>{if(e.target.tagName==='INPUT'||e.target.tagName==='SELECT')return;const ids=VIEW.map(v=>v.id);const i=ids.indexOf(SEL);
  if(e.key==='j'&&ids.length){open(ids[Math.min(i+1,ids.length-1)]);}if(e.key==='k'&&ids.length){open(ids[Math.max(i-1,0)]);}
