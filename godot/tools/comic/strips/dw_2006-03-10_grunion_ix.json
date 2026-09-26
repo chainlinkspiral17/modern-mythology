@@ -1,0 +1,194 @@
+{
+  "id": "dw_2006-03-10_grunion_ix",
+  "title": "The Grunion Run, ix",
+  "strip": "drift_wood",
+  "date": "2006-03-10",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Grunion Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2005–2006)",
+  "logline": "Ninth year. Maria's there. Gully introduces her to the dog first. Correctly.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby",
+    "extra_maria"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The beach, lanterns, the run. GULLY with the thermos and, beside him, MARIA — practical, a county-issue rain shell, holding the paper cups. BARNABY going straight to her. WOOD at the edge, pad.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "thermos",
+          "expression": ""
+        },
+        {
+          "id": "extra_maria",
+          "pose": "holding cups, practical",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "going to her",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "at the edge",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lanterns",
+        "thermos",
+        "cups",
+        "fish"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Maria, Barnaby. Barnaby, Maria."
+        },
+        {
+          "who": "MARIA",
+          "text": "He's got a limp starting. Left front."
+        },
+        {
+          "who": "GULLY",
+          "text": "...Told you."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a night beach festival with lanterns, a young man with a thermos beside a practical woman in a rain shell holding paper cups, a gray-muzzled dog going straight to her, a young man with a pad at the edge, muddy watercolor",
+        "negative": "",
+        "notes": "Maria: county nurse. She notices the dog's limp first. That's her."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood, at the edge, drawing them: Gully and Maria, from behind, the thermos between them like the dog used to be.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "pad: two figures from behind"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a drawing pad showing a man and a woman from behind at a lantern-lit surf line with a thermos between them",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Maria, crouched to the dog, checking the leg with two fingers. Professional. Gentle.",
+      "characters": [
+        {
+          "id": "extra_maria",
+          "pose": "checking the dog's leg",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "allowing it",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "MARIA",
+          "text": "He's fine. He's six. Six is when it starts."
+        },
+        {
+          "who": "WOOD",
+          "text": "Starts what."
+        },
+        {
+          "who": "MARIA",
+          "text": "Being six."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman in a rain shell crouched on a night beach checking a small dog's front leg with two professional fingers",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Silent. The fish. The lanterns. Gully and Maria at the water. Wood and the dog at the edge. Two pairs. The pad closed.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "at the water, small",
+          "expression": ""
+        },
+        {
+          "id": "extra_maria",
+          "pose": "beside him",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "pad closed",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "fish",
+        "lanterns"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "silent wide night beach panel: a couple at the surf line among silver fish and lanterns, and apart from them a young man with a closed pad and a small dog, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "Maria arrives. 'Six is when it starts.' The strip draws two pairs."
+}

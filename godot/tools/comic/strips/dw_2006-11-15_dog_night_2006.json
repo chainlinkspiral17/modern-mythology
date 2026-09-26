@@ -1,0 +1,136 @@
+{
+  "id": "dw_2006-11-15_dog_night_2006",
+  "title": "The Dog Night, 2006",
+  "strip": "drift_wood",
+  "date": "2006-11-15",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Dog Night · inside the parody week",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2005–2006)",
+  "logline": "Seven years. The Dog Night falls inside the parody week. The Drift Wood daily that day: a stick figure asleep beside a properly drawn dog. The one honest panel of the week.",
+  "cast": [
+    "extra_stick_hero",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "none",
+    "note": "No mark — the parody week is unsigned, and this ran in the parody's slot."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage, drawn in the strip's real style. Under the drafting table: BARNABY, properly drawn, asleep in the bed. Beside him on the floor: the stick figure with the rotor, also asleep, crude.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "asleep in the bed, properly drawn",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_hero",
+          "pose": "asleep on the floor beside him, crude",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "dog bed",
+        "drafting table"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a garage studio drawn carefully in ink and muddy color, a gray-muzzled dog properly drawn asleep in a braided bed under a drafting table, and beside it on the floor a crude ballpoint stick figure with a helicopter rotor also asleep, the two styles side by side, no words",
+        "negative": "",
+        "notes": "Two styles, one panel. The dog real, the meme crude. The only honest panel of the week."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The dog's face. Real. Gray. Breathing.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a carefully drawn gray-muzzled sleeping dog's face, ink and soft color, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The stick figure's face. Two dots and a line. The rotor still.",
+      "characters": [
+        {
+          "id": "extra_stick_hero",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a crude stick figure's face: two dots and a line, a still rotor scribbled above, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The room. Both asleep. The monitor at the back showing a counter with five digits. Nobody behind the dumpster tonight. The first Dog Night not at the dumpster.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_hero",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "monitor with a five-digit counter"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a dark garage with a dog and a stick figure asleep on the floor and a monitor glowing at the back with a five-digit counter, no words",
+        "negative": "",
+        "notes": "The first Dog Night not at the dumpster. The counter: five digits. Letter after."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "The Dog Night inside the parody week. The dog drawn right; the meme drawn wrong; the counter at five digits."
+}

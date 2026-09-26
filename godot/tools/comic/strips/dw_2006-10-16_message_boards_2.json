@@ -1,0 +1,157 @@
+{
+  "id": "dw_2006-10-16_message_boards_2",
+  "title": "Message boards, ii",
+  "strip": "drift_wood",
+  "date": "2006-10-16",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Message Boards",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2005–2006)",
+  "logline": "Wood argues with the internet at 2 AM. The internet is a stick figure that never sleeps.",
+  "cast": [
+    "wood_26",
+    "barnaby",
+    "extra_stick_chorus"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage at 2 AM. Monitor glow. WOOD typing hard. One stick figure at the back, awake, typing back on a stick-figure keyboard.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "typing hard",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_chorus",
+          "pose": "one, typing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "monitor glow",
+        "a clock: 2:07"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "The Sundays are not 'the only good part.' The Sundays are the part that doesn't have to be funny. The dailies are the work."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man typing furiously at a glowing monitor at 2 AM in a dark garage while a single stick figure at the back of the panel types back on its own tiny keyboard, a dog asleep, neon monitor glow cutting the dark",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The stick figure's reply, drawn as its balloon: 'ok but the dog one from tuesday was funnier than anything in the novel page and you know it'",
+      "characters": [
+        {
+          "id": "extra_stick_chorus",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "STICK",
+          "text": "ok but the dog one from tuesday was funnier than anything in the novel page and you know it"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a stick figure with a long deadpan speech balloon, monitor glow",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, hands off the keyboard. Looking at the dog. The dog asleep, one leg twitching.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "hands off the keys, looking at the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep, twitching",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man with his hands lifted off a keyboard looking down at a sleeping dog whose leg twitches, monitor glow, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood back at the keyboard. Typing one word. The stick figure reading it. We don't see it. 2:41.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "typing one word",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_chorus",
+          "pose": "reading",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "clock: 2:41"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man typing a single word at 2:41 AM while a stick figure leans in to read it, the screen turned away from the viewer, no words",
+        "negative": "",
+        "notes": "The word is not shown. The reader guesses 'yes.'"
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "2 AM. The internet is right about the dog. He types one word."
+}

@@ -1,0 +1,153 @@
+{
+  "id": "rc_2006-11-15_rolfcoptr_3",
+  "title": "ROLFCOPTR · day three",
+  "strip": "rolfcoptr",
+  "date": "2006-11-15",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site · Digg front page · the server 509s at 4:12 PM",
+  "arc": "The 3:00 AM Protocol (Arc 2) · the parody",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2005–2006)",
+  "logline": "Digg. The stick figure meets a second stick figure. They scream at each other. 40,000 visitors.",
+  "cast": [
+    "extra_stick_hero",
+    "extra_stick_two"
+  ],
+  "location": "dw_abyss",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "none",
+    "note": "Unsigned."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The stick figure with the rotor. A second stick figure enters, with a rotor on its head too.",
+      "characters": [
+        {
+          "id": "extra_stick_hero",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_two",
+          "pose": "entering",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "void"
+      ],
+      "balloons": [
+        {
+          "who": "STICK TWO",
+          "text": "FIRST"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two crude stick figures with helicopter rotors on their heads in a blank void, one entering from the right",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "They face each other.",
+      "characters": [
+        {
+          "id": "extra_stick_hero",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_two",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "STICK HERO",
+          "text": "PWNED"
+        },
+        {
+          "who": "STICK TWO",
+          "text": "OWNED"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two stick figures facing each other in a void, shouting",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Both rotors spinning. Both six inches up.",
+      "characters": [
+        {
+          "id": "extra_stick_hero",
+          "pose": "hovering",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_two",
+          "pose": "hovering",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "BOTH",
+          "text": "ROLFCOPTR"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two stick figures hovering six inches off the ground with spinning rotors, crude motion lines",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The void, empty. A tiny caption at the bottom, the only one all week: '509.'",
+      "characters": [],
+      "props": [
+        "void"
+      ],
+      "balloons": [],
+      "caption": "509",
+      "sfx": "",
+      "image": {
+        "prompt": "a completely blank void panel with a tiny number at the bottom, crude",
+        "negative": "",
+        "notes": "509 — the server error. The only caption of the parody week."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "crude ballpoint",
+    "palette": "none",
+    "paper": "—"
+  },
+  "notes": "Day three. Digg. The 509. The strip that made him the ROLFCOPTR guy."
+}

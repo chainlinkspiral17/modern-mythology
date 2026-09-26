@@ -1,0 +1,157 @@
+{
+  "id": "dw_2006-11-16_the_week_after_preview",
+  "title": "Thursday · the week after",
+  "strip": "drift_wood",
+  "date": "2006-11-16",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Two-Thirds",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2005–2006)",
+  "logline": "The parody ends. Drift Wood returns. Wood at two-thirds his usual size. Gully, normal.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull_small",
+    "note": "The gull, at two-thirds size."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. WOOD at the drafting table drawn at two-thirds his normal size in a panel that is otherwise the usual size. A stack of mail on the floor: envelopes with a ringtone company's logo.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "small, at the table, inking",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "normal size",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "mail with a ringtone logo",
+        "drafting table"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man drawn noticeably smaller than normal sitting at a drafting table in an ordinary-sized garage panel, a normal-sized dog beside him, a stack of envelopes with a corporate logo on the floor, muddy digital flats",
+        "negative": "",
+        "notes": "Wood at two-thirds size. Everything else normal. Hold this for six weeks of dailies."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "GULLY, normal size, in the door.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "in the doorway, normal size",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "small",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Forty thousand people, Woody."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a normal-sized young man in a backwards cap standing in a garage doorway looking at a much smaller young man at a drafting table",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood, small.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "small",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Forty thousand people who came for a helicopter."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a small young man at a drafting table, resigned",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Gully. Wood doesn't answer. The panel is mostly the mail.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "small, silent",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the mail, filling the panel"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Still forty thousand."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a garage panel mostly filled by a stack of envelopes on the floor, a normal-sized man in the doorway and a small man at a table not answering, muddy flats",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "The week after. Bragging and mourning in four panels; the lead drawn small to do it."
+}
