@@ -48,11 +48,13 @@ under `godot/assets/comic/vol10/concept/` with their own manifest.
 ## The inspector (browse + generate on your machine)
 
 ```bash
-cd /home/deck/Downloads/modern-mythology && git pull origin main && python3 godot/tools/comic/comic_inspector.py --open
+bash /home/deck/Downloads/modern-mythology/godot/tools/comic/inspect.sh
 ```
 
-One stdlib script, no install. It serves `http://127.0.0.1:8765/`
-over the run on disk:
+That one line starts it, waits until it answers, opens the browser,
+and prints the address (`http://127.0.0.1:8765/`). Add `stop` to
+stop it. It is one stdlib script, no install, serving the run on
+disk:
 
 - **STRIPS** — every strip, filterable by year / strip / format /
   tier / rendered / review; per strip the script sheet, the panels,
