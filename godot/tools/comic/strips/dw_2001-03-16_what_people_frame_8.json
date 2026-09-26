@@ -1,0 +1,168 @@
+{
+  "id": "dw_2001-03-16_what_people_frame_8",
+  "title": "What people frame, viii",
+  "strip": "drift_wood",
+  "date": "2001-03-16",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "What People Frame",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2001 · deepening)",
+  "logline": "Friday, the last: a man buys a frame with nothing to put in it. 8×10. 'I'll know when I see it.' Wood sells it. The arc ends on an empty frame.",
+  "cast": [
+    "wood_20",
+    "extra_owner_heceta",
+    "barnaby"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The counter. A MAN, sixties, plain. No bag, no envelope, nothing.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CUSTOMER",
+          "text": "Eight by ten. Plain. Black."
+        },
+        {
+          "who": "WOOD",
+          "text": "What's it for?"
+        },
+        {
+          "who": "CUSTOMER",
+          "text": "Don't know yet."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, xerox grain, stark black spotting, a plain man in his sixties at a frame-shop counter with empty hands asking for a frame, a young clerk, a dog",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood setting the empty frame on the counter. Glass. Backing. Nothing between.",
+      "characters": [],
+      "props": [
+        "an empty 8x10 frame"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, xerox grain, stark black spotting, close-up of an empty black eight-by-ten frame with glass and backing and nothing between them on a counter",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The man looking through it at the shop. At Wood. At the dog.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "empty frame held up"
+      ],
+      "balloons": [
+        {
+          "who": "CUSTOMER",
+          "text": "I'll know when I see it."
+        },
+        {
+          "who": "WOOD",
+          "text": "Most people bring the thing first."
+        },
+        {
+          "who": "CUSTOMER",
+          "text": "Most people already had the thing."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, xerox grain, stark black spotting, a man holding an empty frame up and looking through it at a young clerk and a dog",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The man going out with the empty frame under his arm. Wood. The dog. The Owner. The shop. Twenty-five days of what people frame, ending on nothing in it.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_owner_heceta",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "empty frame leaving"
+      ],
+      "balloons": [],
+      "caption": "Friday.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, xerox grain, stark black spotting, a man walking out of a frame shop with an empty frame under his arm, a young clerk, a dog and an older woman watching him go, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Most people already had the thing.' The arc ends on an empty frame. Arc 1's aesthetic bleeds out here."
+}

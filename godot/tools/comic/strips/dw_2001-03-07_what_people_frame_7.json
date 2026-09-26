@@ -1,0 +1,155 @@
+{
+  "id": "dw_2001-03-07_what_people_frame_7",
+  "title": "What people frame, vii",
+  "strip": "drift_wood",
+  "date": "2001-03-07",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "What People Frame",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2001 · deepening)",
+  "logline": "Wednesday: a customer brings in a page torn from the laundromat digest. The strip. Wood mats his own strip and charges full price. She never asks.",
+  "cast": [
+    "wood_20",
+    "extra_owner_heceta"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The counter. A WOMAN with a quarter-letter page, torn along one edge: a Drift Wood daily. The dog-under-the-table one.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a torn digest page: the strip"
+      ],
+      "balloons": [
+        {
+          "who": "CUSTOMER",
+          "text": "It's from the laundromat thing. My husband likes the dog."
+        },
+        {
+          "who": "WOOD",
+          "text": "...Okay."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, xerox grain, stark black spotting, a woman at a frame-shop counter holding a torn quarter-letter zine page showing a comic strip with a dog under a table, a young clerk",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The page on the counter. His own signature in the margin — A. FINCH — under her thumb.",
+      "characters": [],
+      "props": [
+        "the page, the signature under her thumb"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, xerox grain, stark black spotting, close-up of a torn zine page of a comic strip on a counter, a small signature in its margin half covered by a woman's thumb",
+        "negative": "",
+        "notes": "The signature under her thumb. Letter after."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood cutting a mat for it. Precise. The Owner at the back, glasses up, saying nothing, which is louder.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "cutting, very precise",
+          "expression": ""
+        },
+        {
+          "id": "extra_owner_heceta",
+          "pose": "glasses up, silent",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "mat cutter"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, xerox grain, stark black spotting, a young man cutting a mat with great precision for a small zine page while an older woman watches over her glasses from the back, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The framed strip. The woman paying. Full price. Wood's face perfectly still.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "perfectly still",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "framed strip",
+        "register"
+      ],
+      "balloons": [
+        {
+          "who": "CUSTOMER",
+          "text": "Eighteen?"
+        },
+        {
+          "who": "WOOD",
+          "text": "Eighteen."
+        },
+        {
+          "who": "CUSTOMER",
+          "text": "For a laundromat thing."
+        },
+        {
+          "who": "WOOD",
+          "text": "Frame's the same."
+        }
+      ],
+      "caption": "Wednesday.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, xerox grain, stark black spotting, a woman paying at a counter for a small framed comic strip while the young clerk keeps his face perfectly still",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "He mats his own strip. Full price. 'Frame's the same.'"
+}

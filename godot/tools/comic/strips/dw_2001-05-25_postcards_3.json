@@ -1,0 +1,129 @@
+{
+  "id": "dw_2001-05-25_postcards_3",
+  "title": "The postcard run, iii",
+  "strip": "drift_wood",
+  "date": "2001-05-25",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Postcard Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2001 · deepening)",
+  "logline": "A postcard of Lisbon. The writing says Barcelona. The strip redraws the manic handwriting and the wrong city and lets them disagree.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The bedroom. WOOD with a postcard. BARNABY. The picture side: LISBOA, a tram, a hill.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "holding a postcard",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "postcard: Lisbon"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, xerox grain, stark black spotting, a young man on a bed holding a postcard of a Lisbon tram on a hill, a dog beside him",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The writing side, redrawn in the strip's version of her hand — slanting, crowded, words climbing the stamp: 'Barcelona is loud. I'm loud in it. Nobody here knows what a grunion is. I told them. —C.'",
+      "characters": [],
+      "props": [
+        "postcard, writing side"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, xerox grain, stark black spotting, close-up of a postcard's writing side crowded with slanting manic handwriting that climbs up around the stamp",
+        "negative": "",
+        "notes": "Letter after. The text is redrawn in Chloe's hand, not the strip's lettering."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood turning it over. Lisbon. Over. Barcelona. Over. Lisbon.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "turning it over",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "postcard, both sides"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, xerox grain, stark black spotting, a young man flipping a postcard back and forth between its picture side and its writing side",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The postcard pinned by one corner beside the others, spinning slightly. Both cities. The dog watching it spin. Wood's reply: not shown. His pen, capped, in the foreground.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "watching it spin",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "pinned postcards",
+        "a capped pen"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, xerox grain, stark black spotting, a postcard pinned by one corner to a wall beside three others and turning slightly, a dog watching it, a capped pen in the foreground, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Lisbon on one side, Barcelona on the other. The reply is a capped pen."
+}

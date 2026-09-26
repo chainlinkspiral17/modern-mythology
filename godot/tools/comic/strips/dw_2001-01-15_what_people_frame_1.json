@@ -1,0 +1,148 @@
+{
+  "id": "dw_2001-01-15_what_people_frame_1",
+  "title": "What people frame, i",
+  "strip": "drift_wood",
+  "date": "2001-01-15",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "What People Frame",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2001 · deepening)",
+  "logline": "A customer a day. Monday: a 1971 wedding photo, water-stained at one corner. The woman wants the stain inside the mat. 'That's the year it rained on us.'",
+  "cast": [
+    "wood_20",
+    "extra_owner_heceta"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Heceta Frame & Matting. WOOD at the counter. A WOMAN in her fifties with a photograph in a paper bag. The OWNER at the mat cutter behind.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "at the counter",
+          "expression": ""
+        },
+        {
+          "id": "extra_owner_heceta",
+          "pose": "at the mat cutter",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "photo in a bag",
+        "mat cutter"
+      ],
+      "balloons": [
+        {
+          "who": "CUSTOMER",
+          "text": "It's from '71. Don't cut the corner off."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, xerox grain, stark black spotting, a young man at a frame-shop counter taking a photograph from a paper bag held by a middle-aged woman, an older woman at a mat cutter behind them",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The photo: a couple on a dock — this dock, Gully's uncle's dock — in rain, in 1971, laughing. The corner stained.",
+      "characters": [],
+      "props": [
+        "1971 wedding photo, water-stained"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, xerox grain, stark black spotting, close-up of a water-stained 1971 wedding photograph of a couple laughing on a wooden dock in rain",
+        "negative": "",
+        "notes": "It's the dock. The strip doesn't say so. The reader who knows the dock knows."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood laying the mat window over it, the stain inside the window.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "laying a mat",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "mat"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Inside the window."
+        },
+        {
+          "who": "CUSTOMER",
+          "text": "That's the year it rained on us."
+        },
+        {
+          "who": "WOOD",
+          "text": "It shows."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, xerox grain, stark black spotting, a young man laying a cut mat over a photograph so the stained corner stays visible inside the window, a woman watching",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The framed photo going out the door under her arm. Wood at the counter. The next customer's shadow in the glass.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "framed photo",
+        "door"
+      ],
+      "balloons": [],
+      "caption": "Monday.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, xerox grain, stark black spotting, a woman leaving a shop with a framed photograph under her arm, a young man at the counter, the next customer's shadow on the door glass",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The dock, 1971. The stain inside the window. Each strip in the arc captioned with its weekday."
+}

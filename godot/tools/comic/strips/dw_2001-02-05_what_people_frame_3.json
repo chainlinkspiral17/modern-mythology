@@ -1,0 +1,123 @@
+{
+  "id": "dw_2001-02-05_what_people_frame_3",
+  "title": "What people frame, iii",
+  "strip": "drift_wood",
+  "date": "2001-02-05",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "What People Frame",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2001 · deepening)",
+  "logline": "Monday: a child's drawing — a house, a tree taller than the house, a dog with too many legs. The father says nothing the whole time. Wood doesn't either.",
+  "cast": [
+    "wood_20"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The counter. A FATHER in a mill jacket. A crayon drawing, flat, no bag. He sets it down and steps back.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a crayon drawing"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, xerox grain, stark black spotting, a man in a faded mill jacket setting a child's crayon drawing on a frame-shop counter and stepping back, a young clerk looking at it, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The drawing: a house, a tree taller than the house, a dog with six legs, a yellow sun in the corner. A name at the bottom in a child's letters.",
+      "characters": [],
+      "props": [
+        "the drawing"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, xerox grain, stark black spotting, close-up of a child's crayon drawing of a house with a tree taller than it, a six-legged dog and a sun in the corner",
+        "negative": "",
+        "notes": "Name at the bottom: reserved — draw it as three or four child-letters, not readable."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood cutting the mat. The father standing exactly where he stood. Neither speaks. The clock.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "cutting",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "mat cutter",
+        "clock"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, xerox grain, stark black spotting, a young man cutting a mat while a man in a mill jacket stands motionless by the counter, a wall clock, silence, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The framed drawing in the father's hands. He looks at it. He nods once, at Wood, not at the drawing. Goes.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "framed drawing"
+      ],
+      "balloons": [],
+      "caption": "Monday.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, xerox grain, stark black spotting, a man in a mill jacket holding a framed child's drawing and giving a young clerk one nod, no words",
+        "negative": "",
+        "notes": "No balloons in the strip. The only silent one in the arc."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Silent. 'Framed by a father who says nothing.' Wood doesn't either. The mill jacket: the reader may think of 2005."
+}

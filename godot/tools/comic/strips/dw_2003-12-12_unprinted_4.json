@@ -1,0 +1,130 @@
+{
+  "id": "dw_2003-12-12_unprinted_4",
+  "title": "The unprinted year, iv · the line comes back",
+  "strip": "drift_wood",
+  "date": "2003-12-12",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Unprinted Year",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2003 · deepening)",
+  "logline": "Six months in. The line tightens again — cross-hatch back, spotting back, balloons lettered — for nobody. Box 5 is nearly full. He letters the lid a week early. In the corner: a scanner, still boxed.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The bedroom. WOOD at the desk. The line is tight again — tighter than 2002, the spotting exact. BARNABY watching. A cardboard box on the floor, full of strips, the flaps open.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "drawing, tight",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "Box 5, full, open"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, tight precise line with heavy spotting, a young man drawing at a desk with a dog watching and a cardboard box on the floor overflowing with comic strips",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The pad. The strip he's drawing: the dog under the table, redrawn, better than 1999 — exact. A lettered balloon: 'Still here.'",
+      "characters": [],
+      "props": [
+        "pad: the dog under a table, lettered"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, close-up of a drawing pad showing a small dog under a table drawn with precise confident lines and one lettered speech balloon",
+        "negative": "",
+        "notes": "Lettering returns. Letter after: 'Still here.'"
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood setting the strip on top of the box. Not folding the flaps — one week left. Writing on the lid anyway, with a marker.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "closing the box",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "Box 5",
+        "marker"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, a young man writing on the open lid flap of a nearly full cardboard box with a marker",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The box, open, on the floor. On the flap: BOX 5 · JUN 03–DEC 03 · NONE OF IT RAN. The dog's chin on the edge. Under the desk, in the corner of the panel: a flat gray rectangle in a shipping box. A scanner.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "chin on the box",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "Box 5, lidded and labeled",
+        "a scanner in a shipping box"
+      ],
+      "balloons": [],
+      "caption": "Box 5.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, tight line, an open nearly full cardboard box on a bedroom floor with writing on its flap and a dog resting its chin on the edge, and in the corner a flat scanner still in its shipping box",
+        "negative": "",
+        "notes": "Flap: BOX 5 · JUN 03–DEC 03 · NONE OF IT RAN. Letter after. The box closes in the book at dw_2003-12-19; the scanner is January (dw_2004-01-05)."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, tight again; spotting and hatch back; lettered; still no reader",
+    "palette": "",
+    "paper": "bristol, into Box 5"
+  },
+  "notes": "The line comes back for nobody. The lid lettered early. The scanner in the corner. The December strip closes the box a week later."
+}

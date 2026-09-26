@@ -1,0 +1,156 @@
+{
+  "id": "dw_2001-01-17_what_people_frame_2",
+  "title": "What people frame, ii",
+  "strip": "drift_wood",
+  "date": "2001-01-17",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "What People Frame",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2001 · deepening)",
+  "logline": "Wednesday: a fishing license, expired 1988. The man wants it framed with the fine. 'Both. Same frame.'",
+  "cast": [
+    "wood_20",
+    "extra_owner_heceta"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The counter. A MAN in waders, dripping, with a fishing license and a folded pink citation.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "license",
+        "citation"
+      ],
+      "balloons": [
+        {
+          "who": "CUSTOMER",
+          "text": "License. And the ticket. Same frame."
+        },
+        {
+          "who": "WOOD",
+          "text": "...Side by side?"
+        },
+        {
+          "who": "CUSTOMER",
+          "text": "Ticket on top."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, xerox grain, stark black spotting, a man in dripping waders at a frame-shop counter laying down a fishing license and a folded pink citation, a young clerk",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The two documents on the counter. The license: 1988. The citation: 1988, the day after it expired. $45.",
+      "characters": [],
+      "props": [
+        "license",
+        "citation"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, xerox grain, stark black spotting, close-up of a 1988 fishing license and a pink citation dated the day after it expired lying side by side on a counter",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood cutting a two-window mat. The Owner, from the back, not looking up.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "cutting",
+          "expression": ""
+        },
+        {
+          "id": "extra_owner_heceta",
+          "pose": "from the back",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "mat cutter"
+      ],
+      "balloons": [
+        {
+          "who": "OWNER",
+          "text": "Two windows, Arthur. Ticket on top."
+        },
+        {
+          "who": "WOOD",
+          "text": "I heard him."
+        },
+        {
+          "who": "OWNER",
+          "text": "I'm telling you anyway. It's the good one."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, xerox grain, stark black spotting, a young man at a mat cutter making a two-window mat while an older woman with reading glasses speaks from the back without looking up",
+        "negative": "",
+        "notes": "'Arthur' — the owner's first of two in eleven years."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The framed pair on the counter. The man looking at his own ticket under glass with enormous satisfaction.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "framed license and ticket"
+      ],
+      "balloons": [],
+      "caption": "Wednesday.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, xerox grain, stark black spotting, a man in waders looking with great satisfaction at his framed expired fishing license and citation, a young man at the counter",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Ticket on top.' The owner's first 'Arthur.'"
+}
