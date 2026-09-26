@@ -578,7 +578,8 @@ function renderRef(r){const el=$('#detail');el.innerHTML=`<div class="head"><h1>
  <h2>registry entry</h2><pre>${esc(JSON.stringify(r,null,2))}</pre>`;}
 function explain(j){const log=j.log.join('\n');
  if(/no API key/.test(log))return 'No API key for '+j.provider+'. Put it in godot/tools/.'+(j.provider==='runway'?'runway_key':'google_key')+' (one line) or export the env var, then generate again.';
- if(/submit 4(00|22)/.test(log))return 'The provider rejected the request (HTTP 400). Usually the model id is wrong for this API, or the ratio is not one this model accepts. The body below names the field. Try the default model, or fix the id in the "other id…" box.';
+ if(/doesn't take .* using its closest size/.test(log)&&j.status==='done')return 'Rendered. This model has its own size list; the closest size to the strip was used and remembered.';
+ if(/submit 4(00|22)/.test(log))return 'The provider rejected the request (HTTP 400). If the body names the model, the id is wrong for this API — fix it in the "other id…" box. If it names another field, paste the body to me.';
  if(/submit 401|submit 403|PERMISSION_DENIED|API key not valid/.test(log))return 'The key was refused (401/403). Check the key file has the right key and nothing else in it.';
  if(/submit 429|RESOURCE_EXHAUSTED|insufficient/i.test(log))return 'Out of credits or rate-limited (429). Wait, or add credits on the provider.';
  if(/task FAILED|CANCELLED/.test(log))return 'The provider accepted the job and then failed it (often content moderation on a prompt with people, or an internal error). Try again with a different seed or model.';
