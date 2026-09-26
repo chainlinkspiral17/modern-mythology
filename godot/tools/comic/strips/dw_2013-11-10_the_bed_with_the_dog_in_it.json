@@ -1,0 +1,106 @@
+{
+  "id": "dw_2013-11-10_the_bed_with_the_dog_in_it",
+  "title": "Sunday · the bed, with the dog in it",
+  "strip": "drift_wood",
+  "date": "2013-11-10",
+  "run": 4,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Sundays",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Sundays · deepening viii)",
+  "logline": "The dog bed under the drafting table, in watercolor, with the dog in it, fourteen, asleep. The composition of 'The Empty Chair' a year early, with everything in it. The strip doesn't know; the book does.",
+  "cast": [
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the drafting table's underside and the braided bed beneath it, the old dog asleep in it, the lamp's light from above.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "asleep in the bed",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the bed"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old dog asleep in a braided bed beneath a drafting table in a lamp's warm light, wet-on-wet watercolor, no words",
+        "negative": "",
+        "notes": "'The Empty Chair' (dw_2014-11-30), tier 1, with the dog in it. Draw it exactly."
+      },
+      "stage": null,
+      "name": "Bed"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the gray muzzle on the bed's edge, close. The breath. Held.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "muzzle on the edge",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old dog's gray muzzle resting on the edge of a braided bed, close, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Muzzle"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the lamp on. Just on. The table. The bed below, the dog in it. Held.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the lamp, on"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a drafting table with its lamp on and an old dog asleep in a bed beneath, no words",
+        "negative": "",
+        "notes": "Tier 3 is the lamp on. In 2014 it goes off."
+      },
+      "stage": null,
+      "name": "Lamp"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "The Empty Chair, a year early, full.",
+  "layout": "tiers, portrait page"
+}

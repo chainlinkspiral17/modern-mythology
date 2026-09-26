@@ -1,0 +1,97 @@
+{
+  "id": "dw_2017-12-10_gullys_at_christmas",
+  "title": "Sunday · Gully's at Christmas",
+  "strip": "drift_wood",
+  "date": "2017-12-10",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "December",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Sundays · deepening viii)",
+  "logline": "Gully's shack strung with lights, the dock, the corkboard through the window with twenty years on it, the flyers' wall with a wreath, the pup at the door. The town's warm room.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the shack and dock at dusk strung with colored lights doubled in the water, a wreath on the flyers' wall, smoke from the stovepipe.",
+      "characters": [],
+      "props": [
+        "string lights",
+        "a wreath"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a shingle bait shack and dock at dusk strung with colored lights doubled in the water, a wreath on a wall of pinned flyers and smoke from a stovepipe, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Lights"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: through the window, the corkboard above the register: twenty years of things, lit warm.",
+      "characters": [],
+      "props": [
+        "the corkboard through glass"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a crowded corkboard above a shop register seen through a window lit warm from inside, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Board"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the door, open a crack, the pup in the gap, light on the planks. Held.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "in the door's gap",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the door"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a shack door open a crack with a small three-legged dog in the gap and warm light spilling onto dock planks at dusk, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Door"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "The warm room. The pup in the gap.",
+  "layout": "tiers, portrait page"
+}

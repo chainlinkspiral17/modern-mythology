@@ -1,0 +1,89 @@
+{
+  "id": "dw_2018-02-11_the_flyer_photo",
+  "title": "Sunday · the flyer photo",
+  "strip": "drift_wood",
+  "date": "2018-02-11",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Sundays · deepening viii)",
+  "logline": "The photographed flyer, blurry, lettered over, pinned at the end of twenty-one; the strip's Sunday looks at the change from paper to pixel on a shingle wall and says nothing.",
+  "cast": [],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the flyer wall, twenty-one long, the last one visibly a printout: the blur, the inkjet banding, the hand lettering crisp over it.",
+      "characters": [],
+      "props": [
+        "twenty-one flyers",
+        "a printout at the end"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a shingle wall with a long row of hand-drawn crab flyers ending in a blurry inkjet printout with crisp hand lettering over it, no words legible",
+        "negative": "",
+        "notes": "dw_2018-02-09's flyer."
+      },
+      "stage": null,
+      "name": "Wall"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the printout, close: the blur, the lettering's ink sitting on top of it like it's from another world.",
+      "characters": [],
+      "props": [
+        "the printout"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a blurry inkjet printout of a child's crab drawing with crisp hand-lettered capitals over it, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Blur"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the 1998 flyer at the other end, close: paper, sun, a hand. Held.",
+      "characters": [],
+      "props": [
+        "the 1998 flyer"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a sun-bleached hand-drawn paper flyer with one enormous crab, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Paper"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "Paper to pixel on a shingle wall.",
+  "layout": "tiers, portrait page"
+}

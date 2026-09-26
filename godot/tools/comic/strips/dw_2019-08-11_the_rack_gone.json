@@ -1,0 +1,89 @@
+{
+  "id": "dw_2019-08-11_the_rack_gone",
+  "title": "Sunday · the rack, gone",
+  "strip": "drift_wood",
+  "date": "2019-08-11",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Tourist Season",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Sundays · deepening viii)",
+  "logline": "The laundromat's wall where the digest rack hung from 1999 to 2003: four screw holes, a pale rectangle, dryers turning. 'It's on a rack at the laundromat,' he told the tourist. It isn't.",
+  "cast": [],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the laundromat's interior, dryers turning, and on the wall by the door a pale rectangle with four screw holes where a rack hung, a vending machine beside it now.",
+      "characters": [],
+      "props": [
+        "four screw holes",
+        "a pale rectangle"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat interior with dryers turning and a pale rectangle with four screw holes on the wall by the door where a rack once hung, a vending machine beside it, no words",
+        "negative": "",
+        "notes": "The rack (dw_2003-05-23). Gone since 2003; he still says it's there (dw_2019-08-12)."
+      },
+      "stage": null,
+      "name": "Wall"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the four holes, close.",
+      "characters": [],
+      "props": [
+        "four holes"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "four small screw holes in a painted wall in a pale rectangle, close, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Holes"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the dryers' round windows, clothes turning, the light. Held.",
+      "characters": [],
+      "props": [
+        "dryers"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a row of laundromat dryers with clothes turning behind round windows, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Dryers"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "The rack's four holes. He still says it's there.",
+  "layout": "tiers, portrait page"
+}

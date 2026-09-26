@@ -1,0 +1,90 @@
+{
+  "id": "dw_2004-10-10_the_tavern_wall_in_rain",
+  "title": "Sunday · the tavern's back wall in rain",
+  "strip": "drift_wood",
+  "date": "2004-10-10",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Sundays",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Sundays · deepening viii)",
+  "logline": "The back of the tavern from the garage door: cedar shake, the bare bulb, the door the rent goes under, October rain. The jukebox not drawn; the reader hears it anyway.",
+  "cast": [],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the tavern's back wall from six feet: cedar shakes dark with rain, the bare bulb lit, the plain door, a downspout.",
+      "characters": [],
+      "props": [
+        "cedar shakes",
+        "the bare bulb",
+        "the door"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the back wall of a cedar-shake tavern in October rain with a bare lit bulb over a plain door and a downspout, seen from close, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Wall"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the bulb, close, rain streaking through its light.",
+      "characters": [],
+      "props": [
+        "the bulb"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a bare light bulb over a door with rain streaking through its light, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Bulb"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the six feet between the tavern's door and the garage's, the gravel, both doors, the rain. Held.",
+      "characters": [],
+      "props": [
+        "two doors, six feet"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a narrow gap of wet gravel between a tavern's back door and a garage door in rain, no words",
+        "negative": "",
+        "notes": "'It's six feet' (dw_2004-03-13)."
+      },
+      "stage": null,
+      "name": "Gap"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "The six feet, as a Sunday.",
+  "layout": "tiers, portrait page"
+}

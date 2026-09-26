@@ -1,0 +1,88 @@
+{
+  "id": "dw_2020-10-11_the_bay_in_october",
+  "title": "Sunday · the bay in October",
+  "strip": "drift_wood",
+  "date": "2020-10-11",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Sundays",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Sundays · deepening viii)",
+  "logline": "The last big landscape Sunday of the public run: the bay from the bluff in October, everything in it — the dock, the drift log, the cannery, the school's roof, the Lanes on the hill with its letters mostly dark, the ridge and the glow. The town, whole, once more, before the last Sunday redraws the cafeteria.",
+  "cast": [],
+  "location": "dw_bay",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the bay from the bluff in October light, and in it everything: Gully's dock and shack, the drift log, the cannery's chimney, the school's flat roof, main street's backs, the Lanes' sign on the hill with most tubes dark, and east above the ridge, the glow, large.",
+      "characters": [],
+      "props": [
+        "the whole town"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wide view of a small Oregon coastal town and its bay from a bluff in October light showing a dock and shingle shack, a drift log on the beach, a cannery chimney, a school's flat roof, a main street's backs, a bowling alley's sign on a hill with most letters dark, and a large warm glow above a forested ridge to the east, no figures, no words",
+        "negative": "",
+        "notes": "Every location the strip has. Draw it as the map of the run."
+      },
+      "stage": null,
+      "name": "Everything"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the drift log, close, empty, the tide coming to it.",
+      "characters": [],
+      "props": [
+        "the drift log"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a bleached drift log on a beach with the tide coming toward it, empty, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Log"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the ridge and the glow, alone, larger than any Sunday has drawn it. Held.",
+      "characters": [],
+      "props": [
+        "the glow, largest"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a forested ridge with a large warm sourceless glow above its treeline filling most of the sky, no words",
+        "negative": "",
+        "notes": "The largest the public strip draws it. Vol. II walks into it."
+      },
+      "stage": null,
+      "name": "Glow"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "The whole town, once. The glow, largest.",
+  "layout": "tiers, portrait page"
+}

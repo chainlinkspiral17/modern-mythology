@@ -1,0 +1,89 @@
+{
+  "id": "dw_2012-06-10_the_bench",
+  "title": "Sunday · the bench",
+  "strip": "drift_wood",
+  "date": "2012-06-10",
+  "run": 4,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Sundays",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Sundays · deepening viii)",
+  "logline": "A bench on the seawall, June, empty, the bay beyond. A plaque on it the strip won't letter. The place he'll sit in 2021 as a back.",
+  "cast": [],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: a wooden bench on the seawall's walk in June, empty, the bay flat beyond, a gull on the wall.",
+      "characters": [],
+      "props": [
+        "the bench",
+        "a plaque"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an empty wooden bench on a seawall walk in June with a flat bay beyond and a gull on the wall, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Bench"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the bench's small brass plaque, close, its words rendered as worn shapes.",
+      "characters": [],
+      "props": [
+        "the plaque"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small worn brass plaque on a bench's back with its inscription rendered as unreadable shapes, no words",
+        "negative": "",
+        "notes": "The plaque's name: reserved."
+      },
+      "stage": null,
+      "name": "Plaque"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the seawall's long curve from the bench, nobody. Held.",
+      "characters": [],
+      "props": [
+        "the seawall"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a long curving concrete seawall seen from a bench with nobody on it, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Wall"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "The bench. The plaque unread.",
+  "layout": "tiers, portrait page"
+}

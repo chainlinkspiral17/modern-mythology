@@ -1,0 +1,89 @@
+{
+  "id": "dw_2012-11-11_three_drawings",
+  "title": "Sunday · three drawings on a wall",
+  "strip": "drift_wood",
+  "date": "2012-11-11",
+  "run": 4,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Illustrators",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Sundays · deepening viii)",
+  "logline": "The garage wall with Lyon's glow, Osaka's dog and Montreal's envelope, unopened yet. Three strangers on a wall, as a Sunday, the week before the arc's dailies.",
+  "cast": [],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the garage wall: two drawings pinned — a ridge with a glow, a dog under a table in a loose wet line — and a third envelope, airmail-striped, unopened, pinned by its corner.",
+      "characters": [],
+      "props": [
+        "two drawings",
+        "an unopened envelope"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a garage wall with two pinned drawings, one of a forested ridge with a soft glow and one of a dog under a table in loose wet brush, and beside them an unopened airmail envelope pinned by its corner, no words",
+        "negative": "",
+        "notes": "Lyon and Osaka up; Montreal unopened until dw_2012-11-16."
+      },
+      "stage": null,
+      "name": "Wall"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: Lyon's drawing, close: the ridge, the glow, in a stranger's hand.",
+      "characters": [],
+      "props": [
+        "Lyon's drawing"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a stranger's drawing of a forested ridge with a soft warm glow above it in a different hand, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Glow"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the wall at night, the lamp's circle reaching the drawings' bottom edge and no further. Held.",
+      "characters": [],
+      "props": [
+        "the lamp's edge"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a garage wall at night with a lamp's circle of light reaching the bottom edge of two pinned drawings and an envelope, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Lamp"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "Three strangers on the wall, one unopened.",
+  "layout": "tiers, portrait page"
+}

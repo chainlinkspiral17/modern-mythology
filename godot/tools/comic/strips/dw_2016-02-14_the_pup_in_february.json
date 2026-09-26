@@ -1,0 +1,106 @@
+{
+  "id": "dw_2016-02-14_the_pup_in_february",
+  "title": "Sunday · the pup in February",
+  "strip": "drift_wood",
+  "date": "2016-02-14",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Three Legs",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Sundays · deepening viii)",
+  "logline": "The pup on the beach in February, fourteen months, in the strip's first Sunday with him: the run, the two-one prints, the drift log he can't climb yet. The dog Sunday, resumed with a new dog.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the February beach, gray, and the small three-legged dog running the tideline at full scuttle, his prints two-one behind him.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "running",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "two-one prints"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a gray February beach with a small three-legged dog running along the tideline leaving prints in a two-one rhythm, wet-on-wet watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Run"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the pup at the drift log, front paws up on it, not able to climb it yet. Looking up.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "paws on the log",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the drift log"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small three-legged dog with its front paws up on a bleached drift log looking up at the top it cannot reach, no words",
+        "negative": "",
+        "notes": "He'll stand on it by 2019 (dw_2019-10-13)."
+      },
+      "stage": null,
+      "name": "Log"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the sea, the pup a dot at the water. Held.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "a dot",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a gray sea with a tiny dog at the water's edge, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Sea"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "The first dog Sunday with the pup. The log he can't climb yet.",
+  "layout": "tiers, portrait page"
+}

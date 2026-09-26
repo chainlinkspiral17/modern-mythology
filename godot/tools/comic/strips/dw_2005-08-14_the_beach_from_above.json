@@ -1,0 +1,102 @@
+{
+  "id": "dw_2005-08-14_the_beach_from_above",
+  "title": "Sunday · the beach from above",
+  "strip": "drift_wood",
+  "date": "2005-08-14",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Tourist Season",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Sundays · deepening viii)",
+  "logline": "Tourist season from the bluff: the beach as a texture of umbrellas and towels, and one clear patch around a drift log where a man and a dog sit. The strip draws the crowd as weather.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the beach in August from the bluff, covered edge to edge in umbrellas and towels drawn as a bright texture, the sea beyond.",
+      "characters": [],
+      "props": [
+        "umbrellas as texture"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a beach in August seen from a bluff covered edge to edge with a bright texture of umbrellas and towels, the sea beyond, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Crowd"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: one clear patch of sand around a drift log, and on it, small, a man and a dog. The crowd curves around them.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "small, on the log",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the clear patch"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small clear patch of sand around a drift log in a crowded beach with a man and a small dog on the log, the crowd curving around them, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Patch"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the tide line, empty of people, the water. Held.",
+      "characters": [],
+      "props": [
+        "the tide line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an empty tide line with the sea beyond, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Tide"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "The crowd as texture. One clear patch.",
+  "layout": "tiers, portrait page"
+}

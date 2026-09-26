@@ -1,0 +1,88 @@
+{
+  "id": "dw_2006-05-14_the_heron_right",
+  "title": "Sunday · the heron, right",
+  "strip": "drift_wood",
+  "date": "2006-05-14",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Sundays",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Sundays · deepening viii)",
+  "logline": "The estuary and the heron, and this time the heron is a heron. Two years after the blot. The strip doesn't remark; the reader who kept the 2004 page will.",
+  "cast": [],
+  "location": "dw_estuary",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the estuary at low tide in May, the channels, the grass, the light controlled.",
+      "characters": [],
+      "props": [
+        "the estuary"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an estuary at low tide in May light with silver channels and green grass, the watercolor controlled, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Estuary"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: a heron on the mud, drawn right: the neck, the eye, the one lifted foot.",
+      "characters": [],
+      "props": [
+        "a heron"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a heron standing on tidal mud with one foot lifted, drawn precisely, no words",
+        "negative": "",
+        "notes": "Compare dw_2004-03-14: the blot with legs."
+      },
+      "stage": null,
+      "name": "Heron"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the heron lifting off, the wingbeat, the water dripping. Held.",
+      "characters": [],
+      "props": [
+        "the heron in flight"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a heron lifting off tidal mud with water dripping from its feet, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Lift"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "The heron, right. Two years after the blot.",
+  "layout": "tiers, portrait page"
+}

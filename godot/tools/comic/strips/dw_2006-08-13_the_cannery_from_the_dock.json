@@ -1,0 +1,89 @@
+{
+  "id": "dw_2006-08-13_the_cannery_from_the_dock",
+  "title": "Sunday · the cannery from the dock",
+  "strip": "drift_wood",
+  "date": "2006-08-13",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Sundays",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Sundays · deepening viii)",
+  "logline": "The cannery across the water from Gully's dock in August evening light, its chimney, its rust, a gull line on its ridge. The dock's end in the foreground with two coffees on the planks.",
+  "cast": [],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: from the dock's end: the bay, and across it the cannery in evening light, chimney, rust streaks, a line of gulls on the ridge.",
+      "characters": [],
+      "props": [
+        "the cannery",
+        "gulls"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an abandoned cannery across bay water in warm evening light with a tall chimney and rust streaks and a line of gulls on its roof ridge, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Across"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the dock planks in the foreground, two paper coffee cups, nobody's hands.",
+      "characters": [],
+      "props": [
+        "two coffees"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two paper coffee cups on weathered dock planks with no one beside them, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Coffees"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the cannery going dark, the chimney against the last light. Held.",
+      "characters": [],
+      "props": [
+        "the chimney at dusk"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a cannery chimney dark against the last evening light across water, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Dusk"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "Two coffees, no hands. The chimney at dusk.",
+  "layout": "tiers, portrait page"
+}

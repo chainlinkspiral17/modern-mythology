@@ -1,0 +1,96 @@
+{
+  "id": "dw_2016-12-11_the_porch_box_gone",
+  "title": "Sunday · the porch, box gone",
+  "strip": "drift_wood",
+  "date": "2016-12-11",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "The Second Box",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Sundays · deepening viii)",
+  "logline": "The garage porch in December, the empty box gone (Gully took it back in November), a pale dry rectangle on the wet step where it sat. The pup sitting beside the rectangle anyway.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the garage porch in December rain, the step wet except a pale dry rectangle where a box sat for weeks, and the pup sitting beside the rectangle, guarding nothing.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "beside the rectangle",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a dry rectangle"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a garage porch step in December rain with a pale dry rectangle where a box once sat and a small three-legged dog sitting beside it on guard, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Porch"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the rectangle, close, the rain beginning to take it.",
+      "characters": [],
+      "props": [
+        "the rectangle"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a pale dry rectangle on a wet concrete step with rain beginning to darken its edges, close, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Rectangle"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the step, later, all wet, the rectangle gone. The pup gone in. Held.",
+      "characters": [],
+      "props": [
+        "the step, wet"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a garage porch step uniformly wet in rain with nothing on it, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Gone"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "The box's rectangle, rained away. He guards it anyway.",
+  "layout": "tiers, portrait page"
+}
