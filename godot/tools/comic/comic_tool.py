@@ -14,6 +14,9 @@ README.md). This tool turns them into the things production needs:
              image (layout, era style, every panel, the balloons, the signature).
              This is the concept-run path: comic_render.py sends these to
              Runway or Google and you get actual comic strips back.
+  sheets     write one prompt per reference sheet (characters by era, era
+             swatches, hero locations, objects) from style_sheets.json —
+             the generation side of lore/drift_wood/style/.
   prompts    write an image-generation queue (JSON) — one job per panel:
              era prefix + panel prompt + era suffix, negative, size, seed.
              Consumed by comic_studio.html or any 2D generator runner.
@@ -350,6 +353,36 @@ def cmd_strip_prompts(args):
     return 0
 
 
+# ── sheets (reference / model sheets) ────────────────────────────────────
+
+SHEETS_PATH = HERE / "style_sheets.json"
+
+
+def cmd_sheets(args):
+    """One prompt per reference sheet: the era's style block + the sheet
+    prompt from style_sheets.json (sources: lore/drift_wood/style/*.md)."""
+    eras = load_eras()
+    data = load_json(SHEETS_PATH)
+    jobs = []
+    for sh in data["sheets"]:
+        if args.only and not fnmatch.fnmatch(sh["id"], args.only):
+            continue
+        era = eras["eras"][sh["era"]]
+        style = era["prompt_prefix"].rstrip(",")
+        prompt = (f"a clean reference sheet on white paper. Style: {style}. "
+                  f"{sh['prompt']}. Neat hand-lettered labels are allowed on this sheet.")
+        jobs.append({"tag": "vol10-sheets", "slug": sh["id"], "kind": sh["kind"], "era": sh["era"],
+                     "prompt": re.sub(r"\s+", " ", prompt).strip(),
+                     "negative": ", ".join(x for x in era["negative"].split(", ") if x not in ("text", "letters", "signature")),
+                     "runway_ratio": {"16:9": "1920:1080", "3:4": "1080:1440"}.get(sh.get("ratio", "16:9"), "1920:1080"),
+                     "google_aspect": sh.get("ratio", "16:9"), "lettered": True})
+    out = Path(args.out) if args.out else OUT / "sheets.json"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps({"_comment": "Reference sheets. Render with comic_render.py --queue out/sheets.json.", "jobs": jobs}, indent=2, ensure_ascii=False), encoding="utf-8")
+    print(f"wrote {len(jobs)} sheet prompts → {out.relative_to(REPO)}")
+    return 0
+
+
 # ── stage (Blender / Meshy hero pipeline) ────────────────────────────────
 
 def cmd_stage(args):
@@ -557,7 +590,8 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
     for name, fn in (("validate", cmd_validate), ("index", cmd_index), ("md", cmd_md),
-                     ("prompts", cmd_prompts), ("stage", cmd_stage), ("strip-prompts", cmd_strip_prompts)):
+                     ("prompts", cmd_prompts), ("stage", cmd_stage), ("strip-prompts", cmd_strip_prompts),
+                     ("sheets", cmd_sheets)):
         sp = sub.add_parser(name)
         sp.add_argument("--only", help="glob on strip id, e.g. 'dw_2014*'")
         sp.add_argument("--out", help="output path (prompts/stage)")
