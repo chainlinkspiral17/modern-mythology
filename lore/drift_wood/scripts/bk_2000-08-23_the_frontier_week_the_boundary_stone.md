@@ -1,0 +1,93 @@
+# THE FRONTIER WEEK · The boundary stone
+
+`bk_2000-08-23_the_frontier_week_the_boundary_stone` · **BACKUP** · 2000-08-23 · daily4 (1x4 strip) · run 2 · The High School Zine Era · tier B · selection full
+Venue: the Newport paper · a western week the editor cut · Box 3 · arc: *THE FRONTIER WEEK* · backup series: **THE FRONTIER WEEK**
+
+*A surveyor with a chain and a stake at the edge of town, and in the grass a carved stone face the surveyor's map doesn't have, and the stranger saying it was here first. The surveyor drives the stake beside it anyway. The dog lifts a leg on the stake.*
+
+**Line.** brush-pen, committed; xerox; black and white; the town in 1871 by way of a TV western  
+**Palette.** black and white; dust as stipple  
+**Paper.** newsprint / the digest — a genre week that ran nowhere; Box 3
+
+Cast: `extra_stranger`, `extra_surveyor`, `barnaby`
+
+---
+
+## Panel 1
+
+*medium.* A SURVEYOR with a chain and a stake at the grass's edge; in the grass a carved stone face, moss on it already.
+
+- **extra_surveyor** · with a stake
+
+Props: the stone face; the stake
+
+<details><summary>image generation</summary>
+
+**prompt.** black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones, black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a surveyor with a measuring chain and a wooden stake beside a carved stone face half sunk in grass, no text, no lettering, no speech balloons, no signature
+
+**negative.** color, gray gradients, photorealistic, 3D render, smooth digital line, text, letters, watermark, signature, extra fingers
+
+</details>
+
+## Panel 2
+
+*medium.* The STRANGER, arms folded.
+
+- **extra_stranger** · arms folded
+
+> **STRANGER**: That was here first.
+> **SURVEYOR**: It's not on the map.
+
+<details><summary>image generation</summary>
+
+**prompt.** black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones, black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a stranger with folded arms speaking to a surveyor who holds up a map, no text, no lettering, no speech balloons, no signature
+
+**negative.** color, gray gradients, photorealistic, 3D render, smooth digital line, text, letters, watermark, signature, extra fingers
+
+</details>
+
+## Panel 3
+
+*medium.* The stake driven in beside the face. The dog lifting a leg on the stake.
+
+- **barnaby** · leg up on the stake
+
+Props: the stake
+
+<details><summary>image generation</summary>
+
+**prompt.** black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones, black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a wooden survey stake driven into grass beside a carved stone face with a small dog lifting its leg on the stake, no text, no lettering, no speech balloons, no signature
+
+**negative.** color, gray gradients, photorealistic, 3D render, smooth digital line, text, letters, watermark, signature, extra fingers
+
+</details>
+
+## Panel 4
+
+*wide.* The ridge, the stump, the crow, and now a stake beside the stump.
+
+Props: the stump; a stake
+
+<details><summary>image generation</summary>
+
+**prompt.** black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones, black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a wooded ridge with a single stump, a crow on it and a survey stake driven beside it, dust as stipple, no text, no lettering, no speech balloons, no signature
+
+**negative.** color, gray gradients, photorealistic, 3D render, smooth digital line, text, letters, watermark, signature, extra fingers
+
+</details>
+
+---
+
+<details><summary>whole-strip prompt (concept run)</summary>
+
+**prompt.** a four-panel newspaper comic strip, four equal panels in a single horizontal row with thin black gutters (4 panels). Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. Title of the strip: BACKUP. The strip: A surveyor with a chain and a stake at the edge of town, and in the grass a carved stone face the surveyor's map doesn't have, and the stranger saying it was here first. The surveyor drives the stake beside it anyway. The dog lifts a leg on the stake. Panel 1: black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a surveyor with a measuring chain and a wooden stake beside a carved stone face half sunk in grass. No dialogue in this panel. Panel 2: black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a stranger with folded arms speaking to a surveyor who holds up a map. Stranger says "That was here first.". Surveyor says "It's not on the map.". Panel 3: black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a wooden survey stake driven into grass beside a carved stone face with a small dog lifting its leg on the stake. No dialogue in this panel. Panel 4: black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a wooded ridge with a single stump, a crow on it and a survey stake driven beside it, dust as stipple. No dialogue in this panel. Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; no words other than the ones given. Bottom right margin: tiny signature "A. Finch — Small Wood, OR" beside a tiny stylized gull, two strokes.
+
+**negative.** color, gray gradients, photorealistic, 3D render, smooth digital line, watermark, extra fingers
+
+</details>
+
+**Margin.** A. Finch — Small Wood, OR · mark: *gull* — a tiny stylized gull, two strokes
+
+*Notes.* The stone head (canon 2024–25; Halloween 1998) as a boundary marker the map doesn't have.
+
+Source: lore/drift_wood/_BACKUPS.md

@@ -1,0 +1,143 @@
+{
+  "id": "bk_2000-08-24_the_frontier_week_the_gambler",
+  "title": "THE FRONTIER WEEK · The gambler",
+  "strip": "backup",
+  "series": "THE FRONTIER WEEK",
+  "date": "2000-08-24",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the Newport paper · a western week the editor cut · Box 3",
+  "arc": "THE FRONTIER WEEK",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "A riverboat gambler off a boat that has no river to have come up, at the saloon's one table, dealing cards to nobody and smoothing his lapels between hands. He offers the stranger a card. The stranger takes it face down and puts it in his hat. The gambler asks his name. Small Wood.",
+  "cast": [
+    "extra_stranger",
+    "extra_lapels",
+    "barnaby"
+  ],
+  "location": "dw_tavern",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The saloon's one table; a GAMBLER in a good coat dealing to empty chairs, smoothing his lapels between cards.",
+      "characters": [
+        {
+          "id": "extra_lapels",
+          "pose": "dealing, smoothing his lapels",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "cards"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a gambler in a good coat at a saloon table dealing cards to empty chairs and smoothing his lapels",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The GAMBLER offering the STRANGER a card, face down.",
+      "characters": [
+        {
+          "id": "extra_lapels",
+          "pose": "offering a card",
+          "expression": ""
+        },
+        {
+          "id": "extra_stranger",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a card, face down"
+      ],
+      "balloons": [
+        {
+          "who": "GAMBLER",
+          "text": "One card. On the house."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a gambler offering a single face-down card across a table to a stranger",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The STRANGER putting the card in his hatband without looking.",
+      "characters": [
+        {
+          "id": "extra_stranger",
+          "pose": "card into the hatband",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GAMBLER",
+          "text": "And your name, friend?"
+        },
+        {
+          "who": "STRANGER",
+          "text": "Small Wood."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a stranger tucking a card into his hatband without looking at it while a gambler asks a question",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The ridge, the stump, the crow, the stake, and a paddlewheel's shape far behind the ridge where no river is.",
+      "characters": [],
+      "props": [
+        "a paddlewheel, impossible"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a wooded ridge with a stump, a crow and a stake, and the faint shape of a riverboat's paddlewheel showing behind the ridge where no river could be, dust as stipple",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white; the town in 1871 by way of a TV western",
+    "palette": "black and white; dust as stipple",
+    "paper": "newsprint / the digest — a genre week that ran nowhere; Box 3"
+  },
+  "notes": "Mr. D. Dean's lapels (Vol 5) as a riverboat gambler; the boat with no river (see SLASH). The card in the hatband: face down; reserved.",
+  "layout": "four panels"
+}

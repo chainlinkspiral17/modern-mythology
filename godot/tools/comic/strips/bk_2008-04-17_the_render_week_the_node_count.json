@@ -1,0 +1,115 @@
+{
+  "id": "bk_2008-04-17_the_render_week_the_node_count",
+  "title": "THE RENDER WEEK · The node count",
+  "strip": "backup",
+  "series": "THE RENDER WEEK",
+  "date": "2008-04-17",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · a science-fiction week the papers declined · posted once, taken down",
+  "arc": "THE RENDER WEEK",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "Thursday: a number in the sky over the ridge, small, the way a frame counter sits in a corner, going up each panel, and the glow under it going up too — the first time the strip has drawn the glow since 1994 and it's inside a science-fiction week so it doesn't count. Wood counts anyway.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_the_ridge",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The ridge from town at dusk, a small numeral-shape in the sky's corner, a faint warmth over the trees.",
+      "characters": [],
+      "props": [
+        "the frame counter",
+        "the glow, faint"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a wooded ridge beyond a small town at dusk with a small numeral shape in the sky's corner and a faint warmth over the trees, a thin progress bar drawn beneath the panel partly filled",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "wide",
+      "composition": "The same, the numeral one shape higher, the warmth a little wider.",
+      "characters": [],
+      "props": [
+        "the counter, higher"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, the same ridge at dusk with the numeral shape changed and the warmth over the trees a little wider, a thin progress bar drawn beneath the panel partly filled",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "wide",
+      "composition": "The same, higher, wider.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, the same ridge with the numeral changed again and the warm glow wider still, a thin progress bar drawn beneath the panel partly filled nearly full",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD on the garage step with the dog, counting on his fingers, the bar under the panel full.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "counting on his fingers",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man on a garage step counting on his fingers with a small dog beside him, a thin progress bar drawn beneath the panel partly filled full",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "digitized brush-pen; one panel per strip in wireframe; a progress bar under every panel",
+    "palette": "muddy early-digital flats; the wireframe in phosphor green",
+    "paper": "bristol scanned; a genre week the coastal weeklies declined"
+  },
+  "notes": "ACTIVE NODES as a frame counter (Vol 5's chrome). The glow drawn inside a genre week: doesn't count; counts anyway. Precedes the canon's Lanes glow (2009) by a year.",
+  "layout": "four panels with a bar beneath each"
+}

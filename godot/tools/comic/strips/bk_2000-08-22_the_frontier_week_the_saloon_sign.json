@@ -1,0 +1,138 @@
+{
+  "id": "bk_2000-08-22_the_frontier_week_the_saloon_sign",
+  "title": "THE FRONTIER WEEK · The saloon sign",
+  "strip": "backup",
+  "series": "THE FRONTIER WEEK",
+  "date": "2000-08-22",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the Newport paper · a western week the editor cut · Box 3",
+  "arc": "THE FRONTIER WEEK",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The saloon with a painted sign — the Lanes' fifteen letters, hand-lettered on a board — and a painter on a ladder with one letter left, and the stranger below asking which letter he'd leave out if he had to. The painter says the S. The stranger says that's the one they always lose. Nobody in 2000 knows what he means.",
+  "cast": [
+    "extra_stranger",
+    "extra_painter",
+    "barnaby"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "A saloon front with a long painted sign board, fifteen letter-shapes, a painter on a ladder at the last one.",
+      "characters": [
+        {
+          "id": "extra_painter",
+          "pose": "on a ladder",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the sign board"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a frontier saloon with a long hand-painted sign board of fifteen letter shapes and a painter on a ladder finishing the last",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The STRANGER below with the dog, looking up.",
+      "characters": [
+        {
+          "id": "extra_stranger",
+          "pose": "looking up",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "STRANGER",
+          "text": "Had to leave one out, which."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a stranger with a small dog looking up at a painter on a ladder",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The PAINTER, brush in his teeth.",
+      "characters": [
+        {
+          "id": "extra_painter",
+          "pose": "brush in his teeth",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "PAINTER",
+          "text": "The S. Nobody'd miss it."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a sign painter on a ladder speaking around a brush held in his teeth",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The ridge, plain, the stump, and a crow on it.",
+      "characters": [],
+      "props": [
+        "the stump",
+        "a crow"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white comic panel, brush-pen and xerox, 1990s indie zine western parody, dust as stipple, a wooded ridge beyond a frontier town with a single stump and a crow on it, dust as stipple",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white; the town in 1871 by way of a TV western",
+    "palette": "black and white; dust as stipple",
+    "paper": "newsprint / the digest — a genre week that ran nowhere; Box 3"
+  },
+  "notes": "The S goes dark first (Nov 15, 2010). Nobody in 2000 knows. The ridge: the stump, now with a crow.",
+  "layout": "four panels"
+}
