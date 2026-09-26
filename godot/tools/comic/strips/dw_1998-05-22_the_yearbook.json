@@ -1,0 +1,140 @@
+{
+  "id": "dw_1998-05-22_the_yearbook",
+  "title": "Drift Wood #18 · the yearbook",
+  "strip": "drift_wood",
+  "date": "1998-05-22",
+  "run": 1,
+  "era": "era1",
+  "format": "biweekly",
+  "tier": "B",
+  "selection": "full",
+  "venue": "The Timberline (Small Wood High)",
+  "arc": "Most Likely",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1997–98)",
+  "logline": "Yearbooks arrive. Everyone signs. Chloe writes one line.",
+  "cast": [
+    "wood_17",
+    "chloe_17",
+    "gully_17"
+  ],
+  "location": "dw_cafeteria",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The cafeteria on yearbook day. Everyone signing everyone's. WOOD holding his open, CHLOE writing in it, GULLY drawing in it.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "holding his yearbook open",
+          "expression": ""
+        },
+        {
+          "id": "chloe_17",
+          "pose": "writing in it, pen moving",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "drawing in the margin",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "yearbooks",
+        "pens"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a school cafeteria on yearbook signing day, a teenage boy holding his yearbook open while a girl writes in it and a boy in a backwards cap draws in the margin",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Gully's contribution: a small perfect walrus in a sweater vest. 'HAGS — G.'",
+      "characters": [],
+      "props": [
+        "a walrus drawing and HAGS — G."
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a yearbook page with a small ballpoint walrus in a sweater vest drawn in the margin",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Chloe's contribution, one line, in her tiny capitals: 'You're going to stay here and I'm going to hate that. — C.'",
+      "characters": [],
+      "props": [
+        "one handwritten line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a yearbook page with a single line of tiny cramped handwriting and a signature initial",
+        "negative": "",
+        "notes": "The line is the strip's first prophecy. Letter it after."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood reading it. Then closing the book. Then opening it again.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "reading, closing, opening",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the yearbook"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "...You spelled 'hate' with a lot of conviction.",
+          "kind": "small"
+        },
+        {
+          "who": "CHLOE",
+          "text": "Sign mine."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage boy in an overcoat closing a yearbook and opening it again, a girl beside him holding hers out to be signed",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "Chloe's line is the first foreshadowing on the page. The reader will remember it in 2000.",
+  "layout": "2x2"
+}

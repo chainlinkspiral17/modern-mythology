@@ -1,0 +1,154 @@
+{
+  "id": "dw_1997-10-24_back_page",
+  "title": "Drift Wood #4 · the back page",
+  "strip": "drift_wood",
+  "date": "1997-10-24",
+  "run": 1,
+  "era": "era1",
+  "format": "biweekly",
+  "tier": "B",
+  "selection": "full",
+  "venue": "The Timberline (Small Wood High)",
+  "arc": "The Culture Editor",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1997–98)",
+  "logline": "Chloe gives him the back page. She wants something for it.",
+  "cast": [
+    "wood_17",
+    "chloe_17"
+  ],
+  "location": "dw_timberline_newsroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The newsroom. The paste-up board for the next issue. CHLOE tapes a blank rectangle to the back page. WOOD watching.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "taping a blank rectangle to a layout board",
+          "expression": "businesslike"
+        },
+        {
+          "id": "wood_17",
+          "pose": "watching, hands in overcoat pockets",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "paste-up board",
+        "masking tape",
+        "a blank rectangle"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "Back page. Bottom half. Yours."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage girl with heavy eyeliner taping a blank rectangle onto a newspaper paste-up board while a boy in an overcoat watches, school newsroom, light table",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood, magnanimous.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "hand on chest",
+          "expression": "gracious"
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "I accept. The back page is where the real readers go first."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a teenage boy with his hand on his chest accepting something graciously",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Chloe, not turning around.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "back turned, still working",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "The back page is where the ads didn't sell."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage girl with her back turned working at a paste-up board, deadpan",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood alone with the blank rectangle. He has drawn a very small gull in the corner of it already.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "leaning over the board, pen out",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the blank rectangle with a tiny gull in the corner"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Real readers.",
+          "kind": "small"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage boy leaning over a paste-up board drawing a tiny gull in the corner of an empty rectangle, newsroom lamp light",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "Origin of the back page, and of the gull as a habit.",
+  "layout": "2x2"
+}

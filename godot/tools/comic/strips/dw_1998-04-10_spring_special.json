@@ -1,0 +1,54 @@
+{
+  "id": "dw_1998-04-10_spring_special",
+  "title": "Drift Wood · the Spring Special",
+  "strip": "drift_wood",
+  "date": "1998-04-10",
+  "run": 1,
+  "era": "era1",
+  "format": "special",
+  "tier": "A",
+  "selection": "full",
+  "venue": "The Timberline (Small Wood High)",
+  "arc": "The Spring Special",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1997–98)",
+  "logline": "The estuary at low tide. Wood's first landscape. Captioned — the last one he'll caption.",
+  "cast": [],
+  "location": "dw_estuary",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "full page",
+      "composition": "A full-page drawing for the paper's spring issue. The Alsea estuary at low tide from the bluff: mudflats in long hatched bands, a channel of water catching a white sky, pilings of the old cannery dock, a heron, log booms, the far shore's spruce wall. Over-inked, ambitious, everything crosshatched. At the bottom, a hand-lettered caption explaining what the reader is looking at.",
+      "characters": [],
+      "props": [
+        "mudflats",
+        "channel",
+        "cannery pilings",
+        "a heron",
+        "log booms",
+        "spruce"
+      ],
+      "balloons": [],
+      "caption": "THE ESTUARY AT LOW TIDE. Everything that leaves this town goes out through here. Most of it comes back. — A.F.",
+      "sfx": "",
+      "image": {
+        "prompt": "a full-page black-and-white pen drawing of a Pacific Northwest estuary at low tide seen from a bluff: long bands of crosshatched mudflats, a channel of water reflecting a white sky, old cannery dock pilings, a heron, log booms, a far wall of spruce, over-inked and ambitious, xerox grain",
+        "negative": "",
+        "notes": "The caption is part of the page; letter it after if needed. It's the only captioned landscape in thirty years."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "The last landscape he explains. Every later one is silent.",
+  "layout": "full page"
+}

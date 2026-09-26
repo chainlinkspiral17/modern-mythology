@@ -1,0 +1,166 @@
+{
+  "id": "dw_1997-11-07_the_review",
+  "title": "Drift Wood #5 · the review",
+  "strip": "drift_wood",
+  "date": "1997-11-07",
+  "run": 1,
+  "era": "era1",
+  "format": "biweekly",
+  "tier": "B",
+  "selection": "full",
+  "venue": "The Timberline (Small Wood High)",
+  "arc": "The Culture Editor",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1997–98)",
+  "logline": "Chloe reviews the fall play. Wood reviews the review.",
+  "cast": [
+    "wood_17",
+    "chloe_17"
+  ],
+  "location": "dw_timberline_newsroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "CHLOE typing at the newsroom's one computer. A printout beside her: THE CRUCIBLE — a review. WOOD reading it over her shoulder.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "typing, focused",
+          "expression": ""
+        },
+        {
+          "id": "wood_17",
+          "pose": "reading over her shoulder",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "beige computer",
+        "printout",
+        "a coffee cup"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "You gave the fall play two stars."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage girl typing at a beige 1990s computer in a school newsroom while a boy in an overcoat reads a printout over her shoulder",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Chloe, still typing.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "typing",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "I gave it two stars because it was two stars. Danny Voss forgot his lines and then did them in the wrong act."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a teenage girl typing, unbothered, eyeliner smudged",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, pacing.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "pacing, one arm out",
+          "expression": "oratorical"
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Criticism should elevate. Bazin didn't give stars. He gave a way of seeing."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage boy pacing in a newsroom with one arm out mid-speech, overcoat swinging",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Chloe holds up the printout. Under the review, in red, a second line has been added: 'Cartoonist's note: it was three stars.' — crossed out — 'two.'",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "holding up the printout",
+          "expression": "dry"
+        },
+        {
+          "id": "wood_17",
+          "pose": "caught",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the printout with red pen"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "You added a note. Then you agreed with me."
+        },
+        {
+          "who": "WOOD",
+          "text": "Bazin would have—"
+        },
+        {
+          "who": "CHLOE",
+          "text": "Two."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage girl holding up a printed review with a red-pen note crossed out at the bottom, a boy in an overcoat caught mid-protest",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "",
+  "layout": "2x2"
+}

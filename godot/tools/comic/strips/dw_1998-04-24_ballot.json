@@ -1,0 +1,157 @@
+{
+  "id": "dw_1998-04-24_ballot",
+  "title": "Drift Wood #16 · the ballot",
+  "strip": "drift_wood",
+  "date": "1998-04-24",
+  "run": 1,
+  "era": "era1",
+  "format": "biweekly",
+  "tier": "B",
+  "selection": "full",
+  "venue": "The Timberline (Small Wood High)",
+  "arc": "Most Likely",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1997–98)",
+  "logline": "The senior superlatives ballot arrives. Wood pretends not to care. The strip is drawn larger.",
+  "cast": [
+    "wood_17",
+    "chloe_17",
+    "gully_17"
+  ],
+  "location": "dw_classroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Journalism class. A stack of SENIOR SUPERLATIVES ballots handed down the row. WOOD receives his with two fingers.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "taking a ballot with two fingers",
+          "expression": "disdainful"
+        },
+        {
+          "id": "gully_17",
+          "pose": "already filling his in",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "ballots",
+        "desks"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Democracy applied to adjectives."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stack of paper ballots being passed down a classroom row, a teenage boy in an overcoat taking one with two fingers, a boy in a backwards cap already filling his in",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The ballot: MOST LIKELY TO WIN A PULITZER ____. Wood's pen hovering.",
+      "characters": [],
+      "props": [
+        "ballot with a blank line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a mimeographed ballot with a blank line beside MOST LIKELY TO WIN A PULITZER, a pen hovering",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "CHLOE, across the aisle, not looking up.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "writing on her ballot",
+          "expression": ""
+        },
+        {
+          "id": "wood_17",
+          "pose": "glancing over",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "I'm writing you in for Most Likely to Explain a Film Nobody Asked About."
+        },
+        {
+          "who": "WOOD",
+          "text": "That's not a category."
+        },
+        {
+          "who": "CHLOE",
+          "text": "It should be."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage girl writing on a ballot across the aisle from a boy in an overcoat who is glancing over",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Gully leans over and shows Wood his ballot. Under PULITZER, in Gully's block capitals: WOODY. Wood says nothing. The panel is drawn slightly larger than the others.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "showing his ballot",
+          "expression": ""
+        },
+        {
+          "id": "wood_17",
+          "pose": "silent",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "Gully's ballot reading WOODY"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a boy in a backwards cap leaning over to show his ballot to a boy in an overcoat who says nothing, the panel slightly larger than the others",
+        "negative": "",
+        "notes": "This panel is deliberately bigger. Keep the 2x2 but let it bleed."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "The strip is drawn larger this month. It says it doesn't care.",
+  "layout": "2x2"
+}

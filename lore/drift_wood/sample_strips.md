@@ -43,7 +43,7 @@ to look like it wasn't trying.*
    back. Nobody is facing the same direction.
    Margin, tiny: *A. Finch — Small Wood, OR — a gull.*
 
-### "Drift Wood" #21 · Friday, March 5, 1999
+### "Drift Wood" #32 · Friday, March 12, 1999
 
 1. The newsroom after hours. Two desks pushed together. Wood
    inking; Chloe proofing his page with a red pen she is using on

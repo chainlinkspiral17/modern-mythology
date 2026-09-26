@@ -1,0 +1,145 @@
+{
+  "id": "dw_1998-03-27_mixtape",
+  "title": "Drift Wood #14 · the mixtape",
+  "strip": "drift_wood",
+  "date": "1998-03-27",
+  "run": 1,
+  "era": "era1",
+  "format": "biweekly",
+  "tier": "B",
+  "selection": "full",
+  "venue": "The Timberline (Small Wood High)",
+  "arc": "Chloe",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1997–98)",
+  "logline": "Chloe makes Wood a tape. Side A is instructions.",
+  "cast": [
+    "wood_17",
+    "chloe_17"
+  ],
+  "location": "dw_timberline_newsroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab. He uses it when it's about her, though the strip never says so."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The newsroom. CHLOE slides a cassette across the desk to WOOD. The case insert is hand-lettered in tiny manic capitals.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "sliding a cassette across",
+          "expression": ""
+        },
+        {
+          "id": "wood_17",
+          "pose": "picking it up",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "cassette tape",
+        "hand-lettered insert"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "Side A is things you should have heard by now. Side B is things you'll pretend you already knew."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage girl sliding a cassette tape with a hand-lettered insert across a desk to a boy in an overcoat, school newsroom",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The insert, in her handwriting: a track list, and under it, smaller: 'listen in order. no skipping. — c.'",
+      "characters": [],
+      "props": [
+        "cassette insert with tiny handwriting"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a cassette case insert covered in tiny cramped handwritten capitals, a track list and a note at the bottom",
+        "negative": "",
+        "notes": "Handwriting may be lettered after."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, holding the tape like an artifact.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "holding the tape reverently",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "This is a curatorial act. A statement. You've made me a—"
+        },
+        {
+          "who": "CHLOE",
+          "text": "It's a tape, Wood."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage boy holding a cassette tape reverently in both hands while a girl beside him looks unimpressed",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Wood's bedroom that night. Headphones. The tape playing. He is not drawing. Out the window, rain.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "lying on a bed, headphones on, not drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "bed",
+        "tape deck",
+        "window with rain",
+        "the drawing pad, closed"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage boy lying on his bed at night with headphones on, a tape deck playing, a closed drawing pad beside him, rain in the window, black and white, quiet",
+        "negative": "",
+        "notes": "The pad is closed. Note it in the drawing."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "",
+  "layout": "2x2"
+}

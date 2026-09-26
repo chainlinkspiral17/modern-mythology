@@ -1,0 +1,142 @@
+{
+  "id": "dw_1997-09-26_vending_machine",
+  "title": "Drift Wood #2 · the vending machine",
+  "strip": "drift_wood",
+  "date": "1997-09-26",
+  "run": 1,
+  "era": "era1",
+  "format": "biweekly",
+  "tier": "B",
+  "selection": "full",
+  "venue": "The Timberline (Small Wood High)",
+  "arc": "The Cafeteria",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1997–98)",
+  "logline": "A dollar goes in. Nothing comes out. Wood takes it personally, then philosophically.",
+  "cast": [
+    "wood_17",
+    "extra_student"
+  ],
+  "location": "dw_cafeteria",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The cafeteria's vending machine. WOOD feeding a dollar into it with the care of a man defusing something.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "feeding a bill into a vending machine",
+          "expression": "concentrated"
+        }
+      ],
+      "props": [
+        "vending machine",
+        "a limp dollar"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a gaunt teenage boy in an oversized wool overcoat carefully feeding a limp dollar bill into a school vending machine, harsh fluorescent light",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The machine's coil turns. The bag of chips hangs, caught.",
+      "characters": [],
+      "props": [
+        "vending coil",
+        "a bag of chips hanging"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "whrrr — k.",
+      "image": {
+        "prompt": "close-up inside a vending machine window, the metal coil turned and a bag of chips hanging caught on the edge, not falling",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, forehead against the glass. A STUDENT passing behind him.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "forehead against the glass, hands flat on it",
+          "expression": "despairing"
+        },
+        {
+          "id": "extra_student",
+          "pose": "passing, glancing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "vending machine"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "This machine has taken my dollar and given me a lesson about desire. That is not what I asked for."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage boy pressing his forehead and both hands against the glass of a vending machine while a student passes behind him",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The student, now gone, has left. Wood alone, still at the glass. In the reflection, the bag of chips and his own face, both hanging.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "still against the glass",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "reflection in the glass"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Fine. Keep it. I'll write about you.",
+          "kind": "small"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage boy alone at a vending machine, his face reflected in the glass beside a hanging bag of chips, empty cafeteria behind, heavy black spotting",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "The strip learns its own move: a small indignity, a large sentence, a smaller one.",
+  "layout": "2x2"
+}
