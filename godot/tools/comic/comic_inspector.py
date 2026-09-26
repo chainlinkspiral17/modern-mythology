@@ -513,7 +513,7 @@ kbd{border:1px solid var(--rule);padding:0 4px;color:var(--dim)}
 <select id="f-review"><option value="">review</option><option value="ok">ok</option><option value="revise">revise</option><option value="none">unmarked</option></select>
 </div>
 <div class="list" id="list"></div><div class="count" id="count"></div></aside>
-<section id="detail"><p class="empty">Pick a strip. <kbd>j</kbd>/<kbd>k</kbd> move, <kbd>g</kbd> generate, <kbd>1</kbd>–<kbd>6</kbd> tabs.</p></section></main>
+<section id="detail"><p class="empty">Pick a strip. <kbd>j</kbd>/<kbd>k</kbd> move, <kbd>g</kbd> generate with the kept settings, <kbd>1</kbd>–<kbd>6</kbd> tabs.</p></section></main>
 <div id="lightbox"><img id="lbimg"></div>
 <script>
 const $=s=>document.querySelector(s);const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -553,16 +553,22 @@ async function open(id){SEL=id;render();const el=$('#detail');el.innerHTML='<p c
  if(MODE==='strips'){const d=await api('/api/strip?id='+encodeURIComponent(id));if(d.error){el.innerHTML='<p class="empty">'+esc(d.error)+'</p>';return;}renderStrip(d);}
  else if(MODE==='sheets'){renderSheet(SHEETS.find(s=>s.id===id));}
  else if(MODE==='refs'){renderRef(REFS.references.find(r=>r.id===id));}}
-function modelOptions(prov){const ms=MODELS[prov]||[];return '<option value="">default ('+(ms[0]?ms[0].id:'provider default')+')</option>'+ms.map(m=>`<option value="${m.id}" title="${esc(m.note)}">${esc(m.label)}${m.verified?'':' · unverified id'}</option>`).join('')+'<option value="__custom">other id…</option>';}
-function onProv(){const p=$('#g-prov').value;$('#g-model').innerHTML=modelOptions(p);$('#g-custom').style.display='none';onModel();}
-function onModel(){const v=$('#g-model').value;$('#g-custom').style.display=v==='__custom'?'inline-block':'none';const p=$('#g-prov').value;const m=(MODELS[p]||[]).find(x=>x.id===v);$('#g-note').textContent=m?m.note:(v==='__custom'?'type the exact id from the provider\'s docs; it is passed through unchanged':'');}
-function genForm(kind,id,fmt){const prov=KEYS.runway?'runway':'google';const nokey=!KEYS.runway&&!KEYS.google;
+let GEN={};try{GEN=JSON.parse(localStorage.getItem('comic.gen')||'{}');}catch(e){GEN={};}
+function saveGen(){const f=$('#g-prov');if(!f)return;GEN={prov:$('#g-prov').value,model:$('#g-model').value,custom:$('#g-custom').value,variants:$('#g-var').value,seed:$('#g-seed').value,
+ letter:$('#g-letter')?$('#g-letter').checked:GEN.letter,refs:$('#g-refs')?$('#g-refs').checked:GEN.refs,draft:$('#g-draft')?$('#g-draft').checked:GEN.draft,over:$('#g-over').checked,dry:$('#g-dry').checked};
+ try{localStorage.setItem('comic.gen',JSON.stringify(GEN));}catch(e){}$('#g-remember').textContent='settings kept for every strip';}
+function modelOptions(prov,sel){const ms=MODELS[prov]||[];const opts=['<option value="">default ('+(ms[0]?ms[0].id:'provider default')+')</option>'].concat(ms.map(m=>`<option value="${m.id}" title="${esc(m.note)}">${esc(m.label)}${m.verified?'':' · unverified id'}</option>`),['<option value="__custom">other id…</option>']).join('');
+ return opts.replace(`value="${sel||''}"`,`value="${sel||''}" selected`);}
+function onProv(){const p=$('#g-prov').value;$('#g-model').innerHTML=modelOptions(p,'');$('#g-custom').style.display='none';onModel();}
+function onModel(){const v=$('#g-model').value;$('#g-custom').style.display=v==='__custom'?'inline-block':'none';const p=$('#g-prov').value;const m=(MODELS[p]||[]).find(x=>x.id===v);$('#g-note').textContent=m?m.note:(v==='__custom'?'type the exact id from the provider\'s docs; it is passed through unchanged':'');saveGen();}
+function genForm(kind,id,fmt){const avail=p=>p==='runway'?KEYS.runway:KEYS.google;let prov=GEN.prov&&avail(GEN.prov)?GEN.prov:(KEYS.runway?'runway':'google');const nokey=!KEYS.runway&&!KEYS.google;
+ const ck=(k,def)=>(GEN[k]===undefined?def:GEN[k])?'checked':'';
  return `${nokey?'<div class="job" style="border-color:var(--red)"><span class="st failed">NO KEYS</span> · nothing can generate until a key is saved. <a href="#" onclick="setMode(&quot;keys&quot;);return false" style="color:var(--gold-hi)">Open KEYS</a> to paste one and test it.</div>':''}<div class="gen"><label>provider <select id="g-prov" onchange="onProv()"><option value="runway" ${KEYS.runway?'':'disabled'} ${prov==='runway'?'selected':''}>runway${KEYS.runway?'':' (no key)'}</option><option value="google" ${KEYS.google?'':'disabled'} ${prov==='google'?'selected':''}>google${KEYS.google?'':' (no key)'}</option></select></label>
- <label>model <select id="g-model" onchange="onModel()">${modelOptions(prov)}</select><input type="text" id="g-custom" placeholder="exact model id" style="display:none;width:200px"></label>
- <label>variants <input type="number" id="g-var" min="1" max="6" value="1"></label><label>seed <input type="number" id="g-seed" placeholder="random"></label>
- ${kind==='strip'?`<label><input type="checkbox" id="g-letter" checked> letter balloons</label><label><input type="checkbox" id="g-refs" checked> attach references</label><label><input type="checkbox" id="g-draft"> allow draft refs</label>`:''}
- <label><input type="checkbox" id="g-over"> replace take 1 (else: new take)</label><label><input type="checkbox" id="g-dry"> dry run</label>
- <button class="go" id="g-go" onclick="generate('${kind}','${id}')">GENERATE</button><span class="empty" id="g-msg"></span><div class="empty" id="g-note" style="grid-column:1/-1"></div><div class="empty" style="grid-column:1/-1">menu: ${(MODELS[prov]||[]).length} models · <a href="#" onclick="setMode('keys');return false" style="color:var(--gold)">fetch the provider's current list</a> (KEYS → fetch model list)</div></div>`;}
+ <label>model <select id="g-model" onchange="onModel()">${modelOptions(prov,GEN.prov===prov?GEN.model:'')}</select><input type="text" id="g-custom" placeholder="exact model id" value="${esc(GEN.custom||'')}" oninput="saveGen()" style="display:${GEN.prov===prov&&GEN.model==='__custom'?'inline-block':'none'};width:200px"></label>
+ <label>variants <input type="number" id="g-var" min="1" max="6" value="${GEN.variants||1}" onchange="saveGen()"></label><label>seed <input type="number" id="g-seed" placeholder="random" value="${esc(GEN.seed||'')}" onchange="saveGen()"></label>
+ ${kind==='strip'?`<label><input type="checkbox" id="g-letter" ${ck('letter',true)} onchange="saveGen()"> letter balloons</label><label><input type="checkbox" id="g-refs" ${ck('refs',true)} onchange="saveGen()"> attach references</label><label><input type="checkbox" id="g-draft" ${ck('draft',false)} onchange="saveGen()"> allow draft refs</label>`:''}
+ <label><input type="checkbox" id="g-over" ${ck('over',false)} onchange="saveGen()"> replace take 1 (else: new take)</label><label><input type="checkbox" id="g-dry" ${ck('dry',false)} onchange="saveGen()"> dry run</label>
+ <button class="go" id="g-go" onclick="generate('${kind}','${id}')">GENERATE</button><span class="empty" id="g-msg"></span><div class="empty" id="g-note" style="grid-column:1/-1">${esc(((MODELS[prov]||[]).find(x=>x.id===GEN.model)||{}).note||'')}</div><div class="empty" style="grid-column:1/-1"><span id="g-remember">${GEN.prov?'settings kept for every strip':'settings are kept once you change them'}</span> · menu: ${(MODELS[prov]||[]).length} models · <a href="#" onclick="setMode('keys');return false" style="color:var(--gold)">fetch the provider's current list</a> (KEYS → fetch model list)</div></div>`;}
 async function generate(kind,id){let model=$('#g-model').value;if(model==='__custom')model=$('#g-custom').value.trim();const b={kind,id,provider:$('#g-prov').value,model,variants:+$('#g-var').value,seed:$('#g-seed').value,overwrite:$('#g-over').checked,dry_run:$('#g-dry').checked};
  if(kind==='strip'){b.letter=$('#g-letter').checked;b.refs=$('#g-refs').checked;b.include_draft=$('#g-draft').checked;}
  $('#g-go').disabled=true;const r=await api('/api/generate',{method:'POST',body:JSON.stringify(b)});$('#g-go').disabled=false;
@@ -631,7 +637,7 @@ function setMode(m){MODE=m;SEL=null;document.querySelectorAll('.mode button').fo
 ['#q','#f-year','#f-strip','#f-format','#f-tier','#f-render','#f-review'].forEach(s=>$(s).addEventListener('input',render));
 document.addEventListener('keydown',e=>{if(e.target.tagName==='INPUT'||e.target.tagName==='SELECT')return;const ids=VIEW.map(v=>v.id);const i=ids.indexOf(SEL);
  if(e.key==='j'&&ids.length){open(ids[Math.min(i+1,ids.length-1)]);}if(e.key==='k'&&ids.length){open(ids[Math.max(i-1,0)]);}
- if(e.key==='g'&&MODE==='strips'&&SEL){tab('renders');}if(/^[1-6]$/.test(e.key)&&MODE==='strips'&&SEL)tab(['sheet','panels','prompt','refs','renders','json'][+e.key-1]);
+ if(e.key==='g'&&MODE==='strips'&&SEL){tab('renders');const b=$('#g-go');if(b&&!b.disabled&&GEN.prov)b.click();}if(/^[1-6]$/.test(e.key)&&MODE==='strips'&&SEL)tab(['sheet','panels','prompt','refs','renders','json'][+e.key-1]);
  if(e.key==='/'){e.preventDefault();$('#q').focus();}});
 setInterval(()=>{if(MODE==='jobs')renderJobs();},4000);
 const _open=open;open=function(id){history.replaceState(null,'','#'+MODE+'/'+encodeURIComponent(id)+'/'+TAB);return _open(id);};
