@@ -1,0 +1,141 @@
+{
+  "id": "dw_2018-03-16_grunion_xxi",
+  "title": "The Grunion Run, xxi",
+  "strip": "drift_wood",
+  "date": "2018-03-16",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Grunion Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "Twenty-first year. A tourist films the run on a phone. The strip draws the phone's screen showing the run and the run at the same time. One is smaller.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii",
+    "extra_tourists",
+    "gully_35"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The beach, the run, lanterns. A TOURIST holding a phone up between the reader and the surf. On the screen: the surf. Behind the screen: the surf. WOOD and BARNABY II at the edge.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "phone up",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "small",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "phone screen showing the surf",
+        "the surf"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a night beach festival where a tourist holds a phone up so its screen shows the same surf line of silver fish that is visible behind it, a thin man and a three-legged dog at the edge, clean ink with a muted wash",
+        "negative": "",
+        "notes": "The screen's surf is smaller and brighter than the real one. Draw both."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The screen. The fish, tiny, bright.",
+      "characters": [],
+      "props": [
+        "screen"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a phone screen showing tiny bright silver fish at a surf line",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The real surf. The fish, life-size, dark silver in lantern light.",
+      "characters": [],
+      "props": [
+        "surf"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a real surf line at night with life-size silver fish in lantern light",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Silent. The tourist gone. The surf. The pup in it. Wood, pad closed, looking at the real one.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "pad closed",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "in the surf",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "fish",
+        "lanterns"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "silent wide night beach panel with silver fish and lanterns, a three-legged dog in the surf, a man with a closed pad looking at the water, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Two surfs. One is smaller."
+}

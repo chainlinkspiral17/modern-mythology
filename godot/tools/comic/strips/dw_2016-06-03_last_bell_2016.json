@@ -1,0 +1,173 @@
+{
+  "id": "dw_2016-06-03_last_bell_2016",
+  "title": "Last Bell, 2016",
+  "strip": "drift_wood",
+  "date": "2016-06-03",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "Last Bell",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "The bell. Gully's girl finishes kindergarten. Wood frames her drawing of a crab. Red frame.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "extra_gully_kid",
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. GULLY's girl, six, with a crayon drawing: a crab, twelve legs. GULLY. WOOD on the stool. The bell, faint, from the school.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "holding up a drawing",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "crayon crab"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "brrring",
+      "image": {
+        "prompt": "a six-year-old girl holding up a crayon drawing of a twelve-legged crab at a bait-shop counter, a man in an apron, a thin man on a stool, a three-legged dog, a faint distant bell",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood looking at the drawing. The 2000 frame-shop father's kid's drawing, remembered: the tree taller than the house. This crab bigger than the boat.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "drawing"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a man looking at a child's crayon drawing where the crab is bigger than the boat beside it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, the next day, at the frame shop's counter — as a customer. The OWNER, glasses on a cord. A red frame.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "as a customer",
+          "expression": ""
+        },
+        {
+          "id": "extra_owner_heceta",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "red frame"
+      ],
+      "balloons": [
+        {
+          "who": "OWNER",
+          "text": "Red."
+        },
+        {
+          "who": "WOOD",
+          "text": "Red. No mat."
+        },
+        {
+          "who": "OWNER",
+          "text": "You always said no mat for the kids' ones."
+        },
+        {
+          "who": "WOOD",
+          "text": "You remember that."
+        },
+        {
+          "who": "OWNER",
+          "text": "I remember everything, Arthur. It's a small shop."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin man as a customer at a frame-shop counter choosing a red frame from an older woman with glasses on a cord",
+        "negative": "",
+        "notes": "'Arthur' — the owner's third and last use."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The red-framed crab on Gully's corkboard, above the register, beside the twenty-year-old pencil rough. The girl looking up at it.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "looking up at the frame",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "corkboard",
+        "red frame"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a child's crab drawing in a red frame pinned to a crowded corkboard above a shop register, a small girl looking up at it, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Wood as a frame-shop customer. Red, no mat. 'I remember everything, Arthur.'"
+}

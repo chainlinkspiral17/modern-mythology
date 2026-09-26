@@ -1,0 +1,151 @@
+{
+  "id": "dw_2020-08-17_tourists_2020",
+  "title": "Tourist Season, 2020",
+  "strip": "drift_wood",
+  "date": "2020-08-17",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "Tourist Season",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "Overrun. A tourist on Wood's stool. He draws her from the door. She's reading the strip on her phone on his stool and doesn't know.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii",
+    "extra_tourists",
+    "gully_35"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's, packed. A TOURIST on the end stool reading the strip on her phone. WOOD in the doorway with BARNABY II, looking at his stool.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "on the stool, phone",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "in the doorway",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "frantic",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the stool",
+        "phone"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a packed bait-and-espresso shop with a tourist on the end stool reading a comic on her phone, a thin man in the doorway with a three-legged dog looking at the stool, a man in an apron working frantically, clean ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Her phone: the strip. The stool she's on, in the strip, with Wood on it.",
+      "characters": [],
+      "props": [
+        "phone screen showing the stool"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a phone screen showing a comic panel of a thin man on a shop stool, held by someone sitting on that stool",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, from the door, drawing her on his stool.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "drawing from the door",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "pad"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin man in a shop doorway drawing a tourist who sits on a stool reading her phone, unaware",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Wood leaving. The dock. The pup. Gully's voice from inside, over the crowd, one word. Wood raises a hand without turning.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "leaving, hand raised",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "dock"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "(inside) Regular!"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin man walking out onto a dock with a three-legged dog raising one hand without turning back toward a crowded shop, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "She's on his stool reading him. He draws her from the door."
+}

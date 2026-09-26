@@ -1,0 +1,160 @@
+{
+  "id": "dw_2019-08-12_tourists_2019",
+  "title": "Tourist Season, 2019",
+  "strip": "drift_wood",
+  "date": "2019-08-12",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "Tourist Season",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "A tourist tells Wood the strip should be on a streaming service. Wood says it is on a laundromat rack. She doesn't get it. Gully does.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "barnaby_ii",
+    "extra_tourists"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. A TOURIST, young, phone out, to WOOD on the stool.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "phone out",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "TOURIST",
+          "text": "You should get this animated. Like, a show. People would watch a show."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's on a rack at the laundromat."
+        },
+        {
+          "who": "TOURIST",
+          "text": "...A what?"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young tourist with a phone talking to a thin man on a shop stool who answers with something she doesn't understand, a dog, a man in an apron, clean ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Gully, wiping the counter, a small private smile.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "small smile",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a stocky man wiping a counter with a small private smile, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, drawing the tourist. Kindly. Her phone, in the drawing, is a laundromat digest.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "pad: the tourist holding a digest"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a sketch of a young tourist holding a small stapled zine where her phone was",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The tourist leaving. Wood tearing the sketch out and handing it to her. She looks at it, at the digest in her hand in it, and — almost — gets it.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "looking at the sketch",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "sketch"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young tourist looking at a sketch of herself holding a small zine, almost understanding, a thin man handing it over, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "'It's on a rack at the laundromat.' Her phone drawn as a digest."
+}

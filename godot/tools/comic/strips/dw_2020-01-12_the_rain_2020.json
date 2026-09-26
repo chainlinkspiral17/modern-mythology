@@ -1,0 +1,89 @@
+{
+  "id": "dw_2020-01-12_the_rain_2020",
+  "title": "Sunday · the Rain, 2020",
+  "strip": "drift_wood",
+  "date": "2020-01-12",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Rain",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "Twenty-third January. The last Rain in the public strip. The beach. Nobody. Then tracks. Then the tracks washing out.",
+  "cast": [],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the beach in rain. Nobody. Watercolor softening into slate and ochre — Era IV's palette arriving early.",
+      "characters": [],
+      "props": [
+        "rain",
+        "beach"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a Pacific Northwest beach in January rain with nobody on it, watercolor in slate blue and muted ochre, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Nobody"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: two sets of tracks in the wet sand — a man's, a three-legged dog's — going up the beach. Nobody making them.",
+      "characters": [],
+      "props": [
+        "tracks: boots and a three-legged gait"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on wet sand with two sets of tracks in the rain, a man's boots and a small three-legged dog's uneven prints, no figures, watercolor, no words",
+        "negative": "",
+        "notes": "Three-legged prints: two front, one hind. Draw them right."
+      },
+      "stage": null,
+      "name": "Tracks"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the tide coming in over the tracks. Half gone. The rain. Held.",
+      "characters": [],
+      "props": [
+        "tide over the tracks"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same wet sand with the tide sliding in over two sets of tracks, half of them already gone, rain, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Washing out"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "The last public Rain. The tracks washing out. The 2007 device, ended.",
+  "layout": "tiers, portrait page"
+}

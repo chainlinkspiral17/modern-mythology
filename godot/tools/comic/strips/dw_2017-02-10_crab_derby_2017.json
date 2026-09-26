@@ -1,0 +1,170 @@
+{
+  "id": "dw_2017-02-10_crab_derby_2017",
+  "title": "The Crab Derby, 2017",
+  "strip": "drift_wood",
+  "date": "2017-02-10",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "Thirty-third annual. Gully's girl draws it again; she's seven; the crab has eight legs now. She's been counting.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "extra_gully_kid",
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. The girl, seven, on the crate, drawing. WOOD lettering beside her. GULLY. BARNABY II.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "lettering",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "crate",
+        "flyer"
+      ],
+      "balloons": [
+        {
+          "who": "GIRL",
+          "text": "Eight. I counted. At the tide pool."
+        },
+        {
+          "who": "WOOD",
+          "text": "Last year was twelve."
+        },
+        {
+          "who": "GIRL",
+          "text": "Last year I was six."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a seven-year-old girl on a crate drawing a crab on a flyer with a marker while a thin man letters beside her, a man in an apron, a three-legged dog, clean ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Her crab. Eight legs. Two claws. Correct. Still smiling.",
+      "characters": [],
+      "props": [
+        "an eight-legged smiling crab"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a child's marker drawing of a crab with exactly eight legs and two claws, smiling",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood looking at it a long time. Gully watching him look.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "watching him",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "She's better than you were."
+        },
+        {
+          "who": "WOOD",
+          "text": "She's better than I am."
+        },
+        {
+          "who": "GULLY",
+          "text": "Letter the thing."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin man studying a child's drawing while a man in an apron watches him with a small smile",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Twenty flyers. The twentieth: eight legs. The girl pins it herself, standing on the crate. The twenty stays in Gully's pocket; the strip stops tracking it.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "pinning from the crate",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "twenty flyers"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small girl standing on a crate pinning a crab flyer at the end of a row of twenty on a shingle wall, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Eight legs. 'She's better than I am.' The twenty stops being tracked."
+}

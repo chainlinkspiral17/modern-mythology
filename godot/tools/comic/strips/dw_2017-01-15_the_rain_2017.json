@@ -1,0 +1,108 @@
+{
+  "id": "dw_2017-01-15_the_rain_2017",
+  "title": "Sunday · the Rain, 2017",
+  "strip": "drift_wood",
+  "date": "2017-01-15",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Rain",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "Twentieth January. The motel lobby's glass door in rain, from the desk. The hum line under all three tiers.",
+  "cast": [
+    "wood_34"
+  ],
+  "location": "dw_motel_desk",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the motel's glass door from the night desk, 3 AM, rain on the glass, the lot's one sodium light. The hum line beneath.",
+      "characters": [],
+      "props": [
+        "glass door",
+        "rain",
+        "sodium light",
+        "hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a motel lobby's glass door seen from the night desk at 3 AM with rain streaking it and one sodium light in the lot beyond, wet-on-wet watercolor, a flat line beneath the tier, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Glass"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the desk. The bell. The pad. A hand drawing. The hum line.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "hand drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "bell",
+        "pad",
+        "hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a motel desk at night with a bell and a pad, a man's hand drawing, a flat line beneath, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Desk"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the door, dawn, the rain thinning, the sodium light off, the sky gray-green. A man in a polo going out through it. The hum line ends at the door.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "going out the door",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "door",
+        "dawn"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a motel's glass door at dawn with the rain thinning and a man in a maroon polo going out through it, the flat line beneath the tier stopping at the door, watercolor, no words",
+        "negative": "",
+        "notes": "The hum line stops where the door is. The only tier where it ends."
+      },
+      "stage": null,
+      "name": "Out"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "The Rain at the motel. The hum stops at the door.",
+  "layout": "tiers, portrait page"
+}

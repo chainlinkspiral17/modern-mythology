@@ -1,0 +1,154 @@
+{
+  "id": "dw_2017-07-04_the_fourth_2017",
+  "title": "The Fourth, 2017",
+  "strip": "drift_wood",
+  "date": "2017-07-04",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Fourth on the Bay",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "White fireworks. Lockboxes on the houses behind the dock. The crowd is half strangers. Gully pours for all of them the same.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "extra_maria",
+    "barnaby_ii",
+    "extra_tourists"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The dock, fireworks white on blue. The crowd half strangers with phones up. GULLY pouring. MARIA in the chair. WOOD on the steps with BARNABY II.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "pouring",
+          "expression": ""
+        },
+        {
+          "id": "extra_maria",
+          "pose": "chair",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "steps",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_tourists",
+          "pose": "phones up",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "phones",
+        "fireworks"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a crowded dock at night under white fireworks, half the crowd strangers holding phones up, a man in an apron pouring, a woman in a lawn chair, a thin man on shack steps with a three-legged dog, clean ink with a blue wash",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "A phone screen, up, in the crowd: the fireworks, in color. Red.",
+      "characters": [],
+      "props": [
+        "phone screen: red fireworks"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a phone held up in a crowd showing fireworks in full red on its screen",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, looking at the phone, then the sky.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "They're red on the phone."
+        },
+        {
+          "who": "GULLY",
+          "text": "They're red in the sky, Woody."
+        },
+        {
+          "who": "WOOD",
+          "text": "Not in mine."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin man on shack steps looking from a stranger's phone screen up to the sky",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The finale. White, in the strip. Red, on forty phones. The chair. The steps. The pup barking at the sky.",
+      "characters": [],
+      "props": [
+        "finale white",
+        "phones red",
+        "dog barking"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a fireworks finale in white over a blue bay above a dock where dozens of raised phone screens show the same fireworks in red, a dog barking at the sky, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "White in the strip, red on the phones."
+}

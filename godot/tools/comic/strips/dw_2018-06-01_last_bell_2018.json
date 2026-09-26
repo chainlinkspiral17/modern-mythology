@@ -1,0 +1,174 @@
+{
+  "id": "dw_2018-06-01_last_bell_2018",
+  "title": "Last Bell, 2018",
+  "strip": "drift_wood",
+  "date": "2018-06-01",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "Last Bell",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "The bell. Gully's girl, eight, out of second grade. She asks Wood if he went to that school. He says he never left it.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "extra_gully_kid",
+    "barnaby_ii"
+  ],
+  "location": "dw_school_front",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Small Wood High, 3:05 PM, the bell. GULLY's flatbed at the curb — he's picking his girl up from the elementary next door. WOOD in the passenger seat with BARNABY II. The girl climbing in.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "driving",
+          "expression": ""
+        },
+        {
+          "id": "extra_gully_kid",
+          "pose": "climbing in",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "passenger",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "flatbed",
+        "school"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "BRRRRING",
+      "image": {
+        "prompt": "a flatbed truck at the curb of a small-town school at the last bell, a stocky man driving, a thin man in the passenger seat with a three-legged dog, a small girl climbing in, clean ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The girl, between them.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GIRL",
+          "text": "Did you go to the big school?"
+        },
+        {
+          "who": "WOOD",
+          "text": "I did."
+        },
+        {
+          "who": "GIRL",
+          "text": "Did you like it?"
+        },
+        {
+          "who": "WOOD",
+          "text": "I never left it."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a small girl in a truck cab between two men asking a question",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Gully, driving, eyes on the road.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "driving",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "He means that in a bad way and a good way."
+        },
+        {
+          "who": "GIRL",
+          "text": "Which one?"
+        },
+        {
+          "who": "GULLY",
+          "text": "Ask him in twenty years."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a stocky man driving with his eyes on the road, answering sideways",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The flatbed pulling away, the school in the mirror, the bell shape fading. The girl's face in the back window looking at the school like it's already a memory.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "looking back",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "mirror",
+        "school"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a flatbed truck pulling away from a school with a small girl looking back through the rear window, the school small in the mirror, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "'I never left it.' 'Ask him in twenty years.'"
+}
