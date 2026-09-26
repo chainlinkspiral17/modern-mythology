@@ -1,0 +1,50 @@
+{
+  "id": "ro_2024-03-03_the_map_of_the_walk_framed",
+  "title": "The map of the walk, framed",
+  "strip": "roflcopter",
+  "date": "2024-03-03",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "What People Framed",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening x)",
+  "logline": "The 2007 walk map — the Sunday that lived on Gully's corkboard — framed, in a house the page doesn't identify, on a wall by a door with a leash on a hook beneath it. Who framed it: reserved. The page draws the leash.",
+  "cast": [],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A hand-drawn map of a small town's walking route in a plain frame on a wall beside a door, a dog's leash on a hook beneath it, boots on a mat, the door's window showing rain.",
+      "characters": [],
+      "props": [
+        "the walk map, framed",
+        "a leash"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a framed hand-drawn watercolor map of a small coastal town's walking route on a wall beside a door with a dog's leash hanging from a hook beneath it and boots on a mat, rain in the door's window, no words legible",
+        "negative": "",
+        "notes": "The 2007 walk map (dw_2007-05-13). Whose house: reserved."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The walk map, in someone's house. The leash.",
+  "layout": "single page, no borders"
+}

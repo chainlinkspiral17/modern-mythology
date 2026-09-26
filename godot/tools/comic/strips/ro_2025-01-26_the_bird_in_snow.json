@@ -1,0 +1,61 @@
+{
+  "id": "ro_2025-01-26_the_bird_in_snow",
+  "title": "The bird in snow",
+  "strip": "roflcopter",
+  "date": "2025-01-26",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Bird",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening x)",
+  "logline": "The rare snow, two weeks after the stone head wore it: the bird on the garage's outside sill, every color against white, the window behind it lit. The pup's nose on the inside of the glass.",
+  "cast": [
+    "the_bird",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The garage's casement window from the alley in snow: the small rainbow bird on the outside sill, the window lit behind it, a small dog's nose pressed to the inside of the glass, snow on the alley.",
+      "characters": [
+        {
+          "id": "the_bird",
+          "pose": "on the outside sill",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "nose to the glass, inside",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a lit garage window seen from a snowy alley with a small rainbow bird on the outside sill and a small dog's nose pressed to the inside of the glass, no words",
+        "negative": "",
+        "notes": "Snow: see ro_2025-01-12 (the stone head)."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Snow. Nose to the glass.",
+  "layout": "single page, no borders"
+}

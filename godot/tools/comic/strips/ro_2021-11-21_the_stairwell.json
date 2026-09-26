@@ -1,0 +1,49 @@
+{
+  "id": "ro_2021-11-21_the_stairwell",
+  "title": "The stairwell",
+  "strip": "roflcopter",
+  "date": "2021-11-21",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "Rooms He Never Saw",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening x)",
+  "logline": "The stairwell of the Seattle building, invented: three flights, a window at each landing, the water smaller at each one going down. The page is read top to bottom like the stairs. No door opens.",
+  "cast": [],
+  "location": "dw_seattle_hill",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "An apartment stairwell drawn top to bottom in one page: three landings, a window at each with a smaller slice of gray water as the stairs descend, a mailbox bank at the bottom, no one.",
+      "characters": [],
+      "props": [
+        "three landings"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, an apartment building's stairwell drawn top to bottom with three landings each with a window showing a smaller slice of gray water descending, a bank of mailboxes at the bottom, no people, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Read like the stairs. No door opens.",
+  "layout": "single page, no borders"
+}

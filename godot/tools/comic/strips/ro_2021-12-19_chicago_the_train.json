@@ -1,0 +1,50 @@
+{
+  "id": "ro_2021-12-19_chicago_the_train",
+  "title": "Chicago, the train",
+  "strip": "roflcopter",
+  "date": "2021-12-19",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "Rooms He Never Saw",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening x)",
+  "logline": "The Chicago room's window, close: the train she could hear, drawn as a shape crossing the glass, the orange of the room on the sill, a radiator ticking beneath. From the postcard's one sentence, the second page it gets.",
+  "cast": [],
+  "location": "dw_seattle_hill",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Close on a hotel window at night: an elevated train drawn as a long jagged sound shape crossing the glass, an orange wall's color on the sill, a radiator's fins beneath drawn with small tick marks.",
+      "characters": [],
+      "props": [
+        "the train as sound",
+        "the radiator"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, close on a hotel window at night with an elevated train drawn as a long jagged sound shape crossing the glass, orange wall color on the sill and a radiator with small tick marks beneath, no words",
+        "negative": "",
+        "notes": "The postcard: 'the room is orange and I can hear the train' (ro_2021-12-05)."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The train as a shape on the glass.",
+  "layout": "single page, no borders"
+}

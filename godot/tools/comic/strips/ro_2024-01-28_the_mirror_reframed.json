@@ -1,0 +1,50 @@
+{
+  "id": "ro_2024-01-28_the_mirror_reframed",
+  "title": "The mirror, reframed",
+  "strip": "roflcopter",
+  "date": "2024-01-28",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "What People Framed",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening x)",
+  "logline": "A mirror the shop framed in 2003, in a hallway in 2024, and in it the hallway's end and a coat hook, and no one. The frame's corner chipped where it was moved. The page draws a mirror with nothing to reflect, on purpose.",
+  "cast": [],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A framed mirror on a hallway wall reflecting the hallway's far end and an empty coat hook, the frame's lower corner chipped, a strip of daylight from a door out of frame.",
+      "characters": [],
+      "props": [
+        "the mirror",
+        "the chipped corner"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a framed mirror on a hallway wall reflecting the hallway's far end and an empty coat hook, the frame's lower corner chipped, a strip of daylight from an unseen door, no people, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Nothing to reflect. On purpose.",
+  "layout": "single page, no borders"
+}

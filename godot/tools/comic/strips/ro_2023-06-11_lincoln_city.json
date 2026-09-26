@@ -1,0 +1,50 @@
+{
+  "id": "ro_2023-06-11_lincoln_city",
+  "title": "Lincoln City",
+  "strip": "roflcopter",
+  "date": "2023-06-11",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Route North",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening x)",
+  "logline": "101 north through Lincoln City from a bus window he never sat at: outlet stores, a kite shop, the D River sign, the sea in the gaps. The page puts the town's clutter in and keeps the seat's reflection empty.",
+  "cast": [],
+  "location": "dw_101",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A bus window from inside: a strip of coastal town passing — a kite shop, an outlet mall's sign, a small bridge sign — with the sea gray in the gaps between buildings, the window reflecting an empty seat.",
+      "characters": [],
+      "props": [
+        "a kite shop",
+        "the empty reflection"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a bus window from inside showing a coastal town's roadside passing with a kite shop and a small bridge sign and gray sea in the gaps between buildings, the glass reflecting an empty seat, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The clutter in; the seat empty.",
+  "layout": "single page, no borders"
+}

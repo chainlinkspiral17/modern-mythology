@@ -1,0 +1,57 @@
+{
+  "id": "ro_2023-07-02_the_rest_stop",
+  "title": "The rest stop",
+  "strip": "roflcopter",
+  "date": "2023-07-02",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Route North",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening x)",
+  "logline": "A rest stop off I-5 at dawn, drawn from nothing: the bus idling, a picnic table, a vending machine, one figure at the far end of the lot with her back turned, small. The only time the sequence draws her, and it draws her at that distance.",
+  "cast": [
+    "chloe_34"
+  ],
+  "location": "dw_greyhound",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A highway rest stop at dawn: a bus idling with its door open, a picnic table under firs, a lit vending machine, and far across the lot a small figure of a woman with her back turned, a bag with a strap on her shoulder.",
+      "characters": [
+        {
+          "id": "chloe_34",
+          "pose": "far, back turned, small",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the bag with a strap"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a highway rest stop at dawn with a bus idling with its door open, a picnic table under fir trees, a lit vending machine and far across the lot a small figure of a woman with her back turned carrying a bag with a strap, no words",
+        "negative": "",
+        "notes": "The one time the sequence draws her. At that distance. Cast id is the strip's Chloe."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Drawn once, far, from behind.",
+  "layout": "single page, no borders"
+}
