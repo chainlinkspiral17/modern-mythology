@@ -52,7 +52,8 @@ under `godot/assets/comic/vol10/concept/` with their own manifest.
 | `strips/*.json` | the scripts. One strip per file. Schema below. |
 | `eras.json` | per-era style blocks (line, paper, palette, prompt prefix/suffix, negative, Blender Freestyle settings), the formats, the margin marks |
 | `heroes_vol10.json` | the cast as Meshy hero slots with text-to-3D prompts, and the locale builds the sets will need — for the production pipeline |
-| `comic_tool.py` | `validate` · `index` · `md` · `strip-prompts` · `prompts` · `stage` · `new` |
+| `comic_tool.py` | `validate` · `index` · `md` · `strip-prompts` · `sheets` · `prompts` · `stage` · `new` |
+| `style_sheets.json` | the reference-sheet queue (characters by era, era swatches, hero locations, objects); `comic_tool.py sheets` composes the prompts; the human guides are `lore/drift_wood/style/` |
 | `comic_render.py` | the runner: `--provider runway` (gen4_image on the dev API) or `--provider google` (Imagen 4, or `--model gemini-2.5-flash-image`) |
 | `out/` | generated queues (gitignored) |
 

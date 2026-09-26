@@ -307,8 +307,8 @@ Ages: Arthur is born in 1980. Barnaby is found at ~1 in 1999.
 ### 2019 · age 39 · Run 6
 
 - **Wood.** "Lanes" again: the same composition as 2009, the neon
-  with three letters out, the lot empty, the glow on the ridge
-  larger. The papers shrink the Sunday: the strip is drawn to a
+  with six letters out (see style/objects.md for the sign's
+  timeline), the lot empty, the glow on the ridge larger. The papers shrink the Sunday: the strip is drawn to a
   smaller grid and the reader can see it. The sticker letter; the
   dog-food letter; a daily of Wood feeding the pup from a plain bag.
 - **Arthur.** Refuses the stickers, refuses the dog food. The

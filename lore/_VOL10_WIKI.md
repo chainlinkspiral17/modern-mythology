@@ -351,6 +351,9 @@ strip's own panel grid as the presentation. Decision reserved.
    Read before writing any strip or scene.
 4. **`drift_wood/foreword_afterword.md`** — the bookends, the
    ending, the foreshadowing index.
+4b. **`drift_wood/style/`** — the style guides: characters by era,
+    the eras, hero locations, objects. Read before drawing or
+    generating anything.
 5. **`drift_wood/the_strip.md`** — the four eras and the two
    fully-specified Sunday pages.
 6. **`drift_wood/publication_history.md`** — the cadences, the
