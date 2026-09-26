@@ -1,0 +1,165 @@
+{
+  "id": "dw_2004-10-04_first_readers_2",
+  "title": "First readers, ii",
+  "strip": "drift_wood",
+  "date": "2004-10-04",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (newspaper cadence: six dailies + a Sunday)",
+  "arc": "First Readers",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004)",
+  "logline": "The counter says 212. Wood argues with a stick figure about a panel. The stick figure is right.",
+  "cast": [
+    "wood_26",
+    "barnaby",
+    "extra_stick_chorus"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. The monitor: the counter reads 212. WOOD. Six stick figures at the back now, one of them holding up a sign: PANEL 3 IS WEAK.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "turning",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_chorus",
+          "pose": "six, one with a sign",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "monitor with counter 212",
+        "a stick figure's sign"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man turning from a computer whose counter reads 212 to face six small stick figures at the back of a garage panel, one holding up a crude sign, muddy digital flats",
+        "negative": "",
+        "notes": "Sign: PANEL 3 IS WEAK. Letter after."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Wood, to the sign.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Panel 3 is the turn. Every strip has a turn. Schulz—"
+        },
+        {
+          "who": "STICK W/ SIGN",
+          "text": "panel 3 is the same joke as panel 2"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man arguing with a stick figure holding a sign in his garage",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood looking at yesterday's strip on the monitor. Panel 3. A long beat.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "looking at the screen",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "monitor: yesterday's strip"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a young man looking at his own comic on a monitor with a long, dawning expression",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood redrawing panel 3 on the table. The stick figure with the sign has put the sign down and is watching, arms folded, satisfied. The dog. The counter, off-panel, presumably 213.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "redrawing",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_chorus",
+          "pose": "sign down, arms folded",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "table",
+        "the sign, down"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "...Don't tell Boise.",
+          "kind": "small"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man redrawing a comic panel at his table while a small stick figure stands beside him with arms folded, its sign set down, a dog on the floor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy early-digital flats begin",
+    "palette": "limited, muddy; Sundays in over-wet watercolor",
+    "paper": "bristol, scanned; the browser"
+  },
+  "notes": "The chorus gets a note right. The strip admits it, small."
+}

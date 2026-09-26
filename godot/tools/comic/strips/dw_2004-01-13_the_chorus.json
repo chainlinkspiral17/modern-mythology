@@ -1,0 +1,184 @@
+{
+  "id": "dw_2004-01-13_the_chorus",
+  "title": "The chorus",
+  "strip": "drift_wood",
+  "date": "2004-01-13",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (newspaper cadence: six dailies + a Sunday)",
+  "arc": "First Readers",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004)",
+  "logline": "A comments section exists. Wood draws it: stick figures at the back of every panel, commenting.",
+  "cast": [
+    "wood_26",
+    "barnaby",
+    "extra_stick_chorus"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Wood's room. WOOD at the monitor. Below the strip on screen, a comments box: two comments. At the back of the panel, drawn small, two stick figures reading over his shoulder.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "at the monitor",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_chorus",
+          "pose": "two stick figures at the back of the panel",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "monitor with a comments box",
+        "stick figures"
+      ],
+      "balloons": [
+        {
+          "who": "STICK 1",
+          "text": "first"
+        },
+        {
+          "who": "STICK 2",
+          "text": "the dog is good"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man at a bulky computer whose screen shows a comic with two comments beneath it, and two small stick figures drawn at the back of the panel reading over his shoulder, muddy digital flats",
+        "negative": "",
+        "notes": "The chorus: stick figures, always at the back, always small. They grow. This is the seed of the 2006 parody."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Wood, turning to the stick figures.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "turning to the back of the panel",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_chorus",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Who are you."
+        },
+        {
+          "who": "STICK 1",
+          "text": "readers"
+        },
+        {
+          "who": "WOOD",
+          "text": "Where are you from."
+        },
+        {
+          "who": "STICK 2",
+          "text": "boise"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man turning in his chair to address two stick figures standing at the back of his bedroom panel",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood, back to the monitor.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Boise. Seven years in the laundromat and my first readers are in Boise."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a young man staring at a monitor, bemused, monitor glow",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood drawing. The dog. The two stick figures now sitting on the bed, watching, as if they live there. They do now.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_chorus",
+          "pose": "sitting on the bed",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "bed",
+        "stick figures at rest"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man drawing at his table while two small stick figures sit on the bed behind him watching, a dog on the floor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy early-digital flats begin",
+    "palette": "limited, muddy; Sundays in over-wet watercolor",
+    "paper": "bristol, scanned; the browser"
+  },
+  "notes": "The Greek chorus arrives. Two stick figures from Boise."
+}

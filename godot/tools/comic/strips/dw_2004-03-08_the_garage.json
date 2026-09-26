@@ -1,0 +1,148 @@
+{
+  "id": "dw_2004-03-08_the_garage",
+  "title": "The garage",
+  "strip": "drift_wood",
+  "date": "2004-03-08",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (newspaper cadence: six dailies + a Sunday)",
+  "arc": "The Garage",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004)",
+  "logline": "Wood's apartment is behind a tavern now. No moving day. It's Monday and he's just there.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "A garage apartment: cedar-shingle walls, a corrugated tin roof, a casement window on a gravel alley. The drafting table. Banker's boxes. A cinderblock bookcase. The dog bed under the table. WOOD at the table as if he's always been here. BARNABY in the bed.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "at the drafting table",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "in the dog bed under it",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "drafting table",
+        "swing-arm lamp",
+        "casement window",
+        "cinderblock bookcase",
+        "banker's boxes",
+        "corrugated tin roof"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a garage apartment interior: cedar-shingle walls, corrugated tin ceiling, a drafting table with a green swing-arm lamp under a small casement window onto a gravel alley, a cinderblock bookcase, banker's boxes, a dog bed under the table with a small dog in it, a young man drawing, muddy digital flats",
+        "negative": "",
+        "notes": "No moving-day strip exists. This is the garage's first appearance; draw it lived-in already."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The window. Through it, the back of a tavern: cedar shake, a kitchen door, a jukebox's muffled shape drawn as wavy lines through the wall.",
+      "characters": [],
+      "props": [
+        "the tavern's back wall",
+        "jukebox lines"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up through a small casement window of the cedar-shake back wall of a tavern with a kitchen door, muffled music drawn as wavy lines coming through the wall",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, to the dog, not explaining.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Rent's two-fifty. The jukebox is free. It only has one Springsteen and it plays it at nine."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man at a drafting table talking to a dog under it, a lamp on",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "9 PM. The wavy lines through the wall. Wood drawing. The dog's ear up. The strip doesn't say what happened to the bedroom, the corkboard, the house. The corkboard is on the wall here, though. Everything's on it.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "ear up",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "wavy jukebox lines",
+        "the corkboard, moved"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a garage apartment at night with muffled music lines coming through the wall, a young man drawing, a dog with one ear up, the old crowded corkboard now hanging on the garage wall, no words",
+        "negative": "",
+        "notes": "The corkboard came with him. The postcards, the letter, the bus schedule, all of it."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy early-digital flats begin",
+    "palette": "limited, muddy; Sundays in over-wet watercolor",
+    "paper": "bristol, scanned; the browser"
+  },
+  "notes": "The garage appears. The house, the mother, the bedroom: gone off-page. The corkboard survives."
+}

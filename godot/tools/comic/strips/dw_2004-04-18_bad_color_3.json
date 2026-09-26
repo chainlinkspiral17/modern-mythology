@@ -1,0 +1,95 @@
+{
+  "id": "dw_2004-04-18_bad_color_3",
+  "title": "Sunday · the tavern roof",
+  "strip": "drift_wood",
+  "date": "2004-04-18",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (newspaper cadence: six dailies + a Sunday)",
+  "arc": "Bad Color",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004)",
+  "logline": "Third kept Sunday. The wash is learning. The tin roof in rain, the tavern, the alley. Silent.",
+  "cast": [],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the garage and the tavern from the alley in rain, watercolor. Rust on the corrugated tin, done right for the first time — orange bleeding into gray on purpose.",
+      "characters": [],
+      "props": [
+        "tin roof",
+        "rust",
+        "tavern",
+        "alley",
+        "rain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a cedar-shingle garage and the back of a tavern seen from a gravel alley in rain, watercolor, the rust on the corrugated tin roof bleeding orange into gray on purpose, ink under it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "The alley"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the casement window from outside, lamplight inside, a shape at the table. The window's yellow the only warm note.",
+      "characters": [],
+      "props": [
+        "window with lamplight",
+        "a figure inside"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small casement window seen from a rainy alley with warm lamplight inside and the shape of someone at a table, the only warm color in a gray watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "The window"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the alley empty, the rain, the neon of the tavern's beer sign reflected in a puddle. Controlled now.",
+      "characters": [],
+      "props": [
+        "puddle",
+        "neon reflection",
+        "alley"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an empty gravel alley in rain with a tavern's beer-sign neon reflected in a puddle, controlled watercolor washes, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "The puddle"
+    }
+  ],
+  "art": {
+    "line": "brush-pen",
+    "palette": "gray, rust orange, one yellow window",
+    "paper": "watercolor paper, less buckled"
+  },
+  "notes": "Third kept Sunday of the bad-color spring. The rust is the first thing the color gets right.",
+  "layout": "tiers, portrait page"
+}
