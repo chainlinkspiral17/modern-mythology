@@ -99,10 +99,14 @@ Ben in practice pads and in the TE-1 jersey, Anita in scrubs, Coach K
 at home. Entries marked *sparse* have a look proposed where canon
 says little — read `notes` and edit before spending credits.
 
-Routing: a look's `keys` route the scenes that name it (`maya_kid`,
-`maya_age_7` → the age-7 model). Scenes that use the bare key across
-eras (`miriam` in vol5 and vol6) need chapter-based routing in
-CharLayer — NEXT; until then the base model shows.
+Routing (CharLayer reads the roster at start): a look's own `keys`
+route the scenes that name it (`maya_kid`, `maya_age_7` → the age-7
+model), and a BARE key routes to a look when the current scene falls
+inside the look's `vols` — narrowed to its `scenes` (scene ids) when
+given, because a costume is a scene, not a volume: `miriam` in vol6
+is `miriam_2025.glb`; `ben` in `vol6_ch13_two_a_days` is the pads, in
+`vol6_ch22_vinton` the TE-1 jersey. A look whose GLB is not built yet
+falls through to the base model.
 
 ## Workflow in the page
 

@@ -330,6 +330,11 @@ func _resolve_portrait_3d_glb(key: String) -> String:
 	var ddirect: String = PORTRAIT_3D_DEMON_ROOT + key + ".glb"
 	if FileAccess.file_exists(ddirect) or ResourceLoader.exists(ddirect):
 		return ddirect
+	# Looks — a base key in a scene the roster stages a look for, or a
+	# look's own key (both fall through to the base when the GLB is absent)
+	var look_path: String = _resolve_look_glb(key)
+	if look_path != "":
+		return look_path
 	# Heroes — explicit registry then implicit `<key>.glb`
 	if PORTRAIT_3D_KEY_TO_GLB.has(key):
 		var path: String = PORTRAIT_3D_GLB_ROOT + PORTRAIT_3D_KEY_TO_GLB[key]
@@ -347,6 +352,107 @@ func _is_demon_glb(glb_path: String) -> bool:
 	return glb_path.begins_with(PORTRAIT_3D_DEMON_ROOT)
 
 
+# GameEngine tells the layer which scene it is in; looks are chosen by it.
+func set_scene_context(vol: int, chapter: Variant, scene_id: String = "") -> void:
+	_scene_vol = vol
+	_scene_chapter = _chapter_number(chapter)
+	_scene_id = scene_id
+
+
+# Scene JSON carries `chapter` as an int (vol6: 13), a numeric string,
+# or a roman numeral (vol5: "V"). Unknown → 0 (no chapter match).
+func _chapter_number(v: Variant) -> int:
+	if typeof(v) == TYPE_INT or typeof(v) == TYPE_FLOAT:
+		return int(v)
+	var s: String = String(v).strip_edges().to_upper()
+	if s.is_valid_int():
+		return int(s)
+	var roman: Dictionary = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100}
+	var total: int = 0
+	var prev: int = 0
+	for i in range(s.length() - 1, -1, -1):
+		var ch: String = s.substr(i, 1)
+		if not roman.has(ch):
+			return 0
+		var val: int = int(roman[ch])
+		if val < prev:
+			total -= val
+		else:
+			total += val
+			prev = val
+	return total
+
+
+func _load_roster_looks() -> void:
+	_looks.clear()
+	_look_keys.clear()
+	if not FileAccess.file_exists(PORTRAIT_3D_ROSTER):
+		return
+	var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(PORTRAIT_3D_ROSTER))
+	if typeof(parsed) != TYPE_DICTIONARY:
+		push_warning("CharLayer: roster did not parse — looks disabled")
+		return
+	var data: Dictionary = parsed
+	var entries: Array = data.get("entries", [])
+	var by_slug: Dictionary = {}
+	for item: Variant in entries:
+		if typeof(item) == TYPE_DICTIONARY:
+			var e: Dictionary = item
+			by_slug[String(e.get("slug", ""))] = e
+	for item: Variant in entries:
+		if typeof(item) != TYPE_DICTIONARY:
+			continue
+		var e: Dictionary = item
+		var base: String = String(e.get("base", ""))
+		if base == "" or String(e.get("kind", "")) != "hero":
+			continue
+		var look_v: Variant = e.get("look", null)
+		if typeof(look_v) != TYPE_DICTIONARY:
+			continue
+		var look: Dictionary = look_v
+		var glb: String = String(e.get("file", ""))
+		if glb == "":
+			continue
+		var rule: Dictionary = {"glb": glb, "vols": look.get("vols", []), "chapters": look.get("chapters", []), "scenes": look.get("scenes", [])}
+		var base_entry: Dictionary = by_slug.get(base, {})
+		var base_keys: Array = base_entry.get("keys", [])
+		for bk: Variant in base_keys:
+			var k: String = String(bk)
+			if not _looks.has(k):
+				_looks[k] = []
+			var rules: Array = _looks[k]
+			rules.append(rule)
+			_looks[k] = rules
+		var own_keys: Array = e.get("keys", [])
+		for ok: Variant in own_keys:
+			_look_keys[String(ok)] = glb
+
+
+func _resolve_look_glb(key: String) -> String:
+	if _look_keys.has(key):
+		var own: String = PORTRAIT_3D_GLB_ROOT + String(_look_keys[key])
+		if FileAccess.file_exists(own) or ResourceLoader.exists(own):
+			return own
+	if not _looks.has(key):
+		return ""
+	var rules: Array = _looks[key]
+	for rv: Variant in rules:
+		var rule: Dictionary = rv
+		var vols: Array = rule.get("vols", [])
+		var chapters: Array = rule.get("chapters", [])
+		var scenes: Array = rule.get("scenes", [])
+		if not (_scene_vol in vols):
+			continue
+		if not scenes.is_empty() and not (_scene_id in scenes):
+			continue                       # a costume is a scene, not a volume
+		if not chapters.is_empty() and not (_scene_chapter in chapters):
+			continue
+		var lpath: String = PORTRAIT_3D_GLB_ROOT + String(rule.get("glb", ""))
+		if FileAccess.file_exists(lpath) or ResourceLoader.exists(lpath):
+			return lpath
+	return ""
+
+
 # Public lookup so DialogueBox / GameEngine / etc. can color speaker
 # names and other chrome consistently with portrait accents.
 func accent_for(char_name: String) -> Color:
@@ -356,9 +462,24 @@ func accent_for(char_name: String) -> Color:
 var _slots: Dictionary = {"left": null, "center": null, "right": null}
 var _t:     float      = 0.0
 
+# ── LOOKS (2026-09-26) ── another age or costume of a hero. The roster
+# (godot/tools/meshy_roster.json) marks an entry with `base` (the hero
+# it is a look of) and `look {vols, chapters?}`; when the current scene
+# falls inside them, the BASE key routes to the look's GLB (Miriam in
+# vol6 is miriam_2025.glb; Ben in ch13/19 is the pads, in ch22 the TE-1
+# jersey). The look's own keys (maya_kid → maya_daigle_age7.glb) route
+# through the roster too. A missing GLB falls through to the base.
+const PORTRAIT_3D_ROSTER := "res://tools/meshy_roster.json"
+var _looks:         Dictionary = {}      # base key → Array of {glb, vols, chapters}
+var _look_keys:     Dictionary = {}      # a look's own key → glb
+var _scene_vol:     int        = 0
+var _scene_chapter: int        = 0
+var _scene_id:      String     = ""
+
 
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_load_roster_looks()
 	# Spawn the per-portrait debug overlay (visible on Esc/mouse-
 	# released). It introspects this CharLayer's slot table via
 	# get_active_portrait3d_list, so attaching it as a child means

@@ -16,7 +16,7 @@
     "canon": "list of {src, text}: VERBATIM sentences from the story text describing the look. When present these ARE the description sent to the image model; `prompt` is then only a fallback (or extra direction when prompt_mode is 'append'). Fill/refresh with godot/tools/meshy_canon.py.",
     "prompt_mode": "fallback (default: prompt used only when canon is empty) | append (prompt added after the canon quotes)",
     "base": "slug of the hero this entry is a LOOK of (another age or costume of the same person) — its own concept image and GLB; omitted on a hero's default look",
-    "look": "{label, vols, when}: what this look is and where the scenes stage it (the entry's keys route the scenes that name it; chapter-based routing is NEXT)",
+    "look": "{label, vols, scenes?, when}: what this look is and where the scenes stage it. CharLayer routes a base key to this look's GLB when the current scene's vol is in `vols` — narrowed to the listed scene ids when `scenes` is given (a costume is a scene, not a volume); the look's own keys always route to it",
     "looks": "on a base entry: the slugs of its looks, for the Hero Studio to group under it"
   },
   "defaults": {
@@ -5939,7 +5939,10 @@
         "vols": [
           6
         ],
-        "when": "ch19 The Chains, final beat — the coach_k_bedroom locale"
+        "when": "ch19 The Chains, final beat — the coach_k_bedroom locale",
+        "scenes": [
+          "vol6_ch19_chains"
+        ]
       },
       "prompt_mode": "append"
     },
@@ -6038,7 +6041,10 @@
         "vols": [
           6
         ],
-        "when": "ch17 The Table — nights she comes directly somewhere"
+        "when": "ch17 The Table — nights she comes directly somewhere",
+        "scenes": [
+          "vol6_ch17_table"
+        ]
       },
       "prompt_mode": "append"
     },
@@ -6909,7 +6915,11 @@
         "vols": [
           6
         ],
-        "when": "ch13 Two-a-Days, ch19 the depth chart"
+        "when": "ch13 Two-a-Days, ch19 the depth chart",
+        "scenes": [
+          "vol6_ch13_two_a_days",
+          "vol6_ch19_depthchart"
+        ]
       },
       "prompt_mode": "append"
     },
@@ -6946,7 +6956,10 @@
         "vols": [
           6
         ],
-        "when": "ch22 Vinton"
+        "when": "ch22 Vinton",
+        "scenes": [
+          "vol6_ch22_vinton"
+        ]
       },
       "prompt_mode": "append"
     }

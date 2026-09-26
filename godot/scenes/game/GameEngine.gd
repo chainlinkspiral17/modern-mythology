@@ -324,6 +324,8 @@ func _load_scene(scene_id: String, start_at: int = 0, replay_state: bool = false
 	# next one (e.g. Frasier persisting from vol5_ch0_model_city into
 	# vol5_ch1_magician).
 	_chars.call("hide_all")
+	# The layer picks a hero's LOOK (age, costume) by the scene it is in.
+	_chars.call("set_scene_context", int(_scene_data.get("vol", _vol)), _scene_data.get("chapter", 0), scene_id)
 	_auto_load_substrate(scene_id)
 	_unlock_gallery_for_scene(scene_id)
 	_apply_chapter_music_context(scene_id)
