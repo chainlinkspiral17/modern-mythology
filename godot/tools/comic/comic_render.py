@@ -163,6 +163,76 @@ def _ref_inline_parts(job, limit=4):
 # ── runway ───────────────────────────────────────────────────────────────
 
 RATIO_CACHE = HERE / "out" / "runway_ratios.json"
+LEARNED_MODELS = HERE / "out" / "models_learned.json"
+
+
+def known_models():
+    """MODELS merged with what --discover-models learned from the providers
+    (out/models_learned.json). Learned ids win and are marked verified."""
+    out = {prov: [dict(m) for m in ms] for prov, ms in MODELS.items()}
+    try:
+        learned = json.loads(LEARNED_MODELS.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        learned = {}
+    for prov, entry in learned.items():
+        ids = entry.get("models") or []
+        when = entry.get("at", "")
+        have = {m["id"]: m for m in out.get(prov, [])}
+        merged = []
+        for mid in ids:
+            m = have.pop(mid, None) or {"id": mid, "label": mid, "note": ""}
+            m["verified"] = True
+            m["note"] = (m.get("note") or "").rstrip(". ") + f" · listed by the provider {when}".strip()
+            merged.append(m)
+        # keep hand-written entries the provider didn't list, but flag them
+        for m in have.values():
+            m["verified"] = False
+            m["note"] = (m.get("note") or "") + " · NOT in the provider's current list"
+            merged.append(m)
+        out[prov] = merged
+    return out
+
+
+def discover_models(provider, key):
+    """Ask the provider what it accepts, without spending credits.
+    Runway: submit an invalid model id; the validation error lists the valid
+    ones. Google: GET /models and keep the image-capable ones."""
+    from datetime import date
+    if provider == "runway":
+        h = {"Authorization": f"Bearer {key}", "X-Runway-Version": RUNWAY_API_VERSION}
+        st, raw = _http(f"{RUNWAY_BASE}/text_to_image", "POST", h, {"model": "__which_models__", "promptText": "probe", "ratio": "1920:1080"}, timeout=30)
+        body = raw.decode("utf-8", "replace")
+        if st != 400:
+            return {"ok": False, "why": f"expected a validation error, got HTTP {st}", "body": body[:600]}
+        ids = []
+        try:
+            for issue in json.loads(body).get("issues") or []:
+                for v in issue.get("values") or issue.get("options") or []:
+                    if isinstance(v, str) and ":" not in v and v not in ids:
+                        ids.append(v)
+        except json.JSONDecodeError:
+            pass
+        if not ids:
+            return {"ok": False, "why": "the error didn't list model ids; body below", "body": body[:800]}
+    else:
+        st, raw = _http(f"{GOOGLE_BASE}/models?pageSize=200", "GET", {"x-goog-api-key": key}, None, timeout=30)
+        body = raw.decode("utf-8", "replace")
+        if st != 200:
+            return {"ok": False, "why": f"HTTP {st}", "body": body[:600]}
+        ids = []
+        for m in json.loads(body).get("models") or []:
+            name = m.get("name", "").split("/")[-1]
+            methods = m.get("supportedGenerationMethods") or []
+            if ("image" in name or "imagen" in name) and ("predict" in methods or "generateContent" in methods):
+                ids.append(name)
+    try:
+        learned = json.loads(LEARNED_MODELS.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        learned = {}
+    learned[provider] = {"models": ids, "at": date.today().isoformat()}
+    LEARNED_MODELS.parent.mkdir(parents=True, exist_ok=True)
+    LEARNED_MODELS.write_text(json.dumps(learned, indent=2), encoding="utf-8")
+    return {"ok": True, "models": ids, "why": f"{len(ids)} model ids listed by {provider}; saved to out/models_learned.json"}
 
 
 def _load_ratio_cache():
@@ -306,6 +376,7 @@ def main(argv=None):
     ap.add_argument("--queue", default=str(DEFAULT_QUEUE))
     ap.add_argument("--model", help="model id for either provider; any id is passed through (see --list-models)")
     ap.add_argument("--list-models", action="store_true", help="print the known model ids per provider and exit")
+    ap.add_argument("--discover-models", action="store_true", help="ask the provider (needs --provider and its key) which model ids it accepts, save them, and exit")
     ap.add_argument("--take", choices=["new", "skip"], default="new", help="new (default): if the file exists, write the next _t2/_t3… take; skip: leave existing files alone")
     ap.add_argument("--only", help="glob on slug")
     ap.add_argument("--limit", type=int)
@@ -316,8 +387,19 @@ def main(argv=None):
     args = ap.parse_args(argv)
     if not args.provider and not args.list_models:
         ap.error("--provider is required")
+    if args.discover_models:
+        if not args.provider:
+            ap.error("--discover-models needs --provider")
+        key = _key(["RUNWAYML_API_KEY"], ".runway_key") if args.provider == "runway" else _key(["GOOGLE_API_KEY", "GEMINI_API_KEY"], ".google_key")
+        r = discover_models(args.provider, key)
+        print(("✓ " if r["ok"] else "✗ ") + r["why"])
+        for m in r.get("models") or []:
+            print("  " + m)
+        if r.get("body") and not r["ok"]:
+            print(r["body"])
+        return 0 if r["ok"] else 1
     if args.list_models:
-        for prov, ms in MODELS.items():
+        for prov, ms in known_models().items():
             print(prov)
             for m in ms:
                 print(f"  {m['id']:32s} {m['label']:36s} {'' if m['verified'] else '(unverified id) '}{m['note']}")
