@@ -1,0 +1,149 @@
+{
+  "id": "dw_2019-06-07_last_bell_2019",
+  "title": "Last Bell, 2019",
+  "strip": "drift_wood",
+  "date": "2019-06-07",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "Last Bell",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "The bell. Wood at the motel, day shift for once. A graduating kid's parents check in for the ceremony. He gives them room twelve and a map.",
+  "cast": [
+    "wood_34",
+    "motel_guest"
+  ],
+  "location": "dw_motel_desk",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The Driftwood Motel desk, 3:05 PM. The bell, through the glass door, from the school across town. A COUPLE checking in, the mother holding a graduation program.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "at the desk",
+          "expression": ""
+        },
+        {
+          "id": "motel_guest",
+          "pose": "a couple checking in",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "graduation program",
+        "glass door",
+        "hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "brrring",
+      "image": {
+        "prompt": "a motel front desk in daylight with a couple checking in holding a graduation program, a distant bell sound drawn through the glass door, a clerk in a maroon polo, a flat line beneath the panel",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The program: SMALL WOOD HIGH SCHOOL · CLASS OF 2019. Wood's eyes on it.",
+      "characters": [],
+      "props": [
+        "program"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a graduation program on a motel counter, a clerk's eyes on it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood sliding a key and a registration card across. On the card's back: the map. Every building. He does it without deciding to.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "sliding a card with a map",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "key",
+        "card with a map"
+      ],
+      "balloons": [
+        {
+          "who": "MOTHER",
+          "text": "Is this—"
+        },
+        {
+          "who": "WOOD",
+          "text": "The town. It's accurate."
+        },
+        {
+          "who": "MOTHER",
+          "text": "...As of when?"
+        },
+        {
+          "who": "WOOD",
+          "text": "Today. I checked."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a clerk sliding a motel key and a registration card with an intricate hand-drawn town map on its back to a couple",
+        "negative": "",
+        "notes": "Rhymes with dw_2012-08-23. This time: 'Today. I checked.'"
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The lobby. The couple gone up. The bell done. Wood at the desk. The hum line. Twenty-one years since his own.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "at the desk",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lobby",
+        "hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a motel lobby with a clerk alone at the desk, a flat line beneath the panel, afternoon light through the glass door, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "The map again, current this time. 'Today. I checked.'"
+}

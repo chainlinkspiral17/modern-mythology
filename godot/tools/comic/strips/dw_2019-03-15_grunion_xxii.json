@@ -1,0 +1,170 @@
+{
+  "id": "dw_2019-03-15_grunion_xxii",
+  "title": "The Grunion Run, xxii",
+  "strip": "drift_wood",
+  "date": "2019-03-15",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Grunion Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "Twenty-second year. Nine lanterns. The run barely a run. Gully's girl, nine, asks why there used to be more. Wood says the fish moved. Gully says the people did.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "extra_gully_kid",
+    "barnaby_ii"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The beach, nine lanterns. A thin line at the surf. GULLY's thermos. The girl with a bucket. WOOD. BARNABY II.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_gully_kid",
+          "pose": "bucket",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "nine lanterns"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a night beach with only nine lanterns and a thin line of people at the surf, a man with a thermos, a girl with a bucket, a thin man with a pad, a three-legged dog, clean ink with a muted wash",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The girl, looking down the beach at the dark where lanterns used to be.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GIRL",
+          "text": "Dad said there used to be a hundred."
+        },
+        {
+          "who": "WOOD",
+          "text": "The fish moved."
+        },
+        {
+          "who": "GULLY",
+          "text": "The people did."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small girl looking down a dark beach, two men answering her differently",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood and Gully. A look. Both right.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of two men exchanging a look, both right, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Silent. Nine lanterns. The fish, few. The pup, the girl, the bucket. Wood drawing this one — the first Grunion Run he draws instead of watches in years.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "extra_gully_kid",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "nine lanterns"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "silent wide night beach panel with nine lanterns and a few silver fish, a girl with a bucket and a three-legged dog at the surf, a man drawing, no words",
+        "negative": "",
+        "notes": "Pad open. He draws this one because it's ending."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Nine lanterns. 'The fish moved.' 'The people did.' He draws it."
+}

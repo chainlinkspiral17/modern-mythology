@@ -1,0 +1,156 @@
+{
+  "id": "dw_2017-03-10_grunion_xx",
+  "title": "The Grunion Run, xx",
+  "strip": "drift_wood",
+  "date": "2017-03-10",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Grunion Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "Twentieth year. The run is smaller; the fish are fewer; the town is half lockboxes. The strip counts the lanterns.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "barnaby_ii"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The beach, the run. Fewer lanterns — the strip draws exactly eleven. GULLY's thermos line, short. WOOD. BARNABY II in the surf, fewer fish.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "thermos",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "pad",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "surf",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "eleven lanterns",
+        "fewer fish"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a night beach with exactly eleven lanterns and a short coffee line, a thin man with a pad, a three-legged dog in a thin scattering of silver fish, clean ink with a muted wash",
+        "negative": "",
+        "notes": "Count the lanterns: eleven. In 1998 there were dozens."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood, counting under his breath.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Eleven."
+        },
+        {
+          "who": "GULLY",
+          "text": "Twelve. You missed the Delgados'."
+        },
+        {
+          "who": "WOOD",
+          "text": "Twelve."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a man counting lanterns under his breath, a friend correcting him",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The pad: the beach, the lanterns, drawn as a row of twelve small lights along a dark line. Almost a graph.",
+      "characters": [],
+      "props": [
+        "pad"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a drawing pad with twelve small lights drawn along a dark line, spare, like a chart of something",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Silent. The fish, fewer. The lanterns, twelve. The pup, the same as ever. Wood, pad closed.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "pad closed",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "small",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "twelve lanterns"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "silent wide night beach panel with twelve lanterns, a thin scatter of silver fish, a three-legged dog, a man with a closed pad, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Twelve lanterns. The run thinning. The strip counts."
+}

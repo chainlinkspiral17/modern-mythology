@@ -1,0 +1,161 @@
+{
+  "id": "dw_2019-02-08_crab_derby_2019",
+  "title": "The Crab Derby, 2019",
+  "strip": "drift_wood",
+  "date": "2019-02-08",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "Thirty-fifth annual. Gully's girl, nine, draws it from a photo of a real crab. It's good. It's not a cartoon. Wood letters and says nothing about that.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "extra_gully_kid",
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. The girl, nine, drawing from a photo on Gully's phone propped against the register. Careful. Eight legs, the joints right. WOOD watching, not lettering yet.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "drawing from a photo",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "watching",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "phone propped up",
+        "flyer"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a nine-year-old girl carefully drawing a crab from a photo on a phone propped against a shop register, a thin man watching without interrupting, a man in an apron, a dog, clean ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Her crab. Accurate. Shaded. The strip draws it better than the strip's own crabs, deliberately.",
+      "characters": [],
+      "props": [
+        "an accurate shaded crab"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a child's careful pencil drawing of a crab with correct joints and shading, better than a cartoon",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood lettering under it. His hand steady. His face doing something he doesn't let it finish.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "lettering",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GIRL",
+          "text": "Is it good?"
+        },
+        {
+          "who": "WOOD",
+          "text": "It's good."
+        },
+        {
+          "who": "GIRL",
+          "text": "You didn't say 'twelve legs.'"
+        },
+        {
+          "who": "WOOD",
+          "text": "You didn't draw twelve."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man lettering beneath a child's drawing with a steady hand and an expression he holds back",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Twenty-two flyers. The twenty-second is the best one on the wall. Gully looking at Wood, not the flyer.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "looking at Wood",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "twenty-two flyers"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a row of twenty-two crab flyers on a shingle wall where the newest is plainly the best, a man in an apron looking not at the wall but at his friend, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Her crab is the best one on the wall. Gully looks at Wood, not the flyer."
+}

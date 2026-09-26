@@ -1,0 +1,140 @@
+{
+  "id": "dw_2020-12-24_december_2020",
+  "title": "December, 2020",
+  "strip": "drift_wood",
+  "date": "2020-12-24",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "December",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "Does Chloe come home. The last December of the public strip. Not this year. The mailbox, the phone, the garage. Three days before the end.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The mailbox. Empty. WOOD and BARNABY II. Rain.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "at the mailbox",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "empty mailbox"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man opening an empty roadside mailbox in December rain, a three-legged dog, clean ink with a slate wash",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The flip phone. No text. 4:10 on its screen — the bus's time, still, in his head.",
+      "characters": [],
+      "props": [
+        "flip phone: 4:10"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of an old flip phone showing no messages and the time 4:10",
+        "negative": "",
+        "notes": "4:10. The Greyhound's time. Letter after."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The garage. Wood at the table. The last week's strips on the board, six ordinary dailies. Tomorrow's Sunday, blank, taped down.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "at the table",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "six dailies",
+        "a blank Sunday sheet"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man at a drafting table with six finished daily strips pinned above it and a blank Sunday sheet taped to the board",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The garage from the door. The lamp. The man. The dog. The blank sheet. Christmas Eve. She does not come home. The strip has three days left and looks like every other night.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lamp",
+        "blank sheet"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a garage studio from its doorway on a rainy night with a man at a lit drafting table before a blank sheet, a dog in a bed beneath, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "The last December fixture. She does not come home. The Sunday sheet is blank on the board."
+}

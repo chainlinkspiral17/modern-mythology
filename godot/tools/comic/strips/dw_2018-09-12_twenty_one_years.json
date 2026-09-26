@@ -1,0 +1,143 @@
+{
+  "id": "dw_2018-09-12_twenty_one_years",
+  "title": "Twenty-one years",
+  "strip": "drift_wood",
+  "date": "2018-09-12",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Anniversary",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "Twenty-one. The corn. The aggregator wants the Sunday vertical. Wood eats corn horizontally.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. Corn. A laptop open: an email from the aggregator with a mock-up of 'The Carry' cut into a vertical strip. WOOD eating corn. BARNABY II.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "eating corn",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "corn",
+        "laptop with a vertical mock-up"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man eating corn at a drafting table beside a laptop showing a comic page chopped into a vertical scroll, a three-legged dog, clean ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The mock-up. The drift log tier cropped to a square. No gulls.",
+      "characters": [],
+      "props": [
+        "mock-up"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a laptop screen showing a watercolor tier cropped to a square with its sky and gulls cut off",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, to the dog, corn in hand.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Twenty-one years drawing wide. They want tall. The bay isn't tall. The bay's the widest thing I know."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man holding a tray of corn and speaking to a dog while looking at a laptop, tired",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Alone at the long surface — drawn wide, wider than the grid, the panel itself stretched. Corn. Dog. Laptop closed.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "back turned",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "closed laptop",
+        "corn"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an unusually wide panel of a man with his back turned at a long drafting table with a closed laptop, a tray of corn and a dog, no words",
+        "negative": "",
+        "notes": "Draw this panel wider than the others. The strip's answer to vertical."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "'The bay's the widest thing I know.' The last panel drawn wide on purpose."
+}

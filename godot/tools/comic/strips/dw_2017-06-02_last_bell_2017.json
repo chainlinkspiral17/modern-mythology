@@ -1,0 +1,149 @@
+{
+  "id": "dw_2017-06-02_last_bell_2017",
+  "title": "Last Bell, 2017",
+  "strip": "drift_wood",
+  "date": "2017-06-02",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "Last Bell",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "The bell, three months before Twenty Years. Wood at the school for the first time since 1999 — outside it. The napkin kid is on the steps.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii",
+    "extra_student"
+  ],
+  "location": "dw_school_front",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Small Wood High, 3:05 PM, the bell. WOOD across the road on foot with BARNABY II — the Legacy's in the shop. On the steps: a kid drawing on a napkin. Wood sees him.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "across the road",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_student",
+          "pose": "on the steps, drawing on a napkin",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "school steps",
+        "napkin"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "BRRRRING",
+      "image": {
+        "prompt": "a small-town high school at the last bell seen from across the road, a man and a three-legged dog on the far sidewalk, a teenager on the steps drawing on a napkin, clean ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The kid, drawing. Not looking up. The way Gully didn't in 1997.",
+      "characters": [
+        {
+          "id": "extra_student",
+          "pose": "drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "napkin"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a teenager on school steps drawing intently on a napkin, not looking up",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, not crossing. The pup pulling toward the kid. Wood holding him.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "holding the leash",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "pulling",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man holding back a three-legged dog that wants to cross the road toward a teenager on some steps, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The kid getting up, napkin in his pocket, walking toward the beach with the others. Wood watching him go. The pad in Wood's coat, untouched.",
+      "characters": [
+        {
+          "id": "extra_student",
+          "pose": "walking off",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "watching",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "road to the beach"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenager walking away toward a beach with a napkin in his pocket among other students, a man with a dog watching from across the road, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "The napkin kid, first sighting. In September Wood will sit at his table."
+}
