@@ -1,0 +1,137 @@
+{
+  "id": "dw_2010-10-04_return_2010",
+  "title": "Return",
+  "strip": "drift_wood",
+  "date": "2010-10-04",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Return",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2010)",
+  "logline": "Wood back. The strip says nothing about where it was. A second, smaller date under the mark.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": "The gull. Under the date, very small, a second date."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. The drafting table. Dust on it, drawn. WOOD wiping it with his sleeve. BARNABY, eleven, in the bed.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "wiping dust off the table",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "in the bed, old",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "dust",
+        "table",
+        "lamp"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man wiping dust off a drafting table with his sleeve in a garage studio, an old gray dog in a bed beneath, muddy watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Fresh bristol. The blue-pencil grid. The brush.",
+      "characters": [],
+      "props": [
+        "bristol",
+        "grid",
+        "brush"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of fresh bristol with a blue-pencil four-panel grid and a loaded brush, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood drawing. The first panel of the first new strip: the dumpster. Of course.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the drawing: a dumpster"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man at a drafting table drawing the first panel of a comic: a rusted dumpster behind a building",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The corkboard. A new item, pinned without comment, at the edge: a folded program, cream, with a date. The strip doesn't let the reader read it. The dog asleep.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "back to us",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a folded cream program on the corkboard"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a crowded corkboard with a new folded cream-colored program pinned at its edge, its text turned away, a man's back at a drafting table, a dog asleep, no words",
+        "negative": "",
+        "notes": "A funeral program. Never legible. The afterword names it."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; the Sundays the point now",
+    "palette": "limited; Sundays in watercolor",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "The return. The program on the corkboard, unreadable. The second date under the mark: the afterword will say what it is."
+}

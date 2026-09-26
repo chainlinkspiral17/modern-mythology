@@ -1,0 +1,161 @@
+{
+  "id": "dw_2011-02-21_the_corner_1",
+  "title": "The corner, i",
+  "strip": "drift_wood",
+  "date": "2011-02-21",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Corner",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2009–2011)",
+  "logline": "Wagner's Hardware on the corner is closing in the backgrounds. A month of dailies. Nobody says so. This is the first.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Main street, February. WOOD walking BARNABY, slowly, the dog on his own feet today. Behind them, the corner: WAGNER'S HARDWARE, a sign in the window the reader can just make out: EVERYTHING MUST.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "walking slowly",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "walking",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "Wagner's Hardware",
+        "a window sign: EVERYTHING MUST",
+        "main street"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small-town main street in February, a man walking an old dog slowly, and behind them on the corner a hardware store with a hand-lettered sign in the window partly visible, muddy watercolor",
+        "negative": "",
+        "notes": "WAGNER'S HARDWARE — the vol 6/7 echo, in the background only. Sign: EVERYTHING MUST (GO cut off). Letter after."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Wood and the dog at the crosswalk. The strip is about the crosswalk. Behind: a man carrying a box out of Wagner's.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "at the crosswalk",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_customer_1",
+          "pose": "carrying a box out, background",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "crosswalk",
+        "a man with a box"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Nine years I've been waiting for this light to be better at its job."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man and an old dog waiting at a small-town crosswalk, in the background a man carrying a cardboard box out of a hardware store",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The dog, looking back at the store. Wood not.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "looking back",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "looking ahead",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of an old dog looking back over its shoulder at a storefront while its owner looks straight ahead, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The light changes. They cross. Wagner's behind them, its door propped open with a paint can, the shelves inside half empty.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "crossing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "Wagner's door propped with a paint can",
+        "half-empty shelves"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man and a dog crossing a street, behind them a hardware store with its door propped open by a paint can and half-empty shelves visible inside, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; the Sundays the point now",
+    "palette": "limited; Sundays in watercolor",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "Wagner's closes in the backgrounds, Feb–Mar 2011. The strip never mentions it. The book takes two of twenty."
+}

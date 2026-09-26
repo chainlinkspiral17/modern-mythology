@@ -1,0 +1,179 @@
+{
+  "id": "dw_2011-05-20_let_go",
+  "title": "Let go",
+  "strip": "drift_wood",
+  "date": "2011-05-20",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Let Go",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2009–2011)",
+  "logline": "The frame shop lets him go. The last mat. He carries his own drafting lamp home along 101.",
+  "cast": [
+    "wood_26",
+    "extra_owner_heceta",
+    "barnaby"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The frame shop. The OWNER, older, glasses on a cord now. WOOD at the mat cutter. The HOURS card in the window has been replaced by one that says CLOSED SAT.",
+      "characters": [
+        {
+          "id": "extra_owner_heceta",
+          "pose": "glasses on a cord",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "at the cutter",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "HOURS card: CLOSED SAT",
+        "mat cutter"
+      ],
+      "balloons": [
+        {
+          "who": "OWNER",
+          "text": "It's not you. It's Saturdays. There aren't any anymore."
+        },
+        {
+          "who": "WOOD",
+          "text": "I know."
+        },
+        {
+          "who": "OWNER",
+          "text": "You've known for a year."
+        },
+        {
+          "who": "WOOD",
+          "text": "I know."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an older woman with glasses on a cord speaking to a man at a mat cutter in a picture-framing shop, a new hours card in the window, muddy watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The last mat. A forty-five. Clean. He's been cutting them eleven years.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "cutting",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a clean corner"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of hands guiding a mat cutter through a perfect clean corner, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The owner handing him the green swing-arm lamp from the backroom. His lamp; it was always hers.",
+      "characters": [
+        {
+          "id": "extra_owner_heceta",
+          "pose": "handing over a lamp",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "taking it",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "green swing-arm lamp"
+      ],
+      "balloons": [
+        {
+          "who": "OWNER",
+          "text": "Take the lamp. It's yours. It's been yours."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's the shop's."
+        },
+        {
+          "who": "OWNER",
+          "text": "Take the lamp, Arthur."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an older woman handing a green enameled swing-arm lamp to a thin man in a frame shop backroom",
+        "negative": "",
+        "notes": "She uses the real name once. The lamp: the Empty Chair's lamp. This is where it comes from."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Highway 101, afternoon. Wood walking the shoulder home with the swing-arm lamp over his shoulder like a shovel, its cord trailing. BARNABY carried in the other arm. Log trucks passing.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "walking the shoulder, lamp on his shoulder, dog in the other arm",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "101",
+        "log truck",
+        "lamp",
+        "cord trailing"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin man walking the shoulder of a coastal highway carrying a green swing-arm lamp over his shoulder like a shovel with its cord trailing and an old dog under his other arm, a log truck passing, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; the Sundays the point now",
+    "palette": "limited; Sundays in watercolor",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "Let go. The lamp is the Empty Chair's lamp. He carries it home along 101 with the dog."
+}

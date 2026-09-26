@@ -1,0 +1,158 @@
+{
+  "id": "dw_2010-03-15_reprint_lot_c",
+  "title": "Reprint · Lot C (re-inked, 2010)",
+  "strip": "drift_wood",
+  "date": "2010-03-15",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Reprints",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2010 sabbatical)",
+  "logline": "The papers run 2001 dailies re-inked. Same script. The 2010 hand. The book runs it beside the original.",
+  "cast": [
+    "wood_20",
+    "security_guard"
+  ],
+  "location": "dw_newport_lot",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": "The 2001 gull, redrawn — and under the date, a second date: 2010."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The community-college parking lot in Newport, rain. WOOD in the Datsun, drawing on the wheel. Re-inked: the rain is a wash now, the Datsun has weight, the LOT C sign is lettered properly.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "in the car, drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "Datsun",
+        "LOT C",
+        "rain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man drawing on a pad propped against the steering wheel of an old parked Datsun in a rainy college parking lot under a LOT C sign, re-inked in a mature confident brush line with a gray wash, the same composition as a crude earlier version",
+        "negative": "",
+        "notes": "Same panels as dw_2001-10-09_lot_c. The book prints them one above the other."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The security guard at the window, tapping.",
+      "characters": [
+        {
+          "id": "security_guard",
+          "pose": "tapping",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "looking up",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "SECURITY",
+          "text": "You a student?"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a campus security guard tapping a car window in rain, a young man inside looking up, confident brush line",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood through the half-rolled window.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "I'm auditing Composition II so I can use the print shop. Philosophically I'm auditing everything."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a young man's deadpan face through a half-rolled car window, mature brush line",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The guard walking away. The car unmoved. The 2010 line makes the rain beautiful, which the 2001 line couldn't.",
+      "characters": [
+        {
+          "id": "security_guard",
+          "pose": "walking away",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "in the car",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "rain",
+        "LOT C"
+      ],
+      "balloons": [
+        {
+          "who": "SECURITY",
+          "text": "Lot C is for students."
+        },
+        {
+          "who": "WOOD",
+          "text": "Lot C is for cowards.",
+          "kind": "small"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a guard walking away across a wet parking lot, an old Datsun unmoved, the rain rendered beautifully in wash, the same scene as a crude earlier version",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "the 2010 hand re-inking the 2001 script",
+    "palette": "gray wash",
+    "paper": "bristol"
+  },
+  "notes": "A reprint pair: the 2001 original and this. The father died in January (lean); the strip stopped; this is what ran. Nine months of it."
+}

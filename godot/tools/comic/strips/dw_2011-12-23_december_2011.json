@@ -1,0 +1,149 @@
+{
+  "id": "dw_2011-12-23_december_2011",
+  "title": "December, 2011",
+  "strip": "drift_wood",
+  "date": "2011-12-23",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "December",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2009–2011)",
+  "logline": "Does Chloe come home. A Christmas card, printed, a photo: Chloe and a gray coat with a face this time. Wood pins it photo-in.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The mailbox. A card, glossy. WOOD opening it in the alley.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "opening a card",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "carried",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "glossy card",
+        "mailbox"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man opening a glossy printed holiday card at a mailbox in a gravel alley, an old dog under his arm, December, muddy watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The card: a printed photo. CHLOE, thirty-one, hair pinned, and beside her a man — pleasant, well-dressed, a good coat. Printed text: HAPPY HOLIDAYS FROM CHLOE & JULIAN. The strip draws the man's face for the first time and gives it nothing.",
+      "characters": [
+        {
+          "id": "chloe_28",
+          "pose": "in the photo",
+          "expression": ""
+        },
+        {
+          "id": "extra_julian",
+          "pose": "in the photo, pleasant",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "printed card"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a glossy printed holiday card with a photo of a woman with pinned dark hair beside a pleasant well-dressed man in a good coat, printed text beneath",
+        "negative": "",
+        "notes": "Julian's face, first and nearly only time: pleasant, unremarkable, drawn with deliberate neutrality. HAPPY HOLIDAYS FROM CHLOE & JULIAN. Letter after."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, to the dog, looking at the card a long time.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "looking at the card",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "He looks nice. That's the worst thing I've ever said about anyone."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man looking at a holiday card for a long moment and speaking quietly to an old dog",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The corkboard. Wood pinning the card photo-side to the wall, printed text out. The only card on the board pinned backwards on purpose.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "pinning the card face-in",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "corkboard",
+        "card pinned face-in"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man pinning a holiday card to a crowded corkboard with its photo turned to the wall so only the printed back shows, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; the Sundays the point now",
+    "palette": "limited; Sundays in watercolor",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "She doesn't come home. Julian gets a face and it's nice. The card goes up backwards."
+}

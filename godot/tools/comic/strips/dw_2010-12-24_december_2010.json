@@ -1,0 +1,181 @@
+{
+  "id": "dw_2010-12-24_december_2010",
+  "title": "December, 2010",
+  "strip": "drift_wood",
+  "date": "2010-12-24",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "December",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2010)",
+  "logline": "Does Chloe come home. She comes to the garage. First time she's seen it. She stays four minutes and looks at the corkboard.",
+  "cast": [
+    "wood_26",
+    "chloe_28",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage door, open. CHLOE in the doorway, Portland coat, looking in. She has never been here. WOOD at the table. BARNABY not getting up, which she notices.",
+      "characters": [
+        {
+          "id": "chloe_28",
+          "pose": "in the doorway, looking in",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "at the table",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "not getting up",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "open door",
+        "the garage, all of it"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "So this is it."
+        },
+        {
+          "who": "WOOD",
+          "text": "Since '04."
+        },
+        {
+          "who": "CHLOE",
+          "text": "He didn't get up."
+        },
+        {
+          "who": "WOOD",
+          "text": "He's eleven."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman with short dark hair in a good winter coat standing in the open doorway of a cluttered garage studio looking in, a thin man at a drafting table, an old dog in a bed not getting up, muddy watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Chloe at the corkboard. Reading it. Her own postcards. The two pinned writing-out. The bus schedule. The letter. The program.",
+      "characters": [
+        {
+          "id": "chloe_28",
+          "pose": "at the corkboard, reading",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "corkboard"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman standing close to a crowded corkboard reading it: postcards, a bus schedule, an old letter, a folded program, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Chloe's hand touching the folded cream program. Not opening it. She knows.",
+      "characters": [
+        {
+          "id": "chloe_28",
+          "pose": "hand on the program",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the program"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "Gully told me. In February."
+        },
+        {
+          "who": "WOOD",
+          "text": "Gully tells—"
+        },
+        {
+          "who": "CHLOE",
+          "text": "Me. He tells me."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a woman's hand resting on a folded cream program pinned to a corkboard, not opening it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Chloe crouching to the dog bed. The dog's tail, once. Wood watching from the table. Four minutes. The strip gives her four panels.",
+      "characters": [
+        {
+          "id": "chloe_28",
+          "pose": "crouched at the dog bed",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "tail once",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "watching",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "dog bed"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman crouched beside an old dog's bed in a garage as the dog's tail moves once, a man watching from his drafting table, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; the Sundays the point now",
+    "palette": "limited; Sundays in watercolor",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "Chloe in the garage. The program. 'Me. He tells me.' Four panels for four minutes."
+}

@@ -1,0 +1,131 @@
+{
+  "id": "dw_2011-09-12_fourteen_years",
+  "title": "Fourteen years",
+  "strip": "drift_wood",
+  "date": "2011-09-12",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Anniversary",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2009–2011)",
+  "logline": "Fourteen years. The corn on the motel's night-audit desk at 3 AM. The first strip drawn at the desk.",
+  "cast": [
+    "wood_26"
+  ],
+  "location": "dw_motel_desk",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The Driftwood Motel's night-audit desk, 3 AM. A CRT. A bell. WOOD in the polo. A paper tray of corn. The pad. The ice machine's hum drawn as a flat line under the panel — the first time.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "at the desk, polo, drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "CRT",
+        "bell",
+        "corn",
+        "ice-machine hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a motel night-audit desk at 3 AM with a CRT, a bell, a paper tray of corn and a drawing pad, a thin man in a maroon polo drawing, a low flat line drawn beneath the panel for the hum of an ice machine, muddy watercolor",
+        "negative": "",
+        "notes": "The hum line begins. It runs under every motel panel through 2027."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The corn. The bell. The hum line.",
+      "characters": [],
+      "props": [
+        "corn",
+        "bell"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a paper tray of corn beside a desk bell on a motel counter, a flat line beneath",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, to no one — the lobby empty.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Fourteen years. The cafeteria is a motel lobby now. Three hundred people facing one direction was optimistic. It's one. It's me. Facing the door."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man in a motel polo at a night desk talking to an empty lobby, the hum line beneath",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The lobby from the door. Wood at the desk, small, the lamp, the corn, the CRT's glow. Facing the door. The hum.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "at the desk, small",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lobby",
+        "desk",
+        "glow"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a motel lobby seen from the entrance door at night, a thin man small at the lit desk facing the door, a flat hum line beneath the panel, no words",
+        "negative": "",
+        "notes": "#1's last panel: alone at a long surface. Fourteenth time."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; the Sundays the point now",
+    "palette": "limited; Sundays in watercolor",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "The first strip drawn at the motel desk. The hum line starts."
+}

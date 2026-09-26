@@ -1,0 +1,195 @@
+{
+  "id": "dw_2009-12-25_december_2009",
+  "title": "December, 2009",
+  "strip": "drift_wood",
+  "date": "2009-12-25",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "December",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2009–2011)",
+  "logline": "Does Chloe come home. She's at Gully's ranch house for Christmas dinner. So is Wood. So is Julian. The strip draws Julian as a coat on a hook.",
+  "cast": [
+    "wood_26",
+    "chloe_28",
+    "gully_27",
+    "extra_maria",
+    "barnaby"
+  ],
+  "location": "dw_ranch_house",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The ranch house kitchen, Christmas. MARIA at the stove. GULLY carving. CHLOE at the table, the camel coat on the back of her chair. WOOD across from her. On a hook by the door: a second coat, a man's, expensive, gray. BARNABY under the table between everyone's feet.",
+      "characters": [
+        {
+          "id": "extra_maria",
+          "pose": "stove",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "carving",
+          "expression": ""
+        },
+        {
+          "id": "chloe_28",
+          "pose": "at the table",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "across from her",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "under the table",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a gray man's coat on a hook",
+        "camel coat on a chair",
+        "table"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small ranch-house kitchen at Christmas, a woman at the stove, a stocky man carving, a woman with short dark hair and a camel coat over her chair, a thin man across from her, a gray expensive man's coat hanging on a hook by the door, a dog under the table, muddy watercolor",
+        "negative": "",
+        "notes": "Julian: a gray coat on a hook. Never a face. He's 'outside, on the phone.'"
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Chloe, to Wood, quietly, while Gully argues with the bird.",
+      "characters": [
+        {
+          "id": "chloe_28",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "He's outside. On the phone. He's always on the phone. It's a good phone."
+        },
+        {
+          "who": "WOOD",
+          "text": "I drew his coat."
+        },
+        {
+          "who": "CHLOE",
+          "text": "I know. I saw you."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a woman speaking quietly across a table to a thin man who is sketching, a carved bird in the background",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully, setting down the carving knife, looking at the two of them, then at the coat on the hook, then at Maria. Maria: a very small shake of the head. Don't.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "looking at the coat",
+          "expression": ""
+        },
+        {
+          "id": "extra_maria",
+          "pose": "tiny head-shake",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the coat"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky man setting down a carving knife and glancing meaningfully at a coat on a hook, a woman at the stove giving him a tiny warning head-shake, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The table. Four people, a dog, and a coat. The strip's Christmas.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_maria",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "chloe_28",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the coat on the hook"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a Christmas dinner table with four people and a dog under it, and an empty gray coat hanging on a hook by the door, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; the Sundays the point now",
+    "palette": "limited; Sundays in watercolor",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "She comes home. Julian is a coat. Maria stops Gully with a look."
+}
