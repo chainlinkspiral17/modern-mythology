@@ -1,0 +1,128 @@
+{
+  "id": "dw_2012-11-19_the_reply",
+  "title": "The reply",
+  "strip": "drift_wood",
+  "date": "2012-11-19",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Illustrators",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Illustrators · deepening)",
+  "logline": "Monday. Wood writes back. To Lyon, to Osaka, to Montreal. Three letters. The strip shows the envelopes and the stamps and none of the words, except one line that's the same in all three.",
+  "cast": [
+    "wood_34",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. WOOD writing. Three envelopes, addressed: LYON, OSAKA, MONTRÉAL. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "writing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "three envelopes"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man writing letters at a drafting table with three addressed envelopes laid out, an old dog beneath",
+        "negative": "",
+        "notes": "Letter after: the three city names on the envelopes."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "One page, mid-letter. Every line rendered as gray — except one, lettered: 'You saw the glow. Nobody here has said so.'",
+      "characters": [],
+      "props": [
+        "one lettered line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of a handwritten letter with all lines rendered as gray texture except one clearly lettered sentence",
+        "negative": "",
+        "notes": "Letter after: 'You saw the glow. Nobody here has said so.' The same line in all three."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Three stamps. International. The cost drawn: a small sum in the corner of the panel, more than a week of corn.",
+      "characters": [],
+      "props": [
+        "three stamps",
+        "a small sum"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of three international stamps on three envelopes with a small handwritten sum in the panel's corner",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The mailbox. Three envelopes in. The flag up. The dog at his feet. Wood looking east, toward the ridge, which is behind the tavern and can't be seen from here.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "at the mailbox, looking east",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the mailbox, flag up"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man at a roadside mailbox with its flag raised looking east toward something hidden behind buildings, an old dog at his feet, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "'You saw the glow. Nobody here has said so.' Three times."
+}

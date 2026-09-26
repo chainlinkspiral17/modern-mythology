@@ -1,0 +1,128 @@
+{
+  "id": "dw_2014-05-06_the_map_again",
+  "title": "The map, again",
+  "strip": "drift_wood",
+  "date": "2014-05-06",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Invitation",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Invitation · deepening)",
+  "logline": "Tuesday. The invitation has a map printed inside: the island, the ferry, the pavilion. Wood looks at it beside the map he drew her in 1999, which he doesn't have — she has it. He draws it from memory. It's wrong in the same places.",
+  "cast": [
+    "wood_34",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. The invitation open: a printed map inside, elegant, the island and the ferry route. WOOD looking at it. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking at the printed map",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the printed map"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man looking at an elegant printed map inside a cream wedding invitation, an old dog beside him",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The printed map. Clean lines. A ferry route dotted. The pavilion, a star.",
+      "characters": [],
+      "props": [
+        "the printed map, close"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of a cleanly printed invitation map with a dotted ferry route and a star for a venue",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood drawing beside it, from memory, the 1999 map: Seattle, the needle, the streets he made up. He doesn't have the original. She does.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "drawing the 1999 map from memory",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the pad: the 1999 map, redrawn"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man redrawing from memory a hand-drawn map of a city with a needle tower beside a printed invitation map",
+        "negative": "",
+        "notes": "The 1999 map (dw_1999-03-26, packed in dw_2000-10-18). Redrawn from memory; the original is hers."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The two maps side by side. His, wrong in the same places it was wrong in 1999. He can tell. He leaves them wrong.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking at both",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "two maps"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, two maps side by side on a table, one printed and precise and one hand-drawn and deliberately inaccurate, a man looking at both, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "Her map printed; his redrawn, wrong in the same places."
+}

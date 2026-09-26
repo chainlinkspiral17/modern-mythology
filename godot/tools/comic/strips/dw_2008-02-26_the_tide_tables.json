@@ -1,0 +1,154 @@
+{
+  "id": "dw_2008-02-26_the_tide_tables",
+  "title": "The tide tables",
+  "strip": "drift_wood",
+  "date": "2008-02-26",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Newsprint",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Newsprint · deepening)",
+  "logline": "Tuesday. The strip beside the tide tables. Wood reads the tide tables for the first time in his life because they're next to him. Gully has read them every day for twenty years. The strip learns what it's next to.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. The coastal weekly on the counter, open: the strip on the left, the tide tables on the right. WOOD reading the right. GULLY.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "reading the tide tables",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the weekly"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man at a bait-shop counter reading the tide tables in a newspaper beside his own comic strip, a man in an apron",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The page. The strip. The tables: columns of times and heights. Wood's finger on Friday's low.",
+      "characters": [],
+      "props": [
+        "the page: strip and tables"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close-up of a newspaper page with a comic strip beside columns of tide times and a finger on one line",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Friday's a minus tide."
+        },
+        {
+          "who": "WOOD",
+          "text": "I know. It's — right here."
+        },
+        {
+          "who": "GULLY",
+          "text": "You've never read that page in your life."
+        },
+        {
+          "who": "WOOD",
+          "text": "I've never been on it."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a man in an apron speaking to a thin man reading tide tables",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood drawing, on the pad, the strip's next Friday: the mudflats at minus tide. The tables told him. The strip about learning what it's next to.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing the flats",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the pad: the flats"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man drawing tidal mudflats on a pad with a newspaper's tide tables beside him",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "'I've never been on it.' The tables tell the strip when."
+}

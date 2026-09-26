@@ -1,0 +1,128 @@
+{
+  "id": "dw_2004-02-02_six_a_week",
+  "title": "Six a week",
+  "strip": "drift_wood",
+  "date": "2004-02-02",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (newspaper cadence: six dailies + a Sunday)",
+  "arc": "Six and a Sunday",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Six and a Sunday · deepening)",
+  "logline": "Monday, week five. The grid: six dailies and a Sunday. The strip draws its own week as a calendar on the wall with seven boxes and Wood filling the sixth, Saturday, for the first time since 1999.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The bedroom. A calendar page on the wall: a week, seven boxes. Six with a small strip drawn in each. Sunday's box: a smear of color. WOOD at the desk.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "at the desk",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a calendar with strips in the boxes"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a young man at a desk beneath a wall calendar whose seven daily boxes each hold a tiny drawn comic strip and the Sunday box holds a smear of watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Saturday's box. The strip in it: the first Saturday since June 1999.",
+      "characters": [],
+      "props": [
+        "Saturday's box"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close-up of a calendar's Saturday box with a tiny four-panel strip drawn inside it",
+        "negative": "",
+        "notes": "Saturday: the newspaper cadence. Six and a Sunday."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood drawing Saturday's. The dog on the bed. The desk, the CRT, the pad, all at once: the machine of it.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the desk, the CRT, the pad"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a young man drawing at a cluttered desk with a CRT and a pad, a small dog on the bed, the whole apparatus visible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The calendar, full. Seven boxes. Wood looking at it the way he looked at the empty frames in 2000. Something to fill every week for seventeen years.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "looking at the calendar",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the calendar, full"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a young man looking at a full wall calendar of tiny drawn strips, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy early-digital flats begin",
+    "palette": "limited, muddy; Sundays in over-wet watercolor",
+    "paper": "bristol, scanned; the browser"
+  },
+  "notes": "Seven boxes. Saturday for the first time since 1999."
+}

@@ -1,0 +1,88 @@
+{
+  "id": "dw_2004-03-28_bad_color_the_alley",
+  "title": "Sunday · bad color · the alley, right",
+  "strip": "drift_wood",
+  "date": "2004-03-28",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site (newspaper cadence: six dailies + a Sunday)",
+  "arc": "Bad Color",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Bad Color · deepening)",
+  "logline": "The fifth kept: the alley behind the tavern, and for the first time something is right — the rust on the tin. The rest is still wrong. The book keeps it for the one right thing.",
+  "cast": [],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the alley from the mouth. The tavern's wall, mud. The sky, mud. The garage door, mud.",
+      "characters": [],
+      "props": [
+        "mud everything"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, an alley behind a tavern painted in muddy over-wet grays and browns, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Mud"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the tin roof's edge. Rust. And the rust is right — the bloom of it, the orange into the gray, the first thing the color gets right.",
+      "characters": [],
+      "props": [
+        "the rust, right"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, close on a corrugated tin roof edge where rust blooms orange into gray with unexpected accuracy, no words",
+        "negative": "",
+        "notes": "The one right thing on the page. Draw the rust well and everything else badly."
+      },
+      "stage": null,
+      "name": "Rust"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the alley again. Still mud. But the reader has seen the rust and looks for it. Held.",
+      "characters": [],
+      "props": [
+        "the alley"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, the same muddy alley with a small patch of accurate rust on a roof edge, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Again"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy early-digital flats begin",
+    "palette": "limited, muddy; Sundays in over-wet watercolor",
+    "paper": "bristol, scanned; the browser"
+  },
+  "notes": "The rust is right. Nothing else is.",
+  "layout": "tiers, portrait page"
+}

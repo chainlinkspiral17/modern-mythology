@@ -1,0 +1,161 @@
+{
+  "id": "dw_2011-03-10_the_corner_4",
+  "title": "The corner, iv",
+  "strip": "drift_wood",
+  "date": "2011-03-10",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Corner",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Corner · deepening)",
+  "logline": "Thursday, week three. The night before the Grunion Run: lanterns carried down for setup. In the background of panel one: Wagner's shelves being carried out into a truck. In panel four: the truck gone, the window dark. The strip glances, and doesn't.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Main street, dusk. GULLY with a box of lanterns. WOOD. BARNABY. Behind them: men carrying steel shelving out of Wagner's into a truck.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "with lanterns",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lanterns",
+        "shelving going into a truck"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Twelve lanterns. Uncle's. Been in the shack since '85."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a stocky man carrying a box of lanterns down a street at dusk with a thin man and an old dog, men loading steel shelving from a hardware store into a truck behind them",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The lanterns, close. Gully lighting one. The truck in the background, half loaded.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "lighting a lantern",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a lit lantern",
+        "the truck"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a stocky man lighting an old lantern with a half-loaded truck in the background",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood and the dog. The dog looking at the truck. Wood looking at the lantern.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "looking at the lantern",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "looking at the truck",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man looking at a lantern while an old dog beside him looks at a truck across the street, no words",
+        "negative": "",
+        "notes": "The dog looks. The strip's glance is his."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The beach road. Twelve lanterns going down it. Behind, at the corner: the truck gone, Wagner's window dark. Unremarked.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "twelve lanterns",
+        "Wagner's dark"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, three figures carrying lanterns down a road toward a beach at dusk with a dark hardware store on the corner behind them, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; the Sundays the point now",
+    "palette": "limited; Sundays in watercolor",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "The dog glances at the truck. The strip is about lanterns."
+}

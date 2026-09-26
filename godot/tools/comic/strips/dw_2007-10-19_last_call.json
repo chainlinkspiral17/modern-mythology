@@ -1,0 +1,123 @@
+{
+  "id": "dw_2007-10-19_last_call",
+  "title": "Last call",
+  "strip": "drift_wood",
+  "date": "2007-10-19",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Tavern",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Tavern · deepening)",
+  "logline": "Friday. Last call through the wall. The bar's lights going off, drawn as the plaster going dark. Then one sound: the back door. Then the alley: one regular, from behind, walking home past the garage. The only one the strip ever draws outside the wall.",
+  "cast": [
+    "wood_26",
+    "barnaby",
+    "extra_regulars"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage, late. The wall: the shapes going dim. LAST CALL as a shape of sound in the plaster.",
+      "characters": [],
+      "props": [
+        "the wall, dimming"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a garage wall where figures drawn in the plaster are fading as a bar closes behind it, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The wall, dark. One sound: a door. Drawn as a small rectangle of light in the plaster, then gone.",
+      "characters": [],
+      "props": [
+        "a door shape"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a dark plaster wall with one small rectangle of light where a door opens and closes, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The alley through the garage's window. One REGULAR, from behind, in a hat, walking home. Slow. Real, for once, outside the wall.",
+      "characters": [
+        {
+          "id": "extra_regulars",
+          "pose": "one, from behind, in a hat",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the alley"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, seen through a garage window, a man in a hat walking slowly away down an alley at night, no words",
+        "negative": "",
+        "notes": "The only regular the strip draws outside the plaster. From behind. The hat."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD at the window. BARNABY. The alley empty. The tavern dark. The wall a wall. The strip doesn't name the man or the bar.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "at the window",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the empty alley"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a man and a dog at a garage window looking at an empty alley beside a dark tavern, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "Last call in the plaster. One regular, from behind, outside the wall."
+}

@@ -1,0 +1,179 @@
+{
+  "id": "dw_2003-06-27_the_chowder",
+  "title": "The chowder",
+  "strip": "drift_wood",
+  "date": "2003-06-27",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Gully's Tackle & Roast",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Gully's Tackle & Roast · deepening)",
+  "logline": "Friday, week one. The chowder is the uncle's recipe from a card in the register. Gully can't read the uncle's hand. Wood can — he's been reading bad handwriting since the postcards. Together they make it wrong and it's right.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack. A recipe card, grease-spotted, in the uncle's hand. GULLY squinting. WOOD reading over his shoulder. BARNABY.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "squinting at a card",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "reading over his shoulder",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the recipe card"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "That's a three or an eight."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's a 'potatoes.'"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, two teenagers bent over a grease-spotted handwritten recipe card at a shack counter, a small dog beneath",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The card. The uncle's hand: slanting, crowded. Wood's finger under a word.",
+      "characters": [],
+      "props": [
+        "the card, close"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, close-up of a slanting crowded handwritten recipe card with a finger beneath one word",
+        "negative": "",
+        "notes": "The uncle's hand. The strip draws it like Chloe's postcards: crowded, climbing."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The pot. Gully stirring. Wood reading the card aloud, editing, the way he reads postcards to the dog.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "stirring",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "reading aloud",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the pot"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "'…until it —' something. 'Until it forgives you.' That's what it says."
+        },
+        {
+          "who": "GULLY",
+          "text": "It doesn't say that."
+        },
+        {
+          "who": "WOOD",
+          "text": "It says that now."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a teenager stirring a pot while another reads aloud from a card and improvises",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "A bowl. Gully tasting. The face. Wood waiting.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "tasting",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "waiting",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a bowl"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "...That's his."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's wrong in the same places."
+        },
+        {
+          "who": "GULLY",
+          "text": "That's how you know."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a teenager tasting chowder from a bowl with an expression of recognition while another waits",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Until it forgives you.' 'It's wrong in the same places.'"
+}

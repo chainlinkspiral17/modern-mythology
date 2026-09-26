@@ -1,0 +1,175 @@
+{
+  "id": "dw_2002-11-14_thursday_the_dog_returns",
+  "title": "Thursday, the dog returns",
+  "strip": "drift_wood",
+  "date": "2002-11-14",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Espresso Machine",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Espresso Machine · deepening)",
+  "logline": "Thursday. The dog comes back. He sits at the door and won't pass the machine. Gully turns it off. The dog comes in. Gully turns it on. The dog leaves. The strip is a negotiation in four panels.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack door. BARNABY, three, sitting outside it, looking at the machine. GULLY, WOOD.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "sitting outside the door",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the machine"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a small dog sitting outside a bait shack's door looking warily at a chrome espresso machine inside, two teenagers watching",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Gully reaching over. The machine's switch. Off. The hiss dying. The dog's ears.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "switching it off",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "ears up",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the switch"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a teenager switching off an espresso machine as a small dog's ears lift",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The dog in. Under the crate. Gully's hand back on the switch. On. The dog out, a streak.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "a streak",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "hand on the switch",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a small dog streaking out a shack door as a teenager's hand flips an espresso machine back on",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Off. The dog in. Gully's hand off the switch, for good, for now. Wood drawing the switch.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "under the crate",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "hand off the switch",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the switch"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Fine."
+        },
+        {
+          "who": "WOOD",
+          "text": "He's a regular."
+        },
+        {
+          "who": "GULLY",
+          "text": "He's a dog."
+        },
+        {
+          "who": "WOOD",
+          "text": "Same thing, in here."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a small dog settled under a crate while a teenager takes his hand off an espresso machine's switch, another drawing",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The dog and the switch. 'Same thing, in here.'"
+}

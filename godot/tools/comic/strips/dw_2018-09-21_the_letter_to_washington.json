@@ -1,0 +1,156 @@
+{
+  "id": "dw_2018-09-21_the_letter_to_washington",
+  "title": "The letter to Washington",
+  "strip": "drift_wood",
+  "date": "2018-09-21",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "The Pitch Meeting That Isn't",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Pitch Meeting That Isn't · deepening)",
+  "logline": "Friday. Wood writes to the Washington plates. One line, the display face, the gull. Gully reads it before it's sealed and says it's the meanest thing he's ever drawn. Wood says it's not a drawing. Gully says that's what he means.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. WOOD lettering a note at the counter. GULLY watching. BARNABY II.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "lettering",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "watching",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a note"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a thin man lettering a short note at a bait-shop counter while a stocky man watches",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The note: 'The dog is not for sale. Neither is the town. He says hello. —A. Finch' The gull.",
+      "characters": [],
+      "props": [
+        "the note"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of a short hand-lettered note on white paper with a tiny gull mark",
+        "negative": "",
+        "notes": "Letter after: 'The dog is not for sale. Neither is the town. He says hello. —A. Finch' (Rhymes with dw_2019-11-21.)"
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully reading it upside down.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "reading upside down",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "That's the meanest thing you've ever drawn."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's not a drawing."
+        },
+        {
+          "who": "GULLY",
+          "text": "That's what I mean."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a stocky man reading a note upside down across a counter and reacting",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The note in an envelope. The card from the cooler, damp, in with it — returned. The pup's nose on the envelope. Sealed.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "sealing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "nose on the envelope",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the envelope",
+        "the damp card, returned"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a thin man sealing an envelope containing a note and a damp business card while a small dog noses it, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "'It's not a drawing.' 'That's what I mean.' The card returned."
+}

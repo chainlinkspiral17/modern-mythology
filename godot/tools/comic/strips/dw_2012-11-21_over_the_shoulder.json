@@ -1,0 +1,131 @@
+{
+  "id": "dw_2012-11-21_over_the_shoulder",
+  "title": "Over the shoulder",
+  "strip": "drift_wood",
+  "date": "2012-11-21",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Illustrators",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Illustrators · deepening)",
+  "logline": "Wednesday. The last of the arc. Wood drawing at the table and, for the first time in the strip, the panel is drawn from behind him — over his shoulder — as if someone were looking. The strip's first awareness that someone is.",
+  "cast": [
+    "wood_34",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage, from behind WOOD's shoulder: the table, the pad, his hand, the pen. The reader's viewpoint, for the first time, is someone standing behind him.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "from behind, over the shoulder",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the pad"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a view over a man's shoulder from behind showing his hand drawing on a pad at a drafting table, as if someone stood behind him",
+        "negative": "",
+        "notes": "The over-the-shoulder viewpoint: first use. It returns in Run 7's From Behind."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The pad, from that angle: the strip he's drawing is this one. Panel one: a man from behind.",
+      "characters": [],
+      "props": [
+        "the pad: this strip"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up over a shoulder of a pad where the panel being drawn shows a man seen from behind at a table",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood's head turning, slightly. Not all the way. The dog, on the floor, looking straight at the reader.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "turning slightly",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "looking at the reader",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, over a man's shoulder, his head turning slightly, an old dog on the floor looking directly at the viewer, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The garage from the door, normal. Wood at the table, back turned. Nobody behind him. The three drawings on the wall. The fourth face-down. Held.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "back turned",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the wall"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a garage studio from its doorway with a man at a drafting table with his back turned and nobody behind him, three drawings on the wall, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "The over-the-shoulder panel. Someone is looking. Nobody's there."
+}

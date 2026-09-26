@@ -1,0 +1,172 @@
+{
+  "id": "dw_2014-04-29_gullys_key",
+  "title": "Gully's key",
+  "strip": "drift_wood",
+  "date": "2014-04-29",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Invitation",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Invitation · deepening)",
+  "logline": "Tuesday. After hours at the shuttered frame shop, with Gully's key. Gully has a key because he fixes the furnace. Wood cuts a mat for the invitation on the old cutter. 'Pull, don't push.' He hears her say it.",
+  "cast": [
+    "wood_34",
+    "gully_35"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The frame shop, dark, three years closed. GULLY at the door with a key. WOOD with the cream card in an envelope.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "at the door with a key",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "with the card",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a key",
+        "the dark shop"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Why do you have a key."
+        },
+        {
+          "who": "GULLY",
+          "text": "Furnace."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's been closed three years."
+        },
+        {
+          "who": "GULLY",
+          "text": "Furnace doesn't know that."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a stocky man unlocking a dark shuttered frame shop's door while a thin man waits holding a cream envelope",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Inside. Dust. The mat cutter under a sheet. Wood pulling the sheet off. The cutter as it was.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "uncovering the cutter",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the mat cutter"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a thin man pulling a dust sheet off a mat cutter in a dark closed shop",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The blade. His hands. The cut. Pull, don't push. The strip letters her line in a small balloon with no tail, from nowhere.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "cutting",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the blade"
+      ],
+      "balloons": [
+        {
+          "who": "OWNER",
+          "text": "Pull, don't push."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of a man's hands making a bevel cut on a mat cutter with a small tailless speech balloon floating nearby",
+        "negative": "",
+        "notes": "The owner's line, from nowhere. She's not in the shop. A balloon with no tail."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The mat, cut. Cream on cream. Gully holding the flashlight. Wood holding the mat to the flashlight like a window.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "holding the mat to the light",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "with a flashlight",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the mat",
+        "a flashlight"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Good?"
+        },
+        {
+          "who": "WOOD",
+          "text": "They always are."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a thin man holding a cut mat up to a flashlight held by a stocky man in a dark shop",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "'Furnace doesn't know that.' Her line, from nowhere."
+}

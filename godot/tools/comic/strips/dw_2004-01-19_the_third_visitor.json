@@ -1,0 +1,134 @@
+{
+  "id": "dw_2004-01-19_the_third_visitor",
+  "title": "The third visitor",
+  "strip": "drift_wood",
+  "date": "2004-01-19",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (newspaper cadence: six dailies + a Sunday)",
+  "arc": "Six and a Sunday",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Six and a Sunday · deepening)",
+  "logline": "Monday, week three. A comment. One line. From Boise. The third visitor has a city. Wood draws Boise as a shape on a map he's never seen, like Seattle in 1999.",
+  "cast": [
+    "wood_26",
+    "barnaby",
+    "extra_stick_chorus"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The bedroom. The CRT: a comment. One line. WOOD reading it three times. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "reading",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a comment on the screen"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a young man leaning toward a CRT reading a single line of text three times, a small dog on the bed",
+        "negative": "",
+        "notes": "Letter after, the comment: 'the dog is good. —boise'"
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The screen: 'the dog is good. —boise'. Lowercase. That's all.",
+      "characters": [],
+      "props": [
+        "the comment"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close-up of a CRT showing a short lowercase comment beneath a comic strip",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood drawing on the pad: a map. Oregon, roughly. Idaho, guessed. A dot: BOISE. The way he drew Seattle in 1999 — a city he's never seen, for someone.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing a map",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the pad: a guessed map"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a young man drawing a rough map of two states with a dot labelled in a city he has never seen",
+        "negative": "",
+        "notes": "Rhymes with the 1999 map. Letter after: BOISE, with a question mark he crosses out."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "At the back of the panel, faint, for the first time in this run: one stick figure. Small. Standing in Boise, on the map, looking at the dog.",
+      "characters": [
+        {
+          "id": "extra_stick_chorus",
+          "pose": "one, faint, on the map",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the map"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a single faint crude stick figure standing on a hand-drawn map beside a dot, looking toward a small dog on a bed, no words",
+        "negative": "",
+        "notes": "The chorus's first member. One. Boise. (dw_2004-01-13 has two; this is the first alone, six days earlier — reconcile: this is the first, the 13th's two are the second and him.)"
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy early-digital flats begin",
+    "palette": "limited, muddy; Sundays in over-wet watercolor",
+    "paper": "bristol, scanned; the browser"
+  },
+  "notes": "'the dog is good. —boise.' The first stick figure, on a map."
+}
