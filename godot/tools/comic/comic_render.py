@@ -30,6 +30,7 @@ import argparse
 import base64
 import fnmatch
 import json
+import mimetypes
 import os
 import sys
 import time
@@ -85,6 +86,46 @@ def _http(url, method="GET", headers=None, body=None, timeout=120):
         return e.code, e.read()
 
 
+# ── reference images ─────────────────────────────────────────────────────
+
+def _ref_uris(job, limit=3):
+    """Turn a job's reference_images (from comic_tool.py strip-prompts / sheets)
+    into [{uri, tag}]. Local files become data URIs; URLs pass through; a
+    Runway task id alone can't be resolved through the dev API (that's the
+    MCP's referenceImages taskId), so it is skipped with a note."""
+    out = []
+    for r in (job.get("reference_images") or [])[:limit]:
+        if isinstance(r, str):  # legacy: bare URL
+            out.append({"uri": r, "tag": f"ref{len(out)+1}"}); continue
+        tag = r.get("tag") or f"ref{len(out)+1}"
+        f = r.get("file")
+        if f and (REPO / f).exists():
+            p = REPO / f
+            mime = mimetypes.guess_type(str(p))[0] or "image/png"
+            out.append({"uri": f"data:{mime};base64," + base64.b64encode(p.read_bytes()).decode(), "tag": tag})
+        elif r.get("url"):
+            out.append({"uri": r["url"], "tag": tag})
+        elif r.get("runway_task_id"):
+            print(f"  · ref {r.get('id')} is only a Runway task id ({r['runway_task_id']}); fetch its PNG to {f} to use it here")
+        else:
+            print(f"  · ref {r.get('id')} has no file yet ({f}); skipped")
+    return out
+
+
+def _ref_inline_parts(job, limit=4):
+    """Gemini image model: reference images as inline_data parts, each preceded
+    by a text part naming its @tag."""
+    parts = []
+    for r in (job.get("reference_images") or [])[:limit]:
+        f = r.get("file") if isinstance(r, dict) else None
+        if f and (REPO / f).exists():
+            p = REPO / f
+            mime = mimetypes.guess_type(str(p))[0] or "image/png"
+            parts.append({"text": f"Reference @{r.get('tag')} ({r.get('kind', 'reference')}):"})
+            parts.append({"inline_data": {"mime_type": mime, "data": base64.b64encode(p.read_bytes()).decode()}})
+    return parts
+
+
 # ── runway ───────────────────────────────────────────────────────────────
 
 def runway_generate(job, key, seed=None):
@@ -94,9 +135,9 @@ def runway_generate(job, key, seed=None):
     body = {"model": RUNWAY_MODEL, "promptText": job["prompt"][:1000], "ratio": ratio}
     if seed is not None:
         body["seed"] = int(seed)
-    refs = job.get("reference_images") or []
-    if refs:
-        body["referenceImages"] = [{"uri": r, "tag": f"ref{i+1}"} for i, r in enumerate(refs[:3])]
+    ref_payload = _ref_uris(job, limit=3)
+    if ref_payload:
+        body["referenceImages"] = ref_payload
     h = {"Authorization": f"Bearer {key}", "X-Runway-Version": RUNWAY_API_VERSION}
     st, raw = _http(f"{RUNWAY_BASE}/text_to_image", "POST", h, body)
     if st not in (200, 201):
@@ -128,6 +169,8 @@ def google_generate(job, key, model, seed=None):
         aspect = "16:9"
     h = {"x-goog-api-key": key}
     if model.startswith("imagen"):
+        if job.get("reference_images"):
+            print("  · imagen ignores reference images; use --model gemini-2.5-flash-image to apply them")
         body = {"instances": [{"prompt": job["prompt"]}],
                 "parameters": {"sampleCount": 1, "aspectRatio": aspect, "personGeneration": "allow_adult"}}
         if job.get("negative"):
@@ -146,7 +189,8 @@ def google_generate(job, key, model, seed=None):
     text = job["prompt"]
     if job.get("negative"):
         text += f"\n\nAvoid: {job['negative']}."
-    body = {"contents": [{"parts": [{"text": text}]}],
+    parts = _ref_inline_parts(job) + [{"text": text}]
+    body = {"contents": [{"parts": parts}],
             "generationConfig": {"responseModalities": ["IMAGE", "TEXT"],
                                  "imageConfig": {"aspectRatio": aspect}}}
     st, raw = _http(f"{GOOGLE_BASE}/models/{model}:generateContent", "POST", h, body, timeout=180)
@@ -181,7 +225,8 @@ def main(argv=None):
     if args.limit:
         jobs = jobs[:args.limit]
     model = args.model or (GOOGLE_IMAGEN if args.provider == "google" else RUNWAY_MODEL)
-    out_dir = OUT_ROOT / args.provider
+    is_sheets = any(j.get("tag") == "vol10-sheets" for j in q.get("jobs", []))
+    out_dir = OUT_ROOT / ("sheets" if is_sheets else args.provider)
     out_dir.mkdir(parents=True, exist_ok=True)
     manifest_p = out_dir / "manifest.json"
     manifest = json.loads(manifest_p.read_text()) if manifest_p.exists() else {"renders": []}
@@ -219,6 +264,7 @@ def main(argv=None):
             done += 1
             manifest["renders"].append({
                 "slug": j["slug"], "file": str(out_p.relative_to(REPO)), "provider": args.provider,
+                "kind": j.get("kind"), "tags": j.get("tags", []), "references": [r.get("id") for r in (j.get("reference_images") or []) if isinstance(r, dict)],
                 "strip_id": j.get("strip_id"), "date": j.get("date"), "format": j.get("format"),
                 "lettered": j.get("lettered"), "seed": seed, "prompt": j["prompt"],
                 "rendered_at": datetime.now(timezone.utc).isoformat(timespec="seconds"), **meta})

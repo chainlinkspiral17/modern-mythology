@@ -1,0 +1,671 @@
+{
+  "_comment": "Reference-image registry for strip generation. Each entry: id, kind (character|location|era|objects|strip|concept), tags (hero ids, location ids, era ids, object keywords), file (repo path) and/or url / runway_task_id, status (approved|draft|missing), notes. comic_tool.py refs {list|add|approve|reject|sync|suggest} manages it; strip-prompts attaches up to N approved refs per strip by tag relevance unless the strip's own 'references' block overrides. Rendered sheets land in godot/assets/comic/vol10/sheets/<id>.png and `refs sync` picks them up.",
+  "policy": {
+    "max_refs": {
+      "runway": 3,
+      "google": 4
+    },
+    "weights": {
+      "character": 3,
+      "location": 2,
+      "era": 1,
+      "object": 1,
+      "strip_same_arc": 1
+    },
+    "require_approved": true,
+    "prefer_kinds": [
+      "character",
+      "location",
+      "era",
+      "objects",
+      "strip"
+    ]
+  },
+  "references": [
+    {
+      "id": "sheet_wood_17",
+      "kind": "character",
+      "tags": [
+        "character",
+        "era1",
+        "wood_17"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_wood_17.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_wood_20",
+      "kind": "character",
+      "tags": [
+        "character",
+        "era1",
+        "wood_20"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_wood_20.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_wood_26",
+      "kind": "character",
+      "tags": [
+        "character",
+        "era2",
+        "wood_26"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_wood_26.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_wood_34",
+      "kind": "character",
+      "tags": [
+        "character",
+        "era3",
+        "wood_34"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_wood_34.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_wood_44",
+      "kind": "character",
+      "tags": [
+        "character",
+        "era4",
+        "wood_44"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_wood_44.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_chloe_17",
+      "kind": "character",
+      "tags": [
+        "character",
+        "era1",
+        "chloe_17"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_chloe_17.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_chloe_28",
+      "kind": "character",
+      "tags": [
+        "character",
+        "era2",
+        "chloe_28"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_chloe_28.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_chloe_34",
+      "kind": "character",
+      "tags": [
+        "character",
+        "era3",
+        "chloe_34"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_chloe_34.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_chloe_44",
+      "kind": "character",
+      "tags": [
+        "character",
+        "era4",
+        "chloe_44"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_chloe_44.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_gully_17",
+      "kind": "character",
+      "tags": [
+        "character",
+        "era1",
+        "gully_17"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_gully_17.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_gully_27",
+      "kind": "character",
+      "tags": [
+        "character",
+        "era2",
+        "gully_27"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_gully_27.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_gully_35",
+      "kind": "character",
+      "tags": [
+        "character",
+        "era3",
+        "gully_35"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_gully_35.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_gully_48",
+      "kind": "character",
+      "tags": [
+        "character",
+        "era4",
+        "gully_48"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_gully_48.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_barnaby",
+      "kind": "character",
+      "tags": [
+        "character",
+        "era2",
+        "barnaby"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_barnaby.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_barnaby_ii",
+      "kind": "character",
+      "tags": [
+        "character",
+        "era3",
+        "barnaby_ii"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_barnaby_ii.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_the_bird",
+      "kind": "character",
+      "tags": [
+        "character",
+        "era4",
+        "the_bird"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_the_bird.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_supporting",
+      "kind": "character",
+      "tags": [
+        "character",
+        "era3",
+        "extra_maria",
+        "extra_uncle",
+        "extra_owner_heceta",
+        "the_editor",
+        "extra_gully_kid",
+        "extra_mother",
+        "extra_father"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_supporting.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_chorus_and_meme",
+      "kind": "character",
+      "tags": [
+        "character",
+        "era2",
+        "extra_stick_chorus",
+        "extra_stick_hero"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_chorus_and_meme.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_era1",
+      "kind": "era",
+      "tags": [
+        "era",
+        "era1"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_era1.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_era2",
+      "kind": "era",
+      "tags": [
+        "era",
+        "era2"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_era2.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_era3",
+      "kind": "era",
+      "tags": [
+        "era",
+        "era3"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_era3.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_era4",
+      "kind": "era",
+      "tags": [
+        "era",
+        "era4"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_era4.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_loc_garage",
+      "kind": "location",
+      "tags": [
+        "location",
+        "era3",
+        "dw_garage",
+        "dw_tavern"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_loc_garage.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_loc_gullys",
+      "kind": "location",
+      "tags": [
+        "location",
+        "era2",
+        "dw_gullys",
+        "dw_boat_launch"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_loc_gullys.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_loc_frame_shop",
+      "kind": "location",
+      "tags": [
+        "location",
+        "era1",
+        "dw_frame_shop"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_loc_frame_shop.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_loc_lanes",
+      "kind": "location",
+      "tags": [
+        "location",
+        "era2",
+        "dw_bowling_alley"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_loc_lanes.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_loc_motel",
+      "kind": "location",
+      "tags": [
+        "location",
+        "era3",
+        "dw_motel_desk"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_loc_motel.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_loc_beach",
+      "kind": "location",
+      "tags": [
+        "location",
+        "era3",
+        "dw_beach"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_loc_beach.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_loc_mudflats",
+      "kind": "location",
+      "tags": [
+        "location",
+        "era3",
+        "dw_mudflats"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_loc_mudflats.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_loc_main_street",
+      "kind": "location",
+      "tags": [
+        "location",
+        "era1",
+        "dw_main_street",
+        "dw_chloe_porch"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_loc_main_street.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_loc_mill",
+      "kind": "location",
+      "tags": [
+        "location",
+        "era3",
+        "dw_cedar_mill"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_loc_mill.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_loc_roflcopter_sets",
+      "kind": "location",
+      "tags": [
+        "location",
+        "era4",
+        "dw_library_back_room",
+        "dw_stone_head",
+        "dw_the_ridge"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_loc_roflcopter_sets.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_objects_marks",
+      "kind": "objects",
+      "tags": [
+        "objects",
+        "era3",
+        "mark",
+        "signature"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_objects_marks.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_objects_paper",
+      "kind": "objects",
+      "tags": [
+        "objects",
+        "era2",
+        "produce box",
+        "note",
+        "postcard",
+        "bus schedule",
+        "flyer",
+        "digest",
+        "corner box",
+        "newspaper"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_objects_paper.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_objects_tools",
+      "kind": "objects",
+      "tags": [
+        "objects",
+        "era3",
+        "lamp",
+        "brush",
+        "nib",
+        "bristol",
+        "jars",
+        "dog bed",
+        "mug",
+        "drafting table"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_objects_tools.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_objects_vehicles_food",
+      "kind": "objects",
+      "tags": [
+        "objects",
+        "era3",
+        "subaru",
+        "legacy",
+        "datsun",
+        "flatbed",
+        "espresso",
+        "thermos",
+        "clams",
+        "maple bar",
+        "corn",
+        "lawn chair"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_objects_vehicles_food.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "concept_dw_2001-10-09_lot_c",
+      "kind": "strip",
+      "tags": [
+        "strip",
+        "era1",
+        "dw_newport_lot",
+        "wood_20",
+        "security_guard",
+        "Lot C"
+      ],
+      "file": "godot/assets/comic/vol10/concept/dw_2001-10-09_lot_c.png",
+      "url": null,
+      "runway_task_id": "f1921bfb-84b1-49df-b879-4ba25c5601d1",
+      "status": "draft",
+      "source": "concept run (Runway MCP, nano-banana-pro)",
+      "notes": "concept, not final — approve only if the look is right"
+    },
+    {
+      "id": "concept_dw_2009-03-08_lanes",
+      "kind": "strip",
+      "tags": [
+        "strip",
+        "era2",
+        "dw_bowling_alley",
+        "Lanes"
+      ],
+      "file": "godot/assets/comic/vol10/concept/dw_2009-03-08_lanes.png",
+      "url": null,
+      "runway_task_id": "674aca15-217e-474f-a946-e2181a953afa",
+      "status": "draft",
+      "source": "concept run (Runway MCP, nano-banana-pro)",
+      "notes": "concept, not final — approve only if the look is right"
+    },
+    {
+      "id": "concept_dw_2014-12-21_the_box",
+      "kind": "strip",
+      "tags": [
+        "strip",
+        "era3",
+        "dw_garage",
+        "wood_34",
+        "gully_35",
+        "barnaby_ii",
+        "Low Tide at Alsea Bay (Arc 4, Sunday 3)"
+      ],
+      "file": "godot/assets/comic/vol10/concept/dw_2014-12-21_the_box.png",
+      "url": null,
+      "runway_task_id": "66eb10b5-f5e4-4f33-817f-480887baa49a",
+      "status": "draft",
+      "source": "concept run (Runway MCP, nano-banana-pro)",
+      "notes": "concept, not final — approve only if the look is right"
+    },
+    {
+      "id": "concept_sheet_wood_2026",
+      "kind": "concept",
+      "tags": [
+        "concept",
+        "wood_44",
+        "the_bird",
+        "era4",
+        "dw_gullys",
+        "dw_stone_head",
+        "eye sign",
+        "logo"
+      ],
+      "file": "lore/drift_wood/refs/sheet_01_wood.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "the user's September 2026 concept sheet (not yet in the repo)",
+      "notes": "see lore/drift_wood/_CONCEPT_ART.md; drop the PNG at the file path and run refs sync"
+    }
+  ]
+}

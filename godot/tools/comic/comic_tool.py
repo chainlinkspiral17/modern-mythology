@@ -14,6 +14,12 @@ README.md). This tool turns them into the things production needs:
              image (layout, era style, every panel, the balloons, the signature).
              This is the concept-run path: comic_render.py sends these to
              Runway or Google and you get actual comic strips back.
+  refs       the tagged reference registry (references.json): list · sync
+             (pick up rendered sheets / files that now exist) · add · approve ·
+             reject · suggest <strips> (show what strip-prompts would attach).
+             strip-prompts attaches up to 3 approved references per strip by
+             cast / location / era / object tags, unless the strip JSON has a
+             "references": {"use": [...], "exclude": [...], "auto": true} block.
   sheets     write one prompt per reference sheet (characters by era, era
              swatches, hero locations, objects) from style_sheets.json —
              the generation side of lore/drift_wood/style/.
@@ -248,6 +254,158 @@ def cmd_prompts(args):
     return 0
 
 
+# ── references (tagged reference images, auto-selected per strip) ─────────
+
+REFS_PATH = HERE / "references.json"
+
+
+def load_refs():
+    return load_json(REFS_PATH) if REFS_PATH.exists() else {"policy": {}, "references": []}
+
+
+def save_refs(d):
+    REFS_PATH.write_text(json.dumps(d, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
+def _strip_terms(s):
+    """Everything about a strip a reference tag could match: cast ids, location,
+    era, arc, and lowercase words from props/composition."""
+    words = set()
+    for p in s.get("panels") or []:
+        for pr in p.get("props") or []:
+            words.update(w.strip(".,;:()\"'").lower() for w in pr.split())
+        words.update(w.strip(".,;:()\"'").lower() for w in (p.get("composition") or "").split())
+    return {"cast": set(s.get("cast") or []), "location": s.get("location") or "",
+            "era": s.get("era"), "arc": s.get("arc") or "", "words": words, "id": s.get("id")}
+
+
+def score_ref(ref, terms, weights):
+    sc, why = 0, []
+    tags = set(ref.get("tags") or [])
+    for c in terms["cast"] & tags:
+        sc += weights.get("character", 3); why.append(c)
+    if terms["location"] and terms["location"] in tags:
+        sc += weights.get("location", 2); why.append(terms["location"])
+    if terms["era"] in tags:
+        sc += weights.get("era", 1); why.append(terms["era"])
+    if terms["arc"] and terms["arc"] in tags and ref.get("kind") == "strip":
+        sc += weights.get("strip_same_arc", 1); why.append("same arc")
+    GENERIC = {"strip", "character", "location", "era", "objects", "concept", "sheet", "mark", "logo"}
+    for tg in tags:
+        if tg in GENERIC or tg in terms["cast"] or tg.startswith(("dw_", "era", "extra_")):
+            continue
+        if " " in tg or tg.islower():
+            # object keyword: match against the strip's words (multi-word tags need every word)
+            if all(w in terms["words"] for w in tg.split()):
+                sc += weights.get("object", 1); why.append(tg)
+    if ref.get("id") == f"concept_{terms['id']}":
+        sc = 0  # never use a strip's own earlier render as its reference
+    return sc, why
+
+
+def select_refs(s, refs, provider="runway", include_draft=False, verbose=False):
+    """Return [(ref, score, why)] for a strip: the strip's explicit 'references'
+    block wins; otherwise the top-N approved refs by tag relevance."""
+    pol = refs.get("policy", {})
+    weights = pol.get("weights", {})
+    n = pol.get("max_refs", {}).get(provider, 3)
+    by_id = {r["id"]: r for r in refs.get("references", [])}
+    block = s.get("references") or {}
+    chosen = []
+    for rid in block.get("use") or []:
+        r = by_id.get(rid)
+        if r:
+            chosen.append((r, 99, ["pinned"]))
+    if block.get("auto", True) and len(chosen) < n:
+        terms = _strip_terms(s)
+        exclude = set(block.get("exclude") or []) | {c[0]["id"] for c in chosen}
+        cands = []
+        for r in refs.get("references", []):
+            if r["id"] in exclude:
+                continue
+            ok = r.get("status") == "approved" or (include_draft and r.get("status") == "draft")
+            if not ok or not (r.get("file") or r.get("url") or r.get("runway_task_id")):
+                continue
+            sc, why = score_ref(r, terms, weights)
+            if sc > 0:
+                cands.append((r, sc, why))
+        order = {k: i for i, k in enumerate(pol.get("prefer_kinds", []))}
+        cands.sort(key=lambda c: (-c[1], order.get(c[0]["kind"], 9), c[0]["id"]))
+        chosen += cands[: n - len(chosen)]
+    return chosen[:n]
+
+
+def ref_tag_name(ref):
+    """The @tag used in the prompt for a reference (Runway syntax)."""
+    return re.sub(r"[^a-z0-9]+", "_", ref["id"].replace("sheet_", "").replace("concept_", "")).strip("_")[:24]
+
+
+def cmd_refs(args):
+    refs = load_refs()
+    sub = args.refs_cmd
+    if sub == "list":
+        for r in refs["references"]:
+            if args.status and r.get("status") != args.status:
+                continue
+            where = r.get("file") or r.get("url") or (f"runway:{r['runway_task_id']}" if r.get("runway_task_id") else "—")
+            print(f"{r['status']:<9} {r['kind']:<10} {r['id']:<36} {where}")
+            print(f"           tags: {', '.join(r.get('tags') or [])}")
+        print(f"{len(refs['references'])} references")
+        return 0
+    if sub == "sync":
+        # flip 'missing' → 'draft' when the file now exists; register rendered sheets from the manifest
+        flipped = 0
+        for r in refs["references"]:
+            f = r.get("file")
+            if f and (REPO / f).exists() and r.get("status") == "missing":
+                r["status"] = "draft"; flipped += 1
+        man = REPO / "godot" / "assets" / "comic" / "vol10" / "sheets" / "manifest.json"
+        if man.exists():
+            ids = {r["id"] for r in refs["references"]}
+            for m in load_json(man).get("renders", []):
+                if m["slug"] not in ids:
+                    refs["references"].append({"id": m["slug"], "kind": m.get("kind", "sheet"), "tags": m.get("tags", []),
+                                               "file": m["file"], "url": None, "runway_task_id": m.get("task_id"),
+                                               "status": "draft", "source": "sheets render", "notes": ""})
+        save_refs(refs)
+        print(f"synced: {flipped} now present (draft)")
+        return 0
+    if sub == "add":
+        rid = args.id or re.sub(r"[^a-z0-9]+", "_", Path(args.file).stem.lower())
+        refs["references"] = [r for r in refs["references"] if r["id"] != rid]
+        f = Path(args.file)
+        try:
+            rel = str(f.resolve().relative_to(REPO))
+        except ValueError:
+            rel = str(f)
+        refs["references"].append({"id": rid, "kind": args.kind, "tags": args.tags.split(",") if args.tags else [],
+                                   "file": rel if not args.file.startswith("http") else None,
+                                   "url": args.file if args.file.startswith("http") else None, "runway_task_id": args.task,
+                                   "status": "approved" if args.approve else "draft", "source": "manual", "notes": args.notes or ""})
+        save_refs(refs)
+        print(f"added {rid} ({'approved' if args.approve else 'draft'})")
+        return 0
+    if sub in ("approve", "reject"):
+        hit = 0
+        for r in refs["references"]:
+            if fnmatch.fnmatch(r["id"], args.id):
+                r["status"] = "approved" if sub == "approve" else "draft"; hit += 1
+        save_refs(refs)
+        print(f"{sub}d {hit}")
+        return 0
+    if sub == "suggest":
+        strips = load_strips(args.only)
+        for s in strips:
+            picks = select_refs(s, refs, provider=args.provider, include_draft=args.include_draft)
+            print(f"{s['id']}")
+            for r, sc, why in picks:
+                print(f"    {sc:>3}  @{ref_tag_name(r):<24} {r['id']:<34} [{r['status']}]  {', '.join(why)}")
+            if not picks:
+                print("    (no matching references — render and approve sheets, or pin with a 'references' block)")
+        return 0
+    return 1
+
+
 # ── strip prompts (whole-strip generation: the concept run) ──────────────
 
 RATIOS = {
@@ -333,16 +491,31 @@ def cmd_strip_prompts(args):
     strips = load_strips(args.only)
     letter = not args.no_letter
     jobs = []
+    refs = load_refs() if not args.no_refs else {"policy": {}, "references": []}
+    with_refs = 0
     for s in strips:
         prompt, negative = compose_strip_prompt(s, eras, letter=letter)
         rw, gg = RATIOS.get(s["format"], ("1024:1024", "1:1"))
+        picks = select_refs(s, refs, provider=args.provider, include_draft=args.include_draft) if not args.no_refs else []
+        ref_list = []
+        if picks:
+            with_refs += 1
+            mentions = []
+            for r, sc, why in picks:
+                tag = ref_tag_name(r)
+                ref_list.append({"tag": tag, "id": r["id"], "kind": r["kind"], "file": r.get("file"), "url": r.get("url"),
+                                 "runway_task_id": r.get("runway_task_id"), "score": sc, "why": why})
+                what = {"character": "the character", "location": "the setting", "era": "the drawing style", "objects": "the objects",
+                        "strip": "a finished strip in this style", "concept": "the concept design"}.get(r["kind"], "reference")
+                mentions.append(f"@{tag} for {what}")
+            prompt = prompt + " Match the attached references: " + "; ".join(mentions) + "."
         jobs.append({
             "tag": "vol10", "slug": s["id"], "strip_id": s["id"], "title": s.get("title", ""),
             "date": s["date"], "era": s["era"], "format": s["format"], "tier": s.get("tier"),
             "prompt": prompt, "negative": negative,
             "runway_ratio": rw, "google_aspect": gg,
             "lettered": letter, "seed": s.get("seed"),
-            "reference_images": s.get("reference_images", []),
+            "reference_images": ref_list,
         })
     out = Path(args.out) if args.out else OUT / ("strip_prompts.json" if letter else "strip_prompts_unlettered.json")
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -371,7 +544,7 @@ def cmd_sheets(args):
         style = era["prompt_prefix"].rstrip(",")
         prompt = (f"a clean reference sheet on white paper. Style: {style}. "
                   f"{sh['prompt']}. Neat hand-lettered labels are allowed on this sheet.")
-        jobs.append({"tag": "vol10-sheets", "slug": sh["id"], "kind": sh["kind"], "era": sh["era"],
+        jobs.append({"tag": "vol10-sheets", "slug": sh["id"], "kind": sh["kind"], "era": sh["era"], "tags": sh.get("tags", []),
                      "prompt": re.sub(r"\s+", " ", prompt).strip(),
                      "negative": ", ".join(x for x in era["negative"].split(", ") if x not in ("text", "letters", "signature")),
                      "runway_ratio": {"16:9": "1920:1080", "3:4": "1080:1440"}.get(sh.get("ratio", "16:9"), "1920:1080"),
@@ -596,7 +769,24 @@ def main(argv=None):
         sp.add_argument("--only", help="glob on strip id, e.g. 'dw_2014*'")
         sp.add_argument("--out", help="output path (prompts/stage)")
         sp.add_argument("--no-letter", action="store_true", help="strip-prompts: art only, no balloons (for the print pipeline)")
+        sp.add_argument("--no-refs", action="store_true", help="strip-prompts: don't attach reference images")
+        sp.add_argument("--include-draft", action="store_true", help="strip-prompts/refs suggest: allow draft (unapproved) references")
+        sp.add_argument("--provider", default="runway", choices=["runway", "google"], help="reference count limit per provider")
         sp.set_defaults(fn=fn)
+    sp = sub.add_parser("refs", help="reference registry: list | sync | add | approve | reject | suggest")
+    sp.add_argument("refs_cmd", choices=["list", "sync", "add", "approve", "reject", "suggest"])
+    sp.add_argument("--status", help="list: filter by status")
+    sp.add_argument("--file", help="add: local path or URL")
+    sp.add_argument("--id", help="add/approve/reject: reference id (glob ok for approve/reject)")
+    sp.add_argument("--kind", default="concept", choices=["character", "location", "era", "objects", "strip", "concept"])
+    sp.add_argument("--tags", help="add: comma-separated tags (hero ids, dw_ location ids, era ids, object keywords)")
+    sp.add_argument("--task", help="add: Runway task id (for MCP-hosted images)")
+    sp.add_argument("--notes")
+    sp.add_argument("--approve", action="store_true", help="add: mark approved immediately")
+    sp.add_argument("--only", help="suggest: glob on strip id")
+    sp.add_argument("--include-draft", action="store_true")
+    sp.add_argument("--provider", default="runway", choices=["runway", "google"])
+    sp.set_defaults(fn=cmd_refs)
     sp = sub.add_parser("new")
     sp.add_argument("--id", required=True)
     sp.add_argument("--date", required=True)
