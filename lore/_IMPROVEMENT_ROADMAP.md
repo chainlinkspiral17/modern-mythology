@@ -2903,6 +2903,26 @@ frames it) — it can only be judged in the game.
   to the truck, a warm band 600 m out over the sea haze. The builder
   carries its own NEXT (dashboard glow, wet asphalt, the marker lit
   at the turn).
+**2026-09-26 · HERO STUDIO · the roster's shortage, and looks.** (On
+the `claude/meshy-image-generation-w92vr6` branch, where Hero Studio
+lives.) The user: "a big shortage of characters … alternate
+models/costumes … one isn't enough for the longer timelines." A scan
+of every `say` node's `char` key against the roster's keys: 100
+speakers with no entry, 85 of them in vol6 (Eileen 186 lines, BT 103,
+Anita 92, Coach K 79 mentions, the Centro night shift, the team).
++36 heroes (each with canon quotes from the scenes, or `notes: SPARSE`
+where the text gives a job and a bag and no face), and LOOKS: an entry
+with `base` + `look {label, vols, when}` is another age or costume of
+the same person, with its own image and GLB — Maya at 7 (vol5 ch5),
+Miriam nine years on (vol6's courthouse), Ben in pads and in the TE-1
+jersey, Anita in scrubs, Coach K at home. The page files looks under
+their hero. Key fixes: `ben`, `mr_henderson`, `anya` (Elicia's
+recorded persona) now route. NEXT there: chapter-based routing in
+CharLayer for bare keys that cross eras (`miriam`); vol1's chorus
+(Helen, Emily, Deborah, Eric) has no description in the text at all;
+Lena's prompt says 2050s and vol7's wiki says 2025 — the wiki is
+wrong (the cabin was built in '79, a funeral in 2042).
+
 NEXT (draft 39): small_wood_road's second draft (it is template +
 props: the house's window lit, a porch light, the mailboxes'
 reflectors, a car in the drive); the "door-like polygons" — ask the
