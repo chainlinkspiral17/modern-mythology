@@ -14,6 +14,7 @@ with its thumbnail filed as a concept candidate so Hero Studio shows it.
     python3 godot/tools/meshy_recover.py fetch-all --days 7     # every finished task → recovered/<id>.glb + thumbnail
     python3 godot/tools/meshy_recover.py contact                # one page of the recovered thumbnails with their ids
     python3 godot/tools/meshy_recover.py assign mapping.txt     # lines of `<id> <slug>` → GLBs to the heroes folder, thumbnails as candidates
+    python3 godot/tools/meshy_recover.py adopt <manifest.json>  # a runner manifest from wherever it ran: every mesh job names its slug — no naming by hand
 
 Keys come from the same files the pipeline uses (godot/tools/.meshy_key).
 """
@@ -202,6 +203,39 @@ def cmd_assign(args):
     return 0
 
 
+def cmd_adopt(args):
+    """Yesterday's runner wrote its manifest.json wherever it ran; every
+    mesh job in it says `slug` and `task_id`. Given that file, pull each
+    task's GLB straight to the slug's canonical path — no naming by hand."""
+    data = json.loads(Path(args.manifest).read_text())
+    if not isinstance(data, list):
+        sys.exit("not a runner manifest (expected a list)")
+    key = M.get_api_key("meshy")
+    jobs = [(j.get("slug"), j.get("task_id"), j.get("resource", "image-to-3d")) for j in data if j.get("stage") == "mesh" and j.get("task_id") and j.get("slug")]
+    print(f"{len(jobs)} mesh job(s) named in {args.manifest}")
+    roster = M.load_roster()
+    by = {e["slug"]: e for e in roster["entries"]}
+    done = set()
+    n = 0
+    for slug, tid, res in reversed(jobs):          # newest first: the last run of a slug is the one that stands
+        if slug in done:
+            continue
+        if slug not in by:
+            print(f"  {slug}: not a roster slug any more — skipped ({tid})")
+            continue
+        out = M.entry_out_path(by[slug])
+        if out.exists() and not args.overwrite:
+            print(f"  {slug}: {M.rel(out)} already there (use --overwrite to replace)")
+            done.add(slug)
+            continue
+        print(f"  {slug} ← {tid}")
+        if _fetch({"id": tid, "resource": res}, slug, key):
+            n += 1
+            done.add(slug)
+    print(f"adopted {n} model(s); the rest of the account's tasks stay recoverable by id")
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -210,6 +244,7 @@ def main():
     p = sub.add_parser("fetch-all"); p.add_argument("--days", type=int, default=7); p.set_defaults(fn=cmd_fetch_all)
     p = sub.add_parser("contact"); p.set_defaults(fn=cmd_contact)
     p = sub.add_parser("assign"); p.add_argument("mapping"); p.set_defaults(fn=cmd_assign)
+    p = sub.add_parser("adopt"); p.add_argument("manifest"); p.add_argument("--overwrite", action="store_true"); p.set_defaults(fn=cmd_adopt)
     args = ap.parse_args()
     return args.fn(args)
 
