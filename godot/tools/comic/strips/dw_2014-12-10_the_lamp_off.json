@@ -1,0 +1,116 @@
+{
+  "id": "dw_2014-12-10_the_lamp_off",
+  "title": "The lamp off",
+  "strip": "drift_wood",
+  "date": "2014-12-10",
+  "run": 5,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies (the trilogy ran in print in three papers)",
+  "arc": "Between Sundays",
+  "source": "lore/drift_wood/_SOURCE_BRIEF.md (Between Sundays · deepening)",
+  "logline": "Wednesday, between 'The Empty Chair' and 'The Box.' The daily version of the Sunday's last tier: the lamp, on. The lamp, off. The margin flat.",
+  "cast": [
+    "wood_34"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "flat_stroke",
+    "note": "The flat stroke."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The low table at 4 AM. The lamp on. The bed beneath, empty. WOOD's hand at the lamp's switch.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "hand at the switch",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the lamp",
+        "the empty bed"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, a lowered drafting table at 4 AM with a green lamp lit and an empty dog bed beneath, a man's hand at the lamp's switch, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The lamp off. Black. The window's blue rain-light the only shape.",
+      "characters": [],
+      "props": [
+        "the window, blue"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, a nearly black panel with only a window's faint blue rain-light, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The lamp on again. The hand still at the switch. The bed.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "hand at the switch",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the lamp",
+        "the bed"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, the same lowered table with the lamp lit again and a man's hand still at the switch, the empty bed beneath, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Off. Black. Held.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, a black panel with a window's faint blue, held, no words",
+        "negative": "",
+        "notes": "Margin: the flat stroke, as on Nov 30."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "quiet; water bleeding over the ink edge to suggest rain and fading light",
+    "palette": "desaturated wet-on-wet: raw umber, Payne's gray, Prussian blue, raw sienna",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for the Sundays"
+  },
+  "notes": "On. Off. On. Off. Flat stroke."
+}

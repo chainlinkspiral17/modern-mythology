@@ -1,0 +1,174 @@
+{
+  "id": "dw_2000-10-12_goodbye_to_the_dog",
+  "title": "Goodbye to the dog",
+  "strip": "drift_wood",
+  "date": "2000-10-12",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Driftwood Ledger (Arc 1, week 2)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Driftwood Ledger · deepening)",
+  "logline": "Thursday. Chloe says goodbye to the dog first. On the porch. She does it properly, on her knees. Wood watches from the bottom step and the strip gives him nothing to say.",
+  "cast": [
+    "wood_20",
+    "chloe_17",
+    "barnaby"
+  ],
+  "location": "dw_chloe_porch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Chloe's porch, rain. CHLOE on her knees on the top step with BARNABY, one, in her hands, his face in hers. WOOD on the bottom step.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "on her knees with the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "face held",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "bottom step",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the porch"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, a young woman kneeling on a porch's top step holding a small dog's face close to hers in rain, a young man sitting on the bottom step",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Her forehead against the dog's.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "forehead to the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "You. You I'll miss without any complications."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, close-up of a young woman's forehead pressed to a small dog's forehead",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood on the step, looking at the street. A balloon over him, empty.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "looking at the street, empty balloon",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "an empty balloon"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": ""
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, a young man on a porch step looking at a rainy street with an empty speech balloon above him",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Chloe standing, wiping her knees. The dog going down to Wood. Chloe looking at the back of Wood's head.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "standing, looking at his head",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "going down the steps",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "I'll do you Saturday. If you come."
+        },
+        {
+          "who": "WOOD",
+          "text": "I won't."
+        },
+        {
+          "who": "CHLOE",
+          "text": "I know."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, a young woman standing on a porch looking at the back of a seated young man's head while a small dog goes down the steps to him",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Without any complications.' The empty balloon. 'I know.'"
+}

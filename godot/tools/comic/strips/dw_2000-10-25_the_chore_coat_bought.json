@@ -1,0 +1,139 @@
+{
+  "id": "dw_2000-10-25_the_chore_coat_bought",
+  "title": "The chore coat",
+  "strip": "drift_wood",
+  "date": "2000-10-25",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Driftwood Ledger (Arc 1, week 4)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Driftwood Ledger · deepening)",
+  "logline": "Wednesday. Wood buys a chore coat at the thrift store. Oversized. Canvas. Pockets you can put your whole hands in. The strip doesn't say what the pockets are for. Saturday will.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The thrift store. WOOD holding up a canvas chore coat, two sizes too big. BARNABY at the hem.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "holding up a coat",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "at the hem",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the chore coat"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, a young man holding up an oversized canvas chore coat in a cluttered thrift store, a small dog sniffing its hem",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The pockets. Deep. Wood's hands going in to the wrist.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "hands in the pockets",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the pockets"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, close-up of a young man's hands pushed deep into the pockets of a canvas chore coat",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "In the mirror. The coat to the knee. The strip draws it exactly; it will draw it for twenty-seven years.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "in the mirror",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the coat, to the knee"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, a thin young man in an oversized knee-length canvas chore coat reflected in a thrift-store mirror",
+        "negative": "",
+        "notes": "The chore coat (characters.md wood_20 → wood_44). Draw it right the first time."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Walking out in it, in the rain. Hands in the pockets. The dog. The coat's collar up.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "walking, hands in the pockets",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "rain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, a young man walking out of a shop into vertical rain in an oversized chore coat with his hands deep in the pockets and collar up, a small dog beside him, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The chore coat, bought. Hands in the pockets to the wrist."
+}

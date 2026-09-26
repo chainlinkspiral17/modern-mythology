@@ -1,0 +1,167 @@
+{
+  "id": "dw_2013-03-14_the_ring_thu",
+  "title": "The ring, Thursday",
+  "strip": "drift_wood",
+  "date": "2013-03-14",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Ring",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Ring · deepening)",
+  "logline": "Thursday. Julian, on the phone, drawn as the gray coat on the hook — in Gully's now, on the bait hook. Chloe takes the call on the dock. Wood letters the 2013 flyer's date wrong and fixes it.",
+  "cast": [
+    "wood_34",
+    "chloe_34",
+    "gully_35",
+    "extra_julian",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. CHLOE's phone ringing. On the wall by the door, the strip draws a gray coat on a bait hook — Julian, as always. Chloe going out to the dock with the phone.",
+      "characters": [
+        {
+          "id": "chloe_34",
+          "pose": "going out with the phone",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a gray coat on a bait hook",
+        "the phone"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a woman going out a shack door to a dock with a ringing phone while a gray coat hangs on a bait hook by the door, a man in an apron and a thin man on a stool inside",
+        "negative": "",
+        "notes": "Julian: the gray coat, on a bait hook this time."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Through the window: Chloe on the dock, phone to her ear, left hand up at her face — the dot near her eye. Her mouth: something kind.",
+      "characters": [
+        {
+          "id": "chloe_34",
+          "pose": "on the dock, on the phone",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the dock through the window"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, seen through a shack window, a woman on a dock with a phone at her ear and her left hand raised near her face, speaking kindly",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD, inside, lettering a flyer — an old habit, a February flyer in March — and writing the wrong year. 2003. Crossing it out. 2013.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "lettering, wrong year",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a flyer: 2003 struck, 2013"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a thin man lettering a flyer and striking out a wrong year to write the right one",
+        "negative": "",
+        "notes": "Letter after: 2003 struck through, 2013. Ten years since the opening, since the dock strip of Dec 2002."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Gully, watching the dock, watching Wood.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "You wrote oh-three."
+        },
+        {
+          "who": "WOOD",
+          "text": "I fixed it."
+        },
+        {
+          "who": "GULLY",
+          "text": "I saw."
+        },
+        {
+          "who": "WOOD",
+          "text": "Then why say it."
+        },
+        {
+          "who": "GULLY",
+          "text": "Somebody should say something this week."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a stocky man in an apron speaking quietly to a thin man who is fixing a flyer, a woman visible on the dock beyond the window",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "Julian on the bait hook. 2003 struck to 2013. 'Somebody should say something this week.'"
+}

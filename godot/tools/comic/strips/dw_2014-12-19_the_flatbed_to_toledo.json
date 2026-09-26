@@ -1,0 +1,113 @@
+{
+  "id": "dw_2014-12-19_the_flatbed_to_toledo",
+  "title": "The flatbed to Toledo",
+  "strip": "drift_wood",
+  "date": "2014-12-19",
+  "run": 5,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies (the trilogy ran in print in three papers)",
+  "arc": "Between Sundays",
+  "source": "lore/drift_wood/_SOURCE_BRIEF.md (Between Sundays · deepening)",
+  "logline": "Friday. From the garage window: Gully's flatbed going out along 101, north, early. The strip doesn't know why. Two days before 'The Box' it draws the truck leaving and the empty road after.",
+  "cast": [
+    "gully_35"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "flat_stroke",
+    "note": "The flat stroke."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage's window at dawn. Through it, the alley, and past the alley's mouth, the road: GULLY's flatbed going by, north.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "in the flatbed, going north",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the flatbed",
+        "101"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, seen through a garage window at dawn, a flatbed truck passing the end of an alley heading north on a coastal road, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The truck's tailgate. Empty bed. A tarp. A coil of rope.",
+      "characters": [],
+      "props": [
+        "the empty bed",
+        "a tarp"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, close-up of a flatbed truck's empty bed with a folded tarp and a coil of rope, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The road, after. Empty. Rain starting.",
+      "characters": [],
+      "props": [
+        "the empty road"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, an empty coastal road seen from an alley's end as rain begins, no words",
+        "negative": "",
+        "notes": "Toledo is forty miles. The log dump. The strip doesn't know."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The window from inside. The three jars. Beyond them, the alley. Nothing. The lamp off in daylight.",
+      "characters": [],
+      "props": [
+        "three jars",
+        "the alley"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, a garage window from inside with three jars on the sill and an empty alley beyond, the lamp off in gray daylight, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "quiet; water bleeding over the ink edge to suggest rain and fading light",
+    "palette": "desaturated wet-on-wet: raw umber, Payne's gray, Prussian blue, raw sienna",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for the Sundays"
+  },
+  "notes": "Wordless. Gully north on 101. The strip doesn't know why."
+}

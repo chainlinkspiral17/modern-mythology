@@ -1,0 +1,153 @@
+{
+  "id": "dw_2013-03-13_the_ring_wed",
+  "title": "The ring, Wednesday",
+  "strip": "drift_wood",
+  "date": "2013-03-13",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Ring",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Ring · deepening)",
+  "logline": "Wednesday. The walk. The bluff path. Chloe's hand in her pocket the whole strip. Wood draws the pocket. The dog, thirteen, carried the last stretch; she takes a turn.",
+  "cast": [
+    "wood_34",
+    "chloe_34",
+    "barnaby"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The bluff path above the beach, March wind. CHLOE, left hand in her coat pocket. WOOD. BARNABY walking, slow.",
+      "characters": [
+        {
+          "id": "chloe_34",
+          "pose": "hand in pocket",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "slow",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the bluff path"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a woman with one hand in her coat pocket and a thin man walking a windy bluff path with an old dog moving slowly, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The pocket. The shape of a hand in it. That's the panel.",
+      "characters": [
+        {
+          "id": "chloe_34",
+          "pose": "the pocket",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the pocket"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of a coat pocket with the shape of a hand inside it, wind in the fabric, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The dog stopping. Chloe crouching, both hands out — the left one too, for a second, the dot in the wind — lifting him.",
+      "characters": [
+        {
+          "id": "chloe_34",
+          "pose": "lifting the dog, both hands",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "lifted",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the dot, in the wind"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a woman crouching to lift an old dog with both hands on a windy path, a tiny dot on her left ring finger visible for a moment",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Chloe carrying the dog along the bluff, from behind. Wood behind her. The dog's face over her shoulder, looking back at Wood. The hand under the dog; the dot hidden by fur.",
+      "characters": [
+        {
+          "id": "chloe_34",
+          "pose": "carrying the dog, from behind",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "face over her shoulder",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "behind",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a woman seen from behind carrying an old dog along a bluff path with the dog's face looking back over her shoulder at a thin man following, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "The pocket. She carries him. The dot under the fur."
+}

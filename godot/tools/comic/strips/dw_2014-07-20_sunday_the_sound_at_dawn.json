@@ -1,0 +1,92 @@
+{
+  "id": "dw_2014-07-20_sunday_the_sound_at_dawn",
+  "title": "Sunday · the Sound at dawn",
+  "strip": "drift_wood",
+  "date": "2014-07-20",
+  "run": 4,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Glass Pavilion (Arc 3, week 1)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Glass Pavilion · deepening)",
+  "logline": "The arc's first Sunday: Puget Sound at dawn from the pavilion's dock, the islands, the far lights of Vancouver Island going out. No one on the dock yet. The place a week before the night it matters.",
+  "cast": [],
+  "location": "dw_pavilion_dock",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the Sound at dawn from the dock's end, islands layered in pale cerulean and linen, the far lights of Vancouver Island fading as the sky comes up.",
+      "characters": [],
+      "props": [
+        "the Sound",
+        "the islands",
+        "far lights"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in pale cerulean and linen, Puget Sound at dawn from a dock with layered islands and a few distant lights going out, no figures, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Dawn"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the dock's cedar planks, wet, empty, one heron at the end. The pavilion's glass behind, dark, reflecting the water.",
+      "characters": [],
+      "props": [
+        "the planks",
+        "a heron",
+        "the pavilion reflecting"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "watercolor, wet cedar dock planks with a heron at the end and a dark glass pavilion behind reflecting the water, no words",
+        "negative": "",
+        "notes": "The dock of dw_2014-07-27, a week early, with nobody on it."
+      },
+      "stage": null,
+      "name": "The dock, empty"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the water. The light coming across it. Held.",
+      "characters": [],
+      "props": [
+        "the water"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor of calm sound water with dawn light coming across it, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Light"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "The dock, a week early, empty.",
+  "layout": "tiers, portrait page"
+}

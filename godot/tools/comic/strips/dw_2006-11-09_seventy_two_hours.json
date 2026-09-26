@@ -1,0 +1,145 @@
+{
+  "id": "dw_2006-11-09_seventy_two_hours",
+  "title": "Seventy-two hours",
+  "strip": "drift_wood",
+  "date": "2006-11-09",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The 3:00 AM Protocol (Arc 2, week 1)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The 3:00 AM Protocol · deepening)",
+  "logline": "Thursday. The decision. 'One week. A scorched-earth parody.' The strip draws the sprint's clock: 72 hours as a circle he draws on the wall and starts crossing off. Barnaby goes to sleep for the duration.",
+  "cast": [
+    "wood_26",
+    "barnaby",
+    "extra_stick_chorus"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. WOOD drawing a circle on the wall in marker — a clock face — and writing 72 in it. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing a clock on the wall",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a marker clock: 72"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "One week. One. A scorched-earth parody of every idiot on that board. Then back to the ridge."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with saturated neon monitor glow cutting through a dark garage, jagged hyperactive linework, muddy digital flats, a man drawing a clock face with a marker on a garage wall and writing a number in it, a small dog watching, monitor glow",
+        "negative": "",
+        "notes": "Letter after: 72 in the clock."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Bristol board. A stick figure. Four lines for a rotor on its head. Crude on purpose. His hand shaking with the effort of being bad.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "hand drawing badly on purpose",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a stick figure with a rotor"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with saturated neon monitor glow cutting through a dark garage, jagged hyperactive linework, muddy digital flats, close-up of a hand drawing a deliberately crude stick figure with a four-line helicopter rotor on its head on bristol board, the hand tense",
+        "negative": "",
+        "notes": "The birth of the figure (extra_stick_hero). The hand shakes from being bad on purpose."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The chorus at the back, all six turning around at once to look at the stick figure.",
+      "characters": [
+        {
+          "id": "extra_stick_chorus",
+          "pose": "six, turning around",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the stick figure on the board"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with saturated neon monitor glow cutting through a dark garage, jagged hyperactive linework, muddy digital flats, six crude stick figures at the back of a garage all turning around at once to look at a drawing of a stick figure with a rotor",
+        "negative": "",
+        "notes": "The chorus turns. They didn't for the ridge."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The dog, in the bed, one eye on the wall clock, going to sleep. The 72 crossed to 71. The CRT. The noodles. Night.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "one eye open, going to sleep",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the clock: 71"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with saturated neon monitor glow cutting through a dark garage, jagged hyperactive linework, muddy digital flats, a small dog going to sleep in a bed with one eye on a marker clock on the wall that now reads 71, a man drawing at a table in monitor light, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "'One week. One.' The chorus turns around. 71."
+}

@@ -1,0 +1,138 @@
+{
+  "id": "dw_2014-10-22_on_the_sand",
+  "title": "On the sand",
+  "strip": "drift_wood",
+  "date": "2014-10-22",
+  "run": 5,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies (the trilogy ran in print in three papers)",
+  "arc": "The Steep Path",
+  "source": "lore/drift_wood/_SOURCE_BRIEF.md (The Steep Path · deepening)",
+  "logline": "Wednesday. The beach at the bottom. The dog on the sand, happy, which the strip draws exactly: the ears, the one bark at a wave. Then lying down. The way back up is not in this strip.",
+  "cast": [
+    "wood_34",
+    "barnaby"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The beach. BARNABY walking the tideline, slow, ears up. WOOD sitting on the drift log.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "walking the tideline, ears up",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "on the log",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the drift log",
+        "the tideline"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, an old dog walking slowly along a tideline with its ears up while a man sits on a bleached drift log, muted wash, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The dog and a wave. One bark. Drawn as a small jagged shape.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "barking at a wave",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a wave"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "rf",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, close-up of an old dog giving one small bark at an incoming wave, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The dog lying down on the wet sand. Not from tiredness, the strip insists — from choice. The way he did at four.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "lying down on the sand",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, an old dog lying down on wet sand with its chin on its paws facing the sea, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Wood on the log. The dog on the sand. The sea. The path behind them, up, not drawn.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "on the log",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "on the sand",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the sea"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, a man on a drift log and an old dog lying on the sand before a gray sea, the bluff path out of frame, water bleeding over the ink, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "quiet; water bleeding over the ink edge to suggest rain and fading light",
+    "palette": "desaturated wet-on-wet: raw umber, Payne's gray, Prussian blue, raw sienna",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for the Sundays"
+  },
+  "notes": "Wordless. One bark at a wave. The way up not drawn."
+}

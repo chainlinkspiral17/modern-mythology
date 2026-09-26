@@ -1,0 +1,133 @@
+{
+  "id": "dw_2015-09-22_return_2015_2",
+  "title": "Return, ii",
+  "strip": "drift_wood",
+  "date": "2015-09-22",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Return",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Return · deepening)",
+  "logline": "Tuesday. The comments. Nobody forgot the helicopter. Wood reads them at the motel desk at 3 AM with the pup asleep in the in-tray. The hum line.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_motel_desk",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The motel desk, 3 AM. WOOD with a laptop. BARNABY II, ten months, asleep in the desk's in-tray. The hum line.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "at the laptop",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "asleep in the in-tray",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "laptop",
+        "the in-tray",
+        "hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a motel night clerk reading a laptop at 3 AM with a small three-legged puppy asleep in the desk's plastic in-tray, a flat line beneath the panel",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The screen: comments under the return strip. 'HELICOPTER GUY IS BACK.' 'lol rolfcoptr.' 'wait where's the dog.' 'oh no. oh no.'",
+      "characters": [],
+      "props": [
+        "the comments"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of a laptop screen showing a column of short comments beneath a comic strip",
+        "negative": "",
+        "notes": "Letter after: HELICOPTER GUY IS BACK · lol rolfcoptr · wait where's the dog · oh no. oh no."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood reading the last two. Looking at the in-tray.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking at the in-tray",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a clerk looking from a laptop screen to a puppy asleep in an in-tray, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood typing one reply — the strip's first ever. Four words. The screen: 'He's in the tray.' The hum line.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "typing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the reply: He's in the tray."
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a clerk typing a very short reply on a laptop at a motel desk at night, a flat line beneath the panel",
+        "negative": "",
+        "notes": "Letter after: He's in the tray. The strip's only comment reply."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "'wait where's the dog.' 'He's in the tray.' The only reply."
+}

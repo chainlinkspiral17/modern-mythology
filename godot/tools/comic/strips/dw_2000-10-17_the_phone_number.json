@@ -1,0 +1,151 @@
+{
+  "id": "dw_2000-10-17_the_phone_number",
+  "title": "The phone number",
+  "strip": "drift_wood",
+  "date": "2000-10-17",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Driftwood Ledger (Arc 1, week 3)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Driftwood Ledger · deepening)",
+  "logline": "Tuesday. Deadlines have phone numbers. Wood dials it from the frame shop's phone. It rings twice. He hangs up. The strip draws the receiver going down as the biggest thing in the panel.",
+  "cast": [
+    "wood_20",
+    "extra_owner_heceta"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The frame shop. The wall phone. WOOD with the receiver and the scholarship letter — creased, from a pocket. Dialing. The OWNER not watching, watching.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "dialing",
+          "expression": ""
+        },
+        {
+          "id": "extra_owner_heceta",
+          "pose": "not watching",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "wall phone",
+        "the letter"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, a young man at a frame shop's wall phone dialing a number from a creased letter while an older woman pretends not to watch",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The receiver at his ear. A ring drawn as a jagged line. Two of them.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "listening",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "brrr · brrr",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, close-up of a young man with a phone receiver at his ear and two jagged ring shapes",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The receiver going down onto the hook. Drawn huge — the panel is the receiver.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "hand on the receiver",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the receiver, enormous"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, an extreme close-up of a hand setting a phone receiver down on its hook, the receiver filling the whole panel",
+        "negative": "",
+        "notes": "The receiver fills the panel. The arc's loudest silent image."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood back at the foam core. The Owner. The letter on the counter between them, face up. Neither touches it.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "cutting",
+          "expression": ""
+        },
+        {
+          "id": "extra_owner_heceta",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the letter, face up"
+      ],
+      "balloons": [
+        {
+          "who": "OWNER",
+          "text": "Rang twice?"
+        },
+        {
+          "who": "WOOD",
+          "text": "Twice."
+        },
+        {
+          "who": "OWNER",
+          "text": "Mm."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, a young man cutting foam core and an older woman at her station with a letter lying face up on the counter between them",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Two rings. The receiver as the panel. 'Mm.'"
+}

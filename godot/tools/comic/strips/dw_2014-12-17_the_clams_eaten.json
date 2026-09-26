@@ -1,0 +1,123 @@
+{
+  "id": "dw_2014-12-17_the_clams_eaten",
+  "title": "The clams, eaten",
+  "strip": "drift_wood",
+  "date": "2014-12-17",
+  "run": 5,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies (the trilogy ran in print in three papers)",
+  "arc": "Between Sundays",
+  "source": "lore/drift_wood/_SOURCE_BRIEF.md (Between Sundays · deepening)",
+  "logline": "Wednesday. The grease sack on the step, from Gully, the third day of it. This time the door opens. A hand takes the sack. The sack, later, empty on the step. The first thing eaten since.",
+  "cast": [
+    "wood_34",
+    "gully_35"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "flat_stroke",
+    "note": "The flat stroke."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage step. A grease sack. GULLY's back going down the alley.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "back, going",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a grease sack on the step"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, a paper grease sack on a garage step with a stocky man's back walking away down an alley, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The door opening six inches. A hand. The sack going in.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "a hand",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the door, six inches"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, a garage door open six inches with a man's hand reaching out to take a paper sack from the step, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The step, empty. The door closed. Rain.",
+      "characters": [],
+      "props": [
+        "the empty step"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, an empty garage step with the door closed in rain, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Later. The sack, on the step again, folded flat, empty. Gully's back coming up the alley to find it. Stopping when he sees.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "stopping",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the sack, folded flat"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, a stocky man stopping in an alley at the sight of a paper sack folded flat and empty on a garage step, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "quiet; water bleeding over the ink edge to suggest rain and fading light",
+    "palette": "desaturated wet-on-wet: raw umber, Payne's gray, Prussian blue, raw sienna",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for the Sundays"
+  },
+  "notes": "Wordless. The sack taken; the sack folded flat."
+}

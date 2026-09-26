@@ -1,0 +1,153 @@
+{
+  "id": "dw_2006-11-06_noodles",
+  "title": "Noodles",
+  "strip": "drift_wood",
+  "date": "2006-11-06",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The 3:00 AM Protocol (Arc 2, week 1)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The 3:00 AM Protocol · deepening)",
+  "logline": "Monday. Clearance instant noodles, the serious pages on the wall, the message board's silence. The chorus at the back with their backs turned. The eviction notice is Wednesday; the strip is already hungry.",
+  "cast": [
+    "wood_26",
+    "barnaby",
+    "extra_stick_chorus"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage at night, the CRT's glow. WOOD eating noodles from the pot. On the wall: eight pages of a serious graphic novel — a timber faller, a ridge, cross-hatched. BARNABY. At the back: six STICK FIGURES, backs turned.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "eating from the pot",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_chorus",
+          "pose": "six, backs turned",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a pot of noodles",
+        "eight serious pages on the wall",
+        "the CRT"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with saturated neon monitor glow cutting through a dark garage, jagged hyperactive linework, muddy digital flats, a man eating instant noodles from a pot in a dark garage lit by a CRT monitor, eight dense cross-hatched graphic-novel pages pinned on the wall, a small dog, six crude stick figures at the back with their backs turned",
+        "negative": "",
+        "notes": "The chorus faces away from the serious pages. Their backs are the review."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The monitor: the message board. The serious page posted. Views: 41. Comments: 0.",
+      "characters": [],
+      "props": [
+        "the monitor: 41 views, 0 comments"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with saturated neon monitor glow cutting through a dark garage, jagged hyperactive linework, muddy digital flats, close-up of a CRT monitor showing a forum post of a cross-hatched comic page with a small view count and zero replies",
+        "negative": "",
+        "notes": "Letter after: 41 · 0."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, to the dog, noodles.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Forty-one people looked at a man carrying a saw up a ridge and none of them had anything to say."
+        },
+        {
+          "who": "WOOD",
+          "text": "That's a review, Barnaby. That's a very complete review."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with saturated neon monitor glow cutting through a dark garage, jagged hyperactive linework, muddy digital flats, a man speaking to a small dog while holding a pot of noodles in monitor light, wry and tired",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The noodle pot, empty. The clearance sticker on the packet: 3 FOR $1. The dog licking the pot. The stick figures still turned away.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "licking the pot",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_chorus",
+          "pose": "backs turned",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "3 FOR $1"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with saturated neon monitor glow cutting through a dark garage, jagged hyperactive linework, muddy digital flats, an empty noodle pot being licked by a small dog beside a packet with a clearance sticker, stick figures at the back still turned away, no words",
+        "negative": "",
+        "notes": "Letter after: 3 FOR $1."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "41 views, 0 comments. 'That's a very complete review.'"
+}

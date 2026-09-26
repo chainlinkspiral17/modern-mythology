@@ -1,0 +1,135 @@
+{
+  "id": "dw_2014-07-29_the_ferry_back",
+  "title": "The ferry back",
+  "strip": "drift_wood",
+  "date": "2014-07-29",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Glass Pavilion (Arc 3, week 3)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Glass Pavilion · deepening)",
+  "logline": "Tuesday. The ferry south. The suit in the back window again. The same kid — or another; the strip won't say — asks if it's a costume. Wood says it was.",
+  "cast": [
+    "wood_34"
+  ],
+  "location": "dw_101",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The ferry's car deck, the Legacy, the suit in the back window. WOOD at the rail. The islands behind now. The mainland ahead.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "at the rail",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the suit in the window",
+        "the mainland ahead"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink with pristine architectural perspective, blinding clear summer light in soft cerulean and pale linen watercolor, a ferry car deck with a faded green station wagon and a dark suit hanging in its rear window, a thin man at the rail, islands receding behind and a mainland ahead in bright light",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "A KID at the window, looking at the suit. The same kid? The strip draws him from behind.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the suit"
+      ],
+      "balloons": [
+        {
+          "who": "KID",
+          "text": "Is that a costume?"
+        },
+        {
+          "who": "WOOD",
+          "text": "It was."
+        },
+        {
+          "who": "KID",
+          "text": "Of what?"
+        },
+        {
+          "who": "WOOD",
+          "text": "A guest. It's over."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink with pristine architectural perspective, blinding clear summer light in soft cerulean and pale linen watercolor, a child seen from behind looking at a suit in a car window while a thin man answers him",
+        "negative": "",
+        "notes": "Rhymes with dw_2014-07-15. Whether it's the same kid: reserved; from behind."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The sketchbook on the rail. The page: the Sound, two lines, and now a third — the wake.",
+      "characters": [],
+      "props": [
+        "three lines: horizon, island, wake"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink with pristine architectural perspective, blinding clear summer light in soft cerulean and pale linen watercolor, close-up of a sketchbook on a ferry rail with three ink lines on the page, a horizon, an island and a ferry's wake",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The ferry from the water, going away, small. The wake. The light the same as a week ago. The strip is the same. Wood is not, and the strip does not say so.",
+      "characters": [],
+      "props": [
+        "the ferry",
+        "the wake"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink with pristine architectural perspective, blinding clear summer light in soft cerulean and pale linen watercolor, a ferry small on brilliant blue water heading away with a long white wake in blinding summer light, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "'It was.' The third line: the wake."
+}

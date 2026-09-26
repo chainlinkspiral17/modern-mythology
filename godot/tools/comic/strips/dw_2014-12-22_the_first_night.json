@@ -1,0 +1,140 @@
+{
+  "id": "dw_2014-12-22_the_first_night",
+  "title": "The first night",
+  "strip": "drift_wood",
+  "date": "2014-12-22",
+  "run": 5,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies (the trilogy ran in print in three papers)",
+  "arc": "Low Tide at Alsea Bay (Arc 4)",
+  "source": "lore/drift_wood/_SOURCE_BRIEF.md (Low Tide at Alsea Bay · deepening)",
+  "logline": "Monday, after 'The Box.' The pup's first night. He won't go in the bed. He goes under the low table, where the bed is, and sleeps beside it on the concrete. The nib, chewed, beside him. The scruff in the margin, second day.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage, night. The low table. The braided bed beneath it. BARNABY II, tiny, terrified, standing beside the bed. Not in it.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "beside the bed, not in it",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the bed",
+        "the low table"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, a tiny wiry three-legged puppy standing rigid beside a braided dog bed under a lowered table at night, not entering it, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD on the floor across the room, not approaching. The chewed nib handle on the concrete between them.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "on the floor, not approaching",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the chewed nib"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, a thin man sitting on a garage floor across from a small puppy with a chewed wooden pen handle on the concrete between them, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The pup lying down. On the concrete. Beside the bed. Touching it with his back. Not in it.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "lying on the concrete against the bed",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the bed"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, a small three-legged puppy lying on concrete with its back pressed against the side of a dog bed it will not enter, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood, asleep on the floor too, across the room, a coat over him. The pup. The bed between them, empty, touched.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "asleep on the floor under a coat",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "asleep against the bed",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the bed"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, a man asleep on a garage floor under a coat and a small puppy asleep against the side of an empty dog bed across the room, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "quiet; water bleeding over the ink edge to suggest rain and fading light",
+    "palette": "desaturated wet-on-wet: raw umber, Payne's gray, Prussian blue, raw sienna",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for the Sundays"
+  },
+  "notes": "Wordless. Beside the bed, not in it. Both on the floor."
+}

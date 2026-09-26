@@ -1,0 +1,114 @@
+{
+  "id": "dw_2006-11-19_sunday_forty_thousand",
+  "title": "Sunday · forty thousand",
+  "strip": "drift_wood",
+  "date": "2006-11-19",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The 3:00 AM Protocol (Arc 2, week 2)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The 3:00 AM Protocol · deepening)",
+  "logline": "The second Sunday of the arc: the beach from the bluff, and on it, to the horizon, stick figures. Forty thousand of them, all facing the drift log. On the log, from behind, two-thirds size: Wood. The dog, normal.",
+  "cast": [
+    "wood_26",
+    "barnaby",
+    "extra_stick_chorus"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the beach from the bluff. The sand covered to the horizon with stick figures, thousands, a texture, all facing one point. The sea beyond them, indifferent.",
+      "characters": [
+        {
+          "id": "extra_stick_chorus",
+          "pose": "thousands, a texture",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the beach as a crowd"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor with a dense ink texture of thousands of tiny crude stick figures covering a beach to the horizon all facing one direction, the sea beyond, no words",
+        "negative": "",
+        "notes": "Draw the figures as texture, not individuals; the number is the point."
+      },
+      "stage": null,
+      "name": "Forty thousand"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the drift log. Wood on it from behind at two-thirds size, the dog beside him at full size. The front row of stick figures, huge by comparison, holding signs: LOL. ROFL. MORE.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "from behind, two-thirds size",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "full size",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_chorus",
+          "pose": "the front row, with signs",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "signs: LOL, ROFL, MORE"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "watercolor, a small man seen from behind on a drift log beside a normal-sized dog, a front row of crude stick figures towering over them holding signs, no words",
+        "negative": "",
+        "notes": "Letter after: LOL · ROFL · MORE. Wood at two-thirds, the dog at full."
+      },
+      "stage": null,
+      "name": "Front row"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the sea. Just the sea. The one thing on the page not looking at him.",
+      "characters": [],
+      "props": [
+        "the sea"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor of a gray sea with small waves and nothing else, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "The sea"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "Forty thousand on the beach. Two-thirds on the log. The sea doesn't look.",
+  "layout": "tiers, portrait page"
+}

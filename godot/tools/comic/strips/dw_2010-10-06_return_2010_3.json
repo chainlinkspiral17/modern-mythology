@@ -1,0 +1,160 @@
+{
+  "id": "dw_2010-10-06_return_2010_3",
+  "title": "Return, iii",
+  "strip": "drift_wood",
+  "date": "2010-10-06",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Return",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Return · deepening)",
+  "logline": "Wednesday. Gully's. 'Regular.' Nine months without the word. Gully pours before Wood sits. The stool has a dent where nine months of nobody sat.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "extra_maria",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's door. WOOD in it with BARNABY. GULLY already pouring. MARIA at the register with the baby, a few months old.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "in the door",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "already pouring",
+          "expression": ""
+        },
+        {
+          "id": "extra_maria",
+          "pose": "with a baby",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "coffee, pouring"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Regular."
+        },
+        {
+          "who": "WOOD",
+          "text": "...Regular."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with cleaner flats, a thin man and an old dog in a bait-shop doorway while a man in an apron already pours a coffee and a woman holds a baby at the register",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The end stool. The seat's worn ring. A dent. Nine months.",
+      "characters": [],
+      "props": [
+        "the end stool, its worn ring"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with cleaner flats, close-up of a worn wooden stool seat with a pale ring and a shallow dent, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood sitting. The dent fitting. Gully not looking at him. Maria looking at him, once, the two-finger look she gives the dog's leg.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "sitting",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "not looking",
+          "expression": ""
+        },
+        {
+          "id": "extra_maria",
+          "pose": "looking, once",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with cleaner flats, a thin man sitting on a shop stool while a man in an apron avoids looking and a woman with a baby gives him one assessing look, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The baby's hand out toward the dog. The dog's nose up to it. Everyone watching that instead.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "hand out",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "nose up",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with cleaner flats, a baby reaching a hand toward an old dog's raised nose while the adults watch, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; the Sundays the point now",
+    "palette": "limited; Sundays in watercolor",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "'Regular.' The dent in the stool. The baby and the dog."
+}

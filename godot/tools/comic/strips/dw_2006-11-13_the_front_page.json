@@ -1,0 +1,148 @@
+{
+  "id": "dw_2006-11-13_the_front_page",
+  "title": "The front page",
+  "strip": "drift_wood",
+  "date": "2006-11-13",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The 3:00 AM Protocol (Arc 2, week 2)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The 3:00 AM Protocol · deepening)",
+  "logline": "Monday. The parody is up. By noon it is on the front page of Digg. The strip draws the front page as a wave coming over the seawall. The chorus is twelve now, then thirty.",
+  "cast": [
+    "wood_26",
+    "barnaby",
+    "extra_stick_chorus",
+    "extra_stick_hero"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage, morning. WOOD asleep face-down on the bristol. The CRT: the parody posted. BARNABY awake.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "asleep on the bristol",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "awake",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the CRT"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with saturated neon monitor glow cutting through a dark garage, jagged hyperactive linework, muddy digital flats, a man asleep face-down on a stack of bristol at a drafting table with a CRT monitor glowing beside him, a small dog awake",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "wide",
+      "composition": "The monitor's screen drawn as the seawall, and over it, a wave: a front page, a number climbing — 400, 4,000, 40,000 — in the foam.",
+      "characters": [],
+      "props": [
+        "a wave with numbers in the foam"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with saturated neon monitor glow cutting through a dark garage, jagged hyperactive linework, muddy digital flats, a CRT screen drawn as a seawall with a great wave breaking over it and numbers written in the foam, no words",
+        "negative": "",
+        "notes": "Letter after: 400 · 4,000 · 40,000 in the foam."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood awake. The chorus at the back: twelve, then — the panel can't hold them — thirty, spilling past the border. The STICK HERO on the bristol, hovering six inches, smug.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "awake, staring",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_chorus",
+          "pose": "thirty, spilling",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_hero",
+          "pose": "hovering, smug",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "...No."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with saturated neon monitor glow cutting through a dark garage, jagged hyperactive linework, muddy digital flats, a man staring at his monitor as thirty crude stick figures crowd past the panel's border behind him and a stick figure with a rotor hovers above a drawing on his desk",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The marker clock on the wall: 0. Wood's hand, crossing out the last hour. Slowly. The dog's sigh.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "crossing out the last hour",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "sighing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the clock: 0"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with saturated neon monitor glow cutting through a dark garage, jagged hyperactive linework, muddy digital flats, close-up of a man's hand slowly crossing out the last number on a marker clock drawn on a wall, a small dog sighing below",
+        "negative": "",
+        "notes": "72 hours done. The parody is out of his hands."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "The front page as a wave. 'No.' The clock at zero."
+}

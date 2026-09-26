@@ -1,0 +1,140 @@
+{
+  "id": "dw_2017-09-13_the_interview_not_shown",
+  "title": "The interview, not shown",
+  "strip": "drift_wood",
+  "date": "2017-09-13",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Twenty Years",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Twenty Years · deepening)",
+  "logline": "Wednesday. The school-paper interview. The strip goes to the newsroom door and no further: the Timberline's office, the same door, a kid's voice through it asking a question the strip doesn't print. Four panels of a door.",
+  "cast": [
+    "wood_34",
+    "extra_student"
+  ],
+  "location": "dw_timberline_newsroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "A school corridor. The newsroom door: THE TIMBERLINE, stenciled, the same stencil. WOOD outside it, in the chore coat, a visitor's badge.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "outside the door, visitor's badge",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the newsroom door",
+        "a visitor's badge"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a graying man in a canvas chore coat wearing a visitor's badge standing outside a school newsroom door with a stenciled name",
+        "negative": "",
+        "notes": "Letter after: THE TIMBERLINE on the door. VISITOR on the badge."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The door, closed. From inside, a balloon leaking under it — the kid's question — drawn as a balloon with its text cut off by the door.",
+      "characters": [
+        {
+          "id": "extra_student",
+          "pose": "a voice through the door",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a balloon cut by the door"
+      ],
+      "balloons": [
+        {
+          "who": "KID",
+          "text": "— so when you started, did you —"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a closed door with a speech balloon emerging from beneath it, its text cut off by the door's edge",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The door. Wood's balloon, inside now, also cut. The strip refuses both halves.",
+      "characters": [],
+      "props": [
+        "a balloon cut by the door"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "— no, the corn was —"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a closed school door with a second speech balloon cut off by its edge",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The door opening. Wood coming out. The KID behind him in the doorway with a notebook, seventeen, the napkin in his shirt pocket. Neither balloon shown. The corridor.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "coming out",
+          "expression": ""
+        },
+        {
+          "id": "extra_student",
+          "pose": "in the doorway, notebook, a napkin in his pocket",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a notebook",
+        "a napkin"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a graying man coming out of a school newsroom door with a seventeen-year-old boy holding a notebook behind him in the doorway, a napkin in the boy's shirt pocket, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "Four panels of a door. Both balloons cut."
+}

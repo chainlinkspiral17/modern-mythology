@@ -1,0 +1,183 @@
+{
+  "id": "dw_2013-03-12_the_ring_tue",
+  "title": "The ring, Tuesday",
+  "strip": "drift_wood",
+  "date": "2013-03-12",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Ring",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Ring · deepening)",
+  "logline": "Tuesday. Gully's. The ring on her hand on the counter, drawn as a dot. Gully sees a ring. Wood sees a cup. Gully says 'nice ring.' Wood says 'what ring.' Chloe lets them.",
+  "cast": [
+    "wood_34",
+    "chloe_34",
+    "gully_35",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. CHLOE at the counter, left hand flat on it. On the hand: a dot. GULLY. WOOD on the stool. BARNABY, thirteen, beneath.",
+      "characters": [
+        {
+          "id": "chloe_34",
+          "pose": "hand flat on the counter",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a dot on her hand"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Nice ring."
+        },
+        {
+          "who": "WOOD",
+          "text": "What ring."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a woman with her left hand flat on a bait-shop counter, a tiny dot on one finger, a stocky man in an apron looking at it, a thin man on a stool looking elsewhere, an old dog beneath",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Her hand. The dot. Gully's thick finger pointing at it, not touching.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "pointing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the dot"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of a woman's hand on a wooden counter with a tiny dot on the ring finger and a thick finger pointing at it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, looking at the coffee, not the hand.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "chloe_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Woody. Her hand."
+        },
+        {
+          "who": "WOOD",
+          "text": "I see a cup."
+        },
+        {
+          "who": "GULLY",
+          "text": "It's next to the cup."
+        },
+        {
+          "who": "WOOD",
+          "text": "Then it's a saucer."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a thin man on a stool deliberately looking at a coffee cup while a stocky man points at a woman's hand",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Chloe, letting them. Her face: the thing she does with her mouth when she's decided not to help. The dog's chin on her boot.",
+      "characters": [
+        {
+          "id": "chloe_34",
+          "pose": "not helping",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "chin on her boot",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a woman with a small deciding-not-to-help expression at a counter while an old dog rests its chin on her boot, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "'Then it's a saucer.' Chloe doesn't help. The dot."
+}

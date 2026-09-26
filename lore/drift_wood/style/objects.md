@@ -243,6 +243,30 @@ the word can be read as a gap.
   R. Usable as the volume's title card once the spelling is
   settled (`_CONCEPT_ART.md`).
 
+## Gully's dock · additions
+
+- **The ramp** (Oct 28, 2014–): two planks and roofing felt beside
+  the shack steps, "for the crab traps." Barnaby used it once.
+  Stays through 2027.
+- **The muffler-shop printout** (Nov 2006): the Boise nephew's
+  inkjet of the stick figure, pinned to Gully's corkboard with a
+  fishing hook beside the 2003 rough. Still there.
+
+## The blanket
+
+The faded wool blanket of "The Carry" (Nov 16, 2014) came from the
+frame shop's backroom, where it lay under the cutting table from
+the racket weeks of October 2000; Gully's key got it out (Nov 12,
+2014). It is under the pup on the Legacy's seat from Dec 26, 2014.
+
+## The boxes · labels the strip has shown
+
+| box | lid | strip |
+|---|---|---|
+| 5 | BOX 5 · JUN 03–DEC 03 · NONE OF IT RAN | dw_2003-12-12 |
+| 8 | BOX 8 · THE RIDGE · UNFINISHED (the phantom novel's pages, off the wall Nov 24, 2006) | dw_2006-11-24 |
+| 21 | BOX 21 · JAN–JUN 2021 + the pencil register | ro_2026-10-18 |
+
 ## The hum line
 
 A flat, unbroken line drawn beneath any panel set at the Driftwood

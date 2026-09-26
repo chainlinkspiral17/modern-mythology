@@ -1,0 +1,145 @@
+{
+  "id": "dw_2000-10-18_the_map_packed",
+  "title": "The map, packed",
+  "strip": "drift_wood",
+  "date": "2000-10-18",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Driftwood Ledger (Arc 1, week 3)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Driftwood Ledger · deepening)",
+  "logline": "Wednesday. Chloe packs the map he drew her in 1999 — the city he's never seen. She packs it in the front pocket. He sees. The strip draws the pocket.",
+  "cast": [
+    "wood_20",
+    "chloe_17"
+  ],
+  "location": "dw_chloe_porch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Chloe's room, boxes. CHLOE folding a sheet of paper: a hand-drawn map, streets, a needle tower. WOOD in the doorway.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "folding the map",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "in the doorway",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the 1999 map"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, a young woman in a half-packed room folding a hand-drawn map with a needle-shaped tower on it, a young man in the doorway",
+        "negative": "",
+        "notes": "The map from dw_1999-03-26."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The map going into the front pocket of the bag. Not the suitcase. The pocket you reach into on a bus.",
+      "characters": [],
+      "props": [
+        "the bag's front pocket"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, close-up of a folded paper going into the front zip pocket of a duffel bag",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, seeing where it went. Saying nothing about it.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "seeing",
+          "expression": ""
+        },
+        {
+          "id": "chloe_17",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "It's wrong. The map. I made up half of it."
+        },
+        {
+          "who": "CHLOE",
+          "text": "I'll find out which half."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, a young man in a doorway watching a young woman zip a bag pocket, speaking",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The bag zipped. The pocket. Chloe's hand flat on it, once. Wood looking at the hand.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "hand flat on the pocket",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "looking at the hand",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the pocket"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, harsh xerox grain, stark black spotting, rain in frantic vertical hatching, a young woman's hand resting flat on a duffel bag's front pocket while a young man watches, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The map in the pocket you reach into on a bus. 'I'll find out which half.'"
+}

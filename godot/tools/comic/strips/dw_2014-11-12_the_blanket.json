@@ -1,0 +1,134 @@
+{
+  "id": "dw_2014-11-12_the_blanket",
+  "title": "The blanket",
+  "strip": "drift_wood",
+  "date": "2014-11-12",
+  "run": 5,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies (the trilogy ran in print in three papers)",
+  "arc": "The Table Lowered",
+  "source": "lore/drift_wood/_SOURCE_BRIEF.md (The Table Lowered · deepening)",
+  "logline": "Wednesday. A faded wool blanket. The strip finds it in the frame shop's old backroom — Gully has the key — where it's been under the cutting table since 2000. Wood takes it home. Sunday it will be in the strip's most-read panel.",
+  "cast": [
+    "wood_34",
+    "gully_35"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The frame shop, closed three years, dark. GULLY with the key. WOOD in the backroom doorway. Dust.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "with the key",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "in the backroom doorway",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "dust",
+        "the key"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, a shuttered frame shop's dark backroom with a stocky man holding a key and a thin man in the doorway, dust in the light",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Under the old cutting table: a folded wool blanket, faded, moth-edged. From the winter of 2000, when the backroom was where he hid.",
+      "characters": [],
+      "props": [
+        "the wool blanket"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, close-up of a folded faded wool blanket under an old cutting table in dust",
+        "negative": "",
+        "notes": "The blanket of 'The Carry' (dw_2014-11-16). It was here in Oct 2000 (the racket weeks)."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood picking it up. Shaking it. The dust in the light. Holding it a moment against his chest the way he'll hold something else on Sunday.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "holding the blanket to his chest",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the blanket"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, a thin man holding a shaken-out wool blanket against his chest in a dusty room, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Gully locking the door behind them. Wood with the blanket under his arm. The shop's sign, dark: HECETA FRAME & MATTING, one letter gone.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "locking up",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "with the blanket",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the shop's dark sign"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "quiet ink line with water bleeding over the edges, desaturated wet-on-wet in raw umber and Payne's gray and Prussian blue, a stocky man locking a shuttered shop's door while a thin man waits with a folded blanket under his arm, a faded sign above with one letter missing, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "quiet; water bleeding over the ink edge to suggest rain and fading light",
+    "palette": "desaturated wet-on-wet: raw umber, Payne's gray, Prussian blue, raw sienna",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for the Sundays"
+  },
+  "notes": "Wordless. The blanket from the backroom, 2000. Gully has the key."
+}

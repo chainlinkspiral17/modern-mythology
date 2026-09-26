@@ -114,6 +114,38 @@ a page says "fifty" check it against the year first.
 
 ## Recent lessons
 
+### 2026-09-26 · Deepening iii and iv · the story arcs to full weeks · 442 → 578
+
+The ● arcs were the gap: most had one strip standing for five to
+twenty. Two batches filled every small ● arc to its week and the
+four numbered arcs to their brief-specified shape (Arc 1: 18
+dailies + 3 covers + the oversized Sunday; Arc 2: 13 dailies + 2
+Sundays around the parody week; Arc 3: 14 dailies + 3 Sundays; Arc
+4: the Steep Path, the Table Lowered, the Clinic, Between Sundays
+and the week after The Box).
+
+- **Run the arc-vs-catalogue diff first.** A twenty-line script that
+  matches `_THE_COMPLETE_RUN.md`'s "want N dailies" against strips
+  per arc found the gaps in one pass. Keep using it before every
+  deepening batch; it is the map.
+- **Anchor every week to the existing key strip's date.** The brief
+  gives "Thursday, Week 2" loosely; the existing file's date is the
+  truth. Build the week around it and check weekdays with
+  `date.strftime` before commit; the batch that skipped this shipped
+  two Fridays that were Saturdays.
+- **Two parallel shell calls share one cwd.** A `cd ..` in the first
+  call broke the second's relative paths and cost a full re-send of
+  a 35-strip script. Every batch script starts with an absolute
+  `cd`; never chain `cd ..` after a heredoc.
+- **The wordless arcs stay wordless.** Arc 4's dailies carry no
+  balloons except the vet's mouth; Two-Thirds never remarks on the
+  size; Noir Week is captions only. When a beat wants a line, give
+  it to Gully in one word or to the caption, not to Wood.
+- **Strangers may say "Arthur"; friends don't.** The owner, the vet,
+  Julian, the visitors with Washington plates. Gully, Chloe and
+  Maria say "Woody" (Maria once "Arthur," flat, in 2013). The rule
+  is now in characters.md; keep the count there current.
+
 ### 2026-09-26 · Deepening ii and the inspector · 404 → 442 scripts
 
 Twenty-nine Sundays and ten dailies filled the half-marked arcs of

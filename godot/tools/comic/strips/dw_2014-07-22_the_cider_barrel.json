@@ -1,0 +1,134 @@
+{
+  "id": "dw_2014-07-22_the_cider_barrel",
+  "title": "The cider barrel",
+  "strip": "drift_wood",
+  "date": "2014-07-22",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Glass Pavilion (Arc 3, week 2)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Glass Pavilion · deepening)",
+  "logline": "Tuesday. What he drew during the rehearsal week's first party: the artisanal cider barrel. Thirty times. From every side. The strip shows the sketchbook's pages and none of the people.",
+  "cast": [
+    "wood_34"
+  ],
+  "location": "dw_pavilion_dock",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The pavilion's terrace, a party in blinding light. WOOD against a post with the sketchbook, drawing. Everyone else drawn as legs and glasses at the panel's edges.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "against a post, drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a cider barrel",
+        "legs and glasses"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink with pristine architectural perspective, blinding clear summer light in soft cerulean and pale linen watercolor, a thin man in a dark suit leaning on a cedar post at a bright terrace party drawing in a sketchbook, other guests visible only as legs and raised glasses at the edges",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The sketchbook page: the cider barrel, from the front. Twelve lines. Perfect.",
+      "characters": [],
+      "props": [
+        "the barrel, drawn"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink with pristine architectural perspective, blinding clear summer light in soft cerulean and pale linen watercolor, close-up of a sketchbook page with a precise twelve-line ink drawing of a wooden cider barrel on a stand",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The next page: the barrel from the side. The next: the tap. The next: the barrel from above. Thirty drawings, drawn as a grid of small panels within the panel.",
+      "characters": [],
+      "props": [
+        "thirty barrels"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink with pristine architectural perspective, blinding clear summer light in soft cerulean and pale linen watercolor, a panel subdivided into a grid of tiny precise ink drawings of the same cider barrel from thirty different angles",
+        "negative": "",
+        "notes": "Thirty barrels in one panel, as a grid. No people."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood closing the book. A GUEST (legs, a glass) asking what he's drawing.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "closing the book",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a guest's legs and glass"
+      ],
+      "balloons": [
+        {
+          "who": "GUEST",
+          "text": "What are you drawing?"
+        },
+        {
+          "who": "WOOD",
+          "text": "The barrel."
+        },
+        {
+          "who": "GUEST",
+          "text": "Just the barrel?"
+        },
+        {
+          "who": "WOOD",
+          "text": "It's the only one here."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink with pristine architectural perspective, blinding clear summer light in soft cerulean and pale linen watercolor, a thin man closing a sketchbook while a guest visible only from the waist down holds a glass and asks a question",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "Thirty barrels. 'It's the only one here.'"
+}
