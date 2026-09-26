@@ -1,0 +1,49 @@
+{
+  "id": "ro_2025-06-22_the_hat_on_a_hook",
+  "title": "The hat on a hook",
+  "strip": "roflcopter",
+  "date": "2025-06-22",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Tavern, Named",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening ii)",
+  "logline": "A hat on a hook by the tavern's door. The 2007 regular's. He's gone; the hat isn't. The page draws it the way the strip drew the chair, the lamp, the coat: as the person.",
+  "cast": [],
+  "location": "dw_tavern",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A wooden hook by a tavern door with a worn felt hat on it, the brim shaped by one head over decades, dust on the crown. Below it, on the floor, nothing. The door's light.",
+      "characters": [],
+      "props": [
+        "the hat"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a worn felt hat hanging on a wooden hook beside a tavern door with dust on its crown and the brim shaped by long wear, light from the door, no people, no words",
+        "negative": "",
+        "notes": "Dale's hat (dw_2007-10-10, dw_2007-10-19). Gully knew the name; the page still doesn't say it."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The regular as his hat.",
+  "layout": "single page, no borders"
+}

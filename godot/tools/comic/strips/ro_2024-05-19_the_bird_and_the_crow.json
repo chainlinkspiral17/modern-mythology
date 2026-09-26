@@ -1,0 +1,57 @@
+{
+  "id": "ro_2024-05-19_the_bird_and_the_crow",
+  "title": "The bird and the crow",
+  "strip": "roflcopter",
+  "date": "2024-05-19",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Bird",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening ii)",
+  "logline": "The seawall: the crow at one end, the bird at the other. Both looking at the water. The crow is real; the bird is not explained; the page treats them the same.",
+  "cast": [
+    "the_bird"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The seawall's full length across the page: at the left end, a crow; at the right end, the rainbow bird. Both facing the bay. Between them, the wall, and a long gray May afternoon.",
+      "characters": [
+        {
+          "id": "the_bird",
+          "pose": "at the right end",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a crow"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a long concrete seawall across the page with a black crow at the left end and a small rainbow-colored bird at the right end both facing a gray bay, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Two birds, treated the same.",
+  "layout": "single page, no borders"
+}

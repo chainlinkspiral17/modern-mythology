@@ -1,0 +1,50 @@
+{
+  "id": "ro_2024-01-07_the_drawing_on_a_fridge",
+  "title": "The drawing, on a fridge",
+  "strip": "roflcopter",
+  "date": "2024-01-07",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "What People Framed",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening ii)",
+  "logline": "The father's kid's crayon drawing — the tree taller than the house, 2001 — in its red frame, on a refrigerator in 2024, held by magnets, in a kitchen where the kid is the parent now. A lunchbox on the counter.",
+  "cast": [],
+  "location": "dw_ranch_house",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A kitchen: a refrigerator with a small red-framed crayon drawing held on by two magnets — a house, a tree taller than it, a six-legged dog — among school notices and a child's newer drawing beside it. A lunchbox on the counter. Morning.",
+      "characters": [],
+      "props": [
+        "the red-framed drawing",
+        "a newer drawing beside it"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a kitchen refrigerator with a small red-framed child's crayon drawing of a house and an oversized tree held on by magnets among school notices and a newer child's drawing, a lunchbox on the counter, morning, no people, no words",
+        "negative": "",
+        "notes": "dw_2001-02-05 / dw_2011-05-17. The kid is the parent. Reserved which house."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Framed by a father who said nothing; on a fridge a generation on.",
+  "layout": "single page, no borders"
+}

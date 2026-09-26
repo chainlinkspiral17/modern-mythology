@@ -1,0 +1,57 @@
+{
+  "id": "ro_2023-09-12_corn_twenty_six",
+  "title": "Corn, twenty-six",
+  "strip": "roflcopter",
+  "date": "2023-09-12",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening ii)",
+  "logline": "September 12. The corn, from above this time, and beside the tray, the pup's nose at the table's edge. The first anniversary page with any animal in it.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The corn tray from directly above on the bare table, and at the table's edge, entering the page, a small dog's nose and one ear, pointed at the corn. Nothing else.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "a nose and an ear",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the corn"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a paper tray of buttered corn on a bare table seen from directly above with a small dog's nose and one ear entering at the table's edge pointed at it, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Twenty-six. A nose at the edge.",
+  "layout": "single page, no borders"
+}

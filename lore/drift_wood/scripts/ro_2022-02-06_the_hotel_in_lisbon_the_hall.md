@@ -1,0 +1,42 @@
+# The hotel in Lisbon, the hall
+
+`ro_2022-02-06_the_hotel_in_lisbon_the_hall` · **ROFLCOPTER** · 2022-02-06 · page (no grid unless stated) · run 7 · The Pacific Twilight · ROFLCOPTER · tier A · selection full
+Venue: nobody · boxes 21–40 · arc: *Rooms He Never Saw*
+
+*A hotel corridor invented from a postcard's stamp: tile, a runner, numbered doors, one open. He never saw it. He draws the runner's pattern with too much care.*
+
+**Line.** spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run  
+**Palette.** muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring  
+**Paper.** Arches; bristol; the backs of motel registration cards
+
+---
+
+## Panel 1
+
+*single page.* A hotel corridor: patterned tile, a worn red runner, tall numbered doors, one at the far end open onto light. The tile pattern drawn with the care of someone who has never seen it and needs it to be right.
+
+Props: the runner; the open door
+
+<details><summary>image generation</summary>
+
+**prompt.** comic page, spare knowing ink line with soft watercolor in muted ochre, slate blue and misty sea-foam green, Pacific Northwest coastal light, economy of line, quiet composition, a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a hotel corridor with patterned tile and a worn red runner and tall numbered doors, one door at the far end open onto bright light, no people, no words, no text, no lettering, no speech balloons, no signature
+
+**negative.** photorealistic, 3D render, saturated color, neon, anime, busy composition, text, letters, watermark, signature, extra fingers
+
+</details>
+
+---
+
+<details><summary>whole-strip prompt (concept run)</summary>
+
+**prompt.** a single full-page comic drawing (1 panels). Style: comic page, spare knowing ink line with soft watercolor in muted ochre, slate blue and misty sea-foam green, Pacific Northwest coastal light, economy of line, quiet composition. Title of the strip: ROFLCOPTER. The strip: A hotel corridor invented from a postcard's stamp: tile, a runner, numbered doors, one open. He never saw it. He draws the runner's pattern with too much care. Panel 1: a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a hotel corridor with patterned tile and a worn red runner and tall numbered doors, one door at the far end open onto bright light, no people, no words. No dialogue in this panel. In the bottom right margin, tiny hand-lettered signature "ROFLCOPTER" beside the word ROFLCOPTER, tiny, in the margin (2021 onward).
+
+**negative.** photorealistic, 3D render, saturated color, neon, anime, busy composition, watermark, extra fingers
+
+</details>
+
+**Margin.** ROFLCOPTER · mark: *roflcopter* — the word ROFLCOPTER, tiny, in the margin (2021 onward)
+
+*Notes.* A corridor from a stamp.
+
+Source: lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening ii)

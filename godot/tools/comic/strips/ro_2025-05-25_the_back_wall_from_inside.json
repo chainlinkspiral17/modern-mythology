@@ -1,0 +1,50 @@
+{
+  "id": "ro_2025-05-25_the_back_wall_from_inside",
+  "title": "The back wall, from inside",
+  "strip": "roflcopter",
+  "date": "2025-05-25",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Tavern, Named",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening ii)",
+  "logline": "The tavern's back wall from inside: the door with the bare bulb, and beside it, low, the gap under the door where twenty years of rent envelopes came through. A receipt pad on a nail.",
+  "cast": [],
+  "location": "dw_tavern",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The tavern's back door from inside: a plain door, a bare bulb, a coat hook, and beside the door on a nail a receipt pad with a pen on a string. The gap under the door showing a line of daylight. The floorboards worn in a path to it.",
+      "characters": [],
+      "props": [
+        "the receipt pad",
+        "the gap under the door"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a tavern's plain back door seen from inside with a bare bulb and a receipt pad hanging on a nail beside it, a line of daylight under the door and floorboards worn in a path toward it, no people, no words",
+        "negative": "",
+        "notes": "The landlord's side of dw_2006-11-08 and dw_2006-12-15. The landlord: still not drawn, still not named."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The other side of the door the envelopes went under.",
+  "layout": "single page, no borders"
+}

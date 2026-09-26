@@ -1,0 +1,67 @@
+{
+  "id": "ro_2022-11-15_dog_night_2022",
+  "title": "Dog Night, 2022",
+  "strip": "roflcopter",
+  "date": "2022-11-15",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening ii)",
+  "logline": "Twenty-three years. The alley, the dumpster, a back, the pup, rain. The sign above nearly dark. No caption. The bird on the dumpster's lid, which the page doesn't remark.",
+  "cast": [
+    "wood_44",
+    "barnaby_ii",
+    "the_bird"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The alley behind the Lanes at night in rain: the dumpster, a man from behind in a rain shell, a small three-legged dog beside his boot, the sign above with nearly every tube dark — and on the dumpster's lid, the rainbow bird, sitting in the rain, unremarked.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "from behind",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "the_bird",
+          "pose": "on the dumpster's lid",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a rain-dark alley behind a bowling alley with a dumpster, a man seen from behind in a rain shell with a small three-legged dog at his boot, a neon sign above with nearly all letters dark, and a small rainbow bird sitting on the dumpster's lid, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Uncaptioned. The bird on the dumpster.",
+  "layout": "single page, no borders"
+}
