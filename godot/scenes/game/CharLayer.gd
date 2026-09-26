@@ -335,11 +335,15 @@ func _resolve_portrait_3d_glb(key: String) -> String:
 	var look_path: String = _resolve_look_glb(key)
 	if look_path != "":
 		return look_path
-	# Heroes — explicit registry then implicit `<key>.glb`
+	# Heroes — explicit registry, then the roster's keys, then implicit `<key>.glb`
 	if PORTRAIT_3D_KEY_TO_GLB.has(key):
 		var path: String = PORTRAIT_3D_GLB_ROOT + PORTRAIT_3D_KEY_TO_GLB[key]
 		if FileAccess.file_exists(path) or ResourceLoader.exists(path):
 			return path
+	if _roster_keys.has(key):
+		var rpath: String = PORTRAIT_3D_GLB_ROOT + String(_roster_keys[key])
+		if FileAccess.file_exists(rpath) or ResourceLoader.exists(rpath):
+			return rpath
 	var direct: String = PORTRAIT_3D_GLB_ROOT + key + ".glb"
 	if FileAccess.file_exists(direct) or ResourceLoader.exists(direct):
 		return direct
@@ -403,8 +407,15 @@ func _load_roster_looks() -> void:
 		if typeof(item) != TYPE_DICTIONARY:
 			continue
 		var e: Dictionary = item
+		if String(e.get("kind", "")) != "hero":
+			continue
+		var entry_glb: String = String(e.get("file", ""))
+		var entry_keys: Array = e.get("keys", [])
+		if entry_glb != "":
+			for ek: Variant in entry_keys:
+				_roster_keys[String(ek)] = entry_glb
 		var base: String = String(e.get("base", ""))
-		if base == "" or String(e.get("kind", "")) != "hero":
+		if base == "":
 			continue
 		var look_v: Variant = e.get("look", null)
 		if typeof(look_v) != TYPE_DICTIONARY:
@@ -470,8 +481,9 @@ var _t:     float      = 0.0
 # jersey). The look's own keys (maya_kid → maya_daigle_age7.glb) route
 # through the roster too. A missing GLB falls through to the base.
 const PORTRAIT_3D_ROSTER := "res://tools/meshy_roster.json"
-var _looks:         Dictionary = {}      # base key → Array of {glb, vols, chapters}
+var _looks:         Dictionary = {}      # base key → Array of {glb, vols, chapters, scenes}
 var _look_keys:     Dictionary = {}      # a look's own key → glb
+var _roster_keys:   Dictionary = {}      # every hero entry's keys → glb (a new hero routes the day its GLB lands)
 var _scene_vol:     int        = 0
 var _scene_chapter: int        = 0
 var _scene_id:      String     = ""
