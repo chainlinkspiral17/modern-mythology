@@ -1,0 +1,162 @@
+{
+  "id": "dw_1999-01-29_applications",
+  "title": "Drift Wood #29 · applications",
+  "strip": "drift_wood",
+  "date": "1999-01-29",
+  "run": 1,
+  "era": "era1",
+  "format": "biweekly",
+  "tier": "B",
+  "selection": "full",
+  "venue": "The Timberline (Small Wood High)",
+  "arc": "The Culture Editor",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1998–99)",
+  "logline": "Chloe mails four envelopes. Wood mails the back page.",
+  "cast": [
+    "wood_17",
+    "chloe_17"
+  ],
+  "location": "dw_post_office",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The post office. CHLOE at the counter with four fat envelopes, addressed in her tiny capitals. WOOD behind her with a single Timberline.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "sliding four envelopes across a counter",
+          "expression": ""
+        },
+        {
+          "id": "wood_17",
+          "pose": "behind her, a folded newspaper",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "four envelopes",
+        "post office counter",
+        "a scale"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "Four. Priority."
+        },
+        {
+          "who": "WOOD",
+          "text": "One. Media rate. It's the back page."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small post office counter, a teenage girl sliding four fat envelopes across, a boy in an overcoat behind her holding a single folded newspaper",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The four envelopes on the scale. Seattle. Chicago. Portland. Eugene. The clerk's hand.",
+      "characters": [],
+      "props": [
+        "four envelopes with city names",
+        "a scale"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of four thick envelopes stacked on a postal scale, city names visible on the addresses",
+        "negative": "",
+        "notes": "City names may be lettered after: SEATTLE, CHICAGO, PORTLAND, EUGENE."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Chloe turns. Wood is holding the newspaper open to the back page, to show her the strip, as if it were also an application.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "turning",
+          "expression": ""
+        },
+        {
+          "id": "wood_17",
+          "pose": "holding the paper open",
+          "expression": "hopeful"
+        }
+      ],
+      "props": [
+        "the back page"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "I'm sending this to my grandmother in Coos Bay. She's my readership."
+        },
+        {
+          "who": "CHLOE",
+          "text": "She's a readership."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage boy holding a newspaper open to the comics page toward a girl at a post office counter, hopeful",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Outside the post office. Chloe walking one way with her receipt. Wood the other. The flag on the pole, wet, not moving.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "walking left",
+          "expression": ""
+        },
+        {
+          "id": "wood_17",
+          "pose": "walking right",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "post office",
+        "flagpole with a wet flag",
+        "rain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two teenagers leaving a small post office in opposite directions under a wet flag hanging still on its pole, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "",
+  "layout": "2x2"
+}

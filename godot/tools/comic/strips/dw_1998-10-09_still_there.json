@@ -1,0 +1,155 @@
+{
+  "id": "dw_1998-10-09_still_there",
+  "title": "Drift Wood #22 · still there",
+  "strip": "drift_wood",
+  "date": "1998-10-09",
+  "run": 1,
+  "era": "era1",
+  "format": "biweekly",
+  "tier": "B",
+  "selection": "full",
+  "venue": "The Timberline (Small Wood High)",
+  "arc": "The Scholarship Letter",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1998–99)",
+  "logline": "Two weeks later the envelope has moved. It has not been opened.",
+  "cast": [
+    "wood_17",
+    "chloe_17"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Wood's bedroom. CHLOE in the doorway with a stack of Timberline proofs. The envelope, now on the drawing table, under a jar of pens.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "in the doorway, proofs under arm",
+          "expression": ""
+        },
+        {
+          "id": "wood_17",
+          "pose": "at the table",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "proofs",
+        "envelope under a pen jar"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "Proofs. You're late. What's under the jar?"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage girl with a stack of newspaper proofs in a bedroom doorway, a boy at a drawing table with an envelope pinned under a jar of pens",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood, sliding the jar an inch to cover more of it.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "sliding the jar",
+          "expression": "casual"
+        }
+      ],
+      "props": [
+        "jar",
+        "envelope"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Reference material."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a hand sliding a jar of pens to cover more of an envelope on a drawing table",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Chloe, reading the return address upside down from the door, because she can.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "reading upside down from a distance",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "Reference material from the Pacific Northwest College of Art."
+        },
+        {
+          "who": "WOOD",
+          "text": "They send those to everyone."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage girl in a doorway reading an envelope's return address from across the room, narrow-eyed, a boy at the table looking away",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Chloe drops the proofs on the bed and leaves. Wood alone. He lifts the jar. Looks. Puts it back.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "lifting the jar, looking, replacing it",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "envelope",
+        "jar"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage boy alone at a drawing table lifting a jar off an envelope, looking at it, and setting the jar back down, proofs on the bed behind, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "",
+  "layout": "2x2"
+}

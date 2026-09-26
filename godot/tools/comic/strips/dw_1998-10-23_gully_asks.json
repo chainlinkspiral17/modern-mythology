@@ -1,0 +1,163 @@
+{
+  "id": "dw_1998-10-23_gully_asks",
+  "title": "Drift Wood #23 · Gully asks",
+  "strip": "drift_wood",
+  "date": "1998-10-23",
+  "run": 1,
+  "era": "era1",
+  "format": "biweekly",
+  "tier": "B",
+  "selection": "full",
+  "venue": "The Timberline (Small Wood High)",
+  "arc": "The Scholarship Letter",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1998–99)",
+  "logline": "Gully asks the question directly. Wood answers a different one.",
+  "cast": [
+    "wood_17",
+    "gully_17"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The boat launch in October rain. GULLY on his uncle's dock coiling rope. WOOD on an upturned crab pot with the pad.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "coiling rope on a dock",
+          "expression": ""
+        },
+        {
+          "id": "wood_17",
+          "pose": "sitting on a crab pot, drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "dock",
+        "rope",
+        "crab pots",
+        "rain"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Chloe says you got a letter."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a boy in a backwards cap coiling rope on a small wooden dock in the rain while a boy in an overcoat sits on an upturned crab pot drawing",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood, not looking up.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "drawing",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Chloe says a lot of things. She's the culture editor."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a teenage boy drawing on a pad in the rain, not looking up",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully stops coiling.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "rope in hand, looking at him",
+          "expression": "plain"
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "You gonna go?"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a boy in a backwards cap standing still on a dock with a coil of rope, looking plainly at someone",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Wood holds up the pad: a drawing of Gully coiling rope, the dock, the rain, better than the actual dock. He says nothing about the letter. Gully looks at the drawing a long time.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "holding up the pad",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "looking at the drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the drawing of the dock"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Look. Got the rain right."
+        },
+        {
+          "who": "GULLY",
+          "text": "...Yeah. You did."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage boy holding up a drawing pad showing a finely hatched sketch of a dock in rain to a boy in a backwards cap who looks at it for a long moment, the real dock behind them, black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "Gully asks the only direct question anyone asks about the scholarship. The answer is a drawing.",
+  "layout": "2x2"
+}

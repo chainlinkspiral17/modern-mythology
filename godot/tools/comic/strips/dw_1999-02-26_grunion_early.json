@@ -1,0 +1,186 @@
+{
+  "id": "dw_1999-02-26_grunion_early",
+  "title": "Drift Wood #31 · the Grunion Run, early",
+  "strip": "drift_wood",
+  "date": "1999-02-26",
+  "run": 1,
+  "era": "era1",
+  "format": "biweekly",
+  "tier": "B",
+  "selection": "full",
+  "venue": "The Timberline (Small Wood High)",
+  "arc": "The Grunion Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1998–99)",
+  "logline": "The fish are early this year. Wood is ready with contempt and a full pad.",
+  "cast": [
+    "wood_17",
+    "chloe_17",
+    "gully_17"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The beach at night, lanterns, a smaller crowd — the run came early and half the town didn't hear. GULLY with two buckets. CHLOE with a thermos. WOOD with the pad already open.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "two buckets",
+          "expression": ""
+        },
+        {
+          "id": "chloe_17",
+          "pose": "thermos",
+          "expression": ""
+        },
+        {
+          "id": "wood_17",
+          "pose": "pad open",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lanterns",
+        "buckets",
+        "surf"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "They're early. Tide's wrong. They came anyway."
+        },
+        {
+          "who": "WOOD",
+          "text": "Nature's indifference to the festival committee."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a night beach with a small crowd of lantern-carrying townspeople at the surf line, three teenagers in the foreground with buckets, a thermos and an open drawing pad, black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Chloe, pouring cocoa into the thermos lid for Wood without asking.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "pouring",
+          "expression": ""
+        },
+        {
+          "id": "wood_17",
+          "pose": "taking it, not looking up from the pad",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "thermos lid of cocoa"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "You said you'd never come back to this."
+        },
+        {
+          "who": "WOOD",
+          "text": "I came to document. It's different."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage girl pouring cocoa from a thermos into its lid and handing it to a boy who keeps drawing, lanterns behind",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Chloe, looking at his pad: last year's grunion drawing, redrawn from memory, better. And under it, already, tonight's.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "looking at the pad",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the pad with two grunion drawings"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "You drew it before we got here."
+        },
+        {
+          "who": "WOOD",
+          "text": "I drew last year's. Tonight's is a revision."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up over a girl's shoulder of a drawing pad with two versions of a night surf scene full of small silver fish, one above the other",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Silent. The surf. The fish. Fewer hands this year, more fish. Wood not drawing — looking. The pad closed on his knee.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "sitting on the sand, pad closed, looking",
+          "expression": ""
+        },
+        {
+          "id": "chloe_17",
+          "pose": "beside him",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "at the water, small",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "silver fish on wet sand",
+        "lanterns"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "silent wide night panel of a surf line flashing with hundreds of small silver fish under lantern light, a teenage boy sitting on the sand with a closed pad on his knee just watching, a girl beside him, black and white",
+        "negative": "",
+        "notes": "The pad is closed. Second time the strip notes it."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "",
+  "layout": "2x2"
+}

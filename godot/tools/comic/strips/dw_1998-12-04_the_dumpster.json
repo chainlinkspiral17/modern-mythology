@@ -1,0 +1,170 @@
+{
+  "id": "dw_1998-12-04_the_dumpster",
+  "title": "Drift Wood #26 · the dumpster",
+  "strip": "drift_wood",
+  "date": "1998-12-04",
+  "run": 1,
+  "era": "era1",
+  "format": "biweekly",
+  "tier": "B",
+  "selection": "full",
+  "venue": "The Timberline (Small Wood High)",
+  "arc": "The Dog Night (precursor)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1998–99)",
+  "logline": "A December night behind the bowling alley. Nothing tied there yet. The strip goes and looks anyway.",
+  "cast": [
+    "wood_17",
+    "gully_17"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "SMALL WOOD LANES at night from across 101. All the letters lit. WOOD and GULLY crossing the lot.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "crossing the lot",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "beside him, bowling bag",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "neon sign, all lit",
+        "lot",
+        "a few cars"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "League night. Uncle's short a man."
+        },
+        {
+          "who": "WOOD",
+          "text": "I don't bowl. I observe bowling."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small-town bowling alley at night from across the highway, its neon sign fully lit, two teenagers crossing the parking lot, one with a bowling bag, black and white with heavy blacks",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Behind the alley, the shortcut. A rusted dumpster. Chain-link. WOOD stops.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "stopped, looking at the dumpster",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "walking on",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "rusted dumpster",
+        "chain-link fence",
+        "a bare bulb"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "What."
+        },
+        {
+          "who": "WOOD",
+          "text": "Nothing. It's just a very complete dumpster."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two teenagers behind a bowling alley at night, one stopped and looking at a rusted dumpster beside a chain-link fence under a bare bulb",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood drawing it on the spot, pad against the fence. The dumpster, the chain, the bulb.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "drawing against the fence",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "pad",
+        "dumpster"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a teenage boy drawing a rusted dumpster on a pad braced against a chain-link fence at night under a bare bulb",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Inside, later: the lanes. Gully bowling. Wood in the plastic seats, still drawing the dumpster from memory. Nobody is tied to anything yet.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "mid-bowl, small",
+          "expression": ""
+        },
+        {
+          "id": "wood_17",
+          "pose": "in the seats, drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "bowling lanes",
+        "plastic seats",
+        "scoreboard"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "inside a bowling alley, a boy in a backwards cap bowling in the middle distance while a boy in an overcoat sits in the plastic seats drawing, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "The place, a year before the dog. The strip doesn't know why it went to look.",
+  "layout": "2x2"
+}

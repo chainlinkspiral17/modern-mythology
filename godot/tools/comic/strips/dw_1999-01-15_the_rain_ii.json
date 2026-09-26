@@ -1,0 +1,160 @@
+{
+  "id": "dw_1999-01-15_the_rain_ii",
+  "title": "Drift Wood #28 · the Rain, ii",
+  "strip": "drift_wood",
+  "date": "1999-01-15",
+  "run": 1,
+  "era": "era1",
+  "format": "biweekly",
+  "tier": "B",
+  "selection": "full",
+  "venue": "The Timberline (Small Wood High)",
+  "arc": "The Rain",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1998–99)",
+  "logline": "January again. Wood tries to explain rain to Gully. Gully explains it back.",
+  "cast": [
+    "wood_17",
+    "gully_17"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The boat launch in January. Rain so hard it's a texture. GULLY under the shack's eave with a thermos. WOOD beside him, pad under his coat.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "under an eave, thermos",
+          "expression": ""
+        },
+        {
+          "id": "wood_17",
+          "pose": "beside him, pad hidden under coat",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "eave",
+        "thermos",
+        "rain",
+        "the bay, invisible"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Ozu would have held this shot for two minutes. No cut. Just rain."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two teenagers sheltering under a shingle shack's eave at a boat launch in torrential January rain drawn as dense vertical hatching, one holding a thermos, black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Gully, drinking.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "drinking from the thermos",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Who's Ozu."
+        },
+        {
+          "who": "WOOD",
+          "text": "A Japanese director who understood that nothing happening is something happening."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a boy in a backwards cap drinking from a thermos under an eave in the rain",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully, nodding at the rain.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "nodding at the bay",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Rain's not nothing. Rain's the river coming up and the crab coming in and the road going out at milepost six."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a boy in a backwards cap nodding out at heavy rain from under an eave, a thermos in his hand",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Silent. The rain, held. Two minutes. No cut.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "small, under the eave",
+          "expression": ""
+        },
+        {
+          "id": "wood_17",
+          "pose": "small, beside him",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "rain",
+        "eave",
+        "the bay dissolving"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a silent wide panel of torrential rain over a boat launch and a dissolving bay, two small figures under a shack's eave, dense vertical hatching, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "The second Rain. Gully's definition is the strip's, from here on.",
+  "layout": "2x2"
+}

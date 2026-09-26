@@ -1,0 +1,157 @@
+{
+  "id": "dw_1998-11-20_thanksgiving_ii",
+  "title": "Drift Wood #25 · Thanksgiving, again",
+  "strip": "drift_wood",
+  "date": "1998-11-20",
+  "run": 1,
+  "era": "era1",
+  "format": "biweekly",
+  "tier": "B",
+  "selection": "full",
+  "venue": "The Timberline (Small Wood High)",
+  "arc": "Thanksgiving",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1998–99)",
+  "logline": "The survey, second year. Wood has revised his answer. Chloe's line is still blank.",
+  "cast": [
+    "wood_17",
+    "chloe_17",
+    "gully_17"
+  ],
+  "location": "dw_timberline_newsroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The newsroom. CHLOE with the clipboard. Same poster, one year more faded.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "clipboard",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "clipboard",
+        "faded THANKFUL FOR poster"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "Survey. Gully."
+        },
+        {
+          "who": "GULLY",
+          "text": "Maple bars. And the new tide tables."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage girl with a clipboard in a school newsroom under a faded hand-lettered poster, a boy in a backwards cap answering",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Wood, prepared this time. A single index card.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "holding up an index card",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "index card"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "I've prepared a concise answer."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage boy in an overcoat holding up a single index card, prepared",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The card, in his hand: one word, crossed out, another word, crossed out, and a third. Chloe reading it.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "reading the card",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "index card with crossed-out words"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "You crossed out 'fog.'"
+        },
+        {
+          "who": "WOOD",
+          "text": "Fog was last year's answer."
+        },
+        {
+          "who": "CHLOE",
+          "text": "You crossed out 'the work.'"
+        },
+        {
+          "who": "WOOD",
+          "text": "Keep reading."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of an index card with two words crossed out and a third written small, a girl's eyes reading it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The pasted-up column: GULLIVER — maple bars, tide tables. FINCH — (a word too small to read at this size). STERLING — blank again.",
+      "characters": [],
+      "props": [
+        "paste-up column"
+      ],
+      "balloons": [],
+      "caption": "THANKFUL FOR — THE TIMBERLINE ASKS, YEAR TWO",
+      "sfx": "",
+      "image": {
+        "prompt": "a pasted-up newspaper survey column of names and answers, one answer too small to read, one line blank, xerox grain",
+        "negative": "",
+        "notes": "Wood's third word is illegible on purpose. The reader who enlarges the print edition finds nothing; it's drawn as a scribble."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "Wood's answer is illegible on purpose. Chloe's is blank again.",
+  "layout": "2x2"
+}

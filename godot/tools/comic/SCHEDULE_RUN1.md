@@ -24,22 +24,22 @@ paper's. `✓` = script written in `strips/`.
 | 17 | 1998-05-08 | Most Likely · the photo | ✓ |
 | 18 | 1998-05-22 | Most Likely · the yearbook | ✓ |
 | 19 | 1998-06-05 | Most Likely · Last Bell | ✓ |
-| 20 | 1998-09-11 | A year in |  |
-| 21 | 1998-09-25 | The Scholarship Letter · the envelope |  |
-| 22 | 1998-10-09 | The Scholarship Letter · still there |  |
-| 23 | 1998-10-23 | The Scholarship Letter · Gully asks |  |
-| 24 | 1998-11-06 | The Scholarship Letter · gone |  |
-| 25 | 1998-11-20 | Thanksgiving |  |
-| 26 | 1998-12-04 | The Dog Night (precursor) · the dumpster |  |
-| 27 | 1998-12-18 | December · does Chloe come home (she's still here) |  |
-| 28 | 1999-01-15 | The Rain (ii) |  |
-| 29 | 1999-01-29 | The Culture Editor · applications |  |
-| 30 | 1999-02-12 | The Crab Derby |  |
-| 31 | 1999-02-26 | The Grunion Run, early |  |
+| 20 | 1998-09-11 | A year in | ✓ |
+| 21 | 1998-09-25 | The Scholarship Letter · the envelope | ✓ |
+| 22 | 1998-10-09 | The Scholarship Letter · still there | ✓ |
+| 23 | 1998-10-23 | The Scholarship Letter · Gully asks | ✓ |
+| 24 | 1998-11-06 | The Scholarship Letter · gone | ✓ |
+| 25 | 1998-11-20 | Thanksgiving | ✓ |
+| 26 | 1998-12-04 | The Dog Night (precursor) · the dumpster | ✓ |
+| 27 | 1998-12-18 | December · does Chloe come home (she's still here) | ✓ |
+| 28 | 1999-01-15 | The Rain (ii) | ✓ |
+| 29 | 1999-01-29 | The Culture Editor · applications | ✓ |
+| 30 | 1999-02-12 | The Crab Derby | ✓ |
+| 31 | 1999-02-26 | The Grunion Run, early | ✓ |
 | 32 | 1999-03-12 | Seattle, Said · the red pen | ✓ |
-| 33 | 1999-03-26 | Seattle, Said · the map |  |
-| 34 | 1999-04-09 | Seattle, Said · the bus schedule |  |
-| 35 | 1999-04-23 | The Phantom · first mention |  |
-| 36 | 1999-05-07 | Most Likely, again |  |
-| 37 | 1999-05-21 | The Last Issue · the back page |  |
-| 38 | 1999-06-04 | The Last Issue · signing off |  |
+| 33 | 1999-03-26 | Seattle, Said · the map | ✓ |
+| 34 | 1999-04-09 | Seattle, Said · the bus schedule | ✓ |
+| 35 | 1999-04-23 | The Phantom · first mention | ✓ |
+| 36 | 1999-05-07 | Most Likely, again | ✓ |
+| 37 | 1999-05-21 | The Last Issue · the back page | ✓ |
+| 38 | 1999-06-04 | The Last Issue · signing off | ✓ |

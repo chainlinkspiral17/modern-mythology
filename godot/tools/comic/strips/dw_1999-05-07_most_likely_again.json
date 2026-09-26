@@ -1,0 +1,158 @@
+{
+  "id": "dw_1999-05-07_most_likely_again",
+  "title": "Drift Wood #36 · Most Likely, again",
+  "strip": "drift_wood",
+  "date": "1999-05-07",
+  "run": 1,
+  "era": "era1",
+  "format": "biweekly",
+  "tier": "B",
+  "selection": "full",
+  "venue": "The Timberline (Small Wood High)",
+  "arc": "Most Likely, again",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1998–99)",
+  "logline": "Senior superlatives, the real ones. He wins. The strip is drawn the normal size.",
+  "cast": [
+    "wood_17",
+    "chloe_17",
+    "gully_17"
+  ],
+  "location": "dw_gym",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The gym. The senior awards. A PRINCIPAL at the mic. WOOD in the bleachers, mid-row this time.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "in the bleachers",
+          "expression": ""
+        },
+        {
+          "id": "chloe_17",
+          "pose": "beside him",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "beside her",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "bleachers",
+        "microphone",
+        "banner: CLASS OF 1999"
+      ],
+      "balloons": [
+        {
+          "who": "PRINCIPAL",
+          "text": "...Most Likely to Win a Pulitzer: Arthur Finch."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a high school gym awards assembly seen from the bleachers, a principal at a microphone under a CLASS OF 1999 banner, three teenagers in a middle row",
+        "negative": "",
+        "notes": "The principal says the real name. The strip's Wood is who stands up."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Wood standing. The overcoat. Applause drawn as small marks. He does not perform anything.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "standing, coat, no gesture",
+          "expression": "blank"
+        }
+      ],
+      "props": [
+        "applause marks"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a gaunt teenage boy in an oversized overcoat standing up in the bleachers with no expression amid small applause marks",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Chloe, clapping, looking straight ahead.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "clapping, looking ahead",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "Don't say anything."
+        },
+        {
+          "who": "WOOD",
+          "text": "I wasn't going to."
+        },
+        {
+          "who": "CHLOE",
+          "text": "You were going to quote someone."
+        },
+        {
+          "who": "WOOD",
+          "text": "...Daumier."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a teenage girl clapping and looking straight ahead while speaking sideways to someone",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "After. The gym empty. The certificate on the bleacher where he left it. The strip, wide and ordinary. Not drawn larger.",
+      "characters": [],
+      "props": [
+        "a certificate left on an empty bleacher",
+        "empty gym"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an empty high school gym after an assembly with a single certificate left lying on a bleacher, wide and quiet, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "Last year the strip grew for a ballot. This year it wins and stays the same size.",
+  "layout": "2x2"
+}

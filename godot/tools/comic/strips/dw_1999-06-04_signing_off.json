@@ -1,0 +1,194 @@
+{
+  "id": "dw_1999-06-04_signing_off",
+  "title": "Drift Wood #38 · signing off",
+  "strip": "drift_wood",
+  "date": "1999-06-04",
+  "run": 1,
+  "era": "era1",
+  "format": "biweekly",
+  "tier": "B",
+  "selection": "full",
+  "venue": "The Timberline (Small Wood High)",
+  "arc": "The Last Issue",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1998–99)",
+  "logline": "The last issue Wood edits. The strip signs off the back page. It says nothing about leaving.",
+  "cast": [
+    "wood_17",
+    "chloe_17",
+    "gully_17"
+  ],
+  "location": "dw_timberline_newsroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The newsroom, emptied. Boxes. The computer unplugged. The final issue in a stack by the door. WOOD, CHLOE and GULLY sitting on the desks.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "on a desk",
+          "expression": ""
+        },
+        {
+          "id": "chloe_17",
+          "pose": "on a desk, a copy of the issue",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "on a desk, cap backwards",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "boxes",
+        "stack of the final issue",
+        "unplugged computer"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "That's it?"
+        },
+        {
+          "who": "CHLOE",
+          "text": "That's it."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an emptied school newsroom with boxes and an unplugged computer, a stack of newspapers by the door, three teenagers sitting on the desks",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Chloe, opening the issue to the back page. The strip. She reads it. We don't see it.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "reading the back page",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the final issue open to the back page"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a teenage girl reading the back page of a school newspaper, her face reading, the page turned away from the viewer",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Chloe lowers the paper.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "lowering the paper",
+          "expression": ""
+        },
+        {
+          "id": "wood_17",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "You didn't say anything."
+        },
+        {
+          "who": "WOOD",
+          "text": "About what."
+        },
+        {
+          "who": "CHLOE",
+          "text": "About anything. It's four panels of the estuary."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's what I had."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage girl lowering a newspaper to look at a boy in an overcoat who shrugs, emptied newsroom",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Wide. The three of them leaving the room. The light off. The stack of papers by the door. The last panel of the Timberline.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "leaving, last",
+          "expression": ""
+        },
+        {
+          "id": "chloe_17",
+          "pose": "leaving",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "leaving, first",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "doorway",
+        "light switch",
+        "stack of papers"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "New editor asked if you'll keep sending strips."
+        },
+        {
+          "who": "WOOD",
+          "text": "I'll think about it.",
+          "kind": "small"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "three teenagers leaving a dark emptied newsroom through its doorway, a stack of newspapers by the door, black and white",
+        "negative": "",
+        "notes": "He never answers. The next strip is five days a week in Newport."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "The last Timberline. Four panels of the estuary, unseen. He never answers the new editor.",
+  "layout": "2x2"
+}
