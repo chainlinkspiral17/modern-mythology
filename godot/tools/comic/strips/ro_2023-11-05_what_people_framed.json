@@ -1,0 +1,59 @@
+{
+  "id": "ro_2023-11-05_what_people_framed",
+  "title": "What people framed · the 1971 couple",
+  "strip": "roflcopter",
+  "date": "2023-11-05",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "What People Framed",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences)",
+  "logline": "The frame shop's customers, twenty years on. The 1971 wedding couple, old, on the same dock.",
+  "cast": [
+    "extra_couple"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Gully's dock, autumn. The 1971 COUPLE, old now — eighty — standing exactly where their wedding photo was taken, her hand on his arm in the same pose. Behind them the shack, no longer new. In the corner of the page, small and framed in a drawn cedar frame: the 1971 photo itself, the young couple, the new shack. The two images share the dock's planks.",
+      "characters": [
+        {
+          "id": "extra_couple",
+          "pose": "old, on the dock, her hand on his arm",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the dock",
+        "the shack",
+        "the 1971 photo drawn in a cedar frame"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an elderly couple standing on a wooden dock in autumn light with the woman's hand on the man's arm, a weathered shingle shack behind them, and in the corner of the page a small drawn cedar-framed photograph of the same couple young on the same dock decades earlier, spare ink and muted ochre watercolor, no panel borders, no words",
+        "negative": "",
+        "notes": "The dw_2000-05-04 couple, twenty-three years on. The same pose."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The frame-job customers revisited. The couple is still married. That's still the whole job.",
+  "layout": "single page, no borders"
+}

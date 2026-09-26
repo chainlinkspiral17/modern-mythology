@@ -1,0 +1,68 @@
+{
+  "id": "ro_2025-08-17_an_august",
+  "title": "An August",
+  "strip": "roflcopter",
+  "date": "2025-08-17",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "An August",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences)",
+  "logline": "Small Wood in vol 7's summer, in the background of a private page: a girl at a coffee counter, zines in a bookstore window, a crow, the ridge glow at its largest, the eye sign.",
+  "cast": [
+    "wood_44",
+    "barnaby_ii"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Main street, August, from the seawall end, looking up the hill. In the foreground, WOOD from behind with BARNABY II. Up the street, small, none of it foregrounded: a coffee place with a girl at the counter in an apron, something dark on her thigh the drawing doesn't resolve; a bookstore window with photocopied zines fanned in it; a crow on a railing; a yellow square sign with a single eye on a pole; a fish weathervane above it. On the ridge east of town, the glow, larger than any Sunday ever drew it, in daylight.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "from behind, foreground",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a girl at a coffee counter, small",
+        "zines in a bookstore window",
+        "a crow on a railing",
+        "the eye sign",
+        "fish weathervane",
+        "the ridge glow in daylight"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small coastal main street in August seen from its seawall end looking uphill, a man from behind with a three-legged dog in the foreground, and small in the background a coffee counter with a girl in an apron, a bookstore window fanned with photocopied zines, a crow on a railing, a yellow square street sign bearing a single eye on a pole with a fish weathervane above it, and on the forested ridge beyond the town a pale glow visible even in daylight, spare ink with muted ochre and sea-foam watercolor, no panel borders, no words",
+        "negative": "",
+        "notes": "Vol 7's August, unnamed: Lena at the Daily Grind, Static Truths in the Salty Tome's window, the crow, the tower's glow. Nothing foregrounded. Felt, not adhered to."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The echo page. The saga's other volume walks through the background.",
+  "layout": "single page, no borders"
+}

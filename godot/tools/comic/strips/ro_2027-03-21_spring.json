@@ -1,0 +1,72 @@
+{
+  "id": "ro_2027-03-21_spring",
+  "title": "Spring · the bay, one morning of thirty",
+  "strip": "roflcopter",
+  "date": "2027-03-21",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "Spring",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences)",
+  "logline": "The last pages. The bay at low tide over a month of mornings. This is one. Luminous.",
+  "cast": [
+    "wood_44",
+    "barnaby_ii",
+    "the_bird"
+  ],
+  "location": "dw_mudflats",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The mudflats at dawn, March, from the bluff. A sunbreak: the first luminous page in the private work, gold on wet sand. WOOD from behind on the drift log, small. BARNABY II at the tide line. The bird on the log's end. The bay mouth. Twenty-nine more of these, one a morning, until the final page.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "on the log, from behind, small",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "at the tide line",
+          "expression": ""
+        },
+        {
+          "id": "the_bird",
+          "pose": "on the log's end",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "sunbreak",
+        "wet sand",
+        "drift log",
+        "bay mouth"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a Pacific Northwest bay at low tide at dawn from a bluff with a sunbreak turning the wet sand gold, a man seen from behind sitting small on a bleached drift log, a three-legged dog at the tide line, a small rainbow bird on the log's end, luminous watercolor over a spare ink line, no panel borders, no words",
+        "negative": "",
+        "notes": "The Spring sequence: thirty mornings. The book takes twenty. Then the final page."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The last sequence. Then ro_2027-04-25_final_page.",
+  "layout": "single page, no borders"
+}
