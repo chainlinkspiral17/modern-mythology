@@ -1,0 +1,143 @@
+{
+  "id": "dw_2008-09-22_the_long_way_back_1",
+  "title": "The long way back, i",
+  "strip": "drift_wood",
+  "date": "2008-09-22",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Long Way Back",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2006–2008)",
+  "logline": "The strip tries being a travelogue. Wood drives to Coos Bay. The strip pretends it was far.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_101",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The Datsun on 101, south, morning. A hand-lettered caption in a travelogue voice.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "driving",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "passenger seat",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "Datsun",
+        "101",
+        "spruce"
+      ],
+      "balloons": [],
+      "caption": "DAY ONE. We leave Small Wood at dawn. The road south is the road I have never taken far enough.",
+      "sfx": "",
+      "image": {
+        "prompt": "an old Datsun driving south on a coastal highway at dawn with a young man at the wheel and a dog in the passenger seat, muddy digital flats, a caption box",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "A sign: COOS BAY 61. The dog looking at it. The caption undeterred.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "looking at the sign",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "sign: COOS BAY 61"
+      ],
+      "balloons": [],
+      "caption": "The country changes. The spruce give way to — different spruce.",
+      "sfx": "",
+      "image": {
+        "prompt": "a road sign reading COOS BAY 61 seen through a windshield, a small dog looking at it",
+        "negative": "",
+        "notes": "Letter after: COOS BAY 61."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "A diner in Coos Bay. Wood drawing the diner. It looks like the one in Small Wood. The caption knows.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing in a booth",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "under the table",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "diner booth",
+        "pad"
+      ],
+      "balloons": [],
+      "caption": "DAY ONE, NOON. A diner. I draw it. It is, in every respect that matters, the diner at home. This is the travelogue's first discovery.",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man drawing in a diner booth with a dog under the table, the diner ordinary, a caption box",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The Datsun, north, evening. Home by dark. The caption, smaller.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "driving north",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "101",
+        "dusk"
+      ],
+      "balloons": [],
+      "caption": "DAY ONE, DUSK. We return. The long way back was sixty-one miles. — to be continued",
+      "sfx": "",
+      "image": {
+        "prompt": "an old Datsun driving north on a coastal highway at dusk, small, a caption box, no dialogue",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "The travelogue. Sixty-one miles. 'To be continued' — it continues for six weeks and never gets farther than Florence."
+}

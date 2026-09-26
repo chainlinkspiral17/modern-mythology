@@ -1,0 +1,93 @@
+{
+  "id": "dw_2008-06-01_corner_box_2",
+  "title": "Sunday · the corner box, again",
+  "strip": "drift_wood",
+  "date": "2008-06-01",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Cover, Again",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2006–2008)",
+  "logline": "A landscape Sunday. Highway 101 at Cape Perpetua in June. In the corner: COMING 2009 · THE LONG WAY BACK · a travelogue.",
+  "cast": [],
+  "location": "dw_101",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: Highway 101 from a Cape Perpetua overlook, June, watercolor at full competence: the road a gray ribbon down the headland, the Pacific enormous, spruce, a single car.",
+      "characters": [],
+      "props": [
+        "101 from above",
+        "the Pacific",
+        "spruce",
+        "a single car"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a coastal highway seen from a high headland overlook in June, a gray ribbon of road descending through spruce above an enormous Pacific, one small car, confident watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Perpetua"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the road at eye level, a milepost, the bend north. Empty.",
+      "characters": [],
+      "props": [
+        "milepost",
+        "the bend north"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a two-lane coastal highway at eye level with a milepost and a bend to the north, empty, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "North"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the same overlook at dusk, the road's centerline the only light. Bottom-left corner, boxed, hand-lettered in the strip's display face: COMING 2009 · A GRAPHIC NOVEL BY A. FINCH · 'THE LONG WAY BACK' · A travelogue of the Oregon coast.",
+      "characters": [],
+      "props": [
+        "overlook at dusk",
+        "the corner box"
+      ],
+      "balloons": [],
+      "caption": "COMING 2009 · A GRAPHIC NOVEL BY A. FINCH · \"THE LONG WAY BACK\" · A travelogue of the Oregon coast.",
+      "sfx": "",
+      "image": {
+        "prompt": "the same headland overlook at dusk with only the road's centerline catching light, watercolor, and a small boxed hand-lettered advertisement in the lower left corner",
+        "negative": "",
+        "notes": "The second corner box. Same corner, same face as 2002. Letter after."
+      },
+      "stage": null,
+      "name": "The box"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "The second corner box, six years after the first. Nothing came. Nothing will.",
+  "layout": "tiers, portrait page"
+}

@@ -1,0 +1,152 @@
+{
+  "id": "dw_2006-12-22_december_2006",
+  "title": "December, 2006",
+  "strip": "drift_wood",
+  "date": "2006-12-22",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "December",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2006–2008)",
+  "logline": "Does Chloe come home. An email, again. She's seen the helicopter. Everyone has.",
+  "cast": [
+    "wood_26",
+    "barnaby",
+    "extra_stick_chorus"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab, at two-thirds size."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. WOOD, still two-thirds size, at the monitor. An email. BARNABY. The chorus, thirty now, filling the back wall like wallpaper.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "small, at the monitor",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_chorus",
+          "pose": "thirty, like wallpaper",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "monitor with an email"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small young man at a monitor in a garage whose entire back wall is crowded with tiny stick figures like wallpaper, a dog, an email open on screen, muddy digital flats",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The email, Arial: 'W — Seattle for Christmas. Julian's family. (Julian: later.) Also: a helicopter? Wood. A HELICOPTER. Call me. — C.' The strip draws the font. It has stopped hating the font. It's tired.",
+      "characters": [],
+      "props": [
+        "email text"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a panel that is an email window in a plain system font, a short message with one word in capitals",
+        "negative": "",
+        "notes": "Letter after. First mention of Julian, parenthetical, eight years early."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, small, to the dog.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "small",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "'Julian: later.' She's got a later now."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small young man turning from a monitor to a dog with a wounded face",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The phone on the garage wall. Wood looking at it. Not calling. The chorus, all thirty, looking at the phone too. The dog asleep. He's two-thirds size and the phone is normal size and that's the strip.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "looking at the phone, small",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_chorus",
+          "pose": "all looking at the phone",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "wall phone"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small young man looking at a normal-sized wall phone in a garage while thirty stick figures on the back wall also look at it, a dog asleep, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "'Julian: later.' The first Julian. He doesn't call. The chorus watches the phone."
+}

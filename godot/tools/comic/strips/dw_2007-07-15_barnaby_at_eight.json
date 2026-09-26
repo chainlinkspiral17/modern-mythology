@@ -1,0 +1,189 @@
+{
+  "id": "dw_2007-07-15_barnaby_at_eight",
+  "title": "Sunday · Barnaby at eight",
+  "strip": "drift_wood",
+  "date": "2007-07-15",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Barnaby at Eight",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2006–2008)",
+  "logline": "The dog's middle age. The first long landscape Sunday with the dog in it: the whole beach, one walk, five tiers.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the beach, July, morning fog burning off, watercolor. The whole length of it. Two figures starting at the left edge: man and dog.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "far left, starting",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "beach",
+        "fog burning off"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a very wide watercolor of a long Pacific Northwest beach in July morning fog burning off, two tiny figures at the far left beginning a walk, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Start"
+    },
+    {
+      "n": 2,
+      "shot": "wide tier",
+      "composition": "Tier 2: a quarter of the way. The dog has found kelp. The man waits. The fog is thinner.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "waiting",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "in kelp",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "kelp",
+        "thinning fog"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same long beach a little further along, a small dog nosing a pile of kelp while a man waits, fog thinning, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Kelp"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: halfway. The dog at the surf, barking at a wave, eight years old and still doing it. The man drawing.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "barking at the surf",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "surf",
+        "pad"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same beach at its midpoint, a gray-muzzled dog barking at a breaking wave, a man sketching, sun through the last fog, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Wave"
+    },
+    {
+      "n": 4,
+      "shot": "wide tier",
+      "composition": "Tier 4: three-quarters. The dog slower. The man slower to match. The spruce grove ahead, lit.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "walking slower",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "slower",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "spruce grove ahead",
+        "sun"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same beach near its end, a man and a dog walking slowly toward a sunlit spruce grove, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Slower"
+    },
+    {
+      "n": 5,
+      "shot": "wide tier",
+      "composition": "Tier 5: the end. The two of them small at the right edge, sitting on a drift log, facing the water. The whole walk above them.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "sitting on a drift log",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "beside him",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "drift log",
+        "water"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the far end of a long beach, a man and a dog sitting together on a bleached drift log facing the water, small at the right edge of a wide watercolor tier, no words",
+        "negative": "",
+        "notes": "The drift log returns: 'The Carry' (2014) and the final page (2027)."
+      },
+      "stage": null,
+      "name": "Log"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "Five tiers, one walk, left to right. The dog at eight. The drift log planted.",
+  "layout": "tiers, portrait page"
+}

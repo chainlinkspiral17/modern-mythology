@@ -1,0 +1,137 @@
+{
+  "id": "dw_2008-11-14_dog_night_2008",
+  "title": "The Dog Night, 2008",
+  "strip": "drift_wood",
+  "date": "2008-11-14",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Dog Night",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2006–2008)",
+  "logline": "Nine years. The bulb replaced. Someone replaced it. The strip wonders who, silently.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The dumpster. A new bulb, bright, a brighter white than the old. WOOD and BARNABY. Wood looking at the bulb.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "looking up at the bulb",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "new bulb, bright",
+        "dumpster"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man and a gray-muzzled dog behind a bowling alley at night under a brand-new bright white bulb, the man looking up at it, muddy watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The bulb. New. A fingerprint on it.",
+      "characters": [],
+      "props": [
+        "new bulb with a fingerprint"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a new bare bulb with a single fingerprint on its glass, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood sitting. The dog leaning. Both lit hard white now, no pink.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "sitting",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "leaning",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man sitting on gravel with a dog leaning against him under hard white bulb light, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Walking away. The sign. All lit.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "neon"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man and a dog walking away under a fully lit bowling-alley neon sign, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "Someone replaced the bulb. Gully, the reader assumes. The strip never says."
+}

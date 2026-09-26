@@ -1,0 +1,157 @@
+{
+  "id": "dw_2008-02-25_newsprint",
+  "title": "Newsprint",
+  "strip": "drift_wood",
+  "date": "2008-02-25",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Newsprint",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2006–2008)",
+  "logline": "The strip is in a newspaper. Three coastal weeklies. Wood reads it at Gully's beside the tide tables.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. A stack of the Newport weekly on the counter. GULLY holding one open. WOOD on the stool, not looking, looking.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "holding a newspaper open",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "on the stool, pretending not to look",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "newspaper stack",
+        "counter"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Page fourteen. Next to the tides."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man in an apron holding a local weekly newspaper open at a bait-and-espresso counter, a young man on the end stool pretending not to look, a stack of newspapers, muddy digital flats",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Page fourteen: the tide table on the left, DRIFT WOOD on the right, a week old, on newsprint, the dot gain fattening the line. Wood's line, in a newspaper.",
+      "characters": [],
+      "props": [
+        "newspaper page: tide table and the strip"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a newsprint page with a tide table beside a comic strip, the ink slightly fattened by dot gain",
+        "negative": "",
+        "notes": "The strip on newsprint next to the tide tables. Draw the dot gain."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, holding the paper now. Not saying anything. Gully watching him not say anything.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "holding the paper",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "watching",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man holding a newspaper open with an expression he is trying to control, a friend behind the counter watching him, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood pinning page fourteen to the corkboard, over the parody printout. Gully lets him.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "pinning the page over the printout",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "letting him",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "corkboard"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "It's next to the tides."
+        },
+        {
+          "who": "GULLY",
+          "text": "I said."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man pinning a newspaper page to a corkboard directly over a printout of a stick-figure comic, a man in an apron allowing it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "Newsprint. He pins the page over the parody. Gully lets him."
+}

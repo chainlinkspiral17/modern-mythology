@@ -1,0 +1,166 @@
+{
+  "id": "dw_2007-02-19_tshirt_tourists",
+  "title": "T-shirt tourists",
+  "strip": "drift_wood",
+  "date": "2007-02-19",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Forty Thousand",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2006–2008)",
+  "logline": "Two tourists at Gully's in February. They're wearing the stick figure. Nobody in the strip mentions it.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby",
+    "extra_tourists"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's, February, empty except for two TOURISTS at the counter in matching t-shirts: the stick figure with the rotor, printed. GULLY pouring. WOOD on the stool.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "two, in stick-figure shirts",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "pouring",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "on the stool",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "t-shirts with the stick figure",
+        "counter"
+      ],
+      "balloons": [
+        {
+          "who": "TOURIST",
+          "text": "Two lattes. Is this the town from the—"
+        },
+        {
+          "who": "GULLY",
+          "text": "Two lattes."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two tourists in matching t-shirts printed with a crude stick figure wearing a helicopter rotor standing at a bait-and-espresso counter, a man pouring, another young man on the end stool with a dog, muddy digital flats",
+        "negative": "",
+        "notes": "The shirt: the parody's stick figure. Nobody in the strip says so."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood, drawing them. The shirt, in his drawing, is blank.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "pad: the tourists, shirts blank"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a drawing pad showing two tourists whose t-shirts have been left deliberately blank",
+        "negative": "",
+        "notes": "In Wood's drawing the shirts are blank. The strip refuses to draw the meme."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The tourists leaving. One turns at the door: the rotor on the back of the shirt too.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "leaving, one turning",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "shirt back with a rotor"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two tourists leaving a small shop, one turning at the door to reveal a helicopter rotor printed on the back of the shirt",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Gully and Wood. The corkboard behind them. Gully has pinned something new to it: a printout of the parody's day one. Wood sees it. Says nothing. Gully says nothing. The dog sneezes.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "looking at the corkboard",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "sneezing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "corkboard with a printout of the parody"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "fsht",
+      "image": {
+        "prompt": "two young men in a quiet shop, one looking at a corkboard where a printout of a crude stick-figure comic has been newly pinned among the sketches, a dog sneezing, no words",
+        "negative": "",
+        "notes": "Gully pinned the parody. The strip records it and lets it go."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "The stick figure on t-shirts. Wood draws the shirts blank. Gully pins the parody. The dog sneezes."
+}
