@@ -1,0 +1,145 @@
+{
+  "id": "dw_1998-01-16_the_rain",
+  "title": "Drift Wood #9 · the Rain",
+  "strip": "drift_wood",
+  "date": "1998-01-16",
+  "run": 1,
+  "era": "era1",
+  "format": "biweekly",
+  "tier": "B",
+  "selection": "full",
+  "venue": "The Timberline (Small Wood High)",
+  "arc": "French Cinema for the Indifferent",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1997–98)",
+  "logline": "January. Wood explains Bresson to a cashier. The rain explains nothing.",
+  "cast": [
+    "wood_17",
+    "extra_cashier"
+  ],
+  "location": "dw_grocery",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The grocery on 101 in January. Rain in vertical hatching across the whole panel. WOOD at the register with one item: a can of soup.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "at the register, soup in hand",
+          "expression": ""
+        },
+        {
+          "id": "extra_cashier",
+          "pose": "behind the register, chewing gum",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a can of soup",
+        "register",
+        "rain in the windows"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small-town grocery checkout in January, rain drawn as frantic vertical hatching in the windows, a teenage boy in an overcoat holding a single can of soup, a bored cashier",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Wood, to the cashier.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "leaning on the counter",
+          "expression": "earnest"
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Bresson said a film should express itself through the rhythm of images and sounds. Not acting. Never acting. Do you know what that means for a town like this?"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage boy leaning on a checkout counter earnestly explaining something to a gum-chewing cashier",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The cashier.",
+      "characters": [
+        {
+          "id": "extra_cashier",
+          "pose": "gum",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CASHIER",
+          "text": "That's a dollar nine."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a bored teenage cashier chewing gum, flat expression",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Outside. Wood under the awning with his soup, the rain doing exactly what Bresson would have wanted. He watches it for a whole panel.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "under an awning, soup bag in hand, watching rain",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "awning",
+        "rain",
+        "parking lot"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage boy standing under a grocery awning holding a small bag, watching heavy rain fall in vertical hatching across an empty parking lot, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "The first Rain. Silent last panel — the seed of every landscape.",
+  "layout": "2x2"
+}

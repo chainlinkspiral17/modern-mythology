@@ -181,7 +181,7 @@ takes at least one per year (principle 5).
 
 ### 1999 · Run 1 → Run 2
 
-- **Seattle, Said** (Mar) · #21 and 2 more · "I'm going to
+- **Seattle, Said** (Mar–Apr) · #32 and 2 more · "I'm going to
   Seattle." "I know." **●**
 - **The Last Issue** (June) · 2 strips · the paper's final issue
   under Wood; the strip signs off the back page. **●**

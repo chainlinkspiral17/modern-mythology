@@ -1,0 +1,148 @@
+{
+  "id": "dw_1998-05-08_the_photo",
+  "title": "Drift Wood #17 · the photo",
+  "strip": "drift_wood",
+  "date": "1998-05-08",
+  "run": 1,
+  "era": "era1",
+  "format": "biweekly",
+  "tier": "B",
+  "selection": "full",
+  "venue": "The Timberline (Small Wood High)",
+  "arc": "Most Likely",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1997–98)",
+  "logline": "The yearbook photo for the superlative. Wood has thoughts about composition.",
+  "cast": [
+    "wood_17",
+    "extra_yearbook_photog"
+  ],
+  "location": "dw_school_hall",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The school hallway. A YEARBOOK PHOTOGRAPHER with a camera. WOOD posed against lockers, directing.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "posed, one hand out directing",
+          "expression": ""
+        },
+        {
+          "id": "extra_yearbook_photog",
+          "pose": "camera up, patient",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lockers",
+        "camera",
+        "a trophy case"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Lower. From below. Eisenstein. The subject should loom."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage boy in an overcoat posed against school lockers directing a yearbook photographer to shoot from a lower angle",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The photographer.",
+      "characters": [
+        {
+          "id": "extra_yearbook_photog",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "PHOTOG",
+          "text": "It's a yearbook. Everyone looms the same amount."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a patient student photographer with a camera",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, adjusting the overcoat collar, the trophy case behind him full of other people's trophies.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "adjusting his collar",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "trophy case"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Then let the trophies loom. I'll provide contrast."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage boy adjusting his overcoat collar in front of a trophy case full of trophies, school hallway",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "close",
+      "composition": "The photo, as it will run: Wood, dead center, slightly from below after all, looking like he already regrets it. Caption typeset under it.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "in the photo, from slightly below",
+          "expression": "already regretting it"
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "MOST LIKELY TO WIN A PULITZER — Arthur Finch",
+      "sfx": "",
+      "image": {
+        "prompt": "a yearbook photograph of a gaunt teenage boy in an overcoat shot from slightly below against lockers, looking like he already regrets the pose, typeset caption beneath",
+        "negative": "",
+        "notes": "The caption uses the author's real name — the yearbook's, not the strip's. It's a fact in the world of the strip, not a panel with the author in it: the photo is of Wood."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "The photo names Arthur Finch because the yearbook does. The strip lets it stand.",
+  "layout": "2x2"
+}

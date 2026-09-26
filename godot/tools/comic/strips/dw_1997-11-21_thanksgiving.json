@@ -1,0 +1,148 @@
+{
+  "id": "dw_1997-11-21_thanksgiving",
+  "title": "Drift Wood #6 · the Thanksgiving issue",
+  "strip": "drift_wood",
+  "date": "1997-11-21",
+  "run": 1,
+  "era": "era1",
+  "format": "biweekly",
+  "tier": "B",
+  "selection": "full",
+  "venue": "The Timberline (Small Wood High)",
+  "arc": "The Culture Editor",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1997–98)",
+  "logline": "What are you thankful for. Wood has a list. Gully has a shorter one.",
+  "cast": [
+    "wood_17",
+    "chloe_17",
+    "gully_17"
+  ],
+  "location": "dw_timberline_newsroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The newsroom. CHLOE with a clipboard, doing the Thanksgiving-issue survey. GULLY at the back table.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "clipboard, pen",
+          "expression": "procedural"
+        },
+        {
+          "id": "gully_17",
+          "pose": "at a table, cap backwards",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "clipboard",
+        "a THANKFUL FOR poster"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "Survey. One thing you're thankful for. Gully."
+        },
+        {
+          "who": "GULLY",
+          "text": "Maple bars."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage girl with a clipboard surveying a boy in a backwards cap at a table in a school newsroom, a hand-lettered poster on the wall",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD, unprompted, standing.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "standing, one finger raised",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "The tension between the individual and the provincial. The fog. Truffaut. The fact that no one here reads, which leaves the field open—"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage boy in an overcoat standing and holding up one finger mid-list, a girl with a clipboard waiting",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Chloe writing.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "writing on the clipboard",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "clipboard"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "I'm putting 'fog.'"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a girl writing one word on a clipboard survey form",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The survey results, pasted up: a column of names and one word each. GULLY: maple bars. WOOD: fog. CHLOE: —. Her line is blank.",
+      "characters": [],
+      "props": [
+        "paste-up column of survey results"
+      ],
+      "balloons": [],
+      "caption": "THANKFUL FOR — THE TIMBERLINE ASKS",
+      "sfx": "",
+      "image": {
+        "prompt": "a pasted-up newspaper column of student names with one word beside each, one line left blank, xerox grain",
+        "negative": "",
+        "notes": "The lettering here is the point; letter it after if the generator garbles: GULLIVER — maple bars / FINCH — fog / STERLING — (blank)."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "Chloe's blank line. The strip never explains it; the reader decides she's thankful for nothing here, or for something she won't print.",
+  "layout": "2x2"
+}

@@ -1,0 +1,153 @@
+{
+  "id": "dw_1998-02-13_crab_derby",
+  "title": "Drift Wood #11 · the Crab Derby",
+  "strip": "drift_wood",
+  "date": "1998-02-13",
+  "run": 1,
+  "era": "era1",
+  "format": "biweekly",
+  "tier": "B",
+  "selection": "full",
+  "venue": "The Timberline (Small Wood High)",
+  "arc": "French Cinema for the Indifferent / the Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1997–98)",
+  "logline": "Gully's uncle needs a flyer. Wood needs a subject. Everyone needs crab.",
+  "cast": [
+    "wood_17",
+    "gully_17",
+    "extra_uncle"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The boat launch. A shingle shack (Gully's UNCLE's — not Gully's yet). A hand-painted sign: 14TH ANNUAL CRAB DERBY. GULLY and WOOD in the rain with the uncle.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "holding a crab pot",
+          "expression": ""
+        },
+        {
+          "id": "wood_17",
+          "pose": "hands in coat",
+          "expression": ""
+        },
+        {
+          "id": "extra_uncle",
+          "pose": "pointing at the shack wall",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "shingle shack",
+        "crab pots",
+        "derby sign",
+        "rain"
+      ],
+      "balloons": [
+        {
+          "who": "UNCLE",
+          "text": "Gully says you draw. I need a flyer. Crab on it. Big."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a weathered shingle shack at a small-town boat launch in rain, a hand-painted crab derby sign, an older fisherman pointing at the wall, two teenage boys with a crab pot",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Wood, considering the assignment with visible pain.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "hand on chin",
+          "expression": "pained"
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "I was hoping to work in a more... Rohmer register. Quiet. Conversational. Crabless."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage boy in an overcoat with his hand on his chin, pained, at a boat launch",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The uncle.",
+      "characters": [
+        {
+          "id": "extra_uncle",
+          "pose": "flat",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "UNCLE",
+          "text": "Twenty bucks."
+        },
+        {
+          "who": "WOOD",
+          "text": "Big crab."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a weathered fisherman's flat face in a rain hood",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The flyer, taped to the shack. A crab so large and so carefully hatched it looks like an engraving. Below it, tiny: a Rohmer quote nobody will read.",
+      "characters": [],
+      "props": [
+        "the flyer on the shack wall with an enormous crab"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a hand-drawn flyer taped to a wet shingle wall showing an enormous meticulously hatched crab, tiny text underneath, black and white",
+        "negative": "",
+        "notes": "The crab should be beautiful. That's the joke."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "The first commission. The first Crab Derby. Twenty bucks.",
+  "layout": "2x2"
+}

@@ -1,0 +1,170 @@
+{
+  "id": "dw_1998-06-05_last_bell",
+  "title": "Drift Wood #19 · Last Bell",
+  "strip": "drift_wood",
+  "date": "1998-06-05",
+  "run": 1,
+  "era": "era1",
+  "format": "biweekly",
+  "tier": "B",
+  "selection": "full",
+  "venue": "The Timberline (Small Wood High)",
+  "arc": "Most Likely / Last Bell",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1997–98)",
+  "logline": "School lets out for the year. Not the last time. It feels like it anyway.",
+  "cast": [
+    "wood_17",
+    "chloe_17",
+    "gully_17"
+  ],
+  "location": "dw_school_front",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The front of Small Wood High, last day, 3:05 PM. The bell (drawn as a jagged shape). Students pouring out. WOOD, CHLOE and GULLY on the steps, not moving.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "on the steps, sitting",
+          "expression": ""
+        },
+        {
+          "id": "chloe_17",
+          "pose": "sitting, one step up",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "sitting, one step down, cap backwards",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "school front steps",
+        "students pouring out",
+        "a flagpole",
+        "spruce behind"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "BRRRRRRING",
+      "image": {
+        "prompt": "the front steps of a small-town high school on the last day of the year, students pouring out past three teenagers who sit on the steps not moving, a bell ringing, spruce behind",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Wood, looking at the emptying lot.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "chin on his knees",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "One more year. Then this town will have to find someone else to underestimate."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage boy in an overcoat sitting on school steps with his chin on his knees watching a parking lot empty",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Gully, standing, stretching.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "standing, stretching",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Tide's out at four. You coming?"
+        },
+        {
+          "who": "WOOD",
+          "text": "I have to begin the real work."
+        },
+        {
+          "who": "GULLY",
+          "text": "Tide's out at four."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a boy in a backwards cap standing and stretching on school steps, easy and content",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Wide. The three of them walking away from the school toward the bay, small, in a line, Gully first. Summer. The last panel of the year.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "leading, small",
+          "expression": ""
+        },
+        {
+          "id": "chloe_17",
+          "pose": "middle",
+          "expression": ""
+        },
+        {
+          "id": "wood_17",
+          "pose": "last, hands in coat",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the road to the bay",
+        "the school behind",
+        "summer light"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "three teenagers walking away from a school in a line toward a distant bay on a bright June afternoon, small in the frame, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "The last strip of the 1997–98 school year. The real work does not begin.",
+  "layout": "2x2"
+}

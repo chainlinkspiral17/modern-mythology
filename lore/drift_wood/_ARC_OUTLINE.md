@@ -49,7 +49,7 @@ issue Arthur edits.
 
 - `vol10_r1_divider` (Box 1 · 1997–1999)
 - `vol10_r1_first_strip` (#1, `sample_strips.md`) ·
-  `vol10_r1_cashier` · `vol10_r1_red_pen` (#21) ·
+  `vol10_r1_cashier` · `vol10_r1_red_pen` (#32) ·
   `vol10_r1_last_issue`
 - Gap: summer 1999. Nothing. A divider that says so.
 

@@ -1,0 +1,156 @@
+{
+  "id": "dw_1998-02-27_video_store",
+  "title": "Drift Wood #12 · the video store",
+  "strip": "drift_wood",
+  "date": "1998-02-27",
+  "run": 1,
+  "era": "era1",
+  "format": "biweekly",
+  "tier": "B",
+  "selection": "full",
+  "venue": "The Timberline (Small Wood High)",
+  "arc": "French Cinema for the Indifferent",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1997–98)",
+  "logline": "The video store has one French film. Wood has rented it eleven times.",
+  "cast": [
+    "wood_17",
+    "extra_clerk"
+  ],
+  "location": "dw_video_store",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The video store on 101. Shelves of tapes. WOOD at the counter with one VHS: THE 400 BLOWS, its box sun-faded. A CLERK with a scanner.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "holding out a tape",
+          "expression": ""
+        },
+        {
+          "id": "extra_clerk",
+          "pose": "scanning",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "VHS tape",
+        "shelves",
+        "NEW RELEASES sign"
+      ],
+      "balloons": [
+        {
+          "who": "CLERK",
+          "text": "Again?"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small-town video rental store, a teenage boy in an overcoat handing a sun-faded VHS tape to a clerk with a barcode scanner, shelves of tapes behind",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "",
+          "expression": "dignified"
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "It rewards rewatching. There is a shot of the sea at the end that—"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a teenage boy speaking with dignity at a video store counter",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The clerk, scanning.",
+      "characters": [
+        {
+          "id": "extra_clerk",
+          "pose": "scanning the tape",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "scanner"
+      ],
+      "balloons": [
+        {
+          "who": "CLERK",
+          "text": "You've rented it eleven times. You could've bought it four times."
+        },
+        {
+          "who": "WOOD",
+          "text": "Owning it would change the relationship."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a clerk scanning a VHS tape with a barcode gun, unimpressed",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Wood walking home along 101 with the tape under his coat, the actual sea on his left, gray, doing the shot for free.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "walking, tape under his coat",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "highway",
+        "the sea, gray",
+        "spruce"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage boy walking along a coastal highway shoulder with a videotape held under his overcoat, the gray Pacific on his left, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "",
+  "layout": "2x2"
+}

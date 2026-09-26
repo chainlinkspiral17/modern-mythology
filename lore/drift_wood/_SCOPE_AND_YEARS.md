@@ -61,7 +61,7 @@ Ages: Arthur is born in 1980. Barnaby is found at ~1 in 1999.
 
 ### 1999 · age 19 · Run 1 → Run 2
 
-- **Wood.** March: #21, the red pen, "I'm going to Seattle." "I
+- **Wood.** March: #32, the red pen, "I'm going to Seattle." "I
   know." June: the last issue. September: five a week for the
   Newport college paper. The strip gets faster. The overcoat
   stays. A dog appears one Monday in November, under the table,
@@ -69,7 +69,7 @@ Ages: Arthur is born in 1980. Barnaby is found at ~1 in 1999.
 - **Arthur.** Chloe leaves for college. He does not. He enrolls
   non-degree in Newport (lean) for the print shop. Finds Barnaby
   tied to the dumpster behind the bowling alley.
-- **Units.** #21 [B]; the last issue [C — a divider: *the last
+- **Units.** #32 [B]; the last issue [C — a divider: *the last
   issue A. Finch edited*]; the first weekday daily [B]; the dog
   Monday [A].
 - **Mark.** A gull. From November, a gull with a dog beside it —

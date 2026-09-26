@@ -1,0 +1,167 @@
+{
+  "id": "dw_1997-12-05_caricature",
+  "title": "Drift Wood #7 · the caricature",
+  "strip": "drift_wood",
+  "date": "1997-12-05",
+  "run": 1,
+  "era": "era1",
+  "format": "biweekly",
+  "tier": "B",
+  "selection": "full",
+  "venue": "The Timberline (Small Wood High)",
+  "arc": "The Back Row",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1997–98)",
+  "logline": "Gully draws Mr. Hadley as a walrus. Mr. Hadley confiscates it. Then keeps it.",
+  "cast": [
+    "wood_17",
+    "gully_17",
+    "extra_mr_hadley"
+  ],
+  "location": "dw_classroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Journalism class. MR. HADLEY (mustache, sweater vest) lecturing at the front. GULLY in the back row drawing on a discarded draft sheet. WOOD beside him pretending to take notes.",
+      "characters": [
+        {
+          "id": "extra_mr_hadley",
+          "pose": "at the board, chalk",
+          "expression": "droning"
+        },
+        {
+          "id": "gully_17",
+          "pose": "drawing, head down",
+          "expression": ""
+        },
+        {
+          "id": "wood_17",
+          "pose": "pretending to write",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "chalkboard: INVERTED PYRAMID",
+        "draft sheets"
+      ],
+      "balloons": [
+        {
+          "who": "MR. HADLEY",
+          "text": "The inverted pyramid puts the most important information first—"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a high school journalism classroom, a mustached teacher in a sweater vest at a chalkboard, two boys in the back row, one drawing on scrap paper",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Gully's drawing: Mr. Hadley as a walrus in a sweater vest, tusks, the chalk. It is, again, good.",
+      "characters": [],
+      "props": [
+        "a walrus caricature on draft paper"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a ballpoint caricature on scrap paper of a mustached teacher drawn as a walrus in a sweater vest holding chalk, surprisingly skilled",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Mr. Hadley's hand takes the sheet. Silence. He looks at it for a long panel.",
+      "characters": [
+        {
+          "id": "extra_mr_hadley",
+          "pose": "holding the drawing, looking at it",
+          "expression": "unreadable"
+        },
+        {
+          "id": "gully_17",
+          "pose": "braced",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the drawing"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teacher standing over a desk holding a confiscated drawing and looking at it with an unreadable expression, a boy in a backwards cap braced",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Mr. Hadley folds it, puts it in his sweater-vest pocket, returns to the board. Wood, to Gully, whispering.",
+      "characters": [
+        {
+          "id": "extra_mr_hadley",
+          "pose": "back at the board, drawing in his pocket",
+          "expression": ""
+        },
+        {
+          "id": "wood_17",
+          "pose": "whispering",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "relieved",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "MR. HADLEY",
+          "text": "—the least important information last."
+        },
+        {
+          "who": "WOOD",
+          "text": "He kept it."
+        },
+        {
+          "who": "GULLY",
+          "text": "They always keep it."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teacher back at the chalkboard with a folded paper in his sweater-vest pocket, two boys in the back row whispering",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "",
+  "layout": "2x2"
+}
