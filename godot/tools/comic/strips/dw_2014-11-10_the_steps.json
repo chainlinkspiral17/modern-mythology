@@ -1,0 +1,148 @@
+{
+  "id": "dw_2014-11-10_the_steps",
+  "title": "The steps",
+  "strip": "drift_wood",
+  "date": "2014-11-10",
+  "run": 5,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies (the trilogy ran in print in three papers)",
+  "arc": "The Carry (daily)",
+  "source": "lore/drift_wood/_SOURCE_BRIEF.md (Arc 4); _THE_COMPLETE_RUN.md",
+  "logline": "Carrying an old dog down wooden steps. The quiet routine. A daily that is only the routine.",
+  "cast": [
+    "wood_34",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage porch, morning, rain. WOOD lifting BARNABY from the doorway — one arm under the chest, one under the hips, the way you learn.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "lifting the dog properly",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "being lifted",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "porch",
+        "storm door",
+        "rain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man lifting a very old dog from a doorway with one arm under its chest and one under its hips, a porch in rain, quiet ink with a Payne's gray wash, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The cedar steps. Three. Wood taking them one at a time, the dog against his chest.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "descending, dog to chest",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "three cedar steps"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man carrying an old dog against his chest down three cedar porch steps one at a time in rain, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The gravel. The dog set down. Standing. Doing what he came out to do, slowly, in the rain. Wood waiting with his back turned, giving him that.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "back turned, waiting",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "standing in the rain",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "gravel",
+        "rain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old dog standing on gravel in the rain while a man waits nearby with his back politely turned, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The steps again, up. The dog against his chest. The door. The whole daily is the trip down and back.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "carrying the dog up",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "steps",
+        "door"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man carrying an old dog back up three porch steps to a storm door in rain, no words",
+        "negative": "",
+        "notes": "Nothing but the routine. Four panels of care. It ran on a Monday."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "quiet; water bleeding over the ink edge to suggest rain and fading light",
+    "palette": "desaturated wet-on-wet: raw umber, Payne's gray, Prussian blue, raw sienna",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for the Sundays"
+  },
+  "notes": "The routine. Down and back. The strip gives it the whole daily."
+}
