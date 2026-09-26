@@ -1,0 +1,159 @@
+{
+  "id": "dw_2013-08-12_tourists_2013",
+  "title": "Tourist Season, 2013",
+  "strip": "drift_wood",
+  "date": "2013-08-12",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Tourist Season",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014 · deepening)",
+  "logline": "The motel full. A guest at 2 AM asks if the night clerk knows the strip is drawn here. Wood says he's heard that. The guest has the Sunday on his phone; Wood looks at his own bay on a screen for the first time.",
+  "cast": [
+    "wood_34",
+    "motel_guest"
+  ],
+  "location": "dw_motel_desk",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The desk, 2 AM. A GUEST, phone out, showing WOOD a Sunday — the January Rain. The hum line.",
+      "characters": [
+        {
+          "id": "motel_guest",
+          "pose": "showing a phone",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "phone showing a watercolor Sunday",
+        "hum line"
+      ],
+      "balloons": [
+        {
+          "who": "GUEST",
+          "text": "This is here, right? The guy's from here?"
+        },
+        {
+          "who": "WOOD",
+          "text": "I've heard that."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a motel night desk at 2 AM with a guest holding out a phone showing a watercolor comic page to a clerk in a maroon polo, a flat unbroken line running beneath the panel",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The phone. The bay, wet-on-wet, glowing on the screen. Smaller than a hand. Brighter than the paper ever was.",
+      "characters": [],
+      "props": [
+        "phone screen: the bay"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a phone screen glowing with a small bright watercolor of a bay in rain",
+        "negative": "",
+        "notes": "The first time the strip draws itself on a screen. It looks better and smaller."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood looking at it a beat too long. The guest noticing.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking too long",
+          "expression": ""
+        },
+        {
+          "id": "motel_guest",
+          "pose": "noticing",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GUEST",
+          "text": "You okay?"
+        },
+        {
+          "who": "WOOD",
+          "text": "It's brighter."
+        },
+        {
+          "who": "GUEST",
+          "text": "Than what?"
+        },
+        {
+          "who": "WOOD",
+          "text": "Than the bay."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a clerk looking at a guest's phone a beat too long while the guest watches him",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The guest gone up. The desk. The door. Beyond it, the lot, the highway, and twelve blocks off, unseen, the bay, which is not bright. The hum line.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "at the desk",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "glass door",
+        "hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a motel desk at night with a clerk alone, the glass door onto a dark lot and highway, a flat unbroken line running beneath the panel, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "'It's brighter.' 'Than what?' 'Than the bay.'"
+}

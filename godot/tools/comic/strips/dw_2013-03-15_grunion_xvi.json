@@ -1,0 +1,168 @@
+{
+  "id": "dw_2013-03-15_grunion_xvi",
+  "title": "The Grunion Run, xvi",
+  "strip": "drift_wood",
+  "date": "2013-03-15",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Grunion Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014 · deepening)",
+  "logline": "Sixteenth year. The Friday of the ring week. Chloe at the run, the ring still a dot in the lantern light. The strip holds out one more night. The dog stays home.",
+  "cast": [
+    "wood_34",
+    "chloe_34",
+    "gully_35"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The beach, lanterns, the run. GULLY's thermos line. WOOD and CHLOE at the surf, not touching. Her left hand in her coat pocket. No dog.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "thermos",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "chloe_34",
+          "pose": "hand in pocket",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lanterns",
+        "fish"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a night beach festival with lanterns, a man with a thermos, a thin man and a woman standing at a surf line of silver fish not touching, her left hand in her coat pocket, razor-sharp ink with a muted wash",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Her hand out of the pocket, pointing at a fish. On it: a dot. Lantern light on the dot. The strip refuses to enlarge it.",
+      "characters": [
+        {
+          "id": "chloe_34",
+          "pose": "pointing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the ring as a dot"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a woman's hand pointing at a silver fish on wet sand with a tiny dot of light on one finger",
+        "negative": "",
+        "notes": "The ring is a dot. Friday. Tomorrow it's drawn right (dw_2013-03-16)."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Chloe, looking at him looking at her hand.",
+      "characters": [
+        {
+          "id": "chloe_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "You can see it."
+        },
+        {
+          "who": "WOOD",
+          "text": "I see a fish."
+        },
+        {
+          "who": "CHLOE",
+          "text": "Woody."
+        },
+        {
+          "who": "WOOD",
+          "text": "I see a lot of fish."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman looking at a man who is looking at her hand, both lit by lanterns",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Silent. The surf, the fish, the lanterns. The two of them. Where the dog was every year: sand. The first Grunion Run without him. The dot.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "chloe_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "fish",
+        "lanterns",
+        "empty sand where the dog stood"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "silent wide night beach panel with silver fish and lanterns, a man and a woman at the surf, an empty patch of sand beside them, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "'I see a lot of fish.' The dot, one more night. No dog."
+}

@@ -1,0 +1,127 @@
+{
+  "id": "dw_2012-06-01_last_bell_2012",
+  "title": "Last Bell, 2012",
+  "strip": "drift_wood",
+  "date": "2012-06-01",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Last Bell",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014 · deepening)",
+  "logline": "The bell at 3:05 PM. Wood is asleep; he works nights. It wakes him through the garage wall. He draws it lying down, badly, on purpose.",
+  "cast": [
+    "wood_34",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage, daylight through the sill, blinds down. WOOD asleep on the cot. BARNABY on the floor. The bell, faint, from across town.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "asleep on a cot",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "cot",
+        "blinds"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "brrring",
+      "image": {
+        "prompt": "a garage studio in daylight with the blinds down, a man asleep on a cot and an old dog on the floor, a faint distant bell sound, razor-sharp ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood's eye open. The bell. Thirteen years of hearing it from wherever he was.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "one eye open",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a man's one eye open on a pillow, listening",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood drawing on the pad lying down, the pad held over his face. The line, from that angle, is bad. Deliberately bad. The strip's first bad line since 1997 and it's a joke.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "drawing lying down",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "pad overhead"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man lying on a cot drawing on a pad held above his face, the drawing crude and shaky",
+        "negative": "",
+        "notes": "Panel 3's inset drawing is scratchy, crow-quill-bad — Era I's line for one panel. The rest of the strip pristine."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The drawing: the school, the steps, the kids, the bell shape — all in the 1997 line. Under it, in the 2012 hand: 3:05. Still.",
+      "characters": [],
+      "props": [
+        "the pad: 1997-style drawing"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a drawing pad showing a school at the last bell drawn in a scratchy crude zine style, with a small precise note beneath it",
+        "negative": "",
+        "notes": "Letter after: 3:05. Still."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "The bell wakes him. He draws it in the old line, lying down. '3:05. Still.'"
+}

@@ -1,0 +1,150 @@
+{
+  "id": "dw_2012-02-08_night_audit_2",
+  "title": "Night audit, ii",
+  "strip": "drift_wood",
+  "date": "2012-02-08",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Night Audit",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014 · deepening)",
+  "logline": "The key week. 2 AM. A guest wants ice. The machine's hum stops while it drops the ice and the line under the panel stops with it.",
+  "cast": [
+    "wood_34",
+    "motel_guest"
+  ],
+  "location": "dw_motel_desk",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The desk. WOOD. A GUEST in a bathrobe, hair flat on one side, holding an empty ice bucket. The hum line beneath.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "motel_guest",
+          "pose": "with an empty ice bucket",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "ice bucket",
+        "hum line"
+      ],
+      "balloons": [
+        {
+          "who": "GUEST",
+          "text": "Machine's empty."
+        },
+        {
+          "who": "WOOD",
+          "text": "It fills at two."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a motel night desk with a clerk in a maroon polo and a guest in a white bathrobe with hair flat on one side holding an empty ice bucket, razor-sharp ink, a flat unbroken line running beneath the panel",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The ice machine down the hall. The two of them waiting in front of it. Its hum drawn as the line. Then —",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "waiting",
+          "expression": ""
+        },
+        {
+          "id": "motel_guest",
+          "pose": "waiting",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "ice machine",
+        "hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two men standing side by side in a motel hallway waiting in front of an ice machine, a flat unbroken line running beneath the panel",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The ice drops. KRRSSHH. The line under the panel is broken — a gap under the crash.",
+      "characters": [],
+      "props": [
+        "ice machine"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "KRRRSSHH",
+      "image": {
+        "prompt": "close-up of ice cascading inside a motel ice machine, a flat line beneath the panel broken by a gap",
+        "negative": "",
+        "notes": "The hum line has a gap exactly under the ice drop. The only time in the run the line breaks."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The guest walking away with a full bucket. Wood back at the desk. The line resumed, unbroken.",
+      "characters": [
+        {
+          "id": "motel_guest",
+          "pose": "walking away",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "at the desk",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "full bucket",
+        "hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a guest in a bathrobe walking away down a hall with a full ice bucket while a clerk returns to a desk, a flat unbroken line running beneath the panel, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "The hum line breaks for the ice drop. Once."
+}
