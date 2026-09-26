@@ -1,0 +1,149 @@
+{
+  "id": "dw_2001-02-26_what_people_frame_6",
+  "title": "What people frame, vi",
+  "strip": "drift_wood",
+  "date": "2001-02-26",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "What People Frame",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2001 · deepening)",
+  "logline": "Monday, four days after the death certificate. A photo of a boat. The customer says it sank in '84. Wood recognizes the dock in the background and doesn't say.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The counter. An OLD MAN with a photograph of a fishing boat, the SANDPIPER, at a dock. BARNABY on Wood's foot — he's allowed in the shop now.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "on his foot",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "photo of a boat"
+      ],
+      "balloons": [
+        {
+          "who": "CUSTOMER",
+          "text": "Sandpiper. Went down in '84 off Heceta. Everybody got off."
+        },
+        {
+          "who": "WOOD",
+          "text": "Everybody?"
+        },
+        {
+          "who": "CUSTOMER",
+          "text": "Everybody who was on her."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, xerox grain, stark black spotting, an old man at a frame-shop counter with a photograph of a fishing boat, a young clerk with a dog lying on his foot",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The photo. The boat. Behind it: the dock, the shack, and in a lawn chair, small, a man in a rain hood. 1983.",
+      "characters": [],
+      "props": [
+        "the photo: the boat, the shack, the uncle in a chair"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, xerox grain, stark black spotting, close-up of a photograph of a fishing boat at a dock with a shingle shack behind and a small figure in a rain hood sitting in a lawn chair",
+        "negative": "",
+        "notes": "The uncle in the photo, twenty years younger, in the same chair. Died four days ago in the strip's world. Wood sees it. Nobody says."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood looking at the photo longer than the job needs. The dog looking up at him.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "looking",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "looking up",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, xerox grain, stark black spotting, a young man looking at a photograph a beat too long while a dog looks up at him from his foot, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The framed boat. The old man taking it. Wood's eyes on the small figure in the chair as it goes out the door.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "framed photo going out"
+      ],
+      "balloons": [],
+      "caption": "Monday.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen over blue pencil, xerox grain, stark black spotting, an old man carrying a framed photograph of a boat out of a shop while a young clerk watches it go, a dog at his foot",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The uncle in the chair, in the background of a stranger's boat. Four days after the certificate."
+}

@@ -1,0 +1,167 @@
+{
+  "id": "dw_2003-08-15_unprinted_2",
+  "title": "The unprinted year, ii",
+  "strip": "drift_wood",
+  "date": "2003-08-15",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Unprinted Year",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2001 · deepening)",
+  "logline": "Two months in. The balloons are empty. He's stopped lettering — the drawings still have balloons, but nothing in them. The strip is still funny; you can tell from the faces.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. GULLY talking, animated, ladle up. WOOD on the stool. Balloons over both of them: EMPTY.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "talking, ladle up",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "stool",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "empty balloons"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": ""
+        },
+        {
+          "who": "WOOD",
+          "text": ""
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, loose, a man in an apron talking animatedly with a ladle raised and a thin young man answering on a stool, speech balloons drawn over both but completely empty",
+        "negative": "",
+        "notes": "The balloons are drawn and empty. Do not letter them. The faces carry the gag."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Gully's punchline. A big balloon. Empty. His face: delighted with himself.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "delighted with himself",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a big empty balloon"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": ""
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, loose, a man in an apron delivering a punchline with a large empty speech balloon, his face delighted",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood's reply. A small balloon. Empty. His face: the face he makes when Gully is right.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "the face for when Gully is right",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a small empty balloon"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": ""
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, loose, a thin young man with a small empty speech balloon and an expression of grudging concession",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Both laughing. No balloons. The dog looking up at the noise. Whatever it was, it was good.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "laughing",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "laughing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "looking up",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "Box 5.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, loose, two young men laughing at a shack counter with a dog looking up at them, no speech balloons",
+        "negative": "",
+        "notes": "No lettering anywhere but the caption."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, loose; balloons drawn and left empty; no reader",
+    "palette": "",
+    "paper": "bristol, into Box 5"
+  },
+  "notes": "Empty balloons. The gag survives in the faces. 'Box 5.'"
+}

@@ -1,0 +1,175 @@
+{
+  "id": "dw_2003-07-08_the_corkboard",
+  "title": "The corkboard",
+  "strip": "drift_wood",
+  "date": "2003-07-08",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Gully's Tackle & Roast",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2001 · deepening)",
+  "logline": "Gully puts up a corkboard. The first thing on it: Wood's pencil rough of Gully hanging the sign, torn from the pad three weeks ago and kept without saying. The corkboard's first pin. Wood sees it and orders chowder.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack. GULLY screwing a corkboard to the wall above the register. WOOD on the stool. BARNABY.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "mounting a corkboard",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "stool",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "corkboard",
+        "screwdriver"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "What's that for."
+        },
+        {
+          "who": "GULLY",
+          "text": "Things."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a young man in an apron screwing a bare corkboard to the wall above a shack register, a thin young man on a stool, a dog",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Gully taking a folded sheet from his apron pocket. Unfolding it. A pencil rough: Gully on the ladder hanging the sign, June 20. Torn from Wood's pad when he wasn't looking.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "unfolding a sheet",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the 1998 pencil rough"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, close-up of a young man in an apron unfolding a creased sheet of paper with a pencil sketch of a man on a ladder hanging a shop sign",
+        "negative": "",
+        "notes": "The pencil rough of Gully hanging the sign (dw_2003-06-20). It's on the corkboard until 2027 (objects.md, Gully's corkboard)."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "One pushpin. The rough on the bare corkboard, alone. Gully stepping back. Wood looking at it, then very carefully at nothing.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "stepping back",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "looking at nothing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the rough, pinned, alone"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, a faded pencil sketch pinned alone in the center of a bare corkboard, a man in an apron stepping back, a thin young man looking carefully at nothing",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood, to the counter.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Chowder."
+        },
+        {
+          "who": "GULLY",
+          "text": "You hate the chowder."
+        },
+        {
+          "who": "WOOD",
+          "text": "Chowder, Gully."
+        },
+        {
+          "who": "GULLY",
+          "text": "...Yeah. Okay."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, a thin young man on a stool ordering from a man in an apron who understands what he means",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The corkboard's first pin: the rough of Gully hanging the sign. 'Chowder, Gully.'"
+}

@@ -1,0 +1,182 @@
+{
+  "id": "dw_2003-06-24_the_first_week",
+  "title": "The first week",
+  "strip": "drift_wood",
+  "date": "2003-06-24",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Gully's Tackle & Roast",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2001 · deepening)",
+  "logline": "Nightcrawlers and chowder from one counter. A customer with bait in one hand and a cup in the other, not sure which hand is which. Wood on the stool, the stool now his.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby",
+    "extra_tourists"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "GULLY'S TACKLE & ROAST, day four. GULLY behind the counter with a chowder ladle in one hand and a nightcrawler tub in the other. A CUSTOMER. WOOD on the end stool. BARNABY under it.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "ladle and bait tub",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "end stool",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "under the stool",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "ladle",
+        "bait tub",
+        "chowder pot"
+      ],
+      "balloons": [
+        {
+          "who": "CUSTOMER",
+          "text": "The chowder's — it's next to the —"
+        },
+        {
+          "who": "GULLY",
+          "text": "Different lids."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a young man in an apron behind a shack counter holding a chowder ladle and a nightcrawler tub, a confused customer, a thin young man on the end stool with a dog beneath",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The customer's hands: a cup of coffee in one, a tub of crawlers in the other. He looks from one to the other.",
+      "characters": [],
+      "props": [
+        "cup",
+        "crawler tub"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, close-up of a man's two hands holding a coffee cup and a tub of nightcrawlers, looking from one to the other",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, from the stool, not looking up from the pad.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "He's going to drink the wrong one."
+        },
+        {
+          "who": "GULLY",
+          "text": "He's not going to drink the wrong one."
+        },
+        {
+          "who": "CUSTOMER",
+          "text": "(off) — HRK —"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, a thin young man drawing on a stool and speaking sideways to a man in an apron, a customer's reaction off-panel",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The customer at the door, coffee down his shirt, crawlers intact, oddly cheerful. Gully with the ladle. Wood drawing him.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "coffee stain",
+        "crawlers"
+      ],
+      "balloons": [
+        {
+          "who": "CUSTOMER",
+          "text": "Good crawlers though."
+        },
+        {
+          "who": "GULLY",
+          "text": "Come back."
+        },
+        {
+          "who": "CUSTOMER",
+          "text": "I will."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, a cheerful customer at a shack door with coffee down his shirt holding a tub of bait, a man in an apron with a ladle, a thin young man drawing",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Different lids.' The first regular who isn't Wood."
+}
