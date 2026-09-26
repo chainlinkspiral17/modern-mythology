@@ -1,0 +1,142 @@
+{
+  "id": "dw_2005-11-15_dog_night_2005",
+  "title": "The Dog Night, 2005",
+  "strip": "drift_wood",
+  "date": "2005-11-15",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Dog Night",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2005–2006)",
+  "logline": "Six years. The dog is slower on the gravel behind the Lanes. The strip notices in the spacing of the panels.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The dumpster. The bulb. WOOD standing. BARNABY arriving a beat behind him, drawn in the panel's near corner, still coming.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "standing, waiting",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "arriving, a beat behind",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "dumpster",
+        "bulb",
+        "gravel"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man standing behind a bowling alley at night before a rusted dumpster under a yellow bulb, a small dog still arriving at the edge of the panel a step behind, muddy watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The dog, arrived. Sitting. Gray muzzle. Breath visible.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "sitting, breath visible",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a gray-muzzled dog sitting under a bulb at night with its breath visible, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood sitting down on the gravel beside him. Eye level. The first Dog Night where Wood sits.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "sitting on the gravel",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "beside",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man sitting down on wet gravel beside a small dog at night under a bulb so their heads are level, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Walking away, slowly, the two of them the same speed now. The neon, all lit, pink and blue.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "walking slowly",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "same speed",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "neon"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man and a small dog walking away at the same slow pace under a bowling alley's pink and blue neon, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "Wood sits. The dog is six. The strip matches his pace."
+}

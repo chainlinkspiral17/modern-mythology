@@ -1,0 +1,160 @@
+{
+  "id": "dw_2006-09-25_message_boards_1",
+  "title": "Message boards, i",
+  "strip": "drift_wood",
+  "date": "2006-09-25",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Message Boards",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2005–2006)",
+  "logline": "The chorus has grown. Twelve stick figures. They have opinions about SLASH, which they've never seen.",
+  "cast": [
+    "wood_26",
+    "barnaby",
+    "extra_stick_chorus"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The garage. WOOD at the monitor. At the back of the panel, twelve stick figures, a crowd now, some with signs: MORE DOG · WHERE IS THE NOVEL · THE SUNDAYS ARE THE ONLY GOOD PART.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "at the monitor",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_chorus",
+          "pose": "twelve, with signs",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "monitor",
+        "signs"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man at a bulky computer in a garage with twelve small stick figures crowded at the back of the panel, several holding crude signs, muddy digital flats",
+        "negative": "",
+        "notes": "Signs: MORE DOG / WHERE IS THE NOVEL / THE SUNDAYS ARE THE ONLY GOOD PART. Letter after."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Wood, turning, a stack of the novel's pages in his hand.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "holding up pages to the chorus",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "pages"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "The novel is here. Five hundred pages. It's serious. It's about a timber town and—"
+        },
+        {
+          "who": "STICK",
+          "text": "post it"
+        },
+        {
+          "who": "WOOD",
+          "text": "It's not ready."
+        },
+        {
+          "who": "STICK",
+          "text": "post one page"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man holding up a stack of drawn pages toward a crowd of stick figures, defensive",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The monitor: he's posted one page. A noir page. Below it, the comments box. The strip draws the number: 0 comments.",
+      "characters": [],
+      "props": [
+        "monitor: a noir page, 0 comments"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a monitor showing a dark noir-styled comic page with a comment count of zero beneath it",
+        "negative": "",
+        "notes": "0 comments. Letter after."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood staring at the zero. The stick figures have all turned to look at the dog instead. The dog, unbothered, is the only thing in the room anyone wants.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "staring at the screen",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_chorus",
+          "pose": "all facing the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "unbothered",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man staring at a monitor while every stick figure in the room has turned away to look at a small dog asleep on the floor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "The serious page gets zero. The dog gets everyone. The strip knows why; the author doesn't yet."
+}

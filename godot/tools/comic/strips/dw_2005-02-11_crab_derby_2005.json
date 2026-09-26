@@ -1,0 +1,178 @@
+{
+  "id": "dw_2005-02-11_crab_derby_2005",
+  "title": "The Crab Derby, 2005",
+  "strip": "drift_wood",
+  "date": "2005-02-11",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2005–2006)",
+  "logline": "Twenty-first annual. Two crabs, a cup. Gully's got a kid on his hip — no, a neighbor's. Not yet.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. The counter. GULLY with the twenty, and a neighbor's toddler on his hip, easy, like a sack of bait. WOOD.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "twenty out, a toddler on his hip",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "twenty",
+        "a toddler",
+        "the corkboard, crowded"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Twenty-one. Two crabs, a cup."
+        },
+        {
+          "who": "WOOD",
+          "text": "Whose is that."
+        },
+        {
+          "who": "GULLY",
+          "text": "Delgados'. They're on the boat. Draw."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man in a fisherman's apron holding out a twenty-dollar bill with a toddler balanced easily on his hip, another young man with a drawing pad at a shop counter, a crowded corkboard behind, muddy digital flats",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood drawing. The toddler watching the pen with the same expression the dog had in 2000.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_toddler",
+          "pose": "watching the pen",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "flyer"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a toddler watching a pen draw a crab with rapt attention, a dog watching too",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The flyer: two crabs, a cup, and — the toddler grabbed the pen — a scribble across the corner. Wood leaves it.",
+      "characters": [],
+      "props": [
+        "flyer with a scribble in the corner"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "You leaving that."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's a collaboration."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a hand-drawn crab flyer with a child's scribble across one corner, a young man looking at it and deciding to keep it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Eight flyers. The eighth has a scribble. The toddler asleep on Gully's shoulder. The dog asleep on the floor. Wood, twenty bucks, pocket.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "toddler asleep on his shoulder",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "pocketing the twenty",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "eight flyers"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "eight crab flyers in a row on a shingle wall, a young man in an apron with a toddler asleep on his shoulder, another pocketing a bill, a dog asleep, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "The first child in the strip. Not Gully's. The strip is practicing."
+}

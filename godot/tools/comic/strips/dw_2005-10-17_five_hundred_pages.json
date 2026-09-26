@@ -1,0 +1,164 @@
+{
+  "id": "dw_2005-10-17_five_hundred_pages",
+  "title": "Five hundred pages",
+  "strip": "drift_wood",
+  "date": "2005-10-17",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Five Hundred Pages",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2005–2006)",
+  "logline": "The garage floor covered in the phantom novel. The dog walks across it. Gully asks what it is.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The garage floor, every inch: loose pages. Hundreds. Pencil, ink, some watercolor. WOOD in the middle on his knees, sorting. BARNABY walking across them.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "on his knees among pages",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "walking across the pages",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "hundreds of loose pages",
+        "drafting table",
+        "boxes"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a garage floor completely covered in hundreds of loose drawn pages, a young man kneeling among them sorting, a small dog walking across them, muddy digital flats",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "GULLY in the door, a bag of maple bars. Stopping.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "in the doorway, stopped",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "maple bars"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "What is it."
+        },
+        {
+          "who": "WOOD",
+          "text": "A novel."
+        },
+        {
+          "who": "GULLY",
+          "text": "Of what."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man in a backwards cap stopped in a garage doorway holding a paper bag, looking at a floor covered in pages",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood, holding up two pages that don't match. A noir panel. A travelogue panel.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "holding up two mismatched pages",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a noir page",
+        "a travelogue page"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a young man holding up two drawn pages that clearly belong to different books, one dark noir, one a sunny travel sketch",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood, still holding them. Gully waiting. The dog has lain down on the pages. The strip cuts before the answer.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "holding the pages, mouth open",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "waiting",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "lying on the pages",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "It's—"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man holding two mismatched pages with his mouth open to explain, a friend waiting in the doorway, a dog lying down on the pages, the answer not arriving",
+        "negative": "",
+        "notes": "'Of what.' The strip never answers. Cut mid-word."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "Five hundred pages of five different books. 'Of what.' Cut before the answer."
+}

@@ -1,0 +1,194 @@
+{
+  "id": "dw_2005-09-14_twenty_five",
+  "title": "Twenty-five",
+  "strip": "drift_wood",
+  "date": "2005-09-14",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Twenty-Five",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2005–2006)",
+  "logline": "Wood turns twenty-five. Gully brings a cake to the frame shop. The hours card is behind them, in focus.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby",
+    "extra_owner_heceta"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The frame shop, Saturday, the only day Wood works now. GULLY in the door with a sheet cake. The OWNER at the mat cutter. WOOD. Behind them in the window: the HOURS card, legible.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "sheet cake",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_owner_heceta",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "sheet cake",
+        "HOURS card, in focus"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Twenty-five. Twenty-five candles. I counted."
+        },
+        {
+          "who": "OWNER",
+          "text": "Not near the mat board."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man carrying a sheet cake with many candles into a picture-framing shop, the owner at a mat cutter objecting, another young man and a dog, an hours card visible in the window behind them, muddy digital flats",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The cake on the counter. Twenty-five candles. Gully lighting them with a mat knife's lighter — no, a lighter. Wood.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "lighting candles",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "cake",
+        "candles"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "A quarter century. Kafka was working at an insurance company at twenty-five."
+        },
+        {
+          "who": "GULLY",
+          "text": "You work at a frame shop two days a week."
+        },
+        {
+          "who": "WOOD",
+          "text": "One and a half."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a sheet cake with twenty-five candles being lit on a shop counter, a young man beside it saying something rueful",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood blowing them out. The owner, despite herself, clapping once. The dog under the counter with a piece already.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "blowing",
+          "expression": ""
+        },
+        {
+          "id": "extra_owner_heceta",
+          "pose": "clapping once",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "with cake",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man blowing out candles while the shop owner claps once despite herself and a dog under the counter already has a piece of cake, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The three of them eating cake off mat-board offcuts. The window. The card: TUES · SAT · 10–3. The strip puts the card dead center behind Wood's head.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "eating off a mat offcut",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_owner_heceta",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "mat offcuts as plates",
+        "HOURS card centered"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "three people eating cake off scraps of mat board in a frame shop, a hand-lettered hours card in the window centered directly behind the young man's head, no words",
+        "negative": "",
+        "notes": "Compose the card behind his head. The strip is telling you the hours without saying it."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "Twenty-five. Cake on offcuts. The hours card composed behind his head."
+}

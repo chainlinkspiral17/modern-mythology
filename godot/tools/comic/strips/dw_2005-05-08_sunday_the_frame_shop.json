@@ -1,0 +1,91 @@
+{
+  "id": "dw_2005-05-08_sunday_the_frame_shop",
+  "title": "Sunday · Heceta from the road",
+  "strip": "drift_wood",
+  "date": "2005-05-08",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Sundays",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2005–2006)",
+  "logline": "A landscape Sunday. The frame shop from across 101 in May. The shop's hours in the window, shorter, if you look.",
+  "cast": [],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: HECETA FRAME & MATTING from across the highway, May, watercolor: low building, gravel, a log truck passing in a blur. In the window, small, a hand-lettered HOURS card.",
+      "characters": [],
+      "props": [
+        "frame shop exterior",
+        "log truck blur",
+        "HOURS card"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a low roadside frame shop across a two-lane coastal highway in May light, watercolor, a log truck passing as a blur, a small hand-lettered hours card in the window",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Across 101"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the window, closer. The card: TUES · SAT · 10–3. It used to say three days and more hours. The reader has to remember.",
+      "characters": [],
+      "props": [
+        "HOURS card: TUES · SAT · 10–3"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a hand-lettered hours card taped inside a shop window, watercolor, sunlight on the glass",
+        "negative": "",
+        "notes": "The hours were Tue/Thu/Sat in 2000. Now Tue/Sat, 10–3. Letter after. Nobody says it."
+      },
+      "stage": null,
+      "name": "Hours"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the rain alley beside the shop, dry for once, the spackle buckets in sun. Nobody on them.",
+      "characters": [],
+      "props": [
+        "alley in sun",
+        "two empty buckets"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a narrow alley beside a shop in rare sunlight, two upturned spackle buckets with nobody on them, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Dry"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "The hours cut, shown as a card in a window. Nothing else.",
+  "layout": "tiers, portrait page"
+}

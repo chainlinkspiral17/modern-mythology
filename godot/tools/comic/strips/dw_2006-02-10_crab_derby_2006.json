@@ -1,0 +1,169 @@
+{
+  "id": "dw_2006-02-10_crab_derby_2006",
+  "title": "The Crab Derby, 2006",
+  "strip": "drift_wood",
+  "date": "2006-02-10",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2005–2006)",
+  "logline": "Twenty-second annual. Gully's married — no. Not yet. Gully's got Maria's name on his forearm in pen. The strip pretends not to see it.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. The twenty. GULLY's forearm as he holds it out: MARIA — 4PM written in pen. WOOD looking at the twenty, not the arm.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "holding out a twenty, a note on his forearm",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "looking at the twenty",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "twenty",
+        "pen on a forearm: MARIA — 4PM"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Twenty-two. You know the drill."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man in a fisherman's apron holding out a twenty-dollar bill, a name and a time written in pen on his forearm, another young man carefully looking only at the bill, muddy digital flats",
+        "negative": "",
+        "notes": "MARIA — 4PM on the arm. Letter after. The strip's first Maria."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood drawing. Two crabs, a cup. He adds nothing this year. He is being very careful about adding nothing.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing carefully",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "flyer"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a young man drawing a crab flyer with visible, slightly comic restraint",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully, checking a clock. Untying the apron.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "untying the apron, checking a clock",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "clock: 3:40"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Can you close up."
+        },
+        {
+          "who": "WOOD",
+          "text": "I don't work here."
+        },
+        {
+          "who": "GULLY",
+          "text": "Can you close up."
+        },
+        {
+          "who": "WOOD",
+          "text": "...Yes."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man untying his apron while glancing at a shop clock, another young man at the counter agreeing to something",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood behind the counter, alone in the apron, which does not fit. The dog. The ninth flyer on the wall. 4 PM.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "behind the counter in an ill-fitting apron",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "nine flyers",
+        "clock: 4:00"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin young man standing awkwardly behind a shop counter in a fisherman's apron that doesn't fit him, a dog at his feet, nine crab flyers on the wall, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "Maria enters as pen on a forearm. Wood closes up. The apron doesn't fit."
+}

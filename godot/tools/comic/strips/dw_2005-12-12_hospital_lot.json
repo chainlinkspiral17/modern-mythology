@@ -1,0 +1,137 @@
+{
+  "id": "dw_2005-12-12_hospital_lot",
+  "title": "The hospital parking lot",
+  "strip": "drift_wood",
+  "date": "2005-12-12",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Hospital Parking Lot",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2005–2006)",
+  "logline": "Never named. Wood in the Datsun in a lot with a different kind of sign. Five dailies; the book takes this one.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_newport_lot",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "A parking lot in Newport, December, rain. A sign, its words cropped by the panel edge — only 'VISITOR' shows. The Datsun. WOOD inside with BARNABY.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "in the car",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a sign cropped to VISITOR",
+        "Datsun",
+        "rain",
+        "a low institutional building, edge of panel"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old Datsun in a rainy parking lot in front of a low institutional building cropped by the panel edge, a sign showing only the word VISITOR, a young man and a small dog inside the car, muddy watercolor",
+        "negative": "",
+        "notes": "Never the word hospital. VISITOR and the building's edge. Letter after."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood, the pad on the wheel. Not drawing. The pad blank.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "pad on the wheel, blank",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "blank pad"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a blank drawing pad resting on a steering wheel, a young man's hands still on it, rain on the windshield",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The dog's chin on his arm.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "chin on his arm",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small dog resting its chin on a young man's forearm inside a parked car, rain, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The lot. The Datsun, small. The building, still cropped. The sign. Nothing happens. This is the whole daily.",
+      "characters": [],
+      "props": [
+        "lot",
+        "Datsun, small",
+        "building edge",
+        "rain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wide rainy parking lot with a small old Datsun parked before a cropped institutional building and a VISITOR sign, nothing happening, muddy watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "The father's illness, rendered as a parking lot. The strip never enters the building."
+}

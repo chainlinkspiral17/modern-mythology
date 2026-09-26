@@ -1,0 +1,113 @@
+{
+  "id": "dw_2005-01-09_the_rain_2005",
+  "title": "Sunday · the Rain, 2005",
+  "strip": "drift_wood",
+  "date": "2005-01-09",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Rain",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2005–2006)",
+  "logline": "Eighth January. The first Rain that the watercolor gets right. Three tiers. Nothing else.",
+  "cast": [],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the beach in rain. The wash controlled now — rain as a gray veil, the surf a white line, the sand a mirror.",
+      "characters": [],
+      "props": [
+        "rain veil",
+        "surf line",
+        "wet sand"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a Pacific Northwest beach in January rain in controlled watercolor: rain as a gray veil, the surf a white line, wet sand mirroring a white sky, ink line beneath, no figures",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Veil"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the spruce grove. Green and black kept separate this time. A man and a dog, small, at its foot.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "small",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "small",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "spruce grove"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a dark spruce grove in watercolor with the greens and blacks kept clean, a small man and a small dog at its foot in rain, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Grove"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the two of them from behind, walking home up the beach, the rain thinning — the same three tiers as January 2004, done right.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "from behind",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "beach",
+        "thinning rain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man and a dog from behind walking up a rainy beach as the rain thins, controlled gray and sea-green watercolor, no words",
+        "negative": "",
+        "notes": "A deliberate redo of the January 2004 Sunday. Same three tiers; the reader compares."
+      },
+      "stage": null,
+      "name": "Home"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "The 2004 Rain redone a year later, competent. The book runs them a hundred pages apart.",
+  "layout": "tiers, portrait page"
+}

@@ -1,0 +1,170 @@
+{
+  "id": "dw_2005-07-04_the_fourth_2005",
+  "title": "The Fourth, 2005",
+  "strip": "drift_wood",
+  "date": "2005-07-04",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Fourth on the Bay",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2005–2006)",
+  "logline": "White fireworks. Gully's dock. Wood leaves early. The strip doesn't say where he goes.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The dock, night, crowded, fireworks white on blue. GULLY pouring. WOOD on the steps, BARNABY, but Wood is standing up. Coat on.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "pouring",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "standing, coat on",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "fireworks",
+        "crowd",
+        "coat"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a crowded dock at night under white fireworks on a blue watercolor sky, a young man in an apron pouring coffee, another young man standing on the shack steps already wearing his coat, a small dog",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Gully, over the crowd.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "calling over",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Finale's in ten."
+        },
+        {
+          "who": "WOOD",
+          "text": "I know."
+        },
+        {
+          "who": "GULLY",
+          "text": "...Okay."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man in an apron calling across a crowd to a friend who is leaving, fireworks light",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood and the dog walking up from the dock into the dark, the fireworks behind them lighting the road white.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "walking away",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "road",
+        "fireworks light from behind"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man and a small dog walking up a dark road away from a dock, fireworks behind them lighting the road white, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The road. A small hospital-district sign at the highway: NEWPORT 22. He turns north. The finale goes off behind him, white, and he doesn't look.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "turning north, small",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "sign: NEWPORT 22",
+        "fireworks finale, behind"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a lone figure and a dog turning north at a dark highway junction beneath a road sign, a fireworks finale bursting white far behind them, watercolor, no words",
+        "negative": "",
+        "notes": "NEWPORT 22 — the hospital is in Newport. Letter after. Nothing else is said."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "He leaves before the finale, north. The strip's first Fourth he doesn't watch."
+}
