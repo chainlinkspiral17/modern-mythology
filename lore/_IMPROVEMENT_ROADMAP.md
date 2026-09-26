@@ -2923,6 +2923,22 @@ CharLayer for bare keys that cross eras (`miriam`); vol1's chorus
 Lena's prompt says 2050s and vol7's wiki said 2025 — the user
 ruled the 2050s (2026-09-26); both wikis are rewritten to it.
 
+**2026-09-26 · HERO STUDIO · the recovered batch.** The user's 60
+Meshy models of 2026-09-25 never reached the game (the runner's
+manifest and stills were lost with the clone); `meshy_recover.py
+fetch-all` pulled them into `concept/meshy/recovered/<task_id>`,
+and `godot/tools/recovered_mapping_2026-09-26.txt` (on the meshy
+branch) names 48 of them from the thumbnails — the batch ran in
+roster order — and `assign` moves them to `heroes/<slug>.glb`.
+**The five left in `recovered/` are the user's to keep** (four
+first-versions of redone characters — Douglas, Jimmy, Rick, Curtis
+— and a younger Alice Newsom with a XIII sigil on her skirt): "keep
+there for now, I may use them for something." Do NOT clean that
+folder up or assign them without the user. NEXT there: the
+green-skirt Alice as a look slot if the user wants both; the 8
+recovered GLBs without thumbnails, if any, need naming by eye in
+the runner's viewer.
+
 NEXT (draft 39): small_wood_road's second draft (it is template +
 props: the house's window lit, a porch light, the mailboxes'
 reflectors, a car in the drive); the "door-like polygons" — ask the
