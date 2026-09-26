@@ -1,0 +1,131 @@
+{
+  "id": "dw_2005-06-03_last_bell_2005",
+  "title": "Last Bell, 2005",
+  "strip": "drift_wood",
+  "date": "2005-06-03",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Last Bell",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004–2008 · deepening)",
+  "logline": "School lets out. Wood is at the hospital in Newport at 3:05. The bell rings in a panel he isn't in.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_newport_lot",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Small Wood High, 3:05 PM, the bell, kids pouring out. Nobody we know. The strip draws it anyway.",
+      "characters": [],
+      "props": [
+        "school",
+        "students",
+        "bell"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "BRRRRING",
+      "image": {
+        "prompt": "a small-town high school at the last bell with students pouring out, nobody in particular, muddy digital flats, a bell sound drawn jagged",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "wide",
+      "composition": "Newport. The lot with the VISITOR sign. The Datsun. WOOD in it with BARNABY. 3:05 on the dash clock.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "in the car",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "VISITOR sign",
+        "dash clock: 3:05"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old Datsun in a parking lot beside a VISITOR sign, a man and a dog inside, the dashboard clock reading 3:05",
+        "negative": "",
+        "notes": "Same minute, two places. The bell rings in a town he isn't in."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood, listening to nothing. He can't hear it from here.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a man in a parked car listening for something he can't hear, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The two panels side by side conceptually — the strip draws the lot again, wider, the building cropped, and in the sky, very faint, the bell's jagged shape from panel 1, as if it carried.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "in the car, small",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lot",
+        "building edge",
+        "a faint bell shape in the sky"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wide rainy parking lot with a small old Datsun before a cropped institutional building, and very faintly in the sky the jagged shape of a distant bell sound, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats; Sundays in watercolor, improving",
+    "palette": "limited, muddy; Sundays gray-green, rust, one warm",
+    "paper": "bristol; the browser; newsprint from 2008"
+  },
+  "notes": "Last Bell rung in a town he isn't in. The father, again, as a parking lot."
+}

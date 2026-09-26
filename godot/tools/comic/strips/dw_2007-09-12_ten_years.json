@@ -1,0 +1,148 @@
+{
+  "id": "dw_2007-09-12_ten_years",
+  "title": "Ten years",
+  "strip": "drift_wood",
+  "date": "2007-09-12",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Anniversary",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004–2008 · deepening)",
+  "logline": "Ten. The corn. Forty thousand people watching a man eat corn at a drafting table. He does it anyway.",
+  "cast": [
+    "wood_26",
+    "barnaby",
+    "extra_stick_chorus"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. Corn. WOOD. BARNABY. The chorus, thirty, silent, watching a tray of corn.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_chorus",
+          "pose": "thirty, silent",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "corn"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man at a drafting table with a tray of corn, a dog, thirty small stick figures crowded at the back of the panel silently watching the corn, muddy flats",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood eating corn. Looking at #1.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "eating, looking at the wall",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "#1 on the wall"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man eating corn while looking at a yellowed comic strip on his wall",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The chorus. One sign, small: happy anniversary.",
+      "characters": [
+        {
+          "id": "extra_stick_chorus",
+          "pose": "one small sign",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "sign: happy anniversary"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a crowd of small stick figures with one holding a tiny sign",
+        "negative": "",
+        "notes": "lowercase, no punctuation: happy anniversary. Letter after."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Wood, seeing the sign. The panel holds. The dog. The corn. The strip's tenth birthday is a stick figure being kind.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "looking at the sign",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_chorus",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man at a drafting table looking at a crowd of stick figures where one holds a tiny sign, a dog, a tray of corn, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats; Sundays in watercolor, improving",
+    "palette": "limited, muddy; Sundays gray-green, rust, one warm",
+    "paper": "bristol; the browser; newsprint from 2008"
+  },
+  "notes": "Ten. The chorus is kind once."
+}

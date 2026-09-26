@@ -1,0 +1,139 @@
+{
+  "id": "dw_2006-06-02_last_bell_2006",
+  "title": "Last Bell, 2006",
+  "strip": "drift_wood",
+  "date": "2006-06-02",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Last Bell",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004–2008 · deepening)",
+  "logline": "Wood at the frame shop, cutting a diploma mat. Small Wood High, class of 2006. The name on it is nobody's.",
+  "cast": [
+    "wood_26",
+    "extra_owner_heceta"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The frame shop, June. A diploma on the counter: SMALL WOOD HIGH SCHOOL · 2006. WOOD cutting a mat for it. The OWNER on the phone.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "cutting a mat",
+          "expression": ""
+        },
+        {
+          "id": "extra_owner_heceta",
+          "pose": "on the phone",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "diploma",
+        "mat cutter"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin man cutting a mat for a high school diploma on a frame-shop counter, the owner on the phone behind him, muddy digital flats",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The diploma. A name. The strip smudges it. Class of 2006.",
+      "characters": [],
+      "props": [
+        "diploma with a smudged name"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a high school diploma with the graduate's name smudged into illegibility and the year 2006 clear",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood holding the mat up to the light. Cream and green. School colors. He knows them.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "holding up a mat",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "cream and green mat"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Cream and green. They haven't changed the colors."
+        },
+        {
+          "who": "OWNER",
+          "text": "(phone) —no, Tuesday—"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man holding a cream-and-green double mat up to the window light in a frame shop",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The framed diploma on the counter, done. Wood looking at it a beat too long. Then the next ticket. The bell, off-page, rings somewhere.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "looking at the framed diploma",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "framed diploma",
+        "next ticket"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a framed high school diploma on a shop counter, a thin man looking at it a moment too long before reaching for the next job ticket, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats; Sundays in watercolor, improving",
+    "palette": "limited, muddy; Sundays gray-green, rust, one warm",
+    "paper": "bristol; the browser; newsprint from 2008"
+  },
+  "notes": ""
+}

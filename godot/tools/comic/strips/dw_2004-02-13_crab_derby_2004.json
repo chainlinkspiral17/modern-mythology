@@ -1,0 +1,158 @@
+{
+  "id": "dw_2004-02-13_crab_derby_2004",
+  "title": "The Crab Derby, 2004",
+  "strip": "drift_wood",
+  "date": "2004-02-13",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004–2008 · deepening)",
+  "logline": "Twentieth annual. Two crabs, a cup — and the flyer is drawn on the tablet for the first time. It looks wrong. Gully says so.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. WOOD with a printed flyer — drawn digitally, the crab's hatching replaced by a gray fill. GULLY holding it at arm's length. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "holding out a printed flyer",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "holding it at arm's length",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a printed flyer with flat gray fills"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "What happened to him."
+        },
+        {
+          "who": "WOOD",
+          "text": "He's digital. Twenty years, I thought—"
+        },
+        {
+          "who": "GULLY",
+          "text": "He's gray."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky man in an apron holding a printed flyer at arm's length with a skeptical face, the crab on it filled with flat gray instead of hatching, a thin man beside him, a dog, muddy digital flats",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The printed crab. Flat. The nine hand-drawn ones on the wall behind it, alive.",
+      "characters": [],
+      "props": [
+        "the flat crab",
+        "nine hatched crabs on the wall"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a flat gray digital crab on a printout held up in front of a wall of nine richly hatched hand-drawn crab flyers",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood taking the flyer back. Getting a pen from Gully's register cup. Hatching over the print by hand on the counter.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "hatching over the printout by hand",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "pen",
+        "printout"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin man hatching by hand over a printed flyer on a shop counter with a pen from the register cup, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The tenth flyer on the wall: printed, then hatched over. A hybrid. Gully pins it. Says nothing. The strip's position on the new tools, in one flyer.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "pinning",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "ten flyers"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Twenty bucks."
+        },
+        {
+          "who": "WOOD",
+          "text": "Twenty bucks."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "ten crab flyers in a row on a shingle wall, the newest a printout hatched over by hand, a man in an apron pinning it, muddy flats",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats; Sundays in watercolor, improving",
+    "palette": "limited, muddy; Sundays gray-green, rust, one warm",
+    "paper": "bristol; the browser; newsprint from 2008"
+  },
+  "notes": "The digital crab, corrected by hand. The strip's stance on 2004."
+}

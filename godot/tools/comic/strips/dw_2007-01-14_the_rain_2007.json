@@ -1,0 +1,89 @@
+{
+  "id": "dw_2007-01-14_the_rain_2007",
+  "title": "Sunday · the Rain, 2007",
+  "strip": "drift_wood",
+  "date": "2007-01-14",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Rain",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004–2008 · deepening)",
+  "logline": "Tenth January. The first Rain with forty thousand readers. The strip draws it exactly as it drew it for three hundred.",
+  "cast": [],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the beach in rain. Controlled watercolor. No figures this year.",
+      "characters": [],
+      "props": [
+        "rain",
+        "surf"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a Pacific Northwest beach in January rain in controlled gray and sea-green watercolor, no figures, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Veil"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the spruce grove. Nobody at its foot.",
+      "characters": [],
+      "props": [
+        "spruce"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a dark spruce grove in rain, watercolor, empty, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Grove"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the beach, later, the rain thinning, and two sets of prints in the wet sand going up it — a man's and a dog's — but not the man or the dog.",
+      "characters": [],
+      "props": [
+        "footprints and paw prints"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a rainy beach with the rain thinning and two sets of tracks in the wet sand, a man's and a dog's, leading away, no figures, watercolor, no words",
+        "negative": "",
+        "notes": "The first Rain with an audience. The strip removes itself and leaves tracks."
+      },
+      "stage": null,
+      "name": "Tracks"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats; Sundays in watercolor, improving",
+    "palette": "limited, muddy; Sundays gray-green, rust, one warm",
+    "paper": "bristol; the browser; newsprint from 2008"
+  },
+  "notes": "Forty thousand readers get the Rain with nobody in it.",
+  "layout": "tiers, portrait page"
+}

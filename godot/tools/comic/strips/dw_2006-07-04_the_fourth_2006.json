@@ -1,0 +1,129 @@
+{
+  "id": "dw_2006-07-04_the_fourth_2006",
+  "title": "Sunday · the Fourth, 2006",
+  "strip": "drift_wood",
+  "date": "2006-07-04",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "one",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Fourth on the Bay",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004–2008 · deepening)",
+  "logline": "White fireworks. The dock. Maria in the crowd for the first time, next to Gully at the machine. The chair empty.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "extra_maria",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the dock, night, crowded, white fireworks on Prussian blue. GULLY pouring; MARIA beside him handing out cups — the first Fourth with her. WOOD on the steps with BARNABY.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "pouring",
+          "expression": ""
+        },
+        {
+          "id": "extra_maria",
+          "pose": "handing cups",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "steps",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "fireworks",
+        "cups",
+        "crowd"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a crowded dock at night under white fireworks on a deep blue watercolor sky, a man in an apron pouring coffee with a practical woman beside him handing out cups, a thin man on shack steps with an old dog",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Two at the machine"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the lawn chair under the eave. Empty. Maria glancing at it. Gully shaking his head, small: not yet.",
+      "characters": [
+        {
+          "id": "extra_maria",
+          "pose": "glancing at the chair",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "small head-shake",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lawn chair"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a practical woman glancing at an empty green-webbed lawn chair under a shack's eave, a man beside her giving a tiny head-shake, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Not yet"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the finale. White on blue. Two at the machine. One on the steps with a dog. One chair.",
+      "characters": [],
+      "props": [
+        "finale",
+        "the dock",
+        "the chair"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a fireworks finale in white over a blue night bay above a crowded dock, a couple at a shack door, a man and a dog on the steps, an empty lawn chair under the eave, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "One chair"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats; Sundays in watercolor, improving",
+    "palette": "limited, muddy; Sundays gray-green, rust, one warm",
+    "paper": "bristol; the browser; newsprint from 2008"
+  },
+  "notes": "Maria's first Fourth. The chair: not yet.",
+  "layout": "tiers, portrait page"
+}
