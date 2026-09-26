@@ -1,0 +1,121 @@
+{
+  "id": "dw_2020-03-26_vacancy",
+  "title": "Vacancy",
+  "strip": "drift_wood",
+  "date": "2020-03-26",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Empty Town",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Empty Town · deepening)",
+  "logline": "Thursday. The motel. VACANCY lit, the lot empty, no guests for a week. Wood at the desk at 3 AM with nobody to audit. The hum line runs under an empty lobby for four panels.",
+  "cast": [
+    "wood_34"
+  ],
+  "location": "dw_motel_desk",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The motel from the lot, 3 AM. VACANCY lit. Every door closed. No cars. The office lit, a figure at the desk.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "at the desk, small",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "VACANCY",
+        "the empty lot",
+        "hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a motel at 3 AM with a lit VACANCY sign, every room dark and the lot empty, the office lit with a small figure at the desk, a flat line beneath the panel",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The desk. The register: a page of blank lines. The bell. WOOD drawing.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a blank register page",
+        "hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a motel desk with a register open to blank lines and a night clerk drawing, a flat line beneath",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The ice machine down the hall, humming for nobody. The line.",
+      "characters": [],
+      "props": [
+        "the ice machine",
+        "hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a motel hallway with an ice machine humming at the end and nobody anywhere, a flat line beneath",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The motel from the lot again. Dawn. VACANCY still lit; nobody came. The figure gone from the office. The line, still.",
+      "characters": [],
+      "props": [
+        "VACANCY at dawn",
+        "hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, the same motel at dawn with the VACANCY sign still lit and the office empty, a flat line beneath the panel, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Wordless. VACANCY for nobody. The hum for nobody."
+}

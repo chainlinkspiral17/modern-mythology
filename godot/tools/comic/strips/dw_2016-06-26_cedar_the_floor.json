@@ -1,0 +1,91 @@
+{
+  "id": "dw_2016-06-26_cedar_the_floor",
+  "title": "Sunday · Cedar, iii · the floor",
+  "strip": "drift_wood",
+  "date": "2016-06-26",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Cedar",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Cedar · deepening)",
+  "logline": "The third of twelve. The mill floor as forest: the alders of 2008 are trees now, the saw benches are stumps, the roof is canopy. A trail through it. Nobody on the trail.",
+  "cast": [],
+  "location": "dw_cedar_mill",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the mill's interior as a forest floor — the saw benches gone to mossed stumps, the alders through the boards now forty feet tall, the half-gone roof become canopy. A trail. Light in shafts.",
+      "characters": [],
+      "props": [
+        "stumps",
+        "canopy",
+        "a trail"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rust, a ruined mill interior transformed into a forest where the saw benches have become moss-covered stumps and alders reach a canopy where the roof was, a faint trail, shafts of light, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "The floor"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: a stump, close: the saw bench's iron still in it, the growth rings around the iron.",
+      "characters": [],
+      "props": [
+        "a stump with iron in it"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rust, close-up of a mossed stump with an old iron saw-bench fitting embedded in it and growth rings formed around the metal, no words",
+        "negative": "",
+        "notes": "The iron is real; the wood grew around it. The rule of the sequence."
+      },
+      "stage": null,
+      "name": "Iron"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the trail going on into the trees where the loading dock was. The 1994 group photo's spot. Nobody. Held.",
+      "characters": [],
+      "props": [
+        "the trail",
+        "where the loading dock was"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rust, a forest trail leading into trees where a loading dock once stood, empty, no words",
+        "negative": "",
+        "notes": "The 1994 group photo's ground (ro_2022-11-13)."
+      },
+      "stage": null,
+      "name": "Loading dock"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "Cedar iii. Stumps with iron in them.",
+  "layout": "tiers, portrait page"
+}

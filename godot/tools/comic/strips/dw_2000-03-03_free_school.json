@@ -1,0 +1,172 @@
+{
+  "id": "dw_2000-03-03_free_school",
+  "title": "Free school",
+  "strip": "drift_wood",
+  "date": "2000-03-03",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Too Good For It",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Too Good For It · deepening)",
+  "logline": "Friday. Gully's uncle's shack. Gully hears. 'You turned down free school.' 'It's not free.' 'It's free.' 'It costs four years.' Gully looks at the bait tank for four panels' worth of a beat.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack. GULLY, seventeen, at the bait tank with a net. WOOD on a crate. BARNABY.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "at the bait tank",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "on a crate",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the bait tank",
+        "a net"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "You turned down free school."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's not free."
+        },
+        {
+          "who": "GULLY",
+          "text": "It's free."
+        },
+        {
+          "who": "WOOD",
+          "text": "It costs four years."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a stocky teenager with a net at a bait tank in a shack, a thin teenager on a crate, a small dog",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Gully looking into the tank. The crawlers. A long beat.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "looking into the tank",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the tank"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, close-up of a stocky teenager staring down into a bait tank, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Still looking. The net not moving.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "still looking",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, the same close-up of a teenager looking into a bait tank, unchanged, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Gully turning. Wood waiting for it.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "turning",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "waiting",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Four years is nothing, Woody."
+        },
+        {
+          "who": "WOOD",
+          "text": "Easy for you."
+        },
+        {
+          "who": "GULLY",
+          "text": "Yeah. It is. That's what I'm telling you."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a stocky teenager turning from a bait tank to say something plain to a thin teenager on a crate",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Four years is nothing.' Two panels of the tank."
+}

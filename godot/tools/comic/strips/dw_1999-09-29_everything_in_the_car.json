@@ -1,0 +1,138 @@
+{
+  "id": "dw_1999-09-29_everything_in_the_car",
+  "title": "Everything in the car",
+  "strip": "drift_wood",
+  "date": "1999-09-29",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Newport",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Newport · deepening)",
+  "logline": "Wednesday, week two. A classmate asks what's in the box on the Datsun's back seat. 'Everything.' The novel rides to Newport every day and never comes in.",
+  "cast": [
+    "wood_20"
+  ],
+  "location": "dw_newport_lot",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The Newport lot. The Datsun. A cardboard box on the back seat, taped. A CLASSMATE at the window. WOOD getting out.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "getting out",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a taped box on the back seat"
+      ],
+      "balloons": [
+        {
+          "who": "CLASSMATE",
+          "text": "What's in the box?"
+        },
+        {
+          "who": "WOOD",
+          "text": "Everything."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a rusted small car in a college lot with a taped cardboard box on its back seat, a classmate peering in the window, a young man getting out",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The box through the glass. Pages, a rubber band, the top page face up: a title in the display face, unreadable, and page one.",
+      "characters": [],
+      "props": [
+        "the box: a manuscript"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, close-up through a car window of a cardboard box of manuscript pages held by a rubber band, a title on the top page unreadable",
+        "negative": "",
+        "notes": "The novel. Title reserved. It rides in the car through 2011."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The classmate, not asking further. Wood locking the door. Twice.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "locking the door twice",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CLASSMATE",
+          "text": "...Cool."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's not. It's just everything."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a young man locking a car door twice while a classmate loses interest",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The car, locked, in Lot C. The box in the back seat. Wood walking to the building. The box stays. Every day.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "walking away",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the box, staying"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a young man walking away from a locked rusted car in a lot with a cardboard box visible on its back seat, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen now — the weekday deadline teaches the hand to commit; still xeroxed, still black and white",
+    "palette": "",
+    "paper": "the college paper's newsprint; the digest's quarter-letter xerox"
+  },
+  "notes": "'Everything.' The novel rides in and never comes in."
+}

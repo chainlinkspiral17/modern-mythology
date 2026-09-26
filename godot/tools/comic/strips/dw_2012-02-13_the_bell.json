@@ -1,0 +1,186 @@
+{
+  "id": "dw_2012-02-13_the_bell",
+  "title": "The bell",
+  "strip": "drift_wood",
+  "date": "2012-02-13",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Night Audit",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Night Audit · deepening)",
+  "logline": "Monday. A guest rings the desk bell four times, once per panel, for four different things. Wood answers each. The hum line under all of it. The strip is about a bell.",
+  "cast": [
+    "wood_34",
+    "motel_guest"
+  ],
+  "location": "dw_motel_desk",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The desk, 1 AM. A GUEST in a bathrobe, hand on the bell. WOOD. The hum line.",
+      "characters": [
+        {
+          "id": "motel_guest",
+          "pose": "hand on the bell",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the bell",
+        "hum line"
+      ],
+      "balloons": [
+        {
+          "who": "GUEST",
+          "text": "Towels."
+        },
+        {
+          "who": "WOOD",
+          "text": "Towels."
+        }
+      ],
+      "caption": "",
+      "sfx": "ding",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a motel guest in a bathrobe ringing a desk bell before a night clerk, a flat line beneath the panel",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Same. 1:40.",
+      "characters": [
+        {
+          "id": "motel_guest",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "hum line"
+      ],
+      "balloons": [
+        {
+          "who": "GUEST",
+          "text": "Ice."
+        },
+        {
+          "who": "WOOD",
+          "text": "It fills at two."
+        }
+      ],
+      "caption": "",
+      "sfx": "ding",
+      "image": {
+        "prompt": "razor-sharp brush and ink, the same guest ringing the same bell again, a flat line beneath",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Same. 2:15.",
+      "characters": [
+        {
+          "id": "motel_guest",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "hum line"
+      ],
+      "balloons": [
+        {
+          "who": "GUEST",
+          "text": "The hum."
+        },
+        {
+          "who": "WOOD",
+          "text": "That's the ice."
+        }
+      ],
+      "caption": "",
+      "sfx": "ding",
+      "image": {
+        "prompt": "razor-sharp brush and ink, the same guest at the bell a third time, the clerk patient, a flat line beneath",
+        "negative": "",
+        "notes": "The guest hears the hum line. The strip lets one guest hear it."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Same. 3:00. The guest, hand on the bell, not ringing it. Looking at the clerk who's drawing.",
+      "characters": [
+        {
+          "id": "motel_guest",
+          "pose": "hand on the bell, not ringing",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "hum line"
+      ],
+      "balloons": [
+        {
+          "who": "GUEST",
+          "text": "...What are you drawing."
+        },
+        {
+          "who": "WOOD",
+          "text": "A bell."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a guest with a hand resting on a desk bell without ringing it watching a night clerk draw, a flat line beneath",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "Four dings. 'That's the ice.' 'A bell.'"
+}

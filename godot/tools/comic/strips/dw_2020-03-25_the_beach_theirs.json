@@ -1,0 +1,137 @@
+{
+  "id": "dw_2020-03-25_the_beach_theirs",
+  "title": "The beach, theirs",
+  "strip": "drift_wood",
+  "date": "2020-03-25",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Empty Town",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Empty Town · deepening)",
+  "logline": "Wednesday. The beach with nobody on it in spring, which hasn't happened since 2006. The pup and Wood and the drift log. The strip is quietly, guiltily glad, and draws the gladness in the light.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The beach, March noon, empty to the horizon. WOOD on the drift log. BARNABY II at the tideline. The light kind.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "on the log",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "at the tideline",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the drift log"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a beach at noon empty to the horizon with a man on a bleached drift log and a small three-legged dog at the tideline, kind light, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood's face. The thing he's not supposed to feel. Drawn.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "the face",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of a man's face showing a quiet guilty contentment, no words",
+        "negative": "",
+        "notes": "The strip lets him feel it and doesn't forgive or condemn."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "wide",
+      "composition": "The pup running the whole beach. Nobody to avoid. The prints, two-one, from one end to the other.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "running the whole beach",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "prints"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a small three-legged dog running the full length of an empty beach leaving a two-one trail of prints, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The log. The man. The dog back, wet. The beach theirs. Nobody says whose it usually is.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "wet",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the beach, empty"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man on a drift log with a wet three-legged dog beside him on a completely empty beach, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Wordless. The gladness drawn in the light."
+}

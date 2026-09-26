@@ -1,0 +1,100 @@
+{
+  "id": "dw_2019-06-30_the_dog_at_a_third",
+  "title": "Sunday · the dog, at a third",
+  "strip": "drift_wood",
+  "date": "2019-06-30",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "A Third of a Page",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (A Third of a Page · deepening)",
+  "logline": "The pup on the beach, at a third. He doesn't fit. His tail's in tier two. The strip draws him across the cut and lets the reader see what the grid does to a dog.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff_small",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1 (a third): the beach, the pup running — his head and front legs in this tier, the rest of him cut by the tier's bottom edge.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "head and front legs",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the beach"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rust, a very shallow tier of a beach with a small three-legged dog running, only its head and front legs visible before the tier's bottom edge cuts it, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Head"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the pup's hind leg and tail, continuing from above, on the same beach. The cut runs through him.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "hind leg and tail",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rust, a very shallow tier showing a small dog's single hind leg and tail continuing from the tier above, the same beach, no words",
+        "negative": "",
+        "notes": "The dog drawn across the tier cut. The grid does this to him."
+      },
+      "stage": null,
+      "name": "Tail"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the sea, at a third. A band of gray. Held.",
+      "characters": [],
+      "props": [
+        "the sea, a band"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rust, a very shallow band of gray sea, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Sea"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "The dog across the cut.",
+  "layout": "tiers, portrait page"
+}

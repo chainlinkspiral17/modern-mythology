@@ -1,0 +1,155 @@
+{
+  "id": "dw_1999-09-30_two_hundred",
+  "title": "Two hundred",
+  "strip": "drift_wood",
+  "date": "1999-09-30",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Newport",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Newport · deepening)",
+  "logline": "Thursday. The print shop runs two hundred copies of five strips. The tech folds one wrong. Wood keeps the wrong one. The first misprint in the run; he's still got it in 2027.",
+  "cast": [
+    "wood_20",
+    "extra_print_tech"
+  ],
+  "location": "dw_college_print_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The college print shop. The machine running. A PRINT TECH in an apron. WOOD watching the copies come out: quarter-letter sheets, five strips each.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "watching",
+          "expression": ""
+        },
+        {
+          "id": "extra_print_tech",
+          "pose": "at the machine",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the copier",
+        "quarter-letter sheets"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a college print shop with a photocopier running and a tech in an apron, a young man watching quarter-letter sheets of comic strips come out",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Two hundred, in a stack. The tech folding. One folded backward: the cover inside, the last strip out.",
+      "characters": [
+        {
+          "id": "extra_print_tech",
+          "pose": "folding one wrong",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a misfolded digest"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, close-up of a stack of small folded zines with one folded backward so its cover faces inward",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The tech reaching to refold it. Wood's hand, first.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "taking the misfold",
+          "expression": ""
+        },
+        {
+          "id": "extra_print_tech",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "TECH",
+          "text": "I'll fix that one."
+        },
+        {
+          "who": "WOOD",
+          "text": "Leave it."
+        },
+        {
+          "who": "TECH",
+          "text": "It's backwards."
+        },
+        {
+          "who": "WOOD",
+          "text": "One of them should be."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a young man taking a misfolded zine from a print tech's hand before it can be refolded",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood with the misfold in his coat pocket. The stack of a hundred and ninety-nine under his arm. The rack at the laundromat, tomorrow.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "the misfold in his pocket",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "199 digests"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a young man leaving a print shop with a stack of zines under his arm and one folded zine tucked into his coat pocket, no words",
+        "negative": "",
+        "notes": "The backward digest: the corkboard inventory should get it (1999, the misfold)."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen now — the weekday deadline teaches the hand to commit; still xeroxed, still black and white",
+    "palette": "",
+    "paper": "the college paper's newsprint; the digest's quarter-letter xerox"
+  },
+  "notes": "Two hundred. One backwards, kept."
+}

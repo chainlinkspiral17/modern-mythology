@@ -1,0 +1,140 @@
+{
+  "id": "dw_2000-03-06_toast",
+  "title": "Toast",
+  "strip": "drift_wood",
+  "date": "2000-03-06",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Too Good For It",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Too Good For It · deepening)",
+  "logline": "Monday. A hand sets toast on the desk beside the pinned letters. A voice says 'Arthur.' Nothing else. The strip never draws her face; it draws the toast going cold beside the refusal.",
+  "cast": [
+    "wood_20",
+    "extra_mother",
+    "barnaby"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The bedroom door. A HAND — a woman's, a ring, a cardigan cuff — setting a plate of toast on the desk's corner. WOOD at the desk, not turning. BARNABY.",
+      "characters": [
+        {
+          "id": "extra_mother",
+          "pose": "a hand with toast",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "not turning",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a plate of toast"
+      ],
+      "balloons": [
+        {
+          "who": "MOTHER",
+          "text": "Arthur."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a woman's hand with a ring and a cardigan cuff setting a plate of toast on the corner of a desk where a young man sits without turning, a small dog on the bed",
+        "negative": "",
+        "notes": "The mother: a hand and a voice. Never a face. Says 'Arthur.'"
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The toast. The corkboard behind it: the three letters.",
+      "characters": [],
+      "props": [
+        "the toast",
+        "three letters"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, close-up of a plate of toast on a desk with three pinned letters on a corkboard behind it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The hand gone. The door. Wood at the desk. The toast.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "at the desk",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the toast"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a young man at a desk with a plate of toast beside him and an empty doorway behind, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "close",
+      "composition": "The toast, cold. Butter set. The dog's nose at the plate's edge. Wood's pen moving on the strip — this strip.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "nose at the plate",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "cold toast"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, close-up of a plate of cold toast with a small dog's nose at its edge and a pen drawing in the corner of the panel, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The mother's hand. 'Arthur.' The toast goes cold."
+}

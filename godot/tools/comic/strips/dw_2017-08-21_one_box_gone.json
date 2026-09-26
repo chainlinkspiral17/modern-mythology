@@ -1,0 +1,135 @@
+{
+  "id": "dw_2017-08-21_one_box_gone",
+  "title": "One box gone",
+  "strip": "drift_wood",
+  "date": "2017-08-21",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Lockboxes",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Lockboxes · deepening)",
+  "logline": "Monday. The end of the summer. One lockbox gone from one door — the strip doesn't know why and won't guess. Eleven doors. The empty knob drawn as carefully as the box was.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Main street, late August. WOOD and BARNABY II. A door with a bare knob where a lockbox hung all summer. A pale rectangle on the paint.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a bare knob",
+        "a pale rectangle"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a house door with a bare doorknob and a pale rectangle on the paint where a lockbox hung, a man and a small dog on the sidewalk",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The knob. The rectangle. The screw holes.",
+      "characters": [],
+      "props": [
+        "the knob",
+        "screw holes"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of a doorknob with a pale unpainted rectangle beside it and two small screw holes",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood looking at the door. Not her porch — a different door. The strip is careful: not hers.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the door"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man looking at a house door from the sidewalk, no words",
+        "negative": "",
+        "notes": "Not Chloe's parents' house. A different door. The strip is explicit in composition: the wrong porch shape."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Walking on. Eleven boxes on eleven doors behind him. The strip counted twelve in July. It counts eleven now and says nothing.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "walking on",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "eleven lockboxes"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man and a small three-legged dog walking down a street of old houses with key lockboxes on eleven of twelve doors, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "Eleven. Not her door. Why: not known."
+}

@@ -1,0 +1,154 @@
+{
+  "id": "dw_2007-01-09_banner_as_weather",
+  "title": "The banner, as weather",
+  "strip": "drift_wood",
+  "date": "2007-01-09",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Forty Thousand",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Forty Thousand · deepening)",
+  "logline": "Tuesday. The ringtone banner across the top of the site, drawn as a weather front: a bright bank of cloud over every panel, the way rain sits over the bay. Nobody in the strip looks up.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. The top fifth of the panel: a bright, blank, glowing bank — the banner, as weather. Below it, ordinary: GULLY, WOOD (full size now), BARNABY.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "full size",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a bright bank across the top"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a bait-shop counter scene with a bright blank glowing band across the top fifth of the panel like a bank of cloud, two men and a dog beneath it not looking up",
+        "negative": "",
+        "notes": "The banner as weather: a glowing blank strip across the top of every panel this week. Draw it like cloud, not like an ad."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The dock. The bright bank over the bay, where the rain would be. Wood on the steps.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "on the steps",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the bright bank over the bay"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a dock and bay with a bright glowing band across the top of the panel in place of cloud, a thin man on shack steps beneath",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The garage. The bank over the drafting table. Wood drawing under it as under a lamp.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the bright bank"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a man drawing at a garage table beneath a bright glowing band across the top of the panel",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Gully's again. Gully looking up, once — the only one who does. Then back to the counter.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "looking up, once",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the bright bank"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "...Bright out."
+        },
+        {
+          "who": "WOOD",
+          "text": "Eight hundred a month of bright."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a stocky man in an apron glancing up at a bright glowing band across the top of the panel while a thin man on a stool does not",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "The banner as weather. Only Gully looks up."
+}

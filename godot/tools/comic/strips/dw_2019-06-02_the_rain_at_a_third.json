@@ -1,0 +1,95 @@
+{
+  "id": "dw_2019-06-02_the_rain_at_a_third",
+  "title": "Sunday · the Rain, at a third",
+  "strip": "drift_wood",
+  "date": "2019-06-02",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "A Third of a Page",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (A Third of a Page · deepening)",
+  "logline": "June, but the January composition — the garage sill, three jars — drawn to the third-page grid. The jars barely fit. The lower two-thirds of the page: the newspaper's ads, drawn in.",
+  "cast": [],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff_small",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1 (a third the usual height): the sill, three jars, rain. Cramped. The top jar's brushes cut off by the tier's top edge.",
+      "characters": [],
+      "props": [
+        "three jars, cramped"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rust, a very shallow tier showing three jars on a rainy windowsill with the brushes in the tallest jar cut off by the top edge, no words",
+        "negative": "",
+        "notes": "The Sunday is drawn at one-third height. The remaining two-thirds are the paper's ads, drawn as gray blocks."
+      },
+      "stage": null,
+      "name": "Sill, cramped"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the lamp on the table, the chair, and — because there's no room — no bed beneath. The pup's ear at the bottom edge.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "an ear at the edge",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the lamp",
+        "an ear"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rust, a very shallow tier with a lamp on a table and a chair and a small dog's ear just visible at the bottom edge, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "No room"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the ads. Drawn: gray blocks, a car dealership's shape, a tide table. The strip draws its own neighbors.",
+      "characters": [],
+      "props": [
+        "the ads, as gray blocks"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "gray ink blocks suggesting newspaper advertisements and a tide table, drawn as shapes without legible text, no words",
+        "negative": "",
+        "notes": "Two-thirds of the page: the paper's ads, drawn as shapes. Letter nothing."
+      },
+      "stage": null,
+      "name": "The ads"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "The Rain at a third. The ads drawn in.",
+  "layout": "tiers, portrait page"
+}

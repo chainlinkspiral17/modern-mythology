@@ -1,0 +1,156 @@
+{
+  "id": "dw_2014-08-04_the_spoon",
+  "title": "The spoon",
+  "strip": "drift_wood",
+  "date": "2014-08-04",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Catering",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Catering · deepening)",
+  "logline": "Monday of the kept week. The spoon. Fourteen times. The strip is a grid of spoons and Gully's face at the end of it.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. WOOD on the stool, drawing. BARNABY in the basket on the counter. GULLY.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "in the basket",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the basket"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "The consommé spoon. Not a soup spoon. Deeper bowl. Shorter handle. Silver, not plate — you could tell by the weight —"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a thin man drawing on a bait-shop stool while explaining something, an old dog in a basket on the counter, a stocky man in an apron",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The pad: a spoon. Drawn perfectly. Beside it: another. Another.",
+      "characters": [],
+      "props": [
+        "spoons"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of a pad with several precise ink drawings of the same spoon",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "wide",
+      "composition": "The pad, full: fourteen spoons in a grid. Every one exact. Every one the same.",
+      "characters": [],
+      "props": [
+        "fourteen spoons"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a drawing pad filled with a grid of fourteen identical precise ink drawings of a spoon",
+        "negative": "",
+        "notes": "Fourteen. Count them."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Gully, looking at the pad. Then at Wood. Then at the dog, who is asleep.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "looking at the pad",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the pad"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "You've drawn a spoon fourteen times."
+        },
+        {
+          "who": "WOOD",
+          "text": "It was a very good spoon."
+        },
+        {
+          "who": "GULLY",
+          "text": "...Sure."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a stocky man in an apron looking at a pad full of spoons then at the thin man who drew them",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "Fourteen spoons. 'It was a very good spoon.'"
+}

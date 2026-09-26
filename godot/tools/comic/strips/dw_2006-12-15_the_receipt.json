@@ -1,0 +1,128 @@
+{
+  "id": "dw_2006-12-15_the_receipt",
+  "title": "The receipt",
+  "strip": "drift_wood",
+  "date": "2006-12-15",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Two-Thirds",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Two-Thirds · deepening)",
+  "logline": "Friday. The rent, under the tavern's door, on time, with room to spare. The landlord's hand pushes a receipt back under. The first receipt in two years. Wood, small, reads it on his knees.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The alley. WOOD, two-thirds, kneeling at the tavern's back door, pushing an envelope under. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "small, kneeling",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "an envelope"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a small man kneeling at a tavern's back door in an alley pushing an envelope beneath it, a normal-sized dog beside him",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The door. A beat. A slip of paper coming back out under it, pushed by fingers.",
+      "characters": [],
+      "props": [
+        "a receipt coming out"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close-up of a slip of paper being pushed out from under a door by unseen fingers",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The receipt. PAID · DEC. A signature that is a blank shape.",
+      "characters": [],
+      "props": [
+        "the receipt"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close-up of a handwritten receipt reading PAID with a blank shape where a signature would be",
+        "negative": "",
+        "notes": "Letter after: PAID · DEC. The landlord's name stays blank."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood, small, on his knees in the alley, reading a receipt. The dog's chin on his shoulder — the dog is that much bigger. The garage door open behind them, the CRT glowing.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "on his knees, reading",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "chin on his shoulder",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the receipt",
+        "the CRT glow"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a small man on his knees in an alley reading a receipt while a normal-sized dog rests its chin on his shoulder, a garage door open behind with a monitor's glow, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "The first receipt. The dog's chin on his shoulder."
+}
