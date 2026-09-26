@@ -1,0 +1,27 @@
+{
+  "renders": [
+    {
+      "slug": "sheet_wood_17",
+      "file": "godot/assets/comic/vol10/sheets/sheet_wood_17.png",
+      "provider": "runway",
+      "kind": "character",
+      "tags": [
+        "character",
+        "era1",
+        "wood_17"
+      ],
+      "references": [],
+      "strip_id": null,
+      "date": null,
+      "format": null,
+      "lettered": true,
+      "seed": null,
+      "take": "1",
+      "prompt": "a clean reference sheet on white paper. Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. model sheet, three-quarter front, profile and back views plus four expression heads, of a gaunt seventeen-year-old boy in an oversized wool overcoat to the knee holding a bristol drawing pad flat against his chest, unkempt dark hair falling forward, sharp jaw, sneakers; expressions: fervent, deadpan, deflated, caught; labeled WOOD 1997. Neat hand-lettered labels are allowed on this sheet.",
+      "rendered_at": "2026-09-26T03:51:34+00:00",
+      "task_id": "1eea2a60-4527-4672-8e4c-8d21b0ad70cb",
+      "ratio": "2560:1440",
+      "model": "gpt_image_2"
+    }
+  ]
+}
