@@ -1,0 +1,90 @@
+{
+  "id": "dw_2009-10-11_lot_c_sunday",
+  "title": "Sunday · Lot C",
+  "strip": "drift_wood",
+  "date": "2009-10-11",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Sundays",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004–2011 · deepening)",
+  "logline": "The Datsun in Lot C, ten years on, in watercolor. The lot, the light pole, the security booth. The strip's first landscape of a parking lot.",
+  "cast": [],
+  "location": "dw_newport_lot",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: a community-college parking lot in October rain, mostly empty, one rusted small car under a light pole. LOT C on a sign.",
+      "characters": [],
+      "props": [
+        "the Datsun",
+        "LOT C sign"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, a nearly empty college parking lot in autumn rain with one rusted small car under a light pole and a sign, no people, no words",
+        "negative": "",
+        "notes": "LOT C, letter after."
+      },
+      "stage": null,
+      "name": "Lot"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the light pole's sodium glow in the rain, the car's roof beneath it.",
+      "characters": [],
+      "props": [
+        "sodium light"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, a sodium parking-lot light glowing orange in rain above a wet car roof, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Pole"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the security booth, dark, the clipboard on its hook through the glass. Held.",
+      "characters": [],
+      "props": [
+        "booth",
+        "clipboard"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, a small dark parking-lot security booth with a clipboard visible on a hook through its window, no words",
+        "negative": "",
+        "notes": "The 2001 guard's clipboard. He's gone; the clipboard isn't."
+      },
+      "stage": null,
+      "name": "Booth"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "Lot C as landscape. The clipboard still on its hook.",
+  "layout": "tiers, portrait page"
+}

@@ -1,0 +1,143 @@
+{
+  "id": "dw_2015-12-07_three_legs_4",
+  "title": "Three legs, iv",
+  "strip": "drift_wood",
+  "date": "2015-12-07",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Three Legs",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "The mudflats. The pup out on the mud where the carry was, a year ago. He doesn't know. Wood does. The strip draws the 2008 composition with a smaller dog in it.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_mudflats",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The mudflats at low tide from the bluff, December, the chimney across the bay, the tide line. A man and a small dog far out. The composition of 2008 and of 'The Carry.'",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "far out",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "far out, small",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the chimney",
+        "the tide line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "tidal mudflats at low tide seen from a bluff in December with a distant chimney across the bay and a man and a small three-legged dog far out on the mud, razor-sharp ink with a gray wash, no words",
+        "negative": "",
+        "notes": "The 'Carry' composition (dw_2014-11-16) with the pup instead of the blanket."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The pup, nose in a channel, soaked, delighted. Three prints behind him in the mud.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "nose in a channel",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "three-legged prints"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a small three-legged puppy with its nose in a tidal channel and a trail of uneven prints behind it, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood standing where he stood. Looking at the mud. The pup coming back to him at full scuttle.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "standing, looking at the mud",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "returning at speed",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin man standing on mudflats looking down at the mud as a small three-legged dog comes running back to him, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The two of them walking back toward the bluff, from behind, the pup ahead. The tide coming in behind them over the prints. The strip's first December on the flats since.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "from behind",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "ahead",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the tide"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man and a small three-legged dog walking back toward a bluff across mudflats seen from behind with the tide sliding in over their prints, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "Wordless. Where the carry was. The pup doesn't know."
+}

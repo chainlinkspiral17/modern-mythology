@@ -1,0 +1,137 @@
+{
+  "id": "dw_2014-05-12_the_rsvp",
+  "title": "The RSVP",
+  "strip": "drift_wood",
+  "date": "2014-05-12",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Invitation",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014 · deepening)",
+  "logline": "The reply card. A pen. The dog's chin on his foot. He checks 'will attend' and the strip gives the checkmark a whole panel.",
+  "cast": [
+    "wood_34",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The table, lowered a little already — no, not yet; the table at full height. The reply card, cream, two boxes. WOOD with a pen. BARNABY's chin on his foot.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "pen over the card",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "chin on his foot",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "reply card",
+        "pen"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man at a drafting table holding a pen over a small cream reply card with two checkboxes, an old dog's chin resting on his foot, razor-sharp ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The card: ☐ will attend · ☐ regrets. The pen's tip above the first box.",
+      "characters": [],
+      "props": [
+        "the card"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a cream reply card with two empty checkboxes and a pen tip hovering above the first",
+        "negative": "",
+        "notes": "Letter after: will attend / regrets."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The checkmark. One stroke. The whole panel.",
+      "characters": [],
+      "props": [
+        "the checkmark"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a single confident ink checkmark in a small box on cream card, filling the panel",
+        "negative": "",
+        "notes": "The checkmark is the panel. One stroke, brush."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The card in its envelope. The stamp. Wood looking at the dog.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "envelope"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "You're staying with Maria."
+        },
+        {
+          "who": "WOOD",
+          "text": "Don't look at me like that. I said will attend. I didn't say I'd enjoy it."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man sealing a small envelope and speaking to an old dog who is looking at him",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "The checkmark gets a panel. 'I didn't say I'd enjoy it.'"
+}

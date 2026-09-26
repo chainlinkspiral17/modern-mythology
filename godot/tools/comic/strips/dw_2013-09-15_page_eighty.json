@@ -1,0 +1,97 @@
+{
+  "id": "dw_2013-09-15_page_eighty",
+  "title": "Sunday · page eighty",
+  "strip": "drift_wood",
+  "date": "2013-09-15",
+  "run": 4,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Strip About Wage Labor",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014 · deepening)",
+  "logline": "The estuary at high tide, two tiers. Tier three, ink: page eighty of eighty. The hand setting down the pen. The check will come Thursday. The basement tier's last appearance.",
+  "cast": [
+    "wood_34"
+  ],
+  "location": "dw_estuary",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the estuary at high tide, September, the mud gone under, the water gray-green and full, the heron's place empty.",
+      "characters": [],
+      "props": [
+        "estuary, full"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, an estuary at high tide in September with the mud submerged and the water full and gray-green, no birds, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "High"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the water against the grass edge, a small boat's wake. Held.",
+      "characters": [],
+      "props": [
+        "a wake"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, tidal water against a grassy bank with a small boat's wake crossing it, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Full"
+    },
+    {
+      "n": 3,
+      "shot": "narrow tier",
+      "composition": "Tier 3, ink: the hand, the cramped page — page 80 — and the pen being set down beside it. The register man in the last panel of it, walking out of a door. Caption.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "hand setting down a pen",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "page 80",
+        "the pen"
+      ],
+      "balloons": [],
+      "caption": "Page eighty of eighty.",
+      "sfx": "",
+      "image": {
+        "prompt": "a narrow ink-only tier of a hand setting a pen down beside a finished cramped comic page whose last panel shows a man walking out of a door, no watercolor",
+        "negative": "",
+        "notes": "The basement tier ends. Letter after."
+      },
+      "stage": null,
+      "name": "Eighty"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "Page eighty. The pen set down. The check follows (dw_2013-09-12 is the anniversary; the check is that week).",
+  "layout": "tiers, portrait page"
+}

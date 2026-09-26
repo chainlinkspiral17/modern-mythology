@@ -1,0 +1,89 @@
+{
+  "id": "dw_2012-07-15_the_bay_from_the_roof",
+  "title": "Sunday · the bay from the motel roof",
+  "strip": "drift_wood",
+  "date": "2012-07-15",
+  "run": 4,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Sundays",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014 · deepening)",
+  "logline": "Wet-on-wet, three months in. The bay from the motel's roof at the end of a shift, the whole town below, the ridge, the glow in daylight fog.",
+  "cast": [],
+  "location": "dw_bay",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: from the motel's flat roof at 6 AM: the highway, then the town's roofs, then the bay, then the ridge, the glow a warmth inside the fog.",
+      "characters": [],
+      "props": [
+        "the town's roofs",
+        "the ridge glow in fog"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, a small coastal town seen from a motel rooftop at dawn with a highway below, rooftops, a bay and a forested ridge beyond where a warm glow sits inside the fog, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Roof"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the roof's tar and gravel, a vent, a coffee cup set down on the parapet.",
+      "characters": [],
+      "props": [
+        "a coffee cup on the parapet"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, a flat motel roof's tar and gravel with a vent and a paper coffee cup set on the parapet, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Tar"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the fog coming up the bay and taking the town. Held.",
+      "characters": [],
+      "props": [
+        "fog"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, fog moving up a bay and swallowing a small town's rooftops, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Fog"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "The coffee on the parapet. The glow inside daylight fog.",
+  "layout": "tiers, portrait page"
+}

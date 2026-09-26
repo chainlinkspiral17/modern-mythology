@@ -1,0 +1,97 @@
+{
+  "id": "dw_2012-10-14_the_legacy_on_101",
+  "title": "Sunday · the Legacy on 101",
+  "strip": "drift_wood",
+  "date": "2012-10-14",
+  "run": 4,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Legacy",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014 · deepening)",
+  "logline": "The wagon on 101 in October from the bluff, the blue haze from the tailpipe drawn faithfully, the sea. A car as a landscape.",
+  "cast": [
+    "wood_34"
+  ],
+  "location": "dw_101",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: Highway 101 curving along the bluff above the sea in October, and on it, small, a faded green wagon with a faint blue haze behind it.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "driving, unseen",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the Legacy",
+        "blue haze"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, a coastal highway curving along a bluff above the sea in autumn with a small faded green station wagon trailing a faint blue exhaust haze, no words",
+        "negative": "",
+        "notes": "The haze is canon: every driving panel."
+      },
+      "stage": null,
+      "name": "Bend"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the side mirror, close, with the road behind in it and the haze.",
+      "characters": [],
+      "props": [
+        "side mirror"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, a car's side mirror close up reflecting a coastal road and a faint blue haze, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Mirror"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the sea from the road, gray-green, the horizon. Held.",
+      "characters": [],
+      "props": [
+        "sea"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, the sea seen from a coastal highway in gray-green wash with a soft horizon, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Sea"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "A car as a landscape. The haze faithful.",
+  "layout": "tiers, portrait page"
+}

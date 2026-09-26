@@ -1,0 +1,89 @@
+{
+  "id": "dw_2009-06-14_the_school_from_the_beach_road",
+  "title": "Sunday · the school from the beach road",
+  "strip": "drift_wood",
+  "date": "2009-06-14",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Sundays",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004–2011 · deepening)",
+  "logline": "Small Wood High from the road to the beach, a week after the bell, summer-empty. The bike rack. The steps. Ten years since he walked out of it.",
+  "cast": [],
+  "location": "dw_school_front",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the school from the beach road, low, the brick and the flagpole and the empty bike rack, a June afternoon with nobody.",
+      "characters": [],
+      "props": [
+        "bike rack",
+        "flagpole"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, a small brick high school seen from a quiet road on a June afternoon with an empty bike rack and a flagpole and no people, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "School"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the front steps. Three worn places on the third step.",
+      "characters": [],
+      "props": [
+        "the steps"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, close on a school's concrete front steps with three worn pale patches on one step, no words",
+        "negative": "",
+        "notes": "Where three sat in 1998."
+      },
+      "stage": null,
+      "name": "Steps"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the road to the beach from the steps. The way they all went. Held.",
+      "characters": [],
+      "props": [
+        "the road"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, a road leading from a school toward a distant beach on a bright empty afternoon, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Road"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "Ten years out. Three worn places on the step.",
+  "layout": "tiers, portrait page"
+}

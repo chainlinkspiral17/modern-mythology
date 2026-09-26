@@ -1,0 +1,98 @@
+{
+  "id": "dw_2014-05-11_the_invitation_sunday",
+  "title": "Sunday · the invitation on the table",
+  "strip": "drift_wood",
+  "date": "2014-05-11",
+  "run": 4,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Invitation",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014 · deepening)",
+  "logline": "The drafting table from above: the cream cardstock, framed now, propped against the lamp; the dog's bed beneath; the sill's jars. The arc's Sunday: an object as a landscape.",
+  "cast": [
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the drafting table from above in morning light: the framed invitation propped against the lamp's base, a mug, a brush, the three jars on the sill at the top edge. Cream cardstock, a black frame, no mat.",
+      "characters": [],
+      "props": [
+        "the framed invitation",
+        "the lamp",
+        "three jars"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, a drafting table seen from above in morning light with a small black-framed cream invitation card propped against a lamp base, a mug, a brush, and three jars on a windowsill at the top edge, no words",
+        "negative": "",
+        "notes": "The frame: black, no mat — the 2001 kids' rule. The card's text unreadable."
+      },
+      "stage": null,
+      "name": "Table"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the card, close, the letterpress deckle edge, two names in a script the strip refuses to letter, a date in July.",
+      "characters": [],
+      "props": [
+        "the card"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, close on a letterpress invitation card with a deckle edge behind glass, the script names rendered as illegible elegant marks, no words",
+        "negative": "",
+        "notes": "Names unreadable. Reserved: Julian's surname."
+      },
+      "stage": null,
+      "name": "Card"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: beneath the table, the dog's bed, the dog in it, asleep, the frame's reflection in the floor's varnish above him. Held.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "asleep in the bed",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the bed"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, an old dog asleep in a braided bed beneath a drafting table with a small framed card faintly reflected in the varnished floor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Bed"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "The invitation as landscape. Names refused.",
+  "layout": "tiers, portrait page"
+}

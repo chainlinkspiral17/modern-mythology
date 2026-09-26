@@ -1,0 +1,142 @@
+{
+  "id": "dw_2017-06-12_lockboxes_1",
+  "title": "Lockboxes, i",
+  "strip": "drift_wood",
+  "date": "2017-06-12",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Lockboxes",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "The first key safe appears on a door in the background. The strip is about the pup and a crab. The reader who looks sees the box.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Main street. BARNABY II and a crab on the sidewalk, facing off. WOOD behind. In the background, a house's door: a gray key box, new, on the knob.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "facing a crab",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "behind",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a crab",
+        "a lockbox in the background"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small three-legged dog facing off with a crab on a sidewalk while a thin man watches, and in the background a house door with a new gray key lockbox on its knob, razor-sharp ink",
+        "negative": "",
+        "notes": "The lockbox is the point; the crab is the strip. Keep the box small and exact."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The crab, claws up. The pup, ears up.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "ears up",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the crab"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a crab with claws raised and a small dog's alert face above it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The crab going sideways into a storm drain. The pup baffled. Behind: a second door, a second box.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "baffled",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "storm drain",
+        "a second lockbox"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a crab sliding sideways into a storm drain while a small three-legged dog looks baffled, a second house door with a lockbox in the background",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood and the pup walking on. Three doors now, three boxes, the strip never mentioning them. The crab's claw waving from the drain.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "walking on",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "three lockboxes",
+        "a claw from the drain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man and a small three-legged dog walking down a street past three house doors each with a gray key lockbox, a crab's claw waving from a storm drain, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "The boxes multiply in the background. The strip is about a crab."
+}

@@ -1,0 +1,148 @@
+{
+  "id": "dw_2015-10-12_three_legs_2",
+  "title": "Three legs, ii",
+  "strip": "drift_wood",
+  "date": "2015-10-12",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Three Legs",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "The pup can't get up on the end stool. He tries four times in four panels. Gully builds a step out of a bait crate. Nobody says anything.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. WOOD on the end stool. BARNABY II, ten months, at the stool's foot, gathering himself. GULLY behind the counter.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "gathering himself",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the end stool"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin man on a shop stool with a small three-legged puppy at its foot gathering itself to jump, a man in an apron behind the counter, razor-sharp ink, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The jump. Short. The pup's front paws on the rung, the rest of him not.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "front paws on the rung",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small three-legged puppy mid-jump with its front paws on a stool rung and its body hanging, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully coming around the counter with a bait crate. Setting it beside the stool. Going back. Not looking at anyone.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "setting down a crate, not looking",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a bait crate"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky man in an apron setting a wooden bait crate beside a stool and walking back without looking at anyone, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The pup on the crate. Then the stool. Then Wood's lap. Wood drawing, not looking down. Gully wiping the counter, not looking up.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "in Wood's lap",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "drawing, not looking down",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "wiping, not looking up",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the crate"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small three-legged dog settled in a thin man's lap on a shop stool with a crate beside it, the man drawing without looking down and a man in an apron wiping the counter without looking up, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "Wordless. The crate. Nobody looks."
+}

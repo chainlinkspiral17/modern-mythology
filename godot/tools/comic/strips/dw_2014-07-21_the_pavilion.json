@@ -1,0 +1,119 @@
+{
+  "id": "dw_2014-07-21_the_pavilion",
+  "title": "The pavilion",
+  "strip": "drift_wood",
+  "date": "2014-07-21",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Glass Pavilion (Arc 3, week 2)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014 · deepening)",
+  "logline": "Monday. The glass pavilion itself, in fog, a daily of a building: four panels, the fog moving on the glass, Wood's reflection in it once.",
+  "cast": [
+    "wood_34",
+    "tech_guest_1"
+  ],
+  "location": "dw_pavilion_dock",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "A glass pavilion on a lawn above the water, fog on the glass outside, string lights inside, figures moving. Razor-sharp architecture. WOOD's reflection faint in one pane.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "a reflection in one pane",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the pavilion",
+        "string lights",
+        "fog"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a modern glass pavilion on a lawn above dark water in fog with string lights and figures inside, drawn with pristine architectural line, a thin man's faint reflection in one pane, razor-sharp ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "One pane: fog condensing, a hand inside wiping a circle clear, a face in the circle looking out — a guest, not him.",
+      "characters": [
+        {
+          "id": "tech_guest_1",
+          "pose": "wiping a circle in the fogged glass",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "fogged pane"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a fogged glass pane with a hand inside wiping a clear circle and a stranger's face looking out through it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "wide",
+      "composition": "The pavilion from the dock below, the whole glass box lit like an aquarium on the hill, the fog around it.",
+      "characters": [],
+      "props": [
+        "the pavilion from below"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a lit glass pavilion on a hill seen from a dock below at night in fog, glowing like an aquarium, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Same. The lights going off inside, one string at a time. The glass going dark. The fog the same.",
+      "characters": [],
+      "props": [
+        "the pavilion, dark"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same glass pavilion with its string lights going out and the glass going dark in fog, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "A daily of a building. His reflection once."
+}

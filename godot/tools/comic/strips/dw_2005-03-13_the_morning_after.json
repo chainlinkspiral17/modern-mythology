@@ -1,0 +1,89 @@
+{
+  "id": "dw_2005-03-13_the_morning_after",
+  "title": "Sunday · the morning after",
+  "strip": "drift_wood",
+  "date": "2005-03-13",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Sundays",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004–2011 · deepening)",
+  "logline": "The Grunion beach the morning after the run: burned-out lanterns, a bucket left, fish scales in the sand catching the light. Nobody.",
+  "cast": [],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the beach at dawn after the run. Lantern stakes in the sand, a bucket on its side, footprints everywhere going nowhere.",
+      "characters": [],
+      "props": [
+        "lantern stakes",
+        "a bucket"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, a beach at dawn strewn with lantern stakes and a tipped bucket and thousands of footprints, no people, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "After"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: fish scales in the wet sand, catching the low sun like a spill of coins.",
+      "characters": [],
+      "props": [
+        "scales"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, close on wet sand scattered with silver fish scales catching low sunlight, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Scales"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the tide coming back up the beach over all of it. Held.",
+      "characters": [],
+      "props": [
+        "tide"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, a tide edge sliding up a littered beach at dawn, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Tide"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "The run, the morning after. The scales like coins.",
+  "layout": "tiers, portrait page"
+}

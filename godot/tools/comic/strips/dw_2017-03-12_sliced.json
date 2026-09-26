@@ -1,0 +1,89 @@
+{
+  "id": "dw_2017-03-12_sliced",
+  "title": "Sunday · sliced",
+  "strip": "drift_wood",
+  "date": "2017-03-12",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "The Scroll",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "The Scroll arc's Sunday: the bay, drawn to be read wide, with the aggregator's slice lines marked through it in thin red — where the phone will cut it. The reader sees what the phone loses.",
+  "cast": [],
+  "location": "dw_bay",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the bay from the bluff, the widest composition the strip has, gulls, the dock, the ridge. And across it, three thin vertical red lines: the slice marks. The gulls fall between them.",
+      "characters": [],
+      "props": [
+        "the bay, wide",
+        "three red slice lines"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, a very wide view of a bay from a bluff with gulls, a dock and a distant ridge, and three thin vertical red lines drawn across the image like crop marks, no words",
+        "negative": "",
+        "notes": "The slice marks are part of the art. The one spot of red."
+      },
+      "stage": null,
+      "name": "Wide"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: one slice, as the phone would show it: a square of water, no gulls, no dock, the ridge cut off. Bordered in red.",
+      "characters": [],
+      "props": [
+        "a square of water"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, a square crop of bay water with nothing in it bordered by a thin red line, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Between"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the same bay without the lines. The gulls. The dock. Everything. Held.",
+      "characters": [],
+      "props": [
+        "the bay, whole"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, the same very wide bay from a bluff with gulls and a dock and a distant ridge, whole, no lines, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Wide again"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "The slice marks in red. What the phone loses.",
+  "layout": "tiers, portrait page"
+}

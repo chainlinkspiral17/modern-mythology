@@ -1,0 +1,103 @@
+{
+  "id": "dw_2008-10-12_mudflats_low_tide",
+  "title": "Sunday · the mudflats, low tide",
+  "strip": "drift_wood",
+  "date": "2008-10-12",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Sundays",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004–2011 · deepening)",
+  "logline": "The first mudflats Sunday. The composition the strip will use in 2014 and 2027, found here by accident: the flats, the far chimney, the tide line, a man and a dog small.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_mudflats",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the mudflats at low tide from the bluff, the channels silver, the cannery's chimney across the bay, a man and a dog far out, small.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "far out, small",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the chimney",
+        "the tide line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, tidal mudflats at low tide seen from a bluff with silver channels, a distant chimney across the bay, and a man and a small dog far out on the mud, no words",
+        "negative": "",
+        "notes": "This composition returns in 'The Carry' (2014) and the final page (2027). Draw it exactly."
+      },
+      "stage": null,
+      "name": "Flats"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: prints in the mud: boots, and a dog's, side by side.",
+      "characters": [],
+      "props": [
+        "prints"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, boot prints and a small dog's prints side by side in wet tidal mud, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Prints"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the tide line, close. Sandpipers. Held.",
+      "characters": [],
+      "props": [
+        "sandpipers"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, a tide line on mudflats with a scatter of sandpipers, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Line"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "The composition of 2014 and 2027, found in 2008.",
+  "layout": "tiers, portrait page"
+}
