@@ -8,6 +8,7 @@ PORT=${PORT:-8765}
 URL="http://127.0.0.1:$PORT/"
 for p in $(pgrep -f "^python3 .*comic_inspector\.py"); do kill "$p" 2>/dev/null; done
 sleep 0.5
+python3 godot/tools/comic/check_page.py || exit 1
 nohup python3 godot/tools/comic/comic_inspector.py --port "$PORT" > /tmp/comic_inspector.log 2>&1 &
 for i in $(seq 1 20); do
   if curl -s "${URL}api/keys" >/dev/null 2>&1; then break; fi

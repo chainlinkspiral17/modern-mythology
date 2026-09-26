@@ -543,7 +543,7 @@ function modelOptions(prov){const ms=MODELS[prov]||[];return '<option value="">d
 function onProv(){const p=$('#g-prov').value;$('#g-model').innerHTML=modelOptions(p);$('#g-custom').style.display='none';onModel();}
 function onModel(){const v=$('#g-model').value;$('#g-custom').style.display=v==='__custom'?'inline-block':'none';const p=$('#g-prov').value;const m=(MODELS[p]||[]).find(x=>x.id===v);$('#g-note').textContent=m?m.note:(v==='__custom'?'type the exact id from the provider\'s docs; it is passed through unchanged':'');}
 function genForm(kind,id,fmt){const prov=KEYS.runway?'runway':'google';const nokey=!KEYS.runway&&!KEYS.google;
- return `${nokey?'<div class="job" style="border-color:var(--red)"><span class="st failed">NO KEYS</span> · nothing can generate until a key is saved. <a href=\"#\" onclick=\"setMode('keys');return false\" style=\"color:var(--gold-hi)\">Open KEYS</a> to paste one and test it.</div>':''}<div class="gen"><label>provider <select id="g-prov" onchange="onProv()"><option value="runway" ${KEYS.runway?'':'disabled'} ${prov==='runway'?'selected':''}>runway${KEYS.runway?'':' (no key)'}</option><option value="google" ${KEYS.google?'':'disabled'} ${prov==='google'?'selected':''}>google${KEYS.google?'':' (no key)'}</option></select></label>
+ return `${nokey?'<div class="job" style="border-color:var(--red)"><span class="st failed">NO KEYS</span> · nothing can generate until a key is saved. <a href="#" onclick="setMode(&quot;keys&quot;);return false" style="color:var(--gold-hi)">Open KEYS</a> to paste one and test it.</div>':''}<div class="gen"><label>provider <select id="g-prov" onchange="onProv()"><option value="runway" ${KEYS.runway?'':'disabled'} ${prov==='runway'?'selected':''}>runway${KEYS.runway?'':' (no key)'}</option><option value="google" ${KEYS.google?'':'disabled'} ${prov==='google'?'selected':''}>google${KEYS.google?'':' (no key)'}</option></select></label>
  <label>model <select id="g-model" onchange="onModel()">${modelOptions(prov)}</select><input type="text" id="g-custom" placeholder="exact model id" style="display:none;width:200px"></label>
  <label>variants <input type="number" id="g-var" min="1" max="6" value="1"></label><label>seed <input type="number" id="g-seed" placeholder="random"></label>
  ${kind==='strip'?`<label><input type="checkbox" id="g-letter" checked> letter balloons</label><label><input type="checkbox" id="g-refs" checked> attach references</label><label><input type="checkbox" id="g-draft"> allow draft refs</label>`:''}
@@ -616,7 +616,7 @@ document.addEventListener('keydown',e=>{if(e.target.tagName==='INPUT'||e.target.
  if(e.key==='/'){e.preventDefault();$('#q').focus();}});
 setInterval(()=>{if(MODE==='jobs')renderJobs();},4000);
 const _open=open;open=function(id){history.replaceState(null,'','#'+MODE+'/'+encodeURIComponent(id)+'/'+TAB);return _open(id);};
-loadKeys();(async()=>{const h=location.hash.slice(1).split('/');await loadStrips();if(h[0]&&h[1]){if(h[2])TAB=h[2];if(h[0]!=='strips'){setMode(h[0]);await (h[0]==='sheets'?loadSheets():loadRefs());}open(decodeURIComponent(h[1]));}})();
+loadKeys();(async()=>{const h=location.hash.slice(1).split('/');await loadStrips();if(h[0]==='keys'||h[0]==='jobs'){setMode(h[0]);}else if(h[0]&&h[1]){if(h[2])TAB=h[2];if(h[0]!=='strips'){setMode(h[0]);await (h[0]==='sheets'?loadSheets():loadRefs());}open(decodeURIComponent(h[1]));}})();
 </script></body></html>
 """
 
