@@ -1,0 +1,63 @@
+{
+  "id": "ro_2026-09-06_corn_twenty_nine_the_tray_shared",
+  "title": "Corn, twenty-nine, the tray shared",
+  "strip": "roflcopter",
+  "date": "2026-09-06",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiii)",
+  "logline": "September, a week early in the box: one paper tray of corn and two forks, Gully's hand and a thin one, from above, the counter. Twenty-nine. The first year the tray is shared on the page.",
+  "cast": [
+    "wood_44",
+    "gully_48"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "From above: a paper tray of buttered corn on a wooden counter with two forks in it, a heavy hand and a thin hand reaching from opposite sides.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "a thin hand",
+          "expression": ""
+        },
+        {
+          "id": "gully_48",
+          "pose": "a heavy hand",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "one tray, two forks"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, seen from above, a paper tray of buttered corn on a wooden counter with two forks and a heavy hand and a thin hand reaching from opposite sides, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Shared, on the page.",
+  "layout": "single page, no borders"
+}

@@ -1,0 +1,46 @@
+# Morning, the sandbar
+
+`ro_2027-04-02_morning_the_sandbar` · **ROFLCOPTER** · 2027-04-02 · page (no grid unless stated) · run 7 · The Pacific Twilight · ROFLCOPTER · tier A · selection full
+Venue: nobody · boxes 21–40 · arc: *Spring*
+
+*The sandbar exposed at the lowest tide of the month, a long pale shape, the pup out on it far, small, the water either side. The page is mostly the bar.*
+
+**Line.** spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run  
+**Palette.** muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring  
+**Paper.** Arches; bristol; the backs of motel registration cards
+
+Cast: `barnaby_ii`
+
+---
+
+## Panel 1
+
+*single page.* A long pale sandbar exposed at low tide with water either side, an old three-legged dog small at its far end, morning light.
+
+- **barnaby_ii** · far, on the bar
+
+Props: the sandbar
+
+<details><summary>image generation</summary>
+
+**prompt.** comic page, spare knowing ink line with soft watercolor in muted ochre, slate blue and misty sea-foam green, Pacific Northwest coastal light, economy of line, quiet composition, a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a long pale sandbar exposed at low tide with water either side and an old three-legged dog small at its far end, morning light, no words, no text, no lettering, no speech balloons, no signature
+
+**negative.** photorealistic, 3D render, saturated color, neon, anime, busy composition, text, letters, watermark, signature, extra fingers
+
+</details>
+
+---
+
+<details><summary>whole-strip prompt (concept run)</summary>
+
+**prompt.** a single full-page comic drawing (1 panels). Style: comic page, spare knowing ink line with soft watercolor in muted ochre, slate blue and misty sea-foam green, Pacific Northwest coastal light, economy of line, quiet composition. Title of the strip: ROFLCOPTER. The strip: The sandbar exposed at the lowest tide of the month, a long pale shape, the pup out on it far, small, the water either side. The page is mostly the bar. Panel 1: a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a long pale sandbar exposed at low tide with water either side and an old three-legged dog small at its far end, morning light, no words. No dialogue in this panel. Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; no words other than the ones given. Bottom right margin: tiny signature "ROFLCOPTER" beside the word ROFLCOPTER, tiny, in the margin (2021 onward).
+
+**negative.** photorealistic, 3D render, saturated color, neon, anime, busy composition, watermark, extra fingers
+
+</details>
+
+**Margin.** ROFLCOPTER · mark: *roflcopter* — the word ROFLCOPTER, tiny, in the margin (2021 onward)
+
+*Notes.* Mostly the bar.
+
+Source: lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiii)

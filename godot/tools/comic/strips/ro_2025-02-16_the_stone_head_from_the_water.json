@@ -1,0 +1,49 @@
+{
+  "id": "ro_2025-02-16_the_stone_head_from_the_water",
+  "title": "The stone head from the water",
+  "strip": "roflcopter",
+  "date": "2025-02-16",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Stone Head",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiii)",
+  "logline": "The face from the bay side, through the gap between Gully's shack and the wall: small, in the grass, looking out at the water it faces. The page finds out which way it looks.",
+  "cast": [],
+  "location": "dw_stone_head",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "From the water's edge: a narrow gap between a shingle bait shack and a wall, and through it, small in the grass, the carved stone face turned toward the bay.",
+      "characters": [],
+      "props": [
+        "the gap"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, seen from the water's edge, a narrow gap between a shingle bait shack and a wall and through it a small moss-grown carved stone face in grass turned toward the bay, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "It faces the water.",
+  "layout": "single page, no borders"
+}

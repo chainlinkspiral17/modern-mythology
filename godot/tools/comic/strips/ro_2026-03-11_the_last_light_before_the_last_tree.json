@@ -1,0 +1,55 @@
+{
+  "id": "ro_2026-03-11_the_last_light_before_the_last_tree",
+  "title": "The last light before the last tree",
+  "strip": "roflcopter",
+  "date": "2026-03-11",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Ridge",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiii)",
+  "logline": "Three pages before the sequence stops: the path, the last trunk ahead, and the light beyond it so strong the trunk is a black bar. The man's hand at the page's edge not yet on it. The book prints this facing the last tree.",
+  "cast": [
+    "wood_44"
+  ],
+  "location": "dw_the_ridge",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A path ending at a single cedar trunk that stands as a black bar against a light too bright to hold detail, a man's hand at the page's edge reaching but not yet touching it.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "a hand, reaching",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a forest path ending at a single cedar trunk standing as a black bar against a light too bright to hold detail with a man's hand at the page's edge reaching but not yet touching, no words",
+        "negative": "",
+        "notes": "Facing page to ro_2026-03-08."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Not yet touching.",
+  "layout": "single page, no borders"
+}

@@ -1,0 +1,49 @@
+{
+  "id": "ro_2022-12-01_the_mills_dog",
+  "title": "The mill's dog",
+  "strip": "roflcopter",
+  "date": "2022-12-01",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Mill, 1994",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiii)",
+  "logline": "A dog at the mill in 1994, the yard's dog, asleep in sawdust by the green chain's end, a collar with no tag. Every place the strip drew had a dog first. Era I spotting for the sawdust.",
+  "cast": [],
+  "location": "dw_cedar_mill",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A yard dog asleep in a pile of sawdust at the end of a mill's green chain, a collar with no tag, boards stacked behind, black spotting for the sawdust.",
+      "characters": [],
+      "props": [
+        "the mill's dog"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, in the Era I manner, heavy black spotting brought back on purpose, a yard dog asleep in a pile of sawdust at the end of a lumber mill's green chain wearing a collar with no tag, stacked boards behind, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Every place had a dog first.",
+  "layout": "single page, no borders"
+}

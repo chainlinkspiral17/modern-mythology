@@ -1,0 +1,67 @@
+{
+  "id": "ro_2024-09-08_from_the_shack_window",
+  "title": "From the shack window",
+  "strip": "roflcopter",
+  "date": "2024-09-08",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Dock",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiii)",
+  "logline": "The dock from inside the shack, through the window, at dusk: three figures in three chairs from behind, small, the bay, the last light. The page stands where Gully's daughter would, and doesn't draw her either.",
+  "cast": [
+    "gully_48",
+    "chloe_34",
+    "wood_44"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Through a shingle shack's window from inside: three small figures in three chairs on a dock from behind at dusk, the bay beyond, the window's frame and a corner of the corkboard.",
+      "characters": [
+        {
+          "id": "gully_48",
+          "pose": "from behind, small",
+          "expression": ""
+        },
+        {
+          "id": "chloe_34",
+          "pose": "from behind, small",
+          "expression": ""
+        },
+        {
+          "id": "wood_44",
+          "pose": "from behind, small",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, seen through a shack's window from inside, three small figures seated in three chairs on a dock from behind at dusk with the bay beyond, the window frame and a corner of a corkboard, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "From where she'd stand.",
+  "layout": "single page, no borders"
+}
