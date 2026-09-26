@@ -2038,6 +2038,9 @@
           "src": "vol6/vol6_ch9_safehouse.json",
           "text": "Her hair is, in fact, exactly as she has worn it for the past two years."
         }
+      ],
+      "looks": [
+        "sam_miller_apron"
       ]
     },
     {
@@ -2283,6 +2286,9 @@
           "src": "vol6/vol6_ch4_pit_stop.json",
           "text": "He puts his apron on."
         }
+      ],
+      "looks": [
+        "jesse_henderson_dinner"
       ]
     },
     {
@@ -2424,6 +2430,9 @@
           "src": "vol6/vol6_ch3_circle_k.json",
           "text": "He comes downstairs at 07:14. He is already in uniform."
         }
+      ],
+      "looks": [
+        "chief_miller_offduty"
       ]
     },
     {
@@ -5949,21 +5958,26 @@
     {
       "slug": "bt",
       "kind": "hero",
-      "name": "BT",
+      "name": "BT (Brandon)",
       "file": "bt.glb",
       "vol": [
         6
       ],
       "keys": [
-        "bt",
-        "b.t."
+        "b.t.",
+        "brandon",
+        "bt"
       ],
-      "tag": "vol6 · the kid the team protects · El Rancho at four AM · ch10, ch16",
+      "tag": "vol6 · Brandon · the kid the team protects · Centro Foods nights with Diego · El Rancho at four AM",
       "aspect": "3:4",
       "pose": "a-pose",
-      "texture_prompt": "grey team t-shirt, black athletic shorts, slides over white socks, dark ball cap",
-      "prompt": "BT, 17, a Gulf-coast high-school football player and the kid the team quietly protects. Slight for a lineman, a round open face that shows every yes and no, dark hair under a ball cap worn forward. A team t-shirt, athletic shorts, slides over white socks, a phone and a wallet in hand, car keys hooked on one finger.",
+      "texture_prompt": "teal Centro Foods polo with BRANDON name tag, dark work pants, black sneakers, dark ball cap",
+      "prompt": "BT — Brandon — 17, a Gulf-coast high-school football player who works nights at Centro Foods, the kid the team quietly protects. Slight for a lineman, a round open face that shows every yes and no, dark hair under a ball cap worn forward. A teal Centro Foods polo with a plastic pin-on name tag reading BRANDON, dark work pants, black sneakers, a phone and a wallet in hand, car keys hooked on one finger.",
       "canon": [
+        {
+          "src": "vol6/vol6_ch10_night_shift.json",
+          "text": "BT is in his Centro Foods polo, which is the same teal blue Diego's is, with the same name tag — BRANDON, on BT's, in the standard plastic pin-on."
+        },
         {
           "src": "vol6/vol6_ch16_el_rancho.json",
           "text": "BT's face does the thing a face does when a person who has been bracing for no has, instead, gotten yes."
@@ -5977,7 +5991,7 @@
           "text": "He gets his wallet — out of habit, even though BT has said my treat — and his phone. He puts on his cap."
         }
       ],
-      "notes": "SPARSE on the face — canon gives the cap, the car, the team, the bracing. Edit before spending credits.",
+      "notes": "SPARSE on the face — canon gives the polo, the tag, the cap, the car. Edit before spending credits.",
       "prompt_mode": "append"
     },
     {
@@ -6507,9 +6521,13 @@
       "tag": "vol6 ch20 · the woman at the booth at the bridge show · I'll listen",
       "aspect": "3:4",
       "pose": "a-pose",
-      "texture_prompt": "denim jacket, black t-shirt, black jeans, boots, blunt dark hair",
-      "prompt": "Chess, 30s, the woman at the back booth who says I'll listen. Angular, still, dark hair cut blunt at the jaw, a black t-shirt under a denim jacket, black jeans, boots, a glass of water in front of her and her hands folded.",
+      "texture_prompt": "black t-shirt, jeans, thin gold chain, dark loose hair, boots",
+      "prompt": "Chess, around thirty, Tejana, the woman at the back booth who says I'll listen. A black t-shirt, jeans, a small thin gold chain at her neck, dark hair loose, boots, a glass of water in front of her and her hands folded.",
       "canon": [
+        {
+          "src": "vol6/vol6_ch20_bridge.json",
+          "text": "She is — Jesse registers — around thirty, Tejana, in a black t-shirt and jeans and a small thin gold chain around her neck."
+        },
         {
           "src": "vol6/vol6_ch20_prints.json",
           "text": "Chess at the back of the room saying I'll listen."
@@ -6519,7 +6537,6 @@
           "text": "The woman, at the booth, looks up when Jesse comes in."
         }
       ],
-      "notes": "SPARSE — canon gives the booth and the line. Edit before spending credits.",
       "prompt_mode": "append"
     },
     {
@@ -6962,6 +6979,117 @@
         ]
       },
       "prompt_mode": "append"
+    },
+    {
+      "slug": "sam_miller_apron",
+      "kind": "hero",
+      "name": "Sam Miller (the Kwik Stop apron)",
+      "file": "sam_miller_apron.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "sam_apron"
+      ],
+      "tag": "vol6 ch6, ch9 · behind the counter with the apron on",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "red Kwik Stop apron over pink-and-blue polo, jeans, white sneakers, brown shoulder-length hair",
+      "prompt": "Sam Miller, 18, on shift at the Kwik Stop: the pink-and-blue Kwik Stop polo under a red Kwik Stop apron tied at the waist, the name tag pinned to the apron's bib, jeans, white sneakers, the license-plate notebook in her back pocket. Brown hair to her shoulders, alert, stubborn.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch6_kwik_stop_open.json",
+          "text": "Sam puts on her apron."
+        },
+        {
+          "src": "vol6/vol6_ch9_room.json",
+          "text": "Sam is wearing her Kwik Stop apron."
+        }
+      ],
+      "base": "sam_miller",
+      "look": {
+        "label": "the Kwik Stop apron",
+        "vols": [
+          6
+        ],
+        "scenes": [
+          "vol6_ch6_kwik_stop_open",
+          "vol6_ch9_room"
+        ],
+        "when": "on shift — ch6 opening the store, ch9 the room"
+      }
+    },
+    {
+      "slug": "jesse_henderson_dinner",
+      "kind": "hero",
+      "name": "Jesse Henderson (the dinner button-down, ch7)",
+      "file": "jesse_henderson_dinner.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "jesse_dinner"
+      ],
+      "tag": "vol6 ch7 · the button-down Eileen told him to put on for dinner · the Henderson kitchen and driveway",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "pale-blue cotton button-down, skinny black jeans, worn boots, tall slight build",
+      "prompt": "Jesse Henderson, 20, at a family dinner in the shirt his mother told him to wear: a pale-blue cotton button-down, sleeves rolled once, tucked badly into skinny black jeans, worn boots; the band tee gone for the night. Tall and slight, all knees and elbows, a face he keeps wiping on the sleeve.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch7_henderson_driveway.json",
+          "text": "Jesse wipes his face on the sleeve of the button-down he is wearing tonight, the one Eileen had told him to put on for dinner."
+        }
+      ],
+      "base": "jesse_henderson",
+      "look": {
+        "label": "the dinner button-down",
+        "vols": [
+          6
+        ],
+        "scenes": [
+          "vol6_ch7_henderson_kitchen",
+          "vol6_ch7_henderson_driveway"
+        ],
+        "when": "ch7 — dinner at the Hendersons', then the driveway"
+      }
+    },
+    {
+      "slug": "chief_miller_offduty",
+      "kind": "hero",
+      "name": "Chief Miller (off duty, ch4)",
+      "file": "chief_miller_offduty.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "chief_offduty"
+      ],
+      "tag": "vol6 ch4 · jeans and a short-sleeve shirt on a weekday evening — the kind Sam has not seen him in for years",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "short-sleeve plaid shirt, blue jeans, brown boots, close-cropped grey hair",
+      "prompt": "Chief Miller, 50, Sam's father, off duty in his own kitchen on a weekday evening: jeans, a short-sleeve plaid shirt untucked, brown boots, no badge, no belt. Barrel-chested, close-cropped grey hair, the uniform's bearing still in the shoulders.",
+      "prompt_mode": "append",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch4_kitchen.json",
+          "text": "He is in jeans and a short-sleeve shirt — the kind of shirt Sam has not, in some years, seen him in on a weekday evening."
+        }
+      ],
+      "base": "chief_miller",
+      "look": {
+        "label": "off duty",
+        "vols": [
+          6
+        ],
+        "scenes": [
+          "vol6_ch4_kitchen"
+        ],
+        "when": "ch4 — the Miller kitchen, a weekday evening"
+      }
     }
   ]
 }
