@@ -1,0 +1,99 @@
+{
+  "id": "dw_2013-01-13_the_rain_2013",
+  "title": "Sunday · the Rain, 2013",
+  "strip": "drift_wood",
+  "date": "2013-01-13",
+  "run": 4,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Rain",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014 · deepening)",
+  "logline": "Sixteenth January. The bay in wet-on-wet, two tiers. The third tier, small: a hand drawing a page of a different, cheaper strip. The Strip About Wage Labor begins in the basement of the Sunday.",
+  "cast": [
+    "wood_34"
+  ],
+  "location": "dw_bay",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the bay in January rain from the bluff, gray-green moss, fog, a smear of rusted tin where the cannery is. Wet-on-wet, the paint allowed to run.",
+      "characters": [],
+      "props": [
+        "bay",
+        "rain",
+        "fog"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an Oregon bay in January rain from a bluff, wet-on-wet watercolor in gray-green moss and fog with a rust smear where a cannery stands, no figures, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Bay"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the drift log on the beach below, in the rain. Empty. Held.",
+      "characters": [],
+      "props": [
+        "drift log"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a bleached drift log on a wet beach in rain, empty, wet-on-wet watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Log"
+    },
+    {
+      "n": 3,
+      "shot": "narrow tier",
+      "composition": "Tier 3, short, ink only: a hand at a table drawing a page in a cramped grid — a different strip, stick-simple, a man at a register. A check stub beside it: $40. Four words of caption.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "hand only, drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a cramped page of another strip",
+        "a check stub"
+      ],
+      "balloons": [],
+      "caption": "Page one of eighty.",
+      "sfx": "",
+      "image": {
+        "prompt": "a narrow ink-only tier showing a hand drawing a cramped page of a simple comic about a man at a cash register, a check stub beside it, no watercolor",
+        "negative": "",
+        "notes": "The lower tier is ink, not watercolor. It recurs across 2013's Sundays: the eighty-page strip that earned forty dollars, drawn as Wood drawing it. Letter after: 'Page one of eighty.'"
+      },
+      "stage": null,
+      "name": "Page one"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "The Wage Labor strip begins in the Sunday's basement tier. 'Page one of eighty.'",
+  "layout": "tiers, portrait page"
+}

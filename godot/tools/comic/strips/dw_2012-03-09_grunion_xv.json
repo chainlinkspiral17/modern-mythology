@@ -1,0 +1,141 @@
+{
+  "id": "dw_2012-03-09_grunion_xv",
+  "title": "The Grunion Run, xv",
+  "strip": "drift_wood",
+  "date": "2012-03-09",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Grunion Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014 · deepening)",
+  "logline": "Fifteenth year. The first Grunion Run he misses: it falls on a shift. He draws it at the desk from fourteen years of memory. The surf is at the desk.",
+  "cast": [
+    "wood_34",
+    "barnaby"
+  ],
+  "location": "dw_motel_desk",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The desk, 11 PM. WOOD drawing. BARNABY, thirteen, asleep under the desk — he's allowed now; nobody checks. The hum line.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep under the desk",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "pad",
+        "hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a motel night clerk drawing at the desk with an old dog asleep beneath it, razor-sharp ink, a flat unbroken line running beneath the panel",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The pad: the beach, the lanterns, the surf line, the fish — drawn from memory, exact. Fourteen years' worth.",
+      "characters": [],
+      "props": [
+        "pad: the run"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a drawing pad showing a night beach with lanterns and a surf line full of silver fish, drawn precisely from memory",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood looking at the glass door. Beyond it: the lot. Beyond the lot, not visible: the beach, twelve blocks, happening.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking at the door",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "glass door",
+        "hum line"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "(to the dog) They're up by now."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a clerk looking through a motel's glass door at an empty lot at night, a flat unbroken line running beneath the panel",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Silent. The desk. The pad with the run on it. The dog. The door. The strip's fifteenth Grunion Run, indoors.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "pad",
+        "hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "silent wide panel of a motel desk at night with a drawing of a beach festival on the pad, an old dog beneath, a glass door onto an empty lot, a flat unbroken line running beneath the panel, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "The Grunion Run drawn from memory at the desk. The first one missed."
+}

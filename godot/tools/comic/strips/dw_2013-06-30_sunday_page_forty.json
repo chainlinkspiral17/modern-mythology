@@ -1,0 +1,98 @@
+{
+  "id": "dw_2013-06-30_sunday_page_forty",
+  "title": "Sunday · page forty",
+  "strip": "drift_wood",
+  "date": "2013-06-30",
+  "run": 4,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Strip About Wage Labor",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014 · deepening)",
+  "logline": "A June Sunday: the estuary in wet-on-wet, two tiers. Tier three, ink: page forty of eighty. Halfway. The check stub hasn't come yet. The hand is faster now.",
+  "cast": [
+    "wood_34"
+  ],
+  "location": "dw_bay",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the estuary at low tide, June evening, wet-on-wet — gray-green, the mud a bruised violet, the far ridge with the faint glow.",
+      "characters": [],
+      "props": [
+        "estuary",
+        "low tide",
+        "the ridge glow"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an estuary at low tide on a June evening in wet-on-wet watercolor, gray-green with bruised violet mud and a faint glow on a far ridge, no figures, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Estuary"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: a heron, alone, on the mud. Held.",
+      "characters": [],
+      "props": [
+        "heron"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single heron standing on tidal mud at dusk, wet-on-wet watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Heron"
+    },
+    {
+      "n": 3,
+      "shot": "narrow tier",
+      "composition": "Tier 3, ink: the hand, the cramped page — page 40, the register man again, now stacking boxes. Faster. Beside it, no stub yet. A caption.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "hand only, drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "page 40 of the cheap strip"
+      ],
+      "balloons": [],
+      "caption": "Page forty of eighty. Nobody has paid for the first thirty-nine.",
+      "sfx": "",
+      "image": {
+        "prompt": "a narrow ink-only tier of a hand drawing a cramped page of a simple comic about a man stacking boxes, drawn faster than before, no watercolor",
+        "negative": "",
+        "notes": "Recurring basement tier. Letter after."
+      },
+      "stage": null,
+      "name": "Page forty"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "The Wage Labor strip at the halfway mark, in the basement of a heron Sunday.",
+  "layout": "tiers, portrait page"
+}

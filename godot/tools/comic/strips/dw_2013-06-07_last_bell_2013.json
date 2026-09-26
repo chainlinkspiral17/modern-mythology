@@ -1,0 +1,153 @@
+{
+  "id": "dw_2013-06-07_last_bell_2013",
+  "title": "Last Bell, 2013",
+  "strip": "drift_wood",
+  "date": "2013-06-07",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Last Bell",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014 · deepening)",
+  "logline": "The bell at 3:05. The Legacy overheats in front of the school. The kids pour out around it. Wood in the driver's seat with the hood up, drawn from above, the only adult in the panel.",
+  "cast": [
+    "wood_34",
+    "barnaby"
+  ],
+  "location": "dw_school_front",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Small Wood High, 3:05 PM. The Legacy at the curb, hood up, steam. WOOD in the driver's seat. BARNABY in the passenger seat. The bell. The doors opening.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "driver's seat",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "passenger seat",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "Legacy, hood up, steam",
+        "school"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "BRRRRING",
+      "image": {
+        "prompt": "a faded green 1993 station wagon with its hood up and steam rising, stopped at the curb of a small-town high school as the last bell rings and the doors open, a thin man in the driver's seat and an old dog beside him, razor-sharp ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "wide",
+      "composition": "From above. The kids pouring out around the car like water around a rock. The car the only still thing. The man inside it.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "inside the car, still",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "kids flowing around the car"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a high overhead view of a stopped station wagon with its hood up as a flood of teenagers streams around it toward a beach road, the car the only still object, no words",
+        "negative": "",
+        "notes": "Overhead. The car as the rock. Era III's pristine perspective at its most showy."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "A kid tapping the window. Wood rolling it down.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "rolling down the window",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "KID",
+          "text": "You need a push?"
+        },
+        {
+          "who": "WOOD",
+          "text": "I need a car."
+        },
+        {
+          "who": "KID",
+          "text": "...Yeah."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenager leaning to a rolled-down car window talking to a thin man inside",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The road empty. The kids gone to the beach. The car. The steam. The dog. The man. 3:11. The bell's shape still in the air, faint, drawn as a memory.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "empty road",
+        "steam",
+        "a faint bell shape"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an empty road in front of a school with a steaming station wagon at the curb, a man and an old dog inside, a faint jagged bell shape lingering in the air above, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "Overheats at the bell. The rock in the stream. 'I need a car.'"
+}

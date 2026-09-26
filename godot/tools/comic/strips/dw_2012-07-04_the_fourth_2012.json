@@ -1,0 +1,151 @@
+{
+  "id": "dw_2012-07-04_the_fourth_2012",
+  "title": "The Fourth, 2012",
+  "strip": "drift_wood",
+  "date": "2012-07-04",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Fourth on the Bay",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014 · deepening)",
+  "logline": "White fireworks, from the motel lot. The guests watch from the lot with their doors open. Wood watches from the glass door. The dock is across town; he draws it from the lot anyway.",
+  "cast": [
+    "wood_34",
+    "motel_guest"
+  ],
+  "location": "dw_motel_desk",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The motel lot at night. Every room door open. GUESTS on the walkway in bathrobes and flip-flops looking at the sky. Fireworks white over the roofline. WOOD in the glass doorway.",
+      "characters": [
+        {
+          "id": "motel_guest",
+          "pose": "several, on the walkway",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "in the doorway",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "open doors",
+        "fireworks",
+        "hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a motel lot at night with every room door open and guests in bathrobes on the walkway looking up at white fireworks over the roofline, a clerk standing in the lobby's glass doorway, razor-sharp ink with a blue wash, a flat unbroken line running beneath the panel",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The fireworks reflected in the glass door with Wood's face in it too.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "reflected",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "glass"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a motel glass door with white fireworks and a thin man's face both reflected in it, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "A guest, beside him.",
+      "characters": [
+        {
+          "id": "motel_guest",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GUEST",
+          "text": "They do these over the bay, right? Where's the bay from here?"
+        },
+        {
+          "who": "WOOD",
+          "text": "That way. Twelve blocks. There's a dock."
+        },
+        {
+          "who": "GUEST",
+          "text": "You ever go?"
+        },
+        {
+          "who": "WOOD",
+          "text": "Fourteen years running."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a guest in a bathrobe and a clerk side by side in a doorway watching fireworks, talking",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The finale. White, over the motel. Under it, the strip inserts a small panel-in-panel: the dock, from memory, Gully pouring, the chair, the steps empty.",
+      "characters": [],
+      "props": [
+        "finale",
+        "inset: the dock with the steps empty"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a fireworks finale in white over a motel roofline with a small inset panel showing a distant dock with an empty set of shack steps, no words",
+        "negative": "",
+        "notes": "The inset: the dock without him. The steps empty for the first Fourth since 1997."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "'Fourteen years running.' Not the fifteenth. The steps empty in the inset."
+}

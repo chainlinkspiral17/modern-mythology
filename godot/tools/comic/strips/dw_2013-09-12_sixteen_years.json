@@ -1,0 +1,146 @@
+{
+  "id": "dw_2013-09-12_sixteen_years",
+  "title": "Sixteen years",
+  "strip": "drift_wood",
+  "date": "2013-09-12",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Anniversary",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014 · deepening)",
+  "logline": "Sixteen. The corn. The check for the eighty-page strip arrives the same day: forty dollars. Wood does the arithmetic out loud to the dog and eats the corn.",
+  "cast": [
+    "wood_34",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. Corn. WOOD with an envelope. BARNABY, fourteen, in the bed — the bed's new; he can't do the floor anymore. #1 on the wall. The eighty pages in a stack.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "with an envelope",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "in a bed",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "corn",
+        "envelope",
+        "a stack of eighty pages",
+        "#1"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man at a drafting table with a tray of corn opening an envelope, an old dog in a new bed beneath, a thick stack of comic pages beside him and a yellowed strip on the wall, razor-sharp ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The check. Forty dollars and no cents. A memo line: 'comic.'",
+      "characters": [],
+      "props": [
+        "the check: $40.00, memo 'comic'"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a small check for forty dollars with the memo line reading comic",
+        "negative": "",
+        "notes": "Letter after: $40.00 · memo: comic."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, to the dog, corn in one hand, check in the other.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Eighty pages. Forty dollars. Fifty cents a page. Sixteen years. Two-fifty a year. The corn's three dollars. I'm ahead on corn."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man holding a tray of corn in one hand and a check in the other, doing arithmetic aloud to an old dog, dry",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Alone at the long surface. Corn. The dog in the bed. The stack. The check under the corn tray, as a coaster.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "back turned",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "corn on the check",
+        "the stack",
+        "#1"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man with his back turned at a long drafting table, a tray of corn resting on a check like a coaster, a stack of pages, an old dog in a bed, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "Forty dollars. 'I'm ahead on corn.' The check as a coaster."
+}

@@ -1,0 +1,146 @@
+{
+  "id": "dw_2012-09-12_fifteen_years",
+  "title": "Fifteen years",
+  "strip": "drift_wood",
+  "date": "2012-09-12",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Anniversary",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014 · deepening)",
+  "logline": "Fifteen. The corn, at the desk, 3 AM. The Legacy in the lot, two days old, already with a tarp in the back. The corn was bought with the car's first tank money.",
+  "cast": [
+    "wood_34",
+    "barnaby"
+  ],
+  "location": "dw_motel_desk",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The desk, 3 AM. Corn. WOOD. BARNABY beneath. Through the glass door: the Legacy under the sodium light, one hubcap, the tarp. The hum line.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "corn",
+        "the Legacy in the lot",
+        "hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a motel night clerk with a tray of corn at the desk, an old dog beneath, and through the glass door a faded green 1993 station wagon with one hubcap under a sodium light, razor-sharp ink, a flat unbroken line running beneath the panel",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The corn. Beside it, #1 — he's brought the yellowed first strip to the desk and propped it against the bell.",
+      "characters": [],
+      "props": [
+        "corn",
+        "#1 propped against the bell"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a paper tray of corn beside a yellowed old comic strip propped against a motel desk bell",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, to the dog.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Fifteen years. I have a car that burns oil and a desk that hums and a dog that's thirteen. Eat the corn."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man speaking to an old dog beneath a motel desk while holding a tray of corn, wry",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The lobby from the door — the reverse of every other anniversary panel. The man at the desk, small, facing us. Corn. Dog. #1. The car behind the reader.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "facing us, small",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "corn",
+        "#1",
+        "hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a motel lobby seen from outside the glass door at night, a small figure at the desk facing the viewer with a tray of corn, an old dog beneath, a flat unbroken line running beneath the panel, no words",
+        "negative": "",
+        "notes": "Reversed: every other anniversary is back-turned. This one faces the door. The reader stands where the car is."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "Faces the door. 'Eat the corn.' The Legacy two days old."
+}

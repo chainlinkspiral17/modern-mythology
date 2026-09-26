@@ -1,0 +1,117 @@
+{
+  "id": "dw_2012-01-13_the_rain_2012",
+  "title": "The Rain, 2012",
+  "strip": "drift_wood",
+  "date": "2012-01-13",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Rain",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014 · deepening)",
+  "logline": "Fifteenth January. The first Rain from the motel desk. Four panels of the glass door at 3 AM and the hum line under all of them. Not yet a Sunday; the line is already new.",
+  "cast": [
+    "wood_34"
+  ],
+  "location": "dw_motel_desk",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The Driftwood Motel's glass door from the night desk, 3 AM. Rain. The lot's sodium light. WOOD's shoulder at the frame's edge. The hum line beneath.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "shoulder only",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "glass door",
+        "rain",
+        "hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a motel lobby's glass door seen from the night desk at 3 AM with rain on the glass and one sodium light in the lot, a clerk's shoulder at the frame edge, razor-sharp ink, a flat unbroken line running beneath the panel",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Same. The rain harder. A car's headlights sweeping the lot, not stopping.",
+      "characters": [],
+      "props": [
+        "headlights",
+        "rain",
+        "hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same motel glass door with rain harder and a car's headlights sweeping across the lot without stopping, a flat unbroken line running beneath the panel",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Same. The rain. Nothing. The bell on the desk in the foreground, unrung.",
+      "characters": [],
+      "props": [
+        "bell",
+        "rain",
+        "hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same glass door with rain, a desk bell in sharp foreground focus unrung, a flat unbroken line running beneath the panel",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Same. Dawn gray-green through the rain. The sodium light clicking off. Held.",
+      "characters": [],
+      "props": [
+        "dawn",
+        "hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same glass door at dawn with rain and gray-green light, the lot's sodium lamp just switched off, a flat unbroken line running beneath the panel, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "Four times the same door. The line new. The hum under all of it."
+}
