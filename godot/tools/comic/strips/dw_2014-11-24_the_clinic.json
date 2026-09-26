@@ -1,0 +1,138 @@
+{
+  "id": "dw_2014-11-24_the_clinic",
+  "title": "The clinic",
+  "strip": "drift_wood",
+  "date": "2014-11-24",
+  "run": 5,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies (the trilogy ran in print in three papers)",
+  "arc": "The Clinic",
+  "source": "lore/drift_wood/_SOURCE_BRIEF.md (Arc 4); _THE_COMPLETE_RUN.md",
+  "logline": "Monday. The county clinic. The strip goes to the parking lot and no further. Then a one-week gap, dated.",
+  "cast": [
+    "wood_34",
+    "barnaby",
+    "gully_35"
+  ],
+  "location": "dw_vet",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "A county veterinary clinic in winter rain — the same clinic as 1999, the same steel-table building, older. The Legacy. Gully's flatbed beside it. WOOD carrying BARNABY in the blanket toward the door. GULLY holding the door.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "carrying the wrapped dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "wrapped",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "holding the door",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "clinic",
+        "Legacy",
+        "flatbed",
+        "rain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small county veterinary clinic in winter rain, an old Subaru and a flatbed truck parked outside, a man carrying a blanket-wrapped old dog toward the door that a stocky man holds open, desaturated wash, no words",
+        "negative": "",
+        "notes": "The same clinic as dw_1999-11-17. Fifteen years."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The door. Gully's hand on it. Wood and the dog going through. The strip stays outside.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "hand on the door",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "door"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a stocky man's hand holding a clinic door open as a man carrying a wrapped dog passes through, the viewpoint staying outside, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "wide",
+      "composition": "The parking lot. The two vehicles. Rain. The door closed. Nothing.",
+      "characters": [],
+      "props": [
+        "lot",
+        "Legacy",
+        "flatbed",
+        "closed door",
+        "rain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a rainy clinic parking lot with an old Subaru and a flatbed truck and a closed door, nothing happening, desaturated watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The lot. Later. Gully's flatbed gone. The Legacy alone. The door. Rain. The strip does not go in and does not show anyone come out.",
+      "characters": [],
+      "props": [
+        "lot",
+        "Legacy alone",
+        "door",
+        "rain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same rainy clinic parking lot later with only the old Subaru remaining, the door closed, rain, no words",
+        "negative": "",
+        "notes": "The next page in the book is a dated divider: 'November 25 – 29, 2014.' No strips ran. Then 'The Empty Chair.'"
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "quiet; water bleeding over the ink edge to suggest rain and fading light",
+    "palette": "desaturated wet-on-wet: raw umber, Payne's gray, Prussian blue, raw sienna",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for the Sundays"
+  },
+  "notes": "The clinic. The strip stays in the lot. A one-week gap follows, dated, then 'The Empty Chair.'"
+}

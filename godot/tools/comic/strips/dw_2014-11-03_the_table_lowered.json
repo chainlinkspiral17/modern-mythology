@@ -1,0 +1,142 @@
+{
+  "id": "dw_2014-11-03_the_table_lowered",
+  "title": "The table lowered",
+  "strip": "drift_wood",
+  "date": "2014-11-03",
+  "run": 5,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies (the trilogy ran in print in three papers)",
+  "arc": "The Table Lowered",
+  "source": "lore/drift_wood/_SOURCE_BRIEF.md (Arc 4); _THE_COMPLETE_RUN.md",
+  "logline": "Wood lowers the drafting table to floor height so the dog can rest his chin on his foot. A strip about a wrench.",
+  "cast": [
+    "wood_34",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. The drafting table, its legs telescoped, WOOD on his knees with a wrench at one leg. BARNABY in the bed under it, watching.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "kneeling with a wrench",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "in the bed, watching",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "drafting table",
+        "wrench",
+        "the green lamp",
+        "dog bed"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man kneeling with a wrench at the leg of a drafting table in a garage studio, loosening it, an old dog watching from a bed beneath, quiet ink with a desaturated wash",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The leg dropping. The table now a foot off the floor. The lamp clamped to it, its cone now on the floorboards.",
+      "characters": [],
+      "props": [
+        "table lowered",
+        "lamp cone on the floor"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a drafting table leg lowered so the tabletop sits a foot above the floorboards, a swing-arm lamp's light pooling on the floor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood sitting cross-legged at the lowered table, drawing. The dog, without being carried, moving from the bed to Wood's foot. Chin on it.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "cross-legged, drawing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "chin on his foot",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lowered table"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man sitting cross-legged on the floor drawing at a lowered drafting table, an old dog resting its chin across his foot, lamp light, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The garage from the door. Everything at floor height now. The man, the dog, the lamp, the work. It looks like it was always this way.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the whole room at floor level"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a garage studio seen from its doorway with the drafting table lowered nearly to the floor, a man sitting cross-legged at it drawing, an old dog's chin on his foot, a lamp's warm cone, everything brought down to the dog's height, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "quiet; water bleeding over the ink edge to suggest rain and fading light",
+    "palette": "desaturated wet-on-wet: raw umber, Payne's gray, Prussian blue, raw sienna",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for the Sundays"
+  },
+  "notes": "The table lowered. From here the room is at the dog's height."
+}

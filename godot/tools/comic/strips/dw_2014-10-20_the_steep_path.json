@@ -1,0 +1,146 @@
+{
+  "id": "dw_2014-10-20_the_steep_path",
+  "title": "The steep path",
+  "strip": "drift_wood",
+  "date": "2014-10-20",
+  "run": 5,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies (the trilogy ran in print in three papers)",
+  "arc": "The Steep Path",
+  "source": "lore/drift_wood/_SOURCE_BRIEF.md (Arc 4); _THE_COMPLETE_RUN.md",
+  "logline": "The gravel path down to the ocean. The dog can't. Wood stands at the top with him for a whole strip.",
+  "cast": [
+    "wood_34",
+    "barnaby"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The top of the steep gravel path down to the beach. October. WOOD with BARNABY on the ground beside him, on his own feet. The dog looking down the path. Not moving.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "standing at the top",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "looking down the path, not moving",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "steep gravel path",
+        "the beach below",
+        "spruce"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man and a very old dog standing at the top of a steep gravel path that drops to a gray beach, October, the dog looking down and not moving, quiet ink with a desaturated wash, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The dog's front paws at the edge of the first step. Trembling, slightly. Drawn honestly.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "paws at the edge, trembling",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "gravel edge"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of an old dog's front paws at the edge of a gravel step, trembling slightly, honest and tender, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood crouching. Not lifting him. Just crouching beside him, looking down the path too.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "crouched beside the dog, looking down",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man crouched beside an old dog at the top of a path, both looking down at the beach, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The two of them at the top. The beach below, empty, the surf a white line. They don't go down. The strip stays at the top with them.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the path",
+        "the beach below",
+        "surf"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wide quiet panel of a man and an old dog at the top of a steep path above an empty gray beach with a white line of surf, not descending, desaturated wash, no words",
+        "negative": "",
+        "notes": "Arc 4 opens. They don't go down. Nothing is said."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "quiet; water bleeding over the ink edge to suggest rain and fading light",
+    "palette": "desaturated wet-on-wet: raw umber, Payne's gray, Prussian blue, raw sienna",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for the Sundays"
+  },
+  "notes": "Arc 4 begins. The path he can't make."
+}

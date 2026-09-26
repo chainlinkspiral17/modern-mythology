@@ -1,0 +1,126 @@
+{
+  "id": "dw_2014-12-08_the_bed",
+  "title": "The bed",
+  "strip": "drift_wood",
+  "date": "2014-12-08",
+  "run": 5,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies (the trilogy ran in print in three papers)",
+  "arc": "Between Sundays",
+  "source": "lore/drift_wood/_SOURCE_BRIEF.md (Arc 4); _THE_COMPLETE_RUN.md",
+  "logline": "Monday after 'The Empty Chair.' The dog bed under the lowered table. Wood does not move it. A daily that is only the bed.",
+  "cast": [
+    "wood_34"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "flat_stroke",
+    "note": "The flat stroke, still."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. The lowered table. The braided wool dog bed beneath it, empty, indented. WOOD sitting cross-legged at the table, not drawing, the lamp on.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "cross-legged, not drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "empty dog bed",
+        "lowered table",
+        "lamp"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man sitting cross-legged at a drafting table lowered nearly to the floor, not drawing, a lamp on, an empty indented braided dog bed beneath the table, desaturated Payne's gray wash, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The bed. The crescent it's worn into. Two stiff white-and-tan hairs in the yarn.",
+      "characters": [],
+      "props": [
+        "the bed, the crescent, the hairs"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of an empty braided wool dog bed worn into a shallow crescent with a few stiff white-and-tan hairs caught in the yarn, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood's foot, in a wool sock, on the floor beside the bed. Nothing on it.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "foot in a sock beside the bed",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "wool sock",
+        "bed"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a man's foot in a wool sock resting on floorboards beside an empty dog bed, nothing touching it, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The room from the door. The table still low. The bed still there. The strip's Wood has not raised the table back. He won't for a month.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "at the low table",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "low table",
+        "bed"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a garage studio from the doorway with the drafting table still lowered to the floor and an empty dog bed beneath it, a man sitting at it in lamp light, no words",
+        "negative": "",
+        "notes": "The table stays lowered until 'The Box.' The reader sees it in every garage panel between."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "quiet; water bleeding over the ink edge to suggest rain and fading light",
+    "palette": "desaturated wet-on-wet: raw umber, Payne's gray, Prussian blue, raw sienna",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for the Sundays"
+  },
+  "notes": "Between 'The Empty Chair' and 'The Box.' The table stays low. The margin stays flat."
+}
