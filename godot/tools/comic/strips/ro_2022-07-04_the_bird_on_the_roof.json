@@ -1,0 +1,79 @@
+{
+  "id": "ro_2022-07-04_the_bird_on_the_roof",
+  "title": "The bird on the roof",
+  "strip": "roflcopter",
+  "date": "2022-07-04",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening ix)",
+  "logline": "The Fourth: white fireworks, the dock, the family — and on the shack's roof ridge, the bird, seven weeks after it arrived, watching the sky with the rest of them. Nobody looks at the bird.",
+  "cast": [
+    "the_bird",
+    "gully_48",
+    "extra_maria",
+    "extra_gully_kid",
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The dock under white fireworks from the water: the family on the planks looking up, the pup barking at the sky, and on the shingle shack's roof ridge, small and every color, the bird, also looking up. Nobody looks at it.",
+      "characters": [
+        {
+          "id": "the_bird",
+          "pose": "on the roof ridge",
+          "expression": ""
+        },
+        {
+          "id": "gully_48",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_maria",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_gully_kid",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "barking",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a dock under white fireworks seen from the water with a family looking up and a small three-legged dog barking at the sky, and on the shingle shack's roof ridge a small rainbow bird also looking up that no one notices, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The bird at the Fourth. Nobody looks.",
+  "layout": "single page, no borders"
+}

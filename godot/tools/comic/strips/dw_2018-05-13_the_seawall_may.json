@@ -1,0 +1,97 @@
+{
+  "id": "dw_2018-05-13_the_seawall_may",
+  "title": "Sunday · the seawall in May",
+  "strip": "drift_wood",
+  "date": "2018-05-13",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2018 · Sundays · deepening ix)",
+  "logline": "The seawall in May before the season: empty, the benches wet, a crow, and in the last tier the first rental's blinds going up across the street. Quiet before it isn't.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the seawall in May, empty, wet benches, gray bay.",
+      "characters": [],
+      "props": [
+        "wet benches"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an empty seawall in May with wet benches and a gray bay, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Empty"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: a crow on the wall, a small three-legged dog looking at it from the sidewalk.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "looking at the crow",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a crow"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a crow on a seawall with a small three-legged dog watching it from the sidewalk, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Crow"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: across the street, a rental house's blinds going up, a key-safe on the frame.",
+      "characters": [],
+      "props": [
+        "a key-safe",
+        "blinds"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a house across a street with its blinds being raised and a small lockbox on the doorframe, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Blinds"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Before the season.",
+  "layout": "tiers, portrait page"
+}

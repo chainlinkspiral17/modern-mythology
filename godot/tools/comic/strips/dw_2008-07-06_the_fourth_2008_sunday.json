@@ -1,0 +1,94 @@
+{
+  "id": "dw_2008-07-06_the_fourth_2008_sunday",
+  "title": "Sunday · the Fourth, 2008",
+  "strip": "drift_wood",
+  "date": "2008-07-06",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2008 · Sundays · deepening ix)",
+  "logline": "Two days after: the dock in three tiers of the same light, morning, and the spent firework tubes rolling in the tide under the planks. Gully sweeping in the last tier, from behind.",
+  "cast": [
+    "gully_27"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the dock in morning light, the bay glassy, the shack open.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wooden dock in morning light over a glassy bay with a bait shack open, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Dock"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: beneath the planks, spent firework tubes rolling in the tide against the pilings.",
+      "characters": [],
+      "props": [
+        "spent tubes"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "beneath a dock's planks, spent cardboard firework tubes rolling in the tide against pilings, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Under"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: Gully sweeping the planks from behind, the broom's dust in the light.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "sweeping, from behind",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a broom"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky man in an apron sweeping a dock from behind with dust in the morning light, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Sweep"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "Sweeping, from behind.",
+  "layout": "tiers, portrait page"
+}

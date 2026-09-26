@@ -1,0 +1,109 @@
+{
+  "id": "dw_2018-12-16_gullys_at_christmas_2018",
+  "title": "Sunday · Gully's at Christmas, 2018",
+  "strip": "drift_wood",
+  "date": "2018-12-16",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2018 · Sundays · deepening ix)",
+  "logline": "Gully's in December from the dock: the string lights, the shack window warm, two kids' faces at it, the lawn chair with frost on it, and in the last tier the end stool inside with a man on it and a coffee, from the window, from outside.",
+  "cast": [
+    "extra_gully_kid",
+    "wood_34",
+    "gully_35"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the shingle shack at night from the dock strung with colored lights, two children's faces at the window.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "two faces at the window",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "colored lights"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a shingle bait shack at night strung with colored lights seen from a dock with two children's faces at its lit window, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Lights"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the old lawn chair on the dock with frost on its webbing.",
+      "characters": [],
+      "props": [
+        "the lawn chair, frosted"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old aluminum lawn chair on a dock at night with frost on its webbing, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Frost"
+    },
+    {
+      "n": 3,
+      "shot": "medium tier",
+      "composition": "Tier 3: through the window from outside: the end stool with a thin man on it and a coffee, a stocky man behind the counter, both from the side.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "on the end stool",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "behind the counter",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a coffee"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "seen through a lit window from a dark dock, a thin man on a shop's end stool with a coffee and a stocky man behind the counter, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Inside"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "From the window, from outside.",
+  "layout": "tiers, portrait page"
+}

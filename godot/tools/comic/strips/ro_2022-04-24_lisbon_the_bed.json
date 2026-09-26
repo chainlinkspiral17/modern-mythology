@@ -1,0 +1,50 @@
+{
+  "id": "ro_2022-04-24_lisbon_the_bed",
+  "title": "Lisbon, the bed",
+  "strip": "roflcopter",
+  "date": "2022-04-24",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "Rooms He Never Saw",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening ix)",
+  "logline": "The Lisbon hotel's bed, from the doorway: made, tight, a window's shutter-light striped across it, a coat on the chair — green. The room he built behind a postcard, furnished one piece at a time.",
+  "cast": [],
+  "location": "dw_seattle_hill",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A hotel room from its doorway: a tightly made bed with shutter-light striped across it, tile floor, a wooden chair with a green coat over its back, a postcard on the nightstand. No one.",
+      "characters": [],
+      "props": [
+        "the bed",
+        "the green coat"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a bright hotel room from its doorway with a tightly made bed striped by light through shutters, a patterned tile floor, a wooden chair with a green coat over it and a postcard on the nightstand, no one, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The invented room, furnished.",
+  "layout": "single page, no borders"
+}

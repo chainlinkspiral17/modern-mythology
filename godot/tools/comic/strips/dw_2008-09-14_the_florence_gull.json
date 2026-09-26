@@ -1,0 +1,106 @@
+{
+  "id": "dw_2008-09-14_the_florence_gull",
+  "title": "Sunday · the Florence gull",
+  "strip": "drift_wood",
+  "date": "2008-09-14",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2008 · Sundays · deepening ix)",
+  "logline": "The drive south to Florence, the Sunday that ends up on the corkboard: 101 in the top tier, the big gull on a piling in the middle, the Datsun turned around in the last.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_101",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: 101 south along the dunes, the Datsun small, the sea gray.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "driving",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "in the bed",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the Datsun"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a coastal highway along dunes with a small orange pickup and a gray sea, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "South"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: a very large gull on a piling at a river mouth, filling the tier, looking at the reader.",
+      "characters": [],
+      "props": [
+        "the big gull"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a very large gull standing on a piling at a river mouth filling the frame and looking straight out, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Gull"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the Datsun turned around, north, the gull a dot behind.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "driving",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small orange pickup on a coastal highway heading north with a distant dot of a gull on a piling behind, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Back"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "The Florence big gull (objects.md · corkboard, 2008).",
+  "layout": "tiers, portrait page"
+}

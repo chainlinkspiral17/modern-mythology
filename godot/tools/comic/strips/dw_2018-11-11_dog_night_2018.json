@@ -1,0 +1,112 @@
+{
+  "id": "dw_2018-11-11_dog_night_2018",
+  "title": "Sunday · Dog Night, 2018",
+  "strip": "drift_wood",
+  "date": "2018-11-11",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2018 · Sundays · deepening ix)",
+  "logline": "Nineteen years. The alley, and over the ridge behind the Lanes' roofline the glow is wider than the year before, drawn in the first tier and not again. The pup, the dumpster, the hand.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the alley at night, the sign mostly dark, and above the roofline the ridge with a warm glow wider than before.",
+      "characters": [],
+      "props": [
+        "the sign",
+        "the glow"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a night alley beneath a mostly dark neon bowling sign with a wooded ridge above the roofline showing a wide warm glow, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Wider"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: a man and a small three-legged dog walking the alley, the dog ahead.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "walking",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "ahead",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man walking a small three-legged dog down a rainy alley at night with the dog ahead, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Walk"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the dumpster, the dog's nose to the corner, the man's hand down on his back, the sky not shown.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "hand on the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "nose to the corner",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the dumpster"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small three-legged dog sniffing a dumpster's corner in a rainy alley with a man's hand resting on its back, the sky out of frame, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Hand"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Nineteen. The glow wider (2018); drawn once, then not.",
+  "layout": "tiers, portrait page"
+}

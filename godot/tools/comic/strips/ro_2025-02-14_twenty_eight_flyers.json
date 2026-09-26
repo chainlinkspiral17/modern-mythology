@@ -1,0 +1,57 @@
+{
+  "id": "ro_2025-02-14_twenty_eight_flyers",
+  "title": "Twenty-eight flyers",
+  "strip": "roflcopter",
+  "date": "2025-02-14",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening ix)",
+  "logline": "The Crab Derby: twenty-eight on the wall, the girl fifteen and taller than the row, pinning without reaching. The page draws her whole — the second full figure in Vol. II is Gully's daughter.",
+  "cast": [
+    "extra_gully_kid"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The shingle wall with twenty-eight flyers, and a fifteen-year-old girl in her father's apron pinning the newest at eye level without reaching, drawn whole, the dock behind her.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "fifteen, pinning, whole",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "twenty-eight flyers"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a shingle wall with a row of twenty-eight crab flyers and a fifteen-year-old girl in an oversized apron pinning the newest at eye level, drawn whole, a dock behind, no words legible",
+        "negative": "",
+        "notes": "The second full figure in the private pages (after Gully, ro_2024-08-04)."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Twenty-eight. Her, whole.",
+  "layout": "single page, no borders"
+}

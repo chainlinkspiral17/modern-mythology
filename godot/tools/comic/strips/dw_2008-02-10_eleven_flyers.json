@@ -1,0 +1,86 @@
+{
+  "id": "dw_2008-02-10_eleven_flyers",
+  "title": "Sunday · eleven flyers",
+  "strip": "drift_wood",
+  "date": "2008-02-10",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2008 · Sundays · deepening ix)",
+  "logline": "The Crab Derby wall with eleven flyers in three tiers of closeness: the wall, the row, the newest with its crab drawn small in the corner by a hand the page leaves out.",
+  "cast": [],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the shingle wall of the bait shack, the row of flyers a stripe across it.",
+      "characters": [],
+      "props": [
+        "eleven flyers"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a shingle bait shack wall with a row of eleven weathered paper flyers across it, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Wall"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the row close, the flyers going from yellow to white left to right.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a row of paper flyers on shingle fading from yellow to white left to right, watercolor, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Row"
+    },
+    {
+      "n": 3,
+      "shot": "medium tier",
+      "composition": "Tier 3: the newest flyer close, a small crab drawn in its corner.",
+      "characters": [],
+      "props": [
+        "a small crab"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a fresh paper flyer pinned to shingle with a small ink crab drawn in its corner, watercolor, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Newest"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "Eleven. 2008 − 1997.",
+  "layout": "tiers, portrait page"
+}

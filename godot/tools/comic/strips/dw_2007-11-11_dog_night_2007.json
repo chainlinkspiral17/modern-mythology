@@ -1,0 +1,111 @@
+{
+  "id": "dw_2007-11-11_dog_night_2007",
+  "title": "Sunday · Dog Night, 2007",
+  "strip": "drift_wood",
+  "date": "2007-11-11",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2007 · Sundays · deepening ix)",
+  "logline": "Eight years. The alley behind the Lanes, the sign all lit, the dumpster, the walk in three tiers with the dog leading each one.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the bowling alley's sign fully lit over the alley in rain.",
+      "characters": [],
+      "props": [
+        "the sign, all lit"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a bowling alley's neon sign fully lit above a rainy alley at night, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Sign"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: a man and a dog walking the alley, the dog ahead at the leash's length.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "walking",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "ahead",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man in a canvas chore coat walking a dog on a leash down a wet alley at night with the dog ahead, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Walk"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the dumpster, the dog's nose to its corner, the man waiting. Eight years.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "waiting",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "nose to the corner",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the dumpster"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a dog sniffing a dumpster's corner in a rainy alley while a man waits holding the leash, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Dumpster"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "Eight. All tubes lit.",
+  "layout": "tiers, portrait page"
+}

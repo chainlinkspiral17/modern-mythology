@@ -1,0 +1,122 @@
+{
+  "id": "dw_2011-11-13_twelve_sunday",
+  "title": "Sunday · Twelve",
+  "strip": "drift_wood",
+  "date": "2011-11-13",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Twelve",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2011 · Sundays · deepening ix)",
+  "logline": "The arc's Sunday, panels wider than the strip has ever drawn them: the alley, the dog at twelve walking slowly with the man matching him, the dumpster, the sign with its S dark. Three tiers, each the full width, each slow.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the alley at night, very wide, a man and an old dog walking slowly side by side, small at the left.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "walking slowly",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "slowly, beside him",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a very wide night alley in rain with a man and an old dog walking slowly side by side small at the left, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Slow"
+    },
+    {
+      "n": 2,
+      "shot": "wide tier",
+      "composition": "Tier 2: the same width, the two of them at the middle now, the dumpster ahead.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "walking",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "beside him",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the dumpster"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same very wide rainy alley with the man and the old dog now at the middle and a dumpster ahead, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Middle"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the same width, the two at the right under the sign, its S dark, the man's hand on the dog.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "hand on the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "under the sign",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the sign, S dark"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same very wide alley with the man and the old dog at the right beneath a neon bowling sign with one letter dark, his hand on the dog's back, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Sign"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "The panels wider. S dark since 2010. Hand on the dog.",
+  "layout": "tiers, portrait page"
+}

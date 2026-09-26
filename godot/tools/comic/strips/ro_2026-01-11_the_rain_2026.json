@@ -1,0 +1,58 @@
+{
+  "id": "ro_2026-01-11_the_rain_2026",
+  "title": "The Rain, 2026",
+  "strip": "roflcopter",
+  "date": "2026-01-11",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening ix)",
+  "logline": "The twenty-ninth January. The sill, four jars, rain — and the wall of boxes behind the table now reaching thirty-six, their numbers in the lamp's light. The last Rain but one.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The garage in January rain from the doorway: the window with four jars, the lamp on, and along the wall the boxes numbered to thirty-six stacked three high, the pup in the bed beneath the table.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "in the bed",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "four jars",
+        "boxes to 36"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a garage studio in January rain seen from its doorway with four jars on a rainy sill, a lit lamp, and a wall of numbered cardboard boxes stacked three high, a small three-legged dog in a bed beneath the table, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Thirty-six boxes. The last Rain but one.",
+  "layout": "single page, no borders"
+}

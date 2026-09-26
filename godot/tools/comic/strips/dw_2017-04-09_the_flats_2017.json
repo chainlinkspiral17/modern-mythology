@@ -1,0 +1,110 @@
+{
+  "id": "dw_2017-04-09_the_flats_2017",
+  "title": "Sunday · the flats, April 2017",
+  "strip": "drift_wood",
+  "date": "2017-04-09",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2017 · Sundays · deepening ix)",
+  "logline": "The flats with the pup at two: he takes all three tiers at a run, the two-one prints in a wild loop, a man far behind him with no leash. The scruff mark in the margin.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_mudflats",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: a small three-legged dog running across the flats at full tilt, prints in a loop behind.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "running",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "prints"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small three-legged dog running full tilt across tidal mudflats with a looping trail of prints behind, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Run"
+    },
+    {
+      "n": 2,
+      "shot": "wide tier",
+      "composition": "Tier 2: the man far behind, small, no leash, hands in his pockets.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "far behind, small",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small man far behind on wide mudflats with his hands in his pockets and no leash, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Far"
+    },
+    {
+      "n": 3,
+      "shot": "medium tier",
+      "composition": "Tier 3: the pup returned, mud to the chest, sitting at the man's boots, grinning.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking down",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "muddy, sitting",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small three-legged dog muddy to the chest sitting at a man's boots and looking up, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Back"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "The pup at two.",
+  "layout": "tiers, portrait page"
+}

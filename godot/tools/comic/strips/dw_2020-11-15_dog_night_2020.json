@@ -1,0 +1,112 @@
+{
+  "id": "dw_2020-11-15_dog_night_2020",
+  "title": "Sunday · Dog Night, 2020",
+  "strip": "drift_wood",
+  "date": "2020-11-15",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2020 · Sundays · deepening ix)",
+  "logline": "Twenty-one years, the last public Dog Night. The sign with nearly every letter dark, the glow above the ridge the largest the strip has drawn, the pup at six, and no hand in the last tier — the man's hands in his pockets, the dog leaning on his shin instead.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the bowling sign over the alley with nearly every letter dark, and above the roofline the ridge's glow large and warm.",
+      "characters": [],
+      "props": [
+        "the sign, nearly dark",
+        "the glow, largest"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a neon bowling alley sign with nearly every letter dark above a night alley and a large warm glow over the ridge beyond the roofline, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Dark"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the man and the pup walking the alley in rain, both smaller than the strip usually draws them.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "walking, small",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "small",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man and a small three-legged dog walking a rainy alley at night drawn small in the frame, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Walk"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the dumpster, the man's hands in his pockets, the pup leaning against his shin.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "hands in pockets",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "leaning on his shin",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the dumpster"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man with his hands in his coat pockets beside a dumpster in a rainy alley with a small three-legged dog leaning against his shin, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Shin"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Twenty-one. The last public Dog Night. No hand; the lean.",
+  "layout": "tiers, portrait page"
+}

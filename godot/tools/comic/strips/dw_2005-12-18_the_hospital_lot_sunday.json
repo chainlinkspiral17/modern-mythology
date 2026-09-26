@@ -1,0 +1,96 @@
+{
+  "id": "dw_2005-12-18_the_hospital_lot_sunday",
+  "title": "Sunday · the hospital lot",
+  "strip": "drift_wood",
+  "date": "2005-12-18",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Hospital Parking Lot",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2005 · Sundays · deepening ix)",
+  "logline": "The arc's Sunday: the lot at night from above, the Datsun small among the cars, the sign of a different kind lit blue, and a window on the fourth floor. The strip never names it.",
+  "cast": [
+    "wood_26"
+  ],
+  "location": "dw_101",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: a hospital parking lot at night from above, rain, a blue-lit sign the page doesn't letter.",
+      "characters": [],
+      "props": [
+        "the blue sign"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a hospital parking lot at night seen from above in rain with a blue-lit sign, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Lot"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: a small orange pickup among the cars, a man inside not getting out.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "in the cab",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the Datsun"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small orange pickup among parked cars at night with a man sitting inside not getting out, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Datsun"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the building, one window lit on the fourth floor, the rest dark.",
+      "characters": [],
+      "props": [
+        "one window"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a hospital building at night with a single lit window on the fourth floor, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Window"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "Never named. One window.",
+  "layout": "tiers, portrait page"
+}

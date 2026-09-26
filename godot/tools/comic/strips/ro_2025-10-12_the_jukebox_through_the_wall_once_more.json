@@ -1,0 +1,57 @@
+{
+  "id": "ro_2025-10-12_the_jukebox_through_the_wall_once_more",
+  "title": "The jukebox through the wall, once more",
+  "strip": "roflcopter",
+  "date": "2025-10-12",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening ix)",
+  "logline": "Nine o'clock in the garage: the jukebox drawn as a shape in the plaster one more time, the way it was in 2004, now that the page has seen the real one. The pup with his ear to the wall where the first dog put his.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The garage's shared wall at night with a jukebox drawn as a wobbling shape inside the plaster and music lines coming off it, and the small three-legged dog with his ear pressed to the wall, the lamp's light from the side.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "ear to the wall",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the jukebox in the plaster"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a garage's plaster wall at night with a jukebox drawn as a wobbling shape inside the plaster and music lines coming off it, a small three-legged dog pressing its ear to the wall, lamplight from the side, no words",
+        "negative": "",
+        "notes": "dw_2004-03-09, with the second dog. The page has seen the real jukebox (ro_2025-04-27) and draws the shape anyway."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The shape in the plaster, kept.",
+  "layout": "single page, no borders"
+}

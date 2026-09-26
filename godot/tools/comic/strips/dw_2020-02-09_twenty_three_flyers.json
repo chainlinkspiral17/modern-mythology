@@ -1,0 +1,96 @@
+{
+  "id": "dw_2020-02-09_twenty_three_flyers",
+  "title": "Sunday · twenty-three flyers",
+  "strip": "drift_wood",
+  "date": "2020-02-09",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2020 · Sundays · deepening ix)",
+  "logline": "Twenty-three. The wall's two rows have met — the girl is ten and reaches the high row now — and the Sunday draws the join: the last low flyer and the first she pinned high, side by side.",
+  "cast": [
+    "extra_gully_kid"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the shingle wall with twenty-three flyers, the low row and the high row meeting at the right.",
+      "characters": [],
+      "props": [
+        "twenty-three flyers"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a shingle wall with a long row of paper flyers where a lower row rises to meet the higher one at the right end, watercolor, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Met"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: close on the join: one flyer low, the next high, a crab in each corner in the same hand.",
+      "characters": [],
+      "props": [
+        "the join"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on two paper flyers on shingle, one pinned low and the next pinned high, each with a small ink crab in its corner, watercolor, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Join"
+    },
+    {
+      "n": 3,
+      "shot": "medium tier",
+      "composition": "Tier 3: a girl of ten pinning at the high row flat-footed, not reaching.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "ten, pinning high",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the newest flyer"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a girl of ten pinning a paper flyer at the height of an adult row on a shingle wall without stretching, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Ten"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Twenty-three. The rows meet.",
+  "layout": "tiers, portrait page"
+}

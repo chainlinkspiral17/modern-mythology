@@ -1,0 +1,107 @@
+{
+  "id": "dw_2018-07-08_the_dock_after_2018",
+  "title": "Sunday · the dock, after, 2018",
+  "strip": "drift_wood",
+  "date": "2018-07-08",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2018 · Sundays · deepening ix)",
+  "logline": "Four days after the Fourth: the dock, the ramp, spent tubes swept to a pile, the lawn chair with the girl of eight in it reading, and in the last tier the boy of five under the chair with the pup.",
+  "cast": [
+    "extra_gully_kid",
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the dock in morning light, the plank ramp at the shack's door, a pile of spent tubes.",
+      "characters": [],
+      "props": [
+        "the ramp",
+        "spent tubes"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wooden dock in morning light with a plank ramp at a shingle shack's door and a swept pile of spent firework tubes, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Ramp"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: a girl of eight in the old lawn chair reading a paperback, feet not reaching the planks.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "eight, reading",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the lawn chair"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a girl of eight sitting in an old lawn chair on a dock reading a paperback with her feet not reaching the planks, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Reading"
+    },
+    {
+      "n": 3,
+      "shot": "medium tier",
+      "composition": "Tier 3: beneath the chair, a boy of five and a small three-legged dog lying flat, both looking at the reader.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "five, under the chair",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "under the chair",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small boy and a small three-legged dog lying flat beneath a lawn chair on a dock both looking straight out, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Under"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Gully's kids, eight and five. The ramp.",
+  "layout": "tiers, portrait page"
+}

@@ -1,0 +1,102 @@
+{
+  "id": "dw_2011-09-11_corn_fourteen",
+  "title": "Sunday · corn, fourteen",
+  "strip": "drift_wood",
+  "date": "2011-09-11",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2011 · Sundays · deepening ix)",
+  "logline": "September 11 at Gully's, a Sunday: the counter from the door, the end stool, the tray of corn, Gully's back at the grill, the corkboard with the walk map and the Florence gull. Fourteen.",
+  "cast": [
+    "wood_26",
+    "gully_27"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: Gully's interior from the door, the counter, the end stool with a man on it, a stocky back at the grill.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "on the end stool",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "at the grill, from behind",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the end stool"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small bait shop's counter seen from its door with a thin man on the end stool and a stocky man's back at a grill, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Door"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: a paper tray of buttered corn on the counter, close, a coffee beside it.",
+      "characters": [],
+      "props": [
+        "the corn"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a paper tray of buttered corn on a wooden counter with a coffee beside it, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Corn"
+    },
+    {
+      "n": 3,
+      "shot": "medium tier",
+      "composition": "Tier 3: the corkboard above: a hand-drawn walk map, a photo of a large gull, a postcard, a yearbook photo lowest.",
+      "characters": [],
+      "props": [
+        "the corkboard"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a crowded corkboard with a hand-drawn map, a photo of a large gull on a piling, a postcard and a small yearbook photo pinned lowest, watercolor, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Board"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "Fourteen. The corkboard inventory as of 2011.",
+  "layout": "tiers, portrait page"
+}
