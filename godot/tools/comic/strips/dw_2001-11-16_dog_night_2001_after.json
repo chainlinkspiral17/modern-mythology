@@ -1,0 +1,131 @@
+{
+  "id": "dw_2001-11-16_dog_night_2001_after",
+  "title": "Dog Night, 2001 · after",
+  "strip": "drift_wood",
+  "date": "2001-11-16",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Dog Night",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2001 · fixture week · deepening xvi)",
+  "logline": "The morning after two years: the dog asleep on the blanket in the back room, the leash still on, Wood drawing him. The first hand-on-the-dog panel was a year ago; this one is a pen on the paper instead.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The back room in morning light. BARNABY asleep on the blanket with the leash still clipped on.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "asleep, leash on",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the leash"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small dog asleep on a folded blanket with its leash still clipped on in morning light, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD on the floor with a pad, drawing him.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "drawing on the floor",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a pad"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man sitting on the floor drawing a sleeping dog on a pad, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The pad: the dog, in six lines.",
+      "characters": [],
+      "props": [
+        "the drawing"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a sketch pad with a sleeping dog drawn in six quick lines, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD unclipping the leash without waking him.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "unclipping the leash",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man carefully unclipping a leash from a sleeping dog's collar, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "A pen on the paper instead of a hand."
+}

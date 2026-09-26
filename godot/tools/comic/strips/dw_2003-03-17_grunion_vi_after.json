@@ -1,0 +1,157 @@
+{
+  "id": "dw_2003-03-17_grunion_vi_after",
+  "title": "The Grunion Run, 2003 · after",
+  "strip": "drift_wood",
+  "date": "2003-03-17",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Grunion Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2003 · fixture week · deepening xvi)",
+  "logline": "The Monday after: the thermos on the shack's counter, empty, and a stranger coming in for a coffee and calling Gully by name. Wood on the crate watching the town have found him. Gully doesn't notice being found.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby",
+    "extra_tourists"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack. The empty thermos on the counter. GULLY. WOOD on the crate. A stranger in the door.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "behind the counter",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "on the crate",
+          "expression": ""
+        },
+        {
+          "id": "extra_tourists",
+          "pose": "a stranger in the door",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the thermos, empty"
+      ],
+      "balloons": [
+        {
+          "who": "STRANGER",
+          "text": "Gully — that coffee from Friday. You sell it?"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a bait shack with a stocky young man behind the counter, a thin young man on a crate and a stranger in the doorway, a large thermos on the counter, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "GULLY, plain.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "plain",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Sure."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky young man in an apron answering plainly across a counter, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD watching the exchange, the dog watching Wood.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "watching",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "watching Wood",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin young man on a crate watching a counter while a small dog watches him, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The stranger gone with a cup. GULLY wiping the counter, unbothered.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "wiping the counter",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a cup"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky young man in an apron wiping a counter in an empty bait shack, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Found. Doesn't notice."
+}

@@ -1,0 +1,140 @@
+{
+  "id": "dw_2013-11-14_dog_night_2013_before",
+  "title": "Dog Night, 2013 · before",
+  "strip": "drift_wood",
+  "date": "2013-11-14",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Dog Night",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2013 · fixture week · deepening xvi)",
+  "logline": "The night before fourteen years: the vet's lot, the Datsun's replacement, and the dog carried out to the Legacy in Wood's arms. Nobody says what the vet said. The strip draws the carrying, which it will draw again next year.",
+  "cast": [
+    "wood_34",
+    "barnaby"
+  ],
+  "location": "dw_vet",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The vet's lot at dusk, the Legacy, WOOD carrying BARNABY out to it.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "carrying the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "carried",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the Legacy"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man carrying an old dog in his arms across a small parking lot toward a faded green station wagon at dusk, black ink with one spot tone",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The dog's face over Wood's shoulder, looking back at the clinic door.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "looking back",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old dog's face over a man's shoulder looking back at a clinic door, black ink with one spot tone",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD setting him on the passenger seat, the blanket already there.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "setting him down",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "on the seat",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the blanket"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man setting an old dog gently onto a car's passenger seat where a folded blanket waits, black ink with one spot tone",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD's hand on the dog before he shuts the door.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "hand on the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man's hand resting on an old dog on a car seat before the door is closed, black ink with one spot tone",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "What the vet said: not said. The carrying, first."
+}

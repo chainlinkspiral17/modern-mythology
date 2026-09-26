@@ -1,0 +1,50 @@
+{
+  "id": "ro_2023-01-04_the_boys_bicycle",
+  "title": "The boy's bicycle",
+  "strip": "roflcopter",
+  "date": "2023-01-04",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Mill, 1994",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xvi)",
+  "logline": "A bicycle leaned on the mill's fence beside the lunch pail on the post, 1994: a boy's, a bent fender, a bait-shop sticker on the frame. Which boy: still not said. The bicycle says more than the page will.",
+  "cast": [],
+  "location": "dw_cedar_mill",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A boy's bicycle with a bent fender leaned against a chain-link fence beside a fence post with a lunch pail on it, a small sticker on the frame, the mill yard beyond.",
+      "characters": [],
+      "props": [
+        "the bicycle",
+        "the sticker"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, in the Era I manner, heavy black spotting brought back on purpose, a boy's bicycle with a bent fender leaned against a chain-link fence beside a post with a lunch pail on it, a small sticker on the frame, a mill yard beyond, no words legible",
+        "negative": "",
+        "notes": "Compare ro_2023-01-09. Reserved."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Says more than the page will.",
+  "layout": "single page, no borders"
+}

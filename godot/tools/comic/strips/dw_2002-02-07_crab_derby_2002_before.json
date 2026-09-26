@@ -1,0 +1,140 @@
+{
+  "id": "dw_2002-02-07_crab_derby_2002_before",
+  "title": "Crab Derby, 2002 · before",
+  "strip": "drift_wood",
+  "date": "2002-02-07",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2002 · fixture week · deepening xvi)",
+  "logline": "The day before the eighteenth: Gully at the shack with last year's flyer in one hand and a blank sheet in the other, the wall with four. The uncle's chair empty. Wood not there yet; Gully's talking to the dog.",
+  "cast": [
+    "gully_17",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack. GULLY in the apron with a blank sheet and last year's flyer. BARNABY at his boots.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "a blank sheet and a flyer",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "at his boots",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a blank sheet",
+        "four flyers"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky young man in a fisherman's apron holding a blank sheet and an old flyer in front of a shingle shack with four flyers on the wall, a small dog at his boots, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "GULLY to the dog.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "talking to the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "He'll do the same crab. He always does the same crab."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky young man in an apron talking down to a small dog, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The empty lawn chair beside the door.",
+      "characters": [],
+      "props": [
+        "the uncle's chair"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an empty lawn chair beside a shingle shack's door, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "GULLY, quieter, the sheet held to the wall where the fifth will go.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "holding the sheet to the wall",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Same crab's fine."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky young man holding a blank sheet against a shingle wall beside a row of flyers, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Talking to the dog. Same crab's fine."
+}

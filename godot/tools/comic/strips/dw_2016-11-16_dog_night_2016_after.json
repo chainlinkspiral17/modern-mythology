@@ -1,0 +1,126 @@
+{
+  "id": "dw_2016-11-16_dog_night_2016_after",
+  "title": "Dog Night, 2016 · after",
+  "strip": "drift_wood",
+  "date": "2016-11-16",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "The Dog Night",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2016 · fixture week · deepening xvi)",
+  "logline": "The morning after seventeen years: the box under the table — the first dog's box from December 2014 — and the pup asleep against it, having found it in the night. Wood looks and doesn't move him. The panel is mostly the box.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage in morning light. A small cardboard box under the drafting table with the PUP asleep against it.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "asleep against the box",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the box"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small cardboard box beneath a drafting table with a small three-legged dog asleep against it in morning light, razor-sharp brush and ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD in the doorway with the coffee, seeing it.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "in the doorway",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a coffee"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man in a garage doorway holding a coffee and stopping at what he sees, razor-sharp brush and ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The box, close, a corner chewed years ago.",
+      "characters": [],
+      "props": [
+        "the chewed corner"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a small cardboard box with one corner chewed long ago, razor-sharp brush and ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD sitting down at the table above them, quietly, not moving the dog.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "sitting at the table",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man sitting down carefully at a drafting table above a small dog asleep against a box, razor-sharp brush and ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "The first dog's box. Mostly the box."
+}

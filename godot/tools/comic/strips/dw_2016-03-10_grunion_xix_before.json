@@ -1,0 +1,154 @@
+{
+  "id": "dw_2016-03-10_grunion_xix_before",
+  "title": "The Grunion Run, 2016 · before",
+  "strip": "drift_wood",
+  "date": "2016-03-10",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Grunion Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2016 · fixture week · deepening xvi)",
+  "logline": "The day before the pup's first run: the beach by day, Wood walking him along the tide line to show him where, the pup uninterested in the where and interested in a crab. Gully's daughter, six, explaining fish to him. He listens to her.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii",
+    "extra_gully_kid"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The beach by day, low tide. WOOD walking the PUP along the tide line. The six-year-old ahead.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "walking",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "on the leash",
+          "expression": ""
+        },
+        {
+          "id": "extra_gully_kid",
+          "pose": "six, ahead",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man walking a small three-legged dog along a beach's tide line by day with a six-year-old girl ahead, razor-sharp brush and ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The girl crouched to the pup, explaining, hands wide.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "explaining",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "listening",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GIRL",
+          "text": "The fish come UP. Onto the sand. You have to wait."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small girl crouched explaining something to a small three-legged dog with her hands held wide apart, razor-sharp brush and ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The pup, rapt, then a crab moves.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "distracted by a crab",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a crab"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small three-legged dog's attention snapping to a small crab moving on the sand, razor-sharp brush and ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD, to the girl, the pup gone after the crab.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_gully_kid",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "He heard you."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man speaking to a small girl on a beach while a small dog chases a crab out of frame, razor-sharp brush and ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "He listens to her. Then a crab."
+}

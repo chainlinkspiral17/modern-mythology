@@ -1,0 +1,133 @@
+{
+  "id": "dw_2002-08-15_tourist_season_2002_before",
+  "title": "Tourist Season, 2002 · before",
+  "strip": "drift_wood",
+  "date": "2002-08-15",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Tourist Season",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2002 · fixture week · deepening xvi)",
+  "logline": "The seawall in August before the napkin: Wood on the bench with no napkin yet, watching a family photograph each other in front of the bay, the bay not in the frame of any of their photos. The dog under the bench.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "extra_tourists"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The seawall, a family posing for a photo with their backs to the bay, WOOD on the bench, BARNABY under it.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "watching",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "under the bench",
+          "expression": ""
+        },
+        {
+          "id": "extra_tourists",
+          "pose": "posing",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a family posing for a photo on a seawall with their backs to the bay, a young man watching from a bench with a small dog beneath it, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The family's camera's view: the family, the wall, no bay.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "in the frame",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a camera's view"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a camera viewfinder's view of a family in front of a concrete wall with no water visible, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD, to the dog.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "They'll get home and it's a wall."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man on a bench speaking down to a small dog, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The bay, wide, gray, empty of anyone photographing it.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wide gray bay from a seawall with no one photographing it, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "It's a wall."
+}
