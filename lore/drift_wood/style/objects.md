@@ -123,6 +123,8 @@ tracks which are dark.
 | Mar 10, 2019 ("Lanes, again") | six dark, the composition of 2009 repeated |
 | 2020 | reserved; more |
 | 2021 (main street twice) | the sign appears on the 2021 half with most letters dark |
+| Dec 7, 2025 (private) | one tube relit — the L — every other letter dark; who fixed it: reserved |
+| Feb 10, 2027 (private) | every tube dark, the L too; the sign a shape only |
 
 Draw dead letters as unlit tubes, still visible as gray glass, so
 the word can be read as a gap.

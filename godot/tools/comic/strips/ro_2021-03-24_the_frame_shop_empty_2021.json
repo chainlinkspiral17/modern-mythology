@@ -1,0 +1,50 @@
+{
+  "id": "ro_2021-03-24_the_frame_shop_empty_2021",
+  "title": "The frame shop, empty, 2021",
+  "strip": "roflcopter",
+  "date": "2021-03-24",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xv)",
+  "logline": "The frame shop's storefront in March 2021, empty, a FOR LEASE card, the transom, and in the window's reflection nothing — the Absent rule applied to a reflection. Ten years since the last mat.",
+  "cast": [],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "An empty storefront with a paper card taped inside the door's glass, an old transom above, the window reflecting only the gray street with no one in it.",
+      "characters": [],
+      "props": [
+        "the FOR LEASE card",
+        "the transom"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, an empty small-town storefront with a paper card taped inside the door's glass and an old transom above, the window reflecting a gray street with no one in it, no words legible",
+        "negative": "",
+        "notes": "Compare ro_2024-03-24 (a nail salon)."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Absent, in a reflection.",
+  "layout": "single page, no borders"
+}

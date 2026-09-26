@@ -1,0 +1,49 @@
+{
+  "id": "ro_2026-07-15_the_third_can",
+  "title": "The third can",
+  "strip": "roflcopter",
+  "date": "2026-07-15",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xv)",
+  "logline": "Three coffee cans on the dock now, each with a spent tube: 2020, 2025, and this year's, bought with the coins from the tin's lid. The page counts. Three.",
+  "cast": [],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Three coffee cans in a row on dock planks each holding a spent firework tube, the oldest faded and the newest fresh, the lawn chair behind.",
+      "characters": [],
+      "props": [
+        "three cans"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, three coffee cans in a row on wooden dock planks each holding a single spent cardboard firework tube from faded to fresh, an old lawn chair behind, no words",
+        "negative": "",
+        "notes": "Compare ro_2025-07-27 and ro_2026-06-28."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Three.",
+  "layout": "single page, no borders"
+}

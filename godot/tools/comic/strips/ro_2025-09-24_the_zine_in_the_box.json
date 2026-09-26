@@ -1,0 +1,49 @@
+{
+  "id": "ro_2025-09-24_the_zine_in_the_box",
+  "title": "The zine, in the box",
+  "strip": "roflcopter",
+  "date": "2025-09-24",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xv)",
+  "logline": "The zine from Gully's counter in Box 34 on top of the summer's pages, still closed, its crab up. He kept it and didn't read it. The page keeps it closed too.",
+  "cast": [],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "An open cardboard box on a drafting table with a small stapled zine lying closed on top of a stack of drawn pages, a crab on its cover, lamplight.",
+      "characters": [],
+      "props": [
+        "the zine, closed"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, an open cardboard box on a drafting table with a small stapled zine lying closed on top of a stack of drawn pages with a crab on its cover, lamplight, no words legible",
+        "negative": "",
+        "notes": "Compare ro_2025-08-15."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Kept and not read.",
+  "layout": "single page, no borders"
+}
