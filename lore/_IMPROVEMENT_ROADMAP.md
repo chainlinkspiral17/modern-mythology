@@ -2920,13 +2920,28 @@ their hero. Key fixes: `ben`, `mr_henderson`, `anya` (Elicia's
 recorded persona) now route. NEXT there: chapter-based routing in
 CharLayer for bare keys that cross eras (`miriam`); vol1's chorus
 (Helen, Emily, Deborah, Eric) has no description in the text at all;
-Lena's prompt says 2050s and vol7's wiki says 2025 — the wiki is
-wrong (the cabin was built in '79, a funeral in 2042).
+Lena's prompt says 2050s and vol7's wiki said 2025 — the user
+ruled the 2050s (2026-09-26); both wikis are rewritten to it.
 
 NEXT (draft 39): small_wood_road's second draft (it is template +
 props: the house's window lit, a porch light, the mailboxes'
 reflectors, a car in the drive); the "door-like polygons" — ask the
 user for a locale; the 46 nightmare-cell dots, verified on the sheet.
+
+THIRTY-NINTH PASS. small_wood_road, draft 2
+(`build_property_dressing_2026_09`): the house's lit window and porch
+fixture were already there (the tscn's House_Window and porch
+practical); what the frame lacked was anyone home — a pickup up the
+gravel by the pole barn, nose to the barn, and reflectors on the three
+mailboxes' road faces. The builder carries its NEXT (the gate's chain
+and padlock, a dog on the porch, the minister's car on the roadside
+preset's gravel, the crick's headwall wet). The nightmare cell's 46
+dots: the buried-detail tool finds none left — the tin-tile pass
+moved them; verified by tool, not yet by eye on the sheet.
+NEXT (draft 40): the roads on the sheet (highway 101's reflectors and
+taillights at dusk, the truck in Small Wood's drive); the "door-like
+polygons" still need a locale from the user; the seven kitchens by
+eye once more; Simon's room in the game (no preset frames it).
 
 NEXT (draft 36, as written): judge the moved pieces on the sheet (ben, jesse, sam,
 safehouse, the seven kitchens); name the 13 deliberate OFF_WALL pieces

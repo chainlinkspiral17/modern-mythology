@@ -326,6 +326,11 @@ Every ending's reading now carries the arcana's record. The design
 row's Claude-side items are through; what remains on it is Deck-
 gated (the bursts) or user-gated (Salmonberry).
 
+**Status (2026-09-26, later) · draft 39 · the second road.** Small
+Wood's county road had its lights already; it lacked anyone home — a
+truck in the drive, reflectors at the gate. Both roads now have a
+second draft and a NEXT list of their own. Roadmap: THIRTY-NINTH PASS.
+
 **Status (2026-09-26) · draft 38 · the first road gets a second
 draft.** Highway 101 at dusk: reflectors on the rail, a car's
 taillights ahead, the last light over the sea — the three things the

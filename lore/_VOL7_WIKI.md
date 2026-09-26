@@ -1,5 +1,10 @@
 # VOL 7 · LAND OF MILK AND HONEY · Wiki
 
+> **Era (ruled 2026-09-26): the 2050s.** The text agrees — the cabin
+> built in '79, a funeral in 2042, the Tideline's storefront 2014-2034,
+> Sal at Pizza Pirate since '91. The wiki used to say 2025; every date
+> below reads against the 2050s. vol6 (COMMUNITY PLANNED) is 2025.
+
 The synthesizing entry point for vol 7 of *Modern Mythology* — the
 **Land of Milk and Honey** volume. The Oregon coast, the substrate,
 Lena Vargas's zine. The saga's slowest, dampest, most patient
@@ -11,7 +16,7 @@ characters notice them themselves.
 The volume set in **Smolvud, OR** — a small Pacific Northwest
 coastal town, the kind of place where the fog has a frequency and
 the bakery on the corner is the bakery on the corner. Lena Vargas
-wakes one August morning in 2025 with charcoal on her thigh in
+wakes one August morning in the 2050s with charcoal on her thigh in
 the shape of three letters — **S U N** — that she did not put
 there. Lena starts a zine called *Static Truths*. The volume
 follows what happens next.
@@ -25,7 +30,7 @@ cage second.
 
 The volume's central artifact is **the substrate** — the non-
 human phenomenon that runs beneath the deck's chapters across all
-volumes. Stable for thirty-seven years. Became unstable in 2025.
+volumes. Stable since 1988 — sixty-some years. Became unstable in the 2050s.
 The instability is, by Frasier Temple's quiet warehouse read, *a
 request.* Vol 7's third act is the volume's small careful
 response.
@@ -36,7 +41,7 @@ response.
 
 | Character | What |
 |---|---|
-| **Lena Vargas** | Late 20s · the protagonist · works mornings at the Daily Grind · publishes *Static Truths* zine starting August 2025 · woke with SUN charcoal on her thigh that won't wash off for three days · daughter of the Vargas-Quintana family delivered to Smolvud in COMMUNITY PLANNED canon · lives in the apartment above the Salty Tome |
+| **Lena Vargas** | Late 20s · the protagonist · works mornings at the Daily Grind · publishes *Static Truths* zine starting that August (the 2050s) · woke with SUN charcoal on her thigh that won't wash off for three days · daughter of the Vargas-Quintana family delivered to Smolvud in COMMUNITY PLANNED canon · lives in the apartment above the Salty Tome |
 | **Wren** | Lena's friend · brings Lena the SCUMM machine's message about the substrate leaking |
 | **Tem** | The friend Lena mentions across Issues 1-3 of *Static Truths* · reads John Frank's *The Frequency Beneath* aloud on Sunday afternoons · the recipient of the SCUMM machine's Wren-relayed message · relationship to the deck's larger history reserved for the mid-act |
 | **Mrs. Gable** (Marian Gable) | The retired town librarian · morning seat at the Daily Grind · the anomalous-frequency archive in the library back room she still tends · former active librarian in the Smolvud town library · knows what Frasier is, will not acknowledge this in conversation · has been seeing the same crow at the lighthouse every morning for nine years |
@@ -51,7 +56,7 @@ response.
 - **Frasier Temple** — old now. By vol 7 the Cathedral of Rust and
   Code has inverted from warehouse-cathedral to cathedral-warehouse.
   Frasier is, in the vol 7 timeframe, very near the end of his
-  life. **He has, by his quiet warehouse read in 2025, detected
+  life. **He has, by his quiet warehouse read in the 2050s, detected
   the substrate becoming unstable** — and this is one of the
   conditions vol 7 opens under.
 - **Aria Dean** — sometimes sighted on the Oregon coast. Yellow
@@ -68,7 +73,7 @@ response.
   Alsea. (Park Manus deceased. Helen Soong converted. See
   COMMUNITY PLANNED canon for the full collective roster.)
 - **Mr. D. Dean** — never on-screen. His tower has been bright
-  most weeks; by 2025 it begins to flicker. The substrate's
+  most weeks; by the 2050s it begins to flicker. The substrate's
   destabilization is, in the long view, his.
 
 ## Locations
@@ -124,7 +129,7 @@ The volume's three primary artifact files (in `milk_and_honey/`):
 
 ### Static Truths · Lena Vargas's zine
 
-`static_truths.md`. Started August 2025 the morning Lena woke with
+`static_truths.md`. Started that August (the 2050s) the morning Lena woke with
 SUN charcoal on her thigh. A record of *"small things the coast
 does not, in its own voice, get to record."* Photocopied at the
 Salty Tome on Petra's back-room copier. Half-letter, single-fold.
@@ -193,8 +198,8 @@ What is known across the volumes:
 - The substrate is the same thing the chassis breathes.
 - The substrate is the same thing the cannery's basement servers
   are receiving, sending, and unknown-ing.
-- The substrate has been stable for at least thirty-seven years.
-- The substrate has, in 2025, become **unstable**.
+- The substrate has been stable for at least sixty years (since 1988).
+- The substrate has, in the 2050s, become **unstable**.
 
 By Frasier's quiet warehouse read, the instability is **a
 request.** Vol 7's third act is the volume's small careful
@@ -231,7 +236,7 @@ The tower in Small Wood is one of Dean's interfaces to it.
 
 - **The patient response to a long signal.** Vol 7 is the slowest
   volume. The characters do not rush. The substrate does not
-  rush. The thirty-seven-year stability is the precondition for the
+  rush. The sixty-year stability is the precondition for the
   current attention; the destabilization is the call to act.
 - **The young recognizing the elders' patient knowledge.** Lena
   recognizing what Mrs. Gable has been seeing. Kai recognizing what

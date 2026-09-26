@@ -231,8 +231,9 @@ Cosmic Comics' Henderson Donation boxes. Maya's *zine #11* (Vol 1,
 No. 4) is an extension of the original collective's work.
 
 The substrate is also documented in vol 7 (`milk_and_honey/`); it
-is the cross-volume artifact, stable for 37 years, becoming
-unstable in 2025 — *concurrent with COMMUNITY PLANNED's summer*.
+is the cross-volume artifact, stable since 1988 — still stable
+through COMMUNITY PLANNED's 2025 summer, whose cracks are its first
+— and unstable by vol 7's 2050s (era ruled 2026-09-26).
 
 ## COMMUNITY PLANNED · vol 6's gallery game
 

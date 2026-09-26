@@ -215,6 +215,24 @@ def build_horizon():
                    sides="EW", cx=0.0, cy=0.0, profile="ridge")
 
 
+def build_property_dressing_2026_09():
+    """Draft 2 (2026-09-26) — the first sheet with this road on it read
+    as a road with a gate and firs: a county road with nobody home.
+    What a lived-on property has that the frame lacked:
+      · A TRUCK IN THE DRIVE — a pickup up the gravel by the pole barn,
+        nose to the barn, the way a truck is left at a place someone
+        lives (the night preset's car on the road is vol1's; this is
+        the property's);
+      · REFLECTORS on the mailboxes' road faces, the one thing at a
+        rural gate that reads from the road at dawn and at night.
+    NEXT (draft 3): the gate's chain and padlock; a dog on the porch;
+    the roadside preset's minister's car pulled onto the gravel; the
+    crick's headwall wet after the vol2 rain."""
+    make_car("Property_Truck", -11.0, 2.4, 5.4, (0.36, 0.30, 0.24, 1.0), pickup=True, along="X", z0=0.015)
+    for mi in range(3):
+        make_box("Mailbox_Reflector_%d" % mi, (-3.285, -1.6 - mi * 0.5, 1.12), (0.01, 0.06, 0.06), (0.92, 0.40, 0.22, 1.0))
+
+
 def main():
     clear_scene()
     build_road()
@@ -223,6 +241,7 @@ def main():
     build_trees_and_fields()
     build_night()
     build_horizon()
+    build_property_dressing_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/small_wood_road.glb"))
     print(f"\n[build_small_wood_road] exporting to {out}")
     export_glb(out)
