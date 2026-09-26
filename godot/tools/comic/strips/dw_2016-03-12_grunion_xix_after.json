@@ -1,0 +1,137 @@
+{
+  "id": "dw_2016-03-12_grunion_xix_after",
+  "title": "The Grunion Run, 2016 · after",
+  "strip": "drift_wood",
+  "date": "2016-03-12",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Grunion Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2016 · fixture week · deepening xvi)",
+  "logline": "The morning after the pup's first run: the fish he brought out of the surf on the garage step, stiff, and the pup guarding it. Wood with a shovel. The first dog never managed a fish; this one won't give his up.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage step. A small silver fish on it. The PUP sitting over it.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "guarding the fish",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the fish"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small three-legged dog sitting protectively over a small silver fish on a concrete step, razor-sharp brush and ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD with a shovel.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "with a shovel",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a shovel"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "It's a fish. It's done being a fish."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man holding a garden shovel and looking down at a small dog, razor-sharp brush and ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The pup, not moving.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "not moving",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small three-legged dog refusing to move from over a fish on a step, razor-sharp brush and ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD sitting down on the step beside him instead. The shovel leaned on the wall.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "sitting on the step",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the shovel, leaned"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man sitting down on a step beside a small dog and a fish with a shovel leaned against the wall, razor-sharp brush and ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Won't give it up. He sits down instead."
+}

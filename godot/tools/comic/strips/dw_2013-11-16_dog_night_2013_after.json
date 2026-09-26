@@ -1,0 +1,125 @@
+{
+  "id": "dw_2013-11-16_dog_night_2013_after",
+  "title": "Dog Night, 2013 · after",
+  "strip": "drift_wood",
+  "date": "2013-11-16",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Dog Night",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2013 · fixture week · deepening xvi)",
+  "logline": "The Saturday after fourteen years: the dog asleep on the blanket under the drafting table and Wood on the floor beside him, not drawing, the lamp on, the polo on its hanger for the night's shift in two hours. He stays on the floor.",
+  "cast": [
+    "wood_34",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. BARNABY asleep under the drafting table. WOOD sitting on the floor beside him, back to the wall.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "on the floor",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the lamp"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man sitting on a garage floor with his back to the wall beside an old dog asleep under a drafting table, a lamp on, black ink with one spot tone",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The polo on its hanger on the door's hook.",
+      "characters": [],
+      "props": [
+        "the polo"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a maroon polo shirt on a hanger hung from a garage door's hook, black ink with one spot tone",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The clock on the wall: 9:40.",
+      "characters": [],
+      "props": [
+        "the clock"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a plain wall clock reading twenty to ten, black ink with one spot tone",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD not moving. His hand on the dog. The clock out of frame.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "hand on the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man on a garage floor with his hand resting on a sleeping old dog, black ink with one spot tone",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "Stays on the floor. Hand on the dog."
+}

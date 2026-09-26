@@ -1,0 +1,142 @@
+{
+  "id": "dw_2003-11-13_dog_night_2003_before",
+  "title": "Dog Night, 2003 · before (unprinted)",
+  "strip": "drift_wood",
+  "date": "2003-11-13",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Unprinted Year / The Dog Night",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2003 · fixture week · deepening xvi)",
+  "logline": "The night before four years, unprinted like everything since May: Wood at the laundromat's window from outside, the rack gone, the dog at his boot. He goes there first, then the alley. The strip doesn't say why he checks.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The laundromat's window from the sidewalk at night, the pale rectangle where the rack was. WOOD and BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "at the window",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the pale rectangle"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man and a small dog at a laundromat's window at night with a pale rectangle on the inside wall where a rack once hung, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD's reflection in the glass over the rectangle.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "a reflection",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man's reflection in a laundromat window over a pale rectangle on the wall inside, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The dog pulling toward the alley.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "pulling",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the leash"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small dog pulling on its leash toward a dark alley while a young man stands at a window, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The two of them walking away toward the Lanes' sign, small.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "walking",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the sign"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man and a small dog walking away down a street toward a distant lit neon sign, small, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Checks the window first. Unprinted."
+}

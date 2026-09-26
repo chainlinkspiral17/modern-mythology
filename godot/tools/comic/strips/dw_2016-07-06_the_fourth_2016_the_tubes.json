@@ -1,0 +1,144 @@
+{
+  "id": "dw_2016-07-06_the_fourth_2016_the_tubes",
+  "title": "The Fourth, 2016 · the tubes",
+  "strip": "drift_wood",
+  "date": "2016-07-06",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Fourth on the Bay",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2016 · fixture week · deepening xvi)",
+  "logline": "Two days after: Gully's daughter and Wood sweeping the spent tubes into a pile, the pup's voice back, the tubes counted by the girl. The strip lets her count and doesn't letter the number; the reader knows how many a small dock buys.",
+  "cast": [
+    "wood_34",
+    "extra_gully_kid",
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The dock. WOOD with a broom, the girl with a dustpan, a pile of spent firework tubes. The PUP.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "sweeping",
+          "expression": ""
+        },
+        {
+          "id": "extra_gully_kid",
+          "pose": "with the dustpan",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "spent tubes"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man sweeping spent firework tubes into a pile on a dock while a small girl holds a dustpan and a small three-legged dog watches, razor-sharp brush and ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The girl counting the tubes, finger moving.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "counting",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small girl counting a pile of cardboard tubes with her finger, razor-sharp brush and ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The girl, triumphant, a number in her balloon left blank.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "triumphant",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GIRL",
+          "text": "...!"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small girl announcing a number triumphantly with her arms up, razor-sharp brush and ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD, the broom stopped.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "That's more than Gully said."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man leaning on a broom on a dock and raising an eyebrow, razor-sharp brush and ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "The number not lettered. More than Gully said."
+}

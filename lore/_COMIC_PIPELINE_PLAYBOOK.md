@@ -114,6 +114,33 @@ a page says "fifty" check it against the year first.
 
 ## Recent lessons
 
+### 2026-09-26 · Deepening xvi · fixture weeks · 1,219 → 1,255
+
+Twenty-four public dailies: twelve single-daily fixtures in the thin years
+(2001, 2002, 2003, 2013, 2016) each given a day before and a day after,
+so the fixture reads as a short week the way the catalogue allows. Then
+six Bird and six Mill pages, which put both sequences past their share;
+the counts quoted in earlier entries for those two were low, and the
+per-arc counter is now part of the post-check so the number on the page
+is the number in the folder.
+
+- **The day before a fixture is the fixture's reason.** Maria deciding to
+  take the blank flyer; Gully filling the thermos and saying "the beach";
+  the pup stopping at the alley a night early. The fixture strip stays
+  as written; the before-strip supplies what it assumed.
+- **The day after is the object the fixture leaves.** The napkin in a
+  plastic sleeve, the fish on the step, the first dog's box found by the
+  second dog, the unlettered Box 5 lid. An after-strip that adds a second
+  joke instead of an object is the wrong strip.
+- **Base each neighbor on the fixture strip itself**, not on the year's
+  first daily: venue, era, art and mark come from the strip it flanks, so
+  2001's Rain neighbors carry the frame-shop art and 2003's Dog Night
+  neighbors carry the unprinted arc's source line.
+- **Strangers say "Arthur"; Wood says "Wood".** The motel guest's
+  checkout is the fifth stranger; the count in `characters.md` is now
+  the owner ×5, the vet, Julian once, Maria once flat, and guests. Check
+  the list before writing the word.
+
 ### 2026-09-26 · Deepening xv · the unsequenced pages reach their share · 1,168 → 1,219
 
 Fifty-one unsequenced private pages, seven a year, on free Wednesdays and

@@ -1,0 +1,155 @@
+{
+  "id": "dw_2003-03-13_grunion_vi_before",
+  "title": "The Grunion Run, 2003 · before",
+  "strip": "drift_wood",
+  "date": "2003-03-13",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Grunion Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2003 · fixture week · deepening xvi)",
+  "logline": "The day before the sixth run: Gully filling the espresso machine's thermos at the shack, testing the lid, and Wood asking what for. For the beach, Gully says. The whole beach, Wood says. Gully says yes.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack. GULLY filling a giant thermos from the espresso machine. WOOD on the crate. BARNABY.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "filling the thermos",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "on the crate",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the thermos",
+        "the espresso machine"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "What's that for."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky young man in an apron filling a large thermos from an espresso machine in a bait shack while a thin young man watches from a crate, a small dog, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "GULLY, screwing the lid on.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "screwing on the lid",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "The beach."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky young man screwing the lid onto a large thermos, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "The whole beach?"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin young man on a crate looking skeptical, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "GULLY, the thermos under his arm, already at the door.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "at the door with the thermos",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Yeah."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky young man in an apron at a shack's door with a large thermos under his arm, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The whole beach. Yeah."
+}
