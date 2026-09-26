@@ -1,0 +1,177 @@
+{
+  "id": "dw_2007-08-13_tourists_2007",
+  "title": "Tourist Season, 2007",
+  "strip": "drift_wood",
+  "date": "2007-08-13",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Tourist Season",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004–2008 · deepening)",
+  "logline": "The first tourist who's come to Small Wood because of the strip. Not the helicopter. The dog. Wood doesn't know what to do with that.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby",
+    "extra_tourists"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. A young TOURIST with a printout — not the parody; 'Barnaby at Eight,' the July Sunday. Holding it toward WOOD.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "holding a printout of the Sunday",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "printout of a five-tier Sunday"
+      ],
+      "balloons": [
+        {
+          "who": "TOURIST",
+          "text": "I drove from Spokane. For the beach in this. Is it here? Is it a real beach?"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young tourist holding a printout of a five-tier watercolor comic page toward a thin man on a shop stool, a dog, a man in an apron, muddy flats",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood, looking at his own Sunday in a stranger's hands.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "...It's at the end of the road. Left at the log."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a thin man looking at his own comic page held by a stranger, unsure of his face",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully, from the machine, not looking.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Tide's out at four. Take the dog."
+        },
+        {
+          "who": "WOOD",
+          "text": "He's my—"
+        },
+        {
+          "who": "GULLY",
+          "text": "Take the dog, Woody."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man in an apron speaking without looking up from an espresso machine",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The beach. The tourist, WOOD, and BARNABY walking the length of it, the tourist holding the printout up against the real thing. It matches. Wood behind, not drawing.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "holding the printout up to the beach",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "behind",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "ahead",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "printout",
+        "beach",
+        "spruce grove"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a tourist holding a printed watercolor comic page up against a real beach that matches it, a thin man walking behind and a dog ahead, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats; Sundays in watercolor, improving",
+    "palette": "limited, muddy; Sundays gray-green, rust, one warm",
+    "paper": "bristol; the browser; newsprint from 2008"
+  },
+  "notes": "Someone drove from Spokane for the beach in the strip. It matches."
+}

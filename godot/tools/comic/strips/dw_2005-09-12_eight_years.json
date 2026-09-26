@@ -1,0 +1,153 @@
+{
+  "id": "dw_2005-09-12_eight_years",
+  "title": "Eight years",
+  "strip": "drift_wood",
+  "date": "2005-09-12",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Anniversary",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004–2008 · deepening)",
+  "logline": "Eight. The corn. Two days before twenty-five. The strip keeps them separate on purpose.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. A tray of corn on the drafting table. WOOD. BARNABY. The chorus, small at the back, holding a sign: AGAIN?",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_chorus",
+          "pose": "sign: AGAIN?",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "corn",
+        "sign"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man at a drafting table with a paper tray of corn, a dog, and small stick figures at the back of the panel holding a sign reading AGAIN?, muddy flats",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Wood, to the chorus.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Every year. It's the twelfth. It's corn. Thursday is my birthday and that's cake and that's separate."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man explaining something to stick figures with tired patience",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "#1 on the wall. The cafeteria. Wood's eyes on it. Eight years of ink between then and the corn.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "looking at the old strip",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "#1 on the wall"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a yellowed old comic strip pinned to a garage wall, a man's reflection faint in its plastic sleeve",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Alone at the long surface. The corn. The dog. The chorus has, for once, nothing to say.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "back turned",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_chorus",
+          "pose": "silent",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "drafting table"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man at a long drafting table with his back turned, a tray of corn, a dog, stick figures at the back of the panel saying nothing, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats; Sundays in watercolor, improving",
+    "palette": "limited, muddy; Sundays gray-green, rust, one warm",
+    "paper": "bristol; the browser; newsprint from 2008"
+  },
+  "notes": ""
+}

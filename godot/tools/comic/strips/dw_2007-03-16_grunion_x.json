@@ -1,0 +1,161 @@
+{
+  "id": "dw_2007-03-16_grunion_x",
+  "title": "The Grunion Run, x",
+  "strip": "drift_wood",
+  "date": "2007-03-16",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Grunion Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004–2008 · deepening)",
+  "logline": "Tenth year. Forty thousand readers and half of them want to know if it's real. Wood draws the fish, the buckets, the hands. It's real.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby",
+    "extra_stick_chorus"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The beach, lanterns, the run. The chorus is a crowd now, twenty stick figures along the bluff with signs: IS THIS REAL · WHERE IS THIS · SMALL WOOD ISN'T ON THE MAP.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "pad",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "thermos",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "surf",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_chorus",
+          "pose": "twenty on the bluff with signs",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lanterns",
+        "fish",
+        "signs"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a night beach festival with lanterns and a coffee line, and along the bluff above twenty small stick figures holding crude signs, muddy watercolor and ink",
+        "negative": "",
+        "notes": "Signs: IS THIS REAL / WHERE IS THIS / SMALL WOOD ISN'T ON THE MAP. Letter after."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood, to the bluff, not turning.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "It's real. It's not on the map. Both things are the point."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a man with a drawing pad speaking without turning toward a bluff, lantern light",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The pad: the fish, the buckets, the hands, in three strokes each. The tenth year's drawing.",
+      "characters": [],
+      "props": [
+        "pad"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a drawing pad with silver fish, buckets and reaching hands sketched in quick confident strokes",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Silent. The fish. The lanterns. The stick figures on the bluff have stopped holding signs and are just watching. Wood, pad closed.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "pad closed",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_chorus",
+          "pose": "watching, no signs",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "small",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "fish",
+        "lanterns"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "silent wide night beach panel of a surf line alive with silver fish under lanterns, stick figures on the bluff standing without signs just watching, a man with a closed pad, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats; Sundays in watercolor, improving",
+    "palette": "limited, muddy; Sundays gray-green, rust, one warm",
+    "paper": "bristol; the browser; newsprint from 2008"
+  },
+  "notes": "'It's real. It's not on the map.' The chorus stops asking."
+}

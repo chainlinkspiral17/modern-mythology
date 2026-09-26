@@ -1,0 +1,162 @@
+{
+  "id": "dw_2007-07-04_the_fourth_2007",
+  "title": "The Fourth, 2007",
+  "strip": "drift_wood",
+  "date": "2007-07-04",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Fourth on the Bay",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004–2008 · deepening)",
+  "logline": "White fireworks. A tourist on the dock in the stick-figure shirt. Gully pours him a coffee like anyone. Wood watches Gully do it.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby",
+    "extra_tourists"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The dock, fireworks white on blue. A TOURIST in the stick-figure t-shirt in the coffee line. GULLY pouring. WOOD on the steps.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "in the shirt, in line",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "pouring",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "steps",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "fireworks",
+        "the shirt",
+        "cups"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a crowded dock at night under white fireworks, a tourist in a t-shirt printed with a crude stick figure waiting in a coffee line, a man in an apron pouring, a thin man on shack steps with a dog, muddy watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Gully handing him the cup. Looking at the shirt. Looking at Wood on the steps. Handing him the cup.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "handing a cup, glancing at the shirt",
+          "expression": ""
+        },
+        {
+          "id": "extra_tourists",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "cup"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Two bucks."
+        },
+        {
+          "who": "TOURIST",
+          "text": "Is the guy who— is he here?"
+        },
+        {
+          "who": "GULLY",
+          "text": "Two bucks."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man in an apron handing a paper cup to a tourist in a stick-figure shirt while glancing at the shirt, then away",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood on the steps, drawing the tourist. The shirt, in the drawing, blank again.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "pad: a tourist with a blank shirt"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin man on shack steps drawing a tourist whose printed t-shirt he leaves blank on the page",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The finale. White. The chair, empty. The tourist, the shirt, the crowd, Gully, Wood, the dog. Everyone gets the fireworks.",
+      "characters": [],
+      "props": [
+        "finale",
+        "the chair",
+        "the crowd"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a fireworks finale in white over a blue night bay above a crowded dock with an empty lawn chair under a shack's eave, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats; Sundays in watercolor, improving",
+    "palette": "limited, muddy; Sundays gray-green, rust, one warm",
+    "paper": "bristol; the browser; newsprint from 2008"
+  },
+  "notes": ""
+}
