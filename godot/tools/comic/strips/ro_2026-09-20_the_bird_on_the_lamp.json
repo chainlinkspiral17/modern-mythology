@@ -1,0 +1,64 @@
+{
+  "id": "ro_2026-09-20_the_bird_on_the_lamp",
+  "title": "The bird on the lamp",
+  "strip": "roflcopter",
+  "date": "2026-09-20",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Bird",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening x)",
+  "logline": "The bird on the green lamp's shade in the garage, September 2026, the lamp unlit, a page half-drawn under it on the table, the man's hand with the pen stopped. The page is the one being drawn; it has a bird on its lamp.",
+  "cast": [
+    "the_bird",
+    "wood_44"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The drafting table under the unlit green lamp: the small rainbow bird perched on the lamp's shade, a half-drawn page beneath it, a man's hand holding a pen stopped mid-line at the frame's edge.",
+      "characters": [
+        {
+          "id": "the_bird",
+          "pose": "on the lamp shade",
+          "expression": ""
+        },
+        {
+          "id": "wood_44",
+          "pose": "a hand, pen stopped",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the lamp, unlit",
+        "a half-drawn page"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a small rainbow bird perched on the shade of an unlit green swing-arm desk lamp above a drafting table with a half-drawn page and a man's hand holding a pen stopped mid-line at the edge, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "On the lamp. The pen stopped.",
+  "layout": "single page, no borders"
+}

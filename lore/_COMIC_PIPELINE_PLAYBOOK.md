@@ -114,6 +114,35 @@ a page says "fifty" check it against the year first.
 
 ## Recent lessons
 
+### 2026-09-26 · Deepening x · the ROFLCOPTER sequences toward their book share · 852 → 904
+
+Fifty-two private pages, chosen by comparing each sequence's written
+count against its share in the catalogue's table (The Mill 6/40, The Bird
+9/40, The Route North 7/30, Rooms 7/24, From Behind 8/20, Spring 6/20,
+What People Framed 6/20, The Ridge 6/16, No Grid 6/12). The sequences
+with the widest gap got the most pages.
+
+- **Check every planned date before writing any file.** The batch aborted
+  on its third page over a date the previous batch had used, leaving two
+  files written. Listing the planned dates against the existing set first
+  costs one command and turns an abort into a rename before anything is on
+  disk. The abort is still the right behaviour; it just should not be the
+  first check.
+- **A sequence's last page changes hands, not subject.** The mill sequence
+  ends on the same view as its first page with the Era I spotting dropped;
+  From Behind ends on the hand-on-the-dog with no man above it; The Route
+  North ends on the bag set down. Each ends by taking away the device the
+  sequence was drawn with, which is what makes it an ending rather than a
+  stop.
+- **Two pages dated the same day are a collision, not a spread.** A "facing
+  page" to an existing page still needs its own date; the book's facing is
+  a layout note in `image.notes`, not a shared date. The Bird and Gully
+  moved three days on.
+- **Reserved facts get drawn around the same way each time.** Glare over a
+  jersey number, a screen drawn blank, a sign above the frame, a figure at
+  a distance: the device is named in `image.notes` so the render prompt
+  says "no words legible" or "too far to read" rather than inventing.
+
 ### 2026-09-26 · Deepening viii and ix · the Sundays and the private seasons · 724 → 852
 
 Two batches of breadth after every arc reached its key week: forty-one

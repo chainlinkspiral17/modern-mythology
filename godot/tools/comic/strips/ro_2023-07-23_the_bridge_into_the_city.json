@@ -1,0 +1,50 @@
+{
+  "id": "ro_2023-07-23_the_bridge_into_the_city",
+  "title": "The bridge into the city",
+  "strip": "roflcopter",
+  "date": "2023-07-23",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Route North",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening x)",
+  "logline": "The bus on a bridge with the city ahead in haze and water below, both invented, drawn from a postcard's edge. The page after the on-ramp in the box; the book prints it before. The sequence's order is the route's, not the drawing's.",
+  "cast": [],
+  "location": "dw_seattle_hill",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "From a bus window: a long bridge's railing passing, gray water below, a city's towers ahead in haze, the glass reflecting an empty seat.",
+      "characters": [],
+      "props": [
+        "the bridge",
+        "the towers in haze"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, seen from a bus window, a long bridge railing passing with gray water below and a city's towers ahead in haze, the glass reflecting an empty seat, no words",
+        "negative": "",
+        "notes": "Book order: before ro_2023-08-06 (the on-ramp). Box order: after."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Invented from a postcard's edge.",
+  "layout": "single page, no borders"
+}

@@ -1,0 +1,50 @@
+{
+  "id": "ro_2027-04-14_morning_the_lamp_on_the_tailgate",
+  "title": "Morning, the lamp on the tailgate",
+  "strip": "roflcopter",
+  "date": "2027-04-14",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "Spring",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening x)",
+  "logline": "One of the mornings: the green lamp on the Legacy's tailgate, lit, in daylight, plugged into nothing. A month after the Grunion Run lit it on the beach. The page doesn't explain the cord.",
+  "cast": [],
+  "location": "dw_mudflats",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A station wagon's open tailgate at the edge of the flats in morning light with a green swing-arm desk lamp standing on it, lit, its cord hanging down to the mud and ending. The flats gold beyond.",
+      "characters": [],
+      "props": [
+        "the lamp, lit",
+        "the cord"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a green swing-arm desk lamp standing lit on an old station wagon's open tailgate at the edge of gold morning mudflats, its cord hanging down to the mud and ending, no people, no words",
+        "negative": "",
+        "notes": "Lit since ro_2027-03-12. The cord ends in the mud; not explained."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Lit in daylight. The cord ends.",
+  "layout": "single page, no borders"
+}

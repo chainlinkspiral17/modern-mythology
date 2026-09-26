@@ -1,0 +1,64 @@
+{
+  "id": "ro_2025-11-30_the_gate_open",
+  "title": "The gate, open",
+  "strip": "roflcopter",
+  "date": "2025-11-30",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Ridge",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening x)",
+  "logline": "The logging road's gate — chained since the strip started drawing it — open, the chain on the ground, the padlock beside it unlocked. Who opened it, the page doesn't say. The glow past it, farther up. The man and the dog on this side, not yet through.",
+  "cast": [
+    "wood_44",
+    "barnaby_ii"
+  ],
+  "location": "dw_logging_road",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A steel gate across a logging road standing open, its chain on the gravel with an unlocked padlock, a man in plaid from behind and a small three-legged dog on the near side not yet through, a warm glow up the road between the trees.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "from behind, not yet through",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the gate, open",
+        "the padlock"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a steel gate across a gravel logging road standing open with its chain and an unlocked padlock on the ground, a man in plaid flannel from behind and a small three-legged dog on the near side, a warm glow far up the road between trees, no words",
+        "negative": "",
+        "notes": "Who opened it: reserved. Compare dw_2013-10-13."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The gate open. Not yet through.",
+  "layout": "single page, no borders"
+}

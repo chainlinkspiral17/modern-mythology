@@ -1,0 +1,50 @@
+{
+  "id": "ro_2023-05-14_the_seat",
+  "title": "The seat",
+  "strip": "roflcopter",
+  "date": "2023-05-14",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Route North",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening x)",
+  "logline": "A Greyhound seat, the aisle one, 2000: the fabric's pattern, the armrest, a bag with a strap on the window seat, the window itself gray. He never sat in it. He draws the pattern of the fabric with too much care, the way he drew the Lisbon runner.",
+  "cast": [],
+  "location": "dw_greyhound",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Inside a bus: one pair of seats from the aisle, the patterned fabric drawn with great care, a canvas bag with a strap on the window seat, the window gray with rain, no passenger.",
+      "characters": [],
+      "props": [
+        "the bag with a strap",
+        "the fabric"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a pair of bus seats seen from the aisle with their patterned fabric drawn in careful detail, a canvas bag with a strap on the window seat and a gray rainy window, no passenger, no words",
+        "negative": "",
+        "notes": "The care on the pattern: the sequence's tell (see ro_2022-02-06)."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The pattern, too careful.",
+  "layout": "single page, no borders"
+}

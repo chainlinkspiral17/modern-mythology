@@ -1,0 +1,50 @@
+{
+  "id": "ro_2022-11-27_the_stack",
+  "title": "The stack",
+  "strip": "roflcopter",
+  "date": "2022-11-27",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Mill, 1994",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening x)",
+  "logline": "The mill's stack from the road in 1994, smoking, the last month. Drawn in the Era I manner on purpose: heavy black spotting, the smoke a solid shape. The town's clock, before the strip.",
+  "cast": [],
+  "location": "dw_cedar_mill",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The cedar mill's brick stack from the beach road, smoking, the yard's log decks below it, a pickup on the road, the ridge behind. Era I's black spotting: the smoke a solid black shape.",
+      "characters": [],
+      "props": [
+        "the stack",
+        "log decks"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, in the Era I manner, heavy black spotting brought back on purpose, a tall brick mill stack smoking above stacked log decks seen from a coastal road with a pickup passing and a wooded ridge behind, the smoke a solid black shape, no words",
+        "negative": "",
+        "notes": "Era I spotting inside an era4 page: the sequence's rule."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The stack, working. Before the strip.",
+  "layout": "single page, no borders"
+}

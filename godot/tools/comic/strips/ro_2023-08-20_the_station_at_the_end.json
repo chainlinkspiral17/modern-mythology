@@ -1,0 +1,49 @@
+{
+  "id": "ro_2023-08-20_the_station_at_the_end",
+  "title": "The station at the end",
+  "strip": "roflcopter",
+  "date": "2023-08-20",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Route North",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening x)",
+  "logline": "Seattle's bus station in 2000, drawn from nothing, the sequence's last page in the book: the arrivals door, a rank of taxis, rain, and a bag with a strap set down on the curb with no one holding it. Where the route ends. He never saw it.",
+  "cast": [],
+  "location": "dw_seattle_hill",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A city bus station's arrivals door in rain, a rank of taxis, wet pavement reflecting their lights, and on the curb a canvas bag with a strap set down with no one beside it.",
+      "characters": [],
+      "props": [
+        "the bag, set down"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a city bus station's arrivals door in rain with a rank of taxis and wet pavement reflecting their lights, a canvas bag with a strap set down alone on the curb, no people, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The route's end. The bag set down; no one.",
+  "layout": "single page, no borders"
+}
