@@ -1,0 +1,138 @@
+{
+  "id": "bk_2013-01-16_the_pomegranate_hour_the_table",
+  "title": "THE POMEGRANATE HOUR, 3 AM · The table",
+  "strip": "backup",
+  "series": "THE POMEGRANATE HOUR, 3 AM",
+  "date": "2013-01-16",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the motel · the lobby TV at 3 AM · recaps never run · Box 13",
+  "arc": "THE POMEGRANATE HOUR, 3 AM",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "A segment shot in a diner: the host at a booth, and behind her at a numbered table a man smoothing his lapels, the same man from a page in Box 5 Wood hasn't opened since 2003. He recognizes the diner from a drawing that wasn't his. The strip draws his recognizing and not what he recognizes.",
+  "cast": [
+    "wood_34",
+    "extra_host",
+    "extra_lapels"
+  ],
+  "location": "dw_motel_desk",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The TV: the host in a diner booth; behind her, a man at a table smoothing his lapels.",
+      "characters": [
+        {
+          "id": "extra_host",
+          "pose": "in a booth",
+          "expression": ""
+        },
+        {
+          "id": "extra_lapels",
+          "pose": "behind her, at a numbered table",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "Table 14"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a television screen showing a woman in a diner booth with a man at a numbered table behind her smoothing his lapels",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD's face, recognizing.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "recognizing",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close on a man's face at a motel desk in the act of recognizing something on a screen",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The pad: Wood drawing not the TV but a cardboard box with a 5 on it.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "drawing a box",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the pad: Box 5"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man in a maroon polo drawing a cardboard box with a number on it on a pad instead of what's on the television",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The TV: the man at the table looking, for one frame, at the camera. The host not noticing.",
+      "characters": [
+        {
+          "id": "extra_lapels",
+          "pose": "looking at the camera",
+          "expression": ""
+        },
+        {
+          "id": "extra_host",
+          "pose": "not noticing",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a television screen showing a man at a diner table looking directly into the camera for a moment while a woman in a booth keeps talking",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the TV as a rounded rectangle; the host in three strokes",
+    "palette": "black ink and one spot tone: the screen's blue",
+    "paper": "the motel's pad, then bristol"
+  },
+  "notes": "Vol 5: D'Ambrosio's, Table 14, Mr. D. Dean. The found Sunday (THE SINKHOLE, 2003) recognized on a screen ten years on. Draws Box 5 instead.",
+  "layout": "four panels"
+}

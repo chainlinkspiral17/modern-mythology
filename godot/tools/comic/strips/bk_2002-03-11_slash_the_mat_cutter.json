@@ -1,0 +1,78 @@
+{
+  "id": "bk_2002-03-11_slash_the_mat_cutter",
+  "title": "SLASH · The mat cutter",
+  "strip": "backup",
+  "series": "SLASH",
+  "date": "2002-03-11",
+  "run": 2,
+  "era": "era1",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Box 4B · sixty pages · never lettered for print",
+  "arc": "SLASH",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The frame shop at 2 AM and someone in it: the green coat at the counter with the framer's mat cutter in her hand, the blade out, cutting not a mat but the photograph — into a rectangle the size of a card. The framer in the doorway. She doesn't turn. The rain does its hatching.",
+  "cast": [
+    "extra_framer",
+    "extra_green_coat"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Full page: the frame shop at night, rain hatched in the window, a woman in a green coat at the counter cutting a photograph with a mat cutter's blade into a small rectangle, the framer's silhouette in the back doorway, the blade catching the streetlight.",
+      "characters": [
+        {
+          "id": "extra_green_coat",
+          "pose": "cutting the photograph",
+          "expression": ""
+        },
+        {
+          "id": "extra_framer",
+          "pose": "in the doorway",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the mat cutter",
+        "the photograph, cut"
+      ],
+      "balloons": [
+        {
+          "who": "GREEN COAT",
+          "text": "You measured the back."
+        },
+        {
+          "who": "FRAMER",
+          "text": "You said to."
+        },
+        {
+          "who": "GREEN COAT",
+          "text": "I said to. I didn't say to remember it."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white noir comic page, brush-pen over blue pencil, rain as dense vertical hatching, stark black spotting, a frame shop at night with rain hatched in the window and a woman in a dark coat at the counter cutting a photograph with a mat cutter's blade into a small rectangle, a man's silhouette in the back doorway",
+        "negative": "",
+        "notes": "The mat cutter (canon: Let Go, 2011). Here it's a weapon that cuts paper."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; rain in frantic vertical hatching; stark spotting; Arc 1's aesthetic pushed to noir",
+    "palette": "black and white; one gray wash for the wet",
+    "paper": "bristol, sixty pages, Box 4B"
+  },
+  "notes": "I didn't say to remember it.",
+  "layout": "single image"
+}

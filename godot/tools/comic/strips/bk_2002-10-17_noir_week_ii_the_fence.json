@@ -1,0 +1,141 @@
+{
+  "id": "bk_2002-10-17_noir_week_ii_the_fence",
+  "title": "NOIR WEEK II · The fence",
+  "strip": "backup",
+  "series": "NOIR WEEK II · THE DOG DETECTIVE",
+  "date": "2002-10-17",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the laundromat digest · the second Noir Week · unrun",
+  "arc": "NOIR WEEK II · THE DOG DETECTIVE",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The fence: Gully, in the apron, at the shack, who has the missing page in a plastic sleeve on the high shelf and won't say where he got it. The dog puts a paw on the counter. Gully pours him a coffee in a saucer. That's the whole interrogation.",
+  "cast": [
+    "barnaby",
+    "gully_17"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack. GULLY behind the counter. The dog in the trench coat with both paws on the counter's edge.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "paws on the counter",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "behind the counter",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "I don't know nothing about no page."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black and white, heavy spotting, trench-coat noir parody, a small dog in a trench coat with its paws up on a bait-shack counter facing a stocky young man in an apron",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The high shelf behind Gully: a thermos, a tin, and a xeroxed page in a plastic sleeve.",
+      "characters": [],
+      "props": [
+        "the page in a sleeve"
+      ],
+      "balloons": [],
+      "caption": "It was on the shelf behind him. Fences always keep it behind them.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black and white, heavy spotting, trench-coat noir parody, a high shelf in a bait shack with a thermos, a tin and a photocopied page in a plastic sleeve",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "GULLY pouring coffee into a saucer and sliding it to the dog.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "pouring into a saucer",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a saucer of coffee"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Regular?"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black and white, heavy spotting, trench-coat noir parody, a stocky young man in an apron pouring coffee into a saucer and sliding it across a counter to a small dog",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The dog drinking from the saucer. The page still on the shelf.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "drinking",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "I took the coffee. The page could wait. The page always waits.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black and white, heavy spotting, trench-coat noir parody, a small dog in a trench coat drinking from a saucer on a counter with a sleeved page visible on a shelf behind",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white; the trench coat under a dog",
+    "palette": "black and white",
+    "paper": "newsprint / the digest — never run; the second week found behind the first in Box 4"
+  },
+  "notes": "That's the whole interrogation.",
+  "layout": "four panels"
+}

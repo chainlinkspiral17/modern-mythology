@@ -506,7 +506,7 @@ kbd{border:1px solid var(--rule);padding:0 4px;color:var(--dim)}
 <div class="filters">
 <input type="text" id="q" placeholder="search id · title · arc · cast · location">
 <select id="f-year"><option value="">year</option></select>
-<select id="f-strip"><option value="">strip</option><option>drift_wood</option><option>rolfcoptr</option><option>roflcopter</option></select>
+<select id="f-strip"><option value="">strip</option><option>drift_wood</option><option>rolfcoptr</option><option>roflcopter</option><option>backup</option></select>
 <select id="f-format"><option value="">format</option><option>biweekly</option><option>daily4</option><option>daily3</option><option>digest_cover</option><option>special</option><option>sunday</option><option>page</option><option>spread</option></select>
 <select id="f-tier"><option value="">tier</option><option>A</option><option>B</option><option>C</option></select>
 <select id="f-render"><option value="">renders</option><option value="yes">rendered</option><option value="no">not yet</option></select>

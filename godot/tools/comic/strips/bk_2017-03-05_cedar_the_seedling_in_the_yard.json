@@ -1,0 +1,101 @@
+{
+  "id": "bk_2017-03-05_cedar_the_seedling_in_the_yard",
+  "title": "CEDAR · The seedling in the yard",
+  "strip": "backup",
+  "series": "CEDAR",
+  "date": "2017-03-05",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the novel of the timber country · never past the corner box · Box 14",
+  "arc": "CEDAR",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The seedling in the mill yard's gravel from the canon's Sunday, a year on and a foot taller, and in the novel it's the one that will go through the house on the logging road: the page draws its future rings faint above it like a diagram of a tree it hasn't grown. The dog waters it.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_cedar_mill",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the mill yard, gravel, a cedar seedling a foot tall, a small three-legged dog beside it.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "beside the seedling",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the seedling"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a bare gravel mill yard with a cedar seedling a foot tall and a small three-legged dog beside it, wet-on-wet watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Road"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: above the seedling, faint, the tree it will be, drawn in rings and branches like a diagram, rising off the top of the tier.",
+      "characters": [],
+      "props": [
+        "the future tree, faint"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small cedar seedling with a faint diagram of a full-grown tree rising above it in rings and branches off the top of the image, wet-on-wet watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Stop"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the dog lifting a leg at the seedling. The page allows it.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "watering it",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small three-legged dog lifting a leg at a cedar seedling in a gravel yard, wet-on-wet watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Drawer"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "cedar red, moss, fog, the glow's ochre bleeding in",
+    "paper": "Arches; the twelve Cedar Sundays' paper, used again"
+  },
+  "notes": "Compare dw_2016-09-18 (the canon's seedling). The dog waters it.",
+  "layout": "tiers, portrait page"
+}

@@ -1,0 +1,51 @@
+{
+  "id": "bk_2022-08-24_the_frequency_beneath_the_book",
+  "title": "THE FREQUENCY BENEATH · The book",
+  "strip": "backup",
+  "series": "THE FREQUENCY BENEATH",
+  "date": "2022-08-24",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "private · after a paperback found in the library's return cart · Box 26",
+  "arc": "THE FREQUENCY BENEATH",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "A paperback on the drafting table, its cover a waveform, its author's name a shape, a library's due-date card in its pocket: a book about a frequency under everything. He read it in a night. The page draws the book and, under the table, the private work's only hum — as a trace this time, not a line.",
+  "cast": [],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A paperback with a waveform on its cover lying on a drafting table under the lamp, a library card pocket inside its cover, and beneath the table's edge a thin wavering trace drawn across the page's bottom like an oscilloscope line.",
+      "characters": [],
+      "props": [
+        "the paperback",
+        "the trace"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a paperback with a waveform on its cover lying on a drafting table under a lamp with a library card pocket inside the cover, a thin wavering trace drawn across the bottom of the page like an oscilloscope line, no words legible",
+        "negative": "",
+        "notes": "Vol 7: John Frank's The Frequency Beneath. Author and title as shapes. The hum line (canon) becomes a trace here and only here."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "the private line, but ruled: graph paper, waveforms, spectrogram bands drawn by hand",
+    "palette": "ochre and slate; the trace in one warm color",
+    "paper": "engineering pad, then Arches"
+  },
+  "notes": "Read in a night.",
+  "layout": "single image with a trace along the bottom"
+}

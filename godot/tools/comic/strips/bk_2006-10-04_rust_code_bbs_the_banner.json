@@ -1,0 +1,137 @@
+{
+  "id": "bk_2006-10-04_rust_code_bbs_the_banner",
+  "title": "RUST_CODE.BBS · The banner",
+  "strip": "backup",
+  "series": "RUST_CODE.BBS",
+  "date": "2006-10-04",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · drawn during Message Boards · never posted",
+  "arc": "RUST_CODE.BBS",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The garage's monitor one night shows a board Wood didn't dial: a banner in phosphor green — WELCOME TO a name, a frontier, ACTIVE NODES: 64 — and the stick chorus on the desk reading it with him. The strip draws the banner as shapes. The chorus can read it. Wood can't.",
+  "cast": [
+    "wood_26",
+    "extra_stick_chorus",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. WOOD at the beige computer. The screen: a gray rectangle with a banner of green blocks across its top. The stick chorus on the desk.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "at the computer",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_chorus",
+          "pose": "on the desk",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the banner"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man at a beige computer whose screen shows a banner of green blocks across the top, tiny stick figures on the desk",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The banner, close: three lines of green blocks, a number at the end drawn as two shapes.",
+      "characters": [],
+      "props": [
+        "ACTIVE NODES"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close on a computer screen with three lines of phosphor-green blocks and a two-digit number drawn as shapes at the end",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The chorus reading it, one pointing, tiny balloons blank.",
+      "characters": [
+        {
+          "id": "extra_stick_chorus",
+          "pose": "reading, pointing",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, tiny stick figures on a desk pointing at a screen with tiny empty speech balloons",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD, to the chorus.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "I didn't dial that."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man at a computer speaking down to tiny stick figures on his desk",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "digitized brush-pen on bristol; the stick figures in ballpoint; the screen as a gray rectangle with a banner in it",
+    "palette": "muddy early-digital flats; the screen's phosphor green, once",
+    "paper": "bristol scanned; never posted"
+  },
+  "notes": "RUST_CODE.BBS (Vols 5–7: the network's in-fiction name). ACTIVE NODES: 64, as shapes. The chorus can read it.",
+  "layout": "four panels"
+}

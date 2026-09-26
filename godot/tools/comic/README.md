@@ -243,6 +243,18 @@ references the same way. Nothing in a strip JSON refers to a file —
 only to ids and tags — so references can be re-rendered, replaced or
 moved without touching the scripts.
 
+## Backups (outside the canon)
+
+Ids starting `bk_` are **backups**: `strip: "backup"`, with a required
+`series` field naming which one (`lore/drift_wood/_BACKUPS.md` is the
+catalogue). They are the phantom graphic novels from the corner boxes,
+the genre detours, the experiments, and the pages that quote the other
+volumes of *Modern Mythology* outright. The validator, the sheets, the
+inspector and the render tool treat them like any strip; the wiki's
+canon count excludes them. Their `era` is the era of the year they
+were drawn, so a 2002 backup renders in the zine line and a 2024 one
+in the private line.
+
 ## Adding a strip
 
 ```bash

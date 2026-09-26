@@ -1,0 +1,59 @@
+{
+  "id": "bk_2001-07-23_slash_the_boat_that_cant_be_here",
+  "title": "SLASH · The boat that can't be here",
+  "strip": "backup",
+  "series": "SLASH",
+  "date": "2001-07-23",
+  "run": 2,
+  "era": "era1",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Box 4B · sixty pages · never lettered for print",
+  "arc": "SLASH",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "Alsea Bay at dawn and a riverboat on it — a paddlewheel, a dining room's windows, a helm — sitting at anchor where no riverboat could have come, its name painted over. The framer on the boat launch with the number on his cuff, comparing. It matches. The page draws the impossible plainly.",
+  "cast": [
+    "extra_framer"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Full page: a small paddlewheel riverboat at anchor on a gray coastal bay at dawn, its dining-room windows dark, its name on the bow painted over in a lighter rectangle, a registration number visible below the paint; a man on a boat launch in the foreground holding his cuff up to compare.",
+      "characters": [
+        {
+          "id": "extra_framer",
+          "pose": "comparing the cuff",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the riverboat",
+        "the painted-over name"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white noir comic page, brush-pen over blue pencil, rain as dense vertical hatching, stark black spotting, a small paddlewheel riverboat at anchor on a gray coastal bay at dawn with its name painted over in a lighter rectangle on the bow and a registration number below, a man on a boat launch in the foreground holding up his shirt cuff",
+        "negative": "",
+        "notes": "The riverboat (Vol 5: Dante's boat, lost in the Sinkhole). Here: at anchor in Alsea Bay, name painted out. Never explained. Registration matches the cuff."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; rain in frantic vertical hatching; stark spotting; Arc 1's aesthetic pushed to noir",
+    "palette": "black and white; one gray wash for the wet",
+    "paper": "bristol, sixty pages, Box 4B"
+  },
+  "notes": "It matches. Plainly.",
+  "layout": "single image"
+}

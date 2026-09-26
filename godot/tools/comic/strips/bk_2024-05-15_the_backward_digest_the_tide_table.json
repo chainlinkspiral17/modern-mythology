@@ -1,0 +1,59 @@
+{
+  "id": "bk_2024-05-15_the_backward_digest_the_tide_table",
+  "title": "THE BACKWARD DIGEST · The tide table",
+  "strip": "backup",
+  "series": "THE BACKWARD DIGEST",
+  "date": "2024-05-15",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "private · after the print tech's misfold of Sept 30, 1999 · Box 23 onward",
+  "arc": "THE BACKWARD DIGEST",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "A page that is a tide table for the month: the columns of highs and lows drawn by hand, and in the margin of each day a thumbnail — the flats at that tide, twenty-eight of them, the pup a dot in each. The reader can find the day they're reading it on. The numbers are shapes; the thumbnails are exact.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_mudflats",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A hand-drawn tide table for a month filling the page: rows of days with columns of high and low marks drawn as shapes, and beside each row a small thumbnail of the same mudflats at that tide with a tiny three-legged dog in each, the water's line different in every one.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "a dot in each thumbnail",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the tide table",
+        "twenty-eight thumbnails"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a hand-drawn monthly tide table filling the page with rows of days and columns of tide marks drawn as shapes, each row accompanied by a small thumbnail of the same tidal flats at a different water level with a tiny dog in each, no words legible",
+        "negative": "",
+        "notes": "The numbers are shapes; the thumbnails are exact. Which month: reserved."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "the private line, turned: mirrored, overlaid, folded",
+    "palette": "the private washes; the 1997 xerox black where 1997 is quoted",
+    "paper": "Arches; one page on a printed misfold"
+  },
+  "notes": "The thumbnails are exact.",
+  "layout": "a table with thumbnails"
+}

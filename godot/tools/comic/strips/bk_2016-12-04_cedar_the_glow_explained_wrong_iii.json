@@ -1,0 +1,101 @@
+{
+  "id": "bk_2016-12-04_cedar_the_glow_explained_wrong_iii",
+  "title": "CEDAR · The glow, explained wrong · III",
+  "strip": "backup",
+  "series": "CEDAR",
+  "date": "2016-12-04",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the novel of the timber country · never past the corner box · Box 14",
+  "arc": "CEDAR",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The third explanation, from a child on the dock: it's the mill. It never closed; it moved up the hill where nobody could see it, and it's running. The page draws the mill in the trees with its stack among the trunks and the whistle's shape coming down over the town at noon. Nobody hears it. The child does.",
+  "cast": [
+    "extra_gully_kid"
+  ],
+  "location": "dw_the_ridge",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: a girl of six on a dock pointing up at the ridge in daylight, certain.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "pointing, six",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small girl on a dock pointing up at a wooded ridge in daylight with certainty, wet-on-wet watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Road"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the ridge with a mill inside the trees, its stack among the trunks, smoke and cedar crowns mixed.",
+      "characters": [],
+      "props": [
+        "the mill in the trees"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wooded ridge with a lumber mill hidden among the trees, its brick stack rising among the trunks with smoke mixing into the cedar crowns, wet-on-wet watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Stop"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the town at noon with a long jagged whistle shape coming down over it from the ridge, everyone on the street not looking up, one small girl looking up.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "looking up",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the whistle shape"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small town at noon with a long jagged sound shape coming down over it from a ridge, people on the street not looking up and one small girl looking up, wet-on-wet watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Drawer"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "cedar red, moss, fog, the glow's ochre bleeding in",
+    "paper": "Arches; the twelve Cedar Sundays' paper, used again"
+  },
+  "notes": "III: the mill moved uphill. The child hears it. The canon's Gully's daughter, borrowed at six.",
+  "layout": "tiers, portrait page"
+}

@@ -1,0 +1,134 @@
+{
+  "id": "bk_2002-10-14_noir_week_ii_the_client",
+  "title": "NOIR WEEK II · The client",
+  "strip": "backup",
+  "series": "NOIR WEEK II · THE DOG DETECTIVE",
+  "date": "2002-10-14",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the laundromat digest · the second Noir Week · unrun",
+  "arc": "NOIR WEEK II · THE DOG DETECTIVE",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The second week: the dog in the trench coat behind the drafting table, a client in the door — a woman's postcard, propped on a crate, doing the talking. The case: a missing digest. The dog says nothing, because he's a dog. The caption does the talking; the caption is unreliable.",
+  "cast": [
+    "barnaby",
+    "wood_20"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The dog in a trench coat and a fedora behind the drafting table, a desk lamp low. WOOD's legs at the edge, feet up.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "in a trench coat, behind the desk",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "legs, feet up",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the trench coat",
+        "the fedora"
+      ],
+      "balloons": [],
+      "caption": "It was raining. It's always raining. That's the coast.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black and white, heavy spotting, trench-coat noir parody, a small dog in a trench coat and fedora sitting behind a drafting table under a low lamp with a man's legs propped at the frame's edge",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The door: a postcard propped on a crate, a European cathedral on it, doing the talking.",
+      "characters": [],
+      "props": [
+        "the postcard on the crate"
+      ],
+      "balloons": [
+        {
+          "who": "POSTCARD",
+          "text": "Something's missing, detective."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black and white, heavy spotting, trench-coat noir parody, a postcard of a cathedral propped on a wooden crate in a doorway with a speech balloon coming from it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The dog, unmoved. The lamp.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "unmoved",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "She had legs. Well. She had a stamp.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black and white, heavy spotting, trench-coat noir parody, a small dog in a trench coat sitting unmoved under a lamp",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The dog's paw on a xeroxed digest with a hole where a page was.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "paw on the digest",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the digest, a page missing"
+      ],
+      "balloons": [],
+      "caption": "A digest with a page torn out. In this town that's a crime.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black and white, heavy spotting, trench-coat noir parody, a small dog's paw resting on a photocopied comic digest with a page torn out",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white; the trench coat under a dog",
+    "palette": "black and white",
+    "paper": "newsprint / the digest — never run; the second week found behind the first in Box 4"
+  },
+  "notes": "The caption is unreliable. The postcard: the 2001 cathedral (Wood's board).",
+  "layout": "four panels"
+}

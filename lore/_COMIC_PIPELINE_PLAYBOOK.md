@@ -114,6 +114,48 @@ a page says "fifty" check it against the year first.
 
 ## Recent lessons
 
+### 2026-09-26 · The backups · twelve series outside the canon · 81 pages
+
+The catalogue complete, the run got a second shelf: `bk_` ids, `strip:
+"backup"`, a required `series` field, catalogued in
+`lore/drift_wood/_BACKUPS.md`. Twelve series: the three phantom graphic
+novels (SLASH, THE LONG WAY BACK, CEDAR), a found Sunday (THE SINKHOLE),
+four private experiments (THE FREQUENCY BENEATH, THE SCUMM STICK, THE
+BACKWARD DIGEST, THE CARD IN THE DRAWER), and four genre weeks (NOIR WEEK
+II, THE HALLOWEEN ISSUE, RUST_CODE.BBS, THE POMEGRANATE HOUR, 3 AM). The
+validator, sheets, inspector and render tool take them as strips; the
+wiki's canon count excludes them.
+
+- **One form, one device, per series.** SLASH is rain-hatched noir
+  pages; the travelogue is a card in a drawer per stop; CEDAR is three
+  wrong explanations and a notch; the frequency pages are graphs; the
+  adventure has a verb bar; the digest reads backward; the drawer has one
+  card per page; the dog wears the trench coat; the Halloween issue's
+  horror is the spotting; the BBS gives the chorus handles; the talk show
+  is recaps on a lobby TV. A device used once is closed to the others.
+  This is what keeps twelve weird things from being one weird thing.
+- **Other volumes are objects.** A boat registered in Graustark, a card
+  in an evidence bag, a man smoothing his lapels at Table 14, four
+  demons' names as handles, a host with a cassette deck, a bird that's
+  the wrong color for a place, a waveform on a paperback, a machine in a
+  pizza window, a yellow slicker. `image.notes` names the volume; the
+  page never does; a reader of Vol 10 alone loses nothing.
+- **The redundancy guard is a shingle overlap, minus the style prefix.**
+  Six-word shingles of each backup prompt against every canon prompt,
+  with the era prefix stripped first (it alone shares twenty shingles).
+  What remains above five is stock phrasing ("a man in a maroon polo")
+  or a declared quotation (the Hermit is the lamp on 101; the Star is the
+  one lit tube). Anything else would be a page to rewrite. None was.
+- **Backups may circle reserved facts; they may not land on them.** The
+  Halloween sign spells a word into a blank balloon; the sinkhole Sunday's
+  fourth page carries Wood's only note, "not mine. keep."; SLASH puts a
+  port on a boat and a number on a cuff, never a name on the tavern.
+- **The backups quote the canon forward and backward.** The whistle's
+  shape is drawn from a tape in 2013 before the Mill sequence draws it
+  from memory in 2022; the box is drawn empty in 2012 with the dog alive;
+  the lamp is USEd WITH beach in 2024, lit in 2027. The compare notes
+  point both ways so the wiki can build the timeline either direction.
+
 ### 2026-09-26 · Deepening xvii–xviii · the catalogue complete · 1,255 → 1,378
 
 The last two canon batches. Public: sixty-four fixture-week dailies for

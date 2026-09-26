@@ -1,0 +1,59 @@
+{
+  "id": "bk_2022-11-09_the_frequency_beneath_the_birds_colors",
+  "title": "THE FREQUENCY BENEATH · The bird's colors",
+  "strip": "backup",
+  "series": "THE FREQUENCY BENEATH",
+  "date": "2022-11-09",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "private · after a paperback found in the library's return cart · Box 26",
+  "arc": "THE FREQUENCY BENEATH",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The bird drawn as a spectrum: its colors laid out in a band across the page in order, and under each color a wavelength drawn as a small wave of the right length, and the whole thing lined up over the flats' steady trace from the earlier page. Nothing lines up. The page is honest about that.",
+  "cast": [
+    "the_bird"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A horizontal band of the bird's colors across the page in spectral order, beneath each color a small drawn wave of proportionate length, and beneath those the steady flat trace from the flats page; the waves and the trace visibly failing to align, the bird itself small in the corner on a seawall.",
+      "characters": [
+        {
+          "id": "the_bird",
+          "pose": "small, in the corner",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the spectrum",
+        "the trace"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a horizontal band of rainbow colors in spectral order across a page with a small drawn wave beneath each color and a flat steady trace beneath those visibly failing to align, a small rainbow bird on a seawall in the corner, no words legible",
+        "negative": "",
+        "notes": "The bird against the substrate. Nothing lines up; the page says so by drawing the misalignment."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "the private line, but ruled: graph paper, waveforms, spectrogram bands drawn by hand",
+    "palette": "ochre and slate; the trace in one warm color",
+    "paper": "engineering pad, then Arches"
+  },
+  "notes": "Nothing lines up. Honest.",
+  "layout": "spectrum over a trace"
+}

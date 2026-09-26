@@ -1,0 +1,65 @@
+{
+  "id": "bk_2013-06-12_the_card_in_the_drawer_judgement",
+  "title": "THE CARD IN THE DRAWER · The last bell",
+  "strip": "backup",
+  "series": "THE CARD IN THE DRAWER",
+  "date": "2013-06-12",
+  "run": 4,
+  "era": "era3",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the motel · a card left in room twelve's nightstand each month by a guest never seen · Box 12",
+  "arc": "THE CARD IN THE DRAWER",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The seventh card, June: an angel with a trumpet, the dead rising from boxes. He redraws it as the school at 3:05 with the bell's jagged shape over the doors and the students coming out of the building as if out of the ground, and on the far sidewalk a man and an old dog not rising. The card names the fixture.",
+  "cast": [
+    "wood_34",
+    "barnaby"
+  ],
+  "location": "dw_school_front",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A single tall card filling the page, its border drawn as the wooden edge of a motel nightstand drawer; inside the border: a high school with a jagged bell shape over its doors and students pouring out drawn as if rising from the ground, a man and an old dog still on the far sidewalk. No numeral, no title; the card's name is the thing.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "still",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "old, still",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the bell shape",
+        "the drawer-edge border"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black ink comic page with one spot tone, a single tall card filling the page with a border drawn as a wooden drawer's edge, inside it a small-town high school with a jagged sound shape over its doors and students pouring out drawn as if rising up from the ground, a man and an old dog standing still on the sidewalk across the road, no words legible",
+        "negative": "",
+        "notes": "XX, Judgement — Last Bell (the fixture). The man and the dog don't rise."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; one card per page, the card's border drawn as the motel nightstand's drawer edge",
+    "palette": "black ink and one spot tone per card",
+    "paper": "bristol, the motel's pad first, then bristol"
+  },
+  "notes": "Names the fixture.",
+  "layout": "a single card"
+}

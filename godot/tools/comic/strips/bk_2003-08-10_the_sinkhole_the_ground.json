@@ -1,0 +1,59 @@
+{
+  "id": "bk_2003-08-10_the_sinkhole_the_ground",
+  "title": "THE SINKHOLE · The ground",
+  "strip": "backup",
+  "series": "THE SINKHOLE",
+  "date": "2003-08-10",
+  "run": 2,
+  "era": "era1",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "The Unprinted · a Sunday page from a paper he never drew for, found in Box 5 in the private years",
+  "arc": "THE SINKHOLE",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The second page of the found Sunday: a street in a river town, a riverboat at its landing, and the street opening — a hole the width of the page's middle tier, the boat listing into it, a man on the helm above the dining room not letting go of the wheel. The line is almost Wood's. The rain is not his rain.",
+  "cast": [
+    "extra_helmsman"
+  ],
+  "location": "bk_graustark_landing",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A full Sunday page in three tiers: a river town's street with a paddlewheel boat at a landing; the street opening into a ragged hole the width of the middle tier with the boat listing into it; a man at the helm above the dining room holding the wheel as the deck tilts. Rain drawn as dots, not hatching.",
+      "characters": [
+        {
+          "id": "extra_helmsman",
+          "pose": "at the helm, holding on",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the hole",
+        "the riverboat"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white comic page, brush-pen over blue pencil, rain as scattered dots, stark black spotting, a full comic page in three tiers showing a river town's street with a paddlewheel boat at its landing, the street opening into a ragged hole with the boat listing into it, and a man at the boat's helm holding the wheel as the deck tilts",
+        "negative": "",
+        "notes": "Vol 5: the Sinkhole; Dante at the helm; the boat lost. The rain is dots: the tell that it isn't Wood's line."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white — but the line is not quite his",
+    "palette": "black and white",
+    "paper": "newsprint, a Louisiana paper's Sunday page, folded in Box 5"
+  },
+  "notes": "The rain is not his rain.",
+  "layout": "three tiers"
+}

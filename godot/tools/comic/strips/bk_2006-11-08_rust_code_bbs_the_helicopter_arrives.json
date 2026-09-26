@@ -1,0 +1,142 @@
+{
+  "id": "bk_2006-11-08_rust_code_bbs_the_helicopter_arrives",
+  "title": "RUST_CODE.BBS · The helicopter arrives",
+  "strip": "backup",
+  "series": "RUST_CODE.BBS",
+  "date": "2006-11-08",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · drawn during Message Boards · never posted",
+  "arc": "RUST_CODE.BBS",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The week the parody hits: the board's banner shows a new node, and on the desk a fifth stick figure the chorus didn't bring — the helicopter one, the one from the parody, spelled right in green over its head. The chorus moves away from it. Wood doesn't. The strip draws the desk divided.",
+  "cast": [
+    "wood_26",
+    "extra_stick_chorus",
+    "extra_stick_hero"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The banner: the number up by one.",
+      "characters": [],
+      "props": [
+        "the number, up one"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close on a green block banner on a screen with a two-digit number whose last shape has gone up",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The desk: a new stick figure with a green word over it, longer than the others', and the three chorus figures at the desk's far edge.",
+      "characters": [
+        {
+          "id": "extra_stick_hero",
+          "pose": "new, with a long handle",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_chorus",
+          "pose": "three, at the far edge",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the long handle"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a new tiny stick figure with a longer green block-word above it on a desk while three other tiny stick figures huddle at the desk's far edge",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The new figure looking at WOOD. Wood looking back.",
+      "characters": [
+        {
+          "id": "extra_stick_hero",
+          "pose": "looking at Wood",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "looking back",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a tiny stick figure on a desk and a thin man looking at each other",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The desk from above: the lamp's circle, the three at one edge, the one at the other, Wood's hand flat in the middle.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "hand flat on the desk",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_hero",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_stick_chorus",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a desk seen from above under a lamp's circle with three tiny stick figures at one edge, one at the other, and a man's hand flat on the wood between them",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "digitized brush-pen on bristol; the stick figures in ballpoint; the screen as a gray rectangle with a banner in it",
+    "palette": "muddy early-digital flats; the screen's phosphor green, once",
+    "paper": "bristol scanned; never posted"
+  },
+  "notes": "ROFLCOPTER, spelled right, in green. The desk divided. The parody week begins Nov 6 (canon).",
+  "layout": "four panels"
+}

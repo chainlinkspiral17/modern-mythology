@@ -1,0 +1,53 @@
+{
+  "id": "bk_2025-03-19_the_scumm_stick_the_machine_itself",
+  "title": "THE SCUMM STICK · The machine itself",
+  "strip": "backup",
+  "series": "THE SCUMM STICK",
+  "date": "2025-03-19",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "private · after the machine in the pizza window · Box 32",
+  "arc": "THE SCUMM STICK",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The pizza place's window as a room, the wooden cabinet outlined, its small screen showing — small, inside the page's screen — the garage room from the first page, verb bar and all. LOOK AT machine. The inventory strip full. The old man behind the counter from behind, not a hotspot. The page draws the form finding itself.",
+  "cast": [],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A page in a screen's 4:3 proportion: the scene fills the top two-thirds; below it a verb bar in a monospaced hand (LOOK AT · PICK UP · TALK TO · USE · OPEN · GIVE · WALK TO) with one verb marked; beneath that an inventory strip of small drawn objects: the thermos, the green lamp, a key, a card, a notebook, a lantern. The sentence line above the verbs reads: LOOK AT machine. Scene: a pizza restaurant's interior with a wooden cabinet outlined as a hotspot, its small screen showing the garage room from the first page complete with its own tiny verb bar, an old man from behind at the counter drawn without an outline.",
+      "characters": [],
+      "props": [
+        "the machine",
+        "the screen inside the screen",
+        "the verb bar",
+        "the inventory strip"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a page laid out like an old point-and-click adventure screen with a scene in the upper two-thirds, a row of verbs in a monospaced hand beneath it with one marked, and a strip of small drawn inventory objects along the bottom, a pizza restaurant's interior with a wooden cabinet holding a small screen that shows a tiny garage scene with its own tiny verb bar, an old man seen from behind at the counter, no words legible",
+        "negative": "",
+        "notes": "Vol 7: Pizza Pirate; Sal Carratura from behind; the SCUMM Machine. The screen inside the screen shows page one."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "the private line inside a screen's proportions; a verb bar in a monospaced hand; an inventory strip of the strip's objects",
+    "palette": "the private washes, quantized to sixteen colors",
+    "paper": "Arches cut to 4:3"
+  },
+  "notes": "The form finds itself.",
+  "layout": "4:3 screen with verb bar and inventory"
+}
