@@ -1,0 +1,49 @@
+{
+  "id": "ro_2027-03-05_the_thirtieth_flyer_close",
+  "title": "The thirtieth flyer, close",
+  "strip": "roflcopter",
+  "date": "2027-03-05",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiv)",
+  "logline": "The thirtieth flyer close, three weeks pinned, the crab in its corner in the girl's hand, and beside it in pencil, tiny, a second crab in another hand — the boy's. Two crabs. The 2002 flyer had two as well. The page doesn't say that.",
+  "cast": [],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Close on a paper flyer pinned to shingle with a small ink crab in one corner and a tinier pencil crab beside it in a different hand.",
+      "characters": [],
+      "props": [
+        "two crabs"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, close on a paper flyer pinned to a shingle wall with a small ink crab in one corner and a tinier pencil crab beside it in a different hand, no words legible",
+        "negative": "",
+        "notes": "The 2002 flyer: two crabs (objects.md)."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Two crabs. Doesn't say.",
+  "layout": "single page, no borders"
+}

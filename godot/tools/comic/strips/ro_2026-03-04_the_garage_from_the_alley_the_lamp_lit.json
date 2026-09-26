@@ -1,0 +1,57 @@
+{
+  "id": "ro_2026-03-04_the_garage_from_the_alley_the_lamp_lit",
+  "title": "The garage from the alley, the lamp lit",
+  "strip": "roflcopter",
+  "date": "2026-03-04",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiv)",
+  "logline": "The garage window from the alley at night, the green lamp's shape visible inside for once, lit, a page under it, the shape of a man. Eleven days before the ridge stops. The page watches the work from outside.",
+  "cast": [
+    "wood_44"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A garage's small window from a dark alley at night with a green swing-arm lamp visible inside, lit, and the shape of a man bent at a table beneath it.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "a shape inside",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the lamp, lit, inside"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a garage's small window seen from a dark alley at night with a green swing-arm lamp visible inside lit over the shape of a man bent at a table, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The work from outside.",
+  "layout": "single page, no borders"
+}

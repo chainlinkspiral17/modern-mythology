@@ -1,0 +1,55 @@
+{
+  "id": "ro_2025-01-02_the_second_of_january_2025",
+  "title": "The second of January, 2025",
+  "strip": "roflcopter",
+  "date": "2025-01-02",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiv)",
+  "logline": "The alley the second morning of the year: a bottle on the tavern's step, the pup at the door waiting, the window lit. The same page as 2022, three years on; the dog slower to stand. The page keeps the composition and changes the dog.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A gravel alley in gray morning light with an empty bottle on a tavern's back step and an old three-legged dog standing at a lit garage door waiting, its back legs stiff.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "waiting, stiff",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a gravel alley in gray morning light with an empty bottle on a tavern's back step and an old three-legged dog standing stiffly at a lit garage door waiting, no words",
+        "negative": "",
+        "notes": "Compare ro_2022-01-02."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Same composition; the dog changed.",
+  "layout": "single page, no borders"
+}

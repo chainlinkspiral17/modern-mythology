@@ -1,0 +1,63 @@
+{
+  "id": "ro_2025-04-20_the_pup_at_ten_the_ramp_slowly",
+  "title": "The pup at ten, the ramp, slowly",
+  "strip": "roflcopter",
+  "date": "2025-04-20",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiv)",
+  "logline": "The pup going up Gully's ramp at ten, slowly, from the side, one plank at a time, Gully's boots waiting at the top. The ramp doing what it was built for.",
+  "cast": [
+    "barnaby_ii",
+    "gully_48"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A small three-legged dog going slowly up a plank ramp from the side, one plank at a time, a stocky man's work boots waiting at the top.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "climbing slowly",
+          "expression": ""
+        },
+        {
+          "id": "gully_48",
+          "pose": "boots",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the ramp"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a small three-legged dog climbing a plank ramp slowly seen from the side with a stocky man's work boots waiting at the top, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "What it was built for.",
+  "layout": "single page, no borders"
+}

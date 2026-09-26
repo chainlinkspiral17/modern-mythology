@@ -1,0 +1,61 @@
+{
+  "id": "ro_2022-06-01_the_bird_the_second_page",
+  "title": "The bird, the second page",
+  "strip": "roflcopter",
+  "date": "2022-06-01",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Bird",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiv)",
+  "logline": "Ten days after the first: the bird on the seawall again, the same place, the crow at the far end, and a man in plaid from behind on the bench between them, looking at neither. The page establishes that it stays.",
+  "cast": [
+    "the_bird",
+    "wood_44"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The seawall with the small rainbow bird at one end of the wall and a crow at the other, a man in plaid from behind on the bench between them looking at the bay.",
+      "characters": [
+        {
+          "id": "the_bird",
+          "pose": "on the wall",
+          "expression": ""
+        },
+        {
+          "id": "wood_44",
+          "pose": "from behind, between",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a seawall with a small rainbow bird at one end and a crow at the other and a man in plaid flannel seen from behind on a bench between them looking at the bay, no words",
+        "negative": "",
+        "notes": "Compare ro_2022-05-22."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "It stays.",
+  "layout": "single page, no borders"
+}

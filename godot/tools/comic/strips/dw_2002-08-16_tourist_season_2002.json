@@ -1,0 +1,158 @@
+{
+  "id": "dw_2002-08-16_tourist_season_2002",
+  "title": "Tourist Season, 2002",
+  "strip": "drift_wood",
+  "date": "2002-08-16",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Tourist Season",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2002 · fixtures · deepening xiv)",
+  "logline": "The seawall in August: tourists photographing the bay, Wood on the bench drawing them on a napkin, a tourist wanting to buy it. It's a napkin. He gives it away and draws another.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "extra_tourists"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The seawall crowded with tourists with cameras, WOOD on the bench with a napkin and a pen, BARNABY under it.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "drawing on a napkin",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "under the bench",
+          "expression": ""
+        },
+        {
+          "id": "extra_tourists",
+          "pose": "cameras",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a napkin"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a crowded seawall with tourists holding cameras and a young man on a bench drawing on a napkin with a small dog beneath it, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "A tourist in a sun hat leaning over the napkin.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "leaning over",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "drawing",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "TOURIST",
+          "text": "How much?"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a tourist in a sun hat leaning over a young man's shoulder to look at a napkin drawing, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD holding it out.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "holding out the napkin",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the napkin"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "It's a napkin."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man holding out a drawn-on paper napkin, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The tourist gone; WOOD with a fresh napkin, starting again; the dog unmoved.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "starting again",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a fresh napkin"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man on a seawall bench beginning a new drawing on a fresh napkin with a small dog beneath the bench, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Gives it away; draws another."
+}

@@ -1,0 +1,49 @@
+{
+  "id": "ro_2025-10-19_the_tavern_from_the_garage_roof",
+  "title": "The tavern from the garage roof",
+  "strip": "roflcopter",
+  "date": "2025-10-19",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiv)",
+  "logline": "The tavern's roof from the garage's roof, October, the sign's back, its wiring, gulls on the ridge line. The one angle the tavern sequence didn't take, taken after. The name's back is as blank as its front.",
+  "cast": [],
+  "location": "dw_tavern",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A tavern's roof seen from a garage's roof beside it, the back of a neon sign with its wiring and brackets, gulls along the ridge line, October sky.",
+      "characters": [],
+      "props": [
+        "the sign's back"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a tavern's roof seen from a neighboring garage's roof with the back of a neon sign showing its wiring and brackets, gulls along the ridge line, October sky, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The one angle not taken, taken after.",
+  "layout": "single page, no borders"
+}

@@ -3,7 +3,7 @@
 `dw_2011-09-11_corn_fourteen` · **DRIFT WOOD** · 2011-09-11 · sunday (3-5 horizontal tiers, full page) · run 3 · The Webcomic Diaspora · tier B · selection part
 Venue: Arthur's site · the coastal weeklies · arc: *Fixtures*
 
-*September 11 at Gully's, a Sunday: the counter from the door, the end stool, the tray of corn, Gully's back at the grill, the corkboard with the walk map and the Florence gull. Fourteen.*
+*September 11 at Gully's, a Sunday: the counter from the door, the end stool, the tray of corn, Gully's back at the grill, Gully's corkboard with the 2003 rough and the 61 MI postcard. Fourteen.*
 
 **Line.** brush-pen scanned; muddy digital flats  
 **Palette.** limited, muddy; Sundays in watercolor, improving  
@@ -46,13 +46,13 @@ Props: the corn
 
 ## Tier 3 · Board
 
-*medium tier.* Tier 3: the corkboard above: a hand-drawn walk map, a photo of a large gull, a postcard, a yearbook photo lowest.
+*medium tier.* Tier 3: the corkboard above: the 2003 pencil rough of Gully hanging the sign, lost-cat flyers, a tide table, tourist snapshots, the 61 MI postcard, the printout under page fourteen.
 
 Props: the corkboard
 
 <details><summary>image generation</summary>
 
-**prompt.** comic strip panel, black brush-pen ink line with muddy early-2000s digital flat colors, rubbery kinetic linework, mid-2000s webcomic look, limited palette, slightly misregistered fills, a crowded corkboard with a hand-drawn map, a photo of a large gull on a piling, a postcard and a small yearbook photo pinned lowest, watercolor, no words legible, no text, no lettering, no speech balloons, no signature
+**prompt.** comic strip panel, black brush-pen ink line with muddy early-2000s digital flat colors, rubbery kinetic linework, mid-2000s webcomic look, limited palette, slightly misregistered fills, a crowded shop corkboard with a pencil sketch, lost-cat flyers, a tide table, tourist snapshots and a postcard with marker on it, watercolor, no words legible, no text, no lettering, no speech balloons, no signature
 
 **negative.** photorealistic, 3D render, painterly, glossy, text, letters, watermark, signature, extra fingers
 
@@ -62,7 +62,7 @@ Props: the corkboard
 
 <details><summary>whole-strip prompt (concept run)</summary>
 
-**prompt.** a full-page Sunday comic in horizontal tiers stacked top to bottom, each tier one wide panel (3 tiers). Style: comic strip panel, black brush-pen ink line with muddy early-2000s digital flat colors, rubbery kinetic linework, mid-2000s webcomic look, limited palette, slightly misregistered fills. Title of the strip: DRIFT WOOD. The strip: September 11 at Gully's, a Sunday: the counter from the door, the end stool, the tray of corn, Gully's back at the grill, the corkboard with the walk map and the Florence gull. Fourteen. Tier 1: a small bait shop's counter seen from its door with a thin man on the end stool and a stocky man's back at a grill, watercolor. No dialogue in this tier. Tier 2: close on a paper tray of buttered corn on a wooden counter with a coffee beside it, watercolor, no words. No dialogue in this tier. Tier 3: a crowded corkboard with a hand-drawn map, a photo of a large gull on a piling, a postcard and a small yearbook photo pinned lowest, watercolor, no words legible. No dialogue in this tier. Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; no words other than the ones given. Bottom right margin: tiny signature "A. Finch — Small Wood, OR" beside a tiny stylized gull, two strokes.
+**prompt.** a full-page Sunday comic in horizontal tiers stacked top to bottom, each tier one wide panel (3 tiers). Style: comic strip panel, black brush-pen ink line with muddy early-2000s digital flat colors, rubbery kinetic linework, mid-2000s webcomic look, limited palette, slightly misregistered fills. Title of the strip: DRIFT WOOD. The strip: September 11 at Gully's, a Sunday: the counter from the door, the end stool, the tray of corn, Gully's back at the grill, Gully's corkboard with the 2003 rough and the 61 MI postcard. Fourteen. Tier 1: a small bait shop's counter seen from its door with a thin man on the end stool and a stocky man's back at a grill, watercolor. No dialogue in this tier. Tier 2: close on a paper tray of buttered corn on a wooden counter with a coffee beside it, watercolor, no words. No dialogue in this tier. Tier 3: a crowded shop corkboard with a pencil sketch, lost-cat flyers, a tide table, tourist snapshots and a postcard with marker on it, watercolor, no words legible. No dialogue in this tier. Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; no words other than the ones given. Bottom right margin: tiny signature "A. Finch — Small Wood, OR" beside a tiny stylized gull, two strokes.
 
 **negative.** photorealistic, 3D render, painterly, glossy, watermark, extra fingers
 
@@ -70,6 +70,6 @@ Props: the corkboard
 
 **Margin.** A. Finch — Small Wood, OR · mark: *gull* — a tiny stylized gull, two strokes
 
-*Notes.* Fourteen. The corkboard inventory as of 2011.
+*Notes.* Fourteen. Gully's corkboard inventory as of 2011 (objects.md).
 
 Source: lore/drift_wood/_THE_COMPLETE_RUN.md (2011 · Sundays · deepening ix)

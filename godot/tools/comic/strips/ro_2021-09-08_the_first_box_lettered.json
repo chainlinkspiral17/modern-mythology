@@ -1,0 +1,58 @@
+{
+  "id": "ro_2021-09-08_the_first_box_lettered",
+  "title": "The first box, lettered",
+  "strip": "roflcopter",
+  "date": "2021-09-08",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiv)",
+  "logline": "Box 21's lid, close, and a hand with a marker finishing the 1 of 21 — the first private box lettered, in September, eight months of pages under it. The hand is the most of him this page allows.",
+  "cast": [
+    "wood_44"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Close on a cardboard box lid with a hand holding a marker finishing the second digit of a two-digit number, the marker's line still wet, the box full of pages.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "a hand with a marker",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "Box 21's lid",
+        "the marker"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, close on a cardboard box lid with a man's hand holding a marker finishing the second digit of a number in wet black ink, the box beneath full of pages, no words legible",
+        "negative": "",
+        "notes": "Letter after: 21."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The first box lettered.",
+  "layout": "single page, no borders"
+}

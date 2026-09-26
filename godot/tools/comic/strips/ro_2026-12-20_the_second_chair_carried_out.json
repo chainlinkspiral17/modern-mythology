@@ -1,0 +1,57 @@
+{
+  "id": "ro_2026-12-20_the_second_chair_carried_out",
+  "title": "The second chair, carried out",
+  "strip": "roflcopter",
+  "date": "2026-12-20",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiv)",
+  "logline": "A folding chair being carried out onto the dock at dusk by a thin man in plaid from behind, toward the lawn chair, four days before the two chairs. The page shows who carries it and not who it's for.",
+  "cast": [
+    "wood_44"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A thin man in plaid from behind carrying a folding chair out onto a dock at dusk toward an old lawn chair, string lights lit along the shack's eave.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "carrying the chair, from behind",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the folding chair"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a thin man in plaid flannel seen from behind carrying a folding chair out onto a wooden dock at dusk toward an old lawn chair, colored string lights lit along a shingle shack's eave, no words",
+        "negative": "",
+        "notes": "Compare ro_2026-12-24."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Who carries it; not who it's for.",
+  "layout": "single page, no borders"
+}

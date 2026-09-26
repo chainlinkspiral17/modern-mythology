@@ -1,0 +1,63 @@
+{
+  "id": "ro_2027-03-09_the_lamp_carried_to_the_beach",
+  "title": "The lamp, carried to the beach",
+  "strip": "roflcopter",
+  "date": "2027-03-09",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiv)",
+  "logline": "Three days before the Grunion Run: a man in plaid from behind on the beach path carrying the green lamp by its arm, the cord over his shoulder, the pup ahead. The 2011 walk home, reversed, sixteen years on.",
+  "cast": [
+    "wood_44",
+    "barnaby_ii"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A man in plaid from behind on a beach path carrying a green swing-arm desk lamp by its arm with the cord over his shoulder, an old three-legged dog ahead, the sea.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "carrying the lamp, from behind",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "ahead",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the lamp"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a man in plaid flannel seen from behind on a beach path carrying a green swing-arm desk lamp by its arm with the cord over his shoulder, an old three-legged dog ahead and the sea beyond, no words",
+        "negative": "",
+        "notes": "Compare dw_2011-05-15 and ro_2027-03-12."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The 2011 walk, reversed.",
+  "layout": "single page, no borders"
+}

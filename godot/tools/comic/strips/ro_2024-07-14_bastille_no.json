@@ -1,0 +1,69 @@
+{
+  "id": "ro_2024-07-14_bastille_no",
+  "title": "Bastille, no",
+  "strip": "roflcopter",
+  "date": "2024-07-14",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiv)",
+  "logline": "A tourist's flag on the seawall — not ours — and the page not asking whose, drawing it as a color the town doesn't have. The pup under the bench. A man in plaid from behind. The page's one joke about the calendar, unmade.",
+  "cast": [
+    "wood_44",
+    "barnaby_ii",
+    "extra_tourists"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A seawall in July with a tourist holding a small foreign flag on a stick, drawn in a color the page otherwise lacks, a man in plaid from behind on the bench, a small three-legged dog beneath it.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "from behind",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_tourists",
+          "pose": "with a flag",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a flag, not ours"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a seawall in July with a tourist holding a small flag on a stick in a color the page otherwise lacks, a man in plaid flannel seen from behind on a bench and a small three-legged dog beneath it, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The joke unmade.",
+  "layout": "single page, no borders"
+}

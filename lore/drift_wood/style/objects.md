@@ -100,6 +100,12 @@ pencil rough of Gully hanging the sign; adds lost-cat flyers, kayak
 cards, tide tables, tourist snapshots, and in Feb 2007 a printout
 of the parody's day one, which Wood covers in Feb 2008 with page
 fourteen of the Newport weekly. Gully lets him.
+Later additions: the 61 MI postcard (Oct 2008, marker on its
+face); the red-framed crab; TAKE-OUT ONLY (Mar 2020); a drugstore
+photo print of the ramp with the pup on it, pinned by a hand that
+isn't Wood's (Sept 2022, private pages). **The walk map, the
+Florence gull, the yearbook photo, the backward digest and the
+sticker are on Wood's garage board, never Gully's.**
 
 ## The sign · SMALL WOOD LANES · letter deaths
 
