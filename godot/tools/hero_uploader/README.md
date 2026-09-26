@@ -155,6 +155,33 @@ Concept candidates land in `godot/assets/concept/meshy/<slug>/`
 (gitignored, like the Runway videos — curate what you keep). The GLBs
 are committed as before.
 
+## If the models vanish (recovery, 2026-09-26)
+
+A run's names live in `concept/meshy/manifest.json` and its stills in
+`concept/meshy/<slug>/` — both gitignored. Lose the clone (a
+`reset --hard`, a fresh checkout, a stash that never came back) and
+the GLBs the runner had not yet installed are gone from disk, but
+every Meshy task is still on the account. Pull them back with:
+
+```bash
+cd /home/deck/Downloads/modern-mythology && python3 godot/tools/meshy_recover.py fetch-all --days 7
+```
+
+They land in `concept/meshy/recovered/<task_id>.glb` + `.png` and
+are NOT in the game until named: the **RECOVERED** link in the
+page's header lists them with a character picker, or write a
+`<task_id> <slug>` file and run
+`meshy_recover.py assign <file>` (the 2026-09-25 batch's is
+`godot/tools/recovered_mapping_2026-09-26.txt`). Meshy runs the
+batch in roster order, so a contact sheet of the thumbnails against
+the roster names them without guessing. Redos come out as pairs of
+adjacent tasks; the later one is the redo. Whatever is left in
+`recovered/` is deliberate — the user keeps first versions there.
+
+Lesson: **commit the GLBs as they install** (the heroes folder is
+tracked) and never hand the user a `reset --hard` while the runner's
+outputs are uncommitted.
+
 ## Offline mode
 
 Opened straight from `file://` (no runner) the page falls back to the
