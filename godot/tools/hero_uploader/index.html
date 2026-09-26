@@ -82,6 +82,9 @@
   .card .kind { display: inline-block; font-size: 9px; padding: 0 5px; border-radius: 2px; border: 1px solid var(--border); margin-right: 4px; color: var(--fg-dim); text-transform: uppercase; }
   .card .kind.prop { color: var(--blue); border-color: var(--blue); }
   .card .kind.demon { color: var(--green-ok); border-color: var(--green-ok); }
+  .card .kind.look { color: var(--brass); border-color: var(--brass); text-transform: none; }
+  .card.look { margin-left: 14px; border-left: 2px solid var(--brass); }
+  .card .sparse { font-size: 10px; color: var(--vinyl); margin-left: 4px; }
 
   /* controls */
   label { display: block; font-size: 10px; color: var(--fg-dim); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 8px; }
@@ -463,7 +466,7 @@ function filteredEntries() {
   return state.roster.entries.filter(e => {
     if (kind && e.kind !== kind) return false;
     if (vol && !(e.vol || []).includes(Number(vol))) return false;
-    if (q && !(e.slug + ' ' + e.name + ' ' + (e.tag || '') + ' ' + (e.keys || []).join(' ')).toLowerCase().includes(q)) return false;
+    if (q && !(e.slug + ' ' + e.name + ' ' + (e.tag || '') + ' ' + (e.keys || []).join(' ') + ' ' + (e.base || '') + ' ' + (e.look?.label || '')).toLowerCase().includes(q)) return false;
     const hasImg = !!e.status.chosen?.front, hasGlb = !!e.status.glb_installed;
     if (st === 'todo' && (hasImg || hasGlb)) return false;
     if (st === 'img' && !(hasImg && !hasGlb)) return false;
@@ -474,19 +477,32 @@ function filteredEntries() {
 
 function renderRoster() {
   const list = $('roster'); list.innerHTML = '';
-  const entries = filteredEntries();
+  let entries = filteredEntries();
+  // a LOOK (another age or costume of a hero) files under its base, in roster order (2026-09-26)
+  const bySlug = Object.fromEntries(state.roster.entries.map(e => [e.slug, e]));
+  const shown = new Set(entries.map(e => e.slug));
+  const ordered = [];
+  for (const e of entries) {
+    if (e.base && shown.has(e.base)) continue;            // placed after its base below
+    ordered.push(e);
+    for (const s of (e.looks || [])) if (shown.has(s)) ordered.push(bySlug[s]);
+  }
+  entries = ordered;
   $('roster-count').textContent = `${entries.length} / ${state.roster.entries.length}`;
   let last = null;
   for (const e of entries) {
-    const grp = e.kind === 'prop' ? `props · vol ${(e.vol || []).join(',')}` : e.kind === 'demon' ? 'demons' : `heroes · vol ${(e.vol || []).join(',')}`;
+    const vols = (e.base ? (bySlug[e.base]?.vol || e.vol) : e.vol) || [];
+    const grp = e.kind === 'prop' ? `props · vol ${vols.join(',')}` : e.kind === 'demon' ? 'demons' : `heroes · vol ${vols.join(',')}`;
     if (grp !== last) { const h = document.createElement('div'); h.className = 'group-hdr'; h.textContent = grp; list.appendChild(h); last = grp; }
     const c = document.createElement('div');
-    c.className = 'card' + (e.slug === state.selected ? ' selected' : '');
+    c.className = 'card' + (e.slug === state.selected ? ' selected' : '') + (e.base ? ' look' : '');
     const noCanon = !(e.canon && e.canon.length);
     const img = e.status.chosen?.front ? 'on' : (e.status.candidates?.front?.length ? 'half' : 'off');
     const glb = e.status.glb_installed ? 'on' : 'off';
+    const lookChip = e.base ? `<span class="kind look" title="a look of ${esc(bySlug[e.base]?.name || e.base)} — ${esc(e.look?.when || '')}">↳ ${esc(e.look?.label || 'look')}</span>` : '';
+    const sparse = e.notes && /SPARSE/.test(e.notes) ? `<span class="sparse" title="${esc(e.notes)}">sparse</span>` : '';
     c.innerHTML = `<div class="dots" title="image · GLB"><span class="${img}">●</span><span class="${glb}">●</span></div>
-      <div><div class="name"><span class="kind ${e.kind}">${e.kind}</span>${esc(e.name)}${noCanon ? ' <span title="no description of the look in the text — fallback prompt" style="color:var(--vinyl);font-size:10px">no canon</span>' : ''}</div>
+      <div><div class="name"><span class="kind ${e.kind}">${e.kind}</span>${lookChip}${esc(e.name)}${sparse}${noCanon ? ' <span title="no description of the look in the text — fallback prompt" style="color:var(--vinyl);font-size:10px">no canon</span>' : ''}</div>
       <div class="meta">${esc(e.file)}${e.tag ? ' · ' + esc(e.tag) : ''}</div></div>`;
     c.addEventListener('click', () => select(e.slug));
     list.appendChild(c);

@@ -504,6 +504,22 @@ def load_roster(path=ROSTER_PATH):
         e.setdefault("canon", [])
         if not isinstance(e["canon"], list):
             sys.exit(f"roster entry {e['slug']}: canon must be a list of {{src, text}}")
+        e.setdefault("base", None)               # a LOOK: another age or costume of the hero `base` (2026-09-26)
+        e.setdefault("look", None)
+        e.setdefault("looks", [])
+        e.setdefault("notes", "")
+    slugs = {e["slug"]: e for e in entries}
+    for e in entries:
+        if e["base"]:
+            if e["base"] not in slugs:
+                sys.exit(f"roster entry {e['slug']}: base {e['base']!r} is not a roster slug")
+            if slugs[e["base"]]["kind"] != e["kind"]:
+                sys.exit(f"roster entry {e['slug']}: base {e['base']!r} is a different kind")
+            if not isinstance(e["look"], dict) or not e["look"].get("label"):
+                sys.exit(f"roster entry {e['slug']}: a look needs look.label")
+        for s in e["looks"]:
+            if s not in slugs or slugs[s].get("base") != e["slug"]:
+                sys.exit(f"roster entry {e['slug']}: looks lists {s!r}, which is not a look of it")
     data.setdefault("style", {})
     data.setdefault("defaults", {})
     return data

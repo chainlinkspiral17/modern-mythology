@@ -1,5 +1,5 @@
 {
-  "_comment": "Single source of truth for the image → Meshy → GLB pipeline (godot/tools/meshy_pipeline.py) and the Hero Studio page (godot/tools/hero_uploader/index.html). kind: hero → assets/3d/characters/heroes/<file>; demon → assets/3d/characters/demons/<file>; prop → assets/3d/props/<file>. keys = CharLayer.char_key() values that should route to this model (add them to PORTRAIT_3D_KEY_TO_GLB when the GLB ships). Entries flagged notes=SPARSE have a proposed look where canon says nothing — edit before spending credits.",
+  "_comment": "Single source of truth for the image → Meshy → GLB pipeline (godot/tools/meshy_pipeline.py) and the Hero Studio page (godot/tools/hero_uploader/index.html). kind: hero → assets/3d/characters/heroes/<file>; demon → assets/3d/characters/demons/<file>; prop → assets/3d/props/<file>. keys = CharLayer.char_key() values that should route to this model (add them to PORTRAIT_3D_KEY_TO_GLB when the GLB ships). Entries flagged notes=SPARSE have a proposed look where canon says nothing — edit before spending credits. 2026-09-26: +36 heroes (the vol6 cast that had no entry: Eileen, BT, Anita, Coach K, the Centro night shift, the team) and LOOKS — an entry with base/look is another age or costume of the same person (Maya at 7, Miriam nine years on, Ben in pads and in the TE-1 jersey, Anita in scrubs, Coach K at home).",
   "_schema": {
     "slug": "unique id, [a-z0-9_]; also the folder under assets/concept/meshy/",
     "kind": "hero | demon | prop",
@@ -12,9 +12,12 @@
     "pose": "a-pose | t-pose | null (Meshy pose_mode; null for props)",
     "prompt": "hand-written fallback description, used only when the text has no canon quotes (or appended when prompt_mode = append)",
     "texture_prompt": "optional Meshy texture guidance (<= 600 chars); defaults to prompt",
-    "notes": "optional authoring notes",
+    "notes": "SPARSE = canon says little; the look is proposed — edit before spending credits",
     "canon": "list of {src, text}: VERBATIM sentences from the story text describing the look. When present these ARE the description sent to the image model; `prompt` is then only a fallback (or extra direction when prompt_mode is 'append'). Fill/refresh with godot/tools/meshy_canon.py.",
-    "prompt_mode": "fallback (default: prompt used only when canon is empty) | append (prompt added after the canon quotes)"
+    "prompt_mode": "fallback (default: prompt used only when canon is empty) | append (prompt added after the canon quotes)",
+    "base": "slug of the hero this entry is a LOOK of (another age or costume of the same person) — its own concept image and GLB; omitted on a hero's default look",
+    "look": "{label, vols, when}: what this look is and where the scenes stage it (the entry's keys route the scenes that name it; chapter-based routing is NEXT)",
+    "looks": "on a base entry: the slugs of its looks, for the Hero Studio to group under it"
   },
   "defaults": {
     "provider": "google",
@@ -159,7 +162,8 @@
       "keys": [
         "elicia",
         "elicia_temple",
-        "elicia_duchane"
+        "elicia_duchane",
+        "anya"
       ],
       "tag": "II The High Priestess · also XVI The Tower",
       "aspect": "3:4",
@@ -1052,9 +1056,7 @@
       ],
       "keys": [
         "maya",
-        "maya_daigle",
-        "maya_kid",
-        "maya_age_7"
+        "maya_daigle"
       ],
       "tag": "Ensemble · 7 in vol5 ch5, 16 in vol6",
       "aspect": "3:4",
@@ -1094,6 +1096,9 @@
           "src": "vol5/vol5_ch5_hierophant.json",
           "text": "For now: she finished her lemonade, dropped the cup in the trash, took her father's hand when he came down the steps, and did not mention any of it."
         }
+      ],
+      "looks": [
+        "maya_daigle_age7"
       ]
     },
     {
@@ -1307,6 +1312,9 @@
           "src": "lore/_GAUNTLET_BUILD_WIKI.md",
           "text": "silver-haired woman, Joanna's agent; drives Nicola/Aria/Third west to Smolvud; her crow rides on the roof"
         }
+      ],
+      "looks": [
+        "miriam_2025"
       ]
     },
     {
@@ -2286,7 +2294,8 @@
         6
       ],
       "keys": [
-        "ben_kowalski"
+        "ben_kowalski",
+        "ben"
       ],
       "tag": "vol6 · tight end · drives a Civic",
       "aspect": "3:4",
@@ -2327,6 +2336,10 @@
           "src": "vol6/vol6_ch13_two_a_days.json",
           "text": "He changes into the jeans and the t-shirt he had brought. He walks out to the Civic at eleven thirty-six."
         }
+      ],
+      "looks": [
+        "ben_kowalski_pads",
+        "ben_kowalski_game"
       ]
     },
     {
@@ -2531,7 +2544,9 @@
       "keys": [
         "henderson",
         "thomas_henderson",
-        "f_thomas_henderson"
+        "f_thomas_henderson",
+        "mr_henderson",
+        "mr. henderson"
       ],
       "tag": "vol6 · NexCorp field coordinator",
       "aspect": "3:4",
@@ -5823,6 +5838,1117 @@
           "text": "THE RADIO TREATMENT: a battery portable on its own small console against the east wall — bakelite-brown body wrapped in two bands of electrical tape, one taped corner, whip antenna, cream dial face (named Radio_DialFace for scene-side Label3D), two knobs, speaker slats — with the spiral LOG NOTEBOOK + pencil beside it, the roll of electrical tape, spare batteries, and the portable UV light. Small, worn, held together: canon's rig, not a shack."
         }
       ]
+    },
+    {
+      "slug": "eileen_henderson",
+      "kind": "hero",
+      "name": "Eileen Henderson",
+      "file": "eileen_henderson.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "eileen",
+        "eileen_henderson",
+        "mrs_henderson"
+      ],
+      "tag": "vol6 · Coach K's wife · the bakery on Magnolia · ch11, ch19, ch22-23",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "lavender sleeveless blouse, blue jeans, flat sandals, brown shoulder-length hair, white paper bakery bag",
+      "prompt": "Eileen Henderson, late 40s, a coach's wife in a Gulf-coast planned community. Brown hair to the shoulder, a kind, tired, watchful face. Jeans and a lavender sleeveless blouse, flat sandals, a small white paper bakery bag held in one hand. Steady; the person who brings the coffee cake.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch11_eileen.json",
+          "text": "Eileen is in jeans and a sleeveless blouse. Eileen has, in her hand, a paper bag from the bakery on Magnolia."
+        },
+        {
+          "src": "vol6/vol6_ch22_bianca.json",
+          "text": "Eileen Henderson. In jeans and the lavender sleeveless blouse. Holding a paper bag from the bakery on Magnolia."
+        },
+        {
+          "src": "vol6/vol6_ch19_chains.json",
+          "text": "Eileen is going to be in the third row."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "coach_k",
+      "kind": "hero",
+      "name": "Coach K",
+      "file": "coach_k.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "coach_k",
+        "coachk",
+        "coach k"
+      ],
+      "tag": "vol6 · the head coach · twenty years of Friday-night depth charts · ch13, ch19, ch22",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "navy coach's polo, khaki shorts, white sneakers, black lanyard whistle, greying close-cropped hair",
+      "prompt": "Coach K, 50s, a high-school head football coach on a Gulf-coast field, twenty years in. Thick through the chest and shoulders, close-cropped greying hair, a sun-lined face that gives no generic correction. A navy Vinton Athletics coach's polo tucked into khaki coach's shorts, white sneakers, a whistle on a black lanyard, a laminated depth chart folded in one hand.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch13_two_a_days.json",
+          "text": "Coach K's coaching of Tucker is the same coaching he gives Ben, scaled to Tucker's body and Tucker's history and Tucker's current state. Coach K does not ever give a kid a generic correction."
+        },
+        {
+          "src": "vol6/vol6_ch19_chains.json",
+          "text": "Coach K is in his bed beside Eileen. Eileen is asleep. Coach K is not."
+        },
+        {
+          "src": "vol6/vol6_ch22_vinton.json",
+          "text": "She sees Coach Dale, behind the offensive huddle, give the kid in the TE-1 jersey a small thumbs-up."
+        }
+      ],
+      "notes": "SPARSE on the face and build — canon gives the job, the years and the bedroom, not the man. Edit before spending credits.",
+      "looks": [
+        "coach_k_home"
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "coach_k_home",
+      "kind": "hero",
+      "name": "Coach K (at home, ch19)",
+      "file": "coach_k_home.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "coach_k_home"
+      ],
+      "tag": "vol6 ch19 · lying awake beside Eileen running the depth chart · the coach_k_bedroom locale",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "worn grey t-shirt, plaid flannel pyjama trousers, reading glasses, greying close-cropped hair, bare feet",
+      "prompt": "Coach K, 50s, at home on a Friday night: a worn grey t-shirt and plaid flannel pyjama trousers, barefoot, reading glasses pushed up onto his close-cropped greying hair, a folded newspaper under one arm. The same thick shoulders, the same sun-lined face, unguarded.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch19_chains.json",
+          "text": "In a different bedroom in a different house in a different cul-de-sac, Coach K is in his bed beside Eileen. Eileen is asleep. Coach K is not. Coach K is lying on his back looking at the ceiling."
+        }
+      ],
+      "base": "coach_k",
+      "look": {
+        "label": "at home, Friday night",
+        "vols": [
+          6
+        ],
+        "when": "ch19 The Chains, final beat — the coach_k_bedroom locale"
+      },
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "bt",
+      "kind": "hero",
+      "name": "BT",
+      "file": "bt.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "bt",
+        "b.t."
+      ],
+      "tag": "vol6 · the kid the team protects · El Rancho at four AM · ch10, ch16",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "grey team t-shirt, black athletic shorts, slides over white socks, dark ball cap",
+      "prompt": "BT, 17, a Gulf-coast high-school football player and the kid the team quietly protects. Slight for a lineman, a round open face that shows every yes and no, dark hair under a ball cap worn forward. A team t-shirt, athletic shorts, slides over white socks, a phone and a wallet in hand, car keys hooked on one finger.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch16_el_rancho.json",
+          "text": "BT's face does the thing a face does when a person who has been bracing for no has, instead, gotten yes."
+        },
+        {
+          "src": "vol6/vol6_ch16_dawn.json",
+          "text": "the kid the team protects, at a small cost that the team is, by their decisions, paying on BT's behalf."
+        },
+        {
+          "src": "vol6/vol6_ch16_el_rancho.json",
+          "text": "He gets his wallet — out of habit, even though BT has said my treat — and his phone. He puts on his cap."
+        }
+      ],
+      "notes": "SPARSE on the face — canon gives the cap, the car, the team, the bracing. Edit before spending credits.",
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "anita_kowalski",
+      "kind": "hero",
+      "name": "Anita Kowalski",
+      "file": "anita_kowalski.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "anita",
+        "anita_kowalski"
+      ],
+      "tag": "vol6 · Ben's mother · a nurse · knows when a kid rounds a number down · ch8, ch17, ch19",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "grey cardigan, white t-shirt, blue jeans, clogs, low brown ponytail",
+      "prompt": "Anita Kowalski, mid-40s, Ben's mother, a hospital nurse at home after a shift. Brown hair in a low loose ponytail, a face that reads a kid's arithmetic. A soft grey cardigan over a plain t-shirt, jeans, clogs; a coffee mug in one hand. Warm, exact.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch17_table.json",
+          "text": "Anita, in the specific way Anita has of knowing when a kid is rounding a number down, says: \"A twenty. Uh-huh.\""
+        },
+        {
+          "src": "vol6/vol6_ch19_chains.json",
+          "text": "Anita, at the table, smiles at Ben. The smile is the smile of a mother whose son has just answered her eleven-year-old daughter's small philosophical football question with the answer the daughter needed."
+        }
+      ],
+      "notes": "SPARSE on the home clothes — canon dresses her in scrubs (see the look). Edit before spending credits.",
+      "looks": [
+        "anita_kowalski_scrubs"
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "anita_kowalski_scrubs",
+      "kind": "hero",
+      "name": "Anita Kowalski (scrubs, ch17)",
+      "file": "anita_kowalski_scrubs.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "anita_scrubs"
+      ],
+      "tag": "vol6 ch17 · straight from the hospital in the scrubs she changed into coming off shift",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "teal scrubs, white sneakers, lanyard, low brown ponytail",
+      "prompt": "Anita Kowalski, mid-40s, a nurse coming straight from a hospital shift: teal scrubs, white sneakers, a lanyard badge tucked into the pocket, brown hair in a low loose ponytail, the tired steadiness of the end of a shift.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch17_table.json",
+          "text": "the scrubs she had changed into at the hospital before coming off shift, which is what Anita does on nights she is coming directly somewhere rather than going home. Her ponytail is low and loose."
+        }
+      ],
+      "base": "anita_kowalski",
+      "look": {
+        "label": "in scrubs, off shift",
+        "vols": [
+          6
+        ],
+        "when": "ch17 The Table — nights she comes directly somewhere"
+      },
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "bill_kowalski",
+      "kind": "hero",
+      "name": "Bill Kowalski",
+      "file": "bill_kowalski.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "bill",
+        "bill_kowalski"
+      ],
+      "tag": "vol6 · Ben's father · Daisy the golden at his feet · his good Sunday shirt · ch13, ch23",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "pale-blue pressed button-down shirt, khakis, brown belt, brown loafers, thinning sandy hair",
+      "prompt": "Bill Kowalski, late 40s, Ben's father. Broad, heavy through the middle, a sun-reddened neck, thinning sandy hair. His good Sunday shirt — a pressed pale-blue button-down tucked into khakis, a brown belt, brown loafers — worn with the air of a man pretending to be annoyed by a ceremony he is deeply pleased by.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch23_sunday.json",
+          "text": "Bill is by the cake, in his good Sunday shirt, doing the small specific Bill-thing of pretending he is annoyed about the ceremony while being, by anyone's read who has known him for more than ten minutes, deeply pleased."
+        },
+        {
+          "src": "vol6/vol6_ch13_home.json",
+          "text": "Daisy, the family's twelve-year-old golden, is at Bill's feet."
+        }
+      ],
+      "notes": "SPARSE on the face and build. Edit before spending credits.",
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "gracie_kowalski",
+      "kind": "hero",
+      "name": "Gracie Kowalski",
+      "file": "gracie_kowalski.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "gracie",
+        "gracie_kowalski"
+      ],
+      "tag": "vol6 · Ben's eleven-year-old sister · sketches on the patio · ch7, ch8, ch19",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "oversized purple t-shirt, denim shorts, scuffed sneakers, dark-blonde braids, spiral sketchbook",
+      "prompt": "Gracie Kowalski, 11, Ben's sister. Small and quick, dark-blonde hair in two uneven braids, a gap-toothed grin of unembarrassed curiosity. An oversized purple t-shirt, denim shorts, scuffed sneakers, a small spiral sketchbook hugged to her chest and a pencil behind one ear.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch7_ben_room.json",
+          "text": "Gracie — Ben's eleven-year-old sister — is on the patio. Gracie is sketching in a small notebook."
+        },
+        {
+          "src": "vol6/vol6_ch8_kowalski_kitchen.json",
+          "text": "Gracie watches her eat with the unembarrassed curiosity of an eleven-year-old who has, this morning, decided that Maya is the most interesting thing to ever happen to her family's kitchen."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "jim_henderson",
+      "kind": "hero",
+      "name": "Jim",
+      "file": "jim_henderson.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "jim"
+      ],
+      "tag": "vol6 · the careful clothes he has worn all summer for any public appearance · ch20, ch22-23",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "pressed white short-sleeve shirt, pleated grey trousers, brown belt, polished brown shoes, grey-templed hair",
+      "prompt": "Jim, 50s, a man in a Gulf-coast planned community who has spent a summer dressing carefully for every public appearance. Lean, grey at the temples, a face held very still. A pressed white short-sleeve shirt buttoned to the collar, pleated grey trousers, a brown belt, polished brown shoes; the shirt he fell asleep in.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch23_sunday.json",
+          "text": "Jim is beside her, in the careful clothes he has been wearing this summer for any public appearance."
+        },
+        {
+          "src": "vol6/vol6_ch22_sunday.json",
+          "text": "Jim is, by one fifteen, asleep with the shirt on, which is the first time in four years Jim has, on a Saturday, fallen asleep in a shirt he means to wear in the morning."
+        }
+      ],
+      "notes": "SPARSE on the face and build — canon gives the clothes and the care. Edit before spending credits.",
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "coach_dale",
+      "kind": "hero",
+      "name": "Coach Dale",
+      "file": "coach_dale.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "coach_dale",
+        "coachdale",
+        "coach dale"
+      ],
+      "tag": "vol6 · assistant coach · the thumbs-up behind the offensive huddle · ch19, ch22",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "grey coach's polo, navy shorts, white sneakers, dark moustache, athletics visor",
+      "prompt": "Coach Dale, 40s, an assistant football coach. Stocky, a ruddy face, a dark moustache, a Vinton Athletics visor over short brown hair. A grey coach's polo, navy shorts, white sneakers, a whistle, a play sheet rolled in one fist; one thumb up.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch22_vinton.json",
+          "text": "She sees Coach Dale, behind the offensive huddle, give the kid in the TE-1 jersey a small thumbs-up."
+        }
+      ],
+      "notes": "SPARSE — canon gives the huddle and the thumbs-up. Edit before spending credits.",
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "doug",
+      "kind": "hero",
+      "name": "Doug",
+      "file": "doug.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "doug"
+      ],
+      "tag": "vol6 · Centro grocery night shift · calls Diego kid · the Karamazov in his jacket pocket · ch10, ch18, ch22",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "dark-green store jacket with name patch, faded flannel shirt, worn jeans, black work shoes, grey stubble",
+      "prompt": "Doug, late 50s, a grocery night-shift lifer at the Centro. Rangy, stooped, grey stubble, deep-set eyes that keep people at the right distance. A dark-green store jacket with a name patch over a faded flannel shirt, worn jeans, black work shoes, a Brothers Karamazov paperback stuffed in the jacket pocket.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch18_stockroom.json",
+          "text": "Doug, who has not in three weeks called him by his name, has been calling him kid."
+        },
+        {
+          "src": "vol6/vol6_ch22_inventory.json",
+          "text": "Doug picks the Karamazov up off the floor and puts it in his jacket pocket."
+        }
+      ],
+      "notes": "SPARSE on the face — canon gives the jacket, the book and the distance. Edit before spending credits.",
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "russell",
+      "kind": "hero",
+      "name": "Russell",
+      "file": "russell.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "russell"
+      ],
+      "tag": "vol6 · Centro grocery since 1991 · brown work boots · reading glasses on the top of his head · ch10, ch22",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "dark-green store apron, plaid short-sleeve shirt, work jeans, brown work boots, reading glasses on the head, grey crew cut",
+      "prompt": "Russell, 60s, thirty-four years in grocery. Solid, slow, a grey crew cut, reading glasses parked on top of his head and never on his face. A dark-green store apron over a plaid short-sleeve shirt, work jeans, the same brown work boots every shift, a folded Express-News under one arm.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch22_inventory.json",
+          "text": "Russell wears the same brown work boots every shift and a pair of reading glasses he sets on the top of his head when he is not reading and never on his face. Russell has worked grocery, in some configuration, since 1991"
+        },
+        {
+          "src": "vol6/vol6_ch22_inventory.json",
+          "text": "Russell folds the Express-News."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "marisol",
+      "kind": "hero",
+      "name": "Marisol",
+      "file": "marisol.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "marisol"
+      ],
+      "tag": "vol6 · Centro grocery night shift · packs her thermos · ch10, ch22",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "dark-green store apron, black long-sleeve t-shirt, black jeans, black sneakers, steel thermos",
+      "prompt": "Marisol, 40s, a grocery night-shift worker. Compact, quick hands, black hair pulled back tight, a steel thermos in one hand. A dark-green store apron over a black long-sleeve t-shirt, black jeans, black sneakers, a small gold cross at the throat.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch22_inventory.json",
+          "text": "Marisol packs her thermos. Russell folds the Express-News. Doug picks the Karamazov up off the floor and puts it in his jacket pocket. Each of them, on the way past Diego, does one small thing."
+        }
+      ],
+      "notes": "SPARSE — canon gives the thermos and the shift. Edit before spending credits.",
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "jessa",
+      "kind": "hero",
+      "name": "Jessa",
+      "file": "jessa.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "jessa"
+      ],
+      "tag": "vol6 · Centro night manager · runs the small dishwasher at the end of every shift · ch10, ch18, ch22",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "store polo with badge, black trousers, black flats, dark hair in a clip, clipboard",
+      "prompt": "Jessa, 30s, the Centro's night manager. Tall, straight-backed, dark hair in a clip, a face that registers everything and reacts to nothing. A store polo with a manager's badge, black trousers, black flats, a clipboard against her hip, a set of keys on a coil at her wrist.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch22_inventory.json",
+          "text": "Jessa will not, externally, react, but she will register the sentence."
+        },
+        {
+          "src": "vol6/vol6_ch18_stockroom.json",
+          "text": "He puts his cup in the small dishwasher Jessa runs at the end of every shift."
+        }
+      ],
+      "notes": "SPARSE — canon gives the manager's exactness. Edit before spending credits.",
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "lucy",
+      "kind": "hero",
+      "name": "Lucy",
+      "file": "lucy.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "lucy"
+      ],
+      "tag": "vol6 ch15 · walks into the Kwik Stop already decided it will disappoint her · the gold bangle",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "white tank top, cut-off denim shorts, sandals, loose top bun, thin gold bangle on the left wrist",
+      "prompt": "Lucy, late 20s, a woman who walks into a Kwik Stop already decided it will disappoint her. Hair in a loose bun on top of her head, a tank top with the sweat outline of a long day, cut-off shorts, sandals, a small thin gold bangle on the left wrist she does not take off, sunglasses pushed up.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch15_kwik_stop.json",
+          "text": "Lucy is in a tank top that has the small sweat outline tank tops get when they have been worn in a"
+        },
+        {
+          "src": "vol6/vol6_ch15_kwik_stop.json",
+          "text": "Lucy's hair is in a loose bun on top of her head. Lucy has, on her left wrist, a small thin gold bangle that Sam registers as the kind of bangle a woman in her late twenties does not, generally, take off."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "mark",
+      "kind": "hero",
+      "name": "Mark",
+      "file": "mark.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "mark"
+      ],
+      "tag": "vol6 ch15 · one of Bobby's regulars · the kid who backs the truck up to the Peugeot",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "grey sleeveless work shirt, jeans, tan work boots, trucker cap, patchy beard",
+      "prompt": "Mark, early 20s, a tow-truck driver and one of Bobby's regulars. Wiry, sunburned, a patchy beard, a trucker cap. A grease-marked grey work shirt with the sleeves cut off, jeans, tan work boots, leather gloves tucked in a back pocket.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch15_kwik_stop.json",
+          "text": "The driver — a kid in his early twenties Sam recognizes as one of Bobby's regulars — backs the truck up to the Peugeot. He gets out. He shakes Mark's hand."
+        }
+      ],
+      "notes": "SPARSE — the scene names the driver's age; Mark may be the Peugeot's owner instead. Check ch15 before spending credits.",
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "jen",
+      "kind": "hero",
+      "name": "Jen",
+      "file": "jen.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "jen"
+      ],
+      "tag": "vol6 ch3, ch15 · the Pit Stop · folds the day-old paper on the window table",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "red Pit Stop polo, black jeans, black non-slip shoes, auburn ponytail, cap",
+      "prompt": "Jen, 40s, who runs the Pit Stop counter. Solid, sleeves pushed up, auburn hair in a ponytail through a Pit Stop cap, a pen behind one ear. A red Pit Stop polo, black jeans, black non-slip shoes, a folded newspaper in one hand.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch3_parking_lot.json",
+          "text": "She reads the day-old paper Jen has folded there."
+        },
+        {
+          "src": "vol6/vol6_ch3_parking_lot.json",
+          "text": "she has decided she wants Jen to see her with her hair up and her eyes clear and her back straight"
+        }
+      ],
+      "notes": "SPARSE — canon gives the counter and the paper. Edit before spending credits.",
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "hugo",
+      "kind": "hero",
+      "name": "Hugo",
+      "file": "hugo.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "hugo"
+      ],
+      "tag": "vol6 ch16 · El Rancho's night window · two years of four-AM catastrophes · the family's taqueria",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "white apron, black taqueria t-shirt, jeans, black sneakers, black cap",
+      "prompt": "Hugo, 19, who runs the night window at his family's taqueria. Slim, dark hair under a black cap, a small dry laugh. A white apron over a black El Rancho t-shirt, jeans, black sneakers, a rag over one shoulder.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch16_el_rancho.json",
+          "text": "manned by a kid named Hugo who runs the night shift and whose family owns the taqueria."
+        },
+        {
+          "src": "vol6/vol6_ch16_el_rancho.json",
+          "text": "the laugh of a kid who has been working the night shift at a taqueria for two years"
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "boyd",
+      "kind": "hero",
+      "name": "Boyd",
+      "file": "boyd.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "boyd"
+      ],
+      "tag": "vol6 ch6, ch9 · late thirties, smaller than Vince · the eyes that are cameras",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "black windbreaker, dark jeans, black boots, close-cut hair",
+      "prompt": "Boyd, late 30s, Vince's man, smaller than Vince and tense with a held-in distress. Close-cut hair, a narrow face, eyes that are — on the second look — cameras. A black windbreaker zipped to the chest, dark jeans, black boots, a phone held like a tool.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch6_fueling_station.json",
+          "text": "Boyd — late thirties, smaller than Vince, with the specific tense look of a man who has been holding in a small pressure of distress"
+        },
+        {
+          "src": "vol6/vol6_ch9_room.json",
+          "text": "But Boyd's eyes are not, Diego registers, eyes. Boyd's eyes are — are cameras."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "doyle",
+      "kind": "hero",
+      "name": "Doyle",
+      "file": "doyle.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "doyle"
+      ],
+      "tag": "vol6 ch6 · Ramirez's courtesy badge in a leather wallet · the safehouse",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "dark-blue untucked button-down, white t-shirt, chinos, brown boots, grey buzz cut",
+      "prompt": "Doyle, 40s, plain-clothes with a borrowed NAPD courtesy badge. Medium build, a grey buzz cut, a face built for not being remembered. An untucked dark-blue button-down over a white t-shirt, chinos, brown boots, the small leather badge wallet held open in one hand.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch6_fueling_station.json",
+          "text": "Doyle holds up the NAPD courtesy badge — a small leather wallet with a New Auburn shield embossed on the inside, which Ramirez had pressed into Doyle's palm at four AM"
+        }
+      ],
+      "notes": "SPARSE on the face. Edit before spending credits.",
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "tucker",
+      "kind": "hero",
+      "name": "Tucker",
+      "file": "tucker.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "tucker"
+      ],
+      "tag": "vol6 ch13, ch19 · the kid whose body finally turns the corner · keeps pace with Marcus in jeans",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "white practice jersey over shoulder pads, football pants, cleats, brown helmet-flattened hair",
+      "prompt": "Tucker, 16, a high-school football player whose body has just turned a corner. Tall, gangly, big feet, brown hair flattened by a helmet, ears red from the sun. A practice jersey over shoulder pads, football pants, cleats, a helmet swinging from one hand.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch19_depthchart.json",
+          "text": "Tucker, this morning, is keeping pace with Marcus by the back stretch, in the way a kid's body finally turns the corner on a thing it had been refusing to turn the corner on."
+        },
+        {
+          "src": "vol6/vol6_ch19_depthchart.json",
+          "text": "Marcus is in shorts and a t-shirt. Tucker is in jeans."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "brent",
+      "kind": "hero",
+      "name": "Brent",
+      "file": "brent.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "brent"
+      ],
+      "tag": "vol6 ch13 · the kid the program is built around · three minutes into pads",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "practice jersey over shoulder pads, football pants, cleats, short dark hair",
+      "prompt": "Brent, 18, the player the program is built around. Compact, thick-necked, dark hair cut short, a face with the morning gravity of a two-year starter. A practice jersey over shoulder pads, football pants, cleats, a helmet under one arm, no greeting.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch13_two_a_days.json",
+          "text": "Brent crosses the lot the way Ben does — without greeting, with the morning gravity of a kid who has been doing this job for two years and has, by his second year, become the kid the program is built around."
+        },
+        {
+          "src": "vol6/vol6_ch13_two_a_days.json",
+          "text": "Ben does this in five minutes. Brent does it in three. Pete does it in twelve."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "chess",
+      "kind": "hero",
+      "name": "Chess",
+      "file": "chess.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "chess"
+      ],
+      "tag": "vol6 ch20 · the woman at the booth at the bridge show · I'll listen",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "denim jacket, black t-shirt, black jeans, boots, blunt dark hair",
+      "prompt": "Chess, 30s, the woman at the back booth who says I'll listen. Angular, still, dark hair cut blunt at the jaw, a black t-shirt under a denim jacket, black jeans, boots, a glass of water in front of her and her hands folded.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch20_prints.json",
+          "text": "Chess at the back of the room saying I'll listen."
+        },
+        {
+          "src": "vol6/vol6_ch20_bridge.json",
+          "text": "The woman, at the booth, looks up when Jesse comes in."
+        }
+      ],
+      "notes": "SPARSE — canon gives the booth and the line. Edit before spending credits.",
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "hal",
+      "kind": "hero",
+      "name": "Hal",
+      "file": "hal.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "hal"
+      ],
+      "tag": "vol6 ch12, ch21 · behind the Cosmic Comics counter · sixties, white beard, Hawaiian shirt · calls Thursdays",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "loud Hawaiian shirt, black t-shirt, cargo shorts, sandals, full white beard, glasses on a cord",
+      "prompt": "Hal, 60s, the man behind the Cosmic Comics counter. Big, soft, a full white beard, glasses on a cord. A loud Hawaiian shirt open over a black t-shirt, cargo shorts, sandals, a hardcover held open in one hand.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch21_cosmic.json",
+          "text": "A man behind the counter — sixties, white beard, Hawaiian shirt, reading a hardcover of some"
+        },
+        {
+          "src": "vol6/vol6_ch12_cosmic.json",
+          "text": "Hal will call Thursday morning. He always does on the weeks I'm out."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "walt",
+      "kind": "hero",
+      "name": "Walt",
+      "file": "walt.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "walt"
+      ],
+      "tag": "vol6 ch14 · Nate's father · commercial insurance · bass in a wedding band · sandwiches on Wednesday nights",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "pale work shirt with rolled sleeves, grey slacks, socks, grey goatee, reading glasses",
+      "prompt": "Walt, 50s, Nate's father, commercial insurance by day and bass in a wedding band three times a year. Stocky, balding, a neat grey goatee, reading glasses. A pale work shirt with the sleeves rolled, the tie off, grey slacks, socks and no shoes, a sandwich half-made on a plate in one hand.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch14_substation_nine.json",
+          "text": "Nate's father — a man in his fifties named Walt who works in commercial insurance and who plays the bass himself in a wedding band that performs three times a year"
+        },
+        {
+          "src": "vol6/vol6_ch14_substation_nine.json",
+          "text": "Walt is in the kitchen when Jesse comes in. He is in his work shirt, having just come home. He is making a sandwich."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "judge_halverson",
+      "kind": "hero",
+      "name": "Judge Halverson",
+      "file": "judge_halverson.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "judge",
+        "judge_halverson",
+        "halverson"
+      ],
+      "tag": "vol6 ch8 · the courthouse · takes her glasses off",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "black judicial robe, white collar, silver short hair, half-moon glasses",
+      "prompt": "Judge Halverson, 60s, a parish court judge. Small, upright, silver hair in a short set style, half-moon glasses held in one hand. Black judicial robe over a white collar, a gold watch, low black heels.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch8_courthouse.json",
+          "text": "Judge Halverson takes her glasses off."
+        }
+      ],
+      "notes": "SPARSE — canon gives the bench and the glasses. Edit before spending credits.",
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "carlos",
+      "kind": "hero",
+      "name": "Carlos",
+      "file": "carlos.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "carlos"
+      ],
+      "tag": "vol6 · Bianca's brother · a voicemail greeting unchanged since 2014 · calls at nine seventeen · ch11, ch17, ch22",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "grey hoodie, white t-shirt, jeans, sneakers, dark hair greying at the sides",
+      "prompt": "Carlos, early 40s, Bianca's brother, mostly a voice on the phone. Lean, dark hair going grey at the sides, a tired easy smile. A grey hoodie over a white t-shirt, jeans, sneakers, a phone to his ear.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch11_eileen.json",
+          "text": "the way her brother has been recording his voicemail since 2014: Hey. You've reached Carlos. Leave a message. I'll get back to you."
+        },
+        {
+          "src": "vol6/vol6_ch22_bianca.json",
+          "text": "Carlos calls at nine seventeen."
+        }
+      ],
+      "notes": "SPARSE — canon gives a voice and a phone. A phone-call portrait; build last.",
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "tom_bell",
+      "kind": "hero",
+      "name": "Tom Bell",
+      "file": "tom_bell.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "tom_bell",
+        "tom bell"
+      ],
+      "tag": "vol6 ch21 · the customer Wren went red for · the bell chimes",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "soft grey henley, jeans, canvas shoes, brown hair pushed back",
+      "prompt": "Tom Bell, 30s, a Cosmic Comics customer. Tall, mild, brown hair pushed back, a soft grey henley, jeans, canvas shoes, a paper bag of comics under one arm.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch21_cosmic.json",
+          "text": "Saturday — went red for a customer named Tom Bell, recovered fast."
+        },
+        {
+          "src": "vol6/vol6_ch21_cosmic.json",
+          "text": "Tom Bell leaves. The bell chimes."
+        }
+      ],
+      "notes": "SPARSE — one scene, one bell. Build last.",
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "helen",
+      "kind": "hero",
+      "name": "Helen",
+      "file": "helen.glb",
+      "vol": [
+        1
+      ],
+      "keys": [
+        "helen"
+      ],
+      "tag": "vol1 ch3 · the bar · the circle around Faust",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "black slip dress, tweed jacket, stockings, low heels, dark pinned curls",
+      "prompt": "Helen, 30s, one of the bar's regulars in Faust's circle. Dark curls pinned up, a red lipstick mouth, a black slip dress under a man's tweed jacket, stockings, low heels, a cigarette held unlit.",
+      "canon": [],
+      "notes": "SPARSE — vol1's chorus has no descriptions; the look is proposed from the bar's register. Edit before spending credits.",
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "emily",
+      "kind": "hero",
+      "name": "Emily",
+      "file": "emily.glb",
+      "vol": [
+        1
+      ],
+      "keys": [
+        "emily"
+      ],
+      "tag": "vol1 ch3 · the bar · the circle around Faust",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "pale cardigan, printed dress, flat shoes, fair straight hair",
+      "prompt": "Emily, 20s, one of the bar's regulars in Faust's circle. Straight fair hair to the collarbone, a pale cardigan buttoned over a printed dress, flat shoes, a paperback held against her chest.",
+      "canon": [],
+      "notes": "SPARSE — proposed from the bar's register. Edit before spending credits.",
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "deborah",
+      "kind": "hero",
+      "name": "Deborah",
+      "file": "deborah.glb",
+      "vol": [
+        1
+      ],
+      "keys": [
+        "deborah"
+      ],
+      "tag": "vol1 ch2-3 · the pharmacy mirror, then the bar",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "camel coat, navy dress, leather handbag, sensible heels, grey bob",
+      "prompt": "Deborah, 40s, in the pharmacy and then the bar of Faust's circle. A grey bob, a camel coat over a navy dress, a leather handbag on a short strap, sensible heels, a prescription bag in one hand.",
+      "canon": [],
+      "notes": "SPARSE — proposed from the pharmacy's register. Edit before spending credits.",
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "eric",
+      "kind": "hero",
+      "name": "Eric",
+      "file": "eric.glb",
+      "vol": [
+        1
+      ],
+      "keys": [
+        "eric"
+      ],
+      "tag": "vol1 ch2 · the pharmacy mirror",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "corduroy jacket, dark sweater, jeans, boots, short beard",
+      "prompt": "Eric, 30s, at the pharmacy in Faust's circle. A short beard, a corduroy jacket over a dark sweater, jeans, boots, a paper bag from the counter.",
+      "canon": [],
+      "notes": "SPARSE — proposed from the pharmacy's register. Edit before spending credits.",
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "marcus",
+      "kind": "hero",
+      "name": "Marcus",
+      "file": "marcus.glb",
+      "vol": [
+        5,
+        6
+      ],
+      "keys": [
+        "marcus"
+      ],
+      "tag": "vol5 ch11 Justice · vol6 ch19 the depth chart (Marcus in shorts and a t-shirt, the pace Tucker keeps)",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "grey athletic shorts, white t-shirt, running shoes, close-cut hair",
+      "prompt": "Marcus, late teens, a Gulf-coast high-school athlete: long-legged, fast, dark skin, hair cut close, an easy set to the shoulders. Grey athletic shorts and a white t-shirt, running shoes, a water bottle.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch19_depthchart.json",
+          "text": "Marcus is in shorts and a t-shirt. Tucker is in jeans."
+        }
+      ],
+      "notes": "SPARSE — vol5 ch11's Marcus may be a different man (Justice); vol6's is the runner. Check before spending credits.",
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "jordan",
+      "kind": "hero",
+      "name": "Jordan",
+      "file": "jordan.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "jordan"
+      ],
+      "tag": "vol5 ch20 Judgement",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "black t-shirt, black jeans, boots, close-cropped hair",
+      "prompt": "Jordan, 20s, at the Judgement scene. Slight, androgynous, close-cropped hair, a black t-shirt, black jeans, boots, hands in pockets.",
+      "canon": [],
+      "notes": "SPARSE — two lines of canon. Build last.",
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "hannes",
+      "kind": "hero",
+      "name": "Hannes",
+      "file": "hannes.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "hannes"
+      ],
+      "tag": "vol7 ch16 · with Jameson at the eight · looks at Jameson while Lena holds Wren",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "wool watch cap, grey fisherman's sweater, canvas trousers, rubber boots, fair beard going grey",
+      "prompt": "Hannes, 40s, a coast man beside Jameson at the eight. Weathered, a fair beard going grey, a wool watch cap, a heavy grey fisherman's sweater, canvas trousers, rubber boots.",
+      "canon": [
+        {
+          "src": "vol7/vol7_ch16_eight.json",
+          "text": "Wren turned to Lena and put her face in Lena's shoulder. Lena held her. Jameson and Hannes looked at each other"
+        }
+      ],
+      "notes": "SPARSE — proposed from the coast's register beside Jameson. Edit before spending credits.",
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "maya_daigle_age7",
+      "kind": "hero",
+      "name": "Maya Daigle (age 7, vol5)",
+      "file": "maya_daigle_age7.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "maya_kid",
+        "maya_age_7",
+        "maya_7"
+      ],
+      "tag": "vol5 ch5 Hierophant · Maya Daigle, Age 7, outside St. Jude's Acadian Church",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "white Sunday dress with collar, white socks, black patent shoes, dark curls",
+      "prompt": "Maya Daigle at 7, Jimmy's daughter, outside St. Jude's Acadian Church. Small, sturdy, dark curls loose to the shoulder, a serious watching face. A white Sunday dress with a Peter Pan collar, white socks, black patent shoes, a paper church bulletin folded into a fan in one hand.",
+      "canon": [
+        {
+          "src": "vol5/vol5_ch5_hierophant.json",
+          "text": "§ I. Maya Daigle, Age 7, Outside St. Jude's Acadian Church"
+        }
+      ],
+      "base": "maya_daigle",
+      "look": {
+        "label": "age 7",
+        "vols": [
+          5
+        ],
+        "when": "vol5 ch5 — the child outside St. Jude's; vol6's Maya is 16"
+      },
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "miriam_2025",
+      "kind": "hero",
+      "name": "Miriam (vol6, the courthouse)",
+      "file": "miriam_2025.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "miriam_vol6",
+        "miriam_2025"
+      ],
+      "tag": "vol6 ch3, ch8 · across the aisle at the courthouse · one hand raised off her lap: I am here",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "long grey wool coat, black turtleneck, black trousers, low black boots, white jaw-length hair, silver-headed cane",
+      "prompt": "Miriam in vol6, 70s, Joanna's agent nine years on. The silver hair still cut sharp at the jaw, now white; the long grey wool coat and black turtleneck, black trousers, low black boots; a cane with a silver head instead of the driving gloves. Elegant, dry, unhurried; the crow gone from her shoulder.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch8_courthouse.json",
+          "text": "Miriam, across the aisle, meets Sam's eye."
+        },
+        {
+          "src": "vol6/vol6_ch8_courthouse.json",
+          "text": "raises one hand off her lap in the universal small gesture of I am here."
+        }
+      ],
+      "notes": "The cane and the missing crow are proposals, not canon. Edit before spending credits.",
+      "base": "miriam",
+      "look": {
+        "label": "vol6, nine years on",
+        "vols": [
+          6
+        ],
+        "when": "the courthouse (ch8) — vol5's Miriam is in her 60s; the scenes are ~9 years apart (Maya 7 → 16)"
+      },
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "ben_kowalski_pads",
+      "kind": "hero",
+      "name": "Ben Kowalski (practice, ch13)",
+      "file": "ben_kowalski_pads.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "ben_pads"
+      ],
+      "tag": "vol6 ch13 two-a-days · into the equipment they are going to be hit in, in five minutes",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "white practice jersey over shoulder pads, white football pants, black cleats, helmet under the arm",
+      "prompt": "Ben Kowalski, 18, tight end, in two-a-days: a white practice jersey over shoulder pads, white football pants with a belt, black cleats, a helmet under one arm, a mouthguard on its strap, sweat already at the hairline. Broad-chested, open-faced.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch13_two_a_days.json",
+          "text": "into the equipment they are going to be hit in. Ben does this in five minutes."
+        }
+      ],
+      "base": "ben_kowalski",
+      "look": {
+        "label": "practice pads",
+        "vols": [
+          6
+        ],
+        "when": "ch13 Two-a-Days, ch19 the depth chart"
+      },
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "ben_kowalski_game",
+      "kind": "hero",
+      "name": "Ben Kowalski (the TE-1 jersey, ch22)",
+      "file": "ben_kowalski_game.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "ben_game",
+        "ben_te1"
+      ],
+      "tag": "vol6 ch22 Vinton · the kid in the TE-1 jersey · Coach Dale's thumbs-up",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "texture_prompt": "home game jersey in school colours, full pads, game pants, black cleats, eye black, helmet",
+      "prompt": "Ben Kowalski, 18, on game night: the school's home jersey in the school colours with the tight end's number, full pads, game pants, black cleats, eye black, the helmet on with the chin strap hanging. Broad-chested, the open face set for once.",
+      "canon": [
+        {
+          "src": "vol6/vol6_ch22_vinton.json",
+          "text": "give the kid in the TE-1 jersey a small thumbs-up."
+        },
+        {
+          "src": "vol6/vol6_ch19_chains.json",
+          "text": "The kid is going to start at TE-1 tomorrow."
+        }
+      ],
+      "base": "ben_kowalski",
+      "look": {
+        "label": "game night, TE-1",
+        "vols": [
+          6
+        ],
+        "when": "ch22 Vinton"
+      },
+      "prompt_mode": "append"
     }
   ]
 }

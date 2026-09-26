@@ -85,6 +85,25 @@ cd /home/deck/Downloads/modern-mythology && python3 godot/tools/meshy_canon.py s
 it is a keyword heuristic and over-collects, so read what it found
 before spending credits. `--report` lists who still has nothing.
 
+## Looks — one person, more than one model (2026-09-26)
+
+The narratives run long: vol5 to vol6 is nine years (Maya is 7, then
+16), vol6 is a summer with pads, jerseys, scrubs and Sunday shirts,
+vol7 is the 2050s. One GLB per person is not enough, so a roster entry
+can be a **look** of another: it carries `base` (the hero it is a look
+of) and `look` `{label, vols, when}`, and has its own slug, concept
+image and GLB like any entry. The base lists its looks under `looks`,
+and the page files them under it with a `↳ label` chip. The first set,
+the ones the scenes actually stage: Maya at 7, Miriam nine years on,
+Ben in practice pads and in the TE-1 jersey, Anita in scrubs, Coach K
+at home. Entries marked *sparse* have a look proposed where canon
+says little — read `notes` and edit before spending credits.
+
+Routing: a look's `keys` route the scenes that name it (`maya_kid`,
+`maya_age_7` → the age-7 model). Scenes that use the bare key across
+eras (`miriam` in vol5 and vol6) need chapter-based routing in
+CharLayer — NEXT; until then the base model shows.
+
 ## Workflow in the page
 
 1. **Pick** a character / prop on the left (filter by kind, volume,
