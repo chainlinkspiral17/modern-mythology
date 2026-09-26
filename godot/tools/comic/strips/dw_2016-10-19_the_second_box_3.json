@@ -1,0 +1,157 @@
+{
+  "id": "dw_2016-10-19_the_second_box_3",
+  "title": "The second box, iii",
+  "strip": "drift_wood",
+  "date": "2016-10-19",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "The Second Box",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Second Box · deepening)",
+  "logline": "Wednesday. Gully at the door, Between-Sundays style — December 2014, reversed. This time Wood opens it. That's the whole joke, and it isn't one.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The porch. GULLY with a coffee, at the door, the empty box at his feet. Knocking.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "knocking, a coffee",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the box",
+        "a coffee"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a stocky man in a canvas jacket knocking on a garage door with a coffee in one hand, an empty cardboard box at his feet",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The door. Closed. The nose print. A beat.",
+      "characters": [],
+      "props": [
+        "the door",
+        "the nose print"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a closed garage door with a small nose-print on the glass, no words",
+        "negative": "",
+        "notes": "December 2014's composition (dw_2014-12-15): Gully at a door that doesn't open. Held one panel."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The door opening. WOOD. The pup out past his legs to Gully's boots.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "opening the door",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "out past his legs",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Checking you still open the door."
+        },
+        {
+          "who": "WOOD",
+          "text": "You said that Monday."
+        },
+        {
+          "who": "GULLY",
+          "text": "I'm checking it still works."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man opening a garage door to a stocky man with a coffee as a small three-legged dog squeezes out past his legs",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The two of them on the step with the coffee, the pup in the empty box, sitting in it now, claimed.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "on the step",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "on the step",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "sitting in the box",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the box, occupied"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, two men sitting on a garage step sharing a coffee while a small three-legged dog sits inside an empty cardboard box, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "2014's closed door, opened. 'I'm checking it still works.'"
+}

@@ -1,0 +1,152 @@
+{
+  "id": "dw_2005-12-15_hospital_lot_4",
+  "title": "The hospital parking lot, iv",
+  "strip": "drift_wood",
+  "date": "2005-12-15",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Hospital Parking Lot",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Hospital Parking Lot · deepening)",
+  "logline": "Thursday. The vending machine in the lot's covered walkway. Wood buys the dog crackers. The strip's only interior all week is the machine's lit glass, and it's outside.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_newport_lot",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The lot's covered walkway at night, a vending machine lit blue-white, the H sign beyond. WOOD at the machine. BARNABY on the leash, looking at the glass.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "at the machine",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "looking at the glass",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "vending machine",
+        "the H"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a lit vending machine in a covered hospital walkway at night with a thin man in front of it and a small dog on a leash looking at the glass, a blue-H sign beyond",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The glass: rows of crackers, chips, a coil turning. The dog's reflection in it.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "reflected",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the coil turning"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, close-up of a vending machine's lit glass with rows of snacks and a small dog's reflection in it, a coil beginning to turn",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The crackers dropping. Wood crouched at the flap. The dog's whole attention.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "crouched at the flap",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "attention",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "crackers"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Peanut butter. Don't tell Maria."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a thin man crouched retrieving crackers from a vending machine's flap while a small dog watches intently",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The two of them on the walkway's bench, sharing crackers, the lit machine, the dark lot, the H. The building behind the machine, still not drawn — the machine is in front of it.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "on the bench",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "sharing crackers",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the bench",
+        "the machine",
+        "the H"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a thin man and a small dog sharing crackers on a bench beside a lit vending machine in a dark hospital lot at night, a blue-H sign, no building visible behind the machine, no words",
+        "negative": "",
+        "notes": "The machine stands where the building would be. Never the building."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "The vending machine: the week's only lit interior, and it's outdoors."
+}

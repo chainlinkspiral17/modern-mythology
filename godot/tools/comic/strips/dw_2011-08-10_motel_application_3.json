@@ -1,0 +1,162 @@
+{
+  "id": "dw_2011-08-10_motel_application_3",
+  "title": "The motel application, iii",
+  "strip": "drift_wood",
+  "date": "2011-08-10",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Motel Application",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Motel Application · deepening)",
+  "logline": "Wednesday. The interview at the desk. The manager asks if he can stay awake. The ice machine hums. The strip draws the hum as a line under the last panel — the first time.",
+  "cast": [
+    "wood_26",
+    "motel_guest"
+  ],
+  "location": "dw_motel_desk",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The Driftwood Motel's lobby, day. A MANAGER behind the desk (the strip draws him as a polo shirt with a name tag; the tag blank). WOOD across it in the nine-dollar suit.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "in the nine-dollar suit",
+          "expression": ""
+        },
+        {
+          "id": "motel_guest",
+          "pose": "the manager: a polo and a blank tag",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the desk",
+        "a blank name tag"
+      ],
+      "balloons": [
+        {
+          "who": "MANAGER",
+          "text": "Can you stay awake?"
+        },
+        {
+          "who": "WOOD",
+          "text": "Yes."
+        },
+        {
+          "who": "MANAGER",
+          "text": "That's the job."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a motel lobby by day with a manager in a polo shirt with a blank name tag behind the desk and a thin man in a slightly short dark suit across from him",
+        "negative": "",
+        "notes": "Cast note: motel_guest slot used for the manager; he is a polo and a blank tag."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The suit's short sleeve on the counter. The manager's eyes on it. Then not.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "sleeve on the counter",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the short sleeve"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, close-up of a suit sleeve an inch too short resting on a motel counter",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The manager sliding the application back. A start date written on it.",
+      "characters": [
+        {
+          "id": "motel_guest",
+          "pose": "sliding the form back",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the form, a date on it"
+      ],
+      "balloons": [
+        {
+          "who": "MANAGER",
+          "text": "Monday. Eleven."
+        },
+        {
+          "who": "WOOD",
+          "text": "That's it?"
+        },
+        {
+          "who": "MANAGER",
+          "text": "You're awake at night anyway. Says so."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a manager sliding a form back across a motel desk with a date written on it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood at the glass door, leaving. Down the hall, the ice machine. Under the panel, for the first time: a flat unbroken line.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "at the door",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the ice machine",
+        "the hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a thin man in a suit at a motel's glass door with an ice machine visible down a hallway, a flat line running beneath the panel, no words",
+        "negative": "",
+        "notes": "The hum line's first appearance. It runs under motel panels from here to 2020."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; the Sundays the point now",
+    "palette": "limited; Sundays in watercolor",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "'You're awake at night anyway. Says so.' The hum line begins."
+}

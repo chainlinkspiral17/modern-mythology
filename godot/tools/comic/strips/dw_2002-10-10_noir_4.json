@@ -1,0 +1,123 @@
+{
+  "id": "dw_2002-10-10_noir_4",
+  "title": "Noir week, iv",
+  "strip": "drift_wood",
+  "date": "2002-10-10",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Noir Week",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Noir Week · deepening)",
+  "logline": "Thursday. The case, such as it is: a missing thing. The trench coat searches the bedroom. The missing thing is under the bed. It has four legs and is not drawn.",
+  "cast": [
+    "wood_20"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The bedroom drawn as a crime scene: the bed, the corkboard as evidence wall, a flashlight beam. The TRENCH COAT with the flashlight.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "trench coat, flashlight",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "flashlight",
+        "corkboard"
+      ],
+      "balloons": [],
+      "caption": "Something was missing. I'd known it since Monday. I hadn't wanted to look.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a small bedroom drawn as a noir crime scene with a flashlight beam crossing a corkboard covered in pinned papers, a man in a trench coat holding the light",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The flashlight on the floor. Under the bed: two eyes. Nothing else drawn.",
+      "characters": [],
+      "props": [
+        "two eyes under the bed"
+      ],
+      "balloons": [],
+      "caption": "It was under the bed. It had been under the bed the whole time. Things usually are.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, close-up of a flashlight beam on a bedroom floor revealing two small eyes glinting in the dark under a bed, nothing else visible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The trench coat kneeling. The hat off, at last, on the floor. The face, for the first time this week: Wood's.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "kneeling, hat off, face shown",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the hat on the floor"
+      ],
+      "balloons": [],
+      "caption": "I took the hat off. You can't do this in a hat.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a man in a trench coat kneeling beside a bed with his hat set on the floor, his face visible for the first time, looking under the bed",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The trench coat lying flat on the floor, arm under the bed, up to the shoulder. The caption box empty — drawn, with nothing in it.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "flat on the floor, arm under the bed",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "an empty caption box"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a man in a trench coat lying flat on a bedroom floor with his arm reaching under the bed up to the shoulder, an empty caption box in the corner",
+        "negative": "",
+        "notes": "The caption box is drawn and empty. The genre gives up here; Friday the dog walks in."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The case: the dog. The hat off. The empty caption box."
+}

@@ -1,0 +1,155 @@
+{
+  "id": "dw_2001-10-10_lot_c_2",
+  "title": "Lot C, ii",
+  "strip": "drift_wood",
+  "date": "2001-10-10",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Lot C",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Lot C · deepening)",
+  "logline": "Wednesday. The guard explains the lots. A is for faculty. B is for students who arrive early. C is for cowards. Wood parks in C.",
+  "cast": [
+    "wood_20",
+    "security_guard"
+  ],
+  "location": "dw_newport_lot",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The Newport college lot, rain. The SECURITY GUARD bent to the Datsun's window with a clipboard. WOOD inside.",
+      "characters": [
+        {
+          "id": "security_guard",
+          "pose": "bent to the window",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "in the car",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "clipboard",
+        "the Datsun"
+      ],
+      "balloons": [
+        {
+          "who": "GUARD",
+          "text": "A is faculty. B is early. C is —"
+        },
+        {
+          "who": "WOOD",
+          "text": "Cowards. You said."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a security guard in a navy windbreaker bent to a rusted small car's window with a clipboard in the rain, a young man inside",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The guard, close, philosophical.",
+      "characters": [
+        {
+          "id": "security_guard",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GUARD",
+          "text": "C is for people who could've been in B."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, close-up of a security guard's face under a cap, philosophical",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood looking at Lot B, up the hill, half empty, twenty feet closer to the building.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "looking up the hill",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "Lot B, half empty"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a young man in a car looking up a hill at a half-empty parking lot closer to a building, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood, engine off, in C. The guard walking away, satisfied.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "engine off",
+          "expression": ""
+        },
+        {
+          "id": "security_guard",
+          "pose": "walking away",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "I'm comfortable here."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a young man sitting in a parked car in the far lot as a guard walks away satisfied",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'C is for people who could've been in B.' 'I'm comfortable here.'"
+}

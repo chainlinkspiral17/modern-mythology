@@ -1,0 +1,195 @@
+{
+  "id": "dw_2011-05-18_let_go_3",
+  "title": "Let go, iii",
+  "strip": "drift_wood",
+  "date": "2011-05-18",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Let Go",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Let Go · deepening)",
+  "logline": "Wednesday. Gully comes in to have something framed for the first time in eleven years: the 2003 pencil rough of himself hanging the sign. Wood mats it. Gully pays. The pins go back in it at the shack anyway.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "extra_owner_heceta"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shop. GULLY in the door with a soft creased sheet. First time he's ever come in. WOOD's face.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "in the door with a sheet",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the 2003 rough"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "You do the small ones?"
+        },
+        {
+          "who": "WOOD",
+          "text": "You've never been in here."
+        },
+        {
+          "who": "GULLY",
+          "text": "I've been in here. You weren't looking."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a stocky man in a canvas jacket standing in a frame-shop doorway holding a creased sheet of paper, a thin man behind the counter surprised",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The sheet: the pencil rough of Gully on the ladder, 2003, pinholes in every corner.",
+      "characters": [],
+      "props": [
+        "the rough, pinholed"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, close-up of a soft creased pencil sketch of a man on a ladder hanging a sign, with pinholes in every corner",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood matting it. Precisely. Gully watching him work for the first time.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "matting",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "watching him work",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the mat"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Huh."
+        },
+        {
+          "who": "WOOD",
+          "text": "What."
+        },
+        {
+          "who": "GULLY",
+          "text": "You're good at this."
+        },
+        {
+          "who": "WOOD",
+          "text": "Eleven years, Gully."
+        },
+        {
+          "who": "GULLY",
+          "text": "I only ever saw the other thing."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a thin man precisely matting a small sketch while a stocky man watches him work with new interest",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Gully paying. Full price. Wood ringing it. The Owner at the back, the glasses up.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "paying",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "ringing it up",
+          "expression": ""
+        },
+        {
+          "id": "extra_owner_heceta",
+          "pose": "glasses up",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "register"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Eighteen?"
+        },
+        {
+          "who": "WOOD",
+          "text": "Eighteen."
+        },
+        {
+          "who": "GULLY",
+          "text": "For a napkin."
+        },
+        {
+          "who": "WOOD",
+          "text": "Frame's the same."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a stocky man paying at a frame-shop register while a thin man rings it up and an older woman watches over her glasses",
+        "negative": "",
+        "notes": "'Frame's the same' — the 2001 line (dw_2001-03-07), returned."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; the Sundays the point now",
+    "palette": "limited; Sundays in watercolor",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "Gully's first time in the shop. 'I only ever saw the other thing.' 'Frame's the same.'"
+}

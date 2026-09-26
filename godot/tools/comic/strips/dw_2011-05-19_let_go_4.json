@@ -1,0 +1,162 @@
+{
+  "id": "dw_2011-05-19_let_go_4",
+  "title": "Let go, iv",
+  "strip": "drift_wood",
+  "date": "2011-05-19",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Let Go",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Let Go · deepening)",
+  "logline": "Thursday. The lamp. It's his — he brought it in 2004 when the shop's died. The Owner says take it. He says it's the shop's. She says it's never been the shop's. The strip settles it by drawing it on his side of the counter.",
+  "cast": [
+    "wood_26",
+    "extra_owner_heceta",
+    "barnaby"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shop. The green swing-arm lamp clamped to the work bench. WOOD under it. The OWNER.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "under the lamp",
+          "expression": ""
+        },
+        {
+          "id": "extra_owner_heceta",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the green swing-arm lamp"
+      ],
+      "balloons": [
+        {
+          "who": "OWNER",
+          "text": "Take the lamp Friday."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's the shop's."
+        },
+        {
+          "who": "OWNER",
+          "text": "You brought it in '04. I remember. I remember everything."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a thin man working under a green swing-arm lamp clamped to a bench in a frame shop, an older woman speaking to him",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The lamp. The clamp. A scratch on the shade from 2004.",
+      "characters": [],
+      "props": [
+        "the lamp",
+        "a scratch"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, close-up of a green enamel swing-arm lamp's shade with an old scratch, clamped to a workbench",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood looking at the lamp. The lamp on his side of the counter now — the strip has moved it, quietly, between panels.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "looking at the lamp",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the lamp, moved"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a thin man looking at a green lamp that now stands on his side of a counter, no words",
+        "negative": "",
+        "notes": "The lamp changes sides between panels 2 and 3. Nobody moved it."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The Owner, back at the cutter, not looking up. Wood, the lamp, the dog. Tomorrow the last mat.",
+      "characters": [
+        {
+          "id": "extra_owner_heceta",
+          "pose": "at the cutter",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the lamp"
+      ],
+      "balloons": [
+        {
+          "who": "OWNER",
+          "text": "It's a good lamp, Arthur."
+        },
+        {
+          "who": "WOOD",
+          "text": "They always are."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, an older woman at a mat cutter not looking up, a thin man with a green lamp and an old dog, quiet",
+        "negative": "",
+        "notes": "Her third 'Arthur' in the shop — the characters sheet says twice; the strip lets this one be the goodbye."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; the Sundays the point now",
+    "palette": "limited; Sundays in watercolor",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "The lamp changes sides between panels. 'They always are.'"
+}

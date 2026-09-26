@@ -1,0 +1,145 @@
+{
+  "id": "dw_2009-11-17_ten_years_2",
+  "title": "Ten years, ii",
+  "strip": "drift_wood",
+  "date": "2009-11-17",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Ten Years Under the Table",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Ten Years Under the Table · deepening)",
+  "logline": "Tuesday. The beach walk, the one from 2000, at 2009's speed. The strip draws the old route with the new pace: four panels, the same distance the first strip did in one.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The beach, November. WOOD and BARNABY, ten, at the bluff stairs' foot. The drift log far off.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "slow",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the drift log, far"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a November beach with a thin man and an old dog at the foot of bluff stairs, a drift log far along the sand",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "wide",
+      "composition": "A third of the way. The dog sitting. Wood waiting, looking at the water like that's why he stopped.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "waiting, looking at the water",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "sitting",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a thin man standing looking at the sea while an old dog sits on the sand behind him, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "wide",
+      "composition": "Two thirds. The dog walking again. Wood a step behind, matching him.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "a step behind",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "walking slowly",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, an old dog walking slowly along a beach with a thin man one step behind matching its pace, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The log. The dog against it. Wood sitting on it. The water. Panel one of Drift Wood #9, the Rain, took this whole walk in one panel in 1998. The strip took four.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "on the log",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "against it",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the drift log"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a thin man sitting on a bleached drift log with an old dog leaning against it, the sea beyond, no words",
+        "negative": "",
+        "notes": "Four panels for the 1998 one-panel walk. The reader can compare."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; the Sundays the point now",
+    "palette": "limited; Sundays in watercolor",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "The 1998 walk at 2009's speed. Four panels for one."
+}

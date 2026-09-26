@@ -1,0 +1,135 @@
+{
+  "id": "dw_2002-10-08_noir_2",
+  "title": "Noir week, ii",
+  "strip": "drift_wood",
+  "date": "2002-10-08",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Noir Week",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Noir Week · deepening)",
+  "logline": "Tuesday. Captions, not balloons. A woman in a doorway who is not Chloe and is. A cigarette he doesn't smoke. The dog is still gone.",
+  "cast": [
+    "wood_20",
+    "chloe_17"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Main street at night, rain, a doorway lit from inside. A WOMAN in the doorway in a belted coat, face half in shadow. The TRENCH COAT in the street.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "trench coat, in the street",
+          "expression": ""
+        },
+        {
+          "id": "chloe_17",
+          "pose": "in a belted coat, doorway, half shadow",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "doorway",
+        "rain"
+      ],
+      "balloons": [],
+      "caption": "She was standing where she always stood. Which was wherever I wasn't.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a rain-slick small-town street at night with a woman in a belted coat standing in a lit doorway half in shadow and a man in a trench coat in the street, film-noir composition, heavy black",
+        "negative": "",
+        "notes": "Captions in a typewriter face, lettered after. No balloons all week."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The man's hand with a cigarette, unlit. He doesn't smoke. The strip knows.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "hand with an unlit cigarette",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "unlit cigarette"
+      ],
+      "balloons": [],
+      "caption": "I didn't smoke. It was that kind of week.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, close-up of a man's hand in a trench-coat sleeve holding an unlit cigarette in rain",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The woman turning back inside. The door closing. The light narrowing to a line.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "turning inside",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "door closing"
+      ],
+      "balloons": [],
+      "caption": "She didn't say anything. She'd said it all in a letter I'd used as a coaster.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a woman turning back into a doorway as the door closes and the light narrows to a line, a man in a trench coat watching from the rain",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The street. The man. The rain. Where the dog would walk into the panel: rain.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "alone in the street",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "rain"
+      ],
+      "balloons": [],
+      "caption": "The street was empty. Even the things that were usually there weren't.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, an empty rain-slick street at night with one man in a trench coat, the space beside him conspicuously empty, heavy black, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Captions only. 'A letter I'd used as a coaster.' The dog's absence drawn."
+}

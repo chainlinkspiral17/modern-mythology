@@ -1,0 +1,171 @@
+{
+  "id": "dw_2008-08-07_the_cedar_mill_3",
+  "title": "The cedar mill, iii",
+  "strip": "drift_wood",
+  "date": "2008-08-07",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Cedar Mill",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Cedar Mill · deepening)",
+  "logline": "Thursday. The mill floor. Alders through the floorboards. Chloe says 'brand narrative' out loud, in a mill, and hears it. Wood draws her hearing it.",
+  "cast": [
+    "wood_26",
+    "chloe_28",
+    "barnaby"
+  ],
+  "location": "dw_cedar_mill",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The mill floor, vast, the roof half gone, alders growing up through the boards, light in shafts. CHLOE small in it. WOOD and BARNABY behind.",
+      "characters": [
+        {
+          "id": "chloe_28",
+          "pose": "small in the space",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "alders through the floor",
+        "light shafts"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a vast ruined mill interior with the roof half gone and alder saplings growing up through the floorboards in shafts of light, a woman in a camel coat small in the space, a man and a dog behind",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Chloe, talking, the way she talks now.",
+      "characters": [
+        {
+          "id": "chloe_28",
+          "pose": "talking",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "Julian's firm did a whole thing on this. Post-industrial. Authenticity as brand narr—"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a woman in a camel coat talking animatedly in a ruined mill, mid-word",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Her face. Stopping. Hearing it. The alders behind her.",
+      "characters": [
+        {
+          "id": "chloe_28",
+          "pose": "stopped, hearing herself",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "alders"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, close-up of a woman's face stopping mid-sentence as she hears what she has just said, alder saplings behind her",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood, drawing her stopped. The dog on a fallen beam. Chloe looking at the pad, then at the mill.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "chloe_28",
+          "pose": "looking at the pad",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "on a beam",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "pad"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "Don't draw that."
+        },
+        {
+          "who": "WOOD",
+          "text": "Already did."
+        },
+        {
+          "who": "CHLOE",
+          "text": "...It's long, isn't it. The word."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's long."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a thin man drawing a woman who has stopped speaking in a ruined mill, a dog on a fallen beam",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "'Brand narrative,' heard. 'It's long.' (The Sunday's line, earned here.)"
+}

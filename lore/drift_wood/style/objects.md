@@ -72,7 +72,7 @@ by year of arrival. Photo-side out is the default for postcards;
 | year | item | how pinned |
 |---|---|---|
 | 1998 | the crab flyer (original) | |
-| 1998 | the yearbook photo (MOST LIKELY TO WIN A PULITZER — Arthur Finch) | |
+| 1998 | the yearbook photo (MOST LIKELY TO WIN A PULITZER — Arthur Finch) | falls off in the move to the garage (Mar 2004); re-pinned at the bottom corner, lowest of everything |
 | 1998 | a Timberline back page | |
 | 1999 | the Greyhound bus schedule, every departure circled | |
 | 1999 | a postcard: Seattle's needle tower | photo-out, thumb-side to the wall |
@@ -89,6 +89,8 @@ by year of arrival. Photo-side out is the default for postcards;
 | 2013 | the note: "Come. Come. I mean it, come." | **writing-out** (the third), beside the 1999 schedule |
 | 2014 | the invitation, framed in cedar with a cream-and-green mat | on the wall beside "Lanes" |
 | 2016 | a printed card with a dog "named after nothing" | **face-in** (the second) |
+
+| 2019 | one glossy stick-figure sticker (the helicopter figure), stuck by nose-transfer, upside down, below the yearbook photo | the only sticker of thirty the pup didn't eat (Nov 2019); stays |
 
 Gully's corkboard (above the register, 2003–): starts with one
 pencil rough of Gully hanging the sign; adds lost-cat flyers, kayak
@@ -240,3 +242,14 @@ the word can be read as a gap.
   letters, a small rainbow bird on the left R, a rotor on the right
   R. Usable as the volume's title card once the spelling is
   settled (`_CONCEPT_ART.md`).
+
+## The hum line
+
+A flat, unbroken line drawn beneath any panel set at the Driftwood
+Motel: the ice machine's hum. First appears under the last panel of
+the interview (Aug 10, 2011); under every motel panel from the first
+shift (Sept 2011) to the end of the public run. It breaks exactly
+once, under the ice drop (Feb 8, 2012), and stops at the door once,
+in the 2017 Rain Sunday. The reader of vol 6 may hear the substrate;
+otherwise it is a motel noise. Never under a Gully's panel, never
+under the garage.

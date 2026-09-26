@@ -1,0 +1,149 @@
+{
+  "id": "dw_2019-11-18_the_stickers_1",
+  "title": "The stickers, i",
+  "strip": "drift_wood",
+  "date": "2019-11-18",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Stickers",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Stickers · deepening)",
+  "logline": "Monday. A sample arrives: a sheet of stick-figure stickers, the helicopter figure, thirty of him. A licensing sample for a thing the strip never agreed to. The pup gets to it first.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. An envelope torn open on the floor — BARNABY II has already been at it. A sheet of stickers half out.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "at the envelope",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a torn envelope",
+        "a sticker sheet"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a torn-open envelope on a garage floor with a glossy sticker sheet half pulled out by a small three-legged dog",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The sheet: thirty stick figures with four-line rotors on their heads, glossy, die-cut. The 2006 stick figure, mass-produced. Wood's hand picking it up.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "hand",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "thirty stickers"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of a glossy die-cut sticker sheet of thirty identical crude stick figures with helicopter rotors on their heads, a man's hand lifting it",
+        "negative": "",
+        "notes": "The ROLFCOPTR figure (dw_2006-11). Thirty of him. Glossy."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD reading the cover letter. The dog with one sticker already on his nose.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "reading",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "a sticker on his nose",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a sticker on the dog's nose"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "'…enclosed sample of the licensed —' Who licensed it. I didn't license it."
+        },
+        {
+          "who": "WOOD",
+          "text": "(reading) '…in the public domain by common usage.'"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man reading a letter with a rising expression while a small dog beside him has a sticker stuck to its nose",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood looking at the dog with the sticker on his nose. The dog cross-eyed at it. Twenty-nine left on the sheet.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking at the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "cross-eyed at the sticker",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the sheet, twenty-nine left"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man looking at a small three-legged dog that is going cross-eyed at a sticker stuck to its own nose, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "'In the public domain by common usage.' One sticker on the nose."
+}

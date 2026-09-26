@@ -1,0 +1,143 @@
+{
+  "id": "dw_2005-12-16_hospital_lot_5",
+  "title": "The hospital parking lot, v",
+  "strip": "drift_wood",
+  "date": "2005-12-16",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Hospital Parking Lot",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Hospital Parking Lot · deepening)",
+  "logline": "Friday. The last lot strip. Wood drives out. The strip looks back once through the rear window at the sign and draws it smaller than it is.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_newport_lot",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Morning. The Datsun starting. Exhaust. WOOD at the wheel, BARNABY up on the seat.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "starting the car",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "exhaust"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a rusted small car starting in a hospital lot at gray morning with exhaust rising, a man at the wheel and a dog on the seat",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The rear window. The H sign in it, receding. Drawn smaller than perspective allows.",
+      "characters": [],
+      "props": [
+        "the H in the rear window, too small"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a car's rear window with a blue-H sign receding in it drawn noticeably smaller than it should be, no words",
+        "negative": "",
+        "notes": "The sign too small on purpose. The strip is shrinking the week."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "101. The sea. The dog's nose out the window. Wood's face: the face for driving.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "driving",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "nose out the window",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the sea"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a small car on a coastal highway with the sea beyond, a dog's nose out the window, the driver's face neutral",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Gully's. The end stool. Coffee already poured. Wood sitting. Gully not asking. The dog under the stool. The week over; the strip never said what it was.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "sitting",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "not asking",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "under the stool",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "coffee, poured"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a thin man sitting down at a bait-shop's end stool where a coffee is already poured, a man in an apron not asking, a dog beneath, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "The H drawn too small. Gully doesn't ask. Never named."
+}

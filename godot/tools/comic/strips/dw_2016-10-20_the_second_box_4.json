@@ -1,0 +1,172 @@
+{
+  "id": "dw_2016-10-20_the_second_box_4",
+  "title": "The second box, iv",
+  "strip": "drift_wood",
+  "date": "2016-10-20",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "The Second Box",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Second Box · deepening)",
+  "logline": "Thursday. Wood puts something in the box for Gully. The pup won't let him take it. Gully takes the pup instead, for the afternoon, and the box stays. Everyone gets something.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "WOOD setting a rolled drawing in the empty box on the step. BARNABY II watching with concern.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "placing a roll in the box",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "concerned",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a rolled drawing",
+        "the box"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man placing a rolled-up drawing into an empty cardboard box on a step while a small three-legged dog watches with concern",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "GULLY reaching for the roll. The pup between his hand and the box. Not growling. Just there.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "reaching",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "between the hand and the box",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "It's for me."
+        },
+        {
+          "who": "WOOD",
+          "text": "He doesn't know that."
+        },
+        {
+          "who": "GULLY",
+          "text": "Tell him."
+        },
+        {
+          "who": "WOOD",
+          "text": "You tell him. It's your box."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a stocky man reaching into a cardboard box while a small dog stands firmly between his hand and its contents",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully picking up the pup instead. The pup allowing it, eyes on the box.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "holding the pup",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "held, eyes on the box",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Fine. I'm taking him. You keep the box."
+        },
+        {
+          "who": "WOOD",
+          "text": "That's not how boxes work."
+        },
+        {
+          "who": "GULLY",
+          "text": "It's how this one does."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a stocky man carrying a small three-legged dog away from a porch while the dog keeps its eyes on a box",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The step. The box. The roll in it. Wood alone, looking at it. Unrolled a corner: the pup, drawn, guarding a box. For Gully's corkboard.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking at the drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the drawing: the pup guarding a box"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man on a porch step unrolling the corner of a drawing that shows a small three-legged dog guarding a cardboard box, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "The drawing for Gully's corkboard. Gully takes the pup instead."
+}

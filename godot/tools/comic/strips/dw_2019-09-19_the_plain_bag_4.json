@@ -1,0 +1,177 @@
+{
+  "id": "dw_2019-09-19_the_plain_bag_4",
+  "title": "The plain bag, iv",
+  "strip": "drift_wood",
+  "date": "2019-09-19",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Plain Bag",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Plain Bag · deepening)",
+  "logline": "Thursday. Gully's. The letter, the figure, the whistle — 2007 again. Gully looks at the table-leg question with his eyes. Wood shakes his head: no room under the leg. It's level.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. GULLY with the dog-food letter. WOOD on the stool. BARNABY II under it.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "reading",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the letter"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a stocky man in an apron reading a letter at his counter while a thin man sits on the end stool with a small three-legged dog beneath",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Gully's whistle. The same small wavy line as 2007. Longer.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "whistling",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "fweeeeee",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of a stocky man giving a long low whistle drawn as a small wavy line",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully looking at Wood. A question with no words: the table leg?",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "the question",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Table?"
+        },
+        {
+          "who": "WOOD",
+          "text": "Level since March."
+        },
+        {
+          "who": "GULLY",
+          "text": "...Right. The other one."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a stocky man asking a thin man a one-word question across a counter",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood folding the letter into his coat. The dog. The plain sack on the counter, refilled by Gully without being asked.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "folding the letter away",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the plain sack, refilled"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Sack's on the house."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's a sack, Gully."
+        },
+        {
+          "who": "GULLY",
+          "text": "It's a good sack."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a thin man folding a letter into his coat at a counter where a stocky man has set a refilled plain paper sack",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "The 2007 whistle, longer. 'Level since March.' 'It's a good sack.'"
+}

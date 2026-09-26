@@ -1,0 +1,161 @@
+{
+  "id": "dw_2007-05-16_the_first_letter_3",
+  "title": "The first letter, iii",
+  "strip": "drift_wood",
+  "date": "2007-05-16",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The First Letter",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The First Letter · deepening)",
+  "logline": "Wednesday. Gully reads the figure. He whistles. He looks at the table leg. He looks at Wood. He pours a coffee and says nothing for three panels.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. GULLY holding the letter — Wood brought it, creased from the table leg. WOOD on the stool. BARNABY.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "reading the letter",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the creased letter"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a man in an apron reading a creased letter at his counter while a thin man sits on the end stool with a dog beneath",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Gully's face. A low whistle drawn as a small wavy line.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "whistling",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "fweee",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, close-up of a man's face giving a low whistle drawn as a small wavy line",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully pouring a coffee. Setting it down. Looking at Wood. Not saying it.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "pouring, not saying it",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "coffee"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a man in an apron pouring a coffee and setting it in front of a thin man while visibly not saying something, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Gully handing the letter back. Wood folding it along the old crease.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "folding",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the letter"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Your table level?"
+        },
+        {
+          "who": "WOOD",
+          "text": "Since Monday."
+        },
+        {
+          "who": "GULLY",
+          "text": "...Good."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a man in an apron handing a letter back to a thin man who folds it along an existing crease",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "The figure whistled at. 'Your table level?'"
+}

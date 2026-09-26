@@ -1,0 +1,147 @@
+{
+  "id": "dw_2020-12-26_the_last_ordinary_week_6",
+  "title": "The last ordinary week, vi",
+  "strip": "drift_wood",
+  "date": "2020-12-26",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Last Ordinary Week",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Last Ordinary Week · deepening)",
+  "logline": "Saturday. The last daily. The garage. Corn? No — coffee. The sill. The three jars. The pup. Wood drawing tomorrow's Sunday, which is the last. The strip draws him drawing it and shows nothing of it.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage, morning. WOOD at the table with coffee. BARNABY II in the bed. The three jars on the sill. Rain.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "at the table",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "in the bed",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "three jars",
+        "coffee",
+        "rain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man at a drafting table with coffee in a garage studio on a rainy morning, three jars on the sill, a small three-legged dog in a bed",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The sheet on the board: a Sunday, taped down, the tiers ruled. The drawing on it hidden by Wood's arm.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "arm across the sheet",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a Sunday sheet, ruled"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of a ruled Sunday sheet taped to a drawing board with a man's arm lying across it hiding the drawing",
+        "negative": "",
+        "notes": "Tomorrow's Sunday (dw_2020-12-27). Not shown."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood dipping the brush. The wet-on-wet. The wash going down on the hidden sheet. The dog watching the brush.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "brush in the wash",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "watching the brush",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "brush",
+        "wash"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man laying a watercolor wash onto a sheet hidden from view while a small dog watches the brush",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The garage from the door. The man. The dog. The sheet drying. The sill. Ordinary. The last daily in the public run, drawn exactly like the first Monday of the week.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the drying sheet"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a garage studio from its doorway with a man at a drafting table, a small dog in a bed, a watercolor sheet drying on the board, three jars on a rainy windowsill, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "The last daily. Tomorrow's Sunday hidden under his arm."
+}

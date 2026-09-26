@@ -1,0 +1,132 @@
+{
+  "id": "dw_2019-11-22_the_stickers_5",
+  "title": "The stickers, v",
+  "strip": "drift_wood",
+  "date": "2019-11-22",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Stickers",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Stickers · deepening)",
+  "logline": "Friday. One sticker survived: the one on the nose, peeled off and stuck to the corkboard by the pup's own face-rubbing, upside down. It stays there. The strip lets the figure onto the board, inverted.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The corkboard. WOOD looking at it, close, at something low down. BARNABY II rubbing his face on the board's bottom edge.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking close",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "rubbing his face on the board",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the corkboard"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man peering closely at the bottom of a crowded corkboard while a small three-legged dog rubs its face against the board's lower edge",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The sticker. The helicopter figure, stuck to the cork by nose-transfer, upside down, rotor pointing at the floor.",
+      "characters": [],
+      "props": [
+        "the sticker, upside down"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of a single glossy stick-figure sticker with a rotor on its head stuck upside down to a corkboard's lower edge",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood's hand reaching to peel it. Stopping. The dog looking up at him.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "hand stopping",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "looking up",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man's hand stopping just short of peeling a sticker off a corkboard while a small dog looks up at him, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The corkboard, whole: twenty-two years of pins, and at the bottom corner, below the 1998 yearbook photo, one stick figure, upside down, staying. Wood back at the table.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "back at the table",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the corkboard",
+        "the sticker, upside down, below the photo"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a crowded corkboard with decades of pinned papers and one small upside-down sticker of a stick figure at the very bottom corner beneath a yearbook photo, a man drawing at a table nearby, no words",
+        "negative": "",
+        "notes": "The sticker joins the corkboard inventory (objects.md): below the Pulitzer photo, inverted, Nov 2019."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "The figure on the board at last, upside down, below the Pulitzer."
+}

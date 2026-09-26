@@ -1,0 +1,188 @@
+{
+  "id": "dw_2009-06-08_best_man_1",
+  "title": "Best man, i",
+  "strip": "drift_wood",
+  "date": "2009-06-08",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Best Man",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Best Man · deepening)",
+  "logline": "Monday. Gully asks. He asks the way he asks for the flyer. Wood says yes the way he says yes to the flyer. Maria, behind them, already knew.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "extra_maria",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. GULLY wiping the counter, not looking up. WOOD on the stool. MARIA at the dock door. BARNABY.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "wiping, not looking up",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_maria",
+          "pose": "at the dock door",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Friday. You're it."
+        },
+        {
+          "who": "WOOD",
+          "text": "I'm what."
+        },
+        {
+          "who": "GULLY",
+          "text": "The guy. Who stands there."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a man in an apron wiping a counter without looking up while speaking to a thin man on a stool, a woman in a county rain shell at a dock doorway, a dog",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood. The information landing.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "...The best man."
+        },
+        {
+          "who": "GULLY",
+          "text": "Don't make it a thing."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's a thing, Gully."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, close-up of a thin man's face as something lands",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Maria, from the door, one head-shake at Gully — the one that stops him — then a nod at Wood.",
+      "characters": [
+        {
+          "id": "extra_maria",
+          "pose": "head-shake, then a nod",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a practical woman in a rain shell giving a small head-shake to one man and a nod to another, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood on the stool. Gully back to work. The dog. The twenty on the counter — Gully sliding it over, out of habit.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "sliding a twenty",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a twenty"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "That's for the flyer."
+        },
+        {
+          "who": "GULLY",
+          "text": "It's for Friday."
+        },
+        {
+          "who": "WOOD",
+          "text": "I'm not lettering Friday."
+        },
+        {
+          "who": "GULLY",
+          "text": "You're going to want a suit."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a man in an apron sliding a twenty-dollar bill across a counter to a thin man on a stool",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; the Sundays the point now",
+    "palette": "limited; Sundays in watercolor",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "'You're it.' The twenty, for a suit."
+}

@@ -1,0 +1,138 @@
+{
+  "id": "dw_2019-11-20_the_stickers_3",
+  "title": "The stickers, iii",
+  "strip": "drift_wood",
+  "date": "2019-11-20",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Stickers",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Stickers · deepening)",
+  "logline": "Wednesday. The vet's verdict by phone: 'They'll pass.' Wood walks the pup on the beach and does not look. The strip does not look either. Four panels of the sea.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The beach, November. WOOD walking. BARNABY II ahead. Wood looking at the sea, deliberately.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking at the sea",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "ahead",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the sea"
+      ],
+      "balloons": [],
+      "caption": "'They'll pass,' the vet said.",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man walking a November beach looking deliberately out at the sea while a small three-legged dog trots ahead",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "wide",
+      "composition": "The sea. Only the sea.",
+      "characters": [],
+      "props": [
+        "the sea"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a gray November sea with small waves, nothing else, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "wide",
+      "composition": "The sea. The dog's ears at the bottom edge, busy with something off-panel. Wood's back.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "back turned",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "ears at the bottom edge",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the sea"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a gray sea with a man's back turned toward it and a small dog's ears just visible at the bottom edge, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The sea. The dog trotting back into frame, light, done. Wood not asking.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "not turning",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "trotting back, light",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the sea"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a gray sea with a small three-legged dog trotting lightly back into the frame toward a man who does not turn around, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Four panels of the sea. The strip doesn't look."
+}

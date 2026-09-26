@@ -1,0 +1,124 @@
+{
+  "id": "dw_2018-03-17_the_unopened_letter_5",
+  "title": "The unopened letter, v",
+  "strip": "drift_wood",
+  "date": "2018-03-17",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Unopened Letter",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Unopened Letter · deepening)",
+  "logline": "Saturday. The envelope under the table leg, on top of the two from 2007. The table is now perfectly level for the first time since 2004. That's the strip's whole answer.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "WOOD kneeling at the drafting table's short leg. The two 2007 letters already there, yellowed. The new envelope in his hand.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "kneeling at the leg",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "two old letters",
+        "the new envelope"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man kneeling at a drafting table's leg where two yellowed folded letters are already wedged, holding a new unopened envelope",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The envelope sliding in, on top. Three shims.",
+      "characters": [],
+      "props": [
+        "three shims"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of an unopened envelope being slid under a table leg on top of two older folded letters",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The coffee on the table. Perfectly still. A level, borrowed from Gully, on the table: the bubble dead center.",
+      "characters": [],
+      "props": [
+        "a level, bubble centered",
+        "still coffee"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of a spirit level on a drafting table with its bubble dead center beside a mug of perfectly still coffee, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood drawing at the level table. The pup asleep beneath with his chin on the shims. Fourteen years of wobble, fixed by not opening things.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "asleep, chin on the shims",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the level table"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man drawing at a drafting table while a small three-legged dog sleeps beneath it with its chin resting on three folded letters under one leg, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Third shim. The table level at last. The answer."
+}

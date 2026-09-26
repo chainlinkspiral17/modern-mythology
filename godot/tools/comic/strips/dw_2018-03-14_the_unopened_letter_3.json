@@ -1,0 +1,178 @@
+{
+  "id": "dw_2018-03-14_the_unopened_letter_3",
+  "title": "The unopened letter, iii",
+  "strip": "drift_wood",
+  "date": "2018-03-14",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Unopened Letter",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Unopened Letter · deepening)",
+  "logline": "Wednesday. Gully sees it. Gully knows the logo — everyone knows the logo. Gully doesn't say the name. The strip's rule: the thing offering to animate him is never named.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage door open. GULLY in it with a coffee. The envelope on the table, visible from the door. Gully's eyes on it.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "in the door, eyes on the envelope",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the envelope"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a stocky man standing in an open garage doorway with a coffee, his eyes on an envelope lying on a drafting table across the room",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Gully's face. Recognition. The mouth opening to say the name.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "about to say it",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close-up of a stocky man's face in recognition with his mouth opening to speak, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, not looking up from the pad, one finger raised.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "one finger up, not looking",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Don't."
+        },
+        {
+          "who": "GULLY",
+          "text": "I didn't."
+        },
+        {
+          "who": "WOOD",
+          "text": "You were going to."
+        },
+        {
+          "who": "GULLY",
+          "text": "...It's the one with the —"
+        },
+        {
+          "who": "WOOD",
+          "text": "Gully."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man at a drafting table raising one finger without looking up as a stocky man in the doorway stops mid-word",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Gully sitting on the step with the coffee. The envelope on the table. The pup between them on the floor. The name unsaid, drawn as the blank shape, twice: on the envelope, and in Gully's empty balloon.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "on the step",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the envelope",
+        "an empty balloon"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": ""
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a stocky man sitting on a garage step with a coffee and an empty speech balloon above him, an envelope with a blank logo on a table, a small dog on the floor between",
+        "negative": "",
+        "notes": "Gully's balloon: drawn, empty. The name never lettered."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "'Don't.' The name never said. An empty balloon."
+}
