@@ -1,0 +1,50 @@
+{
+  "id": "ro_2026-12-24_two_chairs",
+  "title": "Two chairs",
+  "strip": "roflcopter",
+  "date": "2026-12-24",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening)",
+  "logline": "Christmas Eve, 2026. Gully's dock, string lights. Maria's lawn chair, and beside it a second chair, folding, set out. Both empty. Whether she comes is not this page's; the second chair is.",
+  "cast": [],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": "The crab, small, beside the word."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The dock at night with string lights, Christmas Eve: Maria's old lawn chair and, set carefully beside it, a second chair — a folding one, the one from August 2024 — both empty, both facing the water. Snow not falling but threatening. The shack's window warm. Somebody set out two chairs.",
+      "characters": [],
+      "props": [
+        "two chairs, empty",
+        "string lights"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a wooden dock at night strung with lights on Christmas Eve, an old worn lawn chair and a folding chair set carefully side by side facing the water both empty, a shingle shack's window glowing warm, a heavy sky, no people, no words",
+        "negative": "",
+        "notes": "Reserved whether she comes. Two chairs is the page's whole statement."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Two chairs, empty, facing the water. Set out by someone.",
+  "layout": "single page, no borders"
+}

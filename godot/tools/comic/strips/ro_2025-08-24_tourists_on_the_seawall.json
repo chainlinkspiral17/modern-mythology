@@ -1,0 +1,70 @@
+{
+  "id": "ro_2025-08-24_tourists_on_the_seawall",
+  "title": "Tourists on the seawall",
+  "strip": "roflcopter",
+  "date": "2025-08-24",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening)",
+  "logline": "August. Three tourists on the seawall looking at a phone, the strip on it — a Sunday from 2013, the heron. Behind them, unseen by them, the real estuary with the real heron. From behind, at the page's edge: Wood, walking the pup past.",
+  "cast": [
+    "extra_tourists",
+    "wood_44",
+    "barnaby_ii"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The seawall in August: three tourists in fleece bent over one phone showing a small watercolor of an estuary with a heron; behind them, over the wall, the estuary itself at low tide with a heron in it, which they are not looking at. Along the page's right edge, from behind, small: a graying man in plaid and a three-legged dog, walking past without stopping.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "bent over a phone",
+          "expression": ""
+        },
+        {
+          "id": "wood_44",
+          "pose": "walking past, from behind",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the phone: the heron Sunday",
+        "the real heron"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a seawall in August with three tourists in fleece bent over a phone showing a small watercolor comic page of an estuary and heron, while behind them over the wall the real estuary at low tide with a real heron goes unnoticed, and at the right edge a graying man in plaid flannel and a small three-legged dog walk past seen from behind, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The heron on the phone; the heron behind them.",
+  "layout": "single page, no borders"
+}

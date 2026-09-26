@@ -1,0 +1,51 @@
+{
+  "id": "ro_2023-04-16_eugene_4am",
+  "title": "Eugene, 4 AM",
+  "strip": "roflcopter",
+  "date": "2023-04-16",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Route North",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening)",
+  "logline": "The Greyhound station in Eugene at 4 AM, drawn from nothing — he was never there. Fluorescent light, a vending machine, one bench, a bag with a strap. The bus outside with its door open. The road she took, page by page.",
+  "cast": [],
+  "location": "dw_greyhound",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A bus station interior at 4 AM: fluorescent tubes, a vending machine's glow, a scuffed floor, one bench with a duffel on it — the strap the strip drew in 1999 — and through the glass, the bus with its door open and its interior lights on, empty. No people. Everything slightly wrong in the way of a place drawn from a schedule.",
+      "characters": [],
+      "props": [
+        "the vending machine",
+        "the duffel with the strap",
+        "the bus, door open"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a bus station interior at 4 AM lit by fluorescent tubes and a glowing vending machine, one bench with a duffel bag on it, and through the glass a bus with its door open and interior lights on and no one aboard, no people anywhere, no words",
+        "negative": "",
+        "notes": "The duffel is the 1999 one (dw_1999 Seattle, Said). Drawn from nothing: get small details plausibly wrong on purpose (a sign in the wrong font)."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Eugene, invented. The strap.",
+  "layout": "single page, no borders"
+}

@@ -1,0 +1,58 @@
+{
+  "id": "ro_2022-01-09_the_rain_private",
+  "title": "The Rain, private",
+  "strip": "roflcopter",
+  "date": "2022-01-09",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening)",
+  "logline": "The twenty-fifth January. The garage sill, rain, three jars, the pup in the bed, the lamp on. The public strip's Rain, kept going for nobody.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The casement window in rain from inside, the three jars, the lamp's warm circle on the table with a page on it — this page, half drawn — and the pup in the bed beneath, awake, watching the rain. Twenty-five Januaries. No one to show.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "in the bed, awake",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "three jars",
+        "the half-drawn page"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a garage studio window in January rain seen from inside with three jars on the sill, a lamp's warm circle on a drafting table where a half-finished drawing lies, a small three-legged dog awake in a braided bed beneath watching the rain, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The Rain continues privately. The page drawing itself.",
+  "layout": "single page, no borders"
+}

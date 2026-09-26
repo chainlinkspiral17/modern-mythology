@@ -1,0 +1,59 @@
+{
+  "id": "ro_2027-01-10_the_rain_2027",
+  "title": "The Rain, 2027",
+  "strip": "roflcopter",
+  "date": "2027-01-10",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening)",
+  "logline": "The last January. The garage sill; rain; the three jars; the sand dollar; the pup asleep; the lamp on; the page under the lamp is a mudflat — spring, already, in January.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The window in rain from inside, the jars, the sand dollar, the pup asleep in the bed — twelve now, gray — and under the lamp on the table, a page in progress that is not rain at all: the mudflats in sun, gold, the first of the spring pages, begun in January. The rain outside; the sun on the table.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "asleep, gray",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "three jars",
+        "the sand dollar",
+        "the spring page under the lamp"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a garage studio in January rain seen from inside with three jars and a sand dollar on the sill, an old gray three-legged dog asleep in a bed beneath, and on the lit drafting table a watercolor page in progress showing sunlit golden mudflats, rain outside and sun on the table, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The last Rain. Spring already on the table.",
+  "layout": "single page, no borders"
+}

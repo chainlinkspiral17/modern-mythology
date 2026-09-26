@@ -1,0 +1,51 @@
+{
+  "id": "ro_2022-04-10_the_back_page_under_the_lamp",
+  "title": "The back page, under the lamp",
+  "strip": "roflcopter",
+  "date": "2022-04-10",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Reading Room",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening)",
+  "logline": "A 1997 Timberline back page under the green lamp. The first strip, #1, in a stranger's folder, in the town's archive. A cardigan on the chair. He is not in the room.",
+  "cast": [],
+  "location": "dw_library_back_room",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Close on the reading-room table: the green-shaded lamp, its light a circle on a yellowed newsprint back page — the Timberline, September 12, 1997, the first Drift Wood strip readable in it, the three-legged-table gag in Era I's crow-quill line, redrawn now by the older hand exactly as it was. At the circle's edge, the sleeve of a cardigan on the chair back. No one.",
+      "characters": [],
+      "props": [
+        "the green lamp",
+        "#1 in the paper",
+        "the cardigan"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a close view of a library reading-room table under a green-shaded lamp whose circle of light falls on a yellowed 1997 high-school newspaper back page containing a crude four-panel comic strip drawn in scratchy crow-quill style, a cardigan sleeve on the chair back at the edge of the light, nobody present, no words",
+        "negative": "",
+        "notes": "The strip inside the page is Era I's line, reproduced by Era IV's hand. Two lines on one page."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "#1, under the lamp, in the archive. Era I inside Era IV.",
+  "layout": "single page, no borders"
+}

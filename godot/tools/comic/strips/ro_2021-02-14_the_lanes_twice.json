@@ -1,0 +1,51 @@
+{
+  "id": "ro_2021-02-14_the_lanes_twice",
+  "title": "The Lanes, twice",
+  "strip": "roflcopter",
+  "date": "2021-02-14",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "No Grid",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening)",
+  "logline": "Main street's trick again, for the sign: SMALL WOOD LANES all lit on the left half, the same roofline on the right with most letters dark, the halves meeting at the L that flickered in 2009.",
+  "cast": [],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "One roofline across the page. Left half: the neon lit, pink and blue, 1998, the lot full, a Datsun. Right half: the same roofline, 2021, the tubes gray glass, a few letters lit, the lot empty, a faded green wagon. The two halves meet at the L of LANES, which is lit on both sides — the one letter the page lets survive.",
+      "characters": [],
+      "props": [
+        "the sign, two eras",
+        "the Datsun",
+        "the Legacy"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a single roofline drawn across a page where the left half shows a bowling alley's pink and blue neon sign fully lit above a full parking lot in the 1990s and the right half shows the same sign with most tubes dark gray above an empty lot decades later, the two halves meeting seamlessly at one lit letter, no words",
+        "negative": "",
+        "notes": "Which letters are lit on the 2021 side is reserved; draw most dark. The L lit on both."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The 1997/2021 join, applied to the sign. The L survives.",
+  "layout": "single page, no borders"
+}

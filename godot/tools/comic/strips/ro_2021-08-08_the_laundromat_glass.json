@@ -1,0 +1,58 @@
+{
+  "id": "ro_2021-08-08_the_laundromat_glass",
+  "title": "The laundromat glass",
+  "strip": "roflcopter",
+  "date": "2021-08-08",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "From Behind",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening)",
+  "logline": "The laundromat's window from the sidewalk. The rack is gone. In the glass: a man's reflection, a shoulder and the back of a head, looking at where it was.",
+  "cast": [
+    "wood_44"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The laundromat window at dusk from the sidewalk, the dryers turning inside, the wall where the digest rack hung now bare with four screw holes. In the glass, faint over the dryers: a reflection — a shoulder in a blue plaid flannel, the back of a head going gray, looking in. He is in the glass, not on the sidewalk.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "a reflection: shoulder and back of head",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "four screw holes",
+        "the dryers"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a laundromat window at dusk seen from the sidewalk with dryers turning inside and a bare wall with four screw holes where a rack once hung, a faint reflection in the glass of a man's shoulder in blue plaid flannel and the back of a graying head, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Where the rack was. From behind, in glass.",
+  "layout": "single page, no borders"
+}

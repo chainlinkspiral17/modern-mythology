@@ -1,0 +1,51 @@
+{
+  "id": "ro_2021-12-05_chicago",
+  "title": "Chicago",
+  "strip": "roflcopter",
+  "date": "2021-12-05",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "Rooms He Never Saw",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening)",
+  "logline": "A hotel room in Chicago, 2001, from the back of a postcard that said 'the room is orange and I can hear the train.' Orange. A train drawn as sound in the window.",
+  "cast": [],
+  "location": "dw_seattle_hill",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A hotel room drawn from six words: orange walls, a bed with the cover pulled tight, one window with the L-train drawn not as a train but as a smear of motion and a scrawl of sound across the glass. A postcard on the nightstand, picture side down. Nobody in the room. Never was, for him.",
+      "characters": [],
+      "props": [
+        "orange walls",
+        "the train as sound",
+        "a postcard face down"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a small hotel room with orange walls and a tightly made bed, one window across which an elevated train is drawn as a smear of motion and scrawled sound rather than an object, a postcard face down on the nightstand, nobody in the room, no words",
+        "negative": "",
+        "notes": "Location id borrowed: the sequence's rooms are all 'elsewhere.' The room is invented from the 2001 postcard."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "'The room is orange and I can hear the train.' Six words, one page.",
+  "layout": "single page, no borders"
+}
