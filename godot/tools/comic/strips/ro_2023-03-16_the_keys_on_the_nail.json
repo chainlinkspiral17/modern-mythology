@@ -1,0 +1,58 @@
+{
+  "id": "ro_2023-03-16_the_keys_on_the_nail",
+  "title": "The keys on the nail",
+  "strip": "roflcopter",
+  "date": "2023-03-16",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Mill, 1994",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xi)",
+  "logline": "The shack's keys hung on a nail inside the shack, 1994, the uncle's hand leaving them, the bait cooler, the counter with nothing on it yet, the window with the dock. Where the keys went after the sentence. The corkboard not yet on the wall.",
+  "cast": [
+    "extra_uncle"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Inside a bare bait shack: two keys on a ring hung on a nail in the wall, a broad man's hand just leaving them, an empty counter, a bait cooler, the window showing a dock, the wall where a corkboard will be, bare.",
+      "characters": [
+        {
+          "id": "extra_uncle",
+          "pose": "a hand leaving the keys",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the keys",
+        "the bare wall"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, in the Era I manner, heavy black spotting brought back on purpose, inside a bare bait shack two keys on a ring hanging from a nail with a broad man's hand just leaving them, an empty wooden counter, a bait cooler and a window showing a dock, a bare wall, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Where the keys went. The wall bare.",
+  "layout": "single page, no borders"
+}

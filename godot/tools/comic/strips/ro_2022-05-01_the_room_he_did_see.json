@@ -1,0 +1,55 @@
+{
+  "id": "ro_2022-05-01_the_room_he_did_see",
+  "title": "The room he did see",
+  "strip": "roflcopter",
+  "date": "2022-05-01",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "Rooms He Never Saw",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xi)",
+  "logline": "The last page of the sequence in the book: the garage from the doorway, drawn exactly the way the invented rooms were — flat, careful, furnished one object at a time — as if he'd never seen it either. The lamp on. The pup's bed. The boxes.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The garage from its doorway drawn in the same flat careful manner as an invented room: the drafting table, the lamp lit, the dog's bed with a small three-legged dog in it, the wall of numbered boxes, the window with the alley.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "in the bed",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a garage studio seen from its doorway drawn flat and careful like a room from a postcard with a drafting table, a lit lamp, a small three-legged dog in a bed, a wall of numbered boxes and a window onto an alley, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "His own room, drawn as if invented.",
+  "layout": "single page, no borders"
+}

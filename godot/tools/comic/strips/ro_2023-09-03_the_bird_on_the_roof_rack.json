@@ -1,0 +1,67 @@
+{
+  "id": "ro_2023-09-03_the_bird_on_the_roof_rack",
+  "title": "The bird on the roof rack",
+  "strip": "roflcopter",
+  "date": "2023-09-03",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Bird",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xi)",
+  "logline": "The Legacy in Gully's lot in September, the bird on its roof rack, and through the windshield the back of a man's head at the wheel not going anywhere. The pup's nose at the rear window.",
+  "cast": [
+    "the_bird",
+    "wood_44",
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A faded green station wagon in a gravel lot with the small rainbow bird on its roof rack, the back of a graying man's head at the wheel seen through the windshield, a small dog's nose at the rear glass.",
+      "characters": [
+        {
+          "id": "the_bird",
+          "pose": "on the rack",
+          "expression": ""
+        },
+        {
+          "id": "wood_44",
+          "pose": "the back of a head",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "nose at the rear glass",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a faded green station wagon parked in a gravel lot with a small rainbow bird on its roof rack, the back of a graying man's head at the wheel through the windshield, a small dog's nose pressed to the rear glass, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Not going anywhere.",
+  "layout": "single page, no borders"
+}

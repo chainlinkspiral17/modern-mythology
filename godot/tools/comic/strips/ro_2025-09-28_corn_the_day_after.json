@@ -1,0 +1,49 @@
+{
+  "id": "ro_2025-09-28_corn_the_day_after",
+  "title": "Corn, the day after",
+  "strip": "roflcopter",
+  "date": "2025-09-28",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xi)",
+  "logline": "Gully's counter the morning after the corn: the tray in the bin, the end stool pushed in, the bird gone from the rim, one kernel on the counter. Twenty-eight and a day.",
+  "cast": [],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A shop counter in morning light: an empty paper tray in a bin, the end stool pushed in, a single corn kernel on the wood, the corkboard above.",
+      "characters": [],
+      "props": [
+        "one kernel"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a shop counter in morning light with an empty paper tray in a bin, the end stool pushed in and a single corn kernel on the wood, a crowded corkboard above, no people, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "One kernel.",
+  "layout": "single page, no borders"
+}

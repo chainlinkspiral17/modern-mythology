@@ -114,6 +114,34 @@ a page says "fifty" check it against the year first.
 
 ## Recent lessons
 
+### 2026-09-26 · Deepening xi · the thin sequences and the private seasons · 904 → 961
+
+Fifty-seven private pages: The Bird to 26, The Mill to 24, The Route
+North to 20, Rooms He Never Saw to 18, and twenty-four unsequenced pages
+spread four a year across 2021–2027. The batch queued every page, checked
+all planned dates against the existing set and against each other, and
+only then wrote files; nothing landed on disk before the check passed.
+
+- **Queue, check, then write.** The page helper now appends to a list; a
+  single assertion over the whole list runs before the first file is
+  written. Last batch's abort-after-two-files cannot recur in this shape.
+- **A sequence's device gets one page that turns it on itself.** The mill
+  sequence's spotting becomes the saw's teeth; From Behind's rule becomes
+  the empty coat on the hook; the Route North's empty reflection becomes
+  the driver's empty mirror; the Rooms sequence ends by drawing the one
+  room he did see as if invented. One such page per sequence, not more.
+- **Unsequenced pages are the private work's dailies.** Four a year, on
+  the objects the fixtures don't cover: the polo on the line, the tin
+  rusting, the blanket washed, the odometer, the box lids. They carry the
+  small canon (the pale rectangle where the rack was, the nail through the
+  wall, the chair moved for the first time in eighteen years) that the
+  sequences assume.
+- **Reserved facts stay reserved even when a page is about them.** The
+  bird sits on the letter of the tavern sign that would settle the name;
+  the mill notice is drawn backward through glass; the boy at the fence
+  has no character id. The note in `image.notes` says what the device is
+  so the prompt says "not legible" rather than guessing.
+
 ### 2026-09-26 · Deepening x · the ROFLCOPTER sequences toward their book share · 852 → 904
 
 Fifty-two private pages, chosen by comparing each sequence's written

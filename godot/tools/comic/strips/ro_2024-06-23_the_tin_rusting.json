@@ -1,0 +1,57 @@
+{
+  "id": "ro_2024-06-23_the_tin_rusting",
+  "title": "The tin, rusting",
+  "strip": "roflcopter",
+  "date": "2024-06-23",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xi)",
+  "logline": "The pushpin tin on Gully's counter, close, rusting at the hinge, twenty-six years of pins. The girl's hand reaching for it at the edge, fourteen now.",
+  "cast": [
+    "extra_gully_kid"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Close on a small pushpin tin on a wooden counter rusting at its hinge, a teenage girl's hand reaching for it at the frame's edge.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "a hand, fourteen",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the tin"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, close on a small rusting pushpin tin on a wooden counter with a teenage girl's hand reaching for it at the frame's edge, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Twenty-six years of pins.",
+  "layout": "single page, no borders"
+}

@@ -1,0 +1,49 @@
+{
+  "id": "ro_2023-01-19_the_blades_teeth",
+  "title": "The blade's teeth",
+  "strip": "roflcopter",
+  "date": "2023-01-19",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Mill, 1994",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xi)",
+  "logline": "The head saw's band, close, stopped: the teeth in a row across the whole page, each one drawn, oil on the steel, sawdust in the gullets. The Era I spotting is the teeth. The mill has five months.",
+  "cast": [],
+  "location": "dw_cedar_mill",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Extreme close-up of a bandsaw blade's teeth running across the whole page, each tooth drawn, oil sheen on the steel, sawdust packed in the gullets, nothing else.",
+      "characters": [],
+      "props": [
+        "the blade"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, in the Era I manner, heavy black spotting brought back on purpose, an extreme close-up of a bandsaw blade's teeth running across the whole page with each tooth drawn, oil sheen on the steel and sawdust packed in the gullets, nothing else, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Each tooth. The spotting is the teeth.",
+  "layout": "single page, no borders"
+}

@@ -1,0 +1,57 @@
+{
+  "id": "ro_2022-05-15_the_vet_2022",
+  "title": "The vet, 2022",
+  "strip": "roflcopter",
+  "date": "2022-05-15",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xi)",
+  "logline": "The vet's building from the lot, the same one from 1999: the pup, seven, on the step with his leash looped on the rail, waiting to be taken in. The man not drawn. The three legs the building knows.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_vet",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A small veterinary clinic from its lot: a small three-legged dog sitting on the front step with its leash looped over the rail, the door shut, nobody else.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "on the step, waiting",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the leash on the rail"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a small veterinary clinic seen from its lot with a small three-legged dog sitting on the front step and its leash looped over the rail, the door shut, no people, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The building from 1999.",
+  "layout": "single page, no borders"
+}

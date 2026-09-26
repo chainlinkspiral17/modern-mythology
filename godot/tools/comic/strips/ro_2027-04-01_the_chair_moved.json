@@ -1,0 +1,50 @@
+{
+  "id": "ro_2027-04-01_the_chair_moved",
+  "title": "The chair, moved",
+  "strip": "roflcopter",
+  "date": "2027-04-01",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xi)",
+  "logline": "April 1: the lawn chair at the dock's end, moved from its place by the shack for the first time in eighteen years, facing the flats. Nobody in it. The page keeps the pale rectangle on the planks where it stood.",
+  "cast": [],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The dock at morning: an old lawn chair at the far end facing the flats, and back by the shack a pale rectangle on the planks where it stood for years.",
+      "characters": [],
+      "props": [
+        "the chair, moved",
+        "the pale rectangle"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a wooden dock at morning with an old lawn chair set at its far end facing tidal flats and back near a shingle shack a pale rectangle on the planks where the chair stood, no people, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Moved. The pale rectangle kept.",
+  "layout": "single page, no borders"
+}
