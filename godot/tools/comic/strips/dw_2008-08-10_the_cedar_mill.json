@@ -1,0 +1,189 @@
+{
+  "id": "dw_2008-08-10_the_cedar_mill",
+  "title": "Sunday · the cedar mill",
+  "strip": "drift_wood",
+  "date": "2008-08-10",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Cedar Mill",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2006–2008)",
+  "logline": "Chloe home, in an expensive coat. The walk through the shuttered mill. The travelogue Sunday, with a person in it.",
+  "cast": [
+    "wood_26",
+    "chloe_28",
+    "barnaby"
+  ],
+  "location": "dw_cedar_mill",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the abandoned cedar mill from the road, August, watercolor: the long shed, the smokestack, blackberry taking the loading dock, a chain across the drive. CHLOE and WOOD ducking the chain. BARNABY under it.",
+      "characters": [
+        {
+          "id": "chloe_28",
+          "pose": "ducking a chain, expensive coat",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "mill shed",
+        "smokestack",
+        "blackberry",
+        "chain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an abandoned cedar mill in August watercolor, a long shed and a smokestack, blackberry overtaking the loading dock, a young woman in an expensive camel coat and a young man in a chore coat ducking under a chain across the drive, a gray-muzzled dog, no words",
+        "negative": "",
+        "notes": "Chloe at 28: the camel coat, short expensive hair. She's drawn better than the mill."
+      },
+      "stage": null,
+      "name": "The chain"
+    },
+    {
+      "n": 2,
+      "shot": "wide tier",
+      "composition": "Tier 2: inside the shed. Light through the roof's missing panels in long bars. The saw, rusted. Their two shapes small in the bars of light.",
+      "characters": [
+        {
+          "id": "chloe_28",
+          "pose": "small, in the light",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "small",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "bars of light",
+        "rusted saw",
+        "sawdust"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the inside of a vast abandoned mill shed with light falling through missing roof panels in long bars, a rusted saw, two small figures walking through the bars of light, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Bars"
+    },
+    {
+      "n": 3,
+      "shot": "medium tier",
+      "composition": "Tier 3: the two of them on the loading dock, feet over the blackberry. Talking. The strip gives them one exchange.",
+      "characters": [
+        {
+          "id": "chloe_28",
+          "pose": "sitting, coat open",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "beside her",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "loading dock",
+        "blackberry"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "I have a firm. Boutique. Strategy. I say 'brand narrative' out loud, Wood. In meetings."
+        },
+        {
+          "who": "WOOD",
+          "text": "I have a corner box."
+        },
+        {
+          "who": "CHLOE",
+          "text": "I saw. The Long Way Back. Is it back yet."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's long."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young woman in a camel coat and a young man sitting on an abandoned mill's loading dock with their feet over blackberry brambles, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "The dock"
+    },
+    {
+      "n": 4,
+      "shot": "wide tier",
+      "composition": "Tier 4: from behind, the two of them walking out under the chain, the dog first, the smokestack over them. The strip's Chloe seen from the back — her coat the only warm color.",
+      "characters": [
+        {
+          "id": "chloe_28",
+          "pose": "from behind",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "from behind",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "ahead",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "chain",
+        "smokestack"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young woman in a warm camel coat and a young man seen from behind walking out of an abandoned mill under a chain, a dog ahead of them, the smokestack above, watercolor, no words",
+        "negative": "",
+        "notes": "The camel coat is the only warm color on the page."
+      },
+      "stage": null,
+      "name": "Out"
+    }
+  ],
+  "art": {
+    "line": "brush-pen",
+    "palette": "gray-green, rust, blackberry black; one camel coat",
+    "paper": "watercolor paper"
+  },
+  "notes": "The mill, 2008. 'I say brand narrative out loud.' 'It's long.' The mill returns in forty ROFLCOPTER pages.",
+  "layout": "tiers, portrait page"
+}

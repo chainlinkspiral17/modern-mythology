@@ -1,0 +1,137 @@
+{
+  "id": "dw_2008-12-19_december_2008",
+  "title": "December, 2008",
+  "strip": "drift_wood",
+  "date": "2008-12-19",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "December",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2006–2008)",
+  "logline": "Does Chloe come home. A postcard — a real one, handwritten — from Portland. She's moved. Portland is three hours. She doesn't come.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The mailbox. A postcard. A bridge. Handwriting — hers, the tiny capitals, back. WOOD reading it in the alley.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "reading a postcard",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "postcard of a bridge",
+        "mailbox"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man reading a handwritten postcard of a city bridge at a mailbox in a gravel alley, a small dog, December, muddy watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The card: 'W — Portland. Three hours from you, which is the closest I've been in nine years and the farthest, somehow. Julian's here. Not for Christmas. Neither am I. The firm. — C.' The handwriting is back. The strip draws every letter.",
+      "characters": [],
+      "props": [
+        "postcard back, handwritten"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a panel that is the back of a postcard in tiny cramped handwritten capitals, drawn with evident relief at the return of handwriting",
+        "negative": "",
+        "notes": "Letter after. The handwriting returns. Julian, second mention."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, to the dog.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Three hours. She's three hours away and she wrote it down instead of driving it."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man holding a postcard and talking to a dog with a complicated face",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The corkboard. The card pinned writing-out, like the 2001 one. Two cards now that show their words. The rest, photo-out.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "pinning the card writing-out",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "corkboard: two cards writing-out"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a crowded corkboard where a young man pins a postcard with its handwritten side facing out beside one other card pinned the same way, all the others photo-side out, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "Portland. Three hours. The handwriting back. The second card pinned writing-out."
+}

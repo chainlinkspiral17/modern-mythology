@@ -1,0 +1,178 @@
+{
+  "id": "dw_2008-03-14_grunion_xi",
+  "title": "The Grunion Run, xi",
+  "strip": "drift_wood",
+  "date": "2008-03-14",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Grunion Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2006–2008)",
+  "logline": "Eleventh year. A Newport reader comes to the run because of the strip. Brings the clipping. Wood signs it. First time.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby",
+    "extra_reader"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The beach, lanterns, the run. GULLY's coffee line. A READER, a woman in her sixties, holding a folded newspaper, looking for someone. WOOD at the edge with the pad and BARNABY.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "pouring",
+          "expression": ""
+        },
+        {
+          "id": "extra_reader",
+          "pose": "holding a clipping, searching",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "at the edge",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lanterns",
+        "clipping",
+        "fish"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a night beach festival with lanterns, a woman in her sixties holding a folded newspaper clipping and searching the crowd, a young man with a drawing pad and a gray-muzzled dog at the edge, muddy watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The reader, having found him, holding out the clipping and a pen.",
+      "characters": [
+        {
+          "id": "extra_reader",
+          "pose": "holding out clipping and pen",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "clipping",
+        "pen"
+      ],
+      "balloons": [
+        {
+          "who": "READER",
+          "text": "It's the dog one. From the tides. Would you—"
+        },
+        {
+          "who": "WOOD",
+          "text": "...I've never—"
+        },
+        {
+          "who": "READER",
+          "text": "Just your name."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman holding out a newspaper clipping and a pen to a startled young man on a night beach",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The clipping: the strip, and under it Wood's hand writing, in the margin, exactly what he always writes: A. Finch — Small Wood, OR. And the gull.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "signing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "clipping with the signature"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a hand signing a newspaper clipping of a comic strip in the margin with a small gull drawn beside the name",
+        "negative": "",
+        "notes": "He signs it the way he signs the strip. The gull too. Letter after."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Silent. The fish. The lanterns. The reader walking away with the clipping held flat so it won't crease. Wood looking at his own hand.",
+      "characters": [
+        {
+          "id": "extra_reader",
+          "pose": "walking away, clipping held flat",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "looking at his hand",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "fish",
+        "lanterns"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "silent wide night beach panel with silver fish and lanterns, a woman walking away holding a clipping carefully flat, a young man looking at his own hand, a dog, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "The first signature. He signs it like the margin. The gull."
+}
