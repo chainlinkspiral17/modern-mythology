@@ -114,6 +114,36 @@ a page says "fifty" check it against the year first.
 
 ## Recent lessons
 
+### 2026-09-26 · Deepening v–vii · every arc at its key week; Vol. II at five a sequence · 578 → 724
+
+Three more batches: the large ◐ arcs' key weeks and both Sunday
+runs (Cedar, A Third of a Page), then the last small ◐ arcs, then
+fifty-nine ROFLCOPTER pages. The arc-vs-catalogue diff now reports
+no ● or ◐ arc below its key week.
+
+- **The diff is the stopping rule.** When `want N` vs `have n`
+  reports nothing under five, the pass is done; the remaining
+  weight (Sundays to ~325, Vol. II to ~560) is breadth, not gaps,
+  and should be scheduled as its own phase against the render
+  budget, not written blind.
+- **Re-date the fixture Sunday, not the holiday.** A Sunday-format
+  strip on a weekday (the 2006 Fourth) is a validation hole; the
+  check is one line (`weekday()!=6`) and now runs in every batch's
+  post-check with the weekday-claim check and the collision check.
+- **Running counts want a table before the strip.** The 2024 crab
+  flyer count shipped one high because the arithmetic (year − 1997)
+  was done in prose. Put the count in `objects.md` first; derive
+  the strip's number from the table.
+- **Vol. II subtracts what Vol. I accumulated.** The anniversary
+  pages lose the man, the Dog Nights lose the caption, the first
+  face drawn whole is Gully's, not Wood's. When a private page
+  wants a figure, give it a hand, a knee, a back, a reflection, or
+  the other person.
+- **Give the strip's own future one leak, then close it.** Julian
+  naming a Sunday he could have read is fine; naming one not yet
+  drawn is a bug the first draft had. A stranger may know the past
+  of the strip exactly; never its future.
+
 ### 2026-09-26 · Deepening iii and iv · the story arcs to full weeks · 442 → 578
 
 The ● arcs were the gap: most had one strip standing for five to
