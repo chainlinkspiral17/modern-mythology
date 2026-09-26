@@ -114,6 +114,27 @@ a page says "fifty" check it against the year first.
 
 ## Recent lessons
 
+### 2026-09-26 · Balloons cutting off text · the 1000-character chop
+
+User feedback: rendered balloons kept cutting off text. The cause
+was not the image model: the Runway runner truncated every prompt
+to 1000 characters and 636 of 724 lettered prompts are longer, with
+the dialogue at the end.
+
+- **Never truncate a prompt that carries dialogue.** Shorten the
+  style and the descriptions; keep every quoted line. The compact
+  prompt (`compose_strip_prompt(..., compact=True)`) exists for
+  models with short limits; the runner chooses it per model or on a
+  400 about `promptText`.
+- **Put the lettering contract in the prompt.** "Every balloon
+  contains its complete text; size the balloon to the sentence;
+  never cut a word; no other words." Image models letter what they
+  are told to letter and pad or trim what they aren't.
+- **Batch scripts shouldn't repeat the style prefix in every panel
+  prompt.** It costs ~50 characters a panel; the compact composer
+  now strips a shared prefix, but new batches should leave the
+  era's style to the era block.
+
 ### 2026-09-26 · The render tool: model passthrough and new takes
 
 User feedback: the model menu was inadequate (Runway has many more

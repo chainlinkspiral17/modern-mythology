@@ -282,8 +282,20 @@ def runway_generate(job, key, model=RUNWAY_MODEL, seed=None):
     h = {"Authorization": f"Bearer {key}", "X-Runway-Version": RUNWAY_API_VERSION}
     ref_payload = _ref_uris(job, limit=3)
 
-    def submit(r):
-        body = {"model": model, "promptText": job["prompt"][:1000], "ratio": r}
+    # prompt length: never chop the dialogue. gen4 takes 1000 characters, so
+    # it gets the compact prompt when the full one is longer; other models get
+    # the full prompt, and a 400 about promptText falls back to the compact one.
+    prompt = job["prompt"]
+    compact = job.get("prompt_compact") or prompt
+    if model.startswith("gen4") and len(prompt) > 1000:
+        prompt = compact
+        print(f"  · {model} takes 1000 characters; using the compact prompt ({len(compact)} chars, dialogue intact)")
+    if len(prompt) > 1000 and model.startswith("gen4"):
+        prompt = prompt[:1000]
+        print("  ! even the compact prompt exceeds 1000 characters; the end was cut — shorten the strip's dialogue or use another model")
+
+    def submit(r, text=None):
+        body = {"model": model, "promptText": text if text is not None else prompt, "ratio": r}
         if seed is not None:
             body["seed"] = int(seed)
         if ref_payload:
@@ -291,6 +303,10 @@ def runway_generate(job, key, model=RUNWAY_MODEL, seed=None):
         return _http(f"{RUNWAY_BASE}/text_to_image", "POST", h, body)
 
     st, raw = submit(ratio)
+    if st == 400 and b"promptText" in raw and prompt is not compact:
+        print(f"  · {model} rejected the prompt length ({len(prompt)} chars); retrying with the compact prompt ({len(compact)} chars, dialogue intact)")
+        prompt = compact
+        st, raw = submit(ratio)
     if st == 400:
         allowed = _allowed_from_400(raw)
         if allowed and ratio not in allowed:
@@ -303,6 +319,10 @@ def runway_generate(job, key, model=RUNWAY_MODEL, seed=None):
             ratio = _closest_ratio(want, allowed)
             print(f"  · {model} doesn't take {want}; using its closest size {ratio} (list cached for next time)")
             st, raw = submit(ratio)
+            if st == 400 and b"promptText" in raw and prompt is not compact:
+                prompt = compact
+                print(f"  · and it rejected the prompt length; retrying with the compact prompt ({len(compact)} chars)")
+                st, raw = submit(ratio)
     if st not in (200, 201):
         raise RuntimeError(f"runway submit {st} (model {model}, ratio {ratio}): {raw[:400]!r}")
     task_id = json.loads(raw)["id"]
@@ -320,7 +340,7 @@ def runway_generate(job, key, model=RUNWAY_MODEL, seed=None):
             st, img = _http(url, "GET", {}, None, timeout=300)
             if st != 200:
                 raise RuntimeError(f"runway download {st}")
-            return img, {"task_id": task_id, "ratio": ratio, "model": model}
+            return img, {"task_id": task_id, "ratio": ratio, "model": model, "prompt_used": "compact" if prompt is compact else "full", "prompt_chars": len(prompt)}
     raise RuntimeError("runway poll timeout")
 
 

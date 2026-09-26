@@ -108,6 +108,7 @@ def api_strip(sid):
     s = strips[0]
     refs = ct.load_refs()
     prompt_l, neg_l = ct.compose_strip_prompt(s, eras, letter=True)
+    prompt_c, _ = ct.compose_strip_prompt(s, eras, letter=True, compact=True)
     prompt_u, neg_u = ct.compose_strip_prompt(s, eras, letter=False)
     picks = {}
     for prov in ("runway", "google"):
@@ -120,7 +121,7 @@ def api_strip(sid):
     if s.get("review"):
         md += f"\n\n---\n\n**Review** · {s['review'].get('status','')} · {s['review'].get('note','')}\n"
     clean = {k: v for k, v in s.items() if not k.startswith("_")}
-    return {"strip": clean, "md": md, "prompt": {"lettered": prompt_l, "negative_lettered": neg_l, "unlettered": prompt_u, "negative_unlettered": neg_u,
+    return {"strip": clean, "md": md, "prompt": {"lettered": prompt_l, "compact": prompt_c, "negative_lettered": neg_l, "unlettered": prompt_u, "negative_unlettered": neg_u,
                                                   "runway_ratio": rw, "google_aspect": gg},
             "refs": picks, "renders": renders, "errors": ct.validate_strip(s, eras, ct.load_heroes())}
 
@@ -577,7 +578,8 @@ function renderStrip(d){const s=d.strip,p=d.prompt,rv=s.review||{};const el=$('#
  <div class="tabs">${tabs.map(t=>`<button class="${TAB===t[0]?'on':''}" onclick="tab('${t[0]}')">${t[1]}</button>`).join('')}</div>
  <div class="pane ${TAB==='sheet'?'on':''}" id="p-sheet"><div class="md">${md(d.md)}</div></div>
  <div class="pane ${TAB==='panels'?'on':''}" id="p-panels"><table class="panels md"><tr><th>#</th><th>shot</th><th>composition</th><th>who</th><th>balloons</th><th>image prompt</th><th>notes</th></tr>${s.panels.map(x=>`<tr><td>${x.n}${x.name?'<br>'+esc(x.name):''}</td><td>${esc(x.shot)}</td><td>${esc(x.composition)}${x.caption?'<br><i>caption: '+esc(x.caption)+'</i>':''}${x.sfx?'<br><i>sfx: '+esc(x.sfx)+'</i>':''}</td><td>${(x.characters||[]).map(c=>esc(c.id)+(c.pose?' · <small>'+esc(c.pose)+'</small>':'')).join('<br>')}</td><td>${(x.balloons||[]).map(b=>'<b>'+esc(b.who)+'</b> '+esc(b.text)+(b.kind?' <small>('+esc(b.kind)+')</small>':'')).join('<br>')}</td><td>${esc(x.image?.prompt)}</td><td>${esc(x.image?.notes)}</td></tr>`).join('')}</table></div>
- <div class="pane ${TAB==='prompt'?'on':''}" id="p-prompt"><h2>whole-strip prompt · lettered <button class="sm" onclick="copy('pl')">copy</button></h2><pre id="pl">${esc(p.lettered)}</pre><p class="empty">negative: ${esc(p.negative_lettered)} · runway ${p.runway_ratio} · google ${p.google_aspect}</p>
+ <div class="pane ${TAB==='prompt'?'on':''}" id="p-prompt"><h2>whole-strip prompt · lettered · ${p.lettered.length} chars <button class="sm" onclick="copy('pl')">copy</button></h2><pre id="pl">${esc(p.lettered)}</pre><p class="empty">negative: ${esc(p.negative_lettered)} · runway ${p.runway_ratio} · google ${p.google_aspect}</p>
+  <h2>compact · ${p.compact.length} chars${p.compact.length>1000?' · <span style="color:#ff9a8a">still over gen4_image\'s 1000; use another model or shorten the dialogue</span>':' · fits gen4_image\'s 1000'} <button class="sm" onclick="copy('pc')">copy</button></h2><pre id="pc">${esc(p.compact)}</pre><p class="empty">sent instead of the full prompt when a model's limit is 1000 characters (gen4) or when the provider rejects the length. Dialogue is never shortened; only the style line and the panel descriptions are.</p>
   <h2>unlettered (production) <button class="sm" onclick="copy('pu')">copy</button></h2><pre id="pu">${esc(p.unlettered)}</pre><p class="empty">negative: ${esc(p.negative_unlettered)}</p></div>
  <div class="pane ${TAB==='refs'?'on':''}" id="p-refs"><div class="refs">${['runway','google'].map(pr=>`<h2>${pr} would attach (${d.refs[pr].length})</h2>`+(d.refs[pr].length?d.refs[pr].map(r=>`<div class="ref">${r.url?`<img src="${r.url}" onclick="lb('${r.url}')">`:'<div class="empty">no image yet</div>'}<div><b>@${esc(r.tag)}</b> · ${esc(r.id)} · ${r.kind} · <span class="pill ${r.status==='approved'?'ok':'A'}">${r.status}</span> · score ${r.score}<br><span class="why">${esc(r.why.join(', '))}</span><br><small>${esc(r.tags.join(' '))}</small><br><button class="sm ok" onclick="refStatus('${r.id}','approved')">approve</button> <button class="sm bad" onclick="refStatus('${r.id}','rejected')">reject</button></div></div>`).join(''):'<p class="empty">none approved that match · render the sheets first (SHEETS mode) or tick "allow draft refs"</p>')).join('')}</div></div>
  <div class="pane ${TAB==='renders'?'on':''}" id="p-renders"><h2>generate</h2>${genForm('strip',s.id,s.format)}<div id="lastrun"></div><h2>on disk</h2>${gallery(d.renders)}</div>

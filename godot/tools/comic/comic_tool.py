@@ -440,50 +440,98 @@ LAYOUT_TEXT = {
 }
 
 
-def _balloon_text(p):
+def _balloon_text(p, compact=False):
     out = []
     for b in p.get("balloons") or []:
         kind = b.get("kind", "")
+        who = b['who'].title()
         if kind == "sfx":
-            out.append(f"on-screen text reads \"{b['text']}\"")
+            out.append(f"text \"{b['text']}\"" if compact else f"on-screen text reads \"{b['text']}\"")
         elif kind == "small":
-            out.append(f"{b['who'].title()} says, in a small balloon, \"{b['text']}\"")
+            out.append(f"{who} (small): \"{b['text']}\"" if compact else f"{who} says, in a small balloon, \"{b['text']}\"")
         else:
-            out.append(f"{b['who'].title()} says \"{b['text']}\"")
+            out.append(f"{who}: \"{b['text']}\"" if compact else f"{who} says \"{b['text']}\"")
     if p.get("caption"):
-        out.append(f"caption box: \"{p['caption']}\"")
-    return ". ".join(out)
+        out.append(f"caption \"{p['caption']}\"" if compact else f"caption box: \"{p['caption']}\"")
+    return ("; " if compact else ". ").join(out)
 
 
-def compose_strip_prompt(s, eras, letter=True):
+LETTERING_RULES = ("Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, "
+                   "large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; "
+                   "no words other than the ones given.")
+
+LETTERING_RULES_SHORT = "Letter every balloon completely, large and clean; never cut a word; no other words."
+
+SHORT_STYLE = {  # compact style lines, for models with short prompt limits
+    "era1": "1990s photocopied zine comic, scratchy pen, harsh black and white",
+    "era2": "mid-2000s webcomic, brush-pen line, muddy flat color",
+    "era3": "razor-sharp brush-and-ink newspaper strip; Sundays wet-on-wet watercolor",
+    "era4": "spare ink line, muted ochre and slate watercolor, no panel borders",
+}
+
+
+def _common_prefix(texts):
+    """Longest prefix shared by all texts, cut back to the last comma — the
+    per-panel style boilerplate the batch scripts repeat."""
+    texts = [t for t in texts if t]
+    if len(texts) < 2:
+        return ""
+    pre = texts[0]
+    for t in texts[1:]:
+        i = 0
+        while i < min(len(pre), len(t)) and pre[i] == t[i]:
+            i += 1
+        pre = pre[:i]
+    cut = pre.rfind(", ")
+    return pre[:cut + 2] if cut > 10 else ""
+
+
+def _first_sentence(t, n=140):
+    t = (t or "").strip()
+    cut = t.find(". ")
+    if 0 < cut < n:
+        return t[:cut + 1]
+    return (t[:n].rsplit(" ", 1)[0] + "…") if len(t) > n else t
+
+
+def compose_strip_prompt(s, eras, letter=True, compact=False):
     """One prompt for the WHOLE strip as a single image: layout, era style,
     then each panel's content in order, with the dialogue if letter=True
     (the concept run lets the generator letter the balloons; the print
-    pipeline will composite them instead)."""
+    pipeline will composite them instead). compact=True shortens the style
+    and the panel descriptions but never the dialogue, for models with
+    short prompt limits (gen4_image: 1000 characters)."""
     era = eras["eras"][s["era"]]
     fmt = s["format"]
     style = era["prompt_prefix"].rstrip(",")
     if fmt in ("sunday", "page", "spread", "special") and era.get("prompt_prefix_sunday"):
         style = era["prompt_prefix_sunday"].rstrip(",")
+    if compact:
+        style = SHORT_STYLE.get(s["era"], style)
     n = len(s["panels"])
     unit = "tier" if fmt in ("sunday", "special") else "panel"
     parts = [f"{LAYOUT_TEXT.get(fmt, 'a comic strip')} ({n} {unit}s). Style: {style}."]
-    if s.get("logline"):
+    if s.get("logline") and not compact:
         parts.append(f"Title of the strip: {s['strip'].replace('_', ' ').upper()}. The strip: {s['logline']}")
+    boiler = _common_prefix([(p.get("image") or {}).get("prompt") or "" for p in s["panels"]]) if compact else ""
     for p in s["panels"]:
-        seg = f"{unit.title()} {p['n']}: {(p.get('image') or {}).get('prompt') or p['composition']}"
+        desc = (p.get("image") or {}).get("prompt") or p["composition"]
+        if compact:
+            if boiler and desc.startswith(boiler):
+                desc = desc[len(boiler):]
+            desc = _first_sentence(desc)
+        seg = f"{unit.title()} {p['n']}: {desc}"
         if letter:
-            bt = _balloon_text(p)
-            if bt:
-                seg += f". {bt}"
-            else:
-                seg += ". No dialogue in this " + unit
+            bt = _balloon_text(p, compact=compact)
+            seg += f". {bt}" if bt else (". No dialogue in this " + unit if not compact else ". No text")
         parts.append(seg + ".")
     m = s.get("margin") or {}
-    if letter and m.get("signature"):
-        mark = eras["marks"].get(m.get("mark", ""), "")
-        parts.append(f"In the bottom right margin, tiny hand-lettered signature \"{m['signature']}\"" + (f" beside {mark}" if mark and m.get("mark") != "none" else "") + ".")
-    if not letter:
+    if letter:
+        parts.append(LETTERING_RULES_SHORT if compact else LETTERING_RULES)
+        if m.get("signature"):
+            mark = eras["marks"].get(m.get("mark", ""), "")
+            parts.append(f"Bottom right margin: tiny signature \"{m['signature']}\"" + (f" beside {mark}" if mark and m.get("mark") != "none" and not compact else "") + ".")
+    else:
         parts.append("No text, no lettering, no speech balloons, no signature; leave clean space in each panel where balloons would go.")
     prompt = " ".join(parts)
     negative = era["negative"]
@@ -503,6 +551,7 @@ def cmd_strip_prompts(args):
     with_refs = 0
     for s in strips:
         prompt, negative = compose_strip_prompt(s, eras, letter=letter)
+        prompt_compact, _ = compose_strip_prompt(s, eras, letter=letter, compact=True)
         rw, gg = RATIOS.get(s["format"], ("1024:1024", "1:1"))
         picks = select_refs(s, refs, provider=args.provider, include_draft=args.include_draft) if not args.no_refs else []
         ref_list = []
@@ -525,7 +574,7 @@ def cmd_strip_prompts(args):
         jobs.append({
             "tag": "vol10", "slug": s["id"], "strip_id": s["id"], "title": s.get("title", ""),
             "date": s["date"], "era": s["era"], "format": s["format"], "tier": s.get("tier"),
-            "prompt": prompt, "negative": negative,
+            "prompt": prompt, "prompt_compact": prompt_compact, "negative": negative,
             "runway_ratio": rw, "google_aspect": gg,
             "lettered": letter, "seed": s.get("seed"),
             "reference_images": ref_list,
