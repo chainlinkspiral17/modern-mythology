@@ -1,0 +1,169 @@
+{
+  "id": "dw_2014-04-28_the_invitation",
+  "title": "The invitation",
+  "strip": "drift_wood",
+  "date": "2014-04-28",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Invitation",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014)",
+  "logline": "Cream cardstock on the drafting table. Wood frames it — at the frame shop he no longer works at, after hours, with Gully's key.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "barnaby"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. The invitation on the drafting table: cream, letterpress, a pressed fern. WOOD looking at it. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking at an invitation",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "letterpress invitation with a pressed fern"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a letterpress wedding invitation on cream cardstock with a pressed fern lying on a garage drafting table, a thin man looking at it, an old dog, razor-sharp ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The frame shop, night, closed. GULLY unlocking the side door with a key. Wood behind him with the invitation and the dog.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "unlocking a door",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "behind him",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "side door",
+        "a key"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Why do you have a key."
+        },
+        {
+          "who": "GULLY",
+          "text": "I fix her furnace."
+        },
+        {
+          "who": "WOOD",
+          "text": "Since when."
+        },
+        {
+          "who": "GULLY",
+          "text": "Since you got let go. Someone had to keep an eye."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky man unlocking the side door of a dark closed shop at night with a key, a thin man behind him carrying an old dog and a card",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood at the mat cutter, in the dark shop, one lamp. Cutting a mat for the invitation. Cream and green. A forty-five. His hands remember.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "cutting a mat",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "mat cutter",
+        "cream and green mat"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of hands cutting a double mat in cream and green at a mat cutter in a dark shop under one lamp, clean line, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The invitation framed, cedar, on the garage wall beside 'Lanes.' Wood looking at it. Gully in the door. The dog asleep. Nobody says the thing.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking at the framed invitation",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "in the door",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "framed invitation on the wall"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wedding invitation framed in plain cedar hanging on a garage wall beside a framed watercolor, a thin man looking at it, a stocky man in the doorway, an old dog asleep, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "He frames the invitation. Gully has a key because he fixes the furnace. 'Someone had to keep an eye.'"
+}

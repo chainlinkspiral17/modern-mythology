@@ -1,0 +1,147 @@
+{
+  "id": "dw_2013-05-26_beverly_beach",
+  "title": "Sunday · Beverly Beach",
+  "strip": "drift_wood",
+  "date": "2013-05-26",
+  "run": 4,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Beverly Beach",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014)",
+  "logline": "Wood and the dog on Beverly Beach. The sand dollar. It goes on the sill. It stays there.",
+  "cast": [
+    "wood_34",
+    "barnaby"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: Beverly Beach in May, wide, wet-on-wet, the creek cutting the sand to the surf, the headland, the light doing what it does for twenty minutes. A man carrying a dog.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "carrying the dog, small",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "creek",
+        "headland",
+        "sunbreak"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wide wet-on-wet watercolor of a Pacific Northwest beach in May with a creek cutting across the sand to the surf, a headland, a brief sunbreak, a small man carrying a dog, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Beverly"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the man setting the dog down at the tide line; the dog, thirteen and a half, walking four steps, sitting. Beside the dog, in the wet sand: a sand dollar, whole.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "setting the dog down",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "sitting beside a sand dollar",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "sand dollar"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man setting an old dog down on wet sand at the tide line, the dog sitting, and beside it a whole sand dollar half-buried, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Whole"
+    },
+    {
+      "n": 3,
+      "shot": "close tier",
+      "composition": "Tier 3: the sand dollar in his hand. Whole. A thing that is almost never whole.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "hand holding the sand dollar",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "sand dollar"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a weathered hand holding a whole unbroken sand dollar, clean ink over a pale wash",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "In hand"
+    },
+    {
+      "n": 4,
+      "shot": "wide tier",
+      "composition": "Tier 4: the garage sill. Three jars now: brushes, nibs, and the third with the sand dollar in it. The rain on the window. The dog asleep below. The sill is complete.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "asleep below",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "three jars on the sill",
+        "sand dollar in the third"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small casement window sill in a garage studio with three jars: brushes, pen nibs, and a single sand dollar in the third, rain on the glass, an old dog asleep beneath, watercolor, no words",
+        "negative": "",
+        "notes": "The sill's third jar arrives. The Empty Chair's sill is complete from here."
+      },
+      "stage": null,
+      "name": "The sill"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "The sand dollar. The third jar. The sill is ready for 2014.",
+  "layout": "tiers, portrait page"
+}

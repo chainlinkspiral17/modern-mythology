@@ -1,0 +1,188 @@
+{
+  "id": "dw_2013-07-04_the_fourth_2013",
+  "title": "The Fourth, 2013",
+  "strip": "drift_wood",
+  "date": "2013-07-04",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Fourth on the Bay",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014)",
+  "logline": "Gully's dock. Gully has a kid on his shoulders — his own, this time. Wood draws the fireworks white and the kid's balloon red.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "extra_maria",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The dock, night, crowded, white fireworks on blue. GULLY with a small child on his shoulders — his, a girl, three. MARIA beside with a second, a baby. WOOD on the steps with BARNABY.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "a child on his shoulders",
+          "expression": ""
+        },
+        {
+          "id": "extra_maria",
+          "pose": "holding a baby",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "on the steps",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "fireworks white",
+        "crowd",
+        "a red balloon on the child's wrist"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a crowded dock at night under white fireworks on a deep blue watercolor sky, a stocky man with a small girl on his shoulders, a woman beside him holding a baby, a thin man on shack steps with an old dog, a single red balloon tied to the girl's wrist",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The girl on Gully's shoulders, pointing at the fireworks, saying the only word the strip gives her.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "pointing",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GIRL",
+          "text": "White!"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a small girl on a man's shoulders pointing up at fireworks, delighted",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully, to Wood, over the crowd.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "She says they're white."
+        },
+        {
+          "who": "WOOD",
+          "text": "She's right."
+        },
+        {
+          "who": "GULLY",
+          "text": "They're red, Woody."
+        },
+        {
+          "who": "WOOD",
+          "text": "Not in hers."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky man with a child on his shoulders calling to a thin man on shack steps, fireworks light",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The finale. White on blue. The one red thing: the girl's balloon. The lawn chair under the eave, and in it, this year, Maria with the baby.",
+      "characters": [
+        {
+          "id": "extra_maria",
+          "pose": "in the lawn chair with the baby",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "finale",
+        "red balloon",
+        "lawn chair, occupied"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a fireworks finale in white over a blue night bay above a crowded dock, a single red balloon, and under a shack's eave an old lawn chair with a woman sitting in it holding a baby, watercolor, no words",
+        "negative": "",
+        "notes": "The chair is finally sat in: Maria, with the baby. The strip lets it happen without comment."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "Gully's kids. The chair occupied at last. 'Not in hers.'"
+}

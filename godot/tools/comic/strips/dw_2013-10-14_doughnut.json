@@ -1,0 +1,174 @@
+{
+  "id": "dw_2013-10-14_doughnut",
+  "title": "Doughnut",
+  "strip": "drift_wood",
+  "date": "2013-10-14",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Doughnut",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014)",
+  "logline": "The spare tire, months before it matters. A strip about a tire.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's lot, Tuesday. The Legacy up on a jack. GULLY holding a shredded tire. WOOD holding the dog.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "holding a shredded tire",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "holding the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "Legacy on a jack",
+        "shredded tire"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Rear left's gone. You've got the doughnut."
+        },
+        {
+          "who": "WOOD",
+          "text": "The what."
+        },
+        {
+          "who": "GULLY",
+          "text": "The little one. Fifty miles, fifty miles an hour. Don't go anywhere."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old Subaru wagon up on a jack in a gravel lot, a stocky man holding a shredded tire, a thin man holding an old dog, clean ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The doughnut spare, absurdly small, going on.",
+      "characters": [],
+      "props": [
+        "a tiny spare tire"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a comically small spare tire being fitted to an old car's wheel hub",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood looking at it.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking at the tire",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "It's a toy."
+        },
+        {
+          "who": "GULLY",
+          "text": "It's fifty miles."
+        },
+        {
+          "who": "WOOD",
+          "text": "Where would I go."
+        },
+        {
+          "who": "GULLY",
+          "text": "Nowhere. Good. Bring it Tuesday."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin man looking down doubtfully at a tiny spare tire on his car",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The Legacy driving off on three real tires and one toy, the car listing slightly, the dog's head out the window, the blue haze. Gully watching, shaking his head.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "driving",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "head out",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "shaking his head",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the listing car",
+        "blue haze"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old Subaru wagon driving away on three full tires and one tiny spare so that it lists slightly, an old dog's head out the window, a stocky man watching and shaking his head, no words",
+        "negative": "",
+        "notes": "'Don't go anywhere.' He drives to the San Juans on it nine months later."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "The doughnut. Fifty miles. He'll take it four hundred."
+}

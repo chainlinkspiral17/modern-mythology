@@ -1,0 +1,182 @@
+{
+  "id": "dw_2013-03-16_the_ring_2",
+  "title": "The ring, ii",
+  "strip": "drift_wood",
+  "date": "2013-03-16",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Ring",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014)",
+  "logline": "Saturday. The ring drawn correctly. It took a week. The strip does it in one panel and moves on.",
+  "cast": [
+    "wood_34",
+    "chloe_34",
+    "barnaby"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The beach, March, a cold clear day. CHLOE and WOOD walking. BARNABY carried. Her hand, in a glove.",
+      "characters": [
+        {
+          "id": "chloe_34",
+          "pose": "walking, gloved",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "carrying the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "beach",
+        "clear light",
+        "glove"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman in a gray coat and gloves and a thin man carrying an old dog walking a cold clear March beach, clean ink with a pale wash",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "She takes the glove off to touch the dog's head. The ring. Drawn correctly: a plain band, a small stone. Exactly the size it is.",
+      "characters": [
+        {
+          "id": "chloe_34",
+          "pose": "glove off, hand on the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the ring, correct"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a woman's bare hand resting on an old dog's head, a plain ring with a small stone drawn at its true size, clean line",
+        "negative": "",
+        "notes": "The ring, finally, correct. One panel."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood, looking at it. Then at the water.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking at the water",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "It's a good ring."
+        },
+        {
+          "who": "CHLOE",
+          "text": "It's a ring."
+        },
+        {
+          "who": "WOOD",
+          "text": "Next summer?"
+        },
+        {
+          "who": "CHLOE",
+          "text": "July. The islands. You'll get a card. Come."
+        },
+        {
+          "who": "WOOD",
+          "text": "I'll get a card."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin man looking away at the water while speaking to a woman beside him on a beach",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "From behind. The three of them at the drift log. She sits on it. He doesn't. The dog between, on the sand.",
+      "characters": [
+        {
+          "id": "chloe_34",
+          "pose": "sitting on the drift log",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "standing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "on the sand",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "drift log",
+        "water"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman sitting on a bleached drift log and a thin man standing beside it seen from behind, an old dog on the sand between them, facing the water, clean ink with pale wash, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "The ring, drawn right. 'I'll get a card.' The drift log."
+}

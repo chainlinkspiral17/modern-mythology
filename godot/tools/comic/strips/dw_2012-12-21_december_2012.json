@@ -1,0 +1,163 @@
+{
+  "id": "dw_2012-12-21_december_2012",
+  "title": "December, 2012",
+  "strip": "drift_wood",
+  "date": "2012-12-21",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "December",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012–2014)",
+  "logline": "Does Chloe come home. She's in Portland. Wood drives the Legacy three hours to Portland. He gets as far as the Legacy allows.",
+  "cast": [
+    "wood_34",
+    "barnaby",
+    "gully_35"
+  ],
+  "location": "dw_101",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Highway 18 inland, December, rain, the Legacy. WOOD driving. BARNABY on a blanket in the passenger seat. A sign: PORTLAND 71.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "driving",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "on a blanket",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "Subaru",
+        "sign: PORTLAND 71",
+        "rain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old green Subaru wagon on an inland highway in December rain, a man driving, an old dog on a blanket in the passenger seat, a road sign reading PORTLAND 71, clean ink",
+        "negative": "",
+        "notes": "PORTLAND 71. Letter after."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The temperature gauge. Red. Steam from the hood, drawn exactly.",
+      "characters": [],
+      "props": [
+        "temperature gauge in the red",
+        "steam"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a dashboard temperature gauge in the red and steam rising from a car's hood, clean ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The shoulder. The Legacy, hood up. Wood on the guardrail with the dog on his lap. Rain. A phone — a flip phone, his first, drawn small — at his ear.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "on a guardrail with the dog, flip phone",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "on his lap",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "hood up",
+        "guardrail",
+        "flip phone"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Tuesday's. I know. I know it's Friday."
+        },
+        {
+          "who": "GULLY",
+          "text": "(phone) Where."
+        },
+        {
+          "who": "WOOD",
+          "text": "Seventy-one from Portland."
+        },
+        {
+          "who": "GULLY",
+          "text": "(phone) So forty from me. Sit tight."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man sitting on a highway guardrail in the rain with an old dog on his lap and a flip phone at his ear, an old Subaru with its hood up beside him",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Gully's flatbed arriving, the Legacy on its way up the ramp. Wood in the flatbed's cab with the dog. The sign in the rear window: PORTLAND 71, going away. The strip doesn't say what he'd have done at 0.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "winching the car",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "in the cab with the dog",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "flatbed",
+        "Legacy on the ramp",
+        "sign receding"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a flatbed truck on a rainy highway shoulder winching up an old Subaru, a man and a dog in the cab, a road sign receding in the rear window, clean ink, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "He tries to drive to her. The Legacy decides. Gully at forty miles. The strip never says what he'd have done in Portland."
+}
