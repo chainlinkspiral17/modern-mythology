@@ -1,0 +1,144 @@
+{
+  "id": "dw_2009-06-09_best_man_2",
+  "title": "Best man, ii",
+  "strip": "drift_wood",
+  "date": "2009-06-09",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Best Man",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Best Man · deepening)",
+  "logline": "Tuesday. The thrift store. A suit for nine dollars. It fits like a suit that cost nine dollars. The dog approves of the smell.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "A thrift store on main street. Racks. WOOD holding up a dark suit. BARNABY at the hem.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "holding up a suit",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "at the hem",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a suit",
+        "$9 tag"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a thin man holding up a dark suit on a hanger in a cluttered thrift store while a small dog sniffs its hem",
+        "negative": "",
+        "notes": "Tag: $9. Letter after."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The tag: $9. The sleeve: an inch short.",
+      "characters": [],
+      "props": [
+        "the tag",
+        "the sleeve"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, close-up of a nine-dollar price tag on a suit sleeve that is an inch too short",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood in it, in the store's mirror. The mirror's frame: the strip draws it like a panel border, so he's a strip inside the strip.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "in the suit, in a mirror",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the mirror as a panel"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a thin man wearing a slightly short dark suit reflected in a thrift-store mirror whose frame is drawn like a comic panel border",
+        "negative": "",
+        "notes": "The mirror as a panel border. He is a strip inside the strip."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "At the register. Nine dollars. The dog's nose in the suit's bag.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "paying",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "nose in the bag",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a bag"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "It smells like somebody's dad."
+        },
+        {
+          "who": "CLERK",
+          "text": "Everything here does."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a thin man paying at a thrift-store register while a small dog puts its nose into the suit bag",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; the Sundays the point now",
+    "palette": "limited; Sundays in watercolor",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "The nine-dollar suit (see dw_2009-09-12). 'It smells like somebody's dad.'"
+}

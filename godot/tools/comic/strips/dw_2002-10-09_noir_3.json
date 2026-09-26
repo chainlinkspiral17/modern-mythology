@@ -1,0 +1,142 @@
+{
+  "id": "dw_2002-10-09_noir_3",
+  "title": "Noir week, iii",
+  "strip": "drift_wood",
+  "date": "2002-10-09",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Noir Week",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Noir Week · deepening)",
+  "logline": "Wednesday. The bait shack as a waterfront dive. Gully as a bartender who doesn't have a name this week either. A drink that is coffee.",
+  "cast": [
+    "wood_20",
+    "gully_17"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack, lit low, drawn as a dive: a bar that is the bait counter, bottles that are bait jars. GULLY behind it in a white shirt with sleeves rolled, a towel on his shoulder. The TRENCH COAT on a stool.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "bartender, towel on his shoulder",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "trench coat on a stool",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "bait jars as bottles"
+      ],
+      "balloons": [],
+      "caption": "The kind of place where nobody asks your name because nobody's got one.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a bait shack drawn as a low-lit waterfront bar with bait jars as bottles, a young man in a rolled-sleeve white shirt with a towel on his shoulder behind the counter, a man in a trench coat on a stool, film-noir shadows",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Gully sliding a mug across. Coffee. The strip can't help it.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "sliding a mug",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a mug of coffee"
+      ],
+      "balloons": [],
+      "caption": "He poured me the usual. The usual was coffee. It was that kind of town.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, close-up of a hand sliding a coffee mug across a wooden counter in low light",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The two of them. Gully's mouth open — about to say something with a balloon — and no balloon. The caption covers it.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "mouth open, no balloon",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "He said something. I wasn't listening. I was listening to the rain, which had more to say.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a bartender with his mouth open mid-sentence and a man in a trench coat not listening, no speech balloons",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The trench coat leaving. Gully with the towel, looking at the door. Under the counter, where the dog would be: a shadow shaped like nothing.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "leaving",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "looking at the door",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a shadow under the counter"
+      ],
+      "balloons": [],
+      "caption": "I left a dollar. It was all I had. It was all it cost.",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a man in a trench coat leaving a low-lit bar as the bartender watches, a shadow shaped like nothing under the counter",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Gully as a nameless bartender. The coffee. The shadow under the counter."
+}

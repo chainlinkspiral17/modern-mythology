@@ -1,0 +1,124 @@
+{
+  "id": "dw_2018-03-13_the_unopened_letter_2",
+  "title": "The unopened letter, ii",
+  "strip": "drift_wood",
+  "date": "2018-03-13",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Unopened Letter",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Unopened Letter · deepening)",
+  "logline": "Tuesday. The pup sniffs the envelope. The logo, drawn as a blank shape, is the only thing in the strip that isn't drawn. The letter moves four inches across four panels; nobody touches it.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The drafting table. The envelope, its logo a blank shape. BARNABY II's nose approaching from the left edge.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "nose entering",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the envelope, blank logo"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a drafting table with an envelope bearing a blank shape where a logo would be, a small dog's nose entering from the left edge",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The nose at the envelope. A sniff. The envelope nudged an inch.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "sniffing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the envelope, nudged"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a small three-legged dog sniffing an envelope on a table and nudging it slightly",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD's hand entering from the right, reaching — then stopping, and picking up the mug beside it instead. The envelope nudged again by the mug.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "hand, picking up the mug instead",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the mug",
+        "the envelope"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man's hand reaching toward an envelope on a table and taking the coffee mug beside it instead, nudging the envelope",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The envelope four inches from where it began, unopened. The dog gone. The hand gone. The blank shape.",
+      "characters": [],
+      "props": [
+        "the envelope, moved, unopened"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, an envelope with a blank logo shape lying unopened on a drafting table four inches from a faint dust outline where it was, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Four inches in four panels. Never touched on purpose."
+}

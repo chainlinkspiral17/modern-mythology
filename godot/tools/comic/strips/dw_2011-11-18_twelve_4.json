@@ -1,0 +1,121 @@
+{
+  "id": "dw_2011-11-18_twelve_4",
+  "title": "Twelve, iv",
+  "strip": "drift_wood",
+  "date": "2011-11-18",
+  "run": 3,
+  "era": "era2",
+  "format": "daily3",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Twelve",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Twelve · deepening)",
+  "logline": "Friday. Morning. Wood off shift at seven, walking to Gully's to get the dog. The dog at the door already. Three wide panels: the walk, the door, the two of them going home slowly in the day.",
+  "cast": [
+    "wood_26",
+    "barnaby",
+    "gully_27"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Main street at 7 AM, gray. WOOD in the polo under a coat, walking. The Lanes' sign on the hill, S dark, the rest off for the day.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "walking, off shift",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the sign, S dark"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a wide panel of a thin man in a coat walking down a gray small-town street at dawn, a bowling-alley sign on a hill behind with one letter dark, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "wide",
+      "composition": "Gully's door. BARNABY already at it, inside, standing, waiting. GULLY opening it. The dog out before it's open.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "at the door, out",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "opening it",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "arriving",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the door"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a wide panel of a shack door being opened by a man in an apron as an old dog squeezes out toward a thin man arriving, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "wide",
+      "composition": "The two of them going home up the street, slowly, in full day, the man matching the dog. The panel wider than any daily before it.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "matching the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "slow",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the street"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, an extra-wide panel of a thin man and an old dog walking slowly up a small-town street in morning light, matching each other's pace, no words",
+        "negative": "",
+        "notes": "Draw this panel wider than the other two. The widest daily panel of Run 3."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; the Sundays the point now",
+    "palette": "limited; Sundays in watercolor",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "Off shift at seven. The dog at the door. The widest panel."
+}

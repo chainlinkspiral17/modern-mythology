@@ -1,0 +1,174 @@
+{
+  "id": "dw_2004-03-13_the_garage_5",
+  "title": "The garage, v",
+  "strip": "drift_wood",
+  "date": "2004-03-13",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (newspaper cadence: six dailies + a Sunday)",
+  "arc": "The Garage",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Garage · deepening)",
+  "logline": "Saturday. Gully finds the place. Brings a plant. The plant dies by June; the strip never mentions it again. The tavern's back door, the garage's door, six feet apart.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The alley behind the tavern. GULLY in the apron with a potted plant, looking at two doors six feet apart: the tavern's back door with a bare bulb, and the garage's.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "with a plant, choosing a door",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "two doors",
+        "a plant"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a man in an apron holding a potted plant in an alley looking between a tavern's back door with a bare bulb and a garage's door six feet away",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Gully in the garage doorway. WOOD at the table. BARNABY greeting the plant.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "in the doorway",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "greeting the plant",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the plant"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "You live behind a bar."
+        },
+        {
+          "who": "WOOD",
+          "text": "I live behind a garage door. The bar's a coincidence."
+        },
+        {
+          "who": "GULLY",
+          "text": "It's six feet."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a man in an apron standing in a garage doorway holding a plant, a thin man at a drafting table, a small dog sniffing the plant",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully setting the plant on the sill beside the jar. Looking at the corkboard. Finding himself on it — the 1998 flyer.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "looking at the corkboard",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the plant on the sill",
+        "the 1998 flyer"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "That's my uncle's flyer."
+        },
+        {
+          "who": "WOOD",
+          "text": "That's my flyer. Your uncle paid twenty."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a man in an apron setting a plant on a windowsill beside a jar and noticing an old flyer on a corkboard",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The garage, whole, for the first time: the table, the sill with a jar and a plant, the corkboard, the dog, the two men, the jukebox shape faint in the wall. Home, unnamed.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "everything"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a wide view of a garage studio with a drafting table, a windowsill holding a jar and a plant, a crowded corkboard, a small dog and two men, a faint jukebox shape in the plaster wall, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy early-digital flats begin",
+    "palette": "limited, muddy; Sundays in over-wet watercolor",
+    "paper": "bristol, scanned; the browser"
+  },
+  "notes": "Gully finds it. 'It's six feet.' The plant dies by June, unmentioned."
+}

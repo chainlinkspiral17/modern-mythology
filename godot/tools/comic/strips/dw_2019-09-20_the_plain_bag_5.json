@@ -1,0 +1,128 @@
+{
+  "id": "dw_2019-09-20_the_plain_bag_5",
+  "title": "The plain bag, v",
+  "strip": "drift_wood",
+  "date": "2019-09-20",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Plain Bag",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Plain Bag · deepening)",
+  "logline": "Friday. The plain sack on the garage floor, the pup's head in it. Four panels of a dog eating from a bag with nothing on it. The strip's answer to a license: a paper sack.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage floor. The plain paper sack, open. BARNABY II approaching.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "approaching the sack",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the plain sack"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a plain brown paper sack open on a garage floor with a small three-legged dog approaching, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Head in the sack. The sack rustling.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "head in the sack",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the sack"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "rustle",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a small three-legged dog with its whole head inside a paper sack on a floor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Head out. Chewing. Sack tipped. Kibble on the concrete.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "chewing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "kibble on the floor"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a small dog chewing beside a tipped paper sack with kibble scattered on concrete, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The sack, flat, empty, plain. The dog asleep against it. Nothing printed anywhere in the panel. Nothing needs to be.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "asleep against the sack",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the flat plain sack"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a small three-legged dog asleep against a flattened plain paper sack on a garage floor, nothing printed anywhere, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Wordless. A dog and a sack with nothing on it."
+}

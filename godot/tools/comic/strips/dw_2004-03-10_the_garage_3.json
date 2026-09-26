@@ -1,0 +1,127 @@
+{
+  "id": "dw_2004-03-10_the_garage_3",
+  "title": "The garage, iii",
+  "strip": "drift_wood",
+  "date": "2004-03-10",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (newspaper cadence: six dailies + a Sunday)",
+  "arc": "The Garage",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Garage · deepening)",
+  "logline": "Wednesday. The corkboard rehung. Six years of pins, moved in one piece. One thing falls off in transit: the yearbook photo. He pins it back, lower.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "WOOD carrying the corkboard in through the garage door, whole, everything still pinned. BARNABY underfoot.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "carrying the corkboard",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "underfoot",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the corkboard, loaded"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a man carrying a large corkboard covered in pinned papers through a garage door with a small dog underfoot",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "One item sliding off the bottom edge: the yearbook photo. MOST LIKELY TO WIN A PULITZER. Face down on the concrete.",
+      "characters": [],
+      "props": [
+        "the yearbook photo, face down"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, close-up of a small yearbook photo sliding off a corkboard's edge and landing face down on a concrete floor",
+        "negative": "",
+        "notes": "The 1998 photo (objects.md corkboard). The caption text is not visible; it's face down."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The corkboard on the garage wall. Wood picking up the photo. Looking at it. The dog looking at him.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "picking up the photo",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the photo"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a man picking up a small photo from a garage floor beneath a newly hung corkboard while a dog watches",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "close",
+      "composition": "The photo pinned back — at the bottom corner, lowest of everything. Where it can't fall far.",
+      "characters": [],
+      "props": [
+        "the photo, pinned low"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, close-up of a corkboard's bottom corner with a small yearbook photo pinned there beneath everything else, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy early-digital flats begin",
+    "palette": "limited, muddy; Sundays in over-wet watercolor",
+    "paper": "bristol, scanned; the browser"
+  },
+  "notes": "The Pulitzer photo falls. Pinned back, lowest."
+}

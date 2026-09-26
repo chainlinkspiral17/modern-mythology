@@ -1,0 +1,161 @@
+{
+  "id": "dw_2001-10-15_lot_c_5",
+  "title": "Lot C, v",
+  "strip": "drift_wood",
+  "date": "2001-10-15",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Lot C",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Lot C · deepening)",
+  "logline": "Monday. A space opens in Lot B. The guard holds it. Wood drives past it into C. The guard nods, and tears the ticket he'd already written.",
+  "cast": [
+    "wood_20",
+    "security_guard"
+  ],
+  "location": "dw_newport_lot",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Lot B. The GUARD standing in an open space near the building, waving the Datsun in.",
+      "characters": [
+        {
+          "id": "security_guard",
+          "pose": "waving into a space",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "an open space in B"
+      ],
+      "balloons": [
+        {
+          "who": "GUARD",
+          "text": "Here! B! I held it!"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a security guard standing in an open parking space near a building waving a rusted small car toward it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The Datsun driving past. Slowly. Wood's face: apologetic, certain.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "driving past, apologetic",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a rusted small car driving slowly past a waving guard, the young driver's face apologetic and certain, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The car in Lot C, far corner. The guard, small, in B, looking at it. Then tearing something off the clipboard.",
+      "characters": [
+        {
+          "id": "security_guard",
+          "pose": "tearing a ticket",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "in C",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a torn ticket"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a car parked alone in a far lot while a small distant guard tears a page off his clipboard, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The guard at the window one last time.",
+      "characters": [
+        {
+          "id": "security_guard",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GUARD",
+          "text": "Wrote you up Thursday. Loitering."
+        },
+        {
+          "who": "WOOD",
+          "text": "And?"
+        },
+        {
+          "who": "GUARD",
+          "text": "Tore it. You're not loitering. You're — what was it."
+        },
+        {
+          "who": "WOOD",
+          "text": "Auditing."
+        },
+        {
+          "who": "GUARD",
+          "text": "Right."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen black-and-white, xerox grain, a guard at a car window speaking to a young man, a torn ticket in his hand",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The space in B, refused. The ticket torn. The arc ends."
+}

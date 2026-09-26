@@ -1,0 +1,125 @@
+{
+  "id": "dw_2009-06-10_best_man_3",
+  "title": "Best man, iii",
+  "strip": "drift_wood",
+  "date": "2009-06-10",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Best Man",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Best Man · deepening)",
+  "logline": "Wednesday. The speech. Drafted on napkins at Gully's counter while Gully is out on the water. Fourteen napkins. Thirteen in the bait cooler.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's, empty, Gully on the water. WOOD at the counter with a stack of napkins and a pen. BARNABY under the stool.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "writing on napkins",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "napkins",
+        "pen"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a thin man alone at a bait-shop counter writing on a stack of paper napkins with a pen, a dog under the stool",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "A napkin: 'Gully is —' crossed out. 'Gully has always —' crossed out. 'When Gully —' crossed out.",
+      "characters": [],
+      "props": [
+        "a napkin of crossed-out starts"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, close-up of a paper napkin covered in crossed-out handwritten sentence beginnings",
+        "negative": "",
+        "notes": "Letter after: three crossed-out starts."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Thirteen napkins going into the bait cooler, under the crawlers. Wood's face: relief.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "hiding napkins in the cooler",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the bait cooler",
+        "thirteen napkins"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a thin man pushing a wad of crumpled napkins into a bait cooler beneath tubs of nightcrawlers, relieved",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "One napkin, folded, in the suit's breast pocket — the suit on a hanger on the corkboard's pin. On the napkin, visible: one line. The strip doesn't show it.",
+      "characters": [],
+      "props": [
+        "the suit on the corkboard",
+        "one napkin in the pocket"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a dark suit hanging from a corkboard pin with one folded napkin in its breast pocket, no words",
+        "negative": "",
+        "notes": "The line is reserved. The speech is cut Friday anyway."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; the Sundays the point now",
+    "palette": "limited; Sundays in watercolor",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "Fourteen napkins. Thirteen under the crawlers."
+}

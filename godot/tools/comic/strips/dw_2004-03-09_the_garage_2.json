@@ -1,0 +1,130 @@
+{
+  "id": "dw_2004-03-09_the_garage_2",
+  "title": "The garage, ii",
+  "strip": "drift_wood",
+  "date": "2004-03-09",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (newspaper cadence: six dailies + a Sunday)",
+  "arc": "The Garage",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Garage · deepening)",
+  "logline": "Tuesday. The tavern in front. The jukebox through the wall, drawn as a shape in the plaster. The dog listens to it. Wood draws to it. Nobody names the song or the tavern.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage, night. The wall shared with the tavern. Through it: a jukebox, drawn as a wobbling shape in the plaster, music lines coming off it. BARNABY with his ear to the wall.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "ear to the wall",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the wall",
+        "the jukebox shape"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a garage studio at night where a jukebox is drawn as a wobbling shape inside the shared plaster wall with music lines coming off it, a small dog with its ear pressed to the wall",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD at the drafting table, drawing in time with it. His pen hand bouncing.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing, hand bouncing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "drafting table"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a man at a drafting table drawing with his pen hand bouncing to unseen music",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The table. One leg short. A wobble line. The coffee ripples.",
+      "characters": [],
+      "props": [
+        "the uneven table",
+        "rippling coffee"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, close-up of a drafting table with one short leg wobbling and coffee rippling in a mug",
+        "negative": "",
+        "notes": "The uneven table, day two. The 2007 letter fixes it."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The music stops. Wood and the dog both look at the wall. The wall is a wall.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "looking at the wall",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "looking at the wall",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the wall, plain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a man and a small dog both looking at a blank plaster wall in sudden silence, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy early-digital flats begin",
+    "palette": "limited, muddy; Sundays in over-wet watercolor",
+    "paper": "bristol, scanned; the browser"
+  },
+  "notes": "The jukebox in the plaster. The table wobbles. The tavern unnamed."
+}

@@ -1,0 +1,119 @@
+{
+  "id": "dw_2011-11-16_twelve_2",
+  "title": "Twelve, ii",
+  "strip": "drift_wood",
+  "date": "2011-11-16",
+  "run": 3,
+  "era": "era2",
+  "format": "daily3",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Twelve",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Twelve · deepening)",
+  "logline": "Wednesday. The walk to the beach, three panels wide. The dog makes it to the stairs' top and looks down. That's the walk now.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Three panels, each wider than a daily's usual. The alley to the beach road. WOOD and BARNABY, twelve, slow.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "slow",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "twelve, slow",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the alley"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a wide panel of a thin man and an old dog walking slowly down an alley toward a beach road, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "wide",
+      "composition": "The top of the bluff stairs. The dog stopping. Looking down at the beach. Wood beside him, looking too.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "at the top, looking down",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the stairs",
+        "the beach below"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a wide panel of an old dog and a thin man at the top of wooden bluff stairs looking down at a beach, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "wide",
+      "composition": "The two of them turning back. The beach unvisited. The strip fine with it.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "turning back",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a wide panel of a thin man and an old dog turning back from the top of a stairway, the beach below unvisited, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; the Sundays the point now",
+    "palette": "limited; Sundays in watercolor",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "Three wide panels. The stairs' top is the beach now."
+}

@@ -1,0 +1,149 @@
+{
+  "id": "dw_2020-12-23_the_last_ordinary_week_3",
+  "title": "The last ordinary week, iii",
+  "strip": "drift_wood",
+  "date": "2020-12-23",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Last Ordinary Week",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Last Ordinary Week · deepening)",
+  "logline": "Wednesday. The pup on the beach. A stick. He brings it back. Wood throws it. He brings it back. Four panels, one stick. The last dog-and-stick strip in the run.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The beach, December, gray. BARNABY II with a stick, delivering it. WOOD.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "with a stick",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a stick"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a small three-legged dog delivering a stick to a thin man on a gray December beach",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The throw. The stick in the air. The dog already going.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "throwing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "going",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the stick in the air"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man throwing a stick along a beach with a small three-legged dog already running after it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The stick delivered again. Wet now.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "delivering",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the wet stick"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a small dog delivering a wet stick to a man's hand on a beach",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The throw again. The same stick. The same dog. The same man. The strip could do this forever and has four days.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "throwing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "going",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the stick"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man throwing the same stick along the same beach as a small three-legged dog runs after it again, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "One stick, four panels. The last stick."
+}

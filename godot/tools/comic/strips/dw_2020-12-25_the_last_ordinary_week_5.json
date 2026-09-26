@@ -1,0 +1,166 @@
+{
+  "id": "dw_2020-12-25_the_last_ordinary_week_5",
+  "title": "The last ordinary week, v",
+  "strip": "drift_wood",
+  "date": "2020-12-25",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Last Ordinary Week",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (The Last Ordinary Week · deepening)",
+  "logline": "Friday. Christmas. Gully's dock, the family, the pup, the chair. Wood on the steps. The same as every year, which is the point, which the strip does not say.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "extra_maria",
+    "extra_gully_kid",
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The dock, Christmas, gray day, string lights on anyway. GULLY, MARIA in the chair, the kids — ten and seven — on the dock. WOOD on the steps. BARNABY II.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_maria",
+          "pose": "the chair",
+          "expression": ""
+        },
+        {
+          "id": "extra_gully_kid",
+          "pose": "ten and seven",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "steps",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "string lights",
+        "the chair"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a dock on a gray Christmas day with string lights on, a family with two children, a woman in an old lawn chair, a thin man on shack steps and a small three-legged dog",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The girl, ten, showing Wood a drawing: a crab, eight legs, better than his. He looks at it a long time.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "showing a drawing",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "looking",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a crab drawing"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a ten-year-old girl showing a thin man a drawing of a crab which he studies for a long moment",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully with two coffees. Handing one down to the steps. The minute.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "handing a coffee down",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "two coffees"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Regular."
+        },
+        {
+          "who": "WOOD",
+          "text": "Regular."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a stocky man handing a coffee down to a thin man sitting on shack steps",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The dock from the water. The lights. Everyone. The chair. The steps. The pup at the dock's end. Two days left in the strip; the strip doesn't know, and looks like it always looks.",
+      "characters": [],
+      "props": [
+        "the dock from the water"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a lit dock on a gray day seen from the water with a family, a man on shack steps, an old lawn chair and a small dog at the dock's end, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Christmas on the dock, the same as always. 'Regular.'"
+}

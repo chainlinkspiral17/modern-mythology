@@ -1,0 +1,150 @@
+{
+  "id": "dw_2011-05-17_let_go_2",
+  "title": "Let go, ii",
+  "strip": "drift_wood",
+  "date": "2011-05-17",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Let Go",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Let Go · deepening)",
+  "logline": "Tuesday. The week's orders. A stranger's diploma. A kid's drawing (a father; the same one? the strip won't say). Wood cuts them all the way he'd cut them in 2001. Nobody frames anything they'd have brought in 2001.",
+  "cast": [
+    "wood_26",
+    "extra_owner_heceta"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The counter. A CUSTOMER with a diploma. WOOD taking it.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a diploma"
+      ],
+      "balloons": [
+        {
+          "who": "CUSTOMER",
+          "text": "Cheapest that doesn't look cheap."
+        },
+        {
+          "who": "WOOD",
+          "text": "Black. No mat."
+        },
+        {
+          "who": "CUSTOMER",
+          "text": "...That's it?"
+        },
+        {
+          "who": "WOOD",
+          "text": "That's the one."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a customer handing a diploma across a frame-shop counter to a thin man",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "A FATHER in a mill jacket. A crayon drawing. He sets it down and steps back and says nothing. Wood looks at him one beat longer than the job needs.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "looking at the father",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a crayon drawing",
+        "a mill jacket"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a man in a faded mill jacket setting a child's crayon drawing on a counter and stepping back in silence, a thin man looking at him a beat too long, no words",
+        "negative": "",
+        "notes": "Rhymes with dw_2001-02-05. Whether it's the same man is reserved."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood cutting the mat for the drawing. Red frame. No mat, actually — he takes the mat back out. The kids' rule.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "cutting, then not",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a red frame"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, close-up of a thin man's hands setting aside a cut mat and fitting a child's drawing into a red frame with no mat",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The father taking it. One nod. Gone. The Owner, from the back, watching Wood watch the door.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "watching the door",
+          "expression": ""
+        },
+        {
+          "id": "extra_owner_heceta",
+          "pose": "watching Wood",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flat color, a thin man watching a frame-shop door close while an older woman at the back watches him, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; the Sundays the point now",
+    "palette": "limited; Sundays in watercolor",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "The father in the mill jacket, again or not. Red frame, no mat."
+}
