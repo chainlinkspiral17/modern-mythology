@@ -1,0 +1,163 @@
+{
+  "id": "dw_2003-02-14_crab_derby_2003",
+  "title": "The Crab Derby, 2003",
+  "strip": "drift_wood",
+  "date": "2003-02-14",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2002–2003)",
+  "logline": "Nineteenth annual. Two crabs again. And for the first time, a cup of coffee drawn on the flyer.",
+  "cast": [
+    "wood_20",
+    "gully_17"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack. The twenty. The counter. GULLY. WOOD drawing.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "twenty out",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "twenty",
+        "flyer in progress",
+        "the machine behind"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Nineteen. Two crabs."
+        },
+        {
+          "who": "WOOD",
+          "text": "Two crabs and a cup."
+        },
+        {
+          "who": "GULLY",
+          "text": "...A cup."
+        },
+        {
+          "who": "WOOD",
+          "text": "You're a coffee place now. The flyer should know."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man drawing a crab flyer on a shack counter with a chrome espresso machine behind him, a friend in an apron holding out a twenty, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The flyer: the two crabs, and between them a steaming cup, drawn with the same absurd care as the crabs.",
+      "characters": [],
+      "props": [
+        "flyer with two crabs and a cup"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a hand-drawn flyer showing two meticulously hatched crabs with a steaming coffee cup drawn between them",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully, looking at it a long time.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "looking at the flyer",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "The cup's good."
+        },
+        {
+          "who": "WOOD",
+          "text": "The cup's fine."
+        },
+        {
+          "who": "GULLY",
+          "text": "The cup's better than the crabs."
+        },
+        {
+          "who": "WOOD",
+          "text": "Don't."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man in an apron studying a flyer closely and looking pleased",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Six flyers. The sixth has a cup. Gully pinning it. The machine gleaming behind.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "pinning",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "six flyers",
+        "espresso machine"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "six crab flyers in a row on a shingle wall, the newest with a coffee cup between its crabs, a chrome espresso machine gleaming inside the doorway, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": ""
+}

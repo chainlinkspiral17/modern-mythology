@@ -1,0 +1,194 @@
+{
+  "id": "dw_2002-11-08_espresso_machine",
+  "title": "The espresso machine",
+  "strip": "drift_wood",
+  "date": "2002-11-08",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Espresso Machine",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2002–2003)",
+  "logline": "A two-group machine arrives on a flatbed. Gully bought it with the shack money. He knows nothing about coffee.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby",
+    "extra_delivery"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The boat launch. A flatbed truck. A DELIVERY MAN and GULLY lowering a chrome two-group espresso machine the size of an engine block onto the dock. WOOD and BARNABY watching.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "lowering a machine",
+          "expression": ""
+        },
+        {
+          "id": "extra_delivery",
+          "pose": "other end",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "watching",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "watching",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "flatbed",
+        "chrome espresso machine",
+        "dock"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "That's an espresso machine."
+        },
+        {
+          "who": "GULLY",
+          "text": "Two-group. Indestructible. Guy in Eugene went under."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two men lowering a huge chrome two-group espresso machine off a flatbed truck onto a wooden dock at a boat launch, a young man and a small dog watching, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "You sell bait."
+        },
+        {
+          "who": "GULLY",
+          "text": "I'll sell bait and coffee."
+        },
+        {
+          "who": "WOOD",
+          "text": "Do you know anything about coffee."
+        },
+        {
+          "who": "GULLY",
+          "text": "I know people want it."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a young man asking skeptical questions on a dock",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The machine inside the shack, on the counter, between the bait cooler and the register. Absurd. Gleaming. Gully's hand on it.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "hand on the machine",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "espresso machine",
+        "bait cooler",
+        "register"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a gleaming chrome espresso machine sitting on a shack counter between a bait cooler and an old register, a young man's hand resting on it proudly",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Gully pulling the first shot. Steam. Wood holding the cup. Tasting. The dog. A long beat.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "pulling a shot, steam",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "tasting",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "cup",
+        "steam"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "...That's actually—"
+        },
+        {
+          "who": "GULLY",
+          "text": "Yeah."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man in a fisherman's apron pulling an espresso shot on a chrome machine in a shack while another young man tastes from a small cup with surprise, a small dog watching",
+        "negative": "",
+        "notes": "Echo of #3: '...That's actually—' 'Yeah.'"
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The machine comes first; the shop is named next summer. '...That's actually—' 'Yeah.' rhymes with 1997."
+}

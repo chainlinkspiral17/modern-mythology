@@ -1,0 +1,144 @@
+{
+  "id": "dw_2003-09-12_anniversary_six_unprinted",
+  "title": "Six years (unprinted)",
+  "strip": "drift_wood",
+  "date": "2003-09-12",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Unprinted Year",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2002–2003)",
+  "logline": "Six years. Five a week for nobody. The Anniversary strip nobody printed. It has corn in it anyway.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Wood's bedroom. The table. A stack of strips, thick, unstapled — a summer's worth. A tray of corn on top of it, like a paperweight. WOOD drawing. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a thick stack of unprinted strips",
+        "a tray of corn on top"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man drawing at a bedroom table beside a thick loose stack of comic strips weighed down by a paper tray of corn, a small dog under the table, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The stack. Dated in the margins. June, July, August. None stapled. None copied.",
+      "characters": [],
+      "props": [
+        "the stack with dated margins"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a thick stack of hand-drawn comic strips with dates in the margins, none stapled, edges uneven",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, to the dog, drawing.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Six years. Nobody's printing it. I'm still doing five a week. That's either discipline or a diagnosis."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man talking to a small dog while drawing at his table",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The stack, the corn, the dog, the man at the long surface. #1's last panel for the sixth time. Nobody will see this one.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "at the table, back turned",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "stack",
+        "corn",
+        "table"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wide quiet view of a young man at a long table with his back turned, a stack of strips and a tray of corn beside him, a dog underneath, black and white, no words",
+        "negative": "",
+        "notes": "Box 5. The divider before this strip in the book reads: Box 5 is full. None of it ran."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "From the unprinted year. Chosen to show the fixtures continued for nobody."
+}

@@ -1,0 +1,179 @@
+{
+  "id": "dw_2003-03-14_grunion_vi",
+  "title": "The Grunion Run, vi",
+  "strip": "drift_wood",
+  "date": "2003-03-14",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Grunion Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2002–2003)",
+  "logline": "Sixth year. Gully brings the machine's thermos. The whole beach drinks his coffee. Wood watches the town find him.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The beach, lanterns, the run. GULLY with a giant thermos and paper cups, a line of townspeople forming. WOOD and BARNABY at the edge, watching the line, not the fish.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "pouring coffee for a line of people",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "watching the line",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "thermos",
+        "paper cups",
+        "a line of townspeople",
+        "lanterns",
+        "fish"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a night beach festival with lanterns, a young man in a backwards cap pouring coffee from a huge thermos for a line of townspeople in rain jackets, another young man watching the line with a small dog, silver fish in the surf beyond, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood, to the dog.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Look at that. Six years I've been drawing this beach and he walks onto it with a thermos and it's his."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a young man speaking to a small dog while watching something off-panel with an unreadable expression, lantern light",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Gully, handing a cup to an old woman. Her face. She knows him. Everyone knows him.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "handing a cup",
+          "expression": ""
+        },
+        {
+          "id": "extra_old_woman",
+          "pose": "taking it, knowing him",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "cup"
+      ],
+      "balloons": [
+        {
+          "who": "OLD WOMAN",
+          "text": "Your uncle'd have liked this."
+        },
+        {
+          "who": "GULLY",
+          "text": "He'd have said it was too hot."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man handing a paper cup of coffee to an old woman in a rain hood who looks at him with recognition, lanterns",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Silent. The fish. The line for coffee longer than the line for fish. Wood not drawing. Looking at Gully. The pad closed.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "pad closed, watching Gully",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "pouring, small",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "line",
+        "thermos",
+        "fish",
+        "lanterns"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "silent wide night panel of a beach where a line of people for coffee is longer than the line at the surf, a young man with a closed drawing pad watching his friend pour, small dog, silver fish, lanterns, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The town finds Gully. Wood watches it happen and closes the pad."
+}

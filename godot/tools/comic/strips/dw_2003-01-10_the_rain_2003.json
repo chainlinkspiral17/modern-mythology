@@ -1,0 +1,149 @@
+{
+  "id": "dw_2003-01-10_the_rain_2003",
+  "title": "The Rain, 2003",
+  "strip": "drift_wood",
+  "date": "2003-01-10",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Rain",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2002–2003)",
+  "logline": "Sixth January. The espresso machine steaming in the rain. Silent. Warm.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The shack in January rain, the door open, the machine's steam curling out into the wet. GULLY inside at the machine. WOOD and BARNABY under the eave in the chair.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "at the machine, inside",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "in the chair under the eave",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "on his lap",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "steam",
+        "open door",
+        "rain",
+        "the chair"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a shingle shack in dense January rain with its door open and espresso steam curling out into the wet air, a young man inside at a chrome machine, another in a lawn chair under the eave with a small dog on his lap, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "A small cup handed out the door into the rain.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "hand with a cup",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "hand taking it",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "cup",
+        "steam"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a small steaming cup handed out through a doorway into rain, one hand giving, one taking, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "wide",
+      "composition": "Wood in the chair with the cup. The dog. The rain. Gully in the doorway with his own.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "cup, chair",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "doorway, cup",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man in a lawn chair under a shack's eave holding a small cup, a dog on his lap, another young man in the doorway with his own cup, rain beyond, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Same. Held. The steam and the rain the same shade of nothing.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same shack eave in rain, two figures with small cups and a dog, steam and rain indistinguishable, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": ""
+}

@@ -1,0 +1,196 @@
+{
+  "id": "dw_2002-12-20_on_the_dock",
+  "title": "December, on the dock",
+  "strip": "drift_wood",
+  "date": "2002-12-20",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "December",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2002–2003)",
+  "logline": "Does Chloe come home. She does. One strip. The dock. They don't talk about it.",
+  "cast": [
+    "wood_20",
+    "chloe_17",
+    "barnaby"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Gully's dock, December dusk, the chair under the eave. CHLOE at the end of the dock — here, real, older, a city coat. WOOD arriving with BARNABY. The dog gets there first.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "at the dock end, city coat",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "arriving",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "running to her",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "dock",
+        "chair under eave",
+        "dusk"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young woman in a city coat standing at the end of a wooden dock at winter dusk, a small dog running to her, a young man in a chore coat arriving behind, brush-pen black and white",
+        "negative": "",
+        "notes": "Chloe at 21 — draw her older than the 1999 model: shorter hair, a real coat. Same eyeliner."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The two of them sitting. Feet over the water. The dog between.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "sitting",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "sitting",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "between",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "Three days. My mother's sick of me already."
+        },
+        {
+          "who": "WOOD",
+          "text": "How's Europe."
+        },
+        {
+          "who": "CHLOE",
+          "text": "Over. How's the strip."
+        },
+        {
+          "who": "WOOD",
+          "text": "Daily."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young woman and a young man sitting at the end of a dock with a small dog between them, feet over dark water",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Chloe, looking at the shack's new sign, hand-painted, half done: GULLY'S T—",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "looking at the shack",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a half-painted sign: GULLY'S T—"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "He's naming it."
+        },
+        {
+          "who": "WOOD",
+          "text": "He's naming it."
+        },
+        {
+          "who": "CHLOE",
+          "text": "And you're not going anywhere."
+        },
+        {
+          "who": "WOOD",
+          "text": "I have a job and a dog."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young woman looking back at a shingle shack with a half-painted hand-lettered sign, dusk",
+        "negative": "",
+        "notes": "Sign: GULLY'S T— (unfinished). Letter after."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The three of them at the dock's end, from behind, small. Dusk. That's the whole visit. The strip gives it one strip.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "from behind",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "from behind",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "dock",
+        "water",
+        "dusk"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two young people and a small dog seen from behind sitting at the end of a dock at dusk over dark water, small in the frame, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "She comes home. One strip. From behind. The strip is learning restraint from the dock."
+}

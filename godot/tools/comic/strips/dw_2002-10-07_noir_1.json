@@ -1,0 +1,134 @@
+{
+  "id": "dw_2002-10-07_noir_1",
+  "title": "Noir week, i",
+  "strip": "drift_wood",
+  "date": "2002-10-07",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Noir Week",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2002–2003)",
+  "logline": "The strip tries being SLASH for a week. Trench coat. Neon. Played straight. Unsigned.",
+  "cast": [
+    "wood_20"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "none",
+    "note": "No mark. Unsigned all week."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "SMALL WOOD LANES at night, but drawn as noir: the neon a slab of white, the rain a curtain, the lot a black mirror. A figure in a trench coat under the sign. It is WOOD, drawn as someone else.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "trench coat, hat brim down",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "neon slab",
+        "rain curtain",
+        "black lot"
+      ],
+      "balloons": [],
+      "caption": "The rain had been falling on Small Wood for eleven years. Nobody had thought to ask it why.",
+      "sfx": "",
+      "image": {
+        "prompt": "a bowling alley at night drawn in hard-boiled noir style, the neon sign a slab of white light, rain a solid curtain, the parking lot a black mirror, a figure in a trench coat and hat under the sign, brush-pen black and white, no gray",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The trench coat. A cigarette he doesn't smoke, unlit. The brim.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "cigarette unlit",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "unlit cigarette",
+        "hat brim"
+      ],
+      "balloons": [],
+      "caption": "He didn't smoke. He carried one for the shape of it.",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a man in a fedora and trench coat with an unlit cigarette, hard noir shadows",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The dumpster, but noir: chain-link, the bulb, a shadow that could be a body and is a crab pot.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "approaching",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "dumpster",
+        "chain-link",
+        "a crab-pot shadow"
+      ],
+      "balloons": [],
+      "caption": "Behind the Lanes, something was waiting. It was a crab pot. It was always a crab pot.",
+      "sfx": "",
+      "image": {
+        "prompt": "a noir alley behind a bowling alley with a chain-link fence, a bare bulb and a menacing shadow that is clearly a crab pot",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The figure walking away into rain. No dog. The absence of the dog is the strangest thing in the strip.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "walking away",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "rain",
+        "alley"
+      ],
+      "balloons": [],
+      "caption": "He walked. The rain followed. Neither had anywhere else to be.",
+      "sfx": "",
+      "image": {
+        "prompt": "a trench-coated figure walking away down a rain-curtained alley at night, noir, no dog anywhere, black and white",
+        "negative": "",
+        "notes": "No dog. The noir has no room for him. Readers noticed."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Noir Week, day one. Captions instead of balloons. Played entirely straight. The dog is absent for the only week of his life."
+}

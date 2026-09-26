@@ -1,0 +1,166 @@
+{
+  "id": "dw_2003-07-04_the_fourth_2003",
+  "title": "The Fourth, 2003",
+  "strip": "drift_wood",
+  "date": "2003-07-04",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Fourth on the Bay",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2002–2003)",
+  "logline": "Gully's first Fourth as a shop. The dock is full. Wood gives up his spot on the edge.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The dock, night, fireworks white on black — and full of people for the first time: townspeople with paper cups, on the dock, on the shack's steps. GULLY at the door pouring. WOOD on the steps with BARNABY, not at the edge.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "pouring at the door",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "on the steps",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "fireworks",
+        "crowd on the dock",
+        "paper cups"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "POM",
+      "image": {
+        "prompt": "a wooden dock at night crowded with townspeople holding paper cups under white fireworks, a young man in an apron pouring coffee at a shack's door, another young man sitting on the steps with a small dog, high-contrast black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood, looking at the edge of the dock where he used to sit. Two kids sitting there.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "looking at the dock edge",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "two kids on the edge"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a young man looking toward the end of a crowded dock where two children sit with their feet over the water",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully, sitting down beside him on the steps for one minute. The lawn chair under the eave, empty as ever.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "sitting beside him",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lawn chair, empty"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Lost your spot."
+        },
+        {
+          "who": "WOOD",
+          "text": "It was never my spot. It was the dock's."
+        },
+        {
+          "who": "GULLY",
+          "text": "Deep."
+        },
+        {
+          "who": "WOOD",
+          "text": "Shut up."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two young men sitting side by side on shack steps at night with a small dog, an empty lawn chair beside them, fireworks light on their faces",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The finale. The full dock. The chair. The two on the steps. The fireworks not red.",
+      "characters": [],
+      "props": [
+        "finale",
+        "crowded dock",
+        "chair",
+        "steps"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wide fireworks finale over a bay in white on black, a crowded dock, a shack with two figures on its steps and an empty lawn chair, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": ""
+}
