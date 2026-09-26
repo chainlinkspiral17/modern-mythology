@@ -1,0 +1,57 @@
+{
+  "id": "ro_2025-07-13_the_bird_on_the_sign",
+  "title": "The bird on the sign",
+  "strip": "roflcopter",
+  "date": "2025-07-13",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Bird",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xi)",
+  "logline": "The tavern's sign from the front, the name on it, and the bird sitting on the sign's face over one of the letters. The name is reserved; the page draws the bird over the letter that would settle it.",
+  "cast": [
+    "the_bird"
+  ],
+  "location": "dw_tavern",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The tavern's front sign in July light, hand-painted lettering across it, the small rainbow bird perched on the sign's face covering one letter, the door below.",
+      "characters": [
+        {
+          "id": "the_bird",
+          "pose": "on the sign, over a letter",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the sign"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a tavern's hand-painted front sign in July light with a small rainbow bird perched on its face covering one of the letters, the door below, lettering not legible",
+        "negative": "",
+        "notes": "The name: reserved. The bird sits on the letter that would tell."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Over the letter that would tell.",
+  "layout": "single page, no borders"
+}

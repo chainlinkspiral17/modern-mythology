@@ -1,0 +1,61 @@
+{
+  "id": "ro_2023-05-21_the_bird_at_last_bell",
+  "title": "The bird at Last Bell",
+  "strip": "roflcopter",
+  "date": "2023-05-21",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Bird",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xi)",
+  "logline": "The school steps at 3:05 with the bell drawn and the students pouring past, and the bird on the handrail, unmoved, in the crowd's wake. One girl looks. The page doesn't say what she sees.",
+  "cast": [
+    "the_bird",
+    "extra_student"
+  ],
+  "location": "dw_school_front",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The school's front steps at the last bell with students pouring down them past the small rainbow bird perched on the metal handrail, one girl turned back looking at it, a jagged bell shape at the door.",
+      "characters": [
+        {
+          "id": "the_bird",
+          "pose": "on the handrail",
+          "expression": ""
+        },
+        {
+          "id": "extra_student",
+          "pose": "one girl, looking",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, school front steps at the last bell with students pouring past a small rainbow bird perched on the metal handrail and one girl turned back to look at it, a jagged sound shape at the door, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "One girl looks.",
+  "layout": "single page, no borders"
+}

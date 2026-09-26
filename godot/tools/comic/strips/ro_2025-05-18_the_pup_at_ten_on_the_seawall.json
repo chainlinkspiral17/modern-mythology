@@ -1,0 +1,61 @@
+{
+  "id": "ro_2025-05-18_the_pup_at_ten_on_the_seawall",
+  "title": "The pup at ten, on the seawall",
+  "strip": "roflcopter",
+  "date": "2025-05-18",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xi)",
+  "logline": "The pup up on the seawall itself, ten, where the crow sits, looking at the bay. Three legs on a wall. The man's hand at the edge, not helping.",
+  "cast": [
+    "barnaby_ii",
+    "wood_44"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A small three-legged dog standing up on top of a seawall looking at the bay, a man's hand at the frame's edge held back not helping, the crow farther along the wall.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "on the wall",
+          "expression": ""
+        },
+        {
+          "id": "wood_44",
+          "pose": "a hand, held back",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a small three-legged dog standing on top of a seawall looking out at a bay with a man's hand held back at the frame's edge not helping and a crow farther along the wall, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Not helping.",
+  "layout": "single page, no borders"
+}

@@ -1,0 +1,61 @@
+{
+  "id": "ro_2021-12-31_the_last_night_of_the_first_year",
+  "title": "The last night of the first year",
+  "strip": "roflcopter",
+  "date": "2021-12-31",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xi)",
+  "logline": "The garage window from the alley on the last night of 2021: lit, a shape at the table, the pup's shape in the bed, Box 21 full and Box 22 begun. Rain. The hum line not under it.",
+  "cast": [
+    "wood_44",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The garage's casement window from the rainy alley at night, lit, the shape of a man at a table and a small dog in a bed, two cardboard boxes visible against the wall.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "a shape inside",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "a shape in the bed",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a small lit garage window seen from a rainy alley at night with the shape of a man at a table and a small dog in a bed and two cardboard boxes against the wall, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Box 22 begun.",
+  "layout": "single page, no borders"
+}

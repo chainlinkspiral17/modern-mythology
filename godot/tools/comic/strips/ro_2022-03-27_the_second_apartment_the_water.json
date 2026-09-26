@@ -1,0 +1,49 @@
+{
+  "id": "ro_2022-03-27_the_second_apartment_the_water",
+  "title": "The second apartment, the water",
+  "strip": "roflcopter",
+  "date": "2022-03-27",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "Rooms He Never Saw",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xi)",
+  "logline": "The smaller Seattle apartment's one window, close: the water, larger than the first apartment's slice, and a chair pulled to it. Nobody in the chair. 'A smaller place, near the water' — the page takes the sentence literally.",
+  "cast": [],
+  "location": "dw_seattle_hill",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A single apartment window close, filled with gray water and a far shore, a wooden chair pulled up to it facing out, empty, a mug on the sill.",
+      "characters": [],
+      "props": [
+        "the chair at the window"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a single apartment window filled with gray water and a far shore, an empty wooden chair pulled up facing it and a mug on the sill, no people, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Near the water. The chair empty.",
+  "layout": "single page, no borders"
+}

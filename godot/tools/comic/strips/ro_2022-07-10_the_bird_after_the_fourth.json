@@ -1,0 +1,58 @@
+{
+  "id": "ro_2022-07-10_the_bird_after_the_fourth",
+  "title": "The bird after the Fourth",
+  "strip": "roflcopter",
+  "date": "2022-07-10",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Bird",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xi)",
+  "logline": "The seawall the week after the Fourth: spent tubes in the gutter, a dropped flag on a stick, and the bird on the wall among it, every color, cleaner than anything on the page.",
+  "cast": [
+    "the_bird"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The seawall in July morning light with spent firework tubes and a small paper flag on a stick in the gutter below it, the small rainbow bird on the wall above the litter.",
+      "characters": [
+        {
+          "id": "the_bird",
+          "pose": "on the wall",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "spent tubes",
+        "a paper flag"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a seawall in July morning light with spent firework tubes and a small paper flag on a stick in the gutter below, a small rainbow bird perched on the wall above the litter, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Cleaner than the page.",
+  "layout": "single page, no borders"
+}

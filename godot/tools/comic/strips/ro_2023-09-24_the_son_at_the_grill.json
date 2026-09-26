@@ -1,0 +1,63 @@
+{
+  "id": "ro_2023-09-24_the_son_at_the_grill",
+  "title": "The son at the grill",
+  "strip": "roflcopter",
+  "date": "2023-09-24",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xi)",
+  "logline": "Gully's son, ten, on a stool at the grill from behind, in an apron that goes to his ankles, turning corn with tongs. Gully's back beside him. Two backs, one tall.",
+  "cast": [
+    "extra_gully_kid",
+    "gully_48"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "From behind: a boy of ten on a stool at a grill in an apron that reaches his ankles turning corn with tongs, a heavy gray man standing beside him, smoke, the bay beyond.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "ten, at the grill, from behind",
+          "expression": ""
+        },
+        {
+          "id": "gully_48",
+          "pose": "beside him, from behind",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the long apron"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, seen from behind, a boy of ten on a stool at a grill wearing an apron down to his ankles turning corn with tongs beside a heavy gray-haired man, smoke rising, a bay beyond, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Two backs, one tall.",
+  "layout": "single page, no borders"
+}

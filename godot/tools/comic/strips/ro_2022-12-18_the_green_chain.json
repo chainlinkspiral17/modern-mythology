@@ -1,0 +1,49 @@
+{
+  "id": "ro_2022-12-18_the_green_chain",
+  "title": "The green chain",
+  "strip": "roflcopter",
+  "date": "2022-12-18",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Mill, 1994",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xi)",
+  "logline": "The green chain: rough lumber sliding down a moving table and the men pulling it off, from behind, a row of backs and gloves. The forty from the photo, working, none of them facing us.",
+  "cast": [],
+  "location": "dw_cedar_mill",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A mill's green chain from the end: rough boards sliding along a moving table and a row of men from behind pulling them off onto stacks, gloves, the roof's skylights gray, sawdust as black spotting.",
+      "characters": [],
+      "props": [
+        "the green chain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, in the Era I manner, heavy black spotting brought back on purpose, a lumber mill's green chain seen from the end with rough boards sliding along a moving table and a row of men seen from behind pulling them onto stacks, gray skylights above, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "A row of backs.",
+  "layout": "single page, no borders"
+}
