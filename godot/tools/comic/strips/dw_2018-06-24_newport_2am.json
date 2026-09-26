@@ -1,0 +1,179 @@
+{
+  "id": "dw_2018-06-24_newport_2am",
+  "title": "Sunday · Newport, 2 AM",
+  "strip": "drift_wood",
+  "date": "2018-06-24",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "Newport, 2 AM",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2018–2020)",
+  "logline": "The 24-hour diner in Newport. Wood and the strip's Chloe at 2 AM. Thirty years of dialect. No exposition.",
+  "cast": [
+    "wood_34",
+    "chloe_34"
+  ],
+  "location": "dw_newport_diner",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: a 24-hour diner on 101 in Newport at 2 AM, wet-on-wet: the lit windows, the empty lot, one Legacy, one rental. Inside, two figures in a booth.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "in a booth, small",
+          "expression": ""
+        },
+        {
+          "id": "chloe_34",
+          "pose": "opposite, small",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "diner",
+        "lit windows",
+        "two cars"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a 24-hour roadside diner at 2 AM in wet-on-wet watercolor, lit windows in a dark lot with an old Subaru wagon and a rental car, two figures in a booth seen through the glass",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "The diner"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the booth. CHLOE, thirty-eight, the pinned hair, the hollow drawn kindly. WOOD across, the flannel. Two coffees. A plate of fries between them, untouched.",
+      "characters": [
+        {
+          "id": "chloe_34",
+          "pose": "in the booth",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "across",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "coffees",
+        "fries"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "Corn or peas."
+        },
+        {
+          "who": "WOOD",
+          "text": "You remember that."
+        },
+        {
+          "who": "CHLOE",
+          "text": "I remember everything. It's the problem."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman with pinned dark hair and a man in a plaid flannel across a diner booth at night with two coffees and an untouched plate of fries, tired kind faces, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Corn or peas"
+    },
+    {
+      "n": 3,
+      "shot": "close tier",
+      "composition": "Tier 3: her hand on the table, the ring. His hand near it. The fries.",
+      "characters": [
+        {
+          "id": "chloe_34",
+          "pose": "hand on the table",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "hand near",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "ring",
+        "fries"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "How's the brand narrative."
+        },
+        {
+          "who": "CHLOE",
+          "text": "Thirty years of packaging for things nobody needed. Give or take."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's been twenty."
+        },
+        {
+          "who": "CHLOE",
+          "text": "It's been thirty, Wood. I count from the cafeteria."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of two hands on a diner table not touching, a ring on one, a plate of fries, night",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Thirty"
+    },
+    {
+      "n": 4,
+      "shot": "wide tier",
+      "composition": "Tier 4: the diner from outside, later, the booth empty, two cars pulling out opposite ways. 3:40 on a clock through the glass.",
+      "characters": [],
+      "props": [
+        "empty booth",
+        "two cars leaving",
+        "clock: 3:40"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same diner from outside later with the booth empty and two cars pulling out of the lot in opposite directions, a clock reading 3:40 through the window, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Opposite ways"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "'I count from the cafeteria.' The 2024 dock line rehearsed six years early.",
+  "layout": "tiers, portrait page"
+}

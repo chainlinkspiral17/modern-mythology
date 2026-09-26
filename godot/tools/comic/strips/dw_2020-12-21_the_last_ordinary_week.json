@@ -1,0 +1,164 @@
+{
+  "id": "dw_2020-12-21_the_last_ordinary_week",
+  "title": "The last ordinary week · Monday",
+  "strip": "drift_wood",
+  "date": "2020-12-21",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Last Ordinary Week",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2018–2020)",
+  "logline": "Six dailies where nothing happens. That's the point. This is Monday.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage, morning. WOOD at the table with coffee. BARNABY II in the old bed.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "coffee, at the table",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "in the bed",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "mug",
+        "lamp off, daylight"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man drinking coffee at a drafting table in morning light in a garage studio, a three-legged dog in a braided bed beneath, razor-sharp ink, a soft ochre wash",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The beach. The walk. Ordinary.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "walking",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "beach"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man and a three-legged dog walking an ordinary gray beach, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully's. The stool, his again — December. GULLY. One word each.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "on the stool",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "behind the counter",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "stool"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Cold."
+        },
+        {
+          "who": "WOOD",
+          "text": "Cold."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man on the end stool of a quiet bait-and-espresso shop in winter, a stocky man behind the counter, one word exchanged",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The garage, night. The lamp. Drawing. The pup on his foot. The most ordinary panel the strip has.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "on his foot",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lamp"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man drawing at night under a green swing-arm lamp with a three-legged dog asleep on his foot, an ordinary quiet panel, no words",
+        "negative": "",
+        "notes": "Six of these. Then the last Sunday. Then no file."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Nothing happens. On purpose. The last public daily the book takes."
+}
