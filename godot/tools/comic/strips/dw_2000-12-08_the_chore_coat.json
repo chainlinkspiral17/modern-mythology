@@ -1,0 +1,142 @@
+{
+  "id": "dw_2000-12-08_the_chore_coat",
+  "title": "The chore coat",
+  "strip": "drift_wood",
+  "date": "2000-12-08",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Chore Coat",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2000–2001)",
+  "logline": "Winter. Alone. Faster. A strip about a coat.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The beach, December, wind. WOOD in the chore coat, collar up. BARNABY leaning into the wind.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "collar up, leaning",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "leaning into wind",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "wind lines",
+        "surf",
+        "sand blowing"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man in a canvas chore coat with the collar up leaning into wind on a December beach, a small dog leaning into it beside him, wind drawn as fast horizontal lines, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The coat. Frayed cuff. A button gone. Ink on the pocket.",
+      "characters": [],
+      "props": [
+        "frayed cuff",
+        "missing button",
+        "ink stain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a worn canvas chore coat: a frayed cuff, a missing button, an ink stain on the pocket",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, to the dog, fast — the whole strip is drawn faster.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Same coat as the bus stop. Same coat as the frame shop. If the coat's the same, the man's the same. That's logic."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man on a windy beach talking fast to a small dog, the linework loose and quick",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The two of them small on the beach. The coat the only dark shape. The line so fast it's almost nothing.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "small",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "small",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "beach",
+        "wind",
+        "surf"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two tiny figures on a wide windy beach, one a dark coat-shaped mark, drawn in a few fast strokes, black and white, no words",
+        "negative": "",
+        "notes": "The fastest-drawn daily so far. Let it look it."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": ""
+}

@@ -1,0 +1,181 @@
+{
+  "id": "dw_2000-10-20_the_last_night",
+  "title": "The last night",
+  "strip": "drift_wood",
+  "date": "2000-10-20",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Driftwood Ledger (Arc 1, week 3)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2000–2001)",
+  "logline": "The night before the bus. Chloe comes to the bedroom window. The dog lets her in.",
+  "cast": [
+    "wood_20",
+    "chloe_17",
+    "barnaby"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Wood's bedroom, night. A knock at the window. BARNABY's head up. WOOD at the table.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "at the table, turning",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "head up",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "window",
+        "lamp"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "tk tk",
+      "image": {
+        "prompt": "a young man at a bedroom drawing table at night turning toward a knock at the window, a small dog lifting its head, black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The window up. CHLOE climbing in, the way she must have at fifteen. Barnaby greeting her like she's his.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "climbing through the window",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "greeting her",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "window frame"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "Your mother's asleep. I'm not knocking on a door at midnight."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young woman climbing through a bedroom window at night while a small dog greets her joyfully and a young man watches from his table",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The two of them on the floor, backs to the bed. The dog between. Nobody talking. The corkboard above: the map he drew her, pinned — no, she has that. The bus schedule. The letter.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "on the floor, back to the bed",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "beside her",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "between them",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "corkboard",
+        "bus schedule",
+        "the letter"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young woman and a young man sitting on a bedroom floor with their backs against the bed and a small dog between them, a crowded corkboard above, night, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "close",
+      "composition": "Chloe's hand on the dog. Wood's hand on the dog. Not touching. The whole arc in a dog.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "hand on the dog",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "hand on the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "between",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "Six-forty. Don't come."
+        },
+        {
+          "who": "WOOD",
+          "text": "I won't.",
+          "kind": "small"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of two hands resting on a small dog's back, not touching each other, black and white",
+        "negative": "",
+        "notes": "'Don't come.' 'I won't.' — He does; the Greyhound cover has him outside the window."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "He says he won't come. The oversized cover shows him there."
+}

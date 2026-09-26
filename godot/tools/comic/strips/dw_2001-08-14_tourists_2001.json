@@ -1,0 +1,153 @@
+{
+  "id": "dw_2001-08-14_tourists_2001",
+  "title": "Tourist Season, 2001",
+  "strip": "drift_wood",
+  "date": "2001-08-14",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Tourist Season",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2000–2001)",
+  "logline": "A tourist asks Wood where the locals go. He tells the truth. It's a laundromat.",
+  "cast": [
+    "wood_20",
+    "extra_tourist"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The laundromat. WOOD restocking the digest rack. A TOURIST in a sun hat, lost, with a map of the coast.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "at the rack with digests",
+          "expression": ""
+        },
+        {
+          "id": "extra_tourist",
+          "pose": "sun hat, map",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "digest rack",
+        "coast map",
+        "dryers"
+      ],
+      "balloons": [
+        {
+          "who": "TOURIST",
+          "text": "Where do the locals go? The real place."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat with a young man restocking a free-paper rack, a tourist in a sun hat holding an unfolded coast map, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood, considering. Honest.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Here."
+        },
+        {
+          "who": "TOURIST",
+          "text": "...The laundromat."
+        },
+        {
+          "who": "WOOD",
+          "text": "Tuesdays. The dryers on the left are faster."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a young man answering a tourist with complete sincerity in a laundromat",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The tourist taking a digest from the rack, since it's there. Opening it.",
+      "characters": [
+        {
+          "id": "extra_tourist",
+          "pose": "reading a digest",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "digest"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a tourist in a sun hat standing in a laundromat reading a small stapled zine from the free rack",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The tourist gone, digest under her arm. Wood at the rack. The first reader he's watched take one. He didn't draw it. He's still looking at the door.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "looking at the door",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "rack, one digest fewer",
+        "door"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man standing by a free-paper rack in a laundromat looking at the door someone just left through, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The first reader he sees take a digest. A tourist. He doesn't draw it."
+}

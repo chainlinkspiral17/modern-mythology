@@ -1,0 +1,160 @@
+{
+  "id": "dw_2000-10-02_bags",
+  "title": "Bags",
+  "strip": "drift_wood",
+  "date": "2000-10-02",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Driftwood Ledger (Arc 1, week 1)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2000–2001)",
+  "logline": "Chloe's bags are packed for Seattle. The town feels smaller by the hour. Wood measures it.",
+  "cast": [
+    "wood_20",
+    "chloe_17"
+  ],
+  "location": "dw_chloe_porch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Chloe's porch, four houses down. Two bags by the door, packed. CHLOE on the top step. WOOD on the bottom one. Rain in vertical hatching.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "top step, arms around her knees",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "bottom step, pad on his knee",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "two packed bags",
+        "porch",
+        "rain"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "Two weeks. Then the bus."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small-town porch in rain drawn as frantic vertical hatching, two packed bags by the door, a young woman on the top step and a young man in a chore coat on the bottom step, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood, drawing the bags.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "pad"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "The town's getting smaller. I measured. Main street was four blocks in September. It's three and a half now."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a young man drawing two packed bags on a pad in the rain",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Chloe.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "That's not how towns work."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's how this one works."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a young woman on a porch step, unconvinced, rain behind",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The porch from the street. The bags. The two of them. The rain making the panel narrower than the others — the strip has actually drawn this panel narrower.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "bags",
+        "porch",
+        "rain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a porch seen from the street in heavy rain with two people on its steps and two packed bags by the door, the panel noticeably narrower than a standard panel, black and white, no words",
+        "negative": "",
+        "notes": "Draw panel 4 physically narrower. The town is getting smaller."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Arc 1 opens. The narrowing panel is a device the strip uses through the month."
+}
