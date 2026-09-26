@@ -64,6 +64,14 @@ SELECTIONS = {"full", "part", "one", "index"}
 ID_RE = re.compile(r"^(dw|rc|ro)_(\d{4})-(\d{2})-(\d{2})_[a-z0-9_]+$")
 
 
+def _rel(p):
+    """Repo-relative display path; falls back to the path as given."""
+    try:
+        return Path(p).resolve().relative_to(REPO)
+    except ValueError:
+        return Path(p)
+
+
 # ── loading ──────────────────────────────────────────────────────────────
 
 def load_json(p):
@@ -250,7 +258,7 @@ def cmd_prompts(args):
     out.write_text(json.dumps({
         "_comment": "One job per panel. Generate the ART ONLY — lettering is composited afterwards (letter_after). Consumed by comic_studio.html or a runner.",
         "jobs": jobs}, indent=2, ensure_ascii=False), encoding="utf-8")
-    print(f"wrote {len(jobs)} prompt jobs → {out.relative_to(REPO)}")
+    print(f"wrote {len(jobs)} prompt jobs → {_rel(out)}")
     return 0
 
 
@@ -507,6 +515,11 @@ def cmd_strip_prompts(args):
                                  "runway_task_id": r.get("runway_task_id"), "score": sc, "why": why})
                 what = {"character": "the character", "location": "the setting", "era": "the drawing style", "objects": "the objects",
                         "strip": "a finished strip in this style", "concept": "the concept design"}.get(r["kind"], "reference")
+                if r["kind"] == "character":
+                    heroes = load_heroes().get("heroes", {})
+                    named = [heroes[tg]["who"].split(" (")[0] for tg in r.get("tags", []) if tg in heroes]
+                    if named:
+                        what = "the character " + " / ".join(named[:2])
                 mentions.append(f"@{tag} for {what}")
             prompt = prompt + " Match the attached references: " + "; ".join(mentions) + "."
         jobs.append({
@@ -522,7 +535,7 @@ def cmd_strip_prompts(args):
     out.write_text(json.dumps({
         "_comment": "One job per STRIP — the whole strip as one image, for the concept run. Run with comic_render.py --provider runway|google.",
         "jobs": jobs}, indent=2, ensure_ascii=False), encoding="utf-8")
-    print(f"wrote {len(jobs)} strip prompts → {out.relative_to(REPO)}")
+    print(f"wrote {len(jobs)} strip prompts → {_rel(out)}")
     return 0
 
 
@@ -552,7 +565,7 @@ def cmd_sheets(args):
     out = Path(args.out) if args.out else OUT / "sheets.json"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps({"_comment": "Reference sheets. Render with comic_render.py --queue out/sheets.json.", "jobs": jobs}, indent=2, ensure_ascii=False), encoding="utf-8")
-    print(f"wrote {len(jobs)} sheet prompts → {out.relative_to(REPO)}")
+    print(f"wrote {len(jobs)} sheet prompts → {_rel(out)}")
     return 0
 
 
@@ -602,7 +615,7 @@ def cmd_stage(args):
     out.write_text(json.dumps({
         "_comment": "Blender staging queue for build_strip_panel.py. Coordinates are Blender Z-up meters in the locale's frame (see lore/_3D_MODELING_PLAYBOOK.md 'Coordinate frame'). Heroes are the Meshy GLBs in godot/assets/3d/characters/heroes/.",
         "jobs": jobs}, indent=2, ensure_ascii=False), encoding="utf-8")
-    print(f"wrote {len(jobs)} staging jobs → {out.relative_to(REPO)} ({skipped} panels had no stage block)")
+    print(f"wrote {len(jobs)} staging jobs → {_rel(out)} ({skipped} panels had no stage block)")
     return 0
 
 
@@ -725,7 +738,7 @@ def cmd_md(args):
         (MD_OUT / f"{s['id']}.md").write_text(strip_to_md(s, eras), encoding="utf-8")
         index.append(f"| {s['date']} | [`{s['id']}`]({s['id']}.md) | {s['format']} | {s.get('tier','')} | {s.get('title','')} |")
     (MD_OUT / "_INDEX.md").write_text("\n".join(index) + "\n", encoding="utf-8")
-    print(f"wrote {len(strips)} script sheets + _INDEX.md → {MD_OUT.relative_to(REPO)}")
+    print(f"wrote {len(strips)} script sheets + _INDEX.md → {_rel(MD_OUT)}")
     return 0
 
 
@@ -753,7 +766,7 @@ def cmd_new(args):
     if p.exists():
         print(f"✗ {p.name} exists"); return 1
     p.write_text(json.dumps(d, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    print(f"scaffolded {p.relative_to(REPO)}")
+    print(f"scaffolded {_rel(p)}")
     return 0
 
 
