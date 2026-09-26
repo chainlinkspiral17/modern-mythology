@@ -1,0 +1,153 @@
+{
+  "id": "dw_2016-12-23_december_2016",
+  "title": "December, 2016",
+  "strip": "drift_wood",
+  "date": "2016-12-23",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "December",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2017)",
+  "logline": "Does Chloe come home. A printed card. Chloe & Julian, a dog of their own, a doodle. She's drawn on the card in pen: 'not coming. sorry. the dog is named after nothing.'",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. A glossy card. WOOD. BARNABY II trying to eat the envelope.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "holding a card",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "chewing the envelope",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "glossy card",
+        "envelope"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man holding a glossy printed holiday card in a garage while a three-legged dog chews the envelope, clean ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The card: Chloe, Julian, and a small clean dog with a bandana. Printed: HAPPY HOLIDAYS. Across it in her pen: 'not coming. sorry. the dog is named after nothing. — c.'",
+      "characters": [
+        {
+          "id": "chloe_34",
+          "pose": "in the photo",
+          "expression": ""
+        },
+        {
+          "id": "extra_julian",
+          "pose": "in the photo",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "printed card with handwriting over it"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a glossy holiday card photo of a woman, a pleasant man and a small clean dog in a bandana, with handwriting scrawled across it in pen",
+        "negative": "",
+        "notes": "Letter after: not coming. sorry. the dog is named after nothing. — c."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, to the pup.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Named after nothing. She's telling me his isn't named after mine. She's telling me that on purpose."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man speaking to a three-legged dog while looking at a card, wry and hurt at once",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The corkboard. The card, photo-in again. Beside it the 2011 one, photo-in. Two cards facing the wall. The pup has the envelope.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "pinning",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "with the envelope",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "two cards pinned face-in"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a crowded corkboard where a man pins a holiday card face-in beside another pinned the same way, a dog with a torn envelope beneath, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "'Named after nothing.' Two cards facing the wall."
+}

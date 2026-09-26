@@ -1,0 +1,151 @@
+{
+  "id": "dw_2015-11-16_dog_night_2015",
+  "title": "The Dog Night, 2015",
+  "strip": "drift_wood",
+  "date": "2015-11-16",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "The Dog Night",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2017)",
+  "logline": "Sixteen years. The first Dog Night with the box instead of the dumpster. He goes to both.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The dumpster, night, the bulb. WOOD standing. BARNABY II on a leash, three legs, sniffing the chain-link with no idea.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "standing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "sniffing the fence",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "dumpster",
+        "bulb",
+        "chain-link"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man standing behind a bowling alley at night before a rusted dumpster under a bulb, a wiry three-legged dog on a leash sniffing the chain-link fence with cheerful ignorance, clean ink, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood's hand on the fence where the rope was. The pup's nose at it too.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "hand on the fence",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "nose at the fence",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "chain-link"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a man's hand on a chain-link fence and a young dog's nose pressed to the same spot, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The porch, later. The waxed produce box — ALICE'S WHOLESALE BAIT & SMOKED MEATS — kept, on the porch, the pup standing in it because he can.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "standing in the box",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "on the step",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the box, kept"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wiry three-legged dog standing proudly inside a battered waxed produce box on a porch at night, a man sitting on the step beside it, no words",
+        "negative": "",
+        "notes": "The box is kept on the porch. The Dog Night has two stops from here."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The sign, from the porch, far off across the town's roofs: SMALL WOOD LANES, three letters dark. Wood looking at it. The pup asleep in the box.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking toward the distant sign",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "asleep in the box",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "distant neon, three dark"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man on a porch step at night looking across small-town rooftops toward a distant bowling-alley neon sign with three letters dark, a three-legged dog asleep in a produce box beside him, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "Two stops: the dumpster, the box. The box is kept."
+}
