@@ -1,0 +1,148 @@
+{
+  "id": "dw_2008-02-07_crab_derby_2008_before",
+  "title": "Crab Derby, 2008 · before",
+  "strip": "drift_wood",
+  "date": "2008-02-07",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2008 · fixture week · deepening xvii)",
+  "logline": "The day before the twenty-fourth: Gully at the Newport weekly's counter paying for an ad, twenty bucks, and asking if they'll run the flyer as drawn. The clerk says it's a flyer. Gully says it's an ad now. Wood outside with the dog, not going in.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby",
+    "extra_clerk"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "A newspaper office's front counter. GULLY in the apron with a flyer and a twenty. A CLERK.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "with a flyer and a twenty",
+          "expression": ""
+        },
+        {
+          "id": "extra_clerk",
+          "pose": "behind the counter",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the flyer",
+        "a twenty"
+      ],
+      "balloons": [
+        {
+          "who": "CLERK",
+          "text": "It's a flyer."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a stocky man in a fisherman's apron at a newspaper office counter holding out a flyer and a twenty-dollar bill to a clerk",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "GULLY.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "It's an ad now."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a stocky man in an apron insisting mildly at a counter",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Through the window: WOOD on the sidewalk with BARNABY, not coming in.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "outside, not coming in",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, through an office window a thin man and a small dog waiting on the sidewalk",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The CLERK taking the twenty. The flyer going into a tray marked for the next issue.",
+      "characters": [
+        {
+          "id": "extra_clerk",
+          "pose": "taking the twenty",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a tray"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a clerk taking a twenty and placing a flyer into a wire tray on a counter",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; Sundays the point",
+    "palette": "limited; Sundays gray-green, rust, fog",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "It's an ad now. Twenty bucks, plus the ad."
+}

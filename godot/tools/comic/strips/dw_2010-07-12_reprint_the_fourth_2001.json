@@ -1,0 +1,131 @@
+{
+  "id": "dw_2010-07-12_reprint_the_fourth_2001",
+  "title": "Reprint · The Fourth, 2001",
+  "strip": "drift_wood",
+  "date": "2010-07-12",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Reprints",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Reprints · deepening xvii)",
+  "logline": "The papers run the 2001 Fourth re-inked: the dock, the fireworks, the uncle's chair five months empty. The 2010 hand draws the chair with a steadiness the 2001 hand didn't have and the fireworks with less. The book runs it beside the original.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": "A second, smaller date under the gull: 2001."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The dock at night, fireworks as white bursts, GULLY and WOOD on the planks, the uncle's chair empty beside Gully — the chair's lines steady, the bursts fewer.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "standing",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "standing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the uncle's chair, empty"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, two young men on a dock at night under a few white firework bursts beside an empty lawn chair drawn with steady lines, gray wash",
+        "negative": "",
+        "notes": "A reprint: the 2001 Fourth (dw_2001-07-04) in the 2010 hand."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "GULLY looking up.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "looking up",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a stocky young man in an apron looking up at fireworks",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD looking at the chair, not up.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "looking at the chair",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin young man looking at an empty lawn chair while fireworks go off above",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The chair, the dog under it, the bursts in the water — the water drawn best of all.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "under the chair",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the chair"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, an empty lawn chair on a dock with a small dog beneath it and firework bursts reflected in carefully drawn water, gray wash",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "the 2010 hand re-inking the 2001 script",
+    "palette": "gray wash",
+    "paper": "bristol"
+  },
+  "notes": "Reprint pair, the Fourth 2001. The chair steady; the fireworks fewer."
+}

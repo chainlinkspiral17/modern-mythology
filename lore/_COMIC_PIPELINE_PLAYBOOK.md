@@ -114,6 +114,44 @@ a page says "fifty" check it against the year first.
 
 ## Recent lessons
 
+### 2026-09-26 · Deepening xvii–xviii · the catalogue complete · 1,255 → 1,378
+
+The last two canon batches. Public: sixty-four fixture-week dailies for
+2005–09 and 2017–19, three more 2010 reprint pairs, three 2015 rerun
+Sundays (the sabbatical's dividers), six Sundays. Private: forty-seven
+pages that bring every sequence to or past the catalogue's share (The
+Route North to 30, Rooms to 24, An August to 20, The Boxes to 14, The
+Tavern to 10). The run stands at 806 public and 572 private against the
+plan's ~880 and ~560; every arc, fixture, Sunday quota and sequence the
+catalogue names now has its scripts.
+
+- **The canon is finished when the catalogue's rows are, not when a
+  number is.** The plan's ~880 public pieces included covers and
+  apparatus the strip files don't hold. Every ●, ◐ and ○ row, every
+  fixture in every year the paper ran, and every sequence has its key
+  pages; that is the stopping rule, and it is now met.
+- **Reruns are dividers and should look like it.** The 2015 Landscapes,
+  Again Sundays reproduce their 2008 originals tier for tier, with a
+  RERUN note in the margin and the original's id in the notes. A rerun
+  that improves on its original is a new strip and belongs to the
+  sabbatical's wrong year.
+- **An August borrows Vol 7 and never names it.** Mrs. Gable's seat,
+  Static Truths, Board Lords in Wagner's building, Finn's radio at the
+  pilings, Sal's machine in the pizza window, the yellow slicker: each
+  is drawn as a thing the town has and the page doesn't explain. The
+  note names the Vol 7 source so the wiki can cross-reference; the page
+  never does. This is the model for anything beyond the canon.
+- **Auto-shifting dates is safe for pages, not for fixtures.** The
+  private helper now walks forward from a requested date to the first
+  free one; a page's day matters less than its month. A public fixture
+  daily must land on its calendar day, so that helper stays assertive.
+- **What is beyond the canon is a separate strip.** Anything that is
+  not Drift Wood, ROLFCOPTR or ROFLCOPTER as the catalogue defines them
+  (the phantom graphic novels, the genre detours, the pages that quote
+  the other volumes outright) gets its own id prefix and strip name so
+  the inspector, the render tool and the wiki can keep the canon count
+  clean.
+
 ### 2026-09-26 · Deepening xvi · fixture weeks · 1,219 → 1,255
 
 Twenty-four public dailies: twelve single-daily fixtures in the thin years

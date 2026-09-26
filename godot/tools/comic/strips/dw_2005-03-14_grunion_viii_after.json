@@ -1,0 +1,151 @@
+{
+  "id": "dw_2005-03-14_grunion_viii_after",
+  "title": "The Grunion Run, 2005 · after",
+  "strip": "drift_wood",
+  "date": "2005-03-14",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Grunion Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2005 · fixture week · deepening xvii)",
+  "logline": "The Monday after: Gully asks who the man in the mill jacket was, since Wood drew his back three times. Wood says a man in a mill jacket. Gully lets it go the way he lets things go: by pouring.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. WOOD on the end stool with the weekend's strips. GULLY with the pot.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "on the stool",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "with the coffee pot",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "under the stool",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the strips"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Who's the guy in the jacket. You drew his back three times."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man on a shop's end stool with comic strips on the counter and a stocky man in an apron holding a coffee pot",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "A guy in a jacket."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man on a stool answering flatly",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "GULLY looking at him a second longer than usual.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "looking",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a stocky man in an apron looking at someone a beat too long",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "GULLY pouring.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "pouring",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a coffee"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a stocky man in an apron pouring coffee into a cup on a counter",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "Lets it go by pouring."
+}

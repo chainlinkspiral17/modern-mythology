@@ -1,0 +1,49 @@
+{
+  "id": "ro_2025-02-24_the_stone_head_with_a_flyer",
+  "title": "The stone head with a flyer",
+  "strip": "roflcopter",
+  "date": "2025-02-24",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Stone Head",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xviii)",
+  "logline": "The face with a crab flyer taped to its brow — the twenty-eighth, a spare — by a hand the page doesn't show, the tape already peeling in the rain. Somebody in town thinks the monument should advertise. The page leaves it and draws the peel.",
+  "cast": [],
+  "location": "dw_stone_head",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The carved stone face in rain with a paper crab flyer taped across its brow, the tape peeling at one corner, the shingle wall behind.",
+      "characters": [],
+      "props": [
+        "the flyer, taped"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a moss-grown carved stone face in rain with a paper crab flyer taped across its brow and the tape peeling at one corner, a shingle wall behind, no words legible",
+        "negative": "",
+        "notes": "Compare ro_2025-02-14."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Draws the peel.",
+  "layout": "single page, no borders"
+}

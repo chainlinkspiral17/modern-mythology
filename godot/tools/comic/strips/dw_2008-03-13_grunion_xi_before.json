@@ -1,0 +1,154 @@
+{
+  "id": "dw_2008-03-13_grunion_xi_before",
+  "title": "The Grunion Run, 2008 · before",
+  "strip": "drift_wood",
+  "date": "2008-03-13",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Grunion Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2008 · fixture week · deepening xvii)",
+  "logline": "The day before the eleventh run: a letter at Gully's, addressed to the strip care of the shack, from a Newport reader saying he'll be at the run with the clipping. Gully reads it aloud. Wood asks him not to. Gully reads the last line anyway.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. GULLY with an opened letter. WOOD on the stool with his hand over his eyes. BARNABY.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "reading a letter",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "hand over his eyes",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a letter"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "'Care of the bait shack.' That's you."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a stocky man in an apron reading an opened letter aloud while a thin man on a stool covers his eyes",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Don't read it out."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man on a stool asking someone to stop with his hand still over his eyes",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "GULLY reading the last line anyway.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "reading",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "'I'll bring the clipping.' He's bringing the clipping."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a stocky man in an apron reading the last line of a letter with satisfaction",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD looking at the dog for help. The dog asleep.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "looking at the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man looking down for help at a small dog that is fast asleep",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "He's bringing the clipping."
+}

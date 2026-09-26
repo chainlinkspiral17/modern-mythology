@@ -1,0 +1,55 @@
+{
+  "id": "ro_2023-07-20_the_last_stop_before",
+  "title": "The last stop before",
+  "strip": "roflcopter",
+  "date": "2023-07-20",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Route North",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xviii)",
+  "logline": "A stop with no name, before the city: a shelter, a bench, a schedule, a cigarette machine, a woman's back going into the bus, the last time the sequence draws her, closer than the rest stop, still from behind. The page counts the stops and stops counting.",
+  "cast": [
+    "chloe_34"
+  ],
+  "location": "dw_greyhound",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A roadside bus shelter with a bench, a schedule case and a cigarette machine, a woman with a bag on her shoulder from behind stepping up into a bus's door.",
+      "characters": [
+        {
+          "id": "chloe_34",
+          "pose": "from behind, boarding",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a roadside bus shelter with a bench, a schedule case and a cigarette machine, a woman with a bag on her shoulder seen from behind stepping up into a bus's open door, no words legible",
+        "negative": "",
+        "notes": "Closer than ro_2023-07-02; still from behind."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Stops counting.",
+  "layout": "single page, no borders"
+}

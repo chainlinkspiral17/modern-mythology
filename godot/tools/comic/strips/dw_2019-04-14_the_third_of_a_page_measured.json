@@ -1,0 +1,108 @@
+{
+  "id": "dw_2019-04-14_the_third_of_a_page_measured",
+  "title": "Sunday · a third of a page, measured",
+  "strip": "drift_wood",
+  "date": "2019-04-14",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "A Third of a Page",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2019 · Sundays · deepening xvii)",
+  "logline": "Before A Third of a Page begins: the last full-size Sunday, and it draws its own edges — the tiers with a ruler laid along them, the reader invited to measure now so they can measure later. The landscape is the flats; the subject is the size.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_mudflats",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff_small",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the flats at low tide with a steel ruler drawn lying along the tier's bottom edge, its marks visible.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "small on the flats",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a ruler, drawn"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "tidal mudflats at low tide with a steel ruler drawn lying along the bottom edge of the image with its marks visible, a small three-legged dog far out, watercolor, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Ruler"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the flats closer, the ruler along this tier's edge too.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "nearer",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the ruler"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "tidal mudflats closer with a steel ruler drawn along the image's bottom edge, a small three-legged dog nearer, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Middle"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the tide line, the ruler's end, the paper's edge; the pup's paw on the ruler.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "paw on the ruler",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the ruler's end"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a tide line with a drawn steel ruler ending at the paper's edge and a small three-legged dog's paw resting on the ruler, watercolor, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Edge"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Measure now. A Third of a Page begins in May.",
+  "layout": "tiers, portrait page"
+}

@@ -1,0 +1,126 @@
+{
+  "id": "dw_2008-03-17_grunion_xi_after",
+  "title": "The Grunion Run, 2008 · after",
+  "strip": "drift_wood",
+  "date": "2008-03-17",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Grunion Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2008 · fixture week · deepening xvii)",
+  "logline": "The Monday after the first signing: Wood at the drafting table practicing a signature on scrap — the name, the mark — and hating each one, and the dog watching the pile of scrap grow. He settles on the one he already had.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. WOOD at the table with a pile of scrap paper, signing and crossing out. BARNABY watching.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "signing scraps",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "watching",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "scrap paper"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man at a drafting table signing scraps of paper and crossing them out with a dog watching",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The scraps, close: the same name eight ways, all crossed out.",
+      "characters": [],
+      "props": [
+        "the scraps"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close on scraps of paper bearing the same signature eight ways each crossed out",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD looking at his own margin mark on a finished strip on the wall.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "looking at the wall",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the margin mark"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a man looking at the small signature and mark in the margin of a framed comic strip on a wall",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD writing that one on a clean scrap. Putting the pen down.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "writing the old one",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a man writing a small plain signature with a tiny gull mark on a clean scrap and setting the pen down",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "Settles on the one he had."
+}

@@ -1,0 +1,127 @@
+{
+  "id": "dw_2008-02-11_crab_derby_2008_after",
+  "title": "Crab Derby, 2008 · after",
+  "strip": "drift_wood",
+  "date": "2008-02-11",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2008 · fixture week · deepening xvii)",
+  "logline": "The Monday after: the Newport weekly on Gully's counter, open to the classifieds, the crab flyer among the boat listings and the lost cats. Gully pins the page to his corkboard beside the 2003 rough. The board's second thing from Wood's hand.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. The weekly open on the counter to the classifieds; the crab flyer among the ads. GULLY. WOOD on the stool.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "with the paper",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "on the stool",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the weekly"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a newspaper open on a shop counter to a classifieds page with a small crab flyer printed among the ads, a stocky man and a thin man on a stool",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The page, close: lost cats, a boat for sale, the crab.",
+      "characters": [],
+      "props": [
+        "the classifieds"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close on a newspaper classifieds page with small ads for lost cats and a boat and a hatched crab drawing among them",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "GULLY tearing the page out, neatly, along the fold.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "tearing the page",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a stocky man in an apron tearing a page neatly out of a newspaper along its fold",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The page pinned to Gully's corkboard beside a pencil rough of Gully hanging a sign.",
+      "characters": [],
+      "props": [
+        "Gully's corkboard",
+        "the 2003 rough"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a torn newspaper page pinned to a shop corkboard beside a pencil sketch of a man hanging a sign",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; Sundays the point",
+    "palette": "limited; Sundays gray-green, rust, fog",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "Gully's corkboard (not Wood's): the 2003 rough, and now the ad."
+}

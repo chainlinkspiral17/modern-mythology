@@ -1,0 +1,102 @@
+{
+  "id": "dw_2016-02-21_the_flats_first_gray",
+  "title": "Sunday · the flats, first gray",
+  "strip": "drift_wood",
+  "date": "2016-02-21",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Sundays",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2016 · Sundays · deepening xvii)",
+  "logline": "The pup's first February on the flats: the mud gray, the sky gray, the channels gray, and the pup the one dark thing in three tiers of gray, getting smaller as he goes out and larger as he comes back. Wet-on-wet.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_mudflats",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: gray flats wet-on-wet, a small three-legged dog going out, dark, small.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "going out, small",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "gray tidal mudflats painted wet-on-wet with a small three-legged dog going out as the one dark shape, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Out"
+    },
+    {
+      "n": 2,
+      "shot": "wide tier",
+      "composition": "Tier 2: grayer; the pup a dot at the tide line.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "a dot",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "gray tidal mudflats wet-on-wet with a small three-legged dog as a dark dot at the distant tide line, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Far"
+    },
+    {
+      "n": 3,
+      "shot": "medium tier",
+      "composition": "Tier 3: the pup coming back, large, mud to the chest, the gray behind him.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "coming back, large",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small three-legged dog muddy to the chest coming toward the viewer large against gray wet-on-wet flats, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Back"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "One dark thing in three tiers of gray.",
+  "layout": "tiers, portrait page"
+}

@@ -1,0 +1,157 @@
+{
+  "id": "dw_2006-03-09_grunion_ix_before",
+  "title": "The Grunion Run, 2006 · before",
+  "strip": "drift_wood",
+  "date": "2006-03-09",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Grunion Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2006 · fixture week · deepening xvii)",
+  "logline": "The day before the ninth run: Gully asking Wood, badly, how you introduce someone to a dog. Wood says you don't; the dog does. Gully practices on the dog anyway, and the dog lets him.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack. GULLY crouched to BARNABY, awkward. WOOD on the stool.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "crouched to the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "sitting",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "on the stool",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "How do you — with a dog. Introduce someone."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a stocky man in an apron crouched awkwardly before a small dog while a thin man watches from a stool",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "You don't. He does."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man on a stool answering plainly",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "GULLY holding his hand out to the dog anyway, palm down, practicing.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "hand out, palm down",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "sniffing it",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Barnaby. This is—"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a stocky man holding his hand out palm down to a small dog that sniffs it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The dog's chin on Gully's palm. Gully very still.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "very still",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "chin on his palm",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a small dog resting its chin on a stocky man's outstretched palm while he stays very still",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "Practices on the dog. The dog lets him."
+}

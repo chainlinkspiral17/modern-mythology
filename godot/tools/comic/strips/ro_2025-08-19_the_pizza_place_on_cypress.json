@@ -1,0 +1,49 @@
+{
+  "id": "ro_2025-08-19_the_pizza_place_on_cypress",
+  "title": "The pizza place on Cypress",
+  "strip": "roflcopter",
+  "date": "2025-08-19",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "An August",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xviii)",
+  "logline": "A pizza place on a side street the strip never drew, its window with a wooden machine in it — a cabinet with a screen and a slot — and an old man behind the counter from behind. The page draws the machine the way it drew the jukebox in the plaster: as a shape it can hear.",
+  "cast": [],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A pizza restaurant's window on a side street with a wooden cabinet holding a small screen and a slot visible inside, an old man from behind at the counter, evening.",
+      "characters": [],
+      "props": [
+        "the wooden machine"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a pizza restaurant's window on a side street with a wooden cabinet holding a small screen and a slot visible inside and an old man seen from behind at the counter, evening light, no words legible",
+        "negative": "",
+        "notes": "Vol 7: Pizza Pirate on Cypress St; Sal Carratura; the SCUMM Machine. Drawn as a shape."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "A shape it can hear.",
+  "layout": "single page, no borders"
+}

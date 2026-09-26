@@ -1,0 +1,150 @@
+{
+  "id": "dw_2019-02-07_crab_derby_2019_before",
+  "title": "Crab Derby, 2019 · before",
+  "strip": "drift_wood",
+  "date": "2019-02-07",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2019 · fixture week · deepening xvii)",
+  "logline": "The day before the thirty-fifth: the girl, nine, at the counter with a photo of a real crab propped against the tank, drawing from it, and it's good, and Wood at the end stool watching the cartoon leave the flyer. He doesn't say anything. Gully says it's good. She says she knows.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "extra_gully_kid",
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack. The GIRL, nine, drawing from a photo of a real crab propped on the tank. WOOD on the stool. GULLY. The PUP.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "drawing from a photo",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "on the stool",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a photo of a crab"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a girl of nine drawing at a shop counter from a photograph of a real crab propped against a tank, a thin man on a stool and a stocky man watching",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The drawing, close: a crab, real, shaded, not a cartoon.",
+      "characters": [],
+      "props": [
+        "her drawing"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close on a child's careful realistic pencil drawing of a crab with shading",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD watching. Saying nothing. The pen in his hand not moving.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "watching, pen still",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a thin man on a stool watching a child draw with his own pen held still",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "GULLY, and the GIRL not looking up.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_gully_kid",
+          "pose": "not looking up",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "That's good."
+        },
+        {
+          "who": "GIRL",
+          "text": "I know."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a stocky man in an apron speaking to a girl who keeps drawing without looking up",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "The cartoon leaves the flyer. I know."
+}

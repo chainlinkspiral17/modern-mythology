@@ -1,0 +1,165 @@
+{
+  "id": "dw_2018-02-10_crab_derby_2018_after",
+  "title": "Crab Derby, 2018 · after",
+  "strip": "drift_wood",
+  "date": "2018-02-10",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2018 · fixture week · deepening xvii)",
+  "logline": "The Saturday after: the photo flyer on the wall among thirty-three drawn ones, shining, and a tourist asking which one's the real one. All of them, Gully says. The tourist means the crab. Gully means the flyers. Wood on the stool means neither and says nothing.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "barnaby_ii",
+    "extra_tourists"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The wall: thirty-three drawn flyers and one glossy photo among them. A TOURIST looking. GULLY. WOOD on the stool. The PUP.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "looking",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "on the stool",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "thirty-four flyers"
+      ],
+      "balloons": [
+        {
+          "who": "TOURIST",
+          "text": "Which one's the real one?"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a tourist looking at a long row of drawn flyers with one glossy photo among them on a shingle wall, a stocky man and a thin man on a stool nearby",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "GULLY.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "All of them."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a stocky man in an apron answering with certainty",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The TOURIST, pointing at the photo.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "pointing at the photo",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "TOURIST",
+          "text": "I mean the crab."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a tourist pointing at a glossy photo flyer on a wall",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "GULLY, pointing at the whole wall. WOOD on the stool, saying nothing.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "pointing at the wall",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "silent",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "I mean the flyers."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a stocky man gesturing at a whole wall of flyers while a thin man on a stool stays silent",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "All of them."
+}

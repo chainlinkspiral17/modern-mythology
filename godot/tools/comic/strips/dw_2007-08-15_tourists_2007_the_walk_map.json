@@ -1,0 +1,147 @@
+{
+  "id": "dw_2007-08-15_tourists_2007_the_walk_map",
+  "title": "Tourist Season, 2007 · the map",
+  "strip": "drift_wood",
+  "date": "2007-08-15",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Tourist Season",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2007 · fixture week · deepening xvii)",
+  "logline": "Two days after: the tourist asks where the walk goes — the alley, the road, the post, the stairs, the log — and Wood, instead of answering, draws it on a napkin, and then keeps the napkin. It goes on the corkboard a month later as the walk map. This is where it comes from.",
+  "cast": [
+    "wood_26",
+    "barnaby",
+    "extra_tourists"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The seawall bench. The TOURIST with a map of the town open, pointing. WOOD. BARNABY.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "pointing at a map",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a tourist map"
+      ],
+      "balloons": [
+        {
+          "who": "TOURIST",
+          "text": "Where's the walk go? The one in the strip."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a tourist on a seawall bench pointing at an open town map beside a thin man and a small dog",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD taking a napkin and a pen instead.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing on a napkin",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a napkin"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man drawing on a paper napkin with a pen on a bench",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The napkin: a dotted line — alley, road, post, stairs, log — and '1999–' in the corner.",
+      "characters": [],
+      "props": [
+        "the walk map"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close on a paper napkin with a hand-drawn dotted route past a few small landmarks and a date in the corner",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD folding the napkin and putting it in his own pocket. The tourist's hand still out.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "pocketing the napkin",
+          "expression": ""
+        },
+        {
+          "id": "extra_tourists",
+          "pose": "hand out",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "I'll make you one."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man tucking a napkin into his own coat pocket while a tourist's hand stays held out",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats; Sundays in watercolor, improving",
+    "palette": "limited, muddy; Sundays gray-green, rust, one warm",
+    "paper": "bristol; the browser; newsprint from 2008"
+  },
+  "notes": "Where the walk map comes from (objects.md · corkboard, Jul 13 2007 — the date the board gets it is the Sunday's)."
+}

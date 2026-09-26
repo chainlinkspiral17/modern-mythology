@@ -1,0 +1,49 @@
+{
+  "id": "ro_2026-10-09_the_editor_reading",
+  "title": "The editor, reading",
+  "strip": "roflcopter",
+  "date": "2026-10-09",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Boxes",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xviii)",
+  "logline": "The editor at the drafting table with Box 21 open, reading the first private page, from behind — a coat the page draws as a coat, hair the page draws as hair, nothing else. The one gridded page is three box-days away; this is the day before the form was wanted.",
+  "cast": [],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A visitor from behind in a good coat at a drafting table with a cardboard box open beside them reading a sheet under the lamp, a man's plaid shoulder at the frame's edge, an old three-legged dog watching from a bed by the door.",
+      "characters": [],
+      "props": [
+        "Box 21, open"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a visitor in a good coat seen from behind at a drafting table with a cardboard box open beside them reading a sheet under a lamp, a man's plaid shoulder at the frame's edge and an old three-legged dog watching from a bed by the door, no words legible",
+        "negative": "",
+        "notes": "The editor: never a face. Compare ro_2026-10-14."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "A coat drawn as a coat.",
+  "layout": "single page, no borders"
+}

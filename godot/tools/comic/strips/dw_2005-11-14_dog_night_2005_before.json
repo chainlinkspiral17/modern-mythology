@@ -1,0 +1,143 @@
+{
+  "id": "dw_2005-11-14_dog_night_2005_before",
+  "title": "Dog Night, 2005 · before",
+  "strip": "drift_wood",
+  "date": "2005-11-14",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Dog Night",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2005 · fixture week · deepening xvii)",
+  "logline": "The night before six years: the gravel behind the Lanes and the dog walking it slower than last year, and Wood matching him, and the strip's panels getting a little wider each one to hold the slowness. The sign all lit.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The alley. WOOD and BARNABY walking, the dog slow.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "walking slowly",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "slow",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man and a dog walking slowly down a night alley beneath a lit neon sign",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "A little wider: the dog stopping to sniff; Wood waiting.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "sniffing",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "waiting",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a dog stopped to sniff gravel in a night alley while a man waits with a slack leash",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "wide",
+      "composition": "Wider: the two of them small under the sign, still.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "still",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "still",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the sign, all lit"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a man and a dog small and still beneath a fully lit neon bowling sign in a night alley",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Widest: the alley empty at the far end, the two of them just entering it from the left, slow.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "entering, slow",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "slow",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a long empty night alley with a man and a dog just entering at the left edge walking slowly",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "The panels widen for the slowness."
+}

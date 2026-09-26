@@ -1,0 +1,126 @@
+{
+  "id": "dw_2018-07-06_the_fourth_2018_the_diner_receipt",
+  "title": "The Fourth, 2018 · the receipt",
+  "strip": "drift_wood",
+  "date": "2018-07-06",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Fourth on the Bay",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2018 · fixture week · deepening xvii)",
+  "logline": "Two days after: a diner receipt from Newport, 2 AM, ten days old, on the drafting table under the lamp, two coffees and a pie, and Wood not throwing it out and not pinning it. It goes in the drawer with the pins and the bulb. The strip inventories the drawer.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. A diner receipt on the drafting table under the lamp. WOOD looking at it. The PUP.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking at the receipt",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a diner receipt"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a small diner receipt on a drafting table under a lamp with a thin man looking down at it and a small three-legged dog nearby",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The receipt, close: two coffees, one pie, 2:14 AM. The name of the diner not legible.",
+      "characters": [],
+      "props": [
+        "the receipt"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close on a diner receipt listing two coffees and a slice of pie with a time in the small hours, the header illegible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD opening the drawer: pushpins, a tin, tape, a lightbulb from 2007.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "opening the drawer",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the drawer"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, an open desk drawer holding pushpins, a tin, tape and an old lightbulb in its sleeve",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The receipt going in on top. The drawer closing.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "closing the drawer",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man's hand placing a receipt into a drawer and sliding it shut",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Newport, 2 AM (dw_2018-06-24). The drawer inventory: pins, tin, tape, the 2007 bulb, the receipt."
+}

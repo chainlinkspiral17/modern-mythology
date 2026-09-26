@@ -1,0 +1,128 @@
+{
+  "id": "dw_2017-07-06_the_fourth_2017_the_shirt_again",
+  "title": "The Fourth, 2017 · the shirt, again",
+  "strip": "drift_wood",
+  "date": "2017-07-06",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Fourth on the Bay",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2017 · fixture week · deepening xvii)",
+  "logline": "Two days after: a stranger's stick-figure shirt on the dock rail, damp, ten years after the first one, and Gully looking at the high shelf where the first one still is, and putting this one in the bin. Wood sees a rule get made. The strip doesn't say what the rule is.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The dock rail with a damp T-shirt on it, a stick figure printed on the front. The PUP sniffing it.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "sniffing the shirt",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a stick-figure shirt"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a damp t-shirt printed with a stick figure hung on a dock rail with a small three-legged dog sniffing it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "GULLY looking up at the high shelf inside: the thermos, the tin, the flag, the lantern, a folded shirt from 2007.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "looking at the shelf",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the high shelf"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a stocky man in an apron looking up at a high shelf holding a thermos, a tin, a folded flag, a lantern and a folded t-shirt",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "GULLY dropping the new shirt in the bin.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "dropping it in the bin",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the bin"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a stocky man dropping a t-shirt into a trash bin without ceremony",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD on the steps, having seen a rule made.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "on the steps, watching",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a thin man on shack steps watching a man make a decision at a bin",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "One shirt kept, one binned. The rule not said."
+}

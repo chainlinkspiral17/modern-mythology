@@ -1,0 +1,131 @@
+{
+  "id": "dw_2006-09-13_nine_years_after",
+  "title": "Nine Years · after",
+  "strip": "drift_wood",
+  "date": "2006-09-13",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Anniversary",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2006 · fixture week · deepening xvii)",
+  "logline": "The day after nine years: the corn tray in the bin, the stool, and Wood at the drafting table with the anniversary strip done and the stick chorus at the bottom of it, drawn in, small, for the first time on purpose. Two months before the helicopter.",
+  "cast": [
+    "wood_26",
+    "barnaby",
+    "extra_stick_chorus"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. WOOD at the table with yesterday's strip finished. BARNABY under it.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "at the table",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "under the table",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the finished strip"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man at a drafting table with a finished comic strip before him and a dog beneath",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The strip, close: a man eating corn at a counter; along the bottom, small, a row of stick figures.",
+      "characters": [
+        {
+          "id": "extra_stick_chorus",
+          "pose": "drawn in, small",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the strip"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close on a drawn comic strip showing a man eating corn at a counter with a tiny row of stick figures along its bottom",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD looking at the row a while.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "looking",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a man looking at a small detail on a drawing for a long moment",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD adding one more stick figure at the row's end, then capping the pen.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "adding one, capping the pen",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a man's pen adding one more tiny stick figure to a row and then capping the pen",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats; Sundays in watercolor, improving",
+    "palette": "limited, muddy; Sundays gray-green, rust, one warm",
+    "paper": "bristol; the browser; newsprint from 2008"
+  },
+  "notes": "On purpose, the first time. Two months before the helicopter."
+}

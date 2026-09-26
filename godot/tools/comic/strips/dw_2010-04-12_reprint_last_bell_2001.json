@@ -1,0 +1,152 @@
+{
+  "id": "dw_2010-04-12_reprint_last_bell_2001",
+  "title": "Reprint · Last Bell, 2001",
+  "strip": "drift_wood",
+  "date": "2010-04-12",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Reprints",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Reprints · deepening xvii)",
+  "logline": "The papers run the June 2001 Last Bell re-inked: the sidewalk, the bell, Gully's flatbed and the honk, 'You're not in there anymore.' 'I know.' The 2010 hand makes the honk a cleaner shape and the sidewalk longer. The book runs it beside the original.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "gully_17",
+    "extra_student"
+  ],
+  "location": "dw_school_front",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": "A second, smaller date under the gull: 2001."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The school from across the road, 3:05, the bell shape — drawn in 2010, the shape cleaner. WOOD and BARNABY on the far sidewalk, the sidewalk longer than in 2001.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "standing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "sitting",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the bell"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a young man and a small dog on a long sidewalk across from a small-town high school with a clean jagged sound shape at its door, gray wash, no words",
+        "negative": "",
+        "notes": "A reprint: the script of dw_2001-06-01 in the 2010 hand."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "wide",
+      "composition": "The doors open; students pour toward the beach road.",
+      "characters": [
+        {
+          "id": "extra_student",
+          "pose": "the crowd",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, students pouring out of a school toward a beach road, gray wash",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The flatbed passing, GULLY's arm out, the honk a clean shape.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "arm out",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the flatbed"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "You're not in there anymore."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a flatbed truck passing with a young man's arm out the window and a clean honk shape",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD watching the truck go, the dog looking up.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "watching",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "looking up",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "I know."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a young man watching a truck leave with a small dog looking up at him, gray wash",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "the 2010 hand re-inking the 2001 script",
+    "palette": "gray wash",
+    "paper": "bristol"
+  },
+  "notes": "Reprint pair, Last Bell 2001. The sidewalk longer in 2010."
+}

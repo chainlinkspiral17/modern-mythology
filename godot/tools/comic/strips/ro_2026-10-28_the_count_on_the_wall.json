@@ -1,0 +1,49 @@
+{
+  "id": "ro_2026-10-28_the_count_on_the_wall",
+  "title": "The count on the wall",
+  "strip": "roflcopter",
+  "date": "2026-10-28",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Boxes",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xviii)",
+  "logline": "Forty box numbers written in a column on the garage wall in pencil beside the door, the way a child's heights get marked — 21 at knee height, 40 at the top of his reach — and the pup's height marked once among them, low, in 2015. The register as a growth chart.",
+  "cast": [],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A garage wall beside the door with a column of pencilled numbers rising from knee height to the top of a man's reach, one small mark low among them with a dog's name space left blank.",
+      "characters": [],
+      "props": [
+        "the column of numbers"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a garage wall beside a door with a column of pencilled numbers rising from knee height to the top of a man's reach and one small separate mark low among them, no words legible",
+        "negative": "",
+        "notes": "Letter after: 21…40; the pup's mark 2015."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The register as a growth chart.",
+  "layout": "single page, no borders"
+}

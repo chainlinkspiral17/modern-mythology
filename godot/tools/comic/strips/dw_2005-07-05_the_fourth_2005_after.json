@@ -1,0 +1,126 @@
+{
+  "id": "dw_2005-07-05_the_fourth_2005_after",
+  "title": "The Fourth, 2005 · after",
+  "strip": "drift_wood",
+  "date": "2005-07-05",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Fourth on the Bay",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2005 · fixture week · deepening xvii)",
+  "logline": "The morning after: Gully sweeping the dock, and Wood's stool at the counter with a coffee on it gone cold from last night, untouched, because he left early. Gully doesn't pour it out. He puts a saucer over it.",
+  "cast": [
+    "gully_27",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The dock in the morning, spent tubes, GULLY sweeping. BARNABY on the planks.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "sweeping",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "spent tubes"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a stocky man in an apron sweeping spent firework tubes on a dock with a small dog nearby",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Inside: the end stool, a full cup of coffee on the counter before it, cold.",
+      "characters": [],
+      "props": [
+        "a cold coffee"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a shop's end stool with a full untouched cup of coffee on the counter before it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "GULLY looking at the cup.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "looking at the cup",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a stocky man in an apron looking at a cold cup of coffee on a counter",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "GULLY setting a saucer over it. Leaving it.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "setting a saucer on the cup",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a saucer"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a stocky man setting a saucer upside down over a cup of coffee on a counter",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "A saucer over it. Where Wood went: not said."
+}

@@ -1,0 +1,132 @@
+{
+  "id": "dw_2009-02-16_crab_derby_2009_after",
+  "title": "Crab Derby, 2009 · after",
+  "strip": "drift_wood",
+  "date": "2009-02-16",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2009 · fixture week · deepening xvii)",
+  "logline": "The Monday after: Maria at the wall with the flyer, reading the two crabs, and turning to look at Gully through the window, and Gully behind the counter turning red in a panel that has no color. Wood on the stool draws the red in hatching.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "extra_maria",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The wall from the dock: MARIA reading the new flyer, the two crabs facing each other.",
+      "characters": [
+        {
+          "id": "extra_maria",
+          "pose": "reading the flyer",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the flyer"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a woman with a dark braid on a dock reading a flyer with two crabs facing each other pinned to a shingle wall",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "MARIA turning to look through the window at the counter.",
+      "characters": [
+        {
+          "id": "extra_maria",
+          "pose": "turning to the window",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a woman turning from a wall to look through a shop window",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "GULLY behind the counter, going red — drawn in tight hatching across the cheeks.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "going red, in hatching",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a stocky man behind a counter with his cheeks drawn in tight cross-hatching to show a blush",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD on the stool, hatching furiously on the pad. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "hatching on the pad",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the pad"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man on a stool hatching rapidly on a pad with a small dog at his feet",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; Sundays the point",
+    "palette": "limited; Sundays gray-green, rust, fog",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "The red in hatching."
+}

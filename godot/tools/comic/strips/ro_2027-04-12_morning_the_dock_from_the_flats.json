@@ -1,0 +1,49 @@
+{
+  "id": "ro_2027-04-12_morning_the_dock_from_the_flats",
+  "title": "Morning, the dock from the flats",
+  "strip": "roflcopter",
+  "date": "2027-04-12",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "Spring",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xviii)",
+  "logline": "One of the mornings, from out on the flats looking back: the dock small, the shack, the chair at the dock's end, the ramp, the town behind, the ridge with nothing over it. The final page's view, turned around. Thirteen days before.",
+  "cast": [],
+  "location": "dw_mudflats",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "From far out on gold morning mudflats looking back: a small dock with a shingle shack, a lawn chair at the dock's end, a plank ramp, a small town behind and a wooded ridge with nothing above it.",
+      "characters": [],
+      "props": [
+        "the chair, at the end"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, from far out on gold morning tidal flats looking back at a small wooden dock with a shingle shack, a lawn chair at its end and a plank ramp, a small town behind and a wooded ridge with nothing above it, no people, no words",
+        "negative": "",
+        "notes": "The final page's view, reversed. Compare ro_2027-04-25."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Turned around.",
+  "layout": "single page, no borders"
+}

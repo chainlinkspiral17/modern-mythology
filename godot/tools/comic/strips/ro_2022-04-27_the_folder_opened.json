@@ -1,0 +1,50 @@
+{
+  "id": "ro_2022-04-27_the_folder_opened",
+  "title": "The folder, opened",
+  "strip": "roflcopter",
+  "date": "2022-04-27",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Reading Room",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xviii)",
+  "logline": "The (finch) folder open on the reading-room table and the first sheet in it: not a strip — a photocopy of a 1997 Timberline front page, the strip's back page turned to the front by the copy. The archive's order, not his. He leaves it that way.",
+  "cast": [],
+  "location": "dw_library_back_room",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A gray folder open on a library table under a green lamp with a photocopied 1997 school newspaper front page on top, the copy slightly skewed.",
+      "characters": [],
+      "props": [
+        "the folder, open",
+        "the Timberline copy"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a gray folder open on a library table under a green-shaded lamp with a photocopied school newspaper front page on top slightly skewed, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The archive's order, not his.",
+  "layout": "single page, no borders"
+}

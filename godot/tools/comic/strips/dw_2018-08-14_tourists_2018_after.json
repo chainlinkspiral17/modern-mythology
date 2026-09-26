@@ -1,0 +1,151 @@
+{
+  "id": "dw_2018-08-14_tourists_2018_after",
+  "title": "Tourist Season, 2018 · the next day",
+  "strip": "drift_wood",
+  "date": "2018-08-14",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "Tourist Season",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2018 · fixture week · deepening xvii)",
+  "logline": "The day after Wood signs the parody 'Drift Wood': the tourist back, having looked it up, saying that's not his name. Wood says it's the strip's. The tourist wants it signed again with the real one. Wood signs it 'Drift Wood' again, smaller, underneath.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii",
+    "extra_tourists"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The seawall. A TOURIST with a printed parody strip, signed. WOOD on the bench. The PUP under it.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "with the signed parody",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "on the bench",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "under the bench",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the parody, signed"
+      ],
+      "balloons": [
+        {
+          "who": "TOURIST",
+          "text": "That's not your name. I looked."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a tourist holding a printed stick-figure comic up to a thin man on a seawall bench with a small three-legged dog beneath it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "It's the strip's."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a thin man on a bench answering mildly",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The TOURIST holding out the pen again.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "holding out a pen",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a pen"
+      ],
+      "balloons": [
+        {
+          "who": "TOURIST",
+          "text": "Sign it with the real one."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a tourist holding out a pen insistently",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD signing 'Drift Wood' again, smaller, under the first.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "signing again, smaller",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close on a man's hand signing the same two words a second time smaller beneath the first on a printed comic",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Drift Wood, twice."
+}
