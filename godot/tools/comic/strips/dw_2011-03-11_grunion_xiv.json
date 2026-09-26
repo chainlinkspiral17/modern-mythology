@@ -1,0 +1,160 @@
+{
+  "id": "dw_2011-03-11_grunion_xiv",
+  "title": "The Grunion Run, xiv",
+  "strip": "drift_wood",
+  "date": "2011-03-11",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Grunion Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2008–2011 · deepening)",
+  "logline": "Fourteenth year. Wagner's dark behind them. Wood carries the dog to the surf line and sets him at the water's edge and the dog puts one paw in.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "extra_maria",
+    "barnaby"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The beach, lanterns, the run. GULLY and MARIA at the thermos, the baby in a carrier on Maria. WOOD carrying BARNABY down the sand.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "thermos",
+          "expression": ""
+        },
+        {
+          "id": "extra_maria",
+          "pose": "cups, baby carrier",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "carrying the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "carried",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lanterns",
+        "fish",
+        "baby carrier"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a night beach festival with lanterns, a couple at a thermos with a baby in a carrier, a thin man carrying an old dog down the sand toward the surf, muddy watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Wood setting the dog down at the water's edge, among the fish.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "setting the dog down",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "at the water's edge",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "fish",
+        "surf"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man gently setting an old dog down at a surf line flashing with small silver fish, lantern light, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The dog's one paw in the water. A fish against it. The dog looking at it.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "one paw in the water",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "fish"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of an old dog's paw in shallow water with a small silver fish against it, the dog looking down, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Silent. The fish. The lanterns. The dog at the edge, one paw in. Wood beside him on the sand. Twelve years of this beach in one paw.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "on the sand beside the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "fish",
+        "lanterns"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "silent wide night beach panel: an old dog with one paw in a surf line full of silver fish, a man sitting on the sand beside it, lanterns, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; Sundays the point",
+    "palette": "limited; Sundays gray-green, rust, fog",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "One paw in. The last Grunion Run the dog goes to."
+}

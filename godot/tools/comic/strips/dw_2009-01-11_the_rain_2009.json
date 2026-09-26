@@ -1,0 +1,120 @@
+{
+  "id": "dw_2009-01-11_the_rain_2009",
+  "title": "Sunday · the Rain, 2009",
+  "strip": "drift_wood",
+  "date": "2009-01-11",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Rain",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2008–2011 · deepening)",
+  "logline": "Twelfth January. The frame shop's rain alley. The buckets. The dog, ten, under the eave instead of in it.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the rain alley. Two buckets. Rain. Wood on one, in the rain. The dog under the eave, dry, ten.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "on a bucket in the rain",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "under the eave, dry",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "buckets",
+        "alley",
+        "eave"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a narrow alley in dense rain with a man sitting on an upturned spackle bucket in the wet and an old dog sheltering dry under the eave, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Wet and dry"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the dog's face under the eave, watching him.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "watching",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of an old dog's face under an eave watching someone out in the rain, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Watching"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: Wood has carried the bucket under the eave and sits beside the dog. Both dry. The rain, held.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "on the bucket under the eave",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "beside",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "bucket under the eave",
+        "rain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man and an old dog side by side under a shop's eave, a spackle bucket brought in from the rain, the alley pouring beyond, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Both dry"
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; Sundays the point",
+    "palette": "limited; Sundays gray-green, rust, fog",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "The 2001 Rain's framing inverted: this time the dog stays dry and Wood comes in.",
+  "layout": "tiers, portrait page"
+}

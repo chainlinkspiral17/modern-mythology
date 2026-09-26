@@ -1,0 +1,165 @@
+{
+  "id": "dw_2009-07-04_the_fourth_2009",
+  "title": "The Fourth, 2009",
+  "strip": "drift_wood",
+  "date": "2009-07-04",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Fourth on the Bay",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2008–2011 · deepening)",
+  "logline": "Three weeks married. Gully and Maria at the machine. Wood on the steps. The chair: Maria drags it out from under the eave and sits in it, and Gully lets her, and that's that.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "extra_maria",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The dock, fireworks white on blue. GULLY pouring. MARIA dragging the lawn chair out from under the eave into the open, sitting in it, feet up on a crab pot. WOOD on the steps. BARNABY.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "pouring",
+          "expression": ""
+        },
+        {
+          "id": "extra_maria",
+          "pose": "dragging the chair out, sitting",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "steps",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lawn chair, dragged out",
+        "crab pot"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a crowded dock at night under white fireworks, a practical woman dragging an old lawn chair out from under a shack's eave into the open and sitting in it with her feet on a crab pot, a man in an apron pouring, a thin man on the steps with a dog, muddy watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Gully, watching her do it. Not stopping her.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "watching",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a man in an apron watching something with a face that decides to let it happen, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Maria, in the chair, to Wood on the steps.",
+      "characters": [
+        {
+          "id": "extra_maria",
+          "pose": "in the chair",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "MARIA",
+          "text": "Whose chair."
+        },
+        {
+          "who": "WOOD",
+          "text": "His uncle's."
+        },
+        {
+          "who": "MARIA",
+          "text": "He said."
+        },
+        {
+          "who": "WOOD",
+          "text": "Then why'd you ask."
+        },
+        {
+          "who": "MARIA",
+          "text": "To see if you'd say it."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman in a lawn chair speaking across to a thin man on shack steps, fireworks light",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The finale. White. The chair in the open, occupied, for good. The eave empty for the first time in nine years.",
+      "characters": [],
+      "props": [
+        "finale",
+        "the chair in the open",
+        "the empty eave"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a fireworks finale in white over a blue night bay above a dock where an old lawn chair sits out in the open with a woman in it and the shack's eave is empty, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; Sundays the point",
+    "palette": "limited; Sundays gray-green, rust, fog",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "Maria takes the chair. 'To see if you'd say it.' The eave empty."
+}

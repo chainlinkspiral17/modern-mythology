@@ -1,0 +1,159 @@
+{
+  "id": "dw_2008-06-06_last_bell_2008",
+  "title": "Last Bell, 2008",
+  "strip": "drift_wood",
+  "date": "2008-06-06",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Last Bell",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2008–2011 · deepening)",
+  "logline": "The bell. Wood is at the laundromat, restocking a rack that's been empty of digests for five years. Old habit. He hears it from there.",
+  "cast": [
+    "wood_26",
+    "barnaby",
+    "laundromat_owner"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The laundromat. WOOD at the free rack, not restocking anything — there's nothing to restock — just straightening the real-estate flyers. BARNABY. The OWNER, older, folding.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "straightening flyers at the rack",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "laundromat_owner",
+          "pose": "folding",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "rack",
+        "flyers"
+      ],
+      "balloons": [
+        {
+          "who": "OWNER",
+          "text": "You still do that."
+        },
+        {
+          "who": "WOOD",
+          "text": "Do what."
+        },
+        {
+          "who": "OWNER",
+          "text": "Come in and touch the rack."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin man straightening real-estate flyers in a laundromat's free rack with a dog beside him, an older man folding towels, muddy flats",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The bell, through the window, jagged. 3:05.",
+      "characters": [],
+      "props": [
+        "window",
+        "bell shape"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "BRRRRING",
+      "image": {
+        "prompt": "a laundromat window with a jagged bell-sound shape drawn coming through it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood's hand on the empty slot in the rack where the digest went.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "hand on the empty slot",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "empty slot"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a hand resting on an empty slot in a wire free-paper rack, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Wood and the dog leaving. The owner watching. The rack, with everything in it but the thing he touched.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "leaving",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "laundromat_owner",
+          "pose": "watching",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "rack"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin man and a dog leaving a laundromat past a free rack, an older man watching them go, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; Sundays the point",
+    "palette": "limited; Sundays gray-green, rust, fog",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "Five years since the digest. He still touches the rack."
+}

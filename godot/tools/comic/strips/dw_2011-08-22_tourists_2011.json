@@ -1,0 +1,145 @@
+{
+  "id": "dw_2011-08-22_tourists_2011",
+  "title": "Tourist Season, 2011",
+  "strip": "drift_wood",
+  "date": "2011-08-22",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Tourist Season",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2008–2011 · deepening)",
+  "logline": "Wood's first week on nights. He sleeps through August. The tourists are a rumor he hears from Gully.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage, 2 PM, blinds drawn. WOOD asleep face down on the bed, the polo still on. BARNABY asleep on the polo's back. Through the blinds: August, cars, voices drawn as small marks.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "asleep face down, polo on",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep on his back",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "drawn blinds",
+        "polo",
+        "voices as marks"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a garage apartment at 2 PM with the blinds drawn, a man asleep face down on a bed still wearing a maroon motel polo, an old dog asleep on his back, small voice-marks coming through the blinds, muddy flats",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "GULLY in the door with a coffee. Looking at the two of them. Setting it down. Leaving.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "setting down a coffee, leaving",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "coffee"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky man in an apron quietly setting a paper cup of coffee on a table in a dim garage and leaving, a man and dog asleep, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "6 PM. Wood up. The coffee cold. A note under it in grease pencil: 'Town's full. You missed nothing. — G.'",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "reading the note",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "cold coffee",
+        "note"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man holding a cold paper cup and reading a butcher-paper note in grease pencil beneath it",
+        "negative": "",
+        "notes": "Letter after: Town's full. You missed nothing. — G."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "10:40 PM. The polo. The lamp. The pad. Wood drawing the tourists he didn't see, from Gully's four words. The dog. The hum line beginning.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lamp",
+        "clock: 10:40",
+        "hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man in a motel polo drawing at night under a green lamp with a dog beneath the table, a clock reading 10:40, a flat line beneath the panel, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; Sundays the point",
+    "palette": "limited; Sundays gray-green, rust, fog",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "Nights. August as a rumor. 'You missed nothing.'"
+}

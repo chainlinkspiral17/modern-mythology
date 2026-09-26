@@ -1,0 +1,160 @@
+{
+  "id": "dw_2008-08-18_tourists_2008",
+  "title": "Tourist Season, 2008",
+  "strip": "drift_wood",
+  "date": "2008-08-18",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Tourist Season",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2008–2011 · deepening)",
+  "logline": "The coastal weekly runs the strip; the tourists now read it in the paper at Gully's and then look up. Wood has to be somewhere else in August.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby",
+    "extra_tourists"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's, August. Three TOURISTS with the weekly open to page fourteen, looking from the strip to the room. The end stool empty.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "three, with the paper, looking around",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "newspapers",
+        "empty stool"
+      ],
+      "balloons": [
+        {
+          "who": "TOURIST",
+          "text": "Is he—"
+        },
+        {
+          "who": "GULLY",
+          "text": "Out."
+        },
+        {
+          "who": "TOURIST",
+          "text": "Where does he—"
+        },
+        {
+          "who": "GULLY",
+          "text": "Out."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "three tourists at a bait-shop counter holding a local weekly open to a comic page and looking around the room, an empty stool at the end, a man in an apron answering in one word, muddy flats",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "wide",
+      "composition": "The beach, far end. WOOD and BARNABY on the drift log. Nobody. The pad.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "on the log",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "drift log",
+        "empty beach"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin man and an old dog on a bleached drift log at the far end of an empty beach, a drawing pad, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The pad: Gully at the counter, three tourists, the empty stool, drawn from memory, exactly.",
+      "characters": [],
+      "props": [
+        "pad"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a drawing pad with a sketch of a shop counter, three tourists and an empty stool",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Evening. Wood walking back up the beach. Gully's chimney. The strip he'll post tomorrow is the one he drew about not being there.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "walking back",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "beach",
+        "distant chimney"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin man and a dog walking back up a beach at evening toward a distant shingle shack's chimney smoke, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; Sundays the point",
+    "palette": "limited; Sundays gray-green, rust, fog",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "August: he's out. The strip about not being there."
+}

@@ -1,0 +1,144 @@
+{
+  "id": "dw_2011-06-03_last_bell_2011",
+  "title": "Last Bell, 2011",
+  "strip": "drift_wood",
+  "date": "2011-06-03",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Last Bell",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2008–2011 · deepening)",
+  "logline": "Two weeks after being let go. The bell. Wood is on the beach at 3:05 with the lamp — he's carried it down to draw by. The strip finds that funny and then doesn't.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The beach, 3:05 PM. WOOD on the drift log. Beside him on the sand: the green swing-arm lamp, unplugged, carried down. BARNABY. The bell, faint, from town.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "on the log",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the lamp on the sand",
+        "drift log"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "brrring",
+      "image": {
+        "prompt": "a thin man on a bleached drift log on a beach with a green enameled swing-arm lamp set unplugged on the sand beside him, an old dog, a faint bell sound from a distant town, muddy flats",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The lamp on the sand. The cord trailing to nothing.",
+      "characters": [],
+      "props": [
+        "lamp",
+        "cord in the sand"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a green swing-arm lamp standing on beach sand with its cord trailing away to nothing",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, to the dog.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "I know. I know there's no outlet. It's the principle. It's my lamp and I'm drawing by it."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man on a beach log explaining to a dog why he brought a lamp, rueful",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Wood drawing. The lamp beside him, off, in daylight. The dog. The tide. It works fine.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lamp",
+        "tide"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man drawing on a beach log beside an unlit lamp in full daylight, an old dog, the tide coming in, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; Sundays the point",
+    "palette": "limited; Sundays gray-green, rust, fog",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "The lamp on the beach. It works fine."
+}

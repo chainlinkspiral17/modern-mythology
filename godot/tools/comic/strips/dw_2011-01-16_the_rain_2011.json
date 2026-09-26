@@ -1,0 +1,110 @@
+{
+  "id": "dw_2011-01-16_the_rain_2011",
+  "title": "Sunday · the Rain, 2011",
+  "strip": "drift_wood",
+  "date": "2011-01-16",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Rain",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2008–2011 · deepening)",
+  "logline": "Fourteenth January. The first Rain after the sabbatical. Three tiers of the bay. The strip is quieter than it was.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_mudflats",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": "The gull, and under the date, small, a second date."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the mudflats in rain from the bluff. Gray on gray. Nobody.",
+      "characters": [],
+      "props": [
+        "mudflats",
+        "rain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "mudflats at low tide in January rain seen from a bluff, gray on gray watercolor, no figures, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Flats"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the drift log. A man sitting on it with a dog in his lap, in the rain, from behind.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "on the log, from behind",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "in his lap",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "drift log"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man seen from behind sitting on a bleached drift log in the rain with an old dog in his lap, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Log"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the flats, the rain thinning, the man walking back carrying the dog. A second date under the mark.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "walking back, carrying the dog",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "flats",
+        "rain thinning"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man carrying an old dog back across mudflats as the rain thins, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Back"
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; Sundays the point",
+    "palette": "limited; Sundays gray-green, rust, fog",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "",
+  "layout": "tiers, portrait page"
+}
