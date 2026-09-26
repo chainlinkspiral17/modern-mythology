@@ -128,6 +128,23 @@ panel counts; marks from `eras.json`; every panel has a composition
 and an image prompt; **no character id beginning `arthur`** — the
 author is never on the page (`lore/drift_wood/_AUTHORIAL_RULE.md`).
 
+## Lettering and prompt length
+
+The lettered prompt carries every balloon verbatim plus a lettering
+rule (complete text, balloon sized to the sentence, never cut a
+word, no other words). Models have prompt limits — gen4_image takes
+1000 characters, and most lettered prompts are 1,200–3,000 — so
+each job also carries a **compact** prompt: the style line
+shortened, the per-panel boilerplate stripped, descriptions cut to
+their first sentence, **dialogue untouched**. The runner sends the
+full prompt to models that take it, the compact one to gen4, and
+falls back to compact when a provider rejects the length. The
+inspector's PROMPT tab shows both with their character counts. If a
+compact prompt is still over 1000, gen4 will cut its end: use
+another model or shorten that strip's dialogue. (Before this, the
+runner chopped every prompt at 1000 characters, which is why balloons
+came out with missing text.)
+
 ## How the whole-strip prompt is built
 
 `strip-prompts` composes, per strip:
