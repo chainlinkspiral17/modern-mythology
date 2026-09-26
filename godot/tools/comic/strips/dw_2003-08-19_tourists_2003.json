@@ -1,0 +1,167 @@
+{
+  "id": "dw_2003-08-19_tourists_2003",
+  "title": "Tourist Season, 2003",
+  "strip": "drift_wood",
+  "date": "2003-08-19",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Tourist Season",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2002–2003)",
+  "logline": "A tourist finds Gully's. Then twelve. Wood watches the corkboard fill with things that aren't his.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby",
+    "extra_tourists"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Gully's, August, a line out the door. Fleece, sun hats, kayaks on car roofs. GULLY pulling shots two at a time. WOOD on the stool, pushed to the end of the counter.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "pulling shots, frantic",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "on the stool, crowded",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "under it",
+          "expression": ""
+        },
+        {
+          "id": "extra_tourists",
+          "pose": "a line",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "line",
+        "kayaks on cars",
+        "the corkboard"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small bait-and-espresso shop in August with a line of tourists in fleece and sun hats out the door, a young man in an apron pulling two shots at once, another crowded onto the end stool with a drawing pad, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The corkboard: Wood's rough now surrounded by a lost-cat flyer, a kayak rental card, a tide table, a photo of a tourist holding a crab.",
+      "characters": [],
+      "props": [
+        "corkboard filling up"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a corkboard above a shop register: a pencil sketch surrounded by a lost-cat flyer, a kayak rental card, a tide table and a snapshot of a tourist holding a crab",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "A TOURIST, pointing at the rough.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "pointing at the corkboard",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "pouring",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "TOURIST",
+          "text": "Who did that? The sketch."
+        },
+        {
+          "who": "GULLY",
+          "text": "Regular."
+        },
+        {
+          "who": "TOURIST",
+          "text": "It's really good."
+        },
+        {
+          "who": "GULLY",
+          "text": "Yeah."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a tourist pointing at a pencil sketch on a corkboard while the young man behind the counter keeps pouring and answers in one word",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood on the stool, having heard all of it. Not looking up. Drawing the line out the door. The dog asleep on his foot.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "drawing, not looking up",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep on his foot",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "pad: the line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man on a shop stool drawing the line of tourists out the door without looking up, a small dog asleep on his foot, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Regular.' 'Yeah.' Gully's two-word review is the strip's only one for years."
+}

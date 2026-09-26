@@ -1,0 +1,176 @@
+{
+  "id": "dw_2003-06-20_the_opening",
+  "title": "The opening",
+  "strip": "drift_wood",
+  "date": "2003-06-20",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Gully's Tackle & Roast",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2002–2003)",
+  "logline": "The sign is finished. GULLY'S TACKLE & ROAST. Wood is the first regular. He was the first regular before it opened.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The shack, now a shop: the sign finished and hung, hand-painted — GULLY'S TACKLE & ROAST. The espresso machine visible through the window. A crab pot with a menu chalked on a board propped in it. GULLY on a ladder. WOOD below with BARNABY.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "on a ladder, hanging the sign",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "below",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "finished sign",
+        "ladder",
+        "chalkboard menu in a crab pot"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Straight?"
+        },
+        {
+          "who": "WOOD",
+          "text": "No."
+        },
+        {
+          "who": "GULLY",
+          "text": "Good."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a shingle shack at a boat launch with a freshly hand-painted sign reading GULLY'S TACKLE & ROAST being hung by a young man on a ladder, a chalkboard menu propped in a crab pot, a young man and a small dog watching below, brush-pen black and white",
+        "negative": "",
+        "notes": "Sign text may be lettered after: GULLY'S TACKLE & ROAST."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The chalkboard: NIGHTCRAWLERS · ESPRESSO · CHOWDER (SAT) · BAIT · DAY-OLD MAPLE BARS. In Gully's block capitals.",
+      "characters": [],
+      "props": [
+        "chalkboard menu"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a chalkboard menu in blocky capitals listing bait, espresso, chowder and day-old maple bars, propped inside a crab pot",
+        "negative": "",
+        "notes": "Letter after."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Inside. The counter. Gully behind it in the apron. Wood on the one stool, the pad out. The first customer is the only customer.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "behind the counter",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "on a stool, pad out",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "under the stool",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "counter",
+        "stool",
+        "machine",
+        "bait cooler",
+        "corkboard, empty"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "What'll it be."
+        },
+        {
+          "who": "WOOD",
+          "text": "I've been here since 1998."
+        },
+        {
+          "who": "GULLY",
+          "text": "What'll it be, regular."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "inside a small bait-and-espresso shop, a young man in an apron behind the counter, another on the single stool with a drawing pad, a dog beneath, an empty corkboard on the wall behind the register",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Gully pins a torn-off pencil rough — Wood's, from the pad, the sign-hanging — to the corkboard above the register. The first thing on it.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "pinning a rough to the corkboard",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "corkboard with one pencil rough"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man in an apron pinning a torn-out pencil sketch to an empty corkboard above a shop register, black and white, no words",
+        "negative": "",
+        "notes": "The first item on the corkboard: a pencil rough of Gully hanging the sign. The corkboard fills for twenty-four years."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Gully's opens. The corkboard begins. Wood: the first regular, before there was a shop."
+}

@@ -1,0 +1,147 @@
+{
+  "id": "dw_2002-10-11_noir_5",
+  "title": "Noir week, v",
+  "strip": "drift_wood",
+  "date": "2002-10-11",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Noir Week",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2002–2003)",
+  "logline": "Friday. The noir ends. The dog comes back. The trench coat goes in the wastebasket, on the page.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": "The gull, back."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Noir: the figure in the trench coat at a table in a dark room, a single lamp. A drawing under his hand.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "trench coat, at a table",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lamp",
+        "drawing"
+      ],
+      "balloons": [],
+      "caption": "Friday. The case was going nowhere. Cases in Small Wood never went anywhere. That was the town's alibi.",
+      "sfx": "",
+      "image": {
+        "prompt": "a trench-coated figure at a table under a single lamp in a dark room, noir shadows, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The door. A scratch. The figure looks up.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "looking up",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "door"
+      ],
+      "balloons": [],
+      "caption": "Then the door.",
+      "sfx": "skrtch",
+      "image": {
+        "prompt": "a dark room, a door with a scratching sound drawn at its base, a man at a table looking up",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "BARNABY comes through the door — drawn, suddenly, in the strip's normal style, not noir. He stands in the noir room like a correction.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "in the doorway, normal style",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "noir, staring",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the door"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small scruffy dog drawn in a light cartoon style standing in the doorway of a heavy noir room where a trench-coated figure sits staring at it, the two styles clashing in one panel",
+        "negative": "",
+        "notes": "Two styles in one panel: noir room, normal dog. The joke and the ending."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Normal style, all of it. Wood's bedroom. The trench coat in the wastebasket. Wood at the table in the chore coat. The dog on his foot. The lamp is the same lamp.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "chore coat, at the table",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "on his foot",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "trench coat in the wastebasket",
+        "lamp"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "...It's called SLASH. It's going well.",
+          "kind": "small"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man's bedroom in ordinary cartoon style, a trench coat stuffed in the wastebasket, the young man at his table in a chore coat with a small dog on his foot, black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Noir Week ends with the dog walking in. The strip's genre experiments always end this way."
+}

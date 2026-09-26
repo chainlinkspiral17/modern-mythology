@@ -1,0 +1,180 @@
+{
+  "id": "dw_2002-09-13_twenty_two",
+  "title": "Twenty-two",
+  "strip": "drift_wood",
+  "date": "2002-09-13",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Twenty-Two / The Anniversary",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2002–2003)",
+  "logline": "Five years of the strip. Twenty-two years of Wood. The anniversary and the birthday in one week; the strip does one panel for each and two for the dog.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The frame shop backroom. A cupcake with a single candle on the mat cutter. GULLY lighting it. WOOD pretending not to see.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "lighting a candle",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "pretending to work",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "cupcake",
+        "candle",
+        "mat cutter"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Twenty-two."
+        },
+        {
+          "who": "WOOD",
+          "text": "I'm working."
+        },
+        {
+          "who": "GULLY",
+          "text": "On a Friday. Twenty-two."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man in a backwards cap lighting a single candle on a cupcake set on a mat cutter while another young man pretends to keep working, framing backroom, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Wood blowing it out. A tray of corn beside it, because it's also the twelfth.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "blowing out the candle",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "cupcake",
+        "tray of corn"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Also five years of the strip. Yesterday."
+        },
+        {
+          "who": "GULLY",
+          "text": "You put corn on the workbench for a comic."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's a tradition."
+        },
+        {
+          "who": "GULLY",
+          "text": "Since when."
+        },
+        {
+          "who": "WOOD",
+          "text": "Since I said so. Three times now."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man blowing out a candle on a cupcake beside a paper tray of corn on a workbench",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "BARNABY, standing up on hind legs at the bench, nose at the cupcake.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "up on hind legs at the bench",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "cupcake"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a scruffy dog standing on its hind legs with its nose at a cupcake on a workbench",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Barnaby with frosting on his nose. Both men watching him. The candle out. The strip's fifth birthday is a dog with frosting.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "frosting on nose",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "watching",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "watching",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small dog with frosting on its nose, two young men watching it, a spent candle on a workbench, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": ""
+}

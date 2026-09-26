@@ -1,0 +1,147 @@
+{
+  "id": "dw_2002-01-11_the_rain_2002",
+  "title": "The Rain, 2002",
+  "strip": "drift_wood",
+  "date": "2002-01-11",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Rain",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2002–2003)",
+  "logline": "Fifth January. The dock. Silent. The chair is in the rain too.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Gully's dock in January rain. The lawn chair, still there, soaked. WOOD and BARNABY at the shack's eave.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "under the eave",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lawn chair in rain",
+        "dock",
+        "shack eave"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wooden dock in dense January rain with an empty soaked lawn chair on it, a young man and a small dog sheltering under a shingle shack's eave, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "wide",
+      "composition": "Same. Wood walking out to the chair.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "walking to the chair",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "under the eave",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same dock, the young man walking out into the rain toward the empty chair, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "wide",
+      "composition": "Same. Wood carrying the chair back under the eave.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "carrying the chair",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same dock, the young man carrying the folded lawn chair back toward the shack's eave through rain, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Same. The chair under the eave. The dog in it. Wood beside. Rain.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "in the chair",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "beside it",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "chair under the eave"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same shack eave, the lawn chair now sheltered with a small dog sitting in it and the young man standing beside, rain beyond, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The dog sits in the uncle's chair. The strip finally lets someone."
+}
