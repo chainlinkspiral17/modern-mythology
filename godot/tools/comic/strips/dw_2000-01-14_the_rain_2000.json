@@ -1,0 +1,154 @@
+{
+  "id": "dw_2000-01-14_the_rain_2000",
+  "title": "The Rain, 2000",
+  "strip": "drift_wood",
+  "date": "2000-01-14",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Rain",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000)",
+  "logline": "New century. Same rain. Wood has stopped explaining it.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The beach in January rain. WOOD and BARNABY, small, walking the tide line. No dialogue.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "walking",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "ahead",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "rain",
+        "tide line",
+        "kelp"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wide beach in heavy January rain, a young man and a small dog walking the tide line, dense vertical hatching, brush-pen black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "wide",
+      "composition": "Closer. Still walking. Still no dialogue.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "walking, coat over head",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "shaking off water",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "rain",
+        "surf"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man with his coat over his head and a small dog shaking off water on a rainy beach, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "wide",
+      "composition": "The spruce grove at the beach's edge. Rain through it. The two of them at its foot.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "stopped",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "stopped",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "spruce grove",
+        "rain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man and a dog stopped at the foot of a dark spruce grove in rain, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Same. The rain slightly less. That's the whole event.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "spruce",
+        "rain, thinner"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same spruce grove with the rain slightly thinner, two small figures at its foot, black and white, no words",
+        "negative": "",
+        "notes": "Four silent panels. The first fully silent daily. It ran on a Friday and half the digest's readers thought it was a printing error."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The first silent daily. The Rain no longer needs Bresson."
+}

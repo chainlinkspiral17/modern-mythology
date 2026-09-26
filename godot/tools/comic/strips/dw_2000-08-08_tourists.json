@@ -1,0 +1,174 @@
+{
+  "id": "dw_2000-08-08_tourists",
+  "title": "Tourist Season",
+  "strip": "drift_wood",
+  "date": "2000-08-08",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Tourist Season",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000)",
+  "logline": "August. The town full of strangers. Wood frames their whale-watching photos and takes notes.",
+  "cast": [
+    "wood_20",
+    "extra_tourist_couple"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The frame shop, August. A TOURIST COUPLE in matching fleece with a photograph: a gray smudge on gray water.",
+      "characters": [
+        {
+          "id": "extra_tourist_couple",
+          "pose": "in matching fleece, holding a photo",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "photo of a gray smudge",
+        "matching fleece"
+      ],
+      "balloons": [
+        {
+          "who": "TOURIST",
+          "text": "It's a whale."
+        },
+        {
+          "who": "WOOD",
+          "text": "I can see that.",
+          "kind": "small"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a couple in matching fleece vests holding out a photograph of a gray smudge on gray water at a frame-shop counter, a young man behind it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The photo. The smudge. Wood's face, professional.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "professional",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the smudge photo"
+      ],
+      "balloons": [
+        {
+          "who": "TOURIST",
+          "text": "We saw it from the highway. Just — there. It was so real."
+        },
+        {
+          "who": "WOOD",
+          "text": "The highway is where most of the real things are seen from."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a young man keeping a professional face while examining a photo of a gray smudge",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood choosing a frame. Ornate. Gold. The most expensive one. The couple thrilled.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "holding up an ornate gold frame",
+          "expression": ""
+        },
+        {
+          "id": "extra_tourist_couple",
+          "pose": "thrilled",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "ornate gold frame"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "For a whale, only gold."
+        },
+        {
+          "who": "TOURIST",
+          "text": "He gets it!"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man holding up an ornate gold frame to a delighted couple in matching fleece",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "After. The shop empty. Wood at the counter, drawing the couple from memory with great precision and no cruelty at all. He is surprised by that.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "drawing, surprised at himself",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "pad with a careful drawing of the couple"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "...Huh.",
+          "kind": "small"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man alone at a frame-shop counter drawing a careful affectionate sketch of a couple in fleece vests and looking surprised at his own drawing, black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Tourist Season, first instance. The cruelty he planned doesn't arrive. He notices."
+}

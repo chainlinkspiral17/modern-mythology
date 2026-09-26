@@ -1,0 +1,151 @@
+{
+  "id": "dw_1999-12-23_the_phone",
+  "title": "The phone",
+  "strip": "drift_wood",
+  "date": "1999-12-23",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Chloe's First Christmas Away",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000)",
+  "logline": "The phone rings once at 11 PM. The strip is about the ring.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Wood's bedroom, night. The hallway phone visible through the open door on its little table. WOOD drawing. BARNABY asleep.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "hallway phone through the door",
+        "lamp"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man drawing at night in his bedroom, a landline phone visible on a small table through the open door in the hallway, a dog asleep, black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The phone rings. Once. Drawn big.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "pen stopped",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "head up",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "phone"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "RRRING",
+      "image": {
+        "prompt": "a landline phone in a dark hallway ringing, the ring drawn as large jagged sound lines, a young man frozen mid-stroke in the next room",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood halfway to the door. The phone silent. It rang once.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "halfway up from the chair, stopped",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "phone, silent"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man half-risen from his chair, stopped, looking at a silent phone in the hallway",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood back at the table. Not drawing. Barnaby's chin on his slipper. The phone in the door, small, dark.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "sitting, not drawing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "chin on slipper",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "phone, dark"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Wrong number.",
+          "kind": "small"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man sitting at his drawing table not drawing, a dog's chin on his slipper, a dark phone visible through the doorway, black and white",
+        "negative": "",
+        "notes": "One ring. Nobody knows who. The strip doesn't decide."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "One ring at 11 PM. Reserved forever."
+}

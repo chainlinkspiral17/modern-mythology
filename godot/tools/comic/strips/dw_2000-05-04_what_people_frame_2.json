@@ -1,0 +1,162 @@
+{
+  "id": "dw_2000-05-04_what_people_frame_2",
+  "title": "What people frame, ii",
+  "strip": "drift_wood",
+  "date": "2000-05-04",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Heceta Frame & Matting",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000)",
+  "logline": "A wedding photo, 1971. The couple is still married. That's the whole job.",
+  "cast": [
+    "wood_20",
+    "extra_couple"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The counter. An older COUPLE, together, with a photograph: themselves, 1971, a wedding on a dock. The dock is the one at the boat launch.",
+      "characters": [
+        {
+          "id": "extra_couple",
+          "pose": "together at the counter",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "holding the photo",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "1971 wedding photo",
+        "counter"
+      ],
+      "balloons": [
+        {
+          "who": "WOMAN",
+          "text": "The old frame broke."
+        },
+        {
+          "who": "MAN",
+          "text": "She broke it."
+        },
+        {
+          "who": "WOMAN",
+          "text": "It fell."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an older couple at a frame-shop counter handing over a 1971 wedding photograph to a young man, black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The photo: the dock, the couple, younger than Wood is now. The shack behind them, new.",
+      "characters": [],
+      "props": [
+        "the photo: a 1971 wedding on the boat-launch dock"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a 1971 black-and-white wedding photograph of a young couple on a wooden dock with a new-looking shingle shack behind them",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, recognizing the dock.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "That's the boat launch."
+        },
+        {
+          "who": "MAN",
+          "text": "Course it's the boat launch."
+        },
+        {
+          "who": "WOOD",
+          "text": "The shack was new."
+        },
+        {
+          "who": "MAN",
+          "text": "Everything was."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man looking up from a photograph with recognition at an older couple",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood cutting the mat. Silent. The couple waiting, her hand on his arm, exactly as in the photo.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "cutting a mat",
+          "expression": ""
+        },
+        {
+          "id": "extra_couple",
+          "pose": "waiting, her hand on his arm",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "mat cutter"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man cutting a mat at a frame shop while an older couple waits, the woman's hand resting on the man's arm in the same pose as their old wedding photo, black and white, no words",
+        "negative": "",
+        "notes": "The couple returns in the ROFLCOPTER pages, 2023–24, old. Plant them."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": ""
+}

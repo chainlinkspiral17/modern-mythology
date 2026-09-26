@@ -1,0 +1,199 @@
+{
+  "id": "dw_1999-12-21_the_shack",
+  "title": "The shack",
+  "strip": "drift_wood",
+  "date": "1999-12-21",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Chloe's First Christmas Away",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000)",
+  "logline": "Gully's uncle's shack in December. Two men, one dog, no Chloe. Nobody says so.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby",
+    "extra_uncle"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The shack at the boat launch, December, a string of lights on the eave. The UNCLE inside with a space heater. GULLY and WOOD on crab pots outside, BARNABY between them.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "on a crab pot",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "on a crab pot",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "between them",
+          "expression": ""
+        },
+        {
+          "id": "extra_uncle",
+          "pose": "inside, small",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "string of lights",
+        "space heater glow",
+        "crab pots",
+        "rain"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Uncle says I can have the shack when he's done with it."
+        },
+        {
+          "who": "WOOD",
+          "text": "Done how."
+        },
+        {
+          "who": "GULLY",
+          "text": "He didn't say."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a shingle shack at a boat launch with a string of Christmas lights on its eave, two young men sitting on crab pots outside with a small dog between them, an old man inside by a space heater, December rain, black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood, looking up the road toward town.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "looking up the road",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Four days till Christmas."
+        },
+        {
+          "who": "GULLY",
+          "text": "Yep."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a young man in a chore coat looking up a wet road toward a small town",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Gully, feeding the dog a maple bar, not looking at Wood.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "feeding the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "eating",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "maple bar"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "She's not coming."
+        },
+        {
+          "who": "WOOD",
+          "text": "I didn't ask."
+        },
+        {
+          "who": "GULLY",
+          "text": "I know."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a boy in a backwards cap feeding a maple bar to a small dog while pointedly not looking at his friend",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The three of them, small, in front of the shack. The lights. The rain. Nobody says her name.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "shack",
+        "lights",
+        "rain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wide quiet shot of two young men and a small dog sitting in front of a lit shingle shack at a boat launch in December rain, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": ""
+}

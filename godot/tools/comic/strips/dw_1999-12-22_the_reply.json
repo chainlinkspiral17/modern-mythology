@@ -1,0 +1,131 @@
+{
+  "id": "dw_1999-12-22_the_reply",
+  "title": "The reply",
+  "strip": "drift_wood",
+  "date": "1999-12-22",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Chloe's First Christmas Away",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000)",
+  "logline": "Wood writes back. Four drafts. The strip shows none of them.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The table. A postcard of Small Wood — the only one the drugstore sells: the bay, faded. WOOD with a pen. BARNABY asleep.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "pen over a blank postcard",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "blank postcard of the bay",
+        "pen",
+        "wastebasket"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man at a drawing table holding a pen over a blank faded postcard of a bay, a dog asleep under the table, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The wastebasket. One postcard. Then two. Then three. Drawn as a stack.",
+      "characters": [],
+      "props": [
+        "wastebasket with three crumpled postcards"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a wastebasket with three crumpled postcards in it, one more falling",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, on the fourth. Writing fast. We see only the back of his hand.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "writing fast, hand covering the card",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "fourth postcard"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man writing fast on a postcard with his hand covering the words, seen from the side",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "close",
+      "composition": "The card in the mailbox slot, going in. The front: the bay. Whatever it says is inside the box now.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "hand at a mailbox slot",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "mailbox",
+        "the card going in"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a hand sliding a postcard of a bay into a blue mailbox slot, no words",
+        "negative": "",
+        "notes": "Four drafts, none shown. The rule: the reader infers."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": ""
+}

@@ -1,0 +1,145 @@
+{
+  "id": "dw_2000-06-02_last_bell_ii",
+  "title": "Last Bell, ii",
+  "strip": "drift_wood",
+  "date": "2000-06-02",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Last Bell",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000)",
+  "logline": "School lets out. He hasn't been in it for a year. He drives past anyway.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_school_front",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Small Wood High from the road, 3:05 PM. The bell. Kids pouring out. WOOD's Datsun slowing on the road, BARNABY's head out the window.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "driving slowly",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "head out the window",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "school front",
+        "students",
+        "the road"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "BRRRRING",
+      "image": {
+        "prompt": "a small-town high school seen from the road as students pour out at the last bell, an old Datsun slowing on the road with a small dog's head out the window, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood, watching the steps. Three kids sitting on them, not moving. Not his three.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "watching",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "three unknown kids on the steps"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up through a car window of a young man watching three unfamiliar teenagers sitting on school steps",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Barnaby, to Wood, in the way dogs are.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "looking at him",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "I know. It's a school. I'm not sentimental about a school."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small dog in a car looking at the young man driving, who is talking to it defensively",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The Datsun pulling away toward the bay. The school small in the mirror. The strip does not draw the three on the steps again.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "driving on",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "rear-view mirror with the school small in it",
+        "the road to the bay"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old Datsun driving away down a road toward a bay, a school small in the rear-view mirror, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": ""
+}

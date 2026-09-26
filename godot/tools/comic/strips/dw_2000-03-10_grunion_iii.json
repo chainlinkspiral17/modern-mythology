@@ -1,0 +1,163 @@
+{
+  "id": "dw_2000-03-10_grunion_iii",
+  "title": "The Grunion Run, iii",
+  "strip": "drift_wood",
+  "date": "2000-03-10",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Grunion Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000)",
+  "logline": "Third year. Wood brings the dog. The dog loves it. The strip is losing the argument.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The beach, lanterns, the run. BARNABY at the surf line losing his mind at silver fish. GULLY with buckets. WOOD with the pad, and no contempt left.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "frantic at the fish",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "with buckets, laughing",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "pad open, watching the dog",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lanterns",
+        "silver fish",
+        "buckets"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a night beach festival with lanterns, a small dog going wild at hundreds of silver fish flashing on wet sand, a boy in a backwards cap laughing with buckets, a young man with a drawing pad watching the dog, black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Gully.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Say it."
+        },
+        {
+          "who": "WOOD",
+          "text": "Say what."
+        },
+        {
+          "who": "GULLY",
+          "text": "The thing about Truffaut."
+        },
+        {
+          "who": "WOOD",
+          "text": "...He'd have liked the dog."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a boy in a backwards cap grinning and needling his friend, lantern light",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The pad: Barnaby, mid-leap, a fish, lantern light, in four strokes. The best drawing of the dog yet.",
+      "characters": [],
+      "props": [
+        "pad with a four-stroke dog mid-leap"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a drawing pad with a brush-pen sketch of a small dog mid-leap after a fish in four confident strokes",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Silent. The fish. The dog. The lanterns. Wood not drawing. Third year running, the pad closed.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "pad closed, watching",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "in the surf",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "at the water",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "silver fish",
+        "lanterns",
+        "surf"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "silent wide night panel of a surf line alive with small silver fish under lanterns, a small dog splashing in it, a young man sitting with his pad closed watching, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Third Grunion Run. Contempt gone, pad closed, dog in the surf."
+}

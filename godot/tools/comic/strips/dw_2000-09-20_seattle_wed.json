@@ -1,0 +1,147 @@
+{
+  "id": "dw_2000-09-20_seattle_wed",
+  "title": "Wednesday",
+  "strip": "drift_wood",
+  "date": "2000-09-20",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Seattle, Three Days",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000)",
+  "logline": "The framing shop. Foam core. Gully with two sacks. No reference to Monday or Tuesday. The strip never mentions Seattle again.",
+  "cast": [
+    "wood_20",
+    "gully_17"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The frame shop backroom, Small Wood. WOOD cutting foam core with the dull utility knife. Exactly as before.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "cutting foam core",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "foam core",
+        "utility knife",
+        "frames"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man in a chore coat cutting foam core with a dull utility knife in a cluttered picture-framing backroom, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "GULLY in the side door with two grease sacks. Rain.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "in the door, two sacks",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "two grease sacks",
+        "rain"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Clams. Tuesday's. They held up."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a boy in a backwards cap leaning in a shop side door holding up two grease-stained paper sacks in the rain",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood, taking one. Not looking up. Nothing on his face about anything.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "taking a sack, not looking up",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Thanks."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a young man taking a paper sack without looking up from his work, expressionless",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The alley. Two spackle buckets. Two men eating clams in silence. Rain. Same as ever. The strip never says Seattle again.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "on a bucket, eating",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "on a bucket, eating",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "spackle buckets",
+        "alley",
+        "rain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two young men sitting on upturned spackle buckets in a narrow rain alley eating from paper sacks in silence, black and white, no words",
+        "negative": "",
+        "notes": "The leak. Tuesday's clams: he was here Tuesday."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Tuesday's. They held up.' — the strip's own evidence against Monday and Tuesday. Nobody in the strip notices."
+}
