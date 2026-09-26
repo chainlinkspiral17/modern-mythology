@@ -160,7 +160,18 @@ def api_refs():
 
 def api_models():
     import comic_render as cr
-    return {"models": cr.MODELS}
+    return {"models": cr.known_models()}
+
+
+def discover(provider):
+    import comic_render as cr
+    key, src = _read_key(provider)
+    if not key:
+        return {"ok": False, "why": "no key saved for " + provider}
+    try:
+        return cr.discover_models(provider, key)
+    except Exception as e:  # noqa: BLE001
+        return {"ok": False, "why": f"could not reach the provider: {e}"}
 
 
 KEY_FILES = {"runway": (".runway_key", ["RUNWAYML_API_KEY"]), "google": (".google_key", ["GOOGLE_API_KEY", "GEMINI_API_KEY"])}
@@ -414,6 +425,8 @@ class H(BaseHTTPRequestHandler):
                 return self._send(200, set_ref_status(body.get("id"), body.get("status"), body.get("note")))
             if u.path == "/api/keys":
                 return self._send(200, set_key(body.get("provider"), body.get("key")))
+            if u.path == "/api/models/discover":
+                return self._send(200, discover(body.get("provider")))
             if u.path == "/api/keys/test":
                 return self._send(200, test_key(body.get("provider")))
             if u.path == "/api/md":
@@ -548,7 +561,7 @@ function genForm(kind,id,fmt){const prov=KEYS.runway?'runway':'google';const nok
  <label>variants <input type="number" id="g-var" min="1" max="6" value="1"></label><label>seed <input type="number" id="g-seed" placeholder="random"></label>
  ${kind==='strip'?`<label><input type="checkbox" id="g-letter" checked> letter balloons</label><label><input type="checkbox" id="g-refs" checked> attach references</label><label><input type="checkbox" id="g-draft"> allow draft refs</label>`:''}
  <label><input type="checkbox" id="g-over"> replace take 1 (else: new take)</label><label><input type="checkbox" id="g-dry"> dry run</label>
- <button class="go" id="g-go" onclick="generate('${kind}','${id}')">GENERATE</button><span class="empty" id="g-msg"></span><div class="empty" id="g-note" style="grid-column:1/-1"></div></div>`;}
+ <button class="go" id="g-go" onclick="generate('${kind}','${id}')">GENERATE</button><span class="empty" id="g-msg"></span><div class="empty" id="g-note" style="grid-column:1/-1"></div><div class="empty" style="grid-column:1/-1">menu: ${(MODELS[prov]||[]).length} models · <a href="#" onclick="setMode('keys');return false" style="color:var(--gold)">fetch the provider's current list</a> (KEYS → fetch model list)</div></div>`;}
 async function generate(kind,id){let model=$('#g-model').value;if(model==='__custom')model=$('#g-custom').value.trim();const b={kind,id,provider:$('#g-prov').value,model,variants:+$('#g-var').value,seed:$('#g-seed').value,overwrite:$('#g-over').checked,dry_run:$('#g-dry').checked};
  if(kind==='strip'){b.letter=$('#g-letter').checked;b.refs=$('#g-refs').checked;b.include_draft=$('#g-draft').checked;}
  $('#g-go').disabled=true;const r=await api('/api/generate',{method:'POST',body:JSON.stringify(b)});$('#g-go').disabled=false;
@@ -591,17 +604,20 @@ function explain(j){const log=j.log.join('\n');
  if(j.status==='done')return 'Finished with nothing rendered; read the log.';
  if(j.status==='running')return 'Running… the provider usually takes 20–90 seconds.';
  return '';}
-function showLastRun(id){api('/api/jobs').then(d=>{const box=$('#lastrun');if(!box)return;const js=d.jobs.filter(j=>j.target===id);if(!js.length){box.innerHTML='<p class="empty">no runs yet this session. Pick a provider and model above and press GENERATE. The result, or the reason it failed, appears here.</p>';return;}
+let LASTRUN_HTML='';function showLastRun(id){api('/api/jobs').then(d=>{const box=$('#lastrun');if(!box)return;const wasOpen=!!(box.querySelector('details')&&box.querySelector('details').open);const js=d.jobs.filter(j=>j.target===id);if(!js.length){box.innerHTML='<p class="empty">no runs yet this session. Pick a provider and model above and press GENERATE. The result, or the reason it failed, appears here.</p>';return;}
  const j=js[0];const bad=j.log.filter(l=>/✗|error|Error|Traceback|FAILED|400|401|403|429|500/.test(l));const why=explain(j);
- box.innerHTML=`<div class="job" style="border-color:${j.status==='failed'?'var(--red)':j.status==='done'?'var(--em)':'var(--gold)'}"><span class="st ${j.status}">${j.status.toUpperCase()}</span> · ${esc(j.target)} · ${j.provider}${j.commands[1].includes('--model')?' · '+esc(j.commands[1].split('--model ')[1].split(' ')[0]):''}<div style="margin:6px 0;color:var(--text)">${esc(why)}</div>${bad.length?'<pre style="border-color:var(--red)">'+esc(bad.join('\n'))+'</pre>':''}<details><summary style="cursor:pointer;color:var(--dim)">full log</summary><pre>${esc(j.commands.join('\n'))}\n\n${esc(j.log.join('\n'))}</pre></details>${js.length>1?'<div class="empty">'+(js.length-1)+' earlier run'+(js.length>2?'s':'')+' under JOBS</div>':''}</div>`;
+ const html=`<div class="job" style="border-color:${j.status==='failed'?'var(--red)':j.status==='done'?'var(--em)':'var(--gold)'}"><span class="st ${j.status}">${j.status.toUpperCase()}</span> · ${esc(j.target)} · ${j.provider}${j.commands[1].includes('--model')?' · '+esc(j.commands[1].split('--model ')[1].split(' ')[0]):''}<div style="margin:6px 0;color:var(--text)">${esc(why)}</div>${bad.length?'<pre style="border-color:var(--red)">'+esc(bad.join('\n'))+'</pre>':''}<details><summary style="cursor:pointer;color:var(--dim)">full log</summary><pre>${esc(j.commands.join('\n'))}\n\n${esc(j.log.join('\n'))}</pre></details>${js.length>1?'<div class="empty">'+(js.length-1)+' earlier run'+(js.length>2?'s':'')+' under JOBS</div>':''}</div>`;
+ if(html!==LASTRUN_HTML){LASTRUN_HTML=html;box.innerHTML=html;const det=box.querySelector('details');if(det&&(wasOpen||LOGOPEN))det.open=true;if(det)det.ontoggle=()=>{LOGOPEN=det.open;};}
  if(j.status==='running'||j.status==='queued')setTimeout(()=>{if(SEL===id)showLastRun(id);},2000);});}
+let LOGOPEN=false;
 function renderKeys(){const k=KEYS.info||{};const row=p=>{const i=k[p]||{};return `<div class="job" style="border-color:${i.present?'var(--em)':'var(--rule)'}"><span class="st ${i.present?'done':''}">${p.toUpperCase()}</span> · ${i.present?'saved · '+esc(i.masked)+' · from '+esc(i.source):'no key'}${i.hint?'<div style="color:#ff9a8a;margin-top:4px">'+esc(i.hint)+'</div>':''}
- <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap"><input type="password" id="k-${p}" placeholder="${p==='runway'?'paste the developer-API key (starts with key_)':'paste the AI Studio key (starts with AIza)'}" style="flex:1;min-width:280px;background:var(--ink);border:1px solid var(--rule);color:var(--text);font:inherit;padding:4px 6px"><button class="sm ok" onclick="saveKey('${p}')">save</button><button class="sm" onclick="testKey('${p}')">test</button><button class="sm bad" onclick="if(confirm('remove the saved ${p} key?'))saveKey('${p}',true)">remove</button></div>
+ <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap"><input type="password" id="k-${p}" placeholder="${p==='runway'?'paste the developer-API key (starts with key_)':'paste the AI Studio key (starts with AIza)'}" style="flex:1;min-width:280px;background:var(--ink);border:1px solid var(--rule);color:var(--text);font:inherit;padding:4px 6px"><button class="sm ok" onclick="saveKey('${p}')">save</button><button class="sm" onclick="testKey('${p}')">test</button><button class="sm" onclick="discoverModels('${p}')">fetch model list</button><button class="sm bad" onclick="if(confirm('remove the saved ${p} key?'))saveKey('${p}',true)">remove</button></div>
  <div class="empty" style="margin-top:6px">saved to <code>${esc(i.file)}</code> on this machine only (git ignores it)</div><div id="kr-${p}" style="margin-top:6px"></div></div>`;};
- $('#detail').innerHTML='<h2>keys</h2><p class="empty">Two providers. Save a key, then press test: Runway answers with your credit balance; Google answers with the image models your key can see (those go straight into the model menu).</p>'+row('runway')+row('google')+'<h2>where keys come from</h2><ul class="md"><li><b>Runway</b>: dev.runwayml.com → API Keys → New. Developer-API keys start with <code>key_</code>. A key from the Runway app or the MCP is a different thing and the API refuses it with 401.</li><li><b>Google</b>: aistudio.google.com → Get API key. Starts with <code>AIza</code>. Imagen and Gemini image models bill to that key.</li></ul>';}
+ $('#detail').innerHTML='<h2>keys</h2><p class="empty">Two providers. Save a key, press test (Runway answers with your credit balance; Google with what the key can see), then press fetch model list: it asks the provider which model ids it accepts right now — no credits spent — and the menu uses that list from then on (saved in out/models_learned.json).</p>'+row('runway')+row('google')+'<h2>where keys come from</h2><ul class="md"><li><b>Runway</b>: dev.runwayml.com → API Keys → New. Developer-API keys start with <code>key_</code>. A key from the Runway app or the MCP is a different thing and the API refuses it with 401.</li><li><b>Google</b>: aistudio.google.com → Get API key. Starts with <code>AIza</code>. Imagen and Gemini image models bill to that key.</li></ul>';}
 async function saveKey(p,remove){const v=remove?'':$('#k-'+p).value;const r=await api('/api/keys',{method:'POST',body:JSON.stringify({provider:p,key:v})});await loadKeys();renderKeys();$('#kr-'+p).innerHTML=r.error?'<span style="color:#ff9a8a">'+esc(r.error)+'</span>':(remove?'removed':'saved · now press test');if(!remove&&!r.error)testKey(p);}
+async function discoverModels(p){const b=$('#kr-'+p);b.innerHTML='asking '+p+' which models it accepts…';const r=await api('/api/models/discover',{method:'POST',body:JSON.stringify({provider:p})});if(r.ok){try{MODELS=(await api('/api/models')).models;}catch(e){}}b.innerHTML=`<span style="color:${r.ok?'var(--em-hi)':'#ff9a8a'}">${esc(r.why||'')}</span>`+(r.models?'<pre style="margin-top:4px">'+esc(r.models.join('\n'))+'</pre>':'')+(r.body&&!r.ok?'<pre style="margin-top:4px">'+esc(r.body)+'</pre>':'');}
 async function testKey(p){const b=$('#kr-'+p);b.innerHTML='testing…';const r=await api('/api/keys/test',{method:'POST',body:JSON.stringify({provider:p})});b.innerHTML=`<span style="color:${r.ok?'var(--em-hi)':'#ff9a8a'}">${esc(r.why||'')}</span>`+(r.body&&!r.ok?'<pre style="margin-top:4px">'+esc(r.body)+'</pre>':'');if(r.ok&&r.models&&r.models.length){MODELS.google=r.models.map(id=>({id,label:id,note:'listed by your key',verified:true}));}}
-function renderJobs(){api('/api/jobs').then(d=>{const el=$('#detail');el.innerHTML='<h2>jobs (this session)</h2><div class="jobs">'+(d.jobs.length?d.jobs.map(j=>`<div class="job"><span class="st ${j.status}">${j.status.toUpperCase()}</span> · ${j.kind} · <b>${esc(j.target)}</b> · ${j.provider}<pre>${esc(j.commands.join('\n'))}\n\n${esc(j.log.join('\n'))}</pre></div>`).join(''):'<p class="empty">nothing run yet · pick a strip → RENDERS → GENERATE</p>')+'</div>';});}
+let JOBS_HTML='';function renderJobs(){api('/api/jobs').then(d=>{const el=$('#detail');const html='<h2>jobs (this session)</h2><div class="jobs">'+(d.jobs.length?d.jobs.map(j=>`<div class="job"><span class="st ${j.status}">${j.status.toUpperCase()}</span> · ${j.kind} · <b>${esc(j.target)}</b> · ${j.provider}<pre>${esc(j.commands.join('\n'))}\n\n${esc(j.log.join('\n'))}</pre></div>`).join(''):'<p class="empty">nothing run yet · pick a strip → RENDERS → GENERATE</p>')+'</div>';if(html!==JOBS_HTML){JOBS_HTML=html;el.innerHTML=html;}});}
 function tab(t){TAB=t;document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('on',p.id==='p-'+t));document.querySelectorAll('.tabs button').forEach((b,i)=>b.classList.toggle('on',['sheet','panels','prompt','refs','renders','json'][i]===t));}
 function copy(id){navigator.clipboard.writeText($('#'+id).textContent);}
 async function review(id,status){const note=$('#rv-note')?.value||'';await api('/api/review',{method:'POST',body:JSON.stringify({id,status,note})});await loadStrips();open(id);}
