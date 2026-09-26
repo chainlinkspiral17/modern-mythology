@@ -1,0 +1,141 @@
+{
+  "id": "dw_2015-10-05_three_legs_1",
+  "title": "Three legs, i",
+  "strip": "drift_wood",
+  "date": "2015-10-05",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Three Legs",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2017)",
+  "logline": "The pup in every panel, never remarked. The strip learning a new animal's weight. He doesn't limp; he scuttles.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. The table raised again to standing height. WOOD drawing. Under it, the braided bed — and beside the bed, not in it, BARNABY II asleep on a pile of rejected sketches he has made his own.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "asleep on a pile of sketches beside the bed",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "table, raised",
+        "the old bed, unused",
+        "a pile of sketches"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man drawing at a drafting table raised back to standing height in a garage studio, beneath it an unused braided dog bed and beside it a wiry three-legged young dog asleep on a nest of crumpled sketches, razor-sharp ink",
+        "negative": "",
+        "notes": "The old bed stays under the table, unused. The pup sleeps beside it. Never remarked."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The pup awake, scuttling across the room after nothing, three legs, joyful, erratic. Motion lines that owe Watterson.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "scuttling",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "floorboards"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wiry three-legged dog scuttling joyfully across garage floorboards with erratic kinetic motion lines, not limping",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood's hand, drawing the pup. Six false starts on the pad, like 1999. Then one that has the weight.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "pad with six false starts and one right"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a drawing pad with several abandoned sketches of a three-legged dog and one finished one that captures its balance and weight",
+        "negative": "",
+        "notes": "Rhymes with dw_1999-11-18. Six false starts, then the one."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The pup asleep on Wood's foot. Chewing, in his sleep, the wooden crow-quill holder. Wood drawing with a different pen.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "drawing with a different pen",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "asleep on his foot, nib holder in his teeth",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "crow-quill holder, dented"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a three-legged dog asleep across a man's foot under a drafting table with a wooden pen holder clutched in its teeth, the man drawing with a different pen, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "The pup's weight learned. The old bed unused. The nib holder, permanently his."
+}

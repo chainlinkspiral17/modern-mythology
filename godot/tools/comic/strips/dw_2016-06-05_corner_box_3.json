@@ -1,0 +1,93 @@
+{
+  "id": "dw_2016-06-05_corner_box_3",
+  "title": "Sunday · the corner box, last",
+  "strip": "drift_wood",
+  "date": "2016-06-05",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "The Cover, Last",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2017)",
+  "logline": "A landscape Sunday. The cedar mill's smokestack in June. In the corner: COMING 2017 · CEDAR. The last box. Nothing comes.",
+  "cast": [],
+  "location": "dw_cedar_mill",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the abandoned mill from the estuary side in June, wet-on-wet at full mastery: the long shed sagging, blackberry over the dock, the smokestack, swallows. Nobody.",
+      "characters": [],
+      "props": [
+        "mill shed",
+        "smokestack",
+        "blackberry",
+        "swallows"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an abandoned cedar mill seen from an estuary in June, the long shed sagging, blackberry over the loading dock, a brick smokestack, swallows, masterful wet-on-wet watercolor, no people",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "The mill"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the smokestack close. A cedar sapling growing from its rim, forty feet up. Real — it's there.",
+      "characters": [],
+      "props": [
+        "smokestack",
+        "a cedar sapling at the top"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a tall brick smokestack with a small cedar sapling growing from its crumbling rim against a pale June sky, watercolor",
+        "negative": "",
+        "notes": "The magical-realist run's seed: the tree in the stack is real. The Sundays that follow let it grow."
+      },
+      "stage": null,
+      "name": "The sapling"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the mill at dusk, the sapling a black silhouette on the stack. Bottom-left corner, boxed, the display face: COMING 2017 · A GRAPHIC NOVEL BY A. FINCH · 'CEDAR' · A novel of the timber country.",
+      "characters": [],
+      "props": [
+        "mill at dusk",
+        "the corner box"
+      ],
+      "balloons": [],
+      "caption": "COMING 2017 · A GRAPHIC NOVEL BY A. FINCH · \"CEDAR\" · A novel of the timber country.",
+      "sfx": "",
+      "image": {
+        "prompt": "an abandoned mill at dusk with a small tree silhouetted on top of its smokestack, watercolor, and a small boxed hand-lettered advertisement in the lower left corner",
+        "negative": "",
+        "notes": "The third and last corner box. Same corner, same face. Letter after."
+      },
+      "stage": null,
+      "name": "The box"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "The last corner box. The sapling in the stack is the Cedar run's seed and the ROFLCOPTER mill run's, too.",
+  "layout": "tiers, portrait page"
+}

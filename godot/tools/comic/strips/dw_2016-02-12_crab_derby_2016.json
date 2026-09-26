@@ -1,0 +1,182 @@
+{
+  "id": "dw_2016-02-12_crab_derby_2016",
+  "title": "The Crab Derby, 2016",
+  "strip": "drift_wood",
+  "date": "2016-02-12",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2017)",
+  "logline": "Thirty-second annual. Gully's girl, six, draws the crab this year. Wood letters it. He's demoted and he's never been happier.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "extra_gully_kid",
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. The counter. GULLY's GIRL, six, standing on a crate, a marker, a flyer. WOOD beside her with a pen. GULLY holding the twenty. BARNABY II underfoot.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "on a crate with a marker",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "beside her with a pen",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "holding a twenty",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "crate",
+        "marker",
+        "flyer",
+        "twenty"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Thirty-two. She draws the crab. You letter."
+        },
+        {
+          "who": "WOOD",
+          "text": "I've drawn that crab eighteen times."
+        },
+        {
+          "who": "GULLY",
+          "text": "Then you've had your turn."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a six-year-old girl standing on a crate at a shop counter drawing on a flyer with a marker, a thin man beside her holding a pen, a stocky man holding out a twenty-dollar bill, a three-legged dog underfoot, clean ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The girl's crab. Enormous. Twelve legs. Smiling. Wood looking at it with the face of a man watching a tradition end and something better start.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "looking",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a twelve-legged smiling crab"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a child's marker drawing of a huge smiling crab with too many legs, a man looking at it with a complicated tender face",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood lettering under it, in the strip's display face: 32ND ANNUAL CRAB DERBY. And, smaller, in her honor: A COLLABORATION.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "lettering",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the flyer"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man carefully hand-lettering beneath a child's crab drawing on a flyer",
+        "negative": "",
+        "notes": "A COLLABORATION — the 2005 scribble, honored. Letter after."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Nineteen flyers on the wall. The nineteenth has twelve legs. Gully hands the twenty to his daughter. She hands it to Wood. Wood hands it back to her. The dog eats a maple bar.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "handing over the twenty",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "handing it back",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "eating",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "nineteen flyers"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "nineteen crab flyers in a row on a shingle wall, a child and a thin man passing a twenty-dollar bill back and forth, a stocky man watching, a three-legged dog eating a pastry, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "The girl draws the crab. Wood letters. The twenty goes around in a circle."
+}

@@ -1,0 +1,145 @@
+{
+  "id": "dw_2017-07-10_lockboxes",
+  "title": "Lockboxes",
+  "strip": "drift_wood",
+  "date": "2017-07-10",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Lockboxes",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2017)",
+  "logline": "The Airbnb summer. Key-safes on every door in the backgrounds. Tourist Season lasts three months. This is one daily of thirty.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Main street, July. WOOD walking BARNABY II. Every door in the background has a small gray lockbox on the knob. Every window has a laminated card. Not one face he knows.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "walking the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lockboxes on every door",
+        "laminated cards in windows",
+        "strangers"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small coastal main street in July with a thin man walking a three-legged dog past a row of houses that each have a small gray key lockbox on the doorknob and a laminated card in the window, strangers with roller bags, clean ink with a light wash",
+        "negative": "",
+        "notes": "Lockboxes on every door. The strip's only comment is their presence."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "One lockbox. A four-digit dial. A house he's drawn since 1997 — Chloe's parents' house. A card in the window: CHECK-IN 3PM.",
+      "characters": [],
+      "props": [
+        "lockbox on a familiar door",
+        "CHECK-IN 3PM card"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a gray key lockbox on the front door of an old wooden house with a laminated check-in card in the window beside it",
+        "negative": "",
+        "notes": "Chloe's parents' house. Sold, rented, unremarked. Letter after: CHECK-IN 3PM."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood stopped. The pup pulling. Wood looking at the door for one panel longer than a stranger would.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "stopped, looking at the door",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "pulling",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin man stopped on a sidewalk looking at a house door while a three-legged dog pulls at the leash, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Walking on. A family with roller bags going up the walk behind him, punching the code. The strip draws them kindly. It's their house till Sunday.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "walking on",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_tourists",
+          "pose": "a family with roller bags at the door",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "roller bags",
+        "lockbox"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin man and a three-legged dog walking away as a family with roller bags climbs the walk of an old house behind him and opens a key lockbox, drawn kindly, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "Chloe's parents' house, a rental now. The strip stops one panel longer than a stranger would."
+}
