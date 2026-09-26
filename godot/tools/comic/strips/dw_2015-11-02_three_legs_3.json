@@ -1,0 +1,143 @@
+{
+  "id": "dw_2015-11-02_three_legs_3",
+  "title": "Three legs, iii",
+  "strip": "drift_wood",
+  "date": "2015-11-02",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Three Legs",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "The first walk to the Lanes. The pup does the whole alley. The box behind the dumpster, where he was found. He sniffs it once and moves on. The strip doesn't say what the box is.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The alley behind the Lanes, day, the dumpster, and behind it a collapsed cardboard box gone gray. WOOD and BARNABY II entering the alley, the pup ahead.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "ahead, scuttling",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the dumpster",
+        "the box behind it"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a daytime alley behind a bowling alley with a dumpster and a collapsed gray cardboard box behind it, a thin man and a small three-legged puppy entering with the puppy ahead, razor-sharp ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The pup at the box. One sniff.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "one sniff at the box",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the box"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a small three-legged puppy sniffing a collapsed cardboard box once, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The pup moving on, already interested in the dumpster's wheel. Wood behind him, looking at the box a beat longer.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "moving on",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "looking at the box",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small three-legged puppy moving on to sniff a dumpster wheel while a thin man behind it looks at a collapsed box a moment longer, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The alley from the far end: the two of them walking out into the street, the dumpster, the box, the sign above with two letters dark, daylight. Thirteen days before Dog Night.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "walking out",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the sign, two dark"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an alley seen from its far end with a man and a small three-legged dog walking out into daylight, a dumpster, a collapsed box, and a bowling-alley sign above with two letters unlit, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "Wordless. One sniff. The box is the box from December 2014."
+}

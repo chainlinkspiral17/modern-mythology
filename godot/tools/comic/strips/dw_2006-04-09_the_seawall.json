@@ -1,0 +1,89 @@
+{
+  "id": "dw_2006-04-09_the_seawall",
+  "title": "Sunday · the seawall, April",
+  "strip": "drift_wood",
+  "date": "2006-04-09",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Sundays",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004–2011 · deepening)",
+  "logline": "The seawall in April rain, the bay beyond, one crow. The watercolor is good now and the strip knows it and doesn't say.",
+  "cast": [],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the seawall's long curve in rain, the bay flat beyond it, main street's backs on the left. A crow on the wall.",
+      "characters": [],
+      "props": [
+        "seawall",
+        "a crow"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, a long curving concrete seawall in spring rain with a flat bay beyond and a crow perched on it, the watercolor controlled and confident, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Wall"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the crow, close, wet, looking at the painter.",
+      "characters": [],
+      "props": [
+        "crow"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, a wet crow on a concrete wall looking directly at the viewer, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Crow"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the bay, and the ridge behind it, faint, with the first hint of the glow — barely a warmth in the gray. Held.",
+      "characters": [],
+      "props": [
+        "the ridge, a warmth"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, a flat gray bay with a forested ridge behind it and a barely perceptible warm tone above the trees, no words",
+        "negative": "",
+        "notes": "The glow's first appearance in a Sunday, three years before 'Lanes.' Barely there."
+      },
+      "stage": null,
+      "name": "Bay"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "The glow, first hinted. A crow.",
+  "layout": "tiers, portrait page"
+}

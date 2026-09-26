@@ -1,0 +1,89 @@
+{
+  "id": "dw_2007-10-14_the_logging_road_october",
+  "title": "Sunday · the logging road, October",
+  "strip": "drift_wood",
+  "date": "2007-10-14",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Sundays",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004–2011 · deepening)",
+  "logline": "The 2002 cover's road, five years on, in watercolor: the ruts full of sky, the cedars, and above the bend, nothing yet. The strip goes back to look.",
+  "cast": [],
+  "location": "dw_logging_road",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the gravel logging road climbing into cedar, October, the ruts full of reflected sky. Where the 2002 cover put a corner box, there is only the road.",
+      "characters": [],
+      "props": [
+        "logging road",
+        "cedars"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, a gravel logging road climbing into cedar forest in October with the ruts reflecting a pale sky, no figures, no words",
+        "negative": "",
+        "notes": "The 2002 cover's composition (dw_2002-06-07), without the box."
+      },
+      "stage": null,
+      "name": "Road"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the bend, the trees closing, the light beyond it ordinary.",
+      "characters": [],
+      "props": [
+        "the bend"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, a bend in a forest road where the trees close in and ordinary daylight shows beyond, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Bend"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the sky above the trees. Gray. Nothing in it. Held.",
+      "characters": [],
+      "props": [
+        "sky"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, a strip of gray sky above dark conifer tops with nothing in it, no words",
+        "negative": "",
+        "notes": "Nothing above the bend yet. In 2025 the sequence will walk it."
+      },
+      "stage": null,
+      "name": "Sky"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "The cover's road, revisited. Nothing above the bend yet.",
+  "layout": "tiers, portrait page"
+}

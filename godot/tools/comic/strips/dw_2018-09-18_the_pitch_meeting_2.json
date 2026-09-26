@@ -1,0 +1,169 @@
+{
+  "id": "dw_2018-09-18_the_pitch_meeting_2",
+  "title": "The pitch meeting that isn't, ii",
+  "strip": "drift_wood",
+  "date": "2018-09-18",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "The Pitch Meeting That Isn't",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "Tuesday. Gully tells Wood about the car. Wood asks nothing. The card is in the bait cooler with the crawlers. The strip lets him not look at it.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's, morning. WOOD on the end stool, coffee. GULLY behind the counter. BARNABY II. The bait cooler's lid up.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "end stool",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the bait cooler, lid up"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Two of 'em. Washington plates. Asked for Arthur Finch."
+        },
+        {
+          "who": "WOOD",
+          "text": "Who's that."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin man on a shop's end stool with coffee and a stocky man in an apron behind the counter with a bait cooler's lid up, a small three-legged dog, razor-sharp ink",
+        "negative": "",
+        "notes": "'Who's that.' Wood on his own name."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The bait cooler: crawlers in dirt, and among the tubs, a white business card, face down, damp.",
+      "characters": [],
+      "props": [
+        "the card, face down, among the crawlers"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up inside a bait cooler with tubs of nightcrawlers in dirt and a damp white business card lying face down among them",
+        "negative": "",
+        "notes": "The card from dw_2018-09-17. Face down."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully, lid still up, waiting. Wood drinking his coffee. Not looking in the cooler.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "waiting, lid up",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "drinking, not looking",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "You want it?"
+        },
+        {
+          "who": "WOOD",
+          "text": "Want what."
+        },
+        {
+          "who": "GULLY",
+          "text": "...Right."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky man holding a cooler lid open and waiting while a thin man drinks coffee without looking, dry",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The lid closing. Gully back to work. Wood drawing. The pup asleep. The card under the crawlers for as long as the strip runs.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "closing the lid",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the cooler, closed"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky man closing a bait cooler's lid while a thin man draws on a stool and a small dog sleeps, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "'Who's that.' The card stays under the crawlers."
+}

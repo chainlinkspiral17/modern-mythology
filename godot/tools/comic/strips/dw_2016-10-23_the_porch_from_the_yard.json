@@ -1,0 +1,102 @@
+{
+  "id": "dw_2016-10-23_the_porch_from_the_yard",
+  "title": "Sunday · the porch from the yard",
+  "strip": "drift_wood",
+  "date": "2016-10-23",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "The Second Box",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "The Second Box's Sunday, the week after: the garage porch from the yard, the empty box still on the step, the pup still beside it, rain. Gully's joke, made a landscape.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the garage's small porch from the wet yard, the door, the one step, a cardboard box on the step with its flaps open and nothing in it, the pup sitting beside it, alert.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "sitting guard beside the box",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the empty box"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, a small garage porch seen from a wet yard with an open empty cardboard box on the step and a small three-legged dog sitting alertly beside it, rain, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Porch"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the box, close. Empty. Rain on the flaps. On the side, in marker: a scrawl — Gully's hand.",
+      "characters": [],
+      "props": [
+        "the box, marker on the side"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, close on an empty cardboard box on a step with rain darkening its open flaps and a marker scrawl on its side, no words",
+        "negative": "",
+        "notes": "The scrawl is unreadable. Gully's joke: an empty box for the pup to guard. The strip's reconciliation of its two box dates."
+      },
+      "stage": null,
+      "name": "Box"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: from farther back: the porch, the box, the pup, the rain, the alley, the tavern's back wall. He's still sitting there. Held.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "still on guard",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the alley"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, a wider view of a garage porch in rain with an empty box and a small dog still sitting guard beside it, an alley and a tavern's back wall beyond, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Guard"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "The empty box, guarded. Gully's hand on the side.",
+  "layout": "tiers, portrait page"
+}

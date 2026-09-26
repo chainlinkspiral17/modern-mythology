@@ -1,0 +1,89 @@
+{
+  "id": "dw_2020-03-22_the_empty_town_2",
+  "title": "Sunday · the empty town, ii",
+  "strip": "drift_wood",
+  "date": "2020-03-22",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "The Empty Town",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "Main street on a Sunday in March with nobody. The lockboxes unturned. Gully's OPEN sign lit for no one. The strip doesn't say why.",
+  "cast": [],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: main street at noon, no cars, no people, the lockboxes on the doors with their dials untouched, a gull walking down the center line.",
+      "characters": [],
+      "props": [
+        "a gull on the center line",
+        "lockboxes"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, a small-town main street at noon completely empty of cars and people with lockboxes on every door and a single gull walking down the center line, no words",
+        "negative": "",
+        "notes": "No explanation. Reserved whether 2020 is 2020."
+      },
+      "stage": null,
+      "name": "Street"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: Gully's OPEN sign lit in the window, the counter behind it, the end stool, nobody on the customer side.",
+      "characters": [],
+      "props": [
+        "OPEN sign"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, a lit OPEN sign in a shop window with a counter and empty stools behind it, no words",
+        "negative": "",
+        "notes": "OPEN, letter after."
+      },
+      "stage": null,
+      "name": "Open"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the street from its end, the seawall, the bay, the ridge, the glow — the only thing on the page that hasn't changed. Held.",
+      "characters": [],
+      "props": [
+        "the glow"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, an empty small-town street seen from its end with a seawall and bay beyond and a warm glow above a distant ridge, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Noon"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "Nobody. OPEN for no one. The glow unchanged.",
+  "layout": "tiers, portrait page"
+}

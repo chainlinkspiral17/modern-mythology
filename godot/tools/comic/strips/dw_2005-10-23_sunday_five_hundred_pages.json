@@ -1,0 +1,120 @@
+{
+  "id": "dw_2005-10-23_sunday_five_hundred_pages",
+  "title": "Sunday · five hundred pages",
+  "strip": "drift_wood",
+  "date": "2005-10-23",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Five Hundred Pages",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004–2011 · deepening)",
+  "logline": "The arc's Sunday, the week after 'Of what': the garage floor from above, the pages being gathered into a box, the dog sitting on the one page left. The strip never says which page.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: straight down. The garage floor covered in typed pages, five hundred, edge to edge, in rows. A dog walking across them diagonally, leaving no marks. Two boots at the top edge: Wood's.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "walking across the pages",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "boots at the edge",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "five hundred pages"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, a straight-down view of a garage floor covered edge to edge with typed manuscript pages in rows, a small dog walking diagonally across them, a man's boots at the top edge, no words",
+        "negative": "",
+        "notes": "The novel's pages: draw typed text as gray texture, unreadable."
+      },
+      "stage": null,
+      "name": "Floor"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: Wood from above, on his knees, gathering pages into a box. The dog walking the rows ahead of him.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "on his knees gathering pages",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "walking the rows",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "two coffees"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, a straight-down view of a man on his knees gathering typed pages into a box while a small dog walks the rows ahead of him, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Door"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: straight down again. The floor bare wood now except one page in the middle, and the dog sitting on it. A cardboard box at the edge, full. Held.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "sitting on the one page left",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "one page",
+        "a full box"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, a straight-down view of a bare garage floor with a single typed page in the middle and a small dog sitting on it, a full cardboard box at the edge, no words",
+        "negative": "",
+        "notes": "Which page is reserved. The dog sits on it."
+      },
+      "stage": null,
+      "name": "Left"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "The pages gathered. One left; the dog on it. Which page: reserved.",
+  "layout": "tiers, portrait page"
+}

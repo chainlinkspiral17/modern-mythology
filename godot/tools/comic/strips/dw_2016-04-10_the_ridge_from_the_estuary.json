@@ -1,0 +1,89 @@
+{
+  "id": "dw_2016-04-10_the_ridge_from_the_estuary",
+  "title": "Sunday · the ridge from the estuary",
+  "strip": "drift_wood",
+  "date": "2016-04-10",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Sundays",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "The ridge from the estuary's mouth in April, the glow larger than 2009's, the trees drawn one by one. Two months before CEDAR is announced.",
+  "cast": [],
+  "location": "dw_estuary",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the ridge from the estuary mouth, the trees drawn individually in razor line under the wash, and above them the glow — larger than 'Lanes' had it, unmistakably warm.",
+      "characters": [],
+      "props": [
+        "the ridge",
+        "the glow, larger"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, a forested ridge seen across an estuary mouth with each tree drawn individually in sharp ink beneath the wash and a warm unmistakable glow above the treeline, no words",
+        "negative": "",
+        "notes": "The glow: larger than 2009. Compare dw_2009-03-08."
+      },
+      "stage": null,
+      "name": "Ridge"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the trees, close, cedar and fir, the line at its most exact. One dead snag among them.",
+      "characters": [],
+      "props": [
+        "a dead snag"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, a dense stand of cedar and fir drawn in exact sharp ink with one dead gray snag among them, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Trees"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the estuary's water with the ridge and the glow reflected in it, upside down, the reflection warmer than the sky. Held.",
+      "characters": [],
+      "props": [
+        "reflection"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, still estuary water reflecting a forested ridge and a warm glow upside down, the reflection warmer than the actual sky, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Water"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "The glow larger. The reflection warmer than the sky.",
+  "layout": "tiers, portrait page"
+}

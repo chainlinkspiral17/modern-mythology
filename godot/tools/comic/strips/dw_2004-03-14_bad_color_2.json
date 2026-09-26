@@ -1,0 +1,96 @@
+{
+  "id": "dw_2004-03-14_bad_color_2",
+  "title": "Sunday · bad color, ii",
+  "strip": "drift_wood",
+  "date": "2004-03-14",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Bad Color",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004–2011 · deepening)",
+  "logline": "The second of the three the book keeps. The estuary. The paint too wet; the sky runs into the mud; the heron is a blot. He posts it anyway.",
+  "cast": [],
+  "location": "dw_estuary",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the estuary at dusk, the sky bleeding down into the water because the paper was too wet. A gorgeous accident he'll spend a year learning to do on purpose.",
+      "characters": [],
+      "props": [
+        "estuary",
+        "bleeding sky"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, an estuary at dusk where the sky's color has run down into the water, a beautiful accident, no figures, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Sky"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the heron. A blot with legs. The strip's first heron.",
+      "characters": [],
+      "props": [
+        "heron as a blot"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, a heron on tidal mud rendered as a dark wet blot with two thin legs, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Blot"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the mud at low tide, the channels, the paint pooled in them like actual water. Posted Sunday 11 PM. The chorus, tiny, at the bottom edge: two stick figures.",
+      "characters": [
+        {
+          "id": "extra_stick_chorus",
+          "pose": "two, tiny, bottom edge",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "channels",
+        "two stick figures"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, tidal mud channels with paint pooled in them like real water, two tiny stick figures at the bottom edge, no words",
+        "negative": "",
+        "notes": "The chorus is two figures this early."
+      },
+      "stage": null,
+      "name": "Posted"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "Bad color, kept. The sky in the mud. The first heron, a blot.",
+  "layout": "tiers, portrait page"
+}

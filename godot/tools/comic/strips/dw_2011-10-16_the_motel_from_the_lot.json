@@ -1,0 +1,98 @@
+{
+  "id": "dw_2011-10-16_the_motel_from_the_lot",
+  "title": "Sunday · the motel from the lot",
+  "strip": "drift_wood",
+  "date": "2011-10-16",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Night Audit",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004–2011 · deepening)",
+  "logline": "Five weeks into nights. The Driftwood Motel from its lot at 5 AM, the office lit, one figure at the desk through the glass. The hum line under all three tiers for the first time in a Sunday.",
+  "cast": [
+    "wood_26"
+  ],
+  "location": "dw_motel_desk",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the motel from the far corner of its lot at 5 AM, the two-story walkway, the office lit, a figure at the desk through the glass, small. The hum line beneath the tier.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "at the desk, through the glass, small",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the office",
+        "hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, a two-story roadside motel seen from the far corner of its parking lot before dawn with the office lit and a small figure visible at the desk through the glass, a flat line beneath the panel, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Office"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the motel's sign, DRIFTWOOD, half its tubes lit, VACANCY lit. The hum line.",
+      "characters": [],
+      "props": [
+        "DRIFTWOOD sign",
+        "hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, a motel's neon sign with some tubes dark and the word VACANCY lit, a flat line beneath the panel, no words",
+        "negative": "",
+        "notes": "DRIFTWOOD · VACANCY, letter after."
+      },
+      "stage": null,
+      "name": "Sign"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the same view, dawn, the office light off, the figure gone from the glass. The hum line, still. Held.",
+      "characters": [],
+      "props": [
+        "hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-wet watercolor, muddy early-digital scan, the same motel at gray dawn with the office dark and no figure in the glass, a flat line beneath the panel, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Dawn"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "The motel as a Sunday. The hum line under tiers.",
+  "layout": "tiers, portrait page"
+}

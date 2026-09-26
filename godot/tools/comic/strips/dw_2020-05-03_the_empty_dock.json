@@ -1,0 +1,100 @@
+{
+  "id": "dw_2020-05-03_the_empty_dock",
+  "title": "Sunday · the empty dock",
+  "strip": "drift_wood",
+  "date": "2020-05-03",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "The Empty Town",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2015–2020 · deepening)",
+  "logline": "Gully's dock in May with nobody on it. The lawn chair. The steps. The pup, alone, at the dock's end, looking at the water. The fourth Sunday of the empty town.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the dock from the shack steps in May light, empty: the lawn chair, the coiled hose, the pup sitting at the very end looking out.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "at the dock's end, alone",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the lawn chair"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, a wooden dock seen from shack steps in May light with an old lawn chair, a coiled hose and a small three-legged dog sitting alone at the far end looking out at the water, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Dock"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the lawn chair, close, the webbing gone gray, a coffee ring on the arm.",
+      "characters": [],
+      "props": [
+        "the chair"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, close on an old aluminum lawn chair with faded gray webbing and a coffee ring on its arm, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Chair"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the water off the dock's end, the pup's ears at the bottom edge. Held.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "ears at the bottom edge",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wet-on-wet watercolor in gray-green moss, fog and rusted tin, bay water seen from the end of a dock with a small dog's ears just visible at the bottom edge, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Water"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "The empty dock. The pup at the end.",
+  "layout": "tiers, portrait page"
+}
