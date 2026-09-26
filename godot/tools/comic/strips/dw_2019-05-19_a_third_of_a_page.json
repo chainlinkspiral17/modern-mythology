@@ -1,0 +1,120 @@
+{
+  "id": "dw_2019-05-19_a_third_of_a_page",
+  "title": "Sunday · a third of a page",
+  "strip": "drift_wood",
+  "date": "2019-05-19",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "A Third of a Page",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2018–2020)",
+  "logline": "The papers cut the Sunday to a third of a page. The strip is drawn to the smaller grid. The reader can measure it.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff_small",
+    "note": "The scruff, smaller."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the beach in May, wet-on-wet — but the whole page is drawn inside a box occupying the top third of the sheet; the bottom two-thirds is blank paper. Three tiers crammed into the third.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "small",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "beach",
+        "the blank two-thirds"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a Sunday comic page where all three tiers are crammed into the top third of the sheet and the lower two-thirds is left as blank white paper, the tiers showing a beach in May in wet-on-wet watercolor with a man and a three-legged dog, small",
+        "negative": "",
+        "notes": "The whole Sunday in the top third. The blank is the point. Print it that way."
+      },
+      "stage": null,
+      "name": "Cramped"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2, tiny: the pup at the surf. Detail lost to size.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "at the surf, tiny",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "surf"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a tiny tier of a three-legged dog at a surf line, watercolor, details lost to the small size",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Tiny"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3, tiny: the drift log, the two of them. The mark in the margin drawn smaller than it's ever been.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "on the log, tiny",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "drift log"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a tiny tier of a man and a dog on a drift log, watercolor, cramped, the signature mark in the margin drawn very small",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "The log"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Drawn to the papers' cut. Two-thirds blank. The mark shrinks.",
+  "layout": "tiers, portrait page"
+}

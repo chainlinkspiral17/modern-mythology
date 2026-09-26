@@ -1,0 +1,136 @@
+{
+  "id": "dw_2018-12-21_december_2018",
+  "title": "December, 2018",
+  "strip": "drift_wood",
+  "date": "2018-12-21",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "December",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2018–2020)",
+  "logline": "Does Chloe come home. Not this year. A text. The strip draws a phone for the first time and does not enjoy it.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. WOOD's flip phone — still a flip phone — open on the drafting table. A text. BARNABY II.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking at the phone",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "flip phone"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old flip phone open on a drafting table showing a text message, a man looking at it, a three-legged dog, razor-sharp ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The screen, tiny: 'seattle. not this yr. sorry. — c'",
+      "characters": [],
+      "props": [
+        "phone screen"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a small flip-phone screen with a short lowercase text message",
+        "negative": "",
+        "notes": "Letter after: seattle. not this yr. sorry. — c"
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, to the pup.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Twelve words. She used to need a lamp."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man holding a flip phone and speaking to a three-legged dog with a rueful expression",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The phone closed. On the corkboard, no room left; Wood pins nothing. The first December with nothing pinned.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "closing the phone",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "corkboard, full"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man closing a flip phone at a drafting table below a corkboard so crowded nothing more can be pinned to it, no words",
+        "negative": "",
+        "notes": "Nothing pinned. The board is full."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Twelve words. Nothing pinned."
+}

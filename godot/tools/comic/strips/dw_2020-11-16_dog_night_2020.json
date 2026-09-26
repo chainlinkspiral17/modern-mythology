@@ -1,0 +1,146 @@
+{
+  "id": "dw_2020-11-16_dog_night_2020",
+  "title": "The Dog Night, 2020",
+  "strip": "drift_wood",
+  "date": "2020-11-16",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Dog Night",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2018–2020)",
+  "logline": "Twenty-one years. The last one in the public strip. The bulb is out again. Nobody replaces it this time.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Behind the Lanes. The bulb dark. The bin. The outline, fading. WOOD and BARNABY II lit only by the sign's few remaining letters.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "dark bulb",
+        "bin",
+        "fading outline"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man and a three-legged dog behind a bowling alley at night, the bulb dark, a blue bin, a fading rust outline on the gravel, lit only by the faint pink of a mostly-dead neon sign, clean ink with one tone, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The pup, six, sitting. The outline barely there under him.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "sitting",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "faint outline"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a three-legged dog sitting on gravel where a rust outline has almost faded away, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The porch. The box has finally collapsed; it's flat. The pup lying on the flat cardboard anyway. Wood on the step.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "lying on the flattened box",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "on the step",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the box, flat"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a three-legged dog lying on a completely flattened weathered produce box on a porch, a man on the step, night, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The sign. Eight dark. The rest flicker. Wood looking. This is the last Dog Night the public strip draws.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "neon, eight dark, flickering"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man on a porch looking at a distant bowling-alley sign with eight letters dark and the remainder flickering, a dog on a flattened box beside him, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "The last public Dog Night. Bulb out for good. The box flat. Eight dark."
+}

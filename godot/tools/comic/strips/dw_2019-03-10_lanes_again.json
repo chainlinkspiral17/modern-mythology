@@ -1,0 +1,93 @@
+{
+  "id": "dw_2019-03-10_lanes_again",
+  "title": "Sunday · Lanes, again",
+  "strip": "drift_wood",
+  "date": "2019-03-10",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "Lanes, Again",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2018–2020)",
+  "logline": "The same composition as 2009. Six letters out. The lot empty. The glow on the ridge larger.",
+  "cast": [],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: SMALL WOOD LANES from across the highway at night, exactly the 2009 framing. Six letters dark: the word is gaps. Rain. The lot empty. No car.",
+      "characters": [],
+      "props": [
+        "neon, six dark",
+        "rain",
+        "empty lot"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a bowling alley across a two-lane highway at night in wet-on-wet watercolor, its neon sign with six of its letters dark so the name reads as gaps, rain on an empty lot, the same composition as an earlier page",
+        "negative": "",
+        "notes": "Repeat 'Lanes' 2009 Tier 1 exactly; only the sign and the lot differ."
+      },
+      "stage": null,
+      "name": "The sign"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: behind. The blue bin where the dumpster was. The rust outline on the gravel. The chain-link. Nothing tied. The bulb.",
+      "characters": [],
+      "props": [
+        "blue bin",
+        "rust outline",
+        "chain-link"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "behind a bowling alley at night: a blue recycling bin on a rust-stained rectangle of gravel, a chain-link fence, a bare bulb, rain, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "The outline"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: wide, later. The sign off. The lot. And on the ridge east of town, the glow — larger than 2009, plainly not the moon, still treated as weather.",
+      "characters": [],
+      "props": [
+        "dark sign",
+        "the ridge glow, larger"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same bowling alley later with its sign dark and the lot empty, and on the forested ridge behind the town a pale glow clearly larger than before and plainly not the moon, still painted like weather, wet-on-wet watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "The ridge"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "'Lanes' redone ten years on. Six dark. The glow larger.",
+  "layout": "tiers, portrait page"
+}

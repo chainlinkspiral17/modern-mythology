@@ -1,0 +1,140 @@
+{
+  "id": "dw_2018-03-12_the_unopened_letter",
+  "title": "The unopened letter",
+  "strip": "drift_wood",
+  "date": "2018-03-12",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Unopened Letter",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2018–2020)",
+  "logline": "A letter with a streaming service's logo sits on the drafting table for four panels. Unopened.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The drafting table. A white envelope with a streaming service's logo in the corner — the logo drawn as a red rectangle, no name. WOOD drawing beside it. BARNABY II under the table.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "envelope with a red logo"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a drafting table with a white business envelope bearing a small red rectangular logo lying beside a man's drawing hand, a three-legged dog under the table, razor-sharp ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Same. Wood drawing. The envelope.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "envelope"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same drafting table, the man still drawing, the envelope untouched, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Same. The lamp on now; it's evening. The envelope.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "drawing, lamp on",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "envelope",
+        "lamp"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same table in evening lamp light, the man still drawing, the envelope still untouched, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Same. The pup asleep on the envelope. Wood drawing. It stays unopened.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "asleep on the envelope",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "envelope under a dog"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same table at night, a three-legged dog now asleep on top of the unopened envelope while the man keeps drawing, no words",
+        "negative": "",
+        "notes": "Never opened on the page. The afterword can say what it offered."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "The animated pitch, refused by never being opened."
+}

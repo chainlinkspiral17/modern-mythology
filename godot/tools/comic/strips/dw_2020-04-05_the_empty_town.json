@@ -1,0 +1,123 @@
+{
+  "id": "dw_2020-04-05_the_empty_town",
+  "title": "Sunday · the empty town",
+  "strip": "drift_wood",
+  "date": "2020-04-05",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Empty Town",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2018–2020)",
+  "logline": "Spring. No tourists. No lockbox turnover. Main street with nobody in it. The strip doesn't say why.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: main street, April, wet-on-wet. Empty. Every lockbox closed. Every laminated card gone from the windows. A single figure and a dog in the middle of the road.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "in the road, small",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "empty street",
+        "closed lockboxes",
+        "bare windows"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small coastal main street in April, completely empty, key lockboxes closed on every door, no cards in the windows, one man and a small three-legged dog standing in the middle of the road, wet-on-wet watercolor, no words",
+        "negative": "",
+        "notes": "Reserved whether 2020 is 2020. The strip shows only the emptiness."
+      },
+      "stage": null,
+      "name": "Empty"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: Gully's. The chalkboard turned to the wall. A hand-lettered sign in the door: WINDOW ONLY. Gully's shape inside. One cup on the sill.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "a shape inside",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "WINDOW ONLY sign",
+        "one cup"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a shingle bait-and-espresso shack with a hand-lettered WINDOW ONLY sign in its door and a chalkboard turned to the wall, a man's shape inside, a single paper cup set on the window sill, watercolor",
+        "negative": "",
+        "notes": "WINDOW ONLY. Letter after."
+      },
+      "stage": null,
+      "name": "Window only"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the beach. Empty. The drift log. The two of them on it. The whole town's beach with nobody on it but them, which is how it was in 1999.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "on the log",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "drift log",
+        "empty beach"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an empty gray beach with a man and a three-legged dog on a bleached drift log, nobody else anywhere, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Theirs again"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "The empty town. Why is never said. The beach is theirs again.",
+  "layout": "tiers, portrait page"
+}

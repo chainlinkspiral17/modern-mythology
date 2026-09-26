@@ -1,0 +1,169 @@
+{
+  "id": "dw_2018-09-17_the_pitch_meeting",
+  "title": "The pitch meeting that isn't",
+  "strip": "drift_wood",
+  "date": "2018-09-17",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Pitch Meeting That Isn't",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2018–2020)",
+  "logline": "A car with Washington plates at Gully's. Two people who don't order. Wood not there.",
+  "cast": [
+    "gully_35",
+    "barnaby_ii",
+    "extra_tourists"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Gully's lot. A clean car with Washington plates. Two PEOPLE in good jackets getting out, looking at the shack like it's a location.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "two in good jackets, appraising",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "clean car",
+        "Washington plates",
+        "the shack"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a clean new car with Washington plates parked at a weathered bait-and-espresso shack, two people in expensive casual jackets getting out and appraising it, razor-sharp ink",
+        "negative": "",
+        "notes": "Washington plates. Letter after."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Inside. GULLY behind the counter. The two at the counter, not ordering. BARNABY II in the basket, growling very slightly.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "behind the counter",
+          "expression": ""
+        },
+        {
+          "id": "extra_tourists",
+          "pose": "not ordering",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "in the basket, low growl",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "counter",
+        "basket"
+      ],
+      "balloons": [
+        {
+          "who": "VISITOR",
+          "text": "We're looking for Arthur Finch. The cartoonist. We understand he's a regular."
+        },
+        {
+          "who": "GULLY",
+          "text": "Regular's not here."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two well-dressed visitors at a bait shop counter not ordering, a stocky man in an apron behind it, a three-legged dog in a basket on the counter growling faintly",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Gully.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "VISITOR",
+          "text": "We'd like to talk about the helicopter. There's real interest in—"
+        },
+        {
+          "who": "GULLY",
+          "text": "Two lattes or nothing."
+        },
+        {
+          "who": "VISITOR",
+          "text": "...Two lattes."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a stocky man in an apron with a flat unmoving expression",
+        "negative": "",
+        "notes": "'Arthur Finch' said by strangers: the world's paperwork again. Wood is not on the page."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The two leaving with lattes, a business card on the counter. Gully pinning the card to the corkboard face-in, next to nothing, then thinking better of it and dropping it in the bait cooler.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "dropping a card in the bait cooler",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "business card",
+        "bait cooler"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky man dropping a business card into a bait cooler behind a shop counter as two visitors leave with paper cups, a three-legged dog watching, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "The streaming people come to Gully's. Wood absent. The card goes in the bait cooler."
+}

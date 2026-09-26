@@ -1,0 +1,144 @@
+{
+  "id": "dw_2019-11-15_dog_night_2019",
+  "title": "The Dog Night, 2019",
+  "strip": "drift_wood",
+  "date": "2019-11-15",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Dog Night",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2018–2020)",
+  "logline": "Twenty years. The outline. The box. The sign: seven dark. The strip is tired and doesn't hide it.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff_small",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The outline. WOOD in it, hands in the flannel's pockets. BARNABY II sitting. The bin. The bulb, flickering.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "outline",
+        "bin",
+        "flickering bulb"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man and a three-legged dog inside a rust-stained rectangle on gravel behind a bowling alley at night, a blue bin, a flickering bulb, clean ink, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The pup. Five.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a wiry three-legged dog looking up, one ear up, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The porch. The box, sagging, twenty years of rain on it. The pup in it anyway.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "in the sagging box",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "on the step",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the box, sagging"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a three-legged dog sitting in a badly sagging weathered produce box on a porch, a man on the step, night, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The sign. Seven dark. Wood not looking at it this year. Looking at the pup.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking at the dog, not the sign",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "neon, seven dark"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man on a porch at night looking down at a dog in a box instead of at the distant bowling-alley sign with seven letters dark, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": ""
+}
