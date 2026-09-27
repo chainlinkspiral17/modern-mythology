@@ -172,7 +172,14 @@ dialogue or none: `dw_2001-10-09_lot_c`, `dw_2003-05-23_the_rack`,
   default; `--model gemini-2.5-flash-image` uses the Gemini image
   model, which letters text more reliably. Key: `GOOGLE_API_KEY` /
   `GEMINI_API_KEY` or `godot/tools/.google_key`.
-- Both runners print the response body on a non-200 so field-name
+- **OpenAI (Images API).** `gpt-image-1` by default (`gpt-image-1-mini`
+  for drafts, `dall-e-3` if you want it); the size comes from the
+  strip's aspect (`1536x1024` landscape, `1024x1536` portrait,
+  `1024x1024` square). No seed on this API; reference images are not
+  sent (text-to-image only). Key: `OPENAI_API_KEY` or
+  `godot/tools/.openai_key`. Note that a ChatGPT login is not an API
+  key: make one at platform.openai.com and add API credit there.
+- All runners print the response body on a non-200 so field-name
   drift in the APIs is visible, not silent.
 
 ## References · tagged, auto-selected, future-proof
