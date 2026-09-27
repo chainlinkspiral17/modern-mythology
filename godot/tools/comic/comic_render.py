@@ -87,7 +87,10 @@ MODELS = {
         {"id": "gemini-3-pro-image-preview", "label": "Gemini 3 Pro Image (preview)", "note": "unverified id; try it", "verified": False},
     ],
     "openai": [
-        {"id": "gpt-image-1", "label": "GPT Image 1", "note": "OpenAI's image model; strong lettering; sizes 1024x1024 / 1536x1024 / 1024x1536; no seed; references not sent (text-to-image only here)", "verified": True},
+        {"id": "gpt-image-2", "label": "GPT Image 2", "note": "the newest GPT image model; strongest lettering and layout; press KEYS → fetch model list to confirm the id your key sees; sizes learned on first use", "verified": False},
+        {"id": "gpt-image-2.5", "label": "GPT Image 2.5", "note": "unverified id — Runway's catalogue lists 2.5 variants; use the exact id from fetch model list", "verified": False},
+        {"id": "gpt-image-1.5", "label": "GPT Image 1.5", "note": "unverified id; try it", "verified": False},
+        {"id": "gpt-image-1", "label": "GPT Image 1", "note": "strong lettering; sizes 1024x1024 / 1536x1024 / 1024x1536; no seed; references not sent (text-to-image only here)", "verified": True},
         {"id": "gpt-image-1-mini", "label": "GPT Image 1 mini", "note": "cheaper drafts; same sizes", "verified": True},
         {"id": "dall-e-3", "label": "DALL-E 3", "note": "older; sizes 1024x1024 / 1792x1024 / 1024x1792; rewrites prompts on its own", "verified": True},
     ],
@@ -409,6 +412,18 @@ def google_generate(job, key, model, seed=None):
 
 # ── openai ───────────────────────────────────────────────────────────────
 
+def openai_default_model():
+    """The newest gpt-image id the key has been seen to list (KEYS → fetch
+    model list), else gpt-image-1. Version sort: gpt-image-2.5 > 2 > 1.5 > 1;
+    -mini / -turbo variants rank below their base."""
+    import re as _re
+    ids = [m["id"] for m in known_models().get("openai", []) if m.get("verified") and m["id"].startswith("gpt-image-")]
+    def rank(i):
+        m = _re.match(r"gpt-image-(\d+(?:\.\d+)?)(.*)", i)
+        return (float(m.group(1)) if m else 0, 0 if m and m.group(2) == "" else -1)
+    return max(ids, key=rank) if ids else OPENAI_MODEL
+
+
 def openai_generate(job, key, model, seed=None):
     """POST /images/generations. gpt-image-1 returns b64 by default; DALL-E 3
     needs response_format asked for. No seed on this API; reference images are
@@ -431,6 +446,24 @@ def openai_generate(job, key, model, seed=None):
         body["quality"] = job.get("openai_quality", "medium")
     h = {"Authorization": f"Bearer {key}"}
     st, raw = _http(f"{OPENAI_BASE}/images/generations", "POST", h, body, timeout=240)
+    # newer models may reject a parameter this runner guessed (size list,
+    # quality names); read the 400, drop or relax the named field, retry once
+    for _ in range(2):
+        if st != 400:
+            break
+        msg = raw.decode("utf-8", "replace")
+        low = msg.lower()
+        if "size" in low and body.get("size") != "auto":
+            print(f"  · {model} doesn't take size {body['size']}; retrying with size auto")
+            body["size"] = "auto"; size = "auto"
+        elif "quality" in low and "quality" in body:
+            print(f"  · {model} doesn't take quality {body['quality']}; retrying without it")
+            body.pop("quality")
+        elif "response_format" in low and "response_format" in body:
+            body.pop("response_format")
+        else:
+            break
+        st, raw = _http(f"{OPENAI_BASE}/images/generations", "POST", h, body, timeout=240)
     if st != 200:
         raise RuntimeError(f"openai submit {st} (model {model}, size {size}): {raw[:500]!r}")
     d = json.loads(raw)
@@ -488,7 +521,7 @@ def main(argv=None):
     jobs = [j for j in q["jobs"] if not args.only or fnmatch.fnmatch(j["slug"], args.only)]
     if args.limit:
         jobs = jobs[:args.limit]
-    model = args.model or {"google": GOOGLE_IMAGEN, "openai": OPENAI_MODEL}.get(args.provider, RUNWAY_MODEL)
+    model = args.model or {"google": GOOGLE_IMAGEN, "openai": openai_default_model()}.get(args.provider, RUNWAY_MODEL)
     is_sheets = any(j.get("tag") == "vol10-sheets" for j in q.get("jobs", []))
     out_dir = OUT_ROOT / ("sheets" if is_sheets else args.provider)
     out_dir.mkdir(parents=True, exist_ok=True)
