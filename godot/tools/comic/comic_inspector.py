@@ -146,13 +146,23 @@ def _ref_url(r):
 def api_sheets():
     data = ct.load_json(ct.SHEETS_PATH)
     renders = _renders_index()
-    refs = {r["id"]: r for r in ct.load_refs().get("references", [])}
+    all_refs = ct.load_refs().get("references", [])
+    refs = {r["id"]: r for r in all_refs}
+    heroes = set((ct.load_heroes().get("heroes") or {}).keys())
     out = []
     for sh in data["sheets"]:
         r = refs.get(sh["id"], {})
+        # references for the same character that are NOT this sheet: uploads
+        # and "use as reference" picks. They live in references.json, not in
+        # sheets.json, so the sheet view lists them here.
+        who = [t for t in sh.get("tags", []) if t in heroes]
+        others = [{"id": x["id"], "status": x.get("status"), "file": x.get("file"), "url": _ref_url(x),
+                   "notes": x.get("notes", ""), "source": x.get("source", "")}
+                  for x in all_refs if x["id"] != sh["id"] and who and any(t in (x.get("tags") or []) for t in who)]
         out.append({"id": sh["id"], "kind": sh["kind"], "era": sh["era"], "ratio": sh.get("ratio", "16:9"), "tags": sh.get("tags", []),
                     "prompt": sh["prompt"], "status": r.get("status", "missing"), "notes": r.get("notes", ""),
-                    "renders": [x for x in renders.get(sh["id"], []) if x.get("exists")], "url": _ref_url(r) if r else None})
+                    "renders": [x for x in renders.get(sh["id"], []) if x.get("exists")], "url": _ref_url(r) if r else None,
+                    "user_refs": others})
     return {"sheets": out}
 
 
@@ -470,7 +480,7 @@ class H(BaseHTTPRequestHandler):
         path = u.path
         try:
             if path in ("/", "/index.html"):
-                return self._send(200, PAGE, "text/html; charset=utf-8")
+                return self._send(200, PAGE.replace("__BUILD__", build_stamp()), "text/html; charset=utf-8")
             if path == "/api/strips":
                 return self._send(200, api_strips())
             if path == "/api/strip":
@@ -529,6 +539,18 @@ class H(BaseHTTPRequestHandler):
 
 
 # ── the page ─────────────────────────────────────────────────────────────
+
+def build_stamp():
+    """Short git hash of the checkout serving this page, so the header
+    shows which version the tab is looking at."""
+    try:
+        import subprocess
+        h = subprocess.run(["git", "rev-parse", "--short", "HEAD"], cwd=str(REPO),
+                           capture_output=True, text=True, timeout=5).stdout.strip()
+        return h or "?"
+    except Exception:
+        return "?"
+
 
 PAGE = r"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
@@ -589,7 +611,7 @@ button.sm.ok{color:var(--em-hi);border-color:var(--em)}button.sm.bad{color:#ff9a
 kbd{border:1px solid var(--rule);padding:0 4px;color:var(--dim)}
 @media (max-width:900px){main{grid-template-columns:1fr}aside{max-height:40vh}}
 </style></head><body>
-<header><h1>COMIC INSPECTOR</h1><span class="sub">Drift Wood / ROFLCOPTER · vol 10 · the run on disk</span>
+<header><h1>COMIC INSPECTOR</h1><span class="sub">Drift Wood / ROFLCOPTER · vol 10 · the run on disk · build __BUILD__</span>
 <div class="mode"><button id="m-strips" class="on">STRIPS</button><button id="m-sheets">SHEETS</button><button id="m-refs">REFS</button><button id="m-jobs">JOBS</button><button id="m-keys">KEYS</button></div>
 <div class="keys" id="keys"></div></header>
 <main><aside>
@@ -632,15 +654,15 @@ function filt(){const q=$('#q').value.toLowerCase(),y=$('#f-year').value,st=$('#
 function render(){const list=$('#list');if(MODE==='strips'){VIEW=filt();list.innerHTML=VIEW.map(s=>`<div class="row ${SEL===s.id?'sel':''}" data-id="${s.id}"><span class="d">${s.date}</span><span class="t">${esc(s.title)}<br><small>${s.format} · ${esc(s.arc)}</small></span><span class="b">${s.review?`<span class="pill ${s.review}">${s.review}</span>`:''}<span class="pill ${s.tier}">${s.tier}</span>${s.renders?`<span class="pill r">${s.renders}✓</span>`:''}</span></div>`).join('');
   $('#count').textContent=`${VIEW.length} of ${STRIPS.length} strips · ${STRIPS.filter(s=>s.renders).length} rendered`;}
  else if(MODE==='sheets'){const q=$('#q').value.toLowerCase();VIEW=SHEETS.filter(s=>!q||(s.id+' '+s.kind+' '+s.tags.join(' ')).toLowerCase().includes(q));
-  list.innerHTML=VIEW.map(s=>`<div class="row ${SEL===s.id?'sel':''}" data-id="${s.id}"><span class="d">${s.era}</span><span class="t">${esc(s.id)}<br><small>${s.kind} · ${s.ratio}</small></span><span class="b"><span class="pill ${s.status==='approved'?'ok':s.status==='draft'?'A':''}">${s.status}</span>${s.renders.length?`<span class="pill r">${s.renders.length}✓</span>`:''}</span></div>`).join('');
+  list.innerHTML=VIEW.map(s=>`<div class="row ${SEL===s.id?'sel':''}" data-id="${s.id}"><span class="d">${s.era}</span><span class="t">${esc(s.id)}<br><small>${s.kind} · ${s.ratio}</small></span><span class="b"><span class="pill ${s.status==='approved'?'ok':s.status==='draft'?'A':''}">${s.status}</span>${s.renders.length?`<span class="pill r">${s.renders.length}✓</span>`:''}${(s.user_refs||[]).some(r=>r.status==='approved')?`<span class="pill ok" title="an uploaded or picked reference for this character is approved">yours</span>`:''}</span></div>`).join('');
   const missing=SHEETS.filter(s=>!s.renders.length),mc=missing.filter(s=>s.kind==='character').length;
   list.innerHTML=`<div class="job" style="margin:6px"><b>batch</b> · ${missing.length} of ${SHEETS.length} sheets have no render yet (${mc} characters)<br><button class="sm ok" onclick="batchSheets('character')" ${mc?'':'disabled'}>render the ${mc} missing character sheets</button> <button class="sm" onclick="batchSheets('all')" ${missing.length?'':'disabled'}>render all ${missing.length} missing</button> <span class="empty" id="b-msg">uses the provider and model kept in any GENERATE form; existing renders are skipped</span></div>`+list.innerHTML;
   $('#count').textContent=`${VIEW.length} sheets · ${SHEETS.filter(s=>s.status==='approved').length} approved · ${SHEETS.filter(s=>s.renders.length).length} rendered`;}
- else if(MODE==='refs'){if(!REFS){list.innerHTML='';return;}const q=$('#q').value.toLowerCase();VIEW=REFS.references.filter(r=>!q||(r.id+' '+r.kind+' '+(r.tags||[]).join(' ')).toLowerCase().includes(q));
+ else if(MODE==='refs'){const q=$('#q').value.toLowerCase();VIEW=(REFS?REFS.references:[]).filter(r=>!q||(r.id+' '+r.kind+' '+(r.tags||[]).join(' ')).toLowerCase().includes(q));
   const addbar=`<div class="job" style="margin:6px"><b>add your own image as a reference</b><br><input type="file" id="ru-file" accept="image/png,image/jpeg,image/webp" style="max-width:220px"> ${refPickers('ru')}<br><input type="text" id="ru-notes" placeholder="note (optional)" style="width:220px;background:var(--ink);border:1px solid var(--rule);color:var(--text);font:inherit;padding:3px 6px"> <label><input type="checkbox" id="ru-replace" checked> replace: reject the other references for this character</label> <button class="sm ok" onclick="uploadRef()">save as approved</button><span class="empty" id="ru-msg"></span></div>`;
   list.innerHTML=addbar;
   list.innerHTML+=VIEW.map(r=>`<div class="row ${SEL===r.id?'sel':''}" data-id="${r.id}"><span class="d">${r.kind}</span><span class="t">${esc(r.id)}<br><small>${esc((r.tags||[]).join(' '))}</small></span><span class="b"><span class="pill ${r.status==='approved'?'ok':r.status==='draft'?'A':''}">${r.status}</span></span></div>`).join('');
-  $('#count').textContent=`${VIEW.length} references · policy: max ${JSON.stringify(REFS.policy.max_refs||{})}`;}
+  $('#count').textContent=REFS?`${VIEW.length} references · policy: max ${JSON.stringify(REFS.policy.max_refs||{})}`:'references.json did not load — the upload bar still works';}
  else{list.innerHTML='';$('#count').textContent='';}
  list.querySelectorAll('.row').forEach(el=>el.onclick=()=>open(el.dataset.id));const sel=list.querySelector('.row.sel');if(sel)sel.scrollIntoView({block:'nearest'});}
 async function open(id){SEL=id;render();const el=$('#detail');el.innerHTML='<p class="empty">loading…</p>';
@@ -699,7 +721,8 @@ function renderStrip(d){const s=d.strip,p=d.prompt,rv=s.review||{};const el=$('#
  <div class="pane ${TAB==='json'?'on':''}" id="p-json"><pre>${esc(JSON.stringify(s,null,2))}</pre><p class="empty">file: strips/${s.id}.json · edit the JSON, then <button class="sm" onclick="regenMd()">regenerate the md sheets</button></p></div>`;}
 function renderSheet(s){const el=$('#detail');showLastRun(s.id);el.innerHTML=`<div class="head"><h1>${esc(s.id)}</h1><div class="meta">${s.kind} · ${s.era} · ${s.ratio} · <span class="pill ${s.status==='approved'?'ok':'A'}">${s.status}</span> · ${esc(s.tags.join(' '))}</div><div class="log">${esc(s.prompt)}</div>
  <div class="review"><button class="sm ok" onclick="refStatus('${s.id}','approved')">approve</button><button class="sm bad" onclick="refStatus('${s.id}','rejected')">reject</button><button class="sm" onclick="refStatus('${s.id}','draft')">draft</button><span class="empty">${esc(s.notes||'')}</span></div></div>
- <h2>generate</h2>${genForm('sheet',s.id)}<div id="lastrun"></div><h2>on disk</h2>${gallery(s.renders)}<p class="empty">after a render, run <code>comic_tool.py refs sync</code> (or just approve here — sync also picks the file up).</p>`;}
+ ${userRefs(s)}<h2>generate</h2>${genForm('sheet',s.id)}<div id="lastrun"></div><h2>on disk</h2>${gallery(s.renders)}<p class="empty">after a render, run <code>comic_tool.py refs sync</code> (or just approve here — sync also picks the file up).</p>`;}
+function userRefs(s){const u=s.user_refs||[];if(!u.length)return '';return `<h2>other references for this character</h2><p class="empty">your uploads and "use as reference" picks. An approved one here is what attaches to strips; this sheet's own status is separate.</p><div class="gal">`+u.map(r=>`<div class="card">${r.url?`<img src="${r.url}" onclick="lb('${r.url}')">`:'<div class="empty">file not on disk</div>'}<div class="cap"><b>${esc(r.id)}</b><span class="pill ${r.status==='approved'?'ok':r.status==='draft'?'A':''}">${esc(r.status||'')}</span></div><div class="cap"><span>${esc(r.source||'')}</span><span><button class="sm ok" onclick="refStatus('${r.id}','approved')">approve</button><button class="sm bad" onclick="refStatus('${r.id}','rejected')">reject</button></span></div></div>`).join('')+'</div>';}
 function renderRef(r){const el=$('#detail');el.innerHTML=`<div class="head"><h1>${esc(r.id)}</h1><div class="meta">${r.kind} · <span class="pill ${r.status==='approved'?'ok':'A'}">${r.status}</span> · ${esc((r.tags||[]).join(' '))}</div><div class="log">${esc(r.notes||'')}</div>
  <div class="review"><button class="sm ok" onclick="refStatus('${r.id}','approved')">approve</button><button class="sm bad" onclick="refStatus('${r.id}','rejected')">reject</button><button class="sm" onclick="refStatus('${r.id}','draft')">draft</button></div></div>
  ${r.url?`<div class="gal"><div class="card"><img src="${r.url}" onclick="lb('${r.url}')"><div class="cap"><span>${esc(r.file||r.url)}</span></div></div></div>`:'<p class="empty">no image on disk'+(r.runway_task_id?' · runway task '+esc(r.runway_task_id):'')+'</p>'}
@@ -740,7 +763,7 @@ let JOBS_HTML='';function renderJobs(){api('/api/jobs').then(d=>{const el=$('#de
 function tab(t){TAB=t;document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('on',p.id==='p-'+t));document.querySelectorAll('.tabs button').forEach((b,i)=>b.classList.toggle('on',['sheet','panels','prompt','refs','renders','json'][i]===t));}
 function copy(id){navigator.clipboard.writeText($('#'+id).textContent);}
 async function review(id,status){const note=$('#rv-note')?.value||'';await api('/api/review',{method:'POST',body:JSON.stringify({id,status,note})});await loadStrips();open(id);}
-async function refStatus(id,status){await api('/api/ref_status',{method:'POST',body:JSON.stringify({id,status})});if(MODE==='sheets'){await loadSheets();open(id);}else if(MODE==='refs'){await loadRefs();open(id);}else open(SEL);}
+async function refStatus(id,status){await api('/api/ref_status',{method:'POST',body:JSON.stringify({id,status})});if(MODE==='sheets'){await loadSheets();open(SHEETS.some(s=>s.id===id)?id:SEL);}else if(MODE==='refs'){await loadRefs();open(id);}else open(SEL);}
 async function regenMd(){await api('/api/md',{method:'POST',body:'{}'});$('#g-msg')&&($('#g-msg').textContent='md regenerated');}
 function setMode(m){MODE=m;SEL=null;document.querySelectorAll('.mode button').forEach(b=>b.classList.toggle('on',b.id==='m-'+m));$('#detail').innerHTML='<p class="empty">pick one</p>';
  if(m==='strips')loadStrips();else if(m==='sheets')loadSheets();else if(m==='refs')loadRefs();else if(m==='keys'){render();renderKeys();}else{render();renderJobs();setTimeout(()=>{if(MODE==='jobs')renderJobs();},3000);}}
