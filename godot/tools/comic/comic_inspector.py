@@ -355,6 +355,8 @@ def start_job(body):
         render += ["--seed", str(int(body["seed"]))]
     if body.get("overwrite"):
         render.append("--overwrite")
+    if body.get("skip_existing"):
+        render += ["--take", "skip"]
     if body.get("dry_run"):
         render.append("--dry-run")
     jid = f"{int(time.time()*1000)}_{target}"
@@ -563,6 +565,8 @@ function render(){const list=$('#list');if(MODE==='strips'){VIEW=filt();list.inn
   $('#count').textContent=`${VIEW.length} of ${STRIPS.length} strips · ${STRIPS.filter(s=>s.renders).length} rendered`;}
  else if(MODE==='sheets'){const q=$('#q').value.toLowerCase();VIEW=SHEETS.filter(s=>!q||(s.id+' '+s.kind+' '+s.tags.join(' ')).toLowerCase().includes(q));
   list.innerHTML=VIEW.map(s=>`<div class="row ${SEL===s.id?'sel':''}" data-id="${s.id}"><span class="d">${s.era}</span><span class="t">${esc(s.id)}<br><small>${s.kind} · ${s.ratio}</small></span><span class="b"><span class="pill ${s.status==='approved'?'ok':s.status==='draft'?'A':''}">${s.status}</span>${s.renders.length?`<span class="pill r">${s.renders.length}✓</span>`:''}</span></div>`).join('');
+  const missing=SHEETS.filter(s=>!s.renders.length),mc=missing.filter(s=>s.kind==='character').length;
+  list.innerHTML=`<div class="job" style="margin:6px"><b>batch</b> · ${missing.length} of ${SHEETS.length} sheets have no render yet (${mc} characters)<br><button class="sm ok" onclick="batchSheets('character')" ${mc?'':'disabled'}>render the ${mc} missing character sheets</button> <button class="sm" onclick="batchSheets('all')" ${missing.length?'':'disabled'}>render all ${missing.length} missing</button> <span class="empty" id="b-msg">uses the provider and model kept in any GENERATE form; existing renders are skipped</span></div>`+list.innerHTML;
   $('#count').textContent=`${VIEW.length} sheets · ${SHEETS.filter(s=>s.status==='approved').length} approved · ${SHEETS.filter(s=>s.renders.length).length} rendered`;}
  else if(MODE==='refs'){if(!REFS){list.innerHTML='';return;}const q=$('#q').value.toLowerCase();VIEW=REFS.references.filter(r=>!q||(r.id+' '+r.kind+' '+(r.tags||[]).join(' ')).toLowerCase().includes(q));
   list.innerHTML=VIEW.map(r=>`<div class="row ${SEL===r.id?'sel':''}" data-id="${r.id}"><span class="d">${r.kind}</span><span class="t">${esc(r.id)}<br><small>${esc((r.tags||[]).join(' '))}</small></span><span class="b"><span class="pill ${r.status==='approved'?'ok':r.status==='draft'?'A':''}">${r.status}</span></span></div>`).join('');
@@ -593,6 +597,12 @@ async function generate(kind,id){let model=$('#g-model').value;if(model==='__cus
  if(kind==='strip'){b.letter=$('#g-letter').checked;b.refs=$('#g-refs').checked;b.include_draft=$('#g-draft').checked;}
  $('#g-go').disabled=true;const r=await api('/api/generate',{method:'POST',body:JSON.stringify(b)});$('#g-go').disabled=false;
  $('#g-msg').textContent=r.error?('✗ '+r.error):'queued → JOBS · every run is a new take';if(!r.error){showLastRun(id);watch(r.job.id,()=>{if(SEL===id){TAB='renders';open(id);}if(MODE==='strips')loadStrips();else loadSheets();});}}
+async function batchSheets(which){const prov=GEN.prov&&KEYS[GEN.prov]?GEN.prov:(KEYS.runway?'runway':KEYS.google?'google':KEYS.openai?'openai':'');if(!prov){$('#b-msg').textContent='✗ no key saved (KEYS)';return;}
+ let model=GEN.model||'';if(model==='__custom')model=GEN.custom||'';const ids=SHEETS.filter(s=>!s.renders.length&&(which==='all'||s.kind==='character')).map(s=>s.id);
+ if(!confirm(`Render ${ids.length} sheets with ${prov}${model?' / '+model:''}? Each one is a paid image.`))return;
+ const b={kind:'sheet',id:'sheet_*',provider:prov,model,variants:1,skip_existing:true};if(which==='character')b.id='sheet_*';
+ const r=await api('/api/generate',{method:'POST',body:JSON.stringify(b)});$('#b-msg').textContent=r.error?('✗ '+r.error):`queued ${ids.length} → JOBS (already-rendered sheets are skipped as they come up)`;
+ if(!r.error)watch(r.job.id,()=>loadSheets());}
 function watch(jid,done){const t=setInterval(async()=>{const j=(await api('/api/jobs')).jobs.find(x=>x.id===jid);if(!j)return clearInterval(t);const m=$('#g-msg');if(m)m.textContent=`${j.status}`;if(j.status==='done'||j.status==='failed'){clearInterval(t);done&&done();}},2000);}
 function gallery(rs){if(!rs.length)return '<p class="empty">no renders on disk yet</p>';return '<div class="gal">'+rs.map(r=>`<div class="card ${r.exists?'':'missing'}">${r.exists?`<img src="${r.url}" onclick="lb('${r.url}')">`:'<div class="empty">file not on disk (see manifest / fetch_concept.py)</div>'}<div class="cap"><b>${esc(r.provider||r.provider_dir)}${r.model?' · '+esc(r.model):''}${r.seed!=null?' · seed '+r.seed:''}</b><span>${esc((r.rendered_at||'').slice(0,16))}</span></div><div class="cap"><span>${esc(r.file||'')}</span></div></div>`).join('')+'</div>';}
 function lb(u){$('#lbimg').src=u;$('#lightbox').style.display='flex';}$('#lightbox').onclick=()=>$('#lightbox').style.display='none';
