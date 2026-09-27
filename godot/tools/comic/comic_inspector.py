@@ -166,6 +166,68 @@ def api_refs():
     return {"policy": refs.get("policy", {}), "references": out}
 
 
+REF_DIR = ct.REPO / "godot" / "assets" / "comic" / "vol10" / "refs"
+
+
+def api_heroes():
+    h = ct.load_heroes().get("heroes") or {}
+    return {"heroes": [{"id": k, "who": v.get("who", "")} for k, v in h.items()]}
+
+
+def _register_ref(rel_file, kind, character, era, notes, replace, rid=None):
+    """Add (or replace) an approved reference pointing at a file already in the
+    repo. With replace=True every other reference carrying the same character
+    tag is set to rejected, so the new image is the one that attaches."""
+    refs = ct.load_refs()
+    tags = [kind]
+    if era: tags.append(era)
+    if character: tags.append(character)
+    rid = rid or ("ref_" + re.sub(r"[^a-z0-9]+", "_", Path(rel_file).stem.lower()).strip("_"))[:60]
+    refs["references"] = [r for r in refs["references"] if r["id"] != rid]
+    demoted = 0
+    if replace and character:
+        for r in refs["references"]:
+            if character in (r.get("tags") or []) and r.get("status") == "approved":
+                r["status"] = "rejected"; demoted += 1
+    refs["references"].append({"id": rid, "kind": kind, "tags": tags, "file": rel_file, "url": None, "runway_task_id": None,
+                               "status": "approved", "source": "inspector upload", "notes": notes or ""})
+    ct.save_refs(refs)
+    return {"ok": True, "id": rid, "file": rel_file, "demoted": demoted}
+
+
+def ref_upload(body):
+    """JSON: {name, data: 'data:image/png;base64,…', kind, character, era, notes, replace}."""
+    import base64 as _b64
+    data = body.get("data") or ""
+    if "," not in data:
+        return {"error": "no image data"}
+    head, b64 = data.split(",", 1)
+    ext = ".png" if "png" in head else ".jpg" if ("jpeg" in head or "jpg" in head) else ".webp" if "webp" in head else ""
+    if not ext:
+        return {"error": "use a PNG, JPEG or WebP"}
+    raw = _b64.b64decode(b64)
+    if len(raw) > 25 * 1024 * 1024:
+        return {"error": "image over 25 MB"}
+    kind = body.get("kind") or "character"
+    character = body.get("character") or ""
+    stem = re.sub(r"[^a-z0-9]+", "_", (character or kind) + "_" + Path(body.get("name") or "image").stem.lower()).strip("_")[:48]
+    REF_DIR.mkdir(parents=True, exist_ok=True)
+    p = REF_DIR / (stem + ext)
+    n = 2
+    while p.exists():
+        p = REF_DIR / f"{stem}_{n}{ext}"; n += 1
+    p.write_bytes(raw)
+    rel = str(p.relative_to(ct.REPO))
+    return _register_ref(rel, kind, character, body.get("era") or "", body.get("notes") or "", bool(body.get("replace", True)))
+
+
+def ref_from_render(body):
+    rel = body.get("file") or ""
+    if not rel or not (ct.REPO / rel).exists():
+        return {"error": "that file isn't on disk"}
+    return _register_ref(rel, body.get("kind") or "character", body.get("character") or "", body.get("era") or "", body.get("notes") or "", bool(body.get("replace", True)))
+
+
 def api_models():
     import comic_render as cr
     return {"models": cr.known_models()}
@@ -418,6 +480,8 @@ class H(BaseHTTPRequestHandler):
                 return self._send(200, api_sheets())
             if path == "/api/refs":
                 return self._send(200, api_refs())
+            if path == "/api/heroes":
+                return self._send(200, api_heroes())
             if path == "/api/keys":
                 return self._send(200, api_keys())
             if path == "/api/models":
@@ -446,6 +510,10 @@ class H(BaseHTTPRequestHandler):
                 return self._send(200, set_review(body.get("id"), body.get("status"), body.get("note")))
             if u.path == "/api/ref_status":
                 return self._send(200, set_ref_status(body.get("id"), body.get("status"), body.get("note")))
+            if u.path == "/api/ref_upload":
+                return self._send(200, ref_upload(body))
+            if u.path == "/api/ref_from_render":
+                return self._send(200, ref_from_render(body))
             if u.path == "/api/keys":
                 return self._send(200, set_key(body.get("provider"), body.get("key")))
             if u.path == "/api/models/discover":
@@ -557,7 +625,7 @@ function inl(s){return esc(s).replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\
 async function loadKeys(){const k=await api('/api/keys');KEYS={runway:k.runway_ok,google:k.google_ok,openai:k.openai_ok,info:k};try{MODELS=(await api('/api/models')).models;}catch(e){}$('#keys').innerHTML=`<a href="#" onclick="setMode('keys');return false" style="color:inherit">keys · runway ${KEYS.runway?'<b>found</b>':'<s>none</s>'} · google ${KEYS.google?'<b>found</b>':'<s>none</s>'} · openai ${KEYS.openai?'<b>found</b>':'<s>none</s>'}</a>`;}
 async function loadStrips(){const d=await api('/api/strips');STRIPS=d.strips;const ys=[...new Set(STRIPS.map(s=>s.date.slice(0,4)))];$('#f-year').innerHTML='<option value="">year</option>'+ys.map(y=>`<option>${y}</option>`).join('');render();}
 async function loadSheets(){SHEETS=(await api('/api/sheets')).sheets;render();}
-async function loadRefs(){REFS=await api('/api/refs');render();}
+async function loadRefs(){await loadHeroes();REFS=await api('/api/refs');render();}
 function filt(){const q=$('#q').value.toLowerCase(),y=$('#f-year').value,st=$('#f-strip').value,f=$('#f-format').value,t=$('#f-tier').value,r=$('#f-render').value,rv=$('#f-review').value;
  return STRIPS.filter(s=>(!y||s.date.startsWith(y))&&(!st||s.strip===st)&&(!f||s.format===f)&&(!t||s.tier===t)&&(!r||(r==='yes'?s.renders>0:s.renders===0))&&(!rv||(rv==='none'?!s.review:s.review===rv))
   &&(!q||[s.id,s.title,s.arc,s.location,s.logline,...(s.cast||[])].join(' ').toLowerCase().includes(q)));}
@@ -569,7 +637,9 @@ function render(){const list=$('#list');if(MODE==='strips'){VIEW=filt();list.inn
   list.innerHTML=`<div class="job" style="margin:6px"><b>batch</b> · ${missing.length} of ${SHEETS.length} sheets have no render yet (${mc} characters)<br><button class="sm ok" onclick="batchSheets('character')" ${mc?'':'disabled'}>render the ${mc} missing character sheets</button> <button class="sm" onclick="batchSheets('all')" ${missing.length?'':'disabled'}>render all ${missing.length} missing</button> <span class="empty" id="b-msg">uses the provider and model kept in any GENERATE form; existing renders are skipped</span></div>`+list.innerHTML;
   $('#count').textContent=`${VIEW.length} sheets · ${SHEETS.filter(s=>s.status==='approved').length} approved · ${SHEETS.filter(s=>s.renders.length).length} rendered`;}
  else if(MODE==='refs'){if(!REFS){list.innerHTML='';return;}const q=$('#q').value.toLowerCase();VIEW=REFS.references.filter(r=>!q||(r.id+' '+r.kind+' '+(r.tags||[]).join(' ')).toLowerCase().includes(q));
-  list.innerHTML=VIEW.map(r=>`<div class="row ${SEL===r.id?'sel':''}" data-id="${r.id}"><span class="d">${r.kind}</span><span class="t">${esc(r.id)}<br><small>${esc((r.tags||[]).join(' '))}</small></span><span class="b"><span class="pill ${r.status==='approved'?'ok':r.status==='draft'?'A':''}">${r.status}</span></span></div>`).join('');
+  const addbar=`<div class="job" style="margin:6px"><b>add your own image as a reference</b><br><input type="file" id="ru-file" accept="image/png,image/jpeg,image/webp" style="max-width:220px"> ${refPickers('ru')}<br><input type="text" id="ru-notes" placeholder="note (optional)" style="width:220px;background:var(--ink);border:1px solid var(--rule);color:var(--text);font:inherit;padding:3px 6px"> <label><input type="checkbox" id="ru-replace" checked> replace: reject the other references for this character</label> <button class="sm ok" onclick="uploadRef()">save as approved</button><span class="empty" id="ru-msg"></span></div>`;
+  list.innerHTML=addbar;
+  list.innerHTML+=VIEW.map(r=>`<div class="row ${SEL===r.id?'sel':''}" data-id="${r.id}"><span class="d">${r.kind}</span><span class="t">${esc(r.id)}<br><small>${esc((r.tags||[]).join(' '))}</small></span><span class="b"><span class="pill ${r.status==='approved'?'ok':r.status==='draft'?'A':''}">${r.status}</span></span></div>`).join('');
   $('#count').textContent=`${VIEW.length} references · policy: max ${JSON.stringify(REFS.policy.max_refs||{})}`;}
  else{list.innerHTML='';$('#count').textContent='';}
  list.querySelectorAll('.row').forEach(el=>el.onclick=()=>open(el.dataset.id));const sel=list.querySelector('.row.sel');if(sel)sel.scrollIntoView({block:'nearest'});}
@@ -604,7 +674,14 @@ async function batchSheets(which){const prov=GEN.prov&&KEYS[GEN.prov]?GEN.prov:(
  const r=await api('/api/generate',{method:'POST',body:JSON.stringify(b)});$('#b-msg').textContent=r.error?('✗ '+r.error):`queued ${ids.length} → JOBS (already-rendered sheets are skipped as they come up)`;
  if(!r.error)watch(r.job.id,()=>loadSheets());}
 function watch(jid,done){const t=setInterval(async()=>{const j=(await api('/api/jobs')).jobs.find(x=>x.id===jid);if(!j)return clearInterval(t);const m=$('#g-msg');if(m)m.textContent=`${j.status}`;if(j.status==='done'||j.status==='failed'){clearInterval(t);done&&done();}},2000);}
-function gallery(rs){if(!rs.length)return '<p class="empty">no renders on disk yet</p>';return '<div class="gal">'+rs.map(r=>`<div class="card ${r.exists?'':'missing'}">${r.exists?`<img src="${r.url}" onclick="lb('${r.url}')">`:'<div class="empty">file not on disk (see manifest / fetch_concept.py)</div>'}<div class="cap"><b>${esc(r.provider||r.provider_dir)}${r.model?' · '+esc(r.model):''}${r.seed!=null?' · seed '+r.seed:''}</b><span>${esc((r.rendered_at||'').slice(0,16))}</span></div><div class="cap"><span>${esc(r.file||'')}</span></div></div>`).join('')+'</div>';}
+function gallery(rs){if(!rs.length)return '<p class="empty">no renders on disk yet</p>';return '<div class="gal">'+rs.map(r=>`<div class="card ${r.exists?'':'missing'}">${r.exists?`<img src="${r.url}" onclick="lb('${r.url}')">`:'<div class="empty">file not on disk (see manifest / fetch_concept.py)</div>'}<div class="cap"><b>${esc(r.provider||r.provider_dir)}${r.model?' · '+esc(r.model):''}${r.seed!=null?' · seed '+r.seed:''}</b><span>${esc((r.rendered_at||'').slice(0,16))}</span></div><div class="cap"><span>${esc(r.file||'')}</span>${r.exists&&r.file?`<button class="sm" onclick="useAsRef(this.dataset.f)" data-f="${esc(r.file)}">use as reference</button>`:''}</div></div>`).join('')+'</div>';}
+let HEROES=[];async function loadHeroes(){if(!HEROES.length){try{HEROES=(await api('/api/heroes')).heroes;}catch(e){}}}
+function refPickers(p){return `<select id="${p}-kind"><option>character</option><option>location</option><option>era</option><option>objects</option><option>strip</option></select> <select id="${p}-char"><option value="">character…</option>${HEROES.map(h=>`<option value="${h.id}">${h.id} — ${esc(h.who)}</option>`).join('')}</select> <select id="${p}-era"><option value="">era…</option><option>era1</option><option>era2</option><option>era3</option><option>era4</option></select>`;}
+async function uploadRef(){const f=$('#ru-file').files[0];if(!f){$('#ru-msg').textContent='pick an image first';return;}const data=await new Promise(res=>{const r=new FileReader();r.onload=()=>res(r.result);r.readAsDataURL(f);});
+ const b={name:f.name,data,kind:$('#ru-kind').value,character:$('#ru-char').value,era:$('#ru-era').value,notes:$('#ru-notes').value,replace:$('#ru-replace').checked};
+ $('#ru-msg').textContent='saving…';const r=await api('/api/ref_upload',{method:'POST',body:JSON.stringify(b)});$('#ru-msg').textContent=r.error?('✗ '+r.error):`✓ saved ${r.file} as approved${r.demoted?` · ${r.demoted} other reference(s) for that character rejected`:''}`;if(!r.error){await loadRefs();open(r.id);}}
+async function useAsRef(file){await loadHeroes();const d=document.createElement('div');d.className='job';d.id='uar';d.innerHTML=`<b>use this render as a reference</b> · ${esc(file)}<br>${refPickers('ua')} <label><input type="checkbox" id="ua-replace" checked> replace others for this character</label> <button class="sm ok" onclick="useAsRefGo(this)" data-file="${esc(file)}">save as approved</button> <button class="sm" onclick="$('#uar').remove()">cancel</button><span class="empty" id="ua-msg"></span>`;const old=$('#uar');if(old)old.remove();$('#detail').prepend(d);d.scrollIntoView();}
+async function useAsRefGo(btn){const b={file:btn.dataset.file,kind:$('#ua-kind').value,character:$('#ua-char').value,era:$('#ua-era').value,replace:$('#ua-replace').checked};const r=await api('/api/ref_from_render',{method:'POST',body:JSON.stringify(b)});$('#ua-msg').textContent=r.error?('✗ '+r.error):`✓ ${r.id} approved${r.demoted?` · ${r.demoted} other(s) rejected`:''}`;}
 function lb(u){$('#lbimg').src=u;$('#lightbox').style.display='flex';}$('#lightbox').onclick=()=>$('#lightbox').style.display='none';
 function renderStrip(d){const s=d.strip,p=d.prompt,rv=s.review||{};const el=$('#detail');setTimeout(()=>showLastRun(s.id),0);
  const tabs=[['sheet','SHEET'],['panels','PANELS'],['prompt','PROMPT'],['refs','REFS'],['renders',`RENDERS ${d.renders.filter(r=>r.exists).length}`],['json','JSON']];
