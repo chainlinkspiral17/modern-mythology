@@ -100,13 +100,20 @@ def api_strips():
             "counts": {"strips": len(strips), "rendered": sum(1 for s in strips if renders.get(s["id"]))}}
 
 
+def _refs_synced():
+    refs = ct.load_refs()
+    if ct.sync_refs(refs):
+        ct.save_refs(refs)
+    return refs
+
+
 def api_strip(sid):
     eras = ct.load_eras()
     strips = [s for s in ct.load_strips() if s["id"] == sid]
     if not strips:
         return None
     s = strips[0]
-    refs = ct.load_refs()
+    refs = _refs_synced()
     prompt_l, neg_l = ct.compose_strip_prompt(s, eras, letter=True)
     prompt_c, _ = ct.compose_strip_prompt(s, eras, letter=True, compact=True)
     prompt_u, neg_u = ct.compose_strip_prompt(s, eras, letter=False)
@@ -574,12 +581,12 @@ function modelOptions(prov,sel){const ms=MODELS[prov]||[];const opts=['<option v
  return opts.replace(`value="${sel||''}"`,`value="${sel||''}" selected`);}
 function onProv(){const p=$('#g-prov').value;$('#g-model').innerHTML=modelOptions(p,'');$('#g-custom').style.display='none';onModel();}
 function onModel(){const v=$('#g-model').value;$('#g-custom').style.display=v==='__custom'?'inline-block':'none';const p=$('#g-prov').value;const m=(MODELS[p]||[]).find(x=>x.id===v);$('#g-note').textContent=m?m.note:(v==='__custom'?'type the exact id from the provider\'s docs; it is passed through unchanged':'');saveGen();}
-function genForm(kind,id,fmt){const avail=p=>!!KEYS[p];let prov=GEN.prov&&avail(GEN.prov)?GEN.prov:(KEYS.runway?'runway':KEYS.google?'google':'openai');const nokey=!KEYS.runway&&!KEYS.google&&!KEYS.openai;
+function genForm(kind,id,fmt,refs){const avail=p=>!!KEYS[p];const rc=p=>{const l=(refs&&refs[p])||[];const a=l.filter(r=>r.status==='approved'&&r.url).length,d=l.filter(r=>r.status==='draft'&&r.url).length;return {a,d};};let prov=GEN.prov&&avail(GEN.prov)?GEN.prov:(KEYS.runway?'runway':KEYS.google?'google':'openai');const nokey=!KEYS.runway&&!KEYS.google&&!KEYS.openai;
  const ck=(k,def)=>(GEN[k]===undefined?def:GEN[k])?'checked':'';
  return `${nokey?'<div class="job" style="border-color:var(--red)"><span class="st failed">NO KEYS</span> · nothing can generate until a key is saved. <a href="#" onclick="setMode(&quot;keys&quot;);return false" style="color:var(--gold-hi)">Open KEYS</a> to paste one and test it.</div>':''}<div class="gen"><label>provider <select id="g-prov" onchange="onProv()"><option value="runway" ${KEYS.runway?'':'disabled'} ${prov==='runway'?'selected':''}>runway${KEYS.runway?'':' (no key)'}</option><option value="google" ${KEYS.google?'':'disabled'} ${prov==='google'?'selected':''}>google${KEYS.google?'':' (no key)'}</option><option value="openai" ${KEYS.openai?'':'disabled'} ${prov==='openai'?'selected':''}>openai${KEYS.openai?'':' (no key)'}</option></select></label>
  <label>model <select id="g-model" onchange="onModel()">${modelOptions(prov,GEN.prov===prov?GEN.model:'')}</select><input type="text" id="g-custom" placeholder="exact model id" value="${esc(GEN.custom||'')}" oninput="saveGen()" style="display:${GEN.prov===prov&&GEN.model==='__custom'?'inline-block':'none'};width:200px"></label>
  <label>variants <input type="number" id="g-var" min="1" max="6" value="${GEN.variants||1}" onchange="saveGen()"></label><label>seed <input type="number" id="g-seed" placeholder="random" value="${esc(GEN.seed||'')}" onchange="saveGen()"></label>
- ${kind==='strip'?`<label><input type="checkbox" id="g-letter" ${ck('letter',true)} onchange="saveGen()"> letter balloons</label><label><input type="checkbox" id="g-refs" ${ck('refs',true)} onchange="saveGen()"> attach references</label><label><input type="checkbox" id="g-draft" ${ck('draft',false)} onchange="saveGen()"> allow draft refs</label>`:''}
+ ${kind==='strip'?`<label><input type="checkbox" id="g-letter" ${ck('letter',true)} onchange="saveGen()"> letter balloons</label><label><input type="checkbox" id="g-refs" ${ck('refs',true)} onchange="saveGen()"> attach references</label><label><input type="checkbox" id="g-draft" ${ck('draft',false)} onchange="saveGen()"> allow draft refs</label><span class="empty" id="g-refcount">${(()=>{const c=rc(prov);return c.a||c.d?`will attach: ${c.a} approved${c.d?` · ${c.d} draft (only with "allow draft refs")`:''}`:'<b style="color:#ff9a8a">no references for this strip</b> · render sheets (SHEETS) and approve them (REFS tab)';})()}</span>`:''}
  <label><input type="checkbox" id="g-over" ${ck('over',false)} onchange="saveGen()"> replace take 1 (else: new take)</label><label><input type="checkbox" id="g-dry" ${ck('dry',false)} onchange="saveGen()"> dry run</label>
  <button class="go" id="g-go" onclick="generate('${kind}','${id}')">GENERATE</button><span class="empty" id="g-msg"></span><div class="empty" id="g-note">${esc(((MODELS[prov]||[]).find(x=>x.id===GEN.model)||{}).note||'')}</div><div class="empty"><span id="g-remember">${GEN.prov?'settings kept for every strip':'settings are kept once you change them'}</span> · menu: ${(MODELS[prov]||[]).length} models · <a href="#" onclick="setMode('keys');return false" style="color:var(--gold)">fetch the provider's current list</a> (KEYS → fetch model list)</div></div>`;}
 async function generate(kind,id){let model=$('#g-model').value;if(model==='__custom')model=$('#g-custom').value.trim();const b={kind,id,provider:$('#g-prov').value,model,variants:+$('#g-var').value,seed:$('#g-seed').value,overwrite:$('#g-over').checked,dry_run:$('#g-dry').checked};
@@ -601,7 +608,7 @@ function renderStrip(d){const s=d.strip,p=d.prompt,rv=s.review||{};const el=$('#
   <h2>compact · ${p.compact.length} chars${p.compact.length>1000?' · <span style="color:#ff9a8a">still over gen4_image\'s 1000; use another model or shorten the dialogue</span>':' · fits gen4_image\'s 1000'} <button class="sm" onclick="copy('pc')">copy</button></h2><pre id="pc">${esc(p.compact)}</pre><p class="empty">sent instead of the full prompt when a model's limit is 1000 characters (gen4) or when the provider rejects the length. Dialogue is never shortened; only the style line and the panel descriptions are.</p>
   <h2>unlettered (production) <button class="sm" onclick="copy('pu')">copy</button></h2><pre id="pu">${esc(p.unlettered)}</pre><p class="empty">negative: ${esc(p.negative_unlettered)}</p></div>
  <div class="pane ${TAB==='refs'?'on':''}" id="p-refs"><div class="refs">${['runway','google','openai'].map(pr=>`<h2>${pr} would attach (${d.refs[pr].length})</h2>`+(d.refs[pr].length?d.refs[pr].map(r=>`<div class="ref">${r.url?`<img src="${r.url}" onclick="lb('${r.url}')">`:'<div class="empty">no image yet</div>'}<div><b>@${esc(r.tag)}</b> · ${esc(r.id)} · ${r.kind} · <span class="pill ${r.status==='approved'?'ok':'A'}">${r.status}</span> · score ${r.score}<br><span class="why">${esc(r.why.join(', '))}</span><br><small>${esc(r.tags.join(' '))}</small><br><button class="sm ok" onclick="refStatus('${r.id}','approved')">approve</button> <button class="sm bad" onclick="refStatus('${r.id}','rejected')">reject</button></div></div>`).join(''):'<p class="empty">none approved that match · render the sheets first (SHEETS mode) or tick "allow draft refs"</p>')).join('')}</div></div>
- <div class="pane ${TAB==='renders'?'on':''}" id="p-renders"><h2>generate</h2>${genForm('strip',s.id,s.format)}<div id="lastrun"></div><h2>on disk</h2>${gallery(d.renders)}</div>
+ <div class="pane ${TAB==='renders'?'on':''}" id="p-renders"><h2>generate</h2>${genForm('strip',s.id,s.format,d.refs)}<div id="lastrun"></div><h2>on disk</h2>${gallery(d.renders)}</div>
  <div class="pane ${TAB==='json'?'on':''}" id="p-json"><pre>${esc(JSON.stringify(s,null,2))}</pre><p class="empty">file: strips/${s.id}.json · edit the JSON, then <button class="sm" onclick="regenMd()">regenerate the md sheets</button></p></div>`;}
 function renderSheet(s){const el=$('#detail');showLastRun(s.id);el.innerHTML=`<div class="head"><h1>${esc(s.id)}</h1><div class="meta">${s.kind} · ${s.era} · ${s.ratio} · <span class="pill ${s.status==='approved'?'ok':'A'}">${s.status}</span> · ${esc(s.tags.join(' '))}</div><div class="log">${esc(s.prompt)}</div>
  <div class="review"><button class="sm ok" onclick="refStatus('${s.id}','approved')">approve</button><button class="sm bad" onclick="refStatus('${s.id}','rejected')">reject</button><button class="sm" onclick="refStatus('${s.id}','draft')">draft</button><span class="empty">${esc(s.notes||'')}</span></div></div>
@@ -621,6 +628,8 @@ function explain(j){const log=j.log.join('\n');
  if(/task FAILED|CANCELLED/.test(log))return 'The provider accepted the job and then failed it (often content moderation on a prompt with people, or an internal error). Try again with a different seed or model.';
  if(/dry run/.test(log))return 'That was a dry run: the prompt was printed and nothing was sent. Untick "dry run" to render.';
  if(/exists, skip/.test(log))return 'The file already existed and skip mode was on. Every run is a new take now; if you still see this, pull the latest.';
+ if(/no references attached/.test(log)&&j.status==='done')return 'Rendered, but with NO reference images, so faces and builds came from the prompt alone. Render the character sheets (SHEETS mode), approve them in the strip\'s REFS tab, or tick "allow draft refs", then generate again.';
+ if(/references were refused/.test(log)&&j.status==='done')return 'Rendered, but the provider refused the reference images and the strip was made from the prompt alone. Try a gpt-image model, or Runway / Google, which take references.';
  if(/Traceback/.test(log))return 'The tool itself crashed. The traceback below is the bug; paste it to me.';
  if(/wrote 0 strip prompts|wrote 0 sheet prompts/.test(log))return 'No strip matched that id when composing the prompt; the id may have changed. Reload the page.';
  if(j.status==='done'&&/✓/.test(log))return 'Rendered. It is in the gallery below (reload the tab if not).';

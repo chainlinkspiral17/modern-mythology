@@ -161,6 +161,49 @@ def _ref_uris(job, limit=3):
     return out
 
 
+def _log_refs(job, payload):
+    tags = [p.get("tag") for p in payload] if payload else []
+    if tags:
+        print(f"  · references attached: {', '.join('@' + t for t in tags)}")
+    else:
+        why = "the strip's job listed none (none approved that match; approve sheets in REFS or tick allow draft refs)" if not job.get("reference_images") else "their files are missing on disk"
+        print(f"  · no references attached — {why}")
+
+
+def _ref_files(job, limit=4):
+    """[(filename, mime, bytes, tag)] for providers that take files (OpenAI edits)."""
+    out = []
+    for r in (job.get("reference_images") or [])[:limit]:
+        f = r.get("file") if isinstance(r, dict) else None
+        if f and (REPO / f).exists():
+            p = REPO / f
+            out.append((p.name, mimetypes.guess_type(str(p))[0] or "image/png", p.read_bytes(), r.get("tag") or p.stem))
+    return out
+
+
+def _multipart(fields, files):
+    """Encode a multipart/form-data body: fields {name: str}, files [(field, filename, mime, bytes)]."""
+    import uuid
+    b = "----comic" + uuid.uuid4().hex
+    out = bytearray()
+    for k, v in fields.items():
+        out += f"--{b}\r\nContent-Disposition: form-data; name=\"{k}\"\r\n\r\n{v}\r\n".encode()
+    for field, fname, mime, data in files:
+        out += f"--{b}\r\nContent-Disposition: form-data; name=\"{field}\"; filename=\"{fname}\"\r\nContent-Type: {mime}\r\n\r\n".encode()
+        out += data + b"\r\n"
+    out += f"--{b}--\r\n".encode()
+    return bytes(out), f"multipart/form-data; boundary={b}"
+
+
+def _http_raw(url, method, headers, data, timeout=240):
+    req = urllib.request.Request(url, data=data, method=method, headers=headers or {})
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            return r.status, r.read()
+    except urllib.error.HTTPError as e:
+        return e.code, e.read()
+
+
 def _ref_inline_parts(job, limit=4):
     """Gemini image model: reference images as inline_data parts, each preceded
     by a text part naming its @tag."""
@@ -303,6 +346,7 @@ def runway_generate(job, key, model=RUNWAY_MODEL, seed=None):
         ratio = want
     h = {"Authorization": f"Bearer {key}", "X-Runway-Version": RUNWAY_API_VERSION}
     ref_payload = _ref_uris(job, limit=3)
+    _log_refs(job, ref_payload)
 
     # prompt length: never chop the dialogue. gen4 takes 1000 characters, so
     # it gets the compact prompt when the full one is longer; other models get
@@ -395,6 +439,7 @@ def google_generate(job, key, model, seed=None):
     if job.get("negative"):
         text += f"\n\nAvoid: {job['negative']}."
     parts = _ref_inline_parts(job) + [{"text": text}]
+    _log_refs(job, [{"tag": r.get("tag")} for r in (job.get("reference_images") or [])[:4] if isinstance(r, dict) and r.get("file") and (REPO / r["file"]).exists()])
     body = {"contents": [{"parts": parts}],
             "generationConfig": {"responseModalities": ["IMAGE", "TEXT"],
                                  "imageConfig": {"aspectRatio": aspect}}}
@@ -434,8 +479,10 @@ def openai_generate(job, key, model, seed=None):
     text = job["prompt"]
     if job.get("negative"):
         text += f"\n\nAvoid: {job['negative']}."
-    if job.get("reference_images"):
-        print("  · openai: reference images are not sent by this runner (text-to-image only)")
+    files = _ref_files(job) if not model.startswith("dall-e") else []
+    _log_refs(job, [{"tag": f[3]} for f in files])
+    if job.get("reference_images") and model.startswith("dall-e"):
+        print("  · dall-e takes no reference images; use a gpt-image model for them")
     if seed is not None:
         print("  · openai: this API has no seed; the seed is recorded but not used")
     body = {"model": model, "prompt": text, "n": 1, "size": size}
@@ -445,7 +492,23 @@ def openai_generate(job, key, model, seed=None):
     else:
         body["quality"] = job.get("openai_quality", "medium")
     h = {"Authorization": f"Bearer {key}"}
-    st, raw = _http(f"{OPENAI_BASE}/images/generations", "POST", h, body, timeout=240)
+    if files:
+        # references go through /images/edits as image[] files (gpt-image models)
+        fields = {k: str(v) for k, v in body.items()}
+        data, ctype = _multipart(fields, [("image[]", fn, mime, blob) for fn, mime, blob, tag in files])
+        st, raw = _http_raw(f"{OPENAI_BASE}/images/edits", "POST", {**h, "Content-Type": ctype}, data, timeout=300)
+        if st == 400 and (b"size" in raw or b"quality" in raw):
+            for k in ("size", "quality"):
+                if k.encode() in raw and k in fields:
+                    print(f"  · {model} edits doesn't take {k} {fields[k]}; retrying without it")
+                    fields.pop(k)
+            data, ctype = _multipart(fields, [("image[]", fn, mime, blob) for fn, mime, blob, tag in files])
+            st, raw = _http_raw(f"{OPENAI_BASE}/images/edits", "POST", {**h, "Content-Type": ctype}, data, timeout=300)
+        if st != 200:
+            print(f"  · references were refused by /images/edits ({st}); rendering without them: {raw[:200]!r}")
+            st = None
+    if not files or st is None:
+        st, raw = _http(f"{OPENAI_BASE}/images/generations", "POST", h, body, timeout=240)
     # newer models may reject a parameter this runner guessed (size list,
     # quality names); read the 400, drop or relax the named field, retry once
     for _ in range(2):

@@ -145,6 +145,30 @@ another model or shorten that strip's dialogue. (Before this, the
 runner chopped every prompt at 1000 characters, which is why balloons
 came out with missing text.)
 
+## Why characters drifted, and what holds them now
+
+Before this change the whole-strip prompt named the cast (WOOD, GULLY)
+but never said what they looked like, so the model invented them per
+render: Gully as a small boy, Wood without the plaid. Two things now
+hold them:
+
+1. **A cast block in every prompt.** From `heroes_vol10.json`
+   (`comic_look`, the strip's own per-era description, ahead of the 3D
+   `meshy_prompt`), with the exact age computed from the strip's date
+   (Wood and Chloe born 1980, Gully 1979). Each panel also lists who is
+   in it. The compact prompt keeps a shorter block.
+2. **Reference images, when they exist.** A sheet rendered in SHEETS
+   mode becomes a *draft* reference the moment it lands (the inspector
+   syncs the registry on every strip open); it attaches only after you
+   approve it in the strip's REFS tab, or with "allow draft refs"
+   ticked. The generate form says how many will attach for the chosen
+   provider, and the log says which were sent. Runway takes 3 (with
+   @tags in the prompt), Google 4 (inline), OpenAI 4 for `gpt-image-*`
+   models (through the edits endpoint; DALL-E takes none).
+
+If the last-run panel says "no references attached", the faces came
+from the prompt alone; render and approve the sheets.
+
 ## How the whole-strip prompt is built
 
 `strip-prompts` composes, per strip:

@@ -279,6 +279,27 @@ def save_refs(d):
     REFS_PATH.write_text(json.dumps(d, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
+def sync_refs(refs):
+    """Flip 'missing' → 'draft' when the file now exists (a rendered sheet is
+    usable as a draft reference the moment it lands); register rendered sheets
+    from the sheets manifest. Returns how many changed."""
+    flipped = 0
+    for r in refs["references"]:
+        f = r.get("file")
+        if f and (REPO / f).exists() and r.get("status") == "missing":
+            r["status"] = "draft"; flipped += 1
+    man = REPO / "godot" / "assets" / "comic" / "vol10" / "sheets" / "manifest.json"
+    if man.exists():
+        ids = {r["id"] for r in refs["references"]}
+        for m in load_json(man).get("renders", []):
+            if m["slug"] not in ids:
+                refs["references"].append({"id": m["slug"], "kind": m.get("kind", "sheet"), "tags": m.get("tags", []),
+                                           "file": m["file"], "url": None, "runway_task_id": m.get("task_id"),
+                                           "status": "draft", "source": "sheets render", "notes": ""})
+                flipped += 1
+    return flipped
+
+
 def _strip_terms(s):
     """Everything about a strip a reference tag could match: cast ids, location,
     era, arc, and lowercase words from props/composition."""
@@ -365,20 +386,7 @@ def cmd_refs(args):
         print(f"{len(refs['references'])} references")
         return 0
     if sub == "sync":
-        # flip 'missing' → 'draft' when the file now exists; register rendered sheets from the manifest
-        flipped = 0
-        for r in refs["references"]:
-            f = r.get("file")
-            if f and (REPO / f).exists() and r.get("status") == "missing":
-                r["status"] = "draft"; flipped += 1
-        man = REPO / "godot" / "assets" / "comic" / "vol10" / "sheets" / "manifest.json"
-        if man.exists():
-            ids = {r["id"] for r in refs["references"]}
-            for m in load_json(man).get("renders", []):
-                if m["slug"] not in ids:
-                    refs["references"].append({"id": m["slug"], "kind": m.get("kind", "sheet"), "tags": m.get("tags", []),
-                                               "file": m["file"], "url": None, "runway_task_id": m.get("task_id"),
-                                               "status": "draft", "source": "sheets render", "notes": ""})
+        flipped = sync_refs(refs)
         save_refs(refs)
         print(f"synced: {flipped} now present (draft)")
         return 0
@@ -498,7 +506,67 @@ def _first_sentence(t, n=140):
     return (t[:n].rsplit(" ", 1)[0] + "…") if len(t) > n else t
 
 
-def compose_strip_prompt(s, eras, letter=True, compact=False):
+BIRTH = {"wood": 1980, "chloe": 1980, "gully": 1979}
+NAMES = {"barnaby_ii": "THE PUP (Barnaby II)", "barnaby": "BARNABY (the dog)", "the_bird": "THE BIRD", "the_editor": "THE EDITOR",
+         "lunch_lady": "THE LUNCH LADY", "security_guard": "THE GUARD", "laundromat_owner": "THE OWNER", "motel_guest": "THE GUEST",
+         "tech_guest_1": "A WEDDING GUEST", "tech_guest_2": "A WEDDING GUEST"}
+_3D_ONLY = ("low-poly stylized character", "stylized character", "clean silhouette", "matte flat colors", "low-poly")
+
+
+def hero_name(hid):
+    if hid in NAMES:
+        return NAMES[hid]
+    base = hid.split("_")[0]
+    return base.upper() if base in BIRTH else hid.replace("_", " ").upper()
+
+
+def hero_look(hid, heroes, year=None, compact=False):
+    """One line the image model can hold onto: age (from the strip's year
+    when the character has a birth year) + the sheet's description with the
+    3D-pipeline phrases stripped. This is what stops Gully turning into a
+    small boy: the prompt names him AND says what he looks like, every time."""
+    h = (heroes.get("heroes") or {}).get(hid) or {}
+    desc = h.get("comic_look") or h.get("meshy_prompt") or h.get("who") or hid
+    base = hid.split("_")[0]
+    age = ""
+    if base in BIRTH and year:
+        age = f"aged {year - BIRTH[base]}"
+    elif base in BIRTH:
+        m = re.search(r"at (\d+)", h.get("who", ""))
+        age = f"aged {m.group(1)}" if m else ""
+    if age:  # an exact age replaces the sheet's rough one
+        desc = re.sub(r"\b(early|mid|late) (twenties|thirties|forties|fifties)\b,?\s*", "", desc)
+        desc = re.sub(r"\bteenage (boy|girl)\b", r"\1", desc)
+    parts = [p.strip() for p in re.split(r"[,;]", desc) if p.strip() and not any(k in p for k in _3D_ONLY)]
+    if compact:
+        parts = parts[:3]
+    look = ", ".join(parts)
+    return (age + ", " if age else "") + look
+
+
+def cast_block(s, heroes, compact=False):
+    """'Cast, the same people in every panel: WOOD — aged 34, lean man…; GULLY — …'"""
+    year = int(s["date"][:4]) if re.match(r"\d{4}", s.get("date", "")) else None
+    ids = list(s.get("cast") or [])
+    for p in s.get("panels") or []:
+        for c in p.get("characters") or []:
+            cid = c.get("id")
+            if cid and cid not in ids:
+                ids.append(cid)
+    ids = [i for i in ids if i in (heroes.get("heroes") or {})]
+    if not ids:
+        return ""
+    lines = [f"{hero_name(i)} — {hero_look(i, heroes, year, compact)}" for i in ids]
+    lead = "Cast:" if compact else "Cast, drawn the same in every panel, ages exactly as given:"
+    return lead + " " + "; ".join(lines) + "."
+
+
+def panel_names(p, heroes):
+    ids = [c.get("id") for c in (p.get("characters") or []) if c.get("id") in (heroes.get("heroes") or {})]
+    return ", ".join(dict.fromkeys(hero_name(i) for i in ids))
+
+
+def compose_strip_prompt(s, eras, letter=True, compact=False, heroes=None):
     """One prompt for the WHOLE strip as a single image: layout, era style,
     then each panel's content in order, with the dialogue if letter=True
     (the concept run lets the generator letter the balloons; the print
@@ -515,6 +583,10 @@ def compose_strip_prompt(s, eras, letter=True, compact=False):
     n = len(s["panels"])
     unit = "tier" if fmt in ("sunday", "special") else "panel"
     parts = [f"{LAYOUT_TEXT.get(fmt, 'a comic strip')} ({n} {unit}s). Style: {style}."]
+    heroes = heroes if heroes is not None else load_heroes()
+    cb = cast_block(s, heroes, compact=compact)
+    if cb:
+        parts.append(cb)
     if s.get("logline") and not compact:
         parts.append(f"Title of the strip: {s['strip'].replace('_', ' ').upper()}. The strip: {s['logline']}")
     boiler = _common_prefix([(p.get("image") or {}).get("prompt") or "" for p in s["panels"]]) if compact else ""
@@ -525,6 +597,9 @@ def compose_strip_prompt(s, eras, letter=True, compact=False):
                 desc = desc[len(boiler):]
             desc = _first_sentence(desc)
         seg = f"{unit.title()} {p['n']}: {desc}"
+        who = panel_names(p, heroes)
+        if who:
+            seg += f" (in this {unit}: {who})"
         if letter:
             bt = _balloon_text(p, compact=compact)
             seg += f". {bt}" if bt else (". No dialogue in this " + unit if not compact else ". No text")
@@ -558,6 +633,23 @@ def cmd_strip_prompts(args):
         prompt_compact, _ = compose_strip_prompt(s, eras, letter=letter, compact=True)
         rw, gg = RATIOS.get(s["format"], ("1024:1024", "1:1"))
         picks = select_refs(s, refs, provider=args.provider, include_draft=args.include_draft) if not args.no_refs else []
+        # tell the model what each attached reference is, by @tag
+        ref_lines = []
+        heroes = load_heroes()
+        for r, sc, why in picks:
+            tag = ref_tag_name(r)
+            who = [t for t in (r.get("tags") or []) if t in (heroes.get("heroes") or {})]
+            if who:
+                ref_lines.append(f"Reference @{tag} is the model sheet for {hero_name(who[0])}: match that face, build, hair and clothes exactly.")
+            elif r.get("kind") == "location":
+                ref_lines.append(f"Reference @{tag} shows the setting; keep its architecture and props.")
+            elif r.get("kind") == "era":
+                ref_lines.append(f"Reference @{tag} shows the drawing style; match its line and color.")
+            else:
+                ref_lines.append(f"Reference @{tag} is a finished strip in this style.")
+        if ref_lines:
+            prompt = prompt + " " + " ".join(ref_lines)
+            prompt_compact = prompt_compact + " " + " ".join(l.split(":")[0] + "." for l in ref_lines)
         ref_list = []
         if picks:
             with_refs += 1

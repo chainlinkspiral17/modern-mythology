@@ -114,6 +114,35 @@ a page says "fifty" check it against the year first.
 
 ## Recent lessons
 
+### 2026-09-27 · Character drift · the prompt named the cast and never described it
+
+The user's renders had Gully as a small boy. The whole-strip prompt
+listed panel descriptions and balloons but no cast: names without
+looks, and no reference images because no sheet had been approved.
+
+- **Name and describe, every prompt.** A cast block now opens every
+  strip prompt: name, exact age from the strip's date and birth year,
+  the strip's own per-era look from `heroes_vol10.json` (`comic_look`,
+  copied from `characters.md`). Each panel lists who is in it. The image
+  model cannot hold a character it was never told about.
+- **The 3D description is not the comic description.** `meshy_prompt`
+  says "low-poly stylized character, clean silhouette"; the strip's
+  Gully at the counter wears the apron the 3D sheet doesn't. The comic
+  look lives beside the 3D one and wins for the strip.
+- **A reference that exists but isn't approved attaches nothing.** The
+  registry marked every sheet "missing" until `refs sync` ran; nobody
+  ran it. The inspector now syncs on every strip open, says how many
+  references will attach for the chosen provider, and the render log
+  says which were sent or why none were. Approve in the REFS tab.
+- **Every provider gets references or says it can't.** Runway by
+  @tag, Google inline, OpenAI through the edits endpoint for gpt-image
+  models; DALL-E says no in the log. A silent no-op is the failure mode
+  that produced the small boy.
+- **The compact prompt is now over gen4's 1000 characters** for most
+  dailies once the cast block is in. Gen-4 still cuts; the log warns.
+  Use gemini_2.5_flash on Runway, or Google, or OpenAI, for strips with
+  three or more cast members.
+
 ### 2026-09-26 · The backups · fifteen series outside the canon · 101 pages
 
 The catalogue complete, the run got a second shelf: `bk_` ids, `strip:
