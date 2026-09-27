@@ -170,22 +170,25 @@ If the last-run panel says "no references attached", the faces came
 from the prompt alone; render and approve the sheets.
 
 **Your own image as a reference.** REFS mode has an *add your own image*
-bar: pick a PNG/JPEG/WebP, choose the character (and era), and save. It
-lands in `godot/assets/comic/vol10/refs/` as an approved reference
-tagged with that character, and, with *replace* ticked, every other
-approved reference for that character is set to rejected so yours is
-the one that attaches. Any render in a gallery also has a *use as
-reference* button that does the same with a file already on disk. This
-is the fix when a rendered sheet has gone wrong: draw or find a Gully
-you like, upload it as `gully_35`, and the strips follow it.
+bar: pick a PNG/JPEG/WebP, choose the character (and era), and save.
+For a character that has a model sheet (`sheet_gully_35` and so on) the
+image *becomes that sheet*: it is copied to
+`godot/assets/comic/vol10/sheets/sheet_gully_35_u1.png`, listed in the
+sheet's gallery as a take from `inspector upload`, and the sheet's own
+reference (the id the strips already attach) now points at it,
+approved. No second entry is created. With *replace* ticked every other
+approved reference for that character is set to rejected. Any render in
+a gallery has a *use as reference* button that does the same with a
+file already on disk. A character without a sheet (extras) gets a new
+`ref_…` entry in `refs/` instead. Uploads registered the old way, as
+loose `ref_<character>_…` entries, are folded into the sheet the next
+time the tool loads SHEETS or REFS.
 
-Where it shows up: in REFS (it is a reference, not a sheet), and in
-SHEETS under that character's sheet as *other references for this
-character*, with a `yours` pill on the row once one is approved. The
-sheet's own status stays separate: a rejected `sheet_gully_35` and an
-approved upload is the normal state after a replace. The header shows
-`build <hash>`; if it does not match `git rev-parse --short HEAD`, the
-tab is showing an older server: rerun `inspect.sh` and reload.
+This is the fix when a rendered sheet has gone wrong: draw or find a
+Gully you like, upload it as `gully_35`, and the strips follow it. The
+header shows `build <hash>`; if it does not match
+`git rev-parse --short HEAD`, the tab is showing an older server: rerun
+`inspect.sh` and reload.
 
 ## How the whole-strip prompt is built
 

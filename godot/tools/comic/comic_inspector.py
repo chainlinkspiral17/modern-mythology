@@ -104,7 +104,38 @@ def _refs_synced():
     refs = ct.load_refs()
     if ct.sync_refs(refs):
         ct.save_refs(refs)
-    return refs
+    _adopt_loose_uploads()
+    return ct.load_refs()
+
+
+def _adopt_loose_uploads():
+    """Earlier uploads were registered as their own ref_<character>_… entries
+    beside the character's sheet. Fold each one into the sheet (same id the
+    strips use) so a character has one model sheet, not a second character."""
+    refs = ct.load_refs()
+    loose = [r for r in refs["references"]
+             if r["id"].startswith("ref_") and r.get("kind") == "character" and r.get("file")
+             and r.get("source", "").startswith("inspector") and (ct.REPO / r["file"]).exists()]
+    heroes = set((ct.load_heroes().get("heroes") or {}).keys())
+    for r in loose:
+        who = [t for t in (r.get("tags") or []) if t in heroes]
+        sheet = _sheet_for(who[0]) if who else None
+        if not sheet:
+            continue
+        era = next((t for t in r.get("tags") or [] if t.startswith("era")), "")
+        was_approved = r.get("status") == "approved"
+        _adopt_into_sheet(r["file"], sheet, era, r.get("notes", ""), replace=was_approved, source=r.get("source", "inspector upload"))
+        cur = ct.load_refs()
+        cur["references"] = [x for x in cur["references"] if x["id"] != r["id"]]
+        if not was_approved:  # keep the sheet's status as it was unless the loose one was the live reference
+            for x in cur["references"]:
+                if x["id"] == sheet["id"]:
+                    x["status"] = r.get("status") or "draft"
+        ct.save_refs(cur)
+        try:
+            (ct.REPO / r["file"]).unlink()
+        except OSError:
+            pass
 
 
 def api_strip(sid):
@@ -145,8 +176,8 @@ def _ref_url(r):
 
 def api_sheets():
     data = ct.load_json(ct.SHEETS_PATH)
+    all_refs = _refs_synced().get("references", [])
     renders = _renders_index()
-    all_refs = ct.load_refs().get("references", [])
     refs = {r["id"]: r for r in all_refs}
     heroes = set((ct.load_heroes().get("heroes") or {}).keys())
     out = []
@@ -167,7 +198,7 @@ def api_sheets():
 
 
 def api_refs():
-    refs = ct.load_refs()
+    refs = _refs_synced()
     out = []
     for r in refs.get("references", []):
         d = dict(r)
@@ -184,10 +215,69 @@ def api_heroes():
     return {"heroes": [{"id": k, "who": v.get("who", "")} for k, v in h.items()]}
 
 
-def _register_ref(rel_file, kind, character, era, notes, replace, rid=None):
+def _sheet_for(character):
+    """The style-sheet entry (from style_sheets.json) whose id is sheet_<character>, or None."""
+    if not character:
+        return None
+    sid = "sheet_" + character
+    for sh in ct.load_json(ct.SHEETS_PATH).get("sheets", []):
+        if sh["id"] == sid:
+            return sh
+    return None
+
+
+def _adopt_into_sheet(rel_file, sheet, era, notes, replace, source):
+    """Make an image the model sheet of an existing character: copy it into
+    sheets/ as a take of that sheet, record it in the sheets manifest, and point
+    the sheet's own reference (same id the strips already use) at it, approved.
+    No new reference id is created."""
+    src = ct.REPO / rel_file
+    sdir = ASSETS / "sheets"
+    sdir.mkdir(parents=True, exist_ok=True)
+    n = 1
+    while (sdir / f"{sheet['id']}_u{n}{src.suffix.lower()}").exists():
+        n += 1
+    dst = sdir / f"{sheet['id']}_u{n}{src.suffix.lower()}"
+    if src.resolve() != dst.resolve():
+        dst.write_bytes(src.read_bytes())
+    rel = str(dst.relative_to(ct.REPO))
+    # sheets manifest: shows up in the sheet's "on disk" gallery
+    mp = sdir / "manifest.json"
+    man = json.loads(mp.read_text(encoding="utf-8")) if mp.exists() else {"renders": []}
+    man.setdefault("renders", []).append({"slug": sheet["id"], "file": rel, "provider": source, "kind": sheet["kind"],
+                                          "tags": sheet.get("tags", []), "references": [], "strip_id": None, "date": None,
+                                          "format": None, "lettered": False, "seed": None, "take": f"u{n}", "prompt": "",
+                                          "rendered_at": time.strftime("%Y-%m-%dT%H:%M:%S"), "notes": notes or ""})
+    mp.write_text(json.dumps(man, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+    refs = ct.load_refs()
+    ref = next((r for r in refs["references"] if r["id"] == sheet["id"]), None)
+    if ref is None:
+        ref = {"id": sheet["id"], "kind": sheet["kind"], "tags": list(sheet.get("tags", [])), "url": None, "runway_task_id": None}
+        refs["references"].append(ref)
+    tags = list(ref.get("tags") or sheet.get("tags", []))
+    for t in ([sheet["kind"], era] if era else [sheet["kind"]]):
+        if t and t not in tags: tags.append(t)
+    ref.update({"tags": tags, "file": rel, "status": "approved", "source": source, "notes": notes or ref.get("notes", "")})
+    character = sheet["id"][len("sheet_"):]
+    demoted = 0
+    if replace:
+        for r in refs["references"]:
+            if r["id"] != ref["id"] and character in (r.get("tags") or []) and r.get("status") == "approved":
+                r["status"] = "rejected"; demoted += 1
+    ct.save_refs(refs)
+    return {"ok": True, "id": ref["id"], "file": rel, "demoted": demoted, "adopted": True}
+
+
+def _register_ref(rel_file, kind, character, era, notes, replace, rid=None, source="inspector upload"):
     """Add (or replace) an approved reference pointing at a file already in the
-    repo. With replace=True every other reference carrying the same character
-    tag is set to rejected, so the new image is the one that attaches."""
+    repo. A character image whose character already has a model sheet is
+    adopted INTO that sheet (same id, no new entry). Otherwise a new reference
+    is created. With replace=True every other reference carrying the same
+    character tag is set to rejected, so the new image is the one that attaches."""
+    if kind == "character":
+        sheet = _sheet_for(character)
+        if sheet:
+            return _adopt_into_sheet(rel_file, sheet, era, notes, replace, source)
     refs = ct.load_refs()
     tags = [kind]
     if era: tags.append(era)
@@ -200,9 +290,9 @@ def _register_ref(rel_file, kind, character, era, notes, replace, rid=None):
             if character in (r.get("tags") or []) and r.get("status") == "approved":
                 r["status"] = "rejected"; demoted += 1
     refs["references"].append({"id": rid, "kind": kind, "tags": tags, "file": rel_file, "url": None, "runway_task_id": None,
-                               "status": "approved", "source": "inspector upload", "notes": notes or ""})
+                               "status": "approved", "source": source, "notes": notes or ""})
     ct.save_refs(refs)
-    return {"ok": True, "id": rid, "file": rel_file, "demoted": demoted}
+    return {"ok": True, "id": rid, "file": rel_file, "demoted": demoted, "adopted": False}
 
 
 def ref_upload(body):
@@ -228,14 +318,17 @@ def ref_upload(body):
         p = REF_DIR / f"{stem}_{n}{ext}"; n += 1
     p.write_bytes(raw)
     rel = str(p.relative_to(ct.REPO))
-    return _register_ref(rel, kind, character, body.get("era") or "", body.get("notes") or "", bool(body.get("replace", True)))
+    out = _register_ref(rel, kind, character, body.get("era") or "", body.get("notes") or "", bool(body.get("replace", True)))
+    if out.get("adopted") and out.get("file") != rel:
+        p.unlink(missing_ok=True)  # it now lives in sheets/ as a take of the character's sheet
+    return out
 
 
 def ref_from_render(body):
     rel = body.get("file") or ""
     if not rel or not (ct.REPO / rel).exists():
         return {"error": "that file isn't on disk"}
-    return _register_ref(rel, body.get("kind") or "character", body.get("character") or "", body.get("era") or "", body.get("notes") or "", bool(body.get("replace", True)))
+    return _register_ref(rel, body.get("kind") or "character", body.get("character") or "", body.get("era") or "", body.get("notes") or "", bool(body.get("replace", True)), source="inspector pick")
 
 
 def api_models():
@@ -701,9 +794,9 @@ let HEROES=[];async function loadHeroes(){if(!HEROES.length){try{HEROES=(await a
 function refPickers(p){return `<select id="${p}-kind"><option>character</option><option>location</option><option>era</option><option>objects</option><option>strip</option></select> <select id="${p}-char"><option value="">character…</option>${HEROES.map(h=>`<option value="${h.id}">${h.id} — ${esc(h.who)}</option>`).join('')}</select> <select id="${p}-era"><option value="">era…</option><option>era1</option><option>era2</option><option>era3</option><option>era4</option></select>`;}
 async function uploadRef(){const f=$('#ru-file').files[0];if(!f){$('#ru-msg').textContent='pick an image first';return;}const data=await new Promise(res=>{const r=new FileReader();r.onload=()=>res(r.result);r.readAsDataURL(f);});
  const b={name:f.name,data,kind:$('#ru-kind').value,character:$('#ru-char').value,era:$('#ru-era').value,notes:$('#ru-notes').value,replace:$('#ru-replace').checked};
- $('#ru-msg').textContent='saving…';const r=await api('/api/ref_upload',{method:'POST',body:JSON.stringify(b)});$('#ru-msg').textContent=r.error?('✗ '+r.error):`✓ saved ${r.file} as approved${r.demoted?` · ${r.demoted} other reference(s) for that character rejected`:''}`;if(!r.error){await loadRefs();open(r.id);}}
+ $('#ru-msg').textContent='saving…';const r=await api('/api/ref_upload',{method:'POST',body:JSON.stringify(b)});$('#ru-msg').textContent=r.error?('✗ '+r.error):`✓ ${r.adopted?`now the model sheet ${r.id} (approved), in SHEETS too`:`saved ${r.file} as approved`}${r.demoted?` · ${r.demoted} other reference(s) for that character rejected`:''}`;if(!r.error){await loadRefs();open(r.id);}}
 async function useAsRef(file){await loadHeroes();const d=document.createElement('div');d.className='job';d.id='uar';d.innerHTML=`<b>use this render as a reference</b> · ${esc(file)}<br>${refPickers('ua')} <label><input type="checkbox" id="ua-replace" checked> replace others for this character</label> <button class="sm ok" onclick="useAsRefGo(this)" data-file="${esc(file)}">save as approved</button> <button class="sm" onclick="$('#uar').remove()">cancel</button><span class="empty" id="ua-msg"></span>`;const old=$('#uar');if(old)old.remove();$('#detail').prepend(d);d.scrollIntoView();}
-async function useAsRefGo(btn){const b={file:btn.dataset.file,kind:$('#ua-kind').value,character:$('#ua-char').value,era:$('#ua-era').value,replace:$('#ua-replace').checked};const r=await api('/api/ref_from_render',{method:'POST',body:JSON.stringify(b)});$('#ua-msg').textContent=r.error?('✗ '+r.error):`✓ ${r.id} approved${r.demoted?` · ${r.demoted} other(s) rejected`:''}`;}
+async function useAsRefGo(btn){const b={file:btn.dataset.file,kind:$('#ua-kind').value,character:$('#ua-char').value,era:$('#ua-era').value,replace:$('#ua-replace').checked};const r=await api('/api/ref_from_render',{method:'POST',body:JSON.stringify(b)});$('#ua-msg').textContent=r.error?('✗ '+r.error):`✓ ${r.adopted?`now the model sheet ${r.id} (approved)`:`${r.id} approved`}${r.demoted?` · ${r.demoted} other(s) rejected`:''}`;if(!r.error&&MODE==='sheets'){await loadSheets();open(SHEETS.some(x=>x.id===r.id)?r.id:SEL);}}
 function lb(u){$('#lbimg').src=u;$('#lightbox').style.display='flex';}$('#lightbox').onclick=()=>$('#lightbox').style.display='none';
 function renderStrip(d){const s=d.strip,p=d.prompt,rv=s.review||{};const el=$('#detail');setTimeout(()=>showLastRun(s.id),0);
  const tabs=[['sheet','SHEET'],['panels','PANELS'],['prompt','PROMPT'],['refs','REFS'],['renders',`RENDERS ${d.renders.filter(r=>r.exists).length}`],['json','JSON']];
