@@ -326,6 +326,20 @@ Every ending's reading now carries the arcana's record. The design
 row's Claude-side items are through; what remains on it is Deck-
 gated (the bursts) or user-gated (Salmonberry).
 
+**Status (2026-09-27) · draft 40 · the roads by eye, the clocks, Simon's
+room.** The 09-26 sheet judged: Small Wood's house insert aimed at
+grass (reframed onto the house), its barn held two flat boxes (a
+tractor of wheels and a stack of bales now), Highway 101's fresh fog
+line was the brightest thing at dusk (worn grey-white). Eleven
+kitchens read the wall clock as a ring of six dots — the kit face was
+the colour of the wall; a dark 3.5 cm rim and a hub, one fix for
+every kit clock. Simon's apartment, built in the support pass and
+never framed: a preset and four markers — but XII Hanged Man cues
+the rug, the deck, the door and the phone of natalie_apartment, so
+the chapter stays there; the two builders of one apartment are a
+decision the user owns (merge, or move the cues). Roadmap: FORTIETH
+PASS.
+
 **Status (2026-09-26, later) · draft 39 · the second road.** Small
 Wood's county road had its lights already; it lacked anyone home — a
 truck in the drive, reflectors at the gate. Both roads now have a

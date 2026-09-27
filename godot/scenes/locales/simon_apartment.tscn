@@ -319,3 +319,30 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; ── vn_shot · simon_apartment (2026-09-27, draft 40) ──
+; The room had no shot markers and no preset: it was built (the support
+; pass) and never framed. Godot = (blender x, blender z, -blender y).
+; insert: the TV on its crate against the E wall, snow on the screen, from the armchair
+[node name="shot_insert_tv" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 1.2, -2.4)
+rotation = Vector3(-0.15, -1.5708, 0.0)
+metadata/fov = 42.0
+
+; insert: the one boot hanging by its laces from the peg on the W wall
+[node name="shot_insert_boot" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 1.5, -5.2)
+rotation = Vector3(-0.05, 1.35, 0.0)
+metadata/fov = 40.0
+
+; the room's one closeup frame: a person mid-room by the armchair, the window behind
+[node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.2, 1.612, -1.6)
+rotation = Vector3(-0.2618, -0.6435, 0.0)
+metadata/fov = 45.0
+
+; the REVERSE closeup, from the bed's side of the room
+[node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.2, 1.612, -4.6)
+rotation = Vector3(-0.2618, 2.43, 0.0)
+metadata/fov = 45.0

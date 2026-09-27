@@ -2959,6 +2959,52 @@ taillights at dusk, the truck in Small Wood's drive); the "door-like
 polygons" still need a locale from the user; the seven kitchens by
 eye once more; Simon's room in the game (no preset frames it).
 
+FORTIETH PASS (2026-09-27). The 09-26 sheet (from draft 39) against
+the 09-25 one: 6 frames changed, all memory_warm grain — the roads'
+new props sat outside every frame, so the roads were judged by eye:
+· small_wood_road: `shot_insert_house` looked at grass and a tree
+  crown (it stood east of the road pitched 25° down, aimed south);
+  it stands on the drive now, 1.5 m up, looking west at the house.
+  The barn insert's red and orange boxes were `Pole_Barn_Tractor`
+  and `Pole_Barn_Hay`: a tractor is its wheels (two tall rear, two
+  small front, a narrow hood, a seat, a stack) and hay is bales
+  (nine, two courses, offset, two shades).
+· highway_101: the fog line (0.92 white) was the brightest thing in
+  the dusk establish, a blazing line up the shoulder; worn to 0.66.
+· the eleven kitchens by eye: counters on their walls, yes; but every
+  one had a RING OF SIX BLACK DOTS on the wall — the kit wall clock's
+  off-white face is the colour of a cream wall under a warm
+  practical, so only its four ticks and two hands showed. The rim is
+  now a dark ring 3.5 cm wide behind the face's front, with a hub.
+  One edit in `_props/decor.py`; every kit clock in the game.
+· simon_apartment: built in the support pass, six lights, no shot
+  markers, no preset, no scene — "Simon's room in the game" meant
+  all three. It has a `simon_apartment` preset now (NE corner
+  looking SW: the armchair and the TV's crate near, the boot on the
+  far wall, the window and fire escape beyond) and four markers (tv,
+  boot, two closeups). Pointing XII Hanged Man at it was TRIED and
+  UNDONE: the chapter cues the card laid by the reading rug, the
+  deck, the phone on the counter and the apartment door (the bell,
+  the stairs) — eight cues on four objects Simon's room does not
+  have (`shot_marker_audit`: 8 blind, ceiling 0). So there are TWO
+  builders of the same apartment: natalie_apartment (7×5.5, the
+  rug and the deck, where the chapter plays) and simon_apartment
+  (5×7, the boot on its peg, the tipped chair, the TV on its
+  crate). USER DECISION: merge the Hanged Man dressing into
+  natalie_apartment and retire the other, or move the rug, deck,
+  door and phone into simon_apartment and switch the chapter. Until
+  then simon_apartment has no scene and the manifest (uses-only)
+  leaves it off the sheet; `contact_manifest.py --all` frames it.
+· tools: `marker_reframe.py --help` used to RUN the pass (it wrote
+  cabin_road's drone insert before it was stopped; reverted); a
+  fixer prints its doc and exits on --help now.
+NEXT (draft 41): the sheet — the tractor under the tin, the house
+insert, the clocks in eleven kitchens; the user's call on the two
+apartments (then Simon's five frames for the first time); the "door-like
+polygons" still need a locale from the user; the highway's draft 3
+list (dashboard glow on the hood preset, wet asphalt after ch22's
+rain); Small Wood's (the gate's chain, a dog on the porch).
+
 NEXT (draft 36, as written): judge the moved pieces on the sheet (ben, jesse, sam,
 safehouse, the seven kitchens); name the 13 deliberate OFF_WALL pieces
 (a `free=True` tag or a name class) and gate placement; simon's TV on

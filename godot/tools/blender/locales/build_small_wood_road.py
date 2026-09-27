@@ -138,8 +138,31 @@ def build_property():
     make_box("Pole_Barn_Back", (bx, by + 4.4, 2.0), (12.0, 0.10, 3.8), WOOD_RED)
     make_box("Pole_Barn_Side_W", (bx - 6.0, by, 2.0), (0.10, 8.8, 3.8), WOOD_RED)
     make_gable("Pole_Barn_Roof", (bx, by, 3.9 + 0.9), (12.8, 9.8, 1.8), TIN, ridge_axis="X")
-    make_box("Pole_Barn_Tractor", (bx - 2.5, by + 1.0, 1.0), (2.2, 3.6, 1.8), (0.60, 0.26, 0.12, 1.0))
-    make_box("Pole_Barn_Hay", (bx + 3.5, by + 2.0, 0.85), (3.0, 3.0, 1.5), (0.72, 0.60, 0.32, 1.0))
+    # 2026-09-27 (the 09-26 sheet, the barn insert): the tractor and the
+    # hay were two flat boxes under the tin — a red one and an orange one.
+    # A tractor is its wheels: two tall rear wheels, two small front, a
+    # narrow hood ahead of a seat and a stack; the hay is BALES, stacked
+    # with the gaps a stack has.
+    tx, ty = bx - 2.5, by + 1.0
+    TRACTOR_RED = (0.60, 0.26, 0.12, 1.0)
+    TYRE = (0.10, 0.10, 0.10, 1.0)
+    make_box("Pole_Barn_Tractor_Hood", (tx, ty + 1.0, 1.05), (0.90, 1.70, 0.70), TRACTOR_RED)
+    make_box("Pole_Barn_Tractor_Body", (tx, ty - 0.6, 0.80), (1.10, 1.50, 0.60), TRACTOR_RED)
+    make_box("Pole_Barn_Tractor_Seat", (tx, ty - 0.9, 1.30), (0.50, 0.50, 0.40), (0.14, 0.13, 0.12, 1.0))
+    make_cyl("Pole_Barn_Tractor_Wheel", (tx, ty - 0.5, 1.30), 0.20, 0.03, (0.14, 0.13, 0.12, 1.0), axis="Y", segments=10)
+    make_cyl("Pole_Barn_Tractor_Stack", (tx + 0.25, ty + 1.5, 1.9), 0.05, 1.0, (0.20, 0.20, 0.20, 1.0), segments=6)
+    for sgn in (-1, 1):
+        make_cyl(f"Pole_Barn_Tractor_Rear_{sgn:+d}", (tx + sgn * 0.85, ty - 0.6, 0.80), 0.80, 0.40, TYRE, axis="X", segments=12)
+        make_cyl(f"Pole_Barn_Tractor_Front_{sgn:+d}", (tx + sgn * 0.60, ty + 1.4, 0.40), 0.40, 0.22, TYRE, axis="X", segments=10)
+    HAY = (0.72, 0.60, 0.32, 1.0)
+    HAY_DARK = (0.62, 0.50, 0.26, 1.0)
+    hx0, hy0 = bx + 3.5, by + 2.0
+    for row in range(3):
+        for col in range(2):
+            for lvl in range(2 if row < 2 else 1):
+                make_box(f"Pole_Barn_Bale_{row}{col}{lvl}",
+                         (hx0 - 0.70 + col * 1.40 + (0.35 if lvl else 0.0), hy0 - 1.0 + row * 1.0, 0.25 + lvl * 0.50),
+                         (1.30, 0.94, 0.48), HAY if (row + col + lvl) % 2 else HAY_DARK)
     # the tool shed, the small house, the chicken coop out back
     make_shed("Tool_Shed", -12.0, -12.0, front="+X", w=3.0, d=2.4, h=2.3, wall_col=WOOD_GRAY, roof_col=TIN)
     make_box("Tool_Shed_Wheelbarrow", (-10.0, -14.2, 0.35), (0.7, 1.3, 0.5), (0.50, 0.30, 0.22, 1.0))

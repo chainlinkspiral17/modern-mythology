@@ -311,8 +311,8 @@ metadata/fov = 42.0
 
 ; insert: the fallen-in house in the field, the chimney the only plumb thing
 [node name="shot_insert_house" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.0, 1.4, 26.0)
-rotation = Vector3(-0.4355, -3.1416, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.0, 1.5, 22.0)
+rotation = Vector3(-0.1, 1.5708, 0.0)
 metadata/fov = 42.0
 
 ; insert: the chicken coop behind the small house

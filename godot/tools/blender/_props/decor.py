@@ -43,8 +43,16 @@ def make_wall_clock(prefix, anchor, *, frozen_hour=11, frozen_min=47,
     # it and every kit clock rendered as a blank grey disc): the rim sits
     # BEHIND the face's front and shows only as the ring past r 0.18; the
     # ticks lie on the face; the hands lie on the ticks.
+    # 2026-09-27 (the 09-26 sheet, eleven kitchens): the off-white face
+    # is the colour of a cream kitchen wall under a warm practical, so
+    # the clock read as a RING OF SIX BLACK DOTS on the wall — four ticks
+    # and two hands with nothing behind them. The rim is what makes a
+    # clock read from across a room: a dark ring 3.5 cm wide (r 0.215
+    # behind the face's front), and a hub where the hands meet.
+    rim = palette.get("rim", (0.18, 0.16, 0.14, 1.0))
     make_cyl(f"{prefix}_Face", (cx, cy, cz), 0.18, 0.04, face, axis=ax)
-    make_cyl(f"{prefix}_Rim", (cx, cy, cz), 0.20, 0.02, rim, axis=ax)
+    make_cyl(f"{prefix}_Rim", (cx, cy, cz), 0.215, 0.02, rim, axis=ax)
+    make_cyl(f"{prefix}_Hub", at(0.0, 0.028, 0.0), 0.012, 0.006, P.METAL_BLACK, axis=ax)
     for ang_i, (mx, mz) in enumerate([(0.0, +0.13), (+0.13, 0.0),
                                        (0.0, -0.13), (-0.13, 0.0)]):
         make_box(f"{prefix}_Tick_{ang_i}", at(mx, 0.0225, mz),

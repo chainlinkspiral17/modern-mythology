@@ -158,6 +158,34 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-09-27 · a diff of zero is a finding; a fixer never runs on --help
+
+**What happened.** The 09-26 sheet against the 09-25 one: 6 frames
+changed, all memory_warm grain — after two road drafts that added a
+truck, a sedan, reflectors and a glow band. Both GLBs had grown. The
+props were real and OUTSIDE every frame: the truck up the drive is
+behind the establish's shoulder, the sedan 190 m out is a few pixels,
+the glow is west of a camera looking north. `contact_diff` proving
+nothing changed is the sheet saying "your draft is invisible" — the
+next move is to look at the frames by eye and ask what IS in them
+(a house insert aimed at grass; two boxes under the tin; a fog line
+brighter than the sky).
+
+**The clock.** Eleven kitchens showed a ring of six black dots on
+the wall. The kit clock's face was there — off-white on a cream wall
+under a warm practical is the same colour. A prop reads by its
+CONTRAST EDGE, not its parts: the dark rim is the clock. When a kit
+prop appears in many frames, fix the kit, not the locales.
+
+**The tool that acted when asked what it does.** `marker_reframe.py
+--help` was an unknown flag, so the tool ran its full pass and wrote a
+marker into cabin_road.tscn (reverted; the suite had been green
+without it). Every fixer must answer `--help`/`-h` with its docstring
+and exit before touching anything; the audits already do. And
+`pkill -f <pattern>` with a pattern that matches your own shell kills
+your own shell (exit 144) — anchor it (`^python3 …`) or use the
+background task's id.
+
 ### 2026-09-25 (later) · placement: against the wall, or dropped
 
 - **A template offset is a defect in every room built from it.**

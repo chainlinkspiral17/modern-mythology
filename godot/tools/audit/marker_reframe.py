@@ -177,6 +177,12 @@ def explain(locale, marker):
 
 
 def main():
+    if "--help" in sys.argv or "-h" in sys.argv:
+        # 2026-09-27: `--help` used to be an unknown flag, so it RAN the
+        # whole reframe pass and wrote a marker (cabin_road) — a fixer
+        # must never act when asked what it does.
+        print(__doc__)
+        return 0
     if "--why" in sys.argv:
         i = sys.argv.index("--why")
         return explain(sys.argv[i + 1], sys.argv[i + 2])

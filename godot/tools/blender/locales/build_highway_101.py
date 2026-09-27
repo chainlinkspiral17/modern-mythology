@@ -67,7 +67,12 @@ def build_road():
         dy += 12.0
         di += 1
     for sgn in (-1, +1):
-        make_box(f"Road_EdgeLine_{sgn:+d}", (sgn * 3.4, mid, 0.022), (0.08, span, 0.005), (0.92, 0.92, 0.88, 1.0))
+        # 2026-09-27 (the 09-26 sheet, dusk establish): fresh white paint
+        # was the brightest thing in the frame — a blazing line up the
+        # shoulder while the centre dashes and the rail sat in the dusk.
+        # Coast fog lines are worn grey-white; the paint takes the light
+        # the way the rail does now.
+        make_box(f"Road_EdgeLine_{sgn:+d}", (sgn * 3.4, mid, 0.022), (0.08, span, 0.005), (0.66, 0.66, 0.62, 1.0))
         make_box(f"Road_Shoulder_{sgn:+d}", (sgn * 4.3, mid, 0.01), (1.4, span, 0.02), SHOULDER)
     # the seaward guardrail: W-beam on posts (a gap at the old-Yachats spur, y 155..165)
     make_guardrail("Guardrail_S", -5.4, ROAD_NEAR, 154.75, side=1, steel=STEEL)

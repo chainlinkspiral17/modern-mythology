@@ -373,6 +373,24 @@ const CAMERA_PRESETS := {
 		"fov": 62.0,
 		"suppress_input": true,
 	},
+	"simon_apartment": {
+		"scene": "res://scenes/locales/simon_apartment.tscn",
+		"requires_glb": "res://assets/3d/locales/simon_apartment.glb",
+		# XII Hanged Man — the studio dressed for the card (2026-09-27,
+		# draft 40: the room was built in the support pass and never
+		# given a preset). Room 5×7 (godot x∈[-2.5,2.5], z∈[0,-7],
+		# ceil 2.8). Front window + fire escape on the S wall (z=0),
+		# bed NE (godot 1.4,-5.7), armchair (0.5,-2.4) facing the TV on
+		# its crate against the E wall (2.1,-2.4), the boot on its peg
+		# on the W wall (z=-5.5), kitchenette W. Camera in the NE corner
+		# by the bed looking SW: the armchair and the TV's crate in the
+		# near ground, the boot on the far wall, the window and the fire
+		# escape beyond — the things suspended, in one frame.
+		"camera_origin": Vector3(2.0, 1.65, -6.5),
+		"camera_rotation": Vector3(-0.08, 2.356, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
 	# ── VOL 5 — Lovers cameos — Elicia's apartment ───────────────
 	"elicia_apartment": {
 		"scene": "res://scenes/locales/elicia_apartment.tscn",
