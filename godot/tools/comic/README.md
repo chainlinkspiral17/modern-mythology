@@ -179,6 +179,14 @@ reference* button that does the same with a file already on disk. This
 is the fix when a rendered sheet has gone wrong: draw or find a Gully
 you like, upload it as `gully_35`, and the strips follow it.
 
+Where it shows up: in REFS (it is a reference, not a sheet), and in
+SHEETS under that character's sheet as *other references for this
+character*, with a `yours` pill on the row once one is approved. The
+sheet's own status stays separate: a rejected `sheet_gully_35` and an
+approved upload is the normal state after a replace. The header shows
+`build <hash>`; if it does not match `git rev-parse --short HEAD`, the
+tab is showing an older server: rerun `inspect.sh` and reload.
+
 ## How the whole-strip prompt is built
 
 `strip-prompts` composes, per strip:
