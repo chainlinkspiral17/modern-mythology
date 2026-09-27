@@ -55,6 +55,11 @@ DEFAULT_QUEUE = HERE / "out" / "strip_prompts.json"
 RUNWAY_BASE = "https://api.dev.runwayml.com/v1"
 RUNWAY_API_VERSION = "2024-11-06"
 RUNWAY_MODEL = "gen4_image"
+OPENAI_BASE = "https://api.openai.com/v1"
+OPENAI_MODEL = "gpt-image-1"
+PROVIDER_KEYS = {"runway": (["RUNWAYML_API_KEY"], ".runway_key"),
+                 "google": (["GOOGLE_API_KEY", "GEMINI_API_KEY"], ".google_key"),
+                 "openai": (["OPENAI_API_KEY"], ".openai_key")}
 
 # Models the runners know about. `--model` accepts ANY id, known or not — the
 # id is passed straight through to the provider, so a model Runway or Google
@@ -81,7 +86,14 @@ MODELS = {
         {"id": "gemini-2.5-flash-image", "label": "Gemini 2.5 Flash Image", "note": "letters text reliably; takes reference images inline", "verified": True},
         {"id": "gemini-3-pro-image-preview", "label": "Gemini 3 Pro Image (preview)", "note": "unverified id; try it", "verified": False},
     ],
+    "openai": [
+        {"id": "gpt-image-1", "label": "GPT Image 1", "note": "OpenAI's image model; strong lettering; sizes 1024x1024 / 1536x1024 / 1024x1536; no seed; references not sent (text-to-image only here)", "verified": True},
+        {"id": "gpt-image-1-mini", "label": "GPT Image 1 mini", "note": "cheaper drafts; same sizes", "verified": True},
+        {"id": "dall-e-3", "label": "DALL-E 3", "note": "older; sizes 1024x1024 / 1792x1024 / 1024x1792; rewrites prompts on its own", "verified": True},
+    ],
 }
+OPENAI_SIZES = {"gpt": {"1:1": "1024x1024", "16:9": "1536x1024", "4:3": "1536x1024", "9:16": "1024x1536", "3:4": "1024x1536"},
+                "dalle": {"1:1": "1024x1024", "16:9": "1792x1024", "4:3": "1792x1024", "9:16": "1024x1792", "3:4": "1024x1792"}}
 RUNWAY_RATIOS = {"1920:1080", "1080:1920", "1024:1024", "1360:768", "1080:1080", "1168:880",
                  "1440:1080", "1080:1440", "1808:768", "2112:912", "1280:720", "720:1280",
                  "720:720", "960:720", "720:960", "1680:720"}
@@ -214,6 +226,13 @@ def discover_models(provider, key):
             pass
         if not ids:
             return {"ok": False, "why": "the error didn't list model ids; body below", "body": body[:800]}
+    elif provider == "openai":
+        st, raw = _http(f"{OPENAI_BASE}/models", "GET", {"Authorization": f"Bearer {key}"}, None, timeout=30)
+        body = raw.decode("utf-8", "replace")
+        if st != 200:
+            return {"ok": False, "why": f"HTTP {st}", "body": body[:600]}
+        ids = sorted(m.get("id", "") for m in json.loads(body).get("data") or []
+                     if "image" in m.get("id", "") or "dall-e" in m.get("id", ""))
     else:
         st, raw = _http(f"{GOOGLE_BASE}/models?pageSize=200", "GET", {"x-goog-api-key": key}, None, timeout=30)
         body = raw.decode("utf-8", "replace")
@@ -388,13 +407,52 @@ def google_generate(job, key, model, seed=None):
     raise RuntimeError(f"google gemini: no image in response ({raw[:300]!r})")
 
 
+# ── openai ───────────────────────────────────────────────────────────────
+
+def openai_generate(job, key, model, seed=None):
+    """POST /images/generations. gpt-image-1 returns b64 by default; DALL-E 3
+    needs response_format asked for. No seed on this API; reference images are
+    not sent (that would be the /images/edits multipart endpoint)."""
+    aspect = job.get("google_aspect", "16:9")
+    fam = "dalle" if model.startswith("dall-e") else "gpt"
+    size = OPENAI_SIZES[fam].get(aspect, "1024x1024")
+    text = job["prompt"]
+    if job.get("negative"):
+        text += f"\n\nAvoid: {job['negative']}."
+    if job.get("reference_images"):
+        print("  · openai: reference images are not sent by this runner (text-to-image only)")
+    if seed is not None:
+        print("  · openai: this API has no seed; the seed is recorded but not used")
+    body = {"model": model, "prompt": text, "n": 1, "size": size}
+    if fam == "dalle":
+        body["response_format"] = "b64_json"
+        body["quality"] = job.get("openai_quality", "standard")
+    else:
+        body["quality"] = job.get("openai_quality", "medium")
+    h = {"Authorization": f"Bearer {key}"}
+    st, raw = _http(f"{OPENAI_BASE}/images/generations", "POST", h, body, timeout=240)
+    if st != 200:
+        raise RuntimeError(f"openai submit {st} (model {model}, size {size}): {raw[:500]!r}")
+    d = json.loads(raw)
+    data = d.get("data") or []
+    if not data:
+        raise RuntimeError(f"openai: no image in response ({raw[:300]!r})")
+    b64 = data[0].get("b64_json")
+    if not b64 and data[0].get("url"):
+        st2, img = _http(data[0]["url"], "GET", {}, None, timeout=120)
+        if st2 != 200:
+            raise RuntimeError(f"openai image download {st2}")
+        return img, {"model": model, "size": size}
+    return base64.b64decode(b64), {"model": model, "size": size}
+
+
 # ── main ─────────────────────────────────────────────────────────────────
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--provider", choices=["runway", "google"], help="required unless --list-models")
+    ap.add_argument("--provider", choices=["runway", "google", "openai"], help="required unless --list-models")
     ap.add_argument("--queue", default=str(DEFAULT_QUEUE))
-    ap.add_argument("--model", help="model id for either provider; any id is passed through (see --list-models)")
+    ap.add_argument("--model", help="model id for any provider; any id is passed through (see --list-models)")
     ap.add_argument("--list-models", action="store_true", help="print the known model ids per provider and exit")
     ap.add_argument("--discover-models", action="store_true", help="ask the provider (needs --provider and its key) which model ids it accepts, save them, and exit")
     ap.add_argument("--take", choices=["new", "skip"], default="new", help="new (default): if the file exists, write the next _t2/_t3… take; skip: leave existing files alone")
@@ -410,7 +468,7 @@ def main(argv=None):
     if args.discover_models:
         if not args.provider:
             ap.error("--discover-models needs --provider")
-        key = _key(["RUNWAYML_API_KEY"], ".runway_key") if args.provider == "runway" else _key(["GOOGLE_API_KEY", "GEMINI_API_KEY"], ".google_key")
+        key = _key(*PROVIDER_KEYS[args.provider])
         r = discover_models(args.provider, key)
         print(("✓ " if r["ok"] else "✗ ") + r["why"])
         for m in r.get("models") or []:
@@ -430,7 +488,7 @@ def main(argv=None):
     jobs = [j for j in q["jobs"] if not args.only or fnmatch.fnmatch(j["slug"], args.only)]
     if args.limit:
         jobs = jobs[:args.limit]
-    model = args.model or (GOOGLE_IMAGEN if args.provider == "google" else RUNWAY_MODEL)
+    model = args.model or {"google": GOOGLE_IMAGEN, "openai": OPENAI_MODEL}.get(args.provider, RUNWAY_MODEL)
     is_sheets = any(j.get("tag") == "vol10-sheets" for j in q.get("jobs", []))
     out_dir = OUT_ROOT / ("sheets" if is_sheets else args.provider)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -444,8 +502,7 @@ def main(argv=None):
         print(f"{len(jobs)} jobs (dry run)")
         return 0
 
-    key = _key(["RUNWAYML_API_KEY"], ".runway_key") if args.provider == "runway" \
-        else _key(["GOOGLE_API_KEY", "GEMINI_API_KEY"], ".google_key")
+    key = _key(*PROVIDER_KEYS[args.provider])
 
     done = fails = 0
     for j in jobs:
@@ -465,6 +522,8 @@ def main(argv=None):
             try:
                 if args.provider == "runway":
                     img, meta = runway_generate(j, key, model, seed)
+                elif args.provider == "openai":
+                    img, meta = openai_generate(j, key, model, seed)
                 else:
                     img, meta = google_generate(j, key, model, seed)
             except Exception as e:  # noqa: BLE001

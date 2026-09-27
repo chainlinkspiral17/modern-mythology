@@ -15,12 +15,12 @@ when it lands.
 What it shows per strip: the script sheet (the same markdown as
 lore/drift_wood/scripts/), the panels, the whole-strip prompt (lettered and
 unlettered), the references that would be attached, and every render of it
-from godot/assets/comic/vol10/{runway,google,concept}/. What it writes: a
+from godot/assets/comic/vol10/{runway,google,openai,concept}/. What it writes: a
 `review` block into the strip JSON when you mark a strip (ok / revise / note)
 — the validator ignores it, `md` shows it — and approve/reject on references.
 Renders go where comic_render.py puts them, with the same manifests.
 
-Keys: the runners read godot/tools/.runway_key / .google_key or the env, as
+Keys: the runners read godot/tools/.runway_key / .google_key / .openai_key or the env, as
 before. Nothing here talks to the network itself; the subprocess does.
 """
 import argparse
@@ -43,7 +43,7 @@ import comic_tool as ct  # noqa: E402
 
 REPO = ct.REPO
 ASSETS = REPO / "godot" / "assets" / "comic" / "vol10"
-PROVIDER_DIRS = ["runway", "google", "concept", "sheets"]
+PROVIDER_DIRS = ["runway", "google", "openai", "concept", "sheets"]
 JOBS = {}
 JOBS_LOCK = threading.Lock()
 PY = sys.executable or "python3"
@@ -111,7 +111,7 @@ def api_strip(sid):
     prompt_c, _ = ct.compose_strip_prompt(s, eras, letter=True, compact=True)
     prompt_u, neg_u = ct.compose_strip_prompt(s, eras, letter=False)
     picks = {}
-    for prov in ("runway", "google"):
+    for prov in ("runway", "google", "openai"):
         picks[prov] = [{"id": r["id"], "kind": r["kind"], "status": r.get("status"), "score": sc, "why": why, "tag": ct.ref_tag_name(r),
                         "file": r.get("file"), "url": _ref_url(r), "tags": r.get("tags", [])}
                        for r, sc, why in ct.select_refs(s, refs, provider=prov, include_draft=True)]
@@ -175,7 +175,7 @@ def discover(provider):
         return {"ok": False, "why": f"could not reach the provider: {e}"}
 
 
-KEY_FILES = {"runway": (".runway_key", ["RUNWAYML_API_KEY"]), "google": (".google_key", ["GOOGLE_API_KEY", "GEMINI_API_KEY"])}
+KEY_FILES = {"runway": (".runway_key", ["RUNWAYML_API_KEY"]), "google": (".google_key", ["GOOGLE_API_KEY", "GEMINI_API_KEY"]), "openai": (".openai_key", ["OPENAI_API_KEY"])}
 
 
 def _read_key(provider):
@@ -200,15 +200,17 @@ def api_keys():
             hint = "Runway developer-API keys start with key_ — this one doesn't; it may be a key for a different Runway product (the app or the MCP), which the API refuses."
         if key and prov == "google" and not key.startswith("AIza"):
             hint = "Google AI Studio keys start with AIza — this one doesn't."
+        if key and prov == "openai" and not key.startswith("sk-"):
+            hint = "OpenAI API keys start with sk- — this one doesn't; a ChatGPT login is not an API key (make one at platform.openai.com)."
         out[prov] = {"present": bool(key), "source": src, "masked": (key[:6] + "…" + key[-3:]) if len(key) > 12 else ("set" if key else ""), "hint": hint,
                      "file": f"godot/tools/{KEY_FILES[prov][0]}"}
-    out["runway_ok"] = out["runway"]["present"]; out["google_ok"] = out["google"]["present"]
+    out["runway_ok"] = out["runway"]["present"]; out["google_ok"] = out["google"]["present"]; out["openai_ok"] = out["openai"]["present"]
     return out
 
 
 def set_key(provider, key):
     if provider not in KEY_FILES:
-        return {"error": "provider must be runway or google"}
+        return {"error": "provider must be runway, google or openai"}
     key = (key or "").strip().strip('"').strip("'")
     p = ct.HERE.parent / KEY_FILES[provider][0]
     if not key:
@@ -244,6 +246,17 @@ def test_key(provider):
                    403: "key refused (403): the key is valid but not allowed to do this; check the organization/plan at dev.runwayml.com.",
                    404: "the /organization probe isn't available on this API version; the key may still work for generation."}.get(st, f"HTTP {st}")
             return {"ok": False, "status": st, "why": why, "body": body}
+        if provider == "openai":
+            st, raw = cr._http(f"{cr.OPENAI_BASE}/models", "GET", {"Authorization": f"Bearer {key}"}, None, timeout=30)
+            body = raw.decode("utf-8", "replace")
+            if st == 200:
+                names = sorted(m.get("id", "") for m in json.loads(body).get("data", []))
+                imgs = [n for n in names if "image" in n or "dall-e" in n]
+                return {"ok": True, "status": st, "why": f"key accepted · {len(names)} models visible · image models: {', '.join(imgs) or 'none listed'}", "models": imgs, "body": body[:300]}
+            why = {401: "key refused (401): wrong key, or a ChatGPT login rather than an API key. Make one at platform.openai.com → API keys (starts with sk-).",
+                   403: "key refused (403): the key is valid but this project or organization isn't allowed to use it here.",
+                   429: "the key works but the account has no credit or is rate-limited (429); add billing at platform.openai.com."}.get(st, f"HTTP {st}")
+            return {"ok": False, "status": st, "why": why, "body": body[:600]}
         st, raw = cr._http(f"{cr.GOOGLE_BASE}/models?pageSize=200", "GET", {"x-goog-api-key": key}, None, timeout=30)
         body = raw.decode("utf-8", "replace")
         if st == 200:
@@ -312,8 +325,8 @@ def start_job(body):
     kind = body.get("kind", "strip")  # strip | sheet
     target = body.get("id")
     provider = body.get("provider", "runway")
-    if provider not in ("runway", "google"):
-        return {"error": "provider must be runway or google"}
+    if provider not in ("runway", "google", "openai"):
+        return {"error": "provider must be runway, google or openai"}
     if not target:
         return {"error": "id required"}
     variants = max(1, min(int(body.get("variants", 1) or 1), 6))
@@ -517,7 +530,7 @@ kbd{border:1px solid var(--rule);padding:0 4px;color:var(--dim)}
 <div id="lightbox"><img id="lbimg"></div>
 <script>
 const $=s=>document.querySelector(s);const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-let MODE='strips',STRIPS=[],SHEETS=[],REFS=null,SEL=null,TAB='sheet',KEYS={},VIEW=[],MODELS={runway:[],google:[]};
+let MODE='strips',STRIPS=[],SHEETS=[],REFS=null,SEL=null,TAB='sheet',KEYS={},VIEW=[],MODELS={runway:[],google:[],openai:[]};
 const api=(p,o)=>fetch(p,o).then(r=>r.json());
 function md(src){const L=src.split('\n'),out=[];let i=0,inT=false;while(i<L.length){let l=L[i];
  if(l.startsWith('|')){const rows=[];while(i<L.length&&L[i].startsWith('|')){rows.push(L[i]);i++;}const cells=r=>r.replace(/^\||\|$/g,'').split('|').map(c=>inl(c.trim()));
@@ -532,7 +545,7 @@ function md(src){const L=src.split('\n'),out=[];let i=0,inT=false;while(i<L.leng
  const p=[];while(i<L.length&&L[i].trim()!==''&&!/^(#|\||```|> |\s*[-*]\s|---)/.test(L[i])){p.push(L[i]);i++;}out.push('<p>'+inl(p.join(' '))+'</p>');}
  return out.join('\n');}
 function inl(s){return esc(s).replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>').replace(/\*([^*]+)\*/g,'<i>$1</i>').replace(/\[([^\]]+)\]\(([^)]+)\)/g,'$1');}
-async function loadKeys(){const k=await api('/api/keys');KEYS={runway:k.runway_ok,google:k.google_ok,info:k};try{MODELS=(await api('/api/models')).models;}catch(e){}$('#keys').innerHTML=`<a href="#" onclick="setMode('keys');return false" style="color:inherit">keys · runway ${KEYS.runway?'<b>found</b>':'<s>none</s>'} · google ${KEYS.google?'<b>found</b>':'<s>none</s>'}</a>`;}
+async function loadKeys(){const k=await api('/api/keys');KEYS={runway:k.runway_ok,google:k.google_ok,openai:k.openai_ok,info:k};try{MODELS=(await api('/api/models')).models;}catch(e){}$('#keys').innerHTML=`<a href="#" onclick="setMode('keys');return false" style="color:inherit">keys · runway ${KEYS.runway?'<b>found</b>':'<s>none</s>'} · google ${KEYS.google?'<b>found</b>':'<s>none</s>'} · openai ${KEYS.openai?'<b>found</b>':'<s>none</s>'}</a>`;}
 async function loadStrips(){const d=await api('/api/strips');STRIPS=d.strips;const ys=[...new Set(STRIPS.map(s=>s.date.slice(0,4)))];$('#f-year').innerHTML='<option value="">year</option>'+ys.map(y=>`<option>${y}</option>`).join('');render();}
 async function loadSheets(){SHEETS=(await api('/api/sheets')).sheets;render();}
 async function loadRefs(){REFS=await api('/api/refs');render();}
@@ -561,9 +574,9 @@ function modelOptions(prov,sel){const ms=MODELS[prov]||[];const opts=['<option v
  return opts.replace(`value="${sel||''}"`,`value="${sel||''}" selected`);}
 function onProv(){const p=$('#g-prov').value;$('#g-model').innerHTML=modelOptions(p,'');$('#g-custom').style.display='none';onModel();}
 function onModel(){const v=$('#g-model').value;$('#g-custom').style.display=v==='__custom'?'inline-block':'none';const p=$('#g-prov').value;const m=(MODELS[p]||[]).find(x=>x.id===v);$('#g-note').textContent=m?m.note:(v==='__custom'?'type the exact id from the provider\'s docs; it is passed through unchanged':'');saveGen();}
-function genForm(kind,id,fmt){const avail=p=>p==='runway'?KEYS.runway:KEYS.google;let prov=GEN.prov&&avail(GEN.prov)?GEN.prov:(KEYS.runway?'runway':'google');const nokey=!KEYS.runway&&!KEYS.google;
+function genForm(kind,id,fmt){const avail=p=>!!KEYS[p];let prov=GEN.prov&&avail(GEN.prov)?GEN.prov:(KEYS.runway?'runway':KEYS.google?'google':'openai');const nokey=!KEYS.runway&&!KEYS.google&&!KEYS.openai;
  const ck=(k,def)=>(GEN[k]===undefined?def:GEN[k])?'checked':'';
- return `${nokey?'<div class="job" style="border-color:var(--red)"><span class="st failed">NO KEYS</span> · nothing can generate until a key is saved. <a href="#" onclick="setMode(&quot;keys&quot;);return false" style="color:var(--gold-hi)">Open KEYS</a> to paste one and test it.</div>':''}<div class="gen"><label>provider <select id="g-prov" onchange="onProv()"><option value="runway" ${KEYS.runway?'':'disabled'} ${prov==='runway'?'selected':''}>runway${KEYS.runway?'':' (no key)'}</option><option value="google" ${KEYS.google?'':'disabled'} ${prov==='google'?'selected':''}>google${KEYS.google?'':' (no key)'}</option></select></label>
+ return `${nokey?'<div class="job" style="border-color:var(--red)"><span class="st failed">NO KEYS</span> · nothing can generate until a key is saved. <a href="#" onclick="setMode(&quot;keys&quot;);return false" style="color:var(--gold-hi)">Open KEYS</a> to paste one and test it.</div>':''}<div class="gen"><label>provider <select id="g-prov" onchange="onProv()"><option value="runway" ${KEYS.runway?'':'disabled'} ${prov==='runway'?'selected':''}>runway${KEYS.runway?'':' (no key)'}</option><option value="google" ${KEYS.google?'':'disabled'} ${prov==='google'?'selected':''}>google${KEYS.google?'':' (no key)'}</option><option value="openai" ${KEYS.openai?'':'disabled'} ${prov==='openai'?'selected':''}>openai${KEYS.openai?'':' (no key)'}</option></select></label>
  <label>model <select id="g-model" onchange="onModel()">${modelOptions(prov,GEN.prov===prov?GEN.model:'')}</select><input type="text" id="g-custom" placeholder="exact model id" value="${esc(GEN.custom||'')}" oninput="saveGen()" style="display:${GEN.prov===prov&&GEN.model==='__custom'?'inline-block':'none'};width:200px"></label>
  <label>variants <input type="number" id="g-var" min="1" max="6" value="${GEN.variants||1}" onchange="saveGen()"></label><label>seed <input type="number" id="g-seed" placeholder="random" value="${esc(GEN.seed||'')}" onchange="saveGen()"></label>
  ${kind==='strip'?`<label><input type="checkbox" id="g-letter" ${ck('letter',true)} onchange="saveGen()"> letter balloons</label><label><input type="checkbox" id="g-refs" ${ck('refs',true)} onchange="saveGen()"> attach references</label><label><input type="checkbox" id="g-draft" ${ck('draft',false)} onchange="saveGen()"> allow draft refs</label>`:''}
@@ -584,10 +597,10 @@ function renderStrip(d){const s=d.strip,p=d.prompt,rv=s.review||{};const el=$('#
  <div class="tabs">${tabs.map(t=>`<button class="${TAB===t[0]?'on':''}" onclick="tab('${t[0]}')">${t[1]}</button>`).join('')}</div>
  <div class="pane ${TAB==='sheet'?'on':''}" id="p-sheet"><div class="md">${md(d.md)}</div></div>
  <div class="pane ${TAB==='panels'?'on':''}" id="p-panels"><table class="panels md"><tr><th>#</th><th>shot</th><th>composition</th><th>who</th><th>balloons</th><th>image prompt</th><th>notes</th></tr>${s.panels.map(x=>`<tr><td>${x.n}${x.name?'<br>'+esc(x.name):''}</td><td>${esc(x.shot)}</td><td>${esc(x.composition)}${x.caption?'<br><i>caption: '+esc(x.caption)+'</i>':''}${x.sfx?'<br><i>sfx: '+esc(x.sfx)+'</i>':''}</td><td>${(x.characters||[]).map(c=>esc(c.id)+(c.pose?' · <small>'+esc(c.pose)+'</small>':'')).join('<br>')}</td><td>${(x.balloons||[]).map(b=>'<b>'+esc(b.who)+'</b> '+esc(b.text)+(b.kind?' <small>('+esc(b.kind)+')</small>':'')).join('<br>')}</td><td>${esc(x.image?.prompt)}</td><td>${esc(x.image?.notes)}</td></tr>`).join('')}</table></div>
- <div class="pane ${TAB==='prompt'?'on':''}" id="p-prompt"><h2>whole-strip prompt · lettered · ${p.lettered.length} chars <button class="sm" onclick="copy('pl')">copy</button></h2><pre id="pl">${esc(p.lettered)}</pre><p class="empty">negative: ${esc(p.negative_lettered)} · runway ${p.runway_ratio} · google ${p.google_aspect}</p>
+ <div class="pane ${TAB==='prompt'?'on':''}" id="p-prompt"><h2>whole-strip prompt · lettered · ${p.lettered.length} chars <button class="sm" onclick="copy('pl')">copy</button></h2><pre id="pl">${esc(p.lettered)}</pre><p class="empty">negative: ${esc(p.negative_lettered)} · runway ${p.runway_ratio} · google ${p.google_aspect} · openai sized from the same aspect</p>
   <h2>compact · ${p.compact.length} chars${p.compact.length>1000?' · <span style="color:#ff9a8a">still over gen4_image\'s 1000; use another model or shorten the dialogue</span>':' · fits gen4_image\'s 1000'} <button class="sm" onclick="copy('pc')">copy</button></h2><pre id="pc">${esc(p.compact)}</pre><p class="empty">sent instead of the full prompt when a model's limit is 1000 characters (gen4) or when the provider rejects the length. Dialogue is never shortened; only the style line and the panel descriptions are.</p>
   <h2>unlettered (production) <button class="sm" onclick="copy('pu')">copy</button></h2><pre id="pu">${esc(p.unlettered)}</pre><p class="empty">negative: ${esc(p.negative_unlettered)}</p></div>
- <div class="pane ${TAB==='refs'?'on':''}" id="p-refs"><div class="refs">${['runway','google'].map(pr=>`<h2>${pr} would attach (${d.refs[pr].length})</h2>`+(d.refs[pr].length?d.refs[pr].map(r=>`<div class="ref">${r.url?`<img src="${r.url}" onclick="lb('${r.url}')">`:'<div class="empty">no image yet</div>'}<div><b>@${esc(r.tag)}</b> · ${esc(r.id)} · ${r.kind} · <span class="pill ${r.status==='approved'?'ok':'A'}">${r.status}</span> · score ${r.score}<br><span class="why">${esc(r.why.join(', '))}</span><br><small>${esc(r.tags.join(' '))}</small><br><button class="sm ok" onclick="refStatus('${r.id}','approved')">approve</button> <button class="sm bad" onclick="refStatus('${r.id}','rejected')">reject</button></div></div>`).join(''):'<p class="empty">none approved that match · render the sheets first (SHEETS mode) or tick "allow draft refs"</p>')).join('')}</div></div>
+ <div class="pane ${TAB==='refs'?'on':''}" id="p-refs"><div class="refs">${['runway','google','openai'].map(pr=>`<h2>${pr} would attach (${d.refs[pr].length})</h2>`+(d.refs[pr].length?d.refs[pr].map(r=>`<div class="ref">${r.url?`<img src="${r.url}" onclick="lb('${r.url}')">`:'<div class="empty">no image yet</div>'}<div><b>@${esc(r.tag)}</b> · ${esc(r.id)} · ${r.kind} · <span class="pill ${r.status==='approved'?'ok':'A'}">${r.status}</span> · score ${r.score}<br><span class="why">${esc(r.why.join(', '))}</span><br><small>${esc(r.tags.join(' '))}</small><br><button class="sm ok" onclick="refStatus('${r.id}','approved')">approve</button> <button class="sm bad" onclick="refStatus('${r.id}','rejected')">reject</button></div></div>`).join(''):'<p class="empty">none approved that match · render the sheets first (SHEETS mode) or tick "allow draft refs"</p>')).join('')}</div></div>
  <div class="pane ${TAB==='renders'?'on':''}" id="p-renders"><h2>generate</h2>${genForm('strip',s.id,s.format)}<div id="lastrun"></div><h2>on disk</h2>${gallery(d.renders)}</div>
  <div class="pane ${TAB==='json'?'on':''}" id="p-json"><pre>${esc(JSON.stringify(s,null,2))}</pre><p class="empty">file: strips/${s.id}.json · edit the JSON, then <button class="sm" onclick="regenMd()">regenerate the md sheets</button></p></div>`;}
 function renderSheet(s){const el=$('#detail');showLastRun(s.id);el.innerHTML=`<div class="head"><h1>${esc(s.id)}</h1><div class="meta">${s.kind} · ${s.era} · ${s.ratio} · <span class="pill ${s.status==='approved'?'ok':'A'}">${s.status}</span> · ${esc(s.tags.join(' '))}</div><div class="log">${esc(s.prompt)}</div>
@@ -598,7 +611,9 @@ function renderRef(r){const el=$('#detail');el.innerHTML=`<div class="head"><h1>
  ${r.url?`<div class="gal"><div class="card"><img src="${r.url}" onclick="lb('${r.url}')"><div class="cap"><span>${esc(r.file||r.url)}</span></div></div></div>`:'<p class="empty">no image on disk'+(r.runway_task_id?' · runway task '+esc(r.runway_task_id):'')+'</p>'}
  <h2>registry entry</h2><pre>${esc(JSON.stringify(r,null,2))}</pre>`;}
 function explain(j){const log=j.log.join('\n');
- if(/no API key/.test(log))return 'No API key for '+j.provider+'. Put it in godot/tools/.'+(j.provider==='runway'?'runway_key':'google_key')+' (one line) or export the env var, then generate again.';
+ if(/no API key/.test(log))return 'No API key for '+j.provider+'. Put it in godot/tools/.'+j.provider.replace('openai','openai_key').replace('runway','runway_key').replace('google','google_key')+' (one line) or export the env var, then generate again.';
+ if(/openai submit 400/.test(log)&&/content_policy|safety/.test(log))return 'OpenAI refused the prompt on content grounds (400). Untick "letter balloons" or simplify the prompt and try again.';
+ if(/openai submit 400/.test(log))return 'OpenAI rejected the request (400). If the body names the model, pick another from the menu; if it names size or quality, paste the body to me.';
  if(/doesn't take .* using its closest size/.test(log)&&j.status==='done')return 'Rendered. This model has its own size list; the closest size to the strip was used and remembered.';
  if(/submit 4(00|22)/.test(log))return 'The provider rejected the request (HTTP 400). If the body names the model, the id is wrong for this API — fix it in the "other id…" box. If it names another field, paste the body to me.';
  if(/submit 401|submit 403|PERMISSION_DENIED|API key not valid/.test(log))return 'The key was refused (401/403). Check the key file has the right key and nothing else in it.';
@@ -619,12 +634,12 @@ let LASTRUN_HTML='';function showLastRun(id){api('/api/jobs').then(d=>{const box
  if(j.status==='running'||j.status==='queued')setTimeout(()=>{if(SEL===id)showLastRun(id);},2000);});}
 let LOGOPEN=false;
 function renderKeys(){const k=KEYS.info||{};const row=p=>{const i=k[p]||{};return `<div class="job" style="border-color:${i.present?'var(--em)':'var(--rule)'}"><span class="st ${i.present?'done':''}">${p.toUpperCase()}</span> · ${i.present?'saved · '+esc(i.masked)+' · from '+esc(i.source):'no key'}${i.hint?'<div style="color:#ff9a8a;margin-top:4px">'+esc(i.hint)+'</div>':''}
- <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap"><input type="password" id="k-${p}" placeholder="${p==='runway'?'paste the developer-API key (starts with key_)':'paste the AI Studio key (starts with AIza)'}" style="flex:1;min-width:280px;background:var(--ink);border:1px solid var(--rule);color:var(--text);font:inherit;padding:4px 6px"><button class="sm ok" onclick="saveKey('${p}')">save</button><button class="sm" onclick="testKey('${p}')">test</button><button class="sm" onclick="discoverModels('${p}')">fetch model list</button><button class="sm bad" onclick="if(confirm('remove the saved ${p} key?'))saveKey('${p}',true)">remove</button></div>
+ <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap"><input type="password" id="k-${p}" placeholder="${p==='runway'?'paste the developer-API key (starts with key_)':p==='google'?'paste the AI Studio key (starts with AIza)':'paste the OpenAI API key (starts with sk-)'}" style="flex:1;min-width:280px;background:var(--ink);border:1px solid var(--rule);color:var(--text);font:inherit;padding:4px 6px"><button class="sm ok" onclick="saveKey('${p}')">save</button><button class="sm" onclick="testKey('${p}')">test</button><button class="sm" onclick="discoverModels('${p}')">fetch model list</button><button class="sm bad" onclick="if(confirm('remove the saved ${p} key?'))saveKey('${p}',true)">remove</button></div>
  <div class="empty" style="margin-top:6px">saved to <code>${esc(i.file)}</code> on this machine only (git ignores it)</div><div id="kr-${p}" style="margin-top:6px"></div></div>`;};
- $('#detail').innerHTML='<h2>keys</h2><p class="empty">Two providers. Save a key, press test (Runway answers with your credit balance; Google with what the key can see), then press fetch model list: it asks the provider which model ids it accepts right now — no credits spent — and the menu uses that list from then on (saved in out/models_learned.json).</p>'+row('runway')+row('google')+'<h2>where keys come from</h2><ul class="md"><li><b>Runway</b>: dev.runwayml.com → API Keys → New. Developer-API keys start with <code>key_</code>. A key from the Runway app or the MCP is a different thing and the API refuses it with 401.</li><li><b>Google</b>: aistudio.google.com → Get API key. Starts with <code>AIza</code>. Imagen and Gemini image models bill to that key.</li></ul>';}
+ $('#detail').innerHTML='<h2>keys</h2><p class="empty">Three providers. Save a key, press test (Runway answers with your credit balance; Google with what the key can see), then press fetch model list: it asks the provider which model ids it accepts right now — no credits spent — and the menu uses that list from then on (saved in out/models_learned.json).</p>'+row('runway')+row('google')+row('openai')+'<h2>where keys come from</h2><ul class="md"><li><b>OpenAI</b>: platform.openai.com → API keys → Create. Starts with <code>sk-</code>. A ChatGPT Plus login is not an API key; the API bills separately, so add a few dollars of credit under Billing first. Models: gpt-image-1 (best lettering), gpt-image-1-mini (drafts), dall-e-3.</li><li><b>Runway</b>: dev.runwayml.com → API Keys → New. Developer-API keys start with <code>key_</code>. A key from the Runway app or the MCP is a different thing and the API refuses it with 401.</li><li><b>Google</b>: aistudio.google.com → Get API key. Starts with <code>AIza</code>. Imagen and Gemini image models bill to that key.</li></ul>';}
 async function saveKey(p,remove){const v=remove?'':$('#k-'+p).value;const r=await api('/api/keys',{method:'POST',body:JSON.stringify({provider:p,key:v})});await loadKeys();renderKeys();$('#kr-'+p).innerHTML=r.error?'<span style="color:#ff9a8a">'+esc(r.error)+'</span>':(remove?'removed':'saved · now press test');if(!remove&&!r.error)testKey(p);}
 async function discoverModels(p){const b=$('#kr-'+p);b.innerHTML='asking '+p+' which models it accepts…';const r=await api('/api/models/discover',{method:'POST',body:JSON.stringify({provider:p})});if(r.ok){try{MODELS=(await api('/api/models')).models;}catch(e){}}b.innerHTML=`<span style="color:${r.ok?'var(--em-hi)':'#ff9a8a'}">${esc(r.why||'')}</span>`+(r.models?'<pre style="margin-top:4px">'+esc(r.models.join('\n'))+'</pre>':'')+(r.body&&!r.ok?'<pre style="margin-top:4px">'+esc(r.body)+'</pre>':'');}
-async function testKey(p){const b=$('#kr-'+p);b.innerHTML='testing…';const r=await api('/api/keys/test',{method:'POST',body:JSON.stringify({provider:p})});b.innerHTML=`<span style="color:${r.ok?'var(--em-hi)':'#ff9a8a'}">${esc(r.why||'')}</span>`+(r.body&&!r.ok?'<pre style="margin-top:4px">'+esc(r.body)+'</pre>':'');if(r.ok&&r.models&&r.models.length){MODELS.google=r.models.map(id=>({id,label:id,note:'listed by your key',verified:true}));}}
+async function testKey(p){const b=$('#kr-'+p);b.innerHTML='testing…';const r=await api('/api/keys/test',{method:'POST',body:JSON.stringify({provider:p})});b.innerHTML=`<span style="color:${r.ok?'var(--em-hi)':'#ff9a8a'}">${esc(r.why||'')}</span>`+(r.body&&!r.ok?'<pre style="margin-top:4px">'+esc(r.body)+'</pre>':'');if(r.ok&&r.models&&r.models.length&&p!=='runway'){MODELS[p]=r.models.map(id=>({id,label:id,note:'listed by your key',verified:true}));}}
 let JOBS_HTML='';function renderJobs(){api('/api/jobs').then(d=>{const el=$('#detail');const html='<h2>jobs (this session)</h2><div class="jobs">'+(d.jobs.length?d.jobs.map(j=>`<div class="job"><span class="st ${j.status}">${j.status.toUpperCase()}</span> · ${j.kind} · <b>${esc(j.target)}</b> · ${j.provider}<pre>${esc(j.commands.join('\n'))}\n\n${esc(j.log.join('\n'))}</pre></div>`).join(''):'<p class="empty">nothing run yet · pick a strip → RENDERS → GENERATE</p>')+'</div>';if(html!==JOBS_HTML){JOBS_HTML=html;el.innerHTML=html;}});}
 function tab(t){TAB=t;document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('on',p.id==='p-'+t));document.querySelectorAll('.tabs button').forEach((b,i)=>b.classList.toggle('on',['sheet','panels','prompt','refs','renders','json'][i]===t));}
 function copy(id){navigator.clipboard.writeText($('#'+id).textContent);}

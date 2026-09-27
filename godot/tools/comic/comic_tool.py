@@ -586,7 +586,7 @@ def cmd_strip_prompts(args):
     out = Path(args.out) if args.out else OUT / ("strip_prompts.json" if letter else "strip_prompts_unlettered.json")
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps({
-        "_comment": "One job per STRIP — the whole strip as one image, for the concept run. Run with comic_render.py --provider runway|google.",
+        "_comment": "One job per STRIP — the whole strip as one image, for the concept run. Run with comic_render.py --provider runway|google|openai.",
         "jobs": jobs}, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"wrote {len(jobs)} strip prompts → {_rel(out)}")
     return 0
@@ -837,7 +837,7 @@ def main(argv=None):
         sp.add_argument("--no-letter", action="store_true", help="strip-prompts: art only, no balloons (for the print pipeline)")
         sp.add_argument("--no-refs", action="store_true", help="strip-prompts: don't attach reference images")
         sp.add_argument("--include-draft", action="store_true", help="strip-prompts/refs suggest: allow draft (unapproved) references")
-        sp.add_argument("--provider", default="runway", choices=["runway", "google"], help="reference count limit per provider")
+        sp.add_argument("--provider", default="runway", choices=["runway", "google", "openai"], help="reference count limit per provider")
         sp.set_defaults(fn=fn)
     sp = sub.add_parser("refs", help="reference registry: list | sync | add | approve | reject | suggest")
     sp.add_argument("refs_cmd", choices=["list", "sync", "add", "approve", "reject", "suggest"])
@@ -851,7 +851,7 @@ def main(argv=None):
     sp.add_argument("--approve", action="store_true", help="add: mark approved immediately")
     sp.add_argument("--only", help="suggest: glob on strip id")
     sp.add_argument("--include-draft", action="store_true")
-    sp.add_argument("--provider", default="runway", choices=["runway", "google"])
+    sp.add_argument("--provider", default="runway", choices=["runway", "google", "openai"])
     sp.set_defaults(fn=cmd_refs)
     sp = sub.add_parser("new")
     sp.add_argument("--id", required=True)
