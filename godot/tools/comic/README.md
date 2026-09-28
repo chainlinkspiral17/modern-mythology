@@ -169,6 +169,22 @@ hold them:
 If the last-run panel says "no references attached", the faces came
 from the prompt alone; render and approve the sheets.
 
+**The whole cast has entries now.** Every character id the strips use
+(81, including the backups' people) has a hero entry with a `name`,
+`comic_identity`, `comic_wardrobe` and `comic_props`, so the cast
+block names and describes the uncle, the frame-shop owner, the print
+tech, SLASH's framer and green coat, the man who smooths his lapels,
+and so on, the same way it does Wood. Withheld characters (Wood's
+mother, his father, Julian) are entered as what the strip withholds:
+the prompt says NEVER SHOWN. Group sheets in `style_sheets.json`
+(`sheet_town_1999`, `sheet_town_2000s`, `sheet_timberline_people`,
+`sheet_gullys_people`, `sheet_shop_people`, `sheet_slash_cast`,
+`sheet_frontier_cast`, `sheet_found_pages_cast`,
+`sheet_pomegranate_host`, `sheet_cedar_cast`, `sheet_julian`) carry
+them as references; render them from SHEETS mode like the others.
+The lore is `lore/drift_wood/style/characters.md` (THE REST OF THE
+CAST and THE BACKUP CASTS); the JSON is copied from it.
+
 **Clothes and props are not identity.** The other failure was the
 opposite one: with a sheet attached, every strip came back in the
 sheet's outfit holding the sheet's mug. So `heroes_vol10.json` now

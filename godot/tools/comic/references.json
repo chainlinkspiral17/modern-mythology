@@ -290,7 +290,8 @@
         "character",
         "era2",
         "extra_stick_chorus",
-        "extra_stick_hero"
+        "extra_stick_hero",
+        "extra_stick_two"
       ],
       "file": "godot/assets/comic/vol10/sheets/sheet_chorus_and_meme.png",
       "url": null,
@@ -666,6 +667,218 @@
       "status": "missing",
       "source": "the user's September 2026 concept sheet (not yet in the repo)",
       "notes": "see lore/drift_wood/_CONCEPT_ART.md; drop the PNG at the file path and run refs sync"
+    },
+    {
+      "id": "sheet_town_1999",
+      "kind": "character",
+      "tags": [
+        "character",
+        "era1",
+        "extra_print_tech",
+        "extra_instructor",
+        "security_guard",
+        "laundromat_owner",
+        "extra_clerk",
+        "extra_librarian",
+        "extra_classmate",
+        "extra_reader"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_town_1999.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_town_2000s",
+      "kind": "character",
+      "tags": [
+        "character",
+        "era2",
+        "extra_vet",
+        "extra_mechanic",
+        "extra_flagger",
+        "extra_pastor",
+        "extra_realtor",
+        "extra_fisherman",
+        "extra_regulars",
+        "extra_tourists",
+        "extra_tourist_couple",
+        "extra_tourist"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_town_2000s.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_timberline_people",
+      "kind": "character",
+      "tags": [
+        "character",
+        "era1",
+        "extra_mr_hadley",
+        "extra_principal",
+        "extra_yearbook_photog",
+        "extra_bus_driver",
+        "extra_cashier",
+        "extra_grunion_queen",
+        "extra_student",
+        "extra_kid"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_timberline_people.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_gullys_people",
+      "kind": "character",
+      "tags": [
+        "character",
+        "era3",
+        "extra_maria",
+        "extra_gully_kid",
+        "extra_uncle",
+        "extra_delivery",
+        "extra_toddler"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_gullys_people.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_shop_people",
+      "kind": "character",
+      "tags": [
+        "character",
+        "era2",
+        "extra_owner_heceta",
+        "extra_customer_1",
+        "extra_couple",
+        "extra_old_woman",
+        "extra_mother",
+        "extra_father"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_shop_people.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_slash_cast",
+      "kind": "character",
+      "tags": [
+        "character",
+        "era1",
+        "extra_framer",
+        "extra_green_coat",
+        "extra_sergeant"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_slash_cast.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_frontier_cast",
+      "kind": "character",
+      "tags": [
+        "character",
+        "era1",
+        "extra_stranger",
+        "extra_lapels",
+        "extra_painter",
+        "extra_surveyor",
+        "extra_mill_boss"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_frontier_cast.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_found_pages_cast",
+      "kind": "character",
+      "tags": [
+        "character",
+        "era1",
+        "extra_bartender",
+        "extra_lapels",
+        "extra_helmsman",
+        "extra_diner_dog",
+        "extra_lean_man"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_found_pages_cast.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_pomegranate_host",
+      "kind": "character",
+      "tags": [
+        "character",
+        "era3",
+        "extra_host"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_pomegranate_host.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_cedar_cast",
+      "kind": "character",
+      "tags": [
+        "character",
+        "era3",
+        "extra_logger",
+        "extra_ring_woman",
+        "extra_listener",
+        "extra_family",
+        "extra_librarian",
+        "extra_gully_kid"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_cedar_cast.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
+    },
+    {
+      "id": "sheet_julian",
+      "kind": "character",
+      "tags": [
+        "character",
+        "era3",
+        "extra_julian"
+      ],
+      "file": "godot/assets/comic/vol10/sheets/sheet_julian.png",
+      "url": null,
+      "runway_task_id": null,
+      "status": "missing",
+      "source": "style_sheets.json",
+      "notes": ""
     }
   ]
 }

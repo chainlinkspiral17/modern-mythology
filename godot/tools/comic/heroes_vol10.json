@@ -125,63 +125,586 @@
       "who": "Barnaby (1999-2014)",
       "meshy_prompt": "scruffy low-slung terrier and hound mix dog, short legs, long body, folded velvet ears, wiry white-and-tan coat, wet-looking, standing alert with head slightly lowered, low-poly stylized animal, clean silhouette",
       "texture_prompt": "white and tan wiry coat, dark nose, matte flat colors",
-      "comic_look": "a low-slung terrier and hound mix, long body, short legs, folded velvet ears, wiry white-and-tan coat; gray on the muzzle from 2004, cloudy eyes from 2009, carried from 2010"
+      "comic_look": "a low-slung terrier and hound mix, long body, short legs, folded velvet ears, wiry white-and-tan coat; gray on the muzzle from 2004, cloudy eyes from 2009, carried from 2010",
+      "name": "BARNABY (the dog)"
     },
     "barnaby_ii": {
       "file": "vol10_barnaby_ii.glb",
       "who": "Barnaby II (2014-2027)",
       "meshy_prompt": "small wiry-haired terrier and border collie mix puppy grown to adult, three legs — left hind leg ends cleanly below the hock, healed — one ear pinned back, one ear upright, coat like unraveled steel wool, standing balanced like a tripod with chest out, low-poly stylized animal",
       "texture_prompt": "gray and black wiry coat, black leather nose, matte flat colors",
-      "comic_look": "a small wiry terrier and border collie mix with THREE legs (the left hind ends clean below the hock, healed), one ear pinned back and one cocked up, coat like unraveled steel wool, gray whiskers, black nose, scuttles, stands like a tripod"
+      "comic_look": "a small wiry terrier and border collie mix with THREE legs (the left hind ends clean below the hock, healed), one ear pinned back and one cocked up, coat like unraveled steel wool, gray whiskers, black nose, scuttles, stands like a tripod",
+      "name": "THE PUP (Barnaby II)"
     },
     "the_bird": {
       "file": "vol10_the_bird.glb",
       "who": "the bird (ROFLCOPTER, 2022-2027)",
       "meshy_prompt": "small plump songbird, teal head, rose-pink breast, green wing, long teal tail, like a painted bunting, perched, low-poly stylized animal, clean silhouette",
       "texture_prompt": "teal, rose, green, yellow-green plumage, small dark eye, matte flat colors",
-      "comic_look": "a small plump songbird, teal head, rose-pink breast, green wing, long teal tail, every color, wrong for the coast"
+      "comic_look": "a small plump songbird, teal head, rose-pink breast, green wing, long teal tail, every color, wrong for the coast",
+      "name": "THE BIRD"
     },
     "lunch_lady": {
       "file": "vol10_lunch_lady.glb",
-      "who": "the cafeteria lunch lady (1997)",
+      "who": "the cafeteria lunch lady, 1997 (a second one in 2017 who does look up)",
       "meshy_prompt": "heavyset woman in a white cafeteria smock and hairnet holding a steel ladle, unimpressed posture, low-poly stylized character",
-      "texture_prompt": "white smock, blue hairnet, steel ladle, matte flat colors"
+      "texture_prompt": "white smock, blue hairnet, steel ladle, matte flat colors",
+      "name": "THE LUNCH LADY",
+      "comic_identity": "heavyset woman, never looks up, unimpressed",
+      "group": "town",
+      "years": "1997; 2017",
+      "comic_wardrobe": "white cafeteria smock, blue hairnet",
+      "comic_props": "a steel ladle"
     },
     "security_guard": {
       "file": "vol10_security_guard.glb",
-      "who": "Newport campus security (2001)",
+      "who": "the Newport college lot's guard, 1999–2001; the marina in summer",
       "meshy_prompt": "middle-aged man in a dark campus security windbreaker and cap, clipboard, standing bent slightly as if to a car window, low-poly stylized character",
-      "texture_prompt": "navy windbreaker with reflective strip, navy cap, khakis, matte flat colors"
+      "texture_prompt": "navy windbreaker with reflective strip, navy cap, khakis, matte flat colors",
+      "name": "THE GUARD",
+      "comic_identity": "broad man in his fifties, tanned by August, patient face, bends to car windows",
+      "group": "town",
+      "years": "1999–2001",
+      "comic_wardrobe": "navy windbreaker with a reflective strip, a cap",
+      "comic_props": "a clipboard; a thermos"
     },
     "laundromat_owner": {
       "file": "vol10_laundromat_owner.glb",
-      "who": "the laundromat owner (2003)",
+      "who": "the laundromat's owner, 1999–2003; the digest's first reader and its archive",
       "meshy_prompt": "older man in a cardigan folding a towel, reading glasses on a cord, low-poly stylized character",
-      "texture_prompt": "brown cardigan, white shirt, gray slacks, matte flat colors"
+      "texture_prompt": "brown cardigan, white shirt, gray slacks, matte flat colors",
+      "name": "THE LAUNDROMAT OWNER",
+      "comic_identity": "woman in her fifties with a level dry face, reading glasses on a cord, sleeves pushed up, always folding something",
+      "group": "town",
+      "years": "1999–2003",
+      "comic_wardrobe": "a cardigan over a plain blouse",
+      "comic_props": "a towel mid-fold; the digest"
     },
     "motel_guest": {
       "file": "vol10_motel_guest.glb",
       "who": "a Driftwood Motel guest, 2 AM (2012)",
       "meshy_prompt": "man in a white hotel bathrobe and slippers, hair flat on one side, holding nothing, standing at a counter, low-poly stylized character",
-      "texture_prompt": "white terry bathrobe, gray slippers, matte flat colors"
+      "texture_prompt": "white terry bathrobe, gray slippers, matte flat colors",
+      "name": "THE GUEST"
     },
     "the_editor": {
       "file": "vol10_the_editor.glb",
       "who": "the editor (2026)",
       "meshy_prompt": "young woman late twenties, neat dark coat, tote bag over one shoulder, notebook in hand, standing looking up at something tall, low-poly stylized character",
-      "texture_prompt": "dark green coat, black tote, white notebook, matte flat colors"
+      "texture_prompt": "dark green coat, black tote, white notebook, matte flat colors",
+      "name": "THE EDITOR"
     },
     "tech_guest_1": {
       "file": "vol10_tech_guest_1.glb",
       "who": "wedding guest, tech (2014)",
       "meshy_prompt": "man early thirties in a slim navy suit no tie, holding a small glass of cider, animated talking posture, low-poly stylized character",
-      "texture_prompt": "navy suit, white shirt, brown shoes, matte flat colors"
+      "texture_prompt": "navy suit, white shirt, brown shoes, matte flat colors",
+      "name": "A WEDDING GUEST"
     },
     "tech_guest_2": {
       "file": "vol10_tech_guest_2.glb",
       "who": "wedding guest, tech (2014)",
       "meshy_prompt": "woman early thirties in a linen jumpsuit holding a glass of cider, listening posture with head tilted, low-poly stylized character",
-      "texture_prompt": "pale linen jumpsuit, gold sandals, matte flat colors"
+      "texture_prompt": "pale linen jumpsuit, gold sandals, matte flat colors",
+      "name": "A WEDDING GUEST"
+    },
+    "extra_uncle": {
+      "name": "THE UNCLE",
+      "who": "Gully's uncle, the bait shack's owner, 1998–2001; dead off-page Feb 2001",
+      "comic_identity": "weathered old fisherman, flat unreadable face, heavy brows, a crooked last finger on the left hand and a white winch scar across the right; sits on a crab pot, then from June 2000 in the green-webbed lawn chair; from July 2000 a thin oxygen line at his face",
+      "group": "gullys",
+      "years": "1998–2001",
+      "comic_wardrobe": "a rain hood up over a thirty-year-old canvas work coat with the cuffs gone; rubber boots"
+    },
+    "extra_owner_heceta": {
+      "name": "THE FRAME SHOP OWNER",
+      "who": "the owner of Heceta Frame & Matting, 2000–2011, and once in 2016",
+      "comic_identity": "woman in her fifties, then sixties, straight-backed, reading glasses (on a cord from 2011), a mouth that gives nothing away, hands that never stop working the mat cutter",
+      "group": "shop",
+      "years": "2000–2016",
+      "comic_wardrobe": "a work apron over a plain shirt, sleeves rolled; a pencil behind her ear"
+    },
+    "extra_print_tech": {
+      "name": "THE PRINT TECH",
+      "who": "the college print shop's technician, 1999–2001; worked a frame shop in Coos Bay once",
+      "comic_identity": "wiry man of forty with a gray crew cut and ink under his nails, a dry half-smile, leans on the copier like it's his",
+      "group": "town",
+      "years": "1999–2001",
+      "comic_wardrobe": "a canvas shop apron over a plaid shirt, sleeves rolled"
+    },
+    "extra_instructor": {
+      "name": "THE INSTRUCTOR",
+      "who": "Composition II at the coast community college, 1999–2001",
+      "comic_identity": "woman in her forties, sharp and unhurried, dark hair pulled back, reading glasses pushed up into it, a red pen that is not Chloe's",
+      "group": "town",
+      "years": "1999–2001",
+      "comic_wardrobe": "a blazer over a turtleneck, slacks",
+      "comic_props": "a stack of papers; a red pen"
+    },
+    "extra_clerk": {
+      "name": "THE CLERK",
+      "who": "the drugstore's clerk, 1998–2008; reads the digest, knows what seven postcards means",
+      "comic_identity": "thin young man who becomes a thin middle-aged man, long neck, glasses, a face that has read everything and says little",
+      "group": "town",
+      "years": "1998–2008",
+      "comic_wardrobe": "a drugstore's short-sleeved uniform shirt with a name tag drawn as a blank"
+    },
+    "extra_librarian": {
+      "name": "THE LIBRARIAN",
+      "who": "the town library's librarian, 1998–2022; a cardigan at the edge of the frame",
+      "comic_identity": "seen mostly as a cardigan at the edge of the panel: a woman of sixty with gray hair in a short bob and half-moon glasses, when the strip lets her face in",
+      "group": "town",
+      "years": "1998–2022",
+      "comic_wardrobe": "a long gray cardigan over a dark dress, flat shoes",
+      "comic_props": "a due-date stamp"
+    },
+    "extra_reader": {
+      "name": "THE READER",
+      "who": "the careful old hand: a woman in her sixties who reads at the laundromat's folding table and leaves notes in the rack, 1999–2008",
+      "comic_identity": "small woman in her sixties with white hair pinned up, a pen behind her ear, precise and unhurried; never named",
+      "group": "town",
+      "years": "1999–2008",
+      "comic_wardrobe": "a wool coat kept on indoors, a scarf",
+      "comic_props": "a folded clipping; a pen"
+    },
+    "extra_classmate": {
+      "name": "THE CLASSMATE",
+      "who": "a mill-jacket classmate at the community college, 1999",
+      "comic_identity": "heavyset man of fifty with a gray mustache and big careful hands",
+      "group": "town",
+      "years": "1999",
+      "comic_wardrobe": "a faded mill jacket with the mill's patch worn blank"
+    },
+    "extra_vet": {
+      "name": "THE VET",
+      "who": "the county vet, 1999–2023",
+      "comic_identity": "tall thin woman with cropped gray hair and a stethoscope, quick and kind",
+      "group": "town",
+      "years": "1999–2023",
+      "comic_wardrobe": "a white coat over a flannel shirt, rubber clogs",
+      "comic_props": "a stethoscope"
+    },
+    "extra_mechanic": {
+      "name": "THE MECHANIC",
+      "who": "the garage on 101, 2000",
+      "comic_identity": "squat man with a shaved head and a tilted-head listening habit, grease to the elbows",
+      "group": "town",
+      "years": "2000",
+      "comic_wardrobe": "coveralls, a rag in the back pocket"
+    },
+    "extra_flagger": {
+      "name": "THE FLAGGER",
+      "who": "the slough's flagger on 101, rain closures 1999–2010",
+      "comic_identity": "lanky man of indeterminate age in a rain hood, smokes with the sign under his arm, saw the water drop once in '96",
+      "group": "town",
+      "years": "1999–2010",
+      "comic_wardrobe": "orange rain gear, a reflective vest",
+      "comic_props": "a STOP/SLOW sign on a pole"
+    },
+    "extra_pastor": {
+      "name": "THE PASTOR",
+      "who": "the church whose bulletin shares the rack, 2000",
+      "comic_identity": "round older man with a soft face and a clerical collar under a raincoat",
+      "group": "town",
+      "years": "2000",
+      "comic_wardrobe": "a black raincoat over a collar",
+      "comic_props": "a church bulletin"
+    },
+    "extra_realtor": {
+      "name": "THE REALTOR",
+      "who": "the man whose real-estate flyer shares the rack, 2000",
+      "comic_identity": "man in his forties with a salesman's haircut and a windbreaker with a logo drawn blank",
+      "group": "town",
+      "years": "2000",
+      "comic_wardrobe": "a windbreaker, khakis",
+      "comic_props": "a stack of flyers"
+    },
+    "extra_fisherman": {
+      "name": "A FISHERMAN",
+      "who": "any of the town's fishermen passing on the seawall or at the launch",
+      "comic_identity": "a weathered man in his forties or sixties, unshaven, walks with a roll",
+      "group": "town",
+      "years": "1997–2027",
+      "comic_wardrobe": "rubber boots, a wool cap, a rain jacket"
+    },
+    "extra_kid": {
+      "name": "A KID",
+      "who": "a child of the town: in a sheet at Halloween, copying the dog at the laundromat, a face in the window's frame",
+      "comic_identity": "a child of eight or nine, gap-toothed, tongue out when concentrating",
+      "group": "town",
+      "years": "1999–2000",
+      "comic_wardrobe": "a too-big raincoat; at Halloween a bedsheet",
+      "comic_props": "a pillowcase; a pencil"
+    },
+    "extra_student": {
+      "name": "A STUDENT",
+      "who": "any student passing at the high school (1997–99) or the college (1999–2001)",
+      "comic_identity": "a teenager or a young adult, seen passing, never a face the strip keeps",
+      "group": "town",
+      "years": "1997–2026",
+      "comic_wardrobe": "a backpack, a hoodie"
+    },
+    "extra_couple": {
+      "name": "A COUPLE",
+      "who": "the town's couples at the frame shop counter: the 1971 wedding photo, the diploma's parents",
+      "comic_identity": "an older man and woman standing close, her hand on his arm, both weathered by the coast",
+      "group": "town",
+      "years": "2000–2023",
+      "comic_wardrobe": "Sunday clothes for a frame shop: a windbreaker, a cardigan",
+      "comic_props": "a photograph or a cardboard tube"
+    },
+    "extra_customer_1": {
+      "name": "A CUSTOMER",
+      "who": "a frame-shop customer: the fisherman with the fifty-year license, and others",
+      "comic_identity": "a coast man in his sixties with a license laminated fifty years, or whoever the day brings; heavy hands on the counter",
+      "group": "town",
+      "years": "2000–2011",
+      "comic_wardrobe": "a wool cap, a rain jacket",
+      "comic_props": "the thing to be framed"
+    },
+    "extra_tourists": {
+      "name": "TOURISTS",
+      "who": "every August's strangers, 2000–2027; from 2007 the stick figure on their shirts (drawn blank)",
+      "comic_identity": "people in matching fleece and sun hats with cameras, then phones, pleased with the fog",
+      "group": "town",
+      "years": "2000–2027",
+      "comic_wardrobe": "matching fleece, sun hats, roller bags",
+      "comic_props": "a camera; a map of the coast"
+    },
+    "extra_tourist": {
+      "name": "A TOURIST",
+      "who": "one August stranger, lost, with a map",
+      "comic_identity": "a woman in a sun hat squinting at a map",
+      "group": "town",
+      "years": "2001",
+      "comic_wardrobe": "a sun hat, a fleece",
+      "comic_props": "a map of the coast"
+    },
+    "extra_tourist_couple": {
+      "name": "A TOURIST COUPLE",
+      "who": "August 2000: matching fleece and a photograph of a whale that is a gray smudge",
+      "comic_identity": "a man and woman in their fifties in matching fleece, thrilled",
+      "group": "town",
+      "years": "2000",
+      "comic_wardrobe": "matching fleece vests, sun hats",
+      "comic_props": "a photograph of a gray smudge"
+    },
+    "extra_regulars": {
+      "name": "THE REGULARS",
+      "who": "three men on the tavern's stools since the mill closed, 2007",
+      "comic_identity": "three backs on three stools, caps, one with a braid down his back; the strip never turns them around",
+      "group": "town",
+      "years": "2007",
+      "comic_wardrobe": "work jackets, caps",
+      "comic_props": "three beers"
+    },
+    "extra_old_woman": {
+      "name": "AN OLD WOMAN",
+      "who": "the town's old women at the Grunion Run, 2003; everyone knows Gully",
+      "comic_identity": "a small old woman in a rain bonnet with a face that knows everyone",
+      "group": "town",
+      "years": "2003",
+      "comic_wardrobe": "a rain bonnet, a quilted coat",
+      "comic_props": "a paper cup"
+    },
+    "extra_grunion_queen": {
+      "name": "THE GRUNION QUEEN",
+      "who": "the festival's queen, 1998, waving from a flatbed",
+      "comic_identity": "a high-school girl in a sash and a paper crown, waving with the whole arm",
+      "group": "town",
+      "years": "1998",
+      "comic_wardrobe": "a sash lettered as blocks, a paper crown, a raincoat over a dress"
+    },
+    "extra_principal": {
+      "name": "THE PRINCIPAL",
+      "who": "the high school's principal, 1997–1999, reads the superlatives",
+      "comic_identity": "a bald man with a whistle on a lanyard and a voice drawn large",
+      "group": "town",
+      "years": "1997–1999",
+      "comic_wardrobe": "a short-sleeved shirt and tie",
+      "comic_props": "a microphone; a list"
+    },
+    "extra_mr_hadley": {
+      "name": "MR. HADLEY",
+      "who": "the journalism teacher, 1997",
+      "comic_identity": "a man of fifty with a mustache and a sweater vest, chalk in hand, lectures to the back row",
+      "group": "town",
+      "years": "1997",
+      "comic_wardrobe": "a sweater vest over a shirt and tie",
+      "comic_props": "chalk"
+    },
+    "extra_yearbook_photog": {
+      "name": "THE YEARBOOK PHOTOGRAPHER",
+      "who": "the yearbook's photographer, 1998",
+      "comic_identity": "a patient girl with a big camera and a bored face",
+      "group": "town",
+      "years": "1998",
+      "comic_wardrobe": "a hoodie, a camera strap",
+      "comic_props": "a camera"
+    },
+    "extra_bus_driver": {
+      "name": "THE BUS DRIVER",
+      "who": "the school bus's driver, 1998; delivered Truffaut at 7 AM",
+      "comic_identity": "a heavy woman with a permanent wave and eyes that never leave the road",
+      "group": "town",
+      "years": "1998",
+      "comic_wardrobe": "a quilted vest over a sweatshirt",
+      "comic_props": "the wheel"
+    },
+    "extra_cashier": {
+      "name": "THE CASHIER",
+      "who": "the grocery on 101, 1998",
+      "comic_identity": "a teenage girl chewing gum, unimpressed by Bresson",
+      "group": "town",
+      "years": "1998",
+      "comic_wardrobe": "a grocery apron",
+      "comic_props": "a can of soup; the register"
+    },
+    "extra_delivery": {
+      "name": "THE DELIVERY MAN",
+      "who": "the flatbed's driver who lowers the espresso machine, Nov 2002",
+      "comic_identity": "a big man in a back brace",
+      "group": "town",
+      "years": "2002",
+      "comic_wardrobe": "a delivery company's uniform shirt",
+      "comic_props": "a hand truck"
+    },
+    "extra_toddler": {
+      "name": "THE TODDLER",
+      "who": "a toddler at the derby, 2005, watching the pen with the dog's 2000 face",
+      "comic_identity": "a toddler in a snowsuit, absorbed",
+      "group": "town",
+      "years": "2005",
+      "comic_wardrobe": "a snowsuit, mittens on a string"
+    },
+    "extra_woman": {
+      "name": "A WOMAN",
+      "who": "a woman of the town, unnamed, at a window or a counter",
+      "comic_identity": "a woman in a rain shell, seen briefly",
+      "group": "town",
+      "years": "2000",
+      "comic_wardrobe": "a rain shell"
+    },
+    "extra_man": {
+      "name": "A MAN",
+      "who": "a man of the town, unnamed, in a rain hood",
+      "comic_identity": "a man in a rain hood, seen briefly",
+      "group": "town",
+      "years": "2000",
+      "comic_wardrobe": "a rain hood"
+    },
+    "extra_maria": {
+      "name": "MARIA",
+      "who": "Maria, Gully's wife, from 2006; a dark braid, county-issue rain shell; the head-shake that stops Gully",
+      "comic_identity": "practical woman with a dark braid and a level face, thirties then forties; checks the dog's leg with two fingers; says 'Arthur' once, Feb 2013",
+      "group": "gullys",
+      "years": "2006–2027",
+      "comic_wardrobe": "a county-issue rain shell, jeans, rubber boots; the braid over one shoulder"
+    },
+    "extra_gully_kid": {
+      "name": "GULLY'S DAUGHTER",
+      "who": "Gully and Maria's daughter, born 2010 (six in 2016, the girl on the dock in CEDAR); the baby brother born spring 2013 rides in the same id",
+      "comic_identity": "a small sturdy girl with her father's round face and her mother's braid, certain about everything; the baby brother a bundle in a snowsuit on Gully's shoulders",
+      "group": "gullys",
+      "years": "2010–2027",
+      "comic_wardrobe": "a red rain jacket, rubber boots",
+      "comic_props": "a marker; a red balloon"
+    },
+    "extra_julian": {
+      "name": "JULIAN",
+      "who": "Chloe's husband, 2006–2021: a parenthesis, drawn with deliberate neutrality",
+      "comic_identity": "a pleasant well-dressed man with nothing in his face on purpose: a gray coat on a hook (2009), a printed face on a holiday card (2011, 2016), in person once in linen (July 2014); never on a dock",
+      "group": "chloes",
+      "years": "2006–2021",
+      "comic_wardrobe": "a good gray coat; linen at the pavilion",
+      "withheld": true
+    },
+    "extra_mother": {
+      "name": "WOOD'S MOTHER",
+      "who": "Wood's mother, 1998–2003: a hand and a voice, never a face",
+      "comic_identity": "NEVER SHOWN: only a woman's hand with a plain ring and a cardigan cuff entering the frame to set something down, and a voice from a doorway that says 'Arthur'",
+      "group": "woods",
+      "years": "1998–2003",
+      "comic_wardrobe": "a cardigan cuff",
+      "comic_props": "a plate of toast",
+      "withheld": true
+    },
+    "extra_father": {
+      "name": "WOOD'S FATHER",
+      "who": "Wood's father, 2005: a back, never a face",
+      "comic_identity": "NEVER SHOWN FROM THE FRONT: a man's back in a faded mill jacket, walking slowly away or standing in a coffee line",
+      "group": "woods",
+      "years": "2005",
+      "comic_wardrobe": "a faded mill jacket",
+      "withheld": true
+    },
+    "extra_stick_chorus": {
+      "name": "THE CHORUS",
+      "who": "the comments section as stick figures at the back of the panel, 2004–2011; four of them get handles in RUST_CODE.BBS (vagrant wanders, cicada sings, moth circles the lamp, weir dams the pencil groove)",
+      "comic_identity": "crude ballpoint stick figures, round heads, no faces, two then four then six then twelve then thirty; they hold tiny signs and all turn to look at the dog",
+      "group": "chorus",
+      "years": "2004–2011",
+      "comic_props": "tiny signs; a tiny keyboard"
+    },
+    "extra_stick_hero": {
+      "name": "ROLFCOPTR",
+      "who": "the meme: a stick figure with a four-line helicopter rotor scribbled on its head, hovering six inches, Nov 2006 on",
+      "comic_identity": "a crude ballpoint stick figure with a four-line rotor on its head, hovering six inches above nothing, screaming acronyms; unsigned",
+      "group": "chorus",
+      "years": "2006–2014"
+    },
+    "extra_stick_two": {
+      "name": "A SECOND ROTOR",
+      "who": "the second stick figure with a rotor, Nov 15 2006",
+      "comic_identity": "a second crude stick figure with a rotor on its head, entering from the panel's edge",
+      "group": "chorus",
+      "years": "2006"
+    },
+    "extra_framer": {
+      "name": "THE FRAMER",
+      "who": "SLASH (2001–03): the frame shop's framer, who isn't Wood and has Wood's hands",
+      "comic_identity": "a man of forty with heavy-lidded eyes, a barber's mustache and a long jaw, hair combed back; ink-stained hands that are exactly Wood's, drawn the same",
+      "group": "slash",
+      "years": "2001–2003",
+      "comic_wardrobe": "a shop apron over a white shirt with the sleeves rolled; street shoes wrong for a boat",
+      "comic_props": "a mat cutter's blade"
+    },
+    "extra_green_coat": {
+      "name": "THE GREEN COAT",
+      "who": "SLASH: the woman with the photograph she won't let the framer see",
+      "comic_identity": "a woman in her thirties, tall, a hat brim low, a mouth drawn as one flat line; mostly her back and her gloved hands; the coat is green and the page is black and white, so it reads as the darkest shape on the page",
+      "group": "slash",
+      "years": "2001–2002",
+      "comic_wardrobe": "a long green wool coat (drawn as the darkest black), leather gloves, a hat with a brim",
+      "comic_props": "a photograph, face down"
+    },
+    "extra_sergeant": {
+      "name": "THE DESK SERGEANT",
+      "who": "SLASH: the Newport police's desk sergeant, a shoulder at the frame's edge",
+      "comic_identity": "a broad shoulder and a jaw at the frame's edge, a uniform's patch drawn blank; never a whole face",
+      "group": "slash",
+      "years": "2001",
+      "comic_wardrobe": "a police uniform shirt"
+    },
+    "extra_stranger": {
+      "name": "THE STRANGER",
+      "who": "THE FRONTIER WEEK (Small Wood, 1871): the stranger on a mule whose name is the town's",
+      "comic_identity": "a lean man under a hat brim pulled low, three days' stubble, a long jaw; a small dog trots beside him",
+      "group": "frontier",
+      "years": "1871 (drawn 2000)",
+      "comic_wardrobe": "a long duster to the boot, a low-crowned hat, a bandana",
+      "comic_props": "a mule; a card in his hatband, face down"
+    },
+    "extra_lapels": {
+      "name": "THE MAN WHO SMOOTHS HIS LAPELS",
+      "who": "a riverboat gambler in THE FRONTIER WEEK (2000), the man at Table 14 in THE SINKHOLE (2003) and on the motel TV in THE POMEGRANATE HOUR (2013): the same figure, quoted from another volume, never named",
+      "comic_identity": "a trim man in his fifties with slicked silver hair, a narrow smile and a habit of smoothing both lapels with both hands between everything he does; looks at the camera once",
+      "group": "backups",
+      "years": "2000–2013",
+      "comic_wardrobe": "a good dark suit or a gambler's good coat, a watch chain",
+      "comic_props": "a deck of cards"
+    },
+    "extra_painter": {
+      "name": "THE SIGN PAINTER",
+      "who": "THE FRONTIER WEEK: the painter on the ladder with one letter left",
+      "comic_identity": "a thin man with a brush in his teeth and paint on his knuckles",
+      "group": "frontier",
+      "years": "1871 (drawn 2000)",
+      "comic_wardrobe": "a painter's smock, a cap",
+      "comic_props": "a brush; a ladder"
+    },
+    "extra_surveyor": {
+      "name": "THE SURVEYOR",
+      "who": "THE FRONTIER WEEK: the surveyor whose map doesn't have the stone face",
+      "comic_identity": "a stout man with a chain over his shoulder and a stake in his fist, sure of his map",
+      "group": "frontier",
+      "years": "1871 (drawn 2000)",
+      "comic_wardrobe": "a waistcoat, a bowler",
+      "comic_props": "a surveyor's chain; a stake; a map"
+    },
+    "extra_mill_boss": {
+      "name": "THE MILL BOSS",
+      "who": "THE FRONTIER WEEK: the sawmill boss in shirtsleeves",
+      "comic_identity": "a thick man with a beard and rolled sleeves, gestures at ten thousand stumps",
+      "group": "frontier",
+      "years": "1871 (drawn 2000)",
+      "comic_wardrobe": "shirtsleeves, suspenders"
+    },
+    "extra_bartender": {
+      "name": "THE BARTENDER",
+      "who": "THE SINKHOLE's diner bartender behind the well since '83 (2003), and the bar in THE LONG WAY BACK (2010): turned away, wiping a glass",
+      "comic_identity": "a heavy man seen mostly from behind, bald crown, a white towel over one shoulder, never looks at the stool",
+      "group": "backups",
+      "years": "2003–2010",
+      "comic_wardrobe": "a white shirt, a black vest",
+      "comic_props": "a glass and a towel"
+    },
+    "extra_helmsman": {
+      "name": "THE HELMSMAN",
+      "who": "THE SINKHOLE: the man at the riverboat's wheel who doesn't let go",
+      "comic_identity": "a hatless man with both hands on a wheel as the deck tilts, face set",
+      "group": "sinkhole",
+      "years": "2003",
+      "comic_wardrobe": "a pilot's coat",
+      "comic_props": "the wheel"
+    },
+    "extra_diner_dog": {
+      "name": "THE DINER DOG",
+      "who": "THE SINKHOLE: a dog asleep under a booth, not the strip's dog",
+      "comic_identity": "a low brown dog asleep under a booth, no breed the strip names",
+      "group": "sinkhole",
+      "years": "2003"
+    },
+    "extra_host": {
+      "name": "THE HOST",
+      "who": "THE POMEGRANATE HOUR, 3 AM: the talk-show host at a table with a cassette deck, drawn in three strokes",
+      "comic_identity": "a woman of forty with a dark bob and a stillness, drawn in three strokes: the bob, the shoulders, the hand on the deck",
+      "group": "pomegranate",
+      "years": "2012–2014",
+      "comic_wardrobe": "a dark blouse, a brass-railed set behind her",
+      "comic_props": "a cassette deck; a phone handset"
+    },
+    "extra_lean_man": {
+      "name": "THE LEAN MAN",
+      "who": "THE LONG WAY BACK, stop XV: the lean man at the far end of the bar who looks back",
+      "comic_identity": "a lean man in a good jacket at a bar's far end, the only face in the sequence that looks straight at the viewer",
+      "group": "long_way_back",
+      "years": "2010",
+      "comic_wardrobe": "a good dark jacket"
+    },
+    "extra_logger": {
+      "name": "THE LOGGER",
+      "who": "CEDAR: the logger at a tailgate, certain about the slash pile",
+      "comic_identity": "a big man with a gray beard and a coffee, pointing up with the cup",
+      "group": "cedar",
+      "years": "2016–2017",
+      "comic_wardrobe": "a hickory shirt, suspenders, a hard hat on the tailgate",
+      "comic_props": "a coffee"
+    },
+    "extra_ring_woman": {
+      "name": "THE WOMAN WHO WAS A TREE",
+      "who": "CEDAR: the woman at the chained mill gate who remembers the year she was a cedar; drawn in cutaway with rings inside her, one ring notched",
+      "comic_identity": "a woman of sixty with a long gray plait and a face like bark, crouched to a dog; in cutaway her torso is tree rings with one notched",
+      "group": "cedar",
+      "years": "2017",
+      "comic_wardrobe": "a canvas work coat, rubber boots"
+    },
+    "extra_listener": {
+      "name": "THE LISTENER",
+      "who": "CEDAR: the man with a stethoscope to a cedar round, eyes closed",
+      "comic_identity": "a thin man of seventy with his eyes closed and a stethoscope pressed to wood, a knife in his other hand",
+      "group": "cedar",
+      "years": "2017",
+      "comic_wardrobe": "a wool coat, a knit cap",
+      "comic_props": "a stethoscope; a knife"
+    },
+    "extra_family": {
+      "name": "THE FAMILY",
+      "who": "CEDAR: the family at the table with the trunk at its head",
+      "comic_identity": "a mother, a father and two children eating around a cedar trunk, unbothered; ordinary faces the page keeps ordinary",
+      "group": "cedar",
+      "years": "2016–2017",
+      "comic_wardrobe": "kitchen clothes"
     }
   },
   "locales_needed": {

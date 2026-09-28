@@ -587,7 +587,20 @@ NAMES = {"barnaby_ii": "THE PUP (Barnaby II)", "barnaby": "BARNABY (the dog)", "
 _3D_ONLY = ("low-poly stylized character", "stylized character", "clean silhouette", "matte flat colors", "low-poly")
 
 
+_HERO_NAMES = None
+
+
 def hero_name(hid):
+    """The name the prompt uses: the hero entry's `name` (heroes_vol10.json),
+    else the built-in table, else the id upper-cased."""
+    global _HERO_NAMES
+    if _HERO_NAMES is None:
+        try:
+            _HERO_NAMES = {k: v["name"] for k, v in (load_heroes().get("heroes") or {}).items() if v.get("name")}
+        except (OSError, json.JSONDecodeError):
+            _HERO_NAMES = {}
+    if hid in _HERO_NAMES:
+        return _HERO_NAMES[hid]
     if hid in NAMES:
         return NAMES[hid]
     base = hid.split("_")[0]

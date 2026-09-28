@@ -114,6 +114,30 @@ a page says "fifty" check it against the year first.
 
 ## Recent lessons
 
+### 2026-09-28 · The cast beyond the three · every id gets an entry and a sheet
+
+**What was wrong.** 81 character ids in the strips; 23 had hero
+entries. The other 58 (the uncle, the frame-shop owner, the print
+tech, the instructor, the reader, Maria, the kids, and every
+backup-series figure) appeared in prompts only as a name in a
+panel's composition, so each render invented them. SLASH's framer
+came out as Wood; the uncle as any old man.
+
+**Rule.** If a strip's `characters[]` uses an id, `heroes_vol10.json`
+has it: `name` (what the prompt calls them), `comic_identity`,
+`comic_wardrobe`, `comic_props`, `group`, `years`. `hero_name()`
+reads `name` first. Withheld characters get an identity that says
+NEVER SHOWN and what is shown instead; the prompt carries that.
+Group sheets hold the minor people (a lineup, labeled) so one render
+covers a town's worth; each sheet's tags list every id on it so
+`select_refs` can score it for any strip they're in. The lore file
+(`style/characters.md`) is written first; the JSON copies it.
+
+**Redundancy guard.** `sheet_supporting` overlaps the new group
+sheets (Maria, the uncle, the owner); the scorer picks the higher
+tag match, and max_refs caps what attaches. If a character's two
+sheets disagree after rendering, reject one in REFS.
+
 ### 2026-09-28 · Deepening xix · the daily filled, Sept 1999 – Dec 2000 · 1,378 → 1,648
 
 **The ask.** "Fill out the strips with available dates, starting
