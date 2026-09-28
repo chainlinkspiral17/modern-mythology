@@ -1,0 +1,108 @@
+{
+  "id": "dw_2000-04-06_the_dog_in_the_engine_bay",
+  "title": "The dog in the engine bay",
+  "strip": "drift_wood",
+  "date": "2000-04-06",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Datsun",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The dog has been under the car all day and now smells of it. Exhaust, gravel, the uncle's can. Wood draws the smell as the wavy line he uses for kelp. The dog is proud. Nobody can be in the car with him.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "BARNABY sitting on the launch's gravel, black with grease on one side, a wavy line rising off him. WOOD looking at him.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small scruffy dog sitting on gravel with grease along one side and a wavy stink line rising from it, a young man regarding it, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The wavy line. The strip's kelp line, repurposed. Three of them.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a small dog's back with three wavy odor lines drawn rising from it, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The Datsun. Wood in the driver's seat. The dog on the passenger seat. All four windows down. April.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man driving a small car with every window down and a greasy small dog sitting proudly on the passenger seat, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "101 north, the Datsun, the windows, the wavy lines streaming behind it like a flag. The exhaust fixed. The car has a new problem and it's the dog.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small car on a coastal highway with all its windows down and wavy lines streaming back from it, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The kelp line, repurposed for grease. The dog is proud."
+}

@@ -1,0 +1,139 @@
+{
+  "id": "dw_2000-02-24_everyone_gets_mail",
+  "title": "Everyone gets mail",
+  "strip": "drift_wood",
+  "date": "2000-02-24",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Too Good For It",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Gully at the shack: 'Your mom says you got mail.' The town is four blocks. Wood says everyone gets mail. Gully says not from Portland. The uncle, from his pot, says Portland's a long way to send an envelope.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby",
+    "extra_uncle"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack. GULLY at the tank. WOOD in the door with BARNABY. The UNCLE on his pot.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_uncle",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Your mom says you got mail."
+        },
+        {
+          "who": "WOOD",
+          "text": "Everyone gets mail."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "inside a bait shack: a teenager at a bait tank, a young man in the doorway with a dog, an old man seated on a crab pot, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Gully, not looking up from the tank.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Not from Portland."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky teenager looking into a bait tank, plain, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The uncle.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "UNCLE",
+          "text": "Long way to send an envelope."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old weathered man on a crab pot, flat, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The shack. Three of them and the dog. Nobody says what's in it. Nobody has to; the town's four blocks and the mother's at the drugstore.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "three figures and a small dog inside a bait shack in gray light, nobody speaking, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Not from Portland.' The town is four blocks. (Three and a half by October.)"
+}

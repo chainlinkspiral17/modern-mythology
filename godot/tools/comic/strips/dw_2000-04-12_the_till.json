@@ -1,0 +1,146 @@
+{
+  "id": "dw_2000-04-12_the_till",
+  "title": "The till",
+  "strip": "drift_wood",
+  "date": "2000-04-12",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Help Wanted",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Gully offers the shack's till. Wood refuses before Gully finishes the sentence. Gully finishes it anyway: 'for the copies, not for you.' Wood still refuses. The uncle says take it; Wood says no to the uncle too, which nobody does. The uncle nods.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby",
+    "extra_uncle"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack. GULLY with the cash drawer open, a hand in it. WOOD in the door, already shaking his head. BARNABY. The UNCLE.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_uncle",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "For the copies—"
+        },
+        {
+          "who": "WOOD",
+          "text": "No."
+        },
+        {
+          "who": "GULLY",
+          "text": "—not for you."
+        },
+        {
+          "who": "WOOD",
+          "text": "No."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenager with his hand in an open cash drawer in a bait shack while a young man in the doorway shakes his head, an old man watching, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The uncle.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "UNCLE",
+          "text": "Take it."
+        },
+        {
+          "who": "WOOD",
+          "text": "No, sir."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old weathered man on a crab pot, flat, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Gully looking at Wood. Nobody says no to the uncle. The uncle looking at Wood too.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenager and an old man both looking at a young man in a doorway who has just refused, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The uncle nodding once. The drawer closing. That's it. Wood's no held, and the uncle liked it. The strip would rather have the nod than the money and says so by drawing the nod big.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old man giving a single nod, drawn large, as a teenager closes a cash drawer, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'No, sir.' Nobody says no to the uncle; the uncle nods."
+}

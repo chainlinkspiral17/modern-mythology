@@ -1,0 +1,132 @@
+{
+  "id": "dw_2000-01-03_double_ought",
+  "title": "Double ought",
+  "strip": "drift_wood",
+  "date": "2000-01-03",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "January, the Ought",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The first strip of the year. The margin date reads 1/3/00. The tech says it looks like a typo. Wood says the whole year does.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "extra_print_tech"
+  ],
+  "location": "dw_college_print_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "A strip's margin, close: the signature, the gull, the date: 1/3/00.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a comic strip's bottom margin with a signature, a small two-stroke bird and a handwritten date ending in two zeros, black and white, no words",
+        "negative": "",
+        "notes": "Letter after: A. Finch — Small Wood, OR · 1/3/00."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The print shop. The TECH holding it up. WOOD. BARNABY on the counter.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_print_tech",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "TECH",
+          "text": "Looks like a typo."
+        },
+        {
+          "who": "WOOD",
+          "text": "The whole year does."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a print technician holding a comic strip up to the light while a young man and a small dog on the counter wait, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The copier's light. The two zeros going by under the glass.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a photocopier's green light sweeping under a strip with two zeros in its margin, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood with the copies. The tech, after him.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "TECH",
+          "text": "You could write it out. Two thousand."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's not that kind of strip."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man leaving a print shop with a stack of copies as the technician calls after him, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'It's not that kind of strip.' The two-digit year, kept."
+}

@@ -1,0 +1,131 @@
+{
+  "id": "dw_2000-04-07_the_tailpipe_cover",
+  "title": "The tailpipe cover",
+  "strip": "drift_wood",
+  "date": "2000-04-07",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Datsun",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Friday. The cover is the Datsun's tailpipe with the uncle's clamp on it, close, and one clean puff. The owner says it's a pipe. Wood says it's the first thing he's fixed. She says he didn't fix it. He says he held the can.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "laundromat_owner"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "The cover: a tailpipe, a clamp, gravel, one clean puff of exhaust. Close.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a photocopied booklet cover showing a car's tailpipe with a clamp on it above gravel and one clean puff of exhaust, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The laundromat. The LAUNDRY owner. WOOD. BARNABY, still faintly wavy.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "laundromat_owner",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "LAUNDRY",
+          "text": "It's a pipe."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's the first thing I've fixed."
+        },
+        {
+          "who": "LAUNDRY",
+          "text": "You didn't fix it."
+        },
+        {
+          "who": "WOOD",
+          "text": "I held the can."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat owner holding a small booklet while a young man and a faintly smelly small dog wait, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The owner, sniffing. Looking at the dog.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat owner sniffing and looking down at a small dog with suspicion, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The rack. The pipe on the cover. The dog banished to the doorway by a look. The strip has a smell now and can't draw it, so it draws the look.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small booklet in a wire rack, and a small dog sitting in a laundromat's doorway having been sent there by a look, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'I held the can.' The dog, banished by a look."
+}

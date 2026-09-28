@@ -1,0 +1,144 @@
+{
+  "id": "dw_2000-03-27_the_realtor",
+  "title": "The realtor",
+  "strip": "drift_wood",
+  "date": "2000-03-27",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Who Draws These",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The man whose real-estate flyer shares the rack asks the owner who draws these. She says a boy. He says which boy. She says the one with the dog. He says he's seen the dog. Everyone's seen the dog.",
+  "cast": [
+    "laundromat_owner",
+    "extra_realtor",
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The laundromat. A REALTOR in a windbreaker restocking his flyer in the rack beside the digest. The LAUNDRY owner at the counter.",
+      "characters": [
+        {
+          "id": "laundromat_owner",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_realtor",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "REALTOR",
+          "text": "Who draws these."
+        },
+        {
+          "who": "LAUNDRY",
+          "text": "A boy."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man in a windbreaker restocking real-estate flyers in a wire rack beside small booklets in a laundromat while the owner watches, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The realtor, with one open.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "REALTOR",
+          "text": "Which boy."
+        },
+        {
+          "who": "LAUNDRY",
+          "text": "The one with the dog."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man in a windbreaker reading a small photocopied booklet with a puzzled face, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The realtor.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "REALTOR",
+          "text": "I've seen the dog."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man in a windbreaker, realizing, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The window. Outside, small, WOOD and BARNABY passing on the sidewalk, not looking in. The realtor looking. Everyone's seen the dog.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "through a laundromat window: a young man and a small dog passing on the sidewalk while a man inside watches them, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'The one with the dog.' The dog is how the town knows him."
+}

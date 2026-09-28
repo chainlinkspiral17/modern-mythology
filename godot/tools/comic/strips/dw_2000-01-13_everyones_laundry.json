@@ -1,0 +1,116 @@
+{
+  "id": "dw_2000-01-13_everyones_laundry",
+  "title": "Everyone's laundry",
+  "strip": "drift_wood",
+  "date": "2000-01-13",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Rain",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Four days of rain and the laundromat is full: every dryer, every chair, the whole town's wet clothes. A room of readers. The digest goes hand to hand. Wood watches from the folding table and doesn't draw them. He can't draw a whole town at once yet.",
+  "cast": [
+    "extra_kid",
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The laundromat packed: every dryer turning, every chair taken, baskets on the floor, coats steaming. Faces of every age.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a crowded small-town laundromat with every dryer turning and every chair taken, wet coats steaming, people of every age, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "A digest going from a woman to a man to a KID. Three readers in one panel.",
+      "characters": [
+        {
+          "id": "extra_kid",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small photocopied booklet being passed from a woman to a man to a child in a crowded laundromat, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "WOOD at the folding table with the pad. Not drawing. Watching a whole room read.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man at a laundromat folding table holding a pen over a blank pad, watching a crowded room, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The room again. Wood small in it. BARNABY under the table. The strip is one panel behind the room and knows it.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a crowded laundromat seen from the door with a young man small at a folding table and a small dog beneath it, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "A whole room reading. He can't draw a town at once yet. 2004 will."
+}
