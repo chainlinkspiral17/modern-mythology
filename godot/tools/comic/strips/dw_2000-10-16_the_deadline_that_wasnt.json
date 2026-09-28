@@ -157,5 +157,8 @@
     "palette": "",
     "paper": "newsprint / the digest"
   },
-  "notes": "Chloe cites the yearbook (#18). The strip cites itself for the first time."
+  "notes": "Chloe cites the yearbook (#18). The strip cites itself for the first time.",
+  "wardrobe": {
+    "chloe_17": "the fragile tee"
+  }
 }

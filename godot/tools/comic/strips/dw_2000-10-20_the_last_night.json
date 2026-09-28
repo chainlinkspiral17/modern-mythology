@@ -177,5 +177,8 @@
     "palette": "",
     "paper": "newsprint / the digest"
   },
-  "notes": "He says he won't come. The oversized cover shows him there."
+  "notes": "He says he won't come. The oversized cover shows him there.",
+  "wardrobe": {
+    "chloe_17": "c.hill tee"
+  }
 }

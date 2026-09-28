@@ -153,5 +153,8 @@
     "paper": ""
   },
   "notes": "Wood's answer is illegible on purpose. Chloe's is blank again.",
-  "layout": "2x2"
+  "layout": "2x2",
+  "wardrobe": {
+    "chloe_17": "oasis tee"
+  }
 }

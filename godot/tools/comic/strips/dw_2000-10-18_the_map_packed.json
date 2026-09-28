@@ -141,5 +141,8 @@
     "palette": "",
     "paper": "newsprint / the digest"
   },
-  "notes": "The map in the pocket you reach into on a bus. 'I'll find out which half.'"
+  "notes": "The map in the pocket you reach into on a bus. 'I'll find out which half.'",
+  "wardrobe": {
+    "chloe_17": "andy warhol tee"
+  }
 }

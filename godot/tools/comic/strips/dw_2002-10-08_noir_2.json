@@ -131,5 +131,9 @@
     "palette": "",
     "paper": "newsprint / the digest"
   },
-  "notes": "Captions only. 'A letter I'd used as a coaster.' The dog's absence drawn."
+  "notes": "Captions only. 'A letter I'd used as a coaster.' The dog's absence drawn.",
+  "wardrobe": {
+    "wood_20": "noir dectective attire with fedora",
+    "chloe_17": "rural femme fatale"
+  }
 }

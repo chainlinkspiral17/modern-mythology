@@ -153,5 +153,8 @@
     "paper": ""
   },
   "notes": "The strip is drawn larger this month. It says it doesn't care.",
-  "layout": "2x2"
+  "layout": "2x2",
+  "wardrobe": {
+    "chloe_17": "goth tee"
+  }
 }

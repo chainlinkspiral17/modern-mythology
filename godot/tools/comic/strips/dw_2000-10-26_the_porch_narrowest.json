@@ -148,5 +148,8 @@
     "palette": "",
     "paper": "newsprint / the digest"
   },
-  "notes": "Four panels narrowing to a line. 'I could.'"
+  "notes": "Four panels narrowing to a line. 'I could.'",
+  "wardrobe": {
+    "chloe_17": "small wood tee"
+  }
 }

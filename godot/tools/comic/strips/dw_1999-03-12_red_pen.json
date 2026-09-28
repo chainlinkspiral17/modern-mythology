@@ -185,5 +185,8 @@
     "paper": ""
   },
   "notes": "The crab mark: the first time he uses it; it comes back facing away on the Greyhound cover.",
-  "layout": "2x2"
+  "layout": "2x2",
+  "wardrobe": {
+    "chloe_17": "mazzy star hoodie"
+  }
 }

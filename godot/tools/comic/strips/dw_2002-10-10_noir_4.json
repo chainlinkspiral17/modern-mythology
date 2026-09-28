@@ -119,5 +119,8 @@
     "palette": "",
     "paper": "newsprint / the digest"
   },
-  "notes": "The case: the dog. The hat off. The empty caption box."
+  "notes": "The case: the dog. The hat off. The empty caption box.",
+  "wardrobe": {
+    "wood_20": "noir detective fedora"
+  }
 }

@@ -162,5 +162,8 @@
     "paper": ""
   },
   "notes": "The map of a city he'll never live in. She keeps it. The strip will remember the envelope in 2021.",
-  "layout": "2x2"
+  "layout": "2x2",
+  "wardrobe": {
+    "chloe_17": "chill tee"
+  }
 }
