@@ -114,6 +114,31 @@ a page says "fifty" check it against the year first.
 
 ## Recent lessons
 
+### 2026-09-28 · Reference images pin the outfit too · split identity from wardrobe
+
+**What happened.** Once the character sheets attached, the opposite
+drift showed: Chloe in the camel coat with the mug in every strip,
+whatever the scene, because the sheet is one drawing of one outfit and
+the prompt said "match that face, build, hair and clothes exactly".
+
+**Rule.** A reference sheet pins face, hair and build. Nothing else.
+Clothes and props are per strip, written in words:
+- `heroes_vol10.json` has `comic_identity` (what the cast block and
+  the reference hold), `comic_wardrobe` (fallback only, "usually
+  wears") and `comic_props` (never automatic).
+- The prompt says clothes, hair-dos and anything held come from the
+  strip text, never the sheet; hands empty unless a panel names it.
+- Strip JSON: `wardrobe: {hero_id: "…"}` at top level (the inspector's
+  *wardrobe for this strip* row edits it), and `characters[].wear` /
+  `characters[].holds` per panel. Validator checks the ids.
+- When the panels already mention clothing, the prompt adds no
+  "usually wears" at all: the panel text wins.
+
+**Also this session.** An uploaded character image now becomes the
+character's existing sheet (`sheet_gully_35`, take `_u1`) instead of a
+second reference entry beside it; the header shows the git build so a
+stale tab is obvious.
+
 ### 2026-09-27 · Character drift · the prompt named the cast and never described it
 
 The user's renders had Gully as a small boy. The whole-strip prompt

@@ -6,91 +6,119 @@
       "who": "Wood at 17 (1997-1999)",
       "meshy_prompt": "gaunt teenage boy, slouching posture, oversized thrift-store wool overcoat to the knees, thin neck, sharp jaw, unkempt dark hair falling forward, clutching a bristol board drawing pad flat against his chest like a shield, worn sneakers, T-pose-free relaxed standing pose, low-poly stylized character, clean silhouette",
       "texture_prompt": "charcoal gray wool overcoat, faded black t-shirt, dark jeans, pale skin, matte, flat colors, no logos",
-      "comic_look": "gaunt boy drawn a head too tall, oversized thrift-store wool overcoat to the knee worn indoors, faded black tee, dark jeans, sneakers, a bristol pad clutched flat to his chest, chin up"
+      "comic_look": "gaunt boy drawn a head too tall, oversized thrift-store wool overcoat to the knee worn indoors, faded black tee, dark jeans, sneakers, a bristol pad clutched flat to his chest, chin up",
+      "comic_identity": "gaunt boy drawn a head too tall, chin up, unkempt dark hair falling forward, sharp jaw",
+      "comic_wardrobe": "oversized thrift-store wool overcoat to the knee worn even indoors, faded black tee, dark jeans, sneakers",
+      "comic_props": "a bristol drawing pad"
     },
     "wood_20": {
       "file": "vol10_wood_20.glb",
       "who": "Wood at 20-23 (2000-2003)",
       "meshy_prompt": "thin young man early twenties, slouching, oversized brown canvas chore coat, dark hair longer and uncombed, three days stubble, holding a dull utility knife loosely at his side, work boots, standing relaxed, low-poly stylized character, clean silhouette",
       "texture_prompt": "faded brown canvas chore coat, gray thermal shirt, dark jeans, matte flat colors",
-      "comic_look": "thin young man with a slouch, three days' stubble, hair longer, brown canvas chore coat with a frayed cuff and one mismatched button, hands always in its pockets"
+      "comic_look": "thin young man with a slouch, three days' stubble, hair longer, brown canvas chore coat with a frayed cuff and one mismatched button, hands always in its pockets",
+      "comic_identity": "thin young man with a slouch, three days' stubble, dark hair grown longer",
+      "comic_wardrobe": "brown canvas chore coat with a frayed cuff and one mismatched button, hands in its pockets, plain tee, dark jeans"
     },
     "wood_26": {
       "file": "vol10_wood_26.glb",
       "who": "Wood at 24-31 (2004-2011)",
       "meshy_prompt": "thin man mid twenties, hunched shoulders, bloodshot tired face, unshaven, black hoodie open over a band t-shirt, hair a mess, fingers ink-stained, standing slightly turned as if toward a screen, low-poly stylized character",
       "texture_prompt": "black hoodie, dark gray band tee with faded eagle graphic, dark jeans, ink stains on right hand, matte flat colors",
-      "comic_look": "thin man, hunched, unshaven, tired bloodshot eyes, black hoodie open over a faded band tee, the brown chore coat outdoors, ink on his right knuckle"
+      "comic_look": "thin man, hunched, unshaven, tired bloodshot eyes, black hoodie open over a faded band tee, the brown chore coat outdoors, ink on his right knuckle",
+      "comic_identity": "thin man, hunched, unshaven, tired bloodshot eyes, ink on his right knuckle",
+      "comic_wardrobe": "black hoodie open over a faded band tee; the brown chore coat outdoors; dark jeans"
     },
     "wood_34": {
       "file": "vol10_wood_34.glb",
       "who": "Wood at 32-40 (2012-2020)",
       "meshy_prompt": "lean man mid thirties, hairline beginning to recede, weathered face, sharp jaw, blue plaid flannel shirt open over a dark t-shirt, jeans, worn brown boots, thickened drawing hands, standing with weight on one leg, low-poly stylized character, clean silhouette",
       "texture_prompt": "blue and gray plaid flannel, dark band tee, faded blue jeans, brown leather boots, matte flat colors",
-      "comic_look": "lean man, hairline beginning to recede, weathered jaw, thickened drawing hands, blue plaid flannel open over a dark band tee, faded jeans, worn brown boots"
+      "comic_look": "lean man, hairline beginning to recede, weathered jaw, thickened drawing hands, blue plaid flannel open over a dark band tee, faded jeans, worn brown boots",
+      "comic_identity": "lean man, hairline beginning to recede, weathered jaw, thickened drawing hands",
+      "comic_wardrobe": "blue plaid flannel open over a dark band tee, faded jeans, worn brown boots"
     },
     "wood_44": {
       "file": "vol10_wood_44.glb",
       "who": "Wood at 41-47 (2021-2027) — the concept sheet",
       "meshy_prompt": "man mid forties, receding hairline with unkempt brown hair at the sides, stubble, tired kind eyes, blue plaid flannel open over a dark band t-shirt, ripped jeans, worn brown boots, slight forward stoop, quiet posture, low-poly stylized character, matches a watercolor comic character sheet",
       "texture_prompt": "blue plaid flannel, charcoal band tee with faded wing graphic, faded ripped jeans, brown boots, muted watercolor-like flat colors",
-      "comic_look": "man with a receding hairline and unkempt brown hair at the sides, stubble, tired kind eyes, blue plaid flannel, ripped jeans, boots, a slight forward stoop; usually drawn from behind"
+      "comic_look": "man with a receding hairline and unkempt brown hair at the sides, stubble, tired kind eyes, blue plaid flannel, ripped jeans, boots, a slight forward stoop; usually drawn from behind",
+      "comic_identity": "man with a receding hairline and unkempt brown hair at the sides, stubble, tired kind eyes, a slight forward stoop; usually drawn from behind",
+      "comic_wardrobe": "blue plaid flannel, ripped jeans, boots"
     },
     "chloe_17": {
       "file": "vol10_chloe_17.glb",
       "who": "the strip's Chloe at 17 (1997-1999)",
       "meshy_prompt": "teenage girl, sharp intelligent face, smudged heavy black eyeliner, dark straight hair to the shoulders, oversized dark cardigan, portable CD player clipped to her belt with headphones around her neck, a paperback in one hand with the cover folded back, standing, low-poly stylized character, clean silhouette",
       "texture_prompt": "black cardigan, gray t-shirt, dark jeans, silver Discman, matte flat colors",
-      "comic_look": "teenage girl with a sharp intelligent face, smudged heavy black eyeliner, straight dark hair to the shoulders, oversized dark cardigan, a Discman on her belt with headphones around her neck, a folded-back paperback, reads while talking"
+      "comic_look": "teenage girl with a sharp intelligent face, smudged heavy black eyeliner, straight dark hair to the shoulders, oversized dark cardigan, a Discman on her belt with headphones around her neck, a folded-back paperback, reads while talking",
+      "comic_identity": "teenage girl with a sharp intelligent face, smudged heavy black eyeliner, straight dark hair to the shoulders",
+      "comic_wardrobe": "oversized dark cardigan over a band tee, dark jeans, scuffed boots",
+      "comic_props": "a Discman on her belt with headphones around her neck; a folded-back paperback"
     },
     "chloe_28": {
       "file": "vol10_chloe_28.glb",
       "who": "the strip's Chloe at 28 (2008)",
       "meshy_prompt": "woman late twenties, sharp face, dark hair cut short and expensive, long camel wool coat, city boots, one hand in coat pocket, standing straight, low-poly stylized character",
       "texture_prompt": "camel wool coat, black turtleneck, dark trousers, matte flat colors",
-      "comic_look": "woman with a sharp face, dark hair cut short and expensive, a camel wool coat, city boots, the eyeliner lighter, one hand in the coat pocket"
+      "comic_look": "woman with a sharp face, dark hair cut short and expensive, a camel wool coat, city boots, the eyeliner lighter, one hand in the coat pocket",
+      "comic_identity": "woman with a sharp face, dark hair cut short and expensive, the eyeliner lighter",
+      "comic_wardrobe": "a camel wool coat outdoors, dark city clothes under it, city boots"
     },
     "chloe_34": {
       "file": "vol10_chloe_34.glb",
       "who": "the strip's Chloe at 34 (2014)",
       "meshy_prompt": "woman mid thirties, tailored gray cashmere sweater, slim dark trousers, dark hair pinned up, tired elegant face, holding a pair of high heels in one hand, barefoot, standing, low-poly stylized character",
       "texture_prompt": "light gray cashmere, charcoal trousers, pale skin, matte flat colors",
-      "comic_look": "woman with dark hair pinned up, tailored gray cashmere sweater, slim dark trousers, a plain ring with a small stone, faint eyeliner, straight posture, holds a cup with both hands"
+      "comic_look": "woman with dark hair pinned up, tailored gray cashmere sweater, slim dark trousers, a plain ring with a small stone, faint eyeliner, straight posture, holds a cup with both hands",
+      "comic_identity": "woman with a sharp face, dark hair pinned up, faint eyeliner, straight posture, a plain ring with a small stone",
+      "comic_wardrobe": "tailored gray cashmere sweater, slim dark trousers"
     },
     "chloe_44": {
       "file": "vol10_chloe_44.glb",
       "who": "the strip's Chloe at 44 (2024-2027)",
       "meshy_prompt": "woman mid forties, dark hair with gray, no makeup, worn navy rain jacket, jeans, rubber boots, holding a ceramic mug in both hands, sitting-or-standing neutral pose, low-poly stylized character",
       "texture_prompt": "navy rain jacket, gray sweater, dark jeans, olive rubber boots, white ceramic mug, matte flat colors",
-      "comic_look": "woman with dark hair streaked gray and no makeup, a worn navy rain jacket, jeans, olive rubber boots, a ceramic mug held in both hands, clear unhurried face"
+      "comic_look": "woman with dark hair streaked gray and no makeup, a worn navy rain jacket, jeans, olive rubber boots, a ceramic mug held in both hands, clear unhurried face",
+      "comic_identity": "woman with a sharp face, dark hair streaked gray, no makeup, clear unhurried face",
+      "comic_wardrobe": "a worn navy rain jacket outdoors, jeans, olive rubber boots; a sweater indoors"
     },
     "gully_17": {
       "file": "vol10_gully_17.glb",
       "who": "the strip's Gully at 17 (1997-1999)",
       "meshy_prompt": "stocky teenage boy, backwards baseball cap, round easy face, muddy work boots, hooded sweatshirt, hands in the front pocket, relaxed slouch, low-poly stylized character, clean silhouette",
       "texture_prompt": "faded green hoodie, dirty tan work boots, blue cap worn backwards, matte flat colors",
-      "comic_look": "stocky boy with a round face, backwards blue cap, faded green hoodie with his hands in the front pocket, muddy tan work boots, easy slouch"
+      "comic_look": "stocky boy with a round face, backwards blue cap, faded green hoodie with his hands in the front pocket, muddy tan work boots, easy slouch",
+      "comic_identity": "stocky boy with a round face, easy slouch",
+      "comic_wardrobe": "backwards blue cap, faded green hoodie, muddy tan work boots"
     },
     "gully_27": {
       "file": "vol10_gully_27.glb",
       "who": "the strip's Gully at 23-31 (2003-2011)",
       "meshy_prompt": "stocky man late twenties, backwards cap, rubber apron over a flannel, sleeves pushed up, forearms thick, holding two wax-paper grease sacks, easy grin, standing square, low-poly stylized character",
       "texture_prompt": "red plaid flannel, black rubber apron, blue cap, tan work boots, matte flat colors",
-      "comic_look": "stocky man, backwards cap, the uncle's black rubber apron over a red plaid flannel, sleeves pushed up, thick forearms, behind the counter with both hands on it"
+      "comic_look": "stocky man, backwards cap, the uncle's black rubber apron over a red plaid flannel, sleeves pushed up, thick forearms, behind the counter with both hands on it",
+      "comic_identity": "stocky man with a round face, thick forearms, sleeves pushed up",
+      "comic_wardrobe": "backwards cap, red plaid flannel; the uncle's black rubber apron over it only behind the counter"
     },
     "gully_35": {
       "file": "vol10_gully_35.glb",
       "who": "the strip's Gully at 32-40 (2012-2020)",
       "meshy_prompt": "stocky man mid thirties, faded brown canvas work jacket with the hood down, backwards cap, weathered friendly face, hands shoved deep in jacket pockets, breath-in-cold posture, low-poly stylized character",
       "texture_prompt": "faded brown canvas work jacket, gray hoodie under, jeans, tan boots, matte flat colors",
-      "comic_look": "stocky man, backwards cap, faded brown canvas work jacket with the hood down over a gray hoodie; the black rubber apron over it when he is behind the counter; walks away with his hands in his pockets"
+      "comic_look": "stocky man, backwards cap, faded brown canvas work jacket with the hood down over a gray hoodie; the black rubber apron over it when he is behind the counter; walks away with his hands in his pockets",
+      "comic_identity": "stocky man with a round face, thick forearms, the beginnings of a beard",
+      "comic_wardrobe": "backwards cap, faded brown canvas work jacket with the hood down over a gray hoodie; the black rubber apron over it only behind the counter"
     },
     "gully_48": {
       "file": "vol10_gully_48.glb",
       "who": "the strip's Gully at 41-48 (2021-2027)",
       "meshy_prompt": "heavyset man late forties, gray in the beard, no cap, thick shoulders, flannel and a fleece vest, standing on a dock with one hand raised as if pointing at the water, low-poly stylized character",
       "texture_prompt": "green flannel, black fleece vest, jeans, rubber boots, matte flat colors",
-      "comic_look": "heavyset man, gray in the beard, no cap, thick shoulders, green flannel and a black fleece vest, jeans, rubber boots, a mug"
+      "comic_look": "heavyset man, gray in the beard, no cap, thick shoulders, green flannel and a black fleece vest, jeans, rubber boots, a mug",
+      "comic_identity": "heavyset man, round face, gray in the beard, no cap, thick shoulders",
+      "comic_wardrobe": "green flannel and a black fleece vest, jeans, rubber boots"
     },
     "barnaby": {
       "file": "vol10_barnaby.glb",
