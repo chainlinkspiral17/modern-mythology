@@ -53,12 +53,15 @@
       "caption": "",
       "sfx": "",
       "image": {
-        "prompt": "the back of a postcard drawn in ink, a divided back with an address side and a message side, the handwriting rendered as strokes with one word left legible, a small stamp with a tiny numeral in its corner, a crossed-out line of strokes beneath the message, no words legible but one",
+        "prompt": "the back of a postcard drawn in ink, a divided back with an address side and a message side, the handwriting rendered as strokes with one word left legible, a small stamp with a tiny numeral in its corner, a crossed-out line of strokes beneath the message, the only legible word on the card is here",
         "negative": "",
         "notes": "The crossed-out line: reserved. The first four words: the sentence the canon's 2008 postcard already said. The one legible word: here. Stamp numeral: III."
       },
       "stage": null,
-      "name": "Back"
+      "name": "Back",
+      "lettering": [
+        "here"
+      ]
     }
   ],
   "art": {

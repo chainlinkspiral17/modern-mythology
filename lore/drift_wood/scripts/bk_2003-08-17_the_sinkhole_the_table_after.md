@@ -1,6 +1,7 @@
 # THE SINKHOLE · The table, after
 
 `bk_2003-08-17_the_sinkhole_the_table_after` · **BACKUP** · 2003-08-17 · page (no grid unless stated) · run 2 · The High School Zine Era · tier B · selection full
+Backup feature: **THE SINKHOLE** — a Sunday page from a paper he never drew for · found in Box 5 · page 3 of 4
 Venue: The Unprinted · a Sunday page from a paper he never drew for, found in Box 5 in the private years · arc: *THE SINKHOLE* · backup series: **THE SINKHOLE**
 
 *The third found page: the diner the morning after, Table 14 set and empty, a coffee poured for it, a bartender who has worked there since '83 not looking at it, and the dog under the booth looking at the door. The page Wood will draw with a stool and a saucer, years later, without having seen this. Or having.*
@@ -15,20 +16,43 @@ Cast: `extra_bartender`, `extra_diner_dog`
 
 ## Panel 1
 
-*single page.* A full Sunday page in three tiers: a diner in morning light with one numbered table set and empty and a full coffee before its chair; a bartender behind the well wiping a glass with his back to the table; a dog under a booth looking at the door.
-
-- **extra_bartender** · back to the table
-- **extra_diner_dog** · looking at the door
-
-Props: Table 14, set; a full coffee
+*wide tier.* Tier 1: the diner in morning light, the door open, the stools empty, one numbered table in the middle set and empty with a full coffee before its chair.
 
 <details><summary>image generation</summary>
 
-**prompt.** black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones, black and white comic page, brush-pen over blue pencil, stark black spotting, a full comic page in three tiers showing a diner in morning light with one numbered table set and empty and a full coffee before its chair, a bartender wiping a glass with his back to it, and a dog under a booth watching the door, no text, no lettering, no speech balloons, no signature
+**prompt.** black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones, black and white Sunday comic page in a brush line almost the strip's own, a diner in morning light with empty stools and one numbered table set and empty with a full coffee before its chair, no text, no lettering, no speech balloons, no signature
 
 **negative.** color, gray gradients, photorealistic, 3D render, smooth digital line, text, letters, watermark, signature, extra fingers
 
-**notes.** Vol 5: Sammy behind the well since '83. Compare canon dw_2005-07-05 (the saucer over the coffee) and ro_2021-06-09 (the coffee poured). Which came first: reserved.
+**notes.** Table 14, set.
+
+</details>
+
+## Panel 2
+
+*medium tier.* Tier 2: the bartender behind the well wiping a glass with his back to the table, the mirror behind him showing the table and not him.
+
+<details><summary>image generation</summary>
+
+**prompt.** black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones, black and white Sunday comic page in a brush line almost the strip's own, a bartender behind a bar well wiping a glass with his back turned, the mirror behind him reflecting an empty set table, no text, no lettering, no speech balloons, no signature
+
+**negative.** color, gray gradients, photorealistic, 3D render, smooth digital line, text, letters, watermark, signature, extra fingers
+
+**notes.** Since '83. Not looking.
+
+</details>
+
+## Panel 3
+
+*wide tier.* Tier 3: under the booth, the dog awake now, looking at the open door; the coffee's steam the only movement on the page.
+
+<details><summary>image generation</summary>
+
+**prompt.** black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones, black and white Sunday comic page in a brush line almost the strip's own, a dog under a diner booth looking toward an open door, steam rising from a single coffee cup on an empty table, no text, no lettering, no speech balloons, no signature
+
+**negative.** color, gray gradients, photorealistic, 3D render, smooth digital line, text, letters, watermark, signature, extra fingers
+
+**notes.** The page Wood will draw with a stool and a saucer, years later. Or having.
 
 </details>
 
@@ -36,7 +60,7 @@ Props: Table 14, set; a full coffee
 
 <details><summary>whole-strip prompt (concept run)</summary>
 
-**prompt.** a single full-page comic drawing (1 panels). Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. Title of the strip: BACKUP. The strip: The third found page: the diner the morning after, Table 14 set and empty, a coffee poured for it, a bartender who has worked there since '83 not looking at it, and the dog under the booth looking at the door. The page Wood will draw with a stool and a saucer, years later, without having seen this. Or having. Panel 1: black and white comic page, brush-pen over blue pencil, stark black spotting, a full comic page in three tiers showing a diner in morning light with one numbered table set and empty and a full coffee before its chair, a bartender wiping a glass with his back to it, and a dog under a booth watching the door. No dialogue in this panel. Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; no words other than the ones given.
+**prompt.** a single full-page comic drawing (3 panels). Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. Series device: brush-pen, committed; xerox; black and white — but the line is not quite his. Palette: black and white. Page layout: three tiers. Backup feature: THE SINKHOLE — a Sunday page from a paper he never drew for · found in Box 5 (weird), page 3 of 4: "THE SINKHOLE · The table, after". The page: The third found page: the diner the morning after, Table 14 set and empty, a coffee poured for it, a bartender who has worked there since '83 not looking at it, and the dog under the booth looking at the door. The page Wood will draw with a stool and a saucer, years later, without having seen this. Or having. Panel 1: black and white Sunday comic page in a brush line almost the strip's own, a diner in morning light with empty stools and one numbered table set and empty with a full coffee before its chair. No dialogue in this panel. Panel 2: black and white Sunday comic page in a brush line almost the strip's own, a bartender behind a bar well wiping a glass with his back turned, the mirror behind him reflecting an empty set table. No dialogue in this panel. Panel 3: black and white Sunday comic page in a brush line almost the strip's own, a dog under a diner booth looking toward an open door, steam rising from a single coffee cup on an empty table. No dialogue in this panel. Running head: the title small in the same florid serif at the top of the page with a section page number, the fold crease beneath it, lettering "THE SINKHOLE" and the page number 3. Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; no words other than the ones given. Any writing the description calls shapes, strokes or blocks is illegible marks, never real letters.
 
 **negative.** color, gray gradients, photorealistic, 3D render, smooth digital line, watermark, extra fingers
 

@@ -53,12 +53,15 @@
       "caption": "",
       "sfx": "",
       "image": {
-        "prompt": "the back of a postcard drawn in ink, a divided back with an address side and a message side, the handwriting rendered as strokes with one word left legible, a small stamp with a tiny numeral in its corner, a crooked stamp, no words legible but one",
+        "prompt": "the back of a postcard drawn in ink, a divided back with an address side and a message side, the handwriting rendered as strokes with one word left legible, a small stamp with a tiny numeral in its corner, a crooked stamp, the only legible word on the card is far",
         "negative": "",
         "notes": "'Wish you were here. It's far.' (canon: dw_2008-10-01, Gully's card). The strangers arrive at the canon's sentence by the sixth card. The one legible word: far. Stamp numeral: V."
       },
       "stage": null,
-      "name": "Back"
+      "name": "Back",
+      "lettering": [
+        "far"
+      ]
     }
   ],
   "art": {

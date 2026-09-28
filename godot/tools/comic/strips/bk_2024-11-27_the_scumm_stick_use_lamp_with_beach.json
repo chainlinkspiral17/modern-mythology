@@ -35,11 +35,21 @@
       "caption": "",
       "sfx": "",
       "image": {
-        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a page laid out like an old point-and-click adventure screen with a scene in the upper two-thirds, a row of verbs in a monospaced hand beneath it with one marked, and a strip of small drawn inventory objects along the bottom, a night beach with a surf line and two lanterns and an empty outlined patch of sand with a small cursor over it, a green swing-arm lamp drawn small in an inventory slot, no words legible",
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a page laid out like an old point-and-click adventure screen with a scene in the upper two-thirds, a row of verbs in a monospaced hand beneath it with one marked, and a strip of small drawn inventory objects along the bottom, a night beach with a surf line and two lanterns and an empty outlined patch of sand with a small cursor over it, a green swing-arm lamp drawn small in an inventory slot, the verb bar lettered LOOK AT PICK UP TALK TO USE OPEN GIVE WALK TO in a monospaced hand and the sentence line lettered USE lamp WITH beach",
         "negative": "",
         "notes": "Compare ro_2027-03-12 (the lamp lit on the beach). The game tries it first, in 2024."
       },
-      "stage": null
+      "stage": null,
+      "lettering": [
+        "LOOK AT",
+        "PICK UP",
+        "TALK TO",
+        "USE",
+        "OPEN",
+        "GIVE",
+        "WALK TO",
+        "USE lamp WITH beach"
+      ]
     }
   ],
   "art": {
@@ -48,5 +58,6 @@
     "paper": "Arches cut to 4:3"
   },
   "notes": "The game knew.",
-  "layout": "4:3 screen with verb bar and inventory"
+  "layout": "4:3 screen with verb bar and inventory",
+  "aspect": "4:3"
 }

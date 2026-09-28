@@ -114,6 +114,33 @@ a page says "fifty" check it against the year first.
 
 ## Recent lessons
 
+### 2026-09-28 · The backups were half-finished · title pages, mastheads, real panels, exact lettering
+
+**What was wrong.** The prompt for every backup said "Title of the
+strip: BACKUP" and never named the series; pages that described
+three stacked panels were one panel entry ("(1 panels)"); the
+series' own device (rain hatching, verb bar, graph paper) and the
+`layout` field never reached the prompt; the SCUMM verb bar and the
+postcards' one word each were "no words legible"; blank balloons
+rendered as `says ""`; no series had a title page or a masthead.
+
+**Rule.** A backup series is finished when:
+- it is in `godot/tools/comic/backups.json` with title, subtitle,
+  genre, tagline, masthead, running head, credit and page count;
+- it has a title page (`title_page: true`, the day before page one,
+  one panel, `lettering` = exactly the registry's words);
+- every page's prompt reads "Backup feature: TITLE — subtitle
+  (genre), page n of N", carries the series device and the layout,
+  and ends with the running head;
+- a page that describes several panels is several panels;
+- every legible word on a page is in that panel's `lettering`;
+  everything else called shapes or strokes is declared illegible.
+
+Split this session: SLASH pp. 1–2, THE SINKHOLE pp. 1–3. Lettered:
+all eight SCUMM STICK pages (verb bar + sentence line, `aspect`
+4:3), all eight POSTCARDS backs (the one word), SLASH's port name.
+Fifteen title pages written. 101 story pages + 15 = 116 bk_ files.
+
 ### 2026-09-28 · Reference images pin the outfit too · split identity from wardrobe
 
 **What happened.** Once the character sheets attached, the opposite

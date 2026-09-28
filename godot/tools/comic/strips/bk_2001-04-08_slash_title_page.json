@@ -1,0 +1,58 @@
+{
+  "id": "bk_2001-04-08_slash_title_page",
+  "title": "SLASH · title page",
+  "strip": "backup",
+  "series": "SLASH",
+  "title_page": true,
+  "date": "2001-04-08",
+  "run": 2,
+  "era": "era1",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Box 4B · sixty pages · never lettered for print",
+  "arc": "SLASH",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The title page, drawn before page one: the masthead over the series' one image, with nobody in it. It letters the title, the subtitle and the tagline. Measure the back.",
+  "cast": [],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "splash",
+      "composition": "A field of black vertical rain hatching fills the page. The title is one white diagonal slash cut through it, the five letters read in the gap. At the bottom, small, the alley behind the frame shop: the back door's light on wet brick, a mat cutter's blade glinting on the step, no one.",
+      "characters": [],
+      "props": [
+        "the mat cutter's blade",
+        "the back door"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white noir comic page, the whole page a field of dense vertical rain hatching in brush-pen with one white diagonal slash cut through it forming the title, at the bottom small the alley behind a shop with a lit back door on wet brick and a blade glinting on the step, no people",
+        "negative": "",
+        "notes": "The title is the cut. Sixty pages, never lettered; the title page was."
+      },
+      "stage": null,
+      "lettering": [
+        "SLASH",
+        "a crime story of the Oregon coast · Box 4B · sixty pages, never lettered",
+        "Measure the back.",
+        "A. Finch"
+      ]
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; rain in frantic vertical hatching; stark spotting; Arc 1's aesthetic pushed to noir",
+    "palette": "black and white; one gray wash for the wet",
+    "paper": "bristol, sixty pages, Box 4B"
+  },
+  "notes": "Title page. Letters exactly: SLASH / a crime story of the Oregon coast · Box 4B · sixty pages, never lettered / Measure the back. / A. Finch.",
+  "layout": "title page: the masthead over a single image"
+}

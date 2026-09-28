@@ -27,36 +27,49 @@
   "panels": [
     {
       "n": 1,
-      "shot": "single page",
-      "composition": "A full Sunday page in three tiers, black and white: a diner late at night from the door; a man at a numbered table smoothing his lapels; a dog asleep under a booth with a cassette player on the table above it. The margin's signature is a mark, not a name.",
-      "characters": [
-        {
-          "id": "extra_lapels",
-          "pose": "smoothing his lapels at Table 14",
-          "expression": ""
-        },
-        {
-          "id": "extra_bartender",
-          "pose": "behind the well",
-          "expression": ""
-        },
-        {
-          "id": "extra_diner_dog",
-          "pose": "under a booth",
-          "expression": ""
-        }
-      ],
-      "props": [
-        "Table 14",
-        "a cassette player"
-      ],
+      "shot": "wide tier",
+      "composition": "Tier 1: a diner late at night from the door: the counter's stools, a bartender behind a well at the far end wiping a glass, booths along the window, numbered tables in the middle, rain outside as dots.",
+      "characters": [],
+      "props": [],
       "balloons": [],
       "caption": "",
       "sfx": "",
       "image": {
-        "prompt": "black and white comic page, brush-pen over blue pencil, rain as dense vertical hatching, stark black spotting, a full comic page in three tiers showing a diner late at night from the door, a man at a numbered table smoothing his lapels, and a dog asleep under a booth beneath a table with a cassette player on it, a small unreadable mark in the margin",
+        "prompt": "black and white Sunday comic page in a brush line almost but not quite the strip's own, a diner late at night seen from its door with stools and booths and a bartender behind a bar well at the far end, rain drawn as dots in the window",
         "negative": "",
-        "notes": "Vol 5: D'Ambrosio's diner, Mr. D. Dean at Table 14, Faith under the booth, Elicia's cassettes. The page is not Wood's; the line is 'almost'. Whose: reserved."
+        "notes": "The line is not quite his."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: a man at Table 14 in a good suit, alone, smoothing his lapels with both hands, a coffee before him untouched; the table's number on a small stand.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white Sunday comic page in a brush line almost the strip's own, a man in a good suit alone at a numbered diner table smoothing his lapels with both hands, an untouched coffee before him",
+        "negative": "",
+        "notes": "Mr. D. Dean's lapels (Vol 5), at Table 14 (D'Ambrosio's). The number: as a shape on the stand."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: under a booth, a dog asleep; on the table above it a cassette player with its lid open; the margin's signature a mark nobody at Gully's recognizes.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white Sunday comic page in a brush line almost the strip's own, a dog asleep under a diner booth with a cassette player lid-open on the table above it, a margin signature that is a mark not a name",
+        "negative": "",
+        "notes": "Not his. In his box."
       },
       "stage": null
     }

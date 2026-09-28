@@ -25,26 +25,49 @@
   "panels": [
     {
       "n": 1,
-      "shot": "single page",
-      "composition": "A full Sunday page in three tiers: a river town's street with a paddlewheel boat at a landing; the street opening into a ragged hole the width of the middle tier with the boat listing into it; a man at the helm above the dining room holding the wheel as the deck tilts. Rain drawn as dots, not hatching.",
-      "characters": [
-        {
-          "id": "extra_helmsman",
-          "pose": "at the helm, holding on",
-          "expression": ""
-        }
-      ],
-      "props": [
-        "the hole",
-        "the riverboat"
-      ],
+      "shot": "wide tier",
+      "composition": "Tier 1: a river town's street in the morning, a paddlewheel riverboat at its landing at the street's end, storefronts with awnings, a man on the helm above the dining room.",
+      "characters": [],
+      "props": [],
       "balloons": [],
       "caption": "",
       "sfx": "",
       "image": {
-        "prompt": "black and white comic page, brush-pen over blue pencil, rain as scattered dots, stark black spotting, a full comic page in three tiers showing a river town's street with a paddlewheel boat at its landing, the street opening into a ragged hole with the boat listing into it, and a man at the boat's helm holding the wheel as the deck tilts",
+        "prompt": "black and white Sunday comic page in a brush line almost the strip's own, a river town's street with storefront awnings and a paddlewheel riverboat tied at a landing at the street's end, a small figure at the helm",
         "negative": "",
-        "notes": "Vol 5: the Sinkhole; Dante at the helm; the boat lost. The rain is dots: the tell that it isn't Wood's line."
+        "notes": "The boat SLASH will find in Alsea Bay."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "wide tier",
+      "composition": "Tier 2: the street opening: a ragged hole the width of the whole tier, the pavement's edge crumbling in, the boat listing into it stern first, awnings tipping.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white Sunday comic page in a brush line almost the strip's own, a town street opening into a ragged hole the full width of the panel with a paddlewheel boat listing stern-first into it and storefront awnings tipping",
+        "negative": "",
+        "notes": "The sinkhole (Vol 8). Rain as dots, not hatching."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium tier",
+      "composition": "Tier 3: the helm, close, tilted: the man holding the wheel with both hands as the deck goes over, not letting go, his hat gone.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white Sunday comic page in a brush line almost the strip's own, close on a riverboat's tilted helm with a hatless man gripping the wheel with both hands as the deck goes over",
+        "negative": "",
+        "notes": "The rain is not his rain."
       },
       "stage": null
     }
