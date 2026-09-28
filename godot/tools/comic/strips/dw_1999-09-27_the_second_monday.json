@@ -1,0 +1,118 @@
+{
+  "id": "dw_1999-09-27_the_second_monday",
+  "title": "The second Monday",
+  "strip": "drift_wood",
+  "date": "1999-09-27",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Newport",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Week two. The Datsun won't start in the driveway. Wood pushes it to the road alone and it catches on the hill. The strip learns that the drive is the job.",
+  "cast": [
+    "wood_20"
+  ],
+  "location": "dw_ranch_house",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The ranch house driveway, 7 AM, fog in the hemlocks. The Datsun. WOOD at the wheel, key turned, nothing.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Come on. Week two."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old small Datsun in a gravel driveway among hemlock trees in morning fog, a thin young man at the wheel, nothing happening, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD out, shoulder to the door frame, pushing the Datsun down the gravel toward the road. The pad on the roof.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin young man pushing a small old car down a gravel driveway with a drawing pad on its roof, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The road's slope. Wood jumping in. The engine catching, drawn as a jagged puff from the tailpipe.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on an old car's tailpipe coughing a jagged puff of exhaust as it rolls down a hill, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "101 north. The Datsun going. Wood, to the pad on the seat.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "That's the strip. Pushing it till it catches."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small car on a two-lane coastal highway between spruce walls in fog, seen from behind, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Week two. The drive is the job."
+}

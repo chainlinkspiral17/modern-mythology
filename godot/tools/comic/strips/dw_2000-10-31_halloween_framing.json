@@ -1,0 +1,132 @@
+{
+  "id": "dw_2000-10-31_halloween_framing",
+  "title": "Halloween, framing",
+  "strip": "drift_wood",
+  "date": "2000-10-31",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "After the Ledger",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Halloween. The town one block wide still, then not. A kid in a sheet on main street, the same kid or another. 'What are you?' Last year: auditing. This year, in the chore coat: 'Framing.' The kid says that's not a costume. Wood says give it time.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "extra_kid"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Main street, Halloween, rain in vertical hatching, pumpkins under the hardware store's awning. WOOD in the chore coat, hands in the pockets. BARNABY. A KID in a sheet.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_kid",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a rainy small-town main street on Halloween with pumpkins under a store awning, a young man in an oversized canvas chore coat with his hands in the pockets, a small dog, a child in a bedsheet, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The kid, looking up.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "KID",
+          "text": "What are you?"
+        },
+        {
+          "who": "WOOD",
+          "text": "Framing."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small child in a bedsheet ghost costume looking up at a young man, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The kid.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "KID",
+          "text": "That's not a costume."
+        },
+        {
+          "who": "WOOD",
+          "text": "Give it time."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a child in a sheet, unimpressed, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The kid going on with the pillowcase. Wood and the dog. The street: four blocks again, the strip checked. The coat. Give it time.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a child in a sheet walking away down a rainy street as a young man in a chore coat and a small dog stand under an awning, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Framing.' 'Give it time.' Four blocks again; the strip checked. (dw_1999-10-25: 'Auditing.')"
+}

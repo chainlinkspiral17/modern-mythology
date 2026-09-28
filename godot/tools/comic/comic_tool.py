@@ -83,6 +83,41 @@ def load_eras():
     return load_json(ERAS_PATH)
 
 
+BACKUPS_PATH = HERE / "backups.json"
+_SERIES_INDEX = None
+
+
+def load_backups():
+    """The backup series registry: title, subtitle, masthead, running head…"""
+    return load_json(BACKUPS_PATH).get("series", {}) if BACKUPS_PATH.exists() else {}
+
+
+def series_pages(series):
+    """Ordered ids of a backup series' story pages (title page excluded),
+    from the bk_ files on disk, cached per process."""
+    global _SERIES_INDEX
+    if _SERIES_INDEX is None:
+        idx = {}
+        for f in sorted(STRIPS.glob("bk_*.json")):
+            try:
+                b = load_json(f)
+            except (json.JSONDecodeError, OSError):
+                continue
+            if b.get("title_page"):
+                continue
+            idx.setdefault(b.get("series", ""), []).append((b.get("date", ""), b["id"]))
+        _SERIES_INDEX = {k: [i for _, i in sorted(v)] for k, v in idx.items()}
+    return _SERIES_INDEX.get(series, [])
+
+
+def backup_page_no(s):
+    """(n, of) for a backup's story page; (0, of) for its title page."""
+    pages = series_pages(s.get("series", ""))
+    if s.get("title_page"):
+        return 0, len(pages)
+    return (pages.index(s["id"]) + 1 if s["id"] in pages else 0), len(pages)
+
+
 def load_heroes():
     return load_json(HEROES_PATH) if HEROES_PATH.exists() else {"heroes": {}}
 
@@ -130,6 +165,12 @@ def validate_strip(s, eras, heroes):
         errs.append("bk_ ids are backups (strip: backup)")
     if s.get("strip") == "backup" and not s.get("series"):
         errs.append("a backup needs a series (see lore/drift_wood/_BACKUPS.md)")
+    if s.get("series") and BACKUPS_PATH.exists() and s["series"] not in load_backups():
+        errs.append(f"series '{s['series']}' is not in backups.json")
+    for i, p in enumerate(s.get("panels") or [], 1):
+        lt = p.get("lettering")
+        if lt is not None and (not isinstance(lt, list) or not all(isinstance(x, str) for x in lt)):
+            errs.append(f"panel {i}: lettering must be a list of strings (the exact words on the page)")
     mark = (s.get("margin") or {}).get("mark")
     if mark and mark not in eras["marks"]:
         errs.append(f"margin.mark '{mark}' not in eras.json marks")
@@ -189,6 +230,11 @@ def cmd_validate(args):
             for e in errs:
                 print(f"    - {e}")
     print(f"{len(strips) - bad}/{len(strips)} strips valid")
+    for name, bk in load_backups().items():
+        have = len(series_pages(name))
+        titled = any(x.get("title_page") and x.get("series") == name for x in strips)
+        if have != bk.get("page_count") or not titled:
+            print(f"  backup {name}: {have} pages on disk vs page_count {bk.get('page_count')}" + ("" if titled else " · no title page"))
     return 1 if bad else 0
 
 
@@ -298,6 +344,20 @@ def sync_refs(refs):
         f = r.get("file")
         if f and (REPO / f).exists() and r.get("status") == "missing":
             r["status"] = "draft"; flipped += 1
+    # every sheet in style_sheets.json is a reference (status missing until
+    # a file lands); tags follow the sheet definition. This is what lets a
+    # merge keep the Deck's references.json and still know the new sheets.
+    if SHEETS_PATH.exists():
+        by_id = {r["id"]: r for r in refs["references"]}
+        for sh in load_json(SHEETS_PATH).get("sheets", []):
+            r = by_id.get(sh["id"])
+            if r is None:
+                refs["references"].append({"id": sh["id"], "kind": sh["kind"], "tags": list(sh.get("tags", [])),
+                                           "file": f"godot/assets/comic/vol10/sheets/{sh['id']}.png", "url": None, "runway_task_id": None,
+                                           "status": "missing", "source": "style_sheets.json", "notes": ""})
+                flipped += 1
+            elif r.get("source") == "style_sheets.json" and r.get("tags") != list(sh.get("tags", [])):
+                r["tags"] = list(sh.get("tags", [])); flipped += 1
     man = REPO / "godot" / "assets" / "comic" / "vol10" / "sheets" / "manifest.json"
     if man.exists():
         ids = {r["id"] for r in refs["references"]}
@@ -462,6 +522,19 @@ LAYOUT_TEXT = {
 }
 
 
+ASPECTS = {"16:9": ("1920:1080", "16:9"), "9:16": ("1080:1920", "9:16"), "4:3": ("1168:880", "4:3"),
+           "3:4": ("1080:1440", "3:4"), "1:1": ("1024:1024", "1:1")}
+
+
+def strip_ratio(s):
+    """(runway ratio, google aspect) for one image of the whole strip: the
+    strip's own `aspect` (a page drawn as a 4:3 screen, say) else the format's."""
+    a = s.get("aspect")
+    if a in ASPECTS:
+        return ASPECTS[a]
+    return RATIOS.get(s["format"], ("1024:1024", "1:1"))
+
+
 def _balloon_text(p, compact=False):
     out = []
     for b in p.get("balloons") or []:
@@ -471,8 +544,13 @@ def _balloon_text(p, compact=False):
             out.append(f"text \"{b['text']}\"" if compact else f"on-screen text reads \"{b['text']}\"")
         elif kind == "small":
             out.append(f"{who} (small): \"{b['text']}\"" if compact else f"{who} says, in a small balloon, \"{b['text']}\"")
+        elif not (b.get("text") or "").strip():
+            out.append(f"{who}: an empty balloon" if compact else f"{who}'s balloon is drawn empty, no words in it")
         else:
             out.append(f"{who}: \"{b['text']}\"" if compact else f"{who} says \"{b['text']}\"")
+    if p.get("lettering"):
+        words = ", ".join(f"\"{w}\"" for w in p["lettering"])
+        out.append(f"page text: {words}" if compact else f"lettering drawn on the page, exactly: {words}")
     if p.get("caption"):
         out.append(f"caption \"{p['caption']}\"" if compact else f"caption box: \"{p['caption']}\"")
     return ("; " if compact else ". ").join(out)
@@ -523,7 +601,20 @@ NAMES = {"barnaby_ii": "THE PUP (Barnaby II)", "barnaby": "BARNABY (the dog)", "
 _3D_ONLY = ("low-poly stylized character", "stylized character", "clean silhouette", "matte flat colors", "low-poly")
 
 
+_HERO_NAMES = None
+
+
 def hero_name(hid):
+    """The name the prompt uses: the hero entry's `name` (heroes_vol10.json),
+    else the built-in table, else the id upper-cased."""
+    global _HERO_NAMES
+    if _HERO_NAMES is None:
+        try:
+            _HERO_NAMES = {k: v["name"] for k, v in (load_heroes().get("heroes") or {}).items() if v.get("name")}
+        except (OSError, json.JSONDecodeError):
+            _HERO_NAMES = {}
+    if hid in _HERO_NAMES:
+        return _HERO_NAMES[hid]
     if hid in NAMES:
         return NAMES[hid]
     base = hid.split("_")[0]
@@ -653,12 +744,28 @@ def compose_strip_prompt(s, eras, letter=True, compact=False, heroes=None):
         style = SHORT_STYLE.get(s["era"], style)
     n = len(s["panels"])
     unit = "tier" if fmt in ("sunday", "special") else "panel"
-    parts = [f"{LAYOUT_TEXT.get(fmt, 'a comic strip')} ({n} {unit}s). Style: {style}."]
+    parts = [f"{LAYOUT_TEXT.get(fmt, 'a comic strip')} ({n} {unit}{'s' if n != 1 else ''}). Style: {style}."]
+    is_backup = s.get("strip") == "backup"
+    bk = load_backups().get(s.get("series", ""), {}) if is_backup else {}
+    if is_backup and (s.get("art") or {}).get("line"):
+        art = s["art"]
+        parts.append(f"Series device: {_first_sentence(art['line']) if compact else art['line']}." + ("" if compact or not art.get("palette") else f" Palette: {art['palette']}."))
+    if s.get("layout") and fmt in ("page", "spread", "sunday", "special"):
+        parts.append(f"Page layout: {s['layout']}.")
     heroes = heroes if heroes is not None else load_heroes()
     cb = cast_block(s, heroes, compact=compact)
     if cb:
         parts.append(cb)
-    if s.get("logline") and not compact:
+    if is_backup:
+        pn, of = backup_page_no(s)
+        name = bk.get("title", s.get("series", ""))
+        where = "the title page" if s.get("title_page") else f"page {pn} of {of}"
+        if compact:
+            parts.append(f"{name}, {where}.")
+        else:
+            parts.append(f"Backup feature: {name} — {bk.get('subtitle', '')} ({bk.get('genre', 'backup')}), {where}: \"{s.get('title', '')}\"." +
+                         (f" The page: {s['logline']}" if s.get("logline") else ""))
+    elif s.get("logline") and not compact:
         parts.append(f"Title of the strip: {s['strip'].replace('_', ' ').upper()}. The strip: {s['logline']}")
     boiler = _common_prefix([(p.get("image") or {}).get("prompt") or "" for p in s["panels"]]) if compact else ""
     for p in s["panels"]:
@@ -679,8 +786,23 @@ def compose_strip_prompt(s, eras, letter=True, compact=False, heroes=None):
             seg += f". {bt}" if bt else (". No dialogue in this " + unit if not compact else ". No text")
         parts.append(seg + ".")
     m = s.get("margin") or {}
+    if letter and is_backup and bk:
+        if s.get("title_page"):
+            words = [bk.get("title", ""), bk.get("subtitle", ""), bk.get("tagline", "")]
+            if bk.get("credit"):
+                words.append(bk["credit"])
+            words = [w for w in words if w]
+            has_words = any(p.get("lettering") for p in s["panels"])  # the panel already carries the exact words
+            parts.append((f"Masthead: {bk.get('masthead', 'the series title lettered large')}." if not compact else "Masthead.") +
+                         ("" if has_words else " It letters exactly: " + ", ".join(f"\"{w}\"" for w in words) + "."))
+        else:
+            pn, _ = backup_page_no(s)
+            parts.append(f"Running head: {bk.get('title', s.get('series'))} {pn}." if compact else
+                         f"Running head: {bk.get('running_head', 'the series title small at the top of the page')}, lettering \"{bk.get('title', s.get('series'))}\" and the page number {pn}.")
     if letter:
         parts.append(LETTERING_RULES_SHORT if compact else LETTERING_RULES)
+        if is_backup and not compact:
+            parts.append("Any writing the description calls shapes, strokes or blocks is illegible marks, never real letters.")
         if m.get("signature"):
             mark = eras["marks"].get(m.get("mark", ""), "")
             parts.append(f"Bottom right margin: tiny signature \"{m['signature']}\"" + (f" beside {mark}" if mark and m.get("mark") != "none" and not compact else "") + ".")
@@ -705,7 +827,7 @@ def cmd_strip_prompts(args):
     for s in strips:
         prompt, negative = compose_strip_prompt(s, eras, letter=letter)
         prompt_compact, _ = compose_strip_prompt(s, eras, letter=letter, compact=True)
-        rw, gg = RATIOS.get(s["format"], ("1024:1024", "1:1"))
+        rw, gg = strip_ratio(s)
         picks = select_refs(s, refs, provider=args.provider, include_draft=args.include_draft) if not args.no_refs else []
         # tell the model what each attached reference is, by @tag
         ref_lines = []
@@ -850,6 +972,10 @@ def strip_to_md(s, eras):
     lines.append(f"`{s['id']}` · **{s['strip'].replace('_', ' ').upper()}** · {s['date']} · "
                  f"{s['format']} ({fmt.get('layout', '')}) · run {s.get('run', '?')} · "
                  f"{era['name']} · tier {s.get('tier', '?')} · selection {s.get('selection', 'full')}")
+    if s.get("series"):
+        bk = load_backups().get(s["series"], {})
+        pn, of = backup_page_no(s)
+        lines.append(f"Backup feature: **{bk.get('title', s['series'])}** — {bk.get('subtitle', '')} · " + ("title page" if s.get("title_page") else f"page {pn} of {of}"))
     if s.get("venue"):
         lines.append(f"Venue: {s['venue']}" + (f" · arc: *{s['arc']}*" if s.get("arc") else "") + (f" · backup series: **{s['series']}**" if s.get("series") else ""))
     if s.get("logline"):

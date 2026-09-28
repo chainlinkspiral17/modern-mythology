@@ -114,6 +114,99 @@ a page says "fifty" check it against the year first.
 
 ## Recent lessons
 
+### 2026-09-28 · The cast beyond the three · every id gets an entry and a sheet
+
+**What was wrong.** 81 character ids in the strips; 23 had hero
+entries. The other 58 (the uncle, the frame-shop owner, the print
+tech, the instructor, the reader, Maria, the kids, and every
+backup-series figure) appeared in prompts only as a name in a
+panel's composition, so each render invented them. SLASH's framer
+came out as Wood; the uncle as any old man.
+
+**Rule.** If a strip's `characters[]` uses an id, `heroes_vol10.json`
+has it: `name` (what the prompt calls them), `comic_identity`,
+`comic_wardrobe`, `comic_props`, `group`, `years`. `hero_name()`
+reads `name` first. Withheld characters get an identity that says
+NEVER SHOWN and what is shown instead; the prompt carries that.
+Group sheets hold the minor people (a lineup, labeled) so one render
+covers a town's worth; each sheet's tags list every id on it so
+`select_refs` can score it for any strip they're in. The lore file
+(`style/characters.md`) is written first; the JSON copies it.
+
+**Redundancy guard.** `sheet_supporting` overlaps the new group
+sheets (Maria, the uncle, the owner); the scorer picks the higher
+tag match, and max_refs caps what attaches. If a character's two
+sheets disagree after rendering, reject one in REFS.
+
+### 2026-09-28 · Deepening xix · the daily filled, Sept 1999 – Dec 2000 · 1,378 → 1,648
+
+**The ask.** "Fill out the strips with available dates, starting
+from the early years." Run 1 (the Timberline, biweekly Fridays) had
+no gaps. Run 2 (the weekday daily from Sept 20, 1999) had 270
+empty weekdays in its first sixteen months; the user is generating
+art chronologically and had reached Oct 6, 2000.
+
+**What was written.** All 270: the catalogue's ◐ arcs to their
+stated counts (Newport 20, Too Good For It 10, Heceta 15, The Chore
+Coat 10) and the rest as five-day weeks with a theme each (the
+uncle's pots, the first storms, the application, the Daumier book,
+page one, the flats, who draws these, the Datsun, the five
+mornings, heat, Gully draws, the uncle every day, blackberries,
+the town after, the coat), every Friday a cover strip at the
+laundromat. Strips are tier B / selection "part" unless they
+complete a catalogue arc or land a fixture beat (A).
+
+**Rules that held (and one that bit).**
+- Check the objects timeline before every fixture and every object:
+  the lawn chair (June 7, not July), the oxygen line (July 4,
+  unremarked, and stays unremarked), the sign all lit through 2008,
+  the corkboard's inventory, the coat's three marks.
+- Extras are a hand, a voice, a back: the mother never gets a face;
+  the reader's careful hand is never given a name.
+- **The "Arthur" count is canon** (`style/characters.md`: the frame
+  shop owner says it five times, the first in Oct 2000). Three new
+  strips had her say it early; they were rewritten to "Finch" before
+  commit. Grep new dialogue for `Arthur` against the tracked
+  speakers before validating.
+- Sequences read better than singles: the same view five mornings,
+  the uncle five days, the coat drawn faster each day to one
+  stroke. A week with a device is a week the reader can hold.
+- Chloe's timeline is the strip's, not the bio's: away at college
+  from Sept 1999 (postcards), home for summer 2000 (June 12 – Oct
+  29), gone on the Greyhound in Arc 1. The strip never explains the
+  return; the new strips don't either.
+- The writer helper (`scratchpad/fill_lib.py`) infers panel
+  characters from CAPS names in the composition; sign names in caps
+  (SMALL WOOD LANES) must be stripped first or Wood ends up in
+  panels he isn't in.
+
+### 2026-09-28 · The backups were half-finished · title pages, mastheads, real panels, exact lettering
+
+**What was wrong.** The prompt for every backup said "Title of the
+strip: BACKUP" and never named the series; pages that described
+three stacked panels were one panel entry ("(1 panels)"); the
+series' own device (rain hatching, verb bar, graph paper) and the
+`layout` field never reached the prompt; the SCUMM verb bar and the
+postcards' one word each were "no words legible"; blank balloons
+rendered as `says ""`; no series had a title page or a masthead.
+
+**Rule.** A backup series is finished when:
+- it is in `godot/tools/comic/backups.json` with title, subtitle,
+  genre, tagline, masthead, running head, credit and page count;
+- it has a title page (`title_page: true`, the day before page one,
+  one panel, `lettering` = exactly the registry's words);
+- every page's prompt reads "Backup feature: TITLE — subtitle
+  (genre), page n of N", carries the series device and the layout,
+  and ends with the running head;
+- a page that describes several panels is several panels;
+- every legible word on a page is in that panel's `lettering`;
+  everything else called shapes or strokes is declared illegible.
+
+Split this session: SLASH pp. 1–2, THE SINKHOLE pp. 1–3. Lettered:
+all eight SCUMM STICK pages (verb bar + sentence line, `aspect`
+4:3), all eight POSTCARDS backs (the one word), SLASH's port name.
+Fifteen title pages written. 101 story pages + 15 = 116 bk_ files.
+
 ### 2026-09-28 · Reference images pin the outfit too · split identity from wardrobe
 
 **What happened.** Once the character sheets attached, the opposite

@@ -1,0 +1,135 @@
+{
+  "id": "dw_2000-08-24_the_dogs_summer",
+  "title": "The dog's summer",
+  "strip": "drift_wood",
+  "date": "2000-08-24",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The End of Summer",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The dog has had a summer: the bay, the mill, the tourists, the chair's shadow to lie in. Wood draws him asleep on the dock at the end of August and counts the things he's learned. Eleven. The uncle counted the swims. Same number. Nobody planned it.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "extra_uncle"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The dock, evening. BARNABY asleep on the planks, the ammonite ball, the kelp line faint. WOOD drawing. The UNCLE in the chair.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_uncle",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small dog curled tightly asleep on a dock's planks at evening with a faint wavy line rising from its coat, a young man drawing and an old man in a lawn chair nearby, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The pad: the dog, and beside him a list in the margin, small, eleven lines as blocks.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a drawing pad with a sleeping dog and a short list of eleven lines in the margin rendered as blocks, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The uncle.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "UNCLE",
+          "text": "Eleven swims."
+        },
+        {
+          "who": "WOOD",
+          "text": "Eleven things."
+        },
+        {
+          "who": "UNCLE",
+          "text": "Same number."
+        },
+        {
+          "who": "WOOD",
+          "text": "Nobody planned that."
+        },
+        {
+          "who": "UNCLE",
+          "text": "Nobody plans the good ones."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old man in a lawn chair, flat, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The dock. The dog. The two of them. The bay. The end of August drawn as a dog asleep. The strip finds that's enough.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a dock at evening with a sleeping dog, a young man with a pad and an old man in a lawn chair above a still bay, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Nobody plans the good ones.' Eleven, twice."
+}

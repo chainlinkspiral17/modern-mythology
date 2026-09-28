@@ -1,0 +1,57 @@
+{
+  "id": "bk_2021-05-18_the_backward_digest_title_page",
+  "title": "THE BACKWARD DIGEST · title page",
+  "strip": "backup",
+  "series": "THE BACKWARD DIGEST",
+  "title_page": true,
+  "date": "2021-05-18",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "private · after the print tech's misfold of Sept 30, 1999 · Box 23 onward",
+  "arc": "THE BACKWARD DIGEST",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The title page, drawn before page one: the masthead over the series' one image, with nobody in it. It letters the title, the subtitle and the tagline. The reader who reads it the usual way arrives home first.",
+  "cast": [],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "splash",
+      "composition": "A quarter-letter digest folded the wrong way lying on the drafting table, its staple showing, the title on its cover lettered mirror-reversed in the 1997 xerox capitals so it reads only in a mirror, and beneath the digest in the private washes the subtitle the right way round; a pushpin's hole in the cover's corner.",
+      "characters": [],
+      "props": [
+        "the misfolded digest",
+        "a pushpin hole"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "muted-wash comic page, a small quarter-letter photocopied digest folded the wrong way lying on a drafting table with its staple showing, its cover title lettered mirror-reversed in harsh xerox capitals, a subtitle beneath in soft washes reading normally, a pushpin hole in the cover's corner",
+        "negative": "",
+        "notes": "The misfold of Sept 30, 1999, as the title. Mirror to read it."
+      },
+      "stage": null,
+      "lettering": [
+        "THE BACKWARD DIGEST",
+        "after the print tech's misfold of September 30, 1999",
+        "The reader who reads it the usual way arrives home first."
+      ]
+    }
+  ],
+  "art": {
+    "line": "the private line, turned: mirrored, overlaid, folded",
+    "palette": "the private washes; the 1997 xerox black where 1997 is quoted",
+    "paper": "Arches; one page on a printed misfold"
+  },
+  "notes": "Title page. Letters exactly: THE BACKWARD DIGEST / after the print tech's misfold of September 30, 1999 / The reader who reads it the usual way arrives home first..",
+  "layout": "title page: the masthead over a single image"
+}

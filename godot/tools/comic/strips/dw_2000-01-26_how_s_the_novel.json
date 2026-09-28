@@ -1,0 +1,145 @@
+{
+  "id": "dw_2000-01-26_how_s_the_novel",
+  "title": "How's the novel",
+  "strip": "drift_wood",
+  "date": "2000-01-26",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Page One",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The tech asks how the novel's going. Wood says he started. The tech says page one? Page one. The tech says that's the hard one. Wood says they're all page one. The tech says that's the hard one too.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "extra_print_tech"
+  ],
+  "location": "dw_college_print_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The print shop. The TECH at the machine. WOOD with the week's strips. BARNABY on the counter.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_print_tech",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "TECH",
+          "text": "How's the novel."
+        },
+        {
+          "who": "WOOD",
+          "text": "Started."
+        },
+        {
+          "who": "TECH",
+          "text": "Page one?"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a print technician at a large copier speaking to a young man with a stack of strips and a small dog on the counter, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Page one."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man's face, guarded, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The tech.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "TECH",
+          "text": "That's the hard one."
+        },
+        {
+          "who": "WOOD",
+          "text": "They're all page one."
+        },
+        {
+          "who": "TECH",
+          "text": "That's the hard one too."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a print technician's face, dry, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The copier's light. Neither talking. The strip going under the glass is not about the novel; it's about a dog and a pot. The strip knows what it is.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a photocopier's green light sweeping over a comic strip about a dog and a stockpot while two men stand in silence, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'They're all page one.' The strip knows what it is; the novel doesn't."
+}

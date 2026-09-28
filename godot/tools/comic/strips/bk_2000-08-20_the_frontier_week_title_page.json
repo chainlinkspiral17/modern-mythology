@@ -1,0 +1,58 @@
+{
+  "id": "bk_2000-08-20_the_frontier_week_title_page",
+  "title": "THE FRONTIER WEEK · title page",
+  "strip": "backup",
+  "series": "THE FRONTIER WEEK",
+  "title_page": true,
+  "date": "2000-08-20",
+  "run": 2,
+  "era": "era1",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the Newport paper · a western week the editor cut · Box 3",
+  "arc": "THE FRONTIER WEEK",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The title page, drawn before page one: the masthead over the series' one image, with nobody in it. It letters the title, the subtitle and the tagline. Every strip he'll be asked his name. Every strip he'll say the town's.",
+  "cast": [],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "splash",
+      "composition": "The plank sign hung across the top with the title burned into it. Below, the ridge in 1871 from the trading post's step: the single stump on the skyline with nothing on it yet, the town's one street below as a boardwalk and a shingle wall, dust drawn as stipple, a mule's tracks leading in.",
+      "characters": [],
+      "props": [
+        "the stump",
+        "mule tracks"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white brush-pen comic page in a TV-western manner with dust as stipple, a weathered plank sign with the title in wood-type capitals hung across the top, below it a frontier ridge with a single stump on the skyline and a one-street town of boardwalk and shingle below, mule tracks leading in, no people",
+        "negative": "",
+        "notes": "The stump with nothing on it yet. Six strips will put things on it."
+      },
+      "stage": null,
+      "lettering": [
+        "THE FRONTIER WEEK",
+        "Small Wood, 1871 · a western week the editor cut",
+        "Every strip he'll be asked his name. Every strip he'll say the town's.",
+        "A. Finch"
+      ]
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white; the town in 1871 by way of a TV western",
+    "palette": "black and white; dust as stipple",
+    "paper": "newsprint / the digest — a genre week that ran nowhere; Box 3"
+  },
+  "notes": "Title page. Letters exactly: THE FRONTIER WEEK / Small Wood, 1871 · a western week the editor cut / Every strip he'll be asked his name. Every strip he'll say the town's. / A. Finch.",
+  "layout": "title page: the masthead over a single image"
+}

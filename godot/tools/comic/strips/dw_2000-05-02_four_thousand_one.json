@@ -1,0 +1,113 @@
+{
+  "id": "dw_2000-05-02_four_thousand_one",
+  "title": "Four thousand, one",
+  "strip": "drift_wood",
+  "date": "2000-05-02",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Heceta Frame & Matting",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Tuesday. Wood keeps a tally of cuts on the backroom wall in pencil: 'do four thousand.' He's at sixty-one. The owner sees the tally and adds a mark of her own. Sixty-two. She says that one's hers.",
+  "cast": [
+    "wood_20",
+    "extra_owner_heceta"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "The backroom wall by the mat cutter: pencil tally marks in fives, and a heading in the display face: 4000. Sixty-one marks.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a wall beside a mat cutter with pencil tally marks in groups of five under a hand-lettered number, black and white, no words",
+        "negative": "",
+        "notes": "Letter after: 4000 (the heading); the tally as marks."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD cutting. The OWNER passing behind him. Stopping at the wall. A pencil from behind her ear.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_owner_heceta",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man cutting a mat while a woman in reading glasses pauses at a tally on the wall behind him and takes a pencil from behind her ear, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Her mark. One more. Sixty-two.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a woman's hand adding one pencil tally mark to a wall, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood turning. The owner already gone. The mark. He doesn't erase it.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "OWNER",
+          "text": "(from the front) That one's mine."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man turning from a mat cutter to look at a fresh tally mark on the wall, the room empty behind him, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Sixty-two. One is hers. He doesn't erase it."
+}

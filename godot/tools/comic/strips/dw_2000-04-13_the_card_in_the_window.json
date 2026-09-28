@@ -1,0 +1,108 @@
+{
+  "id": "dw_2000-04-13_the_card_in_the_window",
+  "title": "The card in the window",
+  "strip": "drift_wood",
+  "date": "2000-04-13",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Help Wanted",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "101 north, Thursday. A low building Wood has passed two hundred times. A card in the window today: HELP WANTED. He sees it at forty miles an hour. He doesn't slow down. The strip does.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_101",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "101, a low building with a gravel lot and a hand-lettered sign: HECETA FRAME & MATTING. A white card in the window. The Datsun passing at speed.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a low roadside building with a gravel lot and a hand-lettered sign on a coastal highway, a small card in its window, a small car passing at speed, black and white, no words",
+        "negative": "",
+        "notes": "Letter after: HECETA FRAME & MATTING · HELP WANTED (the card)."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The card, through the Datsun's side window, blurred: two words.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a white card in a shop window seen blurred through a moving car's side window, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "WOOD's face. Forward. The card behind him now. BARNABY looking back at it.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man's face fixed ahead while driving, a small dog on the seat looking back, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The road ahead, empty, spruce. The building in the mirror, small. The strip slowed down; the car didn't.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a coastal highway ahead through a windshield with a low building shrinking in the side mirror, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Seen at forty. The strip slows; the car doesn't."
+}

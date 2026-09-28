@@ -53,12 +53,15 @@
       "caption": "",
       "sfx": "",
       "image": {
-        "prompt": "the back of a postcard drawn in ink, a divided back with an address side and a message side, the handwriting rendered as strokes with one word left legible, a small stamp with a tiny numeral in its corner, an address side left entirely blank, no words legible but one",
+        "prompt": "the back of a postcard drawn in ink, a divided back with an address side and a message side, the handwriting rendered as strokes with one word left legible, a small stamp with a tiny numeral in its corner, an address side left entirely blank, the only legible word on the card is come",
         "negative": "",
         "notes": "The seventh word is the canon's 2013 note's word. The address blank: not sent, or hand-delivered; reserved. The one legible word: come. Stamp numeral: VI."
       },
       "stage": null,
-      "name": "Back"
+      "name": "Back",
+      "lettering": [
+        "come"
+      ]
     }
   ],
   "art": {

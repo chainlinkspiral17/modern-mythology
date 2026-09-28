@@ -1,0 +1,57 @@
+{
+  "id": "bk_2002-10-13_noir_week_ii_the_dog_detective_title_page",
+  "title": "NOIR WEEK II · THE DOG DETECTIVE · title page",
+  "strip": "backup",
+  "series": "NOIR WEEK II · THE DOG DETECTIVE",
+  "title_page": true,
+  "date": "2002-10-13",
+  "run": 2,
+  "era": "era1",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the laundromat digest · the second Noir Week · unrun",
+  "arc": "NOIR WEEK II · THE DOG DETECTIVE",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The title page, drawn before page one: the masthead over the series' one image, with nobody in it. It letters the title, the subtitle and the tagline. It was raining. It's always raining. That's the coast.",
+  "cast": [],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "splash",
+      "composition": "Pulp cover: the drafting table at night under the desk lamp's cone, a fedora on the table's edge and a trench coat draped over the stool, nobody in either, the rain on the window as diagonal strokes; the title in heavy shadowed capitals over the top, the caption box at the foot.",
+      "characters": [],
+      "props": [
+        "the fedora",
+        "the trench coat"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white pulp-detective comic cover, a drafting table at night under a desk lamp's cone of light with a fedora on the table's edge and a trench coat draped over an empty stool, rain as diagonal strokes on the window, heavy shadowed pulp title lettering across the top and a caption box at the foot",
+        "negative": "",
+        "notes": "The coat and the hat without the dog. The week the coat was worn and the strip was not."
+      },
+      "stage": null,
+      "lettering": [
+        "NOIR WEEK II",
+        "THE DOG DETECTIVE · the second week, unrun",
+        "It was raining. It's always raining. That's the coast."
+      ]
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white; the trench coat under a dog",
+    "palette": "black and white",
+    "paper": "newsprint / the digest — never run; the second week found behind the first in Box 4"
+  },
+  "notes": "Title page. Letters exactly: NOIR WEEK II / THE DOG DETECTIVE · the second week, unrun / It was raining. It's always raining. That's the coast..",
+  "layout": "title page: the masthead over a single image"
+}

@@ -1,0 +1,121 @@
+{
+  "id": "dw_2000-05-01_the_monday_essay",
+  "title": "The Monday essay",
+  "strip": "drift_wood",
+  "date": "2000-05-01",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Newport",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Wood writes the essay. On a mat offcut, in the display face, one paragraph. The thesis is a sentence about frames. The instructor reads it and says it's the first thing he's turned in that's about something. He says it's about mat board. She says that's what she said.",
+  "cast": [
+    "wood_20",
+    "extra_instructor"
+  ],
+  "location": "dw_college_classroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "A cream mat offcut. A paragraph in the display face. The strip shows the shape, not the words.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a rectangle of cream mat board with a paragraph hand-lettered on it in squared capitals, unreadable, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The INSTRUCTOR reading it at her desk. WOOD at the back. The class between them.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_instructor",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman instructor at her desk reading a piece of mat board while a young man waits at the back of a full classroom, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The instructor.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "INSTRUCTOR",
+          "text": "The first thing you've turned in that's about something."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's about mat board."
+        },
+        {
+          "who": "INSTRUCTOR",
+          "text": "That's what I said."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman instructor looking up over a piece of mat board, dry, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The offcut handed back. In red pen in the corner: a mark the strip draws as a smudge, and one word: 'Finally.'",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a piece of mat board with a red-pen mark in its corner and one word written beneath, black and white, no words",
+        "negative": "",
+        "notes": "Letter after: 'Finally.' The grade: a smudge."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'It's about mat board.' 'That's what I said.' The grade is a smudge; the word is Finally."
+}

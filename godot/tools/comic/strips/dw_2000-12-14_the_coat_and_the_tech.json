@@ -1,0 +1,136 @@
+{
+  "id": "dw_2000-12-14_the_coat_and_the_tech",
+  "title": "The coat and the tech",
+  "strip": "drift_wood",
+  "date": "2000-12-14",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Chore Coat",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Thursday evening, the print shop, late. The tech says the coat's in every strip now. Wood says he's in every strip. The tech says he means the coat's the one people recognize. Wood says that's the idea. The tech says he's heard that one. Two strokes.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "extra_print_tech"
+  ],
+  "location": "dw_college_print_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The print shop, late. The TECH with a copy up to the light: the coat from behind. WOOD in the coat. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_print_tech",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "TECH",
+          "text": "Coat's in every one now."
+        },
+        {
+          "who": "WOOD",
+          "text": "I'm in every one."
+        },
+        {
+          "who": "TECH",
+          "text": "Coat's the one people know."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a print technician holding a photocopy of a figure in a coat up to the light while the young man in that coat stands at the counter with a dog, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "That's the idea."
+        },
+        {
+          "who": "TECH",
+          "text": "Heard that one."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man in a chore coat, dry, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The copies. The coat, forty times, warm.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a stack of photocopies each showing a figure in a coat from behind, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Two strokes: a coat, a machine.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a coat and a photocopier drawn in two strokes, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Coat's the one people know.' Two strokes."
+}

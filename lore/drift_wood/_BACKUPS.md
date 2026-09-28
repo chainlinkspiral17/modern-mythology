@@ -38,6 +38,22 @@ year they were drawn.
 6. **Marks.** Backups Wood signed carry the era's mark (`gull`);
    experiments and found pages carry `none`; nothing carries the
    crab, the scruff or ROFLCOPTER — those are the canon's.
+7. **Every series has a title page and a masthead.** The registry
+   `godot/tools/comic/backups.json` holds, per series, the printed
+   title and subtitle, the genre, a tagline, how the masthead is
+   drawn, how the running head looks on every later page, the credit
+   line (empty for found and unsigned series) and the story page
+   count. The title page (`title_page: true`, dated the day before
+   page one) letters exactly the title, the subtitle, the tagline and
+   the credit; every other page carries the running head and its page
+   number. The tool puts all of this in the prompt; the validator
+   refuses a series the registry doesn't know and reports a series
+   whose page count drifts or that has no title page.
+8. **Words on the page are listed, or they are shapes.** A panel's
+   `lettering` is the exact list of words drawn on it (a verb bar, a
+   postcard's one word, a port name). Anything the description calls
+   shapes, strokes or blocks stays illegible; the prompt says so. A
+   page that describes several panels is written as several panels.
 
 ## The series
 
@@ -72,4 +88,4 @@ the image.
 The shingle check: six-word shingles of each backup prompt against
 every canon prompt, era prefix stripped. Anything above five shared
 shingles that is not stock phrasing or a declared quotation is a page
-to rewrite. Fifteen series, 101 pages, as of the last run: none.
+to rewrite. Fifteen series, 101 story pages and fifteen title pages, as of the last run: none.

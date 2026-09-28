@@ -1,0 +1,120 @@
+{
+  "id": "dw_2000-07-05_spent_tubes",
+  "title": "Spent tubes",
+  "strip": "drift_wood",
+  "date": "2000-07-05",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Fourth on the Bay",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The morning after. The dock covered in spent tubes, cardboard, ash rings on the planks. The uncle in the chair at the dock's end where it was moved, an oxygen line now, which the strip drew last night and doesn't remark on today either. Gully sweeping. Wood drawing the rings.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby",
+    "extra_uncle"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The dock, morning: spent firework tubes, cardboard, black rings on the planks. The UNCLE in the lawn chair at the dock's end with an oxygen line. GULLY with a broom. WOOD, BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_uncle",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wooden dock the morning after fireworks littered with spent tubes and ash rings, an old man in a lawn chair at its end with an oxygen line, a teenager sweeping, a young man and a dog, black and white, no words",
+        "negative": "",
+        "notes": "The oxygen line: first Jul 4 (dw_2000-07-04), unremarked. Still unremarked."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "An ash ring on a plank. A tube beside it. The last one. Its ring the biggest.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a black ash ring burned into a dock plank beside a spent firework tube, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully sweeping the tubes into a pile. Stopping at the last one. Leaving it.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenager sweeping spent firework tubes on a dock and pausing to leave one where it lies, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The dock swept. One tube left at the end by the chair. The uncle's hand near it. The strip draws the ring around the tube again: the circle it drew Monday, kept.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a swept dock with one spent firework tube left beside a lawn chair at the end, an old man's hand resting near it, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The last tube left by the chair. The circle, kept. The oxygen line, unremarked twice."
+}

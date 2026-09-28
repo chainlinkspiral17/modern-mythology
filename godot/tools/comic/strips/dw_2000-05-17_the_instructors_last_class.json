@@ -1,0 +1,123 @@
+{
+  "id": "dw_2000-05-17_the_instructors_last_class",
+  "title": "The instructor's last class",
+  "strip": "drift_wood",
+  "date": "2000-05-17",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Newport",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The last class of the term. The instructor gives the auditor the last word, which she has never done. He says nothing for the length of a panel. She says that's a thesis too. Class dismissed.",
+  "cast": [
+    "wood_20",
+    "extra_instructor"
+  ],
+  "location": "dw_college_classroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The classroom, last day. The INSTRUCTOR at the board, the board wiped. Adults gathering books. WOOD at the back.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_instructor",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a classroom at the end of term with a wiped chalkboard, adult students gathering their things, a young man at the back, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The instructor.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "INSTRUCTOR",
+          "text": "Mr. Finch. Last word. You've had none all term."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman instructor at the front of a classroom, looking at the back row, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood. The class turned to look. A balloon over him, empty. The panel held.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": ""
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man at the back of a classroom with every face turned toward him, saying nothing, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The instructor, picking up her bag.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "INSTRUCTOR",
+          "text": "That's a thesis too. Dismissed."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman instructor picking up her bag at the end of class, satisfied, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The empty balloon, given the last word. 'That's a thesis too.'"
+}

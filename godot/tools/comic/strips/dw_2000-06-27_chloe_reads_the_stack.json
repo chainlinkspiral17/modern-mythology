@@ -1,0 +1,115 @@
+{
+  "id": "dw_2000-06-27_chloe_reads_the_stack",
+  "title": "Chloe reads the stack",
+  "strip": "drift_wood",
+  "date": "2000-06-27",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Before the Fourth",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Chloe borrows the whole stack of digests from the laundromat's back shelf — the owner kept one of each — and reads them on her porch in order. Wood drives past twice. The second time she holds one up without looking: the pear. She keeps that one.",
+  "cast": [
+    "chloe_17",
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Chloe's porch. CHLOE on the steps with a stack of digests, forty, reading in order. The Discman off.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young woman on porch steps reading through a tall stack of small photocopied booklets in order, headphones off, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "wide",
+      "composition": "The Datsun passing. WOOD, forward. BARNABY looking back.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small car passing a house where a young woman reads on the porch, the driver looking ahead and a dog looking back, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The second pass, the other direction. Chloe holding one digest up over her head without looking: the pear cover.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young woman on a porch holding a small booklet up over her head without looking as a car passes, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "close",
+      "composition": "The pear cover in her hand. The rest of the stack beside her. She keeps that one. The strip sees her put it in the cardigan pocket.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a young woman slipping a small booklet with a pear on its cover into a cardigan pocket, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Forty in order. She keeps the pear. The owner kept one of each: the archive begins with her."
+}

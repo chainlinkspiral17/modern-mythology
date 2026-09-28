@@ -1,0 +1,125 @@
+{
+  "id": "dw_2000-02-09_the_entrants",
+  "title": "The entrants",
+  "strip": "drift_wood",
+  "date": "2000-02-09",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The entrants' board fills: names in Gully's blocky hand. Wood draws the board with the names as blocks and one name real. Not his. The uncle's, at the top, where it's been for fifteen years.",
+  "cast": [
+    "gully_17",
+    "extra_uncle"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack. A chalkboard: ENTRANTS, and a column of names in Gully's blocky hand. GULLY writing another. The UNCLE on his pot.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_uncle",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a chalkboard of entrant names in blocky handwriting inside a bait shack, a teenager adding one, an old man seated nearby, black and white, no words",
+        "negative": "",
+        "notes": "Names as blocks. Letter after: the uncle's line at the top only, as the town would write it — reserved which name."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The top of the board: the first name, older chalk, not erased this year or any year. The uncle's.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on the top line of a chalkboard where an old chalk name has been left unerased above fresher ones, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood, to Gully, low.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "He's not fishing it."
+        },
+        {
+          "who": "GULLY",
+          "text": "He's on the board."
+        },
+        {
+          "who": "WOOD",
+          "text": "He's not—"
+        },
+        {
+          "who": "GULLY",
+          "text": "He's on the board."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man speaking quietly to a teenager beside a chalkboard, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The uncle on his pot, looking at the board. His name at the top. Not saying anything about it either.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old man seated on a crab pot looking up at a chalkboard, expressionless, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'He's on the board.' The uncle's name at the top, unerased."
+}

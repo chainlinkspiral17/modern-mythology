@@ -1,0 +1,132 @@
+{
+  "id": "dw_2000-03-31_forty_by_noon",
+  "title": "Forty by noon",
+  "strip": "drift_wood",
+  "date": "2000-03-31",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Who Draws These",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Friday. Forty copies in the rack at nine. Gone by noon. Not to a church bus. To the town, one at a time. The owner says he should print more. He says forty's the number. She says the number's changed. He prints forty.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "laundromat_owner"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Nine AM. The rack, full: forty. WOOD setting the last in. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man setting the last of forty small booklets into a wire rack in a laundromat at morning, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Noon. The rack: the realtor's flyer, the bulletin, the digest's slot empty.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a wire rack at midday with its booklet slot empty between a flyer and a bulletin, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The LAUNDRY owner.",
+      "characters": [
+        {
+          "id": "laundromat_owner",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "LAUNDRY",
+          "text": "Print more."
+        },
+        {
+          "who": "WOOD",
+          "text": "Forty's the number."
+        },
+        {
+          "who": "LAUNDRY",
+          "text": "Number's changed."
+        },
+        {
+          "who": "WOOD",
+          "text": "Forty's the number I can carry."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat owner speaking to a young man by an empty rack, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Wood walking to the Datsun with the empty box the copies came in. Forty. Next Friday, forty. The strip has a ceiling and it's his arms.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man carrying an empty cardboard box to a small car outside a laundromat, a small dog trotting beside, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Forty's the number I can carry.' The ceiling is his arms."
+}

@@ -1,0 +1,108 @@
+{
+  "id": "dw_1999-12-15_the_lanes_at_christmas",
+  "title": "The Lanes at Christmas",
+  "strip": "drift_wood",
+  "date": "1999-12-15",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Week Before",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The bowling alley hangs a wreath on the sign's S. All the letters lit, and a wreath. Wood draws the sign for the second time this year. He's started keeping a count of the letters without knowing why.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "SMALL WOOD LANES at night, every letter lit, a wreath hung on the S. Snowless. Rain.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a bowling alley's roofline neon sign fully lit at night with a wreath hung on its first letter, rain falling, black and white, no words",
+        "negative": "",
+        "notes": "All letters lit. The S: the first to go dark, Nov 2010. Not yet."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The S with the wreath. Lit through the greenery.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a lit neon letter with a holiday wreath hung over it, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD across the road with the pad. BARNABY. The pad: the sign, and under it a row of fifteen small marks. All filled in.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man across a highway drawing a lit neon sign on a pad, a row of fifteen small tally marks beneath the drawing, a dog beside him, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Wood walking home, the sign behind. Fifteen. The strip keeps the count from now on and never says why.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man and a dog walking away from a lit neon sign along a wet highway shoulder at night, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Fifteen marks, all filled. The count begins; the reason is 2010."
+}

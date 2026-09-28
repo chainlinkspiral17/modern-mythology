@@ -1,0 +1,115 @@
+{
+  "id": "dw_2000-09-11_the_new_back_page",
+  "title": "The new back page",
+  "strip": "drift_wood",
+  "date": "2000-09-11",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Twenty",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The Timberline's first issue of the year, in the laundromat's rack beside the digest. The back page has a strip now. Someone else's. Wood reads it standing up. It's bad. He's relieved. Then he isn't. He puts it back behind the digest.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "laundromat_owner"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The laundromat rack: the digest, and beside it a school paper, folded. WOOD taking the paper. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man taking a folded school newspaper from a wire rack beside small booklets in a laundromat, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The back page: a four-panel strip in someone else's line — round, careful, a joke about a locker. Drawn as blocks with the shapes of a strip.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a school newspaper's back page with a four-panel comic strip in a round careful line, its content rendered as blocks, black and white, no words",
+        "negative": "",
+        "notes": "The new back page: someone else's. Reserved who."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood's face, reading. Relief. Then the other thing.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man's face reading a newspaper: relief, then something worse, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood putting the paper back. Behind the digest. The LAUNDRY owner watching. Not saying anything. She saw both faces.",
+      "characters": [
+        {
+          "id": "laundromat_owner",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man placing a folded school newspaper behind small booklets in a wire rack while a laundromat owner watches, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The back page has someone else's strip. Both faces. She saw them."
+}

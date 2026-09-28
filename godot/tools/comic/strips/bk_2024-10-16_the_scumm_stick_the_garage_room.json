@@ -44,11 +44,21 @@
       "caption": "",
       "sfx": "",
       "image": {
-        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a page laid out like an old point-and-click adventure screen with a scene in the upper two-thirds, a row of verbs in a monospaced hand beneath it with one marked, and a strip of small drawn inventory objects along the bottom, a garage studio with a drafting table, a green lamp, a wall of numbered boxes and a small three-legged dog in a bed, each object faintly outlined as a hotspot, no words legible",
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a page laid out like an old point-and-click adventure screen with a scene in the upper two-thirds, a row of verbs in a monospaced hand beneath it with one marked, and a strip of small drawn inventory objects along the bottom, a garage studio with a drafting table, a green lamp, a wall of numbered boxes and a small three-legged dog in a bed, each object faintly outlined as a hotspot, the verb bar lettered LOOK AT PICK UP TALK TO USE OPEN GIVE WALK TO in a monospaced hand and the sentence line lettered LOOK AT lamp",
         "negative": "",
         "notes": "Vol 7: the SCUMM Machine (Sal's; Kai's). The verbs are the old engine's. The page never explains the form."
       },
-      "stage": null
+      "stage": null,
+      "lettering": [
+        "LOOK AT",
+        "PICK UP",
+        "TALK TO",
+        "USE",
+        "OPEN",
+        "GIVE",
+        "WALK TO",
+        "LOOK AT lamp"
+      ]
     }
   ],
   "art": {
@@ -57,5 +67,6 @@
     "paper": "Arches cut to 4:3"
   },
   "notes": "LOOK AT lamp.",
-  "layout": "4:3 screen with verb bar and inventory"
+  "layout": "4:3 screen with verb bar and inventory",
+  "aspect": "4:3"
 }

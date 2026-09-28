@@ -1,0 +1,94 @@
+{
+  "id": "dw_1999-11-12_the_mailbox",
+  "title": "The mailbox",
+  "strip": "drift_wood",
+  "date": "1999-11-12",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Application",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Friday. The strip goes to the mailbox at the end of the driveway and watches the envelope go in. It doesn't say who put it there. It draws the flag going up.",
+  "cast": [],
+  "location": "dw_ranch_house",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The ranch house's gravel driveway in rain, the mailbox at the road on its post, hemlocks. No one.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a rural mailbox on a post at the end of a gravel driveway among hemlocks in rain, no one about, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The mailbox door open. An envelope going in. A hand — cuff of an overcoat.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on an envelope being placed into an open rural mailbox by a hand in an overcoat cuff, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The flag going up. Red, drawn black.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a rural mailbox's flag being raised, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The driveway from the road. The mailbox, flag up. The house. Someone in the doorway, small, not going back in yet.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a rural mailbox with its flag raised at the end of a gravel driveway, a small figure standing in the distant house's doorway in rain, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The application, mailed. The strip doesn't say by whom. The flag says."
+}

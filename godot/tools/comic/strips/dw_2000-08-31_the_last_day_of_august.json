@@ -1,0 +1,102 @@
+{
+  "id": "dw_2000-08-31_the_last_day_of_august",
+  "title": "The last day of August",
+  "strip": "drift_wood",
+  "date": "2000-08-31",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Before September",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The last day. The uncle in the chair, Gully at the tank, the dog on the dock, Chloe on the seawall two blocks off, the owner at her cutter, the tech at his machine, the laundromat's rack full. Wood draws none of them. He draws the road out of town, empty, from the seawall, and then turns around.",
+  "cast": [
+    "wood_20"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "101 south from the seawall's end: the road out of town, empty, the spruce closing over it, late August light.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a two-lane coastal highway leaving a small town, empty, seen from a seawall's end with spruce closing over it in late summer light, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "WOOD's pad: the road. The bend. Nothing on it.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a drawing pad with an ink drawing of an empty highway curving into trees, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood looking at the drawing. Then turning around.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man turning away from a road to face back toward a town, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The town from the seawall. Four blocks. The sign across the road. The launch's roof. The shop's roof up the highway. All of it, small. He draws that one too. The strip keeps both. September tomorrow.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small coastal town seen from a seawall with its four blocks, a distant sign, a boat launch roof and a shop roof up the highway, drawn small, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The road out, drawn; then he turns around and draws the town. Both kept. September."
+}

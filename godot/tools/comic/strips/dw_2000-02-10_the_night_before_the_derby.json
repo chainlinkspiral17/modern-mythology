@@ -1,0 +1,114 @@
+{
+  "id": "dw_2000-02-10_the_night_before_the_derby",
+  "title": "The night before the derby",
+  "strip": "drift_wood",
+  "date": "2000-02-10",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The night before. Gully alone at the shack, the lights half lit, checking the scale, the board, the pot, the bait. The uncle's gone home early. Wood watches from the dock and for once draws Gully as the strip's subject and not its foil.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The shack at night, the half-lit string, GULLY inside moving between the scale, the board, the gold pot. Alone. WOOD on the dock with BARNABY, outside the light.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a bait shack at night with a half-lit string of lights and a teenager moving about inside alone, a young man and a dog on the dark dock outside, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Gully's hands checking the scale's hook. Then the board. Then the pot's rim.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a teenager's hands checking a hanging scale's hook in lamplight, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood's pad: Gully, from outside, through the window, in the light. The drawing is careful. It is not a caricature.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a drawing pad showing a teenager seen through a lit window at night, drawn carefully and without exaggeration, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The shack. The light. Gully sitting down at last on the uncle's pot. Wood closing the pad. The strip has drawn its foil as its subject and found it could.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenager sitting on an upturned crab pot inside a lit shack at night, seen from the dark dock where a young man closes a drawing pad, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Gully as subject, not foil. Careful, not a caricature. The night before he asks for the flyer."
+}

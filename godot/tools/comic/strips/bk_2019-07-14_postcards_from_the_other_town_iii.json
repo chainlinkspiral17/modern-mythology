@@ -53,12 +53,15 @@
       "caption": "",
       "sfx": "",
       "image": {
-        "prompt": "the back of a postcard drawn in ink, a divided back with an address side and a message side, the handwriting rendered as strokes with one word left legible, a small stamp with a tiny numeral in its corner, a small drawn bus in the message's corner, no words legible but one",
+        "prompt": "the back of a postcard drawn in ink, a divided back with an address side and a message side, the handwriting rendered as strokes with one word left legible, a small stamp with a tiny numeral in its corner, a small drawn bus in the message's corner, the only legible word on the card is were",
         "negative": "",
         "notes": "The lens repeats the coast: the device of the fronts is scale. The one legible word: were. Stamp numeral: II."
       },
       "stage": null,
-      "name": "Back"
+      "name": "Back",
+      "lettering": [
+        "were"
+      ]
     }
   ],
   "art": {

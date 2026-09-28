@@ -1,0 +1,108 @@
+{
+  "id": "dw_2000-03-20_minus_tide",
+  "title": "Minus tide",
+  "strip": "drift_wood",
+  "date": "2000-03-20",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Flats",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "A minus tide. The bay goes out farther than Wood has seen it: the flats in long bands to the channel. The uncle read it off the table a week ago. Wood draws the bands and runs out of pad before he runs out of mud.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_mudflats",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The mudflats at a minus tide from the launch: bands of mud, ribs of water, the channel far out catching the sky, the far shore. Enormous.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wide Pacific Northwest estuary at an extreme low tide with long bands of mud and thin ribs of water reaching to a distant channel, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD at the launch's edge with the pad. BARNABY at the mud's edge, one paw in.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man at the edge of a boat launch drawing while a small dog tests the mud with one paw, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The pad: bands, bands, bands. The bottom edge of the page reached. The mud goes on.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a drawing pad filled edge to edge with horizontal bands of mudflat, the drawing running off the bottom, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Wood turning the pad sideways to keep going. The flats. The strip has met a thing bigger than the page.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man turning his drawing pad sideways at the edge of a vast mudflat to keep drawing, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The first time the pad runs out before the mud. The Spring Special was a page; this is a pad."
+}

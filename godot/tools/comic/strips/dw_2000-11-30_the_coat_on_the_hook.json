@@ -1,0 +1,109 @@
+{
+  "id": "dw_2000-11-30_the_coat_on_the_hook",
+  "title": "The coat on the hook",
+  "strip": "drift_wood",
+  "date": "2000-11-30",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Chore Coat",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Thursday. The owner has put a hook by the backroom door. Not a word about it. Wood hangs the coat on it for the first time and cuts without it. The cut's no better. He puts the coat back on. The hook stays; it's hers now, for her coat.",
+  "cast": [
+    "extra_owner_heceta",
+    "wood_20"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "A new brass hook on the backroom's doorframe. Fresh screw holes. The OWNER's doing. No note.",
+      "characters": [
+        {
+          "id": "extra_owner_heceta",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a new brass coat hook screwed into a doorframe with fresh screw holes, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD hanging the chore coat on it. Looking at the coat on the hook. Strange. The coat without him in it.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man hanging a canvas chore coat on a hook and looking at it as if at a stranger, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The cut. No better. The same.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a mat corner cut cleanly, no different from before, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The coat back on. The owner's coat on the hook instead, hers, at four. She says nothing. The hook's hers. Thirty strokes.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man back in his chore coat while a woman's coat hangs on the new hook, drawn in thirty sparse strokes, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The hook. The coat off; no better. The hook's hers now."
+}

@@ -1,0 +1,136 @@
+{
+  "id": "dw_2000-04-11_that_was_the_once",
+  "title": "That was the once",
+  "strip": "drift_wood",
+  "date": "2000-04-11",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Help Wanted",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The tech, told the dimes are gone, runs the week free. Wood says he said once. The tech says that was the portfolio; this is the strip. Different once. Wood doesn't argue. He's learning which arguments the strip needs.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "extra_print_tech"
+  ],
+  "location": "dw_college_print_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The print shop. WOOD with the strips and no money, saying so with his hands. The TECH. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_print_tech",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man at a print shop counter showing empty hands to a technician while a small dog waits, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The tech, already loading the strips.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "TECH",
+          "text": "Free this week."
+        },
+        {
+          "who": "WOOD",
+          "text": "You said once."
+        },
+        {
+          "who": "TECH",
+          "text": "That was the portfolio. This is the strip."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a print technician loading comic strips onto a copier's glass without looking up, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Different once."
+        },
+        {
+          "who": "TECH",
+          "text": "Different once."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man deciding not to argue, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The copies stacking. The tech not taking anything for them. Wood's hand on the stack like it's a dog. He's learning which arguments the strip needs. Not this one.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "photocopies stacking in a tray as a young man rests his hand on them, a technician turning away, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Different once.' The argument the strip doesn't need."
+}

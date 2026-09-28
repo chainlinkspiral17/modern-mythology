@@ -1,0 +1,125 @@
+{
+  "id": "dw_2000-05-18_what_the_offcuts_are_for",
+  "title": "What the offcuts are for",
+  "strip": "drift_wood",
+  "date": "2000-05-18",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Heceta Frame & Matting",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Thursday. The mat offcuts go in a box. The owner says they're for nothing. Wood draws on one during lunch. She sees. She says that's what they're for. The box goes home with him Saturdays from now on.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "extra_owner_heceta"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "A cardboard box under the cutting table: mat offcuts, cream, green, black, every width. WOOD's hand in it.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a box of mat board offcuts in cream, green and black beneath a cutting table with a young man's hand reaching in, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Lunch. Wood on the back step with a cream offcut and a pen. BARNABY. A drawing: the lot.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man on a shop's back step at lunch drawing on a piece of mat board with a pen, a small dog beside him, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The OWNER in the door behind him, looking at the drawing on the offcut.",
+      "characters": [
+        {
+          "id": "extra_owner_heceta",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "You said they were for nothing."
+        },
+        {
+          "who": "OWNER",
+          "text": "That's what they're for."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman in reading glasses in a doorway looking down at a drawing on a piece of mat board, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "close",
+      "composition": "Saturday's Datsun: the offcut box on the back seat beside the taped box of everything. Two boxes now. One's full of nothing, for something.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a car's back seat holding a taped cardboard box and a second box full of mat board scraps, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Two boxes on the back seat. The sums of April 20 were on an offcut already; now there's a supply."
+}

@@ -1,0 +1,118 @@
+{
+  "id": "dw_1999-10-05_the_microfilm",
+  "title": "The microfilm",
+  "strip": "drift_wood",
+  "date": "1999-10-05",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Newport",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The college library has the county paper on microfilm back to 1962. Wood looks up the mill's closing. He finds the ad for the derby instead, 1985. Same crab. Nobody drew it; it was a stamp.",
+  "cast": [
+    "wood_20",
+    "extra_librarian"
+  ],
+  "location": "dw_library_back_room",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "A college library's microfilm reader, the hood, the crank. WOOD at it, the reel spinning. A LIBRARIAN's cardigan at the edge.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_librarian",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "LIBRARIAN",
+          "text": "Nineteen ninety-four is the third drawer."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man at a microfilm reader in a library, the reel spinning, a cardigan-clad librarian's shoulder at the frame's edge, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The screen: a newspaper page, 1985. A classified ad: a crab, printed from a stamp, the words as blocks.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a microfilm screen showing an old newspaper classified ad with a small crab printed from a rubber stamp, black and white, no words",
+        "negative": "",
+        "notes": "The crab is a stamp, not a drawing. Letter after: nothing legible."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood, to the screen.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Fifteen years of this crab and nobody drew it. It's a stamp."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man's face lit by a microfilm reader's glow, unimpressed, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood cranking on to 1994. The screen going dark between pages. He doesn't get there. The librarian turning the lights off in the far stacks.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man cranking a microfilm reader as the screen blurs between pages, library lights going off in the far stacks, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "He looks for the mill and finds the crab. The stamp precedes the flyer."
+}

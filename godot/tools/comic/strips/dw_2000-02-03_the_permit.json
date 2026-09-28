@@ -1,0 +1,114 @@
+{
+  "id": "dw_2000-02-03_the_permit",
+  "title": "The permit",
+  "strip": "drift_wood",
+  "date": "2000-02-03",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Uncle Rests",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The county's derby permit comes in the mail. It's in the uncle's name. Gully fills in the form for him at the counter — rule four, broken, for the county. The uncle signs. His hand takes a long time.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "extra_uncle"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack's counter. A county form, the letterhead as blocks. GULLY writing on it — on the counter. The UNCLE on his pot. WOOD.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_uncle",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky teenager filling in an official form on a bait shack counter while an old man sits nearby and a young man watches, black and white, no words",
+        "negative": "",
+        "notes": "Rule four broken for the county; nobody mentions it."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Gully's hand writing. The blocks of the form. The signature line, empty.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a teenager's hand filling in an official form, the signature line still blank, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The uncle's hand signing. Slow. The pen pressing hard. The line wandering.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on an old man's hand signing a form slowly, the pen pressing hard and the line wandering, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The form folded into an envelope. Gully licking it. The uncle looking at his own hand after. Wood drawing the hand, not the form.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old man looking at his own hand after signing while a teenager seals an envelope and a young man draws, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The uncle's signature takes a long time. Wood draws the hand."
+}

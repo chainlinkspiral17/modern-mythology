@@ -53,12 +53,15 @@
       "caption": "",
       "sfx": "",
       "image": {
-        "prompt": "the back of a postcard drawn in ink, a divided back with an address side and a message side, the handwriting rendered as strokes with one word left legible, a small stamp with a tiny numeral in its corner, a stamp with its corner blank, no words legible but one",
+        "prompt": "the back of a postcard drawn in ink, a divided back with an address side and a message side, the handwriting rendered as strokes with one word left legible, a small stamp with a tiny numeral in its corner, a stamp with its corner blank, the only legible word on the card is stay",
         "negative": "",
         "notes": "The eighth word is the one the canon never says. Neither hand. The stamp's numeral missing: the deck's last card is not numbered here. The one legible word: stay. Stamp numeral: —."
       },
       "stage": null,
-      "name": "Back"
+      "name": "Back",
+      "lettering": [
+        "stay"
+      ]
     }
   ],
   "art": {
