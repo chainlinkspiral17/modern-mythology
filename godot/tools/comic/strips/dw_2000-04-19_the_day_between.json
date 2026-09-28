@@ -1,0 +1,130 @@
+{
+  "id": "dw_2000-04-19_the_day_between",
+  "title": "The day between",
+  "strip": "drift_wood",
+  "date": "2000-04-19",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Newport",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Wednesday, the day between the job's days. Wood at the college with the smell of mat board on him. The instructor asks what changed. He says his hands. She says she meant the essay. He hasn't written one. She meant his hands.",
+  "cast": [
+    "wood_20",
+    "extra_instructor"
+  ],
+  "location": "dw_college_classroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The classroom. WOOD at the back, his hands on the desk, a paper cut on one thumb. The INSTRUCTOR passing.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_instructor",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "INSTRUCTOR",
+          "text": "Something's changed, Mr. Finch."
+        },
+        {
+          "who": "WOOD",
+          "text": "My hands."
+        },
+        {
+          "who": "INSTRUCTOR",
+          "text": "I meant the essay."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man at the back of a classroom with his hands flat on the desk and a paper cut on one thumb, an instructor passing his row, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The hands: a cut, a bevel of dried glue, a smear of graphite from marking mat.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a young man's hands with a paper cut, dried glue and pencil smudges, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The instructor, stopped.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "I haven't written one."
+        },
+        {
+          "who": "INSTRUCTOR",
+          "text": "...I meant your hands."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman instructor looking down at a student's hands, dry, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood drawing his own hands on the pad. The first time. They come out older than he is.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a drawing pad with an ink drawing of a pair of hands that look older than the young man drawing them, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "His hands, drawn for the first time. Older than he is."
+}

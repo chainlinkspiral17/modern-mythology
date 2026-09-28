@@ -1,0 +1,123 @@
+{
+  "id": "dw_2000-07-17_the_napkins",
+  "title": "The napkins",
+  "strip": "drift_wood",
+  "date": "2000-07-17",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Gully Draws",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Gully's napkins have been piling up on the shack's counter for three years: walruses, gulls, the uncle, a crab in a hat. The uncle keeps them under the register. Wood finds the stack. Sixty. He's never been jealous of a napkin before.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "extra_uncle"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack. The register lifted. Under it, a stack of napkins, ballpoint. WOOD lifting them. GULLY at the tank, not seeing. The UNCLE in the chair outside.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_uncle",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man lifting a stack of ballpoint-drawn paper napkins from beneath a bait shack's register while a teenager works at a bait tank, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The napkins fanned: a walrus, a gull, the uncle in three strokes, a crab in a hat, a dog that is exactly the dog.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a fan of paper napkins with ballpoint drawings of a walrus, a gull, an old man, a crab in a hat and a small dog, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood. His face. A thing he hasn't felt about a napkin.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man's face looking at napkin drawings with an expression he doesn't like having, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The napkins back under the register. Sixty. Wood setting the register down on them gently. Gully turning. 'What.' 'Nothing.' The strip has never lied in a balloon before. This is the first.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "What."
+        },
+        {
+          "who": "WOOD",
+          "text": "Nothing."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man gently setting a register back down on a stack of napkins as a teenager turns from a bait tank, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Sixty napkins. 'Nothing.' The strip's first lie in a balloon."
+}

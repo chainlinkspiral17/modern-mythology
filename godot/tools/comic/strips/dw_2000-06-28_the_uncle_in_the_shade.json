@@ -1,0 +1,121 @@
+{
+  "id": "dw_2000-06-28_the_uncle_in_the_shade",
+  "title": "The uncle in the shade",
+  "strip": "drift_wood",
+  "date": "2000-06-28",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Before the Fourth",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "A hot day, rare. Gully moves the lawn chair into the shack's shadow without asking. The uncle lets it be moved with him in it. Wood draws the chair's four legs leaving four marks in the gravel where it was. The marks stay all summer.",
+  "cast": [
+    "gully_17",
+    "extra_uncle",
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The launch in flat hot light. The UNCLE in the chair in full sun. GULLY behind the chair, hands on it.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_uncle",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky teenager taking hold of the back of a lawn chair with an old man seated in it in flat bright sunlight, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The chair, with the uncle in it, being dragged three feet into the shack's shadow. The uncle not objecting. Not helping.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a lawn chair with an old man in it being dragged across gravel into the shadow of a shack, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The gravel where it was: four marks, the legs' prints. Sun on them.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on gravel with four small marks where a chair's legs stood, in bright sun, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The chair in the shadow. The four marks in the sun. WOOD drawing the marks, not the chair. BARNABY lying on the marks. The marks stay all summer.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old man in a lawn chair in a shack's shadow while a small dog lies on four marks in the sunlit gravel nearby and a young man draws, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The four marks stay all summer. Drawn instead of the chair."
+}

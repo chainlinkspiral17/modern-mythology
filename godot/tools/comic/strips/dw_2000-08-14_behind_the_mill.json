@@ -1,0 +1,114 @@
+{
+  "id": "dw_2000-08-14_behind_the_mill",
+  "title": "Behind the mill",
+  "strip": "drift_wood",
+  "date": "2000-08-14",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Blackberries",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Blackberries behind the mill. The fence, the stack, the shed sagging, the vines over everything. Gully knows the way in. Wood hasn't been past the fence since 1994. The dog goes through first. The strip draws the mill for the first time in the public run.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby"
+  ],
+  "location": "dw_cedar_mill",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The mill from the road: a long sagging shed, a brick stack, chain-link, blackberry over everything. GULLY at a gap in the fence. WOOD behind. BARNABY through already.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an abandoned cedar mill with a long sagging shed and a brick smokestack behind a chain-link fence overgrown with blackberry, a teenager at a gap in the fence, a young man behind, a small dog already through, black and white, no words",
+        "negative": "",
+        "notes": "The mill, drawn in the public strip for the first time. Closed 1994."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The gap in the fence. Gully's hand holding the wire back.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a stocky teenager's hand holding back chain-link at a gap in a fence, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood at the gap. Not going through. Looking at the stack.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man stopped at a gap in a fence looking up at a brick smokestack, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Wood through, finally. The three of them small in the yard among the vines. The stack over them. Six years. The strip doesn't say what he's thinking. It draws the stack.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "three small figures in an overgrown mill yard beneath a brick smokestack, a dog among the vines, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Six years since the gate. The strip draws the stack, not the thought."
+}

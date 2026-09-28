@@ -1,0 +1,113 @@
+{
+  "id": "dw_2000-07-25_the_second_arthur",
+  "title": "The second blade",
+  "strip": "drift_wood",
+  "date": "2000-07-25",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Late July",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Tuesday. A dull blade, a torn edge. The owner's hand with a fresh one, held out. She doesn't say his name this time. She says 'blade.' He takes it. The cut, clean. The strip keeps count of the names and the blades separately.",
+  "cast": [
+    "wood_20",
+    "extra_owner_heceta"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "The utility knife tearing foam core. A ragged edge.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a dull utility knife tearing a ragged edge in foam core, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The OWNER's hand with a fresh blade, held out beside WOOD's shoulder. Her face not in the panel.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_owner_heceta",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "OWNER",
+          "text": "Blade."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman's hand holding out a fresh blade beside a young man's shoulder at a cutting table, her face out of frame, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The old blade out. The new one in. The cut, clean. Foam core like butter.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a utility knife with a fresh blade cutting foam core cleanly, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The owner back at her station. Wood cutting. The tally on the wall. Two counts in the corner of the panel now, tiny: names, blades. The strip keeps both.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man cutting foam core in a frame shop's backroom with two tiny tally counts in the panel's corner, black and white, no words",
+        "negative": "",
+        "notes": "Blades: one (Oct 3 will be the second, with 'Arthur' — the third name)."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Blade.' Names and blades, counted separately."
+}
