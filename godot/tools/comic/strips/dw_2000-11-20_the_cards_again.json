@@ -1,0 +1,120 @@
+{
+  "id": "dw_2000-11-20_the_cards_again",
+  "title": "The cards, again",
+  "strip": "drift_wood",
+  "date": "2000-11-20",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Thanksgiving",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The index cards, a third year. THANKFUL FOR. Wood brings them to the shack this time, not the newsroom. GULLIVER: maple bars, again. FINCH: writes something and turns it face down. STERLING: the card blank; she isn't here to leave it blank herself. The uncle takes a card nobody offered him.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby",
+    "extra_uncle"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack's counter — rule four be damned — three index cards and a pen. GULLY writing. WOOD. The UNCLE in the chair in the door. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_uncle",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "three index cards and a pen on a bait shack counter with a teenager writing on one, a young man beside him, an old man in a lawn chair in the doorway, black and white, no words",
+        "negative": "",
+        "notes": "Cards per objects.md: year three. Letter after: THANKFUL FOR — GULLIVER: maple bars."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "GULLIVER's card: maple bars. FINCH's: written, turned face down. STERLING's: blank.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on three index cards on a counter, one with a short answer, one face down, one blank, black and white, no words",
+        "negative": "",
+        "notes": "FINCH's answer: face down; reserved. STERLING's: blank, in her absence."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The uncle's hand taking a fourth card from the stack. Nobody offered. Writing. Slow.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on an old man's hand taking an index card and writing on it slowly, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The uncle's card set face down on top of Wood's. Two face down, one blank, one maple bars. The strip doesn't turn them. It never will.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "four index cards on a counter, two face down, one blank and one written, an old man's hand withdrawing, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Year three. Two face down, one blank. The uncle's card: reserved forever."
+}

@@ -1,0 +1,125 @@
+{
+  "id": "dw_2000-11-23_thanksgiving_at_the_shack",
+  "title": "Thanksgiving at the shack",
+  "strip": "drift_wood",
+  "date": "2000-11-23",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Thanksgiving",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Thanksgiving. Not the house this year; the shack. The uncle in the chair, the smoked salmon on the counter, Gully, Wood, the dog under the counter. Nobody says grace. The uncle says 'alder' and that's it. Wood draws the four of them from the door and it's the first family portrait the strip has done.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby",
+    "extra_uncle"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The shack, Thanksgiving, the stove going, the smoked salmon on the counter on butcher paper. The UNCLE in the chair inside for once. GULLY. WOOD. BARNABY under the counter.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_uncle",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "inside a warm bait shack on a holiday with smoked salmon on butcher paper on the counter, an old man in a lawn chair, a stocky teenager, a young man and a small dog beneath the counter, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The salmon. The paper. Gully's knife.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a side of smoked salmon on butcher paper with a knife beside it, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The uncle.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "UNCLE",
+          "text": "Alder."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old man in a lawn chair by a stove, flat, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "From the door: the four of them in the lamplight, the chair, the counter, the dog's tail out from under it. The strip's first family portrait. It doesn't call it that. Nobody says grace.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a bait shack interior seen from its doorway with an old man in a lawn chair, a teenager, a young man and a dog's tail beneath the counter in lamplight, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The first family portrait. 'Alder' is grace."
+}

@@ -1,0 +1,117 @@
+{
+  "id": "dw_2000-11-13_the_chain_link",
+  "title": "The chain-link",
+  "strip": "drift_wood",
+  "date": "2000-11-13",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Dog Night",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Monday. Two days before. Wood walks the dog past the Lanes and doesn't go round back. The dog pulls toward the alley. Wood says Wednesday. The dog doesn't know Wednesday. He pulls. Wood holds. The strip draws the leash tight.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The bowling alley across 101 at dusk, the sign lit, all letters. WOOD in the chore coat on the far shoulder with BARNABY on the leash, pulling toward the alley.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a bowling alley across a highway at dusk with its neon sign fully lit, a young man in a chore coat holding a leash as a small dog pulls toward the building's side alley, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The leash. Tight. Drawn as a single straight line between the hand and the collar.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a taut leash drawn as a single straight line between a hand and a small dog's collar, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Wednesday."
+        },
+        {
+          "who": "WOOD",
+          "text": "You don't know Wednesday."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man in a chore coat holding a taut leash, speaking to a dog, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The two of them walking on, the dog looking back, the alley behind. The sign. Fifteen. Wednesday.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man and a small dog walking away along a highway shoulder as the dog looks back toward a lit sign, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Two days before. The leash as a straight line."
+}

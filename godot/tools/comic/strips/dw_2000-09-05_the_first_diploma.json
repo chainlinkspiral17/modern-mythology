@@ -1,0 +1,127 @@
+{
+  "id": "dw_2000-09-05_the_first_diploma",
+  "title": "The first diploma",
+  "strip": "drift_wood",
+  "date": "2000-09-05",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "September",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Tuesday. The first diploma of the season, as the owner said: a nursing degree from Coos Bay, the parents bringing it. Double mat, cream and green. Wood cuts the inner window and it's the best corner of the four thousand so far. The owner says the season's begun. He adds a mark.",
+  "cast": [
+    "wood_20",
+    "extra_owner_heceta",
+    "extra_couple"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shop. A COUPLE at the counter with a diploma in a cardboard tube. The OWNER. WOOD at the cutter.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_owner_heceta",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_couple",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an older couple at a frame shop counter holding a cardboard tube while a woman in reading glasses takes it and a young man waits at a mat cutter, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The diploma unrolled: the seal, the name as blocks, the school's as blocks but for one word. COOS BAY.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on an unrolled diploma with an embossed seal and printed text as blocks, black and white, no words",
+        "negative": "",
+        "notes": "Letter after: COOS BAY (only)."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The mat cutter. The inner window's corner. Clean. Cream over green.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a cleanly cut double mat window in cream over green, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The owner, looking at the corner.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "OWNER",
+          "text": "Season's begun."
+        },
+        {
+          "who": "WOOD",
+          "text": "Diplomas."
+        },
+        {
+          "who": "OWNER",
+          "text": "Then deer."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman in reading glasses looking at a mat corner and nodding once, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The first diploma. 'Then deer.' (Oct 30's is the second from Coos Bay.)"
+}

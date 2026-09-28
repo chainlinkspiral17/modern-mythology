@@ -1,0 +1,125 @@
+{
+  "id": "dw_2000-12-12_the_coat_at_the_shop_closing",
+  "title": "Closing in the coat",
+  "strip": "drift_wood",
+  "date": "2000-12-12",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Chore Coat",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Tuesday. Closing. The owner turns the card. Wood in the coat at the door. She says see you Thursday. He says Thursday. The coat's collar up in the door's draft. Four strokes.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "extra_owner_heceta"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shop at four, dark outside, the OWNER turning the door's card to CLOSED. WOOD in the coat at the door with BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_owner_heceta",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "OWNER",
+          "text": "Thursday."
+        },
+        {
+          "who": "WOOD",
+          "text": "Thursday."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman in reading glasses turning a shop door's sign at closing while a young man in a chore coat waits at the door with a small dog, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The card, turned. CLOSED. Her hand leaving it.",
+      "characters": [],
+      "props": [
+        "the CLOSED card"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a hand leaving a shop door's turned sign, black and white, no words",
+        "negative": "",
+        "notes": "Letter after: CLOSED."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The collar up in the draft. The coat doing what it's for.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a canvas coat's collar turned up against a draft in a doorway, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Wood and the dog out on the gravel in the dark. The shop's light behind. Four strokes: a coat, a dog, a door, a road.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man in a coat and a small dog on a dark gravel lot outside a lit shop, drawn in four strokes, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Thursday.' Four strokes."
+}
