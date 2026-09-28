@@ -216,12 +216,13 @@
       "kind": "character",
       "era": "era2",
       "ratio": "16:9",
-      "prompt": "a sheet of small crude stick figures drawn in ballpoint: a crowd of them at the back of a panel holding tiny signs, two sitting on a bed, one typing at a tiny keyboard, thirty arranged like wallpaper; and separately the meme figure: a stick figure with a four-line helicopter rotor scribbled on its head hovering six inches above nothing; labeled THE CHORUS and ROLFCOPTR",
+      "prompt": "a sheet of small crude stick figures drawn in ballpoint: a crowd of them at the back of a panel holding tiny signs, two sitting on a bed, one typing at a tiny keyboard, thirty arranged like wallpaper; four of them with green words floating over their heads drawn as blocks, one wandering off the edge, one with its mouth open singing lines, one circling a lamp bulb, one building a tiny dam of eraser crumbs; and separately the meme figure: a stick figure with a four-line helicopter rotor scribbled on its head hovering six inches above nothing, and a second one like it entering from the edge; labeled THE CHORUS, THE HANDLES and ROLFCOPTR",
       "tags": [
         "character",
         "era2",
         "extra_stick_chorus",
-        "extra_stick_hero"
+        "extra_stick_hero",
+        "extra_stick_two"
       ]
     },
     {
@@ -463,6 +464,185 @@
         "maple bar",
         "corn",
         "lawn chair"
+      ]
+    },
+    {
+      "id": "sheet_town_1999",
+      "kind": "character",
+      "era": "era1",
+      "ratio": "16:9",
+      "prompt": "a lineup model sheet of a small coast town's people in 1999, front views and one profile each, labeled: THE PRINT TECH (wiry man of forty, gray crew cut, canvas shop apron over plaid, leaning on nothing), THE INSTRUCTOR (sharp woman in her forties, dark hair pulled back with reading glasses pushed into it, blazer over a turtleneck, a red pen), THE GUARD (broad man in his fifties in a navy windbreaker with a reflective strip and a cap, bent as if to a car window), THE LAUNDROMAT OWNER (woman in her fifties in a cardigan with reading glasses on a cord, folding a towel), THE CLERK (thin young man with a long neck and glasses in a drugstore uniform shirt), THE LIBRARIAN (a woman of sixty with a gray bob and half-moon glasses in a long gray cardigan, shown mostly as the cardigan at the sheet's edge), THE CLASSMATE (heavyset man of fifty with a gray mustache in a faded mill jacket), THE READER (small woman in her sixties with white hair pinned up, a wool coat kept on, a pen behind her ear)",
+      "tags": [
+        "character",
+        "era1",
+        "extra_print_tech",
+        "extra_instructor",
+        "security_guard",
+        "laundromat_owner",
+        "extra_clerk",
+        "extra_librarian",
+        "extra_classmate",
+        "extra_reader"
+      ]
+    },
+    {
+      "id": "sheet_town_2000s",
+      "kind": "character",
+      "era": "era2",
+      "ratio": "16:9",
+      "prompt": "a lineup model sheet of a small coast town's people in the 2000s, front views, labeled: THE VET (tall thin woman with cropped gray hair, white coat over flannel, a stethoscope), THE MECHANIC (squat man with a shaved head in coveralls, head tilted as if listening), THE FLAGGER (lanky man in orange rain gear with a STOP sign under his arm and a cigarette), THE PASTOR (round older man in a black raincoat over a clerical collar holding a bulletin), THE REALTOR (man in his forties with a salesman's haircut and a logo-less windbreaker holding flyers), A FISHERMAN (weathered man in rubber boots, a wool cap and a rain jacket, walking with a roll), THE REGULARS (three men from behind on three bar stools in caps and work jackets, one with a gray braid), TOURISTS (a man and a woman in matching fleece and sun hats with a camera, pleased)",
+      "tags": [
+        "character",
+        "era2",
+        "extra_vet",
+        "extra_mechanic",
+        "extra_flagger",
+        "extra_pastor",
+        "extra_realtor",
+        "extra_fisherman",
+        "extra_regulars",
+        "extra_tourists",
+        "extra_tourist_couple",
+        "extra_tourist"
+      ]
+    },
+    {
+      "id": "sheet_timberline_people",
+      "kind": "character",
+      "era": "era1",
+      "ratio": "16:9",
+      "prompt": "a lineup model sheet of a 1990s small-town high school's people, front views, labeled: MR. HADLEY (man of fifty with a mustache and a sweater vest holding chalk), THE PRINCIPAL (bald man with a whistle on a lanyard, short-sleeved shirt and tie), THE YEARBOOK PHOTOGRAPHER (a patient bored girl in a hoodie with a big camera), THE BUS DRIVER (heavy woman with a permanent wave in a quilted vest, hands on a wheel, eyes ahead), THE CASHIER (teenage girl in a grocery apron chewing gum), THE GRUNION QUEEN (a girl in a sash and a paper crown over a raincoat waving with her whole arm), A STUDENT (a teenager with a backpack, passing, face turned away), A KID (a gap-toothed child of nine in a too-big raincoat with a pencil, and again in a bedsheet with a pillowcase)",
+      "tags": [
+        "character",
+        "era1",
+        "extra_mr_hadley",
+        "extra_principal",
+        "extra_yearbook_photog",
+        "extra_bus_driver",
+        "extra_cashier",
+        "extra_grunion_queen",
+        "extra_student",
+        "extra_kid"
+      ]
+    },
+    {
+      "id": "sheet_gullys_people",
+      "kind": "character",
+      "era": "era3",
+      "ratio": "16:9",
+      "prompt": "a family model sheet, front views, labeled: MARIA (practical woman in her thirties with a dark braid over one shoulder, county-issue rain shell, jeans, rubber boots, a level face), GULLY'S DAUGHTER at three, six, ten and seventeen (a sturdy girl with a round face and a braid, red rain jacket, certain), GULLY'S SON as a bundle in a snowsuit on a man's shoulders and at five and ten (a small boy in a backwards cap like his father's), THE UNCLE (weathered old fisherman in a rain hood and a thirty-year-old canvas coat, crooked last finger on the left hand, seated in a green-and-white webbed aluminum lawn chair with one strap missing, a thin oxygen line at his face), THE DELIVERY MAN (big man in a back brace with a hand truck), THE TODDLER (a toddler in a snowsuit watching a pen)",
+      "tags": [
+        "character",
+        "era3",
+        "extra_maria",
+        "extra_gully_kid",
+        "extra_uncle",
+        "extra_delivery",
+        "extra_toddler"
+      ]
+    },
+    {
+      "id": "sheet_shop_people",
+      "kind": "character",
+      "era": "era2",
+      "ratio": "16:9",
+      "prompt": "a model sheet, labeled: THE FRAME SHOP OWNER (straight-backed woman in her fifties in a work apron with sleeves rolled, reading glasses, a pencil behind her ear, at a mat cutter; and again in her sixties with the glasses on a cord), A CUSTOMER (a coast man in his sixties in a wool cap sliding a laminated card across a counter), A COUPLE (an older man and woman standing close, her hand on his arm, holding a photograph), AN OLD WOMAN (small, in a rain bonnet and a quilted coat, holding a paper cup), plus two figures the strip withholds and the sheet must too: WOOD'S MOTHER as only a hand with a plain ring and a cardigan cuff setting down a plate of toast, and WOOD'S FATHER as only a back in a faded mill jacket walking away",
+      "tags": [
+        "character",
+        "era2",
+        "extra_owner_heceta",
+        "extra_customer_1",
+        "extra_couple",
+        "extra_old_woman",
+        "extra_mother",
+        "extra_father"
+      ]
+    },
+    {
+      "id": "sheet_slash_cast",
+      "kind": "character",
+      "era": "era1",
+      "ratio": "16:9",
+      "prompt": "a noir model sheet in brush-pen with vertical rain hatching behind the figures, labeled: THE FRAMER (a man of forty with heavy-lidded eyes, a barber's mustache, a long jaw and combed-back hair, in a shop apron over a white shirt with the sleeves rolled, ink-stained hands shown large and separately), THE GREEN COAT (a tall woman in her thirties in a long dark wool coat, leather gloves and a hat with the brim low, her mouth one flat line, shown from behind and in profile and once with a photograph face down in her gloved hand), THE DESK SERGEANT (only a broad uniformed shoulder and a jaw at the sheet's edge)",
+      "tags": [
+        "character",
+        "era1",
+        "extra_framer",
+        "extra_green_coat",
+        "extra_sergeant"
+      ]
+    },
+    {
+      "id": "sheet_frontier_cast",
+      "kind": "character",
+      "era": "era1",
+      "ratio": "16:9",
+      "prompt": "a western model sheet in committed brush-pen with dust as stipple, labeled: THE STRANGER (a lean man under a low hat brim with three days' stubble in a long duster to the boot and a bandana, a small dog at his heel, a card in his hatband face down; and on a mule), THE MAN WHO SMOOTHS HIS LAPELS (a trim man in his fifties with slicked silver hair and a narrow smile in a gambler's good coat with a watch chain, both hands on his lapels), THE SIGN PAINTER (a thin man with a brush in his teeth on a ladder), THE SURVEYOR (a stout man in a waistcoat and bowler with a chain over his shoulder and a stake in his fist), THE MILL BOSS (a thick bearded man in shirtsleeves and suspenders)",
+      "tags": [
+        "character",
+        "era1",
+        "extra_stranger",
+        "extra_lapels",
+        "extra_painter",
+        "extra_surveyor",
+        "extra_mill_boss"
+      ]
+    },
+    {
+      "id": "sheet_found_pages_cast",
+      "kind": "character",
+      "era": "era1",
+      "ratio": "16:9",
+      "prompt": "a model sheet in a brush line almost but not quite the strip's own, labeled: THE BARTENDER (a heavy bald-crowned man seen from behind in a white shirt and black vest with a towel over one shoulder, wiping a glass), THE MAN AT TABLE 14 (a trim silver-haired man in a good dark suit smoothing both lapels, looking once at the viewer), THE HELMSMAN (a hatless man in a pilot's coat with both hands on a ship's wheel as the deck tilts), THE DINER DOG (a low brown dog asleep under a booth), THE LEAN MAN (a lean man in a good dark jacket at a bar's far end looking straight out of the sheet)",
+      "tags": [
+        "character",
+        "era1",
+        "extra_bartender",
+        "extra_lapels",
+        "extra_helmsman",
+        "extra_diner_dog",
+        "extra_lean_man"
+      ]
+    },
+    {
+      "id": "sheet_pomegranate_host",
+      "kind": "character",
+      "era": "era3",
+      "ratio": "16:9",
+      "prompt": "a model sheet in razor-sharp brush and ink with one spot tone of screen blue, labeled: THE HOST (a woman of forty with a dark bob and a stillness, drawn three ways in three strokes each: seated at a table with a cassette deck, holding a phone handset and listening, and pressing play; brass rails behind her; the set drawn as a rounded television screen)",
+      "tags": [
+        "character",
+        "era3",
+        "extra_host"
+      ]
+    },
+    {
+      "id": "sheet_cedar_cast",
+      "kind": "character",
+      "era": "era3",
+      "ratio": "16:9",
+      "prompt": "a wet-on-wet watercolor model sheet in cedar red and moss, labeled: THE LOGGER (a big gray-bearded man in a hickory shirt and suspenders at a tailgate pointing up with a coffee cup), THE WOMAN WHO WAS A TREE (a woman of sixty with a long gray plait and a face like bark in a canvas work coat, crouched; and beside her the same woman in cutaway with tree rings inside her torso and one ring notched), THE LISTENER (a thin man of seventy in a wool coat and knit cap with his eyes closed and a stethoscope pressed to a cedar round, a knife in his other hand), THE FAMILY (a mother, father and two children at a kitchen table with a tree trunk at its head, eating, unbothered), THE LIBRARIAN (a woman of sixty in a long gray cardigan at a desk with a green lamp, not looking up), and GULLY'S DAUGHTER at six on a dock pointing up",
+      "tags": [
+        "character",
+        "era3",
+        "extra_logger",
+        "extra_ring_woman",
+        "extra_listener",
+        "extra_family",
+        "extra_librarian",
+        "extra_gully_kid"
+      ]
+    },
+    {
+      "id": "sheet_julian",
+      "kind": "character",
+      "era": "era3",
+      "ratio": "16:9",
+      "prompt": "a model sheet of a man drawn with deliberate neutrality, labeled JULIAN: a pleasant well-dressed man with nothing in his face on purpose, shown three ways the strip allows: a good gray coat hanging on a hook with no one in it, a small printed holiday-card photograph of his face beside a woman's, and once in person in linen at a cedar-and-glass pavilion, kind and blank",
+      "tags": [
+        "character",
+        "era3",
+        "extra_julian"
       ]
     }
   ]

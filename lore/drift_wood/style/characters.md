@@ -324,3 +324,54 @@ step.
 | **extra_stick_hero** | ROLFCOPTR, Nov 2006 | a stick figure with a four-line helicopter rotor on its head; crude ballpoint; hovers six inches; asleep beside the real dog once |
 | **extra_reader** | 2008 | a woman in her sixties with a folded clipping and a pen |
 | **extra_tourists** | every August | fleece, sun hats, roller bags, phones; from 2007 the stick figure on their shirts (which Wood draws blank) |
+| **extra_print_tech** | the college print shop, 1999–2001 | wiry, forty, gray crew cut, ink under the nails, a canvas shop apron over plaid; leans on the copier like it's his; keeps a tally of digests on the wall under the serial number; worked a frame shop in Coos Bay once ("I pushed") |
+| **extra_instructor** | Composition II, 1999–2001 | sharp woman in her forties, dark hair pulled back with reading glasses pushed into it, blazer over a turtleneck; a red pen that is not Chloe's; grades the strip B+ ("Thesis is implied"), lends the Daumier on her own card, gives the auditor the last word and gets an empty balloon |
+| **extra_clerk** | the drugstore, 1998–2008 | thin, long-necked, glasses, a uniform shirt with a blank name tag; has read since the Timberline ("Corn or peas"); knows what seven postcards means |
+| **extra_librarian** | the town library, 1998–2022 | a long gray cardigan at the frame's edge; gray bob, half-moon glasses when the strip lets the face in; brings a stool without a word; "It does that sometimes" (the copier, 1998) |
+| **extra_reader** | the laundromat's folding table, 1999–2008 | small woman in her sixties, white hair pinned up, wool coat kept on, a pen behind her ear; the careful old hand of the rack's notes ("More of the boy at the counter"; "The uncle. Draw him while you can") and the corrected spelling; **never named** |
+| **extra_classmate** | Newport, 1999 | heavyset, fifty, gray mustache, a faded mill jacket with the patch worn blank; reads the digest twice; "Dog's not right" (of the gull) |
+| **extra_vet** | the county vet, 1999–2023 | tall, cropped gray hair, white coat over flannel, a stethoscope; "About a year. Terrier and something"; from Corvallis, per the uncle |
+| **extra_mechanic** | the garage on 101, 2000 | squat, shaved head, coveralls, listens with his head tilted; "The exhaust" is what the car is worth |
+| **extra_flagger** | the slough, 1999–2010 | lanky, orange rain gear, a STOP sign under his arm, smokes; "Closed till it drops"; saw it drop once, in '96 |
+| **extra_pastor / extra_realtor** | the rack's neighbors, 2000 | a round man in a black raincoat over a collar ("That's a kind"); a salesman's haircut in a logo-less windbreaker ("I've seen the dog") |
+| **extra_fisherman** | the launch and the seawall, any year | rubber boots, a wool cap, a rain jacket, walks with a roll; nods at the pad |
+| **extra_kid** | the town's child, 1999–2000 | gap-toothed, nine, a too-big raincoat; in a bedsheet at Halloween ("What are you?" "Auditing." / "Framing."); copies the dog onto a flyer |
+| **extra_regulars** | the tavern, 2007 | three backs on three stools since the mill closed, one with a gray braid; never turned around |
+| **extra_couple / extra_customer_1 / extra_old_woman** | the frame shop counter; the Grunion Run | the 1971 wedding couple (her hand on his arm); the fisherman with the fifty-year license; a rain bonnet who knows Gully |
+| **extra_mr_hadley / extra_principal / extra_yearbook_photog / extra_bus_driver / extra_cashier / extra_grunion_queen** | the Timberline years | mustache and sweater vest; a whistle on a lanyard; a bored girl with a big camera; a permanent wave and eyes on the road; gum and a can of soup; a sash and a paper crown on a flatbed |
+| **extra_delivery / extra_toddler** | Nov 2002; Feb 2005 | a back brace and a hand truck; a snowsuit watching the pen with the dog's 2000 face |
+
+Every id above has an entry in `godot/tools/comic/heroes_vol10.json`
+(name, identity, wardrobe, props) and a slot on a group sheet in
+`style_sheets.json`: `sheet_town_1999`, `sheet_town_2000s`,
+`sheet_timberline_people`, `sheet_gullys_people`, `sheet_shop_people`,
+`sheet_julian`, and the chorus sheet with the handles. The withheld
+ones (the mother, the father, Julian) are entered as what the strip
+withholds, so the prompt says NEVER SHOWN in so many words.
+
+## THE BACKUP CASTS
+
+The series outside the canon (`_BACKUPS.md`) have their own people.
+None of them is Wood; two of them have his hands. Each has a hero
+entry and a sheet: `sheet_slash_cast`, `sheet_frontier_cast`,
+`sheet_found_pages_cast`, `sheet_pomegranate_host`, `sheet_cedar_cast`.
+
+| id | series | how the page draws them |
+|---|---|---|
+| **extra_framer** | SLASH, 2001–03 | forty, heavy-lidded, a barber's mustache, a long jaw, hair combed back; a shop apron over a white shirt, sleeves rolled; street shoes wrong for a boat; **ink-stained hands that are exactly Wood's**, drawn the same; the shop owner calls him Arthur once (page sixty) and he doesn't answer to it |
+| **extra_green_coat** | SLASH | tall, thirties, a hat brim low, a mouth drawn as one flat line; a long green wool coat that the black-and-white page renders as its darkest shape; leather gloves; mostly her back; "Measure the back"; cuts the photograph to a card |
+| **extra_sergeant** | SLASH | a broad uniformed shoulder and a jaw at the frame's edge; "You family?" |
+| **extra_stranger** | THE FRONTIER WEEK (1871) | lean, hat brim low, three days' stubble, a duster to the boot, a bandana; a small dog at his heel; a card in his hatband face down; his name is the town's, every strip |
+| **extra_lapels** | THE FRONTIER WEEK (the gambler), THE SINKHOLE (Table 14), THE POMEGRANATE HOUR (on the motel TV, 2013) | trim, fifties, slicked silver hair, a narrow smile; a good dark suit or a gambler's good coat with a watch chain; smooths both lapels with both hands between everything; looks at the camera once (Jan 2013). **Quoted from Vol 5 (Mr. D. Dean) as an object; never named on the page** |
+| **extra_painter / extra_surveyor / extra_mill_boss** | THE FRONTIER WEEK | a brush in the teeth on a ladder ("The S. Nobody'd miss it"); a waistcoat and bowler with a chain and a stake ("It's not on the map"); a beard, shirtsleeves, suspenders ("Which one") |
+| **extra_bartender** | THE SINKHOLE (since '83), THE LONG WAY BACK (stop XV) | heavy, bald crown, white shirt and black vest, a towel over one shoulder; from behind; never looks at the stool |
+| **extra_helmsman / extra_diner_dog** | THE SINKHOLE | hatless, a pilot's coat, both hands on the wheel as the deck goes over; a low brown dog under a booth that is not the strip's dog |
+| **extra_lean_man** | THE LONG WAY BACK, stop XV | a lean man in a good jacket at the bar's far end; the only face in the sequence that looks back (Vol 5's demon at the bar, quoted) |
+| **extra_host** | THE POMEGRANATE HOUR, 3 AM | a woman of forty with a dark bob and a stillness, drawn in three strokes: the bob, the shoulders, the hand on the cassette deck; brass rails behind her; her balloon once holds a bird instead of words (Vol 5's Elicia Temple, quoted) |
+| **extra_logger / extra_ring_woman / extra_listener / extra_family** | CEDAR | a gray beard and a coffee at a tailgate, certain; a long gray plait and a face like bark, in cutaway with rings inside her and one ring notched; seventy, eyes closed, a stethoscope to a cedar round and a knife; a mother, father and two children eating around a trunk, unbothered |
+
+Rules for the backup casts: they never cross into the canon (the
+lapels man is the one exception, and he crosses only as a figure on
+a screen); Wood's hands may appear on another body; the librarian
+and Gully's daughter are the canon's own, borrowed at six and at a
+desk.
