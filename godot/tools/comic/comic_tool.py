@@ -156,6 +156,16 @@ def validate_strip(s, eras, heroes):
         for b in p.get("balloons") or []:
             if not b.get("who") or "text" not in b:
                 errs.append(f"panel {i}: balloon needs who + text")
+    w = s.get("wardrobe")
+    if w is not None:
+        if not isinstance(w, dict):
+            errs.append("wardrobe must be an object {hero_id: 'what they wear in this strip'}")
+        else:
+            for k, v in w.items():
+                if hero_ids and k not in hero_ids and not k.startswith("extra_"):
+                    errs.append(f"wardrobe: '{k}' is not a hero id")
+                if not isinstance(v, str):
+                    errs.append(f"wardrobe: '{k}' must be a string")
     # the rule: the author never appears
     for p in panels:
         for c in p.get("characters") or []:
@@ -526,7 +536,9 @@ def hero_look(hid, heroes, year=None, compact=False):
     3D-pipeline phrases stripped. This is what stops Gully turning into a
     small boy: the prompt names him AND says what he looks like, every time."""
     h = (heroes.get("heroes") or {}).get(hid) or {}
-    desc = h.get("comic_look") or h.get("meshy_prompt") or h.get("who") or hid
+    # comic_identity is face, hair, build only; clothes and props are
+    # comic_wardrobe / comic_props and come in through wardrobe_block()
+    desc = h.get("comic_identity") or h.get("comic_look") or h.get("meshy_prompt") or h.get("who") or hid
     base = hid.split("_")[0]
     age = ""
     if base in BIRTH and year:
@@ -557,8 +569,67 @@ def cast_block(s, heroes, compact=False):
     if not ids:
         return ""
     lines = [f"{hero_name(i)} — {hero_look(i, heroes, year, compact)}" for i in ids]
-    lead = "Cast:" if compact else "Cast, drawn the same in every panel, ages exactly as given:"
-    return lead + " " + "; ".join(lines) + "."
+    lead = "Cast:" if compact else "Cast, the same faces, hair and builds in every panel, ages exactly as given:"
+    out = lead + " " + "; ".join(lines) + "."
+    wb = wardrobe_block(s, ids, heroes, compact=compact)
+    if wb:
+        out += " " + wb
+    return out
+
+
+_CLOTHES_RE = re.compile(r"\b(coat|jacket|sweater|cardigan|hoodie|flannel|shirt|tee|dress|boots|jeans|trousers|scarf|hat|cap|apron|raincoat|parka|overcoat|vest|wearing|wears|dressed|in a suit)\b", re.I)
+
+
+def strip_wardrobe(s, hid):
+    """What the STRIP says this character wears: the optional top-level
+    "wardrobe": {hero_id: "…"} block (edited in the inspector) — or nothing."""
+    w = s.get("wardrobe") or {}
+    return (w.get(hid) or "").strip()
+
+
+def wardrobe_block(s, ids, heroes, compact=False):
+    """The clothes-and-hands rule. The reference sheet pins face, hair and
+    build only; what a character wears and carries is decided here, per
+    strip: the strip's own wardrobe block first, then the panel text, then
+    the era's usual wardrobe as a fallback. Habitual props are never
+    automatic."""
+    hh = heroes.get("heroes") or {}
+    text = " ".join((p.get("composition") or "") + " " + " ".join(p.get("props") or []) + " " +
+                    " ".join((c.get("pose") or "") + " " + (c.get("wear") or "") for c in (p.get("characters") or []))
+                    for p in s.get("panels") or [])
+    lines = []
+    for i in ids:
+        h = hh.get(i) or {}
+        w = strip_wardrobe(s, i)
+        if w:
+            lines.append(f"{hero_name(i)} wears {w}")
+            continue
+        if compact:
+            continue
+        usual = h.get("comic_wardrobe")
+        if usual and not _CLOTHES_RE.search(text):
+            lines.append(f"{hero_name(i)} usually wears {usual}")
+    if compact:
+        rule = "Clothes and props: as described here, not from the reference."
+    else:
+        rule = ("Clothes, hair-dos and anything held come from this strip's description, never from the reference sheet; "
+                "hands are empty unless a panel names what they hold.")
+    return (" ".join(l + "." for l in lines) + " " if lines else "") + rule
+
+
+def panel_wear(p, heroes):
+    """'CHLOE here wears a green parka, holding a library book.' from the
+    optional per-panel characters[].wear / .holds fields."""
+    out = []
+    for c in p.get("characters") or []:
+        if c.get("id") not in (heroes.get("heroes") or {}):
+            continue
+        bits = []
+        if c.get("wear"): bits.append(f"wears {c['wear']}")
+        if c.get("holds"): bits.append(f"holds {c['holds']}")
+        if bits:
+            out.append(f"{hero_name(c['id'])} here {', '.join(bits)}")
+    return ("; ".join(out) + ".") if out else ""
 
 
 def panel_names(p, heroes):
@@ -600,6 +671,9 @@ def compose_strip_prompt(s, eras, letter=True, compact=False, heroes=None):
         who = panel_names(p, heroes)
         if who:
             seg += f" (in this {unit}: {who})"
+        ph = panel_wear(p, heroes)
+        if ph:
+            seg += f" {ph}"
         if letter:
             bt = _balloon_text(p, compact=compact)
             seg += f". {bt}" if bt else (". No dialogue in this " + unit if not compact else ". No text")
@@ -640,7 +714,7 @@ def cmd_strip_prompts(args):
             tag = ref_tag_name(r)
             who = [t for t in (r.get("tags") or []) if t in (heroes.get("heroes") or {})]
             if who:
-                ref_lines.append(f"Reference @{tag} is the model sheet for {hero_name(who[0])}: match that face, build, hair and clothes exactly.")
+                ref_lines.append(f"Reference @{tag} is the model sheet for {hero_name(who[0])}: match that face, hair and build exactly; do NOT copy its clothes, pose or props — those come from the strip text above.")
             elif r.get("kind") == "location":
                 ref_lines.append(f"Reference @{tag} shows the setting; keep its architecture and props.")
             elif r.get("kind") == "era":

@@ -159,6 +159,9 @@ def api_strip(sid):
     if s.get("review"):
         md += f"\n\n---\n\n**Review** · {s['review'].get('status','')} · {s['review'].get('note','')}\n"
     clean = {k: v for k, v in s.items() if not k.startswith("_")}
+    hh = ct.load_heroes().get("heroes") or {}
+    cast = [c for c in dict.fromkeys(list(s.get("cast") or []) + [c.get("id") for p in s.get("panels") or [] for c in p.get("characters") or []]) if c in hh]
+    clean["_cast"] = [{"id": c, "name": ct.hero_name(c), "usual": hh[c].get("comic_wardrobe", "")} for c in cast]
     return {"strip": clean, "md": md, "prompt": {"lettered": prompt_l, "compact": prompt_c, "negative_lettered": neg_l, "unlettered": prompt_u, "negative_unlettered": neg_u,
                                                   "runway_ratio": rw, "google_aspect": gg},
             "refs": picks, "renders": renders, "errors": ct.validate_strip(s, eras, ct.load_heroes())}
@@ -454,6 +457,25 @@ def set_review(sid, status, note):
     return {"ok": True, "review": s.get("review")}
 
 
+def set_wardrobe(sid, wardrobe):
+    """Write the strip's "wardrobe" block: {hero_id: 'what they wear and carry
+    in this strip'}. Empty strings drop the entry; an empty block is removed."""
+    p = ct.STRIPS / f"{sid}.json"
+    if not p.exists():
+        return {"error": "no such strip"}
+    s = ct.load_json(p)
+    w = {k: v.strip() for k, v in (wardrobe or {}).items() if isinstance(v, str) and v.strip()}
+    if w:
+        s["wardrobe"] = w
+    else:
+        s.pop("wardrobe", None)
+    errs = ct.validate_strip(s, ct.load_eras(), ct.load_heroes())
+    if errs:
+        return {"error": "; ".join(errs)}
+    p.write_text(json.dumps(s, indent=2, ensure_ascii=False), encoding="utf-8")
+    return {"ok": True, "wardrobe": s.get("wardrobe", {})}
+
+
 def set_ref_status(rid, status, note=None):
     refs = ct.load_refs()
     hit = False
@@ -611,6 +633,8 @@ class H(BaseHTTPRequestHandler):
                 return self._send(200, start_job(body))
             if u.path == "/api/review":
                 return self._send(200, set_review(body.get("id"), body.get("status"), body.get("note")))
+            if u.path == "/api/wardrobe":
+                return self._send(200, set_wardrobe(body.get("id"), body.get("wardrobe") or {}))
             if u.path == "/api/ref_status":
                 return self._send(200, set_ref_status(body.get("id"), body.get("status"), body.get("note")))
             if u.path == "/api/ref_upload":
@@ -803,6 +827,7 @@ function renderStrip(d){const s=d.strip,p=d.prompt,rv=s.review||{};const el=$('#
  el.innerHTML=`<div class="head"><h1>${esc(s.title)}</h1><div class="meta">${s.id} · ${s.date} · ${s.strip} · run ${s.run} · ${s.era} · ${s.format} · tier ${s.tier} · ${s.selection} · ${esc(s.arc)} · ${esc(s.location)} · mark ${esc(s.margin?.mark)}</div><div class="log">${esc(s.logline)}</div>
  ${d.errors.length?`<pre style="border-color:var(--red)">${esc(d.errors.join('\n'))}</pre>`:''}
  <div class="review"><span class="pill ${rv.status||''}">${rv.status||'unreviewed'}</span><button class="sm ok" onclick="review('${s.id}','ok')">ok</button><button class="sm bad" onclick="review('${s.id}','revise')">revise</button><button class="sm" onclick="review('${s.id}','')">clear</button><input id="rv-note" placeholder="note for the writer (saved into the strip JSON)" value="${esc(rv.note||'')}"><button class="sm" onclick="review('${s.id}','${rv.status||'ok'}')">save note</button></div></div>
+ ${(s._cast||[]).length?`<div class="review" id="wardrobe"><b>wardrobe for this strip</b> <span class="empty">what each of them wears and carries here; blank = the era's usual, and never what the reference sheet shows</span><br>${s._cast.map(c=>`<label style="display:block;margin:2px 0">${esc(c.name)} <input data-hid="${c.id}" placeholder="usual: ${esc(c.usual||'as the sheet')}" value="${esc((s.wardrobe||{})[c.id]||'')}" style="width:min(520px,80%)"></label>`).join('')}<button class="sm ok" onclick="saveWardrobe('${s.id}')">save wardrobe</button><span class="empty" id="w-msg"></span></div>`:''}
  <div class="tabs">${tabs.map(t=>`<button class="${TAB===t[0]?'on':''}" onclick="tab('${t[0]}')">${t[1]}</button>`).join('')}</div>
  <div class="pane ${TAB==='sheet'?'on':''}" id="p-sheet"><div class="md">${md(d.md)}</div></div>
  <div class="pane ${TAB==='panels'?'on':''}" id="p-panels"><table class="panels md"><tr><th>#</th><th>shot</th><th>composition</th><th>who</th><th>balloons</th><th>image prompt</th><th>notes</th></tr>${s.panels.map(x=>`<tr><td>${x.n}${x.name?'<br>'+esc(x.name):''}</td><td>${esc(x.shot)}</td><td>${esc(x.composition)}${x.caption?'<br><i>caption: '+esc(x.caption)+'</i>':''}${x.sfx?'<br><i>sfx: '+esc(x.sfx)+'</i>':''}</td><td>${(x.characters||[]).map(c=>esc(c.id)+(c.pose?' · <small>'+esc(c.pose)+'</small>':'')).join('<br>')}</td><td>${(x.balloons||[]).map(b=>'<b>'+esc(b.who)+'</b> '+esc(b.text)+(b.kind?' <small>('+esc(b.kind)+')</small>':'')).join('<br>')}</td><td>${esc(x.image?.prompt)}</td><td>${esc(x.image?.notes)}</td></tr>`).join('')}</table></div>
@@ -857,6 +882,7 @@ function tab(t){TAB=t;document.querySelectorAll('.pane').forEach(p=>p.classList.
 function copy(id){navigator.clipboard.writeText($('#'+id).textContent);}
 async function review(id,status){const note=$('#rv-note')?.value||'';await api('/api/review',{method:'POST',body:JSON.stringify({id,status,note})});await loadStrips();open(id);}
 async function refStatus(id,status){await api('/api/ref_status',{method:'POST',body:JSON.stringify({id,status})});if(MODE==='sheets'){await loadSheets();open(SHEETS.some(s=>s.id===id)?id:SEL);}else if(MODE==='refs'){await loadRefs();open(id);}else open(SEL);}
+async function saveWardrobe(id){const w={};document.querySelectorAll('#wardrobe input[data-hid]').forEach(i=>{w[i.dataset.hid]=i.value;});const r=await api('/api/wardrobe',{method:'POST',body:JSON.stringify({id,wardrobe:w})});$('#w-msg').textContent=r.error?('✗ '+r.error):'✓ saved into the strip JSON · prompt updated';if(!r.error){const t=TAB;await open(id);tab(t);}}
 async function regenMd(){await api('/api/md',{method:'POST',body:'{}'});$('#g-msg')&&($('#g-msg').textContent='md regenerated');}
 function setMode(m){MODE=m;SEL=null;document.querySelectorAll('.mode button').forEach(b=>b.classList.toggle('on',b.id==='m-'+m));$('#detail').innerHTML='<p class="empty">pick one</p>';
  if(m==='strips')loadStrips();else if(m==='sheets')loadSheets();else if(m==='refs')loadRefs();else if(m==='keys'){render();renderKeys();}else{render();renderJobs();setTimeout(()=>{if(MODE==='jobs')renderJobs();},3000);}}

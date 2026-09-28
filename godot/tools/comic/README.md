@@ -169,6 +169,32 @@ hold them:
 If the last-run panel says "no references attached", the faces came
 from the prompt alone; render and approve the sheets.
 
+**Clothes and props are not identity.** The other failure was the
+opposite one: with a sheet attached, every strip came back in the
+sheet's outfit holding the sheet's mug. So `heroes_vol10.json` now
+splits each hero into `comic_identity` (face, hair, build: what the
+cast block and the reference pin), `comic_wardrobe` (the era's usual
+clothes, used only as a fallback) and `comic_props` (never automatic).
+The prompt says, in words, that clothes, hair-dos and anything held
+come from the strip text and never from the reference sheet, and that
+hands are empty unless a panel names what they hold. Three places to
+say what someone wears in a given strip, strongest first:
+
+1. **Per panel**, in the strip JSON: `characters[].wear` and
+   `characters[].holds` ("a green parka", "a library book").
+2. **Per strip**, the top-level `wardrobe` block `{hero_id: "…"}`.
+   The strip view in the inspector has a *wardrobe for this strip* row
+   with one field per cast member; *save wardrobe* writes it into the
+   JSON and rebuilds the prompt.
+3. **Nothing**: if the panels already mention clothing the prompt
+   trusts them; otherwise it adds "usually wears" from the era's
+   wardrobe.
+
+OpenAI's gpt-image path is the weakest here, because the sheet goes in
+as the image to edit; Runway with @tags and Google inline follow the
+words better. If an outfit still will not change, put it in the panel's
+composition text as well.
+
 **Your own image as a reference.** REFS mode has an *add your own image*
 bar: pick a PNG/JPEG/WebP, choose the character (and era), and save.
 For a character that has a model sheet (`sheet_gully_35` and so on) the
