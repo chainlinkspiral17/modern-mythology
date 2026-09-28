@@ -1,0 +1,108 @@
+{
+  "id": "dw_1999-11-29_the_beach_again",
+  "title": "The beach, again",
+  "strip": "drift_wood",
+  "date": "1999-11-29",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Dog Learns the Town",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Every morning now: the beach. The strip draws the same walk it drew two weeks ago and it's different. The dog knows the way. Wood doesn't lead; he follows a sock.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The beach at dawn, gray, the tide out. BARNABY ahead, the sock in his mouth. WOOD behind.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a gray Pacific Northwest beach at dawn with a small dog trotting ahead carrying a sock and a young man following, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The dog stopping at a log. Wood stopping. The dog looking back: this one.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small dog stopped at a driftwood log on a beach, looking back at a young man, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The log. A drawing on it? No. Barnacles. But Wood looks.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a barnacled driftwood log on a beach, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The two of them past the log, on toward the spruce grove. The strip has a route now and didn't choose it.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man and a small dog walking a gray beach toward a dark spruce grove at its edge, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The route is the dog's. The log appears; the walk map (2007) begins here without knowing."
+}

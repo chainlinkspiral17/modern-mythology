@@ -1,0 +1,115 @@
+{
+  "id": "dw_1999-12-08_lot_c_empty",
+  "title": "Lot C, empty",
+  "strip": "drift_wood",
+  "date": "1999-12-08",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Winter, Newport",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Term over. Lot C empty. Wood drives there anyway on Wednesday and parks in his spot. The guard comes out. Neither says why either of them is there.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "security_guard"
+  ],
+  "location": "dw_newport_lot",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Lot C, empty, December, frost on the lines. The Datsun in its spot. Nothing else.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an empty community college parking lot in December with frost on the painted lines and one small car parked, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD in the car, BARNABY on the box. Not drawing. Just parked.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man sitting in a parked car not drawing while a small dog rests on a box in the back seat, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The GUARD walking over, hands in his coat. Stopping at the hood. Not tapping.",
+      "characters": [
+        {
+          "id": "security_guard",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a security guard standing at the hood of a parked car in an empty lot with his hands in his coat, not knocking, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The two of them, one in the car, one outside, looking at the empty lot. Nobody asks. The strip doesn't either.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man standing beside a parked car and a young man inside it, both looking out at an empty frost-covered lot, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Two people in an empty lot, not asking."
+}

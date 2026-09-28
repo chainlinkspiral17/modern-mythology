@@ -1,0 +1,121 @@
+{
+  "id": "dw_1999-10-29_the_digest_with_no_holiday",
+  "title": "The digest with no holiday",
+  "strip": "drift_wood",
+  "date": "1999-10-29",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Halloween, refused",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Friday, the Halloween digest. The cover is the hardware store's pumpkins, unbought, in the rain. The owner says it's the saddest thing in the rack. He says it's not a Halloween cover. She says exactly.",
+  "cast": [
+    "wood_20",
+    "laundromat_owner"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "The digest cover: the pallet of pumpkins under the awning, rain, no one. Drawn on the spot.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a small photocopied booklet cover showing a pallet of pumpkins under a store awning in rain with no one about, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The LAUNDRY owner with it at the counter. WOOD in the door.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "laundromat_owner",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "LAUNDRY",
+          "text": "Saddest thing in the rack."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's not a Halloween cover."
+        },
+        {
+          "who": "LAUNDRY",
+          "text": "Exactly."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat owner holding a small booklet at her counter while a young man stands in the doorway, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The rack. The digest beside a church bulletin with a pumpkin on it.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a wire rack holding a photocopied booklet beside a church bulletin printed with a pumpkin, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The laundromat window from the street: two skeletons, the rack, the owner. Rain. Wood gone.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat window at dusk with two paper skeletons and a flyer rack visible through the glass, rain outside, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Exactly.' The saddest thing in the rack is the cover."
+}

@@ -1,0 +1,133 @@
+{
+  "id": "dw_1999-11-30_the_dog_at_the_shack",
+  "title": "The dog at the shack",
+  "strip": "drift_wood",
+  "date": "1999-11-30",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Dog Learns the Town",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The uncle and the dog. The uncle has had dogs. He looks at this one and says 'that one's a coast dog.' It's the first time anyone's agreed with Wood about anything.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby",
+    "extra_uncle"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack. The UNCLE in the door. BARNABY at his boots, sniffing. WOOD and GULLY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_uncle",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old man in a rain hood standing in a shack doorway with a small dog sniffing his boots, two young men watching, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The uncle looking down. The dog looking up. Two flat faces.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old weathered man and a small scruffy dog looking at each other, both expressionless, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The uncle.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "UNCLE",
+          "text": "That one's a coast dog."
+        },
+        {
+          "who": "WOOD",
+          "text": "That's what I said. The vet said hound."
+        },
+        {
+          "who": "UNCLE",
+          "text": "Vet's from Corvallis."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old man speaking flatly from a shack doorway, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The dog going into the shack ahead of everyone. The uncle letting him. Gully looking at Wood: that never happens.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small dog walking into a bait shack ahead of an old man who lets him pass, a teenager exchanging a look with a young man, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Coast dog.' The uncle agrees with Wood, once. 'Vet's from Corvallis.'"
+}

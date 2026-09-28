@@ -1,0 +1,108 @@
+{
+  "id": "dw_1999-10-07_drawing_the_lot",
+  "title": "Drawing the lot",
+  "strip": "drift_wood",
+  "date": "1999-10-07",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Newport",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Rain. Wood stays in the Datsun in Lot C and draws the lot for the whole hour. The guard walks by twice and doesn't tap. The drawing is the best thing he's made this month and it's a parking lot.",
+  "cast": [
+    "wood_20",
+    "security_guard"
+  ],
+  "location": "dw_newport_lot",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Lot C in rain, from inside the Datsun: the wipers stopped, the windshield running, the lot's lines, the spruce.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a rainy community college parking lot seen through a car windshield running with water, painted lines and spruce trees beyond, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD drawing on the wheel. The GUARD walking past the hood with a hood up. Not tapping.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "security_guard",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man drawing on a pad against a steering wheel while a security guard in a rain hood walks past the car without stopping, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The pad: the lot, every line, every puddle, the guard's back, in a line that has stopped being nervous.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a drawing pad showing a rain-soaked parking lot rendered in confident ink lines with a guard's back in it, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The guard passing again the other way. A glance at the pad through the glass. A nod. Wood nodding back. Nobody says student.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a security guard glancing through a rainy car window at a drawing pad and giving a small nod, the young man inside nodding back, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The best drawing of the month is a parking lot. The guard doesn't tap."
+}

@@ -1,0 +1,102 @@
+{
+  "id": "dw_1999-11-11_the_form",
+  "title": "The form",
+  "strip": "drift_wood",
+  "date": "1999-11-11",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Application",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The form. Name, address, statement of purpose. Wood fills in name and address. The statement of purpose is a box. He draws in it. The strip shows the box, not the drawing.",
+  "cast": [
+    "wood_20"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The desk. A form, official, the letterhead as blocks. WOOD with a pen. Name and address filled, in the display face, too big for the lines.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man at a desk filling in an official form with lettering too large for its lines, black and white, no words",
+        "negative": "",
+        "notes": "Letterhead as blocks. Letter after: nothing; the name is too big to read."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "STATEMENT OF PURPOSE: a box, empty. The pen hovering.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on an empty ruled box on a form with a pen hovering above it, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The pen drawing in the box. The strip shows the pen, the box's edge, not what's in it.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a pen drawing inside a boxed area on a form, the drawing itself hidden by the hand, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The form in an envelope. Wood licking it. The corkboard behind: the ferry postcard, picture out.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man sealing an envelope at a desk with a corkboard behind him pinned with a ferry postcard, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The statement of purpose is a drawing. Reserved what."
+}

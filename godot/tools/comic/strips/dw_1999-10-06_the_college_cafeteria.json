@@ -1,0 +1,122 @@
+{
+  "id": "dw_1999-10-06_the_college_cafeteria",
+  "title": "The college cafeteria",
+  "strip": "drift_wood",
+  "date": "1999-10-06",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Newport",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The college has a cafeteria. Adults in it, facing every direction. Wood sits at the near end of a long table. The strip doesn't say what this rhymes with.",
+  "cast": [
+    "wood_20",
+    "extra_classmate"
+  ],
+  "location": "dw_cafeteria",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "A community college cafeteria at noon: round tables, adults of every age facing every direction, a vending machine, a window on the lot. WOOD at the near end of the one long table.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a community college cafeteria at noon with round tables of adults of all ages facing every direction, a young man alone at the end of one long table by the window, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "His tray. Corn. He didn't choose it; it came.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a cafeteria tray with a paper cup of corn kernels and a plastic fork, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "A CLASSMATE, fifty, in a mill jacket, sitting down across from him without asking. Eating.",
+      "characters": [
+        {
+          "id": "extra_classmate",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CLASSMATE",
+          "text": "You're the one with the booklet."
+        },
+        {
+          "who": "WOOD",
+          "text": "The digest."
+        },
+        {
+          "who": "CLASSMATE",
+          "text": "The booklet."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an older man in a faded mill jacket sitting down across from a young man at a cafeteria table, both eating, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The long table from the far end. Two men at the near end, facing each other. Everyone else facing everywhere. The strip lets the rhyme go.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a long cafeteria table seen from its far end with two men at the near end facing each other while the room faces every direction, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Nobody faces one direction here. Corn anyway. #1 is not quoted."
+}

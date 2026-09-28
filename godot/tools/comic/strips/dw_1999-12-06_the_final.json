@@ -1,0 +1,121 @@
+{
+  "id": "dw_1999-12-06_the_final",
+  "title": "The final",
+  "strip": "drift_wood",
+  "date": "1999-12-06",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Winter, Newport",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The instructor's final: a thesis, defended. Wood hands in twelve weeks of digests stapled together with one sentence on the front. The strip shows the staple.",
+  "cast": [
+    "wood_20",
+    "extra_instructor"
+  ],
+  "location": "dw_college_classroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The classroom, final day. Students with blue books. The INSTRUCTOR collecting. WOOD at the back with a stack of twelve digests stapled thick.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_instructor",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a classroom on exam day with adult students handing in blue books and a young man at the back holding a thick stapled stack of small booklets, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The stack's front: one sentence in the display face. The strip draws it too small to read.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a thick stack of stapled photocopied booklets with one line of hand-lettering on the front too small to read, black and white, no words",
+        "negative": "",
+        "notes": "The thesis sentence: reserved. Letter after: nothing legible."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The instructor taking it. Weighing it in her hand. Reading the sentence.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman instructor weighing a thick stapled stack of booklets in her hand and reading its cover, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "close",
+      "composition": "The instructor, without looking up.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "INSTRUCTOR",
+          "text": "That's a thesis."
+        },
+        {
+          "who": "WOOD",
+          "text": "Is it a pass?"
+        },
+        {
+          "who": "INSTRUCTOR",
+          "text": "You're auditing, Mr. Finch. Nothing's a pass."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman instructor's face bent over a stack of booklets, dry, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Twelve digests, one sentence. 'Nothing's a pass.'"
+}
