@@ -1,0 +1,126 @@
+{
+  "id": "dw_1999-10-08_the_third_digest",
+  "title": "The third digest",
+  "strip": "drift_wood",
+  "date": "1999-10-08",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Newport",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Friday. The third digest. The laundromat owner has moved the rack six inches closer to the door. Wood notices. She says the flyers were getting wet.",
+  "cast": [
+    "wood_20",
+    "laundromat_owner"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The laundromat. WOOD in the door with a stack. The free rack — moved. Six inches nearer the door. He stops.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man in a laundromat doorway holding a stack of booklets, looking at a wire flyer rack set close to the door, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The floor: four small dents in the linoleum where the rack's feet used to be.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a linoleum floor with four small dents where a rack's feet once stood, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The LAUNDRY owner folding towels at the table, not looking up.",
+      "characters": [
+        {
+          "id": "laundromat_owner",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "You moved the rack."
+        },
+        {
+          "who": "LAUNDRY",
+          "text": "Flyers were getting wet."
+        },
+        {
+          "who": "WOOD",
+          "text": "The flyers were fine."
+        },
+        {
+          "who": "LAUNDRY",
+          "text": "Then it was the other thing."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat owner in a cardigan folding towels at a table without looking up, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood setting the third digest in the rack. The rack in the light from the door now. He doesn't say thank you. She doesn't say you're welcome. The dryers.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man setting a small booklet into a wire rack lit by daylight from a laundromat's door, dryers turning behind, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Six inches nearer the door. 'Then it was the other thing.'"
+}

@@ -1,0 +1,116 @@
+{
+  "id": "dw_1999-10-20_coiling",
+  "title": "Coiling",
+  "strip": "drift_wood",
+  "date": "1999-10-20",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Uncle's Pots",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Gully coils rope for four panels. Wood draws his hands. It's the first strip that's only hands. The uncle looks over and says nothing, which is the review.",
+  "cast": [
+    "gully_17",
+    "wood_20",
+    "extra_uncle"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "GULLY's hands, coiling wet line over elbow and palm. Nothing else.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a teenager's hands coiling wet rope over elbow and palm, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The coil growing. The hands. A thumb pressing the loop flat.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on hands pressing a loop of rope flat onto a growing coil, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "WOOD's hand, drawing, the pad's corner. The pen following the rope.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a young man's hand drawing with a pen following the curve of a rope on a pad, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The UNCLE at the shack door, looking at the pad over Wood's shoulder. Saying nothing. Going back in.",
+      "characters": [
+        {
+          "id": "extra_uncle",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old man in a rain hood looking over a young man's shoulder at a drawing pad, then turning back into a shack doorway, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Only hands. The uncle's silence is the review."
+}

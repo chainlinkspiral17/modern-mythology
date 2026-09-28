@@ -1,0 +1,102 @@
+{
+  "id": "dw_1999-11-08_apply_she_says",
+  "title": "Apply, she says",
+  "strip": "drift_wood",
+  "date": "1999-11-08",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Application",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "A postcard from Seattle, the first. Four words legible among the tiny capitals: APPLY. YOU COWARD. — C. Wood reads it three times and pins it face out. Then face in.",
+  "cast": [
+    "wood_20"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Wood's bedroom. The corkboard: the crab flyer, the yearbook photo, a Timberline back page, the bus schedule. A postcard on the desk. WOOD.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man's bedroom with a corkboard pinned with a flyer, a yearbook photo, a newspaper page and a bus schedule, a postcard on the desk, black and white, no words",
+        "negative": "",
+        "notes": "Corkboard per objects.md 1998–99. The needle-tower postcard is Dec 20; this one is a ferry."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The postcard's back: tiny manic capitals edge to edge, and four words drawn legible in the middle.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a postcard's back covered edge to edge in tiny cramped handwriting with a few words larger in the middle, black and white, no words",
+        "negative": "",
+        "notes": "Letter after: APPLY. YOU COWARD. — C."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood pinning it to the corkboard, picture out: a ferry on gray water.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man pinning a postcard of a ferry on gray water to a corkboard, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "close",
+      "composition": "The same pin. The card turned. Writing out. Then — his hand again — picture out. The strip leaves it there.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a hand turning a pinned postcard over on a corkboard and then back again, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'APPLY. YOU COWARD.' The first postcard. Turned twice."
+}

@@ -1,0 +1,132 @@
+{
+  "id": "dw_1999-12-27_batteries",
+  "title": "Batteries",
+  "strip": "drift_wood",
+  "date": "1999-12-27",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Last Week of the Century",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The hardware store has sold out of batteries. A sign in the window says so. The strip draws the sign and the empty pegs. Wood buys a flashlight with no batteries and finds that right too.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "extra_clerk"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Main street, the hardware store, a hand-lettered sign in the window drawn as blocks, a line of people. WOOD and BARNABY passing.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small-town hardware store with a hand-lettered sign in its window and a short line of people outside, a young man and a dog passing in rain, black and white, no words",
+        "negative": "",
+        "notes": "Letter after: NO BATTERIES."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Inside: the battery pegs, empty, a hundred hooks with nothing on them.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a hardware store's peg wall with every battery hook empty, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood at the register with a flashlight. The CLERK.",
+      "characters": [
+        {
+          "id": "extra_clerk",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CLERK",
+          "text": "No batteries."
+        },
+        {
+          "who": "WOOD",
+          "text": "I know."
+        },
+        {
+          "who": "CLERK",
+          "text": "It won't—"
+        },
+        {
+          "who": "WOOD",
+          "text": "I know."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man at a hardware store register holding a flashlight while the clerk looks at him, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Wood on the sidewalk with a flashlight that doesn't work. The dog. The street. He likes it that way.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man on a rainy sidewalk holding a flashlight and a leash, a small dog looking up at him, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Y2K week. A flashlight with no batteries, on purpose."
+}

@@ -1,0 +1,127 @@
+{
+  "id": "dw_1999-12-03_the_dog_cover",
+  "title": "The dog cover",
+  "strip": "drift_wood",
+  "date": "1999-12-03",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Dog Learns the Town",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Friday. The owner asks for the dog on the cover. Wood says the cover is the town. She says the dog's in the town. He draws the dog from behind, small, on the seawall, facing the bay. It's the cover.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "laundromat_owner"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The laundromat counter. The LAUNDRY owner. WOOD with the blank cover. BARNABY under the table.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "laundromat_owner",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "LAUNDRY",
+          "text": "Put the dog on it."
+        },
+        {
+          "who": "WOOD",
+          "text": "The cover's the town."
+        },
+        {
+          "who": "LAUNDRY",
+          "text": "Dog's in the town."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat owner at her counter talking to a young man holding a blank sheet, a small dog under the folding table, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood drawing. The seawall. A small dog from behind on it, facing the bay. Small.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a pen drawing a small dog seen from behind sitting on a seawall facing a gray bay, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The owner looking at it. A long look. The owner has looks now.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat owner studying a small drawing for a long moment, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The rack. The digest. The dog on the cover, tiny, facing away. The first cover with anyone on it.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wire rack holding a photocopied booklet whose cover shows a tiny dog from behind on a seawall, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The first cover with a figure. From behind, small, facing away. The strip's rule for figures on covers, set."
+}
