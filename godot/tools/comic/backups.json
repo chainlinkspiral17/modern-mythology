@@ -1,0 +1,170 @@
+{
+  "_comment": "The backup series (lore/drift_wood/_BACKUPS.md): one entry per series, keyed by the exact `series` string the bk_ strips carry. title/subtitle are what the title page letters; masthead says how the title is drawn on the title page; running_head is the small series mark on every later page; tagline goes under the title on the title page; credit is the printed credit line (empty for found or unsigned series). page_count is checked against the strips on disk by the validator. Read by comic_tool.py; the prompt letters the masthead on the title page and the running head elsewhere.",
+  "series": {
+    "THE HALLOWEEN ISSUE": {
+      "title": "THE HALLOWEEN ISSUE",
+      "subtitle": "The Timberline · an issue that never went to the copier · 1998",
+      "genre": "pulp horror",
+      "tagline": "The cafeteria at night. The tray line moving with no one at it.",
+      "masthead": "the title cut from black construction paper in tall dripping capitals and pasted across the top of the page, the school paper's name beneath it in the xeroxed masthead type, a bat-shaped cut-out where the paper's logo would be",
+      "running_head": "a small black rectangle at the top corner with the word HALLOWEEN reversed out white, the page number beside it",
+      "credit": "",
+      "signed": false,
+      "page_count": 4
+    },
+    "THE FRONTIER WEEK": {
+      "title": "THE FRONTIER WEEK",
+      "subtitle": "Small Wood, 1871 · a western week the editor cut",
+      "genre": "western",
+      "tagline": "Every strip he'll be asked his name. Every strip he'll say the town's.",
+      "masthead": "the title in fat wood-type circus capitals on a weathered plank sign with two nail holes, a curl of rope around one end, the subtitle in small slab capitals on a second smaller plank hung crooked beneath it",
+      "running_head": "a tiny plank with the word FRONTIER burned into it in the top corner, the strip's weekday beside it",
+      "credit": "A. Finch",
+      "signed": true,
+      "page_count": 6
+    },
+    "SLASH": {
+      "title": "SLASH",
+      "subtitle": "a crime story of the Oregon coast · Box 4B · sixty pages, never lettered",
+      "genre": "neo-noir",
+      "tagline": "Measure the back.",
+      "masthead": "the title as one wet brush stroke, the five letters made by a single diagonal slash of white through a field of black vertical rain hatching, the subtitle in small neat pen capitals in the bottom margin",
+      "running_head": "the word SLASH very small in the top-left corner in brush, one short diagonal stroke through it, the page number in the top-right",
+      "credit": "A. Finch",
+      "signed": true,
+      "page_count": 10
+    },
+    "NOIR WEEK II · THE DOG DETECTIVE": {
+      "title": "NOIR WEEK II",
+      "subtitle": "THE DOG DETECTIVE · the second week, unrun",
+      "genre": "pulp detective",
+      "tagline": "It was raining. It's always raining. That's the coast.",
+      "masthead": "the title in heavy pulp-paperback capitals with a hard drop shadow, a fedora's silhouette resting on the last letter, THE DOG DETECTIVE beneath in a narrow condensed face, and a caption box at the page's foot with the tagline",
+      "running_head": "a tiny fedora in the top corner with the words NOIR WEEK II in condensed capitals beside it",
+      "credit": "",
+      "signed": false,
+      "page_count": 6
+    },
+    "THE SINKHOLE": {
+      "title": "THE SINKHOLE",
+      "subtitle": "a Sunday page from a paper he never drew for · found in Box 5",
+      "genre": "weird",
+      "tagline": "not mine. keep.",
+      "masthead": "a newspaper Sunday-section masthead in a line almost his and not his: the title in a florid serif with a section number, a dateline drawn as blocks, a small circular section logo of a street opening into a hole, and the newsprint's fold crease running straight through the title",
+      "running_head": "the title small in the same florid serif at the top of the page with a section page number, the fold crease beneath it",
+      "credit": "",
+      "signed": false,
+      "page_count": 4
+    },
+    "RUST_CODE.BBS": {
+      "title": "RUST_CODE.BBS",
+      "subtitle": "drawn during Message Boards · never posted",
+      "genre": "weird",
+      "tagline": "ACTIVE NODES: 64",
+      "masthead": "the title as a banner of phosphor-green block capitals across a gray monitor's screen, drawn in a monospaced hand with a blinking cursor after the last letter, the subtitle in green beneath it and the tagline on the line below that",
+      "running_head": "a small gray rectangle in the top corner with a line of green blocks in it, the page number as two green shapes",
+      "credit": "A. Finch",
+      "signed": true,
+      "page_count": 6
+    },
+    "THE RENDER WEEK": {
+      "title": "THE RENDER WEEK",
+      "subtitle": "a science-fiction week the papers declined · posted once, taken down",
+      "genre": "science fiction",
+      "tagline": "It's always the water.",
+      "masthead": "the title in phosphor-green wireframe capitals, the first two words shaded solid and the third still an outline, a progress bar under the whole title three-quarters full, the subtitle in small type below the bar",
+      "running_head": "the word RENDER in tiny wireframe capitals at the top corner with a short progress bar beside it",
+      "credit": "A. Finch",
+      "signed": true,
+      "page_count": 6
+    },
+    "THE LONG WAY BACK": {
+      "title": "THE LONG WAY BACK",
+      "subtitle": "twenty-two stops on 101 · the sabbatical, 2010",
+      "genre": "esoteric travelogue",
+      "tagline": "He doesn't recognize himself. The reader does.",
+      "masthead": "the title hand-lettered along the folds of an opened highway map, the letters crossing the creases, the coast a blue line and 101 a red line with twenty-two small dots along it and eight of them ringed, the subtitle in the map's legend box",
+      "running_head": "a small numeral for the stop in a ringed dot at the top corner, a short piece of red road line through it",
+      "credit": "A. Finch",
+      "signed": true,
+      "page_count": 8
+    },
+    "THE CARD IN THE DRAWER": {
+      "title": "THE CARD IN THE DRAWER",
+      "subtitle": "room twelve · a card each month from a guest never seen",
+      "genre": "occult",
+      "tagline": "No numeral, no title. The card's name is the thing.",
+      "masthead": "the title lettered in brush capitals directly on the front of a motel nightstand drawer, the drawer's brass pull sitting in place of the letter O in DRAWER, the drawer open an inch on darkness, the subtitle in small pen capitals on the nightstand's top edge",
+      "running_head": "a tiny drawn drawer-front at the top corner with the card's month lettered on it",
+      "credit": "",
+      "signed": false,
+      "page_count": 8
+    },
+    "THE POMEGRANATE HOUR, 3 AM": {
+      "title": "THE POMEGRANATE HOUR",
+      "subtitle": "3 AM · the lobby TV · recaps never run",
+      "genre": "occult talk-show",
+      "tagline": "A channel the motel doesn't get.",
+      "masthead": "a television title card: the title in elegant late-night-show script across a rounded-rectangle screen, a pomegranate cut open in place of the O in HOUR with its seeds in the screen's blue spot tone, 3 AM in a clock's digits beneath, the subtitle in small capitals under the screen's bracket",
+      "running_head": "a tiny rounded screen at the top corner with 3 AM in it",
+      "credit": "",
+      "signed": false,
+      "page_count": 5
+    },
+    "CEDAR": {
+      "title": "CEDAR",
+      "subtitle": "a novel of the timber country · the corner box promised it in 2017",
+      "genre": "magical realism",
+      "tagline": "Nobody in the house finds it strange.",
+      "masthead": "the title carved into the end grain of a cedar round that fills the page, the five letters cut through the rings, one ring notched, the subtitle lettered along the bark's edge in small brush capitals, wet-on-wet cedar red and moss",
+      "running_head": "a tiny cedar round at the top corner with the page's ring notched, the word CEDAR beside it in brush",
+      "credit": "A. Finch",
+      "signed": true,
+      "page_count": 8
+    },
+    "POSTCARDS FROM THE OTHER TOWN": {
+      "title": "POSTCARDS FROM THE OTHER TOWN",
+      "subtitle": "a romance in eight cards · never ran",
+      "genre": "romance",
+      "tagline": "One word each.",
+      "masthead": "the title lettered in a postcard's souvenir script across a card's blank front, each word in a different pastel, the subtitle on the card's divided back as the only legible line among strokes, a stamp with no numeral crooked in the corner",
+      "running_head": "a tiny stamp at the top corner with the card's numeral, the word POSTCARDS in souvenir script beside it",
+      "credit": "",
+      "signed": false,
+      "page_count": 8
+    },
+    "THE BACKWARD DIGEST": {
+      "title": "THE BACKWARD DIGEST",
+      "subtitle": "after the print tech's misfold of September 30, 1999",
+      "genre": "experimental",
+      "tagline": "The reader who reads it the usual way arrives home first.",
+      "masthead": "the title lettered mirror-reversed in the xerox capitals of the 1997 masthead so it reads correctly only in a mirror, printed on a quarter-letter digest folded the wrong way with its staple showing, the subtitle beneath in the private washes reading the right way round",
+      "running_head": "the word BACKWARD very small and mirror-reversed at the top corner on the wrong side of the page",
+      "credit": "",
+      "signed": false,
+      "page_count": 6
+    },
+    "THE FREQUENCY BENEATH": {
+      "title": "THE FREQUENCY BENEATH",
+      "subtitle": "after a paperback found in the library's return cart",
+      "genre": "paranormal",
+      "tagline": "47",
+      "masthead": "the title formed by a single oscilloscope trace on graph paper, one unbroken warm line rising and falling into each letter and then running flat off the right edge of the page, the subtitle in small ruled capitals in the graph's margin, the tagline as two shapes not a numeral",
+      "running_head": "a short flat trace at the top of the page with one small blip in it, no words",
+      "credit": "",
+      "signed": false,
+      "page_count": 8
+    },
+    "THE SCUMM STICK": {
+      "title": "THE SCUMM STICK",
+      "subtitle": "an adventure that doesn't exist · after the machine in the pizza window",
+      "genre": "playful",
+      "tagline": "LOOK AT · PICK UP · TALK TO · USE · OPEN · GIVE · WALK TO",
+      "masthead": "a game's title screen in a 4:3 frame: the title in chunky sixteen-color pixel capitals over the garage doorway's silhouette, the verb bar beneath with no verb marked, the inventory strip empty, and the sentence line reading NEW GAME",
+      "running_head": "the title in tiny pixel capitals at the top of the 4:3 frame, the room number beside it",
+      "credit": "",
+      "signed": false,
+      "page_count": 8
+    }
+  }
+}

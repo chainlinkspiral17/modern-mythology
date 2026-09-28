@@ -1,0 +1,57 @@
+{
+  "id": "bk_2011-09-13_the_card_in_the_drawer_title_page",
+  "title": "THE CARD IN THE DRAWER · title page",
+  "strip": "backup",
+  "series": "THE CARD IN THE DRAWER",
+  "title_page": true,
+  "date": "2011-09-13",
+  "run": 3,
+  "era": "era2",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the motel · a card left in room twelve's nightstand each month by a guest never seen · Box 12",
+  "arc": "THE CARD IN THE DRAWER",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The title page, drawn before page one: the masthead over the series' one image, with nobody in it. It letters the title, the subtitle and the tagline. No numeral, no title. The card's name is the thing.",
+  "cast": [],
+  "location": "dw_motel_desk",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "splash",
+      "composition": "A motel nightstand filling the page, its one drawer open an inch on darkness, the title lettered in brush capitals on the drawer's front with the brass pull as the O of DRAWER, a Gideon's edge and a pen just visible inside, the lamp above switched off, one spot tone on the pull.",
+      "characters": [],
+      "props": [
+        "the drawer, open an inch",
+        "the Gideon's edge"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp black ink comic page with one spot tone, a motel nightstand filling the frame with its drawer open an inch on darkness, the series title lettered in brush capitals on the drawer front with the brass pull in place of one letter, a Gideon bible's edge and a pen just visible inside, a switched-off lamp above",
+        "negative": "",
+        "notes": "Room twelve. Nothing in the drawer yet; the first card is next week."
+      },
+      "stage": null,
+      "lettering": [
+        "THE CARD IN THE DRAWER",
+        "room twelve · a card each month from a guest never seen",
+        "No numeral, no title. The card's name is the thing."
+      ]
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; one card per page, the card's border drawn as the motel nightstand's drawer edge",
+    "palette": "black ink and one spot tone per card",
+    "paper": "bristol, the motel's pad first, then bristol"
+  },
+  "notes": "Title page. Letters exactly: THE CARD IN THE DRAWER / room twelve · a card each month from a guest never seen / No numeral, no title. The card's name is the thing..",
+  "layout": "title page: the masthead over a single image"
+}

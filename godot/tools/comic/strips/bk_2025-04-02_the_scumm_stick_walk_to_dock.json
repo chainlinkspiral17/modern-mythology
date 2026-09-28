@@ -42,11 +42,21 @@
       "caption": "",
       "sfx": "",
       "image": {
-        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a page laid out like an old point-and-click adventure screen with a scene in the upper two-thirds, a row of verbs in a monospaced hand beneath it with one marked, and a strip of small drawn inventory objects along the bottom, a wooden dock with a lawn chair and a plank ramp outlined as hotspots and a small figure in plaid flannel seen from behind halfway across the planks with four faint repeated walk frames trailing behind him, no words legible",
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a page laid out like an old point-and-click adventure screen with a scene in the upper two-thirds, a row of verbs in a monospaced hand beneath it with one marked, and a strip of small drawn inventory objects along the bottom, a wooden dock with a lawn chair and a plank ramp outlined as hotspots and a small figure in plaid flannel seen from behind halfway across the planks with four faint repeated walk frames trailing behind him, the verb bar lettered LOOK AT PICK UP TALK TO USE OPEN GIVE WALK TO in a monospaced hand and the sentence line lettered WALK TO dock",
         "negative": "",
         "notes": "The only page where the form draws him: from behind, four frames. The inventory emptied; every object returned to the canon's keeping."
       },
-      "stage": null
+      "stage": null,
+      "lettering": [
+        "LOOK AT",
+        "PICK UP",
+        "TALK TO",
+        "USE",
+        "OPEN",
+        "GIVE",
+        "WALK TO",
+        "WALK TO dock"
+      ]
     }
   ],
   "art": {
@@ -55,5 +65,6 @@
     "paper": "Arches cut to 4:3"
   },
   "notes": "Everything put back.",
-  "layout": "4:3 screen with verb bar and inventory"
+  "layout": "4:3 screen with verb bar and inventory",
+  "aspect": "4:3"
 }

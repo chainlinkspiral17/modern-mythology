@@ -36,11 +36,21 @@
       "caption": "",
       "sfx": "",
       "image": {
-        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a page laid out like an old point-and-click adventure screen with a scene in the upper two-thirds, a row of verbs in a monospaced hand beneath it with one marked, and a strip of small drawn inventory objects along the bottom, a pizza restaurant's interior with a wooden cabinet holding a small screen that shows a tiny garage scene with its own tiny verb bar, an old man seen from behind at the counter, no words legible",
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a page laid out like an old point-and-click adventure screen with a scene in the upper two-thirds, a row of verbs in a monospaced hand beneath it with one marked, and a strip of small drawn inventory objects along the bottom, a pizza restaurant's interior with a wooden cabinet holding a small screen that shows a tiny garage scene with its own tiny verb bar, an old man seen from behind at the counter, the verb bar lettered LOOK AT PICK UP TALK TO USE OPEN GIVE WALK TO in a monospaced hand and the sentence line lettered LOOK AT machine",
         "negative": "",
         "notes": "Vol 7: Pizza Pirate; Sal Carratura from behind; the SCUMM Machine. The screen inside the screen shows page one."
       },
-      "stage": null
+      "stage": null,
+      "lettering": [
+        "LOOK AT",
+        "PICK UP",
+        "TALK TO",
+        "USE",
+        "OPEN",
+        "GIVE",
+        "WALK TO",
+        "LOOK AT machine"
+      ]
     }
   ],
   "art": {
@@ -49,5 +59,6 @@
     "paper": "Arches cut to 4:3"
   },
   "notes": "The form finds itself.",
-  "layout": "4:3 screen with verb bar and inventory"
+  "layout": "4:3 screen with verb bar and inventory",
+  "aspect": "4:3"
 }

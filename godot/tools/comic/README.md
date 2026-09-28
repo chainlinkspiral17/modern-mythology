@@ -337,6 +337,20 @@ canon count excludes them. Their `era` is the era of the year they
 were drawn, so a 2002 backup renders in the zine line and a 2024 one
 in the private line.
 
+**Title pages, mastheads, running heads.** `backups.json` is the
+series registry: title, subtitle, genre, tagline, how the masthead is
+drawn, the running head, the credit line, the story page count. Each
+series has a title page (`title_page: true`) whose one panel letters
+exactly the registry's words; every other page's prompt carries the
+running head and "page n of N" (computed from the bk_ files by date).
+The prompt also carries the series' own `art` line and palette as
+"Series device", the strip's `layout` for page, spread and Sunday
+formats, and a per-panel `lettering` list of the exact words on the
+page (a verb bar, a postcard's word). A strip may set `aspect`
+("4:3" for a page drawn as a screen) to override the format's ratio.
+Backup prompts end with: anything called shapes, strokes or blocks
+is illegible, never real letters.
+
 ## Adding a strip
 
 ```bash
