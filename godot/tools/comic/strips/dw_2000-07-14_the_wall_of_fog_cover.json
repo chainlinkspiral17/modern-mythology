@@ -1,0 +1,131 @@
+{
+  "id": "dw_2000-07-14_the_wall_of_fog_cover",
+  "title": "The wall of fog",
+  "strip": "drift_wood",
+  "date": "2000-07-14",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Heat",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Friday. The cover is the fog offshore: a wall, white, the bay in sun before it, the town's shadow. The owner says it's a blank page. Wood says it's fog. She says he could have drawn something in it. He says he did. The strip lets her look.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "laundromat_owner"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "The cover: a wall of fog across the top two-thirds, white, the bay in sun below, the seawall's shadow. Almost nothing.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a photocopied booklet cover that is mostly white fog with a strip of sunlit bay and a seawall's shadow at the bottom, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The laundromat. The LAUNDRY owner holding it. WOOD. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "laundromat_owner",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "LAUNDRY",
+          "text": "Blank page."
+        },
+        {
+          "who": "WOOD",
+          "text": "Fog."
+        },
+        {
+          "who": "LAUNDRY",
+          "text": "You could've drawn something in it."
+        },
+        {
+          "who": "WOOD",
+          "text": "I did."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat owner holding a nearly blank booklet cover up and looking at it, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The owner looking. The fog. In it, faint, a gull, two strokes, white on white.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a mostly white booklet cover with a faint two-stroke bird shape barely visible in the fog, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The owner setting it in the rack. Nothing said. The strip lets her look and that's enough.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat owner placing a nearly blank booklet in a wire rack in silence, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The gull in the fog, white on white. She finds it."
+}

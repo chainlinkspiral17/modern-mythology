@@ -1,0 +1,127 @@
+{
+  "id": "dw_2000-12-28_the_techs_year",
+  "title": "The tech's year",
+  "strip": "drift_wood",
+  "date": "2000-12-28",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Christmas Week",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The tech's tally: sixty-five and the gap. He says the machine did two thousand six hundred sheets of Wood's this year. Wood says he didn't ask. The tech says nobody asks; that's why he counts. The strip draws the number as blocks. It knows it; it won't letter it.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "extra_print_tech"
+  ],
+  "location": "dw_college_print_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The print shop, the term over, the TECH at the wall's tally. WOOD in the coat. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_print_tech",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a print technician standing at a wall of pencil tallies in a quiet print shop while a young man in a chore coat and a small dog wait, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The tally: sixty-five, the gap. Under it, a number in the tech's hand, as blocks.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a wall with pencil tallies and a number written beneath them rendered as blocks, black and white, no words",
+        "negative": "",
+        "notes": "2,600 sheets: as blocks. The strip knows; it won't letter it."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The tech.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "TECH",
+          "text": "Two thousand six hundred of yours."
+        },
+        {
+          "who": "WOOD",
+          "text": "I didn't ask."
+        },
+        {
+          "who": "TECH",
+          "text": "Nobody asks. That's why I count."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a print technician, dry, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The machine, off, for the holiday. The two of them and the dog. The number on the wall in blocks. Counting's not keeping; the tech counts anyway. Both are the strip's.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a large idle copier with two men and a small dog beside it and a wall of pencil tallies, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Nobody asks. That's why I count.' The number, as blocks."
+}

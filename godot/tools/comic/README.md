@@ -169,6 +169,22 @@ hold them:
 If the last-run panel says "no references attached", the faces came
 from the prompt alone; render and approve the sheets.
 
+**The whole cast has entries now.** Every character id the strips use
+(81, including the backups' people) has a hero entry with a `name`,
+`comic_identity`, `comic_wardrobe` and `comic_props`, so the cast
+block names and describes the uncle, the frame-shop owner, the print
+tech, SLASH's framer and green coat, the man who smooths his lapels,
+and so on, the same way it does Wood. Withheld characters (Wood's
+mother, his father, Julian) are entered as what the strip withholds:
+the prompt says NEVER SHOWN. Group sheets in `style_sheets.json`
+(`sheet_town_1999`, `sheet_town_2000s`, `sheet_timberline_people`,
+`sheet_gullys_people`, `sheet_shop_people`, `sheet_slash_cast`,
+`sheet_frontier_cast`, `sheet_found_pages_cast`,
+`sheet_pomegranate_host`, `sheet_cedar_cast`, `sheet_julian`) carry
+them as references; render them from SHEETS mode like the others.
+The lore is `lore/drift_wood/style/characters.md` (THE REST OF THE
+CAST and THE BACKUP CASTS); the JSON is copied from it.
+
 **Clothes and props are not identity.** The other failure was the
 opposite one: with a sheet attached, every strip came back in the
 sheet's outfit holding the sheet's mug. So `heroes_vol10.json` now
@@ -325,6 +341,20 @@ references the same way. Nothing in a strip JSON refers to a file —
 only to ids and tags — so references can be re-rendered, replaced or
 moved without touching the scripts.
 
+## Saving from the Deck and pulling
+
+The Deck edits `references.json` (approvals, syncs, uploads) and adds
+renders; this side edits strips, sheets and the tool. Both can touch
+`references.json`, so the paste below commits the Deck's work, merges,
+keeps the Deck's `references.json` if the two collide, takes this
+side's version of anything else that collides, and then runs
+`refs sync`, which re-registers every sheet from `style_sheets.json`
+and re-tags them. Nothing on the Deck is lost; nothing new is missed.
+
+```bash
+cd /home/deck/Downloads/modern-mythology && git add -A godot/assets/comic godot/tools/comic/strips godot/tools/comic/references.json && git commit -q -m "comic · references and renders from the Deck" ; git pull --no-rebase --no-edit origin claude/cool-hypatia-3firgv || { git checkout --ours -- godot/tools/comic/references.json 2>/dev/null; git diff --name-only --diff-filter=U | grep -v references.json | xargs -r git checkout --theirs -- ; git add -A godot/assets/comic godot/tools/comic ; git commit -q -m "merge · the Deck's references kept" ; } ; python3 godot/tools/comic/comic_tool.py refs sync && git push -u origin claude/cool-hypatia-3firgv ; bash godot/tools/comic/inspect.sh
+```
+
 ## Backups (outside the canon)
 
 Ids starting `bk_` are **backups**: `strip: "backup"`, with a required
@@ -336,6 +366,20 @@ inspector and the render tool treat them like any strip; the wiki's
 canon count excludes them. Their `era` is the era of the year they
 were drawn, so a 2002 backup renders in the zine line and a 2024 one
 in the private line.
+
+**Title pages, mastheads, running heads.** `backups.json` is the
+series registry: title, subtitle, genre, tagline, how the masthead is
+drawn, the running head, the credit line, the story page count. Each
+series has a title page (`title_page: true`) whose one panel letters
+exactly the registry's words; every other page's prompt carries the
+running head and "page n of N" (computed from the bk_ files by date).
+The prompt also carries the series' own `art` line and palette as
+"Series device", the strip's `layout` for page, spread and Sunday
+formats, and a per-panel `lettering` list of the exact words on the
+page (a verb bar, a postcard's word). A strip may set `aspect`
+("4:3" for a page drawn as a screen) to override the format's ratio.
+Backup prompts end with: anything called shapes, strokes or blocks
+is illegible, never real letters.
 
 ## Adding a strip
 

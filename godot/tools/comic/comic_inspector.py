@@ -154,7 +154,7 @@ def api_strip(sid):
                         "file": r.get("file"), "url": _ref_url(r), "tags": r.get("tags", [])}
                        for r, sc, why in ct.select_refs(s, refs, provider=prov, include_draft=True)]
     renders = _renders_index().get(sid, [])
-    rw, gg = ct.RATIOS.get(s["format"], ("1024:1024", "1:1"))
+    rw, gg = ct.strip_ratio(s)
     md = ct.strip_to_md(s, eras)
     if s.get("review"):
         md += f"\n\n---\n\n**Review** · {s['review'].get('status','')} · {s['review'].get('note','')}\n"

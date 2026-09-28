@@ -1,0 +1,140 @@
+{
+  "id": "dw_2000-11-17_the_sock_cover",
+  "title": "The sock cover",
+  "strip": "drift_wood",
+  "date": "2000-11-17",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Dog Night",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Friday. The cover is the sock. Chewed. Alone on the floorboards. The owner says it's a sock. Wood says it's the first leash. She says it's a sock. He says it's the same thing. She says only to the dog. He says the dog's the one who'd know.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "laundromat_owner"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "The cover: a chewed sock on floorboards, drawn with the care of a portrait.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a photocopied booklet cover showing a single chewed sock on wooden floorboards drawn with great care, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The laundromat. The LAUNDRY owner. WOOD. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "laundromat_owner",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "LAUNDRY",
+          "text": "It's a sock."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's the first leash."
+        },
+        {
+          "who": "LAUNDRY",
+          "text": "It's a sock."
+        },
+        {
+          "who": "WOOD",
+          "text": "Same thing."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat owner holding a small booklet with a sock on its cover and speaking to a young man with a small dog, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The owner.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "LAUNDRY",
+          "text": "Only to the dog."
+        },
+        {
+          "who": "WOOD",
+          "text": "He's the one who'd know."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat owner, dry, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The rack. The sock facing the room. The dog in the doorway looking at his own sock on a cover, unmoved. He'd know.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small booklet in a wire rack with a sock on its cover and a small dog in the doorway regarding it, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'He's the one who'd know.' The sock, a year on."
+}

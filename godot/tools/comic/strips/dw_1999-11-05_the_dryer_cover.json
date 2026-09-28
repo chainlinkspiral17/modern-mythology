@@ -1,0 +1,121 @@
+{
+  "id": "dw_1999-11-05_the_dryer_cover",
+  "title": "The dryer cover",
+  "strip": "drift_wood",
+  "date": "1999-11-05",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The First Storms",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Friday. The digest cover is the ball of paper on the counter. Wood draws it from life. The owner says now it's in there twice. He says that's the joke. She says she knows.",
+  "cast": [
+    "wood_20",
+    "laundromat_owner"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "The cover: the gray ball on the counter, the register behind it, drawn on the spot.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a photocopied booklet cover showing a small ball of paper pulp on a laundromat counter beside a cash register, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD drawing it from life. The LAUNDRY owner watching the drawing and the ball.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "laundromat_owner",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man drawing a small ball of paper on a counter from life while a laundromat owner watches, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The owner.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "LAUNDRY",
+          "text": "Now it's in there twice."
+        },
+        {
+          "who": "WOOD",
+          "text": "That's the joke."
+        },
+        {
+          "who": "LAUNDRY",
+          "text": "I know what the joke is."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat owner in a cardigan looking at a drawing, dry, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The new digest in the rack, upright, the rack back by the door but weighted with a brick now. The ball on the counter beside the register.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wire flyer rack weighted with a brick near a laundromat door, a fresh booklet in it, a ball of paper on the counter beyond, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'I know what the joke is.' The brick on the rack."
+}

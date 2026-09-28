@@ -1,0 +1,115 @@
+{
+  "id": "dw_2000-06-20_the_seawall_tuesday",
+  "title": "The seawall, Tuesday",
+  "strip": "drift_wood",
+  "date": "2000-06-20",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Summer Hours",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Tuesday, seven. The same view. Fog out. The sign's letters legible across the road. The shop at ten. Wood draws faster to make it. The drawing's better for the hurry, which he resents.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The town from the seawall, Tuesday, clear: the four blocks, the Lanes' sign across 101 with every letter, the bay bright. WOOD drawing fast.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small coastal town seen from a seawall on a clear morning with a distant roofline sign's letters legible, a young man drawing quickly, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The pad: the town, clear, the sign's fifteen letters as fifteen marks. Tuesday.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a drawing pad showing a town in clear light with a distant sign rendered as fifteen small marks, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "WOOD looking at his watch, drawn as a circle with no hands. Nine-forty.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man glancing at a wristwatch drawn as a blank circle, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Wood running to the Datsun with the pad. BARNABY ahead. The drawing better for the hurry. He resents it. The strip doesn't.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man running along a seawall toward a small car with a drawing pad, a small dog ahead of him, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Tuesday: clear, fifteen letters. Better for the hurry."
+}

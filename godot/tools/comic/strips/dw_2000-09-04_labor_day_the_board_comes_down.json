@@ -1,0 +1,137 @@
+{
+  "id": "dw_2000-09-04_labor_day_the_board_comes_down",
+  "title": "The board comes down",
+  "strip": "drift_wood",
+  "date": "2000-09-04",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "September",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Labor Day. The last of the summer boats. Gully takes OPEN DAILY down and hangs it inside on a nail for next year. The uncle says nobody came daily. Gully says some did. The uncle says name one. Gully says the dog.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby",
+    "extra_uncle"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The launch, Labor Day, the last trailers pulling out. GULLY unhooking the OPEN DAILY board. The UNCLE in the chair. WOOD, BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_uncle",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a boat launch on a holiday with the last trailers leaving, a teenager taking a hand-painted board down from a shack wall, an old man in a lawn chair, a young man and a dog, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The board going onto a nail inside, above the walrus.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a hand-painted board being hung on a nail inside a shack above a small framed drawing, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The uncle.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "UNCLE",
+          "text": "Nobody came daily."
+        },
+        {
+          "who": "GULLY",
+          "text": "Some did."
+        },
+        {
+          "who": "UNCLE",
+          "text": "Name one."
+        },
+        {
+          "who": "GULLY",
+          "text": "The dog."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old man in a lawn chair, flat, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The shack with one sign again. The dog on the step. The uncle looking at the dog. Conceding, the way he does: not at all, out loud.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a shingle shack with a single sign, a small dog on its step and an old man in a lawn chair looking at the dog, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Name one.' 'The dog.' The board waits inside for next summer."
+}

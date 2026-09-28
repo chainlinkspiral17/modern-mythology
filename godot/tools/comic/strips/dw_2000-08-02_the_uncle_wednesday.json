@@ -1,0 +1,122 @@
+{
+  "id": "dw_2000-08-02_the_uncle_wednesday",
+  "title": "The uncle, Wednesday",
+  "strip": "drift_wood",
+  "date": "2000-08-02",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Uncle, Every Day",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Wednesday. The uncle's hands. Just the hands, on the chair's arms, the knuckles, a rope burn from 1971 he names. Wood draws the hands and the uncle tells him where each mark came from. Four marks, four panels. The strip runs out of panels before the uncle runs out of marks.",
+  "cast": [
+    "extra_uncle"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "The UNCLE's right hand on the chair's aluminum arm: knuckles, a white scar across the back.",
+      "characters": [
+        {
+          "id": "extra_uncle",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "UNCLE",
+          "text": "Winch. '71."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on an old man's weathered right hand resting on a lawn chair's aluminum arm with a white scar across the back, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The left hand: a finger bent at the last joint, set wrong.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "UNCLE",
+          "text": "Pot line. '78. Same year as rule four."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on an old man's left hand with one finger crooked at the last joint, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The right thumb: a nail gone black and grown back ridged.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "UNCLE",
+          "text": "Hatch. '85. Derby year the crab weighed nine."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on an old man's thumb with a ridged regrown nail, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "close",
+      "composition": "Both hands, together, on the arms. The strip's fourth panel. The uncle still talking; the balloon cut by the border. More marks than panels.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "UNCLE",
+          "text": "Skiff, '9—"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on an old man's two hands resting on a lawn chair's arms, a speech balloon cut off by the panel's edge, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Wednesday. Four marks, four panels; more marks than panels. Rule four's year: '78."
+}

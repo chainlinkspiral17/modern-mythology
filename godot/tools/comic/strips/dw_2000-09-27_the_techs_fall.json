@@ -1,0 +1,127 @@
+{
+  "id": "dw_2000-09-27_the_techs_fall",
+  "title": "The tech's fall",
+  "strip": "drift_wood",
+  "date": "2000-09-27",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Week Before",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Wednesday. The tech has a count on the wall too, Wood sees for the first time: pencil marks, in fives, under the machine's serial number. Digests. Fifty-two and one gap. The gap is March. The tech says the machine keeps track. The machine doesn't. He does.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "extra_print_tech"
+  ],
+  "location": "dw_college_print_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The print shop. WOOD noticing, on the wall beside the copier, pencil tallies in fives under a serial number as blocks. The TECH. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_print_tech",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man noticing pencil tally marks on a print shop wall beneath a copier's serial plate while a technician works, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The tallies: fifty-two. And one space with no mark. March.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on pencil tally marks in groups of five on a wall with one small gap in the sequence, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The tech.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "TECH",
+          "text": "Machine keeps track."
+        },
+        {
+          "who": "WOOD",
+          "text": "The machine doesn't—"
+        },
+        {
+          "who": "TECH",
+          "text": "Somebody does."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a print technician, dry, not looking up, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood looking at the gap. March. The pulled strip's week. The tech counted the gap too. Two walls with tallies now; the strip's count is kept in two places it didn't ask for.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man looking at a gap in tally marks on a wall while a technician's back is turned, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The tech's tally. Fifty-two and the gap. Two walls keep the count."
+}

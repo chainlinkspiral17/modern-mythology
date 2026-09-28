@@ -36,11 +36,21 @@
       "caption": "",
       "sfx": "",
       "image": {
-        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a page laid out like an old point-and-click adventure screen with a scene in the upper two-thirds, a row of verbs in a monospaced hand beneath it with one marked, and a strip of small drawn inventory objects along the bottom, a garage wall of numbered cardboard boxes with the last box outlined as a hotspot and a small empty speech balloon beneath the verb row, no words legible",
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a page laid out like an old point-and-click adventure screen with a scene in the upper two-thirds, a row of verbs in a monospaced hand beneath it with one marked, and a strip of small drawn inventory objects along the bottom, a garage wall of numbered cardboard boxes with the last box outlined as a hotspot and a small empty speech balloon beneath the verb row, the verb bar lettered LOOK AT PICK UP TALK TO USE OPEN GIVE WALK TO in a monospaced hand and the sentence line lettered OPEN box",
         "negative": "",
         "notes": "The engine's 'I can't open that yet.' The box is Box 40 (canon: Nov 2026). The key in the inventory: the other key (Mill)."
       },
-      "stage": null
+      "stage": null,
+      "lettering": [
+        "LOOK AT",
+        "PICK UP",
+        "TALK TO",
+        "USE",
+        "OPEN",
+        "GIVE",
+        "WALK TO",
+        "OPEN box"
+      ]
     }
   ],
   "art": {
@@ -49,5 +59,6 @@
     "paper": "Arches cut to 4:3"
   },
   "notes": "Can't open that yet.",
-  "layout": "4:3 screen with verb bar and inventory"
+  "layout": "4:3 screen with verb bar and inventory",
+  "aspect": "4:3"
 }

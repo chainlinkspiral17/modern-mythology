@@ -1,0 +1,132 @@
+{
+  "id": "dw_2000-05-26_the_guards_summer_post",
+  "title": "The guard's summer post",
+  "strip": "drift_wood",
+  "date": "2000-05-26",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Newport",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The guard is moved to the marina for summer. He tells Wood in the lot: Lot C will be nobody's. Wood says he'll watch it. The guard says it's a parking lot. Wood says he knows what it is.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "security_guard"
+  ],
+  "location": "dw_newport_lot",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Lot C. The GUARD with a duffel, his summer post's name on a slip as blocks. WOOD. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "security_guard",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GUARD",
+          "text": "Marina, June through August. Lot's nobody's."
+        },
+        {
+          "who": "WOOD",
+          "text": "I'll watch it."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a security guard with a duffel bag speaking to a young man and a small dog in an empty parking lot, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The guard.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GUARD",
+          "text": "It's a parking lot."
+        },
+        {
+          "who": "WOOD",
+          "text": "I know what it is."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a security guard's face, amused and plain, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The guard's hand on the Datsun's roof, once, leaving. A pat. The way Wood's is on the copies.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a security guard resting his hand on a small car's roof for a moment as he leaves, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The lot. The car. Wood. The dog. No guard. Summer. The strip has the lot to itself and finds that it doesn't want it.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an empty college parking lot in summer with a small car, a young man and a dog, no one else, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The pat on the roof. The lot to himself; he doesn't want it."
+}

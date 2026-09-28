@@ -1,0 +1,136 @@
+{
+  "id": "dw_2000-09-29_the_seawall_no_discman",
+  "title": "The seawall, no Discman",
+  "strip": "drift_wood",
+  "date": "2000-09-29",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Week Before",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Friday. The cover is the seawall at evening with no one on it and no Discman. The owner says he drew it with the Discman in June. Wood says the Discman's packed. She says he said the strip draws what's there. He says it's drawing what isn't. She says that's new. It is.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "laundromat_owner"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "The cover: the seawall at evening, empty. No one. No Discman. The bay.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a photocopied booklet cover showing an empty seawall at evening above a gray bay, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The laundromat. The LAUNDRY owner. WOOD. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "laundromat_owner",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "LAUNDRY",
+          "text": "June, there was a Discman on it."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's packed."
+        },
+        {
+          "who": "LAUNDRY",
+          "text": "You said the strip draws what's there."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's drawing what isn't."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat owner holding a small booklet and speaking to a young man, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The owner.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "LAUNDRY",
+          "text": "That's new."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat owner, considering, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The digest in the rack. The empty wall facing the room. It is new. Monday the arc begins and the strip will draw what isn't there for a month.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small booklet in a wire rack with an empty seawall on its cover, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'It's drawing what isn't.' 'That's new.' Monday: Arc 1."
+}

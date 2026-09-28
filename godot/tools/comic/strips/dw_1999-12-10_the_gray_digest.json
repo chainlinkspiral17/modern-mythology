@@ -1,0 +1,108 @@
+{
+  "id": "dw_1999-12-10_the_gray_digest",
+  "title": "The gray digest",
+  "strip": "drift_wood",
+  "date": "1999-12-10",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Winter, Newport",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Friday. The gray digest. Ten cents a page, forty pages, four dollars in dimes from the box in the drawer. The cover is the copier itself. It comes out as a gray square. That's right.",
+  "cast": [
+    "wood_20",
+    "laundromat_owner"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "A drawer at home: a cigar box of dimes. A hand counting forty.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a hand counting dimes out of a cigar box in a desk drawer, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The laundromat copier. WOOD stapling gray sheets at the folding table. The LAUNDRY owner pretending not to watch.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "laundromat_owner",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man stapling gray photocopied sheets at a laundromat folding table while the owner pretends not to watch, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The cover: the copier, drawn. Copied. A gray square with a coin slot.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a gray photocopied booklet cover showing a scratched copier as a gray square with a coin slot, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The rack. The gray digest in it beside last week's black one. Lighter. Wood looking at the two. Winter's the gray one.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wire rack holding a crisp black-and-white booklet beside a faded gray one, a young man looking at both, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Four dollars in dimes. The cover is the copier. Winter is the gray one."
+}

@@ -1,0 +1,139 @@
+{
+  "id": "dw_1999-10-11_what_its_called",
+  "title": "What it's called",
+  "strip": "drift_wood",
+  "date": "1999-10-11",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Newport",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The print tech asks what the digest is called. It's called the digest. He means the strip. The strip is called Drift Wood. He asks why. Wood has never been asked.",
+  "cast": [
+    "wood_20",
+    "extra_print_tech"
+  ],
+  "location": "dw_college_print_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The print shop. The machine warming. The TECH in the apron with a strip up to the light. WOOD waiting.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_print_tech",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "TECH",
+          "text": "What's it called."
+        },
+        {
+          "who": "WOOD",
+          "text": "The digest."
+        },
+        {
+          "who": "TECH",
+          "text": "Not the booklet. This."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a print shop technician in an apron holding a comic strip up to the light while a young man waits beside a large photocopier, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Drift Wood."
+        },
+        {
+          "who": "TECH",
+          "text": "Why."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man's face caught off guard, mouth slightly open, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood looking at the copier's green light sweeping. A long panel for a short question.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man watching the green light of a photocopier sweep under its lid, thinking, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The tech stacking copies. Wood, finally.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "It's what washes up."
+        },
+        {
+          "who": "TECH",
+          "text": "Huh. Thought it was your name."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a technician stacking warm photocopies while a young man answers, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "First time anyone asks. 'Thought it was your name.' It is."
+}

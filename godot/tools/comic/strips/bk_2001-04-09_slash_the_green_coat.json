@@ -26,23 +26,47 @@
   "panels": [
     {
       "n": 1,
-      "shot": "single page",
-      "composition": "Full page, three stacked panels without gutters: the frame shop at closing in rain; a woman in a green coat sliding a photograph face-down across the counter; the framer's hands — ink-stained — not turning it over.",
+      "shot": "wide",
+      "composition": "Top third: the frame shop at closing from the alley door, rain hatched in vertical strokes across the window, the OPEN sign turned, the counter lit, the GREEN COAT at it with her back to us.",
       "characters": [
         {
-          "id": "extra_framer",
-          "pose": "hands on the counter",
-          "expression": ""
-        },
-        {
           "id": "extra_green_coat",
-          "pose": "sliding the photo, face down",
+          "pose": "at the counter, back to us",
           "expression": ""
         }
       ],
       "props": [
-        "a photograph, face down",
-        "the green coat"
+        "the green coat",
+        "the OPEN sign turned"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white noir comic page, brush-pen over blue pencil, rain as dense vertical hatching, stark black spotting, a frame shop at closing seen from its alley door with rain hatched in vertical strokes across the window and a woman in a dark coat at the lit counter with her back to the viewer",
+        "negative": "",
+        "notes": "The coat is green; the page is black and white. The color is in the title."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Middle third: across the counter, the GREEN COAT sliding a photograph face down toward the FRAMER's ink-stained hands, which rest flat and do not turn it over.",
+      "characters": [
+        {
+          "id": "extra_green_coat",
+          "pose": "sliding the photo, face down",
+          "expression": ""
+        },
+        {
+          "id": "extra_framer",
+          "pose": "hands flat on the counter",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a photograph, face down"
       ],
       "balloons": [
         {
@@ -52,7 +76,32 @@
         {
           "who": "FRAMER",
           "text": "I have to measure it."
-        },
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white noir comic page, brush-pen over blue pencil, rain as dense vertical hatching, stark black spotting, across a shop counter a woman sliding a photograph face-down toward a man's ink-stained hands which rest flat and do not turn it over",
+        "negative": "",
+        "notes": "The framer isn't Wood; he has Wood's hands."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Bottom third, no gutter: the photograph's back, blank, under the framer's fingertips; her gloved hand leaving the frame; the rain's hatching heaviest here.",
+      "characters": [
+        {
+          "id": "extra_framer",
+          "pose": "fingertips on the photo's back",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the photograph's blank back"
+      ],
+      "balloons": [
         {
           "who": "GREEN COAT",
           "text": "Measure the back."
@@ -61,9 +110,9 @@
       "caption": "",
       "sfx": "",
       "image": {
-        "prompt": "black and white noir comic page, brush-pen over blue pencil, rain as dense vertical hatching, stark black spotting, a frame shop at closing with rain hatched in the window, a woman in a dark coat sliding a photograph face-down across a counter to a man whose ink-stained hands rest on it",
+        "prompt": "black and white noir comic page, brush-pen over blue pencil, rain as dense vertical hatching, stark black spotting, close on the blank back of a photograph under a man's fingertips with a gloved hand leaving the frame and the rain hatching heaviest at the bottom of the page",
         "negative": "",
-        "notes": "The green coat: the color the canon gives the Lisbon coat and the dock's coat (2024). Here it's 2001 and it's hers."
+        "notes": "Measure the back."
       },
       "stage": null
     }

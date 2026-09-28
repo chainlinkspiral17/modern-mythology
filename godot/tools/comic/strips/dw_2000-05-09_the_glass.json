@@ -1,0 +1,127 @@
+{
+  "id": "dw_2000-05-09_the_glass",
+  "title": "The glass",
+  "strip": "drift_wood",
+  "date": "2000-05-09",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Heceta Frame & Matting",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Tuesday. Glass. The owner cuts it with a wheel and a snap and a sound the strip draws as a short straight line. Wood tries. Three panes into the bin. The fourth snaps clean. She says the sound was right on the third. He didn't hear it.",
+  "cast": [
+    "wood_20",
+    "extra_owner_heceta"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The backroom. The OWNER scoring a pane of glass with a wheel cutter on a felt table. A short straight line drawn for the sound. WOOD watching.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_owner_heceta",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman in reading glasses scoring a pane of glass with a wheel cutter on a felt-topped table while a young man watches, a short straight line drawn for the sound, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "WOOD's hands on the cutter. The score wandering. The snap: a jagged line. The pane in two wrong pieces.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a young man's hands snapping a pane of glass into two uneven pieces along a wandering score, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Three pieces in the glass bin. The fourth pane on the felt. The score straight. The snap: a short straight line.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a pane of glass snapped cleanly in two on a felt table beside a bin of broken pieces, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The owner, from the front.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "OWNER",
+          "text": "(off) Third one sounded right."
+        },
+        {
+          "who": "WOOD",
+          "text": "The third broke."
+        },
+        {
+          "who": "OWNER",
+          "text": "(off) Sounded right, though."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man holding up a cleanly cut pane of glass toward a doorway, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The sound is drawn as a line. The third sounded right and broke."
+}

@@ -1,0 +1,131 @@
+{
+  "id": "dw_2000-03-17_the_morning_after_cover",
+  "title": "The morning-after cover",
+  "strip": "drift_wood",
+  "date": "2000-03-17",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "After the Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Friday. The cover: the beach the morning after the run — lantern stubs in the sand, bucket rings, a hundred footprints and one set of paw prints going the other way. The owner says it looks like a party. Wood says it was.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "laundromat_owner"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "The cover: the beach at dawn, lantern stubs, rings in the sand where buckets sat, footprints everywhere, and one line of paw prints going the wrong way.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a photocopied booklet cover showing a beach at dawn with lantern stubs, bucket rings and many footprints in the sand crossed by one line of paw prints, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The laundromat. The LAUNDRY owner with it. WOOD. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "laundromat_owner",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "LAUNDRY",
+          "text": "Looks like a party."
+        },
+        {
+          "who": "WOOD",
+          "text": "It was."
+        },
+        {
+          "who": "LAUNDRY",
+          "text": "You never say that."
+        },
+        {
+          "who": "WOOD",
+          "text": "Third year."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat owner holding a small booklet while a young man and a small dog wait, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The paw prints on the cover. Going the wrong way. The owner's thumb on them.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a booklet cover with a line of small paw prints under a woman's thumb, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The rack. The cover facing the room. Outside the window, the real beach is two blocks off and the tide has taken the prints already. The cover has them.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wire rack in a laundromat holding a booklet, a gray beach visible far down the street through the window, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Third year.' The tide has the prints; the cover keeps them."
+}

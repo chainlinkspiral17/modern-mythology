@@ -1,0 +1,136 @@
+{
+  "id": "dw_2000-09-28_the_porch_no_bags",
+  "title": "The porch, no bags",
+  "strip": "drift_wood",
+  "date": "2000-09-28",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Week Before",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Thursday. Chloe's porch. No bags yet. Her on the top step with the book. Wood on the bottom one, which he's never sat on. She says Monday there'll be bags. He says he knows. She says the strip will draw them. He says the strip draws what's there. She says that's what she said.",
+  "cast": [
+    "wood_20",
+    "chloe_17",
+    "barnaby"
+  ],
+  "location": "dw_chloe_porch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Chloe's porch, four houses down, evening, dry. CHLOE on the top step with the paperback. WOOD on the bottom step. BARNABY between. No bags.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "chloe_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young woman reading on the top step of a porch and a young man sitting on the bottom step with a small dog between them, the porch bare, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Chloe.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "Monday there'll be bags."
+        },
+        {
+          "who": "WOOD",
+          "text": "I know."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young woman looking over a paperback, level, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "The strip will draw them."
+        },
+        {
+          "who": "WOOD",
+          "text": "The strip draws what's there."
+        },
+        {
+          "who": "CHLOE",
+          "text": "That's what I said."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man on a porch step, looking at the street, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The porch from the street. The two of them, a step apart. No bags. Monday. The panel's full width; the strip hasn't started narrowing yet. It will Monday.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a porch seen from the street with a young woman on the top step and a young man on the bottom step, drawn at full width, black and white, no words",
+        "negative": "",
+        "notes": "The last full-width porch before Arc 1's narrowing (Oct 2)."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'That's what I said.' Full width, once more. Monday: the bags."
+}

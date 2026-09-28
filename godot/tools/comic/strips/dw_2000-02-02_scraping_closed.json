@@ -1,0 +1,131 @@
+{
+  "id": "dw_2000-02-02_scraping_closed",
+  "title": "Scraping CLOSED",
+  "strip": "drift_wood",
+  "date": "2000-02-02",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Uncle Rests",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Gully scrapes the CLOSED off the derby sign for the new season. The white comes off in curls. The crab underneath, whole. Wood asks if he'll repaint it. Gully says the crab's fine. It's the one part that never needed paint.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack. GULLY with a scraper at the derby sign, white paint coming off in curls. WOOD and BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky teenager scraping white paint from a hand-painted sign on a shingle shack, curls of paint falling, a young man and a dog watching, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The crab emerging from under the white. Whole. The hatching intact.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a hand-painted crab emerging from beneath flaking white paint on a wooden sign, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "You'll repaint it?"
+        },
+        {
+          "who": "GULLY",
+          "text": "Crab's fine."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's two years old."
+        },
+        {
+          "who": "GULLY",
+          "text": "It's the one part that never needed paint."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man speaking to a teenager holding a paint scraper, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The sign, scraped clean: CRAB DERBY, the crab, the year's blank. The curls of white on the gravel like shavings. The dog eating one.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a hand-painted crab derby sign scraped clean on a shingle shack, curls of white paint on the gravel below and a small dog sniffing them, black and white, no words",
+        "negative": "",
+        "notes": "Letter after: CRAB DERBY (the year blank until Feb 11)."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The crab never needed paint. The white curls on the gravel."
+}

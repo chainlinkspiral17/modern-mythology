@@ -1,0 +1,57 @@
+{
+  "id": "bk_1998-10-15_the_halloween_issue_title_page",
+  "title": "THE HALLOWEEN ISSUE · title page",
+  "strip": "backup",
+  "series": "THE HALLOWEEN ISSUE",
+  "title_page": true,
+  "date": "1998-10-15",
+  "run": 1,
+  "era": "era1",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the Timberline · an unpublished Halloween issue · Box 1",
+  "arc": "THE HALLOWEEN ISSUE",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The title page, drawn before page one: the masthead over the series' one image, with nobody in it. It letters the title, the subtitle and the tagline. The cafeteria at night. The tray line moving with no one at it.",
+  "cast": [],
+  "location": "dw_cafeteria",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "splash",
+      "composition": "The masthead across the top third. Below it the cafeteria at night in a single flashlight beam: the tray line's rollers, the hairnet on its hook, the tables up on their ends like gravestones, and the beam's edge catching one ladle on the far wall. Nobody in it.",
+      "characters": [],
+      "props": [
+        "the hairnet on its hook",
+        "the tray line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white xeroxed school-paper comic page with heavy black spotting, a Halloween masthead cut from black construction paper in dripping capitals, below it a school cafeteria at night in a single flashlight beam with upended tables and a hairnet on a hook and a tray line's rollers, no people",
+        "negative": "",
+        "notes": "The issue's cover. The horror is the spotting."
+      },
+      "stage": null,
+      "lettering": [
+        "THE HALLOWEEN ISSUE",
+        "The Timberline · an issue that never went to the copier · 1998",
+        "The cafeteria at night. The tray line moving with no one at it."
+      ]
+    }
+  ],
+  "art": {
+    "line": "scratchy crow-quill and ballpoint on cardstock, xerox; heavier spotting than the run; the horror is the spotting",
+    "palette": "black and white; the blacks blacker",
+    "paper": "cardstock; an issue that never went to the copier; Box 1"
+  },
+  "notes": "Title page. Letters exactly: THE HALLOWEEN ISSUE / The Timberline · an issue that never went to the copier · 1998 / The cafeteria at night. The tray line moving with no one at it..",
+  "layout": "title page: the masthead over a single image"
+}

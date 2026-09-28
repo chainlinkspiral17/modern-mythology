@@ -53,12 +53,15 @@
       "caption": "",
       "sfx": "",
       "image": {
-        "prompt": "the back of a postcard drawn in ink, a divided back with an address side and a message side, the handwriting rendered as strokes with one word left legible, a small stamp with a tiny numeral in its corner, the address side showing a bus route and depot as shapes, no words legible but one",
+        "prompt": "the back of a postcard drawn in ink, a divided back with an address side and a message side, the handwriting rendered as strokes with one word left legible, a small stamp with a tiny numeral in its corner, the address side showing a bus route and depot as shapes, the only legible word on the card is wish",
         "negative": "",
         "notes": "The sender: the keeper's daughter; the receiver: the northbound driver (see THE ROUTE NORTH, canon). Neither is Chloe; neither is Wood. The stamps are the Major Arcana in order of the cards, as numerals only. The one legible word: wish. Stamp numeral: 0."
       },
       "stage": null,
-      "name": "Back"
+      "name": "Back",
+      "lettering": [
+        "wish"
+      ]
     }
   ],
   "art": {

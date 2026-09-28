@@ -1,0 +1,130 @@
+{
+  "id": "dw_1999-12-07_the_last_run_of_the_term",
+  "title": "The last run of the term",
+  "strip": "drift_wood",
+  "date": "1999-12-07",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Winter, Newport",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The print shop's last run before break. The tech says the machine goes to Corvallis for service. Wood asks where he'll copy. The tech says the laundromat has a machine. It does. It's terrible. The tech knows.",
+  "cast": [
+    "wood_20",
+    "extra_print_tech"
+  ],
+  "location": "dw_college_print_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The print shop. The copier with a tag on it drawn as blocks. The TECH. WOOD with the week's strips.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_print_tech",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "TECH",
+          "text": "She goes to Corvallis Friday. Three weeks."
+        },
+        {
+          "who": "WOOD",
+          "text": "Where do I copy?"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a print technician beside a large photocopier with a service tag on it, a young man holding a week's worth of comic strips, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The tech.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "TECH",
+          "text": "Laundromat's got a machine."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's terrible."
+        },
+        {
+          "who": "TECH",
+          "text": "It's a machine."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a print technician's face, amused, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The last strips going under the lid. The green light. Slower than usual, or Wood's watching slower.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on comic strips under a photocopier lid with the green light sweeping slowly, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood with the stack, the dog at his feet, the tech pulling the copier's plug. The cord in his hand like a leash.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a technician pulling a large copier's power cord while a young man and a small dog stand with a stack of copies, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Three weeks without the machine. The laundromat's is terrible; the strip will look it."
+}

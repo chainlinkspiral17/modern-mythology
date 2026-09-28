@@ -1,0 +1,121 @@
+{
+  "id": "dw_2000-11-08_the_college_in_november",
+  "title": "The college in November",
+  "strip": "drift_wood",
+  "date": "2000-11-08",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Town After",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Wednesday. Newport. The instructor asks the auditor for the blue book. It has thirty drawings in it. No words. She turns every page. She says it's the best essay she's had this year. He says there aren't any words. She says she noticed.",
+  "cast": [
+    "wood_20",
+    "extra_instructor"
+  ],
+  "location": "dw_college_classroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The classroom. The INSTRUCTOR with WOOD's blue book, turning pages. Drawings. No words. Wood at the back in the chore coat.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_instructor",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman instructor turning through a blue exam booklet full of ink drawings while a young man in a chore coat waits at the back of a classroom, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The blue book: the classroom, the lot, the print shop, the guard, thirty small drawings.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a blue exam booklet open to pages of small ink drawings of a classroom, a parking lot and a print shop, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The instructor.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "INSTRUCTOR",
+          "text": "Best essay I've had this year."
+        },
+        {
+          "who": "WOOD",
+          "text": "There aren't any words."
+        },
+        {
+          "who": "INSTRUCTOR",
+          "text": "I noticed."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman instructor closing a blue booklet, dry, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The blue book handed back. In red on the cover, a mark as a smudge, and: 'See me — no. Don't. Keep going.' The strip letters it. It's the only red pen it's ever kept.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a blue exam booklet with a red-pen note on its cover in a young man's hands, black and white, no words",
+        "negative": "",
+        "notes": "Letter after: 'See me — no. Don't. Keep going.'"
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'I noticed.' 'Keep going.' The only red pen the strip keeps."
+}

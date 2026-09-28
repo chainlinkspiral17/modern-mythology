@@ -53,12 +53,15 @@
       "caption": "",
       "sfx": "",
       "image": {
-        "prompt": "the back of a postcard drawn in ink, a divided back with an address side and a message side, the handwriting rendered as strokes with one word left legible, a small stamp with a tiny numeral in its corner, the fifth word written very small, no words legible but one",
+        "prompt": "the back of a postcard drawn in ink, a divided back with an address side and a message side, the handwriting rendered as strokes with one word left legible, a small stamp with a tiny numeral in its corner, the fifth word written very small, the only legible word on the card is its",
         "negative": "",
         "notes": "Two-thirds up: the bus is past her and not yet there. The one legible word: its. Stamp numeral: IV."
       },
       "stage": null,
-      "name": "Back"
+      "name": "Back",
+      "lettering": [
+        "its"
+      ]
     }
   ],
   "art": {

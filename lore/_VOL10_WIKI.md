@@ -378,7 +378,7 @@ strip's own panel grid as the presentation. Decision reserved.
 
 ## Status
 
-A rough batch of the full run exists, deepened eighteen times: 1,378 canon strip scripts — the catalogue complete — plus 101 backups in fifteen series outside the canon (`bk_` ids; see `drift_wood/_BACKUPS.md`) (browse them with `godot/tools/comic/comic_inspector.py`) in
+A rough batch of the full run exists, deepened nineteen times: 1,648 canon strip scripts — the catalogue complete, and every weekday of the daily's first sixteen months (Sept 20, 1999 – Dec 29, 2000) scripted — plus 116 backup pages in fifteen series outside the canon — 101 story pages and a title page per series, each with its own masthead (`bk_` ids; see `drift_wood/_BACKUPS.md` and `godot/tools/comic/backups.json`) (browse them with `godot/tools/comic/comic_inspector.py`) in
 `godot/tools/comic/strips/` from Drift Wood #1 (Sept 12, 1997) to
 the final ROFLCOPTER page (April 25, 2027), every year and every
 sequence represented, with the style guides in `drift_wood/style/`

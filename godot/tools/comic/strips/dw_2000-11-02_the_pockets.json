@@ -1,0 +1,121 @@
+{
+  "id": "dw_2000-11-02_the_pockets",
+  "title": "The pockets",
+  "strip": "drift_wood",
+  "date": "2000-11-02",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "After the Ledger",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Thursday. The chore coat at the shop. The owner asks him to hang it; he cuts in it. She says the pockets. He says what about them. She says his hands are in them and he's supposed to be cutting. He takes them out. It takes a panel.",
+  "cast": [
+    "wood_20",
+    "extra_owner_heceta"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shop's backroom. WOOD in the chore coat at the cutter, hands in the pockets, the mat waiting. The OWNER in the door.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_owner_heceta",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "OWNER",
+          "text": "Hang it up."
+        },
+        {
+          "who": "WOOD",
+          "text": "I'm fine."
+        },
+        {
+          "who": "OWNER",
+          "text": "The pockets."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man in an oversized canvas chore coat standing at a mat cutter with both hands in the coat's pockets, a woman in reading glasses in the doorway, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The pockets. His hands in them to the wrist. The mat on the table, uncut.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a young man's hands deep in a canvas coat's pockets beside an uncut mat on a table, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The hands coming out. Slowly. A whole panel for it.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a young man's hands slowly emerging from coat pockets, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood cutting. The coat on. The hands out. The owner gone. The strip has learned the coat's problem: the pockets want the hands, and the cut wants them too.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man in a canvas chore coat cutting a mat with his hands finally out of his pockets, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The pockets want the hands. A whole panel to take them out."
+}

@@ -25,26 +25,49 @@
   "panels": [
     {
       "n": 1,
-      "shot": "single page",
-      "composition": "Full page: the photograph's back filling the top two-thirds, a registration number and a port name in pen; below, the framer's cuff with the number copied onto it in ballpoint, the mat cutter's blade beside his wrist.",
+      "shot": "close",
+      "composition": "Top two-thirds: the photograph's back filling the panel — a boat's registration number and a home port, GRAUSTARK, LA, in a pen hand that isn't the woman's; the paper's grain; a thumbprint of ink at one corner.",
+      "characters": [],
+      "props": [
+        "the photograph's back",
+        "a registration number",
+        "GRAUSTARK, LA"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white noir comic page, brush-pen over blue pencil, stark black spotting, the back of a photograph filling the frame with a boat registration number and a port name written in pen in an unfamiliar hand and an ink thumbprint at one corner, the paper's grain drawn",
+        "negative": "",
+        "notes": "The port: Graustark (Vol 8's river town) as an address on the back of a photo. The page draws it as pen strokes; only the port name is lettered."
+      },
+      "stage": null,
+      "lettering": [
+        "GRAUSTARK, LA"
+      ]
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Bottom third: the FRAMER's shirt cuff with the number copied onto it in ballpoint, the mat cutter's blade beside his wrist, the counter's edge.",
       "characters": [
         {
           "id": "extra_framer",
-          "pose": "copying onto his cuff",
+          "pose": "cuff on the counter",
           "expression": ""
         }
       ],
       "props": [
-        "the photograph's back",
+        "the cuff with the number",
         "the mat cutter"
       ],
       "balloons": [],
       "caption": "",
       "sfx": "",
       "image": {
-        "prompt": "black and white noir comic page, brush-pen over blue pencil, rain as dense vertical hatching, stark black spotting, the blank back of a photograph filling most of the page with a handwritten registration number and a port name, and below it a man's shirt cuff with the same number copied in ballpoint beside a mat cutter's blade",
+        "prompt": "black and white noir comic page, brush-pen over blue pencil, a man's shirt cuff on a counter with a number copied onto it in ballpoint strokes and a mat cutter's blade lying beside his wrist",
         "negative": "",
-        "notes": "Graustark, LA: Vol 5's town. The page never says what it is. Letter the number after; the port name stays a shape."
+        "notes": "He measures the back as told. The number on the cuff is strokes, not digits."
       },
       "stage": null
     }

@@ -1,0 +1,127 @@
+{
+  "id": "dw_2000-04-21_the_first_paycheck",
+  "title": "The first paycheck",
+  "strip": "drift_wood",
+  "date": "2000-04-21",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Newport",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Friday. The first check from Heceta: a week's worth, three days, eight-fifty. Wood cashes it at the drugstore because the bank closes at three. The dimes go back in the cigar box first. Then the rest.",
+  "cast": [
+    "extra_owner_heceta",
+    "wood_20",
+    "barnaby",
+    "extra_clerk"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "A check, small, handwritten: the shop's name as blocks, an amount as a smudge, the OWNER's signature a clean line.",
+      "characters": [
+        {
+          "id": "extra_owner_heceta",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a small handwritten paycheck with a smudged amount and a clean signature, black and white, no words",
+        "negative": "",
+        "notes": "The amount: a smudge (the strip's rule for money)."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The drugstore counter. The CLERK counting bills out. WOOD. BARNABY at the door.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_clerk",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a drugstore clerk counting bills onto a counter for a young man while a small dog waits at the door, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The bedroom. The cigar box. Dimes going in first, a roll of them. Then the bills, folded, on top.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a cigar box in a desk drawer receiving a roll of dimes and then folded bills, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD closing the drawer. The corkboard above: the PNCA letter over the bus schedule. The box under it has money in it now, for copies. That's the whole plan.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man closing a desk drawer beneath a corkboard pinned with an official letter over a bus schedule, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The first check. Dimes first. That's the whole plan."
+}

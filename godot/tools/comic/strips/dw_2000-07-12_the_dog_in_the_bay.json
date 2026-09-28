@@ -1,0 +1,120 @@
+{
+  "id": "dw_2000-07-12_the_dog_in_the_bay",
+  "title": "The dog in the bay",
+  "strip": "drift_wood",
+  "date": "2000-07-12",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Heat",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The dog solves the heat: the bay. He's in it all afternoon off the launch, in and out, the kelp line permanent. Gully throws sticks. The uncle counts the dog in and out like boats. Wood draws nothing; he's in the bay too, to the knee, the overcoat on the dock.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby",
+    "extra_uncle"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The launch in heat. BARNABY swimming. GULLY throwing a stick. The UNCLE in the chair counting on his fingers. WOOD's overcoat on the dock — and WOOD in the water to the knee.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_uncle",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small dog swimming near a boat launch as a teenager throws a stick, an old man counts on his fingers from a lawn chair, and a young man stands knee-deep in the water with his overcoat left on the dock, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The overcoat on the dock. Alone. The strip has never drawn it off him outdoors.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a heavy wool overcoat lying folded on a wooden dock in bright sun, black and white, no words",
+        "negative": "",
+        "notes": "The overcoat off, outdoors, once. (Clothes as objects: 1997–99, indoors; this is the exception.)"
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The uncle counting. The dog going in: a finger up. Coming out: down. Eleven.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old man in a lawn chair counting on his fingers as a dog goes in and out of the water, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Dusk. The dog out. The coat back on. The launch. The uncle at eleven. The strip drew nothing today; the strip was in the bay.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a boat launch at dusk with a soaked dog, a young man putting a heavy coat back on, and an old man in a lawn chair, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The overcoat off, once, outdoors. The uncle counts the dog like boats: eleven."
+}

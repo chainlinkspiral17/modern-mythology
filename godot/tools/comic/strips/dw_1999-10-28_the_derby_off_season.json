@@ -1,0 +1,119 @@
+{
+  "id": "dw_1999-10-28_the_derby_off_season",
+  "title": "The derby, off season",
+  "strip": "drift_wood",
+  "date": "1999-10-28",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Halloween, refused",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The CRAB DERBY sign at the shack, painted over for winter with one word: CLOSED. Gully painted it. The crab shows through. Wood says leave it.",
+  "cast": [
+    "gully_17"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack. The hand-painted CRAB DERBY sign, and over it in fresh white paint: CLOSED. The crab showing through the white. GULLY with the brush.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a hand-painted crab derby sign on a shingle shack painted over in fresh white with a single word, the crab shape showing through, a teenager holding a paintbrush, black and white, no words",
+        "negative": "",
+        "notes": "Letter after: CLOSED, one word, over the sign."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The crab through the paint. A ghost of hatching.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a painted-over sign with the shape of a crab showing faintly through white paint, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully, brush up for another coat. Wood's hand stopping him.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "One more coat."
+        },
+        {
+          "who": "WOOD",
+          "text": "Leave it."
+        },
+        {
+          "who": "GULLY",
+          "text": "You can see the crab."
+        },
+        {
+          "who": "WOOD",
+          "text": "That's why."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man's hand stopping a teenager's paintbrush before a whitewashed sign, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The sign from the road: CLOSED, and a crab under it, faint. The shack. October. The strip's first ghost.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small bait shack seen from the road with a whitewashed sign reading one word and a faint crab beneath the paint, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "CLOSED over the crab. The crab shows through. 'That's why.'"
+}

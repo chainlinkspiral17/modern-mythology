@@ -44,11 +44,21 @@
       "caption": "",
       "sfx": "",
       "image": {
-        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a page laid out like an old point-and-click adventure screen with a scene in the upper two-thirds, a row of verbs in a monospaced hand beneath it with one marked, and a strip of small drawn inventory objects along the bottom, a small bait shop's interior with a counter and end stool and corkboard and a heavy gray-haired man seen from behind at a grill outlined as a hotspot, four blank ruled lines beneath the verb row, no words legible",
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a page laid out like an old point-and-click adventure screen with a scene in the upper two-thirds, a row of verbs in a monospaced hand beneath it with one marked, and a strip of small drawn inventory objects along the bottom, a small bait shop's interior with a counter and end stool and corkboard and a heavy gray-haired man seen from behind at a grill outlined as a hotspot, four blank ruled lines beneath the verb row, the verb bar lettered LOOK AT PICK UP TALK TO USE OPEN GIVE WALK TO in a monospaced hand and the sentence line lettered TALK TO Gully",
         "negative": "",
         "notes": "Four dialogue choices, all blank: what Wood would say is reserved by the form."
       },
-      "stage": null
+      "stage": null,
+      "lettering": [
+        "LOOK AT",
+        "PICK UP",
+        "TALK TO",
+        "USE",
+        "OPEN",
+        "GIVE",
+        "WALK TO",
+        "TALK TO Gully"
+      ]
     }
   ],
   "art": {
@@ -57,5 +67,6 @@
     "paper": "Arches cut to 4:3"
   },
   "notes": "Four choices, blank.",
-  "layout": "4:3 screen with verb bar, dialogue lines and inventory"
+  "layout": "4:3 screen with verb bar, dialogue lines and inventory",
+  "aspect": "4:3"
 }

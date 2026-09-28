@@ -1,0 +1,142 @@
+{
+  "id": "dw_2000-05-03_the_guard_asks_about_the_job",
+  "title": "The guard asks about the job",
+  "strip": "drift_wood",
+  "date": "2000-05-03",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Newport",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The guard asks where he goes Tuesdays now. Wood says a frame shop. The guard says his wife had a thing framed there once. Wood asks what. The guard says he never looked. Wood says that's most of them.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "security_guard"
+  ],
+  "location": "dw_newport_lot",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Lot C. The GUARD at the Datsun's window, casual, a thermos. WOOD. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "security_guard",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GUARD",
+          "text": "Where you go Tuesdays now."
+        },
+        {
+          "who": "WOOD",
+          "text": "Frame shop. On 101."
+        },
+        {
+          "who": "GUARD",
+          "text": "Wife had a thing framed there."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a security guard leaning casually at a small car's window holding a thermos while a young man and a dog sit inside, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "What was it?"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man's face, interested despite himself, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The guard.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GUARD",
+          "text": "Never looked."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a security guard's face, plain, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The guard walking off. Wood, to the dog. The lot. Most of them.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "That's most of them."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a security guard walking away across a lot while a young man speaks to a small dog in his car, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Never looked.' The guard's wife's thing: the town's walls are full of things nobody looked at."
+}

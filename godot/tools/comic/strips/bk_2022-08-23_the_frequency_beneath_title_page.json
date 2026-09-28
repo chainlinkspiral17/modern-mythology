@@ -1,0 +1,57 @@
+{
+  "id": "bk_2022-08-23_the_frequency_beneath_title_page",
+  "title": "THE FREQUENCY BENEATH · title page",
+  "strip": "backup",
+  "series": "THE FREQUENCY BENEATH",
+  "title_page": true,
+  "date": "2022-08-23",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "private · after a paperback found in the library's return cart · Box 26",
+  "arc": "THE FREQUENCY BENEATH",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The title page, drawn before page one: the masthead over the series' one image, with nobody in it. It letters the title, the subtitle and the tagline. 47",
+  "cast": [],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "splash",
+      "composition": "Graph paper filling the page; one unbroken warm oscilloscope trace enters from the left, rises and falls into each letter of the title in turn, and runs flat off the right edge; the subtitle small in the graph's margin; at the bottom edge the paperback's spine, its author's name a shape, the due-date card's corner.",
+      "characters": [],
+      "props": [
+        "the trace",
+        "the paperback's spine"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "ruled graph-paper comic page in ochre and slate with the trace in one warm color, a single unbroken oscilloscope line entering from the left and forming each letter of the series title as it rises and falls before running flat off the right edge, a small subtitle in the margin, a paperback's spine along the bottom edge with its author's name as a shape",
+        "negative": "",
+        "notes": "47: as two shapes. The line doesn't stop at the edge."
+      },
+      "stage": null,
+      "lettering": [
+        "THE FREQUENCY BENEATH",
+        "after a paperback found in the library's return cart",
+        "47"
+      ]
+    }
+  ],
+  "art": {
+    "line": "the private line, but ruled: graph paper, waveforms, spectrogram bands drawn by hand",
+    "palette": "ochre and slate; the trace in one warm color",
+    "paper": "engineering pad, then Arches"
+  },
+  "notes": "Title page. Letters exactly: THE FREQUENCY BENEATH / after a paperback found in the library's return cart / 47.",
+  "layout": "title page: the masthead over a single image"
+}

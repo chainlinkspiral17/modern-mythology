@@ -1,0 +1,108 @@
+{
+  "id": "dw_1999-11-26_the_rack_on_a_holiday",
+  "title": "The rack on a holiday",
+  "strip": "drift_wood",
+  "date": "1999-11-26",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Thanksgiving, with the dog",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The laundromat is closed the day after Thanksgiving. Wood puts the digest in the rack anyway, through the mail slot, one at a time. Twenty go through. The owner finds them on the floor Monday and puts them in the rack in order.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The laundromat, dark, CLOSED on the door drawn as blocks. WOOD outside with a stack and BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man with a small dog standing outside a dark closed laundromat holding a stack of booklets, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "A digest going through the mail slot. Folded. Then another.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a folded booklet being pushed through a door's mail slot, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Inside, through the glass: digests on the floor in a fan, twenty, the rack above them empty.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "seen through a dark shop's glass door: a fan of small booklets on the floor beneath an empty wire rack, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Wood and the dog walking off. The strip skips to Monday in the corner: the owner, small, kneeling, putting them in the rack in order. Both in one panel. It's allowed.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man and a small dog walking away from a dark laundromat, and in the panel's corner a small vignette of a woman kneeling to gather booklets into a rack, black and white, no words",
+        "negative": "",
+        "notes": "Two times in one panel: Friday large, Monday in the corner."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Through the mail slot. She puts them in order."
+}

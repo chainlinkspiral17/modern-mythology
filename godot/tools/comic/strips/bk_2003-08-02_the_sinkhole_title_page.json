@@ -1,0 +1,57 @@
+{
+  "id": "bk_2003-08-02_the_sinkhole_title_page",
+  "title": "THE SINKHOLE · title page",
+  "strip": "backup",
+  "series": "THE SINKHOLE",
+  "title_page": true,
+  "date": "2003-08-02",
+  "run": 2,
+  "era": "era1",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "The Unprinted · a Sunday page from a paper he never drew for, found in Box 5 in the private years",
+  "arc": "THE SINKHOLE",
+  "source": "lore/drift_wood/_BACKUPS.md",
+  "logline": "The title page, drawn before page one: the masthead over the series' one image, with nobody in it. It letters the title, the subtitle and the tagline. not mine. keep.",
+  "cast": [],
+  "location": "bk_graustark_diner",
+  "margin": {
+    "signature": "",
+    "mark": "none",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "splash",
+      "composition": "A Sunday section's front in a line almost his: the florid masthead, a dateline in blocks, the fold crease straight through the title, and beneath it the section logo drawn large — a small town street opening into a ragged hole seen from directly above, a riverboat's deck tilting into it — with the rest of the page's columns as gray blocks.",
+      "characters": [],
+      "props": [
+        "the fold crease",
+        "the section logo"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "black and white newspaper Sunday comic section front in a brush line almost but not quite the strip's own, a florid serif masthead with a dateline drawn as blocks and a fold crease through it, a large circular section logo of a town street opening into a ragged hole seen from above with a riverboat tilting into it, columns of text drawn as gray blocks",
+        "negative": "",
+        "notes": "Not his. In his box. The title page is the only page with legible words on it, and they're the paper's, not his."
+      },
+      "stage": null,
+      "lettering": [
+        "THE SINKHOLE",
+        "a Sunday page from a paper he never drew for · found in Box 5",
+        "not mine. keep."
+      ]
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white — but the line is not quite his",
+    "palette": "black and white",
+    "paper": "newsprint, a Louisiana paper's Sunday page, folded in Box 5"
+  },
+  "notes": "Title page. Letters exactly: THE SINKHOLE / a Sunday page from a paper he never drew for · found in Box 5 / not mine. keep..",
+  "layout": "title page: the masthead over a single image"
+}

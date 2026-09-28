@@ -1,0 +1,115 @@
+{
+  "id": "dw_2000-06-19_the_seawall_at_seven",
+  "title": "The seawall at seven",
+  "strip": "drift_wood",
+  "date": "2000-06-19",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Summer Hours",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Summer mornings: Wood draws the town from the seawall at seven before the shop or the drive. The same view. He decides to do it every morning for a week. Monday: the town, the fog in, the sign across the bay a gray shape.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "extra_fisherman"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The town from the seawall at seven AM: the four blocks, fog in, the Lanes' sign across 101 a gray shape, no letters. WOOD on the wall with the pad. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small coastal town's main street seen from a seawall at seven in the morning with fog in and a distant sign as a gray shape, a young man drawing on the wall with a small dog, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The pad: the town in fog, the sign a rectangle, no letters. Monday, written small in the corner.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a drawing pad showing a foggy town with a blank rectangle where a sign would be, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "A passing FISHERMAN, early, looking at the pad. Not stopping. A nod.",
+      "characters": [
+        {
+          "id": "extra_fisherman",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a fisherman in boots walking past a young man drawing on a seawall and giving a nod, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The town. The fog. Wood small on the wall. Five mornings. The strip has a project and it's the view.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man small on a seawall drawing a foggy town in early light, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Monday: fog, the sign a rectangle. Five mornings, one view."
+}
