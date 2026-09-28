@@ -1,0 +1,121 @@
+{
+  "id": "dw_2000-12-07_the_pockets_full",
+  "title": "The pockets, full",
+  "strip": "drift_wood",
+  "date": "2000-12-07",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Chore Coat",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Thursday. The pockets, emptied onto the shop's counter: the misfold, the November note, the July note, the pulled strip, a walrus napkin's corner, seven postcards' worth of a rubber band, a mat offcut, dimes. The owner looks. Says put it back. He does. The coat's heavier than the man.",
+  "cast": [
+    "wood_20",
+    "extra_owner_heceta"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shop's counter. WOOD emptying the chore coat's pockets onto it. The OWNER watching.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_owner_heceta",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man emptying the pockets of a canvas chore coat onto a shop counter while a woman in reading glasses watches, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The counter: a misfolded booklet, two notes, a folded strip, a torn napkin corner, a rubber band, an offcut, dimes.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a shop counter covered in small objects: a misfolded booklet, two notes, a folded comic strip, a torn napkin corner, a rubber band, a piece of mat board and dimes, black and white, no words",
+        "negative": "",
+        "notes": "The pocket's contents, Dec 2000. The misfold (objects.md: kept through 2027)."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The owner.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "OWNER",
+          "text": "Put it back."
+        },
+        {
+          "who": "WOOD",
+          "text": "All of it?"
+        },
+        {
+          "who": "OWNER",
+          "text": "It's your coat."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman in reading glasses looking at objects on a counter, dry, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The pockets refilled. The coat heavier. Wood in it. The coat's heavier than the man and the strip draws it that way: the coat solid, the man in eight strokes.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man in a canvas chore coat with bulging pockets, the coat drawn solid and the man in eight sparse strokes, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The pockets emptied and refilled. The coat heavier than the man. Eight strokes."
+}

@@ -114,6 +114,48 @@ a page says "fifty" check it against the year first.
 
 ## Recent lessons
 
+### 2026-09-28 · Deepening xix · the daily filled, Sept 1999 – Dec 2000 · 1,378 → 1,648
+
+**The ask.** "Fill out the strips with available dates, starting
+from the early years." Run 1 (the Timberline, biweekly Fridays) had
+no gaps. Run 2 (the weekday daily from Sept 20, 1999) had 270
+empty weekdays in its first sixteen months; the user is generating
+art chronologically and had reached Oct 6, 2000.
+
+**What was written.** All 270: the catalogue's ◐ arcs to their
+stated counts (Newport 20, Too Good For It 10, Heceta 15, The Chore
+Coat 10) and the rest as five-day weeks with a theme each (the
+uncle's pots, the first storms, the application, the Daumier book,
+page one, the flats, who draws these, the Datsun, the five
+mornings, heat, Gully draws, the uncle every day, blackberries,
+the town after, the coat), every Friday a cover strip at the
+laundromat. Strips are tier B / selection "part" unless they
+complete a catalogue arc or land a fixture beat (A).
+
+**Rules that held (and one that bit).**
+- Check the objects timeline before every fixture and every object:
+  the lawn chair (June 7, not July), the oxygen line (July 4,
+  unremarked, and stays unremarked), the sign all lit through 2008,
+  the corkboard's inventory, the coat's three marks.
+- Extras are a hand, a voice, a back: the mother never gets a face;
+  the reader's careful hand is never given a name.
+- **The "Arthur" count is canon** (`style/characters.md`: the frame
+  shop owner says it five times, the first in Oct 2000). Three new
+  strips had her say it early; they were rewritten to "Finch" before
+  commit. Grep new dialogue for `Arthur` against the tracked
+  speakers before validating.
+- Sequences read better than singles: the same view five mornings,
+  the uncle five days, the coat drawn faster each day to one
+  stroke. A week with a device is a week the reader can hold.
+- Chloe's timeline is the strip's, not the bio's: away at college
+  from Sept 1999 (postcards), home for summer 2000 (June 12 – Oct
+  29), gone on the Greyhound in Arc 1. The strip never explains the
+  return; the new strips don't either.
+- The writer helper (`scratchpad/fill_lib.py`) infers panel
+  characters from CAPS names in the composition; sign names in caps
+  (SMALL WOOD LANES) must be stripped first or Wood ends up in
+  panels he isn't in.
+
 ### 2026-09-28 · The backups were half-finished · title pages, mastheads, real panels, exact lettering
 
 **What was wrong.** The prompt for every backup said "Title of the

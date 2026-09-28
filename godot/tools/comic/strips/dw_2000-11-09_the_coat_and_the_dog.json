@@ -1,0 +1,108 @@
+{
+  "id": "dw_2000-11-09_the_coat_and_the_dog",
+  "title": "The coat and the dog",
+  "strip": "drift_wood",
+  "date": "2000-11-09",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Town After",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Thursday night. The coat on the bedroom floor. The dog asleep on it, in the ammonite. Wood on the bed looking at the two things he has. The strip draws the coat as the dog's bed and the dog as the coat's reason. That's the strip in one panel; it uses four.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The bedroom, night. The chore coat on the floor. BARNABY curled on it. WOOD on the bed's edge.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small dog curled asleep on a canvas chore coat spread on a bedroom floor while a young man sits on the edge of a bed watching, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The dog on the coat. The frayed cuff by his nose.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a small dog asleep with its nose beside a frayed canvas cuff, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood's hand reaching down. Stopping short. Not waking him.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a young man's hand reaching down toward a sleeping dog and stopping short, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The room. The bed, the man, the coat, the dog. The lamp. The corkboard with the schedule turned to the wall. The strip has four panels and only needed the one.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a bedroom at night with a young man on the bed's edge, a dog asleep on a coat on the floor, a lamp and a corkboard, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The coat as the dog's bed; the dog as the coat's reason."
+}

@@ -1,0 +1,136 @@
+{
+  "id": "dw_2000-12-27_sixty_five",
+  "title": "Sixty-five",
+  "strip": "drift_wood",
+  "date": "2000-12-27",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Christmas Week",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The laundromat's shelf: sixty-five digests, one of each, the year done. The owner counts them with Wood. She says she's out of shelf. He says he'll bring a box. She says a box isn't a shelf. He says he'll bring a shelf. She says she'll hold him to it. She does, in March.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "laundromat_owner"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The laundromat. Under the counter: the stack. The LAUNDRY owner counting with a thumb. WOOD. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "laundromat_owner",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat owner counting a tall stack of small booklets beneath her counter with her thumb while a young man watches, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The stack. Sixty-five. The shelf full to the counter's underside.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a stack of booklets filling a shelf to the underside of a counter, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The owner.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "LAUNDRY",
+          "text": "Out of shelf."
+        },
+        {
+          "who": "WOOD",
+          "text": "I'll bring a box."
+        },
+        {
+          "who": "LAUNDRY",
+          "text": "A box isn't a shelf."
+        },
+        {
+          "who": "WOOD",
+          "text": "I'll bring a shelf."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat owner, level, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The owner, back to folding.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "LAUNDRY",
+          "text": "I'll hold you to it."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat owner folding towels with her back turned, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Sixty-five. 'I'll hold you to it.' The shelf: March 2001."
+}

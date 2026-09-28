@@ -1,0 +1,137 @@
+{
+  "id": "dw_2000-12-18_a_third_of_the_string",
+  "title": "A third of the string",
+  "strip": "drift_wood",
+  "date": "2000-12-18",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "December",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The shack's lights go up. A third of them work this year. Gully says last year was half. The uncle says the year before was a third. Gully says so it's going backward. The uncle says everything does, if you count long enough. Wood draws the dark bulbs as circles again.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby",
+    "extra_uncle"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack's eave. GULLY on the ladder with the string. The UNCLE in the chair below, the line. WOOD, BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_uncle",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky teenager on a ladder hanging a string of lights along a shack's eave while an old man in a lawn chair with an oxygen line watches from below, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The plug in. The string: lit, dark, dark, lit, dark, dark.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a string of holiday lights with two of every three bulbs dark, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Gully, on the ladder.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Last year was half."
+        },
+        {
+          "who": "UNCLE",
+          "text": "Year before was a third."
+        },
+        {
+          "who": "GULLY",
+          "text": "So it's going backward."
+        },
+        {
+          "who": "UNCLE",
+          "text": "Everything does. Count long enough."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky teenager on a ladder looking at a string of lights, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The shack at dusk, a third lit. Wood drawing every bulb, the dark ones circles. Two-thirds circles. The strip counts what's out. It's learning to.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a shingle shack at dusk with a mostly dark string of lights along its eave, a young man drawing below, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Everything does. Count long enough.' Two-thirds circles. (Dec 13 1999: half.)"
+}

@@ -1,0 +1,108 @@
+{
+  "id": "dw_2000-12-04_faster",
+  "title": "Faster",
+  "strip": "drift_wood",
+  "date": "2000-12-04",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Chore Coat",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Monday. The strip is drawn in ten strokes. The beach, the coat, the dog, the wind. Wood times it: forty seconds. He looks at it. It's the best drawing of the coat. He's angry about that for a panel and then he isn't.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The beach, December wind. WOOD in the coat, collar up, from behind. BARNABY leaning into the wind. Ten strokes.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a windy December beach with a man in a chore coat from behind and a small dog leaning into the wind, drawn in ten strokes, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The pad. The drawing. Forty seconds. Wood's watch drawn as a circle.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a drawing pad with a ten-stroke drawing of a beach and a wristwatch drawn as a blank circle, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood's face. Angry at the drawing for being good.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man's face angry at his own drawing, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The beach. The same ten strokes. Wood walking on. The anger gone. The strip keeps the ten strokes. Winter's line.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same windy beach with a man in a chore coat and a dog walking on, drawn in ten strokes, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Ten strokes, forty seconds, the best one. Winter's line."
+}

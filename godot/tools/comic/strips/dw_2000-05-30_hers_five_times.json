@@ -1,6 +1,6 @@
 {
   "id": "dw_2000-05-30_hers_five_times",
-  "title": "The Arthur count",
+  "title": "What she calls him",
   "strip": "drift_wood",
   "date": "2000-05-30",
   "run": 2,
@@ -11,7 +11,7 @@
   "venue": "the coast community-college paper, Newport · the laundromat digest",
   "arc": "Heceta Frame & Matting",
   "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
-  "logline": "Tuesday. The owner has said 'Arthur' once since he started, and the strip counted. Today she says 'Wood' for the first time, by accident, reading the digest's margin. She corrects herself. He says either. She says Arthur, and it's the second.",
+  "logline": "Tuesday. The owner has never called him anything. Today she reads the digest's margin and says 'Wood, then.' He says either. She says Finch, and that's what she uses from here. The strip notices she has a first name for him and isn't spending it.",
   "cast": [
     "wood_20",
     "extra_owner_heceta"
@@ -68,7 +68,7 @@
         },
         {
           "who": "OWNER",
-          "text": "No. Arthur."
+          "text": "No. Finch."
         }
       ],
       "caption": "",
@@ -99,16 +99,16 @@
     {
       "n": 4,
       "shot": "medium",
-      "composition": "The shop. The mat cutter going. The strip's count in the corner of the panel, tiny, like the sign's marks: two. Nobody else in the strip keeps count. The strip does.",
+      "composition": "The shop. The mat cutter going. She has a first name for him and isn't spending it. The strip knows from the HELP WANTED card she read his whole name off the form. It waits.",
       "characters": [],
       "props": [],
       "balloons": [],
       "caption": "",
       "sfx": "",
       "image": {
-        "prompt": "a small frame shop interior with a young man cutting a mat and a woman at the counter, two tiny tally marks in the panel's corner, black and white, no words",
+        "prompt": "a small frame shop interior with a young man cutting a mat and a woman at the counter, black and white, no words",
         "negative": "",
-        "notes": "The 'Arthur' count per characters.md: Oct 2000 is the third (the fresh blade). This is the second."
+        "notes": "The owner says 'Arthur' for the first time in Oct 2000 (the fresh blade), per characters.md. Not here."
       },
       "stage": null
     }
@@ -118,5 +118,5 @@
     "palette": "",
     "paper": "newsprint / the digest"
   },
-  "notes": "'No. Arthur.' The second. The strip keeps the count in the corner."
+  "notes": "'No. Finch.' She has a first name for him and isn't spending it. October."
 }

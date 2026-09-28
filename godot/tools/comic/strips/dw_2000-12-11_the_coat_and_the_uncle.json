@@ -1,0 +1,133 @@
+{
+  "id": "dw_2000-12-11_the_coat_and_the_uncle",
+  "title": "The coat and the uncle",
+  "strip": "drift_wood",
+  "date": "2000-12-11",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Chore Coat",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Monday. The uncle looks at the coat. Says it's a good coat. Wood says it's a thrift-store coat. The uncle says that's what he said. The uncle's own coat, on the chair's back, is the same coat thirty years older. Nobody says that either.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby",
+    "extra_uncle"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack. The UNCLE in the chair, the oxygen line. WOOD in the chore coat. GULLY at the tank. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_uncle",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "UNCLE",
+          "text": "Good coat."
+        },
+        {
+          "who": "WOOD",
+          "text": "Thrift store."
+        },
+        {
+          "who": "UNCLE",
+          "text": "That's what I said."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old man in a lawn chair with an oxygen line looking at a young man in a canvas chore coat inside a bait shack, a teenager at a tank, a dog, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The uncle's own coat on the chair's back: canvas, thirty years, the cuff gone entirely, a button that doesn't match.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on an old canvas work coat hung over a lawn chair's back with its cuff worn away and a mismatched button, black and white, no words",
+        "negative": "",
+        "notes": "The uncle's coat: the same coat, thirty years on. Unremarked."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood, seeing it. Saying nothing.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man looking at an old coat on a chair and saying nothing, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The shack. Two coats. One on a man, one on a chair. The strip draws them the same and lets the reader do the thirty years. Six strokes.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a bait shack interior with a young man in a canvas coat and an old coat draped on a lawn chair, drawn in six sparse strokes, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Two coats, thirty years apart, drawn the same. Six strokes."
+}

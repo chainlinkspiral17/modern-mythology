@@ -1,0 +1,141 @@
+{
+  "id": "dw_2000-12-25_christmas_the_shack",
+  "title": "Christmas, the shack",
+  "strip": "drift_wood",
+  "date": "2000-12-25",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Christmas Week",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Christmas Day. The house in the morning, the hand, the toast; then the shack. The uncle in the chair with a blanket, the stove, Gully, the dog. The uncle gives nobody anything and everybody stays. That's the present. The strip draws it from the door, like Thanksgiving. The second family portrait.",
+  "cast": [
+    "extra_mother",
+    "wood_20",
+    "gully_17",
+    "barnaby",
+    "extra_uncle"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "Morning: the MOTHER's hand setting toast on the desk. 'Arthur.' The strip's Christmas at the house is one panel.",
+      "characters": [
+        {
+          "id": "extra_mother",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "MOTHER",
+          "text": "Arthur. Merry Christmas."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a woman's hand with a ring and a cardigan cuff setting a plate of toast on a desk, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "wide",
+      "composition": "The shack, afternoon. The UNCLE in the chair with a blanket over his knees, the line, the stove. GULLY. WOOD in the coat. BARNABY under the counter.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_uncle",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "inside a warm bait shack on a winter afternoon with an old man in a lawn chair under a blanket with an oxygen line, a teenager, a young man in a chore coat and a small dog beneath the counter, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The uncle. Not giving anyone anything.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "UNCLE",
+          "text": "Nobody's got to be here."
+        },
+        {
+          "who": "GULLY",
+          "text": "We know, Uncle."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old man in a lawn chair under a blanket, flat, content, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "From the door: the four of them, the stove, the chair, the blanket, the dog's tail. The second family portrait. Everybody stayed. That's the present.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a bait shack interior seen from its doorway with an old man under a blanket in a lawn chair, a teenager, a young man and a dog's tail beneath the counter in stove light, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Nobody's got to be here.' Everybody stayed. The uncle's last Christmas; the strip doesn't know."
+}

@@ -1,0 +1,88 @@
+# The last run of the term
+
+`dw_1999-12-07_the_last_run_of_the_term` · **DRIFT WOOD** · 1999-12-07 · daily4 (1x4 strip) · run 2 · The High School Zine Era · tier B · selection part
+Venue: the coast community-college paper, Newport · the laundromat digest · arc: *Winter, Newport*
+
+*The print shop's last run before break. The tech says the machine goes to Corvallis for service. Wood asks where he'll copy. The tech says the laundromat has a machine. It does. It's terrible. The tech knows.*
+
+**Line.** brush-pen, committed; black and white; xerox  
+**Palette.** pure black and white; no grays; xerox grain  
+**Paper.** newsprint / the digest
+
+Cast: `wood_20`, `extra_print_tech`
+
+---
+
+## Panel 1
+
+*medium.* The print shop. The copier with a tag on it drawn as blocks. The TECH. WOOD with the week's strips.
+
+- **wood_20**
+- **extra_print_tech**
+
+> **TECH**: She goes to Corvallis Friday. Three weeks.
+> **WOOD**: Where do I copy?
+
+<details><summary>image generation</summary>
+
+**prompt.** black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones, a print technician beside a large photocopier with a service tag on it, a young man holding a week's worth of comic strips, black and white, no words, no text, no lettering, no speech balloons, no signature
+
+**negative.** color, gray gradients, photorealistic, 3D render, smooth digital line, text, letters, watermark, signature, extra fingers
+
+</details>
+
+## Panel 2
+
+*close.* The tech.
+
+> **TECH**: Laundromat's got a machine.
+> **WOOD**: It's terrible.
+> **TECH**: It's a machine.
+
+<details><summary>image generation</summary>
+
+**prompt.** black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones, a print technician's face, amused, black and white, no words, no text, no lettering, no speech balloons, no signature
+
+**negative.** color, gray gradients, photorealistic, 3D render, smooth digital line, text, letters, watermark, signature, extra fingers
+
+</details>
+
+## Panel 3
+
+*close.* The last strips going under the lid. The green light. Slower than usual, or Wood's watching slower.
+
+<details><summary>image generation</summary>
+
+**prompt.** black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones, close on comic strips under a photocopier lid with the green light sweeping slowly, black and white, no words, no text, no lettering, no speech balloons, no signature
+
+**negative.** color, gray gradients, photorealistic, 3D render, smooth digital line, text, letters, watermark, signature, extra fingers
+
+</details>
+
+## Panel 4
+
+*medium.* Wood with the stack, the dog at his feet, the tech pulling the copier's plug. The cord in his hand like a leash.
+
+<details><summary>image generation</summary>
+
+**prompt.** black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones, a technician pulling a large copier's power cord while a young man and a small dog stand with a stack of copies, black and white, no words, no text, no lettering, no speech balloons, no signature
+
+**negative.** color, gray gradients, photorealistic, 3D render, smooth digital line, text, letters, watermark, signature, extra fingers
+
+</details>
+
+---
+
+<details><summary>whole-strip prompt (concept run)</summary>
+
+**prompt.** a four-panel newspaper comic strip, four equal panels in a single horizontal row with thin black gutters (4 panels). Style: black and white comic strip panel, scratchy crow-quill pen and ballpoint ink on cardstock, harsh photocopy contrast, heavy black spotting, jagged uneven line weights, 1990s indie comix zine style, xerox grain, no color, no gray tones. Cast, the same faces, hair and builds in every panel, ages exactly as given: WOOD — aged 19, thin young man with a slouch, three days' stubble, dark hair grown longer. WOOD usually wears brown canvas chore coat with a frayed cuff and one mismatched button, hands in its pockets, plain tee, dark jeans. Clothes, hair-dos and anything held come from this strip's description, never from the reference sheet; hands are empty unless a panel names what they hold. Title of the strip: DRIFT WOOD. The strip: The print shop's last run before break. The tech says the machine goes to Corvallis for service. Wood asks where he'll copy. The tech says the laundromat has a machine. It does. It's terrible. The tech knows. Panel 1: a print technician beside a large photocopier with a service tag on it, a young man holding a week's worth of comic strips, black and white, no words (in this panel: WOOD). Tech says "She goes to Corvallis Friday. Three weeks.". Wood says "Where do I copy?". Panel 2: a print technician's face, amused, black and white, no words. Tech says "Laundromat's got a machine.". Wood says "It's terrible.". Tech says "It's a machine.". Panel 3: close on comic strips under a photocopier lid with the green light sweeping slowly, black and white, no words. No dialogue in this panel. Panel 4: a technician pulling a large copier's power cord while a young man and a small dog stand with a stack of copies, black and white, no words. No dialogue in this panel. Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; no words other than the ones given. Bottom right margin: tiny signature "A. Finch — Small Wood, OR" beside a tiny stylized gull, two strokes.
+
+**negative.** color, gray gradients, photorealistic, 3D render, smooth digital line, watermark, extra fingers
+
+</details>
+
+**Margin.** A. Finch — Small Wood, OR · mark: *gull* — a tiny stylized gull, two strokes
+
+*Notes.* Three weeks without the machine. The laundromat's is terrible; the strip will look it.
+
+Source: lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)

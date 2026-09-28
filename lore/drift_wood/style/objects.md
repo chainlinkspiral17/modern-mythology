@@ -77,6 +77,10 @@ by year of arrival. Photo-side out is the default for postcards;
 | 1999 | the Greyhound bus schedule, every departure circled | |
 | 1999 | a postcard: Seattle's needle tower | photo-out, thumb-side to the wall |
 | 2000 | the PNCA letter (a partial) | pinned over the bus schedule |
+| 1999 | a postcard: a Seattle ferry (APPLY. YOU COWARD. — C., Nov 8) | photo-out; turned twice the day it came |
+| 1999 | the rack's first note ("More of the boy at the counter", Oct 14) and Gully's Christmas napkin (a walrus in a Santa hat, Dec 16) | the napkin beside the yearbook photo |
+| 2000 | a postcard: the Seattle market sign (YOU'RE STAYING? — C., Mar 15) | writing to the wall, beside the needle tower |
+| 2000 | the college's fall roster (FINCH, A. — AUDITING, Aug 21) and the vet's reminder card (Nov 14) | beside the PNCA letter |
 | 2001 | postcards: Chicago skyline; the cardstock one with her drawing of his map | the cardstock one **writing-out, by one corner** |
 | 2001 | postcard: a European cathedral | photo-out |
 | 2004 | a printed email (Arial) | by one corner |
@@ -164,6 +168,24 @@ the word can be read as a gap.
   ROFLCOPTER.
 - **The digest.** Quarter-letter, five dailies stapled, a cover
   drawn on the spot. Free. Between property and God.
+- **The laundromat's shelf.** One of each digest, under the
+  counter, kept by the owner from the first week: 61 by Nov 1,
+  2000; 65 at the year's end ("Counting's not keeping"). Wood owes
+  her a shelf (Dec 27, 2000; delivered March 2001).
+- **The dried ball.** The first digest the storm soaked, dried in a
+  dryer to a gray fist (Nov 4, 1999); on the laundromat counter by
+  the register for years.
+- **The tally walls.** Heceta's backroom wall: pencil marks in
+  fives under 4000 ("do four thousand"), one of them the owner's
+  (May 2, 2000), DIPLOMAS · DEER pencilled beneath (Aug 22, 2000).
+  The print shop wall: the tech's count of digests under the
+  copier's serial number, with a gap for March 2000 (the pulled
+  strip); 65 by Dec 28, 2000.
+- **The coat pocket.** From Oct 1999 the chore coat's (before it,
+  the overcoat's) right pocket holds what the strip didn't run: the
+  misfold, the rack's notes, the pulled strip of Mar 9 2000, a
+  walrus napkin's corner, dimes. Emptied onto the shop counter once
+  (Dec 7, 2000) and put back: "It's your coat."
 - **Postcards.** Hers: tiny cramped manic capitals edge to edge.
   His: the drugstore's one postcard of the bay, written side never
   shown.
@@ -267,6 +289,22 @@ the word can be read as a gap.
 
 ## Gully's dock · additions
 
+- **The lawn chair** (Jun 7, 2000–): aluminum, green-and-white
+  webbing, one strap gone, the arms worn silver. Gully brought it
+  from the uncle's house; the uncle sat in it without a word and
+  the crab pot he'd sat on went back on the wall (thirteen). Drawn
+  exactly from that day. Its four leg-marks in the gravel from the
+  hot week (Jun 28, 2000) lasted the summer. The oxygen line
+  appears in it Jul 4, 2000, unremarked. Empty from Feb 2001.
+- **The rules board** (1978–): five painted lines, only rule four
+  legible (NO DRAWING ON THE COUNTER); a two-stroke gull under the
+  counter's varnish from the same year, reserved whose. The framed
+  walrus (Gully's napkin, cedar, no mat) hangs under it from Jul
+  20, 2000: "Rule four's about the counter."
+- **OPEN DAILY** (summer 2000): Gully's board under the derby sign,
+  Jun 5 – Sep 4; inside on a nail above the walrus over winter.
+- **The second key** (Dec 26, 2000): hung by the uncle beside the
+  first on the nail by the door. For whom, unsaid.
 - **The ramp** (Oct 28, 2014–): two planks and roofing felt beside
   the shack steps, "for the crab traps." Barnaby used it once.
   Stays through 2027.
