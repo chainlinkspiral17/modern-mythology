@@ -1,0 +1,116 @@
+{
+  "id": "dw_2000-05-15_the_window_watched",
+  "title": "The window, watched",
+  "strip": "drift_wood",
+  "date": "2000-05-15",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Newport",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Monday. Wood sits in the Datsun across 101 from the frame shop on his day off and counts who stops at the window of empty frames. Eleven people. Four look through a frame. One puts her hand up as if to touch what's in it. Nothing's in it.",
+  "cast": [
+    "extra_woman",
+    "wood_20",
+    "extra_owner_heceta"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "101 from the far shoulder: the frame shop, the window of twelve empty frames, the road between. The Datsun parked on the gravel across.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a low roadside frame shop with a window of empty picture frames seen across a two-lane highway from a parked small car, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "A WOMAN at the window, looking through one frame. Her hand coming up toward the glass.",
+      "characters": [
+        {
+          "id": "extra_woman",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman on a sidewalk looking through an empty picture frame in a shop window with her hand raised toward the glass, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "WOOD's pad: a tally. Eleven marks. Four circled. One with a hand drawn beside it.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a drawing pad with eleven tally marks, four of them circled, and a tiny drawn hand beside one, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Dusk. The OWNER locking the door. Looking across the road at the Datsun. Looking a long time. Getting in her car. Mondays are hers; she let him have this one.",
+      "characters": [
+        {
+          "id": "extra_owner_heceta",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman locking a shop door at dusk and looking across a highway at a small parked car for a long moment, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Eleven; four; one with her hand up. 'People will bring their own.' They do."
+}

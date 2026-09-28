@@ -1,0 +1,108 @@
+{
+  "id": "dw_2000-07-11_the_mat_board_warps",
+  "title": "The mat board warps",
+  "strip": "drift_wood",
+  "date": "2000-07-11",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Heat",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Tuesday. The heat gets into the shop. Mat board warps in the rack. The owner turns the boards every hour like bread. Wood learns to feel a warp with a thumb. A sheet of glass on the felt, hot to the touch. Nothing cuts right. She closes at two.",
+  "cast": [
+    "wood_20",
+    "extra_owner_heceta"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shop in heat. The OWNER turning sheets of mat board in the rack. WOOD with a thumb on a board's edge, feeling.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_owner_heceta",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman in reading glasses turning sheets of mat board in a rack while a young man tests a board's edge with his thumb in a hot shop, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "A board, warped: a curve where a flat should be. The thumb on it.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a sheet of mat board with a slight curve along its edge under a thumb, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The glass on the felt. The owner's palm flat on it. Hot.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a woman's palm pressed flat to a pane of glass on a felt table, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The owner turning the door's card to CLOSED at two. Wood and the boards. Nothing cut today. The tally on the wall: none added. First day of none.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman turning a shop door's sign to closed in afternoon heat while a young man stands by a rack of boards, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "First day with no cuts. The boards turned like bread."
+}

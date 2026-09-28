@@ -1,0 +1,120 @@
+{
+  "id": "dw_2000-07-26_the_skiff_alone_ii",
+  "title": "The skiff, alone, ii",
+  "strip": "drift_wood",
+  "date": "2000-07-26",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Late July",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Gully takes the skiff out at dawn to check the summer set. The uncle doesn't come to the door this time. He's in the chair, asleep, the line. Wood, on the dock, watches the skiff and the chair and can't draw both. He draws the chair.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby",
+    "extra_uncle"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Dawn. The skiff going out, GULLY at the tiller, small. The UNCLE asleep in the chair by the shack, the oxygen line. WOOD on the dock with the pad. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_uncle",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a skiff heading out across a gray bay at dawn as an old man sleeps in a lawn chair beside a shack with an oxygen line, a young man and a dog on the dock, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The skiff, a speck. The pad: nothing yet.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a distant skiff as a speck on gray water, a blank drawing pad in the foreground, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The chair. The uncle asleep. The line. The pad: the chair, the uncle, the line. Drawn.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a drawing pad with an ink drawing of an old man asleep in a lawn chair with an oxygen line, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The skiff coming back. The uncle waking as it lands, as if he'd been watching. Wood closing the pad on the chair. He'll never show that one. It's in Box 3.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a skiff landing at a boat launch as an old man in a lawn chair wakes, a young man closing a drawing pad on the dock, black and white, no words",
+        "negative": "",
+        "notes": "The drawing of the uncle asleep: never run. Box 3."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "He draws the chair. Never shown; Box 3."
+}

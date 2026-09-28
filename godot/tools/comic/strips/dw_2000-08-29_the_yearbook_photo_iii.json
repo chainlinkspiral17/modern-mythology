@@ -1,0 +1,109 @@
+{
+  "id": "dw_2000-08-29_the_yearbook_photo_iii",
+  "title": "The yearbook photo, again",
+  "strip": "drift_wood",
+  "date": "2000-08-29",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Before September",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The corkboard. The yearbook photo, two years pinned. MOST LIKELY TO WIN A PULITZER. Wood looks at it the way he looks at the bus schedule. He turns twenty in two weeks. The strip doesn't say so; it draws the photo with the pin loose.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "The corkboard. The yearbook photo: WOOD at seventeen, the caption as blocks but for one line legible. The pin loose.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a corkboard with a yearbook photograph of a thin boy pinned loosely, one caption line legible, black and white, no words",
+        "negative": "",
+        "notes": "Letter after: MOST LIKELY TO WIN A PULITZER — Arthur Finch."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Wood looking at it. Twenty in two weeks. Not said.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man looking at a yearbook photo on a corkboard, hands in his coat, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood pressing the pin in. Firm. Not moving the photo. Same place.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a thumb pressing a loose pin firmly back into a corkboard, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The corkboard: the photo, the letter, the roster, the postcards facing the wall, the schedule. Two years of a wall. BARNABY asleep under it. The strip counts the pins. Eleven. That number again.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a corkboard crowded with pinned papers above a small dog asleep beneath, eleven pins visible, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The pin pressed back. Eleven pins. Twenty in two weeks; not said."
+}

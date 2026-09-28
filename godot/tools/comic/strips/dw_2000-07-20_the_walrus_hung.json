@@ -1,0 +1,130 @@
+{
+  "id": "dw_2000-07-20_the_walrus_hung",
+  "title": "The walrus, hung",
+  "strip": "drift_wood",
+  "date": "2000-07-20",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Gully Draws",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The framed walrus goes on the shack's wall while Gully's out. The uncle points to the spot: beside the rules board, under rule four. Wood hangs it. Gully comes in, sees it, and says nothing for a whole panel. Then: 'That's under rule four.' The uncle: 'Rule four's about the counter.'",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "extra_uncle",
+    "gully_17"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack. The UNCLE in the door in the chair, pointing. WOOD with the framed walrus and a nail. The rules board. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "extra_uncle",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man holding a small framed drawing and a nail beside a board of painted rules in a bait shack while an old man in a lawn chair points from the doorway, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The walrus on the wall under the rules board. Rule four above it: NO DRAWING ON THE COUNTER.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a small framed napkin drawing hung beneath a painted board of rules, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "GULLY in the door. Seeing it. A whole panel of nothing on his face.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky teenager stopped in a doorway looking at a small framed drawing on the wall, his face blank, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "close",
+      "composition": "Gully, finally.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "That's under rule four."
+        },
+        {
+          "who": "UNCLE",
+          "text": "Rule four's about the counter."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky teenager and an old man in a lawn chair, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'Rule four's about the counter.' The walrus hangs there through 2027."
+}

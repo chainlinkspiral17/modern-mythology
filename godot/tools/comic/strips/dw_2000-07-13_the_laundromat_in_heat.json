@@ -1,0 +1,128 @@
+{
+  "id": "dw_2000-07-13_the_laundromat_in_heat",
+  "title": "The laundromat in heat",
+  "strip": "drift_wood",
+  "date": "2000-07-13",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Heat",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The laundromat in a heat wave: every dryer off, the door propped, the owner at the folding table with a fan, the rack full because nobody comes. Wood comes. The owner says he's the only one. He says he's the only one in January too. She says that's different. It is.",
+  "cast": [
+    "laundromat_owner",
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The laundromat, empty, the door propped with a brick, every dryer still, a box fan on the folding table turning slowly. The LAUNDRY owner behind it.",
+      "characters": [
+        {
+          "id": "laundromat_owner",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an empty laundromat in heat with its door propped by a brick, every dryer still, and the owner behind a box fan at the folding table, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD in the door with the digests. BARNABY behind him, not coming in from the shade.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man in a laundromat doorway holding booklets while a small dog stays outside in the shade, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The owner.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "LAUNDRY",
+          "text": "You're the only one."
+        },
+        {
+          "who": "WOOD",
+          "text": "I'm the only one in January."
+        },
+        {
+          "who": "LAUNDRY",
+          "text": "That's different."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat owner in front of a slow fan, dry, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "close",
+      "composition": "The rack, full. Last week's still in it. The fan turning. The strip agrees it's different and can't say how, so it draws the fan.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a full wire rack of booklets beside a slowly turning box fan, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "'That's different.' It is. The strip draws the fan."
+}

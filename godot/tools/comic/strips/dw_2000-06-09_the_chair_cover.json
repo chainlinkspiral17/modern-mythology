@@ -1,0 +1,131 @@
+{
+  "id": "dw_2000-06-09_the_chair_cover",
+  "title": "The chair cover",
+  "strip": "drift_wood",
+  "date": "2000-06-09",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "June, the Dock",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Friday. The cover is the lawn chair, empty, by the shack, the pots on the wall behind. The owner asks where the uncle is. Wood says in the shack. She says then why's the chair empty. He says he wanted to draw the chair.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "laundromat_owner"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "The cover: the lawn chair, empty, beside the shack, the row of pots behind, the bay.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a photocopied booklet cover showing an empty aluminum lawn chair beside a shingle shack with crab pots hung on the wall behind, black and white, no words",
+        "negative": "",
+        "notes": "The empty chair, drawn first in June 2000. It's empty for real from Feb 2001."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The laundromat. The LAUNDRY owner. WOOD. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "laundromat_owner",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "LAUNDRY",
+          "text": "Where's the uncle."
+        },
+        {
+          "who": "WOOD",
+          "text": "In the shack."
+        },
+        {
+          "who": "LAUNDRY",
+          "text": "Then why's the chair empty."
+        },
+        {
+          "who": "WOOD",
+          "text": "I wanted to draw the chair."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat owner holding a small booklet and questioning a young man, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The owner looking at the empty chair on the cover. Longer than she needs to.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat owner looking at a drawing of an empty lawn chair for a long moment, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The digest in the rack. The chair facing the room. The strip drew it empty because it wanted to draw the chair. That's what it says. The strip is allowed one lie a year and this may be it.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small booklet in a wire rack, its cover of an empty lawn chair facing a laundromat, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The empty chair on a cover, June 2000. 'I wanted to draw the chair.' Maybe the year's one lie."
+}

@@ -1,0 +1,127 @@
+{
+  "id": "dw_2000-06-23_the_five_mornings_cover",
+  "title": "The five mornings",
+  "strip": "drift_wood",
+  "date": "2000-06-23",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Summer Hours",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Friday, seven, the fifth morning. Fog again. The cover is the five drawings stacked: fog, clear, rain, clear-with-a-sleeve, fog. The owner says it's the same picture five times. Wood says look longer. She says she already does that.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "laundromat_owner"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "The cover: five small drawings of the same view stacked top to bottom — fog, clear, rain with the sign lit, clear with a sleeve at the edge, fog.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a photocopied booklet cover showing five small stacked drawings of the same town view in fog, clear light, rain, clear light and fog, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The laundromat. The LAUNDRY owner. WOOD. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "laundromat_owner",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "LAUNDRY",
+          "text": "Same picture five times."
+        },
+        {
+          "who": "WOOD",
+          "text": "Look longer."
+        },
+        {
+          "who": "LAUNDRY",
+          "text": "I already do that."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat owner holding a small booklet with five stacked drawings on its cover, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The owner's thumb on the fourth: the sleeve. She looks at Wood. Says nothing. Says nothing is her loudest.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat owner's thumb resting on one small drawing among five, her eyes lifted, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The rack. The five mornings facing the room. The strip did the view five times and it's the strip's first sequence. It doesn't know that word yet.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small booklet in a wire rack with a cover of five stacked drawings, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Five mornings, one view: the first sequence. 'I already do that.'"
+}

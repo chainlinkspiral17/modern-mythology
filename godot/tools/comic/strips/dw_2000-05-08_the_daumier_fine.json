@@ -1,0 +1,116 @@
+{
+  "id": "dw_2000-05-08_the_daumier_fine",
+  "title": "The Daumier fine",
+  "strip": "drift_wood",
+  "date": "2000-05-08",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Newport",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The Daumier book has been overdue on the instructor's card since February. The library sends her a notice. She hands Wood the notice in the hall without stopping. He returns the book and pays the fine in dimes. The librarian counts them without comment.",
+  "cast": [
+    "extra_instructor",
+    "wood_20",
+    "extra_librarian"
+  ],
+  "location": "dw_library_back_room",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "A library notice, the letterhead as blocks, a date, an amount as a smudge, the INSTRUCTOR's name as blocks.",
+      "characters": [
+        {
+          "id": "extra_instructor",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a printed library overdue notice with the amount smudged, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The hall. The instructor passing WOOD, the notice going from her hand to his without either stopping. The drop, again.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman instructor passing a young man in a college hallway and handing him a slip of paper without either stopping, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The library desk. The Daumier on it. Wood counting dimes from the cigar box onto the counter. The LIBRARIAN's cardigan.",
+      "characters": [
+        {
+          "id": "extra_librarian",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man counting dimes onto a library desk beside a heavy returned book while a librarian in a cardigan waits, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "close",
+      "composition": "The librarian's hand sweeping the dimes into a drawer. The book going onto a cart. Four months. Worth it. The strip says so with the book's spine, drawn as the panel's one solid thing.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a librarian's hand sweeping dimes into a drawer beside a heavy book on a cart, the book's spine dark and solid, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Four months on her card. Paid in dimes. 'I never did this,' twice over."
+}

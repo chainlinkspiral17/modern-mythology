@@ -1,0 +1,115 @@
+{
+  "id": "dw_2000-04-28_the_hours_card",
+  "title": "The hours card",
+  "strip": "drift_wood",
+  "date": "2000-04-28",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Newport",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "Friday. The owner has lettered a new HOURS card for the window: TUE / THU / SAT. Wood's days, in her hand. The strip draws the card. It's the first time the strip's own schedule is on a sign the world made.",
+  "cast": [
+    "extra_owner_heceta",
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "close",
+      "composition": "The shop window: a hand-lettered card, HOURS: TUE · THU · SAT · 10–4, in the OWNER's neat capitals.",
+      "characters": [
+        {
+          "id": "extra_owner_heceta",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a hand-lettered hours card in a shop window in neat capitals, black and white, no words",
+        "negative": "",
+        "notes": "Letter after: HOURS · TUE · THU · SAT · 10–4 (locations.md: the 2000 card)."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD outside on the gravel, looking at it. BARNABY. Not a shop day; he came to look.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man on a gravel lot looking at a small card in a shop window, a dog beside him, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The card, close. His days. Her hand.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on neat hand-lettered capitals on a white card in a window, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The shop from the road with the card in the window. The strip's schedule on a sign the world made. The strip finds this more official than the roster.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a low roadside frame shop seen from the highway with a small card visible in its window, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "TUE · THU · SAT, in her hand. More official than the roster."
+}
