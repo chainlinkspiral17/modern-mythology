@@ -341,6 +341,20 @@ references the same way. Nothing in a strip JSON refers to a file —
 only to ids and tags — so references can be re-rendered, replaced or
 moved without touching the scripts.
 
+## Saving from the Deck and pulling
+
+The Deck edits `references.json` (approvals, syncs, uploads) and adds
+renders; this side edits strips, sheets and the tool. Both can touch
+`references.json`, so the paste below commits the Deck's work, merges,
+keeps the Deck's `references.json` if the two collide, takes this
+side's version of anything else that collides, and then runs
+`refs sync`, which re-registers every sheet from `style_sheets.json`
+and re-tags them. Nothing on the Deck is lost; nothing new is missed.
+
+```bash
+cd /home/deck/Downloads/modern-mythology && git add -A godot/assets/comic godot/tools/comic/strips godot/tools/comic/references.json && git commit -q -m "comic · references and renders from the Deck" ; git pull --no-rebase --no-edit origin claude/cool-hypatia-3firgv || { git checkout --ours -- godot/tools/comic/references.json 2>/dev/null; git diff --name-only --diff-filter=U | grep -v references.json | xargs -r git checkout --theirs -- ; git add -A godot/assets/comic godot/tools/comic ; git commit -q -m "merge · the Deck's references kept" ; } ; python3 godot/tools/comic/comic_tool.py refs sync && git push -u origin claude/cool-hypatia-3firgv ; bash godot/tools/comic/inspect.sh
+```
+
 ## Backups (outside the canon)
 
 Ids starting `bk_` are **backups**: `strip: "backup"`, with a required

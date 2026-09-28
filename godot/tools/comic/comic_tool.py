@@ -344,6 +344,20 @@ def sync_refs(refs):
         f = r.get("file")
         if f and (REPO / f).exists() and r.get("status") == "missing":
             r["status"] = "draft"; flipped += 1
+    # every sheet in style_sheets.json is a reference (status missing until
+    # a file lands); tags follow the sheet definition. This is what lets a
+    # merge keep the Deck's references.json and still know the new sheets.
+    if SHEETS_PATH.exists():
+        by_id = {r["id"]: r for r in refs["references"]}
+        for sh in load_json(SHEETS_PATH).get("sheets", []):
+            r = by_id.get(sh["id"])
+            if r is None:
+                refs["references"].append({"id": sh["id"], "kind": sh["kind"], "tags": list(sh.get("tags", [])),
+                                           "file": f"godot/assets/comic/vol10/sheets/{sh['id']}.png", "url": None, "runway_task_id": None,
+                                           "status": "missing", "source": "style_sheets.json", "notes": ""})
+                flipped += 1
+            elif r.get("source") == "style_sheets.json" and r.get("tags") != list(sh.get("tags", [])):
+                r["tags"] = list(sh.get("tags", [])); flipped += 1
     man = REPO / "godot" / "assets" / "comic" / "vol10" / "sheets" / "manifest.json"
     if man.exists():
         ids = {r["id"] for r in refs["references"]}
