@@ -168,5 +168,8 @@
     "paper": ""
   },
   "notes": "The first Grunion Run. The strip hates it and can't stop drawing it.",
-  "layout": "2x2"
+  "layout": "2x2",
+  "wardrobe": {
+    "chloe_17": "faded jurassic park tee"
+  }
 }

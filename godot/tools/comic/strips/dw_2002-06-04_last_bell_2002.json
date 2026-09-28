@@ -135,5 +135,10 @@
     "palette": "",
     "paper": "newsprint / the digest"
   },
-  "notes": "Recognized. Walks away."
+  "notes": "Recognized. Walks away.",
+  "review": {
+    "status": "ok",
+    "note": "",
+    "at": "2026-09-27"
+  }
 }

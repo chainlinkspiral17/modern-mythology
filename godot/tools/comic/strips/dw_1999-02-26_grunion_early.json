@@ -182,5 +182,8 @@
     "paper": ""
   },
   "notes": "",
-  "layout": "2x2"
+  "layout": "2x2",
+  "wardrobe": {
+    "chloe_17": "oasis sweater and rain slicker"
+  }
 }

@@ -138,5 +138,8 @@
     "palette": "",
     "paper": "newsprint / the digest"
   },
-  "notes": "Gully as a nameless bartender. The coffee. The shadow under the counter."
+  "notes": "Gully as a nameless bartender. The coffee. The shadow under the counter.",
+  "wardrobe": {
+    "wood_20": "noir detective fedora"
+  }
 }

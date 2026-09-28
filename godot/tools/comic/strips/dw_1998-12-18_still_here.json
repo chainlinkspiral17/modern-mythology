@@ -164,5 +164,8 @@
     "paper": ""
   },
   "notes": "The last December she's simply here. The strip lets the lights answer for him.",
-  "layout": "2x2"
+  "layout": "2x2",
+  "wardrobe": {
+    "chloe_17": "u2 tee"
+  }
 }

@@ -147,5 +147,8 @@
     "palette": "",
     "paper": "newsprint / the digest"
   },
-  "notes": "The uncle dies off the page, in February 2001. The shack is Gully's. Nobody says either thing."
+  "notes": "The uncle dies off the page, in February 2001. The shack is Gully's. Nobody says either thing.",
+  "wardrobe": {
+    "gully_17": "gully is wearing a second hand suit without a tie"
+  }
 }

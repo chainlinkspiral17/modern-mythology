@@ -163,5 +163,8 @@
     "paper": ""
   },
   "notes": "Sundays don't exist yet in 2000; this ran as the digest's only oversized cover. The margin crab faces away.",
-  "layout": "5 tiers, portrait"
+  "layout": "5 tiers, portrait",
+  "wardrobe": {
+    "chloe_17": "a SSCP tee"
+  }
 }

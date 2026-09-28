@@ -172,5 +172,8 @@
     "paper": ""
   },
   "notes": "All three phantom titles in one panel, seventeen years early. Nobody in the strip will remember.",
-  "layout": "2x2"
+  "layout": "2x2",
+  "wardrobe": {
+    "chloe_17": "pixies tee tee"
+  }
 }

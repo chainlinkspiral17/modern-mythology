@@ -156,5 +156,8 @@
     "palette": "",
     "paper": "newsprint / the digest"
   },
-  "notes": "Arc 1 opens. The narrowing panel is a device the strip uses through the month."
+  "notes": "Arc 1 opens. The narrowing panel is a device the strip uses through the month.",
+  "wardrobe": {
+    "chloe_17": "dandy warhols tee"
+  }
 }
