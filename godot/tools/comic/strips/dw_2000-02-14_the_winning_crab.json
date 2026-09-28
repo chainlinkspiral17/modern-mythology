@@ -1,0 +1,127 @@
+{
+  "id": "dw_2000-02-14_the_winning_crab",
+  "title": "The winning crab",
+  "strip": "drift_wood",
+  "date": "2000-02-14",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Valentine, Unsent",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "The morning after the derby. The winning crab, weighed, drawn, let go — the uncle's rule. Gully holds it up for Wood to draw it first. Wood draws it fast. It goes back in the bay. The strip has the only copy.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The dock, morning. GULLY holding up an enormous Dungeness by the back. WOOD with the pad, fast. BARNABY beside himself.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky teenager holding up a huge crab by its back on a dock while a young man draws fast and a small dog leaps, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The pad: the crab, in the flyer's line, but alive — the legs the right number, the strip counted.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a drawing pad with a fast ink drawing of a large live crab, legs exact, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Gully.",
+      "characters": [],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Got it?"
+        },
+        {
+          "who": "WOOD",
+          "text": "Got it."
+        },
+        {
+          "who": "GULLY",
+          "text": "Uncle's rule."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky teenager on a dock holding a crab, plain, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The crab going back into the bay from Gully's hands. The splash. The dog at the edge. The drawing the only copy. That's the trophy.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a large crab being released from a teenager's hands into gray bay water from a dock, a small dog at the edge, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Weigh it, draw it, let it go. The uncle's rule. The strip keeps the only copy."
+}

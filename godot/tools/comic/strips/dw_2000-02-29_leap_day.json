@@ -1,0 +1,108 @@
+{
+  "id": "dw_2000-02-29_leap_day",
+  "title": "Leap day",
+  "strip": "drift_wood",
+  "date": "2000-02-29",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Too Good For It",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000 · deepening xix · the daily filled)",
+  "logline": "A day that doesn't count. Wood tells no one about the letter. He draws the strip on the back of the envelope it came in. The digest that week has a strip with a Portland address showing through.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The desk. The letter, opened Monday, pinned. The envelope, empty, flattened. WOOD drawing on its back. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man drawing a comic strip on the back of a flattened envelope at a desk, a letter pinned on the corkboard behind, a dog beneath, black and white, no words",
+        "negative": "",
+        "notes": "The PNCA letter pinned over the bus schedule per objects.md."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The envelope's back: four panels ruled in pencil, the paper's seams under them.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on the back of a flattened envelope ruled into four comic panels in pencil, the paper's seams visible, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Held to the lamp: the front's address showing through backward. PORTLAND, mirrored, through panel two.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on an envelope held to lamplight with a mirrored printed address showing faintly through a drawn panel, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood at the desk. The strip on the envelope done. Dated 2/29/00. A day that doesn't count, kept on paper that came from the place he said no to.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man at a desk holding a finished comic drawn on the back of an envelope up to the light, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Drawn on the envelope. 2/29/00. PORTLAND shows through panel two, mirrored."
+}
