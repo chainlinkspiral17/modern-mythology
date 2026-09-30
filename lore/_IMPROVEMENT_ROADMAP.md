@@ -2923,6 +2923,19 @@ CharLayer for bare keys that cross eras (`miriam`); vol1's chorus
 Lena's prompt says 2050s and vol7's wiki said 2025 — the user
 ruled the 2050s (2026-09-26); both wikis are rewritten to it.
 
+**2026-09-30 (later) · HERO STUDIO · big files on GOOGLE DRIVE.** The
+user: "I don't want to crowd up git with large models and files, can we
+use google drive?" New GLBs (heroes/demons/props) and all of
+concept/meshy are gitignored; SAVE uploads them with rclone (`copy`,
+never `sync`) to `gdrive:ModernMythology`, writes
+godot/tools/drive_manifest.json (size + md5 per file), and commits only
+small text; `drive-pull` restores a checkout. Setup is one script,
+godot/tools/drive_setup.sh (rclone into ~/.local/bin, OAuth once in the
+browser, scope drive.file). Tested with a folder standing in for the
+Drive: models off git, manifest on, a fresh clone pulls byte-identical.
+Already-tracked GLBs stay tracked (untracking them would delete them on
+every other checkout's pull).
+
 **2026-09-30 · HERO STUDIO → THE GAME BRANCH.** The user: "Heroes
 aren't showing up in the game project, despite being in Hero Tool."
 Two causes: (1) Hero Studio and its routing lived only on

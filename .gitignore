@@ -41,13 +41,14 @@ godot/qa/contact/
 godot/tools/.runway_key
 godot/tools/.google_key
 godot/tools/.*_key
-# Concept-art candidates stay local; the manifest (the run's names) and
-# each character's chosen front image are tracked, so a fresh clone
-# comes back the way the tool was left. The GLBs in assets/3d/... are
-# committed.
+# Models and pictures live on GOOGLE DRIVE, not in git (2026-09-30, the
+# user: "I don't want to crowd up git with large models and files").
+# Hero Studio's SAVE uploads them (rclone, godot/tools/drive_setup.sh)
+# and commits godot/tools/drive_manifest.json — size + md5 of each — so
+# `meshy_pipeline.py drive-pull` fetches what a checkout lacks. Models
+# git already tracked stay tracked; new ones are ignored.
+godot/assets/3d/characters/heroes/*.glb
+godot/assets/3d/characters/demons/*.glb
+godot/assets/3d/props/*.glb
 godot/assets/concept/meshy/*
 !godot/assets/concept/meshy/manifest.json
-!godot/assets/concept/meshy/*/
-godot/assets/concept/meshy/*/*
-!godot/assets/concept/meshy/*/front.png
-!godot/assets/concept/meshy/*/front.jpg

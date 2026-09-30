@@ -392,6 +392,15 @@ GIT_SAVE_PATHS = [
     "godot/assets/3d/props",
     "godot/assets/concept/meshy",
     "godot/tools/meshy_roster.json",
+    "godot/tools/drive_manifest.json",
+    # big files live on Google Drive, not in git (2026-09-30, the user:
+    # "I don't want to crowd up git with large models and files") — even
+    # a model git already tracks is not re-committed when it changes
+    ":(exclude,glob)**/*.glb",
+    ":(exclude,glob)**/*.png",
+    ":(exclude,glob)**/*.jpg",
+    ":(exclude,glob)**/*.jpeg",
+    ":(exclude,glob)**/*.webp",
 ]
 _git_lock = threading.Lock()
 
@@ -402,13 +411,19 @@ def _git(*args, timeout=60):
     return r.returncode, (r.stdout or "").strip(), (r.stderr or "").strip()
 
 
+def _save_pathspecs():
+    """GIT_SAVE_PATHS minus the paths that do not exist yet (git add refuses
+    a pathspec that matches nothing — a checkout with no props folder)."""
+    return [p for p in GIT_SAVE_PATHS if p.startswith(":") or (REPO.parent / p).exists()]
+
+
 def git_status():
     """{branch, head, unsaved: [paths], unpushed: n, error?} for the page's badge."""
     try:
         code, branch, err = _git("rev-parse", "--abbrev-ref", "HEAD", timeout=10)
         if code:
             return {"error": err or "not a git checkout", "unsaved": [], "unpushed": 0}
-        _, porcelain, _ = _git("status", "--porcelain", "--untracked-files=all", "--", *GIT_SAVE_PATHS, timeout=30)
+        _, porcelain, _ = _git("status", "--porcelain", "--untracked-files=all", "--", *_save_pathspecs(), timeout=30)
         unsaved = [ln[3:] for ln in porcelain.splitlines() if ln.strip()]
         unpushed = 0
         code, out, _ = _git("rev-list", "--count", "@{u}..HEAD", timeout=10)
@@ -417,9 +432,10 @@ def git_status():
         elif branch != "HEAD":
             code2, out2, _ = _git("rev-list", "--count", f"origin/{branch}..HEAD", timeout=10)
             unpushed = int(out2) if code2 == 0 and out2.isdigit() else -1   # -1: no remote branch yet
-        return {"branch": branch, "head": _git_head(), "unsaved": unsaved, "unpushed": unpushed}
+        return {"branch": branch, "head": _git_head(), "unsaved": unsaved, "unpushed": unpushed,
+                "drive": drive_status()}
     except Exception as ex:  # noqa: BLE001
-        return {"error": str(ex), "unsaved": [], "unpushed": 0}
+        return {"error": str(ex), "unsaved": [], "unpushed": 0, "drive": drive_status()}
 
 
 def git_save_push(message=None):
@@ -428,14 +444,24 @@ def git_save_push(message=None):
     Returns what happened, step by step, for the page's log."""
     steps = []
     with _git_lock:
+        drive_ok = True
+        ds = drive_status()
+        if ds["configured"]:
+            dres = drive_push()
+            steps += dres["steps"]
+            drive_ok = dres["ok"]
+        elif ds["pending"]:
+            drive_ok = False
+            steps.append(f"Google Drive is not set up — {ds['pending']} model/picture file(s) are NOT backed up. "
+                         "Run: bash godot/tools/drive_setup.sh")
         st = git_status()
         if st.get("error"):
-            return {"ok": False, "steps": [st["error"]], "status": st}
+            return {"ok": False, "steps": steps + [st["error"]], "status": st}
         branch = st["branch"]
         if branch == "HEAD":
             return {"ok": False, "steps": ["the checkout is not on a branch (detached HEAD) — check out a branch first"], "status": st}
         if st["unsaved"]:
-            code, out, err = _git("add", "-A", "--", *GIT_SAVE_PATHS)
+            code, out, err = _git("add", "-A", "--", *_save_pathspecs())
             if code:
                 return {"ok": False, "steps": [f"git add failed: {err}"], "status": git_status()}
             n = len(st["unsaved"])
@@ -450,7 +476,7 @@ def git_save_push(message=None):
             code, out, err = _git("push", "-u", "origin", f"HEAD:{branch}", timeout=300)
             if code == 0:
                 steps.append(f"pushed to origin/{branch}")
-                return {"ok": True, "steps": steps, "status": git_status()}
+                return {"ok": drive_ok, "steps": steps, "status": git_status()}
             text = (err or out)
             if attempt == 1 and ("rejected" in text or "fetch first" in text or "non-fast-forward" in text):
                 steps.append("push rejected (the branch moved on the server) — rebasing onto it")
@@ -465,6 +491,162 @@ def git_save_push(message=None):
             steps.append(f"push failed: {text[-400:]}")
             return {"ok": False, "steps": steps, "status": git_status()}
     return {"ok": False, "steps": steps, "status": git_status()}
+
+
+# ── GOOGLE DRIVE (the big files) ────────────────────────────────────
+# Models and pictures live in a Drive folder, not in git. rclone does the
+# transfer (godot/tools/drive_setup.sh installs it and signs in once,
+# scope drive.file: it sees only the files it made). A small manifest in
+# git — every file's size and md5 — says what the Drive holds, so any
+# checkout can `drive-pull` the models it lacks. `copy`, never `sync`:
+# nothing on the Drive is ever deleted by the tool.
+DRIVE_REMOTE = os.environ.get("MM_DRIVE_REMOTE", "gdrive:ModernMythology")
+DRIVE_MANIFEST = TOOLS / "drive_manifest.json"
+DRIVE_DIRS = [
+    "godot/assets/3d/characters/heroes",
+    "godot/assets/3d/characters/demons",
+    "godot/assets/3d/props",
+    "godot/assets/concept/meshy",
+]
+DRIVE_EXTS = {".glb", ".png", ".jpg", ".jpeg", ".webp"}
+_md5_cache = {}
+_drive_lock = threading.Lock()
+
+
+def _rclone():
+    import shutil as _sh
+    found = _sh.which("rclone")
+    if found:
+        return found
+    local = Path.home() / ".local" / "bin" / "rclone"
+    return str(local) if local.exists() else None
+
+
+def _drive_remote_name():
+    r = DRIVE_REMOTE
+    return r.split(":", 1)[0] + ":" if ":" in r and not r.startswith("/") else None
+
+
+def drive_configured():
+    rc = _rclone()
+    if not rc:
+        return False
+    name = _drive_remote_name()
+    if name is None:              # a local path (tests): always usable
+        return True
+    import subprocess
+    try:
+        out = subprocess.run([rc, "listremotes"], capture_output=True, text=True, timeout=20).stdout
+    except Exception:  # noqa: BLE001
+        return False
+    return name in out.split()
+
+
+def _drive_local_files():
+    out = []
+    for d in DRIVE_DIRS:
+        root = REPO.parent / d
+        if not root.exists():
+            continue
+        for p in root.rglob("*"):
+            if p.is_file() and p.suffix.lower() in DRIVE_EXTS:
+                out.append(p)
+    return out
+
+
+def _md5(p):
+    import hashlib
+    st = p.stat()
+    key = (str(p), st.st_size, st.st_mtime_ns)
+    if key not in _md5_cache:
+        h = hashlib.md5()
+        with open(p, "rb") as f:
+            for chunk in iter(lambda: f.read(1 << 20), b""):
+                h.update(chunk)
+        _md5_cache[key] = h.hexdigest()
+    return _md5_cache[key]
+
+
+def load_drive_manifest():
+    try:
+        return json.loads(DRIVE_MANIFEST.read_text())
+    except (OSError, ValueError):
+        return {"remote": DRIVE_REMOTE, "files": {}}
+
+
+def drive_pending():
+    """Local model/picture files the Drive manifest does not hold as they are."""
+    man = load_drive_manifest().get("files", {})
+    pend = []
+    for p in _drive_local_files():
+        r = str(p.relative_to(REPO.parent))
+        m = man.get(r)
+        if not m or m.get("size") != p.stat().st_size or m.get("md5") != _md5(p):
+            pend.append(r)
+    return pend
+
+
+def drive_status():
+    try:
+        pend = drive_pending()
+    except Exception:  # noqa: BLE001
+        pend = []
+    return {"configured": drive_configured(), "remote": DRIVE_REMOTE, "pending": len(pend),
+            "pending_files": pend[:12], "rclone": bool(_rclone())}
+
+
+def drive_push():
+    """Copy every model and picture up to the Drive, then write the manifest."""
+    import subprocess
+    rc = _rclone()
+    if not rc:
+        return {"ok": False, "steps": ["rclone is not installed — run: bash godot/tools/drive_setup.sh"]}
+    steps = []
+    with _drive_lock:
+        pend = drive_pending()
+        if not pend:
+            return {"ok": True, "steps": ["Google Drive: already holds every model and picture"]}
+        for d in DRIVE_DIRS:
+            src = REPO.parent / d
+            if not src.exists():
+                continue
+            args = [rc, "copy", str(src), f"{DRIVE_REMOTE}/{d}", "--transfers", "4"]
+            for ext in sorted(DRIVE_EXTS):
+                args += ["--include", f"*{ext}"]
+            r = subprocess.run(args, capture_output=True, text=True, timeout=3600)
+            if r.returncode:
+                steps.append(f"Google Drive upload failed for {d}: {(r.stderr or r.stdout)[-300:]}")
+                return {"ok": False, "steps": steps}
+        man = load_drive_manifest()
+        files = man.setdefault("files", {})
+        now = now_iso()
+        for p in _drive_local_files():
+            r = str(p.relative_to(REPO.parent))
+            files[r] = {"size": p.stat().st_size, "md5": _md5(p), "at": files.get(r, {}).get("at", now)
+                        if files.get(r, {}).get("md5") == _md5(p) else now}
+        man["remote"] = DRIVE_REMOTE
+        DRIVE_MANIFEST.write_text(json.dumps(man, indent=1, sort_keys=True) + "\n")
+        steps.append(f"Google Drive: uploaded {len(pend)} file(s) to {DRIVE_REMOTE}")
+    return {"ok": True, "steps": steps}
+
+
+def drive_pull():
+    """Fetch every model and picture this checkout lacks from the Drive."""
+    import subprocess
+    rc = _rclone()
+    if not rc:
+        return {"ok": False, "steps": ["rclone is not installed — run: bash godot/tools/drive_setup.sh"]}
+    steps = []
+    for d in DRIVE_DIRS:
+        dst = REPO.parent / d
+        dst.mkdir(parents=True, exist_ok=True)
+        r = subprocess.run([rc, "copy", f"{DRIVE_REMOTE}/{d}", str(dst), "--ignore-existing", "--transfers", "4"],
+                           capture_output=True, text=True, timeout=3600)
+        if r.returncode and "directory not found" not in (r.stderr or ""):
+            steps.append(f"pull failed for {d}: {(r.stderr or r.stdout)[-300:]}")
+            return {"ok": False, "steps": steps}
+    steps.append(f"pulled from {DRIVE_REMOTE}: every model and picture this checkout lacked")
+    return {"ok": True, "steps": steps}
 
 
 def cmd_doctor(args):
@@ -1656,6 +1838,11 @@ def main():
     p.add_argument("providers", nargs="*", help="google runway meshy (default: all)")
     p.add_argument("--no-check", action="store_true", help="only report where keys were found")
 
+    sub.add_parser("save", help="the page's SAVE: models + pictures to Google Drive, then git commit + push")
+    sub.add_parser("drive-status", help="is Google Drive set up, and what is not on it yet")
+    sub.add_parser("drive-push", help="upload every model and picture to Google Drive, update the manifest")
+    sub.add_parser("drive-pull", help="download the models and pictures this checkout lacks from Google Drive")
+
     p = sub.add_parser("serve", help="serve the browser UI + JSON API")
     p.add_argument("--host", default="127.0.0.1")
     p.add_argument("--port", type=int, default=8765)
@@ -1671,6 +1858,15 @@ def main():
     if args.cmd == "serve":
         load_roster()  # validate early
         return cmd_serve(args)
+    if args.cmd in ("save", "drive-push", "drive-pull"):
+        res = {"save": git_save_push, "drive-push": drive_push, "drive-pull": drive_pull}[args.cmd]()
+        for step in res["steps"]:
+            print(step)
+        print("OK" if res["ok"] else "NOT OK")
+        return 0 if res["ok"] else 1
+    if args.cmd == "drive-status":
+        print(json.dumps(drive_status(), indent=1))
+        return 0
 
     roster = load_roster()
     if args.cmd == "list":

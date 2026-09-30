@@ -684,14 +684,29 @@ function renderGit(st) {
   const b = $('btn-save'); if (!b) return;
   b.style.display = '';
   if (st.error) { b.className = 'save small'; b.textContent = 'SAVE (no git)'; b.disabled = true; b.title = st.error; return; }
-  const n = st.unsaved.length, up = st.unpushed;
+  // big files go to Google Drive, the small ones to git (2026-09-30)
+  const d = st.drive || { configured: false, pending: 0, pending_files: [] };
+  const n = st.unsaved.length, up = st.unpushed, dp = d.pending || 0;
   b.disabled = false;
-  if (n === 0 && up === 0) { b.className = 'save small clean'; b.textContent = 'SAVED ✓'; b.title = `everything the tool produced is committed and pushed to origin/${st.branch}`; }
-  else {
+  if (dp && !d.configured) {
     b.className = 'save small dirty';
-    b.textContent = n ? `SAVE · ${n} unsaved` : (up > 0 ? `SAVE · ${up} unpushed` : 'SAVE · not pushed yet');
-    b.title = (n ? `${n} file(s) not in git yet:\n${st.unsaved.slice(0, 12).join('\n')}${n > 12 ? '\n…' : ''}` : `${up} commit(s) not on the server`) + `\n\nclick: commit + push to origin/${st.branch}`;
+    b.textContent = `SET UP DRIVE · ${dp} not backed up`;
+    b.title = `${dp} model/picture file(s) exist only on this machine, and Google Drive is not set up.\n\nIn a terminal: bash godot/tools/drive_setup.sh\nthen click SAVE.`;
+    return;
   }
+  if (n === 0 && up === 0 && dp === 0) {
+    b.className = 'save small clean'; b.textContent = 'SAVED ✓';
+    b.title = `models and pictures are on Google Drive (${d.remote || ''}); the roster and manifest are pushed to origin/${st.branch}`;
+    return;
+  }
+  b.className = 'save small dirty';
+  const total = n + dp;
+  b.textContent = total ? `SAVE · ${total} unsaved` : (up > 0 ? `SAVE · ${up} unpushed` : 'SAVE · not pushed yet');
+  const lines = [];
+  if (dp) lines.push(`${dp} model/picture file(s) not on Google Drive yet:\n${(d.pending_files || []).join('\n')}${dp > 12 ? '\n…' : ''}`);
+  if (n) lines.push(`${n} small file(s) not in git yet:\n${st.unsaved.slice(0, 12).join('\n')}${n > 12 ? '\n…' : ''}`);
+  if (!total && up) lines.push(`${up} commit(s) not on the server`);
+  b.title = lines.join('\n\n') + `\n\nclick: models + pictures to Google Drive, then commit + push to origin/${st.branch}`;
 }
 async function refreshGit() {
   if (!state.connected) return;

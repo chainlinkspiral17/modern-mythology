@@ -178,9 +178,9 @@ the roster names them without guessing. Redos come out as pairs of
 adjacent tasks; the later one is the redo. Whatever is left in
 `recovered/` is deliberate — the user keeps first versions there.
 
-Lesson: **commit the GLBs as they install** (the heroes folder is
-tracked) and never hand the user a `reset --hard` while the runner's
-outputs are uncommitted.
+Lesson: **back the models up as they install** — to Google Drive since
+2026-09-30 (below) — and never hand the user a `reset --hard` while the
+runner's outputs exist only on disk.
 
 ## Which branch (2026-09-30)
 
@@ -192,26 +192,41 @@ game the moment it is saved. (Until 2026-09-30 Hero Studio lived only
 on `claude/meshy-image-generation-w92vr6`, and its models never
 reached the game.)
 
-## SAVE — the button that puts it in git (2026-09-26)
+## SAVE — models to Google Drive, the rest to git (2026-09-30)
 
-The header's **SAVE** button is the assurance that closing the tool
-loses nothing: it runs `git add` on what the tool produces (the
-installed GLBs, each character's chosen front image, the manifest,
-the roster), commits, and pushes to the branch the checkout is on.
-The badge polls every 20 s: red `SAVE · n unsaved` when files are
-not in git yet, `SAVE · n unpushed` when commits are local only,
-green `SAVED ✓` when the server has everything. A push rejected
-because the branch moved is rebased (with `--autostash`, so a dirty
-`project.godot` never blocks it) and pushed again; a rebase that
-fails is undone and reported in the log. Candidate images and
-`recovered/` are not saved (they stay ignored, by design).
+The user: "I don't want to crowd up git with large models and files."
+So the big files — every GLB under characters/heroes, characters/demons
+and props, and everything under concept/meshy (candidates, fronts,
+recovered) — go to the Google Drive folder `ModernMythology`, and git
+keeps only small text: the roster, the run manifest, and
+`godot/tools/drive_manifest.json` (every big file's size and md5).
 
-CLI equivalent of the badge and the button:
+One-time setup on the Deck (installs rclone into ~/.local/bin and signs
+in to Google in the browser; the `drive.file` scope means rclone sees
+ONLY the files it creates, not the rest of the Drive):
 
 ```bash
-curl -s 127.0.0.1:8765/api/git
-curl -s -X POST 127.0.0.1:8765/api/git/push -d '{}'
+cd /home/deck/Downloads/modern-mythology && bash godot/tools/drive_setup.sh
 ```
+
+Then the header's **SAVE** button: uploads what the Drive lacks (rclone
+`copy` — nothing on the Drive is ever deleted), writes the manifest,
+commits the small files and pushes. The badge: red `SET UP DRIVE · n
+not backed up` before setup, red `SAVE · n unsaved` when files exist
+only on this machine, green `SAVED ✓` when the Drive and the server
+have everything. A model git already tracked stays tracked; a changed
+one is not re-committed (SAVE excludes *.glb/*.png/*.jpg from git).
+
+Another machine, or a fresh clone, gets the models with:
+
+```bash
+python3 godot/tools/meshy_pipeline.py drive-pull
+```
+
+CLI: `save`, `drive-status`, `drive-push`, `drive-pull` (the page uses
+/api/git and /api/git/push). `MM_DRIVE_REMOTE` overrides the target
+(`gdrive:ModernMythology`); a plain folder path works too, which is how
+the flow was tested.
 
 ## Offline mode
 
