@@ -2047,10 +2047,12 @@ const CAMERA_PRESETS := {
 		# OUTDOOR municipal concrete, day. Slab z∈[0,-12]: THE POOL
 		# (coping ring at 0.5, z=-7.2), one pipe hump W, ledge pair,
 		# flat rail (-2,-3.5), stair set, chain-link at back, trees
-		# beyond. Camera at the slab's S edge looking N at the pool.
+		# beyond. Camera at the slab's S edge looking N and down into
+		# the pool (2026-09-30, draft 2: the pool is a real 1.5 m pit
+		# with transitions now; the level lens saw only its coping).
 		"camera_origin": Vector3(-2.0, 1.70, -0.8),
-		"camera_rotation": Vector3(-0.03, deg_to_rad(-21.0), 0.0),
-		"fov": 64.0,
+		"camera_rotation": Vector3(-0.17, deg_to_rad(-21.0), 0.0),
+		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"wagner_home": {
@@ -2126,9 +2128,12 @@ const CAMERA_PRESETS := {
 		# OUTDOOR overcast field. The standing gable face at z=-8.4
 		# (doorway + hay door punched dark), fallen roof planes low
 		# behind on rubble, surviving frame posts, remnant fence,
-		# weeds. Camera in the field looking N at the gable.
-		"camera_origin": Vector3(-2.2, 1.70, -2.5),
-		"camera_rotation": Vector3(-0.02, deg_to_rad(-16.0), 0.0),
+		# weeds. Camera in the field SE of the barn looking NW, three-
+		# quarter on the gable so the collapse behind it reads — "a
+		# gray barn that lost its back half" (2026-09-30, draft 2: the
+		# square-on view hid the fallen roof behind the wall).
+		"camera_origin": Vector3(8.0, 1.70, -1.5),
+		"camera_rotation": Vector3(-0.07, deg_to_rad(41.8), 0.0),
 		"fov": 62.0,
 		"suppress_input": true,
 	},

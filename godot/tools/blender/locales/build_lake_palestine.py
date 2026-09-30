@@ -67,8 +67,8 @@ DOCK_END_Y = -15.8
 def build_ground_and_lot():
     make_box("Ground_Far", (0.0, 40.0, -0.12), (700.0, 700.0, 0.02), (0.30, 0.34, 0.22, 1.0))
     # the two shores of the cove: land at water level east of x=22 and west of x=-30
-    make_box("East_Shore", (121.0, -100.0, -0.06), (198.0, 200.0, 0.08), (0.34, 0.36, 0.24, 1.0))
-    make_box("West_Shore", (-125.0, -100.0, -0.06), (190.0, 200.0, 0.08), (0.34, 0.36, 0.24, 1.0))
+    make_box("East_Shore", (121.0, -79.0, -0.06), (198.0, 158.0, 0.08), (0.34, 0.36, 0.24, 1.0))   # to the far shore (2026-09-30: coplanar with it past y -158)
+    make_box("West_Shore", (-125.0, -79.0, -0.06), (190.0, 158.0, 0.08), (0.34, 0.36, 0.24, 1.0))
     make_box("Lot_Asphalt", (0.0, 12.5, -0.03), (40.0, 19.0, 0.06), ASPHALT)
     make_box("Shore_Gravel", (0.0, 1.5, 0.03), (60.0, 3.0, 0.06), GRAVEL)
     # parking stripes, angled row facing the water
@@ -140,9 +140,12 @@ def build_dock():
 def build_lake():
     """The water in three slabs around the ramp so the slab can run
     under it; the far south shore; two bass boats far off."""
-    make_box("Lake_Water_W", (-20.5, -100.0, -0.06), (19.0, 200.0, 0.08), WATER)
-    make_box("Lake_Water_S", (-8.0, -103.0, -0.06), (6.0, 194.0, 0.08), WATER)
-    make_box("Lake_Water_E", (8.5, -100.0, -0.06), (27.0, 200.0, 0.08), WATER)
+    # the cove is 160 m across (2026-09-30: the water ran 200 m to a 4 m
+    # bank of nothing, the far shore an 8 m box 260 m out that fogged to a
+    # sliver — the frame down the dock read as open sea)
+    make_box("Lake_Water_W", (-20.5, -79.0, -0.06), (19.0, 158.0, 0.08), WATER)
+    make_box("Lake_Water_S", (-8.0, -82.0, -0.06), (6.0, 152.0, 0.08), WATER)
+    make_box("Lake_Water_E", (8.5, -79.0, -0.06), (27.0, 158.0, 0.08), WATER)
     # the light gets into the water: a lit band toward the eastern shore
     make_box("Lake_Glint_Band", (12.0, -40.0, -0.019), (18.0, 60.0, 0.002), WATER_LIT)
     # shore reeds
@@ -154,8 +157,31 @@ def build_lake():
         make_box(f"Bass_Boat_{bi}_Console", (bx, by + 0.4, 0.75), (0.7, 0.8, 0.50), (0.30, 0.34, 0.40, 1.0))
         make_box(f"Bass_Boat_{bi}_Motor", (bx, by - 2.7, 0.45), (0.4, 0.4, 0.70), (0.16, 0.16, 0.18, 1.0))
     # the far south shore across the cove
-    make_box("Far_Shore_S", (0.0, -260.0, 4.0), (400.0, 30.0, 8.0), (0.18, 0.24, 0.16, 1.0))
-    make_box("Far_Shore_S_Bank", (0.0, -242.0, 0.4), (400.0, 4.0, 0.8), (0.50, 0.46, 0.38, 1.0))
+    build_far_shore_2026_09()
+
+
+def build_far_shore_2026_09():
+    """Draft 2 of the cove (2026-09-30) — both vantages look SOUTH
+    "across the cove at the far shore … the coming sun", and the 09-26
+    sheet showed dark water to a grey horizon. The far shore is 158 m
+    out now: a clay bank at the waterline, the land behind it, two
+    ragged rows of pines (a Texas reservoir's shore is loblolly to the
+    water), and receding ridges behind them for the fog to grade.
+    NEXT (draft 3): the sunrise glow behind the far pines at the
+    eastern end (a warm band low on the horizon, the preset's "coming
+    sun off frame-left"); a boat launch and a lit cabin on the far
+    shore; the east shore curving round to meet it (the cove's mouth
+    is open now between the two)."""
+    make_box("Far_Shore_S_Land", (0.0, -208.0, -0.06), (460.0, 100.0, 0.08), (0.30, 0.33, 0.22, 1.0))
+    make_box("Far_Shore_S_Bank", (0.0, -159.5, 0.20), (460.0, 3.0, 0.40), (0.52, 0.42, 0.32, 1.0))
+    for row, (y0, h0) in enumerate(((-165.0, 13.0), (-174.0, 16.0))):
+        for i in range(44):
+            x = -150.0 + i * 7.0 + (3.0 if row else 0.0) + 1.3 * ((i * 7) % 3 - 1)
+            h = h0 + 2.5 * ((i * 5 + row) % 4) - 3.0
+            make_pine(f"FarShore_Pine_{row}_{i}", x, y0 - 1.5 * ((i * 3) % 3), -0.02, h=h, seed=i + row * 50)
+    make_far_bands("FarShoreRidge", (0.16, 0.24, 0.16),
+                   [(230.0, 480.0, 18.0, 0.70), (330.0, 620.0, 22.0, 0.55), (480.0, 800.0, 26.0, 0.42)],
+                   sides="S", cx=0.0, cy=0.0, profile="treeline")
 
 
 def make_pine(prefix, x, y, z0, h=8.0, seed=0):

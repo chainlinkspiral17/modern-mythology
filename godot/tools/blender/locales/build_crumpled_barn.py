@@ -26,9 +26,9 @@ Vantages wired in Background3D.CAMERA_PRESETS:
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_blob, export_glb
 
-COL_FIELD = (0.42, 0.42, 0.28, 1.0)      # dry pasture
+COL_FIELD = (0.54, 0.50, 0.32, 1.0)      # dry pasture (2026-09-30: was 0.42 grey-olive — the barn, field and sky were one value)
 COL_DIRT = (0.40, 0.34, 0.26, 1.0)
 COL_BARN = (0.42, 0.40, 0.38, 1.0)       # weathered gray board
 COL_BARN_DK = (0.32, 0.30, 0.29, 1.0)
@@ -46,7 +46,7 @@ COL_SKY = (0.62, 0.63, 0.64, 1.0)        # flat overcast
 
 
 def build_field():
-    make_box("Field", (0.0, 7.0, 0.0), (34.0, 20.0, 0.05), COL_FIELD)
+    make_box("Field", (0.0, 9.0, 0.0), (34.0, 24.0, 0.05), COL_FIELD)   # to y 21, under the hedge (2026-09-30)
     make_box("Yard_Dirt", (0.0, 8.5, 0.01), (10.0, 6.0, 0.05), COL_DIRT)
 
 
@@ -189,13 +189,20 @@ def build_backdrop():
     # louisiana_road failure exactly: the field stopped at a painted
     # wall. The horizon is the environment's job (fog + sky in the
     # .tscn). Geometry's job is to keep receding until fog eats it.
+    # the hedge behind the barn is FOLIAGE (2026-09-30, the 09-26 sheet:
+    # six 4.8 x 3.2 m boxes read as grey walls either side of the gable)
     for i in range(6):
         tx = -14.0 + i * 5.5
-        make_box(f"Hedge_{i}", (tx, 17.0, 1.6), (4.8, 1.6, 3.2), COL_TREE)
+        for k in range(2):
+            r = 1.7 + 0.25 * ((i + k) % 3)
+            # seated on the field by its squashed half-height (a blob's
+            # half-height is radius x squash), 2 cm in
+            make_blob(f"Hedge_{i}_{k}", (tx - 1.2 + k * 2.4, 17.8 + 0.3 * (k - 0.5), 0.025 + r * 0.85 - 0.02),
+                      r, COL_TREE, noise=0.26, seed=70 + i * 2 + k, squash=0.85)
     # GROUND out past the last windbreak (2026-08-09 ground wave):
     # wheat-stubble section, not a void.
     make_box("Ground_Far", (0.0, 0.0, -0.03), (1680.0, 1680.0, 0.02),
-             (0.34, 0.30, 0.20, 1.0))
+             (0.46, 0.41, 0.26, 1.0))   # wheat stubble (2026-09-30: lifted with the field)
     # Receding hedgerows and windbreaks out across the section, each
     # band dimmer and lower so aerial perspective has steps to grade.
     for i, (by, bw, bh, shade) in enumerate([

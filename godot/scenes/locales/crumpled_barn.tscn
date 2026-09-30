@@ -181,12 +181,14 @@ light_color = Color(0.62, 0.64, 0.68, 1)
 light_energy = 0.25
 shadow_enabled = false
 
+; the daylight through the missing roof onto the cabinet and the sign
+; (2026-09-30: at 1.1 / 4 m the pair read as grey shapes in grey)
 [node name="Interior_Shaft" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 2.4, -9.8)
 light_color = Color(0.88, 0.87, 0.8, 1)
-light_energy = 1.1
+light_energy = 2.2
 shadow_enabled = false
-omni_range = 4.0
+omni_range = 5.0
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 

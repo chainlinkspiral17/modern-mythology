@@ -326,6 +326,13 @@ Every ending's reading now carries the arcana's record. The design
 row's Claude-side items are through; what remains on it is Deck-
 gated (the bursts) or user-gated (Salmonberry).
 
+**Status (2026-09-30, later) · draft 42 · a barn, a cove, a pool.**
+The crumpled barn's value structure (straw field, foliage hedge, a
+three-quarter camera on the collapse), Lake Palestine's far shore at
+cove width with pines, and the skatepark's pool as a real pit with
+transitions. Graustark diagnosed (lighthouse + truss bridge + ruin
+quarter inside 60 m), not yet drafted. Roadmap: FORTY-SECOND PASS.
+
 **Status (2026-09-30) · draft 41 · the survey and four exteriors.** All
 146 establish frames of the 09-26 sheet judged by eye; the four worst
 drafted: the night beach (black bars in the sky were cloud cards; the

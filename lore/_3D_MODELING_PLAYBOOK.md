@@ -399,6 +399,27 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-09-30 · a hole is four boxes per layer; a bowl is seen from inside
+
+**What happened.** The skatepark's pool had been "suggested without
+booleans" since draft 1 — a darker patch and a coping ring on a flat
+slab — and read on the sheet as a painted outline. A pit needs a hole
+through EVERY horizontal layer under it: the slab, the grass base and
+the far ground plane all covered the opening.
+
+**Rules.** (1) Cut a rectangular hole with one helper applied to every
+ground layer (`holed_box` in build_skatepark: S and N full width, W and
+E between); the pit's walls are boxes OUTSIDE the hole whose inner
+faces are its sides, topped just under the lowest ground layer so
+nothing clips. (2) Do not lathe a bowl you look INTO: `make_lathe`
+fixes winding outward from its centre, so the inside of a bowl is back
+faces, and its top ring gets a cap — a lid. Curves inside a pit are
+quarter-round `make_prism` fillets along each wall base, corner at the
+prism origin, stopping R short of the corners so they never cross.
+(3) A far shore is not a box: at 260 m an 8 m box is 1.8° tall and the
+fog takes it. Bring the shore to the width the prose gives (a cove,
+~150 m) and line it with the locale's own tree primitive.
+
 ### 2026-09-25 · rings, rakes and the thing you cannot see through glass
 
 - **A rim is a RING, not a disc.** The cabin's turned bowls had a

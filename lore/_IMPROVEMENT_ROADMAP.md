@@ -3049,6 +3049,48 @@ NEXT (draft 42): the sheet for the four drafted here; then the survey
 list, worst first; the two-apartment decision (user); the door-like
 polygons (user).
 
+FORTY-SECOND PASS (2026-09-30). Still no new sheet; down the survey
+list:
+· crumpled_barn, draft 2: the exterior was grey on grey on grey — a
+  grey board gable square-on against a grey sky over a grey-olive
+  field, with six 4.8 x 3.2 m hedge BOXES reading as walls either
+  side. The field and far stubble are lifted to dry straw, the hedge
+  is twelve seated foliage blobs (the field runs under them now), and
+  the camera stands SE three-quarter on the gable so the fallen roof
+  behind it reads — "a gray barn that lost its back half". Inside,
+  the daylight shaft onto Jiggles' cabinet and the mermaid sign is
+  doubled (1.1 → 2.2, range 4 → 5).
+· lake_palestine (both presets), draft 2: "looking SOUTH across the
+  cove at the far shore" showed dark water to a grey horizon — the
+  water ran 200 m to a bank of nothing and the far shore was an 8 m
+  box 260 m out, fogged to a sliver. The cove is 158 m across now: a
+  clay bank, the far land, two ragged rows of 88 pines, three treeline
+  ridges behind for the fog. The side shores stop at the far shore
+  (they were coplanar with it past y -158).
+· skatepark, draft 2: THE POOL was "suggested without booleans" — a
+  darker patch and a coping outline flat on the slab; the establish
+  read as an empty lot. It is a real 1.5 m pit now: `holed_box` cuts
+  the slab, the grass and Ground_Far round it; four walls, a floor, a
+  drain, quarter-round transitions (prisms) along every wall's base,
+  the coping flush and full length. The hump moved west out of the
+  pool's mouth; the establish tilts down into it.
+· graustark (chalk_wall / cottage / ruins): NOT drafted, diagnosed.
+  The red-and-white stack in all three frames is the Hermit's 18 m
+  bayou lighthouse, and the railing across the upper half is the
+  HWY 90 truss bridge (deck at z 5, 11 m of truss) 10-20 m north of
+  the ruin quarter. The quarter was built round the lighthouse's
+  keeper cottage on purpose (Joanna is IX), so the lighthouse
+  belongs; three sets inside 60 m is the problem. Draft 2 needs the
+  sheet in hand: either move the bridge's crossing north (a town-map
+  change: HWY90's waypoints) or reframe each preset to own one of
+  the three (the chalk wall with the lighthouse out of frame, the
+  cottage with the lighthouse whole, the ruins wide with the bridge
+  as the roof of the frame).
+NEXT (draft 43): the sheet for drafts 40-42; Graustark as above;
+kestrel_mountain (a wall), cedar_tower_exterior (cropped),
+bar_exterior_night (lens on the wall), cosmic_comics_interior (a
+purple panel across the lens), cabin_interior_bed (orange walls).
+
 NEXT (draft 36, as written): judge the moved pieces on the sheet (ben, jesse, sam,
 safehouse, the seven kitchens); name the 13 deliberate OFF_WALL pieces
 (a `free=True` tag or a name class) and gate placement; simon's TV on
