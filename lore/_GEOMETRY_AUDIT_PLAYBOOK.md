@@ -158,6 +158,29 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-09-30 · the sky and the fog are geometry too, and they float
+
+**What happened.** Four of the worst establishes on the 09-26 sheet
+failed the same way, and every audit passed them: sky and fog meshes
+the support audit skips by NAME (Cloud, Fog, Moon, Horizon) sat where
+no weather sits. Cloud cards 24 m out read as black bars (a thin
+card darker than a fogged sky); a fog box stood a metre over a
+platform (vertex alpha is ignored — it rendered as a white table);
+fog blobs floated with their bottoms over the ground (pale boulders
+in the sky); a Ground_Far and a headland plane ran over a bluff drop
+and buried the sea.
+
+**Rules.** Weather meshes are exempt from the support gate, so the
+builder owns them: (1) a cloud is FAR (100+ m, so the fog blends it)
+and LUMPY (blobs, never cards); (2) a fog bank's bottom is never
+seen — sink it into the ground or the water; (3) nothing here is
+transparent, so a "translucent" fog mesh is an opaque solid and must
+sit below every walkable surface; (4) a Ground_Far covers the LAND
+only — a 1080 m square under a sea puts a strip of sand on the
+horizon or a lawn over the water. A useful check before a sheet: for
+every exterior, is anything named sky/fog/cloud below the eye line
+and nearer than 50 m?
+
 ### 2026-09-27 · a diff of zero is a finding; a fixer never runs on --help
 
 **What happened.** The 09-26 sheet against the 09-25 one: 6 frames

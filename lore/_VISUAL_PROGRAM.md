@@ -326,6 +326,15 @@ Every ending's reading now carries the arcana's record. The design
 row's Claude-side items are through; what remains on it is Deck-
 gated (the bursts) or user-gated (Salmonberry).
 
+**Status (2026-09-30) · draft 41 · the survey and four exteriors.** All
+146 establish frames of the 09-26 sheet judged by eye; the four worst
+drafted: the night beach (black bars in the sky were cloud cards; the
+beach ended in frame), the cape overlook (the fog bank stood a metre
+over the platform as a white table; the ground buried the drop), the
+chapel (4.5 m off a 5 m wall), the tideline (the fog bank floated as
+boulders). A ranked list of the next dozen weak establishes is in the
+roadmap's FORTY-FIRST PASS.
+
 **Status (2026-09-27) · draft 40 · the roads by eye, the clocks, Simon's
 room.** The 09-26 sheet judged: Small Wood's house insert aimed at
 grass (reframed onto the house), its barn held two flat boxes (a

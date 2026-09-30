@@ -233,6 +233,47 @@ def build_facade_2026_08():
                      (0.06, 0.06, 0.07, 1.0), segments=10, axis='Y')
     # The trash can at the foot of the steps (the lemonade cup)
     make_cyl("Trash_Can", (1.8, -2.2, 0.45), 0.28, 0.90, (0.30, 0.34, 0.30, 1.0), segments=10)
+    build_facade_detail_2026_09(wood, trim)
+
+
+def build_facade_detail_2026_09(wood, trim):
+    """Draft 2 of the front (2026-09-30) — the 09-26 sheet: the camera
+    stood 4.5 m off a 5 m facade and the frame was one blank tan wall,
+    a portico and a trash can. The preset backs out across the apron
+    now (the whole chapel, the steeple, the black car at the right
+    edge); the facade gets what a white clapboard country chapel shows
+    from the road:
+      · two tall lancet windows either side of the portico, dark
+        glass in white frames with a pointed head;
+      · clapboard — the shadow line under every course, 25 cm apart;
+      · corner boards at both ends of the front.
+    NEXT (draft 3): the side walls' windows (the establish sees the
+    east wall at an angle now); a parish sign board at the path's
+    road end; the bell in the steeple's louvred opening; heat shimmer
+    over the apron (a mood, not a mesh)."""
+    glass = (0.14, 0.16, 0.22, 1.0)
+    shadow = (0.64, 0.62, 0.57, 1.0)
+    fy = -0.085                           # the facade's front face is y -0.08
+    for sx in (-1, 1):
+        wx = sx * 1.85
+        make_box(f"Facade_Lancet_Frame_{sx:+d}", (wx, fy, 1.85), (0.74, 0.012, 1.62), trim)
+        make_box(f"Facade_Lancet_Glass_{sx:+d}", (wx, fy - 0.007, 1.80), (0.56, 0.005, 1.36), glass)
+        # the pointed head: two stepped courses over the glass
+        make_box(f"Facade_Lancet_Head_{sx:+d}_0", (wx, fy - 0.007, 2.54), (0.40, 0.005, 0.12), glass)
+        make_box(f"Facade_Lancet_Head_{sx:+d}_1", (wx, fy - 0.007, 2.64), (0.20, 0.005, 0.08), glass)
+        make_box(f"Facade_Lancet_Sill_{sx:+d}", (wx, fy - 0.03, 1.02), (0.82, 0.06, 0.05), trim)
+        make_box(f"Facade_CornerBoard_{sx:+d}", (sx * 2.53, fy, 1.85), (0.14, 0.012, 3.70), trim)
+    # clapboard shadow lines on the two panels beside the portico
+    for ci in range(14):
+        cz = 0.25 + ci * 0.25
+        for sx in (-1, 1):
+            # skip the lancet openings (x 1.48..2.22, z 1.04..2.68)
+            if 1.0 <= cz <= 2.72:
+                segs = [(sx * 1.24, 0.40), (sx * 2.37, 0.26)]
+            else:
+                segs = [(sx * 1.80, 1.40)]
+            for k, (cx, ln) in enumerate(segs):
+                make_box(f"Facade_Clapboard_{ci}_{sx:+d}_{k}", (cx, fy - 0.001, cz), (ln, 0.004, 0.018), shadow)
 
 
 def build_wear_personality_2026_08():

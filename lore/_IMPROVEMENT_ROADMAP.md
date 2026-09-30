@@ -3005,6 +3005,50 @@ polygons" still need a locale from the user; the highway's draft 3
 list (dashboard glow on the hood preset, wet asphalt after ch22's
 rain); Small Wood's (the gate's chain, a dog on the porch).
 
+FORTY-FIRST PASS (2026-09-30). No new sheet since draft 39, so the
+pass surveyed all 146 establish frames of the 09-26 sheet by eye
+(twenty to a page) and drafted the four worst backgrounds:
+· grunion_beach (beach_night + grunion_beach presets), draft 2: both
+  frames were a dark sea under three BLACK BARS — the cloud "slabs"
+  were 22 × 2.6 m cards 6 cm thick, 24 m out, darker than the fogged
+  sky; the beach was 36 m wide, so the tide-edge vantage looking west
+  saw the sand, gleam and surf lines END, and the far-dune band on
+  side W stood IN the sea. Now: the beach runs 420 m, dunes landward
+  only, Ground_Far landward only (under the sea it made a sand strip
+  on the horizon); a cloud DECK of nine flattened blobs 140-200 m out
+  with a gap where a moon disc sits, the Hidden_Moon light moved up
+  into the gap to silver its edges; the narrator's FOOTPRINTS from the
+  dune to the wet band ("I walked down to the water's edge"); a wrack
+  line; driftwood piled at the dune foot. beach_night reframed down
+  the footprints (driftwood left third, the moon gap right third);
+  grunion_beach dropped to eye 0.9 on the wet band looking west.
+· cape_perpetua_overlook: the white slab under the rail and the crow
+  was the FOG BANK — top at +1.0, east edge over the platform, and
+  vertex alpha is not transparency here. And the headland ground plus
+  Ground_Far ran straight over the bluff drop, burying the trees below
+  to their crowns and hiding the sea under a lawn. Fog now 2 m under
+  the lip, west of the bluff face; the headland and Ground_Far stop at
+  the bluff; the bluff runs 300 m of coast (it was 12 m, and past its
+  ends the land just stopped); the sea reaches the bluff foot.
+· roadside_chapel (chapel_exterior): the camera stood 4.5 m off a 5 m
+  facade — one blank tan wall and a trash can. It stands at the
+  apron's road edge now, tilted up (the whole front, the portico, the
+  steeple and cross, cane both sides); the front has two lancet
+  windows, clapboard shadow lines and corner boards.
+· tideline_survey: the pale "rocks" hanging in the sky were the fog
+  bank, six blobs with their bottoms 1.2 m over the shelf. Eight wider,
+  flatter blobs sunk two thirds into the water: a bank rolling in.
+Survey list for later passes (weak establishes, not yet drafted):
+graustark_chalk_wall/cottage/ruins (the same red-and-white stack
+dominates all three), crumpled_barn_ext/int (grey mush — intended?),
+lake_palestine + its dock (empty water), kestrel_mountain (a wall),
+skatepark_day (empty lot), cedar_tower_exterior (cropped), bar_
+exterior_night (camera against the wall), cosmic_comics_interior
+(a purple panel across the lens), cabin_interior_bed (orange walls).
+NEXT (draft 42): the sheet for the four drafted here; then the survey
+list, worst first; the two-apartment decision (user); the door-like
+polygons (user).
+
 NEXT (draft 36, as written): judge the moved pieces on the sheet (ben, jesse, sam,
 safehouse, the seven kitchens); name the 13 deliberate OFF_WALL pieces
 (a `free=True` tag or a name class) and gate placement; simon's TV on

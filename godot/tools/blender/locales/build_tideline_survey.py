@@ -177,9 +177,15 @@ def build_path_and_survey():
 
 def build_fog_and_horizon():
     """Fog at the inland side; the gray-white Pacific horizon at sea."""
-    for i, (x, y, r, s) in enumerate(((-16.0, 27.0, 6.0, 51), (-6.0, 29.0, 7.0, 52), (5.0, 28.0, 6.5, 53),
-                                      (15.0, 30.0, 7.5, 54), (24.0, 27.0, 6.0, 55), (-25.0, 29.0, 6.5, 56))):
-        make_blob(f"Fog_Bank_{i}", (x, y, 3.4 + r * 0.35), r, FOG, noise=0.18, seed=s, squash=0.45)
+    # ON the water, a bank (2026-09-30, the 09-26 sheet): six 6-7 m blobs
+    # centred 5.5 m up had their bottoms 1.2 m over the shelf — a row of
+    # pale boulders hung in the sky. The bank is wider, flatter and sunk
+    # by two thirds of its half-height, so it rises out of the water to
+    # 4-6 m and its bottom is never seen.
+    bank = ((-30.0, 28.0, 9.0, 51), (-19.0, 31.0, 10.5, 52), (-7.0, 27.5, 9.5, 53), (5.0, 30.0, 11.0, 54),
+            (16.0, 27.0, 9.0, 55), (27.0, 31.0, 10.0, 56), (-12.0, 38.0, 12.0, 57), (12.0, 39.0, 12.5, 58))
+    for i, (x, y, r, s) in enumerate(bank):
+        make_blob(f"Fog_Bank_{i}", (x, y, r * 0.55 * 0.35), r, FOG, noise=0.18, seed=s, squash=0.55)
     make_far_bands("FarRidge", (0.30, 0.34, 0.32),
                    [(60.0, 90.0, 9.0, 0.80), (120.0, 150.0, 12.0, 0.62), (240.0, 260.0, 16.0, 0.48)],
                    sides="N", cx=0.0, cy=10.0, profile="ridge")

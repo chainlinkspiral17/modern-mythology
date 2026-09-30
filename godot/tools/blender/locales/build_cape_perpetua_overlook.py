@@ -41,18 +41,30 @@ CEDAR_DK = (0.44, 0.30, 0.20, 1.0)
 
 
 def build_ground():
-    make_box("Headland_Ground", (0.0, 4.0, -0.03), (30.0, 34.0, 0.06), (0.22, 0.26, 0.18, 1.0))
+    # the headland stops AT the bluff (2026-09-30: it ran to x -15, over
+    # the drop, and buried the trees below the platform to their crowns)
+    make_box("Headland_Ground", (4.7, 4.0, -0.03), (20.6, 34.0, 0.06), (0.22, 0.26, 0.18, 1.0))
     # the bluff drops away west of x = -5.6
-    make_box("Bluff_Face", (-6.1, 12.0, -3.95), (1.0, 12.0, 8.0), (0.36, 0.32, 0.28, 1.0))
-    make_box("Bluff_Lip", (-5.55, 12.0, -0.10), (0.3, 12.0, 0.25), EARTH_WET)
+    # the bluff runs the coast north and south (it was 12 m long: past
+    # its ends the land simply stopped)
+    make_box("Bluff_Face", (-6.1, 12.0, -3.95), (1.0, 300.0, 8.0), (0.36, 0.32, 0.28, 1.0))
+    make_box("Bluff_Lip", (-5.55, 12.0, -0.10), (0.3, 300.0, 0.25), EARTH_WET)
     # trees below the platform, in the fog
     for ti, (tx, ty, th) in enumerate(((-8.5, 9.0, 7.0), (-10.2, 12.5, 8.0), (-8.8, 15.5, 6.5), (-11.5, 7.5, 7.5))):
         make_cyl(f"Below_Sitka_{ti}", (tx, ty, -6.0 + th / 2.0), 0.30, th, (0.30, 0.24, 0.20, 1.0), segments=7)
         make_blob(f"Below_Sitka_Crown_{ti}", (tx, ty, -6.0 + th + 0.8), 1.6, (0.14, 0.22, 0.16, 1.0), noise=0.22, seed=31 + ti, squash=0.8)
-    make_box("Fog_Bank", (-12.0, 12.0, -0.8), (16.0, 14.0, 3.6), (0.82, 0.84, 0.86, 0.55))
+    # BELOW the bluff (2026-09-30, the 09-26 sheet): the bank's top was
+    # at +1.0 and its east edge at x -4, so it stood a metre over the
+    # platform's western half — a solid white table with the rail and
+    # the crow lying on it (vertex alpha is not transparency here). "The
+    # fog was in the trees below": its top is 2 m under the lip now,
+    # west of the bluff face, and the Sitka crowns come up through it.
+    make_box("Fog_Bank", (-17.0, 12.0, -3.6), (20.0, 80.0, 3.2), (0.82, 0.84, 0.86, 1.0))
     # the sea and its horizon
-    make_box("Sea_Plane", (-110.0, 12.0, -6.0), (200.0, 260.0, 0.06), (0.30, 0.38, 0.42, 1.0))
-    make_box("Ground_Far", (0.0, 12.0, -0.05), (600.0, 600.0, 0.02), (0.20, 0.24, 0.17, 1.0))
+    make_box("Sea_Plane", (-108.3, 12.0, -6.0), (203.4, 300.0, 0.06), (0.30, 0.38, 0.42, 1.0))
+    # landward of the bluff only (2026-09-30: 600 m square at -0.05, it
+    # lay over the sea plane at -6 and the sea never showed)
+    make_box("Ground_Far", (147.2, 12.0, -0.05), (305.6, 600.0, 0.02), (0.20, 0.24, 0.17, 1.0))
     make_far_bands("FarTrees", (0.13, 0.20, 0.11),
                    [(60.0, 90.0, 8.0, 0.90), (120.0, 150.0, 11.0, 0.70),
                     (220.0, 240.0, 14.0, 0.52), (400.0, 380.0, 17.0, 0.40)],

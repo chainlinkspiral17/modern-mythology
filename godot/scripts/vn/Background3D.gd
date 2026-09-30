@@ -153,13 +153,16 @@ const CAMERA_PRESETS := {
 	"chapel_exterior": {
 		# Hierophant §I — Maya outside St. Jude's. SURVEYED: chapel
 		# building blender x -3..+3, y 0..+7, front wall + steps at
-		# y=0 facing the southern grounds/road. Camera on the asphalt
-		# SE of the steps looking NNW at the facade.
+		# y=0 facing the southern grounds/road. Camera at the apron's
+		# road edge SW of the steps looking N, tilted up: the whole
+		# front, the portico, the steeple and its cross, the cane on
+		# both sides of the mound (2026-09-30, draft 2: it stood 4.5 m
+		# off the 5 m facade and the frame was one blank wall).
 		"scene": "res://scenes/locales/roadside_chapel.tscn",
 		"requires_glb": "res://assets/3d/locales/roadside_chapel.glb",
-		"camera_origin": Vector3(2.5, 1.6, 4.5),
-		"camera_rotation": Vector3(0.03, 0.507, 0.0),
-		"fov": 55.0,
+		"camera_origin": Vector3(-2.2, 1.5, 11.0),
+		"camera_rotation": Vector3(0.10, -0.17, 0.0),
+		"fov": 50.0,
 		"suppress_input": true,
 	},
 	"dambrosios_formal": {
@@ -2003,22 +2006,25 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/grunion_beach.tscn",
 		"requires_glb": "res://assets/3d/locales/grunion_beach.glb",
 		# OUTDOOR clouded-moon shore. Dry sand → wet band (z≈-9) →
-		# surf lines → black sea → cloud bank with the hidden-moon
-		# glow patch (z≈-28). Camera on the dry sand looking N at the
-		# water — the ghost scene's vantage; driftwood frame left.
-		"camera_origin": Vector3(-1.0, 1.65, -4.0),
-		"camera_rotation": Vector3(-0.01, deg_to_rad(-14.0), 0.0),
-		"fov": 66.0,
+		# surf lines → black sea → the cloud deck 140-200 m out with
+		# the moon in its gap (draft 2, 2026-09-30). Camera at the
+		# dune foot looking N down the narrator's footprints to the
+		# water — the ghost scene's vantage: driftwood left third, the
+		# moon gap right third, the walk down the middle.
+		"camera_origin": Vector3(-0.3, 1.6, -1.6),
+		"camera_rotation": Vector3(-0.10, deg_to_rad(16.0), 0.0),
+		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"grunion_beach": {
 		"scene": "res://scenes/locales/grunion_beach.tscn",
 		"requires_glb": "res://assets/3d/locales/grunion_beach.glb",
 		# Same set, low at the tide's edge looking W along the wet
-		# band — the silver run receding up the beach, surf frame
-		# right.
-		"camera_origin": Vector3(2.0, 1.30, -7.5),
-		"camera_rotation": Vector3(-0.10, deg_to_rad(55.0), 0.0),
+		# band — the silver run receding up the beach to the vanishing
+		# point, surf frame right (draft 2: the beach runs 200 m each
+		# way now; eye 0.9 on the wet band, the run at your feet).
+		"camera_origin": Vector3(2.0, 0.9, -8.6),
+		"camera_rotation": Vector3(-0.14, deg_to_rad(78.0), 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},

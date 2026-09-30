@@ -181,12 +181,15 @@ light_color = Color(0.45, 0.55, 0.7, 1)
 light_energy = 0.3
 shadow_enabled = false
 
+; draft 2 (2026-09-30): up in the gap of the cloud deck, in front of the
+; moon disc — it silvers the deck's edges and the disc (it was 28 m out,
+; lighting the three cloud cards that read as black bars)
 [node name="Hidden_Moon" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0, 10.0, -27.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.0, 36.0, -205.0)
 light_color = Color(0.55, 0.58, 0.7, 1)
-light_energy = 1.5
+light_energy = 2.4
 shadow_enabled = false
-omni_range = 25.0
+omni_range = 70.0
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
