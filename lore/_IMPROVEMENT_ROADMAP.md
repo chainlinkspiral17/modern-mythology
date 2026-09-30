@@ -3091,6 +3091,43 @@ kestrel_mountain (a wall), cedar_tower_exterior (cropped),
 bar_exterior_night (lens on the wall), cosmic_comics_interior (a
 purple panel across the lens), cabin_interior_bed (orange walls).
 
+FORTY-THIRD PASS (2026-09-30). Still no new sheet. Four frames that
+were camera problems, fixed as camera problems:
+· cabin_interior_bed: the 09-03 `--propose` pass had stood it in the
+  MAIN room west of the east room's partition, pitched 20° up — the
+  "orange walls" were the partition and the ceiling. It is at the
+  pillow end inside the east room now (blender 1.2, 2.5, eye 1.05),
+  the made bed low, the window over it (ch1: "the window above the
+  bed gave her the gray-green of cedars").
+· cosmic_comics_interior: the purple slab across a third of the frame
+  was the cardboard STANDEE, 0.9 m in front of the lens in the SE
+  corner. It stands in the SW corner by the door now, small and far
+  on the frame's left.
+· bar_exterior_night: on the sidewalk 2.3 m off the facade looking
+  WNW, the lit front window filled a third of the frame and the door
+  was a sliver. The camera stands across the (3 m) road now looking
+  N at the whole frontage: door spill + neon, the window, the sedan,
+  the lamp, the dark upper story.
+· cedar_tower_exterior: 18 m off a 26 m tower pitched 17° up, with
+  five spruce 3 m off the lens. It stands 30 m off now, the whole
+  tower top to doors, the Sitka ring's south arc framing the left.
+  Two audit findings on the way: the tower's floors were named
+  `Tower_Band_*` and the vantage audit reads any "band" as a far
+  horizon band — the tower was invisible to it (renamed
+  `Tower_Cedar_*`); and the clearing's gravel ended short of the
+  camera, so the lower frame was Ground_Far, which the EMPTY test
+  also treats as nothing (the gravel runs south under the camera).
+  The rename also un-hid the tower from the DOORWAY gate (its IGNORE
+  has `band` too): the 2.5 m double doors ran up into the glass band
+  over a 2.2 m cedar floor, so the tower could not host them — they
+  are 2.1 m now.
+kestrel_mountain: NOT drafted — the frame is a dark rock wall left, a
+pale slab floating in the sky (the "cloud on the top"?) and a
+corridor path; needs the sheet at full size to diagnose.
+NEXT (draft 44): the sheet for 40-43; Graustark; Kestrel; then a
+second survey of the markers (the establishes are the first frame of
+a scene, but most of a scene's frames are its inserts and closeups).
+
 NEXT (draft 36, as written): judge the moved pieces on the sheet (ben, jesse, sam,
 safehouse, the seven kitchens); name the 13 deliberate OFF_WALL pieces
 (a `free=True` tag or a name class) and gate placement; simon's TV on

@@ -1774,8 +1774,15 @@ const CAMERA_PRESETS := {
 		# kitchen's.
 		# RE-VANTAGED 2026-09-03 by vantage_obstruction_audit --propose
 		# (user: "another establishing shot that is 90 percent wall").
-		"camera_origin": Vector3(-1.50, 1.00, -2.15),
-		"camera_rotation": Vector3(0.36, 4.320, 0.0),
+		# 2026-09-30 (draft 2 of this frame): the 09-03 --propose pass
+		# stood it at blender (-1.5, 2.15) — in the MAIN room, west of
+		# the east room's partition (x 1.0), pitched 20° up; the 09-26
+		# sheet saw the partition and the ceiling. It is at the pillow
+		# end INSIDE the east room now (blender 1.2, 2.5, eye 1.05),
+		# between the partition and the bed, looking ESE: the made bed
+		# in the lower frame, the window over it (E wall, 2.85, 1.45).
+		"camera_origin": Vector3(1.20, 1.05, -2.50),
+		"camera_rotation": Vector3(0.20, -2.138, 0.0),
 		"fov": 58.0,
 		"suppress_input": true,
 	},
@@ -2034,10 +2041,15 @@ const CAMERA_PRESETS := {
 		# OUTDOOR night street. Brick face at z=-4.5: recessed door
 		# with warm spill (x=-1), neon over it, glowing front window
 		# east (x=2.4), parked sedan at the curb, streetlamp (4.8).
-		# Camera on the sidewalk looking WNW at door + neon — the
-		# superpower conversation happens here.
-		"camera_origin": Vector3(2.2, 1.65, -2.2),
-		"camera_rotation": Vector3(0.02, deg_to_rad(55.0), 0.0),
+		# Camera ACROSS the road at its south edge looking N at the
+		# whole frontage — the superpower conversation happens here:
+		# the door's spill and the neon over it left of centre, the big
+		# window glowing right, the sedan at the curb frame-left, the
+		# streetlamp at the right edge, the dark upper story (2026-09-30:
+		# on the sidewalk 2.3 m from the facade looking WNW, the lit
+		# window filled a third of the frame and the door was a sliver).
+		"camera_origin": Vector3(0.9, 1.65, 0.6),
+		"camera_rotation": Vector3(0.10, 0.098, 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
@@ -2222,10 +2234,14 @@ const CAMERA_PRESETS := {
 		"requires_glb": "res://assets/3d/locales/cedar_tower.glb",
 		# The gravel clearing: the wagon, the Sitka ring, the tower's
 		# seven cedar-and-glass floors, the seventh running the
-		# garden green behind its smart-glass.
-		"camera_origin": Vector3(41.0, 1.70, 6.0),
-		"camera_rotation": Vector3(0.30, deg_to_rad(-16.0), 0.0),
-		"fov": 70.0,
+		# garden green behind its smart-glass. The tower (blender
+		# 45, 12; 26 m) is 30 m off, whole, top to doors; the south
+		# arc of the Sitka ring frames the left, the wagon mid-left
+		# (2026-09-30: at 18 m and pitched 17° up the frame was the
+		# tower's middle floors and five spruce 3 m off the lens).
+		"camera_origin": Vector3(47.0, 1.70, 18.0),
+		"camera_rotation": Vector3(0.17, 0.066, 0.0),
+		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"nexcorp_gas_go": {

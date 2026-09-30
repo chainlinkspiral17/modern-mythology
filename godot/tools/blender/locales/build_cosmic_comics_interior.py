@@ -269,9 +269,12 @@ def build_dressing():
             make_box(f"Peg_{r}_{c}_Card", (px, py, pz), (0.02, 0.22, 0.30), (0.86, 0.78, 0.42, 1.0))
             make_cyl(f"Peg_{r}_{c}_Fig", (px-0.08, py, pz), 0.05, 0.20,
                      P.SNACK_TINTS[(r + c) % len(P.SNACK_TINTS)], axis='X', segments=8)
-    # Cardboard standee near the front SE corner
-    make_box("Standee_Board", (ROOM_W/2.0 - 1.3, 1.0, 0.98), (0.55, 0.05, 1.92), COL_ACCENT)
-    make_box("Standee_Foot", (ROOM_W/2.0 - 1.3, 1.15, 0.03), (0.55, 0.30, 0.03), (0.30, 0.22, 0.14, 1.0))
+    # Cardboard standee in the front SW corner, facing the door (2026-09-30:
+    # in the SE corner it stood 0.9 m in front of the establish's lens, a
+    # purple slab across a third of the frame; from the SW it reads as
+    # the shop's, small and far on the frame's left)
+    make_box("Standee_Board", (-ROOM_W/2.0 + 0.9, 0.9, 0.98), (0.55, 0.05, 1.92), COL_ACCENT)
+    make_box("Standee_Foot", (-ROOM_W/2.0 + 0.9, 1.05, 0.03), (0.55, 0.30, 0.03), (0.30, 0.22, 0.14, 1.0))
     # Stool behind the register
     make_stool("Stool", ROOM_W/4.0 - 0.7, ROOM_D - 2.6, h=0.60, wood=(0.30, 0.26, 0.30, 1.0))   # draft 4: the kit stool
 

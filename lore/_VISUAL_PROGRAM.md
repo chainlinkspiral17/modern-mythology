@@ -326,6 +326,13 @@ Every ending's reading now carries the arcana's record. The design
 row's Claude-side items are through; what remains on it is Deck-
 gated (the bursts) or user-gated (Salmonberry).
 
+**Status (2026-09-30, latest) · draft 43 · four cameras.** The cabin
+bedroom's camera stood in the wrong room; the comic shop's standee
+stood in front of the lens; the bar's camera stood against its own
+window; the cedar tower was shot from its knees. All four reframed;
+the tower's floors renamed so the vantage audit can see them.
+Roadmap: FORTY-THIRD PASS.
+
 **Status (2026-09-30, later) · draft 42 · a barn, a cove, a pool.**
 The crumpled barn's value structure (straw field, foliage hedge, a
 three-quarter camera on the collapse), Lake Palestine's far shore at

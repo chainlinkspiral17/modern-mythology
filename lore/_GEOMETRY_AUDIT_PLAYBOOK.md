@@ -158,6 +158,26 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-09-30 (later) · a name can hide a building from the audit; `--propose` can pick the wrong room
+
+**What happened.** Two of draft 43's four frames were authored by the
+audits themselves. The cabin bedroom's camera came from the 09-03
+`vantage_obstruction_audit --propose` grid search — it passed its own
+test standing in the MAIN room behind the bedroom partition, pitched
+at the ceiling; nothing in the search knows which room the prose is
+in. And the cedar tower's floors, named `Tower_Band_*`, matched the
+audit's far-band pattern (`band`), so the tower counted as sky: a
+frame of nothing but the tower read EMPTY, and a frame of spruce
+3 m off the lens passed.
+
+**Rules.** (1) A `--propose` result is a candidate, not a fix: check
+the camera is in the room the preset's comment names before keeping
+it. (2) Never name a building part after a horizon pattern — `band`,
+`far`, `sky`, `horizon`, `haze`, `void` all make a mesh invisible to
+the vantage audit (IGNORE / SKY in vantage_obstruction_audit.py). (3)
+The EMPTY test also treats `Ground_Far` as nothing, so an exterior
+camera must stand on the locale's own ground, not past its edge.
+
 ### 2026-09-30 · the sky and the fog are geometry too, and they float
 
 **What happened.** Four of the worst establishes on the 09-26 sheet

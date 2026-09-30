@@ -378,11 +378,14 @@ def build_exterior():
     floors of cedar band + glass band, the seventh running the
     garden."""
     X = 45.0
-    make_box("Ext_Gravel", (X, 2.0, 0.0), (30.0, 26.0, 0.06), GRAVEL)
+    make_box("Ext_Gravel", (X, -4.0, 0.0), (30.0, 38.0, 0.06), GRAVEL)   # the clearing runs south under the establish (2026-09-30)
     # The tower: 8×8 footprint, seven floors
     for f in range(7):
         fz = f * 3.7
-        make_box(f"Tower_Band_{f}", (X, 12.0, fz + 1.1), (8.0, 8.0, 2.2), CEDAR_PANEL)
+        # "Tower_Cedar", not "Tower_Band" (2026-09-30): the vantage audit
+        # reads any "band" as a far horizon band, so the tower's floors
+        # were invisible to it and the establish read EMPTY
+        make_box(f"Tower_Cedar_{f}", (X, 12.0, fz + 1.1), (8.0, 8.0, 2.2), CEDAR_PANEL)
         glass_col = (0.34, 0.55, 0.40, 0.9) if f == 6 else GLASS
         make_box(f"Tower_Glass_{f}", (X, 12.0, fz + 2.95), (8.15, 8.15, 1.5), glass_col)   # band to band (2026-09-22: 20 cm of air under each floor)
     make_box("Tower_Cap", (X, 12.0, 7 * 3.7 + 0.2), (8.4, 8.4, 0.4), CEDAR_DK)
@@ -392,7 +395,10 @@ def build_exterior():
                  (0.28, 0.48, 0.30, 1.0))
     # Double doors at the base, S face
     for sgn in (-1, 1):
-        make_box(f"Tower_Door_{sgn:+d}", (X + sgn * 0.5, 7.94, 1.25), (0.95, 0.06, 2.50), CEDAR_DK)
+        # 2.1 m, inside the ground floor's 2.2 m cedar band (2026-09-30: at
+        # 2.5 m their tops ran into the glass band above, so the doorway
+        # gate could not read the tower as their wall)
+        make_box(f"Tower_Door_{sgn:+d}", (X + sgn * 0.5, 7.94, 1.05), (0.95, 0.06, 2.10), CEDAR_DK)
     # The wagon in the clearing
     wx, wy = X - 6.0, 2.5
     make_box("Wagon_Body", (wx, wy, 0.95), (1.95, 4.4, 1.15), (0.36, 0.40, 0.38, 1.0))
