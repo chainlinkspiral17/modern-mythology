@@ -35,3 +35,19 @@ godot/assets/3d/characters/heroes/*_normal.png
 # THE LENS (2026-09-15): contact-sheet frames travel on the orphan
 # branch qa/contact (tools/contact_push.sh), never on the working branch.
 godot/qa/contact/
+
+# Hero Studio (ported from the meshy branch 2026-09-30). API key files
+# for meshy_pipeline.py — never commit.
+godot/tools/.runway_key
+godot/tools/.google_key
+godot/tools/.*_key
+# Concept-art candidates stay local; the manifest (the run's names) and
+# each character's chosen front image are tracked, so a fresh clone
+# comes back the way the tool was left. The GLBs in assets/3d/... are
+# committed.
+godot/assets/concept/meshy/*
+!godot/assets/concept/meshy/manifest.json
+!godot/assets/concept/meshy/*/
+godot/assets/concept/meshy/*/*
+!godot/assets/concept/meshy/*/front.png
+!godot/assets/concept/meshy/*/front.jpg

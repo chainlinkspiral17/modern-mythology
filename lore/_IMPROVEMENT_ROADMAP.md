@@ -2923,6 +2923,27 @@ CharLayer for bare keys that cross eras (`miriam`); vol1's chorus
 Lena's prompt says 2050s and vol7's wiki said 2025 — the user
 ruled the 2050s (2026-09-26); both wikis are rewritten to it.
 
+**2026-09-30 · HERO STUDIO → THE GAME BRANCH.** The user: "Heroes
+aren't showing up in the game project, despite being in Hero Tool."
+Two causes: (1) Hero Studio and its routing lived only on
+`claude/meshy-image-generation-w92vr6`, which split from this branch
+on 2026-07-01 (141 vs 1231 commits; a full merge conflicts in 69
+files, mostly July-era locale builders) — this branch had no roster
+and no roster routing in CharLayer, so only the old hard-coded keys
+could ever show; (2) the 48 assigned models were never committed
+anywhere, so the server's meshy branch still held the original 7.
+PORTED here (not merged): CharLayer's three hero commits (a8eaffea's
+model table — the game branch had pruned it while the GLBs did not
+exist — plus 0ca03690 looks-by-scene and 5bcab83c every-roster-key),
+GameEngine's set_scene_context call, meshy_roster.json,
+meshy_pipeline.py (with SAVE), meshy_canon.py, meshy_recover.py, the
+recovered mapping, hero_uploader/, and the .gitignore rules for the
+API keys and concept candidates (without them SAVE here would have
+committed every candidate image). RULE from now on: run Hero Studio
+from THIS branch, so SAVE lands models where the game reads them. The
+meshy branch keeps other sessions' previz/menu work; do not merge it
+wholesale.
+
 **2026-09-26 · HERO STUDIO · the recovered batch.** The user's 60
 Meshy models of 2026-09-25 never reached the game (the runner's
 manifest and stills were lost with the clone); `meshy_recover.py
