@@ -2997,18 +2997,20 @@ def build_southeast_bathroom():
     # Stacked boxes + cleaning supplies
     for b in range(3):
         bx = BR_X_W + 0.8 + b * 0.40
+        # on the closet floor (top 0.0245; 2026-10-01: at 0.05 they stood
+        # on the old floating floor tiles, which are flush now)
         make_box(f"SC_Box_{b}",
-                 (bx, -5.80, 0.30),
+                 (bx, -5.80, 0.2745),
                  (0.30, 0.30, 0.50),
                  [(0.42, 0.32, 0.18, 1.0),
                   (0.62, 0.42, 0.30, 1.0),
                   (0.32, 0.42, 0.22, 1.0)][b])
     # Mop and broom in corner (vertical cylinders)
     make_cyl("SC_Broom_Handle",
-             (BR_X_W + 0.25, -5.85, 0.90),
+             (BR_X_W + 0.25, -5.85, 0.8745),
              0.014, 1.70, COL_WOOD_TRIM, segments=4, axis='Z')
     make_cyl("SC_Mop_Handle",
-             (BR_X_W + 0.42, -5.85, 0.85),
+             (BR_X_W + 0.42, -5.85, 0.8245),
              0.014, 1.60, COL_BRASS, segments=4, axis='Z')
 
 
@@ -3766,7 +3768,14 @@ def build_floor_checkerboard():
     pattern. Adds the canonical 1950s-diner read at eye-level when
     the player looks down."""
     tile = 0.6
-    z = 0.04
+    # FLUSH INLAYS (2026-10-01, the user on the Deck: "tiles emerging and
+    # not aligned right"): the dark squares were 2 cm slabs floating 3 cm
+    # over the cream floor (z 0.03-0.05) and cut to 92 % — a 5 cm gap
+    # round each — so the edge shader outlined every one as a raised tile
+    # with uneven seams, and they poked through the bathroom and closet
+    # floor skins at 0.02. Now full-size (corner to corner, the way a
+    # checkerboard is laid) and 3 mm thick, sitting ON the floor (top 0).
+    z = 0.0015
     nx = int(D_W / tile)
     ny = int(D_D / tile)
     for i in range(nx):
@@ -3778,7 +3787,7 @@ def build_floor_checkerboard():
             make_box(
                 f"FloorTile_{i}_{j}",
                 center=(cx, cy, z),
-                size=(tile * 0.92, tile * 0.92, 0.02),
+                size=(tile, tile, 0.003),
                 base_color=COL_FLOOR_TILE_DK,
             )
 
