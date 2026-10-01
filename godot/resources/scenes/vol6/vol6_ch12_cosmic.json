@@ -34,15 +34,18 @@
     },
     {
       "t": "narrate",
-      "text": "There are six of them on the ring, plus the green plastic tab that says COSMIC in Rick's handwriting from sometime in the late 1990s."
+      "text": "There are six of them on the ring, plus the green plastic tab that says COSMIC in Rick's handwriting from sometime in the late 1990s.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/006.ogg"
     },
     {
       "t": "narrate",
-      "text": "The keys are — front door, back door, register drawer, safe in the back office, long-box storage room, mailbox at the end of the strip. The mailbox key is the smallest. The safe key is the longest."
+      "text": "The keys are — front door, back door, register drawer, safe in the back office, long-box storage room, mailbox at the end of the strip. The mailbox key is the smallest. The safe key is the longest.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/007.ogg"
     },
     {
       "t": "narrate",
-      "text": "The front and back doors are the ones Rick had, on Sunday at noon when he handed her the ring, walked her through twice — front door deadbolt first, then the bottom lock, then the chain inside if she is the last one out, which today she is going to be."
+      "text": "The front and back doors are the ones Rick had, on Sunday at noon when he handed her the ring, walked her through twice — front door deadbolt first, then the bottom lock, then the chain inside if she is the last one out, which today she is going to be.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/008.ogg"
     },
     {
       "t": "narrate",
@@ -51,11 +54,13 @@
     },
     {
       "t": "narrate",
-      "text": "She is doing the thing she has been doing every time she has been entrusted with something this summer — hesitating at the threshold of the entrustment for slightly longer than is necessary,"
+      "text": "She is doing the thing she has been doing every time she has been entrusted with something this summer — hesitating at the threshold of the entrustment for slightly longer than is necessary,",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/010.ogg"
     },
     {
       "t": "narrate",
-      "text": "because she is, every time, having to actually decide that the entrustment is real and not a misunderstanding she is being permitted to continue."
+      "text": "because she is, every time, having to actually decide that the entrustment is real and not a misunderstanding she is being permitted to continue.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/011.ogg"
     },
     {
       "t": "narrate",
@@ -84,15 +89,18 @@
     },
     {
       "t": "narrate",
-      "text": "The shop at nine forty-eight on a Tuesday morning in mid-August is doing the quiet a comic shop does in the hour before opening."
+      "text": "The shop at nine forty-eight on a Tuesday morning in mid-August is doing the quiet a comic shop does in the hour before opening.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/017.ogg"
     },
     {
       "t": "narrate",
-      "text": "The brass bell above the door — the one from the 1994 estate sale that the previous owner had, Rick says, heard something in — chimes in its small dry way. The fluorescent tubes overhead are not yet on."
+      "text": "The brass bell above the door — the one from the 1994 estate sale that the previous owner had, Rick says, heard something in — chimes in its small dry way. The fluorescent tubes overhead are not yet on.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/018.ogg"
     },
     {
       "t": "narrate",
-      "text": "The light in the shop is the slanting ten-AM light coming through the painted Galactus on the front window and laying the painted Galactus across the floor in long purple bars."
+      "text": "The light in the shop is the slanting ten-AM light coming through the painted Galactus on the front window and laying the painted Galactus across the floor in long purple bars.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/019.ogg"
     },
     {
       "t": "narrate",
@@ -185,15 +193,18 @@
     },
     {
       "t": "narrate",
-      "text": "She turns on the fluorescent tubes. She turns on the back-office computer."
+      "text": "She turns on the fluorescent tubes. She turns on the back-office computer.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/038.ogg"
     },
     {
       "t": "narrate",
-      "text": "She takes the deposit slip from the cash register from yesterday — Sunday's, which Curtis had run because Curtis always does Sunday — and confirms the handwritten total at the bottom matches her own count from yesterday afternoon."
+      "text": "She takes the deposit slip from the cash register from yesterday — Sunday's, which Curtis had run because Curtis always does Sunday — and confirms the handwritten total at the bottom matches her own count from yesterday afternoon.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/039.ogg"
     },
     {
       "t": "narrate",
-      "text": "The total matches. She files the slip in the green folder in the second drawer."
+      "text": "The total matches. She files the slip in the green folder in the second drawer.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/040.ogg"
     },
     {
       "t": "bg",
@@ -255,15 +266,18 @@
     },
     {
       "t": "narrate",
-      "text": "Curtis is fifty-six. He is a tall thin man with a short gray ponytail and a t-shirt that says MIRACLEMAN in the old yellow-on-black design from the 1985 Eclipse run."
+      "text": "Curtis is fifty-six. He is a tall thin man with a short gray ponytail and a t-shirt that says MIRACLEMAN in the old yellow-on-black design from the 1985 Eclipse run.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/053.ogg"
     },
     {
       "t": "narrate",
-      "text": "He has, in the four months Maya has been at the shop, worn perhaps eleven different t-shirts in regular rotation, all from runs Maya has had to look up afterward. The MIRACLEMAN one is the one Curtis wears on Tuesdays."
+      "text": "He has, in the four months Maya has been at the shop, worn perhaps eleven different t-shirts in regular rotation, all from runs Maya has had to look up afterward. The MIRACLEMAN one is the one Curtis wears on Tuesdays.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/054.ogg"
     },
     {
       "t": "narrate",
-      "text": "He has, in his hand, a thermos and a copy of yesterday's Sentinel."
+      "text": "He has, in his hand, a thermos and a copy of yesterday's Sentinel.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/055.ogg"
     },
     {
       "t": "say",
@@ -281,11 +295,13 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert till]He goes behind the counter without breaking stride. He sets the thermos under the register. He puts the Sentinel on the small shelf where Rick keeps his when he is in."
+      "text": "[shot:insert till]He goes behind the counter without breaking stride. He sets the thermos under the register. He puts the Sentinel on the small shelf where Rick keeps his when he is in.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/058.ogg"
     },
     {
       "t": "narrate",
-      "text": "He checks the register screen — the morning glance every working manager makes at a shop's till — and registers, by what he sees there, that the till is set to where it should be."
+      "text": "He checks the register screen — the morning glance every working manager makes at a shop's till — and registers, by what he sees there, that the till is set to where it should be.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/059.ogg"
     },
     {
       "t": "say",
@@ -325,11 +341,13 @@
     },
     {
       "t": "narrate",
-      "text": "The Tuesday flow is not the flow of a Wednesday or a Thursday or a Saturday — but it is a flow. Maya, at the back-office door, watches Curtis handle the first hour and a half from her doorway."
+      "text": "The Tuesday flow is not the flow of a Wednesday or a Thursday or a Saturday — but it is a flow. Maya, at the back-office door, watches Curtis handle the first hour and a half from her doorway.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/066.ogg"
     },
     {
       "t": "narrate",
-      "text": "Curtis is, in his work, what Rick had said he was on Sunday: not chatty, not warm, technically perfect. Curtis rings. Curtis bags. Curtis greets the customer. Curtis does not, in the greeting, make small talk that is not required."
+      "text": "Curtis is, in his work, what Rick had said he was on Sunday: not chatty, not warm, technically perfect. Curtis rings. Curtis bags. Curtis greets the customer. Curtis does not, in the greeting, make small talk that is not required.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/067.ogg"
     },
     {
       "t": "narrate",
@@ -433,15 +451,18 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]She has, in the past two hours, fielded a delivery call from a thirty-year veteran of comics distribution who treated her like an adult."
+      "text": "[shot:insert phone]She has, in the past two hours, fielded a delivery call from a thirty-year veteran of comics distribution who treated her like an adult.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/085.ogg"
     },
     {
       "t": "narrate",
-      "text": "She has been part of the invisible network of comic-shop logistics that runs underneath every shop in the country. She is inside it now. Not because of Frasier. Not because of any of that."
+      "text": "She has been part of the invisible network of comic-shop logistics that runs underneath every shop in the country. She is inside it now. Not because of Frasier. Not because of any of that.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/086.ogg"
     },
     {
       "t": "narrate",
-      "text": "Because Rick is in Dallas, and Delia called the number she was given, and Maya picked up the phone."
+      "text": "Because Rick is in Dallas, and Delia called the number she was given, and Maya picked up the phone.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/087.ogg"
     },
     {
       "t": "narrate",
@@ -480,15 +501,18 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup wren]Wren is twenty-eight. Wren has, this morning, dyed the front section of her hair a pale lavender Maya had not seen yesterday afternoon when she had left her shift."
+      "text": "[shot:closeup wren]Wren is twenty-eight. Wren has, this morning, dyed the front section of her hair a pale lavender Maya had not seen yesterday afternoon when she had left her shift.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/095.ogg"
     },
     {
       "t": "narrate",
-      "text": "Wren is wearing the canvas overshirt she always wears, which has, on the back, a faded patch from a band Maya has heard of but has never listened to —"
+      "text": "Wren is wearing the canvas overshirt she always wears, which has, on the back, a faded patch from a band Maya has heard of but has never listened to —",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/096.ogg"
     },
     {
       "t": "narrate",
-      "text": "Bratmobile, Olympia, 1991 — that Wren had sewn on herself and that has, in the years since, become the thing Wren is most reliably identifiable by from a distance."
+      "text": "Bratmobile, Olympia, 1991 — that Wren had sewn on herself and that has, in the years since, become the thing Wren is most reliably identifiable by from a distance.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/097.ogg"
     },
     {
       "t": "say",
@@ -700,11 +724,13 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert till]Maya and Wren run the floor together for the half-hour Curtis is gone. The floor is steady — five customers in the half-hour, all regulars, none with anything weird. Wren rings. Maya bags."
+      "text": "[shot:insert till]Maya and Wren run the floor together for the half-hour Curtis is gone. The floor is steady — five customers in the half-hour, all regulars, none with anything weird. Wren rings. Maya bags.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/130.ogg"
     },
     {
       "t": "narrate",
-      "text": "The two of them work the way they had been working since June, when Wren had been first to learn that Maya was actually competent at the register and had stopped, after week two, doing the rings herself when they overlapped."
+      "text": "The two of them work the way they had been working since June, when Wren had been first to learn that Maya was actually competent at the register and had stopped, after week two, doing the rings herself when they overlapped.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/131.ogg"
     },
     {
       "t": "narrate",
@@ -748,19 +774,22 @@
       "t": "say",
       "char": "Wren",
       "text": "I am about to tell you something I have not told anybody else who works here. I am telling you because I think you need to know it for the week.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/139.ogg"
     },
     {
       "t": "say",
       "char": "Wren",
       "text": "I am also telling you because you have been, since June, the kind of kid who I have decided I would tell things to. I want you to know that you can not, after I tell you, do anything with it.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/140.ogg"
     },
     {
       "t": "say",
       "char": "Wren",
       "text": "The not-doing is the price of the telling.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/141.ogg"
     },
     {
       "t": "narrate",
@@ -809,13 +838,15 @@
       "t": "say",
       "char": "Wren",
       "text": "[shot:closeup person_b]I'm okay. Liz is okay. The thing is — the thing is in motion. The thing will be in motion for a while. By the time Rick is back I will have a better answer than I do today.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/149.ogg"
     },
     {
       "t": "say",
       "char": "Wren",
       "text": "I am telling you today because today is the day I needed to tell somebody and you are the person who is here.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/150.ogg"
     },
     {
       "t": "say",
@@ -890,15 +921,18 @@
     },
     {
       "t": "narrate",
-      "text": "Maya stays in the back office for a minute. She sits at the desk. She does not, in the minute, do anything with what Wren has told her. She files it."
+      "text": "Maya stays in the back office for a minute. She sits at the desk. She does not, in the minute, do anything with what Wren has told her. She files it.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/162.ogg"
     },
     {
       "t": "narrate",
-      "text": "She is going to file it again, in different drawers, over the course of the rest of the day and the rest of the week and the rest of the next month."
+      "text": "She is going to file it again, in different drawers, over the course of the rest of the day and the rest of the week and the rest of the next month.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/163.ogg"
     },
     {
       "t": "narrate",
-      "text": "The first filing is the one in the back office at one fifty-three PM with the door open and Curtis at the register thirty feet away."
+      "text": "The first filing is the one in the back office at one fifty-three PM with the door open and Curtis at the register thirty feet away.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/164.ogg"
     },
     {
       "t": "narrate",
@@ -921,15 +955,18 @@
     },
     {
       "t": "narrate",
-      "text": "By three the shop has had nine customers. By four-thirty, fourteen. By six, twenty-one."
+      "text": "By three the shop has had nine customers. By four-thirty, fourteen. By six, twenty-one.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/169.ogg"
     },
     {
       "t": "narrate",
-      "text": "Maya, at the register, finds — between customers — that her hands have begun to know the motions of the register and the bag and the receipt without her conscious attention,"
+      "text": "Maya, at the register, finds — between customers — that her hands have begun to know the motions of the register and the bag and the receipt without her conscious attention,",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/170.ogg"
     },
     {
       "t": "narrate",
-      "text": "and that the lack of conscious attention is freeing the part of her interior that has been, all morning, vigilant about being watched by Curtis."
+      "text": "and that the lack of conscious attention is freeing the part of her interior that has been, all morning, vigilant about being watched by Curtis.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/171.ogg"
     },
     {
       "t": "narrate",
@@ -953,11 +990,13 @@
     },
     {
       "t": "narrate",
-      "text": "By six the shop has the late-afternoon hum of a small shop on a Tuesday — three customers browsing, two at the back issues, one at the manga wall. Curtis is at the counter."
+      "text": "By six the shop has the late-afternoon hum of a small shop on a Tuesday — three customers browsing, two at the back issues, one at the manga wall. Curtis is at the counter.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/176.ogg"
     },
     {
       "t": "narrate",
-      "text": "Wren is in the back unboxing a mid-week order from a small-press distributor that is not Diamond. Maya is at the indie rack putting up the new-arrivals shelf-talkers."
+      "text": "Wren is in the back unboxing a mid-week order from a small-press distributor that is not Diamond. Maya is at the indie rack putting up the new-arrivals shelf-talkers.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/177.ogg"
     },
     {
       "t": "narrate",
@@ -1081,15 +1120,18 @@
     },
     {
       "t": "narrate",
-      "text": "The exchange has been, on its surface, transactional."
+      "text": "The exchange has been, on its surface, transactional.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/200.ogg"
     },
     {
       "t": "narrate",
-      "text": "The exchange has also been — Maya registers, with the careful attention Wren had three hours earlier equipped her for — a man checking whether the kid running the shop has been entrusted with the paper part of the operation or only the floor part."
+      "text": "The exchange has also been — Maya registers, with the careful attention Wren had three hours earlier equipped her for — a man checking whether the kid running the shop has been entrusted with the paper part of the operation or only the floor part.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/201.ogg"
     },
     {
       "t": "narrate",
-      "text": "Curtis has, in asking, confirmed for himself that Rick has not given Maya the invoice."
+      "text": "Curtis has, in asking, confirmed for himself that Rick has not given Maya the invoice.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/202.ogg"
     },
     {
       "t": "narrate",
@@ -1205,19 +1247,23 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:dusk][shot:insert till]Maya, at the counter, starts the close. She counts the till. She separates the cash from the card receipts. She runs the register report. She pulls the bag-and-board waste from the bin under the register. She wipes the counter."
+      "text": "[mood:dusk][shot:insert till]Maya, at the counter, starts the close. She counts the till. She separates the cash from the card receipts. She runs the register report. She pulls the bag-and-board waste from the bin under the register. She wipes the counter.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/222.ogg"
     },
     {
       "t": "narrate",
-      "text": "She turns off the back fluorescents in sections, leaving the front bank for last."
+      "text": "She turns off the back fluorescents in sections, leaving the front bank for last.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/223.ogg"
     },
     {
       "t": "narrate",
-      "text": "She does the walk-through of the aisles — her own walk-through, which she has been doing without being asked for two months — to make sure the shelves are face-front and the displays are square."
+      "text": "She does the walk-through of the aisles — her own walk-through, which she has been doing without being asked for two months — to make sure the shelves are face-front and the displays are square.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/224.ogg"
     },
     {
       "t": "narrate",
-      "text": "The walk-through is not in Rick's notebook. It is a thing she has been doing because she has noticed, doing it, that the morning is easier when the close-night has been thorough."
+      "text": "The walk-through is not in Rick's notebook. It is a thing she has been doing because she has noticed, doing it, that the morning is easier when the close-night has been thorough.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/225.ogg"
     },
     {
       "t": "narrate",
@@ -1385,15 +1431,18 @@
     },
     {
       "t": "narrate",
-      "text": "Curtis has just told her, in three sentences, more than he has ever told her. He told her by deciding to mention it."
+      "text": "Curtis has just told her, in three sentences, more than he has ever told her. He told her by deciding to mention it.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/255.ogg"
     },
     {
       "t": "narrate",
-      "text": "He told her he had registered Wren's lunch conversation with her, that he had a guess as to what it had been about, and that he wanted her to know that whatever it had been about was not her problem."
+      "text": "He told her he had registered Wren's lunch conversation with her, that he had a guess as to what it had been about, and that he wanted her to know that whatever it had been about was not her problem.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/256.ogg"
     },
     {
       "t": "narrate",
-      "text": "He told her, in his way, that he is on her side. He gave her the assurance an adult gives a kid when the adult has decided the kid does not need to be carrying the adult's problem for the adult."
+      "text": "He told her, in his way, that he is on her side. He gave her the assurance an adult gives a kid when the adult has decided the kid does not need to be carrying the adult's problem for the adult.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/257.ogg"
     },
     {
       "t": "narrate",
@@ -1402,11 +1451,13 @@
     },
     {
       "t": "narrate",
-      "text": "She is going to keep doing her job. She is going to let Curtis keep doing his."
+      "text": "She is going to keep doing her job. She is going to let Curtis keep doing his.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/259.ogg"
     },
     {
       "t": "narrate",
-      "text": "At the end of the week Rick is going to come back and the shape of the thing is going to be the same shape it was before, except with one more person — her — knowing what the shape is."
+      "text": "At the end of the week Rick is going to come back and the shape of the thing is going to be the same shape it was before, except with one more person — her — knowing what the shape is.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/260.ogg"
     },
     {
       "t": "narrate",

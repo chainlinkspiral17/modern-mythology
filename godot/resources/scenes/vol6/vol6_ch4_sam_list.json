@@ -23,15 +23,18 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:rain_interior]Sam has been awake since five-fifty-two. She is at her desk now, in her pajamas, with the lamp on against the grey of the storm."
+      "text": "[mood:rain_interior]Sam has been awake since five-fifty-two. She is at her desk now, in her pajamas, with the lamp on against the grey of the storm.",
+      "voice": "assets/audio/voice/vol6_ch4_sam_list/004.ogg"
     },
     {
       "t": "narrate",
-      "text": "She has in front of her a notebook she bought at the Kwik Stop last night on her way home — one of the small cheap spiral-bound ones they stock for high-school kids, ninety-nine cents, lined pages, stapled on the short edge."
+      "text": "She has in front of her a notebook she bought at the Kwik Stop last night on her way home — one of the small cheap spiral-bound ones they stock for high-school kids, ninety-nine cents, lined pages, stapled on the short edge.",
+      "voice": "assets/audio/voice/vol6_ch4_sam_list/005.ogg"
     },
     {
       "t": "narrate",
-      "text": "She has not, until this summer, been a person who kept a notebook."
+      "text": "She has not, until this summer, been a person who kept a notebook.",
+      "voice": "assets/audio/voice/vol6_ch4_sam_list/006.ogg"
     },
     {
       "t": "narrate",
@@ -106,15 +109,18 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert window]She stands. She goes to the window. The rain is hitting the window hard."
+      "text": "[shot:insert window]She stands. She goes to the window. The rain is hitting the window hard.",
+      "voice": "assets/audio/voice/vol6_ch4_sam_list/021.ogg"
     },
     {
       "t": "narrate",
-      "text": "The cul-de-sac below is running with a thin sheet of water that is not, quite, flooding — the grid's quiet efficiency holding, as advertised — but that is, for the first time in Sam's memory,"
+      "text": "The cul-de-sac below is running with a thin sheet of water that is not, quite, flooding — the grid's quiet efficiency holding, as advertised — but that is, for the first time in Sam's memory,",
+      "voice": "assets/audio/voice/vol6_ch4_sam_list/022.ogg"
     },
     {
       "t": "narrate",
-      "text": "visible as a sheet, continuous, catching the overhead streetlight in a long rippling silver that extends across all three driveways opposite and down toward the storm drain at the bend."
+      "text": "visible as a sheet, continuous, catching the overhead streetlight in a long rippling silver that extends across all three driveways opposite and down toward the storm drain at the bend.",
+      "voice": "assets/audio/voice/vol6_ch4_sam_list/023.ogg"
     },
     {
       "t": "narrate",

@@ -35,11 +35,13 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2][mood:dusk]THE HERMIT. The old man stands alone on a mountaintop, lantern raised. He is not lost. He chose the mountain. The lantern is not for him — it is for those below who are still climbing."
+      "text": "[trip:1.2][mood:dusk]THE HERMIT. The old man stands alone on a mountaintop, lantern raised. He is not lost. He chose the mountain. The lantern is not for him — it is for those below who are still climbing.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/006.ogg"
     },
     {
       "t": "narrate",
-      "text": "Reversed: the isolation that has curdled into hiding. The light turned inward until it burns."
+      "text": "Reversed: the isolation that has curdled into hiding. The light turned inward until it burns.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/007.ogg"
     },
     {
       "t": "narrate",
@@ -48,19 +50,23 @@
     },
     {
       "t": "narrate",
-      "text": "Twilight bled purple and bruise-grey across the fractured skyline, catching on shards of glass embedded in crumbling concrete like malevolent constellations. This wasn't just a place. It was a library of decay."
+      "text": "Twilight bled purple and bruise-grey across the fractured skyline, catching on shards of glass embedded in crumbling concrete like malevolent constellations. This wasn't just a place. It was a library of decay.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/009.ogg"
     },
     {
       "t": "narrate",
-      "text": "A labyrinth built from the collapsed narratives of a thousand lives abruptly ended or rerouted by the earth's hungry yawn three years prior."
+      "text": "A labyrinth built from the collapsed narratives of a thousand lives abruptly ended or rerouted by the earth's hungry yawn three years prior.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/010.ogg"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup joanna]And Joanna — Joanna was its sole spectral librarian. Its resident ghost. Haunting the stacks of rubble and rust the way a cat haunts a house it has decided, by some process opaque to the humans, has become its territory."
+      "text": "[shot:closeup joanna]And Joanna — Joanna was its sole spectral librarian. Its resident ghost. Haunting the stacks of rubble and rust the way a cat haunts a house it has decided, by some process opaque to the humans, has become its territory.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/011.ogg"
     },
     {
       "t": "narrate",
-      "text": "The cat does not request the territory. The cat does not earn it. The cat simply moves in, and after a sufficient interval the humans either accept the arrangement or move out."
+      "text": "The cat does not request the territory. The cat does not earn it. The cat simply moves in, and after a sufficient interval the humans either accept the arrangement or move out.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/012.ogg"
     },
     {
       "t": "narrate",
@@ -74,11 +80,13 @@
     },
     {
       "t": "narrate",
-      "text": "She moved with a stillness that belied the tremor in her hands."
+      "text": "She moved with a stillness that belied the tremor in her hands.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/015.ogg"
     },
     {
       "t": "narrate",
-      "text": "A side effect of the chemical solace she chased to keep the louder silences at bay — the silences she had stopped trying to explain to her sister on the phone, the silences she had stopped, eventually, trying to explain to herself."
+      "text": "A side effect of the chemical solace she chased to keep the louder silences at bay — the silences she had stopped trying to explain to her sister on the phone, the silences she had stopped, eventually, trying to explain to herself.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/016.ogg"
     },
     {
       "t": "narrate",
@@ -92,31 +100,38 @@
     },
     {
       "t": "narrate",
-      "text": "The one-eyed shepherd mix — Joanna had named him Rumpus, against his apparent wishes — whose bark sounded suspiciously like choked laughter. Rumpus had been, in some prior life, somebody's pet."
+      "text": "The one-eyed shepherd mix — Joanna had named him Rumpus, against his apparent wishes — whose bark sounded suspiciously like choked laughter. Rumpus had been, in some prior life, somebody's pet.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/019.ogg"
     },
     {
       "t": "narrate",
-      "text": "He still wore the faded brown collar he had been wearing on the day Joanna found him asleep in the shadow of the collapsed bandstand, and Joanna had, in a year of trying, never quite been able to bring herself to remove it."
+      "text": "He still wore the faded brown collar he had been wearing on the day Joanna found him asleep in the shadow of the collapsed bandstand, and Joanna had, in a year of trying, never quite been able to bring herself to remove it.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/020.ogg"
     },
     {
       "t": "narrate",
-      "text": "The collar bore no tag. The tag had been ripped off, possibly by violence, possibly by snagging it on a fence. Joanna had stopped speculating in month four."
+      "text": "The collar bore no tag. The tag had been ripped off, possibly by violence, possibly by snagging it on a fence. Joanna had stopped speculating in month four.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/021.ogg"
     },
     {
       "t": "narrate",
-      "text": "And the crow. The crow had no name. The crow refused all names, in the way crows do, by simply continuing to be a crow regardless of what you called it. The crow had begun, two months ago, to leave Joanna gifts."
+      "text": "And the crow. The crow had no name. The crow refused all names, in the way crows do, by simply continuing to be a crow regardless of what you called it. The crow had begun, two months ago, to leave Joanna gifts.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/022.ogg"
     },
     {
       "t": "narrate",
-      "text": "Bottle caps, mostly. Iridescent beetle wings."
+      "text": "Bottle caps, mostly. Iridescent beetle wings.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/023.ogg"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert crow]Once, memorably, a small flat key the crow had clearly stolen from somewhere — Joanna had set the key on the windowsill and had not, in the four weeks since, found the lock it belonged to."
+      "text": "[shot:insert crow]Once, memorably, a small flat key the crow had clearly stolen from somewhere — Joanna had set the key on the windowsill and had not, in the four weeks since, found the lock it belonged to.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/024.ogg"
     },
     {
       "t": "narrate",
-      "text": "Tonight the crow was perched on a section of rusted I-beam ten feet above her, head cocked, watching the work with the patient unblinking attention of an editor."
+      "text": "Tonight the crow was perched on a section of rusted I-beam ten feet above her, head cocked, watching the work with the patient unblinking attention of an editor.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/025.ogg"
     },
     {
       "t": "narrate",
@@ -130,11 +145,13 @@
     },
     {
       "t": "narrate",
-      "text": "She trailed her fingers along a rusted I-beam jutting from the earth like the bone of some long-dead behemoth. Once, she had balanced trays here. Navigating the chaotic energy of D'Ambrosio's. Reciting specials. Dodging leers."
+      "text": "She trailed her fingers along a rusted I-beam jutting from the earth like the bone of some long-dead behemoth. Once, she had balanced trays here. Navigating the chaotic energy of D'Ambrosio's. Reciting specials. Dodging leers.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/028.ogg"
     },
     {
       "t": "narrate",
-      "text": "The I-beam had been part of the kitchen's structural skeleton, before. The kitchen had been on the third floor of the Adelphia's Building, before. The Adelphia's Building had been a building, before."
+      "text": "The I-beam had been part of the kitchen's structural skeleton, before. The kitchen had been on the third floor of the Adelphia's Building, before. The Adelphia's Building had been a building, before.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/029.ogg"
     },
     {
       "t": "narrate",
@@ -153,15 +170,18 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert wall]She found a relatively smooth section of wall inside the gutted shell of what might have been a haberdashery — or maybe the small library,"
+      "text": "[shot:insert wall]She found a relatively smooth section of wall inside the gutted shell of what might have been a haberdashery — or maybe the small library,",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/033.ogg"
     },
     {
       "t": "narrate",
-      "text": "the landmarks bled together these days — the plaster peeling back like sunburnt skin in long ragged strips that had, in places, formed second textures of their own."
+      "text": "the landmarks bled together these days — the plaster peeling back like sunburnt skin in long ragged strips that had, in places, formed second textures of their own.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/034.ogg"
     },
     {
       "t": "narrate",
-      "text": "Her sanctuary was wherever she found a surface clean enough, solid enough, to hold the words that clawed their way out."
+      "text": "Her sanctuary was wherever she found a surface clean enough, solid enough, to hold the words that clawed their way out.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/035.ogg"
     },
     {
       "t": "narrate",
@@ -170,15 +190,18 @@
     },
     {
       "t": "narrate",
-      "text": "The animals settled around her. Silent sentinels. The cat began meticulously cleaning a paw, ignoring the vastness of the situation in the way only cats could ignore vastness."
+      "text": "The animals settled around her. Silent sentinels. The cat began meticulously cleaning a paw, ignoring the vastness of the situation in the way only cats could ignore vastness.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/037.ogg"
     },
     {
       "t": "narrate",
-      "text": "The dog lay its head on its remaining paw, emitting a low whine that was not quite distress and not quite contentment but a frequency particular to Rumpus, a frequency Joanna had begun to read as acknowledgment."
+      "text": "The dog lay its head on its remaining paw, emitting a low whine that was not quite distress and not quite contentment but a frequency particular to Rumpus, a frequency Joanna had begun to read as acknowledgment.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/038.ogg"
     },
     {
       "t": "narrate",
-      "text": "The crow, on the I-beam, observed."
+      "text": "The crow, on the I-beam, observed.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/039.ogg"
     },
     {
       "t": "narrate",
@@ -197,19 +220,23 @@
     },
     {
       "t": "narrate",
-      "text": "The words weren't hers. Not entirely. They felt — downloaded. Like echoes caught in the liminal static between stations, between realities. Sometimes she felt like a conduit."
+      "text": "The words weren't hers. Not entirely. They felt — downloaded. Like echoes caught in the liminal static between stations, between realities. Sometimes she felt like a conduit.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/043.ogg"
     },
     {
       "t": "narrate",
-      "text": "A Borges character trapped in a library of infinite, decaying pages, doomed to transcribe fragments of a book that could never be completed, whose author was perhaps the ruin itself."
+      "text": "A Borges character trapped in a library of infinite, decaying pages, doomed to transcribe fragments of a book that could never be completed, whose author was perhaps the ruin itself.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/044.ogg"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert chalk]She paused. Sucked chalk dust from her fingertip."
+      "text": "[shot:insert chalk]She paused. Sucked chalk dust from her fingertip.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/045.ogg"
     },
     {
       "t": "narrate",
-      "text": "The chalk dust tasted, faintly, of the limestone they had dug out of the riverbed in the cleanup year, the limestone they had left in piles at the edges of the void because the void had not, in the end, accepted it back."
+      "text": "The chalk dust tasted, faintly, of the limestone they had dug out of the riverbed in the cleanup year, the limestone they had left in piles at the edges of the void because the void had not, in the end, accepted it back.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/046.ogg"
     },
     {
       "t": "narrate",
@@ -218,15 +245,18 @@
     },
     {
       "t": "narrate",
-      "text": "The town played tricks. It remembered things."
+      "text": "The town played tricks. It remembered things.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/048.ogg"
     },
     {
       "t": "narrate",
-      "text": "It rearranged itself when you weren't looking — like finding a child's doll, pristine and untouched, sitting on the jagged edge of the sinkhole one morning, only for it to be gone an hour later."
+      "text": "It rearranged itself when you weren't looking — like finding a child's doll, pristine and untouched, sitting on the jagged edge of the sinkhole one morning, only for it to be gone an hour later.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/049.ogg"
     },
     {
       "t": "narrate",
-      "text": "Like the recurring dream of walking through D'Ambrosio's, only the patrons were her animals, dressed in suits, discussing futures markets."
+      "text": "Like the recurring dream of walking through D'Ambrosio's, only the patrons were her animals, dressed in suits, discussing futures markets.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/050.ogg"
     },
     {
       "t": "narrate",
@@ -245,11 +275,13 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]The poem felt incomplete. Always incomplete. Like a message in a bottle thrown into an indifferent void. But the act itself was the thing. Introspection. Withdrawal. Finding a flicker of meaning in the wreckage."
+      "text": "[shot:establish]The poem felt incomplete. Always incomplete. Like a message in a bottle thrown into an indifferent void. But the act itself was the thing. Introspection. Withdrawal. Finding a flicker of meaning in the wreckage.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/054.ogg"
     },
     {
       "t": "narrate",
-      "text": "The wisdom of isolation wasn't about answers. It was about learning to live with the questions, learning to read the strange calligraphy of decay."
+      "text": "The wisdom of isolation wasn't about answers. It was about learning to live with the questions, learning to read the strange calligraphy of decay.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/055.ogg"
     },
     {
       "t": "narrate",
@@ -263,11 +295,13 @@
     },
     {
       "t": "narrate",
-      "text": "The crow flew down. Landed on the chalked wall, an inch above the last line of the poem. Cocked its head."
+      "text": "The crow flew down. Landed on the chalked wall, an inch above the last line of the poem. Cocked its head.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/058.ogg"
     },
     {
       "t": "narrate",
-      "text": "Pecked, twice, at a particular spot in the plaster — not at the chalk, but a few inches to the right of the chalk, at a place where the plaster bulged faintly in a way Joanna had not noticed."
+      "text": "Pecked, twice, at a particular spot in the plaster — not at the chalk, but a few inches to the right of the chalk, at a place where the plaster bulged faintly in a way Joanna had not noticed.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/059.ogg"
     },
     {
       "t": "narrate",
@@ -276,11 +310,13 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert receipt~]Behind the chip, embedded in the wall, was a folded piece of paper. Old. Yellowed."
+      "text": "[shot:insert receipt~]Behind the chip, embedded in the wall, was a folded piece of paper. Old. Yellowed.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/061.ogg"
     },
     {
       "t": "narrate",
-      "text": "The kind of paper that had been folded and tucked into a wall in 1987 by somebody who had thought, at the time, that they were leaving a small private joke for whoever happened to find it during the next renovation."
+      "text": "The kind of paper that had been folded and tucked into a wall in 1987 by somebody who had thought, at the time, that they were leaving a small private joke for whoever happened to find it during the next renovation.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/062.ogg"
     },
     {
       "t": "narrate",
@@ -294,15 +330,18 @@
     },
     {
       "t": "narrate",
-      "text": "It was a receipt. From Adelphia's Deli, dated August 14, 1987. For one egg salad, one black coffee, and one slice of pie. Total: $4.85. Paid in cash."
+      "text": "It was a receipt. From Adelphia's Deli, dated August 14, 1987. For one egg salad, one black coffee, and one slice of pie. Total: $4.85. Paid in cash.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/065.ogg"
     },
     {
       "t": "narrate",
-      "text": "The receipt bore, in the bottom margin, a doodle in faded ballpoint ink: a small four-foot-tall figure in a cork hat, smoking a hand-rolled cigarette, sitting beside a river. The figure was unmistakable."
+      "text": "The receipt bore, in the bottom margin, a doodle in faded ballpoint ink: a small four-foot-tall figure in a cork hat, smoking a hand-rolled cigarette, sitting beside a river. The figure was unmistakable.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/066.ogg"
     },
     {
       "t": "narrate",
-      "text": "The figure was unmistakable in a way that made the hair on the back of Joanna's neck rise, because she had never seen the figure before in her life and yet recognized it the way one recognizes a face from a dream one has not yet had."
+      "text": "The figure was unmistakable in a way that made the hair on the back of Joanna's neck rise, because she had never seen the figure before in her life and yet recognized it the way one recognizes a face from a dream one has not yet had.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/067.ogg"
     },
     {
       "t": "narrate",
@@ -380,11 +419,13 @@
     },
     {
       "t": "narrate",
-      "text": "She gathered her animal companions close. Their familiar warmth a fragile shield against the encroaching chill. The cat allowed itself to be gathered, an indignity it would extract payment for later."
+      "text": "She gathered her animal companions close. Their familiar warmth a fragile shield against the encroaching chill. The cat allowed itself to be gathered, an indignity it would extract payment for later.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/083.ogg"
     },
     {
       "t": "narrate",
-      "text": "The dog leaned heavily against her shin. The crow, watching from the I-beam, neither moved nor objected."
+      "text": "The dog leaned heavily against her shin. The crow, watching from the I-beam, neither moved nor objected.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/084.ogg"
     },
     {
       "t": "narrate",
@@ -410,39 +451,48 @@
     },
     {
       "t": "narrate",
-      "text": "They moved through what had been Houston Street. They passed the place where the Adelphia's Building had stood."
+      "text": "They moved through what had been Houston Street. They passed the place where the Adelphia's Building had stood.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/089.ogg"
     },
     {
       "t": "narrate",
-      "text": "They passed the place where her own first apartment had stood, the one above the dry cleaner, the one where she had written her first real poems on the back of menus stolen from D'Ambrosio's and where she had,"
+      "text": "They passed the place where her own first apartment had stood, the one above the dry cleaner, the one where she had written her first real poems on the back of menus stolen from D'Ambrosio's and where she had,",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/090.ogg"
     },
     {
       "t": "narrate",
-      "text": "one summer night in her early twenties, kissed Douglas Forte for the first time on the fire escape that no longer existed in any direction."
+      "text": "one summer night in her early twenties, kissed Douglas Forte for the first time on the fire escape that no longer existed in any direction.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/091.ogg"
     },
     {
       "t": "narrate",
-      "text": "She did not slow at any of these places. She had stopped slowing at them in month nine."
+      "text": "She did not slow at any of these places. She had stopped slowing at them in month nine.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/092.ogg"
     },
     {
       "t": "narrate",
-      "text": "Slowing was a kind of permission she had decided not to grant herself, because granting it once was a precedent, and precedent was the only currency the ruin-scape understood."
+      "text": "Slowing was a kind of permission she had decided not to grant herself, because granting it once was a precedent, and precedent was the only currency the ruin-scape understood.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/093.ogg"
     },
     {
       "t": "narrate",
-      "text": "[mood:night][shot:insert sinkhole~]At the lip of the sinkhole proper she paused."
+      "text": "[mood:night][shot:insert sinkhole~]At the lip of the sinkhole proper she paused.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/094.ogg"
     },
     {
       "t": "narrate",
-      "text": "The void breathed up at her — the rich smell of mineral water and old roots and something else, something faintly metallic, the smell of a vein somewhere deep that had been opened and not yet closed."
+      "text": "The void breathed up at her — the rich smell of mineral water and old roots and something else, something faintly metallic, the smell of a vein somewhere deep that had been opened and not yet closed.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/095.ogg"
     },
     {
       "t": "narrate",
-      "text": "She had stood at this lip many times. She had once, in the bad winter, lowered herself into the void on a knotted rope and spent two hours in the dim glow of her flashlight cataloging what she found at the bottom."
+      "text": "She had stood at this lip many times. She had once, in the bad winter, lowered herself into the void on a knotted rope and spent two hours in the dim glow of her flashlight cataloging what she found at the bottom.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/096.ogg"
     },
     {
       "t": "narrate",
-      "text": "She had not, since, told anyone what she had found at the bottom. She did not, even now, allow herself to enumerate it in her own thoughts."
+      "text": "She had not, since, told anyone what she had found at the bottom. She did not, even now, allow herself to enumerate it in her own thoughts.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/097.ogg"
     },
     {
       "t": "narrate",
@@ -456,11 +506,13 @@
     },
     {
       "t": "narrate",
-      "text": "The pull, this evening, was toward the world. Toward the streets. Toward the small lit windows of what was left of the town."
+      "text": "The pull, this evening, was toward the world. Toward the streets. Toward the small lit windows of what was left of the town.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/100.ogg"
     },
     {
       "t": "narrate",
-      "text": "Toward, perhaps, the post office on Elm where the mail was still, miraculously, delivered three days a week. The pull had a direction. The pull had a destination Joanna could not yet name."
+      "text": "Toward, perhaps, the post office on Elm where the mail was still, miraculously, delivered three days a week. The pull had a direction. The pull had a destination Joanna could not yet name.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/101.ogg"
     },
     {
       "t": "narrate",
@@ -479,15 +531,18 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert crow]The animals followed her back along the path that wasn't a path, past the I-beam, past the chalked wall, past the place where the haberdashery had been."
+      "text": "[shot:insert crow]The animals followed her back along the path that wasn't a path, past the I-beam, past the chalked wall, past the place where the haberdashery had been.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/105.ogg"
     },
     {
       "t": "narrate",
-      "text": "The cat broke off, eventually, on its own business, vanishing into a gap between two collapsed walls with the small uncomplaining efficiency of a creature with appointments. Rumpus stayed at her heel."
+      "text": "The cat broke off, eventually, on its own business, vanishing into a gap between two collapsed walls with the small uncomplaining efficiency of a creature with appointments. Rumpus stayed at her heel.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/106.ogg"
     },
     {
       "t": "narrate",
-      "text": "The crow circled overhead in the wide patient orbit of a bird who had decided, this evening, to escort."
+      "text": "The crow circled overhead in the wide patient orbit of a bird who had decided, this evening, to escort.",
+      "voice": "assets/audio/voice/vol5_ch9_hermit/107.ogg"
     },
     {
       "t": "narrate",

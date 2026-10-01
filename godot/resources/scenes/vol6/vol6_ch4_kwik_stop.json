@@ -23,11 +23,13 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:rain_interior]The rain has not stopped. It has settled into the steady insistent pattern that Texas rain settles into about once a season — heavy enough to turn the parking lot into a shallow lake at the low corner by the dumpster,"
+   "text": "[mood:rain_interior]The rain has not stopped. It has settled into the steady insistent pattern that Texas rain settles into about once a season — heavy enough to turn the parking lot into a shallow lake at the low corner by the dumpster,",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/004.ogg"
   },
   {
    "t": "narrate",
-   "text": "light enough not to trigger the flash-flood warning, sustained enough that the local TV weather is giving it the name spring-into-summer transition event."
+   "text": "light enough not to trigger the flash-flood warning, sustained enough that the local TV weather is giving it the name spring-into-summer transition event.",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/005.ogg"
   },
   {
    "t": "narrate",
@@ -36,23 +38,28 @@
   },
   {
    "t": "narrate",
-   "text": "She has, between eight and ten, rung up exactly four customers: a retiree buying scratch-off tickets, a construction guy buying a breakfast burrito from the warmer that Jen had set out before leaving,"
+   "text": "She has, between eight and ten, rung up exactly four customers: a retiree buying scratch-off tickets, a construction guy buying a breakfast burrito from the warmer that Jen had set out before leaving,",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/007.ogg"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]a woman Sam has never seen before buying a single cigarette loose and not giving Sam an explanation for why (the Kwik Stop does not legally sell single cigarettes;"
+   "text": "[shot:establish]a woman Sam has never seen before buying a single cigarette loose and not giving Sam an explanation for why (the Kwik Stop does not legally sell single cigarettes;",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/008.ogg"
   },
   {
    "t": "narrate",
-   "text": "Sam sold her one anyway, from her own pack, for fifty cents, because the woman had looked like a person who needed one and because Sam has never, in two years, refused that specific request), and — at ten-oh-four — a man she did recognize."
+   "text": "Sam sold her one anyway, from her own pack, for fifty cents, because the woman had looked like a person who needed one and because Sam has never, in two years, refused that specific request), and — at ten-oh-four — a man she did recognize.",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/009.ogg"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup customer]The man was the New Auburn Police Department's Detective Ramirez. He had come in in his civilian clothes — jeans, a dark polo, a rain jacket he had shrugged off his shoulders and held over his arm as he came in."
+   "text": "[shot:closeup customer]The man was the New Auburn Police Department's Detective Ramirez. He had come in in his civilian clothes — jeans, a dark polo, a rain jacket he had shrugged off his shoulders and held over his arm as he came in.",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/010.ogg"
   },
   {
    "t": "narrate",
-   "text": "He had walked directly to the counter. He had not pretended to shop."
+   "text": "He had walked directly to the counter. He had not pretended to shop.",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/011.ogg"
   },
   {
    "t": "show",
@@ -128,12 +135,14 @@
   {
    "t": "say",
    "char": "Ramirez",
-   "text": "[mood:macro_haze][shot:closeup customer~]The report was logged. Forty minutes later it was deleted from the system. The server shows no record of it ever having been filed."
+   "text": "[mood:macro_haze][shot:closeup customer~]The report was logged. Forty minutes later it was deleted from the system. The server shows no record of it ever having been filed.",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/024.ogg"
   },
   {
    "t": "say",
    "char": "Ramirez",
-   "text": "I know it was filed because I have the automated notification that pipes certain keywords to a watchlist I keep on my own time. Your report tripped the watchlist. By the time I went to look at it, it was gone."
+   "text": "I know it was filed because I have the automated notification that pipes certain keywords to a watchlist I keep on my own time. Your report tripped the watchlist. By the time I went to look at it, it was gone.",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/025.ogg"
   },
   {
    "t": "show",
@@ -174,12 +183,14 @@
   {
    "t": "say",
    "char": "Ramirez",
-   "text": "I'm not here to accuse your father of anything, Sam. I'm here to tell you that you are not imagining things, that the report did exist, and that I have a photograph of the report on my personal phone."
+   "text": "I'm not here to accuse your father of anything, Sam. I'm here to tell you that you are not imagining things, that the report did exist, and that I have a photograph of the report on my personal phone.",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/032.ogg"
   },
   {
    "t": "say",
    "char": "Ramirez",
-   "text": "You are not going to be able to use the PSA for this case. You need to know that going forward."
+   "text": "You are not going to be able to use the PSA for this case. You need to know that going forward.",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/033.ogg"
   },
   {
    "t": "narrate",
@@ -206,22 +217,26 @@
   {
    "t": "say",
    "char": "Ramirez",
-   "text": "One more thing. Your dad is good at his job in a specific narrow way. The specific narrow way is: he does what he is told, and he is good at keeping the town quiet while he does it."
+   "text": "One more thing. Your dad is good at his job in a specific narrow way. The specific narrow way is: he does what he is told, and he is good at keeping the town quiet while he does it.",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/038.ogg"
   },
   {
    "t": "say",
    "char": "Ramirez",
-   "text": "He is not, as far as I can tell, the bad guy in this. He is a man who has been working for the bad guy for some years and who is, right now, realizing that he may have to decide which side of the road he is standing on."
+   "text": "He is not, as far as I can tell, the bad guy in this. He is a man who has been working for the bad guy for some years and who is, right now, realizing that he may have to decide which side of the road he is standing on.",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/039.ogg"
   },
   {
    "t": "say",
    "char": "Ramirez",
-   "text": "He loves you. I've known him a long time. He loves you. I am telling you this because the next two weeks are going to be hard, and you are going to be asked, at some point, to decide how much of him is the bad guy."
+   "text": "He loves you. I've known him a long time. He loves you. I am telling you this because the next two weeks are going to be hard, and you are going to be asked, at some point, to decide how much of him is the bad guy.",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/040.ogg"
   },
   {
    "t": "say",
    "char": "Ramirez",
-   "text": "My advice: not all of him. Not yet. Leave him room."
+   "text": "My advice: not all of him. Not yet. Leave him room.",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/041.ogg"
   },
   {
    "t": "say",
@@ -257,11 +272,13 @@
   },
   {
    "t": "narrate",
-   "text": "She took the card out of her apron. She saved the number under Dr. Patel. Dr. Patel was not her pediatrician. Dr. Patel was, in fact, a character in a book she had been assigned in ninth grade."
+   "text": "She took the card out of her apron. She saved the number under Dr. Patel. Dr. Patel was not her pediatrician. Dr. Patel was, in fact, a character in a book she had been assigned in ninth grade.",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/048.ogg"
   },
   {
    "t": "narrate",
-   "text": "She had chosen the name because the character had, in the book, been trustworthy in the specific way you needed a doctor in a book to be trustworthy: she had noticed a thing and said the thing and not, in saying it, needed to be thanked."
+   "text": "She had chosen the name because the character had, in the book, been trustworthy in the specific way you needed a doctor in a book to be trustworthy: she had noticed a thing and said the thing and not, in saying it, needed to be thanked.",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/049.ogg"
   },
   {
    "t": "narrate",

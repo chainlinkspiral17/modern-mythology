@@ -72,22 +72,26 @@
     {
       "t": "think",
       "char": "Sam",
-      "text": "[shot:closeup sam~]This is not, Sam realizes, the silence she had expected."
+      "text": "[shot:closeup sam~]This is not, Sam realizes, the silence she had expected.",
+      "voice": "assets/audio/voice/vol6_ch8_miller_truck/013.ogg"
     },
     {
       "t": "think",
       "char": "Sam",
-      "text": "She had expected, this morning, a careful adult silence — the kind silence is when two people know there is a conversation to have and have chosen, for the moment, not to start it. This silence is different."
+      "text": "She had expected, this morning, a careful adult silence — the kind silence is when two people know there is a conversation to have and have chosen, for the moment, not to start it. This silence is different.",
+      "voice": "assets/audio/voice/vol6_ch8_miller_truck/014.ogg"
     },
     {
       "t": "think",
       "char": "Sam",
-      "text": "This silence is the silence of two people who have been doing the same drive together since one of them was five — to the same lake, in the same truck,"
+      "text": "This silence is the silence of two people who have been doing the same drive together since one of them was five — to the same lake, in the same truck,",
+      "voice": "assets/audio/voice/vol6_ch8_miller_truck/015.ogg"
     },
     {
       "t": "think",
       "char": "Sam",
-      "text": "on countless Sunday mornings before whichever Little League season or fishing trip had been the day's official excuse — and who do not, at this hour and on this drive, need to fill it."
+      "text": "on countless Sunday mornings before whichever Little League season or fishing trip had been the day's official excuse — and who do not, at this hour and on this drive, need to fill it.",
+      "voice": "assets/audio/voice/vol6_ch8_miller_truck/016.ogg"
     },
     {
       "t": "think",
@@ -216,11 +220,13 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:day_bright][shot:establish]The truck eats the highway. The sky shifts another half-shade lighter. A semi passes them on the left."
+      "text": "[mood:day_bright][shot:establish]The truck eats the highway. The sky shifts another half-shade lighter. A semi passes them on the left.",
+      "voice": "assets/audio/voice/vol6_ch8_miller_truck/036.ogg"
     },
     {
       "t": "narrate",
-      "text": "The driver of the semi raises one finger off the steering wheel in the small specific Texas-driver acknowledgment, and her father — without lifting his hand from the wheel — returns it."
+      "text": "The driver of the semi raises one finger off the steering wheel in the small specific Texas-driver acknowledgment, and her father — without lifting his hand from the wheel — returns it.",
+      "voice": "assets/audio/voice/vol6_ch8_miller_truck/037.ogg"
     },
     {
       "t": "jump",

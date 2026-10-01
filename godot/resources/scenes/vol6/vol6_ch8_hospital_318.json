@@ -40,11 +40,13 @@
   },
   {
    "t": "narrate",
-   "text": "She has, in the night, been moved from recovery to the regular floor. Her hip is in a brace and a cast."
+   "text": "She has, in the night, been moved from recovery to the regular floor. Her hip is in a brace and a cast.",
+   "voice": "assets/audio/voice/vol6_ch8_hospital_318/007.ogg"
   },
   {
    "t": "narrate",
-   "text": "She has an IV in her right hand, which is the hand she would, normally, use for the Morse key, and she has noticed this and has, in her quiet way, registered the irony."
+   "text": "She has an IV in her right hand, which is the hand she would, normally, use for the Morse key, and she has noticed this and has, in her quiet way, registered the irony.",
+   "voice": "assets/audio/voice/vol6_ch8_hospital_318/008.ogg"
   },
   {
    "t": "show",
@@ -159,13 +161,15 @@
    "t": "say",
    "char": "Gracie",
    "text": "Daisy is a mutt. Daisy is technically a coward. She is afraid of butterflies and ceiling fans and the vacuum. But she is brave about people. She is very brave about Maya.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch8_hospital_318/027.ogg"
   },
   {
    "t": "say",
    "char": "Gracie",
    "text": "She slept on Maya's foot at breakfast which is something she only does for people she has decided to keep.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch8_hospital_318/028.ogg"
   },
   {
    "t": "narrate",
@@ -278,19 +282,22 @@
    "t": "say",
    "char": "Linda Caldwell",
    "text": "Thomas worked for the Beaumont Enterprise for two years out of college, then quit to freelance. He shot mostly architecture and event work — weddings, school portraits, the occasional industrial commission.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch8_hospital_318/047.ogg"
   },
   {
    "t": "say",
    "char": "Linda Caldwell",
    "text": "[shot:closeup person]In 1976 he was hired by a company called Ardent Reclamation Holdings to document a chemical dump site outside Graustark. The site had been listed for cleanup. The company wanted before-and-after photographs.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch8_hospital_318/048.ogg"
   },
   {
    "t": "say",
    "char": "Linda Caldwell",
    "text": "It was, in his understanding, a public-relations contract.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch8_hospital_318/049.ogg"
   },
   {
    "t": "say",

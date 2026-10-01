@@ -35,11 +35,13 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:lunch]THE WHEEL OF FORTUNE. It turns. It has always been turning. The sphinx at the top does not look down. The figures on the wheel do not choose their position. The wheel is not cruel. The wheel is not kind."
+      "text": "[mood:lunch]THE WHEEL OF FORTUNE. It turns. It has always been turning. The sphinx at the top does not look down. The figures on the wheel do not choose their position. The wheel is not cruel. The wheel is not kind.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/006.ogg"
     },
     {
       "t": "narrate",
-      "text": "The wheel is simply the wheel. Reversed: bad luck that was always luck. The fall that was built into the rise."
+      "text": "The wheel is simply the wheel. Reversed: bad luck that was always luck. The fall that was built into the rise.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/007.ogg"
     },
     {
       "t": "narrate",
@@ -48,15 +50,18 @@
     },
     {
       "t": "narrate",
-      "text": "Erica Campbell stared at the email notification, the crisp black sans-serif font glowing with indifferent finality on her monitor. Denied. Just like that. Six weeks of meticulously crafted arguments."
+      "text": "Erica Campbell stared at the email notification, the crisp black sans-serif font glowing with indifferent finality on her monitor. Denied. Just like that. Six weeks of meticulously crafted arguments.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/009.ogg"
     },
     {
       "t": "narrate",
-      "text": "Late nights fueled by lukewarm coffee and the acidic tang of adrenaline."
+      "text": "Late nights fueled by lukewarm coffee and the acidic tang of adrenaline.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/010.ogg"
     },
     {
       "t": "narrate",
-      "text": "Precedents cross-referenced until her eyes burned, and the burn had begun to require its own eyedrop, which she now kept in the third drawer of her desk beside the spare phone charger and the small plastic comb her mother had given her in 2003 and which she had not, in twenty-three years, replaced."
+      "text": "Precedents cross-referenced until her eyes burned, and the burn had begun to require its own eyedrop, which she now kept in the third drawer of her desk beside the spare phone charger and the small plastic comb her mother had given her in 2003 and which she had not, in twenty-three years, replaced.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/011.ogg"
     },
     {
       "t": "narrate",
@@ -65,15 +70,18 @@
     },
     {
       "t": "narrate",
-      "text": "The ground, which had felt suspiciously unsteady all week, gave another nauseating lurch beneath her ergonomic chair. She gripped the armrests. The lurch was, technically, internal."
+      "text": "The ground, which had felt suspiciously unsteady all week, gave another nauseating lurch beneath her ergonomic chair. She gripped the armrests. The lurch was, technically, internal.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/013.ogg"
     },
     {
       "t": "narrate",
-      "text": "The lurch was her own vertebrae registering an objection her mind had not yet authorized."
+      "text": "The lurch was her own vertebrae registering an objection her mind had not yet authorized.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/014.ogg"
     },
     {
       "t": "narrate",
-      "text": "She held still until the lurch resolved, then breathed out slowly through her teeth, the way her physical therapist had taught her to breathe in 2019, the year she had first noticed that her body had begun keeping a separate set of books from her schedule."
+      "text": "She held still until the lurch resolved, then breathed out slowly through her teeth, the way her physical therapist had taught her to breathe in 2019, the year she had first noticed that her body had begun keeping a separate set of books from her schedule.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/015.ogg"
     },
     {
       "t": "narrate",
@@ -82,11 +90,13 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]The daily roll of the dice in the hallowed, hermetically sealed halls of corporate law. High stakes. Immediate peril. Reputations balanced on the knife-edge of a well-placed comma or a strategically omitted clause."
+      "text": "[shot:establish]The daily roll of the dice in the hallowed, hermetically sealed halls of corporate law. High stakes. Immediate peril. Reputations balanced on the knife-edge of a well-placed comma or a strategically omitted clause.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/017.ogg"
     },
     {
       "t": "narrate",
-      "text": "Erica thrived on it, usually. The precision. The logic. The intellectual combat. It was a bulwark against the messy unpredictable chaos of — well, everything else."
+      "text": "Erica thrived on it, usually. The precision. The logic. The intellectual combat. It was a bulwark against the messy unpredictable chaos of — well, everything else.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/018.ogg"
     },
     {
       "t": "narrate",
@@ -95,11 +105,13 @@
     },
     {
       "t": "narrate",
-      "text": "She closed the email. She did not, as she had once, in her twenties, made a habit of doing, write a brief defiant memo to herself about the ruling and what it indicated about the judge. The memos had not, in retrospect, helped."
+      "text": "She closed the email. She did not, as she had once, in her twenties, made a habit of doing, write a brief defiant memo to herself about the ruling and what it indicated about the judge. The memos had not, in retrospect, helped.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/020.ogg"
     },
     {
       "t": "narrate",
-      "text": "The memos had simply documented her annoyance for the benefit of a future Erica who would not need the documentation, because the future Erica had already inherited the annoyance free of charge."
+      "text": "The memos had simply documented her annoyance for the benefit of a future Erica who would not need the documentation, because the future Erica had already inherited the annoyance free of charge.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/021.ogg"
     },
     {
       "t": "narrate",
@@ -113,15 +125,18 @@
     },
     {
       "t": "narrate",
-      "text": "Glass walls. Chrome accents. Files indexed with obsessive precision, paper and digital, the digital backed up nightly to two separate clouds and the paper rotated quarterly into the firm's secure archive on the seventeenth floor."
+      "text": "Glass walls. Chrome accents. Files indexed with obsessive precision, paper and digital, the digital backed up nightly to two separate clouds and the paper rotated quarterly into the firm's secure archive on the seventeenth floor.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/024.ogg"
     },
     {
       "t": "narrate",
-      "text": "Black and white. Plaintiff and defendant. Liable and not liable."
+      "text": "Black and white. Plaintiff and defendant. Liable and not liable.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/025.ogg"
     },
     {
       "t": "narrate",
-      "text": "Clear lines, defensible positions, every contract she touched a small architectural object she could walk around in her mind and inspect for load-bearing weaknesses before signing her name to it."
+      "text": "Clear lines, defensible positions, every contract she touched a small architectural object she could walk around in her mind and inspect for load-bearing weaknesses before signing her name to it.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/026.ogg"
     },
     {
       "t": "narrate",
@@ -130,15 +145,18 @@
     },
     {
       "t": "narrate",
-      "text": "Outside her window, Houston in late afternoon: the freeway traffic doing its slow desperate ballet, the heat-shimmer rising off the asphalt twelve stories below,"
+      "text": "Outside her window, Houston in late afternoon: the freeway traffic doing its slow desperate ballet, the heat-shimmer rising off the asphalt twelve stories below,",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/028.ogg"
     },
     {
       "t": "narrate",
-      "text": "a single bird circling on a thermal in a way that looked, from this angle, like the bird had not yet decided whether to commit to the thermal or peel away. The bird was, Erica was almost certain, a hawk."
+      "text": "a single bird circling on a thermal in a way that looked, from this angle, like the bird had not yet decided whether to commit to the thermal or peel away. The bird was, Erica was almost certain, a hawk.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/029.ogg"
     },
     {
       "t": "narrate",
-      "text": "Hawks did not, in her experience, indecide."
+      "text": "Hawks did not, in her experience, indecide.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/030.ogg"
     },
     {
       "t": "narrate",
@@ -152,27 +170,33 @@
     },
     {
       "t": "narrate",
-      "text": "Calling again. Demanding. Confiding."
+      "text": "Calling again. Demanding. Confiding.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/033.ogg"
     },
     {
       "t": "narrate",
-      "text": "Pulling her back into that Graustark orbit she thought she had escaped after his father's death — except his father wasn't dead, was he, his father was at this very hour drinking bourbon on a riverboat that did not, technically, sail anywhere,"
+      "text": "Pulling her back into that Graustark orbit she thought she had escaped after his father's death — except his father wasn't dead, was he, his father was at this very hour drinking bourbon on a riverboat that did not, technically, sail anywhere,",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/034.ogg"
     },
     {
       "t": "narrate",
-      "text": "and the after his father's death phrasing had become Alberto's preferred euphemism for after my father stopped recognizing my authority, which was a different threshold and had been crossed, Erica understood, sometime in the spring of 2023."
+      "text": "and the after his father's death phrasing had become Alberto's preferred euphemism for after my father stopped recognizing my authority, which was a different threshold and had been crossed, Erica understood, sometime in the spring of 2023.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/035.ogg"
     },
     {
       "t": "narrate",
-      "text": "She had been Alberto's childhood friend. She had been, then, his condolences-offerer when the riverboat first started losing money in 2020."
+      "text": "She had been Alberto's childhood friend. She had been, then, his condolences-offerer when the riverboat first started losing money in 2020.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/036.ogg"
     },
     {
       "t": "narrate",
-      "text": "She had been, then, his informal counselor when he began the long careful process of building his own Houston version of the family business, a process that had required, among other things,"
+      "text": "She had been, then, his informal counselor when he began the long careful process of building his own Houston version of the family business, a process that had required, among other things,",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/037.ogg"
     },
     {
       "t": "narrate",
-      "text": "that she draft seven separate non-disclosure agreements for vendors and contractors who would be working on the build-out of D'Ambrosio's: Houston without being told whose money was, ultimately, behind it."
+      "text": "that she draft seven separate non-disclosure agreements for vendors and contractors who would be working on the build-out of D'Ambrosio's: Houston without being told whose money was, ultimately, behind it.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/038.ogg"
     },
     {
       "t": "narrate",
@@ -201,15 +225,18 @@
     },
     {
       "t": "narrate",
-      "text": "The ex-NASA programmer turned painter of screaming chaotic canvases, who had quit JPL in 2017 after a disagreement she had never asked him to fully explain,"
+      "text": "The ex-NASA programmer turned painter of screaming chaotic canvases, who had quit JPL in 2017 after a disagreement she had never asked him to fully explain,",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/044.ogg"
     },
     {
       "t": "narrate",
-      "text": "and who now lived in a converted warehouse in the Heights and made paintings of which the smallest was eight feet square and the largest, the one that had been on the cover of Texas Monthly last year, was the size of a parking spot."
+      "text": "and who now lived in a converted warehouse in the Heights and made paintings of which the smallest was eight feet square and the largest, the one that had been on the cover of Texas Monthly last year, was the size of a parking spot.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/045.ogg"
     },
     {
       "t": "narrate",
-      "text": "He represented the other kind of peril. The emotional, unpredictable kind."
+      "text": "He represented the other kind of peril. The emotional, unpredictable kind.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/046.ogg"
     },
     {
       "t": "narrate",
@@ -243,11 +270,13 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert desk]She ran a hand over the smooth cool surface of the desk. The desk was teak, custom-built, paid for in 2014 with the bonus from her first full-equity year at the firm."
+      "text": "[shot:insert desk]She ran a hand over the smooth cool surface of the desk. The desk was teak, custom-built, paid for in 2014 with the bonus from her first full-equity year at the firm.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/053.ogg"
     },
     {
       "t": "narrate",
-      "text": "It had cost her, at the time, the equivalent of two months' salary. It had not, in twelve years, developed a single visible imperfection. She had begun, in recent months, to find this fact slightly oppressive."
+      "text": "It had cost her, at the time, the equivalent of two months' salary. It had not, in twelve years, developed a single visible imperfection. She had begun, in recent months, to find this fact slightly oppressive.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/054.ogg"
     },
     {
       "t": "narrate",
@@ -261,35 +290,43 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup erica~]Standing before that jury, the weight of Graustark's grief pressing down, weaving facts and precedents into an unassailable case against corporate negligence. They must pay for what they've done."
+      "text": "[shot:closeup erica~]Standing before that jury, the weight of Graustark's grief pressing down, weaving facts and precedents into an unassailable case against corporate negligence. They must pay for what they've done.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/057.ogg"
     },
     {
       "t": "narrate",
-      "text": "We seek not vengeance, but justice. She had won. A unanimous verdict."
+      "text": "We seek not vengeance, but justice. She had won. A unanimous verdict.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/058.ogg"
     },
     {
       "t": "narrate",
-      "text": "The settlement that followed had been the largest of her career, and the photograph of her on the courthouse steps afterward — exhausted, triumphant, holding the hand of Mrs."
+      "text": "The settlement that followed had been the largest of her career, and the photograph of her on the courthouse steps afterward — exhausted, triumphant, holding the hand of Mrs.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/059.ogg"
     },
     {
       "t": "narrate",
-      "text": "Romero, who had lost her husband and two of her three sons in the chemical incident the case had been ostensibly about — had been the photograph the firm now used in its recruitment materials, slightly cropped to exclude Mrs."
+      "text": "Romero, who had lost her husband and two of her three sons in the chemical incident the case had been ostensibly about — had been the photograph the firm now used in its recruitment materials, slightly cropped to exclude Mrs.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/060.ogg"
     },
     {
       "t": "narrate",
-      "text": "Romero, whose participation in the recruitment narrative had not, technically, been consented to."
+      "text": "Romero, whose participation in the recruitment narrative had not, technically, been consented to.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/061.ogg"
     },
     {
       "t": "narrate",
-      "text": "Erica had asked, at the time, that they leave Mrs. Romero in. The firm had said yes. The marketing department had quietly cropped Mrs."
+      "text": "Erica had asked, at the time, that they leave Mrs. Romero in. The firm had said yes. The marketing department had quietly cropped Mrs.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/062.ogg"
     },
     {
       "t": "narrate",
-      "text": "Romero out of the version that went into the brochure four months later, and Erica had not, when she noticed, made an issue of it,"
+      "text": "Romero out of the version that went into the brochure four months later, and Erica had not, when she noticed, made an issue of it,",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/063.ogg"
     },
     {
       "t": "narrate",
-      "text": "because by then she had already been working on the next case and had needed the recruiting brochure to function, and functioning, she had decided, was more important than fidelity."
+      "text": "because by then she had already been working on the next case and had needed the recruiting brochure to function, and functioning, she had decided, was more important than fidelity.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/064.ogg"
     },
     {
       "t": "narrate",
@@ -313,15 +350,18 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_b]Why did life outside these glass walls feel like a roulette wheel spun by a cackling indifferent god. Destiny. Cycles. Turning points."
+      "text": "[shot:establish_b]Why did life outside these glass walls feel like a roulette wheel spun by a cackling indifferent god. Destiny. Cycles. Turning points.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/069.ogg"
     },
     {
       "t": "narrate",
-      "text": "She hated the woolly thinking of it, the lack of defined terms and conditions, the vocabulary borrowed wholesale from a generation of self-help books she had never finished reading and from a mother who had,"
+      "text": "She hated the woolly thinking of it, the lack of defined terms and conditions, the vocabulary borrowed wholesale from a generation of self-help books she had never finished reading and from a mother who had,",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/070.ogg"
     },
     {
       "t": "narrate",
-      "text": "in her later years, taken up tarot in the small Catholic-guilty way that Erica's mother had taken up most things."
+      "text": "in her later years, taken up tarot in the small Catholic-guilty way that Erica's mother had taken up most things.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/071.ogg"
     },
     {
       "t": "narrate",
@@ -330,23 +370,28 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert monitor]She pulled up the PetroTex settlement agreement on her monitor. Scanned the dense paragraphs. It was airtight. A masterpiece of legal architecture."
+      "text": "[shot:insert monitor]She pulled up the PetroTex settlement agreement on her monitor. Scanned the dense paragraphs. It was airtight. A masterpiece of legal architecture.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/073.ogg"
     },
     {
       "t": "narrate",
-      "text": "Section by section it had been built to withstand challenge from any direction the architecture itself could anticipate. The architecture could not, by definition, anticipate the directions it could not anticipate."
+      "text": "Section by section it had been built to withstand challenge from any direction the architecture itself could anticipate. The architecture could not, by definition, anticipate the directions it could not anticipate.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/074.ogg"
     },
     {
       "t": "narrate",
-      "text": "The faces of the plaintiffs flashed behind her eyes. Mrs. Romero clutching that photograph. Douglas Forte's simmering silent rage at the back of the courtroom — Forte had not been a plaintiff, had not been called as a witness,"
+      "text": "The faces of the plaintiffs flashed behind her eyes. Mrs. Romero clutching that photograph. Douglas Forte's simmering silent rage at the back of the courtroom — Forte had not been a plaintiff, had not been called as a witness,",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/075.ogg"
     },
     {
       "t": "narrate",
-      "text": "had been there because he had grown up next door to one of the Romero boys and had driven up from New Orleans to sit in the back row in the suit his mother had bought him for his confirmation,"
+      "text": "had been there because he had grown up next door to one of the Romero boys and had driven up from New Orleans to sit in the back row in the suit his mother had bought him for his confirmation,",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/076.ogg"
     },
     {
       "t": "narrate",
-      "text": "and had said nothing, the entire trial, to anyone except the bailiff, to whom he had said thank you once a day, on entry."
+      "text": "and had said nothing, the entire trial, to anyone except the bailiff, to whom he had said thank you once a day, on entry.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/077.ogg"
     },
     {
       "t": "narrate",
@@ -355,15 +400,18 @@
     },
     {
       "t": "narrate",
-      "text": "She had won. The plaintiffs had been compensated. The defendant corporation had restructured."
+      "text": "She had won. The plaintiffs had been compensated. The defendant corporation had restructured.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/079.ogg"
     },
     {
       "t": "narrate",
-      "text": "The chemicals, in some sense, had not stopped, because the chemicals were a category and not a single entity, and the category had simply migrated."
+      "text": "The chemicals, in some sense, had not stopped, because the chemicals were a category and not a single entity, and the category had simply migrated.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/080.ogg"
     },
     {
       "t": "narrate",
-      "text": "Someone she did not know was, this afternoon, in a different town, beginning to build a different settlement that would, in eight years, look very much like hers."
+      "text": "Someone she did not know was, this afternoon, in a different town, beginning to build a different settlement that would, in eight years, look very much like hers.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/081.ogg"
     },
     {
       "t": "narrate",
@@ -397,11 +445,13 @@
     },
     {
       "t": "narrate",
-      "text": "She squared her shoulders. The sharp-minded lawyer clicked back into place — the way the sharp-minded lawyer had been clicking into place, on demand, in this office, for fourteen years,"
+      "text": "She squared her shoulders. The sharp-minded lawyer clicked back into place — the way the sharp-minded lawyer had been clicking into place, on demand, in this office, for fourteen years,",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/088.ogg"
     },
     {
       "t": "narrate",
-      "text": "the click as automatic now as her morning coffee, as the four small adjustments she made to her hair before any deposition, as the precise breath she took before any closing."
+      "text": "the click as automatic now as her morning coffee, as the four small adjustments she made to her hair before any deposition, as the precise breath she took before any closing.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/089.ogg"
     },
     {
       "t": "narrate",
@@ -498,12 +548,14 @@
     {
       "t": "say",
       "char": "erica",
-      "text": "Because everything's about Antonio with you. And because two people I trust have called me this week to ask, separately, whether anything strange was happening in New Orleans. And because Q."
+      "text": "Because everything's about Antonio with you. And because two people I trust have called me this week to ask, separately, whether anything strange was happening in New Orleans. And because Q.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/106.ogg"
     },
     {
       "t": "say",
       "char": "erica",
-      "text": "Paul has called your office three times in the last five days, according to your assistant, who I had a perfectly innocent lunch with on Tuesday, and you do not need me to enumerate the inferences from there."
+      "text": "Paul has called your office three times in the last five days, according to your assistant, who I had a perfectly innocent lunch with on Tuesday, and you do not need me to enumerate the inferences from there.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/107.ogg"
     },
     {
       "t": "narrate",
@@ -582,15 +634,18 @@
     },
     {
       "t": "narrate",
-      "text": "She thought about the wheel. She thought about Mrs. Romero at the back of the courtroom, hands folded, the hands that had been folded for twelve straight days of testimony without ever, that Erica had observed, separating."
+      "text": "She thought about the wheel. She thought about Mrs. Romero at the back of the courtroom, hands folded, the hands that had been folded for twelve straight days of testimony without ever, that Erica had observed, separating.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/121.ogg"
     },
     {
       "t": "narrate",
-      "text": "She thought about Douglas Forte in the back row in his confirmation suit."
+      "text": "She thought about Douglas Forte in the back row in his confirmation suit.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/122.ogg"
     },
     {
       "t": "narrate",
-      "text": "She thought about the painter who would call her at three AM tonight to talk about fractal consciousness, and who would, when she did not pick up — because tonight, she suddenly knew, she was not going to pick up — leave a voicemail she would, for the first time in a year, listen to in full."
+      "text": "She thought about the painter who would call her at three AM tonight to talk about fractal consciousness, and who would, when she did not pick up — because tonight, she suddenly knew, she was not going to pick up — leave a voicemail she would, for the first time in a year, listen to in full.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/123.ogg"
     },
     {
       "t": "say",
@@ -688,15 +743,18 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]She picked up the phone. She thumbed past Alberto's number. She found the painter's. She did not, even now, have him saved under his name."
+      "text": "[shot:insert phone]She picked up the phone. She thumbed past Alberto's number. She found the painter's. She did not, even now, have him saved under his name.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/141.ogg"
     },
     {
       "t": "narrate",
-      "text": "He was saved under J — for Jordan, his actual first name, which she had stopped using when they began sleeping together, on the theory that calling him Jordan would make the sleeping-together feel like a relationship and that not calling him Jordan would keep it from feeling like one."
+      "text": "He was saved under J — for Jordan, his actual first name, which she had stopped using when they began sleeping together, on the theory that calling him Jordan would make the sleeping-together feel like a relationship and that not calling him Jordan would keep it from feeling like one.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/142.ogg"
     },
     {
       "t": "narrate",
-      "text": "The not-calling-him-Jordan had not, as it turned out, kept it from feeling like one. The not-calling-him-Jordan had simply made the feeling-like-one feel like a betrayal of her own design."
+      "text": "The not-calling-him-Jordan had not, as it turned out, kept it from feeling like one. The not-calling-him-Jordan had simply made the feeling-like-one feel like a betrayal of her own design.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/143.ogg"
     },
     {
       "t": "narrate",
@@ -715,11 +773,13 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:dusk][shot:establish]She crossed back to the glass wall. The Houston dusk was now full color. The city was moving through its slow rich evening transitions, from the working day to whatever came after."
+      "text": "[mood:dusk][shot:establish]She crossed back to the glass wall. The Houston dusk was now full color. The city was moving through its slow rich evening transitions, from the working day to whatever came after.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/147.ogg"
     },
     {
       "t": "narrate",
-      "text": "Somewhere, in one of the buildings at the edge of her sightline, a light came on in an office she did not recognize."
+      "text": "Somewhere, in one of the buildings at the edge of her sightline, a light came on in an office she did not recognize.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/148.ogg"
     },
     {
       "t": "narrate",
@@ -728,11 +788,13 @@
     },
     {
       "t": "narrate",
-      "text": "Then she turned away from the window, walked back to the desk, sat down, and began, with the small careful precision that was her actual gift — not the certainty,"
+      "text": "Then she turned away from the window, walked back to the desk, sat down, and began, with the small careful precision that was her actual gift — not the certainty,",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/150.ogg"
     },
     {
       "t": "narrate",
-      "text": "which she had been mistaking it for, but the precision — to draft the kind of contract Antonio D'Ambrosio would, in eight weeks, find himself in a position to need."
+      "text": "which she had been mistaking it for, but the precision — to draft the kind of contract Antonio D'Ambrosio would, in eight weeks, find himself in a position to need.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/151.ogg"
     },
     {
       "t": "narrate",
@@ -746,11 +808,13 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert monitor]The light on the desk made small reflections in the chrome and the glass and the smooth teak. The denied motion sat unresolved on the monitor, awaiting the next morning's reply."
+      "text": "[shot:insert monitor]The light on the desk made small reflections in the chrome and the glass and the smooth teak. The denied motion sat unresolved on the monitor, awaiting the next morning's reply.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/154.ogg"
     },
     {
       "t": "narrate",
-      "text": "The painter's call would come at three AM, as predicted. She would, as predicted, listen."
+      "text": "The painter's call would come at three AM, as predicted. She would, as predicted, listen.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/155.ogg"
     },
     {
       "t": "narrate",

@@ -29,15 +29,18 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2][mood:dawn_warm]He has not been to the New Auburn Police Department substation in nine years."
+      "text": "[trip:1.2][mood:dawn_warm]He has not been to the New Auburn Police Department substation in nine years.",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/005.ogg"
     },
     {
       "t": "narrate",
-      "text": "The substation is a flat-roofed beige building in a strip-mall configuration off the New Auburn Bypass, sharing a parking lot with a payday loan store and a tax preparer."
+      "text": "The substation is a flat-roofed beige building in a strip-mall configuration off the New Auburn Bypass, sharing a parking lot with a payday loan store and a tax preparer.",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/006.ogg"
     },
     {
       "t": "narrate",
-      "text": "Its sign — NAPD SUBSTATION B — has been hand-touched-up by the same officer twice a year since 2014, with the same can of dark-blue enamel, in the small careful way departments maintained things they did not, technically, have the budget for."
+      "text": "Its sign — NAPD SUBSTATION B — has been hand-touched-up by the same officer twice a year since 2014, with the same can of dark-blue enamel, in the small careful way departments maintained things they did not, technically, have the budget for.",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/007.ogg"
     },
     {
       "t": "narrate",
@@ -46,19 +49,23 @@
     },
     {
       "t": "narrate",
-      "text": "Detective Ramirez's car is already in the lot. Ramirez is at the side door, a coffee in each hand, waiting. Ramirez does not wave."
+      "text": "Detective Ramirez's car is already in the lot. Ramirez is at the side door, a coffee in each hand, waiting. Ramirez does not wave.",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/009.ogg"
     },
     {
       "t": "narrate",
-      "text": "Ramirez has, Miller registers, the particular still presence of a man who has done this kind of intake before and has decided, on each occasion, to extend the small dignity of not making the moment harder than it needs to be."
+      "text": "Ramirez has, Miller registers, the particular still presence of a man who has done this kind of intake before and has decided, on each occasion, to extend the small dignity of not making the moment harder than it needs to be.",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/010.ogg"
     },
     {
       "t": "narrate",
-      "text": "Miller takes a long breath. He thinks: Sammy is asleep. He thinks: In two hours she will be at the Kwik Stop. In two hours she will know I am here, because her mother will tell her. She will work her shift."
+      "text": "Miller takes a long breath. He thinks: Sammy is asleep. He thinks: In two hours she will be at the Kwik Stop. In two hours she will know I am here, because her mother will tell her. She will work her shift.",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/011.ogg"
     },
     {
       "t": "narrate",
-      "text": "She will do what she is told. She is, this morning and from this morning forward, exactly the daughter I had hoped to raise without ever having had any business hoping it, given what I was doing while I raised her."
+      "text": "She will do what she is told. She is, this morning and from this morning forward, exactly the daughter I had hoped to raise without ever having had any business hoping it, given what I was doing while I raised her.",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/012.ogg"
     },
     {
       "t": "think",

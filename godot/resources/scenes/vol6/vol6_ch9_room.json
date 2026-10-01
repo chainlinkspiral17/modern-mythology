@@ -29,19 +29,23 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2][mood:night]A note on form: the chapter that follows is not in its narrator's full possession of itself. Diego Ramos is, at the time these fragments occur, somewhere between a concussion and the long quiet sleep that follows it."
+      "text": "[trip:1.2][mood:night]A note on form: the chapter that follows is not in its narrator's full possession of itself. Diego Ramos is, at the time these fragments occur, somewhere between a concussion and the long quiet sleep that follows it.",
+      "voice": "assets/audio/voice/vol6_ch9_room/005.ogg"
     },
     {
       "t": "narrate",
-      "text": "The scenes are not in clean order. They are not in clean tense."
+      "text": "The scenes are not in clean order. They are not in clean tense.",
+      "voice": "assets/audio/voice/vol6_ch9_room/006.ogg"
     },
     {
       "t": "narrate",
-      "text": "They are presented the way Diego will, six weeks later, write them down in the small spiral notebook Sam will buy him — out of order, in pieces, not, finally, complete."
+      "text": "They are presented the way Diego will, six weeks later, write them down in the small spiral notebook Sam will buy him — out of order, in pieces, not, finally, complete.",
+      "voice": "assets/audio/voice/vol6_ch9_room/007.ogg"
     },
     {
       "t": "narrate",
-      "text": "What follows is the closest thing to a record of those five days he will ever, at his choosing, allow."
+      "text": "What follows is the closest thing to a record of those five days he will ever, at his choosing, allow.",
+      "voice": "assets/audio/voice/vol6_ch9_room/008.ogg"
     },
     {
       "t": "interlude",
@@ -72,11 +76,13 @@
     },
     {
       "t": "narrate",
-      "text": "The bulb hums in a way he recognizes from the gas station — the same hum the back-stockroom bulb at the Gas & Go has been making since March, the hum he had, in March, started writing the red dots in his calendar against."
+      "text": "The bulb hums in a way he recognizes from the gas station — the same hum the back-stockroom bulb at the Gas & Go has been making since March, the hum he had, in March, started writing the red dots in his calendar against.",
+      "voice": "assets/audio/voice/vol6_ch9_room/014.ogg"
     },
     {
       "t": "narrate",
-      "text": "The hum is, he understands, the same network. The network has, since March, been broadcasting through his workplace. The network is, today, broadcasting through his cell."
+      "text": "The hum is, he understands, the same network. The network has, since March, been broadcasting through his workplace. The network is, today, broadcasting through his cell.",
+      "voice": "assets/audio/voice/vol6_ch9_room/015.ogg"
     },
     {
       "t": "narrate",
@@ -95,11 +101,13 @@
     },
     {
       "t": "narrate",
-      "text": "He knows it is Sunday. Then he sleeps. He wakes. He thinks it might be Tuesday. He sleeps. He wakes. There is food. The food is a sandwich on a paper plate slid through the slot at the bottom of the door."
+      "text": "He knows it is Sunday. Then he sleeps. He wakes. He thinks it might be Tuesday. He sleeps. He wakes. There is food. The food is a sandwich on a paper plate slid through the slot at the bottom of the door.",
+      "voice": "assets/audio/voice/vol6_ch9_room/019.ogg"
     },
     {
       "t": "narrate",
-      "text": "The sandwich is white bread and bologna and yellow mustard. The sandwich is the same sandwich each time. He stops, after the third one, eating it."
+      "text": "The sandwich is white bread and bologna and yellow mustard. The sandwich is the same sandwich each time. He stops, after the third one, eating it.",
+      "voice": "assets/audio/voice/vol6_ch9_room/020.ogg"
     },
     {
       "t": "narrate",
@@ -161,11 +169,13 @@
     },
     {
       "t": "narrate",
-      "text": "But Boyd's eyes are not, Diego registers, eyes. Boyd's eyes are — are cameras."
+      "text": "But Boyd's eyes are not, Diego registers, eyes. Boyd's eyes are — are cameras.",
+      "voice": "assets/audio/voice/vol6_ch9_room/032.ogg"
     },
     {
       "t": "narrate",
-      "text": "They are looking at Diego the way the eye of his shift supervisor's phone had looked at him on Saturday morning when Skip had set the phone face-up on the counter to film him while pretending to scroll."
+      "text": "They are looking at Diego the way the eye of his shift supervisor's phone had looked at him on Saturday morning when Skip had set the phone face-up on the counter to film him while pretending to scroll.",
+      "voice": "assets/audio/voice/vol6_ch9_room/033.ogg"
     },
     {
       "t": "narrate",
@@ -387,11 +397,13 @@
     },
     {
       "t": "narrate",
-      "text": "It is not the worst Diego has ever been hit. The hit is, in some sense, controlled — Boyd has hit him in the ribs, not the face, with the small specific economy of a man who has been told to leave the face alone. The ribs hurt."
+      "text": "It is not the worst Diego has ever been hit. The hit is, in some sense, controlled — Boyd has hit him in the ribs, not the face, with the small specific economy of a man who has been told to leave the face alone. The ribs hurt.",
+      "voice": "assets/audio/voice/vol6_ch9_room/076.ogg"
     },
     {
       "t": "narrate",
-      "text": "The hit, in Diego's experience of Boyd over the next four days, is the standard hit. Boyd will use it eight times."
+      "text": "The hit, in Diego's experience of Boyd over the next four days, is the standard hit. Boyd will use it eight times.",
+      "voice": "assets/audio/voice/vol6_ch9_room/077.ogg"
     },
     {
       "t": "narrate",
@@ -722,19 +734,22 @@
       "t": "say",
       "char": "Boyd",
       "text": "Kid. I need you to know something. I am about to get a stomach thing. It is not a normal stomach thing. It is being given to me. I do not know who is giving it to me.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_room/140.ogg"
     },
     {
       "t": "say",
       "char": "Boyd",
       "text": "But I am going to be in the bathroom for a long time tomorrow morning. And during that time, the people who are coming for you are going to come. I want you to understand. I am not — I am not going to fight them.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_room/141.ogg"
     },
     {
       "t": "say",
       "char": "Boyd",
       "text": "I am, in fact, going to be in the bathroom. I am telling you this so you know, when the door opens tomorrow morning, that the person on the other side of it is, in some specific sense, the friend.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_room/142.ogg"
     },
     {
       "t": "say",
@@ -747,25 +762,29 @@
       "t": "say",
       "char": "Boyd",
       "text": "Kid. I have been hitting you for five days. I have been doing the standard work. I have a long career in this kind of work. But the device on the wall has been — speaking to me.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_room/144.ogg"
     },
     {
       "t": "say",
       "char": "Boyd",
       "text": "The device on the wall has been telling me, since Wednesday morning, that I am being unmade. The device says I am being given the stomach thing as my retirement.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_room/145.ogg"
     },
     {
       "t": "say",
       "char": "Boyd",
       "text": "The device says I am not, after the bathroom, going to be one of these guys anymore. The device says, if I tell you what is coming, the device will, in the bathroom, be merciful. So I am telling you.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_room/146.ogg"
     },
     {
       "t": "say",
       "char": "Boyd",
       "text": "I am — I am not, kid, a good man. I am not going to pretend to be. But I am telling you because I would like to be, on the other side of the bathroom, slightly less of the kind of man I have been.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_room/147.ogg"
     },
     {
       "t": "narrate",
@@ -805,13 +824,15 @@
       "t": "say",
       "char": "Boyd",
       "text": "[shot:closeup person_b]Kid. For what it's worth. Your grandmother loves you. I have been listening to her on the radio in the room above this one for three days. She has been — sending Morse. She has not stopped.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_room/154.ogg"
     },
     {
       "t": "say",
       "char": "Boyd",
       "text": "The Morse says: he is alive. she is here. [wave amp=5 freq=2]we are coming.[/wave] she has been saying it on a loop for three days. I do not know how she knows. But she knows.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_room/155.ogg"
     },
     {
       "t": "narrate",

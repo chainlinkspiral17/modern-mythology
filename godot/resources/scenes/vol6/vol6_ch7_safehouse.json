@@ -34,11 +34,13 @@
     },
     {
       "t": "narrate",
-      "text": "The safehouse is, by Hal's protocol — agreed upon Friday night with the doctor and the grandmother and Doyle — open today only to family. Diego's mother arrived at six-thirty this morning from San Antonio."
+      "text": "The safehouse is, by Hal's protocol — agreed upon Friday night with the doctor and the grandmother and Doyle — open today only to family. Diego's mother arrived at six-thirty this morning from San Antonio.",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/006.ogg"
     },
     {
       "t": "narrate",
-      "text": "She is, at this moment, in the bedroom with Diego, who is sitting up for the first time, drinking water, looking at her, talking, slowly, in Spanish, about nothing in particular."
+      "text": "She is, at this moment, in the bedroom with Diego, who is sitting up for the first time, drinking water, looking at her, talking, slowly, in Spanish, about nothing in particular.",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/007.ogg"
     },
     {
       "t": "show",
@@ -63,15 +65,18 @@
     },
     {
       "t": "narrate",
-      "text": "She is telling Sam, in the slow careful way she tells things, what Diego has — between sleep and water and his mother — said about the five days. Not the worst of it."
+      "text": "She is telling Sam, in the slow careful way she tells things, what Diego has — between sleep and water and his mother — said about the five days. Not the worst of it.",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/012.ogg"
     },
     {
       "t": "narrate",
-      "text": "Graciela is, herself, learning the worst of it as Diego comes back to himself, and is choosing carefully which pieces to relay to Sam."
+      "text": "Graciela is, herself, learning the worst of it as Diego comes back to himself, and is choosing carefully which pieces to relay to Sam.",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/013.ogg"
     },
     {
       "t": "narrate",
-      "text": "The pieces she is relaying are the ones that will, in Graciela's judgment, give Sam what Sam needs to know without giving her what Sam does not yet need to carry."
+      "text": "The pieces she is relaying are the ones that will, in Graciela's judgment, give Sam what Sam needs to know without giving her what Sam does not yet need to carry.",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/014.ogg"
     },
     {
       "t": "say",
@@ -84,13 +89,15 @@
       "t": "say",
       "char": "Graciela Ramos",
       "text": "[shot:closeup person]Diego asked about your father, mija. I told him your father turned himself in yesterday. Diego cried. He cried because he had been afraid your father had — I will not say it.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/016.ogg"
     },
     {
       "t": "say",
       "char": "Graciela Ramos",
       "text": "I will say only: Diego cried because he had been afraid for you, even in there. Even in the room they kept him in. He had been carrying you, mija. He had been carrying the worry about you. Now he can put it down.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/017.ogg"
     },
     {
       "t": "show",

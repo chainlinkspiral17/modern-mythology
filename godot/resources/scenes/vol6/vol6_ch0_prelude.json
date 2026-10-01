@@ -11,11 +11,13 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:dawn_warm]Harmony Creek Estates was incorporated as a planned residential community in 1987. The name was chosen by a committee."
+      "text": "[mood:dawn_warm]Harmony Creek Estates was incorporated as a planned residential community in 1987. The name was chosen by a committee.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/001.ogg"
     },
     {
       "t": "narrate",
-      "text": "The creek, which is real, runs behind the Albertsons on Gallatin Avenue and smells, in summer, of warm algae and whatever the storm drain by the middle school contributes. The harmony is aspirational."
+      "text": "The creek, which is real, runs behind the Albertsons on Gallatin Avenue and smells, in summer, of warm algae and whatever the storm drain by the middle school contributes. The harmony is aspirational.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/002.ogg"
     },
     {
       "t": "narrate",
@@ -34,23 +36,28 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2][shot:insert sprinklers]The sprinkler systems on Meadowlark Circle come on at 6:12, as they do every Sunday and Thursday, in accordance with the Stage 2 Water Conservation Schedule maintained by the city of Harmony Creek and the Harmony Creek Homeowners Association jointly,"
+      "text": "[trip:1.2][shot:insert sprinklers]The sprinkler systems on Meadowlark Circle come on at 6:12, as they do every Sunday and Thursday, in accordance with the Stage 2 Water Conservation Schedule maintained by the city of Harmony Creek and the Harmony Creek Homeowners Association jointly,",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/006.ogg"
     },
     {
       "t": "narrate",
-      "text": "in a spirit of cooperative governance that both parties describe, in their respective newsletters, as a model for the region."
+      "text": "in a spirit of cooperative governance that both parties describe, in their respective newsletters, as a model for the region.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/007.ogg"
     },
     {
       "t": "narrate",
-      "text": "The sprinklers activate in sequence, lot by lot, traveling east down the block. Number 1402 goes first. Then 1408. Then 1414. Then 1420."
+      "text": "The sprinklers activate in sequence, lot by lot, traveling east down the block. Number 1402 goes first. Then 1408. Then 1414. Then 1420.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/008.ogg"
     },
     {
       "t": "narrate",
-      "text": "Then 1428, which is the Miller house, where the head on the left corner of the yard has a hairline crack in the housing and throws water in a thin,"
+      "text": "Then 1428, which is the Miller house, where the head on the left corner of the yard has a hairline crack in the housing and throws water in a thin,",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/009.ogg"
     },
     {
       "t": "narrate",
-      "text": "surgical arc that hits the sidewalk at a forty-degree angle and has, over the past two summers, etched a faint grey stripe into the concrete that the HOA has not yet formally noticed."
+      "text": "surgical arc that hits the sidewalk at a forty-degree angle and has, over the past two summers, etched a faint grey stripe into the concrete that the HOA has not yet formally noticed.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/010.ogg"
     },
     {
       "t": "interlude",
@@ -106,11 +113,13 @@
     },
     {
       "t": "narrate",
-      "text": "She had texted him at 11:30 the previous night. She had texted him again at 12:04. The messages show as delivered. They do not show as read. This is not, by itself, unusual. Diego Ramos is not a person who reads texts promptly."
+      "text": "She had texted him at 11:30 the previous night. She had texted him again at 12:04. The messages show as delivered. They do not show as read. This is not, by itself, unusual. Diego Ramos is not a person who reads texts promptly.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/021.ogg"
     },
     {
       "t": "narrate",
-      "text": "Diego Ramos is a person who will sometimes not read a text for sixteen hours and then respond with a single letter, the letter being, usually, k."
+      "text": "Diego Ramos is a person who will sometimes not read a text for sixteen hours and then respond with a single letter, the letter being, usually, k.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/022.ogg"
     },
     {
       "t": "think",
@@ -140,23 +149,28 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert bed~]The bed has been slept in but not recently. The sheets are pushed to one side."
+      "text": "[shot:insert bed~]The bed has been slept in but not recently. The sheets are pushed to one side.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/028.ogg"
     },
     {
       "t": "narrate",
-      "text": "On the floor near the desk there is an open duffel bag — the green one he has had since eighth grade, with the broken zipper on the front pocket that he fixed once with a safety pin and then the safety pin was lost and he never fixed it again."
+      "text": "On the floor near the desk there is an open duffel bag — the green one he has had since eighth grade, with the broken zipper on the front pocket that he fixed once with a safety pin and then the safety pin was lost and he never fixed it again.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/029.ogg"
     },
     {
       "t": "narrate",
-      "text": "The bag is half-packed. Three shirts, a phone charger, a pair of boots."
+      "text": "The bag is half-packed. Three shirts, a phone charger, a pair of boots.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/030.ogg"
     },
     {
       "t": "narrate",
-      "text": "On the desk: a water glass with a finger of water left in it. A textbook for a class he is not taking anymore."
+      "text": "On the desk: a water glass with a finger of water left in it. A textbook for a class he is not taking anymore.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/031.ogg"
     },
     {
       "t": "narrate",
-      "text": "A photograph of Sam that he printed at the Walgreens on Fifth, tucked into the corner of the mirror, which is the only decoration in the room besides a periodic table he has had since seventh grade and a calendar he stopped updating in March."
+      "text": "A photograph of Sam that he printed at the Walgreens on Fifth, tucked into the corner of the mirror, which is the only decoration in the room besides a periodic table he has had since seventh grade and a calendar he stopped updating in March.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/032.ogg"
     },
     {
       "t": "narrate",
@@ -196,11 +210,13 @@
     },
     {
       "t": "narrate",
-      "text": "She is not sure, sitting here now with the rosary, why she did not get up. She tells herself it was because she knew she could not stop him. She tells herself it was because a boy his age has to be allowed to go."
+      "text": "She is not sure, sitting here now with the rosary, why she did not get up. She tells herself it was because she knew she could not stop him. She tells herself it was because a boy his age has to be allowed to go.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/040.ogg"
     },
     {
       "t": "narrate",
-      "text": "She tells herself a number of things that are all true and none of which are the whole truth."
+      "text": "She tells herself a number of things that are all true and none of which are the whole truth.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/041.ogg"
     },
     {
       "t": "think",
@@ -234,11 +250,13 @@
     },
     {
       "t": "narrate",
-      "text": "Rick Salazar is seventeen. Rick Salazar is the editor of the Harmony Creek High School newspaper, The Meadowlark, a position he takes more seriously than anyone has taken it in the paper's thirty-year history,"
+      "text": "Rick Salazar is seventeen. Rick Salazar is the editor of the Harmony Creek High School newspaper, The Meadowlark, a position he takes more seriously than anyone has taken it in the paper's thirty-year history,",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/048.ogg"
     },
     {
       "t": "narrate",
-      "text": "and which has not yet caused him to make a single friend he did not already have, and which he would not trade for anything."
+      "text": "and which has not yet caused him to make a single friend he did not already have, and which he would not trade for anything.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/049.ogg"
     },
     {
       "t": "narrate",
@@ -252,11 +270,13 @@
     },
     {
       "t": "narrate",
-      "text": "[beat:chill][panel:vol6_first_print][mood:macro_haze][shot:insert photograph~]The image comes up slowly, the way they always do — a grey wash that becomes shapes that becomes a photograph. The NexCorp van is in the frame. Two men in navy polo shirts."
+      "text": "[beat:chill][panel:vol6_first_print][mood:macro_haze][shot:insert photograph~]The image comes up slowly, the way they always do — a grey wash that becomes shapes that becomes a photograph. The NexCorp van is in the frame. Two men in navy polo shirts.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/052.ogg"
     },
     {
       "t": "narrate",
-      "text": "And, at the edge of the frame, half-cut-off by the border, a black pickup truck with Louisiana plates."
+      "text": "And, at the edge of the frame, half-cut-off by the border, a black pickup truck with Louisiana plates.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/053.ogg"
     },
     {
       "t": "think",
@@ -287,11 +307,13 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2]Maya Daigle is awake because Maya Daigle is always awake at 6:16. Maya Daigle has been waking at 6:16 since she was nine years old and her mother told her that the first hour of the day belongs to you and no one can take it."
+      "text": "[trip:1.2]Maya Daigle is awake because Maya Daigle is always awake at 6:16. Maya Daigle has been waking at 6:16 since she was nine years old and her mother told her that the first hour of the day belongs to you and no one can take it.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/059.ogg"
     },
     {
       "t": "narrate",
-      "text": "Her mother was right about very little, but she was right about this."
+      "text": "Her mother was right about very little, but she was right about this.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/060.ogg"
     },
     {
       "t": "narrate",
@@ -301,27 +323,32 @@
     {
       "t": "think",
       "char": "Maya",
-      "text": "Sam said Diego hadn't come home. Sam said she wasn't worried but she texted me at midnight which is how I know she is worried."
+      "text": "Sam said Diego hadn't come home. Sam said she wasn't worried but she texted me at midnight which is how I know she is worried.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/062.ogg"
     },
     {
       "t": "think",
       "char": "Maya",
-      "text": "Sam worries in straight lines — she goes from one point to another without acknowledging the distance between them. The distance is always where the thing is."
+      "text": "Sam worries in straight lines — she goes from one point to another without acknowledging the distance between them. The distance is always where the thing is.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/063.ogg"
     },
     {
       "t": "think",
       "char": "Maya",
-      "text": "Things I know: Diego was working on something. Diego stopped talking about what he was working on, which means it got to the part where it got serious."
+      "text": "Things I know: Diego was working on something. Diego stopped talking about what he was working on, which means it got to the part where it got serious.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/064.ogg"
     },
     {
       "t": "think",
       "char": "Maya",
-      "text": "Diego did not tell Sam it got serious, which means he was protecting her, which means he thought she would try to stop him. Sam would try to stop him if she thought it was dangerous. Diego thought it was dangerous."
+      "text": "Diego did not tell Sam it got serious, which means he was protecting her, which means he thought she would try to stop him. Sam would try to stop him if she thought it was dangerous. Diego thought it was dangerous.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/065.ogg"
     },
     {
       "t": "think",
       "char": "Maya",
-      "text": "Diego left anyway."
+      "text": "Diego left anyway.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/066.ogg"
     },
     {
       "t": "narrate",
@@ -360,11 +387,13 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2]Ben Achterberg is in the back office of the Pit Stop Diner at 06:17 on a Sunday morning because the Pit Stop Diner opens at seven and Ben Achterberg is the kind of person who arrives an hour early,"
+      "text": "[trip:1.2]Ben Achterberg is in the back office of the Pit Stop Diner at 06:17 on a Sunday morning because the Pit Stop Diner opens at seven and Ben Achterberg is the kind of person who arrives an hour early,",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/074.ogg"
     },
     {
       "t": "narrate",
-      "text": "not because he has to, but because the hour before the diner opens is the only hour in the day that belongs entirely to the diner and not to the people in it."
+      "text": "not because he has to, but because the hour before the diner opens is the only hour in the day that belongs entirely to the diner and not to the people in it.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/075.ogg"
     },
     {
       "t": "narrate",
@@ -423,11 +452,13 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2][panel:vol6_water_tower]The Harmony Creek water tower stands at the south end of Gallatin Avenue, behind the NexCorp lot, which is currently enclosed in a chain-link fence with green privacy screen. The water tower is sixty-two feet tall."
+      "text": "[trip:1.2][panel:vol6_water_tower]The Harmony Creek water tower stands at the south end of Gallatin Avenue, behind the NexCorp lot, which is currently enclosed in a chain-link fence with green privacy screen. The water tower is sixty-two feet tall.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/087.ogg"
     },
     {
       "t": "narrate",
-      "text": "It was painted in 2019 with the words HARMONY CREEK in blue block letters and a small rendering of a creek that does not resemble the actual creek."
+      "text": "It was painted in 2019 with the words HARMONY CREEK in blue block letters and a small rendering of a creek that does not resemble the actual creek.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/088.ogg"
     },
     {
       "t": "narrate",
@@ -484,11 +515,13 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2]Chief Dale Miller — Police Chief of Harmony Creek, thirteen years in the role, former marine, father of one, a man whose defining characteristic is, according to his daughter,"
+      "text": "[trip:1.2]Chief Dale Miller — Police Chief of Harmony Creek, thirteen years in the role, former marine, father of one, a man whose defining characteristic is, according to his daughter,",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/099.ogg"
     },
     {
       "t": "narrate",
-      "text": "that he is always the last person in any room to say what he actually thinks — is standing at his kitchen counter at 6:24, waiting for his coffee to finish, reading a text message."
+      "text": "that he is always the last person in any room to say what he actually thinks — is standing at his kitchen counter at 6:24, waiting for his coffee to finish, reading a text message.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/100.ogg"
     },
     {
       "t": "narrate",
@@ -498,17 +531,20 @@
     {
       "t": "think",
       "char": "Chief Miller",
-      "text": "Chief — this is Carla Reyes at the Statesman. I know it's early. I've been working on something I think you need to know about before it goes to print."
+      "text": "Chief — this is Carla Reyes at the Statesman. I know it's early. I've been working on something I think you need to know about before it goes to print.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/102.ogg"
     },
     {
       "t": "think",
       "char": "Chief Miller",
-      "text": "It involves NexCorp and a series of property acquisitions in your town going back to January. I have documentation. I'd like to talk to you before we publish. This is a courtesy call, not a request for comment."
+      "text": "It involves NexCorp and a series of property acquisitions in your town going back to January. I have documentation. I'd like to talk to you before we publish. This is a courtesy call, not a request for comment.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/103.ogg"
     },
     {
       "t": "think",
       "char": "Chief Miller",
-      "text": "Please call me back."
+      "text": "Please call me back.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/104.ogg"
     },
     {
       "t": "narrate",
@@ -523,12 +559,14 @@
     {
       "t": "think",
       "char": "Chief Miller",
-      "text": "Sammy won't let it go. She's been asking about NexCorp since March. I told her it was nothing. I told her I'd look into it."
+      "text": "Sammy won't let it go. She's been asking about NexCorp since March. I told her it was nothing. I told her I'd look into it.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/107.ogg"
     },
     {
       "t": "think",
       "char": "Chief Miller",
-      "text": "I looked into it and I found what I expected to find, which is that there is nothing on paper that shouldn't be there, and I know enough about how these things work to know that means either there really is nothing, or the paper is very clean."
+      "text": "I looked into it and I found what I expected to find, which is that there is nothing on paper that shouldn't be there, and I know enough about how these things work to know that means either there really is nothing, or the paper is very clean.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/108.ogg"
     },
     {
       "t": "think",
@@ -619,11 +657,13 @@
     },
     {
       "t": "narrate",
-      "text": "The word okay, in Sam Miller's voice, at 6:28 on this particular Sunday morning, carries in it — if you know her, and her father knows her —"
+      "text": "The word okay, in Sam Miller's voice, at 6:28 on this particular Sunday morning, carries in it — if you know her, and her father knows her —",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/126.ogg"
     },
     {
       "t": "narrate",
-      "text": "the full weight of a person who has been awake since 4:40, who has already decided something is wrong, and who has been waiting since then for someone else to say it out loud."
+      "text": "the full weight of a person who has been awake since 4:40, who has already decided something is wrong, and who has been waiting since then for someone else to say it out loud.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/127.ogg"
     },
     {
       "t": "jump",

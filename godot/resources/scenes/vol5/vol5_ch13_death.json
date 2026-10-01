@@ -29,11 +29,13 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2][mood:dawn_warm]DEATH. The skeleton knight rides a white horse past the fallen pope and the standing children. The sun rises in the distance. Nothing clings to him. Nothing is exempt from him. He is not cruel. He is not unkind."
+      "text": "[trip:1.2][mood:dawn_warm]DEATH. The skeleton knight rides a white horse past the fallen pope and the standing children. The sun rises in the distance. Nothing clings to him. Nothing is exempt from him. He is not cruel. He is not unkind.",
+      "voice": "assets/audio/voice/vol5_ch13_death/005.ogg"
     },
     {
       "t": "narrate",
-      "text": "He is simply the one who comes when the chapter ends. Reversed: resistance. The refusal to let go of what is already gone."
+      "text": "He is simply the one who comes when the chapter ends. Reversed: resistance. The refusal to let go of what is already gone.",
+      "voice": "assets/audio/voice/vol5_ch13_death/006.ogg"
     },
     {
       "t": "narrate",
@@ -42,23 +44,28 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]This was not unusual. The hospice was generally quiet."
+      "text": "[shot:establish]This was not unusual. The hospice was generally quiet.",
+      "voice": "assets/audio/voice/vol5_ch13_death/008.ogg"
     },
     {
       "t": "narrate",
-      "text": "The hospice was, on its quietest days, the quietest part of the building, quieter even than the chapel on the ground floor where Father Anselm offered the noon mass that almost nobody attended,"
+      "text": "The hospice was, on its quietest days, the quietest part of the building, quieter even than the chapel on the ground floor where Father Anselm offered the noon mass that almost nobody attended,",
+      "voice": "assets/audio/voice/vol5_ch13_death/009.ogg"
     },
     {
       "t": "narrate",
-      "text": "quieter than the staff chapel on the third floor where the night nurses sometimes sat to cry without being seen. Hospice quiet was a particular quiet."
+      "text": "quieter than the staff chapel on the third floor where the night nurses sometimes sat to cry without being seen. Hospice quiet was a particular quiet.",
+      "voice": "assets/audio/voice/vol5_ch13_death/010.ogg"
     },
     {
       "t": "narrate",
-      "text": "It was the quiet of rooms in which time had begun to soften at the edges, the quiet of voices kept low not out of respect but out of sympathy with the rooms themselves,"
+      "text": "It was the quiet of rooms in which time had begun to soften at the edges, the quiet of voices kept low not out of respect but out of sympathy with the rooms themselves,",
+      "voice": "assets/audio/voice/vol5_ch13_death/011.ogg"
     },
     {
       "t": "narrate",
-      "text": "the quiet that absorbed footsteps and conversations and the small distant sounds of the city outside and gave back, in their place, the steady reliable hush of equipment doing what equipment did."
+      "text": "the quiet that absorbed footsteps and conversations and the small distant sounds of the city outside and gave back, in their place, the steady reliable hush of equipment doing what equipment did.",
+      "voice": "assets/audio/voice/vol5_ch13_death/012.ogg"
     },
     {
       "t": "narrate",
@@ -67,19 +74,23 @@
     },
     {
       "t": "narrate",
-      "text": "She had been awake since three. She had been, in some technical sense, awake since around two-thirty, but she had spent the first half-hour pretending to be asleep so the night nurse would not come in and check on her."
+      "text": "She had been awake since three. She had been, in some technical sense, awake since around two-thirty, but she had spent the first half-hour pretending to be asleep so the night nurse would not come in and check on her.",
+      "voice": "assets/audio/voice/vol5_ch13_death/014.ogg"
     },
     {
       "t": "narrate",
-      "text": "Alice had gotten very good, over the past five months, at pretending to be asleep. The skill had not been on her list of things she wanted to learn before she died."
+      "text": "Alice had gotten very good, over the past five months, at pretending to be asleep. The skill had not been on her list of things she wanted to learn before she died.",
+      "voice": "assets/audio/voice/vol5_ch13_death/015.ogg"
     },
     {
       "t": "narrate",
-      "text": "It was on the list now, and would, by some accounting, be one of the last skills she added. She found this funny."
+      "text": "It was on the list now, and would, by some accounting, be one of the last skills she added. She found this funny.",
+      "voice": "assets/audio/voice/vol5_ch13_death/016.ogg"
     },
     {
       "t": "narrate",
-      "text": "She had not, lately, mentioned that she found it funny, because the people around her had begun to react to her finding things funny in a way that suggested they were keeping a tally somewhere of her remaining sense of humor, and that the tally was meant to be reassuring to them rather than to her."
+      "text": "She had not, lately, mentioned that she found it funny, because the people around her had begun to react to her finding things funny in a way that suggested they were keeping a tally somewhere of her remaining sense of humor, and that the tally was meant to be reassuring to them rather than to her.",
+      "voice": "assets/audio/voice/vol5_ch13_death/017.ogg"
     },
     {
       "t": "narrate",
@@ -88,23 +99,28 @@
     },
     {
       "t": "narrate",
-      "text": "The room was lit only by the small under-cabinet light above the sink, the one Alice had asked the day staff to leave on at night, because the overhead was too bright and the dark was too dark and the under-cabinet was, like Alice, exactly enough."
+      "text": "The room was lit only by the small under-cabinet light above the sink, the one Alice had asked the day staff to leave on at night, because the overhead was too bright and the dark was too dark and the under-cabinet was, like Alice, exactly enough.",
+      "voice": "assets/audio/voice/vol5_ch13_death/019.ogg"
     },
     {
       "t": "narrate",
-      "text": "The walls were the color all hospital walls were — a beige with a slight green undertone that the manufacturer probably called sage and that Alice had been calling, privately, the color of agreed-upon endings."
+      "text": "The walls were the color all hospital walls were — a beige with a slight green undertone that the manufacturer probably called sage and that Alice had been calling, privately, the color of agreed-upon endings.",
+      "voice": "assets/audio/voice/vol5_ch13_death/020.ogg"
     },
     {
       "t": "narrate",
-      "text": "On the wall above the bed: a print of a beach Alice did not recognize."
+      "text": "On the wall above the bed: a print of a beach Alice did not recognize.",
+      "voice": "assets/audio/voice/vol5_ch13_death/021.ogg"
     },
     {
       "t": "narrate",
-      "text": "On the bedside table: a paper cup of water with a bent straw, the small plastic dispenser of mouth swabs the night nurse had refilled at midnight, a worn copy of the Book of Common Prayer Alice's daughter had brought on Sunday and that Alice had not, in the four days since, opened."
+      "text": "On the bedside table: a paper cup of water with a bent straw, the small plastic dispenser of mouth swabs the night nurse had refilled at midnight, a worn copy of the Book of Common Prayer Alice's daughter had brought on Sunday and that Alice had not, in the four days since, opened.",
+      "voice": "assets/audio/voice/vol5_ch13_death/022.ogg"
     },
     {
       "t": "narrate",
-      "text": "On the floor by the door: a pair of slippers Alice had not worn in three weeks."
+      "text": "On the floor by the door: a pair of slippers Alice had not worn in three weeks.",
+      "voice": "assets/audio/voice/vol5_ch13_death/023.ogg"
     },
     {
       "t": "narrate",
@@ -133,19 +149,23 @@
     },
     {
       "t": "narrate",
-      "text": "Not death itself — she had stopped thinking of death as a thing that arrived, exactly, sometime around month two, when she had begun to understand that it was less a guest at the door than a slow change in the weather inside the room."
+      "text": "Not death itself — she had stopped thinking of death as a thing that arrived, exactly, sometime around month two, when she had begun to understand that it was less a guest at the door than a slow change in the weather inside the room.",
+      "voice": "assets/audio/voice/vol5_ch13_death/029.ogg"
     },
     {
       "t": "narrate",
-      "text": "The room had been getting colder for a long time. The room would, eventually, be cold enough that Alice would not need to be in it. That was the whole of it. There was no doorbell."
+      "text": "The room had been getting colder for a long time. The room would, eventually, be cold enough that Alice would not need to be in it. That was the whole of it. There was no doorbell.",
+      "voice": "assets/audio/voice/vol5_ch13_death/030.ogg"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]But there was, Alice had begun to suspect, a kind of announcement. Some preliminary courtesy that the older system extended, on its own schedule, to the people who had been paying attention."
+      "text": "[shot:establish]But there was, Alice had begun to suspect, a kind of announcement. Some preliminary courtesy that the older system extended, on its own schedule, to the people who had been paying attention.",
+      "voice": "assets/audio/voice/vol5_ch13_death/031.ogg"
     },
     {
       "t": "narrate",
-      "text": "Alice had been paying attention since she was eleven. Alice knew, the way certain people knew without being told, that she was the kind of person to whom the courtesy would be extended."
+      "text": "Alice had been paying attention since she was eleven. Alice knew, the way certain people knew without being told, that she was the kind of person to whom the courtesy would be extended.",
+      "voice": "assets/audio/voice/vol5_ch13_death/032.ogg"
     },
     {
       "t": "narrate",
@@ -159,11 +179,13 @@
     },
     {
       "t": "narrate",
-      "text": "She lay still and watched the rose for a long while. The rose did not, in any visible way, do anything. The rose was a rose."
+      "text": "She lay still and watched the rose for a long while. The rose did not, in any visible way, do anything. The rose was a rose.",
+      "voice": "assets/audio/voice/vol5_ch13_death/035.ogg"
     },
     {
       "t": "narrate",
-      "text": "It sat in its small clear glass on the windowsill and existed in the under-cabinet light, white against the sage of the wall behind it, and it was, by any normal accounting, just a rose."
+      "text": "It sat in its small clear glass on the windowsill and existed in the under-cabinet light, white against the sage of the wall behind it, and it was, by any normal accounting, just a rose.",
+      "voice": "assets/audio/voice/vol5_ch13_death/036.ogg"
     },
     {
       "t": "narrate",
@@ -177,39 +199,48 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]She thought about the case."
+      "text": "[shot:establish]She thought about the case.",
+      "voice": "assets/audio/voice/vol5_ch13_death/039.ogg"
     },
     {
       "t": "narrate",
-      "text": "She thought about it the way she thought about most things now — slowly, gently, holding the pieces up to whatever interior light remained, examining them not for new information but for the quality of having held them."
+      "text": "She thought about it the way she thought about most things now — slowly, gently, holding the pieces up to whatever interior light remained, examining them not for new information but for the quality of having held them.",
+      "voice": "assets/audio/voice/vol5_ch13_death/040.ogg"
     },
     {
       "t": "narrate",
-      "text": "The case had been called Newsom v. PetroTex."
+      "text": "The case had been called Newsom v. PetroTex.",
+      "voice": "assets/audio/voice/vol5_ch13_death/041.ogg"
     },
     {
       "t": "narrate",
-      "text": "She had been the plaintiff of record, though there had been forty-seven plaintiffs, and Alice had not been the most damaged of them, and had not, at the trial, said the most affecting things, and had, on the courthouse steps after the verdict,"
+      "text": "She had been the plaintiff of record, though there had been forty-seven plaintiffs, and Alice had not been the most damaged of them, and had not, at the trial, said the most affecting things, and had, on the courthouse steps after the verdict,",
+      "voice": "assets/audio/voice/vol5_ch13_death/042.ogg"
     },
     {
       "t": "narrate",
-      "text": "declined to be photographed, because she had not wanted her face used by anyone for any reason ever again, having spent fifty-six years being looked at and having, at sixty-eight, achieved the small private freedom of being looked at less."
+      "text": "declined to be photographed, because she had not wanted her face used by anyone for any reason ever again, having spent fifty-six years being looked at and having, at sixty-eight, achieved the small private freedom of being looked at less.",
+      "voice": "assets/audio/voice/vol5_ch13_death/043.ogg"
     },
     {
       "t": "narrate",
-      "text": "The case had been Newsom v. PetroTex because Newsom came first alphabetically. That was all. She had not chosen to be the named plaintiff."
+      "text": "The case had been Newsom v. PetroTex because Newsom came first alphabetically. That was all. She had not chosen to be the named plaintiff.",
+      "voice": "assets/audio/voice/vol5_ch13_death/044.ogg"
     },
     {
       "t": "narrate",
-      "text": "The lawyer — Erica Campbell, who Alice had liked, who had been precise and tireless and who had, at one point in deposition prep, taken Alice's hand without performing the gesture — had explained the alphabetical accident to her with a small embarrassed honesty Alice had appreciated."
+      "text": "The lawyer — Erica Campbell, who Alice had liked, who had been precise and tireless and who had, at one point in deposition prep, taken Alice's hand without performing the gesture — had explained the alphabetical accident to her with a small embarrassed honesty Alice had appreciated.",
+      "voice": "assets/audio/voice/vol5_ch13_death/045.ogg"
     },
     {
       "t": "narrate",
-      "text": "Erica had asked, more than once, whether Alice wanted to be the one whose name went on it. Alice had said yes. Alice had not, exactly, wanted to be."
+      "text": "Erica had asked, more than once, whether Alice wanted to be the one whose name went on it. Alice had said yes. Alice had not, exactly, wanted to be.",
+      "voice": "assets/audio/voice/vol5_ch13_death/046.ogg"
     },
     {
       "t": "narrate",
-      "text": "Alice had simply understood that somebody would have to be, and that the somebody might as well be the one who was, of all of them, closest to no longer being a somebody."
+      "text": "Alice had simply understood that somebody would have to be, and that the somebody might as well be the one who was, of all of them, closest to no longer being a somebody.",
+      "voice": "assets/audio/voice/vol5_ch13_death/047.ogg"
     },
     {
       "t": "narrate",
@@ -218,19 +249,23 @@
     },
     {
       "t": "narrate",
-      "text": "The case had won. The settlement had been the largest of its kind in the parish. PetroTex had restructured."
+      "text": "The case had won. The settlement had been the largest of its kind in the parish. PetroTex had restructured.",
+      "voice": "assets/audio/voice/vol5_ch13_death/049.ogg"
     },
     {
       "t": "narrate",
-      "text": "Alice's husband — who had not lived to see the verdict, who had died of the same chemical exposure the case had been ostensibly about, who had been a small kind quiet man named Henry whom Alice had loved for forty-one years — had not been there to receive the settlement check,"
+      "text": "Alice's husband — who had not lived to see the verdict, who had died of the same chemical exposure the case had been ostensibly about, who had been a small kind quiet man named Henry whom Alice had loved for forty-one years — had not been there to receive the settlement check,",
+      "voice": "assets/audio/voice/vol5_ch13_death/050.ogg"
     },
     {
       "t": "narrate",
-      "text": "but the settlement check had nonetheless been made out partly in his name, because Erica Campbell had gotten that done as a matter of principle and Alice had not,"
+      "text": "but the settlement check had nonetheless been made out partly in his name, because Erica Campbell had gotten that done as a matter of principle and Alice had not,",
+      "voice": "assets/audio/voice/vol5_ch13_death/051.ogg"
     },
     {
       "t": "narrate",
-      "text": "at the time, understood the principle and had only, later, in the small hours of one of her early hospice nights, finally understood what Erica had been doing."
+      "text": "at the time, understood the principle and had only, later, in the small hours of one of her early hospice nights, finally understood what Erica had been doing.",
+      "voice": "assets/audio/voice/vol5_ch13_death/052.ogg"
     },
     {
       "t": "narrate",
@@ -239,19 +274,23 @@
     },
     {
       "t": "narrate",
-      "text": "Erica had been making sure that, in whatever paper trail the verdict eventually became, Henry's name appeared in the public record as a person to whom money was owed and to whom money was paid, even though the money would necessarily go to Alice as his executor."
+      "text": "Erica had been making sure that, in whatever paper trail the verdict eventually became, Henry's name appeared in the public record as a person to whom money was owed and to whom money was paid, even though the money would necessarily go to Alice as his executor.",
+      "voice": "assets/audio/voice/vol5_ch13_death/054.ogg"
     },
     {
       "t": "narrate",
-      "text": "The naming was not, technically, necessary. The naming had been Erica's gift."
+      "text": "The naming was not, technically, necessary. The naming had been Erica's gift.",
+      "voice": "assets/audio/voice/vol5_ch13_death/055.ogg"
     },
     {
       "t": "narrate",
-      "text": "Alice had not, in the six years since, thanked Erica for it. She had assumed Erica understood. She suspected Erica did."
+      "text": "Alice had not, in the six years since, thanked Erica for it. She had assumed Erica understood. She suspected Erica did.",
+      "voice": "assets/audio/voice/vol5_ch13_death/056.ogg"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_b]People like Erica — people who had Erica's particular gift for the small careful invisible kindness — generally understood that the most precise thanks they received was the not-being-thanked."
+      "text": "[shot:establish_b]People like Erica — people who had Erica's particular gift for the small careful invisible kindness — generally understood that the most precise thanks they received was the not-being-thanked.",
+      "voice": "assets/audio/voice/vol5_ch13_death/057.ogg"
     },
     {
       "t": "narrate",
@@ -260,15 +299,18 @@
     },
     {
       "t": "narrate",
-      "text": "She would not."
+      "text": "She would not.",
+      "voice": "assets/audio/voice/vol5_ch13_death/059.ogg"
     },
     {
       "t": "narrate",
-      "text": "She would not because she could no longer hold a pen for more than about ninety seconds, and because the night nurse would, when she came in at four, find the unfinished letter and would, with the best possible intentions,"
+      "text": "She would not because she could no longer hold a pen for more than about ninety seconds, and because the night nurse would, when she came in at four, find the unfinished letter and would, with the best possible intentions,",
+      "voice": "assets/audio/voice/vol5_ch13_death/060.ogg"
     },
     {
       "t": "narrate",
-      "text": "mention it to Alice's daughter, and Alice's daughter would then attempt to finish the letter on Alice's behalf, and the letter that would arrive at Erica Campbell's desk would not be the letter Alice had meant to write."
+      "text": "mention it to Alice's daughter, and Alice's daughter would then attempt to finish the letter on Alice's behalf, and the letter that would arrive at Erica Campbell's desk would not be the letter Alice had meant to write.",
+      "voice": "assets/audio/voice/vol5_ch13_death/061.ogg"
     },
     {
       "t": "narrate",
@@ -312,23 +354,28 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_b]The presence was not Henry. The presence was older than Henry. The presence was older than Alice."
+      "text": "[shot:establish_b]The presence was not Henry. The presence was older than Henry. The presence was older than Alice.",
+      "voice": "assets/audio/voice/vol5_ch13_death/070.ogg"
     },
     {
       "t": "narrate",
-      "text": "The presence was older than Alice's grandmother, who had died on Alice's seventh birthday and who Alice had felt in the room, then, for the first time,"
+      "text": "The presence was older than Alice's grandmother, who had died on Alice's seventh birthday and who Alice had felt in the room, then, for the first time,",
+      "voice": "assets/audio/voice/vol5_ch13_death/071.ogg"
     },
     {
       "t": "narrate",
-      "text": "in a way that had been so plain and so undramatic that Alice had not, until she was thirteen, realized that other children did not generally have the same experience."
+      "text": "in a way that had been so plain and so undramatic that Alice had not, until she was thirteen, realized that other children did not generally have the same experience.",
+      "voice": "assets/audio/voice/vol5_ch13_death/072.ogg"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert chair]The presence sat, as well as Alice could tell, in the chair by the window. It did not weigh the chair. It did not move the chair."
+      "text": "[shot:insert chair]The presence sat, as well as Alice could tell, in the chair by the window. It did not weigh the chair. It did not move the chair.",
+      "voice": "assets/audio/voice/vol5_ch13_death/073.ogg"
     },
     {
       "t": "narrate",
-      "text": "The chair, Alice noticed without looking, was the chair her daughter had pulled close to the bed yesterday and had then, on her way out, pushed back against the wall, where it sat tonight in the small posture chairs sat in when they were not, immediately, needed."
+      "text": "The chair, Alice noticed without looking, was the chair her daughter had pulled close to the bed yesterday and had then, on her way out, pushed back against the wall, where it sat tonight in the small posture chairs sat in when they were not, immediately, needed.",
+      "voice": "assets/audio/voice/vol5_ch13_death/074.ogg"
     },
     {
       "t": "narrate",
@@ -352,35 +399,43 @@
     },
     {
       "t": "narrate",
-      "text": "She thought about her daughter."
+      "text": "She thought about her daughter.",
+      "voice": "assets/audio/voice/vol5_ch13_death/079.ogg"
     },
     {
       "t": "narrate",
-      "text": "She thought about the small unresolved argument she and her daughter had been having for forty years about something Alice could not, now, fully reconstruct but that had had to do, at the root of it, with Alice's having been a more practical mother than her daughter had wanted."
+      "text": "She thought about the small unresolved argument she and her daughter had been having for forty years about something Alice could not, now, fully reconstruct but that had had to do, at the root of it, with Alice's having been a more practical mother than her daughter had wanted.",
+      "voice": "assets/audio/voice/vol5_ch13_death/080.ogg"
     },
     {
       "t": "narrate",
-      "text": "Alice had not, in the years since, been able to apologize for this, because she did not, on examination, feel that she had been wrong. She had been who she was. Her daughter had wanted who her daughter had wanted."
+      "text": "Alice had not, in the years since, been able to apologize for this, because she did not, on examination, feel that she had been wrong. She had been who she was. Her daughter had wanted who her daughter had wanted.",
+      "voice": "assets/audio/voice/vol5_ch13_death/081.ogg"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]The two had not been the same person. The distance had been the relationship, in some sense; the distance had also been the wound. Both were true. Alice had stopped trying to resolve the both-being-true."
+      "text": "[shot:establish]The two had not been the same person. The distance had been the relationship, in some sense; the distance had also been the wound. Both were true. Alice had stopped trying to resolve the both-being-true.",
+      "voice": "assets/audio/voice/vol5_ch13_death/082.ogg"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert rose]She thought about Henry."
+      "text": "[shot:insert rose]She thought about Henry.",
+      "voice": "assets/audio/voice/vol5_ch13_death/083.ogg"
     },
     {
       "t": "narrate",
-      "text": "She thought about the morning he had come in from the back garden in his old denim shirt with the cuffs rolled up and had said, Allie, the dog dug up the goddamn rose bush again, and had stood there in the kitchen doorway in the small early-July light with the dirt on his hands looking at her,"
+      "text": "She thought about the morning he had come in from the back garden in his old denim shirt with the cuffs rolled up and had said, Allie, the dog dug up the goddamn rose bush again, and had stood there in the kitchen doorway in the small early-July light with the dirt on his hands looking at her,",
+      "voice": "assets/audio/voice/vol5_ch13_death/084.ogg"
     },
     {
       "t": "narrate",
-      "text": "and they had laughed together, the kind of small quiet laugh married people of forty years had at small things that were not actually funny, and Alice had said, I'll plant another one, and Henry had said, I'll dig it up myself this time, and they had laughed again."
+      "text": "and they had laughed together, the kind of small quiet laugh married people of forty years had at small things that were not actually funny, and Alice had said, I'll plant another one, and Henry had said, I'll dig it up myself this time, and they had laughed again.",
+      "voice": "assets/audio/voice/vol5_ch13_death/085.ogg"
     },
     {
       "t": "narrate",
-      "text": "She had not, in the moment, registered the laugh as anything in particular. She registered it now. She had been registering it, on and off, for the last six years."
+      "text": "She had not, in the moment, registered the laugh as anything in particular. She registered it now. She had been registering it, on and off, for the last six years.",
+      "voice": "assets/audio/voice/vol5_ch13_death/086.ogg"
     },
     {
       "t": "narrate",
@@ -404,15 +459,18 @@
     },
     {
       "t": "narrate",
-      "text": "The second presence did not announce itself."
+      "text": "The second presence did not announce itself.",
+      "voice": "assets/audio/voice/vol5_ch13_death/091.ogg"
     },
     {
       "t": "narrate",
-      "text": "The second presence simply settled in beside the first, the way a friend settles in beside another friend on a porch in the late evening, without explanation, because the first friend has been waiting and the second friend has finally arrived."
+      "text": "The second presence simply settled in beside the first, the way a friend settles in beside another friend on a porch in the late evening, without explanation, because the first friend has been waiting and the second friend has finally arrived.",
+      "voice": "assets/audio/voice/vol5_ch13_death/092.ogg"
     },
     {
       "t": "narrate",
-      "text": "Alice did not, even now, turn her head. She had been raised to give people their privacy. She extended the courtesy."
+      "text": "Alice did not, even now, turn her head. She had been raised to give people their privacy. She extended the courtesy.",
+      "voice": "assets/audio/voice/vol5_ch13_death/093.ogg"
     },
     {
       "t": "narrate",
@@ -436,27 +494,33 @@
     },
     {
       "t": "narrate",
-      "text": "Of course. There would be Henry."
+      "text": "Of course. There would be Henry.",
+      "voice": "assets/audio/voice/vol5_ch13_death/098.ogg"
     },
     {
       "t": "narrate",
-      "text": "There would also be her grandmother, who she had not felt since 1962, who had died on her seventh birthday and who had been waiting, evidently, in the wings of the older system, for the appointment."
+      "text": "There would also be her grandmother, who she had not felt since 1962, who had died on her seventh birthday and who had been waiting, evidently, in the wings of the older system, for the appointment.",
+      "voice": "assets/audio/voice/vol5_ch13_death/099.ogg"
     },
     {
       "t": "narrate",
-      "text": "There would be the friend Alice had lost in her thirties to a car accident."
+      "text": "There would be the friend Alice had lost in her thirties to a car accident.",
+      "voice": "assets/audio/voice/vol5_ch13_death/100.ogg"
     },
     {
       "t": "narrate",
-      "text": "There would be the brother she had not spoken to in twenty years and who had, six months ago, sent her a letter she had not yet answered and that she would now, evidently, never answer with a letter."
+      "text": "There would be the brother she had not spoken to in twenty years and who had, six months ago, sent her a letter she had not yet answered and that she would now, evidently, never answer with a letter.",
+      "voice": "assets/audio/voice/vol5_ch13_death/101.ogg"
     },
     {
       "t": "narrate",
-      "text": "There would be the small dog from her childhood whose name had been Buster and whose photograph she had carried, foolishly, in her wallet until she was forty. There would be all of them."
+      "text": "There would be the small dog from her childhood whose name had been Buster and whose photograph she had carried, foolishly, in her wallet until she was forty. There would be all of them.",
+      "voice": "assets/audio/voice/vol5_ch13_death/102.ogg"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_b]They had all been, in the older system, in the same room the whole time. The room had only become visible to her tonight."
+      "text": "[shot:establish_b]They had all been, in the older system, in the same room the whole time. The room had only become visible to her tonight.",
+      "voice": "assets/audio/voice/vol5_ch13_death/103.ogg"
     },
     {
       "t": "narrate",
@@ -470,11 +534,13 @@
     },
     {
       "t": "narrate",
-      "text": "The under-cabinet light hummed at its small reliable frequency. The sage-green wall absorbed the light without commenting on it. The print of the unidentified beach hung steady above the bed."
+      "text": "The under-cabinet light hummed at its small reliable frequency. The sage-green wall absorbed the light without commenting on it. The print of the unidentified beach hung steady above the bed.",
+      "voice": "assets/audio/voice/vol5_ch13_death/106.ogg"
     },
     {
       "t": "narrate",
-      "text": "The Book of Common Prayer remained closed on the bedside table, where it had been doing, in its quiet way, exactly the work it was for."
+      "text": "The Book of Common Prayer remained closed on the bedside table, where it had been doing, in its quiet way, exactly the work it was for.",
+      "voice": "assets/audio/voice/vol5_ch13_death/107.ogg"
     },
     {
       "t": "narrate",
@@ -538,15 +604,18 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:dawn_warm][shot:establish]At four-oh-six AM the night nurse, doing her standard rounds, paused at the door of Room 217. She looked in. She saw what she had been trained, in seventeen years of this work, to recognize without needing to enter the room."
+      "text": "[mood:dawn_warm][shot:establish]At four-oh-six AM the night nurse, doing her standard rounds, paused at the door of Room 217. She looked in. She saw what she had been trained, in seventeen years of this work, to recognize without needing to enter the room.",
+      "voice": "assets/audio/voice/vol5_ch13_death/120.ogg"
     },
     {
       "t": "narrate",
-      "text": "She crossed herself once — she was the kind of nurse who still did this, quietly, without announcing it — and went to the desk to make the small specific call that began the small specific protocol,"
+      "text": "She crossed herself once — she was the kind of nurse who still did this, quietly, without announcing it — and went to the desk to make the small specific call that began the small specific protocol,",
+      "voice": "assets/audio/voice/vol5_ch13_death/121.ogg"
     },
     {
       "t": "narrate",
-      "text": "and then to wake the chaplain, and then to call the daughter, in that order, because in seventeen years she had found that this order produced the least suffering for the largest number of people."
+      "text": "and then to wake the chaplain, and then to call the daughter, in that order, because in seventeen years she had found that this order produced the least suffering for the largest number of people.",
+      "voice": "assets/audio/voice/vol5_ch13_death/122.ogg"
     },
     {
       "t": "narrate",
@@ -560,15 +629,18 @@
     },
     {
       "t": "narrate",
-      "text": "Outside, the city of Simons, Louisiana, kept its quiet pre-dawn."
+      "text": "Outside, the city of Simons, Louisiana, kept its quiet pre-dawn.",
+      "voice": "assets/audio/voice/vol5_ch13_death/125.ogg"
     },
     {
       "t": "narrate",
-      "text": "A single bird that was not, technically, a bird called once into the dark, and was answered, faintly, from the direction of Houston, where in a high-rise office a lawyer named Erica Campbell,"
+      "text": "A single bird that was not, technically, a bird called once into the dark, and was answered, faintly, from the direction of Houston, where in a high-rise office a lawyer named Erica Campbell,",
+      "voice": "assets/audio/voice/vol5_ch13_death/126.ogg"
     },
     {
       "t": "narrate",
-      "text": "who had not slept, paused at her desk with her pen in mid-stroke and could not, for a moment that lasted perhaps three seconds, have said why."
+      "text": "who had not slept, paused at her desk with her pen in mid-stroke and could not, for a moment that lasted perhaps three seconds, have said why.",
+      "voice": "assets/audio/voice/vol5_ch13_death/127.ogg"
     },
     {
       "t": "narrate",

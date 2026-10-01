@@ -29,15 +29,18 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:day_bright]The Bindery occupies a narrow storefront on Live Oak Street, four blocks off the interstate exit for New Auburn."
+   "text": "[mood:day_bright]The Bindery occupies a narrow storefront on Live Oak Street, four blocks off the interstate exit for New Auburn.",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/005.ogg"
   },
   {
    "t": "narrate",
-   "text": "Its front window has books arranged in the lazy attractive chaos of a bookshop that has stopped trying to sell its books and has achieved, instead, a kind of stable ecology with them."
+   "text": "Its front window has books arranged in the lazy attractive chaos of a bookshop that has stopped trying to sell its books and has achieved, instead, a kind of stable ecology with them.",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/006.ogg"
   },
   {
    "t": "narrate",
-   "text": "Its interior smells of old paper, coffee grounds, and the particular dust unique to shops where ceiling fans turn slowly all summer on a single wooden beam."
+   "text": "Its interior smells of old paper, coffee grounds, and the particular dust unique to shops where ceiling fans turn slowly all summer on a single wooden beam.",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/007.ogg"
   },
   {
    "t": "show",
@@ -214,15 +217,18 @@
   },
   {
    "t": "narrate",
-   "text": "The man inside has not moved. He is still reading the Portuguese book."
+   "text": "The man inside has not moved. He is still reading the Portuguese book.",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/037.ogg"
   },
   {
    "t": "narrate",
-   "text": "But the shop's other customer, a woman in a floral dress who had been in the periodicals section when Maya had come in, is now, Maya can see through the glass, at the counter, saying something to the man. The man is nodding."
+   "text": "But the shop's other customer, a woman in a floral dress who had been in the periodicals section when Maya had come in, is now, Maya can see through the glass, at the counter, saying something to the man. The man is nodding.",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/038.ogg"
   },
   {
    "t": "narrate",
-   "text": "The man is not looking at the woman's face. The man is looking at the window — at Maya."
+   "text": "The man is not looking at the woman's face. The man is looking at the window — at Maya.",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/039.ogg"
   },
   {
    "t": "narrate",
@@ -246,11 +252,13 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert envelope]The photograph will be the contents of the envelope. The photograph will be a map. The map will show the east side of Harmony Creek Estates."
+   "text": "[shot:insert envelope]The photograph will be the contents of the envelope. The photograph will be a map. The map will show the east side of Harmony Creek Estates.",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/044.ogg"
   },
   {
    "t": "narrate",
-   "text": "On the map, a small inked circle will surround a particular building that is, as F.T. had said, not currently on any map."
+   "text": "On the map, a small inked circle will surround a particular building that is, as F.T. had said, not currently on any map.",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/045.ogg"
   },
   {
    "t": "narrate",

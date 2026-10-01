@@ -46,15 +46,18 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]Sam slips in."
+   "text": "[shot:establish]Sam slips in.",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/008.ogg"
   },
   {
    "t": "narrate",
-   "text": "The back room of Cosmic Comics is smaller than she imagined — an L-shaped storage and office area, lit by a single overhead with a pull chain, stacked with long boxes and cardboard cartons of new releases still in shrink."
+   "text": "The back room of Cosmic Comics is smaller than she imagined — an L-shaped storage and office area, lit by a single overhead with a pull chain, stacked with long boxes and cardboard cartons of new releases still in shrink.",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/009.ogg"
   },
   {
    "t": "narrate",
-   "text": "There is a small desk in one corner, a mini-fridge, a calendar of cats from 2022 nobody has taken down."
+   "text": "There is a small desk in one corner, a mini-fridge, a calendar of cats from 2022 nobody has taken down.",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/010.ogg"
   },
   {
    "t": "narrate",
@@ -162,13 +165,15 @@
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"Thing one: Diego is alive. He is not at home. He is being held somewhere on the east side of the subdivision. I don't know exactly where yet, but I will by next Sunday. My source on this is a person called F.T."
+   "text": "\"Thing one: Diego is alive. He is not at home. He is being held somewhere on the east side of the subdivision. I don't know exactly where yet, but I will by next Sunday. My source on this is a person called F.T.",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/027.ogg"
   },
   {
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "I don't know who F.T. is. Rick, up front, does know. Rick is not going to tell us. Rick knows some things about our dads that I don't. My grandmother knows some other things about some other people.\""
+   "text": "I don't know who F.T. is. Rick, up front, does know. Rick is not going to tell us. Rick knows some things about our dads that I don't. My grandmother knows some other things about some other people.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/028.ogg"
   },
   {
    "t": "narrate",
@@ -179,13 +184,15 @@
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"Thing two: your dad knows. About Diego. Not necessarily because he caused it — I don't know that part yet. But he knows, and he has chosen not to tell you. He came by Diego's grandmother's house Sunday morning at seven."
+   "text": "\"Thing two: your dad knows. About Diego. Not necessarily because he caused it — I don't know that part yet. But he knows, and he has chosen not to tell you. He came by Diego's grandmother's house Sunday morning at seven.",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/030.ogg"
   },
   {
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "He sat in his truck at the end of the driveway for eleven minutes. He did not knock.\""
+   "text": "He sat in his truck at the end of the driveway for eleven minutes. He did not knock.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/031.ogg"
   },
   {
    "t": "narrate",
@@ -210,13 +217,15 @@
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "[shot:closeup person_b]\"Thing three: there are other adults in this town who know. I don't mean bad. I mean on your side. My grandmother. Rick. A bookshop guy in New Auburn named Hal. Diego's grandmother."
+   "text": "[shot:closeup person_b]\"Thing three: there are other adults in this town who know. I don't mean bad. I mean on your side. My grandmother. Rick. A bookshop guy in New Auburn named Hal. Diego's grandmother.",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/035.ogg"
   },
   {
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "There's a reporter from the Houston Chronicle working on something. There are two people in a white sedan parked at the Kwik Stop for the past two days —\""
+   "text": "There's a reporter from the Houston Chronicle working on something. There are two people in a white sedan parked at the Kwik Stop for the past two days —\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/036.ogg"
   },
   {
    "t": "say",
@@ -267,13 +276,15 @@
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "[shot:closeup person_b]\"Because my dad was in it. Not this specifically. Something like this, somewhere else, a long time ago. He sent me up here to get out of it. My grandmother has been waiting."
+   "text": "[shot:closeup person_b]\"Because my dad was in it. Not this specifically. Something like this, somewhere else, a long time ago. He sent me up here to get out of it. My grandmother has been waiting.",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/044.ogg"
   },
   {
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "The people she was waiting to hear from started talking to her last week. They told her I was ready.\""
+   "text": "The people she was waiting to hear from started talking to her last week. They told her I was ready.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/045.ogg"
   },
   {
    "t": "say",
@@ -331,13 +342,15 @@
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"Today? Nothing. We let ourselves meet. We let me make the map I am going to make. We let you go home and practice being a regular teenager around your regular father for the next five days."
+   "text": "\"Today? Nothing. We let ourselves meet. We let me make the map I am going to make. We let you go home and practice being a regular teenager around your regular father for the next five days.",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/054.ogg"
   },
   {
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "F.T. thinks you are going to be fast when you decide to move. He is not wrong to think that. He also thinks we are not supposed to move yet.\""
+   "text": "F.T. thinks you are going to be fast when you decide to move. He is not wrong to think that. He also thinks we are not supposed to move yet.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/055.ogg"
   },
   {
    "t": "say",
@@ -421,13 +434,15 @@
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"I don't know you very well yet. But I'm going to say this, because my grandmother said it to me last night and it helped: you are allowed to be this scared. You are allowed to be this angry."
+   "text": "\"I don't know you very well yet. But I'm going to say this, because my grandmother said it to me last night and it helped: you are allowed to be this scared. You are allowed to be this angry.",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/068.ogg"
   },
   {
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "What you are not allowed to be is alone in it. I'm here. I'm the one who was sent, or I volunteered, or both — I don't know. But I'm in this with you until we find him.\""
+   "text": "What you are not allowed to be is alone in it. I'm here. I'm the one who was sent, or I volunteered, or both — I don't know. But I'm in this with you until we find him.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/069.ogg"
   },
   {
    "t": "narrate",
@@ -541,13 +556,15 @@
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"He's keeping a legal pad. He has been watching cars and off-duty cops and the backyard wrestling at the McClary place since March. He's one of us. He doesn't know that yet. Jesse Henderson found out yesterday."
+   "text": "\"He's keeping a legal pad. He has been watching cars and off-duty cops and the backyard wrestling at the McClary place since March. He's one of us. He doesn't know that yet. Jesse Henderson found out yesterday.",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/086.ogg"
   },
   {
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "Jesse's dad is taking photographs that are — Jesse's dad is not okay, Sam. His photographs are showing figures that were not in the frame. One of the figures is looking at him.\""
+   "text": "Jesse's dad is taking photographs that are — Jesse's dad is not okay, Sam. His photographs are showing figures that were not in the frame. One of the figures is looking at him.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/087.ogg"
   },
   {
    "t": "say",

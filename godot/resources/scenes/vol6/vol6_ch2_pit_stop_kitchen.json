@@ -35,11 +35,13 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:kitchen_practical][shot:closeup ben]Ben Kowalski is on the grill. He has been on the grill since eleven, working the lunch rush."
+   "text": "[mood:kitchen_practical][shot:closeup ben]Ben Kowalski is on the grill. He has been on the grill since eleven, working the lunch rush.",
+   "voice": "assets/audio/voice/vol6_ch2_pit_stop_kitchen/006.ogg"
   },
   {
    "t": "narrate",
-   "text": "The lunch rush at the Pit Stop is not really a rush — it is a steady shuffle of HOA maintenance guys, retirees, a handful of NexCorp van drivers on their midday break, and the occasional salesman passing through New Auburn on the state highway."
+   "text": "The lunch rush at the Pit Stop is not really a rush — it is a steady shuffle of HOA maintenance guys, retirees, a handful of NexCorp van drivers on their midday break, and the occasional salesman passing through New Auburn on the state highway.",
+   "voice": "assets/audio/voice/vol6_ch2_pit_stop_kitchen/007.ogg"
   },
   {
    "t": "narrate",
@@ -48,15 +50,18 @@
   },
   {
    "t": "narrate",
-   "text": "The brace is from Saturday night."
+   "text": "The brace is from Saturday night.",
+   "voice": "assets/audio/voice/vol6_ch2_pit_stop_kitchen/009.ogg"
   },
   {
    "t": "narrate",
-   "text": "The brace is from the backyard-wrestling thing at the McClary place, which Ben has been attending on Saturdays since March, because the McClary kid is a junior wrestling coach at the high school, because the scene is —"
+   "text": "The brace is from the backyard-wrestling thing at the McClary place, which Ben has been attending on Saturdays since March, because the McClary kid is a junior wrestling coach at the high school, because the scene is —",
+   "voice": "assets/audio/voice/vol6_ch2_pit_stop_kitchen/010.ogg"
   },
   {
    "t": "narrate",
-   "text": "Ben has been telling himself — just a scene, it's just kids letting off steam, and because Ben has been watching, without putting it in those words, for the specific pattern he has been watching for."
+   "text": "Ben has been telling himself — just a scene, it's just kids letting off steam, and because Ben has been watching, without putting it in those words, for the specific pattern he has been watching for.",
+   "voice": "assets/audio/voice/vol6_ch2_pit_stop_kitchen/011.ogg"
   },
   {
    "t": "narrate",
@@ -65,15 +70,18 @@
   },
   {
    "t": "narrate",
-   "text": "On Saturday, Ben had — for the first time — entered the ring himself. Not because he wanted to."
+   "text": "On Saturday, Ben had — for the first time — entered the ring himself. Not because he wanted to.",
+   "voice": "assets/audio/voice/vol6_ch2_pit_stop_kitchen/013.ogg"
   },
   {
    "t": "narrate",
-   "text": "Because one of the officers, off-duty, had said, in the particular casual voice adult men used when they were escalating something in the presence of teenagers — \"you ever wrestle, big guy?\" Ben had said no."
+   "text": "Because one of the officers, off-duty, had said, in the particular casual voice adult men used when they were escalating something in the presence of teenagers — \"you ever wrestle, big guy?\" Ben had said no.",
+   "voice": "assets/audio/voice/vol6_ch2_pit_stop_kitchen/014.ogg"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]The officer had said you should try. The small crowd had gotten larger."
+   "text": "[shot:establish]The officer had said you should try. The small crowd had gotten larger.",
+   "voice": "assets/audio/voice/vol6_ch2_pit_stop_kitchen/015.ogg"
   },
   {
    "t": "narrate",
@@ -87,11 +95,13 @@
   },
   {
    "t": "narrate",
-   "text": "The officer who had proposed the match had clapped Ben on the shoulder afterward and said, in the same casual voice — \"thought so. you're the quiet type, aren't ya.\" Ben had nodded."
+   "text": "The officer who had proposed the match had clapped Ben on the shoulder afterward and said, in the same casual voice — \"thought so. you're the quiet type, aren't ya.\" Ben had nodded.",
+   "voice": "assets/audio/voice/vol6_ch2_pit_stop_kitchen/018.ogg"
   },
   {
    "t": "narrate",
-   "text": "The officer had said — \"come back next Saturday. we'll put you in with somebody your size.\""
+   "text": "The officer had said — \"come back next Saturday. we'll put you in with somebody your size.\"",
+   "voice": "assets/audio/voice/vol6_ch2_pit_stop_kitchen/019.ogg"
   },
   {
    "t": "narrate",
@@ -105,11 +115,13 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:macro_haze][shot:insert window]He was cataloguing the specific cars in the parking lot from the kitchen window. He was noting that the unmarked NexCorp van he had flagged on Thursday was not in the lot today."
+   "text": "[mood:macro_haze][shot:insert window]He was cataloguing the specific cars in the parking lot from the kitchen window. He was noting that the unmarked NexCorp van he had flagged on Thursday was not in the lot today.",
+   "voice": "assets/audio/voice/vol6_ch2_pit_stop_kitchen/022.ogg"
   },
   {
    "t": "narrate",
-   "text": "He was noting that a black pickup with Louisiana plates was, for the second day in a row, parked at the edge of the Pit Stop lot without its driver coming in."
+   "text": "He was noting that a black pickup with Louisiana plates was, for the second day in a row, parked at the edge of the Pit Stop lot without its driver coming in.",
+   "voice": "assets/audio/voice/vol6_ch2_pit_stop_kitchen/023.ogg"
   },
   {
    "t": "narrate",
@@ -118,15 +130,18 @@
   },
   {
    "t": "narrate",
-   "text": "Ben did not, Ben had realized at about eleven-thirty AM, know Diego well. Ben and Diego were not friends, exactly."
+   "text": "Ben did not, Ben had realized at about eleven-thirty AM, know Diego well. Ben and Diego were not friends, exactly.",
+   "voice": "assets/audio/voice/vol6_ch2_pit_stop_kitchen/025.ogg"
   },
   {
    "t": "narrate",
-   "text": "They were the kind of acquaintance a big quiet teenager at the diner had with a compact serious teenager at the gas station — which is to say,"
+   "text": "They were the kind of acquaintance a big quiet teenager at the diner had with a compact serious teenager at the gas station — which is to say,",
+   "voice": "assets/audio/voice/vol6_ch2_pit_stop_kitchen/026.ogg"
   },
   {
    "t": "narrate",
-   "text": "they had worked the same shifts on a shared sidewalk and had, over the past two years, spoken to each other maybe forty times, mostly about the weather and about the contents of vending machines."
+   "text": "they had worked the same shifts on a shared sidewalk and had, over the past two years, spoken to each other maybe forty times, mostly about the weather and about the contents of vending machines.",
+   "voice": "assets/audio/voice/vol6_ch2_pit_stop_kitchen/027.ogg"
   },
   {
    "t": "narrate",
@@ -135,15 +150,18 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert phone]Ben had noticed the red dots because Ben had, one afternoon in March, been at the Gas & Go buying a Powerade, and Diego had been working, and Diego's phone had been face-up on the counter beside the register, and the wallpaper on Diego's phone had been a photograph of a calendar —"
+   "text": "[shot:insert phone]Ben had noticed the red dots because Ben had, one afternoon in March, been at the Gas & Go buying a Powerade, and Diego had been working, and Diego's phone had been face-up on the counter beside the register, and the wallpaper on Diego's phone had been a photograph of a calendar —",
+   "voice": "assets/audio/voice/vol6_ch2_pit_stop_kitchen/029.ogg"
   },
   {
    "t": "narrate",
-   "text": "a calendar Ben had recognized, because Ben's own mother had a calendar from the same brand on her refrigerator — and on the photograph, Ben had been able to see, in the upper right corner of the image, the small colored dots Diego had been placing on specific days."
+   "text": "a calendar Ben had recognized, because Ben's own mother had a calendar from the same brand on her refrigerator — and on the photograph, Ben had been able to see, in the upper right corner of the image, the small colored dots Diego had been placing on specific days.",
+   "voice": "assets/audio/voice/vol6_ch2_pit_stop_kitchen/030.ogg"
   },
   {
    "t": "narrate",
-   "text": "Two colors. Blue. Red."
+   "text": "Two colors. Blue. Red.",
+   "voice": "assets/audio/voice/vol6_ch2_pit_stop_kitchen/031.ogg"
   },
   {
    "t": "narrate",
@@ -158,12 +176,14 @@
   {
    "t": "think",
    "char": "Ben",
-   "text": "Ramos kid: red dots escalating March through May. Red dots are his own system. Red dots flag something he had noticed at the Gas & Go about specific shifts. Ramos kid disappears on a Saturday night after a Saturday shift."
+   "text": "Ramos kid: red dots escalating March through May. Red dots are his own system. Red dots flag something he had noticed at the Gas & Go about specific shifts. Ramos kid disappears on a Saturday night after a Saturday shift.",
+   "voice": "assets/audio/voice/vol6_ch2_pit_stop_kitchen/034.ogg"
   },
   {
    "t": "think",
    "char": "Ben",
-   "text": "Saturday shift would have had a red dot. I would bet the Powerade I am not buying today that Saturday's red dot was the reason."
+   "text": "Saturday shift would have had a red dot. I would bet the Powerade I am not buying today that Saturday's red dot was the reason.",
+   "voice": "assets/audio/voice/vol6_ch2_pit_stop_kitchen/035.ogg"
   },
   {
    "t": "narrate",
@@ -218,15 +238,18 @@
   },
   {
    "t": "narrate",
-   "text": "Ben looked at him. Jesse was, at twenty, taller than Ben in height but slighter, all knees and elbows, with the kind of hair that had been a choice in 2018 and had, since, become a habit."
+   "text": "Ben looked at him. Jesse was, at twenty, taller than Ben in height but slighter, all knees and elbows, with the kind of hair that had been a choice in 2018 and had, since, become a habit.",
+   "voice": "assets/audio/voice/vol6_ch2_pit_stop_kitchen/044.ogg"
   },
   {
    "t": "narrate",
-   "text": "He was wearing his Pit Stop shirt untucked and a band tee underneath — Suburban Blight, which was the name of Jesse's own band. He looked tired."
+   "text": "He was wearing his Pit Stop shirt untucked and a band tee underneath — Suburban Blight, which was the name of Jesse's own band. He looked tired.",
+   "voice": "assets/audio/voice/vol6_ch2_pit_stop_kitchen/045.ogg"
   },
   {
    "t": "narrate",
-   "text": "He looked, specifically, like a kid who had not slept because of something he had seen."
+   "text": "He looked, specifically, like a kid who had not slept because of something he had seen.",
+   "voice": "assets/audio/voice/vol6_ch2_pit_stop_kitchen/046.ogg"
   },
   {
    "t": "say",

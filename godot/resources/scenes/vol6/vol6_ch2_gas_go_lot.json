@@ -50,11 +50,13 @@
     },
     {
       "t": "narrate",
-      "text": "She is not, in the end, going over there. She has just had the conversation with herself about whether to go over there. She has lost the conversation."
+      "text": "She is not, in the end, going over there. She has just had the conversation with herself about whether to go over there. She has lost the conversation.",
+      "voice": "assets/audio/voice/vol6_ch2_gas_go_lot/009.ogg"
     },
     {
       "t": "narrate",
-      "text": "Or — she has won it, depending on which version of herself she has decided, for this afternoon, to be on the side of."
+      "text": "Or — she has won it, depending on which version of herself she has decided, for this afternoon, to be on the side of.",
+      "voice": "assets/audio/voice/vol6_ch2_gas_go_lot/010.ogg"
     },
     {
       "t": "narrate",
@@ -172,11 +174,13 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2][shot:establish]At the kitchen table, her father is eating dinner. Meatloaf. Her mother made it. Her mother is at the stove finishing the green beans. The kitchen smells the way the kitchen always smells on Monday night in Harmony Creek Estates."
+      "text": "[trip:1.2][shot:establish]At the kitchen table, her father is eating dinner. Meatloaf. Her mother made it. Her mother is at the stove finishing the green beans. The kitchen smells the way the kitchen always smells on Monday night in Harmony Creek Estates.",
+      "voice": "assets/audio/voice/vol6_ch2_gas_go_lot/030.ogg"
     },
     {
       "t": "narrate",
-      "text": "The small flat screen mounted above the breakfast nook is tuned to local news, volume low."
+      "text": "The small flat screen mounted above the breakfast nook is tuned to local news, volume low.",
+      "voice": "assets/audio/voice/vol6_ch2_gas_go_lot/031.ogg"
     },
     {
       "t": "say",

@@ -91,12 +91,14 @@
     {
       "t": "think",
       "char": "Sam",
-      "text": "[shot:closeup sam~]I do not know how this morning will end. I know my father is, right now, choosing the worse and harder thing. I know Diego is somewhere west of me being driven, at this moment, by a man whose name I do not know."
+      "text": "[shot:closeup sam~]I do not know how this morning will end. I know my father is, right now, choosing the worse and harder thing. I know Diego is somewhere west of me being driven, at this moment, by a man whose name I do not know.",
+      "voice": "assets/audio/voice/vol6_ch6_kwik_stop_text/015.ogg"
     },
     {
       "t": "think",
       "char": "Sam",
-      "text": "I know the four of my friends are at their stations doing the small ordinary work of being teenagers in a Texas town on a Friday in late May."
+      "text": "I know the four of my friends are at their stations doing the small ordinary work of being teenagers in a Texas town on a Friday in late May.",
+      "voice": "assets/audio/voice/vol6_ch6_kwik_stop_text/016.ogg"
     },
     {
       "t": "think",

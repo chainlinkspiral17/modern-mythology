@@ -34,15 +34,18 @@
     },
     {
       "t": "narrate",
-      "text": "Diego does the math without thinking about it — the cans are stacked four high instead of three, which puts the center of gravity above the strap line,"
+      "text": "Diego does the math without thinking about it — the cans are stacked four high instead of three, which puts the center of gravity above the strap line,",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/006.ogg"
     },
     {
       "t": "narrate",
-      "text": "which means the whole thing wants to lean when he tilts the hand truck back, which means he has to take the corner from receiving into Aisle Seven a half-step wider than he would otherwise. He takes the corner wide."
+      "text": "which means the whole thing wants to lean when he tilts the hand truck back, which means he has to take the corner from receiving into Aisle Seven a half-step wider than he would otherwise. He takes the corner wide.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/007.ogg"
     },
     {
       "t": "narrate",
-      "text": "The pallet does not fall."
+      "text": "The pallet does not fall.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/008.ogg"
     },
     {
       "t": "show",
@@ -103,15 +106,18 @@
     },
     {
       "t": "narrate",
-      "text": "Diego parks the hand truck. He starts pulling cases of stewed tomatoes off the pallet and onto the lower shelf. The store is, at three-fourteen AM, doing the quiet of a building that has not had a customer since eleven."
+      "text": "Diego parks the hand truck. He starts pulling cases of stewed tomatoes off the pallet and onto the lower shelf. The store is, at three-fourteen AM, doing the quiet of a building that has not had a customer since eleven.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/018.ogg"
     },
     {
       "t": "narrate",
-      "text": "The ambient music — which is what the company calls it, ambient music, in the corporate playlist that auto-rotates between an instrumental cover of \"Don't Stop Believin'\" and an instrumental cover of \"Africa\" and an instrumental cover of an Adele song Diego cannot,"
+      "text": "The ambient music — which is what the company calls it, ambient music, in the corporate playlist that auto-rotates between an instrumental cover of \"Don't Stop Believin'\" and an instrumental cover of \"Africa\" and an instrumental cover of an Adele song Diego cannot,",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/019.ogg"
     },
     {
       "t": "narrate",
-      "text": "by the cover, identify — has been on the same loop since he got here at ten. He has stopped, around midnight, hearing it."
+      "text": "by the cover, identify — has been on the same loop since he got here at ten. He has stopped, around midnight, hearing it.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/020.ogg"
     },
     {
       "t": "narrate",
@@ -120,19 +126,23 @@
     },
     {
       "t": "narrate",
-      "text": "The hum is not the substation hum. He knows the difference. The substation hum had been a B-flat with intent."
+      "text": "The hum is not the substation hum. He knows the difference. The substation hum had been a B-flat with intent.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/022.ogg"
     },
     {
       "t": "narrate",
-      "text": "This hum is a fluorescent's hum, which is a thing buildings do because buildings have ballasts, and ballasts make a sound, and the sound is the sound of an electrical thing being electrical."
+      "text": "This hum is a fluorescent's hum, which is a thing buildings do because buildings have ballasts, and ballasts make a sound, and the sound is the sound of an electrical thing being electrical.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/023.ogg"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert five]He has been making this distinction for himself since his first shift at Centro five weeks ago. The distinction is, by his fifth week, automatic. He no longer has to make it. The fluorescent is a fluorescent. The hum is a hum."
+      "text": "[shot:insert five]He has been making this distinction for himself since his first shift at Centro five weeks ago. The distinction is, by his fifth week, automatic. He no longer has to make it. The fluorescent is a fluorescent. The hum is a hum.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/024.ogg"
     },
     {
       "t": "narrate",
-      "text": "The store is a store."
+      "text": "The store is a store.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/025.ogg"
     },
     {
       "t": "narrate",
@@ -141,27 +151,33 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]Down the aisle, Russell is in dry pasta. Russell does not talk during stocking."
+      "text": "[shot:insert phone]Down the aisle, Russell is in dry pasta. Russell does not talk during stocking.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/027.ogg"
     },
     {
       "t": "narrate",
-      "text": "Russell talks during the breaks, and Russell talks during the team meeting at ten, and Russell talks at the end of the shift while everyone is collecting their water bottles and their phones from the break room."
+      "text": "Russell talks during the breaks, and Russell talks during the team meeting at ten, and Russell talks at the end of the shift while everyone is collecting their water bottles and their phones from the break room.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/028.ogg"
     },
     {
       "t": "narrate",
-      "text": "During the work, Russell is silent in the specific way men of his age are silent — a silence that does not, Diego has learned, contain anger or distance, just the simple fact of a man whose body knows the work and whose mind, during the work, is somewhere else of its own choosing."
+      "text": "During the work, Russell is silent in the specific way men of his age are silent — a silence that does not, Diego has learned, contain anger or distance, just the simple fact of a man whose body knows the work and whose mind, during the work, is somewhere else of its own choosing.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/029.ogg"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup bt]BT — Brandon, on his name tag, but the team has been calling him BT since week two and the name has stuck — is in cereal. Cereal is the easiest aisle."
+      "text": "[shot:closeup bt]BT — Brandon, on his name tag, but the team has been calling him BT since week two and the name has stuck — is in cereal. Cereal is the easiest aisle.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/030.ogg"
     },
     {
       "t": "narrate",
-      "text": "Cereal is the aisle Jessa puts the new people in for their first three weeks, because the boxes are light and the misshelving is forgiving, and after the first three weeks she rotates them out. BT has been at Centro for six weeks."
+      "text": "Cereal is the aisle Jessa puts the new people in for their first three weeks, because the boxes are light and the misshelving is forgiving, and after the first three weeks she rotates them out. BT has been at Centro for six weeks.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/031.ogg"
     },
     {
       "t": "narrate",
-      "text": "BT is still in cereal."
+      "text": "BT is still in cereal.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/032.ogg"
     },
     {
       "t": "narrate",
@@ -181,19 +197,23 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup jessa]Jessa comes through Aisle Seven at three twenty-one. She does not stop. She is doing her midnight-to-four-AM walk-through, which she does on every shift,"
+      "text": "[shot:closeup jessa]Jessa comes through Aisle Seven at three twenty-one. She does not stop. She is doing her midnight-to-four-AM walk-through, which she does on every shift,",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/036.ogg"
     },
     {
       "t": "narrate",
-      "text": "in which she covers all twelve aisles and the produce wet wall and the dairy case and the meat counter and the back stockroom and the dock and the manager's office and the break room, in that order, in roughly forty minutes."
+      "text": "in which she covers all twelve aisles and the produce wet wall and the dairy case and the meat counter and the back stockroom and the dock and the manager's office and the break room, in that order, in roughly forty minutes.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/037.ogg"
     },
     {
       "t": "narrate",
-      "text": "She does it without notes."
+      "text": "She does it without notes.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/038.ogg"
     },
     {
       "t": "narrate",
-      "text": "She does it because she likes to know where her people are and what shape the work is in, and because the walk-through gives her, four hours into the shift, the small sustained physical movement her job otherwise denies her."
+      "text": "She does it because she likes to know where her people are and what shape the work is in, and because the walk-through gives her, four hours into the shift, the small sustained physical movement her job otherwise denies her.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/039.ogg"
     },
     {
       "t": "narrate",
@@ -232,39 +252,48 @@
     },
     {
       "t": "narrate",
-      "text": "Diego, watching her go up the aisle, registers the small thing he registers every time Jessa says something to him during a shift: that she has, in the four seconds it took her to pass,"
+      "text": "Diego, watching her go up the aisle, registers the small thing he registers every time Jessa says something to him during a shift: that she has, in the four seconds it took her to pass,",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/046.ogg"
     },
     {
       "t": "narrate",
-      "text": "made a complete read of his work and his body and the pallet and the corner, and has determined that he is fine, and has communicated the determination by the specific economy of good without a sentence around it."
+      "text": "made a complete read of his work and his body and the pallet and the corner, and has determined that he is fine, and has communicated the determination by the specific economy of good without a sentence around it.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/047.ogg"
     },
     {
       "t": "narrate",
-      "text": "The communication is, by his fifth week, the thing about Jessa he has come to count on."
+      "text": "The communication is, by his fifth week, the thing about Jessa he has come to count on.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/048.ogg"
     },
     {
       "t": "narrate",
-      "text": "She has not, in five weeks, asked him about himself. She does not, he understands, intend to. The not-asking is not coldness."
+      "text": "She has not, in five weeks, asked him about himself. She does not, he understands, intend to. The not-asking is not coldness.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/049.ogg"
     },
     {
       "t": "narrate",
-      "text": "The not-asking is a thing she is doing on purpose, and the thing she is doing on purpose is allowing him to be at her store as exactly the worker he is presenting as, with no second register required."
+      "text": "The not-asking is a thing she is doing on purpose, and the thing she is doing on purpose is allowing him to be at her store as exactly the worker he is presenting as, with no second register required.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/050.ogg"
     },
     {
       "t": "narrate",
-      "text": "He has, at home in his bedroom, thought about this. He has thought about it at four-thirty in the afternoon when he is waking up to the smell of his grandmother starting his breakfast — which is, for him, dinner — downstairs."
+      "text": "He has, at home in his bedroom, thought about this. He has thought about it at four-thirty in the afternoon when he is waking up to the smell of his grandmother starting his breakfast — which is, for him, dinner — downstairs.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/051.ogg"
     },
     {
       "t": "narrate",
-      "text": "He has thought about it on the drive in, in the truck which he is again driving and which he has not, since June, asked himself how he feels about driving."
+      "text": "He has thought about it on the drive in, in the truck which he is again driving and which he has not, since June, asked himself how he feels about driving.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/052.ogg"
     },
     {
       "t": "narrate",
-      "text": "He has thought, in those moments, that Jessa is the first adult in his life who has, in his presence, behaved as if his presence required no special accommodation, and that this absence-of-accommodation is — he does not have a word for it."
+      "text": "He has thought, in those moments, that Jessa is the first adult in his life who has, in his presence, behaved as if his presence required no special accommodation, and that this absence-of-accommodation is — he does not have a word for it.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/053.ogg"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Restorative. Dignifying. A thing he did not know he was, this summer, going to need."
+      "text": "[shot:establish]Restorative. Dignifying. A thing he did not know he was, this summer, going to need.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/054.ogg"
     },
     {
       "t": "narrate",
@@ -292,23 +321,28 @@
     },
     {
       "t": "narrate",
-      "text": "Doug is doing the work the way Doug does the work, which is the work of a man who has, in his life, done many kinds of work and who has discovered — late, but he has discovered it — that the work that asks the least of his interior is the work he is, this year, best suited to."
+      "text": "Doug is doing the work the way Doug does the work, which is the work of a man who has, in his life, done many kinds of work and who has discovered — late, but he has discovered it — that the work that asks the least of his interior is the work he is, this year, best suited to.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/060.ogg"
     },
     {
       "t": "narrate",
-      "text": "Half-gallon milk into the cooler. Restock by code date. Front-face the labels. Move the older to the front, the newer to the back. Repeat. Repeat for two thousand gallons in a shift."
+      "text": "Half-gallon milk into the cooler. Restock by code date. Front-face the labels. Move the older to the front, the newer to the back. Repeat. Repeat for two thousand gallons in a shift.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/061.ogg"
     },
     {
       "t": "narrate",
-      "text": "He has, propped against the lower shelf where his break thermos sits, a paperback."
+      "text": "He has, propped against the lower shelf where his break thermos sits, a paperback.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/062.ogg"
     },
     {
       "t": "narrate",
-      "text": "The paperback is from 1976, a Penguin Classic edition of The Brothers Karamazov, with a spine that has been creased and re-creased so many times the title is mostly suggestion. He bought it at a bookstore in Beaumont in 1998."
+      "text": "The paperback is from 1976, a Penguin Classic edition of The Brothers Karamazov, with a spine that has been creased and re-creased so many times the title is mostly suggestion. He bought it at a bookstore in Beaumont in 1998.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/063.ogg"
     },
     {
       "t": "narrate",
-      "text": "He has, in the years since, carried it through three states and two divorces. He has read it, beginning to end, eleven times."
+      "text": "He has, in the years since, carried it through three states and two divorces. He has read it, beginning to end, eleven times.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/064.ogg"
     },
     {
       "t": "narrate",
@@ -328,11 +362,13 @@
     },
     {
       "t": "narrate",
-      "text": "He pulls another half-gallon. He front-faces the label. He registers, peripherally, that BT has come into dairy and is standing at the end of the aisle with two cases of yogurt that BT does not know what to do with"
+      "text": "He pulls another half-gallon. He front-faces the label. He registers, peripherally, that BT has come into dairy and is standing at the end of the aisle with two cases of yogurt that BT does not know what to do with",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/068.ogg"
     },
     {
       "t": "narrate",
-      "text": "because Aisle Eleven is full and the overflow shelf has not been designated yet because Jessa has been meaning to designate one but has not had the fifteen minutes."
+      "text": "because Aisle Eleven is full and the overflow shelf has not been designated yet because Jessa has been meaning to designate one but has not had the fifteen minutes.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/069.ogg"
     },
     {
       "t": "narrate",
@@ -403,11 +439,13 @@
     },
     {
       "t": "narrate",
-      "text": "Doug, who has been in this room with this question — or its functional equivalent — three times this week, does not, this time, answer it. Doug returns to the half-gallons. Doug pulls another. Doug front-faces the label."
+      "text": "Doug, who has been in this room with this question — or its functional equivalent — three times this week, does not, this time, answer it. Doug returns to the half-gallons. Doug pulls another. Doug front-faces the label.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/081.ogg"
     },
     {
       "t": "narrate",
-      "text": "The conversation, by Doug's not-completing-it, is over."
+      "text": "The conversation, by Doug's not-completing-it, is over.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/082.ogg"
     },
     {
       "t": "narrate",
@@ -463,15 +501,18 @@
     },
     {
       "t": "narrate",
-      "text": "The break room is at the back of the store, off the dock corridor, with a single exterior door that opens onto the loading dock and the dumpster pad and the cedar scrub beyond. There is a card table with four mismatched chairs."
+      "text": "The break room is at the back of the store, off the dock corridor, with a single exterior door that opens onto the loading dock and the dumpster pad and the cedar scrub beyond. There is a card table with four mismatched chairs.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/094.ogg"
     },
     {
       "t": "narrate",
-      "text": "There is a microwave that has been at Centro since 2009. There is a refrigerator with a sign that says LABEL YOUR FOOD OR IT GETS THROWN OUT in a hand that is, by Marisol's later confirmation, Jessa's."
+      "text": "There is a microwave that has been at Centro since 2009. There is a refrigerator with a sign that says LABEL YOUR FOOD OR IT GETS THROWN OUT in a hand that is, by Marisol's later confirmation, Jessa's.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/095.ogg"
     },
     {
       "t": "narrate",
-      "text": "There is a bulletin board with a printed schedule and a printed inventory countdown — INVENTORY FRIDAY NIGHT — 12 AM SHARP — ALL HANDS — and a printed safety reminder from the corporate office about not propping the cooler doors with milk crates."
+      "text": "There is a bulletin board with a printed schedule and a printed inventory countdown — INVENTORY FRIDAY NIGHT — 12 AM SHARP — ALL HANDS — and a printed safety reminder from the corporate office about not propping the cooler doors with milk crates.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/096.ogg"
     },
     {
       "t": "show",
@@ -493,15 +534,18 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert coffee]Russell is at the card table eating a banana and reading a folded section of yesterday's San Antonio Express-News he has brought from home."
+      "text": "[shot:insert coffee]Russell is at the card table eating a banana and reading a folded section of yesterday's San Antonio Express-News he has brought from home.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/100.ogg"
     },
     {
       "t": "narrate",
-      "text": "Marisol is at the microwave heating up a tupperware of something her sister-in-law sent down on Sunday. Doug is at the chair against the wall with the Karamazov open on his lap."
+      "text": "Marisol is at the microwave heating up a tupperware of something her sister-in-law sent down on Sunday. Doug is at the chair against the wall with the Karamazov open on his lap.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/101.ogg"
     },
     {
       "t": "narrate",
-      "text": "Diego is at the door to the dock with a paper cup of coffee from the pot Jessa keeps going on the counter. BT is in the corner near the bulletin board, on his phone."
+      "text": "Diego is at the door to the dock with a paper cup of coffee from the pot Jessa keeps going on the counter. BT is in the corner near the bulletin board, on his phone.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/102.ogg"
     },
     {
       "t": "show",
@@ -516,11 +560,13 @@
     },
     {
       "t": "narrate",
-      "text": "She comes in for forty-five seconds, which is what she does on every break — she walks in, refills her own coffee from the pot, takes one sip, and walks back out. She does not, on breaks, sit. She does not, on breaks, talk."
+      "text": "She comes in for forty-five seconds, which is what she does on every break — she walks in, refills her own coffee from the pot, takes one sip, and walks back out. She does not, on breaks, sit. She does not, on breaks, talk.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/105.ogg"
     },
     {
       "t": "narrate",
-      "text": "The ritual is, by Diego's fifth week, the thing he has come to associate with the architecture of a shift run by a person who knows what she is doing."
+      "text": "The ritual is, by Diego's fifth week, the thing he has come to associate with the architecture of a shift run by a person who knows what she is doing.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/106.ogg"
     },
     {
       "t": "narrate",
@@ -653,11 +699,13 @@
     },
     {
       "t": "narrate",
-      "text": "Diego, at the door, does not say anything. Diego, this summer, is the kind of worker on the team who does not, on his five-AM break, contribute to the inventory complaining. He knows he doesn't have to."
+      "text": "Diego, at the door, does not say anything. Diego, this summer, is the kind of worker on the team who does not, on his five-AM break, contribute to the inventory complaining. He knows he doesn't have to.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/128.ogg"
     },
     {
       "t": "narrate",
-      "text": "He has been here five weeks and he is sixteen and the team has, in the small ways teams do, decided that his contribution to the social maintenance of the break room is to sit by the door with his coffee and listen, and that this is a fair contribution."
+      "text": "He has been here five weeks and he is sixteen and the team has, in the small ways teams do, decided that his contribution to the social maintenance of the break room is to sit by the door with his coffee and listen, and that this is a fair contribution.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/129.ogg"
     },
     {
       "t": "say",
@@ -706,15 +754,18 @@
     },
     {
       "t": "narrate",
-      "text": "Diego registers — with the small careful attention he has been training all summer, and that, this summer, has become the thing his attention does without his asking it to — that the room has just declined, in a small unified way, to extend a conversation to BT."
+      "text": "Diego registers — with the small careful attention he has been training all summer, and that, this summer, has become the thing his attention does without his asking it to — that the room has just declined, in a small unified way, to extend a conversation to BT.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/137.ogg"
     },
     {
       "t": "narrate",
-      "text": "Marisol's you'll be fine, hon is a closing sentence. Russell's yeah is the same. Doug's page-turn is the same."
+      "text": "Marisol's you'll be fine, hon is a closing sentence. Russell's yeah is the same. Doug's page-turn is the same.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/138.ogg"
     },
     {
       "t": "narrate",
-      "text": "The three of them have, by the four-AM break of this Tuesday, agreed without discussion that BT's hardware-store inventory is not a thing the room is going to receive."
+      "text": "The three of them have, by the four-AM break of this Tuesday, agreed without discussion that BT's hardware-store inventory is not a thing the room is going to receive.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/139.ogg"
     },
     {
       "t": "narrate",
@@ -782,11 +833,13 @@
     },
     {
       "t": "narrate",
-      "text": "He is alone on this aisle. The aisle is wide. The shelves are tall."
+      "text": "He is alone on this aisle. The aisle is wide. The shelves are tall.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/153.ogg"
     },
     {
       "t": "narrate",
-      "text": "The work is, of all the kinds of stocking work at Centro, the most physically inefficient — the cases are large but light, and the ergonomics of getting a twelve-pack of double-rolls onto a shelf at chest height while you yourself are five-eight is the ergonomics of a man hugging a balloon."
+      "text": "The work is, of all the kinds of stocking work at Centro, the most physically inefficient — the cases are large but light, and the ergonomics of getting a twelve-pack of double-rolls onto a shelf at chest height while you yourself are five-eight is the ergonomics of a man hugging a balloon.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/154.ogg"
     },
     {
       "t": "narrate",
@@ -795,19 +848,23 @@
     },
     {
       "t": "narrate",
-      "text": "His mind, during the work, is — somewhere. He does not, this summer, examine where it is. He has been told, by Dr."
+      "text": "His mind, during the work, is — somewhere. He does not, this summer, examine where it is. He has been told, by Dr.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/156.ogg"
     },
     {
       "t": "narrate",
-      "text": "Patel during one of his weekly check-ins at the clinic in New Auburn, that the mind, during recovery, is allowed to go places without being interrogated. Diego. Let it."
+      "text": "Patel during one of his weekly check-ins at the clinic in New Auburn, that the mind, during recovery, is allowed to go places without being interrogated. Diego. Let it.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/157.ogg"
     },
     {
       "t": "narrate",
-      "text": "The interrogation is the thing that, last spring, was being done to you. You do not, this summer, need to do it to yourself. Your mind is going to do its own work. Your job is to give it the rooms in which it can do the work."
+      "text": "The interrogation is the thing that, last spring, was being done to you. You do not, this summer, need to do it to yourself. Your mind is going to do its own work. Your job is to give it the rooms in which it can do the work.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/158.ogg"
     },
     {
       "t": "narrate",
-      "text": "Diego had nodded. Diego had filed this. Diego has, in the weeks since, done his best to not interrogate where his mind goes during the toilet paper."
+      "text": "Diego had nodded. Diego had filed this. Diego has, in the weeks since, done his best to not interrogate where his mind goes during the toilet paper.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/159.ogg"
     },
     {
       "t": "narrate",
@@ -816,11 +873,13 @@
     },
     {
       "t": "narrate",
-      "text": "Sam had texted him at eight forty-six PM, which was just before he had left for his shift. The text had read: hey. wanted to say hi. no need to reply. love u."
+      "text": "Sam had texted him at eight forty-six PM, which was just before he had left for his shift. The text had read: hey. wanted to say hi. no need to reply. love u.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/161.ogg"
     },
     {
       "t": "narrate",
-      "text": "The text had been, by his count, the eleventh such text Sam had sent him in the past three weeks. The texts had all had the same cadence. The texts had all said, in their structure, I am here, I am not asking anything, I love you."
+      "text": "The text had been, by his count, the eleventh such text Sam had sent him in the past three weeks. The texts had all had the same cadence. The texts had all said, in their structure, I am here, I am not asking anything, I love you.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/162.ogg"
     },
     {
       "t": "narrate",
@@ -839,15 +898,18 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert five]The reply is, he knows, not entirely true. The shift is part of it. The shift is not all of it."
+      "text": "[shot:insert five]The reply is, he knows, not entirely true. The shift is part of it. The shift is not all of it.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/166.ogg"
     },
     {
       "t": "narrate",
-      "text": "The all-of-it is that he has been, since June, doing a thing that he has not yet found language for, which is the slow careful work of being in the same town as Sam without yet being able to be in the same room as her for more than the small portions of room-time his nervous system is allowing him."
+      "text": "The all-of-it is that he has been, since June, doing a thing that he has not yet found language for, which is the slow careful work of being in the same town as Sam without yet being able to be in the same room as her for more than the small portions of room-time his nervous system is allowing him.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/167.ogg"
     },
     {
       "t": "narrate",
-      "text": "He can do twenty minutes. He can do, on a good day, forty-five. He has not, since the safehouse, done two hours."
+      "text": "He can do twenty minutes. He can do, on a good day, forty-five. He has not, since the safehouse, done two hours.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/168.ogg"
     },
     {
       "t": "narrate",
@@ -912,15 +974,18 @@
     },
     {
       "t": "narrate",
-      "text": "He will check it at eight twenty AM, in his truck in the parking lot, with the morning light coming in low across the cedar scrub. The reply from Sam will read: ok. i'm here when u want. no pressure. drive safe. xo."
+      "text": "He will check it at eight twenty AM, in his truck in the parking lot, with the morning light coming in low across the cedar scrub. The reply from Sam will read: ok. i'm here when u want. no pressure. drive safe. xo.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/181.ogg"
     },
     {
       "t": "narrate",
-      "text": "And he will read it three times in the parking lot, and he will set the phone face-down on the passenger seat, and he will put the truck in gear, and he will drive home, and his grandmother will be at the kitchen window when he pulls in,"
+      "text": "And he will read it three times in the parking lot, and he will set the phone face-down on the passenger seat, and he will put the truck in gear, and he will drive home, and his grandmother will be at the kitchen window when he pulls in,",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/182.ogg"
     },
     {
       "t": "narrate",
-      "text": "and she will, by the time he is in the front door, be at the stove starting his breakfast, and he will sit at the table and eat the eggs she has made him, and he will not, while eating, say very much."
+      "text": "and she will, by the time he is in the front door, be at the stove starting his breakfast, and he will sit at the table and eat the eggs she has made him, and he will not, while eating, say very much.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/183.ogg"
     },
     {
       "t": "narrate",
@@ -958,11 +1023,13 @@
     },
     {
       "t": "narrate",
-      "text": "The cedar scrub is, at five oh-six, beginning to register as scrub rather than as dark."
+      "text": "The cedar scrub is, at five oh-six, beginning to register as scrub rather than as dark.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/191.ogg"
     },
     {
       "t": "narrate",
-      "text": "The sky behind it, to the east, is doing the particular pre-dawn thing the Texas sky does — not yet light, no longer dark, the color that lives for about eight minutes between the two and that he has, this summer, become more familiar with than he had been in any previous season of his life."
+      "text": "The sky behind it, to the east, is doing the particular pre-dawn thing the Texas sky does — not yet light, no longer dark, the color that lives for about eight minutes between the two and that he has, this summer, become more familiar with than he had been in any previous season of his life.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/192.ogg"
     },
     {
       "t": "narrate",
@@ -971,15 +1038,18 @@
     },
     {
       "t": "narrate",
-      "text": "It is always visible from this dock. At least, on a clear morning. He had, on his first shift at Centro five weeks ago, gone out to the dock for his break and looked east and seen it and known exactly what it was. The Sinkhole."
+      "text": "It is always visible from this dock. At least, on a clear morning. He had, on his first shift at Centro five weeks ago, gone out to the dock for his break and looked east and seen it and known exactly what it was. The Sinkhole.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/194.ogg"
     },
     {
       "t": "narrate",
-      "text": "Eighty-some miles east, at the edge of what had been Graustark. Still venting. Still putting that haze into the upper air."
+      "text": "Eighty-some miles east, at the edge of what had been Graustark. Still venting. Still putting that haze into the upper air.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/195.ogg"
     },
     {
       "t": "narrate",
-      "text": "Still, technically, the reason for everything that had happened to him in May, though the chain of causation between the Sinkhole and the room he had been kept in is one he cannot, even now, fully reconstruct."
+      "text": "Still, technically, the reason for everything that had happened to him in May, though the chain of causation between the Sinkhole and the room he had been kept in is one he cannot, even now, fully reconstruct.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/196.ogg"
     },
     {
       "t": "narrate",
@@ -1003,19 +1073,23 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]The smear is a thing he has, this summer, come to think of as his own."
+      "text": "[shot:establish]The smear is a thing he has, this summer, come to think of as his own.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/201.ogg"
     },
     {
       "t": "narrate",
-      "text": "A small ugly fact at the edge of his job, visible only at the right hour, visible only from the right position, visible only to a person who has reason to know what it is."
+      "text": "A small ugly fact at the edge of his job, visible only at the right hour, visible only from the right position, visible only to a person who has reason to know what it is.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/202.ogg"
     },
     {
       "t": "narrate",
-      "text": "He goes out for his second break, every shift, because the second break is when the light is right and the smear is visible and he can, for nine minutes,"
+      "text": "He goes out for his second break, every shift, because the second break is when the light is right and the smear is visible and he can, for nine minutes,",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/203.ogg"
     },
     {
       "t": "narrate",
-      "text": "stand at the edge of the dock and look at the visible aftermath of the thing that had set the spring in motion, and feel — he does not have a word for what he feels — something that is not nothing."
+      "text": "stand at the edge of the dock and look at the visible aftermath of the thing that had set the spring in motion, and feel — he does not have a word for what he feels — something that is not nothing.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/204.ogg"
     },
     {
       "t": "narrate",
@@ -1055,11 +1129,13 @@
     },
     {
       "t": "narrate",
-      "text": "BT has, in his hand, a paper cup of coffee from the same pot. BT is in his Centro Foods polo, which is the same teal blue Diego's is, with the same name tag — BRANDON, on BT's, in the standard plastic pin-on. BT looks at Diego."
+      "text": "BT has, in his hand, a paper cup of coffee from the same pot. BT is in his Centro Foods polo, which is the same teal blue Diego's is, with the same name tag — BRANDON, on BT's, in the standard plastic pin-on. BT looks at Diego.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/212.ogg"
     },
     {
       "t": "narrate",
-      "text": "BT looks at the eastern horizon. BT looks at Diego again."
+      "text": "BT looks at the eastern horizon. BT looks at Diego again.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/213.ogg"
     },
     {
       "t": "say",
@@ -1177,15 +1253,18 @@
     },
     {
       "t": "narrate",
-      "text": "Diego does not respond to the team's good, mostly. The mostly is BT asking a question."
+      "text": "Diego does not respond to the team's good, mostly. The mostly is BT asking a question.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/232.ogg"
     },
     {
       "t": "narrate",
-      "text": "The question is whether Diego will, in the absence of the rest of the team, agree with him about something — anything — that the team has, by its small unified treatment of him, made him uncertain of."
+      "text": "The question is whether Diego will, in the absence of the rest of the team, agree with him about something — anything — that the team has, by its small unified treatment of him, made him uncertain of.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/233.ogg"
     },
     {
       "t": "narrate",
-      "text": "The question is whether Diego will, on this dock in the four AM blue, be the one person at Centro who lets him be a peer."
+      "text": "The question is whether Diego will, on this dock in the four AM blue, be the one person at Centro who lets him be a peer.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/234.ogg"
     },
     {
       "t": "narrate",
@@ -1270,19 +1349,23 @@
     },
     {
       "t": "narrate",
-      "text": "The truck comes at five fifty-eight. The morning load gets staged. The day side starts arriving at six fifteen. By six forty-five the night team is wrapping up, breaking down their pallets, checking their aisles, signing out."
+      "text": "The truck comes at five fifty-eight. The morning load gets staged. The day side starts arriving at six fifteen. By six forty-five the night team is wrapping up, breaking down their pallets, checking their aisles, signing out.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/251.ogg"
     },
     {
       "t": "narrate",
-      "text": "By seven oh-six Diego is walking out the back door with his backpack and his thermos."
+      "text": "By seven oh-six Diego is walking out the back door with his backpack and his thermos.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/252.ogg"
     },
     {
       "t": "narrate",
-      "text": "In the parking lot, his truck is the second-to-last vehicle in the night-team row. Doug's pickup is on his left. Marisol's minivan is on his right. Russell's Chevy is at the end."
+      "text": "In the parking lot, his truck is the second-to-last vehicle in the night-team row. Doug's pickup is on his left. Marisol's minivan is on his right. Russell's Chevy is at the end.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/253.ogg"
     },
     {
       "t": "narrate",
-      "text": "BT's car — a beige sedan Diego does not recognize the make of — is two spaces over."
+      "text": "BT's car — a beige sedan Diego does not recognize the make of — is two spaces over.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/254.ogg"
     },
     {
       "t": "show",
@@ -1400,13 +1483,15 @@
       "t": "say",
       "char": "Doug",
       "text": "[shot:closeup person_b]Just — Diego. You don't have to be the one who lets him in. The team's going to do what the team's going to do. You don't have to be the one who pushes against it. You don't have to be the one who agrees with it either.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/273.ogg"
     },
     {
       "t": "say",
       "char": "Doug",
       "text": "You can — you can just let it happen. That's a thing you're allowed to do.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/274.ogg"
     },
     {
       "t": "say",

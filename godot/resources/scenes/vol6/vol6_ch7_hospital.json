@@ -254,13 +254,15 @@
    "t": "say",
    "char": "Ben",
    "text": "Maya. My mom is a nurse. She works nights. My dad will say yes. Gracie will lose her mind. The dog likes you. I have a basement. There's a real bedroom down there with a real door. It's three weeks.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/040.ogg"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "We're inside the same school district. We have the room. Stay at my house.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/041.ogg"
   },
   {
    "t": "narrate",
@@ -344,19 +346,23 @@
   },
   {
    "t": "narrate",
-   "text": "The Kowalski house, when they arrive, is dark except for the kitchen light. Ben's mother is at the table. Ben's mother is in her scrubs."
+   "text": "The Kowalski house, when they arrive, is dark except for the kitchen light. Ben's mother is at the table. Ben's mother is in her scrubs.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/056.ogg"
   },
   {
    "t": "narrate",
-   "text": "Ben's mother had been called by Ben's father at eleven, and Ben's father had said Linda Caldwell broke her hip and our boy is at the hospital with her granddaughter and I think we are going to need to have a conversation."
+   "text": "Ben's mother had been called by Ben's father at eleven, and Ben's father had said Linda Caldwell broke her hip and our boy is at the hospital with her granddaughter and I think we are going to need to have a conversation.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/057.ogg"
   },
   {
    "t": "narrate",
-   "text": "Ben's mother has, in the time since, made up the bed in the basement. Ben's mother has, in the time since, set out a clean towel and a toothbrush still in its package."
+   "text": "Ben's mother has, in the time since, made up the bed in the basement. Ben's mother has, in the time since, set out a clean towel and a toothbrush still in its package.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/058.ogg"
   },
   {
    "t": "narrate",
-   "text": "Ben's mother has, in the time since, decided what she is going to say to Maya when Maya comes through the door."
+   "text": "Ben's mother has, in the time since, decided what she is going to say to Maya when Maya comes through the door.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/059.ogg"
   },
   {
    "t": "narrate",
@@ -533,11 +539,13 @@
   },
   {
    "t": "narrate",
-   "text": "His mother sits at the table for another hour, in her scrubs, until her husband comes home from the late shift at the water plant smelling of chlorine,"
+   "text": "His mother sits at the table for another hour, in her scrubs, until her husband comes home from the late shift at the water plant smelling of chlorine,",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/089.ogg"
   },
   {
    "t": "narrate",
-   "text": "and they sit together at the kitchen table, and they talk quietly, and they decide, between the two of them, that whatever Ben tells them this week, they are going to believe him."
+   "text": "and they sit together at the kitchen table, and they talk quietly, and they decide, between the two of them, that whatever Ben tells them this week, they are going to believe him.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/090.ogg"
   },
   {
    "t": "narrate",
@@ -565,11 +573,13 @@
   },
   {
    "t": "narrate",
-   "text": "In a warehouse in Graustark, Frasier Temple — alerted by his Demons at twelve fourteen AM Central — stands at the door of his cathedral for the first time in some months,"
+   "text": "In a warehouse in Graustark, Frasier Temple — alerted by his Demons at twelve fourteen AM Central — stands at the door of his cathedral for the first time in some months,",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/096.ogg"
   },
   {
    "t": "narrate",
-   "text": "looks out at the dark of the parking lot, considers, briefly, walking to his car, and decides — after a long minute — to go back inside."
+   "text": "looks out at the dark of the parking lot, considers, briefly, walking to his car, and decides — after a long minute — to go back inside.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/097.ogg"
   },
   {
    "t": "narrate",
@@ -583,11 +593,13 @@
   },
   {
    "t": "narrate",
-   "text": "The Lovers card, in some other deck on some other table, would tonight have been showing — for the first time in many printings — both figures clothed, which is how the card sometimes prints when its meaning is not,"
+   "text": "The Lovers card, in some other deck on some other table, would tonight have been showing — for the first time in many printings — both figures clothed, which is how the card sometimes prints when its meaning is not,",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/100.ogg"
   },
   {
    "t": "narrate",
-   "text": "this week, about romance, but about the deeper choice the Lovers also represent: the choice to remain in the same room as the other person, and to keep being two, on purpose, against pressure."
+   "text": "this week, about romance, but about the deeper choice the Lovers also represent: the choice to remain in the same room as the other person, and to keep being two, on purpose, against pressure.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/101.ogg"
   },
   {
    "t": "narrate",

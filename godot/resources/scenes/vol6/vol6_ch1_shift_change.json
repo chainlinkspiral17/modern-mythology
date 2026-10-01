@@ -90,13 +90,15 @@
       "t": "say",
       "char": "Jen",
       "expr": "neutral",
-      "text": "[shot:insert door~]\"His grandma came by. Around two. Before you got here. She was — Sammy, she was in her church clothes. On a Sunday afternoon. She was looking for him. She didn't come in. I saw her through the window."
+      "text": "[shot:insert door~]\"His grandma came by. Around two. Before you got here. She was — Sammy, she was in her church clothes. On a Sunday afternoon. She was looking for him. She didn't come in. I saw her through the window.",
+      "voice": "assets/audio/voice/vol6_ch1_shift_change/013.ogg"
     },
     {
       "t": "say",
       "char": "Jen",
       "expr": "neutral",
-      "text": "She walked around the store once. She looked at the Gas & Go across the intersection for maybe two minutes. Then she got in her car and she left. She was alone.\""
+      "text": "She walked around the store once. She looked at the Gas & Go across the intersection for maybe two minutes. Then she got in her car and she left. She was alone.\"",
+      "voice": "assets/audio/voice/vol6_ch1_shift_change/014.ogg"
     },
     {
       "t": "say",

@@ -70,17 +70,20 @@
     {
       "t": "say",
       "char": "Ben",
-      "text": "[shot:closeup ben]My dad works at the water plant in New Auburn. He's been there twenty-two years. He comes home smelling of chlorine. My mom is a nurse. She works nights. I have a little sister. Her name is Gracie. She's eleven."
+      "text": "[shot:closeup ben]My dad works at the water plant in New Auburn. He's been there twenty-two years. He comes home smelling of chlorine. My mom is a nurse. She works nights. I have a little sister. Her name is Gracie. She's eleven.",
+      "voice": "assets/audio/voice/vol6_ch5_radio/012.ogg"
     },
     {
       "t": "say",
       "char": "Ben",
-      "text": "She thinks I'm the funniest person she knows. I am not. I am, in fact, the opposite. But she laughs at my jokes so I keep telling them. Our house is small. There's a back yard. We have a dog named Daisy. Daisy is a mutt."
+      "text": "She thinks I'm the funniest person she knows. I am not. I am, in fact, the opposite. But she laughs at my jokes so I keep telling them. Our house is small. There's a back yard. We have a dog named Daisy. Daisy is a mutt.",
+      "voice": "assets/audio/voice/vol6_ch5_radio/013.ogg"
     },
     {
       "t": "say",
       "char": "Ben",
-      "text": "Daisy is a coward. I love Daisy more than anything."
+      "text": "Daisy is a coward. I love Daisy more than anything.",
+      "voice": "assets/audio/voice/vol6_ch5_radio/014.ogg"
     },
     {
       "t": "narrate",
@@ -140,27 +143,33 @@
     },
     {
       "t": "narrate",
-      "text": "Nobody, on any band, is listening. Or — nobody human."
+      "text": "Nobody, on any band, is listening. Or — nobody human.",
+      "voice": "assets/audio/voice/vol6_ch5_radio/026.ogg"
     },
     {
       "t": "narrate",
-      "text": "Somewhere across the continent, in a warehouse in Graustark, a Demon that does not have a body and does not have a mouth but does, somehow, have a small quiet attention, registers the transmission and files it under the header GRANDMOTHER,"
+      "text": "Somewhere across the continent, in a warehouse in Graustark, a Demon that does not have a body and does not have a mouth but does, somehow, have a small quiet attention, registers the transmission and files it under the header GRANDMOTHER,",
+      "voice": "assets/audio/voice/vol6_ch5_radio/027.ogg"
     },
     {
       "t": "narrate",
-      "text": "CALDWELL, LINDA — FIRST BROADCAST, and alerts Frasier Temple, who is asleep on the cot in the corner of the cathedral, and who murmurs in his sleep, without waking, the single word good."
+      "text": "CALDWELL, LINDA — FIRST BROADCAST, and alerts Frasier Temple, who is asleep on the cot in the corner of the cathedral, and who murmurs in his sleep, without waking, the single word good.",
+      "voice": "assets/audio/voice/vol6_ch5_radio/028.ogg"
     },
     {
       "t": "narrate",
-      "text": "The imp rebroadcasts the Morse, unchanged, into the grid of Harmony Creek Estates."
+      "text": "The imp rebroadcasts the Morse, unchanged, into the grid of Harmony Creek Estates.",
+      "voice": "assets/audio/voice/vol6_ch5_radio/029.ogg"
     },
     {
       "t": "narrate",
-      "text": "The water tower, at eleven-seventeen, hums in its low subaudible B-flat, and for the 0.8 seconds the hum lasts, every dog in the subdivision barks once. The dogs do not know why they are barking."
+      "text": "The water tower, at eleven-seventeen, hums in its low subaudible B-flat, and for the 0.8 seconds the hum lasts, every dog in the subdivision barks once. The dogs do not know why they are barking.",
+      "voice": "assets/audio/voice/vol6_ch5_radio/030.ogg"
     },
     {
       "t": "narrate",
-      "text": "The dogs, it will turn out, are barking for Thomas."
+      "text": "The dogs, it will turn out, are barking for Thomas.",
+      "voice": "assets/audio/voice/vol6_ch5_radio/031.ogg"
     },
     {
       "t": "bg",
@@ -174,11 +183,13 @@
     },
     {
       "t": "narrate",
-      "text": "Maya, in the kitchen, pouring herself a glass of water before bed, pauses at the window. She hears the dogs. She does not, yet, know to hear the Morse."
+      "text": "Maya, in the kitchen, pouring herself a glass of water before bed, pauses at the window. She hears the dogs. She does not, yet, know to hear the Morse.",
+      "voice": "assets/audio/voice/vol6_ch5_radio/034.ogg"
     },
     {
       "t": "narrate",
-      "text": "But she knows, in the small sedimentary way she has come to know things this week, that her grandmother is speaking."
+      "text": "But she knows, in the small sedimentary way she has come to know things this week, that her grandmother is speaking.",
+      "voice": "assets/audio/voice/vol6_ch5_radio/035.ogg"
     },
     {
       "t": "narrate",
@@ -236,11 +247,13 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Maya and her grandmother sit together at the radio for another twenty minutes, not speaking, listening to the soft carrier hiss of 1776 kHz, until her grandmother —"
+      "text": "[shot:establish]Maya and her grandmother sit together at the radio for another twenty minutes, not speaking, listening to the soft carrier hiss of 1776 kHz, until her grandmother —",
+      "voice": "assets/audio/voice/vol6_ch5_radio/046.ogg"
     },
     {
       "t": "narrate",
-      "text": "who has not slept a full night since 1989 — begins to nod, and Maya helps her into bed, and Maya turns off the radio, and kisses her grandmother on the temple, and goes to her own room."
+      "text": "who has not slept a full night since 1989 — begins to nod, and Maya helps her into bed, and Maya turns off the radio, and kisses her grandmother on the temple, and goes to her own room.",
+      "voice": "assets/audio/voice/vol6_ch5_radio/047.ogg"
     },
     {
       "t": "hide",

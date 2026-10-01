@@ -57,17 +57,20 @@
     {
       "t": "think",
       "char": "Maya",
-      "text": "Rick told me to keep noticing. F.T. told me to keep noticing."
+      "text": "Rick told me to keep noticing. F.T. told me to keep noticing.",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/010.ogg"
     },
     {
       "t": "think",
       "char": "Maya",
-      "text": "Graciela Ramos, who I have never met, is apparently in a parallel thread with a grown woman I have also never met, who is probably the reporter in the Houston Chronicle lanyard."
+      "text": "Graciela Ramos, who I have never met, is apparently in a parallel thread with a grown woman I have also never met, who is probably the reporter in the Houston Chronicle lanyard.",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/011.ogg"
     },
     {
       "t": "think",
       "char": "Maya",
-      "text": "A man named Hal in New Auburn runs a bookshop and takes envelopes."
+      "text": "A man named Hal in New Auburn runs a bookshop and takes envelopes.",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/012.ogg"
     },
     {
       "t": "think",

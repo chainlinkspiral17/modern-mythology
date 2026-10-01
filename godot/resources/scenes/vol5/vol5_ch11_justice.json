@@ -35,11 +35,13 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:studio]JUSTICE. She sits between pillars with a sword in one hand and scales in the other. The sword cuts both ways. The scales do not lie. They do not, however, tell you what the weighing costs the person holding them."
+      "text": "[mood:studio]JUSTICE. She sits between pillars with a sword in one hand and scales in the other. The sword cuts both ways. The scales do not lie. They do not, however, tell you what the weighing costs the person holding them.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/006.ogg"
     },
     {
       "t": "narrate",
-      "text": "Reversed: bias wearing the mask of procedure. The verdict that was decided before the evidence."
+      "text": "Reversed: bias wearing the mask of procedure. The verdict that was decided before the evidence.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/007.ogg"
     },
     {
       "t": "narrate",
@@ -58,15 +60,18 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]He had called at three-eleven AM."
+      "text": "[shot:insert phone]He had called at three-eleven AM.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/011.ogg"
     },
     {
       "t": "narrate",
-      "text": "The phone, on the marble of her bedside table, had vibrated through the small brass dish she kept her earrings in, which made a sound Erica found particularly intimate, the sound of one piece of her ordered evening commenting on another."
+      "text": "The phone, on the marble of her bedside table, had vibrated through the small brass dish she kept her earrings in, which made a sound Erica found particularly intimate, the sound of one piece of her ordered evening commenting on another.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/012.ogg"
     },
     {
       "t": "narrate",
-      "text": "She had picked up the phone. She had looked at the contact. She had set the phone down without answering and without, this time, watching it stop."
+      "text": "She had picked up the phone. She had looked at the contact. She had set the phone down without answering and without, this time, watching it stop.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/013.ogg"
     },
     {
       "t": "narrate",
@@ -75,19 +80,23 @@
     },
     {
       "t": "narrate",
-      "text": "The breathing had been steady. Calmer than she had expected."
+      "text": "The breathing had been steady. Calmer than she had expected.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/015.ogg"
     },
     {
       "t": "narrate",
-      "text": "The breathing had felt, in fact, like the breathing of a person who had finally allowed a decision to settle, rather than the breathing of a person who was actively avoiding a call. The voicemail had arrived."
+      "text": "The breathing had felt, in fact, like the breathing of a person who had finally allowed a decision to settle, rather than the breathing of a person who was actively avoiding a call. The voicemail had arrived.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/016.ogg"
     },
     {
       "t": "narrate",
-      "text": "The voicemail had not been listened to. The voicemail still had not been listened to at six AM, when she got up."
+      "text": "The voicemail had not been listened to. The voicemail still had not been listened to at six AM, when she got up.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/017.ogg"
     },
     {
       "t": "narrate",
-      "text": "The voicemail still had not been listened to at eight AM, when she walked into her office, having come downtown on a Saturday for the first time in two months."
+      "text": "The voicemail still had not been listened to at eight AM, when she walked into her office, having come downtown on a Saturday for the first time in two months.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/018.ogg"
     },
     {
       "t": "narrate",
@@ -106,23 +115,28 @@
     },
     {
       "t": "narrate",
-      "text": "She had been working on it since five-thirty AM. The first three pages were the easy part — recitals, definitions, the standard architectural scaffolding any properly drafted instrument required."
+      "text": "She had been working on it since five-thirty AM. The first three pages were the easy part — recitals, definitions, the standard architectural scaffolding any properly drafted instrument required.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/022.ogg"
     },
     {
       "t": "narrate",
-      "text": "The next eight pages were the hard part, because the next eight pages had to do something Erica had not, in fourteen years of practice,"
+      "text": "The next eight pages were the hard part, because the next eight pages had to do something Erica had not, in fourteen years of practice,",
+      "voice": "assets/audio/voice/vol5_ch11_justice/023.ogg"
     },
     {
       "t": "narrate",
-      "text": "had to do quite this way: they had to construct a legal vehicle that would let Alberto D'Ambrosio rescue his brother after his brother had made a specific bad decision, without being either visible to the brother as a rescue or deniable to a third party as a transaction."
+      "text": "had to do quite this way: they had to construct a legal vehicle that would let Alberto D'Ambrosio rescue his brother after his brother had made a specific bad decision, without being either visible to the brother as a rescue or deniable to a third party as a transaction.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/024.ogg"
     },
     {
       "t": "narrate",
-      "text": "The vehicle had to perform two contradictory functions at once."
+      "text": "The vehicle had to perform two contradictory functions at once.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/025.ogg"
     },
     {
       "t": "narrate",
-      "text": "The vehicle had to be, in two distinct senses, invisible: invisible to Antonio's pride, and invisible to whoever would, eventually, be looking for evidence of Alberto's involvement."
+      "text": "The vehicle had to be, in two distinct senses, invisible: invisible to Antonio's pride, and invisible to whoever would, eventually, be looking for evidence of Alberto's involvement.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/026.ogg"
     },
     {
       "t": "narrate",
@@ -136,15 +150,18 @@
     },
     {
       "t": "narrate",
-      "text": "The contract was for Alberto. The contract was, structurally, sound. The contract, executed, would protect Antonio from the consequences of the option Antonio was about to choose."
+      "text": "The contract was for Alberto. The contract was, structurally, sound. The contract, executed, would protect Antonio from the consequences of the option Antonio was about to choose.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/029.ogg"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_b]It would also, in protecting Antonio, deepen Alberto's ownership of him by a degree that Antonio would, at the time, not be in any position to perceive."
+      "text": "[shot:establish_b]It would also, in protecting Antonio, deepen Alberto's ownership of him by a degree that Antonio would, at the time, not be in any position to perceive.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/030.ogg"
     },
     {
       "t": "narrate",
-      "text": "The contract was a kindness expressed as a loan with a clause structure that converted, on default, into a stake."
+      "text": "The contract was a kindness expressed as a loan with a clause structure that converted, on default, into a stake.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/031.ogg"
     },
     {
       "t": "narrate",
@@ -163,11 +180,13 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup erica~]She thought, with the small clean clarity that arrived occasionally in her practice and that she had learned, over the years, to trust above almost all other inputs: this contract is good. this contract is going to do what Alberto wants. this contract is also a small piece of evidence,"
+      "text": "[shot:closeup erica~]She thought, with the small clean clarity that arrived occasionally in her practice and that she had learned, over the years, to trust above almost all other inputs: this contract is good. this contract is going to do what Alberto wants. this contract is also a small piece of evidence,",
+      "voice": "assets/audio/voice/vol5_ch11_justice/035.ogg"
     },
     {
       "t": "narrate",
-      "text": "when assembled with several other small pieces of evidence, that I have crossed a line I had not, until this morning, fully understood I was approaching."
+      "text": "when assembled with several other small pieces of evidence, that I have crossed a line I had not, until this morning, fully understood I was approaching.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/036.ogg"
     },
     {
       "t": "narrate",
@@ -283,11 +302,13 @@
     },
     {
       "t": "narrate",
-      "text": "She did not, immediately, react. Her face did the small careful nothing it did when she was being given information she needed to think about before she was visibly affected by it."
+      "text": "She did not, immediately, react. Her face did the small careful nothing it did when she was being given information she needed to think about before she was visibly affected by it.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/057.ogg"
     },
     {
       "t": "narrate",
-      "text": "Marcus had worked for her long enough to recognize the small careful nothing. He set the coffee down without commentary and stepped back to the doorway and waited."
+      "text": "Marcus had worked for her long enough to recognize the small careful nothing. He set the coffee down without commentary and stepped back to the doorway and waited.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/058.ogg"
     },
     {
       "t": "say",
@@ -315,11 +336,13 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert photograph]She looked at the eleven-page draft on her monitor. She looked at the second monitor, where the Newsom v. PetroTex settlement still sat open from yesterday in case she needed to reference its boilerplate."
+      "text": "[shot:insert photograph]She looked at the eleven-page draft on her monitor. She looked at the second monitor, where the Newsom v. PetroTex settlement still sat open from yesterday in case she needed to reference its boilerplate.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/063.ogg"
     },
     {
       "t": "narrate",
-      "text": "She looked at the small framed photograph on the corner of the desk, the only personal item in the office — her mother, age fifty-one, in a sun hat in Galveston in 1996, smiling at someone outside the frame whose identity Erica had never been told."
+      "text": "She looked at the small framed photograph on the corner of the desk, the only personal item in the office — her mother, age fifty-one, in a sun hat in Galveston in 1996, smiling at someone outside the frame whose identity Erica had never been told.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/064.ogg"
     },
     {
       "t": "narrate",
@@ -435,15 +458,18 @@
     },
     {
       "t": "narrate",
-      "text": "The whole damn campaign for Alberto D'Ambrosio's Houston concept — a phoenix-from-the-ashes narrative built on questionable insurance claims and inherited trauma — felt off-brand. Not her brand, anyway."
+      "text": "The whole damn campaign for Alberto D'Ambrosio's Houston concept — a phoenix-from-the-ashes narrative built on questionable insurance claims and inherited trauma — felt off-brand. Not her brand, anyway.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/086.ogg"
     },
     {
       "t": "narrate",
-      "text": "Her brand was clean lines, negative space, ethically sourced typefaces, and the quiet hum of expensive air purifiers in her meticulously greige Houston high-rise office,"
+      "text": "Her brand was clean lines, negative space, ethically sourced typefaces, and the quiet hum of expensive air purifiers in her meticulously greige Houston high-rise office,",
+      "voice": "assets/audio/voice/vol5_ch11_justice/087.ogg"
     },
     {
       "t": "narrate",
-      "text": "three floors down from a law firm whose name, if she squinted at the building directory in the lobby, she would recognize from the Texas Monthly coverage of the PetroTex case last year."
+      "text": "three floors down from a law firm whose name, if she squinted at the building directory in the lobby, she would recognize from the Texas Monthly coverage of the PetroTex case last year.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/088.ogg"
     },
     {
       "t": "narrate",
@@ -462,27 +488,33 @@
     },
     {
       "t": "narrate",
-      "text": "Deep. Profoundly generic. She had written it, of course, channeling that specific blend of faux-mysticism and aspirational consumerism that clients like Alberto seemed to eat up with a reclaimed artisanal spoon."
+      "text": "Deep. Profoundly generic. She had written it, of course, channeling that specific blend of faux-mysticism and aspirational consumerism that clients like Alberto seemed to eat up with a reclaimed artisanal spoon.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/092.ogg"
     },
     {
       "t": "narrate",
-      "text": "But lately, the words echoed back with a disquieting resonance."
+      "text": "But lately, the words echoed back with a disquieting resonance.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/093.ogg"
     },
     {
       "t": "narrate",
-      "text": "Her own meticulously ordered world — the precise grid system of her calendar, the carefully balanced portfolio, the relationship with Ben (bless his equally anxious, MFA-burdened heart) — felt increasingly unstable."
+      "text": "Her own meticulously ordered world — the precise grid system of her calendar, the carefully balanced portfolio, the relationship with Ben (bless his equally anxious, MFA-burdened heart) — felt increasingly unstable.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/094.ogg"
     },
     {
       "t": "narrate",
-      "text": "Like a badly kerned headline about to fall off the page."
+      "text": "Like a badly kerned headline about to fall off the page.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/095.ogg"
     },
     {
       "t": "narrate",
-      "text": "She tabbed over to the logo variations. Alberto wanted something bold, authentic, with gravitas but also, like, approachable. Translation: impossible."
+      "text": "She tabbed over to the logo variations. Alberto wanted something bold, authentic, with gravitas but also, like, approachable. Translation: impossible.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/096.ogg"
     },
     {
       "t": "narrate",
-      "text": "Anna had offered him sleek minimalist flame icons, elegant serif fonts hinting at old-world legacy. He had sent back references that looked like escapees from a 1990s tattoo parlor website. Sigh."
+      "text": "Anna had offered him sleek minimalist flame icons, elegant serif fonts hinting at old-world legacy. He had sent back references that looked like escapees from a 1990s tattoo parlor website. Sigh.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/097.ogg"
     },
     {
       "t": "narrate",
@@ -513,11 +545,13 @@
     },
     {
       "t": "narrate",
-      "text": "Anna smiled faintly. Ben. Her fellow traveler in the land of neurotic over-analysis. Their relationship wasn't exactly passion; it was more like a peer-reviewed study in shared anxieties and meticulously curated vintage sweaters."
+      "text": "Anna smiled faintly. Ben. Her fellow traveler in the land of neurotic over-analysis. Their relationship wasn't exactly passion; it was more like a peer-reviewed study in shared anxieties and meticulously curated vintage sweaters.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/103.ogg"
     },
     {
       "t": "narrate",
-      "text": "Comfortable. Predictable. And maybe, just maybe, contributing to the vague sense of hollowness she was trying so hard to ignore."
+      "text": "Comfortable. Predictable. And maybe, just maybe, contributing to the vague sense of hollowness she was trying so hard to ignore.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/104.ogg"
     },
     {
       "t": "show",
@@ -548,15 +582,18 @@
     },
     {
       "t": "narrate",
-      "text": "Alberto kept calling. His voice too close, too demanding, hinting at — well, she preferred not to analyze those particular data points."
+      "text": "Alberto kept calling. His voice too close, too demanding, hinting at — well, she preferred not to analyze those particular data points.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/110.ogg"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He saw her, she suspected, as another asset to be acquired, another element to control in his grand design. It was exhausting."
+      "text": "[shot:establish]He saw her, she suspected, as another asset to be acquired, another element to control in his grand design. It was exhausting.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/111.ogg"
     },
     {
       "t": "narrate",
-      "text": "It was also, she admitted with a flicker of self-disgust, vaguely flattering in a deeply problematic way."
+      "text": "It was also, she admitted with a flicker of self-disgust, vaguely flattering in a deeply problematic way.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/112.ogg"
     },
     {
       "t": "narrate",
@@ -570,11 +607,13 @@
     },
     {
       "t": "narrate",
-      "text": "Deconstruction. That felt right. Like those Corporate Idols pieces she did on the side, twisting familiar brand marks into commentaries on consumer culture. That felt true."
+      "text": "Deconstruction. That felt right. Like those Corporate Idols pieces she did on the side, twisting familiar brand marks into commentaries on consumer culture. That felt true.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/115.ogg"
     },
     {
       "t": "narrate",
-      "text": "This — this felt like putting lipstick on a vaguely menacing pig. A pig possibly involved in whatever shady dealings had funded this whole phoenix-rising enterprise in the first place."
+      "text": "This — this felt like putting lipstick on a vaguely menacing pig. A pig possibly involved in whatever shady dealings had funded this whole phoenix-rising enterprise in the first place.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/116.ogg"
     },
     {
       "t": "narrate",
@@ -588,11 +627,13 @@
     },
     {
       "t": "narrate",
-      "text": "Her quest, she realized, wasn't about nailing the D'Ambrosio campaign anymore. It wasn't about billable hours or impressing Alberto or even finding the perfect shade of millennial pink."
+      "text": "Her quest, she realized, wasn't about nailing the D'Ambrosio campaign anymore. It wasn't about billable hours or impressing Alberto or even finding the perfect shade of millennial pink.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/119.ogg"
     },
     {
       "t": "narrate",
-      "text": "It was about stripping away the layers of artifice — her own included — and finding something real beneath."
+      "text": "It was about stripping away the layers of artifice — her own included — and finding something real beneath.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/120.ogg"
     },
     {
       "t": "narrate",
@@ -621,23 +662,28 @@
     },
     {
       "t": "narrate",
-      "text": "She sat with the blank screen for a long minute. Then, in the small quick gesture of a designer who has just decided to do something she has been not-doing for two years, she opened a new file. Created a fresh canvas."
+      "text": "She sat with the blank screen for a long minute. Then, in the small quick gesture of a designer who has just decided to do something she has been not-doing for two years, she opened a new file. Created a fresh canvas.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/126.ogg"
     },
     {
       "t": "narrate",
-      "text": "Imported the D'Ambrosio logo as a reference layer. Locked it."
+      "text": "Imported the D'Ambrosio logo as a reference layer. Locked it.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/127.ogg"
     },
     {
       "t": "narrate",
-      "text": "And began, on a new layer above it, to build a Corporate Idols version of the D'Ambrosio mark — the elegant, fictional, vaguely Italianate script of the flagship riverboat twisted just enough that the ascenders of the D and the b became,"
+      "text": "And began, on a new layer above it, to build a Corporate Idols version of the D'Ambrosio mark — the elegant, fictional, vaguely Italianate script of the flagship riverboat twisted just enough that the ascenders of the D and the b became,",
+      "voice": "assets/audio/voice/vol5_ch11_justice/128.ogg"
     },
     {
       "t": "narrate",
-      "text": "recognizably, the wrought-iron columns of a courtroom; the apostrophe, recognizably, a gavel; the underline, recognizably, the kind of redaction-bar that appeared in declassified documents. Subtle enough to deny."
+      "text": "recognizably, the wrought-iron columns of a courtroom; the apostrophe, recognizably, a gavel; the underline, recognizably, the kind of redaction-bar that appeared in declassified documents. Subtle enough to deny.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/129.ogg"
     },
     {
       "t": "narrate",
-      "text": "Specific enough to read. The kind of piece that would, if she ever exhibited it, get her sued or hired, depending entirely on the lawyer. Possibly both. Probably both."
+      "text": "Specific enough to read. The kind of piece that would, if she ever exhibited it, get her sued or hired, depending entirely on the lawyer. Possibly both. Probably both.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/130.ogg"
     },
     {
       "t": "narrate",
@@ -676,11 +722,13 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]When the voicemail notification appeared, she did not, this time, listen to it. She did not listen to it at the office. She did not listen to it in the elevator down."
+      "text": "[shot:establish]When the voicemail notification appeared, she did not, this time, listen to it. She did not listen to it at the office. She did not listen to it in the elevator down.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/138.ogg"
     },
     {
       "t": "narrate",
-      "text": "She did not listen to it walking the three blocks to the coffee shop where Ben was waiting, on time, with two flat whites and a small paper bag containing one chocolate croissant that he had bought, knowing she would not order it but would eat half of it."
+      "text": "She did not listen to it walking the three blocks to the coffee shop where Ben was waiting, on time, with two flat whites and a small paper bag containing one chocolate croissant that he had bought, knowing she would not order it but would eat half of it.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/139.ogg"
     },
     {
       "t": "narrate",

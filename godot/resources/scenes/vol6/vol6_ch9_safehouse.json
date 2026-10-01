@@ -40,11 +40,13 @@
     },
     {
       "t": "narrate",
-      "text": "He has been at the safehouse since Friday afternoon. He has, in the four days since, slept eighteen of every twenty-four hours. He has, in the eighteen, been mostly quiet."
+      "text": "He has been at the safehouse since Friday afternoon. He has, in the four days since, slept eighteen of every twenty-four hours. He has, in the eighteen, been mostly quiet.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/007.ogg"
     },
     {
       "t": "narrate",
-      "text": "He has, in the six, been with his grandmother and his mother and Dr. Patel and Doyle, who has not — by his own choice — left."
+      "text": "He has, in the six, been with his grandmother and his mother and Dr. Patel and Doyle, who has not — by his own choice — left.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/008.ogg"
     },
     {
       "t": "narrate",
@@ -205,13 +207,15 @@
       "t": "say",
       "char": "Sam",
       "text": "Diego. That was Friday morning. About an hour before they got you out. I was at the Kwik Stop. I was at the counter. I — I did press my hand to my own forehead, in the bathroom on my break, because I had a headache.",
-      "expr": "thinking"
+      "expr": "thinking",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/035.ogg"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "And while I was pressing, I — I thought about you. I thought, I hope he can feel this. I didn't know — I don't know how to talk about this stuff yet. But I felt it go somewhere.",
-      "expr": "thinking"
+      "expr": "thinking",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/036.ogg"
     },
     {
       "t": "narrate",
@@ -305,11 +309,13 @@
     },
     {
       "t": "narrate",
-      "text": "He sleeps, holding her hand. She does not move. The slushie, on the bedside table, slowly melts. Dr. Patel comes in once and out once. Diego's grandmother is on the back porch. Doyle is in the kitchen making coffee."
+      "text": "He sleeps, holding her hand. She does not move. The slushie, on the bedside table, slowly melts. Dr. Patel comes in once and out once. Diego's grandmother is on the back porch. Doyle is in the kitchen making coffee.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/051.ogg"
     },
     {
       "t": "narrate",
-      "text": "Diego's mother is in town buying him new socks because he has not, since the room, been able to bear the socks he had been put in, which had been, by the time Doyle pulled the blanket off him in the van, gray with five days of his own sweat."
+      "text": "Diego's mother is in town buying him new socks because he has not, since the room, been able to bear the socks he had been put in, which had been, by the time Doyle pulled the blanket off him in the van, gray with five days of his own sweat.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/052.ogg"
     },
     {
       "t": "narrate",
@@ -381,13 +387,15 @@
       "t": "say",
       "char": "Maya",
       "text": "[shot:closeup person_b]Diego. I want you to write down the dream. I want you to write down the device on the wall. I want you to write down what Boyd told you. I want you to write all of it down before you forget it. We are going to need it. Not today.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/066.ogg"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "But eventually. The notebook is going to be one of the things we have, when we have to explain to people, later, what it was like.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/067.ogg"
     },
     {
       "t": "hide",
@@ -400,11 +408,13 @@
     },
     {
       "t": "narrate",
-      "text": "He writes slowly. His hand is — for some weeks — not steady. He writes a page a day. He writes the dream first because the dream is the thing that hurts least to put down."
+      "text": "He writes slowly. His hand is — for some weeks — not steady. He writes a page a day. He writes the dream first because the dream is the thing that hurts least to put down.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/070.ogg"
     },
     {
       "t": "narrate",
-      "text": "He writes Boyd's last visit second, because Boyd's last visit is the thing that has been, in his head, the most complete piece. He writes the device on the wall third."
+      "text": "He writes Boyd's last visit second, because Boyd's last visit is the thing that has been, in his head, the most complete piece. He writes the device on the wall third.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/071.ogg"
     },
     {
       "t": "narrate",
@@ -501,11 +511,13 @@
     },
     {
       "t": "narrate",
-      "text": "When Sam goes to college in the fall of 2027, the notebook goes with her, in the box of small important things she does not want to lose, and it sits on her dorm desk, and it sits on her apartment shelf,"
+      "text": "When Sam goes to college in the fall of 2027, the notebook goes with her, in the box of small important things she does not want to lose, and it sits on her dorm desk, and it sits on her apartment shelf,",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/088.ogg"
     },
     {
       "t": "narrate",
-      "text": "and it eventually, in 2031, sits on her own first kitchen table when she is twenty-three and has, by then, become the person Diego had, in the five days, dreamed she would already be."
+      "text": "and it eventually, in 2031, sits on her own first kitchen table when she is twenty-three and has, by then, become the person Diego had, in the five days, dreamed she would already be.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/089.ogg"
     },
     {
       "t": "narrate",
@@ -552,11 +564,13 @@
     },
     {
       "t": "narrate",
-      "text": "The Strength card, in some other deck on some other table, would, today, be showing — the figure is not subduing the lion. The figure has her hand, gently, on the lion's open mouth."
+      "text": "The Strength card, in some other deck on some other table, would, today, be showing — the figure is not subduing the lion. The figure has her hand, gently, on the lion's open mouth.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/099.ogg"
     },
     {
       "t": "narrate",
-      "text": "The lion's open mouth is not, in this card, threatening. The lion's open mouth is, in this card, in the middle of a small private confession the figure is helping the lion to make."
+      "text": "The lion's open mouth is not, in this card, threatening. The lion's open mouth is, in this card, in the middle of a small private confession the figure is helping the lion to make.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/100.ogg"
     },
     {
       "t": "narrate",
@@ -570,15 +584,18 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert window]The figure with the gentle hand on the open mouth is — the figure is many people. Sam. Maya. Doyle. Dr. Patel. His grandmother. His mother."
+      "text": "[shot:insert window]The figure with the gentle hand on the open mouth is — the figure is many people. Sam. Maya. Doyle. Dr. Patel. His grandmother. His mother.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/103.ogg"
     },
     {
       "t": "narrate",
-      "text": "Frasier Temple, at his workbench in the warehouse, who has — the imps will report to Diego, eventually, in a chat window six months from now — kept,"
+      "text": "Frasier Temple, at his workbench in the warehouse, who has — the imps will report to Diego, eventually, in a chat window six months from now — kept,",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/104.ogg"
     },
     {
       "t": "narrate",
-      "text": "on a small private server in the warehouse, an audio file of the three-pulse acknowledgment the device on the wall made the night Boyd told Diego he was being given the stomach bug."
+      "text": "on a small private server in the warehouse, an audio file of the three-pulse acknowledgment the device on the wall made the night Boyd told Diego he was being given the stomach bug.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/105.ogg"
     },
     {
       "t": "narrate",
@@ -602,11 +619,13 @@
     },
     {
       "t": "narrate",
-      "text": "In the years to come, when he is an adult and the work he has chosen to do is, in part, the small careful work of helping other people who have been in rooms like the room come to be able to describe their own rooms —"
+      "text": "In the years to come, when he is an adult and the work he has chosen to do is, in part, the small careful work of helping other people who have been in rooms like the room come to be able to describe their own rooms —",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/110.ogg"
     },
     {
       "t": "narrate",
-      "text": "trauma counselor, the official title, though Diego will not, generally, use the title aloud — he will, on bad nights, listen to the six seconds."
+      "text": "trauma counselor, the official title, though Diego will not, generally, use the title aloud — he will, on bad nights, listen to the six seconds.",
+      "voice": "assets/audio/voice/vol6_ch9_safehouse/111.ogg"
     },
     {
       "t": "narrate",

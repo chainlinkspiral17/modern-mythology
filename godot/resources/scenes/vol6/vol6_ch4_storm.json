@@ -29,39 +29,48 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2][mood:rain_interior]The thunderstorm arrives early. The weather app on Sam Miller's phone had, as of Tuesday evening, been predicting the first rain at fourteen-oh-eight Wednesday afternoon,"
+      "text": "[trip:1.2][mood:rain_interior]The thunderstorm arrives early. The weather app on Sam Miller's phone had, as of Tuesday evening, been predicting the first rain at fourteen-oh-eight Wednesday afternoon,",
+      "voice": "assets/audio/voice/vol6_ch4_storm/005.ogg"
     },
     {
       "t": "narrate",
-      "text": "with a fifty-three percent chance of hail and a forty-one percent chance of the kind of localized flash flooding that Harmony Creek's engineered drainage system had been designed, in 1997, to render theoretical."
+      "text": "with a fifty-three percent chance of hail and a forty-one percent chance of the kind of localized flash flooding that Harmony Creek's engineered drainage system had been designed, in 1997, to render theoretical.",
+      "voice": "assets/audio/voice/vol6_ch4_storm/006.ogg"
     },
     {
       "t": "narrate",
-      "text": "The forecast had been wrong by approximately eight hours."
+      "text": "The forecast had been wrong by approximately eight hours.",
+      "voice": "assets/audio/voice/vol6_ch4_storm/007.ogg"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]At six-oh-four the first thunder rolls across the subdivision, deep and sustained in the way thunder rolls when it has been gathering off the Gulf since midnight,"
+      "text": "[shot:establish]At six-oh-four the first thunder rolls across the subdivision, deep and sustained in the way thunder rolls when it has been gathering off the Gulf since midnight,",
+      "voice": "assets/audio/voice/vol6_ch4_storm/008.ogg"
     },
     {
       "t": "narrate",
-      "text": "and the rain comes down not in the typical Texas way — fast, heavy, gone in twenty minutes — but in the slower more insistent way storms come down when they have decided, for some private reason, to stay a while."
+      "text": "and the rain comes down not in the typical Texas way — fast, heavy, gone in twenty minutes — but in the slower more insistent way storms come down when they have decided, for some private reason, to stay a while.",
+      "voice": "assets/audio/voice/vol6_ch4_storm/009.ogg"
     },
     {
       "t": "narrate",
-      "text": "The sprinklers, on their schedule, do not run. Wednesdays are off days for the east side of the subdivision. Wednesdays receive the rain the sprinklers would otherwise have provided."
+      "text": "The sprinklers, on their schedule, do not run. Wednesdays are off days for the east side of the subdivision. Wednesdays receive the rain the sprinklers would otherwise have provided.",
+      "voice": "assets/audio/voice/vol6_ch4_storm/010.ogg"
     },
     {
       "t": "narrate",
-      "text": "The HOA has, in a memo circulated in 2014, described this arrangement as the grid's quiet efficiency."
+      "text": "The HOA has, in a memo circulated in 2014, described this arrangement as the grid's quiet efficiency.",
+      "voice": "assets/audio/voice/vol6_ch4_storm/011.ogg"
     },
     {
       "t": "narrate",
-      "text": "At six-oh-five, the first transformer on Gallatin trips. The power flickers across four blocks. At six-oh-six, the transformer resets itself. The power comes back."
+      "text": "At six-oh-five, the first transformer on Gallatin trips. The power flickers across four blocks. At six-oh-six, the transformer resets itself. The power comes back.",
+      "voice": "assets/audio/voice/vol6_ch4_storm/012.ogg"
     },
     {
       "t": "narrate",
-      "text": "Everybody's clocks, except for the microwave at the Kwik Stop which was already nine minutes fast, are now forty-six seconds behind."
+      "text": "Everybody's clocks, except for the microwave at the Kwik Stop which was already nine minutes fast, are now forty-six seconds behind.",
+      "voice": "assets/audio/voice/vol6_ch4_storm/013.ogg"
     },
     {
       "t": "bg",
@@ -69,15 +78,18 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:macro_haze][shot:insert sedan]At six-oh-seven, in a white sedan parked at the gravel turnout past the last named road on the east side of the subdivision,"
+      "text": "[mood:macro_haze][shot:insert sedan]At six-oh-seven, in a white sedan parked at the gravel turnout past the last named road on the east side of the subdivision,",
+      "voice": "assets/audio/voice/vol6_ch4_storm/015.ogg"
     },
     {
       "t": "narrate",
-      "text": "a woman in her mid-thirties wearing a HOUSTON CHRONICLE lanyard and a man in his fifties with a fading golf-shirt sunburn exchange a look they have exchanged forty-one times in the past three days."
+      "text": "a woman in her mid-thirties wearing a HOUSTON CHRONICLE lanyard and a man in his fifties with a fading golf-shirt sunburn exchange a look they have exchanged forty-one times in the past three days.",
+      "voice": "assets/audio/voice/vol6_ch4_storm/016.ogg"
     },
     {
       "t": "narrate",
-      "text": "The look does not, externally, convey anything. Internally it conveys: here it starts."
+      "text": "The look does not, externally, convey anything. Internally it conveys: here it starts.",
+      "voice": "assets/audio/voice/vol6_ch4_storm/017.ogg"
     },
     {
       "t": "show",

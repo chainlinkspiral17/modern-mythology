@@ -23,11 +23,13 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:dusk]Sam gets home from the Kwik Stop at a quarter to seven. The rain has settled into the lighter more ambient variation it always settles into by evening. The driveway is a shallow puddle. She parks."
+      "text": "[mood:dusk]Sam gets home from the Kwik Stop at a quarter to seven. The rain has settled into the lighter more ambient variation it always settles into by evening. The driveway is a shallow puddle. She parks.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/004.ogg"
     },
     {
       "t": "narrate",
-      "text": "She runs the twelve feet from the Corolla to the front door. She comes in soaking."
+      "text": "She runs the twelve feet from the Corolla to the front door. She comes in soaking.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/005.ogg"
     },
     {
       "t": "show",
@@ -77,11 +79,13 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup miller]Her father is at the kitchen table. He is not in uniform. He is in jeans and a short-sleeve shirt — the kind of shirt Sam has not, in some years, seen him in on a weekday evening. He has a glass of red wine."
+      "text": "[shot:closeup miller]Her father is at the kitchen table. He is not in uniform. He is in jeans and a short-sleeve shirt — the kind of shirt Sam has not, in some years, seen him in on a weekday evening. He has a glass of red wine.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/014.ogg"
     },
     {
       "t": "narrate",
-      "text": "He is, when she comes in, looking at nothing in particular. He is looking in the direction of the window, which faces the cul-de-sac, which is dark and full of rain and empty."
+      "text": "He is, when she comes in, looking at nothing in particular. He is looking in the direction of the window, which faces the cul-de-sac, which is dark and full of rain and empty.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/015.ogg"
     },
     {
       "t": "say",
@@ -114,11 +118,13 @@
     },
     {
       "t": "narrate",
-      "text": "Her father is quiet for the first seven minutes. Sam is quiet. Her mother does the talking — the sweet light chatter she does when the room is tense in a way Sam cannot, yet, identify the source of."
+      "text": "Her father is quiet for the first seven minutes. Sam is quiet. Her mother does the talking — the sweet light chatter she does when the room is tense in a way Sam cannot, yet, identify the source of.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/021.ogg"
     },
     {
       "t": "narrate",
-      "text": "The chatter covers the sound of the rain hitting the windows. The chatter covers the small absence of Sam's father's voice."
+      "text": "The chatter covers the sound of the rain hitting the windows. The chatter covers the small absence of Sam's father's voice.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/022.ogg"
     },
     {
       "t": "show",
@@ -226,12 +232,14 @@
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "[shot:closeup person]If anything ever happened to me — anything at all — I want you to know that there is a safe deposit box at the Bank of New Auburn on Live Oak Street, box number 287, and the key is in the blue tin in my sock drawer."
+      "text": "[shot:closeup person]If anything ever happened to me — anything at all — I want you to know that there is a safe deposit box at the Bank of New Auburn on Live Oak Street, box number 287, and the key is in the blue tin in my sock drawer.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/041.ogg"
     },
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "Inside the box is everything you need to know about me. Not just the household stuff. The other things. The things I have not told you. I put it all there three years ago. Your mother knows. I am telling you tonight because —"
+      "text": "Inside the box is everything you need to know about me. Not just the household stuff. The other things. The things I have not told you. I put it all there three years ago. Your mother knows. I am telling you tonight because —",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/042.ogg"
     },
     {
       "t": "narrate",
@@ -270,20 +278,24 @@
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "I have — I have not been the man I wanted to be in all the ways I wanted to be him. I have done some things I am going to have to account for."
+      "text": "I have — I have not been the man I wanted to be in all the ways I wanted to be him. I have done some things I am going to have to account for.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/049.ogg"
     },
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "If — when — I do account for them, I want you to know that the accounting was my choice and not something that happened to me. Okay?"
+      "text": "If — when — I do account for them, I want you to know that the accounting was my choice and not something that happened to me. Okay?",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/050.ogg"
     },
     {
       "t": "narrate",
-      "text": "Sam looks at him. She sees, for the first time in her seventeen years, her father as a man. Not as her father. As a man."
+      "text": "Sam looks at him. She sees, for the first time in her seventeen years, her father as a man. Not as her father. As a man.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/051.ogg"
     },
     {
       "t": "narrate",
-      "text": "A tired, frightened, careful man, sitting at his own kitchen table, eating his wife's cacciatore, drinking a glass of red wine, saying the only thing he has figured out how to say in the forty-eight hours since whatever happened to him on Monday happened."
+      "text": "A tired, frightened, careful man, sitting at his own kitchen table, eating his wife's cacciatore, drinking a glass of red wine, saying the only thing he has figured out how to say in the forty-eight hours since whatever happened to him on Monday happened.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/052.ogg"
     },
     {
       "t": "say",
@@ -400,12 +412,14 @@
     {
       "t": "say",
       "char": "Mrs. Miller",
-      "text": "I don't know everything. I know enough to know I don't know everything. I know he's decided to do something. I don't know what it is. I know he's scared. I know he's going to tell me tonight, when he gets back."
+      "text": "I don't know everything. I know enough to know I don't know everything. I know he's decided to do something. I don't know what it is. I know he's scared. I know he's going to tell me tonight, when he gets back.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/073.ogg"
     },
     {
       "t": "say",
       "char": "Mrs. Miller",
-      "text": "And I know that whatever he's decided, you are going to be told first thing in the morning, because your father and I have discussed it and we agree on that one part."
+      "text": "And I know that whatever he's decided, you are going to be told first thing in the morning, because your father and I have discussed it and we agree on that one part.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/074.ogg"
     },
     {
       "t": "say",
@@ -451,11 +465,13 @@
     },
     {
       "t": "narrate",
-      "text": "At ten-oh-four, the sedan pulls out and drives, without lights, to a position three blocks from the building on the east side of the subdivision that is not currently on any map."
+      "text": "At ten-oh-four, the sedan pulls out and drives, without lights, to a position three blocks from the building on the east side of the subdivision that is not currently on any map.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/083.ogg"
     },
     {
       "t": "narrate",
-      "text": "At ten-thirty-six, a white unmarked van pulls into the lot of the building that is not on the map. At ten-fifty-eight, the van pulls out."
+      "text": "At ten-thirty-six, a white unmarked van pulls into the lot of the building that is not on the map. At ten-fifty-eight, the van pulls out.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/084.ogg"
     },
     {
       "t": "narrate",
@@ -464,11 +480,13 @@
     },
     {
       "t": "narrate",
-      "text": "At eleven-fifty-one, Chief Miller — who has been at the east-side building since eight-thirty — is back in his truck in his own driveway. He sits. He does not go inside. He is on the phone. At eleven-fifty-five, he hangs up."
+      "text": "At eleven-fifty-one, Chief Miller — who has been at the east-side building since eight-thirty — is back in his truck in his own driveway. He sits. He does not go inside. He is on the phone. At eleven-fifty-five, he hangs up.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/086.ogg"
     },
     {
       "t": "narrate",
-      "text": "He sits in the truck for another sixteen minutes."
+      "text": "He sits in the truck for another sixteen minutes.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/087.ogg"
     },
     {
       "t": "narrate",
@@ -494,19 +512,23 @@
     },
     {
       "t": "narrate",
-      "text": "Somewhere, on a two-lane highway eighty miles west, the Houston Chronicle sedan is tailing a white unmarked van at three cars' distance through a thunderstorm that is, itself, just easing."
+      "text": "Somewhere, on a two-lane highway eighty miles west, the Houston Chronicle sedan is tailing a white unmarked van at three cars' distance through a thunderstorm that is, itself, just easing.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/093.ogg"
     },
     {
       "t": "narrate",
-      "text": "In the sedan's backseat, unseen by any observer, a black cat — small, unregistered, the one from Gallatin Avenue, which had walked north toward the cedar scrub on Sunday and had continued west — is asleep."
+      "text": "In the sedan's backseat, unseen by any observer, a black cat — small, unregistered, the one from Gallatin Avenue, which had walked north toward the cedar scrub on Sunday and had continued west — is asleep.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/094.ogg"
     },
     {
       "t": "narrate",
-      "text": "The cat had, at some point in the night, chosen to be there. The cat had not, as far as the reporter could determine, ever been invited."
+      "text": "The cat had, at some point in the night, chosen to be there. The cat had not, as far as the reporter could determine, ever been invited.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/095.ogg"
     },
     {
       "t": "narrate",
-      "text": "The cat is going to be part of Friday morning's operation, in a way neither Claire nor her partner has yet, this Wednesday night, been made aware of."
+      "text": "The cat is going to be part of Friday morning's operation, in a way neither Claire nor her partner has yet, this Wednesday night, been made aware of.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/096.ogg"
     },
     {
       "t": "narrate",

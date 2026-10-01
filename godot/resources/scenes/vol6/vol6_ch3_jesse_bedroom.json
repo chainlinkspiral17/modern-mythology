@@ -168,11 +168,13 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert guitar]He puts the phone face-down on the carpet. He picks up the Telecaster. He strums a single unplugged chord — E minor. The first chord he ever learned, the chord he plays when he does not know what to play. The strings hum."
+   "text": "[shot:insert guitar]He puts the phone face-down on the carpet. He picks up the Telecaster. He strums a single unplugged chord — E minor. The first chord he ever learned, the chord he plays when he does not know what to play. The strings hum.",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/025.ogg"
   },
   {
    "t": "narrate",
-   "text": "The hum goes nowhere, because the amp is off, but the guitar, against his chest, vibrates."
+   "text": "The hum goes nowhere, because the amp is off, but the guitar, against his chest, vibrates.",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/026.ogg"
   },
   {
    "t": "narrate",
@@ -181,11 +183,13 @@
   },
   {
    "t": "narrate",
-   "text": "He thinks about the photograph of the man in the charcoal suit. He thinks about the kid at the streetlight across from McClary's, who Ben saw, who should not have been visible, who waved."
+   "text": "He thinks about the photograph of the man in the charcoal suit. He thinks about the kid at the streetlight across from McClary's, who Ben saw, who should not have been visible, who waved.",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/028.ogg"
   },
   {
    "t": "narrate",
-   "text": "He thinks about his father, alone in the red light of the darkroom, looking at prints that had people in them who were not in the frame."
+   "text": "He thinks about his father, alone in the red light of the darkroom, looking at prints that had people in them who were not in the frame.",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/029.ogg"
   },
   {
    "t": "think",
@@ -248,15 +252,18 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup jesse~]Jesse sets the phone down. He does not, tonight, cry."
+   "text": "[shot:closeup jesse~]Jesse sets the phone down. He does not, tonight, cry.",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/039.ogg"
   },
   {
    "t": "narrate",
-   "text": "But his eyes fill, briefly, and he lets them, and he does not wipe them, and he sits on the floor of his bedroom with the Telecaster beside him and his mother running the dishwasher one floor down and his father in the red light two floors below,"
+   "text": "But his eyes fill, briefly, and he lets them, and he does not wipe them, and he sits on the floor of his bedroom with the Telecaster beside him and his mother running the dishwasher one floor down and his father in the red light two floors below,",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/040.ogg"
   },
   {
    "t": "narrate",
-   "text": "and he thinks, in the small settled voice that has begun, in the past twenty-four hours, to be an interior voice he recognizes as his own adult one:"
+   "text": "and he thinks, in the small settled voice that has begun, in the past twenty-four hours, to be an interior voice he recognizes as his own adult one:",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/041.ogg"
   },
   {
    "t": "think",
@@ -310,11 +317,13 @@
   },
   {
    "t": "narrate",
-   "text": "He hugs her. She is startled, briefly, then pats his back in the way mothers pat the backs of teenage boys when the teenage boys hug them for no apparent reason —"
+   "text": "He hugs her. She is startled, briefly, then pats his back in the way mothers pat the backs of teenage boys when the teenage boys hug them for no apparent reason —",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/051.ogg"
   },
   {
    "t": "narrate",
-   "text": "which is to say with the small careful warmth of not wanting to make the hug feel remarkable in case the remarkable-ness might cause the hugger to reconsider."
+   "text": "which is to say with the small careful warmth of not wanting to make the hug feel remarkable in case the remarkable-ness might cause the hugger to reconsider.",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/052.ogg"
   },
   {
    "t": "say",

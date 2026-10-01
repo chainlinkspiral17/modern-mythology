@@ -35,11 +35,13 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:morning_bright][shot:closeup graciela]His grandmother is at the kitchen window when he pulls into the driveway. She has been at the window since six forty-five, the same as every morning since June. She has a cup of espresso."
+   "text": "[mood:morning_bright][shot:closeup graciela]His grandmother is at the kitchen window when he pulls into the driveway. She has been at the window since six forty-five, the same as every morning since June. She has a cup of espresso.",
+   "voice": "assets/audio/voice/vol6_ch10_home/006.ogg"
   },
   {
    "t": "narrate",
-   "text": "She has, on the small radio on the windowsill — the kitchen radio, which has nothing to do with the upstairs shortwave at Linda Caldwell's, and is just a radio — the morning Spanish-language news from San Antonio playing low."
+   "text": "She has, on the small radio on the windowsill — the kitchen radio, which has nothing to do with the upstairs shortwave at Linda Caldwell's, and is just a radio — the morning Spanish-language news from San Antonio playing low.",
+   "voice": "assets/audio/voice/vol6_ch10_home/007.ogg"
   },
   {
    "t": "narrate",
@@ -93,15 +95,18 @@
   },
   {
    "t": "narrate",
-   "text": "She does not, while he eats, sit. She stands at the counter with her own coffee. She has, in the past two months, learned not to sit during his breakfast, because his breakfast is at the wrong end of his day,"
+   "text": "She does not, while he eats, sit. She stands at the counter with her own coffee. She has, in the past two months, learned not to sit during his breakfast, because his breakfast is at the wrong end of his day,",
+   "voice": "assets/audio/voice/vol6_ch10_home/017.ogg"
   },
   {
    "t": "narrate",
-   "text": "and the politeness of two-people-at-a-table is the politeness of two people who are about to do something together, and they are not, this morning, about to do something together. He is about to sleep."
+   "text": "and the politeness of two-people-at-a-table is the politeness of two people who are about to do something together, and they are not, this morning, about to do something together. He is about to sleep.",
+   "voice": "assets/audio/voice/vol6_ch10_home/018.ogg"
   },
   {
    "t": "narrate",
-   "text": "She is about to do her morning. The standing is her small respect for the asymmetry."
+   "text": "She is about to do her morning. The standing is her small respect for the asymmetry.",
+   "voice": "assets/audio/voice/vol6_ch10_home/019.ogg"
   },
   {
    "t": "say",
@@ -159,13 +164,15 @@
    "t": "say",
    "char": "Diego",
    "text": "I don't know, abuela. I don't know if he's lying. I don't know if he isn't. The team has — the team has moved around me and not him.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch10_home/028.ogg"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "[shot:closeup person]And he came out on the dock with me on second break tonight and tried to — tried to get me to be on his side about something. And I did the thing the team would have done. I — I closed the conversation.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch10_home/029.ogg"
   },
   {
    "t": "narrate",
@@ -241,31 +248,38 @@
   },
   {
    "t": "narrate",
-   "text": "The radio plays the morning weather. The weather, as it has been for nine days, is heat. The forecast for Friday — the day of inventory — is one hundred and three degrees."
+   "text": "The radio plays the morning weather. The weather, as it has been for nine days, is heat. The forecast for Friday — the day of inventory — is one hundred and three degrees.",
+   "voice": "assets/audio/voice/vol6_ch10_home/042.ogg"
   },
   {
    "t": "narrate",
-   "text": "The store is, by Texas grocery-store standard, well air-conditioned. The store will, on Friday night, be cool. The day-side three will arrive at midnight in shorts and complain anyway."
+   "text": "The store is, by Texas grocery-store standard, well air-conditioned. The store will, on Friday night, be cool. The day-side three will arrive at midnight in shorts and complain anyway.",
+   "voice": "assets/audio/voice/vol6_ch10_home/043.ogg"
   },
   {
    "t": "narrate",
-   "text": "Diego will, by then, have slept his Friday day. He will be ready."
+   "text": "Diego will, by then, have slept his Friday day. He will be ready.",
+   "voice": "assets/audio/voice/vol6_ch10_home/044.ogg"
   },
   {
    "t": "narrate",
-   "text": "He finishes the eggs. He kisses his grandmother on the cheek. He goes upstairs."
+   "text": "He finishes the eggs. He kisses his grandmother on the cheek. He goes upstairs.",
+   "voice": "assets/audio/voice/vol6_ch10_home/045.ogg"
   },
   {
    "t": "narrate",
-   "text": "He showers in the small upstairs bathroom that is, from June onward, the only bathroom in the house except for the half-bath downstairs that his grandmother uses during the day."
+   "text": "He showers in the small upstairs bathroom that is, from June onward, the only bathroom in the house except for the half-bath downstairs that his grandmother uses during the day.",
+   "voice": "assets/audio/voice/vol6_ch10_home/046.ogg"
   },
   {
    "t": "narrate",
-   "text": "He pulls the blackout curtains in his bedroom — the ones he had installed in mid-July, after his mother had driven up from San Antonio and helped him put them in on a Saturday afternoon while his grandmother had made lunch and had, occasionally, brought up cold lemonade."
+   "text": "He pulls the blackout curtains in his bedroom — the ones he had installed in mid-July, after his mother had driven up from San Antonio and helped him put them in on a Saturday afternoon while his grandmother had made lunch and had, occasionally, brought up cold lemonade.",
+   "voice": "assets/audio/voice/vol6_ch10_home/047.ogg"
   },
   {
    "t": "narrate",
-   "text": "He gets into bed in his shorts and a t-shirt. The room, behind the blackout curtains, is the dark of any room at any hour."
+   "text": "He gets into bed in his shorts and a t-shirt. The room, behind the blackout curtains, is the dark of any room at any hour.",
+   "voice": "assets/audio/voice/vol6_ch10_home/048.ogg"
   },
   {
    "t": "hide",
@@ -291,11 +305,13 @@
   },
   {
    "t": "narrate",
-   "text": "In the dream the dock is the dock, and the cedar scrub is the cedar scrub, and the eastern horizon is the eastern horizon. But the rust-colored haze, in the dream, is closer than it is in life."
+   "text": "In the dream the dock is the dock, and the cedar scrub is the cedar scrub, and the eastern horizon is the eastern horizon. But the rust-colored haze, in the dream, is closer than it is in life.",
+   "voice": "assets/audio/voice/vol6_ch10_home/054.ogg"
   },
   {
    "t": "narrate",
-   "text": "The haze is, in the dream, only a few miles out. The haze is, in the dream, also moving — slowly, the way weather moves on a still day, but visibly, in the dream, moving toward him."
+   "text": "The haze is, in the dream, only a few miles out. The haze is, in the dream, also moving — slowly, the way weather moves on a still day, but visibly, in the dream, moving toward him.",
+   "voice": "assets/audio/voice/vol6_ch10_home/055.ogg"
   },
   {
    "t": "narrate",
@@ -400,15 +416,18 @@
   },
   {
    "t": "narrate",
-   "text": "His grandmother, downstairs, is making early dinner. He can smell it. Sopa de pollo."
+   "text": "His grandmother, downstairs, is making early dinner. He can smell it. Sopa de pollo.",
+   "voice": "assets/audio/voice/vol6_ch10_home/075.ogg"
   },
   {
    "t": "narrate",
-   "text": "She has been telling him for two days she was going to make sopa de pollo before his Tuesday shift this week, because she has decided that sopa de pollo is a soup that sits well in a stomach for a ten-hour shift,"
+   "text": "She has been telling him for two days she was going to make sopa de pollo before his Tuesday shift this week, because she has decided that sopa de pollo is a soup that sits well in a stomach for a ten-hour shift,",
+   "voice": "assets/audio/voice/vol6_ch10_home/076.ogg"
   },
   {
    "t": "narrate",
-   "text": "and because she has, this summer, taken the question of what sits well in his stomach as one of the small daily questions her own attention is good for."
+   "text": "and because she has, this summer, taken the question of what sits well in his stomach as one of the small daily questions her own attention is good for.",
+   "voice": "assets/audio/voice/vol6_ch10_home/077.ogg"
   },
   {
    "t": "hide",

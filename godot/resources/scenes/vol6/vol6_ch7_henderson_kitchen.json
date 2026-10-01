@@ -40,15 +40,18 @@
     },
     {
       "t": "narrate",
-      "text": "The pot roast has been in the oven since two-thirty."
+      "text": "The pot roast has been in the oven since two-thirty.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/007.ogg"
     },
     {
       "t": "narrate",
-      "text": "The smell of it has, for the past four hours, been rising through the house — past the laundry room, past the half-bath, down the basement stairs, and into the small converted broom closet off the garage where Mr."
+      "text": "The smell of it has, for the past four hours, been rising through the house — past the laundry room, past the half-bath, down the basement stairs, and into the small converted broom closet off the garage where Mr.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/008.ogg"
     },
     {
       "t": "narrate",
-      "text": "Henderson has been since five PM Friday."
+      "text": "Henderson has been since five PM Friday.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/009.ogg"
     },
     {
       "t": "narrate",
@@ -78,11 +81,13 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Jesse comes home from his shift at five-fifty-eight. He goes upstairs to shower. He comes down at six-twenty in clean clothes."
+      "text": "[shot:establish]Jesse comes home from his shift at five-fifty-eight. He goes upstairs to shower. He comes down at six-twenty in clean clothes.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/015.ogg"
     },
     {
       "t": "narrate",
-      "text": "Ben arrives at six-twenty-two, in a button-down shirt his mother had washed for him this afternoon when he had told her, vaguely, that he was going to a friend's for dinner and it might be a thing."
+      "text": "Ben arrives at six-twenty-two, in a button-down shirt his mother had washed for him this afternoon when he had told her, vaguely, that he was going to a friend's for dinner and it might be a thing.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/016.ogg"
     },
     {
       "t": "show",
@@ -357,31 +362,36 @@
       "t": "say",
       "char": "Mr. Henderson",
       "text": "There was a — there was an arrangement. In 1998. When we were — when we first moved to Harmony Creek. The substation went up the year before. The substation had — had a contract with NexCorp Residential Solutions.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/066.ogg"
     },
     {
       "t": "say",
       "char": "Mr. Henderson",
       "text": "The contract was for — for ambient signal management. They needed — Eileen. They needed a small number of — eyes. People with cameras. People with — with a kind of attention.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/067.ogg"
     },
     {
       "t": "say",
       "char": "Mr. Henderson",
       "text": "[shot:closeup person_b]The arrangement was — they would not interfere with our lives. They would only ask, occasionally, for — photographs. Specific photographs. From specific angles. At specific times. They would compensate. Modestly.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/068.ogg"
     },
     {
       "t": "say",
       "char": "Mr. Henderson",
       "text": "The compensation was — it paid for the down payment on this house. It paid for Jesse's preschool. It paid for things I was, at the time, unable to pay for any other way. I was — I said yes.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/069.ogg"
     },
     {
       "t": "say",
       "char": "Mr. Henderson",
       "text": "I did not — I did not understand what I was saying yes to.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/070.ogg"
     },
     {
       "t": "narrate",
@@ -404,25 +414,29 @@
       "t": "say",
       "char": "Mr. Henderson",
       "text": "Then — Eileen. Then in 2011 — there was a — they put something in the camera. Or in me. I do not know which. After that — I would go down to the darkroom. I would develop the prints.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/074.ogg"
     },
     {
       "t": "say",
       "char": "Mr. Henderson",
       "text": "The prints had — they had things in them I had not photographed. I had — I had photographed the same things I had always photographed. But the prints were — they were different.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/075.ogg"
     },
     {
       "t": "say",
       "char": "Mr. Henderson",
       "text": "And after — after the prints came out, I would — I would know things. About — about the people in the prints. About where they were. About what they were doing. I — I would tell — I would tell, and they would pay. More, by then.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/076.ogg"
     },
     {
       "t": "say",
       "char": "Mr. Henderson",
       "text": "Much more.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/077.ogg"
     },
     {
       "t": "narrate",
@@ -438,19 +452,22 @@
       "t": "say",
       "char": "Mr. Henderson",
       "text": "In April — Eileen — in April this year, the substation began — broadcasting — at me. Through the camera. I do not — I do not know how to explain it. It was not — it was not a voice. It was a — it was a direction.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/080.ogg"
     },
     {
       "t": "say",
       "char": "Mr. Henderson",
       "text": "The camera would tell me where to point. The prints would — the prints would report. I was — I was not, by then, fully — fully me. I was — I was an eye.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/081.ogg"
     },
     {
       "t": "say",
       "char": "Mr. Henderson",
       "text": "[shake rate=8 level=2]I was only an eye.[/shake] The eye was — the eye was theirs.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/082.ogg"
     },
     {
       "t": "narrate",
@@ -461,25 +478,29 @@
       "t": "say",
       "char": "Mr. Henderson",
       "text": "And then — Saturday last, I — there was a kid. The Ramos boy. The eye — the eye saw him. The eye — I — I told them where he would be. That night. I told them.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/084.ogg"
     },
     {
       "t": "say",
       "char": "Mr. Henderson",
       "text": "And then on Tuesday morning I saw, in the prints, a man in a charcoal suit looking at me. He was not — he was not real. Or he was. I do not — I do not know. But he was — he was seeing me back.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/085.ogg"
     },
     {
       "t": "say",
       "char": "Mr. Henderson",
       "text": "And after I saw that — Eileen, after I saw that, I began to — I began to fight. Not on the — not on the surface. On the inside. I would — every print, after, I would try to — to leave a thing. A small thing. The note on the bill.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/086.ogg"
     },
     {
       "t": "say",
       "char": "Mr. Henderson",
       "text": "The pencil writing. The eye did not know I was doing it. The eye — the eye thought I was being a good eye. But the small things — they were mine. They were — the only mine I had left.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/087.ogg"
     },
     {
       "t": "narrate",
@@ -533,13 +554,15 @@
       "t": "say",
       "char": "Ben",
       "text": "Mr. Henderson. There is a man in Graustark named Frasier Temple. He runs — he runs the kind of system that probably knows what was put in your camera.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/096.ogg"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Maya — Maya Daigle, who is one of our — one of our friends — has a way to ask him. We can ask. We can find out what it is. We can find out if it can be — if it can be removed.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/097.ogg"
     },
     {
       "t": "narrate",

@@ -29,27 +29,33 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:day_bright]The white sedan is parked on the gravel shoulder of the I-10 service road, three miles east of the exit for FM-3411."
+      "text": "[mood:day_bright]The white sedan is parked on the gravel shoulder of the I-10 service road, three miles east of the exit for FM-3411.",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/005.ogg"
     },
     {
       "t": "narrate",
-      "text": "The unmarked transport van — the one carrying Diego Ramos, the one that had been driving in slow loops through southwest Texas since eleven Wednesday night, the one Claire Moyer and her partner had been three vehicles back from in shifts of six hours on,"
+      "text": "The unmarked transport van — the one carrying Diego Ramos, the one that had been driving in slow loops through southwest Texas since eleven Wednesday night, the one Claire Moyer and her partner had been three vehicles back from in shifts of six hours on,",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/006.ogg"
     },
     {
       "t": "narrate",
-      "text": "six hours off — is, at this moment, twelve miles west of their position, parked at the back of a NexCorp-branded fueling station off the FM-3411 exit, doing what Claire had calculated as a high-probability scheduled stop: fuel, driver swap, seven-minute window."
+      "text": "six hours off — is, at this moment, twelve miles west of their position, parked at the back of a NexCorp-branded fueling station off the FM-3411 exit, doing what Claire had calculated as a high-probability scheduled stop: fuel, driver swap, seven-minute window.",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/007.ogg"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]Claire is on her phone. The earpiece is in. The conversation is with a man whose voice she has never heard in person and who, until last night, had been a contact she identified to her partner only as F."
+      "text": "[shot:insert phone]Claire is on her phone. The earpiece is in. The conversation is with a man whose voice she has never heard in person and who, until last night, had been a contact she identified to her partner only as F.",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/008.ogg"
     },
     {
       "t": "narrate",
-      "text": "She is not, this morning, certain whether F is Frasier Temple — Maya, via Rick, had been told the name; Claire had not. Claire's instructions had been delivered, all week, through a channel that had not used names."
+      "text": "She is not, this morning, certain whether F is Frasier Temple — Maya, via Rick, had been told the name; Claire had not. Claire's instructions had been delivered, all week, through a channel that had not used names.",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/009.ogg"
     },
     {
       "t": "narrate",
-      "text": "This morning, the channel is using a name."
+      "text": "This morning, the channel is using a name.",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/010.ogg"
     },
     {
       "t": "show",
@@ -108,19 +114,22 @@
       "t": "say",
       "char": "Frasier Temple",
       "text": "At the FM-3411 exit, the NexCorp station. The transport van is currently parked at pump six on the back side. There are two operatives in the van. Driver and passenger.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/019.ogg"
     },
     {
       "t": "say",
       "char": "Frasier Temple",
       "text": "Driver is a contractor named Vince Kane — record's clean on paper, dirty everywhere it isn't, you don't need the long version. Passenger is Diego Ramos and a second contractor, name's Boyd.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/020.ogg"
     },
     {
       "t": "say",
       "char": "Frasier Temple",
       "text": "[shot:closeup person_b]Boyd is the one you have to be careful about. Boyd has, in the past, been the one who hurts the kids.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/021.ogg"
     },
     {
       "t": "narrate",
@@ -138,13 +147,15 @@
       "t": "say",
       "char": "Frasier Temple",
       "text": "Yes. Less than he could have. The Demons have been — interfering with Boyd's command authority all week. We have not been able to make him a complete coward, but we have made him hesitate.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/024.ogg"
     },
     {
       "t": "say",
       "char": "Frasier Temple",
       "text": "Diego is, by Wednesday's last assessment, beat up but not broken. Bruises, dehydration, a moderate concussion. No broken bones. He has not been — there's no sexual assault, Claire. I want you to know that going in.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/025.ogg"
     },
     {
       "t": "narrate",
@@ -162,13 +173,15 @@
       "t": "say",
       "char": "Frasier Temple",
       "text": "[shot:establish]Your window is the driver swap. They're scheduled to swap drivers at zero seven thirty. Vince hands off to a third contractor, Tomé, who arrives in a separate vehicle from the south.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/028.ogg"
     },
     {
       "t": "say",
       "char": "Frasier Temple",
       "text": "During the seven minutes of the swap, Boyd will go inside the station to use the restroom. He always does. It is the only consistent break in the chain we've found.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/029.ogg"
     },
     {
       "t": "say",
@@ -195,19 +208,22 @@
       "t": "say",
       "char": "Frasier Temple",
       "text": "[shot:closeup person_b]Your partner approaches Vince during the swap, badge out, NAPD courtesy badge — Ramirez has authorized you to flash it.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/033.ogg"
     },
     {
       "t": "say",
       "char": "Frasier Temple",
       "text": "You tell Vince there's a federal-level investigation closing on him in forty-five minutes and that he can either walk away from the van right now and never come back, or he can be standing next to it when the federals pull up.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/034.ogg"
     },
     {
       "t": "say",
       "char": "Frasier Temple",
       "text": "Vince walks. Vince has done this before. He'll be a free man inside an hour and a hundred miles from here by noon.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/035.ogg"
     },
     {
       "t": "say",
@@ -220,25 +236,29 @@
       "t": "say",
       "char": "Frasier Temple",
       "text": "[shot:closeup person_b]Tomé arrives at zero seven thirty-three. By the time he arrives, the van is yours. He sees the van still there but he sees Vince gone and a different man — your partner — at the wheel. He'll hesitate.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/037.ogg"
     },
     {
       "t": "say",
       "char": "Frasier Temple",
       "text": "Claire, this is the thing I need you to do. You go to Tomé. You get in his car. You ask him to drive you to the truck stop on the next exit. You pay him, in cash, two hundred dollars, for the ride.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/038.ogg"
     },
     {
       "t": "say",
       "char": "Frasier Temple",
       "text": "You tell him there's been a change of plans and his services aren't needed today. You ride with him to the next exit. You get out. You walk away. You tip him another hundred. He is not, in any meaningful sense, your enemy.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/039.ogg"
     },
     {
       "t": "say",
       "char": "Frasier Temple",
       "text": "He just doesn't want to be standing next to a van full of trouble. Pay him to leave. He will leave.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/040.ogg"
     },
     {
       "t": "say",
@@ -265,13 +285,15 @@
       "t": "say",
       "char": "Frasier Temple",
       "text": "Boyd is in the station's bathroom for nine minutes. By the time he comes out, the van is gone. Your partner and Diego will be on FM-3411, heading north, with Hal in the green pickup leading them to the safehouse.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/044.ogg"
     },
     {
       "t": "say",
       "char": "Frasier Temple",
       "text": "Boyd will walk out, see no van, and have a problem. Boyd will call his handlers. By the time the handlers respond, it will be eight oh-five and the van will be inside the safehouse perimeter.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/045.ogg"
     },
     {
       "t": "say",
@@ -322,13 +344,15 @@
       "t": "say",
       "char": "Frasier Temple",
       "text": "Because the Demon attached to the station's plumbing system is going to give him gastrointestinal distress consistent with a moderate stomach bug. The distress will be uncomfortable but not dangerous.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/053.ogg"
     },
     {
       "t": "say",
       "char": "Frasier Temple",
       "text": "He will not be able to leave the bathroom for the duration of the operation. We have, ah, been working on this technique for a little while. This is the first field test.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/054.ogg"
     },
     {
       "t": "narrate",

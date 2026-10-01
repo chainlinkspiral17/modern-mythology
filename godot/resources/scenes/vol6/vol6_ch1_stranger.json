@@ -23,11 +23,13 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:day_bright]The air-conditioning at the Kwik Stop is set by corporate to sixty-eight degrees and maintained, against all local protest, by a unit on the roof that has been serviced exactly once in seven years. It does not produce cold air."
+      "text": "[mood:day_bright]The air-conditioning at the Kwik Stop is set by corporate to sixty-eight degrees and maintained, against all local protest, by a unit on the roof that has been serviced exactly once in seven years. It does not produce cold air.",
+      "voice": "assets/audio/voice/vol6_ch1_stranger/003.ogg"
     },
     {
       "t": "narrate",
-      "text": "It produces the memory of cold air, filtered through lint and the ghost of every hot dog that has ever sweated on the roller grill."
+      "text": "It produces the memory of cold air, filtered through lint and the ghost of every hot dog that has ever sweated on the roller grill.",
+      "voice": "assets/audio/voice/vol6_ch1_stranger/004.ogg"
     },
     {
       "t": "narrate",
@@ -36,15 +38,18 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup sam]She is leaning on the counter with her elbows on the rubber anti-fatigue mat, looking at the parking lot through the window that has been decal-ed over, in three overlapping layers,"
+      "text": "[shot:closeup sam]She is leaning on the counter with her elbows on the rubber anti-fatigue mat, looking at the parking lot through the window that has been decal-ed over, in three overlapping layers,",
+      "voice": "assets/audio/voice/vol6_ch1_stranger/006.ogg"
     },
     {
       "t": "narrate",
-      "text": "with ads for a lottery game nobody she knows plays, a cigarette brand that stopped being sold in Texas in 2019, and a cheerful cartoon hamburger holding a sign that reads TASTE HOME. The hamburger has lost one of its eyes."
+      "text": "with ads for a lottery game nobody she knows plays, a cigarette brand that stopped being sold in Texas in 2019, and a cheerful cartoon hamburger holding a sign that reads TASTE HOME. The hamburger has lost one of its eyes.",
+      "voice": "assets/audio/voice/vol6_ch1_stranger/007.ogg"
     },
     {
       "t": "narrate",
-      "text": "The eye is somewhere in the decal's adhesive layer, drifting."
+      "text": "The eye is somewhere in the decal's adhesive layer, drifting.",
+      "voice": "assets/audio/voice/vol6_ch1_stranger/008.ogg"
     },
     {
       "t": "narrate",
@@ -63,11 +68,13 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]A man Sam has never seen before comes in. He is in his fifties. He wears a golf shirt tucked into khaki shorts."
+      "text": "[shot:establish]A man Sam has never seen before comes in. He is in his fifties. He wears a golf shirt tucked into khaki shorts.",
+      "voice": "assets/audio/voice/vol6_ch1_stranger/012.ogg"
     },
     {
       "t": "narrate",
-      "text": "He has a sunburn on the back of his neck in the particular shape of a person who has recently begun wearing a collared shirt after a lifetime of not. He nods at Sam."
+      "text": "He has a sunburn on the back of his neck in the particular shape of a person who has recently begun wearing a collared shirt after a lifetime of not. He nods at Sam.",
+      "voice": "assets/audio/voice/vol6_ch1_stranger/013.ogg"
     },
     {
       "t": "show",
@@ -91,11 +98,13 @@
     },
     {
       "t": "narrate",
-      "text": "He goes to the back cooler. Opens it. Stands in front of it for a long time — longer than anyone ever stands in front of a back cooler at the Kwik Stop, because the back cooler holds the beer,"
+      "text": "He goes to the back cooler. Opens it. Stands in front of it for a long time — longer than anyone ever stands in front of a back cooler at the Kwik Stop, because the back cooler holds the beer,",
+      "voice": "assets/audio/voice/vol6_ch1_stranger/017.ogg"
     },
     {
       "t": "narrate",
-      "text": "and the beer is sold by the can for a dollar twenty-nine, and the kind of decision that takes a long time at that price point is not a decision that happens in Harmony Creek Estates."
+      "text": "and the beer is sold by the can for a dollar twenty-nine, and the kind of decision that takes a long time at that price point is not a decision that happens in Harmony Creek Estates.",
+      "voice": "assets/audio/voice/vol6_ch1_stranger/018.ogg"
     },
     {
       "t": "think",

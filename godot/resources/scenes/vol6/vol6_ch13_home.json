@@ -60,15 +60,18 @@
   },
   {
    "t": "narrate",
-   "text": "Bill is, by Bill tradition, doing the Friday crossword in pen."
+   "text": "Bill is, by Bill tradition, doing the Friday crossword in pen.",
+   "voice": "assets/audio/voice/vol6_ch13_home/011.ogg"
   },
   {
    "t": "narrate",
-   "text": "His mother is, by the angle of the bedroom door from the hallway, in the bedroom — the night-shift sleep, the eight-AM-to-three-PM sleep she does on days she works a ten-hour straight night."
+   "text": "His mother is, by the angle of the bedroom door from the hallway, in the bedroom — the night-shift sleep, the eight-AM-to-three-PM sleep she does on days she works a ten-hour straight night.",
+   "voice": "assets/audio/voice/vol6_ch13_home/012.ogg"
   },
   {
    "t": "narrate",
-   "text": "Daisy, the family's twelve-year-old golden, is at Bill's feet."
+   "text": "Daisy, the family's twelve-year-old golden, is at Bill's feet.",
+   "voice": "assets/audio/voice/vol6_ch13_home/013.ogg"
   },
   {
    "t": "show",
@@ -208,11 +211,13 @@
   },
   {
    "t": "narrate",
-   "text": "He eats the sandwich. He drinks two glasses of water. He sits with Daisy on the couch for twenty minutes."
+   "text": "He eats the sandwich. He drinks two glasses of water. He sits with Daisy on the couch for twenty minutes.",
+   "voice": "assets/audio/voice/vol6_ch13_home/035.ogg"
   },
   {
    "t": "narrate",
-   "text": "He watches, with the sound off, the noon news, which has — at twelve oh-five — a story about the heat that has been in every noon broadcast for three weeks and that says, today, the heat is going to break by Tuesday."
+   "text": "He watches, with the sound off, the noon news, which has — at twelve oh-five — a story about the heat that has been in every noon broadcast for three weeks and that says, today, the heat is going to break by Tuesday.",
+   "voice": "assets/audio/voice/vol6_ch13_home/036.ogg"
   },
   {
    "t": "narrate",

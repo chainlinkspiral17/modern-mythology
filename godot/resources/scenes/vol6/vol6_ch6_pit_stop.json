@@ -57,11 +57,13 @@
     },
     {
       "t": "narrate",
-      "text": "H. Hal. The bookshop guy. Ben reads the message. He reads it again. He puts the phone back. He breathes for maybe four seconds. Then he opens the office door."
+      "text": "H. Hal. The bookshop guy. Ben reads the message. He reads it again. He puts the phone back. He breathes for maybe four seconds. Then he opens the office door.",
+      "voice": "assets/audio/voice/vol6_ch6_pit_stop/010.ogg"
     },
     {
       "t": "narrate",
-      "text": "The morning manager — a woman named Brenda who has been at the Pit Stop since 2008 and who has, since Wednesday, been treating Ben with a small careful deference that Ben has not, yet, asked her to explain — looks up."
+      "text": "The morning manager — a woman named Brenda who has been at the Pit Stop since 2008 and who has, since Wednesday, been treating Ben with a small careful deference that Ben has not, yet, asked her to explain — looks up.",
+      "voice": "assets/audio/voice/vol6_ch6_pit_stop/011.ogg"
     },
     {
       "t": "show",

@@ -35,11 +35,13 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2][mood:dream_blur]THE HANGED MAN. He hangs by one foot from a living tree. His face is calm. The halo around his head suggests this is not punishment. He chose the tree. He is learning something that cannot be learned any other way."
+      "text": "[trip:1.2][mood:dream_blur]THE HANGED MAN. He hangs by one foot from a living tree. His face is calm. The halo around his head suggests this is not punishment. He chose the tree. He is learning something that cannot be learned any other way.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/006.ogg"
     },
     {
       "t": "narrate",
-      "text": "Reversed: the suspension that has become avoidance. The enlightenment that is actually just fear of coming down."
+      "text": "Reversed: the suspension that has become avoidance. The enlightenment that is actually just fear of coming down.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/007.ogg"
     },
     {
       "t": "narrate",
@@ -48,19 +50,23 @@
     },
     {
       "t": "narrate",
-      "text": "The shift from the clatter and forced smiles of D'Ambrosio's — Simons, LA edition, same stale air, different zip code, same photograph of Dante D'Ambrosio Senior on the wall behind the host stand,"
+      "text": "The shift from the clatter and forced smiles of D'Ambrosio's — Simons, LA edition, same stale air, different zip code, same photograph of Dante D'Ambrosio Senior on the wall behind the host stand,",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/009.ogg"
     },
     {
       "t": "narrate",
-      "text": "slightly more faded than the original at the flagship because the Simons location got more direct sunlight — to the cluttered sanctuary of her own four walls always felt like stepping between pages in a strange book."
+      "text": "slightly more faded than the original at the flagship because the Simons location got more direct sunlight — to the cluttered sanctuary of her own four walls always felt like stepping between pages in a strange book.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/010.ogg"
     },
     {
       "t": "narrate",
-      "text": "One reality bled into the next, thin as onion skin. Outside: the performance, the detached grace of balancing trays laden with overpriced Cajun-Italian-Tex-Mex abominations."
+      "text": "One reality bled into the next, thin as onion skin. Outside: the performance, the detached grace of balancing trays laden with overpriced Cajun-Italian-Tex-Mex abominations.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/011.ogg"
     },
     {
       "t": "narrate",
-      "text": "Inside: the quiet hum of the ancient refrigerator, the scent of dust motes dancing in moonlight slanting through the blinds, and the low crackle of vinyl anticipation before the needle drop."
+      "text": "Inside: the quiet hum of the ancient refrigerator, the scent of dust motes dancing in moonlight slanting through the blinds, and the low crackle of vinyl anticipation before the needle drop.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/012.ogg"
     },
     {
       "t": "narrate",
@@ -74,11 +80,13 @@
     },
     {
       "t": "narrate",
-      "text": "Her apartment wasn't a space; it was a nest woven from discarded dance shoes soft as moth wings, stacks of books leaning at precarious Borgesian angles, chipped porcelain teacups holding dried herbs, and tarot decks fanned out on the floor like fallen leaves revealing cryptic patterns."
+      "text": "Her apartment wasn't a space; it was a nest woven from discarded dance shoes soft as moth wings, stacks of books leaning at precarious Borgesian angles, chipped porcelain teacups holding dried herbs, and tarot decks fanned out on the floor like fallen leaves revealing cryptic patterns.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/015.ogg"
     },
     {
       "t": "narrate",
-      "text": "It was liminal ground. A threshold where the mundane sighed and gave way to the peculiar."
+      "text": "It was liminal ground. A threshold where the mundane sighed and gave way to the peculiar.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/016.ogg"
     },
     {
       "t": "narrate",
@@ -87,15 +95,18 @@
     },
     {
       "t": "narrate",
-      "text": "Or — not weird. Natalie had stopped using the word weird with herself in the way other people used it, as a category meaning outside the ordinary."
+      "text": "Or — not weird. Natalie had stopped using the word weird with herself in the way other people used it, as a category meaning outside the ordinary.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/018.ogg"
     },
     {
       "t": "narrate",
-      "text": "She had begun, in the past few months, to use weird the way an archaeologist used artifact: a description not of strangeness but of provenance. Weird meant belonging to the older system."
+      "text": "She had begun, in the past few months, to use weird the way an archaeologist used artifact: a description not of strangeness but of provenance. Weird meant belonging to the older system.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/019.ogg"
     },
     {
       "t": "narrate",
-      "text": "The older system had its own physics, its own meteorology, its own internal consistency. The trick was learning to read the readings."
+      "text": "The older system had its own physics, its own meteorology, its own internal consistency. The trick was learning to read the readings.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/020.ogg"
     },
     {
       "t": "narrate",
@@ -109,15 +120,18 @@
     },
     {
       "t": "narrate",
-      "text": "She shed her waitress uniform like a snake shedding skin."
+      "text": "She shed her waitress uniform like a snake shedding skin.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/023.ogg"
     },
     {
       "t": "narrate",
-      "text": "The fabric carried the ghosts of a thousand demands and polite inquiries, the small tar-paper residue of having been, for nine hours, the surface against which other people's evenings had rubbed themselves."
+      "text": "The fabric carried the ghosts of a thousand demands and polite inquiries, the small tar-paper residue of having been, for nine hours, the surface against which other people's evenings had rubbed themselves.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/024.ogg"
     },
     {
       "t": "narrate",
-      "text": "She hung the uniform on the back of the bathroom door, where it would air out overnight and where it would, by morning, smell less like the restaurant and more like her apartment, which would be the small daily reclamation she performed without quite acknowledging it."
+      "text": "She hung the uniform on the back of the bathroom door, where it would air out overnight and where it would, by morning, smell less like the restaurant and more like her apartment, which would be the small daily reclamation she performed without quite acknowledging it.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/025.ogg"
     },
     {
       "t": "narrate",
@@ -126,23 +140,28 @@
     },
     {
       "t": "narrate",
-      "text": "Conventional ambitions — she had let those go, seasons ago. Watched them float away like milkweed fluff. Success, love, career: words from a language she no longer spoke fluently."
+      "text": "Conventional ambitions — she had let those go, seasons ago. Watched them float away like milkweed fluff. Success, love, career: words from a language she no longer spoke fluently.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/027.ogg"
     },
     {
       "t": "narrate",
-      "text": "There was a different kind of wisdom found here, suspended between effort and surrender. Seeing the world upside down from the branches of her own quiet contemplation."
+      "text": "There was a different kind of wisdom found here, suspended between effort and surrender. Seeing the world upside down from the branches of her own quiet contemplation.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/028.ogg"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert card]She had not, for the record, set out to live this way. She had set out, at twenty-two, to be a principal with a regional company in Atlanta. The setting-out had lasted six years."
+      "text": "[shot:insert card]She had not, for the record, set out to live this way. She had set out, at twenty-two, to be a principal with a regional company in Atlanta. The setting-out had lasted six years.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/029.ogg"
     },
     {
       "t": "narrate",
-      "text": "The regional company had lasted nine months past her injury. The injury had lasted, in some form, for the rest of her life."
+      "text": "The regional company had lasted nine months past her injury. The injury had lasted, in some form, for the rest of her life.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/030.ogg"
     },
     {
       "t": "narrate",
-      "text": "The setting-out had given way, the way most setting-outs gave way, to whatever came after — and what had come after, in Natalie's case, was this: the nest, the herbs, the records, the cards."
+      "text": "The setting-out had given way, the way most setting-outs gave way, to whatever came after — and what had come after, in Natalie's case, was this: the nest, the herbs, the records, the cards.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/031.ogg"
     },
     {
       "t": "narrate",
@@ -166,15 +185,18 @@
     },
     {
       "t": "narrate",
-      "text": "The injury had taken something from her ankle and something from her left hip and a small bright permanent thing from her ability to trust her own balance. It had not taken her ability to listen to music."
+      "text": "The injury had taken something from her ankle and something from her left hip and a small bright permanent thing from her ability to trust her own balance. It had not taken her ability to listen to music.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/036.ogg"
     },
     {
       "t": "narrate",
-      "text": "It had not taken the older ability — the one she had always had, the one she had not had a name for at twenty-two,"
+      "text": "It had not taken the older ability — the one she had always had, the one she had not had a name for at twenty-two,",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/037.ogg"
     },
     {
       "t": "narrate",
-      "text": "the one she now suspected had been the reason she had been a good dancer in the first place — to feel where in a room a sound was actually originating, regardless of where the speaker was."
+      "text": "the one she now suspected had been the reason she had been a good dancer in the first place — to feel where in a room a sound was actually originating, regardless of where the speaker was.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/038.ogg"
     },
     {
       "t": "narrate",
@@ -208,11 +230,13 @@
     },
     {
       "t": "narrate",
-      "text": "[beat:chill][mood:macro_haze][shot:establish]As her fingers brushed the cardstock, the image seemed to shimmer. Ripple like water. For a vertiginous second, the room tilted — the floor becoming the ceiling, the sparse furniture hanging precariously above her,"
+      "text": "[beat:chill][mood:macro_haze][shot:establish]As her fingers brushed the cardstock, the image seemed to shimmer. Ripple like water. For a vertiginous second, the room tilted — the floor becoming the ceiling, the sparse furniture hanging precariously above her,",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/045.ogg"
     },
     {
       "t": "narrate",
-      "text": "Nina Simone's voice still coming from the record player but the record player now somewhere up there, somewhere on what had been the ceiling, the cord trailing improbably toward a wall that had been, until ten seconds ago, a floor."
+      "text": "Nina Simone's voice still coming from the record player but the record player now somewhere up there, somewhere on what had been the ceiling, the cord trailing improbably toward a wall that had been, until ten seconds ago, a floor.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/046.ogg"
     },
     {
       "t": "narrate",
@@ -266,11 +290,13 @@
     },
     {
       "t": "narrate",
-      "text": "Tonight they felt — expectant. Buzzing, like before a storm. The Wheel of Fortune kept trying to slide to the top of the deck under her thumb, the way certain cards did when they had something to say."
+      "text": "Tonight they felt — expectant. Buzzing, like before a storm. The Wheel of Fortune kept trying to slide to the top of the deck under her thumb, the way certain cards did when they had something to say.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/057.ogg"
     },
     {
       "t": "narrate",
-      "text": "She allowed it the third time. The Wheel sat on top. She set the deck face-down on the floor, the Wheel still face-down on top, and acknowledged the Wheel by tapping it once with her index finger."
+      "text": "She allowed it the third time. The Wheel sat on top. She set the deck face-down on the floor, the Wheel still face-down on top, and acknowledged the Wheel by tapping it once with her index finger.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/058.ogg"
     },
     {
       "t": "narrate",
@@ -289,11 +315,13 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]She curled up on the futon. Pulled a quilt woven with threads the color of twilight around her."
+      "text": "[shot:establish]She curled up on the futon. Pulled a quilt woven with threads the color of twilight around her.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/062.ogg"
     },
     {
       "t": "narrate",
-      "text": "The book she had been reading — a slim volume of Borges, dog-eared and annotated with cryptic symbols only she understood — lay open on the floor. Time forks perpetually toward innumerable futures. Indeed."
+      "text": "The book she had been reading — a slim volume of Borges, dog-eared and annotated with cryptic symbols only she understood — lay open on the floor. Time forks perpetually toward innumerable futures. Indeed.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/063.ogg"
     },
     {
       "t": "narrate",
@@ -312,15 +340,18 @@
     },
     {
       "t": "narrate",
-      "text": "She did not, generally, answer the phone after midnight."
+      "text": "She did not, generally, answer the phone after midnight.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/067.ogg"
     },
     {
       "t": "narrate",
-      "text": "She had this rule for the same reason she had most of her rules: not because the rule was sacred but because she had observed, over the course of her thirties, that following the rule produced a measurably better life than not following it."
+      "text": "She had this rule for the same reason she had most of her rules: not because the rule was sacred but because she had observed, over the course of her thirties, that following the rule produced a measurably better life than not following it.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/068.ogg"
     },
     {
       "t": "narrate",
-      "text": "People who called her after midnight usually had something they wanted from her that they would, by morning, not actually need. The morning saved everyone time."
+      "text": "People who called her after midnight usually had something they wanted from her that they would, by morning, not actually need. The morning saved everyone time.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/069.ogg"
     },
     {
       "t": "narrate",
@@ -339,19 +370,23 @@
     },
     {
       "t": "narrate",
-      "text": "She had not, in three months, had a phone call from Nicola Greer."
+      "text": "She had not, in three months, had a phone call from Nicola Greer.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/073.ogg"
     },
     {
       "t": "narrate",
-      "text": "Nicola was the hostess at the flagship D'Ambrosio's up in Graustark — they had worked one shift together, a year ago, when Natalie had been called up to fill in during a crisis Dante had not, at the time, fully explained."
+      "text": "Nicola was the hostess at the flagship D'Ambrosio's up in Graustark — they had worked one shift together, a year ago, when Natalie had been called up to fill in during a crisis Dante had not, at the time, fully explained.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/074.ogg"
     },
     {
       "t": "narrate",
-      "text": "Nicola was nineteen. Nicola was, Natalie had observed across that one shift, carrying a great deal more than her uniform."
+      "text": "Nicola was nineteen. Nicola was, Natalie had observed across that one shift, carrying a great deal more than her uniform.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/075.ogg"
     },
     {
       "t": "narrate",
-      "text": "Nicola was — and Natalie had, even then, been almost certain — beginning to become two people in the same skin."
+      "text": "Nicola was — and Natalie had, even then, been almost certain — beginning to become two people in the same skin.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/076.ogg"
     },
     {
       "t": "narrate",
@@ -418,11 +453,13 @@
     },
     {
       "t": "narrate",
-      "text": "She crossed back to the futon. Sat on the edge of it. Looked at the cards on the floor. Looked at the Hanged Man on the windowsill."
+      "text": "She crossed back to the futon. Sat on the edge of it. Looked at the cards on the floor. Looked at the Hanged Man on the windowsill.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/088.ogg"
     },
     {
       "t": "narrate",
-      "text": "Looked, briefly and without quite knowing why, at the ceiling above her — at the place where, ten minutes ago, Nina Simone had briefly been singing from."
+      "text": "Looked, briefly and without quite knowing why, at the ceiling above her — at the place where, ten minutes ago, Nina Simone had briefly been singing from.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/089.ogg"
     },
     {
       "t": "say",
@@ -553,11 +590,13 @@
     },
     {
       "t": "narrate",
-      "text": "She uncovered the lamp from its scarf, so the reading light would be ready. She filled the kettle, set it on the stove without lighting the burner, so it would be ready to light when the bell rang."
+      "text": "She uncovered the lamp from its scarf, so the reading light would be ready. She filled the kettle, set it on the stove without lighting the burner, so it would be ready to light when the bell rang.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/112.ogg"
     },
     {
       "t": "narrate",
-      "text": "She found the second teacup, the one with the small chip on the rim Natalie had been meaning to glue and had, instead, learned to drink around."
+      "text": "She found the second teacup, the one with the small chip on the rim Natalie had been meaning to glue and had, instead, learned to drink around.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/113.ogg"
     },
     {
       "t": "narrate",
@@ -606,11 +645,13 @@
     },
     {
       "t": "narrate",
-      "text": "She sat on the futon with the quilt around her shoulders and the cards on the table in front of her and the half-brewed tea cooling beside her. The record finished. Did not start over."
+      "text": "She sat on the futon with the quilt around her shoulders and the cards on the table in front of her and the half-brewed tea cooling beside her. The record finished. Did not start over.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/123.ogg"
     },
     {
       "t": "narrate",
-      "text": "The apartment hummed at the low frequency it hummed at when nothing was happening that needed to be observed, but a thing was coming that would."
+      "text": "The apartment hummed at the low frequency it hummed at when nothing was happening that needed to be observed, but a thing was coming that would.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/124.ogg"
     },
     {
       "t": "narrate",
@@ -662,11 +703,13 @@
     },
     {
       "t": "narrate",
-      "text": "Nicola took off her shoes. She set the duffel just inside the door. She looked, briefly, around the apartment — the leaning books, the dance shoes, the cards, the windowsill with the single Hanged Man face-up on it —"
+      "text": "Nicola took off her shoes. She set the duffel just inside the door. She looked, briefly, around the apartment — the leaning books, the dance shoes, the cards, the windowsill with the single Hanged Man face-up on it —",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/134.ogg"
     },
     {
       "t": "narrate",
-      "text": "and her face did the small specific thing certain people's faces did when they walked into Natalie's apartment for the first time, the thing Natalie had begun to think of as the recognition. Some people had it. Most did not."
+      "text": "and her face did the small specific thing certain people's faces did when they walked into Natalie's apartment for the first time, the thing Natalie had begun to think of as the recognition. Some people had it. Most did not.",
+      "voice": "assets/audio/voice/vol5_ch12_hanged/135.ogg"
     },
     {
       "t": "narrate",

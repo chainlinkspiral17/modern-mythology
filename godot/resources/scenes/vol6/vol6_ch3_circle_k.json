@@ -44,15 +44,18 @@
   },
   {
    "t": "narrate",
-   "text": "She has been awake since five-thirty."
+   "text": "She has been awake since five-thirty.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/007.ogg"
   },
   {
    "t": "narrate",
-   "text": "She has been at the kitchen table since six-fifty, with a bowl of cereal and the sports page of the New Auburn Sentinel her father reads every morning, which she has no interest in but which is the kind of thing people read who have been awake for exactly the right amount of time."
+   "text": "She has been at the kitchen table since six-fifty, with a bowl of cereal and the sports page of the New Auburn Sentinel her father reads every morning, which she has no interest in but which is the kind of thing people read who have been awake for exactly the right amount of time.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/008.ogg"
   },
   {
    "t": "narrate",
-   "text": "She has cycled through the section twice. She has, in fact, read a recap of a Little League game in a town she has never heard of, in case her father asks."
+   "text": "She has cycled through the section twice. She has, in fact, read a recap of a Little League game in a town she has never heard of, in case her father asks.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/009.ogg"
   },
   {
    "t": "narrate",
@@ -67,11 +70,13 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup miller]He comes downstairs at 07:14. He is already in uniform. He pauses at the doorway."
+   "text": "[shot:closeup miller]He comes downstairs at 07:14. He is already in uniform. He pauses at the doorway.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/012.ogg"
   },
   {
    "t": "narrate",
-   "text": "His expression does the small adjustment faces make when a parent registers, in their peripheral vision, that their child has rearranged the default order of the household without announcement."
+   "text": "His expression does the small adjustment faces make when a parent registers, in their peripheral vision, that their child has rearranged the default order of the household without announcement.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/013.ogg"
   },
   {
    "t": "say",
@@ -134,11 +139,13 @@
   },
   {
    "t": "narrate",
-   "text": "She has decided, at about three AM, that her first task is to learn her father's morning. She has been in this kitchen, at breakfast, with this man, almost every morning of her seventeen years."
+   "text": "She has decided, at about three AM, that her first task is to learn her father's morning. She has been in this kitchen, at breakfast, with this man, almost every morning of her seventeen years.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/023.ogg"
   },
   {
    "t": "narrate",
-   "text": "She has not, until today, paid attention. She catalogues, now, what she has never catalogued."
+   "text": "She has not, until today, paid attention. She catalogues, now, what she has never catalogued.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/024.ogg"
   },
   {
    "t": "think",

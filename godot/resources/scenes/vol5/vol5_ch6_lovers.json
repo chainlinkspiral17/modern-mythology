@@ -35,11 +35,13 @@
     },
     {
       "t": "narrate",
-      "text": "[register:domestic][mood:morning_bright]THE LOVERS. Two figures under an angel's benediction. The mountain behind them. The sun above. What looks like paradise is a choice. The choice is never without cost. Reversed: misalignment."
+      "text": "[register:domestic][mood:morning_bright]THE LOVERS. Two figures under an angel's benediction. The mountain behind them. The sun above. What looks like paradise is a choice. The choice is never without cost. Reversed: misalignment.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/006.ogg"
     },
     {
       "t": "narrate",
-      "text": "The couple who have stopped speaking the same language and have not yet admitted it."
+      "text": "The couple who have stopped speaking the same language and have not yet admitted it.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/007.ogg"
     },
     {
       "t": "narrate",
@@ -48,43 +50,53 @@
     },
     {
       "t": "narrate",
-      "text": "A slow, maddeningly patient counterpoint to the frantic chirping of some unidentifiable bird just outside the window, probably plotting the demise of Mackenzie's newly sprouted tomato seedlings. The bird had been at it since six."
+      "text": "A slow, maddeningly patient counterpoint to the frantic chirping of some unidentifiable bird just outside the window, probably plotting the demise of Mackenzie's newly sprouted tomato seedlings. The bird had been at it since six.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/009.ogg"
     },
     {
       "t": "narrate",
-      "text": "The faucet had been at it since 1973, give or take."
+      "text": "The faucet had been at it since 1973, give or take.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/010.ogg"
     },
     {
       "t": "narrate",
-      "text": "Their small house, nestled precariously on the edge of what was left of Graustark, felt mostly like a sanctuary."
+      "text": "Their small house, nestled precariously on the edge of what was left of Graustark, felt mostly like a sanctuary.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/011.ogg"
     },
     {
       "t": "narrate",
-      "text": "Cobbled together from salvaged lumber, secondhand furniture, and the kind of stubbornness Philip's mother had described, in her last lucid letter, as the family curse. Mostly a sanctuary."
+      "text": "Cobbled together from salvaged lumber, secondhand furniture, and the kind of stubbornness Philip's mother had described, in her last lucid letter, as the family curse. Mostly a sanctuary.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/012.ogg"
     },
     {
       "t": "narrate",
-      "text": "Sometimes — like when the faucet dripped with the infuriating insistence of a cosmic truth Philip wasn't quite ready for — it just felt precarious."
+      "text": "Sometimes — like when the faucet dripped with the infuriating insistence of a cosmic truth Philip wasn't quite ready for — it just felt precarious.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/013.ogg"
     },
     {
       "t": "narrate",
-      "text": "The way a Jenga tower felt precarious in its third hour, when the players had stopped pulling pieces because nobody wanted to be the one who lost."
+      "text": "The way a Jenga tower felt precarious in its third hour, when the players had stopped pulling pieces because nobody wanted to be the one who lost.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/014.ogg"
     },
     {
       "t": "narrate",
-      "text": "He tightened the wrench again. Knuckles white against the corroded metal. Pipe dope, plumber's tape, prayer — he'd tried it all. Still, the drip persisted. Maybe the house itself was crying."
+      "text": "He tightened the wrench again. Knuckles white against the corroded metal. Pipe dope, plumber's tape, prayer — he'd tried it all. Still, the drip persisted. Maybe the house itself was crying.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/015.ogg"
     },
     {
       "t": "narrate",
-      "text": "Mourning the chunk of town that had got swallowed by the earth three years back. Or maybe it was just shitty plumbing from the seventies. Philip preferred the latter; less existential angst involved."
+      "text": "Mourning the chunk of town that had got swallowed by the earth three years back. Or maybe it was just shitty plumbing from the seventies. Philip preferred the latter; less existential angst involved.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/016.ogg"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He grunted. Gave the fitting one last, probably futile twist. Solace in physical labor — that was his motto. Fix the fence. Fix the faucet."
+      "text": "[shot:establish]He grunted. Gave the fitting one last, probably futile twist. Solace in physical labor — that was his motto. Fix the fence. Fix the faucet.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/017.ogg"
     },
     {
       "t": "narrate",
-      "text": "Try not to think too hard about the gaping void down the road, or the friend, Elicia, who seemed determined to swan-dive right into it."
+      "text": "Try not to think too hard about the gaping void down the road, or the friend, Elicia, who seemed determined to swan-dive right into it.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/018.ogg"
     },
     {
       "t": "narrate",
@@ -147,15 +159,18 @@
     },
     {
       "t": "narrate",
-      "text": "There it was. The smart-ass shorthand they used for the chore of barely making do."
+      "text": "There it was. The smart-ass shorthand they used for the chore of barely making do.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/030.ogg"
     },
     {
       "t": "narrate",
-      "text": "They danced around it, mostly — this tightrope walk of paying bills with Philip's fence-mending gigs and Mackenzie's library-slash-daycare volunteer stipend that barely covered gas."
+      "text": "They danced around it, mostly — this tightrope walk of paying bills with Philip's fence-mending gigs and Mackenzie's library-slash-daycare volunteer stipend that barely covered gas.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/031.ogg"
     },
     {
       "t": "narrate",
-      "text": "They were rich in reclaimed driftwood sculptures and thriving sourdough starter. Spectacularly poor in actual currency. Their love was the sturdy, slightly warped beam holding the whole leaky structure up."
+      "text": "They were rich in reclaimed driftwood sculptures and thriving sourdough starter. Spectacularly poor in actual currency. Their love was the sturdy, slightly warped beam holding the whole leaky structure up.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/032.ogg"
     },
     {
       "t": "narrate",
@@ -187,15 +202,18 @@
     },
     {
       "t": "narrate",
-      "text": "Elicia Duchane. Their brilliant, chaotic, perpetually self-destructing friend. A misery creeping in at the corners of every otherwise quiet weekend. They loved her."
+      "text": "Elicia Duchane. Their brilliant, chaotic, perpetually self-destructing friend. A misery creeping in at the corners of every otherwise quiet weekend. They loved her.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/038.ogg"
     },
     {
       "t": "narrate",
-      "text": "They tried to be the grounding force she desperately needed and actively resisted."
+      "text": "They tried to be the grounding force she desperately needed and actively resisted.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/039.ogg"
     },
     {
       "t": "narrate",
-      "text": "But her dramas tended to splash onto their carefully tended patch of normalcy like toxic runoff — corrosive in small doses, lethal in larger ones, and impossible, once it had reached the soil, to fully wash away."
+      "text": "But her dramas tended to splash onto their carefully tended patch of normalcy like toxic runoff — corrosive in small doses, lethal in larger ones, and impossible, once it had reached the soil, to fully wash away.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/040.ogg"
     },
     {
       "t": "narrate",
@@ -214,15 +232,18 @@
     },
     {
       "t": "narrate",
-      "text": "The casserole had not, in the end, helped."
+      "text": "The casserole had not, in the end, helped.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/044.ogg"
     },
     {
       "t": "narrate",
-      "text": "The casserole had been delivered Wednesday and had been returned Friday, foil-wrapped, the foil dimpled in the precise pattern of fingers that had pressed it back over the dish without unwrapping it."
+      "text": "The casserole had been delivered Wednesday and had been returned Friday, foil-wrapped, the foil dimpled in the precise pattern of fingers that had pressed it back over the dish without unwrapping it.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/045.ogg"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]The casserole was now in the freezer. They did not discuss the casserole."
+      "text": "[shot:establish]The casserole was now in the freezer. They did not discuss the casserole.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/046.ogg"
     },
     {
       "t": "narrate",
@@ -231,19 +252,23 @@
     },
     {
       "t": "narrate",
-      "text": "They didn't talk about that much, either."
+      "text": "They didn't talk about that much, either.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/048.ogg"
     },
     {
       "t": "narrate",
-      "text": "The quiet grief woven into the fabric of their days, like the subtle imperfections in her weaving, the kind of imperfection that distinguished a piece made by a person from a piece made by a machine."
+      "text": "The quiet grief woven into the fabric of their days, like the subtle imperfections in her weaving, the kind of imperfection that distinguished a piece made by a person from a piece made by a machine.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/049.ogg"
     },
     {
       "t": "narrate",
-      "text": "Starting again felt like tempting fate in a town like Graustark, where fate had already proven itself to have a particularly dark sense of humor — and where fate's most recent dispatch, three years ago,"
+      "text": "Starting again felt like tempting fate in a town like Graustark, where fate had already proven itself to have a particularly dark sense of humor — and where fate's most recent dispatch, three years ago,",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/050.ogg"
     },
     {
       "t": "narrate",
-      "text": "had taken not just an entire neighborhood but Mackenzie's older brother, who had been visiting that weekend, and who had been, for reasons that would never now be explained, on Houston Street at the wrong moment."
+      "text": "had taken not just an entire neighborhood but Mackenzie's older brother, who had been visiting that weekend, and who had been, for reasons that would never now be explained, on Houston Street at the wrong moment.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/051.ogg"
     },
     {
       "t": "narrate",
@@ -252,11 +277,13 @@
     },
     {
       "t": "narrate",
-      "text": "Then she had started weaving again. He had seen her, one evening, sitting at the loom in the spare room, picking up the threads where she had left them. He had not interrupted."
+      "text": "Then she had started weaving again. He had seen her, one evening, sitting at the loom in the spare room, picking up the threads where she had left them. He had not interrupted.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/053.ogg"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert door]He had stood in the doorway for a full minute, and then he had gone back to the kitchen, and he had cried briefly in the sink so she would not hear."
+      "text": "[shot:insert door]He had stood in the doorway for a full minute, and then he had gone back to the kitchen, and he had cried briefly in the sink so she would not hear.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/054.ogg"
     },
     {
       "t": "narrate",
@@ -270,15 +297,18 @@
     },
     {
       "t": "narrate",
-      "text": "She had waited tables on the old riverboat back before the fall. Escaped just after Frasier Temple had made his own spectacular exit from the kitchen."
+      "text": "She had waited tables on the old riverboat back before the fall. Escaped just after Frasier Temple had made his own spectacular exit from the kitchen.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/057.ogg"
     },
     {
       "t": "narrate",
-      "text": "She still remembered the feel of the place: the desperation under the expensive sauces. Dante's simmering menace."
+      "text": "She still remembered the feel of the place: the desperation under the expensive sauces. Dante's simmering menace.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/058.ogg"
     },
     {
       "t": "narrate",
-      "text": "The specific way Sammy, the bartender, would look at the floor when certain regulars came in, as if the floor contained the answer to a question he had decided not to ask."
+      "text": "The specific way Sammy, the bartender, would look at the floor when certain regulars came in, as if the floor contained the answer to a question he had decided not to ask.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/059.ogg"
     },
     {
       "t": "narrate",
@@ -299,11 +329,13 @@
     },
     {
       "t": "narrate",
-      "text": "She picked up a stray piece of Philip's driftwood from the windowsill. Its surface worn smooth by time and tide. She turned it in her hand. There was a strength in endurance, she knew."
+      "text": "She picked up a stray piece of Philip's driftwood from the windowsill. Its surface worn smooth by time and tide. She turned it in her hand. There was a strength in endurance, she knew.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/063.ogg"
     },
     {
       "t": "narrate",
-      "text": "A quiet harmony found in mending what was broken. Nurturing what could still grow. It wasn't glamorous. It wasn't easy. It was just — theirs."
+      "text": "A quiet harmony found in mending what was broken. Nurturing what could still grow. It wasn't glamorous. It wasn't easy. It was just — theirs.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/064.ogg"
     },
     {
       "t": "narrate",
@@ -327,15 +359,18 @@
     },
     {
       "t": "narrate",
-      "text": "Philip and Mackenzie looked at each other. Nobody knocked at this hour."
+      "text": "Philip and Mackenzie looked at each other. Nobody knocked at this hour.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/069.ogg"
     },
     {
       "t": "narrate",
-      "text": "Nobody knocked, generally, at all — the people in their orbit either let themselves in (Mackenzie's surviving sister, once a month, with a casserole of her own and a list of complaints about the husband) or texted from the driveway (everybody else)."
+      "text": "Nobody knocked, generally, at all — the people in their orbit either let themselves in (Mackenzie's surviving sister, once a month, with a casserole of her own and a list of complaints about the husband) or texted from the driveway (everybody else).",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/070.ogg"
     },
     {
       "t": "narrate",
-      "text": "A knock was an event. A knock was, frequently, news."
+      "text": "A knock was an event. A knock was, frequently, news.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/071.ogg"
     },
     {
       "t": "narrate",
@@ -373,11 +408,13 @@
     },
     {
       "t": "narrate",
-      "text": "The boy thrust out the envelope. Philip took it. The boy turned and walked back down the steps, across the gravel drive, to a station wagon idling at the curb where an older woman Philip half-recognized — Mrs."
+      "text": "The boy thrust out the envelope. Philip took it. The boy turned and walked back down the steps, across the gravel drive, to a station wagon idling at the curb where an older woman Philip half-recognized — Mrs.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/078.ogg"
     },
     {
       "t": "narrate",
-      "text": "Theriot, maybe, from the volunteer crew that had cleared the storm drains last spring — gave him a tight little wave and pulled away."
+      "text": "Theriot, maybe, from the volunteer crew that had cleared the storm drains last spring — gave him a tight little wave and pulled away.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/079.ogg"
     },
     {
       "t": "narrate",
@@ -402,15 +439,18 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:memory_warm][shot:insert polaroid~]Inside was a single Polaroid photograph, faded around the edges, dated June 2009 in pencil on the white border."
+      "text": "[mood:memory_warm][shot:insert polaroid~]Inside was a single Polaroid photograph, faded around the edges, dated June 2009 in pencil on the white border.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/084.ogg"
     },
     {
       "t": "narrate",
-      "text": "The photograph showed a stretch of Houston Street — the Houston Street, the one that no longer existed, the one that had gone into the sinkhole —"
+      "text": "The photograph showed a stretch of Houston Street — the Houston Street, the one that no longer existed, the one that had gone into the sinkhole —",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/085.ogg"
     },
     {
       "t": "narrate",
-      "text": "at what must have been late afternoon, the light slanting low across the brick storefronts in a way that made even the boarded-up ones look briefly possible."
+      "text": "at what must have been late afternoon, the light slanting low across the brick storefronts in a way that made even the boarded-up ones look briefly possible.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/086.ogg"
     },
     {
       "t": "narrate",
@@ -443,11 +483,13 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup mackenzie]Mackenzie took the photograph from him. Held it in both hands, the way the boy had held the envelope. She looked at it for a long time. Philip stood at her shoulder and did not, for once, say anything."
+      "text": "[shot:closeup mackenzie]Mackenzie took the photograph from him. Held it in both hands, the way the boy had held the envelope. She looked at it for a long time. Philip stood at her shoulder and did not, for once, say anything.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/093.ogg"
     },
     {
       "t": "narrate",
-      "text": "The bird outside the kitchen window had stopped chirping. The faucet kept dripping."
+      "text": "The bird outside the kitchen window had stopped chirping. The faucet kept dripping.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/094.ogg"
     },
     {
       "t": "say",
@@ -474,19 +516,23 @@
     },
     {
       "t": "narrate",
-      "text": "Philip thought about it."
+      "text": "Philip thought about it.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/099.ogg"
     },
     {
       "t": "narrate",
-      "text": "He thought about the man in the suit Sammy had told him about last week when they had run into each other at the hardware store — a guy, Phil, at D'Ambrosio's, asking weird questions about the old days, didn't order, didn't drink, left a card."
+      "text": "He thought about the man in the suit Sammy had told him about last week when they had run into each other at the hardware store — a guy, Phil, at D'Ambrosio's, asking weird questions about the old days, didn't order, didn't drink, left a card.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/100.ogg"
     },
     {
       "t": "narrate",
-      "text": "He thought about the way the seismic reports had been ticking up for a month and how the experts continued to remain baffled."
+      "text": "He thought about the way the seismic reports had been ticking up for a month and how the experts continued to remain baffled.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/101.ogg"
     },
     {
       "t": "narrate",
-      "text": "He thought about Elicia's last voicemail, the one neither he nor Mackenzie had played past the first sixteen seconds, the one that had sounded less like heartbreak and more like the prelude to an interdimensional incident."
+      "text": "He thought about Elicia's last voicemail, the one neither he nor Mackenzie had played past the first sixteen seconds, the one that had sounded less like heartbreak and more like the prelude to an interdimensional incident.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/102.ogg"
     },
     {
       "t": "narrate",
@@ -506,15 +552,18 @@
     },
     {
       "t": "narrate",
-      "text": "Mackenzie set the photograph on the small table by the door — the table where they kept the keys and the unopened mail and the bowl of pinecones she had collected on a hike four Octobers ago and never thrown out."
+      "text": "Mackenzie set the photograph on the small table by the door — the table where they kept the keys and the unopened mail and the bowl of pinecones she had collected on a hike four Octobers ago and never thrown out.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/106.ogg"
     },
     {
       "t": "narrate",
-      "text": "She set the photograph face up. Then she changed her mind and turned it face down."
+      "text": "She set the photograph face up. Then she changed her mind and turned it face down.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/107.ogg"
     },
     {
       "t": "narrate",
-      "text": "Then she changed her mind again and turned it back face up, because hiding it felt like the wrong response to whatever was being said by the fact that it had been delivered to her, on a Saturday morning, by a boy she did not know."
+      "text": "Then she changed her mind again and turned it back face up, because hiding it felt like the wrong response to whatever was being said by the fact that it had been delivered to her, on a Saturday morning, by a boy she did not know.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/108.ogg"
     },
     {
       "t": "narrate",
@@ -564,15 +613,18 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert polaroid]In the front hallway, on the small table by the door, beside the unopened mail and the keys and the bowl of unthrown-out pinecones, the Polaroid lay face up —"
+      "text": "[shot:insert polaroid]In the front hallway, on the small table by the door, beside the unopened mail and the keys and the bowl of unthrown-out pinecones, the Polaroid lay face up —",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/118.ogg"
     },
     {
       "t": "narrate",
-      "text": "and in it, a young man Mackenzie had loved and lost was waving, in the wrong year, on a street that no longer existed, at a person nobody could now identify."
+      "text": "and in it, a young man Mackenzie had loved and lost was waving, in the wrong year, on a street that no longer existed, at a person nobody could now identify.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/119.ogg"
     },
     {
       "t": "narrate",
-      "text": "The photograph would, in the months ahead, become evidence of one of several things, depending on who you asked."
+      "text": "The photograph would, in the months ahead, become evidence of one of several things, depending on who you asked.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/120.ogg"
     },
     {
       "t": "narrate",

@@ -35,15 +35,18 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:day_bright]Claire is at the counter, paying for a Diet Coke and a bag of pretzels, when Tomé's car pulls into the lot. She watches it through the front window. Tomé is, Frasier had said, the third contractor — Vince's relief, Boyd's swap."
+      "text": "[mood:day_bright]Claire is at the counter, paying for a Diet Coke and a bag of pretzels, when Tomé's car pulls into the lot. She watches it through the front window. Tomé is, Frasier had said, the third contractor — Vince's relief, Boyd's swap.",
+      "voice": "assets/audio/voice/vol6_ch6_tome/006.ogg"
     },
     {
       "t": "narrate",
-      "text": "He is younger than Vince. He is driving a silver compact rental with a yellow air freshener visible through the windshield. He does not get out immediately. He is on his phone."
+      "text": "He is younger than Vince. He is driving a silver compact rental with a yellow air freshener visible through the windshield. He does not get out immediately. He is on his phone.",
+      "voice": "assets/audio/voice/vol6_ch6_tome/007.ogg"
     },
     {
       "t": "narrate",
-      "text": "He is, Claire suspects, calling Vince to confirm Vince is at the swap point. Vince does not pick up. Tomé waits."
+      "text": "He is, Claire suspects, calling Vince to confirm Vince is at the swap point. Vince does not pick up. Tomé waits.",
+      "voice": "assets/audio/voice/vol6_ch6_tome/008.ogg"
     },
     {
       "t": "narrate",
@@ -91,13 +94,15 @@
       "t": "say",
       "char": "Claire",
       "text": "[shot:closeup person]Tomé. I know your name. I know what you were here to do. I know what Vince was doing and I know where the van is going. I am not law enforcement. I am paying you cash.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_tome/016.ogg"
     },
     {
       "t": "say",
       "char": "Claire",
       "text": "I want you to drive me to the next truck stop and then continue west on your own and never come back to this exit. Three hundred. I have it in twenties.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_tome/017.ogg"
     },
     {
       "t": "narrate",

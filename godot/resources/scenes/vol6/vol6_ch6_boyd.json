@@ -35,11 +35,13 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:fluorescent_corridor]Boyd is, at this moment, on the toilet. Boyd is having the worst nine minutes of his professional life. He does not, yet, know this is the worst nine minutes of his professional life."
+      "text": "[mood:fluorescent_corridor]Boyd is, at this moment, on the toilet. Boyd is having the worst nine minutes of his professional life. He does not, yet, know this is the worst nine minutes of his professional life.",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/006.ogg"
     },
     {
       "t": "narrate",
-      "text": "He thinks, instead, that he has the standard kind of stomach bug a man gets from drinking convenience-store coffee at four AM and eating a gas-station burrito at four-fifteen and that the bug will pass in a moment."
+      "text": "He thinks, instead, that he has the standard kind of stomach bug a man gets from drinking convenience-store coffee at four AM and eating a gas-station burrito at four-fifteen and that the bug will pass in a moment.",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/007.ogg"
     },
     {
       "t": "narrate",
@@ -57,15 +59,18 @@
     },
     {
       "t": "narrate",
-      "text": "The Demon attached to the fueling station's plumbing system — a small construct Frasier Temple had instantiated in 2019 and tested twice on a Houston rest area before promoting to operational status — does not have malice toward Boyd."
+      "text": "The Demon attached to the fueling station's plumbing system — a small construct Frasier Temple had instantiated in 2019 and tested twice on a Houston rest area before promoting to operational status — does not have malice toward Boyd.",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/011.ogg"
     },
     {
       "t": "narrate",
-      "text": "The Demon does not, technically, have feelings about Boyd. The Demon has been given an instruction. The Demon is executing the instruction."
+      "text": "The Demon does not, technically, have feelings about Boyd. The Demon has been given an instruction. The Demon is executing the instruction.",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/012.ogg"
     },
     {
       "t": "narrate",
-      "text": "The Demon is, in fact, mildly bored, because the instruction is cause moderate gastrointestinal distress for nine minutes, and moderate gastrointestinal distress for nine minutes is, for a Demon of the plumbing class, the equivalent of a very long red light."
+      "text": "The Demon is, in fact, mildly bored, because the instruction is cause moderate gastrointestinal distress for nine minutes, and moderate gastrointestinal distress for nine minutes is, for a Demon of the plumbing class, the equivalent of a very long red light.",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/013.ogg"
     },
     {
       "t": "narrate",
@@ -84,27 +89,33 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup boyd]Boyd stands in the middle of the lot with a Gatorade in his hand, looking at the empty space where the van had been, feeling the late-morning sun starting to come in hard,"
+      "text": "[shot:closeup boyd]Boyd stands in the middle of the lot with a Gatorade in his hand, looking at the empty space where the van had been, feeling the late-morning sun starting to come in hard,",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/017.ogg"
     },
     {
       "t": "narrate",
-      "text": "and understanding — with the small slow horror of a man whose entire chain of command has just fallen out from under him in nine minutes — that he is, professionally, finished."
+      "text": "and understanding — with the small slow horror of a man whose entire chain of command has just fallen out from under him in nine minutes — that he is, professionally, finished.",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/018.ogg"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]He calls his handler. The handler does not pick up. Boyd calls again. The handler does not pick up."
+      "text": "[shot:insert phone]He calls his handler. The handler does not pick up. Boyd calls again. The handler does not pick up.",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/019.ogg"
     },
     {
       "t": "narrate",
-      "text": "The handler will, when the handler eventually picks up at 09:14, tell Boyd that Boyd is no longer employed and that Boyd should consider relocating to a state Boyd has never lived in."
+      "text": "The handler will, when the handler eventually picks up at 09:14, tell Boyd that Boyd is no longer employed and that Boyd should consider relocating to a state Boyd has never lived in.",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/020.ogg"
     },
     {
       "t": "narrate",
-      "text": "Boyd will, on the handler's recommendation, drive to Nevada. He will get there. He will live, the rest of his life, with the small persistent stomach issue the Demon had calibrated to leave behind."
+      "text": "Boyd will, on the handler's recommendation, drive to Nevada. He will get there. He will live, the rest of his life, with the small persistent stomach issue the Demon had calibrated to leave behind.",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/021.ogg"
     },
     {
       "t": "narrate",
-      "text": "The stomach issue will, in some sense, be the only honest punishment the system was able to deliver to him."
+      "text": "The stomach issue will, in some sense, be the only honest punishment the system was able to deliver to him.",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/022.ogg"
     },
     {
       "t": "narrate",
