@@ -274,6 +274,7 @@
   </div>
 
 <script src="gamepad_input.js"></script>
+<script src="midi_input.js"></script>
 <script>
 "use strict";
 
@@ -479,6 +480,7 @@ function releaseNote() {
   voice.env.gain.linearRampToValueAtTime(0, now + p.rel);
   voice.active = false;
   refreshDisplay();
+  mi.echoRelease();
 }
 
 function setBend(cents) {
@@ -524,6 +526,7 @@ function currentTargetMidi() {
 function onHeldChanged() {
   if (voice && voice.active) {
     setPitch(currentTargetMidi());
+    mi.echoMono(currentTargetMidi(), voice.lastVel || 0.8);   // hammer-on on the FM-1 too
   }
   refreshFretLEDs();
   refreshDisplay();
@@ -539,6 +542,7 @@ function onStrum(velocityHint) {
     if (v !== undefined && v > 0.05) vel = v;
   }
   attackNote(vel * (parseInt(document.getElementById('vol').value) / 100));
+  mi.echoMono(currentTargetMidi(), vel);
   // Flash the now-row briefly so the user can see strums are firing.
   flashStrumIndicator();
 }
@@ -999,6 +1003,35 @@ for (let i = 0; i < 10; i++) {
 // Periodically refresh the audio-state badge in case the context
 // transitions without firing statechange (rare but observed).
 setInterval(refreshAudioStateBadge, 500);
+
+// ── FM-1 / MIDI routing ──────────────────────────────────────────
+// FM-1 keys drive the mono lead with last-note priority: first key
+// attacks, further keys glide (legato), releasing back to a still-
+// held key glides there, last release lets the envelope go. Pitch
+// bend wheel/CC on the FM-1 = the whammy (±200 cents).
+const mi = new MidiInput();
+mi.start();
+mountMidiOverlay(mi, { learnTargets: [
+  { id: 'synth.glide', label: 'GLIDE', el: 'glide' },
+  { id: 'vol',         label: 'VOL',   el: 'vol' },
+]});
+const midiHeld = [];
+window.addEventListener('midiinput-connected', ensureAudio);
+window.addEventListener('midiinput-note', e => {
+  ensureAudio();
+  const n = e.detail.note;
+  const i = midiHeld.indexOf(n);
+  if (i >= 0) midiHeld.splice(i, 1);
+  if (e.detail.on) {
+    midiHeld.push(n);
+    if (voice && voice.active) setPitch(n);
+    else { setPitch(n, 0); attackNote(e.detail.vel * (parseInt(document.getElementById('vol').value) / 100)); }
+    return;
+  }
+  if (midiHeld.length === 0) { if (voice && voice.active) releaseNote(); }
+  else setPitch(midiHeld[midiHeld.length - 1]);
+});
+window.addEventListener('midiinput-pitchbend', e => setBend(e.detail.value * 200));
 </script>
 </body>
 </html>

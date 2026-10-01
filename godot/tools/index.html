@@ -73,6 +73,7 @@
   a.tile .tag.riffmaster { color: var(--emerald-hi); border-color: var(--emerald); }
   a.tile .tag.audio      { color: var(--gold-hi); border-color: var(--gold); }
   a.tile .tag.studio     { color: #c8a4f0; border-color: #6b3fa0; }
+  a.tile .tag.midi       { color: #a8e89c; border-color: #4ea060; }
 
   .footer {
     margin-top: 40px;
@@ -105,7 +106,18 @@
       </div>
     </div>
 
-    <h2>RIFFMASTER INSTRUMENTS · play in the browser with the PDP guitar controller (or click/keyboard)</h2>
+    <div style="background: var(--bg-1); border: 1px solid var(--rule); padding: 14px 20px; margin-bottom: 18px;">
+      <div style="color: var(--gold-hi); font-size: 12px; letter-spacing: 0.12em; margin-bottom: 6px;">QUICKSTART · M-VAVE FM-1 (STOCK OR BAUD GIRL FM-1+VA)</div>
+      <div style="font-size: 11px; line-height: 1.55;">
+        <b style="color: var(--gold);">1.</b> USB-C the FM-1 to the machine, power it on in normal play mode (not the updater — if a port called <i>ota-FM-1</i> shows up, finish the flash and power-cycle).
+        <b style="color: var(--gold);">2.</b> Open any instrument in <b>Chrome or Edge</b> (Web MIDI — same requirement as the Baud Girl installer). Allow the MIDI prompt; say yes to SysEx too if you want to push patches.
+        <b style="color: var(--gold);">3.</b> The <span style="color: var(--emerald-hi);">FM-1 · MIDI</span> panel (bottom-right, left of the Riffmaster panel) should read <i>connected</i>. Its keys now play the instrument. Pick the port by hand if it enumerated as a bare <i>USB Composite Device</i>.
+        <b style="color: var(--gold);">4.</b> Knobs: neither firmware documents CC output, so select a slider in the panel, click <b>LEARN</b>, turn the knob. Mappings are saved and shared across every tool.
+        <b style="color: var(--gold);">5.</b> Tick <b>OUT→FM-1</b> to mirror what the instrument plays to the FM-1's own 6-op engine — Riffmaster guitar in, hardware DX7 out. Open <a href="fm1_console.html" style="color: var(--gold-hi);">FM-1 CONSOLE</a> for the monitor, program change, and DX7 patch push.
+      </div>
+    </div>
+
+    <h2>RIFFMASTER INSTRUMENTS · play in the browser with the PDP guitar controller, the M-VAVE FM-1 keys, or click/keyboard</h2>
     <div class="grid">
       <a class="tile" href="riffmaster_synth.html">
         <div class="ttl">RIFFMASTER SYNTH</div>
@@ -171,6 +183,11 @@
         <div class="desc">22-card synth pad with 4 banks (Diner / Cathedral / Riverboat / Pastoral). Multiple play modes (CARD / SCALE / GUITAR), chord mode, 4-lane 16-step sequencer, gallery-card art swap.</div>
         <div class="tags"><span class="tag audio">synth</span><span class="tag riffmaster">guitar</span></div>
       </a>
+      <a class="tile" href="fm1_console.html">
+        <div class="ttl">FM-1 CONSOLE</div>
+        <div class="desc">Bridge for the M-VAVE FM-1 hardware synth (stock or Baud Girl FM-1+VA firmware). Port picker + status, MIDI monitor with decode, four-slot knob CC learn (shared with every instrument), program change, on-screen keyboard mirroring the FM-1's keys, and DX7 single-voice SysEx push of the RIFFMASTER FM presets to the hardware engine.</div>
+        <div class="tags"><span class="tag midi">FM-1</span><span class="tag audio">MIDI</span></div>
+      </a>
       <a class="tile" href="ambient_synth.html">
         <div class="ttl">AMBIENT SYNTH</div>
         <div class="desc">Chapter-drone generator. 4 tonal voices + 1 noise-floor layer per preset. Live play OR offline-render to WAV (90-300s loopable). 8 presets seeded to the music catalog.</div>
@@ -233,7 +250,7 @@
     </div>
 
     <div class="footer">
-      Each tool is a single self-contained HTML file. The Riffmaster instruments share <b>gamepad_input.js</b> for HID gamepad polling, axis-as-button bridging, and the controller-overlay debug panel. Drop the device on any browser tab to play.
+      Each tool is a single self-contained HTML file. The Riffmaster instruments share <b>gamepad_input.js</b> for HID gamepad polling, axis-as-button bridging, and the controller-overlay debug panel, and <b>midi_input.js</b> for Web MIDI (FM-1 port auto-select, note / CC / bend events, CC learn, OUT echo). <b>fm1_dx7.js</b> builds DX7 voice SysEx for the FM-1's Dexed core. Drop the device on any browser tab to play. Not yet MIDI-wired: THEREMIN, CHORDS, DRONES, AMBIENT (no natural key→pitch mapping yet).
     </div>
   </div>
 </body>

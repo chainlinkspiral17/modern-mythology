@@ -148,6 +148,7 @@
   </div>
 
 <script src="gamepad_input.js"></script>
+<script src="midi_input.js"></script>
 <script>
 "use strict";
 
@@ -310,6 +311,7 @@ function releaseNote() {
   voice.env.gain.linearRampToValueAtTime(0, now + p.rel);
   voice.active = false;
   refreshDisplay();
+  mi.echoRelease();
 }
 
 // Whammy on bass = mute / damp via filter sweep down. Rest = full
@@ -335,7 +337,7 @@ function currentTargetMidi() {
   return root + fretToSemitone(highest);
 }
 function onHeldChanged() {
-  if (voice && voice.active) setPitch(currentTargetMidi());
+  if (voice && voice.active) { setPitch(currentTargetMidi()); mi.echoMono(currentTargetMidi(), 0.8); }
   refreshFretLEDs();
   refreshDisplay();
 }
@@ -348,6 +350,7 @@ function onPluck() {
     if (_fretValues[highest] > 0.05) vel = _fretValues[highest];
   }
   attackNote(vel * (parseInt(document.getElementById('vol').value) / 100) * 0.85);
+  mi.echoMono(currentTargetMidi(), vel);
 }
 
 // ── UI ────────────────────────────────────────────────────────────
@@ -500,6 +503,34 @@ window.addEventListener('gamepadinput-axis', e => {
 ['pointerdown','keydown','touchstart','click'].forEach(ev =>
   document.addEventListener(ev, ensureAudio, { capture: true })
 );
+
+// ── FM-1 / MIDI routing ──────────────────────────────────────────
+// Same mono last-note-priority model as RIFFMASTER SYNTH. The FM-1's
+// 27 keys sit high for a bass — drop the synth's octave shift or
+// just play the left end; notes land wherever you send them.
+const mi = new MidiInput();
+mi.start();
+mountMidiOverlay(mi, { learnTargets: [
+  { id: 'bass.glide', label: 'GLIDE', el: 'glide' },
+  { id: 'vol',        label: 'VOL',   el: 'vol' },
+]});
+const midiHeld = [];
+window.addEventListener('midiinput-connected', ensureAudio);
+window.addEventListener('midiinput-note', e => {
+  ensureAudio();
+  const n = e.detail.note;
+  const i = midiHeld.indexOf(n);
+  if (i >= 0) midiHeld.splice(i, 1);
+  if (e.detail.on) {
+    midiHeld.push(n);
+    if (voice && voice.active) setPitch(n);
+    else { setPitch(n, 0); attackNote(e.detail.vel * (parseInt(document.getElementById('vol').value) / 100) * 0.85); }
+    return;
+  }
+  if (midiHeld.length === 0) { if (voice && voice.active) releaseNote(); }
+  else setPitch(midiHeld[midiHeld.length - 1]);
+});
+window.addEventListener('midiinput-pitchbend', e => applyWhammy(Math.abs(e.detail.value)));
 </script>
 </body>
 </html>

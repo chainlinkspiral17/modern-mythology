@@ -162,6 +162,7 @@
   </div>
 
 <script src="gamepad_input.js"></script>
+<script src="midi_input.js"></script>
 <script>
 "use strict";
 
@@ -360,6 +361,7 @@ function triggerPad(idx, vel) {
     case 'tom_hi': hitTom(vel, true);  break;
   }
   flashPad(idx);
+  if (!_fromMidi) mi.echoPluck(GM_NOTES[idx], vel, 160);
   document.getElementById('last-hit').textContent = KIT[idx].name + ' · vel ' + vel.toFixed(2);
 }
 
@@ -521,6 +523,29 @@ function refreshHeld() {
 ['pointerdown','keydown','touchstart','click'].forEach(ev =>
   document.addEventListener(ev, ensureAudio, { capture: true })
 );
+
+// ── FM-1 / MIDI routing ──────────────────────────────────────────
+// General MIDI drum notes hit the matching pad; any other key walks
+// the kit chromatically (note % 10) so the FM-1's 27 keys all do
+// something. OUT→FM-1 sends the GM note so a drum patch on the
+// hardware lines up.
+const GM_NOTES = [36, 38, 42, 46, 39, 37, 49, 51, 45, 50];   // kick snare hh_c hh_o clap rim crash ride tom_lo tom_hi
+let _fromMidi = false;
+const mi = new MidiInput();
+mi.start();
+mountMidiOverlay(mi, { learnTargets: [
+  { id: 'drums.swing', label: 'SWING', el: 'swing' },
+  { id: 'vol',         label: 'VOL',   el: 'vol' },
+]});
+window.addEventListener('midiinput-connected', ensureAudio);
+window.addEventListener('midiinput-note', e => {
+  if (!e.detail.on) return;
+  ensureAudio();
+  let idx = GM_NOTES.indexOf(e.detail.note);
+  if (idx < 0) idx = e.detail.note % KIT.length;
+  _fromMidi = true;
+  try { triggerPad(idx, e.detail.vel); } finally { _fromMidi = false; }
+});
 </script>
 </body>
 </html>

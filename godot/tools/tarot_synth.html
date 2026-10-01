@@ -393,6 +393,7 @@
   </div>
 
 <script src="gamepad_input.js"></script>
+<script src="midi_input.js"></script>
 <script>
 "use strict";
 
@@ -683,6 +684,7 @@ function trigger(timbre, midi, vel=0.7) {
 
   // Voice spawning
   const baseMidi = midi + (p.transpose || 0);
+  if (!_fromMidi) mi.echoPluck(baseMidi, vel, (p.dur + p.rel) * 1000);
   const voices = p.voices || 1;
   const harmonics = p.harmonic || [1];
   const arpNotes = p.arp || [0];
@@ -1235,6 +1237,29 @@ window.addEventListener('gamepadinput-axis', e => {
     document.getElementById('vol').value = pct;
     if (masterGain) masterGain.gain.value = pct / 100;
   }
+});
+
+// ── FM-1 / MIDI routing ──────────────────────────────────────────
+// FM-1 keys play the active card's timbre at the key's pitch (no
+// scale snap — the keyboard IS the scale). The sequencer and card
+// pads also go through trigger(), so OUT→FM-1 mirrors all of it.
+let _fromMidi = false;
+const mi = new MidiInput();
+mi.start();
+mountMidiOverlay(mi, { learnTargets: [
+  { id: 'tarot.bpm', label: 'BPM', el: 'bpm' },
+  { id: 'vol',       label: 'VOL', el: 'vol' },
+]});
+window.addEventListener('midiinput-connected', () => { initAudio(); if (ac && ac.state === 'suspended') ac.resume(); });
+window.addEventListener('midiinput-note', e => {
+  if (!e.detail.on) return;
+  initAudio();
+  if (ac && ac.state === 'suspended') ac.resume();
+  const card = activeArcana()[selectedCard] || activeArcana()[0];
+  _fromMidi = true;
+  try { trigger(card[4], e.detail.note, e.detail.vel); } finally { _fromMidi = false; }
+  document.getElementById('now-playing').textContent =
+    '▶ FM-1 ' + midiNoteNameMI(e.detail.note) + ' · ' + card[1] + ' · ' + card[4];
 });
 </script>
 </body>

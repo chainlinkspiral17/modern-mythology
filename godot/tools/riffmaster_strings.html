@@ -146,6 +146,7 @@
   </div>
 
 <script src="gamepad_input.js"></script>
+<script src="midi_input.js"></script>
 <script>
 "use strict";
 
@@ -259,6 +260,7 @@ function pluck(midi, vel) {
   const freq = midiToFreq(midi);
   // Buffer length scales with frequency — low strings ring longer
   const durSec = Math.max(0.6, Math.min(4.0, 200 / freq));
+  if (!_fromMidi) mi.echoPluck(midi, vel, durSec * 1000);
   const buf = renderKSBuffer(freq, durSec, vel);
   const src = ac.createBufferSource();
   src.buffer = buf;
@@ -436,6 +438,24 @@ window.addEventListener('gamepadinput-axis', e => {
 ['pointerdown','keydown','touchstart','click'].forEach(ev =>
   document.addEventListener(ev, ensureAudio, { capture: true })
 );
+
+// ── FM-1 / MIDI routing ──────────────────────────────────────────
+// FM-1 keys pluck the Karplus-Strong string at that pitch.
+let _fromMidi = false;
+const mi = new MidiInput();
+mi.start();
+mountMidiOverlay(mi, { learnTargets: [
+  { id: 'strings.brightness', label: 'BRIGHTNESS', el: 'brightness' },
+  { id: 'strings.decay',      label: 'DECAY',      el: 'decay' },
+  { id: 'vol',                label: 'VOL',        el: 'vol' },
+]});
+window.addEventListener('midiinput-connected', ensureAudio);
+window.addEventListener('midiinput-note', e => {
+  if (!e.detail.on) return;
+  ensureAudio();
+  _fromMidi = true;
+  try { pluck(e.detail.note, e.detail.vel); } finally { _fromMidi = false; }
+});
 </script>
 </body>
 </html>

@@ -107,6 +107,7 @@
   </div>
 
 <script src="gamepad_input.js"></script>
+<script src="midi_input.js"></script>
 <script>
 "use strict";
 
@@ -490,6 +491,22 @@ function refreshHeld() {
 ['pointerdown','keydown','touchstart','click'].forEach(ev =>
   document.addEventListener(ev, ensureAudio, { capture: true })
 );
+
+// ── FM-1 / MIDI routing ──────────────────────────────────────────
+// Each FM-1 key fires a demon (note % roster size). No OUT echo —
+// these are textures, not pitches.
+const mi = new MidiInput();
+mi.start();
+mountMidiOverlay(mi, { learnTargets: [
+  { id: 'demons.looprate', label: 'LOOP RATE', el: 'loop-rate' },
+  { id: 'vol',             label: 'VOL',       el: 'vol' },
+]});
+window.addEventListener('midiinput-connected', ensureAudio);
+window.addEventListener('midiinput-note', e => {
+  if (!e.detail.on) return;
+  ensureAudio();
+  fireDemon(e.detail.note % DEMONS.length);
+});
 </script>
 </body>
 </html>

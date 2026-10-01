@@ -189,6 +189,7 @@
   </div>
 
 <script src="gamepad_input.js"></script>
+<script src="midi_input.js"></script>
 <script>
 "use strict";
 
@@ -250,6 +251,7 @@ function refreshAudioState() {
 function plingNote(midi) {
   if (!ac) return;
   const p = PRESETS[activePresetIdx];
+  mi.echoPluck(midi, 0.8, parseInt(document.getElementById('rate').value) * 0.8);
   const now = ac.currentTime;
   const osc = ac.createOscillator();
   osc.type = p.wave;
@@ -291,6 +293,9 @@ function arpPattern() {
   const list = [...heldFrets].sort((a, b) => a - b).map(f => ({
     fret: f, midi: root + fretToSemitone(f)
   }));
+  // Keys held on the FM-1 join the pattern as raw MIDI notes.
+  for (const n of midiHeld) if (!list.some(x => x.midi === n)) list.push({ fret: -1, midi: n });
+  list.sort((a, b) => a.midi - b.midi);
   return list;
 }
 
@@ -386,7 +391,7 @@ function refreshPatternVis(list, activeIdx) {
   list.forEach((n, i) => {
     const c = document.createElement('div');
     c.className = 'pat-cell' + (i === activeIdx ? ' active' : '');
-    c.innerHTML = `<span class="note">${midiNoteName(n.midi)}</span><span class="deg">F${n.fret + 1}</span>`;
+    c.innerHTML = `<span class="note">${midiNoteName(n.midi)}</span><span class="deg">${n.fret >= 0 ? 'F' + (n.fret + 1) : 'FM-1'}</span>`;
     patVisEl.appendChild(c);
   });
 }
@@ -500,6 +505,24 @@ window.addEventListener('gamepadinput-axis', e => {
 ['pointerdown','keydown','touchstart','click'].forEach(ev =>
   document.addEventListener(ev, ensureAudio, { capture: true })
 );
+
+// ── FM-1 / MIDI routing ──────────────────────────────────────────
+// Hold keys on the FM-1 → they arpeggiate alongside any held frets.
+// First key auto-starts the arp like a fret press does. With
+// OUT→FM-1 on, the arp plays the hardware engine at the arp rate.
+const midiHeld = new Set();
+const mi = new MidiInput();
+mi.start();
+mountMidiOverlay(mi, { learnTargets: [
+  { id: 'arp.rate', label: 'RATE', el: 'rate' },
+  { id: 'vol',      label: 'VOL',  el: 'vol' },
+]});
+window.addEventListener('midiinput-connected', ensureAudio);
+window.addEventListener('midiinput-note', e => {
+  ensureAudio();
+  if (e.detail.on) { midiHeld.add(e.detail.note); if (!playing) setPlaying(true); }
+  else midiHeld.delete(e.detail.note);
+});
 </script>
 </body>
 </html>

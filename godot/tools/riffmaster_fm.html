@@ -170,10 +170,13 @@
     <label>VOL</label>
     <input type="range" id="vol" min="0" max="100" value="50">
     <button id="test">▶ TEST</button>
+    <button id="send-fm1" title="Push the current knobs to the M-VAVE FM-1 as a DX7 single-voice SysEx (algorithm 1, OP1 carrier + OP2 modulator). Needs the OUT port + SysEx permission.">⇪ PRESET → FM-1</button>
     <span style="margin-left:auto;color:var(--text-dim);font-size:10px;font-style:italic;">whammy → mod index live</span>
   </div>
 
 <script src="gamepad_input.js"></script>
+<script src="midi_input.js"></script>
+<script src="fm1_dx7.js"></script>
 <script>
 "use strict";
 
@@ -307,6 +310,9 @@ function pluck(midi, vel) {
   car.start(now); mod.start(now);
   car.stop(now + totalDur + 0.05);
   mod.stop(now + totalDur + 0.05);
+  // Mirror to the FM-1's own engine when OUT→FM-1 is on (not when
+  // the note came FROM the FM-1 — it's already sounding there).
+  if (!_fromMidi) mi.echoPluck(midi, vel, totalDur * 1000);
 
   document.getElementById('voice-state').textContent = 'RINGING';
   document.getElementById('voice-state').classList.remove('silent');
@@ -463,6 +469,45 @@ window.addEventListener('gamepadinput-axis', e => {
 ['pointerdown','keydown','touchstart','click'].forEach(ev =>
   document.addEventListener(ev, ensureAudio, { capture: true })
 );
+
+// ── FM-1 / MIDI routing ──────────────────────────────────────────
+// FM-1 keys → pluck the 2-op engine. Learned knobs → the six sliders
+// (shared mm_midi_prefs map). Pitch bend acts like the whammy.
+let _fromMidi = false;
+const mi = new MidiInput();
+mi.start();
+mountMidiOverlay(mi, { learnTargets: [
+  { id: 'fm.ratio',   label: 'MOD RATIO', el: 'ratio' },
+  { id: 'fm.index',   label: 'MOD INDEX', el: 'index' },
+  { id: 'fm.moddec',  label: 'MOD DECAY', el: 'mod-dec' },
+  { id: 'fm.attack',  label: 'ATTACK',    el: 'attack' },
+  { id: 'fm.sus',     label: 'SUSTAIN',   el: 'sus' },
+  { id: 'fm.release', label: 'RELEASE',   el: 'release' },
+  { id: 'vol',        label: 'VOL',       el: 'vol' },
+]});
+window.addEventListener('midiinput-connected', ensureAudio);
+window.addEventListener('midiinput-note', e => {
+  if (!e.detail.on) return;
+  ensureAudio();
+  _fromMidi = true;
+  try { pluck(e.detail.note, e.detail.vel); } finally { _fromMidi = false; }
+});
+window.addEventListener('midiinput-pitchbend', e => { whammyBoost = Math.abs(e.detail.value); });
+document.getElementById('send-fm1').addEventListener('click', () => {
+  const voice = dx7VoiceFromTwoOp({
+    name:      PRESETS[activePresetIdx].name,
+    ratio:     parseFloat(document.getElementById('ratio').value),
+    index:     parseInt(document.getElementById('index').value),
+    modDecMs:  parseInt(document.getElementById('mod-dec').value),
+    attackMs:  parseInt(document.getElementById('attack').value),
+    susPct:    parseInt(document.getElementById('sus').value),
+    releaseMs: parseInt(document.getElementById('release').value),
+  });
+  const ok = mi.sendSysex(dx7VoiceSysex(voice, mi.outChannel));
+  document.getElementById('now-meta').textContent = ok
+    ? 'sent "' + voice.name.trim() + '" to the FM-1 as a DX7 voice · play a key there'
+    : (mi.sysexOk ? 'no OUT port selected (see FM-1 · MIDI panel)' : 'SysEx not permitted — open fm1_console.html');
+});
 </script>
 </body>
 </html>

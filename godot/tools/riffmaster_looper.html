@@ -178,6 +178,7 @@
   </div>
 
 <script src="gamepad_input.js"></script>
+<script src="midi_input.js"></script>
 <script>
 "use strict";
 
@@ -235,6 +236,7 @@ function refreshAudioState() {
 function pling(voiceIdx, midi, vel) {
   if (!ac) return;
   const p = VOICES[voiceIdx] || VOICES[0];
+  if (!_fromMidi) mi.echoPluck(midi + (p.transpose || 0), vel, (p.attack + p.decay + p.rel) * 1000);
   const now = ac.currentTime;
   const f = midiToFreq(midi + (p.transpose || 0));
   const osc = ac.createOscillator();
@@ -572,6 +574,27 @@ window.addEventListener('gamepadinput-button', e => {
 ['pointerdown','keydown','touchstart','click'].forEach(ev =>
   document.addEventListener(ev, ensureAudio, { capture: true })
 );
+
+// ── FM-1 / MIDI routing ──────────────────────────────────────────
+// FM-1 keys play the active (or armed) voice AND record into the
+// armed track, exactly like a strum. Loop playback goes through
+// pling(), so with OUT→FM-1 on the loops play the hardware.
+let _fromMidi = false;
+const mi = new MidiInput();
+mi.start();
+mountMidiOverlay(mi, { learnTargets: [{ id: 'vol', label: 'VOL', el: 'vol' }] });
+window.addEventListener('midiinput-connected', ensureAudio);
+window.addEventListener('midiinput-note', e => {
+  if (!e.detail.on) return;
+  ensureAudio();
+  const voiceIdx = (activeTrack >= 0 && tracks[activeTrack].state === 'armed')
+    ? tracks[activeTrack].voice : activeVoiceIdx;
+  _fromMidi = true;
+  try { pling(voiceIdx, e.detail.note, e.detail.vel); } finally { _fromMidi = false; }
+  recordEvent(e.detail.note, e.detail.vel);
+  document.getElementById('now-pitch').textContent = midiNoteName(e.detail.note);
+  document.getElementById('now-meta').textContent = VOICES[voiceIdx].name + ' · FM-1 key';
+});
 </script>
 </body>
 </html>

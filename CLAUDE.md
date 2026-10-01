@@ -31,8 +31,13 @@ touching code:
 6. `lore/_COMMUNITY_PLANNED_PLAYBOOK.md` — mission stages, BBS
    thread gating, pressure curve, three-slot save. Read before
    editing problems.json, agents.json, or CommunityPlannedGame.gd.
-7. The latest commit message on the working branch — recent context.
-8. If working on a specific volume, the relevant `lore/_VOL{N}_WIKI.md`.
+7. `lore/_INSTRUMENT_TOOLS_PLAYBOOK.md` — browser instrument tools
+   and their hardware bridges (`gamepad_input.js` for the Riffmaster
+   guitar, `midi_input.js` / `fm1_dx7.js` for the M-VAVE FM-1 synth).
+   Read before touching any `godot/tools/riffmaster_*.html`,
+   `tarot_synth.html`, `fm1_console.html`, or those helpers.
+8. The latest commit message on the working branch — recent context.
+9. If working on a specific volume, the relevant `lore/_VOL{N}_WIKI.md`.
 
 ## DEBUG HUD — F4 IS THE MASTER TOGGLE (hard rule)
 
@@ -88,6 +93,9 @@ Playbooks currently maintained:
   primary difficulty axis, named loss conditions as pedagogy.
 - `lore/_COMMUNITY_PLANNED_PLAYBOOK.md` — mission stages, BBS-lookup
   gating, mid-summer pressure curve (W6/W12/W18), three-slot save.
+- `lore/_INSTRUMENT_TOOLS_PLAYBOOK.md` — browser instruments, the
+  shared gamepad / Web MIDI helpers, routing-block convention, FM-1
+  wire-level facts, DX7 SysEx push.
 
 When a new domain accumulates ≥ 5 distinct lessons, spin up a
 playbook for it.

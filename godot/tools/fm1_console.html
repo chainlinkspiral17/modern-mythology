@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>FM-1 CONSOLE · Modern Mythology</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --bg-0: #050304; --bg-1: #0e0908; --ink: #1a1410;
+    --rule: #553318; --gold: #d8a060; --gold-hi: #ffd896;
+    --text: #c8a878; --text-dim: #7a5828;
+    --emerald: #4ea060; --emerald-hi: #a8e89c; --rust: #c87633; --burgundy: #7a1e26;
+    --red: #c64a3a; --amber: #f0b94a;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0; height: 100vh; overflow: hidden;
+    background: var(--bg-0); color: var(--text);
+    font-family: "Courier New", monospace;
+  }
+  body { display: grid; grid-template-rows: auto 1fr auto; }
+  header { padding: 12px 20px; border-bottom: 1px solid var(--rule); display: flex; align-items: baseline; gap: 18px; flex-wrap: wrap; }
+  header h1 { margin: 0; font-size: 15px; letter-spacing: 0.18em; color: var(--gold-hi); }
+  header .sub { color: var(--text-dim); font-size: 11px; font-style: italic; }
+  header .badge { font-size: 11px; letter-spacing: 0.10em; padding: 2px 8px; border: 1px solid var(--rule); }
+  .badge.ok { color: var(--emerald-hi); border-color: var(--emerald); }
+  .badge.warn { color: var(--amber); border-color: var(--amber); }
+  .badge.bad { color: var(--red); border-color: var(--red); }
+
+  main { display: grid; grid-template-columns: 300px 1fr 340px; gap: 0; overflow: hidden; }
+  section { border-right: 1px solid var(--rule); padding: 12px 16px; overflow-y: auto; }
+  section:last-child { border-right: none; }
+  h2 { margin: 0 0 8px; color: var(--gold); font-size: 11px; letter-spacing: 0.16em; border-bottom: 1px solid var(--rule); padding-bottom: 4px; }
+  .block { margin-bottom: 18px; }
+  .row { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; margin: 4px 0; font-size: 11px; }
+  .row label { color: var(--text-dim); letter-spacing: 0.08em; min-width: 34px; }
+  select, input[type="number"], input[type="text"] {
+    background: var(--ink); color: var(--gold-hi); border: 1px solid var(--rule);
+    font-family: inherit; font-size: 11px; padding: 2px 6px; max-width: 100%;
+  }
+  select { flex: 1; min-width: 0; }
+  button {
+    background: var(--ink); color: var(--gold-hi); border: 1px solid var(--gold);
+    padding: 4px 10px; font-family: inherit; font-size: 10px; letter-spacing: 0.10em; cursor: pointer;
+  }
+  button:hover { background: var(--gold); color: var(--ink); }
+  button.dim { color: var(--text-dim); border-color: var(--rule); }
+  button.dim:hover { color: var(--gold-hi); border-color: var(--gold); background: var(--ink); }
+  button.hot { background: var(--burgundy); }
+  .note { color: var(--text-dim); font-size: 10px; line-height: 1.5; font-style: italic; }
+  .note b { color: var(--text); font-style: normal; }
+  .msg { color: var(--emerald-hi); font-size: 10px; min-height: 14px; margin-top: 4px; }
+
+  .knob { border: 1px solid var(--rule); background: var(--bg-1); padding: 6px 8px; margin: 4px 0; font-size: 10px; }
+  .knob .top { display: flex; justify-content: space-between; align-items: center; }
+  .knob .top b { color: var(--gold-hi); letter-spacing: 0.10em; }
+  .knob .cc { color: var(--text-dim); }
+  .knob .bar { height: 5px; background: var(--ink); margin-top: 5px; position: relative; }
+  .knob .bar i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--rust); width: 0; }
+  .knob button { padding: 1px 6px; font-size: 9px; }
+
+  .kb-wrap { display: flex; flex-direction: column; gap: 10px; height: 100%; }
+  .kb { position: relative; height: 150px; border: 1px solid var(--rule); background: var(--bg-1); user-select: none; }
+  .key { position: absolute; top: 0; cursor: pointer; border: 1px solid #2a1c12; }
+  .key.white { background: #c8b89a; height: 100%; z-index: 1; }
+  .key.black { background: #1a1410; height: 60%; z-index: 2; border-color: #000; }
+  .key.white.lit { background: var(--gold-hi); box-shadow: inset 0 0 18px rgba(216,118,51,0.6); }
+  .key.black.lit { background: var(--rust); }
+  .key.fm1 { outline: 1px solid var(--emerald); outline-offset: -2px; }
+  .key span { position: absolute; bottom: 3px; left: 0; right: 0; text-align: center; font-size: 8px; color: #2a1c12; }
+  .key.black span { color: var(--text-dim); }
+  .now { display: flex; gap: 20px; align-items: baseline; }
+  .now .pitch { color: var(--gold-hi); font-size: 34px; letter-spacing: 0.10em; min-width: 150px; }
+  .now .meta { color: var(--text-dim); font-size: 11px; font-style: italic; }
+  .patches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 6px; }
+  .patch { border: 1px solid var(--rule); background: var(--bg-1); padding: 6px 8px; font-size: 10px; cursor: pointer; }
+  .patch:hover { border-color: var(--gold); }
+  .patch.sel { border-color: var(--rust); background: var(--ink); }
+  .patch b { color: var(--gold-hi); display: block; letter-spacing: 0.08em; margin-bottom: 2px; }
+  .patch i { color: var(--text-dim); font-style: normal; }
+  .hex { font-size: 9px; color: var(--text-dim); word-break: break-all; line-height: 1.4; max-height: 64px; overflow: auto; background: var(--bg-1); border: 1px solid var(--rule); padding: 4px 6px; }
+
+  .mon { font-size: 10px; line-height: 1.45; height: calc(100% - 60px); overflow-y: auto; background: var(--bg-1); border: 1px solid var(--rule); padding: 6px 8px; white-space: pre-wrap; }
+  .mon .t { color: var(--text-dim); }
+  .mon .in { color: var(--emerald-hi); }
+  .mon .out { color: var(--amber); }
+  .mon .rt { color: #4a3a2a; }
+
+  footer { padding: 8px 20px; border-top: 1px solid var(--rule); color: var(--text-dim); font-size: 10px; font-style: italic; display: flex; gap: 18px; flex-wrap: wrap; }
+  footer a { color: var(--gold); text-decoration: none; }
+</style>
+</head>
+<body>
+  <header>
+    <h1>FM-1 CONSOLE · M-VAVE FM-1 ↔ MM TOOLS</h1>
+    <span class="badge bad" id="badge-midi">MIDI: starting…</span>
+    <span class="badge" id="badge-sysex">SYSEX: —</span>
+    <span class="badge" id="badge-fw" title="Firmware can't be read back over MIDI; this is your note to yourself.">FW: unknown</span>
+    <span class="sub">connection · monitor · knob learn · program change · DX7 patch push. Chrome / Edge only (Web MIDI).</span>
+  </header>
+
+  <main>
+    <!-- ── LEFT: connection + knobs + program ─────────────────── -->
+    <section>
+      <div class="block">
+        <h2>CONNECTION</h2>
+        <div class="row"><label>IN</label><select id="in-sel"></select></div>
+        <div class="row"><label>OUT</label><select id="out-sel"></select></div>
+        <div class="row"><label>IN CH</label><select id="ch-sel"></select></div>
+        <div class="row"><label>OUT CH</label><select id="outch-sel"></select></div>
+        <div class="row">
+          <button class="dim" id="rescan">RESCAN</button>
+          <button class="dim" id="panic">PANIC</button>
+          <button class="dim" id="local-test">▶ SCALE TEST</button>
+        </div>
+        <div class="msg" id="conn-msg"></div>
+        <div class="note" style="margin-top:6px;">
+          Port shows as <b>FM-1</b> (macOS), <b>FM-1 Midi</b> (Windows), or a bare <b>USB Composite Device</b> in some Chrome builds — pick it by hand if auto-select missed. <b>ota-FM-1</b> means the synth is in updater mode: finish the flash, power-cycle, rescan.
+        </div>
+      </div>
+
+      <div class="block">
+        <h2>FIRMWARE</h2>
+        <div class="row">
+          <select id="fw-sel">
+            <option value="">— which firmware is on it? —</option>
+            <option value="stock">stock M-VAVE (V14 / V15)</option>
+            <option value="baudgirl">Baud Girl FM-1+VA</option>
+          </select>
+        </div>
+        <div class="note" id="fw-note">
+          The FM-1 never reports its firmware over MIDI (no identity reply, no dump read-back), so tell the console what you flashed and it will tune the advice below. Saved in this browser.
+        </div>
+      </div>
+
+      <div class="block">
+        <h2>KNOBS · CC LEARN</h2>
+        <div id="knobs"></div>
+        <div class="note">Neither firmware documents whether the four knobs transmit CC. LEARN a slot, turn the knob: if a CC lands it's mapped (and shared with every instrument tool). If nothing lands while the monitor stays quiet, that firmware keeps knobs local.</div>
+      </div>
+
+      <div class="block">
+        <h2>PRESET · PROGRAM CHANGE</h2>
+        <div class="row">
+          <button class="dim" id="pc-dec">−</button>
+          <input type="number" id="pc-num" min="0" max="127" value="0" style="width:60px;">
+          <button class="dim" id="pc-inc">+</button>
+          <button id="pc-send">SEND PC</button>
+        </div>
+        <div class="note">128 factory tones on stock (reportedly the DX7 ROM1A bank in slots 0–31). Program change is the only way to pick a preset from the tools — selecting on the synth sends nothing back.</div>
+      </div>
+    </section>
+
+    <!-- ── MIDDLE: keyboard + patch push ──────────────────────── -->
+    <section>
+      <div class="kb-wrap">
+        <div class="block">
+          <h2>KEYBOARD · what the FM-1 plays, what we send it</h2>
+          <div class="now">
+            <div class="pitch" id="now-pitch">—</div>
+            <div class="meta" id="now-meta">play the FM-1 keys · or click a key to send it a note · held notes light up</div>
+          </div>
+          <div class="row" style="margin-top:6px;">
+            <label>OCT</label>
+            <button class="dim" id="oct-down">−</button>
+            <span id="oct-label" style="color:var(--gold-hi);min-width:70px;">C2 – C5</span>
+            <button class="dim" id="oct-up">+</button>
+            <label style="margin-left:14px;">VEL</label>
+            <input type="range" id="vel" min="1" max="127" value="100" style="width:100px;">
+            <span id="vel-val" style="color:var(--gold-hi);">100</span>
+            <span class="note" style="margin-left:auto;">green outline = notes the FM-1's own keys have sent so far (its 27-key window + octave shift)</span>
+          </div>
+          <div class="kb" id="kb"></div>
+        </div>
+
+        <div class="block">
+          <h2>PATCH PUSH · riffmaster FM presets → DX7 voice dump</h2>
+          <div class="patches" id="patches"></div>
+          <div class="row" style="margin-top:8px;">
+            <label>NAME</label><input type="text" id="patch-name" maxlength="10" value="" style="width:120px;">
+            <button class="hot" id="push-patch">⇪ SEND VOICE TO FM-1</button>
+            <button class="dim" id="push-alg">ALG 1 ONLY (param change)</button>
+            <button class="dim" id="copy-hex">COPY HEX</button>
+          </div>
+          <div class="msg" id="patch-msg"></div>
+          <div class="hex" id="patch-hex">select a preset to see its SysEx.</div>
+          <div class="note" style="margin-top:6px;">
+            Builds a 155-byte single-voice VCED (F0 43 1n 00 01 1B … F7): algorithm 1, OP1 carrier + OP2 modulator, OP3–6 silenced. The 2-op tool's ratio → coarse/fine, index → modulator output level, decays → EG rates. <b>Unverified on hardware</b> — the Dexed core accepts this format; whether the FM-1 firmware forwards it to the engine (and into the edit buffer vs. a stored slot) is what you're testing. Nothing here touches the FM-1's own <b>00 32 45</b> vendor SysEx (that's the updater protocol). Stock firmware has no dump read-back, so nothing you push can be verified except by ear.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── RIGHT: monitor ─────────────────────────────────────── -->
+    <section>
+      <h2>MONITOR</h2>
+      <div class="row">
+        <label style="min-width:0;"><input type="checkbox" id="mon-rt"> realtime</label>
+        <label style="min-width:0;"><input type="checkbox" id="mon-hex" checked> hex</label>
+        <button class="dim" id="mon-clear" style="margin-left:auto;">CLEAR</button>
+      </div>
+      <div class="mon" id="mon"></div>
+    </section>
+  </main>
+
+  <footer>
+    <span>← <a href="index.html">all tools</a></span>
+    <span>in every instrument: the <b>FM-1 · MIDI</b> panel (bottom-right) — keys play the instrument, LEARN binds knobs to sliders, <b>OUT→FM-1</b> mirrors the instrument to the hardware engine.</span>
+    <span>refs: <a href="https://github.com/ip2k/mvave-fm1-open-firmware" target="_blank">mvave-fm1-open-firmware</a> · <a href="https://baudgirl.com/" target="_blank">baudgirl.com</a></span>
+  </footer>
+
+<script src="midi_input.js"></script>
+<script src="fm1_dx7.js"></script>
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const mi = new MidiInput();
+
+// ── Badges + ports ───────────────────────────────────────────────
+function refreshBadges() {
+  const b = $('badge-midi');
+  const cls = { connected: 'ok', ota: 'warn', 'no-device': 'bad', denied: 'bad', unsupported: 'bad', idle: '' }[mi.status] || '';
+  b.className = 'badge ' + cls;
+  b.textContent = 'MIDI: ' + (mi.status === 'connected' ? (mi.input ? mi.input.name : '(out only)') : mi.status);
+  b.title = mi.statusDetail;
+  const s = $('badge-sysex');
+  s.className = 'badge ' + (mi.access ? (mi.sysexOk ? 'ok' : 'warn') : '');
+  s.textContent = 'SYSEX: ' + (mi.access ? (mi.sysexOk ? 'allowed' : 'denied — patch push off') : '—');
+  $('conn-msg').textContent = mi.statusDetail;
+  fillPorts();
+}
+function fillPorts() {
+  const mk = (sel, ports, cur) => {
+    sel.innerHTML = '<option value="">—</option>';
+    ports.forEach(p => {
+      const o = document.createElement('option');
+      o.value = p.id; o.textContent = p.name || p.id;
+      if (cur && cur.id === p.id) o.selected = true;
+      sel.appendChild(o);
+    });
+  };
+  mk($('in-sel'), mi.inputs(), mi.input);
+  mk($('out-sel'), mi.outputs(), mi.output);
+}
+$('ch-sel').innerHTML = '<option value="0">omni</option>' + Array.from({ length: 16 }, (_, i) => `<option value="${i + 1}">${i + 1}</option>`).join('');
+$('outch-sel').innerHTML = Array.from({ length: 16 }, (_, i) => `<option value="${i + 1}">${i + 1}</option>`).join('');
+$('ch-sel').value = String(mi.channel);
+$('outch-sel').value = String(mi.outChannel);
+$('in-sel').addEventListener('change', e => mi.selectInput(e.target.value));
+$('out-sel').addEventListener('change', e => mi.selectOutput(e.target.value));
+$('ch-sel').addEventListener('change', e => mi.setChannel(parseInt(e.target.value)));
+$('outch-sel').addEventListener('change', e => mi.setOutChannel(parseInt(e.target.value)));
+$('rescan').addEventListener('click', () => { mi._pickPorts(); refreshBadges(); });
+$('panic').addEventListener('click', () => { mi.allNotesOff(); log('out', 'all notes off (CC123 + CC120)'); });
+window.addEventListener('midiinput-status', refreshBadges);
+window.addEventListener('midiinput-connected', e => { refreshBadges(); log('t', 'connected: ' + (e.detail.inName || '—') + ' / ' + (e.detail.outName || '—')); });
+window.addEventListener('midiinput-disconnected', () => { refreshBadges(); log('t', 'disconnected'); });
+
+// ── Firmware selector (self-reported) ───────────────────────────
+const FW_NOTES = {
+  '': 'The FM-1 never reports its firmware over MIDI (no identity reply, no dump read-back), so tell the console what you flashed and it will tune the advice below. Saved in this browser.',
+  stock: 'Stock V14/V15: Dexed core, 128 tones, 16-step sequencer. Accepts DX7 voice dumps + parameter changes; sends no clock or active sensing. Knob CC output unconfirmed — use LEARN to find out. The macOS updater downgrades V15 → V14; don\'t run it.',
+  baudgirl: 'Baud Girl FM-1+VA (FM-1_02x–09x): list-style menus, all four knobs live from any screen, VA (303 / supersaw) engine, 64-step sequencer, fixed detune / LFO / feedback / note-off. Still the Dexed core, so DX7 pushes should land in FM mode; the VA engine is not reachable via DX7 SysEx. Installed from Chrome/Edge over Web MIDI — same permission this page asks for.',
+};
+try { $('fw-sel').value = localStorage.getItem('mm_fm1_firmware') || ''; } catch (e) {}
+function refreshFw() {
+  const v = $('fw-sel').value;
+  $('fw-note').textContent = FW_NOTES[v] || FW_NOTES[''];
+  const b = $('badge-fw');
+  b.textContent = 'FW: ' + (v === 'stock' ? 'stock' : v === 'baudgirl' ? 'Baud Girl FM-1+VA' : 'unknown');
+  b.className = 'badge ' + (v ? 'ok' : '');
+}
+$('fw-sel').addEventListener('change', () => { try { localStorage.setItem('mm_fm1_firmware', $('fw-sel').value); } catch (e) {} refreshFw(); });
+refreshFw();
+
+// ── Knob learn slots ─────────────────────────────────────────────
+const KNOBS = [
+  { id: 'fm1.knob1', label: 'KNOB 1' }, { id: 'fm1.knob2', label: 'KNOB 2' },
+  { id: 'fm1.knob3', label: 'KNOB 3' }, { id: 'fm1.knob4', label: 'KNOB 4' },
+];
+const knobsEl = $('knobs');
+KNOBS.forEach(k => {
+  const d = document.createElement('div');
+  d.className = 'knob';
+  d.innerHTML = `<div class="top"><b>${k.label}</b><span class="cc" id="${k.id}-cc"></span><span><button class="dim" id="${k.id}-learn">LEARN</button> <button class="dim" id="${k.id}-x">✕</button></span></div><div class="bar"><i id="${k.id}-bar"></i></div>`;
+  knobsEl.appendChild(d);
+  $(k.id + '-learn').addEventListener('click', () => {
+    if (mi.learning === k.id) { mi.cancelLearn(); refreshKnobs(); return; }
+    mi.learn(k.id); refreshKnobs();
+  });
+  $(k.id + '-x').addEventListener('click', () => { mi.forget(k.id); refreshKnobs(); });
+});
+function refreshKnobs() {
+  KNOBS.forEach(k => {
+    const cc = mi.ccMap[k.id];
+    $(k.id + '-cc').textContent = mi.learning === k.id ? 'turn it…' : (cc !== undefined ? 'CC ' + cc : 'unmapped');
+    $(k.id + '-learn').textContent = mi.learning === k.id ? 'CANCEL' : 'LEARN';
+  });
+}
+refreshKnobs();
+window.addEventListener('midiinput-learned', refreshKnobs);
+window.addEventListener('midiinput-cc', e => {
+  if (e.detail.target) {
+    const bar = $(e.detail.target + '-bar');
+    if (bar) bar.style.width = (e.detail.norm * 100).toFixed(0) + '%';
+  }
+});
+
+// ── Program change ───────────────────────────────────────────────
+function sendPc() {
+  const n = Math.max(0, Math.min(127, parseInt($('pc-num').value) || 0));
+  $('pc-num').value = n;
+  if (mi.programChange(n)) log('out', 'program change ' + n);
+  else log('t', 'no OUT port — program change not sent');
+}
+$('pc-send').addEventListener('click', sendPc);
+$('pc-dec').addEventListener('click', () => { $('pc-num').value = Math.max(0, (parseInt($('pc-num').value) || 0) - 1); sendPc(); });
+$('pc-inc').addEventListener('click', () => { $('pc-num').value = Math.min(127, (parseInt($('pc-num').value) || 0) + 1); sendPc(); });
+
+// ── Keyboard ─────────────────────────────────────────────────────
+const kb = $('kb');
+let kbLow = 36;              // C2
+const KB_KEYS = 37;          // 3 octaves + 1
+const seenFromFm1 = new Set();
+const lit = new Set();
+function isBlack(n) { return [1, 3, 6, 8, 10].includes(n % 12); }
+function noteName(n) { return midiNoteNameMI(n); }
+function buildKb() {
+  kb.innerHTML = '';
+  const whites = [];
+  for (let n = kbLow; n < kbLow + KB_KEYS; n++) if (!isBlack(n)) whites.push(n);
+  const ww = 100 / whites.length;
+  let wi = 0;
+  for (let n = kbLow; n < kbLow + KB_KEYS; n++) {
+    const k = document.createElement('div');
+    k.dataset.note = n;
+    if (isBlack(n)) {
+      k.className = 'key black';
+      k.style.left = (wi * ww - ww * 0.3) + '%';
+      k.style.width = (ww * 0.6) + '%';
+    } else {
+      k.className = 'key white';
+      k.style.left = (wi * ww) + '%';
+      k.style.width = ww + '%';
+      wi++;
+      if (n % 12 === 0) k.innerHTML = '<span>' + noteName(n) + '</span>';
+    }
+    if (seenFromFm1.has(n)) k.classList.add('fm1');
+    if (lit.has(n)) k.classList.add('lit');
+    k.addEventListener('pointerdown', ev => { ev.preventDefault(); kbDown(n); k.setPointerCapture(ev.pointerId); });
+    k.addEventListener('pointerup', () => kbUp(n));
+    k.addEventListener('pointercancel', () => kbUp(n));
+    kb.appendChild(k);
+  }
+  $('oct-label').textContent = noteName(kbLow) + ' – ' + noteName(kbLow + KB_KEYS - 1);
+}
+function setLit(n, on) {
+  if (on) lit.add(n); else lit.delete(n);
+  const el = kb.querySelector(`[data-note="${n}"]`);
+  if (el) el.classList.toggle('lit', on);
+}
+const kbHeld = new Set();
+function kbDown(n) {
+  if (kbHeld.has(n)) return;
+  kbHeld.add(n);
+  const vel = parseInt($('vel').value) / 127;
+  setLit(n, true);
+  $('now-pitch').textContent = noteName(n);
+  $('now-meta').textContent = 'sent to FM-1 · vel ' + $('vel').value;
+  if (!mi.noteOn(n, vel)) $('now-meta').textContent = 'no OUT port — nothing sent';
+  else log('out', 'note on ' + noteName(n) + ' v' + $('vel').value);
+}
+function kbUp(n) {
+  if (!kbHeld.has(n)) return;
+  kbHeld.delete(n);
+  setLit(n, false);
+  mi.noteOff(n);
+}
+$('oct-down').addEventListener('click', () => { kbLow = Math.max(0, kbLow - 12); buildKb(); });
+$('oct-up').addEventListener('click', () => { kbLow = Math.min(127 - KB_KEYS, kbLow + 12); buildKb(); });
+$('vel').addEventListener('input', e => $('vel-val').textContent = e.target.value);
+buildKb();
+
+window.addEventListener('midiinput-note', e => {
+  const n = e.detail.note;
+  if (e.detail.on) {
+    seenFromFm1.add(n);
+    const el = kb.querySelector(`[data-note="${n}"]`);
+    if (el) el.classList.add('fm1');
+    $('now-pitch').textContent = noteName(n);
+    $('now-meta').textContent = 'from FM-1 · ch ' + e.detail.ch + ' · vel ' + e.detail.raw;
+  }
+  setLit(n, e.detail.on);
+});
+window.addEventListener('midiinput-pitchbend', e => {
+  $('now-meta').textContent = 'pitch bend ' + (e.detail.value >= 0 ? '+' : '') + e.detail.value.toFixed(2);
+});
+
+// Scale test: a quick phrygian run on the hardware so you can hear
+// the OUT port works before touching any instrument tool.
+$('local-test').addEventListener('click', () => {
+  if (!mi.output) { log('t', 'no OUT port'); return; }
+  const run = [0, 1, 3, 5, 7, 8, 10, 12];
+  run.forEach((semi, i) => {
+    setTimeout(() => { mi.noteOn(57 + semi, 0.8); setLit(57 + semi, true); }, i * 160);
+    setTimeout(() => { mi.noteOff(57 + semi); setLit(57 + semi, false); }, i * 160 + 130);
+  });
+  log('out', 'scale test (A2 phrygian, 8 notes)');
+});
+
+// ── Patch push ───────────────────────────────────────────────────
+// Same table as riffmaster_fm.html — keep in sync if you edit there.
+const PATCHES = [
+  { id: "ep",      name: "Electric Piano", ratio: 14.0, index: 140, modDec: 800,  attack: 4,  sus: 30, rel: 600 },
+  { id: "bell",    name: "Bell",           ratio: 3.5,  index: 320, modDec: 1200, attack: 2,  sus: 5,  rel: 1400 },
+  { id: "brass",   name: "Brass Stab",     ratio: 1.0,  index: 180, modDec: 200,  attack: 14, sus: 70, rel: 350 },
+  { id: "marimba", name: "Marimba",        ratio: 4.0,  index: 110, modDec: 100,  attack: 2,  sus: 0,  rel: 500 },
+  { id: "wood",    name: "Wood Block",     ratio: 7.0,  index: 220, modDec: 60,   attack: 1,  sus: 0,  rel: 250 },
+  { id: "metal",   name: "Metal Pad",      ratio: 2.3,  index: 90,  modDec: 1800, attack: 80, sus: 80, rel: 1200 },
+  { id: "glass",   name: "Glass Voice",    ratio: 5.0,  index: 60,  modDec: 1600, attack: 60, sus: 70, rel: 900 },
+  { id: "growl",   name: "FM Growl",       ratio: 0.5,  index: 280, modDec: 500,  attack: 6,  sus: 60, rel: 400 },
+];
+let selPatch = -1;
+let curSysex = null;
+const patchesEl = $('patches');
+PATCHES.forEach((p, i) => {
+  const d = document.createElement('div');
+  d.className = 'patch';
+  d.innerHTML = `<b>${p.name}</b><i>ratio ${p.ratio.toFixed(1)} · idx ${p.index} · dec ${p.modDec}ms</i>`;
+  d.addEventListener('click', () => selectPatch(i));
+  patchesEl.appendChild(d);
+});
+function selectPatch(i) {
+  selPatch = i;
+  [...patchesEl.children].forEach((c, j) => c.classList.toggle('sel', j === i));
+  const p = PATCHES[i];
+  $('patch-name').value = p.name.toUpperCase().slice(0, 10);
+  rebuildSysex();
+}
+function rebuildSysex() {
+  if (selPatch < 0) return;
+  const p = PATCHES[selPatch];
+  const voice = dx7VoiceFromTwoOp({
+    name: $('patch-name').value || p.name, ratio: p.ratio, index: p.index,
+    modDecMs: p.modDec, attackMs: p.attack, susPct: p.sus, releaseMs: p.rel,
+  });
+  curSysex = dx7VoiceSysex(voice, mi.outChannel);
+  const cf = dx7RatioToCoarseFine(p.ratio);
+  $('patch-hex').textContent = '(' + curSysex.length + ' bytes · OP2 coarse ' + cf.coarse + ' fine ' + cf.fine +
+    ' · OP2 out ' + voice.ops[1].output + ' · carriers alg 1: OP' + DX7_ALGORITHMS[0].join(',') + ')\n' + dx7Hex(curSysex);
+}
+$('patch-name').addEventListener('input', rebuildSysex);
+$('outch-sel').addEventListener('change', rebuildSysex);
+$('push-patch').addEventListener('click', () => {
+  if (!curSysex) { $('patch-msg').textContent = 'select a preset first.'; return; }
+  if (!mi.output) { $('patch-msg').textContent = 'no OUT port.'; return; }
+  if (!mi.sysexOk) { $('patch-msg').textContent = 'SysEx was denied — reload and allow "control and reprogram your MIDI devices".'; return; }
+  if (mi.sendSysex(curSysex)) {
+    $('patch-msg').textContent = 'sent ' + curSysex.length + ' bytes. play a key — if it still sounds like the old preset, the firmware ignored the dump.';
+    log('out', 'DX7 voice dump "' + $('patch-name').value + '" (' + curSysex.length + 'B)');
+  } else $('patch-msg').textContent = 'send failed.';
+});
+$('push-alg').addEventListener('click', () => {
+  if (!mi.output || !mi.sysexOk) { $('patch-msg').textContent = 'need OUT port + SysEx permission.'; return; }
+  const sx = dx7ParamChangeSysex(134, 0, mi.outChannel);   // algorithm = 1
+  if (mi.sendSysex(sx)) {
+    $('patch-msg').textContent = 'sent parameter change: algorithm → 1. The FM-1 screen draws the live algorithm — if it redrew, parameter changes work.';
+    log('out', 'DX7 param change alg=1: ' + dx7Hex(sx));
+  }
+});
+$('copy-hex').addEventListener('click', () => {
+  if (!curSysex) return;
+  navigator.clipboard && navigator.clipboard.writeText(dx7Hex(curSysex)).then(() => $('patch-msg').textContent = 'hex copied.');
+});
+selectPatch(0);
+
+// ── Monitor ──────────────────────────────────────────────────────
+const mon = $('mon');
+const MON_MAX = 300;
+function hex(d) { return [...d].map(b => b.toString(16).toUpperCase().padStart(2, '0')).join(' '); }
+function decode(d) {
+  const st = d[0];
+  if (st >= 0xF8) return { rt: true, text: ({ 0xF8: 'clock', 0xFA: 'start', 0xFB: 'continue', 0xFC: 'stop', 0xFE: 'active sensing', 0xFF: 'reset' })[st] || 'realtime ' + st.toString(16) };
+  if (st === 0xF0) {
+    let who = 'sysex';
+    if (d[1] === 0x43) who = 'sysex · Yamaha/DX7 format';
+    else if (d[1] === 0x00 && d[2] === 0x32 && d[3] === 0x45) who = 'sysex · FM-1 vendor (updater protocol)';
+    else if (d[1] === 0x7E || d[1] === 0x7F) who = 'sysex · universal';
+    return { text: who + ' · ' + d.length + 'B' };
+  }
+  const t = st & 0xF0, ch = (st & 0x0F) + 1;
+  switch (t) {
+    case 0x90: return { text: (d[2] > 0 ? 'note on  ' : 'note off ') + noteName(d[1]).padEnd(4) + ' v' + d[2] + '  ch' + ch };
+    case 0x80: return { text: 'note off ' + noteName(d[1]).padEnd(4) + '  ch' + ch };
+    case 0xB0: return { text: 'cc ' + d[1] + ' = ' + d[2] + '  ch' + ch };
+    case 0xC0: return { text: 'program ' + d[1] + '  ch' + ch };
+    case 0xE0: return { text: 'bend ' + (((d[1] | (d[2] << 7)) - 8192) / 8192).toFixed(3) + '  ch' + ch };
+    case 0xD0: return { text: 'ch pressure ' + d[1] + '  ch' + ch };
+    case 0xA0: return { text: 'poly pressure ' + noteName(d[1]) + ' ' + d[2] + '  ch' + ch };
+  }
+  return { text: 'status ' + st.toString(16) };
+}
+function log(kind, text, data) {
+  const line = document.createElement('div');
+  const ts = new Date().toLocaleTimeString([], { hour12: false }) + '.' + String(Date.now() % 1000).padStart(3, '0');
+  line.className = kind;
+  line.innerHTML = `<span class="t">${ts}</span> ${kind === 'in' ? '◀' : kind === 'out' ? '▶' : '·'} ${text}` +
+    (data && $('mon-hex').checked ? ` <span class="t">[${hex(data)}]</span>` : '');
+  mon.appendChild(line);
+  while (mon.children.length > MON_MAX) mon.removeChild(mon.firstChild);
+  mon.scrollTop = mon.scrollHeight;
+}
+window.addEventListener('midiinput-message', e => {
+  const dec = decode(e.detail.data);
+  if (dec.rt && !$('mon-rt').checked) return;
+  log(dec.rt ? 'rt' : 'in', dec.text, e.detail.data);
+});
+$('mon-clear').addEventListener('click', () => mon.innerHTML = '');
+
+// ── Go ───────────────────────────────────────────────────────────
+log('t', 'FM-1 console. Web MIDI: ' + (mi.supported ? 'available' : 'NOT available in this browser (use Chrome / Edge)'));
+mi.start().then(ok => {
+  refreshBadges();
+  if (ok) log('t', 'MIDI access granted' + (mi.sysexOk ? ' with SysEx' : ' (SysEx denied)'));
+  else log('t', 'MIDI access failed: ' + mi.statusDetail);
+});
+</script>
+</body>
+</html>
