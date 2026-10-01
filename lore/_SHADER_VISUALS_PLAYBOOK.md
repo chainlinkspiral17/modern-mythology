@@ -228,6 +228,26 @@ through them in order.
 
 ## Recent lessons
 
+### 2026-10-01 · the 3D heroes get a look (they were clean CG over a processed room)
+
+- Each locale renders through its OWN post stack inside its viewport;
+  anything composited over it in 2D (the CharLayer heroes) never sees
+  that stack. A layer drawn over a processed image needs its own
+  matched pass, or it reads as pasted on.
+- The hero pass lives on the portrait's SubViewportContainer material
+  (`portrait_demon_static.gdshader`, `look` uniform), beside the demon
+  recipe (`strength`): fringe toward the frame edge, grade, bloom,
+  grain, an inner + OUTER rim glow (alpha ring sampling — the halo is
+  drawn outside the silhouette), vignette, a fade at the base. Driven
+  per frame from Portrait3D (mood + the room's key/ambient), eased.
+- A contact sheet that saves `get_viewport_texture()` captures the RAW
+  render, never the container's shader. Judge the look from a window
+  capture (`tools/PortraitLookTest.tscn` under xvfb-run).
+- Mood grades stack with the mood's own 3D light: angry's key is
+  already red, so the grade adds little warmth; clamp the summed
+  temperature.
+
+
 ### 2026-09-11 · THE FEEDBACK · Minter trails without moving the picture
 
 User direction: "the psychedelic visual layer to the visual novel

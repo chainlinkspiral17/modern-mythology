@@ -505,6 +505,7 @@ func _load_scene(scene_id: String, start_at: int = 0) -> void:
 	# next one (e.g. Frasier persisting from vol5_ch0_model_city into
 	# vol5_ch1_magician).
 	_chars.call("hide_all")
+	_bg_place = ""
 	# The layer picks a hero's LOOK (age, costume) by the scene it is in.
 	_chars.call("set_scene_context", int(_scene_data.get("vol", _vol)), _scene_data.get("chapter", 0), scene_id)
 	_auto_load_substrate(scene_id)
@@ -1138,8 +1139,36 @@ var _bg_3d_node: SubViewportContainer = null
 var _trip_fb: Control = null
 
 
+# A CUT TO ANOTHER PLACE CLEARS THE STAGE (2026-10-01). The Deck: "character
+# not in scene is present" — vol6 prelude: Henderson thinks "Huh." in the
+# darkroom (auto-shown by his line), the scene cuts to Maya's bedroom, and
+# he stood beside her through her whole monologue. Nothing ever hid him;
+# 185 place-to-place cuts in the corpus relied on someone remembering a
+# `hide`. Now a bg in a DIFFERENT place (another locale GLB — a second
+# camera in the same room keeps everyone) hides every portrait; a figure
+# who belongs in the new place is shown by the scene's `show` after the
+# cut, or comes back by itself on its next line (_ensure_portrait).
+const BG3D_SCRIPT := preload("res://scripts/vn/Background3D.gd")
+var _bg_place: String = ""
+
+
+func _place_of(src: String) -> String:
+	if not src.begins_with("3d:"):
+		return src
+	var presets: Dictionary = BG3D_SCRIPT.CAMERA_PRESETS
+	var spec: Dictionary = presets.get(src.substr(3), {})
+	var glb: String = String(spec.get("requires_glb", ""))
+	if glb == "":
+		glb = String(spec.get("scene", src))
+	return glb
+
+
 func _do_bg(n: Dictionary) -> void:
 	var src: String = _s(n, "src")
+	var place: String = _place_of(src)
+	if _bg_place != "" and place != _bg_place and _chars != null:
+		_chars.call("hide_all")
+	_bg_place = place
 	if src == "":
 		_bg.texture = null
 		_clear_bg_3d()

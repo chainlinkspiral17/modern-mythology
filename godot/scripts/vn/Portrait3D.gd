@@ -88,11 +88,56 @@ const WIDE_FRAME_H: float = 0.68 * TARGET_HEIGHT_M
 # Jimmy and Diego cropped). The neck — the narrowest slice of the mesh
 # between the shoulders and the head — is measured at load, and the cu
 # and ecu are framed from it (metres above / below the neck).
+#
+# Sheet 43 (2026-10-01): the cu (0.53 m, neck-anchored) was barely tighter
+# than the mcu (0.62 m, a fraction of height) — a push-in read as nothing —
+# and the ecu sat low on some faces (Alice: eyes at the top edge). All
+# three close sizes now hang off the neck in clear steps (0.64 → 0.38 →
+# 0.18 m: ~0.6× then ~0.47×; the viewport is near-square, so the width
+# matches) and aim at the measured head — Meshy heads sit 0-5 cm forward
+# of the figure's axis (AIM: how far each size leans toward it).
+# Each size: frame height h; its top sits `cap` over the crown (every
+# figure is scaled so the crown — hair, hat — is at TARGET_HEIGHT_M) but
+# never more than t_max over the neck (big hair would lift the face out),
+# and its bottom never above b_max from the neck (the chin stays in).
+# EYE-ANCHORED (sheet 43 read by eye, 2026-10-01). The neck is a poor
+# proxy for the eyes: on a typical Meshy hero the eyes sit ~10 cm above
+# the narrowest slice, but where that slice is really the jaw (Aria,
+# Tanya, Alice, Graciela, Sam, Coach Guidry, Gloria) they sit 14-18 cm
+# above it, and the Deck's Frasier — his locs count toward the 1.80 m —
+# spoke from behind the dialogue text. Every close size now puts the
+# EYES at `eye_at` of the frame from the top (the box covers the lower
+# half of the screen), its top never more than `cap` over the crown.
 const FACE_FRAMES := {
-	"cu":  {"b": -0.20, "t": 0.33},
-	"ecu": {"b": -0.01, "t": 0.20},     # eyes ≈ neck + 0.13: the upper third
+	"mcu": {"h": 0.64, "eye_at": 0.30, "cap": 0.10},   # chest-up; the A-pose arms stay out
+	"cu":  {"h": 0.38, "eye_at": 0.36, "cap": 0.04},   # head and the top of the shoulders
+	"ecu": {"h": 0.18, "eye_at": 0.40, "cap": 0.0},    # brow to chin: Leone's eyes
 }
+const EYES_OVER_NECK: float = 0.10     # the sheet-43 median, for a model not in the table
+# Where the eye line sat in each hero's sheet-43 ecu frame (fraction
+# from the top). That frame was centred 9.5 cm over the measured neck
+# (or 10.5 cm under the crown when that was lower), at a known take
+# (seed 7: +1.36 % frame, +0.9° lens), 0.21 m tall — so the eye height
+# follows exactly from the same neck reading. Regenerate from a later
+# sheet when a model is replaced. (The Stranger's hood has no eyes to read.)
+const SHEET43_ECU_EYE := {
+	"alberto": 0.55, "alice_newsom": 0.25, "anna_logue": 0.50, "antonio": 0.60,
+	"aria_third": 0.12, "ben_kowalski": 0.62, "bianca_miller": 0.53, "carl_drummer": 0.50,
+	"carl_reno": 0.48, "chief_miller": 0.55, "claire_moyer": 0.45, "coach_guidry": 0.27,
+	"curtis": 0.50, "dante_dambrosio": 0.52, "david_jarvis": 0.48, "dickens_dean": 0.52,
+	"diego_ramos": 0.42, "douglas_forte": 0.55, "elicia_temple": 0.46, "erica_campbell": 0.40,
+	"father_amato": 0.40, "faust": 0.45, "frasier_temple": 0.53, "gloria_reyes": 0.30,
+	"graciela_ramos": 0.20, "hector": 0.55, "jacob": 0.68, "jesse_henderson": 0.52,
+	"jimmy_daigle": 0.62, "joan": 0.68, "joanna_lemoine": 0.45, "john_frank": 0.55,
+	"linda_caldwell": 0.65, "mackenzie_roberts": 0.62, "maya_daigle": 0.45, "miriam": 0.40,
+	"natalie_david": 0.72, "nicola": 0.47, "philip_roberts": 0.47, "quentin_paul": 0.55,
+	"ramirez": 0.45, "rick_cosmic": 0.48, "sam_miller_apron": 0.25, "sammy": 0.45,
+	"skip_donnelly": 0.48, "tanya_horne": 0.22, "the_frog": 0.50, "thomas_henderson": 0.65,
+	"vince_kane": 0.73, "wagner": 0.58,
+}
+const AIM := {"mcu": 0.6, "cu": 1.0, "ecu": 1.0}
 var _neck_y: float = -1.0                    # measured; < 0 = not found, fall back to fractions
+var _head_xz: Vector2 = Vector2.ZERO         # the head's centre off the figure's axis (x, z)
 var _shot_size: String = "medium"
 var _shot_angle: String = "eye"
 var _motion_scale: float = 1.0               # mood push/bob/shake shrink with the frame
@@ -148,6 +193,48 @@ var _demon_mode: bool = false
 #   drift_yaw    rad/sec; slow continuous yaw drift
 #   sway_amp     radians; horizontal yaw sway amplitude
 #   sway_freq    Hz
+# MOTION (2026-10-01, the Deck: "start of volume 6 models are super
+# shaky and motion sickness inducing" · "less motion"). The table's
+# amplitudes were set for the old thigh-up 34° frame at portrait-box
+# size; the heroes now fill half the screen on 19-26° lenses, where the
+# same sway, drift and tremor read three to five times larger — and the
+# sway and drift were never scaled to the frame at all. Every movement
+# now runs at MOTION_GAIN, angular movement scaled by the lens against
+# the old 34°, and a tremor is a STARTLE that dies in ~1.5 s (only the
+# demon keeps shaking — that is its signal).
+const MOTION_GAIN: float = 0.30
+const MOTION_REF_FOV: float = 34.0
+const STARTLE_DECAY: float = 2.5            # 1/s
+
+# THE LOOK (2026-10-01, the Deck: "the models look kinda lame without
+# post-processing and effects and mood direction"). The locale renders
+# through its own post stack; the hero now gets a matched pass on its
+# container (portrait_demon_static.gdshader's `look` path): lens fringe,
+# grade, bloom, grain, a rim glow in the ROOM's key colour, a vignette,
+# a fade at the base. LOOK_BASE is every hero at rest; MOOD_LOOK pushes
+# it the way the line feels (deltas, added); the room sets temperature,
+# the rim's colour and the shadows' tint. Eased, never cut.
+const LOOK_BASE := {
+	"look_aberr": 0.80, "look_contrast": 1.12, "look_sat": 1.04, "look_temp": 0.0,
+	"look_bloom": 0.45, "look_grain": 0.45, "look_rim": 0.95, "look_vignette": 0.28,
+	"look_fade": 0.6,
+}
+const MOOD_LOOK := {
+	"happy":     {"look_bloom": 0.40, "look_temp": 0.35, "look_sat": 0.12},
+	"sad":       {"look_sat": -0.45, "look_temp": -0.55, "look_contrast": -0.08, "look_vignette": 0.40, "look_rim": -0.30},
+	"tired":     {"look_sat": -0.32, "look_contrast": -0.14, "look_grain": 0.25, "look_vignette": 0.25},
+	"angry":     {"look_contrast": 0.18, "look_temp": 0.08, "look_sat": -0.08, "look_aberr": 0.90, "look_rim": 0.35},   # the mood's key is already hot
+	"nervous":   {"look_aberr": 0.80, "look_grain": 0.40, "look_sat": -0.15},
+	"surprised": {"look_bloom": 0.55, "look_contrast": 0.08},
+}
+const LOOK_EASE: float = 4.0                # 1/s
+var _look_on: bool = true
+var _look_now: Dictionary = {}
+var _look_target: Dictionary = {}
+var _rim_now: Color = Color(0.70, 0.85, 1.0)
+var _rim_target: Color = Color(0.70, 0.85, 1.0)
+var _shadow_target: Color = Color(0.10, 0.09, 0.14)
+
 const MOOD_TABLE := {
 	"neutral": {
 		"pos_off":  Vector3(0, 0, -0.15),     # subtle zoom-in
@@ -371,6 +458,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	_push_look(delta)
 	# Continuous mood motion. We rebuild the camera transform every
 	# frame from rest + mood offset + time-driven animation, so the
 	# state stays clean (no drift accumulation across mood changes).
@@ -383,7 +471,7 @@ func _process(delta: float) -> void:
 	if _mood.has("bob_amp") and _mood.has("bob_freq"):
 		var amp: float = _mood["bob_amp"]
 		var freq: float = _mood["bob_freq"]
-		pos.y += sin(_mood_t * freq * TAU) * amp * _motion_scale
+		pos.y += sin(_mood_t * freq * TAU) * amp * _motion_scale * MOTION_GAIN
 	_camera.position = pos
 	# Pitch + yaw — start from defaults, layer offsets + animation
 	# The old moods tilted the camera down for sad/tired — built for the
@@ -393,20 +481,23 @@ func _process(delta: float) -> void:
 	var tilt_keep: float = clampf((_motion_scale - 0.5) * 2.0, 0.0, 1.0)
 	var pitch: float = float(_mood.get("pitch_off", 0.0)) * tilt_keep
 	var yaw: float = _mood.get("yaw_off", 0.0)
+	# angular motion reads against the lens: the same radian is twice the
+	# screen on half the field of view
+	var ang: float = MOTION_GAIN * _rest_cam_fov / MOTION_REF_FOV
 	# Sway (horizontal yaw)
 	if _mood.has("sway_amp") and _mood.has("sway_freq"):
-		yaw += sin(_mood_t * _mood["sway_freq"] * TAU) * _mood["sway_amp"]
+		yaw += sin(_mood_t * float(_mood["sway_freq"]) * TAU) * float(_mood["sway_amp"]) * ang
 	# Drift (continuous slow yaw)
 	if _mood.has("drift_yaw"):
-		yaw += sin(_mood_t * 0.4) * _mood["drift_yaw"] * 4.0
-	# Shake (random tremor, higher frequency)
+		yaw += sin(_mood_t * 0.4) * float(_mood["drift_yaw"]) * 4.0 * ang
+	# Shake: a startle that dies away — only the demon keeps trembling
 	if _mood.has("shake_amp") and _mood.has("shake_freq"):
 		var sa: Vector3 = _mood["shake_amp"]
 		var sf: float = _mood["shake_freq"]
+		var env: float = 1.0 if _mood_id == "demon_chaos" else exp(-_mood_t * STARTLE_DECAY)
 		# Lissajous-ish jitter so the shake doesn't look periodic
-		# a tremor reads louder on a long lens: scale it with the frame
-		pitch += sin(_mood_t * sf * TAU * 1.07) * sa.x * _motion_scale
-		yaw   += sin(_mood_t * sf * TAU * 0.93) * sa.y * _motion_scale
+		pitch += sin(_mood_t * sf * TAU * 1.07) * sa.x * ang * env
+		yaw   += sin(_mood_t * sf * TAU * 0.93) * sa.y * ang * env
 	_camera.rotation = Vector3(_rest_cam_rot.x + pitch, _rest_cam_rot.y + yaw, _rest_cam_rot.z)
 	# FOV
 	var fov_off: float = float(_mood.get("fov_off", 0.0))
@@ -449,6 +540,7 @@ func load_character(glb_path: String, expression: String = "") -> bool:
 	# Auto-orient + auto-scale to the portrait's target framing
 	_orient_and_scale_character(_current_character)
 	_neck_y = _measure_neck(_current_character)
+	_head_xz = _measure_head(_current_character, _neck_y) if _neck_y > 0.0 else Vector2.ZERO
 	# Per-character lighting palette (e.g. Sam under sodium-buzz
 	# Kwik Stop fluorescents). Rewrites the resting key/fill/back
 	# state so all mood deltas compose on top of the right palette.
@@ -533,6 +625,57 @@ func set_expression(expression: String) -> void:
 	_fill.light_energy = fe * float(_roll.get("fill_e", 1.0))
 	_back.light_color  = bc
 	_back.light_energy = be * float(_roll.get("back_e", 1.0))
+	_compute_look()
+
+
+## The look the current mood + room ask for (eased toward in _process).
+func _compute_look() -> void:
+	var t: Dictionary = LOOK_BASE.duplicate()
+	var md: Dictionary = MOOD_LOOK.get(_mood_id, {})
+	for k: String in md:
+		t[k] = float(t.get(k, 0.0)) + float(md[k])
+	var rim := Color(0.70, 0.85, 1.0)
+	var shadow := Color(0.10, 0.09, 0.14)
+	if not _scene.is_empty():
+		var sk: Color = _scene.get("key", Color(1, 1, 1))
+		var sa: Color = _scene.get("ambient", Color(0.4, 0.4, 0.4))
+		# the room's warmth carries onto the face; its key lights the rim
+		t["look_temp"] = float(t["look_temp"]) + (sk.r - sk.b) * 0.6
+		rim = sk.lerp(Color(1, 1, 1), 0.35)
+		shadow = Color(sa.r * 0.35, sa.g * 0.35, sa.b * 0.40)
+	# a warm room AND an angry line must not burn the face orange (the
+	# first render did): the temperature stays inside ±0.55
+	t["look_temp"] = clampf(float(t["look_temp"]), -0.55, 0.55)
+	_look_target = t
+	_rim_target = rim
+	_shadow_target = shadow
+	if _look_now.is_empty():
+		_look_now = t.duplicate()
+		_rim_now = rim
+
+
+func _push_look(delta: float) -> void:
+	var mat: ShaderMaterial = material as ShaderMaterial
+	if mat == null or _look_target.is_empty():
+		return
+	if _demon_mode or not _look_on:
+		mat.set_shader_parameter("look", 0.0)
+		return
+	var k: float = 1.0 - exp(-LOOK_EASE * delta)
+	for key: String in _look_target:
+		var now: float = float(_look_now.get(key, _look_target[key]))
+		now = lerpf(now, float(_look_target[key]), k)
+		_look_now[key] = now
+		mat.set_shader_parameter(key, now)
+	_rim_now = _rim_now.lerp(_rim_target, k)
+	mat.set_shader_parameter("look_rim_color", _rim_now)
+	mat.set_shader_parameter("look_shadow", _shadow_target)
+	mat.set_shader_parameter("look", 1.0)
+
+
+## Clean renders (a tool, a debug comparison): the look off.
+func set_look_enabled(on: bool) -> void:
+	_look_on = on
 
 
 func set_demon_mode(enabled: bool) -> void:
@@ -571,19 +714,16 @@ func set_shot(size: String, angle: String = "eye", seed: int = -1) -> void:
 	var t: float = float(f["t"]) * h
 	if _neck_y > 0.0 and FACE_FRAMES.has(size):
 		var ff: Dictionary = FACE_FRAMES[size]
-		b = _neck_y + float(ff["b"])
-		t = _neck_y + float(ff["t"])
-		# never frame air over the crown (sheet 42: Jimmy and Thomas — short
-		# hair, a neck read high — sat low under a band of empty headroom):
-		# the cu's top stops 6 cm over the figure, the ecu's at the crown
-		var cap: float = TARGET_HEIGHT_M + (0.06 if size == "cu" else 0.0)
-		if t > cap:
-			b -= t - cap
-			t = cap
+		var fh: float = float(ff["h"])
+		# the eyes at eye_at from the top; never air over the crown (sheet
+		# 42: Jimmy and Thomas sat low under a band of empty headroom)
+		t = minf(_eyes_y() + float(ff["eye_at"]) * fh, TARGET_HEIGHT_M + float(ff["cap"]))
+		b = t - fh
 	var frame_h: float = t - b
 	var fov: float = float(f["fov"]) + float(_roll.get("fov", 0.0))
 	var dist: float = (frame_h * 0.5) / tan(deg_to_rad(fov * 0.5))
-	var target := Vector3(0.0, (b + t) * 0.5 + float(_roll.get("frame_y", 0.0)) * frame_h, 0.0)
+	var aim: float = float(AIM.get(size, 0.0)) if _neck_y > 0.0 else 0.0
+	var target := Vector3(_head_xz.x * aim, (b + t) * 0.5 + float(_roll.get("frame_y", 0.0)) * frame_h, _head_xz.y * aim)
 	var elev: float = float(ANGLE_ELEVATION[angle]) + float(_roll.get("elev", 0.0))
 	var yaw: float = YAW_THREE_QUARTER + float(_roll.get("yaw", 0.0))
 	var dir := Vector3(sin(yaw) * cos(elev), sin(elev), cos(yaw) * cos(elev))
@@ -795,6 +935,56 @@ func _measure_neck(root: Node3D) -> float:
 	var neck: float = lo + (float(best_i) + 0.5) / bins * (hi - lo)
 	print("[Portrait3D] neck at %.2f m (width %.2f m)" % [neck, best_w])
 	return neck
+
+
+## The eye line's height for the loaded hero (see SHEET43_ECU_EYE).
+func _eyes_y() -> float:
+	var key: String = _loaded_glb_path.get_file().get_basename()
+	if SHEET43_ECU_EYE.has(key):
+		var centre: float = minf(_neck_y + 0.095, TARGET_HEIGHT_M - 0.105) + 0.0029
+		return centre + (0.5 - float(SHEET43_ECU_EYE[key])) * 0.21
+	return _neck_y + EYES_OVER_NECK
+
+
+## Where the head is off the figure's vertical axis, in the anchor's x/z:
+## the middle of the x extent and the face's front less half a head's
+## depth (the back of the head is hair, and long hair would drag a
+## mid-depth point behind the skull). Read in the band from just over the
+## neck to the brow. Clamped to 15 cm; zero when the band is too sparse.
+func _measure_head(root: Node3D, neck: float) -> Vector2:
+	var lo: float = neck + 0.06
+	var hi: float = neck + 0.20
+	var min_x: float = INF
+	var max_x: float = -INF
+	var max_z: float = -INF
+	var seen: int = 0
+	for n: Node in _collect_mesh_instances(root):
+		var mi: MeshInstance3D = n as MeshInstance3D
+		if mi == null or mi.mesh == null:
+			continue
+		var xf: Transform3D = _anchor.global_transform.affine_inverse() * mi.global_transform
+		for si in mi.mesh.get_surface_count():
+			var arrays: Array = mi.mesh.surface_get_arrays(si)
+			if arrays.size() <= Mesh.ARRAY_VERTEX:
+				continue
+			var verts: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
+			var stride: int = maxi(1, verts.size() / 60000)
+			var vi: int = 0
+			while vi < verts.size():
+				var p: Vector3 = xf * verts[vi]
+				vi += stride
+				if p.y < lo or p.y >= hi:
+					continue
+				min_x = minf(min_x, p.x)
+				max_x = maxf(max_x, p.x)
+				max_z = maxf(max_z, p.z)
+				seen += 1
+	if seen < 60:
+		return Vector2.ZERO
+	var head := Vector2((min_x + max_x) * 0.5, max_z - 0.10)
+	head = head.limit_length(0.15)
+	print("[Portrait3D] head at x %.3f z %.3f m off the axis" % [head.x, head.y])
+	return head
 
 
 func _collect_mesh_instances(node: Node, out: Array[Node] = []) -> Array[Node]:

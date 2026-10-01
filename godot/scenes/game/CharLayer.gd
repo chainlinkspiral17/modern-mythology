@@ -318,16 +318,23 @@ const POSITIONS := {
 const SPRITE_W    := 780.0
 const SPRITE_H    := 900.0
 const SCRIM_COLOR := Color(0.0, 0.0, 0.0, 0.10)
-const IDLE_AMP    := 4.0
+# 2026-10-01 (the Deck: "super shaky and motion sickness inducing"): the
+# 3D heroes now fill half the screen in close-up, and this idle bob, the
+# parallax drift and the ±1 % breath (±9 px at the edge of a 900 px
+# figure) stacked on the portrait camera's own mood motion. All three
+# cut to a whisper; the 3D locales do not sway, so the counter-drift
+# has nothing to counter.
+const IDLE_AMP    := 1.0
 const IDLE_PERIOD := 2.5
+const BREATH_AMP  := 0.0025
 const IDLE_PHASE  := {"left": 0.0, "center": 0.85, "right": 1.7}
 
 # Parallax: portraits counter-drift the bg sway (GameEngine drives the
 # bg with the same SWAY_PERIOD). Small amplitude to sell depth without
 # disorienting the figure.
 const PARALLAX_PERIOD := 5.4
-const PARALLAX_X_AMP  := 2.5
-const PARALLAX_Y_AMP  := 1.2
+const PARALLAX_X_AMP  := 0.8
+const PARALLAX_Y_AMP  := 0.4
 
 # Active speaker pop: scale + alpha boost on the active portrait,
 # desaturate + dim non-active. Non-active really pulls back so the
@@ -777,7 +784,7 @@ func _process(delta: float) -> void:
 		# than position sway so the two motions don't beat against each
 		# other. Reads as the figure inhaling.
 		var breath_phase: float = (_t + phase * 0.6) * TAU / (IDLE_PERIOD * 1.7)
-		var breath_s: float = 1.0 + sin(breath_phase) * 0.010
+		var breath_s: float = 1.0 + sin(breath_phase) * BREATH_AMP
 		# Godot 4.6 emits an error from get_meta(name, default) when
 		# the meta is missing even though the default is honoured —
 		# guard with has_meta to keep the debugger quiet. Placeholder

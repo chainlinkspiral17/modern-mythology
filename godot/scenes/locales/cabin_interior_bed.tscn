@@ -356,10 +356,12 @@ rotation = Vector3(-0.2618, 2.3562, 0.0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10, 1.20, -1.10)
 rotation = Vector3(-0.1599, -3.0633, 0.0)
 
-; [shot:insert window] — the kitchen window over the basin (north)
+; [shot:insert window] — the window above the bed, east wall: "the
+; gray-green of cedars" (vol7 ch1). Sheet 43: this marker was the
+; kitchen's (copied with the scene) and framed the dining table.
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.170, 1.750, -1.450)
-rotation = Vector3(-0.6798, 0.6032, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.600, 1.550, -1.750)
+rotation = Vector3(0.1543, -1.8063, 0.0)
 metadata/fov = 42.0
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]

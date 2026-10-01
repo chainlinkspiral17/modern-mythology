@@ -32,14 +32,14 @@
       "text": "[trip:1.2][mood:night]Outside, the subdivision hums. The water tower has completed its Tuesday cycle. The NexCorp substation on Gallatin is drawing its overnight load. The cats — registered and unregistered — are doing what cats do."
     },
     {
+      "t": "bg",
+      "src": "3d:cosmic_comics_back_office"
+    },
+    {
       "t": "show",
       "char": "rick",
       "expr": "neutral",
       "pos": "center"
-    },
-    {
-      "t": "bg",
-      "src": "3d:cosmic_comics_back_office"
     },
     {
       "t": "narrate",

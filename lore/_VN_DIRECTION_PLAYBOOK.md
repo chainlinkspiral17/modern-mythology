@@ -222,6 +222,51 @@ figure, the ecu's at the crown, and the frame slides down instead; and
 the Frog (all eye) and the Stranger (all hood) never get an automatic
 ecu (`PortraitDirector.NO_ECU`; a writer's [portrait:ecu] still can).
 
+**Sheet 43 verdict — the sizes did not step.** Seen at the true 300×320
+aspect (a 16:9 montage squashes the faces — judge portraits square):
+the mcu (0.62 m, a fraction of height) and the cu (0.53 m, neck-anchored)
+were the same picture on all 51 heroes, so a push-in read as nothing;
+the ecu found faces but sat low on some (Alice: eyes at the top edge).
+Fixed: all three close sizes hang off the measured neck, 0.64 → 0.38 →
+0.18 m, each top a set margin over the crown but never so high over the
+neck that the chin leaves frame; and the camera aims at the measured
+head (Meshy heads sit 0-5 cm forward of the figure's axis — small, but a
+19° lens magnifies it). The Frog and the Stranger ecu frames on the
+sheet are expected: the sheet forces every size; play caps them at cu.
+The three `*_gnm` GLBs are not in the roster and are skipped by the sheet.
+
+**The Deck, same day — four notes, four fixes.**
+1. *"Need better positioning on Frasier"* — his locs count toward the
+   1.80 m, so a frame cut as a fraction of height put his face behind
+   the dialogue text. The close sizes are now EYE-ANCHORED: the eyes at
+   30 % (mcu) / 36 % (cu) / 40 % (ecu) from the top, the top never more
+   than a margin over the crown. The eye line per hero was read off
+   sheet 43's ecu frames (`Portrait3D.SHEET43_ECU_EYE`; the frame's
+   geometry and seed-7 take are known, so the height follows from the
+   same neck reading). Typical eyes sit 10 cm over the narrowest slice;
+   where that slice is the jaw (Aria, Tanya, Alice, Graciela, Sam,
+   Coach, Gloria) 14-18 cm. Regenerate the table when a model changes.
+2. *"Less motion" / "super shaky, motion sickness"* — the mood motion
+   table was tuned for the old 34° thigh-up in a small box; heroes now
+   fill half the screen on 19-26° lenses, and sway/drift were never
+   scaled to the frame. Everything runs at `MOTION_GAIN` 0.3, angular
+   motion scaled by the lens, and a tremor is a STARTLE that dies in
+   ~1.5 s (the demon alone keeps shaking). CharLayer's idle bob, breath
+   and parallax were cut to a whisper too (3D locales don't sway).
+   "worried" → nervous was the vol 6 opening's constant tremor.
+3. *"The models look kinda lame without post-processing and effects
+   and mood direction"* — the locale renders through its own post
+   stack; the hero was clean CG on top. A hero LOOK on the portrait's
+   container (`portrait_demon_static.gdshader`, `look` path): lens
+   fringe, grade, bloom, grain, an inner + outer rim glow in the room's
+   key colour (the locale's neon edges, echoed), vignette, a fade at
+   the base. `MOOD_LOOK` steers it (sad cools and greys, angry hardens
+   and fringes, happy blooms warm); the room sets temperature, rim and
+   shadow tint; eased, never cut. `tools/PortraitLookTest.tscn`
+   renders it over a frame (needs a display: xvfb-run).
+4. *"Character not in scene is present"* — see GameEngine: a bg in a
+   DIFFERENT place clears the stage.
+
 NEXT (draft 2): the Deck verdict on the sizes per model (Meshy faces
 sit at different heights — a per-model face offset table if the ecu
 misses eyes); a catchlight for cu/ecu; matching the portrait's key to

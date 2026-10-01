@@ -2960,6 +2960,35 @@ installer end to end against a stand-in Drive; IntroMovie headless
 (plays, grace, skip, no-file fallback). REPLACE with the unlockable-
 assets + media-player system later (the user's plan).
 
+**2026-10-01 · SHEET 43 · draft 44 judged; portrait sizes re-stepped.**
+Landed: the cape's fog reads as a rumpled grey bank below the rail (no
+longer a flat sheet); the cabin bedroom shows the window over the bed;
+the bar's window glows. The cape bench insert is right (the canvas bag
+on the dark wet bench) but dark. MISAIMED: cabin_interior_bed's
+`shot_insert_window` was the kitchen's marker copied with the scene —
+it framed the dining table; re-aimed at the window over the bed from
+inside the east room. Portraits: mcu ≈ cu on every hero → all close
+sizes neck-anchored in clear steps + aimed at the measured head (see
+_VN_DIRECTION_PLAYBOOK, sheet 43). cathedral_interior still has no GLB
+on the Deck (the builder must run there). **Sheet 44 checks:** the
+three sizes step visibly; the bedroom window insert; the cape bench
+lit enough to read.
+
+**2026-10-01 · DECK NOTES · portraits draft 3.** Four notes from play
+(details in _VN_DIRECTION_PLAYBOOK): Frasier behind the text → close
+sizes eye-anchored from a per-hero eye table read off sheet 43; shaky
+/ motion-sick → all portrait motion ×0.3, lens-scaled, tremor = a
+decaying startle, CharLayer bob/breath/parallax cut; "lame without
+post" → a hero look pass (fringe, grade, bloom, grain, rim glow in the
+room's key, vignette) steered by mood and room; a character not in
+the scene (vol6 prelude: Henderson stood in Maya's bedroom) → a cut
+to a different PLACE (another locale GLB) clears the stage; one show
+authored before its cut (vol6_ch3_coda, Rick) moved after it.
+**Draft 4 targets:** sheet 44 shows the eye anchors per hero (a
+contact sheet that captures the composited look, not the raw
+viewport); tune MOOD_LOOK per register (vol 6 milk_honey vs vol 5
+arcana); an options toggle for the look + a reduce-motion setting.
+
 **2026-10-01 · VOICE IMPORT · draft 1.** The user: "I have a good
 number of zips of voice studio audio in google drive that can be added
 to the game project for the visual novel." ~60 `voice_dropin_*.zip`

@@ -53,6 +53,30 @@ uniform vec4  duotone_a      : source_color = vec4(0.18, 0.08, 0.32, 1.0);
 uniform vec4  duotone_b      : source_color = vec4(0.96, 0.62, 0.42, 1.0);
 uniform float ascii_str      : hint_range(0.0, 1.0) = 0.0;
 
+// ── THE HERO LOOK (2026-10-01) ─────────────────────────────────
+// The Deck: "the models look kinda lame without post-processing and
+// effects and mood direction." Every locale renders through its own
+// post stack inside its viewport (ascii_render → demoscene_post: neon
+// edges, fringe, grade); the 3D heroes were laid over it as clean CG.
+// `look` (0..1) runs a hero grade when the demon master is off:
+// lens fringe toward the frame edges, contrast / saturation /
+// temperature, highlight bloom, moving grain, an inner + outer RIM
+// glow on the silhouette in the room's key colour (the locale's neon
+// edges, echoed), a figure vignette and a soft fade at the base.
+// Portrait3D drives every knob from the room's light and the mood.
+uniform float look           : hint_range(0.0, 1.0) = 0.0;
+uniform float look_aberr     : hint_range(0.0, 2.0) = 0.35;
+uniform float look_contrast  : hint_range(0.5, 1.6) = 1.06;
+uniform float look_sat       : hint_range(0.0, 1.6) = 1.0;
+uniform float look_temp      : hint_range(-1.0, 1.0) = 0.0;
+uniform float look_bloom     : hint_range(0.0, 1.5) = 0.25;
+uniform float look_grain     : hint_range(0.0, 1.0) = 0.35;
+uniform float look_rim       : hint_range(0.0, 1.5) = 0.55;
+uniform vec4  look_rim_color : source_color = vec4(0.70, 0.85, 1.0, 1.0);
+uniform vec4  look_shadow    : source_color = vec4(0.10, 0.09, 0.14, 1.0);
+uniform float look_vignette  : hint_range(0.0, 1.0) = 0.20;
+uniform float look_fade      : hint_range(0.0, 1.0) = 0.6;
+
 uniform float chaos_rate  : hint_range(1.0, 60.0) = 18.0;
 uniform float aberration  : hint_range(0.0, 0.04) = 0.012;
 uniform float tear_amount : hint_range(0.0, 0.20) = 0.06;
@@ -89,8 +113,61 @@ vec3 hsv2rgb(vec3 c) {
 
 void fragment() {
     // Master gate — strength=0 → pure pass-through.
-    if (strength <= 0.001) {
+    if (strength <= 0.001 && look <= 0.001) {
         COLOR = texture(TEXTURE, UV);
+    } else if (strength <= 0.001) {
+        vec2 px = TEXTURE_PIXEL_SIZE;
+        vec2 c = UV - vec2(0.5);
+        // lens fringe, growing toward the frame edge
+        float ab = look_aberr * 0.0045 * clamp(length(c) * 2.0, 0.0, 1.0) * look;
+        vec2 dir = normalize(c + vec2(1e-5));
+        vec4 base = texture(TEXTURE, UV);
+        float r = texture(TEXTURE, UV + dir * ab).r;
+        float b = texture(TEXTURE, UV - dir * ab).b;
+        vec3 col = vec3(r, base.g, b);
+        float a = base.a;
+        // silhouette: the alpha around this pixel (3 px ring)
+        float amax = 0.0;
+        float amin = 1.0;
+        for (int i = 0; i < 8; i++) {
+            float ang = float(i) * 0.785398;
+            vec2 o = vec2(cos(ang), sin(ang)) * px * 3.0;
+            float s = texture(TEXTURE, UV + o).a;
+            amax = max(amax, s);
+            amin = min(amin, s);
+        }
+        // grade: temperature, saturation, contrast, shadows into the room
+        col.r += look_temp * 0.10 * look;
+        col.b -= look_temp * 0.10 * look;
+        float lum = dot(col, vec3(0.299, 0.587, 0.114));
+        col = mix(vec3(lum), col, mix(1.0, look_sat, look));
+        col = (col - 0.5) * mix(1.0, look_contrast, look) + 0.5;
+        col = mix(col, col * 0.6 + look_shadow.rgb * 0.4, (1.0 - smoothstep(0.0, 0.35, lum)) * 0.5 * look);
+        // bloom: the bright parts spill
+        vec3 bl = vec3(0.0);
+        for (int i = 0; i < 8; i++) {
+            float ang = float(i) * 0.785398 + 0.39;
+            bl += texture(TEXTURE, UV + vec2(cos(ang), sin(ang)) * px * 6.0).rgb;
+        }
+        bl /= 8.0;
+        col += max(bl - vec3(0.6), vec3(0.0)) * 1.6 * look_bloom * look;
+        // inner rim: the edge of the figure catches the room's key
+        float inner = clamp(a - amin, 0.0, 1.0);
+        col = mix(col, col + look_rim_color.rgb * 0.9, inner * look_rim * look);
+        // figure vignette (darker toward the frame's corners)
+        float v = smoothstep(0.35, 0.85, length(c * vec2(1.0, 0.8)));
+        col *= 1.0 - v * look_vignette * look;
+        // grain, 24 fps, strongest in the mids
+        float gt = floor(TIME * 24.0);
+        float g = hash21(UV * vec2(900.0, 960.0) + vec2(gt * 3.7, gt * 1.3)) - 0.5;
+        col += g * 0.10 * look_grain * look * (1.0 - abs(lum - 0.5));
+        // outer glow: a halo just outside the silhouette
+        float halo = clamp(amax - a, 0.0, 1.0) * look_rim * 0.55 * look;
+        vec3 outc = mix(look_rim_color.rgb, col, a);
+        float outa = max(a, halo);
+        // the base of the figure dissolves into the scene
+        outa *= 1.0 - smoothstep(0.80, 1.0, UV.y) * look_fade * look;
+        COLOR = vec4(clamp(outc, 0.0, 1.0), outa);
     } else {
         float t_frame = floor(TIME * chaos_rate) / chaos_rate;
         float seed    = t_frame * 11.7;
