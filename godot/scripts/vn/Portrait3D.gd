@@ -85,6 +85,30 @@ var _shot_size: String = "medium"
 var _shot_angle: String = "eye"
 var _motion_scale: float = 1.0               # mood push/bob/shake shrink with the frame
 
+# ── VARIATION + THE SCENE'S LIGHT (2026-10-01) ─────────────────────
+# The user: "the camera doesn't have to be set for every shot, it can
+# be randomly allowed within a set area, same with lighting and shader
+# effects and post-processing on the portraits. contrast and work
+# within the scene." Each new shot rolls the camera, the key light and
+# the grade inside the ranges below (a held shot keeps its roll); the
+# key takes the locale's light, the rim goes the other way so the
+# figure separates from the room.
+const VARY := {
+	"yaw": 0.10,          # rad either side of the 3/4 angle
+	"elev": 0.04,         # rad up/down on top of the shot's angle
+	"frame_y": 0.04,      # fraction of the frame height the subject may sit off-centre
+	"fov": 1.5,           # degrees of lens either way
+	"dutch_min": 0.07, "dutch_max": 0.14,
+	"key_yaw": 0.28, "key_pitch": 0.12,   # rad the key may swing round the head
+	"energy": 0.10,       # ± fraction on key / fill / rim
+	"contrast": [1.02, 1.16], "saturation": [0.90, 1.08],
+}
+const SCENE_MIX: float = 0.55                # how far the key/fill lean toward the room's light
+var _scene: Dictionary = {}                  # {key, ambient, level} from Background3D
+var _rng := RandomNumberGenerator.new()
+var _key_rest_basis: Basis
+var _roll: Dictionary = {}                   # the current shot's rolled values
+
 # Demon mode — when true, set_expression() routes to "demon_chaos"
 # regardless of the requested expression (a demon doesn't perform
 # moods, it leaks signal corruption), and the SubViewportContainer's
@@ -328,6 +352,7 @@ func _ready() -> void:
 	_rest_fill_energy = _fill.light_energy
 	_rest_back_color  = _back.light_color
 	_rest_back_energy = _back.light_energy
+	_key_rest_basis = _key.transform.basis
 	# Default mood
 	set_expression("neutral")
 	set_process(true)
@@ -466,12 +491,30 @@ func set_expression(expression: String) -> void:
 	_mood = MOOD_TABLE.get(normalized, {})
 	# Apply light overrides immediately. Missing keys fall back to
 	# the resting values (so e.g. surprised doesn't override fill).
-	_key.light_color  = _mood.get("key_color",  _rest_key_color)
-	_key.light_energy = _mood.get("key_energy", _rest_key_energy)
-	_fill.light_color  = _mood.get("fill_color",  _rest_fill_color)
-	_fill.light_energy = _mood.get("fill_energy", _rest_fill_energy)
-	_back.light_color  = _mood.get("back_color",  _rest_back_color)
-	_back.light_energy = _mood.get("back_energy", _rest_back_energy)
+	var kc: Color = _mood.get("key_color",  _rest_key_color)
+	var ke: float = float(_mood.get("key_energy", _rest_key_energy))
+	var fc: Color = _mood.get("fill_color",  _rest_fill_color)
+	var fe: float = float(_mood.get("fill_energy", _rest_fill_energy))
+	var bc: Color = _mood.get("back_color",  _rest_back_color)
+	var be: float = float(_mood.get("back_energy", _rest_back_energy))
+	if not _scene.is_empty() and not _demon_mode:
+		var sk: Color = _scene.get("key", kc)
+		var sa: Color = _scene.get("ambient", fc)
+		var lvl: float = float(_scene.get("level", 1.0))
+		kc = kc.lerp(sk, SCENE_MIX)
+		fc = fc.lerp(sa, SCENE_MIX)
+		# the rim CONTRASTS: cool against a warm room, warm against a cool one
+		bc = Color(0.52, 0.70, 0.92) if sk.r > sk.b else Color(0.98, 0.74, 0.46)
+		var lv: float = clampf(lvl, 0.7, 1.25)
+		ke *= lv
+		fe *= lv
+		be *= clampf(1.6 - lvl * 0.5, 0.7, 1.3)   # dim rooms want more rim, not less
+	_key.light_color  = kc
+	_key.light_energy = ke * float(_roll.get("key_e", 1.0))
+	_fill.light_color  = fc
+	_fill.light_energy = fe * float(_roll.get("fill_e", 1.0))
+	_back.light_color  = bc
+	_back.light_energy = be * float(_roll.get("back_e", 1.0))
 
 
 func set_demon_mode(enabled: bool) -> void:
@@ -490,30 +533,40 @@ func set_demon_mode(enabled: bool) -> void:
 ## Cut to a shot: size in SHOT_FRAMES, angle eye | low | high | dutch.
 ## Rebuilds the resting camera; mood motion layers on top, scaled to
 ## the frame so a close-up does not shake like a wide.
-func set_shot(size: String, angle: String = "eye") -> void:
+func set_shot(size: String, angle: String = "eye", seed: int = -1) -> void:
 	if not SHOT_FRAMES.has(size):
 		size = "medium"
 	if not ANGLE_ELEVATION.has(angle):
 		angle = "eye"
+	var changed: bool = size != _shot_size or angle != _shot_angle or _roll.is_empty()
 	_shot_size = size
 	_shot_angle = angle
 	if _camera == null:
 		return
+	# a new shot (or an asked-for new take) rolls inside VARY; a held
+	# shot keeps its roll, so the frame does not twitch line to line
+	if changed or seed >= 0:
+		_roll_take(seed)
 	var f: Dictionary = SHOT_FRAMES[size]
 	var h: float = TARGET_HEIGHT_M
 	var b: float = float(f["b"]) * h
 	var t: float = float(f["t"]) * h
 	var frame_h: float = t - b
-	var fov: float = float(f["fov"])
+	var fov: float = float(f["fov"]) + float(_roll.get("fov", 0.0))
 	var dist: float = (frame_h * 0.5) / tan(deg_to_rad(fov * 0.5))
-	var target := Vector3(0.0, (b + t) * 0.5, 0.0)
-	var elev: float = float(ANGLE_ELEVATION[angle])
-	var dir := Vector3(sin(YAW_THREE_QUARTER) * cos(elev), sin(elev), cos(YAW_THREE_QUARTER) * cos(elev))
+	var target := Vector3(0.0, (b + t) * 0.5 + float(_roll.get("frame_y", 0.0)) * frame_h, 0.0)
+	var elev: float = float(ANGLE_ELEVATION[angle]) + float(_roll.get("elev", 0.0))
+	var yaw: float = YAW_THREE_QUARTER + float(_roll.get("yaw", 0.0))
+	var dir := Vector3(sin(yaw) * cos(elev), sin(elev), cos(yaw) * cos(elev))
 	_camera.position = target + dir * dist
 	_camera.fov = fov
 	_camera.look_at(target, Vector3.UP)
 	if angle == "dutch":
-		_camera.rotate_object_local(Vector3(0, 0, 1), DUTCH_ROLL)
+		_camera.rotate_object_local(Vector3(0, 0, 1), float(_roll.get("dutch", DUTCH_ROLL)))
+	# the key swings round the head with the take
+	_key.transform.basis = Basis(Vector3.UP, float(_roll.get("key_yaw", 0.0))) * Basis(Vector3.RIGHT, float(_roll.get("key_pitch", 0.0))) * _key_rest_basis
+	_apply_grade()
+	set_expression(_mood_id)
 	_rest_cam_pos = _camera.position
 	_rest_cam_rot = _camera.rotation
 	_rest_cam_fov = fov
@@ -522,6 +575,53 @@ func set_shot(size: String, angle: String = "eye") -> void:
 
 func get_shot() -> String:
 	return _shot_size
+
+
+## The locale's light (Background3D.get_scene_light): the portrait's key
+## leans toward it, the rim contrasts with it, the grade follows its level.
+func set_scene_light(light: Dictionary) -> void:
+	_scene = light
+	_apply_grade()
+	set_expression(_mood_id)
+
+
+func _roll_take(seed: int) -> void:
+	if seed >= 0:
+		_rng.seed = seed
+	else:
+		_rng.randomize()
+	var dsign: float = 1.0 if _rng.randf() < 0.5 else -1.0
+	_roll = {
+		"yaw": _rng.randf_range(-VARY["yaw"], VARY["yaw"]),
+		"elev": _rng.randf_range(-VARY["elev"], VARY["elev"]),
+		"frame_y": _rng.randf_range(-VARY["frame_y"], VARY["frame_y"]),
+		"fov": _rng.randf_range(-VARY["fov"], VARY["fov"]),
+		"dutch": dsign * _rng.randf_range(VARY["dutch_min"], VARY["dutch_max"]),
+		"key_yaw": _rng.randf_range(-VARY["key_yaw"], VARY["key_yaw"]),
+		"key_pitch": _rng.randf_range(-VARY["key_pitch"], VARY["key_pitch"]),
+		"key_e": 1.0 + _rng.randf_range(-VARY["energy"], VARY["energy"]),
+		"fill_e": 1.0 + _rng.randf_range(-VARY["energy"], VARY["energy"]),
+		"back_e": 1.0 + _rng.randf_range(-VARY["energy"], VARY["energy"]),
+		"contrast": _rng.randf_range(VARY["contrast"][0], VARY["contrast"][1]),
+		"saturation": _rng.randf_range(VARY["saturation"][0], VARY["saturation"][1]),
+	}
+
+
+## The portrait's grade: the take's contrast and saturation, brightness
+## following the room (a dark locale does not get a bright face).
+func _apply_grade() -> void:
+	var we: WorldEnvironment = get_node_or_null("SubViewport/WorldEnvironment") as WorldEnvironment
+	if we == null or we.environment == null:
+		return
+	var env: Environment = we.environment
+	env.adjustment_enabled = true
+	env.adjustment_contrast = float(_roll.get("contrast", 1.05))
+	env.adjustment_saturation = float(_roll.get("saturation", 1.05))
+	var lvl: float = float(_scene.get("level", 1.0))
+	env.adjustment_brightness = clampf(0.86 + lvl * 0.12, 0.9, 1.06)
+	if _scene.has("ambient"):
+		var amb: Color = _scene["ambient"]
+		env.ambient_light_color = Color(0.42, 0.38, 0.34).lerp(amb, SCENE_MIX)
 
 
 func get_viewport_texture() -> Texture2D:

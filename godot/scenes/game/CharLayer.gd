@@ -28,6 +28,20 @@ const PORTRAIT_COMP_ROOT := "res://resources/substrates/compositions/"
 # filenames ("frasier_temple.glb").
 const PORTRAIT_3D_SCENE := preload("res://scenes/vn/Portrait3D.tscn")
 const PortraitDirector := preload("res://scripts/vn/PortraitDirector.gd")
+# The existing 2D portraits (PNG busts, ASCII compositions, placeholders)
+# are retired: false = only 3D heroes get a portrait slot.
+const PORTRAITS_2D := false
+var _special_2d: Dictionary = {}          # char key → res:// path of a special-occasion 2D image
+var _no_portrait_logged: Dictionary = {}
+
+
+## A scene's special occasion: this character shows this 2D image (a
+## new piece made for the moment, never the retired assets).
+func allow_special_2d(char_name: String, path: String) -> void:
+	if path == "":
+		_special_2d.erase(char_key(char_name))
+	else:
+		_special_2d[char_key(char_name)] = path
 const PORTRAIT_3D_GLB_ROOT := "res://assets/3d/characters/heroes/"
 
 # Demons get their own GLB root + a SHARED Portrait3D scene with the
@@ -842,6 +856,16 @@ func show_character(char_name: String, expr: String, pos: String, facing: String
 	# Store the slug, not the raw display name, so identity checks work
 	# regardless of casing/spacing in scene JSON ("The Demon" vs "the demon").
 	var key := char_key(char_name)
+	# 3D HEROES ONLY (2026-10-01, the user: "2D portraits should be on
+	# the way out for now, except in special occasions, not with existing
+	# 2D assets"). A character with no hero GLB gets no portrait — the
+	# dialogue box names them — unless the scene asks for a special-
+	# occasion 2D image by path (a show node's "portrait_2d").
+	if not PORTRAITS_2D and not _special_2d.has(key) and _resolve_portrait_3d_glb(key) == "":
+		if not _no_portrait_logged.has(key):
+			_no_portrait_logged[key] = true
+			print("[CharLayer] %s (key=%s): no 3D model — no portrait (2D retired)" % [char_name, key])
+		return
 	# Compute horizontal flip — auto-inward by default, scene-JSON
 	# `facing` field overrides if present.
 	var should_flip: bool = _compute_flip(key, pos, facing)
@@ -1050,6 +1074,13 @@ var _last_speaker_key: String = ""
 var _shot_memory: Dictionary = {}      # char key → {size, score}
 
 
+var _scene_light: Dictionary = {}      # Background3D.get_scene_light(), pushed by GameEngine
+
+
+func set_scene_light(light: Dictionary) -> void:
+	_scene_light = light
+
+
 func set_portrait_override(arg: String) -> void:
 	_portrait_override = PortraitDirector.parse_override(arg)
 
@@ -1087,7 +1118,12 @@ func direct_line(char_name: String, text: String, expr: String) -> void:
 			"same_speaker": speaker == _last_speaker_key, "override": _portrait_override,
 		})
 		speaker_size = String(pick["size"])
-		p3d.call("set_shot", speaker_size, String(pick["angle"]))
+		# a new take inside the shot's ranges each time the speaker starts
+		# or the shot changes; a held shot keeps its take
+		var take: int = -1 if String(pick.get("why", "")) == "holding" else absi(hash(speaker + "|" + text))
+		if not _scene_light.is_empty():
+			p3d.call("set_scene_light", _scene_light)
+		p3d.call("set_shot", speaker_size, String(pick["angle"]), take)
 		_shot_memory[speaker] = {"size": speaker_size, "score": int(pick.get("score", 0))}
 	for e_v: Variant in entries:
 		var e: Dictionary = e_v
@@ -1097,6 +1133,8 @@ func direct_line(char_name: String, text: String, expr: String) -> void:
 		var role: String = "narration" if speaker == "" else "listener"
 		var pick2: Dictionary = PortraitDirector.choose({"role": role, "speaker_size": speaker_size})
 		var p3d2: Node = e["p3d"]
+		if not _scene_light.is_empty():
+			p3d2.call("set_scene_light", _scene_light)
 		p3d2.call("set_shot", String(pick2["size"]), String(pick2["angle"]))
 		_shot_memory.erase(k)        # a listener who speaks next starts fresh
 	_last_speaker_key = speaker
@@ -1409,6 +1447,22 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 		# render — same EXPR_TINTS table the PNG path uses
 		_apply_texture_tint(wrapper, expr)
 		resolved_path = glb_path
+	elif _special_2d.has(key):
+		var sp: String = String(_special_2d[key])
+		var stex: Texture2D = load(sp) as Texture2D if ResourceLoader.exists(sp) else null
+		if stex == null and FileAccess.file_exists(sp):
+			var simg: Image = Image.load_from_file(sp)
+			if simg != null and not simg.is_empty():
+				stex = ImageTexture.create_from_image(simg)
+		if stex != null:
+			print("[CharLayer] %s (key=%s): SPECIAL 2D   %s" % [char_name, key, sp])
+			var str_ := TextureRect.new()
+			str_.texture = stex
+			str_.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			tint_holder.add_child(str_)
+			_layout_portrait_texture(str_, stex)
+			wrapper.set_meta("kind", "texture")
+			resolved_path = sp
 	elif not has_face and FileAccess.file_exists(comp_path):
 		print("[CharLayer] %s (key=%s): COMPOSITION  %s" % [char_name, key, comp_path])
 		var comp := Control.new()

@@ -179,6 +179,29 @@ and the arms are not a shot. A writer can still order any frame:
 `[portrait:medium]`, `[portrait:ecu low]`, `[portrait:cu dutch]` —
 line-scoped, the speaker's shot only.
 
+**Takes within ranges, lit by the room** (same day, the user: "the
+camera doesn't have to be set for every shot, it can be randomly
+allowed within a set area, same with lighting and shader effects and
+post-processing on the portraits. contrast and work within the
+scene"). Each new shot rolls a TAKE inside `Portrait3D.VARY` — yaw
+±0.10 rad round the 3/4, elevation ±0.04, the subject ±4 % off-centre,
+lens ±1.5°, dutch 4-8° either way, the key swung ±16° round the head,
+energies ±10 %, contrast 1.02-1.16, saturation 0.90-1.08; a held shot
+keeps its take (no twitch line to line). `Background3D.get_scene_light()`
+reports the locale's strongest light, ambient and level; the portrait's
+key and fill lean 55 % toward them, the RIM goes the other way (cool in
+a warm room, warm in a cool one) so the figure separates, and dim rooms
+get a dimmer face and a stronger rim. Each portrait has its own grade
+(the Environment is local to the scene).
+
+**2D portraits retired** (same day: "2D portraits should be on the way
+out for now, except in special occasions, not with existing 2D
+assets"): `CharLayer.PORTRAITS_2D = false` — a character without a
+hero GLB gets no portrait (the dialogue box names them). A show node's
+`"portrait_2d": "res://…"` opts ONE character into a special-occasion
+image for the scene; the retired busts, compositions and placeholders
+are never used.
+
 NEXT (draft 2): the Deck verdict on the sizes per model (Meshy faces
 sit at different heights — a per-model face offset table if the ecu
 misses eyes); a catchlight for cu/ecu; matching the portrait's key to

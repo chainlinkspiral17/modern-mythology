@@ -2695,6 +2695,47 @@ func _walk_tree(node: Node, out: Array[Node] = []) -> Array[Node]:
 # ── Public: hand the loaded locale's MoodCycler back to GameEngine
 # so it can wire a per-VN-scene debug overlay without re-walking
 # the SubViewport tree. Returns null until load_location has run.
+# ── The scene's light, for the 3D hero portraits (2026-10-01) ─────────
+# The user: portraits should "contrast and work within the scene". The
+# strongest light in the loaded locale gives the portrait's key colour,
+# the environment's ambient its fill, and the sum of the lights how
+# bright the portrait should sit. Re-read at most every 1.5 s, so a
+# [mood:] that relights the room reaches the faces too.
+var _scene_light: Dictionary = {}
+var _scene_light_ms: int = -100000
+var _scene_light_preset: String = ""
+
+
+func get_scene_light() -> Dictionary:
+	if _location_instance == null or not is_instance_valid(_location_instance):
+		return {}
+	var now: int = Time.get_ticks_msec()
+	if _scene_light_preset == _loaded_preset and now - _scene_light_ms < 1500:
+		return _scene_light
+	var key_c := Color(1, 1, 1)
+	var best: float = -1.0
+	var total: float = 0.0
+	var ambient := Color(0.42, 0.40, 0.38)
+	for n: Node in _walk_tree(_location_instance):
+		if n is Light3D:
+			var l: Light3D = n as Light3D
+			if not l.visible:
+				continue
+			var e: float = l.light_energy * (1.0 if l is DirectionalLight3D else 0.5)
+			total += e
+			if e > best:
+				best = e
+				key_c = l.light_color
+		elif n is WorldEnvironment:
+			var we: WorldEnvironment = n as WorldEnvironment
+			if we.environment != null:
+				ambient = we.environment.ambient_light_color
+	_scene_light = {"key": key_c, "ambient": ambient, "level": clampf(total / 2.5, 0.45, 1.5)}
+	_scene_light_ms = now
+	_scene_light_preset = _loaded_preset
+	return _scene_light
+
+
 func get_locale_mood_cycler() -> Node:
 	if _location_instance == null or not is_instance_valid(_location_instance):
 		return null

@@ -868,6 +868,7 @@ func _do_narrate(n: Dictionary) -> void:
 	AudioMgr.set_sfx_pan(0.0)
 	AudioMgr.duck()
 	_chars.call("activate_speaker", "")
+	_push_scene_light()
 	_chars.call("direct_line", "", text, "")
 	_dlg.visible = true
 	_dlg.call("show_narrate", text)
@@ -887,6 +888,7 @@ func _do_say(n: Dictionary) -> void:
 	AudioMgr.set_sfx_pan(_char_pan(char_name))
 	AudioMgr.duck()
 	_chars.call("activate_speaker", char_name.to_lower())
+	_push_scene_light()
 	_chars.call("direct_line", char_name.to_lower(), text, expr)
 	_dlg.visible = true
 	_dlg.call("show_say", char_name, text)
@@ -903,12 +905,23 @@ func _do_think(n: Dictionary) -> void:
 	AudioMgr.set_sfx_pan(_char_pan(char_name))
 	AudioMgr.duck()
 	_chars.call("activate_speaker", char_name.to_lower())
+	_push_scene_light()
 	_chars.call("direct_line", char_name.to_lower(), _s(n, "text"), expr)
 	_dlg.visible = true
 	_dlg.call("show_think", char_name, _s(n, "text"))
 	AudioMgr.play_voice(_s(n, "voice"))
 	_set_vn_focus(true)
 	_wait()
+
+
+## The locale's light for the 3D portraits (keyed to the room, rim
+## contrasting it). {} when no 3D locale is up.
+func _push_scene_light() -> void:
+	var light: Dictionary = {}
+	if _bg_3d_node != null and is_instance_valid(_bg_3d_node) and _bg_3d_node.visible \
+			and _bg_3d_node.has_method("get_scene_light"):
+		light = _bg_3d_node.call("get_scene_light")
+	_chars.call("set_scene_light", light)
 
 
 func _char_pan(char_name: String) -> float:
@@ -1058,6 +1071,10 @@ func _resolve_check(check: Dictionary) -> void:
 
 func _do_show(n: Dictionary) -> void:
 	var char_name: String = n.get("char", "")
+	# a special-occasion 2D image for this character (2D is otherwise retired)
+	var sp2d: String = String(n.get("portrait_2d", ""))
+	if sp2d != "":
+		_chars.call("allow_special_2d", char_name.to_lower(), sp2d)
 	_chars.call("show_character",
 		char_name.to_lower(),
 		n.get("expr", "neutral"),

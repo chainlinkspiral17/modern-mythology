@@ -45,6 +45,7 @@ shader_parameter/tint = Color(0.85, 1.0, 0.85, 1.0)
 ; PNG/composition portrait pipeline.
 
 [sub_resource type="Environment" id="Env_Portrait"]
+resource_local_to_scene = true
 background_mode = 1
 background_color = Color(0, 0, 0, 0)
 ambient_light_source = 2
