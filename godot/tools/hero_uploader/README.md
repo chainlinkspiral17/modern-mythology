@@ -192,6 +192,37 @@ game the moment it is saved. (Until 2026-09-30 Hero Studio lived only
 on `claude/meshy-image-generation-w92vr6`, and its models never
 reached the game.)
 
+## PAINT OR PASS — painted generations of a scene's raw render (2026-10-01)
+
+The user: "can you compare generations built up from raw static scene
+data and paint or pass on select parts?" The header's **PAINT OR PASS**
+link opens `scenes.html`:
+
+1. **Raw frames** — every locale frame of this machine's contact sheet
+   (`godot/qa/contact/<preset>/<mood>__<shot>.jpg`, run
+   `contact_sheet.sh` first). Pick one.
+2. **Generate** — Google (gemini-2.5-flash-image) or Runway (gen4_image)
+   repaints it with the raw frame as the REFERENCE. The prompt (shown,
+   editable) asks to keep the camera, layout and every object, give the
+   surfaces real material and light, no retro, no people or text, and
+   adds the locale's own description from its builder's docstring plus
+   your note. 1-4 images a call; each call costs provider credits.
+3. **Compare** — raw and generations side by side; hold the button (or
+   `A`) to flip back to the raw render.
+4. **Paint or pass** — click a picture to make it the paint source and
+   drag a box on the frame: that part comes from it. Pick the raw render
+   as the source to PASS a part (keep the render there). Any picture can
+   be the BASE the boxes sit on.
+5. **Save composite** — `godot/assets/concept/scenes/<preset>/<frame>__final.png`
+   plus `__final.json` (the recipe: base, regions, sources). Generations
+   and composites go to Google Drive on the next SAVE, never to git.
+
+Draft 2 targets: feathered / brushed masks instead of hard boxes; an
+"align" step when a generation drifts from the render's geometry;
+batch-generate a whole locale's frames; using a composite in the game
+(a painted plate in place of the live render for that shot — a
+decision for the user, since it trades the live lighting and moods).
+
 ## After a model changes on disk: reimport (2026-10-01)
 
 Godot plays a model from its import cache (godot/.godot/imported), not

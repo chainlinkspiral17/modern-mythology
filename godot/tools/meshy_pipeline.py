@@ -391,6 +391,7 @@ GIT_SAVE_PATHS = [
     "godot/assets/3d/characters",
     "godot/assets/3d/props",
     "godot/assets/concept/meshy",
+    "godot/assets/concept/scenes",
     "godot/tools/meshy_roster.json",
     "godot/tools/drive_manifest.json",
     # big files live on Google Drive, not in git (2026-09-30, the user:
@@ -507,6 +508,7 @@ DRIVE_DIRS = [
     "godot/assets/3d/characters/demons",
     "godot/assets/3d/props",
     "godot/assets/concept/meshy",
+    "godot/assets/concept/scenes",       # PAINT OR PASS — generations + composites
 ]
 DRIVE_EXTS = {".glb", ".png", ".jpg", ".jpeg", ".webp"}
 _md5_cache = {}
@@ -657,6 +659,146 @@ def drive_pull():
             return {"ok": False, "steps": steps}
     steps.append(f"pulled from {DRIVE_REMOTE}: every model and picture this checkout lacked")
     return {"ok": True, "steps": steps}
+
+
+# ── PAINT OR PASS (draft 1 · 2026-10-01) ────────────────────────────
+# The user: "can you compare generations built up from raw static scene
+# data and paint or pass on select parts?" The raw static scene data is
+# a locale's contact-sheet frame (godot/qa/contact/<preset>/<frame>.jpg,
+# the 3D render). A generation sends that frame as the REFERENCE to a
+# Gemini or Runway image model with a prompt that keeps the camera and
+# the layout and adds the locale's own description (its builder's
+# docstring); the page puts raw and generations side by side, and the
+# user marks parts of the frame to PAINT (take a generation there) or
+# PASS (keep the raw render). Composites + their recipe land in
+# godot/assets/concept/scenes/<preset>/ (on Google Drive, not in git).
+SCENE_FRAMES_ROOT = REPO / "qa" / "contact"
+SCENE_PAINT_ROOT = REPO / "assets" / "concept" / "scenes"
+SCENE_PAINT_STYLE = (
+    "Repaint this exact frame as a finished, modern, painted background for a narrative game. "
+    "Keep the camera, the composition, the perspective and every object exactly where it is and at "
+    "the same size. Give every surface real material, texture, wear and light: wood grain, worn "
+    "paint, tile and grout, fabric, glass that reflects. Contemporary rendering, not retro, not "
+    "pixel art. No people, no text, no logos, no border.")
+_SAFE_NAME = re.compile(r"^[A-Za-z0-9_\-]+$")
+
+
+def _preset_builder_doc(preset):
+    """The locale's own description: the docstring of the builder that
+    makes the preset's GLB (Background3D.gd CAMERA_PRESETS → requires_glb)."""
+    import ast as _ast
+    bg = REPO / "scripts" / "vn" / "Background3D.gd"
+    try:
+        src = bg.read_text()
+    except OSError:
+        return ""
+    m = re.search(r'^\t"%s": \{(.*?)^\t\},' % re.escape(preset), src, re.S | re.M)
+    if not m:
+        return ""
+    g = re.search(r'requires_glb":\s*"res://assets/3d/locales/([a-z0-9_]+)\.glb"', m.group(1))
+    if not g:
+        return ""
+    builder = TOOLS / "blender" / "locales" / f"build_{g.group(1)}.py"
+    try:
+        doc = _ast.get_docstring(_ast.parse(builder.read_text())) or ""
+    except (OSError, SyntaxError, ValueError):
+        return ""
+    # prose only: drop rule lines (═ ─ =), the builder's own filename line
+    keep = []
+    for ln in doc.splitlines():
+        t = ln.strip()
+        if not t or re.fullmatch(r"[═─=\-·\s]+", t) or re.match(r"^build_[a-z0-9_]+\.py", t):
+            continue
+        if re.match(r"^(Run|Output|Geometry|Coordinate frame|Vantages?|glTF|Usage|DRAFT \d|Draft \d)\b", t):
+            continue
+        if re.search(r"blender --|godot/|res://|\.glb\b|\.py\b|\.tscn\b", t):
+            continue
+        keep.append(t)
+    return " ".join(" ".join(keep).split())[:600]
+
+
+def list_scene_frames():
+    out = []
+    if not SCENE_FRAMES_ROOT.exists():
+        return out
+    for d in sorted(SCENE_FRAMES_ROOT.iterdir()):
+        if not d.is_dir() or d.name.startswith("_"):
+            continue
+        frames = []
+        for f in sorted(list(d.glob("*.jpg")) + list(d.glob("*.png"))):
+            stem = f.stem
+            pdir = SCENE_PAINT_ROOT / d.name
+            gens = sorted(pdir.glob(f"{stem}__gen_*")) if pdir.exists() else []
+            final = pdir / f"{stem}__final.png"
+            frames.append({
+                "name": f.name, "stem": stem,
+                "url": f"/qa/contact/{d.name}/{f.name}",
+                "gens": [f"/assets/concept/scenes/{d.name}/{g.name}" for g in gens if g.suffix != ".json"],
+                "final": f"/assets/concept/scenes/{d.name}/{final.name}" if final.exists() else None,
+            })
+        if frames:
+            out.append({"preset": d.name, "frames": frames})
+    return out
+
+
+def scene_prompt(preset, note=""):
+    doc = _preset_builder_doc(preset)
+    p = SCENE_PAINT_STYLE
+    if doc:
+        p += " The place: " + doc
+    if note.strip():
+        p += " " + note.strip()
+    return p
+
+
+def paint_scene(preset, frame, provider="google", model=None, count=2, note="", log=print, prompt_override=""):
+    """Generate `count` paintovers of one frame; returns their urls."""
+    if not (_SAFE_NAME.match(preset or "") and re.match(r"^[A-Za-z0-9_\-]+\.(jpg|png)$", frame or "")):
+        raise ValueError("bad preset or frame name")
+    src = SCENE_FRAMES_ROOT / preset / frame
+    if not src.exists():
+        raise ValueError(f"no frame {preset}/{frame} — run the contact sheet on this machine first")
+    count = max(1, min(4, int(count)))
+    prompt = prompt_override.strip() or scene_prompt(preset, note)
+    if provider == "runway":
+        model = model or RUNWAY_DEFAULT_MODEL
+        blobs = []
+        for _ in range(count):
+            got = runway_generate("Repaint @frame. " + prompt, "16:9", model, get_api_key("runway"),
+                                  refs=[(str(src), "frame")], log=log)
+            blobs += got
+    else:
+        model = model or GOOGLE_DEFAULT_MODEL
+        if GOOGLE_MODELS.get(model) != "gemini":
+            raise ValueError("paint-over needs a model that takes a reference image (a gemini-* model)")
+        blobs = google_generate(prompt, "16:9", model, get_api_key("google"), refs=[str(src)], count=count, log=log)
+    outdir = SCENE_PAINT_ROOT / preset
+    outdir.mkdir(parents=True, exist_ok=True)
+    stamp = datetime.now().strftime("%Y%m%d-%H%M%S")
+    urls = []
+    for i, item in enumerate(blobs):
+        data, mime = item if isinstance(item, tuple) else (item, "image/png")
+        ext = ".jpg" if "jpeg" in (mime or "") else ".png"
+        out = outdir / f"{Path(frame).stem}__gen_{provider}_{stamp}_{i}{ext}"
+        out.write_bytes(data)
+        urls.append(f"/assets/concept/scenes/{preset}/{out.name}")
+    (outdir / f"{Path(frame).stem}__gen_{provider}_{stamp}.json").write_text(json.dumps(
+        {"frame": frame, "provider": provider, "model": model, "prompt": prompt, "at": now_iso(),
+         "outputs": [u.rsplit("/", 1)[1] for u in urls]}, indent=1))
+    return {"ok": True, "gens": urls, "prompt": prompt}
+
+
+def save_scene_composite(preset, stem, png_b64, recipe):
+    if not (_SAFE_NAME.match(preset or "") and _SAFE_NAME.match(stem or "")):
+        raise ValueError("bad preset or frame name")
+    data = base64.b64decode(png_b64.split(",", 1)[-1])
+    if not data.startswith(b"\x89PNG"):
+        raise ValueError("not a PNG")
+    outdir = SCENE_PAINT_ROOT / preset
+    outdir.mkdir(parents=True, exist_ok=True)
+    (outdir / f"{stem}__final.png").write_bytes(data)
+    (outdir / f"{stem}__final.json").write_text(json.dumps({"at": now_iso(), "recipe": recipe}, indent=1))
+    return {"ok": True, "final": f"/assets/concept/scenes/{preset}/{stem}__final.png"}
 
 
 def cmd_doctor(args):
@@ -1556,6 +1698,9 @@ def make_handler(runner, roster_path):
             if path.startswith("/assets/"):
                 base = REPO / "assets"
                 sub = path[len("/assets/"):]
+            elif path.startswith("/qa/"):
+                base = REPO / "qa"                 # the contact-sheet frames (PAINT OR PASS)
+                sub = path[len("/qa/"):]
             else:
                 base = TOOLS
                 sub = path.lstrip("/")
@@ -1592,6 +1737,11 @@ def make_handler(runner, roster_path):
             p = urllib.parse.urlparse(self.path).path
             if p == "/api/recovered":
                 return self._json({"recovered": list_recovered()})
+            if p == "/api/scenes":
+                return self._json({"scenes": list_scene_frames()})
+            if p == "/api/scenes/prompt":
+                q = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
+                return self._json({"prompt": scene_prompt((q.get("preset") or [""])[0], (q.get("note") or [""])[0])})
             if p == "/api/git":
                 return self._json(git_status())
             if p == "/api/roster":
@@ -1648,6 +1798,23 @@ def make_handler(runner, roster_path):
             p = urllib.parse.urlparse(self.path).path
             roster = load_roster(roster_path)
             by_slug = {e["slug"]: e for e in roster["entries"]}
+            if p in ("/api/scenes/paint", "/api/scenes/save"):
+                try:
+                    req = json.loads(self._body().decode("utf-8") or "{}")
+                except json.JSONDecodeError:
+                    return self._json({"error": "bad json"}, 400)
+                try:
+                    if p == "/api/scenes/paint":
+                        res = paint_scene(str(req.get("preset", "")), str(req.get("frame", "")),
+                                          str(req.get("provider", "google")), req.get("model") or None,
+                                          int(req.get("count", 2)), str(req.get("note", "")),
+                                          prompt_override=str(req.get("prompt", "")))
+                    else:
+                        res = save_scene_composite(str(req.get("preset", "")), str(req.get("stem", "")),
+                                                   str(req.get("png", "")), req.get("recipe", {}))
+                    return self._json(res)
+                except Exception as ex:  # noqa: BLE001
+                    return self._json({"error": str(ex)}, 400)
             if p == "/api/git/push":
                 # the SAVE button: add + commit + push what the tool produced
                 try:

@@ -2923,6 +2923,21 @@ CharLayer for bare keys that cross eras (`miriam`); vol1's chorus
 Lena's prompt says 2050s and vol7's wiki said 2025 — the user
 ruled the 2050s (2026-09-26); both wikis are rewritten to it.
 
+**2026-10-01 · PAINT OR PASS · draft 1.** The user: "we'll narrow
+individual areas once more hero assets populate them, can you compare
+generations built up from raw static scene data and paint or pass on
+select parts?" Hero Studio's runner + `hero_uploader/scenes.html`: a
+contact-sheet frame (the raw render) goes as the reference image to
+Gemini / Runway with a layout-keeping prompt and the locale's builder
+docstring; raw and generations compared side by side (A/B hold); boxes
+on the frame PAINT from a chosen generation or PASS (keep the raw);
+composite + recipe saved under assets/concept/scenes (Drive, not git).
+Tested end to end in Chromium with a stand-in generator (painted box
+took the generation, a passed box inside it kept the raw, outside
+untouched). The real providers are first exercised on the Deck. NEXT:
+feathered masks; geometry drift; batch a locale; whether a composite
+ever replaces the live render in game (the user's call).
+
 **2026-10-01 · HERO STUDIO · the 54 are home; a name is not a person
 across volumes.** The 48 assigned models had been committed by the
 meshy branch's SAVE on the Deck (push refused), so switching to this

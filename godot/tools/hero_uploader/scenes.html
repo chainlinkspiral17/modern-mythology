@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Paint or Pass — Hero Studio</title>
+<style>
+  :root { --bg:#0f0e0c; --panel:#161410; --card:#1e1a14; --border:#2c2820; --fg:#e8e2d4; --dim:#9a917f;
+          --brass:#b08d4a; --brass2:#e2b866; --ok:#7fc26b; --bad:#c66060; --code:#0b0a08; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:13px/1.45 -apple-system,"Segoe UI",Roboto,sans-serif; }
+  header { display:flex; gap:14px; align-items:baseline; padding:12px 18px; border-bottom:1px solid var(--border); flex-wrap:wrap; }
+  header h1 { margin:0; font:600 18px Georgia,serif; color:var(--brass2); }
+  header a { color:var(--brass); }
+  header .sub { color:var(--dim); font-size:12px; }
+  .layout { display:grid; grid-template-columns: 280px 1fr 300px; gap:14px; padding:14px 18px; }
+  @media (max-width: 1100px) { .layout { grid-template-columns: 1fr; } }
+  .panel { background:var(--panel); border:1px solid var(--border); border-radius:4px; padding:12px; min-width:0; }
+  .panel h2 { margin:0 0 8px; font:600 13px Georgia,serif; color:var(--brass2); letter-spacing:.03em; }
+  input, select, textarea { width:100%; background:var(--code); color:var(--fg); border:1px solid var(--border); border-radius:3px; padding:6px; font:12px monospace; }
+  textarea { min-height:110px; resize:vertical; }
+  button { background:var(--brass); color:#1a1408; border:0; border-radius:3px; padding:7px 12px; font:600 12px sans-serif; cursor:pointer; }
+  button.secondary { background:transparent; color:var(--dim); border:1px solid var(--border); }
+  button:disabled { opacity:.45; cursor:default; }
+  .frames { max-height:72vh; overflow:auto; display:flex; flex-direction:column; gap:10px; margin-top:8px; }
+  .preset { color:var(--brass); font:600 12px monospace; margin-top:6px; }
+  .fgrid { display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+  .fthumb { position:relative; cursor:pointer; border:1px solid var(--border); border-radius:3px; overflow:hidden; }
+  .fthumb img { width:100%; display:block; aspect-ratio:16/9; object-fit:cover; }
+  .fthumb.sel { outline:2px solid var(--brass2); }
+  .fthumb .tag { position:absolute; left:3px; bottom:3px; font:10px monospace; background:#000a; padding:1px 4px; border-radius:2px; }
+  .stage { position:relative; width:100%; aspect-ratio:16/9; background:#000; border:1px solid var(--border); }
+  .stage canvas { position:absolute; inset:0; width:100%; height:100%; cursor:crosshair; }
+  .row { display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-top:10px; }
+  .row .spacer { flex:1; }
+  .gens { display:flex; gap:8px; overflow-x:auto; margin-top:10px; padding-bottom:4px; }
+  .gen { flex:0 0 180px; border:1px solid var(--border); border-radius:3px; cursor:pointer; position:relative; }
+  .gen img { width:100%; display:block; aspect-ratio:16/9; object-fit:cover; }
+  .gen.src { outline:2px solid var(--brass2); }
+  .gen.base::after { content:"BASE"; position:absolute; right:3px; top:3px; font:10px monospace; background:var(--brass); color:#1a1408; padding:1px 4px; border-radius:2px; }
+  .gen .lbl { font:10px monospace; padding:3px 5px; color:var(--dim); }
+  .regions { display:flex; flex-direction:column; gap:6px; margin-top:8px; }
+  .region { display:flex; gap:6px; align-items:center; background:var(--card); border:1px solid var(--border); border-radius:3px; padding:5px 7px; font:11px monospace; }
+  .region .sw { width:12px; height:12px; border-radius:2px; flex:0 0 12px; }
+  .region .what { flex:1; }
+  .help { color:var(--dim); font-size:12px; }
+  .msg { font:11px monospace; min-height:16px; margin-top:6px; }
+  .msg.ok { color:var(--ok); } .msg.err { color:var(--bad); }
+  kbd { background:var(--code); border:1px solid var(--border); border-radius:3px; padding:0 4px; font:11px monospace; }
+</style>
+</head>
+<body>
+<header>
+  <h1>PAINT OR PASS</h1>
+  <span class="sub">raw scene render → painted generations → paint the parts you want, pass the rest</span>
+  <span style="flex:1"></span>
+  <a href="./">← Hero Studio</a>
+</header>
+
+<div class="layout">
+  <div class="panel">
+    <h2>Raw frames</h2>
+    <input id="filter" placeholder="filter locales…">
+    <div class="help" style="margin-top:6px">From this machine's contact sheet (<code>contact_sheet.sh</code>).</div>
+    <div class="frames" id="frames"><div class="help">loading…</div></div>
+  </div>
+
+  <div class="panel">
+    <h2 id="title">Pick a frame</h2>
+    <div class="stage"><canvas id="cv" width="1280" height="720"></canvas></div>
+    <div class="row">
+      <button class="secondary" id="btn-ab" title="hold to see the raw render (or press A)">hold: raw</button>
+      <label class="help"><input type="checkbox" id="show-boxes" checked style="width:auto"> show regions</label>
+      <span class="spacer"></span>
+      <button class="secondary" id="btn-clear">clear regions</button>
+      <button id="btn-save" disabled>save composite</button>
+    </div>
+    <div class="help" style="margin-top:6px">Click a picture below to make it the <b>paint source</b>; drag on the frame to paint that part from it. Pick <b>raw</b> as the source to <b>pass</b> a part (keep the render there). <kbd>A</kbd> held shows the raw frame.</div>
+    <div class="gens" id="gens"></div>
+    <div class="msg" id="msg"></div>
+  </div>
+
+  <div class="panel">
+    <h2>Generate</h2>
+    <label class="help">provider</label>
+    <select id="provider"><option value="google">Google · gemini-2.5-flash-image</option><option value="runway">Runway · gen4_image</option></select>
+    <label class="help" style="display:block;margin-top:8px">how many</label>
+    <select id="count"><option>1</option><option selected>2</option><option>3</option><option>4</option></select>
+    <label class="help" style="display:block;margin-top:8px">note (time of day, weather, what to stress)</label>
+    <input id="note" placeholder="e.g. late-night, rain on the windows">
+    <label class="help" style="display:block;margin-top:8px">prompt (editable)</label>
+    <textarea id="prompt"></textarea>
+    <div class="row"><button id="btn-gen" disabled>generate</button><span class="help" id="cost"></span></div>
+    <h2 style="margin-top:16px">Regions</h2>
+    <div class="regions" id="regions"><div class="help">none yet — drag on the frame</div></div>
+  </div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const COLORS = ['#e2b866', '#7fc26b', '#6aa6e8', '#d27ad8', '#e87a6a', '#6ad8c8'];
+const st = { scenes: [], preset: '', frame: null, images: {}, base: 'raw', src: 'raw', regions: [], drag: null };
+
+async function api(method, url, body) {
+  const r = await fetch(url, { method, headers: body ? { 'Content-Type': 'application/json' } : {}, body: body ? JSON.stringify(body) : undefined, cache: 'no-store' });
+  const j = await r.json().catch(() => ({ error: 'bad response' }));
+  if (!r.ok || j.error) throw new Error(j.error || r.statusText);
+  return j;
+}
+function msg(t, cls) { const m = $('msg'); m.textContent = t; m.className = 'msg ' + (cls || ''); }
+function loadImg(url) {
+  return new Promise((res, rej) => { const im = new Image(); im.onload = () => res(im); im.onerror = () => rej(new Error('could not load ' + url)); im.src = url + (url.includes('?') ? '' : '?t=' + Date.now()); });
+}
+
+async function loadScenes() {
+  try {
+    st.scenes = (await api('GET', '/api/scenes')).scenes;
+    renderFrames();
+  } catch (e) { $('frames').innerHTML = `<div class="help">could not reach the runner: ${e.message}</div>`; }
+}
+function renderFrames() {
+  const q = $('filter').value.toLowerCase();
+  const box = $('frames'); box.innerHTML = '';
+  if (!st.scenes.length) { box.innerHTML = '<div class="help">No contact-sheet frames on this machine. Run <code>./godot/tools/contact_sheet.sh</code> first.</div>'; return; }
+  for (const sc of st.scenes) {
+    if (q && !sc.preset.includes(q)) continue;
+    const h = document.createElement('div'); h.className = 'preset'; h.textContent = sc.preset; box.appendChild(h);
+    const g = document.createElement('div'); g.className = 'fgrid'; box.appendChild(g);
+    for (const f of sc.frames) {
+      const d = document.createElement('div'); d.className = 'fthumb' + (st.frame && st.frame.url === f.url ? ' sel' : '');
+      d.innerHTML = `<img loading="lazy" src="${f.url}"><span class="tag">${f.stem.replace(/^.*__/, '')}${f.gens.length ? ' · ' + f.gens.length : ''}${f.final ? ' ✓' : ''}</span>`;
+      d.onclick = () => pickFrame(sc.preset, f);
+      g.appendChild(d);
+    }
+  }
+}
+
+async function pickFrame(preset, f) {
+  st.preset = preset; st.frame = f; st.images = {}; st.regions = []; st.base = 'raw'; st.src = 'raw';
+  $('title').textContent = `${preset} · ${f.stem}`;
+  $('btn-gen').disabled = false; $('btn-save').disabled = false;
+  renderFrames();
+  try {
+    st.images.raw = await loadImg(f.url);
+    for (const u of f.gens) { try { st.images[u] = await loadImg(u); } catch (e) { /* skip */ } }
+    if (f.final) { try { st.images[f.final] = await loadImg(f.final); } catch (e) { /* skip */ } }
+  } catch (e) { msg(e.message, 'err'); }
+  refreshPrompt();
+  renderGens(); draw(); renderRegions();
+}
+async function refreshPrompt() {
+  if (!st.preset) return;
+  try { $('prompt').value = (await api('GET', `/api/scenes/prompt?preset=${encodeURIComponent(st.preset)}&note=${encodeURIComponent($('note').value)}`)).prompt; } catch (e) { /* keep */ }
+}
+
+function renderGens() {
+  const g = $('gens'); g.innerHTML = '';
+  const keys = ['raw', ...Object.keys(st.images).filter(k => k !== 'raw')];
+  keys.forEach((k, i) => {
+    const im = st.images[k]; if (!im) return;
+    const d = document.createElement('div');
+    d.className = 'gen' + (st.src === k ? ' src' : '') + (st.base === k ? ' base' : '');
+    const name = k === 'raw' ? 'raw render (pass)' : (k.includes('__final') ? 'saved composite' : 'gen ' + k.split('__gen_')[1]);
+    d.innerHTML = `<img src="${im.src}"><div class="lbl">${name}</div><div class="row" style="margin:0 5px 5px"><button class="secondary" style="padding:2px 6px;font-size:10px">use as base</button></div>`;
+    d.onclick = (ev) => { if (ev.target.tagName === 'BUTTON') { st.base = k; } else { st.src = k; } renderGens(); draw(); };
+    g.appendChild(d);
+  });
+}
+
+function draw(showRaw) {
+  const cv = $('cv'), cx = cv.getContext('2d');
+  cx.clearRect(0, 0, cv.width, cv.height);
+  const base = showRaw ? st.images.raw : (st.images[st.base] || st.images.raw);
+  if (!base) return;
+  cx.drawImage(base, 0, 0, cv.width, cv.height);
+  if (showRaw) return;
+  st.regions.forEach((r, i) => {
+    const im = st.images[r.src]; if (!im) return;
+    cx.drawImage(im, r.x * im.naturalWidth, r.y * im.naturalHeight, r.w * im.naturalWidth, r.h * im.naturalHeight,
+                 r.x * cv.width, r.y * cv.height, r.w * cv.width, r.h * cv.height);
+  });
+  if ($('show-boxes').checked) {
+    st.regions.forEach((r, i) => {
+      cx.strokeStyle = COLORS[i % COLORS.length]; cx.lineWidth = 3; cx.setLineDash(r.src === 'raw' ? [10, 6] : []);
+      cx.strokeRect(r.x * cv.width, r.y * cv.height, r.w * cv.width, r.h * cv.height);
+    });
+    cx.setLineDash([]);
+  }
+  if (st.drag) {
+    const d = st.drag; cx.strokeStyle = '#fff'; cx.lineWidth = 2; cx.setLineDash([6, 4]);
+    cx.strokeRect(Math.min(d.x0, d.x1) * cv.width, Math.min(d.y0, d.y1) * cv.height, Math.abs(d.x1 - d.x0) * cv.width, Math.abs(d.y1 - d.y0) * cv.height);
+    cx.setLineDash([]);
+  }
+}
+function renderRegions() {
+  const box = $('regions'); box.innerHTML = '';
+  if (!st.regions.length) { box.innerHTML = '<div class="help">none yet — drag on the frame</div>'; return; }
+  st.regions.forEach((r, i) => {
+    const d = document.createElement('div'); d.className = 'region';
+    const what = r.src === 'raw' ? 'PASS (raw)' : 'PAINT from ' + (r.src.includes('__final') ? 'composite' : r.src.split('__gen_')[1]);
+    d.innerHTML = `<span class="sw" style="background:${COLORS[i % COLORS.length]}"></span><span class="what">${what}</span><button class="secondary" style="padding:2px 6px">✕</button>`;
+    d.querySelector('button').onclick = () => { st.regions.splice(i, 1); renderRegions(); draw(); };
+    box.appendChild(d);
+  });
+}
+
+function relPos(ev) {
+  const r = $('cv').getBoundingClientRect();
+  return { x: Math.min(1, Math.max(0, (ev.clientX - r.left) / r.width)), y: Math.min(1, Math.max(0, (ev.clientY - r.top) / r.height)) };
+}
+$('cv').addEventListener('pointerdown', ev => { if (!st.frame) return; const p = relPos(ev); st.drag = { x0: p.x, y0: p.y, x1: p.x, y1: p.y }; $('cv').setPointerCapture(ev.pointerId); });
+$('cv').addEventListener('pointermove', ev => { if (!st.drag) return; const p = relPos(ev); st.drag.x1 = p.x; st.drag.y1 = p.y; draw(); });
+$('cv').addEventListener('pointerup', ev => {
+  if (!st.drag) return; const d = st.drag; st.drag = null;
+  const r = { x: Math.min(d.x0, d.x1), y: Math.min(d.y0, d.y1), w: Math.abs(d.x1 - d.x0), h: Math.abs(d.y1 - d.y0), src: st.src };
+  if (r.w > 0.01 && r.h > 0.01) { st.regions.push(r); renderRegions(); }
+  draw();
+});
+const holdRaw = on => draw(on);
+$('btn-ab').addEventListener('pointerdown', () => holdRaw(true));
+$('btn-ab').addEventListener('pointerup', () => holdRaw(false));
+$('btn-ab').addEventListener('pointerleave', () => holdRaw(false));
+document.addEventListener('keydown', ev => { if ((ev.key === 'a' || ev.key === 'A') && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) holdRaw(true); });
+document.addEventListener('keyup', ev => { if (ev.key === 'a' || ev.key === 'A') holdRaw(false); });
+$('show-boxes').onchange = () => draw();
+$('btn-clear').onclick = () => { st.regions = []; renderRegions(); draw(); };
+$('filter').oninput = renderFrames;
+$('note').onchange = refreshPrompt;
+$('count').onchange = () => { $('cost').textContent = `${$('count').value} image call(s)`; };
+
+$('btn-gen').onclick = async () => {
+  if (!st.frame) return;
+  const b = $('btn-gen'); b.disabled = true; msg(`generating ${$('count').value} on ${$('provider').value} — this can take a minute…`);
+  try {
+    const r = await api('POST', '/api/scenes/paint', { preset: st.preset, frame: st.frame.name, provider: $('provider').value,
+      count: +$('count').value, note: $('note').value, prompt: $('prompt').value });
+    for (const u of r.gens) st.images[u] = await loadImg(u);
+    st.frame.gens = [...(st.frame.gens || []), ...r.gens];
+    st.src = r.gens[0] || st.src;
+    renderGens(); draw(); renderFrames();
+    msg(`${r.gens.length} generation(s) saved — they go to Google Drive on the next SAVE`, 'ok');
+  } catch (e) { msg('generation failed: ' + e.message, 'err'); }
+  b.disabled = false;
+};
+$('btn-save').onclick = async () => {
+  if (!st.frame) return;
+  const keep = $('show-boxes').checked; $('show-boxes').checked = false; draw();
+  const png = $('cv').toDataURL('image/png'); $('show-boxes').checked = keep; draw();
+  try {
+    const r = await api('POST', '/api/scenes/save', { preset: st.preset, stem: st.frame.stem, png,
+      recipe: { frame: st.frame.url, base: st.base, regions: st.regions } });
+    st.images[r.final] = await loadImg(r.final); st.frame.final = r.final;
+    renderGens(); renderFrames();
+    msg('composite saved → ' + r.final + ' (Google Drive on the next SAVE)', 'ok');
+  } catch (e) { msg('save failed: ' + e.message, 'err'); }
+};
+$('cost').textContent = '2 image call(s)';
+loadScenes();
+</script>
+</body>
+</html>

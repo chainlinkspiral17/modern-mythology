@@ -52,3 +52,5 @@ godot/assets/3d/characters/demons/*.glb
 godot/assets/3d/props/*.glb
 godot/assets/concept/meshy/*
 !godot/assets/concept/meshy/manifest.json
+# PAINT OR PASS generations + composites (Google Drive, not git)
+godot/assets/concept/scenes/
