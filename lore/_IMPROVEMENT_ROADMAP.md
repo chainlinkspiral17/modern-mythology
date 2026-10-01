@@ -2923,6 +2923,28 @@ CharLayer for bare keys that cross eras (`miriam`); vol1's chorus
 Lena's prompt says 2050s and vol7's wiki said 2025 — the user
 ruled the 2050s (2026-09-26); both wikis are rewritten to it.
 
+**2026-10-01 · THE OPENING MOVIE (temporary).** The user: "I have a
+modernmythology1.mp4 I'd like to make the temp starting title/credits/
+opening movie that goes to main menu on click or finish and also play on
+the pause/menu screen in the background. It will eventually be replaced
+by a much more involved system involving unlocked assets and the media
+player." Godot plays only Theora, and the .mp4 (60 MB, in the user's
+Drive root, id 1xOg7lYAgVgkZ-DB4YBh3vIz4V3B-T8JL) is out of reach of both
+this session's connector (too big) and the Deck's rclone (drive.file
+sees only its own files) — so `godot/tools/install_intro_video.sh`
+converts ON THE DECK: finds the .mp4 (or prints the Drive link), uses a
+Theora-capable ffmpeg (system, else a static build into
+~/.local/share/ffmpeg-static), writes
+godot/assets/video/intro/modernmythology1.ogv at 1280 wide, and SAVEs
+(video joins DRIVE_DIRS; .ogv excluded from git). `IntroMovie.gd` plays
+it at boot (Main.gd) with sound; click / key / pad button after a 0.4 s
+grace, or the end, → main menu; no file → straight to the menu. The
+pause menu loops it silently under its dim. Loaded from the FILE
+(VideoStreamTheora.file), so no Godot import is needed. Tested: the
+installer end to end against a stand-in Drive; IntroMovie headless
+(plays, grace, skip, no-file fallback). REPLACE with the unlockable-
+assets + media-player system later (the user's plan).
+
 **2026-10-01 · GOOGLE DRIVE · incoming/.** The user: "start an incoming
 folder in the google drive project folder that I can reference in chat
 for various things." `ModernMythology/incoming` (Drive folder id

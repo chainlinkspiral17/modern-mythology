@@ -45,6 +45,9 @@ func _rebuild() -> void:
 	for ch in get_children():
 		ch.queue_free()
 
+	# The opening movie loops silently behind the pause menu (2026-10-01),
+	# under the dim; without the video the dim alone, as before.
+	_add_background_movie()
 	var backdrop := ColorRect.new()
 	backdrop.color = Color(0, 0, 0, 0.65)
 	backdrop.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -246,6 +249,25 @@ func _rule() -> ColorRect:
 	r.color = C_BORDER
 	r.custom_minimum_size.y = 1
 	return r
+
+
+const IntroMovie := preload("res://scenes/menu/IntroMovie.gd")
+
+
+func _add_background_movie() -> void:
+	var st: VideoStream = IntroMovie.make_stream()
+	if st == null:
+		return
+	var vp := VideoStreamPlayer.new()
+	vp.stream = st
+	vp.expand = true
+	vp.volume_db = -80.0          # silent: the game's own sound carries on
+	vp.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	vp.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	vp.process_mode = Node.PROCESS_MODE_ALWAYS
+	add_child(vp)
+	vp.finished.connect(func() -> void: vp.play())   # loop
+	vp.play()
 
 
 func _vrule() -> ColorRect:

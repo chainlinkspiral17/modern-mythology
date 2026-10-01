@@ -8,7 +8,21 @@ var _menu:   Control = null
 var _engine: Control = null
 
 
+const IntroMovie := preload("res://scenes/menu/IntroMovie.gd")
+
+
 func _ready() -> void:
+	# The temporary opening movie first (2026-10-01); a click, a key, a
+	# pad button or its end goes to the main menu. No video on this
+	# machine → straight to the menu.
+	if IntroMovie.available():
+		var intro := Control.new()
+		intro.set_script(IntroMovie)
+		intro.connect("finished", func() -> void:
+			intro.queue_free()
+			_open_menu())
+		add_child(intro)
+		return
 	_open_menu()
 
 

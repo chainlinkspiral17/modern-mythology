@@ -402,6 +402,7 @@ GIT_SAVE_PATHS = [
     ":(exclude,glob)**/*.jpg",
     ":(exclude,glob)**/*.jpeg",
     ":(exclude,glob)**/*.webp",
+    ":(exclude,glob)**/*.ogv",
 ]
 _git_lock = threading.Lock()
 
@@ -509,8 +510,9 @@ DRIVE_DIRS = [
     "godot/assets/3d/props",
     "godot/assets/concept/meshy",
     "godot/assets/concept/scenes",       # PAINT OR PASS — generations + composites
+    "godot/assets/video",                # the opening movie (install_intro_video.sh)
 ]
-DRIVE_EXTS = {".glb", ".png", ".jpg", ".jpeg", ".webp"}
+DRIVE_EXTS = {".glb", ".png", ".jpg", ".jpeg", ".webp", ".ogv"}
 _md5_cache = {}
 _drive_lock = threading.Lock()
 DRIVE_LIVE = False      # the CLI sets it: rclone shows its progress in the terminal

@@ -54,3 +54,8 @@ godot/assets/concept/meshy/*
 !godot/assets/concept/meshy/manifest.json
 # PAINT OR PASS generations + composites (Google Drive, not git)
 godot/assets/concept/scenes/
+
+# The opening movie and any other video: Google Drive, not git
+# (godot/tools/install_intro_video.sh; drive-pull restores it)
+godot/assets/video/**/*.ogv
+godot/assets/video/**/*.ogv.import
