@@ -586,24 +586,24 @@
    "size": 48983384
   },
   "godot/assets/3d/characters/heroes/frasier_temple_0.jpg": {
-   "at": "2026-10-01T01:23:48+00:00",
-   "md5": "ef468b163b6a8746d7ff228b13278ada",
-   "size": 3103899
+   "at": "2026-10-01T05:59:49+00:00",
+   "md5": "a2a2d129d5d7bc5433617c1adbe789cf",
+   "size": 12799256
   },
   "godot/assets/3d/characters/heroes/frasier_temple_1.jpg": {
-   "at": "2026-10-01T01:23:48+00:00",
-   "md5": "2fb3f02850b70282eb750b6d42245317",
-   "size": 993543
+   "at": "2026-10-01T05:59:49+00:00",
+   "md5": "f6bd3fa32d3711251b1e32781d395c89",
+   "size": 1584991
   },
   "godot/assets/3d/characters/heroes/frasier_temple_2.jpg": {
-   "at": "2026-10-01T01:23:48+00:00",
-   "md5": "d659dbd2b309677a0f749b91e3f14c95",
-   "size": 3209327
+   "at": "2026-10-01T05:59:49+00:00",
+   "md5": "40b66b542a75bf1b303207f882630a6f",
+   "size": 8633857
   },
   "godot/assets/3d/characters/heroes/frasier_temple_3.jpg": {
-   "at": "2026-10-01T01:23:48+00:00",
-   "md5": "9563db931fb41cb4170c9f8471f7e14f",
-   "size": 76755
+   "at": "2026-10-01T05:59:49+00:00",
+   "md5": "ab6f6770d84c98ba5989c9d8b5399957",
+   "size": 67954
   },
   "godot/assets/3d/characters/heroes/frasier_temple_gnm.glb": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -2519,6 +2519,16 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "c718dea9d7a5ae4af3186c8887c6e535",
    "size": 86975
+  },
+  "godot/assets/video/intro.ogv": {
+   "at": "2026-10-01T05:59:49+00:00",
+   "md5": "ca57c3ab479d088b69b0b9fa1ddabfc8",
+   "size": 3592
+  },
+  "godot/assets/video/intro/modernmythology1.ogv": {
+   "at": "2026-10-01T05:59:49+00:00",
+   "md5": "6ca6214edc6abeb97ffa343b935795d0",
+   "size": 107790225
   }
  },
  "remote": "gdrive:ModernMythology"
