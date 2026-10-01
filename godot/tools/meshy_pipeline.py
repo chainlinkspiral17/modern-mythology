@@ -394,6 +394,14 @@ GIT_SAVE_PATHS = [
     "godot/assets/concept/scenes",
     "godot/tools/meshy_roster.json",
     "godot/tools/drive_manifest.json",
+    # the voice importer + the AUDIO page (2026-10-01): their audio is on
+    # the Drive; git keeps the scene "voice" keys, the music catalog
+    # entries and the record of what came in
+    "godot/resources/scenes",
+    "godot/resources/music_catalog.json",
+    "godot/tools/voice_import_state.json",
+    "godot/tools/voice_import_report.md",
+    "godot/tools/audio_sent.json",
     # big files live on Google Drive, not in git (2026-09-30, the user:
     # "I don't want to crowd up git with large models and files") — even
     # a model git already tracks is not re-committed when it changes
@@ -403,6 +411,10 @@ GIT_SAVE_PATHS = [
     ":(exclude,glob)**/*.jpeg",
     ":(exclude,glob)**/*.webp",
     ":(exclude,glob)**/*.ogv",
+    ":(exclude,glob)**/*.mp3",
+    ":(exclude,glob)**/*.ogg",
+    ":(exclude,glob)**/*.wav",
+    ":(exclude,glob)**/*.webm",
 ]
 _git_lock = threading.Lock()
 
@@ -511,8 +523,10 @@ DRIVE_DIRS = [
     "godot/assets/concept/meshy",
     "godot/assets/concept/scenes",       # PAINT OR PASS — generations + composites
     "godot/assets/video",                # the opening movie (install_intro_video.sh)
+    "godot/assets/audio/voice",          # Voice Studio lines (import_voice_dropins.sh)
+    "godot/assets/audio/drive",          # music + sound sent from the AUDIO page
 ]
-DRIVE_EXTS = {".glb", ".png", ".jpg", ".jpeg", ".webp", ".ogv"}
+DRIVE_EXTS = {".glb", ".png", ".jpg", ".jpeg", ".webp", ".ogv", ".mp3", ".ogg", ".wav"}
 _md5_cache = {}
 _drive_lock = threading.Lock()
 DRIVE_LIVE = False      # the CLI sets it: rclone shows its progress in the terminal
@@ -661,6 +675,224 @@ def drive_pull():
             return {"ok": False, "steps": steps}
     steps.append(f"pulled from {DRIVE_REMOTE}: every model and picture this checkout lacked")
     return {"ok": True, "steps": steps}
+
+
+# ── AUDIO: the Drive's music + sound, sent to the game one by one ────
+# (draft 1 · 2026-10-01). The user: "let's go ahead and sync up all the
+# music and sound mp3s on the drive to the tool/game as well. I don't
+# want to bloat it, so let's do an inventory in the tool that can send
+# music files to the game." The Drive holds songs, ElevenLabs takes,
+# stems and loose voice folders, scattered. SCAN lists every audio file
+# on the whole Drive through the READ-ONLY connection (drive_setup.sh
+# --read); the list is a local cache, never committed. SEND copies one
+# file into godot/assets/audio/drive/{music,sfx}/ (Drive-backed by SAVE,
+# not git) and, for music, adds a FROM THE DRIVE entry to the music
+# catalog so the in-game player has it. git records only what was sent
+# (tools/audio_sent.json) and the catalog line. REMOVE takes it out of
+# the game; nothing on the Drive is ever deleted.
+AUDIO_READ_REMOTE = os.environ.get("MM_DRIVE_READ_REMOTE", "gdrive_ro:")
+AUDIO_EXTS = (".mp3", ".ogg", ".wav", ".m4a", ".flac", ".aif", ".aiff")
+AUDIO_PLAYABLE = {".mp3", ".ogg", ".wav"}            # what Godot plays as-is
+AUDIO_SCAN_CACHE = Path.home() / ".cache" / "modern-mythology" / "audio_scan.json"
+AUDIO_SENT = TOOLS / "audio_sent.json"
+AUDIO_GAME_DIR = REPO / "assets" / "audio" / "drive"
+MUSIC_CATALOG = REPO / "resources" / "music_catalog.json"
+AUDIO_SECTION = "FROM THE DRIVE"
+_audio_lock = threading.Lock()
+
+
+def audio_read_configured():
+    rc = _rclone()
+    if not rc:
+        return False
+    if ":" not in AUDIO_READ_REMOTE or AUDIO_READ_REMOTE.startswith("/"):
+        return True                     # a local folder (tests)
+    name = AUDIO_READ_REMOTE.split(":", 1)[0] + ":"
+    import subprocess
+    try:
+        out = subprocess.run([rc, "listremotes"], capture_output=True, text=True, timeout=20).stdout
+    except Exception:  # noqa: BLE001
+        return False
+    return name in out.split()
+
+
+def _audio_kind_guess(path, size):
+    low = path.lower()
+    name = low.rsplit("/", 1)[-1]
+    if "voice files" in low or name.startswith("elevenlabs_") or re.match(r"^\d{3}\.(mp3|ogg|wav|webm)$", name):
+        return "voice"
+    return "music" if size >= 1_500_000 else "sound"
+
+
+def load_audio_sent():
+    try:
+        return json.loads(AUDIO_SENT.read_text())
+    except (OSError, ValueError):
+        return {"sent": {}}
+
+
+def _write_audio_sent(data):
+    AUDIO_SENT.write_text(json.dumps(data, indent=1, sort_keys=True, ensure_ascii=False) + "\n")
+
+
+def audio_scan():
+    """List every audio file on the Drive (read-only) into the local cache."""
+    import subprocess
+    rc = _rclone()
+    if not rc or not audio_read_configured():
+        return {"ok": False, "error": "the read-only Drive connection is not set up — run: bash godot/tools/drive_setup.sh --read"}
+    args = [rc, "lsjson", AUDIO_READ_REMOTE, "-R", "--files-only", "--fast-list", "--hash",
+            "--drive-skip-shortcuts", "--filter", "- /ModernMythology/**"]   # the project's own copies
+    for ext in AUDIO_EXTS:
+        args += ["--filter", f"+ *{ext}", "--filter", f"+ *{ext.upper()}"]
+    args += ["--filter", "- **"]
+    with _audio_lock:
+        r = subprocess.run(args, capture_output=True, text=True, timeout=1200)
+        if r.returncode:
+            return {"ok": False, "error": (r.stderr or "rclone lsjson failed")[-400:]}
+        rows = []
+        for it in json.loads(r.stdout or "[]"):
+            path = it.get("Path", "")
+            size = int(it.get("Size") or 0)
+            rows.append({"path": path, "size": size, "mtime": it.get("ModTime", "")[:10],
+                         "md5": (it.get("Hashes") or {}).get("md5", ""), "id": it.get("ID", ""),
+                         "kind": _audio_kind_guess(path, size)})
+        rows.sort(key=lambda x: x["path"].lower())
+        AUDIO_SCAN_CACHE.parent.mkdir(parents=True, exist_ok=True)
+        AUDIO_SCAN_CACHE.write_text(json.dumps({"scanned_at": now_iso(), "files": rows}))
+    return {"ok": True, "count": len(rows)}
+
+
+def _game_audio_md5s():
+    """md5 → game path for every audio file already in the game."""
+    out = {}
+    root = REPO / "assets" / "audio"
+    if root.exists():
+        for f in root.rglob("*"):
+            if f.is_file() and f.suffix.lower() in AUDIO_PLAYABLE and f.stat().st_size >= 200_000:
+                out[_md5(f)] = str(f.relative_to(REPO))
+    return out
+
+
+def audio_inventory():
+    try:
+        scan = json.loads(AUDIO_SCAN_CACHE.read_text())
+    except (OSError, ValueError):
+        scan = {"scanned_at": "", "files": []}
+    sent = load_audio_sent().get("sent", {})
+    game = _game_audio_md5s()
+    for row in scan["files"]:
+        s = sent.get(row["path"])
+        if s:
+            row["in_game"] = s.get("local", "")
+            row["sent"] = s
+        elif row.get("md5") and row["md5"] in game:
+            row["in_game"] = game[row["md5"]]        # the same bytes the game already ships
+    in_game_bytes = sum((REPO / s["local"]).stat().st_size for s in sent.values()
+                        if (REPO / s.get("local", "")).is_file())
+    return {"read_configured": audio_read_configured(), "scanned_at": scan.get("scanned_at", ""),
+            "files": scan["files"], "sent_count": len(sent), "sent_bytes": in_game_bytes}
+
+
+def _audio_row(path):
+    try:
+        scan = json.loads(AUDIO_SCAN_CACHE.read_text())
+    except (OSError, ValueError):
+        return None
+    return next((r for r in scan.get("files", []) if r["path"] == path), None)
+
+
+def _slug(text):
+    t = re.sub(r"\.[a-z0-9]+$", "", text.lower())
+    t = re.sub(r"[^a-z0-9]+", "_", t).strip("_")
+    return t[:48] or "track"
+
+
+def _dump_like(path, data):
+    """Write JSON in the file's own existing style (indent, escaping)."""
+    try:
+        orig = path.read_text(encoding="utf-8")
+        old = json.loads(orig)
+    except (OSError, ValueError):
+        orig, old = "", None
+    if old is not None:
+        for ind in (1, 2, 4):
+            for ea in (False, True):
+                for nl in ("\n", ""):
+                    if json.dumps(old, indent=ind, ensure_ascii=ea) + nl == orig:
+                        path.write_text(json.dumps(data, indent=ind, ensure_ascii=ea) + nl, encoding="utf-8")
+                        return
+    path.write_text(json.dumps(data, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
+def audio_send(path, kind="music", title="", vol=0):
+    """One Drive audio file → the game (+ the music catalog for music)."""
+    import subprocess
+    row = _audio_row(path)
+    if row is None:
+        raise ValueError("that file is not in the last scan — press SCAN")
+    if kind not in ("music", "sound", "voice"):
+        raise ValueError("kind must be music|sound|voice")
+    rc = _rclone()
+    ext = Path(path).suffix.lower()
+    title = (title or Path(path).stem).strip()
+    sub = {"music": "music", "sound": "sfx", "voice": "voice_takes"}[kind]
+    with _audio_lock:
+        sent = load_audio_sent()
+        if path in sent["sent"]:
+            return {"ok": True, "local": sent["sent"][path]["local"], "note": "already in the game"}
+        dest_dir = AUDIO_GAME_DIR / sub
+        dest_dir.mkdir(parents=True, exist_ok=True)
+        stem = _slug(title)
+        taken = {Path(s["local"]).stem for s in sent["sent"].values()}
+        n, base = 2, stem
+        while stem in taken or any(dest_dir.glob(stem + ".*")):
+            stem, n = f"{base}_{n}", n + 1
+        out_ext = ext if ext in AUDIO_PLAYABLE else ".ogg"
+        dest = dest_dir / (stem + out_ext)
+        tmp = dest_dir / (stem + ".part" + ext)
+        r = subprocess.run([rc, "copyto", AUDIO_READ_REMOTE + path, str(tmp)], capture_output=True, text=True, timeout=1800)
+        if r.returncode or not tmp.exists():
+            tmp.unlink(missing_ok=True)
+            raise ValueError("download failed: " + (r.stderr or "")[-300:])
+        if out_ext == ext:
+            tmp.rename(dest)
+        else:
+            ff = subprocess.run(["bash", str(TOOLS / "get_ffmpeg.sh")], capture_output=True, text=True, timeout=900).stdout.strip()
+            c = subprocess.run([ff, "-hide_banner", "-loglevel", "error", "-y", "-i", str(tmp),
+                                "-vn", "-c:a", "libvorbis", "-q:a", "6", str(dest)], capture_output=True, text=True)
+            tmp.unlink(missing_ok=True)
+            if c.returncode:
+                raise ValueError("convert failed: " + (c.stderr or "")[-300:])
+        local = str(dest.relative_to(REPO))
+        rec = {"local": local, "kind": kind, "title": title, "drive_id": row.get("id", ""),
+               "md5": row.get("md5", ""), "at": now_iso()}
+        if kind == "music":
+            cat = json.loads(MUSIC_CATALOG.read_text(encoding="utf-8"))
+            cid = "drive_" + stem
+            cat.append({"id": cid, "vol": int(vol), "section": AUDIO_SECTION, "title": title, "src": local,
+                        "composer": "—", "desc": f"From the Drive: {path}", "unlock": {}})
+            _dump_like(MUSIC_CATALOG, cat)
+            rec["catalog_id"] = cid
+        sent["sent"][path] = rec
+        _write_audio_sent(sent)
+    return {"ok": True, "local": local, "catalog_id": rec.get("catalog_id", "")}
+
+
+def audio_remove(path):
+    """Take a sent file out of the game (its catalog line too). The Drive keeps it."""
+    with _audio_lock:
+        sent = load_audio_sent()
+        rec = sent["sent"].pop(path, None)
+        if rec is None:
+            raise ValueError("that file was not sent from this page")
+        (REPO / rec["local"]).unlink(missing_ok=True)
+        (REPO / (rec["local"] + ".import")).unlink(missing_ok=True)
+        if rec.get("catalog_id"):
+            cat = json.loads(MUSIC_CATALOG.read_text(encoding="utf-8"))
+            _dump_like(MUSIC_CATALOG, [e for e in cat if e.get("id") != rec["catalog_id"]])
+        _write_audio_sent(sent)
+    return {"ok": True, "removed": rec["local"]}
 
 
 # ── PAINT OR PASS (draft 1 · 2026-10-01) ────────────────────────────
@@ -1741,6 +1973,11 @@ def make_handler(runner, roster_path):
                 return self._json({"recovered": list_recovered()})
             if p == "/api/scenes":
                 return self._json({"scenes": list_scene_frames()})
+            if p == "/api/audio":
+                return self._json(audio_inventory())
+            if p == "/api/audio/preview":
+                q = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
+                return self._audio_preview((q.get("path") or [""])[0])
             if p == "/api/scenes/prompt":
                 q = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
                 return self._json({"prompt": scene_prompt((q.get("preset") or [""])[0], (q.get("note") or [""])[0])})
@@ -1776,6 +2013,31 @@ def make_handler(runner, roster_path):
                 self.end_headers()
                 return
             return super().do_GET()
+
+        def _audio_preview(self, path):
+            # stream one Drive file straight to the page's player (rclone cat);
+            # only files from the last scan, so the page cannot ask for others
+            import subprocess
+            row = _audio_row(path)
+            rc = _rclone()
+            if row is None or not rc:
+                return self._json({"error": "not in the last scan"}, 404)
+            ext = Path(path).suffix.lower()
+            ctype = {".mp3": "audio/mpeg", ".ogg": "audio/ogg", ".wav": "audio/wav", ".m4a": "audio/mp4",
+                     ".flac": "audio/flac"}.get(ext, "application/octet-stream")
+            proc = subprocess.Popen([rc, "cat", AUDIO_READ_REMOTE + path], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
+            self.send_response(200)
+            self.send_header("Content-Type", ctype)
+            if row.get("size"):
+                self.send_header("Content-Length", str(row["size"]))
+            self.end_headers()
+            try:
+                for chunk in iter(lambda: proc.stdout.read(65536), b""):
+                    self.wfile.write(chunk)
+            except (BrokenPipeError, ConnectionResetError):
+                pass
+            finally:
+                proc.kill()
 
         def _prompt_preview(self, slug, overrides, provider):
             roster = load_roster(roster_path)
@@ -1815,6 +2077,22 @@ def make_handler(runner, roster_path):
                         res = save_scene_composite(str(req.get("preset", "")), str(req.get("stem", "")),
                                                    str(req.get("png", "")), req.get("recipe", {}))
                     return self._json(res)
+                except Exception as ex:  # noqa: BLE001
+                    return self._json({"error": str(ex)}, 400)
+            if p in ("/api/audio/scan", "/api/audio/send", "/api/audio/remove"):
+                try:
+                    req = json.loads(self._body().decode("utf-8") or "{}")
+                except json.JSONDecodeError:
+                    return self._json({"error": "bad json"}, 400)
+                try:
+                    if p == "/api/audio/scan":
+                        res = audio_scan()
+                    elif p == "/api/audio/send":
+                        res = audio_send(str(req.get("path", "")), str(req.get("kind", "music")),
+                                         str(req.get("title", "")), int(req.get("vol", 0) or 0))
+                    else:
+                        res = audio_remove(str(req.get("path", "")))
+                    return self._json(res, 200 if res.get("ok") else 409)
                 except Exception as ex:  # noqa: BLE001
                     return self._json({"error": str(ex)}, 400)
             if p == "/api/git/push":

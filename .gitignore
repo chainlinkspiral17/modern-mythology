@@ -59,3 +59,14 @@ godot/assets/concept/scenes/
 # (godot/tools/install_intro_video.sh; drive-pull restores it)
 godot/assets/video/**/*.ogv
 godot/assets/video/**/*.ogv.import
+
+# Voice lines and Drive audio: Google Drive, not git (2026-10-01).
+# import_voice_dropins.sh writes voice/, Hero Studio's AUDIO page writes
+# drive/; drive-pull restores both. The vol5 lines committed in June stay
+# tracked (ignore rules never untrack a file).
+godot/assets/audio/voice/**/*.mp3
+godot/assets/audio/voice/**/*.ogg
+godot/assets/audio/voice/**/*.wav
+godot/assets/audio/voice/**/*.webm
+godot/assets/audio/voice/**/*.import
+godot/assets/audio/drive/

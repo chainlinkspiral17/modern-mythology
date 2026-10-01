@@ -2960,6 +2960,49 @@ installer end to end against a stand-in Drive; IntroMovie headless
 (plays, grace, skip, no-file fallback). REPLACE with the unlockable-
 assets + media-player system later (the user's plan).
 
+**2026-10-01 · VOICE IMPORT · draft 1.** The user: "I have a good
+number of zips of voice studio audio in google drive that can be added
+to the game project for the visual novel." ~60 `voice_dropin_*.zip`
+under Drive "modern mythology voice files" (vol5 major arcana, June;
+vol6 planned community, Aug–Sep) + more being uploaded. Each zip carries
+the scene JSON AS RECORDED — unzipping would wipe later edits and shift
+every NNN after an inserted node. `godot/tools/import_voice_dropins.sh`
+(Deck, one paste): read-only Drive connection (`drive_setup.sh --read`,
+scope drive.readonly, remote `gdrive_ro`) copies every zip on the Drive
+to ~/.cache; `import_voice_dropins.py` aligns recorded lines to today's
+text (difflib over directive-stripped words; ≥90 % = "close"; else
+SKIPPED + listed), webm/wav → Ogg (`get_ffmpeg.sh`, shared with the
+intro installer), writes ONLY the "voice" keys in place (each file's
+own layout byte for byte — 37 scenes are hand-formatted), SAVE: audio
+→ Drive (DRIVE_DIRS += audio/voice), JSON + report + state → git.
+Idempotent by zip md5. Tested on stale git versions of real vol6
+scenes: 128 lines placed, 0 misplaced, 16 skipped (split/trimmed since).
+`audio_reference_audit` counts drive_manifest paths as present.
+**Draft 2 targets:** read the Deck's report — the SKIPPED lines of
+split nodes could take the audio on the FIRST piece when the old text
+= the concatenation of consecutive new nodes; per-character loudness
+pass on the imported lines; vol5 June zips vs the 8 wired scenes
+(kept unless --overwrite — confirm the user wants the newer takes).
+
+**2026-10-01 · AUDIO INVENTORY · draft 1.** The user: "sync up all the
+music and sound mp3s on the drive to the tool/game as well. I don't want
+to bloat it, so let's do an inventory in the tool that can send music
+files to the game." Hero Studio → AUDIO (`hero_uploader/audio.html`):
+SCAN lists every audio file on the whole Drive (gdrive_ro, rclone
+lsjson --hash; cache in ~/.cache, never committed; the project's own
+ModernMythology folder excluded; same-bytes duplicates folded); ▶
+streams a file through `rclone cat`; SEND copies one file to
+godot/assets/audio/drive/{music,sfx,voice_takes}/ (m4a/flac → ogg) and
+for music appends a `FROM THE DRIVE` catalog entry (unlock {} — the
+player has all tracks open); REMOVE undoes both; git keeps
+`tools/audio_sent.json` + the catalog line; the audio rides SAVE to
+Drive. Files the game already ships (md5 match) read "in game".
+Tested in Chromium against a local stand-in Drive. **Draft 2 targets:**
+see the real scan (the Drive mixes songs, ElevenLabs takes, stems and
+loose voice folders — tune the kind guess); assign a sent track to
+chapters (`chapters`) / characters (`chars`) from the page; a sent
+SOUND wired to SFXBank presets.
+
 **2026-10-01 · GOOGLE DRIVE · incoming/.** The user: "start an incoming
 folder in the google drive project folder that I can reference in chat
 for various things." `ModernMythology/incoming` (Drive folder id
@@ -4211,6 +4254,9 @@ staged like that, using still camera set-ups and camera motion."*
 
 ### Audio
 
+- **P0 (2026-10-01):** voice zips on the Drive → `import_voice_dropins.sh`
+  on the Deck; then the AUDIO page for the Drive's songs/sounds (see
+  the dated entries). Read `godot/tools/voice_import_report.md` after.
 - Healthy (96-slot audit green, every stick scored). **P2:**
   Salmonberry per-season bed variants · VN ambient choreography as a
   producer client · a Long Wind `silk_cast`-family ambient set.

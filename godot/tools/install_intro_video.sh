@@ -28,26 +28,7 @@ if [ -z "$SRC" ] || [ ! -f "$SRC" ]; then
 fi
 echo "source: $SRC"
 
-# (read the whole list: `grep -q` quits early, ffmpeg dies on the closed
-# pipe, and under pipefail the check would fail with the encoder present)
-has_theora() { local enc; enc="$("$1" -hide_banner -encoders 2>/dev/null || true)"; [[ "$enc" == *libtheora* ]]; }
-FF=""
-if command -v ffmpeg >/dev/null 2>&1 && has_theora ffmpeg; then FF="ffmpeg"; fi
-STATIC="$HOME/.local/share/ffmpeg-static"
-if [ -z "$FF" ] && [ -x "$STATIC/ffmpeg" ] && has_theora "$STATIC/ffmpeg"; then FF="$STATIC/ffmpeg"; fi
-if [ -z "$FF" ]; then
-  echo "getting a static ffmpeg (one time) …"
-  mkdir -p "$STATIC"; TMP="$(mktemp -d)"
-  if curl -fsSL -o "$TMP/ff.tar.xz" https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz \
-     || curl -fsSL -o "$TMP/ff.tar.xz" https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-linux64-gpl.tar.xz; then
-    tar -xJf "$TMP/ff.tar.xz" -C "$TMP"
-    cp "$(find "$TMP" -type f -name ffmpeg | head -1)" "$STATIC/ffmpeg"
-    chmod +x "$STATIC/ffmpeg"
-  fi
-  rm -rf "$TMP"
-  FF="$STATIC/ffmpeg"
-  has_theora "$FF" || { echo "the downloaded ffmpeg has no Theora encoder — tell Claude"; exit 1; }
-fi
+FF="$(bash godot/tools/get_ffmpeg.sh)"
 OUT="godot/assets/video/intro/$NAME.ogv"
 mkdir -p "$(dirname "$OUT")"
 echo "converting (a few minutes for a long video) …"

@@ -85,6 +85,25 @@ the result is intelligible-enough with 30% static overlay.
 
 ## Recent lessons
 
+### 2026-10-01 · Drive audio · voice zips realigned, songs sent one by one
+
+- **An export carries its scene's past.** A Voice Studio zip holds the
+  scene JSON as it was the day it was recorded; NNN is that day's node
+  index. Never unzip it over the tree: match lines by their WORDS
+  (directives + punctuation stripped) in order, write only the "voice"
+  key in place. Splitting a node after recording makes its audio
+  unplaceable — the report says so; it is not a bug to hide.
+- **Big audio is Drive-held, like the models.** New voice files and
+  Drive-sent music are gitignored; drive_manifest.json is the record,
+  and the audio audit counts a manifest path as present.
+- **Two Drive connections.** `gdrive` (drive.file) writes the project's
+  folder but sees only its own files; `gdrive_ro` (drive.readonly) sees
+  the user's uploads and can change nothing. Anything the USER put on
+  the Drive is read through `gdrive_ro`.
+- **Inventory, then send.** The Drive's whole audio library is listed,
+  previewed and sent per file — the game takes only what was picked.
+
+
 ### 2026-09-24 · a place sound from a script, rendered, not recorded
 
 - **tools/audio/sprinkler_chug.py** — the impact sprinklers' "chug": each
