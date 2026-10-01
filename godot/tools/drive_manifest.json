@@ -1,0 +1,2135 @@
+{
+ "files": {
+  "godot/assets/3d/characters/demons/the_demon_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "ca3c9360be589c7ded332e3f80ba2c8c",
+   "size": 9700787
+  },
+  "godot/assets/3d/characters/demons/the_demon_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "8e7c8e5e70d7cee843a6df76e1ca4ecf",
+   "size": 1153604
+  },
+  "godot/assets/3d/characters/demons/the_demon_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "adbb3e9feb03f439babedcbaa064916b",
+   "size": 6694833
+  },
+  "godot/assets/3d/characters/demons/the_demon_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "a0e7389569d07f37d8800f8fd4bd64b7",
+   "size": 81386
+  },
+  "godot/assets/3d/characters/heroes/alberto.glb": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "085056da1e0a44ac6f9c4961d1519a77",
+   "size": 124588
+  },
+  "godot/assets/3d/characters/heroes/alberto_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "0645919e96a6e94ca47643ce70c615b3",
+   "size": 11358318
+  },
+  "godot/assets/3d/characters/heroes/alberto_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "0bd79e565569483d5c1a5d63421bc891",
+   "size": 971158
+  },
+  "godot/assets/3d/characters/heroes/alberto_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "51a9b5fdf666673f49a22df0c20e2065",
+   "size": 8007032
+  },
+  "godot/assets/3d/characters/heroes/alberto_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "90bb67646534b8010435fb0742af2ca7",
+   "size": 66380
+  },
+  "godot/assets/3d/characters/heroes/alice_newsom_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "bbce687bd4d0813984417a6923deed5c",
+   "size": 13429324
+  },
+  "godot/assets/3d/characters/heroes/alice_newsom_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "7ada8fbcbae8adc496a9f48453d763e2",
+   "size": 1631467
+  },
+  "godot/assets/3d/characters/heroes/alice_newsom_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "87e3907d7393d3b4d69df94b2a27ea95",
+   "size": 9089579
+  },
+  "godot/assets/3d/characters/heroes/alice_newsom_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "6ce611b34dd4bd0045a1dba1669cb7af",
+   "size": 66351
+  },
+  "godot/assets/3d/characters/heroes/anna_logue_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "29644d0c7e36451d7c52502481b90163",
+   "size": 13656633
+  },
+  "godot/assets/3d/characters/heroes/anna_logue_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "ef1137def99312390a0a125f2d237483",
+   "size": 1717125
+  },
+  "godot/assets/3d/characters/heroes/anna_logue_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "a0448ec8d9ad3b1a37e4aa7594ec90b0",
+   "size": 9279947
+  },
+  "godot/assets/3d/characters/heroes/anna_logue_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "2bf22fde517ac0cefff18f03e13a13c9",
+   "size": 70685
+  },
+  "godot/assets/3d/characters/heroes/antonio.glb": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "ba79f564b0882d8539d71942cc3c490b",
+   "size": 136432
+  },
+  "godot/assets/3d/characters/heroes/antonio_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "0be3a78531aa9ea464b6cbda31fad2ef",
+   "size": 12708629
+  },
+  "godot/assets/3d/characters/heroes/antonio_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "b4ec6b3b461d408ba96a9cfe0a43f3e4",
+   "size": 1665970
+  },
+  "godot/assets/3d/characters/heroes/antonio_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "c489c2c52df463057975c765d95973f4",
+   "size": 9008326
+  },
+  "godot/assets/3d/characters/heroes/antonio_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "d846bc0ce3a3a750f2d3fde6e332a249",
+   "size": 66667
+  },
+  "godot/assets/3d/characters/heroes/aria_third_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "f2f575f43972da891f000b8f7d01bf25",
+   "size": 13346315
+  },
+  "godot/assets/3d/characters/heroes/aria_third_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "846849701e784c686a54d9895715f024",
+   "size": 2086455
+  },
+  "godot/assets/3d/characters/heroes/aria_third_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "b0e7102475580276f26455bb6fb962cd",
+   "size": 8342978
+  },
+  "godot/assets/3d/characters/heroes/aria_third_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "a881b36e1d9fb311295a572a5addd2f2",
+   "size": 66180
+  },
+  "godot/assets/3d/characters/heroes/ben_kowalski_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "4d418982b2ebeb681fc9a97e99c9d0e7",
+   "size": 12992853
+  },
+  "godot/assets/3d/characters/heroes/ben_kowalski_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "1061ec1ef1f77d22d969d083bd8e16d8",
+   "size": 1497651
+  },
+  "godot/assets/3d/characters/heroes/ben_kowalski_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "607bd3534502d599188d0bd8721573ec",
+   "size": 9012449
+  },
+  "godot/assets/3d/characters/heroes/ben_kowalski_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "299e22fedee232ff510578ee4f5f48e6",
+   "size": 68902
+  },
+  "godot/assets/3d/characters/heroes/bianca_miller_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "0c909ad8e24a47aaae69db6e169a284a",
+   "size": 12574676
+  },
+  "godot/assets/3d/characters/heroes/bianca_miller_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "3b0c8322002137f7a2771f207c0fba0a",
+   "size": 1648626
+  },
+  "godot/assets/3d/characters/heroes/bianca_miller_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "70ae08ac9de73035b89ec153fc94d9eb",
+   "size": 8188956
+  },
+  "godot/assets/3d/characters/heroes/bianca_miller_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "f52ba972f9a1050d9b136ac64d8e876c",
+   "size": 66622
+  },
+  "godot/assets/3d/characters/heroes/carl_drummer_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "16b48169316c1e93abc0b7b15c3f42f5",
+   "size": 13219960
+  },
+  "godot/assets/3d/characters/heroes/carl_drummer_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "3a89e89f0704b5cbb73eed3c34aeae96",
+   "size": 1388345
+  },
+  "godot/assets/3d/characters/heroes/carl_drummer_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "8d18cd98c179502d99d5d0810506c50a",
+   "size": 9108099
+  },
+  "godot/assets/3d/characters/heroes/carl_drummer_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "05011546da3e499bedcf37adedebcb07",
+   "size": 67698
+  },
+  "godot/assets/3d/characters/heroes/carl_reno_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "9b7a74879f05b9ccfbebdbd81787f1e7",
+   "size": 11389422
+  },
+  "godot/assets/3d/characters/heroes/carl_reno_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "7b688d5bdd9e6d1c28a3b54de6271b68",
+   "size": 1372519
+  },
+  "godot/assets/3d/characters/heroes/carl_reno_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "362631f20d9c6834bc1c0a07399c8406",
+   "size": 7691831
+  },
+  "godot/assets/3d/characters/heroes/carl_reno_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "e2653c2bb48d84ba5610609879a3d1fd",
+   "size": 67660
+  },
+  "godot/assets/3d/characters/heroes/chief_miller_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "1a02afd8a673d2e99f139f3a71838dd3",
+   "size": 11393236
+  },
+  "godot/assets/3d/characters/heroes/chief_miller_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "e319ae34a40fc711b590758ed0711ae5",
+   "size": 1491860
+  },
+  "godot/assets/3d/characters/heroes/chief_miller_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "e207408928bf8c5e7390bcef438eec5d",
+   "size": 7639674
+  },
+  "godot/assets/3d/characters/heroes/chief_miller_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "dc4126da4e030d30f9f3b4a0fe1e2721",
+   "size": 72765
+  },
+  "godot/assets/3d/characters/heroes/claire_moyer_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "e0ae963ffe43a82a8c8c89528055397d",
+   "size": 13133341
+  },
+  "godot/assets/3d/characters/heroes/claire_moyer_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "c960bfb7170de0662f42b7577d815fd5",
+   "size": 1572496
+  },
+  "godot/assets/3d/characters/heroes/claire_moyer_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "4f9a3ad43d196b84e2ea0404b0e05258",
+   "size": 8679058
+  },
+  "godot/assets/3d/characters/heroes/claire_moyer_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "b21f52241dd868dbf5ad88ba0287f191",
+   "size": 67828
+  },
+  "godot/assets/3d/characters/heroes/coach_guidry_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "8b8ddd057ce36b2e0b3cc5039a32cd65",
+   "size": 12542701
+  },
+  "godot/assets/3d/characters/heroes/coach_guidry_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "65831bb6e1ce29d3125b06e2845a864a",
+   "size": 1620961
+  },
+  "godot/assets/3d/characters/heroes/coach_guidry_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "0bb148b2383a7a4acca822051c6d497e",
+   "size": 8464609
+  },
+  "godot/assets/3d/characters/heroes/coach_guidry_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "aae857e7f0c456d4c7d8be423ca3c86a",
+   "size": 67016
+  },
+  "godot/assets/3d/characters/heroes/curtis_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "c2ffb509a0838f230dfcbc02b58101da",
+   "size": 13734404
+  },
+  "godot/assets/3d/characters/heroes/curtis_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "e6b3f6b8c66a484e2db1eacaedc3a51c",
+   "size": 1404141
+  },
+  "godot/assets/3d/characters/heroes/curtis_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "dfd99a7fbe0190c2b76eecbdb49a24c0",
+   "size": 9673868
+  },
+  "godot/assets/3d/characters/heroes/curtis_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "0608d6415dfb966e0bbc0def13aaf338",
+   "size": 72758
+  },
+  "godot/assets/3d/characters/heroes/dante_dambrosio.glb": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "d75cdc0a0bcc836b5368f97cc62bedec",
+   "size": 48992
+  },
+  "godot/assets/3d/characters/heroes/dante_dambrosio_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "e7b5ecf7fc5199bed4ed3de0838135c7",
+   "size": 13254462
+  },
+  "godot/assets/3d/characters/heroes/dante_dambrosio_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "e459b60526fd80d72156202c776b650d",
+   "size": 1562282
+  },
+  "godot/assets/3d/characters/heroes/dante_dambrosio_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "91df006f3c079db6aa1ed817dd5143c9",
+   "size": 9355102
+  },
+  "godot/assets/3d/characters/heroes/dante_dambrosio_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "edbf429d92b902e19bdd70af7afc4ae6",
+   "size": 70664
+  },
+  "godot/assets/3d/characters/heroes/dickens_dean_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "6665377dbb336b66fdf264dd8bc5e019",
+   "size": 11219140
+  },
+  "godot/assets/3d/characters/heroes/dickens_dean_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "6d5af234fb3bc346db9f0f28def91011",
+   "size": 923093
+  },
+  "godot/assets/3d/characters/heroes/dickens_dean_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "8a84d2699ba8191bc8196590affa90f9",
+   "size": 7882360
+  },
+  "godot/assets/3d/characters/heroes/dickens_dean_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "36afa3bb9b4f833be4f4a1ec4219e838",
+   "size": 66165
+  },
+  "godot/assets/3d/characters/heroes/douglas_forte_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "32299f6977f301080322273a3c6238af",
+   "size": 12389121
+  },
+  "godot/assets/3d/characters/heroes/douglas_forte_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "5417c46576943220144c951ea44373a4",
+   "size": 1235379
+  },
+  "godot/assets/3d/characters/heroes/douglas_forte_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "43627eec2705fcd6b41a57125c338068",
+   "size": 8490259
+  },
+  "godot/assets/3d/characters/heroes/douglas_forte_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "518f192f645565bd565b61277b4c128f",
+   "size": 69848
+  },
+  "godot/assets/3d/characters/heroes/elicia_temple.glb": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "b9d94a06c0f0cf6e3b1d5ee836b5842f",
+   "size": 139852
+  },
+  "godot/assets/3d/characters/heroes/elicia_temple_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "38b274634edd9bb273770d83903e0feb",
+   "size": 12450959
+  },
+  "godot/assets/3d/characters/heroes/elicia_temple_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "6533bf69f89e3b689e7397e676fcdcbb",
+   "size": 1628320
+  },
+  "godot/assets/3d/characters/heroes/elicia_temple_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "9c697776ac3261e93aaa1e1eb8a3e86b",
+   "size": 8512811
+  },
+  "godot/assets/3d/characters/heroes/elicia_temple_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "43b8aed82a78c9c43eec2cb69869167f",
+   "size": 66263
+  },
+  "godot/assets/3d/characters/heroes/erica_campbell_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "2b6cdd0997dbcce57de09e78c54029ac",
+   "size": 10692840
+  },
+  "godot/assets/3d/characters/heroes/erica_campbell_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "e6dbeefc94625f50aadcb6ae6d4989a9",
+   "size": 1305968
+  },
+  "godot/assets/3d/characters/heroes/erica_campbell_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "3897415396fb888b3a917ecdef7251c1",
+   "size": 7701208
+  },
+  "godot/assets/3d/characters/heroes/erica_campbell_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "5312e8b762183162774825b3c17f47d7",
+   "size": 66555
+  },
+  "godot/assets/3d/characters/heroes/father_amato_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "e7cce00d091457922cac2f5c65b7ed41",
+   "size": 11280340
+  },
+  "godot/assets/3d/characters/heroes/father_amato_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "cf7fcfa30b82627827db1d5ddc8c4025",
+   "size": 1284684
+  },
+  "godot/assets/3d/characters/heroes/father_amato_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "142d0f9745e45e811ae74814fb802795",
+   "size": 7316445
+  },
+  "godot/assets/3d/characters/heroes/father_amato_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "01bc73861cc169db9c765148bd63ae19",
+   "size": 72332
+  },
+  "godot/assets/3d/characters/heroes/frasier_temple.glb": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "96287d874a31ecdd573259f9e3b3b56c",
+   "size": 12943524
+  },
+  "godot/assets/3d/characters/heroes/frasier_temple_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "ef468b163b6a8746d7ff228b13278ada",
+   "size": 3103899
+  },
+  "godot/assets/3d/characters/heroes/frasier_temple_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "2fb3f02850b70282eb750b6d42245317",
+   "size": 993543
+  },
+  "godot/assets/3d/characters/heroes/frasier_temple_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "d659dbd2b309677a0f749b91e3f14c95",
+   "size": 3209327
+  },
+  "godot/assets/3d/characters/heroes/frasier_temple_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "9563db931fb41cb4170c9f8471f7e14f",
+   "size": 76755
+  },
+  "godot/assets/3d/characters/heroes/frasier_temple_gnm.glb": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "49945b3e566b10c03f77f32b14fd33b7",
+   "size": 3095244
+  },
+  "godot/assets/3d/characters/heroes/gloria_reyes_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "6ee4183272aa94e3c333e6a9695a10bb",
+   "size": 13271807
+  },
+  "godot/assets/3d/characters/heroes/gloria_reyes_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "ab3d22373eef97f7b111b8ac65533bf2",
+   "size": 1808001
+  },
+  "godot/assets/3d/characters/heroes/gloria_reyes_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "3568ce733a50dba5a82e6cdc22c928f4",
+   "size": 9154380
+  },
+  "godot/assets/3d/characters/heroes/gloria_reyes_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "c048a9f343d60a853483381ba0d60f9e",
+   "size": 358555
+  },
+  "godot/assets/3d/characters/heroes/graciela_ramos_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "074bfc32ed8e2760ce199e9d1596506b",
+   "size": 11326796
+  },
+  "godot/assets/3d/characters/heroes/graciela_ramos_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "868ffc15c34f2bc3be728f0b9205d32b",
+   "size": 1651418
+  },
+  "godot/assets/3d/characters/heroes/graciela_ramos_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "fb95d35f7d1f009aeb8c4066f57bec07",
+   "size": 7648373
+  },
+  "godot/assets/3d/characters/heroes/graciela_ramos_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "ec6df2f98636a2cf0397cd9873930348",
+   "size": 67574
+  },
+  "godot/assets/3d/characters/heroes/hector_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "09a73d27f9866a03342f8f95752441f8",
+   "size": 15130021
+  },
+  "godot/assets/3d/characters/heroes/hector_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "bdf56467844eb1c38cefc313e8e224ea",
+   "size": 1789210
+  },
+  "godot/assets/3d/characters/heroes/hector_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "12f51dbff7b93296f79c64061f952374",
+   "size": 10908908
+  },
+  "godot/assets/3d/characters/heroes/hector_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "ced17811ecc0ee0f914a769d15a6c895",
+   "size": 67490
+  },
+  "godot/assets/3d/characters/heroes/jesse_henderson_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "64bba753132994bd40d07355a1ebb218",
+   "size": 13003671
+  },
+  "godot/assets/3d/characters/heroes/jesse_henderson_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "56044fe899f4527cbdb3c4ac630751ce",
+   "size": 1920137
+  },
+  "godot/assets/3d/characters/heroes/jesse_henderson_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "e2dcfab508fd604d169c0f5eeb27296a",
+   "size": 8688317
+  },
+  "godot/assets/3d/characters/heroes/jesse_henderson_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "b41c97ce511a2c9db21f815a4dd267fd",
+   "size": 84280
+  },
+  "godot/assets/3d/characters/heroes/jimmy_daigle_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "82a98b81ab16d9eb12f32ea86986b01f",
+   "size": 13392538
+  },
+  "godot/assets/3d/characters/heroes/jimmy_daigle_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "ebe5cad4d5ecf20875eb64bbdaf4a157",
+   "size": 1741423
+  },
+  "godot/assets/3d/characters/heroes/jimmy_daigle_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "bdcc52df04fef90633d2dfe4d2486e5a",
+   "size": 8489975
+  },
+  "godot/assets/3d/characters/heroes/jimmy_daigle_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "2ff4a2276d3a47ad88d2a912cd17a52a",
+   "size": 85906
+  },
+  "godot/assets/3d/characters/heroes/joanna_lemoine_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "70a0e31ba767186f48b65265a4d7d025",
+   "size": 10990350
+  },
+  "godot/assets/3d/characters/heroes/joanna_lemoine_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "d43100c441d1464fa802566d500e8850",
+   "size": 1858269
+  },
+  "godot/assets/3d/characters/heroes/joanna_lemoine_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "da3903282c555bb44525d351a899ce94",
+   "size": 7598406
+  },
+  "godot/assets/3d/characters/heroes/joanna_lemoine_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "1728499b849239647e1c5d30cd29a1aa",
+   "size": 75269
+  },
+  "godot/assets/3d/characters/heroes/john_frank.glb": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "dd652502dc2108c15b82a20e4638404b",
+   "size": 11395392
+  },
+  "godot/assets/3d/characters/heroes/john_frank_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "9927ff7843315289705678140e411658",
+   "size": 9336211
+  },
+  "godot/assets/3d/characters/heroes/john_frank_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "09250928c7437e1b162b75ed4d5ddf6b",
+   "size": 1236865
+  },
+  "godot/assets/3d/characters/heroes/john_frank_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "a27d6e7cca71789b504558ff8646434a",
+   "size": 7126377
+  },
+  "godot/assets/3d/characters/heroes/john_frank_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "63641530a1ecbf5756c52024a08ac1dd",
+   "size": 623445
+  },
+  "godot/assets/3d/characters/heroes/john_frank_gnm.glb": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "c3befe4afea4b83953afed7254eb5275",
+   "size": 2852012
+  },
+  "godot/assets/3d/characters/heroes/linda_caldwell_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "edd072ee800d1b00ef7e958d2a1abe18",
+   "size": 14385807
+  },
+  "godot/assets/3d/characters/heroes/linda_caldwell_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "2019947fd38225cea6d7df188b652807",
+   "size": 1641537
+  },
+  "godot/assets/3d/characters/heroes/linda_caldwell_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "947f69682ed5f7c45c88ea4a5fe940bf",
+   "size": 9615684
+  },
+  "godot/assets/3d/characters/heroes/linda_caldwell_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "a09aa62a06344d53fc6eb336daf3c865",
+   "size": 66927
+  },
+  "godot/assets/3d/characters/heroes/mackenzie_roberts_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "252ceff734a7b3dcc4c57f278f02943d",
+   "size": 13628267
+  },
+  "godot/assets/3d/characters/heroes/mackenzie_roberts_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "3050cf5beca51271174978330af79d51",
+   "size": 1473720
+  },
+  "godot/assets/3d/characters/heroes/mackenzie_roberts_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "e855a68044c3fdb4a7f59312f412b49e",
+   "size": 9184192
+  },
+  "godot/assets/3d/characters/heroes/mackenzie_roberts_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "566465483d543a75d205601f7feb0110",
+   "size": 67550
+  },
+  "godot/assets/3d/characters/heroes/maya_daigle_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "2b491ad2001610742739782fe8222afd",
+   "size": 13441727
+  },
+  "godot/assets/3d/characters/heroes/maya_daigle_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "18b72a5517b10e3c5758e1cde6a14e04",
+   "size": 1595782
+  },
+  "godot/assets/3d/characters/heroes/maya_daigle_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "73a807e8c59e9d6abbebce0c62b4b162",
+   "size": 9137404
+  },
+  "godot/assets/3d/characters/heroes/maya_daigle_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "75210763c3b660cf80627c8f31d35999",
+   "size": 66188
+  },
+  "godot/assets/3d/characters/heroes/miriam_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "87a718486106be3769d914c13b3e6959",
+   "size": 12482056
+  },
+  "godot/assets/3d/characters/heroes/miriam_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "fdfe75234dfd0df7775cc79c7b4c06a4",
+   "size": 1373623
+  },
+  "godot/assets/3d/characters/heroes/miriam_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "5a0f2f456c68f2729815df0ff5ce3c1a",
+   "size": 8431046
+  },
+  "godot/assets/3d/characters/heroes/miriam_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "dda0b75377d03d8d7709a773dcf2011d",
+   "size": 67325
+  },
+  "godot/assets/3d/characters/heroes/natalie_david_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "d14173bc05b8219aa775550025fb83ea",
+   "size": 12588474
+  },
+  "godot/assets/3d/characters/heroes/natalie_david_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "6617f00dca5e7444c4cbc8b3f23ce00d",
+   "size": 1524988
+  },
+  "godot/assets/3d/characters/heroes/natalie_david_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "9a7bd3e72203246d60eae795c2f02b5e",
+   "size": 8577498
+  },
+  "godot/assets/3d/characters/heroes/natalie_david_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "489726f71f4161e38a35156822db7ff6",
+   "size": 67993
+  },
+  "godot/assets/3d/characters/heroes/nicola.glb": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "86cad1f4a8e01cedf715d67eb3904bc7",
+   "size": 140124
+  },
+  "godot/assets/3d/characters/heroes/nicola_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "f55a29a2f5fbfefd766c53de7460726e",
+   "size": 11654240
+  },
+  "godot/assets/3d/characters/heroes/nicola_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "a1164bcfc7d1dde57678a19fa153b630",
+   "size": 1499428
+  },
+  "godot/assets/3d/characters/heroes/nicola_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "3f15a86214d3ecb1800cb5b06552b453",
+   "size": 8107064
+  },
+  "godot/assets/3d/characters/heroes/nicola_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "af04b943f6a53ca8808a4f5000a71c81",
+   "size": 72060
+  },
+  "godot/assets/3d/characters/heroes/philip_roberts_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "1bd0ae7066923d60ca27e0b666eeadd9",
+   "size": 14057394
+  },
+  "godot/assets/3d/characters/heroes/philip_roberts_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "abf8f8a8d381a3b7cfc7419e0eee3f29",
+   "size": 1540040
+  },
+  "godot/assets/3d/characters/heroes/philip_roberts_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "e929716d35ccdff8adcddd79f1e70143",
+   "size": 9572226
+  },
+  "godot/assets/3d/characters/heroes/philip_roberts_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "6d35200814f8b72cb884f01e417f9e88",
+   "size": 71968
+  },
+  "godot/assets/3d/characters/heroes/quentin_paul_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "d19a5dd654532a40c35cbe44c53b3e86",
+   "size": 12476599
+  },
+  "godot/assets/3d/characters/heroes/quentin_paul_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "94070f39e8739fee07d923eafd586835",
+   "size": 1218474
+  },
+  "godot/assets/3d/characters/heroes/quentin_paul_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "ccccf13a5dc2b691d5f0a15510a32ecd",
+   "size": 8605561
+  },
+  "godot/assets/3d/characters/heroes/quentin_paul_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "c96643926d7a0fb2ef7b0ddca36aa614",
+   "size": 71409
+  },
+  "godot/assets/3d/characters/heroes/ramirez_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "feb6efdc4be92851ea47080175fcd5f4",
+   "size": 12078589
+  },
+  "godot/assets/3d/characters/heroes/ramirez_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "28d1ff57450021c851c9d51f5f164411",
+   "size": 1427152
+  },
+  "godot/assets/3d/characters/heroes/ramirez_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "f76ecafcc4fd9cf87577e345815656ab",
+   "size": 8285129
+  },
+  "godot/assets/3d/characters/heroes/ramirez_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "c5bbad1bb6b5858a6abae035b0dd3b72",
+   "size": 67015
+  },
+  "godot/assets/3d/characters/heroes/sam_miller_gnm.glb": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "4a5691793ba8886bf108262c923b5fe0",
+   "size": 3015576
+  },
+  "godot/assets/3d/characters/heroes/sammy_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "b9375da40201e2895293b2a17d3a46f6",
+   "size": 10507572
+  },
+  "godot/assets/3d/characters/heroes/sammy_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "1383d6c502a2480c2bbc4e5c41d85bcd",
+   "size": 1593426
+  },
+  "godot/assets/3d/characters/heroes/sammy_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "85a37ef5266e9afa9ed9c503b6870d45",
+   "size": 7237666
+  },
+  "godot/assets/3d/characters/heroes/sammy_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "3ff7f8a4208b4ff18918cbe9437dac9b",
+   "size": 67726
+  },
+  "godot/assets/3d/characters/heroes/skip_donnelly_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "a49dd3e7b830cd3ff137b62d87b130e8",
+   "size": 12551918
+  },
+  "godot/assets/3d/characters/heroes/skip_donnelly_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "905e45ee44146451260bdc8e1beb9475",
+   "size": 1153058
+  },
+  "godot/assets/3d/characters/heroes/skip_donnelly_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "e67ad6664e5850eb90a85910bd35c684",
+   "size": 8409991
+  },
+  "godot/assets/3d/characters/heroes/skip_donnelly_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "f5dc0e806bb479c87083d72a3c30c423",
+   "size": 153018
+  },
+  "godot/assets/3d/characters/heroes/tanya_horne_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "f58a7c0ec50203d4e5b41fd230edabfc",
+   "size": 12175921
+  },
+  "godot/assets/3d/characters/heroes/tanya_horne_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "ccee144cbee3536b5321041261e55df2",
+   "size": 1213457
+  },
+  "godot/assets/3d/characters/heroes/tanya_horne_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "10554ff5ecc20729e30151003149b747",
+   "size": 8254953
+  },
+  "godot/assets/3d/characters/heroes/tanya_horne_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "689275b05d9401abe334d8cf61ddecaf",
+   "size": 66582
+  },
+  "godot/assets/3d/characters/heroes/the_frog_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "961cfea5dab792cab976dbd2d8d6b910",
+   "size": 13660954
+  },
+  "godot/assets/3d/characters/heroes/the_frog_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "7eb2abbd052f5def62247c84d6b08feb",
+   "size": 1586508
+  },
+  "godot/assets/3d/characters/heroes/the_frog_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "db561ddf12e80feb6d01fdc4c8b64e56",
+   "size": 9005171
+  },
+  "godot/assets/3d/characters/heroes/the_frog_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "ac2d1055318844da2fa97239fa969c83",
+   "size": 77595
+  },
+  "godot/assets/3d/characters/heroes/the_stranger_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "2889997c650063719c1f9543cede5b3b",
+   "size": 12400879
+  },
+  "godot/assets/3d/characters/heroes/the_stranger_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "d66f2550913fa08686ed41a44882a1e7",
+   "size": 1498985
+  },
+  "godot/assets/3d/characters/heroes/the_stranger_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "a319018f2130ba8fd0a685b39e9110eb",
+   "size": 8334051
+  },
+  "godot/assets/3d/characters/heroes/the_stranger_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "ae15a43964f4dda66799ad2348263e16",
+   "size": 72204
+  },
+  "godot/assets/3d/characters/heroes/thomas_henderson_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "24d1ea3cf51f23d47a39e3a00ff7815f",
+   "size": 11667823
+  },
+  "godot/assets/3d/characters/heroes/thomas_henderson_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "91581537b5c5d7e336471c6286c696a2",
+   "size": 1207071
+  },
+  "godot/assets/3d/characters/heroes/thomas_henderson_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "6fca368aabc664d6338481a023799f08",
+   "size": 7950205
+  },
+  "godot/assets/3d/characters/heroes/thomas_henderson_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "4f9695fc884aa19e9d330fe04ceb9929",
+   "size": 72080
+  },
+  "godot/assets/3d/characters/heroes/vince_kane_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "a887e05f56ce3930a8474296c882074c",
+   "size": 11251461
+  },
+  "godot/assets/3d/characters/heroes/vince_kane_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "3a39c559cd548c66d5441cf160257b87",
+   "size": 1260715
+  },
+  "godot/assets/3d/characters/heroes/vince_kane_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "9b97320137d900df7ea831b01f3c641e",
+   "size": 7769153
+  },
+  "godot/assets/3d/characters/heroes/vince_kane_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "36afa3bb9b4f833be4f4a1ec4219e838",
+   "size": 66165
+  },
+  "godot/assets/concept/meshy/alberto/alberto_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "adfe0667bbf5665dea50bece1342677c",
+   "size": 64705
+  },
+  "godot/assets/concept/meshy/alberto/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "adfe0667bbf5665dea50bece1342677c",
+   "size": 64705
+  },
+  "godot/assets/concept/meshy/alice_newsom/alice_newsom_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "02bb53b051a9fcb0403fbc88c9b5b429",
+   "size": 81240
+  },
+  "godot/assets/concept/meshy/alice_newsom/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "02bb53b051a9fcb0403fbc88c9b5b429",
+   "size": 81240
+  },
+  "godot/assets/concept/meshy/anna_logue/anna_logue_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "8828943d343ef0c75e9c6695d169cad3",
+   "size": 74107
+  },
+  "godot/assets/concept/meshy/anna_logue/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "8828943d343ef0c75e9c6695d169cad3",
+   "size": 74107
+  },
+  "godot/assets/concept/meshy/antonio/antonio_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "a1d09072c589ff50b36fbd42ee0d6c6b",
+   "size": 73246
+  },
+  "godot/assets/concept/meshy/antonio/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "a1d09072c589ff50b36fbd42ee0d6c6b",
+   "size": 73246
+  },
+  "godot/assets/concept/meshy/aria_third/aria_third_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "3a4996aa6ac134f14b71771c01205170",
+   "size": 87717
+  },
+  "godot/assets/concept/meshy/aria_third/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "3a4996aa6ac134f14b71771c01205170",
+   "size": 87717
+  },
+  "godot/assets/concept/meshy/ben_kowalski/ben_kowalski_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "46dcf9ba7c2cbd79617e6c4f28a32967",
+   "size": 84282
+  },
+  "godot/assets/concept/meshy/ben_kowalski/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "46dcf9ba7c2cbd79617e6c4f28a32967",
+   "size": 84282
+  },
+  "godot/assets/concept/meshy/bianca_miller/bianca_miller_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "a79cca1bc6c415c7323a67b512afff48",
+   "size": 71924
+  },
+  "godot/assets/concept/meshy/bianca_miller/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "a79cca1bc6c415c7323a67b512afff48",
+   "size": 71924
+  },
+  "godot/assets/concept/meshy/carl_drummer/carl_drummer_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "48917b7261087bb15aab876174c1882d",
+   "size": 75273
+  },
+  "godot/assets/concept/meshy/carl_drummer/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "48917b7261087bb15aab876174c1882d",
+   "size": 75273
+  },
+  "godot/assets/concept/meshy/carl_reno/carl_reno_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "8bdd895669a73937b0f6b9aa4af81a3f",
+   "size": 71793
+  },
+  "godot/assets/concept/meshy/carl_reno/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "8bdd895669a73937b0f6b9aa4af81a3f",
+   "size": 71793
+  },
+  "godot/assets/concept/meshy/chief_miller/chief_miller_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "003b7d8cac0af6acf9b067204c2f2a1d",
+   "size": 76981
+  },
+  "godot/assets/concept/meshy/chief_miller/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "003b7d8cac0af6acf9b067204c2f2a1d",
+   "size": 76981
+  },
+  "godot/assets/concept/meshy/claire_moyer/claire_moyer_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "5559b5b585f9ed43f485b56548d69a90",
+   "size": 76288
+  },
+  "godot/assets/concept/meshy/claire_moyer/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "5559b5b585f9ed43f485b56548d69a90",
+   "size": 76288
+  },
+  "godot/assets/concept/meshy/coach_guidry/coach_guidry_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "52a12c85f2b43c346bfd7f7df89e5a86",
+   "size": 70738
+  },
+  "godot/assets/concept/meshy/coach_guidry/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "52a12c85f2b43c346bfd7f7df89e5a86",
+   "size": 70738
+  },
+  "godot/assets/concept/meshy/curtis/curtis_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "8f89e8b4a9f84d27d7efc09987d28ada",
+   "size": 74102
+  },
+  "godot/assets/concept/meshy/curtis/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "8f89e8b4a9f84d27d7efc09987d28ada",
+   "size": 74102
+  },
+  "godot/assets/concept/meshy/dante_dambrosio/dante_dambrosio_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "11b45dcf8ccd523983b7e0716cbbcda9",
+   "size": 76604
+  },
+  "godot/assets/concept/meshy/dante_dambrosio/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "11b45dcf8ccd523983b7e0716cbbcda9",
+   "size": 76604
+  },
+  "godot/assets/concept/meshy/david_jarvis/david_jarvis_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "dd7ad6bcc6cd6c6e612a16877ee71375",
+   "size": 79315
+  },
+  "godot/assets/concept/meshy/david_jarvis/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "9a4478f6c83b99efd67f498fa21934d9",
+   "size": 77835
+  },
+  "godot/assets/concept/meshy/dickens_dean/dickens_dean_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "43cf3f385a439a9f73ef3fd3d17fcac1",
+   "size": 64073
+  },
+  "godot/assets/concept/meshy/dickens_dean/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "43cf3f385a439a9f73ef3fd3d17fcac1",
+   "size": 64073
+  },
+  "godot/assets/concept/meshy/diego_ramos/diego_ramos_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "adeb840d548cb305b2b73fd71443a882",
+   "size": 76252
+  },
+  "godot/assets/concept/meshy/diego_ramos/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "adeb840d548cb305b2b73fd71443a882",
+   "size": 76252
+  },
+  "godot/assets/concept/meshy/douglas_forte/douglas_forte_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "58adb7331a44b57216870f92965470c5",
+   "size": 75505
+  },
+  "godot/assets/concept/meshy/douglas_forte/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "58adb7331a44b57216870f92965470c5",
+   "size": 75505
+  },
+  "godot/assets/concept/meshy/elicia_temple/elicia_temple_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "76f163c5e3afe4059dbff63eadef1984",
+   "size": 74920
+  },
+  "godot/assets/concept/meshy/elicia_temple/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "76f163c5e3afe4059dbff63eadef1984",
+   "size": 74920
+  },
+  "godot/assets/concept/meshy/erica_campbell/erica_campbell_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "bbceff17b3d12ee2b67bb8e68928291a",
+   "size": 62719
+  },
+  "godot/assets/concept/meshy/erica_campbell/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "bbceff17b3d12ee2b67bb8e68928291a",
+   "size": 62719
+  },
+  "godot/assets/concept/meshy/father_amato/father_amato_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "de4ae161c0fd588d06da8317145b5ba3",
+   "size": 75638
+  },
+  "godot/assets/concept/meshy/father_amato/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "de4ae161c0fd588d06da8317145b5ba3",
+   "size": 75638
+  },
+  "godot/assets/concept/meshy/faust/faust_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "e82c6c08249f2a3ec9c9a49f996bd2a6",
+   "size": 69946
+  },
+  "godot/assets/concept/meshy/faust/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "e82c6c08249f2a3ec9c9a49f996bd2a6",
+   "size": 69946
+  },
+  "godot/assets/concept/meshy/frasier_temple/frasier_temple_front_deck_01.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "ef468b163b6a8746d7ff228b13278ada",
+   "size": 3103899
+  },
+  "godot/assets/concept/meshy/frasier_temple/frasier_temple_front_deck_02.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "2fb3f02850b70282eb750b6d42245317",
+   "size": 993543
+  },
+  "godot/assets/concept/meshy/frasier_temple/frasier_temple_front_deck_03.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "d659dbd2b309677a0f749b91e3f14c95",
+   "size": 3209327
+  },
+  "godot/assets/concept/meshy/frasier_temple/frasier_temple_front_deck_04.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "9563db931fb41cb4170c9f8471f7e14f",
+   "size": 76755
+  },
+  "godot/assets/concept/meshy/frasier_temple/frasier_temple_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "3ae45e2df458a63b8e954cf30100b5cb",
+   "size": 79544
+  },
+  "godot/assets/concept/meshy/frasier_temple/front.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "ef468b163b6a8746d7ff228b13278ada",
+   "size": 3103899
+  },
+  "godot/assets/concept/meshy/frasier_temple/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "3ae45e2df458a63b8e954cf30100b5cb",
+   "size": 79544
+  },
+  "godot/assets/concept/meshy/gloria_reyes/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "34b0753e67842656f14cbba7f3d65291",
+   "size": 72148
+  },
+  "godot/assets/concept/meshy/gloria_reyes/gloria_reyes_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "34b0753e67842656f14cbba7f3d65291",
+   "size": 72148
+  },
+  "godot/assets/concept/meshy/graciela_ramos/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "59b7654b16aa9581f63d89b61869462e",
+   "size": 80210
+  },
+  "godot/assets/concept/meshy/graciela_ramos/graciela_ramos_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "59b7654b16aa9581f63d89b61869462e",
+   "size": 80210
+  },
+  "godot/assets/concept/meshy/hector/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "d9d9b3979589b8803cf6a9f0d4346159",
+   "size": 77762
+  },
+  "godot/assets/concept/meshy/hector/hector_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "d9d9b3979589b8803cf6a9f0d4346159",
+   "size": 77762
+  },
+  "godot/assets/concept/meshy/jacob/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "feef1b6f1e09a460df920c3758354352",
+   "size": 80426
+  },
+  "godot/assets/concept/meshy/jacob/jacob_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "feef1b6f1e09a460df920c3758354352",
+   "size": 80426
+  },
+  "godot/assets/concept/meshy/jesse_henderson/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "89a9e1b61d6d4af42dddcd3761e20607",
+   "size": 68793
+  },
+  "godot/assets/concept/meshy/jesse_henderson/jesse_henderson_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "89a9e1b61d6d4af42dddcd3761e20607",
+   "size": 68793
+  },
+  "godot/assets/concept/meshy/jimmy_daigle/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "1879d7bc1c33d6f9757e9288b54149ab",
+   "size": 104337
+  },
+  "godot/assets/concept/meshy/jimmy_daigle/jimmy_daigle_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "1879d7bc1c33d6f9757e9288b54149ab",
+   "size": 104337
+  },
+  "godot/assets/concept/meshy/joan/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "6bb0eea81ffc954079229893d109d04d",
+   "size": 68416
+  },
+  "godot/assets/concept/meshy/joan/joan_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "6bb0eea81ffc954079229893d109d04d",
+   "size": 68416
+  },
+  "godot/assets/concept/meshy/joanna_lemoine/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "77c7b385b8509484b08ba08d3f7eaa33",
+   "size": 90924
+  },
+  "godot/assets/concept/meshy/joanna_lemoine/joanna_lemoine_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "77c7b385b8509484b08ba08d3f7eaa33",
+   "size": 90924
+  },
+  "godot/assets/concept/meshy/john_frank/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "c295a835e50676569c1f608f003ac694",
+   "size": 58123
+  },
+  "godot/assets/concept/meshy/john_frank/john_frank_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "c295a835e50676569c1f608f003ac694",
+   "size": 58123
+  },
+  "godot/assets/concept/meshy/linda_caldwell/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "dfbc4479cbe68a8e507edf9cf6a63782",
+   "size": 93443
+  },
+  "godot/assets/concept/meshy/linda_caldwell/linda_caldwell_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "dfbc4479cbe68a8e507edf9cf6a63782",
+   "size": 93443
+  },
+  "godot/assets/concept/meshy/mackenzie_roberts/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "97334bc2c7c690f246cd24923d6e1de9",
+   "size": 80585
+  },
+  "godot/assets/concept/meshy/mackenzie_roberts/mackenzie_roberts_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "97334bc2c7c690f246cd24923d6e1de9",
+   "size": 80585
+  },
+  "godot/assets/concept/meshy/maya_daigle/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "68b3f6a02679cc7e81076cbed3c625c6",
+   "size": 75428
+  },
+  "godot/assets/concept/meshy/maya_daigle/maya_daigle_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "68b3f6a02679cc7e81076cbed3c625c6",
+   "size": 75428
+  },
+  "godot/assets/concept/meshy/miriam/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "1e31482a27b2bfac9b9acc9d6dcd317b",
+   "size": 82401
+  },
+  "godot/assets/concept/meshy/miriam/miriam_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "1e31482a27b2bfac9b9acc9d6dcd317b",
+   "size": 82401
+  },
+  "godot/assets/concept/meshy/natalie_david/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "e3b352c7deb5055b9e62c762154bb8f4",
+   "size": 76406
+  },
+  "godot/assets/concept/meshy/natalie_david/natalie_david_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "e3b352c7deb5055b9e62c762154bb8f4",
+   "size": 76406
+  },
+  "godot/assets/concept/meshy/nicola/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "bb75c34fd311617fdd324b83759f0a50",
+   "size": 58955
+  },
+  "godot/assets/concept/meshy/nicola/nicola_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "bb75c34fd311617fdd324b83759f0a50",
+   "size": 58955
+  },
+  "godot/assets/concept/meshy/philip_roberts/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "777a2173d10b19d375d91d5327a850fe",
+   "size": 85779
+  },
+  "godot/assets/concept/meshy/philip_roberts/philip_roberts_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "777a2173d10b19d375d91d5327a850fe",
+   "size": 85779
+  },
+  "godot/assets/concept/meshy/quentin_paul/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "c24bfd5ad532760497cc18dbaa8803cb",
+   "size": 69642
+  },
+  "godot/assets/concept/meshy/quentin_paul/quentin_paul_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "c24bfd5ad532760497cc18dbaa8803cb",
+   "size": 69642
+  },
+  "godot/assets/concept/meshy/ramirez/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "f338fb43e764b9bab14e5433e8f0a38a",
+   "size": 74359
+  },
+  "godot/assets/concept/meshy/ramirez/ramirez_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "f338fb43e764b9bab14e5433e8f0a38a",
+   "size": 74359
+  },
+  "godot/assets/concept/meshy/recovered/01a0da46-760e-7279-a331-8092fcddcdca_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "a2a2d129d5d7bc5433617c1adbe789cf",
+   "size": 12799256
+  },
+  "godot/assets/concept/meshy/recovered/01a0da46-760e-7279-a331-8092fcddcdca_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "f6bd3fa32d3711251b1e32781d395c89",
+   "size": 1584991
+  },
+  "godot/assets/concept/meshy/recovered/01a0da46-760e-7279-a331-8092fcddcdca_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "40b66b542a75bf1b303207f882630a6f",
+   "size": 8633857
+  },
+  "godot/assets/concept/meshy/recovered/01a0da46-760e-7279-a331-8092fcddcdca_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "ab6f6770d84c98ba5989c9d8b5399957",
+   "size": 67954
+  },
+  "godot/assets/concept/meshy/recovered/01a0da4a-b84c-7499-a878-dfe4e3c45838_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "38b274634edd9bb273770d83903e0feb",
+   "size": 12450959
+  },
+  "godot/assets/concept/meshy/recovered/01a0da4a-b84c-7499-a878-dfe4e3c45838_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "6533bf69f89e3b689e7397e676fcdcbb",
+   "size": 1628320
+  },
+  "godot/assets/concept/meshy/recovered/01a0da4a-b84c-7499-a878-dfe4e3c45838_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "9c697776ac3261e93aaa1e1eb8a3e86b",
+   "size": 8512811
+  },
+  "godot/assets/concept/meshy/recovered/01a0da4a-b84c-7499-a878-dfe4e3c45838_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "43b8aed82a78c9c43eec2cb69869167f",
+   "size": 66263
+  },
+  "godot/assets/concept/meshy/recovered/01a0da59-b855-7691-b854-d628306a65fc_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "f55a29a2f5fbfefd766c53de7460726e",
+   "size": 11654240
+  },
+  "godot/assets/concept/meshy/recovered/01a0da59-b855-7691-b854-d628306a65fc_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "a1164bcfc7d1dde57678a19fa153b630",
+   "size": 1499428
+  },
+  "godot/assets/concept/meshy/recovered/01a0da59-b855-7691-b854-d628306a65fc_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "3f15a86214d3ecb1800cb5b06552b453",
+   "size": 8107064
+  },
+  "godot/assets/concept/meshy/recovered/01a0da59-b855-7691-b854-d628306a65fc_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "af04b943f6a53ca8808a4f5000a71c81",
+   "size": 72060
+  },
+  "godot/assets/concept/meshy/recovered/01a0da5f-c3ad-7109-bbb4-e02486089753_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "e7b5ecf7fc5199bed4ed3de0838135c7",
+   "size": 13254462
+  },
+  "godot/assets/concept/meshy/recovered/01a0da5f-c3ad-7109-bbb4-e02486089753_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "e459b60526fd80d72156202c776b650d",
+   "size": 1562282
+  },
+  "godot/assets/concept/meshy/recovered/01a0da5f-c3ad-7109-bbb4-e02486089753_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "91df006f3c079db6aa1ed817dd5143c9",
+   "size": 9355102
+  },
+  "godot/assets/concept/meshy/recovered/01a0da5f-c3ad-7109-bbb4-e02486089753_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "edbf429d92b902e19bdd70af7afc4ae6",
+   "size": 70664
+  },
+  "godot/assets/concept/meshy/recovered/01a0da67-86b1-7758-9495-3ae9964b4a74_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "d19a5dd654532a40c35cbe44c53b3e86",
+   "size": 12476599
+  },
+  "godot/assets/concept/meshy/recovered/01a0da67-86b1-7758-9495-3ae9964b4a74_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "94070f39e8739fee07d923eafd586835",
+   "size": 1218474
+  },
+  "godot/assets/concept/meshy/recovered/01a0da67-86b1-7758-9495-3ae9964b4a74_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "ccccf13a5dc2b691d5f0a15510a32ecd",
+   "size": 8605561
+  },
+  "godot/assets/concept/meshy/recovered/01a0da67-86b1-7758-9495-3ae9964b4a74_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "c96643926d7a0fb2ef7b0ddca36aa614",
+   "size": 71409
+  },
+  "godot/assets/concept/meshy/recovered/01a0da6c-16eb-7129-ae2d-97a6c5dd0a24_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "252ceff734a7b3dcc4c57f278f02943d",
+   "size": 13628267
+  },
+  "godot/assets/concept/meshy/recovered/01a0da6c-16eb-7129-ae2d-97a6c5dd0a24_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "3050cf5beca51271174978330af79d51",
+   "size": 1473720
+  },
+  "godot/assets/concept/meshy/recovered/01a0da6c-16eb-7129-ae2d-97a6c5dd0a24_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "e855a68044c3fdb4a7f59312f412b49e",
+   "size": 9184192
+  },
+  "godot/assets/concept/meshy/recovered/01a0da6c-16eb-7129-ae2d-97a6c5dd0a24_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "566465483d543a75d205601f7feb0110",
+   "size": 67550
+  },
+  "godot/assets/concept/meshy/recovered/01a0da74-4b54-7397-9cad-42165625eae5_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "1bd0ae7066923d60ca27e0b666eeadd9",
+   "size": 14057394
+  },
+  "godot/assets/concept/meshy/recovered/01a0da74-4b54-7397-9cad-42165625eae5_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "abf8f8a8d381a3b7cfc7419e0eee3f29",
+   "size": 1540040
+  },
+  "godot/assets/concept/meshy/recovered/01a0da74-4b54-7397-9cad-42165625eae5_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "e929716d35ccdff8adcddd79f1e70143",
+   "size": 9572226
+  },
+  "godot/assets/concept/meshy/recovered/01a0da74-4b54-7397-9cad-42165625eae5_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "6d35200814f8b72cb884f01e417f9e88",
+   "size": 71968
+  },
+  "godot/assets/concept/meshy/recovered/01a0da7a-7ee6-749c-8f1c-b04a5ee66e83_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "0be3a78531aa9ea464b6cbda31fad2ef",
+   "size": 12708629
+  },
+  "godot/assets/concept/meshy/recovered/01a0da7a-7ee6-749c-8f1c-b04a5ee66e83_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "b4ec6b3b461d408ba96a9cfe0a43f3e4",
+   "size": 1665970
+  },
+  "godot/assets/concept/meshy/recovered/01a0da7a-7ee6-749c-8f1c-b04a5ee66e83_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "c489c2c52df463057975c765d95973f4",
+   "size": 9008326
+  },
+  "godot/assets/concept/meshy/recovered/01a0da7a-7ee6-749c-8f1c-b04a5ee66e83_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "d846bc0ce3a3a750f2d3fde6e332a249",
+   "size": 66667
+  },
+  "godot/assets/concept/meshy/recovered/01a0da7e-a6dd-74c2-aee1-787731a50292.glb": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "f55c9219d4be4f582607810f4c4d1da3",
+   "size": 32215628
+  },
+  "godot/assets/concept/meshy/recovered/01a0da7e-a6dd-74c2-aee1-787731a50292.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "94cec145e3bb43e936a0a61a0c798d65",
+   "size": 74651
+  },
+  "godot/assets/concept/meshy/recovered/01a0da7e-a6dd-74c2-aee1-787731a50292_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "52d294e3688298ef438f83f69fb82405",
+   "size": 10597683
+  },
+  "godot/assets/concept/meshy/recovered/01a0da7e-a6dd-74c2-aee1-787731a50292_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "0f07769bca8e5a0d0fd41619df4ea4f1",
+   "size": 1332486
+  },
+  "godot/assets/concept/meshy/recovered/01a0da7e-a6dd-74c2-aee1-787731a50292_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "c8e85a0048e1e1629c3cf2d4fede2e01",
+   "size": 7484965
+  },
+  "godot/assets/concept/meshy/recovered/01a0da80-e6c8-73a9-abad-f2760c33a53c_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "32299f6977f301080322273a3c6238af",
+   "size": 12389121
+  },
+  "godot/assets/concept/meshy/recovered/01a0da80-e6c8-73a9-abad-f2760c33a53c_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "5417c46576943220144c951ea44373a4",
+   "size": 1235379
+  },
+  "godot/assets/concept/meshy/recovered/01a0da80-e6c8-73a9-abad-f2760c33a53c_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "43627eec2705fcd6b41a57125c338068",
+   "size": 8490259
+  },
+  "godot/assets/concept/meshy/recovered/01a0da80-e6c8-73a9-abad-f2760c33a53c_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "518f192f645565bd565b61277b4c128f",
+   "size": 69848
+  },
+  "godot/assets/concept/meshy/recovered/01a0da86-be7c-7181-ab34-a2f50cf49085_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "70a0e31ba767186f48b65265a4d7d025",
+   "size": 10990350
+  },
+  "godot/assets/concept/meshy/recovered/01a0da86-be7c-7181-ab34-a2f50cf49085_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "d43100c441d1464fa802566d500e8850",
+   "size": 1858269
+  },
+  "godot/assets/concept/meshy/recovered/01a0da86-be7c-7181-ab34-a2f50cf49085_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "da3903282c555bb44525d351a899ce94",
+   "size": 7598406
+  },
+  "godot/assets/concept/meshy/recovered/01a0da86-be7c-7181-ab34-a2f50cf49085_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "1728499b849239647e1c5d30cd29a1aa",
+   "size": 75269
+  },
+  "godot/assets/concept/meshy/recovered/01a0da8d-83bf-70ae-8dfd-5205f6661884_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "2b6cdd0997dbcce57de09e78c54029ac",
+   "size": 10692840
+  },
+  "godot/assets/concept/meshy/recovered/01a0da8d-83bf-70ae-8dfd-5205f6661884_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "e6dbeefc94625f50aadcb6ae6d4989a9",
+   "size": 1305968
+  },
+  "godot/assets/concept/meshy/recovered/01a0da8d-83bf-70ae-8dfd-5205f6661884_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "3897415396fb888b3a917ecdef7251c1",
+   "size": 7701208
+  },
+  "godot/assets/concept/meshy/recovered/01a0da8d-83bf-70ae-8dfd-5205f6661884_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "5312e8b762183162774825b3c17f47d7",
+   "size": 66555
+  },
+  "godot/assets/concept/meshy/recovered/01a0da9b-5fb8-75f2-b1c5-0ee49d0050b2_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "bbce687bd4d0813984417a6923deed5c",
+   "size": 13429324
+  },
+  "godot/assets/concept/meshy/recovered/01a0da9b-5fb8-75f2-b1c5-0ee49d0050b2_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "7ada8fbcbae8adc496a9f48453d763e2",
+   "size": 1631467
+  },
+  "godot/assets/concept/meshy/recovered/01a0da9b-5fb8-75f2-b1c5-0ee49d0050b2_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "87e3907d7393d3b4d69df94b2a27ea95",
+   "size": 9089579
+  },
+  "godot/assets/concept/meshy/recovered/01a0da9b-5fb8-75f2-b1c5-0ee49d0050b2_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "6ce611b34dd4bd0045a1dba1669cb7af",
+   "size": 66351
+  },
+  "godot/assets/concept/meshy/recovered/01a0da9f-5d30-7596-b74f-8fbf6eb62088.glb": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "c59c8c7d12b45c2343c0f1517dfd4e3a",
+   "size": 48100968
+  },
+  "godot/assets/concept/meshy/recovered/01a0da9f-5d30-7596-b74f-8fbf6eb62088.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "b2fb13760912ef42b88a03d71e0eafcb",
+   "size": 103373
+  },
+  "godot/assets/concept/meshy/recovered/01a0da9f-5d30-7596-b74f-8fbf6eb62088_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "6c937ae9a5bc1a372a7785adce610f8b",
+   "size": 13648049
+  },
+  "godot/assets/concept/meshy/recovered/01a0da9f-5d30-7596-b74f-8fbf6eb62088_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "0e7f67310df6b1c7f675e5625503310e",
+   "size": 1658197
+  },
+  "godot/assets/concept/meshy/recovered/01a0da9f-5d30-7596-b74f-8fbf6eb62088_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "450c661f3108c829fb44fac29a0557c7",
+   "size": 8739026
+  },
+  "godot/assets/concept/meshy/recovered/01a0da9f-5d30-7596-b74f-8fbf6eb62088_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "553b9295dd8dd85bf5ab8ec7765b124f",
+   "size": 78895
+  },
+  "godot/assets/concept/meshy/recovered/01a0daab-7c21-7685-a843-c77b82fd9fa4.glb": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "ea7eb7f5852118122166d01e826e4429",
+   "size": 41762616
+  },
+  "godot/assets/concept/meshy/recovered/01a0daab-7c21-7685-a843-c77b82fd9fa4.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "eba23ee577751486059e135b1b2a882f",
+   "size": 77340
+  },
+  "godot/assets/concept/meshy/recovered/01a0daab-7c21-7685-a843-c77b82fd9fa4_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "72cd22ba78fc12631cb4cb2c3ba407c6",
+   "size": 12435186
+  },
+  "godot/assets/concept/meshy/recovered/01a0daab-7c21-7685-a843-c77b82fd9fa4_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "9caee383ba2488e79a0b8ce6a328083e",
+   "size": 1486560
+  },
+  "godot/assets/concept/meshy/recovered/01a0daab-7c21-7685-a843-c77b82fd9fa4_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "8b51958385c863fe5049ac663ef3e1ff",
+   "size": 8488295
+  },
+  "godot/assets/concept/meshy/recovered/01a0daab-7c21-7685-a843-c77b82fd9fa4_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "11bef713c75d65bd0361a485e50f25ba",
+   "size": 73854
+  },
+  "godot/assets/concept/meshy/recovered/01a0db32-e720-7173-b56c-88590cdff1fe_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "4eb7145fd52b080f6a8bcfca4007b68b",
+   "size": 11765786
+  },
+  "godot/assets/concept/meshy/recovered/01a0db32-e720-7173-b56c-88590cdff1fe_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "3360c82589a6f2c505d541cbdab33b7b",
+   "size": 1445985
+  },
+  "godot/assets/concept/meshy/recovered/01a0db32-e720-7173-b56c-88590cdff1fe_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "75561c081c371136679a940a2a6212a5",
+   "size": 8112377
+  },
+  "godot/assets/concept/meshy/recovered/01a0db32-e720-7173-b56c-88590cdff1fe_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "36afa3bb9b4f833be4f4a1ec4219e838",
+   "size": 66165
+  },
+  "godot/assets/concept/meshy/recovered/01a0db4f-6267-7679-a301-ef0bdafd78ff.glb": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "058e510df94426ecc6e886e93ed88f9c",
+   "size": 49030072
+  },
+  "godot/assets/concept/meshy/recovered/01a0db4f-6267-7679-a301-ef0bdafd78ff.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "701ea27f418be3e66a7aac3f87ac7fab",
+   "size": 81650
+  },
+  "godot/assets/concept/meshy/recovered/01a0db4f-6267-7679-a301-ef0bdafd78ff_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "bc995063e1feeaf439eb69e6fd7b80b5",
+   "size": 13641787
+  },
+  "godot/assets/concept/meshy/recovered/01a0db4f-6267-7679-a301-ef0bdafd78ff_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "566ae855a060e91d91c776b6304f6463",
+   "size": 1381250
+  },
+  "godot/assets/concept/meshy/recovered/01a0db4f-6267-7679-a301-ef0bdafd78ff_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "35e485e7c01e7fcb211ecb3f00c1a77a",
+   "size": 9155444
+  },
+  "godot/assets/concept/meshy/recovered/01a0db4f-6267-7679-a301-ef0bdafd78ff_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "cbd1c78bebde62fdc41f3d0344164056",
+   "size": 69340
+  },
+  "godot/assets/concept/meshy/recovered/01a0db54-8f04-76b2-bb1c-7c3732ddef05_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "1dad341fe33a3452029235c2b3462faa",
+   "size": 13759708
+  },
+  "godot/assets/concept/meshy/recovered/01a0db54-8f04-76b2-bb1c-7c3732ddef05_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "b868c29a68d198668025538354078e14",
+   "size": 1426576
+  },
+  "godot/assets/concept/meshy/recovered/01a0db54-8f04-76b2-bb1c-7c3732ddef05_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "5ded8036fc5bae8908224e5a02c55ba5",
+   "size": 9253664
+  },
+  "godot/assets/concept/meshy/recovered/01a0db54-8f04-76b2-bb1c-7c3732ddef05_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "a70413a5578008bdca07a805c7c40c03",
+   "size": 72643
+  },
+  "godot/assets/concept/meshy/recovered/01a0db64-8ad3-7589-a412-e6c78fad91ba_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "f58a7c0ec50203d4e5b41fd230edabfc",
+   "size": 12175921
+  },
+  "godot/assets/concept/meshy/recovered/01a0db64-8ad3-7589-a412-e6c78fad91ba_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "ccee144cbee3536b5321041261e55df2",
+   "size": 1213457
+  },
+  "godot/assets/concept/meshy/recovered/01a0db64-8ad3-7589-a412-e6c78fad91ba_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "10554ff5ecc20729e30151003149b747",
+   "size": 8254953
+  },
+  "godot/assets/concept/meshy/recovered/01a0db64-8ad3-7589-a412-e6c78fad91ba_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "689275b05d9401abe334d8cf61ddecaf",
+   "size": 66582
+  },
+  "godot/assets/concept/meshy/recovered/01a0db68-5b93-72f2-b297-b5ae2fefcc09_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "9b7a74879f05b9ccfbebdbd81787f1e7",
+   "size": 11389422
+  },
+  "godot/assets/concept/meshy/recovered/01a0db68-5b93-72f2-b297-b5ae2fefcc09_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "7b688d5bdd9e6d1c28a3b54de6271b68",
+   "size": 1372519
+  },
+  "godot/assets/concept/meshy/recovered/01a0db68-5b93-72f2-b297-b5ae2fefcc09_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "362631f20d9c6834bc1c0a07399c8406",
+   "size": 7691831
+  },
+  "godot/assets/concept/meshy/recovered/01a0db68-5b93-72f2-b297-b5ae2fefcc09_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "e2653c2bb48d84ba5610609879a3d1fd",
+   "size": 67660
+  },
+  "godot/assets/concept/meshy/recovered/01a0db75-d0da-74b7-8c78-9dda538127c4_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "64bba753132994bd40d07355a1ebb218",
+   "size": 13003671
+  },
+  "godot/assets/concept/meshy/recovered/01a0db75-d0da-74b7-8c78-9dda538127c4_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "56044fe899f4527cbdb3c4ac630751ce",
+   "size": 1920137
+  },
+  "godot/assets/concept/meshy/recovered/01a0db75-d0da-74b7-8c78-9dda538127c4_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "e2dcfab508fd604d169c0f5eeb27296a",
+   "size": 8688317
+  },
+  "godot/assets/concept/meshy/recovered/01a0db75-d0da-74b7-8c78-9dda538127c4_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "b41c97ce511a2c9db21f815a4dd267fd",
+   "size": 84280
+  },
+  "godot/assets/concept/meshy/recovered/01a0db82-1ef6-7006-a472-1bf52250b465_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "1a02afd8a673d2e99f139f3a71838dd3",
+   "size": 11393236
+  },
+  "godot/assets/concept/meshy/recovered/01a0db82-1ef6-7006-a472-1bf52250b465_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "e319ae34a40fc711b590758ed0711ae5",
+   "size": 1491860
+  },
+  "godot/assets/concept/meshy/recovered/01a0db82-1ef6-7006-a472-1bf52250b465_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "e207408928bf8c5e7390bcef438eec5d",
+   "size": 7639674
+  },
+  "godot/assets/concept/meshy/recovered/01a0db82-1ef6-7006-a472-1bf52250b465_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "dc4126da4e030d30f9f3b4a0fe1e2721",
+   "size": 72765
+  },
+  "godot/assets/concept/meshy/recovered/01a0db86-911a-744a-98b8-1b43d09682ea_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "074bfc32ed8e2760ce199e9d1596506b",
+   "size": 11326796
+  },
+  "godot/assets/concept/meshy/recovered/01a0db86-911a-744a-98b8-1b43d09682ea_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "868ffc15c34f2bc3be728f0b9205d32b",
+   "size": 1651418
+  },
+  "godot/assets/concept/meshy/recovered/01a0db86-911a-744a-98b8-1b43d09682ea_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "fb95d35f7d1f009aeb8c4066f57bec07",
+   "size": 7648373
+  },
+  "godot/assets/concept/meshy/recovered/01a0db86-911a-744a-98b8-1b43d09682ea_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "ec6df2f98636a2cf0397cd9873930348",
+   "size": 67574
+  },
+  "godot/assets/concept/meshy/recovered/01a0db89-e5f0-74d2-b1f6-de287b0c6023_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "edd072ee800d1b00ef7e958d2a1abe18",
+   "size": 14385807
+  },
+  "godot/assets/concept/meshy/recovered/01a0db89-e5f0-74d2-b1f6-de287b0c6023_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "2019947fd38225cea6d7df188b652807",
+   "size": 1641537
+  },
+  "godot/assets/concept/meshy/recovered/01a0db89-e5f0-74d2-b1f6-de287b0c6023_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "947f69682ed5f7c45c88ea4a5fe940bf",
+   "size": 9615684
+  },
+  "godot/assets/concept/meshy/recovered/01a0db89-e5f0-74d2-b1f6-de287b0c6023_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "a09aa62a06344d53fc6eb336daf3c865",
+   "size": 66927
+  },
+  "godot/assets/concept/meshy/recovered/01a0db8d-614c-759f-a852-e8f9148d4b55.glb": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "077da610aecb579cfa4cab5756b20cf3",
+   "size": 41180220
+  },
+  "godot/assets/concept/meshy/recovered/01a0db8d-614c-759f-a852-e8f9148d4b55.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "19165b0db23b94c10c1dded5b4522748",
+   "size": 73980
+  },
+  "godot/assets/concept/meshy/recovered/01a0db8d-614c-759f-a852-e8f9148d4b55_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "4749f5c9fbcddf363bfd109cbf74698e",
+   "size": 13788472
+  },
+  "godot/assets/concept/meshy/recovered/01a0db8d-614c-759f-a852-e8f9148d4b55_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "867582c4582e127e57137c5a4e464869",
+   "size": 1463765
+  },
+  "godot/assets/concept/meshy/recovered/01a0db8d-614c-759f-a852-e8f9148d4b55_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "d29c7d1a2bdd00dd996adad87c825bb6",
+   "size": 9558841
+  },
+  "godot/assets/concept/meshy/recovered/01a0db8d-614c-759f-a852-e8f9148d4b55_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "82da7c7d5f278a3fab89ad5c6ec7f2aa",
+   "size": 66179
+  },
+  "godot/assets/concept/meshy/recovered/01a0db90-c7c3-75e6-952e-e685d1811ebf_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "c2ffb509a0838f230dfcbc02b58101da",
+   "size": 13734404
+  },
+  "godot/assets/concept/meshy/recovered/01a0db90-c7c3-75e6-952e-e685d1811ebf_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "e6b3f6b8c66a484e2db1eacaedc3a51c",
+   "size": 1404141
+  },
+  "godot/assets/concept/meshy/recovered/01a0db90-c7c3-75e6-952e-e685d1811ebf_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "dfd99a7fbe0190c2b76eecbdb49a24c0",
+   "size": 9673868
+  },
+  "godot/assets/concept/meshy/recovered/01a0db90-c7c3-75e6-952e-e685d1811ebf_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "0608d6415dfb966e0bbc0def13aaf338",
+   "size": 72758
+  },
+  "godot/assets/concept/meshy/recovered/01a0db95-114e-72c9-8f17-a17ee3661d5b_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "24d1ea3cf51f23d47a39e3a00ff7815f",
+   "size": 11667823
+  },
+  "godot/assets/concept/meshy/recovered/01a0db95-114e-72c9-8f17-a17ee3661d5b_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "91581537b5c5d7e336471c6286c696a2",
+   "size": 1207071
+  },
+  "godot/assets/concept/meshy/recovered/01a0db95-114e-72c9-8f17-a17ee3661d5b_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "6fca368aabc664d6338481a023799f08",
+   "size": 7950205
+  },
+  "godot/assets/concept/meshy/recovered/01a0db95-114e-72c9-8f17-a17ee3661d5b_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "4f9695fc884aa19e9d330fe04ceb9929",
+   "size": 72080
+  },
+  "godot/assets/concept/meshy/recovered/01a0db9f-fc30-7788-bb34-f72f9588b810_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "e0ae963ffe43a82a8c8c89528055397d",
+   "size": 13133341
+  },
+  "godot/assets/concept/meshy/recovered/01a0db9f-fc30-7788-bb34-f72f9588b810_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "c960bfb7170de0662f42b7577d815fd5",
+   "size": 1572496
+  },
+  "godot/assets/concept/meshy/recovered/01a0db9f-fc30-7788-bb34-f72f9588b810_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "4f9a3ad43d196b84e2ea0404b0e05258",
+   "size": 8679058
+  },
+  "godot/assets/concept/meshy/recovered/01a0db9f-fc30-7788-bb34-f72f9588b810_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "b21f52241dd868dbf5ad88ba0287f191",
+   "size": 67828
+  },
+  "godot/assets/concept/meshy/recovered/01a0dba6-ec82-77a8-a54d-ff93bf38c542_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "a887e05f56ce3930a8474296c882074c",
+   "size": 11251461
+  },
+  "godot/assets/concept/meshy/recovered/01a0dba6-ec82-77a8-a54d-ff93bf38c542_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "3a39c559cd548c66d5441cf160257b87",
+   "size": 1260715
+  },
+  "godot/assets/concept/meshy/recovered/01a0dba6-ec82-77a8-a54d-ff93bf38c542_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "9b97320137d900df7ea831b01f3c641e",
+   "size": 7769153
+  },
+  "godot/assets/concept/meshy/recovered/01a0dba6-ec82-77a8-a54d-ff93bf38c542_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "36afa3bb9b4f833be4f4a1ec4219e838",
+   "size": 66165
+  },
+  "godot/assets/concept/meshy/recovered/01a0dbad-42ee-7074-921e-4398ec968313_0.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "8b8ddd057ce36b2e0b3cc5039a32cd65",
+   "size": 12542701
+  },
+  "godot/assets/concept/meshy/recovered/01a0dbad-42ee-7074-921e-4398ec968313_1.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "65831bb6e1ce29d3125b06e2845a864a",
+   "size": 1620961
+  },
+  "godot/assets/concept/meshy/recovered/01a0dbad-42ee-7074-921e-4398ec968313_2.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "0bb148b2383a7a4acca822051c6d497e",
+   "size": 8464609
+  },
+  "godot/assets/concept/meshy/recovered/01a0dbad-42ee-7074-921e-4398ec968313_3.jpg": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "aae857e7f0c456d4c7d8be423ca3c86a",
+   "size": 67016
+  },
+  "godot/assets/concept/meshy/rick_cosmic/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "32e7515e070b2b2aa8761931a30b34aa",
+   "size": 79851
+  },
+  "godot/assets/concept/meshy/rick_cosmic/rick_cosmic_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "c02b40b53613cfc2926b1f6be8b9e996",
+   "size": 84004
+  },
+  "godot/assets/concept/meshy/sam_miller_apron/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "9ed8664de5fc58be068353dac5b5fa1c",
+   "size": 76633
+  },
+  "godot/assets/concept/meshy/sam_miller_apron/sam_miller_apron_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "9ed8664de5fc58be068353dac5b5fa1c",
+   "size": 76633
+  },
+  "godot/assets/concept/meshy/sammy/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "fa084b0a9137aea427c7b5adff61a51e",
+   "size": 67521
+  },
+  "godot/assets/concept/meshy/sammy/sammy_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "fa084b0a9137aea427c7b5adff61a51e",
+   "size": 67521
+  },
+  "godot/assets/concept/meshy/skip_donnelly/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "79471bc4b2f4f14e1a7aa32e20708a28",
+   "size": 71019
+  },
+  "godot/assets/concept/meshy/skip_donnelly/skip_donnelly_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "79471bc4b2f4f14e1a7aa32e20708a28",
+   "size": 71019
+  },
+  "godot/assets/concept/meshy/tanya_horne/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "5155e7561bc4220fb8617f767ecea7f7",
+   "size": 58774
+  },
+  "godot/assets/concept/meshy/tanya_horne/tanya_horne_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "5155e7561bc4220fb8617f767ecea7f7",
+   "size": 58774
+  },
+  "godot/assets/concept/meshy/the_demon/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "136d82db2cdf14bbea290bfd45e1909f",
+   "size": 101627
+  },
+  "godot/assets/concept/meshy/the_demon/the_demon_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "136d82db2cdf14bbea290bfd45e1909f",
+   "size": 101627
+  },
+  "godot/assets/concept/meshy/the_drifter/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "cffc04a12667559abdbaaa74d0aadc71",
+   "size": 102353
+  },
+  "godot/assets/concept/meshy/the_drifter/the_drifter_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "cffc04a12667559abdbaaa74d0aadc71",
+   "size": 102353
+  },
+  "godot/assets/concept/meshy/the_frog/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "01e25ee43afc785ec3dfefaa6640112f",
+   "size": 112656
+  },
+  "godot/assets/concept/meshy/the_frog/the_frog_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "01e25ee43afc785ec3dfefaa6640112f",
+   "size": 112656
+  },
+  "godot/assets/concept/meshy/the_stranger/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "395840911e136f403852f947b0946989",
+   "size": 81286
+  },
+  "godot/assets/concept/meshy/the_stranger/the_stranger_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "395840911e136f403852f947b0946989",
+   "size": 81286
+  },
+  "godot/assets/concept/meshy/thomas_henderson/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "0ba34be2e17e65a42cd9944116ca4d34",
+   "size": 71156
+  },
+  "godot/assets/concept/meshy/thomas_henderson/thomas_henderson_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "0ba34be2e17e65a42cd9944116ca4d34",
+   "size": 71156
+  },
+  "godot/assets/concept/meshy/vince_kane/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "933fc0d3febefd121058369c0914079a",
+   "size": 83707
+  },
+  "godot/assets/concept/meshy/vince_kane/vince_kane_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "933fc0d3febefd121058369c0914079a",
+   "size": 83707
+  },
+  "godot/assets/concept/meshy/wagner/front.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "c718dea9d7a5ae4af3186c8887c6e535",
+   "size": 86975
+  },
+  "godot/assets/concept/meshy/wagner/wagner_front_meshy_recovered.png": {
+   "at": "2026-10-01T01:23:48+00:00",
+   "md5": "c718dea9d7a5ae4af3186c8887c6e535",
+   "size": 86975
+  }
+ },
+ "remote": "gdrive:ModernMythology"
+}
