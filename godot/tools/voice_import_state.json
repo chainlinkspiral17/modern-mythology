@@ -2,50 +2,50 @@
  "zips": {
   "0099714b0801649712a936cf1d2259c2": {
    "at": "2026-10-01",
-   "kept": 100,
+   "kept": 117,
    "scene": "vol5_ch12_hanged",
    "skipped": 1,
-   "wired": 43,
+   "wired": 0,
    "zip": "voice_dropin_vol5_ch12_hanged.zip"
   },
   "016c88030d6252dc971ddda6d1b6fa78": {
    "at": "2026-10-01",
-   "kept": 22,
+   "kept": 27,
    "scene": "vol6_ch2_kwik_stop",
    "skipped": 0,
-   "wired": 11,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch2_kwik_stop.zip"
   },
   "02f9122328a1eb31501b299e77f102be": {
    "at": "2026-10-01",
-   "kept": 37,
+   "kept": 41,
    "scene": "vol6_ch3_jesse_bedroom",
    "skipped": 0,
-   "wired": 9,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch3_jesse_bedroom.zip"
   },
   "0337354f1b52046f8810082f35550037": {
    "at": "2026-10-01",
-   "kept": 12,
+   "kept": 14,
    "scene": "vol6_ch6_safehouse",
    "skipped": 0,
-   "wired": 6,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch6_safehouse.zip"
   },
   "043b9fb56ef7ab7241186840a1a27d2c": {
    "at": "2026-10-01",
-   "kept": 6,
+   "kept": 7,
    "scene": "vol6_ch1_cosmic_comics",
    "skipped": 0,
-   "wired": 2,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch1_cosmic_comics (2).zip"
   },
   "044c5f3fedbbea4b143f4f09a351b855": {
    "at": "2026-10-01",
-   "kept": 6,
+   "kept": 7,
    "scene": "vol6_ch1_garage",
    "skipped": 0,
-   "wired": 2,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch1_garage.zip"
   },
   "06291bce87ae37b9827c185a747a1525": {
@@ -58,10 +58,10 @@
   },
   "0ad8c00ac18c7a32432aaa734818f055": {
    "at": "2026-10-01",
-   "kept": 48,
+   "kept": 74,
    "scene": "vol5_ch18_moon",
    "skipped": 1,
-   "wired": 129,
+   "wired": 0,
    "zip": "voice_dropin_vol5_ch18_moon.zip"
   },
   "105f3caef814264d399d264ddb3de2fa": {
@@ -74,18 +74,18 @@
   },
   "10c432b1c0ed22d0f6163fcdcc9d2ad1": {
    "at": "2026-10-01",
-   "kept": 14,
+   "kept": 15,
    "scene": "vol6_ch6_kwik_stop_open",
    "skipped": 0,
-   "wired": 3,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch6_kwik_stop_open.zip"
   },
   "115ca34f7e2b875637112a3e8ddcdeac": {
    "at": "2026-10-01",
-   "kept": 71,
+   "kept": 78,
    "scene": "vol6_ch4_speak_spell",
    "skipped": 0,
-   "wired": 18,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch4_speak_spell.zip"
   },
   "116ee61f395dbda237ffc482e22dc1d9": {
@@ -98,34 +98,34 @@
   },
   "133931b588c945b34d1a002094fdc4d6": {
    "at": "2026-10-01",
-   "kept": 89,
+   "kept": 107,
    "scene": "vol5_ch11_justice",
    "skipped": 0,
-   "wired": 48,
+   "wired": 0,
    "zip": "voice_dropin_vol5_ch11_justice.zip"
   },
   "13497e0fdf4c91173374d2d9cda583d9": {
    "at": "2026-10-01",
-   "kept": 5,
+   "kept": 13,
    "scene": "vol6_ch1_gas_and_go",
    "skipped": 0,
-   "wired": 23,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch1_gas_and_go.zip"
   },
   "13f62fd958c67b5fe2e9cb4888e793fc": {
    "at": "2026-10-01",
-   "kept": 76,
+   "kept": 89,
    "scene": "vol6_ch7_pit_stop",
    "skipped": 0,
-   "wired": 35,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch7_pit_stop.zip"
   },
   "145805805d3fbf41761c081d27f2ce69": {
    "at": "2026-10-01",
-   "kept": 31,
+   "kept": 34,
    "scene": "vol6_ch8_hospital_318",
    "skipped": 0,
-   "wired": 7,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch8_hospital_318.zip"
   },
   "156b98c09bf63f229cc06c9f0ec1d6d3": {
@@ -138,50 +138,50 @@
   },
   "173788a650277515e141ceb45688d5bb": {
    "at": "2026-10-01",
-   "kept": 82,
+   "kept": 88,
    "scene": "vol6_ch7_hospital",
    "skipped": 0,
-   "wired": 12,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch7_hospital.zip"
   },
   "17bfbc6c8c7e562d0921d5af0124951f": {
    "at": "2026-10-01",
-   "kept": 36,
+   "kept": 38,
    "scene": "vol6_ch15_home",
    "skipped": 0,
-   "wired": 4,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch15_home.zip"
   },
   "17ee2ae0095dac6f15d34632ddcee0c0": {
    "at": "2026-10-01",
-   "kept": 10,
+   "kept": 11,
    "scene": "vol6_ch1_bedroom",
    "skipped": 0,
-   "wired": 2,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch1_bedroom.zip"
   },
   "190ae8b6a9e9b5c4319cc9e586005747": {
    "at": "2026-10-01",
-   "kept": 57,
+   "kept": 61,
    "scene": "vol6_ch2_cosmic",
    "skipped": 0,
-   "wired": 8,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch2_cosmic.zip"
   },
   "1ae35c0678acac60cb6e64d05cdfe832": {
    "at": "2026-10-01",
-   "kept": 15,
+   "kept": 20,
    "scene": "vol6_ch4_storm",
    "skipped": 0,
-   "wired": 12,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch4_storm.zip"
   },
   "1b0af628e521fc5c0ed04315b657dcc1": {
    "at": "2026-10-01",
-   "kept": 90,
+   "kept": 110,
    "scene": "vol6_ch14_substation_nine",
    "skipped": 0,
-   "wired": 54,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch14_substation_nine.zip"
   },
   "1d3a8dbc03a5cd79023eb0718cce9d7e": {
@@ -202,58 +202,58 @@
   },
   "2051ae6491bc9266df57caafd0948623": {
    "at": "2026-10-01",
-   "kept": 10,
+   "kept": 15,
    "scene": "vol6_ch3_pit_stop_office",
    "skipped": 0,
-   "wired": 10,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch3_pit_stop_office.zip"
   },
   "2172e1483427888f41c03e7d0f5f232a": {
    "at": "2026-10-01",
-   "kept": 54,
+   "kept": 76,
    "scene": "vol5_ch13_death",
    "skipped": 0,
-   "wired": 72,
+   "wired": 0,
    "zip": "voice_dropin_vol5_ch13_death.zip"
   },
   "21ca3ba314a60ab1092cf6c9a1ee2704": {
    "at": "2026-10-01",
-   "kept": 70,
+   "kept": 78,
    "scene": "vol6_ch3_back_room",
    "skipped": 0,
-   "wired": 17,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch3_back_room.zip"
   },
   "283bb55fb6f44d6a8ca9d013942a81e2": {
    "at": "2026-10-01",
-   "kept": 15,
+   "kept": 20,
    "scene": "vol6_ch5_miller_drive",
    "skipped": 0,
-   "wired": 13,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch5_miller_drive.zip"
   },
   "28547f3ee3fc43905def03198abd6eb6": {
    "at": "2026-10-01",
-   "kept": 43,
+   "kept": 46,
    "scene": "vol6_ch3_circle_k",
    "skipped": 0,
-   "wired": 7,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch3_circle_k.zip"
   },
   "2bfdd183c7bc7b3159d26ac6a256a018": {
    "at": "2026-10-01",
-   "kept": 111,
+   "kept": 119,
    "scene": "vol6_ch9_room",
    "skipped": 0,
-   "wired": 21,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch9_room.zip"
   },
   "2f282f59d265a5c83eea063c7f605cbb": {
    "at": "2026-10-01",
-   "kept": 93,
+   "kept": 98,
    "scene": "vol5_ch4_emperor",
    "skipped": 0,
-   "wired": 11,
+   "wired": 0,
    "zip": "voice_dropin_vol5_ch4_emperor.zip"
   },
   "2f292ddd11253b759bde682f49166ebf": {
@@ -266,10 +266,10 @@
   },
   "30c54df0b65f1d57160adfd846f04dc8": {
    "at": "2026-10-01",
-   "kept": 105,
+   "kept": 126,
    "scene": "vol5_ch7_chariot",
    "skipped": 1,
-   "wired": 56,
+   "wired": 0,
    "zip": "voice_dropin_vol5_ch7_chariot.zip"
   },
   "317bae308ec5fd08603bfc5bff7fbd3f": {
@@ -282,50 +282,50 @@
   },
   "320b200695323dec74dd992cdb9dfdbc": {
    "at": "2026-10-01",
-   "kept": 60,
+   "kept": 81,
    "scene": "vol5_ch19_sun",
    "skipped": 1,
-   "wired": 96,
+   "wired": 0,
    "zip": "voice_dropin_vol5_ch19_sun.zip"
   },
   "342d93c524bfc8d8ed1b72ec96604b5f": {
    "at": "2026-10-01",
-   "kept": 54,
+   "kept": 56,
    "scene": "vol6_ch7_ben_room",
    "skipped": 0,
-   "wired": 5,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch7_ben_room.zip"
   },
   "35839efc16ed9ed882fe9683a5ad42a3": {
    "at": "2026-10-01",
-   "kept": 10,
+   "kept": 13,
    "scene": "vol6_ch3_sam_bedroom",
    "skipped": 0,
-   "wired": 8,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch3_sam_bedroom.zip"
   },
   "3a820fa393e59491bd0b1499200985f6": {
    "at": "2026-10-01",
-   "kept": 167,
+   "kept": 198,
    "scene": "vol6_ch10_night_shift",
    "skipped": 0,
-   "wired": 85,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch10_night_shift.zip"
   },
   "405a3f3d3c06661228166fee0a1e57bf": {
    "at": "2026-10-01",
-   "kept": 132,
+   "kept": 141,
    "scene": "vol6_ch16_dawn",
    "skipped": 0,
-   "wired": 20,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch16_dawn.zip"
   },
   "4132b57aa39f3b43e91fe384176db068": {
    "at": "2026-10-01",
-   "kept": 1,
+   "kept": 4,
    "scene": "vol6_ch1_graciela",
    "skipped": 0,
-   "wired": 6,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch1_graciela (1).zip"
   },
   "424a761fc3f08a8a39d468ed815f0511": {
@@ -346,122 +346,122 @@
   },
   "45ae21eba815bda25a495ea6946055d3": {
    "at": "2026-10-01",
-   "kept": 1,
+   "kept": 3,
    "scene": "vol6_ch1_maya_bedroom",
    "skipped": 0,
-   "wired": 5,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch1_maya_bedroom (1).zip"
   },
   "492c15a8a3355923b08fc3a20c0e1c52": {
    "at": "2026-10-01",
-   "kept": 21,
+   "kept": 45,
    "scene": "vol5_ch21_world",
    "skipped": 1,
-   "wired": 126,
+   "wired": 0,
    "zip": "voice_dropin_vol5_ch21_world.zip"
   },
   "4932f4134cd81101c6b585ec95f76185": {
    "at": "2026-10-01",
-   "kept": 62,
+   "kept": 73,
    "scene": "vol6_ch4_kitchen",
    "skipped": 0,
-   "wired": 22,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch4_kitchen.zip"
   },
   "4a70fd4f9d4257e48c2c20fb66318312": {
    "at": "2026-10-01",
-   "kept": 54,
+   "kept": 72,
    "scene": "vol6_ch0_prelude",
    "skipped": 0,
-   "wired": 40,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch0_prelude.zip"
   },
   "4e279fa9cee4b611317e5076b1b0385e": {
    "at": "2026-10-01",
-   "kept": 94,
+   "kept": 108,
    "scene": "vol6_ch14_live_oak",
    "skipped": 0,
-   "wired": 36,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch14_live_oak.zip"
   },
   "504734ffdf465e79a3e1e14caebe9e47": {
    "at": "2026-10-01",
-   "kept": 39,
+   "kept": 48,
    "scene": "vol6_ch6_interstate",
    "skipped": 0,
-   "wired": 24,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch6_interstate.zip"
   },
   "50feb7347d2401b09772dc1fc200b093": {
    "at": "2026-10-01",
-   "kept": 84,
+   "kept": 91,
    "scene": "vol6_ch7_henderson_kitchen",
    "skipped": 0,
-   "wired": 23,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch7_henderson_kitchen.zip"
   },
   "525592de8756c91341ea417dec676181": {
    "at": "2026-10-01",
-   "kept": 18,
+   "kept": 19,
    "scene": "vol6_ch6_pit_stop",
    "skipped": 0,
-   "wired": 2,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch6_pit_stop.zip"
   },
   "5d58792498178644ae577852b041254f": {
    "at": "2026-10-01",
-   "kept": 195,
+   "kept": 214,
    "scene": "vol6_ch12_cosmic",
    "skipped": 0,
-   "wired": 51,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch12_cosmic.zip"
   },
   "5fd9f64df9993fba4d4e355e501d9085": {
    "at": "2026-10-01",
-   "kept": 12,
+   "kept": 13,
    "scene": "vol6_ch2_gas_oracles",
    "skipped": 0,
-   "wired": 2,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch2_gas_oracles.zip"
   },
   "6189716ac71ec372d445da44b0adac88": {
    "at": "2026-10-01",
-   "kept": 63,
+   "kept": 82,
    "scene": "vol6_ch5_garage",
    "skipped": 0,
-   "wired": 51,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch5_garage.zip"
   },
   "640a906142657b5a2af6eba1cd1b241d": {
    "at": "2026-10-01",
-   "kept": 22,
+   "kept": 27,
    "scene": "vol6_ch5_meadowlark",
    "skipped": 0,
-   "wired": 13,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch5_meadowlark.zip"
   },
   "6595e3d5663a3286dee9ead402aa418b": {
    "at": "2026-10-01",
-   "kept": 58,
+   "kept": 80,
    "scene": "vol5_ch9_hermit",
    "skipped": 1,
-   "wired": 55,
+   "wired": 0,
    "zip": "voice_dropin_vol5_ch9_hermit (1).zip"
   },
   "66a085b44bd2d1ec56d9f99def1e0f93": {
    "at": "2026-10-01",
-   "kept": 20,
+   "kept": 22,
    "scene": "vol6_ch3_coda",
    "skipped": 0,
-   "wired": 4,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch3_coda.zip"
   },
   "670ebc0006f9cf122544dbf4548da33c": {
    "at": "2026-10-01",
-   "kept": 51,
+   "kept": 74,
    "scene": "vol5_ch14_temperance",
    "skipped": 1,
-   "wired": 57,
+   "wired": 0,
    "zip": "voice_dropin_vol5_ch14_temperance.zip"
   },
   "693f5a1fd4feb3013119b1168832f2ad": {
@@ -474,10 +474,10 @@
   },
   "6a2183889b257c7c855b56b35bddf02b": {
    "at": "2026-10-01",
-   "kept": 23,
+   "kept": 27,
    "scene": "vol6_ch6_miller_kitchen",
    "skipped": 0,
-   "wired": 11,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch6_miller_kitchen.zip"
   },
   "6b049af488b95ab94378bea399ec7793": {
@@ -490,18 +490,18 @@
   },
   "6dad98ff3706bbc8eaadda7dd24e0dca": {
    "at": "2026-10-01",
-   "kept": 18,
+   "kept": 22,
    "scene": "vol6_ch6_sam_bedroom",
    "skipped": 0,
-   "wired": 10,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch6_sam_bedroom.zip"
   },
   "72c7b3a7d34baaec2c3350d22b58f438": {
    "at": "2026-10-01",
-   "kept": 37,
+   "kept": 39,
    "scene": "vol6_ch2_gas_go_lot",
    "skipped": 0,
-   "wired": 4,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch2_gas_go_lot.zip"
   },
   "73ad5cecd92c8ff6da8c706f5e17c6ec": {
@@ -514,66 +514,66 @@
   },
   "7777821048b96a3ab9dcec5ee987cc12": {
    "at": "2026-10-01",
-   "kept": 85,
+   "kept": 109,
    "scene": "vol5_ch10_wheel",
    "skipped": 1,
-   "wired": 64,
+   "wired": 0,
    "zip": "voice_dropin_vol5_ch10_wheel.zip"
   },
   "7a2162381d31a04a9bb3e367e7343be0": {
    "at": "2026-10-01",
-   "kept": 51,
+   "kept": 53,
    "scene": "vol6_ch13_home",
    "skipped": 0,
-   "wired": 5,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch13_home.zip"
   },
   "7be017f1f724006eea2ba79fc2979a99": {
    "at": "2026-10-01",
-   "kept": 79,
+   "kept": 88,
    "scene": "vol6_ch12_porch",
    "skipped": 0,
-   "wired": 24,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch12_porch.zip"
   },
   "7ed7e2b8b1981898c6dc1915b666aaeb": {
    "at": "2026-10-01",
-   "kept": 12,
+   "kept": 14,
    "scene": "vol6_ch6_tome",
    "skipped": 0,
-   "wired": 5,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch6_tome.zip"
   },
   "81df445646b2db4fa161c62b8da36e0d": {
    "at": "2026-10-01",
-   "kept": 83,
+   "kept": 103,
    "scene": "vol5_ch16_tower",
    "skipped": 1,
-   "wired": 51,
+   "wired": 0,
    "zip": "voice_dropin_vol5_ch16_tower.zip"
   },
   "83b9da489dd3da9813d2740b4358c48f": {
    "at": "2026-10-01",
-   "kept": 10,
+   "kept": 11,
    "scene": "vol6_ch1_cosmic_comics",
    "skipped": 0,
-   "wired": 2,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch1_cosmic_comics.zip"
   },
   "846fb5523dff12cf60e12e1cc56c6b0d": {
    "at": "2026-10-01",
-   "kept": 12,
+   "kept": 16,
    "scene": "vol6_ch1_stranger",
    "skipped": 0,
-   "wired": 9,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch1_stranger.zip"
   },
   "848bfe6ff05c0905f4dbce4b2fc9278f": {
    "at": "2026-10-01",
-   "kept": 56,
+   "kept": 76,
    "scene": "vol5_ch5_hierophant",
    "skipped": 0,
-   "wired": 44,
+   "wired": 0,
    "zip": "voice_dropin_vol5_ch5_hierophant.zip"
   },
   "8702d10ce28a8b2f7a3944b210ed99f7": {
@@ -586,10 +586,10 @@
   },
   "870303404b22e4e13a9f4eb7ddafd68f": {
    "at": "2026-10-01",
-   "kept": 11,
+   "kept": 12,
    "scene": "vol6_ch6_kwik_stop_text",
    "skipped": 0,
-   "wired": 2,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch6_kwik_stop_text.zip"
   },
   "871c590ac40fbcb38d4cd41fc7f1f415": {
@@ -602,66 +602,66 @@
   },
   "88cff8452b2de101c4ed783d7ebf6d28": {
    "at": "2026-10-01",
-   "kept": 77,
+   "kept": 90,
    "scene": "vol6_ch8_lake_palestine",
    "skipped": 0,
-   "wired": 45,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch8_lake_palestine.zip"
   },
   "8c1907f33871a0632ef8bba599768b4b": {
    "at": "2026-10-01",
-   "kept": 21,
+   "kept": 22,
    "scene": "vol6_ch6_jesse_bedroom",
    "skipped": 0,
-   "wired": 2,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch6_jesse_bedroom.zip"
   },
   "8e36b6ed9b4752029617979df9f16918": {
    "at": "2026-10-01",
-   "kept": 24,
+   "kept": 31,
    "scene": "vol6_ch4_kwik_stop",
    "skipped": 0,
-   "wired": 17,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch4_kwik_stop.zip"
   },
   "91f4efdb68bd6a5a78900a56d2324f5c": {
    "at": "2026-10-01",
-   "kept": 23,
+   "kept": 24,
    "scene": "vol6_ch3_parking_lot",
    "skipped": 0,
-   "wired": 2,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch3_parking_lot.zip"
   },
   "9239ab37c6371d18396c2a5388ca58c1": {
    "at": "2026-10-01",
-   "kept": 13,
+   "kept": 16,
    "scene": "vol6_ch6_miller_truck",
    "skipped": 0,
-   "wired": 7,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch6_miller_truck.zip"
   },
   "9590a70debb5c37a5a908791233d19be": {
    "at": "2026-10-01",
-   "kept": 16,
+   "kept": 19,
    "scene": "vol6_ch7_safehouse",
    "skipped": 0,
-   "wired": 7,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch7_safehouse.zip"
   },
   "960926a00ae95719550cadc244bd1064": {
    "at": "2026-10-01",
-   "kept": 12,
+   "kept": 13,
    "scene": "vol6_ch1_shift_change",
    "skipped": 0,
-   "wired": 2,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch1_shift_change.zip"
   },
   "9b2fe9f33c4238bbb152c3184f6e703b": {
    "at": "2026-10-01",
-   "kept": 42,
+   "kept": 43,
    "scene": "vol6_ch2_maya_bedroom",
    "skipped": 0,
-   "wired": 3,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch2_maya_bedroom.zip"
   },
   "9b6bdb73c7cb9a9eb6147e88859170f7": {
@@ -674,10 +674,10 @@
   },
   "9d1fa8dec227ad6d4a81e6daf4602fff": {
    "at": "2026-10-01",
-   "kept": 20,
+   "kept": 25,
    "scene": "vol6_ch5_radio",
    "skipped": 0,
-   "wired": 13,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch5_radio.zip"
   },
   "9f1272170dd324d36f440e52d0ad51cf": {
@@ -690,42 +690,42 @@
   },
   "a2bc861ecf9f1b2019827b9c7252261c": {
    "at": "2026-10-01",
-   "kept": 15,
+   "kept": 18,
    "scene": "vol6_ch6_fueling_station",
    "skipped": 0,
-   "wired": 8,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch6_fueling_station.zip"
   },
   "a49772ad9683eb0a669fa3e1953d7eaa": {
    "at": "2026-10-01",
-   "kept": 143,
+   "kept": 174,
    "scene": "vol6_ch11_kitchen",
    "skipped": 0,
-   "wired": 85,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch11_kitchen.zip"
   },
   "a84994b70e06c173e3c07829b14f4adb": {
    "at": "2026-10-01",
-   "kept": 81,
+   "kept": 88,
    "scene": "vol6_ch2_dumpster",
    "skipped": 1,
-   "wired": 14,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch2_dumpster.zip"
   },
   "ac54ce09a9c90d71fc2e4596f62ac617": {
    "at": "2026-10-01",
-   "kept": 13,
+   "kept": 16,
    "scene": "vol6_ch4_miller_office",
    "skipped": 0,
-   "wired": 7,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch4_miller_office.zip"
   },
   "ae1197f2a421c32e8e13844d084bd565": {
    "at": "2026-10-01",
-   "kept": 32,
+   "kept": 35,
    "scene": "vol6_ch2_bindery",
    "skipped": 0,
-   "wired": 8,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch2_bindery.zip"
   },
   "af5b854e78acf0c2580534275ec0f3b1": {
@@ -746,10 +746,10 @@
   },
   "b6ae93b16ef87fec8a35a375d0d2ddd6": {
    "at": "2026-10-01",
-   "kept": 31,
+   "kept": 63,
    "scene": "vol5_ch20_judgement",
    "skipped": 1,
-   "wired": 197,
+   "wired": 0,
    "zip": "voice_dropin_vol5_ch20_judgement.zip"
   },
   "bd30b4c6c549f2660129713774ee813c": {
@@ -762,50 +762,50 @@
   },
   "c19099acc52c00b149e6c7cd8474f13e": {
    "at": "2026-10-01",
-   "kept": 50,
+   "kept": 52,
    "scene": "vol6_ch4_pit_stop",
    "skipped": 0,
-   "wired": 5,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch4_pit_stop.zip"
   },
   "c232f4a133e61cc255a88487f210fb84": {
    "at": "2026-10-01",
-   "kept": 12,
+   "kept": 16,
    "scene": "vol6_ch6_boyd",
    "skipped": 0,
-   "wired": 11,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch6_boyd.zip"
   },
   "c2ff54582ec4521528a005130f76584e": {
    "at": "2026-10-01",
-   "kept": 39,
+   "kept": 41,
    "scene": "vol6_ch8_kowalski_kitchen",
    "skipped": 0,
-   "wired": 4,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch8_kowalski_kitchen.zip"
   },
   "c9383c1c5548e920f8763c16c62705f2": {
    "at": "2026-10-01",
-   "kept": 99,
+   "kept": 108,
    "scene": "vol6_ch11_eileen",
    "skipped": 0,
-   "wired": 25,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch11_eileen.zip"
   },
   "ca565303e0a47f0d1ef3ce5009941f4f": {
    "at": "2026-10-01",
-   "kept": 128,
+   "kept": 151,
    "scene": "vol6_ch8_courthouse",
    "skipped": 0,
-   "wired": 55,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch8_courthouse.zip"
   },
   "d0402b027b53ef1702dffb371f680099": {
    "at": "2026-10-01",
-   "kept": 65,
+   "kept": 84,
    "scene": "vol5_ch8_strength",
    "skipped": 1,
-   "wired": 53,
+   "wired": 0,
    "zip": "voice_dropin_vol5_ch8_strength (1).zip"
   },
   "d1b0f299db164950052f198ec5e41bac": {
@@ -818,34 +818,34 @@
   },
   "d906ba88ebaff006971649b2d18426f8": {
    "at": "2026-10-01",
-   "kept": 25,
+   "kept": 27,
    "scene": "vol6_ch8_miller_truck",
    "skipped": 0,
-   "wired": 6,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch8_miller_truck.zip"
   },
   "da4da5823a5c88efa000adb525bdbd2b": {
    "at": "2026-10-01",
-   "kept": 8,
+   "kept": 12,
    "scene": "vol6_ch1_stranger",
    "skipped": 0,
-   "wired": 9,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch1_stranger (1).zip"
   },
   "dc142061cec4cebc8cf9b491686c67ce": {
    "at": "2026-10-01",
-   "kept": 81,
+   "kept": 90,
    "scene": "vol6_ch9_safehouse",
    "skipped": 0,
-   "wired": 19,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch9_safehouse.zip"
   },
   "dc4f36b724e522785cdddb4bb50eb987": {
    "at": "2026-10-01",
-   "kept": 54,
+   "kept": 61,
    "scene": "vol6_ch10_home",
    "skipped": 0,
-   "wired": 19,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch10_home.zip"
   },
   "dd6bc399aa5a16da0db29d7739c60843": {
@@ -858,58 +858,58 @@
   },
   "ddbbe4f09200ab0d0d3c6fa1af5a7071": {
    "at": "2026-10-01",
-   "kept": 5,
+   "kept": 10,
    "scene": "vol6_ch1_maya_bedroom",
    "skipped": 0,
-   "wired": 11,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch1_maya_bedroom.zip"
   },
   "de4708d94e67c053e9c726b6bb94039e": {
    "at": "2026-10-01",
-   "kept": 104,
+   "kept": 126,
    "scene": "vol6_ch13_two_a_days",
    "skipped": 0,
-   "wired": 57,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch13_two_a_days.zip"
   },
   "dec7c766c31696de10f3eaba5fae3966": {
    "at": "2026-10-01",
-   "kept": 5,
+   "kept": 12,
    "scene": "vol6_ch1_gas_and_go",
    "skipped": 0,
-   "wired": 20,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch1_gas_and_go (1).zip"
   },
   "deced4141278bf48e14fd0d798a0a3ef": {
    "at": "2026-10-01",
-   "kept": 14,
+   "kept": 18,
    "scene": "vol6_ch6_maya_bedroom",
    "skipped": 0,
-   "wired": 8,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch6_maya_bedroom.zip"
   },
   "e068c7ca88de98f36a4869cc73276ee0": {
    "at": "2026-10-01",
-   "kept": 1,
+   "kept": 2,
    "scene": "vol6_ch1_garage",
    "skipped": 0,
-   "wired": 2,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch1_garage (1).zip"
   },
   "e1037e80185546758b9c267157dc1e57": {
    "at": "2026-10-01",
-   "kept": 17,
+   "kept": 24,
    "scene": "vol6_ch1_graciela",
    "skipped": 0,
-   "wired": 14,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch1_graciela.zip"
   },
   "e1c9c637ec00a87ba86f48b44b146c6a": {
    "at": "2026-10-01",
-   "kept": 29,
+   "kept": 38,
    "scene": "vol6_ch2_pit_stop_kitchen",
    "skipped": 0,
-   "wired": 23,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch2_pit_stop_kitchen.zip"
   },
   "e3255e78ffe18fcbc711f374fd5d3399": {
@@ -922,42 +922,42 @@
   },
   "e35e88962c7eb05ad732567a386fe97f": {
    "at": "2026-10-01",
-   "kept": 51,
+   "kept": 60,
    "scene": "vol6_ch5_truck",
    "skipped": 0,
-   "wired": 25,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch5_truck.zip"
   },
   "e7a02990d89c6bb5ba0c6171f66ee41d": {
    "at": "2026-10-01",
-   "kept": 45,
+   "kept": 53,
    "scene": "vol6_ch4_maya_floor",
    "skipped": 0,
-   "wired": 17,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch4_maya_floor.zip"
   },
   "ebd448488b5a6ac0c39489749c3b3aa5": {
    "at": "2026-10-01",
-   "kept": 91,
+   "kept": 106,
    "scene": "vol5_ch17_star",
    "skipped": 0,
-   "wired": 39,
+   "wired": 0,
    "zip": "voice_dropin_vol5_ch17_star.zip"
   },
   "eda2dbb34f55c03bee9cd79cd8557bda": {
    "at": "2026-10-01",
-   "kept": 18,
+   "kept": 20,
    "scene": "vol6_ch4_sam_list",
    "skipped": 0,
-   "wired": 6,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch4_sam_list.zip"
   },
   "eee9c1cca8abc3b1a8568d4b4265b3e8": {
    "at": "2026-10-01",
-   "kept": 254,
+   "kept": 291,
    "scene": "vol6_ch15_kwik_stop",
    "skipped": 0,
-   "wired": 97,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch15_kwik_stop.zip"
   },
   "f374d11b592c2f63c1021f159f6a5885": {
@@ -970,26 +970,26 @@
   },
   "f420b8212b0e873cc2bc3f578b46ee8c": {
    "at": "2026-10-01",
-   "kept": 20,
+   "kept": 22,
    "scene": "vol6_ch6_kwik_stop_slushie",
    "skipped": 0,
-   "wired": 4,
+   "wired": 0,
    "zip": "voice_dropin_vol6_ch6_kwik_stop_slushie.zip"
   },
   "f4ccfe0d011b7ac1ec1956aa5a019659": {
    "at": "2026-10-01",
-   "kept": 106,
+   "kept": 126,
    "scene": "vol5_ch15_devil",
    "skipped": 1,
-   "wired": 51,
+   "wired": 0,
    "zip": "voice_dropin_vol5_ch15_devil.zip"
   },
   "f4f1bd4d9150365f4b215af6d25f8df2": {
    "at": "2026-10-01",
-   "kept": 62,
+   "kept": 81,
    "scene": "vol5_ch6_lovers",
    "skipped": 1,
-   "wired": 52,
+   "wired": 0,
    "zip": "voice_dropin_vol5_ch6_lovers.zip"
   }
  }
