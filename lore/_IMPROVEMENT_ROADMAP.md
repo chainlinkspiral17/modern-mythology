@@ -2923,6 +2923,23 @@ CharLayer for bare keys that cross eras (`miriam`); vol1's chorus
 Lena's prompt says 2050s and vol7's wiki said 2025 — the user
 ruled the 2050s (2026-09-26); both wikis are rewritten to it.
 
+**2026-10-01 · HERO STUDIO · the 54 are home; a name is not a person
+across volumes.** The 48 assigned models had been committed by the
+meshy branch's SAVE on the Deck (push refused), so switching to this
+branch removed them from the folder; `git archive` of that branch put
+them back untracked, and SAVE sent them to Drive (2.9 GB; manifest 54
+hero GLBs). The user then saw ch0 unchanged — it is John and Frasier,
+the two original models, plus two Stranger lines. Checking where the
+new models speak found FOUR cross-volume misroutes (vol6 "Sammy" → vol5's
+bartender, vol6 "Wren" → vol7's, vol1 "Margaret" → vol7's co-op, vol5
+"Ben" → Ben Kowalski): CharLayer now plays a GLB only in the volumes its
+roster entry lists (`_vol_ok`, `_glb_vols`), the roster key table holds
+every entry per key, and `sammy` / `wren` are keys of sam_miller /
+wren_vol6 too. Simulated over every scene: 0 misroutes, 45 heroes, ~2,900
+lines in 3D. Best scenes to see them: vol6 ch8 hospital (Linda), ch2
+dumpster (Jesse, Ben), ch17 table (Bianca), ch8 lake (Chief Miller), ch12
+cosmic / ch4 speak-spell (Curtis, Rick).
+
 **2026-10-01 · SAVES · a picture and the player's notes.** The user:
 "The save state should be a thumbnail with a notes section. Players
 can input these notes at any time." Each slot now keeps

@@ -444,18 +444,37 @@ func _resolve_portrait_3d_glb(key: String) -> String:
 	if look_path != "":
 		return look_path
 	# Heroes — explicit registry, then the roster's keys, then implicit `<key>.glb`
+	# Every candidate must belong to the scene's volume (2026-10-01): the
+	# same first name is a different person across volumes — vol6's
+	# "Sammy" is Sam Miller, not vol5's bartender; vol6's Wren is not
+	# vol7's; vol1's Margaret, vol5's Ben. A model the roster lists for
+	# other volumes is skipped, and the name falls to the next candidate
+	# or to the 2D portrait.
 	if PORTRAIT_3D_KEY_TO_GLB.has(key):
-		var path: String = PORTRAIT_3D_GLB_ROOT + PORTRAIT_3D_KEY_TO_GLB[key]
-		if FileAccess.file_exists(path) or ResourceLoader.exists(path):
+		var tfile: String = String(PORTRAIT_3D_KEY_TO_GLB[key])
+		var path: String = PORTRAIT_3D_GLB_ROOT + tfile
+		if _vol_ok(tfile) and (FileAccess.file_exists(path) or ResourceLoader.exists(path)):
 			return path
 	if _roster_keys.has(key):
-		var rpath: String = PORTRAIT_3D_GLB_ROOT + String(_roster_keys[key])
-		if FileAccess.file_exists(rpath) or ResourceLoader.exists(rpath):
-			return rpath
+		var files: Array = _roster_keys[key]
+		for fv: Variant in files:
+			var rfile: String = String(fv)
+			var rpath: String = PORTRAIT_3D_GLB_ROOT + rfile
+			if _vol_ok(rfile) and (FileAccess.file_exists(rpath) or ResourceLoader.exists(rpath)):
+				return rpath
 	var direct: String = PORTRAIT_3D_GLB_ROOT + key + ".glb"
-	if FileAccess.file_exists(direct) or ResourceLoader.exists(direct):
+	if _vol_ok(key + ".glb") and (FileAccess.file_exists(direct) or ResourceLoader.exists(direct)):
 		return direct
 	return ""
+
+
+## True when a hero GLB may play in the current scene's volume: the
+## roster lists no volumes for it, or lists this one (or no scene yet).
+func _vol_ok(glb_file: String) -> bool:
+	if _scene_vol <= 0 or not _glb_vols.has(glb_file):
+		return true
+	var vs: Array = _glb_vols[glb_file]
+	return vs.is_empty() or vs.has(_scene_vol)
 
 
 # Returns true when the resolved GLB path is inside the demons/
@@ -498,6 +517,8 @@ func _chapter_number(v: Variant) -> int:
 func _load_roster_looks() -> void:
 	_looks.clear()
 	_look_keys.clear()
+	_roster_keys.clear()
+	_glb_vols.clear()
 	if not FileAccess.file_exists(PORTRAIT_3D_ROSTER):
 		return
 	var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(PORTRAIT_3D_ROSTER))
@@ -520,8 +541,21 @@ func _load_roster_looks() -> void:
 		var entry_glb: String = String(e.get("file", ""))
 		var entry_keys: Array = e.get("keys", [])
 		if entry_glb != "":
+			var ev: Variant = e.get("vol", [])
+			var vlist: Array = []
+			if typeof(ev) == TYPE_ARRAY:
+				for vv: Variant in (ev as Array):
+					vlist.append(int(vv))
+			elif typeof(ev) == TYPE_INT or typeof(ev) == TYPE_FLOAT:
+				vlist.append(int(ev))
+			_glb_vols[entry_glb] = vlist
 			for ek: Variant in entry_keys:
-				_roster_keys[String(ek)] = entry_glb
+				var kk: String = String(ek)
+				if not _roster_keys.has(kk):
+					_roster_keys[kk] = []
+				var lst: Array = _roster_keys[kk]
+				lst.append(entry_glb)
+				_roster_keys[kk] = lst
 		var base: String = String(e.get("base", ""))
 		if base == "":
 			continue
@@ -607,7 +641,8 @@ static var _placeholder_logged: Dictionary = {}
 const PORTRAIT_3D_ROSTER := "res://tools/meshy_roster.json"
 var _looks:         Dictionary = {}      # base key → Array of {glb, vols, chapters, scenes}
 var _look_keys:     Dictionary = {}      # a look's own key → glb
-var _roster_keys:   Dictionary = {}      # every hero entry's keys → glb (a new hero routes the day its GLB lands)
+var _roster_keys:   Dictionary = {}      # every hero entry's keys → Array of glb (a new hero routes the day its GLB lands)
+var _glb_vols:      Dictionary = {}      # hero glb → Array[int] of the volumes the roster stages it in
 var _scene_vol:     int        = 0
 var _scene_chapter: int        = 0
 var _scene_id:      String     = ""
