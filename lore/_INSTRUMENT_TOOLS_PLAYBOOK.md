@@ -172,9 +172,13 @@ those tools.
   Decoder confirmed.
 - The Deck has ONE USB-C port. With the dock attached, the FM-1 sits
   behind the dock's hub (sysfs `1-1.1`, hub product `USB2.0 Hub`),
-  and AC power comes through that same dock. "Direct + on AC" is
-  impossible on a Deck: flash on battery (≥ 50 % is a warning, not a
-  blocker) with the FM-1 on a C-to-C data cable in the Deck's port.
+  and AC power comes through that same dock. Keyboard and mouse live
+  on the dock too, so the user flashes THROUGH the dock (user
+  decision). The hub check stays a warning, not a blocker. Reduce the
+  risk instead: unplug every other USB device from the dock except
+  the keyboard and mouse, keep the dock on AC, and don't touch the
+  dock cable during the write. An interrupted write parks the synth
+  in the loader, and re-running the script resumes it.
 - The GO prompt was case-sensitive and a lowercase `go` quit. Now
   case-insensitive.
 
