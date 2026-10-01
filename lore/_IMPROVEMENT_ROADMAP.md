@@ -2974,6 +2974,18 @@ on the Deck (the builder must run there). **Sheet 44 checks:** the
 three sizes step visibly; the bedroom window insert; the cape bench
 lit enough to read.
 
+**2026-10-01 · GOOGLE DRIVE · your own client id.** The user made their
+own Google OAuth client (rclone.org/drive/#making-your-own-client-id).
+`bash godot/tools/drive_setup.sh --client` asks for the id + secret
+(secret typed hidden), keeps them in `godot/tools/.gdrive_client`
+(gitignored, mode 600), moves BOTH connections onto them and signs each
+in once. The project connection `gdrive` goes from `drive.file` to
+`drive`: drive.file sees only files made by the SAME app, and the 4.5 GB
+in ModernMythology was made by rclone's shared app — under the new app
+it would look empty and SAVE would start a second copy. `gdrive_ro`
+stays drive.readonly. The app must be PUBLISHED (a "Testing" app's
+sign-in expires in 7 days); the unverified-app warning is expected.
+
 **2026-10-01 · DECK NOTES · portraits draft 3.** Four notes from play
 (details in _VN_DIRECTION_PLAYBOOK): Frasier behind the text → close
 sizes eye-anchored from a per-hero eye table read off sheet 43; shaky

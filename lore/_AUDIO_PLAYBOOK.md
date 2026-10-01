@@ -100,6 +100,10 @@ the result is intelligible-enough with 30% static overlay.
   folder but sees only its own files; `gdrive_ro` (drive.readonly) sees
   the user's uploads and can change nothing. Anything the USER put on
   the Drive is read through `gdrive_ro`.
+- **Moving apps moves what drive.file can see.** `drive.file` grants
+  the files made by THAT client id; switching to your own client id
+  would hide everything the shared one made. Under your own app the
+  project connection takes full `drive` scope (it still only copies).
 - **Inventory, then send.** The Drive's whole audio library is listed,
   previewed and sent per file — the game takes only what was picked.
 

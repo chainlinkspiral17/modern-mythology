@@ -41,6 +41,8 @@ godot/qa/contact/
 godot/tools/.runway_key
 godot/tools/.google_key
 godot/tools/.*_key
+# your own Google OAuth client for rclone (drive_setup.sh --client)
+godot/tools/.gdrive_client
 # Models and pictures live on GOOGLE DRIVE, not in git (2026-09-30, the
 # user: "I don't want to crowd up git with large models and files").
 # Hero Studio's SAVE uploads them (rclone, godot/tools/drive_setup.sh)
