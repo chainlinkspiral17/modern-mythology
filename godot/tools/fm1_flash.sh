@@ -34,7 +34,7 @@
 
 set -u
 
-INSTALLER_URL="${FM1_INSTALLER_URL:-https://baudgirl.com/}"
+INSTALLER_URL="${FM1_INSTALLER_URL:-https://baudgirl.com/work/FM-1+VA/install}"
 SYSFS_USB="${FM1_SYSFS_USB:-/sys/bus/usb/devices}"     # overridable for testing
 PROC_ASOUND="${FM1_PROC_ASOUND:-/proc/asound}"
 LOG_DIR="${FM1_LOG_DIR:-$HOME/fm1-flash-logs}"

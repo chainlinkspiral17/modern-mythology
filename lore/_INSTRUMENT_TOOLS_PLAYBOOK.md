@@ -182,6 +182,11 @@ those tools.
 - The GO prompt was case-sensitive and a lowercase `go` quit. Now
   case-insensitive.
 
+- The installer is at https://baudgirl.com/work/FM-1+VA/install, not
+  the site root. Opening the root showed a page where "nothing
+  happens". Chrome or Edge only: Firefox loses the FM-1 when it
+  reboots into the loader mid-install.
+
 ## TEMPLATE
 
 ```
