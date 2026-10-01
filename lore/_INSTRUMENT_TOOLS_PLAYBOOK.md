@@ -187,6 +187,12 @@ those tools.
   happens". Chrome or Edge only: Firefox loses the FM-1 when it
   reboots into the loader mid-install.
 
+- First real flash on the Deck succeeded: stock `FM-1_015` became
+  Baud Girl `FM-1_093`, flashed through the dock hub on AC. The
+  console's IDENTIFY read the new version while a raw `amidi` read
+  was blocked by an open Chrome tab. Prefer IDENTIFY when Chrome is
+  running.
+
 ## TEMPLATE
 
 ```
