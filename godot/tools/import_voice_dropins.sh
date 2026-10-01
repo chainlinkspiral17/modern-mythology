@@ -3,6 +3,7 @@
 #
 #   bash godot/tools/import_voice_dropins.sh            # from the Drive
 #   bash godot/tools/import_voice_dropins.sh ~/Downloads # zips already here
+#   bash godot/tools/import_voice_dropins.sh --again     # redo every zip (fills gaps only)
 #
 # 1. reads the Drive through the read-only connection (sets it up the
 #    first time: one browser sign-in) and copies every voice_dropin_*.zip
@@ -20,7 +21,9 @@ set -euo pipefail
 cd "$(dirname "$0")/../.."
 RC="$(command -v rclone || true)"
 [ -z "$RC" ] && [ -x "$HOME/.local/bin/rclone" ] && RC="$HOME/.local/bin/rclone"
-SRC="${1:-}"
+# flags (--again, --overwrite, --dry-run) pass through to the importer
+FLAGS=(); SRC=""
+for a in "$@"; do case "$a" in --*) FLAGS+=("$a");; *) SRC="$a";; esac; done
 if [ -z "$SRC" ]; then
   if [ -z "$RC" ] || ! "$RC" listremotes | grep -qx 'gdrive_ro:'; then
     bash godot/tools/drive_setup.sh --read
@@ -33,7 +36,7 @@ if [ -z "$SRC" ]; then
     --drive-skip-shortcuts --transfers 4 --progress --stats-one-line
 fi
 FF="$(bash godot/tools/get_ffmpeg.sh)"
-python3 godot/tools/import_voice_dropins.py "$SRC" --ffmpeg "$FF"
+python3 godot/tools/import_voice_dropins.py "$SRC" --ffmpeg "$FF" "${FLAGS[@]}"
 python3 godot/tools/meshy_pipeline.py save \
   || echo "(the voice is in place; the save did not finish — run: python3 godot/tools/meshy_pipeline.py save)"
 echo "VOICE READY — restart Godot (or press F5) and play a voiced scene"

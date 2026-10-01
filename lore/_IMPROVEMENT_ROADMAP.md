@@ -2974,6 +2974,19 @@ on the Deck (the builder must run there). **Sheet 44 checks:** the
 three sizes step visibly; the bedroom window insert; the cape bench
 lit enough to read.
 
+**2026-10-01 · VOICE IMPORT · draft 2 — splits recovered.** The Deck's
+import: 124 zips, 7,254 lines wired (vol5 1,587 / 2,949 · vol6 5,966 /
+8,308), all 7,553 files on the Drive, audio audit 0. 982 skipped:
+checked against git history at each zip's date, 480 were SPLIT (one
+recorded paragraph, now 2-4 consecutive lines, same words), 29 trimmed,
+293 unknown (no git version old enough). The importer now cuts a split
+line's recording at its pauses (silencedetect; each cut at the piece's
+share of the words, snapped to the nearest pause) — synthetic test on
+the prelude's real 08-03 history: 24/24 clips cut in the right gap.
+Re-run with --again. **Draft 3 targets:** the trimmed 29 (audio could
+be cut at the pause after the kept words); the vol 7 scenes have no
+voice zips yet; a loudness pass across takes from different days.
+
 **2026-10-01 · SAVE survives a long upload.** The Deck's first voice
 import worked (audio in place, game plays it) but SAVE's Drive upload
 hit its 2-hour limit at 2,836 of 7,553 files (Drive creates ~0.4

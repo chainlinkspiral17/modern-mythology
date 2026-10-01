@@ -25,8 +25,13 @@ inserted node would point at the wrong line. So this does NOT unzip:
      and the current JSON gets the "voice" key. webm (browser mic
      recordings — Godot cannot play them) and wav are converted to Ogg
      Vorbis with ffmpeg; mp3 and ogg are copied as they are.
-  4. Lines rewritten past recognition are SKIPPED and listed: the audio
-     says words the game no longer shows.
+  4. A line SPLIT since recording (its words are exactly 2+ consecutive
+     current lines — 480 of the first import's 982 skips) keeps its
+     audio: the recording is cut into one Ogg clip per piece, each cut
+     where that piece's share of the words ends, snapped to the nearest
+     pause. Run with --again to recover splits from zips already imported.
+  5. Lines rewritten past recognition (or trimmed) are SKIPPED and listed:
+     the audio says words the game no longer shows.
 
 A line that already has a "voice" key keeps it unless --overwrite (the
 eight vol5 scenes wired in June). Zips are taken oldest first by their
@@ -118,6 +123,95 @@ def align(old_nodes, new_nodes, wanted):
     found = {o: mapping[o] for o in wanted if o in mapping}
     lost = [o for o in wanted if o not in mapping]
     return found, lost
+
+
+def find_splits(old_nodes, new_nodes, lost, taken):
+    """Lines SPLIT since recording (2026-10-01: 480 of the first import's
+    982 skips): an old line whose words are exactly a run of 2+
+    consecutive current lines. Returns {old: [new indices]}; a run that
+    touches a line already mapped this zip (`taken`) does not count."""
+    old_t = {i: t for i, t in voiceable(old_nodes)}
+    new = voiceable(new_nodes)
+    out = {}
+    for o in lost:
+        ot = old_t.get(o, "")
+        if not ot:
+            continue
+        hits = []
+        for p in range(len(new)):
+            if not ot.startswith(new[p][1]) or not new[p][1]:
+                continue
+            acc, q = new[p][1], p
+            while len(acc) < len(ot) and q + 1 < len(new):
+                q += 1
+                acc = acc + " " + new[q][1]
+            if acc == ot and q > p:
+                run = [new[k][0] for k in range(p, q + 1)]
+                if not any(r in taken for r in run):
+                    hits.append(run)
+        if len(hits) == 1:
+            out[o] = hits[0]
+    return out
+
+
+def _silences(ff, wav):
+    """[(start, end)] of the pauses in a wav, and its duration."""
+    r = subprocess.run([ff, "-hide_banner", "-i", str(wav), "-af",
+                        "silencedetect=noise=-35dB:d=0.15", "-f", "null", "-"],
+                       capture_output=True, text=True)
+    err = r.stderr or ""
+    starts = [float(x) for x in re.findall(r"silence_start: ([\d.]+)", err)]
+    ends = [float(x) for x in re.findall(r"silence_end: ([\d.]+)", err)]
+    m = re.findall(r"time=(\d+):(\d+):([\d.]+)", err)
+    dur = 0.0
+    if m:
+        h, mi, se = m[-1]
+        dur = int(h) * 3600 + int(mi) * 60 + float(se)
+    return list(zip(starts, ends)), dur
+
+
+def split_audio(ff, src_bytes, src_ext, texts, dsts):
+    """Cut one recording into len(texts) Ogg clips, one per piece of a
+    split line: each cut where that piece's share of the words ends,
+    snapped to the nearest pause (silencedetect) close enough to it."""
+    with tempfile.TemporaryDirectory() as td:
+        src = Path(td) / ("src" + src_ext)
+        src.write_bytes(src_bytes)
+        wav = Path(td) / "full.wav"
+        r = subprocess.run([ff, "-hide_banner", "-loglevel", "error", "-y", "-i", str(src),
+                            "-vn", "-ac", "1", "-ar", "44100", str(wav)], capture_output=True, text=True)
+        if r.returncode or not wav.exists():
+            raise RuntimeError((r.stderr or "decode failed").strip()[-200:])
+        pauses, dur = _silences(ff, wav)
+        if dur <= 0.0:
+            raise RuntimeError("could not read the recording's length")
+        weights = [max(1, len(t)) for t in texts]
+        total = float(sum(weights))
+        cuts, acc, prev = [], 0.0, 0.0
+        for w in weights[:-1]:
+            acc += w
+            target = dur * acc / total
+            window = max(0.8, 0.30 * dur * w / total)
+            best = None
+            for a, b in pauses:
+                mid = (a + b) * 0.5
+                if mid <= prev + 0.3 or mid >= dur - 0.3:
+                    continue
+                if abs(mid - target) <= window and (best is None or abs(mid - target) < abs(best - target)):
+                    best = mid
+            cut = best if best is not None else target
+            cut = max(cut, prev + 0.3)
+            cuts.append(cut)
+            prev = cut
+        bounds = [0.0] + cuts + [dur]
+        for k, dst in enumerate(dsts):
+            dst.parent.mkdir(parents=True, exist_ok=True)
+            r = subprocess.run([ff, "-hide_banner", "-loglevel", "error", "-y", "-i", str(wav),
+                                "-ss", "%.3f" % bounds[k], "-to", "%.3f" % bounds[k + 1],
+                                "-c:a", "libvorbis", "-q:a", "5", str(dst)], capture_output=True, text=True)
+            if r.returncode or not dst.exists() or dst.stat().st_size == 0:
+                raise RuntimeError((r.stderr or "cut failed").strip()[-200:])
+        return cuts
 
 
 def md5(path):
@@ -318,13 +412,17 @@ def main(argv=None):
         wanted = sorted(info["audio"])
         if info["json"] and isinstance(info["json"].get("nodes"), list):
             found, lost = align(info["json"]["nodes"], nodes, wanted)
+            taken = {n for n, _ in found.values()}
+            splits = find_splits(info["json"]["nodes"], nodes, lost, taken)
+            lost = [o for o in lost if o not in splits]
         else:
             # an export without its scene snapshot: trust the indices only
             # where the node there is still a voiceable line
             found = {o: (o, "index (zip has no scene JSON)") for o in wanted
                      if o < len(nodes) and isinstance(nodes[o], dict) and nodes[o].get("t") in VOICE_KINDS}
             lost = [o for o in wanted if o not in found]
-        wired = kept = close = 0
+            splits = {}
+        wired = kept = close = nsplit = 0
         lines = []
         for old_i, (new_i, how) in sorted(found.items()):
             member, ext = info["audio"][old_i]
@@ -366,6 +464,33 @@ def main(argv=None):
                 lines.append(f"  - {old_i:03d} → {new_i:03d} ({how}): “{str(node.get('text', ''))[:70]}”")
             elif old_i != new_i:
                 pass                       # moved but identical: not worth a line
+        for old_i, run in sorted(splits.items()):
+            member, ext = info["audio"][old_i]
+            if not args.overwrite and any(str(nodes[n].get("voice", "")) and (sid, n) not in set_this_run
+                                          and (GODOT / str(nodes[n]["voice"])).exists() for n in run):
+                kept += 1
+                continue
+            rels = [f"assets/audio/voice/{sid}/{n:03d}.ogg" for n in run]
+            if not args.dry_run:
+                if not args.ffmpeg:
+                    print("  ! ffmpeg is needed to split a recording — run through import_voice_dropins.sh")
+                    return 1
+                try:
+                    split_audio(args.ffmpeg, info["zip"].read(member), ext,
+                                [norm(nodes[n].get("text", "")) for n in run], [GODOT / r for r in rels])
+                except RuntimeError as ex:
+                    lines.append(f"  - {old_i:03d}: split into {len(run)} lines but could not cut the audio ({ex}) — skipped")
+                    continue
+                for n, r in zip(run, rels):
+                    for sib in (GODOT / r).parent.glob(f"{n:03d}.*"):
+                        if sib.name != Path(r).name and sib.suffix.lower() in KEEP_EXTS | CONVERT_EXTS:
+                            sib.unlink()
+            for n, r in zip(run, rels):
+                nodes[n]["voice"] = r
+                set_this_run.add((sid, n))
+            wired += len(run)
+            nsplit += 1
+            lines.append(f"  - {old_i:03d} → {', '.join('%03d' % n for n in run)} (one recording cut at its pauses: the line was split)")
         old_nodes = (info["json"] or {}).get("nodes", [])
         for o in lost:
             t = old_nodes[o].get("text", "") if o < len(old_nodes) and isinstance(old_nodes[o], dict) else ""
@@ -377,6 +502,8 @@ def main(argv=None):
         msg = f"{sid}: {wired} line(s) wired"
         if close:
             msg += f" ({close} to a lightly rewritten line)"
+        if nsplit:
+            msg += f" ({nsplit} recording(s) cut to fit lines split since)"
         if kept:
             msg += f", {kept} already voiced (kept)"
         if lost:
