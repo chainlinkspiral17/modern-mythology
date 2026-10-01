@@ -132,7 +132,7 @@ read_version() {
   reply=$(amidi -p "$port" -S "$IDENTITY_QUERY" -d -t 3 2>&1)
   echo "  reply: $reply" >> "$LOG"
   if echo "$reply" | grep -qi "busy"; then
-    echo "(port busy — PipeWire holds raw MIDI; use IDENTIFY in fm1_console.html instead)"; return
+    echo "(port busy — another app has it open, usually a Chrome tab on the installer or fm1_console.html. Close Chrome and re-run, or press IDENTIFY in the console)"; return
   fi
   reply=$(echo "$reply" | grep -oE '\b[0-9A-Fa-f]{2}\b' | tr '\n' ' ')
   decode_identity "$reply"
