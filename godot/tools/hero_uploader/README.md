@@ -192,6 +192,17 @@ game the moment it is saved. (Until 2026-09-30 Hero Studio lived only
 on `claude/meshy-image-generation-w92vr6`, and its models never
 reached the game.)
 
+## After a model changes on disk: reimport (2026-10-01)
+
+Godot plays a model from its import cache (godot/.godot/imported), not
+the .glb. A model replaced on disk — a SAVE, a drive-pull, a recovered
+model given its name — plays the OLD look until the project is
+rescanned. Open the editor once, or:
+
+```bash
+cd /home/deck/Downloads/modern-mythology && bash godot/tools/reimport_models.sh
+```
+
 ## SAVE — models to Google Drive, the rest to git (2026-09-30)
 
 The user: "I don't want to crowd up git with large models and files."

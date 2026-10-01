@@ -2936,7 +2936,13 @@ bartender, vol6 "Wren" → vol7's, vol1 "Margaret" → vol7's co-op, vol5
 roster entry lists (`_vol_ok`, `_glb_vols`), the roster key table holds
 every entry per key, and `sammy` / `wren` are keys of sam_miller /
 wren_vol6 too. Simulated over every scene: 0 misroutes, 45 heroes, ~2,900
-lines in 3D. Best scenes to see them: vol6 ch8 hospital (Linda), ch2
+lines in 3D. CORRECTION (the user: "I wouldn't have made new models for ch 0 and
+assigned them if I didn't want to use them"): the ch0 leads' recovered
+GLBs are NEW models (John 36.7 MB vs 11.4; Elicia, Nicola, Dante,
+Antonio, Alberto 33-56 MB vs 0.1 MB placeholders), not refreshes — they
+are on the Deck; the game showed Godot's import cache of the old files.
+godot/tools/reimport_models.sh runs the headless `--import` (tested:
+a replaced GLB re-imports). Best scenes to see them: vol6 ch8 hospital (Linda), ch2
 dumpster (Jesse, Ben), ch17 table (Bianca), ch8 lake (Chief Miller), ch12
 cosmic / ch4 speak-spell (Curtis, Rick).
 
