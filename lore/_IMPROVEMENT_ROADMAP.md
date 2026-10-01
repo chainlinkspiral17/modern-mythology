@@ -2923,6 +2923,23 @@ CharLayer for bare keys that cross eras (`miriam`); vol1's chorus
 Lena's prompt says 2050s and vol7's wiki said 2025 — the user
 ruled the 2050s (2026-09-26); both wikis are rewritten to it.
 
+**2026-10-01 · SAVES · a picture and the player's notes.** The user:
+"The save state should be a thumbnail with a notes section. Players
+can input these notes at any time." Each slot now keeps
+user://saves/slot_N.png (384x216) — the scene as it stood when the
+pause menu opened, captured before the menu draws (autosaves capture
+fresh) — and a free-text `notes` field. Notes are typed in the pause
+menu's new right-hand column (the slot's picture over the notes box,
+saved as you type, ESC still resumes) or on the save/load screen for
+any slot, from the main menu too. Overwriting a slot keeps its notes;
+notes typed before the first save land on it. Deleting a slot deletes
+its picture. Saves from before today show "no picture". Verified in a
+Godot 4.6 headless run (17 checks: write, resize, overwrite, pending,
+both screens' editing, delete). NEXT: the Deck — the capture runs on
+the real renderer there (headless cannot draw); a "notes" glyph on
+the slot line when a save has notes; pad typing is Steam's keyboard
+(STEAM + X), noted under the box when a pad is connected.
+
 **2026-09-30 (later) · HERO STUDIO · big files on GOOGLE DRIVE.** The
 user: "I don't want to crowd up git with large models and files, can we
 use google drive?" New GLBs (heroes/demons/props) and all of

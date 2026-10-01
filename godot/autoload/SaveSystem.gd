@@ -13,6 +13,19 @@ signal unlocked_changed(key: String)
 var _seen_cgs:  Dictionary = {}
 var _unlocked:  Dictionary = {}
 
+# ── Save-slot thumbnails + notes (2026-10-01) ─────────────────────────
+# The user: "The save state should be a thumbnail with a notes section.
+# Players can input these notes at any time." Each slot keeps a PNG of
+# the scene at the moment it was saved (slot_N.png beside slot_N.json)
+# and a free-text "notes" field the player edits from the pause menu
+# or the save/load screen whenever they like. Overwriting a slot keeps
+# its notes; notes typed before the first save wait in pending_notes
+# and land on the first slot written.
+const THUMB_W := 384
+const THUMB_H := 216
+const NOTES_MAX := 2000
+var pending_notes: String = ""
+
 
 func _ready() -> void:
 	DirAccess.make_dir_recursive_absolute(SAVE_DIR)
@@ -37,7 +50,14 @@ func list_saves() -> Array:
 
 
 func write_save(slot: int, vol: int, scene_id: String, node_idx: int,
-				flags: Dictionary, skills: Dictionary, log: Array) -> void:
+				flags: Dictionary, skills: Dictionary, log: Array,
+				thumb: Image = null) -> void:
+	# notes belong to the slot, not to one write of it: keep them
+	var prev: Dictionary = read_save(slot)
+	var notes: String = String(prev.get("notes", ""))
+	if notes == "" and pending_notes != "":
+		notes = pending_notes
+		pending_notes = ""
 	var data := {
 		"slot":      slot,
 		"vol":       vol,
@@ -47,9 +67,58 @@ func write_save(slot: int, vol: int, scene_id: String, node_idx: int,
 		"flags":     flags,
 		"skills":    skills,
 		"log":       log.slice(maxi(0, log.size() - 50)),
+		"notes":     notes,
 	}
+	if thumb != null and not thumb.is_empty():
+		var small: Image = thumb.duplicate() as Image
+		if small.is_compressed():
+			small.decompress()
+		small.convert(Image.FORMAT_RGB8)
+		small.resize(THUMB_W, THUMB_H, Image.INTERPOLATE_BILINEAR)
+		if small.save_png(_thumb_path(slot)) == OK:
+			data["thumb"] = _thumb_path(slot).get_file()
+	elif bool(prev.has("thumb")) and FileAccess.file_exists(_thumb_path(slot)):
+		data["thumb"] = String(prev.get("thumb", ""))
 	_write_json(_slot_path(slot), data)
 	save_written.emit(slot)
+
+
+## The player's notes for a slot. slot < 1 (no save yet) holds them in
+## pending_notes until the first write.
+func get_notes(slot: int) -> String:
+	if slot < 1:
+		return pending_notes
+	var data: Dictionary = read_save(slot)
+	return String(data.get("notes", ""))
+
+
+func set_notes(slot: int, text: String) -> void:
+	var t: String = text.substr(0, NOTES_MAX)
+	if slot < 1:
+		pending_notes = t
+		return
+	var path := _slot_path(slot)
+	if not FileAccess.file_exists(path):
+		pending_notes = t
+		return
+	var data: Dictionary = _read_json(path)
+	if data.is_empty():
+		return
+	data["notes"] = t
+	data["notes_ts"] = Time.get_unix_time_from_system()
+	_write_json(path, data)
+
+
+## The slot's thumbnail as a texture, or null when it has none (saves
+## from before 2026-10-01, or a write whose capture failed).
+func get_thumb(slot: int) -> Texture2D:
+	var path := _thumb_path(slot)
+	if not FileAccess.file_exists(path):
+		return null
+	var img: Image = Image.load_from_file(path)
+	if img == null or img.is_empty():
+		return null
+	return ImageTexture.create_from_image(img)
 
 
 func read_save(slot: int) -> Dictionary:
@@ -61,6 +130,8 @@ func read_save(slot: int) -> Dictionary:
 
 func delete_save(slot: int) -> void:
 	var path := _slot_path(slot)
+	if FileAccess.file_exists(_thumb_path(slot)):
+		DirAccess.remove_absolute(_thumb_path(slot))
 	if FileAccess.file_exists(path):
 		DirAccess.remove_absolute(path)
 		save_deleted.emit(slot)
@@ -139,6 +210,10 @@ func _ensure_records() -> void:
 
 func _slot_path(slot: int) -> String:
 	return SAVE_DIR + "/slot_%d.json" % slot
+
+
+func _thumb_path(slot: int) -> String:
+	return SAVE_DIR + "/slot_%d.png" % slot
 
 
 func _read_json(path: String) -> Dictionary:

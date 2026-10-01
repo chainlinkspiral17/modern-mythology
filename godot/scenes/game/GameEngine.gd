@@ -105,6 +105,7 @@ var _interlude:  Control     = null
 var _cg:         Control     = null
 var _hud:        Control     = null
 var _ig_menu:    Control     = null
+var _save_thumb: Image       = null   # the scene as it stood when the pause menu opened
 var _settings_ov: Control   = null
 var _music_ov:   Control     = null
 var _toast:      Control     = null
@@ -413,12 +414,24 @@ func _apply_skin(vol: int) -> void:
 
 func _open_in_game_menu() -> void:
 	_paused = true
+	# The save's thumbnail is the scene as it stood when the player
+	# paused — taken now, before the menu draws over it (2026-10-01).
+	_save_thumb = _capture_thumb()
 	_ig_menu.call("open", _active_slot)
+
+
+func _capture_thumb() -> Image:
+	var tex: ViewportTexture = get_viewport().get_texture()
+	if tex == null:
+		return null
+	var img: Image = tex.get_image()
+	return img
 
 
 func _resume_from_menu() -> void:
 	_paused = false
 	_ig_menu.visible = false
+	_save_thumb = null
 
 
 func _save_to_slot(slot: int) -> void:
@@ -435,7 +448,8 @@ func _save_to_slot(slot: int) -> void:
 	var idx: int = _node_idx
 	if _waiting or (_choices != null and _choices.visible):
 		idx = maxi(0, _node_idx - 1)
-	SaveSystem.write_save(slot, _vol, _scene_id, idx, _flags, _skills, _log)
+	var thumb: Image = _save_thumb if _save_thumb != null else _capture_thumb()
+	SaveSystem.write_save(slot, _vol, _scene_id, idx, _flags, _skills, _log, thumb)
 
 
 func _exit_to_main_menu() -> void:
