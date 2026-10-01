@@ -114,7 +114,7 @@ var _toast:      Control     = null
 # [shot:...] / [panel:...] directives lead narrate/say/think text;
 # they're stripped before display and dispatched to the director.
 var _director:   Node        = null
-var _direct_rx:  RegEx       = RegEx.create_from_string("^\\[(shot|panel|stage|mood|beat|trip|register):([^\\]\\r\\n]+)\\]\\s*")
+var _direct_rx:  RegEx       = RegEx.create_from_string("^\\[(shot|panel|stage|mood|beat|trip|register|portrait):([^\\]\\r\\n]+)\\]\\s*")
 
 
 func _ready() -> void:
@@ -846,6 +846,7 @@ func _directed(n: Dictionary) -> Dictionary:
 				"beat":  _director.call("apply_beat", arg)
 				"trip":  _apply_trip_cue(arg)
 				"register": _apply_register_cue(arg)
+				"portrait": _chars.call("set_portrait_override", arg)
 				_:
 					_director.call("apply_panel", arg)
 					# Paper-slide moment sound: a page turn on open, a
@@ -867,6 +868,7 @@ func _do_narrate(n: Dictionary) -> void:
 	AudioMgr.set_sfx_pan(0.0)
 	AudioMgr.duck()
 	_chars.call("activate_speaker", "")
+	_chars.call("direct_line", "", text, "")
 	_dlg.visible = true
 	_dlg.call("show_narrate", text)
 	AudioMgr.play_voice(_s(n, "voice"))
@@ -885,6 +887,7 @@ func _do_say(n: Dictionary) -> void:
 	AudioMgr.set_sfx_pan(_char_pan(char_name))
 	AudioMgr.duck()
 	_chars.call("activate_speaker", char_name.to_lower())
+	_chars.call("direct_line", char_name.to_lower(), text, expr)
 	_dlg.visible = true
 	_dlg.call("show_say", char_name, text)
 	AudioMgr.play_voice(_s(n, "voice"))
@@ -900,6 +903,7 @@ func _do_think(n: Dictionary) -> void:
 	AudioMgr.set_sfx_pan(_char_pan(char_name))
 	AudioMgr.duck()
 	_chars.call("activate_speaker", char_name.to_lower())
+	_chars.call("direct_line", char_name.to_lower(), _s(n, "text"), expr)
 	_dlg.visible = true
 	_dlg.call("show_think", char_name, _s(n, "text"))
 	AudioMgr.play_voice(_s(n, "voice"))

@@ -145,6 +145,46 @@ no-op (fallback discipline — a script must never crash the reader).
 8. Panels dir: `godot/resources/vn/panels/*.json` (HeroImage
    schema). Missing file → bordered text card with the id.
 
+## Portrait direction · the 3D heroes' shots (draft 1 · 2026-10-01)
+
+The user, once the recovered heroes were in: "facial/bust close-ups
+for dialogue, director precedence for best shots and psychology of the
+shots and visual design." Until then every hero stood in one frame — a
+3/4 thigh-up at a heroic upward angle, the generated models' A-pose
+arms filling half of it (the Deck screenshot of John in the diner).
+
+**Sizes** (`Portrait3D.SHOT_FRAMES`, framed from the figure, each with
+its own lens — longer for closer, the 85-135 mm portrait lens):
+wide (thigh-up) · medium (waist) · **mcu** (chest-up, the dialogue
+single) · **cu** (head and shoulders) · **ecu** (the face). Cuts, not
+moves — the comic grammar above holds for portraits too.
+
+**Who picks** — `PortraitDirector.choose()` on every line, via
+`CharLayer.direct_line()` (GameEngine calls it on narrate/say/think):
+
+| situation | shot | precedent |
+|---|---|---|
+| a line of dialogue | mcu, eye level | the coverage single; Ozu's level lens |
+| a charged line (angry/surprised, !, "…", the short hard line) | cu → ecu | Hitchcock: size = importance |
+| sorrow, exhaustion | cu, high angle | the high angle takes power away |
+| an authority speaking level or hard | low angle | Welles shooting Kane from the floor |
+| nerves, demons | dutch 6° | The Third Man |
+| the same speaker at the same pitch | hold | the jump-cut rule, applied to size |
+| after a peak | one size back per line | let the shot breathe |
+| a listener | a size wider than the speaker | coverage: weight on whoever talks |
+| narration | mcu for all | the bust; nothing automatic goes wider |
+
+Nothing automatic goes wider than the mcu: the models stand in A-pose
+and the arms are not a shot. A writer can still order any frame:
+`[portrait:medium]`, `[portrait:ecu low]`, `[portrait:cu dutch]` —
+line-scoped, the speaker's shot only.
+
+NEXT (draft 2): the Deck verdict on the sizes per model (Meshy faces
+sit at different heights — a per-model face offset table if the ecu
+misses eyes); a catchlight for cu/ecu; matching the portrait's key to
+the locale's (the diner is warm, the portrait key is cool); an
+over-the-shoulder two-shot when two heroes trade lines.
+
 ## Voice rules for directing scripts
 
 - Establish once per location change; do not re-establish on

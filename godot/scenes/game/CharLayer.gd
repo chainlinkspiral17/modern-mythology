@@ -27,6 +27,7 @@ const PORTRAIT_COMP_ROOT := "res://resources/substrates/compositions/"
 # JSONs use short names ("frasier") while the GLBs use full canon
 # filenames ("frasier_temple.glb").
 const PORTRAIT_3D_SCENE := preload("res://scenes/vn/Portrait3D.tscn")
+const PortraitDirector := preload("res://scripts/vn/PortraitDirector.gd")
 const PORTRAIT_3D_GLB_ROOT := "res://assets/3d/characters/heroes/"
 
 # Demons get their own GLB root + a SHARED Portrait3D scene with the
@@ -1037,6 +1038,69 @@ func activate_speaker(char_name: String) -> void:
 		tw.set_parallel(true)
 		tw.tween_property(target, "modulate", target_mod, 0.25)
 		tw.tween_property(node, "scale", Vector2(target_scale, target_scale), 0.25)
+
+
+# ── Portrait direction (draft 1 · 2026-10-01) ───────────────────────
+# Every line picks a shot for each 3D hero on screen: the speaker by
+# the line's charge, the mood and their standing; listeners a size
+# wider; narration on the bust. PortraitDirector holds the grammar;
+# a [portrait:…] directive on the line overrides the speaker's shot.
+var _portrait_override: Dictionary = {}
+var _last_speaker_key: String = ""
+var _shot_memory: Dictionary = {}      # char key → {size, score}
+
+
+func set_portrait_override(arg: String) -> void:
+	_portrait_override = PortraitDirector.parse_override(arg)
+
+
+## GameEngine calls this on every narrate / say / think line, after
+## update_expression and activate_speaker.
+func direct_line(char_name: String, text: String, expr: String) -> void:
+	var speaker: String = char_key(char_name) if char_name != "" else ""
+	var entries: Array = []
+	for pos: String in _slots:
+		var slot = _slots[pos]
+		if slot == null:
+			continue
+		var node: Control = slot["node"]
+		if not is_instance_valid(node) or node.has_meta("fading") or not node.has_meta("portrait3d"):
+			continue
+		var p3d: Node = node.get_meta("portrait3d")
+		if p3d == null or not is_instance_valid(p3d) or not p3d.has_method("set_shot"):
+			continue
+		entries.append({"key": char_key(str(slot["name"])), "p3d": p3d})
+	var speaker_size: String = "mcu"
+	# the speaker first, so listeners can size off them
+	for e_v: Variant in entries:
+		var e: Dictionary = e_v
+		if String(e["key"]) != speaker or speaker == "":
+			continue
+		var p3d: Node = e["p3d"]
+		var mem: Dictionary = _shot_memory.get(speaker, {})
+		var glb_path: String = String(p3d.get("_loaded_glb_path"))
+		var mood: String = String(p3d.get("_mood_id"))
+		var pick: Dictionary = PortraitDirector.choose({
+			"role": "speaker", "mood": mood if mood != "" else expr, "text": text,
+			"glb": glb_path.get_file().get_basename(),
+			"prev_size": String(mem.get("size", "")), "prev_score": int(mem.get("score", 0)),
+			"same_speaker": speaker == _last_speaker_key, "override": _portrait_override,
+		})
+		speaker_size = String(pick["size"])
+		p3d.call("set_shot", speaker_size, String(pick["angle"]))
+		_shot_memory[speaker] = {"size": speaker_size, "score": int(pick.get("score", 0))}
+	for e_v: Variant in entries:
+		var e: Dictionary = e_v
+		var k: String = String(e["key"])
+		if speaker != "" and k == speaker:
+			continue
+		var role: String = "narration" if speaker == "" else "listener"
+		var pick2: Dictionary = PortraitDirector.choose({"role": role, "speaker_size": speaker_size})
+		var p3d2: Node = e["p3d"]
+		p3d2.call("set_shot", String(pick2["size"]), String(pick2["angle"]))
+		_shot_memory.erase(k)        # a listener who speaks next starts fresh
+	_last_speaker_key = speaker
+	_portrait_override = {}
 
 
 # A centre portrait turns to face whoever is speaking: speaker on the

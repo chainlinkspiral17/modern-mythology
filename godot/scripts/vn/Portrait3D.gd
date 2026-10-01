@@ -62,6 +62,29 @@ var _mood_id: String = "neutral"
 var _mood: Dictionary = {}
 var _mood_t: float = 0.0     # time since the mood was set (drives motion)
 
+# ── SHOTS (draft 1 · 2026-10-01) ─────────────────────────────────
+# Real shot sizes framed from the figure itself (every model is scaled
+# to TARGET_HEIGHT_M, feet at 0): the bottom and top of the frame as
+# fractions of the figure's height, and the lens (vertical FOV) — longer
+# for closer shots, the portrait photographer's 85-135 mm: faces flatten
+# kindly and the A-pose arms of the Meshy models leave the frame. The
+# PortraitDirector picks the size and angle per line; set_shot() cuts
+# (the house grammar: cuts between held frames, never a dolly).
+const SHOT_FRAMES := {
+	"wide":   {"b": 0.36,  "t": 1.04,  "fov": 34.0},   # thigh-up — the old resting frame
+	"medium": {"b": 0.55,  "t": 1.05,  "fov": 30.0},   # waist-up
+	"mcu":    {"b": 0.70,  "t": 1.045, "fov": 26.0},   # chest-up — the dialogue single
+	"cu":     {"b": 0.795, "t": 1.035, "fov": 22.0},   # head and shoulders
+	"ecu":    {"b": 0.865, "t": 0.995, "fov": 19.0},   # the face; the crown leaves frame
+}
+const YAW_THREE_QUARTER: float = 0.40       # rad (~23°) — the old 3/4 offset (atan 1.15/2.7)
+const ANGLE_ELEVATION := {"eye": 0.0, "low": -0.16, "high": 0.14, "dutch": 0.0}   # rad: camera below / above the frame centre
+const DUTCH_ROLL: float = 0.105             # rad (~6°)
+const WIDE_FRAME_H: float = 0.68 * TARGET_HEIGHT_M
+var _shot_size: String = "medium"
+var _shot_angle: String = "eye"
+var _motion_scale: float = 1.0               # mood push/bob/shake shrink with the frame
+
 # Demon mode — when true, set_expression() routes to "demon_chaos"
 # regardless of the requested expression (a demon doesn't perform
 # moods, it leaks signal corruption), and the SubViewportContainer's
@@ -317,12 +340,13 @@ func _process(delta: float) -> void:
 	_mood_t += delta
 	var pos: Vector3 = _rest_cam_pos
 	if _mood.has("pos_off"):
-		pos += _mood["pos_off"]
+		var po: Vector3 = _mood["pos_off"]
+		pos += po * _motion_scale
 	# Bob (vertical sway)
 	if _mood.has("bob_amp") and _mood.has("bob_freq"):
 		var amp: float = _mood["bob_amp"]
 		var freq: float = _mood["bob_freq"]
-		pos.y += sin(_mood_t * freq * TAU) * amp
+		pos.y += sin(_mood_t * freq * TAU) * amp * _motion_scale
 	_camera.position = pos
 	# Pitch + yaw — start from defaults, layer offsets + animation
 	var pitch: float = _mood.get("pitch_off", 0.0)
@@ -338,11 +362,13 @@ func _process(delta: float) -> void:
 		var sa: Vector3 = _mood["shake_amp"]
 		var sf: float = _mood["shake_freq"]
 		# Lissajous-ish jitter so the shake doesn't look periodic
-		pitch += sin(_mood_t * sf * TAU * 1.07) * sa.x
-		yaw   += sin(_mood_t * sf * TAU * 0.93) * sa.y
+		# a tremor reads louder on a long lens: scale it with the frame
+		pitch += sin(_mood_t * sf * TAU * 1.07) * sa.x * _motion_scale
+		yaw   += sin(_mood_t * sf * TAU * 0.93) * sa.y * _motion_scale
 	_camera.rotation = Vector3(_rest_cam_rot.x + pitch, _rest_cam_rot.y + yaw, _rest_cam_rot.z)
 	# FOV
-	var fov: float = _rest_cam_fov + _mood.get("fov_off", 0.0)
+	var fov_off: float = float(_mood.get("fov_off", 0.0))
+	var fov: float = _rest_cam_fov + fov_off * _motion_scale
 	if fov < 5.0:
 		fov = 5.0
 	_camera.fov = fov
@@ -384,6 +410,9 @@ func load_character(glb_path: String, expression: String = "") -> bool:
 	# Kwik Stop fluorescents). Rewrites the resting key/fill/back
 	# state so all mood deltas compose on top of the right palette.
 	_apply_character_lighting(glb_path)
+	# Frame the new figure with the current shot (the director's last
+	# order, or the medium a portrait opens on)
+	set_shot(_shot_size, _shot_angle)
 	# Re-apply the current mood so any "use rest value" fallback
 	# picks up the freshly-installed character resting palette
 	# instead of the previous character's leftover lights.
@@ -456,6 +485,43 @@ func set_demon_mode(enabled: bool) -> void:
 		mat.set_shader_parameter("strength", 1.0 if enabled else 0.0)
 	# Re-apply expression so the demon_chaos route fires immediately
 	set_expression(_mood_id)
+
+
+## Cut to a shot: size in SHOT_FRAMES, angle eye | low | high | dutch.
+## Rebuilds the resting camera; mood motion layers on top, scaled to
+## the frame so a close-up does not shake like a wide.
+func set_shot(size: String, angle: String = "eye") -> void:
+	if not SHOT_FRAMES.has(size):
+		size = "medium"
+	if not ANGLE_ELEVATION.has(angle):
+		angle = "eye"
+	_shot_size = size
+	_shot_angle = angle
+	if _camera == null:
+		return
+	var f: Dictionary = SHOT_FRAMES[size]
+	var h: float = TARGET_HEIGHT_M
+	var b: float = float(f["b"]) * h
+	var t: float = float(f["t"]) * h
+	var frame_h: float = t - b
+	var fov: float = float(f["fov"])
+	var dist: float = (frame_h * 0.5) / tan(deg_to_rad(fov * 0.5))
+	var target := Vector3(0.0, (b + t) * 0.5, 0.0)
+	var elev: float = float(ANGLE_ELEVATION[angle])
+	var dir := Vector3(sin(YAW_THREE_QUARTER) * cos(elev), sin(elev), cos(YAW_THREE_QUARTER) * cos(elev))
+	_camera.position = target + dir * dist
+	_camera.fov = fov
+	_camera.look_at(target, Vector3.UP)
+	if angle == "dutch":
+		_camera.rotate_object_local(Vector3(0, 0, 1), DUTCH_ROLL)
+	_rest_cam_pos = _camera.position
+	_rest_cam_rot = _camera.rotation
+	_rest_cam_fov = fov
+	_motion_scale = frame_h / WIDE_FRAME_H
+
+
+func get_shot() -> String:
+	return _shot_size
 
 
 func get_viewport_texture() -> Texture2D:
