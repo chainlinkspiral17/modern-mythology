@@ -2923,6 +2923,21 @@ CharLayer for bare keys that cross eras (`miriam`); vol1's chorus
 Lena's prompt says 2050s and vol7's wiki said 2025 — the user
 ruled the 2050s (2026-09-26); both wikis are rewritten to it.
 
+**2026-10-01 · DRAFT 44 · the three misses from sheets 40-42.**
+· cape_perpetua_overlook: the fog box (lowered in draft 41) still read
+  from the overlook as a frozen white lake. Fog is a grey floor low in
+  the drop and ~65 flattened grey blobs over it, the Sitka crowns
+  rising through.
+· cabin_interior_bed: the window over the bed was a dark solid pane
+  with nothing behind it — the glass is "the gray-green of cedars" (ch1)
+  with a cross of glazing bars; the camera looks down the bed's length
+  (yaw −2.55, pitch 0.05) with the window 24° left of centre (square on,
+  Wall_E filled 67 % of the frame at 1.8 m).
+· bar_exterior: the big lit window sat INSIDE its frame box, which hid
+  the glow but an L-shaped sliver; the glow is in front of the frame.
+Also seen on sheet 42: the intro video reached Drive from the Deck.
+NEXT: sheet 43 for these three; Graustark; Kestrel.
+
 **2026-10-01 · THE OPENING MOVIE (temporary).** The user: "I have a
 modernmythology1.mp4 I'd like to make the temp starting title/credits/
 opening movie that goes to main menu on click or finish and also play on

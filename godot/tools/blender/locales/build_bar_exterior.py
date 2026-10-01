@@ -63,7 +63,9 @@ def build_building():
     make_box("Door_Lintel", (-1.0, 4.40, 2.55), (1.6, 0.20, 0.22), COL_LINTEL)
     # Big front window east of the door — warm from inside
     make_box("Win_Frame", (2.4, 4.42, 1.65), (3.2, 0.10, 1.9), COL_FRAME)
-    make_box("Win_Warm", (2.4, 4.40, 1.65), (2.9, 0.06, 1.65), COL_WIN_WARM)
+    # IN FRONT of the frame (sheet 42: inside the frame box, the frame hid
+    # the glow but an L-shaped sliver)
+    make_box("Win_Warm", (2.4, 4.35, 1.65), (2.9, 0.03, 1.65), COL_WIN_WARM)
     make_box("Win_Sill", (2.4, 4.36, 0.66), (3.4, 0.18, 0.10), COL_LINTEL)
     # Dark upper-story windows
     for i, wx in enumerate((-5.5, -2.5, 0.5, 3.5, 6.5)):

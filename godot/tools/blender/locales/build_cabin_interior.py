@@ -389,7 +389,12 @@ def build_east_room():
     # on the wall's room face, glass in front of the frame (2026-09-24: frame and glass
     # were offset from the wall's CENTRE line — inside the wall, never visible)
     make_box("EBed_Win_Frame", (2.88, 1.45, 1.75), (0.04, 1.20, 0.95), COL_WOOD_DK)
-    make_box("EBed_Win_Glass", (2.85, 1.45, 1.75), (0.02, 1.06, 0.82), COL_GLASS)
+    # "the window above the bed gave her the gray-green of cedars" (ch1):
+    # the glass was a dark solid pane with nothing behind it (sheet 42) —
+    # it is the cedars' grey-green now, with a cross of glazing bars
+    make_box("EBed_Win_Glass", (2.85, 1.45, 1.75), (0.02, 1.06, 0.82), (0.50, 0.58, 0.52, 1.0))
+    make_box("EBed_Win_Muntin_V", (2.835, 1.45, 1.75), (0.01, 0.04, 0.82), COL_WOOD_DK)
+    make_box("EBed_Win_Muntin_H", (2.835, 1.45, 1.75), (0.01, 1.06, 0.04), COL_WOOD_DK)
     # Writing desk against the S wall + the south window over it —
     # the kit table: turned legs, an apron, a stretcher (draft 5)
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)

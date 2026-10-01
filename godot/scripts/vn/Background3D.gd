@@ -1782,7 +1782,10 @@ const CAMERA_PRESETS := {
 		# between the partition and the bed, looking ESE: the made bed
 		# in the lower frame, the window over it (E wall, 2.85, 1.45).
 		"camera_origin": Vector3(1.20, 1.05, -2.50),
-		"camera_rotation": Vector3(0.20, -2.138, 0.0),
+		# down the bed's length toward its foot and the desk, the window
+		# over the bed 24° left of centre (sheet 42: pitched 0.20 at the E
+		# wall it was all wall; square on, the wall filled 67 % at 1.8 m)
+		"camera_rotation": Vector3(0.05, -2.55, 0.0),
 		"fov": 58.0,
 		"suppress_input": true,
 	},

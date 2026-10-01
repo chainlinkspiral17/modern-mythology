@@ -59,7 +59,21 @@ def build_ground():
     # the crow lying on it (vertex alpha is not transparency here). "The
     # fog was in the trees below": its top is 2 m under the lip now,
     # west of the bluff face, and the Sitka crowns come up through it.
-    make_box("Fog_Bank", (-17.0, 12.0, -3.6), (20.0, 80.0, 3.2), (0.82, 0.84, 0.86, 1.0))
+    # FOG IS LUMPY (sheet 40/42, 2026-10-01): one 20 x 80 m box read from
+    # the overlook as a frozen white lake. A floor of fog low in the drop
+    # and ~65 flattened grey blobs rolling over it, the Sitka crowns
+    # coming up through; greyer than white, so it sits in the haze.
+    make_box("Fog_Floor", (-17.0, 12.0, -4.3), (20.0, 80.0, 0.2), (0.62, 0.65, 0.68, 1.0))
+    k = 0
+    for gx in range(5):
+        for gy in range(13):
+            fx = -25.0 + gx * 4.2 + 1.3 * (((gx * 7 + gy * 3) % 5) - 2) * 0.5
+            fy = -24.0 + gy * 6.0 + 1.1 * (((gx * 3 + gy * 5) % 5) - 2) * 0.5
+            r = 3.2 + 0.5 * ((gx + gy * 2) % 4)
+            shade = 0.66 + 0.03 * ((gx * 5 + gy) % 4)
+            make_blob(f"Fog_Bank_{k}", (fx, fy, -3.3 + 0.25 * ((gx + gy) % 3)), r,
+                      (shade, shade + 0.02, shade + 0.04, 1.0), noise=0.30, seed=200 + k, squash=0.32)
+            k += 1
     # the sea and its horizon
     make_box("Sea_Plane", (-108.3, 12.0, -6.0), (203.4, 300.0, 0.06), (0.30, 0.38, 0.42, 1.0))
     # landward of the bluff only (2026-09-30: 600 m square at -0.05, it
