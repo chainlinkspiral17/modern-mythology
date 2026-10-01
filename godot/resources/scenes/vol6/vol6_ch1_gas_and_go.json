@@ -69,7 +69,8 @@
     },
     {
       "t": "narrate",
-      "text": "There is an exchange of words Skip cannot hear. The exchange lasts approximately two minutes. Skip looks up from his phone once during this period, sees nothing through the window that requires his attention, and looks back down."
+      "text": "There is an exchange of words Skip cannot hear. The exchange lasts approximately two minutes. Skip looks up from his phone once during this period, sees nothing through the window that requires his attention, and looks back down.",
+      "voice": "assets/audio/voice/vol6_ch1_gas_and_go/015.mp3"
     },
     {
       "t": "narrate",
@@ -81,7 +82,8 @@
     },
     {
       "t": "narrate",
-      "text": "The pickup stays."
+      "text": "The pickup stays.",
+      "voice": "assets/audio/voice/vol6_ch1_gas_and_go/018.mp3"
     },
     {
       "t": "narrate",
@@ -97,7 +99,8 @@
     },
     {
       "t": "narrate",
-      "text": "He goes back to his phone."
+      "text": "He goes back to his phone.",
+      "voice": "assets/audio/voice/vol6_ch1_gas_and_go/022.mp3"
     },
     {
       "t": "narrate",
@@ -124,11 +127,13 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:day_bright][shot:establish]The pickup pulls out of the lot and turns north on Gallatin."
+      "text": "[mood:day_bright][shot:establish]The pickup pulls out of the lot and turns north on Gallatin.",
+      "voice": "assets/audio/voice/vol6_ch1_gas_and_go/028.mp3"
     },
     {
       "t": "narrate",
-      "text": "Skip Donnelly watches it go. He takes a pull on his vape. He goes back to his phone."
+      "text": "Skip Donnelly watches it go. He takes a pull on his vape. He goes back to his phone.",
+      "voice": "assets/audio/voice/vol6_ch1_gas_and_go/029.mp3"
     },
     {
       "t": "jump",

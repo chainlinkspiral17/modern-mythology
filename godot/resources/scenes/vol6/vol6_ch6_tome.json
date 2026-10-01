@@ -47,7 +47,8 @@
     },
     {
       "t": "narrate",
-      "text": "Claire pays. She walks out of the station. She crosses the lot. She walks directly to Tomé's driver's side window and knocks, twice, with the small efficient knuckle-knock of a woman who has, in many parking lots in many states, established the habit."
+      "text": "Claire pays. She walks out of the station. She crosses the lot. She walks directly to Tomé's driver's side window and knocks, twice, with the small efficient knuckle-knock of a woman who has, in many parking lots in many states, established the habit.",
+      "voice": "assets/audio/voice/vol6_ch6_tome/009.mp3"
     },
     {
       "t": "show",
@@ -57,29 +58,34 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup tome]Tomé rolls down the window."
+      "text": "[shot:closeup tome]Tomé rolls down the window.",
+      "voice": "assets/audio/voice/vol6_ch6_tome/011.mp3"
     },
     {
       "t": "say",
       "char": "Tomé",
       "text": "Yeah?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_tome/012.mp3"
     },
     {
       "t": "say",
       "char": "Claire",
       "text": "Hi. Plans changed. Vince is gone. The van's been picked up. I need a ride to the next truck stop. I'll pay you two hundred for the ride. Three if you don't ask questions.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_tome/013.mp3"
     },
     {
       "t": "narrate",
-      "text": "Tomé looks at her. Tomé is, Claire has noted, much younger than Vince — maybe twenty-six, maybe twenty-eight. He has the alert nervous look of a man who has only been doing this work for a year or two and who is not, yet, hardened to it."
+      "text": "Tomé looks at her. Tomé is, Claire has noted, much younger than Vince — maybe twenty-six, maybe twenty-eight. He has the alert nervous look of a man who has only been doing this work for a year or two and who is not, yet, hardened to it.",
+      "voice": "assets/audio/voice/vol6_ch6_tome/014.mp3"
     },
     {
       "t": "say",
       "char": "Tomé",
       "text": "Ma'am, I don't know what — ",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_tome/015.mp3"
     },
     {
       "t": "say",
@@ -95,33 +101,39 @@
     },
     {
       "t": "narrate",
-      "text": "Tomé stares at her."
+      "text": "Tomé stares at her.",
+      "voice": "assets/audio/voice/vol6_ch6_tome/018.mp3"
     },
     {
       "t": "say",
       "char": "Tomé",
       "text": "How do you — ",
-      "expr": "surprised"
+      "expr": "surprised",
+      "voice": "assets/audio/voice/vol6_ch6_tome/019.mp3"
     },
     {
       "t": "say",
       "char": "Claire",
       "text": "Tomé. Yes or no. Twenty seconds.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_tome/020.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Tomé looks at the dashboard. He looks at the station. He looks at the van — which, he can see, is no longer at pump six. The van is, at this moment, pulling out of the lot, with a man Tomé does not recognize at the wheel."
+      "text": "[shot:establish]Tomé looks at the dashboard. He looks at the station. He looks at the van — which, he can see, is no longer at pump six. The van is, at this moment, pulling out of the lot, with a man Tomé does not recognize at the wheel.",
+      "voice": "assets/audio/voice/vol6_ch6_tome/021.mp3"
     },
     {
       "t": "say",
       "char": "Tomé",
       "text": "Get in.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_tome/022.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert cash]She gets in. She buckles her seatbelt. She hands him three hundred-dollar bills before he has finished pulling out."
+      "text": "[shot:insert cash]She gets in. She buckles her seatbelt. She hands him three hundred-dollar bills before he has finished pulling out.",
+      "voice": "assets/audio/voice/vol6_ch6_tome/023.mp3"
     },
     {
       "t": "hide",

@@ -43,7 +43,8 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]The Montreal apartment, once Elicia Duchane's sleek command center, now resembled the ruins of some forgotten exposition — perhaps the Columbian, after the crowds had gone home and the plaster gods had started to crack and the workmen had not yet been hired to take them down."
+      "text": "[shot:establish]The Montreal apartment, once Elicia Duchane's sleek command center, now resembled the ruins of some forgotten exposition — perhaps the Columbian, after the crowds had gone home and the plaster gods had started to crack and the workmen had not yet been hired to take them down.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/008.mp3"
     },
     {
       "t": "narrate",
@@ -59,11 +60,13 @@
     },
     {
       "t": "narrate",
-      "text": "Her carefully constructed reality, built on foundations of ambition and meticulously controlled narratives, was undergoing a rather dramatic, unscheduled demolition."
+      "text": "Her carefully constructed reality, built on foundations of ambition and meticulously controlled narratives, was undergoing a rather dramatic, unscheduled demolition.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/012.mp3"
     },
     {
       "t": "narrate",
-      "text": "The Tower, struck by lightning. How very — on the nose."
+      "text": "The Tower, struck by lightning. How very — on the nose.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/013.mp3"
     },
     {
       "t": "narrate",
@@ -79,15 +82,18 @@
     },
     {
       "t": "narrate",
-      "text": "She, the director, the manipulator of light and shadow, felt suddenly acutely like a character trapped in someone else's overwrought melodrama — perhaps penned by Longfellow himself after a bad clam bake."
+      "text": "She, the director, the manipulator of light and shadow, felt suddenly acutely like a character trapped in someone else's overwrought melodrama — perhaps penned by Longfellow himself after a bad clam bake.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/017.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_b]A faded dreamer, indeed."
+      "text": "[shot:establish_b]A faded dreamer, indeed.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/018.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]The structures she had built were crumbling."
+      "text": "[shot:establish]The structures she had built were crumbling.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/019.mp3"
     },
     {
       "t": "narrate",
@@ -111,15 +117,18 @@
     },
     {
       "t": "narrate",
-      "text": "Except this time the render engine was not catching up."
+      "text": "Except this time the render engine was not catching up.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/025.mp3"
     },
     {
       "t": "narrate",
-      "text": "A necessary destruction, the Tower card promised. A breaking down of false premises, outdated beliefs. A spiritual decluttering."
+      "text": "A necessary destruction, the Tower card promised. A breaking down of false premises, outdated beliefs. A spiritual decluttering.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/026.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert eviction_notice]It felt mostly like eviction."
+      "text": "[shot:insert eviction_notice]It felt mostly like eviction.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/027.mp3"
     },
     {
       "t": "narrate",
@@ -143,7 +152,8 @@
     },
     {
       "t": "narrate",
-      "text": "The ambient anxiety was, this evening, no longer managing. The ambient anxiety was, this evening, requesting executive intervention."
+      "text": "The ambient anxiety was, this evening, no longer managing. The ambient anxiety was, this evening, requesting executive intervention.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/033.mp3"
     },
     {
       "t": "narrate",
@@ -155,27 +165,33 @@
     },
     {
       "t": "narrate",
-      "text": "False premises. Oh, she had built her fortress on those, hadn't she. The premise that control was possible. The premise that illusion was sustainable. The premise that keeping everyone at arm's length somehow protected her."
+      "text": "False premises. Oh, she had built her fortress on those, hadn't she. The premise that control was possible. The premise that illusion was sustainable. The premise that keeping everyone at arm's length somehow protected her.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/036.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Hilarious, in retrospect."
+      "text": "[shot:establish]Hilarious, in retrospect.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/037.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_b]A dark chuckle escaped her lips, dry as old parchment."
+      "text": "[shot:establish_b]A dark chuckle escaped her lips, dry as old parchment.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/038.mp3"
     },
     {
       "t": "narrate",
-      "text": "The old order changeth, yielding place to new. Thanks, Tennyson. Super helpful right now."
+      "text": "The old order changeth, yielding place to new. Thanks, Tennyson. Super helpful right now.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/039.mp3"
     },
     {
       "t": "narrate",
-      "text": "She set the award down on the table beside the eviction notice. The two objects, side by side. They went well together. They could, conceivably, be a still life. Two Aspects of a Career, Late October, Montreal, Mixed Media."
+      "text": "She set the award down on the table beside the eviction notice. The two objects, side by side. They went well together. They could, conceivably, be a still life. Two Aspects of a Career, Late October, Montreal, Mixed Media.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/040.mp3"
     },
     {
       "t": "narrate",
-      "text": "She did not, this evening, photograph them. She had stopped photographing things. The not-photographing had been, three months ago, the first quiet symptom her body had given her of what her mind was now, finally, beginning to acknowledge."
+      "text": "She did not, this evening, photograph them. She had stopped photographing things. The not-photographing had been, three months ago, the first quiet symptom her body had given her of what her mind was now, finally, beginning to acknowledge.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/041.mp3"
     },
     {
       "t": "narrate",
@@ -187,11 +203,13 @@
     },
     {
       "t": "narrate",
-      "text": "And in doing so, perhaps she had only hollowed it out."
+      "text": "And in doing so, perhaps she had only hollowed it out.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/044.mp3"
     },
     {
       "t": "narrate",
-      "text": "Leaving — this. Render queue errors and psychic debris."
+      "text": "Leaving — this. Render queue errors and psychic debris.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/045.mp3"
     },
     {
       "t": "narrate",
@@ -207,11 +225,13 @@
     },
     {
       "t": "narrate",
-      "text": "Elicia owed approximately four thousand dollars, in addition to the rent. She had approximately one hundred and forty in checking. She had not, in some weeks, looked at savings."
+      "text": "Elicia owed approximately four thousand dollars, in addition to the rent. She had approximately one hundred and forty in checking. She had not, in some weeks, looked at savings.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/049.mp3"
     },
     {
       "t": "narrate",
-      "text": "She hadn't summoned them. They had simply gatecrashed."
+      "text": "She hadn't summoned them. They had simply gatecrashed.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/050.mp3"
     },
     {
       "t": "narrate",
@@ -223,7 +243,8 @@
     },
     {
       "t": "narrate",
-      "text": "The Tower demanded confrontation. No more artful dodging. No more manipulating the narrative. Just the stark unvarnished truth of the fall."
+      "text": "The Tower demanded confrontation. No more artful dodging. No more manipulating the narrative. Just the stark unvarnished truth of the fall.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/053.mp3"
     },
     {
       "t": "narrate",
@@ -235,15 +256,18 @@
     },
     {
       "t": "narrate",
-      "text": "She had been waiting because waiting required nothing of her. Waiting was the costume she wore in the absence of her director's clothes."
+      "text": "She had been waiting because waiting required nothing of her. Waiting was the costume she wore in the absence of her director's clothes.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/056.mp3"
     },
     {
       "t": "narrate",
-      "text": "The waiting was, this evening, no longer working."
+      "text": "The waiting was, this evening, no longer working.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/057.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]She thought of Philip and Mackenzie Roberts. Back in whatever remained of Graustark. Tending their garden. Mending their fences. Embodying a quiet endurance she had admired but never truly understood."
+      "text": "[shot:establish]She thought of Philip and Mackenzie Roberts. Back in whatever remained of Graustark. Tending their garden. Mending their fences. Embodying a quiet endurance she had admired but never truly understood.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/058.mp3"
     },
     {
       "t": "narrate",
@@ -275,19 +299,23 @@
     },
     {
       "t": "narrate",
-      "text": "That was the Tower. The Tower was the realization that the chair was the failure."
+      "text": "That was the Tower. The Tower was the realization that the chair was the failure.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/066.mp3"
     },
     {
       "t": "narrate",
-      "text": "The chair had to come down."
+      "text": "The chair had to come down.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/067.mp3"
     },
     {
       "t": "narrate",
-      "text": "Was there nobility in ruins. Could she find poetry in the collapse."
+      "text": "Was there nobility in ruins. Could she find poetry in the collapse.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/068.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert camera~]She turned on her camera. The little red light a baleful eye in the dimming room."
+      "text": "[shot:insert camera~]She turned on her camera. The little red light a baleful eye in the dimming room.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/069.mp3"
     },
     {
       "t": "narrate",
@@ -295,15 +323,18 @@
     },
     {
       "t": "narrate",
-      "text": "The red light, unfamiliar to her after so long, looked aggressive — looked, in fact, the way she imagined the red light looked to her interview subjects in their first thirty seconds, the small predatory eye telling them their words were now being recorded and there was no taking them back."
+      "text": "The red light, unfamiliar to her after so long, looked aggressive — looked, in fact, the way she imagined the red light looked to her interview subjects in their first thirty seconds, the small predatory eye telling them their words were now being recorded and there was no taking them back.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/071.mp3"
     },
     {
       "t": "narrate",
-      "text": "She faced the lens. Her own reflection staring back. Stark. Unadorned. No crew. No script. No safety net."
+      "text": "She faced the lens. Her own reflection staring back. Stark. Unadorned. No crew. No script. No safety net.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/072.mp3"
     },
     {
       "t": "narrate",
-      "text": "Just Elicia Duchane and the wreckage."
+      "text": "Just Elicia Duchane and the wreckage.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/073.mp3"
     },
     {
       "t": "narrate",
@@ -319,11 +350,13 @@
     },
     {
       "t": "narrate",
-      "text": "She did not, this evening, know how to be just Elicia."
+      "text": "She did not, this evening, know how to be just Elicia.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/077.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup elicia]She sat in front of the camera anyway."
+      "text": "[shot:closeup elicia]She sat in front of the camera anyway.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/078.mp3"
     },
     {
       "t": "show",
@@ -334,19 +367,23 @@
     {
       "t": "say",
       "char": "elicia",
-      "text": "Alright. Scene One. Take One."
+      "text": "Alright. Scene One. Take One.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/080.mp3"
     },
     {
       "t": "narrate",
-      "text": "She paused."
+      "text": "She paused.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/081.mp3"
     },
     {
       "t": "narrate",
-      "text": "She did not, immediately, have anything else to say."
+      "text": "She did not, immediately, have anything else to say.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/082.mp3"
     },
     {
       "t": "narrate",
-      "text": "The red light continued. The camera continued recording. The room held its breath."
+      "text": "The red light continued. The camera continued recording. The room held its breath.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/083.mp3"
     },
     {
       "t": "narrate",
@@ -366,27 +403,33 @@
     },
     {
       "t": "narrate",
-      "text": "Admired has not, ever, been enough."
+      "text": "Admired has not, ever, been enough.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/088.mp3"
     },
     {
       "t": "narrate",
-      "text": "She did not, in front of the camera, say any of this out loud."
+      "text": "She did not, in front of the camera, say any of this out loud.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/089.mp3"
     },
     {
       "t": "narrate",
-      "text": "[beat:hit][mood:dream_blur][shot:closeup elicia~]She did, in front of the camera, allow her face to do the small honest collapsing that the realization required."
+      "text": "[beat:hit][mood:dream_blur][shot:closeup elicia~]She did, in front of the camera, allow her face to do the small honest collapsing that the realization required.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/090.mp3"
     },
     {
       "t": "narrate",
-      "text": "She allowed it to be recorded."
+      "text": "She allowed it to be recorded.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/091.mp3"
     },
     {
       "t": "narrate",
-      "text": "The red light blinked. The room was very quiet. Outside, the November Montreal evening did its grey careful work."
+      "text": "The red light blinked. The room was very quiet. Outside, the November Montreal evening did its grey careful work.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/092.mp3"
     },
     {
       "t": "narrate",
-      "text": "She let the camera record for thirteen minutes."
+      "text": "She let the camera record for thirteen minutes.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/093.mp3"
     },
     {
       "t": "narrate",
@@ -394,19 +437,23 @@
     },
     {
       "t": "narrate",
-      "text": "She simply sat in front of the lens with her face doing whatever her face was doing, which was, by minute four, weeping, and which was, by minute nine, no longer weeping, and which was, by minute twelve, something for which she did not, even with her professional vocabulary, have a name."
+      "text": "She simply sat in front of the lens with her face doing whatever her face was doing, which was, by minute four, weeping, and which was, by minute nine, no longer weeping, and which was, by minute twelve, something for which she did not, even with her professional vocabulary, have a name.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/095.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert camera]At minute thirteen she reached forward and pressed the small silver button on the camera that ended the recording. The red light went out."
+      "text": "[shot:insert camera]At minute thirteen she reached forward and pressed the small silver button on the camera that ended the recording. The red light went out.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/096.mp3"
     },
     {
       "t": "narrate",
-      "text": "She did not, immediately, know what she was going to do with the recording."
+      "text": "She did not, immediately, know what she was going to do with the recording.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/097.mp3"
     },
     {
       "t": "narrate",
-      "text": "She knew, however, that she was not going to delete it."
+      "text": "She knew, however, that she was not going to delete it.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/098.mp3"
     },
     {
       "t": "narrate",
@@ -418,15 +465,18 @@
     },
     {
       "t": "narrate",
-      "text": "She did not know who she would show it to. That was a problem for next week."
+      "text": "She did not know who she would show it to. That was a problem for next week.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/101.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert teacup]She stood up. Her knees clicked in the way her knees had begun to click in the past year. She crossed the room to the kitchen counter. She picked up her mother's teacup."
+      "text": "[shot:insert teacup]She stood up. Her knees clicked in the way her knees had begun to click in the past year. She crossed the room to the kitchen counter. She picked up her mother's teacup.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/102.mp3"
     },
     {
       "t": "narrate",
-      "text": "She blew the dust off it."
+      "text": "She blew the dust off it.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/103.mp3"
     },
     {
       "t": "narrate",
@@ -438,7 +488,8 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert teacup]The cup, on its saucer, looked the way her mother had always set it. The cup, on its saucer, looked correct."
+      "text": "[shot:insert teacup]The cup, on its saucer, looked the way her mother had always set it. The cup, on its saucer, looked correct.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/106.mp3"
     },
     {
       "t": "narrate",
@@ -454,71 +505,88 @@
     },
     {
       "t": "narrate",
-      "text": "The tea was the cheapest tea in the cupboard. The tea was excellent."
+      "text": "The tea was the cheapest tea in the cupboard. The tea was excellent.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/110.mp3"
     },
     {
       "t": "narrate",
-      "text": "She returned to the table. The eviction notice. The award. The little still life she had refused to photograph."
+      "text": "She returned to the table. The eviction notice. The award. The little still life she had refused to photograph.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/111.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert eviction_notice]She picked up the eviction notice. She tore the envelope open with her thumbnail. She read the notice. The notice said exactly what she had known it would say. The notice gave her thirty days."
+      "text": "[shot:insert eviction_notice]She picked up the eviction notice. She tore the envelope open with her thumbnail. She read the notice. The notice said exactly what she had known it would say. The notice gave her thirty days.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/112.mp3"
     },
     {
       "t": "narrate",
-      "text": "Thirty days was, she calculated, enough time."
+      "text": "Thirty days was, she calculated, enough time.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/113.mp3"
     },
     {
       "t": "narrate",
-      "text": "She did not, immediately, know what it was enough time for. She knew only that she would, in the thirty days, find out."
+      "text": "She did not, immediately, know what it was enough time for. She knew only that she would, in the thirty days, find out.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/114.mp3"
     },
     {
       "t": "narrate",
-      "text": "She sat down at the desk. She opened her laptop. The laptop, which had been asleep, woke slowly. She opened her email — the email she had not, in three weeks, opened. There were four hundred and twelve unread messages."
+      "text": "She sat down at the desk. She opened her laptop. The laptop, which had been asleep, woke slowly. She opened her email — the email she had not, in three weeks, opened. There were four hundred and twelve unread messages.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/115.mp3"
     },
     {
       "t": "narrate",
-      "text": "She scrolled past most of them. She found two she was looking for, even though she had not realized she was looking for them."
+      "text": "She scrolled past most of them. She found two she was looking for, even though she had not realized she was looking for them.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/116.mp3"
     },
     {
       "t": "narrate",
-      "text": "The first was from her hosting provider. Subject line: FINAL NOTICE — WHISPERSFROMTHELIMINAL.NET. She did not open it. She archived it. The site could go down. The site had, frankly, been overdue to go down for some time."
+      "text": "The first was from her hosting provider. Subject line: FINAL NOTICE — WHISPERSFROMTHELIMINAL.NET. She did not open it. She archived it. The site could go down. The site had, frankly, been overdue to go down for some time.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/117.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert laptop]The second was from John Frank. The subject line was Hi. The email was three weeks old. She had not noticed it. The body of the email was four sentences:"
+      "text": "[shot:insert laptop]The second was from John Frank. The subject line was Hi. The email was three weeks old. She had not noticed it. The body of the email was four sentences:",
+      "voice": "assets/audio/voice/vol5_ch16_tower/118.mp3"
     },
     {
       "t": "narrate",
-      "text": "Eli — I heard you were in Montreal. From the Roberts. I am also in Montreal. I have been here for some years. You don't have to write back. But if you want to get coffee, I am at a place called Cafe Olimpico most Tuesday mornings. — J."
+      "text": "Eli — I heard you were in Montreal. From the Roberts. I am also in Montreal. I have been here for some years. You don't have to write back. But if you want to get coffee, I am at a place called Cafe Olimpico most Tuesday mornings. — J.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/119.mp3"
     },
     {
       "t": "narrate",
-      "text": "She read the email twice."
+      "text": "She read the email twice.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/120.mp3"
     },
     {
       "t": "narrate",
-      "text": "She read it a third time."
+      "text": "She read it a third time.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/121.mp3"
     },
     {
       "t": "narrate",
-      "text": "She had, she realized, been waiting for exactly this email for nine months. She had been waiting for it the way a person waited for a letter they had not allowed themselves to ask anyone to write."
+      "text": "She had, she realized, been waiting for exactly this email for nine months. She had been waiting for it the way a person waited for a letter they had not allowed themselves to ask anyone to write.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/122.mp3"
     },
     {
       "t": "narrate",
-      "text": "She opened a reply. She typed:"
+      "text": "She opened a reply. She typed:",
+      "voice": "assets/audio/voice/vol5_ch16_tower/123.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_b][beat:lift]J — Yes. — E."
+      "text": "[shot:establish_b][beat:lift]J — Yes. — E.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/124.mp3"
     },
     {
       "t": "narrate",
-      "text": "She hit send before she could revise it."
+      "text": "She hit send before she could revise it.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/125.mp3"
     },
     {
       "t": "narrate",
-      "text": "She closed the laptop."
+      "text": "She closed the laptop.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/126.mp3"
     },
     {
       "t": "narrate",
@@ -530,65 +598,80 @@
     },
     {
       "t": "narrate",
-      "text": "The Tower had, indeed, been struck by lightning."
+      "text": "The Tower had, indeed, been struck by lightning.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/129.mp3"
     },
     {
       "t": "narrate",
-      "text": "She had, evidently, survived the strike."
+      "text": "She had, evidently, survived the strike.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/130.mp3"
     },
     {
       "t": "narrate",
-      "text": "The ruins were now hers to walk."
+      "text": "The ruins were now hers to walk.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/131.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert camera]She picked up the camera again. She turned it on. She held it at arm's length. She faced the lens."
+      "text": "[shot:insert camera]She picked up the camera again. She turned it on. She held it at arm's length. She faced the lens.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/132.mp3"
     },
     {
       "t": "narrate",
-      "text": "The red light came back on."
+      "text": "The red light came back on.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/133.mp3"
     },
     {
       "t": "narrate",
-      "text": "She did not, this time, perform."
+      "text": "She did not, this time, perform.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/134.mp3"
     },
     {
       "t": "say",
       "char": "elicia",
-      "text": "[shot:closeup elicia]Hi. My name is Elicia. I have been telling stories about other people for a long time. Tonight I'm going to start telling one about myself. I don't know how long it's going to take. I don't know if it will be any good. I am going to tell it anyway."
+      "text": "[shot:closeup elicia]Hi. My name is Elicia. I have been telling stories about other people for a long time. Tonight I'm going to start telling one about myself. I don't know how long it's going to take. I don't know if it will be any good. I am going to tell it anyway.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/135.mp3"
     },
     {
       "t": "narrate",
-      "text": "She paused."
+      "text": "She paused.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/136.mp3"
     },
     {
       "t": "say",
       "char": "elicia",
-      "text": "Take Two."
+      "text": "Take Two.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/137.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]She set the camera down, still recording, on the windowsill. The little red light kept its watch."
+      "text": "[shot:establish]She set the camera down, still recording, on the windowsill. The little red light kept its watch.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/138.mp3"
     },
     {
       "t": "narrate",
-      "text": "Outside, the November Montreal night settled in, indifferent and beautiful and entirely uninterested in her — which was, she now understood, the gift the city had been offering her the entire eleven months. Not anonymity. Permission."
+      "text": "Outside, the November Montreal night settled in, indifferent and beautiful and entirely uninterested in her — which was, she now understood, the gift the city had been offering her the entire eleven months. Not anonymity. Permission.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/139.mp3"
     },
     {
       "t": "narrate",
-      "text": "She drank her tea. She let the camera record her drinking it."
+      "text": "She drank her tea. She let the camera record her drinking it.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/140.mp3"
     },
     {
       "t": "narrate",
-      "text": "The wreckage, around her, kept being wreckage."
+      "text": "The wreckage, around her, kept being wreckage.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/141.mp3"
     },
     {
       "t": "narrate",
-      "text": "She, in the middle of it, kept being herself."
+      "text": "She, in the middle of it, kept being herself.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/142.mp3"
     },
     {
       "t": "narrate",
-      "text": "It was, for the first time in twelve years, enough."
+      "text": "It was, for the first time in twelve years, enough.",
+      "voice": "assets/audio/voice/vol5_ch16_tower/143.mp3"
     },
     {
       "t": "end"

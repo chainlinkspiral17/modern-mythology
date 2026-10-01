@@ -50,45 +50,54 @@
     {
       "t": "say",
       "char": "Mrs. Miller",
-      "text": "[shot:closeup person]Hey, Sammy."
+      "text": "[shot:closeup person]Hey, Sammy.",
+      "voice": "assets/audio/voice/vol6_ch5_meadowlark/009.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
-      "text": "Hey, Mom."
+      "text": "Hey, Mom.",
+      "voice": "assets/audio/voice/vol6_ch5_meadowlark/010.mp3"
     },
     {
       "t": "say",
       "char": "Mrs. Miller",
-      "text": "Did you have a good time."
+      "text": "Did you have a good time.",
+      "voice": "assets/audio/voice/vol6_ch5_meadowlark/011.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
-      "text": "Yeah. It was good."
+      "text": "Yeah. It was good.",
+      "voice": "assets/audio/voice/vol6_ch5_meadowlark/012.mp3"
     },
     {
       "t": "say",
       "char": "Mrs. Miller",
-      "text": "Sammy, sit."
+      "text": "Sammy, sit.",
+      "voice": "assets/audio/voice/vol6_ch5_meadowlark/013.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam sits."
+      "text": "Sam sits.",
+      "voice": "assets/audio/voice/vol6_ch5_meadowlark/014.mp3"
     },
     {
       "t": "say",
       "char": "Mrs. Miller",
-      "text": "[shot:closeup person]Your father is downstairs in his office. He'll be up in a bit. I want to tell you something first, alone, because I didn't get to tell you enough of it last night."
+      "text": "[shot:closeup person]Your father is downstairs in his office. He'll be up in a bit. I want to tell you something first, alone, because I didn't get to tell you enough of it last night.",
+      "voice": "assets/audio/voice/vol6_ch5_meadowlark/015.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
-      "text": "Okay."
+      "text": "Okay.",
+      "voice": "assets/audio/voice/vol6_ch5_meadowlark/016.mp3"
     },
     {
       "t": "narrate",
-      "text": "Her mother takes her hand."
+      "text": "Her mother takes her hand.",
+      "voice": "assets/audio/voice/vol6_ch5_meadowlark/017.mp3"
     },
     {
       "t": "say",
@@ -107,7 +116,8 @@
     },
     {
       "t": "narrate",
-      "text": "Sam stares at her."
+      "text": "Sam stares at her.",
+      "voice": "assets/audio/voice/vol6_ch5_meadowlark/021.mp3"
     },
     {
       "t": "say",
@@ -131,12 +141,14 @@
     },
     {
       "t": "narrate",
-      "text": "Sam does not, immediately, speak."
+      "text": "Sam does not, immediately, speak.",
+      "voice": "assets/audio/voice/vol6_ch5_meadowlark/026.mp3"
     },
     {
       "t": "say",
       "char": "Mrs. Miller",
-      "text": "I am going to stand by him. We have talked about it. We agreed. I am not going to leave him. I want you to know that separately from his decision, because you are seventeen, and you get to make your own."
+      "text": "I am going to stand by him. We have talked about it. We agreed. I am not going to leave him. I want you to know that separately from his decision, because you are seventeen, and you get to make your own.",
+      "voice": "assets/audio/voice/vol6_ch5_meadowlark/027.mp3"
     },
     {
       "t": "show",
@@ -147,21 +159,25 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "[shot:closeup sam]I will come to the arraignment."
+      "text": "[shot:closeup sam]I will come to the arraignment.",
+      "voice": "assets/audio/voice/vol6_ch5_meadowlark/029.mp3"
     },
     {
       "t": "say",
       "char": "Mrs. Miller",
-      "text": "Sammy, you don't have to —"
+      "text": "Sammy, you don't have to —",
+      "voice": "assets/audio/voice/vol6_ch5_meadowlark/030.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
-      "text": "I said I will come. I love him. I don't like him right now but I love him. He's my dad."
+      "text": "I said I will come. I love him. I don't like him right now but I love him. He's my dad.",
+      "voice": "assets/audio/voice/vol6_ch5_meadowlark/031.mp3"
     },
     {
       "t": "narrate",
-      "text": "Her mother cries, quietly, for about ten seconds. Then she stops. She kisses Sam on the forehead. She says, \"I'm proud of you.\" She gets up. She leaves Sam's room. She closes the door behind her."
+      "text": "Her mother cries, quietly, for about ten seconds. Then she stops. She kisses Sam on the forehead. She says, \"I'm proud of you.\" She gets up. She leaves Sam's room. She closes the door behind her.",
+      "voice": "assets/audio/voice/vol6_ch5_meadowlark/032.mp3"
     },
     {
       "t": "hide",
@@ -186,31 +202,37 @@
     {
       "t": "think",
       "char": "Sam",
-      "text": "Friday."
+      "text": "Friday.",
+      "voice": "assets/audio/voice/vol6_ch5_meadowlark/038.mp3"
     },
     {
       "t": "think",
       "char": "Sam",
-      "text": "Saturday."
+      "text": "Saturday.",
+      "voice": "assets/audio/voice/vol6_ch5_meadowlark/039.mp3"
     },
     {
       "t": "think",
       "char": "Sam",
-      "text": "Monday."
+      "text": "Monday.",
+      "voice": "assets/audio/voice/vol6_ch5_meadowlark/040.mp3"
     },
     {
       "t": "think",
       "char": "Sam",
-      "text": "[shot:closeup sam~]The Emperor is stepping down on Monday and I am going to be there when he does."
+      "text": "[shot:closeup sam~]The Emperor is stepping down on Monday and I am going to be there when he does.",
+      "voice": "assets/audio/voice/vol6_ch5_meadowlark/041.mp3"
     },
     {
       "t": "think",
       "char": "Sam",
-      "text": "I am ready for all of it. I didn't know I would be. But I am."
+      "text": "I am ready for all of it. I didn't know I would be. But I am.",
+      "voice": "assets/audio/voice/vol6_ch5_meadowlark/042.mp3"
     },
     {
       "t": "narrate",
-      "text": "She sleeps."
+      "text": "She sleeps.",
+      "voice": "assets/audio/voice/vol6_ch5_meadowlark/043.mp3"
     },
     {
       "t": "hide",

@@ -23,7 +23,8 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:lunch]Jesse comes in at 14:22 for his three-PM shift. He is early. He is early because he has been asked to be."
+   "text": "[mood:lunch]Jesse comes in at 14:22 for his three-PM shift. He is early. He is early because he has been asked to be.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/004.mp3"
   },
   {
    "t": "show",
@@ -39,32 +40,38 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup ben]Ben is at the back office door when Jesse comes through the kitchen."
+   "text": "[shot:closeup ben]Ben is at the back office door when Jesse comes through the kitchen.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/007.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
-   "text": "Hey."
+   "text": "Hey.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/008.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
-   "text": "Hey. You asked me to come early."
+   "text": "Hey. You asked me to come early.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/009.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
-   "text": "Yeah. Three things. One: the match Saturday got moved to Friday. McClary texted me this morning."
+   "text": "Yeah. Three things. One: the match Saturday got moved to Friday. McClary texted me this morning.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/010.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
-   "text": "Okay."
+   "text": "Okay.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/011.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
-   "text": "Two: your dad came by this morning. Eleven-fifteen. Bought a coffee. Sat in the back booth by the window for twenty minutes. Did not order food. Did not take his phone out. Just — sat."
+   "text": "Two: your dad came by this morning. Eleven-fifteen. Bought a coffee. Sat in the back booth by the window for twenty minutes. Did not order food. Did not take his phone out. Just — sat.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/012.mp3"
   },
   {
    "t": "show",
@@ -75,36 +82,43 @@
   {
    "t": "say",
    "char": "Jesse",
-   "text": "[shot:closeup person]My dad was here."
+   "text": "[shot:closeup person]My dad was here.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/014.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
-   "text": "Yeah."
+   "text": "Yeah.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/015.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
-   "text": "Why."
+   "text": "Why.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/016.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
-   "text": "I don't know. He didn't say anything to anybody. He looked — Jess. He looked like a guy trying to decide whether to come inside the office and talk to me, and deciding not to, and sitting out in the booth long enough that I'd know he'd been there."
+   "text": "I don't know. He didn't say anything to anybody. He looked — Jess. He looked like a guy trying to decide whether to come inside the office and talk to me, and deciding not to, and sitting out in the booth long enough that I'd know he'd been there.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/017.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
-   "text": "Did he see you."
+   "text": "Did he see you.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/018.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
-   "text": "[shot:closeup person_b]Through the pass-through, maybe. He was sitting at an angle that could see the grill. I don't know if he looked."
+   "text": "[shot:closeup person_b]Through the pass-through, maybe. He was sitting at an angle that could see the grill. I don't know if he looked.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/019.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup jesse]Jesse exhales. He sits down, heavily, on the milk crate by the walk-in."
+   "text": "[shot:closeup jesse]Jesse exhales. He sits down, heavily, on the milk crate by the walk-in.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/020.mp3"
   },
   {
    "t": "show",
@@ -115,12 +129,14 @@
   {
    "t": "say",
    "char": "Jesse",
-   "text": "What's three."
+   "text": "What's three.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/022.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
-   "text": "Three. Sam Miller filed a missing-persons report on Diego this morning. From the Kwik Stop. It was deleted from the system within forty minutes. A New Auburn detective came in to tell her. He gave her a fake-name card. He told her not to use the PSA for this."
+   "text": "Three. Sam Miller filed a missing-persons report on Diego this morning. From the Kwik Stop. It was deleted from the system within forty minutes. A New Auburn detective came in to tell her. He gave her a fake-name card. He told her not to use the PSA for this.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/023.mp3"
   },
   {
    "t": "show",
@@ -130,32 +146,38 @@
   },
   {
    "t": "narrate",
-   "text": "Jesse is quiet for a long moment."
+   "text": "Jesse is quiet for a long moment.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/025.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
-   "text": "How do you know this."
+   "text": "How do you know this.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/026.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
-   "text": "Because the detective's nephew comes here after his high school practice every afternoon. He came in at two and told me his uncle had had a weird morning. The nephew is sixteen. He doesn't know what he said. I know what he said."
+   "text": "Because the detective's nephew comes here after his high school practice every afternoon. He came in at two and told me his uncle had had a weird morning. The nephew is sixteen. He doesn't know what he said. I know what he said.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/027.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
-   "text": "Jesus, Ben."
+   "text": "Jesus, Ben.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/028.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
-   "text": "Yeah."
+   "text": "Yeah.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/029.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
-   "text": "What are we going to do."
+   "text": "What are we going to do.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/030.mp3"
   },
   {
    "t": "say",
@@ -170,59 +192,71 @@
   {
    "t": "say",
    "char": "Jesse",
-   "text": "Let him sit."
+   "text": "Let him sit.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/033.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
-   "text": "Yeah. He's trying to decide something, Jess. Let him. Don't pressure him. Don't tell him we know. If he decides on his own, it's going to be cleaner."
+   "text": "Yeah. He's trying to decide something, Jess. Let him. Don't pressure him. Don't tell him we know. If he decides on his own, it's going to be cleaner.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/034.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
-   "text": "Ben."
+   "text": "Ben.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/035.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
-   "text": "Yeah."
+   "text": "Yeah.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/036.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
-   "text": "How are you so calm about this."
+   "text": "How are you so calm about this.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/037.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]Ben considers the question."
+   "text": "[shot:establish]Ben considers the question.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/038.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
-   "text": "Because I've been watching cars for three months, Jess. It's the same skill. Nobody moves fast unless they're supposed to move fast. Most things resolve themselves if you let them breathe."
+   "text": "Because I've been watching cars for three months, Jess. It's the same skill. Nobody moves fast unless they're supposed to move fast. Most things resolve themselves if you let them breathe.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/039.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
-   "text": "That's terrifying."
+   "text": "That's terrifying.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/040.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
-   "text": "Yeah."
+   "text": "Yeah.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/041.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
-   "text": "Okay."
+   "text": "Okay.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/042.mp3"
   },
   {
    "t": "narrate",
-   "text": "Jesse stands. He puts his apron on. He goes to his station."
+   "text": "Jesse stands. He puts his apron on. He goes to his station.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/043.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert door]At 14:34, twelve minutes into Jesse's shift, the bell over the diner door chimes."
+   "text": "[shot:insert door]At 14:34, twelve minutes into Jesse's shift, the bell over the diner door chimes.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/044.mp3"
   },
   {
    "t": "show",
@@ -232,19 +266,23 @@
   },
   {
    "t": "narrate",
-   "text": "Mr. Henderson, Jesse's father, walks in. He does not look at the counter. He walks directly to the back booth by the window. He sits. He does not take out his phone. He does not order. He sits."
+   "text": "Mr. Henderson, Jesse's father, walks in. He does not look at the counter. He walks directly to the back booth by the window. He sits. He does not take out his phone. He does not order. He sits.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/046.mp3"
   },
   {
    "t": "narrate",
-   "text": "Jesse, at the kitchen pass-through, sees him. Ben, through the office door, sees him. Jesse looks at Ben. Ben nods, once. Jesse goes back to work."
+   "text": "Jesse, at the kitchen pass-through, sees him. Ben, through the office door, sees him. Jesse looks at Ben. Ben nods, once. Jesse goes back to work.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/047.mp3"
   },
   {
    "t": "narrate",
-   "text": "[mood:macro_haze][shot:closeup henderson~]Mr. Henderson sits in the booth for forty-one minutes. He does not, for the forty-one minutes, move."
+   "text": "[mood:macro_haze][shot:closeup henderson~]Mr. Henderson sits in the booth for forty-one minutes. He does not, for the forty-one minutes, move.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/048.mp3"
   },
   {
    "t": "narrate",
-   "text": "At 15:15 he gets up. He leaves a ten-dollar bill on the table for the coffee he did not order. He walks out. The bell chimes."
+   "text": "At 15:15 he gets up. He leaves a ten-dollar bill on the table for the coffee he did not order. He walks out. The bell chimes.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/049.mp3"
   },
   {
    "t": "hide",
@@ -270,7 +308,8 @@
   },
   {
    "t": "narrate",
-   "text": "Ben shows the bill to Jesse through the pass-through. Jesse reads it."
+   "text": "Ben shows the bill to Jesse through the pass-through. Jesse reads it.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/055.mp3"
   },
   {
    "t": "show",
@@ -280,55 +319,66 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup jesse]Jesse puts his hand on the counter. He does not cry. He breathes. He breathes for perhaps nine seconds."
+   "text": "[shot:closeup jesse]Jesse puts his hand on the counter. He does not cry. He breathes. He breathes for perhaps nine seconds.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/057.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
-   "text": "He's trying."
+   "text": "He's trying.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/058.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
-   "text": "Yeah, Jess."
+   "text": "Yeah, Jess.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/059.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
-   "text": "He's — he's fighting it."
+   "text": "He's — he's fighting it.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/060.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
-   "text": "Yeah."
+   "text": "Yeah.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/061.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
-   "text": "Ben."
+   "text": "Ben.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/062.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
-   "text": "Yeah."
+   "text": "Yeah.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/063.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
-   "text": "[beat:still]I need you to hold on to that bill for me."
+   "text": "[beat:still]I need you to hold on to that bill for me.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/064.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
-   "text": "Yeah, Jess. I've got it."
+   "text": "Yeah, Jess. I've got it.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/065.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert grill]Ben folds the bill. He puts it in the front pocket of his apron. The grill hisses. Jesse wipes his eyes with the back of his wrist."
+   "text": "[shot:insert grill]Ben folds the bill. He puts it in the front pocket of his apron. The grill hisses. Jesse wipes his eyes with the back of his wrist.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/066.mp3"
   },
   {
    "t": "narrate",
-   "text": "[mood:lunch][shot:establish]A customer at the counter asks for a refill on her coffee. Jesse pours it. Jesse smiles at her, the warm professional smile he has been using at the Pit Stop since he was fifteen. The customer smiles back. The customer does not know. The rain keeps coming."
+   "text": "[mood:lunch][shot:establish]A customer at the counter asks for a refill on her coffee. Jesse pours it. Jesse smiles at her, the warm professional smile he has been using at the Pit Stop since he was fifteen. The customer smiles back. The customer does not know. The rain keeps coming.",
+   "voice": "assets/audio/voice/vol6_ch4_pit_stop/067.mp3"
   },
   {
    "t": "hide",

@@ -39,7 +39,8 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:morning_bright][shot:closeup sam]Sam is down before her father for the first time in six months."
+   "text": "[mood:morning_bright][shot:closeup sam]Sam is down before her father for the first time in six months.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/006.mp3"
   },
   {
    "t": "narrate",
@@ -55,7 +56,8 @@
   },
   {
    "t": "narrate",
-   "text": "Her father does not ask."
+   "text": "Her father does not ask.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/010.mp3"
   },
   {
    "t": "show",
@@ -75,51 +77,60 @@
    "t": "say",
    "char": "Chief Miller",
    "expr": "neutral",
-   "text": "\"Morning, Sammy.\""
+   "text": "\"Morning, Sammy.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/014.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"Morning, Dad.\""
+   "text": "\"Morning, Dad.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/015.mp3"
   },
   {
    "t": "say",
    "char": "Chief Miller",
    "expr": "neutral",
-   "text": "\"You're up early.\""
+   "text": "\"You're up early.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/016.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"Couldn't sleep.\""
+   "text": "\"Couldn't sleep.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/017.mp3"
   },
   {
    "t": "narrate",
-   "text": "He crosses to the coffee pot. He pours a mug. He looks at the paper."
+   "text": "He crosses to the coffee pot. He pours a mug. He looks at the paper.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/018.mp3"
   },
   {
    "t": "say",
    "char": "Chief Miller",
    "expr": "neutral",
-   "text": "[shot:closeup person]\"Anything good?\""
+   "text": "[shot:closeup person]\"Anything good?\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/019.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"Brewers won.\""
+   "text": "\"Brewers won.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/020.mp3"
   },
   {
    "t": "say",
    "char": "Chief Miller",
    "expr": "neutral",
-   "text": "\"Huh.\""
+   "text": "\"Huh.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/021.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup miller]He sits across from her. He picks up the paper. He reads. Sam watches him, carefully, without watching him."
+   "text": "[shot:closeup miller]He sits across from her. He picks up the paper. He reads. Sam watches him, carefully, without watching him.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/022.mp3"
   },
   {
    "t": "narrate",
@@ -132,155 +143,183 @@
   {
    "t": "think",
    "char": "Sam",
-   "text": "07:15 — his first sip of coffee. He makes a small grunt. Every morning. I have heard the grunt every morning and have never, until today, registered it as information."
+   "text": "07:15 — his first sip of coffee. He makes a small grunt. Every morning. I have heard the grunt every morning and have never, until today, registered it as information.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/025.mp3"
   },
   {
    "t": "think",
    "char": "Sam",
-   "text": "07:17 — his phone buzzes. He does not look at it. He lets it buzz itself out."
+   "text": "07:17 — his phone buzzes. He does not look at it. He lets it buzz itself out.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/026.mp3"
   },
   {
    "t": "think",
    "char": "Sam",
-   "text": "07:22 — his phone buzzes again. This time he looks. He frowns, briefly. He types a short response with his thumb and sets the phone face-down again."
+   "text": "07:22 — his phone buzzes again. This time he looks. He frowns, briefly. He types a short response with his thumb and sets the phone face-down again.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/027.mp3"
   },
   {
    "t": "narrate",
-   "text": "07:24 — he stands up. He rinses his mug. He puts it in the drying rack. He says, without turning:"
+   "text": "07:24 — he stands up. He rinses his mug. He puts it in the drying rack. He says, without turning:",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/028.mp3"
   },
   {
    "t": "say",
    "char": "Chief Miller",
    "expr": "neutral",
-   "text": "[shot:closeup person]\"Plans today?\""
+   "text": "[shot:closeup person]\"Plans today?\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/029.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "(evenly) \"I'm gonna meet up with Maya Daigle at Cosmic Comics this morning. She's at the shop till five. I'll probably stay a while and help her sort back issues.\""
+   "text": "(evenly) \"I'm gonna meet up with Maya Daigle at Cosmic Comics this morning. She's at the shop till five. I'll probably stay a while and help her sort back issues.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/030.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup miller~]He pauses at the sink. Not long. Maybe a second and a half. Just long enough that she registers the pause without, quite, being able to claim she did."
+   "text": "[shot:closeup miller~]He pauses at the sink. Not long. Maybe a second and a half. Just long enough that she registers the pause without, quite, being able to claim she did.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/031.mp3"
   },
   {
    "t": "say",
    "char": "Chief Miller",
    "expr": "neutral",
-   "text": "\"Maya Daigle.\""
+   "text": "\"Maya Daigle.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/032.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"Yeah. Jimmy Daigle's daughter. She moved in with her grandma in April.\""
+   "text": "\"Yeah. Jimmy Daigle's daughter. She moved in with her grandma in April.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/033.mp3"
   },
   {
    "t": "say",
    "char": "Chief Miller",
    "expr": "neutral",
-   "text": "\"I know who she is.\""
+   "text": "\"I know who she is.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/034.mp3"
   },
   {
    "t": "narrate",
-   "text": "She does not say anything."
+   "text": "She does not say anything.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/035.mp3"
   },
   {
    "t": "say",
    "char": "Chief Miller",
    "expr": "neutral",
-   "text": "(in a small careful voice that is not quite the voice he uses with her ordinarily) \"She doing alright over there?\""
+   "text": "(in a small careful voice that is not quite the voice he uses with her ordinarily) \"She doing alright over there?\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/036.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"I think so. I don't know her that well yet.\""
+   "text": "\"I think so. I don't know her that well yet.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/037.mp3"
   },
   {
    "t": "say",
    "char": "Chief Miller",
    "expr": "neutral",
-   "text": "\"Mm.\""
+   "text": "\"Mm.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/038.mp3"
   },
   {
    "t": "narrate",
-   "text": "He dries his hands. He turns."
+   "text": "He dries his hands. He turns.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/039.mp3"
   },
   {
    "t": "say",
    "char": "Chief Miller",
    "expr": "neutral",
-   "text": "\"You got your phone on you today?\""
+   "text": "\"You got your phone on you today?\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/040.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"Yeah.\""
+   "text": "\"Yeah.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/041.mp3"
   },
   {
    "t": "say",
    "char": "Chief Miller",
    "expr": "neutral",
-   "text": "\"Good. Text me if you head anywhere that's not on the list.\""
+   "text": "\"Good. Text me if you head anywhere that's not on the list.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/042.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "(blinking) \"The list.\""
+   "text": "(blinking) \"The list.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/043.mp3"
   },
   {
    "t": "say",
    "char": "Chief Miller",
    "expr": "neutral",
-   "text": "\"Kwik Stop. Cosmic Comics. The Pit Stop. Home. The Whataburger on 1604 if you're with a group.\""
+   "text": "\"Kwik Stop. Cosmic Comics. The Pit Stop. Home. The Whataburger on 1604 if you're with a group.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/044.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"Dad. I've never had a list.\""
+   "text": "\"Dad. I've never had a list.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/045.mp3"
   },
   {
    "t": "say",
    "char": "Chief Miller",
    "expr": "neutral",
-   "text": "[beat:chill]\"Today you do.\""
+   "text": "[beat:chill]\"Today you do.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/046.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup sam]She looks at him. He smiles — the automatic smile, the Dad smile, the one he has been smiling at her since she was born."
+   "text": "[shot:closeup sam]She looks at him. He smiles — the automatic smile, the Dad smile, the one he has been smiling at her since she was born.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/047.mp3"
   },
   {
    "t": "say",
    "char": "Chief Miller",
    "expr": "neutral",
-   "text": "\"Just indulge me, Sammy. Couple of weird things coming across my desk this week. Probably nothing. But it makes me feel better if I know where you are.\""
+   "text": "\"Just indulge me, Sammy. Couple of weird things coming across my desk this week. Probably nothing. But it makes me feel better if I know where you are.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/048.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"Okay.\""
+   "text": "\"Okay.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/049.mp3"
   },
   {
    "t": "say",
    "char": "Chief Miller",
    "expr": "neutral",
-   "text": "\"Love you.\""
+   "text": "\"Love you.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/050.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"Love you too, Dad.\""
+   "text": "\"Love you too, Dad.\"",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/051.mp3"
   },
   {
    "t": "narrate",
-   "text": "He leaves through the garage. Sam listens to his truck start, reverse out, and leave. She sits at the table. She finishes her cereal."
+   "text": "He leaves through the garage. Sam listens to his truck start, reverse out, and leave. She sits at the table. She finishes her cereal.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/052.mp3"
   },
   {
    "t": "hide",
@@ -288,22 +327,26 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:macro_haze][shot:insert phone]At 07:33, her phone buzzes. A text from an unknown number, no area code visible."
+   "text": "[mood:macro_haze][shot:insert phone]At 07:33, her phone buzzes. A text from an unknown number, no area code visible.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/054.mp3"
   },
   {
    "t": "say",
    "char": "M.",
    "role": "— text · 07:33 · unknown —",
    "expr": "neutral",
-   "text": "Graciela says trust Maya. Go see her. Do not tell anyone you have this number. — M."
+   "text": "Graciela says trust Maya. Go see her. Do not tell anyone you have this number. — M.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/055.mp3"
   },
   {
    "t": "narrate",
-   "text": "Sam reads it three times. She does not reply. She deletes the thread."
+   "text": "Sam reads it three times. She does not reply. She deletes the thread.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/056.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]She clears her bowl. She puts it in the drying rack next to her father's mug. She goes upstairs to get dressed."
+   "text": "[shot:establish]She clears her bowl. She puts it in the drying rack next to her father's mug. She goes upstairs to get dressed.",
+   "voice": "assets/audio/voice/vol6_ch3_circle_k/057.mp3"
   },
   {
    "t": "jump",

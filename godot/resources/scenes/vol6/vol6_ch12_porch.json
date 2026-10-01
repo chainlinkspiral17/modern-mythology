@@ -29,7 +29,8 @@
   },
   {
    "t": "narrate",
-   "text": "[trip:1.2][mood:dusk]The ride home is twenty-three minutes."
+   "text": "[trip:1.2][mood:dusk]The ride home is twenty-three minutes.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/005.mp3"
   },
   {
    "t": "narrate",
@@ -41,53 +42,64 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]She rides."
+   "text": "[shot:establish]She rides.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/008.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert phone]At a stoplight three blocks from her grandmother's house, her phone buzzes."
+   "text": "[shot:insert phone]At a stoplight three blocks from her grandmother's house, her phone buzzes.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/009.mp3"
   },
   {
    "t": "narrate",
-   "text": "She checks it at the next stop."
+   "text": "She checks it at the next stop.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/010.mp3"
   },
   {
    "t": "narrate",
-   "text": "It is from Wren."
+   "text": "It is from Wren.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/011.mp3"
   },
   {
    "t": "say",
    "char": "Wren",
    "text": "how was the rest of the day?",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch12_porch/012.mp3"
   },
   {
    "t": "narrate",
-   "text": "Maya, one-handed at the curb, types back:"
+   "text": "Maya, one-handed at the curb, types back:",
+   "voice": "assets/audio/voice/vol6_ch12_porch/013.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "[shot:closeup person]good. curtis is okay. truck wednesday confirmed late.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch12_porch/014.mp3"
   },
   {
    "t": "say",
    "char": "Wren",
    "text": "good kid. see you wednesday morning.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch12_porch/015.mp3"
   },
   {
    "t": "narrate",
-   "text": "She puts the phone back in her bag."
+   "text": "She puts the phone back in her bag.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/016.mp3"
   },
   {
    "t": "narrate",
-   "text": "She rides the last three blocks."
+   "text": "She rides the last three blocks.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/017.mp3"
   },
   {
    "t": "narrate",
-   "text": "[mood:night][shot:closeup linda]Her grandmother is on the porch."
+   "text": "[mood:night][shot:closeup linda]Her grandmother is on the porch.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/018.mp3"
   },
   {
    "t": "show",
@@ -105,7 +117,8 @@
   },
   {
    "t": "narrate",
-   "text": "Maya parks the bike."
+   "text": "Maya parks the bike.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/022.mp3"
   },
   {
    "t": "show",
@@ -115,29 +128,34 @@
   },
   {
    "t": "narrate",
-   "text": "Her grandmother looks up."
+   "text": "Her grandmother looks up.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/024.mp3"
   },
   {
    "t": "say",
    "char": "Linda",
    "text": "How was the shop, sweetheart.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch12_porch/025.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "[shot:closeup person]It was good, Grandma. It was fine.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch12_porch/026.mp3"
   },
   {
    "t": "say",
    "char": "Linda",
    "text": "Sit. Tell me.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch12_porch/027.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]Maya sits in the second porch chair."
+   "text": "[shot:establish]Maya sits in the second porch chair.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/028.mp3"
   },
   {
    "t": "narrate",
@@ -153,55 +171,65 @@
   },
   {
    "t": "narrate",
-   "text": "Her grandmother listens."
+   "text": "Her grandmother listens.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/032.mp3"
   },
   {
    "t": "narrate",
-   "text": "Her grandmother does not, while Maya is talking, interrupt."
+   "text": "Her grandmother does not, while Maya is talking, interrupt.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/033.mp3"
   },
   {
    "t": "say",
    "char": "Linda",
    "text": "[shot:closeup person]Sweetheart.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch12_porch/034.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "Yeah, Grandma.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch12_porch/035.mp3"
   },
   {
    "t": "say",
    "char": "Linda",
    "text": "[shot:closeup person_b]Curtis is a good man. Most of the men who have worked at small shops for nineteen years are. The ones who aren't, leave. Curtis stayed. You can trust the staying, even when the man is, in a given week, a little raw. The staying is the data.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch12_porch/036.mp3"
   },
   {
    "t": "narrate",
-   "text": "Maya thinks about this."
+   "text": "Maya thinks about this.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/037.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "Grandma.",
-   "expr": "thinking"
+   "expr": "thinking",
+   "voice": "assets/audio/voice/vol6_ch12_porch/038.mp3"
   },
   {
    "t": "say",
    "char": "Linda",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch12_porch/039.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "You learned things from somebody about this. Where did you learn it from.",
-   "expr": "thinking"
+   "expr": "thinking",
+   "voice": "assets/audio/voice/vol6_ch12_porch/040.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup linda]Her grandmother thinks for a moment."
+   "text": "[shot:closeup linda]Her grandmother thinks for a moment.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/041.mp3"
   },
   {
    "t": "say",
@@ -231,11 +259,13 @@
    "t": "say",
    "char": "Maya",
    "text": "[shot:closeup person_b]You knew Rick before you worked for him?",
-   "expr": "surprised"
+   "expr": "surprised",
+   "voice": "assets/audio/voice/vol6_ch12_porch/046.mp3"
   },
   {
    "t": "narrate",
-   "text": "Her grandmother smiles."
+   "text": "Her grandmother smiles.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/047.mp3"
   },
   {
    "t": "say",
@@ -263,43 +293,51 @@
   },
   {
    "t": "narrate",
-   "text": "Maya is quiet."
+   "text": "Maya is quiet.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/052.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "[shot:closeup person]I didn't know.",
-   "expr": "surprised"
+   "expr": "surprised",
+   "voice": "assets/audio/voice/vol6_ch12_porch/053.mp3"
   },
   {
    "t": "say",
    "char": "Linda",
    "text": "There are a lot of things, sweetheart, that you don't know. Some of them you will learn this summer. Some of them you will learn later. Some of them you will learn after I am gone. The order of the learning is not for me to arrange. I just answer when you ask.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch12_porch/054.mp3"
   },
   {
    "t": "narrate",
-   "text": "Maya drinks her iced tea."
+   "text": "Maya drinks her iced tea.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/055.mp3"
   },
   {
    "t": "narrate",
-   "text": "The two of them sit on the porch for a long minute."
+   "text": "The two of them sit on the porch for a long minute.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/056.mp3"
   },
   {
    "t": "say",
    "char": "Linda",
    "text": "How is Curtis doing.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch12_porch/057.mp3"
   },
   {
    "t": "narrate",
-   "text": "Maya thinks."
+   "text": "Maya thinks.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/058.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "He is doing the work.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch12_porch/059.mp3"
   },
   {
    "t": "say",
@@ -317,27 +355,32 @@
    "t": "say",
    "char": "Maya",
    "text": "Yeah, Grandma.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch12_porch/062.mp3"
   },
   {
    "t": "say",
    "char": "Linda",
    "text": "And what Wren told you.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch12_porch/063.mp3"
   },
   {
    "t": "narrate",
-   "text": "Maya looks at her."
+   "text": "Maya looks at her.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/064.mp3"
   },
   {
    "t": "say",
    "char": "Linda",
    "text": "[shot:closeup maya]Sweetheart. I am not asking what she told you. I am asking how you are carrying it.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch12_porch/065.mp3"
   },
   {
    "t": "narrate",
-   "text": "Maya thinks."
+   "text": "Maya thinks.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/066.mp3"
   },
   {
    "t": "say",
@@ -353,45 +396,54 @@
   },
   {
    "t": "narrate",
-   "text": "Linda nods."
+   "text": "Linda nods.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/069.mp3"
   },
   {
    "t": "say",
    "char": "Linda",
    "text": "Yes. That is the right shape of carrying. Holding is, often, what we are asked to do. The doing is rarer than the holding. Most of what we are asked to do, in life, is to hold.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch12_porch/070.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch12_porch/071.mp3"
   },
   {
    "t": "say",
    "char": "Linda",
    "text": "[shot:closeup person_b]Good girl.",
-   "expr": "happy"
+   "expr": "happy",
+   "voice": "assets/audio/voice/vol6_ch12_porch/072.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish~]The two of them sit on the porch in the quiet of a Tuesday at nine forty-eight PM."
+   "text": "[shot:establish~]The two of them sit on the porch in the quiet of a Tuesday at nine forty-eight PM.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/073.mp3"
   },
   {
    "t": "narrate",
-   "text": "The cicadas are loud. The cedar smell, off the route Maya rode home on, is faint on her clothes. The iced tea in the second glass has, by the warmth of the night, condensed about half its outer surface into a small ring on the small table."
+   "text": "The cicadas are loud. The cedar smell, off the route Maya rode home on, is faint on her clothes. The iced tea in the second glass has, by the warmth of the night, condensed about half its outer surface into a small ring on the small table.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/074.mp3"
   },
   {
    "t": "narrate",
-   "text": "Maya gets up at ten oh-three."
+   "text": "Maya gets up at ten oh-three.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/075.mp3"
   },
   {
    "t": "narrate",
-   "text": "She kisses her grandmother on the forehead."
+   "text": "She kisses her grandmother on the forehead.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/076.mp3"
   },
   {
    "t": "narrate",
-   "text": "She goes inside."
+   "text": "She goes inside.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/077.mp3"
   },
   {
    "t": "hide",
@@ -403,7 +455,8 @@
   },
   {
    "t": "narrate",
-   "text": "She makes a sandwich. She eats it at the kitchen counter. She drinks a glass of water."
+   "text": "She makes a sandwich. She eats it at the kitchen counter. She drinks a glass of water.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/080.mp3"
   },
   {
    "t": "bg",
@@ -411,43 +464,53 @@
   },
   {
    "t": "narrate",
-   "text": "She comes back out to the porch."
+   "text": "She comes back out to the porch.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/082.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup linda]Linda is asleep in the wicker."
+   "text": "[shot:closeup linda]Linda is asleep in the wicker.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/083.mp3"
   },
   {
    "t": "narrate",
-   "text": "Maya stands in the doorway watching her grandmother breathe — the small steady rhythm of a woman who has, this summer, finally been allowed to rest."
+   "text": "Maya stands in the doorway watching her grandmother breathe — the small steady rhythm of a woman who has, this summer, finally been allowed to rest.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/084.mp3"
   },
   {
    "t": "narrate",
-   "text": "She goes back inside. She gets the small light blanket from the back of the couch. She comes back to the porch. She drapes the blanket over her grandmother."
+   "text": "She goes back inside. She gets the small light blanket from the back of the couch. She comes back to the porch. She drapes the blanket over her grandmother.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/085.mp3"
   },
   {
    "t": "narrate",
-   "text": "She turns off the porch light."
+   "text": "She turns off the porch light.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/086.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]She sits in the second chair in the dark."
+   "text": "[shot:establish]She sits in the second chair in the dark.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/087.mp3"
   },
   {
    "t": "narrate",
-   "text": "The cul-de-sac is quiet."
+   "text": "The cul-de-sac is quiet.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/088.mp3"
   },
   {
    "t": "narrate",
-   "text": "She watches it for a few minutes."
+   "text": "She watches it for a few minutes.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/089.mp3"
   },
   {
    "t": "narrate",
-   "text": "She gets up."
+   "text": "She gets up.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/090.mp3"
   },
   {
    "t": "narrate",
-   "text": "She goes inside."
+   "text": "She goes inside.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/091.mp3"
   },
   {
    "t": "hide",
@@ -455,15 +518,18 @@
   },
   {
    "t": "narrate",
-   "text": "She locks the front door."
+   "text": "She locks the front door.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/093.mp3"
   },
   {
    "t": "narrate",
-   "text": "She turns off the kitchen light."
+   "text": "She turns off the kitchen light.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/094.mp3"
   },
   {
    "t": "narrate",
-   "text": "She climbs the stairs."
+   "text": "She climbs the stairs.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/095.mp3"
   },
   {
    "t": "narrate",
@@ -475,31 +541,38 @@
   },
   {
    "t": "narrate",
-   "text": "She turns back the covers."
+   "text": "She turns back the covers.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/098.mp3"
   },
   {
    "t": "narrate",
-   "text": "She goes to her own room."
+   "text": "She goes to her own room.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/099.mp3"
   },
   {
    "t": "narrate",
-   "text": "She undresses."
+   "text": "She undresses.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/100.mp3"
   },
   {
    "t": "narrate",
-   "text": "She gets into bed."
+   "text": "She gets into bed.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/101.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup maya]She lies on her back and looks at the pale yellow ceiling."
+   "text": "[shot:closeup maya]She lies on her back and looks at the pale yellow ceiling.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/102.mp3"
   },
   {
    "t": "narrate",
-   "text": "She thinks, tomorrow."
+   "text": "She thinks, tomorrow.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/103.mp3"
   },
   {
    "t": "narrate",
-   "text": "She sleeps."
+   "text": "She sleeps.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/104.mp3"
   },
   {
    "t": "narrate",
@@ -515,27 +588,33 @@
   },
   {
    "t": "narrate",
-   "text": "She gets into bed."
+   "text": "She gets into bed.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/108.mp3"
   },
   {
    "t": "narrate",
-   "text": "She sleeps."
+   "text": "She sleeps.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/109.mp3"
   },
   {
    "t": "narrate",
-   "text": "The house, for both of them, is quiet."
+   "text": "The house, for both of them, is quiet.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/110.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert radio~]The radio, on the windowsill, stays off."
+   "text": "[shot:insert radio~]The radio, on the windowsill, stays off.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/111.mp3"
   },
   {
    "t": "narrate",
-   "text": "The cicadas, outside, eventually fall."
+   "text": "The cicadas, outside, eventually fall.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/112.mp3"
   },
   {
    "t": "narrate",
-   "text": "[beat:still]The night holds."
+   "text": "[beat:still]The night holds.",
+   "voice": "assets/audio/voice/vol6_ch12_porch/113.mp3"
   },
   {
    "t": "end"

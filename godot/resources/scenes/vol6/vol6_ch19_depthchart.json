@@ -29,15 +29,18 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:day_bright]The morning conditioning is, as Coach K had said it would be, light."
+      "text": "[mood:day_bright]The morning conditioning is, as Coach K had said it would be, light.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/005.mp3"
     },
     {
       "t": "narrate",
-      "text": "Three miles easy, no stopwatch, the team in a single loose pack down the back stretch of the synthetic track at six oh-eight AM with the small Friday-morning energy of a group that has been together for three weeks and that has,"
+      "text": "Three miles easy, no stopwatch, the team in a single loose pack down the back stretch of the synthetic track at six oh-eight AM with the small Friday-morning energy of a group that has been together for three weeks and that has,",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/006.mp3"
     },
     {
       "t": "narrate",
-      "text": "by Friday of week three, fallen into the small running rhythm that does not require Brent at the front to set it."
+      "text": "by Friday of week three, fallen into the small running rhythm that does not require Brent at the front to set it.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/007.mp3"
     },
     {
       "t": "show",
@@ -47,15 +50,18 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup brent]Brent is at the front anyway."
+      "text": "[shot:closeup brent]Brent is at the front anyway.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/009.mp3"
     },
     {
       "t": "narrate",
-      "text": "Brent is at the front because Brent is the captain and because Brent at the front is the way Brent — who is, by Coach Dale's assessment which Coach Dale has not shared with anybody,"
+      "text": "Brent is at the front because Brent is the captain and because Brent at the front is the way Brent — who is, by Coach Dale's assessment which Coach Dale has not shared with anybody,",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/010.mp3"
     },
     {
       "t": "narrate",
-      "text": "the most quietly diligent senior captain Coach Dale has worked with in twenty-some years — has decided to carry the captaincy."
+      "text": "the most quietly diligent senior captain Coach Dale has worked with in twenty-some years — has decided to carry the captaincy.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/011.mp3"
     },
     {
       "t": "show",
@@ -65,7 +71,8 @@
     },
     {
       "t": "narrate",
-      "text": "Ben slots in at second."
+      "text": "Ben slots in at second.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/013.mp3"
     },
     {
       "t": "show",
@@ -75,37 +82,45 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup tucker]Tucker, this morning, is third instead of last."
+      "text": "[shot:closeup tucker]Tucker, this morning, is third instead of last.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/015.mp3"
     },
     {
       "t": "narrate",
-      "text": "The change in Tucker's position is — Ben registers, by the second mile — the small evidence of Tucker's three weeks of conditioning starting to land. Tucker had finished the timed three-miler on Tuesday at twenty-six fifty."
+      "text": "The change in Tucker's position is — Ben registers, by the second mile — the small evidence of Tucker's three weeks of conditioning starting to land. Tucker had finished the timed three-miler on Tuesday at twenty-six fifty.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/016.mp3"
     },
     {
       "t": "narrate",
-      "text": "Tucker, this morning, is keeping pace with Marcus by the back stretch, in the way a kid's body finally turns the corner on a thing it had been refusing to turn the corner on."
+      "text": "Tucker, this morning, is keeping pace with Marcus by the back stretch, in the way a kid's body finally turns the corner on a thing it had been refusing to turn the corner on.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/017.mp3"
     },
     {
       "t": "narrate",
-      "text": "Ben, at second, glances back at the small acknowledgment."
+      "text": "Ben, at second, glances back at the small acknowledgment.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/018.mp3"
     },
     {
       "t": "say",
       "char": "Tucker",
       "text": "...",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/019.mp3"
     },
     {
       "t": "narrate",
-      "text": "Tucker, at third, does the small eye-thing back that means yeah, I know."
+      "text": "Tucker, at third, does the small eye-thing back that means yeah, I know.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/020.mp3"
     },
     {
       "t": "narrate",
-      "text": "Ben does not, this morning, say anything."
+      "text": "Ben does not, this morning, say anything.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/021.mp3"
     },
     {
       "t": "narrate",
-      "text": "The team finishes at twenty-three fifty-six."
+      "text": "The team finishes at twenty-three fifty-six.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/022.mp3"
     },
     {
       "t": "show",
@@ -121,49 +136,59 @@
       "t": "say",
       "char": "Coach K",
       "text": "[shot:closeup person]Good. Water. Five minutes. Then technical. Then weights light. Pete — you're on the sideline today. You're charting Vinton tomorrow. We're going to walk you through the chart this afternoon.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/025.mp3"
     },
     {
       "t": "narrate",
-      "text": "Pete says: Yes, Coach."
+      "text": "Pete says: Yes, Coach.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/026.mp3"
     },
     {
       "t": "say",
       "char": "Coach K",
       "text": "Move.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/027.mp3"
     },
     {
       "t": "narrate",
-      "text": "The team moves."
+      "text": "The team moves.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/028.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]The technical work, this morning, is footwork."
+      "text": "[shot:establish]The technical work, this morning, is footwork.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/029.mp3"
     },
     {
       "t": "narrate",
-      "text": "Ben does the cone drill."
+      "text": "Ben does the cone drill.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/030.mp3"
     },
     {
       "t": "say",
       "char": "Coach K",
       "text": "Right foot's there. Stop thinking about it.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/031.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Yeah, Coach.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/032.mp3"
     },
     {
       "t": "narrate",
-      "text": "It is the first time in three weeks Coach K has said it. Coach K, for the rest of the morning, does not mention the right foot again."
+      "text": "It is the first time in three weeks Coach K has said it. Coach K, for the rest of the morning, does not mention the right foot again.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/033.mp3"
     },
     {
       "t": "narrate",
-      "text": "By eleven the morning session is done."
+      "text": "By eleven the morning session is done.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/034.mp3"
     },
     {
       "t": "hide",
@@ -179,15 +204,18 @@
     },
     {
       "t": "narrate",
-      "text": "Ben, in the parking lot at eleven oh-eight, has the small knowledge that he is going to be at the school again at noon for the depth-chart posting."
+      "text": "Ben, in the parking lot at eleven oh-eight, has the small knowledge that he is going to be at the school again at noon for the depth-chart posting.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/038.mp3"
     },
     {
       "t": "narrate",
-      "text": "Coach K has, over three weeks, been the most specific coach Ben has ever heard of about depth-chart posting times — noon Friday, every Friday in season, a ritual that has, by Coach Dale's report which Ben does not yet have, been Coach K's since 2008."
+      "text": "Coach K has, over three weeks, been the most specific coach Ben has ever heard of about depth-chart posting times — noon Friday, every Friday in season, a ritual that has, by Coach Dale's report which Ben does not yet have, been Coach K's since 2008.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/039.mp3"
     },
     {
       "t": "narrate",
-      "text": "Ben drives home."
+      "text": "Ben drives home.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/040.mp3"
     },
     {
       "t": "bg",
@@ -195,11 +223,13 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup bill]His mother is asleep — the night-shift sleep, the specific eight-AM-to-three-PM sleep she does on the days she works ten hours straight nights. His father is at the kitchen table with the Sentinel."
+      "text": "[shot:closeup bill]His mother is asleep — the night-shift sleep, the specific eight-AM-to-three-PM sleep she does on the days she works ten hours straight nights. His father is at the kitchen table with the Sentinel.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/042.mp3"
     },
     {
       "t": "narrate",
-      "text": "Bill is, by the small Bill-tradition, doing the Friday crossword in pen."
+      "text": "Bill is, by the small Bill-tradition, doing the Friday crossword in pen.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/043.mp3"
     },
     {
       "t": "show",
@@ -217,111 +247,131 @@
       "t": "say",
       "char": "Bill",
       "text": "How was conditioning.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/046.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "[shot:closeup person]Light. They're easing us off for tomorrow.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/047.mp3"
     },
     {
       "t": "say",
       "char": "Bill",
       "text": "Vinton.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/048.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "[shot:closeup person]Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/049.mp3"
     },
     {
       "t": "say",
       "char": "Bill",
       "text": "Depth chart up at noon?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/050.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/051.mp3"
     },
     {
       "t": "narrate",
-      "text": "Bill, in the way Bill has been doing all summer when the conversation about football has had to happen, looks up from the crossword."
+      "text": "Bill, in the way Bill has been doing all summer when the conversation about football has had to happen, looks up from the crossword.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/052.mp3"
     },
     {
       "t": "say",
       "char": "Bill",
       "text": "You think you're starting?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/053.mp3"
     },
     {
       "t": "narrate",
-      "text": "Ben thinks for a beat."
+      "text": "Ben thinks for a beat.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/054.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "[shot:closeup person]I think so. Coach K — he hasn't said. But I think so. The half-line work this week was good. The cone work is — the cone work is where he wants it. I think I'm at TE-1.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/055.mp3"
     },
     {
       "t": "say",
       "char": "Bill",
       "text": "[shot:closeup person_b]Okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/056.mp3"
     },
     {
       "t": "narrate",
-      "text": "Bill returns to the crossword."
+      "text": "Bill returns to the crossword.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/057.mp3"
     },
     {
       "t": "say",
       "char": "Bill",
       "text": "If you are. Tell Coach Dale to put you in the rotation for the second-half conditioning. The first-half guys get tired. Second-half guys get the points.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/058.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Coach Dale doesn't do that, Dad. Coach K does.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/059.mp3"
     },
     {
       "t": "say",
       "char": "Bill",
       "text": "Then tell Coach K. Same advice.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/060.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "[shot:closeup person]Yeah. I'll mention it.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/061.mp3"
     },
     {
       "t": "say",
       "char": "Bill",
       "text": "I'm not — I'm not telling you to coach yourself, Ben. I'm telling you what I know. Use it or don't.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/062.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Yeah. Thanks, Dad.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/063.mp3"
     },
     {
       "t": "narrate",
-      "text": "Bill returns to the crossword."
+      "text": "Bill returns to the crossword.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/064.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Ben, at the kitchen counter, makes himself a sandwich."
+      "text": "[shot:establish]Ben, at the kitchen counter, makes himself a sandwich.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/065.mp3"
     },
     {
       "t": "hide",
@@ -333,31 +383,38 @@
     },
     {
       "t": "narrate",
-      "text": "He eats the sandwich. He drinks two glasses of water. He sits with Daisy on the couch for twenty minutes."
+      "text": "He eats the sandwich. He drinks two glasses of water. He sits with Daisy on the couch for twenty minutes.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/068.mp3"
     },
     {
       "t": "narrate",
-      "text": "He watches, with the sound off, the noon news, which has — at twelve oh-five — a story about the heat that has been in every noon broadcast for the past three weeks and that says, today, that the heat is going to break by Tuesday."
+      "text": "He watches, with the sound off, the noon news, which has — at twelve oh-five — a story about the heat that has been in every noon broadcast for the past three weeks and that says, today, that the heat is going to break by Tuesday.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/069.mp3"
     },
     {
       "t": "narrate",
-      "text": "If the heat breaks by Tuesday, the season opener week is going to be in better weather. The season opener is two weeks out."
+      "text": "If the heat breaks by Tuesday, the season opener week is going to be in better weather. The season opener is two weeks out.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/070.mp3"
     },
     {
       "t": "narrate",
-      "text": "The depth chart for the season opener is not, technically, today's chart — today's chart is the Vinton chart, and the season opener chart goes up next Friday."
+      "text": "The depth chart for the season opener is not, technically, today's chart — today's chart is the Vinton chart, and the season opener chart goes up next Friday.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/071.mp3"
     },
     {
       "t": "narrate",
-      "text": "But Coach K, by his own pacing, is doing the Vinton scrimmage as a dry run. The Vinton chart is the season-opener chart minus whatever changes Coach K decides to make based on what he sees tomorrow."
+      "text": "But Coach K, by his own pacing, is doing the Vinton scrimmage as a dry run. The Vinton chart is the season-opener chart minus whatever changes Coach K decides to make based on what he sees tomorrow.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/072.mp3"
     },
     {
       "t": "narrate",
-      "text": "If Ben is at TE-1 on the Vinton chart, he is at TE-1 on the season-opener chart. The two are functionally the same."
+      "text": "If Ben is at TE-1 on the Vinton chart, he is at TE-1 on the season-opener chart. The two are functionally the same.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/073.mp3"
     },
     {
       "t": "narrate",
-      "text": "He gets up. He puts on a clean t-shirt. He drives back to the school at twelve forty."
+      "text": "He gets up. He puts on a clean t-shirt. He drives back to the school at twelve forty.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/074.mp3"
     },
     {
       "t": "bg",
@@ -365,19 +422,23 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert corkboard]The corkboard is outside the field-house door."
+      "text": "[shot:insert corkboard]The corkboard is outside the field-house door.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/076.mp3"
     },
     {
       "t": "narrate",
-      "text": "The sheet, at twelve forty-two when Ben pulls into the lot, is already up. It has, by his angle from the lot, been up long enough that two of the kids — Marcus and Tucker — are already at the corkboard reading."
+      "text": "The sheet, at twelve forty-two when Ben pulls into the lot, is already up. It has, by his angle from the lot, been up long enough that two of the kids — Marcus and Tucker — are already at the corkboard reading.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/077.mp3"
     },
     {
       "t": "narrate",
-      "text": "Marcus is in shorts and a t-shirt. Tucker is in jeans."
+      "text": "Marcus is in shorts and a t-shirt. Tucker is in jeans.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/078.mp3"
     },
     {
       "t": "narrate",
-      "text": "Marcus, who turns when Ben gets out of the Civic, gives Ben a small thumbs-up that is, by Marcus's unmistakable register, the yeah man of a teammate who has already read the sheet and who is signaling Ben that the read is going to be good."
+      "text": "Marcus, who turns when Ben gets out of the Civic, gives Ben a small thumbs-up that is, by Marcus's unmistakable register, the yeah man of a teammate who has already read the sheet and who is signaling Ben that the read is going to be good.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/079.mp3"
     },
     {
       "t": "show",
@@ -399,99 +460,119 @@
     },
     {
       "t": "narrate",
-      "text": "Ben crosses the lot."
+      "text": "Ben crosses the lot.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/083.mp3"
     },
     {
       "t": "narrate",
-      "text": "He does not, on the cross, run."
+      "text": "He does not, on the cross, run.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/084.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He walks at the small Ben-pace, which is the pace of a six-foot-four seventeen-year-old who has learned, over three weeks of two-a-days, that running across a parking lot in August in Texas is a thing his body does not, anymore, casually do without consequences."
+      "text": "[shot:establish]He walks at the small Ben-pace, which is the pace of a six-foot-four seventeen-year-old who has learned, over three weeks of two-a-days, that running across a parking lot in August in Texas is a thing his body does not, anymore, casually do without consequences.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/085.mp3"
     },
     {
       "t": "narrate",
-      "text": "[panel:vol6_corkboard_sheet][shot:insert corkboard~]He reaches the corkboard. He reads the sheet."
+      "text": "[panel:vol6_corkboard_sheet][shot:insert corkboard~]He reaches the corkboard. He reads the sheet.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/086.mp3"
     },
     {
       "t": "narrate",
-      "text": "The sheet is, in its standard format, twenty-two starters listed by position with the backups in parentheses below."
+      "text": "The sheet is, in its standard format, twenty-two starters listed by position with the backups in parentheses below.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/087.mp3"
     },
     {
       "t": "narrate",
-      "text": "[beat:lift]His name is at TE-1."
+      "text": "[beat:lift]His name is at TE-1.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/088.mp3"
     },
     {
       "t": "narrate",
-      "text": "In parentheses below his name: (LeBlanc). Which is Diaz, whose first name is Marcus but who goes by his surname because the team already has a Marcus."
+      "text": "In parentheses below his name: (LeBlanc). Which is Diaz, whose first name is Marcus but who goes by his surname because the team already has a Marcus.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/089.mp3"
     },
     {
       "t": "narrate",
-      "text": "He registers his name. He registers the parentheses. He does not, in registering, do anything externally."
+      "text": "He registers his name. He registers the parentheses. He does not, in registering, do anything externally.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/090.mp3"
     },
     {
       "t": "narrate",
-      "text": "He stands at the corkboard for maybe four seconds."
+      "text": "He stands at the corkboard for maybe four seconds.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/091.mp3"
     },
     {
       "t": "narrate",
-      "text": "Yeah, he thinks. Okay. He is going to start a football game tomorrow. He has never started a football game. He has, in three weeks of training, become the kind of person who starts a football game. The change is real."
+      "text": "Yeah, he thinks. Okay. He is going to start a football game tomorrow. He has never started a football game. He has, in three weeks of training, become the kind of person who starts a football game. The change is real.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/092.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He turns."
+      "text": "[shot:establish]He turns.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/093.mp3"
     },
     {
       "t": "say",
       "char": "Marcus",
       "text": "TE-1, big man.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/094.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/095.mp3"
     },
     {
       "t": "say",
       "char": "Marcus",
       "text": "Slot. I'm slot. We're gonna run two-tight tomorrow on first down, Coach K told me. You're in for the seal, I'm out for the route. He showed me the wrinkle yesterday after evening practice.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/096.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Yeah?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/097.mp3"
     },
     {
       "t": "say",
       "char": "Marcus",
       "text": "[shot:closeup person]Yeah. He's been planning it. He just didn't want to walk it through with the team till the chart was up. Me and you on first down. Brent's gonna call it himself if he likes the front.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/098.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Cool.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/099.mp3"
     },
     {
       "t": "say",
       "char": "Marcus",
       "text": "We're gonna eat tomorrow. Vinton's gonna — Vinton's gonna be a thing.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/100.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/101.mp3"
     },
     {
       "t": "narrate",
-      "text": "Marcus, at the lot, gets in his mother's car. Marcus's mother, in the driver's seat, has been waiting. Marcus's mother waves at Ben from the car. Ben waves back. The car pulls out."
+      "text": "Marcus, at the lot, gets in his mother's car. Marcus's mother, in the driver's seat, has been waiting. Marcus's mother waves at Ben from the car. Ben waves back. The car pulls out.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/102.mp3"
     },
     {
       "t": "hide",
@@ -499,87 +580,103 @@
     },
     {
       "t": "narrate",
-      "text": "[panel:off][shot:closeup tucker]Tucker, before he leaves, comes over to the corkboard."
+      "text": "[panel:off][shot:closeup tucker]Tucker, before he leaves, comes over to the corkboard.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/104.mp3"
     },
     {
       "t": "say",
       "char": "Tucker",
       "text": "Ben.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/105.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Hey, Tuck.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/106.mp3"
     },
     {
       "t": "say",
       "char": "Tucker",
       "text": "You see me at LT-1.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/107.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "I saw.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/108.mp3"
     },
     {
       "t": "say",
       "char": "Tucker",
       "text": "I didn't think — I didn't think I had it.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/109.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "[shot:closeup person_b]You had it. You've been good in the weight room since week one. Coach K saw.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/110.mp3"
     },
     {
       "t": "say",
       "char": "Tucker",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/111.mp3"
     },
     {
       "t": "narrate",
-      "text": "Tucker is quiet for a beat."
+      "text": "Tucker is quiet for a beat.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/112.mp3"
     },
     {
       "t": "say",
       "char": "Tucker",
       "text": "I'm — I'm gonna call my dad.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/113.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Go call him.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/114.mp3"
     },
     {
       "t": "say",
       "char": "Tucker",
       "text": "[shot:closeup person]Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/115.mp3"
     },
     {
       "t": "narrate",
-      "text": "Tucker goes to his Tacoma. Tucker pulls out his phone."
+      "text": "Tucker goes to his Tacoma. Tucker pulls out his phone.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/116.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]Ben, at the corkboard, watches Tucker dial. Tucker, at the truck, with the door open and one foot inside, talks for about thirty seconds."
+      "text": "[shot:insert phone]Ben, at the corkboard, watches Tucker dial. Tucker, at the truck, with the door open and one foot inside, talks for about thirty seconds.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/117.mp3"
     },
     {
       "t": "narrate",
-      "text": "Tucker's face, by the third sentence, has the look of a kid whose father is, on the other end of the phone, doing the small father-thing of being briefly speechless and then saying the right father-sentence."
+      "text": "Tucker's face, by the third sentence, has the look of a kid whose father is, on the other end of the phone, doing the small father-thing of being briefly speechless and then saying the right father-sentence.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/118.mp3"
     },
     {
       "t": "narrate",
-      "text": "Tucker hangs up. Tucker gets in the Tacoma. Tucker pulls out."
+      "text": "Tucker hangs up. Tucker gets in the Tacoma. Tucker pulls out.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/119.mp3"
     },
     {
       "t": "hide",
@@ -587,55 +684,68 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Ben, at the corkboard, is alone in the lot."
+      "text": "[shot:establish]Ben, at the corkboard, is alone in the lot.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/121.mp3"
     },
     {
       "t": "narrate",
-      "text": "He looks at the sheet again."
+      "text": "He looks at the sheet again.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/122.mp3"
     },
     {
       "t": "narrate",
-      "text": "His name is still at TE-1."
+      "text": "His name is still at TE-1.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/123.mp3"
     },
     {
       "t": "narrate",
-      "text": "He turns. He goes back to the Civic."
+      "text": "He turns. He goes back to the Civic.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/124.mp3"
     },
     {
       "t": "narrate",
-      "text": "He drives."
+      "text": "He drives.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/125.mp3"
     },
     {
       "t": "narrate",
-      "text": "He does not, on the drive, immediately know where he is going."
+      "text": "He does not, on the drive, immediately know where he is going.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/126.mp3"
     },
     {
       "t": "narrate",
-      "text": "He had been planning to drive home. His mother is going to be waking up soon and is going to want to hear about the depth chart. His father is at the table with the crossword and is going to want to hear about it."
+      "text": "He had been planning to drive home. His mother is going to be waking up soon and is going to want to hear about the depth chart. His father is at the table with the crossword and is going to want to hear about it.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/127.mp3"
     },
     {
       "t": "narrate",
-      "text": "But his hands, on the wheel, take the long way."
+      "text": "But his hands, on the wheel, take the long way.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/128.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert truck]The long way passes the equipment shed at the back of the school field, and the long way also passes the back gate that the team uses to get to the field on weekends when the front of the school is locked."
+      "text": "[shot:insert truck]The long way passes the equipment shed at the back of the school field, and the long way also passes the back gate that the team uses to get to the field on weekends when the front of the school is locked.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/129.mp3"
     },
     {
       "t": "narrate",
-      "text": "Ben pulls past the field. He sees, in the small light of one PM in mid-August in Texas, that the equipment shed door is open and that Coach Dale's truck is parked behind the shed."
+      "text": "Ben pulls past the field. He sees, in the small light of one PM in mid-August in Texas, that the equipment shed door is open and that Coach Dale's truck is parked behind the shed.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/130.mp3"
     },
     {
       "t": "narrate",
-      "text": "Coach Dale is doing some small Friday-afternoon equipment task that is, by the way Coach Dale has been doing his job for twenty-some years at this school, a thing Coach Dale does on Fridays without announcement."
+      "text": "Coach Dale is doing some small Friday-afternoon equipment task that is, by the way Coach Dale has been doing his job for twenty-some years at this school, a thing Coach Dale does on Fridays without announcement.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/131.mp3"
     },
     {
       "t": "narrate",
-      "text": "Ben, on instinct that he does not, in the moment, examine, pulls the Civic into the small lot behind the shed."
+      "text": "Ben, on instinct that he does not, in the moment, examine, pulls the Civic into the small lot behind the shed.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/132.mp3"
     },
     {
       "t": "narrate",
-      "text": "He parks. He gets out. He walks to the open shed door."
+      "text": "He parks. He gets out. He walks to the open shed door.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/133.mp3"
     },
     {
       "t": "bg",
@@ -655,285 +765,337 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup coachdale]Coach Dale is at the back wall of the shed, sorting through a small bin of kicking tees by size."
+      "text": "[shot:closeup coachdale]Coach Dale is at the back wall of the shed, sorting through a small bin of kicking tees by size.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/137.mp3"
     },
     {
       "t": "narrate",
-      "text": "Coach Dale, when Ben comes to the door, looks up."
+      "text": "Coach Dale, when Ben comes to the door, looks up.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/138.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "Ben.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/139.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Hey, Coach Dale.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/140.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "TE-1.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/141.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "[shot:closeup person]Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/142.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "Congratulations.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/143.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Thank you.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/144.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "Come in. Help me with these tees if you don't mind. The youth-league coaches borrow these in October and they always come back jumbled. I'm sorting them now so I'm not doing it in October when the season's already a thing.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/145.mp3"
     },
     {
       "t": "narrate",
-      "text": "Ben comes in."
+      "text": "Ben comes in.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/146.mp3"
     },
     {
       "t": "narrate",
-      "text": "He sits on the small overturned milk crate Coach Dale gestures at."
+      "text": "He sits on the small overturned milk crate Coach Dale gestures at.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/147.mp3"
     },
     {
       "t": "narrate",
-      "text": "He starts sorting tees by the small Coach Dale system, which is — Coach Dale demonstrates with the first three — two-inch tees in one pile, two-and-a-half-inch in another, three-inch in a third."
+      "text": "He starts sorting tees by the small Coach Dale system, which is — Coach Dale demonstrates with the first three — two-inch tees in one pile, two-and-a-half-inch in another, three-inch in a third.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/148.mp3"
     },
     {
       "t": "narrate",
-      "text": "The work is the work of a man and a kid sorting kicking tees in a shed at one PM on a Friday in mid-August."
+      "text": "The work is the work of a man and a kid sorting kicking tees in a shed at one PM on a Friday in mid-August.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/149.mp3"
     },
     {
       "t": "narrate",
-      "text": "For about three minutes, neither of them speaks."
+      "text": "For about three minutes, neither of them speaks.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/150.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "[shot:closeup person_b]Coach K mentioned something to me yesterday.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/151.mp3"
     },
     {
       "t": "narrate",
-      "text": "Ben, with a tee in his hand, looks up."
+      "text": "Ben, with a tee in his hand, looks up.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/152.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "He didn't mention it as a thing. He mentioned it the way he mentions things, which is in a sentence and then he changes the subject.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/153.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/154.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "[shot:closeup coachdale~]He told me — and I'm not telling you this because he asked me to. I'm telling you because I have decided, on my own, that you should know.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/155.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "He told me that a kid said something to him after Tuesday's evening practice that he has, since, been thinking about. He didn't tell me which kid. He didn't have to.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/156.mp3"
     },
     {
       "t": "narrate",
-      "text": "Ben does not, immediately, respond."
+      "text": "Ben does not, immediately, respond.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/157.mp3"
     },
     {
       "t": "narrate",
-      "text": "He sorts the tee in his hand into the two-inch pile."
+      "text": "He sorts the tee in his hand into the two-inch pile.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/158.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/159.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "[shot:closeup person]What you said. You said his wife was going to be okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/160.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "[shot:closeup person]Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/161.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "How did you know.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/162.mp3"
     },
     {
       "t": "narrate",
-      "text": "Ben thinks for a moment."
+      "text": "Ben thinks for a moment.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/163.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "I didn't know. I — I had been listening to him say her name. The verbs were — the verbs were doing a thing. I thought he might be carrying something. I — I didn't think it through. I just said it.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/164.mp3"
     },
     {
       "t": "narrate",
-      "text": "Coach Dale nods, slowly."
+      "text": "Coach Dale nods, slowly.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/165.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "[shot:closeup person_b]Okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/166.mp3"
     },
     {
       "t": "narrate",
-      "text": "Coach Dale picks up another tee."
+      "text": "Coach Dale picks up another tee.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/167.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "Eileen — Coach K's wife — was diagnosed in March. Stage two. Treatment started in April. The treatment has been working. She's — she's going to be okay. They got the news at the end of June. The numbers are — the numbers are good.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/168.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "By August she's going to be, by the doctor's read, in the clear. There's going to be follow-up. There's going to be the rest of her life. But the specific bad version of the next year is, by mid-summer, off the table.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/169.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "Coach K has been carrying the probably okay and the not yet certain in the same body since June.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/170.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "[shot:closeup person_b]Coach.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/171.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/172.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "[shot:closeup person]Why are you telling me.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/173.mp3"
     },
     {
       "t": "narrate",
-      "text": "Coach Dale picks up another tee. He sorts it. He does not, while sorting, look up."
+      "text": "Coach Dale picks up another tee. He sorts it. He does not, while sorting, look up.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/174.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "Because. Because Coach K is, by his own design, the kind of man who is not, generally, going to tell a player on his team about the kind of summer his wife has been having.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/175.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "He has decided that the team should not, by his own choice, have to carry his weather. He is, in deciding this, being the kind of coach he has been for twenty years. The decision is — the decision is his to make. I respect it.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/176.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "I do not, in twenty years, override it.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/177.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "But.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/178.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "But. You said the right thing to him on Tuesday with no information. He has been, since Tuesday, thinking about what that meant.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/179.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "He has been thinking about it in a way that I — having watched him think about things in this small twitchy way for twenty years — can read from across the field.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/180.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "You did, at seventeen, with no information, the thing the team is, by his decision, not in a position to do for him.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/181.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "I am telling you because I have decided, on my own, that you having said the right thing without information deserves to be honored by you having a little information now.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/182.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "The information is — the information is not for you to do anything with. The information is for you to know, when he is on the sideline tomorrow against Vinton, what he is, in his body, carrying with him while he calls plays.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/183.mp3"
     },
     {
       "t": "narrate",
-      "text": "[beat:still][shot:closeup ben]Ben, with a tee in his hand, is, for a long moment, very still."
+      "text": "[beat:still][shot:closeup ben]Ben, with a tee in his hand, is, for a long moment, very still.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/184.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Coach.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/185.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/186.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "I'm not — I'm not going to say anything to him. About knowing.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/187.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "I know you're not.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/188.mp3"
     },
     {
       "t": "say",
@@ -945,197 +1107,232 @@
       "t": "say",
       "char": "Coach Dale",
       "text": "[shot:closeup person_b]I know you're not.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/190.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Why do you know.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/191.mp3"
     },
     {
       "t": "narrate",
-      "text": "Coach Dale, finally, looks up."
+      "text": "Coach Dale, finally, looks up.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/192.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "Because, son. You are — you are the kind of seventeen-year-old who, on Tuesday, said she's gonna be okay, Eileen to a man you barely know, in a parking lot, at eight PM, with no information. You did not perform the saying.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/193.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "You did not announce yourself by saying. You said it because your body had decided, at the moment you were walking past, that the man needed to hear the sentence.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/194.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "That kind of kid does not, two days later, when he has been given the information, go around telling people about it. That kid sits with it. He carries it into the Vinton scrimmage. He plays his game.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/195.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "He does the thing the field requires of him. And he comes off the field, when the day is over, not having mentioned to anyone that he knew. That is — that is who you are. I have, in twenty-some years of coaching, learned to tell.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/196.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "You are that. So I am telling you.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/197.mp3"
     },
     {
       "t": "narrate",
-      "text": "Ben, on the milk crate, in the shed, with the tees half-sorted at his feet, does not, for a long moment, respond."
+      "text": "Ben, on the milk crate, in the shed, with the tees half-sorted at his feet, does not, for a long moment, respond.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/198.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "[shot:closeup person]Thank you, Coach.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/199.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/200.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]They go back to the tees."
+      "text": "[shot:establish]They go back to the tees.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/201.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "There's one more thing.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/202.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/203.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "She's going to be at the game tomorrow.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/204.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Eileen?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/205.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "[shot:closeup person_b]Eileen. She has, this summer, been to one practice — the first one, in early July. She has not been able to come to the others. The doctor told her in June she could come back to ordinary things by August.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/206.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "Tomorrow is the first ordinary thing. She is going to be in the bleachers. Third row, behind the home bench. I am telling you so that, when you see her there, you are not, in your head, thinking who is that. You are knowing.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/207.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "The knowing — the knowing is, again, only for you. You are not going to look up at her. You are not going to acknowledge her. She does not, by her own preference, want to be a thing tomorrow.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/208.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "She wants to sit in the third row and watch her husband do his work for the first time in five months. You are going to play your game. The fact of her being there is — is the chapter that is closing.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/209.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "You having known about it tomorrow is the thing I am giving you because you, on Tuesday, gave Coach K the thing he had not asked for.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/210.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/211.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "Okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/212.mp3"
     },
     {
       "t": "narrate",
-      "text": "The tees, by one twenty-one, are sorted."
+      "text": "The tees, by one twenty-one, are sorted.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/213.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "Thanks, Ben.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/214.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Yeah, Coach Dale.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/215.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "Go home. Sleep. Eat. Be at the field at three tomorrow. Walk-through is at four. Game is at six. Be ready.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/216.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/217.mp3"
     },
     {
       "t": "narrate",
-      "text": "He gets up. He goes to the door of the shed."
+      "text": "He gets up. He goes to the door of the shed.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/218.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup ben]At the door, he turns."
+      "text": "[shot:closeup ben]At the door, he turns.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/219.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Coach Dale.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/220.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/221.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Thank you. For — for telling me.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/222.mp3"
     },
     {
       "t": "say",
       "char": "Coach Dale",
       "text": "Yeah, son. Go on.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/223.mp3"
     },
     {
       "t": "narrate",
-      "text": "Ben goes."
+      "text": "Ben goes.",
+      "voice": "assets/audio/voice/vol6_ch19_depthchart/224.mp3"
     },
     {
       "t": "jump",

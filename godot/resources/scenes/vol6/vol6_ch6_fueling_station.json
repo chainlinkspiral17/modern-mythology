@@ -41,11 +41,13 @@
     },
     {
       "t": "narrate",
-      "text": "Boyd — late thirties, smaller than Vince, with the specific tense look of a man who has been holding in a small pressure of distress for the past two minutes and who is, very shortly, going to need a bathroom — has just gone inside the station."
+      "text": "Boyd — late thirties, smaller than Vince, with the specific tense look of a man who has been holding in a small pressure of distress for the past two minutes and who is, very shortly, going to need a bathroom — has just gone inside the station.",
+      "voice": "assets/audio/voice/vol6_ch6_fueling_station/008.mp3"
     },
     {
       "t": "narrate",
-      "text": "Claire pulls up at the far pump. She and Doyle get out. Doyle walks toward the van. Claire walks toward the building. Tomé's car has not yet arrived."
+      "text": "Claire pulls up at the far pump. She and Doyle get out. Doyle walks toward the van. Claire walks toward the building. Tomé's car has not yet arrived.",
+      "voice": "assets/audio/voice/vol6_ch6_fueling_station/009.mp3"
     },
     {
       "t": "show",
@@ -61,43 +63,51 @@
     },
     {
       "t": "narrate",
-      "text": "Doyle reaches Vince."
+      "text": "Doyle reaches Vince.",
+      "voice": "assets/audio/voice/vol6_ch6_fueling_station/012.mp3"
     },
     {
       "t": "say",
       "char": "Doyle",
       "text": "[shot:closeup person]Vince Kane?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_fueling_station/013.mp3"
     },
     {
       "t": "narrate",
-      "text": "Vince looks up."
+      "text": "Vince looks up.",
+      "voice": "assets/audio/voice/vol6_ch6_fueling_station/014.mp3"
     },
     {
       "t": "say",
       "char": "Vince",
       "text": "Who's asking.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_fueling_station/015.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert badge]Doyle holds up the NAPD courtesy badge — a small leather wallet with a New Auburn shield embossed on the inside, which Ramirez had pressed into Doyle's palm at four AM with the words don't lose this, I have to give it back by noon."
+      "text": "[shot:insert badge]Doyle holds up the NAPD courtesy badge — a small leather wallet with a New Auburn shield embossed on the inside, which Ramirez had pressed into Doyle's palm at four AM with the words don't lose this, I have to give it back by noon.",
+      "voice": "assets/audio/voice/vol6_ch6_fueling_station/016.mp3"
     },
     {
       "t": "say",
       "char": "Doyle",
       "text": "Federal task force is forty-five minutes out, Vince. They're coming for the van. You can be in it when they get here, or you can not be. Your choice. Walk now, you're at a Whataburger by lunch.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_fueling_station/017.mp3"
     },
     {
       "t": "narrate",
-      "text": "Vince looks at the badge. Vince looks at Doyle. Vince looks at the van. Vince looks at the building, where Boyd is presumably finding the bathroom."
+      "text": "Vince looks at the badge. Vince looks at Doyle. Vince looks at the van. Vince looks at the building, where Boyd is presumably finding the bathroom.",
+      "voice": "assets/audio/voice/vol6_ch6_fueling_station/018.mp3"
     },
     {
       "t": "say",
       "char": "Vince",
       "text": "How do I know you're not — ",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_fueling_station/019.mp3"
     },
     {
       "t": "say",
@@ -127,21 +137,25 @@
       "t": "say",
       "char": "Vince",
       "text": "Burger King's better.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_fueling_station/025.mp3"
     },
     {
       "t": "say",
       "char": "Doyle",
       "text": "Then go to Burger King.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_fueling_station/026.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Vince walks. He crosses the lot, gets into a beat-up sedan parked near the dumpster — his personal car, which he had, on Wednesday, arranged to have here for exactly this contingency — and drives away."
+      "text": "[shot:establish]Vince walks. He crosses the lot, gets into a beat-up sedan parked near the dumpster — his personal car, which he had, on Wednesday, arranged to have here for exactly this contingency — and drives away.",
+      "voice": "assets/audio/voice/vol6_ch6_fueling_station/027.mp3"
     },
     {
       "t": "narrate",
-      "text": "Doyle picks up the keys. Gets in the van. Starts the engine."
+      "text": "Doyle picks up the keys. Gets in the van. Starts the engine.",
+      "voice": "assets/audio/voice/vol6_ch6_fueling_station/028.mp3"
     },
     {
       "t": "hide",
@@ -159,7 +173,8 @@
     },
     {
       "t": "narrate",
-      "text": "[beat:still][shot:closeup diego~]In the back of the van, on the floor, wrapped in a blanket, Diego Ramos opens his eyes."
+      "text": "[beat:still][shot:closeup diego~]In the back of the van, on the floor, wrapped in a blanket, Diego Ramos opens his eyes.",
+      "voice": "assets/audio/voice/vol6_ch6_fueling_station/032.mp3"
     },
     {
       "t": "hide",

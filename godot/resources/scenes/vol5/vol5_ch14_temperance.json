@@ -45,7 +45,8 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert dust]John Frank considered the dust motes performing their intricate silent ballet in the shaft of late-morning Montreal sunlight slicing through his apartment window."
+      "text": "[shot:insert dust]John Frank considered the dust motes performing their intricate silent ballet in the shaft of late-morning Montreal sunlight slicing through his apartment window.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/009.mp3"
     },
     {
       "t": "narrate",
@@ -69,7 +70,8 @@
     },
     {
       "t": "narrate",
-      "text": "His apartment, years after the Graustark — event — was a cluttered archive of selves."
+      "text": "His apartment, years after the Graustark — event — was a cluttered archive of selves.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/015.mp3"
     },
     {
       "t": "narrate",
@@ -85,7 +87,8 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert mug]He poured coffee into a mug that inexplicably featured a cartoon narwhal."
+      "text": "[shot:insert mug]He poured coffee into a mug that inexplicably featured a cartoon narwhal.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/019.mp3"
     },
     {
       "t": "narrate",
@@ -101,11 +104,13 @@
     },
     {
       "t": "narrate",
-      "text": "He added a careful splash of oat milk. A concession to arteries, if not aesthetics. Balance. Moderation. The keywords of this current life chapter. Less Faustian striving. More — mindful Tuesday management."
+      "text": "He added a careful splash of oat milk. A concession to arteries, if not aesthetics. Balance. Moderation. The keywords of this current life chapter. Less Faustian striving. More — mindful Tuesday management.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/023.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He sat at his desk, a landscape of paper drifts."
+      "text": "[shot:establish]He sat at his desk, a landscape of paper drifts.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/024.mp3"
     },
     {
       "t": "narrate",
@@ -129,11 +134,13 @@
     },
     {
       "t": "narrate",
-      "text": "Mostly."
+      "text": "Mostly.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/030.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert drainpipe~]Though the way the light hit that one specific graffiti-scarred drainpipe sometimes —"
+      "text": "[shot:insert drainpipe~]Though the way the light hit that one specific graffiti-scarred drainpipe sometimes —",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/031.mp3"
     },
     {
       "t": "narrate",
@@ -149,15 +156,18 @@
     },
     {
       "t": "narrate",
-      "text": "He had not, yet, drawn the conclusion the dates were inviting him to draw."
+      "text": "He had not, yet, drawn the conclusion the dates were inviting him to draw.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/035.mp3"
     },
     {
       "t": "narrate",
-      "text": "He had, in some sense, already drawn it. The drawing was the not-yet. Temperance, he had begun to suspect, was the small private discipline of knowing a thing while continuing to allow it to remain not yet known."
+      "text": "He had, in some sense, already drawn it. The drawing was the not-yet. Temperance, he had begun to suspect, was the small private discipline of knowing a thing while continuing to allow it to remain not yet known.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/036.mp3"
     },
     {
       "t": "narrate",
-      "text": "Stasis. Was that what this equilibrium felt like."
+      "text": "Stasis. Was that what this equilibrium felt like.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/037.mp3"
     },
     {
       "t": "narrate",
@@ -177,7 +187,8 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Simpler times. Hilarious. But undeniably — charged."
+      "text": "[shot:establish]Simpler times. Hilarious. But undeniably — charged.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/042.mp3"
     },
     {
       "t": "narrate",
@@ -189,11 +200,13 @@
     },
     {
       "t": "narrate",
-      "text": "The version that had stood at the counter had not, at the time, factored in that getting out would feel like this."
+      "text": "The version that had stood at the counter had not, at the time, factored in that getting out would feel like this.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/045.mp3"
     },
     {
       "t": "narrate",
-      "text": "Did he yearn for missed opportunities. Perhaps."
+      "text": "Did he yearn for missed opportunities. Perhaps.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/046.mp3"
     },
     {
       "t": "narrate",
@@ -237,7 +250,8 @@
     },
     {
       "t": "narrate",
-      "text": "He did not write her back. He never wrote her back. They had agreed, without ever discussing it, that the cards were one-way. The agreement was a kind of restraint they both, in their separate ways, valued."
+      "text": "He did not write her back. He never wrote her back. They had agreed, without ever discussing it, that the cards were one-way. The agreement was a kind of restraint they both, in their separate ways, valued.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/057.mp3"
     },
     {
       "t": "narrate",
@@ -257,7 +271,8 @@
     },
     {
       "t": "narrate",
-      "text": "He picked up his pen."
+      "text": "He picked up his pen.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/062.mp3"
     },
     {
       "t": "narrate",
@@ -269,23 +284,28 @@
     },
     {
       "t": "narrate",
-      "text": "Just another Tuesday."
+      "text": "Just another Tuesday.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/065.mp3"
     },
     {
       "t": "narrate",
-      "text": "And maybe, just maybe, that was equilibrium enough."
+      "text": "And maybe, just maybe, that was equilibrium enough.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/066.mp3"
     },
     {
       "t": "narrate",
-      "text": "[mood:studio][shot:insert phone]His phone, on the desk, buzzed once."
+      "text": "[mood:studio][shot:insert phone]His phone, on the desk, buzzed once.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/067.mp3"
     },
     {
       "t": "narrate",
-      "text": "He looked down. A text from a number not in his contacts. The number had a Texas area code. He had not received a text from a Texas area code in — he counted, briefly, the way a man counts steps coming downstairs in the dark — six years."
+      "text": "He looked down. A text from a number not in his contacts. The number had a Texas area code. He had not received a text from a Texas area code in — he counted, briefly, the way a man counts steps coming downstairs in the dark — six years.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/068.mp3"
     },
     {
       "t": "narrate",
-      "text": "The text was four words long."
+      "text": "The text was four words long.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/069.mp3"
     },
     {
       "t": "narrate",
@@ -293,7 +313,8 @@
     },
     {
       "t": "narrate",
-      "text": "He stared at the screen."
+      "text": "He stared at the screen.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/071.mp3"
     },
     {
       "t": "narrate",
@@ -321,47 +342,58 @@
     },
     {
       "t": "narrate",
-      "text": "He had not, this morning, started mapping."
+      "text": "He had not, this morning, started mapping.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/078.mp3"
     },
     {
       "t": "narrate",
-      "text": "He looked at the text. He looked at the dust motes. He looked at the drainpipe in the alley, which the light was, at this exact moment, hitting in the particular way."
+      "text": "He looked at the text. He looked at the dust motes. He looked at the drainpipe in the alley, which the light was, at this exact moment, hitting in the particular way.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/079.mp3"
     },
     {
       "t": "narrate",
-      "text": "He set the phone down."
+      "text": "He set the phone down.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/080.mp3"
     },
     {
       "t": "narrate",
-      "text": "He picked the phone back up."
+      "text": "He picked the phone back up.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/081.mp3"
     },
     {
       "t": "narrate",
-      "text": "He typed, slowly, a single word in reply:"
+      "text": "He typed, slowly, a single word in reply:",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/082.mp3"
     },
     {
       "t": "narrate",
-      "text": "[beat:still]yes."
+      "text": "[beat:still]yes.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/083.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He sent it."
+      "text": "[shot:establish]He sent it.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/084.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]He set the phone back down. He waited. He counted, internally, the seconds. Forty-seven seconds. Fifty. Sixty."
+      "text": "[shot:insert phone]He set the phone back down. He waited. He counted, internally, the seconds. Forty-seven seconds. Fifty. Sixty.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/085.mp3"
     },
     {
       "t": "narrate",
-      "text": "The phone did not, immediately, reply."
+      "text": "The phone did not, immediately, reply.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/086.mp3"
     },
     {
       "t": "narrate",
-      "text": "The phone, eventually, never replied to that particular thread again."
+      "text": "The phone, eventually, never replied to that particular thread again.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/087.mp3"
     },
     {
       "t": "narrate",
-      "text": "[mood:morning_bright][shot:establish]John sat with the silence for a long time."
+      "text": "[mood:morning_bright][shot:establish]John sat with the silence for a long time.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/088.mp3"
     },
     {
       "t": "narrate",
@@ -373,43 +405,53 @@
     },
     {
       "t": "narrate",
-      "text": "He thought, something is starting again."
+      "text": "He thought, something is starting again.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/091.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thought, something is starting again somewhere I am not, and somebody I used to know thought to ask whether I had felt the edge of it."
+      "text": "He thought, something is starting again somewhere I am not, and somebody I used to know thought to ask whether I had felt the edge of it.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/092.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thought, temperance is being able to know this and not, immediately, do anything."
+      "text": "He thought, temperance is being able to know this and not, immediately, do anything.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/093.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thought, after a while: I will, eventually, do something. The doing will not be today."
+      "text": "He thought, after a while: I will, eventually, do something. The doing will not be today.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/094.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert notebook]He reopened the notebook. He uncapped the pen."
+      "text": "[shot:insert notebook]He reopened the notebook. He uncapped the pen.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/095.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert notebook]He wrote, at the top of a fresh page, the date."
+      "text": "[shot:insert notebook]He wrote, at the top of a fresh page, the date.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/096.mp3"
     },
     {
       "t": "narrate",
-      "text": "He wrote, beneath the date: Hum returning. Different vector. Note: not Graustark. Somewhere — newer. Cleaner. Worse."
+      "text": "He wrote, beneath the date: Hum returning. Different vector. Note: not Graustark. Somewhere — newer. Cleaner. Worse.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/097.mp3"
     },
     {
       "t": "narrate",
-      "text": "He underlined the word Worse."
+      "text": "He underlined the word Worse.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/098.mp3"
     },
     {
       "t": "narrate",
-      "text": "He looked at the line for a long minute. Then he closed the notebook. He set the pen on top of it. He stood up. He carried the narwhal mug to the kitchen. He rinsed it. He set it upside-down on the rack to dry."
+      "text": "He looked at the line for a long minute. Then he closed the notebook. He set the pen on top of it. He stood up. He carried the narwhal mug to the kitchen. He rinsed it. He set it upside-down on the rack to dry.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/099.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He returned to the desk. He looked at the drainpipe in the alley. The light, now, had moved. The drainpipe was just a drainpipe. The moment, whatever it had been, had passed."
+      "text": "[shot:establish]He returned to the desk. He looked at the drainpipe in the alley. The light, now, had moved. The drainpipe was just a drainpipe. The moment, whatever it had been, had passed.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/100.mp3"
     },
     {
       "t": "narrate",
@@ -421,39 +463,48 @@
     },
     {
       "t": "narrate",
-      "text": "He drafted. The dust motes resumed. The moss persisted. The alley was, again, just an alley."
+      "text": "He drafted. The dust motes resumed. The moss persisted. The alley was, again, just an alley.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/103.mp3"
     },
     {
       "t": "narrate",
-      "text": "Temperance held."
+      "text": "Temperance held.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/104.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone~]But on the desk, beside the narwhal mug's coaster, the phone — still face-up, still showing the four-word thread that had been opened and not, today, continued — pulsed once with the small subtle vibration of a thread that had been read, by the other party, on the other end, and acknowledged."
+      "text": "[shot:insert phone~]But on the desk, beside the narwhal mug's coaster, the phone — still face-up, still showing the four-word thread that had been opened and not, today, continued — pulsed once with the small subtle vibration of a thread that had been read, by the other party, on the other end, and acknowledged.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/105.mp3"
     },
     {
       "t": "narrate",
-      "text": "Just once. Just briefly."
+      "text": "Just once. Just briefly.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/106.mp3"
     },
     {
       "t": "narrate",
-      "text": "John did not, this time, pick up the phone."
+      "text": "John did not, this time, pick up the phone.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/107.mp3"
     },
     {
       "t": "narrate",
-      "text": "But he noted it."
+      "text": "But he noted it.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/108.mp3"
     },
     {
       "t": "narrate",
-      "text": "He had begun, again, to note things."
+      "text": "He had begun, again, to note things.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/109.mp3"
     },
     {
       "t": "narrate",
-      "text": "The mapping had not, in the end, ever quite stopped."
+      "text": "The mapping had not, in the end, ever quite stopped.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/110.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]It had just, for a season, been temperate."
+      "text": "[shot:establish]It had just, for a season, been temperate.",
+      "voice": "assets/audio/voice/vol5_ch14_temperance/111.mp3"
     },
     {
       "t": "narrate",

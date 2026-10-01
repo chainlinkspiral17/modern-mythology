@@ -35,25 +35,30 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2][mood:dusk][shot:insert phone]Sam's phone, on her dresser, buzzes. She picks it up. She reads the message. She reads it twice."
+      "text": "[trip:1.2][mood:dusk][shot:insert phone]Sam's phone, on her dresser, buzzes. She picks it up. She reads the message. She reads it twice.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/006.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "no apology necessary. take your time. i'm here.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/007.mp3"
     },
     {
       "t": "narrate",
-      "text": "She sends it. She sits on the edge of her bed, in the small soft Texas evening, and she holds the phone in her lap, and she watches the message marked delivered. It marks read in nine seconds."
+      "text": "She sends it. She sits on the edge of her bed, in the small soft Texas evening, and she holds the phone in her lap, and she watches the message marked delivered. It marks read in nine seconds.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/008.mp3"
     },
     {
       "t": "narrate",
-      "text": "She does not, now, cry. She sits."
+      "text": "She does not, now, cry. She sits.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/009.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Outside her window, the cul-de-sac does its Friday-evening thing — the post-storm light low and gold, the sprinklers running on the alternate schedule the HOA had moved them to after the rain, the cicadas tuning up, the small far-off hum of the substation continuing, as always, to do its work."
+      "text": "[shot:establish]Outside her window, the cul-de-sac does its Friday-evening thing — the post-storm light low and gold, the sprinklers running on the alternate schedule the HOA had moved them to after the rain, the cicadas tuning up, the small far-off hum of the substation continuing, as always, to do its work.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/010.mp3"
     },
     {
       "t": "narrate",
@@ -66,26 +71,31 @@
     {
       "t": "think",
       "char": "Sam",
-      "text": "[shot:closeup sam~]We got him. We got Diego. The adults did it. The teens got to be visible and ordinary and that was, in the end, the assignment."
+      "text": "[shot:closeup sam~]We got him. We got Diego. The adults did it. The teens got to be visible and ordinary and that was, in the end, the assignment.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/013.mp3"
     },
     {
       "t": "think",
       "char": "Sam",
-      "text": "Maya was right. This is what I am like when I have a plan. I am steady."
+      "text": "Maya was right. This is what I am like when I have a plan. I am steady.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/014.mp3"
     },
     {
       "t": "think",
       "char": "Sam",
-      "text": "I am, on Monday, going to a courthouse to watch my father be arraigned for a list of crimes I do not, yet, know the length of."
+      "text": "I am, on Monday, going to a courthouse to watch my father be arraigned for a list of crimes I do not, yet, know the length of.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/015.mp3"
     },
     {
       "t": "think",
       "char": "Sam",
-      "text": "I am going to be fine. I am, on the other side of all of this, going to be fine."
+      "text": "I am going to be fine. I am, on the other side of all of this, going to be fine.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/016.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]She sets the phone down. She stands. She goes downstairs."
+      "text": "[shot:establish]She sets the phone down. She stands. She goes downstairs.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/017.mp3"
     },
     {
       "t": "hide",
@@ -105,17 +115,20 @@
     },
     {
       "t": "narrate",
-      "text": "Her father, at the sink, turns. He smiles."
+      "text": "Her father, at the sink, turns. He smiles.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/021.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Let me dry.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/022.mp3"
     },
     {
       "t": "narrate",
-      "text": "She takes the dishtowel from him. She dries."
+      "text": "She takes the dishtowel from him. She dries.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/023.mp3"
     },
     {
       "t": "hide",
@@ -139,11 +152,13 @@
     },
     {
       "t": "narrate",
-      "text": "In the bookshop in New Auburn, with the rain entirely gone, Hal locks up at nine."
+      "text": "In the bookshop in New Auburn, with the rain entirely gone, Hal locks up at nine.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/029.mp3"
     },
     {
       "t": "narrate",
-      "text": "In the warehouse in Graustark, Frasier Temple, asleep on his cot, smiles in his sleep at something a Demon has murmured into the air above his head, which is, the Demon will later report to the cluster, the first smile Frasier has produced in four months."
+      "text": "In the warehouse in Graustark, Frasier Temple, asleep on his cot, smiles in his sleep at something a Demon has murmured into the air above his head, which is, the Demon will later report to the cluster, the first smile Frasier has produced in four months.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/030.mp3"
     },
     {
       "t": "narrate",
@@ -155,11 +170,13 @@
     },
     {
       "t": "narrate",
-      "text": "Friday ends."
+      "text": "Friday ends.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/033.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego, at the safehouse, sleeps. Sam, in her cornflower blue bedroom, sleeps too — for the first time in five nights, fully and without effort."
+      "text": "Diego, at the safehouse, sleeps. Sam, in her cornflower blue bedroom, sleeps too — for the first time in five nights, fully and without effort.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/034.mp3"
     },
     {
       "t": "narrate",
@@ -175,7 +192,8 @@
     },
     {
       "t": "narrate",
-      "text": "But that is tomorrow. Tonight, the rescue holds. Tonight, it is enough."
+      "text": "But that is tomorrow. Tonight, the rescue holds. Tonight, it is enough.",
+      "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/038.mp3"
     },
     {
       "t": "end"

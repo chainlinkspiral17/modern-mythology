@@ -35,11 +35,13 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:lunch][shot:insert door]The bell over the door chimes."
+      "text": "[mood:lunch][shot:insert door]The bell over the door chimes.",
+      "voice": "assets/audio/voice/vol6_ch6_kwik_stop_slushie/006.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam looks up."
+      "text": "Sam looks up.",
+      "voice": "assets/audio/voice/vol6_ch6_kwik_stop_slushie/007.mp3"
     },
     {
       "t": "show",
@@ -49,29 +51,35 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup customer]Ben. Ben is in his Pit Stop shirt. His apron is off. He is, she registers, walking with the small specific casualness of a man who is trying very hard not to walk with anything other than casualness, which is — for those who know how to read Ben — a tell."
+      "text": "[shot:closeup customer]Ben. Ben is in his Pit Stop shirt. His apron is off. He is, she registers, walking with the small specific casualness of a man who is trying very hard not to walk with anything other than casualness, which is — for those who know how to read Ben — a tell.",
+      "voice": "assets/audio/voice/vol6_ch6_kwik_stop_slushie/009.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam's heart begins to do a slow steady thing in her chest."
+      "text": "Sam's heart begins to do a slow steady thing in her chest.",
+      "voice": "assets/audio/voice/vol6_ch6_kwik_stop_slushie/010.mp3"
     },
     {
       "t": "narrate",
-      "text": "Ben walks to the counter. He picks up a blue raspberry slushie cup. He fills it. He brings it to the counter. He sets it down."
+      "text": "Ben walks to the counter. He picks up a blue raspberry slushie cup. He fills it. He brings it to the counter. He sets it down.",
+      "voice": "assets/audio/voice/vol6_ch6_kwik_stop_slushie/011.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam rings him up."
+      "text": "Sam rings him up.",
+      "voice": "assets/audio/voice/vol6_ch6_kwik_stop_slushie/012.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Three twenty-nine.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_kwik_stop_slushie/013.mp3"
     },
     {
       "t": "narrate",
-      "text": "Ben hands her a five."
+      "text": "Ben hands her a five.",
+      "voice": "assets/audio/voice/vol6_ch6_kwik_stop_slushie/014.mp3"
     },
     {
       "t": "say",
@@ -87,57 +95,68 @@
     },
     {
       "t": "narrate",
-      "text": "[beat:lift][shot:closeup sam~]Sam holds the five in her hand. She does not, immediately, give him the change. She does not, immediately, do anything."
+      "text": "[beat:lift][shot:closeup sam~]Sam holds the five in her hand. She does not, immediately, give him the change. She does not, immediately, do anything.",
+      "voice": "assets/audio/voice/vol6_ch6_kwik_stop_slushie/017.mp3"
     },
     {
       "t": "narrate",
-      "text": "Then her face does the thing faces do when the thing the face has been holding for five days finally — finally — has somewhere to go."
+      "text": "Then her face does the thing faces do when the thing the face has been holding for five days finally — finally — has somewhere to go.",
+      "voice": "assets/audio/voice/vol6_ch6_kwik_stop_slushie/018.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam puts the five in the register. She gives Ben his change. The change is one dollar and seventy-one cents. She places the change in his palm. She closes his fingers over it, gently, with both of her hands."
+      "text": "Sam puts the five in the register. She gives Ben his change. The change is one dollar and seventy-one cents. She places the change in his palm. She closes his fingers over it, gently, with both of her hands.",
+      "voice": "assets/audio/voice/vol6_ch6_kwik_stop_slushie/019.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert register]She does not cry at the counter. The store is, for this moment, empty, but the security camera at the corner is on, and Sam Miller has, in the past five days, learned to live as if the cameras were always recording."
+      "text": "[shot:insert register]She does not cry at the counter. The store is, for this moment, empty, but the security camera at the corner is on, and Sam Miller has, in the past five days, learned to live as if the cameras were always recording.",
+      "voice": "assets/audio/voice/vol6_ch6_kwik_stop_slushie/020.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Thank you for the slushie order, sir.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_kwik_stop_slushie/021.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "My pleasure, miss.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_kwik_stop_slushie/022.mp3"
     },
     {
       "t": "narrate",
-      "text": "He turns. He walks to the door. He pushes it open. He pauses, half outside, and says, over his shoulder, in his normal voice:"
+      "text": "He turns. He walks to the door. He pushes it open. He pauses, half outside, and says, over his shoulder, in his normal voice:",
+      "voice": "assets/audio/voice/vol6_ch6_kwik_stop_slushie/023.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Hey. You good for tomorrow morning?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_kwik_stop_slushie/024.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Yeah, Ben. I'm good.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_kwik_stop_slushie/025.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Okay. See you.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_kwik_stop_slushie/026.mp3"
     },
     {
       "t": "narrate",
-      "text": "The bell chimes. He leaves."
+      "text": "The bell chimes. He leaves.",
+      "voice": "assets/audio/voice/vol6_ch6_kwik_stop_slushie/027.mp3"
     },
     {
       "t": "hide",
@@ -153,7 +172,8 @@
     },
     {
       "t": "narrate",
-      "text": "She cries for two minutes. She washes her face. She comes back out. She finishes her shift."
+      "text": "She cries for two minutes. She washes her face. She comes back out. She finishes her shift.",
+      "voice": "assets/audio/voice/vol6_ch6_kwik_stop_slushie/031.mp3"
     },
     {
       "t": "hide",

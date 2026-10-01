@@ -35,39 +35,48 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert list]She is making a list. The list has a small header at the top in block capitals: WEDNESDAY LIST."
+      "text": "[shot:insert list]She is making a list. The list has a small header at the top in block capitals: WEDNESDAY LIST.",
+      "voice": "assets/audio/voice/vol6_ch4_sam_list/007.mp3"
     },
     {
       "t": "narrate",
-      "text": "1. Do not call dad during the day unless he calls first. If he calls first, answer on the third ring."
+      "text": "1. Do not call dad during the day unless he calls first. If he calls first, answer on the third ring.",
+      "voice": "assets/audio/voice/vol6_ch4_sam_list/008.mp3"
     },
     {
       "t": "narrate",
-      "text": "2. Do not go to the Gas & Go. Do not drive past the Gas & Go. Take the alternate route to Cosmic Comics if I go there."
+      "text": "2. Do not go to the Gas & Go. Do not drive past the Gas & Go. Take the alternate route to Cosmic Comics if I go there.",
+      "voice": "assets/audio/voice/vol6_ch4_sam_list/009.mp3"
     },
     {
       "t": "narrate",
-      "text": "3. Do not contact Maya during her shift unless she contacts me first."
+      "text": "3. Do not contact Maya during her shift unless she contacts me first.",
+      "voice": "assets/audio/voice/vol6_ch4_sam_list/010.mp3"
     },
     {
       "t": "narrate",
-      "text": "4. If sedan shows up at Kwik Stop during my shift, do not acknowledge."
+      "text": "4. If sedan shows up at Kwik Stop during my shift, do not acknowledge.",
+      "voice": "assets/audio/voice/vol6_ch4_sam_list/011.mp3"
     },
     {
       "t": "narrate",
-      "text": "5. Eat lunch. Do not skip it."
+      "text": "5. Eat lunch. Do not skip it.",
+      "voice": "assets/audio/voice/vol6_ch4_sam_list/012.mp3"
     },
     {
       "t": "narrate",
-      "text": "6. If dad asks about last night's thunder, say I slept through it."
+      "text": "6. If dad asks about last night's thunder, say I slept through it.",
+      "voice": "assets/audio/voice/vol6_ch4_sam_list/013.mp3"
     },
     {
       "t": "narrate",
-      "text": "7. Remember that whatever F.T. is, I am, right now, being watched by someone who wants to help. It is okay to let myself be watched."
+      "text": "7. Remember that whatever F.T. is, I am, right now, being watched by someone who wants to help. It is okay to let myself be watched.",
+      "voice": "assets/audio/voice/vol6_ch4_sam_list/014.mp3"
     },
     {
       "t": "narrate",
-      "text": "8. Write down everything dad says today. Every sentence. Even the boring ones. Patterns are in the boring."
+      "text": "8. Write down everything dad says today. Every sentence. Even the boring ones. Patterns are in the boring.",
+      "voice": "assets/audio/voice/vol6_ch4_sam_list/015.mp3"
     },
     {
       "t": "show",
@@ -77,19 +86,23 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup sam]She looks at the list. She crosses out item 3. She rewrites it: If Maya contacts me, answer in under five minutes. If Maya does not contact me, do not worry — she is working."
+      "text": "[shot:closeup sam]She looks at the list. She crosses out item 3. She rewrites it: If Maya contacts me, answer in under five minutes. If Maya does not contact me, do not worry — she is working.",
+      "voice": "assets/audio/voice/vol6_ch4_sam_list/017.mp3"
     },
     {
       "t": "narrate",
-      "text": "She looks at the list again. She adds item 9: Breathe."
+      "text": "She looks at the list again. She adds item 9: Breathe.",
+      "voice": "assets/audio/voice/vol6_ch4_sam_list/018.mp3"
     },
     {
       "t": "narrate",
-      "text": "She adds item 10: It is Wednesday. Diego has been missing for four days. I am going to find him. I do not need to find him today."
+      "text": "She adds item 10: It is Wednesday. Diego has been missing for four days. I am going to find him. I do not need to find him today.",
+      "voice": "assets/audio/voice/vol6_ch4_sam_list/019.mp3"
     },
     {
       "t": "narrate",
-      "text": "She closes the notebook. She slides it between the mattress and the box spring."
+      "text": "She closes the notebook. She slides it between the mattress and the box spring.",
+      "voice": "assets/audio/voice/vol6_ch4_sam_list/020.mp3"
     },
     {
       "t": "narrate",
@@ -105,7 +118,8 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:arcana][shot:insert window~]In the silver, for a single instant, she sees — she thinks she sees — a reflection that is not the lamp in her own window. Not her window at all. A different window. A different lamp. A different face."
+      "text": "[mood:arcana][shot:insert window~]In the silver, for a single instant, she sees — she thinks she sees — a reflection that is not the lamp in her own window. Not her window at all. A different window. A different lamp. A different face.",
+      "voice": "assets/audio/voice/vol6_ch4_sam_list/024.mp3"
     },
     {
       "t": "show",
@@ -115,16 +129,19 @@
     },
     {
       "t": "narrate",
-      "text": "She blinks. The face is gone. It had been, she realizes with a small slow settling-in, a face she half-recognized. An older woman. Dark hair going silver. Kind eyes. A face that was not, in any way Sam could articulate, frightening."
+      "text": "She blinks. The face is gone. It had been, she realizes with a small slow settling-in, a face she half-recognized. An older woman. Dark hair going silver. Kind eyes. A face that was not, in any way Sam could articulate, frightening.",
+      "voice": "assets/audio/voice/vol6_ch4_sam_list/026.mp3"
     },
     {
       "t": "think",
       "char": "Sam",
-      "text": "That was my grandmother."
+      "text": "That was my grandmother.",
+      "voice": "assets/audio/voice/vol6_ch4_sam_list/027.mp3"
     },
     {
       "t": "narrate",
-      "text": "Her grandmother on her mother's side had died in 2019."
+      "text": "Her grandmother on her mother's side had died in 2019.",
+      "voice": "assets/audio/voice/vol6_ch4_sam_list/028.mp3"
     },
     {
       "t": "show",
@@ -134,7 +151,8 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:rain_interior][shot:establish]Sam stands at the window for another forty-five seconds. The face does not reappear. The rain keeps coming down. She turns away. She goes to the closet. She gets dressed for work."
+      "text": "[mood:rain_interior][shot:establish]Sam stands at the window for another forty-five seconds. The face does not reappear. The rain keeps coming down. She turns away. She goes to the closet. She gets dressed for work.",
+      "voice": "assets/audio/voice/vol6_ch4_sam_list/030.mp3"
     },
     {
       "t": "hide",

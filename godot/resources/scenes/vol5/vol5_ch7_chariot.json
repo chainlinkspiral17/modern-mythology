@@ -43,7 +43,8 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Antonio D'Ambrosio had been told, by a girlfriend in his early twenties, that he had two speeds: gone and about to be gone."
+      "text": "[shot:establish]Antonio D'Ambrosio had been told, by a girlfriend in his early twenties, that he had two speeds: gone and about to be gone.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/008.mp3"
     },
     {
       "t": "narrate",
@@ -59,11 +60,13 @@
     },
     {
       "t": "narrate",
-      "text": "He thought about it now, climbing the rusted iron stair to the cramped office above what would, eventually, be Ember & Ash."
+      "text": "He thought about it now, climbing the rusted iron stair to the cramped office above what would, eventually, be Ember & Ash.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/012.mp3"
     },
     {
       "t": "narrate",
-      "text": "The phrase had begun, in the past year, to feel less like a compliment and more like a verdict."
+      "text": "The phrase had begun, in the past year, to feel less like a compliment and more like a verdict.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/013.mp3"
     },
     {
       "t": "narrate",
@@ -75,15 +78,18 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup antonio]Antonio crossed to the desk, dropped the rolled architectural plans, picked up the half-empty bottle of bourbon from the file cabinet, and sat down without pouring."
+      "text": "[shot:closeup antonio]Antonio crossed to the desk, dropped the rolled architectural plans, picked up the half-empty bottle of bourbon from the file cabinet, and sat down without pouring.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/016.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]The phone on the desk was buzzing."
+      "text": "[shot:insert phone]The phone on the desk was buzzing.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/017.mp3"
     },
     {
       "t": "narrate",
-      "text": "It had been buzzing for three minutes."
+      "text": "It had been buzzing for three minutes.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/018.mp3"
     },
     {
       "t": "narrate",
@@ -99,23 +105,28 @@
     },
     {
       "t": "narrate",
-      "text": "He let the phone buzz."
+      "text": "He let the phone buzz.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/022.mp3"
     },
     {
       "t": "narrate",
-      "text": "He counted, in his head, the seconds until it would go to voicemail. He had, over the course of the summer, gotten very good at this count. The phone went to voicemail at twenty-seven seconds. He had timed it, the first week, with a stopwatch."
+      "text": "He counted, in his head, the seconds until it would go to voicemail. He had, over the course of the summer, gotten very good at this count. The phone went to voicemail at twenty-seven seconds. He had timed it, the first week, with a stopwatch.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/023.mp3"
     },
     {
       "t": "narrate",
-      "text": "The phone buzzed for twenty-seven seconds."
+      "text": "The phone buzzed for twenty-seven seconds.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/024.mp3"
     },
     {
       "t": "narrate",
-      "text": "The phone went to voicemail."
+      "text": "The phone went to voicemail.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/025.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert bourbon]Antonio uncapped the bourbon, smelled it, recapped the bourbon, and set it back on the desk."
+      "text": "[shot:insert bourbon]Antonio uncapped the bourbon, smelled it, recapped the bourbon, and set it back on the desk.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/026.mp3"
     },
     {
       "t": "narrate",
@@ -131,11 +142,13 @@
     },
     {
       "t": "narrate",
-      "text": "He put the phone face-down on the desk."
+      "text": "He put the phone face-down on the desk.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/030.mp3"
     },
     {
       "t": "narrate",
-      "text": "Ember & Ash was Antonio's fever dream made manifest."
+      "text": "Ember & Ash was Antonio's fever dream made manifest.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/031.mp3"
     },
     {
       "t": "narrate",
@@ -159,7 +172,8 @@
     },
     {
       "t": "narrate",
-      "text": "Just like the prospectus had said. Just like Antonio himself, maybe."
+      "text": "Just like the prospectus had said. Just like Antonio himself, maybe.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/037.mp3"
     },
     {
       "t": "narrate",
@@ -183,15 +197,18 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Antonio had not, at the time, conceded the point. He was beginning, this morning, to suspect the foreman had been correct."
+      "text": "[shot:establish]Antonio had not, at the time, conceded the point. He was beginning, this morning, to suspect the foreman had been correct.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/043.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He stood. He paced. The office was twelve feet by ten. He could pace it in eight strides. He had, over the past three months, paced it perhaps six thousand times. The carpet under the route showed the path."
+      "text": "[shot:establish]He stood. He paced. The office was twelve feet by ten. He could pace it in eight strides. He had, over the past three months, paced it perhaps six thousand times. The carpet under the route showed the path.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/044.mp3"
     },
     {
       "t": "narrate",
-      "text": "His mind ran the inventory."
+      "text": "His mind ran the inventory.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/045.mp3"
     },
     {
       "t": "narrate",
@@ -235,19 +252,23 @@
     },
     {
       "t": "narrate",
-      "text": "He was not, at thirty-four, ready for that to be true."
+      "text": "He was not, at thirty-four, ready for that to be true.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/056.mp3"
     },
     {
       "t": "narrate",
-      "text": "He was also not, at thirty-four, in any position to do anything about it."
+      "text": "He was also not, at thirty-four, in any position to do anything about it.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/057.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]He picked up the phone. He thumbed past the unread voicemail from Q. PAUL. He found Jimmy."
+      "text": "[shot:insert phone]He picked up the phone. He thumbed past the unread voicemail from Q. PAUL. He found Jimmy.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/058.mp3"
     },
     {
       "t": "narrate",
-      "text": "Jimmy answered on the second ring. He always did. It was one of Jimmy's few unambiguous virtues."
+      "text": "Jimmy answered on the second ring. He always did. It was one of Jimmy's few unambiguous virtues.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/059.mp3"
     },
     {
       "t": "show",
@@ -258,7 +279,8 @@
     {
       "t": "say",
       "char": "jimmy",
-      "text": "Hey, kid."
+      "text": "Hey, kid.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/061.mp3"
     },
     {
       "t": "show",
@@ -269,32 +291,38 @@
     {
       "t": "say",
       "char": "antonio",
-      "text": "[shot:closeup antonio]You at the warehouse?"
+      "text": "[shot:closeup antonio]You at the warehouse?",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/063.mp3"
     },
     {
       "t": "say",
       "char": "jimmy",
-      "text": "Round the corner. Five minutes."
+      "text": "Round the corner. Five minutes.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/064.mp3"
     },
     {
       "t": "say",
       "char": "antonio",
-      "text": "Get here in three."
+      "text": "Get here in three.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/065.mp3"
     },
     {
       "t": "say",
       "char": "jimmy",
-      "text": "Two."
+      "text": "Two.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/066.mp3"
     },
     {
       "t": "say",
       "char": "antonio",
-      "text": "Bring coffee."
+      "text": "Bring coffee.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/067.mp3"
     },
     {
       "t": "say",
       "char": "jimmy",
-      "text": "[shot:closeup jimmy]On it."
+      "text": "[shot:closeup jimmy]On it.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/068.mp3"
     },
     {
       "t": "narrate",
@@ -322,7 +350,8 @@
     },
     {
       "t": "narrate",
-      "text": "The two horses, between them, kept the chariot moving. The chariot was not, Antonio increasingly suspected, going where he had planned."
+      "text": "The two horses, between them, kept the chariot moving. The chariot was not, Antonio increasingly suspected, going where he had planned.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/075.mp3"
     },
     {
       "t": "narrate",
@@ -338,110 +367,134 @@
     },
     {
       "t": "narrate",
-      "text": "[beat:chill][mood:studio][shot:insert window~]Across the street, an older man Antonio did not recognize was leaning against a streetlight, smoking. He wore a charcoal suit. He wore lawyer-shoes. He was watching the warehouse."
+      "text": "[beat:chill][mood:studio][shot:insert window~]Across the street, an older man Antonio did not recognize was leaning against a streetlight, smoking. He wore a charcoal suit. He wore lawyer-shoes. He was watching the warehouse.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/079.mp3"
     },
     {
       "t": "narrate",
-      "text": "He was watching, more specifically, the door to the office stair Antonio had just climbed."
+      "text": "He was watching, more specifically, the door to the office stair Antonio had just climbed.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/080.mp3"
     },
     {
       "t": "narrate",
-      "text": "Antonio stepped back from the window without thinking. The way you step back from the edge of a roof when you suddenly remember the height."
+      "text": "Antonio stepped back from the window without thinking. The way you step back from the edge of a roof when you suddenly remember the height.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/081.mp3"
     },
     {
       "t": "narrate",
-      "text": "When he looked again — carefully, from an angle — the man was still there. The cigarette had advanced a centimeter. The man had not, otherwise, moved."
+      "text": "When he looked again — carefully, from an angle — the man was still there. The cigarette had advanced a centimeter. The man had not, otherwise, moved.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/082.mp3"
     },
     {
       "t": "narrate",
-      "text": "Antonio crossed back to the desk. Picked up his phone. Thumbed Jimmy."
+      "text": "Antonio crossed back to the desk. Picked up his phone. Thumbed Jimmy.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/083.mp3"
     },
     {
       "t": "say",
       "char": "jimmy",
-      "text": "[shot:closeup jimmy]Yeah?"
+      "text": "[shot:closeup jimmy]Yeah?",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/084.mp3"
     },
     {
       "t": "say",
       "char": "antonio",
-      "text": "[shot:closeup antonio]You see a guy on the corner across the street."
+      "text": "[shot:closeup antonio]You see a guy on the corner across the street.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/085.mp3"
     },
     {
       "t": "say",
       "char": "jimmy",
-      "text": "What kind of guy."
+      "text": "What kind of guy.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/086.mp3"
     },
     {
       "t": "say",
       "char": "antonio",
-      "text": "Charcoal suit. Older. Smoking."
+      "text": "Charcoal suit. Older. Smoking.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/087.mp3"
     },
     {
       "t": "narrate",
-      "text": "A pause. Then Jimmy's voice, carefully neutral, the voice he used when he had already drawn a conclusion and was choosing whether to share it."
+      "text": "A pause. Then Jimmy's voice, carefully neutral, the voice he used when he had already drawn a conclusion and was choosing whether to share it.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/088.mp3"
     },
     {
       "t": "say",
       "char": "jimmy",
-      "text": "Yeah. I see him."
+      "text": "Yeah. I see him.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/089.mp3"
     },
     {
       "t": "say",
       "char": "antonio",
-      "text": "You know him."
+      "text": "You know him.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/090.mp3"
     },
     {
       "t": "say",
       "char": "jimmy",
-      "text": "[shot:closeup jimmy]I know the type. Stay upstairs. I'm coming up the back way."
+      "text": "[shot:closeup jimmy]I know the type. Stay upstairs. I'm coming up the back way.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/091.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert bourbon]Antonio stood at the desk. The bottle of bourbon at his elbow looked, suddenly, less like a bad decision and more like a tool whose specific function he was about to need. He uncapped it. Poured one finger into the chipped glass on the desk. Drank it."
+      "text": "[shot:insert bourbon]Antonio stood at the desk. The bottle of bourbon at his elbow looked, suddenly, less like a bad decision and more like a tool whose specific function he was about to need. He uncapped it. Poured one finger into the chipped glass on the desk. Drank it.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/092.mp3"
     },
     {
       "t": "narrate",
-      "text": "The bourbon burned. The bourbon helped."
+      "text": "The bourbon burned. The bourbon helped.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/093.mp3"
     },
     {
       "t": "narrate",
-      "text": "[mood:lunch][shot:establish]The office door opened from the back stair. Jimmy slipped in, closed it behind him, set two coffees on the desk, glanced at the bottle, glanced at the empty glass, and chose — for once — not to comment."
+      "text": "[mood:lunch][shot:establish]The office door opened from the back stair. Jimmy slipped in, closed it behind him, set two coffees on the desk, glanced at the bottle, glanced at the empty glass, and chose — for once — not to comment.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/094.mp3"
     },
     {
       "t": "say",
       "char": "jimmy",
-      "text": "Okay. Sit down. Don't look out the window."
+      "text": "Okay. Sit down. Don't look out the window.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/095.mp3"
     },
     {
       "t": "narrate",
-      "text": "Antonio sat. He had not, until Jimmy said it, registered that he had been about to look out the window again."
+      "text": "Antonio sat. He had not, until Jimmy said it, registered that he had been about to look out the window again.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/096.mp3"
     },
     {
       "t": "narrate",
-      "text": "Jimmy crossed to the leaded window himself. Stood at an angle that allowed him to see the corner across the street while remaining, from the corner's perspective, invisible. He watched for perhaps thirty seconds."
+      "text": "Jimmy crossed to the leaded window himself. Stood at an angle that allowed him to see the corner across the street while remaining, from the corner's perspective, invisible. He watched for perhaps thirty seconds.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/097.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup jimmy]Then he stepped back. He turned to Antonio. His face was the face Jimmy used when he was about to deliver bad news he had already decided how to manage."
+      "text": "[shot:closeup jimmy]Then he stepped back. He turned to Antonio. His face was the face Jimmy used when he was about to deliver bad news he had already decided how to manage.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/098.mp3"
     },
     {
       "t": "say",
       "char": "jimmy",
-      "text": "Okay. Couple of things."
+      "text": "Okay. Couple of things.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/099.mp3"
     },
     {
       "t": "say",
       "char": "antonio",
-      "text": "Yeah."
+      "text": "Yeah.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/100.mp3"
     },
     {
       "t": "say",
       "char": "jimmy",
-      "text": "First. He's Q. Paul's. I've seen him before. He's the guy Q. Paul sends when Q. Paul wants to be seen sending somebody. So this is — this is the message itself, you understand. The message is I sent a guy. The guy doesn't have to do anything."
+      "text": "First. He's Q. Paul's. I've seen him before. He's the guy Q. Paul sends when Q. Paul wants to be seen sending somebody. So this is — this is the message itself, you understand. The message is I sent a guy. The guy doesn't have to do anything.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/101.mp3"
     },
     {
       "t": "narrate",
-      "text": "Antonio felt the bourbon stop helping."
+      "text": "Antonio felt the bourbon stop helping.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/102.mp3"
     },
     {
       "t": "say",
@@ -461,35 +514,42 @@
     {
       "t": "say",
       "char": "antonio",
-      "text": "[shot:closeup antonio]Or somebody in this office."
+      "text": "[shot:closeup antonio]Or somebody in this office.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/106.mp3"
     },
     {
       "t": "narrate",
-      "text": "Jimmy's face did not move."
+      "text": "Jimmy's face did not move.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/107.mp3"
     },
     {
       "t": "say",
       "char": "jimmy",
-      "text": "Or somebody in this office. Yeah."
+      "text": "Or somebody in this office. Yeah.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/108.mp3"
     },
     {
       "t": "narrate",
-      "text": "Antonio looked at him for a long moment. Jimmy looked back, levelly, the way he always did when Antonio asked the question Antonio had not, technically, asked."
+      "text": "Antonio looked at him for a long moment. Jimmy looked back, levelly, the way he always did when Antonio asked the question Antonio had not, technically, asked.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/109.mp3"
     },
     {
       "t": "say",
       "char": "jimmy",
-      "text": "Not me. For what it's worth."
+      "text": "Not me. For what it's worth.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/110.mp3"
     },
     {
       "t": "say",
       "char": "antonio",
-      "text": "For what it's worth."
+      "text": "For what it's worth.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/111.mp3"
     },
     {
       "t": "say",
       "char": "jimmy",
-      "text": "[shot:closeup jimmy]Yeah, kid. I know."
+      "text": "[shot:closeup jimmy]Yeah, kid. I know.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/112.mp3"
     },
     {
       "t": "narrate",
@@ -502,7 +562,8 @@
     {
       "t": "say",
       "char": "antonio",
-      "text": "[shot:closeup antonio]What do I do."
+      "text": "[shot:closeup antonio]What do I do.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/115.mp3"
     },
     {
       "t": "say",
@@ -516,79 +577,95 @@
     },
     {
       "t": "narrate",
-      "text": "Antonio laughed once, a short sharp sound that surprised both of them."
+      "text": "Antonio laughed once, a short sharp sound that surprised both of them.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/118.mp3"
     },
     {
       "t": "say",
       "char": "antonio",
-      "text": "Three is not on the table."
+      "text": "Three is not on the table.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/119.mp3"
     },
     {
       "t": "say",
       "char": "jimmy",
-      "text": "[shot:closeup jimmy]I know it's not on the table. I'm just telling you it's an option in the abstract."
+      "text": "[shot:closeup jimmy]I know it's not on the table. I'm just telling you it's an option in the abstract.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/120.mp3"
     },
     {
       "t": "say",
       "char": "antonio",
-      "text": "Why are you telling me it's an option in the abstract."
+      "text": "Why are you telling me it's an option in the abstract.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/121.mp3"
     },
     {
       "t": "say",
       "char": "jimmy",
-      "text": "Because, kid, in two months when we are deeper in this than we are now, you are going to come to me and say Jimmy, why didn't I call my dad, and I want to be able to point at this conversation and tell you I told you it was an option."
+      "text": "Because, kid, in two months when we are deeper in this than we are now, you are going to come to me and say Jimmy, why didn't I call my dad, and I want to be able to point at this conversation and tell you I told you it was an option.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/122.mp3"
     },
     {
       "t": "say",
       "char": "antonio",
-      "text": "Jimmy. What's option four."
+      "text": "Jimmy. What's option four.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/123.mp3"
     },
     {
       "t": "narrate",
-      "text": "Jimmy was quiet for a moment."
+      "text": "Jimmy was quiet for a moment.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/124.mp3"
     },
     {
       "t": "say",
       "char": "jimmy",
-      "text": "Option four is you let me handle it."
+      "text": "Option four is you let me handle it.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/125.mp3"
     },
     {
       "t": "say",
       "char": "antonio",
-      "text": "[shot:closeup antonio]What does that mean."
+      "text": "[shot:closeup antonio]What does that mean.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/126.mp3"
     },
     {
       "t": "say",
       "char": "jimmy",
-      "text": "It means you let me handle it."
+      "text": "It means you let me handle it.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/127.mp3"
     },
     {
       "t": "say",
       "char": "antonio",
-      "text": "Jimmy."
+      "text": "Jimmy.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/128.mp3"
     },
     {
       "t": "say",
       "char": "jimmy",
-      "text": "Kid."
+      "text": "Kid.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/129.mp3"
     },
     {
       "t": "say",
       "char": "antonio",
-      "text": "What does that mean."
+      "text": "What does that mean.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/130.mp3"
     },
     {
       "t": "narrate",
-      "text": "A pause. Then, very gently, the way you tell a child something you wish you did not have to:"
+      "text": "A pause. Then, very gently, the way you tell a child something you wish you did not have to:",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/131.mp3"
     },
     {
       "t": "say",
       "char": "jimmy",
-      "text": "[beat:hit]It means you don't ask me what it means."
+      "text": "[beat:hit]It means you don't ask me what it means.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/132.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Antonio sat with that for a long time."
+      "text": "[shot:establish]Antonio sat with that for a long time.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/133.mp3"
     },
     {
       "t": "narrate",
@@ -612,80 +689,96 @@
     },
     {
       "t": "narrate",
-      "text": "He looked at Jimmy."
+      "text": "He looked at Jimmy.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/139.mp3"
     },
     {
       "t": "narrate",
-      "text": "Jimmy was waiting."
+      "text": "Jimmy was waiting.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/140.mp3"
     },
     {
       "t": "say",
       "char": "antonio",
-      "text": "[shot:closeup antonio]Option four."
+      "text": "[shot:closeup antonio]Option four.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/141.mp3"
     },
     {
       "t": "say",
       "char": "jimmy",
-      "text": "You sure."
+      "text": "You sure.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/142.mp3"
     },
     {
       "t": "say",
       "char": "antonio",
-      "text": "No."
+      "text": "No.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/143.mp3"
     },
     {
       "t": "say",
       "char": "jimmy",
-      "text": "You sure?"
+      "text": "You sure?",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/144.mp3"
     },
     {
       "t": "say",
       "char": "antonio",
-      "text": "Yeah, Jimmy. Option four."
+      "text": "Yeah, Jimmy. Option four.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/145.mp3"
     },
     {
       "t": "narrate",
-      "text": "Jimmy nodded once. He drank his coffee in three long swallows. He stood up."
+      "text": "Jimmy nodded once. He drank his coffee in three long swallows. He stood up.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/146.mp3"
     },
     {
       "t": "say",
       "char": "jimmy",
-      "text": "Stay upstairs another twenty minutes. Don't look out the window. I'll text you when it's clear."
+      "text": "Stay upstairs another twenty minutes. Don't look out the window. I'll text you when it's clear.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/147.mp3"
     },
     {
       "t": "say",
       "char": "antonio",
-      "text": "Jimmy."
+      "text": "Jimmy.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/148.mp3"
     },
     {
       "t": "say",
       "char": "jimmy",
-      "text": "Yeah."
+      "text": "Yeah.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/149.mp3"
     },
     {
       "t": "say",
       "char": "antonio",
-      "text": "I'm going to ask you, in two months, what option four was."
+      "text": "I'm going to ask you, in two months, what option four was.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/150.mp3"
     },
     {
       "t": "say",
       "char": "jimmy",
-      "text": "I know you are, kid."
+      "text": "I know you are, kid.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/151.mp3"
     },
     {
       "t": "say",
       "char": "antonio",
-      "text": "And you're not going to tell me."
+      "text": "And you're not going to tell me.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/152.mp3"
     },
     {
       "t": "say",
       "char": "jimmy",
-      "text": "No."
+      "text": "No.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/153.mp3"
     },
     {
       "t": "say",
       "char": "antonio",
-      "text": "Okay."
+      "text": "Okay.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/154.mp3"
     },
     {
       "t": "narrate",
@@ -697,51 +790,63 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone~]He looked at the phone."
+      "text": "[shot:insert phone~]He looked at the phone.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/157.mp3"
     },
     {
       "t": "narrate",
-      "text": "He picked it up."
+      "text": "He picked it up.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/158.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thumbed past the voicemails from Q. PAUL. He found the contact for DAD. He held his thumb above the number for a long count, eight, nine, ten, eleven seconds."
+      "text": "He thumbed past the voicemails from Q. PAUL. He found the contact for DAD. He held his thumb above the number for a long count, eight, nine, ten, eleven seconds.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/159.mp3"
     },
     {
       "t": "narrate",
-      "text": "He set the phone down."
+      "text": "He set the phone down.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/160.mp3"
     },
     {
       "t": "narrate",
-      "text": "He did not call."
+      "text": "He did not call.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/161.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Outside, somewhere around the corner, the older man in the charcoal suit was walking, unhurried, back toward the dark sedan he had parked carefully in the shadow of the dumpster. He flicked the cigarette into the gutter. He got into the sedan. He drove away."
+      "text": "[shot:establish]Outside, somewhere around the corner, the older man in the charcoal suit was walking, unhurried, back toward the dark sedan he had parked carefully in the shadow of the dumpster. He flicked the cigarette into the gutter. He got into the sedan. He drove away.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/162.mp3"
     },
     {
       "t": "narrate",
-      "text": "He had been there for forty minutes."
+      "text": "He had been there for forty minutes.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/163.mp3"
     },
     {
       "t": "narrate",
-      "text": "He had been seen."
+      "text": "He had been seen.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/164.mp3"
     },
     {
       "t": "narrate",
-      "text": "The message had been delivered."
+      "text": "The message had been delivered.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/165.mp3"
     },
     {
       "t": "narrate",
-      "text": "The chariot, drawn by its two horses, kept moving."
+      "text": "The chariot, drawn by its two horses, kept moving.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/166.mp3"
     },
     {
       "t": "narrate",
-      "text": "Antonio D'Ambrosio sat in the hot office above his unfinished restaurant, and, for the first time in eleven years, did not feel certain that he had two speeds."
+      "text": "Antonio D'Ambrosio sat in the hot office above his unfinished restaurant, and, for the first time in eleven years, did not feel certain that he had two speeds.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/167.mp3"
     },
     {
       "t": "narrate",
-      "text": "He felt, briefly and clearly, that he had only one."
+      "text": "He felt, briefly and clearly, that he had only one.",
+      "voice": "assets/audio/voice/vol5_ch7_chariot/168.mp3"
     },
     {
       "t": "narrate",

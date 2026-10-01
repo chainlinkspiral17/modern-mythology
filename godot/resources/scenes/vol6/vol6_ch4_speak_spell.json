@@ -39,23 +39,28 @@
   },
   {
    "t": "narrate",
-   "text": "[panel:vol6_speak_and_spell][shot:insert speak_and_spell~]It is broadcasting now. Its red speaker grille is glowing faintly. Not the ordinary amber of its ordinary LED — a different red, more like the red of the darkroom safelight in Mr. Henderson's converted broom closet across town."
+   "text": "[panel:vol6_speak_and_spell][shot:insert speak_and_spell~]It is broadcasting now. Its red speaker grille is glowing faintly. Not the ordinary amber of its ordinary LED — a different red, more like the red of the darkroom safelight in Mr. Henderson's converted broom closet across town.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/008.mp3"
   },
   {
    "t": "narrate",
-   "text": "The grille is glowing, and the Speak & Spell is producing, in its tinny synthesized child-voice, a sequence of letters. T. R. I. U. M. V. I. R. A. T. E. Triumvirate. Correct. Try again."
+   "text": "The grille is glowing, and the Speak & Spell is producing, in its tinny synthesized child-voice, a sequence of letters. T. R. I. U. M. V. I. R. A. T. E. Triumvirate. Correct. Try again.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/009.mp3"
   },
   {
    "t": "narrate",
-   "text": "A pause. Then: T. R. I. U. M. V. I. R. A. T. E. Triumvirate. Correct. Try again."
+   "text": "A pause. Then: T. R. I. U. M. V. I. R. A. T. E. Triumvirate. Correct. Try again.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/010.mp3"
   },
   {
    "t": "narrate",
-   "text": "Another pause. F. T. says hello. Maya. Hello. Please listen. T. R. I. U. M. V. I. R. A. T. E. Triumvirate. This word is your word. You are becoming a part of it. Three of you in this town. Three more elsewhere. Do not be afraid. You are not the only one."
+   "text": "Another pause. F. T. says hello. Maya. Hello. Please listen. T. R. I. U. M. V. I. R. A. T. E. Triumvirate. This word is your word. You are becoming a part of it. Three of you in this town. Three more elsewhere. Do not be afraid. You are not the only one.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/011.mp3"
   },
   {
    "t": "narrate",
-   "text": "The Speak & Spell falls silent. The grille stops glowing."
+   "text": "The Speak & Spell falls silent. The grille stops glowing.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/012.mp3"
   },
   {
    "t": "show",
@@ -78,74 +83,89 @@
   {
    "t": "say",
    "char": "Rick",
-   "text": "Joneses."
+   "text": "Joneses.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/017.mp3"
   },
   {
    "t": "narrate",
-   "text": "A pause."
+   "text": "A pause.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/018.mp3"
   },
   {
    "t": "say",
    "char": "Frasier",
-   "text": "[shot:closeup person]Rick."
+   "text": "[shot:closeup person]Rick.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/019.mp3"
   },
   {
    "t": "say",
    "char": "Rick",
-   "text": "Your imp just addressed Maya Daigle through a 1978 Speak & Spell in my back office."
+   "text": "Your imp just addressed Maya Daigle through a 1978 Speak & Spell in my back office.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/020.mp3"
   },
   {
    "t": "narrate",
-   "text": "A small amused exhale on the other end."
+   "text": "A small amused exhale on the other end.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/021.mp3"
   },
   {
    "t": "say",
    "char": "Frasier",
-   "text": "[shot:closeup person]Yeah, that'll happen."
+   "text": "[shot:closeup person]Yeah, that'll happen.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/022.mp3"
   },
   {
    "t": "say",
    "char": "Rick",
-   "text": "I thought you were quieter these days."
+   "text": "I thought you were quieter these days.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/023.mp3"
   },
   {
    "t": "say",
    "char": "Frasier",
-   "text": "I am. The imps are — they developed opinions. We've discussed this."
+   "text": "I am. The imps are — they developed opinions. We've discussed this.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/024.mp3"
   },
   {
    "t": "say",
    "char": "Rick",
-   "text": "When did you decide to bring Maya in directly."
+   "text": "When did you decide to bring Maya in directly.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/025.mp3"
   },
   {
    "t": "narrate",
-   "text": "A longer pause. Then the voice — Frasier Temple's voice, which Rick has heard maybe eight times over the past twenty-four years — says:"
+   "text": "A longer pause. Then the voice — Frasier Temple's voice, which Rick has heard maybe eight times over the past twenty-four years — says:",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/026.mp3"
   },
   {
    "t": "say",
    "char": "Frasier",
-   "text": "[shot:closeup person]Rick, honestly? I didn't. The imps did. I think they like her."
+   "text": "[shot:closeup person]Rick, honestly? I didn't. The imps did. I think they like her.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/027.mp3"
   },
   {
    "t": "say",
    "char": "Rick",
-   "text": "[shot:closeup person_b]Jesus, Frasier."
+   "text": "[shot:closeup person_b]Jesus, Frasier.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/028.mp3"
   },
   {
    "t": "say",
    "char": "Frasier",
-   "text": "Yeah. I hear you. I'll have a word with them. It was supposed to be text only until next week. But I'd rather them be affectionate with her than ignore her. She's on her grandmother's frequency already. She can take it."
+   "text": "Yeah. I hear you. I'll have a word with them. It was supposed to be text only until next week. But I'd rather them be affectionate with her than ignore her. She's on her grandmother's frequency already. She can take it.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/029.mp3"
   },
   {
    "t": "say",
    "char": "Rick",
-   "text": "She's going to freak out."
+   "text": "She's going to freak out.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/030.mp3"
   },
   {
    "t": "say",
    "char": "Frasier",
-   "text": "Ask her how freaked out she is."
+   "text": "Ask her how freaked out she is.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/031.mp3"
   },
   {
    "t": "narrate",
@@ -158,85 +178,102 @@
   {
    "t": "say",
    "char": "Rick",
-   "text": "She's not freaked out. She's charmed."
+   "text": "She's not freaked out. She's charmed.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/034.mp3"
   },
   {
    "t": "say",
    "char": "Frasier",
-   "text": "There you go."
+   "text": "There you go.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/035.mp3"
   },
   {
    "t": "say",
    "char": "Rick",
-   "text": "Frasier."
+   "text": "Frasier.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/036.mp3"
   },
   {
    "t": "say",
    "char": "Frasier",
-   "text": "Yeah."
+   "text": "Yeah.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/037.mp3"
   },
   {
    "t": "say",
    "char": "Rick",
-   "text": "Are you okay."
+   "text": "Are you okay.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/038.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup rick]A long silence. Then Frasier says, in a quieter voice:"
+   "text": "[shot:closeup rick]A long silence. Then Frasier says, in a quieter voice:",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/039.mp3"
   },
   {
    "t": "say",
    "char": "Frasier",
-   "text": "I'm okay, Rick. I'm getting older. The cathedral's a lot of building for one guy to run. But I'm okay."
+   "text": "I'm okay, Rick. I'm getting older. The cathedral's a lot of building for one guy to run. But I'm okay.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/040.mp3"
   },
   {
    "t": "say",
    "char": "Rick",
-   "text": "Come visit."
+   "text": "Come visit.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/041.mp3"
   },
   {
    "t": "say",
    "char": "Frasier",
-   "text": "I can't."
+   "text": "I can't.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/042.mp3"
   },
   {
    "t": "say",
    "char": "Rick",
-   "text": "Why."
+   "text": "Why.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/043.mp3"
   },
   {
    "t": "say",
    "char": "Frasier",
-   "text": "[shot:closeup person]Rick. You know why."
+   "text": "[shot:closeup person]Rick. You know why.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/044.mp3"
   },
   {
    "t": "narrate",
-   "text": "Rick does know why."
+   "text": "Rick does know why.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/045.mp3"
   },
   {
    "t": "say",
    "char": "Rick",
-   "text": "Yeah. I know."
+   "text": "Yeah. I know.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/046.mp3"
   },
   {
    "t": "say",
    "char": "Frasier",
-   "text": "Take care of her for me. And take care of yourself. The storm's going to get worse."
+   "text": "Take care of her for me. And take care of yourself. The storm's going to get worse.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/047.mp3"
   },
   {
    "t": "say",
    "char": "Rick",
-   "text": "Frasier."
+   "text": "Frasier.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/048.mp3"
   },
   {
    "t": "say",
    "char": "Frasier",
-   "text": "Yeah."
+   "text": "Yeah.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/049.mp3"
   },
   {
    "t": "say",
    "char": "Rick",
-   "text": "[shot:closeup person_b]Is the kid — is the Ramos kid —"
+   "text": "[shot:closeup person_b]Is the kid — is the Ramos kid —",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/050.mp3"
   },
   {
    "t": "say",
@@ -251,30 +288,36 @@
   {
    "t": "say",
    "char": "Rick",
-   "text": "Rick's hands on the door."
+   "text": "Rick's hands on the door.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/053.mp3"
   },
   {
    "t": "say",
    "char": "Frasier",
-   "text": "Yeah. If any of the wrong kind of men walk into your shop in the next forty-eight hours, you lock the back before they get there. You don't engage. You call the sedan. You hear me."
+   "text": "Yeah. If any of the wrong kind of men walk into your shop in the next forty-eight hours, you lock the back before they get there. You don't engage. You call the sedan. You hear me.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/054.mp3"
   },
   {
    "t": "say",
    "char": "Rick",
-   "text": "I hear you."
+   "text": "I hear you.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/055.mp3"
   },
   {
    "t": "say",
    "char": "Frasier",
-   "text": "[shot:closeup person]Good. I have to go. One of my Demons has decided today is its birthday and is attempting to order a cake. I've got to dissuade it."
+   "text": "[shot:closeup person]Good. I have to go. One of my Demons has decided today is its birthday and is attempting to order a cake. I've got to dissuade it.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/056.mp3"
   },
   {
    "t": "narrate",
-   "text": "Click."
+   "text": "Click.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/057.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]Rick sits at his desk for a long moment with the phone in his hand. Then he gets up. He goes to the front of the shop."
+   "text": "[shot:establish]Rick sits at his desk for a long moment with the phone in his hand. Then he gets up. He goes to the front of the shop.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/058.mp3"
   },
   {
    "t": "bg",
@@ -294,66 +337,79 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup maya]Maya looks up from her book."
+   "text": "[shot:closeup maya]Maya looks up from her book.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/062.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
-   "text": "Rick."
+   "text": "Rick.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/063.mp3"
   },
   {
    "t": "say",
    "char": "Rick",
-   "text": "Yeah, kiddo."
+   "text": "Yeah, kiddo.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/064.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
-   "text": "Was that you."
+   "text": "Was that you.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/065.mp3"
   },
   {
    "t": "say",
    "char": "Rick",
-   "text": "Was what me."
+   "text": "Was what me.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/066.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
-   "text": "The Speak & Spell."
+   "text": "The Speak & Spell.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/067.mp3"
   },
   {
    "t": "narrate",
-   "text": "He pauses."
+   "text": "He pauses.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/068.mp3"
   },
   {
    "t": "say",
    "char": "Rick",
-   "text": "[shot:closeup person]Not me, no. But a friend of mine. He says hi. He says he's sorry it was weird. He says he was trying to be — quote — affectionate."
+   "text": "[shot:closeup person]Not me, no. But a friend of mine. He says hi. He says he's sorry it was weird. He says he was trying to be — quote — affectionate.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/069.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
-   "text": "I liked it."
+   "text": "I liked it.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/070.mp3"
   },
   {
    "t": "say",
    "char": "Rick",
-   "text": "I told him you did."
+   "text": "I told him you did.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/071.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
-   "text": "Rick."
+   "text": "Rick.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/072.mp3"
   },
   {
    "t": "say",
    "char": "Rick",
-   "text": "Yeah."
+   "text": "Yeah.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/073.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
-   "text": "[shot:closeup person_b]Who is he."
+   "text": "[shot:closeup person_b]Who is he.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/074.mp3"
   },
   {
    "t": "show",
@@ -374,7 +430,8 @@
   {
    "t": "say",
    "char": "Maya",
-   "text": "Does he know Diego."
+   "text": "Does he know Diego.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/078.mp3"
   },
   {
    "t": "say",
@@ -394,16 +451,19 @@
   {
    "t": "say",
    "char": "Maya",
-   "text": "Opinions."
+   "text": "Opinions.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/082.mp3"
   },
   {
    "t": "say",
    "char": "Rick",
-   "text": "Opinions. Yes. I know how that sounds."
+   "text": "Opinions. Yes. I know how that sounds.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/083.mp3"
   },
   {
    "t": "narrate",
-   "text": "Maya closes her book."
+   "text": "Maya closes her book.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/084.mp3"
   },
   {
    "t": "show",
@@ -414,7 +474,8 @@
   {
    "t": "say",
    "char": "Maya",
-   "text": "[shot:closeup person_b]Rick. Is Frasier — is he well."
+   "text": "[shot:closeup person_b]Rick. Is Frasier — is he well.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/086.mp3"
   },
   {
    "t": "show",
@@ -435,16 +496,19 @@
   {
    "t": "say",
    "char": "Maya",
-   "text": "Oh."
+   "text": "Oh.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/090.mp3"
   },
   {
    "t": "narrate",
-   "text": "She looks at the floor."
+   "text": "She looks at the floor.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/091.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
-   "text": "[beat:still]Can we — can we help him. Sometime. After this."
+   "text": "[beat:still]Can we — can we help him. Sometime. After this.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/092.mp3"
   },
   {
    "t": "show",
@@ -454,26 +518,31 @@
   },
   {
    "t": "narrate",
-   "text": "Rick smiles — a small tired smile."
+   "text": "Rick smiles — a small tired smile.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/094.mp3"
   },
   {
    "t": "say",
    "char": "Rick",
-   "text": "Yeah, kid. I've been meaning to. I have not, yet, figured out how. Maybe you will. You're a Daigle. Your dad had a way of getting into that warehouse. Maybe you will."
+   "text": "Yeah, kid. I've been meaning to. I have not, yet, figured out how. Maybe you will. You're a Daigle. Your dad had a way of getting into that warehouse. Maybe you will.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/095.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
-   "text": "Okay."
+   "text": "Okay.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/096.mp3"
   },
   {
    "t": "say",
    "char": "Rick",
-   "text": "Okay."
+   "text": "Okay.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/097.mp3"
   },
   {
    "t": "narrate",
-   "text": "The bell over the door chimes. A customer comes in. Mrs. Delacroix, mid-sixties, buys a new Archie collection every Wednesday, tips Maya fifty cents each time. Maya resumes her counter face. Rick returns to the office."
+   "text": "The bell over the door chimes. A customer comes in. Mrs. Delacroix, mid-sixties, buys a new Archie collection every Wednesday, tips Maya fifty cents each time. Maya resumes her counter face. Rick returns to the office.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/098.mp3"
   },
   {
    "t": "hide",
@@ -489,11 +558,13 @@
   },
   {
    "t": "narrate",
-   "text": "The Speak & Spell sits on its shelf, red grille dim, small crack in the corner, quiet. It does not, today, broadcast again. It does, at three PM, faintly hum — on and off — in a rhythm Maya, at the counter, will hear and will recognize as affection."
+   "text": "The Speak & Spell sits on its shelf, red grille dim, small crack in the corner, quiet. It does not, today, broadcast again. It does, at three PM, faintly hum — on and off — in a rhythm Maya, at the counter, will hear and will recognize as affection.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/102.mp3"
   },
   {
    "t": "narrate",
-   "text": "She will, without being able to explain why, put her hand on the counter in the direction of the back office and spread her fingers. The Speak & Spell, through the wall, will fall still. It will, Rick will later confirm, fall still smiling."
+   "text": "She will, without being able to explain why, put her hand on the counter in the direction of the back office and spread her fingers. The Speak & Spell, through the wall, will fall still. It will, Rick will later confirm, fall still smiling.",
+   "voice": "assets/audio/voice/vol6_ch4_speak_spell/103.mp3"
   },
   {
    "t": "jump",

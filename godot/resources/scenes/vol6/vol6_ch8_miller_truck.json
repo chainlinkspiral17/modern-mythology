@@ -29,11 +29,13 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2][mood:dawn_warm]The truck has been on the highway for nineteen minutes."
+      "text": "[trip:1.2][mood:dawn_warm]The truck has been on the highway for nineteen minutes.",
+      "voice": "assets/audio/voice/vol6_ch8_miller_truck/005.mp3"
     },
     {
       "t": "narrate",
-      "text": "The sky over the median is the particular pre-dawn blue Texas does in late May — not yet light, no longer dark, the color that lives for about eight minutes between the two and that Sam Miller has, in seventeen years, not, until this morning, been awake to see from the cab of her father's truck."
+      "text": "The sky over the median is the particular pre-dawn blue Texas does in late May — not yet light, no longer dark, the color that lives for about eight minutes between the two and that Sam Miller has, in seventeen years, not, until this morning, been awake to see from the cab of her father's truck.",
+      "voice": "assets/audio/voice/vol6_ch8_miller_truck/006.mp3"
     },
     {
       "t": "show",
@@ -43,7 +45,8 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup miller]Her father is at the wheel."
+      "text": "[shot:closeup miller]Her father is at the wheel.",
+      "voice": "assets/audio/voice/vol6_ch8_miller_truck/008.mp3"
     },
     {
       "t": "show",
@@ -53,15 +56,18 @@
     },
     {
       "t": "narrate",
-      "text": "She is in the passenger seat with a thermos of coffee her mother had made at five and a denim jacket on her lap that the AC is, despite it being May, running cold enough for her to need."
+      "text": "She is in the passenger seat with a thermos of coffee her mother had made at five and a denim jacket on her lap that the AC is, despite it being May, running cold enough for her to need.",
+      "voice": "assets/audio/voice/vol6_ch8_miller_truck/010.mp3"
     },
     {
       "t": "narrate",
-      "text": "The radio is off."
+      "text": "The radio is off.",
+      "voice": "assets/audio/voice/vol6_ch8_miller_truck/011.mp3"
     },
     {
       "t": "narrate",
-      "text": "They have not, since pulling out of the driveway, spoken."
+      "text": "They have not, since pulling out of the driveway, spoken.",
+      "voice": "assets/audio/voice/vol6_ch8_miller_truck/012.mp3"
     },
     {
       "t": "think",
@@ -86,108 +92,127 @@
     {
       "t": "think",
       "char": "Sam",
-      "text": "She is, she realizes, comforted by it."
+      "text": "She is, she realizes, comforted by it.",
+      "voice": "assets/audio/voice/vol6_ch8_miller_truck/017.mp3"
     },
     {
       "t": "think",
       "char": "Sam",
-      "text": "She had not expected, this morning, to be comforted by anything."
+      "text": "She had not expected, this morning, to be comforted by anything.",
+      "voice": "assets/audio/voice/vol6_ch8_miller_truck/018.mp3"
     },
     {
       "t": "narrate",
-      "text": "At 06:14 her father reaches across the console without taking his eyes off the road and adjusts the AC down two clicks."
+      "text": "At 06:14 her father reaches across the console without taking his eyes off the road and adjusts the AC down two clicks.",
+      "voice": "assets/audio/voice/vol6_ch8_miller_truck/019.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "text": "[shot:closeup person]Cold?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_miller_truck/020.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "A little.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_miller_truck/021.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "text": "[shot:closeup person]I always run it too cold.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_miller_truck/022.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "I know.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_miller_truck/023.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "text": "Sorry, Sammy.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_miller_truck/024.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "It's okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_miller_truck/025.mp3"
     },
     {
       "t": "narrate",
-      "text": "She unfolds the jacket. She puts it on."
+      "text": "She unfolds the jacket. She puts it on.",
+      "voice": "assets/audio/voice/vol6_ch8_miller_truck/026.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "text": "You sleep okay?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_miller_truck/027.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Yeah. You?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_miller_truck/028.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "text": "No.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_miller_truck/029.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Me either, then.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_miller_truck/030.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup miller]He laughs — a small surprised exhale of a laugh."
+      "text": "[shot:closeup miller]He laughs — a small surprised exhale of a laugh.",
+      "voice": "assets/audio/voice/vol6_ch8_miller_truck/031.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "text": "Sammy.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_miller_truck/032.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_miller_truck/033.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "text": "Thanks for coming this morning.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_miller_truck/034.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Yeah, Dad.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_miller_truck/035.mp3"
     },
     {
       "t": "narrate",

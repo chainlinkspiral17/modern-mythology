@@ -57,15 +57,18 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2][shot:establish~]The room has no windows."
+      "text": "[trip:1.2][shot:establish~]The room has no windows.",
+      "voice": "assets/audio/voice/vol6_ch9_room/011.mp3"
     },
     {
       "t": "narrate",
-      "text": "The room has one fluorescent overhead, set behind a wire cage. The cage is, he thinks, less to protect the bulb than to protect the room from him."
+      "text": "The room has one fluorescent overhead, set behind a wire cage. The cage is, he thinks, less to protect the bulb than to protect the room from him.",
+      "voice": "assets/audio/voice/vol6_ch9_room/012.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert bulb]The bulb hums."
+      "text": "[shot:insert bulb]The bulb hums.",
+      "voice": "assets/audio/voice/vol6_ch9_room/013.mp3"
     },
     {
       "t": "narrate",
@@ -77,15 +80,18 @@
     },
     {
       "t": "narrate",
-      "text": "He is, he understands, inside the network now."
+      "text": "He is, he understands, inside the network now.",
+      "voice": "assets/audio/voice/vol6_ch9_room/016.mp3"
     },
     {
       "t": "narrate",
-      "text": "He is not, he understands, going to be allowed to leave."
+      "text": "He is not, he understands, going to be allowed to leave.",
+      "voice": "assets/audio/voice/vol6_ch9_room/017.mp3"
     },
     {
       "t": "narrate",
-      "text": "He does not, in the room, know what day it is."
+      "text": "He does not, in the room, know what day it is.",
+      "voice": "assets/audio/voice/vol6_ch9_room/018.mp3"
     },
     {
       "t": "narrate",
@@ -97,11 +103,13 @@
     },
     {
       "t": "narrate",
-      "text": "He drinks the water."
+      "text": "He drinks the water.",
+      "voice": "assets/audio/voice/vol6_ch9_room/021.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]The water tastes faintly of the substation hum. He does not know how water can taste of a hum. But it does."
+      "text": "[shot:establish]The water tastes faintly of the substation hum. He does not know how water can taste of a hum. But it does.",
+      "voice": "assets/audio/voice/vol6_ch9_room/022.mp3"
     },
     {
       "t": "hide",
@@ -121,29 +129,35 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup boyd]The man comes in."
+      "text": "[shot:closeup boyd]The man comes in.",
+      "voice": "assets/audio/voice/vol6_ch9_room/026.mp3"
     },
     {
       "t": "narrate",
-      "text": "The man is named Boyd."
+      "text": "The man is named Boyd.",
+      "voice": "assets/audio/voice/vol6_ch9_room/027.mp3"
     },
     {
       "t": "narrate",
-      "text": "He learns the man's name because Boyd, when he comes in, says — to the camera in the upper corner of the room, not to Diego — Boyd, present, beginning interview seventeen."
+      "text": "He learns the man's name because Boyd, when he comes in, says — to the camera in the upper corner of the room, not to Diego — Boyd, present, beginning interview seventeen.",
+      "voice": "assets/audio/voice/vol6_ch9_room/028.mp3"
     },
     {
       "t": "think",
       "char": "Diego",
-      "text": "Seventeen."
+      "text": "Seventeen.",
+      "voice": "assets/audio/voice/vol6_ch9_room/029.mp3"
     },
     {
       "t": "think",
       "char": "Diego",
-      "text": "I have been here longer than I think."
+      "text": "I have been here longer than I think.",
+      "voice": "assets/audio/voice/vol6_ch9_room/030.mp3"
     },
     {
       "t": "narrate",
-      "text": "Boyd sits in the chair across from him. Boyd is smaller than Diego. Boyd's hands are smaller than Diego's hands. Boyd is, in some specific physical sense, not the man Diego had imagined would come into a room like this."
+      "text": "Boyd sits in the chair across from him. Boyd is smaller than Diego. Boyd's hands are smaller than Diego's hands. Boyd is, in some specific physical sense, not the man Diego had imagined would come into a room like this.",
+      "voice": "assets/audio/voice/vol6_ch9_room/031.mp3"
     },
     {
       "t": "narrate",
@@ -155,35 +169,43 @@
     },
     {
       "t": "narrate",
-      "text": "Diego had, that morning, said to Skip: what are you doing. Skip had said: nothing, kid. Diego had said: Skip you are filming me. Skip had said: go finish stocking the cooler."
+      "text": "Diego had, that morning, said to Skip: what are you doing. Skip had said: nothing, kid. Diego had said: Skip you are filming me. Skip had said: go finish stocking the cooler.",
+      "voice": "assets/audio/voice/vol6_ch9_room/034.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Diego had finished stocking the cooler."
+      "text": "[shot:establish]Diego had finished stocking the cooler.",
+      "voice": "assets/audio/voice/vol6_ch9_room/035.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Diego had clocked out."
+      "text": "[shot:establish]Diego had clocked out.",
+      "voice": "assets/audio/voice/vol6_ch9_room/036.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego had driven home."
+      "text": "Diego had driven home.",
+      "voice": "assets/audio/voice/vol6_ch9_room/037.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego had, in his bed at nine-thirty, kissed his grandmother goodnight and told her he loved her — which he had not, on a Saturday, normally said, but which he had needed, on this particular Saturday, to say."
+      "text": "Diego had, in his bed at nine-thirty, kissed his grandmother goodnight and told her he loved her — which he had not, on a Saturday, normally said, but which he had needed, on this particular Saturday, to say.",
+      "voice": "assets/audio/voice/vol6_ch9_room/038.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert wall~]Diego had, at eleven-fifty-two PM, heard a knock at his window."
+      "text": "[shot:insert wall~]Diego had, at eleven-fifty-two PM, heard a knock at his window.",
+      "voice": "assets/audio/voice/vol6_ch9_room/039.mp3"
     },
     {
       "t": "narrate",
-      "text": "The knock had been quiet."
+      "text": "The knock had been quiet.",
+      "voice": "assets/audio/voice/vol6_ch9_room/040.mp3"
     },
     {
       "t": "narrate",
-      "text": "The knock had been from the man who would, two hours later, be Boyd."
+      "text": "The knock had been from the man who would, two hours later, be Boyd.",
+      "voice": "assets/audio/voice/vol6_ch9_room/041.mp3"
     },
     {
       "t": "hide",
@@ -207,81 +229,99 @@
     },
     {
       "t": "narrate",
-      "text": "Boyd had said, through the window: kid. come outside. there is a problem with one of the trucks at the station. they need you to come look at it."
+      "text": "Boyd had said, through the window: kid. come outside. there is a problem with one of the trucks at the station. they need you to come look at it.",
+      "voice": "assets/audio/voice/vol6_ch9_room/046.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "[shot:closeup person]I am not on shift.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_room/047.mp3"
     },
     {
       "t": "narrate",
-      "text": "Boyd had said: kid. come outside."
+      "text": "Boyd had said: kid. come outside.",
+      "voice": "assets/audio/voice/vol6_ch9_room/048.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup diego]Diego had, in the small steady moment of recognizing that the request was not, in fact, a request, looked at Boyd."
+      "text": "[shot:closeup diego]Diego had, in the small steady moment of recognizing that the request was not, in fact, a request, looked at Boyd.",
+      "voice": "assets/audio/voice/vol6_ch9_room/049.mp3"
     },
     {
       "t": "narrate",
-      "text": "He had recognized Boyd."
+      "text": "He had recognized Boyd.",
+      "voice": "assets/audio/voice/vol6_ch9_room/050.mp3"
     },
     {
       "t": "narrate",
-      "text": "Boyd was one of the men he had been writing the red dots against."
+      "text": "Boyd was one of the men he had been writing the red dots against.",
+      "voice": "assets/audio/voice/vol6_ch9_room/051.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego had, in that recognition, understood three things at once:"
+      "text": "Diego had, in that recognition, understood three things at once:",
+      "voice": "assets/audio/voice/vol6_ch9_room/052.mp3"
     },
     {
       "t": "narrate",
-      "text": "One: he was not, after this moment, going to be allowed to be the person he had been before this moment."
+      "text": "One: he was not, after this moment, going to be allowed to be the person he had been before this moment.",
+      "voice": "assets/audio/voice/vol6_ch9_room/053.mp3"
     },
     {
       "t": "narrate",
-      "text": "Two: his grandmother was, two doors away, asleep, and he was not, under any condition, going to bring this man into the same house as his grandmother."
+      "text": "Two: his grandmother was, two doors away, asleep, and he was not, under any condition, going to bring this man into the same house as his grandmother.",
+      "voice": "assets/audio/voice/vol6_ch9_room/054.mp3"
     },
     {
       "t": "narrate",
-      "text": "Three: the truck — his truck, his red pickup, his — was the only thing he could give them that would not be either his grandmother or himself."
+      "text": "Three: the truck — his truck, his red pickup, his — was the only thing he could give them that would not be either his grandmother or himself.",
+      "voice": "assets/audio/voice/vol6_ch9_room/055.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Let me get my keys. I will drive.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_room/056.mp3"
     },
     {
       "t": "say",
       "char": "Boyd",
       "text": "[shot:closeup person_b]Good kid.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_room/057.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego had, from the window, said I love you, abuela into the dark of his bedroom — quietly enough that his grandmother, two doors away, would not, he hoped, hear, but loud enough that he, himself, would, in the room he was about to be taken to, remember he had said it."
+      "text": "Diego had, from the window, said I love you, abuela into the dark of his bedroom — quietly enough that his grandmother, two doors away, would not, he hoped, hear, but loud enough that he, himself, would, in the room he was about to be taken to, remember he had said it.",
+      "voice": "assets/audio/voice/vol6_ch9_room/058.mp3"
     },
     {
       "t": "narrate",
-      "text": "He had gotten his keys."
+      "text": "He had gotten his keys.",
+      "voice": "assets/audio/voice/vol6_ch9_room/059.mp3"
     },
     {
       "t": "narrate",
-      "text": "He had walked out the front door."
+      "text": "He had walked out the front door.",
+      "voice": "assets/audio/voice/vol6_ch9_room/060.mp3"
     },
     {
       "t": "narrate",
-      "text": "He had driven the truck off the property himself, with Boyd in the passenger seat, in the third gear that Boyd's grandmother heard from her window and that was, he had known even then, going to be the small specific sound that would tell her he was not the one driving."
+      "text": "He had driven the truck off the property himself, with Boyd in the passenger seat, in the third gear that Boyd's grandmother heard from her window and that was, he had known even then, going to be the small specific sound that would tell her he was not the one driving.",
+      "voice": "assets/audio/voice/vol6_ch9_room/061.mp3"
     },
     {
       "t": "narrate",
-      "text": "He had, in some final part of himself, hoped she would hear it."
+      "text": "He had, in some final part of himself, hoped she would hear it.",
+      "voice": "assets/audio/voice/vol6_ch9_room/062.mp3"
     },
     {
       "t": "narrate",
-      "text": "She had heard it."
+      "text": "She had heard it.",
+      "voice": "assets/audio/voice/vol6_ch9_room/063.mp3"
     },
     {
       "t": "hide",
@@ -305,37 +345,45 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Boyd, in the room, asks him questions."
+      "text": "[shot:establish]Boyd, in the room, asks him questions.",
+      "voice": "assets/audio/voice/vol6_ch9_room/068.mp3"
     },
     {
       "t": "narrate",
-      "text": "The questions are about the calendar."
+      "text": "The questions are about the calendar.",
+      "voice": "assets/audio/voice/vol6_ch9_room/069.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert calendar]Boyd has the calendar. Boyd has it open on the table between them. The page is May. May has eleven red dots."
+      "text": "[shot:insert calendar]Boyd has the calendar. Boyd has it open on the table between them. The page is May. May has eleven red dots.",
+      "voice": "assets/audio/voice/vol6_ch9_room/070.mp3"
     },
     {
       "t": "narrate",
-      "text": "Boyd points at the eleven red dots."
+      "text": "Boyd points at the eleven red dots.",
+      "voice": "assets/audio/voice/vol6_ch9_room/071.mp3"
     },
     {
       "t": "say",
       "char": "Boyd",
       "text": "Kid. Each of these dots is a shift. Each of these dots is a shift on which something happened at the gas station. Tell me what happened on each shift.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_room/072.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego does not, immediately, answer."
+      "text": "Diego does not, immediately, answer.",
+      "voice": "assets/audio/voice/vol6_ch9_room/073.mp3"
     },
     {
       "t": "narrate",
-      "text": "Boyd waits."
+      "text": "Boyd waits.",
+      "voice": "assets/audio/voice/vol6_ch9_room/074.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup boyd]Boyd, after a long minute, hits him."
+      "text": "[shot:closeup boyd]Boyd, after a long minute, hits him.",
+      "voice": "assets/audio/voice/vol6_ch9_room/075.mp3"
     },
     {
       "t": "narrate",
@@ -347,32 +395,39 @@
     },
     {
       "t": "narrate",
-      "text": "Each time, Boyd asks the same question."
+      "text": "Each time, Boyd asks the same question.",
+      "voice": "assets/audio/voice/vol6_ch9_room/078.mp3"
     },
     {
       "t": "narrate",
-      "text": "Each time, Diego — eventually — answers a piece of it."
+      "text": "Each time, Diego — eventually — answers a piece of it.",
+      "voice": "assets/audio/voice/vol6_ch9_room/079.mp3"
     },
     {
       "t": "narrate",
-      "text": "Each piece is, Diego is aware, more than he should give. Each piece is also, Diego is aware, less than Boyd is asking for."
+      "text": "Each piece is, Diego is aware, more than he should give. Each piece is also, Diego is aware, less than Boyd is asking for.",
+      "voice": "assets/audio/voice/vol6_ch9_room/080.mp3"
     },
     {
       "t": "think",
       "char": "Diego",
-      "text": "Enough that Boyd believes Diego is being broken. Not enough that Boyd believes Diego is, in fact, broken."
+      "text": "Enough that Boyd believes Diego is being broken. Not enough that Boyd believes Diego is, in fact, broken.",
+      "voice": "assets/audio/voice/vol6_ch9_room/081.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego has been doing this math, in his head, since approximately the second hit."
+      "text": "Diego has been doing this math, in his head, since approximately the second hit.",
+      "voice": "assets/audio/voice/vol6_ch9_room/082.mp3"
     },
     {
       "t": "narrate",
-      "text": "He does not know whether the math is working."
+      "text": "He does not know whether the math is working.",
+      "voice": "assets/audio/voice/vol6_ch9_room/083.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He hopes it is."
+      "text": "[shot:establish]He hopes it is.",
+      "voice": "assets/audio/voice/vol6_ch9_room/084.mp3"
     },
     {
       "t": "hide",
@@ -390,11 +445,13 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:arcana][shot:insert device]There is a thing in the wall."
+      "text": "[mood:arcana][shot:insert device]There is a thing in the wall.",
+      "voice": "assets/audio/voice/vol6_ch9_room/088.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego sees it on the third day."
+      "text": "Diego sees it on the third day.",
+      "voice": "assets/audio/voice/vol6_ch9_room/089.mp3"
     },
     {
       "t": "narrate",
@@ -402,70 +459,86 @@
     },
     {
       "t": "narrate",
-      "text": "It is a small black device, the size of a deck of cards, with a single red LED that is not, technically, on, but that is glowing — faintly, in a register Diego is increasingly able to see — at the same frequency as the bulb in the cage and the water and Boyd's eyes."
+      "text": "It is a small black device, the size of a deck of cards, with a single red LED that is not, technically, on, but that is glowing — faintly, in a register Diego is increasingly able to see — at the same frequency as the bulb in the cage and the water and Boyd's eyes.",
+      "voice": "assets/audio/voice/vol6_ch9_room/091.mp3"
     },
     {
       "t": "narrate",
-      "text": "He understands, looking at it, that the device is the network. The device is the thing that is, in this room, the listener. Boyd is, in some sense, just the hand the listener uses."
+      "text": "He understands, looking at it, that the device is the network. The device is the thing that is, in this room, the listener. Boyd is, in some sense, just the hand the listener uses.",
+      "voice": "assets/audio/voice/vol6_ch9_room/092.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup diego]Diego, on the third day, stares at the device for a long time."
+      "text": "[shot:closeup diego]Diego, on the third day, stares at the device for a long time.",
+      "voice": "assets/audio/voice/vol6_ch9_room/093.mp3"
     },
     {
       "t": "think",
       "char": "Diego",
-      "text": "I see you."
+      "text": "I see you.",
+      "voice": "assets/audio/voice/vol6_ch9_room/094.mp3"
     },
     {
       "t": "narrate",
-      "text": "[beat:chill]The device — Diego will swear this later, will write it in the spiral notebook, will not, even in the writing, be fully able to convince himself it had really happened — pulses, once, in response."
+      "text": "[beat:chill]The device — Diego will swear this later, will write it in the spiral notebook, will not, even in the writing, be fully able to convince himself it had really happened — pulses, once, in response.",
+      "voice": "assets/audio/voice/vol6_ch9_room/095.mp3"
     },
     {
       "t": "narrate",
-      "text": "The pulse is not aggression."
+      "text": "The pulse is not aggression.",
+      "voice": "assets/audio/voice/vol6_ch9_room/096.mp3"
     },
     {
       "t": "narrate",
-      "text": "The pulse is — Diego struggles to name it."
+      "text": "The pulse is — Diego struggles to name it.",
+      "voice": "assets/audio/voice/vol6_ch9_room/097.mp3"
     },
     {
       "t": "narrate",
-      "text": "The pulse is acknowledgment."
+      "text": "The pulse is acknowledgment.",
+      "voice": "assets/audio/voice/vol6_ch9_room/098.mp3"
     },
     {
       "t": "think",
       "char": "Diego",
-      "text": "You are not, today, the one watching me."
+      "text": "You are not, today, the one watching me.",
+      "voice": "assets/audio/voice/vol6_ch9_room/099.mp3"
     },
     {
       "t": "think",
       "char": "Diego",
-      "text": "You are something else's eyes."
+      "text": "You are something else's eyes.",
+      "voice": "assets/audio/voice/vol6_ch9_room/100.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert device]The device pulses again."
+      "text": "[shot:insert device]The device pulses again.",
+      "voice": "assets/audio/voice/vol6_ch9_room/101.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego closes his own eyes."
+      "text": "Diego closes his own eyes.",
+      "voice": "assets/audio/voice/vol6_ch9_room/102.mp3"
     },
     {
       "t": "narrate",
-      "text": "He sleeps."
+      "text": "He sleeps.",
+      "voice": "assets/audio/voice/vol6_ch9_room/103.mp3"
     },
     {
       "t": "narrate",
-      "text": "He sleeps in patches. The bulb in the cage stays on. The bulb has not, in the duration of his stay, been turned off. He sleeps when he can, in the small amounts the bulb permits."
+      "text": "He sleeps in patches. The bulb in the cage stays on. The bulb has not, in the duration of his stay, been turned off. He sleeps when he can, in the small amounts the bulb permits.",
+      "voice": "assets/audio/voice/vol6_ch9_room/104.mp3"
     },
     {
       "t": "narrate",
-      "text": "In one of the sleeps, he dreams."
+      "text": "In one of the sleeps, he dreams.",
+      "voice": "assets/audio/voice/vol6_ch9_room/105.mp3"
     },
     {
       "t": "narrate",
-      "text": "In the dream he is back at the Gas & Go. It is night. He is alone behind the counter. The lot is empty."
+      "text": "In the dream he is back at the Gas & Go. It is night. He is alone behind the counter. The lot is empty.",
+      "voice": "assets/audio/voice/vol6_ch9_room/106.mp3"
     },
     {
       "t": "hide",
@@ -485,63 +558,75 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:dream_blur][shot:closeup sam]Sam comes in."
+      "text": "[mood:dream_blur][shot:closeup sam]Sam comes in.",
+      "voice": "assets/audio/voice/vol6_ch9_room/110.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam is wearing her Kwik Stop apron."
+      "text": "Sam is wearing her Kwik Stop apron.",
+      "voice": "assets/audio/voice/vol6_ch9_room/111.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Diego. I know where you are. You don't have to be afraid.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_room/112.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Sam. I am afraid.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch9_room/113.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "You can be afraid and not have to be alone in it. I am here. The others are coming.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_room/114.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "[shot:closeup person]Who are the others.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_room/115.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "You don't know them yet. You will. They are good. The biggest one will lift you. The one with glasses will make you laugh. The musician will give you songs. Be ready.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_room/116.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego, in the dream, weeps."
+      "text": "Diego, in the dream, weeps.",
+      "voice": "assets/audio/voice/vol6_ch9_room/117.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam, in the dream, leans across the counter and presses her palm against his forehead — the way she had, once, on a cold night in February, pressed her palm against his forehead at her car window when she had picked him up at the end of his shift and had made the small joke about him being feverish."
+      "text": "Sam, in the dream, leans across the counter and presses her palm against his forehead — the way she had, once, on a cold night in February, pressed her palm against his forehead at her car window when she had picked him up at the end of his shift and had made the small joke about him being feverish.",
+      "voice": "assets/audio/voice/vol6_ch9_room/118.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "We are coming, mi vida.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_room/119.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego, in the dream, falls into the touch."
+      "text": "Diego, in the dream, falls into the touch.",
+      "voice": "assets/audio/voice/vol6_ch9_room/120.mp3"
     },
     {
       "t": "narrate",
-      "text": "[mood:night][shot:establish]Diego wakes."
+      "text": "[mood:night][shot:establish]Diego wakes.",
+      "voice": "assets/audio/voice/vol6_ch9_room/121.mp3"
     },
     {
       "t": "hide",
@@ -559,35 +644,43 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert device]The bulb hums. The room is the same. The wall device, in its corner, pulses once."
+      "text": "[shot:insert device]The bulb hums. The room is the same. The wall device, in its corner, pulses once.",
+      "voice": "assets/audio/voice/vol6_ch9_room/125.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego, in the room, registers — with a small brave clarity that is not, he thinks, his own — that the dream had been, in some way, delivered."
+      "text": "Diego, in the room, registers — with a small brave clarity that is not, he thinks, his own — that the dream had been, in some way, delivered.",
+      "voice": "assets/audio/voice/vol6_ch9_room/126.mp3"
     },
     {
       "t": "narrate",
-      "text": "He does not, at the time, have a word for the delivery system."
+      "text": "He does not, at the time, have a word for the delivery system.",
+      "voice": "assets/audio/voice/vol6_ch9_room/127.mp3"
     },
     {
       "t": "narrate",
-      "text": "He will, when he is recovered enough to learn the word from Maya, learn it."
+      "text": "He will, when he is recovered enough to learn the word from Maya, learn it.",
+      "voice": "assets/audio/voice/vol6_ch9_room/128.mp3"
     },
     {
       "t": "narrate",
-      "text": "The word is imp."
+      "text": "The word is imp.",
+      "voice": "assets/audio/voice/vol6_ch9_room/129.mp3"
     },
     {
       "t": "narrate",
-      "text": "The imp had come to him on the third night."
+      "text": "The imp had come to him on the third night.",
+      "voice": "assets/audio/voice/vol6_ch9_room/130.mp3"
     },
     {
       "t": "narrate",
-      "text": "The imp had brought him Sam."
+      "text": "The imp had brought him Sam.",
+      "voice": "assets/audio/voice/vol6_ch9_room/131.mp3"
     },
     {
       "t": "narrate",
-      "text": "The imp had, in some small unkillable way, kept him."
+      "text": "The imp had, in some small unkillable way, kept him.",
+      "voice": "assets/audio/voice/vol6_ch9_room/132.mp3"
     },
     {
       "t": "hide",
@@ -607,19 +700,23 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]On the fifth day, Boyd comes in twice in the morning."
+      "text": "[shot:establish]On the fifth day, Boyd comes in twice in the morning.",
+      "voice": "assets/audio/voice/vol6_ch9_room/136.mp3"
     },
     {
       "t": "narrate",
-      "text": "The two visits are different."
+      "text": "The two visits are different.",
+      "voice": "assets/audio/voice/vol6_ch9_room/137.mp3"
     },
     {
       "t": "narrate",
-      "text": "The first visit is the standard one. The same question. The same hit. The same partial answer."
+      "text": "The first visit is the standard one. The same question. The same hit. The same partial answer.",
+      "voice": "assets/audio/voice/vol6_ch9_room/138.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup boyd]The second visit is — strange. Boyd comes in. Boyd sits. Boyd says nothing for two minutes. Then Boyd says, in a voice Diego has not, in five days, heard Boyd use:"
+      "text": "[shot:closeup boyd]The second visit is — strange. Boyd comes in. Boyd sits. Boyd says nothing for two minutes. Then Boyd says, in a voice Diego has not, in five days, heard Boyd use:",
+      "voice": "assets/audio/voice/vol6_ch9_room/139.mp3"
     },
     {
       "t": "say",
@@ -643,7 +740,8 @@
       "t": "say",
       "char": "Diego",
       "text": "Why are you telling me.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_room/143.mp3"
     },
     {
       "t": "say",
@@ -671,31 +769,37 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup diego]Diego, on the cot, looks at the wall."
+      "text": "[shot:closeup diego]Diego, on the cot, looks at the wall.",
+      "voice": "assets/audio/voice/vol6_ch9_room/148.mp3"
     },
     {
       "t": "narrate",
-      "text": "The device pulses."
+      "text": "The device pulses.",
+      "voice": "assets/audio/voice/vol6_ch9_room/149.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_room/150.mp3"
     },
     {
       "t": "say",
       "char": "Boyd",
       "text": "I am going to leave now. The lights are going to stay on. The door is going to be locked. The next person who opens it will be your friend.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch9_room/151.mp3"
     },
     {
       "t": "narrate",
-      "text": "Boyd stands."
+      "text": "Boyd stands.",
+      "voice": "assets/audio/voice/vol6_ch9_room/152.mp3"
     },
     {
       "t": "narrate",
-      "text": "Boyd, at the door, pauses."
+      "text": "Boyd, at the door, pauses.",
+      "voice": "assets/audio/voice/vol6_ch9_room/153.mp3"
     },
     {
       "t": "say",
@@ -711,15 +815,18 @@
     },
     {
       "t": "narrate",
-      "text": "Diego, on the cot, weeps."
+      "text": "Diego, on the cot, weeps.",
+      "voice": "assets/audio/voice/vol6_ch9_room/156.mp3"
     },
     {
       "t": "narrate",
-      "text": "Boyd, at the door, does not, for a long second, look at him."
+      "text": "Boyd, at the door, does not, for a long second, look at him.",
+      "voice": "assets/audio/voice/vol6_ch9_room/157.mp3"
     },
     {
       "t": "narrate",
-      "text": "Then Boyd closes the door."
+      "text": "Then Boyd closes the door.",
+      "voice": "assets/audio/voice/vol6_ch9_room/158.mp3"
     },
     {
       "t": "hide",
@@ -727,15 +834,18 @@
     },
     {
       "t": "narrate",
-      "text": "The device, on the wall, pulses three times — slow, deliberate, the soft cadence of a being marking a thing for the record."
+      "text": "The device, on the wall, pulses three times — slow, deliberate, the soft cadence of a being marking a thing for the record.",
+      "voice": "assets/audio/voice/vol6_ch9_room/160.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego sleeps."
+      "text": "Diego sleeps.",
+      "voice": "assets/audio/voice/vol6_ch9_room/161.mp3"
     },
     {
       "t": "narrate",
-      "text": "When he wakes, it is morning."
+      "text": "When he wakes, it is morning.",
+      "voice": "assets/audio/voice/vol6_ch9_room/162.mp3"
     },
     {
       "t": "hide",
@@ -749,7 +859,8 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]The door, when it opens, is opened by a man named Doyle."
+      "text": "[shot:establish]The door, when it opens, is opened by a man named Doyle.",
+      "voice": "assets/audio/voice/vol6_ch9_room/165.mp3"
     },
     {
       "t": "hide",

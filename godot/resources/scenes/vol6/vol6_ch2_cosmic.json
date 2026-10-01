@@ -35,7 +35,8 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:morning_bright]Maya is at the counter when the bell above the door chimes."
+      "text": "[mood:morning_bright]Maya is at the counter when the bell above the door chimes.",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/006.mp3"
     },
     {
       "t": "narrate",
@@ -51,11 +52,13 @@
     },
     {
       "t": "narrate",
-      "text": "When he had, he had come out of the back office, nodded at the coffee, nodded at Maya, taken his coffee, and returned to the office to do whatever it was Rick did in the office when the store was quiet, which was, as far as Maya could tell, mostly sit."
+      "text": "When he had, he had come out of the back office, nodded at the coffee, nodded at Maya, taken his coffee, and returned to the office to do whatever it was Rick did in the office when the store was quiet, which was, as far as Maya could tell, mostly sit.",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/010.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert door]The bell chimes. A woman Maya does not recognize comes in."
+      "text": "[shot:insert door]The bell chimes. A woman Maya does not recognize comes in.",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/011.mp3"
     },
     {
       "t": "show",
@@ -65,51 +68,60 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup reporter]She is maybe thirty. Dark hair, shoulder-length, pulled back with the small practical tension of somebody who does not like it in her face. She is wearing a press lanyard on a blue cord. The lanyard says HOUSTON CHRONICLE."
+      "text": "[shot:closeup reporter]She is maybe thirty. Dark hair, shoulder-length, pulled back with the small practical tension of somebody who does not like it in her face. She is wearing a press lanyard on a blue cord. The lanyard says HOUSTON CHRONICLE.",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/013.mp3"
     },
     {
       "t": "narrate",
-      "text": "Maya straightens up behind the counter."
+      "text": "Maya straightens up behind the counter.",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/014.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "expr": "neutral",
-      "text": "\"Morning. Can I help you?\""
+      "text": "\"Morning. Can I help you?\"",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/015.mp3"
     },
     {
       "t": "say",
       "char": "Reporter",
       "role": "— Houston Chronicle —",
       "expr": "neutral",
-      "text": "\"Hi. Is Rick in?\""
+      "text": "\"Hi. Is Rick in?\"",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/016.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "expr": "neutral",
-      "text": "\"He's in the back. Can I tell him who's asking?\""
+      "text": "\"He's in the back. Can I tell him who's asking?\"",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/017.mp3"
     },
     {
       "t": "say",
       "char": "Reporter",
       "role": "— Houston Chronicle —",
       "expr": "neutral",
-      "text": "\"Yeah. Tell him it's the friend of the friend. From the piece.\""
+      "text": "\"Yeah. Tell him it's the friend of the friend. From the piece.\"",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/018.mp3"
     },
     {
       "t": "narrate",
-      "text": "Maya looks at her. The woman's face is neutral."
+      "text": "Maya looks at her. The woman's face is neutral.",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/019.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "expr": "neutral",
-      "text": "[shot:closeup person]\"One second.\""
+      "text": "[shot:closeup person]\"One second.\"",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/020.mp3"
     },
     {
       "t": "narrate",
-      "text": "She goes to the back office. Rick is at the desk, reading the Love and Rockets volume again. He has been reading that specific volume for three days now. Maya has noticed."
+      "text": "She goes to the back office. Rick is at the desk, reading the Love and Rockets volume again. He has been reading that specific volume for three days now. Maya has noticed.",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/021.mp3"
     },
     {
       "t": "hide",
@@ -125,45 +137,53 @@
       "t": "say",
       "char": "Maya",
       "expr": "neutral",
-      "text": "\"Rick. Someone's here to see you. She said to tell you she's the friend of the friend. From the piece.\""
+      "text": "\"Rick. Someone's here to see you. She said to tell you she's the friend of the friend. From the piece.\"",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/024.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup rick]Rick does not look up from Love and Rockets for two full seconds. When he does, his face has done the small thing faces do when a person who has been waiting for a specific knock at the door has just heard it."
+      "text": "[shot:closeup rick]Rick does not look up from Love and Rockets for two full seconds. When he does, his face has done the small thing faces do when a person who has been waiting for a specific knock at the door has just heard it.",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/025.mp3"
     },
     {
       "t": "say",
       "char": "Rick",
       "expr": "neutral",
-      "text": "\"Okay, kiddo. Send her back.\""
+      "text": "\"Okay, kiddo. Send her back.\"",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/026.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "expr": "neutral",
-      "text": "\"Is she —\""
+      "text": "\"Is she —\"",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/027.mp3"
     },
     {
       "t": "say",
       "char": "Rick",
       "expr": "neutral",
-      "text": "\"She's fine. She's a reporter. She's following a thing. She's not a threat. Send her back. Then stay at the counter until she leaves. If anybody else walks in while she's here, tap the glass twice with your key. Got it?\""
+      "text": "\"She's fine. She's a reporter. She's following a thing. She's not a threat. Send her back. Then stay at the counter until she leaves. If anybody else walks in while she's here, tap the glass twice with your key. Got it?\"",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/028.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "expr": "neutral",
-      "text": "\"Okay.\""
+      "text": "\"Okay.\"",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/029.mp3"
     },
     {
       "t": "say",
       "char": "Rick",
       "expr": "neutral",
-      "text": "\"Thanks, kiddo.\""
+      "text": "\"Thanks, kiddo.\"",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/030.mp3"
     },
     {
       "t": "narrate",
-      "text": "Maya returns to the front. She gestures the woman through. The woman follows, nods at Maya once in thanks, and disappears into the back."
+      "text": "Maya returns to the front. She gestures the woman through. The woman follows, nods at Maya once in thanks, and disappears into the back.",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/031.mp3"
     },
     {
       "t": "hide",
@@ -171,28 +191,34 @@
     },
     {
       "t": "narrate",
-      "text": "Maya returns to the indie rack."
+      "text": "Maya returns to the indie rack.",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/033.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup maya]She does not, immediately, resume alphabetizing. She stands at the rack and reads, without reading, the spines of a short run of small-press books she has already sorted."
+      "text": "[shot:closeup maya]She does not, immediately, resume alphabetizing. She stands at the rack and reads, without reading, the spines of a short run of small-press books she has already sorted.",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/034.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thinks — with the small careful attention she has been training herself into for the past six weeks — about the press lanyard, about the phrase friend of the friend, about the piece, about Rick's face."
+      "text": "She thinks — with the small careful attention she has been training herself into for the past six weeks — about the press lanyard, about the phrase friend of the friend, about the piece, about Rick's face.",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/035.mp3"
     },
     {
       "t": "think",
       "char": "Maya",
-      "text": "Rick is a node. My grandmother is a node. F.T. is a node. Whatever the network is, it has already been running in this town before I got here. I have been inserted into it. I do not yet know what my own position is."
+      "text": "Rick is a node. My grandmother is a node. F.T. is a node. Whatever the network is, it has already been running in this town before I got here. I have been inserted into it. I do not yet know what my own position is.",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/036.mp3"
     },
     {
       "t": "narrate",
-      "text": "She returns to alphabetizing. Twenty minutes later, the reporter leaves. She nods at Maya again on the way out. She does not speak. The bell chimes."
+      "text": "She returns to alphabetizing. Twenty minutes later, the reporter leaves. She nods at Maya again on the way out. She does not speak. The bell chimes.",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/037.mp3"
     },
     {
       "t": "narrate",
-      "text": "Rick does not come out of the back office."
+      "text": "Rick does not come out of the back office.",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/038.mp3"
     },
     {
       "t": "interlude",
@@ -208,72 +234,85 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup rick]At 12:02, Rick finally emerges. He looks older than he had at nine. He crosses to the counter. He says, in the small careful voice he uses for things he means:"
+      "text": "[shot:closeup rick]At 12:02, Rick finally emerges. He looks older than he had at nine. He crosses to the counter. He says, in the small careful voice he uses for things he means:",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/041.mp3"
     },
     {
       "t": "say",
       "char": "Rick",
       "expr": "neutral",
-      "text": "\"Maya, kiddo. I need to ask you something. You don't have to answer. If you say no, I'll drop it.\""
+      "text": "\"Maya, kiddo. I need to ask you something. You don't have to answer. If you say no, I'll drop it.\"",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/042.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "expr": "neutral",
-      "text": "\"Okay.\""
+      "text": "\"Okay.\"",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/043.mp3"
     },
     {
       "t": "say",
       "char": "Rick",
       "expr": "neutral",
-      "text": "\"Has F.T. talked to you yet?\""
+      "text": "\"Has F.T. talked to you yet?\"",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/044.mp3"
     },
     {
       "t": "narrate",
-      "text": "Maya looks at him."
+      "text": "Maya looks at him.",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/045.mp3"
     },
     {
       "t": "think",
       "char": "Maya",
-      "text": "This is the test. He already knows. The question is whether I lie or tell the truth."
+      "text": "This is the test. He already knows. The question is whether I lie or tell the truth.",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/046.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "expr": "neutral",
-      "text": "[shot:closeup person]\"Yeah. Yesterday afternoon.\""
+      "text": "[shot:closeup person]\"Yeah. Yesterday afternoon.\"",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/047.mp3"
     },
     {
       "t": "narrate",
-      "text": "Rick nods, slowly. He seems to have expected that answer, and to have nonetheless been bracing for it."
+      "text": "Rick nods, slowly. He seems to have expected that answer, and to have nonetheless been bracing for it.",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/048.mp3"
     },
     {
       "t": "say",
       "char": "Rick",
       "expr": "neutral",
-      "text": "\"What did he tell you.\""
+      "text": "\"What did he tell you.\"",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/049.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "expr": "neutral",
-      "text": "\"Three things. He said Diego is alive. He said the water tower is rebroadcasting my grandmother's shortwave. And he said my dad is the reason F.T. can reach me.\""
+      "text": "\"Three things. He said Diego is alive. He said the water tower is rebroadcasting my grandmother's shortwave. And he said my dad is the reason F.T. can reach me.\"",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/050.mp3"
     },
     {
       "t": "say",
       "char": "Rick",
       "expr": "neutral",
-      "text": "\"Okay.\""
+      "text": "\"Okay.\"",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/051.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "expr": "neutral",
-      "text": "\"Is that true?\""
+      "text": "\"Is that true?\"",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/052.mp3"
     },
     {
       "t": "narrate",
-      "text": "Rick is quiet."
+      "text": "Rick is quiet.",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/053.mp3"
     },
     {
       "t": "say",
@@ -291,11 +330,13 @@
       "t": "say",
       "char": "Maya",
       "expr": "neutral",
-      "text": "\"Who is F.T.\""
+      "text": "\"Who is F.T.\"",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/056.mp3"
     },
     {
       "t": "narrate",
-      "text": "[mood:macro_haze][shot:closeup rick~]Rick looks at her. He looks at her for a long time."
+      "text": "[mood:macro_haze][shot:closeup rick~]Rick looks at her. He looks at her for a long time.",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/057.mp3"
     },
     {
       "t": "say",
@@ -313,35 +354,41 @@
       "t": "say",
       "char": "Maya",
       "expr": "neutral",
-      "text": "\"Where is he.\""
+      "text": "\"Where is he.\"",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/060.mp3"
     },
     {
       "t": "say",
       "char": "Rick",
       "expr": "neutral",
-      "text": "\"Same answer.\""
+      "text": "\"Same answer.\"",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/061.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "expr": "neutral",
-      "text": "\"Rick.\""
+      "text": "\"Rick.\"",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/062.mp3"
     },
     {
       "t": "say",
       "char": "Rick",
       "expr": "neutral",
-      "text": "\"Kiddo.\""
+      "text": "\"Kiddo.\"",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/063.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "expr": "neutral",
-      "text": "[shot:closeup person]\"Okay.\""
+      "text": "[shot:closeup person]\"Okay.\"",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/064.mp3"
     },
     {
       "t": "narrate",
-      "text": "Rick nods. He puts his hand, briefly, on the counter between them — not on hers, not quite touching, just present. Then he moves it. Then he says, in his normal voice:"
+      "text": "Rick nods. He puts his hand, briefly, on the counter between them — not on hers, not quite touching, just present. Then he moves it. Then he says, in his normal voice:",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/065.mp3"
     },
     {
       "t": "say",
@@ -357,59 +404,69 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:morning_bright][shot:insert twenty]He hands her a twenty. Maya takes it."
+      "text": "[mood:morning_bright][shot:insert twenty]He hands her a twenty. Maya takes it.",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/068.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "expr": "neutral",
-      "text": "\"New Auburn's forty minutes each way, Rick.\""
+      "text": "\"New Auburn's forty minutes each way, Rick.\"",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/069.mp3"
     },
     {
       "t": "say",
       "char": "Rick",
       "expr": "neutral",
-      "text": "\"I know. I'm giving you the afternoon. Close the store when you get back and take off. I'll settle up with you Friday.\""
+      "text": "\"I know. I'm giving you the afternoon. Close the store when you get back and take off. I'll settle up with you Friday.\"",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/070.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "expr": "neutral",
-      "text": "\"Okay.\""
+      "text": "\"Okay.\"",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/071.mp3"
     },
     {
       "t": "say",
       "char": "Rick",
       "expr": "neutral",
-      "text": "\"Maya.\""
+      "text": "\"Maya.\"",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/072.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "expr": "neutral",
-      "text": "\"Yeah.\""
+      "text": "\"Yeah.\"",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/073.mp3"
     },
     {
       "t": "say",
       "char": "Rick",
       "expr": "neutral",
-      "text": "\"You're doing fine, kid. Better than fine. Just keep noticing.\""
+      "text": "\"You're doing fine, kid. Better than fine. Just keep noticing.\"",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/074.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "expr": "neutral",
-      "text": "\"That's what he said, too.\""
+      "text": "\"That's what he said, too.\"",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/075.mp3"
     },
     {
       "t": "say",
       "char": "Rick",
       "expr": "neutral",
-      "text": "\"Yeah. He would.\""
+      "text": "\"Yeah. He would.\"",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/076.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]She leaves. The bell chimes as she goes."
+      "text": "[shot:establish]She leaves. The bell chimes as she goes.",
+      "voice": "assets/audio/voice/vol6_ch2_cosmic/077.mp3"
     },
     {
       "t": "flag",

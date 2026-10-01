@@ -43,11 +43,13 @@
     },
     {
       "t": "narrate",
-      "text": "She has not, since that message, received another. She refreshes the chat window."
+      "text": "She has not, since that message, received another. She refreshes the chat window.",
+      "voice": "assets/audio/voice/vol6_ch6_maya_bedroom/008.mp3"
     },
     {
       "t": "narrate",
-      "text": "A new message arrives."
+      "text": "A new message arrives.",
+      "voice": "assets/audio/voice/vol6_ch6_maya_bedroom/009.mp3"
     },
     {
       "t": "say",
@@ -63,23 +65,27 @@
     },
     {
       "t": "narrate",
-      "text": "Maya reads it twice. She types:"
+      "text": "Maya reads it twice. She types:",
+      "voice": "assets/audio/voice/vol6_ch6_maya_bedroom/012.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "I asked because I wanted to. If you ever decide you want to figure out what help looks like, I'm here. I'm sixteen. I'm not going anywhere for a while. I have a bike and a grandmother and a chat window. We can take our time.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_maya_bedroom/013.mp3"
     },
     {
       "t": "narrate",
-      "text": "She sends it. The reply comes in twelve seconds."
+      "text": "She sends it. The reply comes in twelve seconds.",
+      "voice": "assets/audio/voice/vol6_ch6_maya_bedroom/014.mp3"
     },
     {
       "t": "say",
       "char": "F.T.",
       "text": "you are a daigle, kid. you are exactly the kind of daigle the good ones are. take your time. so will i.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_maya_bedroom/015.mp3"
     },
     {
       "t": "say",
@@ -95,28 +101,33 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup maya]Maya stares at the message. She types:"
+      "text": "[shot:closeup maya]Maya stares at the message. She types:",
+      "voice": "assets/audio/voice/vol6_ch6_maya_bedroom/018.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "Okay. I will.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_maya_bedroom/019.mp3"
     },
     {
       "t": "say",
       "char": "F.T.",
       "text": "good kid. go take a nap.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_maya_bedroom/020.mp3"
     },
     {
       "t": "narrate",
-      "text": "Maya closes the laptop. She lies down on her bed. She stares at the ceiling. The pale yellow ceiling. She does not nap."
+      "text": "Maya closes the laptop. She lies down on her bed. She stares at the ceiling. The pale yellow ceiling. She does not nap.",
+      "voice": "assets/audio/voice/vol6_ch6_maya_bedroom/021.mp3"
     },
     {
       "t": "think",
       "char": "Maya",
-      "text": "[mood:macro_haze][shot:closeup maya~]One of the adults is going to have an issue this weekend. F.T. doesn't know which. The Demons flagged an anomaly. I am supposed to look at faces and trust my read."
+      "text": "[mood:macro_haze][shot:closeup maya~]One of the adults is going to have an issue this weekend. F.T. doesn't know which. The Demons flagged an anomaly. I am supposed to look at faces and trust my read.",
+      "voice": "assets/audio/voice/vol6_ch6_maya_bedroom/022.mp3"
     },
     {
       "t": "think",
@@ -131,16 +142,19 @@
     {
       "t": "think",
       "char": "Maya",
-      "text": "Eleven adults. One of them is going to have an issue."
+      "text": "Eleven adults. One of them is going to have an issue.",
+      "voice": "assets/audio/voice/vol6_ch6_maya_bedroom/025.mp3"
     },
     {
       "t": "think",
       "char": "Maya",
-      "text": "I need to pay attention to faces tomorrow."
+      "text": "I need to pay attention to faces tomorrow.",
+      "voice": "assets/audio/voice/vol6_ch6_maya_bedroom/026.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]She closes her eyes. She does, in the end, sleep — for forty minutes, on top of the bedspread, with her shoes still on."
+      "text": "[shot:establish]She closes her eyes. She does, in the end, sleep — for forty minutes, on top of the bedspread, with her shoes still on.",
+      "voice": "assets/audio/voice/vol6_ch6_maya_bedroom/027.mp3"
     },
     {
       "t": "hide",

@@ -203,7 +203,8 @@
       "t": "say",
       "c": "natalie",
       "text": "[shot:closeup natalie]Thank you.",
-      "char": "natalie"
+      "char": "natalie",
+      "voice": "assets/audio/voice/vol5_ch18_moon/047.mp3"
     },
     {
       "t": "narrate",
@@ -211,7 +212,8 @@
     },
     {
       "t": "narrate",
-      "text": "The room did, however, drop the under-cabinet light by one tiny perceptible degree — a dimming so small that Natalie could not, even now, swear she had not imagined it, but which she had learned, in this apartment, to interpret as you're welcome."
+      "text": "The room did, however, drop the under-cabinet light by one tiny perceptible degree — a dimming so small that Natalie could not, even now, swear she had not imagined it, but which she had learned, in this apartment, to interpret as you're welcome.",
+      "voice": "assets/audio/voice/vol5_ch18_moon/049.mp3"
     },
     {
       "t": "narrate",
@@ -263,7 +265,8 @@
       "t": "say",
       "c": "aria",
       "text": "[shot:closeup natalie]Visitor. How long.",
-      "char": "natalie"
+      "char": "natalie",
+      "voice": "assets/audio/voice/vol5_ch18_moon/061.mp3"
     },
     {
       "t": "show",
@@ -275,35 +278,41 @@
       "t": "say",
       "c": "natalie",
       "text": "Minutes, I think.",
-      "char": "aria"
+      "char": "aria",
+      "voice": "assets/audio/voice/vol5_ch18_moon/063.mp3"
     },
     {
       "t": "say",
       "c": "aria",
       "text": "Should I wake her.",
-      "char": "natalie"
+      "char": "natalie",
+      "voice": "assets/audio/voice/vol5_ch18_moon/064.mp3"
     },
     {
       "t": "say",
       "c": "natalie",
       "text": "Yes, sweetheart. Both of you are going to need to be awake.",
-      "char": "aria"
+      "char": "aria",
+      "voice": "assets/audio/voice/vol5_ch18_moon/065.mp3"
     },
     {
       "t": "say",
       "c": "aria",
       "text": "Understood.",
-      "char": "natalie"
+      "char": "natalie",
+      "voice": "assets/audio/voice/vol5_ch18_moon/066.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Aria closed Nicola's eyes.\n\nFor three breaths, nothing happened. Then Nicola's eyes opened — her own eyes, now, her own gaze, sleepy and confused and nineteen — and she said, hoarsely:"
+      "text": "[shot:establish]Aria closed Nicola's eyes.\n\nFor three breaths, nothing happened. Then Nicola's eyes opened — her own eyes, now, her own gaze, sleepy and confused and nineteen — and she said, hoarsely:",
+      "voice": "assets/audio/voice/vol5_ch18_moon/067.mp3"
     },
     {
       "t": "say",
       "c": "nicola",
       "text": "What —",
-      "char": "aria"
+      "char": "aria",
+      "voice": "assets/audio/voice/vol5_ch18_moon/068.mp3"
     },
     {
       "t": "show",
@@ -315,7 +324,8 @@
       "t": "say",
       "c": "natalie",
       "text": "[shot:closeup nicola]Someone's coming, Nic. It's okay. Sit up. Put on your shoes.",
-      "char": "nicola"
+      "char": "nicola",
+      "voice": "assets/audio/voice/vol5_ch18_moon/070.mp3"
     },
     {
       "t": "narrate",
@@ -393,29 +403,34 @@
       "t": "say",
       "c": "miriam",
       "text": "I'm sorry about the hour. I'm Miriam. I've been driving all night. I think you were told I was coming.",
-      "char": "natalie"
+      "char": "natalie",
+      "voice": "assets/audio/voice/vol5_ch18_moon/089.mp3"
     },
     {
       "t": "say",
       "c": "natalie",
       "text": "[shot:closeup natalie]I was told a visitor was coming.",
-      "char": "natalie"
+      "char": "natalie",
+      "voice": "assets/audio/voice/vol5_ch18_moon/090.mp3"
     },
     {
       "t": "say",
       "c": "miriam",
       "text": "Close enough.",
-      "char": "natalie"
+      "char": "natalie",
+      "voice": "assets/audio/voice/vol5_ch18_moon/091.mp3"
     },
     {
       "t": "narrate",
-      "text": "Miriam's eyes moved, calmly, past Natalie to Nicola."
+      "text": "Miriam's eyes moved, calmly, past Natalie to Nicola.",
+      "voice": "assets/audio/voice/vol5_ch18_moon/092.mp3"
     },
     {
       "t": "say",
       "c": "miriam",
       "text": "[shot:closeup miriam]Hello, dear. I'm here for you.",
-      "char": "nicola"
+      "char": "nicola",
+      "voice": "assets/audio/voice/vol5_ch18_moon/093.mp3"
     },
     {
       "t": "narrate",
@@ -437,55 +452,65 @@
       "t": "say",
       "c": "nicola",
       "text": "[shot:closeup natalie]Who are you.",
-      "char": "natalie"
+      "char": "natalie",
+      "voice": "assets/audio/voice/vol5_ch18_moon/098.mp3"
     },
     {
       "t": "say",
       "c": "miriam",
       "text": "I'm a friend of Joanna LeMoine's.",
-      "char": "aria"
+      "char": "aria",
+      "voice": "assets/audio/voice/vol5_ch18_moon/099.mp3"
     },
     {
       "t": "narrate",
-      "text": "[beat:still]A long silence.\n\nNatalie felt, behind her sternum, the small cold clarifying bloom that meant the older system had just made a move on the board that was much larger than the board anyone in this room had been playing on."
+      "text": "[beat:still]A long silence.\n\nNatalie felt, behind her sternum, the small cold clarifying bloom that meant the older system had just made a move on the board that was much larger than the board anyone in this room had been playing on.",
+      "voice": "assets/audio/voice/vol5_ch18_moon/100.mp3"
     },
     {
       "t": "say",
       "c": "nicola",
       "text": "[shot:closeup natalie]Joanna —",
-      "char": "natalie"
+      "char": "natalie",
+      "voice": "assets/audio/voice/vol5_ch18_moon/101.mp3"
     },
     {
       "t": "say",
       "c": "miriam",
       "text": "The woman in the ruins. You don't know her. She knows you. She has known you, in the way she knows people, since you were about twelve. She's asked me to come get you.",
-      "char": "natalie"
+      "char": "natalie",
+      "voice": "assets/audio/voice/vol5_ch18_moon/102.mp3"
     },
     {
       "t": "say",
       "c": "nicola",
       "text": "Come get me where.",
-      "char": "natalie"
+      "char": "natalie",
+      "voice": "assets/audio/voice/vol5_ch18_moon/103.mp3"
     },
     {
       "t": "say",
       "c": "miriam",
       "text": "Somewhere safe. Somewhere the man from Table 14 can't find you. Somewhere where what's growing in you can grow. Both of what's growing in you.",
-      "char": "natalie"
+      "char": "natalie",
+      "voice": "assets/audio/voice/vol5_ch18_moon/104.mp3"
     },
     {
       "t": "narrate",
-      "text": "Nicola's hand, on her stomach, spasmed slightly.\n\nAria's eyes, behind Nicola's eyes, opened."
+      "text": "Nicola's hand, on her stomach, spasmed slightly.\n\nAria's eyes, behind Nicola's eyes, opened.",
+      "voice": "assets/audio/voice/vol5_ch18_moon/105.mp3"
     },
     {
       "t": "say",
       "c": "aria",
       "text": "How do you know about us. About me.",
-      "char": "aria"
+      "char": "aria",
+      "voice": "assets/audio/voice/vol5_ch18_moon/106.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_b]Miriam looked directly at Nicola's eyes — but she was, unmistakably, answering Aria."
+      "text": "[shot:establish_b]Miriam looked directly at Nicola's eyes — but she was, unmistakably, answering Aria.",
+      "voice": "assets/audio/voice/vol5_ch18_moon/107.mp3"
     },
     {
       "t": "say",
@@ -509,65 +534,77 @@
       "t": "say",
       "c": "miriam",
       "text": "You don't have to come. I can tell you what will happen if you don't. You won't like it. But I'm not going to force you. This is a ride, not a collection.",
-      "char": "aria"
+      "char": "aria",
+      "voice": "assets/audio/voice/vol5_ch18_moon/111.mp3"
     },
     {
       "t": "say",
       "c": "natalie",
       "text": "[shot:closeup nicola]Nic. Aria. Listen to me.",
-      "char": "nicola"
+      "char": "nicola",
+      "voice": "assets/audio/voice/vol5_ch18_moon/112.mp3"
     },
     {
       "t": "narrate",
-      "text": "Both of them looked at her."
+      "text": "Both of them looked at her.",
+      "voice": "assets/audio/voice/vol5_ch18_moon/113.mp3"
     },
     {
       "t": "say",
       "c": "natalie",
       "text": "I've known there was weather coming since midnight. I didn't know what the weather was. I now know. I trust this woman because the room trusts this woman.",
-      "char": "aria"
+      "char": "aria",
+      "voice": "assets/audio/voice/vol5_ch18_moon/114.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert record_player]The record player, on cue, clicked once — just once, quietly, for confirmation."
+      "text": "[shot:insert record_player]The record player, on cue, clicked once — just once, quietly, for confirmation.",
+      "voice": "assets/audio/voice/vol5_ch18_moon/115.mp3"
     },
     {
       "t": "say",
       "c": "natalie",
       "text": "The room is not often wrong. I'm going to suggest you go with her. I'm going to suggest it for reasons I can't fully explain, but which I would explain if I could. Do you want me to come.",
-      "char": "nicola"
+      "char": "nicola",
+      "voice": "assets/audio/voice/vol5_ch18_moon/116.mp3"
     },
     {
       "t": "say",
       "c": "nicola",
       "text": "Can you.",
-      "char": "aria"
+      "char": "aria",
+      "voice": "assets/audio/voice/vol5_ch18_moon/117.mp3"
     },
     {
       "t": "say",
       "c": "natalie",
       "text": "If Miriam says yes.",
-      "char": "nicola"
+      "char": "nicola",
+      "voice": "assets/audio/voice/vol5_ch18_moon/118.mp3"
     },
     {
       "t": "narrate",
-      "text": "Miriam looked at Natalie. Miriam's gaze did the small evaluating thing a nurse's gaze did when a nurse was deciding whether to let a family member ride in the ambulance."
+      "text": "Miriam looked at Natalie. Miriam's gaze did the small evaluating thing a nurse's gaze did when a nurse was deciding whether to let a family member ride in the ambulance.",
+      "voice": "assets/audio/voice/vol5_ch18_moon/119.mp3"
     },
     {
       "t": "say",
       "c": "miriam",
       "text": "[shot:closeup natalie]I can take you as far as the county line. From there you'd need to come back. But yes. Come as far as the line, if she wants you there.",
-      "char": "natalie"
+      "char": "natalie",
+      "voice": "assets/audio/voice/vol5_ch18_moon/120.mp3"
     },
     {
       "t": "narrate",
-      "text": "Nicola nodded."
+      "text": "Nicola nodded.",
+      "voice": "assets/audio/voice/vol5_ch18_moon/121.mp3"
     },
     {
       "t": "say",
       "c": "natalie",
       "text": "Then yes, Nic. I'll come to the line.",
-      "char": "nicola"
+      "char": "nicola",
+      "voice": "assets/audio/voice/vol5_ch18_moon/122.mp3"
     },
     {
       "t": "narrate",
@@ -714,13 +751,15 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]They reached the county line at seven fifty-two AM.\n\nMiriam pulled into a gas station just past the sign. She got out, stretched, filled the tank, came back. She turned to Natalie."
+      "text": "[shot:establish]They reached the county line at seven fifty-two AM.\n\nMiriam pulled into a gas station just past the sign. She got out, stretched, filled the tank, came back. She turned to Natalie.",
+      "voice": "assets/audio/voice/vol5_ch18_moon/158.mp3"
     },
     {
       "t": "say",
       "c": "miriam",
       "text": "This is where you get out.",
-      "char": "natalie"
+      "char": "natalie",
+      "voice": "assets/audio/voice/vol5_ch18_moon/159.mp3"
     },
     {
       "t": "show",
@@ -732,13 +771,15 @@
       "t": "say",
       "c": "natalie",
       "text": "Okay.",
-      "char": "miriam"
+      "char": "miriam",
+      "voice": "assets/audio/voice/vol5_ch18_moon/161.mp3"
     },
     {
       "t": "say",
       "c": "miriam",
       "text": "[shot:closeup natalie]The bus back to Simons comes through here every two hours. There's one at eight-thirty. I've left you cash in the side pocket. Don't argue.",
-      "char": "natalie"
+      "char": "natalie",
+      "voice": "assets/audio/voice/vol5_ch18_moon/162.mp3"
     },
     {
       "t": "narrate",
@@ -746,31 +787,36 @@
     },
     {
       "t": "narrate",
-      "text": "She looked at Nicola, who had woken at the gas-station stop and was looking at her with the exhausted red-eyed gaze of a young woman who had just understood that she was being taken somewhere and that the taking was going to include a goodbye."
+      "text": "She looked at Nicola, who had woken at the gas-station stop and was looking at her with the exhausted red-eyed gaze of a young woman who had just understood that she was being taken somewhere and that the taking was going to include a goodbye.",
+      "voice": "assets/audio/voice/vol5_ch18_moon/164.mp3"
     },
     {
       "t": "say",
       "c": "nicola",
       "text": "Don't.",
-      "char": "nicola"
+      "char": "nicola",
+      "voice": "assets/audio/voice/vol5_ch18_moon/165.mp3"
     },
     {
       "t": "say",
       "c": "natalie",
       "text": "I have to. Listen. I'm going to see you again. I don't know when. But I'm going to. Take care of both of you. All three.",
-      "char": "natalie"
+      "char": "natalie",
+      "voice": "assets/audio/voice/vol5_ch18_moon/166.mp3"
     },
     {
       "t": "say",
       "c": "nicola",
       "text": "[shot:closeup person]Three.",
-      "char": "nicola"
+      "char": "nicola",
+      "voice": "assets/audio/voice/vol5_ch18_moon/167.mp3"
     },
     {
       "t": "say",
       "c": "natalie",
       "text": "All three. Yes.",
-      "char": "natalie"
+      "char": "natalie",
+      "voice": "assets/audio/voice/vol5_ch18_moon/168.mp3"
     },
     {
       "t": "narrate",
@@ -788,11 +834,13 @@
       "t": "say",
       "c": "natalie",
       "text": "You are not alone in there. Either of you. You never have been.",
-      "char": "natalie"
+      "char": "natalie",
+      "voice": "assets/audio/voice/vol5_ch18_moon/172.mp3"
     },
     {
       "t": "narrate",
-      "text": "Aria, through Nicola's eyes, made the small still expression Natalie had learned, in the past hour, was Aria's version of gratitude.\n\nNicola let go.\n\nNatalie got out of the car."
+      "text": "Aria, through Nicola's eyes, made the small still expression Natalie had learned, in the past hour, was Aria's version of gratitude.\n\nNicola let go.\n\nNatalie got out of the car.",
+      "voice": "assets/audio/voice/vol5_ch18_moon/173.mp3"
     },
     {
       "t": "narrate",

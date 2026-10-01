@@ -29,7 +29,8 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:studio]The arraignment is set for two PM."
+      "text": "[mood:studio]The arraignment is set for two PM.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/005.mp3"
     },
     {
       "t": "narrate",
@@ -59,7 +60,8 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Sam is in the third row, with her mother on her left and Detective Ramirez on her right."
+      "text": "[shot:establish]Sam is in the third row, with her mother on her left and Detective Ramirez on her right.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/011.mp3"
     },
     {
       "t": "narrate",
@@ -83,15 +85,18 @@
     },
     {
       "t": "narrate",
-      "text": "Sam's mother holds Sam's hand."
+      "text": "Sam's mother holds Sam's hand.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/017.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam's mother has, since pulling out of the driveway at one PM, not let go of it."
+      "text": "Sam's mother has, since pulling out of the driveway at one PM, not let go of it.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/018.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam looks around the courtroom."
+      "text": "Sam looks around the courtroom.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/019.mp3"
     },
     {
       "t": "narrate",
@@ -107,62 +112,75 @@
     },
     {
       "t": "narrate",
-      "text": "[beat:chill][mood:arcana_cool][shot:closeup dean~]In the second row, behind the prosecution table, there is a man in a charcoal suit."
+      "text": "[beat:chill][mood:arcana_cool][shot:closeup dean~]In the second row, behind the prosecution table, there is a man in a charcoal suit.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/023.mp3"
     },
     {
       "t": "narrate",
-      "text": "He is reading a manila folder."
+      "text": "He is reading a manila folder.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/024.mp3"
     },
     {
       "t": "narrate",
-      "text": "He looks up, briefly, when Sam looks at him. His eyes meet hers across the room."
+      "text": "He looks up, briefly, when Sam looks at him. His eyes meet hers across the room.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/025.mp3"
     },
     {
       "t": "think",
       "char": "Sam",
-      "text": "The eyes are — Sam realizes — exactly the eyes from the dream she had on Tuesday night, at three AM, the dream she had written down and then folded into the back of her notebook."
+      "text": "The eyes are — Sam realizes — exactly the eyes from the dream she had on Tuesday night, at three AM, the dream she had written down and then folded into the back of her notebook.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/026.mp3"
     },
     {
       "t": "narrate",
-      "text": "She does not look away."
+      "text": "She does not look away.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/027.mp3"
     },
     {
       "t": "narrate",
-      "text": "He does, in time, look away first."
+      "text": "He does, in time, look away first.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/028.mp3"
     },
     {
       "t": "narrate",
-      "text": "He returns to his folder."
+      "text": "He returns to his folder.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/029.mp3"
     },
     {
       "t": "narrate",
-      "text": "[mood:studio][shot:closeup mrs_miller]Sam's mother, who has felt the small change in Sam's hand, says, very quietly:"
+      "text": "[mood:studio][shot:closeup mrs_miller]Sam's mother, who has felt the small change in Sam's hand, says, very quietly:",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/030.mp3"
     },
     {
       "t": "say",
       "char": "Sam's Mother",
       "text": "Sammy. Who is that.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/031.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "That's Dean.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/032.mp3"
     },
     {
       "t": "narrate",
-      "text": "Her mother's hand tightens."
+      "text": "Her mother's hand tightens.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/033.mp3"
     },
     {
       "t": "say",
       "char": "Sam's Mother",
       "text": "Okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/034.mp3"
     },
     {
       "t": "narrate",
-      "text": "At 14:31 the judge enters."
+      "text": "At 14:31 the judge enters.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/035.mp3"
     },
     {
       "t": "show",
@@ -180,11 +198,13 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]The clerk reads the docket."
+      "text": "[shot:establish]The clerk reads the docket.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/039.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup miller]Sam's father is brought in from the side door."
+      "text": "[shot:closeup miller]Sam's father is brought in from the side door.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/040.mp3"
     },
     {
       "t": "show",
@@ -206,11 +226,13 @@
     },
     {
       "t": "narrate",
-      "text": "He sits at the defense table beside the lawyer Ramirez had arranged."
+      "text": "He sits at the defense table beside the lawyer Ramirez had arranged.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/045.mp3"
     },
     {
       "t": "narrate",
-      "text": "He does not, in the moment of being seated, look at the gallery."
+      "text": "He does not, in the moment of being seated, look at the gallery.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/046.mp3"
     },
     {
       "t": "narrate",
@@ -222,15 +244,18 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_b]He has accepted this counsel."
+      "text": "[shot:establish_b]He has accepted this counsel.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/049.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam, in the third row, watches the back of his head."
+      "text": "Sam, in the third row, watches the back of his head.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/050.mp3"
     },
     {
       "t": "narrate",
-      "text": "The arraignment proceeds with the small specific tedium of arraignments."
+      "text": "The arraignment proceeds with the small specific tedium of arraignments.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/051.mp3"
     },
     {
       "t": "narrate",
@@ -242,83 +267,100 @@
     },
     {
       "t": "narrate",
-      "text": "The defense — Sam's father's lawyer, a woman named Ana Rivera, calm, fifty-something, who had been the lawyer Ramirez had brought up from Houston for the Friday morning intake — enters a plea of guilty on all eleven counts."
+      "text": "The defense — Sam's father's lawyer, a woman named Ana Rivera, calm, fifty-something, who had been the lawyer Ramirez had brought up from Houston for the Friday morning intake — enters a plea of guilty on all eleven counts.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/054.mp3"
     },
     {
       "t": "narrate",
-      "text": "There is a small sound from the gallery — a stir, the sound a courtroom makes when it has just been told a thing it had been expecting to be made to wait for."
+      "text": "There is a small sound from the gallery — a stir, the sound a courtroom makes when it has just been told a thing it had been expecting to be made to wait for.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/055.mp3"
     },
     {
       "t": "narrate",
-      "text": "Judge Halverson nods."
+      "text": "Judge Halverson nods.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/056.mp3"
     },
     {
       "t": "say",
       "char": "Judge",
       "text": "[shot:closeup person]Counsel. The court accepts the plea. Sentencing will be scheduled per — ",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/057.mp3"
     },
     {
       "t": "narrate",
-      "text": "She is going to say per the standard sixty-day calendar. She is going to give the date. The date is going to be in late July. Sam and her mother are going to sit through it."
+      "text": "She is going to say per the standard sixty-day calendar. She is going to give the date. The date is going to be in late July. Sam and her mother are going to sit through it.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/058.mp3"
     },
     {
       "t": "narrate",
-      "text": "[mood:arcana_cool][shot:closeup dean]But before she finishes the sentence, the man in the charcoal suit — D. Dean — stands up."
+      "text": "[mood:arcana_cool][shot:closeup dean]But before she finishes the sentence, the man in the charcoal suit — D. Dean — stands up.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/059.mp3"
     },
     {
       "t": "narrate",
-      "text": "The bailiff at the door of the gallery looks at him."
+      "text": "The bailiff at the door of the gallery looks at him.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/060.mp3"
     },
     {
       "t": "say",
       "char": "D. Dean",
       "text": "Your honor. May I approach.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/061.mp3"
     },
     {
       "t": "narrate",
-      "text": "Judge Halverson looks at him."
+      "text": "Judge Halverson looks at him.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/062.mp3"
     },
     {
       "t": "say",
       "char": "Judge",
       "text": "Sir. You are not party to this proceeding.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/063.mp3"
     },
     {
       "t": "say",
       "char": "D. Dean",
       "text": "[shot:closeup person]I am, your honor. By the second amended docket filed this morning at ten forty-six, I am listed as an interested party with rights to address the court at the arraignment. I have the documentation.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/064.mp3"
     },
     {
       "t": "narrate",
-      "text": "The clerk, beside the judge, looks at her screen."
+      "text": "The clerk, beside the judge, looks at her screen.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/065.mp3"
     },
     {
       "t": "say",
       "char": "Clerk",
       "text": "Your honor. The amendment is on the docket. Filed at ten forty-six.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/066.mp3"
     },
     {
       "t": "narrate",
-      "text": "Judge Halverson takes her glasses off."
+      "text": "Judge Halverson takes her glasses off.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/067.mp3"
     },
     {
       "t": "narrate",
-      "text": "She puts them back on."
+      "text": "She puts them back on.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/068.mp3"
     },
     {
       "t": "say",
       "char": "Judge",
       "text": "[shot:closeup person_b]Approach.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/069.mp3"
     },
     {
       "t": "narrate",
-      "text": "Dean walks to the bench."
+      "text": "Dean walks to the bench.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/070.mp3"
     },
     {
       "t": "narrate",
@@ -330,49 +372,59 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert folder]He hands the judge a folder."
+      "text": "[shot:insert folder]He hands the judge a folder.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/073.mp3"
     },
     {
       "t": "narrate",
-      "text": "The judge opens the folder."
+      "text": "The judge opens the folder.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/074.mp3"
     },
     {
       "t": "narrate",
-      "text": "She reads."
+      "text": "She reads.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/075.mp3"
     },
     {
       "t": "narrate",
-      "text": "The courtroom is very quiet."
+      "text": "The courtroom is very quiet.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/076.mp3"
     },
     {
       "t": "narrate",
-      "text": "The judge, after a long minute, looks up."
+      "text": "The judge, after a long minute, looks up.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/077.mp3"
     },
     {
       "t": "say",
       "char": "Judge",
       "text": "[shot:closeup person]Mr. Dean. I am — I am going to take a brief recess to confer with counsel. Bailiff — please ask the gallery to remain seated. We will reconvene in twenty minutes.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/078.mp3"
     },
     {
       "t": "narrate",
-      "text": "She stands."
+      "text": "She stands.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/079.mp3"
     },
     {
       "t": "narrate",
-      "text": "The bailiffs ask the gallery to remain seated. The defense lawyer — Ana Rivera — turns and looks at Sam's mother. Her face does the specific thing a lawyer's face does when something unexpected has happened that has not, yet, been characterized."
+      "text": "The bailiffs ask the gallery to remain seated. The defense lawyer — Ana Rivera — turns and looks at Sam's mother. Her face does the specific thing a lawyer's face does when something unexpected has happened that has not, yet, been characterized.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/080.mp3"
     },
     {
       "t": "say",
       "char": "Sam's Mother",
       "text": "[shot:closeup person]Hernando.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/081.mp3"
     },
     {
       "t": "say",
       "char": "Ramirez",
       "text": "I don't know. I don't know what's in that folder. Give me twenty minutes.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/082.mp3"
     },
     {
       "t": "narrate",
@@ -384,11 +436,13 @@
     },
     {
       "t": "narrate",
-      "text": "Ramirez comes back."
+      "text": "Ramirez comes back.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/085.mp3"
     },
     {
       "t": "narrate",
-      "text": "Ramirez sits down."
+      "text": "Ramirez sits down.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/086.mp3"
     },
     {
       "t": "say",
@@ -410,13 +464,15 @@
     },
     {
       "t": "narrate",
-      "text": "Sam's mother stares at him."
+      "text": "Sam's mother stares at him.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/090.mp3"
     },
     {
       "t": "say",
       "char": "Sam's Mother",
       "text": "Hernando. Dean is offering this.",
-      "expr": "surprised"
+      "expr": "surprised",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/091.mp3"
     },
     {
       "t": "say",
@@ -440,29 +496,35 @@
       "t": "say",
       "char": "Sam's Mother",
       "text": "Hernando. Dean is the bad guy. Mike just told Sammy yesterday morning, at the lake, that Dean is the man he has been working for since 2017.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/095.mp3"
     },
     {
       "t": "narrate",
-      "text": "Ramirez looks at her."
+      "text": "Ramirez looks at her.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/096.mp3"
     },
     {
       "t": "say",
       "char": "Ramirez",
       "text": "[shot:closeup person_b]Mary. I think — I think Dean might also be the man who is, inside the federal apparatus, the one running this investigation. I think — I think he is on multiple sides of this at once. I think he has been, for some time.",
-      "expr": "thinking"
+      "expr": "thinking",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/097.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup sam]Sam, in the third row, looks at the man in the charcoal suit."
+      "text": "[shot:closeup sam]Sam, in the third row, looks at the man in the charcoal suit.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/098.mp3"
     },
     {
       "t": "narrate",
-      "text": "He is, again, reading a folder."
+      "text": "He is, again, reading a folder.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/099.mp3"
     },
     {
       "t": "narrate",
-      "text": "He does not, this time, look up."
+      "text": "He does not, this time, look up.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/100.mp3"
     },
     {
       "t": "narrate",
@@ -492,7 +554,8 @@
     {
       "t": "think",
       "char": "Sam",
-      "text": "Dad will choose. I will be okay with whatever he chooses."
+      "text": "Dad will choose. I will be okay with whatever he chooses.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/106.mp3"
     },
     {
       "t": "think",
@@ -512,41 +575,50 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Miriam, across the aisle, meets Sam's eye."
+      "text": "[shot:establish]Miriam, across the aisle, meets Sam's eye.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/110.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Miriam smiles, small and unworried."
+      "text": "[shot:establish]Miriam smiles, small and unworried.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/111.mp3"
     },
     {
       "t": "narrate",
-      "text": "Miriam, who has been, by Sam's mother's hand-pressure on Sam's hand at the moment Sam noticed her, already noticed by Sam's mother, raises one hand off her lap in the universal small gesture of I am here. You don't have to know me yet. I am here."
+      "text": "Miriam, who has been, by Sam's mother's hand-pressure on Sam's hand at the moment Sam noticed her, already noticed by Sam's mother, raises one hand off her lap in the universal small gesture of I am here. You don't have to know me yet. I am here.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/112.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam's mother, who does not know who Miriam is and who has already, in the past four hours, stopped being surprised by anything, returns the gesture."
+      "text": "Sam's mother, who does not know who Miriam is and who has already, in the past four hours, stopped being surprised by anything, returns the gesture.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/113.mp3"
     },
     {
       "t": "narrate",
-      "text": "The recess continues."
+      "text": "The recess continues.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/114.mp3"
     },
     {
       "t": "narrate",
-      "text": "Judge Halverson returns at 14:54."
+      "text": "Judge Halverson returns at 14:54.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/115.mp3"
     },
     {
       "t": "narrate",
-      "text": "She takes the bench."
+      "text": "She takes the bench.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/116.mp3"
     },
     {
       "t": "say",
       "char": "Judge",
       "text": "[mood:studio][shot:establish]Mr. Miller. Please rise.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/117.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam's father stands."
+      "text": "Sam's father stands.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/118.mp3"
     },
     {
       "t": "say",
@@ -570,17 +642,20 @@
       "t": "say",
       "char": "Chief Miller",
       "text": "[shot:closeup person]Yes, your honor.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/122.mp3"
     },
     {
       "t": "say",
       "char": "Judge",
       "text": "Counsel. Logistics.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/123.mp3"
     },
     {
       "t": "narrate",
-      "text": "The lawyers confer."
+      "text": "The lawyers confer.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/124.mp3"
     },
     {
       "t": "narrate",
@@ -596,16 +671,19 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup sam~]Sam, in the third row, raises her own right hand to her own neck."
+      "text": "[shot:closeup sam~]Sam, in the third row, raises her own right hand to her own neck.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/128.mp3"
     },
     {
       "t": "narrate",
-      "text": "Her father does not, technically, see it. The door has closed."
+      "text": "Her father does not, technically, see it. The door has closed.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/129.mp3"
     },
     {
       "t": "think",
       "char": "Sam",
-      "text": "He knows."
+      "text": "He knows.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/130.mp3"
     },
     {
       "t": "think",
@@ -620,36 +698,44 @@
     {
       "t": "think",
       "char": "Sam",
-      "text": "I will, in the next year, learn how to feel about this."
+      "text": "I will, in the next year, learn how to feel about this.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/133.mp3"
     },
     {
       "t": "think",
       "char": "Sam",
-      "text": "I will, today, only have to feel that he is alive and that the room is, in its strange way, on his side."
+      "text": "I will, today, only have to feel that he is alive and that the room is, in its strange way, on his side.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/134.mp3"
     },
     {
       "t": "narrate",
-      "text": "She lets her hand fall."
+      "text": "She lets her hand fall.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/135.mp3"
     },
     {
       "t": "narrate",
-      "text": "Her mother, beside her, presses her hand once."
+      "text": "Her mother, beside her, presses her hand once.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/136.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_b]Across the aisle, Miriam gives her another small unworried smile."
+      "text": "[shot:establish_b]Across the aisle, Miriam gives her another small unworried smile.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/137.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert folder]The man in the charcoal suit, in the second row of the prosecution side, gathers his folders. He stands. He does not, at any point, look at Sam."
+      "text": "[shot:insert folder]The man in the charcoal suit, in the second row of the prosecution side, gathers his folders. He stands. He does not, at any point, look at Sam.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/138.mp3"
     },
     {
       "t": "narrate",
-      "text": "He leaves through the main doors."
+      "text": "He leaves through the main doors.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/139.mp3"
     },
     {
       "t": "narrate",
-      "text": "The courtroom rises and disperses."
+      "text": "The courtroom rises and disperses.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/140.mp3"
     },
     {
       "t": "hide",
@@ -657,11 +743,13 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Sam, her mother, and Detective Ramirez stand together in the gallery, not moving."
+      "text": "[shot:establish]Sam, her mother, and Detective Ramirez stand together in the gallery, not moving.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/142.mp3"
     },
     {
       "t": "narrate",
-      "text": "Miriam crosses the aisle."
+      "text": "Miriam crosses the aisle.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/143.mp3"
     },
     {
       "t": "say",
@@ -685,37 +773,44 @@
       "t": "say",
       "char": "Sam's Mother",
       "text": "Miriam. Thank you.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/147.mp3"
     },
     {
       "t": "say",
       "char": "Miriam",
       "text": "I have a car at the curb. I can give you a ride home. It's the green one. Let me know.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/148.mp3"
     },
     {
       "t": "narrate",
-      "text": "She turns. She walks out."
+      "text": "She turns. She walks out.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/149.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam, her mother, and Ramirez stand for another long moment."
+      "text": "Sam, her mother, and Ramirez stand for another long moment.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/150.mp3"
     },
     {
       "t": "say",
       "char": "Sam's Mother",
       "text": "[shot:closeup person]Hernando. We're going to take the green car.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/151.mp3"
     },
     {
       "t": "say",
       "char": "Ramirez",
       "text": "I think that's right, Mary.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/152.mp3"
     },
     {
       "t": "narrate",
-      "text": "He walks them out."
+      "text": "He walks them out.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/153.mp3"
     },
     {
       "t": "narrate",
@@ -735,44 +830,54 @@
     },
     {
       "t": "narrate",
-      "text": "She looks at the back seat."
+      "text": "She looks at the back seat.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/158.mp3"
     },
     {
       "t": "narrate",
-      "text": "The back seat is empty."
+      "text": "The back seat is empty.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/159.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert quilt]But the seat itself — Sam can see, with the small attention that has, this week, become her practice — bears, on the upholstery, a single faint outline of a quilt that has been, recently and for a long stretch, folded there."
+      "text": "[shot:insert quilt]But the seat itself — Sam can see, with the small attention that has, this week, become her practice — bears, on the upholstery, a single faint outline of a quilt that has been, recently and for a long stretch, folded there.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/160.mp3"
     },
     {
       "t": "narrate",
-      "text": "Twilight-colored."
+      "text": "Twilight-colored.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/161.mp3"
     },
     {
       "t": "think",
       "char": "Sam",
-      "text": "Nicola. Aria. The third one."
+      "text": "Nicola. Aria. The third one.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/162.mp3"
     },
     {
       "t": "narrate",
-      "text": "She does not say it aloud."
+      "text": "She does not say it aloud.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/163.mp3"
     },
     {
       "t": "narrate",
-      "text": "She gets in the back seat."
+      "text": "She gets in the back seat.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/164.mp3"
     },
     {
       "t": "narrate",
-      "text": "She rests, for a moment, in the same place that the girl from Maya's story had rested, six weeks ago, on a different leg of the same long route."
+      "text": "She rests, for a moment, in the same place that the girl from Maya's story had rested, six weeks ago, on a different leg of the same long route.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/165.mp3"
     },
     {
       "t": "narrate",
-      "text": "Miriam puts the Subaru in gear."
+      "text": "Miriam puts the Subaru in gear.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/166.mp3"
     },
     {
       "t": "narrate",
-      "text": "They drive home."
+      "text": "They drive home.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/167.mp3"
     },
     {
       "t": "hide",
@@ -792,23 +897,28 @@
     },
     {
       "t": "narrate",
-      "text": "Linda smiles, very faintly."
+      "text": "Linda smiles, very faintly.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/172.mp3"
     },
     {
       "t": "narrate",
-      "text": "She closes her eyes."
+      "text": "She closes her eyes.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/173.mp3"
     },
     {
       "t": "narrate",
-      "text": "She says, quietly, to nobody and everybody: Thomas. The girl is at the courthouse. She did fine. The room's friend brought the car. The mother held the hand. We are going to be alright, love."
+      "text": "She says, quietly, to nobody and everybody: Thomas. The girl is at the courthouse. She did fine. The room's friend brought the car. The mother held the hand. We are going to be alright, love.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/174.mp3"
     },
     {
       "t": "narrate",
-      "text": "The hum hums."
+      "text": "The hum hums.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/175.mp3"
     },
     {
       "t": "narrate",
-      "text": "Outside, in the New Auburn afternoon, the sun does its slow late-May work."
+      "text": "Outside, in the New Auburn afternoon, the sun does its slow late-May work.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/176.mp3"
     },
     {
       "t": "narrate",
@@ -820,75 +930,93 @@
     },
     {
       "t": "narrate",
-      "text": "The Chariot, drawn by two horses pulling in opposite directions, has — for one quiet hour at the close of one strange Monday — found its third wheel."
+      "text": "The Chariot, drawn by two horses pulling in opposite directions, has — for one quiet hour at the close of one strange Monday — found its third wheel.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/179.mp3"
     },
     {
       "t": "narrate",
-      "text": "The third wheel was Miriam."
+      "text": "The third wheel was Miriam.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/180.mp3"
     },
     {
       "t": "narrate",
-      "text": "The third wheel was the older system, deciding, on its own quiet schedule, that this family was, today, going to get a ride home."
+      "text": "The third wheel was the older system, deciding, on its own quiet schedule, that this family was, today, going to get a ride home.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/181.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam will, by the time they reach the driveway at four-fifty-one PM, fall asleep in the back seat."
+      "text": "Sam will, by the time they reach the driveway at four-fifty-one PM, fall asleep in the back seat.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/182.mp3"
     },
     {
       "t": "narrate",
-      "text": "Her mother will, gently, wake her."
+      "text": "Her mother will, gently, wake her.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/183.mp3"
     },
     {
       "t": "narrate",
-      "text": "They will go inside."
+      "text": "They will go inside.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/184.mp3"
     },
     {
       "t": "narrate",
-      "text": "The house, for the first time in nine years, will be — formally, on paper — a house her father does not, today, live in."
+      "text": "The house, for the first time in nine years, will be — formally, on paper — a house her father does not, today, live in.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/185.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]But the house, when they walk through the door, will smell of the cooking her mother had started before they left. Pot roast. The same one, cooking all afternoon on warm."
+      "text": "[shot:establish]But the house, when they walk through the door, will smell of the cooking her mother had started before they left. Pot roast. The same one, cooking all afternoon on warm.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/186.mp3"
     },
     {
       "t": "narrate",
-      "text": "There will be enough for three."
+      "text": "There will be enough for three.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/187.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam's mother will, without comment, set the third plate."
+      "text": "Sam's mother will, without comment, set the third plate.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/188.mp3"
     },
     {
       "t": "narrate",
-      "text": "They will eat together."
+      "text": "They will eat together.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/189.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]They will sit at the table for a long time after."
+      "text": "[shot:establish]They will sit at the table for a long time after.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/190.mp3"
     },
     {
       "t": "narrate",
-      "text": "They will not, that night, talk about it."
+      "text": "They will not, that night, talk about it.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/191.mp3"
     },
     {
       "t": "narrate",
-      "text": "They will, both of them, sleep."
+      "text": "They will, both of them, sleep.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/192.mp3"
     },
     {
       "t": "narrate",
-      "text": "The week will close."
+      "text": "The week will close.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/193.mp3"
     },
     {
       "t": "narrate",
-      "text": "The town will, in its small ways, begin to learn what it is, after a Saturday that did not kill any of them and a Monday that did not, against expectation, take her father from her."
+      "text": "The town will, in its small ways, begin to learn what it is, after a Saturday that did not kill any of them and a Monday that did not, against expectation, take her father from her.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/194.mp3"
     },
     {
       "t": "narrate",
-      "text": "The summer will continue."
+      "text": "The summer will continue.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/195.mp3"
     },
     {
       "t": "narrate",
-      "text": "There are seventy-six days left."
+      "text": "There are seventy-six days left.",
+      "voice": "assets/audio/voice/vol6_ch8_courthouse/196.mp3"
     },
     {
       "t": "end"

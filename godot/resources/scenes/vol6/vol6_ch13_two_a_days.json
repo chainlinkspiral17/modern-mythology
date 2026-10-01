@@ -29,7 +29,8 @@
   },
   {
    "t": "narrate",
-   "text": "[trip:1.2][mood:dawn_warm]The truck is in the lot when Ben pulls in at five fifty-three."
+   "text": "[trip:1.2][mood:dawn_warm]The truck is in the lot when Ben pulls in at five fifty-three.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/005.mp3"
   },
   {
    "t": "narrate",
@@ -63,7 +64,8 @@
   },
   {
    "t": "narrate",
-   "text": "The song this morning is Sweet Child o' Mine."
+   "text": "The song this morning is Sweet Child o' Mine.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/013.mp3"
   },
   {
    "t": "narrate",
@@ -81,15 +83,18 @@
   },
   {
    "t": "narrate",
-   "text": "He gets out of the Civic."
+   "text": "He gets out of the Civic.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/017.mp3"
   },
   {
    "t": "narrate",
-   "text": "He walks across the lot."
+   "text": "He walks across the lot.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/018.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]Coach K does not, when Ben crosses the lot, look up."
+   "text": "[shot:establish]Coach K does not, when Ben crosses the lot, look up.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/019.mp3"
   },
   {
    "t": "narrate",
@@ -109,15 +114,18 @@
   },
   {
    "t": "narrate",
-   "text": "He does this now."
+   "text": "He does this now.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/024.mp3"
   },
   {
    "t": "narrate",
-   "text": "Coach K, at the truck, registers Ben in his peripheral vision and does not, externally, react."
+   "text": "Coach K, at the truck, registers Ben in his peripheral vision and does not, externally, react.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/025.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]The other kids start arriving at five fifty-six."
+   "text": "[shot:establish]The other kids start arriving at five fifty-six.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/026.mp3"
   },
   {
    "t": "show",
@@ -153,23 +161,28 @@
   },
   {
    "t": "narrate",
-   "text": "Marcus, Leo, Diaz, Pete, Jonah — the rest of the team filters in by six oh-two. Pete, the freshman, is the last to arrive. Pete had hesitated, last week, about coming to two-a-days. Pete's father had told him to come anyway. Pete is here."
+   "text": "Marcus, Leo, Diaz, Pete, Jonah — the rest of the team filters in by six oh-two. Pete, the freshman, is the last to arrive. Pete had hesitated, last week, about coming to two-a-days. Pete's father had told him to come anyway. Pete is here.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/034.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert truck]Coach K does the equipment cart for two more minutes. At six oh-five he closes the tailgate, turns off the cab music, locks the truck, and walks the cart to the field gate."
+   "text": "[shot:insert truck]Coach K does the equipment cart for two more minutes. At six oh-five he closes the tailgate, turns off the cab music, locks the truck, and walks the cart to the field gate.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/035.mp3"
   },
   {
    "t": "narrate",
-   "text": "He does not say anything."
+   "text": "He does not say anything.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/036.mp3"
   },
   {
    "t": "narrate",
-   "text": "The team falls in behind him."
+   "text": "The team falls in behind him.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/037.mp3"
   },
   {
    "t": "narrate",
-   "text": "The conditioning run is three miles."
+   "text": "The conditioning run is three miles.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/038.mp3"
   },
   {
    "t": "narrate",
@@ -181,11 +194,13 @@
   },
   {
    "t": "narrate",
-   "text": "Coach K does not, this morning, run with them. Coach K runs with the team about half the time. The other half he stations himself at the infield where the asphalt road makes its closest pass to the football field, and watches them go past."
+   "text": "Coach K does not, this morning, run with them. Coach K runs with the team about half the time. The other half he stations himself at the infield where the asphalt road makes its closest pass to the football field, and watches them go past.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/041.mp3"
   },
   {
    "t": "narrate",
-   "text": "This morning he is on the infield."
+   "text": "This morning he is on the infield.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/042.mp3"
   },
   {
    "t": "narrate",
@@ -197,7 +212,8 @@
   },
   {
    "t": "narrate",
-   "text": "By the second mile Tucker is hurting."
+   "text": "By the second mile Tucker is hurting.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/045.mp3"
   },
   {
    "t": "narrate",
@@ -209,25 +225,30 @@
   },
   {
    "t": "narrate",
-   "text": "By the third mile the team has spread out."
+   "text": "By the third mile the team has spread out.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/048.mp3"
   },
   {
    "t": "narrate",
-   "text": "Brent and Ben finish at twenty-two minutes flat. Marcus at twenty-three. Leo and Diaz at twenty-four. Jonah at twenty-four-thirty. Pete, who slows and then walks the last hundred yards, comes in at twenty-six. Tucker, last, finishes at twenty-six-fifty."
+   "text": "Brent and Ben finish at twenty-two minutes flat. Marcus at twenty-three. Leo and Diaz at twenty-four. Jonah at twenty-four-thirty. Pete, who slows and then walks the last hundred yards, comes in at twenty-six. Tucker, last, finishes at twenty-six-fifty.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/049.mp3"
   },
   {
    "t": "narrate",
-   "text": "Coach K clicks the stopwatch off."
+   "text": "Coach K clicks the stopwatch off.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/050.mp3"
   },
   {
    "t": "say",
    "char": "Coach K",
    "text": "[shot:closeup person]Water. Five minutes. Then weights.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/051.mp3"
   },
   {
    "t": "narrate",
-   "text": "The team goes to the spigots at the side of the field."
+   "text": "The team goes to the spigots at the side of the field.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/052.mp3"
   },
   {
    "t": "bg",
@@ -235,7 +256,8 @@
   },
   {
    "t": "narrate",
-   "text": "The weight room is in the basement of the gym building."
+   "text": "The weight room is in the basement of the gym building.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/054.mp3"
   },
   {
    "t": "narrate",
@@ -251,7 +273,8 @@
   },
   {
    "t": "narrate",
-   "text": "The room smells of rubber and chalk and the sweet-sour of a high school weight room in August."
+   "text": "The room smells of rubber and chalk and the sweet-sour of a high school weight room in August.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/058.mp3"
   },
   {
    "t": "narrate",
@@ -267,111 +290,133 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:fluorescent_corridor][shot:closeup coach_k]Ben is on the squat rack at six fifty-eight when Coach K comes by."
+   "text": "[mood:fluorescent_corridor][shot:closeup coach_k]Ben is on the squat rack at six fifty-eight when Coach K comes by.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/062.mp3"
   },
   {
    "t": "say",
    "char": "Coach K",
    "text": "Down five from yesterday. Don't argue.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/063.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "Coach.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/064.mp3"
   },
   {
    "t": "say",
    "char": "Coach K",
    "text": "Down five. Your knees were tight yesterday. I saw.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/065.mp3"
   },
   {
    "t": "narrate",
-   "text": "Ben does not, at the rack, argue. He pulls a five-pound plate off each side. He re-racks. He does the set at the lower weight."
+   "text": "Ben does not, at the rack, argue. He pulls a five-pound plate off each side. He re-racks. He does the set at the lower weight.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/066.mp3"
   },
   {
    "t": "narrate",
-   "text": "Coach K watches and does not comment further."
+   "text": "Coach K watches and does not comment further.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/067.mp3"
   },
   {
    "t": "narrate",
-   "text": "He moves to the bench, where Brent is doing his second set, and watches Brent's bar path for a moment, and corrects nothing because Brent's bar path is, today, what it should be."
+   "text": "He moves to the bench, where Brent is doing his second set, and watches Brent's bar path for a moment, and corrects nothing because Brent's bar path is, today, what it should be.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/068.mp3"
   },
   {
    "t": "narrate",
-   "text": "He moves to the deadlift platform, where Tucker is."
+   "text": "He moves to the deadlift platform, where Tucker is.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/069.mp3"
   },
   {
    "t": "narrate",
-   "text": "He stands there for a longer beat."
+   "text": "He stands there for a longer beat.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/070.mp3"
   },
   {
    "t": "say",
    "char": "Coach K",
    "text": "[shot:closeup person]Tuck.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/071.mp3"
   },
   {
    "t": "narrate",
-   "text": "Tucker, mid-pull, sets the bar down."
+   "text": "Tucker, mid-pull, sets the bar down.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/072.mp3"
   },
   {
    "t": "say",
    "char": "Coach K",
    "text": "You're rounding at the bottom. You know you're rounding.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/073.mp3"
   },
   {
    "t": "say",
    "char": "Tucker",
    "text": "Yeah, Coach.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/074.mp3"
   },
   {
    "t": "say",
    "char": "Coach K",
    "text": "Why are you rounding.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/075.mp3"
   },
   {
    "t": "say",
    "char": "Tucker",
    "text": "[shot:closeup person_b]My back's tight from the run.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/076.mp3"
   },
   {
    "t": "say",
    "char": "Coach K",
    "text": "Your back is tight every morning, Tuck. You are rounding because you are not, this morning, paying attention. Pay attention. Go again. Cleaner.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/077.mp3"
   },
   {
    "t": "narrate",
-   "text": "Tucker resets."
+   "text": "Tucker resets.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/078.mp3"
   },
   {
    "t": "narrate",
-   "text": "Tucker pulls."
+   "text": "Tucker pulls.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/079.mp3"
   },
   {
    "t": "narrate",
-   "text": "The pull is cleaner."
+   "text": "The pull is cleaner.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/080.mp3"
   },
   {
    "t": "say",
    "char": "Coach K",
    "text": "[shot:closeup person]Better. Two more like that. Then you're done with deadlift today.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/081.mp3"
   },
   {
    "t": "narrate",
-   "text": "He moves on."
+   "text": "He moves on.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/082.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup ben]Ben, from the squat rack, watches."
+   "text": "[shot:closeup ben]Ben, from the squat rack, watches.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/083.mp3"
   },
   {
    "t": "narrate",
@@ -391,41 +436,49 @@
   },
   {
    "t": "narrate",
-   "text": "Ben re-racks the bar."
+   "text": "Ben re-racks the bar.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/088.mp3"
   },
   {
    "t": "narrate",
-   "text": "He sits on the bench for a moment to breathe."
+   "text": "He sits on the bench for a moment to breathe.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/089.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert rack]Coach K, at the deadlift platform, has just turned and is walking back toward the squat rack."
+   "text": "[shot:insert rack]Coach K, at the deadlift platform, has just turned and is walking back toward the squat rack.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/090.mp3"
   },
   {
    "t": "say",
    "char": "Coach K",
    "text": "[shot:closeup person]Ben. Three more sets at the new weight. Then bench. Eileen made me eggs this morning. I forgot to thank her. You ever forget to thank somebody for a thing they did and have it bother you all morning?",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/091.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/092.mp3"
   },
   {
    "t": "say",
    "char": "Coach K",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/093.mp3"
   },
   {
    "t": "narrate",
-   "text": "Coach K keeps walking."
+   "text": "Coach K keeps walking.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/094.mp3"
   },
   {
    "t": "narrate",
-   "text": "Ben does the three sets."
+   "text": "Ben does the three sets.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/095.mp3"
   },
   {
    "t": "narrate",
@@ -441,11 +494,13 @@
   },
   {
    "t": "narrate",
-   "text": "Ben files it."
+   "text": "Ben files it.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/099.mp3"
   },
   {
    "t": "narrate",
-   "text": "He moves to bench."
+   "text": "He moves to bench.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/100.mp3"
   },
   {
    "t": "bg",
@@ -453,7 +508,8 @@
   },
   {
    "t": "narrate",
-   "text": "By seven-thirty the team is at the field gate, in pads."
+   "text": "By seven-thirty the team is at the field gate, in pads.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/102.mp3"
   },
   {
    "t": "narrate",
@@ -471,45 +527,54 @@
   },
   {
    "t": "narrate",
-   "text": "Tucker, who is in the middle of the pack on pads-on time, looks at Pete after he finishes his own. Tucker, without saying anything, walks over to Pete and adjusts the back of Pete's shoulder strap, which Pete has crossed wrong."
+   "text": "Tucker, who is in the middle of the pack on pads-on time, looks at Pete after he finishes his own. Tucker, without saying anything, walks over to Pete and adjusts the back of Pete's shoulder strap, which Pete has crossed wrong.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/106.mp3"
   },
   {
    "t": "say",
    "char": "Pete",
    "text": "[shot:closeup person]Thanks, man.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/107.mp3"
   },
   {
    "t": "say",
    "char": "Tucker",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/108.mp3"
   },
   {
    "t": "narrate",
-   "text": "Tucker walks back to the bench."
+   "text": "Tucker walks back to the bench.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/109.mp3"
   },
   {
    "t": "narrate",
-   "text": "Ben, watching this, files it."
+   "text": "Ben, watching this, files it.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/110.mp3"
   },
   {
    "t": "narrate",
-   "text": "[mood:day_bright][shot:establish]Coach K, at the field gate, claps once."
+   "text": "[mood:day_bright][shot:establish]Coach K, at the field gate, claps once.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/111.mp3"
   },
   {
    "t": "say",
    "char": "Coach K",
    "text": "Cones. Three lines. Brent, Ben, Marcus front. Move.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/112.mp3"
   },
   {
    "t": "narrate",
-   "text": "The team moves."
+   "text": "The team moves.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/113.mp3"
   },
   {
    "t": "narrate",
-   "text": "The cone work is the technical part of the morning."
+   "text": "The cone work is the technical part of the morning.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/114.mp3"
   },
   {
    "t": "narrate",
@@ -529,7 +594,8 @@
   },
   {
    "t": "narrate",
-   "text": "Ben does the cone drill."
+   "text": "Ben does the cone drill.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/119.mp3"
   },
   {
    "t": "narrate",
@@ -543,39 +609,47 @@
    "t": "say",
    "char": "Coach K",
    "text": "[shot:closeup coach_k]Ben. Right foot.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/122.mp3"
   },
   {
    "t": "narrate",
-   "text": "Ben resets."
+   "text": "Ben resets.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/123.mp3"
   },
   {
    "t": "narrate",
-   "text": "Ben does the drill."
+   "text": "Ben does the drill.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/124.mp3"
   },
   {
    "t": "narrate",
-   "text": "This time the right foot is — slightly — even."
+   "text": "This time the right foot is — slightly — even.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/125.mp3"
   },
   {
    "t": "say",
    "char": "Coach K",
    "text": "Better. Again.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/126.mp3"
   },
   {
    "t": "narrate",
-   "text": "Ben does it again."
+   "text": "Ben does it again.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/127.mp3"
   },
   {
    "t": "narrate",
-   "text": "The right foot is better still."
+   "text": "The right foot is better still.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/128.mp3"
   },
   {
    "t": "say",
    "char": "Coach K",
    "text": "[shot:closeup person_b]Okay. You'll have it by Friday. Move out, Marcus is up.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/129.mp3"
   },
   {
    "t": "narrate",
@@ -587,7 +661,8 @@
   },
   {
    "t": "narrate",
-   "text": "The half-line drill is the contact part."
+   "text": "The half-line drill is the contact part.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/132.mp3"
   },
   {
    "t": "narrate",
@@ -599,7 +674,8 @@
   },
   {
    "t": "narrate",
-   "text": "The half-line is run against the second-team defense."
+   "text": "The half-line is run against the second-team defense.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/135.mp3"
   },
   {
    "t": "narrate",
@@ -611,19 +687,23 @@
   },
   {
    "t": "narrate",
-   "text": "Coach K, on the sideline, says nothing."
+   "text": "Coach K, on the sideline, says nothing.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/138.mp3"
   },
   {
    "t": "narrate",
-   "text": "The second play is a sweep. Ben kicks out the end. The end is Diaz. The kick-out is, by the look on Coach K's face, fine."
+   "text": "The second play is a sweep. Ben kicks out the end. The end is Diaz. The kick-out is, by the look on Coach K's face, fine.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/139.mp3"
   },
   {
    "t": "narrate",
-   "text": "The third play is a play-action. Ben chips the end and releases on the drag."
+   "text": "The third play is a play-action. Ben chips the end and releases on the drag.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/140.mp3"
   },
   {
    "t": "narrate",
-   "text": "Coach K does not, on this play, say anything either."
+   "text": "Coach K does not, on this play, say anything either.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/141.mp3"
   },
   {
    "t": "narrate",
@@ -639,95 +719,113 @@
   },
   {
    "t": "narrate",
-   "text": "Coach K calls the drill at the fifteenth play."
+   "text": "Coach K calls the drill at the fifteenth play.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/145.mp3"
   },
   {
    "t": "say",
    "char": "Coach K",
    "text": "[shot:closeup person]Water. Two minutes.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/146.mp3"
   },
   {
    "t": "narrate",
-   "text": "The team goes to the sideline."
+   "text": "The team goes to the sideline.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/147.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup brent]Brent finds Ben at the cooler."
+   "text": "[shot:closeup brent]Brent finds Ben at the cooler.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/148.mp3"
   },
   {
    "t": "say",
    "char": "Brent",
    "text": "Hey.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/149.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/150.mp3"
   },
   {
    "t": "say",
    "char": "Brent",
    "text": "You been at tight end all week.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/151.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/152.mp3"
   },
   {
    "t": "say",
    "char": "Brent",
    "text": "You see what he's doing.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/153.mp3"
   },
   {
    "t": "narrate",
-   "text": "Ben drinks from the cooler. He sets the cup down."
+   "text": "Ben drinks from the cooler. He sets the cup down.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/154.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "[shot:closeup person]Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/155.mp3"
   },
   {
    "t": "say",
    "char": "Brent",
    "text": "Friday.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/156.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/157.mp3"
   },
   {
    "t": "narrate",
-   "text": "Brent nods."
+   "text": "Brent nods.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/158.mp3"
   },
   {
    "t": "say",
    "char": "Brent",
    "text": "[beat:lift]Good. You're ready.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/159.mp3"
   },
   {
    "t": "narrate",
-   "text": "Brent walks away."
+   "text": "Brent walks away.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/160.mp3"
   },
   {
    "t": "narrate",
-   "text": "Ben drinks again. He fills a second cup. He drinks that one too. He goes back to the bench."
+   "text": "Ben drinks again. He fills a second cup. He drinks that one too. He goes back to the bench.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/161.mp3"
   },
   {
    "t": "narrate",
-   "text": "The morning ends at eleven oh-three."
+   "text": "The morning ends at eleven oh-three.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/162.mp3"
   },
   {
    "t": "narrate",
@@ -741,15 +839,18 @@
    "t": "say",
    "char": "Coach K",
    "text": "Good. Water. Hit the showers. Friday at noon for the chart.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/165.mp3"
   },
   {
    "t": "narrate",
-   "text": "The team disperses."
+   "text": "The team disperses.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/166.mp3"
   },
   {
    "t": "narrate",
-   "text": "Ben goes to the field gate, picks up his bag, walks to the locker room. He showers. He changes into the jeans and the t-shirt he had brought. He walks out to the Civic at eleven thirty-six."
+   "text": "Ben goes to the field gate, picks up his bag, walks to the locker room. He showers. He changes into the jeans and the t-shirt he had brought. He walks out to the Civic at eleven thirty-six.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/167.mp3"
   },
   {
    "t": "narrate",
@@ -761,15 +862,18 @@
   },
   {
    "t": "narrate",
-   "text": "Ben, on his way to the Civic, does not interrupt them."
+   "text": "Ben, on his way to the Civic, does not interrupt them.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/170.mp3"
   },
   {
    "t": "narrate",
-   "text": "He gets in."
+   "text": "He gets in.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/171.mp3"
   },
   {
    "t": "narrate",
-   "text": "He drives."
+   "text": "He drives.",
+   "voice": "assets/audio/voice/vol6_ch13_two_a_days/172.mp3"
   },
   {
    "t": "jump",

@@ -41,26 +41,31 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2][mood:candlelight_low]In Ben's truck, ten minutes later, Maya says, quietly, without looking at him:"
+      "text": "[trip:1.2][mood:candlelight_low]In Ben's truck, ten minutes later, Maya says, quietly, without looking at him:",
+      "voice": "assets/audio/voice/vol6_ch5_radio/007.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
-      "text": "[shot:closeup person]Ben. Tell me something about your family."
+      "text": "[shot:closeup person]Ben. Tell me something about your family.",
+      "voice": "assets/audio/voice/vol6_ch5_radio/008.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
-      "text": "Huh?"
+      "text": "Huh?",
+      "voice": "assets/audio/voice/vol6_ch5_radio/009.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
-      "text": "Your family. I don't know anything about you. I realized tonight I don't know anything about any of you. I don't know anybody's family. I'm doing this all through other people's information."
+      "text": "Your family. I don't know anything about you. I realized tonight I don't know anything about any of you. I don't know anybody's family. I'm doing this all through other people's information.",
+      "voice": "assets/audio/voice/vol6_ch5_radio/010.mp3"
     },
     {
       "t": "narrate",
-      "text": "Ben thinks about it for a block."
+      "text": "Ben thinks about it for a block.",
+      "voice": "assets/audio/voice/vol6_ch5_radio/011.mp3"
     },
     {
       "t": "say",
@@ -79,26 +84,31 @@
     },
     {
       "t": "narrate",
-      "text": "Maya smiles in the dark of the passenger seat."
+      "text": "Maya smiles in the dark of the passenger seat.",
+      "voice": "assets/audio/voice/vol6_ch5_radio/015.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
-      "text": "I'd like to meet Daisy someday."
+      "text": "I'd like to meet Daisy someday.",
+      "voice": "assets/audio/voice/vol6_ch5_radio/016.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
-      "text": "Saturday after the breakfast. Come by. I'll introduce you."
+      "text": "Saturday after the breakfast. Come by. I'll introduce you.",
+      "voice": "assets/audio/voice/vol6_ch5_radio/017.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
-      "text": "[shot:closeup person]Okay."
+      "text": "[shot:closeup person]Okay.",
+      "voice": "assets/audio/voice/vol6_ch5_radio/018.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]The truck turns onto Prairie View."
+      "text": "[shot:establish]The truck turns onto Prairie View.",
+      "voice": "assets/audio/voice/vol6_ch5_radio/019.mp3"
     },
     {
       "t": "hide",
@@ -120,11 +130,13 @@
     },
     {
       "t": "narrate",
-      "text": "At Maya's grandmother's house, the upstairs window is lit. Her grandmother is awake. She is, at eleven PM on a Thursday in late May, at her shortwave radio. She is not, tonight, listening. She is, tonight, transmitting."
+      "text": "At Maya's grandmother's house, the upstairs window is lit. Her grandmother is awake. She is, at eleven PM on a Thursday in late May, at her shortwave radio. She is not, tonight, listening. She is, tonight, transmitting.",
+      "voice": "assets/audio/voice/vol6_ch5_radio/024.mp3"
     },
     {
       "t": "narrate",
-      "text": "[mood:arcana][shot:insert radio~]She is sending, on 1776 kHz, a single phrase, over and over, in Morse code she has not used since 1989, in the cadence her husband Thomas had taught her: Thomas is gone. [wave amp=5 freq=2]Maya is here. I remember.[/wave]"
+      "text": "[mood:arcana][shot:insert radio~]She is sending, on 1776 kHz, a single phrase, over and over, in Morse code she has not used since 1989, in the cadence her husband Thomas had taught her: Thomas is gone. [wave amp=5 freq=2]Maya is here. I remember.[/wave]",
+      "voice": "assets/audio/voice/vol6_ch5_radio/025.mp3"
     },
     {
       "t": "narrate",
@@ -170,12 +182,14 @@
     },
     {
       "t": "narrate",
-      "text": "She goes upstairs. She knocks, quietly, on her grandmother's door."
+      "text": "She goes upstairs. She knocks, quietly, on her grandmother's door.",
+      "voice": "assets/audio/voice/vol6_ch5_radio/036.mp3"
     },
     {
       "t": "say",
       "char": "Ms. Caldwell",
-      "text": "[shot:closeup person]Come in, honey."
+      "text": "[shot:closeup person]Come in, honey.",
+      "voice": "assets/audio/voice/vol6_ch5_radio/037.mp3"
     },
     {
       "t": "bg",
@@ -183,21 +197,25 @@
     },
     {
       "t": "narrate",
-      "text": "Maya goes in. Her grandmother is at the radio. The radio is still transmitting."
+      "text": "Maya goes in. Her grandmother is at the radio. The radio is still transmitting.",
+      "voice": "assets/audio/voice/vol6_ch5_radio/039.mp3"
     },
     {
       "t": "say",
       "char": "Ms. Caldwell",
-      "text": "[mood:candlelight_low][shot:closeup ms_caldwell]I was telling your grandfather about you, sweetheart. I do that some nights. I don't know if he can hear. But I tell him anyway."
+      "text": "[mood:candlelight_low][shot:closeup ms_caldwell]I was telling your grandfather about you, sweetheart. I do that some nights. I don't know if he can hear. But I tell him anyway.",
+      "voice": "assets/audio/voice/vol6_ch5_radio/040.mp3"
     },
     {
       "t": "narrate",
-      "text": "Maya crosses to the radio. She sits on the edge of the bed."
+      "text": "Maya crosses to the radio. She sits on the edge of the bed.",
+      "voice": "assets/audio/voice/vol6_ch5_radio/041.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
-      "text": "Tell him I said hi."
+      "text": "Tell him I said hi.",
+      "voice": "assets/audio/voice/vol6_ch5_radio/042.mp3"
     },
     {
       "t": "show",
@@ -207,7 +225,8 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert radio]Her grandmother smiles. Her grandmother keys the Morse: Maya says hi. She releases the key. The radio hums. The dogs, outside, are silent now."
+      "text": "[shot:insert radio]Her grandmother smiles. Her grandmother keys the Morse: Maya says hi. She releases the key. The radio hums. The dogs, outside, are silent now.",
+      "voice": "assets/audio/voice/vol6_ch5_radio/044.mp3"
     },
     {
       "t": "show",
@@ -243,7 +262,8 @@
     },
     {
       "t": "narrate",
-      "text": "She sleeps. Tomorrow is Friday. Tomorrow is the rescue. She is ready to let the adults do it, for one more day. She sleeps well. She does not, tonight, dream."
+      "text": "She sleeps. Tomorrow is Friday. Tomorrow is the rescue. She is ready to let the adults do it, for one more day. She sleeps well. She does not, tonight, dream.",
+      "voice": "assets/audio/voice/vol6_ch5_radio/052.mp3"
     },
     {
       "t": "hide",

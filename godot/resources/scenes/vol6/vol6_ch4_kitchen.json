@@ -37,12 +37,14 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup mrs_miller]Her mother is in the kitchen. Her mother is at the stove. She is making something that smells like chicken cacciatore. Sam's mother's chicken cacciatore is, in the family's informal hierarchy of her mother's cooking, a top-five dish."
+      "text": "[shot:closeup mrs_miller]Her mother is in the kitchen. Her mother is at the stove. She is making something that smells like chicken cacciatore. Sam's mother's chicken cacciatore is, in the family's informal hierarchy of her mother's cooking, a top-five dish.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/007.mp3"
     },
     {
       "t": "say",
       "char": "Mrs. Miller",
-      "text": "Sammy! You're soaked."
+      "text": "Sammy! You're soaked.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/008.mp3"
     },
     {
       "t": "show",
@@ -53,16 +55,19 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "Yeah. It's — Mom, it's coming down hard."
+      "text": "Yeah. It's — Mom, it's coming down hard.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/010.mp3"
     },
     {
       "t": "say",
       "char": "Mrs. Miller",
-      "text": "Go change. Dinner in ten."
+      "text": "Go change. Dinner in ten.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/011.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam goes upstairs. She changes. She comes down."
+      "text": "Sam goes upstairs. She changes. She comes down.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/012.mp3"
     },
     {
       "t": "show",
@@ -81,26 +86,31 @@
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "Hey, Sammy."
+      "text": "Hey, Sammy.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/016.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
-      "text": "Hey, Dad. You're off early."
+      "text": "Hey, Dad. You're off early.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/017.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "Took the evening. Needed a break."
+      "text": "Took the evening. Needed a break.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/018.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
-      "text": "[shot:closeup person]Oh. Okay."
+      "text": "[shot:closeup person]Oh. Okay.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/019.mp3"
     },
     {
       "t": "narrate",
-      "text": "Her mother brings the platter to the table. Pasta. Chicken. Bread she made this afternoon. A salad with the vinaigrette Sam has loved since she was six. They sit. They eat."
+      "text": "Her mother brings the platter to the table. Pasta. Chicken. Bread she made this afternoon. A salad with the vinaigrette Sam has loved since she was six. They sit. They eat.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/020.mp3"
     },
     {
       "t": "narrate",
@@ -118,69 +128,83 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup miller~]At seven-oh-four, her father sets down his fork."
+      "text": "[shot:closeup miller~]At seven-oh-four, her father sets down his fork.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/024.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "Sammy."
+      "text": "Sammy.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/025.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
-      "text": "Yeah."
+      "text": "Yeah.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/026.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "You ever think about —"
+      "text": "You ever think about —",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/027.mp3"
     },
     {
       "t": "narrate",
-      "text": "He pauses. He looks at his wife. Her mother looks back. Something passes between them that Sam does not catch. Then her father looks at her."
+      "text": "He pauses. He looks at his wife. Her mother looks back. Something passes between them that Sam does not catch. Then her father looks at her.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/028.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "[shot:closeup person]You ever think about where you want to be in, say, five years?"
+      "text": "[shot:closeup person]You ever think about where you want to be in, say, five years?",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/029.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam's heart, unexpectedly, speeds up."
+      "text": "Sam's heart, unexpectedly, speeds up.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/030.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
-      "text": "I'm seventeen, Dad."
+      "text": "I'm seventeen, Dad.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/031.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "I know."
+      "text": "I know.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/032.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
-      "text": "Five years is a lot."
+      "text": "Five years is a lot.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/033.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "[shot:closeup person_b]I know."
+      "text": "[shot:closeup person_b]I know.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/034.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
-      "text": "[shot:closeup person_b]I haven't — I haven't really thought about it."
+      "text": "[shot:closeup person_b]I haven't — I haven't really thought about it.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/035.mp3"
     },
     {
       "t": "narrate",
-      "text": "Her father nods. He picks up his wine. He drinks. He sets the glass down."
+      "text": "Her father nods. He picks up his wine. He drinks. He sets the glass down.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/036.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "I'm going to say something that is going to sound strange. I want you to know it is not, I promise you, the beginning of a conversation I am about to have with you that you are not ready for. I am saying it because — because I love you. Okay."
+      "text": "I'm going to say something that is going to sound strange. I want you to know it is not, I promise you, the beginning of a conversation I am about to have with you that you are not ready for. I am saying it because — because I love you. Okay.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/037.mp3"
     },
     {
       "t": "show",
@@ -190,12 +214,14 @@
     },
     {
       "t": "narrate",
-      "text": "Her mother puts down her fork."
+      "text": "Her mother puts down her fork.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/039.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
-      "text": "Okay."
+      "text": "Okay.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/040.mp3"
     },
     {
       "t": "say",
@@ -209,31 +235,37 @@
     },
     {
       "t": "narrate",
-      "text": "He paused. His voice did the thing voices did when a man was trying to keep a thing at a manageable volume, and the thing was, despite his best efforts, moving."
+      "text": "He paused. His voice did the thing voices did when a man was trying to keep a thing at a manageable volume, and the thing was, despite his best efforts, moving.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/043.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "Because it has been on my mind this week. I am not dying. I am not sick. I am just — I want you to know."
+      "text": "Because it has been on my mind this week. I am not dying. I am not sick. I am just — I want you to know.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/044.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup sam]Her mother is looking at her plate. Sam does not, for a long moment, know what to do with her face."
+      "text": "[shot:closeup sam]Her mother is looking at her plate. Sam does not, for a long moment, know what to do with her face.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/045.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
-      "text": "Okay, Dad. Thank you for telling me."
+      "text": "Okay, Dad. Thank you for telling me.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/046.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "Sammy."
+      "text": "Sammy.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/047.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
-      "text": "Yeah."
+      "text": "Yeah.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/048.mp3"
     },
     {
       "t": "say",
@@ -256,29 +288,35 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "Okay, Dad."
+      "text": "Okay, Dad.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/053.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert hands]She does not say more. She does not have more. He nods, once. Her mother reaches across the table. She takes her father's hand. She holds it for maybe eight seconds. Then she lets go. They finish dinner. Nobody talks about it."
+      "text": "[shot:insert hands]She does not say more. She does not have more. He nods, once. Her mother reaches across the table. She takes her father's hand. She holds it for maybe eight seconds. Then she lets go. They finish dinner. Nobody talks about it.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/054.mp3"
     },
     {
       "t": "narrate",
-      "text": "At seven-thirty-one, her father's phone buzzes. He takes it out of his pocket. He looks at the screen. His face does the small careful neutral thing it does now, which Sam has learned, in the past three days, to read."
+      "text": "At seven-thirty-one, her father's phone buzzes. He takes it out of his pocket. He looks at the screen. His face does the small careful neutral thing it does now, which Sam has learned, in the past three days, to read.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/055.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "I have to go out for a bit, hon."
+      "text": "I have to go out for a bit, hon.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/056.mp3"
     },
     {
       "t": "say",
       "char": "Mrs. Miller",
-      "text": "Of course."
+      "text": "Of course.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/057.mp3"
     },
     {
       "t": "narrate",
-      "text": "He stands. He kisses her mother on the temple. He squeezes Sam's shoulder on the way past. He goes to the mudroom. Sam hears him put on his uniform. Sam hears him leave through the garage. The garage door motor hums. The garage door closes."
+      "text": "He stands. He kisses her mother on the temple. He squeezes Sam's shoulder on the way past. He goes to the mudroom. Sam hears him put on his uniform. Sam hears him leave through the garage. The garage door motor hums. The garage door closes.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/058.mp3"
     },
     {
       "t": "hide",
@@ -286,7 +324,8 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Sam and her mother sit at the table."
+      "text": "[shot:establish]Sam and her mother sit at the table.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/060.mp3"
     },
     {
       "t": "show",
@@ -297,55 +336,66 @@
     {
       "t": "say",
       "char": "Mrs. Miller",
-      "text": "Sammy."
+      "text": "Sammy.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/062.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
-      "text": "Yeah, Mom."
+      "text": "Yeah, Mom.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/063.mp3"
     },
     {
       "t": "say",
       "char": "Mrs. Miller",
-      "text": "[beat:still]I know you know."
+      "text": "[beat:still]I know you know.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/064.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup mrs_miller]Sam looks up. Her mother's face is the face of a woman who has been holding something for longer than Sam has been aware there was a something to hold."
+      "text": "[shot:closeup mrs_miller]Sam looks up. Her mother's face is the face of a woman who has been holding something for longer than Sam has been aware there was a something to hold.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/065.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
-      "text": "I know I know."
+      "text": "I know I know.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/066.mp3"
     },
     {
       "t": "say",
       "char": "Mrs. Miller",
-      "text": "I'm sorry, honey."
+      "text": "I'm sorry, honey.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/067.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
-      "text": "Mom —"
+      "text": "Mom —",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/068.mp3"
     },
     {
       "t": "say",
       "char": "Mrs. Miller",
-      "text": "I'm sorry it's your father. I'm sorry it's this town. I'm sorry I let you grow up in it. I'm sorry about a lot of things."
+      "text": "I'm sorry it's your father. I'm sorry it's this town. I'm sorry I let you grow up in it. I'm sorry about a lot of things.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/069.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
-      "text": "[shot:closeup person_b]Mom, don't."
+      "text": "[shot:closeup person_b]Mom, don't.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/070.mp3"
     },
     {
       "t": "say",
       "char": "Mrs. Miller",
-      "text": "No, Sammy. Let me. Just for a minute."
+      "text": "No, Sammy. Let me. Just for a minute.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/071.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam lets her."
+      "text": "Sam lets her.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/072.mp3"
     },
     {
       "t": "say",
@@ -360,26 +410,31 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "Okay."
+      "text": "Okay.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/075.mp3"
     },
     {
       "t": "say",
       "char": "Mrs. Miller",
-      "text": "[shot:closeup person]I love you, Sam."
+      "text": "[shot:closeup person]I love you, Sam.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/076.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
-      "text": "I love you too, Mom."
+      "text": "I love you too, Mom.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/077.mp3"
     },
     {
       "t": "say",
       "char": "Mrs. Miller",
-      "text": "Eat your pasta."
+      "text": "Eat your pasta.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/078.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam eats her pasta. It is, it has always been, the best pasta."
+      "text": "Sam eats her pasta. It is, it has always been, the best pasta.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/079.mp3"
     },
     {
       "t": "hide",
@@ -391,7 +446,8 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:macro_haze][shot:insert sedan~]Outside the rain comes down. At nine-seventeen, in the Kwik Stop parking lot half a mile away, the white sedan pulls up. The reporter and her partner sit in the car. They are waiting."
+      "text": "[mood:macro_haze][shot:insert sedan~]Outside the rain comes down. At nine-seventeen, in the Kwik Stop parking lot half a mile away, the white sedan pulls up. The reporter and her partner sit in the car. They are waiting.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/082.mp3"
     },
     {
       "t": "narrate",
@@ -403,7 +459,8 @@
     },
     {
       "t": "narrate",
-      "text": "The van is transporting Diego Ramos from Zone to Zone-G. The transport is being watched. The sedan follows, three vehicles back, into the storm."
+      "text": "The van is transporting Diego Ramos from Zone to Zone-G. The transport is being watched. The sedan follows, three vehicles back, into the storm.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/085.mp3"
     },
     {
       "t": "narrate",
@@ -415,7 +472,8 @@
     },
     {
       "t": "narrate",
-      "text": "At twelve-oh-eleven, he goes inside. His wife is awake. His wife is in the kitchen. There is coffee. There is, on the kitchen table, the blue tin from his sock drawer. He sits across from her. He begins to talk."
+      "text": "At twelve-oh-eleven, he goes inside. His wife is awake. His wife is in the kitchen. There is coffee. There is, on the kitchen table, the blue tin from his sock drawer. He sits across from her. He begins to talk.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/088.mp3"
     },
     {
       "t": "bg",
@@ -423,7 +481,8 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:night][shot:closeup sam]Upstairs, Sam is in her bed, not asleep, hearing only the low murmur of her father's voice through the floor, and her mother's softer replies, and occasionally a long silence, and the rain, which has begun, at last, to ease."
+      "text": "[mood:night][shot:closeup sam]Upstairs, Sam is in her bed, not asleep, hearing only the low murmur of her father's voice through the floor, and her mother's softer replies, and occasionally a long silence, and the rain, which has begun, at last, to ease.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/090.mp3"
     },
     {
       "t": "narrate",
@@ -451,15 +510,18 @@
     },
     {
       "t": "narrate",
-      "text": "The Empress card, reversed, nurtures what she must. Even the uninvited. The rain eases. The van keeps west. The sedan follows."
+      "text": "The Empress card, reversed, nurtures what she must. Even the uninvited. The rain eases. The van keeps west. The sedan follows.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/097.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego, in the van, is alive. He is also, in the specific harder meaning of the word, not okay. But he is, as of eleven-fifty-eight PM on Wednesday, being driven toward the only intercept point the network has managed to establish."
+      "text": "Diego, in the van, is alive. He is also, in the specific harder meaning of the word, not okay. But he is, as of eleven-fifty-eight PM on Wednesday, being driven toward the only intercept point the network has managed to establish.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/098.mp3"
     },
     {
       "t": "narrate",
-      "text": "Friday is coming. The five of them, in five different beds, sleep badly. They will need, in the morning, to begin the final compression."
+      "text": "Friday is coming. The five of them, in five different beds, sleep badly. They will need, in the morning, to begin the final compression.",
+      "voice": "assets/audio/voice/vol6_ch4_kitchen/099.mp3"
     },
     {
       "t": "end"

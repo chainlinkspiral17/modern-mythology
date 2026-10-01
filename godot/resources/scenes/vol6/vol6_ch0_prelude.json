@@ -19,7 +19,8 @@
     },
     {
       "t": "narrate",
-      "text": "Population: 14,400. Median household income: $74,200. Number of HOA-compliant mailboxes: 4,891. Number of residents currently awake at 6:12 on a Sunday morning in early June: fewer than you'd think."
+      "text": "Population: 14,400. Median household income: $74,200. Number of HOA-compliant mailboxes: 4,891. Number of residents currently awake at 6:12 on a Sunday morning in early June: fewer than you'd think.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/003.mp3"
     },
     {
       "t": "interlude",
@@ -69,20 +70,24 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2]Sam Miller is not asleep."
+      "text": "[trip:1.2]Sam Miller is not asleep.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/014.mp3"
     },
     {
       "t": "narrate",
-      "text": "She has been not asleep since approximately 4:40, when she woke from a dream she cannot fully recall — something with water, something with [wave amp=6 freq=2]a door that wouldn't close[/wave] — and lay in the dark with the specific awareness that something is wrong."
+      "text": "She has been not asleep since approximately 4:40, when she woke from a dream she cannot fully recall — something with water, something with [wave amp=6 freq=2]a door that wouldn't close[/wave] — and lay in the dark with the specific awareness that something is wrong.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/015.mp3"
     },
     {
       "t": "think",
       "char": "Sam",
-      "text": "Something is wrong."
+      "text": "Something is wrong.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/016.mp3"
     },
     {
       "t": "narrate",
-      "text": "She has not been able to locate the wrongness. This is the most unsettling part. Sam Miller is a person who locates things. It is, according to her father, her defining characteristic, delivered as a compliment that functions as a warning."
+      "text": "She has not been able to locate the wrongness. This is the most unsettling part. Sam Miller is a person who locates things. It is, according to her father, her defining characteristic, delivered as a compliment that functions as a warning.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/017.mp3"
     },
     {
       "t": "narrate",
@@ -90,12 +95,14 @@
     },
     {
       "t": "narrate",
-      "text": "The light through her curtains shifts from black to grey to the particular color of early June at 6:13 in a Texas suburb, which is the color of a sheet of paper that has been left on a desk near a window for a few months too long."
+      "text": "The light through her curtains shifts from black to grey to the particular color of early June at 6:13 in a Texas suburb, which is the color of a sheet of paper that has been left on a desk near a window for a few months too long.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/019.mp3"
     },
     {
       "t": "think",
       "char": "Sam",
-      "text": "Diego hasn't texted back."
+      "text": "Diego hasn't texted back.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/020.mp3"
     },
     {
       "t": "narrate",
@@ -108,11 +115,13 @@
     {
       "t": "think",
       "char": "Sam",
-      "text": "But something is wrong."
+      "text": "But something is wrong.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/023.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert window]She sits up. Outside, the cracked sprinkler head throws its angled jet across the sidewalk. She can hear it. She watches the stripe of light on her wall until it shifts enough to mean it is fully morning, and then she gets up."
+      "text": "[shot:insert window]She sits up. Outside, the cracked sprinkler head throws its angled jet across the sidewalk. She can hear it. She watches the stripe of light on her wall until it shifts enough to mean it is fully morning, and then she gets up.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/024.mp3"
     },
     {
       "t": "interlude",
@@ -126,7 +135,8 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2]Diego Ramos's bedroom at 892 Ashberry Drive is empty."
+      "text": "[trip:1.2]Diego Ramos's bedroom at 892 Ashberry Drive is empty.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/027.mp3"
     },
     {
       "t": "narrate",
@@ -150,7 +160,8 @@
     },
     {
       "t": "narrate",
-      "text": "[beat:still]The photograph is still there. The duffel bag is still there. The water glass is still there. Diego Ramos is not."
+      "text": "[beat:still]The photograph is still there. The duffel bag is still there. The water glass is still there. Diego Ramos is not.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/033.mp3"
     },
     {
       "t": "interlude",
@@ -170,15 +181,18 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2][shot:closeup graciela]Down the hall, Graciela Ramos — Diego's grandmother, seventy-one years old, a person who has survived four hurricanes and two husbands and a son who made choices she still has not found words for — is sitting on the edge of her bed in the dark, holding a rosary she is not praying with."
+      "text": "[trip:1.2][shot:closeup graciela]Down the hall, Graciela Ramos — Diego's grandmother, seventy-one years old, a person who has survived four hurricanes and two husbands and a son who made choices she still has not found words for — is sitting on the edge of her bed in the dark, holding a rosary she is not praying with.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/037.mp3"
     },
     {
       "t": "narrate",
-      "text": "She heard him leave. She heard the truck start. She heard the sound of the engine getting smaller until it was nothing."
+      "text": "She heard him leave. She heard the truck start. She heard the sound of the engine getting smaller until it was nothing.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/038.mp3"
     },
     {
       "t": "narrate",
-      "text": "She did not get up."
+      "text": "She did not get up.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/039.mp3"
     },
     {
       "t": "narrate",
@@ -191,11 +205,13 @@
     {
       "t": "think",
       "char": "Graciela",
-      "text": "He is his father's son. And I could not stop his father either."
+      "text": "He is his father's son. And I could not stop his father either.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/042.mp3"
     },
     {
       "t": "narrate",
-      "text": "She will call Sam later. Not yet. She does not know what she will say when she calls. She is waiting for the words to arrive."
+      "text": "She will call Sam later. Not yet. She does not know what she will say when she calls. She is waiting for the words to arrive.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/043.mp3"
     },
     {
       "t": "hide",
@@ -213,7 +229,8 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2]At 3017 Verbena Way, in a converted half-bath off the garage that still has the original avocado tile from 1974, Rick Salazar is developing photographs."
+      "text": "[trip:1.2]At 3017 Verbena Way, in a converted half-bath off the garage that still has the original avocado tile from 1974, Rick Salazar is developing photographs.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/047.mp3"
     },
     {
       "t": "narrate",
@@ -225,11 +242,13 @@
     },
     {
       "t": "narrate",
-      "text": "The photographs he is developing are from Thursday. He had his camera at the corner of Gallatin and Fifth, shooting the new construction on the NexCorp lot. He does not know yet what is on them. That is the thing about film. You have to wait."
+      "text": "The photographs he is developing are from Thursday. He had his camera at the corner of Gallatin and Fifth, shooting the new construction on the NexCorp lot. He does not know yet what is on them. That is the thing about film. You have to wait.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/050.mp3"
     },
     {
       "t": "narrate",
-      "text": "He slides the paper into the developer tray. He uses the tongs. He watches."
+      "text": "He slides the paper into the developer tray. He uses the tongs. He watches.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/051.mp3"
     },
     {
       "t": "narrate",
@@ -242,11 +261,13 @@
     {
       "t": "think",
       "char": "Henderson",
-      "text": "Huh."
+      "text": "Huh.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/054.mp3"
     },
     {
       "t": "narrate",
-      "text": "[panel:off]He pins it on the line. He makes a note in his notebook. He will look at it again when the light is better."
+      "text": "[panel:off]He pins it on the line. He makes a note in his notebook. He will look at it again when the light is better.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/055.mp3"
     },
     {
       "t": "interlude",
@@ -274,7 +295,8 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:dawn_warm][shot:insert notebook]Maya is sitting cross-legged on her bed with a spiral notebook open in her lap. She is writing in her rapid, cramped hand that no one else can fully read, which is by design."
+      "text": "[mood:dawn_warm][shot:insert notebook]Maya is sitting cross-legged on her bed with a spiral notebook open in her lap. She is writing in her rapid, cramped hand that no one else can fully read, which is by design.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/061.mp3"
     },
     {
       "t": "think",
@@ -303,15 +325,18 @@
     },
     {
       "t": "narrate",
-      "text": "She underlines the last line twice."
+      "text": "She underlines the last line twice.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/067.mp3"
     },
     {
       "t": "narrate",
-      "text": "She writes: Who knew?"
+      "text": "She writes: Who knew?",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/068.mp3"
     },
     {
       "t": "narrate",
-      "text": "She writes: Ben."
+      "text": "She writes: Ben.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/069.mp3"
     },
     {
       "t": "hide",
@@ -343,25 +368,30 @@
     },
     {
       "t": "narrate",
-      "text": "He is sitting at the desk that used to be Rick's father's desk, in the chair that has been reupholstered twice, looking at a legal pad."
+      "text": "He is sitting at the desk that used to be Rick's father's desk, in the chair that has been reupholstered twice, looking at a legal pad.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/076.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert legal_pad]On the legal pad, he has written, in his careful block letters:"
+      "text": "[shot:insert legal_pad]On the legal pad, he has written, in his careful block letters:",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/077.mp3"
     },
     {
       "t": "think",
       "char": "Ben",
-      "text": "WHAT I KNOW\n——————————\nNexCorp bought the Gallatin lot in March.\nNexCorp bought the Henderson property in April.\nNexCorp is building something they haven't filed complete permits for.\nDiego was looking into the permits.\nDiego is gone."
+      "text": "WHAT I KNOW\n——————————\nNexCorp bought the Gallatin lot in March.\nNexCorp bought the Henderson property in April.\nNexCorp is building something they haven't filed complete permits for.\nDiego was looking into the permits.\nDiego is gone.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/078.mp3"
     },
     {
       "t": "narrate",
-      "text": "He has crossed out the last line and rewritten it below:"
+      "text": "He has crossed out the last line and rewritten it below:",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/079.mp3"
     },
     {
       "t": "think",
       "char": "Ben",
-      "text": "Diego left. Diego left on his own. Nobody made Diego leave.\n(I don't know this. I don't know this yet.)"
+      "text": "Diego left. Diego left on his own. Nobody made Diego leave.\n(I don't know this. I don't know this yet.)",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/080.mp3"
     },
     {
       "t": "narrate",
@@ -369,11 +399,13 @@
     },
     {
       "t": "narrate",
-      "text": "He is fifty-four years old and has owned this diner for eleven years and before that worked in it for six, and in those seventeen years he has developed a very precise sense of when a situation is about to become a situation."
+      "text": "He is fifty-four years old and has owned this diner for eleven years and before that worked in it for six, and in those seventeen years he has developed a very precise sense of when a situation is about to become a situation.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/082.mp3"
     },
     {
       "t": "narrate",
-      "text": "This is a situation."
+      "text": "This is a situation.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/083.mp3"
     },
     {
       "t": "hide",
@@ -399,33 +431,40 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:macro_haze][shot:insert van]At 6:19, a white NexCorp Residential Solutions van is parked beside the fence. The engine is off. No one gets out. The van has been there since 6:04."
+      "text": "[mood:macro_haze][shot:insert van]At 6:19, a white NexCorp Residential Solutions van is parked beside the fence. The engine is off. No one gets out. The van has been there since 6:04.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/089.mp3"
     },
     {
       "t": "narrate",
-      "text": "[panel:off]A man named Henderson — F. Thomas Henderson, thirty-eight, NexCorp field coordinator, a person who has worked for NexCorp for nine years and for the six years before that worked for a company that NexCorp acquired — is in the passenger seat, on his phone."
+      "text": "[panel:off]A man named Henderson — F. Thomas Henderson, thirty-eight, NexCorp field coordinator, a person who has worked for NexCorp for nine years and for the six years before that worked for a company that NexCorp acquired — is in the passenger seat, on his phone.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/090.mp3"
     },
     {
       "t": "think",
       "char": "Henderson",
-      "text": "The Ramos kid is gone. Good. That's one thing. The Miller girl is a different problem. Chief Miller's daughter, that's — that's a different problem. Need to know if she's talked to anyone. Need to know what the kid told her before he left."
+      "text": "The Ramos kid is gone. Good. That's one thing. The Miller girl is a different problem. Chief Miller's daughter, that's — that's a different problem. Need to know if she's talked to anyone. Need to know what the kid told her before he left.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/091.mp3"
     },
     {
       "t": "narrate",
-      "text": "He sends a text. He waits. The reply comes in forty seconds."
+      "text": "He sends a text. He waits. The reply comes in forty seconds.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/092.mp3"
     },
     {
       "t": "narrate",
-      "text": "He reads it. He types a reply. He puts the phone in his breast pocket and looks at the green privacy screen on the fence, behind which the machines have already begun their work for the day."
+      "text": "He reads it. He types a reply. He puts the phone in his breast pocket and looks at the green privacy screen on the fence, behind which the machines have already begun their work for the day.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/093.mp3"
     },
     {
       "t": "think",
       "char": "Henderson",
-      "text": "It'll be fine. It's always fine. These towns always end up fine."
+      "text": "It'll be fine. It's always fine. These towns always end up fine.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/094.mp3"
     },
     {
       "t": "narrate",
-      "text": "He has told himself this in seven towns. He is telling himself this in the eighth."
+      "text": "He has told himself this in seven towns. He is telling himself this in the eighth.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/095.mp3"
     },
     {
       "t": "interlude",
@@ -453,7 +492,8 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:dawn_warm][shot:insert phone]The text is from a number he does not have saved. It reads:"
+      "text": "[mood:dawn_warm][shot:insert phone]The text is from a number he does not have saved. It reads:",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/101.mp3"
     },
     {
       "t": "think",
@@ -472,11 +512,13 @@
     },
     {
       "t": "narrate",
-      "text": "He reads it twice. He puts the phone on the counter. He pours his coffee."
+      "text": "He reads it twice. He puts the phone on the counter. He pours his coffee.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/105.mp3"
     },
     {
       "t": "narrate",
-      "text": "He picks the phone back up. He does not call the number. He types, instead: Understood. Give me the week. He sends it. He does not know if she will give him the week. He is buying time, which is the thing he does when he does not yet know what he thinks."
+      "text": "He picks the phone back up. He does not call the number. He types, instead: Understood. Give me the week. He sends it. He does not know if she will give him the week. He is buying time, which is the thing he does when he does not yet know what he thinks.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/106.mp3"
     },
     {
       "t": "think",
@@ -491,11 +533,13 @@
     {
       "t": "think",
       "char": "Chief Miller",
-      "text": "And Diego Ramos is missing. And Graciela Ramos has not called me yet, which means she either doesn't know or doesn't want to make it official. And I have a reporter from the Statesman texting me at six in the morning."
+      "text": "And Diego Ramos is missing. And Graciela Ramos has not called me yet, which means she either doesn't know or doesn't want to make it official. And I have a reporter from the Statesman texting me at six in the morning.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/109.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup miller]He stands at the counter. He drinks his coffee. He is thinking very carefully about what he is going to do and in what order he is going to do it, which is how he does everything."
+      "text": "[shot:closeup miller]He stands at the counter. He drinks his coffee. He is thinking very carefully about what he is going to do and in what order he is going to do it, which is how he does everything.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/110.mp3"
     },
     {
       "t": "hide",
@@ -513,11 +557,13 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2]At 6:28, the sprinklers on Meadowlark Circle finish their cycle. The cracked head on the Miller lawn sputters once and goes still, leaving a last thin arc of water that catches the early light for a moment and then falls."
+      "text": "[trip:1.2]At 6:28, the sprinklers on Meadowlark Circle finish their cycle. The cracked head on the Miller lawn sputters once and goes still, leaving a last thin arc of water that catches the early light for a moment and then falls.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/114.mp3"
     },
     {
       "t": "narrate",
-      "text": "Down the street, a garage door opens. A dog barks twice and stops. Someone's car alarm chirps once, a half-second confusion, and silences."
+      "text": "Down the street, a garage door opens. A dog barks twice and stops. Someone's car alarm chirps once, a half-second confusion, and silences.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/115.mp3"
     },
     {
       "t": "narrate",
@@ -525,11 +571,13 @@
     },
     {
       "t": "narrate",
-      "text": "It is doing so in the manner of a town that has not yet been told it needs to be worried — in increments, in the small accumulated sounds of people beginning their Sunday, unaware that the Sunday they are beginning has already been shaped, in the dark, by decisions made without them."
+      "text": "It is doing so in the manner of a town that has not yet been told it needs to be worried — in increments, in the small accumulated sounds of people beginning their Sunday, unaware that the Sunday they are beginning has already been shaped, in the dark, by decisions made without them.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/117.mp3"
     },
     {
       "t": "narrate",
-      "text": "The creek behind the Albertsons moves at the pace it always moves. The water tower stands at the south end of Gallatin. The green privacy screen on the NexCorp fence moves slightly in the early wind and settles."
+      "text": "The creek behind the Albertsons moves at the pace it always moves. The water tower stands at the south end of Gallatin. The green privacy screen on the NexCorp fence moves slightly in the early wind and settles.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/118.mp3"
     },
     {
       "t": "bg",
@@ -537,31 +585,37 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]In the kitchen on Meadowlark Circle, a voice calls up the stairs."
+      "text": "[shot:establish]In the kitchen on Meadowlark Circle, a voice calls up the stairs.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/120.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "Sam. You up?"
+      "text": "Sam. You up?",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/121.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
-      "text": "Yeah."
+      "text": "Yeah.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/122.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "Come down when you're ready. I want to talk to you about something."
+      "text": "Come down when you're ready. I want to talk to you about something.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/123.mp3"
     },
     {
       "t": "narrate",
-      "text": "A pause. The sound of feet on the floor above. A door."
+      "text": "A pause. The sound of feet on the floor above. A door.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/124.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
-      "text": "[shot:closeup person]Okay."
+      "text": "[shot:closeup person]Okay.",
+      "voice": "assets/audio/voice/vol6_ch0_prelude/125.mp3"
     },
     {
       "t": "narrate",

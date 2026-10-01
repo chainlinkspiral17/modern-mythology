@@ -35,15 +35,18 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2][mood:night][shot:closeup sam]Sam is in bed. Lamp off. She has not showered. She has not, in fact, done anything for the last hour except stare at the ceiling and think, in a measured orderly way, about what she has learned today."
+      "text": "[trip:1.2][mood:night][shot:closeup sam]Sam is in bed. Lamp off. She has not showered. She has not, in fact, done anything for the last hour except stare at the ceiling and think, in a measured orderly way, about what she has learned today.",
+      "voice": "assets/audio/voice/vol6_ch3_sam_bedroom/006.mp3"
     },
     {
       "t": "narrate",
-      "text": "The catalogue so far —"
+      "text": "The catalogue so far —",
+      "voice": "assets/audio/voice/vol6_ch3_sam_bedroom/007.mp3"
     },
     {
       "t": "narrate",
-      "text": "Her father is part of it, in a way she does not yet know the size of. Graciela is part of a network. Maya is part of the network, and was inserted by the network, and is not, herself, managing it."
+      "text": "Her father is part of it, in a way she does not yet know the size of. Graciela is part of a network. Maya is part of the network, and was inserted by the network, and is not, herself, managing it.",
+      "voice": "assets/audio/voice/vol6_ch3_sam_bedroom/008.mp3"
     },
     {
       "t": "narrate",
@@ -63,11 +66,13 @@
     },
     {
       "t": "narrate",
-      "text": "Diego is alive. Diego is being held. Diego is not okay, which Maya has told her to interpret as the worse meaning. Sunday is the hinge. She, Sam, has five days to practice."
+      "text": "Diego is alive. Diego is being held. Diego is not okay, which Maya has told her to interpret as the worse meaning. Sunday is the hinge. She, Sam, has five days to practice.",
+      "voice": "assets/audio/voice/vol6_ch3_sam_bedroom/013.mp3"
     },
     {
       "t": "narrate",
-      "text": "She sleeps badly. But she does sleep."
+      "text": "She sleeps badly. But she does sleep.",
+      "voice": "assets/audio/voice/vol6_ch3_sam_bedroom/014.mp3"
     },
     {
       "t": "interlude",
@@ -77,25 +82,29 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2][mood:macro_haze][shot:insert door~]At 01:17 she is briefly awake, and she hears, from her parents' bedroom down the hall, her father's phone vibrate. She hears it through two walls. She hears him pick it up."
+      "text": "[trip:1.2][mood:macro_haze][shot:insert door~]At 01:17 she is briefly awake, and she hears, from her parents' bedroom down the hall, her father's phone vibrate. She hears it through two walls. She hears him pick it up.",
+      "voice": "assets/audio/voice/vol6_ch3_sam_bedroom/016.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "role": "— quietly · through two walls —",
       "expr": "neutral",
-      "text": "\"Understood.\""
+      "text": "\"Understood.\"",
+      "voice": "assets/audio/voice/vol6_ch3_sam_bedroom/017.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "role": "— a moment later —",
       "expr": "neutral",
-      "text": "\"I'll handle it.\""
+      "text": "\"I'll handle it.\"",
+      "voice": "assets/audio/voice/vol6_ch3_sam_bedroom/018.mp3"
     },
     {
       "t": "narrate",
-      "text": "She files both words. She goes back to sleep."
+      "text": "She files both words. She goes back to sleep.",
+      "voice": "assets/audio/voice/vol6_ch3_sam_bedroom/019.mp3"
     },
     {
       "t": "interlude",
@@ -121,7 +130,8 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:dream_blur][shot:insert notebook]She wakes at 03:04. She writes the dream down. She goes back to sleep. She does not, this time, dream."
+      "text": "[mood:dream_blur][shot:insert notebook]She wakes at 03:04. She writes the dream down. She goes back to sleep. She does not, this time, dream.",
+      "voice": "assets/audio/voice/vol6_ch3_sam_bedroom/025.mp3"
     },
     {
       "t": "flag",

@@ -37,7 +37,8 @@
     },
     {
       "t": "narrate",
-      "text": "§ Refrain 1: The Score"
+      "text": "§ Refrain 1: The Score",
+      "voice": "assets/audio/voice/vol5_ch8_strength/007.mp3"
     },
     {
       "t": "narrate",
@@ -65,11 +66,13 @@
     },
     {
       "t": "narrate",
-      "text": "§ Layer 1: The Hands"
+      "text": "§ Layer 1: The Hands",
+      "voice": "assets/audio/voice/vol5_ch8_strength/014.mp3"
     },
     {
       "t": "narrate",
-      "text": "[mood:candlelight_low][shot:insert hands]His hands rested on the sticky tabletop."
+      "text": "[mood:candlelight_low][shot:insert hands]His hands rested on the sticky tabletop.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/015.mp3"
     },
     {
       "t": "narrate",
@@ -97,23 +100,28 @@
     },
     {
       "t": "narrate",
-      "text": "He flexed his fingers now. Empty. Just calluses and memory."
+      "text": "He flexed his fingers now. Empty. Just calluses and memory.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/022.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert hands]The ouroboros on his forearm caught the neon and sent it back, dim and red, against the inside of his wrist."
+      "text": "[shot:insert hands]The ouroboros on his forearm caught the neon and sent it back, dim and red, against the inside of his wrist.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/023.mp3"
     },
     {
       "t": "narrate",
-      "text": "§ Refrain 2: The Taste"
+      "text": "§ Refrain 2: The Taste",
+      "voice": "assets/audio/voice/vol5_ch8_strength/024.mp3"
     },
     {
       "t": "narrate",
-      "text": "The beer was piss-warm. Tasted like regret strained through an old sock. He drank it anyway. It was part of the ritual. Part of the waiting. He wasn't sure what he was waiting for anymore."
+      "text": "The beer was piss-warm. Tasted like regret strained through an old sock. He drank it anyway. It was part of the ritual. Part of the waiting. He wasn't sure what he was waiting for anymore.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/025.mp3"
     },
     {
       "t": "narrate",
-      "text": "Absolution. Oblivion. Last call. Same difference, probably."
+      "text": "Absolution. Oblivion. Last call. Same difference, probably.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/026.mp3"
     },
     {
       "t": "narrate",
@@ -129,19 +137,23 @@
     },
     {
       "t": "narrate",
-      "text": "§ Layer 2: The Summons"
+      "text": "§ Layer 2: The Summons",
+      "voice": "assets/audio/voice/vol5_ch8_strength/030.mp3"
     },
     {
       "t": "narrate",
-      "text": "Jimmy Daigle's voice, crackling over the phone line, weeks ago, maybe months. Time got slippery these days."
+      "text": "Jimmy Daigle's voice, crackling over the phone line, weeks ago, maybe months. Time got slippery these days.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/031.mp3"
     },
     {
       "t": "narrate",
-      "text": "Doug. Need you, man. Down here. N'awlins. Antonio's thing — it's — look. I need someone solid. Someone I can trust."
+      "text": "Doug. Need you, man. Down here. N'awlins. Antonio's thing — it's — look. I need someone solid. Someone I can trust.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/032.mp3"
     },
     {
       "t": "narrate",
-      "text": "Trust. Funny word. Sounded like rust when Jimmy said it."
+      "text": "Trust. Funny word. Sounded like rust when Jimmy said it.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/033.mp3"
     },
     {
       "t": "narrate",
@@ -157,19 +169,23 @@
     },
     {
       "t": "narrate",
-      "text": "He had headed south. Back into the noise. Back into the role: protector. Bodyguard. Human shield. Whatever Jimmy needed him to be."
+      "text": "He had headed south. Back into the noise. Back into the role: protector. Bodyguard. Human shield. Whatever Jimmy needed him to be.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/037.mp3"
     },
     {
       "t": "narrate",
-      "text": "Quiet strength. Endurance. Taming the inner beast. Or maybe just letting it sleep, heavily chained, in the corner."
+      "text": "Quiet strength. Endurance. Taming the inner beast. Or maybe just letting it sleep, heavily chained, in the corner.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/038.mp3"
     },
     {
       "t": "narrate",
-      "text": "The chain rattled, sometimes, in his sleep. He had stopped, in the past two years, going to anyone who could reasonably be called a friend with the news of the rattling."
+      "text": "The chain rattled, sometimes, in his sleep. He had stopped, in the past two years, going to anyone who could reasonably be called a friend with the news of the rattling.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/039.mp3"
     },
     {
       "t": "narrate",
-      "text": "§ Refrain 1: The Score"
+      "text": "§ Refrain 1: The Score",
+      "voice": "assets/audio/voice/vol5_ch8_strength/040.mp3"
     },
     {
       "t": "narrate",
@@ -181,19 +197,23 @@
     },
     {
       "t": "narrate",
-      "text": "The bartender brought the second beer. He paid in cash. He waved off the change."
+      "text": "The bartender brought the second beer. He paid in cash. He waved off the change.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/043.mp3"
     },
     {
       "t": "narrate",
-      "text": "§ Layer 3: The Ghost"
+      "text": "§ Layer 3: The Ghost",
+      "voice": "assets/audio/voice/vol5_ch8_strength/044.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup douglas~]Joanna."
+      "text": "[shot:closeup douglas~]Joanna.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/045.mp3"
     },
     {
       "t": "narrate",
-      "text": "The name itself a phantom limb ache."
+      "text": "The name itself a phantom limb ache.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/046.mp3"
     },
     {
       "t": "narrate",
@@ -209,7 +229,8 @@
     },
     {
       "t": "narrate",
-      "text": "He had tried. To protect her. To stand between her and the void."
+      "text": "He had tried. To protect her. To stand between her and the void.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/050.mp3"
     },
     {
       "t": "narrate",
@@ -233,15 +254,18 @@
     },
     {
       "t": "narrate",
-      "text": "He took another swallow. The beer continued to taste the way it had tasted ten minutes ago."
+      "text": "He took another swallow. The beer continued to taste the way it had tasted ten minutes ago.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/056.mp3"
     },
     {
       "t": "narrate",
-      "text": "§ Layer 4: The Job"
+      "text": "§ Layer 4: The Job",
+      "voice": "assets/audio/voice/vol5_ch8_strength/057.mp3"
     },
     {
       "t": "narrate",
-      "text": "New Orleans. Ember & Ash. Antonio's playground of fusion and fire."
+      "text": "New Orleans. Ember & Ash. Antonio's playground of fusion and fire.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/058.mp3"
     },
     {
       "t": "narrate",
@@ -257,7 +281,8 @@
     },
     {
       "t": "narrate",
-      "text": "He was the muscle. The quiet guarantee. Keep Antonio safe. Keep the project moving. Simple."
+      "text": "He was the muscle. The quiet guarantee. Keep Antonio safe. Keep the project moving. Simple.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/062.mp3"
     },
     {
       "t": "narrate",
@@ -277,35 +302,43 @@
     },
     {
       "t": "narrate",
-      "text": "He saw the calculation in Jimmy's eyes when Antonio wasn't looking."
+      "text": "He saw the calculation in Jimmy's eyes when Antonio wasn't looking.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/067.mp3"
     },
     {
       "t": "narrate",
-      "text": "The old schemer. Wearing loyalty like a mask."
+      "text": "The old schemer. Wearing loyalty like a mask.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/068.mp3"
     },
     {
       "t": "narrate",
-      "text": "The snake eating its tail."
+      "text": "The snake eating its tail.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/069.mp3"
     },
     {
       "t": "narrate",
-      "text": "§ Refrain 1: The Score"
+      "text": "§ Refrain 1: The Score",
+      "voice": "assets/audio/voice/vol5_ch8_strength/070.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert tv]Game over. The neon ghosts reset. Another cycle beginning."
+      "text": "[shot:insert tv]Game over. The neon ghosts reset. Another cycle beginning.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/071.mp3"
     },
     {
       "t": "narrate",
-      "text": "Douglas Forte finished his beer. The silence in the bar felt louder now."
+      "text": "Douglas Forte finished his beer. The silence in the bar felt louder now.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/072.mp3"
     },
     {
       "t": "narrate",
-      "text": "§ Layer 5: The Turn"
+      "text": "§ Layer 5: The Turn",
+      "voice": "assets/audio/voice/vol5_ch8_strength/073.mp3"
     },
     {
       "t": "narrate",
-      "text": "[beat:chill][shot:closeup douglas]He knew it before it happened."
+      "text": "[beat:chill][shot:closeup douglas]He knew it before it happened.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/074.mp3"
     },
     {
       "t": "narrate",
@@ -325,7 +358,8 @@
     },
     {
       "t": "narrate",
-      "text": "The anchor, cut loose to save the ship. Or maybe just to save Jimmy."
+      "text": "The anchor, cut loose to save the ship. Or maybe just to save Jimmy.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/079.mp3"
     },
     {
       "t": "narrate",
@@ -341,23 +375,28 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_b]Douglas had been one of the lower-value chips for longer than anyone, including Jimmy, suspected. He had known this for some time. He had not, until this evening, been quite sure how much time was left."
+      "text": "[shot:establish_b]Douglas had been one of the lower-value chips for longer than anyone, including Jimmy, suspected. He had known this for some time. He had not, until this evening, been quite sure how much time was left.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/083.mp3"
     },
     {
       "t": "narrate",
-      "text": "The strength wasn't in fighting it. The strength was in seeing it coming, clear-eyed, and enduring the impact."
+      "text": "The strength wasn't in fighting it. The strength was in seeing it coming, clear-eyed, and enduring the impact.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/084.mp3"
     },
     {
       "t": "narrate",
-      "text": "Patience over brute force."
+      "text": "Patience over brute force.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/085.mp3"
     },
     {
       "t": "narrate",
-      "text": "The inner beast, accepting the cage."
+      "text": "The inner beast, accepting the cage.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/086.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_b]§ Refrain 2: The Taste"
+      "text": "[shot:establish_b]§ Refrain 2: The Taste",
+      "voice": "assets/audio/voice/vol5_ch8_strength/087.mp3"
     },
     {
       "t": "narrate",
@@ -369,19 +408,23 @@
     },
     {
       "t": "narrate",
-      "text": "The beer tasted like betrayal now. Like ashes. Like the gray monochrome landscape of loss."
+      "text": "The beer tasted like betrayal now. Like ashes. Like the gray monochrome landscape of loss.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/090.mp3"
     },
     {
       "t": "narrate",
-      "text": "He walked out into the humid New Orleans night. Quiet. Steady. A mountain moving toward an unseen, inevitable collision."
+      "text": "He walked out into the humid New Orleans night. Quiet. Steady. A mountain moving toward an unseen, inevitable collision.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/091.mp3"
     },
     {
       "t": "narrate",
-      "text": "The puzzle-box clicked shut, for now."
+      "text": "The puzzle-box clicked shut, for now.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/092.mp3"
     },
     {
       "t": "narrate",
-      "text": "The refrain lingered."
+      "text": "The refrain lingered.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/093.mp3"
     },
     {
       "t": "bg",
@@ -389,7 +432,8 @@
     },
     {
       "t": "narrate",
-      "text": "§ Coda: The Letter"
+      "text": "§ Coda: The Letter",
+      "voice": "assets/audio/voice/vol5_ch8_strength/095.mp3"
     },
     {
       "t": "narrate",
@@ -405,43 +449,53 @@
     },
     {
       "t": "narrate",
-      "text": "The room above the laundromat smelled, faintly, of dryer sheets — a smell Douglas had, after two months, come to associate with home in the small unhappy way that one comes to associate any persistent smell with the place one is currently sleeping."
+      "text": "The room above the laundromat smelled, faintly, of dryer sheets — a smell Douglas had, after two months, come to associate with home in the small unhappy way that one comes to associate any persistent smell with the place one is currently sleeping.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/099.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert letter]He sat at the small desk under the window. He took out a piece of paper from the drawer. He took out a pen."
+      "text": "[shot:insert letter]He sat at the small desk under the window. He took out a piece of paper from the drawer. He took out a pen.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/100.mp3"
     },
     {
       "t": "narrate",
-      "text": "He wrote, at the top of the page, the date, in the way he had been taught to write dates in the third grade by a teacher whose face he had forgotten and whose handwriting he had not."
+      "text": "He wrote, at the top of the page, the date, in the way he had been taught to write dates in the third grade by a teacher whose face he had forgotten and whose handwriting he had not.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/101.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thought for a while."
+      "text": "He thought for a while.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/102.mp3"
     },
     {
       "t": "narrate",
-      "text": "He wrote:"
+      "text": "He wrote:",
+      "voice": "assets/audio/voice/vol5_ch8_strength/103.mp3"
     },
     {
       "t": "narrate",
-      "text": "J —"
+      "text": "J —",
+      "voice": "assets/audio/voice/vol5_ch8_strength/104.mp3"
     },
     {
       "t": "narrate",
-      "text": "[beat:hit]I know what option four is. I figured it out tonight at the bar. I'm not going to tell you I figured it out. I'm not going to do anything different. You should not change your plan."
+      "text": "[beat:hit]I know what option four is. I figured it out tonight at the bar. I'm not going to tell you I figured it out. I'm not going to do anything different. You should not change your plan.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/105.mp3"
     },
     {
       "t": "narrate",
-      "text": "I want you to do me one favor when it's done. I want you to call Philip Roberts and tell him where I am. Don't tell him what happened. Just tell him where. He'll know what to do."
+      "text": "I want you to do me one favor when it's done. I want you to call Philip Roberts and tell him where I am. Don't tell him what happened. Just tell him where. He'll know what to do.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/106.mp3"
     },
     {
       "t": "narrate",
-      "text": "Tell Maya I think about her. Don't tell her how."
+      "text": "Tell Maya I think about her. Don't tell her how.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/107.mp3"
     },
     {
       "t": "narrate",
-      "text": "— D."
+      "text": "— D.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/108.mp3"
     },
     {
       "t": "narrate",
@@ -457,27 +511,33 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert mirror]Then, because the letter was a thing he had done and he was now, again, only himself, he went to the small mirror above the dresser and looked at his own face."
+      "text": "[shot:insert mirror]Then, because the letter was a thing he had done and he was now, again, only himself, he went to the small mirror above the dresser and looked at his own face.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/112.mp3"
     },
     {
       "t": "narrate",
-      "text": "The face looked back. Older than he remembered it being. Quieter. The kind of quiet that was not the same as peace."
+      "text": "The face looked back. Older than he remembered it being. Quieter. The kind of quiet that was not the same as peace.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/113.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thought of Joanna. He thought of the gate at the Roberts's house, the cedar one he had hung in 2018, which would still be hanging. He thought of his mother's hands washing glasses. He thought of his ouroboros tattoo, eating itself, honest."
+      "text": "He thought of Joanna. He thought of the gate at the Roberts's house, the cedar one he had hung in 2018, which would still be hanging. He thought of his mother's hands washing glasses. He thought of his ouroboros tattoo, eating itself, honest.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/114.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He went to the window. He looked down at the street. The city kept doing what the city did."
+      "text": "[shot:establish]He went to the window. He looked down at the street. The city kept doing what the city did.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/115.mp3"
     },
     {
       "t": "narrate",
-      "text": "He went to bed. He slept, briefly, badly. The chain rattled once. He did not dream."
+      "text": "He went to bed. He slept, briefly, badly. The chain rattled once. He did not dream.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/116.mp3"
     },
     {
       "t": "narrate",
-      "text": "§ Refrain 1, final: The Score"
+      "text": "§ Refrain 1, final: The Score",
+      "voice": "assets/audio/voice/vol5_ch8_strength/117.mp3"
     },
     {
       "t": "narrate",
@@ -489,23 +549,28 @@
     },
     {
       "t": "narrate",
-      "text": "The Saints, on the new screen, were behind by ten."
+      "text": "The Saints, on the new screen, were behind by ten.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/120.mp3"
     },
     {
       "t": "narrate",
-      "text": "There was no reason to think they would close the gap."
+      "text": "There was no reason to think they would close the gap.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/121.mp3"
     },
     {
       "t": "narrate",
-      "text": "There was no reason to think the gap mattered."
+      "text": "There was no reason to think the gap mattered.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/122.mp3"
     },
     {
       "t": "narrate",
-      "text": "There was every reason, now, to keep watching anyway."
+      "text": "There was every reason, now, to keep watching anyway.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/123.mp3"
     },
     {
       "t": "narrate",
-      "text": "The game played on. Stillness, somewhere in the city, kept its watch."
+      "text": "The game played on. Stillness, somewhere in the city, kept its watch.",
+      "voice": "assets/audio/voice/vol5_ch8_strength/124.mp3"
     },
     {
       "t": "end"

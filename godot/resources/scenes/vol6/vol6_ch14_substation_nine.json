@@ -35,7 +35,8 @@
   },
   {
    "t": "narrate",
-   "text": "[trip:1.2][mood:dusk]Jesse is in the garage with the door open at five fifteen PM when the kid with the flyer comes up the driveway."
+   "text": "[trip:1.2][mood:dusk]Jesse is in the garage with the door open at five fifteen PM when the kid with the flyer comes up the driveway.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/006.mp3"
   },
   {
    "t": "narrate",
@@ -51,11 +52,13 @@
   },
   {
    "t": "narrate",
-   "text": "The song is not, by Suburban Blight standards, finished."
+   "text": "The song is not, by Suburban Blight standards, finished.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/010.mp3"
   },
   {
    "t": "narrate",
-   "text": "The song is, by Jesse's private measure, the closest the band has come to writing the song he has been trying, all summer, to write."
+   "text": "The song is, by Jesse's private measure, the closest the band has come to writing the song he has been trying, all summer, to write.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/011.mp3"
   },
   {
    "t": "narrate",
@@ -67,51 +70,61 @@
   },
   {
    "t": "narrate",
-   "text": "The kid stops at the foot of the driveway."
+   "text": "The kid stops at the foot of the driveway.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/014.mp3"
   },
   {
    "t": "say",
    "char": "Kid",
    "text": "You Jesse?",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/015.mp3"
   },
   {
    "t": "narrate",
-   "text": "Jesse turns the amp down."
+   "text": "Jesse turns the amp down.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/016.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
    "text": "[shot:closeup person]Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/017.mp3"
   },
   {
    "t": "say",
    "char": "Kid",
    "text": "[shot:closeup person]Saturday at the Foxhole. Owner asked me to drop these. He said you'd want one.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/018.mp3"
   },
   {
    "t": "narrate",
-   "text": "The kid skates up the driveway. He pulls a single flyer from the stack. He hands it to Jesse. He skates back down."
+   "text": "The kid skates up the driveway. He pulls a single flyer from the stack. He hands it to Jesse. He skates back down.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/019.mp3"
   },
   {
    "t": "say",
    "char": "Kid",
    "text": "Bring your own water. The bar's a rip.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/020.mp3"
   },
   {
    "t": "narrate",
-   "text": "The kid skates off down the cul-de-sac."
+   "text": "The kid skates off down the cul-de-sac.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/021.mp3"
   },
   {
    "t": "narrate",
-   "text": "Jesse watches him go."
+   "text": "Jesse watches him go.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/022.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert flyer]He looks at the flyer."
+   "text": "[shot:insert flyer]He looks at the flyer.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/023.mp3"
   },
   {
    "t": "narrate",
@@ -123,15 +136,18 @@
   },
   {
    "t": "narrate",
-   "text": "Beneath the title: SATURDAY 8/22 — DOORS 8 PM // 21+ // CASH BAR — 9 PM: SUBURBAN BLIGHT (NEW AUBURN'S OWN) — 11 PM: DJ CHESS (SAN ANTONIO)."
+   "text": "Beneath the title: SATURDAY 8/22 — DOORS 8 PM // 21+ // CASH BAR — 9 PM: SUBURBAN BLIGHT (NEW AUBURN'S OWN) — 11 PM: DJ CHESS (SAN ANTONIO).",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/026.mp3"
   },
   {
    "t": "narrate",
-   "text": "Jesse looks at the flyer for a long minute."
+   "text": "Jesse looks at the flyer for a long minute.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/027.mp3"
   },
   {
    "t": "narrate",
-   "text": "Suburban Blight is — NEW AUBURN'S OWN. Which is the venue's standard parenthetical for any local act, and which is, Jesse registers, the first time Suburban Blight has been called New Auburn's Own in print on a flyer for a venue in New Auburn."
+   "text": "Suburban Blight is — NEW AUBURN'S OWN. Which is the venue's standard parenthetical for any local act, and which is, Jesse registers, the first time Suburban Blight has been called New Auburn's Own in print on a flyer for a venue in New Auburn.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/028.mp3"
   },
   {
    "t": "narrate",
@@ -155,19 +171,23 @@
   },
   {
    "t": "narrate",
-   "text": "He pays attention now."
+   "text": "He pays attention now.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/034.mp3"
   },
   {
    "t": "narrate",
-   "text": "[panel:off][shot:establish]He sets the flyer on the workbench."
+   "text": "[panel:off][shot:establish]He sets the flyer on the workbench.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/035.mp3"
   },
   {
    "t": "narrate",
-   "text": "He picks the Telecaster back up."
+   "text": "He picks the Telecaster back up.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/036.mp3"
   },
   {
    "t": "narrate",
-   "text": "He plays Substation Nine through twice. The lead break, on the second pass, is — by his own internal sense, which is, this summer, becoming a thing he has begun to trust — almost what he wants it to be. Not yet. By Saturday it will be."
+   "text": "He plays Substation Nine through twice. The lead break, on the second pass, is — by his own internal sense, which is, this summer, becoming a thing he has begun to trust — almost what he wants it to be. Not yet. By Saturday it will be.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/037.mp3"
   },
   {
    "t": "bg",
@@ -207,11 +227,13 @@
   },
   {
    "t": "narrate",
-   "text": "He has, by Wednesday evening, fourteen black, four red, and one blue."
+   "text": "He has, by Wednesday evening, fourteen black, four red, and one blue.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/047.mp3"
   },
   {
    "t": "narrate",
-   "text": "The blue is the unit at the back of the strip mall on Live Oak Street that contains The Foxhole."
+   "text": "The blue is the unit at the back of the strip mall on Live Oak Street that contains The Foxhole.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/048.mp3"
   },
   {
    "t": "narrate",
@@ -243,7 +265,8 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:dusk][shot:establish]He pulls into Nate's driveway at seven oh-two."
+   "text": "[mood:dusk][shot:establish]He pulls into Nate's driveway at seven oh-two.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/056.mp3"
   },
   {
    "t": "narrate",
@@ -267,65 +290,77 @@
   },
   {
    "t": "narrate",
-   "text": "Walt is in the kitchen when Jesse comes in. He is in his work shirt, having just come home. He is making a sandwich."
+   "text": "Walt is in the kitchen when Jesse comes in. He is in his work shirt, having just come home. He is making a sandwich.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/062.mp3"
   },
   {
    "t": "say",
    "char": "Walt",
    "text": "[shot:closeup person]Hey, Jess. They're already set up.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/063.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
    "text": "Hey, Walt. Thanks for the room.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/064.mp3"
   },
   {
    "t": "narrate",
-   "text": "Walt waves it off."
+   "text": "Walt waves it off.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/065.mp3"
   },
   {
    "t": "say",
    "char": "Walt",
    "text": "[shot:closeup person]You guys ready for Saturday?",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/066.mp3"
   },
   {
    "t": "narrate",
-   "text": "Jesse pauses for a beat."
+   "text": "Jesse pauses for a beat.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/067.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
    "text": "You knew about Saturday.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/068.mp3"
   },
   {
    "t": "say",
    "char": "Walt",
    "text": "[shot:closeup walt]Carl told Nate. Nate told me at dinner Monday. The Foxhole is a real venue, Jess. You guys are — you guys are coming up. Don't make a big deal. But also — kid. That's a thing. I want you to know I know.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/069.mp3"
   },
   {
    "t": "narrate",
-   "text": "Jesse, in the kitchen, does not, immediately, know what to do with this."
+   "text": "Jesse, in the kitchen, does not, immediately, know what to do with this.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/070.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
    "text": "Thanks, Walt.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/071.mp3"
   },
   {
    "t": "say",
    "char": "Walt",
    "text": "Go play. They're waiting.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/072.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]Jesse goes to the garage."
+   "text": "[shot:establish]Jesse goes to the garage.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/073.mp3"
   },
   {
    "t": "show",
@@ -347,7 +382,8 @@
   },
   {
    "t": "narrate",
-   "text": "Carl is at the kit. Nate is plugged in. Em is at the mic."
+   "text": "Carl is at the kit. Nate is plugged in. Em is at the mic.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/077.mp3"
   },
   {
    "t": "narrate",
@@ -365,37 +401,44 @@
    "t": "say",
    "char": "Em",
    "text": "[shot:closeup person_b]Jesse.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/081.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
    "text": "Hey.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/082.mp3"
   },
   {
    "t": "say",
    "char": "Em",
    "text": "Let's run Substation Nine first. I want to get it in our hands. Then Blowback, then Grid Failure, then the new one Carl wrote, then we work on the set order for Saturday.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/083.mp3"
   },
   {
    "t": "narrate",
-   "text": "She is, Jesse registers, running the practice. She has not, in the past four months, run a practice. She has, all summer, deferred to him. She is, this evening, deferring less."
+   "text": "She is, Jesse registers, running the practice. She has not, in the past four months, run a practice. She has, all summer, deferred to him. She is, this evening, deferring less.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/084.mp3"
   },
   {
    "t": "narrate",
-   "text": "He does not, in the moment, push back."
+   "text": "He does not, in the moment, push back.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/085.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
    "text": "[shot:closeup person]Okay.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/086.mp3"
   },
   {
    "t": "narrate",
-   "text": "He plugs in."
+   "text": "He plugs in.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/087.mp3"
   },
   {
    "t": "narrate",
@@ -407,7 +450,8 @@
   },
   {
    "t": "narrate",
-   "text": "They play it. The lead break, tonight, is the closest it has come."
+   "text": "They play it. The lead break, tonight, is the closest it has come.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/090.mp3"
   },
   {
    "t": "narrate",
@@ -421,83 +465,98 @@
    "t": "say",
    "char": "Em",
    "text": "[shot:closeup person_b]Jess.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/093.mp3"
   },
   {
    "t": "narrate",
-   "text": "He looks at her."
+   "text": "He looks at her.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/094.mp3"
   },
   {
    "t": "say",
    "char": "Em",
    "text": "[beat:lift][shot:closeup em]That's the song.",
-   "expr": "happy"
+   "expr": "happy",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/095.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
    "text": "Yeah?",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/096.mp3"
   },
   {
    "t": "say",
    "char": "Em",
    "text": "Yeah. The break's there. The lyrics need one more pass. The bridge — there's no bridge. We need a bridge before Saturday.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/097.mp3"
   },
   {
    "t": "say",
    "char": "Nate",
    "text": "We have three days.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/098.mp3"
   },
   {
    "t": "say",
    "char": "Em",
    "text": "We have three days. Jess, can you write a bridge in three days?",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/099.mp3"
   },
   {
    "t": "narrate",
-   "text": "Jesse thinks."
+   "text": "Jesse thinks.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/100.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
    "text": "[shot:closeup person]Yeah. I can.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/101.mp3"
   },
   {
    "t": "say",
    "char": "Em",
    "text": "Good. Then we play it Saturday.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/102.mp3"
   },
   {
    "t": "narrate",
-   "text": "Jesse looks at her."
+   "text": "Jesse looks at her.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/103.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
    "text": "We've never played a song this new at a show, Em. The Foxhole — that's a paying audience. We could — we could play the older stuff. We don't have to put a brand-new song into the set.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/104.mp3"
   },
   {
    "t": "say",
    "char": "Em",
    "text": "Jess. I want to put it in the set.",
-   "expr": "serious"
+   "expr": "serious",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/105.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
    "text": "[shot:closeup person_b]Why.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/106.mp3"
   },
   {
    "t": "narrate",
-   "text": "Em looks at him."
+   "text": "Em looks at him.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/107.mp3"
   },
   {
    "t": "say",
@@ -525,49 +584,58 @@
   },
   {
    "t": "narrate",
-   "text": "Jesse, with the Telecaster in his hands, does not, for a long moment, respond."
+   "text": "Jesse, with the Telecaster in his hands, does not, for a long moment, respond.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/112.mp3"
   },
   {
    "t": "narrate",
-   "text": "He thinks: Em is right."
+   "text": "He thinks: Em is right.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/113.mp3"
   },
   {
    "t": "narrate",
-   "text": "He thinks: Em is doing, at eighteen, the thing I should, at twenty, have been doing in this band all summer."
+   "text": "He thinks: Em is doing, at eighteen, the thing I should, at twenty, have been doing in this band all summer.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/114.mp3"
   },
   {
    "t": "narrate",
-   "text": "He thinks: I have been writing the song without ever saying out loud what the song is about. Em has been waiting for me to say it. Em has, tonight, decided that if I am not going to say it, she is going to make me play it for an audience."
+   "text": "He thinks: I have been writing the song without ever saying out loud what the song is about. Em has been waiting for me to say it. Em has, tonight, decided that if I am not going to say it, she is going to make me play it for an audience.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/115.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
    "text": "[shot:closeup person]Okay, Em. Yeah. Second in the set.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/116.mp3"
   },
   {
    "t": "say",
    "char": "Em",
    "text": "Good.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/117.mp3"
   },
   {
    "t": "say",
    "char": "Carl",
    "text": "Cool.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/118.mp3"
   },
   {
    "t": "say",
    "char": "Nate",
    "text": "Bridge by Friday.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/119.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
    "text": "Bridge by Friday.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/120.mp3"
   },
   {
    "t": "narrate",
@@ -587,27 +655,32 @@
   },
   {
    "t": "narrate",
-   "text": "By nine the set is run twice through. By nine-fifteen they are negotiating the order."
+   "text": "By nine the set is run twice through. By nine-fifteen they are negotiating the order.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/125.mp3"
   },
   {
    "t": "narrate",
-   "text": "The order Em proposes: Grid Failure (open, hard, fast), Substation Nine (the new one, second, with the audience still warm but now paying attention), Box Fan (third, lighter, gives Carl the sing-along chorus), Blowback (fourth, the slower middle), Here Comes Your Man (closer)."
+   "text": "The order Em proposes: Grid Failure (open, hard, fast), Substation Nine (the new one, second, with the audience still warm but now paying attention), Box Fan (third, lighter, gives Carl the sing-along chorus), Blowback (fourth, the slower middle), Here Comes Your Man (closer).",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/126.mp3"
   },
   {
    "t": "say",
    "char": "Nate",
    "text": "[shot:closeup person]Flip Substation Nine and Blowback.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/127.mp3"
   },
   {
    "t": "say",
    "char": "Carl",
    "text": "Substation Nine second. Em is right. Open hard, then immediately do the weird one, then ease into the rest. The room is going to remember the second song.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/128.mp3"
   },
   {
    "t": "narrate",
-   "text": "Nate concedes. The set order is Grid Failure, Substation Nine, Box Fan, Blowback, Here Comes Your Man."
+   "text": "Nate concedes. The set order is Grid Failure, Substation Nine, Box Fan, Blowback, Here Comes Your Man.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/129.mp3"
   },
   {
    "t": "narrate",
@@ -619,17 +692,20 @@
   },
   {
    "t": "narrate",
-   "text": "The fact lands on him. He does not, in the moment, perform the landing."
+   "text": "The fact lands on him. He does not, in the moment, perform the landing.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/132.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
    "text": "Cool. I'll have the bridge by Friday. We run it Friday at five.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/133.mp3"
   },
   {
    "t": "narrate",
-   "text": "The band agrees."
+   "text": "The band agrees.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/134.mp3"
   },
   {
    "t": "narrate",
@@ -665,29 +741,34 @@
   },
   {
    "t": "narrate",
-   "text": "In the driveway, while Carl is at the curb, Em comes up to Jesse."
+   "text": "In the driveway, while Carl is at the curb, Em comes up to Jesse.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/142.mp3"
   },
   {
    "t": "say",
    "char": "Em",
    "text": "[shot:closeup person_b]Jess.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/143.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/144.mp3"
   },
   {
    "t": "say",
    "char": "Em",
    "text": "[shot:closeup em~]Substation Nine. The bridge. Don't write it about the substation.",
-   "expr": "serious"
+   "expr": "serious",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/145.mp3"
   },
   {
    "t": "narrate",
-   "text": "He looks at her."
+   "text": "He looks at her.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/146.mp3"
   },
   {
    "t": "say",
@@ -703,23 +784,27 @@
   },
   {
    "t": "narrate",
-   "text": "Jesse looks at her for a long beat."
+   "text": "Jesse looks at her for a long beat.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/149.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
    "text": "Yeah, Em. I know what you mean.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/150.mp3"
   },
   {
    "t": "say",
    "char": "Em",
    "text": "Okay. Good. Get sleep.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/151.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]Em goes to her car."
+   "text": "[shot:establish]Em goes to her car.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/152.mp3"
   },
   {
    "t": "hide",
@@ -727,7 +812,8 @@
   },
   {
    "t": "narrate",
-   "text": "Jesse stands in the driveway for a minute."
+   "text": "Jesse stands in the driveway for a minute.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/154.mp3"
   },
   {
    "t": "narrate",
@@ -739,19 +825,23 @@
   },
   {
    "t": "narrate",
-   "text": "He thinks: I have been writing the song. Em has been keeping the band."
+   "text": "He thinks: I have been writing the song. Em has been keeping the band.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/157.mp3"
   },
   {
    "t": "narrate",
-   "text": "He thinks, with the small careful honesty he is, this summer, occasionally able to do: I have been treating the band as the thing I get to do while I do the more important thing, which is the map. Em has been treating the band as the thing."
+   "text": "He thinks, with the small careful honesty he is, this summer, occasionally able to do: I have been treating the band as the thing I get to do while I do the more important thing, which is the map. Em has been treating the band as the thing.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/158.mp3"
   },
   {
    "t": "narrate",
-   "text": "He thinks: Em is right."
+   "text": "He thinks: Em is right.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/159.mp3"
   },
   {
    "t": "narrate",
-   "text": "He gets in the Civic. He drives home."
+   "text": "He gets in the Civic. He drives home.",
+   "voice": "assets/audio/voice/vol6_ch14_substation_nine/160.mp3"
   },
   {
    "t": "jump",

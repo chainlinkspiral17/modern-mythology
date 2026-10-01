@@ -29,7 +29,8 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:morning_bright]Maya wakes up in the basement."
+      "text": "[mood:morning_bright]Maya wakes up in the basement.",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/005.mp3"
     },
     {
       "t": "narrate",
@@ -41,15 +42,18 @@
     },
     {
       "t": "narrate",
-      "text": "Maya gets up. She washes her face. She uses the bathroom. She puts on the t-shirt and jeans Anita has left on the chair, which, as advertised, swim on her."
+      "text": "Maya gets up. She washes her face. She uses the bathroom. She puts on the t-shirt and jeans Anita has left on the chair, which, as advertised, swim on her.",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/008.mp3"
     },
     {
       "t": "narrate",
-      "text": "She goes upstairs."
+      "text": "She goes upstairs.",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/009.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]The kitchen is full."
+      "text": "[shot:establish]The kitchen is full.",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/010.mp3"
     },
     {
       "t": "show",
@@ -79,19 +83,22 @@
     },
     {
       "t": "narrate",
-      "text": "When Maya comes in, all four of them look up, in different registers."
+      "text": "When Maya comes in, all four of them look up, in different registers.",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/016.mp3"
     },
     {
       "t": "say",
       "char": "Bill Kowalski",
       "text": "Morning, Maya. Eggs?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/017.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "How'd you sleep, sweetheart.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/018.mp3"
     },
     {
       "t": "show",
@@ -103,165 +110,197 @@
       "t": "say",
       "char": "Gracie",
       "text": "[shot:closeup person]You are wearing my mom's shirt and it looks like a dress on you.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/020.mp3"
     },
     {
       "t": "narrate",
-      "text": "Maya laughs."
+      "text": "Maya laughs.",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/021.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "Yeah. Eggs would be amazing. Thank you.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/022.mp3"
     },
     {
       "t": "narrate",
-      "text": "She sits at the table next to Anita. Daisy comes out from under the table and puts her head on Maya's foot. Maya rubs Daisy with her toes."
+      "text": "She sits at the table next to Anita. Daisy comes out from under the table and puts her head on Maya's foot. Maya rubs Daisy with her toes.",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/023.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]Anita slides her phone across the table."
+      "text": "[shot:insert phone]Anita slides her phone across the table.",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/024.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "I called the hospital at seven. Your grandmother is awake. She is asking for you. They moved her up to the third floor at five-forty. Room three eighteen. Visiting hours are nine to nine. I can drive you over after breakfast.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/025.mp3"
     },
     {
       "t": "narrate",
-      "text": "Maya looks at her."
+      "text": "Maya looks at her.",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/026.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "Thank you, Mrs. Kowalski.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/027.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Anita.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/028.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "[shot:closeup person_b]Anita.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/029.mp3"
     },
     {
       "t": "narrate",
-      "text": "[mood:kitchen_practical][shot:insert eggs]Bill brings over a plate. Two eggs over-easy, two pieces of toast, a strip of bacon. He sets it in front of Maya without comment."
+      "text": "[mood:kitchen_practical][shot:insert eggs]Bill brings over a plate. Two eggs over-easy, two pieces of toast, a strip of bacon. He sets it in front of Maya without comment.",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/030.mp3"
     },
     {
       "t": "say",
       "char": "Bill Kowalski",
       "text": "Hot sauce is in the cabinet to the left of the stove if you want it.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/031.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "Thank you, Mr. Kowalski.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/032.mp3"
     },
     {
       "t": "say",
       "char": "Bill Kowalski",
       "text": "Bill.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/033.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "Bill.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/034.mp3"
     },
     {
       "t": "narrate",
-      "text": "She eats."
+      "text": "She eats.",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/035.mp3"
     },
     {
       "t": "narrate",
-      "text": "The eggs are perfect."
+      "text": "The eggs are perfect.",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/036.mp3"
     },
     {
       "t": "narrate",
-      "text": "Gracie watches her eat with the unembarrassed curiosity of an eleven-year-old who has, this morning, decided that Maya is the most interesting thing to ever happen to her family's kitchen and is going to need, going forward, to be observed at all meals."
+      "text": "Gracie watches her eat with the unembarrassed curiosity of an eleven-year-old who has, this morning, decided that Maya is the most interesting thing to ever happen to her family's kitchen and is going to need, going forward, to be observed at all meals.",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/037.mp3"
     },
     {
       "t": "narrate",
-      "text": "Maya, halfway through the second egg, looks up."
+      "text": "Maya, halfway through the second egg, looks up.",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/038.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "Gracie.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/039.mp3"
     },
     {
       "t": "say",
       "char": "Gracie",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/040.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "Want to come to the hospital with me?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/041.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup gracie]Gracie's face does, for an instant, the small unguarded thing eleven-year-olds' faces do when they have been invited to a thing they had not, dared, ask for."
+      "text": "[shot:closeup gracie]Gracie's face does, for an instant, the small unguarded thing eleven-year-olds' faces do when they have been invited to a thing they had not, dared, ask for.",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/042.mp3"
     },
     {
       "t": "say",
       "char": "Gracie",
       "text": "Yes.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/043.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Gracie, sweetheart, you don't have to — ",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/044.mp3"
     },
     {
       "t": "say",
       "char": "Gracie",
       "text": "I want to.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/045.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "It would help me, actually. If she's awake she'll want to know about — about people. Gracie can tell her about Daisy.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/046.mp3"
     },
     {
       "t": "narrate",
-      "text": "Gracie nods solemnly."
+      "text": "Gracie nods solemnly.",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/047.mp3"
     },
     {
       "t": "say",
       "char": "Gracie",
       "text": "I will tell her about Daisy at length.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/048.mp3"
     },
     {
       "t": "narrate",
-      "text": "Bill snorts."
+      "text": "Bill snorts.",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/049.mp3"
     },
     {
       "t": "narrate",
-      "text": "Anita laughs."
+      "text": "Anita laughs.",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/050.mp3"
     },
     {
       "t": "narrate",
-      "text": "[mood:morning_bright][shot:establish~]The kitchen, in the small bright way kitchens do this work, becomes the room where the next chapter of Maya's life is, without her quite registering it, beginning to be set."
+      "text": "[mood:morning_bright][shot:establish~]The kitchen, in the small bright way kitchens do this work, becomes the room where the next chapter of Maya's life is, without her quite registering it, beginning to be set.",
+      "voice": "assets/audio/voice/vol6_ch8_kowalski_kitchen/051.mp3"
     },
     {
       "t": "jump",

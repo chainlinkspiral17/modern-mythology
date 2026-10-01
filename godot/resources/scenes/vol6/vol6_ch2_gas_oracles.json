@@ -33,35 +33,43 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:morning_bright]Monday arrives the way Mondays arrive in Harmony Creek Estates: dressed up as itself, indistinguishable from Sunday or Tuesday except for the slight increase in traffic on the arterials and the fact that the sprinklers, on Mondays, do not run."
+      "text": "[mood:morning_bright]Monday arrives the way Mondays arrive in Harmony Creek Estates: dressed up as itself, indistinguishable from Sunday or Tuesday except for the slight increase in traffic on the arterials and the fact that the sprinklers, on Mondays, do not run.",
+      "voice": "assets/audio/voice/vol6_ch2_gas_oracles/005.mp3"
     },
     {
       "t": "narrate",
-      "text": "Mondays are resting days. The lawns, per the HOA's Residential Conduct Standards, are permitted to thirst on Mondays, as part of what the handbook refers to, without apparent irony, as the landscape's narrative of endurance."
+      "text": "Mondays are resting days. The lawns, per the HOA's Residential Conduct Standards, are permitted to thirst on Mondays, as part of what the handbook refers to, without apparent irony, as the landscape's narrative of endurance.",
+      "voice": "assets/audio/voice/vol6_ch2_gas_oracles/006.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert thermometer]The thermometer at the Kwik Stop, which has been stuck at 97 degrees for the past three summers because Jen the day manager does not believe in paying to replace a thermometer, reads 97 degrees."
+      "text": "[shot:insert thermometer]The thermometer at the Kwik Stop, which has been stuck at 97 degrees for the past three summers because Jen the day manager does not believe in paying to replace a thermometer, reads 97 degrees.",
+      "voice": "assets/audio/voice/vol6_ch2_gas_oracles/007.mp3"
     },
     {
       "t": "narrate",
-      "text": "The actual temperature is 89. By one PM it will be 104."
+      "text": "The actual temperature is 89. By one PM it will be 104.",
+      "voice": "assets/audio/voice/vol6_ch2_gas_oracles/008.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam Miller has the noon-to-eight."
+      "text": "Sam Miller has the noon-to-eight.",
+      "voice": "assets/audio/voice/vol6_ch2_gas_oracles/009.mp3"
     },
     {
       "t": "narrate",
-      "text": "Maya Daigle has Cosmic Comics until five."
+      "text": "Maya Daigle has Cosmic Comics until five.",
+      "voice": "assets/audio/voice/vol6_ch2_gas_oracles/010.mp3"
     },
     {
       "t": "narrate",
-      "text": "Jesse Henderson has the Pit Stop Diner, three-to-eleven, closing."
+      "text": "Jesse Henderson has the Pit Stop Diner, three-to-eleven, closing.",
+      "voice": "assets/audio/voice/vol6_ch2_gas_oracles/011.mp3"
     },
     {
       "t": "narrate",
-      "text": "Ben Kowalski has the morning prep at the Pit Stop, six-to-two, and an optional double until close if Jesse needs help — which Jesse, without yet knowing it, is going to."
+      "text": "Ben Kowalski has the morning prep at the Pit Stop, six-to-two, and an optional double until close if Jesse needs help — which Jesse, without yet knowing it, is going to.",
+      "voice": "assets/audio/voice/vol6_ch2_gas_oracles/012.mp3"
     },
     {
       "t": "narrate",
@@ -73,19 +81,23 @@
     },
     {
       "t": "narrate",
-      "text": "The small checkbox field is cross-referenced, per NexCorp's HR protocol, to Chief Miller's office at 08:15."
+      "text": "The small checkbox field is cross-referenced, per NexCorp's HR protocol, to Chief Miller's office at 08:15.",
+      "voice": "assets/audio/voice/vol6_ch2_gas_oracles/015.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup miller]Chief Miller receives the notification."
+      "text": "[shot:closeup miller]Chief Miller receives the notification.",
+      "voice": "assets/audio/voice/vol6_ch2_gas_oracles/016.mp3"
     },
     {
       "t": "narrate",
-      "text": "Chief Miller does not act on it."
+      "text": "Chief Miller does not act on it.",
+      "voice": "assets/audio/voice/vol6_ch2_gas_oracles/017.mp3"
     },
     {
       "t": "narrate",
-      "text": "[mood:fluorescent_corridor][shot:insert folder~]He archives it in a folder on his workstation labeled PENDING — R. The folder contains, as of this morning, four other notifications, the oldest of which dates to 2019."
+      "text": "[mood:fluorescent_corridor][shot:insert folder~]He archives it in a folder on his workstation labeled PENDING — R. The folder contains, as of this morning, four other notifications, the oldest of which dates to 2019.",
+      "voice": "assets/audio/voice/vol6_ch2_gas_oracles/018.mp3"
     },
     {
       "t": "jump",

@@ -43,11 +43,13 @@
     },
     {
       "t": "narrate",
-      "text": "[panel:vol6_transport_order][mood:macro_haze][shot:insert phone]The phone on the desk buzzes. He turns it over. He reads the message. Movement Wednesday 23:00. Transport van, unmarked. Zone to Zone-G. Holding there 48h. You'll have the kid out of your subdivision by midnight."
+      "text": "[panel:vol6_transport_order][mood:macro_haze][shot:insert phone]The phone on the desk buzzes. He turns it over. He reads the message. Movement Wednesday 23:00. Transport van, unmarked. Zone to Zone-G. Holding there 48h. You'll have the kid out of your subdivision by midnight.",
+      "voice": "assets/audio/voice/vol6_ch4_miller_office/009.mp3"
     },
     {
       "t": "narrate",
-      "text": "He reads it twice. He does not reply. He sets the phone face-down."
+      "text": "He reads it twice. He does not reply. He sets the phone face-down.",
+      "voice": "assets/audio/voice/vol6_ch4_miller_office/010.mp3"
     },
     {
       "t": "show",
@@ -58,34 +60,41 @@
     {
       "t": "think",
       "char": "Chief Miller",
-      "text": "[panel:off][shot:closeup miller~]They moved it up. That means they know something changed."
+      "text": "[panel:off][shot:closeup miller~]They moved it up. That means they know something changed.",
+      "voice": "assets/audio/voice/vol6_ch4_miller_office/012.mp3"
     },
     {
       "t": "think",
       "char": "Chief Miller",
-      "text": "Sammy knows."
+      "text": "Sammy knows.",
+      "voice": "assets/audio/voice/vol6_ch4_miller_office/013.mp3"
     },
     {
       "t": "think",
       "char": "Chief Miller",
-      "text": "Sammy has known since Sunday night. She has not said anything. She is handling it the way she handles things. Which is: she is planning. Which is: I have, for the first time in her life, lost the thread of what she is going to do before she does it."
+      "text": "Sammy has known since Sunday night. She has not said anything. She is handling it the way she handles things. Which is: she is planning. Which is: I have, for the first time in her life, lost the thread of what she is going to do before she does it.",
+      "voice": "assets/audio/voice/vol6_ch4_miller_office/014.mp3"
     },
     {
       "t": "think",
       "char": "Chief Miller",
-      "text": "I have some decisions to make about how I am going to be her father this week."
+      "text": "I have some decisions to make about how I am going to be her father this week.",
+      "voice": "assets/audio/voice/vol6_ch4_miller_office/015.mp3"
     },
     {
       "t": "narrate",
-      "text": "The rain hits harder. The chandelier above his desk — which is not lit — rattles very faintly as the pressure in the house shifts. Chief Miller looks at the ceiling. The chandelier stops rattling."
+      "text": "The rain hits harder. The chandelier above his desk — which is not lit — rattles very faintly as the pressure in the house shifts. Chief Miller looks at the ceiling. The chandelier stops rattling.",
+      "voice": "assets/audio/voice/vol6_ch4_miller_office/016.mp3"
     },
     {
       "t": "narrate",
-      "text": "He picks up the phone on the desk. He types: Need to discuss timing. Can you do 07:30 at the usual place."
+      "text": "He picks up the phone on the desk. He types: Need to discuss timing. Can you do 07:30 at the usual place.",
+      "voice": "assets/audio/voice/vol6_ch4_miller_office/017.mp3"
     },
     {
       "t": "narrate",
-      "text": "The reply comes in eleven seconds. No. 23:00 as scheduled. The discussion happens after."
+      "text": "The reply comes in eleven seconds. No. 23:00 as scheduled. The discussion happens after.",
+      "voice": "assets/audio/voice/vol6_ch4_miller_office/018.mp3"
     },
     {
       "t": "show",
@@ -95,7 +104,8 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:rain_interior][shot:establish]He reads it. He puts the phone down. He stands. He goes upstairs to shave."
+      "text": "[mood:rain_interior][shot:establish]He reads it. He puts the phone down. He stands. He goes upstairs to shave.",
+      "voice": "assets/audio/voice/vol6_ch4_miller_office/020.mp3"
     },
     {
       "t": "narrate",
@@ -108,16 +118,19 @@
     {
       "t": "think",
       "char": "Chief Miller",
-      "text": "I love her."
+      "text": "I love her.",
+      "voice": "assets/audio/voice/vol6_ch4_miller_office/023.mp3"
     },
     {
       "t": "think",
       "char": "Chief Miller",
-      "text": "I do not, today, know what to do about that."
+      "text": "I do not, today, know what to do about that.",
+      "voice": "assets/audio/voice/vol6_ch4_miller_office/024.mp3"
     },
     {
       "t": "narrate",
-      "text": "He starts the water."
+      "text": "He starts the water.",
+      "voice": "assets/audio/voice/vol6_ch4_miller_office/025.mp3"
     },
     {
       "t": "hide",

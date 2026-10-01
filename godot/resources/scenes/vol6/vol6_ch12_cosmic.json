@@ -29,7 +29,8 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:day_bright][shot:insert keys]The keys are heavy in a way Maya had not, at sixteen, expected keys to be heavy."
+      "text": "[mood:day_bright][shot:insert keys]The keys are heavy in a way Maya had not, at sixteen, expected keys to be heavy.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/005.mp3"
     },
     {
       "t": "narrate",
@@ -45,7 +46,8 @@
     },
     {
       "t": "narrate",
-      "text": "She has been at the door for forty seconds."
+      "text": "She has been at the door for forty seconds.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/009.mp3"
     },
     {
       "t": "narrate",
@@ -57,23 +59,28 @@
     },
     {
       "t": "narrate",
-      "text": "She turns the key."
+      "text": "She turns the key.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/012.mp3"
     },
     {
       "t": "narrate",
-      "text": "The deadbolt slides."
+      "text": "The deadbolt slides.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/013.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]She turns the second key."
+      "text": "[shot:establish]She turns the second key.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/014.mp3"
     },
     {
       "t": "narrate",
-      "text": "The bottom lock turns."
+      "text": "The bottom lock turns.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/015.mp3"
     },
     {
       "t": "narrate",
-      "text": "She pushes the door open."
+      "text": "She pushes the door open.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/016.mp3"
     },
     {
       "t": "narrate",
@@ -89,11 +96,13 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert door]She locks the door behind her. She flips the CLOSED sign to face inward. She does not, yet, turn it."
+      "text": "[shot:insert door]She locks the door behind her. She flips the CLOSED sign to face inward. She does not, yet, turn it.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/020.mp3"
     },
     {
       "t": "narrate",
-      "text": "She crosses to the back office."
+      "text": "She crosses to the back office.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/021.mp3"
     },
     {
       "t": "bg",
@@ -101,63 +110,78 @@
     },
     {
       "t": "narrate",
-      "text": "[panel:vol6_rick_notebook][shot:insert notebook]Rick had left, on the desk, the spiral notebook he had been keeping for her since Sunday. The notebook is open. It has, in his handwriting, a list of things she might need to know."
+      "text": "[panel:vol6_rick_notebook][shot:insert notebook]Rick had left, on the desk, the spiral notebook he had been keeping for her since Sunday. The notebook is open. It has, in his handwriting, a list of things she might need to know.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/023.mp3"
     },
     {
       "t": "narrate",
-      "text": "She has, since Sunday afternoon, read the list four times."
+      "text": "She has, since Sunday afternoon, read the list four times.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/024.mp3"
     },
     {
       "t": "narrate",
-      "text": "She reads it again."
+      "text": "She reads it again.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/025.mp3"
     },
     {
       "t": "narrate",
-      "text": "Kid:"
+      "text": "Kid:",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/026.mp3"
     },
     {
       "t": "narrate",
-      "text": "— Diamond truck Tuesday usually 2pm. Could be late. Could be Wednesday. They'll call. Sign for it. Don't open the boxes till you and Curtis have a minute together. He knows the routine."
+      "text": "— Diamond truck Tuesday usually 2pm. Could be late. Could be Wednesday. They'll call. Sign for it. Don't open the boxes till you and Curtis have a minute together. He knows the routine.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/027.mp3"
     },
     {
       "t": "narrate",
-      "text": "— Subscriptions get pulled Wednesday morning. The list is in the binder under the register. You'll see. Curtis can show you if you forget. He won't like being asked. Ask anyway."
+      "text": "— Subscriptions get pulled Wednesday morning. The list is in the binder under the register. You'll see. Curtis can show you if you forget. He won't like being asked. Ask anyway.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/028.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]— Mrs. Delacroix comes in Wednesday for her Archie. New issue is in the back, came in last week. Top of the new-arrivals box, marked."
+      "text": "[shot:establish]— Mrs. Delacroix comes in Wednesday for her Archie. New issue is in the back, came in last week. Top of the new-arrivals box, marked.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/029.mp3"
     },
     {
       "t": "narrate",
-      "text": "— Hal will call Thursday morning. He always does on the weeks I'm out. He just wants to check. Tell him things are fine. He'll believe you."
+      "text": "— Hal will call Thursday morning. He always does on the weeks I'm out. He just wants to check. Tell him things are fine. He'll believe you.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/030.mp3"
     },
     {
       "t": "narrate",
-      "text": "— If Curtis asks about the Friday deposit slip, tell him I have it. I do. He'll grumble. Let him grumble."
+      "text": "— If Curtis asks about the Friday deposit slip, tell him I have it. I do. He'll grumble. Let him grumble.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/031.mp3"
     },
     {
       "t": "narrate",
-      "text": "— Wren is going to ask for Saturday off. Say yes. The girlfriend's birthday. I'd already told her she could but I forgot to tell you."
+      "text": "— Wren is going to ask for Saturday off. Say yes. The girlfriend's birthday. I'd already told her she could but I forgot to tell you.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/032.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert speak_spell]— Speak & Spell does what it does. Let it. Don't mention it to anybody who comes in. If it does something while a customer is in the shop, walk to the back and unplug it. You know which outlet."
+      "text": "[shot:insert speak_spell]— Speak & Spell does what it does. Let it. Don't mention it to anybody who comes in. If it does something while a customer is in the shop, walk to the back and unplug it. You know which outlet.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/033.mp3"
     },
     {
       "t": "narrate",
-      "text": "— You've got this, kid. Call me only if it's on fire. Even then, decide if it can wait."
+      "text": "— You've got this, kid. Call me only if it's on fire. Even then, decide if it can wait.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/034.mp3"
     },
     {
       "t": "narrate",
-      "text": "— R."
+      "text": "— R.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/035.mp3"
     },
     {
       "t": "narrate",
-      "text": "[panel:off]She closes the notebook."
+      "text": "[panel:off]She closes the notebook.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/036.mp3"
     },
     {
       "t": "narrate",
-      "text": "She puts it in the top drawer of the desk."
+      "text": "She puts it in the top drawer of the desk.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/037.mp3"
     },
     {
       "t": "narrate",
@@ -177,19 +201,23 @@
     },
     {
       "t": "narrate",
-      "text": "She crosses to the front. She unlocks the door. She flips the sign to OPEN."
+      "text": "She crosses to the front. She unlocks the door. She flips the sign to OPEN.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/042.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup maya]She does not, immediately, return to the back. She stands at the counter for a moment."
+      "text": "[shot:closeup maya]She does not, immediately, return to the back. She stands at the counter for a moment.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/043.mp3"
     },
     {
       "t": "narrate",
-      "text": "The shop, opened, makes a different sound than the shop, closed. The HVAC, set for daytime, comes on with its standard clunk. The Galactus light on the floor shifts as the morning sun moves. The brass bell hangs still above the door."
+      "text": "The shop, opened, makes a different sound than the shop, closed. The HVAC, set for daytime, comes on with its standard clunk. The Galactus light on the floor shifts as the morning sun moves. The brass bell hangs still above the door.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/044.mp3"
     },
     {
       "t": "narrate",
-      "text": "She goes to the back office."
+      "text": "She goes to the back office.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/045.mp3"
     },
     {
       "t": "bg",
@@ -197,15 +225,18 @@
     },
     {
       "t": "narrate",
-      "text": "She makes a coffee from the Mr. Coffee on the file cabinet that has, by Rick's report, been the Mr. Coffee since 2008."
+      "text": "She makes a coffee from the Mr. Coffee on the file cabinet that has, by Rick's report, been the Mr. Coffee since 2008.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/047.mp3"
     },
     {
       "t": "narrate",
-      "text": "She sits at the desk."
+      "text": "She sits at the desk.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/048.mp3"
     },
     {
       "t": "narrate",
-      "text": "She waits for the day."
+      "text": "She waits for the day.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/049.mp3"
     },
     {
       "t": "bg",
@@ -213,7 +244,8 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup curtis]Curtis comes in at ten fifteen."
+      "text": "[shot:closeup curtis]Curtis comes in at ten fifteen.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/051.mp3"
     },
     {
       "t": "show",
@@ -237,13 +269,15 @@
       "t": "say",
       "char": "Curtis",
       "text": "Morning, Maya.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/056.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "[shot:closeup person]Morning, Curtis.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/057.mp3"
     },
     {
       "t": "narrate",
@@ -257,31 +291,37 @@
       "t": "say",
       "char": "Curtis",
       "text": "Coffee?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/060.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "I have one in the back.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/061.mp3"
     },
     {
       "t": "say",
       "char": "Curtis",
       "text": "Okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/062.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert speak_spell]Curtis goes about his morning. He puts up the new shelf-talkers for the Tuesday rotation. He moves three books from the back-issue boxes that he had marked yesterday. He does not speak to Maya for the next forty minutes."
+      "text": "[shot:insert speak_spell]Curtis goes about his morning. He puts up the new shelf-talkers for the Tuesday rotation. He moves three books from the back-issue boxes that he had marked yesterday. He does not speak to Maya for the next forty minutes.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/063.mp3"
     },
     {
       "t": "narrate",
-      "text": "She does not, in the forty minutes, leave the back office. She has been told by Rick to give Curtis the morning to himself. She gives him the morning."
+      "text": "She does not, in the forty minutes, leave the back office. She has been told by Rick to give Curtis the morning to himself. She gives him the morning.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/064.mp3"
     },
     {
       "t": "narrate",
-      "text": "By eleven the shop has had six customers. By eleven forty-five, nine. By noon, twelve."
+      "text": "By eleven the shop has had six customers. By eleven forty-five, nine. By noon, twelve.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/065.mp3"
     },
     {
       "t": "narrate",
@@ -293,7 +333,8 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert door]Maya, at the doorway, learns by watching."
+      "text": "[shot:insert door]Maya, at the doorway, learns by watching.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/068.mp3"
     },
     {
       "t": "bg",
@@ -301,79 +342,94 @@
     },
     {
       "t": "narrate",
-      "text": "She eats her sandwich at the desk at twelve fourteen."
+      "text": "She eats her sandwich at the desk at twelve fourteen.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/070.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]The phone rings."
+      "text": "[shot:insert phone]The phone rings.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/071.mp3"
     },
     {
       "t": "narrate",
-      "text": "It is Diamond Distribution. The dispatcher is a woman named Delia, who Maya has not spoken to before but who introduces herself with the efficient warmth of a person who has been doing distribution dispatch for thirty years."
+      "text": "It is Diamond Distribution. The dispatcher is a woman named Delia, who Maya has not spoken to before but who introduces herself with the efficient warmth of a person who has been doing distribution dispatch for thirty years.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/072.mp3"
     },
     {
       "t": "say",
       "char": "Delia",
       "text": "Honey, just a heads-up. Driver's running behind. Could be Tuesday very late, could be Wednesday morning. Sign-out window's nine to five, you know the drill?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/073.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "Yeah. Thanks for letting me know.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/074.mp3"
     },
     {
       "t": "say",
       "char": "Delia",
       "text": "You're new. Are you the new — ",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/075.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "[shot:closeup person]I'm Maya. I'm Rick's — I'm covering for Rick this week.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/076.mp3"
     },
     {
       "t": "say",
       "char": "Delia",
       "text": "Rick at the con?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/077.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/078.mp3"
     },
     {
       "t": "say",
       "char": "Delia",
       "text": "You tell him Delia says hi. Tell him I said the boxes are heavier this month. He's gonna want to send the strong one out to the truck.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/079.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "I'll tell him.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/080.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Delia hangs up."
+      "text": "[shot:establish]Delia hangs up.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/081.mp3"
     },
     {
       "t": "narrate",
-      "text": "Maya finishes her sandwich."
+      "text": "Maya finishes her sandwich.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/082.mp3"
     },
     {
       "t": "narrate",
-      "text": "She does not, immediately, tell Curtis the truck is going to be late. She does not need to. Curtis will, by his own clock, have already factored in that the truck is sometimes Wednesday, and Curtis does not like being told things he has already factored."
+      "text": "She does not, immediately, tell Curtis the truck is going to be late. She does not need to. Curtis will, by his own clock, have already factored in that the truck is sometimes Wednesday, and Curtis does not like being told things he has already factored.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/083.mp3"
     },
     {
       "t": "narrate",
-      "text": "She sits at the desk."
+      "text": "She sits at the desk.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/084.mp3"
     },
     {
       "t": "narrate",
@@ -389,15 +445,18 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup maya]She is, she registers, slightly proud of herself."
+      "text": "[shot:closeup maya]She is, she registers, slightly proud of herself.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/088.mp3"
     },
     {
       "t": "narrate",
-      "text": "She does not have anybody to be proud to. The pride is an interior thing she is holding by herself at twelve twenty-two."
+      "text": "She does not have anybody to be proud to. The pride is an interior thing she is holding by herself at twelve twenty-two.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/089.mp3"
     },
     {
       "t": "narrate",
-      "text": "The interior thing is fine. The not-having-anybody is — for today, for the next two hours — fine."
+      "text": "The interior thing is fine. The not-having-anybody is — for today, for the next two hours — fine.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/090.mp3"
     },
     {
       "t": "bg",
@@ -405,11 +464,13 @@
     },
     {
       "t": "narrate",
-      "text": "She gets up. She goes back to the front to give Curtis his lunch break."
+      "text": "She gets up. She goes back to the front to give Curtis his lunch break.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/092.mp3"
     },
     {
       "t": "narrate",
-      "text": "Wren arrives at one PM."
+      "text": "Wren arrives at one PM.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/093.mp3"
     },
     {
       "t": "show",
@@ -433,177 +494,209 @@
       "t": "say",
       "char": "Wren",
       "text": "Morning, Maya. Hair okay?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/098.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "Hair's great.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/099.mp3"
     },
     {
       "t": "say",
       "char": "Wren",
       "text": "Yeah?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/100.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "[shot:closeup person]Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/101.mp3"
     },
     {
       "t": "say",
       "char": "Wren",
       "text": "Cool. I did it last night. I needed — I needed to do something with my hands.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/102.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "[shot:closeup person]Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/103.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert till]Wren goes behind the counter. She drops her bag. She looks at the register screen the same way Curtis had at ten fifteen."
+      "text": "[shot:insert till]Wren goes behind the counter. She drops her bag. She looks at the register screen the same way Curtis had at ten fifteen.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/104.mp3"
     },
     {
       "t": "say",
       "char": "Wren",
       "text": "Maya. Quick thing.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/105.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/106.mp3"
     },
     {
       "t": "say",
       "char": "Wren",
       "text": "Saturday. I — Rick said it would be okay. I'm going to San Marcos. It's Liz's birthday. I want to go down Friday night, come back Sunday. Are you — is that okay?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/107.mp3"
     },
     {
       "t": "narrate",
-      "text": "Maya, who had been told by Rick to say yes, says: \"Yes.\""
+      "text": "Maya, who had been told by Rick to say yes, says: \"Yes.\"",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/108.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "[shot:closeup person]Yes.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/109.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Wren exhales."
+      "text": "[shot:establish]Wren exhales.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/110.mp3"
     },
     {
       "t": "say",
       "char": "Wren",
       "text": "Okay. I — thank you. I can — I can pick up an extra shift this week if you need. Wednesday or Thursday.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/111.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "I'm okay this week. Rick said you'd ask. He told me to say yes. He said he forgot to tell you.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/112.mp3"
     },
     {
       "t": "narrate",
-      "text": "Wren laughs, short."
+      "text": "Wren laughs, short.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/113.mp3"
     },
     {
       "t": "say",
       "char": "Wren",
       "text": "That sounds like Rick.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/114.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/115.mp3"
     },
     {
       "t": "narrate",
-      "text": "Wren looks at her."
+      "text": "Wren looks at her.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/116.mp3"
     },
     {
       "t": "say",
       "char": "Wren",
       "text": "[shot:closeup person_b]You good, kid? First day solo?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/117.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "I'm good.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/118.mp3"
     },
     {
       "t": "say",
       "char": "Wren",
       "text": "Curtis behaving?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/119.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "Curtis is being Curtis.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/120.mp3"
     },
     {
       "t": "say",
       "char": "Wren",
       "text": "That's Curtis behaving. He's a good guy. Just — he gets weird when Rick is out. He'll loosen up by Thursday.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/121.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "[shot:closeup person]Okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/122.mp3"
     },
     {
       "t": "narrate",
-      "text": "Wren takes her bag to the small employee cubby behind the counter. She comes back out."
+      "text": "Wren takes her bag to the small employee cubby behind the counter. She comes back out.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/123.mp3"
     },
     {
       "t": "say",
       "char": "Wren",
       "text": "Hey. Lunch later. I want to talk to you about a thing.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/124.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "Yeah?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/125.mp3"
     },
     {
       "t": "say",
       "char": "Wren",
       "text": "Not a — not a thing-thing. Just a thing. Tell you at three when Curtis takes his break.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/126.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/127.mp3"
     },
     {
       "t": "narrate",
-      "text": "Wren nods."
+      "text": "Wren nods.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/128.mp3"
     },
     {
       "t": "narrate",
-      "text": "Curtis takes his lunch at one fifteen. He goes to the small Salvadoran place across the strip mall. He is back at one forty-eight."
+      "text": "Curtis takes his lunch at one fifteen. He goes to the small Salvadoran place across the strip mall. He is back at one forty-eight.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/129.mp3"
     },
     {
       "t": "narrate",
@@ -615,7 +708,8 @@
     },
     {
       "t": "narrate",
-      "text": "At one forty-eight Curtis comes back. He goes behind the counter. He takes over. Wren takes Maya to the back office."
+      "text": "At one forty-eight Curtis comes back. He goes behind the counter. He takes over. Wren takes Maya to the back office.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/132.mp3"
     },
     {
       "t": "bg",
@@ -623,27 +717,32 @@
     },
     {
       "t": "narrate",
-      "text": "The back office is small. The desk is small. The file cabinet is small. The Speak & Spell is on the shelf above the file cabinet, dim."
+      "text": "The back office is small. The desk is small. The file cabinet is small. The Speak & Spell is on the shelf above the file cabinet, dim.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/134.mp3"
     },
     {
       "t": "narrate",
-      "text": "Wren closes the door."
+      "text": "Wren closes the door.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/135.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup wren]Wren sits on the edge of the desk."
+      "text": "[shot:closeup wren]Wren sits on the edge of the desk.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/136.mp3"
     },
     {
       "t": "say",
       "char": "Wren",
       "text": "Maya.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/137.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/138.mp3"
     },
     {
       "t": "say",
@@ -665,39 +764,46 @@
     },
     {
       "t": "narrate",
-      "text": "Maya looks at her."
+      "text": "Maya looks at her.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/142.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "[shot:closeup person]Okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/143.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Wren takes a breath."
+      "text": "[shot:establish]Wren takes a breath.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/144.mp3"
     },
     {
       "t": "narrate",
-      "text": "[beat:still]Wren tells Maya the thing."
+      "text": "[beat:still]Wren tells Maya the thing.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/145.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "Wren. I'm sorry.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/146.mp3"
     },
     {
       "t": "say",
       "char": "Wren",
       "text": "Yeah. Me too.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/147.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "Are you — ",
-      "expr": "thinking"
+      "expr": "thinking",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/148.mp3"
     },
     {
       "t": "say",
@@ -715,61 +821,72 @@
       "t": "say",
       "char": "Maya",
       "text": "Okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/151.mp3"
     },
     {
       "t": "say",
       "char": "Wren",
       "text": "Curtis doesn't know.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/152.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "I won't tell him.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/153.mp3"
     },
     {
       "t": "say",
       "char": "Wren",
       "text": "He might guess. Curtis guesses. If he asks you about my face, tell him I had a thing on the phone this morning. Don't tell him what the thing was.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/154.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "[shot:closeup person]Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/155.mp3"
     },
     {
       "t": "say",
       "char": "Wren",
       "text": "Thank you, Maya.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/156.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "Wren. I'm glad you told me. I'm sorry.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/157.mp3"
     },
     {
       "t": "say",
       "char": "Wren",
       "text": "Me too.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/158.mp3"
     },
     {
       "t": "narrate",
-      "text": "She gets off the desk."
+      "text": "She gets off the desk.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/159.mp3"
     },
     {
       "t": "narrate",
-      "text": "She opens the back-office door."
+      "text": "She opens the back-office door.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/160.mp3"
     },
     {
       "t": "narrate",
-      "text": "She goes back to the floor."
+      "text": "She goes back to the floor.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/161.mp3"
     },
     {
       "t": "narrate",
@@ -785,11 +902,13 @@
     },
     {
       "t": "narrate",
-      "text": "She gets up."
+      "text": "She gets up.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/165.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]She goes back to the floor."
+      "text": "[shot:establish]She goes back to the floor.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/166.mp3"
     },
     {
       "t": "bg",
@@ -797,7 +916,8 @@
     },
     {
       "t": "narrate",
-      "text": "The afternoon is busier than the morning."
+      "text": "The afternoon is busier than the morning.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/168.mp3"
     },
     {
       "t": "narrate",
@@ -813,19 +933,23 @@
     },
     {
       "t": "narrate",
-      "text": "She rings."
+      "text": "She rings.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/172.mp3"
     },
     {
       "t": "narrate",
-      "text": "She bags."
+      "text": "She bags.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/173.mp3"
     },
     {
       "t": "narrate",
-      "text": "She receipts."
+      "text": "She receipts.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/174.mp3"
     },
     {
       "t": "narrate",
-      "text": "She greets the customer who comes in. She wishes them well when they leave."
+      "text": "She greets the customer who comes in. She wishes them well when they leave.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/175.mp3"
     },
     {
       "t": "narrate",
@@ -837,27 +961,33 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert speak_and_spell~]The Speak & Spell, on the shelf in the back office, does not glow."
+      "text": "[shot:insert speak_and_spell~]The Speak & Spell, on the shelf in the back office, does not glow.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/178.mp3"
     },
     {
       "t": "narrate",
-      "text": "It has not glowed all day."
+      "text": "It has not glowed all day.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/179.mp3"
     },
     {
       "t": "narrate",
-      "text": "Maya has, every time she has been in the back office, looked at it. The red speaker grille is dim. The crack in the lower-left corner of the housing is the same crack it has been since 2014. The Speak & Spell today is just a Speak & Spell."
+      "text": "Maya has, every time she has been in the back office, looked at it. The red speaker grille is dim. The crack in the lower-left corner of the housing is the same crack it has been since 2014. The Speak & Spell today is just a Speak & Spell.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/180.mp3"
     },
     {
       "t": "narrate",
-      "text": "She does not know whether this means anything."
+      "text": "She does not know whether this means anything.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/181.mp3"
     },
     {
       "t": "narrate",
-      "text": "She files the not-glowing along with everything else she has filed today."
+      "text": "She files the not-glowing along with everything else she has filed today.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/182.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert twenty]Curtis takes his second break at six twenty-two."
+      "text": "[shot:insert twenty]Curtis takes his second break at six twenty-two.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/183.mp3"
     },
     {
       "t": "bg",
@@ -865,7 +995,8 @@
     },
     {
       "t": "narrate",
-      "text": "He goes to the back office. He sits at the desk. He drinks from the thermos. He reads the Sentinel."
+      "text": "He goes to the back office. He sits at the desk. He drinks from the thermos. He reads the Sentinel.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/185.mp3"
     },
     {
       "t": "bg",
@@ -873,67 +1004,80 @@
     },
     {
       "t": "narrate",
-      "text": "Maya, at the counter, has the front of the shop."
+      "text": "Maya, at the counter, has the front of the shop.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/187.mp3"
     },
     {
       "t": "narrate",
-      "text": "At six forty-one Curtis comes back out."
+      "text": "At six forty-one Curtis comes back out.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/188.mp3"
     },
     {
       "t": "say",
       "char": "Curtis",
       "text": "Maya.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/189.mp3"
     },
     {
       "t": "narrate",
-      "text": "She turns."
+      "text": "She turns.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/190.mp3"
     },
     {
       "t": "say",
       "char": "Curtis",
       "text": "[shot:closeup curtis]The Diamond invoice from last Friday. The one that came in just before Rick left. The one that's sitting on the desk in the green folder. Did Rick tell you what to do with it.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/191.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "He said you would handle it.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/192.mp3"
     },
     {
       "t": "narrate",
-      "text": "Curtis is silent for a beat."
+      "text": "Curtis is silent for a beat.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/193.mp3"
     },
     {
       "t": "say",
       "char": "Curtis",
       "text": "Did he write that down.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/194.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thinks. She had read the notebook list four times. The Diamond invoice from Friday is not, she is fairly sure, in the list."
+      "text": "She thinks. She had read the notebook list four times. The Diamond invoice from Friday is not, she is fairly sure, in the list.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/195.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "He didn't write it down. He said it Sunday at noon. He said Curtis will run the Friday invoice through, he knows the schedule.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/196.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Curtis nods, slowly."
+      "text": "[shot:establish]Curtis nods, slowly.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/197.mp3"
     },
     {
       "t": "say",
       "char": "Curtis",
       "text": "Okay. I'll run it through tonight before I leave.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/198.mp3"
     },
     {
       "t": "narrate",
-      "text": "He returns to the indie rack."
+      "text": "He returns to the indie rack.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/199.mp3"
     },
     {
       "t": "narrate",
@@ -949,71 +1093,84 @@
     },
     {
       "t": "narrate",
-      "text": "She does not, in the moment, do anything with the relief."
+      "text": "She does not, in the moment, do anything with the relief.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/203.mp3"
     },
     {
       "t": "narrate",
-      "text": "She rings up the next customer."
+      "text": "She rings up the next customer.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/204.mp3"
     },
     {
       "t": "narrate",
-      "text": "At seven fifty-eight Wren comes out from the back."
+      "text": "At seven fifty-eight Wren comes out from the back.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/205.mp3"
     },
     {
       "t": "say",
       "char": "Wren",
       "text": "Curtis. I'm out. Big day Wednesday. Maya, you closing?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/206.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/207.mp3"
     },
     {
       "t": "say",
       "char": "Wren",
       "text": "You good?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/208.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "I'm good.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/209.mp3"
     },
     {
       "t": "say",
       "char": "Wren",
       "text": "Curtis. Behave.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/210.mp3"
     },
     {
       "t": "say",
       "char": "Curtis",
       "text": "I always behave.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/211.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert door]Wren laughs. She picks up her bag. She crosses to the door. She turns at the door."
+      "text": "[shot:insert door]Wren laughs. She picks up her bag. She crosses to the door. She turns at the door.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/212.mp3"
     },
     {
       "t": "say",
       "char": "Wren",
       "text": "Maya. Text me if anything weird happens.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/213.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "I will.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/214.mp3"
     },
     {
       "t": "narrate",
-      "text": "Wren leaves. The bell chimes."
+      "text": "Wren leaves. The bell chimes.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/215.mp3"
     },
     {
       "t": "hide",
@@ -1021,25 +1178,30 @@
     },
     {
       "t": "narrate",
-      "text": "The shop, at eight oh-one, has three customers left — two in the back issues, one at the new-arrivals shelf."
+      "text": "The shop, at eight oh-one, has three customers left — two in the back issues, one at the new-arrivals shelf.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/217.mp3"
     },
     {
       "t": "say",
       "char": "Curtis",
       "text": "Last call in five.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/218.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_b]The customer at the new-arrivals shelf nods. The two in the back issues say yeah, gimme a sec."
+      "text": "[shot:establish_b]The customer at the new-arrivals shelf nods. The two in the back issues say yeah, gimme a sec.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/219.mp3"
     },
     {
       "t": "narrate",
-      "text": "By eight oh-eight the shop is empty."
+      "text": "By eight oh-eight the shop is empty.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/220.mp3"
     },
     {
       "t": "narrate",
-      "text": "Curtis goes to the back to run the Friday invoice through."
+      "text": "Curtis goes to the back to run the Friday invoice through.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/221.mp3"
     },
     {
       "t": "narrate",
@@ -1059,131 +1221,158 @@
     },
     {
       "t": "narrate",
-      "text": "She comes back to the counter at eight twenty-seven."
+      "text": "She comes back to the counter at eight twenty-seven.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/226.mp3"
     },
     {
       "t": "narrate",
-      "text": "Curtis is at the desk in the back office. The light is on. He is, by the sound of the keys, doing the invoice in the QuickBooks file Rick has been running since 2003."
+      "text": "Curtis is at the desk in the back office. The light is on. He is, by the sound of the keys, doing the invoice in the QuickBooks file Rick has been running since 2003.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/227.mp3"
     },
     {
       "t": "narrate",
-      "text": "She waits."
+      "text": "She waits.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/228.mp3"
     },
     {
       "t": "narrate",
-      "text": "Curtis finishes at eight forty-one."
+      "text": "Curtis finishes at eight forty-one.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/229.mp3"
     },
     {
       "t": "narrate",
-      "text": "He comes out of the back office. He has his thermos and his Sentinel. He has the green folder with the Friday invoice now timestamped and filed."
+      "text": "He comes out of the back office. He has his thermos and his Sentinel. He has the green folder with the Friday invoice now timestamped and filed.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/230.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_c]He puts the folder on the counter."
+      "text": "[shot:establish_c]He puts the folder on the counter.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/231.mp3"
     },
     {
       "t": "say",
       "char": "Curtis",
       "text": "Done.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/232.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "Thanks, Curtis.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/233.mp3"
     },
     {
       "t": "narrate",
-      "text": "He pauses briefly."
+      "text": "He pauses briefly.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/234.mp3"
     },
     {
       "t": "say",
       "char": "Curtis",
       "text": "Maya.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/235.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/236.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup curtis]He looks at her for a beat that is, she registers, not the beat of his ordinary closing-time pause. The beat is one syllable longer than usual."
+      "text": "[shot:closeup curtis]He looks at her for a beat that is, she registers, not the beat of his ordinary closing-time pause. The beat is one syllable longer than usual.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/237.mp3"
     },
     {
       "t": "say",
       "char": "Curtis",
       "text": "[beat:lift]You're doing fine, kid.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/238.mp3"
     },
     {
       "t": "narrate",
-      "text": "She blinks."
+      "text": "She blinks.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/239.mp3"
     },
     {
       "t": "narrate",
-      "text": "She had not, in the day, expected this."
+      "text": "She had not, in the day, expected this.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/240.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "Curtis. Thank you.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/241.mp3"
     },
     {
       "t": "say",
       "char": "Curtis",
       "text": "Don't make it a thing.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/242.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He picks up his stuff."
+      "text": "[shot:establish]He picks up his stuff.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/243.mp3"
     },
     {
       "t": "narrate",
-      "text": "He goes to the door."
+      "text": "He goes to the door.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/244.mp3"
     },
     {
       "t": "narrate",
-      "text": "He turns."
+      "text": "He turns.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/245.mp3"
     },
     {
       "t": "say",
       "char": "Curtis",
       "text": "Wren — Wren told you stuff at lunch. I saw her face. I — I want you to know. Whatever she told you, it's — it's not your problem. I want you to know that.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/246.mp3"
     },
     {
       "t": "narrate",
-      "text": "Maya looks at him."
+      "text": "Maya looks at him.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/247.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "Curtis. I know.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/248.mp3"
     },
     {
       "t": "narrate",
-      "text": "Curtis nods."
+      "text": "Curtis nods.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/249.mp3"
     },
     {
       "t": "say",
       "char": "Curtis",
       "text": "Good kid.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/250.mp3"
     },
     {
       "t": "narrate",
-      "text": "Curtis leaves."
+      "text": "Curtis leaves.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/251.mp3"
     },
     {
       "t": "narrate",
-      "text": "The bell chimes."
+      "text": "The bell chimes.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/252.mp3"
     },
     {
       "t": "hide",
@@ -1191,7 +1380,8 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup maya]Maya, alone in the shop, stands at the counter for a long minute."
+      "text": "[shot:closeup maya]Maya, alone in the shop, stands at the counter for a long minute.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/254.mp3"
     },
     {
       "t": "narrate",
@@ -1207,7 +1397,8 @@
     },
     {
       "t": "narrate",
-      "text": "Curtis is going to be okay. The week is going to be okay."
+      "text": "Curtis is going to be okay. The week is going to be okay.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/258.mp3"
     },
     {
       "t": "narrate",
@@ -1219,19 +1410,23 @@
     },
     {
       "t": "narrate",
-      "text": "That is, today, what she can do."
+      "text": "That is, today, what she can do.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/261.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]She locks the front door. She turns the OPEN sign to CLOSED. She does the walk to the back. She turns off the front fluorescents. She turns off the back-office computer. She picks up her bag from under the desk. She turns off the back-office light."
+      "text": "[shot:establish]She locks the front door. She turns the OPEN sign to CLOSED. She does the walk to the back. She turns off the front fluorescents. She turns off the back-office computer. She picks up her bag from under the desk. She turns off the back-office light.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/262.mp3"
     },
     {
       "t": "narrate",
-      "text": "She goes out the back door. She locks it. She tests the deadbolt. She tests it again."
+      "text": "She goes out the back door. She locks it. She tests the deadbolt. She tests it again.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/263.mp3"
     },
     {
       "t": "narrate",
-      "text": "She walks to her bike at the rack."
+      "text": "She walks to her bike at the rack.",
+      "voice": "assets/audio/voice/vol6_ch12_cosmic/264.mp3"
     },
     {
       "t": "jump",

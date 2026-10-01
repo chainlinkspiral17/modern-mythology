@@ -39,35 +39,41 @@
       "t": "say",
       "char": "Chief Miller",
       "expr": "warm",
-      "text": "\"Hey, Sammy.\""
+      "text": "\"Hey, Sammy.\"",
+      "voice": "assets/audio/voice/vol6_ch1_garage/006.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "expr": "neutral",
-      "text": "\"Hey, Dad.\""
+      "text": "\"Hey, Dad.\"",
+      "voice": "assets/audio/voice/vol6_ch1_garage/007.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "expr": "warm",
-      "text": "\"How was work?\""
+      "text": "\"How was work?\"",
+      "voice": "assets/audio/voice/vol6_ch1_garage/008.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "expr": "neutral",
-      "text": "\"Quiet. One beer sale.\""
+      "text": "\"Quiet. One beer sale.\"",
+      "voice": "assets/audio/voice/vol6_ch1_garage/009.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "expr": "warm",
-      "text": "\"Same old.\""
+      "text": "\"Same old.\"",
+      "voice": "assets/audio/voice/vol6_ch1_garage/010.mp3"
     },
     {
       "t": "narrate",
-      "text": "[mood:macro_haze][shot:closeup sam~]Sam gets out of the Corolla. She walks past him into the house. She feels his eyes on her for perhaps three seconds longer than his eyes usually stay on her. Then she feels the attention lift."
+      "text": "[mood:macro_haze][shot:closeup sam~]Sam gets out of the Corolla. She walks past him into the house. She feels his eyes on her for perhaps three seconds longer than his eyes usually stay on her. Then she feels the attention lift.",
+      "voice": "assets/audio/voice/vol6_ch1_garage/011.mp3"
     },
     {
       "t": "jump",

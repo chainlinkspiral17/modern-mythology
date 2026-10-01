@@ -35,7 +35,8 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:fluorescent_corridor][shot:closeup customer]Sam is behind the counter when the man with the golf-shirt sunburn comes back in."
+      "text": "[mood:fluorescent_corridor][shot:closeup customer]Sam is behind the counter when the man with the golf-shirt sunburn comes back in.",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/006.mp3"
     },
     {
       "t": "show",
@@ -112,55 +113,65 @@
     },
     {
       "t": "narrate",
-      "text": "He brings them to the counter. He sets them down."
+      "text": "He brings them to the counter. He sets them down.",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/018.mp3"
     },
     {
       "t": "say",
       "char": "Sunburn Man",
       "expr": "neutral",
-      "text": "[shot:closeup person](looking at the pretzels, not at Sam) \"Hot one today.\""
+      "text": "[shot:closeup person](looking at the pretzels, not at Sam) \"Hot one today.\"",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/019.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "expr": "neutral",
-      "text": "\"Yeah.\""
+      "text": "\"Yeah.\"",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/020.mp3"
     },
     {
       "t": "say",
       "char": "Sunburn Man",
       "expr": "neutral",
-      "text": "\"You working tomorrow?\""
+      "text": "\"You working tomorrow?\"",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/021.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "expr": "neutral",
-      "text": "\"I'm — yes.\""
+      "text": "\"I'm — yes.\"",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/022.mp3"
     },
     {
       "t": "say",
       "char": "Sunburn Man",
       "expr": "neutral",
-      "text": "\"Morning or evening?\""
+      "text": "\"Morning or evening?\"",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/023.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup sam]Sam's throat goes tight. The cold returns."
+      "text": "[shot:closeup sam]Sam's throat goes tight. The cold returns.",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/024.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "expr": "neutral",
-      "text": "(lying, effortlessly) \"Morning. Six to two.\""
+      "text": "(lying, effortlessly) \"Morning. Six to two.\"",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/025.mp3"
     },
     {
       "t": "narrate",
-      "text": "She is, in fact, off tomorrow. She has nothing scheduled until Wednesday."
+      "text": "She is, in fact, off tomorrow. She has nothing scheduled until Wednesday.",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/026.mp3"
     },
     {
       "t": "narrate",
-      "text": "The man nods. He pays cash. He takes his receipt. He does not, on the way out, say anything else. The bell chimes."
+      "text": "The man nods. He pays cash. He takes his receipt. He does not, on the way out, say anything else. The bell chimes.",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/027.mp3"
     },
     {
       "t": "hide",
@@ -176,37 +187,44 @@
     },
     {
       "t": "narrate",
-      "text": "The woman is younger. The woman is also wearing a press lanyard, which Sam can see briefly flash when the man hands her the Snickers."
+      "text": "The woman is younger. The woman is also wearing a press lanyard, which Sam can see briefly flash when the man hands her the Snickers.",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/031.mp3"
     },
     {
       "t": "narrate",
-      "text": "The sedan pulls out. It still has no front plate."
+      "text": "The sedan pulls out. It still has no front plate.",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/032.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert register]Sam stares at the door for a long moment. Then she takes out her phone. She texts Graciela Ramos:"
+      "text": "[shot:insert register]Sam stares at the door for a long moment. Then she takes out her phone. She texts Graciela Ramos:",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/033.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "role": "— text · 13:48 —",
       "expr": "neutral",
-      "text": "the sedan came back. two people this time. one of them is wearing a press lanyard. i think they are watching me. i don't know what to do."
+      "text": "the sedan came back. two people this time. one of them is wearing a press lanyard. i think they are watching me. i don't know what to do.",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/034.mp3"
     },
     {
       "t": "narrate",
-      "text": "The reply comes in forty seconds."
+      "text": "The reply comes in forty seconds.",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/035.mp3"
     },
     {
       "t": "say",
       "char": "Graciela Ramos",
       "role": "— text —",
       "expr": "neutral",
-      "text": "Mija. They are not watching you. They are protecting you. Do not approach them. Do not avoid them. Continue as you have been. — G."
+      "text": "Mija. They are not watching you. They are protecting you. Do not approach them. Do not avoid them. Continue as you have been. — G.",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/036.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam reads the message three times. She puts the phone down."
+      "text": "Sam reads the message three times. She puts the phone down.",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/037.mp3"
     },
     {
       "t": "narrate",
@@ -219,17 +237,20 @@
     {
       "t": "think",
       "char": "Sam",
-      "text": "[mood:macro_haze][shot:closeup sam]I am inside a thing. I have been inside a thing for longer than I realized. I am not the first person to notice it. Other people have been noticing it for a long time, and they are, apparently, also watching out for me."
+      "text": "[mood:macro_haze][shot:closeup sam]I am inside a thing. I have been inside a thing for longer than I realized. I am not the first person to notice it. Other people have been noticing it for a long time, and they are, apparently, also watching out for me.",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/040.mp3"
     },
     {
       "t": "think",
       "char": "Sam",
-      "text": "I am going to have to learn, quickly, how to be the kind of person who is watched out for without needing it to be named as such."
+      "text": "I am going to have to learn, quickly, how to be the kind of person who is watched out for without needing it to be named as such.",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/041.mp3"
     },
     {
       "t": "think",
       "char": "Sam",
-      "text": "Graciela knew the sedan. Graciela answered in forty seconds. Graciela has been in communication with people I do not know about. Graciela is a node."
+      "text": "Graciela knew the sedan. Graciela answered in forty seconds. Graciela has been in communication with people I do not know about. Graciela is a node.",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/042.mp3"
     },
     {
       "t": "narrate",
@@ -245,7 +266,8 @@
     },
     {
       "t": "narrate",
-      "text": "But that is three weeks away."
+      "text": "But that is three weeks away.",
+      "voice": "assets/audio/voice/vol6_ch2_kwik_stop/046.mp3"
     },
     {
       "t": "narrate",

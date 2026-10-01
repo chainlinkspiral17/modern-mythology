@@ -1,0 +1,1198 @@
+# Voice import — 2026-10-01 17:10 UTC
+
+- **voice_dropin_vol5_ch0_frasier.zip** (2026-05-29) — vol5_ch0_frasier: 0 line(s) wired, 18 already voiced (kept), 1 SKIPPED (line rewritten since recording)
+  - 002 SKIPPED, line rewritten since recording: “Frasier Temple did not so much walk in as coalesce from the shadows of”
+- **voice_dropin_vol5_ch0_model_city.zip** (2026-05-29) — vol5_ch0_model_city: 0 line(s) wired, 12 already voiced (kept), 2 SKIPPED (line rewritten since recording)
+  - 000 SKIPPED, line rewritten since recording: “Frasier turned the phone screen toward him. On the screen, a sequence ”
+  - 005 SKIPPED, line rewritten since recording: “John looked at his own notebook, open beside the coffee mug. Filled wi”
+- **voice_dropin_vol5_ch0_closing.zip** (2026-05-29) — vol5_ch0_closing: 0 line(s) wired, 14 already voiced (kept), 2 SKIPPED (line rewritten since recording)
+  - 003 SKIPPED, line rewritten since recording: “He wrote down what Frasier had said about the patterns and the walls. ”
+  - 008 SKIPPED, line rewritten since recording: “A patron entered, sat in booth four, ordered coffee without looking at”
+- **voice_dropin_vol5_ch1_magician.zip** (2026-05-29) — vol5_ch1_magician: 0 line(s) wired, 68 already voiced (kept), 13 SKIPPED (line rewritten since recording)
+  - 011 SKIPPED, line rewritten since recording: “Salvaged motherboards formed the plazas. Heat sinks rose like Brutalis”
+  - 012 SKIPPED, line rewritten since recording: “Tiny LEDs pulsed erratically within tenement blocks crafted from ruste”
+  - 018 SKIPPED, line rewritten since recording: “He had escaped the structured inferno of D'Ambrosio's kitchen — its cl”
+  - 019 SKIPPED, line rewritten since recording: “He knelt beside a section of the city representing the old cannery dis”
+  - 025 SKIPPED, line rewritten since recording: “It was not, strictly, a phone. It was a Frankensteinian assemblage of ”
+  - 038 SKIPPED, line rewritten since recording: “Not just code. Not really. Parasitic info-constructs feeding on the am”
+  - 046 SKIPPED, line rewritten since recording: “He grabbed a handful of scavenged components from the workbench — chip”
+  - 050 SKIPPED, line rewritten since recording: “Traffic patterns like panicked fireflies. Economic despair pooling in ”
+  - 052 SKIPPED, line rewritten since recording: “He could see the warehouse he was standing in, also, from above, in th”
+  - 055 SKIPPED, line rewritten since recording: “He remembered the easy camaraderie of the kitchen. The shouting. The h”
+  - 065 SKIPPED, line rewritten since recording: “But every time he set the riverboat down on the river, something in th”
+  - 069 SKIPPED, line rewritten since recording: “"Recommendation revised. Subject proximate to riverboat: do not place.”
+  - 078 SKIPPED, line rewritten since recording: “Or maybe — he thought, watching the Demon-light pulse on the phone scr”
+- **voice_dropin_vol5_ch2_priestess (1).zip** (2026-05-29) — vol5_ch2_priestess: 0 line(s) wired, 29 already voiced (kept), 5 SKIPPED (line rewritten since recording)
+  - 006 SKIPPED, line rewritten since recording: “Thrift-store tarot decks sticky with spilled wine. Camera lenses like ”
+  - 015 SKIPPED, line rewritten since recording: “Her web series — Whispers from the Liminal — had drunk deep from this ”
+  - 019 SKIPPED, line rewritten since recording: “They wrote essays — actual essays, with citations — posted to forums E”
+  - 021 SKIPPED, line rewritten since recording: “She knew about the cliff. She had drawn it herself, several times. In ”
+  - 023 SKIPPED, line rewritten since recording: “She crossed the room to the bookshelf and pulled down a cracked mirror”
+- **voice_dropin_vol5_ch2_priestess_b (1).zip** (2026-05-29) — vol5_ch2_priestess_b: 0 line(s) wired, 43 already voiced (kept), 9 SKIPPED (line rewritten since recording)
+  - 002 SKIPPED, line rewritten since recording: “She had always preferred Option C herself — though it didn't test well”
+  - 004 SKIPPED, line rewritten since recording: “Her phone, on the kitchen counter, buzzed. She did not look at it. It ”
+  - 006 SKIPPED, line rewritten since recording: “The Roberts were sweet. Like offering a Band-Aid for an amputation — b”
+  - 012 SKIPPED, line rewritten since recording: “She had been at D'Ambrosio's two nights ago — research, she had told h”
+  - 021 SKIPPED, line rewritten since recording: “Anya was staring with wide, distant eyes at something just off-frame. ”
+  - 028 SKIPPED, line rewritten since recording: “The void she had flirted with in her scripts. The comforting darkness ”
+  - 036 SKIPPED, line rewritten since recording: “She crossed to the windowsill and looked at the basil plant. The basil”
+  - 050 SKIPPED, line rewritten since recording: “She put the phone face-down on the kitchen counter. The basil plant, h”
+  - 053 SKIPPED, line rewritten since recording: “Elicia Duchane, the High Priestess of her own collapsing sanctum, sat ”
+- **voice_dropin_vol5_ch3_empress (1).zip** (2026-05-30) — vol5_ch3_empress: 0 line(s) wired, 80 already voiced (kept), 14 SKIPPED (line rewritten since recording)
+  - 005 SKIPPED, line rewritten since recording: “Nineteen, going on ancient. Nicola navigated the plush burgundy carpet”
+  - 008 SKIPPED, line rewritten since recording: “She was chaos wrapped in a too-tight hostess uniform — untamed energy ”
+  - 013 SKIPPED, line rewritten since recording: “She saw the whole damn messy opera play out nightly: the power plays a”
+  - 018 SKIPPED, line rewritten since recording: “A flicker behind her eyes. Not the restaurant's calculated mood lighti”
+  - 025 SKIPPED, line rewritten since recording: “The vibration was the bass from the speakers in Table 12's section, se”
+  - 035 SKIPPED, line rewritten since recording: “The man chose not to make eye contact with the smile because making ey”
+  - 049 SKIPPED, line rewritten since recording: “Where would she go? Another rented room. Another town just like this o”
+  - 056 SKIPPED, line rewritten since recording: “Nicola gripped the edge of the hostess stand, knuckles white. The prac”
+  - 058 SKIPPED, line rewritten since recording: “Earthy need versus digital detachment. Punk-rock fury versus algorithm”
+  - 059 SKIPPED, line rewritten since recording: “She looked out at the restaurant. At the swirling chaos of desire and ”
+  - 070 SKIPPED, line rewritten since recording: “He was alone. He had not ordered. He had been seated forty minutes ago”
+  - 071 SKIPPED, line rewritten since recording: “He was middle-aged. He wore a suit that was nicer than the suits the o”
+  - 087 SKIPPED, line rewritten since recording: “"Please give my best to Mr. D'Ambrosio. And — congratulations. I under”
+  - 101 SKIPPED, line rewritten since recording: “The first kick was the old kick. The second kick was new. The second k”
+- **voice_dropin_vol5_ch4_emperor.zip** (2026-05-31) — vol5_ch4_emperor: 93 line(s) wired (3 to a lightly rewritten line), 5 SKIPPED (line rewritten since recording)
+  - 057 → 064 (close 90%): “The man was, by now, crossing the parking lot toward a dark sedan he h”
+  - 092 → 103 (close 95%): “He stood up, smoothed his shirt — the white shirt with the red wine st”
+  - 094 → 105 (close 91%): “He moved among the tables. He shook a hand. He bent to murmur somethin”
+  - 012 SKIPPED, line rewritten since recording: “He stood near the helm and surveyed the dining room from the upper dec”
+  - 023 SKIPPED, line rewritten since recording: “He ran a hand over the polished brass railing he had installed himself”
+  - 029 SKIPPED, line rewritten since recording: “Alberto was his father's grandson — meticulous, ambitious, and probabl”
+  - 082 SKIPPED, line rewritten since recording: “He poured another bourbon. He drank it standing. He looked at the card”
+  - 088 SKIPPED, line rewritten since recording: “He picked up the card. He held it for a moment over the small brass as”
+- **voice_dropin_vol5_ch5_hierophant.zip** (2026-06-04) — vol5_ch5_hierophant: 56 line(s) wired, 20 SKIPPED (line rewritten since recording)
+  - 005 SKIPPED, line rewritten since recording: “THE HIEROPHANT. He holds the keys to what is sacred, and to what is no”
+  - 008 SKIPPED, line rewritten since recording: “Maya's itchy Sunday dress stuck to her back. The dress was new. The dr”
+  - 009 SKIPPED, line rewritten since recording: “Daddy was talking to some men near the church steps. His voice was the”
+  - 010 SKIPPED, line rewritten since recording: “Maya traced patterns in the condensation on her sweating cup of lemona”
+  - 013 SKIPPED, line rewritten since recording: “He wasn't smiling. He wore a suit, even though it felt like the inside”
+  - 014 SKIPPED, line rewritten since recording: “He radiated something. Hot and cold at the same time. Like the metal s”
+  - 015 SKIPPED, line rewritten since recording: “Mr. Paul stopped near Daddy. Clapped one of the other men on the shoul”
+  - 016 SKIPPED, line rewritten since recording: “Mr. Paul's gaze flickered toward Maya for just a second. It felt like ”
+  - 017 SKIPPED, line rewritten since recording: “Then his gaze flickered back, and stayed for the second second, and th”
+  - 025 SKIPPED, line rewritten since recording: “Sunday brunch at D'Ambrosio's was its own special circle of hell. The ”
+  - 027 SKIPPED, line rewritten since recording: “Quentin Paul, ensconced at his usual corner booth overlooking the mudd”
+  - 028 SKIPPED, line rewritten since recording: “She remembered him from before the sinkhole. Back when he was just ano”
+  - 032 SKIPPED, line rewritten since recording: “She saw the tension in his jaw. The slight tic near his eye. The way t”
+  - 042 SKIPPED, line rewritten since recording: “Antonio pinched the bridge of his nose. The phone hot against his ear.”
+  - 043 SKIPPED, line rewritten since recording: “He paced the cramped office above his still-unfinished restaurant, Emb”
+  - 056 SKIPPED, line rewritten since recording: “Hierophant. Yeah, right. More like the damn Pope of his own petty king”
+  - 066 SKIPPED, line rewritten since recording: “John sat on a chipped park bench. The Sunday heat was finally breaking”
+  - 070 SKIPPED, line rewritten since recording: “Paul stopped near the abandoned bandstand. Surveyed the empty park lik”
+  - 072 SKIPPED, line rewritten since recording: “Here was a man wielding belief like a cudgel. Utterly convinced of his”
+  - 078 SKIPPED, line rewritten since recording: “In John's coat pocket, against his ribs, the folded napkin from booth ”
+- **voice_dropin_vol5_ch6_lovers.zip** (2026-06-04) — vol5_ch6_lovers: 62 line(s) wired (2 to a lightly rewritten line), 20 SKIPPED (line rewritten since recording)
+  - 017 → 028 (close 90%): “Her quiet grace always seemed most potent when she was observing life'”
+  - 074 → 111 (close 93%): “The mug — the World's Okayest Weaver mug — was still half-full, but sh”
+  - 005 SKIPPED, line rewritten since recording: “THE LOVERS. Two figures under an angel's benediction. The mountain beh”
+  - 007 SKIPPED, line rewritten since recording: “A slow, maddeningly patient counterpoint to the frantic chirping of so”
+  - 008 SKIPPED, line rewritten since recording: “Their small house, nestled precariously on the edge of what was left o”
+  - 009 SKIPPED, line rewritten since recording: “He tightened the wrench again. Knuckles white against the corroded met”
+  - 010 SKIPPED, line rewritten since recording: “He grunted. Gave the fitting one last, probably futile twist. Solace i”
+  - 019 SKIPPED, line rewritten since recording: “There it was. The smart-ass shorthand they used for the chore of barel”
+  - 025 SKIPPED, line rewritten since recording: “Elicia Duchane. Their brilliant, chaotic, perpetually self-destructing”
+  - 029 SKIPPED, line rewritten since recording: “The casserole had not, in the end, helped. The casserole had been deli”
+  - 031 SKIPPED, line rewritten since recording: “They didn't talk about that much, either. The quiet grief woven into t”
+  - 033 SKIPPED, line rewritten since recording: “Then she had started weaving again. He had seen her, one evening, sitt”
+  - 036 SKIPPED, line rewritten since recording: “She had waited tables on the old riverboat back before the fall. Escap”
+  - 040 SKIPPED, line rewritten since recording: “She picked up a stray piece of Philip's driftwood from the windowsill.”
+  - 045 SKIPPED, line rewritten since recording: “Philip and Mackenzie looked at each other. Nobody knocked at this hour”
+  - 051 SKIPPED, line rewritten since recording: “The boy thrust out the envelope. Philip took it. The boy turned and wa”
+  - 056 SKIPPED, line rewritten since recording: “Inside was a single Polaroid photograph, faded around the edges, dated”
+  - 061 SKIPPED, line rewritten since recording: “He waved.”
+  - 063 SKIPPED, line rewritten since recording: “Mackenzie took the photograph from him. Held it in both hands, the way”
+  - 068 SKIPPED, line rewritten since recording: “Philip thought about it. He thought about the man in the suit Sammy ha”
+  - 072 SKIPPED, line rewritten since recording: “Mackenzie set the photograph on the small table by the door — the tabl”
+  - 081 SKIPPED, line rewritten since recording: “In the front hallway, on the small table by the door, beside the unope”
+- **voice_dropin_vol5_ch7_chariot.zip** (2026-06-04) — vol5_ch7_chariot: 105 line(s) wired, 22 SKIPPED (line rewritten since recording)
+  - 005 SKIPPED, line rewritten since recording: “THE CHARIOT. The armored figure holds no reins — the sphinxes are cont”
+  - 007 SKIPPED, line rewritten since recording: “The girlfriend had not, at the time, intended it as a compliment. Anto”
+  - 010 SKIPPED, line rewritten since recording: “The office was hot. The office was always hot. The office was hot beca”
+  - 014 SKIPPED, line rewritten since recording: “He looked at it. The screen said Q. PAUL. It did not say Quentin, beca”
+  - 020 SKIPPED, line rewritten since recording: “He picked up the phone. He did not, this time, listen to the voicemail”
+  - 023 SKIPPED, line rewritten since recording: “That was the description he had used in the prospectus he had circulat”
+  - 024 SKIPPED, line rewritten since recording: “The warehouse below the office: exposed brick scarred with generations”
+  - 026 SKIPPED, line rewritten since recording: “The crew was outside, on their thirty-minute lunch. Spanish on the rad”
+  - 027 SKIPPED, line rewritten since recording: “The beam was not, in Antonio's professional opinion, going up straight”
+  - 031 SKIPPED, line rewritten since recording: “The buildout was four months behind schedule. The kitchen equipment, o”
+  - 032 SKIPPED, line rewritten since recording: “Quentin Paul was calling. Q. PAUL was calling. Q. PAUL had been callin”
+  - 033 SKIPPED, line rewritten since recording: “His father had not visited since May. His father did not call. They sp”
+  - 045 SKIPPED, line rewritten since recording: “Antonio set the phone down. He felt, briefly, the small calming hum of”
+  - 046 SKIPPED, line rewritten since recording: “This was the rhythm. This was the chariot, drawn by two horses pulling”
+  - 048 SKIPPED, line rewritten since recording: “He stood at the small leaded window of the office and looked out at th”
+  - 073 SKIPPED, line rewritten since recording: “Second. He's not just Q. Paul's. I want to be honest with you, kid. I'”
+  - 081 SKIPPED, line rewritten since recording: “They sat for a while. The hammer downstairs had not resumed; the crew ”
+  - 083 SKIPPED, line rewritten since recording: “Couple of options. None of 'em great. One. You wait him out. He's ther”
+  - 100 SKIPPED, line rewritten since recording: “The downstairs hammer started up again. The crew was back from lunch. ”
+  - 101 SKIPPED, line rewritten since recording: “Antonio looked at the bourbon bottle. He did not pour another. He look”
+  - 118 SKIPPED, line rewritten since recording: “Jimmy left through the back stair. The office door clicked shut. Anton”
+  - 131 SKIPPED, line rewritten since recording: “The remaining speed was gone.”
+- **voice_dropin_vol5_ch8_strength (1).zip** (2026-06-04) — vol5_ch8_strength: 65 line(s) wired, 20 SKIPPED (line rewritten since recording)
+  - 005 SKIPPED, line rewritten since recording: “STRENGTH. The woman in white opens the lion's jaw — not with force but”
+  - 007 SKIPPED, line rewritten since recording: “The game flickered on the bar TV. Muted. Ghosts in pads chasing an ele”
+  - 008 SKIPPED, line rewritten since recording: “His corner booth smelled faintly of stale smoke and something else — s”
+  - 011 SKIPPED, line rewritten since recording: “Scarred knuckles mapped with the ghosts of busted fences and kitchen b”
+  - 012 SKIPPED, line rewritten since recording: “He remembered the feel of wood grain under his plane in the Roberts's ”
+  - 018 SKIPPED, line rewritten since recording: “The bartender — a tired-looking woman with eyes that had seen too many”
+  - 023 SKIPPED, line rewritten since recording: “Still, he had come. Loyalty was an anchor, wasn't it? Or maybe just a ”
+  - 028 SKIPPED, line rewritten since recording: “Intercepted. Shit. The neon ghosts on the screen threw up their hands ”
+  - 033 SKIPPED, line rewritten since recording: “He saw her sometimes, in the reflections distorted by cheap bar glass ”
+  - 035 SKIPPED, line rewritten since recording: “But some beasts couldn't be tamed. Not even by Strength itself. Some g”
+  - 036 SKIPPED, line rewritten since recording: “He had painted the ruins gray after she was gone. He had been trying t”
+  - 040 SKIPPED, line rewritten since recording: “Jimmy running point. Edgy. Talking fast. Eyes darting in the way Jimmy”
+  - 042 SKIPPED, line rewritten since recording: “Except nothing involving Jimmy — or the D'Ambrosio legacy, or for that”
+  - 051 SKIPPED, line rewritten since recording: “A vibration in the air. A shift in the shadows. Some piece of informat”
+  - 052 SKIPPED, line rewritten since recording: “And Douglas? Solid. Reliable. Expendable.”
+  - 054 SKIPPED, line rewritten since recording: “He saw the look in Jimmy's eyes one last time — earlier this evening, ”
+  - 060 SKIPPED, line rewritten since recording: “He stood up from the booth. The cheap vinyl sighed beneath him in the ”
+  - 067 SKIPPED, line rewritten since recording: “He walked the eight blocks back to the room above the laundromat that ”
+  - 078 SKIPPED, line rewritten since recording: “He read the letter back. He read it back again. He folded it in thirds”
+  - 085 SKIPPED, line rewritten since recording: “In the bar he had left, the TV had moved on to the next game. The neon”
+- **voice_dropin_vol5_ch9_hermit (1).zip** (2026-06-04) — vol5_ch9_hermit: 58 line(s) wired, 23 SKIPPED (line rewritten since recording)
+  - 005 SKIPPED, line rewritten since recording: “THE HERMIT. The old man stands alone on a mountaintop, lantern raised.”
+  - 007 SKIPPED, line rewritten since recording: “Twilight bled purple and bruise-grey across the fractured skyline, cat”
+  - 008 SKIPPED, line rewritten since recording: “And Joanna — Joanna was its sole spectral librarian. Its resident ghos”
+  - 011 SKIPPED, line rewritten since recording: “She moved with a stillness that belied the tremor in her hands. A side”
+  - 014 SKIPPED, line rewritten since recording: “The one-eyed shepherd mix — Joanna had named him Rumpus, against his a”
+  - 015 SKIPPED, line rewritten since recording: “And the crow. The crow had no name. The crow refused all names, in the”
+  - 018 SKIPPED, line rewritten since recording: “She trailed her fingers along a rusted I-beam jutting from the earth l”
+  - 022 SKIPPED, line rewritten since recording: “She found a relatively smooth section of wall inside the gutted shell ”
+  - 024 SKIPPED, line rewritten since recording: “The animals settled around her. Silent sentinels. The cat began meticu”
+  - 028 SKIPPED, line rewritten since recording: “The words weren't hers. Not entirely. They felt — downloaded. Like ech”
+  - 029 SKIPPED, line rewritten since recording: “She paused. Sucked chalk dust from her fingertip. The chalk dust taste”
+  - 031 SKIPPED, line rewritten since recording: “The town played tricks. It remembered things. It rearranged itself whe”
+  - 035 SKIPPED, line rewritten since recording: “The poem felt incomplete. Always incomplete. Like a message in a bottl”
+  - 038 SKIPPED, line rewritten since recording: “The crow flew down. Landed on the chalked wall, an inch above the last”
+  - 040 SKIPPED, line rewritten since recording: “Behind the chip, embedded in the wall, was a folded piece of paper. Ol”
+  - 043 SKIPPED, line rewritten since recording: “It was a receipt. From Adelphia's Deli, dated August 14, 1987. For one”
+  - 045 SKIPPED, line rewritten since recording: “See you soon.”
+  - 059 SKIPPED, line rewritten since recording: “She gathered her animal companions close. Their familiar warmth a frag”
+  - 063 SKIPPED, line rewritten since recording: “They moved through what had been Houston Street. They passed the place”
+  - 064 SKIPPED, line rewritten since recording: “She did not slow at any of these places. She had stopped slowing at th”
+  - 065 SKIPPED, line rewritten since recording: “At the lip of the sinkhole proper she paused. The void breathed up at ”
+  - 068 SKIPPED, line rewritten since recording: “The pull, this evening, was toward the world. Toward the streets. Towa”
+  - 072 SKIPPED, line rewritten since recording: “The animals followed her back along the path that wasn't a path, past ”
+- **voice_dropin_vol5_ch10_wheel.zip** (2026-06-04) — vol5_ch10_wheel: 85 line(s) wired, 25 SKIPPED (line rewritten since recording)
+  - 005 SKIPPED, line rewritten since recording: “THE WHEEL OF FORTUNE. It turns. It has always been turning. The sphinx”
+  - 007 SKIPPED, line rewritten since recording: “Erica Campbell stared at the email notification, the crisp black sans-”
+  - 009 SKIPPED, line rewritten since recording: “The ground, which had felt suspiciously unsteady all week, gave anothe”
+  - 011 SKIPPED, line rewritten since recording: “The daily roll of the dice in the hallowed, hermetically sealed halls ”
+  - 013 SKIPPED, line rewritten since recording: “She closed the email. She did not, as she had once, in her twenties, m”
+  - 016 SKIPPED, line rewritten since recording: “Glass walls. Chrome accents. Files indexed with obsessive precision, p”
+  - 018 SKIPPED, line rewritten since recording: “Outside her window, Houston in late afternoon: the freeway traffic doi”
+  - 021 SKIPPED, line rewritten since recording: “Calling again. Demanding. Confiding. Pulling her back into that Graust”
+  - 022 SKIPPED, line rewritten since recording: “She had been Alberto's childhood friend. She had been, then, his condo”
+  - 028 SKIPPED, line rewritten since recording: “The ex-NASA programmer turned painter of screaming chaotic canvases, w”
+  - 035 SKIPPED, line rewritten since recording: “She ran a hand over the smooth cool surface of the desk. The desk was ”
+  - 038 SKIPPED, line rewritten since recording: “Standing before that jury, the weight of Graustark's grief pressing do”
+  - 039 SKIPPED, line rewritten since recording: “Erica had asked, at the time, that they leave Mrs. Romero in. The firm”
+  - 044 SKIPPED, line rewritten since recording: “Why did life outside these glass walls feel like a roulette wheel spun”
+  - 046 SKIPPED, line rewritten since recording: “She pulled up the PetroTex settlement agreement on her monitor. Scanne”
+  - 047 SKIPPED, line rewritten since recording: “The faces of the plaintiffs flashed behind her eyes. Mrs. Romero clutc”
+  - 049 SKIPPED, line rewritten since recording: “She had won. The plaintiffs had been compensated. The defendant corpor”
+  - 056 SKIPPED, line rewritten since recording: “She squared her shoulders. The sharp-minded lawyer clicked back into p”
+  - 071 SKIPPED, line rewritten since recording: “Because everything's about Antonio with you. And because two people I ”
+  - 084 SKIPPED, line rewritten since recording: “Eri. Not yet enough.”
+  - 085 SKIPPED, line rewritten since recording: “She thought about the wheel. She thought about Mrs. Romero at the back”
+  - 103 SKIPPED, line rewritten since recording: “She picked up the phone. She thumbed past Alberto's number. She found ”
+  - 107 SKIPPED, line rewritten since recording: “She crossed back to the glass wall. The Houston dusk was now full colo”
+  - 109 SKIPPED, line rewritten since recording: “Then she turned away from the window, walked back to the desk, sat dow”
+  - 112 SKIPPED, line rewritten since recording: “The light on the desk made small reflections in the chrome and the gla”
+- **voice_dropin_vol5_ch11_justice.zip** (2026-06-04) — vol5_ch11_justice: 89 line(s) wired (1 to a lightly rewritten line), 18 SKIPPED (line rewritten since recording)
+  - 039 → 055 (close 94%): “[beat:chill]He didn't ask to come up. He's in the lobby. He left a car”
+  - 005 SKIPPED, line rewritten since recording: “JUSTICE. She sits between pillars with a sword in one hand and scales ”
+  - 009 SKIPPED, line rewritten since recording: “He had called at three-eleven AM. The phone, on the marble of her beds”
+  - 011 SKIPPED, line rewritten since recording: “The breathing had been steady. Calmer than she had expected. The breat”
+  - 015 SKIPPED, line rewritten since recording: “She had been working on it since five-thirty AM. The first three pages”
+  - 018 SKIPPED, line rewritten since recording: “The contract was for Alberto. The contract was, structurally, sound. T”
+  - 022 SKIPPED, line rewritten since recording: “She thought, with the small clean clarity that arrived occasionally in”
+  - 041 SKIPPED, line rewritten since recording: “She did not, immediately, react. Her face did the small careful nothin”
+  - 046 SKIPPED, line rewritten since recording: “She looked at the eleven-page draft on her monitor. She looked at the ”
+  - 068 SKIPPED, line rewritten since recording: “The whole damn campaign for Alberto D'Ambrosio's Houston concept — a p”
+  - 072 SKIPPED, line rewritten since recording: “Deep. Profoundly generic. She had written it, of course, channeling th”
+  - 073 SKIPPED, line rewritten since recording: “She tabbed over to the logo variations. Alberto wanted something bold,”
+  - 078 SKIPPED, line rewritten since recording: “Anna smiled faintly. Ben. Her fellow traveler in the land of neurotic ”
+  - 083 SKIPPED, line rewritten since recording: “Alberto kept calling. His voice too close, too demanding, hinting at —”
+  - 086 SKIPPED, line rewritten since recording: “Deconstruction. That felt right. Like those Corporate Idols pieces she”
+  - 089 SKIPPED, line rewritten since recording: “Her quest, she realized, wasn't about nailing the D'Ambrosio campaign ”
+  - 095 SKIPPED, line rewritten since recording: “She sat with the blank screen for a long minute. Then, in the small qu”
+  - 096 SKIPPED, line rewritten since recording: “And began, on a new layer above it, to build a Corporate Idols version”
+  - 104 SKIPPED, line rewritten since recording: “When the voicemail notification appeared, she did not, this time, list”
+- **voice_dropin_vol5_ch12_hanged.zip** (2026-06-04) — vol5_ch12_hanged: 100 line(s) wired (1 to a lightly rewritten line), 18 SKIPPED (line rewritten since recording)
+  - 100 → 129 (close 92%): “Nicola Greer stood on the small landing, pale and exhausted, a duffel ”
+  - 005 SKIPPED, line rewritten since recording: “THE HANGED MAN. He hangs by one foot from a living tree. His face is c”
+  - 007 SKIPPED, line rewritten since recording: “The shift from the clatter and forced smiles of D'Ambrosio's — Simons,”
+  - 010 SKIPPED, line rewritten since recording: “Her apartment wasn't a space; it was a nest woven from discarded dance”
+  - 012 SKIPPED, line rewritten since recording: “Or — not weird. Natalie had stopped using the word weird with herself ”
+  - 015 SKIPPED, line rewritten since recording: “She shed her waitress uniform like a snake shedding skin. The fabric c”
+  - 017 SKIPPED, line rewritten since recording: “Conventional ambitions — she had let those go, seasons ago. Watched th”
+  - 018 SKIPPED, line rewritten since recording: “She had not, for the record, set out to live this way. She had set out”
+  - 023 SKIPPED, line rewritten since recording: “The injury had taken something from her ankle and something from her l”
+  - 030 SKIPPED, line rewritten since recording: “As her fingers brushed the cardstock, the image seemed to shimmer. Rip”
+  - 041 SKIPPED, line rewritten since recording: “Tonight they felt — expectant. Buzzing, like before a storm. The Wheel”
+  - 045 SKIPPED, line rewritten since recording: “She curled up on the futon. Pulled a quilt woven with threads the colo”
+  - 049 SKIPPED, line rewritten since recording: “She did not, generally, answer the phone after midnight. She had this ”
+  - 053 SKIPPED, line rewritten since recording: “She had not, in three months, had a phone call from Nicola Greer. Nico”
+  - 063 SKIPPED, line rewritten since recording: “She crossed back to the futon. Sat on the edge of it. Looked at the ca”
+  - 086 SKIPPED, line rewritten since recording: “She uncovered the lamp from its scarf, so the reading light would be r”
+  - 096 SKIPPED, line rewritten since recording: “She sat on the futon with the quilt around her shoulders and the cards”
+  - 105 SKIPPED, line rewritten since recording: “Nicola took off her shoes. She set the duffel just inside the door. Sh”
+  - 114 SKIPPED, line rewritten since recording: “Two. There are two of us. Which one of us would you like to read.”
+- **voice_dropin_vol5_ch13_death.zip** (2026-06-04) — vol5_ch13_death: 54 line(s) wired (1 to a lightly rewritten line), 22 SKIPPED (line rewritten since recording)
+  - 059 → 104 (close 93%): “[beat:lift]She felt — she felt a small specific lift, the kind of lift”
+  - 005 SKIPPED, line rewritten since recording: “DEATH. The skeleton knight rides a white horse past the fallen pope an”
+  - 007 SKIPPED, line rewritten since recording: “This was not unusual. The hospice was generally quiet. The hospice was”
+  - 009 SKIPPED, line rewritten since recording: “She had been awake since three. She had been, in some technical sense,”
+  - 011 SKIPPED, line rewritten since recording: “The room was lit only by the small under-cabinet light above the sink,”
+  - 017 SKIPPED, line rewritten since recording: “Not death itself — she had stopped thinking of death as a thing that a”
+  - 018 SKIPPED, line rewritten since recording: “But there was, Alice had begun to suspect, a kind of announcement. Som”
+  - 021 SKIPPED, line rewritten since recording: “She lay still and watched the rose for a long while. The rose did not,”
+  - 024 SKIPPED, line rewritten since recording: “She thought about the case. She thought about it the way she thought a”
+  - 025 SKIPPED, line rewritten since recording: “The case had been Newsom v. PetroTex because Newsom came first alphabe”
+  - 027 SKIPPED, line rewritten since recording: “The case had won. The settlement had been the largest of its kind in t”
+  - 029 SKIPPED, line rewritten since recording: “Erica had been making sure that, in whatever paper trail the verdict e”
+  - 030 SKIPPED, line rewritten since recording: “Alice had not, in the six years since, thanked Erica for it. She had a”
+  - 032 SKIPPED, line rewritten since recording: “She would not. She would not because she could no longer hold a pen fo”
+  - 041 SKIPPED, line rewritten since recording: “The presence was not Henry. The presence was older than Henry. The pre”
+  - 042 SKIPPED, line rewritten since recording: “The presence sat, as well as Alice could tell, in the chair by the win”
+  - 047 SKIPPED, line rewritten since recording: “She thought about her daughter. She thought about the small unresolved”
+  - 048 SKIPPED, line rewritten since recording: “She thought about Henry. She thought about the morning he had come in ”
+  - 053 SKIPPED, line rewritten since recording: “The second presence did not announce itself. The second presence simpl”
+  - 058 SKIPPED, line rewritten since recording: “Of course. There would be Henry. There would also be her grandmother, ”
+  - 061 SKIPPED, line rewritten since recording: “The under-cabinet light hummed at its small reliable frequency. The sa”
+  - 074 SKIPPED, line rewritten since recording: “At four-oh-six AM the night nurse, doing her standard rounds, paused a”
+  - 077 SKIPPED, line rewritten since recording: “Outside, the city of Simons, Louisiana, kept its quiet pre-dawn. A sin”
+- **voice_dropin_vol5_ch14_temperance.zip** (2026-06-18) — vol5_ch14_temperance: 51 line(s) wired, 24 SKIPPED (line rewritten since recording)
+  - 005 SKIPPED, line rewritten since recording: “TEMPERANCE. The angel stands with one foot in the water, one on land, ”
+  - 006 SKIPPED, line rewritten since recording: “A note on the chronology: this chapter takes place several years after”
+  - 008 SKIPPED, line rewritten since recording: “Were they random. Or was there a choreographer — some unseen Prime Mov”
+  - 009 SKIPPED, line rewritten since recording: “He sighed. A sound barely audible over the gurgle of the coffee maker.”
+  - 011 SKIPPED, line rewritten since recording: “Movie posters (mostly Criterion Collection reprints now, less the fran”
+  - 013 SKIPPED, line rewritten since recording: “Where had it come from. Probably acquired during the Great Post-Graust”
+  - 016 SKIPPED, line rewritten since recording: “He was nominally working on a freelance piece about the burgeoning sce”
+  - 017 SKIPPED, line rewritten since recording: “Mostly, though, he found himself staring out the window at the alleywa”
+  - 020 SKIPPED, line rewritten since recording: “He shook his head. He had been telling himself, for some years now, th”
+  - 024 SKIPPED, line rewritten since recording: “He missed Graustark sometimes, in the way one might miss a particularl”
+  - 026 SKIPPED, line rewritten since recording: “The current times, by contrast, were tepid. The current times were oat”
+  - 029 SKIPPED, line rewritten since recording: “The Great Unwritten Graustark Novel haunted his hard drive like a digi”
+  - 030 SKIPPED, line rewritten since recording: “The relationships left unresolved. Frayed connections lost in the stat”
+  - 031 SKIPPED, line rewritten since recording: “He still emailed Mackenzie Roberts twice a year. She still emailed bac”
+  - 032 SKIPPED, line rewritten since recording: “He still received, every November, a Christmas card from Erica Campbel”
+  - 034 SKIPPED, line rewritten since recording: “He opened a notebook. The pages filled with his familiar scrawl. He wa”
+  - 035 SKIPPED, line rewritten since recording: “Temperance wasn't about finding a perfect midpoint. It was about holdi”
+  - 037 SKIPPED, line rewritten since recording: “Maybe write a footnote about the dust motes. Explore the inherent narr”
+  - 043 SKIPPED, line rewritten since recording: “did you feel it”
+  - 045 SKIPPED, line rewritten since recording: “He did not, immediately, reply. He did not know who the sender was. He”
+  - 046 SKIPPED, line rewritten since recording: “He had felt something, this morning. He had felt it just before the co”
+  - 058 SKIPPED, line rewritten since recording: “The dust motes performed their ballet. The narwhal mug, on the coaster”
+  - 069 SKIPPED, line rewritten since recording: “He sat down. He opened his email. He began, dutifully, to draft the ne”
+  - 079 SKIPPED, line rewritten since recording: “¹ Self 1: The Fool, earnest documentarian, slightly panicked. Self 2: ”
+- **voice_dropin_vol5_ch15_devil.zip** (2026-06-18) — vol5_ch15_devil: 106 line(s) wired (1 to a lightly rewritten line), 21 SKIPPED (line rewritten since recording)
+  - 053 → 070 (close 95%): “The thought arrived unbidden, the way thoughts about Maya always did —”
+  - 006 SKIPPED, line rewritten since recording: “THE DEVIL. The horned figure on his throne, the two figures chained be”
+  - 008 SKIPPED, line rewritten since recording: “Stirring the thick pre-dawn New Orleans air — a gumbo of stale bourbon”
+  - 010 SKIPPED, line rewritten since recording: “He swung his legs off the sofa. The springs groaned in protest. The fl”
+  - 019 SKIPPED, line rewritten since recording: “He had been, at twenty-two, a different person. He could still, someti”
+  - 027 SKIPPED, line rewritten since recording: “The voice had not, technically, been audible in years. The voice had n”
+  - 034 SKIPPED, line rewritten since recording: “Forte saw the grift. Forte had always seen the grift. Forte had been, ”
+  - 035 SKIPPED, line rewritten since recording: “Jimmy had, this past week, begun to suspect that Forte was the kind of”
+  - 046 SKIPPED, line rewritten since recording: “A lone saxophone player coaxed a bluesy lament from his horn, the note”
+  - 049 SKIPPED, line rewritten since recording: “He watched the saxophone player for a long moment. The man was good. T”
+  - 054 SKIPPED, line rewritten since recording: “Maya, sixteen, in Harmony Creek Estates. Living with her grandmother. ”
+  - 057 SKIPPED, line rewritten since recording: “He thought, finally and almost in passing: whatever I am about to do t”
+  - 065 SKIPPED, line rewritten since recording: “Q. PAUL was calling because Q. PAUL was always calling. Q. PAUL had be”
+  - 077 SKIPPED, line rewritten since recording: “Jimmy did know it. Jimmy had not, however, told Q. Paul that he knew i”
+  - 106 SKIPPED, line rewritten since recording: “Jimmy stood in the kitchenette in his stained undershirt at six twenty”
+  - 107 SKIPPED, line rewritten since recording: “The city inspector was not, of course, a city inspector. The city insp”
+  - 111 SKIPPED, line rewritten since recording: “Required Doug, specifically. Doug was the hinge. Q. Paul knew about Do”
+  - 113 SKIPPED, line rewritten since recording: “The fact that Q. Paul also wanted to use Doug — and that Q. Paul had f”
+  - 117 SKIPPED, line rewritten since recording: “The chains were the chains. He had put them on, link by link, in the s”
+  - 118 SKIPPED, line rewritten since recording: “He set the second phone down. He put the first phone in his pocket. He”
+  - 121 SKIPPED, line rewritten since recording: “If Doug already knew. If Doug had already left a letter. If Doug had b”
+  - 125 SKIPPED, line rewritten since recording: “I am the operated.”
+- **voice_dropin_vol5_ch16_tower.zip** (2026-06-18) — vol5_ch16_tower: 83 line(s) wired (2 to a lightly rewritten line), 21 SKIPPED (line rewritten since recording)
+  - 048 → 071 (close 92%): “The red light, unfamiliar to her after so long, looked aggressive — lo”
+  - 067 → 095 (close 93%): “She simply sat in front of the lens with her face doing whatever her f”
+  - 006 SKIPPED, line rewritten since recording: “THE TOWER. Lightning splits the crown from the top of the stone tower.”
+  - 008 SKIPPED, line rewritten since recording: “Data slates lay like fallen monoliths on the floor amidst drifts of re”
+  - 011 SKIPPED, line rewritten since recording: “She stood by the window. Watching the indifferent city lights prick th”
+  - 015 SKIPPED, line rewritten since recording: “Her career — shimmering and ephemeral as a web series watched on borro”
+  - 016 SKIPPED, line rewritten since recording: “Not slowly. Not like dignified ruins succumbing to time and moss. Abru”
+  - 020 SKIPPED, line rewritten since recording: “She had received, this morning, an actual eviction notice. Not metapho”
+  - 021 SKIPPED, line rewritten since recording: “Three months. She had not paid rent in three months. She had not, full”
+  - 023 SKIPPED, line rewritten since recording: “She picked up the heavy glass award. Some digital media accolade for W”
+  - 030 SKIPPED, line rewritten since recording: “Her gaze fell on a stack of storyboards for the abandoned music video ”
+  - 033 SKIPPED, line rewritten since recording: “The music video project had been for an artist Elicia had liked very m”
+  - 036 SKIPPED, line rewritten since recording: “Ghosts of past projects. Past lovers. (MrMyst, a particularly persiste”
+  - 038 SKIPPED, line rewritten since recording: “She had been waiting, she realized, for someone to come and hand her t”
+  - 042 SKIPPED, line rewritten since recording: “Theirs was a different kind of American myth, maybe. Rooted. Resilient”
+  - 043 SKIPPED, line rewritten since recording: “Elicia had, on reading the card, started crying for the first time in ”
+  - 051 SKIPPED, line rewritten since recording: “She had not, in years, been on her own side of the camera. The few tim”
+  - 059 SKIPPED, line rewritten since recording: “She thought, after a long moment: I have been telling other people's s”
+  - 060 SKIPPED, line rewritten since recording: “Admired is not enough.”
+  - 071 SKIPPED, line rewritten since recording: “She knew, in fact, with the small clean certainty that arrived at the ”
+  - 075 SKIPPED, line rewritten since recording: “She washed it, carefully, with the small green sponge she kept by the ”
+  - 077 SKIPPED, line rewritten since recording: “She put the kettle on. She made tea. She did not, this time, drink fro”
+  - 095 SKIPPED, line rewritten since recording: “She sat in the wreckage of her apartment, with her mother's clean teac”
+- **voice_dropin_vol5_ch17_star.zip** (2026-06-18) — vol5_ch17_star: 91 line(s) wired (4 to a lightly rewritten line), 15 SKIPPED (line rewritten since recording)
+  - 008 → 009 (close 90%): “Joanna LeMoine felt its borrowed light scrape against her skin — too b”
+  - 026 → 034 (close 91%): “The words sat on the wall as if they had been waiting there for her to”
+  - 055 → 074 (close 94%): “[beat:hit]She thought, with the small terrible clarity that was, she s”
+  - 092 → 119 (close 93%): “She walked back along the path that wasn't a path, past the I-beam, pa”
+  - 006 SKIPPED, line rewritten since recording: “THE STAR. The naked figure kneels at the pool and pours water onto the”
+  - 012 SKIPPED, line rewritten since recording: “She knelt on the rubble-strewn floor of what used to be the Old Armory”
+  - 014 SKIPPED, line rewritten since recording: “Her animal companions, her silent flea-bitten acolytes, kept their dis”
+  - 019 SKIPPED, line rewritten since recording: “The words demanded egress. Pushed against the inside of her skull, ins”
+  - 020 SKIPPED, line rewritten since recording: “She had been waiting for this night for some weeks. The 1987 receipt w”
+  - 032 SKIPPED, line rewritten since recording: “She saw the spectral outline of Dante D'Ambrosio's ambition still clin”
+  - 036 SKIPPED, line rewritten since recording: “Back at D'Ambrosio's, pouring coffee, wiping tables — they hadn't seen”
+  - 038 SKIPPED, line rewritten since recording: “This had been the cost of the older system's gift to her. She had been”
+  - 046 SKIPPED, line rewritten since recording: “But what if hope itself was the cruelest illusion. What if the guiding”
+  - 056 SKIPPED, line rewritten since recording: “The realization settled into her bones the way only certain realizatio”
+  - 061 SKIPPED, line rewritten since recording: “She had, over the years, told herself it had been her own fragility th”
+  - 066 SKIPPED, line rewritten since recording: “She walked to the wall where she had written. She pressed her palm aga”
+  - 076 SKIPPED, line rewritten since recording: “The animals returned to her side once the crow was gone. The dog leani”
+  - 079 SKIPPED, line rewritten since recording: “She thought, I will, in the morning, walk to the post office on Elm. I”
+  - 089 SKIPPED, line rewritten since recording: “The crow was no longer on the I-beam. The crow was, by now, somewhere ”
+- **voice_dropin_vol5_ch18_moon.zip** (2026-06-18) — vol5_ch18_moon: 48 line(s) wired (2 to a lightly rewritten line), 27 SKIPPED (line rewritten since recording)
+  - 015 → 049 (close 93%): “The room did, however, drop the under-cabinet light by one tiny percep”
+  - 073 → 164 (close 95%): “She looked at Nicola, who had woken at the gas-station stop and was lo”
+  - 006 SKIPPED, line rewritten since recording: “By five AM Natalie David had read for both of them — first Nicola, the”
+  - 007 SKIPPED, line rewritten since recording: “The readings had ended around four. Nicola had slept, immediately, on ”
+  - 008 SKIPPED, line rewritten since recording: “It began, as these things generally began in Natalie's apartment, with”
+  - 009 SKIPPED, line rewritten since recording: “At five oh-seven, the record player in the corner — which had not, sin”
+  - 010 SKIPPED, line rewritten since recording: “The tonearm, having lifted, moved. Slowly. In the small careful way a ”
+  - 011 SKIPPED, line rewritten since recording: “And, in the small impossible space between the needle and the vinyl, a”
+  - 012 SKIPPED, line rewritten since recording: “Natalie did not, for a long moment, move.
+
+She had, in the past few ye”
+  - 016 SKIPPED, line rewritten since recording: “She stood up. Her knees clicked. She crossed to the futon.
+
+Nicola was”
+  - 017 SKIPPED, line rewritten since recording: “Nicola's face shifted.
+
+A small frown. Not the frown of waking. A diff”
+  - 029 SKIPPED, line rewritten since recording: “Nicola sat up. Put on her shoes. She did it without questioning, becau”
+  - 030 SKIPPED, line rewritten since recording: “At five fourteen the bell at the street-level door rang.
+
+Natalie pres”
+  - 031 SKIPPED, line rewritten since recording: “A figure arrived at the landing.
+
+It was not, as Natalie had expected,”
+  - 037 SKIPPED, line rewritten since recording: “Nicola went very still.
+
+Natalie, watching her, could see both of them”
+  - 048 SKIPPED, line rewritten since recording: “Because you've been broadcasting on a frequency Joanna LeMoine has bee”
+  - 061 SKIPPED, line rewritten since recording: “They left the apartment at five thirty-one.
+
+Natalie locked the door b”
+  - 062 SKIPPED, line rewritten since recording: “Outside, the Simons dawn was beginning — the particular yellow-grey th”
+  - 064 SKIPPED, line rewritten since recording: “Natalie sat in the back with Nicola. Miriam drove. They did not, for t”
+  - 065 SKIPPED, line rewritten since recording: “Natalie watched them both. Mother. Monster. Or — no. That was the old ”
+  - 066 SKIPPED, line rewritten since recording: “Aria had, at the time, said: I believe that means she is the kind of c”
+  - 067 SKIPPED, line rewritten since recording: “Aria said — silently, across the back seat, in the small clear way Nat”
+  - 078 SKIPPED, line rewritten since recording: “Nicola, suddenly, reached forward through the gap between the front se”
+  - 081 SKIPPED, line rewritten since recording: “She stood at the edge of the gas station parking lot and watched the S”
+  - 082 SKIPPED, line rewritten since recording: “Natalie stood in the empty parking lot with one hand in her pocket on ”
+  - 083 SKIPPED, line rewritten since recording: “On the bus back north, she did not read. She did not listen to music. ”
+  - 085 SKIPPED, line rewritten since recording: “The bus pulled into Simons at ten-oh-seven. The Tuesday morning was in”
+  - 086 SKIPPED, line rewritten since recording: “She made tea. She drank it from the chipped cup. She sat at her desk a”
+  - 087 SKIPPED, line rewritten since recording: “The moon, by now, was long set. The Moon card, the Arcana, the older k”
+- **voice_dropin_vol5_ch19_sun.zip** (2026-06-18) — vol5_ch19_sun: 60 line(s) wired, 22 SKIPPED (line rewritten since recording)
+  - 006 SKIPPED, line rewritten since recording: “A note on the chronology: this chapter, like Temperance, takes place s”
+  - 007 SKIPPED, line rewritten since recording: “It was a Tuesday morning in late May, and John Frank was at Café Olimp”
+  - 008 SKIPPED, line rewritten since recording: “He sat at the small round metal table in the back corner, under the wi”
+  - 009 SKIPPED, line rewritten since recording: “Elicia was, at this moment, twelve minutes late.
+
+Which was — to be fa”
+  - 010 SKIPPED, line rewritten since recording: “She had answered his three-week-old email, seven months ago, with one ”
+  - 012 SKIPPED, line rewritten since recording: “I am broke, I am evicted in twenty-three days, I have been filming mys”
+  - 013 SKIPPED, line rewritten since recording: “John, who had been preparing, for three weeks, a careful measured open”
+  - 025 SKIPPED, line rewritten since recording: “The seven months had not fixed Elicia. Seven months did not, John had ”
+  - 026 SKIPPED, line rewritten since recording: “The footage had accumulated. The footage was, at last count, approxima”
+  - 027 SKIPPED, line rewritten since recording: “He had not, in the seven months, told Elicia about the text from the T”
+  - 035 SKIPPED, line rewritten since recording: “At ten twenty-three, the bell over the café door chimed.
+
+John looked ”
+  - 036 SKIPPED, line rewritten since recording: “She sat with the man. They began a quiet conversation. The man pulled ”
+  - 037 SKIPPED, line rewritten since recording: “He opened his notebook. He wrote, in the small careful hand he had bee”
+  - 038 SKIPPED, line rewritten since recording: “The bell over the door chimed again.
+
+This time it was Elicia.
+
+She ca”
+  - 069 SKIPPED, line rewritten since recording: “He got up to go to the counter.
+
+As he passed the window table, the bl”
+  - 078 SKIPPED, line rewritten since recording: “That woman is in your pattern, John.”
+  - 079 SKIPPED, line rewritten since recording: “He looked at Elicia. He set down the small paper bag of croissants on ”
+  - 081 SKIPPED, line rewritten since recording: “Elicia broke the first croissant in half. Handed him the larger piece.”
+  - 082 SKIPPED, line rewritten since recording: “John thought, she's not hunting. She's here for something else. The hu”
+  - 083 SKIPPED, line rewritten since recording: “He broke a corner off his croissant. He ate it. The croissant was exce”
+  - 084 SKIPPED, line rewritten since recording: “Somewhere — south of here, south of this building, south of this count”
+  - 090 SKIPPED, line rewritten since recording: “He meant it. He would, in fact, tell her tomorrow. He did not yet know”
+- **voice_dropin_vol5_ch20_judgement.zip** (2026-06-18) — vol5_ch20_judgement: 31 line(s) wired, 33 SKIPPED (line rewritten since recording)
+  - 006 SKIPPED, line rewritten since recording: “The chapter that follows takes place on a single Tuesday morning in la”
+  - 007 SKIPPED, line rewritten since recording: “And then the stillness broke.
+
+Not gradually. Not like dawn easing ove”
+  - 009 SKIPPED, line rewritten since recording: “And the dust, which moments before had settled like fine linen, rose n”
+  - 010 SKIPPED, line rewritten since recording: “The sky — indifferent moments before — now seemed to ripple. The washe”
+  - 012 SKIPPED, line rewritten since recording: “System instability critical. Geological substrate failure cascading. P”
+  - 013 SKIPPED, line rewritten since recording: “In Houston, high in her sterile tower, the Italian marble floor beneat”
+  - 021 SKIPPED, line rewritten since recording: “She stood up from the teak desk. She did not shut down the monitor. Sh”
+  - 022 SKIPPED, line rewritten since recording: “In his Montreal apartment, the dust motes performing their sudden fran”
+  - 023 SKIPPED, line rewritten since recording: “His phone, on the desk, buzzed. He did not need to look. He knew, with”
+  - 024 SKIPPED, line rewritten since recording: “He put the phone down. He looked at his calendar. He looked at the pla”
+  - 025 SKIPPED, line rewritten since recording: “Amidst the actual Graustark rubble, Joanna LeMoine felt the concrete c”
+  - 028 SKIPPED, line rewritten since recording: “Joanna went.
+
+Outside, the morning was already not what any morning ha”
+  - 029 SKIPPED, line rewritten since recording: “Joanna thought, with the small clean clarity she had earned on the wal”
+  - 031 SKIPPED, line rewritten since recording: “Fractured narratives bleed together.
+The hostess shields a phantom blo”
+  - 032 SKIPPED, line rewritten since recording: “On the spectral deck of his sinking riverboat kingdom, the phantom of ”
+  - 035 SKIPPED, line rewritten since recording: “The boat groaned.
+
+Dante raised his bourbon glass to the card. He dran”
+  - 036 SKIPPED, line rewritten since recording: “In Houston, his older son Alberto received a phone call at the same mo”
+  - 037 SKIPPED, line rewritten since recording: “In New Orleans, the humid haze thickened. Tasting metallic.
+
+Jimmy Dai”
+  - 040 SKIPPED, line rewritten since recording: “Maya. Listen to me. Listen carefully. Something is happening in Graust”
+  - 046 SKIPPED, line rewritten since recording: “Jimmy set the phone down. He looked at Doug's letter. He looked at the”
+  - 047 SKIPPED, line rewritten since recording: “In her lonely apartment in Simons, Natalie David — who had gotten home”
+  - 050 SKIPPED, line rewritten since recording: “The record player, in the corner, clicked on. Not to Nina Simone this ”
+  - 051 SKIPPED, line rewritten since recording: “Alice Newsom, Death's own avatar, had crossed the threshold four hours”
+  - 052 SKIPPED, line rewritten since recording: “Back in Houston, Anna Logue watched the perfect lines on her monitor w”
+  - 053 SKIPPED, line rewritten since recording: “In New Orleans, Douglas Forte stood from his corner booth at the Iron ”
+  - 056 SKIPPED, line rewritten since recording: “The crow had flown back west.
+
+Douglas had gone to the Iron Crow to wa”
+  - 057 SKIPPED, line rewritten since recording: “In their cluttered bungalow, Mackenzie Roberts and Philip Roberts clun”
+  - 060 SKIPPED, line rewritten since recording: “Mrs. Roberts. My name is Jimmy Daigle. You don't know me. My daughter ”
+  - 062 SKIPPED, line rewritten since recording: “In Montreal, Elicia Duchane felt the crash complete itself.
+
+The Tower”
+  - 069 SKIPPED, line rewritten since recording: “And Nicola Greer, in the back seat of Miriam's Subaru — which had, by ”
+  - 071 SKIPPED, line rewritten since recording: “Mama. Mom. It's okay. I know where we're going. Stay in the car.”
+  - 076 SKIPPED, line rewritten since recording: “This wasn't punishment.
+
+It was birth pangs.
+
+It was apocalypse.
+
+It w”
+  - 077 SKIPPED, line rewritten since recording: “And the first note of the music to come was the sound of the world scr”
+- **voice_dropin_vol5_ch21_world.zip** (2026-06-19) — vol5_ch21_world: 21 line(s) wired, 25 SKIPPED (line rewritten since recording)
+  - 005 SKIPPED, line rewritten since recording: “Sunlight — thick and syrupy yellow, like old honey — drips through the”
+  - 006 SKIPPED, line rewritten since recording: “Down here by the river — where the Minstral's Green steamship rusts qu”
+  - 014 SKIPPED, line rewritten since recording: “He ain't wrong.
+
+Up in the ruins, things are stirrin'. You can almost ”
+  - 015 SKIPPED, line rewritten since recording: “Joanna herself — well. Joanna had, four days ago, opened her front doo”
+  - 018 SKIPPED, line rewritten since recording: “Joanna had not spoken. She had only nodded.
+
+The older man had tipped ”
+  - 019 SKIPPED, line rewritten since recording: “The Roberts place. Hear tell Philip's got the porch rebuilt. Sturdy th”
+  - 020 SKIPPED, line rewritten since recording: “Maya Daigle — sixteen, sharp, angry, relieved — is upstairs in the spa”
+  - 021 SKIPPED, line rewritten since recording: “Even Frasier Temple's tin-foil kingdom — that warehouse fulla scary-sm”
+  - 024 SKIPPED, line rewritten since recording: “But it ain't all sunshine and rehabilitated archetypes. This is still ”
+  - 025 SKIPPED, line rewritten since recording: “Douglas Forte arrived on foot at the Roberts's house on Saturday morni”
+  - 026 SKIPPED, line rewritten since recording: “And Frasier's old Demons — they glitch sometimes. Saw one flicker last”
+  - 027 SKIPPED, line rewritten since recording: “Erica Campbell is, at this moment, in a small cabin in the Texas Hill ”
+  - 028 SKIPPED, line rewritten since recording: “Anna Logue is in Marfa. She resigned on Thursday. The journalist to wh”
+  - 029 SKIPPED, line rewritten since recording: “Natalie David is, in Simons, clearing the spare corner of her apartmen”
+  - 030 SKIPPED, line rewritten since recording: “He does not, at this moment, know where he is going, only that he is g”
+  - 036 SKIPPED, line rewritten since recording: “The Child touches the onyx doohickey. It feels warm now, humming faint”
+  - 037 SKIPPED, line rewritten since recording: “The Frog watches the Child go. He rolls another cigarette. He does not”
+  - 038 SKIPPED, line rewritten since recording: “The Frog thinks, in the small private language Frogs use for thinking:”
+  - 039 SKIPPED, line rewritten since recording: “He lights the cigarette. He inhales.
+
+He exhales a smoke ring. The smo”
+  - 040 SKIPPED, line rewritten since recording: “Upstream, in the half-light of the newly reborn Graustark afternoon, t”
+  - 047 SKIPPED, line rewritten since recording: “And somewhere, in a city neither the Frog nor the crow had ever been t”
+  - 048 SKIPPED, line rewritten since recording: “Somewhere else — on the opposite coast, in a small rainy town in Orego”
+  - 051 SKIPPED, line rewritten since recording: “Act One, pink one. Down. Next up: the planned communities. The suburbs”
+  - 054 SKIPPED, line rewritten since recording: “He thought, without saying out loud: and then, eventually, back to me.”
+  - 055 SKIPPED, line rewritten since recording: “End of Act One.
+
+The Major Arcana has been laid. The Triumvirate has s”
+- **voice_dropin_vol6_ch1_shift_change.zip** (2026-06-19) — vol6_ch1_shift_change: 12 line(s) wired, 1 SKIPPED (line rewritten since recording)
+  - 013 SKIPPED, line rewritten since recording: “"His grandma came by. Around two. Before you got here. She was — Sammy”
+- **voice_dropin_vol6_ch1_maya_bedroom.zip** (2026-06-19) — vol6_ch1_maya_bedroom: 5 line(s) wired (1 to a lightly rewritten line), 5 SKIPPED (line rewritten since recording)
+  - 007 → 010 (close 94%): “"thing three. [wave amp=5 freq=2]diego ramos is alive[/wave]. i want y”
+  - 004 SKIPPED, line rewritten since recording: “"maya, i'm sorry to do this over chat. my voice is stuck in a box righ”
+  - 005 SKIPPED, line rewritten since recording: “"thing one. your dad called you on tuesday six weeks ago and told you ”
+  - 006 SKIPPED, line rewritten since recording: “"thing two. the reason the house feels like it has more than one perso”
+  - 009 SKIPPED, line rewritten since recording: “Maya reads the message. She reads it a second time. She reads it a thi”
+  - 012 SKIPPED, line rewritten since recording: “She takes off her shoes. She lies down on top of the bedspread. Her gr”
+- **voice_dropin_vol6_ch1_stranger.zip** (2026-06-19) — vol6_ch1_stranger: 12 line(s) wired, 4 SKIPPED (line rewritten since recording)
+  - 003 SKIPPED, line rewritten since recording: “The air-conditioning at the Kwik Stop is set by corporate to sixty-eig”
+  - 005 SKIPPED, line rewritten since recording: “She is leaning on the counter with her elbows on the rubber anti-fatig”
+  - 009 SKIPPED, line rewritten since recording: “A man Sam has never seen before comes in. He is in his fifties. He wea”
+  - 013 SKIPPED, line rewritten since recording: “He goes to the back cooler. Opens it. Stands in front of it for a long”
+- **voice_dropin_vol6_ch1_graciela.zip** (2026-06-19) — vol6_ch1_graciela: 17 line(s) wired, 7 SKIPPED (line rewritten since recording)
+  - 004 SKIPPED, line rewritten since recording: “Graciela Ramos is in the kitchen at the small round table under the wi”
+  - 011 SKIPPED, line rewritten since recording: “"Because my grandson kissed me goodnight at nine-thirty and told me he”
+  - 012 SKIPPED, line rewritten since recording: “"The truck was driven by two sets of hands — it pulled out slowly, the”
+  - 014 SKIPPED, line rewritten since recording: “Sam stares at her. The cold from the Kwik Stop and the cold from her b”
+  - 015 SKIPPED, line rewritten since recording: “"I think my grandson saw something at the Gas & Go that he was not mea”
+  - 016 SKIPPED, line rewritten since recording: “"Mija. You are seventeen. I should not ask you for anything. But I hav”
+  - 026 SKIPPED, line rewritten since recording: “Graciela puts her hand over Sam's, and for a moment the two of them st”
+- **voice_dropin_vol6_ch1_gas_and_go.zip** (2026-06-19) — vol6_ch1_gas_and_go: 5 line(s) wired, 8 SKIPPED (line rewritten since recording)
+  - 002 SKIPPED, line rewritten since recording: “The Gas & Go is three blocks south on Gallatin, across the intersectio”
+  - 003 SKIPPED, line rewritten since recording: “Skip Donnelly is thirty-nine years old, shift supervisor, divorced, an”
+  - 004 SKIPPED, line rewritten since recording: “At 15:04, a black pickup truck with Louisiana plates pulls into the lo”
+  - 005 SKIPPED, line rewritten since recording: “At 15:11, a white NexCorp Residential Solutions van enters the lot and”
+  - 007 SKIPPED, line rewritten since recording: “At 15:14, the driver of the Louisiana pickup hands one of the NexCorp ”
+  - 009 SKIPPED, line rewritten since recording: “At 15:16, Skip Donnelly looks up from his phone. He can see the back c”
+  - 011 SKIPPED, line rewritten since recording: “At 15:17, the driver of the Louisiana pickup reaches into the glovebox”
+  - 012 SKIPPED, line rewritten since recording: “The address on the card, if anyone had seen it, is 892 Ashberry Drive.”
+- **voice_dropin_vol6_ch1_garage.zip** (2026-06-19) — vol6_ch1_garage: 6 line(s) wired, 1 SKIPPED (line rewritten since recording)
+  - 004 SKIPPED, line rewritten since recording: “Sam's father is in the garage. He is on the phone. He is speaking quie”
+- **voice_dropin_vol6_ch1_cosmic_comics.zip** (2026-06-19) — vol6_ch1_cosmic_comics: 10 line(s) wired, 1 SKIPPED (line rewritten since recording)
+  - 015 SKIPPED, line rewritten since recording: “Rick sets the phone down. He reverses the OPEN sign. He checks the dea”
+- **voice_dropin_vol6_ch1_bedroom.zip** (2026-06-19) — vol6_ch1_bedroom: 10 line(s) wired, 1 SKIPPED (line rewritten since recording)
+  - 013 SKIPPED, line rewritten since recording: “Sam Miller turns away from the window. She begins the long careful wor”
+- **voice_dropin_vol6_ch1_stranger (1).zip** (2026-06-19) — vol6_ch1_stranger: 8 line(s) wired, 4 SKIPPED (line rewritten since recording)
+  - 003 SKIPPED, line rewritten since recording: “The air-conditioning at the Kwik Stop is set by corporate to sixty-eig”
+  - 005 SKIPPED, line rewritten since recording: “She is leaning on the counter with her elbows on the rubber anti-fatig”
+  - 009 SKIPPED, line rewritten since recording: “A man Sam has never seen before comes in. He is in his fifties. He wea”
+  - 013 SKIPPED, line rewritten since recording: “He goes to the back cooler. Opens it. Stands in front of it for a long”
+- **voice_dropin_vol6_ch1_shift_change (1).zip** (2026-06-19) — vol6_ch1_shift_change: 2 line(s) wired
+- **voice_dropin_vol6_ch1_maya_bedroom (1).zip** (2026-06-19) — vol6_ch1_maya_bedroom: 1 line(s) wired, 2 SKIPPED (line rewritten since recording)
+  - 009 SKIPPED, line rewritten since recording: “Maya reads the message. She reads it a second time. She reads it a thi”
+  - 012 SKIPPED, line rewritten since recording: “She takes off her shoes. She lies down on top of the bedspread. Her gr”
+- **voice_dropin_vol6_ch1_graciela (1).zip** (2026-06-19) — vol6_ch1_graciela: 1 line(s) wired, 3 SKIPPED (line rewritten since recording)
+  - 004 SKIPPED, line rewritten since recording: “Graciela Ramos is in the kitchen at the small round table under the wi”
+  - 014 SKIPPED, line rewritten since recording: “Sam stares at her. The cold from the Kwik Stop and the cold from her b”
+  - 026 SKIPPED, line rewritten since recording: “Graciela puts her hand over Sam's, and for a moment the two of them st”
+- **voice_dropin_vol6_ch1_gas_and_go (1).zip** (2026-06-19) — vol6_ch1_gas_and_go: 5 line(s) wired, 7 SKIPPED (line rewritten since recording)
+  - 002 SKIPPED, line rewritten since recording: “The Gas & Go is three blocks south on Gallatin, across the intersectio”
+  - 003 SKIPPED, line rewritten since recording: “Skip Donnelly is thirty-nine years old, shift supervisor, divorced, an”
+  - 004 SKIPPED, line rewritten since recording: “At 15:04, a black pickup truck with Louisiana plates pulls into the lo”
+  - 005 SKIPPED, line rewritten since recording: “At 15:11, a white NexCorp Residential Solutions van enters the lot and”
+  - 007 SKIPPED, line rewritten since recording: “At 15:14, the driver of the Louisiana pickup hands one of the NexCorp ”
+  - 009 SKIPPED, line rewritten since recording: “At 15:16, Skip Donnelly looks up from his phone. He can see the back c”
+  - 011 SKIPPED, line rewritten since recording: “At 15:17, the driver of the Louisiana pickup reaches into the glovebox”
+- **voice_dropin_vol6_ch1_garage (1).zip** (2026-06-19) — vol6_ch1_garage: 1 line(s) wired, 1 SKIPPED (line rewritten since recording)
+  - 004 SKIPPED, line rewritten since recording: “Sam's father is in the garage. He is on the phone. He is speaking quie”
+- **voice_dropin_vol6_ch1_cosmic_comics (1).zip** (2026-06-19) — vol6_ch1_cosmic_comics: 6 line(s) wired
+- **voice_dropin_vol6_ch1_cosmic_comics (2).zip** (2026-06-21) — vol6_ch1_cosmic_comics: 6 line(s) wired, 1 SKIPPED (line rewritten since recording)
+  - 015 SKIPPED, line rewritten since recording: “Rick sets the phone down. He reverses the OPEN sign. He checks the dea”
+- **voice_dropin_vol6_ch0_prelude.zip** (2026-08-03) — vol6_ch0_prelude: 54 line(s) wired (3 to a lightly rewritten line), 18 SKIPPED (line rewritten since recording)
+  - 014 → 019 (close 91%): “The light through her curtains shifts from black to grey to the partic”
+  - 064 → 082 (close 91%): “He is fifty-four years old and has owned this diner for eleven years a”
+  - 093 → 117 (close 92%): “It is doing so in the manner of a town that has not yet been told it n”
+  - 001 SKIPPED, line rewritten since recording: “[mood:dawn_warm]Harmony Creek Estates was incorporated as a planned re”
+  - 005 SKIPPED, line rewritten since recording: “[shot:insert sprinklers]The sprinkler systems on Meadowlark Circle com”
+  - 006 SKIPPED, line rewritten since recording: “The sprinklers activate in sequence, lot by lot, traveling east down t”
+  - 016 SKIPPED, line rewritten since recording: “She had texted him at 11:30 the previous night. She had texted him aga”
+  - 022 SKIPPED, line rewritten since recording: “[shot:insert bed~]The bed has been slept in but not recently. The shee”
+  - 023 SKIPPED, line rewritten since recording: “On the desk: a water glass with a finger of water left in it. A textbo”
+  - 031 SKIPPED, line rewritten since recording: “She is not sure, sitting here now with the rosary, why she did not get”
+  - 038 SKIPPED, line rewritten since recording: “Rick Salazar is seventeen. Rick Salazar is the editor of the Harmony C”
+  - 041 SKIPPED, line rewritten since recording: “[beat:chill][panel:vol6_first_print][mood:macro_haze][shot:insert phot”
+  - 047 SKIPPED, line rewritten since recording: “Maya Daigle is awake because Maya Daigle is always awake at 6:16. Maya”
+  - 049 SKIPPED, line rewritten since recording: “Sam said Diego hadn't come home. Sam said she wasn't worried but she t”
+  - 050 SKIPPED, line rewritten since recording: “Things I know: Diego was working on something. Diego stopped talking a”
+  - 058 SKIPPED, line rewritten since recording: “Ben Achterberg is in the back office of the Pit Stop Diner at 06:17 on”
+  - 069 SKIPPED, line rewritten since recording: “[panel:vol6_water_tower]The Harmony Creek water tower stands at the so”
+  - 080 SKIPPED, line rewritten since recording: “Chief Dale Miller — Police Chief of Harmony Creek, thirteen years in t”
+  - 082 SKIPPED, line rewritten since recording: “Chief — this is Carla Reyes at the Statesman. I know it's early. I've ”
+  - 085 SKIPPED, line rewritten since recording: “Sammy won't let it go. She's been asking about NexCorp since March. I ”
+  - 101 SKIPPED, line rewritten since recording: “The word okay, in Sam Miller's voice, at 6:28 on this particular Sunda”
+- **voice_dropin_vol6_ch2_bindery.zip** (2026-08-03) — vol6_ch2_bindery: 32 line(s) wired (1 to a lightly rewritten line), 3 SKIPPED (line rewritten since recording)
+  - 042 → 047 (close 98%): “But that is six days away, and tonight is only Monday, and the summer ”
+  - 005 SKIPPED, line rewritten since recording: “[mood:day_bright]The Bindery occupies a narrow storefront on Live Oak ”
+  - 035 SKIPPED, line rewritten since recording: “The man inside has not moved. He is still reading the Portuguese book.”
+  - 040 SKIPPED, line rewritten since recording: “The photograph will be the contents of the envelope. The photograph wi”
+- **voice_dropin_vol6_ch2_coda.zip** (2026-08-03) — vol6_ch2_coda: 13 line(s) wired (1 to a lightly rewritten line)
+  - 006 → 006 (close 92%): “[mood:macro_haze][shot:insert sedan~]In a white sedan parked at the cu”
+- **voice_dropin_vol6_ch2_cosmic.zip** (2026-08-03) — vol6_ch2_cosmic: 57 line(s) wired (1 to a lightly rewritten line), 4 SKIPPED (line rewritten since recording)
+  - 008 → 010 (close 91%): “When he had, he had come out of the back office, nodded at the coffee,”
+  - 007 SKIPPED, line rewritten since recording: “She has been re-alphabetizing the indie rack since ten. Rick had not a”
+  - 052 SKIPPED, line rewritten since recording: “"Yes. All three. Your dad is — your dad is not in a good place, Maya. ”
+  - 055 SKIPPED, line rewritten since recording: “"That's a question you're going to have to ask him yourself, kiddo. I'”
+  - 062 SKIPPED, line rewritten since recording: “"Take lunch early. There's a bookstore in New Auburn called The Binder”
+- **voice_dropin_vol6_ch2_dumpster.zip** (2026-08-03) — vol6_ch2_dumpster: 81 line(s) wired, 8 SKIPPED (line rewritten since recording)
+  - 010 SKIPPED, line rewritten since recording: “Jesse hands Ben the second Powerade. He leans against the dumpster, wh”
+  - 013 SKIPPED, line rewritten since recording: “"Of the town. He does this. He's had the camera forever. But he's — th”
+  - 020 SKIPPED, line rewritten since recording: “"Because Saturday night at the McClary place, when I was waiting for m”
+  - 053 SKIPPED, line rewritten since recording: “In the first — the NexCorp Gas & Go. Under the overhang, in the shadow”
+  - 054 SKIPPED, line rewritten since recording: “In the second — the cul-de-sac at the end of Meadowlark. Across the fa”
+  - 060 SKIPPED, line rewritten since recording: “"Ben. I don't know. He hasn't said anything. He's been — since Saturda”
+  - 088 SKIPPED, line rewritten since recording: “Ben looks at him. Ben had not, until this moment, told Jesse he had be”
+  - 094 SKIPPED, line rewritten since recording: “[shot:establish]Jesse went inside. The screen door slapped shut behind”
+- **voice_dropin_vol6_ch2_gas_go_lot.zip** (2026-08-03) — vol6_ch2_gas_go_lot: 37 line(s) wired (1 to a lightly rewritten line), 2 SKIPPED (line rewritten since recording)
+  - 010 → 011 (close 90%): “Graciela had said — Do not go looking for the truck. Sam is not, techn”
+  - 009 SKIPPED, line rewritten since recording: “She is not, in the end, going over there. She has just had the convers”
+  - 028 SKIPPED, line rewritten since recording: “[shot:establish]At the kitchen table, her father is eating dinner. Mea”
+- **voice_dropin_vol6_ch2_gas_oracles.zip** (2026-08-03) — vol6_ch2_gas_oracles: 12 line(s) wired, 1 SKIPPED (line rewritten since recording)
+  - 013 SKIPPED, line rewritten since recording: “Diego Ramos is, for the purposes of the Harmony Creek Estates Private ”
+- **voice_dropin_vol6_ch2_kwik_stop.zip** (2026-08-03) — vol6_ch2_kwik_stop: 22 line(s) wired, 5 SKIPPED (line rewritten since recording)
+  - 008 SKIPPED, line rewritten since recording: “He is, she registers, wearing the same clothes he had on yesterday. Th”
+  - 020 SKIPPED, line rewritten since recording: “[shot:insert door~]Sam watches him cross the parking lot to the white ”
+  - 028 SKIPPED, line rewritten since recording: “[shot:establish]She looks around the empty Kwik Stop — the row of slus”
+  - 032 SKIPPED, line rewritten since recording: “She does not, until this moment, have the word node for what she is be”
+  - 034 SKIPPED, line rewritten since recording: “Today, in the empty Kwik Stop, Sam Miller has only the small word insi”
+- **voice_dropin_vol6_ch2_maya_bedroom.zip** (2026-08-03) — vol6_ch2_maya_bedroom: 42 line(s) wired, 1 SKIPPED (line rewritten since recording)
+  - 010 SKIPPED, line rewritten since recording: “Rick told me to keep noticing. F.T. told me to keep noticing. Graciela”
+- **voice_dropin_vol6_ch2_pit_stop_kitchen.zip** (2026-08-03) — vol6_ch2_pit_stop_kitchen: 29 line(s) wired, 9 SKIPPED (line rewritten since recording)
+  - 006 SKIPPED, line rewritten since recording: “[mood:kitchen_practical][shot:closeup ben]Ben Kowalski is on the grill”
+  - 008 SKIPPED, line rewritten since recording: “The brace is from Saturday night. The brace is from the backyard-wrest”
+  - 010 SKIPPED, line rewritten since recording: “On Saturday, Ben had — for the first time — entered the ring himself. ”
+  - 013 SKIPPED, line rewritten since recording: “The officer who had proposed the match had clapped Ben on the shoulder”
+  - 016 SKIPPED, line rewritten since recording: “[mood:macro_haze][shot:insert window]He was cataloguing the specific c”
+  - 018 SKIPPED, line rewritten since recording: “Ben did not, Ben had realized at about eleven-thirty AM, know Diego we”
+  - 020 SKIPPED, line rewritten since recording: “Ben had noticed the red dots because Ben had, one afternoon in March, ”
+  - 023 SKIPPED, line rewritten since recording: “Ramos kid: red dots escalating March through May. Red dots are his own”
+  - 032 SKIPPED, line rewritten since recording: “Ben looked at him. Jesse was, at twenty, taller than Ben in height but”
+- **voice_dropin_vol6_ch3_back_room.zip** (2026-08-03) — vol6_ch3_back_room: 70 line(s) wired, 8 SKIPPED (line rewritten since recording)
+  - 008 SKIPPED, line rewritten since recording: “[shot:establish]Sam slips in. The back room of Cosmic Comics is smalle”
+  - 025 SKIPPED, line rewritten since recording: “"Thing one: Diego is alive. He is not at home. He is being held somewh”
+  - 027 SKIPPED, line rewritten since recording: “"Thing two: your dad knows. About Diego. Not necessarily because he ca”
+  - 031 SKIPPED, line rewritten since recording: “"Thing three: there are other adults in this town who know. I don't me”
+  - 039 SKIPPED, line rewritten since recording: “"Because my dad was in it. Not this specifically. Something like this,”
+  - 048 SKIPPED, line rewritten since recording: “"Today? Nothing. We let ourselves meet. We let me make the map I am go”
+  - 061 SKIPPED, line rewritten since recording: “"I don't know you very well yet. But I'm going to say this, because my”
+  - 078 SKIPPED, line rewritten since recording: “"He's keeping a legal pad. He has been watching cars and off-duty cops”
+- **voice_dropin_vol6_ch3_circle_k.zip** (2026-08-03) — vol6_ch3_circle_k: 43 line(s) wired, 3 SKIPPED (line rewritten since recording)
+  - 007 SKIPPED, line rewritten since recording: “She has been awake since five-thirty. She has been at the kitchen tabl”
+  - 010 SKIPPED, line rewritten since recording: “[shot:closeup miller]He comes downstairs at 07:14. He is already in un”
+  - 020 SKIPPED, line rewritten since recording: “She has decided, at about three AM, that her first task is to learn he”
+- **voice_dropin_vol6_ch3_coda.zip** (2026-08-03) — vol6_ch3_coda: 20 line(s) wired, 2 SKIPPED (line rewritten since recording)
+  - 007 SKIPPED, line rewritten since recording: “[shot:closeup rick]In the back office of Cosmic Comics, Rick — who doe”
+  - 011 SKIPPED, line rewritten since recording: “On the back of the photograph, in careful handwriting that matches the”
+- **voice_dropin_vol6_ch3_jesse_bedroom.zip** (2026-08-03) — vol6_ch3_jesse_bedroom: 37 line(s) wired (1 to a lightly rewritten line), 4 SKIPPED (line rewritten since recording)
+  - 006 → 007 (close 91%): “He has eaten dinner — chicken and rice, which his mother made, which h”
+  - 024 SKIPPED, line rewritten since recording: “[shot:insert guitar]He puts the phone face-down on the carpet. He pick”
+  - 026 SKIPPED, line rewritten since recording: “He thinks about the photograph of the man in the charcoal suit. He thi”
+  - 036 SKIPPED, line rewritten since recording: “[shot:closeup jesse~]Jesse sets the phone down. He does not, tonight, ”
+  - 046 SKIPPED, line rewritten since recording: “He hugs her. She is startled, briefly, then pats his back in the way m”
+- **voice_dropin_vol6_ch3_parking_lot.zip** (2026-08-03) — vol6_ch3_parking_lot: 23 line(s) wired, 1 SKIPPED (line rewritten since recording)
+  - 009 SKIPPED, line rewritten since recording: “The sedan takes the left turn Sam takes. The sedan stays three cars ba”
+- **voice_dropin_vol6_ch3_pit_stop_office.zip** (2026-08-03) — vol6_ch3_pit_stop_office: 10 line(s) wired, 5 SKIPPED (line rewritten since recording)
+  - 010 SKIPPED, line rewritten since recording: “2. Louisiana pickup in Pit Stop lot, Sunday and Monday, driver never e”
+  - 011 SKIPPED, line rewritten since recording: “3. White sedan in Kwik Stop lot, two people, press lanyard. Not threat”
+  - 012 SKIPPED, line rewritten since recording: “4. Unmarked NexCorp van, Gas & Go lot, Sunday 15:11, handoff with the ”
+  - 014 SKIPPED, line rewritten since recording: “6. Backyard wrestling thing — escalating. Saturday's officer-initiated”
+  - 017 SKIPPED, line rewritten since recording: “He is, he registers, no longer a person who has a legal pad as a hobby”
+- **voice_dropin_vol6_ch3_sam_bedroom.zip** (2026-08-03) — vol6_ch3_sam_bedroom: 10 line(s) wired, 3 SKIPPED (line rewritten since recording)
+  - 009 SKIPPED, line rewritten since recording: “F.T. is running at least part of the network and is either in New Orle”
+  - 010 SKIPPED, line rewritten since recording: “Ben has been doing the same work from a different entry point for thre”
+  - 019 SKIPPED, line rewritten since recording: “[beat:chill]At 03:03 she dreams, for the first time in her life, of he”
+- **voice_dropin_vol6_ch4_kitchen.zip** (2026-08-03) — vol6_ch4_kitchen: 62 line(s) wired (1 to a lightly rewritten line), 11 SKIPPED (line rewritten since recording)
+  - 081 → 090 (close 90%): “[mood:night][shot:closeup sam]Upstairs, Sam is in her bed, not asleep,”
+  - 004 SKIPPED, line rewritten since recording: “[mood:dusk]Sam gets home from the Kwik Stop at a quarter to seven. The”
+  - 013 SKIPPED, line rewritten since recording: “[shot:closeup miller]Her father is at the kitchen table. He is not in ”
+  - 019 SKIPPED, line rewritten since recording: “Her father is quiet for the first seven minutes. Sam is quiet. Her mot”
+  - 038 SKIPPED, line rewritten since recording: “If anything ever happened to me — anything at all — I want you to know”
+  - 045 SKIPPED, line rewritten since recording: “I have — I have not been the man I wanted to be in all the ways I want”
+  - 046 SKIPPED, line rewritten since recording: “Sam looks at him. She sees, for the first time in her seventeen years,”
+  - 067 SKIPPED, line rewritten since recording: “I don't know everything. I know enough to know I don't know everything”
+  - 076 SKIPPED, line rewritten since recording: “At ten-oh-four, the sedan pulls out and drives, without lights, to a p”
+  - 078 SKIPPED, line rewritten since recording: “At eleven-fifty-one, Chief Miller — who has been at the east-side buil”
+  - 083 SKIPPED, line rewritten since recording: “Somewhere, on a two-lane highway eighty miles west, the Houston Chroni”
+  - 084 SKIPPED, line rewritten since recording: “The cat had, at some point in the night, chosen to be there. The cat h”
+- **voice_dropin_vol6_ch4_kwik_stop.zip** (2026-08-03) — vol6_ch4_kwik_stop: 24 line(s) wired, 7 SKIPPED (line rewritten since recording)
+  - 004 SKIPPED, line rewritten since recording: “[mood:rain_interior]The rain has not stopped. It has settled into the ”
+  - 006 SKIPPED, line rewritten since recording: “She has, between eight and ten, rung up exactly four customers: a reti”
+  - 007 SKIPPED, line rewritten since recording: “[shot:closeup customer]The man was the New Auburn Police Department's ”
+  - 020 SKIPPED, line rewritten since recording: “[mood:macro_haze][shot:closeup customer~]The report was logged. Forty ”
+  - 027 SKIPPED, line rewritten since recording: “I'm not here to accuse your father of anything, Sam. I'm here to tell ”
+  - 032 SKIPPED, line rewritten since recording: “One more thing. Your dad is good at his job in a specific narrow way. ”
+  - 039 SKIPPED, line rewritten since recording: “She took the card out of her apron. She saved the number under Dr. Pat”
+- **voice_dropin_vol6_ch4_maya_floor.zip** (2026-08-03) — vol6_ch4_maya_floor: 45 line(s) wired, 8 SKIPPED (line rewritten since recording)
+  - 004 SKIPPED, line rewritten since recording: “[mood:candlelight_low][shot:insert floorboards]Maya is on her hands an”
+  - 013 SKIPPED, line rewritten since recording: “Maya takes a kitchen knife from the floor beside her — her grandmother”
+  - 017 SKIPPED, line rewritten since recording: “The last sealed envelope to pass through Maya's hands, she carried aga”
+  - 022 SKIPPED, line rewritten since recording: “Maya opens the envelope. Inside is one photograph. Black and white. Ei”
+  - 023 SKIPPED, line rewritten since recording: “[beat:chill][mood:arcana][shot:insert photograph~]The photograph shows”
+  - 024 SKIPPED, line rewritten since recording: “The man's face is younger than Maya has ever seen this face, but it is”
+  - 046 SKIPPED, line rewritten since recording: “No, honey. I don't think so. Not yet. If this photograph is what I thi”
+  - 051 SKIPPED, line rewritten since recording: “I am so proud of you, sweetheart. I am so proud of your grandfather. I”
+- **voice_dropin_vol6_ch4_miller_office.zip** (2026-08-03) — vol6_ch4_miller_office: 13 line(s) wired, 3 SKIPPED (line rewritten since recording)
+  - 004 SKIPPED, line rewritten since recording: “[mood:rain_interior]Chief Miller's home office is in what was, origina”
+  - 005 SKIPPED, line rewritten since recording: “[shot:insert desk]He is at the desk. The rain is hitting the window be”
+  - 018 SKIPPED, line rewritten since recording: “He hears, as he passes Sam's door, the small unmistakable sound of his”
+- **voice_dropin_vol6_ch4_pit_stop.zip** (2026-08-03) — vol6_ch4_pit_stop: 50 line(s) wired, 2 SKIPPED (line rewritten since recording)
+  - 031 SKIPPED, line rewritten since recording: “We are going to go ahead with Saturday morning breakfast with your mom”
+  - 050 SKIPPED, line rewritten since recording: “[shot:insert bill]Ben comes out of the office. He picks up the ten-dol”
+- **voice_dropin_vol6_ch4_sam_list.zip** (2026-08-03) — vol6_ch4_sam_list: 18 line(s) wired, 2 SKIPPED (line rewritten since recording)
+  - 004 SKIPPED, line rewritten since recording: “[mood:rain_interior]Sam has been awake since five-fifty-two. She is at”
+  - 019 SKIPPED, line rewritten since recording: “[shot:insert window]She stands. She goes to the window. The rain is hi”
+- **voice_dropin_vol6_ch4_speak_spell.zip** (2026-08-03) — vol6_ch4_speak_spell: 71 line(s) wired, 7 SKIPPED (line rewritten since recording)
+  - 004 SKIPPED, line rewritten since recording: “[mood:arcana]Rick is in his office when the Speak & Spell starts. The ”
+  - 011 SKIPPED, line rewritten since recording: “[panel:off][mood:day_bright][shot:closeup rick]Rick, who has been at h”
+  - 027 SKIPPED, line rewritten since recording: “[shot:insert mirror]Rick looks through the one-way mirror his long-dea”
+  - 045 SKIPPED, line rewritten since recording: “He's alive, Rick. We're going to get him. Tell Maya to hold the map fo”
+  - 069 SKIPPED, line rewritten since recording: “[shot:closeup rick]His name is Frasier Temple. He lives in a warehouse”
+  - 071 SKIPPED, line rewritten since recording: “No, kiddo. He knows what he knows about Diego because his imps are, as”
+  - 078 SKIPPED, line rewritten since recording: “I don't think so, kiddo. Not entirely. He has been alone in that wareh”
+- **voice_dropin_vol6_ch4_storm.zip** (2026-08-03) — vol6_ch4_storm: 15 line(s) wired, 5 SKIPPED (line rewritten since recording)
+  - 005 SKIPPED, line rewritten since recording: “[mood:rain_interior]The thunderstorm arrives early. The weather app on”
+  - 006 SKIPPED, line rewritten since recording: “At six-oh-four the first thunder rolls across the subdivision, deep an”
+  - 007 SKIPPED, line rewritten since recording: “The sprinklers, on their schedule, do not run. Wednesdays are off days”
+  - 008 SKIPPED, line rewritten since recording: “At six-oh-five, the first transformer on Gallatin trips. The power fli”
+  - 010 SKIPPED, line rewritten since recording: “[mood:macro_haze][shot:insert sedan]At six-oh-seven, in a white sedan ”
+- **voice_dropin_vol6_ch5_garage.zip** (2026-08-03) — vol6_ch5_garage: 63 line(s) wired, 19 SKIPPED (line rewritten since recording)
+  - 005 SKIPPED, line rewritten since recording: “[mood:candlelight_low]Jesse has swept the garage. He does not, general”
+  - 006 SKIPPED, line rewritten since recording: “He swept the garage at five PM because his mother asked him to. He swe”
+  - 007 SKIPPED, line rewritten since recording: “[shot:insert drum_kit]The drum kit is at the back. The amp is against ”
+  - 010 SKIPPED, line rewritten since recording: “The bill is at the Pit Stop, folded, in Ben's apron pocket. Ben had te”
+  - 011 SKIPPED, line rewritten since recording: “The garage door is closed against the rain, which has mostly stopped b”
+  - 015 SKIPPED, line rewritten since recording: “Ben arrives first. He is in his truck. He parks at the curb. He does n”
+  - 016 SKIPPED, line rewritten since recording: “Sam arrives second. She is in the Corolla. She parks behind Ben's truc”
+  - 027 SKIPPED, line rewritten since recording: “Okay. We go in. We do not talk about any of it in there. Jesse has his”
+  - 045 SKIPPED, line rewritten since recording: “Sam hugs him. Sam does not, generally, hug Jesse. Sam and Jesse have b”
+  - 053 SKIPPED, line rewritten since recording: “The band arrives in a staggered burst over the next four minutes. Nate”
+  - 054 SKIPPED, line rewritten since recording: “They converge. They set up. They tune. There is the usual bickering ab”
+  - 056 SKIPPED, line rewritten since recording: “The band launches into the song they had been working on for a month. ”
+  - 057 SKIPPED, line rewritten since recording: “The song is loud. The song is, in Jesse's garage, on a Thursday evenin”
+  - 059 SKIPPED, line rewritten since recording: “The band is on their third run-through of Grid Failure. Em has started”
+  - 064 SKIPPED, line rewritten since recording: “Ben has been keeping a mental ledger of the emotional weather of the g”
+  - 065 SKIPPED, line rewritten since recording: “At eight-seventeen the garage door rumbles. All three of them — Sam, M”
+  - 080 SKIPPED, line rewritten since recording: “The band eats. The four teenagers and the three band members eat. The ”
+  - 099 SKIPPED, line rewritten since recording: “[shot:closeup sam~]Sam, on the camping chair, does not cry. She does n”
+  - 103 SKIPPED, line rewritten since recording: “The band takes a break. At nine-oh-six the band resumes. They play one”
+- **voice_dropin_vol6_ch5_meadowlark.zip** (2026-08-03) — vol6_ch5_meadowlark: 22 line(s) wired, 5 SKIPPED (line rewritten since recording)
+  - 005 SKIPPED, line rewritten since recording: “[mood:candlelight_low]In the kitchen at 1428 Meadowlark, Sam comes hom”
+  - 017 SKIPPED, line rewritten since recording: “[beat:hit][shot:closeup mrs_miller]Your father has, tomorrow morning, ”
+  - 019 SKIPPED, line rewritten since recording: “He wanted me to tell you three things. I'm going to tell you them. One”
+  - 028 SKIPPED, line rewritten since recording: “[mood:night][shot:establish]Sam sits on her bed. Outside, the rain has”
+  - 029 SKIPPED, line rewritten since recording: “[shot:insert phone]She takes out her phone. She texts Ben: home. She t”
+- **voice_dropin_vol6_ch5_miller_drive.zip** (2026-08-03) — vol6_ch5_miller_drive: 15 line(s) wired, 5 SKIPPED (line rewritten since recording)
+  - 005 SKIPPED, line rewritten since recording: “[mood:dusk]A patrol vehicle turns onto Meadowlark Circle. It is Chief ”
+  - 007 SKIPPED, line rewritten since recording: “He is driving home slowly. He passes Jesse Henderson's house. From ins”
+  - 008 SKIPPED, line rewritten since recording: “He stops. He puts the patrol vehicle in park. He does not get out. He ”
+  - 014 SKIPPED, line rewritten since recording: “[shot:establish]He shifts the vehicle back into drive. He continues do”
+  - 016 SKIPPED, line rewritten since recording: “He gets out, eventually, at seven-fifty-two. He goes inside. His wife ”
+- **voice_dropin_vol6_ch5_radio.zip** (2026-08-03) — vol6_ch5_radio: 20 line(s) wired, 5 SKIPPED (line rewritten since recording)
+  - 012 SKIPPED, line rewritten since recording: “[shot:closeup ben]My dad works at the water plant in New Auburn. He's ”
+  - 024 SKIPPED, line rewritten since recording: “Nobody, on any band, is listening. Or — nobody human. Somewhere across”
+  - 025 SKIPPED, line rewritten since recording: “The imp rebroadcasts the Morse, unchanged, into the grid of Harmony Cr”
+  - 028 SKIPPED, line rewritten since recording: “Maya, in the kitchen, pouring herself a glass of water before bed, pau”
+  - 039 SKIPPED, line rewritten since recording: “[shot:establish]Maya and her grandmother sit together at the radio for”
+- **voice_dropin_vol6_ch5_truck.zip** (2026-08-03) — vol6_ch5_truck: 51 line(s) wired, 9 SKIPPED (line rewritten since recording)
+  - 017 SKIPPED, line rewritten since recording: “[shot:closeup maya]Rick told me yesterday. F.T. is Frasier Temple. He ”
+  - 027 SKIPPED, line rewritten since recording: “[shot:closeup sam]Detective Hernando Ramirez, NAPD. Came into the Kwik”
+  - 029 SKIPPED, line rewritten since recording: “And. Last night at dinner my dad — my dad told me about a safe deposit”
+  - 034 SKIPPED, line rewritten since recording: “[shot:closeup jesse]My dad came to the Pit Stop Wednesday afternoon. H”
+  - 040 SKIPPED, line rewritten since recording: “[mood:macro_haze][shot:closeup ben]Okay. Me. I have been keeping a leg”
+  - 042 SKIPPED, line rewritten since recording: “I think the building on the east side that is not on any map is either”
+  - 049 SKIPPED, line rewritten since recording: “[shot:closeup ben]Tomorrow is the rescue. Tomorrow is the adults. Tomo”
+  - 053 SKIPPED, line rewritten since recording: “Yeah. Saturday, separately: my breakfast with Jesse's mom. She needs t”
+  - 073 SKIPPED, line rewritten since recording: “Home. Sleep. Text each other by midnight that you made it in. We regro”
+- **voice_dropin_vol6_ch6_boyd.zip** (2026-08-03) — vol6_ch6_boyd: 12 line(s) wired (1 to a lightly rewritten line), 4 SKIPPED (line rewritten since recording)
+  - 007 → 009 (close 90%): “By 07:38 Boyd is leaning his forehead against the cool tile of the bat”
+  - 006 SKIPPED, line rewritten since recording: “[mood:fluorescent_corridor]Boyd is, at this moment, on the toilet. Boy”
+  - 009 SKIPPED, line rewritten since recording: “The Demon attached to the fueling station's plumbing system — a small ”
+  - 013 SKIPPED, line rewritten since recording: “[shot:closeup boyd]Boyd stands in the middle of the lot with a Gatorad”
+  - 014 SKIPPED, line rewritten since recording: “[shot:insert phone]He calls his handler. The handler does not pick up.”
+- **voice_dropin_vol6_ch6_fueling_station.zip** (2026-08-03) — vol6_ch6_fueling_station: 15 line(s) wired, 3 SKIPPED (line rewritten since recording)
+  - 005 SKIPPED, line rewritten since recording: “[mood:morning_bright]The unmarked van is at pump six. The driver — Vin”
+  - 018 SKIPPED, line rewritten since recording: “Vince. I don't have time to negotiate. Your partner Boyd has nine minu”
+  - 019 SKIPPED, line rewritten since recording: “[shot:closeup vince]Vince looks at Doyle for a long second. Then Vince”
+- **voice_dropin_vol6_ch6_interstate.zip** (2026-08-03) — vol6_ch6_interstate: 39 line(s) wired, 9 SKIPPED (line rewritten since recording)
+  - 005 SKIPPED, line rewritten since recording: “[mood:day_bright]The white sedan is parked on the gravel shoulder of t”
+  - 006 SKIPPED, line rewritten since recording: “[shot:insert phone]Claire is on her phone. The earpiece is in. The con”
+  - 015 SKIPPED, line rewritten since recording: “At the FM-3411 exit, the NexCorp station. The transport van is current”
+  - 018 SKIPPED, line rewritten since recording: “Yes. Less than he could have. The Demons have been — interfering with ”
+  - 021 SKIPPED, line rewritten since recording: “[shot:establish]Your window is the driver swap. They're scheduled to s”
+  - 025 SKIPPED, line rewritten since recording: “Your partner approaches Vince during the swap, badge out, NAPD courtes”
+  - 027 SKIPPED, line rewritten since recording: “Tomé arrives at zero seven thirty-three. By the time he arrives, the v”
+  - 031 SKIPPED, line rewritten since recording: “Boyd is in the station's bathroom for nine minutes. By the time he com”
+  - 039 SKIPPED, line rewritten since recording: “Because the Demon attached to the station's plumbing system is going t”
+- **voice_dropin_vol6_ch6_jesse_bedroom.zip** (2026-08-03) — vol6_ch6_jesse_bedroom: 21 line(s) wired (1 to a lightly rewritten line), 1 SKIPPED (line rewritten since recording)
+  - 027 → 029 (close 93%): “She makes a pitcher of iced tea, because making iced tea is the small ”
+  - 006 SKIPPED, line rewritten since recording: “[mood:day_bright]Jesse is on his bed. He has been on his bed since ele”
+- **voice_dropin_vol6_ch6_kwik_stop_open.zip** (2026-08-03) — vol6_ch6_kwik_stop_open: 14 line(s) wired, 1 SKIPPED (line rewritten since recording)
+  - 018 SKIPPED, line rewritten since recording: “[shot:closeup jen~]Jen does not, this morning, ask about Diego. Jen ha”
+- **voice_dropin_vol6_ch6_kwik_stop_slushie.zip** (2026-08-03) — vol6_ch6_kwik_stop_slushie: 20 line(s) wired, 2 SKIPPED (line rewritten since recording)
+  - 015 SKIPPED, line rewritten since recording: “Diego is at a safehouse. He is alive. He is concussed and dehydrated b”
+  - 028 SKIPPED, line rewritten since recording: “[shot:establish]Sam stands behind the counter for one minute. Then two”
+- **voice_dropin_vol6_ch6_kwik_stop_text.zip** (2026-08-03) — vol6_ch6_kwik_stop_text: 11 line(s) wired, 1 SKIPPED (line rewritten since recording)
+  - 015 SKIPPED, line rewritten since recording: “[shot:closeup sam~]I do not know how this morning will end. I know my ”
+- **voice_dropin_vol6_ch6_maya_bedroom.zip** (2026-08-03) — vol6_ch6_maya_bedroom: 14 line(s) wired, 4 SKIPPED (line rewritten since recording)
+  - 006 SKIPPED, line rewritten since recording: “[mood:day_bright][shot:insert laptop]Maya has been at her ThinkPad sin”
+  - 009 SKIPPED, line rewritten since recording: “kid. one more thing. you said something to rick this week. you asked i”
+  - 014 SKIPPED, line rewritten since recording: “now. one more thing. real one. there's going to be an issue with one o”
+  - 020 SKIPPED, line rewritten since recording: “Which adults are in my life right now. My grandmother. Rick. Hal. Clai”
+- **voice_dropin_vol6_ch6_miller_kitchen.zip** (2026-08-03) — vol6_ch6_miller_kitchen: 23 line(s) wired (1 to a lightly rewritten line), 4 SKIPPED (line rewritten since recording)
+  - 005 → 006 (close 90%): “The stove is doing the thing it always does on Friday nights, which is”
+  - 009 SKIPPED, line rewritten since recording: “[shot:closeup miller]When Sam comes in, he stands. He hugs her. He hug”
+  - 017 SKIPPED, line rewritten since recording: “[shot:establish]They sit. Her mother brings the chicken to the table. ”
+  - 019 SKIPPED, line rewritten since recording: “[shot:insert phone~]At seven oh-three the phone in the kitchen rings. ”
+  - 030 SKIPPED, line rewritten since recording: “Sammy. I want you to know I had nothing to do with the rescue. I was n”
+- **voice_dropin_vol6_ch6_miller_truck.zip** (2026-08-03) — vol6_ch6_miller_truck: 13 line(s) wired (1 to a lightly rewritten line), 3 SKIPPED (line rewritten since recording)
+  - 020 → 024 (close 92%): “Hernando. Sammy needs to come home from her shift today and find her m”
+  - 005 SKIPPED, line rewritten since recording: “[mood:dawn_warm]He has not been to the New Auburn Police Department su”
+  - 007 SKIPPED, line rewritten since recording: “Detective Ramirez's car is already in the lot. Ramirez is at the side ”
+  - 008 SKIPPED, line rewritten since recording: “Miller takes a long breath. He thinks: Sammy is asleep. He thinks: In ”
+- **voice_dropin_vol6_ch6_pit_stop.zip** (2026-08-03) — vol6_ch6_pit_stop: 18 line(s) wired, 1 SKIPPED (line rewritten since recording)
+  - 010 SKIPPED, line rewritten since recording: “H. Hal. The bookshop guy. Ben reads the message. He reads it again. He”
+- **voice_dropin_vol6_ch6_safehouse.zip** (2026-08-03) — vol6_ch6_safehouse: 12 line(s) wired, 2 SKIPPED (line rewritten since recording)
+  - 006 SKIPPED, line rewritten since recording: “Diego is in the back bedroom. A doctor — a woman named Dr. Sajna Patel”
+  - 009 SKIPPED, line rewritten since recording: “Diego's grandmother is in the front room, on the phone with Diego's mo”
+- **voice_dropin_vol6_ch6_sam_bedroom.zip** (2026-08-03) — vol6_ch6_sam_bedroom: 18 line(s) wired, 4 SKIPPED (line rewritten since recording)
+  - 011 SKIPPED, line rewritten since recording: “Below her, in the kitchen, her parents are doing the dishes together. ”
+  - 025 SKIPPED, line rewritten since recording: “The Hierophant card, reversed, watches the institution send its men ou”
+  - 028 SKIPPED, line rewritten since recording: “In Smolvud, Oregon — many time zones west, in a small apartment above ”
+  - 031 SKIPPED, line rewritten since recording: “Tomorrow is Saturday. Tomorrow morning, Eileen Henderson is going to f”
+- **voice_dropin_vol6_ch6_tome.zip** (2026-08-03) — vol6_ch6_tome: 12 line(s) wired, 2 SKIPPED (line rewritten since recording)
+  - 006 SKIPPED, line rewritten since recording: “[mood:day_bright]Claire is at the counter, paying for a Diet Coke and ”
+  - 014 SKIPPED, line rewritten since recording: “Tomé. I know your name. I know what you were here to do. I know what V”
+- **voice_dropin_vol6_ch7_ben_room.zip** (2026-08-04) — vol6_ch7_ben_room: 54 line(s) wired, 2 SKIPPED (line rewritten since recording)
+  - 009 SKIPPED, line rewritten since recording: “Gracie — Ben's eleven-year-old sister — is on the patio. Gracie is ske”
+  - 042 SKIPPED, line rewritten since recording: “[shot:closeup maya~]Ben. I was at my grandmother's last night. We sat ”
+- **voice_dropin_vol6_ch7_henderson_driveway.zip** (2026-08-04) — vol6_ch7_henderson_driveway: 37 line(s) wired
+- **voice_dropin_vol6_ch7_henderson_kitchen.zip** (2026-08-04) — vol6_ch7_henderson_kitchen: 84 line(s) wired, 7 SKIPPED (line rewritten since recording)
+  - 007 SKIPPED, line rewritten since recording: “The pot roast has been in the oven since two-thirty. The smell of it h”
+  - 013 SKIPPED, line rewritten since recording: “[shot:establish]Jesse comes home from his shift at five-fifty-eight. H”
+  - 063 SKIPPED, line rewritten since recording: “There was a — there was an arrangement. In 1998. When we were — when w”
+  - 067 SKIPPED, line rewritten since recording: “Then — Eileen. Then in 2011 — there was a — they put something in the ”
+  - 070 SKIPPED, line rewritten since recording: “In April — Eileen — in April this year, the substation began — broadca”
+  - 072 SKIPPED, line rewritten since recording: “And then — Saturday last, I — there was a kid. The Ramos boy. The eye ”
+  - 081 SKIPPED, line rewritten since recording: “Mr. Henderson. There is a man in Graustark named Frasier Temple. He ru”
+- **voice_dropin_vol6_ch7_hospital.zip** (2026-08-04) — vol6_ch7_hospital: 82 line(s) wired (1 to a lightly rewritten line), 6 SKIPPED (line rewritten since recording)
+  - 090 → 095 (close 95%): “Henderson is on the couch in the living room with his wife, who has no”
+  - 040 SKIPPED, line rewritten since recording: “Maya. My mom is a nurse. She works nights. My dad will say yes. Gracie”
+  - 055 SKIPPED, line rewritten since recording: “The Kowalski house, when they arrive, is dark except for the kitchen l”
+  - 056 SKIPPED, line rewritten since recording: “Ben's mother has, in the time since, made up the bed in the basement. ”
+  - 086 SKIPPED, line rewritten since recording: “His mother sits at the table for another hour, in her scrubs, until he”
+  - 091 SKIPPED, line rewritten since recording: “In a warehouse in Graustark, Frasier Temple — alerted by his Demons at”
+  - 094 SKIPPED, line rewritten since recording: “The Lovers card, in some other deck on some other table, would tonight”
+- **voice_dropin_vol6_ch7_pit_stop.zip** (2026-08-04) — vol6_ch7_pit_stop: 76 line(s) wired, 13 SKIPPED (line rewritten since recording)
+  - 005 SKIPPED, line rewritten since recording: “[mood:day_bright]The back booth at the Pit Stop is the corner one, thr”
+  - 008 SKIPPED, line rewritten since recording: “[shot:closeup eileen]He stands when she comes through the door. He doe”
+  - 015 SKIPPED, line rewritten since recording: “Jesse is on shift. Jesse is, deliberately, not at the front of house. ”
+  - 017 SKIPPED, line rewritten since recording: “A waitress — Lydia, who has been at the Pit Stop nine years, who does ”
+  - 026 SKIPPED, line rewritten since recording: “Three things. The first is the easiest. Your husband came in here on W”
+  - 038 SKIPPED, line rewritten since recording: “Second. Jesse has, since Sunday, been finding photographs in your husb”
+  - 041 SKIPPED, line rewritten since recording: “Jesse and I have, between us, identified two of the people. One of the”
+  - 043 SKIPPED, line rewritten since recording: “The third is — your husband is fighting it. Whatever it is. I don't kn”
+  - 056 SKIPPED, line rewritten since recording: “Because — Eileen, this is not — this is not the only thing happening i”
+  - 071 SKIPPED, line rewritten since recording: “I've known something was wrong with Jim for fourteen months. I have no”
+  - 083 SKIPPED, line rewritten since recording: “Step one is — you and Jesse and I sit down with Mr. Henderson when he ”
+  - 085 SKIPPED, line rewritten since recording: “Step two is — there is a man in Graustark named Frasier Temple. He run”
+  - 089 SKIPPED, line rewritten since recording: “Okay. One thing I want from you. Not from Jesse — from you. I want you”
+- **voice_dropin_vol6_ch7_safehouse.zip** (2026-08-04) — vol6_ch7_safehouse: 16 line(s) wired, 3 SKIPPED (line rewritten since recording)
+  - 006 SKIPPED, line rewritten since recording: “The safehouse is, by Hal's protocol — agreed upon Friday night with th”
+  - 011 SKIPPED, line rewritten since recording: “She is telling Sam, in the slow careful way she tells things, what Die”
+  - 013 SKIPPED, line rewritten since recording: “Diego asked about your father, mija. I told him your father turned him”
+- **voice_dropin_vol6_ch8_courthouse.zip** (2026-08-04) — vol6_ch8_courthouse: 128 line(s) wired, 23 SKIPPED (line rewritten since recording)
+  - 006 SKIPPED, line rewritten since recording: “It does not, as is usual, start at two PM. The judge is finishing lunc”
+  - 011 SKIPPED, line rewritten since recording: “Ramirez is not, technically, here in any official capacity. Ramirez is”
+  - 012 SKIPPED, line rewritten since recording: “Ramirez sits in his civilian clothes. Khakis, a dark polo, the rain ja”
+  - 016 SKIPPED, line rewritten since recording: “The room is — Sam registers, with the small steady attention she has b”
+  - 031 SKIPPED, line rewritten since recording: “The judge is a woman Sam has never heard of — Judge Patricia Halverson”
+  - 035 SKIPPED, line rewritten since recording: “He is in his civilian clothes — the gray slacks her mother had laid ou”
+  - 038 SKIPPED, line rewritten since recording: “He has been told — Ramirez had told him at six AM — not to look at his”
+  - 042 SKIPPED, line rewritten since recording: “The prosecution lists the charges. The list is — the list is longer th”
+  - 060 SKIPPED, line rewritten since recording: “He does not, Sam notes, walk like the men around him. He walks the way”
+  - 071 SKIPPED, line rewritten since recording: “He gets up. He goes to the front. He confers, briefly, with Ana. He co”
+  - 074 SKIPPED, line rewritten since recording: “Mary. Mike's plea has been — accepted. The charges are not changing. W”
+  - 077 SKIPPED, line rewritten since recording: “Yeah. Mary. I don't — I don't know what he is. I have never, in twenty”
+  - 084 SKIPPED, line rewritten since recording: “She has seen him before. Not in a hallway. At 03:03 on Wednesday, in t”
+  - 085 SKIPPED, line rewritten since recording: “The older system has its reasons. The older system has been running my”
+  - 087 SKIPPED, line rewritten since recording: “I will be okay because the people in the gallery on my side now includ”
+  - 098 SKIPPED, line rewritten since recording: “The court has accepted your plea on all eleven counts. The court has a”
+  - 102 SKIPPED, line rewritten since recording: “Sam's father is, at 15:04, escorted out the side door — by federal mar”
+  - 106 SKIPPED, line rewritten since recording: “Whatever he is going to be, in the next five years or ten or however m”
+  - 118 SKIPPED, line rewritten since recording: “Mary, Sam. I am Miriam. I am — I'm a friend of friends. I won't intrud”
+  - 126 SKIPPED, line rewritten since recording: “[shot:insert subaru]The green car is, when they reach the curb, a 2009”
+  - 127 SKIPPED, line rewritten since recording: “Sam, looking at the car as she approaches it, recognizes — with the sm”
+  - 140 SKIPPED, line rewritten since recording: “In Room 318 of New Auburn General, Linda Caldwell turns on the small b”
+  - 146 SKIPPED, line rewritten since recording: “Sam, in the green Subaru, headed home, eats a small bag of pretzels Mi”
+- **voice_dropin_vol6_ch8_hospital_318.zip** (2026-08-04) — vol6_ch8_hospital_318: 31 line(s) wired, 3 SKIPPED (line rewritten since recording)
+  - 007 SKIPPED, line rewritten since recording: “She has, in the night, been moved from recovery to the regular floor. ”
+  - 026 SKIPPED, line rewritten since recording: “Daisy is a mutt. Daisy is technically a coward. She is afraid of butte”
+  - 045 SKIPPED, line rewritten since recording: “Thomas worked for the Beaumont Enterprise for two years out of college”
+- **voice_dropin_vol6_ch8_kowalski_kitchen.zip** (2026-09-01) — vol6_ch8_kowalski_kitchen: 39 line(s) wired, 2 SKIPPED (line rewritten since recording)
+  - 006 SKIPPED, line rewritten since recording: “The basement is, as Ben had promised, a real bedroom with a real door.”
+  - 012 SKIPPED, line rewritten since recording: “[shot:closeup bill]Ben's father — Bill, fifty-one, water-plant operato”
+- **voice_dropin_vol6_ch8_lake_palestine.zip** (2026-09-01) — vol6_ch8_lake_palestine: 77 line(s) wired, 13 SKIPPED (line rewritten since recording)
+  - 006 SKIPPED, line rewritten since recording: “The lake has been quiet since the Sinkhole, technically — Lake Palesti”
+  - 012 SKIPPED, line rewritten since recording: “Sammy. I want to do this here because — because this was the first pla”
+  - 017 SKIPPED, line rewritten since recording: “I want to tell you some things. Not all the things. Most of them are g”
+  - 022 SKIPPED, line rewritten since recording: “[shot:insert dock]They walk to the dock — the same dock, she registers”
+  - 029 SKIPPED, line rewritten since recording: “Before I made Chief — that was the year I made Chief, in October. Befo”
+  - 031 SKIPPED, line rewritten since recording: “Ken died in September of 2016. Heart attack. He was sixty-one. NexCorp”
+  - 033 SKIPPED, line rewritten since recording: “The first one was small, Sammy. It was — it was a man named Kowalski. ”
+  - 035 SKIPPED, line rewritten since recording: “By 2019 the favors had — they had grown. By 2021 I was making — choice”
+  - 047 SKIPPED, line rewritten since recording: “I was going to spend the next twenty minutes trying to explain to you ”
+  - 050 SKIPPED, line rewritten since recording: “Wednesday morning. After dinner Tuesday — when I — when I told you abo”
+  - 057 SKIPPED, line rewritten since recording: “Some. Not all. She knew the favors existed. She — she has, over the ye”
+  - 064 SKIPPED, line rewritten since recording: “Sammy. Nothing. I — I want you to know what I did and why I did it. I ”
+  - 067 SKIPPED, line rewritten since recording: “Dad. I have been angry at you all week. I am still angry. I am going t”
+- **voice_dropin_vol6_ch8_miller_truck.zip** (2026-09-01) — vol6_ch8_miller_truck: 25 line(s) wired, 2 SKIPPED (line rewritten since recording)
+  - 013 SKIPPED, line rewritten since recording: “[shot:closeup sam~]This is not, Sam realizes, the silence she had expe”
+  - 033 SKIPPED, line rewritten since recording: “[mood:day_bright][shot:establish]The truck eats the highway. The sky s”
+- **voice_dropin_vol6_ch9_room.zip** (2026-09-01) — vol6_ch9_room: 111 line(s) wired (1 to a lightly rewritten line), 8 SKIPPED (line rewritten since recording)
+  - 083 → 091 (close 93%): “It is a small black device, the size of a deck of cards, with a single”
+  - 005 SKIPPED, line rewritten since recording: “[mood:night]A note on form: the chapter that follows is not in its nar”
+  - 011 SKIPPED, line rewritten since recording: “The bulb hums in a way he recognizes from the gas station — the same h”
+  - 015 SKIPPED, line rewritten since recording: “He knows it is Sunday. Then he sleeps. He wakes. He thinks it might be”
+  - 027 SKIPPED, line rewritten since recording: “But Boyd's eyes are not, Diego registers, eyes. Boyd's eyes are — are ”
+  - 070 SKIPPED, line rewritten since recording: “It is not the worst Diego has ever been hit. The hit is, in some sense”
+  - 132 SKIPPED, line rewritten since recording: “Kid. I need you to know something. I am about to get a stomach thing. ”
+  - 134 SKIPPED, line rewritten since recording: “Kid. I have been hitting you for five days. I have been doing the stan”
+  - 141 SKIPPED, line rewritten since recording: “Kid. For what it's worth. Your grandmother loves you. I have been list”
+- **voice_dropin_vol6_ch9_safehouse.zip** (2026-09-01) — vol6_ch9_safehouse: 81 line(s) wired, 9 SKIPPED (line rewritten since recording)
+  - 007 SKIPPED, line rewritten since recording: “He has been at the safehouse since Friday afternoon. He has, in the fo”
+  - 034 SKIPPED, line rewritten since recording: “Diego. That was Friday morning. About an hour before they got you out.”
+  - 049 SKIPPED, line rewritten since recording: “He sleeps, holding her hand. She does not move. The slushie, on the be”
+  - 063 SKIPPED, line rewritten since recording: “Diego. I want you to write down the dream. I want you to write down th”
+  - 066 SKIPPED, line rewritten since recording: “He writes slowly. His hand is — for some weeks — not steady. He writes”
+  - 083 SKIPPED, line rewritten since recording: “When Sam goes to college in the fall of 2027, the notebook goes with h”
+  - 093 SKIPPED, line rewritten since recording: “The Strength card, in some other deck on some other table, would, toda”
+  - 096 SKIPPED, line rewritten since recording: “The figure with the gentle hand on the open mouth is — the figure is m”
+  - 101 SKIPPED, line rewritten since recording: “In the years to come, when he is an adult and the work he has chosen t”
+- **voice_dropin_vol6_ch10_home.zip** (2026-09-01) — vol6_ch10_home: 54 line(s) wired, 7 SKIPPED (line rewritten since recording)
+  - 006 SKIPPED, line rewritten since recording: “[mood:morning_bright][shot:closeup graciela]His grandmother is at the ”
+  - 016 SKIPPED, line rewritten since recording: “She does not, while he eats, sit. She stands at the counter with her o”
+  - 025 SKIPPED, line rewritten since recording: “I don't know, abuela. I don't know if he's lying. I don't know if he i”
+  - 038 SKIPPED, line rewritten since recording: “The radio plays the morning weather. The weather, as it has been for n”
+  - 039 SKIPPED, line rewritten since recording: “He finishes the eggs. He kisses his grandmother on the cheek. He goes ”
+  - 045 SKIPPED, line rewritten since recording: “In the dream the dock is the dock, and the cedar scrub is the cedar sc”
+  - 065 SKIPPED, line rewritten since recording: “His grandmother, downstairs, is making early dinner. He can smell it. ”
+- **voice_dropin_vol6_ch10_night_shift.zip** (2026-09-01) — vol6_ch10_night_shift: 167 line(s) wired, 31 SKIPPED (line rewritten since recording)
+  - 006 SKIPPED, line rewritten since recording: “Diego does the math without thinking about it — the cans are stacked f”
+  - 016 SKIPPED, line rewritten since recording: “Diego parks the hand truck. He starts pulling cases of stewed tomatoes”
+  - 018 SKIPPED, line rewritten since recording: “The hum is not the substation hum. He knows the difference. The substa”
+  - 020 SKIPPED, line rewritten since recording: “Down the aisle, Russell is in dry pasta. Russell does not talk during ”
+  - 021 SKIPPED, line rewritten since recording: “[shot:closeup bt]BT — Brandon, on his name tag, but the team has been ”
+  - 025 SKIPPED, line rewritten since recording: “[shot:closeup jessa]Jessa comes through Aisle Seven at three twenty-on”
+  - 032 SKIPPED, line rewritten since recording: “Diego, watching her go up the aisle, registers the small thing he regi”
+  - 033 SKIPPED, line rewritten since recording: “She has not, in five weeks, asked him about himself. She does not, he ”
+  - 034 SKIPPED, line rewritten since recording: “He has, at home in his bedroom, thought about this. He has thought abo”
+  - 040 SKIPPED, line rewritten since recording: “Doug is doing the work the way Doug does the work, which is the work o”
+  - 041 SKIPPED, line rewritten since recording: “He has, propped against the lower shelf where his break thermos sits, ”
+  - 045 SKIPPED, line rewritten since recording: “He pulls another half-gallon. He front-faces the label. He registers, ”
+  - 057 SKIPPED, line rewritten since recording: “Doug, who has been in this room with this question — or its functional”
+  - 069 SKIPPED, line rewritten since recording: “The break room is at the back of the store, off the dock corridor, wit”
+  - 073 SKIPPED, line rewritten since recording: “Russell is at the card table eating a banana and reading a folded sect”
+  - 076 SKIPPED, line rewritten since recording: “She comes in for forty-five seconds, which is what she does on every b”
+  - 098 SKIPPED, line rewritten since recording: “Diego, at the door, does not say anything. Diego, this summer, is the ”
+  - 106 SKIPPED, line rewritten since recording: “Diego registers — with the small careful attention he has been trainin”
+  - 120 SKIPPED, line rewritten since recording: “He is alone on this aisle. The aisle is wide. The shelves are tall. Th”
+  - 122 SKIPPED, line rewritten since recording: “His mind, during the work, is — somewhere. He does not, this summer, e”
+  - 124 SKIPPED, line rewritten since recording: “Sam had texted him at eight forty-six PM, which was just before he had”
+  - 128 SKIPPED, line rewritten since recording: “The reply is, he knows, not entirely true. The shift is part of it. Th”
+  - 141 SKIPPED, line rewritten since recording: “He will check it at eight twenty AM, in his truck in the parking lot, ”
+  - 149 SKIPPED, line rewritten since recording: “The cedar scrub is, at five oh-six, beginning to register as scrub rat”
+  - 151 SKIPPED, line rewritten since recording: “It is always visible from this dock. At least, on a clear morning. He ”
+  - 156 SKIPPED, line rewritten since recording: “The smear is a thing he has, this summer, come to think of as his own.”
+  - 164 SKIPPED, line rewritten since recording: “BT has, in his hand, a paper cup of coffee from the same pot. BT is in”
+  - 183 SKIPPED, line rewritten since recording: “Diego does not respond to the team's good, mostly. The mostly is BT as”
+  - 200 SKIPPED, line rewritten since recording: “The truck comes at five fifty-eight. The morning load gets staged. The”
+  - 201 SKIPPED, line rewritten since recording: “In the parking lot, his truck is the second-to-last vehicle in the nig”
+  - 220 SKIPPED, line rewritten since recording: “Just — Diego. You don't have to be the one who lets him in. The team's”
+- **voice_dropin_vol6_ch11_eileen.zip** (2026-09-01) — vol6_ch11_eileen: 99 line(s) wired, 9 SKIPPED (line rewritten since recording)
+  - 017 SKIPPED, line rewritten since recording: “Bianca, who has been, this summer, accepting fewer such drop-ins than ”
+  - 022 SKIPPED, line rewritten since recording: “Bianca, this time, sits in her own chair. The same one she had sat in ”
+  - 026 SKIPPED, line rewritten since recording: “[shot:closeup bianca]I am — I am at four eleven on most mornings. I am”
+  - 031 SKIPPED, line rewritten since recording: “Jim is — Jim is doing okay. He is in the photography class. He likes i”
+  - 036 SKIPPED, line rewritten since recording: “[shot:closeup eileen]Bianca. I am — I am okay. I am, also, four-thirty”
+  - 039 SKIPPED, line rewritten since recording: “I am not — I am not proposing anything. I am floating. I am floating b”
+  - 063 SKIPPED, line rewritten since recording: “Anita Kowalski is on the night shift tonight. She is off tomorrow morn”
+  - 075 SKIPPED, line rewritten since recording: “They talk about the cinnamon roll. They talk about the bakery on Magno”
+  - 110 SKIPPED, line rewritten since recording: “She thinks, this morning, about all of it — about Mike, about Sammy, a”
+- **voice_dropin_vol6_ch11_kitchen.zip** (2026-09-01) — vol6_ch11_kitchen: 143 line(s) wired (2 to a lightly rewritten line), 31 SKIPPED (line rewritten since recording)
+  - 038 → 066 (close 91%): “The thinking is, in its small way, the thing she is doing instead of t”
+  - 175 → 231 (close 93%): “She is, Bianca registers, doing the small lingering Sam has been doing”
+  - 006 SKIPPED, line rewritten since recording: “The number is not, exactly, a thing she has decided on. The number is ”
+  - 008 SKIPPED, line rewritten since recording: “[shot:closeup bianca~]This morning she lies for nineteen minutes. The ”
+  - 010 SKIPPED, line rewritten since recording: “She does not, in the getting up, make the bed. The bed is a queen. The”
+  - 011 SKIPPED, line rewritten since recording: “She puts on the robe that is on the hook on the back of the bedroom do”
+  - 013 SKIPPED, line rewritten since recording: “The stairs are, in their middle three steps, the ones that creak. She ”
+  - 016 SKIPPED, line rewritten since recording: “[shot:insert sink_light]She does not turn on the overhead. She turns o”
+  - 018 SKIPPED, line rewritten since recording: “[shot:insert window]The kitchen window faces the front yard and the cu”
+  - 021 SKIPPED, line rewritten since recording: “She pours a cup. She does not, this morning, put cream in it. She had,”
+  - 023 SKIPPED, line rewritten since recording: “The chair she sits in is not her old chair. Her old chair had been at ”
+  - 026 SKIPPED, line rewritten since recording: “At five oh-two the porch light at the Gellers' across the way comes on”
+  - 027 SKIPPED, line rewritten since recording: “Don, this morning, comes out at five oh-six. He is in his work clothes”
+  - 031 SKIPPED, line rewritten since recording: “This is the thing she has been working on, in the small private way a ”
+  - 033 SKIPPED, line rewritten since recording: “The thinking was a tape. The tape was a tape she had made herself, in ”
+  - 034 SKIPPED, line rewritten since recording: “She had decided, sometime around the eighth week, that the four-thirty”
+  - 036 SKIPPED, line rewritten since recording: “The four-thirty hour, as it turns out, is the hour in which she watche”
+  - 041 SKIPPED, line rewritten since recording: “She does not, generally, drink a second pot. She is, this morning, goi”
+  - 042 SKIPPED, line rewritten since recording: “She gets the eggs. She gets the bread — the loaf of challah she had bo”
+  - 043 SKIPPED, line rewritten since recording: “[mood:kitchen_practical][shot:insert french_toast]She cracks the eggs.”
+  - 049 SKIPPED, line rewritten since recording: “The smell — butter and cinnamon and the warm vanilla she had added to ”
+  - 078 SKIPPED, line rewritten since recording: “Sam does not say Mom, you've been getting up at four eleven every morn”
+  - 102 SKIPPED, line rewritten since recording: “Sammy. I am — I am not okay. But I am doing the small things that, eve”
+  - 116 SKIPPED, line rewritten since recording: “Sammy. I — I want you to listen to me. You are seventeen. You have liv”
+  - 119 SKIPPED, line rewritten since recording: “Then you tell me, in March, when the acceptances come in, that you wan”
+  - 121 SKIPPED, line rewritten since recording: “I can be left here alone. Not — not happily. Not without grief. But I ”
+  - 135 SKIPPED, line rewritten since recording: “Bianca clears the plates. She rinses them in the sink. She puts them i”
+  - 143 SKIPPED, line rewritten since recording: “The back porch is small. It is screened in. It has, against the back w”
+  - 145 SKIPPED, line rewritten since recording: “The back yard is in the small soft light a Texas back yard does at sev”
+  - 148 SKIPPED, line rewritten since recording: “She thinks about her father's hands. About the white square of cloth o”
+  - 151 SKIPPED, line rewritten since recording: “Her father had died in 2003. He had been seventy-two. He had died of a”
+  - 155 SKIPPED, line rewritten since recording: “She has not called her brother in some weeks. He has, in his way, call”
+  - 158 SKIPPED, line rewritten since recording: “She thinks: I am going to call him this week. Tuesday. After Sammy has”
+- **voice_dropin_vol6_ch12_cosmic.zip** (2026-09-01) — vol6_ch12_cosmic: 195 line(s) wired, 19 SKIPPED (line rewritten since recording)
+  - 006 SKIPPED, line rewritten since recording: “There are six of them on the ring, plus the green plastic tab that say”
+  - 008 SKIPPED, line rewritten since recording: “She is doing the thing she has been doing every time she has been entr”
+  - 014 SKIPPED, line rewritten since recording: “The shop at nine forty-eight on a Tuesday morning in mid-August is doi”
+  - 033 SKIPPED, line rewritten since recording: “She turns on the fluorescent tubes. She turns on the back-office compu”
+  - 046 SKIPPED, line rewritten since recording: “Curtis is fifty-six. He is a tall thin man with a short gray ponytail ”
+  - 049 SKIPPED, line rewritten since recording: “He goes behind the counter without breaking stride. He sets the thermo”
+  - 056 SKIPPED, line rewritten since recording: “The Tuesday flow is not the flow of a Wednesday or a Thursday or a Sat”
+  - 074 SKIPPED, line rewritten since recording: “She has, in the past two hours, fielded a delivery call from a thirty-”
+  - 082 SKIPPED, line rewritten since recording: “[shot:closeup wren]Wren is twenty-eight. Wren has, this morning, dyed ”
+  - 115 SKIPPED, line rewritten since recording: “Maya and Wren run the floor together for the half-hour Curtis is gone.”
+  - 123 SKIPPED, line rewritten since recording: “I am about to tell you something I have not told anybody else who work”
+  - 131 SKIPPED, line rewritten since recording: “I'm okay. Liz is okay. The thing is — the thing is in motion. The thin”
+  - 143 SKIPPED, line rewritten since recording: “Maya stays in the back office for a minute. She sits at the desk. She ”
+  - 148 SKIPPED, line rewritten since recording: “By three the shop has had nine customers. By four-thirty, fourteen. By”
+  - 153 SKIPPED, line rewritten since recording: “By six the shop has the late-afternoon hum of a small shop on a Tuesda”
+  - 176 SKIPPED, line rewritten since recording: “The exchange has been, on its surface, transactional. The exchange has”
+  - 196 SKIPPED, line rewritten since recording: “[mood:dusk][shot:insert till]Maya, at the counter, starts the close. S”
+  - 226 SKIPPED, line rewritten since recording: “Curtis has just told her, in three sentences, more than he has ever to”
+  - 228 SKIPPED, line rewritten since recording: “She is going to keep doing her job. She is going to let Curtis keep do”
+- **voice_dropin_vol6_ch12_porch.zip** (2026-09-01) — vol6_ch12_porch: 79 line(s) wired, 9 SKIPPED (line rewritten since recording)
+  - 006 SKIPPED, line rewritten since recording: “The light at nine PM in mid-August is the lavender Texas does in the s”
+  - 019 SKIPPED, line rewritten since recording: “The porch light is on. Linda is in the wicker chair — the one she has ”
+  - 027 SKIPPED, line rewritten since recording: “She tells her grandmother about Delia from Diamond. She tells her abou”
+  - 038 SKIPPED, line rewritten since recording: “Honey. I worked for forty-one years at the office of a small accountin”
+  - 041 SKIPPED, line rewritten since recording: “Sweetheart, Rick's father was one of those partners. Rick was twelve w”
+  - 050 SKIPPED, line rewritten since recording: “Yes. He is the kind of man who, when something else is hard, holds ont”
+  - 056 SKIPPED, line rewritten since recording: “I am carrying it. I haven't, today, done anything with it. I think tom”
+  - 084 SKIPPED, line rewritten since recording: “She passes her grandmother's bedroom door, which is open because her g”
+  - 092 SKIPPED, line rewritten since recording: “Outside, on the porch, Linda Caldwell wakes at ten oh-six. She is, bri”
+- **voice_dropin_vol6_ch13_home.zip** (2026-09-01) — vol6_ch13_home: 51 line(s) wired, 2 SKIPPED (line rewritten since recording)
+  - 011 SKIPPED, line rewritten since recording: “Bill is, by Bill tradition, doing the Friday crossword in pen. His mot”
+  - 033 SKIPPED, line rewritten since recording: “He eats the sandwich. He drinks two glasses of water. He sits with Dai”
+- **voice_dropin_vol6_ch13_two_a_days.zip** (2026-09-01) — vol6_ch13_two_a_days: 104 line(s) wired, 22 SKIPPED (line rewritten since recording)
+  - 006 SKIPPED, line rewritten since recording: “[shot:insert truck]The truck is the white Ford F-250 with the camper s”
+  - 008 SKIPPED, line rewritten since recording: “[shot:closeup coach_k]The driver's-side door is open. Coach K is at th”
+  - 010 SKIPPED, line rewritten since recording: “It is not, by Ben's count, a My Sharona morning. My Sharona mornings a”
+  - 015 SKIPPED, line rewritten since recording: “This is a Coach K thing. Coach K does not, in the morning, perform gre”
+  - 020 SKIPPED, line rewritten since recording: “Brent Kowalski's truck is the second to pull in — Brent the senior cap”
+  - 022 SKIPPED, line rewritten since recording: “Tucker Mitchell pulls in third at five fifty-seven in the Tacoma his f”
+  - 028 SKIPPED, line rewritten since recording: “The route is the standard one — out the back gate, across the parking ”
+  - 031 SKIPPED, line rewritten since recording: “[shot:insert stopwatch]He has, in his hand, a stopwatch he is in fact ”
+  - 033 SKIPPED, line rewritten since recording: “Coach K does not, when Tucker passes the infield, say anything. The no”
+  - 041 SKIPPED, line rewritten since recording: “It is small. It has, in 2026, the same equipment it had in 2008 — the ”
+  - 043 SKIPPED, line rewritten since recording: “The team rotates through the stations — squat, bench, deadlift, power ”
+  - 066 SKIPPED, line rewritten since recording: “He registers that Coach K's coaching of Tucker is the same coaching he”
+  - 075 SKIPPED, line rewritten since recording: “[shot:closeup ben~]He has, in his head, registered the sentence the wa”
+  - 080 SKIPPED, line rewritten since recording: “Pads are the work of getting fifteen-year-old and sixteen-year-old and”
+  - 091 SKIPPED, line rewritten since recording: “It is the part Ben likes best. The cone work is the repeated practice ”
+  - 093 SKIPPED, line rewritten since recording: “His first step is — by his own internal sense, which is, three weeks i”
+  - 102 SKIPPED, line rewritten since recording: “Ben moves out of the line. He goes to the back. Marcus does the drill.”
+  - 104 SKIPPED, line rewritten since recording: “Ben is at tight end on the half-line. He has been at tight end since w”
+  - 106 SKIPPED, line rewritten since recording: “[shot:establish]The first play is an inside zone. Ben blocks down on t”
+  - 111 SKIPPED, line rewritten since recording: “The drill goes for fifteen plays. Ben is on the field for all fifteen.”
+  - 130 SKIPPED, line rewritten since recording: “The conditioning at the end is light, a two-lap jog. The team does it ”
+  - 134 SKIPPED, line rewritten since recording: “[shot:insert truck]The Civic is parked four spaces down from Coach K's”
+- **voice_dropin_vol6_ch14_live_oak.zip** (2026-09-01) — vol6_ch14_live_oak: 94 line(s) wired (1 to a lightly rewritten line), 14 SKIPPED (line rewritten since recording)
+  - 043 → 052 (close 90%): “The man pulls out of the lot — in the direction away from where Jesse ”
+  - 007 SKIPPED, line rewritten since recording: “He pulls into the parking lot at ten oh-eight. The lot is — at this ho”
+  - 013 SKIPPED, line rewritten since recording: “The back of the strip mall is the loading area. The loading area is a ”
+  - 016 SKIPPED, line rewritten since recording: “The papered-over window is — Jesse cannot, from the car, see the windo”
+  - 018 SKIPPED, line rewritten since recording: “Jesse, in the Civic, slows further. He stops the car at the corner of ”
+  - 041 SKIPPED, line rewritten since recording: “The man is — Jesse, at the Civic, ducks low — backlit by the faint int”
+  - 053 SKIPPED, line rewritten since recording: “He pulls into his driveway at ten forty-eight. His parents' house is m”
+  - 062 SKIPPED, line rewritten since recording: “f.t. sent me one message in june and one in july and that's it for the”
+  - 068 SKIPPED, line rewritten since recording: “okay. one week. but jesse — if anything escalates — if the door is ope”
+  - 075 SKIPPED, line rewritten since recording: “practice was good. em is running the band. i didn't realize until toni”
+  - 094 SKIPPED, line rewritten since recording: “[shot:insert notebook]Then he puts the guitar down. He gets out his no”
+  - 103 SKIPPED, line rewritten since recording: “He thinks: the unit has lights at hours it should not have lights, and”
+  - 104 SKIPPED, line rewritten since recording: “He thinks, with the small careful honesty Em has, this evening, modele”
+  - 111 SKIPPED, line rewritten since recording: “F.T. — quick. Jesse Henderson has been mapping nexcorp activity in tow”
+  - 114 SKIPPED, line rewritten since recording: “The reply will read, in F.T.'s usual lower-case voice: "kid. thank you”
+- **voice_dropin_vol6_ch14_substation_nine.zip** (2026-09-01) — vol6_ch14_substation_nine: 90 line(s) wired, 20 SKIPPED (line rewritten since recording)
+  - 007 SKIPPED, line rewritten since recording: “The garage door is open because the temperature has dropped from the d”
+  - 010 SKIPPED, line rewritten since recording: “The kid coming up the driveway is — Jesse, looking up from the strings”
+  - 021 SKIPPED, line rewritten since recording: “[panel:vol6_foxhole_flyer]The flyer is the kind of flyer The Foxhole h”
+  - 025 SKIPPED, line rewritten since recording: “DJ Chess is — SAN ANTONIO. Which means The Foxhole has, for its Saturd”
+  - 026 SKIPPED, line rewritten since recording: “Jesse has, this summer, been roughly aware of DJ Chess. The name has b”
+  - 032 SKIPPED, line rewritten since recording: “Practice that night is at seven in Nate's garage instead of Jesse's, b”
+  - 033 SKIPPED, line rewritten since recording: “Jesse drives to Nate's at six-forty. The route to Nate's is across tow”
+  - 034 SKIPPED, line rewritten since recording: “[mood:arcana][shot:insert map]The map is in his glove compartment. The”
+  - 037 SKIPPED, line rewritten since recording: “He had, in late July, registered that the unit at the rear of the stri”
+  - 038 SKIPPED, line rewritten since recording: “Jesse has not, for two weeks, been able to confirm what is in the unit”
+  - 041 SKIPPED, line rewritten since recording: “Nate's garage is bigger than Jesse's. Nate's parents had, in 2018, con”
+  - 058 SKIPPED, line rewritten since recording: “Em — backing vocals, occasional keys, eighteen, the band's I am from F”
+  - 066 SKIPPED, line rewritten since recording: “They run Substation Nine. The song is not finished. The song's structu”
+  - 068 SKIPPED, line rewritten since recording: “Carl, behind the kit, hears it the way drummers hear a bandmate's impr”
+  - 084 SKIPPED, line rewritten since recording: “Because the song is the thing you have been writing all summer. Becaus”
+  - 094 SKIPPED, line rewritten since recording: “[shot:establish]They run the rest of the set. Blowback, which Sam had ”
+  - 100 SKIPPED, line rewritten since recording: “Jesse, in the garage, with the order written on the back of the flyer ”
+  - 104 SKIPPED, line rewritten since recording: “Practice ends at nine forty-six. Carl breaks down the kit. Nate unplug”
+  - 115 SKIPPED, line rewritten since recording: “Write the bridge about — write it about the people. Write the bridge a”
+  - 122 SKIPPED, line rewritten since recording: “He thinks, with the small surprise of a kid who has, in the past two h”
+- **voice_dropin_vol6_ch15_home.zip** (2026-09-01) — vol6_ch15_home: 36 line(s) wired, 2 SKIPPED (line rewritten since recording)
+  - 007 SKIPPED, line rewritten since recording: “[shot:insert cypress]The Cypress is — she sees, slowing the Corolla — ”
+  - 047 SKIPPED, line rewritten since recording: “Mark and Lucy, in Room 7 of the Cypress, are asleep by seven PM, havin”
+- **voice_dropin_vol6_ch15_kwik_stop.zip** (2026-09-01) — vol6_ch15_kwik_stop: 254 line(s) wired, 37 SKIPPED (line rewritten since recording)
+  - 007 SKIPPED, line rewritten since recording: “The microwave clock, set nine minutes fast on purpose because Jen the ”
+  - 011 SKIPPED, line rewritten since recording: “She is on the eight-to-four. Jen is at the back office doing the depos”
+  - 013 SKIPPED, line rewritten since recording: “A construction guy comes in at eight-fourteen for a breakfast burrito ”
+  - 024 SKIPPED, line rewritten since recording: “She does not, after, look at it for a long minute. She wipes the count”
+  - 029 SKIPPED, line rewritten since recording: “Sam, at the counter, looks up because the car comes in slowly and stop”
+  - 030 SKIPPED, line rewritten since recording: “The driver gets out. The driver is — from her angle, through the front”
+  - 031 SKIPPED, line rewritten since recording: “The passenger door opens. A woman gets out. She is maybe a year or two”
+  - 052 SKIPPED, line rewritten since recording: “He is tall. He is thin. He has not shaved in some days. His t-shirt is”
+  - 058 SKIPPED, line rewritten since recording: “He goes to the back cooler. He gets two bottles. He brings them up. He”
+  - 072 SKIPPED, line rewritten since recording: “Eighty-six Peugeot. 505 Turbo. Was my dad's. He gave it to me when I m”
+  - 083 SKIPPED, line rewritten since recording: “She gets a Post-it from the small pad by the register. She writes Bobb”
+  - 103 SKIPPED, line rewritten since recording: “Lucy is — Sam registers, in the way she has been registering things th”
+  - 112 SKIPPED, line rewritten since recording: “It's eighty-five for the tow. They can be here in an hour. The diagnos”
+  - 118 SKIPPED, line rewritten since recording: “We have three twenty in cash. We have two forty in checking. The credi”
+  - 125 SKIPPED, line rewritten since recording: “She rings up a customer. She wipes the counter. She watches them, peri”
+  - 132 SKIPPED, line rewritten since recording: “A regular comes in at ten twenty-two — Stan, retired, in for his morni”
+  - 145 SKIPPED, line rewritten since recording: “I told you. I said Mark, the car is not going to make it, and you said”
+  - 152 SKIPPED, line rewritten since recording: “The arithmetic is the specific math of: what is in my wallet, what is ”
+  - 153 SKIPPED, line rewritten since recording: “The wallet has, by her count this morning when she had checked at home”
+  - 155 SKIPPED, line rewritten since recording: “The math she does, in her head, while wiping the counter: she can spar”
+  - 169 SKIPPED, line rewritten since recording: “[beat:still][shot:closeup sam]I don't know your situation. I'm not goi”
+  - 181 SKIPPED, line rewritten since recording: “Because my dad — my dad had a thing happen to him, last year, and the ”
+  - 183 SKIPPED, line rewritten since recording: “Lucy is — Sam can see, with the small careful attention she has been t”
+  - 186 SKIPPED, line rewritten since recording: “[shot:establish]She gets her wallet from the small drawer under the co”
+  - 187 SKIPPED, line rewritten since recording: “There's a motel called the Cypress on the eastern edge of town, off th”
+  - 196 SKIPPED, line rewritten since recording: “A construction guy comes in for a Powerade. Sam rings him up. Stan's w”
+  - 202 SKIPPED, line rewritten since recording: “Sam. I called the tow. He's going to come for the car. We're going to ”
+  - 217 SKIPPED, line rewritten since recording: “The driver — a kid in his early twenties Sam recognizes as one of Bobb”
+  - 223 SKIPPED, line rewritten since recording: “Then they pick up the duffel bag they have pulled from the back seat —”
+  - 227 SKIPPED, line rewritten since recording: “She thinks: that is — that is okay. Lucy was not going to be able to. ”
+  - 249 SKIPPED, line rewritten since recording: “Don't make a habit. Once a summer is fine. Once a summer is — once a s”
+  - 257 SKIPPED, line rewritten since recording: “Sam, at the counter, registers — with the small surprise her interior ”
+  - 262 SKIPPED, line rewritten since recording: “The table is the table Mark and Lucy were at. The two empty water bott”
+  - 273 SKIPPED, line rewritten since recording: “She eats her sandwich — the one her mother had made her this morning, ”
+  - 274 SKIPPED, line rewritten since recording: “Stan's wife had gone home with her newspaper. Stan was, by now, on his”
+  - 280 SKIPPED, line rewritten since recording: “Customers come in. Sam rings them up. Jen, at the back office, does th”
+  - 306 SKIPPED, line rewritten since recording: “The lot, in the four-PM heat, is empty of customers. The asphalt is do”
+- **voice_dropin_vol6_ch16_dawn.zip** (2026-09-01) — vol6_ch16_dawn: 132 line(s) wired (1 to a lightly rewritten line), 9 SKIPPED (line rewritten since recording)
+  - 117 → 124 (close 96%): “She sits, today, with him — it is Friday morning, and Friday mornings ”
+  - 006 SKIPPED, line rewritten since recording: “The song is, by BT's selection on the way back, the same song again. B”
+  - 043 SKIPPED, line rewritten since recording: “By six AM the team is on the floor finishing the prep for tomorrow nig”
+  - 053 SKIPPED, line rewritten since recording: “Diego, in the aisle, registers — with the attention his summer has bee”
+  - 068 SKIPPED, line rewritten since recording: “He thinks: BT is — BT is, by his honest disclosure about the song, the”
+  - 070 SKIPPED, line rewritten since recording: “He thinks: I am sixteen. I am — by the team's quiet accommodation — be”
+  - 122 SKIPPED, line rewritten since recording: “[shot:closeup abuela]The eggs. You are eating them slow. When you have”
+  - 131 SKIPPED, line rewritten since recording: “Mijo. The team has been good to you. The team has also, in being good ”
+  - 153 SKIPPED, line rewritten since recording: “He thinks: I am going to be at Centro at ten tonight. I am going to do”
+  - 162 SKIPPED, line rewritten since recording: “Tonight, in the truck, on the way to inventory, the song on the radio ”
+- **voice_dropin_vol6_ch16_el_rancho.zip** (2026-09-23) — vol6_ch16_el_rancho: 314 line(s) wired
+- **voice_dropin_vol6_ch17_porch.zip** (2026-09-23) — vol6_ch17_porch: 79 line(s) wired
+- **voice_dropin_vol6_ch17_table.zip** (2026-09-23) — vol6_ch17_table: 325 line(s) wired
+- **voice_dropin_vol6_ch18_letter.zip** (2026-09-23) — vol6_ch18_letter: 60 line(s) wired
+- **voice_dropin_vol6_ch18_stockroom.zip** (2026-09-23) — vol6_ch18_stockroom: 206 line(s) wired
+- **voice_dropin_vol6_ch19_chains.zip** (2026-09-23) — vol6_ch19_chains: 157 line(s) wired
+- **voice_dropin_vol6_ch19_depthchart.zip** (2026-09-23) — vol6_ch19_depthchart: 197 line(s) wired
+- **voice_dropin_vol6_ch20_bridge.zip** (2026-09-23) — vol6_ch20_bridge: 197 line(s) wired
+- **voice_dropin_vol6_ch20_prints.zip** (2026-09-24) — vol6_ch20_prints: 132 line(s) wired
+- **voice_dropin_vol6_ch21_cosmic.zip** (2026-09-24) — vol6_ch21_cosmic: 147 line(s) wired
+- **voice_dropin_vol6_ch21_porch.zip** (2026-09-24) — vol6_ch21_porch: 77 line(s) wired
+- **voice_dropin_vol6_ch22_bianca.zip** (2026-09-24) — vol6_ch22_bianca: 177 line(s) wired
+- **voice_dropin_vol6_ch22_foxhole.zip** (2026-09-24) — vol6_ch22_foxhole: 179 line(s) wired
+
+**Totals:** 124 zip(s), 7254 line(s) wired (37 close), 264 kept, 982 skipped, 0 zip(s) for scenes no longer in the game.

@@ -61,41 +61,48 @@
       "t": "say",
       "char": "Frasier Temple",
       "text": "Claire.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/012.mp3"
     },
     {
       "t": "say",
       "char": "Claire",
       "text": "[shot:closeup person]Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/013.mp3"
     },
     {
       "t": "say",
       "char": "Frasier Temple",
       "text": "Frasier Temple. Hi. It's good to hear your voice.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/014.mp3"
     },
     {
       "t": "narrate",
-      "text": "She smiles, briefly, despite herself."
+      "text": "She smiles, briefly, despite herself.",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/015.mp3"
     },
     {
       "t": "say",
       "char": "Claire",
       "text": "[shot:closeup person]You too, Frasier.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/016.mp3"
     },
     {
       "t": "say",
       "char": "Frasier Temple",
       "text": "Two-mile-marker north, you'll see a green pickup. It's mine. The driver is a man named Hal — bookshop guy in New Auburn, you'll like him. He's going to be your radio relay if your line goes down. He's been there since five this morning. He'll wait.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/017.mp3"
     },
     {
       "t": "say",
       "char": "Claire",
       "text": "Got it.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/018.mp3"
     },
     {
       "t": "say",
@@ -117,13 +124,15 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup claire~]Claire's jaw tightens."
+      "text": "[shot:closeup claire~]Claire's jaw tightens.",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/022.mp3"
     },
     {
       "t": "say",
       "char": "Claire",
       "text": "Has he hurt — ",
-      "expr": "angry"
+      "expr": "angry",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/023.mp3"
     },
     {
       "t": "say",
@@ -139,13 +148,15 @@
     },
     {
       "t": "narrate",
-      "text": "Claire exhales."
+      "text": "Claire exhales.",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/026.mp3"
     },
     {
       "t": "say",
       "char": "Claire",
       "text": "Okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/027.mp3"
     },
     {
       "t": "say",
@@ -163,19 +174,22 @@
       "t": "say",
       "char": "Claire",
       "text": "Boyd's the only obstacle.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/030.mp3"
     },
     {
       "t": "say",
       "char": "Frasier Temple",
       "text": "Boyd is the obstacle. Vince and Tomé will drive whoever pays them. They are not loyal. They are paid. Boyd is — Boyd has a personal investment. Boyd is the one who would pursue.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/031.mp3"
     },
     {
       "t": "say",
       "char": "Claire",
       "text": "How do you want it played.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/032.mp3"
     },
     {
       "t": "say",
@@ -199,7 +213,8 @@
       "t": "say",
       "char": "Claire",
       "text": "Tomé.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/036.mp3"
     },
     {
       "t": "say",
@@ -229,19 +244,22 @@
       "t": "say",
       "char": "Claire",
       "text": "That's two hundred I have.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/041.mp3"
     },
     {
       "t": "say",
       "char": "Frasier Temple",
       "text": "Three hundred. I am not asking you to be poor today, Claire.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/042.mp3"
     },
     {
       "t": "say",
       "char": "Claire",
       "text": "Three hundred. Okay. Where's Boyd in all this.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/043.mp3"
     },
     {
       "t": "say",
@@ -259,39 +277,46 @@
       "t": "say",
       "char": "Claire",
       "text": "[shot:closeup person]Where's the safehouse.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/046.mp3"
     },
     {
       "t": "say",
       "char": "Frasier Temple",
       "text": "You don't need to know yet. Hal does. Just trust the green pickup.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/047.mp3"
     },
     {
       "t": "narrate",
-      "text": "Claire is quiet for a moment."
+      "text": "Claire is quiet for a moment.",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/048.mp3"
     },
     {
       "t": "say",
       "char": "Claire",
       "text": "Frasier.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/049.mp3"
     },
     {
       "t": "say",
       "char": "Frasier Temple",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/050.mp3"
     },
     {
       "t": "say",
       "char": "Claire",
       "text": "[mood:arcana_cool][shot:closeup claire]Why is Boyd in the bathroom for nine minutes.",
-      "expr": "thinking"
+      "expr": "thinking",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/051.mp3"
     },
     {
       "t": "narrate",
-      "text": "A pause."
+      "text": "A pause.",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/052.mp3"
     },
     {
       "t": "say",
@@ -307,47 +332,55 @@
     },
     {
       "t": "narrate",
-      "text": "Claire stares at her phone."
+      "text": "Claire stares at her phone.",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/055.mp3"
     },
     {
       "t": "say",
       "char": "Claire",
       "text": "Frasier. You — your imps can give a man a stomach bug from a hundred miles away.",
-      "expr": "surprised"
+      "expr": "surprised",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/056.mp3"
     },
     {
       "t": "say",
       "char": "Frasier Temple",
       "text": "[shot:closeup person_b]Through the water supply. Yes. We were going to do something more — invasive — but we decided this would be sufficient and ethically cleaner.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/057.mp3"
     },
     {
       "t": "say",
       "char": "Claire",
       "text": "Frasier.",
-      "expr": "surprised"
+      "expr": "surprised",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/058.mp3"
     },
     {
       "t": "say",
       "char": "Frasier Temple",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/059.mp3"
     },
     {
       "t": "say",
       "char": "Claire",
       "text": "This is going to be the strangest morning of my life.",
-      "expr": "surprised"
+      "expr": "surprised",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/060.mp3"
     },
     {
       "t": "say",
       "char": "Frasier Temple",
       "text": "Yeah, Claire. I know. I'm sorry. You picked the right one. Go.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/061.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Click."
+      "text": "[shot:establish]Click.",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/062.mp3"
     },
     {
       "t": "show",
@@ -357,35 +390,41 @@
     },
     {
       "t": "narrate",
-      "text": "Claire turns to her partner — Doyle, her partner, who has been her colleague at the Chronicle for nine years and who is, in the small administrative fact of their working relationship, her older brother. Doyle has been listening through the second earpiece."
+      "text": "Claire turns to her partner — Doyle, her partner, who has been her colleague at the Chronicle for nine years and who is, in the small administrative fact of their working relationship, her older brother. Doyle has been listening through the second earpiece.",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/064.mp3"
     },
     {
       "t": "say",
       "char": "Doyle",
       "text": "He gives people the runs through pipes.",
-      "expr": "surprised"
+      "expr": "surprised",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/065.mp3"
     },
     {
       "t": "say",
       "char": "Claire",
       "text": "Apparently.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/066.mp3"
     },
     {
       "t": "say",
       "char": "Doyle",
       "text": "Claire. We are inside a story I am not going to be able to write.",
-      "expr": "surprised"
+      "expr": "surprised",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/067.mp3"
     },
     {
       "t": "say",
       "char": "Claire",
       "text": "Yeah, Doyle. Welcome to the part of journalism nobody covers.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/068.mp3"
     },
     {
       "t": "narrate",
-      "text": "She starts the car. They drive west."
+      "text": "She starts the car. They drive west.",
+      "voice": "assets/audio/voice/vol6_ch6_interstate/069.mp3"
     },
     {
       "t": "hide",

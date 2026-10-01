@@ -47,11 +47,13 @@
     },
     {
       "t": "narrate",
-      "text": "By 07:38 Boyd is leaning his forehead against the cool tile of the bathroom wall and praying — not in any organized way, more in the diffuse way men pray when they are between two acutely uncomfortable functions — for the bathroom to release him."
+      "text": "By 07:38 Boyd is leaning his forehead against the cool tile of the bathroom wall and praying — not in any organized way, more in the diffuse way men pray when they are between two acutely uncomfortable functions — for the bathroom to release him.",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/009.mp3"
     },
     {
       "t": "narrate",
-      "text": "The bathroom does not release him."
+      "text": "The bathroom does not release him.",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/010.mp3"
     },
     {
       "t": "narrate",
@@ -67,15 +69,18 @@
     },
     {
       "t": "narrate",
-      "text": "The Demon waits out the red light."
+      "text": "The Demon waits out the red light.",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/014.mp3"
     },
     {
       "t": "narrate",
-      "text": "At 07:43 the Demon releases Boyd. By the time Boyd staggers out of the bathroom, washes his hands, buys a Gatorade for the rehydration, and stumbles back to pump six —"
+      "text": "At 07:43 the Demon releases Boyd. By the time Boyd staggers out of the bathroom, washes his hands, buys a Gatorade for the rehydration, and stumbles back to pump six —",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/015.mp3"
     },
     {
       "t": "narrate",
-      "text": "[mood:morning_bright][shot:establish]The van is gone. Tomé is gone. Vince is gone."
+      "text": "[mood:morning_bright][shot:establish]The van is gone. Tomé is gone. Vince is gone.",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/016.mp3"
     },
     {
       "t": "narrate",
@@ -103,7 +108,8 @@
     },
     {
       "t": "narrate",
-      "text": "But that is a footnote. What matters, at 07:43 on a Friday morning at a NexCorp fueling station off FM-3411, is that the van is gone."
+      "text": "But that is a footnote. What matters, at 07:43 on a Friday morning at a NexCorp fueling station off FM-3411, is that the van is gone.",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/023.mp3"
     },
     {
       "t": "hide",
@@ -127,33 +133,39 @@
     },
     {
       "t": "narrate",
-      "text": "Diego Ramos, in the back of the van, is alive. He is, for the first time in five days, in the company of someone who is not paid to hurt him."
+      "text": "Diego Ramos, in the back of the van, is alive. He is, for the first time in five days, in the company of someone who is not paid to hurt him.",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/028.mp3"
     },
     {
       "t": "say",
       "char": "Doyle",
       "text": "Diego. My name's Doyle. We have you. We're going to a safehouse. We're going to take care of you. You're okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/029.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego, in the blanket, on the floor, does not, at first, respond. Then, after a long moment, in a voice that is very small and very dry and that Doyle has to lean toward to hear:"
+      "text": "Diego, in the blanket, on the floor, does not, at first, respond. Then, after a long moment, in a voice that is very small and very dry and that Doyle has to lean toward to hear:",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/030.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "[shot:closeup diego~]Sam.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/031.mp3"
     },
     {
       "t": "say",
       "char": "Doyle",
       "text": "She's at work, Diego. She's fine. We're going to call her in an hour. You're going to talk to her. Just hold on.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/032.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego closes his eyes. He sleeps."
+      "text": "Diego closes his eyes. He sleeps.",
+      "voice": "assets/audio/voice/vol6_ch6_boyd/033.mp3"
     },
     {
       "t": "hide",

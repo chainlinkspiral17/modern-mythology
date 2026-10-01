@@ -35,7 +35,8 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2][mood:night]He takes the back road. He takes the back road that goes past the strip mall on Live Oak Street, the way he has been taking the back road past the strip mall on Live Oak Street, every Wednesday and every Friday and most Mondays, since late June."
+      "text": "[trip:1.2][mood:night]He takes the back road. He takes the back road that goes past the strip mall on Live Oak Street, the way he has been taking the back road past the strip mall on Live Oak Street, every Wednesday and every Friday and most Mondays, since late June.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/006.mp3"
     },
     {
       "t": "narrate",
@@ -51,23 +52,28 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert marquee]Jesse looks at it. He looks at it for longer than is, technically, necessary. His own band's name, in chalk, on the front of a venue, in his town, on a Saturday in mid-August."
+      "text": "[shot:insert marquee]Jesse looks at it. He looks at it for longer than is, technically, necessary. His own band's name, in chalk, on the front of a venue, in his town, on a Saturday in mid-August.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/010.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thinks, briefly: I am, at twenty, going to play a venue."
+      "text": "He thinks, briefly: I am, at twenty, going to play a venue.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/011.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thinks, the song is the song."
+      "text": "He thinks, the song is the song.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/012.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thinks, Em is right."
+      "text": "He thinks, Em is right.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/013.mp3"
     },
     {
       "t": "narrate",
-      "text": "He pulls the Civic around to the back of the strip mall."
+      "text": "He pulls the Civic around to the back of the strip mall.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/014.mp3"
     },
     {
       "t": "narrate",
@@ -83,11 +89,13 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert unit]The unit at the back of the Foxhole's section of the strip mall is the unit Jesse has been tracking."
+      "text": "[shot:insert unit]The unit at the back of the Foxhole's section of the strip mall is the unit Jesse has been tracking.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/018.mp3"
     },
     {
       "t": "narrate",
-      "text": "The unit is \u2014 Jesse pulls the Civic past slowly, with the lights off, in the way he has done seven times in the past month \u2014 dark. The white panel van is not, this evening, in the loading area."
+      "text": "The unit is \u2014 Jesse pulls the Civic past slowly, with the lights off, in the way he has done seven times in the past month \u2014 dark. The white panel van is not, this evening, in the loading area.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/019.mp3"
     },
     {
       "t": "narrate",
@@ -99,7 +107,8 @@
     },
     {
       "t": "narrate",
-      "text": "[beat:chill][mood:arcana_cool][shot:insert door~]Tonight the door is open. Two inches. A faint light is visible through the gap."
+      "text": "[beat:chill][mood:arcana_cool][shot:insert door~]Tonight the door is open. Two inches. A faint light is visible through the gap.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/022.mp3"
     },
     {
       "t": "narrate",
@@ -111,121 +120,143 @@
     },
     {
       "t": "narrate",
-      "text": "He kills the engine. He sits. He watches the door for nine minutes."
+      "text": "He kills the engine. He sits. He watches the door for nine minutes.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/025.mp3"
     },
     {
       "t": "narrate",
-      "text": "Nothing happens. The door does not move. No one comes out. No one goes in. The faint light remains."
+      "text": "Nothing happens. The door does not move. No one comes out. No one goes in. The faint light remains.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/026.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]At ten twenty-three, Jesse takes out his phone."
+      "text": "[shot:insert phone]At ten twenty-three, Jesse takes out his phone.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/027.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "text": "hey. quick thing. you up?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/028.mp3"
     },
     {
       "t": "narrate",
-      "text": "Maya replies in two minutes."
+      "text": "Maya replies in two minutes.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/029.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "yeah. on the porch with grandma. what.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/030.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "text": "the back door of the unit i've been tracking is open tonight. like a couple of inches. faint light inside.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/031.mp3"
     },
     {
       "t": "narrate",
-      "text": "A pause."
+      "text": "A pause.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/032.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "[shot:closeup person]are you near it.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/033.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "text": "in my car at the corner of the lot.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/034.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "jesse.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/035.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "text": "i'm not getting out.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/036.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "are you sure.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/037.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "text": "[shot:closeup person_b]yeah. i'm sure. i'm \u2014 i'm just looking.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/038.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "ok. stay in the car. drive home in five minutes. text me when you're home.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/039.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "text": "maya.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/040.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/041.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "text": "i'm not going to do anything dumb.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/042.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "[shot:closeup person]i know you're not. i'm telling you anyway. drive home in five minutes.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/043.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "text": "ok.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/044.mp3"
     },
     {
       "t": "narrate",
-      "text": "He puts the phone down. He watches the door for two more minutes."
+      "text": "He puts the phone down. He watches the door for two more minutes.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/045.mp3"
     },
     {
       "t": "narrate",
-      "text": "[beat:hit][shot:closeup man~]Then, at ten twenty-seven, in the periphery of the lot's far corner, a man comes out the back door of the unit."
+      "text": "[beat:hit][shot:closeup man~]Then, at ten twenty-seven, in the periphery of the lot's far corner, a man comes out the back door of the unit.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/046.mp3"
     },
     {
       "t": "narrate",
@@ -241,7 +272,8 @@
     },
     {
       "t": "narrate",
-      "text": "The vehicle is a sedan. Dark color. Jesse cannot, in the sodium light, read the plate."
+      "text": "The vehicle is a sedan. Dark color. Jesse cannot, in the sodium light, read the plate.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/050.mp3"
     },
     {
       "t": "narrate",
@@ -249,49 +281,58 @@
     },
     {
       "t": "narrate",
-      "text": "The man pulls out of the lot \u2014 in the direction away from where Jesse is parked, which Jesse registers with the small relief of a kid whose pulse has, in the past forty seconds, gotten higher than he was prepared for."
+      "text": "The man pulls out of the lot \u2014 in the direction away from where Jesse is parked, which Jesse registers with the small relief of a kid whose pulse has, in the past forty seconds, gotten higher than he was prepared for.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/052.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert sedan]The sedan turns left at the lot's exit and is, within seconds, gone."
+      "text": "[shot:insert sedan]The sedan turns left at the lot's exit and is, within seconds, gone.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/053.mp3"
     },
     {
       "t": "narrate",
-      "text": "[mood:night][shot:establish]Jesse breathes. He waits another two minutes. He starts the Civic. He drives out of the lot, in the opposite direction the sedan went, and takes the long way home."
+      "text": "[mood:night][shot:establish]Jesse breathes. He waits another two minutes. He starts the Civic. He drives out of the lot, in the opposite direction the sedan went, and takes the long way home.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/054.mp3"
     },
     {
       "t": "narrate",
-      "text": "He texts Maya at ten thirty-six from a stoplight."
+      "text": "He texts Maya at ten thirty-six from a stoplight.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/055.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "text": "home in 10. somebody came out and locked up.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/056.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "did he see you.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/057.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "text": "no. i'm sure.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/058.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "[shot:closeup person]ok. text me when you're inside.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/059.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "text": "yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/060.mp3"
     },
     {
       "t": "bg",
@@ -307,7 +348,8 @@
     },
     {
       "t": "narrate",
-      "text": "He goes inside."
+      "text": "He goes inside.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/064.mp3"
     },
     {
       "t": "bg",
@@ -317,37 +359,43 @@
       "t": "say",
       "char": "Jesse",
       "text": "inside.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/066.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "good.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/067.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "jesse.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/068.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "text": "yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/069.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "[shot:closeup person]i want to tell you something. i'm not telling you to lecture you. i'm telling you because you should know.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/070.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "text": "ok.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/071.mp3"
     },
     {
       "t": "say",
@@ -377,29 +425,34 @@
       "t": "say",
       "char": "Maya",
       "text": "i am not saying you found something. i am saying you might have found something. i want you to be careful with it.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/076.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "text": "ok.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/077.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "do you want me to tell f.t.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/078.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup jesse]He thinks for a beat."
+      "text": "[shot:closeup jesse]He thinks for a beat.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/079.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "text": "not yet. i want to watch it for one more week. just watching. no getting closer. the foxhole is across the parking lot and we have a gig there saturday. i'm going to be in the parking lot anyway.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/080.mp3"
     },
     {
       "t": "say",
@@ -417,35 +470,41 @@
       "t": "say",
       "char": "Jesse",
       "text": "okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/083.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/084.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "[shot:closeup person]jesse.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/085.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "text": "yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/086.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "how was practice.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/087.mp3"
     },
     {
       "t": "narrate",
-      "text": "He laughs, in the kitchen, alone."
+      "text": "He laughs, in the kitchen, alone.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/088.mp3"
     },
     {
       "t": "say",
@@ -463,89 +522,107 @@
       "t": "say",
       "char": "Maya",
       "text": "jesse.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/091.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "text": "[shot:closeup person_b]yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/092.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "i love this for you. for em. for the band.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/093.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "text": "yeah. me too.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/094.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "write the bridge.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/095.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "text": "i will.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/096.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "[shot:closeup person]goodnight.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/097.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "text": "night, maya.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/098.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He puts the phone down on the counter. He pours a glass of water. He stands at the kitchen sink for a long minute."
+      "text": "[shot:establish]He puts the phone down on the counter. He pours a glass of water. He stands at the kitchen sink for a long minute.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/099.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thinks: the unit at the back of the strip mall is the apparatus doing something. Maya thinks so. I think so. We have, between us, decided to watch it for a week."
+      "text": "He thinks: the unit at the back of the strip mall is the apparatus doing something. Maya thinks so. I think so. We have, between us, decided to watch it for a week.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/100.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thinks: Em wants me to write the bridge about the people."
+      "text": "He thinks: Em wants me to write the bridge about the people.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/101.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thinks: the people are \u2014 the people are Em, and Carl, and Nate, and Sam, and Maya, and Ben, and Diego, and my mom, and my dad, and Linda Caldwell, and Walt who is making sandwiches at his kitchen counter on Wednesday nights, and the kid on the skateboard who told me to bring my own water."
+      "text": "He thinks: the people are \u2014 the people are Em, and Carl, and Nate, and Sam, and Maya, and Ben, and Diego, and my mom, and my dad, and Linda Caldwell, and Walt who is making sandwiches at his kitchen counter on Wednesday nights, and the kid on the skateboard who told me to bring my own water.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/102.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thinks: the bridge is going to be hard."
+      "text": "He thinks: the bridge is going to be hard.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/103.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thinks: I can write it."
+      "text": "He thinks: I can write it.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/104.mp3"
     },
     {
       "t": "narrate",
-      "text": "He goes upstairs. His parents' bedroom door is closed. The light under the door is off. His father snores in the cadence his father has snored in for as long as Jesse has known what snoring is."
+      "text": "He goes upstairs. His parents' bedroom door is closed. The light under the door is off. His father snores in the cadence his father has snored in for as long as Jesse has known what snoring is.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/105.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert door]Jesse goes to his own room. He closes the door. He sits on the edge of the bed."
+      "text": "[shot:insert door]Jesse goes to his own room. He closes the door. He sits on the edge of the bed.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/106.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert guitar]He picks up his Telecaster \u2014 the one in his bedroom, the unplugged one, the smaller of his two \u2014 and he holds it in his lap, and he thinks about the bridge."
+      "text": "[shot:insert guitar]He picks up his Telecaster \u2014 the one in his bedroom, the unplugged one, the smaller of his two \u2014 and he holds it in his lap, and he thinks about the bridge.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/107.mp3"
     },
     {
       "t": "narrate",
-      "text": "He plays one chord. Then another. Then a third. The chord progression, by the third chord, is \u2014 by his own internal sense, which is, this week, becoming a thing he can trust \u2014 the right progression. He plays it through three times."
+      "text": "He plays one chord. Then another. Then a third. The chord progression, by the third chord, is \u2014 by his own internal sense, which is, this week, becoming a thing he can trust \u2014 the right progression. He plays it through three times.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/108.mp3"
     },
     {
       "t": "narrate",
@@ -561,19 +638,23 @@
     },
     {
       "t": "narrate",
-      "text": "He looks at what he has written. He underlines the last line."
+      "text": "He looks at what he has written. He underlines the last line.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/112.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thinks: that's the bridge. He thinks: I'll have it set to music by Friday."
+      "text": "He thinks: that's the bridge. He thinks: I'll have it set to music by Friday.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/113.mp3"
     },
     {
       "t": "narrate",
-      "text": "He puts the notebook back in the desk drawer. He gets undressed. He gets in bed. He sets the alarm for nine, because tomorrow morning is the diner \u2014 he has his Pit Stop shift, eleven to seven \u2014 and he wants the morning to write."
+      "text": "He puts the notebook back in the desk drawer. He gets undressed. He gets in bed. He sets the alarm for nine, because tomorrow morning is the diner \u2014 he has his Pit Stop shift, eleven to seven \u2014 and he wants the morning to write.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/114.mp3"
     },
     {
       "t": "narrate",
-      "text": "He turns off the lamp."
+      "text": "He turns off the lamp.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/115.mp3"
     },
     {
       "t": "hide",
@@ -581,15 +662,18 @@
     },
     {
       "t": "narrate",
-      "text": "The room is dark. Through the open window, the cicadas are loud. The neighbor's dog, three houses down, barks once at something Jesse cannot see. Then is quiet."
+      "text": "The room is dark. Through the open window, the cicadas are loud. The neighbor's dog, three houses down, barks once at something Jesse cannot see. Then is quiet.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/117.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thinks, in the dark: the door was open two inches."
+      "text": "He thinks, in the dark: the door was open two inches.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/118.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thinks: the man was in a polo shirt."
+      "text": "He thinks: the man was in a polo shirt.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/119.mp3"
     },
     {
       "t": "narrate",
@@ -613,15 +697,18 @@
     },
     {
       "t": "narrate",
-      "text": "He thinks, Em knew."
+      "text": "He thinks, Em knew.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/125.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thinks, the bridge is about the parking lot."
+      "text": "He thinks, the bridge is about the parking lot.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/126.mp3"
     },
     {
       "t": "narrate",
-      "text": "He sleeps."
+      "text": "He sleeps.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/127.mp3"
     },
     {
       "t": "bg",
@@ -635,7 +722,8 @@
     },
     {
       "t": "narrate",
-      "text": "In a different bedroom in a different cul-de-sac, Maya \u2014 at her grandmother's, in her own bed, with her phone on the nightstand and the porch light off and her grandmother already asleep two doors down \u2014 opens her ThinkPad on her lap."
+      "text": "In a different bedroom in a different cul-de-sac, Maya \u2014 at her grandmother's, in her own bed, with her phone on the nightstand and the porch light off and her grandmother already asleep two doors down \u2014 opens her ThinkPad on her lap.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/130.mp3"
     },
     {
       "t": "say",
@@ -657,11 +745,13 @@
     },
     {
       "t": "narrate",
-      "text": "She sends it. She closes the laptop. She gets in bed."
+      "text": "She sends it. She closes the laptop. She gets in bed.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/134.mp3"
     },
     {
       "t": "narrate",
-      "text": "The reply, when it comes, comes at four-forty-one AM, while she is asleep. She will read it in the morning."
+      "text": "The reply, when it comes, comes at four-forty-one AM, while she is asleep. She will read it in the morning.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/135.mp3"
     },
     {
       "t": "narrate",
@@ -673,7 +763,8 @@
     },
     {
       "t": "narrate",
-      "text": "But that is the morning."
+      "text": "But that is the morning.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/138.mp3"
     },
     {
       "t": "hide",
@@ -681,15 +772,18 @@
     },
     {
       "t": "narrate",
-      "text": "Tonight, on the porch with her grandmother already inside, the radio is \u2014 for the third night in a row \u2014 off."
+      "text": "Tonight, on the porch with her grandmother already inside, the radio is \u2014 for the third night in a row \u2014 off.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/140.mp3"
     },
     {
       "t": "narrate",
-      "text": "The cicadas, in the cedar across the cul-de-sac, are loud."
+      "text": "The cicadas, in the cedar across the cul-de-sac, are loud.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/141.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]The town, in the small ways towns in mid-August do this work, holds."
+      "text": "[shot:establish]The town, in the small ways towns in mid-August do this work, holds.",
+      "voice": "assets/audio/voice/vol6_ch14_live_oak/142.mp3"
     },
     {
       "t": "end"

@@ -31,51 +31,60 @@
       "t": "say",
       "char": "Jen",
       "expr": "neutral",
-      "text": "[mood:lunch]\"How's it been, Sammy?\""
+      "text": "[mood:lunch]\"How's it been, Sammy?\"",
+      "voice": "assets/audio/voice/vol6_ch1_shift_change/004.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "expr": "neutral",
-      "text": "\"Quiet. One beer sale. The stockroom light is buzzing again.\""
+      "text": "\"Quiet. One beer sale. The stockroom light is buzzing again.\"",
+      "voice": "assets/audio/voice/vol6_ch1_shift_change/005.mp3"
     },
     {
       "t": "say",
       "char": "Jen",
       "expr": "neutral",
-      "text": "\"Yeah, it's been buzzing since March. Corporate sent a guy last week. The guy said the light is fine.\""
+      "text": "\"Yeah, it's been buzzing since March. Corporate sent a guy last week. The guy said the light is fine.\"",
+      "voice": "assets/audio/voice/vol6_ch1_shift_change/006.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "expr": "neutral",
-      "text": "\"The light is not fine.\""
+      "text": "\"The light is not fine.\"",
+      "voice": "assets/audio/voice/vol6_ch1_shift_change/007.mp3"
     },
     {
       "t": "say",
       "char": "Jen",
       "expr": "neutral",
-      "text": "\"I know.\""
+      "text": "\"I know.\"",
+      "voice": "assets/audio/voice/vol6_ch1_shift_change/008.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert register]They have, over the past year, developed a quiet rhythm with the handoff — done in under two minutes, with the clean professionalism of two women who understand that the particular small dignity of retail work is never, under any circumstances, letting the count get sloppy."
+      "text": "[shot:insert register]They have, over the past year, developed a quiet rhythm with the handoff — done in under two minutes, with the clean professionalism of two women who understand that the particular small dignity of retail work is never, under any circumstances, letting the count get sloppy.",
+      "voice": "assets/audio/voice/vol6_ch1_shift_change/009.mp3"
     },
     {
       "t": "say",
       "char": "Jen",
       "expr": "neutral",
-      "text": "[mood:macro_haze][shot:closeup customer]\"Sammy. Diego come by today?\""
+      "text": "[mood:macro_haze][shot:closeup customer]\"Sammy. Diego come by today?\"",
+      "voice": "assets/audio/voice/vol6_ch1_shift_change/010.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam pauses. Jen is asking with a small careful flatness that Sam has never, in two years of working with Jen, quite heard before."
+      "text": "Sam pauses. Jen is asking with a small careful flatness that Sam has never, in two years of working with Jen, quite heard before.",
+      "voice": "assets/audio/voice/vol6_ch1_shift_change/011.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "expr": "neutral",
-      "text": "\"No. He didn't.\""
+      "text": "\"No. He didn't.\"",
+      "voice": "assets/audio/voice/vol6_ch1_shift_change/012.mp3"
     },
     {
       "t": "say",
@@ -93,7 +102,8 @@
       "t": "say",
       "char": "Jen",
       "expr": "neutral",
-      "text": "[shot:closeup customer]\"Sammy. Call his grandma. Tonight. Before you talk to anyone else. Including your dad.\""
+      "text": "[shot:closeup customer]\"Sammy. Call his grandma. Tonight. Before you talk to anyone else. Including your dad.\"",
+      "voice": "assets/audio/voice/vol6_ch1_shift_change/015.mp3"
     },
     {
       "t": "choice",
@@ -116,13 +126,15 @@
       "t": "say",
       "char": "Jen",
       "expr": "neutral",
-      "text": "\"Because she was alone when she came by, Sammy, and she'd been crying, and she hadn't called the police.\""
+      "text": "\"Because she was alone when she came by, Sammy, and she'd been crying, and she hadn't called the police.\"",
+      "voice": "assets/audio/voice/vol6_ch1_shift_change/017.mp3"
     },
     {
       "t": "say",
       "char": "Jen",
       "expr": "neutral",
-      "text": "[shot:establish]\"Clock out. Go home. Eat something. Call her.\""
+      "text": "[shot:establish]\"Clock out. Go home. Eat something. Call her.\"",
+      "voice": "assets/audio/voice/vol6_ch1_shift_change/018.mp3"
     },
     {
       "t": "jump",

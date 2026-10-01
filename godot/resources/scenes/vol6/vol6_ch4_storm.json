@@ -87,30 +87,36 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]The woman picks up her phone. She calls a number that is not in her contacts and that she does not need to dial, because her phone has had the number saved under a name her partner will never ask her about."
+      "text": "[shot:insert phone]The woman picks up her phone. She calls a number that is not in her contacts and that she does not need to dial, because her phone has had the number saved under a name her partner will never ask her about.",
+      "voice": "assets/audio/voice/vol6_ch4_storm/019.mp3"
     },
     {
       "t": "say",
       "char": "Claire",
-      "text": "It's early."
+      "text": "It's early.",
+      "voice": "assets/audio/voice/vol6_ch4_storm/020.mp3"
     },
     {
       "t": "narrate",
-      "text": "A pause."
+      "text": "A pause.",
+      "voice": "assets/audio/voice/vol6_ch4_storm/021.mp3"
     },
     {
       "t": "say",
       "char": "Claire",
-      "text": "Understood. We're in position."
+      "text": "Understood. We're in position.",
+      "voice": "assets/audio/voice/vol6_ch4_storm/022.mp3"
     },
     {
       "t": "narrate",
-      "text": "She hangs up. She looks at her partner."
+      "text": "She hangs up. She looks at her partner.",
+      "voice": "assets/audio/voice/vol6_ch4_storm/023.mp3"
     },
     {
       "t": "say",
       "char": "Claire",
-      "text": "[shot:closeup claire]They're moving him tonight."
+      "text": "[shot:closeup claire]They're moving him tonight.",
+      "voice": "assets/audio/voice/vol6_ch4_storm/024.mp3"
     },
     {
       "t": "show",
@@ -121,46 +127,55 @@
     {
       "t": "say",
       "char": "Claire's Partner",
-      "text": "Eight days got cut to two."
+      "text": "Eight days got cut to two.",
+      "voice": "assets/audio/voice/vol6_ch4_storm/026.mp3"
     },
     {
       "t": "say",
       "char": "Claire",
-      "text": "Yeah."
+      "text": "Yeah.",
+      "voice": "assets/audio/voice/vol6_ch4_storm/027.mp3"
     },
     {
       "t": "say",
       "char": "Claire's Partner",
-      "text": "Is Miller running it."
+      "text": "Is Miller running it.",
+      "voice": "assets/audio/voice/vol6_ch4_storm/028.mp3"
     },
     {
       "t": "say",
       "char": "Claire",
-      "text": "Miller is being told."
+      "text": "Miller is being told.",
+      "voice": "assets/audio/voice/vol6_ch4_storm/029.mp3"
     },
     {
       "t": "say",
       "char": "Claire's Partner",
-      "text": "[shot:closeup person]How's she holding up."
+      "text": "[shot:closeup person]How's she holding up.",
+      "voice": "assets/audio/voice/vol6_ch4_storm/030.mp3"
     },
     {
       "t": "say",
       "char": "Claire's Partner",
-      "text": "The girl?"
+      "text": "The girl?",
+      "voice": "assets/audio/voice/vol6_ch4_storm/031.mp3"
     },
     {
       "t": "say",
       "char": "Claire's Partner",
-      "text": "The girl."
+      "text": "The girl.",
+      "voice": "assets/audio/voice/vol6_ch4_storm/032.mp3"
     },
     {
       "t": "narrate",
-      "text": "The reporter — her name is Claire Moyer, she has been with the Chronicle for eleven years, and the work she is currently doing is not on any masthead she would ever be credited under — takes a long breath."
+      "text": "The reporter — her name is Claire Moyer, she has been with the Chronicle for eleven years, and the work she is currently doing is not on any masthead she would ever be credited under — takes a long breath.",
+      "voice": "assets/audio/voice/vol6_ch4_storm/033.mp3"
     },
     {
       "t": "say",
       "char": "Claire",
-      "text": "[shot:closeup claire~]Better than I'd be. She doesn't know it yet. But better than I'd be."
+      "text": "[shot:closeup claire~]Better than I'd be. She doesn't know it yet. But better than I'd be.",
+      "voice": "assets/audio/voice/vol6_ch4_storm/034.mp3"
     },
     {
       "t": "hide",

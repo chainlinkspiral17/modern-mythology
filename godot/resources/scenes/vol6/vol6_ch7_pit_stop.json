@@ -41,7 +41,8 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]Ben is at the booth when she arrives."
+   "text": "[shot:establish]Ben is at the booth when she arrives.",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/008.mp3"
   },
   {
    "t": "show",
@@ -61,7 +62,8 @@
    "t": "say",
    "char": "Ben",
    "text": "Mrs. Henderson. Thank you for coming.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/012.mp3"
   },
   {
    "t": "show",
@@ -73,23 +75,27 @@
    "t": "say",
    "char": "Eileen",
    "text": "Eileen, please.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/014.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "[shot:closeup person]Eileen.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/015.mp3"
   },
   {
    "t": "say",
    "char": "Eileen",
    "text": "Sit, Ben. You don't need to stand for me.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/016.mp3"
   },
   {
    "t": "narrate",
-   "text": "He sits."
+   "text": "He sits.",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/017.mp3"
   },
   {
    "t": "narrate",
@@ -131,39 +137,46 @@
   },
   {
    "t": "narrate",
-   "text": "Eileen looks at Ben."
+   "text": "Eileen looks at Ben.",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/027.mp3"
   },
   {
    "t": "say",
    "char": "Eileen",
    "text": "Okay. You said over text last night you needed to talk to me about Jim.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/028.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "Yes ma'am.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/029.mp3"
   },
   {
    "t": "say",
    "char": "Eileen",
    "text": "[shot:closeup person_b]Eileen.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/030.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "[shot:closeup person]Eileen. Yes.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/031.mp3"
   },
   {
    "t": "narrate",
-   "text": "She waits."
+   "text": "She waits.",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/032.mp3"
   },
   {
    "t": "narrate",
-   "text": "Ben takes a long breath."
+   "text": "Ben takes a long breath.",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/033.mp3"
   },
   {
    "t": "say",
@@ -179,55 +192,66 @@
   },
   {
    "t": "narrate",
-   "text": "Eileen's face does not move."
+   "text": "Eileen's face does not move.",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/036.mp3"
   },
   {
    "t": "say",
    "char": "Eileen",
    "text": "[shot:closeup person_b]Okay.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/037.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "On the back of the bill, in pencil, in handwriting I now know to be his — Jesse confirmed yesterday — there was a note.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/038.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert bill]He takes the bill out of his front pocket. It has been folded in thirds for three days. The fold is precise. He sets it on the table between them, fold up."
+   "text": "[shot:insert bill]He takes the bill out of his front pocket. It has been folded in thirds for three days. The fold is precise. He sets it on the table between them, fold up.",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/039.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "You don't have to read it now.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/040.mp3"
   },
   {
    "t": "narrate",
-   "text": "She unfolds it."
+   "text": "She unfolds it.",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/041.mp3"
   },
   {
    "t": "narrate",
-   "text": "She reads it."
+   "text": "She reads it.",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/042.mp3"
   },
   {
    "t": "narrate",
-   "text": "[panel:vol6_bill_note][mood:macro_haze][shot:insert bill~]The red light lies. I am sorry. I will come back when I can."
+   "text": "[panel:vol6_bill_note][mood:macro_haze][shot:insert bill~]The red light lies. I am sorry. I will come back when I can.",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/043.mp3"
   },
   {
    "t": "narrate",
-   "text": "Her face still does not move."
+   "text": "Her face still does not move.",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/044.mp3"
   },
   {
    "t": "narrate",
-   "text": "She reads the note three more times. Then she folds the bill back along the existing creases. She puts it in her purse. She puts the purse on the bench beside her."
+   "text": "She reads the note three more times. Then she folds the bill back along the existing creases. She puts it in her purse. She puts the purse on the bench beside her.",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/045.mp3"
   },
   {
    "t": "say",
    "char": "Eileen",
    "text": "[panel:off]Okay. Second.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/046.mp3"
   },
   {
    "t": "say",
@@ -243,11 +267,13 @@
   },
   {
    "t": "narrate",
-   "text": "She looks at him."
+   "text": "She looks at him.",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/049.mp3"
   },
   {
    "t": "narrate",
-   "text": "She does not, immediately, say anything."
+   "text": "She does not, immediately, say anything.",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/050.mp3"
   },
   {
    "t": "say",
@@ -265,7 +291,8 @@
    "t": "say",
    "char": "Eileen",
    "text": "And the third.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/053.mp3"
   },
   {
    "t": "say",
@@ -293,7 +320,8 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish_diner]Lydia arrives with the coffee. They both pause. Lydia pours. Lydia leaves."
+   "text": "[shot:establish_diner]Lydia arrives with the coffee. They both pause. Lydia pours. Lydia leaves.",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/058.mp3"
   },
   {
    "t": "hide",
@@ -301,53 +329,62 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup eileen]Eileen wraps her hands around her coffee cup."
+   "text": "[shot:closeup eileen]Eileen wraps her hands around her coffee cup.",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/060.mp3"
   },
   {
    "t": "say",
    "char": "Eileen",
    "text": "How long has this been going on.",
-   "expr": "thinking"
+   "expr": "thinking",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/061.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "With the photographs? Per Jesse — since at least the start of May. Maybe earlier.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/062.mp3"
   },
   {
    "t": "say",
    "char": "Eileen",
    "text": "How long has Jesse known.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/063.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "Since Sunday.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/064.mp3"
   },
   {
    "t": "say",
    "char": "Eileen",
    "text": "How long have you known.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/065.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "[shot:closeup person]Since Monday afternoon.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/066.mp3"
   },
   {
    "t": "narrate",
-   "text": "She nods."
+   "text": "She nods.",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/067.mp3"
   },
   {
    "t": "say",
    "char": "Eileen",
    "text": "And you waited until today to tell me because — ",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/068.mp3"
   },
   {
    "t": "say",
@@ -369,79 +406,93 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup eileen]Eileen closes her eyes for a long moment."
+   "text": "[shot:closeup eileen]Eileen closes her eyes for a long moment.",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/072.mp3"
   },
   {
    "t": "narrate",
-   "text": "She opens them."
+   "text": "She opens them.",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/073.mp3"
   },
   {
    "t": "say",
    "char": "Eileen",
    "text": "Sam Miller. The chief's daughter.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/074.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "Yes.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/075.mp3"
   },
   {
    "t": "say",
    "char": "Eileen",
    "text": "Maya Daigle. Linda Caldwell's granddaughter.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/076.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "[shot:closeup person]Yes.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/077.mp3"
   },
   {
    "t": "narrate",
-   "text": "She nods slowly."
+   "text": "She nods slowly.",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/078.mp3"
   },
   {
    "t": "say",
    "char": "Eileen",
    "text": "Okay. So you four kids.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/079.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "Yes ma'am.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/080.mp3"
   },
   {
    "t": "say",
    "char": "Eileen",
    "text": "Eileen.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/081.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "Eileen. Yes.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/082.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]She is quiet."
+   "text": "[shot:establish]She is quiet.",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/083.mp3"
   },
   {
    "t": "say",
    "char": "Eileen",
    "text": "Ben. I want to tell you something. I want you to hear it carefully and I want you to file it, because I think you and I are about to be on the same side of a thing for some time, and I want you to know what you're working with.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/084.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "Okay.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/085.mp3"
   },
   {
    "t": "say",
@@ -469,59 +520,70 @@
   },
   {
    "t": "narrate",
-   "text": "She pauses."
+   "text": "She pauses.",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/090.mp3"
   },
   {
    "t": "say",
    "char": "Eileen",
    "text": "I have not shown the list to anyone. I have not told my husband I keep it. I have, for fourteen months, been waiting for someone to come to me with a sentence that would let me believe my list. You have, this morning, given me the sentence.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/091.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup ben]Ben does not, for a moment, know what to say."
+   "text": "[shot:closeup ben]Ben does not, for a moment, know what to say.",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/092.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "Eileen. I'm sorry.",
-   "expr": "sad"
+   "expr": "sad",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/093.mp3"
   },
   {
    "t": "say",
    "char": "Eileen",
    "text": "Don't be sorry, Ben. Be glad. I have been alone with this. I am no longer alone with this. That is what your sentence has done. That is what your friend Jesse has done. That is what my husband, by writing what he wrote on that bill, has done.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/094.mp3"
   },
   {
    "t": "narrate",
-   "text": "She drinks her coffee."
+   "text": "She drinks her coffee.",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/095.mp3"
   },
   {
    "t": "say",
    "char": "Eileen",
    "text": "Now. Tell me what you and the kids think we should do.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/096.mp3"
   },
   {
    "t": "narrate",
-   "text": "Ben blinks."
+   "text": "Ben blinks.",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/097.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "Eileen. We're seventeen.",
-   "expr": "surprised"
+   "expr": "surprised",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/098.mp3"
   },
   {
    "t": "say",
    "char": "Eileen",
    "text": "You're the ones who have a plan, Ben. I'm the one who has fourteen months of evidence and no plan. You and I are going to figure out what we do. Tell me what your group thinks the next step is.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/099.mp3"
   },
   {
    "t": "narrate",
-   "text": "Ben thinks."
+   "text": "Ben thinks.",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/100.mp3"
   },
   {
    "t": "say",
@@ -545,7 +607,8 @@
    "t": "say",
    "char": "Eileen",
    "text": "Step two.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/104.mp3"
   },
   {
    "t": "say",
@@ -563,17 +626,20 @@
    "t": "say",
    "char": "Eileen",
    "text": "Step three.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/107.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "Step three is — I do not have step three yet. I think step three is whatever the answer to step two is. I think we get one and two right first.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/108.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish_diner]Eileen nods."
+   "text": "[shot:establish_diner]Eileen nods.",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/109.mp3"
   },
   {
    "t": "say",
@@ -589,47 +655,55 @@
   },
   {
    "t": "narrate",
-   "text": "Ben looks at her."
+   "text": "Ben looks at her.",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/112.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "Yes.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/113.mp3"
   },
   {
    "t": "say",
    "char": "Eileen",
    "text": "Thank you.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/114.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "Yes ma'am — Eileen.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/115.mp3"
   },
   {
    "t": "narrate",
-   "text": "[beat:lift][shot:closeup eileen]She smiles at him for the first time."
+   "text": "[beat:lift][shot:closeup eileen]She smiles at him for the first time.",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/116.mp3"
   },
   {
    "t": "say",
    "char": "Eileen",
    "text": "You're a good kid, Ben. Jesse's lucky.",
-   "expr": "happy"
+   "expr": "happy",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/117.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "We're all lucky in this group. I'm — I'm starting to figure that out.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/118.mp3"
   },
   {
    "t": "say",
    "char": "Eileen",
    "text": "Yeah. Me too.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/119.mp3"
   },
   {
    "t": "show",
@@ -639,7 +713,8 @@
   },
   {
    "t": "narrate",
-   "text": "Lydia brings the food."
+   "text": "Lydia brings the food.",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/121.mp3"
   },
   {
    "t": "hide",
@@ -647,7 +722,8 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]They eat."
+   "text": "[shot:establish]They eat.",
+   "voice": "assets/audio/voice/vol6_ch7_pit_stop/123.mp3"
   },
   {
    "t": "hide",

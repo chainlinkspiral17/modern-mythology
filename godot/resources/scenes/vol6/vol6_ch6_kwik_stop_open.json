@@ -29,7 +29,8 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:morning_bright][shot:establish]Sam clocks in. Jen is at the back counter doing the morning prep — the coffee carafes, the breakfast burrito warmer, the small stack of NEW AUBURN SENTINEL papers stacked beside the register."
+      "text": "[mood:morning_bright][shot:establish]Sam clocks in. Jen is at the back counter doing the morning prep — the coffee carafes, the breakfast burrito warmer, the small stack of NEW AUBURN SENTINEL papers stacked beside the register.",
+      "voice": "assets/audio/voice/vol6_ch6_kwik_stop_open/005.mp3"
     },
     {
       "t": "show",
@@ -45,59 +46,69 @@
     },
     {
       "t": "narrate",
-      "text": "Jen looks up."
+      "text": "Jen looks up.",
+      "voice": "assets/audio/voice/vol6_ch6_kwik_stop_open/008.mp3"
     },
     {
       "t": "say",
       "char": "Jen",
       "text": "Morning, Sammy.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_kwik_stop_open/009.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "[shot:closeup sam]Morning.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_kwik_stop_open/010.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup jen]Jen looks at her for a second longer than usual."
+      "text": "[shot:closeup jen]Jen looks at her for a second longer than usual.",
+      "voice": "assets/audio/voice/vol6_ch6_kwik_stop_open/011.mp3"
     },
     {
       "t": "narrate",
       "when_flag": "shift_change_answer",
       "is": "asked_why",
-      "text": "On Sunday, at the handoff, Sam had asked why, and Jen had given her the whole of it in one flat sentence — alone, crying, no police. Jen knows now that Sam is the kind who asks. It is, this morning, why she doesn't make Sam ask."
+      "text": "On Sunday, at the handoff, Sam had asked why, and Jen had given her the whole of it in one flat sentence — alone, crying, no police. Jen knows now that Sam is the kind who asks. It is, this morning, why she doesn't make Sam ask.",
+      "voice": "assets/audio/voice/vol6_ch6_kwik_stop_open/012.mp3"
     },
     {
       "t": "narrate",
       "when_flag": "shift_change_answer",
       "is": "waited",
-      "text": "On Sunday, at the handoff, Sam had not asked why. She had waited, and Jen had told her the rest anyway — alone, crying, no police. People who can wait out a sentence are rare behind a register. It is, this morning, why Jen trusts her with the quiet."
+      "text": "On Sunday, at the handoff, Sam had not asked why. She had waited, and Jen had told her the rest anyway — alone, crying, no police. People who can wait out a sentence are rare behind a register. It is, this morning, why Jen trusts her with the quiet.",
+      "voice": "assets/audio/voice/vol6_ch6_kwik_stop_open/013.mp3"
     },
     {
       "t": "say",
       "char": "Jen",
       "text": "You good today.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_kwik_stop_open/014.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "I'm good.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_kwik_stop_open/015.mp3"
     },
     {
       "t": "say",
       "char": "Jen",
       "text": "You let me know if you need a break, alright? I'm here all day.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_kwik_stop_open/016.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_kwik_stop_open/017.mp3"
     },
     {
       "t": "narrate",
@@ -113,16 +124,19 @@
     },
     {
       "t": "narrate",
-      "text": "Sam puts on her apron. She stocks the front cooler. She watches the parking lot. She watches the clock — the actual clock, the one on the wall by the office door, which is not nine minutes fast. The actual clock reads 06:58. The microwave clock reads 07:07."
+      "text": "Sam puts on her apron. She stocks the front cooler. She watches the parking lot. She watches the clock — the actual clock, the one on the wall by the office door, which is not nine minutes fast. The actual clock reads 06:58. The microwave clock reads 07:07.",
+      "voice": "assets/audio/voice/vol6_ch6_kwik_stop_open/021.mp3"
     },
     {
       "t": "think",
       "char": "Sam",
-      "text": "In sixty-two minutes my mother will text me."
+      "text": "In sixty-two minutes my mother will text me.",
+      "voice": "assets/audio/voice/vol6_ch6_kwik_stop_open/022.mp3"
     },
     {
       "t": "narrate",
-      "text": "She works."
+      "text": "She works.",
+      "voice": "assets/audio/voice/vol6_ch6_kwik_stop_open/023.mp3"
     },
     {
       "t": "hide",

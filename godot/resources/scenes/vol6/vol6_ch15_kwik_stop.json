@@ -35,7 +35,8 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:day_bright]Sam clocks in at eight oh-two."
+      "text": "[mood:day_bright]Sam clocks in at eight oh-two.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/006.mp3"
     },
     {
       "t": "narrate",
@@ -51,15 +52,18 @@
     },
     {
       "t": "narrate",
-      "text": "She ties on her apron."
+      "text": "She ties on her apron.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/010.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert coffee]She refills the coffee."
+      "text": "[shot:insert coffee]She refills the coffee.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/011.mp3"
     },
     {
       "t": "narrate",
-      "text": "She wipes the counter."
+      "text": "She wipes the counter.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/012.mp3"
     },
     {
       "t": "narrate",
@@ -75,7 +79,8 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]The morning starts the way Thursday mornings start."
+      "text": "[shot:establish]The morning starts the way Thursday mornings start.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/016.mp3"
     },
     {
       "t": "narrate",
@@ -95,49 +100,59 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert register]At nine oh-six her phone, on the counter beside the register, vibrates."
+      "text": "[shot:insert register]At nine oh-six her phone, on the counter beside the register, vibrates.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/021.mp3"
     },
     {
       "t": "narrate",
-      "text": "She picks it up."
+      "text": "She picks it up.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/022.mp3"
     },
     {
       "t": "narrate",
-      "text": "The text is from Diego."
+      "text": "The text is from Diego.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/023.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "morning. on my way home from shift. wanted to say hi.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/024.mp3"
     },
     {
       "t": "narrate",
-      "text": "She reads it."
+      "text": "She reads it.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/025.mp3"
     },
     {
       "t": "narrate",
-      "text": "She types back, with the small care she has been bringing to her replies since June:"
+      "text": "She types back, with the small care she has been bringing to her replies since June:",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/026.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "[shot:closeup sam]morning. drive safe. love you.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/027.mp3"
     },
     {
       "t": "narrate",
-      "text": "The reply comes in nine seconds."
+      "text": "The reply comes in nine seconds.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/028.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "love you. i'll text later.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/029.mp3"
     },
     {
       "t": "narrate",
-      "text": "She puts the phone down."
+      "text": "She puts the phone down.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/030.mp3"
     },
     {
       "t": "narrate",
@@ -153,19 +168,23 @@
     },
     {
       "t": "narrate",
-      "text": "She has, in the past two months, been getting better at the small permission."
+      "text": "She has, in the past two months, been getting better at the small permission.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/034.mp3"
     },
     {
       "t": "narrate",
-      "text": "The permission is its own weather."
+      "text": "The permission is its own weather.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/035.mp3"
     },
     {
       "t": "narrate",
-      "text": "She returns to the counter."
+      "text": "She returns to the counter.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/036.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]The red car pulls into the lot at nine forty-seven."
+      "text": "[shot:establish]The red car pulls into the lot at nine forty-seven.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/037.mp3"
     },
     {
       "t": "narrate",
@@ -197,27 +216,33 @@
     },
     {
       "t": "narrate",
-      "text": "The two of them, at the engine, do the thing two people do at an engine that has just failed."
+      "text": "The two of them, at the engine, do the thing two people do at an engine that has just failed.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/045.mp3"
     },
     {
       "t": "narrate",
-      "text": "The hood, after a few seconds, has a small steady plume of steam coming out of it."
+      "text": "The hood, after a few seconds, has a small steady plume of steam coming out of it.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/046.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam watches them for thirty seconds."
+      "text": "Sam watches them for thirty seconds.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/047.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thinks, with the small careful attention her body has, this summer, been doing on its own: that car is dead."
+      "text": "She thinks, with the small careful attention her body has, this summer, been doing on its own: that car is dead.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/048.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thinks: they are not from here."
+      "text": "She thinks: they are not from here.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/049.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thinks: they are about to come inside."
+      "text": "She thinks: they are about to come inside.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/050.mp3"
     },
     {
       "t": "show",
@@ -227,47 +252,55 @@
     },
     {
       "t": "narrate",
-      "text": "She turns to Jen, who has come up from the back office with the deposit bag."
+      "text": "She turns to Jen, who has come up from the back office with the deposit bag.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/052.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "[shot:closeup sam]Jen. Two people. Car broke down in the lot. They're going to come in.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/053.mp3"
     },
     {
       "t": "narrate",
-      "text": "Jen looks through the window."
+      "text": "Jen looks through the window.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/054.mp3"
     },
     {
       "t": "say",
       "char": "Jen",
       "text": "Yeah. Take it. I'm gonna run the deposit to the bank. Be back in twenty. You good?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/055.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/056.mp3"
     },
     {
       "t": "say",
       "char": "Jen",
       "text": "Don't let them sit in the cooler aisle.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/057.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Jen.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/058.mp3"
     },
     {
       "t": "say",
       "char": "Jen",
       "text": "[shot:closeup person]I know. I'm saying.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/059.mp3"
     },
     {
       "t": "hide",
@@ -275,11 +308,13 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Jen leaves."
+      "text": "[shot:establish]Jen leaves.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/061.mp3"
     },
     {
       "t": "narrate",
-      "text": "The bell chimes."
+      "text": "The bell chimes.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/062.mp3"
     },
     {
       "t": "show",
@@ -289,7 +324,8 @@
     },
     {
       "t": "narrate",
-      "text": "Mark — Sam will learn his name in fourteen minutes — comes in alone at nine fifty-one."
+      "text": "Mark — Sam will learn his name in fourteen minutes — comes in alone at nine fifty-one.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/064.mp3"
     },
     {
       "t": "narrate",
@@ -301,29 +337,34 @@
     },
     {
       "t": "narrate",
-      "text": "He comes to the counter."
+      "text": "He comes to the counter.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/067.mp3"
     },
     {
       "t": "narrate",
-      "text": "He does the thing men do when they have to ask a stranger for help and have decided to lead with the thing that does not, technically, ask for help."
+      "text": "He does the thing men do when they have to ask a stranger for help and have decided to lead with the thing that does not, technically, ask for help.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/068.mp3"
     },
     {
       "t": "say",
       "char": "Mark",
       "text": "Hey. Could I get a bottle of water.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/069.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "[shot:closeup sam]Sure. The cold ones are in the back cooler. Door on the left.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/070.mp3"
     },
     {
       "t": "say",
       "char": "Mark",
       "text": "Thanks.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/071.mp3"
     },
     {
       "t": "narrate",
@@ -339,75 +380,88 @@
     },
     {
       "t": "narrate",
-      "text": "He hands her the five."
+      "text": "He hands her the five.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/075.mp3"
     },
     {
       "t": "say",
       "char": "Mark",
       "text": "[shot:closeup customer]Hey. The car. The red one. Out front.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/076.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/077.mp3"
     },
     {
       "t": "say",
       "char": "Mark",
       "text": "It's done. The engine. We were trying to make it to — we were trying to get east. The car has been — it's been on its last legs for a while. It's — it's done.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/078.mp3"
     },
     {
       "t": "narrate",
-      "text": "She rings up the water. She gives him a dollar fifty-eight back in change. She watches his face while she does it."
+      "text": "She rings up the water. She gives him a dollar fifty-eight back in change. She watches his face while she does it.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/079.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "[shot:closeup sam]Where you trying to get to.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/080.mp3"
     },
     {
       "t": "say",
       "char": "Mark",
       "text": "Atlanta.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/081.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "How far were you?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/082.mp3"
     },
     {
       "t": "say",
       "char": "Mark",
       "text": "From Oakland.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/083.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Oh.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/084.mp3"
     },
     {
       "t": "narrate",
-      "text": "He laughs, very small."
+      "text": "He laughs, very small.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/085.mp3"
     },
     {
       "t": "say",
       "char": "Mark",
       "text": "[shot:closeup person_b]Yeah. About halfway.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/086.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "What kind of car is it.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/087.mp3"
     },
     {
       "t": "say",
@@ -423,53 +477,63 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_b]He takes the change."
+      "text": "[shot:establish_b]He takes the change.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/090.mp3"
     },
     {
       "t": "narrate",
-      "text": "He puts the change in his front pocket."
+      "text": "He puts the change in his front pocket.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/091.mp3"
     },
     {
       "t": "narrate",
-      "text": "He stands at the counter with the two bottles of water in his hand and does not, immediately, leave."
+      "text": "He stands at the counter with the two bottles of water in his hand and does not, immediately, leave.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/092.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam, behind the counter, does the small careful thing she has been training herself to do all summer when an adult is at the counter and is not, quite, asking for the thing he needs to ask for."
+      "text": "Sam, behind the counter, does the small careful thing she has been training herself to do all summer when an adult is at the counter and is not, quite, asking for the thing he needs to ask for.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/093.mp3"
     },
     {
       "t": "narrate",
-      "text": "She waits."
+      "text": "She waits.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/094.mp3"
     },
     {
       "t": "say",
       "char": "Mark",
       "text": "[shot:closeup person]Sorry. The — the car is dead. I think it's the head gasket but it doesn't really matter what it is. We're trying to figure out what to do. Is there — is there a tow yard around here you'd recommend.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/095.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "[shot:closeup sam]Yeah. There's a guy in New Auburn. Bobby's. They tow and they do European cars sometimes — not often, but they have a guy. He's the only one in the area I'd send a Peugeot to. They're not cheap.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/096.mp3"
     },
     {
       "t": "say",
       "char": "Mark",
       "text": "Yeah. Of course.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/097.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Can I — can I get you their number?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/098.mp3"
     },
     {
       "t": "say",
       "char": "Mark",
       "text": "Yeah, that would be — yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/099.mp3"
     },
     {
       "t": "narrate",
@@ -485,51 +549,60 @@
     },
     {
       "t": "narrate",
-      "text": "She hands him the Post-it."
+      "text": "She hands him the Post-it.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/103.mp3"
     },
     {
       "t": "say",
       "char": "Mark",
       "text": "Thanks.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/104.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "[shot:closeup sam]There's an outlet at the table by the window if you and your —",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/105.mp3"
     },
     {
       "t": "narrate",
-      "text": "She does not have the word for what the woman in the lot is to him."
+      "text": "She does not have the word for what the woman in the lot is to him.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/106.mp3"
     },
     {
       "t": "say",
       "char": "Mark",
       "text": "Lucy. My wife.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/107.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "If you and Lucy want to come in. The AC is on. The table's open. Bobby's is going to take an hour, hour and a half to get out here. You don't want to be at the car in this heat for that.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/108.mp3"
     },
     {
       "t": "narrate",
-      "text": "He looks at her for a moment."
+      "text": "He looks at her for a moment.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/109.mp3"
     },
     {
       "t": "say",
       "char": "Mark",
       "text": "[shot:closeup person_b]Thank you. We'll — we'll come in.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/110.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Yeah. Take your time.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/111.mp3"
     },
     {
       "t": "hide",
@@ -537,31 +610,38 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He goes."
+      "text": "[shot:establish]He goes.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/113.mp3"
     },
     {
       "t": "narrate",
-      "text": "The bell chimes."
+      "text": "The bell chimes.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/114.mp3"
     },
     {
       "t": "narrate",
-      "text": "She watches him cross the lot."
+      "text": "She watches him cross the lot.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/115.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thinks: eighty-six Peugeot."
+      "text": "She thinks: eighty-six Peugeot.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/116.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thinks: halfway."
+      "text": "She thinks: halfway.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/117.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert register]She thinks, with the small involuntary thing her interior does when she registers the shape of a person's situation: they are not going to make Atlanta on the budget they have."
+      "text": "[shot:insert register]She thinks, with the small involuntary thing her interior does when she registers the shape of a person's situation: they are not going to make Atlanta on the budget they have.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/118.mp3"
     },
     {
       "t": "narrate",
-      "text": "She rings up a customer who has come in for cigarettes."
+      "text": "She rings up a customer who has come in for cigarettes.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/119.mp3"
     },
     {
       "t": "show",
@@ -571,7 +651,8 @@
     },
     {
       "t": "narrate",
-      "text": "Lucy comes in at ten oh-six."
+      "text": "Lucy comes in at ten oh-six.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/121.mp3"
     },
     {
       "t": "narrate",
@@ -587,15 +668,18 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert window]Lucy goes to the table by the window."
+      "text": "[shot:insert window]Lucy goes to the table by the window.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/125.mp3"
     },
     {
       "t": "narrate",
-      "text": "Lucy sits."
+      "text": "Lucy sits.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/126.mp3"
     },
     {
       "t": "narrate",
-      "text": "Lucy does not, immediately, look at Sam."
+      "text": "Lucy does not, immediately, look at Sam.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/127.mp3"
     },
     {
       "t": "show",
@@ -605,19 +689,23 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]Mark comes in a minute later. He sits across from Lucy. He sets the two water bottles on the table. He has, in his hand, his phone. He is, Sam can see from the counter, dialing Bobby's number from the Post-it."
+      "text": "[shot:insert phone]Mark comes in a minute later. He sits across from Lucy. He sets the two water bottles on the table. He has, in his hand, his phone. He is, Sam can see from the counter, dialing Bobby's number from the Post-it.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/129.mp3"
     },
     {
       "t": "narrate",
-      "text": "He puts the phone to his ear."
+      "text": "He puts the phone to his ear.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/130.mp3"
     },
     {
       "t": "narrate",
-      "text": "He talks for maybe a minute. The conversation has the cadence of a man getting a tow estimate from a tow yard. He nods. He says yeah, he says uh-huh, he says okay, that — okay. He hangs up."
+      "text": "He talks for maybe a minute. The conversation has the cadence of a man getting a tow estimate from a tow yard. He nods. He says yeah, he says uh-huh, he says okay, that — okay. He hangs up.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/131.mp3"
     },
     {
       "t": "narrate",
-      "text": "He looks at Lucy."
+      "text": "He looks at Lucy.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/132.mp3"
     },
     {
       "t": "say",
@@ -639,31 +727,36 @@
     },
     {
       "t": "narrate",
-      "text": "Lucy is very still for a moment."
+      "text": "Lucy is very still for a moment.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/136.mp3"
     },
     {
       "t": "say",
       "char": "Lucy",
       "text": "[shot:closeup person]Did you tell him to come.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/137.mp3"
     },
     {
       "t": "say",
       "char": "Mark",
       "text": "Not yet. I wanted — I wanted to talk to you first.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/138.mp3"
     },
     {
       "t": "say",
       "char": "Lucy",
       "text": "Mark.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/139.mp3"
     },
     {
       "t": "say",
       "char": "Mark",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/140.mp3"
     },
     {
       "t": "say",
@@ -679,33 +772,39 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_c]Mark is, by Sam's count from the counter, doing the math in his head that men do when their wife has just laid out the actual numbers and there is, in the actual numbers, no math that works."
+      "text": "[shot:establish_c]Mark is, by Sam's count from the counter, doing the math in his head that men do when their wife has just laid out the actual numbers and there is, in the actual numbers, no math that works.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/143.mp3"
     },
     {
       "t": "say",
       "char": "Mark",
       "text": "Yeah. I know.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/144.mp3"
     },
     {
       "t": "say",
       "char": "Lucy",
       "text": "We need — Mark. We need to think about this.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/145.mp3"
     },
     {
       "t": "say",
       "char": "Mark",
       "text": "Yeah.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/146.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert window]They sit, the two of them, at the table by the window."
+      "text": "[shot:insert window]They sit, the two of them, at the table by the window.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/147.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam, behind the counter, does not, in the moment, do anything."
+      "text": "Sam, behind the counter, does not, in the moment, do anything.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/148.mp3"
     },
     {
       "t": "narrate",
@@ -721,23 +820,28 @@
     },
     {
       "t": "narrate",
-      "text": "Lucy, at the table, eventually looks at Sam."
+      "text": "Lucy, at the table, eventually looks at Sam.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/152.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam does not, immediately, look back."
+      "text": "Sam does not, immediately, look back.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/153.mp3"
     },
     {
       "t": "narrate",
-      "text": "Lucy looks at Sam for maybe four seconds — Sam can feel it in the periphery, the weight of being looked at by an adult woman who is, in the moment, deciding whether the counter girl is the kind of person it is okay to ask for a thing."
+      "text": "Lucy looks at Sam for maybe four seconds — Sam can feel it in the periphery, the weight of being looked at by an adult woman who is, in the moment, deciding whether the counter girl is the kind of person it is okay to ask for a thing.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/154.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Lucy looks away."
+      "text": "[shot:establish]Lucy looks away.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/155.mp3"
     },
     {
       "t": "narrate",
-      "text": "She does not, in the moment, ask."
+      "text": "She does not, in the moment, ask.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/156.mp3"
     },
     {
       "t": "show",
@@ -755,69 +859,81 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert register]Mark and Lucy, at the table, register Stan's comment."
+      "text": "[shot:insert register]Mark and Lucy, at the table, register Stan's comment.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/160.mp3"
     },
     {
       "t": "say",
       "char": "Lucy",
       "text": "Mark. We have to figure out what to do.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/161.mp3"
     },
     {
       "t": "say",
       "char": "Mark",
       "text": "I know.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/162.mp3"
     },
     {
       "t": "say",
       "char": "Lucy",
       "text": "The car is — Mark. The car is gone. We can't fix it. We don't have it. We need to figure out — we need to figure out how to get to Atlanta without the car.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/163.mp3"
     },
     {
       "t": "say",
       "char": "Mark",
       "text": "Yeah.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/164.mp3"
     },
     {
       "t": "say",
       "char": "Lucy",
       "text": "And we need to figure out what to do with the car.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/165.mp3"
     },
     {
       "t": "say",
       "char": "Mark",
       "text": "[shot:closeup person_b]I know.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/166.mp3"
     },
     {
       "t": "say",
       "char": "Lucy",
       "text": "And we need to figure out where to sleep tonight.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/167.mp3"
     },
     {
       "t": "say",
       "char": "Mark",
       "text": "I know.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/168.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_b]A long silence at the table."
+      "text": "[shot:establish_b]A long silence at the table.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/169.mp3"
     },
     {
       "t": "say",
       "char": "Lucy",
       "text": "[shot:closeup customer]I told you in El Paso the car was not going to make it.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/170.mp3"
     },
     {
       "t": "narrate",
-      "text": "Mark, at the table, does not respond."
+      "text": "Mark, at the table, does not respond.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/171.mp3"
     },
     {
       "t": "say",
@@ -841,29 +957,35 @@
       "t": "say",
       "char": "Mark",
       "text": "[shot:closeup person]Lucy. You told me in El Paso. I heard you. I made the wrong call. I'm — I'm sorry.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/175.mp3"
     },
     {
       "t": "narrate",
-      "text": "Lucy, at the table, does not, immediately, respond."
+      "text": "Lucy, at the table, does not, immediately, respond.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/176.mp3"
     },
     {
       "t": "narrate",
-      "text": "She drinks her water."
+      "text": "She drinks her water.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/177.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_c]She fans herself with the brochure."
+      "text": "[shot:establish_c]She fans herself with the brochure.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/178.mp3"
     },
     {
       "t": "say",
       "char": "Lucy",
       "text": "Okay. What do we do now.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/179.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam, at the counter, has been, for the duration of the exchange, doing a small arithmetic of her own."
+      "text": "Sam, at the counter, has been, for the duration of the exchange, doing a small arithmetic of her own.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/180.mp3"
     },
     {
       "t": "narrate",
@@ -895,7 +1017,8 @@
     },
     {
       "t": "narrate",
-      "text": "The cash in the wallet is, today, what she has."
+      "text": "The cash in the wallet is, today, what she has.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/188.mp3"
     },
     {
       "t": "narrate",
@@ -907,59 +1030,72 @@
     },
     {
       "t": "narrate",
-      "text": "One twenty is not, by any reasonable read of Mark and Lucy's situation, going to fix anything. One twenty does not pay the tow. One twenty does not pay the diagnostic. One twenty does not begin to pay the fix."
+      "text": "One twenty is not, by any reasonable read of Mark and Lucy's situation, going to fix anything. One twenty does not pay the tow. One twenty does not pay the diagnostic. One twenty does not begin to pay the fix.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/191.mp3"
     },
     {
       "t": "narrate",
-      "text": "But one twenty might pay for a motel room tonight, and a couple of meals, and the small oxygen that would let Mark and Lucy get to a Friday morning where they could call somebody from a place that was not the side of a Kwik Stop in mid-August at one PM in the heat."
+      "text": "But one twenty might pay for a motel room tonight, and a couple of meals, and the small oxygen that would let Mark and Lucy get to a Friday morning where they could call somebody from a place that was not the side of a Kwik Stop in mid-August at one PM in the heat.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/192.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]She finishes wiping the counter."
+      "text": "[shot:establish]She finishes wiping the counter.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/193.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thinks: if I offer it, Lucy is going to refuse."
+      "text": "She thinks: if I offer it, Lucy is going to refuse.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/194.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thinks: if I offer it the right way, Lucy is going to almost-refuse, and Mark is going to take it, and Lucy is going to let him."
+      "text": "She thinks: if I offer it the right way, Lucy is going to almost-refuse, and Mark is going to take it, and Lucy is going to let him.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/195.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thinks: I have to figure out the right way in the next ten seconds."
+      "text": "She thinks: I have to figure out the right way in the next ten seconds.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/196.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]She walks around the counter."
+      "text": "[shot:establish]She walks around the counter.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/197.mp3"
     },
     {
       "t": "narrate",
-      "text": "She crosses the floor to the table by the window."
+      "text": "She crosses the floor to the table by the window.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/198.mp3"
     },
     {
       "t": "narrate",
-      "text": "She does not, on the walk, fully know what she is going to say."
+      "text": "She does not, on the walk, fully know what she is going to say.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/199.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "[shot:closeup sam]Hey.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/200.mp3"
     },
     {
       "t": "narrate",
-      "text": "Mark and Lucy both look up."
+      "text": "Mark and Lucy both look up.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/201.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "I — I overheard. I'm sorry. The store is small.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/202.mp3"
     },
     {
       "t": "narrate",
-      "text": "Lucy's eyes do the thing eyes do when a stranger has just acknowledged having heard a private conversation."
+      "text": "Lucy's eyes do the thing eyes do when a stranger has just acknowledged having heard a private conversation.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/203.mp3"
     },
     {
       "t": "say",
@@ -981,55 +1117,66 @@
     },
     {
       "t": "narrate",
-      "text": "She does not, on the speech, reach for her wallet."
+      "text": "She does not, on the speech, reach for her wallet.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/207.mp3"
     },
     {
       "t": "narrate",
-      "text": "She wants to give them the option of refusing without any physical pressure."
+      "text": "She wants to give them the option of refusing without any physical pressure.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/208.mp3"
     },
     {
       "t": "narrate",
-      "text": "Mark looks at Lucy."
+      "text": "Mark looks at Lucy.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/209.mp3"
     },
     {
       "t": "narrate",
-      "text": "Lucy looks at Mark."
+      "text": "Lucy looks at Mark.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/210.mp3"
     },
     {
       "t": "say",
       "char": "Lucy",
       "text": "We don't — we don't need — ",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/211.mp3"
     },
     {
       "t": "say",
       "char": "Mark",
       "text": "Luce.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/212.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Lucy looks at him."
+      "text": "[shot:establish]Lucy looks at him.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/213.mp3"
     },
     {
       "t": "say",
       "char": "Mark",
       "text": "Luce. Take it.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/214.mp3"
     },
     {
       "t": "narrate",
-      "text": "Lucy is silent for a long beat."
+      "text": "Lucy is silent for a long beat.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/215.mp3"
     },
     {
       "t": "say",
       "char": "Lucy",
       "text": "Why.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/216.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam, at the table, thinks for a second."
+      "text": "Sam, at the table, thinks for a second.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/217.mp3"
     },
     {
       "t": "say",
@@ -1057,7 +1204,8 @@
     },
     {
       "t": "narrate",
-      "text": "Lucy looks at her for a long moment."
+      "text": "Lucy looks at her for a long moment.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/222.mp3"
     },
     {
       "t": "narrate",
@@ -1079,13 +1227,15 @@
       "t": "say",
       "char": "Lucy",
       "text": "Okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/227.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/228.mp3"
     },
     {
       "t": "narrate",
@@ -1115,41 +1265,49 @@
     },
     {
       "t": "narrate",
-      "text": "Lucy, at the table, has not picked up the money."
+      "text": "Lucy, at the table, has not picked up the money.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/234.mp3"
     },
     {
       "t": "narrate",
-      "text": "Mark, after a beat, picks it up."
+      "text": "Mark, after a beat, picks it up.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/235.mp3"
     },
     {
       "t": "say",
       "char": "Mark",
       "text": "Thank you. I — [fade start=4 length=14]I don't know how to —[/fade]",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/236.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "You don't have to. Drink your water.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/237.mp3"
     },
     {
       "t": "say",
       "char": "Mark",
       "text": "[shot:closeup person]Okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/238.mp3"
     },
     {
       "t": "narrate",
-      "text": "She returns to the counter."
+      "text": "She returns to the counter.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/239.mp3"
     },
     {
       "t": "narrate",
-      "text": "She does not look at them again for several minutes."
+      "text": "She does not look at them again for several minutes.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/240.mp3"
     },
     {
       "t": "narrate",
-      "text": "The bell chimes at ten thirty-eight."
+      "text": "The bell chimes at ten thirty-eight.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/241.mp3"
     },
     {
       "t": "narrate",
@@ -1161,27 +1319,32 @@
     },
     {
       "t": "narrate",
-      "text": "Mark and Lucy, at the table, drink their water and talk in the small quiet way Sam can hear without being able to make out the words."
+      "text": "Mark and Lucy, at the table, drink their water and talk in the small quiet way Sam can hear without being able to make out the words.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/244.mp3"
     },
     {
       "t": "narrate",
-      "text": "At ten fifty-three Mark gets up. He goes to the counter."
+      "text": "At ten fifty-three Mark gets up. He goes to the counter.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/245.mp3"
     },
     {
       "t": "say",
       "char": "Mark",
       "text": "Hey. Sam.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/246.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "[shot:closeup sam]Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/247.mp3"
     },
     {
       "t": "narrate",
-      "text": "He looks at her name tag."
+      "text": "He looks at her name tag.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/248.mp3"
     },
     {
       "t": "say",
@@ -1205,75 +1368,89 @@
       "t": "say",
       "char": "Sam",
       "text": "Okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/252.mp3"
     },
     {
       "t": "say",
       "char": "Mark",
       "text": "We're going to take a six AM bus tomorrow. Tonight we're going to walk to the Cypress. We — Lucy needs an hour to sit. Then we go.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/253.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/254.mp3"
     },
     {
       "t": "say",
       "char": "Mark",
       "text": "[shot:closeup person]Sam.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/255.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/256.mp3"
     },
     {
       "t": "narrate",
-      "text": "Mark looks at her for a long beat."
+      "text": "Mark looks at her for a long beat.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/257.mp3"
     },
     {
       "t": "say",
       "char": "Mark",
       "text": "I'm going to remember this.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/258.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Mark. I told Lucy not to.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/259.mp3"
     },
     {
       "t": "say",
       "char": "Mark",
       "text": "I know. I'm telling you anyway. I'm — I'm going to remember this. You — you handled this in a way I have not been handled by, in a long time. I want you to know.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/260.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam, behind the counter, does not, immediately, respond."
+      "text": "Sam, behind the counter, does not, immediately, respond.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/261.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "[shot:closeup sam]Okay. Thanks for saying.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/262.mp3"
     },
     {
       "t": "narrate",
-      "text": "He nods."
+      "text": "He nods.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/263.mp3"
     },
     {
       "t": "narrate",
-      "text": "He goes back to the table."
+      "text": "He goes back to the table.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/264.mp3"
     },
     {
       "t": "narrate",
-      "text": "At eleven oh-eight the tow truck pulls into the lot."
+      "text": "At eleven oh-eight the tow truck pulls into the lot.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/265.mp3"
     },
     {
       "t": "narrate",
@@ -1285,15 +1462,18 @@
     },
     {
       "t": "narrate",
-      "text": "By eleven twenty-eight the Peugeot is on the truck."
+      "text": "By eleven twenty-eight the Peugeot is on the truck.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/268.mp3"
     },
     {
       "t": "narrate",
-      "text": "The truck pulls out of the lot."
+      "text": "The truck pulls out of the lot.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/269.mp3"
     },
     {
       "t": "narrate",
-      "text": "Mark and Lucy stand in the lot for a minute and watch the Peugeot disappear up Gallatin."
+      "text": "Mark and Lucy stand in the lot for a minute and watch the Peugeot disappear up Gallatin.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/270.mp3"
     },
     {
       "t": "hide",
@@ -1313,15 +1493,18 @@
     },
     {
       "t": "narrate",
-      "text": "Sam, at the counter, watches them go."
+      "text": "Sam, at the counter, watches them go.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/275.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thinks, with the small careful interior her summer has been giving her: Lucy never said thank you."
+      "text": "She thinks, with the small careful interior her summer has been giving her: Lucy never said thank you.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/276.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thinks: Mark said it twice. Lucy did not."
+      "text": "She thinks: Mark said it twice. Lucy did not.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/277.mp3"
     },
     {
       "t": "narrate",
@@ -1333,15 +1516,18 @@
     },
     {
       "t": "narrate",
-      "text": "She thinks: that is going to be Lucy's to live with. That is not mine."
+      "text": "She thinks: that is going to be Lucy's to live with. That is not mine.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/280.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thinks: I am not, today, supposed to be carrying that."
+      "text": "She thinks: I am not, today, supposed to be carrying that.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/281.mp3"
     },
     {
       "t": "narrate",
-      "text": "She wipes the counter."
+      "text": "She wipes the counter.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/282.mp3"
     },
     {
       "t": "show",
@@ -1351,95 +1537,112 @@
     },
     {
       "t": "narrate",
-      "text": "Jen comes back from the bank at eleven forty-one."
+      "text": "Jen comes back from the bank at eleven forty-one.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/284.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert window]Jen looks at the table by the window. The two empty water bottles are on the table. The brochure-fan is on the table. Mark and Lucy are gone."
+      "text": "[shot:insert window]Jen looks at the table by the window. The two empty water bottles are on the table. The brochure-fan is on the table. Mark and Lucy are gone.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/285.mp3"
     },
     {
       "t": "say",
       "char": "Jen",
       "text": "Where'd they go.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/286.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Tow came. Truck took the car. They walked to the Cypress.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/287.mp3"
     },
     {
       "t": "narrate",
-      "text": "Jen looks at her."
+      "text": "Jen looks at her.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/288.mp3"
     },
     {
       "t": "say",
       "char": "Jen",
       "text": "Sammy.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/289.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "[shot:closeup sam]Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/290.mp3"
     },
     {
       "t": "say",
       "char": "Jen",
       "text": "Did you give them money.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/291.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam thinks about lying for a beat. She decides not to."
+      "text": "Sam thinks about lying for a beat. She decides not to.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/292.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/293.mp3"
     },
     {
       "t": "say",
       "char": "Jen",
       "text": "How much.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/294.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "One twenty.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/295.mp3"
     },
     {
       "t": "say",
       "char": "Jen",
       "text": "From your own wallet.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/296.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/297.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_b]Jen looks at her for a long beat."
+      "text": "[shot:establish_b]Jen looks at her for a long beat.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/298.mp3"
     },
     {
       "t": "say",
       "char": "Jen",
       "text": "Sammy.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/299.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/300.mp3"
     },
     {
       "t": "say",
@@ -1457,31 +1660,36 @@
       "t": "say",
       "char": "Sam",
       "text": "[shot:closeup sam]Okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/303.mp3"
     },
     {
       "t": "say",
       "char": "Jen",
       "text": "You good?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/304.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "I'm good.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/305.mp3"
     },
     {
       "t": "say",
       "char": "Jen",
       "text": "Lunch is in twenty. Take the second half-hour. I'll watch the front.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/306.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/307.mp3"
     },
     {
       "t": "hide",
@@ -1489,7 +1697,8 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_c]Jen goes to the back office."
+      "text": "[shot:establish_c]Jen goes to the back office.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/309.mp3"
     },
     {
       "t": "narrate",
@@ -1501,19 +1710,23 @@
     },
     {
       "t": "narrate",
-      "text": "Jen has, over two summers, also been training Sam."
+      "text": "Jen has, over two summers, also been training Sam.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/312.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam has, until this morning, not entirely registered that."
+      "text": "Sam has, until this morning, not entirely registered that.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/313.mp3"
     },
     {
       "t": "narrate",
-      "text": "She wipes the counter."
+      "text": "She wipes the counter.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/314.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert window]At eleven fifty-eight she takes her lunch at the table by the window."
+      "text": "[shot:insert window]At eleven fifty-eight she takes her lunch at the table by the window.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/315.mp3"
     },
     {
       "t": "narrate",
@@ -1525,43 +1738,53 @@
     },
     {
       "t": "narrate",
-      "text": "Sam picks up the brochure."
+      "text": "Sam picks up the brochure.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/318.mp3"
     },
     {
       "t": "narrate",
-      "text": "She looks at the front."
+      "text": "She looks at the front.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/319.mp3"
     },
     {
       "t": "narrate",
-      "text": "[mood:lunch][shot:closeup sam~]She unfolds it, slowly."
+      "text": "[mood:lunch][shot:closeup sam~]She unfolds it, slowly.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/320.mp3"
     },
     {
       "t": "narrate",
-      "text": "Inside, the brochure has the small information a national-park brochure has — hours, fees, recommended hikes. On the inside back panel, in pencil, in handwriting she does not recognize but which she presumes is Lucy's, there is a small list."
+      "text": "Inside, the brochure has the small information a national-park brochure has — hours, fees, recommended hikes. On the inside back panel, in pencil, in handwriting she does not recognize but which she presumes is Lucy's, there is a small list.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/321.mp3"
     },
     {
       "t": "narrate",
-      "text": "[beat:still]The list reads: gas for the day — $80 / food (sandwiches?) — $25 / coffee — $8 / motel maybe — $60–80 / mark's meds at walgreens — $40 / $$ remaining at end of day — ?"
+      "text": "[beat:still]The list reads: gas for the day — $80 / food (sandwiches?) — $25 / coffee — $8 / motel maybe — $60–80 / mark's meds at walgreens — $40 / $$ remaining at end of day — ?",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/322.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam reads the list twice."
+      "text": "Sam reads the list twice.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/323.mp3"
     },
     {
       "t": "narrate",
-      "text": "She refolds the brochure. She puts it back on the table where Lucy had left it."
+      "text": "She refolds the brochure. She puts it back on the table where Lucy had left it.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/324.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thinks: Mark's meds."
+      "text": "She thinks: Mark's meds.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/325.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]She thinks: Lucy was tracking the day's expenses by hand on the back of a national-park brochure, in a 1986 Peugeot, on the third day of a drive from Oakland to Atlanta."
+      "text": "[shot:establish]She thinks: Lucy was tracking the day's expenses by hand on the back of a national-park brochure, in a 1986 Peugeot, on the third day of a drive from Oakland to Atlanta.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/326.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thinks: they are going to get to Atlanta. The bus is going to take them. The friend's couch is going to be there. They are going to be okay. Probably."
+      "text": "She thinks: they are going to get to Atlanta. The bus is going to take them. The friend's couch is going to be there. They are going to be okay. Probably.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/327.mp3"
     },
     {
       "t": "narrate",
@@ -1585,23 +1808,28 @@
     },
     {
       "t": "narrate",
-      "text": "She finishes her sandwich."
+      "text": "She finishes her sandwich.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/333.mp3"
     },
     {
       "t": "narrate",
-      "text": "She clears the water bottles."
+      "text": "She clears the water bottles.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/334.mp3"
     },
     {
       "t": "narrate",
-      "text": "She leaves the brochure where it was."
+      "text": "She leaves the brochure where it was.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/335.mp3"
     },
     {
       "t": "narrate",
-      "text": "She goes back behind the counter."
+      "text": "She goes back behind the counter.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/336.mp3"
     },
     {
       "t": "narrate",
-      "text": "[mood:day_bright][shot:establish]The afternoon is the afternoon."
+      "text": "[mood:day_bright][shot:establish]The afternoon is the afternoon.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/337.mp3"
     },
     {
       "t": "narrate",
@@ -1613,91 +1841,109 @@
     },
     {
       "t": "narrate",
-      "text": "At three forty-six Sam's phone, on the counter, vibrates."
+      "text": "At three forty-six Sam's phone, on the counter, vibrates.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/340.mp3"
     },
     {
       "t": "narrate",
-      "text": "She picks it up."
+      "text": "She picks it up.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/341.mp3"
     },
     {
       "t": "narrate",
-      "text": "The text is from Diego."
+      "text": "The text is from Diego.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/342.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "hey. just woke up. how's your shift.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/343.mp3"
     },
     {
       "t": "narrate",
-      "text": "She types back:"
+      "text": "She types back:",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/344.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "[shot:closeup sam]ok. couple from oakland broke down in the lot. helped them out. was a thing.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/345.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "they ok?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/346.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "i think so. they're at the cypress tonight. bus tomorrow.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/347.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "you ok?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/348.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thinks for a beat."
+      "text": "She thinks for a beat.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/349.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "yeah. i think so. i'll tell you later.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/350.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "ok. love you.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/351.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "love you.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/352.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]She puts the phone down."
+      "text": "[shot:insert phone]She puts the phone down.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/353.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thinks: I will tell him later."
+      "text": "She thinks: I will tell him later.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/354.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thinks: later might be tomorrow. Later might be Sunday. Later might be in October at the kitchen table when he has, by then, figured out how to be in a room with me again. The specific later does not, today, matter."
+      "text": "She thinks: later might be tomorrow. Later might be Sunday. Later might be in October at the kitchen table when he has, by then, figured out how to be in a room with me again. The specific later does not, today, matter.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/355.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thinks: the saying-I-will-tell-him is the part that matters."
+      "text": "She thinks: the saying-I-will-tell-him is the part that matters.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/356.mp3"
     },
     {
       "t": "narrate",
-      "text": "She wipes the counter."
+      "text": "She wipes the counter.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/357.mp3"
     },
     {
       "t": "show",
@@ -1707,19 +1953,22 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_b]She clocks out at four oh-six."
+      "text": "[shot:establish_b]She clocks out at four oh-six.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/359.mp3"
     },
     {
       "t": "say",
       "char": "Jen",
       "text": "Drive safe, Sammy.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/360.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Yeah, Jen.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/361.mp3"
     },
     {
       "t": "hide",
@@ -1731,7 +1980,8 @@
     },
     {
       "t": "narrate",
-      "text": "She walks out the back to the Corolla."
+      "text": "She walks out the back to the Corolla.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/364.mp3"
     },
     {
       "t": "narrate",
@@ -1743,19 +1993,23 @@
     },
     {
       "t": "narrate",
-      "text": "She gets in the Corolla."
+      "text": "She gets in the Corolla.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/367.mp3"
     },
     {
       "t": "narrate",
-      "text": "She starts it."
+      "text": "She starts it.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/368.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_b]She turns the AC on full."
+      "text": "[shot:establish_b]She turns the AC on full.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/369.mp3"
     },
     {
       "t": "narrate",
-      "text": "She sits for a minute waiting for the cabin to cool."
+      "text": "She sits for a minute waiting for the cabin to cool.",
+      "voice": "assets/audio/voice/vol6_ch15_kwik_stop/370.mp3"
     },
     {
       "t": "jump",

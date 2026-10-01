@@ -35,7 +35,8 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:fluorescent_corridor][shot:closeup linda]Linda Caldwell is sitting up."
+   "text": "[mood:fluorescent_corridor][shot:closeup linda]Linda Caldwell is sitting up.",
+   "voice": "assets/audio/voice/vol6_ch8_hospital_318/006.mp3"
   },
   {
    "t": "narrate",
@@ -59,75 +60,89 @@
   },
   {
    "t": "narrate",
-   "text": "When Maya comes through the door, with Anita and Gracie behind her, Linda's whole face changes."
+   "text": "When Maya comes through the door, with Anita and Gracie behind her, Linda's whole face changes.",
+   "voice": "assets/audio/voice/vol6_ch8_hospital_318/011.mp3"
   },
   {
    "t": "say",
    "char": "Linda Caldwell",
    "text": "[shot:closeup person]Sweetheart.",
-   "expr": "happy"
+   "expr": "happy",
+   "voice": "assets/audio/voice/vol6_ch8_hospital_318/012.mp3"
   },
   {
    "t": "narrate",
-   "text": "Maya goes to the bed."
+   "text": "Maya goes to the bed.",
+   "voice": "assets/audio/voice/vol6_ch8_hospital_318/013.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert hands]She does not, immediately, embrace her grandmother — Linda's hip will not, this week, tolerate embraces — but she takes Linda's free hand in both of hers and holds it, and she puts her forehead against the back of her grandmother's hand, and she stays that way for maybe twenty seconds."
+   "text": "[shot:insert hands]She does not, immediately, embrace her grandmother — Linda's hip will not, this week, tolerate embraces — but she takes Linda's free hand in both of hers and holds it, and she puts her forehead against the back of her grandmother's hand, and she stays that way for maybe twenty seconds.",
+   "voice": "assets/audio/voice/vol6_ch8_hospital_318/014.mp3"
   },
   {
    "t": "narrate",
-   "text": "Linda strokes Maya's hair with the IV hand, gently, ignoring the IV."
+   "text": "Linda strokes Maya's hair with the IV hand, gently, ignoring the IV.",
+   "voice": "assets/audio/voice/vol6_ch8_hospital_318/015.mp3"
   },
   {
    "t": "say",
    "char": "Linda Caldwell",
    "text": "I'm sorry I scared you, baby.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch8_hospital_318/016.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "Grandma.",
-   "expr": "sad"
+   "expr": "sad",
+   "voice": "assets/audio/voice/vol6_ch8_hospital_318/017.mp3"
   },
   {
    "t": "say",
    "char": "Linda Caldwell",
    "text": "I'm here. I'm here, sweetheart. Sit. Tell me about the people in this room.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch8_hospital_318/018.mp3"
   },
   {
    "t": "narrate",
-   "text": "Maya straightens. She gestures."
+   "text": "Maya straightens. She gestures.",
+   "voice": "assets/audio/voice/vol6_ch8_hospital_318/019.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "[shot:closeup person_b]This is Anita Kowalski. She's Ben's mother. They are taking care of me until you come home. This is Gracie. She is Ben's little sister. She has a dog named Daisy. She would like to tell you about Daisy.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch8_hospital_318/020.mp3"
   },
   {
    "t": "narrate",
-   "text": "Linda smiles."
+   "text": "Linda smiles.",
+   "voice": "assets/audio/voice/vol6_ch8_hospital_318/021.mp3"
   },
   {
    "t": "say",
    "char": "Linda Caldwell",
    "text": "Anita. Thank you. Bless you.",
-   "expr": "happy"
+   "expr": "happy",
+   "voice": "assets/audio/voice/vol6_ch8_hospital_318/022.mp3"
   },
   {
    "t": "say",
    "char": "Anita",
    "text": "Nothing to thank me for, ma'am. We're glad to have her.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch8_hospital_318/023.mp3"
   },
   {
    "t": "say",
    "char": "Linda Caldwell",
    "text": "Gracie. Tell me about Daisy.",
-   "expr": "happy"
+   "expr": "happy",
+   "voice": "assets/audio/voice/vol6_ch8_hospital_318/024.mp3"
   },
   {
    "t": "show",
@@ -137,7 +152,8 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup gracie]Gracie comes around to the side of the bed. Gracie sits on the visitor's chair, which is too large for her. She leans forward."
+   "text": "[shot:closeup gracie]Gracie comes around to the side of the bed. Gracie sits on the visitor's chair, which is too large for her. She leans forward.",
+   "voice": "assets/audio/voice/vol6_ch8_hospital_318/026.mp3"
   },
   {
    "t": "say",
@@ -153,29 +169,34 @@
   },
   {
    "t": "narrate",
-   "text": "Linda laughs."
+   "text": "Linda laughs.",
+   "voice": "assets/audio/voice/vol6_ch8_hospital_318/029.mp3"
   },
   {
    "t": "say",
    "char": "Linda Caldwell",
    "text": "Daisy has good instincts.",
-   "expr": "happy"
+   "expr": "happy",
+   "voice": "assets/audio/voice/vol6_ch8_hospital_318/030.mp3"
   },
   {
    "t": "say",
    "char": "Gracie",
    "text": "She has the best instincts.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch8_hospital_318/031.mp3"
   },
   {
    "t": "say",
    "char": "Anita",
    "text": "[shot:closeup person]Linda. We're going to step out for a few minutes. Let you and Maya have a moment. We'll be in the cafeteria. Maya, take your time.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch8_hospital_318/032.mp3"
   },
   {
    "t": "narrate",
-   "text": "She gestures Gracie. Gracie, reluctantly, follows."
+   "text": "She gestures Gracie. Gracie, reluctantly, follows.",
+   "voice": "assets/audio/voice/vol6_ch8_hospital_318/033.mp3"
   },
   {
    "t": "hide",
@@ -187,11 +208,13 @@
   },
   {
    "t": "narrate",
-   "text": "The door closes."
+   "text": "The door closes.",
+   "voice": "assets/audio/voice/vol6_ch8_hospital_318/036.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]Linda and Maya are alone."
+   "text": "[shot:establish]Linda and Maya are alone.",
+   "voice": "assets/audio/voice/vol6_ch8_hospital_318/037.mp3"
   },
   {
    "t": "show",
@@ -203,45 +226,53 @@
    "t": "say",
    "char": "Linda Caldwell",
    "text": "Maya. Sit.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch8_hospital_318/039.mp3"
   },
   {
    "t": "narrate",
-   "text": "Maya sits."
+   "text": "Maya sits.",
+   "voice": "assets/audio/voice/vol6_ch8_hospital_318/040.mp3"
   },
   {
    "t": "say",
    "char": "Linda Caldwell",
    "text": "I've been thinking, since I woke up. I want to tell you some things while I have the strength to. I'm going to be okay. The doctor said three weeks. But I want to use the morning.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch8_hospital_318/041.mp3"
   },
   {
    "t": "narrate",
-   "text": "Maya nods."
+   "text": "Maya nods.",
+   "voice": "assets/audio/voice/vol6_ch8_hospital_318/042.mp3"
   },
   {
    "t": "say",
    "char": "Linda Caldwell",
    "text": "[mood:arcana_cool][shot:closeup linda~]Your grandfather. Thomas. I told you he took a picture in Graustark in the seventies. I told you it cost him fifteen years. I want to tell you what the picture was.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch8_hospital_318/043.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "Grandma. You don't have to.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch8_hospital_318/044.mp3"
   },
   {
    "t": "say",
    "char": "Linda Caldwell",
    "text": "I want to. I have wanted to for forty-eight years. I have not, until now, had the right person to tell.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch8_hospital_318/045.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "Okay.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch8_hospital_318/046.mp3"
   },
   {
    "t": "say",

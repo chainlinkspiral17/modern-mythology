@@ -68,27 +68,32 @@
     {
       "t": "think",
       "char": "Chief Miller",
-      "text": "[shot:closeup chief_miller]Sammy is in there."
+      "text": "[shot:closeup chief_miller]Sammy is in there.",
+      "voice": "assets/audio/voice/vol6_ch5_miller_drive/014.mp3"
     },
     {
       "t": "think",
       "char": "Chief Miller",
-      "text": "Sammy is in there with her friends."
+      "text": "Sammy is in there with her friends.",
+      "voice": "assets/audio/voice/vol6_ch5_miller_drive/015.mp3"
     },
     {
       "t": "think",
       "char": "Chief Miller",
-      "text": "I have, somewhere in the past week, stopped being the kind of man my daughter can have a safe house around. I have been telling myself for nine years that I was."
+      "text": "I have, somewhere in the past week, stopped being the kind of man my daughter can have a safe house around. I have been telling myself for nine years that I was.",
+      "voice": "assets/audio/voice/vol6_ch5_miller_drive/016.mp3"
     },
     {
       "t": "think",
       "char": "Chief Miller",
-      "text": "The safe house is the garage. The safe house is other people's parents. The safe house is, specifically, not me."
+      "text": "The safe house is the garage. The safe house is other people's parents. The safe house is, specifically, not me.",
+      "voice": "assets/audio/voice/vol6_ch5_miller_drive/017.mp3"
     },
     {
       "t": "think",
       "char": "Chief Miller",
-      "text": "This is okay. This is how it works."
+      "text": "This is okay. This is how it works.",
+      "voice": "assets/audio/voice/vol6_ch5_miller_drive/018.mp3"
     },
     {
       "t": "narrate",
@@ -122,51 +127,61 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert photographs]He sits at the counter. He eats. He looks at the photographs."
+      "text": "[shot:insert photographs]He sits at the counter. He eats. He looks at the photographs.",
+      "voice": "assets/audio/voice/vol6_ch5_miller_drive/026.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "[mood:kitchen_practical][shot:closeup chief_miller]Hon. I'm going to be gone for a while, when this is over. I just want to be ready for that."
+      "text": "[mood:kitchen_practical][shot:closeup chief_miller]Hon. I'm going to be gone for a while, when this is over. I just want to be ready for that.",
+      "voice": "assets/audio/voice/vol6_ch5_miller_drive/027.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
-      "text": "I know, love."
+      "text": "I know, love.",
+      "voice": "assets/audio/voice/vol6_ch5_miller_drive/028.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "You okay with that."
+      "text": "You okay with that.",
+      "voice": "assets/audio/voice/vol6_ch5_miller_drive/029.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
-      "text": "No."
+      "text": "No.",
+      "voice": "assets/audio/voice/vol6_ch5_miller_drive/030.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "Okay."
+      "text": "Okay.",
+      "voice": "assets/audio/voice/vol6_ch5_miller_drive/031.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
-      "text": "[shot:closeup person]But I'm okay with you doing what you need to do. That's different."
+      "text": "[shot:closeup person]But I'm okay with you doing what you need to do. That's different.",
+      "voice": "assets/audio/voice/vol6_ch5_miller_drive/032.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "Yeah."
+      "text": "Yeah.",
+      "voice": "assets/audio/voice/vol6_ch5_miller_drive/033.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
-      "text": "Eat your pasta."
+      "text": "Eat your pasta.",
+      "voice": "assets/audio/voice/vol6_ch5_miller_drive/034.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He eats his pasta. From two houses down, over the faint thump of Jesse Henderson's garage band, the storm-damp evening in Harmony Creek Estates does its small settling."
+      "text": "[shot:establish]He eats his pasta. From two houses down, over the faint thump of Jesse Henderson's garage band, the storm-damp evening in Harmony Creek Estates does its small settling.",
+      "voice": "assets/audio/voice/vol6_ch5_miller_drive/035.mp3"
     },
     {
       "t": "hide",

@@ -29,11 +29,13 @@
   },
   {
    "t": "narrate",
-   "text": "[trip:1.2][mood:dusk]She drives home."
+   "text": "[trip:1.2][mood:dusk]She drives home.",
+   "voice": "assets/audio/voice/vol6_ch15_home/005.mp3"
   },
   {
    "t": "narrate",
-   "text": "She takes the back route — the small road through the older part of the subdivision that goes past the Cypress motel two miles east of where she should be turning. She does not, technically, intend to drive past the Cypress. She drives past the Cypress."
+   "text": "She takes the back route — the small road through the older part of the subdivision that goes past the Cypress motel two miles east of where she should be turning. She does not, technically, intend to drive past the Cypress. She drives past the Cypress.",
+   "voice": "assets/audio/voice/vol6_ch15_home/006.mp3"
   },
   {
    "t": "narrate",
@@ -45,19 +47,23 @@
   },
   {
    "t": "narrate",
-   "text": "She does not see them."
+   "text": "She does not see them.",
+   "voice": "assets/audio/voice/vol6_ch15_home/009.mp3"
   },
   {
    "t": "narrate",
-   "text": "They are, presumably, by four-fifteen, inside one of the rooms with the AC on."
+   "text": "They are, presumably, by four-fifteen, inside one of the rooms with the AC on.",
+   "voice": "assets/audio/voice/vol6_ch15_home/010.mp3"
   },
   {
    "t": "narrate",
-   "text": "She does not stop."
+   "text": "She does not stop.",
+   "voice": "assets/audio/voice/vol6_ch15_home/011.mp3"
   },
   {
    "t": "narrate",
-   "text": "She drives past the Cypress and continues home."
+   "text": "She drives past the Cypress and continues home.",
+   "voice": "assets/audio/voice/vol6_ch15_home/012.mp3"
   },
   {
    "t": "bg",
@@ -77,57 +83,69 @@
   },
   {
    "t": "narrate",
-   "text": "At the kitchen table at four forty-eight she eats a piece of cold chicken her mother had left in the fridge for her."
+   "text": "At the kitchen table at four forty-eight she eats a piece of cold chicken her mother had left in the fridge for her.",
+   "voice": "assets/audio/voice/vol6_ch15_home/016.mp3"
   },
   {
    "t": "narrate",
-   "text": "Bianca is at the back porch with the wicker chair and an iced tea. Bianca, who has been at the porch since three, looks up when Sam comes in."
+   "text": "Bianca is at the back porch with the wicker chair and an iced tea. Bianca, who has been at the porch since three, looks up when Sam comes in.",
+   "voice": "assets/audio/voice/vol6_ch15_home/017.mp3"
   },
   {
    "t": "say",
    "char": "Bianca",
    "text": "[shot:closeup person]How was work.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch15_home/018.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "text": "Fine. Slow afternoon.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch15_home/019.mp3"
   },
   {
    "t": "say",
    "char": "Bianca",
    "text": "Okay.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch15_home/020.mp3"
   },
   {
    "t": "narrate",
-   "text": "Sam eats the chicken."
+   "text": "Sam eats the chicken.",
+   "voice": "assets/audio/voice/vol6_ch15_home/021.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup sam]She does not, this evening, tell her mother about Mark and Lucy."
+   "text": "[shot:closeup sam]She does not, this evening, tell her mother about Mark and Lucy.",
+   "voice": "assets/audio/voice/vol6_ch15_home/022.mp3"
   },
   {
    "t": "narrate",
-   "text": "She does not, this evening, tell anyone."
+   "text": "She does not, this evening, tell anyone.",
+   "voice": "assets/audio/voice/vol6_ch15_home/023.mp3"
   },
   {
    "t": "narrate",
-   "text": "The small fact of having one twenty in her wallet that she had handed to two strangers and that is no longer hers is — for tonight, at the kitchen table at four forty-eight — the small private weight she is, for one evening, going to carry alone."
+   "text": "The small fact of having one twenty in her wallet that she had handed to two strangers and that is no longer hers is — for tonight, at the kitchen table at four forty-eight — the small private weight she is, for one evening, going to carry alone.",
+   "voice": "assets/audio/voice/vol6_ch15_home/024.mp3"
   },
   {
    "t": "narrate",
-   "text": "Tomorrow she will, at some point, tell Maya. Probably. She has not yet decided."
+   "text": "Tomorrow she will, at some point, tell Maya. Probably. She has not yet decided.",
+   "voice": "assets/audio/voice/vol6_ch15_home/025.mp3"
   },
   {
    "t": "narrate",
-   "text": "Tonight she eats the chicken."
+   "text": "Tonight she eats the chicken.",
+   "voice": "assets/audio/voice/vol6_ch15_home/026.mp3"
   },
   {
    "t": "narrate",
-   "text": "She washes the plate."
+   "text": "She washes the plate.",
+   "voice": "assets/audio/voice/vol6_ch15_home/027.mp3"
   },
   {
    "t": "hide",
@@ -149,59 +167,73 @@
   },
   {
    "t": "narrate",
-   "text": "She goes upstairs to her room."
+   "text": "She goes upstairs to her room.",
+   "voice": "assets/audio/voice/vol6_ch15_home/032.mp3"
   },
   {
    "t": "narrate",
-   "text": "She lies on her back on the bed."
+   "text": "She lies on her back on the bed.",
+   "voice": "assets/audio/voice/vol6_ch15_home/033.mp3"
   },
   {
    "t": "narrate",
-   "text": "She looks at the ceiling."
+   "text": "She looks at the ceiling.",
+   "voice": "assets/audio/voice/vol6_ch15_home/034.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup sam~]She thinks, in the small careful voice her interior has, this summer, become: Lucy never said thank you."
+   "text": "[shot:closeup sam~]She thinks, in the small careful voice her interior has, this summer, become: Lucy never said thank you.",
+   "voice": "assets/audio/voice/vol6_ch15_home/035.mp3"
   },
   {
    "t": "narrate",
-   "text": "She thinks: Mark said it twice."
+   "text": "She thinks: Mark said it twice.",
+   "voice": "assets/audio/voice/vol6_ch15_home/036.mp3"
   },
   {
    "t": "narrate",
-   "text": "She thinks: that is the way the day is. That is not, today, mine to fix."
+   "text": "She thinks: that is the way the day is. That is not, today, mine to fix.",
+   "voice": "assets/audio/voice/vol6_ch15_home/037.mp3"
   },
   {
    "t": "narrate",
-   "text": "She thinks: I have, in the past forty-eight days, become a person who can hand a stranger one twenty and not need to have the gratitude back. That is a thing I had not, in May, known I was going to be able to do."
+   "text": "She thinks: I have, in the past forty-eight days, become a person who can hand a stranger one twenty and not need to have the gratitude back. That is a thing I had not, in May, known I was going to be able to do.",
+   "voice": "assets/audio/voice/vol6_ch15_home/038.mp3"
   },
   {
    "t": "narrate",
-   "text": "She thinks: tomorrow I am going to be at the Kwik Stop again, eight to four. Friday is payday. The wallet refills. The world goes on."
+   "text": "She thinks: tomorrow I am going to be at the Kwik Stop again, eight to four. Friday is payday. The wallet refills. The world goes on.",
+   "voice": "assets/audio/voice/vol6_ch15_home/039.mp3"
   },
   {
    "t": "narrate",
-   "text": "She thinks: the small fact of one twenty, in cash, in a duffel bag walking east on the Linden access road in the August heat at eleven-thirty AM, is a fact that exists in the world tonight whether or not anyone but me and Mark and Lucy and Jen and the brochure remembers it."
+   "text": "She thinks: the small fact of one twenty, in cash, in a duffel bag walking east on the Linden access road in the August heat at eleven-thirty AM, is a fact that exists in the world tonight whether or not anyone but me and Mark and Lucy and Jen and the brochure remembers it.",
+   "voice": "assets/audio/voice/vol6_ch15_home/040.mp3"
   },
   {
    "t": "narrate",
-   "text": "[beat:still]She thinks: it exists. That is enough."
+   "text": "[beat:still]She thinks: it exists. That is enough.",
+   "voice": "assets/audio/voice/vol6_ch15_home/041.mp3"
   },
   {
    "t": "narrate",
-   "text": "She closes her eyes."
+   "text": "She closes her eyes.",
+   "voice": "assets/audio/voice/vol6_ch15_home/042.mp3"
   },
   {
    "t": "narrate",
-   "text": "The fan, in her bedroom, clicks on the third rotation. She has, over the summer, stopped counting. The clicks are, by August, just clicks."
+   "text": "The fan, in her bedroom, clicks on the third rotation. She has, over the summer, stopped counting. The clicks are, by August, just clicks.",
+   "voice": "assets/audio/voice/vol6_ch15_home/043.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]Outside, the Texas dusk is doing its slow gold thing."
+   "text": "[shot:establish]Outside, the Texas dusk is doing its slow gold thing.",
+   "voice": "assets/audio/voice/vol6_ch15_home/044.mp3"
   },
   {
    "t": "narrate",
-   "text": "Bianca, on the porch, is reading."
+   "text": "Bianca, on the porch, is reading.",
+   "voice": "assets/audio/voice/vol6_ch15_home/045.mp3"
   },
   {
    "t": "hide",
@@ -209,7 +241,8 @@
   },
   {
    "t": "narrate",
-   "text": "The Peugeot is, by Bobby's evening estimate, going to sit in his lot for at least three weeks before it becomes parts."
+   "text": "The Peugeot is, by Bobby's evening estimate, going to sit in his lot for at least three weeks before it becomes parts.",
+   "voice": "assets/audio/voice/vol6_ch15_home/047.mp3"
   },
   {
    "t": "narrate",
@@ -221,15 +254,18 @@
   },
   {
    "t": "narrate",
-   "text": "Mark, in Room 7, before he sleeps, thinks about his father."
+   "text": "Mark, in Room 7, before he sleeps, thinks about his father.",
+   "voice": "assets/audio/voice/vol6_ch15_home/050.mp3"
   },
   {
    "t": "narrate",
-   "text": "He does not tell Lucy."
+   "text": "He does not tell Lucy.",
+   "voice": "assets/audio/voice/vol6_ch15_home/051.mp3"
   },
   {
    "t": "narrate",
-   "text": "He sleeps when the street sounds outside blur to a nothing in his mind."
+   "text": "He sleeps when the street sounds outside blur to a nothing in his mind.",
+   "voice": "assets/audio/voice/vol6_ch15_home/052.mp3"
   },
   {
    "t": "end"

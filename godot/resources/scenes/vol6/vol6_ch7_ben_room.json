@@ -35,15 +35,18 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:day_bright]Maya, when Ben comes home, is in the back yard with Daisy."
+   "text": "[mood:day_bright]Maya, when Ben comes home, is in the back yard with Daisy.",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/006.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert daisy]Daisy is the family mutt. Daisy, as advertised, is a coward. Daisy has, in the forty-five minutes since Maya arrived, been hiding behind a lawn chair from a particularly aggressive butterfly."
+   "text": "[shot:insert daisy]Daisy is the family mutt. Daisy, as advertised, is a coward. Daisy has, in the forty-five minutes since Maya arrived, been hiding behind a lawn chair from a particularly aggressive butterfly.",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/007.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]Maya is on the lawn, lying on her back, in the grass that Ben's father cuts every other Saturday with the small specific attention of a man who has been doing the same lawn for twenty-two years and who has, over those years, achieved with it a stable peace."
+   "text": "[shot:establish]Maya is on the lawn, lying on her back, in the grass that Ben's father cuts every other Saturday with the small specific attention of a man who has been doing the same lawn for twenty-two years and who has, over those years, achieved with it a stable peace.",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/008.mp3"
   },
   {
    "t": "narrate",
@@ -57,7 +60,8 @@
    "t": "say",
    "char": "Maya",
    "text": "Ben. I've been here two hours. Your house is — your house is just a house.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/011.mp3"
   },
   {
    "t": "show",
@@ -67,169 +71,199 @@
   },
   {
    "t": "narrate",
-   "text": "Ben crosses to the lawn chair. Daisy, behind it, twitches."
+   "text": "Ben crosses to the lawn chair. Daisy, behind it, twitches.",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/013.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "[shot:closeup person]What did you expect.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/014.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "I don't know. I — when you said come over, I thought — I have been in adults' houses for so much of this week I forgot houses can just be houses.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/015.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "Your grandmother's house is a house.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/016.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "My grandmother's house is — Ben, my grandmother's house has Morse code in the living room.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/017.mp3"
   },
   {
    "t": "narrate",
-   "text": "Ben sits in the lawn chair. Daisy scoots out from behind the chair, looks up at Ben, decides Ben is safe, and settles at his feet."
+   "text": "Ben sits in the lawn chair. Daisy scoots out from behind the chair, looks up at Ben, decides Ben is safe, and settles at his feet.",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/018.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "Yeah. Fair.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/019.mp3"
   },
   {
    "t": "narrate",
-   "text": "Maya sits up. She watches Daisy."
+   "text": "Maya sits up. She watches Daisy.",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/020.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "[shot:closeup person_b]Gracie's good.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/021.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "She's a good kid.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/022.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "She likes you.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/023.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "She likes everybody. It is, statistically, the leading personality trait of eleven-year-olds.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/024.mp3"
   },
   {
    "t": "narrate",
-   "text": "Maya laughs. The laugh is small and easy."
+   "text": "Maya laughs. The laugh is small and easy.",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/025.mp3"
   },
   {
    "t": "narrate",
-   "text": "She lies back down. She watches the clouds."
+   "text": "She lies back down. She watches the clouds.",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/026.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "Ben.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/027.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "[shot:closeup person]Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/028.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "How is Eileen.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/029.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "Eileen is — Eileen is a person who has been alone with a thing for fourteen months and is, this morning, no longer alone with it. She is steady. She is going to be okay. She is going to be more than okay. She has a list.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/030.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "A list.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/031.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "A list. Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/032.mp3"
   },
   {
    "t": "narrate",
-   "text": "Maya thinks about this for a minute."
+   "text": "Maya thinks about this for a minute.",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/033.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "[shot:closeup maya]Ben. I want to tell you something. I told Sam yesterday in a text. I want to tell you in person.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/034.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "Okay.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/035.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "F.T. — Frasier Temple — wrote me yesterday afternoon. He said one of the adults in our group is going to have an issue this weekend. He said the Demons flagged an anomaly. He didn't know which adult. He told me to look at faces.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/036.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]Ben sits up."
+   "text": "[shot:establish]Ben sits up.",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/037.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "Mr. Henderson.",
-   "expr": "surprised"
+   "expr": "surprised",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/038.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "That was my first guess. But I think — Ben, I think Mr. Henderson is the issue that's been resolving. The note on the bill. The way you described Eileen this morning. That feels like a thing that's getting better, not worse.",
-   "expr": "thinking"
+   "expr": "thinking",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/039.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "You think it's a different adult.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/040.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "I do.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/041.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "[shot:closeup person]Who.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/042.mp3"
   },
   {
    "t": "say",
@@ -253,105 +287,125 @@
    "t": "say",
    "char": "Ben",
    "text": "Maya.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/046.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/047.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "What do you think happens next.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/048.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "I don't know. I'm watching her. I don't think it's something I can intervene on. I think — I think she is going to tell me when she needs to. I'm trying to be ready.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/049.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "Should I — should one of us be at your house.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/050.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "No. Not yet. If I need it I'll text. But I think she needs to get to the next thing on her own.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/051.mp3"
   },
   {
    "t": "narrate",
-   "text": "Ben nods."
+   "text": "Ben nods.",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/052.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "Okay. I'm — Maya, I'm going to be at the Hendersons' tonight. We're sitting with Mr. Henderson when he comes out of the darkroom. If you need me, text. I will leave.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/053.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "I won't need to.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/054.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "If you do.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/055.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "If I do, Ben, I will.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/056.mp3"
   },
   {
    "t": "narrate",
-   "text": "He nods."
+   "text": "He nods.",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/057.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]They sit."
+   "text": "[shot:establish]They sit.",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/058.mp3"
   },
   {
    "t": "narrate",
-   "text": "Daisy gets up. Daisy walks to Maya. Daisy lies down beside her."
+   "text": "Daisy gets up. Daisy walks to Maya. Daisy lies down beside her.",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/059.mp3"
   },
   {
    "t": "narrate",
-   "text": "Maya, looking up at the sky, puts her hand on Daisy's head."
+   "text": "Maya, looking up at the sky, puts her hand on Daisy's head.",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/060.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "I think I needed to come over today.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/061.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "I know.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/062.mp3"
   },
   {
    "t": "narrate",
-   "text": "Gracie, on the patio, watches them, and smiles, and does not say anything, and writes something in her sketchbook, which she will later, when she is much older and has begun her own kind of attention, recognize as the first thing she ever wrote that was not, in some way, for somebody else."
+   "text": "Gracie, on the patio, watches them, and smiles, and does not say anything, and writes something in her sketchbook, which she will later, when she is much older and has begun her own kind of attention, recognize as the first thing she ever wrote that was not, in some way, for somebody else.",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/063.mp3"
   },
   {
    "t": "narrate",
-   "text": "The back yard does its slow Saturday afternoon work."
+   "text": "The back yard does its slow Saturday afternoon work.",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/064.mp3"
   },
   {
    "t": "narrate",
-   "text": "[beat:still][shot:insert butterfly]The butterfly leaves."
+   "text": "[beat:still][shot:insert butterfly]The butterfly leaves.",
+   "voice": "assets/audio/voice/vol6_ch7_ben_room/065.mp3"
   },
   {
    "t": "hide",

@@ -97,7 +97,8 @@
       "t": "say",
       "c": "frog",
       "text": "[shot:closeup frog]Poke that hole much harder, pink one. And somethin' uglier than you gonna come lookin'.",
-      "char": "the_frog"
+      "char": "the_frog",
+      "voice": "assets/audio/voice/vol5_ch21_world/021.mp3"
     },
     {
       "t": "show",
@@ -109,23 +110,27 @@
       "t": "say",
       "c": "child",
       "text": "Ain't scared.",
-      "char": "natalie"
+      "char": "natalie",
+      "voice": "assets/audio/voice/vol5_ch21_world/023.mp3"
     },
     {
       "t": "say",
       "c": "frog",
       "text": "Course not. Ignorance is bliss, ain't it? Why d'you think folks build towns on sinkholes to begin with?",
-      "char": "the_frog"
+      "char": "the_frog",
+      "voice": "assets/audio/voice/vol5_ch21_world/024.mp3"
     },
     {
       "t": "narrate",
-      "text": "He lights the cigarette. Inhales deep."
+      "text": "He lights the cigarette. Inhales deep.",
+      "voice": "assets/audio/voice/vol5_ch21_world/025.mp3"
     },
     {
       "t": "say",
       "c": "frog",
       "text": "[shot:closeup person]World's done turnin' its page, seems like. Folks integratin'. Completing their arcs. Wholesome nonsense.",
-      "char": "the_frog"
+      "char": "the_frog",
+      "voice": "assets/audio/voice/vol5_ch21_world/026.mp3"
     },
     {
       "t": "narrate",
@@ -161,7 +166,8 @@
       "t": "say",
       "c": "dean",
       "text": "Ms. LeMoine. I received your letter. I have been waiting to receive it for some years. I want to say thank you. I also want to say: not today. I will be back when the child is ready. You have done your part. Please rest.",
-      "char": "joanna"
+      "char": "joanna",
+      "voice": "assets/audio/voice/vol5_ch21_world/034.mp3"
     },
     {
       "t": "narrate",
@@ -265,7 +271,8 @@
       "t": "say",
       "c": "frog",
       "text": "[shot:closeup person_b]See. Completion. Integration. Everyone findin' their slot in the grand design, connectin' the dots like they knew the picture all along. Makes ya wanna puke, don't it.",
-      "char": "frasier"
+      "char": "frasier",
+      "voice": "assets/audio/voice/vol5_ch21_world/059.mp3"
     },
     {
       "t": "narrate",
@@ -429,29 +436,34 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup child]The Child stands up. Brushes mud off patched trousers. Looks upstream, toward the hazy shape of the changed town."
+      "text": "[shot:closeup child]The Child stands up. Brushes mud off patched trousers. Looks upstream, toward the hazy shape of the changed town.",
+      "voice": "assets/audio/voice/vol5_ch21_world/100.mp3"
     },
     {
       "t": "say",
       "c": "child",
       "text": "Don't feel finished, Frog.",
-      "char": "joanna"
+      "char": "joanna",
+      "voice": "assets/audio/voice/vol5_ch21_world/101.mp3"
     },
     {
       "t": "say",
       "c": "frog",
       "text": "Never is, pink one. That's the cosmic punchline. It ain't an ending. It's just the universe takin' a deep breath — before the next chapter starts. Cycle starts anew. Lessons learned? Who knows. Maybe. Maybe you just get better at duckin'.",
-      "char": "frasier"
+      "char": "frasier",
+      "voice": "assets/audio/voice/vol5_ch21_world/102.mp3"
     },
     {
       "t": "narrate",
-      "text": "He tips the cork hat back on his green head."
+      "text": "He tips the cork hat back on his green head.",
+      "voice": "assets/audio/voice/vol5_ch21_world/103.mp3"
     },
     {
       "t": "say",
       "c": "frog",
       "text": "Ready for the next round?",
-      "char": "joanna"
+      "char": "joanna",
+      "voice": "assets/audio/voice/vol5_ch21_world/104.mp3"
     },
     {
       "t": "narrate",
@@ -529,33 +541,39 @@
       "t": "say",
       "c": "miriam",
       "text": "[shot:closeup person_b]What movie, dear?",
-      "char": "frasier"
+      "char": "frasier",
+      "voice": "assets/audio/voice/vol5_ch21_world/123.mp3"
     },
     {
       "t": "say",
       "c": "third",
       "text": "I don't know. I've never seen one. What do you recommend.",
-      "char": "joanna"
+      "char": "joanna",
+      "voice": "assets/audio/voice/vol5_ch21_world/124.mp3"
     },
     {
       "t": "narrate",
-      "text": "Miriam laughed. Then Miriam had, after a moment's thought, said:"
+      "text": "Miriam laughed. Then Miriam had, after a moment's thought, said:",
+      "voice": "assets/audio/voice/vol5_ch21_world/125.mp3"
     },
     {
       "t": "say",
       "c": "miriam",
       "text": "Princess Mononoke. Start there.",
-      "char": "frasier"
+      "char": "frasier",
+      "voice": "assets/audio/voice/vol5_ch21_world/126.mp3"
     },
     {
       "t": "say",
       "c": "third",
       "text": "Thank you. I have been hoping somebody would answer that question.",
-      "char": "joanna"
+      "char": "joanna",
+      "voice": "assets/audio/voice/vol5_ch21_world/127.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]In the back seat, Nicola and Aria, sharing the body, sharing the body's sleep, had smiled at the same moment. Which was, for the first time, simply one smile."
+      "text": "[shot:establish]In the back seat, Nicola and Aria, sharing the body, sharing the body's sleep, had smiled at the same moment. Which was, for the first time, simply one smile.",
+      "voice": "assets/audio/voice/vol5_ch21_world/128.mp3"
     },
     {
       "t": "narrate",
@@ -623,7 +641,8 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:day_bright][shot:establish]The Frog, by the river, on the paddlewheel, finished his cigarette. He stood up. He stretched. He put his webbed hands on his hips and surveyed the afternoon."
+      "text": "[mood:day_bright][shot:establish]The Frog, by the river, on the paddlewheel, finished his cigarette. He stood up. He stretched. He put his webbed hands on his hips and surveyed the afternoon.",
+      "voice": "assets/audio/voice/vol5_ch21_world/145.mp3"
     },
     {
       "t": "show",
@@ -645,13 +664,15 @@
     },
     {
       "t": "narrate",
-      "text": "He spat in the river. The spit made a small perfect ripple."
+      "text": "He spat in the river. The spit made a small perfect ripple.",
+      "voice": "assets/audio/voice/vol5_ch21_world/149.mp3"
     },
     {
       "t": "say",
       "c": "frog",
       "text": "[shot:closeup person]Then: Smolvud. The coast. Kai and the ferret. Lena and her octopus. Finn and his crow. My favorite little triumvirate. Real scrappy, that bunch.",
-      "char": "joanna"
+      "char": "joanna",
+      "voice": "assets/audio/voice/vol5_ch21_world/150.mp3"
     },
     {
       "t": "narrate",

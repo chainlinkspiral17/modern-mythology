@@ -43,7 +43,8 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert monitor]The motion was denied."
+      "text": "[shot:insert monitor]The motion was denied.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/008.mp3"
     },
     {
       "t": "narrate",
@@ -59,7 +60,8 @@
     },
     {
       "t": "narrate",
-      "text": "The motion. Six weeks. Reduced to a single dismissive digital verdict."
+      "text": "The motion. Six weeks. Reduced to a single dismissive digital verdict.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/012.mp3"
     },
     {
       "t": "narrate",
@@ -75,7 +77,8 @@
     },
     {
       "t": "narrate",
-      "text": "This was the gamble, wasn't it."
+      "text": "This was the gamble, wasn't it.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/016.mp3"
     },
     {
       "t": "narrate",
@@ -87,7 +90,8 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Lately the bulwark felt like it was built on shifting sand."
+      "text": "[shot:establish]Lately the bulwark felt like it was built on shifting sand.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/019.mp3"
     },
     {
       "t": "narrate",
@@ -99,11 +103,13 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]She stood up. She walked to the glass wall of her office and looked out at Houston."
+      "text": "[shot:establish]She stood up. She walked to the glass wall of her office and looked out at Houston.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/022.mp3"
     },
     {
       "t": "narrate",
-      "text": "Her office was a temple to control."
+      "text": "Her office was a temple to control.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/023.mp3"
     },
     {
       "t": "narrate",
@@ -119,7 +125,8 @@
     },
     {
       "t": "narrate",
-      "text": "Except the lines were blurring everywhere else."
+      "text": "Except the lines were blurring everywhere else.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/027.mp3"
     },
     {
       "t": "narrate",
@@ -135,11 +142,13 @@
     },
     {
       "t": "narrate",
-      "text": "She watched the bird for longer than she had meant to. The bird, eventually, peeled away."
+      "text": "She watched the bird for longer than she had meant to. The bird, eventually, peeled away.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/031.mp3"
     },
     {
       "t": "narrate",
-      "text": "Take Alberto D'Ambrosio."
+      "text": "Take Alberto D'Ambrosio.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/032.mp3"
     },
     {
       "t": "narrate",
@@ -167,23 +176,28 @@
     },
     {
       "t": "narrate",
-      "text": "She was now — she still wasn't quite sure what she was now. The category had drifted in the past nine months in a direction she had not authorized."
+      "text": "She was now — she still wasn't quite sure what she was now. The category had drifted in the past nine months in a direction she had not authorized.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/039.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_b]He was a calculated risk she hadn't fully assessed. A variable throwing off her carefully balanced equation. A ghost from a past life demanding present consideration."
+      "text": "[shot:establish_b]He was a calculated risk she hadn't fully assessed. A variable throwing off her carefully balanced equation. A ghost from a past life demanding present consideration.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/040.mp3"
     },
     {
       "t": "narrate",
-      "text": "He had called twice yesterday. He had called once already this morning. He would call again before five. The pattern was the message. The pattern said I require you to be available. The pattern said I am not, technically, asking."
+      "text": "He had called twice yesterday. He had called once already this morning. He would call again before five. The pattern was the message. The pattern said I require you to be available. The pattern said I am not, technically, asking.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/041.mp3"
     },
     {
       "t": "narrate",
-      "text": "She had not yet decided whether the pattern was being directed at her in her capacity as a friend, or in her capacity as a lawyer, or in her capacity as something else, and the not-having-decided was, itself, a piece of information she had not yet metabolized."
+      "text": "She had not yet decided whether the pattern was being directed at her in her capacity as a friend, or in her capacity as a lawyer, or in her capacity as something else, and the not-having-decided was, itself, a piece of information she had not yet metabolized.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/042.mp3"
     },
     {
       "t": "narrate",
-      "text": "Then there was the Artist Formerly Known As Her Boyfriend."
+      "text": "Then there was the Artist Formerly Known As Her Boyfriend.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/043.mp3"
     },
     {
       "t": "narrate",
@@ -199,27 +213,33 @@
     },
     {
       "t": "narrate",
-      "text": "He'd call at three AM. Talking about fractal consciousness. The hidden geometry of despair. The kind of three-AM call that, if she were a different woman, she would have stopped picking up by now."
+      "text": "He'd call at three AM. Talking about fractal consciousness. The hidden geometry of despair. The kind of three-AM call that, if she were a different woman, she would have stopped picking up by now.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/047.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]She still picked up. He knew she still picked up. The picking up was not, anymore, a courtesy. The picking up was a statement she was trying to figure out the meaning of in real time, every time the phone rang."
+      "text": "[shot:insert phone]She still picked up. He knew she still picked up. The picking up was not, anymore, a courtesy. The picking up was a statement she was trying to figure out the meaning of in real time, every time the phone rang.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/048.mp3"
     },
     {
       "t": "narrate",
-      "text": "He was exhilarating. He was exhausting. He was the antithesis of the ordered world she craved and, terrifyingly, the messy truth she felt increasingly drawn toward."
+      "text": "He was exhilarating. He was exhausting. He was the antithesis of the ordered world she craved and, terrifyingly, the messy truth she felt increasingly drawn toward.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/049.mp3"
     },
     {
       "t": "narrate",
-      "text": "Logic dictated she cut ties."
+      "text": "Logic dictated she cut ties.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/050.mp3"
     },
     {
       "t": "narrate",
-      "text": "Her gut, lately, was staging a hostile takeover. Her gut was filing motions her mind had not authorized. Her gut was, on present trends, going to win."
+      "text": "Her gut, lately, was staging a hostile takeover. Her gut was filing motions her mind had not authorized. Her gut was, on present trends, going to win.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/051.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert desk]She turned away from the window. Walked back to the desk. Sat down."
+      "text": "[shot:insert desk]She turned away from the window. Walked back to the desk. Sat down.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/052.mp3"
     },
     {
       "t": "narrate",
@@ -231,11 +251,13 @@
     },
     {
       "t": "narrate",
-      "text": "Control. That was the illusion she sold herself, sold her clients. She navigated the treacherous currents of contract law, anticipating breaches, mitigating damages, constructing arguments solid as reinforced concrete."
+      "text": "Control. That was the illusion she sold herself, sold her clients. She navigated the treacherous currents of contract law, anticipating breaches, mitigating damages, constructing arguments solid as reinforced concrete.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/055.mp3"
     },
     {
       "t": "narrate",
-      "text": "Like the closing arguments in Newsom v. PetroTex."
+      "text": "Like the closing arguments in Newsom v. PetroTex.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/056.mp3"
     },
     {
       "t": "narrate",
@@ -271,19 +293,23 @@
     },
     {
       "t": "narrate",
-      "text": "She had told herself this at the time. She still told herself it."
+      "text": "She had told herself this at the time. She still told herself it.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/065.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]It still rang, faintly, like a glass that has been struck and is waiting to crack."
+      "text": "[shot:establish]It still rang, faintly, like a glass that has been struck and is waiting to crack.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/066.mp3"
     },
     {
       "t": "narrate",
-      "text": "A victory built on logic. Evidence. Righteous certainty. Black and white."
+      "text": "A victory built on logic. Evidence. Righteous certainty. Black and white.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/067.mp3"
     },
     {
       "t": "narrate",
-      "text": "So why did everything feel so — gray."
+      "text": "So why did everything feel so — gray.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/068.mp3"
     },
     {
       "t": "narrate",
@@ -299,7 +325,8 @@
     },
     {
       "t": "narrate",
-      "text": "She could not, she now realized, shake the feeling that she was caught in a current. Pulled by forces far beyond Section 3, Subsection A of any contract she had ever drafted."
+      "text": "She could not, she now realized, shake the feeling that she was caught in a current. Pulled by forces far beyond Section 3, Subsection A of any contract she had ever drafted.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/072.mp3"
     },
     {
       "t": "narrate",
@@ -323,7 +350,8 @@
     },
     {
       "t": "narrate",
-      "text": "Justice served. Or just another move in a bigger more complex game, the consequences rippling outward in ways no document could ever fully contain."
+      "text": "Justice served. Or just another move in a bigger more complex game, the consequences rippling outward in ways no document could ever fully contain.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/078.mp3"
     },
     {
       "t": "narrate",
@@ -339,27 +367,33 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_b]Was that justice, exactly. Or was it the wheel."
+      "text": "[shot:establish_b]Was that justice, exactly. Or was it the wheel.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/082.mp3"
     },
     {
       "t": "narrate",
-      "text": "Erica did not, today, have the energy to argue with herself about the distinction."
+      "text": "Erica did not, today, have the energy to argue with herself about the distinction.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/083.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]The phone rang."
+      "text": "[shot:insert phone]The phone rang.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/084.mp3"
     },
     {
       "t": "narrate",
-      "text": "She looked at it. She knew before she looked. The caller ID glowed: ALBERTO D."
+      "text": "She looked at it. She knew before she looked. The caller ID glowed: ALBERTO D.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/085.mp3"
     },
     {
       "t": "narrate",
-      "text": "High stakes. Reputation gambling. Immediate peril."
+      "text": "High stakes. Reputation gambling. Immediate peril.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/086.mp3"
     },
     {
       "t": "narrate",
-      "text": "She took a breath. Smoothed her already immaculate suit jacket. The wheel was spinning. Time to place her bet."
+      "text": "She took a breath. Smoothed her already immaculate suit jacket. The wheel was spinning. Time to place her bet.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/087.mp3"
     },
     {
       "t": "narrate",
@@ -371,7 +405,8 @@
     },
     {
       "t": "narrate",
-      "text": "She picked up the phone."
+      "text": "She picked up the phone.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/090.mp3"
     },
     {
       "t": "show",
@@ -382,7 +417,8 @@
     {
       "t": "say",
       "char": "erica",
-      "text": "[shot:closeup erica]Alberto."
+      "text": "[shot:closeup erica]Alberto.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/092.mp3"
     },
     {
       "t": "show",
@@ -393,59 +429,71 @@
     {
       "t": "say",
       "char": "alberto",
-      "text": "Eri. I need a favor."
+      "text": "Eri. I need a favor.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/094.mp3"
     },
     {
       "t": "narrate",
-      "text": "His voice. Houston transposed onto Graustark, or vice versa, the same flat affect Dante had at the bourbon-and-bargaining hour, except Alberto did not drink bourbon and did not, in Erica's experience, bargain. Alberto issued. The issuing was the bargain."
+      "text": "His voice. Houston transposed onto Graustark, or vice versa, the same flat affect Dante had at the bourbon-and-bargaining hour, except Alberto did not drink bourbon and did not, in Erica's experience, bargain. Alberto issued. The issuing was the bargain.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/095.mp3"
     },
     {
       "t": "say",
       "char": "erica",
-      "text": "Tell me."
+      "text": "Tell me.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/096.mp3"
     },
     {
       "t": "say",
       "char": "alberto",
-      "text": "I need you to look at a contract for me."
+      "text": "I need you to look at a contract for me.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/097.mp3"
     },
     {
       "t": "say",
       "char": "erica",
-      "text": "Send it over."
+      "text": "Send it over.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/098.mp3"
     },
     {
       "t": "say",
       "char": "alberto",
-      "text": "It's not that kind of contract."
+      "text": "It's not that kind of contract.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/099.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert contract]She paused. The word contract, in Alberto D'Ambrosio's mouth, on a Friday afternoon, not that kind, meant something very specific, and she had a sudden cold clear sense of what it meant."
+      "text": "[shot:insert contract]She paused. The word contract, in Alberto D'Ambrosio's mouth, on a Friday afternoon, not that kind, meant something very specific, and she had a sudden cold clear sense of what it meant.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/100.mp3"
     },
     {
       "t": "say",
       "char": "erica",
-      "text": "Alberto."
+      "text": "Alberto.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/101.mp3"
     },
     {
       "t": "say",
       "char": "alberto",
-      "text": "Hear me out."
+      "text": "Hear me out.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/102.mp3"
     },
     {
       "t": "say",
       "char": "erica",
-      "text": "[beat:hit][shot:closeup erica]Alberto. If this is about your brother, the answer is no."
+      "text": "[beat:hit][shot:closeup erica]Alberto. If this is about your brother, the answer is no.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/103.mp3"
     },
     {
       "t": "narrate",
-      "text": "A long pause on the other end. The kind of pause that was not, for once, calculated. The kind of pause that was somebody adjusting, in real time, to the fact that they had been read."
+      "text": "A long pause on the other end. The kind of pause that was not, for once, calculated. The kind of pause that was somebody adjusting, in real time, to the fact that they had been read.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/104.mp3"
     },
     {
       "t": "say",
       "char": "alberto",
-      "text": "How did you know it was about Antonio."
+      "text": "How did you know it was about Antonio.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/105.mp3"
     },
     {
       "t": "say",
@@ -459,61 +507,73 @@
     },
     {
       "t": "narrate",
-      "text": "Another pause. Then a small dry laugh — the laugh that, in Alberto, was the closest thing to admiration he ever let surface."
+      "text": "Another pause. Then a small dry laugh — the laugh that, in Alberto, was the closest thing to admiration he ever let surface.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/108.mp3"
     },
     {
       "t": "say",
       "char": "alberto",
-      "text": "Eri. You should be running this firm."
+      "text": "Eri. You should be running this firm.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/109.mp3"
     },
     {
       "t": "say",
       "char": "erica",
-      "text": "I am, effectively."
+      "text": "I am, effectively.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/110.mp3"
     },
     {
       "t": "say",
       "char": "alberto",
-      "text": "Yeah. You are. Listen. Antonio's about to make a decision. I want to be in a position to help him after he makes it. Not before. Before, he wouldn't take help."
+      "text": "Yeah. You are. Listen. Antonio's about to make a decision. I want to be in a position to help him after he makes it. Not before. Before, he wouldn't take help.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/111.mp3"
     },
     {
       "t": "say",
       "char": "erica",
-      "text": "And you want me to —"
+      "text": "And you want me to —",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/112.mp3"
     },
     {
       "t": "say",
       "char": "alberto",
-      "text": "I want you to draft the help. So that when he calls — and he will, eventually — there's something on the table he can sign without us having to negotiate."
+      "text": "I want you to draft the help. So that when he calls — and he will, eventually — there's something on the table he can sign without us having to negotiate.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/113.mp3"
     },
     {
       "t": "say",
       "char": "erica",
-      "text": "Alberto. He has a lawyer."
+      "text": "Alberto. He has a lawyer.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/114.mp3"
     },
     {
       "t": "say",
       "char": "alberto",
-      "text": "Antonio's lawyer is Jimmy Daigle's accountant's brother-in-law. He's not a lawyer Antonio chose. He's a lawyer Jimmy assigned."
+      "text": "Antonio's lawyer is Jimmy Daigle's accountant's brother-in-law. He's not a lawyer Antonio chose. He's a lawyer Jimmy assigned.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/115.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Erica was quiet for a moment. The implications were, suddenly, stacked four deep, and she could see the bottom of the stack."
+      "text": "[shot:establish]Erica was quiet for a moment. The implications were, suddenly, stacked four deep, and she could see the bottom of the stack.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/116.mp3"
     },
     {
       "t": "say",
       "char": "erica",
-      "text": "How much trouble is he in."
+      "text": "How much trouble is he in.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/117.mp3"
     },
     {
       "t": "say",
       "char": "alberto",
-      "text": "Not yet enough."
+      "text": "Not yet enough.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/118.mp3"
     },
     {
       "t": "say",
       "char": "erica",
-      "text": "[shot:closeup erica]Alberto."
+      "text": "[shot:closeup erica]Alberto.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/119.mp3"
     },
     {
       "t": "say",
@@ -535,79 +595,96 @@
     {
       "t": "say",
       "char": "erica",
-      "text": "Send me what you have."
+      "text": "Send me what you have.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/124.mp3"
     },
     {
       "t": "say",
       "char": "alberto",
-      "text": "Tonight?"
+      "text": "Tonight?",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/125.mp3"
     },
     {
       "t": "say",
       "char": "erica",
-      "text": "Tonight."
+      "text": "Tonight.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/126.mp3"
     },
     {
       "t": "say",
       "char": "alberto",
-      "text": "Eri. Thank you."
+      "text": "Eri. Thank you.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/127.mp3"
     },
     {
       "t": "say",
       "char": "erica",
-      "text": "Don't thank me, Alberto. I haven't done anything yet."
+      "text": "Don't thank me, Alberto. I haven't done anything yet.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/128.mp3"
     },
     {
       "t": "say",
       "char": "alberto",
-      "text": "You will."
+      "text": "You will.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/129.mp3"
     },
     {
       "t": "say",
       "char": "erica",
-      "text": "Maybe."
+      "text": "Maybe.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/130.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_b]The line went quiet. Then, in the smaller voice he used when he was being, by his own austere standards, sincere:"
+      "text": "[shot:establish_b]The line went quiet. Then, in the smaller voice he used when he was being, by his own austere standards, sincere:",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/131.mp3"
     },
     {
       "t": "say",
       "char": "alberto",
-      "text": "I appreciate it, Eri. It matters."
+      "text": "I appreciate it, Eri. It matters.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/132.mp3"
     },
     {
       "t": "say",
       "char": "erica",
-      "text": "Goodbye, Alberto."
+      "text": "Goodbye, Alberto.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/133.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]She hung up."
+      "text": "[shot:establish]She hung up.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/134.mp3"
     },
     {
       "t": "narrate",
-      "text": "She sat at the teak desk for a long time."
+      "text": "She sat at the teak desk for a long time.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/135.mp3"
     },
     {
       "t": "narrate",
-      "text": "The Houston light shifted through the glass wall, going from afternoon-gold to the particular bruised amber that meant the bird she had watched earlier had long since landed, that the freeway twelve stories down was now full of people driving home to evenings she could not, from this angle, imagine."
+      "text": "The Houston light shifted through the glass wall, going from afternoon-gold to the particular bruised amber that meant the bird she had watched earlier had long since landed, that the freeway twelve stories down was now full of people driving home to evenings she could not, from this angle, imagine.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/136.mp3"
     },
     {
       "t": "narrate",
-      "text": "The motion, on her monitor, was still denied. She had not closed the email. The email continued to be denied, continuously, in the way emails do."
+      "text": "The motion, on her monitor, was still denied. She had not closed the email. The email continued to be denied, continuously, in the way emails do.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/137.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thought, the wheel is spinning."
+      "text": "She thought, the wheel is spinning.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/138.mp3"
     },
     {
       "t": "narrate",
-      "text": "[beat:still]She thought, I have been on the wheel for some time, and I have been telling myself I was the one spinning it."
+      "text": "[beat:still]She thought, I have been on the wheel for some time, and I have been telling myself I was the one spinning it.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/139.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thought, the painter is going to call at three AM and tonight I am going to listen."
+      "text": "She thought, the painter is going to call at three AM and tonight I am going to listen.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/140.mp3"
     },
     {
       "t": "narrate",
@@ -623,15 +700,18 @@
     },
     {
       "t": "narrate",
-      "text": "She thumbed his contact."
+      "text": "She thumbed his contact.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/144.mp3"
     },
     {
       "t": "narrate",
-      "text": "She did not press call."
+      "text": "She did not press call.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/145.mp3"
     },
     {
       "t": "narrate",
-      "text": "She set the phone down."
+      "text": "She set the phone down.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/146.mp3"
     },
     {
       "t": "narrate",
@@ -643,7 +723,8 @@
     },
     {
       "t": "narrate",
-      "text": "Erica watched the light for a long moment."
+      "text": "Erica watched the light for a long moment.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/149.mp3"
     },
     {
       "t": "narrate",
@@ -655,11 +736,13 @@
     },
     {
       "t": "narrate",
-      "text": "The wheel kept spinning."
+      "text": "The wheel kept spinning.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/152.mp3"
     },
     {
       "t": "narrate",
-      "text": "She, for once, allowed it to."
+      "text": "She, for once, allowed it to.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/153.mp3"
     },
     {
       "t": "narrate",
@@ -671,11 +754,13 @@
     },
     {
       "t": "narrate",
-      "text": "The house, this time, might not win."
+      "text": "The house, this time, might not win.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/156.mp3"
     },
     {
       "t": "narrate",
-      "text": "She was, she realized, already counting on it."
+      "text": "She was, she realized, already counting on it.",
+      "voice": "assets/audio/voice/vol5_ch10_wheel/157.mp3"
     },
     {
       "t": "end"

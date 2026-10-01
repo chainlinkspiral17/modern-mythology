@@ -79,7 +79,8 @@
     },
     {
       "t": "narrate",
-      "text": "§ From the log of Azrael, Angel of Transitions"
+      "text": "§ From the log of Azrael, Angel of Transitions",
+      "voice": "assets/audio/voice/vol5_ch20_judgement/017.mp3"
     },
     {
       "t": "narrate",
@@ -127,7 +128,8 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]§ From the fragmented feed of Frasier Temple's eldest Demon, node designation TX-LA-01"
+      "text": "[shot:establish]§ From the fragmented feed of Frasier Temple's eldest Demon, node designation TX-LA-01",
+      "voice": "assets/audio/voice/vol5_ch20_judgement/029.mp3"
     },
     {
       "t": "narrate",
@@ -203,7 +205,8 @@
       "t": "say",
       "c": "erica",
       "text": "Jordan.",
-      "char": "erica"
+      "char": "erica",
+      "voice": "assets/audio/voice/vol5_ch20_judgement/047.mp3"
     },
     {
       "t": "show",
@@ -215,25 +218,29 @@
       "t": "say",
       "c": "jordan",
       "text": "Eri. I'm here.",
-      "char": "jordan"
+      "char": "jordan",
+      "voice": "assets/audio/voice/vol5_ch20_judgement/049.mp3"
     },
     {
       "t": "say",
       "c": "erica",
       "text": "[shot:closeup person]I need to come over.",
-      "char": "erica"
+      "char": "erica",
+      "voice": "assets/audio/voice/vol5_ch20_judgement/050.mp3"
     },
     {
       "t": "say",
       "c": "jordan",
       "text": "Come over.",
-      "char": "jordan"
+      "char": "jordan",
+      "voice": "assets/audio/voice/vol5_ch20_judgement/051.mp3"
     },
     {
       "t": "say",
       "c": "erica",
       "text": "I'm coming.",
-      "char": "erica"
+      "char": "erica",
+      "voice": "assets/audio/voice/vol5_ch20_judgement/052.mp3"
     },
     {
       "t": "narrate",
@@ -333,7 +340,8 @@
       "t": "say",
       "c": "clerk",
       "text": "[shot:closeup person_b]Go, Joanna. Go now.",
-      "char": "aria"
+      "char": "aria",
+      "voice": "assets/audio/voice/vol5_ch20_judgement/076.mp3"
     },
     {
       "t": "narrate",
@@ -373,7 +381,8 @@
     },
     {
       "t": "narrate",
-      "text": "§ From a Chorus of Displaced Dreamers, observing the psychic static"
+      "text": "§ From a Chorus of Displaced Dreamers, observing the psychic static",
+      "voice": "assets/audio/voice/vol5_ch20_judgement/086.mp3"
     },
     {
       "t": "narrate",
@@ -449,7 +458,8 @@
       "t": "say",
       "c": "dante",
       "text": "I know you, you sonofabitch. I knew you in 1987. You haven't aged.",
-      "char": "john"
+      "char": "john",
+      "voice": "assets/audio/voice/vol5_ch20_judgement/104.mp3"
     },
     {
       "t": "narrate",
@@ -561,7 +571,8 @@
       "t": "say",
       "c": "maya",
       "text": "[shot:closeup person]Dad?",
-      "char": "antonio"
+      "char": "antonio",
+      "voice": "assets/audio/voice/vol5_ch20_judgement/131.mp3"
     },
     {
       "t": "say",
@@ -579,31 +590,36 @@
       "t": "say",
       "c": "maya",
       "text": "Dad. I'm sixteen. I'm not in kindergarten.",
-      "char": "antonio"
+      "char": "antonio",
+      "voice": "assets/audio/voice/vol5_ch20_judgement/134.mp3"
     },
     {
       "t": "say",
       "c": "jimmy",
       "text": "I know. I know. Do it anyway. Please.",
-      "char": "antonio"
+      "char": "antonio",
+      "voice": "assets/audio/voice/vol5_ch20_judgement/135.mp3"
     },
     {
       "t": "say",
       "c": "maya",
       "text": "Okay, Dad. I will.",
-      "char": "antonio"
+      "char": "antonio",
+      "voice": "assets/audio/voice/vol5_ch20_judgement/136.mp3"
     },
     {
       "t": "say",
       "c": "jimmy",
       "text": "I love you.",
-      "char": "antonio"
+      "char": "antonio",
+      "voice": "assets/audio/voice/vol5_ch20_judgement/137.mp3"
     },
     {
       "t": "say",
       "c": "maya",
       "text": "I know.",
-      "char": "antonio"
+      "char": "antonio",
+      "voice": "assets/audio/voice/vol5_ch20_judgement/138.mp3"
     },
     {
       "t": "narrate",
@@ -659,7 +675,8 @@
       "t": "say",
       "c": "natalie",
       "text": "Okay. I hear you. Tell me where.",
-      "char": "natalie"
+      "char": "natalie",
+      "voice": "assets/audio/voice/vol5_ch20_judgement/151.mp3"
     },
     {
       "t": "narrate",
@@ -775,7 +792,8 @@
       "t": "say",
       "c": "douglas",
       "text": "[shot:closeup person_b]I know. It's okay. I knew, eventually. I forgive you.",
-      "char": "jimmy"
+      "char": "jimmy",
+      "voice": "assets/audio/voice/vol5_ch20_judgement/179.mp3"
     },
     {
       "t": "narrate",
@@ -837,11 +855,13 @@
       "t": "say",
       "c": "philip",
       "text": "[shot:closeup person]I'll get them. You call Elicia. Tell her whatever we hear, she hears.",
-      "char": "natalie"
+      "char": "natalie",
+      "voice": "assets/audio/voice/vol5_ch20_judgement/194.mp3"
     },
     {
       "t": "narrate",
-      "text": "Mackenzie nodded. Picked up the phone.\n\nThe phone, before she dialed, rang.\n\nIt was not Elicia. It was a number with an area code Mackenzie did not recognize. A voice on the other end — male, calm, Louisiana-accented, older:"
+      "text": "Mackenzie nodded. Picked up the phone.\n\nThe phone, before she dialed, rang.\n\nIt was not Elicia. It was a number with an area code Mackenzie did not recognize. A voice on the other end — male, calm, Louisiana-accented, older:",
+      "voice": "assets/audio/voice/vol5_ch20_judgement/195.mp3"
     },
     {
       "t": "say",
@@ -857,7 +877,8 @@
     },
     {
       "t": "narrate",
-      "text": "Mackenzie, without asking questions, handed Philip the phone.\n\nThe wheels, in their quiet patient way, kept turning."
+      "text": "Mackenzie, without asking questions, handed Philip the phone.\n\nThe wheels, in their quiet patient way, kept turning.",
+      "voice": "assets/audio/voice/vol5_ch20_judgement/198.mp3"
     },
     {
       "t": "narrate",
@@ -887,31 +908,37 @@
       "t": "say",
       "c": "elicia",
       "text": "[shot:closeup person]Something is happening. I don't know what. I am going to keep the camera rolling. I am going to show you what this is, in real time, as I find out.",
-      "char": "natalie"
+      "char": "natalie",
+      "voice": "assets/audio/voice/vol5_ch20_judgement/205.mp3"
     },
     {
       "t": "narrate",
-      "text": "She did not turn the camera off.\n\nHer phone rang. It was Mackenzie Roberts. She picked up. She listened."
+      "text": "She did not turn the camera off.\n\nHer phone rang. It was Mackenzie Roberts. She picked up. She listened.",
+      "voice": "assets/audio/voice/vol5_ch20_judgement/206.mp3"
     },
     {
       "t": "say",
       "c": "elicia",
       "text": "Yes. Whatever you need. I'm in Montreal. I'm coming home.",
-      "char": "jimmy"
+      "char": "jimmy",
+      "voice": "assets/audio/voice/vol5_ch20_judgement/207.mp3"
     },
     {
       "t": "narrate",
-      "text": "She hung up. She looked at the camera."
+      "text": "She hung up. She looked at the camera.",
+      "voice": "assets/audio/voice/vol5_ch20_judgement/208.mp3"
     },
     {
       "t": "say",
       "c": "elicia",
       "text": "Apparently I'm going home. To a home I have not, until now, considered home. We'll see if it is. We'll see if I get there.",
-      "char": "natalie"
+      "char": "natalie",
+      "voice": "assets/audio/voice/vol5_ch20_judgement/209.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]She picked up her phone again. She opened the airline app. She began, with shaking hands, the small practical work of finding a flight."
+      "text": "[shot:establish]She picked up her phone again. She opened the airline app. She began, with shaking hands, the small practical work of finding a flight.",
+      "voice": "assets/audio/voice/vol5_ch20_judgement/210.mp3"
     },
     {
       "t": "narrate",
@@ -961,23 +988,27 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Nicola wept. Quietly. Her hand on her stomach.\n\nAria, through Nicola's eyes, said aloud, in her precise calm voice:"
+      "text": "[shot:establish]Nicola wept. Quietly. Her hand on her stomach.\n\nAria, through Nicola's eyes, said aloud, in her precise calm voice:",
+      "voice": "assets/audio/voice/vol5_ch20_judgement/221.mp3"
     },
     {
       "t": "say",
       "c": "aria",
       "text": "Miriam. She spoke.",
-      "char": "nicola"
+      "char": "nicola",
+      "voice": "assets/audio/voice/vol5_ch20_judgement/222.mp3"
     },
     {
       "t": "say",
       "c": "miriam",
       "text": "Yes, dear. She's been waiting. It's a big day for all of you.",
-      "char": "nicola"
+      "char": "nicola",
+      "voice": "assets/audio/voice/vol5_ch20_judgement/223.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert crow]The car kept west.\n\nThe crow, which had gone back to Joanna, was no longer the escort. Some other small bright guide was, ahead of them, on the road."
+      "text": "[shot:insert crow]The car kept west.\n\nThe crow, which had gone back to Joanna, was no longer the escort. Some other small bright guide was, ahead of them, on the road.",
+      "voice": "assets/audio/voice/vol5_ch20_judgement/224.mp3"
     },
     {
       "t": "narrate",

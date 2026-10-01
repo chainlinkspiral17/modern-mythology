@@ -35,135 +35,168 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:morning_bright]The back porch, at eight twenty-two, is in the specific warm morning Texas does in mid-August when the ninety-five of the day has not yet fully settled in and the porch is in the small shaded window where a woman in a robe can sit and eat coffee cake without, yet, sweating through the robe."
+   "text": "[mood:morning_bright]The back porch, at eight twenty-two, is in the specific warm morning Texas does in mid-August when the ninety-five of the day has not yet fully settled in and the porch is in the small shaded window where a woman in a robe can sit and eat coffee cake without, yet, sweating through the robe.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/006.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup bianca]Bianca sits in her mother's wicker chair."
+   "text": "[shot:closeup bianca]Bianca sits in her mother's wicker chair.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/007.mp3"
   },
   {
    "t": "narrate",
-   "text": "She eats the coffee cake."
+   "text": "She eats the coffee cake.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/008.mp3"
   },
   {
    "t": "narrate",
-   "text": "She thinks, this morning, about her father."
+   "text": "She thinks, this morning, about her father.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/009.mp3"
   },
   {
    "t": "narrate",
-   "text": "She thinks about her mother. She thinks about the house in Lubbock. She thinks about Carlos."
+   "text": "She thinks about her mother. She thinks about the house in Lubbock. She thinks about Carlos.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/010.mp3"
   },
   {
    "t": "narrate",
-   "text": "She thinks about the other four — the oldest brother in Lubbock who she has not spoken to on the phone since Christmas, the two older sisters in Lubbock whom she speaks to once a month each,"
+   "text": "She thinks about the other four — the oldest brother in Lubbock who she has not spoken to on the phone since Christmas, the two older sisters in Lubbock whom she speaks to once a month each,",
+   "voice": "assets/audio/voice/vol6_ch17_porch/011.mp3"
   },
   {
    "t": "narrate",
-   "text": "the younger sister who had moved to Albuquerque in 1993 and who had died of ovarian cancer in 2018 and whose funeral Bianca had flown to alone because Mike had been working and because the flying had been the small private thing Bianca had needed to do without making it a family trip."
+   "text": "the younger sister who had moved to Albuquerque in 1993 and who had died of ovarian cancer in 2018 and whose funeral Bianca had flown to alone because Mike had been working and because the flying had been the small private thing Bianca had needed to do without making it a family trip.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/012.mp3"
   },
   {
    "t": "narrate",
-   "text": "The younger sister's name had been Rosa. Rosa had been the sixth."
+   "text": "The younger sister's name had been Rosa. Rosa had been the sixth.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/013.mp3"
   },
   {
    "t": "narrate",
-   "text": "Rosa had been the one who had, in the farm family of five-and-then-six, been the specific youngest whose later-life illness had — by the family's quiet consensus — been the thing that had made the five of them, afterward, less interested in being a family together than they had been before."
+   "text": "Rosa had been the one who had, in the farm family of five-and-then-six, been the specific youngest whose later-life illness had — by the family's quiet consensus — been the thing that had made the five of them, afterward, less interested in being a family together than they had been before.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/014.mp3"
   },
   {
    "t": "narrate",
-   "text": "Bianca had not, in eight years, told anyone about Rosa."
+   "text": "Bianca had not, in eight years, told anyone about Rosa.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/015.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]She has not told Sam. She has not told Mike. She has not, until this morning, been asked about any of it by anybody who was in a position to hear the whole story."
+   "text": "[shot:establish]She has not told Sam. She has not told Mike. She has not, until this morning, been asked about any of it by anybody who was in a position to hear the whole story.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/016.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup bianca~]She thinks, on the porch: Anita is going to ask me about Rosa next Friday."
+   "text": "[shot:closeup bianca~]She thinks, on the porch: Anita is going to ask me about Rosa next Friday.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/017.mp3"
   },
   {
    "t": "narrate",
-   "text": "She thinks, Anita is going to ask me about Rosa because Anita is the middle of six and Anita knows, by instinct, that a woman who says she is the fifth of six and stops there is a woman who has an older or a younger that the fifth is not, this morning, telling the table about."
+   "text": "She thinks, Anita is going to ask me about Rosa because Anita is the middle of six and Anita knows, by instinct, that a woman who says she is the fifth of six and stops there is a woman who has an older or a younger that the fifth is not, this morning, telling the table about.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/018.mp3"
   },
   {
    "t": "narrate",
-   "text": "She thinks, Anita is going to ask carefully. Anita is going to ask in a way that gives me room to not answer if I don't want to. I am going to answer."
+   "text": "She thinks, Anita is going to ask carefully. Anita is going to ask in a way that gives me room to not answer if I don't want to. I am going to answer.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/019.mp3"
   },
   {
    "t": "narrate",
-   "text": "She thinks: I am going to tell Anita about Rosa. I am, next Friday, going to tell the table about Rosa. I have not told anybody. I have been — I have been holding Rosa for eight years without telling anybody."
+   "text": "She thinks: I am going to tell Anita about Rosa. I am, next Friday, going to tell the table about Rosa. I have not told anybody. I have been — I have been holding Rosa for eight years without telling anybody.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/020.mp3"
   },
   {
    "t": "narrate",
-   "text": "The holding was, until this summer, a thing I had decided to do."
+   "text": "The holding was, until this summer, a thing I had decided to do.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/021.mp3"
   },
   {
    "t": "narrate",
-   "text": "She thinks: it is not, this summer, the thing I am going to keep doing."
+   "text": "She thinks: it is not, this summer, the thing I am going to keep doing.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/022.mp3"
   },
   {
    "t": "narrate",
-   "text": "She thinks: I am going to tell Eileen and Anita next Friday."
+   "text": "She thinks: I am going to tell Eileen and Anita next Friday.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/023.mp3"
   },
   {
    "t": "narrate",
-   "text": "She thinks: that is the deciding that is, this morning, the fourth one."
+   "text": "She thinks: that is the deciding that is, this morning, the fourth one.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/024.mp3"
   },
   {
    "t": "narrate",
-   "text": "She eats the coffee cake."
+   "text": "She eats the coffee cake.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/025.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish_b]She finishes the coffee cake."
+   "text": "[shot:establish_b]She finishes the coffee cake.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/026.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]She sits on the porch."
+   "text": "[shot:establish]She sits on the porch.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/027.mp3"
   },
   {
    "t": "narrate",
-   "text": "The sprinklers in the cul-de-sac — Friday is a sprinkler day — are running their long morning cycle. The cicadas in the crepe myrtle are warming up."
+   "text": "The sprinklers in the cul-de-sac — Friday is a sprinkler day — are running their long morning cycle. The cicadas in the crepe myrtle are warming up.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/028.mp3"
   },
   {
    "t": "narrate",
-   "text": "A mockingbird in the neighbor's oak is doing the specific four-note imitation it has been doing every morning all summer and that Bianca has, in the past six weeks, come to know as one of the small sounds of her mornings."
+   "text": "A mockingbird in the neighbor's oak is doing the specific four-note imitation it has been doing every morning all summer and that Bianca has, in the past six weeks, come to know as one of the small sounds of her mornings.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/029.mp3"
   },
   {
    "t": "narrate",
-   "text": "She thinks, finally: this is — this is enough, for this morning."
+   "text": "She thinks, finally: this is — this is enough, for this morning.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/030.mp3"
   },
   {
    "t": "narrate",
-   "text": "She thinks: the rest is next Friday."
+   "text": "She thinks: the rest is next Friday.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/031.mp3"
   },
   {
    "t": "narrate",
-   "text": "She leaves the wicker chair."
+   "text": "She leaves the wicker chair.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/032.mp3"
   },
   {
    "t": "narrate",
-   "text": "She goes inside."
+   "text": "She goes inside.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/033.mp3"
   },
   {
    "t": "narrate",
-   "text": "She washes the plate."
+   "text": "She washes the plate.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/034.mp3"
   },
   {
    "t": "narrate",
-   "text": "She puts the plate in the drying rack."
+   "text": "She puts the plate in the drying rack.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/035.mp3"
   },
   {
    "t": "narrate",
-   "text": "She goes upstairs."
+   "text": "She goes upstairs.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/036.mp3"
   },
   {
    "t": "narrate",
-   "text": "She takes off the robe."
+   "text": "She takes off the robe.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/037.mp3"
   },
   {
    "t": "narrate",
-   "text": "She gets dressed for the day."
+   "text": "She gets dressed for the day.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/038.mp3"
   },
   {
    "t": "bg",
@@ -171,43 +204,53 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert bills]At nine seventeen AM Friday she is at her desk in the small office off the master bedroom, paying the August bills that have come in this week."
+   "text": "[shot:insert bills]At nine seventeen AM Friday she is at her desk in the small office off the master bedroom, paying the August bills that have come in this week.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/040.mp3"
   },
   {
    "t": "narrate",
-   "text": "The electric bill is ninety-six dollars, which is up from last August by twenty-one percent, which is — she registers, paying it — the small local evidence of the summer having been hotter."
+   "text": "The electric bill is ninety-six dollars, which is up from last August by twenty-one percent, which is — she registers, paying it — the small local evidence of the summer having been hotter.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/041.mp3"
   },
   {
    "t": "narrate",
-   "text": "The water bill is fifty-eight."
+   "text": "The water bill is fifty-eight.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/042.mp3"
   },
   {
    "t": "narrate",
-   "text": "The cable bill is one seventy-two."
+   "text": "The cable bill is one seventy-two.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/043.mp3"
   },
   {
    "t": "narrate",
-   "text": "The Visa bill is — she opens it — higher than she had expected, because it has, on it, the charge from the grocery run she had done Tuesday at the H-E-B that had been larger than her usual run because she had stocked up on the specific things she had been meaning to stock up on for weeks."
+   "text": "The Visa bill is — she opens it — higher than she had expected, because it has, on it, the charge from the grocery run she had done Tuesday at the H-E-B that had been larger than her usual run because she had stocked up on the specific things she had been meaning to stock up on for weeks.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/044.mp3"
   },
   {
    "t": "narrate",
-   "text": "She pays them all online."
+   "text": "She pays them all online.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/045.mp3"
   },
   {
    "t": "narrate",
-   "text": "The online payment, at nine twenty-eight, goes through."
+   "text": "The online payment, at nine twenty-eight, goes through.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/046.mp3"
   },
   {
    "t": "narrate",
-   "text": "The house, on Friday, has been — financially, at least — kept."
+   "text": "The house, on Friday, has been — financially, at least — kept.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/047.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert laptop]She closes the laptop."
+   "text": "[shot:insert laptop]She closes the laptop.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/048.mp3"
   },
   {
    "t": "narrate",
-   "text": "She goes back downstairs."
+   "text": "She goes back downstairs.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/049.mp3"
   },
   {
    "t": "bg",
@@ -215,79 +258,98 @@
   },
   {
    "t": "narrate",
-   "text": "She starts the second pot of coffee of the day — which is, she registers, different than the second pot on the days when the second pot was just for her. Today the second pot is just the pot. The first pot had been the three-woman pot. The second pot is hers."
+   "text": "She starts the second pot of coffee of the day — which is, she registers, different than the second pot on the days when the second pot was just for her. Today the second pot is just the pot. The first pot had been the three-woman pot. The second pot is hers.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/051.mp3"
   },
   {
    "t": "narrate",
-   "text": "She pours a cup."
+   "text": "She pours a cup.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/052.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]She sits at the kitchen table."
+   "text": "[shot:establish]She sits at the kitchen table.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/053.mp3"
   },
   {
    "t": "narrate",
-   "text": "The house is quiet."
+   "text": "The house is quiet.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/054.mp3"
   },
   {
    "t": "narrate",
-   "text": "The sprinklers have finished their cycle."
+   "text": "The sprinklers have finished their cycle.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/055.mp3"
   },
   {
    "t": "narrate",
-   "text": "The cicadas are, by nine forty-one, fully on."
+   "text": "The cicadas are, by nine forty-one, fully on.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/056.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup bianca]She thinks, sitting: Mike."
+   "text": "[shot:closeup bianca]She thinks, sitting: Mike.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/057.mp3"
   },
   {
    "t": "narrate",
-   "text": "She thinks: I have not, all morning, thought about Mike. I did not think about him for the whole of the three-woman table. I did not think about him for the coffee cake. I did not think about him at the desk paying the bills. I am thinking about him now."
+   "text": "She thinks: I have not, all morning, thought about Mike. I did not think about him for the whole of the three-woman table. I did not think about him for the coffee cake. I did not think about him at the desk paying the bills. I am thinking about him now.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/058.mp3"
   },
   {
    "t": "narrate",
-   "text": "She thinks: he would be glad about Eileen and Anita. He would be — he would be glad I have them. He was always — he was always, in his way, glad when I had friends."
+   "text": "She thinks: he would be glad about Eileen and Anita. He would be — he would be glad I have them. He was always — he was always, in his way, glad when I had friends.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/059.mp3"
   },
   {
    "t": "narrate",
-   "text": "She thinks: he is in Alabama. He is, per the last letter, fine. He is going to call in October for the twenty-minute window we are allowed."
+   "text": "She thinks: he is in Alabama. He is, per the last letter, fine. He is going to call in October for the twenty-minute window we are allowed.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/060.mp3"
   },
   {
    "t": "narrate",
-   "text": "He has, by the letter, been reading the same two novels on a rotation because the facility has a limited library and he has, in the eleven weeks since he got there, been going through them at a rate that is going to outpace the library's turnover unless he slows down."
+   "text": "He has, by the letter, been reading the same two novels on a rotation because the facility has a limited library and he has, in the eleven weeks since he got there, been going through them at a rate that is going to outpace the library's turnover unless he slows down.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/061.mp3"
   },
   {
    "t": "narrate",
-   "text": "She thinks: I miss him."
+   "text": "She thinks: I miss him.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/062.mp3"
   },
   {
    "t": "narrate",
-   "text": "She thinks: missing him is — this morning, after the three-woman table — the specific small thing I am allowed to do today that does not require anything else of me."
+   "text": "She thinks: missing him is — this morning, after the three-woman table — the specific small thing I am allowed to do today that does not require anything else of me.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/063.mp3"
   },
   {
    "t": "narrate",
-   "text": "[beat:still]She sits with the missing for a while."
+   "text": "[beat:still]She sits with the missing for a while.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/064.mp3"
   },
   {
    "t": "narrate",
-   "text": "She does not, today, cry."
+   "text": "She does not, today, cry.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/065.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]She does not need to."
+   "text": "[shot:establish]She does not need to.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/066.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]She finishes the coffee."
+   "text": "[shot:establish]She finishes the coffee.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/067.mp3"
   },
   {
    "t": "narrate",
-   "text": "She washes the cup."
+   "text": "She washes the cup.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/068.mp3"
   },
   {
    "t": "narrate",
-   "text": "She goes on with the Friday."
+   "text": "She goes on with the Friday.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/069.mp3"
   },
   {
    "t": "hide",
@@ -295,71 +357,88 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish~]Elsewhere in town, Diego, who had gotten home at eight thirty and had eaten eggs with his grandmother and had climbed into bed by nine, is asleep."
+   "text": "[shot:establish~]Elsewhere in town, Diego, who had gotten home at eight thirty and had eaten eggs with his grandmother and had climbed into bed by nine, is asleep.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/071.mp3"
   },
   {
    "t": "narrate",
-   "text": "Sam, at the Kwik Stop, is on shift."
+   "text": "Sam, at the Kwik Stop, is on shift.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/072.mp3"
   },
   {
    "t": "narrate",
-   "text": "Ben is at football."
+   "text": "Ben is at football.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/073.mp3"
   },
   {
    "t": "narrate",
-   "text": "Maya is at the comic shop."
+   "text": "Maya is at the comic shop.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/074.mp3"
   },
   {
    "t": "narrate",
-   "text": "Jesse, who is on the eleven-to-seven at the Pit Stop, is just now arriving."
+   "text": "Jesse, who is on the eleven-to-seven at the Pit Stop, is just now arriving.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/075.mp3"
   },
   {
    "t": "narrate",
-   "text": "Linda, at her own porch, is watching the morning do its morning thing."
+   "text": "Linda, at her own porch, is watching the morning do its morning thing.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/076.mp3"
   },
   {
    "t": "narrate",
-   "text": "Peggy, across the fence from Eileen's house, is canning."
+   "text": "Peggy, across the fence from Eileen's house, is canning.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/077.mp3"
   },
   {
    "t": "narrate",
-   "text": "Anita, in her own bed, is asleep."
+   "text": "Anita, in her own bed, is asleep.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/078.mp3"
   },
   {
    "t": "narrate",
-   "text": "Eileen, in her kitchen, is talking to Jim about a piano."
+   "text": "Eileen, in her kitchen, is talking to Jim about a piano.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/079.mp3"
   },
   {
    "t": "narrate",
-   "text": "The Friday, in the small ways Fridays in mid-August do this work, moves forward."
+   "text": "The Friday, in the small ways Fridays in mid-August do this work, moves forward.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/080.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert table]Bianca, at her kitchen table, with the second pot's coffee finished, does the thing she has been, all summer, getting better at,"
+   "text": "[shot:insert table]Bianca, at her kitchen table, with the second pot's coffee finished, does the thing she has been, all summer, getting better at,",
+   "voice": "assets/audio/voice/vol6_ch17_porch/081.mp3"
   },
   {
    "t": "narrate",
-   "text": "which is to sit in the house at an ordinary hour with no specific task in front of her and not, in the sitting, need to fill the space with an argument about whether she is okay."
+   "text": "which is to sit in the house at an ordinary hour with no specific task in front of her and not, in the sitting, need to fill the space with an argument about whether she is okay.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/082.mp3"
   },
   {
    "t": "narrate",
-   "text": "She is not okay."
+   "text": "She is not okay.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/083.mp3"
   },
   {
    "t": "narrate",
-   "text": "She is also not not-okay."
+   "text": "She is also not not-okay.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/084.mp3"
   },
   {
    "t": "narrate",
-   "text": "She is, this Friday morning, the specific woman sitting at her specific kitchen table in her specific life in her specific summer, and the specificity is — she has decided — enough."
+   "text": "She is, this Friday morning, the specific woman sitting at her specific kitchen table in her specific life in her specific summer, and the specificity is — she has decided — enough.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/085.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]She gets up."
+   "text": "[shot:establish]She gets up.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/086.mp3"
   },
   {
    "t": "narrate",
-   "text": "She goes about her day."
+   "text": "She goes about her day.",
+   "voice": "assets/audio/voice/vol6_ch17_porch/087.mp3"
   },
   {
    "t": "end"

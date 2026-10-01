@@ -41,7 +41,8 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup miller~]Chief Miller pulls into the lot at 06:42. He parks at the end space, three from the door. He puts the truck in park. He turns the engine off. He sits."
+      "text": "[shot:closeup miller~]Chief Miller pulls into the lot at 06:42. He parks at the end space, three from the door. He puts the truck in park. He turns the engine off. He sits.",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/008.mp3"
     },
     {
       "t": "narrate",
@@ -62,11 +63,13 @@
     {
       "t": "think",
       "char": "Chief Miller",
-      "text": "I love her. Whatever else is true, I love her."
+      "text": "I love her. Whatever else is true, I love her.",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/013.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He gets out of the truck. He walks across the parking lot. Ramirez hands him a coffee."
+      "text": "[shot:establish]He gets out of the truck. He walks across the parking lot. Ramirez hands him a coffee.",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/014.mp3"
     },
     {
       "t": "show",
@@ -84,45 +87,53 @@
       "t": "say",
       "char": "Ramirez",
       "text": "Morning, Mike.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/017.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "text": "Morning, Hernando.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/018.mp3"
     },
     {
       "t": "say",
       "char": "Ramirez",
       "text": "[shot:closeup person]Lawyer's inside. Came up from Houston last night. She's good. She's been doing this twenty-six years. She is not going to let you hang yourself.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/019.mp3"
     },
     {
       "t": "narrate",
-      "text": "Miller nods."
+      "text": "Miller nods.",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/020.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "text": "Thank you.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/021.mp3"
     },
     {
       "t": "say",
       "char": "Ramirez",
       "text": "Mike. Last thing before we go in. You know that whatever you say in there, in the next four hours, becomes the rest of your life. There is no take-back. If you want one more night to think it over, I will lose this morning's coffee and we'll do it tomorrow.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/022.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup miller]Miller looks at him."
+      "text": "[shot:closeup miller]Miller looks at him.",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/023.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "text": "Hernando. Sammy needs to come home from her shift today and find her mother and her father in the kitchen. She needs to have one more dinner. Then I need this to be done. Tomorrow is one more day she has to spend pretending.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/024.mp3"
     },
     {
       "t": "say",
@@ -134,11 +145,13 @@
       "t": "say",
       "char": "Ramirez",
       "text": "Okay, Mike. Let's go.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/026.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]They go inside."
+      "text": "[shot:establish]They go inside.",
+      "voice": "assets/audio/voice/vol6_ch6_miller_truck/027.mp3"
     },
     {
       "t": "hide",

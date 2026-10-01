@@ -35,20 +35,24 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2][mood:night]Maya is not asleep."
+      "text": "[trip:1.2][mood:night]Maya is not asleep.",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/006.mp3"
     },
     {
       "t": "narrate",
-      "text": "The shortwave downstairs has been silent since nine. Her grandmother went to bed at nine-thirty. The house has been quiet for an hour and seventeen minutes. Maya's ThinkPad is open on the desk. She has not opened the chat window."
+      "text": "The shortwave downstairs has been silent since nine. Her grandmother went to bed at nine-thirty. The house has been quiet for an hour and seventeen minutes. Maya's ThinkPad is open on the desk. She has not opened the chat window.",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/007.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup maya]She is lying on top of the bedspread in the clothes she wore all day, staring at the ceiling."
+      "text": "[shot:closeup maya]She is lying on top of the bedspread in the clothes she wore all day, staring at the ceiling.",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/008.mp3"
     },
     {
       "t": "think",
       "char": "Maya",
-      "text": "Sam Miller is coming to the shop tomorrow."
+      "text": "Sam Miller is coming to the shop tomorrow.",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/009.mp3"
     },
     {
       "t": "think",
@@ -68,45 +72,53 @@
     {
       "t": "think",
       "char": "Maya",
-      "text": "I am the youngest person in this network and the only one new to it. The network is not mine. But the network has decided that I am part of it. And the network is, as far as I can tell, running in my direction."
+      "text": "I am the youngest person in this network and the only one new to it. The network is not mine. But the network has decided that I am part of it. And the network is, as far as I can tell, running in my direction.",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/013.mp3"
     },
     {
       "t": "think",
       "char": "Maya",
-      "text": "I am going to be careful. I am going to be useful. I am not going to be a hero. I am going to be Maya."
+      "text": "I am going to be careful. I am going to be useful. I am not going to be a hero. I am going to be Maya.",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/014.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thinks this with a small steady clarity that surprises her, because she has not, in her life until this summer, known what she was like when she was alone with a plan. She now knows."
+      "text": "She thinks this with a small steady clarity that surprises her, because she has not, in her life until this summer, known what she was like when she was alone with a plan. She now knows.",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/015.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert laptop]The ThinkPad dings. A message from F.T."
+      "text": "[shot:insert laptop]The ThinkPad dings. A message from F.T.",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/016.mp3"
     },
     {
       "t": "say",
       "char": "F.T.",
       "role": "— chat —",
       "expr": "neutral",
-      "text": "sleep, kid. tomorrow is important. three of you are about to start being a thing. don't rush it. let sam come in her own speed. she's going to be fast. let her be fast. you're the one who holds the tempo. that is your actual job."
+      "text": "sleep, kid. tomorrow is important. three of you are about to start being a thing. don't rush it. let sam come in her own speed. she's going to be fast. let her be fast. you're the one who holds the tempo. that is your actual job.",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/017.mp3"
     },
     {
       "t": "say",
       "char": "F.T.",
       "role": "— chat —",
       "expr": "neutral",
-      "text": "also: your grandmother knows you know. she has known for a week. she is proud of you. she just does not have the vocabulary to say so. please be kind to her."
+      "text": "also: your grandmother knows you know. she has known for a week. she is proud of you. she just does not have the vocabulary to say so. please be kind to her.",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/018.mp3"
     },
     {
       "t": "say",
       "char": "F.T.",
       "role": "— chat —",
       "expr": "neutral",
-      "text": "— f.t."
+      "text": "— f.t.",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/019.mp3"
     },
     {
       "t": "narrate",
-      "text": "Maya reads the message. She gets up. She crosses the hall. She opens her grandmother's bedroom door, quietly, just an inch."
+      "text": "Maya reads the message. She gets up. She crosses the hall. She opens her grandmother's bedroom door, quietly, just an inch.",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/020.mp3"
     },
     {
       "t": "bg",
@@ -126,151 +138,178 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:candlelight_low][shot:closeup grandmother]Her grandmother is awake in the dark."
+      "text": "[mood:candlelight_low][shot:closeup grandmother]Her grandmother is awake in the dark.",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/024.mp3"
     },
     {
       "t": "say",
       "char": "Grandmother",
       "expr": "neutral",
-      "text": "(in the soft tired voice of a woman who has been waiting for this exact knock) \"Maya, honey.\""
+      "text": "(in the soft tired voice of a woman who has been waiting for this exact knock) \"Maya, honey.\"",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/025.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "expr": "neutral",
-      "text": "\"Grandma.\""
+      "text": "\"Grandma.\"",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/026.mp3"
     },
     {
       "t": "say",
       "char": "Grandmother",
       "expr": "neutral",
-      "text": "\"Come in here.\""
+      "text": "\"Come in here.\"",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/027.mp3"
     },
     {
       "t": "narrate",
-      "text": "Maya goes in. She sits on the edge of the bed. Her grandmother takes her hand."
+      "text": "Maya goes in. She sits on the edge of the bed. Her grandmother takes her hand.",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/028.mp3"
     },
     {
       "t": "say",
       "char": "Grandmother",
       "expr": "neutral",
-      "text": "\"I've been waiting to tell you. I didn't know how. I was going to tell you this weekend. I'm sorry it took me this long.\""
+      "text": "\"I've been waiting to tell you. I didn't know how. I was going to tell you this weekend. I'm sorry it took me this long.\"",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/029.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "expr": "neutral",
-      "text": "[shot:closeup person]\"Grandma. It's okay.\""
+      "text": "[shot:closeup person]\"Grandma. It's okay.\"",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/030.mp3"
     },
     {
       "t": "say",
       "char": "Grandmother",
       "expr": "neutral",
-      "text": "\"It's not, honey. But thank you.\""
+      "text": "\"It's not, honey. But thank you.\"",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/031.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert hands]They sit in the dark for a while. Her grandmother's hand on her hand."
+      "text": "[shot:insert hands]They sit in the dark for a while. Her grandmother's hand on her hand.",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/032.mp3"
     },
     {
       "t": "say",
       "char": "Grandmother",
       "expr": "neutral",
-      "text": "(eventually) \"There will be men in this house at some point. Not bad men. Men who look like bad men, and who act like bad men, and whose purpose is good. When they come, I need you to let me do the talking. Can you do that for me.\""
+      "text": "(eventually) \"There will be men in this house at some point. Not bad men. Men who look like bad men, and who act like bad men, and whose purpose is good. When they come, I need you to let me do the talking. Can you do that for me.\"",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/033.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "expr": "neutral",
-      "text": "\"Yes.\""
+      "text": "\"Yes.\"",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/034.mp3"
     },
     {
       "t": "say",
       "char": "Grandmother",
       "expr": "neutral",
-      "text": "\"Good girl.\""
+      "text": "\"Good girl.\"",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/035.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "expr": "neutral",
-      "text": "\"Grandma. Why is there a radio in your room on 1776 kHz.\""
+      "text": "\"Grandma. Why is there a radio in your room on 1776 kHz.\"",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/036.mp3"
     },
     {
       "t": "narrate",
-      "text": "A small silence."
+      "text": "A small silence.",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/037.mp3"
     },
     {
       "t": "say",
       "char": "Grandmother",
       "expr": "neutral",
-      "text": "[shot:closeup person_b]\"Because your grandfather put it there, Maya. In 1989. When he got out. He taught me how to listen to it. He said — Linda, one day somebody's going to talk to you on this thing, and you're going to know when they do, and then you're going to know what to do.\""
+      "text": "[shot:closeup person_b]\"Because your grandfather put it there, Maya. In 1989. When he got out. He taught me how to listen to it. He said — Linda, one day somebody's going to talk to you on this thing, and you're going to know when they do, and then you're going to know what to do.\"",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/038.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "expr": "neutral",
-      "text": "\"My grandfather.\""
+      "text": "\"My grandfather.\"",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/039.mp3"
     },
     {
       "t": "say",
       "char": "Grandmother",
       "expr": "neutral",
-      "text": "\"Your grandfather.\""
+      "text": "\"Your grandfather.\"",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/040.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "expr": "neutral",
-      "text": "\"What did he — what was he out of.\""
+      "text": "\"What did he — what was he out of.\"",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/041.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup grandmother~]Her grandmother is quiet for a moment."
+      "text": "[shot:closeup grandmother~]Her grandmother is quiet for a moment.",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/042.mp3"
     },
     {
       "t": "say",
       "char": "Grandmother",
       "expr": "neutral",
-      "text": "[beat:still]\"Honey. Your grandfather was a photographer. In Graustark. In the seventies. He took a picture he should not have taken. It cost him fifteen years.\""
+      "text": "[beat:still]\"Honey. Your grandfather was a photographer. In Graustark. In the seventies. He took a picture he should not have taken. It cost him fifteen years.\"",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/043.mp3"
     },
     {
       "t": "narrate",
-      "text": "Maya stares at her in the dark."
+      "text": "Maya stares at her in the dark.",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/044.mp3"
     },
     {
       "t": "say",
       "char": "Grandmother",
       "expr": "neutral",
-      "text": "(very gently) \"Go to sleep, honey. Tomorrow's a big day. We'll talk more. There's a lot you need to know, and I'm going to try to be the one to tell it. I have been afraid. I am still afraid. But I'm done pretending I'm not.\""
+      "text": "(very gently) \"Go to sleep, honey. Tomorrow's a big day. We'll talk more. There's a lot you need to know, and I'm going to try to be the one to tell it. I have been afraid. I am still afraid. But I'm done pretending I'm not.\"",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/045.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "expr": "neutral",
-      "text": "\"Grandma.\""
+      "text": "\"Grandma.\"",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/046.mp3"
     },
     {
       "t": "say",
       "char": "Grandmother",
       "expr": "neutral",
-      "text": "\"Yes, honey.\""
+      "text": "\"Yes, honey.\"",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/047.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "expr": "neutral",
-      "text": "[shot:closeup person]\"I love you.\""
+      "text": "[shot:closeup person]\"I love you.\"",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/048.mp3"
     },
     {
       "t": "say",
       "char": "Grandmother",
       "expr": "neutral",
-      "text": "\"I love you too, sweetheart. Go to bed.\""
+      "text": "\"I love you too, sweetheart. Go to bed.\"",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/049.mp3"
     },
     {
       "t": "narrate",
-      "text": "Maya kisses her grandmother on the forehead. She goes back to her room. She closes her door."
+      "text": "Maya kisses her grandmother on the forehead. She goes back to her room. She closes her door.",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/050.mp3"
     },
     {
       "t": "hide",
@@ -278,16 +317,19 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:night][shot:establish]She does not, tonight, write in the notebook. She lies down. She turns off the lamp."
+      "text": "[mood:night][shot:establish]She does not, tonight, write in the notebook. She lies down. She turns off the lamp.",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/052.mp3"
     },
     {
       "t": "think",
       "char": "Maya",
-      "text": "I have a grandfather. He took a picture. This town has been coming for pictures for a long time."
+      "text": "I have a grandfather. He took a picture. This town has been coming for pictures for a long time.",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/053.mp3"
     },
     {
       "t": "narrate",
-      "text": "She sleeps."
+      "text": "She sleeps.",
+      "voice": "assets/audio/voice/vol6_ch2_maya_bedroom/054.mp3"
     },
     {
       "t": "flag",

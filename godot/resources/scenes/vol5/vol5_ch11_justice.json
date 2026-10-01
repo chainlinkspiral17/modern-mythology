@@ -43,15 +43,18 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]§ I. Erica Campbell, the next morning"
+      "text": "[shot:establish]§ I. Erica Campbell, the next morning",
+      "voice": "assets/audio/voice/vol5_ch11_justice/008.mp3"
     },
     {
       "t": "narrate",
-      "text": "Houston on Saturday morning held its breath in the specific way Houston held its breath on Saturday mornings: humid, expectant, distantly punctuated by the slow thunder of garbage trucks finishing their routes through the high-density blocks."
+      "text": "Houston on Saturday morning held its breath in the specific way Houston held its breath on Saturday mornings: humid, expectant, distantly punctuated by the slow thunder of garbage trucks finishing their routes through the high-density blocks.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/009.mp3"
     },
     {
       "t": "narrate",
-      "text": "Erica Campbell had not, in the end, listened to the painter's voicemail."
+      "text": "Erica Campbell had not, in the end, listened to the painter's voicemail.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/010.mp3"
     },
     {
       "t": "narrate",
@@ -67,7 +70,8 @@
     },
     {
       "t": "narrate",
-      "text": "She had listened, instead, to her own breathing."
+      "text": "She had listened, instead, to her own breathing.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/014.mp3"
     },
     {
       "t": "narrate",
@@ -87,15 +91,18 @@
     },
     {
       "t": "narrate",
-      "text": "She was going to listen to it. She was going to listen to it eventually."
+      "text": "She was going to listen to it. She was going to listen to it eventually.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/019.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert contract]She was going to draft the contract first."
+      "text": "[shot:insert contract]She was going to draft the contract first.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/020.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert contract]The draft contract for Antonio D'Ambrosio, in its current form, ran to eleven pages, and Erica was not happy with any of them."
+      "text": "[shot:insert contract]The draft contract for Antonio D'Ambrosio, in its current form, ran to eleven pages, and Erica was not happy with any of them.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/021.mp3"
     },
     {
       "t": "narrate",
@@ -119,11 +126,13 @@
     },
     {
       "t": "narrate",
-      "text": "She had drafted contracts of similar shape before. Three or four times. Always for clients she was, on balance, comfortable representing."
+      "text": "She had drafted contracts of similar shape before. Three or four times. Always for clients she was, on balance, comfortable representing.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/027.mp3"
     },
     {
       "t": "narrate",
-      "text": "She was not, this morning, comfortable."
+      "text": "She was not, this morning, comfortable.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/028.mp3"
     },
     {
       "t": "narrate",
@@ -139,15 +148,18 @@
     },
     {
       "t": "narrate",
-      "text": "The clause structure was elegant. Erica had built it. Erica was, by any external measure, proud of it."
+      "text": "The clause structure was elegant. Erica had built it. Erica was, by any external measure, proud of it.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/032.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Erica, this morning, did not fully recognize the woman who was building it."
+      "text": "[shot:establish]Erica, this morning, did not fully recognize the woman who was building it.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/033.mp3"
     },
     {
       "t": "narrate",
-      "text": "She paused. She reread the section she had just drafted. She made a small correction to the indemnification language. She reread the correction. She made the correction again, in the opposite direction. She reread it."
+      "text": "She paused. She reread the section she had just drafted. She made a small correction to the indemnification language. She reread the correction. She made the correction again, in the opposite direction. She reread it.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/034.mp3"
     },
     {
       "t": "narrate",
@@ -159,27 +171,33 @@
     },
     {
       "t": "narrate",
-      "text": "She did not, however, stop drafting."
+      "text": "She did not, however, stop drafting.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/037.mp3"
     },
     {
       "t": "narrate",
-      "text": "She did not stop drafting because she did not yet know what stopping would mean. Stopping would require an action she had not yet identified. Continuing was, simply, the next thing on the morning's list."
+      "text": "She did not stop drafting because she did not yet know what stopping would mean. Stopping would require an action she had not yet identified. Continuing was, simply, the next thing on the morning's list.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/038.mp3"
     },
     {
       "t": "narrate",
-      "text": "She told herself this. She continued."
+      "text": "She told herself this. She continued.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/039.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thought, briefly, of Mrs. Romero's hands."
+      "text": "She thought, briefly, of Mrs. Romero's hands.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/040.mp3"
     },
     {
       "t": "narrate",
-      "text": "She kept drafting."
+      "text": "She kept drafting.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/041.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]At eight forty-seven AM her assistant Marcus, who was not supposed to be at the office on a Saturday but who had texted her at six and asked if she needed anything and to whom Erica had said no thank you and who had come in anyway, knocked on her door and pushed it open carrying two coffees."
+      "text": "[shot:establish]At eight forty-seven AM her assistant Marcus, who was not supposed to be at the office on a Saturday but who had texted her at six and asked if she needed anything and to whom Erica had said no thank you and who had come in anyway, knocked on her door and pushed it open carrying two coffees.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/042.mp3"
     },
     {
       "t": "show",
@@ -190,7 +208,8 @@
     {
       "t": "say",
       "char": "erica",
-      "text": "You shouldn't be here, Marcus."
+      "text": "You shouldn't be here, Marcus.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/044.mp3"
     },
     {
       "t": "show",
@@ -201,55 +220,66 @@
     {
       "t": "say",
       "char": "marcus",
-      "text": "You shouldn't be here."
+      "text": "You shouldn't be here.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/046.mp3"
     },
     {
       "t": "say",
       "char": "erica",
-      "text": "That's the deal we have."
+      "text": "That's the deal we have.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/047.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert desk]He set the coffee on the desk. He did not, with the specific tact that had made him invaluable, look at her monitor. He stood for a moment in the doorway, considering, then said:"
+      "text": "[shot:insert desk]He set the coffee on the desk. He did not, with the specific tact that had made him invaluable, look at her monitor. He stood for a moment in the doorway, considering, then said:",
+      "voice": "assets/audio/voice/vol5_ch11_justice/048.mp3"
     },
     {
       "t": "say",
       "char": "marcus",
-      "text": "There's a man in the lobby asking for you."
+      "text": "There's a man in the lobby asking for you.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/049.mp3"
     },
     {
       "t": "say",
       "char": "erica",
-      "text": "Saturday."
+      "text": "Saturday.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/050.mp3"
     },
     {
       "t": "say",
       "char": "marcus",
-      "text": "Yes ma'am."
+      "text": "Yes ma'am.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/051.mp3"
     },
     {
       "t": "say",
       "char": "erica",
-      "text": "[shot:closeup erica]Without an appointment."
+      "text": "[shot:closeup erica]Without an appointment.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/052.mp3"
     },
     {
       "t": "say",
       "char": "marcus",
-      "text": "Yes ma'am."
+      "text": "Yes ma'am.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/053.mp3"
     },
     {
       "t": "say",
       "char": "erica",
-      "text": "Did building security let him up."
+      "text": "Did building security let him up.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/054.mp3"
     },
     {
       "t": "say",
       "char": "marcus",
-      "text": "[beat:chill]He didn't ask to come up. He's in the lobby. He left a card with the desk. He said he'd wait until ten and then leave, and that he wasn't going to call again, and that his name was [wave amp=6 freq=2]Mr. D. Dean.[/wave]"
+      "text": "[beat:chill]He didn't ask to come up. He's in the lobby. He left a card with the desk. He said he'd wait until ten and then leave, and that he wasn't going to call again, and that his name was [wave amp=6 freq=2]Mr. D. Dean.[/wave]",
+      "voice": "assets/audio/voice/vol5_ch11_justice/055.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup erica]Erica set down her pen."
+      "text": "[shot:closeup erica]Erica set down her pen.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/056.mp3"
     },
     {
       "t": "narrate",
@@ -262,22 +292,26 @@
     {
       "t": "say",
       "char": "erica",
-      "text": "Did he say what it was about."
+      "text": "Did he say what it was about.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/059.mp3"
     },
     {
       "t": "say",
       "char": "marcus",
-      "text": "He said it was about a contract."
+      "text": "He said it was about a contract.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/060.mp3"
     },
     {
       "t": "say",
       "char": "erica",
-      "text": "Did he say which one."
+      "text": "Did he say which one.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/061.mp3"
     },
     {
       "t": "say",
       "char": "marcus",
-      "text": "No ma'am. He said you'd know."
+      "text": "No ma'am. He said you'd know.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/062.mp3"
     },
     {
       "t": "narrate",
@@ -289,75 +323,91 @@
     },
     {
       "t": "narrate",
-      "text": "[beat:hit]She thought, I knew."
+      "text": "[beat:hit]She thought, I knew.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/065.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thought, I knew, and I drafted anyway, and now the wheel is going to spin, and Mr. D. Dean is going to spin it, and I am going to find out what kind of person I become when somebody else is choosing the direction."
+      "text": "She thought, I knew, and I drafted anyway, and now the wheel is going to spin, and Mr. D. Dean is going to spin it, and I am going to find out what kind of person I become when somebody else is choosing the direction.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/066.mp3"
     },
     {
       "t": "say",
       "char": "erica",
-      "text": "Marcus."
+      "text": "Marcus.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/067.mp3"
     },
     {
       "t": "say",
       "char": "marcus",
-      "text": "Yes ma'am."
+      "text": "Yes ma'am.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/068.mp3"
     },
     {
       "t": "say",
       "char": "erica",
-      "text": "Tell the desk Mr. Dean can come up at nine-fifteen. Bring me his card."
+      "text": "Tell the desk Mr. Dean can come up at nine-fifteen. Bring me his card.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/069.mp3"
     },
     {
       "t": "say",
       "char": "marcus",
-      "text": "Yes ma'am."
+      "text": "Yes ma'am.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/070.mp3"
     },
     {
       "t": "say",
       "char": "erica",
-      "text": "And Marcus —"
+      "text": "And Marcus —",
+      "voice": "assets/audio/voice/vol5_ch11_justice/071.mp3"
     },
     {
       "t": "say",
       "char": "marcus",
-      "text": "Yes."
+      "text": "Yes.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/072.mp3"
     },
     {
       "t": "say",
       "char": "erica",
-      "text": "Stay in the office. Not in this room. The next one. Don't come in unless I call."
+      "text": "Stay in the office. Not in this room. The next one. Don't come in unless I call.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/073.mp3"
     },
     {
       "t": "say",
       "char": "marcus",
-      "text": "Yes ma'am."
+      "text": "Yes ma'am.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/074.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He went to do it. Erica stood up. She crossed to the glass wall. The Houston Saturday outside was beginning, slowly, to fill in. Cars on the freeway. The hawk from yesterday — or the hawk's shift-relief — circling on a thermal twelve stories below."
+      "text": "[shot:establish]He went to do it. Erica stood up. She crossed to the glass wall. The Houston Saturday outside was beginning, slowly, to fill in. Cars on the freeway. The hawk from yesterday — or the hawk's shift-relief — circling on a thermal twelve stories below.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/075.mp3"
     },
     {
       "t": "narrate",
-      "text": "The bird, this morning, was committing."
+      "text": "The bird, this morning, was committing.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/076.mp3"
     },
     {
       "t": "narrate",
-      "text": "The wheel kept spinning."
+      "text": "The wheel kept spinning.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/077.mp3"
     },
     {
       "t": "narrate",
-      "text": "She would, before the meeting, finish the contract. She would, at nine-fifteen, find out which side of the contract Mr. D. Dean was on, or whether the question of side was one Mr. D. Dean intended to recognize."
+      "text": "She would, before the meeting, finish the contract. She would, at nine-fifteen, find out which side of the contract Mr. D. Dean was on, or whether the question of side was one Mr. D. Dean intended to recognize.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/078.mp3"
     },
     {
       "t": "narrate",
-      "text": "She would, eventually, listen to the painter's voicemail."
+      "text": "She would, eventually, listen to the painter's voicemail.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/079.mp3"
     },
     {
       "t": "narrate",
-      "text": "She had a feeling, a small dry feeling at the back of her throat, that she would listen to it from a different room than the one she was sitting in now."
+      "text": "She had a feeling, a small dry feeling at the back of her throat, that she would listen to it from a different room than the one she was sitting in now.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/080.mp3"
     },
     {
       "t": "bg",
@@ -365,19 +415,23 @@
     },
     {
       "t": "narrate",
-      "text": "§ II. Anna Logue, the same morning, across town"
+      "text": "§ II. Anna Logue, the same morning, across town",
+      "voice": "assets/audio/voice/vol5_ch11_justice/082.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert monitor]The Helvetica Neue Bold proclaiming D'AMBROSIO'S: EMBER & ASH on Anna Logue's third monitor — curated, naturally, for optimal color fidelity and minimal eye strain — felt less like branding and more like an accusation."
+      "text": "[shot:insert monitor]The Helvetica Neue Bold proclaiming D'AMBROSIO'S: EMBER & ASH on Anna Logue's third monitor — curated, naturally, for optimal color fidelity and minimal eye strain — felt less like branding and more like an accusation.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/083.mp3"
     },
     {
       "t": "narrate",
-      "text": "She adjusted the kerning by .05 points."
+      "text": "She adjusted the kerning by .05 points.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/084.mp3"
     },
     {
       "t": "narrate",
-      "text": "Still wrong."
+      "text": "Still wrong.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/085.mp3"
     },
     {
       "t": "narrate",
@@ -393,15 +447,18 @@
     },
     {
       "t": "narrate",
-      "text": "This D'Ambrosio gig. Messy. Garish. Smelled faintly of desperation and possibly — gumbo. Ugh."
+      "text": "This D'Ambrosio gig. Messy. Garish. Smelled faintly of desperation and possibly — gumbo. Ugh.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/089.mp3"
     },
     {
       "t": "narrate",
-      "text": "Anna sipped her cold brew (cashew milk, locally roasted beans, naturally) and squinted at the pitch deck mock-up."
+      "text": "Anna sipped her cold brew (cashew milk, locally roasted beans, naturally) and squinted at the pitch deck mock-up.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/090.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Slide 7: The Twist. But what is truly real when nothing ever stays the same?"
+      "text": "[shot:establish]Slide 7: The Twist. But what is truly real when nothing ever stays the same?",
+      "voice": "assets/audio/voice/vol5_ch11_justice/091.mp3"
     },
     {
       "t": "narrate",
@@ -429,15 +486,18 @@
     },
     {
       "t": "narrate",
-      "text": "She adjusted her oversized, architecturally inspired glasses. This wasn't design; it was damage control. Crafting corporate narratives. Shaping perceptions. Polishing turds until they shone — or at least reflected market share."
+      "text": "She adjusted her oversized, architecturally inspired glasses. This wasn't design; it was damage control. Crafting corporate narratives. Shaping perceptions. Polishing turds until they shone — or at least reflected market share.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/098.mp3"
     },
     {
       "t": "narrate",
-      "text": "Fair? True? Justice? Those concepts felt as abstract and unattainable as work-life balance."
+      "text": "Fair? True? Justice? Those concepts felt as abstract and unattainable as work-life balance.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/099.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]Her phone buzzed. Ben."
+      "text": "[shot:insert phone]Her phone buzzed. Ben.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/100.mp3"
     },
     {
       "t": "show",
@@ -448,7 +508,8 @@
     {
       "t": "say",
       "char": "ben",
-      "text": "[shot:closeup person]coffee shop vibes later? need to deconstruct the inherent performativity of latte art."
+      "text": "[shot:closeup person]coffee shop vibes later? need to deconstruct the inherent performativity of latte art.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/102.mp3"
     },
     {
       "t": "narrate",
@@ -467,19 +528,23 @@
     {
       "t": "say",
       "char": "anna",
-      "text": "brain empty. send artisanal pastry gifs."
+      "text": "brain empty. send artisanal pastry gifs.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/106.mp3"
     },
     {
       "t": "narrate",
-      "text": "He sent six immediately. The sixth was a croissant rotating slowly on a turntable, and Anna laughed once, the small private laugh she only laughed when she was alone and something had been precisely as expected."
+      "text": "He sent six immediately. The sixth was a croissant rotating slowly on a turntable, and Anna laughed once, the small private laugh she only laughed when she was alone and something had been precisely as expected.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/107.mp3"
     },
     {
       "t": "narrate",
-      "text": "She put the phone down."
+      "text": "She put the phone down.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/108.mp3"
     },
     {
       "t": "narrate",
-      "text": "Back to the D'Ambrosio disaster."
+      "text": "Back to the D'Ambrosio disaster.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/109.mp3"
     },
     {
       "t": "narrate",
@@ -495,11 +560,13 @@
     },
     {
       "t": "narrate",
-      "text": "The tension between her sharp analytical mind and her messy inconvenient emotional core was becoming a real UX nightmare."
+      "text": "The tension between her sharp analytical mind and her messy inconvenient emotional core was becoming a real UX nightmare.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/113.mp3"
     },
     {
       "t": "narrate",
-      "text": "She toggled layers in Illustrator, stripping back the D'Ambrosio logo to its wireframe."
+      "text": "She toggled layers in Illustrator, stripping back the D'Ambrosio logo to its wireframe.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/114.mp3"
     },
     {
       "t": "narrate",
@@ -511,11 +578,13 @@
     },
     {
       "t": "narrate",
-      "text": "The cursor blinked. The office air hummed, sterile and controlled."
+      "text": "The cursor blinked. The office air hummed, sterile and controlled.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/117.mp3"
     },
     {
       "t": "narrate",
-      "text": "But Anna felt a glitch in the matrix. A hairline crack spreading across the polished surface of her world. The weight of consequences, the imbalance she had ignored — it was tipping the scales."
+      "text": "But Anna felt a glitch in the matrix. A hairline crack spreading across the polished surface of her world. The weight of consequences, the imbalance she had ignored — it was tipping the scales.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/118.mp3"
     },
     {
       "t": "narrate",
@@ -527,23 +596,28 @@
     },
     {
       "t": "narrate",
-      "text": "A deeper, personal truth beyond the carefully drafted rules of engagement."
+      "text": "A deeper, personal truth beyond the carefully drafted rules of engagement.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/121.mp3"
     },
     {
       "t": "narrate",
-      "text": "Justice, maybe. But not the kind you found in a legal brief."
+      "text": "Justice, maybe. But not the kind you found in a legal brief.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/122.mp3"
     },
     {
       "t": "narrate",
-      "text": "The kind that might just unravel everything."
+      "text": "The kind that might just unravel everything.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/123.mp3"
     },
     {
       "t": "narrate",
-      "text": "The cursor blinked again. Waiting."
+      "text": "The cursor blinked again. Waiting.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/124.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup anna]She took a deep breath and hit delete. Blank screen. Terrifying. Perfect."
+      "text": "[shot:closeup anna]She took a deep breath and hit delete. Blank screen. Terrifying. Perfect.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/125.mp3"
     },
     {
       "t": "narrate",
@@ -567,31 +641,38 @@
     },
     {
       "t": "narrate",
-      "text": "She worked for forty-five minutes without looking up."
+      "text": "She worked for forty-five minutes without looking up.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/131.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert monitor]At ten o'clock she leaned back, looked at what she had made, and felt — for the first time in eighteen months — the small pure heat in the chest that meant she had made a true thing."
+      "text": "[shot:insert monitor]At ten o'clock she leaned back, looked at what she had made, and felt — for the first time in eighteen months — the small pure heat in the chest that meant she had made a true thing.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/132.mp3"
     },
     {
       "t": "narrate",
-      "text": "She saved the file. She named it D'AMB-IDOL-01.psd."
+      "text": "She saved the file. She named it D'AMB-IDOL-01.psd.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/133.mp3"
     },
     {
       "t": "narrate",
-      "text": "She did not share it with anyone. She did not even airdrop it to her own phone. She simply backed it up to her private cloud, the one Ben did not have access to, the one her firm did not know existed."
+      "text": "She did not share it with anyone. She did not even airdrop it to her own phone. She simply backed it up to her private cloud, the one Ben did not have access to, the one her firm did not know existed.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/134.mp3"
     },
     {
       "t": "narrate",
-      "text": "The phone buzzed."
+      "text": "The phone buzzed.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/135.mp3"
     },
     {
       "t": "narrate",
-      "text": "Alberto. Of course Alberto."
+      "text": "Alberto. Of course Alberto.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/136.mp3"
     },
     {
       "t": "narrate",
-      "text": "She let it ring through."
+      "text": "She let it ring through.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/137.mp3"
     },
     {
       "t": "narrate",
@@ -603,35 +684,43 @@
     },
     {
       "t": "narrate",
-      "text": "She would, eventually, listen to the voicemail."
+      "text": "She would, eventually, listen to the voicemail.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/140.mp3"
     },
     {
       "t": "narrate",
-      "text": "She had a feeling, a small unfamiliar feeling at the back of her throat, that she would listen to it from a different desk than the one she had been sitting at all morning."
+      "text": "She had a feeling, a small unfamiliar feeling at the back of her throat, that she would listen to it from a different desk than the one she had been sitting at all morning.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/141.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]In the lobby of the high-rise three blocks back, an older man in a charcoal suit, smoking carefully outside the no smoking sign, watched a young Houston designer cross the plaza without recognizing him, and made a small note in his head."
+      "text": "[shot:establish]In the lobby of the high-rise three blocks back, an older man in a charcoal suit, smoking carefully outside the no smoking sign, watched a young Houston designer cross the plaza without recognizing him, and made a small note in his head.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/142.mp3"
     },
     {
       "t": "narrate",
-      "text": "He had not, this morning, come for her."
+      "text": "He had not, this morning, come for her.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/143.mp3"
     },
     {
       "t": "narrate",
-      "text": "He had come for somebody else, three floors up."
+      "text": "He had come for somebody else, three floors up.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/144.mp3"
     },
     {
       "t": "narrate",
-      "text": "He was, however, beginning to think — in the way men of his line of work were paid to think — that the two appointments might, eventually, prove to be the same one."
+      "text": "He was, however, beginning to think — in the way men of his line of work were paid to think — that the two appointments might, eventually, prove to be the same one.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/145.mp3"
     },
     {
       "t": "narrate",
-      "text": "He stubbed the cigarette out. He went inside. The desk clerk waved him to the elevator."
+      "text": "He stubbed the cigarette out. He went inside. The desk clerk waved him to the elevator.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/146.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish~]Mr. D. Dean rode up to nine-fifteen."
+      "text": "[shot:establish~]Mr. D. Dean rode up to nine-fifteen.",
+      "voice": "assets/audio/voice/vol5_ch11_justice/147.mp3"
     },
     {
       "t": "end"

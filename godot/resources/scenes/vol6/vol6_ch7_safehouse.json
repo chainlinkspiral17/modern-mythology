@@ -29,7 +29,8 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:day_bright]Sam, Maya, and Jesse are not at the safehouse."
+      "text": "[mood:day_bright]Sam, Maya, and Jesse are not at the safehouse.",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/005.mp3"
     },
     {
       "t": "narrate",
@@ -47,15 +48,18 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup graciela]Outside, on the porch, Diego's grandmother — Graciela Ramos, who has not left the safehouse since arriving last night at ten — is on the phone."
+      "text": "[shot:closeup graciela]Outside, on the porch, Diego's grandmother — Graciela Ramos, who has not left the safehouse since arriving last night at ten — is on the phone.",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/009.mp3"
     },
     {
       "t": "narrate",
-      "text": "She is on the phone with Sam."
+      "text": "She is on the phone with Sam.",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/010.mp3"
     },
     {
       "t": "narrate",
-      "text": "She has been talking with Sam for forty minutes."
+      "text": "She has been talking with Sam for forty minutes.",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/011.mp3"
     },
     {
       "t": "narrate",
@@ -73,7 +77,8 @@
       "t": "say",
       "char": "Graciela Ramos",
       "text": "Diego asked about you again this morning. He asked twice. He asked when he could see you. The doctor said Monday, maybe Tuesday. Diego said Monday. The doctor said we will see how Diego feels.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/015.mp3"
     },
     {
       "t": "say",
@@ -95,19 +100,22 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup sam~]Sam, in her Corolla in the parking lot of the Kwik Stop where she had come, on her break, to take this call in private, sits with the phone against her ear and weeps quietly."
+      "text": "[shot:closeup sam~]Sam, in her Corolla in the parking lot of the Kwik Stop where she had come, on her break, to take this call in private, sits with the phone against her ear and weeps quietly.",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/019.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Graciela. Tell him. Tell him I love him. Tell him he should not have been carrying me. Tell him I have been carrying him too. Tell him — tell him Monday.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/020.mp3"
     },
     {
       "t": "say",
       "char": "Graciela Ramos",
       "text": "I will, mija.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/021.mp3"
     },
     {
       "t": "say",
@@ -127,41 +135,49 @@
       "t": "say",
       "char": "Sam",
       "text": "Graciela.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/024.mp3"
     },
     {
       "t": "say",
       "char": "Graciela Ramos",
       "text": "[shot:closeup person]Yes.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/025.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Thank you.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/026.mp3"
     },
     {
       "t": "say",
       "char": "Graciela Ramos",
       "text": "Mija. Always.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/027.mp3"
     },
     {
       "t": "narrate",
-      "text": "They hang up."
+      "text": "They hang up.",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/028.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Sam sits in the car for another five minutes."
+      "text": "[shot:establish]Sam sits in the car for another five minutes.",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/029.mp3"
     },
     {
       "t": "narrate",
-      "text": "Then she goes back into the Kwik Stop. She finishes her break. She works her shift."
+      "text": "Then she goes back into the Kwik Stop. She finishes her break. She works her shift.",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/030.mp3"
     },
     {
       "t": "narrate",
-      "text": "The shift is, today, easy. The shift is, today, just a shift."
+      "text": "The shift is, today, easy. The shift is, today, just a shift.",
+      "voice": "assets/audio/voice/vol6_ch7_safehouse/031.mp3"
     },
     {
       "t": "hide",

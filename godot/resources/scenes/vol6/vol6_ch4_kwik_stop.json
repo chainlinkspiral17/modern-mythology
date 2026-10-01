@@ -31,7 +31,8 @@
   },
   {
    "t": "narrate",
-   "text": "The Kwik Stop is empty. Sam has been on shift for two hours. The ice cream novelty cooler has been acting up. The hot dog roller has been ignored because nobody is coming in."
+   "text": "The Kwik Stop is empty. Sam has been on shift for two hours. The ice cream novelty cooler has been acting up. The hot dog roller has been ignored because nobody is coming in.",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/006.mp3"
   },
   {
    "t": "narrate",
@@ -68,21 +69,25 @@
   {
    "t": "say",
    "char": "Ramirez",
-   "text": "You Sam Miller?"
+   "text": "You Sam Miller?",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/014.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
-   "text": "Yes."
+   "text": "Yes.",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/015.mp3"
   },
   {
    "t": "say",
    "char": "Ramirez",
-   "text": "I'm Detective Hernando Ramirez, NAPD. I'm here off the books. Your dad doesn't know I'm talking to you. I'd appreciate it if you didn't tell him."
+   "text": "I'm Detective Hernando Ramirez, NAPD. I'm here off the books. Your dad doesn't know I'm talking to you. I'd appreciate it if you didn't tell him.",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/016.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup sam]Sam had, without moving her face, gripped the edge of the counter."
+   "text": "[shot:closeup sam]Sam had, without moving her face, gripped the edge of the counter.",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/017.mp3"
   },
   {
    "t": "show",
@@ -93,27 +98,32 @@
   {
    "t": "say",
    "char": "Sam",
-   "text": "Okay."
+   "text": "Okay.",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/019.mp3"
   },
   {
    "t": "say",
    "char": "Ramirez",
-   "text": "You filed a missing-persons report on a Diego Ramos this morning. At zero-nine-fourteen, to the PSA's online portal."
+   "text": "You filed a missing-persons report on a Diego Ramos this morning. At zero-nine-fourteen, to the PSA's online portal.",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/020.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
-   "text": "Yes sir."
+   "text": "Yes sir.",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/021.mp3"
   },
   {
    "t": "say",
    "char": "Ramirez",
-   "text": "You filed it from your phone while sitting in the employee break nook of this convenience store."
+   "text": "You filed it from your phone while sitting in the employee break nook of this convenience store.",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/022.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
-   "text": "Yes sir."
+   "text": "Yes sir.",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/023.mp3"
   },
   {
    "t": "say",
@@ -134,27 +144,32 @@
   {
    "t": "say",
    "char": "Sam",
-   "text": "[beat:chill]Someone deleted it."
+   "text": "[beat:chill]Someone deleted it.",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/027.mp3"
   },
   {
    "t": "say",
    "char": "Ramirez",
-   "text": "Yes."
+   "text": "Yes.",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/028.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
-   "text": "Who can delete a PSA report?"
+   "text": "Who can delete a PSA report?",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/029.mp3"
   },
   {
    "t": "say",
    "char": "Ramirez",
-   "text": "Three people. Your father, the deputy chief, and the NexCorp system admin."
+   "text": "Three people. Your father, the deputy chief, and the NexCorp system admin.",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/030.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
-   "text": "[shot:closeup sam]Okay."
+   "text": "[shot:closeup sam]Okay.",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/031.mp3"
   },
   {
    "t": "say",
@@ -168,21 +183,25 @@
   },
   {
    "t": "narrate",
-   "text": "Sam had nodded."
+   "text": "Sam had nodded.",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/034.mp3"
   },
   {
    "t": "say",
    "char": "Ramirez",
-   "text": "I'm going to give you my number. I want you to save it under a woman's name. Your pediatrician. Whatever. Do not text me unless it's something I can do something about. If you do text me, assume it is not a secure thread. Speak in code."
+   "text": "I'm going to give you my number. I want you to save it under a woman's name. Your pediatrician. Whatever. Do not text me unless it's something I can do something about. If you do text me, assume it is not a secure thread. Speak in code.",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/035.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
-   "text": "Okay."
+   "text": "Okay.",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/036.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert card]He had handed her a card. The card said MARTINEZ RE-ROOFING & SIDING with a phone number. Sam had taken it. She had tucked it into her Kwik Stop apron pocket."
+   "text": "[shot:insert card]He had handed her a card. The card said MARTINEZ RE-ROOFING & SIDING with a phone number. Sam had taken it. She had tucked it into her Kwik Stop apron pocket.",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/037.mp3"
   },
   {
    "t": "say",
@@ -207,16 +226,19 @@
   {
    "t": "say",
    "char": "Sam",
-   "text": "Okay."
+   "text": "Okay.",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/042.mp3"
   },
   {
    "t": "say",
    "char": "Ramirez",
-   "text": "Take care of yourself, Sam. Call the rerouting number if you need the rerouting number. Don't, otherwise."
+   "text": "Take care of yourself, Sam. Call the rerouting number if you need the rerouting number. Don't, otherwise.",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/043.mp3"
   },
   {
    "t": "narrate",
-   "text": "He had put on his rain jacket. He had left. The bell had chimed."
+   "text": "He had put on his rain jacket. He had left. The bell had chimed.",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/044.mp3"
   },
   {
    "t": "hide",
@@ -224,7 +246,8 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup sam]It was now ten-eighteen. Sam was standing at the counter, empty-handed, the rain still coming down, and her hands — for the first time in three days — were shaking."
+   "text": "[shot:closeup sam]It was now ten-eighteen. Sam was standing at the counter, empty-handed, the rain still coming down, and her hands — for the first time in three days — were shaking.",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/046.mp3"
   },
   {
    "t": "show",
@@ -242,7 +265,8 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:rain_interior][shot:establish]She put the card back in her apron. She took a breath. She made herself a coffee. The microwave clock, running nine minutes fast on purpose, read ten-twenty-seven."
+   "text": "[mood:rain_interior][shot:establish]She put the card back in her apron. She took a breath. She made herself a coffee. The microwave clock, running nine minutes fast on purpose, read ten-twenty-seven.",
+   "voice": "assets/audio/voice/vol6_ch4_kwik_stop/050.mp3"
   },
   {
    "t": "hide",

@@ -153,7 +153,8 @@
       "t": "say",
       "c": "john",
       "text": "[shot:closeup john]Okay. Dry. Noted. How's the coffee.",
-      "char": "john"
+      "char": "john",
+      "voice": "assets/audio/voice/vol5_ch19_sun/033.mp3"
     },
     {
       "t": "show",
@@ -165,47 +166,55 @@
       "t": "say",
       "c": "elicia",
       "text": "The coffee is excellent. The chair is terrible. You come here every Tuesday.",
-      "char": "elicia"
+      "char": "elicia",
+      "voice": "assets/audio/voice/vol5_ch19_sun/035.mp3"
     },
     {
       "t": "say",
       "c": "john",
       "text": "I do.",
-      "char": "john"
+      "char": "john",
+      "voice": "assets/audio/voice/vol5_ch19_sun/036.mp3"
     },
     {
       "t": "say",
       "c": "elicia",
       "text": "[shot:closeup elicia]Why.",
-      "char": "elicia"
+      "char": "elicia",
+      "voice": "assets/audio/voice/vol5_ch19_sun/037.mp3"
     },
     {
       "t": "say",
       "c": "john",
       "text": "Because the café has dust motes, and the dust motes have a pattern, and I have, for reasons I decline to fully articulate, been tracking the pattern.",
-      "char": "john"
+      "char": "john",
+      "voice": "assets/audio/voice/vol5_ch19_sun/038.mp3"
     },
     {
       "t": "say",
       "c": "elicia",
       "text": "What's the pattern.",
-      "char": "elicia"
+      "char": "elicia",
+      "voice": "assets/audio/voice/vol5_ch19_sun/039.mp3"
     },
     {
       "t": "say",
       "c": "john",
       "text": "[shot:closeup john]It clusters on Tuesdays.",
-      "char": "john"
+      "char": "john",
+      "voice": "assets/audio/voice/vol5_ch19_sun/040.mp3"
     },
     {
       "t": "say",
       "c": "elicia",
       "text": "Of course it does.",
-      "char": "elicia"
+      "char": "elicia",
+      "voice": "assets/audio/voice/vol5_ch19_sun/041.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]That had been the first Tuesday. They had been meeting, more or less, every Tuesday since."
+      "text": "[shot:establish]That had been the first Tuesday. They had been meeting, more or less, every Tuesday since.",
+      "voice": "assets/audio/voice/vol5_ch19_sun/042.mp3"
     },
     {
       "t": "narrate",
@@ -303,39 +312,46 @@
       "t": "say",
       "c": "john",
       "text": "The discipline of being temperate turns out to be more interesting when the temperature in the room is changing.",
-      "char": "john"
+      "char": "john",
+      "voice": "assets/audio/voice/vol5_ch19_sun/063.mp3"
     },
     {
       "t": "say",
       "c": "elicia",
       "text": "[shot:closeup elicia]John, my darling, if you have something to say, say it.",
-      "char": "elicia"
+      "char": "elicia",
+      "voice": "assets/audio/voice/vol5_ch19_sun/064.mp3"
     },
     {
       "t": "say",
       "c": "john",
       "text": "I'll say it eventually. I'm not ready.",
-      "char": "john"
+      "char": "john",
+      "voice": "assets/audio/voice/vol5_ch19_sun/065.mp3"
     },
     {
       "t": "narrate",
-      "text": "Elicia had looked at him across the small metal table with the specific attention she used for a shot she was framing in her head."
+      "text": "Elicia had looked at him across the small metal table with the specific attention she used for a shot she was framing in her head.",
+      "voice": "assets/audio/voice/vol5_ch19_sun/066.mp3"
     },
     {
       "t": "say",
       "c": "elicia",
       "text": "Fine. But I want to know, when you're ready, that I am the first person you tell.",
-      "char": "elicia"
+      "char": "elicia",
+      "voice": "assets/audio/voice/vol5_ch19_sun/067.mp3"
     },
     {
       "t": "say",
       "c": "john",
       "text": "You will be.",
-      "char": "elicia"
+      "char": "elicia",
+      "voice": "assets/audio/voice/vol5_ch19_sun/068.mp3"
     },
     {
       "t": "narrate",
-      "text": "He had meant it."
+      "text": "He had meant it.",
+      "voice": "assets/audio/voice/vol5_ch19_sun/069.mp3"
     },
     {
       "t": "narrate",
@@ -431,171 +447,201 @@
     },
     {
       "t": "narrate",
-      "text": "Elicia crossed the café. Raised an eyebrow at the barista — Marco, who was fond of her in the careful way baristas were fond of regulars — and arrived at the small round metal table and sat."
+      "text": "Elicia crossed the café. Raised an eyebrow at the barista — Marco, who was fond of her in the careful way baristas were fond of regulars — and arrived at the small round metal table and sat.",
+      "voice": "assets/audio/voice/vol5_ch19_sun/093.mp3"
     },
     {
       "t": "say",
       "c": "elicia",
       "text": "I'm fourteen minutes late.",
-      "char": "elicia"
+      "char": "elicia",
+      "voice": "assets/audio/voice/vol5_ch19_sun/094.mp3"
     },
     {
       "t": "say",
       "c": "john",
       "text": "Twelve. I was generous.",
-      "char": "elicia"
+      "char": "elicia",
+      "voice": "assets/audio/voice/vol5_ch19_sun/095.mp3"
     },
     {
       "t": "say",
       "c": "elicia",
       "text": "You are always generous.",
-      "char": "elicia"
+      "char": "elicia",
+      "voice": "assets/audio/voice/vol5_ch19_sun/096.mp3"
     },
     {
       "t": "say",
       "c": "john",
       "text": "Not always.",
-      "char": "elicia"
+      "char": "elicia",
+      "voice": "assets/audio/voice/vol5_ch19_sun/097.mp3"
     },
     {
       "t": "say",
       "c": "elicia",
       "text": "[shot:closeup john]Increasingly.",
-      "char": "john"
+      "char": "john",
+      "voice": "assets/audio/voice/vol5_ch19_sun/098.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup elicia]She looked at him. Her eyes, which had in Graustark always seemed to be framing the world for a shot, had lately, more often, been looking at the world instead. It was a small difference. It had changed everything about how her face was arranged around them."
+      "text": "[shot:closeup elicia]She looked at him. Her eyes, which had in Graustark always seemed to be framing the world for a shot, had lately, more often, been looking at the world instead. It was a small difference. It had changed everything about how her face was arranged around them.",
+      "voice": "assets/audio/voice/vol5_ch19_sun/099.mp3"
     },
     {
       "t": "say",
       "c": "elicia",
       "text": "What's wrong.",
-      "char": "elicia"
+      "char": "elicia",
+      "voice": "assets/audio/voice/vol5_ch19_sun/100.mp3"
     },
     {
       "t": "say",
       "c": "john",
       "text": "Why do you think something's wrong.",
-      "char": "john"
+      "char": "john",
+      "voice": "assets/audio/voice/vol5_ch19_sun/101.mp3"
     },
     {
       "t": "say",
       "c": "elicia",
       "text": "Because you're writing about dust motes again, and you only write about dust motes when you're avoiding telling me something.",
-      "char": "elicia"
+      "char": "elicia",
+      "voice": "assets/audio/voice/vol5_ch19_sun/102.mp3"
     },
     {
       "t": "narrate",
-      "text": "John laughed the short surprised laugh again. The laugh had become, over the past seven months, something he did mostly around her."
+      "text": "John laughed the short surprised laugh again. The laugh had become, over the past seven months, something he did mostly around her.",
+      "voice": "assets/audio/voice/vol5_ch19_sun/103.mp3"
     },
     {
       "t": "say",
       "c": "john",
       "text": "[shot:closeup john]You said, when you're ready, I should tell you first.",
-      "char": "john"
+      "char": "john",
+      "voice": "assets/audio/voice/vol5_ch19_sun/104.mp3"
     },
     {
       "t": "say",
       "c": "elicia",
       "text": "Yes.",
-      "char": "john"
+      "char": "john",
+      "voice": "assets/audio/voice/vol5_ch19_sun/105.mp3"
     },
     {
       "t": "say",
       "c": "john",
       "text": "I'm not ready. But I think I'm getting closer.",
-      "char": "john"
+      "char": "john",
+      "voice": "assets/audio/voice/vol5_ch19_sun/106.mp3"
     },
     {
       "t": "narrate",
-      "text": "Elicia considered him for a long moment."
+      "text": "Elicia considered him for a long moment.",
+      "voice": "assets/audio/voice/vol5_ch19_sun/107.mp3"
     },
     {
       "t": "say",
       "c": "elicia",
       "text": "[shot:closeup elicia]Is it about Graustark.",
-      "char": "elicia"
+      "char": "elicia",
+      "voice": "assets/audio/voice/vol5_ch19_sun/108.mp3"
     },
     {
       "t": "say",
       "c": "john",
       "text": "I don't think it's about Graustark anymore. I think it's about something that's starting somewhere else. I think Graustark was the pattern we all learned on. I think the pattern is — transferring.",
-      "char": "elicia"
+      "char": "elicia",
+      "voice": "assets/audio/voice/vol5_ch19_sun/109.mp3"
     },
     {
       "t": "narrate",
-      "text": "Elicia looked at him. Then out the window, at the Montreal street with its trees beginning to go into their full green, at the ordinary Tuesday commerce of Saint-Viateur."
+      "text": "Elicia looked at him. Then out the window, at the Montreal street with its trees beginning to go into their full green, at the ordinary Tuesday commerce of Saint-Viateur.",
+      "voice": "assets/audio/voice/vol5_ch19_sun/110.mp3"
     },
     {
       "t": "say",
       "c": "elicia",
       "text": "Transferring where.",
-      "char": "elicia"
+      "char": "elicia",
+      "voice": "assets/audio/voice/vol5_ch19_sun/111.mp3"
     },
     {
       "t": "say",
       "c": "john",
       "text": "I don't know yet.",
-      "char": "elicia"
+      "char": "elicia",
+      "voice": "assets/audio/voice/vol5_ch19_sun/112.mp3"
     },
     {
       "t": "say",
       "c": "elicia",
       "text": "John.",
-      "char": "elicia"
+      "char": "elicia",
+      "voice": "assets/audio/voice/vol5_ch19_sun/113.mp3"
     },
     {
       "t": "say",
       "c": "john",
       "text": "Yes.",
-      "char": "elicia"
+      "char": "elicia",
+      "voice": "assets/audio/voice/vol5_ch19_sun/114.mp3"
     },
     {
       "t": "say",
       "c": "elicia",
       "text": "[shot:closeup john]When you find out, you tell me. That's the deal.",
-      "char": "john"
+      "char": "john",
+      "voice": "assets/audio/voice/vol5_ch19_sun/115.mp3"
     },
     {
       "t": "say",
       "c": "john",
       "text": "That's the deal.",
-      "char": "elicia"
+      "char": "elicia",
+      "voice": "assets/audio/voice/vol5_ch19_sun/116.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert hands]She reached across the small metal table and took his hand. Briefly. Like a handshake at the end of a contract. Then she let go and picked up the menu she had already memorized."
+      "text": "[shot:insert hands]She reached across the small metal table and took his hand. Briefly. Like a handshake at the end of a contract. Then she let go and picked up the menu she had already memorized.",
+      "voice": "assets/audio/voice/vol5_ch19_sun/117.mp3"
     },
     {
       "t": "say",
       "c": "elicia",
       "text": "I want a croissant. I've earned a croissant.",
-      "char": "john"
+      "char": "john",
+      "voice": "assets/audio/voice/vol5_ch19_sun/118.mp3"
     },
     {
       "t": "say",
       "c": "john",
       "text": "You have earned a croissant.",
-      "char": "elicia"
+      "char": "elicia",
+      "voice": "assets/audio/voice/vol5_ch19_sun/119.mp3"
     },
     {
       "t": "say",
       "c": "elicia",
       "text": "Get two.",
-      "char": "john"
+      "char": "john",
+      "voice": "assets/audio/voice/vol5_ch19_sun/120.mp3"
     },
     {
       "t": "say",
       "c": "john",
       "text": "[shot:closeup elicia]One, Elicia.",
-      "char": "elicia"
+      "char": "elicia",
+      "voice": "assets/audio/voice/vol5_ch19_sun/121.mp3"
     },
     {
       "t": "say",
       "c": "elicia",
       "text": "One. Fine.",
-      "char": "john"
+      "char": "john",
+      "voice": "assets/audio/voice/vol5_ch19_sun/122.mp3"
     },
     {
       "t": "narrate",
@@ -633,49 +679,57 @@
       "t": "say",
       "c": "elicia",
       "text": "What was that.",
-      "char": "john"
+      "char": "john",
+      "voice": "assets/audio/voice/vol5_ch19_sun/131.mp3"
     },
     {
       "t": "say",
       "c": "john",
       "text": "You saw it.",
-      "char": "john"
+      "char": "john",
+      "voice": "assets/audio/voice/vol5_ch19_sun/132.mp3"
     },
     {
       "t": "say",
       "c": "elicia",
       "text": "[shot:closeup john]Yes.",
-      "char": "john"
+      "char": "john",
+      "voice": "assets/audio/voice/vol5_ch19_sun/133.mp3"
     },
     {
       "t": "say",
       "c": "john",
       "text": "I don't know what it was.",
-      "char": "john"
+      "char": "john",
+      "voice": "assets/audio/voice/vol5_ch19_sun/134.mp3"
     },
     {
       "t": "say",
       "c": "elicia",
       "text": "That woman is not from here.",
-      "char": "elicia"
+      "char": "elicia",
+      "voice": "assets/audio/voice/vol5_ch19_sun/135.mp3"
     },
     {
       "t": "say",
       "c": "john",
       "text": "No.",
-      "char": "john"
+      "char": "john",
+      "voice": "assets/audio/voice/vol5_ch19_sun/136.mp3"
     },
     {
       "t": "say",
       "c": "elicia",
       "text": "[shot:closeup elicia]That woman is looking for someone.",
-      "char": "elicia"
+      "char": "elicia",
+      "voice": "assets/audio/voice/vol5_ch19_sun/137.mp3"
     },
     {
       "t": "say",
       "c": "john",
       "text": "Maybe.",
-      "char": "john"
+      "char": "john",
+      "voice": "assets/audio/voice/vol5_ch19_sun/138.mp3"
     },
     {
       "t": "say",
@@ -695,7 +749,8 @@
       "t": "say",
       "c": "john",
       "text": "Yes. I think she is.",
-      "char": "elicia"
+      "char": "elicia",
+      "voice": "assets/audio/voice/vol5_ch19_sun/142.mp3"
     },
     {
       "t": "narrate",
@@ -763,31 +818,36 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup john]He drank the last of his espresso. He looked at Elicia. Elicia looked back."
+      "text": "[shot:closeup john]He drank the last of his espresso. He looked at Elicia. Elicia looked back.",
+      "voice": "assets/audio/voice/vol5_ch19_sun/159.mp3"
     },
     {
       "t": "say",
       "c": "elicia",
       "text": "Tell me.",
-      "char": "elicia"
+      "char": "elicia",
+      "voice": "assets/audio/voice/vol5_ch19_sun/160.mp3"
     },
     {
       "t": "say",
       "c": "john",
       "text": "Tomorrow.",
-      "char": "elicia"
+      "char": "elicia",
+      "voice": "assets/audio/voice/vol5_ch19_sun/161.mp3"
     },
     {
       "t": "say",
       "c": "elicia",
       "text": "Tomorrow, then.",
-      "char": "elicia"
+      "char": "elicia",
+      "voice": "assets/audio/voice/vol5_ch19_sun/162.mp3"
     },
     {
       "t": "say",
       "c": "john",
       "text": "Tomorrow.",
-      "char": "elicia"
+      "char": "elicia",
+      "voice": "assets/audio/voice/vol5_ch19_sun/163.mp3"
     },
     {
       "t": "narrate",

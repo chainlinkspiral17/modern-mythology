@@ -37,7 +37,8 @@
     },
     {
       "t": "narrate",
-      "text": "The hospice on the second floor of St. Jude's Mercy was, on the last Tuesday in April, very quiet."
+      "text": "The hospice on the second floor of St. Jude's Mercy was, on the last Tuesday in April, very quiet.",
+      "voice": "assets/audio/voice/vol5_ch13_death/007.mp3"
     },
     {
       "t": "narrate",
@@ -61,7 +62,8 @@
     },
     {
       "t": "narrate",
-      "text": "Alice Newsom, in Room 217, was awake."
+      "text": "Alice Newsom, in Room 217, was awake.",
+      "voice": "assets/audio/voice/vol5_ch13_death/013.mp3"
     },
     {
       "t": "narrate",
@@ -81,7 +83,8 @@
     },
     {
       "t": "narrate",
-      "text": "She would, she had decided, save her remaining laughter for herself."
+      "text": "She would, she had decided, save her remaining laughter for herself.",
+      "voice": "assets/audio/voice/vol5_ch13_death/018.mp3"
     },
     {
       "t": "narrate",
@@ -105,23 +108,28 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert rose]On the windowsill, in a small clear glass that had once held a votive: a single white rose."
+      "text": "[shot:insert rose]On the windowsill, in a small clear glass that had once held a votive: a single white rose.",
+      "voice": "assets/audio/voice/vol5_ch13_death/024.mp3"
     },
     {
       "t": "narrate",
-      "text": "The rose was new. The rose had not been there at midnight. The rose had not been brought by any of the night staff Alice had heard come in and out, and Alice, who had been awake, would have heard."
+      "text": "The rose was new. The rose had not been there at midnight. The rose had not been brought by any of the night staff Alice had heard come in and out, and Alice, who had been awake, would have heard.",
+      "voice": "assets/audio/voice/vol5_ch13_death/025.mp3"
     },
     {
       "t": "narrate",
-      "text": "Alice looked at the rose. The rose looked back."
+      "text": "Alice looked at the rose. The rose looked back.",
+      "voice": "assets/audio/voice/vol5_ch13_death/026.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thought, Well. There you are."
+      "text": "She thought, Well. There you are.",
+      "voice": "assets/audio/voice/vol5_ch13_death/027.mp3"
     },
     {
       "t": "narrate",
-      "text": "She had been waiting, without quite admitting it, for some kind of arrival."
+      "text": "She had been waiting, without quite admitting it, for some kind of arrival.",
+      "voice": "assets/audio/voice/vol5_ch13_death/028.mp3"
     },
     {
       "t": "narrate",
@@ -141,11 +149,13 @@
     },
     {
       "t": "narrate",
-      "text": "The courtesy had taken its time. The courtesy was, evidently, a rose."
+      "text": "The courtesy had taken its time. The courtesy was, evidently, a rose.",
+      "voice": "assets/audio/voice/vol5_ch13_death/033.mp3"
     },
     {
       "t": "narrate",
-      "text": "She approved."
+      "text": "She approved.",
+      "voice": "assets/audio/voice/vol5_ch13_death/034.mp3"
     },
     {
       "t": "narrate",
@@ -157,11 +167,13 @@
     },
     {
       "t": "narrate",
-      "text": "By any normal accounting."
+      "text": "By any normal accounting.",
+      "voice": "assets/audio/voice/vol5_ch13_death/037.mp3"
     },
     {
       "t": "narrate",
-      "text": "Alice had not been on a normal accounting in some time."
+      "text": "Alice had not been on a normal accounting in some time.",
+      "voice": "assets/audio/voice/vol5_ch13_death/038.mp3"
     },
     {
       "t": "narrate",
@@ -201,7 +213,8 @@
     },
     {
       "t": "narrate",
-      "text": "This had been six years ago. She had still been working then. She had still been, in a manner of speaking, alive."
+      "text": "This had been six years ago. She had still been working then. She had still been, in a manner of speaking, alive.",
+      "voice": "assets/audio/voice/vol5_ch13_death/048.mp3"
     },
     {
       "t": "narrate",
@@ -221,7 +234,8 @@
     },
     {
       "t": "narrate",
-      "text": "Erica had been making sure Henry had been named."
+      "text": "Erica had been making sure Henry had been named.",
+      "voice": "assets/audio/voice/vol5_ch13_death/053.mp3"
     },
     {
       "t": "narrate",
@@ -241,7 +255,8 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert rose]Tonight, in the under-cabinet light, with the white rose on the windowsill, Alice considered writing Erica a letter."
+      "text": "[shot:insert rose]Tonight, in the under-cabinet light, with the white rose on the windowsill, Alice considered writing Erica a letter.",
+      "voice": "assets/audio/voice/vol5_ch13_death/058.mp3"
     },
     {
       "t": "narrate",
@@ -257,35 +272,43 @@
     },
     {
       "t": "narrate",
-      "text": "She would, instead, simply think the thank-you. She would think it carefully, in the direction of the city of Houston. She would trust the thinking to arrive in its own time."
+      "text": "She would, instead, simply think the thank-you. She would think it carefully, in the direction of the city of Houston. She would trust the thinking to arrive in its own time.",
+      "voice": "assets/audio/voice/vol5_ch13_death/062.mp3"
     },
     {
       "t": "narrate",
-      "text": "This was, she had come to understand, how a great deal of the thanking in the world was actually done."
+      "text": "This was, she had come to understand, how a great deal of the thanking in the world was actually done.",
+      "voice": "assets/audio/voice/vol5_ch13_death/063.mp3"
     },
     {
       "t": "narrate",
-      "text": "[beat:chill][mood:dream_blur][shot:closeup alice~]The room shifted, very slightly, and Alice understood that she was not, this time, alone."
+      "text": "[beat:chill][mood:dream_blur][shot:closeup alice~]The room shifted, very slightly, and Alice understood that she was not, this time, alone.",
+      "voice": "assets/audio/voice/vol5_ch13_death/064.mp3"
     },
     {
       "t": "narrate",
-      "text": "She did not turn her head. There was no need. The presence was not the kind of presence one looked at. The presence was the kind of presence one acknowledged by continuing to lie still and breathing the same way one had been breathing."
+      "text": "She did not turn her head. There was no need. The presence was not the kind of presence one looked at. The presence was the kind of presence one acknowledged by continuing to lie still and breathing the same way one had been breathing.",
+      "voice": "assets/audio/voice/vol5_ch13_death/065.mp3"
     },
     {
       "t": "narrate",
-      "text": "The presence was, she suspected, what the rose had been announcing."
+      "text": "The presence was, she suspected, what the rose had been announcing.",
+      "voice": "assets/audio/voice/vol5_ch13_death/066.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thought, Hello."
+      "text": "She thought, Hello.",
+      "voice": "assets/audio/voice/vol5_ch13_death/067.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thought, after a moment: Henry?"
+      "text": "She thought, after a moment: Henry?",
+      "voice": "assets/audio/voice/vol5_ch13_death/068.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thought, after another moment: No. Not Henry. Not yet."
+      "text": "She thought, after another moment: No. Not Henry. Not yet.",
+      "voice": "assets/audio/voice/vol5_ch13_death/069.mp3"
     },
     {
       "t": "narrate",
@@ -309,19 +332,23 @@
     },
     {
       "t": "narrate",
-      "text": "The presence was, Alice thought, sitting there because the chair was the appropriate place to sit, in this room, at this hour. The presence had courtesy. The presence had been, evidently, raised well."
+      "text": "The presence was, Alice thought, sitting there because the chair was the appropriate place to sit, in this room, at this hour. The presence had courtesy. The presence had been, evidently, raised well.",
+      "voice": "assets/audio/voice/vol5_ch13_death/075.mp3"
     },
     {
       "t": "narrate",
-      "text": "Alice approved. Alice's approval flowed in the direction of the chair, and the chair, possibly, accepted it."
+      "text": "Alice approved. Alice's approval flowed in the direction of the chair, and the chair, possibly, accepted it.",
+      "voice": "assets/audio/voice/vol5_ch13_death/076.mp3"
     },
     {
       "t": "narrate",
-      "text": "She lay still for a while."
+      "text": "She lay still for a while.",
+      "voice": "assets/audio/voice/vol5_ch13_death/077.mp3"
     },
     {
       "t": "narrate",
-      "text": "She listened to her own breathing. The breathing was a little shallower than it had been on Sunday. The breathing was, she suspected, going to be a little shallower again by the morning. The slow change in the weather had been doing its slow work."
+      "text": "She listened to her own breathing. The breathing was a little shallower than it had been on Sunday. The breathing was, she suspected, going to be a little shallower again by the morning. The slow change in the weather had been doing its slow work.",
+      "voice": "assets/audio/voice/vol5_ch13_death/078.mp3"
     },
     {
       "t": "narrate",
@@ -357,19 +384,23 @@
     },
     {
       "t": "narrate",
-      "text": "The rose on the windowsill, she suspected, had something to do with the rose bush."
+      "text": "The rose on the windowsill, she suspected, had something to do with the rose bush.",
+      "voice": "assets/audio/voice/vol5_ch13_death/087.mp3"
     },
     {
       "t": "narrate",
-      "text": "The rose on the windowsill, she also suspected, had something to do with much more than the rose bush."
+      "text": "The rose on the windowsill, she also suspected, had something to do with much more than the rose bush.",
+      "voice": "assets/audio/voice/vol5_ch13_death/088.mp3"
     },
     {
       "t": "narrate",
-      "text": "These were not contradictory suspicions."
+      "text": "These were not contradictory suspicions.",
+      "voice": "assets/audio/voice/vol5_ch13_death/089.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert chair]The presence in the chair, at some point Alice did not quite mark, became two presences."
+      "text": "[shot:insert chair]The presence in the chair, at some point Alice did not quite mark, became two presences.",
+      "voice": "assets/audio/voice/vol5_ch13_death/090.mp3"
     },
     {
       "t": "narrate",
@@ -385,19 +416,23 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert chair]She thought, quietly, in the direction of the chair: Is one of you Henry, after all."
+      "text": "[shot:insert chair]She thought, quietly, in the direction of the chair: Is one of you Henry, after all.",
+      "voice": "assets/audio/voice/vol5_ch13_death/094.mp3"
     },
     {
       "t": "narrate",
-      "text": "The chair did not, exactly, answer. The chair declined to confirm. The chair did, however, in the small way the chair was capable of communicating, intimate that the question was not, as Alice had asked it, a question that had a single answer."
+      "text": "The chair did not, exactly, answer. The chair declined to confirm. The chair did, however, in the small way the chair was capable of communicating, intimate that the question was not, as Alice had asked it, a question that had a single answer.",
+      "voice": "assets/audio/voice/vol5_ch13_death/095.mp3"
     },
     {
       "t": "narrate",
-      "text": "Alice considered this."
+      "text": "Alice considered this.",
+      "voice": "assets/audio/voice/vol5_ch13_death/096.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thought, after a while: Of course. Of course not just one. There would be everyone. There would have to be."
+      "text": "She thought, after a while: Of course. Of course not just one. There would be everyone. There would have to be.",
+      "voice": "assets/audio/voice/vol5_ch13_death/097.mp3"
     },
     {
       "t": "narrate",
@@ -425,11 +460,13 @@
     },
     {
       "t": "narrate",
-      "text": "[beat:lift]She felt — she felt a small specific lift, the kind of lift she had not felt since she was a young woman dancing at a wedding — the unmistakable [wave amp=6 freq=2]warmth of being expected[/wave]."
+      "text": "[beat:lift]She felt — she felt a small specific lift, the kind of lift she had not felt since she was a young woman dancing at a wedding — the unmistakable [wave amp=6 freq=2]warmth of being expected[/wave].",
+      "voice": "assets/audio/voice/vol5_ch13_death/104.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Outside the window, somewhere in the parking lot below, a car door closed softly. A late-shift visitor or an early-shift staff member. Footsteps crossed the wet asphalt, paused, resumed."
+      "text": "[shot:establish]Outside the window, somewhere in the parking lot below, a car door closed softly. A late-shift visitor or an early-shift staff member. Footsteps crossed the wet asphalt, paused, resumed.",
+      "voice": "assets/audio/voice/vol5_ch13_death/105.mp3"
     },
     {
       "t": "narrate",
@@ -441,51 +478,63 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup alice]Alice closed her eyes."
+      "text": "[shot:closeup alice]Alice closed her eyes.",
+      "voice": "assets/audio/voice/vol5_ch13_death/108.mp3"
     },
     {
       "t": "narrate",
-      "text": "The presence in the chair did not move."
+      "text": "The presence in the chair did not move.",
+      "voice": "assets/audio/voice/vol5_ch13_death/109.mp3"
     },
     {
       "t": "narrate",
-      "text": "The rose on the windowsill — Alice did not need to look at it now to know — bloomed open by the smallest possible degree, the way roses sometimes did at four in the morning when nobody was watching. Or, sometimes, when somebody was."
+      "text": "The rose on the windowsill — Alice did not need to look at it now to know — bloomed open by the smallest possible degree, the way roses sometimes did at four in the morning when nobody was watching. Or, sometimes, when somebody was.",
+      "voice": "assets/audio/voice/vol5_ch13_death/110.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thought, very carefully, the thank-you to Erica Campbell. She thought it precisely. She thought it once."
+      "text": "She thought, very carefully, the thank-you to Erica Campbell. She thought it precisely. She thought it once.",
+      "voice": "assets/audio/voice/vol5_ch13_death/111.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thought, Henry. I'm coming. Don't dig anything up."
+      "text": "She thought, Henry. I'm coming. Don't dig anything up.",
+      "voice": "assets/audio/voice/vol5_ch13_death/112.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thought, Buster."
+      "text": "She thought, Buster.",
+      "voice": "assets/audio/voice/vol5_ch13_death/113.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_b]She thought, Mama."
+      "text": "[shot:establish_b]She thought, Mama.",
+      "voice": "assets/audio/voice/vol5_ch13_death/114.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thought, Yes."
+      "text": "She thought, Yes.",
+      "voice": "assets/audio/voice/vol5_ch13_death/115.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thought, Yes."
+      "text": "She thought, Yes.",
+      "voice": "assets/audio/voice/vol5_ch13_death/116.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thought, Yes."
+      "text": "She thought, Yes.",
+      "voice": "assets/audio/voice/vol5_ch13_death/117.mp3"
     },
     {
       "t": "narrate",
-      "text": "The under-cabinet light continued, steadily."
+      "text": "The under-cabinet light continued, steadily.",
+      "voice": "assets/audio/voice/vol5_ch13_death/118.mp3"
     },
     {
       "t": "narrate",
-      "text": "The hospice, on the last Tuesday in April, was very quiet."
+      "text": "The hospice, on the last Tuesday in April, was very quiet.",
+      "voice": "assets/audio/voice/vol5_ch13_death/119.mp3"
     },
     {
       "t": "narrate",
@@ -501,11 +550,13 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert chair]The chair by the window was empty."
+      "text": "[shot:insert chair]The chair by the window was empty.",
+      "voice": "assets/audio/voice/vol5_ch13_death/123.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert rose~]The rose on the windowsill was bloomed."
+      "text": "[shot:insert rose~]The rose on the windowsill was bloomed.",
+      "voice": "assets/audio/voice/vol5_ch13_death/124.mp3"
     },
     {
       "t": "narrate",
@@ -521,15 +572,18 @@
     },
     {
       "t": "narrate",
-      "text": "The rose, in the window, in the under-cabinet light, did not, after Alice, change again."
+      "text": "The rose, in the window, in the under-cabinet light, did not, after Alice, change again.",
+      "voice": "assets/audio/voice/vol5_ch13_death/128.mp3"
     },
     {
       "t": "narrate",
-      "text": "The wheel turned."
+      "text": "The wheel turned.",
+      "voice": "assets/audio/voice/vol5_ch13_death/129.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Alice Newsom, having paid the required attention, stepped quietly out of the room."
+      "text": "[shot:establish]Alice Newsom, having paid the required attention, stepped quietly out of the room.",
+      "voice": "assets/audio/voice/vol5_ch13_death/130.mp3"
     },
     {
       "t": "end"

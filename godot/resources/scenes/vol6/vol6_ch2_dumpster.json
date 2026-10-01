@@ -41,19 +41,22 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:day_bright][shot:closeup ben]Ben has been off shift for four minutes. He is at the dumpster. He has his work shirt off and his tank top on and his apron slung over his shoulder, and he is drinking the first Powerade. Jesse arrives at 14:17 carrying the second and a crumpled paper bag."
+      "text": "[mood:day_bright][shot:closeup ben]Ben has been off shift for four minutes. He is at the dumpster. He has his work shirt off and his tank top on and his apron slung over his shoulder, and he is drinking the first Powerade. Jesse arrives at 14:17 carrying the second and a crumpled paper bag.",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/007.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "\"Hey.\""
+      "text": "\"Hey.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/008.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "\"Hey.\""
+      "text": "\"Hey.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/009.mp3"
     },
     {
      "t": "narrate",
@@ -74,13 +77,15 @@
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "[shot:closeup jesse](without preamble) \"My dad took pictures.\""
+      "text": "[shot:closeup jesse](without preamble) \"My dad took pictures.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/013.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "\"Okay.\""
+      "text": "\"Okay.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/014.mp3"
     },
     {
       "t": "say",
@@ -96,37 +101,43 @@
     },
     {
       "t": "narrate",
-      "text": "Ben is quiet."
+      "text": "Ben is quiet.",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/017.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "\"I'm not crazy.\""
+      "text": "\"I'm not crazy.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/018.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "[shot:closeup person]\"I know.\""
+      "text": "[shot:closeup person]\"I know.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/019.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "\"You know?\""
+      "text": "\"You know?\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/020.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "\"Yeah, Jess. I know.\""
+      "text": "\"Yeah, Jess. I know.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/021.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "\"Why do you —\""
+      "text": "\"Why do you —\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/022.mp3"
     },
     {
       "t": "say",
@@ -144,187 +155,219 @@
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "\"I didn't think anything about it until I got home and realized the streetlight across from McClary's has been out since February. Whole block's dark. But the kid wasn't.\""
+      "text": "\"I didn't think anything about it until I got home and realized the streetlight across from McClary's has been out since February. Whole block's dark. But the kid wasn't.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/025.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "[shot:closeup person_b]\"You didn't mention this.\""
+      "text": "[shot:closeup person_b]\"You didn't mention this.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/026.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "\"I was going to put it in the pad. I hadn't, yet.\""
+      "text": "\"I was going to put it in the pad. I hadn't, yet.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/027.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "\"You have a pad.\""
+      "text": "\"You have a pad.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/028.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "\"Yeah, Jess. I have a pad.\""
+      "text": "\"Yeah, Jess. I have a pad.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/029.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "\"What kind of pad.\""
+      "text": "\"What kind of pad.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/030.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "[shot:closeup person]\"A legal pad.\""
+      "text": "[shot:closeup person]\"A legal pad.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/031.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "\"Ben.\""
+      "text": "\"Ben.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/032.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "\"Yeah.\""
+      "text": "\"Yeah.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/033.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "\"What are you putting in the legal pad.\""
+      "text": "\"What are you putting in the legal pad.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/034.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "(carefully) \"License plates. Cars that idle in the lot too long. Officers who come off-duty and act on-duty. Which parents at McClary's are encouraging what. Which kids come back. Which don't. Things like that.\""
+      "text": "(carefully) \"License plates. Cars that idle in the lot too long. Officers who come off-duty and act on-duty. Which parents at McClary's are encouraging what. Which kids come back. Which don't. Things like that.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/035.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "[shot:closeup person_b]\"Jesus, Ben.\""
+      "text": "[shot:closeup person_b]\"Jesus, Ben.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/036.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "\"Yeah.\""
+      "text": "\"Yeah.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/037.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "\"How long.\""
+      "text": "\"How long.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/038.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "\"Since March.\""
+      "text": "\"Since March.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/039.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Jesse exhales. He slides down the side of the dumpster until he is crouched at the base of it, elbows on his knees. He says, to his hands:"
+      "text": "[shot:establish]Jesse exhales. He slides down the side of the dumpster until he is crouched at the base of it, elbows on his knees. He says, to his hands:",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/040.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "\"Diego didn't come in today.\""
+      "text": "\"Diego didn't come in today.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/041.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "\"I know.\""
+      "text": "\"I know.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/042.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "\"Sam hasn't said anything.\""
+      "text": "\"Sam hasn't said anything.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/043.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "\"Sam is, right now, learning how to say nothing. She is not going to say anything for a little while. That is correct.\""
+      "text": "\"Sam is, right now, learning how to say nothing. She is not going to say anything for a little while. That is correct.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/044.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "\"Ben. How do you know that.\""
+      "text": "\"Ben. How do you know that.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/045.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "[shot:closeup person]\"I don't. I'm guessing. Based on what I know about Sam and what I know about her dad.\""
+      "text": "[shot:closeup person]\"I don't. I'm guessing. Based on what I know about Sam and what I know about her dad.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/046.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "\"Her dad.\""
+      "text": "\"Her dad.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/047.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "\"Yeah.\""
+      "text": "\"Yeah.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/048.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "\"Ben. Her dad is the chief.\""
+      "text": "\"Ben. Her dad is the chief.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/049.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "\"Yeah.\""
+      "text": "\"Yeah.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/050.mp3"
     },
     {
       "t": "narrate",
-      "text": "A long quiet."
+      "text": "A long quiet.",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/051.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "[shot:closeup person_b]\"I brought the prints.\""
+      "text": "[shot:closeup person_b]\"I brought the prints.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/052.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "\"Okay.\""
+      "text": "\"Okay.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/053.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "\"You want to see them?\""
+      "text": "\"You want to see them?\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/054.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "\"Yeah.\""
+      "text": "\"Yeah.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/055.mp3"
     },
     {
       "t": "narrate",
-      "text": "[mood:dream_blur][shot:insert prints]Jesse opens the paper bag. He takes out three eight-by-tens. He hands them to Ben. Ben looks at them."
+      "text": "[mood:dream_blur][shot:insert prints]Jesse opens the paper bag. He takes out three eight-by-tens. He hands them to Ben. Ben looks at them.",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/056.mp3"
     },
     {
       "t": "narrate",
@@ -344,29 +387,34 @@
     },
     {
       "t": "narrate",
-      "text": "[beat:chill][shot:insert prints~]In the third — the front entrance of the subdivision. Under the archway. A man in a charcoal suit, looking directly at the camera."
+      "text": "[beat:chill][shot:insert prints~]In the third — the front entrance of the subdivision. Under the archway. A man in a charcoal suit, looking directly at the camera.",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/061.mp3"
     },
     {
       "t": "narrate",
-      "text": "Ben stares at the third photograph for a long time."
+      "text": "Ben stares at the third photograph for a long time.",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/062.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "\"This one's looking at your dad.\""
+      "text": "\"This one's looking at your dad.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/063.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "\"Yeah.\""
+      "text": "\"Yeah.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/064.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "\"How does your dad feel about that.\""
+      "text": "\"How does your dad feel about that.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/065.mp3"
     },
     {
       "t": "say",
@@ -384,157 +432,184 @@
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "[shot:closeup person]\"Just looking at it.\""
+      "text": "[shot:closeup person]\"Just looking at it.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/068.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "\"Just looking at it.\""
+      "text": "\"Just looking at it.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/069.mp3"
     },
     {
       "t": "narrate",
-      "text": "[mood:day_bright][shot:closeup ben]Ben is quiet."
+      "text": "[mood:day_bright][shot:closeup ben]Ben is quiet.",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/070.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "(eventually) \"Can I keep these.\""
+      "text": "(eventually) \"Can I keep these.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/071.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "\"Dad will notice.\""
+      "text": "\"Dad will notice.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/072.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "\"Can I take pictures of them with my phone, then give them back to you, and you put them back on the line before your dad comes home.\""
+      "text": "\"Can I take pictures of them with my phone, then give them back to you, and you put them back on the line before your dad comes home.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/073.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "\"Yeah. Yeah, that works.\""
+      "text": "\"Yeah. Yeah, that works.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/074.mp3"
     },
     {
       "t": "narrate",
-      "text": "Ben takes out his phone. He photographs all three. He hands them back to Jesse. Jesse puts them in the bag."
+      "text": "Ben takes out his phone. He photographs all three. He hands them back to Jesse. Jesse puts them in the bag.",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/075.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "\"Jess.\""
+      "text": "\"Jess.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/076.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "\"Yeah.\""
+      "text": "\"Yeah.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/077.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "\"We're going to need a third person who isn't us.\""
+      "text": "\"We're going to need a third person who isn't us.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/078.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "\"Like who.\""
+      "text": "\"Like who.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/079.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "\"Like Sam.\""
+      "text": "\"Like Sam.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/080.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "(short laugh) \"Sam is going to have her hands full.\""
+      "text": "(short laugh) \"Sam is going to have her hands full.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/081.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "\"Yeah. That's why.\""
+      "text": "\"Yeah. That's why.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/082.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "\"You think she knows.\""
+      "text": "\"You think she knows.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/083.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "\"I think she's about to.\""
+      "text": "\"I think she's about to.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/084.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "\"Ben.\""
+      "text": "\"Ben.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/085.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "\"Yeah.\""
+      "text": "\"Yeah.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/086.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "\"What do we do.\""
+      "text": "\"What do we do.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/087.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup ben]Ben finishes his Powerade. He crushes the bottle."
+      "text": "[shot:closeup ben]Ben finishes his Powerade. He crushes the bottle.",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/088.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "\"We keep noticing. We keep the pad. We do not, yet, go to anyone. We wait for one more thing. One more thing we can all three point at and say — this one, this is the one that makes the rest real. Then we talk to Sam. Then, maybe, we do something.\""
+      "text": "\"We keep noticing. We keep the pad. We do not, yet, go to anyone. We wait for one more thing. One more thing we can all three point at and say — this one, this is the one that makes the rest real. Then we talk to Sam. Then, maybe, we do something.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/089.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "\"How long until the one more thing.\""
+      "text": "\"How long until the one more thing.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/090.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "\"Jess. I don't know. Soon. I'm not — I'm not psychic. I'm just patient.\""
+      "text": "\"Jess. I don't know. Soon. I'm not — I'm not psychic. I'm just patient.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/091.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "\"You're a little psychic, Ben.\""
+      "text": "\"You're a little psychic, Ben.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/092.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "\"I am not.\""
+      "text": "\"I am not.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/093.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "\"You called Saturday's thing. You knew they'd come for me next.\""
+      "text": "\"You called Saturday's thing. You knew they'd come for me next.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/094.mp3"
     },
     {
       "t": "narrate",
@@ -548,29 +623,34 @@
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "\"I guessed. Different from psychic.\""
+      "text": "\"I guessed. Different from psychic.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/097.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "\"Yeah, yeah. Whatever. Okay.\""
+      "text": "\"Yeah, yeah. Whatever. Okay.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/098.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert door]Jesse stood up from his crouch. He dusted off his jeans. He turned to go back inside. At the back door he paused. He said, without turning:"
+      "text": "[shot:insert door]Jesse stood up from his crouch. He dusted off his jeans. He turned to go back inside. At the back door he paused. He said, without turning:",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/099.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "\"Thanks for the Powerade.\""
+      "text": "\"Thanks for the Powerade.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/100.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "\"Thanks for the pictures.\""
+      "text": "\"Thanks for the pictures.\"",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/101.mp3"
     },
     {
       "t": "narrate",
@@ -582,7 +662,8 @@
     },
     {
       "t": "narrate",
-      "text": "He crushed the Powerade bottle one more time, for good measure, and walked to his truck."
+      "text": "He crushed the Powerade bottle one more time, for good measure, and walked to his truck.",
+      "voice": "assets/audio/voice/vol6_ch2_dumpster/104.mp3"
     },
     {
       "t": "flag",

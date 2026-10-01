@@ -47,7 +47,8 @@
   },
   {
    "t": "narrate",
-   "text": "Maya comes in. The bell over this door is different too — lower, mellower. An older bell."
+   "text": "Maya comes in. The bell over this door is different too — lower, mellower. An older bell.",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/009.mp3"
   },
   {
    "t": "show",
@@ -57,43 +58,51 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup hal]A man behind the counter — sixties, white beard, Hawaiian shirt, reading a hardcover of something translated from Portuguese — looks up."
+   "text": "[shot:closeup hal]A man behind the counter — sixties, white beard, Hawaiian shirt, reading a hardcover of something translated from Portuguese — looks up.",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/011.mp3"
   },
   {
    "t": "say",
    "char": "Hal",
    "expr": "neutral",
-   "text": "\"Morning.\""
+   "text": "\"Morning.\"",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/012.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"Hi. I'm looking for — um. The Borges section.\""
+   "text": "\"Hi. I'm looking for — um. The Borges section.\"",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/013.mp3"
   },
   {
    "t": "narrate",
-   "text": "The man smiles slightly."
+   "text": "The man smiles slightly.",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/014.mp3"
   },
   {
    "t": "say",
    "char": "Hal",
    "expr": "neutral",
-   "text": "\"Third shelf down, back left. Past the Bolaño.\""
+   "text": "\"Third shelf down, back left. Past the Bolaño.\"",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/015.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "[shot:closeup person]\"Thanks.\""
+   "text": "[shot:closeup person]\"Thanks.\"",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/016.mp3"
   },
   {
    "t": "narrate",
-   "text": "She goes to the back. The shop is deeper than it looks from the street — another whole room opens off to the side. The Borges section is exactly where he said. She finds Labyrinths on the third shelf. She pulls it down."
+   "text": "She goes to the back. The shop is deeper than it looks from the street — another whole room opens off to the side. The Borges section is exactly where he said. She finds Labyrinths on the third shelf. She pulls it down.",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/017.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert envelope~]An envelope falls out. Plain. Sealed. Nothing written on the outside. She picks it up. She tucks it inside her jacket."
+   "text": "[shot:insert envelope~]An envelope falls out. Plain. Sealed. Nothing written on the outside. She picks it up. She tucks it inside her jacket.",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/018.mp3"
   },
   {
    "t": "flag",
@@ -102,79 +111,93 @@
   },
   {
    "t": "narrate",
-   "text": "She walks back to the counter with the copy of Labyrinths in her hand."
+   "text": "She walks back to the counter with the copy of Labyrinths in her hand.",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/020.mp3"
   },
   {
    "t": "say",
    "char": "Hal",
    "expr": "neutral",
-   "text": "(without looking up from his book) \"You want to buy that?\""
+   "text": "(without looking up from his book) \"You want to buy that?\"",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/021.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"How much.\""
+   "text": "\"How much.\"",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/022.mp3"
   },
   {
    "t": "say",
    "char": "Hal",
    "expr": "neutral",
-   "text": "[shot:closeup person_b]\"Seven.\""
+   "text": "[shot:closeup person_b]\"Seven.\"",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/023.mp3"
   },
   {
    "t": "narrate",
-   "text": "She hands him a ten. He rings her up. He gives her three."
+   "text": "She hands him a ten. He rings her up. He gives her three.",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/024.mp3"
   },
   {
    "t": "say",
    "char": "Hal",
    "expr": "neutral",
-   "text": "(still not looking up) \"Tell Rick I said the pickle's extra on Mondays.\""
+   "text": "(still not looking up) \"Tell Rick I said the pickle's extra on Mondays.\"",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/025.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"I will.\""
+   "text": "\"I will.\"",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/026.mp3"
   },
   {
    "t": "say",
    "char": "Hal",
    "expr": "neutral",
-   "text": "[shot:closeup hal]\"Maya.\""
+   "text": "[shot:closeup hal]\"Maya.\"",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/027.mp3"
   },
   {
    "t": "narrate",
-   "text": "She pauses."
+   "text": "She pauses.",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/028.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"Yeah.\""
+   "text": "\"Yeah.\"",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/029.mp3"
   },
   {
    "t": "say",
    "char": "Hal",
    "expr": "neutral",
-   "text": "\"You didn't ask my name.\""
+   "text": "\"You didn't ask my name.\"",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/030.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"I didn't.\""
+   "text": "\"I didn't.\"",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/031.mp3"
   },
   {
    "t": "say",
    "char": "Hal",
    "expr": "neutral",
-   "text": "[beat:chill]\"Good girl.\""
+   "text": "[beat:chill]\"Good girl.\"",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/032.mp3"
   },
   {
    "t": "narrate",
-   "text": "She leaves."
+   "text": "She leaves.",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/033.mp3"
   },
   {
    "t": "hide",
@@ -186,7 +209,8 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]As she crosses the parking lot to her bike — she does not have a car; the Corolla is Sam's; Maya's bike has been, since her arrival, her full transportation stack — she glances back at the shop's front window."
+   "text": "[shot:establish]As she crosses the parking lot to her bike — she does not have a car; the Corolla is Sam's; Maya's bike has been, since her arrival, her full transportation stack — she glances back at the shop's front window.",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/036.mp3"
   },
   {
    "t": "narrate",
@@ -202,19 +226,23 @@
   },
   {
    "t": "narrate",
-   "text": "Maya waves, small and brief. The man nods, small and brief. Then he turns fully to the woman in the floral dress, and Maya is no longer the subject of the shop's attention, and the transaction, whatever it was, is over."
+   "text": "Maya waves, small and brief. The man nods, small and brief. Then he turns fully to the woman in the floral dress, and Maya is no longer the subject of the shop's attention, and the transaction, whatever it was, is over.",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/040.mp3"
   },
   {
    "t": "narrate",
-   "text": "She mounts her bike. She rides back toward Harmony Creek. The envelope, against her ribs, is warm from her body. She does not open it on the road."
+   "text": "She mounts her bike. She rides back toward Harmony Creek. The envelope, against her ribs, is warm from her body. She does not open it on the road.",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/041.mp3"
   },
   {
    "t": "narrate",
-   "text": "She will, when she gets back to Cosmic Comics, hand it to Rick unopened, as instructed. Rick will take it and nod and open the back office door and disappear into it. Maya will not see what is inside the envelope."
+   "text": "She will, when she gets back to Cosmic Comics, hand it to Rick unopened, as instructed. Rick will take it and nod and open the back office door and disappear into it. Maya will not see what is inside the envelope.",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/042.mp3"
   },
   {
    "t": "narrate",
-   "text": "But six days from now, at ten-oh-three PM on a Sunday, Maya will be sitting at her own desk in her bedroom at her grandmother's house, and Rick will text her — for the first time ever, from a number she has not, until that moment, had — a single photograph."
+   "text": "But six days from now, at ten-oh-three PM on a Sunday, Maya will be sitting at her own desk in her bedroom at her grandmother's house, and Rick will text her — for the first time ever, from a number she has not, until that moment, had — a single photograph.",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/043.mp3"
   },
   {
    "t": "narrate",
@@ -226,11 +254,13 @@
   },
   {
    "t": "narrate",
-   "text": "Maya will look at the map for a long time. She will, the following Monday, take the map to Sam."
+   "text": "Maya will look at the map for a long time. She will, the following Monday, take the map to Sam.",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/046.mp3"
   },
   {
    "t": "narrate",
-   "text": "But that is six days away, and tonight is only Monday, and the summer is only three days old, and Maya is on her bike riding the long slow arterial back into her subdivision under the flat Texas afternoon light with an envelope under her jacket that she has not, will not, has promised not to, open."
+   "text": "But that is six days away, and tonight is only Monday, and the summer is only three days old, and Maya is on her bike riding the long slow arterial back into her subdivision under the flat Texas afternoon light with an envelope under her jacket that she has not, will not, has promised not to, open.",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/047.mp3"
   },
   {
    "t": "narrate",
@@ -238,11 +268,13 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:dream_blur][shot:insert crow]Overhead, a crow flies. Not the cat's crow. Not any crow she has, previously, noticed. This crow is simply a crow."
+   "text": "[mood:dream_blur][shot:insert crow]Overhead, a crow flies. Not the cat's crow. Not any crow she has, previously, noticed. This crow is simply a crow.",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/049.mp3"
   },
   {
    "t": "narrate",
-   "text": "She does not know yet that most of the crows are not simply crows. She will learn."
+   "text": "She does not know yet that most of the crows are not simply crows. She will learn.",
+   "voice": "assets/audio/voice/vol6_ch2_bindery/050.mp3"
   },
   {
    "t": "jump",

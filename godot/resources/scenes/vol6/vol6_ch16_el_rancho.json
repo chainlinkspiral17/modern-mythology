@@ -29,91 +29,113 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2][mood:night]The shift starts at ten the way every shift starts at ten."
+      "text": "[trip:1.2][mood:night]The shift starts at ten the way every shift starts at ten.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/005.mp3"
     },
     {
       "t": "narrate",
-      "text": "Jessa runs the team meeting at ten oh-two."
+      "text": "Jessa runs the team meeting at ten oh-two.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/006.mp3"
     },
     {
       "t": "narrate",
-      "text": "The team meeting tonight is shorter than usual because the team meeting tomorrow night is going to be the inventory meeting and Jessa has, in her shift-supervisor way, decided that tonight's prep work is going to be done in the doing rather than in the meeting about the doing."
+      "text": "The team meeting tonight is shorter than usual because the team meeting tomorrow night is going to be the inventory meeting and Jessa has, in her shift-supervisor way, decided that tonight's prep work is going to be done in the doing rather than in the meeting about the doing.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/007.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert pallet]The pallets are heavy."
+      "text": "[shot:insert pallet]The pallets are heavy.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/008.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert pallet]The pallets are heavy because day-side packed them for inventory, which means double-stacking, which means the centers of gravity are wrong on most of the loads,"
+      "text": "[shot:insert pallet]The pallets are heavy because day-side packed them for inventory, which means double-stacking, which means the centers of gravity are wrong on most of the loads,",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/009.mp3"
     },
     {
       "t": "narrate",
-      "text": "which means Diego — in the first hour — takes three corners wider than he would otherwise and watches Russell, three aisles over, take five corners wider than he would otherwise."
+      "text": "which means Diego — in the first hour — takes three corners wider than he would otherwise and watches Russell, three aisles over, take five corners wider than he would otherwise.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/010.mp3"
     },
     {
       "t": "narrate",
-      "text": "Marisol, who has been pushing pallets at this store for seven years, takes her corners normal-width by the small knowledge of how to lean against a wrong-stacked load to compensate for the wrong stack."
+      "text": "Marisol, who has been pushing pallets at this store for seven years, takes her corners normal-width by the small knowledge of how to lean against a wrong-stacked load to compensate for the wrong stack.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/011.mp3"
     },
     {
       "t": "narrate",
-      "text": "Marisol is the team's center of gravity in more ways than one. Diego registers this without naming it."
+      "text": "Marisol is the team's center of gravity in more ways than one. Diego registers this without naming it.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/012.mp3"
     },
     {
       "t": "narrate",
-      "text": "Doug is in dairy."
+      "text": "Doug is in dairy.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/013.mp3"
     },
     {
       "t": "narrate",
-      "text": "Doug is, by ten forty-eight, two pages into Book Seven of The Brothers Karamazov. He has been in Book Seven for three nights."
+      "text": "Doug is, by ten forty-eight, two pages into Book Seven of The Brothers Karamazov. He has been in Book Seven for three nights.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/014.mp3"
     },
     {
       "t": "narrate",
-      "text": "Book Seven is, by Doug's own internal accounting which he has shared with no one, the section of Karamazov that does not, at any of his eleven previous readings, get easier. Doug works the half-gallons."
+      "text": "Book Seven is, by Doug's own internal accounting which he has shared with no one, the section of Karamazov that does not, at any of his eleven previous readings, get easier. Doug works the half-gallons.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/015.mp3"
     },
     {
       "t": "narrate",
-      "text": "Doug does not, in his work, look up."
+      "text": "Doug does not, in his work, look up.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/016.mp3"
     },
     {
       "t": "narrate",
-      "text": "BT is in cereal again."
+      "text": "BT is in cereal again.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/017.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]BT has been in cereal for six weeks. Jessa has, by some calculation Diego does not know the math of, decided that BT is going to be in cereal until Jessa decides otherwise."
+      "text": "[shot:establish]BT has been in cereal for six weeks. Jessa has, by some calculation Diego does not know the math of, decided that BT is going to be in cereal until Jessa decides otherwise.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/018.mp3"
     },
     {
       "t": "narrate",
-      "text": "BT has, by his own count, asked Jessa about being moved to a more interesting aisle exactly once, in week four, and Jessa had said cereal in the way Jessa says things she has already decided about, and BT has not, since, asked again."
+      "text": "BT has, by his own count, asked Jessa about being moved to a more interesting aisle exactly once, in week four, and Jessa had said cereal in the way Jessa says things she has already decided about, and BT has not, since, asked again.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/019.mp3"
     },
     {
       "t": "narrate",
-      "text": "BT, in cereal, is faster than the team needs him to be in cereal."
+      "text": "BT, in cereal, is faster than the team needs him to be in cereal.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/020.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]BT, in cereal, is also, by Diego's count, every fifteen minutes or so, looking — peripherally, from the end of his aisle — toward where Diego is working."
+      "text": "[shot:establish]BT, in cereal, is also, by Diego's count, every fifteen minutes or so, looking — peripherally, from the end of his aisle — toward where Diego is working.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/021.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego pretends not to register this."
+      "text": "Diego pretends not to register this.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/022.mp3"
     },
     {
       "t": "narrate",
-      "text": "He registers it."
+      "text": "He registers it.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/023.mp3"
     },
     {
       "t": "narrate",
-      "text": "At one fifty-six AM Diego is in canned soup when BT comes around the end of the aisle."
+      "text": "At one fifty-six AM Diego is in canned soup when BT comes around the end of the aisle.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/024.mp3"
     },
     {
       "t": "narrate",
-      "text": "BT has, in his hand, the empty bottom flat of a case of Campbell's tomato."
+      "text": "BT has, in his hand, the empty bottom flat of a case of Campbell's tomato.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/025.mp3"
     },
     {
       "t": "narrate",
-      "text": "BT is bringing the flat back to the cardboard bale at receiving, which is a thing BT does not have to do — Marisol's domain is recycling tonight — but which BT has been doing all summer in the way new hires do small extra things that make them, in their own minds, more visible to the team."
+      "text": "BT is bringing the flat back to the cardboard bale at receiving, which is a thing BT does not have to do — Marisol's domain is recycling tonight — but which BT has been doing all summer in the way new hires do small extra things that make them, in their own minds, more visible to the team.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/026.mp3"
     },
     {
       "t": "show",
@@ -123,97 +145,117 @@
     },
     {
       "t": "narrate",
-      "text": "BT pauses at the end of Diego's aisle."
+      "text": "BT pauses at the end of Diego's aisle.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/028.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "[shot:closeup person]Hey.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/029.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego looks up."
+      "text": "Diego looks up.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/030.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Hey.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/031.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "Lunch is at four, right.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/032.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/033.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "[shot:closeup bt]You — uh. You wanna get out tonight? Taqueria El Rancho. Drive-thru. My treat. We got — what. Two hours.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/034.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego, in the aisle, does the thing he has been training himself to do all summer when an adult — or a young man who is mostly an adult — is at the end of the aisle asking him a thing he had not, ten seconds ago, expected to be asked."
+      "text": "Diego, in the aisle, does the thing he has been training himself to do all summer when an adult — or a young man who is mostly an adult — is at the end of the aisle asking him a thing he had not, ten seconds ago, expected to be asked.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/035.mp3"
     },
     {
       "t": "narrate",
-      "text": "He waits."
+      "text": "He waits.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/036.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thinks."
+      "text": "He thinks.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/037.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thinks, in the time it takes BT to set the cardboard flat against his hip and shift his weight to the other foot: I have been declining BT for six weeks. Doug told me on Tuesday I do not have to be the one who lets him in."
+      "text": "He thinks, in the time it takes BT to set the cardboard flat against his hip and shift his weight to the other foot: I have been declining BT for six weeks. Doug told me on Tuesday I do not have to be the one who lets him in.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/038.mp3"
     },
     {
       "t": "narrate",
-      "text": "I have, for six weeks, not let him in. The not-letting-in has been — it has been the team's position. I have agreed with the team's position by my silence."
+      "text": "I have, for six weeks, not let him in. The not-letting-in has been — it has been the team's position. I have agreed with the team's position by my silence.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/039.mp3"
     },
     {
       "t": "narrate",
-      "text": "I have, by agreeing with the team's position by my silence, been participating in the team's position without ever having had to defend it to anyone, including myself."
+      "text": "I have, by agreeing with the team's position by my silence, been participating in the team's position without ever having had to defend it to anyone, including myself.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/040.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thinks: if I say yes tonight, I am not endorsing his cop story. I am not joining him. I am going for a taqueria run with a coworker at four AM."
+      "text": "He thinks: if I say yes tonight, I am not endorsing his cop story. I am not joining him. I am going for a taqueria run with a coworker at four AM.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/041.mp3"
     },
     {
       "t": "narrate",
-      "text": "The taqueria run is, by the architecture of what coworkers do at four AM on graveyard shifts, the smallest possible yes."
+      "text": "The taqueria run is, by the architecture of what coworkers do at four AM on graveyard shifts, the smallest possible yes.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/042.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_b]The smallest possible yes is also, by being the smallest possible yes, the one I can, in good faith, give without also having to give the larger thing."
+      "text": "[shot:establish_b]The smallest possible yes is also, by being the smallest possible yes, the one I can, in good faith, give without also having to give the larger thing.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/043.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_b]He thinks: also I am hungry and El Rancho is good."
+      "text": "[shot:establish_b]He thinks: also I am hungry and El Rancho is good.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/044.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Yeah. Sure. Four.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/045.mp3"
     },
     {
       "t": "narrate",
-      "text": "BT's face does the thing a face does when a person who has been bracing for no has, instead, gotten yes."
+      "text": "BT's face does the thing a face does when a person who has been bracing for no has, instead, gotten yes.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/046.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "Cool. Cool, man. I'll meet you at the dock at four.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/047.mp3"
     },
     {
       "t": "hide",
@@ -221,75 +263,93 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He goes."
+      "text": "[shot:establish]He goes.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/049.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego, in the aisle, returns to the canned soup."
+      "text": "Diego, in the aisle, returns to the canned soup.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/050.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thinks, with the small careful honesty he has been training all summer: I just changed something."
+      "text": "He thinks, with the small careful honesty he has been training all summer: I just changed something.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/051.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thinks: I do not know what."
+      "text": "He thinks: I do not know what.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/052.mp3"
     },
     {
       "t": "narrate",
-      "text": "He keeps stocking."
+      "text": "He keeps stocking.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/053.mp3"
     },
     {
       "t": "narrate",
-      "text": "In dairy, Doug — who has, from the half-gallons, peripherally registered the exchange at the end of canned soup because the store at one fifty-six AM has the small acoustic openness"
+      "text": "In dairy, Doug — who has, from the half-gallons, peripherally registered the exchange at the end of canned soup because the store at one fifty-six AM has the small acoustic openness",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/054.mp3"
     },
     {
       "t": "narrate",
-      "text": "that lets a man two aisles over hear a conversation if he is paying attention to whether the conversation is happening — turns the page of Karamazov."
+      "text": "that lets a man two aisles over hear a conversation if he is paying attention to whether the conversation is happening — turns the page of Karamazov.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/055.mp3"
     },
     {
       "t": "narrate",
-      "text": "Doug does not, on the page-turn, look up."
+      "text": "Doug does not, on the page-turn, look up.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/056.mp3"
     },
     {
       "t": "narrate",
-      "text": "Doug, at the half-gallons, registers — with the small Dostoevskian attention Doug brings to most things at this hour — that Diego has, this evening, said yes to BT,"
+      "text": "Doug, at the half-gallons, registers — with the small Dostoevskian attention Doug brings to most things at this hour — that Diego has, this evening, said yes to BT,",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/057.mp3"
     },
     {
       "t": "narrate",
-      "text": "and that this is the first yes Diego has said to BT in six weeks, and that this is the thing Diego had to figure out on his own and that Doug had, on Tuesday in the parking lot, been right not to push him toward."
+      "text": "and that this is the first yes Diego has said to BT in six weeks, and that this is the thing Diego had to figure out on his own and that Doug had, on Tuesday in the parking lot, been right not to push him toward.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/058.mp3"
     },
     {
       "t": "narrate",
-      "text": "Doug returns to Book Seven."
+      "text": "Doug returns to Book Seven.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/059.mp3"
     },
     {
       "t": "narrate",
-      "text": "Father Zosima is, in Book Seven, two days dead."
+      "text": "Father Zosima is, in Book Seven, two days dead.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/060.mp3"
     },
     {
       "t": "narrate",
-      "text": "Doug pulls another half-gallon."
+      "text": "Doug pulls another half-gallon.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/061.mp3"
     },
     {
       "t": "narrate",
-      "text": "By three fifty-seven AM the team is at the small unspoken pre-lunch convergence at the front of the store."
+      "text": "By three fifty-seven AM the team is at the small unspoken pre-lunch convergence at the front of the store.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/062.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert pallet]Marisol is at the deli station finishing her wipe-down of the case. Russell is at receiving inspecting the next pallet for the second half of the shift."
+      "text": "[shot:insert pallet]Marisol is at the deli station finishing her wipe-down of the case. Russell is at receiving inspecting the next pallet for the second half of the shift.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/063.mp3"
     },
     {
       "t": "narrate",
-      "text": "Jessa is at the manager's desk doing the small spreadsheet check Jessa does at four every shift. Doug is at the break room with his thermos. BT is at the dock door with his keys in his hand."
+      "text": "Jessa is at the manager's desk doing the small spreadsheet check Jessa does at four every shift. Doug is at the break room with his thermos. BT is at the dock door with his keys in his hand.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/064.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego comes up through the front."
+      "text": "Diego comes up through the front.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/065.mp3"
     },
     {
       "t": "narrate",
-      "text": "He gets his backpack from the cubby behind the register. He gets his wallet — out of habit, even though BT has said my treat — and his phone. He puts on his cap."
+      "text": "He gets his backpack from the cubby behind the register. He gets his wallet — out of habit, even though BT has said my treat — and his phone. He puts on his cap.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/066.mp3"
     },
     {
       "t": "show",
@@ -299,47 +359,56 @@
     },
     {
       "t": "narrate",
-      "text": "He passes the break room. Doug looks up."
+      "text": "He passes the break room. Doug looks up.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/068.mp3"
     },
     {
       "t": "say",
       "char": "Doug",
       "text": "Diego.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/069.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_c]Diego stops at the doorway."
+      "text": "[shot:establish_c]Diego stops at the doorway.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/070.mp3"
     },
     {
       "t": "say",
       "char": "Doug",
       "text": "Bring me back a horchata. Medium. Cash on the counter.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/071.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert five]He pushes a five across the table."
+      "text": "[shot:insert five]He pushes a five across the table.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/072.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego picks up the five."
+      "text": "Diego picks up the five.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/073.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Yeah, Doug.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/074.mp3"
     },
     {
       "t": "say",
       "char": "Doug",
       "text": "Have fun.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/075.mp3"
     },
     {
       "t": "narrate",
-      "text": "Doug returns to Karamazov."
+      "text": "Doug returns to Karamazov.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/076.mp3"
     },
     {
       "t": "hide",
@@ -347,7 +416,8 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Diego goes."
+      "text": "[shot:establish]Diego goes.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/078.mp3"
     },
     {
       "t": "bg",
@@ -355,15 +425,18 @@
     },
     {
       "t": "narrate",
-      "text": "The Altima is in the team's parking row, three spots over from Diego's truck."
+      "text": "The Altima is in the team's parking row, three spots over from Diego's truck.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/080.mp3"
     },
     {
       "t": "narrate",
-      "text": "The Altima is a 2017, beige, with the small clean of a car that has not been washed recently but has not, otherwise, been allowed to get dirty inside. There is a single pine-tree air freshener on the rearview mirror."
+      "text": "The Altima is a 2017, beige, with the small clean of a car that has not been washed recently but has not, otherwise, been allowed to get dirty inside. There is a single pine-tree air freshener on the rearview mirror.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/081.mp3"
     },
     {
       "t": "narrate",
-      "text": "The pine tree is — Diego registers, getting in — mostly scent-out."
+      "text": "The pine tree is — Diego registers, getting in — mostly scent-out.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/082.mp3"
     },
     {
       "t": "show",
@@ -373,223 +446,271 @@
     },
     {
       "t": "narrate",
-      "text": "BT is in the driver's seat."
+      "text": "BT is in the driver's seat.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/084.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "[shot:closeup person]Buckle up. Four minutes there, four back. We got time.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/085.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego buckles up."
+      "text": "Diego buckles up.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/086.mp3"
     },
     {
       "t": "narrate",
-      "text": "BT pulls out of the lot."
+      "text": "BT pulls out of the lot.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/087.mp3"
     },
     {
       "t": "narrate",
-      "text": "The road from Centro to El Rancho is the small parallel side road that runs behind the access road, past the cedar scrub, past the small dark frontage of a closed-for-the-night equipment-rental yard,"
+      "text": "The road from Centro to El Rancho is the small parallel side road that runs behind the access road, past the cedar scrub, past the small dark frontage of a closed-for-the-night equipment-rental yard,",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/088.mp3"
     },
     {
       "t": "narrate",
-      "text": "past a single working streetlight that has been the only working streetlight on this stretch since Diego started at Centro five weeks ago. The road, at four oh-two AM, is empty."
+      "text": "past a single working streetlight that has been the only working streetlight on this stretch since Diego started at Centro five weeks ago. The road, at four oh-two AM, is empty.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/089.mp3"
     },
     {
       "t": "narrate",
-      "text": "The Altima's headlights cut a small cone of yellow into the August night."
+      "text": "The Altima's headlights cut a small cone of yellow into the August night.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/090.mp3"
     },
     {
       "t": "narrate",
-      "text": "BT, at the wheel, is — Diego registers — slightly more relaxed in the car than he is in the building."
+      "text": "BT, at the wheel, is — Diego registers — slightly more relaxed in the car than he is in the building.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/091.mp3"
     },
     {
       "t": "narrate",
-      "text": "The car is, Diego understands, his actual environment. The car is the small space BT has, this summer, controlled. The building is the space the team has decided about him in. The car is the space BT gets to set the terms of."
+      "text": "The car is, Diego understands, his actual environment. The car is the small space BT has, this summer, controlled. The building is the space the team has decided about him in. The car is the space BT gets to set the terms of.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/092.mp3"
     },
     {
       "t": "narrate",
-      "text": "BT, after a beat, reaches for the dash."
+      "text": "BT, after a beat, reaches for the dash.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/093.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "Mind if I — ",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/094.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "[shot:closeup person_b]Go ahead.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/095.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]BT presses play on his phone, which is in the dashboard cradle."
+      "text": "[shot:insert phone]BT presses play on his phone, which is in the dashboard cradle.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/096.mp3"
     },
     {
       "t": "narrate",
-      "text": "The song starts."
+      "text": "The song starts.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/097.mp3"
     },
     {
       "t": "narrate",
-      "text": "It is — Diego does not, in the moment, recognize the song. The opening is electronic, a small repeating synth figure with a small drum loop underneath. The song is from another time."
+      "text": "It is — Diego does not, in the moment, recognize the song. The opening is electronic, a small repeating synth figure with a small drum loop underneath. The song is from another time.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/098.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego, who has been, in his life, a kid who listens to mostly Spanish-language hip-hop and the small subset of American indie his older cousin in San Antonio had been pushing on him in late high school, has not, in his life, encountered this song."
+      "text": "Diego, who has been, in his life, a kid who listens to mostly Spanish-language hip-hop and the small subset of American indie his older cousin in San Antonio had been pushing on him in late high school, has not, in his life, encountered this song.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/099.mp3"
     },
     {
       "t": "narrate",
-      "text": "The song builds."
+      "text": "The song builds.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/100.mp3"
     },
     {
       "t": "narrate",
-      "text": "The vocal comes in."
+      "text": "The vocal comes in.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/101.mp3"
     },
     {
       "t": "narrate",
-      "text": "The vocal is a man, talking-singing in a small spoken-word cadence, with the kind of British-accent affectation that the late nineties had as a small cultural posture."
+      "text": "The vocal is a man, talking-singing in a small spoken-word cadence, with the kind of British-accent affectation that the late nineties had as a small cultural posture.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/102.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]By the chorus, Diego has registered the song's central word, which is — the singer is saying — erf. Not earth. Erf."
+      "text": "[shot:establish]By the chorus, Diego has registered the song's central word, which is — the singer is saying — erf. Not earth. Erf.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/103.mp3"
     },
     {
       "t": "narrate",
-      "text": "The singer is doing the thing of intentionally eliding the th into a ff in the way British speakers sometimes do and the way the singer, by the elision, is making a small choice to mark the song with."
+      "text": "The singer is doing the thing of intentionally eliding the th into a ff in the way British speakers sometimes do and the way the singer, by the elision, is making a small choice to mark the song with.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/104.mp3"
     },
     {
       "t": "narrate",
-      "text": "BT, at the wheel, drives."
+      "text": "BT, at the wheel, drives.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/105.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "[shot:closeup bt]BT. Brian Transeau. Came up about a year ago, when people started calling me BT at — at the last job. I went to look him up. There was a BT. There already was. He's been doing this for, like, twenty-five years.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/106.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "Most of it's — most of it's instrumental electronic. This one's the one with vocals. This is — this is the only one I really like. The rest is whatever. But this one. I been driving home to this one for about eight months.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/107.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego, in the passenger seat, does not, immediately, respond."
+      "text": "Diego, in the passenger seat, does not, immediately, respond.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/108.mp3"
     },
     {
       "t": "narrate",
-      "text": "He listens to the second verse."
+      "text": "He listens to the second verse.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/109.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thinks: BT is telling me, in the car, the thing he has not told the team. The team calls him BT and does not know that there is a Brian Transeau. BT knows. BT has, in some way, made the diminutive his by finding the person it was already."
+      "text": "He thinks: BT is telling me, in the car, the thing he has not told the team. The team calls him BT and does not know that there is a Brian Transeau. BT knows. BT has, in some way, made the diminutive his by finding the person it was already.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/110.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thinks: the song is from before I was born."
+      "text": "He thinks: the song is from before I was born.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/111.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thinks: the song is from before BT was paying attention to music."
+      "text": "He thinks: the song is from before BT was paying attention to music.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/112.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He thinks: BT has been listening to the song on his way home from this job for eight months because he is, on his way home from this job for eight months, the only BT in the car."
+      "text": "[shot:establish]He thinks: BT has been listening to the song on his way home from this job for eight months because he is, on his way home from this job for eight months, the only BT in the car.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/113.mp3"
     },
     {
       "t": "narrate",
-      "text": "The chorus plays again."
+      "text": "The chorus plays again.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/114.mp3"
     },
     {
       "t": "narrate",
-      "text": "The singer, again, says erf."
+      "text": "The singer, again, says erf.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/115.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "It's spelled wrong.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/116.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/117.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "[shot:closeup person_b]On purpose?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/118.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "Yeah. Look.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/119.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]BT, at the wheel, taps the dash. The phone screen shows the song's metadata. The song title is Never Gonna Come Back Down. The album is Movement in Still Life. The artist is BT."
+      "text": "[shot:insert phone]BT, at the wheel, taps the dash. The phone screen shows the song's metadata. The song title is Never Gonna Come Back Down. The album is Movement in Still Life. The artist is BT.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/120.mp3"
     },
     {
       "t": "narrate",
-      "text": "The lyrics — BT taps the lyrics tab — show the chorus on screen. The chorus has erf in it, lowercase, with the th elided into the f, exactly as the singer is singing it."
+      "text": "The lyrics — BT taps the lyrics tab — show the chorus on screen. The chorus has erf in it, lowercase, with the th elided into the f, exactly as the singer is singing it.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/121.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego, leaning over slightly to look at the screen, registers the lyric in print."
+      "text": "Diego, leaning over slightly to look at the screen, registers the lyric in print.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/122.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Huh.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/123.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/124.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Why?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/125.mp3"
     },
     {
       "t": "narrate",
-      "text": "BT thinks."
+      "text": "BT thinks.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/126.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "[shot:closeup person]I don't know, man. The whole album is — the whole album is from the late nineties. Lot of, like, weird stylization. Capitalization, spelling, all of it.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/127.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "He was doing that thing where it's — it's supposed to sound like the way somebody might actually say it. Erf, not earth. I think he — I think he liked the visual. The way erf looks. He uses it three times in the song.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/128.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Diego nods."
+      "text": "[shot:establish]Diego nods.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/129.mp3"
     },
     {
       "t": "narrate",
-      "text": "The song goes into the bridge."
+      "text": "The song goes into the bridge.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/130.mp3"
     },
     {
       "t": "narrate",
-      "text": "They drive."
+      "text": "They drive.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/131.mp3"
     },
     {
       "t": "bg",
@@ -597,31 +718,38 @@
     },
     {
       "t": "narrate",
-      "text": "The taqueria's sign is visible from a half-mile out — TAQUERIA EL RANCHO in red paint on a yellow building, with the small image of a steer's head on the side of the building under the sign,"
+      "text": "The taqueria's sign is visible from a half-mile out — TAQUERIA EL RANCHO in red paint on a yellow building, with the small image of a steer's head on the side of the building under the sign,",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/133.mp3"
     },
     {
       "t": "narrate",
-      "text": "faded by twenty-some Texas summers into the small orange that red paint becomes when it has been outside for that long."
+      "text": "faded by twenty-some Texas summers into the small orange that red paint becomes when it has been outside for that long.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/134.mp3"
     },
     {
       "t": "narrate",
-      "text": "The drive-thru is at the back. The drive-thru has, taped to the speaker box, a hand-lettered sign that reads SPEAKER BROKE — ORDER AT WINDOW."
+      "text": "The drive-thru is at the back. The drive-thru has, taped to the speaker box, a hand-lettered sign that reads SPEAKER BROKE — ORDER AT WINDOW.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/135.mp3"
     },
     {
       "t": "narrate",
-      "text": "BT pulls into the drive-thru lane."
+      "text": "BT pulls into the drive-thru lane.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/136.mp3"
     },
     {
       "t": "narrate",
-      "text": "There is no one ahead of them."
+      "text": "There is no one ahead of them.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/137.mp3"
     },
     {
       "t": "narrate",
-      "text": "The window is — Diego knows from his three previous solo trips this summer — manned by a kid named Hugo who runs the night shift and whose family owns the taqueria."
+      "text": "The window is — Diego knows from his three previous solo trips this summer — manned by a kid named Hugo who runs the night shift and whose family owns the taqueria.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/138.mp3"
     },
     {
       "t": "narrate",
-      "text": "BT pulls up to the window."
+      "text": "BT pulls up to the window.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/139.mp3"
     },
     {
       "t": "show",
@@ -631,121 +759,143 @@
     },
     {
       "t": "narrate",
-      "text": "Hugo slides the window open."
+      "text": "Hugo slides the window open.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/141.mp3"
     },
     {
       "t": "narrate",
-      "text": "Hugo looks at BT. Hugo looks at Diego. Hugo's face does the small Hugo-thing of registering Diego in BT's car at four-oh-six AM and not, externally, commenting on the registering."
+      "text": "Hugo looks at BT. Hugo looks at Diego. Hugo's face does the small Hugo-thing of registering Diego in BT's car at four-oh-six AM and not, externally, commenting on the registering.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/142.mp3"
     },
     {
       "t": "say",
       "char": "Hugo",
       "text": "[shot:closeup person]Hey. What can I get you.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/143.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego, from the passenger seat, leans across slightly."
+      "text": "Diego, from the passenger seat, leans across slightly.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/144.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Hey, Hugo. Custom burrito for me. Steak. Guac, sour cream, cheese, onions — the white onions, not the red. And potatoes.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/145.mp3"
     },
     {
       "t": "say",
       "char": "Hugo",
       "text": "Potatoes in the burrito. Yeah. I remember.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/146.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/147.mp3"
     },
     {
       "t": "narrate",
-      "text": "Hugo writes it down."
+      "text": "Hugo writes it down.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/148.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "[shot:closeup person_b]Flauta box for me. The five-piece. Chicken. Side of guac.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/149.mp3"
     },
     {
       "t": "say",
       "char": "Hugo",
       "text": "You want the green sauce or the red sauce in the box?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/150.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "Both.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/151.mp3"
     },
     {
       "t": "say",
       "char": "Hugo",
       "text": "Both. Got it. Drinks?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/152.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Horchata. Two — no. One large for me. One medium for back at the store, that's a separate ticket.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/153.mp3"
     },
     {
       "t": "say",
       "char": "Hugo",
       "text": "[shot:closeup person]Two horchatas.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/154.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "Mexican Coke. The one with the actual sugar, in the bottle.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/155.mp3"
     },
     {
       "t": "say",
       "char": "Hugo",
       "text": "Yeah, in the back.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/156.mp3"
     },
     {
       "t": "narrate",
-      "text": "Hugo writes everything down on a small slip from a yellow pad. He tears the slip. He hands it through the window for BT to see. The total, on the slip, is twenty-eight dollars and forty cents."
+      "text": "Hugo writes everything down on a small slip from a yellow pad. He tears the slip. He hands it through the window for BT to see. The total, on the slip, is twenty-eight dollars and forty cents.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/157.mp3"
     },
     {
       "t": "narrate",
-      "text": "BT pulls out a fifty."
+      "text": "BT pulls out a fifty.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/158.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "[shot:closeup person_b]Keep the change.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/159.mp3"
     },
     {
       "t": "say",
       "char": "Hugo",
       "text": "Hugo doesn't take tips on the slip, man. House rule. There's a jar at the window. Throw it in there.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/160.mp3"
     },
     {
       "t": "narrate",
-      "text": "BT puts the change — twenty-one sixty in mostly singles and a five — in the jar."
+      "text": "BT puts the change — twenty-one sixty in mostly singles and a five — in the jar.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/161.mp3"
     },
     {
       "t": "say",
       "char": "Hugo",
       "text": "Pull around. Five minutes. We're hot on the steak right now, so the burrito will go fast, the flautas need a couple.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/162.mp3"
     },
     {
       "t": "hide",
@@ -753,191 +903,229 @@
     },
     {
       "t": "narrate",
-      "text": "BT pulls around."
+      "text": "BT pulls around.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/164.mp3"
     },
     {
       "t": "narrate",
-      "text": "He parks in the small lot at the side of the building, in the spot under the steer's head."
+      "text": "He parks in the small lot at the side of the building, in the spot under the steer's head.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/165.mp3"
     },
     {
       "t": "narrate",
-      "text": "He kills the engine."
+      "text": "He kills the engine.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/166.mp3"
     },
     {
       "t": "narrate",
-      "text": "The song, in the silence, has gone into its outro — the long electronic fade BT has, this morning, not turned the phone off through."
+      "text": "The song, in the silence, has gone into its outro — the long electronic fade BT has, this morning, not turned the phone off through.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/167.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]The fade plays out."
+      "text": "[shot:establish]The fade plays out.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/168.mp3"
     },
     {
       "t": "narrate",
-      "text": "The car is, after the fade, quiet."
+      "text": "The car is, after the fade, quiet.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/169.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "You come here a lot?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/170.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Three times this summer. By myself.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/171.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "Lunch break?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/172.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "[shot:closeup person]Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/173.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "Hugo's the night guy?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/174.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/175.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "Hugo run the family business?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/176.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "His mom and dad run it. Hugo runs the night shift. He's twenty-three, twenty-four. Going to community college during the day, I think. He told me once.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/177.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "[shot:closeup person_b]Cool.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/178.mp3"
     },
     {
       "t": "narrate",
-      "text": "A small silence."
+      "text": "A small silence.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/179.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "Thanks for coming, man. I — I know the team's been — I know the team has been a thing. I appreciate it.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/180.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego, in the passenger seat, does the thing he has been not-doing all summer in the building, which is to acknowledge that the team has been a thing."
+      "text": "Diego, in the passenger seat, does the thing he has been not-doing all summer in the building, which is to acknowledge that the team has been a thing.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/181.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Yeah. The team's been a thing.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/182.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/183.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "[shot:closeup person]It's not — it's not personal. I don't think they have anything personal against you.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/184.mp3"
     },
     {
       "t": "narrate",
-      "text": "BT laughs, very small."
+      "text": "BT laughs, very small.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/185.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "Yeah, man. I know. It's never personal. It's never personal in the way that, like, when somebody says it's not personal, you immediately know it's the most personal thing they could say.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/186.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego, despite himself, laughs."
+      "text": "Diego, despite himself, laughs.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/187.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Yeah.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/188.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "[shot:closeup person_b]I'm — I'm not gonna ask you to fix it. I just wanted — I wanted to do a normal thing once. With somebody on the team. Just to — just to know I could.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/189.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego does not, immediately, respond."
+      "text": "Diego does not, immediately, respond.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/190.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup diego~]He thinks: here is the place."
+      "text": "[shot:closeup diego~]He thinks: here is the place.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/191.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thinks: here is the small opening BT is giving me to return a small honest thing about myself."
+      "text": "He thinks: here is the small opening BT is giving me to return a small honest thing about myself.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/192.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thinks: I could tell him about — about the room, about the spring."
+      "text": "He thinks: I could tell him about — about the room, about the spring.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/193.mp3"
     },
     {
       "t": "narrate",
-      "text": "I could tell him I am sixteen and that I should not be at this job and that the team has accepted me because of the weight I am carrying that they do not know about."
+      "text": "I could tell him I am sixteen and that I should not be at this job and that the team has accepted me because of the weight I am carrying that they do not know about.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/194.mp3"
     },
     {
       "t": "narrate",
-      "text": "I could tell him that I am, by being the kid the team protects, the reason they do not have to think about him."
+      "text": "I could tell him that I am, by being the kid the team protects, the reason they do not have to think about him.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/195.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thinks: I could tell him."
+      "text": "He thinks: I could tell him.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/196.mp3"
     },
     {
       "t": "narrate",
-      "text": "[beat:still]He does not."
+      "text": "[beat:still]He does not.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/197.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "I'm — I'm glad you asked. The taqueria's good.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/198.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]BT, in the driver's seat, registers — Diego can see, in the way the corners of BT's mouth do the small resigned thing — that Diego has not, this morning, returned the disclosure."
+      "text": "[shot:establish]BT, in the driver's seat, registers — Diego can see, in the way the corners of BT's mouth do the small resigned thing — that Diego has not, this morning, returned the disclosure.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/199.mp3"
     },
     {
       "t": "narrate",
-      "text": "BT does not, externally, react."
+      "text": "BT does not, externally, react.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/200.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "Yeah, man. The flautas are gonna be the move.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/201.mp3"
     },
     {
       "t": "show",
@@ -947,59 +1135,71 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]The food comes out at four-thirteen."
+      "text": "[shot:establish]The food comes out at four-thirteen.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/203.mp3"
     },
     {
       "t": "narrate",
-      "text": "Hugo brings it himself, in a brown paper bag with the receipt stapled to the top. He hands the bag through the window to BT."
+      "text": "Hugo brings it himself, in a brown paper bag with the receipt stapled to the top. He hands the bag through the window to BT.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/204.mp3"
     },
     {
       "t": "narrate",
-      "text": "He hands the two horchatas — large for Diego, medium for Doug — separately, in styrofoam cups with sealed lids. BT hands the medium across to Diego to hold for Doug. Diego holds it."
+      "text": "He hands the two horchatas — large for Diego, medium for Doug — separately, in styrofoam cups with sealed lids. BT hands the medium across to Diego to hold for Doug. Diego holds it.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/205.mp3"
     },
     {
       "t": "narrate",
-      "text": "Hugo looks at the bag for a second before he lets it go."
+      "text": "Hugo looks at the bag for a second before he lets it go.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/206.mp3"
     },
     {
       "t": "say",
       "char": "Hugo",
       "text": "You guys want extra sauce.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/207.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "Yeah, hit me.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/208.mp3"
     },
     {
       "t": "narrate",
-      "text": "Hugo opens the small box at his elbow."
+      "text": "Hugo opens the small box at his elbow.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/209.mp3"
     },
     {
       "t": "narrate",
-      "text": "He grabs a handful of small clear plastic packets — green sauce, red sauce, the orange ghost-pepper sauce El Rancho has been making in-house for two years and that they call El Diablito, and the small individual squeeze packets of pickled jalapeños El Rancho includes free with any flauta order."
+      "text": "He grabs a handful of small clear plastic packets — green sauce, red sauce, the orange ghost-pepper sauce El Rancho has been making in-house for two years and that they call El Diablito, and the small individual squeeze packets of pickled jalapeños El Rancho includes free with any flauta order.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/210.mp3"
     },
     {
       "t": "narrate",
-      "text": "He tosses them into the bag."
+      "text": "He tosses them into the bag.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/211.mp3"
     },
     {
       "t": "narrate",
-      "text": "Hugo, by Diego's count, throws fourteen packets in."
+      "text": "Hugo, by Diego's count, throws fourteen packets in.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/212.mp3"
     },
     {
       "t": "say",
       "char": "Hugo",
       "text": "You're set.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/213.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "[shot:closeup person_b]Thanks, man.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/214.mp3"
     },
     {
       "t": "hide",
@@ -1007,7 +1207,8 @@
     },
     {
       "t": "narrate",
-      "text": "Hugo slides the window closed."
+      "text": "Hugo slides the window closed.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/216.mp3"
     },
     {
       "t": "bg",
@@ -1015,467 +1216,561 @@
     },
     {
       "t": "narrate",
-      "text": "BT pulls out of the taqueria lot."
+      "text": "BT pulls out of the taqueria lot.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/218.mp3"
     },
     {
       "t": "narrate",
-      "text": "He drives to a small lay-by a quarter mile down the road — a small gravel turnout the city has, at some point in the past, paved over with a single picnic table that nobody uses but that is, at four-fifteen AM in mid-August, available."
+      "text": "He drives to a small lay-by a quarter mile down the road — a small gravel turnout the city has, at some point in the past, paved over with a single picnic table that nobody uses but that is, at four-fifteen AM in mid-August, available.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/219.mp3"
     },
     {
       "t": "narrate",
-      "text": "BT pulls into the turnout. He parks. He kills the engine."
+      "text": "BT pulls into the turnout. He parks. He kills the engine.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/220.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "Eat in the car, eat at the table?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/221.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Car. AC.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/222.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "[shot:closeup person]Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/223.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert cup]He takes the bag. He opens it. He hands Diego the burrito, which is wrapped in foil and tin and is the weight of a custom burrito that has been wrapped at El Rancho. He pulls out his own flauta box."
+      "text": "[shot:insert cup]He takes the bag. He opens it. He hands Diego the burrito, which is wrapped in foil and tin and is the weight of a custom burrito that has been wrapped at El Rancho. He pulls out his own flauta box.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/224.mp3"
     },
     {
       "t": "narrate",
-      "text": "He opens the box on the center console between them. The flautas are five rolled fried chicken cylinders with a small cup of guacamole in the corner of the box. He pours one of the green-sauce packets over the flautas."
+      "text": "He opens the box on the center console between them. The flautas are five rolled fried chicken cylinders with a small cup of guacamole in the corner of the box. He pours one of the green-sauce packets over the flautas.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/225.mp3"
     },
     {
       "t": "narrate",
-      "text": "He pours one of the red-sauce packets over the flautas. He pulls out an El Diablito packet, considers it for a beat, and puts it back in the bag."
+      "text": "He pours one of the red-sauce packets over the flautas. He pulls out an El Diablito packet, considers it for a beat, and puts it back in the bag.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/226.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "Rain check on the Diablito. I have to drive.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/227.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego unwraps the burrito."
+      "text": "Diego unwraps the burrito.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/228.mp3"
     },
     {
       "t": "narrate",
-      "text": "The burrito is, by his count, the burrito he ordered."
+      "text": "The burrito is, by his count, the burrito he ordered.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/229.mp3"
     },
     {
       "t": "narrate",
-      "text": "Steak, white onion, the small cube of potato Hugo's mother — who is the cook on most nights — does in the burrito when Diego asks for it, the guac and sour cream and cheese in roughly equal proportion,"
+      "text": "Steak, white onion, the small cube of potato Hugo's mother — who is the cook on most nights — does in the burrito when Diego asks for it, the guac and sour cream and cheese in roughly equal proportion,",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/230.mp3"
     },
     {
       "t": "narrate",
-      "text": "with the small salsa-roja Hugo's mother has done in-house for fifteen years already inside the burrito because Hugo's mother does not, in her burrito-making, accept the fiction that a burrito is supposed to be assembled without internal sauce."
+      "text": "with the small salsa-roja Hugo's mother has done in-house for fifteen years already inside the burrito because Hugo's mother does not, in her burrito-making, accept the fiction that a burrito is supposed to be assembled without internal sauce.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/231.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert packet]Diego pours one of the green-sauce packets over the open end of the burrito anyway."
+      "text": "[shot:insert packet]Diego pours one of the green-sauce packets over the open end of the burrito anyway.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/232.mp3"
     },
     {
       "t": "narrate",
-      "text": "He pours one of the El Diablito packets over the burrito too."
+      "text": "He pours one of the El Diablito packets over the burrito too.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/233.mp3"
     },
     {
       "t": "narrate",
-      "text": "He bites."
+      "text": "He bites.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/234.mp3"
     },
     {
       "t": "narrate",
-      "text": "The burrito is — Diego registers, for the third time this summer — exactly the burrito he wants."
+      "text": "The burrito is — Diego registers, for the third time this summer — exactly the burrito he wants.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/235.mp3"
     },
     {
       "t": "narrate",
-      "text": "He chews."
+      "text": "He chews.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/236.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "Oh, man.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/237.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "[shot:closeup person_b]Yeah.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/238.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "These are — these are real.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/239.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/240.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]They eat."
+      "text": "[shot:establish]They eat.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/241.mp3"
     },
     {
       "t": "narrate",
-      "text": "For about three minutes, neither of them speaks."
+      "text": "For about three minutes, neither of them speaks.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/242.mp3"
     },
     {
       "t": "narrate",
-      "text": "The car is, in the lay-by, quiet. The AC is on at the second-from-lowest setting."
+      "text": "The car is, in the lay-by, quiet. The AC is on at the second-from-lowest setting.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/243.mp3"
     },
     {
       "t": "narrate",
-      "text": "The dashboard accumulates, between them, the small empty foil from the burrito's outer wrap and three of the fourteen sauce packets, two of them empty and crumpled, one of them — an El Diablito — that BT had, in his second flauta,"
+      "text": "The dashboard accumulates, between them, the small empty foil from the burrito's outer wrap and three of the fourteen sauce packets, two of them empty and crumpled, one of them — an El Diablito — that BT had, in his second flauta,",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/244.mp3"
     },
     {
       "t": "narrate",
-      "text": "dropped between his legs and that has, now, ended up on the driver's seat under his thigh in a way that means the packet is going to leak orange sauce into the upholstery and that BT is, in approximately ninety minutes when he gets home, going to discover."
+      "text": "dropped between his legs and that has, now, ended up on the driver's seat under his thigh in a way that means the packet is going to leak orange sauce into the upholstery and that BT is, in approximately ninety minutes when he gets home, going to discover.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/245.mp3"
     },
     {
       "t": "narrate",
-      "text": "BT does not, currently, know this."
+      "text": "BT does not, currently, know this.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/246.mp3"
     },
     {
       "t": "narrate",
-      "text": "Neither does Diego."
+      "text": "Neither does Diego.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/247.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert packet]The packet leaks slowly."
+      "text": "[shot:insert packet]The packet leaks slowly.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/248.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "[shot:establish]Tomorrow night.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/249.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/250.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "Inventory.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/251.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/252.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "How bad's it going to be.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/253.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "I don't know. It's my first one at Centro. Marisol said it's a long night. Russell said it's a long night. Jessa said be hydrated. Doug said — ",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/254.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thinks."
+      "text": "He thinks.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/255.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Doug didn't say anything.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/256.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "[shot:closeup person]Doug never says anything.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/257.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Doug says things.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/258.mp3"
     },
     {
       "t": "narrate",
-      "text": "BT looks at him."
+      "text": "BT looks at him.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/259.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "Yeah?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/260.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "He says things small. You have to be — you have to be paying attention.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/261.mp3"
     },
     {
       "t": "narrate",
-      "text": "BT is quiet for a moment."
+      "text": "BT is quiet for a moment.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/262.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "I don't think Doug talks to me.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/263.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "[shot:closeup person_b]He talks to you a little bit.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/264.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "Less than he talks to you.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/265.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/266.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "Why.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/267.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego does not, in the moment, fully know how to answer."
+      "text": "Diego does not, in the moment, fully know how to answer.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/268.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thinks: Doug talks to me because Doug has decided I'm — that I'm someone Doug talks to. The deciding is some specific Doug thing. I do not know the rule."
+      "text": "He thinks: Doug talks to me because Doug has decided I'm — that I'm someone Doug talks to. The deciding is some specific Doug thing. I do not know the rule.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/269.mp3"
     },
     {
       "t": "narrate",
-      "text": "I have been, in the five weeks I have known him, registering the rule in small pieces. The rule is — the rule is something about the way I am in the building."
+      "text": "I have been, in the five weeks I have known him, registering the rule in small pieces. The rule is — the rule is something about the way I am in the building.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/270.mp3"
     },
     {
       "t": "narrate",
-      "text": "Doug does not have a rule yet about the way you are in the building, BT. Doug is — Doug is still watching."
+      "text": "Doug does not have a rule yet about the way you are in the building, BT. Doug is — Doug is still watching.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/271.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "I don't know, man. I don't know Doug well enough to know.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/272.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "[shot:closeup person]Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/273.mp3"
     },
     {
       "t": "narrate",
-      "text": "A pause."
+      "text": "A pause.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/274.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "Doug okay?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/275.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego thinks about this."
+      "text": "Diego thinks about this.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/276.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "I think Doug is — I think Doug is doing fine. He reads a lot. He keeps to himself. He works clean. He's been at this longer than any of us. I think he's — I think he's where he wants to be.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/277.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "That's a hell of a thing to say about a guy stocking dairy at three AM at a Centro Foods in Texas.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/278.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "[shot:closeup person_b]Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/279.mp3"
     },
     {
       "t": "narrate",
-      "text": "BT laughs."
+      "text": "BT laughs.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/280.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "I mean — fair. I get it. Sometimes the place you want to be is the place that does not, technically, look like the place a person would want to be. I get that.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/281.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego, chewing, registers — with the small careful attention he has been training all summer — that BT has just, in two sentences, said something honest about himself that he has not yet, this evening, said."
+      "text": "Diego, chewing, registers — with the small careful attention he has been training all summer — that BT has just, in two sentences, said something honest about himself that he has not yet, this evening, said.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/282.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego does not, in the moment, name it."
+      "text": "Diego does not, in the moment, name it.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/283.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Yeah. The job's — the job's the job.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/284.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "[shot:closeup person]Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/285.mp3"
     },
     {
       "t": "narrate",
-      "text": "By four twenty-eight the food is mostly gone."
+      "text": "By four twenty-eight the food is mostly gone.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/286.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego has eaten about three-quarters of the burrito. The remaining quarter, wrapped back in the foil, is on the dashboard. He is going to take it home. He is going to eat it tomorrow afternoon when he wakes up."
+      "text": "Diego has eaten about three-quarters of the burrito. The remaining quarter, wrapped back in the foil, is on the dashboard. He is going to take it home. He is going to eat it tomorrow afternoon when he wakes up.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/287.mp3"
     },
     {
       "t": "narrate",
-      "text": "His grandmother is going to register the foil and is going to know he ate at El Rancho on his lunch break, and his grandmother has, over five weeks,"
+      "text": "His grandmother is going to register the foil and is going to know he ate at El Rancho on his lunch break, and his grandmother has, over five weeks,",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/288.mp3"
     },
     {
       "t": "narrate",
-      "text": "learned to register this small fact without commenting on it because his grandmother has decided that the small fact of her grandson eating Mexican food at four AM is, in his recovery, a thing she does not need to interrogate."
+      "text": "learned to register this small fact without commenting on it because his grandmother has decided that the small fact of her grandson eating Mexican food at four AM is, in his recovery, a thing she does not need to interrogate.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/289.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert flautas]BT has eaten four of the five flautas. The fifth is in the box. BT is going to eat it cold in the parking lot at Centro at six AM when the second-half wind hits him and he needs the extra calories. He does not yet know this. The flauta knows."
+      "text": "[shot:insert flautas]BT has eaten four of the five flautas. The fifth is in the box. BT is going to eat it cold in the parking lot at Centro at six AM when the second-half wind hits him and he needs the extra calories. He does not yet know this. The flauta knows.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/290.mp3"
     },
     {
       "t": "narrate",
-      "text": "The horchatas, by four twenty-eight, are gone — both Diego's large and the medium for Doug, which Diego has been holding the entire meal between his thighs to keep from sliding around on the floor."
+      "text": "The horchatas, by four twenty-eight, are gone — both Diego's large and the medium for Doug, which Diego has been holding the entire meal between his thighs to keep from sliding around on the floor.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/291.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert cup]Wait. Doug's. Diego, with the small horror of a person who has been holding a horchata for Doug and has, in the small relaxation of a meal he had not expected to enjoy, drunk it without registering whose it was, looks at the empty cup."
+      "text": "[shot:insert cup]Wait. Doug's. Diego, with the small horror of a person who has been holding a horchata for Doug and has, in the small relaxation of a meal he had not expected to enjoy, drunk it without registering whose it was, looks at the empty cup.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/292.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Oh, no.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/293.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "What.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/294.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Doug's horchata.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/295.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "What about it.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/296.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego holds up the empty cup."
+      "text": "Diego holds up the empty cup.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/297.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "I drank it.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/298.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]BT, in the driver's seat, looks at the cup."
+      "text": "[shot:establish]BT, in the driver's seat, looks at the cup.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/299.mp3"
     },
     {
       "t": "narrate",
-      "text": "BT looks at Diego."
+      "text": "BT looks at Diego.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/300.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]BT, after a beat, starts laughing."
+      "text": "[shot:establish]BT, after a beat, starts laughing.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/301.mp3"
     },
     {
       "t": "narrate",
-      "text": "BT laughs in the way a man laughs at a thing that is, by the small cosmic justice of late-night fast-food ordering, exactly the thing that should have happened. He laughs for about eight seconds. The laugh is loud."
+      "text": "BT laughs in the way a man laughs at a thing that is, by the small cosmic justice of late-night fast-food ordering, exactly the thing that should have happened. He laughs for about eight seconds. The laugh is loud.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/302.mp3"
     },
     {
       "t": "narrate",
-      "text": "The laugh is the loudest sound the car has produced this morning."
+      "text": "The laugh is the loudest sound the car has produced this morning.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/303.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego, in the passenger seat, after a beat, also laughs."
+      "text": "Diego, in the passenger seat, after a beat, also laughs.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/304.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Doug is going to — Doug is going to look at me.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/305.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "Doug is going to look at you.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/306.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Doug is going to do that thing he does where he doesn't say anything but you know he is, like — he is appraising.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/307.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "[shot:closeup person]We have to go back. We have to get him another one. Hugo is still open. Pull around, get the medium, bring it back. Doug doesn't know.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/308.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "BT. We have like fifteen minutes before lunch is over.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/309.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "Plenty of time. Pull out.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/310.mp3"
     },
     {
       "t": "narrate",
-      "text": "BT, who is still in the driver's seat and is the one who would, technically, be doing the pulling out, starts the engine."
+      "text": "BT, who is still in the driver's seat and is the one who would, technically, be doing the pulling out, starts the engine.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/311.mp3"
     },
     {
       "t": "bg",
@@ -1483,11 +1778,13 @@
     },
     {
       "t": "narrate",
-      "text": "He pulls out of the lay-by."
+      "text": "He pulls out of the lay-by.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/313.mp3"
     },
     {
       "t": "narrate",
-      "text": "He drives back to El Rancho."
+      "text": "He drives back to El Rancho.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/314.mp3"
     },
     {
       "t": "show",
@@ -1497,61 +1794,72 @@
     },
     {
       "t": "narrate",
-      "text": "Hugo is at the window."
+      "text": "Hugo is at the window.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/316.mp3"
     },
     {
       "t": "narrate",
-      "text": "Hugo, when BT pulls back into the drive-thru lane, slides the window open and looks at them."
+      "text": "Hugo, when BT pulls back into the drive-thru lane, slides the window open and looks at them.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/317.mp3"
     },
     {
       "t": "say",
       "char": "Hugo",
       "text": "[shot:closeup person]You guys forget something.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/318.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "He drank the horchata for the guy back at work.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/319.mp3"
     },
     {
       "t": "narrate",
-      "text": "Hugo, in the window, registers this."
+      "text": "Hugo, in the window, registers this.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/320.mp3"
     },
     {
       "t": "narrate",
-      "text": "Hugo, after a beat, laughs — a small dry laugh, the laugh of a kid who has been working the night shift at a taqueria for two years and who has heard, by now, most of the small late-night human catastrophes that get reported to drive-thru windows."
+      "text": "Hugo, after a beat, laughs — a small dry laugh, the laugh of a kid who has been working the night shift at a taqueria for two years and who has heard, by now, most of the small late-night human catastrophes that get reported to drive-thru windows.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/321.mp3"
     },
     {
       "t": "say",
       "char": "Hugo",
       "text": "Medium horchata.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/322.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "[shot:closeup person_b]Medium horchata. And Hugo — sorry, man. I owe you the second trip.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/323.mp3"
     },
     {
       "t": "say",
       "char": "Hugo",
       "text": "It's a horchata, man. It's three dollars. Pull around.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/324.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "Add another Diablito packet. For the road.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/325.mp3"
     },
     {
       "t": "say",
       "char": "Hugo",
       "text": "On the house.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/326.mp3"
     },
     {
       "t": "hide",
@@ -1559,11 +1867,13 @@
     },
     {
       "t": "narrate",
-      "text": "BT pulls around."
+      "text": "BT pulls around.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/328.mp3"
     },
     {
       "t": "narrate",
-      "text": "The horchata comes out in two minutes."
+      "text": "The horchata comes out in two minutes.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/329.mp3"
     },
     {
       "t": "show",
@@ -1573,19 +1883,22 @@
     },
     {
       "t": "narrate",
-      "text": "BT pays — three dollars for the horchata, no charge for the Diablito. BT puts another five in the tip jar."
+      "text": "BT pays — three dollars for the horchata, no charge for the Diablito. BT puts another five in the tip jar.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/331.mp3"
     },
     {
       "t": "say",
       "char": "Hugo",
       "text": "[shot:closeup person]You guys take care.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/332.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "You too, man.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/333.mp3"
     },
     {
       "t": "hide",
@@ -1593,7 +1906,8 @@
     },
     {
       "t": "narrate",
-      "text": "BT pulls out."
+      "text": "BT pulls out.",
+      "voice": "assets/audio/voice/vol6_ch16_el_rancho/335.mp3"
     },
     {
       "t": "jump",

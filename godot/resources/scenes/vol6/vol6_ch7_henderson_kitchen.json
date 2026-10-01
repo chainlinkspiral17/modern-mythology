@@ -35,7 +35,8 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:kitchen_practical][shot:insert pot_roast]Eileen has made pot roast."
+      "text": "[mood:kitchen_practical][shot:insert pot_roast]Eileen has made pot roast.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/006.mp3"
     },
     {
       "t": "narrate",
@@ -51,19 +52,23 @@
     },
     {
       "t": "narrate",
-      "text": "He has not come up."
+      "text": "He has not come up.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/010.mp3"
     },
     {
       "t": "narrate",
-      "text": "The smell has been reaching him."
+      "text": "The smell has been reaching him.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/011.mp3"
     },
     {
       "t": "narrate",
-      "text": "Whatever he has been doing down there — Eileen does not yet know — has been, in some small part of itself, smelling pot roast for four hours."
+      "text": "Whatever he has been doing down there — Eileen does not yet know — has been, in some small part of itself, smelling pot roast for four hours.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/012.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert table]She sets the table for four. Her own seat. Jesse's. Ben's. And a fourth, at the head of the table, which she has not, in eight days, set."
+      "text": "[shot:insert table]She sets the table for four. Her own seat. Jesse's. Ben's. And a fourth, at the head of the table, which she has not, in eight days, set.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/013.mp3"
     },
     {
       "t": "show",
@@ -87,67 +92,82 @@
     },
     {
       "t": "narrate",
-      "text": "The three of them sit in the kitchen."
+      "text": "The three of them sit in the kitchen.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/018.mp3"
     },
     {
       "t": "narrate",
-      "text": "They do not, immediately, eat."
+      "text": "They do not, immediately, eat.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/019.mp3"
     },
     {
       "t": "narrate",
-      "text": "The pot roast stays in the oven on warm. The table, set, waits."
+      "text": "The pot roast stays in the oven on warm. The table, set, waits.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/020.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert coffee]Eileen pours coffee. She pours one for herself, one for Ben, one for Jesse — even though Jesse does not drink coffee, has never drunk coffee, has, on the occasions Eileen has offered, declined politely. Tonight Jesse takes the cup."
+      "text": "[shot:insert coffee]Eileen pours coffee. She pours one for herself, one for Ben, one for Jesse — even though Jesse does not drink coffee, has never drunk coffee, has, on the occasions Eileen has offered, declined politely. Tonight Jesse takes the cup.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/021.mp3"
     },
     {
       "t": "narrate",
-      "text": "He sips."
+      "text": "He sips.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/022.mp3"
     },
     {
       "t": "narrate",
-      "text": "He winces, slightly."
+      "text": "He winces, slightly.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/023.mp3"
     },
     {
       "t": "narrate",
-      "text": "He sets it down."
+      "text": "He sets it down.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/024.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "It is a lot, isn't it.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/025.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "text": "[shot:closeup person]Yeah, Mom. It is.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/026.mp3"
     },
     {
       "t": "narrate",
-      "text": "She nods."
+      "text": "She nods.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/027.mp3"
     },
     {
       "t": "narrate",
-      "text": "They wait."
+      "text": "They wait.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/028.mp3"
     },
     {
       "t": "narrate",
-      "text": "[beat:still][mood:candlelight_low][shot:insert door~]At seven oh-eight the basement door opens."
+      "text": "[beat:still][mood:candlelight_low][shot:insert door~]At seven oh-eight the basement door opens.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/029.mp3"
     },
     {
       "t": "narrate",
-      "text": "Footsteps on the stairs."
+      "text": "Footsteps on the stairs.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/030.mp3"
     },
     {
       "t": "narrate",
-      "text": "Three of them, slow, the way Mr. Henderson always climbs stairs — the small habitual two-step pause halfway up that Eileen has been hearing for twenty-three years."
+      "text": "Three of them, slow, the way Mr. Henderson always climbs stairs — the small habitual two-step pause halfway up that Eileen has been hearing for twenty-three years.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/031.mp3"
     },
     {
       "t": "narrate",
-      "text": "Jesse, at the table, grips Ben's wrist briefly. Ben does not move."
+      "text": "Jesse, at the table, grips Ben's wrist briefly. Ben does not move.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/032.mp3"
     },
     {
       "t": "show",
@@ -157,149 +177,181 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup mr_henderson]Mr. Henderson comes through the doorway."
+      "text": "[shot:closeup mr_henderson]Mr. Henderson comes through the doorway.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/034.mp3"
     },
     {
       "t": "narrate",
-      "text": "He looks — Ben registers, with the small specific attention he has been training all spring — like a man who has not slept in two days and who has, in those two days, been somewhere very far from his own kitchen and is, this evening, only just returning to it."
+      "text": "He looks — Ben registers, with the small specific attention he has been training all spring — like a man who has not slept in two days and who has, in those two days, been somewhere very far from his own kitchen and is, this evening, only just returning to it.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/035.mp3"
     },
     {
       "t": "narrate",
-      "text": "His eyes adjust to the kitchen light."
+      "text": "His eyes adjust to the kitchen light.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/036.mp3"
     },
     {
       "t": "narrate",
-      "text": "His eyes — Ben sees, and Eileen sees, and Jesse, who has been watching for this most carefully, sees first — his pupils contract normally."
+      "text": "His eyes — Ben sees, and Eileen sees, and Jesse, who has been watching for this most carefully, sees first — his pupils contract normally.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/037.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Hey, Jim.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/038.mp3"
     },
     {
       "t": "narrate",
-      "text": "Mr. Henderson looks at her."
+      "text": "Mr. Henderson looks at her.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/039.mp3"
     },
     {
       "t": "narrate",
-      "text": "He looks at Jesse."
+      "text": "He looks at Jesse.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/040.mp3"
     },
     {
       "t": "narrate",
-      "text": "He looks at Ben."
+      "text": "He looks at Ben.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/041.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert table]He looks at the table."
+      "text": "[shot:insert table]He looks at the table.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/042.mp3"
     },
     {
       "t": "narrate",
-      "text": "He looks at the fourth chair."
+      "text": "He looks at the fourth chair.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/043.mp3"
     },
     {
       "t": "say",
       "char": "Mr. Henderson",
       "text": "Eileen. Did you make pot roast.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/044.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "I did.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/045.mp3"
     },
     {
       "t": "say",
       "char": "Mr. Henderson",
       "text": "Can I — can I sit.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/046.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "[shot:closeup person_b]Please.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/047.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He sits."
+      "text": "[shot:establish]He sits.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/048.mp3"
     },
     {
       "t": "narrate",
-      "text": "He puts his hands flat on the table."
+      "text": "He puts his hands flat on the table.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/049.mp3"
     },
     {
       "t": "narrate",
-      "text": "He breathes."
+      "text": "He breathes.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/050.mp3"
     },
     {
       "t": "say",
       "char": "Mr. Henderson",
       "text": "I'm — I'm back.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/051.mp3"
     },
     {
       "t": "narrate",
-      "text": "Eileen does not, immediately, respond."
+      "text": "Eileen does not, immediately, respond.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/052.mp3"
     },
     {
       "t": "narrate",
-      "text": "She gets up. She gets the pot roast from the oven. She sets it on the table. She gets the carrots and the potatoes and the small dish of horseradish her husband, since 1999, has put on his pot roast. She sets it all down."
+      "text": "She gets up. She gets the pot roast from the oven. She sets it on the table. She gets the carrots and the potatoes and the small dish of horseradish her husband, since 1999, has put on his pot roast. She sets it all down.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/053.mp3"
     },
     {
       "t": "narrate",
-      "text": "She sits."
+      "text": "She sits.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/054.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "[shot:closeup person]Eat, Jim.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/055.mp3"
     },
     {
       "t": "narrate",
-      "text": "He eats."
+      "text": "He eats.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/056.mp3"
     },
     {
       "t": "narrate",
-      "text": "He eats slowly. He eats one bite at a time. He chews each bite for longer than is strictly necessary, in the way a man chews who has, somewhere in the last forty-eight hours, forgotten that food is something his body is allowed to want."
+      "text": "He eats slowly. He eats one bite at a time. He chews each bite for longer than is strictly necessary, in the way a man chews who has, somewhere in the last forty-eight hours, forgotten that food is something his body is allowed to want.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/057.mp3"
     },
     {
       "t": "narrate",
-      "text": "Eileen does not, at first, ask him anything."
+      "text": "Eileen does not, at first, ask him anything.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/058.mp3"
     },
     {
       "t": "narrate",
-      "text": "Ben does not, at first, say anything."
+      "text": "Ben does not, at first, say anything.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/059.mp3"
     },
     {
       "t": "narrate",
-      "text": "Jesse — who is sitting next to his father, on his right — puts his hand on his father's forearm. Briefly. Once. Then takes it away."
+      "text": "Jesse — who is sitting next to his father, on his right — puts his hand on his father's forearm. Briefly. Once. Then takes it away.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/060.mp3"
     },
     {
       "t": "narrate",
-      "text": "Mr. Henderson does not look at his son. But he stops chewing for a long second. Then he resumes."
+      "text": "Mr. Henderson does not look at his son. But he stops chewing for a long second. Then he resumes.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/061.mp3"
     },
     {
       "t": "narrate",
-      "text": "After perhaps eight minutes, Mr. Henderson sets down his fork."
+      "text": "After perhaps eight minutes, Mr. Henderson sets down his fork.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/062.mp3"
     },
     {
       "t": "say",
       "char": "Mr. Henderson",
       "text": "[mood:arcana_cool][shot:closeup mr_henderson]I would like to tell you all what happened. I do not know how much of it I can tell. I do not know what I — I want to try.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/063.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Take your time, Jim.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/064.mp3"
     },
     {
       "t": "narrate",
-      "text": "He takes his time."
+      "text": "He takes his time.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/065.mp3"
     },
     {
       "t": "say",
@@ -333,17 +385,20 @@
     },
     {
       "t": "narrate",
-      "text": "Eileen does not interrupt."
+      "text": "Eileen does not interrupt.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/071.mp3"
     },
     {
       "t": "say",
       "char": "Mr. Henderson",
       "text": "[shot:closeup person]It was — for years, it was just photographs. Just — pictures. Of intersections. Of — of houses I did not know. I would — I would take the picture. They would pay me. It was small. It was easy. I told myself it was — I told myself many things.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/072.mp3"
     },
     {
       "t": "narrate",
-      "text": "He pauses."
+      "text": "He pauses.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/073.mp3"
     },
     {
       "t": "say",
@@ -371,11 +426,13 @@
     },
     {
       "t": "narrate",
-      "text": "Jesse closes his eyes."
+      "text": "Jesse closes his eyes.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/078.mp3"
     },
     {
       "t": "narrate",
-      "text": "Mr. Henderson keeps going. His voice does not change."
+      "text": "Mr. Henderson keeps going. His voice does not change.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/079.mp3"
     },
     {
       "t": "say",
@@ -397,7 +454,8 @@
     },
     {
       "t": "narrate",
-      "text": "He pauses."
+      "text": "He pauses.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/083.mp3"
     },
     {
       "t": "say",
@@ -425,43 +483,51 @@
     },
     {
       "t": "narrate",
-      "text": "He stops."
+      "text": "He stops.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/088.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He looks at Eileen."
+      "text": "[shot:establish]He looks at Eileen.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/089.mp3"
     },
     {
       "t": "say",
       "char": "Mr. Henderson",
       "text": "I am — Eileen, I am sorry.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/090.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup eileen]Eileen, across the table, is crying — quietly, without sobbing, the way a woman who has been waiting for a confession for fourteen months cries when the confession finally arrives."
+      "text": "[shot:closeup eileen]Eileen, across the table, is crying — quietly, without sobbing, the way a woman who has been waiting for a confession for fourteen months cries when the confession finally arrives.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/091.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Jim. We are going to get you help.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/092.mp3"
     },
     {
       "t": "say",
       "char": "Mr. Henderson",
       "text": "I do not — I do not know what kind of help.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/093.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Neither do I. We are going to find out.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/094.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]She looks at Ben."
+      "text": "[shot:establish]She looks at Ben.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/095.mp3"
     },
     {
       "t": "say",
@@ -477,101 +543,119 @@
     },
     {
       "t": "narrate",
-      "text": "Mr. Henderson looks at Ben."
+      "text": "Mr. Henderson looks at Ben.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/098.mp3"
     },
     {
       "t": "say",
       "char": "Mr. Henderson",
       "text": "You're — you're the diner boy. Jesse's friend.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/099.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Yes sir.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/100.mp3"
     },
     {
       "t": "say",
       "char": "Mr. Henderson",
       "text": "[shot:closeup person]Ben.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/101.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Yes sir.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/102.mp3"
     },
     {
       "t": "say",
       "char": "Mr. Henderson",
       "text": "You're a good boy, Ben. Thank you for being — thank you for being here.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/103.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Yes sir.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/104.mp3"
     },
     {
       "t": "say",
       "char": "Mr. Henderson",
       "text": "Eileen.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/105.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "[shot:closeup person_b]Yes, Jim.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/106.mp3"
     },
     {
       "t": "say",
       "char": "Mr. Henderson",
       "text": "Could I — could I have some pot roast.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/107.mp3"
     },
     {
       "t": "narrate",
-      "text": "She laughs. It is the small wet laugh of a woman who has just, in her own kitchen, gotten her husband back."
+      "text": "She laughs. It is the small wet laugh of a woman who has just, in her own kitchen, gotten her husband back.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/108.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "You've been eating pot roast for ten minutes, Jim.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/109.mp3"
     },
     {
       "t": "say",
       "char": "Mr. Henderson",
       "text": "Have I?",
-      "expr": "surprised"
+      "expr": "surprised",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/110.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Yes, love. You have. And it's still warm.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/111.mp3"
     },
     {
       "t": "narrate",
-      "text": "[mood:kitchen_practical][shot:insert pot_roast]He looks down at his plate. He looks at the half-eaten roast in front of him."
+      "text": "[mood:kitchen_practical][shot:insert pot_roast]He looks down at his plate. He looks at the half-eaten roast in front of him.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/112.mp3"
     },
     {
       "t": "say",
       "char": "Mr. Henderson",
       "text": "Oh.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/113.mp3"
     },
     {
       "t": "narrate",
-      "text": "He picks up his fork."
+      "text": "He picks up his fork.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/114.mp3"
     },
     {
       "t": "narrate",
-      "text": "He eats."
+      "text": "He eats.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_kitchen/115.mp3"
     },
     {
       "t": "hide",

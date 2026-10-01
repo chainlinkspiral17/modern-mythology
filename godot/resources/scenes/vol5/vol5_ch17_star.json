@@ -43,11 +43,13 @@
     },
     {
       "t": "narrate",
-      "text": "The moon tonight was a shard of broken mirror stuck in the bruised velvet throat of the Graustark sky."
+      "text": "The moon tonight was a shard of broken mirror stuck in the bruised velvet throat of the Graustark sky.",
+      "voice": "assets/audio/voice/vol5_ch17_star/008.mp3"
     },
     {
       "t": "narrate",
-      "text": "Joanna LeMoine felt its borrowed light scrape against her skin — too bright, too revealing. Down here in the ruins, her chosen cathedral of decay, shadows used to be a comfort. A blanket woven from dust and forgetting."
+      "text": "Joanna LeMoine felt its borrowed light scrape against her skin — too bright, too revealing. Down here in the ruins, her chosen cathedral of decay, shadows used to be a comfort. A blanket woven from dust and forgetting.",
+      "voice": "assets/audio/voice/vol5_ch17_star/009.mp3"
     },
     {
       "t": "narrate",
@@ -55,15 +57,18 @@
     },
     {
       "t": "narrate",
-      "text": "Hope, they called this phase. The Star."
+      "text": "Hope, they called this phase. The Star.",
+      "voice": "assets/audio/voice/vol5_ch17_star/011.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sounded nice on paper."
+      "text": "Sounded nice on paper.",
+      "voice": "assets/audio/voice/vol5_ch17_star/012.mp3"
     },
     {
       "t": "narrate",
-      "text": "Felt, in practice, more like having your skin peeled back layer by sensitive layer, leaving every nerve exposed to the indifferent cosmos."
+      "text": "Felt, in practice, more like having your skin peeled back layer by sensitive layer, leaving every nerve exposed to the indifferent cosmos.",
+      "voice": "assets/audio/voice/vol5_ch17_star/013.mp3"
     },
     {
       "t": "narrate",
@@ -79,7 +84,8 @@
     },
     {
       "t": "narrate",
-      "text": "A jagged piece of charcoal in her fist. Held like a weapon."
+      "text": "A jagged piece of charcoal in her fist. Held like a weapon.",
+      "voice": "assets/audio/voice/vol5_ch17_star/017.mp3"
     },
     {
       "t": "narrate",
@@ -91,19 +97,23 @@
     },
     {
       "t": "narrate",
-      "text": "The frequency tonight read something is approaching."
+      "text": "The frequency tonight read something is approaching.",
+      "voice": "assets/audio/voice/vol5_ch17_star/020.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert crow]The crow was on the I-beam. The crow had been on the I-beam since dusk. The crow had not, tonight, brought her anything. The crow was, tonight, a witness."
+      "text": "[shot:insert crow]The crow was on the I-beam. The crow had been on the I-beam since dusk. The crow had not, tonight, brought her anything. The crow was, tonight, a witness.",
+      "voice": "assets/audio/voice/vol5_ch17_star/021.mp3"
     },
     {
       "t": "narrate",
-      "text": "This wasn't the desperate scrawling of the Hermit anymore. The frantic attempt to ward off the silence with fragmented verses. No."
+      "text": "This wasn't the desperate scrawling of the Hermit anymore. The frantic attempt to ward off the silence with fragmented verses. No.",
+      "voice": "assets/audio/voice/vol5_ch17_star/022.mp3"
     },
     {
       "t": "narrate",
-      "text": "This felt different. Colder. Sharper. Necessary."
+      "text": "This felt different. Colder. Sharper. Necessary.",
+      "voice": "assets/audio/voice/vol5_ch17_star/023.mp3"
     },
     {
       "t": "narrate",
@@ -123,23 +133,28 @@
     },
     {
       "t": "narrate",
-      "text": "Tonight the pull was running back into her."
+      "text": "Tonight the pull was running back into her.",
+      "voice": "assets/audio/voice/vol5_ch17_star/028.mp3"
     },
     {
       "t": "narrate",
-      "text": "Tonight she was, evidently, the post office."
+      "text": "Tonight she was, evidently, the post office.",
+      "voice": "assets/audio/voice/vol5_ch17_star/029.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert wall]Her hand moved across the stained concrete wall. The charcoal leaving stark black lines against the pale moonlit surface."
+      "text": "[shot:insert wall]Her hand moved across the stained concrete wall. The charcoal leaving stark black lines against the pale moonlit surface.",
+      "voice": "assets/audio/voice/vol5_ch17_star/030.mp3"
     },
     {
       "t": "narrate",
-      "text": "She did not, this time, write the lines as if they were her own. She wrote them as if she were taking dictation. The hand moved at a speed her mind could not, immediately, account for."
+      "text": "She did not, this time, write the lines as if they were her own. She wrote them as if she were taking dictation. The hand moved at a speed her mind could not, immediately, account for.",
+      "voice": "assets/audio/voice/vol5_ch17_star/031.mp3"
     },
     {
       "t": "narrate",
-      "text": "They see through me now,\nGlass skin on bone frame.\nWords like incisions,\nBleeding truths I cannot name.\nThe ruin breathes — the Star burns cold,\nA pretty lie, beautifully told?\nNo. Only this:\nThe flaw, the fracture, the abyss."
+      "text": "They see through me now,\nGlass skin on bone frame.\nWords like incisions,\nBleeding truths I cannot name.\nThe ruin breathes — the Star burns cold,\nA pretty lie, beautifully told?\nNo. Only this:\nThe flaw, the fracture, the abyss.",
+      "voice": "assets/audio/voice/vol5_ch17_star/032.mp3"
     },
     {
       "t": "narrate",
@@ -147,27 +162,33 @@
     },
     {
       "t": "narrate",
-      "text": "The words sat on the wall as if they had been waiting there for her to uncover them, the way a sculptor — Michelangelo, somebody had told her once, claimed to have worked — found a figure already inside the stone and removed only what the stone did not need."
+      "text": "The words sat on the wall as if they had been waiting there for her to uncover them, the way a sculptor — Michelangelo, somebody had told her once, claimed to have worked — found a figure already inside the stone and removed only what the stone did not need.",
+      "voice": "assets/audio/voice/vol5_ch17_star/034.mp3"
     },
     {
       "t": "narrate",
-      "text": "She had not, she realized, been writing."
+      "text": "She had not, she realized, been writing.",
+      "voice": "assets/audio/voice/vol5_ch17_star/035.mp3"
     },
     {
       "t": "narrate",
-      "text": "She had been transcribing."
+      "text": "She had been transcribing.",
+      "voice": "assets/audio/voice/vol5_ch17_star/036.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]The wall had had the words. She had merely been the hand the wall had used to put them down."
+      "text": "[shot:establish]The wall had had the words. She had merely been the hand the wall had used to put them down.",
+      "voice": "assets/audio/voice/vol5_ch17_star/037.mp3"
     },
     {
       "t": "narrate",
-      "text": "She saw it all too clearly now."
+      "text": "She saw it all too clearly now.",
+      "voice": "assets/audio/voice/vol5_ch17_star/038.mp3"
     },
     {
       "t": "narrate",
-      "text": "The town wasn't just ruins. It was a palimpsest of bad deals and buried bodies. Layer upon layer of compromise, written and overwritten, the older writings still showing through where the newer ink had thinned."
+      "text": "The town wasn't just ruins. It was a palimpsest of bad deals and buried bodies. Layer upon layer of compromise, written and overwritten, the older writings still showing through where the newer ink had thinned.",
+      "voice": "assets/audio/voice/vol5_ch17_star/039.mp3"
     },
     {
       "t": "narrate",
@@ -207,15 +228,18 @@
     },
     {
       "t": "narrate",
-      "text": "She saw everything."
+      "text": "She saw everything.",
+      "voice": "assets/audio/voice/vol5_ch17_star/049.mp3"
     },
     {
       "t": "narrate",
-      "text": "And everyone saw her."
+      "text": "And everyone saw her.",
+      "voice": "assets/audio/voice/vol5_ch17_star/050.mp3"
     },
     {
       "t": "narrate",
-      "text": "They always had, she realized with a sickening lurch."
+      "text": "They always had, she realized with a sickening lurch.",
+      "voice": "assets/audio/voice/vol5_ch17_star/051.mp3"
     },
     {
       "t": "narrate",
@@ -227,7 +251,8 @@
     },
     {
       "t": "narrate",
-      "text": "Her poetry wasn't a choice. Her poetry was a symptom. A leakage. The truth spilling out because she was too broken to contain it anymore."
+      "text": "Her poetry wasn't a choice. Her poetry was a symptom. A leakage. The truth spilling out because she was too broken to contain it anymore.",
+      "voice": "assets/audio/voice/vol5_ch17_star/054.mp3"
     },
     {
       "t": "narrate",
@@ -239,31 +264,38 @@
     },
     {
       "t": "narrate",
-      "text": "She had not, until tonight, fully understood that this was her job."
+      "text": "She had not, until tonight, fully understood that this was her job.",
+      "voice": "assets/audio/voice/vol5_ch17_star/057.mp3"
     },
     {
       "t": "narrate",
-      "text": "She had thought she was hiding in the ruins."
+      "text": "She had thought she was hiding in the ruins.",
+      "voice": "assets/audio/voice/vol5_ch17_star/058.mp3"
     },
     {
       "t": "narrate",
-      "text": "She had not been hiding. She had been stationed."
+      "text": "She had not been hiding. She had been stationed.",
+      "voice": "assets/audio/voice/vol5_ch17_star/059.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert wall]She picked up another piece of charcoal. Her hand moved again. The wall received again."
+      "text": "[shot:insert wall]She picked up another piece of charcoal. Her hand moved again. The wall received again.",
+      "voice": "assets/audio/voice/vol5_ch17_star/060.mp3"
     },
     {
       "t": "narrate",
-      "text": "Madness is just clarity\nWithout the comfort\nOf illusion."
+      "text": "Madness is just clarity\nWithout the comfort\nOf illusion.",
+      "voice": "assets/audio/voice/vol5_ch17_star/061.mp3"
     },
     {
       "t": "narrate",
-      "text": "The charcoal snapped in her fingers. She stared at the broken pieces in her palm."
+      "text": "The charcoal snapped in her fingers. She stared at the broken pieces in her palm.",
+      "voice": "assets/audio/voice/vol5_ch17_star/062.mp3"
     },
     {
       "t": "narrate",
-      "text": "Rejuvenation. Faith. The Star was supposed to be about hope."
+      "text": "Rejuvenation. Faith. The Star was supposed to be about hope.",
+      "voice": "assets/audio/voice/vol5_ch17_star/063.mp3"
     },
     {
       "t": "narrate",
@@ -275,39 +307,48 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]She looked up at the moon-shard impaled in the sky. Beautiful. Terrible. Just like the words demanding to be written, clawing their way onto the wall."
+      "text": "[shot:establish]She looked up at the moon-shard impaled in the sky. Beautiful. Terrible. Just like the words demanding to be written, clawing their way onto the wall.",
+      "voice": "assets/audio/voice/vol5_ch17_star/066.mp3"
     },
     {
       "t": "narrate",
-      "text": "She was the poet, the seer, the doomed Cassandra of the Graustark ruins. Her gift wasn't resilience; her gift was transparency. Everyone saw through her because there was nothing left to hide behind."
+      "text": "She was the poet, the seer, the doomed Cassandra of the Graustark ruins. Her gift wasn't resilience; her gift was transparency. Everyone saw through her because there was nothing left to hide behind.",
+      "voice": "assets/audio/voice/vol5_ch17_star/067.mp3"
     },
     {
       "t": "narrate",
-      "text": "She picked up another piece of charcoal."
+      "text": "She picked up another piece of charcoal.",
+      "voice": "assets/audio/voice/vol5_ch17_star/068.mp3"
     },
     {
       "t": "narrate",
-      "text": "The dog whined again, a sound like tearing silk."
+      "text": "The dog whined again, a sound like tearing silk.",
+      "voice": "assets/audio/voice/vol5_ch17_star/069.mp3"
     },
     {
       "t": "narrate",
-      "text": "Joanna started writing again. The obsidian ink bleeding onto the concrete. Telling truths too sharp for survival."
+      "text": "Joanna started writing again. The obsidian ink bleeding onto the concrete. Telling truths too sharp for survival.",
+      "voice": "assets/audio/voice/vol5_ch17_star/070.mp3"
     },
     {
       "t": "narrate",
-      "text": "A fragile star burning itself out in the overwhelming darkness."
+      "text": "A fragile star burning itself out in the overwhelming darkness.",
+      "voice": "assets/audio/voice/vol5_ch17_star/071.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert wall~]I did not lose Douglas. I sent him.\nI did not lose myself. I have been spent.\nI am the page on which the older\nsystem writes its drafts.\nI do not own the writing.\nI have been writing it anyway."
+      "text": "[shot:insert wall~]I did not lose Douglas. I sent him.\nI did not lose myself. I have been spent.\nI am the page on which the older\nsystem writes its drafts.\nI do not own the writing.\nI have been writing it anyway.",
+      "voice": "assets/audio/voice/vol5_ch17_star/072.mp3"
     },
     {
       "t": "narrate",
-      "text": "She stepped back. She looked at the lines."
+      "text": "She stepped back. She looked at the lines.",
+      "voice": "assets/audio/voice/vol5_ch17_star/073.mp3"
     },
     {
       "t": "narrate",
-      "text": "[beat:hit]She thought, with the small terrible clarity that was, she suspected, the actual gift of the Star and not the consolation prize people who had not been to the Star imagined: I did not lose Douglas. [wave amp=6 freq=2]I sent him.[/wave]"
+      "text": "[beat:hit]She thought, with the small terrible clarity that was, she suspected, the actual gift of the Star and not the consolation prize people who had not been to the Star imagined: I did not lose Douglas. [wave amp=6 freq=2]I sent him.[/wave]",
+      "voice": "assets/audio/voice/vol5_ch17_star/074.mp3"
     },
     {
       "t": "narrate",
@@ -319,19 +360,23 @@
     },
     {
       "t": "narrate",
-      "text": "She had not done this consciously. She had done it honestly, in the way one carrying a permeable instrument did things — not by intention, but by being the channel through which the older system arranged what the older system needed arranged."
+      "text": "She had not done this consciously. She had done it honestly, in the way one carrying a permeable instrument did things — not by intention, but by being the channel through which the older system arranged what the older system needed arranged.",
+      "voice": "assets/audio/voice/vol5_ch17_star/077.mp3"
     },
     {
       "t": "narrate",
-      "text": "Douglas had needed to be in New Orleans."
+      "text": "Douglas had needed to be in New Orleans.",
+      "voice": "assets/audio/voice/vol5_ch17_star/078.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]The system had needed Douglas in New Orleans."
+      "text": "[shot:establish]The system had needed Douglas in New Orleans.",
+      "voice": "assets/audio/voice/vol5_ch17_star/079.mp3"
     },
     {
       "t": "narrate",
-      "text": "Joanna had been the instrument by which the system had moved Douglas there."
+      "text": "Joanna had been the instrument by which the system had moved Douglas there.",
+      "voice": "assets/audio/voice/vol5_ch17_star/080.mp3"
     },
     {
       "t": "narrate",
@@ -343,19 +388,23 @@
     },
     {
       "t": "narrate",
-      "text": "It had not been the truth. The truth was she had moved a piece on a board she had not, fully, agreed to play on. The truth was Douglas had been the piece."
+      "text": "It had not been the truth. The truth was she had moved a piece on a board she had not, fully, agreed to play on. The truth was Douglas had been the piece.",
+      "voice": "assets/audio/voice/vol5_ch17_star/083.mp3"
     },
     {
       "t": "narrate",
-      "text": "She had owed him an apology for some years."
+      "text": "She had owed him an apology for some years.",
+      "voice": "assets/audio/voice/vol5_ch17_star/084.mp3"
     },
     {
       "t": "narrate",
-      "text": "She would, she now suspected, never have the chance to deliver it."
+      "text": "She would, she now suspected, never have the chance to deliver it.",
+      "voice": "assets/audio/voice/vol5_ch17_star/085.mp3"
     },
     {
       "t": "narrate",
-      "text": "She set the charcoal down."
+      "text": "She set the charcoal down.",
+      "voice": "assets/audio/voice/vol5_ch17_star/086.mp3"
     },
     {
       "t": "narrate",
@@ -367,7 +416,8 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert crow]She turned to the crow on the I-beam."
+      "text": "[shot:insert crow]She turned to the crow on the I-beam.",
+      "voice": "assets/audio/voice/vol5_ch17_star/089.mp3"
     },
     {
       "t": "show",
@@ -378,32 +428,39 @@
     {
       "t": "say",
       "char": "joanna",
-      "text": "[shot:closeup joanna]Tell him."
+      "text": "[shot:closeup joanna]Tell him.",
+      "voice": "assets/audio/voice/vol5_ch17_star/091.mp3"
     },
     {
       "t": "narrate",
-      "text": "The crow, who had not, ever, been instructed before in her presence, cocked its head."
+      "text": "The crow, who had not, ever, been instructed before in her presence, cocked its head.",
+      "voice": "assets/audio/voice/vol5_ch17_star/092.mp3"
     },
     {
       "t": "say",
       "char": "joanna",
-      "text": "Tell him I'm sorry. Tell him I knew. Tell him I sent him. Tell him I was used to send him. Tell him both are true."
+      "text": "Tell him I'm sorry. Tell him I knew. Tell him I sent him. Tell him I was used to send him. Tell him both are true.",
+      "voice": "assets/audio/voice/vol5_ch17_star/093.mp3"
     },
     {
       "t": "narrate",
-      "text": "The crow looked at her for a long moment. The crow's eyes were the small bright black they had always been. The crow did not, audibly, agree to anything."
+      "text": "The crow looked at her for a long moment. The crow's eyes were the small bright black they had always been. The crow did not, audibly, agree to anything.",
+      "voice": "assets/audio/voice/vol5_ch17_star/094.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]The crow took flight."
+      "text": "[shot:establish]The crow took flight.",
+      "voice": "assets/audio/voice/vol5_ch17_star/095.mp3"
     },
     {
       "t": "narrate",
-      "text": "The crow flew, in the direction of New Orleans, with the unhurried purpose of a creature on a confirmed errand."
+      "text": "The crow flew, in the direction of New Orleans, with the unhurried purpose of a creature on a confirmed errand.",
+      "voice": "assets/audio/voice/vol5_ch17_star/096.mp3"
     },
     {
       "t": "narrate",
-      "text": "Joanna watched it go."
+      "text": "Joanna watched it go.",
+      "voice": "assets/audio/voice/vol5_ch17_star/097.mp3"
     },
     {
       "t": "narrate",
@@ -415,11 +472,13 @@
     },
     {
       "t": "narrate",
-      "text": "She thought, in the small honest voice the Star had finally permitted her: I am almost done."
+      "text": "She thought, in the small honest voice the Star had finally permitted her: I am almost done.",
+      "voice": "assets/audio/voice/vol5_ch17_star/100.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thought, I am almost done, and there is one more thing I have to do, and I will, in the morning, begin to do it."
+      "text": "She thought, I am almost done, and there is one more thing I have to do, and I will, in the morning, begin to do it.",
+      "voice": "assets/audio/voice/vol5_ch17_star/101.mp3"
     },
     {
       "t": "narrate",
@@ -431,39 +490,48 @@
     },
     {
       "t": "narrate",
-      "text": "She thought, the letter will be one sentence long. The sentence will be: I am ready."
+      "text": "She thought, the letter will be one sentence long. The sentence will be: I am ready.",
+      "voice": "assets/audio/voice/vol5_ch17_star/104.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thought, I do not know what I am saying I am ready for. I trust that the receiver of the letter knows. I trust that the receiver will, in due course, arrive."
+      "text": "She thought, I do not know what I am saying I am ready for. I trust that the receiver of the letter knows. I trust that the receiver will, in due course, arrive.",
+      "voice": "assets/audio/voice/vol5_ch17_star/105.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thought, I will, in the meantime, finish the last verse."
+      "text": "She thought, I will, in the meantime, finish the last verse.",
+      "voice": "assets/audio/voice/vol5_ch17_star/106.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert wall]She picked up the broken pieces of charcoal. She approached the wall again."
+      "text": "[shot:insert wall]She picked up the broken pieces of charcoal. She approached the wall again.",
+      "voice": "assets/audio/voice/vol5_ch17_star/107.mp3"
     },
     {
       "t": "narrate",
-      "text": "The wall had room, still, for one more verse."
+      "text": "The wall had room, still, for one more verse.",
+      "voice": "assets/audio/voice/vol5_ch17_star/108.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert wall]She wrote, slowly, with the small careful precision of a woman writing the last page of a long letter:"
+      "text": "[shot:insert wall]She wrote, slowly, with the small careful precision of a woman writing the last page of a long letter:",
+      "voice": "assets/audio/voice/vol5_ch17_star/109.mp3"
     },
     {
       "t": "narrate",
-      "text": "And the bird flew southeast.\nAnd the wall held the name.\nAnd the post office, in the morning,\nwill receive the only letter\nI have ever truly written.\nI am ready.\nCome and find me."
+      "text": "And the bird flew southeast.\nAnd the wall held the name.\nAnd the post office, in the morning,\nwill receive the only letter\nI have ever truly written.\nI am ready.\nCome and find me.",
+      "voice": "assets/audio/voice/vol5_ch17_star/110.mp3"
     },
     {
       "t": "narrate",
-      "text": "She stepped back. She read the verse three times. She did not, this time, smudge it with her palm. She left it dry."
+      "text": "She stepped back. She read the verse three times. She did not, this time, smudge it with her palm. She left it dry.",
+      "voice": "assets/audio/voice/vol5_ch17_star/111.mp3"
     },
     {
       "t": "narrate",
-      "text": "The moon-shard moved a few minutes further west. The dog's whine had stopped. The cat had resumed cleaning its paw."
+      "text": "The moon-shard moved a few minutes further west. The dog's whine had stopped. The cat had resumed cleaning its paw.",
+      "voice": "assets/audio/voice/vol5_ch17_star/112.mp3"
     },
     {
       "t": "narrate",
@@ -479,11 +547,13 @@
     },
     {
       "t": "narrate",
-      "text": "Joanna did not, herself, need to verify the delivery. The system did not work that way. The system worked the way water worked in soil — slowly, by gravity, finding the lowest place it was needed."
+      "text": "Joanna did not, herself, need to verify the delivery. The system did not work that way. The system worked the way water worked in soil — slowly, by gravity, finding the lowest place it was needed.",
+      "voice": "assets/audio/voice/vol5_ch17_star/116.mp3"
     },
     {
       "t": "narrate",
-      "text": "She stood for a while by the wall."
+      "text": "She stood for a while by the wall.",
+      "voice": "assets/audio/voice/vol5_ch17_star/117.mp3"
     },
     {
       "t": "narrate",
@@ -491,87 +561,108 @@
     },
     {
       "t": "narrate",
-      "text": "She walked back along the path that wasn't a path, past the I-beam, past the place where the haberdashery had been, past the place where her own first apartment had stood, all the way back to the patched shotgun house at the edge of the void."
+      "text": "She walked back along the path that wasn't a path, past the I-beam, past the place where the haberdashery had been, past the place where her own first apartment had stood, all the way back to the patched shotgun house at the edge of the void.",
+      "voice": "assets/audio/voice/vol5_ch17_star/119.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert sinkhole]She did not, this time, slow at the lip of the sinkhole. The void breathed up at her in the same way it had breathed up at her in all the months and years she had been keeping the lonely watch — but the void, tonight, was not asking anything of her."
+      "text": "[shot:insert sinkhole]She did not, this time, slow at the lip of the sinkhole. The void breathed up at her in the same way it had breathed up at her in all the months and years she had been keeping the lonely watch — but the void, tonight, was not asking anything of her.",
+      "voice": "assets/audio/voice/vol5_ch17_star/120.mp3"
     },
     {
       "t": "narrate",
-      "text": "The void was, tonight, finished asking."
+      "text": "The void was, tonight, finished asking.",
+      "voice": "assets/audio/voice/vol5_ch17_star/121.mp3"
     },
     {
       "t": "narrate",
-      "text": "The void had received the answer."
+      "text": "The void had received the answer.",
+      "voice": "assets/audio/voice/vol5_ch17_star/122.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]She closed the door of the shotgun house behind her. Lit the candle. Sat at the desk-that-was-a-door-on-bricks. Took out a single piece of paper."
+      "text": "[shot:establish]She closed the door of the shotgun house behind her. Lit the candle. Sat at the desk-that-was-a-door-on-bricks. Took out a single piece of paper.",
+      "voice": "assets/audio/voice/vol5_ch17_star/123.mp3"
     },
     {
       "t": "narrate",
-      "text": "She wrote, at the top: the address from the back of the 1987 receipt."
+      "text": "She wrote, at the top: the address from the back of the 1987 receipt.",
+      "voice": "assets/audio/voice/vol5_ch17_star/124.mp3"
     },
     {
       "t": "narrate",
-      "text": "[beat:still][mood:dawn_warm][shot:insert letter~]She wrote, in the body, three words: I am ready."
+      "text": "[beat:still][mood:dawn_warm][shot:insert letter~]She wrote, in the body, three words: I am ready.",
+      "voice": "assets/audio/voice/vol5_ch17_star/125.mp3"
     },
     {
       "t": "narrate",
-      "text": "She signed it, J. LeMoine."
+      "text": "She signed it, J. LeMoine.",
+      "voice": "assets/audio/voice/vol5_ch17_star/126.mp3"
     },
     {
       "t": "narrate",
-      "text": "She folded it. She placed it in an envelope. She wrote the address again on the front. She set the envelope on the desk."
+      "text": "She folded it. She placed it in an envelope. She wrote the address again on the front. She set the envelope on the desk.",
+      "voice": "assets/audio/voice/vol5_ch17_star/127.mp3"
     },
     {
       "t": "narrate",
-      "text": "In the morning she would walk to Elm Street. In the morning she would buy a stamp. In the morning she would put the envelope in the mailbox."
+      "text": "In the morning she would walk to Elm Street. In the morning she would buy a stamp. In the morning she would put the envelope in the mailbox.",
+      "voice": "assets/audio/voice/vol5_ch17_star/128.mp3"
     },
     {
       "t": "narrate",
-      "text": "In the morning, the cycle that had begun, at this address, in 1987, would close."
+      "text": "In the morning, the cycle that had begun, at this address, in 1987, would close.",
+      "voice": "assets/audio/voice/vol5_ch17_star/129.mp3"
     },
     {
       "t": "narrate",
-      "text": "And, in the closing, would begin again."
+      "text": "And, in the closing, would begin again.",
+      "voice": "assets/audio/voice/vol5_ch17_star/130.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert candle]She blew out the candle."
+      "text": "[shot:insert candle]She blew out the candle.",
+      "voice": "assets/audio/voice/vol5_ch17_star/131.mp3"
     },
     {
       "t": "narrate",
-      "text": "She lay down on her cot. The dog at her feet. The cat at her shoulder."
+      "text": "She lay down on her cot. The dog at her feet. The cat at her shoulder.",
+      "voice": "assets/audio/voice/vol5_ch17_star/132.mp3"
     },
     {
       "t": "narrate",
-      "text": "The crow, over Lafayette, kept flying."
+      "text": "The crow, over Lafayette, kept flying.",
+      "voice": "assets/audio/voice/vol5_ch17_star/133.mp3"
     },
     {
       "t": "narrate",
-      "text": "The Star, in its impaled distance, kept burning."
+      "text": "The Star, in its impaled distance, kept burning.",
+      "voice": "assets/audio/voice/vol5_ch17_star/134.mp3"
     },
     {
       "t": "narrate",
-      "text": "The Hermit, in her labyrinth, slept."
+      "text": "The Hermit, in her labyrinth, slept.",
+      "voice": "assets/audio/voice/vol5_ch17_star/135.mp3"
     },
     {
       "t": "narrate",
-      "text": "Tomorrow, she would mail the letter."
+      "text": "Tomorrow, she would mail the letter.",
+      "voice": "assets/audio/voice/vol5_ch17_star/136.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Tomorrow, the system would, in its own slow patient way, respond."
+      "text": "[shot:establish]Tomorrow, the system would, in its own slow patient way, respond.",
+      "voice": "assets/audio/voice/vol5_ch17_star/137.mp3"
     },
     {
       "t": "narrate",
-      "text": "The wall, behind her in the ruin, kept its watch."
+      "text": "The wall, behind her in the ruin, kept its watch.",
+      "voice": "assets/audio/voice/vol5_ch17_star/138.mp3"
     },
     {
       "t": "narrate",
-      "text": "The verses, in their obsidian ink, did not, by morning, fade."
+      "text": "The verses, in their obsidian ink, did not, by morning, fade.",
+      "voice": "assets/audio/voice/vol5_ch17_star/139.mp3"
     },
     {
       "t": "end"

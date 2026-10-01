@@ -35,21 +35,25 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:morning_bright]Ben is at the grill. The breakfast rush has just ended. He is wiping down the line. His phone, in the pocket of his apron, has not, this morning, buzzed."
+      "text": "[mood:morning_bright]Ben is at the grill. The breakfast rush has just ended. He is wiping down the line. His phone, in the pocket of his apron, has not, this morning, buzzed.",
+      "voice": "assets/audio/voice/vol6_ch6_pit_stop/006.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]The phone, at 09:18, buzzes."
+      "text": "[shot:insert phone]The phone, at 09:18, buzzes.",
+      "voice": "assets/audio/voice/vol6_ch6_pit_stop/007.mp3"
     },
     {
       "t": "narrate",
-      "text": "Ben takes it out."
+      "text": "Ben takes it out.",
+      "voice": "assets/audio/voice/vol6_ch6_pit_stop/008.mp3"
     },
     {
       "t": "say",
       "char": "Hal",
       "text": "He's safe. Maya knows. Tell Sam at lunch. Don't text her. Walk over. — H.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_pit_stop/009.mp3"
     },
     {
       "t": "narrate",
@@ -69,49 +73,57 @@
       "t": "say",
       "char": "Ben",
       "text": "[shot:closeup person]Brenda. I need to take a forty-five at lunch. Walk over to the Kwik Stop. Personal.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_pit_stop/013.mp3"
     },
     {
       "t": "say",
       "char": "Brenda",
       "text": "Take an hour. Take two if you need.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_pit_stop/014.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Thanks, Brenda.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_pit_stop/015.mp3"
     },
     {
       "t": "say",
       "char": "Brenda",
       "text": "Ben.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_pit_stop/016.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_pit_stop/017.mp3"
     },
     {
       "t": "say",
       "char": "Brenda",
       "text": "[shot:closeup person_b]You good?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_pit_stop/018.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "I'm good.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_pit_stop/019.mp3"
     },
     {
       "t": "say",
       "char": "Brenda",
       "text": "Okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_pit_stop/020.mp3"
     },
     {
       "t": "hide",
@@ -125,31 +137,37 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert grill]Ben goes back to the grill. The grill hisses."
+      "text": "[shot:insert grill]Ben goes back to the grill. The grill hisses.",
+      "voice": "assets/audio/voice/vol6_ch6_pit_stop/023.mp3"
     },
     {
       "t": "think",
       "char": "Ben",
-      "text": "[shot:closeup ben]Jesse needs to know. Maya knows. Sam doesn't yet. Diego is alive."
+      "text": "[shot:closeup ben]Jesse needs to know. Maya knows. Sam doesn't yet. Diego is alive.",
+      "voice": "assets/audio/voice/vol6_ch6_pit_stop/024.mp3"
     },
     {
       "t": "think",
       "char": "Ben",
-      "text": "I am going to tell Sam by walking up to the counter at noon and ordering a slushie I don't want. I am going to wait for the store to be empty. I am going to say his name."
+      "text": "I am going to tell Sam by walking up to the counter at noon and ordering a slushie I don't want. I am going to wait for the store to be empty. I am going to say his name.",
+      "voice": "assets/audio/voice/vol6_ch6_pit_stop/025.mp3"
     },
     {
       "t": "think",
       "char": "Ben",
-      "text": "I am going to be the one who gets to say it to her."
+      "text": "I am going to be the one who gets to say it to her.",
+      "voice": "assets/audio/voice/vol6_ch6_pit_stop/026.mp3"
     },
     {
       "t": "think",
       "char": "Ben",
-      "text": "I have been waiting, my whole life, for the day I get to be the one who says good news to a friend in a convenience store."
+      "text": "I have been waiting, my whole life, for the day I get to be the one who says good news to a friend in a convenience store.",
+      "voice": "assets/audio/voice/vol6_ch6_pit_stop/027.mp3"
     },
     {
       "t": "narrate",
-      "text": "He keeps wiping the line."
+      "text": "He keeps wiping the line.",
+      "voice": "assets/audio/voice/vol6_ch6_pit_stop/028.mp3"
     },
     {
       "t": "hide",

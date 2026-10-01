@@ -23,7 +23,8 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:kitchen_practical]The light, at this hour, does the particular thing Texas light does in late May — flattening out against the manicured lawns, turning the white stucco of the houses a high-noon cream, making the palms along the median cast long blade-shaped shadows."
+      "text": "[mood:kitchen_practical]The light, at this hour, does the particular thing Texas light does in late May — flattening out against the manicured lawns, turning the white stucco of the houses a high-noon cream, making the palms along the median cast long blade-shaped shadows.",
+      "voice": "assets/audio/voice/vol6_ch1_graciela/003.mp3"
     },
     {
       "t": "narrate",
@@ -43,31 +44,36 @@
       "t": "say",
       "char": "Graciela",
       "expr": "warm",
-      "text": "\"Mija, gracias. Sit.\""
+      "text": "\"Mija, gracias. Sit.\"",
+      "voice": "assets/audio/voice/vol6_ch1_graciela/007.mp3"
     },
     {
       "t": "say",
       "char": "Graciela",
       "expr": "cold",
-      "text": "\"You did not call your father on the way.\""
+      "text": "\"You did not call your father on the way.\"",
+      "voice": "assets/audio/voice/vol6_ch1_graciela/008.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "expr": "neutral",
-      "text": "[shot:closeup person]\"No.\""
+      "text": "[shot:closeup person]\"No.\"",
+      "voice": "assets/audio/voice/vol6_ch1_graciela/009.mp3"
     },
     {
       "t": "say",
       "char": "Graciela",
       "expr": "warm",
-      "text": "\"Good girl.\""
+      "text": "\"Good girl.\"",
+      "voice": "assets/audio/voice/vol6_ch1_graciela/010.mp3"
     },
     {
       "t": "say",
       "char": "Graciela",
       "expr": "cold",
-      "text": "[beat:hit][mood:macro_haze][shot:closeup graciela~]\"Sam. My grandson was taken. Last night. At eleven-fifty-two. I heard the truck leave the driveway.\""
+      "text": "[beat:hit][mood:macro_haze][shot:closeup graciela~]\"Sam. My grandson was taken. Last night. At eleven-fifty-two. I heard the truck leave the driveway.\"",
+      "voice": "assets/audio/voice/vol6_ch1_graciela/011.mp3"
     },
     {
       "t": "say",
@@ -97,7 +103,8 @@
       "t": "say",
       "char": "Graciela",
       "expr": "neutral",
-      "text": "\"Your father came by this morning at seven. He sat in his truck at the end of the driveway for eleven minutes. Then he drove away. He did not come to my door.\""
+      "text": "\"Your father came by this morning at seven. He sat in his truck at the end of the driveway for eleven minutes. Then he drove away. He did not come to my door.\"",
+      "voice": "assets/audio/voice/vol6_ch1_graciela/016.mp3"
     },
     {
       "t": "narrate",
@@ -135,19 +142,22 @@
       "t": "say",
       "char": "Sam",
       "expr": "neutral",
-      "text": "\"You want me to spy on my dad.\""
+      "text": "\"You want me to spy on my dad.\"",
+      "voice": "assets/audio/voice/vol6_ch1_graciela/023.mp3"
     },
     {
       "t": "say",
       "char": "Graciela",
       "expr": "warm",
-      "text": "\"I want you to listen to your dad.\""
+      "text": "\"I want you to listen to your dad.\"",
+      "voice": "assets/audio/voice/vol6_ch1_graciela/024.mp3"
     },
     {
       "t": "say",
       "char": "Graciela",
       "expr": "warm",
-      "text": "\"I know what I am asking. I will not be offended if you refuse. Whatever you decide, I am on your side. You are a good girl. Diego loves you. I love you too, mija. I have for some time.\""
+      "text": "\"I know what I am asking. I will not be offended if you refuse. Whatever you decide, I am on your side. You are a good girl. Diego loves you. I love you too, mija. I have for some time.\"",
+      "voice": "assets/audio/voice/vol6_ch1_graciela/025.mp3"
     },
     {
       "t": "choice",
@@ -170,31 +180,36 @@
       "t": "say",
       "char": "Sam",
       "expr": "neutral",
-      "text": "\"I'll do it.\""
+      "text": "\"I'll do it.\"",
+      "voice": "assets/audio/voice/vol6_ch1_graciela/027.mp3"
     },
     {
       "t": "say",
       "char": "Graciela",
       "expr": "warm",
-      "text": "\"Thank you, mija.\""
+      "text": "\"Thank you, mija.\"",
+      "voice": "assets/audio/voice/vol6_ch1_graciela/028.mp3"
     },
     {
       "t": "say",
       "char": "Graciela",
       "expr": "neutral",
-      "text": "\"Sleep. Eat. Act normal. Do not go looking for the truck. The truck is the bait.\""
+      "text": "\"Sleep. Eat. Act normal. Do not go looking for the truck. The truck is the bait.\"",
+      "voice": "assets/audio/voice/vol6_ch1_graciela/029.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "expr": "neutral",
-      "text": "\"Who is they.\""
+      "text": "\"Who is they.\"",
+      "voice": "assets/audio/voice/vol6_ch1_graciela/030.mp3"
     },
     {
       "t": "say",
       "char": "Graciela",
       "expr": "neutral",
-      "text": "\"Mija. That is the thing we do not, yet, know.\""
+      "text": "\"Mija. That is the thing we do not, yet, know.\"",
+      "voice": "assets/audio/voice/vol6_ch1_graciela/031.mp3"
     },
     {
       "t": "narrate",
@@ -208,13 +223,15 @@
       "t": "say",
       "char": "Graciela",
       "expr": "warm",
-      "text": "[shot:establish]\"Go, mija. Go home. Call me if anything happens. Call me from a parking lot, not from your house.\""
+      "text": "[shot:establish]\"Go, mija. Go home. Call me if anything happens. Call me from a parking lot, not from your house.\"",
+      "voice": "assets/audio/voice/vol6_ch1_graciela/034.mp3"
     },
     {
       "t": "say",
       "char": "Graciela",
       "expr": "warm",
-      "text": "\"I am very sorry you are having this afternoon. It is not fair. I know.\""
+      "text": "\"I am very sorry you are having this afternoon. It is not fair. I know.\"",
+      "voice": "assets/audio/voice/vol6_ch1_graciela/035.mp3"
     },
     {
       "t": "flag",

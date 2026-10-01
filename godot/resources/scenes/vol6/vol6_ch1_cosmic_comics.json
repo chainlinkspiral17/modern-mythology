@@ -23,15 +23,18 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:day_bright]Cosmic Comics is in the strip mall on Linden, wedged between the Sally Beauty and the Great Clips. Its front window features a painted mural of Galactus that the owner has been meaning to update since 2018 and has not."
+      "text": "[mood:day_bright]Cosmic Comics is in the strip mall on Linden, wedged between the Sally Beauty and the Great Clips. Its front window features a painted mural of Galactus that the owner has been meaning to update since 2018 and has not.",
+      "voice": "assets/audio/voice/vol6_ch1_cosmic_comics/003.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup maya]Maya Daigle is in the back, going through the DO NOT SORT YET pile with the patient indifference of a sixteen-year-old who has been given the kind of task adults use to keep teenagers busy."
+      "text": "[shot:closeup maya]Maya Daigle is in the back, going through the DO NOT SORT YET pile with the patient indifference of a sixteen-year-old who has been given the kind of task adults use to keep teenagers busy.",
+      "voice": "assets/audio/voice/vol6_ch1_cosmic_comics/004.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]Maya's phone, in her back pocket, buzzes. It is a notification from the browser on her old ThinkPad. The notification reads: new message from F.T."
+      "text": "[shot:insert phone]Maya's phone, in her back pocket, buzzes. It is a notification from the browser on her old ThinkPad. The notification reads: new message from F.T.",
+      "voice": "assets/audio/voice/vol6_ch1_cosmic_comics/005.mp3"
     },
     {
       "t": "show",
@@ -43,29 +46,34 @@
       "t": "say",
       "char": "Maya",
       "expr": "neutral",
-      "text": "\"Rick, I'm gonna run home for lunch. Be back at four.\""
+      "text": "\"Rick, I'm gonna run home for lunch. Be back at four.\"",
+      "voice": "assets/audio/voice/vol6_ch1_cosmic_comics/007.mp3"
     },
     {
       "t": "say",
       "char": "Rick",
       "expr": "neutral",
-      "text": "\"Four's fine. Bring me a sweet tea from the Kwik Stop if you pass.\""
+      "text": "\"Four's fine. Bring me a sweet tea from the Kwik Stop if you pass.\"",
+      "voice": "assets/audio/voice/vol6_ch1_cosmic_comics/008.mp3"
     },
     {
       "t": "say",
       "char": "Rick",
       "expr": "neutral",
-      "text": "\"Everything okay, Maya?\""
+      "text": "\"Everything okay, Maya?\"",
+      "voice": "assets/audio/voice/vol6_ch1_cosmic_comics/009.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "expr": "neutral",
-      "text": "\"Yeah, Rick. Just forgot my charger.\""
+      "text": "\"Yeah, Rick. Just forgot my charger.\"",
+      "voice": "assets/audio/voice/vol6_ch1_cosmic_comics/010.mp3"
     },
     {
       "t": "narrate",
-      "text": "He returns to his book. She leaves."
+      "text": "He returns to his book. She leaves.",
+      "voice": "assets/audio/voice/vol6_ch1_cosmic_comics/011.mp3"
     },
     {
       "t": "hide",
@@ -73,11 +81,13 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:fluorescent_corridor][shot:insert landline~]Rick waits until she is out of sight. Then he picks up the store's landline phone — the one that has not been used to call anyone else in eleven years — and dials a number he has never written down."
+      "text": "[mood:fluorescent_corridor][shot:insert landline~]Rick waits until she is out of sight. Then he picks up the store's landline phone — the one that has not been used to call anyone else in eleven years — and dials a number he has never written down.",
+      "voice": "assets/audio/voice/vol6_ch1_cosmic_comics/013.mp3"
     },
     {
       "t": "narrate",
-      "text": "The voice says only: \"Rick.\" / \"She got another one. I thought you'd want to know.\" / \"She's fine. She's doing what she should be doing. Let her. Don't interfere.\" / \"Close up early today. Lock the back. There's a pickup in town with the wrong address.\""
+      "text": "The voice says only: \"Rick.\" / \"She got another one. I thought you'd want to know.\" / \"She's fine. She's doing what she should be doing. Let her. Don't interfere.\" / \"Close up early today. Lock the back. There's a pickup in town with the wrong address.\"",
+      "voice": "assets/audio/voice/vol6_ch1_cosmic_comics/014.mp3"
     },
     {
       "t": "narrate",

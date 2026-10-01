@@ -43,7 +43,8 @@
   },
   {
    "t": "narrate",
-   "text": "She comes to the front door before he is at the porch."
+   "text": "She comes to the front door before he is at the porch.",
+   "voice": "assets/audio/voice/vol6_ch10_home/008.mp3"
   },
   {
    "t": "show",
@@ -53,35 +54,42 @@
   },
   {
    "t": "narrate",
-   "text": "She kisses his temple."
+   "text": "She kisses his temple.",
+   "voice": "assets/audio/voice/vol6_ch10_home/010.mp3"
   },
   {
    "t": "say",
    "char": "Graciela",
    "text": "mijo. eggs.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch10_home/011.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "[shot:closeup person]eggs.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch10_home/012.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]He sits at the table."
+   "text": "[shot:establish]He sits at the table.",
+   "voice": "assets/audio/voice/vol6_ch10_home/013.mp3"
   },
   {
    "t": "narrate",
-   "text": "She makes the eggs."
+   "text": "She makes the eggs.",
+   "voice": "assets/audio/voice/vol6_ch10_home/014.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert eggs]The eggs are, this morning, scrambled with a small amount of chorizo she has crumbled into the pan because she had felt, when she went to bed at ten last night, that he might want chorizo this morning. She is right. He wants chorizo."
+   "text": "[shot:insert eggs]The eggs are, this morning, scrambled with a small amount of chorizo she has crumbled into the pan because she had felt, when she went to bed at ten last night, that he might want chorizo this morning. She is right. He wants chorizo.",
+   "voice": "assets/audio/voice/vol6_ch10_home/015.mp3"
   },
   {
    "t": "narrate",
-   "text": "He eats."
+   "text": "He eats.",
+   "voice": "assets/audio/voice/vol6_ch10_home/016.mp3"
   },
   {
    "t": "narrate",
@@ -99,45 +107,53 @@
    "t": "say",
    "char": "Diego",
    "text": "[shot:closeup person]Abuela.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch10_home/020.mp3"
   },
   {
    "t": "say",
    "char": "Graciela",
    "text": "Yes, mijo.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch10_home/021.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "There's a guy at work. The other summer hire. He told the team he used to be a cop.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch10_home/022.mp3"
   },
   {
    "t": "narrate",
-   "text": "She looks at him."
+   "text": "She looks at him.",
+   "voice": "assets/audio/voice/vol6_ch10_home/023.mp3"
   },
   {
    "t": "say",
    "char": "Graciela",
    "text": "[shot:closeup person_b]And.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch10_home/024.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "And the team has — they don't believe him. Or they don't trust him. They have, in the way the team does, decided about him.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch10_home/025.mp3"
   },
   {
    "t": "say",
    "char": "Graciela",
    "text": "And you.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch10_home/026.mp3"
   },
   {
    "t": "narrate",
-   "text": "He thinks for a moment."
+   "text": "He thinks for a moment.",
+   "voice": "assets/audio/voice/vol6_ch10_home/027.mp3"
   },
   {
    "t": "say",
@@ -153,63 +169,75 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup graciela]His grandmother, at the counter, is quiet for a long moment."
+   "text": "[shot:closeup graciela]His grandmother, at the counter, is quiet for a long moment.",
+   "voice": "assets/audio/voice/vol6_ch10_home/030.mp3"
   },
   {
    "t": "say",
    "char": "Graciela",
    "text": "mijo. you are sixteen years old. you have been at this job for five weeks. the team has been there for years. the team has decided what it has decided. you are not, this summer, the one who is supposed to be deciding for the team.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch10_home/031.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch10_home/032.mp3"
   },
   {
    "t": "say",
    "char": "Graciela",
    "text": "but.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch10_home/033.mp3"
   },
   {
    "t": "narrate",
-   "text": "He looks at her."
+   "text": "He looks at her.",
+   "voice": "assets/audio/voice/vol6_ch10_home/034.mp3"
   },
   {
    "t": "say",
    "char": "Graciela",
    "text": "but. the man is alone in that room. and you know what it is to be alone in a room. and the team's decision is not, by being the team's decision, automatically right. you can hold both of these things at once. you do not have to act on either of them. you can just hold them.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch10_home/035.mp3"
   },
   {
    "t": "narrate",
-   "text": "He thinks about this."
+   "text": "He thinks about this.",
+   "voice": "assets/audio/voice/vol6_ch10_home/036.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "[shot:closeup person]Yeah, abuela.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch10_home/037.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert hands]She comes to the table. She puts her hand, briefly, on the top of his head. The touch is the touch she has been doing since he was four. He leans into it without thinking."
+   "text": "[shot:insert hands]She comes to the table. She puts her hand, briefly, on the top of his head. The touch is the touch she has been doing since he was four. He leans into it without thinking.",
+   "voice": "assets/audio/voice/vol6_ch10_home/038.mp3"
   },
   {
    "t": "say",
    "char": "Graciela",
    "text": "Eat your eggs, mijo. You will think about this better after sleep.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch10_home/039.mp3"
   },
   {
    "t": "narrate",
-   "text": "He eats his eggs."
+   "text": "He eats his eggs.",
+   "voice": "assets/audio/voice/vol6_ch10_home/040.mp3"
   },
   {
    "t": "narrate",
-   "text": "She returns to the counter."
+   "text": "She returns to the counter.",
+   "voice": "assets/audio/voice/vol6_ch10_home/041.mp3"
   },
   {
    "t": "narrate",
@@ -253,11 +281,13 @@
   },
   {
    "t": "narrate",
-   "text": "He sleeps."
+   "text": "He sleeps.",
+   "voice": "assets/audio/voice/vol6_ch10_home/052.mp3"
   },
   {
    "t": "narrate",
-   "text": "[mood:dream_blur][shot:establish~]In his sleep, sometime around eleven AM Central, he dreams of the dock."
+   "text": "[mood:dream_blur][shot:establish~]In his sleep, sometime around eleven AM Central, he dreams of the dock.",
+   "voice": "assets/audio/voice/vol6_ch10_home/053.mp3"
   },
   {
    "t": "narrate",
@@ -269,15 +299,18 @@
   },
   {
    "t": "narrate",
-   "text": "He stands on the dock and watches it come."
+   "text": "He stands on the dock and watches it come.",
+   "voice": "assets/audio/voice/vol6_ch10_home/056.mp3"
   },
   {
    "t": "narrate",
-   "text": "In the dream he is not, exactly, afraid."
+   "text": "In the dream he is not, exactly, afraid.",
+   "voice": "assets/audio/voice/vol6_ch10_home/057.mp3"
   },
   {
    "t": "narrate",
-   "text": "In the dream he is, instead, waiting — for the haze to arrive, for whatever is inside the haze to arrive with it, for the small reckoning the haze is, in the dream, bringing toward the back of a Centro Foods supermarket on the edge of a New Auburn industrial corridor at four AM in mid-August."
+   "text": "In the dream he is, instead, waiting — for the haze to arrive, for whatever is inside the haze to arrive with it, for the small reckoning the haze is, in the dream, bringing toward the back of a Centro Foods supermarket on the edge of a New Auburn industrial corridor at four AM in mid-August.",
+   "voice": "assets/audio/voice/vol6_ch10_home/058.mp3"
   },
   {
    "t": "show",
@@ -293,17 +326,20 @@
   },
   {
    "t": "narrate",
-   "text": "In the dream BT is on the dock with him."
+   "text": "In the dream BT is on the dock with him.",
+   "voice": "assets/audio/voice/vol6_ch10_home/061.mp3"
   },
   {
    "t": "say",
    "char": "BT",
    "text": "[beat:chill]you saw it too. I knew you did.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch10_home/062.mp3"
   },
   {
    "t": "narrate",
-   "text": "In the dream Diego, watching the haze, does not deny it."
+   "text": "In the dream Diego, watching the haze, does not deny it.",
+   "voice": "assets/audio/voice/vol6_ch10_home/063.mp3"
   },
   {
    "t": "hide",
@@ -315,11 +351,13 @@
   },
   {
    "t": "narrate",
-   "text": "He wakes, in his bedroom, at four eleven PM."
+   "text": "He wakes, in his bedroom, at four eleven PM.",
+   "voice": "assets/audio/voice/vol6_ch10_home/066.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert phone]The blackout curtains are doing their work. The room is dark. His phone, on the nightstand, has not vibrated."
+   "text": "[shot:insert phone]The blackout curtains are doing their work. The room is dark. His phone, on the nightstand, has not vibrated.",
+   "voice": "assets/audio/voice/vol6_ch10_home/067.mp3"
   },
   {
    "t": "show",
@@ -329,30 +367,36 @@
   },
   {
    "t": "narrate",
-   "text": "He lies on his back for a long minute."
+   "text": "He lies on his back for a long minute.",
+   "voice": "assets/audio/voice/vol6_ch10_home/069.mp3"
   },
   {
    "t": "think",
    "char": "Diego",
-   "text": "the dream was a dream."
+   "text": "the dream was a dream.",
+   "voice": "assets/audio/voice/vol6_ch10_home/070.mp3"
   },
   {
    "t": "think",
    "char": "Diego",
-   "text": "I did not, on the dock, deny it."
+   "text": "I did not, on the dock, deny it.",
+   "voice": "assets/audio/voice/vol6_ch10_home/071.mp3"
   },
   {
    "t": "think",
    "char": "Diego",
-   "text": "I am going to have to figure out, this week, what I am going to do about BT."
+   "text": "I am going to have to figure out, this week, what I am going to do about BT.",
+   "voice": "assets/audio/voice/vol6_ch10_home/072.mp3"
   },
   {
    "t": "narrate",
-   "text": "He gets up."
+   "text": "He gets up.",
+   "voice": "assets/audio/voice/vol6_ch10_home/073.mp3"
   },
   {
    "t": "narrate",
-   "text": "[mood:day_bright][shot:insert window]He pulls back one of the blackout curtains. The afternoon light comes in. The light is the specific late-summer light Texas does in mid-August, gold and heavy, with the small visible motes of dust the air carries when the AC has been running all day."
+   "text": "[mood:day_bright][shot:insert window]He pulls back one of the blackout curtains. The afternoon light comes in. The light is the specific late-summer light Texas does in mid-August, gold and heavy, with the small visible motes of dust the air carries when the AC has been running all day.",
+   "voice": "assets/audio/voice/vol6_ch10_home/074.mp3"
   },
   {
    "t": "narrate",
@@ -388,43 +432,53 @@
   },
   {
    "t": "narrate",
-   "text": "He goes downstairs."
+   "text": "He goes downstairs.",
+   "voice": "assets/audio/voice/vol6_ch10_home/082.mp3"
   },
   {
    "t": "narrate",
-   "text": "He kisses her on the temple."
+   "text": "He kisses her on the temple.",
+   "voice": "assets/audio/voice/vol6_ch10_home/083.mp3"
   },
   {
    "t": "narrate",
-   "text": "He sits at the table."
+   "text": "He sits at the table.",
+   "voice": "assets/audio/voice/vol6_ch10_home/084.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert soup]She brings the soup."
+   "text": "[shot:insert soup]She brings the soup.",
+   "voice": "assets/audio/voice/vol6_ch10_home/085.mp3"
   },
   {
    "t": "narrate",
-   "text": "He eats."
+   "text": "He eats.",
+   "voice": "assets/audio/voice/vol6_ch10_home/086.mp3"
   },
   {
    "t": "narrate",
-   "text": "The clock above the stove reads four thirty-eight PM."
+   "text": "The clock above the stove reads four thirty-eight PM.",
+   "voice": "assets/audio/voice/vol6_ch10_home/087.mp3"
   },
   {
    "t": "narrate",
-   "text": "He has, before his next shift starts, five hours and twenty-two minutes."
+   "text": "He has, before his next shift starts, five hours and twenty-two minutes.",
+   "voice": "assets/audio/voice/vol6_ch10_home/088.mp3"
   },
   {
    "t": "narrate",
-   "text": "He eats slowly."
+   "text": "He eats slowly.",
+   "voice": "assets/audio/voice/vol6_ch10_home/089.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]His grandmother, today, sits with him."
+   "text": "[shot:establish]His grandmother, today, sits with him.",
+   "voice": "assets/audio/voice/vol6_ch10_home/090.mp3"
   },
   {
    "t": "narrate",
-   "text": "The asymmetry, this evening, can be, for one bowl of soup, set aside."
+   "text": "The asymmetry, this evening, can be, for one bowl of soup, set aside.",
+   "voice": "assets/audio/voice/vol6_ch10_home/091.mp3"
   },
   {
    "t": "hide",

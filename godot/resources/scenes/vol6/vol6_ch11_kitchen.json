@@ -29,7 +29,8 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2][mood:night]Bianca has been awake since four eleven."
+      "text": "[trip:1.2][mood:night]Bianca has been awake since four eleven.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/005.mp3"
     },
     {
       "t": "narrate",
@@ -45,7 +46,8 @@
     },
     {
       "t": "narrate",
-      "text": "She lies in the bed for a while after."
+      "text": "She lies in the bed for a while after.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/009.mp3"
     },
     {
       "t": "narrate",
@@ -65,7 +67,8 @@
     },
     {
       "t": "narrate",
-      "text": "At four thirty she gets up."
+      "text": "At four thirty she gets up.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/014.mp3"
     },
     {
       "t": "narrate",
@@ -85,7 +88,8 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_b]She goes downstairs."
+      "text": "[shot:establish_b]She goes downstairs.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/019.mp3"
     },
     {
       "t": "narrate",
@@ -101,7 +105,8 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]The kitchen is dark."
+      "text": "[shot:establish]The kitchen is dark.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/023.mp3"
     },
     {
       "t": "show",
@@ -123,7 +128,8 @@
     },
     {
       "t": "narrate",
-      "text": "She stands at the counter while it brews."
+      "text": "She stands at the counter while it brews.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/028.mp3"
     },
     {
       "t": "narrate",
@@ -135,11 +141,13 @@
     },
     {
       "t": "narrate",
-      "text": "This is, she has come to understand, the thing she has been waking up for."
+      "text": "This is, she has come to understand, the thing she has been waking up for.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/031.mp3"
     },
     {
       "t": "narrate",
-      "text": "The coffee finishes brewing at four thirty-eight."
+      "text": "The coffee finishes brewing at four thirty-eight.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/032.mp3"
     },
     {
       "t": "narrate",
@@ -151,7 +159,8 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]She sits at the kitchen table."
+      "text": "[shot:establish]She sits at the kitchen table.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/035.mp3"
     },
     {
       "t": "narrate",
@@ -167,11 +176,13 @@
     },
     {
       "t": "narrate",
-      "text": "She drinks her coffee."
+      "text": "She drinks her coffee.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/039.mp3"
     },
     {
       "t": "narrate",
-      "text": "She watches the cul-de-sac."
+      "text": "She watches the cul-de-sac.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/040.mp3"
     },
     {
       "t": "narrate",
@@ -195,15 +206,18 @@
     },
     {
       "t": "narrate",
-      "text": "The cul-de-sac, again, is empty."
+      "text": "The cul-de-sac, again, is empty.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/046.mp3"
     },
     {
       "t": "narrate",
-      "text": "She drinks her coffee."
+      "text": "She drinks her coffee.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/047.mp3"
     },
     {
       "t": "narrate",
-      "text": "She does not, in this hour, think about Mike."
+      "text": "She does not, in this hour, think about Mike.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/048.mp3"
     },
     {
       "t": "narrate",
@@ -223,7 +237,8 @@
     },
     {
       "t": "narrate",
-      "text": "By the seventh week she had registered that the thinking was not, in any useful way, accomplishing anything."
+      "text": "By the seventh week she had registered that the thinking was not, in any useful way, accomplishing anything.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/053.mp3"
     },
     {
       "t": "narrate",
@@ -247,7 +262,8 @@
     },
     {
       "t": "narrate",
-      "text": "She has, in the four weeks since, been finding out."
+      "text": "She has, in the four weeks since, been finding out.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/059.mp3"
     },
     {
       "t": "narrate",
@@ -267,7 +283,8 @@
     },
     {
       "t": "narrate",
-      "text": "She thinks about her mother more than she has thought about her in some time."
+      "text": "She thinks about her mother more than she has thought about her in some time.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/064.mp3"
     },
     {
       "t": "narrate",
@@ -275,15 +292,18 @@
     },
     {
       "t": "narrate",
-      "text": "The thinking is, in its small way, the thing she is doing instead of the tape, and the not-crying is not because she is suppressing anything — it is because the thinking is, in this hour, a thing her body wants to do, and her body is, finally, being allowed to do the things it wants to do."
+      "text": "The thinking is, in its small way, the thing she is doing instead of the tape, and the not-crying is not because she is suppressing anything — it is because the thinking is, in this hour, a thing her body wants to do, and her body is, finally, being allowed to do the things it wants to do.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/066.mp3"
     },
     {
       "t": "narrate",
-      "text": "She drinks her coffee."
+      "text": "She drinks her coffee.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/067.mp3"
     },
     {
       "t": "narrate",
-      "text": "At five forty-seven she gets up and starts the second pot."
+      "text": "At five forty-seven she gets up and starts the second pot.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/068.mp3"
     },
     {
       "t": "narrate",
@@ -319,23 +339,28 @@
     },
     {
       "t": "narrate",
-      "text": "This morning, at five fifty-eight, she cuts the slices Mike's thickness."
+      "text": "This morning, at five fifty-eight, she cuts the slices Mike's thickness.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/077.mp3"
     },
     {
       "t": "narrate",
-      "text": "She is, she registers, not exactly sure why."
+      "text": "She is, she registers, not exactly sure why.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/078.mp3"
     },
     {
       "t": "narrate",
-      "text": "She does not interrogate it."
+      "text": "She does not interrogate it.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/079.mp3"
     },
     {
       "t": "narrate",
-      "text": "The pan goes on at six oh-two."
+      "text": "The pan goes on at six oh-two.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/080.mp3"
     },
     {
       "t": "narrate",
-      "text": "The first slice goes in at six oh-six."
+      "text": "The first slice goes in at six oh-six.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/081.mp3"
     },
     {
       "t": "narrate",
@@ -347,27 +372,33 @@
     },
     {
       "t": "narrate",
-      "text": "Upstairs, she hears the small creak of Sammy's bedroom door."
+      "text": "Upstairs, she hears the small creak of Sammy's bedroom door.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/084.mp3"
     },
     {
       "t": "narrate",
-      "text": "She turns the second slice."
+      "text": "She turns the second slice.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/085.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam comes downstairs at six fifteen."
+      "text": "Sam comes downstairs at six fifteen.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/086.mp3"
     },
     {
       "t": "narrate",
-      "text": "She is in the t-shirt and pajama pants she sleeps in. She is barefoot. Her hair is on one side of her head in the way it always is when she wakes — the small tilt that has been the same since she was three."
+      "text": "She is in the t-shirt and pajama pants she sleeps in. She is barefoot. Her hair is on one side of her head in the way it always is when she wakes — the small tilt that has been the same since she was three.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/087.mp3"
     },
     {
       "t": "narrate",
-      "text": "She comes into the kitchen."
+      "text": "She comes into the kitchen.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/088.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup sam]She stops in the doorway."
+      "text": "[shot:closeup sam]She stops in the doorway.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/089.mp3"
     },
     {
       "t": "show",
@@ -379,109 +410,130 @@
       "t": "say",
       "char": "Sam",
       "text": "Mom.",
-      "expr": "surprised"
+      "expr": "surprised",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/091.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Sit.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/092.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam sits."
+      "text": "Sam sits.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/093.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert french_toast]Bianca brings the first plate over. Two slices of French toast, with the powdered sugar and the small jug of warmed maple syrup that she had pulled out of the back of the pantry. She sets the plate in front of Sam. She kisses the top of Sam's head."
+      "text": "[shot:insert french_toast]Bianca brings the first plate over. Two slices of French toast, with the powdered sugar and the small jug of warmed maple syrup that she had pulled out of the back of the pantry. She sets the plate in front of Sam. She kisses the top of Sam's head.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/094.mp3"
     },
     {
       "t": "narrate",
-      "text": "She goes back to the pan."
+      "text": "She goes back to the pan.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/095.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam looks at the plate."
+      "text": "Sam looks at the plate.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/096.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "It's a Monday.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/097.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "I know.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/098.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "You don't make French toast on a Monday.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/099.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "[shot:closeup person]I know.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/100.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Mom.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/101.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "I felt like it. Eat.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/102.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_b]Sam picks up the fork. She pours the syrup. She cuts a piece. She puts it in her mouth."
+      "text": "[shot:establish_b]Sam picks up the fork. She pours the syrup. She cuts a piece. She puts it in her mouth.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/103.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup bianca]Bianca, at the stove, watches her without watching her."
+      "text": "[shot:closeup bianca]Bianca, at the stove, watches her without watching her.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/104.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam, after the first bite, closes her eyes for a beat."
+      "text": "Sam, after the first bite, closes her eyes for a beat.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/105.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Mom. This is — this is really good.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/106.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/107.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Did you sleep?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/108.mp3"
     },
     {
       "t": "narrate",
-      "text": "Bianca pauses, briefly. Then she says, evenly: \"I slept until four eleven, Sammy. I was up at four thirty. The coffee's strong. Eat.\""
+      "text": "Bianca pauses, briefly. Then she says, evenly: \"I slept until four eleven, Sammy. I was up at four thirty. The coffee's strong. Eat.\"",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/109.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "I slept until four eleven, Sammy. I was up at four thirty. The coffee's strong. Eat.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/110.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_c]Sam looks at her."
+      "text": "[shot:establish_c]Sam looks at her.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/111.mp3"
     },
     {
       "t": "narrate",
@@ -495,119 +547,142 @@
       "t": "say",
       "char": "Sam",
       "text": "Are you having any?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/114.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "In a minute. I'm doing yours first.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/115.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "[shot:closeup person]Sit with me. I'll wait.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/116.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Sammy. Eat. It'll get cold.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/117.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "[shot:closeup person_b]Mom. Sit with me. The pan can wait two minutes. I'll wait two minutes. Sit.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/118.mp3"
     },
     {
       "t": "narrate",
-      "text": "Bianca turns off the burner."
+      "text": "Bianca turns off the burner.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/119.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert french_toast]She slides the third slice onto a plate."
+      "text": "[shot:insert french_toast]She slides the third slice onto a plate.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/120.mp3"
     },
     {
       "t": "narrate",
-      "text": "She brings the plate to the table."
+      "text": "She brings the plate to the table.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/121.mp3"
     },
     {
       "t": "narrate",
-      "text": "[mood:morning_bright][shot:establish]She sits — not in Mike's chair, this morning. She sits at her own old chair, the one at the long side. The first time she has sat at her own chair in some weeks."
+      "text": "[mood:morning_bright][shot:establish]She sits — not in Mike's chair, this morning. She sits at her own old chair, the one at the long side. The first time she has sat at her own chair in some weeks.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/122.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam notices."
+      "text": "Sam notices.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/123.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam, this time, does say something."
+      "text": "Sam, this time, does say something.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/124.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Mom.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/125.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/126.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "[shot:closeup person]You haven't sat in your chair in like two months.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/127.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup bianca~]Bianca looks at her plate."
+      "text": "[shot:closeup bianca~]Bianca looks at her plate.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/128.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "I know, Sammy.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/129.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "It's okay. I just — I just noticed.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/130.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "I know you noticed. I'm — I'm trying it. Today.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/131.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/132.mp3"
     },
     {
       "t": "narrate",
-      "text": "A small silence."
+      "text": "A small silence.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/133.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Sam pours syrup on her own second slice."
+      "text": "[shot:establish]Sam pours syrup on her own second slice.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/134.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Are you — are you doing okay, Mom.",
-      "expr": "thinking"
+      "expr": "thinking",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/135.mp3"
     },
     {
       "t": "narrate",
-      "text": "Bianca thinks for a long moment."
+      "text": "Bianca thinks for a long moment.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/136.mp3"
     },
     {
       "t": "say",
@@ -629,73 +704,86 @@
     },
     {
       "t": "narrate",
-      "text": "Sam nods."
+      "text": "Sam nods.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/140.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "[shot:closeup person_b]Mom. I want to tell you something.",
-      "expr": "thinking"
+      "expr": "thinking",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/141.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/142.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "I have been — I have been thinking about college.",
-      "expr": "thinking"
+      "expr": "thinking",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/143.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert table]Bianca, at the table, sets down her fork."
+      "text": "[shot:insert table]Bianca, at the table, sets down her fork.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/144.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/145.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Not — not soon. Senior year. Applications in the fall. I have been — I have been thinking. Not about which one. About — about whether to leave.",
-      "expr": "thinking"
+      "expr": "thinking",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/146.mp3"
     },
     {
       "t": "narrate",
-      "text": "Bianca looks at her."
+      "text": "Bianca looks at her.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/147.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Sammy.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/148.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "[shot:closeup person]Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/149.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "[shot:closeup person][beat:still]Of course you should leave.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/150.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_b]Sam looks at her."
+      "text": "[shot:establish_b]Sam looks at her.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/151.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Mom.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/152.mp3"
     },
     {
       "t": "say",
@@ -717,13 +805,15 @@
     },
     {
       "t": "narrate",
-      "text": "Sam is quiet for a moment."
+      "text": "Sam is quiet for a moment.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/156.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "What if — what if I want to stay.",
-      "expr": "thinking"
+      "expr": "thinking",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/157.mp3"
     },
     {
       "t": "say",
@@ -739,7 +829,8 @@
     },
     {
       "t": "narrate",
-      "text": "Sam looks at her."
+      "text": "Sam looks at her.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/160.mp3"
     },
     {
       "t": "say",
@@ -755,63 +846,75 @@
     },
     {
       "t": "narrate",
-      "text": "Sam does not, immediately, respond."
+      "text": "Sam does not, immediately, respond.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/163.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]She picks up her fork."
+      "text": "[shot:establish]She picks up her fork.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/164.mp3"
     },
     {
       "t": "narrate",
-      "text": "She cuts another piece."
+      "text": "She cuts another piece.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/165.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Okay, Mom.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/166.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/167.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Mom.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/168.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/169.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "I love you.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/170.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "I love you too, Sammy.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/171.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert french_toast]They eat the French toast."
+      "text": "[shot:insert french_toast]They eat the French toast.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/172.mp3"
     },
     {
       "t": "narrate",
-      "text": "The kitchen, in the small ways kitchens do this work, holds them."
+      "text": "The kitchen, in the small ways kitchens do this work, holds them.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/173.mp3"
     },
     {
       "t": "narrate",
-      "text": "At six fifty-three Sam goes upstairs to shower."
+      "text": "At six fifty-three Sam goes upstairs to shower.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/174.mp3"
     },
     {
       "t": "hide",
@@ -827,27 +930,33 @@
     },
     {
       "t": "narrate",
-      "text": "She wipes the counter."
+      "text": "She wipes the counter.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/178.mp3"
     },
     {
       "t": "narrate",
-      "text": "She puts the syrup back in the pantry."
+      "text": "She puts the syrup back in the pantry.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/179.mp3"
     },
     {
       "t": "narrate",
-      "text": "She puts the French toast pan in the sink to soak."
+      "text": "She puts the French toast pan in the sink to soak.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/180.mp3"
     },
     {
       "t": "narrate",
-      "text": "The kitchen, by seven oh-four, is clean."
+      "text": "The kitchen, by seven oh-four, is clean.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/181.mp3"
     },
     {
       "t": "narrate",
-      "text": "She makes the third cup of coffee."
+      "text": "She makes the third cup of coffee.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/182.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_c]She takes it out to the back porch."
+      "text": "[shot:establish_c]She takes it out to the back porch.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/183.mp3"
     },
     {
       "t": "bg",
@@ -871,7 +980,8 @@
     },
     {
       "t": "narrate",
-      "text": "She sits."
+      "text": "She sits.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/189.mp3"
     },
     {
       "t": "narrate",
@@ -883,11 +993,13 @@
     },
     {
       "t": "narrate",
-      "text": "She drinks her coffee."
+      "text": "She drinks her coffee.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/192.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thinks, this morning, about her father."
+      "text": "She thinks, this morning, about her father.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/193.mp3"
     },
     {
       "t": "narrate",
@@ -907,11 +1019,13 @@
     },
     {
       "t": "narrate",
-      "text": "She closes her eyes."
+      "text": "She closes her eyes.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/198.mp3"
     },
     {
       "t": "narrate",
-      "text": "She breathes."
+      "text": "She breathes.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/199.mp3"
     },
     {
       "t": "narrate",
@@ -935,15 +1049,18 @@
     },
     {
       "t": "narrate",
-      "text": "The radio is, she thinks she remembers, still in her brother's house in Houston, on a shelf. She has not seen it in some years."
+      "text": "The radio is, she thinks she remembers, still in her brother's house in Houston, on a shelf. She has not seen it in some years.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/205.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thinks about it."
+      "text": "She thinks about it.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/206.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thinks, this morning, that she would like to call her brother."
+      "text": "She thinks, this morning, that she would like to call her brother.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/207.mp3"
     },
     {
       "t": "narrate",
@@ -955,11 +1072,13 @@
     },
     {
       "t": "narrate",
-      "text": "But the radio."
+      "text": "But the radio.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/210.mp3"
     },
     {
       "t": "narrate",
-      "text": "The radio is a different thing."
+      "text": "The radio is a different thing.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/211.mp3"
     },
     {
       "t": "narrate",
@@ -971,19 +1090,23 @@
     },
     {
       "t": "narrate",
-      "text": "She does not, this morning, decide further than this."
+      "text": "She does not, this morning, decide further than this.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/214.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]She finishes her coffee."
+      "text": "[shot:establish]She finishes her coffee.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/215.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert myrtle]The cicadas, in the crepe myrtle, are louder now."
+      "text": "[shot:insert myrtle]The cicadas, in the crepe myrtle, are louder now.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/216.mp3"
     },
     {
       "t": "narrate",
-      "text": "At seven thirty-one Sam comes downstairs in her Kwik Stop polo."
+      "text": "At seven thirty-one Sam comes downstairs in her Kwik Stop polo.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/217.mp3"
     },
     {
       "t": "show",
@@ -993,63 +1116,74 @@
     },
     {
       "t": "narrate",
-      "text": "She comes to the back porch. She knocks on the door frame."
+      "text": "She comes to the back porch. She knocks on the door frame.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/219.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Mom. I'm out. Eight to four.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/220.mp3"
     },
     {
       "t": "narrate",
-      "text": "Bianca turns."
+      "text": "Bianca turns.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/221.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Be careful driving. The intersection at Linden has been a mess all week.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/222.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "I know. I'll go around through Magnolia.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/223.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/224.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Mom.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/225.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/226.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Thanks for the French toast.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/227.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Bianca smiles."
+      "text": "[shot:establish]Bianca smiles.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/228.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Yeah, Sammy.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/229.mp3"
     },
     {
       "t": "narrate",
@@ -1057,23 +1191,27 @@
     },
     {
       "t": "narrate",
-      "text": "She is, Bianca registers, doing the small lingering Sam has been doing all summer in the small departures — the lingering of a daughter who is, every time she leaves the house, doing a small private check-in with herself about whether she should, this morning, stay."
+      "text": "She is, Bianca registers, doing the small lingering Sam has been doing all summer in the small departures — the lingering of a daughter who is, every time she leaves the house, doing a small private check-in with herself about whether she should, this morning, stay.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/231.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Go to work, Sammy.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/232.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/233.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam goes."
+      "text": "Sam goes.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/234.mp3"
     },
     {
       "t": "hide",
@@ -1081,23 +1219,28 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert door]The door closes."
+      "text": "[shot:insert door]The door closes.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/236.mp3"
     },
     {
       "t": "narrate",
-      "text": "The Corolla starts in the driveway. The Corolla pulls out. The Corolla is gone."
+      "text": "The Corolla starts in the driveway. The Corolla pulls out. The Corolla is gone.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/237.mp3"
     },
     {
       "t": "narrate",
-      "text": "Bianca stays on the porch."
+      "text": "Bianca stays on the porch.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/238.mp3"
     },
     {
       "t": "narrate",
-      "text": "She watches the yard."
+      "text": "She watches the yard.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/239.mp3"
     },
     {
       "t": "narrate",
-      "text": "The morning continues."
+      "text": "The morning continues.",
+      "voice": "assets/audio/voice/vol6_ch11_kitchen/240.mp3"
     },
     {
       "t": "jump",

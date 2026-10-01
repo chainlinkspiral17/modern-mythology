@@ -29,7 +29,8 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:day_bright]The lake is quiet."
+      "text": "[mood:day_bright]The lake is quiet.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/005.mp3"
     },
     {
       "t": "narrate",
@@ -53,15 +54,18 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert truck]Her father pulls into the lot near the north boat ramp."
+      "text": "[shot:insert truck]Her father pulls into the lot near the north boat ramp.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/010.mp3"
     },
     {
       "t": "narrate",
-      "text": "He parks."
+      "text": "He parks.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/011.mp3"
     },
     {
       "t": "narrate",
-      "text": "He does not, immediately, get out."
+      "text": "He does not, immediately, get out.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/012.mp3"
     },
     {
       "t": "say",
@@ -77,23 +81,27 @@
     },
     {
       "t": "narrate",
-      "text": "Sam laughs, briefly."
+      "text": "Sam laughs, briefly.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/015.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "[shot:closeup person]I don't remember that.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/016.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "text": "You wouldn't. You were five. But I remember it. I have remembered it every time I have driven up here since.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/017.mp3"
     },
     {
       "t": "narrate",
-      "text": "He pauses."
+      "text": "He pauses.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/018.mp3"
     },
     {
       "t": "say",
@@ -111,19 +119,23 @@
       "t": "say",
       "char": "Sam",
       "text": "[shot:closeup person]Yes, Dad.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/021.mp3"
     },
     {
       "t": "narrate",
-      "text": "He nods."
+      "text": "He nods.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/022.mp3"
     },
     {
       "t": "narrate",
-      "text": "He gets out of the truck."
+      "text": "He gets out of the truck.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/023.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert truck]She gets out of the truck."
+      "text": "[shot:insert truck]She gets out of the truck.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/024.mp3"
     },
     {
       "t": "narrate",
@@ -139,29 +151,35 @@
     },
     {
       "t": "narrate",
-      "text": "He hands her the thermos."
+      "text": "He hands her the thermos.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/028.mp3"
     },
     {
       "t": "narrate",
-      "text": "She pours coffee for both of them."
+      "text": "She pours coffee for both of them.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/029.mp3"
     },
     {
       "t": "narrate",
-      "text": "He drinks. He sets the cup down on the wood between them."
+      "text": "He drinks. He sets the cup down on the wood between them.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/030.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup miller]He breathes."
+      "text": "[shot:closeup miller]He breathes.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/031.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "text": "[beat:hit]I started in 2016.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/032.mp3"
     },
     {
       "t": "narrate",
-      "text": "She does not, immediately, react."
+      "text": "She does not, immediately, react.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/033.mp3"
     },
     {
       "t": "say",
@@ -201,7 +219,8 @@
     },
     {
       "t": "narrate",
-      "text": "He pauses."
+      "text": "He pauses.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/040.mp3"
     },
     {
       "t": "say",
@@ -237,7 +256,8 @@
       "t": "say",
       "char": "Sam",
       "text": "[shot:closeup person_b]What was it.",
-      "expr": "thinking"
+      "expr": "thinking",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/046.mp3"
     },
     {
       "t": "say",
@@ -259,7 +279,8 @@
     },
     {
       "t": "narrate",
-      "text": "He pauses."
+      "text": "He pauses.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/050.mp3"
     },
     {
       "t": "say",
@@ -299,59 +320,70 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:arcana_cool][shot:closeup sam]Sam, on the dock, is very still."
+      "text": "[mood:arcana_cool][shot:closeup sam]Sam, on the dock, is very still.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/057.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Dad.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/058.mp3"
     },
     {
       "t": "narrate",
-      "text": "He looks at her."
+      "text": "He looks at her.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/059.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "I know who D. Dean is.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/060.mp3"
     },
     {
       "t": "narrate",
-      "text": "He looks at her for a long moment."
+      "text": "He looks at her for a long moment.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/061.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "text": "[shot:closeup person]Sammy. How.",
-      "expr": "surprised"
+      "expr": "surprised",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/062.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Maya's grandmother. Her grandfather, too. He took a picture in Graustark in the seventies. D. Dean cost him fifteen years. He is — Dad, he is not new. He is old. Whatever he is.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/063.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup miller~]Her father exhales — a long careful exhale."
+      "text": "[shot:closeup miller~]Her father exhales — a long careful exhale.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/064.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "text": "Okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/065.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "text": "Okay, Sammy. That makes — that makes some things easier to tell you.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/066.mp3"
     },
     {
       "t": "narrate",
-      "text": "He drinks his coffee."
+      "text": "He drinks his coffee.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/067.mp3"
     },
     {
       "t": "say",
@@ -379,13 +411,15 @@
     },
     {
       "t": "narrate",
-      "text": "Sam is silent."
+      "text": "Sam is silent.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/072.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "[shot:closeup person_b]When did you — when did you decide.",
-      "expr": "thinking"
+      "expr": "thinking",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/073.mp3"
     },
     {
       "t": "say",
@@ -413,33 +447,39 @@
     },
     {
       "t": "narrate",
-      "text": "A long silence."
+      "text": "A long silence.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/078.mp3"
     },
     {
       "t": "narrate",
-      "text": "The lake makes its small lake sounds."
+      "text": "The lake makes its small lake sounds.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/079.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Dad.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/080.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "text": "[shot:closeup person]Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/081.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "What did Mom know.",
-      "expr": "thinking"
+      "expr": "thinking",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/082.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thinks for a moment."
+      "text": "He thinks for a moment.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/083.mp3"
     },
     {
       "t": "say",
@@ -461,35 +501,41 @@
     },
     {
       "t": "narrate",
-      "text": "Sam nods."
+      "text": "Sam nods.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/087.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "[shot:closeup person_b]Okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/088.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Dad.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/089.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/090.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "What do you want from me.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/091.mp3"
     },
     {
       "t": "narrate",
-      "text": "He looks at her."
+      "text": "He looks at her.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/092.mp3"
     },
     {
       "t": "say",
@@ -511,11 +557,13 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup sam]Sam looks at the water."
+      "text": "[shot:closeup sam]Sam looks at the water.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/096.mp3"
     },
     {
       "t": "narrate",
-      "text": "She is silent for a long minute."
+      "text": "She is silent for a long minute.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/097.mp3"
     },
     {
       "t": "say",
@@ -537,155 +585,184 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup miller]Her father, on the dock, makes a small sound that is not, quite, a sob."
+      "text": "[shot:closeup miller]Her father, on the dock, makes a small sound that is not, quite, a sob.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/101.mp3"
     },
     {
       "t": "narrate",
-      "text": "He puts his hand, lightly, on her shoulder."
+      "text": "He puts his hand, lightly, on her shoulder.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/102.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "text": "Sammy.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/103.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Dad.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/104.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "text": "Okay.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/105.mp3"
     },
     {
       "t": "narrate",
-      "text": "They sit on the dock for another twenty minutes."
+      "text": "They sit on the dock for another twenty minutes.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/106.mp3"
     },
     {
       "t": "narrate",
-      "text": "[mood:day_bright][shot:establish~]The sun comes up over the trees on the eastern shore. The light gets into the water. The water lights up. Two bass boats — finally, at seven-fifteen — emerge from the launch on the far side and begin their slow patient circuits along the cove."
+      "text": "[mood:day_bright][shot:establish~]The sun comes up over the trees on the eastern shore. The light gets into the water. The water lights up. Two bass boats — finally, at seven-fifteen — emerge from the launch on the far side and begin their slow patient circuits along the cove.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/107.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "text": "I brought sandwiches. They're in the cooler in the bed.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/108.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "You brought sandwiches at six AM.",
-      "expr": "surprised"
+      "expr": "surprised",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/109.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "text": "Your mother packed them. She knew we would not eat breakfast.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/110.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "What kind.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/111.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "text": "Turkey and Swiss. For both of us. Mustard for me, mayo for you.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/112.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup sam]Sam laughs."
+      "text": "[shot:closeup sam]Sam laughs.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/113.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Dad. I have not eaten mayo since I was twelve.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/114.mp3"
     },
     {
       "t": "narrate",
-      "text": "He stares at her."
+      "text": "He stares at her.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/115.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "text": "What do you eat instead.",
-      "expr": "surprised"
+      "expr": "surprised",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/116.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Mustard.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/117.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "text": "Sammy. You have been eating mayo on every sandwich your mother and I have ever made for you for five years.",
-      "expr": "surprised"
+      "expr": "surprised",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/118.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "I know.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/119.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "text": "Why did you not say something.",
-      "expr": "surprised"
+      "expr": "surprised",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/120.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Because Mom thinks it's mayo.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/121.mp3"
     },
     {
       "t": "narrate",
-      "text": "He is quiet for a second."
+      "text": "He is quiet for a second.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/122.mp3"
     },
     {
       "t": "narrate",
-      "text": "He bursts out laughing — a real laugh, the kind of laugh that surprises him, the kind of laugh that has not, for some weeks, been available to him. The laugh goes on for maybe nine seconds."
+      "text": "He bursts out laughing — a real laugh, the kind of laugh that surprises him, the kind of laugh that has not, for some weeks, been available to him. The laugh goes on for maybe nine seconds.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/123.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "text": "Sammy. You are — you are something else.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/124.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "I'm yours.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/125.mp3"
     },
     {
       "t": "narrate",
-      "text": "He looks at her."
+      "text": "He looks at her.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/126.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "text": "Yeah, kid. You are.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/127.mp3"
     },
     {
       "t": "narrate",
-      "text": "They eat the sandwiches."
+      "text": "They eat the sandwiches.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/128.mp3"
     },
     {
       "t": "narrate",
-      "text": "She eats his."
+      "text": "She eats his.",
+      "voice": "assets/audio/voice/vol6_ch8_lake_palestine/129.mp3"
     },
     {
       "t": "jump",

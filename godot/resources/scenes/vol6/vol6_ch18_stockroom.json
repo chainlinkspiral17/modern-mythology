@@ -29,47 +29,58 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:fluorescent_corridor]The temperature in the produce cooler is thirty-six degrees."
+      "text": "[mood:fluorescent_corridor]The temperature in the produce cooler is thirty-six degrees.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/005.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert thermometer]Diego knows this because the thermometer Russell mounted inside the cooler door — sometime in the past nine years, Russell has not been specific — has been at thirty-six since Diego started at Centro three weeks ago,"
+      "text": "[shot:insert thermometer]Diego knows this because the thermometer Russell mounted inside the cooler door — sometime in the past nine years, Russell has not been specific — has been at thirty-six since Diego started at Centro three weeks ago,",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/006.mp3"
     },
     {
       "t": "narrate",
-      "text": "and because Russell, in week one, had said if it ever climbs past thirty-eight you tell Jessa, and because Diego has, in three weeks, been checking the thermometer every time he goes into the cooler."
+      "text": "and because Russell, in week one, had said if it ever climbs past thirty-eight you tell Jessa, and because Diego has, in three weeks, been checking the thermometer every time he goes into the cooler.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/007.mp3"
     },
     {
       "t": "narrate",
-      "text": "Tonight, Friday the nineteenth, the thermometer is at thirty-six."
+      "text": "Tonight, Friday the nineteenth, the thermometer is at thirty-six.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/008.mp3"
     },
     {
       "t": "narrate",
-      "text": "He pulls the next case of romaine."
+      "text": "He pulls the next case of romaine.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/009.mp3"
     },
     {
       "t": "narrate",
-      "text": "The shift is the standard ten-to-eight Friday shift."
+      "text": "The shift is the standard ten-to-eight Friday shift.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/010.mp3"
     },
     {
       "t": "narrate",
-      "text": "BT, the newest hire, has tonight off — Jessa has put him on four nights for his first month, which is what she does with new people while she watches whether their bodies are going to take this work."
+      "text": "BT, the newest hire, has tonight off — Jessa has put him on four nights for his first month, which is what she does with new people while she watches whether their bodies are going to take this work.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/011.mp3"
     },
     {
       "t": "narrate",
-      "text": "So tonight is Diego, Russell, Marisol, Doug, and Jessa. The team as it had been for two weeks before BT."
+      "text": "So tonight is Diego, Russell, Marisol, Doug, and Jessa. The team as it had been for two weeks before BT.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/012.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert produce]Marisol is in dairy. Russell is in produce because the day-side produce manager is on vacation and somebody on night side has had to cover. Doug is in dry goods. Diego is helping Russell in produce."
+      "text": "[shot:insert produce]Marisol is in dairy. Russell is in produce because the day-side produce manager is on vacation and somebody on night side has had to cover. Doug is in dry goods. Diego is helping Russell in produce.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/013.mp3"
     },
     {
       "t": "narrate",
-      "text": "He is helping Russell because Russell, in his second sentence to Diego on Monday of week one, had said you're with me Friday, and Diego — who had not yet learned that this was a Russell way of asking somebody to be near him for a shift — had said yeah, okay."
+      "text": "He is helping Russell because Russell, in his second sentence to Diego on Monday of week one, had said you're with me Friday, and Diego — who had not yet learned that this was a Russell way of asking somebody to be near him for a shift — had said yeah, okay.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/014.mp3"
     },
     {
       "t": "narrate",
-      "text": "He has been with Russell every Friday since."
+      "text": "He has been with Russell every Friday since.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/015.mp3"
     },
     {
       "t": "show",
@@ -85,135 +96,162 @@
     },
     {
       "t": "narrate",
-      "text": "Russell, in produce, does not talk."
+      "text": "Russell, in produce, does not talk.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/018.mp3"
     },
     {
       "t": "narrate",
-      "text": "What Russell does in produce is stand at the head of the aisle and survey it for about twelve seconds before he begins. Then he begins."
+      "text": "What Russell does in produce is stand at the head of the aisle and survey it for about twelve seconds before he begins. Then he begins.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/019.mp3"
     },
     {
       "t": "narrate",
-      "text": "Then he does the work in the order he has, by twenty-three years at this store, decided is the right order. The order is leafy greens first — they go bad fastest. Then soft fruits — peaches, plums, the small clamshells of berries."
+      "text": "Then he does the work in the order he has, by twenty-three years at this store, decided is the right order. The order is leafy greens first — they go bad fastest. Then soft fruits — peaches, plums, the small clamshells of berries.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/020.mp3"
     },
     {
       "t": "narrate",
-      "text": "Then harder fruits. Then alliums and root vegetables. Then the specialty work at the far end of the aisle."
+      "text": "Then harder fruits. Then alliums and root vegetables. Then the specialty work at the far end of the aisle.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/021.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Diego, this Friday, follows."
+      "text": "[shot:establish]Diego, this Friday, follows.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/022.mp3"
     },
     {
       "t": "narrate",
-      "text": "He has been, in three weeks, learning the order without having to ask. He is past romaine by midnight. Spinach by midnight ten. The mixed-greens clamshells by twelve-twenty. He hands cases across to Russell at the cart."
+      "text": "He has been, in three weeks, learning the order without having to ask. He is past romaine by midnight. Spinach by midnight ten. The mixed-greens clamshells by twelve-twenty. He hands cases across to Russell at the cart.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/023.mp3"
     },
     {
       "t": "narrate",
-      "text": "Russell stocks. Neither of them speaks. The store at midnight on a Friday is quiet — the ambient music loop, the hum of the produce cooler, the small sounds of two men working an aisle together."
+      "text": "Russell stocks. Neither of them speaks. The store at midnight on a Friday is quiet — the ambient music loop, the hum of the produce cooler, the small sounds of two men working an aisle together.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/024.mp3"
     },
     {
       "t": "narrate",
-      "text": "At twelve forty-three Russell stops to drink water from his thermos."
+      "text": "At twelve forty-three Russell stops to drink water from his thermos.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/025.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego stops with him."
+      "text": "Diego stops with him.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/026.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup russell]Russell, after a swallow, sets the thermos down on the cart and looks at him."
+      "text": "[shot:closeup russell]Russell, after a swallow, sets the thermos down on the cart and looks at him.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/027.mp3"
     },
     {
       "t": "say",
       "char": "russell",
       "text": "Kid. How long you here.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/028.mp3"
     },
     {
       "t": "say",
       "char": "diego",
       "text": "Through the summer.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/029.mp3"
     },
     {
       "t": "say",
       "char": "russell",
       "text": "That's seven weeks.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/030.mp3"
     },
     {
       "t": "say",
       "char": "diego",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/031.mp3"
     },
     {
       "t": "say",
       "char": "russell",
       "text": "After.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/032.mp3"
     },
     {
       "t": "say",
       "char": "diego",
       "text": "[shot:closeup person]Senior year.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/033.mp3"
     },
     {
       "t": "say",
       "char": "russell",
       "text": "Then.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/034.mp3"
     },
     {
       "t": "say",
       "char": "diego",
       "text": "I don't know.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/035.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_b]Russell drinks from the thermos again. He puts it back on the cart."
+      "text": "[shot:establish_b]Russell drinks from the thermos again. He puts it back on the cart.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/036.mp3"
     },
     {
       "t": "say",
       "char": "russell",
       "text": "Russell does that question in week three with everybody. Marisol, Doug, the new one, you. Don't take it personal.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/037.mp3"
     },
     {
       "t": "say",
       "char": "diego",
       "text": "All right.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/038.mp3"
     },
     {
       "t": "say",
       "char": "russell",
       "text": "You answer it the way you answered it.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/039.mp3"
     },
     {
       "t": "say",
       "char": "diego",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/040.mp3"
     },
     {
       "t": "narrate",
-      "text": "Russell goes back to the cart."
+      "text": "Russell goes back to the cart.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/041.mp3"
     },
     {
       "t": "narrate",
-      "text": "By one Diego is pulling the arugula."
+      "text": "By one Diego is pulling the arugula.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/042.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert pallet]The arugula comes in the smaller cases. Russell, who does the arugula himself, has gone to the back to get the second box from the cooler."
+      "text": "[shot:insert pallet]The arugula comes in the smaller cases. Russell, who does the arugula himself, has gone to the back to get the second box from the cooler.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/043.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego is at the cart pulling the case down from the top of the pallet and stacking the small clamshells on the bottom shelf where Russell wants them."
+      "text": "Diego is at the cart pulling the case down from the top of the pallet and stacking the small clamshells on the bottom shelf where Russell wants them.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/044.mp3"
     },
     {
       "t": "hide",
@@ -221,63 +259,78 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup diego]He is thinking about his father."
+      "text": "[shot:closeup diego]He is thinking about his father.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/046.mp3"
     },
     {
       "t": "narrate",
-      "text": "He has been thinking about his father, off and on, on these shifts for about two weeks. The thinking goes like this. I might go down at some point. Not next year. Not the year after. But at some point."
+      "text": "He has been thinking about his father, off and on, on these shifts for about two weeks. The thinking goes like this. I might go down at some point. Not next year. Not the year after. But at some point.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/047.mp3"
     },
     {
       "t": "narrate",
-      "text": "He could fly to Monterrey, take the bus, see the town his father has been in since 2017, see his father for the first time in nine years. He could go for a week. He does not, in the thinking, decide. The thinking is not a plan."
+      "text": "He could fly to Monterrey, take the bus, see the town his father has been in since 2017, see his father for the first time in nine years. He could go for a week. He does not, in the thinking, decide. The thinking is not a plan.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/048.mp3"
     },
     {
       "t": "narrate",
-      "text": "The thinking is something his interior does on quiet shifts when his hands are busy with cases of leafy greens."
+      "text": "The thinking is something his interior does on quiet shifts when his hands are busy with cases of leafy greens.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/049.mp3"
     },
     {
       "t": "narrate",
-      "text": "Tonight the thinking goes a little further."
+      "text": "Tonight the thinking goes a little further.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/050.mp3"
     },
     {
       "t": "narrate",
-      "text": "Tonight, with a clamshell of arugula in his right hand, he registers — and the registering is plain — that the going-down is also the leaving-here. He has started, this summer, to want the leaving."
+      "text": "Tonight, with a clamshell of arugula in his right hand, he registers — and the registering is plain — that the going-down is also the leaving-here. He has started, this summer, to want the leaving.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/051.mp3"
     },
     {
       "t": "narrate",
-      "text": "Not because here is bad. Here is fine. His grandmother is fine. The team is fine."
+      "text": "Not because here is bad. Here is fine. His grandmother is fine. The team is fine.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/052.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam is fine — Sam is the hardest part to think about, because Sam is the person his interior is most carefully arranged around — but Sam is also going to be moving away from this town in her own way in the next year, and the leaving he is thinking about is a leaving Sam would, in some way, permit."
+      "text": "Sam is fine — Sam is the hardest part to think about, because Sam is the person his interior is most carefully arranged around — but Sam is also going to be moving away from this town in her own way in the next year, and the leaving he is thinking about is a leaving Sam would, in some way, permit.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/053.mp3"
     },
     {
       "t": "narrate",
-      "text": "He pulls the next clamshell."
+      "text": "He pulls the next clamshell.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/054.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_c]The thing he is carrying — the May thing, the room thing, what Boyd did, what the wall did, what the older system did — is the thing he wants to leave here, in this country, when he goes."
+      "text": "[shot:establish_c]The thing he is carrying — the May thing, the room thing, what Boyd did, what the wall did, what the older system did — is the thing he wants to leave here, in this country, when he goes.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/055.mp3"
     },
     {
       "t": "narrate",
-      "text": "He has not, in three weeks of these shifts, let himself say that to himself as a sentence. He has said it to himself tonight, at the cart, with the clamshell still in his right hand. The sentence sits in his head."
+      "text": "He has not, in three weeks of these shifts, let himself say that to himself as a sentence. He has said it to himself tonight, at the cart, with the clamshell still in his right hand. The sentence sits in his head.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/056.mp3"
     },
     {
       "t": "narrate",
-      "text": "He pulls the next clamshell. He stacks it. He looks at his hands. His hands are doing the work. His head is doing the thinking."
+      "text": "He pulls the next clamshell. He stacks it. He looks at his hands. His hands are doing the work. His head is doing the thinking.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/057.mp3"
     },
     {
       "t": "narrate",
-      "text": "The two things are happening in the same body and are, this Friday at one AM, not interfering with each other."
+      "text": "The two things are happening in the same body and are, this Friday at one AM, not interfering with each other.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/058.mp3"
     },
     {
       "t": "narrate",
-      "text": "San Luis Potosí is a different country. His father is in San Luis Potosí. This is the kind of math that takes years."
+      "text": "San Luis Potosí is a different country. His father is in San Luis Potosí. This is the kind of math that takes years.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/059.mp3"
     },
     {
       "t": "narrate",
-      "text": "He stacks the next clamshell."
+      "text": "He stacks the next clamshell.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/060.mp3"
     },
     {
       "t": "show",
@@ -287,43 +340,51 @@
     },
     {
       "t": "narrate",
-      "text": "Russell comes back with the second box."
+      "text": "Russell comes back with the second box.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/062.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert produce]At one-oh-two the produce work is done."
+      "text": "[shot:insert produce]At one-oh-two the produce work is done.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/063.mp3"
     },
     {
       "t": "narrate",
-      "text": "Russell, at the cart, surveys the aisle for fifteen seconds. The fifteen seconds are not approximate. Russell does fifteen seconds at the end of every aisle's work and Diego has, in three weeks, learned to count him through it without being asked."
+      "text": "Russell, at the cart, surveys the aisle for fifteen seconds. The fifteen seconds are not approximate. Russell does fifteen seconds at the end of every aisle's work and Diego has, in three weeks, learned to count him through it without being asked.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/064.mp3"
     },
     {
       "t": "say",
       "char": "russell",
       "text": "Good.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/065.mp3"
     },
     {
       "t": "say",
       "char": "diego",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/066.mp3"
     },
     {
       "t": "say",
       "char": "russell",
       "text": "Lunch in twenty. Meat-counter wipe-down first. You take a minute.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/067.mp3"
     },
     {
       "t": "say",
       "char": "diego",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/068.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Russell wheels the cart toward the back."
+      "text": "[shot:establish]Russell wheels the cart toward the back.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/069.mp3"
     },
     {
       "t": "hide",
@@ -331,39 +392,48 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Diego stands at the head of the produce aisle."
+      "text": "[shot:establish]Diego stands at the head of the produce aisle.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/071.mp3"
     },
     {
       "t": "narrate",
-      "text": "He looks at it."
+      "text": "He looks at it.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/072.mp3"
     },
     {
       "t": "narrate",
-      "text": "He has been working in it for three hours. He has not, until this minute, looked at it as a finished thing. It is — clean. Organized. Front-facing."
+      "text": "He has been working in it for three hours. He has not, until this minute, looked at it as a finished thing. It is — clean. Organized. Front-facing.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/073.mp3"
     },
     {
       "t": "narrate",
-      "text": "The leafy greens are stacked the way they are stacked on the day shelves of every grocery store Diego has ever been in, except slightly better — there is a small fanning of the romaine that Russell does that Diego has not seen anyone else do,"
+      "text": "The leafy greens are stacked the way they are stacked on the day shelves of every grocery store Diego has ever been in, except slightly better — there is a small fanning of the romaine that Russell does that Diego has not seen anyone else do,",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/074.mp3"
     },
     {
       "t": "narrate",
-      "text": "where the second row's leaves are visible above the first row, so that a customer looking at the case sees two rows of green instead of one row of green and one row of plastic."
+      "text": "where the second row's leaves are visible above the first row, so that a customer looking at the case sees two rows of green instead of one row of green and one row of plastic.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/075.mp3"
     },
     {
       "t": "narrate",
-      "text": "It is the kind of thing Russell would not, if asked, be able to articulate why he does. It is the kind of thing twenty-three years of doing the same aisle on the same night every week makes a man do without thinking."
+      "text": "It is the kind of thing Russell would not, if asked, be able to articulate why he does. It is the kind of thing twenty-three years of doing the same aisle on the same night every week makes a man do without thinking.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/076.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego, looking at it, registers — and the registering is plain, no hedging — that the aisle is good."
+      "text": "Diego, looking at it, registers — and the registering is plain, no hedging — that the aisle is good.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/077.mp3"
     },
     {
       "t": "narrate",
-      "text": "Russell has been doing this every Friday for twenty-three years. Diego is here for six more weeks. The two arrangements are not the same arrangement."
+      "text": "Russell has been doing this every Friday for twenty-three years. Diego is here for six more weeks. The two arrangements are not the same arrangement.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/078.mp3"
     },
     {
       "t": "narrate",
-      "text": "He goes to the break room."
+      "text": "He goes to the break room.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/079.mp3"
     },
     {
       "t": "bg",
@@ -377,187 +447,225 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup doug]Doug is at the table."
+      "text": "[shot:closeup doug]Doug is at the table.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/082.mp3"
     },
     {
       "t": "narrate",
-      "text": "Doug is in his standard break-room position — the chair against the back wall, thermos at his feet, The Brothers Karamazov open on his lap. By the page Diego can see, Doug is in Book Three."
+      "text": "Doug is in his standard break-room position — the chair against the back wall, thermos at his feet, The Brothers Karamazov open on his lap. By the page Diego can see, Doug is in Book Three.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/083.mp3"
     },
     {
       "t": "narrate",
-      "text": "Doug, by his later report which he has not yet given Diego, is on his eleventh re-read."
+      "text": "Doug, by his later report which he has not yet given Diego, is on his eleventh re-read.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/084.mp3"
     },
     {
       "t": "narrate",
-      "text": "Doug looks up when Diego comes in."
+      "text": "Doug looks up when Diego comes in.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/085.mp3"
     },
     {
       "t": "say",
       "char": "doug",
       "text": "Kid.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/086.mp3"
     },
     {
       "t": "say",
       "char": "diego",
       "text": "[shot:closeup person]Hey, Doug.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/087.mp3"
     },
     {
       "t": "say",
       "char": "doug",
       "text": "Coffee's hot.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/088.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Doug gestures with his chin at the pot Jessa keeps going on the counter."
+      "text": "[shot:establish]Doug gestures with his chin at the pot Jessa keeps going on the counter.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/089.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego gets a paper cup. He pours. He stands at the counter for a beat. Doug, who has not in three weeks called him by his name, has been calling him kid."
+      "text": "Diego gets a paper cup. He pours. He stands at the counter for a beat. Doug, who has not in three weeks called him by his name, has been calling him kid.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/090.mp3"
     },
     {
       "t": "narrate",
-      "text": "The not-using-his-name is, by Diego's reading, the way Doug holds someone at the right distance. Diego has not, this summer, wanted to be promoted out of kid. He likes the distance."
+      "text": "The not-using-his-name is, by Diego's reading, the way Doug holds someone at the right distance. Diego has not, this summer, wanted to be promoted out of kid. He likes the distance.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/091.mp3"
     },
     {
       "t": "narrate",
-      "text": "The distance lets him drink coffee at the same table as Doug without having to be Doug's friend."
+      "text": "The distance lets him drink coffee at the same table as Doug without having to be Doug's friend.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/092.mp3"
     },
     {
       "t": "narrate",
-      "text": "He sits at the table across from Doug."
+      "text": "He sits at the table across from Doug.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/093.mp3"
     },
     {
       "t": "narrate",
-      "text": "Doug, after a beat, turns the page."
+      "text": "Doug, after a beat, turns the page.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/094.mp3"
     },
     {
       "t": "say",
       "char": "doug",
       "text": "[shot:closeup person_b]Russell talk to you in produce.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/095.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego — who has not, in any way, indicated to anyone in the break room that Russell talked to him in produce — looks at Doug."
+      "text": "Diego — who has not, in any way, indicated to anyone in the break room that Russell talked to him in produce — looks at Doug.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/096.mp3"
     },
     {
       "t": "say",
       "char": "diego",
       "text": "[shot:closeup person]Yeah. He asked how long I was here.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/097.mp3"
     },
     {
       "t": "say",
       "char": "doug",
       "text": "Russell does that in week three. He's done it with me. He's done it with Marisol. He'll do it with the new guy.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/098.mp3"
     },
     {
       "t": "say",
       "char": "diego",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/099.mp3"
     },
     {
       "t": "say",
       "char": "doug",
       "text": "What did you tell him.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/100.mp3"
     },
     {
       "t": "say",
       "char": "diego",
       "text": "Through the summer.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/101.mp3"
     },
     {
       "t": "narrate",
-      "text": "Doug, after a beat, looks up. Doug looks at him for two counts."
+      "text": "Doug, after a beat, looks up. Doug looks at him for two counts.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/102.mp3"
     },
     {
       "t": "say",
       "char": "doug",
       "text": "[shot:closeup person_b]Okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/103.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego, hearing the okay the way Doug puts it down, does not, immediately, respond."
+      "text": "Diego, hearing the okay the way Doug puts it down, does not, immediately, respond.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/104.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert coffee]He drinks his coffee."
+      "text": "[shot:insert coffee]He drinks his coffee.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/105.mp3"
     },
     {
       "t": "say",
       "char": "diego",
       "text": "Doug.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/106.mp3"
     },
     {
       "t": "say",
       "char": "doug",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/107.mp3"
     },
     {
       "t": "say",
       "char": "diego",
       "text": "Was that the right answer.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/108.mp3"
     },
     {
       "t": "narrate",
-      "text": "Doug, in the chair, considers it."
+      "text": "Doug, in the chair, considers it.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/109.mp3"
     },
     {
       "t": "say",
       "char": "doug",
       "text": "Kid. The right answer for who.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/110.mp3"
     },
     {
       "t": "say",
       "char": "diego",
       "text": "[shot:closeup person]For me.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/111.mp3"
     },
     {
       "t": "say",
       "char": "doug",
       "text": "Then it was the right answer.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/112.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Doug returns to Karamazov."
+      "text": "[shot:establish]Doug returns to Karamazov.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/113.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego drinks his coffee."
+      "text": "Diego drinks his coffee.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/114.mp3"
     },
     {
       "t": "narrate",
-      "text": "He does not, this break, speak again. Doug does not either. The two of them sit in the break room for the rest of the twenty minutes."
+      "text": "He does not, this break, speak again. Doug does not either. The two of them sit in the break room for the rest of the twenty minutes.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/115.mp3"
     },
     {
       "t": "narrate",
-      "text": "The radio above the microwave plays the Tejano station Marisol has, since 2019, put on every shift."
+      "text": "The radio above the microwave plays the Tejano station Marisol has, since 2019, put on every shift.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/116.mp3"
     },
     {
       "t": "narrate",
-      "text": "The song coming through at one-thirty is one Diego does not know but that has — accordion, the right rhythm — the shape of a song his father might, in 1995, have liked."
+      "text": "The song coming through at one-thirty is one Diego does not know but that has — accordion, the right rhythm — the shape of a song his father might, in 1995, have liked.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/117.mp3"
     },
     {
       "t": "narrate",
-      "text": "The thought lands. He does not turn it into anything."
+      "text": "The thought lands. He does not turn it into anything.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/118.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert coffee]He drinks his coffee."
+      "text": "[shot:insert coffee]He drinks his coffee.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/119.mp3"
     },
     {
       "t": "hide",
@@ -569,23 +677,28 @@
     },
     {
       "t": "narrate",
-      "text": "The second half of the shift is the second half of the shift."
+      "text": "The second half of the shift is the second half of the shift.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/122.mp3"
     },
     {
       "t": "narrate",
-      "text": "By two AM Diego is in the stockroom."
+      "text": "By two AM Diego is in the stockroom.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/123.mp3"
     },
     {
       "t": "narrate",
-      "text": "The stockroom is the room at the back of the store with the high ceiling and the bare fluorescent tubes and the small dead-quiet of a room that has no customers in it at any hour."
+      "text": "The stockroom is the room at the back of the store with the high ceiling and the bare fluorescent tubes and the small dead-quiet of a room that has no customers in it at any hour.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/124.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego has, on most shifts, been in the stockroom by himself for the longest sustained periods of his work. Tonight the stockroom is empty. The pile of empty cardboard pallets from the produce work is on his right."
+      "text": "Diego has, on most shifts, been in the stockroom by himself for the longest sustained periods of his work. Tonight the stockroom is empty. The pile of empty cardboard pallets from the produce work is on his right.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/125.mp3"
     },
     {
       "t": "narrate",
-      "text": "The bale is at the corner. The bale's wire-tying device is on the floor beside the bale."
+      "text": "The bale is at the corner. The bale's wire-tying device is on the floor beside the bale.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/126.mp3"
     },
     {
       "t": "show",
@@ -595,167 +708,208 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert hands]He puts the gloves on. The gloves are the canvas gloves Jessa keeps in the stockroom drawer for this work. They are too large for his hands. They have always been too large for his hands. He has stopped, by week two, asking for smaller ones."
+      "text": "[shot:insert hands]He puts the gloves on. The gloves are the canvas gloves Jessa keeps in the stockroom drawer for this work. They are too large for his hands. They have always been too large for his hands. He has stopped, by week two, asking for smaller ones.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/128.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert bale]He folds the first pallet."
+      "text": "[shot:insert bale]He folds the first pallet.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/129.mp3"
     },
     {
       "t": "narrate",
-      "text": "The pallet's wood is rough at the edges. The cardboard, when he stomps it flat, makes the sound flattening cardboard makes — the small dry crush, the air going out. He drags the flattened pallet across the floor to the bale."
+      "text": "The pallet's wood is rough at the edges. The cardboard, when he stomps it flat, makes the sound flattening cardboard makes — the small dry crush, the air going out. He drags the flattened pallet across the floor to the bale.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/130.mp3"
     },
     {
       "t": "narrate",
-      "text": "He lifts the bale's lid. He sets the cardboard inside. He drops the lid."
+      "text": "He lifts the bale's lid. He sets the cardboard inside. He drops the lid.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/131.mp3"
     },
     {
       "t": "narrate",
-      "text": "He goes back to the pile."
+      "text": "He goes back to the pile.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/132.mp3"
     },
     {
       "t": "narrate",
-      "text": "He folds the second pallet."
+      "text": "He folds the second pallet.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/133.mp3"
     },
     {
       "t": "narrate",
-      "text": "Stomp. Drag. Lid. Bale."
+      "text": "Stomp. Drag. Lid. Bale.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/134.mp3"
     },
     {
       "t": "narrate",
-      "text": "The third."
+      "text": "The third.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/135.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]The fourth."
+      "text": "[shot:establish]The fourth.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/136.mp3"
     },
     {
       "t": "narrate",
-      "text": "His hands move."
+      "text": "His hands move.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/137.mp3"
     },
     {
       "t": "narrate",
-      "text": "His body moves."
+      "text": "His body moves.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/138.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup diego~]His head, somewhere in the second pallet, has gone quiet."
+      "text": "[shot:closeup diego~]His head, somewhere in the second pallet, has gone quiet.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/139.mp3"
     },
     {
       "t": "narrate",
-      "text": "He does not notice the quiet at first because the quiet is a thing his head has not, since May, done. The quiet is a thing he has not, since May, had access to. The quiet is a room he is in before he registers he is in it."
+      "text": "He does not notice the quiet at first because the quiet is a thing his head has not, since May, done. The quiet is a thing he has not, since May, had access to. The quiet is a room he is in before he registers he is in it.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/140.mp3"
     },
     {
       "t": "narrate",
-      "text": "The fifth pallet."
+      "text": "The fifth pallet.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/141.mp3"
     },
     {
       "t": "narrate",
-      "text": "The sixth."
+      "text": "The sixth.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/142.mp3"
     },
     {
       "t": "narrate",
-      "text": "The seventh."
+      "text": "The seventh.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/143.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert hands]He is at the bale at the eighth pallet's lid when his hands stop."
+      "text": "[shot:insert hands]He is at the bale at the eighth pallet's lid when his hands stop.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/144.mp3"
     },
     {
       "t": "narrate",
-      "text": "His hands stop because something in him notices that the I that has been doing the folding has not, for a number of minutes, been the I that does anything else —"
+      "text": "His hands stop because something in him notices that the I that has been doing the folding has not, for a number of minutes, been the I that does anything else —",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/145.mp3"
     },
     {
       "t": "narrate",
-      "text": "the I that watches the wall in the room from May, the I that listens for the older system in the corners of rooms, the I that has been, since May, the watcher behind his eyes."
+      "text": "the I that watches the wall in the room from May, the I that listens for the older system in the corners of rooms, the I that has been, since May, the watcher behind his eyes.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/146.mp3"
     },
     {
       "t": "narrate",
-      "text": "[beat:still]The watcher behind his eyes has been off."
+      "text": "[beat:still]The watcher behind his eyes has been off.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/147.mp3"
     },
     {
       "t": "narrate",
-      "text": "For — he tries to count back. He cannot count back. He does not know how long. Five minutes. Maybe more."
+      "text": "For — he tries to count back. He cannot count back. He does not know how long. Five minutes. Maybe more.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/148.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert bale]He stands at the bale."
+      "text": "[shot:insert bale]He stands at the bale.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/149.mp3"
     },
     {
       "t": "narrate",
-      "text": "His hands are at his sides."
+      "text": "His hands are at his sides.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/150.mp3"
     },
     {
       "t": "narrate",
-      "text": "He is breathing."
+      "text": "He is breathing.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/151.mp3"
     },
     {
       "t": "narrate",
-      "text": "The cardboard is flat in the bale. The pile is shorter than it had been. He has been working. He has not been watching himself working. The watching had stopped. He had not stopped it. It had, by itself, stopped."
+      "text": "The cardboard is flat in the bale. The pile is shorter than it had been. He has been working. He has not been watching himself working. The watching had stopped. He had not stopped it. It had, by itself, stopped.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/152.mp3"
     },
     {
       "t": "narrate",
-      "text": "He puts his gloved hand on the side of the bale. The metal is cold. He presses his palm against it. He feels his palm against it."
+      "text": "He puts his gloved hand on the side of the bale. The metal is cold. He presses his palm against it. He feels his palm against it.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/153.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thinks, in a register that is not the cascade his head has been doing all summer, but the plain way a kid thinks plain things: I was just folding the cardboard."
+      "text": "He thinks, in a register that is not the cascade his head has been doing all summer, but the plain way a kid thinks plain things: I was just folding the cardboard.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/154.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]A beat."
+      "text": "[shot:establish]A beat.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/155.mp3"
     },
     {
       "t": "narrate",
-      "text": "I was just folding the cardboard."
+      "text": "I was just folding the cardboard.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/156.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thinks it the second time the way a person thinks a sentence they want to remember."
+      "text": "He thinks it the second time the way a person thinks a sentence they want to remember.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/157.mp3"
     },
     {
       "t": "narrate",
-      "text": "He stands there a long minute."
+      "text": "He stands there a long minute.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/158.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish~]The fluorescent overhead hums. The bale is metal. The pile is wood and cardboard. The room is a room. None of these has, in the last several minutes, been a thing he was tracking for an older reason."
+      "text": "[shot:establish~]The fluorescent overhead hums. The bale is metal. The pile is wood and cardboard. The room is a room. None of these has, in the last several minutes, been a thing he was tracking for an older reason.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/159.mp3"
     },
     {
       "t": "narrate",
-      "text": "None of these has, in the last several minutes, meant anything more than what they are."
+      "text": "None of these has, in the last several minutes, meant anything more than what they are.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/160.mp3"
     },
     {
       "t": "narrate",
-      "text": "He takes his hand off the bale."
+      "text": "He takes his hand off the bale.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/161.mp3"
     },
     {
       "t": "narrate",
-      "text": "He folds the ninth pallet."
+      "text": "He folds the ninth pallet.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/162.mp3"
     },
     {
       "t": "narrate",
-      "text": "He works through the rest of the pile."
+      "text": "He works through the rest of the pile.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/163.mp3"
     },
     {
       "t": "narrate",
-      "text": "The watching, when he tries to listen for whether the watching has come back, has come back. Not all the way. Some of the way."
+      "text": "The watching, when he tries to listen for whether the watching has come back, has come back. Not all the way. Some of the way.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/164.mp3"
     },
     {
       "t": "narrate",
-      "text": "The watcher is in the room with him now in a different posture — the watcher is, this morning, sitting down. The watcher is not, this morning, standing at the corner of the wall above the door staring at him."
+      "text": "The watcher is in the room with him now in a different posture — the watcher is, this morning, sitting down. The watcher is not, this morning, standing at the corner of the wall above the door staring at him.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/165.mp3"
     },
     {
       "t": "narrate",
-      "text": "By two forty-five the pile is done."
+      "text": "By two forty-five the pile is done.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/166.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert bale]He drags the bale lid down. He ties off the top layer. He takes the gloves off and puts them back in the drawer."
+      "text": "[shot:insert bale]He drags the bale lid down. He ties off the top layer. He takes the gloves off and puts them back in the drawer.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/167.mp3"
     },
     {
       "t": "narrate",
-      "text": "He goes out to the floor."
+      "text": "He goes out to the floor.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/168.mp3"
     },
     {
       "t": "hide",
@@ -767,31 +921,38 @@
     },
     {
       "t": "narrate",
-      "text": "The rest of the shift is the rest of the shift."
+      "text": "The rest of the shift is the rest of the shift.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/171.mp3"
     },
     {
       "t": "narrate",
-      "text": "He works the cleanup. He helps Marisol pull a pallet of milk from receiving at three thirty. He breaks fifteen more cases of cardboard at four."
+      "text": "He works the cleanup. He helps Marisol pull a pallet of milk from receiving at three thirty. He breaks fifteen more cases of cardboard at four.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/172.mp3"
     },
     {
       "t": "narrate",
-      "text": "He does not, in any of this, get back to the registering he had been in at two-fifteen."
+      "text": "He does not, in any of this, get back to the registering he had been in at two-fifteen.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/173.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thinks about it once, at four eleven, standing by the meat counter waiting for Marisol to roll the cart past — the watcher was off, in the stockroom, from somewhere around two-oh-five to somewhere around two-eleven."
+      "text": "He thinks about it once, at four eleven, standing by the meat counter waiting for Marisol to roll the cart past — the watcher was off, in the stockroom, from somewhere around two-oh-five to somewhere around two-eleven.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/174.mp3"
     },
     {
       "t": "narrate",
-      "text": "He notes the math."
+      "text": "He notes the math.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/175.mp3"
     },
     {
       "t": "narrate",
-      "text": "He goes back to work."
+      "text": "He goes back to work.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/176.mp3"
     },
     {
       "t": "narrate",
-      "text": "He does not tell anyone."
+      "text": "He does not tell anyone.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/177.mp3"
     },
     {
       "t": "bg",
@@ -817,97 +978,115 @@
     },
     {
       "t": "narrate",
-      "text": "At eight oh-three the shift ends."
+      "text": "At eight oh-three the shift ends.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/182.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]The team is in the break room. Marisol is at the table with her thermos. Russell is at the table with the morning Express-News. Doug is at the chair with Karamazov on his lap. Jessa is in the back office."
+      "text": "[shot:establish]The team is in the break room. Marisol is at the table with her thermos. Russell is at the table with the morning Express-News. Doug is at the chair with Karamazov on his lap. Jessa is in the back office.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/183.mp3"
     },
     {
       "t": "narrate",
-      "text": "BT is not here, because BT does not work Fridays this month."
+      "text": "BT is not here, because BT does not work Fridays this month.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/184.mp3"
     },
     {
       "t": "say",
       "char": "russell",
       "text": "Aisle looked good.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/185.mp3"
     },
     {
       "t": "say",
       "char": "doug",
       "text": "Russell, when you say the aisle looked good you mean you helped me do the aisle and the aisle looked good.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/186.mp3"
     },
     {
       "t": "narrate",
-      "text": "Russell turns a page."
+      "text": "Russell turns a page.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/187.mp3"
     },
     {
       "t": "say",
       "char": "russell",
       "text": "He helped me do the aisle. The aisle looked good.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/188.mp3"
     },
     {
       "t": "say",
       "char": "marisol",
       "text": "[shot:closeup person]Whose aisle.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/189.mp3"
     },
     {
       "t": "say",
       "char": "russell",
       "text": "Produce.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/190.mp3"
     },
     {
       "t": "say",
       "char": "marisol",
       "text": "The kid.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/191.mp3"
     },
     {
       "t": "say",
       "char": "russell",
       "text": "The kid.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/192.mp3"
     },
     {
       "t": "say",
       "char": "marisol",
       "text": "Yeah he's better at it than the last kid was. The last kid put the romaine on top of the spinach. Lasted three weeks.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/193.mp3"
     },
     {
       "t": "say",
       "char": "doug",
       "text": "[shot:closeup person_b]The last kid was twenty-two and the last kid was already a problem when Jessa hired him. Don't compare them.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/194.mp3"
     },
     {
       "t": "say",
       "char": "marisol",
       "text": "I'm not comparing them. I'm saying the kid is doing all right at produce.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/195.mp3"
     },
     {
       "t": "say",
       "char": "doug",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/196.mp3"
     },
     {
       "t": "narrate",
-      "text": "Russell turns another page."
+      "text": "Russell turns another page.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/197.mp3"
     },
     {
       "t": "narrate",
-      "text": "The break room is quiet."
+      "text": "The break room is quiet.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/198.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup diego]Diego, at the door with his coffee, listens to all of this and does not, on his face, do anything with it. He gets up. He puts his cup in the small dishwasher Jessa runs at the end of every shift. He pulls his jacket off the hook."
+      "text": "[shot:closeup diego]Diego, at the door with his coffee, listens to all of this and does not, on his face, do anything with it. He gets up. He puts his cup in the small dishwasher Jessa runs at the end of every shift. He pulls his jacket off the hook.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/199.mp3"
     },
     {
       "t": "hide",
@@ -931,7 +1110,8 @@
       "t": "say",
       "char": "diego",
       "text": "I'm out.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/204.mp3"
     },
     {
       "t": "show",
@@ -943,7 +1123,8 @@
       "t": "say",
       "char": "marisol",
       "text": "[shot:closeup person]Drive safe, hon.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/206.mp3"
     },
     {
       "t": "hide",
@@ -959,7 +1140,8 @@
       "t": "say",
       "char": "russell",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/209.mp3"
     },
     {
       "t": "hide",
@@ -975,7 +1157,8 @@
       "t": "say",
       "char": "doug",
       "text": "[shot:closeup person_b]Yeah, kid.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/212.mp3"
     },
     {
       "t": "hide",
@@ -991,19 +1174,23 @@
     },
     {
       "t": "narrate",
-      "text": "The drive home is twenty-two minutes."
+      "text": "The drive home is twenty-two minutes.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/216.mp3"
     },
     {
       "t": "narrate",
-      "text": "The August sun, at eight twenty, is already at the brightness it will be at noon. He pulls the visor down. He drives without the radio. He thinks, on the drive, about the bale. He thinks about Russell saying good."
+      "text": "The August sun, at eight twenty, is already at the brightness it will be at noon. He pulls the visor down. He drives without the radio. He thinks, on the drive, about the bale. He thinks about Russell saying good.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/217.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thinks about Doug saying then it was the right answer. He thinks, very briefly, about the wall in May. The wall in May is, this morning, less loud."
+      "text": "He thinks about Doug saying then it was the right answer. He thinks, very briefly, about the wall in May. The wall in May is, this morning, less loud.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/218.mp3"
     },
     {
       "t": "narrate",
-      "text": "He pulls into the driveway at eight forty-three."
+      "text": "He pulls into the driveway at eight forty-three.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/219.mp3"
     },
     {
       "t": "bg",
@@ -1017,25 +1204,30 @@
     },
     {
       "t": "narrate",
-      "text": "His grandmother is at the kitchen window."
+      "text": "His grandmother is at the kitchen window.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/222.mp3"
     },
     {
       "t": "narrate",
-      "text": "She has her coffee. She has the radio on the windowsill — the kitchen radio, just a radio, playing the morning San Antonio news in Spanish."
+      "text": "She has her coffee. She has the radio on the windowsill — the kitchen radio, just a radio, playing the morning San Antonio news in Spanish.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/223.mp3"
     },
     {
       "t": "narrate",
-      "text": "She comes out to the porch."
+      "text": "She comes out to the porch.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/224.mp3"
     },
     {
       "t": "narrate",
-      "text": "She kisses his temple."
+      "text": "She kisses his temple.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/225.mp3"
     },
     {
       "t": "say",
       "char": "abuela",
       "text": "[shot:closeup person]*Eggs.*",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/226.mp3"
     },
     {
       "t": "show",
@@ -1047,71 +1239,85 @@
       "t": "say",
       "char": "diego",
       "text": "*Eggs.*",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/228.mp3"
     },
     {
       "t": "narrate",
-      "text": "He eats the eggs at the kitchen table."
+      "text": "He eats the eggs at the kitchen table.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/229.mp3"
     },
     {
       "t": "narrate",
-      "text": "His grandmother stands at the counter, today, not sitting. The sitting is a Saturday thing she has been doing since the third week. Today is Friday after a Friday-night shift, so she stands."
+      "text": "His grandmother stands at the counter, today, not sitting. The sitting is a Saturday thing she has been doing since the third week. Today is Friday after a Friday-night shift, so she stands.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/230.mp3"
     },
     {
       "t": "say",
       "char": "abuela",
       "text": "*The shift.*",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/231.mp3"
     },
     {
       "t": "say",
       "char": "diego",
       "text": "[shot:closeup person_b]*The shift was good.*",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/232.mp3"
     },
     {
       "t": "say",
       "char": "abuela",
       "text": "*Good how.*",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/233.mp3"
     },
     {
       "t": "narrate",
-      "text": "He thinks about this."
+      "text": "He thinks about this.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/234.mp3"
     },
     {
       "t": "say",
       "char": "diego",
       "text": "*Abuela. I worked the aisle with Russell. Russell said* good *at the end. I — I felt the* good*. The* good *was — it was the thing.*",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/235.mp3"
     },
     {
       "t": "say",
       "char": "abuela",
       "text": "*Yes, mijo. That is how a Friday should end.*",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/236.mp3"
     },
     {
       "t": "say",
       "char": "diego",
       "text": "*Yeah, abuela.*",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/237.mp3"
     },
     {
       "t": "narrate",
-      "text": "She does not, this morning, ask anything else."
+      "text": "She does not, this morning, ask anything else.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/238.mp3"
     },
     {
       "t": "narrate",
-      "text": "He finishes the eggs."
+      "text": "He finishes the eggs.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/239.mp3"
     },
     {
       "t": "narrate",
-      "text": "He kisses her cheek."
+      "text": "He kisses her cheek.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/240.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He goes upstairs."
+      "text": "[shot:establish]He goes upstairs.",
+      "voice": "assets/audio/voice/vol6_ch18_stockroom/241.mp3"
     },
     {
       "t": "hide",

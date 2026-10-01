@@ -35,47 +35,58 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2][mood:dawn_warm][shot:insert window]Bianca is at the kitchen window at four forty-three when Don Geller's porch light comes on across the cul-de-sac."
+      "text": "[trip:1.2][mood:dawn_warm][shot:insert window]Bianca is at the kitchen window at four forty-three when Don Geller's porch light comes on across the cul-de-sac.",
+      "voice": "assets/audio/voice/vol6_ch17_table/006.mp3"
     },
     {
       "t": "narrate",
-      "text": "Don, this morning, is — by his light — on schedule. Five oh-two would be the on-time light. Four forty-three is eight minutes early. Bianca registers the eight minutes. She does not know what the eight minutes mean."
+      "text": "Don, this morning, is — by his light — on schedule. Five oh-two would be the on-time light. Four forty-three is eight minutes early. Bianca registers the eight minutes. She does not know what the eight minutes mean.",
+      "voice": "assets/audio/voice/vol6_ch17_table/007.mp3"
     },
     {
       "t": "narrate",
-      "text": "She imagines, in the way she has been imagining small things about Don all summer from the kitchen window, that Don has, this morning, woken up eight minutes early for a reason she is not going to know. A dream. A dog."
+      "text": "She imagines, in the way she has been imagining small things about Don all summer from the kitchen window, that Don has, this morning, woken up eight minutes early for a reason she is not going to know. A dream. A dog.",
+      "voice": "assets/audio/voice/vol6_ch17_table/008.mp3"
     },
     {
       "t": "narrate",
-      "text": "A leg cramp. The fact of a sixty-some-year-old man's body waking him at the hour his body is going to wake him, which is, on some mornings, not the hour the alarm has been set for."
+      "text": "A leg cramp. The fact of a sixty-some-year-old man's body waking him at the hour his body is going to wake him, which is, on some mornings, not the hour the alarm has been set for.",
+      "voice": "assets/audio/voice/vol6_ch17_table/009.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thinks: I am going to remember this in a year."
+      "text": "She thinks: I am going to remember this in a year.",
+      "voice": "assets/audio/voice/vol6_ch17_table/010.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thinks: I am going to remember the four forty-three Don-light, and the fact that it was, this morning, the first thing I wrote down in my head as I was waiting for Eileen to arrive."
+      "text": "She thinks: I am going to remember the four forty-three Don-light, and the fact that it was, this morning, the first thing I wrote down in my head as I was waiting for Eileen to arrive.",
+      "voice": "assets/audio/voice/vol6_ch17_table/011.mp3"
     },
     {
       "t": "narrate",
-      "text": "She does not, today, know why she is going to remember it."
+      "text": "She does not, today, know why she is going to remember it.",
+      "voice": "assets/audio/voice/vol6_ch17_table/012.mp3"
     },
     {
       "t": "narrate",
-      "text": "She has learned, this summer, to trust the noticing without the explanation."
+      "text": "She has learned, this summer, to trust the noticing without the explanation.",
+      "voice": "assets/audio/voice/vol6_ch17_table/013.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]She refills her coffee."
+      "text": "[shot:establish]She refills her coffee.",
+      "voice": "assets/audio/voice/vol6_ch17_table/014.mp3"
     },
     {
       "t": "narrate",
-      "text": "She goes to the front door and opens it partway, because Eileen is going to arrive in seventeen minutes and Bianca has, as of Monday, decided that the door being open partway at five AM is the small welcome she is willing to extend without having to stand at the door itself to do the extending."
+      "text": "She goes to the front door and opens it partway, because Eileen is going to arrive in seventeen minutes and Bianca has, as of Monday, decided that the door being open partway at five AM is the small welcome she is willing to extend without having to stand at the door itself to do the extending.",
+      "voice": "assets/audio/voice/vol6_ch17_table/015.mp3"
     },
     {
       "t": "narrate",
-      "text": "She returns to the kitchen."
+      "text": "She returns to the kitchen.",
+      "voice": "assets/audio/voice/vol6_ch17_table/016.mp3"
     },
     {
       "t": "show",
@@ -85,353 +96,419 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup eileen]Eileen arrives at five oh-two."
+      "text": "[shot:closeup eileen]Eileen arrives at five oh-two.",
+      "voice": "assets/audio/voice/vol6_ch17_table/018.mp3"
     },
     {
       "t": "narrate",
-      "text": "She comes in without knocking. She is carrying the small French-press insulated coffee pot she had been threatening to bring on Monday and had, on Monday, forgotten."
+      "text": "She comes in without knocking. She is carrying the small French-press insulated coffee pot she had been threatening to bring on Monday and had, on Monday, forgotten.",
+      "voice": "assets/audio/voice/vol6_ch17_table/019.mp3"
     },
     {
       "t": "narrate",
-      "text": "She is also carrying a small tote bag with, visible at the top, what looks like two small jars of preserves and a loaf of something wrapped in foil."
+      "text": "She is also carrying a small tote bag with, visible at the top, what looks like two small jars of preserves and a loaf of something wrapped in foil.",
+      "voice": "assets/audio/voice/vol6_ch17_table/020.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Bianca. I got carried away.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/021.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "I see.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/022.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "The peach is from my neighbor — not Jim's side, the other side, Peggy, the one whose husband is dying. She has been canning since June. She's been bringing me jars. I can't eat them all. I'm going to start distributing. You get two. The other one is for Anita.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/023.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "[shot:closeup person]Peggy's husband is dying?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/024.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Yeah. Pancreatic. Six weeks, maybe two months. He's home. She's canning.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch17_table/025.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_b]Bianca does not, immediately, know what to say to this."
+      "text": "[shot:establish_b]Bianca does not, immediately, know what to say to this.",
+      "voice": "assets/audio/voice/vol6_ch17_table/026.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "I know. I know. I'm telling you so you know.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch17_table/027.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Peggy has been — Peggy is doing her version of what I was doing in February through June, which is keeping her hands moving because her hands are the only part of her that will still function. Mine was the sewing table list.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch17_table/028.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Hers is the peach preserves. She is going to run out of peaches in about ten days and then she is going to be in a bad way. I am going to figure out what to do about that when I get there.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch17_table/029.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Eileen.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/030.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "[shot:closeup person]Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/031.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "You are — ",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/032.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "[shot:closeup person_b]I'm fine. Peggy's not my crisis. Peggy is the person across the fence. I am doing my version of what I can do. I bring you the jar.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/033.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert jar]Bianca takes the jar."
+      "text": "[shot:insert jar]Bianca takes the jar.",
+      "voice": "assets/audio/voice/vol6_ch17_table/034.mp3"
     },
     {
       "t": "narrate",
-      "text": "She puts it on the counter next to the coffee pot."
+      "text": "She puts it on the counter next to the coffee pot.",
+      "voice": "assets/audio/voice/vol6_ch17_table/035.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Thank you.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/036.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Anita's at six twenty?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/037.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "That's what she said yesterday.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/038.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "[shot:closeup person]Let's sit.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/039.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]They sit."
+      "text": "[shot:establish]They sit.",
+      "voice": "assets/audio/voice/vol6_ch17_table/040.mp3"
     },
     {
       "t": "narrate",
-      "text": "The first hour is the first hour of the table as it has been for two sessions now."
+      "text": "The first hour is the first hour of the table as it has been for two sessions now.",
+      "voice": "assets/audio/voice/vol6_ch17_table/041.mp3"
     },
     {
       "t": "narrate",
-      "text": "Eileen has brought, in her French press, the coffee from the place on Magnolia that is, by Eileen's taste, better than what Bianca's Cuisinart produces."
+      "text": "Eileen has brought, in her French press, the coffee from the place on Magnolia that is, by Eileen's taste, better than what Bianca's Cuisinart produces.",
+      "voice": "assets/audio/voice/vol6_ch17_table/042.mp3"
     },
     {
       "t": "narrate",
-      "text": "The Cuisinart is still on, running its own pot on the counter in the small ambient hum of a household appliance that has been running on every morning of the past sixteen weeks. The two coffees coexist."
+      "text": "The Cuisinart is still on, running its own pot on the counter in the small ambient hum of a household appliance that has been running on every morning of the past sixteen weeks. The two coffees coexist.",
+      "voice": "assets/audio/voice/vol6_ch17_table/043.mp3"
     },
     {
       "t": "narrate",
-      "text": "They talk, at first, about Peggy."
+      "text": "They talk, at first, about Peggy.",
+      "voice": "assets/audio/voice/vol6_ch17_table/044.mp3"
     },
     {
       "t": "narrate",
-      "text": "Not the canning. Peggy herself. Peggy is, by Eileen's telling, sixty-eight. Peggy had been a teacher — elementary school, second grade, for thirty-one years at the same school in New Auburn. Peggy had retired three years ago."
+      "text": "Not the canning. Peggy herself. Peggy is, by Eileen's telling, sixty-eight. Peggy had been a teacher — elementary school, second grade, for thirty-one years at the same school in New Auburn. Peggy had retired three years ago.",
+      "voice": "assets/audio/voice/vol6_ch17_table/045.mp3"
     },
     {
       "t": "narrate",
-      "text": "Peggy's husband is seventy-three and had been, until April, still working part-time at a hardware store in New Auburn."
+      "text": "Peggy's husband is seventy-three and had been, until April, still working part-time at a hardware store in New Auburn.",
+      "voice": "assets/audio/voice/vol6_ch17_table/046.mp3"
     },
     {
       "t": "narrate",
-      "text": "Peggy and her husband had been, by Eileen's telling, the kind of couple who had been making the small plans retired couples make — a trip to the Pacific Northwest that had been on a calendar for eighteen months."
+      "text": "Peggy and her husband had been, by Eileen's telling, the kind of couple who had been making the small plans retired couples make — a trip to the Pacific Northwest that had been on a calendar for eighteen months.",
+      "voice": "assets/audio/voice/vol6_ch17_table/047.mp3"
     },
     {
       "t": "narrate",
-      "text": "The trip was scheduled for May. The diagnosis came in March."
+      "text": "The trip was scheduled for May. The diagnosis came in March.",
+      "voice": "assets/audio/voice/vol6_ch17_table/048.mp3"
     },
     {
       "t": "narrate",
-      "text": "Bianca listens."
+      "text": "Bianca listens.",
+      "voice": "assets/audio/voice/vol6_ch17_table/049.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "[shot:closeup person]Did they go.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/050.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "No. By May he couldn't fly. They drove to Galveston. Three days. They came home. They have been home since.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch17_table/051.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/052.mp3"
     },
     {
       "t": "narrate",
-      "text": "A small silence."
+      "text": "A small silence.",
+      "voice": "assets/audio/voice/vol6_ch17_table/053.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "I tell you because — ",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/054.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "[shot:closeup person_b]Eileen. I know why you're telling me. It's fine. Tell me.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/055.mp3"
     },
     {
       "t": "narrate",
-      "text": "Eileen looks at her."
+      "text": "Eileen looks at her.",
+      "voice": "assets/audio/voice/vol6_ch17_table/056.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "[shot:closeup person_b]I tell you because you are — you are one of the two people in this town I can, right now, tell that kind of thing to without having to frame it. You are the first. Anita is the second.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/057.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "I have not — I have not, in the years before this year, been a person who had a Peggy. And now I have a Peggy, and I can tell you, and you can hear it, and I can go on to the next thing. That is — that is what the table is for.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/058.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "I want you to know I know that.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/059.mp3"
     },
     {
       "t": "narrate",
-      "text": "Bianca drinks her coffee."
+      "text": "Bianca drinks her coffee.",
+      "voice": "assets/audio/voice/vol6_ch17_table/060.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/061.mp3"
     },
     {
       "t": "narrate",
-      "text": "They sit."
+      "text": "They sit.",
+      "voice": "assets/audio/voice/vol6_ch17_table/062.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "[shot:closeup person]You okay this week?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/063.mp3"
     },
     {
       "t": "narrate",
-      "text": "Bianca thinks."
+      "text": "Bianca thinks.",
+      "voice": "assets/audio/voice/vol6_ch17_table/064.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "[shot:closeup person]Carlos called me back Tuesday. About the radio.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/065.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Oh.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/066.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "He's going to ship it. Next week, he said. It's in his garage. He hasn't touched it since 2005. He said — he said he was glad I was asking, which was — that was a thing to hear from my brother.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/067.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/068.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "So the radio is — the radio is coming. I don't know what I'm going to do with it yet.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/069.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "[shot:closeup person_b]What are your options.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/070.mp3"
     },
     {
       "t": "narrate",
-      "text": "Bianca thinks."
+      "text": "Bianca thinks.",
+      "voice": "assets/audio/voice/vol6_ch17_table/071.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Put it on a shelf and look at it for a year. Try to learn how to fix it. Give it to somebody who would know. Put it on the shelf and leave it there forever.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/072.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "You like any of those.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/073.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "I like the first one. I like the second one some days. I do not like the third one, not because giving it away would be wrong — because I am not, this year, in the mood to give anything away.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/074.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "[shot:closeup person]Okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/075.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "[shot:closeup person]The fourth one is — it's the default. It's what most things do. They sit on shelves until somebody else, eventually, decides what to do with them.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/076.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/077.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "I'm not, I think, going to do the fourth one.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/078.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/079.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "I'm going to do the first one for a year. And then, if I am, in a year, still thinking about the second one, I'll do it.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/080.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "[shot:closeup person_b]That's a good answer.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/081.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Thank you.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/082.mp3"
     },
     {
       "t": "narrate",
-      "text": "They drink their coffee."
+      "text": "They drink their coffee.",
+      "voice": "assets/audio/voice/vol6_ch17_table/083.mp3"
     },
     {
       "t": "show",
@@ -441,973 +518,1148 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup anita]Anita arrives at six twenty-one."
+      "text": "[shot:closeup anita]Anita arrives at six twenty-one.",
+      "voice": "assets/audio/voice/vol6_ch17_table/085.mp3"
     },
     {
       "t": "narrate",
-      "text": "She comes in through the back door because she has walked over from her own house rather than driving, because Bianca's house is four streets from the Kowalskis' and Anita — who has, between the ER parking lot and Bianca's kitchen,"
+      "text": "She comes in through the back door because she has walked over from her own house rather than driving, because Bianca's house is four streets from the Kowalskis' and Anita — who has, between the ER parking lot and Bianca's kitchen,",
+      "voice": "assets/audio/voice/vol6_ch17_table/086.mp3"
     },
     {
       "t": "narrate",
-      "text": "already been in two enclosed spaces this morning — had decided she wanted the small twenty-minute walk through the pre-dawn to get her body back under her own authority before she sat with other people again."
+      "text": "already been in two enclosed spaces this morning — had decided she wanted the small twenty-minute walk through the pre-dawn to get her body back under her own authority before she sat with other people again.",
+      "voice": "assets/audio/voice/vol6_ch17_table/087.mp3"
     },
     {
       "t": "narrate",
-      "text": "She is in scrubs."
+      "text": "She is in scrubs.",
+      "voice": "assets/audio/voice/vol6_ch17_table/088.mp3"
     },
     {
       "t": "narrate",
-      "text": "She is in the specific clean scrubs she had changed into at the hospital before coming off shift, which is what Anita does on nights she is coming directly somewhere rather than going home. Her ponytail is low and loose."
+      "text": "She is in the specific clean scrubs she had changed into at the hospital before coming off shift, which is what Anita does on nights she is coming directly somewhere rather than going home. Her ponytail is low and loose.",
+      "voice": "assets/audio/voice/vol6_ch17_table/089.mp3"
     },
     {
       "t": "narrate",
-      "text": "She has, in her hand, a small white bakery bag."
+      "text": "She has, in her hand, a small white bakery bag.",
+      "voice": "assets/audio/voice/vol6_ch17_table/090.mp3"
     },
     {
       "t": "narrate",
-      "text": "Bianca stands to greet her."
+      "text": "Bianca stands to greet her.",
+      "voice": "assets/audio/voice/vol6_ch17_table/091.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Sit. I'll hug you after my coffee.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/092.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_c]Bianca sits."
+      "text": "[shot:establish_c]Bianca sits.",
+      "voice": "assets/audio/voice/vol6_ch17_table/093.mp3"
     },
     {
       "t": "narrate",
-      "text": "Anita goes to the coffee pot — Eileen's French press — and pours herself a cup. She adds two sugars and a small splash of half-and-half Bianca has, since Eileen's first visit, started keeping in the fridge."
+      "text": "Anita goes to the coffee pot — Eileen's French press — and pours herself a cup. She adds two sugars and a small splash of half-and-half Bianca has, since Eileen's first visit, started keeping in the fridge.",
+      "voice": "assets/audio/voice/vol6_ch17_table/094.mp3"
     },
     {
       "t": "narrate",
-      "text": "She drinks the first half of the cup standing at the counter, in the specific way an ER nurse drinks the first half of a coffee, which is fast and without registering the taste."
+      "text": "She drinks the first half of the cup standing at the counter, in the specific way an ER nurse drinks the first half of a coffee, which is fast and without registering the taste.",
+      "voice": "assets/audio/voice/vol6_ch17_table/095.mp3"
     },
     {
       "t": "narrate",
-      "text": "She exhales."
+      "text": "She exhales.",
+      "voice": "assets/audio/voice/vol6_ch17_table/096.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/097.mp3"
     },
     {
       "t": "narrate",
-      "text": "She hugs Bianca, briefly, and Eileen, longer."
+      "text": "She hugs Bianca, briefly, and Eileen, longer.",
+      "voice": "assets/audio/voice/vol6_ch17_table/098.mp3"
     },
     {
       "t": "narrate",
-      "text": "She sits."
+      "text": "She sits.",
+      "voice": "assets/audio/voice/vol6_ch17_table/099.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Good morning, ladies.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/100.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "[shot:closeup person_b]How was it.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/101.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Two MVAs, a baby with a fever that turned out to be nothing, an old man who wanted his wife to come with him and she wouldn't — she's his second wife, she's thirty years younger, she was tired — and a kid who had gotten into his mother's oxy.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch17_table/102.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "The kid is going to be fine. His mother isn't.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch17_table/103.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "How old.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/104.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Fourteen.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch17_table/105.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "[shot:closeup person_b]Jesus, Anita.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch17_table/106.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "[shot:closeup person]Yeah.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch17_table/107.mp3"
     },
     {
       "t": "narrate",
-      "text": "She drinks the second half of the coffee."
+      "text": "She drinks the second half of the coffee.",
+      "voice": "assets/audio/voice/vol6_ch17_table/108.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Okay. Subject change. What are we doing this morning.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/109.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "We are sitting at a table. We are not fixing anything. We are not performing okay for each other. That is the table's rule.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/110.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Works for me. Bianca, did I see a peach jar on the counter?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/111.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "[shot:closeup person_b]From Peggy. Eileen brought it.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/112.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Peggy is the one whose husband is dying.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/113.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "[shot:closeup person_b]Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/114.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Okay. I'll take mine home after.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/115.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert kolaches]She opens the bakery bag. Inside are three kolaches from the place on Alamosa that the ER staff has, for twenty years, agreed is the best kolache place in New Auburn. They are — she reports — one apricot, one cream cheese, one sausage."
+      "text": "[shot:insert kolaches]She opens the bakery bag. Inside are three kolaches from the place on Alamosa that the ER staff has, for twenty years, agreed is the best kolache place in New Auburn. They are — she reports — one apricot, one cream cheese, one sausage.",
+      "voice": "assets/audio/voice/vol6_ch17_table/116.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "I got one of each. Y'all fight over them. I'm going to take the sausage because I don't care if I carry sausage smell into Ben's bedroom when I get home.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/117.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Take the sausage.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/118.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "I'll do the cream cheese.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/119.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Apricot.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/120.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]They eat."
+      "text": "[shot:establish]They eat.",
+      "voice": "assets/audio/voice/vol6_ch17_table/121.mp3"
     },
     {
       "t": "narrate",
-      "text": "For about twenty minutes, the three of them do the thing that happens when the table becomes a three-person table for the first time, which is a certain amount of logistical small talk to calibrate the shape."
+      "text": "For about twenty minutes, the three of them do the thing that happens when the table becomes a three-person table for the first time, which is a certain amount of logistical small talk to calibrate the shape.",
+      "voice": "assets/audio/voice/vol6_ch17_table/122.mp3"
     },
     {
       "t": "narrate",
-      "text": "Anita is the one who does most of the talking in this phase, because Anita is the newcomer to the room's established weather and is,"
+      "text": "Anita is the one who does most of the talking in this phase, because Anita is the newcomer to the room's established weather and is,",
+      "voice": "assets/audio/voice/vol6_ch17_table/123.mp3"
     },
     {
       "t": "narrate",
-      "text": "in the way middle children do when they enter an unfamiliar room, calibrating by being the one who speaks first on most topics so that she can, by the speaking, test the room's rhythm."
+      "text": "in the way middle children do when they enter an unfamiliar room, calibrating by being the one who speaks first on most topics so that she can, by the speaking, test the room's rhythm.",
+      "voice": "assets/audio/voice/vol6_ch17_table/124.mp3"
     },
     {
       "t": "narrate",
-      "text": "She talks about the ER."
+      "text": "She talks about the ER.",
+      "voice": "assets/audio/voice/vol6_ch17_table/125.mp3"
     },
     {
       "t": "narrate",
-      "text": "She talks about Gracie, who is — she reports — one page away from finishing the sticker activity book and has announced to Bill that the finishing is going to be on Sunday and that there is going to be a small ceremony for which Bill is expected to supply cake."
+      "text": "She talks about Gracie, who is — she reports — one page away from finishing the sticker activity book and has announced to Bill that the finishing is going to be on Sunday and that there is going to be a small ceremony for which Bill is expected to supply cake.",
+      "voice": "assets/audio/voice/vol6_ch17_table/126.mp3"
     },
     {
       "t": "narrate",
-      "text": "She talks about Ben, briefly — Ben has been getting better at something he will not explain to me, which I gather has to do with his right foot. Coach K has, apparently, been the person making him get better at it."
+      "text": "She talks about Ben, briefly — Ben has been getting better at something he will not explain to me, which I gather has to do with his right foot. Coach K has, apparently, been the person making him get better at it.",
+      "voice": "assets/audio/voice/vol6_ch17_table/127.mp3"
     },
     {
       "t": "narrate",
-      "text": "I do not understand football. I have, for three weeks now, been listening to my son describe his coach with a small reverence I have not heard him use before for anyone. I am not going to interrogate it."
+      "text": "I do not understand football. I have, for three weeks now, been listening to my son describe his coach with a small reverence I have not heard him use before for anyone. I am not going to interrogate it.",
+      "voice": "assets/audio/voice/vol6_ch17_table/128.mp3"
     },
     {
       "t": "narrate",
-      "text": "I am going to let it happen."
+      "text": "I am going to let it happen.",
+      "voice": "assets/audio/voice/vol6_ch17_table/129.mp3"
     },
     {
       "t": "narrate",
-      "text": "Bianca laughs at this. The laugh is the first laugh of the morning and the laugh is, by Anita's steer, exactly the laugh Anita had been going for."
+      "text": "Bianca laughs at this. The laugh is the first laugh of the morning and the laugh is, by Anita's steer, exactly the laugh Anita had been going for.",
+      "voice": "assets/audio/voice/vol6_ch17_table/130.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Jim wants to take Ben to a game in the fall.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/131.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "[shot:closeup person]Does Jim know football.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/132.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Jim played tight end in high school in Beaumont. Jim has not, in forty-two years, mentioned it. I found out in July when he said I want to take that kid to a game. I asked him how he knew which kid.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/133.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "He said your friend Anita's boy. I said you haven't met Ben. He said Maya told me about him.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/134.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "It turns out Jim and Maya have been, since June, having a specific small conversation in the basement when Maya comes by that neither of them has told anybody else about.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/135.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Maya comes by your basement?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/136.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Maya comes by when she is passing between her grandmother's and your house. About once a week. She comes in the front.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/137.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Jim, who as you know was in the basement mostly for the first few weeks of the summer, had been doing his small basement work and had one Tuesday in June heard Maya at the kitchen table with me and had come up and had — for the first time since April — said hello.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/138.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Maya had, that day, a very question about radios that her grandmother had mentioned that her grandfather had known how to do. Maya had asked me. I did not know. I had called Jim up.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/139.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Jim, who as you both know was a photographer and not a radio guy, had nonetheless known enough about the period to answer the small question. The conversation had gone on for about twelve minutes.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/140.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Maya had, the following Tuesday, come back with a second question. And a third. It has become a thing. Every Tuesday. Small things.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/141.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "A fifteen-minute basement conversation on some small technical question that is, every week, her grandfather-adjacent.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/142.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert table]Bianca, at the table, registers — with a small private surprise — that she has not, until this minute, known about this."
+      "text": "[shot:insert table]Bianca, at the table, registers — with a small private surprise — that she has not, until this minute, known about this.",
+      "voice": "assets/audio/voice/vol6_ch17_table/143.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Eileen.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/144.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/145.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "That's lovely.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch17_table/146.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "I know. I didn't want to — I didn't want to make it a thing. It's Jim and Maya's thing. I wasn't — I wasn't sure whether to tell you even now. But the kolaches made me feel generous.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/147.mp3"
     },
     {
       "t": "narrate",
-      "text": "Anita laughs."
+      "text": "Anita laughs.",
+      "voice": "assets/audio/voice/vol6_ch17_table/148.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "The kolaches do that.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch17_table/149.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup anita]At seven oh-six Anita says: \"My mother.\""
+      "text": "[shot:closeup anita]At seven oh-six Anita says: \"My mother.\"",
+      "voice": "assets/audio/voice/vol6_ch17_table/150.mp3"
     },
     {
       "t": "narrate",
-      "text": "Bianca looks up."
+      "text": "Bianca looks up.",
+      "voice": "assets/audio/voice/vol6_ch17_table/151.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "My mother is eighty-one. She is in Pharr. I have not been down to see her since March. I have been thinking — I have been thinking, the past two weeks, that I should drive down in September. For a weekend. Not to do anything.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/152.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Just to sit with her. She is not — she is not sick. She is fine. She is eighty-one.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/153.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "She has been eighty-one in the specific way eighty-one is for a woman who has been running a house with six kids' worth of ongoing gravity for fifty years, and she is now, at eighty-one, finally, by her own report, tired.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/154.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "How many of you are there.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/155.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Six.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/156.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Six, Jesus.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/157.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Four girls, two boys. I am the third girl. Middle of the middle, my mother used to call me, because I am also the third of six total.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/158.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "The math is — the math is that I was the one whose name got said when my mother had run out of names, which was every time my mother had run out of names, which was most days.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/159.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "There is a specific small thing that happens to the third of six that does not, generally, happen to the first or the second or the last. The specific small thing is you learn to move without waiting to be called.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/160.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "[shot:closeup person_b]Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/161.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Yeah. Which. Is useful in the ER. Is also why Bill, about ten years ago, stopped trying to keep me from jumping out of the car at accidents on the highway.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/162.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "You jump out of the car at accidents.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/163.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/164.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Anita.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/165.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "[shot:closeup person]Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/166.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Tell me.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/167.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Not much to tell. I have been an ER nurse since 1997. I have, in my trunk, a small go-bag — gloves, a compact trauma kit, a reflective vest, a headlamp, a pair of trauma shears. The bag has been in my trunk since 2011.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch17_table/168.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "When I see a wreck on the side of the road that has happened within the last few minutes and where no first responders are yet on scene, I stop. I get out. I do what I can do for the first ten minutes.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch17_table/169.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Then an ambulance arrives and I hand off and I go back to my car. I have, by rough count, done this fourteen times in fifteen years. Of the fourteen, eleven of the people I stopped for lived.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch17_table/170.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Of the three who didn't, two would not have lived regardless and one — one, I think, would have had a better chance if I had been two minutes earlier, but I was not, and the two minutes were not mine to have, and I have — I have made my peace with that one.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch17_table/171.mp3"
     },
     {
       "t": "narrate",
-      "text": "[beat:still][shot:establish~]The kitchen is, for a beat, very quiet."
+      "text": "[beat:still][shot:establish~]The kitchen is, for a beat, very quiet.",
+      "voice": "assets/audio/voice/vol6_ch17_table/172.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Anita.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/173.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/174.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Does Ben know about the go-bag.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/175.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Ben has known about the go-bag since he was nine. Ben found it in the trunk when we were loading up for a family trip. He asked what it was. I told him. He has not, since, mentioned it to me.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/176.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Bill knows.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/177.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Bill knows. Bill has, twice, asked me to leave it at home. I said I would. I lied both times. By the third conversation Bill had stopped asking.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/178.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Bill and I have, since, been in the agreement we are in, which is that he does not ask me to stop, and I do not make the stopping a thing.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/179.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "[shot:closeup person_b]Jesus, Anita.",
-      "expr": "serious"
+      "expr": "serious",
+      "voice": "assets/audio/voice/vol6_ch17_table/180.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "I am telling you because we are at the four-thirty table and the four-thirty table does not perform okay for each other.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/181.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "I am also telling you because it is relevant to the small thing I have been thinking about, which is driving down to Pharr in September. My mother, when I tell her about the bag — which I have, twice — laughs.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/182.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "She laughs in the specific way a woman who raised six kids on a farm in the Valley laughs at a daughter who has become an ER nurse and has a go-bag in her trunk. The laugh is not dismissive.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/183.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "The laugh is — the laugh is recognition. My mother recognizes me. Her middle-of-the-middle. She has always recognized me.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/184.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "The recognition is the thing I have, since I left the Valley in 1993, been getting from my mother, and I have been, this summer, thinking that I have not been down to see her enough in the past year, and that I should go in September,",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/185.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "because she is eighty-one and the next year and the year after that are going to be the specific years where the math of how many visits I have left starts to become the kind of math I do not want to do.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/186.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Go in September.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/187.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/188.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Take Gracie.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/189.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "[shot:closeup person]I'm taking Gracie. Not Ben. Ben is in football. Ben cannot be spared. Gracie has been asking. Gracie has not seen my mother since Christmas.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/190.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "That sounds right.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/191.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/192.mp3"
     },
     {
       "t": "narrate",
-      "text": "The three of them sit for a beat."
+      "text": "The three of them sit for a beat.",
+      "voice": "assets/audio/voice/vol6_ch17_table/193.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "What is the thing each of you has been thinking about. I have given mine.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/194.mp3"
     },
     {
       "t": "narrate",
-      "text": "Eileen looks at her."
+      "text": "Eileen looks at her.",
+      "voice": "assets/audio/voice/vol6_ch17_table/195.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "[shot:closeup person_b]Am I going first or is Bianca.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/196.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "You go. I did mine for Eileen earlier. I'll do it again for you after.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/197.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup eileen]Eileen thinks for a moment."
+      "text": "[shot:closeup eileen]Eileen thinks for a moment.",
+      "voice": "assets/audio/voice/vol6_ch17_table/198.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Mine is — mine is smaller than Anita's.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/199.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Everything is smaller than Anita's. I am the middle of six.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/200.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "I am, generally, in any room, the one whose thing is either the biggest or the smallest, because the middle in a farm family does not do the medium thing, the medium thing is handled by the older ones, I was raised to go to the edges.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/201.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Go.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/202.mp3"
     },
     {
       "t": "narrate",
-      "text": "Eileen laughs."
+      "text": "Eileen laughs.",
+      "voice": "assets/audio/voice/vol6_ch17_table/203.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Okay. Mine is — I have been, for twenty-six years, the person in my household who makes things function. I have not, in those twenty-six years, had a specific small thing that was mine.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/204.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "I did — I had a garden, for a while, in the early 2000s, but the garden was also, in the way of gardens, for the house.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/205.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "I had a book club that met once a month from 2007 to 2014 that was closer to mine, but then Jim's father got sick and I dropped out and I didn't pick it back up.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/206.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "I have — I have been thinking, since June, that Jim is doing a thing that is, right now, only his — the photography class, the camera is his again. He has a thing.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/207.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "And I have been thinking — I have been thinking that I would like to also have a thing. I do not, yet, know what the thing is.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/208.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "I have been considering — and I want you both to understand that I have been holding this question for two months and I have not yet told Jim — I have been considering taking up the piano again.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/209.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "[shot:closeup person]You play piano.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/210.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "I played piano. I played through high school. I had a teacher. I had a — I had a small talent, not enough to go to conservatory, but enough that I played other people's weddings for a hundred dollars apiece through college.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/211.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "I stopped when I had Jesse. I have not touched one in twenty years.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/212.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "You have one in the house.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/213.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "I have the piano from my mother that has been in the den under a cover since 2006. It is out of tune. The tuning is maybe two hundred dollars. The lessons are — the lessons I would want are harder to find in New Auburn.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/214.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "I have been thinking I would take a drive into Austin once a week for a proper teacher.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/215.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Do it.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/216.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "[shot:closeup person_b]Yeah. I'm going to. I think. I am going to tell Jim in the next two weeks. I wanted — I wanted to tell you both first. Because — because I needed to hear myself say it out loud to two other people before I said it to my husband.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/217.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "That is the thing the table is for.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/218.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Eileen. The piano is — the piano is a wonderful thing.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch17_table/219.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Thank you.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/220.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Two hundred bucks for the tune-up is a bargain. I know a guy. I'll text you.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/221.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Thanks.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/222.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Eileen looks at Bianca."
+      "text": "[shot:establish]Eileen looks at Bianca.",
+      "voice": "assets/audio/voice/vol6_ch17_table/223.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Your turn.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/224.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Mine is the radio.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/225.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "The radio.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/226.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "My father fixed radios. He was — he had a workbench in the garage in Lubbock. He fixed them for money, on the side, and for pleasure, mostly.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/227.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "He died in 2003 at the workbench with an unfinished project in front of him that had been for my brother's son. My brother finished the project. My nephew is — my nephew is in his thirties now, in Houston.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/228.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "The radio my father was working on ended up in my brother's garage and has been there since 2005. I called Monday. I asked Carlos if I could have it. He said yes. It's coming next week.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/229.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "[shot:closeup person]You going to fix it.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/230.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Maybe. Not soon. I am going to put it on a shelf and look at it for a year and decide.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/231.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Do you know how to fix a radio.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/232.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "No. I knew, at six, the names of the parts. I have not — I have not done anything with that in forty-two years.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/233.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Why is the radio the thing.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/234.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup bianca]Bianca thinks."
+      "text": "[shot:closeup bianca]Bianca thinks.",
+      "voice": "assets/audio/voice/vol6_ch17_table/235.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Because my father — my father did a thing, every Saturday morning of my childhood, which was to go to the workbench and lay out the parts on a white cloth and sit in front of them and take, on most Saturdays, four hours to fix one radio.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/236.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "He was not, in his life, a man who did a lot that was only his. He had a job he was fine at. He had a wife who was, by all accounts, the love of his life. He had six kids —",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/237.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Wait. Six.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/238.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Yeah. Six. I was the fifth.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/239.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "[shot:closeup person]Bianca.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/240.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/241.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "You are the fifth of six.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/242.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/243.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "I did not know that.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/244.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "[shot:closeup person_b]It has not — it has not come up. My four older siblings are all in Lubbock. Carlos is in Houston. I am here. We are not — we are not close. We are fine. We talk at holidays. But we are not close.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/245.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Huh.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/246.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Anyway. My father had his four hours on Saturdays. He had, by the end of those four hours, a working radio. I have been thinking, since Monday, that I have not, in my adult life, had a four-hour-on-a-Saturday thing.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/247.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "I don't, honestly, know that I want the radio to be that. I want the radio to be on the shelf so that, every time I see it, I remember that my father had a four-hour-on-a-Saturday thing, and that I — might. If I decide to.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/248.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "And that the not-deciding is its own decision, and that if I sit with the radio for a year without touching it, I will learn something about what I actually want the four hours to be for.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/249.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "[shot:closeup person]Yeah. Okay. That's the answer.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/250.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Bianca. You are the fifth of six and you did not mention it.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/251.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "I told you I was from Lubbock.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/252.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "You told me you were from Lubbock. You did not tell me there were five other of you.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/253.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Yeah. I don't — I don't lead with it. I left in 1985. The Lubbock part of me is — the Lubbock part of me is at the back of the house. The radio is the front of the house, Texas-wise.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/254.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "The middle-of-the-middle daughter from a six-kid farm family in the Valley and the fifth-of-six daughter from Lubbock are at the same four-thirty table in mid-August drinking coffee from the place on Magnolia.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/255.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_b]Bianca laughs."
+      "text": "[shot:establish_b]Bianca laughs.",
+      "voice": "assets/audio/voice/vol6_ch17_table/256.mp3"
     },
     {
       "t": "narrate",
-      "text": "Eileen laughs."
+      "text": "Eileen laughs.",
+      "voice": "assets/audio/voice/vol6_ch17_table/257.mp3"
     },
     {
       "t": "narrate",
-      "text": "Anita, after a beat, laughs too."
+      "text": "Anita, after a beat, laughs too.",
+      "voice": "assets/audio/voice/vol6_ch17_table/258.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]The laughter, in the kitchen, is the loudest sound the room has produced this morning."
+      "text": "[shot:establish]The laughter, in the kitchen, is the loudest sound the room has produced this morning.",
+      "voice": "assets/audio/voice/vol6_ch17_table/259.mp3"
     },
     {
       "t": "show",
@@ -1417,121 +1669,144 @@
     },
     {
       "t": "narrate",
-      "text": "Sam comes downstairs at seven thirty-four."
+      "text": "Sam comes downstairs at seven thirty-four.",
+      "voice": "assets/audio/voice/vol6_ch17_table/261.mp3"
     },
     {
       "t": "narrate",
-      "text": "She is in her Kwik Stop polo. She is carrying her backpack. She has, Bianca registers, the specific clean morning face of a seventeen-year-old who has, this Friday, slept better than she has been sleeping."
+      "text": "She is in her Kwik Stop polo. She is carrying her backpack. She has, Bianca registers, the specific clean morning face of a seventeen-year-old who has, this Friday, slept better than she has been sleeping.",
+      "voice": "assets/audio/voice/vol6_ch17_table/262.mp3"
     },
     {
       "t": "narrate",
-      "text": "She comes into the kitchen."
+      "text": "She comes into the kitchen.",
+      "voice": "assets/audio/voice/vol6_ch17_table/263.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup sam]She stops at the doorway."
+      "text": "[shot:closeup sam]She stops at the doorway.",
+      "voice": "assets/audio/voice/vol6_ch17_table/264.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Hi.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/265.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Hi, Sammy. Eileen and Anita are here.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/266.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "I see. Hi, Eileen. Hi, Anita.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/267.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Morning, sweetheart.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/268.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Sam. Ben said you helped a couple with a broken-down Peugeot at the Kwik Stop yesterday.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/269.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_c]Sam, at the doorway, blinks."
+      "text": "[shot:establish_c]Sam, at the doorway, blinks.",
+      "voice": "assets/audio/voice/vol6_ch17_table/270.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Ben knows about that?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/271.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Maya told him. I don't know who told her. Small town, kid.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/272.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Yeah. I helped them a little. Gave them — gave them a twenty.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/273.mp3"
     },
     {
       "t": "narrate",
-      "text": "Anita, in the specific way Anita has of knowing when a kid is rounding a number down, says: \"A twenty. Uh-huh.\""
+      "text": "Anita, in the specific way Anita has of knowing when a kid is rounding a number down, says: \"A twenty. Uh-huh.\"",
+      "voice": "assets/audio/voice/vol6_ch17_table/274.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Okay, maybe more than a twenty.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/275.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Sam. For what it's worth. Coming from the ER, where I have seen many versions of many people on the worst day of their lives: it is usually the right thing to give the money. Not always. Usually. You have a good read. Trust the read.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/276.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam, at the doorway, does not, immediately, respond."
+      "text": "Sam, at the doorway, does not, immediately, respond.",
+      "voice": "assets/audio/voice/vol6_ch17_table/277.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Thanks, Anita.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/278.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "Get to work. Have a good Friday. The table is ongoing. Next time you are down at the right hour on a right morning, you are welcome.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/279.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam looks at her mother."
+      "text": "Sam looks at her mother.",
+      "voice": "assets/audio/voice/vol6_ch17_table/280.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup bianca]Bianca, at the table, meets the look."
+      "text": "[shot:closeup bianca]Bianca, at the table, meets the look.",
+      "voice": "assets/audio/voice/vol6_ch17_table/281.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/282.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam pours herself coffee. She puts the coffee in a travel mug. She kisses her mother on the temple. She says goodbye to Eileen and Anita. She leaves out the front door."
+      "text": "Sam pours herself coffee. She puts the coffee in a travel mug. She kisses her mother on the temple. She says goodbye to Eileen and Anita. She leaves out the front door.",
+      "voice": "assets/audio/voice/vol6_ch17_table/283.mp3"
     },
     {
       "t": "hide",
@@ -1539,107 +1814,127 @@
     },
     {
       "t": "narrate",
-      "text": "The Corolla starts in the driveway. The Corolla pulls out. The Corolla is gone."
+      "text": "The Corolla starts in the driveway. The Corolla pulls out. The Corolla is gone.",
+      "voice": "assets/audio/voice/vol6_ch17_table/285.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert table]The three of them, at the table, listen to it."
+      "text": "[shot:insert table]The three of them, at the table, listen to it.",
+      "voice": "assets/audio/voice/vol6_ch17_table/286.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "I did not know Anita was going to know about the Peugeot.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/287.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "I didn't know I was going to know either. Ben mentioned it at dinner last night. He had heard it from Maya. I filed it. I figured I would not bring it up with you unless I could bring it up to Sam first. Your kid handled it well.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/288.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/289.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "[beat:still][shot:closeup anita~]She's going to leave.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/290.mp3"
     },
     {
       "t": "narrate",
-      "text": "Bianca looks at her."
+      "text": "Bianca looks at her.",
+      "voice": "assets/audio/voice/vol6_ch17_table/291.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "I'm telling you because Bill and I have been watching her at our house for the past two months when she comes by.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/292.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "She has the specific small thing on her face that kids have the summer before their senior year when they have already, in their heads, left. She has not told you. You already know. I am only confirming what you already know.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/293.mp3"
     },
     {
       "t": "narrate",
-      "text": "Bianca does not, immediately, respond."
+      "text": "Bianca does not, immediately, respond.",
+      "voice": "assets/audio/voice/vol6_ch17_table/294.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Yeah. I know.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/295.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "She is going to be fine. You are going to be fine. The transition is the transition. It is not the thing. It is the transition that happens before the thing.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/296.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/297.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Ladies. Are we having a moment.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/298.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "We are having a moment.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/299.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Good. We are having them about once an hour now. I want to track. We are up to the rate a table like this should be having them at. I want that documented.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/300.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Bianca laughs."
+      "text": "[shot:establish]Bianca laughs.",
+      "voice": "assets/audio/voice/vol6_ch17_table/301.mp3"
     },
     {
       "t": "narrate",
-      "text": "Anita laughs."
+      "text": "Anita laughs.",
+      "voice": "assets/audio/voice/vol6_ch17_table/302.mp3"
     },
     {
       "t": "narrate",
-      "text": "Eileen laughs."
+      "text": "Eileen laughs.",
+      "voice": "assets/audio/voice/vol6_ch17_table/303.mp3"
     },
     {
       "t": "narrate",
-      "text": "The kitchen, again, is loud."
+      "text": "The kitchen, again, is loud.",
+      "voice": "assets/audio/voice/vol6_ch17_table/304.mp3"
     },
     {
       "t": "hide",
@@ -1647,125 +1942,148 @@
     },
     {
       "t": "narrate",
-      "text": "At seven fifty-two Anita stands."
+      "text": "At seven fifty-two Anita stands.",
+      "voice": "assets/audio/voice/vol6_ch17_table/306.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "I have to go home. Bill is going to be up and Gracie is going to be up and Daisy is going to need to be let out and my body is going to shut down in about ninety minutes. I am going to take my peach jar. I am going to go home.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/307.mp3"
     },
     {
       "t": "say",
       "char": "Anita",
       "text": "I am going to sleep until two. Bianca. Thank you for the morning.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/308.mp3"
     },
     {
       "t": "narrate",
-      "text": "Bianca stands."
+      "text": "Bianca stands.",
+      "voice": "assets/audio/voice/vol6_ch17_table/309.mp3"
     },
     {
       "t": "narrate",
-      "text": "She hugs Anita. The hug is the kind of hug two women have when they have, in the past three hours, moved a thing between them from one register to another."
+      "text": "She hugs Anita. The hug is the kind of hug two women have when they have, in the past three hours, moved a thing between them from one register to another.",
+      "voice": "assets/audio/voice/vol6_ch17_table/310.mp3"
     },
     {
       "t": "narrate",
-      "text": "Anita hugs Eileen."
+      "text": "Anita hugs Eileen.",
+      "voice": "assets/audio/voice/vol6_ch17_table/311.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert jar]Anita takes her peach jar and her scrubs and her empty kolache bag and her tote and she leaves out the back door, because that is the way she came in, and because she has, at seven fifty-two in mid-August,"
+      "text": "[shot:insert jar]Anita takes her peach jar and her scrubs and her empty kolache bag and her tote and she leaves out the back door, because that is the way she came in, and because she has, at seven fifty-two in mid-August,",
+      "voice": "assets/audio/voice/vol6_ch17_table/312.mp3"
     },
     {
       "t": "narrate",
-      "text": "the small walk home through the four streets of the subdivision at the hour when the sprinklers are just starting their Friday cycle and the morning light is just beginning to be the morning light."
+      "text": "the small walk home through the four streets of the subdivision at the hour when the sprinklers are just starting their Friday cycle and the morning light is just beginning to be the morning light.",
+      "voice": "assets/audio/voice/vol6_ch17_table/313.mp3"
     },
     {
       "t": "narrate",
-      "text": "The back door closes."
+      "text": "The back door closes.",
+      "voice": "assets/audio/voice/vol6_ch17_table/314.mp3"
     },
     {
       "t": "narrate",
-      "text": "Eileen and Bianca are, again, the two of them."
+      "text": "Eileen and Bianca are, again, the two of them.",
+      "voice": "assets/audio/voice/vol6_ch17_table/315.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Anita is a lot.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/316.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Anita is — Anita is the right amount.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/317.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "She is. She is the right amount. I have been — I have been sitting with her for eight months at various tables and I had not known, until this morning, about the go-bag.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/318.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "I had not known about any of it.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/319.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/320.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Eileen.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/321.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/322.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "I am, I think, going to have Eileen and Anita at this table once a week for the rest of the summer.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/323.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Yeah. I was — I was going to propose that.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/324.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Friday mornings.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/325.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Friday mornings.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/326.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Five to seven thirty.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/327.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Done.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch17_table/328.mp3"
     },
     {
       "t": "hide",
@@ -1777,31 +2095,38 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_b]At eight eleven Eileen leaves."
+      "text": "[shot:establish_b]At eight eleven Eileen leaves.",
+      "voice": "assets/audio/voice/vol6_ch17_table/331.mp3"
     },
     {
       "t": "narrate",
-      "text": "The kitchen, at eight eleven, smells of three kinds of coffee and three kinds of kolache and the small residual warmth of three women who have, for a little under four hours, been at a table."
+      "text": "The kitchen, at eight eleven, smells of three kinds of coffee and three kinds of kolache and the small residual warmth of three women who have, for a little under four hours, been at a table.",
+      "voice": "assets/audio/voice/vol6_ch17_table/332.mp3"
     },
     {
       "t": "narrate",
-      "text": "Bianca clears the cups."
+      "text": "Bianca clears the cups.",
+      "voice": "assets/audio/voice/vol6_ch17_table/333.mp3"
     },
     {
       "t": "narrate",
-      "text": "She rinses them. She puts them in the dishwasher. She wipes the table."
+      "text": "She rinses them. She puts them in the dishwasher. She wipes the table.",
+      "voice": "assets/audio/voice/vol6_ch17_table/334.mp3"
     },
     {
       "t": "narrate",
-      "text": "She puts the peach jar on the counter beside the loaf of whatever Eileen had brought wrapped in foil, which Bianca had, during the morning, forgotten to ask about and which she now, opening the foil, discovers is a small cinnamon coffee cake from the bakery Eileen had mentioned."
+      "text": "She puts the peach jar on the counter beside the loaf of whatever Eileen had brought wrapped in foil, which Bianca had, during the morning, forgotten to ask about and which she now, opening the foil, discovers is a small cinnamon coffee cake from the bakery Eileen had mentioned.",
+      "voice": "assets/audio/voice/vol6_ch17_table/335.mp3"
     },
     {
       "t": "narrate",
-      "text": "She cuts a slice of the coffee cake."
+      "text": "She cuts a slice of the coffee cake.",
+      "voice": "assets/audio/voice/vol6_ch17_table/336.mp3"
     },
     {
       "t": "narrate",
-      "text": "She takes it to the back porch."
+      "text": "She takes it to the back porch.",
+      "voice": "assets/audio/voice/vol6_ch17_table/337.mp3"
     },
     {
       "t": "jump",

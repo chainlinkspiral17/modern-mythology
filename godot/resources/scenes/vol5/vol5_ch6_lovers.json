@@ -43,7 +43,8 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert faucet]The drip — drip — drip from the kitchen faucet was Philip Roberts's metronome this morning."
+      "text": "[shot:insert faucet]The drip — drip — drip from the kitchen faucet was Philip Roberts's metronome this morning.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/008.mp3"
     },
     {
       "t": "narrate",
@@ -87,15 +88,18 @@
     },
     {
       "t": "narrate",
-      "text": "The faucet dripped."
+      "text": "The faucet dripped.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/019.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup philip]Philip set the wrench down on the counter with the small careful gesture of a man who has just lost an argument he was not, technically, having out loud."
+      "text": "[shot:closeup philip]Philip set the wrench down on the counter with the small careful gesture of a man who has just lost an argument he was not, technically, having out loud.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/020.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Mackenzie drifted into the kitchen, smelling of damp earth from the garden and that faint persistent aroma of library paste that seemed to cling to her volunteer clothes. She surveyed Philip's ongoing battle with the sink. A familiar scene."
+      "text": "[shot:establish]Mackenzie drifted into the kitchen, smelling of damp earth from the garden and that faint persistent aroma of library paste that seemed to cling to her volunteer clothes. She surveyed Philip's ongoing battle with the sink. A familiar scene.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/021.mp3"
     },
     {
       "t": "show",
@@ -106,11 +110,13 @@
     {
       "t": "say",
       "char": "mackenzie",
-      "text": "Still?"
+      "text": "Still?",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/023.mp3"
     },
     {
       "t": "narrate",
-      "text": "She poured herself coffee into a chipped mug that declared World's Okayest Weaver. The mug had been a gift from her sister three Christmases ago. The sister had meant it ironically. Mackenzie used the mug sincerely."
+      "text": "She poured herself coffee into a chipped mug that declared World's Okayest Weaver. The mug had been a gift from her sister three Christmases ago. The sister had meant it ironically. Mackenzie used the mug sincerely.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/024.mp3"
     },
     {
       "t": "show",
@@ -121,7 +127,8 @@
     {
       "t": "say",
       "char": "philip",
-      "text": "Still. Think this faucet's achieved enlightenment. Detached itself from worldly concerns. Like 'not leaking.'"
+      "text": "Still. Think this faucet's achieved enlightenment. Detached itself from worldly concerns. Like 'not leaking.'",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/026.mp3"
     },
     {
       "t": "narrate",
@@ -129,12 +136,14 @@
     },
     {
       "t": "narrate",
-      "text": "Her quiet grace always seemed most potent when she was observing life's small persistent absurdities — as if she had decided, sometime in her early twenties, that the appropriate response to most things was a kind of amused attention, and had been refining that response, in private, ever since."
+      "text": "Her quiet grace always seemed most potent when she was observing life's small persistent absurdities — as if she had decided, sometime in her early twenties, that the appropriate response to most things was a kind of amused attention, and had been refining that response, in private, ever since.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/028.mp3"
     },
     {
       "t": "say",
       "char": "mackenzie",
-      "text": "[shot:closeup mackenzie]Maybe it's trying to tell us something. About acceptance. Or maybe it's just a metaphor for our bank account."
+      "text": "[shot:closeup mackenzie]Maybe it's trying to tell us something. About acceptance. Or maybe it's just a metaphor for our bank account.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/029.mp3"
     },
     {
       "t": "narrate",
@@ -150,26 +159,31 @@
     },
     {
       "t": "narrate",
-      "text": "Mostly."
+      "text": "Mostly.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/033.mp3"
     },
     {
       "t": "say",
       "char": "philip",
-      "text": "[shot:closeup philip]Could be worse. Could be Elicia calling at three AM again because her latest artistic vision involves setting something expensive on fire."
+      "text": "[shot:closeup philip]Could be worse. Could be Elicia calling at three AM again because her latest artistic vision involves setting something expensive on fire.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/034.mp3"
     },
     {
       "t": "narrate",
-      "text": "Mackenzie winced."
+      "text": "Mackenzie winced.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/035.mp3"
     },
     {
       "t": "say",
       "char": "mackenzie",
-      "text": "Don't remind me. Did she call back after last week?"
+      "text": "Don't remind me. Did she call back after last week?",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/036.mp3"
     },
     {
       "t": "say",
       "char": "philip",
-      "text": "[shot:closeup philip]Nah. Radio silence. Which is probably worse."
+      "text": "[shot:closeup philip]Nah. Radio silence. Which is probably worse.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/037.mp3"
     },
     {
       "t": "narrate",
@@ -185,15 +199,18 @@
     },
     {
       "t": "narrate",
-      "text": "Her last breakup voicemail had sounded less like heartbreak and more like the prelude to an interdimensional incident."
+      "text": "Her last breakup voicemail had sounded less like heartbreak and more like the prelude to an interdimensional incident.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/041.mp3"
     },
     {
       "t": "narrate",
-      "text": "Philip had texted Mackenzie, that night, a single word: casserole?"
+      "text": "Philip had texted Mackenzie, that night, a single word: casserole?",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/042.mp3"
     },
     {
       "t": "narrate",
-      "text": "Mackenzie had texted back: casserole."
+      "text": "Mackenzie had texted back: casserole.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/043.mp3"
     },
     {
       "t": "narrate",
@@ -209,7 +226,8 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup mackenzie]Mackenzie sighed. Ran a hand over her still-flat stomach. The habitual gesture, since the loss last year, that she did not yet realize Philip noticed every time and that Philip did not yet have the courage to mention."
+      "text": "[shot:closeup mackenzie]Mackenzie sighed. Ran a hand over her still-flat stomach. The habitual gesture, since the loss last year, that she did not yet realize Philip noticed every time and that Philip did not yet have the courage to mention.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/047.mp3"
     },
     {
       "t": "narrate",
@@ -229,7 +247,8 @@
     },
     {
       "t": "narrate",
-      "text": "Philip had fixed two more fences after the funeral than the contracts strictly required. Mackenzie had woven a tapestry that hung now in the back hallway, depicting nothing recognizable, and had not woven another one for fourteen months."
+      "text": "Philip had fixed two more fences after the funeral than the contracts strictly required. Mackenzie had woven a tapestry that hung now in the back hallway, depicting nothing recognizable, and had not woven another one for fourteen months.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/052.mp3"
     },
     {
       "t": "narrate",
@@ -241,11 +260,13 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert radio]The radio on the windowsill crackled. Interrupted the local news report about ongoing seismic instability near the sinkhole — experts remain baffled, ongoing monitoring continues — with a jingle for D'Ambrosio's new Houston location. Alberto's place."
+      "text": "[shot:insert radio]The radio on the windowsill crackled. Interrupted the local news report about ongoing seismic instability near the sinkhole — experts remain baffled, ongoing monitoring continues — with a jingle for D'Ambrosio's new Houston location. Alberto's place.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/055.mp3"
     },
     {
       "t": "narrate",
-      "text": "Mackenzie made a face."
+      "text": "Mackenzie made a face.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/056.mp3"
     },
     {
       "t": "narrate",
@@ -261,17 +282,20 @@
     },
     {
       "t": "narrate",
-      "text": "Good riddance."
+      "text": "Good riddance.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/060.mp3"
     },
     {
       "t": "say",
       "char": "philip",
-      "text": "World keeps turning, huh?"
+      "text": "World keeps turning, huh?",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/061.mp3"
     },
     {
       "t": "say",
       "char": "mackenzie",
-      "text": "Yeah. Keeps turning. Keeps leaking. Guess all we can do is keep patching the holes."
+      "text": "Yeah. Keeps turning. Keeps leaking. Guess all we can do is keep patching the holes.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/062.mp3"
     },
     {
       "t": "narrate",
@@ -283,19 +307,23 @@
     },
     {
       "t": "narrate",
-      "text": "Cozy. Homey. Perpetually in need of repair."
+      "text": "Cozy. Homey. Perpetually in need of repair.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/065.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert door]With the weirdness of the world knocking, ever so politely for now, at the stubbornly latched back door."
+      "text": "[shot:insert door]With the weirdness of the world knocking, ever so politely for now, at the stubbornly latched back door.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/066.mp3"
     },
     {
       "t": "narrate",
-      "text": "The drip continued its steady rhythm."
+      "text": "The drip continued its steady rhythm.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/067.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert door]A knock at the front door interrupted the rhythm."
+      "text": "[shot:insert door]A knock at the front door interrupted the rhythm.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/068.mp3"
     },
     {
       "t": "narrate",
@@ -311,11 +339,13 @@
     },
     {
       "t": "narrate",
-      "text": "Philip wiped his hands on a dishtowel that had been clean an hour ago and was no longer. He went to the door."
+      "text": "Philip wiped his hands on a dishtowel that had been clean an hour ago and was no longer. He went to the door.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/072.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup boy]A boy stood on the porch. Maybe eight. Maybe nine. He was holding a bunched-up envelope in both hands the way a child holds a small dead bird he has been instructed to deliver but has not been told what for."
+      "text": "[shot:closeup boy]A boy stood on the porch. Maybe eight. Maybe nine. He was holding a bunched-up envelope in both hands the way a child holds a small dead bird he has been instructed to deliver but has not been told what for.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/073.mp3"
     },
     {
       "t": "show",
@@ -326,17 +356,20 @@
     {
       "t": "say",
       "char": "boy",
-      "text": "Mr. Roberts?"
+      "text": "Mr. Roberts?",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/075.mp3"
     },
     {
       "t": "say",
       "char": "philip",
-      "text": "Yeah."
+      "text": "Yeah.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/076.mp3"
     },
     {
       "t": "say",
       "char": "boy",
-      "text": "My grandma said to give you this. She said she's sorry. She said you'd know what for."
+      "text": "My grandma said to give you this. She said she's sorry. She said you'd know what for.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/077.mp3"
     },
     {
       "t": "narrate",
@@ -348,20 +381,24 @@
     },
     {
       "t": "narrate",
-      "text": "Philip closed the door slowly."
+      "text": "Philip closed the door slowly.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/080.mp3"
     },
     {
       "t": "say",
       "char": "mackenzie",
-      "text": "What is that."
+      "text": "What is that.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/081.mp3"
     },
     {
       "t": "narrate",
-      "text": "He turned the envelope over. His name, in handwriting he did not recognize, on the front. No return address. The envelope was crumpled in the way envelopes are crumpled when a person has held them too tightly while deciding whether to deliver them."
+      "text": "He turned the envelope over. His name, in handwriting he did not recognize, on the front. No return address. The envelope was crumpled in the way envelopes are crumpled when a person has held them too tightly while deciding whether to deliver them.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/082.mp3"
     },
     {
       "t": "narrate",
-      "text": "He opened it."
+      "text": "He opened it.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/083.mp3"
     },
     {
       "t": "narrate",
@@ -377,19 +414,23 @@
     },
     {
       "t": "narrate",
-      "text": "[beat:hit]In the foreground, walking with his back to the camera, hands in his pockets, was Mackenzie's older brother."
+      "text": "[beat:hit]In the foreground, walking with his back to the camera, hands in his pockets, was Mackenzie's older brother.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/087.mp3"
     },
     {
       "t": "narrate",
-      "text": "Mackenzie made a small sound Philip had not heard her make in fourteen months."
+      "text": "Mackenzie made a small sound Philip had not heard her make in fourteen months.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/088.mp3"
     },
     {
       "t": "narrate",
-      "text": "There was no note inside the envelope. Just the photograph."
+      "text": "There was no note inside the envelope. Just the photograph.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/089.mp3"
     },
     {
       "t": "narrate",
-      "text": "Philip turned it over. On the back, in the same careful handwriting that had addressed the envelope, two words:"
+      "text": "Philip turned it over. On the back, in the same careful handwriting that had addressed the envelope, two words:",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/090.mp3"
     },
     {
       "t": "narrate",
@@ -397,7 +438,8 @@
     },
     {
       "t": "narrate",
-      "text": "That was all."
+      "text": "That was all.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/092.mp3"
     },
     {
       "t": "narrate",
@@ -410,21 +452,25 @@
     {
       "t": "say",
       "char": "mackenzie",
-      "text": "He wouldn't have. He never waved at anybody he didn't know. He used to make fun of dad for it."
+      "text": "He wouldn't have. He never waved at anybody he didn't know. He used to make fun of dad for it.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/095.mp3"
     },
     {
       "t": "say",
       "char": "philip",
-      "text": "I know."
+      "text": "I know.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/096.mp3"
     },
     {
       "t": "narrate",
-      "text": "[mood:morning_bright][shot:establish]They stood in the front hallway. The morning light through the screen door making a soft grid on the worn pine floor."
+      "text": "[mood:morning_bright][shot:establish]They stood in the front hallway. The morning light through the screen door making a soft grid on the worn pine floor.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/097.mp3"
     },
     {
       "t": "say",
       "char": "mackenzie",
-      "text": "Why now."
+      "text": "Why now.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/098.mp3"
     },
     {
       "t": "narrate",
@@ -444,16 +490,19 @@
     },
     {
       "t": "narrate",
-      "text": "He thought, something is starting."
+      "text": "He thought, something is starting.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/103.mp3"
     },
     {
       "t": "narrate",
-      "text": "He did not say it."
+      "text": "He did not say it.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/104.mp3"
     },
     {
       "t": "say",
       "char": "philip",
-      "text": "[shot:closeup philip]I don't know, Kenz. I really don't."
+      "text": "[shot:closeup philip]I don't know, Kenz. I really don't.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/105.mp3"
     },
     {
       "t": "narrate",
@@ -469,7 +518,8 @@
     },
     {
       "t": "narrate",
-      "text": "She walked back to the kitchen. Philip followed."
+      "text": "She walked back to the kitchen. Philip followed.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/109.mp3"
     },
     {
       "t": "narrate",
@@ -477,33 +527,40 @@
     },
     {
       "t": "narrate",
-      "text": "The mug — the World's Okayest Weaver mug — was still half-full, but she poured the rest down the sink and started over, because the previous coffee belonged to the previous version of the morning, and the previous version of the morning was over."
+      "text": "The mug — the World's Okayest Weaver mug — was still half-full, but she poured the rest down the sink and started over, because the previous coffee belonged to the previous version of the morning, and the previous version of the morning was over.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/111.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert faucet]Philip went back to the faucet. Picked up the wrench. Looked at the fitting for a moment, then set the wrench down again."
+      "text": "[shot:insert faucet]Philip went back to the faucet. Picked up the wrench. Looked at the fitting for a moment, then set the wrench down again.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/112.mp3"
     },
     {
       "t": "say",
       "char": "philip",
-      "text": "Maybe it doesn't need fixing today."
+      "text": "Maybe it doesn't need fixing today.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/113.mp3"
     },
     {
       "t": "say",
       "char": "mackenzie",
-      "text": "No. Today the drip can win."
+      "text": "No. Today the drip can win.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/114.mp3"
     },
     {
       "t": "narrate",
-      "text": "Philip crossed the kitchen and put his arms around her from behind, and she let him, and they stood like that for a long time while the radio finished its weather report and moved on to the obituaries."
+      "text": "Philip crossed the kitchen and put his arms around her from behind, and she let him, and they stood like that for a long time while the radio finished its weather report and moved on to the obituaries.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/115.mp3"
     },
     {
       "t": "narrate",
-      "text": "The drip continued."
+      "text": "The drip continued.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/116.mp3"
     },
     {
       "t": "narrate",
-      "text": "The bird, the unidentifiable bird, resumed its chirping just outside the window."
+      "text": "The bird, the unidentifiable bird, resumed its chirping just outside the window.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/117.mp3"
     },
     {
       "t": "narrate",
@@ -519,23 +576,28 @@
     },
     {
       "t": "narrate",
-      "text": "For now it was just a picture."
+      "text": "For now it was just a picture.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/121.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish~]For now Philip and Mackenzie Roberts stood in their kitchen and held each other, and the small house they had cobbled together out of salvaged lumber and secondhand furniture and sheer stubbornness held them, and the leaky faucet kept time, and the world, outside, kept turning."
+      "text": "[shot:establish~]For now Philip and Mackenzie Roberts stood in their kitchen and held each other, and the small house they had cobbled together out of salvaged lumber and secondhand furniture and sheer stubbornness held them, and the leaky faucet kept time, and the world, outside, kept turning.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/122.mp3"
     },
     {
       "t": "narrate",
-      "text": "Kept turning. Kept leaking."
+      "text": "Kept turning. Kept leaking.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/123.mp3"
     },
     {
       "t": "narrate",
-      "text": "They would, in their time, keep patching the holes."
+      "text": "They would, in their time, keep patching the holes.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/124.mp3"
     },
     {
       "t": "narrate",
-      "text": "It was what they did."
+      "text": "It was what they did.",
+      "voice": "assets/audio/voice/vol5_ch6_lovers/125.mp3"
     },
     {
       "t": "end"

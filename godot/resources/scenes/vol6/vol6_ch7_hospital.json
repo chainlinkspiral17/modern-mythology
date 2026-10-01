@@ -35,11 +35,13 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:fluorescent_corridor]Maya is in the waiting room when Ben arrives."
+   "text": "[mood:fluorescent_corridor]Maya is in the waiting room when Ben arrives.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/006.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert coffee]She is in a chair against the back wall. She has, on her lap, a paper cup of coffee from the vending machine that she has not drunk. She is, when Ben comes through the door, very small."
+   "text": "[shot:insert coffee]She is in a chair against the back wall. She has, on her lap, a paper cup of coffee from the vending machine that she has not drunk. She is, when Ben comes through the door, very small.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/007.mp3"
   },
   {
    "t": "show",
@@ -49,173 +51,204 @@
   },
   {
    "t": "narrate",
-   "text": "Ben crosses the room."
+   "text": "Ben crosses the room.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/009.mp3"
   },
   {
    "t": "narrate",
-   "text": "He sits beside her."
+   "text": "He sits beside her.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/010.mp3"
   },
   {
    "t": "narrate",
-   "text": "He does not, immediately, say anything."
+   "text": "He does not, immediately, say anything.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/011.mp3"
   },
   {
    "t": "narrate",
-   "text": "After a moment, Maya leans her head against his shoulder."
+   "text": "After a moment, Maya leans her head against his shoulder.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/012.mp3"
   },
   {
    "t": "narrate",
-   "text": "Ben does not move."
+   "text": "Ben does not move.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/013.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup maya]After a long minute, Maya says, very quietly:"
+   "text": "[shot:closeup maya]After a long minute, Maya says, very quietly:",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/014.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "F.T. was right.",
-   "expr": "sad"
+   "expr": "sad",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/015.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/016.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "He didn't know it would be her.",
-   "expr": "sad"
+   "expr": "sad",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/017.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "I know.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/018.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "She's — she's going to be okay. They said the surgery is straightforward. She's seventy-one but she's strong. They said three weeks in rehab. Then home.",
-   "expr": "sad"
+   "expr": "sad",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/019.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "[shot:closeup person]Okay.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/020.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "Ben.",
-   "expr": "sad"
+   "expr": "sad",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/021.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/022.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "She fell because she was tired.",
-   "expr": "sad"
+   "expr": "sad",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/023.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/024.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "[shot:closeup maya~]She has been carrying this for thirty-seven years. Since 1989. Since my grandfather. She has — she has been holding it for thirty-seven years. And then I came, and then this week happened, and she — she let it down. She let it down enough to fall.",
-   "expr": "sad"
+   "expr": "sad",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/025.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "Maya. Letting it down is what she was supposed to do.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/026.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "I know.",
-   "expr": "sad"
+   "expr": "sad",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/027.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "[beat:still]She is not going to die.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/028.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "I know.",
-   "expr": "sad"
+   "expr": "sad",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/029.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "[shot:closeup person]She is going to be in a rehab facility for three weeks and then she is going to come home and you are going to make her tea every afternoon and she is going to teach you the Morse and you are going to sit with her at the radio and she is going to be okay.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/030.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "I know.",
-   "expr": "sad"
+   "expr": "sad",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/031.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "Maya.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/032.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "Yeah.",
-   "expr": "sad"
+   "expr": "sad",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/033.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "Where are you going to stay while she's in rehab.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/034.mp3"
   },
   {
    "t": "narrate",
-   "text": "A pause."
+   "text": "A pause.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/035.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "[shot:closeup person_b]I — I don't know. I haven't — the social worker came down. I told her I have a friend. I — I do not, technically, have a guardian alternate listed.",
-   "expr": "sad"
+   "expr": "sad",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/036.mp3"
   },
   {
    "t": "narrate",
-   "text": "Ben thinks for half a second."
+   "text": "Ben thinks for half a second.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/037.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "[shot:closeup ben]Stay at my house.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/038.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "Ben — ",
-   "expr": "surprised"
+   "expr": "surprised",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/039.mp3"
   },
   {
    "t": "say",
@@ -231,63 +264,75 @@
   },
   {
    "t": "narrate",
-   "text": "Maya is quiet for a moment."
+   "text": "Maya is quiet for a moment.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/042.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "[shot:closeup person]Are you sure.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/043.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "Maya.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/044.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "[shot:closeup person_b]Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/045.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "I am sure.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/046.mp3"
   },
   {
    "t": "narrate",
-   "text": "She exhales."
+   "text": "She exhales.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/047.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "Okay.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/048.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "Okay.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/049.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]They sit in the waiting room for another forty minutes."
+   "text": "[shot:establish]They sit in the waiting room for another forty minutes.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/050.mp3"
   },
   {
    "t": "narrate",
-   "text": "The surgeon comes out at twelve-twenty-eight AM. The surgery has gone well. Mrs. Caldwell is in recovery. She will be moved to a regular room in the morning. Maya will be able to see her at six."
+   "text": "The surgeon comes out at twelve-twenty-eight AM. The surgery has gone well. Mrs. Caldwell is in recovery. She will be moved to a regular room in the morning. Maya will be able to see her at six.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/051.mp3"
   },
   {
    "t": "narrate",
-   "text": "Maya, who has not slept, agrees to come home with Ben for a few hours."
+   "text": "Maya, who has not slept, agrees to come home with Ben for a few hours.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/052.mp3"
   },
   {
    "t": "narrate",
-   "text": "Ben drives her."
+   "text": "Ben drives her.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/053.mp3"
   },
   {
    "t": "hide",
@@ -315,7 +360,8 @@
   },
   {
    "t": "narrate",
-   "text": "What she says, when Maya comes through the door, is:"
+   "text": "What she says, when Maya comes through the door, is:",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/060.mp3"
   },
   {
    "t": "show",
@@ -333,31 +379,37 @@
    "t": "say",
    "char": "Anita Kowalski",
    "text": "[mood:kitchen_practical][shot:closeup anita]Sweetheart. There's a bed downstairs. There's a glass of water on the nightstand. There are clean clothes on the chair, my old t-shirt, you'll swim in it, that's fine. Bathroom is at the bottom of the stairs. We'll talk in the morning. Sleep.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/063.mp3"
   },
   {
    "t": "narrate",
-   "text": "Maya looks at her."
+   "text": "Maya looks at her.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/064.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "Thank you, Mrs. Kowalski.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/065.mp3"
   },
   {
    "t": "say",
    "char": "Anita Kowalski",
    "text": "Anita. Please.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/066.mp3"
   },
   {
    "t": "narrate",
-   "text": "Maya nods."
+   "text": "Maya nods.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/067.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]Maya goes downstairs."
+   "text": "[shot:establish]Maya goes downstairs.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/068.mp3"
   },
   {
    "t": "hide",
@@ -371,89 +423,105 @@
   },
   {
    "t": "narrate",
-   "text": "Ben stays in the kitchen."
+   "text": "Ben stays in the kitchen.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/071.mp3"
   },
   {
    "t": "narrate",
-   "text": "His mother looks at him."
+   "text": "His mother looks at him.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/072.mp3"
   },
   {
    "t": "say",
    "char": "Anita Kowalski",
    "text": "[shot:closeup person]Ben.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/073.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "Yeah, Ma.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/074.mp3"
   },
   {
    "t": "say",
    "char": "Anita Kowalski",
    "text": "You're going to need to tell me what's going on. Not tonight. In the next couple of days.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/075.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "Yeah. I know.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/076.mp3"
   },
   {
    "t": "say",
    "char": "Anita Kowalski",
    "text": "You're going to tell me everything.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/077.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "[shot:closeup person]Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/078.mp3"
   },
   {
    "t": "say",
    "char": "Anita Kowalski",
    "text": "You're going to tell me even if it scares me.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/079.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "Yeah, Ma.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/080.mp3"
   },
   {
    "t": "narrate",
-   "text": "She nods."
+   "text": "She nods.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/081.mp3"
   },
   {
    "t": "say",
    "char": "Anita Kowalski",
    "text": "Go to bed. I'm going to wait up for your dad. He's still at work. He's going to want to know the kid is okay.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/082.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "text": "[shot:closeup person]She is, Ma. She's okay. They both are.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/083.mp3"
   },
   {
    "t": "say",
    "char": "Anita Kowalski",
    "text": "[shot:closeup person_b]Good.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/084.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]He hugs her."
+   "text": "[shot:establish]He hugs her.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/085.mp3"
   },
   {
    "t": "narrate",
-   "text": "He goes upstairs to bed."
+   "text": "He goes upstairs to bed.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/086.mp3"
   },
   {
    "t": "hide",
@@ -473,15 +541,18 @@
   },
   {
    "t": "narrate",
-   "text": "Outside, the Texas night does its small late-Saturday work."
+   "text": "Outside, the Texas night does its small late-Saturday work.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/091.mp3"
   },
   {
    "t": "narrate",
-   "text": "In Maya's grandmother's house, three blocks away, the shortwave radio sits dark, untouched, for the first night in five days."
+   "text": "In Maya's grandmother's house, three blocks away, the shortwave radio sits dark, untouched, for the first night in five days.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/092.mp3"
   },
   {
    "t": "narrate",
-   "text": "In a hospital recovery room, Linda Caldwell sleeps the patient sleep of a woman who has just, for the first time in thirty-seven years, allowed her own body to fail — and who is, in the failure, also being permitted, for the first time in thirty-seven years, to rest."
+   "text": "In a hospital recovery room, Linda Caldwell sleeps the patient sleep of a woman who has just, for the first time in thirty-seven years, allowed her own body to fail — and who is, in the failure, also being permitted, for the first time in thirty-seven years, to rest.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/093.mp3"
   },
   {
    "t": "narrate",
@@ -489,7 +560,8 @@
   },
   {
    "t": "narrate",
-   "text": "Henderson is on the couch in the living room with his wife, who has not, this evening, been able to bring herself to leave him alone in their bed and who, instead, has decided they are sleeping out here, together, with the lamp on, until the new arrangement settles."
+   "text": "Henderson is on the couch in the living room with his wife, who has not, this evening, been able to bring herself to leave him alone in their bed and who, instead, has decided they are sleeping out here, together, with the lamp on, until the new arrangement settles.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/095.mp3"
   },
   {
    "t": "narrate",
@@ -501,11 +573,13 @@
   },
   {
    "t": "narrate",
-   "text": "He sits at his workbench. He looks at the silver-spoon riverboat in its glass case. He thinks, Linda. Good for you, kid."
+   "text": "He sits at his workbench. He looks at the silver-spoon riverboat in its glass case. He thinks, Linda. Good for you, kid.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/098.mp3"
   },
   {
    "t": "narrate",
-   "text": "He goes back to work."
+   "text": "He goes back to work.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/099.mp3"
   },
   {
    "t": "narrate",
@@ -517,35 +591,43 @@
   },
   {
    "t": "narrate",
-   "text": "Eileen and Jim, on the couch."
+   "text": "Eileen and Jim, on the couch.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/102.mp3"
   },
   {
    "t": "narrate",
-   "text": "Maya and her grandmother, across the city, tethered by a phone line that is not, at this hour, ringing."
+   "text": "Maya and her grandmother, across the city, tethered by a phone line that is not, at this hour, ringing.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/103.mp3"
   },
   {
    "t": "narrate",
-   "text": "Sam, in her cornflower blue bedroom, asleep, with her father's text from ten minutes ago — love you, Sammy. tomorrow we drive to the lake. early. bring a jacket. — face-up on her dresser."
+   "text": "Sam, in her cornflower blue bedroom, asleep, with her father's text from ten minutes ago — love you, Sammy. tomorrow we drive to the lake. early. bring a jacket. — face-up on her dresser.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/104.mp3"
   },
   {
    "t": "narrate",
-   "text": "Ben and Maya, in two rooms of the same house, both, finally, asleep."
+   "text": "Ben and Maya, in two rooms of the same house, both, finally, asleep.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/105.mp3"
   },
   {
    "t": "narrate",
-   "text": "Diego and his mother, at the safehouse, both asleep in the same bed."
+   "text": "Diego and his mother, at the safehouse, both asleep in the same bed.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/106.mp3"
   },
   {
    "t": "narrate",
-   "text": "The town hums."
+   "text": "The town hums.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/107.mp3"
   },
   {
    "t": "narrate",
-   "text": "The summer continues."
+   "text": "The summer continues.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/108.mp3"
   },
   {
    "t": "narrate",
-   "text": "The week, somehow — against pressure, against every reasonable expectation — has not killed any of them."
+   "text": "The week, somehow — against pressure, against every reasonable expectation — has not killed any of them.",
+   "voice": "assets/audio/voice/vol6_ch7_hospital/109.mp3"
   },
   {
    "t": "end"

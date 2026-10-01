@@ -29,11 +29,13 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:day_bright][shot:insert sedan~]The white sedan is parked in the lot when Sam comes out."
+      "text": "[mood:day_bright][shot:insert sedan~]The white sedan is parked in the lot when Sam comes out.",
+      "voice": "assets/audio/voice/vol6_ch3_parking_lot/005.mp3"
     },
     {
       "t": "narrate",
-      "text": "The driver — the woman with the HOUSTON CHRONICLE lanyard — is alone. She does not make eye contact as Sam crosses the lot. She is reading something on a tablet."
+      "text": "The driver — the woman with the HOUSTON CHRONICLE lanyard — is alone. She does not make eye contact as Sam crosses the lot. She is reading something on a tablet.",
+      "voice": "assets/audio/voice/vol6_ch3_parking_lot/006.mp3"
     },
     {
       "t": "show",
@@ -43,7 +45,8 @@
     },
     {
       "t": "narrate",
-      "text": "Sam gets into the Corolla. She pulls out. She does not look at the sedan as she passes. In the rearview, just before she turns onto Linden, she sees the sedan pull out behind her."
+      "text": "Sam gets into the Corolla. She pulls out. She does not look at the sedan as she passes. In the rearview, just before she turns onto Linden, she sees the sedan pull out behind her.",
+      "voice": "assets/audio/voice/vol6_ch3_parking_lot/008.mp3"
     },
     {
       "t": "narrate",
@@ -55,7 +58,8 @@
     },
     {
       "t": "narrate",
-      "text": "When Sam parks at the Kwik Stop, the sedan does not park. It drives past, turns at the next intersection, and is gone."
+      "text": "When Sam parks at the Kwik Stop, the sedan does not park. It drives past, turns at the next intersection, and is gone.",
+      "voice": "assets/audio/voice/vol6_ch3_parking_lot/011.mp3"
     },
     {
       "t": "bg",
@@ -69,85 +73,100 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup jen]Sam goes inside. Jen is at the register. Jen sees her."
+      "text": "[shot:closeup jen]Sam goes inside. Jen is at the register. Jen sees her.",
+      "voice": "assets/audio/voice/vol6_ch3_parking_lot/014.mp3"
     },
     {
       "t": "say",
       "char": "Jen",
       "expr": "neutral",
-      "text": "\"You're not on.\""
+      "text": "\"You're not on.\"",
+      "voice": "assets/audio/voice/vol6_ch3_parking_lot/015.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "expr": "neutral",
-      "text": "\"I know.\""
+      "text": "\"I know.\"",
+      "voice": "assets/audio/voice/vol6_ch3_parking_lot/016.mp3"
     },
     {
       "t": "say",
       "char": "Jen",
       "expr": "neutral",
-      "text": "\"You want a shift?\""
+      "text": "\"You want a shift?\"",
+      "voice": "assets/audio/voice/vol6_ch3_parking_lot/017.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "expr": "neutral",
-      "text": "\"No. I want a slushie. Blue.\""
+      "text": "\"No. I want a slushie. Blue.\"",
+      "voice": "assets/audio/voice/vol6_ch3_parking_lot/018.mp3"
     },
     {
       "t": "narrate",
-      "text": "Jen looks at her for a long moment."
+      "text": "Jen looks at her for a long moment.",
+      "voice": "assets/audio/voice/vol6_ch3_parking_lot/019.mp3"
     },
     {
       "t": "say",
       "char": "Jen",
       "expr": "neutral",
-      "text": "\"On the house.\""
+      "text": "\"On the house.\"",
+      "voice": "assets/audio/voice/vol6_ch3_parking_lot/020.mp3"
     },
     {
       "t": "narrate",
-      "text": "Sam makes the slushie. She pays anyway — a dollar seventy-nine in cash. Jen takes it without comment. Jen puts the cash in her tip cup instead of the register."
+      "text": "Sam makes the slushie. She pays anyway — a dollar seventy-nine in cash. Jen takes it without comment. Jen puts the cash in her tip cup instead of the register.",
+      "voice": "assets/audio/voice/vol6_ch3_parking_lot/021.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert slushie]Sam drinks the slushie at one of the three tables by the window. She reads the day-old paper Jen has folded there. The paper is running a feature on local high school sports banquets."
+      "text": "[shot:insert slushie]Sam drinks the slushie at one of the three tables by the window. She reads the day-old paper Jen has folded there. The paper is running a feature on local high school sports banquets.",
+      "voice": "assets/audio/voice/vol6_ch3_parking_lot/022.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]At 12:31, her phone buzzes."
+      "text": "[shot:insert phone]At 12:31, her phone buzzes.",
+      "voice": "assets/audio/voice/vol6_ch3_parking_lot/023.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "role": "— text · 12:31 —",
       "expr": "neutral",
-      "text": "Where you at, Sammy?"
+      "text": "Where you at, Sammy?",
+      "voice": "assets/audio/voice/vol6_ch3_parking_lot/024.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "role": "— text —",
       "expr": "neutral",
-      "text": "Kwik Stop. Got a slushie."
+      "text": "Kwik Stop. Got a slushie.",
+      "voice": "assets/audio/voice/vol6_ch3_parking_lot/025.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "role": "— text —",
       "expr": "neutral",
-      "text": "Okay. Be careful driving home. Lot of construction on Linden."
+      "text": "Okay. Be careful driving home. Lot of construction on Linden.",
+      "voice": "assets/audio/voice/vol6_ch3_parking_lot/026.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "role": "— text —",
       "expr": "neutral",
-      "text": "Will do."
+      "text": "Will do.",
+      "voice": "assets/audio/voice/vol6_ch3_parking_lot/027.mp3"
     },
     {
       "t": "narrate",
-      "text": "She finishes the slushie. She drops the cup in the trash. She waves at Jen. She leaves."
+      "text": "She finishes the slushie. She drops the cup in the trash. She waves at Jen. She leaves.",
+      "voice": "assets/audio/voice/vol6_ch3_parking_lot/028.mp3"
     },
     {
       "t": "hide",
@@ -155,20 +174,24 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:macro_haze][shot:insert van]There is no construction on Linden. She drives it anyway. She notices, at the intersection with Fifth, a NexCorp van parked at the corner lot of a dental office that is closed on Tuesdays. The van's engine is running. The van is facing her direction."
+      "text": "[mood:macro_haze][shot:insert van]There is no construction on Linden. She drives it anyway. She notices, at the intersection with Fifth, a NexCorp van parked at the corner lot of a dental office that is closed on Tuesdays. The van's engine is running. The van is facing her direction.",
+      "voice": "assets/audio/voice/vol6_ch3_parking_lot/030.mp3"
     },
     {
       "t": "narrate",
-      "text": "She does not slow down. She does not speed up. She drives the posted limit."
+      "text": "She does not slow down. She does not speed up. She drives the posted limit.",
+      "voice": "assets/audio/voice/vol6_ch3_parking_lot/031.mp3"
     },
     {
       "t": "think",
       "char": "Sam",
-      "text": "Maya is right. I am going to be fast when I decide. I am not deciding today."
+      "text": "Maya is right. I am going to be fast when I decide. I am not deciding today.",
+      "voice": "assets/audio/voice/vol6_ch3_parking_lot/032.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]She drives home."
+      "text": "[shot:establish]She drives home.",
+      "voice": "assets/audio/voice/vol6_ch3_parking_lot/033.mp3"
     },
     {
       "t": "jump",

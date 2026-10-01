@@ -33,11 +33,13 @@
     },
     {
       "t": "narrate",
-      "text": "The stove is doing the thing it always does on Friday nights, which is roast something — tonight, a chicken — in the cast-iron, with potatoes and carrots and an entire head of garlic that her mother breaks open with the back of a knife and tucks into the bottom of the pan."
+      "text": "The stove is doing the thing it always does on Friday nights, which is roast something — tonight, a chicken — in the cast-iron, with potatoes and carrots and an entire head of garlic that her mother breaks open with the back of a knife and tucks into the bottom of the pan.",
+      "voice": "assets/audio/voice/vol6_ch6_miller_kitchen/006.mp3"
     },
     {
       "t": "narrate",
-      "text": "Her father is at the table. He is not in uniform. He is in jeans and the plaid shirt he wears when he is not, technically, performing as the Chief."
+      "text": "Her father is at the table. He is not in uniform. He is in jeans and the plaid shirt he wears when he is not, technically, performing as the Chief.",
+      "voice": "assets/audio/voice/vol6_ch6_miller_kitchen/007.mp3"
     },
     {
       "t": "show",
@@ -63,43 +65,50 @@
       "t": "say",
       "char": "Chief Miller",
       "text": "Hey, Sammy.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_miller_kitchen/012.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "Hey, Dad.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_miller_kitchen/013.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "text": "Long day.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_miller_kitchen/014.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "[shot:closeup person]Yeah. Yours?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_miller_kitchen/015.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "text": "[shot:closeup person]Long.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_miller_kitchen/016.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "You good?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_miller_kitchen/017.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "text": "Yeah, Sammy. I'm good.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_miller_kitchen/018.mp3"
     },
     {
       "t": "narrate",
@@ -123,7 +132,8 @@
     },
     {
       "t": "narrate",
-      "text": "He smiles. The smile is small and tired and real."
+      "text": "He smiles. The smile is small and tired and real.",
+      "voice": "assets/audio/voice/vol6_ch6_miller_kitchen/024.mp3"
     },
     {
       "t": "narrate",
@@ -141,47 +151,56 @@
     },
     {
       "t": "narrate",
-      "text": "Sam's mother answers it. She listens for a moment."
+      "text": "Sam's mother answers it. She listens for a moment.",
+      "voice": "assets/audio/voice/vol6_ch6_miller_kitchen/028.mp3"
     },
     {
       "t": "say",
       "char": "Sam's Mom",
       "text": "Yes. He's right here.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_miller_kitchen/029.mp3"
     },
     {
       "t": "narrate",
-      "text": "She holds the phone out to Sam's father. He takes it."
+      "text": "She holds the phone out to Sam's father. He takes it.",
+      "voice": "assets/audio/voice/vol6_ch6_miller_kitchen/030.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "text": "Miller.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_miller_kitchen/031.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup miller]He listens. His face — Sam, watching, can see — does the small thing it does when a man has been told a thing he had not, until that moment, been certain whether he would be told."
+      "text": "[shot:closeup miller]He listens. His face — Sam, watching, can see — does the small thing it does when a man has been told a thing he had not, until that moment, been certain whether he would be told.",
+      "voice": "assets/audio/voice/vol6_ch6_miller_kitchen/032.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "text": "Okay. Thank you for letting me know.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_miller_kitchen/033.mp3"
     },
     {
       "t": "narrate",
-      "text": "He hangs up. He sits down."
+      "text": "He hangs up. He sits down.",
+      "voice": "assets/audio/voice/vol6_ch6_miller_kitchen/034.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "text": "That was Hernando. They got him. The Ramos kid. He's at a safehouse. He's banged up but he's going to be fine. The mother and the grandmother have been told. They're with him now.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_miller_kitchen/035.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup mrs_miller]Her mother, at the stove, leans against the counter, and lets the breath out she has been holding all afternoon."
+      "text": "[shot:closeup mrs_miller]Her mother, at the stove, leans against the counter, and lets the breath out she has been holding all afternoon.",
+      "voice": "assets/audio/voice/vol6_ch6_miller_kitchen/036.mp3"
     },
     {
       "t": "say",
@@ -199,23 +218,27 @@
       "t": "say",
       "char": "Sam",
       "text": "Dad. Thank you.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_miller_kitchen/039.mp3"
     },
     {
       "t": "say",
       "char": "Chief Miller",
       "text": "Sammy. I'm sorry.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch6_miller_kitchen/040.mp3"
     },
     {
       "t": "say",
       "char": "Sam",
       "text": "I know.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch6_miller_kitchen/041.mp3"
     },
     {
       "t": "narrate",
-      "text": "They eat the rest of the chicken. The chicken is, Sam will later remember as the second-best her mother ever made. The best is the one she will make on the Sunday night before the arraignment. But they do not, tonight, know about Sunday yet. Tonight, they eat."
+      "text": "They eat the rest of the chicken. The chicken is, Sam will later remember as the second-best her mother ever made. The best is the one she will make on the Sunday night before the arraignment. But they do not, tonight, know about Sunday yet. Tonight, they eat.",
+      "voice": "assets/audio/voice/vol6_ch6_miller_kitchen/042.mp3"
     },
     {
       "t": "hide",

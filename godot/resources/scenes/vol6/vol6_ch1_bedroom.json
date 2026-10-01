@@ -21,46 +21,56 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:dusk]She goes inside. She goes upstairs. She closes her bedroom door. She sits on the edge of her bed. Her phone buzzes. Graciela Ramos: You came home okay? Sam types back: Yes. Talking to him tomorrow. Sleep tonight."
+      "text": "[mood:dusk]She goes inside. She goes upstairs. She closes her bedroom door. She sits on the edge of her bed. Her phone buzzes. Graciela Ramos: You came home okay? Sam types back: Yes. Talking to him tomorrow. Sleep tonight.",
+      "voice": "assets/audio/voice/vol6_ch1_bedroom/003.mp3"
     },
     {
       "t": "narrate",
-      "text": "She looks around her cornflower blue bedroom. The fan is still going. The fan still clicks on the third rotation, then the sixth, then the ninth. She watches the fan. She counts the clicks."
+      "text": "She looks around her cornflower blue bedroom. The fan is still going. The fan still clicks on the third rotation, then the sixth, then the ninth. She watches the fan. She counts the clicks.",
+      "voice": "assets/audio/voice/vol6_ch1_bedroom/004.mp3"
     },
     {
       "t": "think",
       "char": "Sam",
-      "text": "[shot:closeup sam]I am going to learn how to listen."
+      "text": "[shot:closeup sam]I am going to learn how to listen.",
+      "voice": "assets/audio/voice/vol6_ch1_bedroom/005.mp3"
     },
     {
       "t": "think",
       "char": "Sam",
-      "text": "I am going to learn how to be my dad's daughter in a house where my dad is doing something he has not told me about."
+      "text": "I am going to learn how to be my dad's daughter in a house where my dad is doing something he has not told me about.",
+      "voice": "assets/audio/voice/vol6_ch1_bedroom/006.mp3"
     },
     {
       "t": "think",
       "char": "Sam",
-      "text": "I am going to find Diego."
+      "text": "I am going to find Diego.",
+      "voice": "assets/audio/voice/vol6_ch1_bedroom/007.mp3"
     },
     {
       "t": "narrate",
-      "text": "Somewhere below the thinking — in the quiet part where decisions get made before language gets to them — the decision is there. Whatever this costs, I am going to pay it."
+      "text": "Somewhere below the thinking — in the quiet part where decisions get made before language gets to them — the decision is there. Whatever this costs, I am going to pay it.",
+      "voice": "assets/audio/voice/vol6_ch1_bedroom/008.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert window]She stands. She crosses to the window. She looks out at the cul-de-sac. Nothing is happening on the cul-de-sac. The sprinklers are off. The lawns are green. The NexCorp logo on the mailbox across the street catches the late-afternoon light."
+      "text": "[shot:insert window]She stands. She crosses to the window. She looks out at the cul-de-sac. Nothing is happening on the cul-de-sac. The sprinklers are off. The lawns are green. The NexCorp logo on the mailbox across the street catches the late-afternoon light.",
+      "voice": "assets/audio/voice/vol6_ch1_bedroom/009.mp3"
     },
     {
       "t": "narrate",
-      "text": "A black cat — small, unregistered — crosses the far end of the cul-de-sac at a measured walk. Sam watches it until it is gone. She does not know why, but she feels, watching it go, that she has been seen. Seen, and counted, and acknowledged."
+      "text": "A black cat — small, unregistered — crosses the far end of the cul-de-sac at a measured walk. Sam watches it until it is gone. She does not know why, but she feels, watching it go, that she has been seen. Seen, and counted, and acknowledged.",
+      "voice": "assets/audio/voice/vol6_ch1_bedroom/010.mp3"
     },
     {
       "t": "narrate",
-      "text": "[mood:macro_haze][shot:establish~]Somewhere beneath the subdivision, the hum of the water tower begins its evening cycle — below human hearing, but felt, if you were listening the way Maya Daigle had been learning to listen, in the teeth. The dogs on Meadowlark bark once. They fall silent."
+      "text": "[mood:macro_haze][shot:establish~]Somewhere beneath the subdivision, the hum of the water tower begins its evening cycle — below human hearing, but felt, if you were listening the way Maya Daigle had been learning to listen, in the teeth. The dogs on Meadowlark bark once. They fall silent.",
+      "voice": "assets/audio/voice/vol6_ch1_bedroom/011.mp3"
     },
     {
       "t": "narrate",
-      "text": "The summer, as promised, has begun."
+      "text": "The summer, as promised, has begun.",
+      "voice": "assets/audio/voice/vol6_ch1_bedroom/012.mp3"
     },
     {
       "t": "narrate",

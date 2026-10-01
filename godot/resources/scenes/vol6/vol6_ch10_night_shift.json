@@ -29,7 +29,8 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:fluorescent_corridor][shot:insert pallet]The pallet is heavier than it should be because somebody on the day side packed it wrong."
+      "text": "[mood:fluorescent_corridor][shot:insert pallet]The pallet is heavier than it should be because somebody on the day side packed it wrong.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/005.mp3"
     },
     {
       "t": "narrate",
@@ -57,41 +58,48 @@
     },
     {
       "t": "narrate",
-      "text": "Marisol, three pallets up the aisle, glances back without lifting her head."
+      "text": "Marisol, three pallets up the aisle, glances back without lifting her head.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/011.mp3"
     },
     {
       "t": "say",
       "char": "Marisol",
       "text": "[shot:closeup person]Day side?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/012.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/013.mp3"
     },
     {
       "t": "say",
       "char": "Marisol",
       "text": "Carl again, probably. Carl has been stacking like that since June.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/014.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Should somebody — ",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/015.mp3"
     },
     {
       "t": "say",
       "char": "Marisol",
       "text": "I've told Jessa. Jessa has told Don. Don has told Carl. Carl will, by September, learn. Carl is fifty-eight years old, Diego. Don't hold your breath.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/016.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]She returns to her cans."
+      "text": "[shot:establish]She returns to her cans.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/017.mp3"
     },
     {
       "t": "narrate",
@@ -107,7 +115,8 @@
     },
     {
       "t": "narrate",
-      "text": "The fluorescent over Aisle Seven hums."
+      "text": "The fluorescent over Aisle Seven hums.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/021.mp3"
     },
     {
       "t": "narrate",
@@ -127,7 +136,8 @@
     },
     {
       "t": "narrate",
-      "text": "He pulls another case of stewed tomatoes."
+      "text": "He pulls another case of stewed tomatoes.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/026.mp3"
     },
     {
       "t": "narrate",
@@ -155,11 +165,13 @@
     },
     {
       "t": "narrate",
-      "text": "Diego does not, while pulling stewed tomatoes, look at BT."
+      "text": "Diego does not, while pulling stewed tomatoes, look at BT.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/033.mp3"
     },
     {
       "t": "narrate",
-      "text": "He has been not-looking at BT for some weeks now."
+      "text": "He has been not-looking at BT for some weeks now.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/034.mp3"
     },
     {
       "t": "show",
@@ -185,25 +197,29 @@
     },
     {
       "t": "narrate",
-      "text": "She passes Diego."
+      "text": "She passes Diego.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/040.mp3"
     },
     {
       "t": "say",
       "char": "Jessa",
       "text": "Pallet was heavy.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/041.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "[shot:closeup person]Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/042.mp3"
     },
     {
       "t": "say",
       "char": "Jessa",
       "text": "You had the corner wide. Good.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/043.mp3"
     },
     {
       "t": "hide",
@@ -211,7 +227,8 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_b]She keeps moving."
+      "text": "[shot:establish_b]She keeps moving.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/045.mp3"
     },
     {
       "t": "narrate",
@@ -251,7 +268,8 @@
     },
     {
       "t": "narrate",
-      "text": "He pulls another case of stewed tomatoes."
+      "text": "He pulls another case of stewed tomatoes.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/055.mp3"
     },
     {
       "t": "hide",
@@ -263,7 +281,8 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]In dairy, where the cooler door has been propped open with a milk crate because the lock has been sticking since July and the maintenance ticket has been sitting in the manager's office unread, Doug is restocking the half-gallons."
+      "text": "[shot:establish]In dairy, where the cooler door has been propped open with a milk crate because the lock has been sticking since July and the maintenance ticket has been sitting in the manager's office unread, Doug is restocking the half-gallons.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/058.mp3"
     },
     {
       "t": "show",
@@ -293,11 +312,13 @@
     },
     {
       "t": "narrate",
-      "text": "He is, this summer, on his twelfth."
+      "text": "He is, this summer, on his twelfth.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/065.mp3"
     },
     {
       "t": "narrate",
-      "text": "He is, this week, in Book Six. Father Zosima."
+      "text": "He is, this week, in Book Six. Father Zosima.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/066.mp3"
     },
     {
       "t": "show",
@@ -315,59 +336,70 @@
     },
     {
       "t": "narrate",
-      "text": "Doug straightens up."
+      "text": "Doug straightens up.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/070.mp3"
     },
     {
       "t": "say",
       "char": "Doug",
       "text": "[shot:closeup person]Stack the yogurt on the empty pallet by receiving. Tag them with a shelf-pending. Jessa will route them in the morning.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/071.mp3"
     },
     {
       "t": "narrate",
-      "text": "BT looks at him."
+      "text": "BT looks at him.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/072.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "I asked Russell. Russell said put them in the back of the cooler.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/073.mp3"
     },
     {
       "t": "narrate",
-      "text": "Doug considers this."
+      "text": "Doug considers this.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/074.mp3"
     },
     {
       "t": "say",
       "char": "Doug",
       "text": "Russell told you to put yogurt in the back of the cooler.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/075.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "[shot:closeup person]Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/076.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup doug]Doug looks at BT for a beat too long."
+      "text": "[shot:closeup doug]Doug looks at BT for a beat too long.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/077.mp3"
     },
     {
       "t": "say",
       "char": "Doug",
       "text": "Yogurt doesn't go in the cooler. Yogurt goes in the case. The case is full. Stack them on the pallet. Tag them. Jessa in the morning.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/078.mp3"
     },
     {
       "t": "narrate",
-      "text": "BT does not move."
+      "text": "BT does not move.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/079.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "Why would Russell tell me to put them in the cooler if they don't go in the cooler.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/080.mp3"
     },
     {
       "t": "narrate",
@@ -379,7 +411,8 @@
     },
     {
       "t": "narrate",
-      "text": "BT stands at the end of the aisle for another six seconds."
+      "text": "BT stands at the end of the aisle for another six seconds.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/083.mp3"
     },
     {
       "t": "hide",
@@ -387,7 +420,8 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish_c]Then BT turns and walks back toward receiving, with the two cases of yogurt, in the slow careful way of a young man who has just been answered with a silence he is choosing, for now, to interpret as a misunderstanding rather than as a refusal."
+      "text": "[shot:establish_c]Then BT turns and walks back toward receiving, with the two cases of yogurt, in the slow careful way of a young man who has just been answered with a silence he is choosing, for now, to interpret as a misunderstanding rather than as a refusal.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/085.mp3"
     },
     {
       "t": "show",
@@ -397,15 +431,18 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup diego]Diego, two aisles over in canned vegetables, has heard the whole exchange because the store is quiet and because dairy is acoustically connected to canned vegetables by the long open ceiling that runs above the back third of the building."
+      "text": "[shot:closeup diego]Diego, two aisles over in canned vegetables, has heard the whole exchange because the store is quiet and because dairy is acoustically connected to canned vegetables by the long open ceiling that runs above the back third of the building.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/087.mp3"
     },
     {
       "t": "narrate",
-      "text": "He does not, at the time, do anything with what he heard."
+      "text": "He does not, at the time, do anything with what he heard.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/088.mp3"
     },
     {
       "t": "narrate",
-      "text": "He files it."
+      "text": "He files it.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/089.mp3"
     },
     {
       "t": "hide",
@@ -421,7 +458,8 @@
     },
     {
       "t": "narrate",
-      "text": "The four AM break is in the break room."
+      "text": "The four AM break is in the break room.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/093.mp3"
     },
     {
       "t": "narrate",
@@ -473,7 +511,8 @@
     },
     {
       "t": "narrate",
-      "text": "Jessa comes in at four oh-three."
+      "text": "Jessa comes in at four oh-three.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/104.mp3"
     },
     {
       "t": "narrate",
@@ -485,37 +524,43 @@
     },
     {
       "t": "narrate",
-      "text": "She passes Marisol."
+      "text": "She passes Marisol.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/107.mp3"
     },
     {
       "t": "say",
       "char": "Jessa",
       "text": "[shot:closeup person]Inventory Friday.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/108.mp3"
     },
     {
       "t": "say",
       "char": "Marisol",
       "text": "I know, Jess.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/109.mp3"
     },
     {
       "t": "say",
       "char": "Jessa",
       "text": "Day side is sending three. Don't let them put the day-side three on cereal. Day side has been bad on cereal all summer. Put them on frozen and produce.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/110.mp3"
     },
     {
       "t": "say",
       "char": "Marisol",
       "text": "Got it.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/111.mp3"
     },
     {
       "t": "say",
       "char": "Jessa",
       "text": "BT.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/112.mp3"
     },
     {
       "t": "show",
@@ -525,33 +570,39 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]BT looks up."
+      "text": "[shot:establish]BT looks up.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/114.mp3"
     },
     {
       "t": "say",
       "char": "Jessa",
       "text": "You're inventory-ready?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/115.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/116.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup jessa]Jessa looks at him for a beat that is not, externally, longer than her standard beat, but that Diego — who has been watching Jessa look at people for five weeks — registers as one of her longer ones."
+      "text": "[shot:closeup jessa]Jessa looks at him for a beat that is not, externally, longer than her standard beat, but that Diego — who has been watching Jessa look at people for five weeks — registers as one of her longer ones.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/117.mp3"
     },
     {
       "t": "say",
       "char": "Jessa",
       "text": "Good. Sleep this week. Sleep is the thing.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/118.mp3"
     },
     {
       "t": "narrate",
-      "text": "She finishes her coffee."
+      "text": "She finishes her coffee.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/119.mp3"
     },
     {
       "t": "hide",
@@ -559,39 +610,46 @@
     },
     {
       "t": "narrate",
-      "text": "She leaves."
+      "text": "She leaves.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/121.mp3"
     },
     {
       "t": "narrate",
-      "text": "The break room is quiet for a long moment."
+      "text": "The break room is quiet for a long moment.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/122.mp3"
     },
     {
       "t": "say",
       "char": "Marisol",
       "text": "[shot:closeup person_b]Friday is going to be a thing.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/123.mp3"
     },
     {
       "t": "say",
       "char": "Russell",
       "text": "Friday is always a thing.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/124.mp3"
     },
     {
       "t": "say",
       "char": "Marisol",
       "text": "Friday is going to be a bigger thing. Day side is sending Carl and Don and Patty. Patty is good. Carl and Don are not. We're going to be carrying.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/125.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Russell turns the page."
+      "text": "[shot:establish]Russell turns the page.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/126.mp3"
     },
     {
       "t": "say",
       "char": "Russell",
       "text": "We always carry.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/127.mp3"
     },
     {
       "t": "narrate",
@@ -605,39 +663,46 @@
       "t": "say",
       "char": "BT",
       "text": "I've never done a chain inventory.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/130.mp3"
     },
     {
       "t": "say",
       "char": "Marisol",
       "text": "[shot:closeup person]You'll be fine, hon. It's just counting.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/131.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "[shot:closeup person]I did one in — I did one a few years back. At a hardware store. It went late.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/132.mp3"
     },
     {
       "t": "say",
       "char": "Russell",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/133.mp3"
     },
     {
       "t": "say",
       "char": "Marisol",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/134.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert paperback]Doug, on his chair against the wall, turns a page of the Karamazov."
+      "text": "[shot:insert paperback]Doug, on his chair against the wall, turns a page of the Karamazov.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/135.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego watches the room."
+      "text": "Diego watches the room.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/136.mp3"
     },
     {
       "t": "narrate",
@@ -653,33 +718,40 @@
     },
     {
       "t": "narrate",
-      "text": "BT does not, in the moment, register this."
+      "text": "BT does not, in the moment, register this.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/140.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "[shot:closeup person_b]It went till noon. The hardware-store one.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/141.mp3"
     },
     {
       "t": "narrate",
-      "text": "Russell turns the page."
+      "text": "Russell turns the page.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/142.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]The room does not respond."
+      "text": "[shot:establish]The room does not respond.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/143.mp3"
     },
     {
       "t": "narrate",
-      "text": "BT, after another beat, returns to his phone."
+      "text": "BT, after another beat, returns to his phone.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/144.mp3"
     },
     {
       "t": "narrate",
-      "text": "The break ends at four eighteen."
+      "text": "The break ends at four eighteen.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/145.mp3"
     },
     {
       "t": "narrate",
-      "text": "The team goes back out onto the floor."
+      "text": "The team goes back out onto the floor.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/146.mp3"
     },
     {
       "t": "hide",
@@ -705,7 +777,8 @@
     },
     {
       "t": "narrate",
-      "text": "In Aisle Nine, which is paper goods, Diego restocks toilet paper."
+      "text": "In Aisle Nine, which is paper goods, Diego restocks toilet paper.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/152.mp3"
     },
     {
       "t": "narrate",
@@ -717,7 +790,8 @@
     },
     {
       "t": "narrate",
-      "text": "He works."
+      "text": "He works.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/155.mp3"
     },
     {
       "t": "narrate",
@@ -737,7 +811,8 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup diego]His mind, at four thirty-one AM on this Tuesday, is on Sam."
+      "text": "[shot:closeup diego]His mind, at four thirty-one AM on this Tuesday, is on Sam.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/160.mp3"
     },
     {
       "t": "narrate",
@@ -749,15 +824,18 @@
     },
     {
       "t": "narrate",
-      "text": "He has, of the eleven, replied to four."
+      "text": "He has, of the eleven, replied to four.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/163.mp3"
     },
     {
       "t": "narrate",
-      "text": "He has been thinking, since he clocked in at ten, about whether to reply to this one."
+      "text": "He has been thinking, since he clocked in at ten, about whether to reply to this one.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/164.mp3"
     },
     {
       "t": "narrate",
-      "text": "The reply he is composing, in the back of his head while his hands restock the double-rolls, is: hey. love u too. sorry i've been quiet. it's just the shift."
+      "text": "The reply he is composing, in the back of his head while his hands restock the double-rolls, is: hey. love u too. sorry i've been quiet. it's just the shift.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/165.mp3"
     },
     {
       "t": "narrate",
@@ -773,52 +851,64 @@
     },
     {
       "t": "narrate",
-      "text": "He has not, this summer, told her this."
+      "text": "He has not, this summer, told her this.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/169.mp3"
     },
     {
       "t": "narrate",
-      "text": "He has, this summer, told himself that the not-telling is a kindness. He has, this summer, also told himself that the not-telling is a cruelty. He has, this summer, alternated between the two readings on a roughly weekly cycle."
+      "text": "He has, this summer, told himself that the not-telling is a kindness. He has, this summer, also told himself that the not-telling is a cruelty. He has, this summer, alternated between the two readings on a roughly weekly cycle.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/170.mp3"
     },
     {
       "t": "narrate",
-      "text": "Tonight is, by his internal clock, a kindness night."
+      "text": "Tonight is, by his internal clock, a kindness night.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/171.mp3"
     },
     {
       "t": "narrate",
-      "text": "He shelves the last twelve-pack."
+      "text": "He shelves the last twelve-pack.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/172.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]He takes his phone out of his back pocket."
+      "text": "[shot:insert phone]He takes his phone out of his back pocket.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/173.mp3"
     },
     {
       "t": "think",
       "char": "Diego",
-      "text": "hey. love u too. sorry i've been quiet. it's just the shift."
+      "text": "hey. love u too. sorry i've been quiet. it's just the shift.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/174.mp3"
     },
     {
       "t": "narrate",
-      "text": "He hits send."
+      "text": "He hits send.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/175.mp3"
     },
     {
       "t": "narrate",
-      "text": "He puts the phone back."
+      "text": "He puts the phone back.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/176.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert pallet]He breaks down the empty case, flat-packs it into the cardboard bale at the end of the aisle, and walks the empty hand truck back toward receiving for the next pallet."
+      "text": "[shot:insert pallet]He breaks down the empty case, flat-packs it into the cardboard bale at the end of the aisle, and walks the empty hand truck back toward receiving for the next pallet.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/177.mp3"
     },
     {
       "t": "narrate",
-      "text": "His phone, in his back pocket, vibrates once."
+      "text": "His phone, in his back pocket, vibrates once.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/178.mp3"
     },
     {
       "t": "narrate",
-      "text": "He does not check it."
+      "text": "He does not check it.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/179.mp3"
     },
     {
       "t": "narrate",
-      "text": "He does not, in the rest of the shift, check it."
+      "text": "He does not, in the rest of the shift, check it.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/180.mp3"
     },
     {
       "t": "narrate",
@@ -834,7 +924,8 @@
     },
     {
       "t": "narrate",
-      "text": "But that is the morning. Right now is the shift."
+      "text": "But that is the morning. Right now is the shift.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/184.mp3"
     },
     {
       "t": "hide",
@@ -852,15 +943,18 @@
     },
     {
       "t": "narrate",
-      "text": "At five oh-six AM Diego goes out the dock door for his second break."
+      "text": "At five oh-six AM Diego goes out the dock door for his second break.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/188.mp3"
     },
     {
       "t": "narrate",
-      "text": "The dock is empty. The truck has not come yet. The trucks come at six on Tuesdays. He has fifty-four minutes before the day side starts arriving and the morning load starts being staged."
+      "text": "The dock is empty. The truck has not come yet. The trucks come at six on Tuesdays. He has fifty-four minutes before the day side starts arriving and the morning load starts being staged.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/189.mp3"
     },
     {
       "t": "narrate",
-      "text": "He stands at the edge of the dock with his coffee."
+      "text": "He stands at the edge of the dock with his coffee.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/190.mp3"
     },
     {
       "t": "narrate",
@@ -872,7 +966,8 @@
     },
     {
       "t": "narrate",
-      "text": "[beat:still][mood:dawn_warm][shot:insert smear~]Above the cedar, on the far horizon, the rust-colored thermal smear is visible."
+      "text": "[beat:still][mood:dawn_warm][shot:insert smear~]Above the cedar, on the far horizon, the rust-colored thermal smear is visible.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/193.mp3"
     },
     {
       "t": "narrate",
@@ -888,19 +983,23 @@
     },
     {
       "t": "narrate",
-      "text": "He looks at it."
+      "text": "He looks at it.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/197.mp3"
     },
     {
       "t": "narrate",
-      "text": "He drinks his coffee."
+      "text": "He drinks his coffee.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/198.mp3"
     },
     {
       "t": "narrate",
-      "text": "He has not, in five weeks, mentioned to anybody on the team that the smear is visible from this dock. He has not mentioned it to Sam. He has not mentioned it to his grandmother. He has not mentioned it to Dr. Patel."
+      "text": "He has not, in five weeks, mentioned to anybody on the team that the smear is visible from this dock. He has not mentioned it to Sam. He has not mentioned it to his grandmother. He has not mentioned it to Dr. Patel.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/199.mp3"
     },
     {
       "t": "narrate",
-      "text": "He does not, he understands, intend to."
+      "text": "He does not, he understands, intend to.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/200.mp3"
     },
     {
       "t": "narrate",
@@ -920,27 +1019,33 @@
     },
     {
       "t": "narrate",
-      "text": "The not-nothing is, he has decided, the closest thing he has, this summer, to prayer."
+      "text": "The not-nothing is, he has decided, the closest thing he has, this summer, to prayer.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/205.mp3"
     },
     {
       "t": "narrate",
-      "text": "He does not call it prayer."
+      "text": "He does not call it prayer.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/206.mp3"
     },
     {
       "t": "narrate",
-      "text": "He calls it the second break."
+      "text": "He calls it the second break.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/207.mp3"
     },
     {
       "t": "narrate",
-      "text": "The dock door behind him opens."
+      "text": "The dock door behind him opens.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/208.mp3"
     },
     {
       "t": "narrate",
-      "text": "He turns."
+      "text": "He turns.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/209.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup bt]It is not Doug. It is BT."
+      "text": "[shot:closeup bt]It is not Doug. It is BT.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/210.mp3"
     },
     {
       "t": "show",
@@ -960,97 +1065,115 @@
       "t": "say",
       "char": "BT",
       "text": "What are you looking at.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/214.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "[shot:closeup person]Nothing. The light.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/215.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "There's a — there's a haze on the horizon.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/216.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Diego does not, immediately, respond."
+      "text": "[shot:establish]Diego does not, immediately, respond.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/217.mp3"
     },
     {
       "t": "narrate",
-      "text": "He is, in the four seconds between BT's sentence and his own, doing the small fast work of deciding what he is going to do with the fact that BT has, of all the people on the team, also looked east."
+      "text": "He is, in the four seconds between BT's sentence and his own, doing the small fast work of deciding what he is going to do with the fact that BT has, of all the people on the team, also looked east.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/218.mp3"
     },
     {
       "t": "narrate",
-      "text": "He decides."
+      "text": "He decides.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/219.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Yeah. There's haze most mornings.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/220.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "Is that — that's not from here, right? That looks like something.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/221.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "[shot:closeup person]I don't know. The light does weird stuff out here.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/222.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/223.mp3"
     },
     {
       "t": "narrate",
-      "text": "BT drinks his coffee."
+      "text": "BT drinks his coffee.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/224.mp3"
     },
     {
       "t": "narrate",
-      "text": "BT does not, after the yeah, press. BT, who has been pressing on small things all summer in the small way of a young man who has not yet learned which doors close and which doors are merely ajar, on this particular question — does not press."
+      "text": "BT does not, after the yeah, press. BT, who has been pressing on small things all summer in the small way of a young man who has not yet learned which doors close and which doors are merely ajar, on this particular question — does not press.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/225.mp3"
     },
     {
       "t": "narrate",
-      "text": "BT looks at Diego for another long beat."
+      "text": "BT looks at Diego for another long beat.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/226.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "[shot:closeup person_b]You been doing this long?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/227.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Five weeks.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/228.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "You like it?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/229.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/230.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "Yeah, I like it too. The team's — the team's good, mostly.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/231.mp3"
     },
     {
       "t": "narrate",
@@ -1066,43 +1189,52 @@
     },
     {
       "t": "narrate",
-      "text": "Diego, on the dock, does not answer."
+      "text": "Diego, on the dock, does not answer.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/235.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He drinks his coffee."
+      "text": "[shot:establish]He drinks his coffee.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/236.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert smear]He looks at the smear."
+      "text": "[shot:insert smear]He looks at the smear.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/237.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/238.mp3"
     },
     {
       "t": "narrate",
-      "text": "It is not, he understands, quite the answer BT was asking for. Yeah is the answer that closes a sentence without extending it. Yeah is the answer Russell gave, in the break room, to the hardware-store inventory."
+      "text": "It is not, he understands, quite the answer BT was asking for. Yeah is the answer that closes a sentence without extending it. Yeah is the answer Russell gave, in the break room, to the hardware-store inventory.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/239.mp3"
     },
     {
       "t": "narrate",
-      "text": "BT, on the dock, registers this."
+      "text": "BT, on the dock, registers this.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/240.mp3"
     },
     {
       "t": "narrate",
-      "text": "BT does not, this time, press."
+      "text": "BT does not, this time, press.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/241.mp3"
     },
     {
       "t": "say",
       "char": "BT",
       "text": "[shot:closeup person_b]I'm gonna go in. The truck's coming up the road.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/242.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Diego had not heard the truck. Diego now, listening, hears the truck — the low diesel approach, half a mile out, on the access road that runs behind the cedar scrub and that the trucks use to come to the back of the store."
+      "text": "[shot:establish]Diego had not heard the truck. Diego now, listening, hears the truck — the low diesel approach, half a mile out, on the access road that runs behind the cedar scrub and that the trucks use to come to the back of the store.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/243.mp3"
     },
     {
       "t": "hide",
@@ -1110,19 +1242,23 @@
     },
     {
       "t": "narrate",
-      "text": "BT goes in."
+      "text": "BT goes in.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/245.mp3"
     },
     {
       "t": "narrate",
-      "text": "The dock door closes behind him."
+      "text": "The dock door closes behind him.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/246.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego stands at the edge of the dock for another two minutes."
+      "text": "Diego stands at the edge of the dock for another two minutes.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/247.mp3"
     },
     {
       "t": "narrate",
-      "text": "Then he goes back inside."
+      "text": "Then he goes back inside.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/248.mp3"
     },
     {
       "t": "hide",
@@ -1162,87 +1298,103 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:morning_bright][shot:closeup doug]Doug is at his pickup, putting his thermos in the cab."
+      "text": "[mood:morning_bright][shot:closeup doug]Doug is at his pickup, putting his thermos in the cab.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/257.mp3"
     },
     {
       "t": "narrate",
-      "text": "Doug looks up when Diego approaches."
+      "text": "Doug looks up when Diego approaches.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/258.mp3"
     },
     {
       "t": "say",
       "char": "Doug",
       "text": "Diego.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/259.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Hey, Doug.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/260.mp3"
     },
     {
       "t": "say",
       "char": "Doug",
       "text": "Long shift?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/261.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "[shot:closeup person]Pallet was heavy.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/262.mp3"
     },
     {
       "t": "say",
       "char": "Doug",
       "text": "Yeah. Carl.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/263.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/264.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]A small pause."
+      "text": "[shot:establish]A small pause.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/265.mp3"
     },
     {
       "t": "say",
       "char": "Doug",
       "text": "BT was on the dock with you on second break.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/266.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego, who has not — he is fairly sure — said anything to anyone about who was on the dock with him on second break, looks at Doug."
+      "text": "Diego, who has not — he is fairly sure — said anything to anyone about who was on the dock with him on second break, looks at Doug.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/267.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "Yeah. He came out.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/268.mp3"
     },
     {
       "t": "say",
       "char": "Doug",
       "text": "You okay?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/269.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego thinks about this."
+      "text": "Diego thinks about this.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/270.mp3"
     },
     {
       "t": "say",
       "char": "Diego",
       "text": "[shot:closeup person]Yeah. I'm okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/271.mp3"
     },
     {
       "t": "narrate",
-      "text": "Doug nods, slowly."
+      "text": "Doug nods, slowly.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/272.mp3"
     },
     {
       "t": "say",
@@ -1260,17 +1412,20 @@
       "t": "say",
       "char": "Diego",
       "text": "Yeah, Doug. I know.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/275.mp3"
     },
     {
       "t": "narrate",
-      "text": "Doug nods."
+      "text": "Doug nods.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/276.mp3"
     },
     {
       "t": "say",
       "char": "Doug",
       "text": "Alright. Go home. Sleep good.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/277.mp3"
     },
     {
       "t": "hide",
@@ -1278,51 +1433,63 @@
     },
     {
       "t": "narrate",
-      "text": "He gets in his pickup."
+      "text": "He gets in his pickup.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/279.mp3"
     },
     {
       "t": "narrate",
-      "text": "He starts the engine."
+      "text": "He starts the engine.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/280.mp3"
     },
     {
       "t": "narrate",
-      "text": "He pulls out."
+      "text": "He pulls out.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/281.mp3"
     },
     {
       "t": "narrate",
-      "text": "Diego watches him go to the end of the row, signal left, turn out of the lot."
+      "text": "Diego watches him go to the end of the row, signal left, turn out of the lot.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/282.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He gets in his own truck."
+      "text": "[shot:establish]He gets in his own truck.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/283.mp3"
     },
     {
       "t": "narrate",
-      "text": "He sits for a minute."
+      "text": "He sits for a minute.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/284.mp3"
     },
     {
       "t": "narrate",
-      "text": "He checks his phone."
+      "text": "He checks his phone.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/285.mp3"
     },
     {
       "t": "narrate",
-      "text": "The reply from Sam is there."
+      "text": "The reply from Sam is there.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/286.mp3"
     },
     {
       "t": "narrate",
-      "text": "He reads it three times, the way he always does."
+      "text": "He reads it three times, the way he always does.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/287.mp3"
     },
     {
       "t": "narrate",
-      "text": "He puts the phone face-down on the passenger seat."
+      "text": "He puts the phone face-down on the passenger seat.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/288.mp3"
     },
     {
       "t": "narrate",
-      "text": "He puts the truck in gear."
+      "text": "He puts the truck in gear.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/289.mp3"
     },
     {
       "t": "narrate",
-      "text": "He drives home."
+      "text": "He drives home.",
+      "voice": "assets/audio/voice/vol6_ch10_night_shift/290.mp3"
     },
     {
       "t": "hide",

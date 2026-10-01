@@ -29,23 +29,28 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:day_bright]He drives home."
+   "text": "[mood:day_bright]He drives home.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/005.mp3"
   },
   {
    "t": "narrate",
-   "text": "The drive is the small drive of a kid who is, in his head, holding two things he had not been holding when he drove out an hour ago: the depth chart, which is going to be the rest of the season, and the information, which is going to be the rest of his summer."
+   "text": "The drive is the small drive of a kid who is, in his head, holding two things he had not been holding when he drove out an hour ago: the depth chart, which is going to be the rest of the season, and the information, which is going to be the rest of his summer.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/006.mp3"
   },
   {
    "t": "narrate",
-   "text": "The two things, in the Civic, sit beside each other in his interior. Neither pushes the other out."
+   "text": "The two things, in the Civic, sit beside each other in his interior. Neither pushes the other out.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/007.mp3"
   },
   {
    "t": "narrate",
-   "text": "The Civic drives."
+   "text": "The Civic drives.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/008.mp3"
   },
   {
    "t": "narrate",
-   "text": "He pulls into the Kowalski driveway at one fifty-three."
+   "text": "He pulls into the Kowalski driveway at one fifty-three.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/009.mp3"
   },
   {
    "t": "show",
@@ -61,17 +66,20 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup bill]Bill is, again, at the front yard. Bill is, this Friday afternoon, pulling weeds from the bed beside the porch — the small Bill-task that has been, for three weeks, his Friday-afternoon ritual."
+   "text": "[shot:closeup bill]Bill is, again, at the front yard. Bill is, this Friday afternoon, pulling weeds from the bed beside the porch — the small Bill-task that has been, for three weeks, his Friday-afternoon ritual.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/012.mp3"
   },
   {
    "t": "narrate",
-   "text": "Bill stands when Ben gets out."
+   "text": "Bill stands when Ben gets out.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/013.mp3"
   },
   {
    "t": "say",
    "char": "Bill",
    "text": "Well?",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/014.mp3"
   },
   {
    "t": "say",
@@ -81,13 +89,15 @@
   },
   {
    "t": "narrate",
-   "text": "Bill, after a beat, smiles — the slow specific Bill-smile, the one Bill uses when something has happened that, in his interior, he has been hoping for but had not, out loud, been allowing himself to articulate."
+   "text": "Bill, after a beat, smiles — the slow specific Bill-smile, the one Bill uses when something has happened that, in his interior, he has been hoping for but had not, out loud, been allowing himself to articulate.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/016.mp3"
   },
   {
    "t": "say",
    "char": "Bill",
    "text": "Yeah?",
-   "expr": "happy"
+   "expr": "happy",
+   "voice": "assets/audio/voice/vol6_ch19_chains/017.mp3"
   },
   {
    "t": "say",
@@ -99,7 +109,8 @@
    "t": "say",
    "char": "Bill",
    "text": "Mom's awake. She's in the kitchen.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/019.mp3"
   },
   {
    "t": "say",
@@ -111,7 +122,8 @@
    "t": "say",
    "char": "Bill",
    "text": "Tell her. She'll cry. She'll cry the kind of cry where she's fine. Don't make a thing about the cry. Just let it happen.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/021.mp3"
   },
   {
    "t": "say",
@@ -121,7 +133,8 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]He goes inside."
+   "text": "[shot:establish]He goes inside.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/023.mp3"
   },
   {
    "t": "bg",
@@ -149,11 +162,13 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup anita]Anita is at the kitchen table with a cup of coffee. She is in the small soft sweatshirt she puts on after the night shift, which is the sweatshirt she has, by Ben's count, owned since he was nine."
+   "text": "[shot:closeup anita]Anita is at the kitchen table with a cup of coffee. She is in the small soft sweatshirt she puts on after the night shift, which is the sweatshirt she has, by Ben's count, owned since he was nine.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/029.mp3"
   },
   {
    "t": "narrate",
-   "text": "She looks up when Ben comes in."
+   "text": "She looks up when Ben comes in.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/030.mp3"
   },
   {
    "t": "say",
@@ -163,51 +178,62 @@
   },
   {
    "t": "narrate",
-   "text": "Anita, after a beat, smiles."
+   "text": "Anita, after a beat, smiles.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/032.mp3"
   },
   {
    "t": "say",
    "char": "Anita",
    "text": "Yeah, sweetheart.",
-   "expr": "happy"
+   "expr": "happy",
+   "voice": "assets/audio/voice/vol6_ch19_chains/033.mp3"
   },
   {
    "t": "narrate",
-   "text": "Anita does not, in the moment, cry."
+   "text": "Anita does not, in the moment, cry.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/034.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]Bill, Ben registers, had been wrong about the cry."
+   "text": "[shot:establish]Bill, Ben registers, had been wrong about the cry.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/035.mp3"
   },
   {
    "t": "narrate",
-   "text": "The cry comes about ninety seconds later, when Ben — at the kitchen counter making himself a second sandwich, with his back to his mother — hears, behind him, the small sniff that means Anita has done the small private thing of letting the wave hit her once and then composing herself."
+   "text": "The cry comes about ninety seconds later, when Ben — at the kitchen counter making himself a second sandwich, with his back to his mother — hears, behind him, the small sniff that means Anita has done the small private thing of letting the wave hit her once and then composing herself.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/036.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup ben]Ben does not, this time, turn."
+   "text": "[shot:closeup ben]Ben does not, this time, turn.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/037.mp3"
   },
   {
    "t": "narrate",
-   "text": "He continues making the sandwich."
+   "text": "He continues making the sandwich.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/038.mp3"
   },
   {
    "t": "narrate",
-   "text": "He hears Anita drink her coffee. He hears her, after a beat, get up. He hears her come to the counter."
+   "text": "He hears Anita drink her coffee. He hears her, after a beat, get up. He hears her come to the counter.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/039.mp3"
   },
   {
    "t": "narrate",
-   "text": "He hears her, behind him, put her hand on the back of his neck — the small Anita-hand-on-the-back-of-Ben's-neck that she has been doing since he was three,"
+   "text": "He hears her, behind him, put her hand on the back of his neck — the small Anita-hand-on-the-back-of-Ben's-neck that she has been doing since he was three,",
+   "voice": "assets/audio/voice/vol6_ch19_chains/040.mp3"
   },
   {
    "t": "narrate",
-   "text": "the touch that has been her small physical signature on the small private moments of his childhood that have, over the years, accumulated into the relationship he has with her."
+   "text": "the touch that has been her small physical signature on the small private moments of his childhood that have, over the years, accumulated into the relationship he has with her.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/041.mp3"
   },
   {
    "t": "say",
    "char": "Anita",
    "text": "I am proud of you, Benjamin.",
-   "expr": "happy"
+   "expr": "happy",
+   "voice": "assets/audio/voice/vol6_ch19_chains/042.mp3"
   },
   {
    "t": "say",
@@ -219,7 +245,8 @@
    "t": "say",
    "char": "Anita",
    "text": "[shot:closeup person]Eat. Sleep. Tomorrow is a thing.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/044.mp3"
   },
   {
    "t": "say",
@@ -229,7 +256,8 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish_b]She kisses the top of his head. She goes back to her coffee."
+   "text": "[shot:establish_b]She kisses the top of his head. She goes back to her coffee.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/046.mp3"
   },
   {
    "t": "hide",
@@ -241,7 +269,8 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert phone]Maya texts at three forty-six."
+   "text": "[shot:insert phone]Maya texts at three forty-six.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/049.mp3"
   },
   {
    "t": "show",
@@ -259,7 +288,8 @@
    "t": "say",
    "char": "Maya",
    "text": "ben i heard. te1. yes.",
-   "expr": "happy"
+   "expr": "happy",
+   "voice": "assets/audio/voice/vol6_ch19_chains/052.mp3"
   },
   {
    "t": "say",
@@ -271,7 +301,8 @@
    "t": "say",
    "char": "Maya",
    "text": "[shot:closeup person_b]gracie. she texted me. she's at home. she found out from your dad through the kitchen window when he was yelling about the weeds.",
-   "expr": "happy"
+   "expr": "happy",
+   "voice": "assets/audio/voice/vol6_ch19_chains/054.mp3"
   },
   {
    "t": "say",
@@ -283,7 +314,8 @@
    "t": "say",
    "char": "Maya",
    "text": "gracie said he was talking to himself with — and i quote — \"energy.\"",
-   "expr": "happy"
+   "expr": "happy",
+   "voice": "assets/audio/voice/vol6_ch19_chains/056.mp3"
   },
   {
    "t": "say",
@@ -295,7 +327,8 @@
    "t": "say",
    "char": "Maya",
    "text": "anyway. yes. te1. proud.",
-   "expr": "happy"
+   "expr": "happy",
+   "voice": "assets/audio/voice/vol6_ch19_chains/058.mp3"
   },
   {
    "t": "say",
@@ -307,7 +340,8 @@
    "t": "say",
    "char": "Maya",
    "text": "vinton tomorrow.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/060.mp3"
   },
   {
    "t": "say",
@@ -319,7 +353,8 @@
    "t": "say",
    "char": "Maya",
    "text": "i can't come. i'm at the shop alone all day.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/062.mp3"
   },
   {
    "t": "say",
@@ -331,7 +366,8 @@
    "t": "say",
    "char": "Maya",
    "text": "[shot:closeup person_b]i'll be there in spirit.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/064.mp3"
   },
   {
    "t": "say",
@@ -343,7 +379,8 @@
    "t": "say",
    "char": "Maya",
    "text": "ben.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/066.mp3"
   },
   {
    "t": "say",
@@ -355,7 +392,8 @@
    "t": "say",
    "char": "Maya",
    "text": "have a good game.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/068.mp3"
   },
   {
    "t": "say",
@@ -373,15 +411,18 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert phone]He puts the phone down."
+   "text": "[shot:insert phone]He puts the phone down.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/072.mp3"
   },
   {
    "t": "narrate",
-   "text": "Maya is at the shop alone tomorrow. Diego is at the inventory tonight. Sam is at the Kwik Stop. Jesse has the gig at the Foxhole. Everybody, this Saturday, has their own thing. He is going to play a football game."
+   "text": "Maya is at the shop alone tomorrow. Diego is at the inventory tonight. Sam is at the Kwik Stop. Jesse has the gig at the Foxhole. Everybody, this Saturday, has their own thing. He is going to play a football game.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/073.mp3"
   },
   {
    "t": "narrate",
-   "text": "The football game is his. He is, by mid-August, a person whose Saturday is going to be a thing. That is new."
+   "text": "The football game is his. He is, by mid-August, a person whose Saturday is going to be a thing. That is new.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/074.mp3"
   },
   {
    "t": "bg",
@@ -389,15 +430,18 @@
   },
   {
    "t": "narrate",
-   "text": "The walk-through, at six PM, is light."
+   "text": "The walk-through, at six PM, is light.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/076.mp3"
   },
   {
    "t": "narrate",
-   "text": "The team is at the field in pads but not full contact. Coach K has them run through the offensive sets they are going to use against Vinton. Brent calls the cadence. Marcus runs the slot routes."
+   "text": "The team is at the field in pads but not full contact. Coach K has them run through the offensive sets they are going to use against Vinton. Brent calls the cadence. Marcus runs the slot routes.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/077.mp3"
   },
   {
    "t": "narrate",
-   "text": "Ben does the small seal-and-release work at TE-1, with Diaz alternating in for the second-team reps."
+   "text": "Ben does the small seal-and-release work at TE-1, with Diaz alternating in for the second-team reps.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/078.mp3"
   },
   {
    "t": "show",
@@ -413,55 +457,67 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup coach_k]Coach K, on the sideline, watches."
+   "text": "[shot:closeup coach_k]Coach K, on the sideline, watches.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/081.mp3"
   },
   {
    "t": "narrate",
-   "text": "Coach K, this evening, is the same Coach K he has been all week. Studious. Held in. The veins on his forearms doing their Coach K thing in the late-afternoon heat."
+   "text": "Coach K, this evening, is the same Coach K he has been all week. Studious. Held in. The veins on his forearms doing their Coach K thing in the late-afternoon heat.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/082.mp3"
   },
   {
    "t": "narrate",
-   "text": "Ben, on the second-team rep when Diaz is in, watches Coach K from the sideline."
+   "text": "Ben, on the second-team rep when Diaz is in, watches Coach K from the sideline.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/083.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup coach_k~]Coach K is carrying his wife's diagnosis. Coach K is, at the same time, calling plays. The two facts are happening in the same body at the same time. The body is, by Coach Dale's read, doing the work."
+   "text": "[shot:closeup coach_k~]Coach K is carrying his wife's diagnosis. Coach K is, at the same time, calling plays. The two facts are happening in the same body at the same time. The body is, by Coach Dale's read, doing the work.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/084.mp3"
   },
   {
    "t": "narrate",
-   "text": "Coach Dale, in the shed, told him. Coach Dale told him because Coach K, on Tuesday, had been thinking about what Ben said."
+   "text": "Coach Dale, in the shed, told him. Coach Dale told him because Coach K, on Tuesday, had been thinking about what Ben said.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/085.mp3"
   },
   {
    "t": "narrate",
-   "text": "The chain is Coach K to Coach Dale to Ben and back, and it is, by tomorrow, going to be in the same parking lot Coach K's wife is going to walk through to get to the third row of the bleachers."
+   "text": "The chain is Coach K to Coach Dale to Ben and back, and it is, by tomorrow, going to be in the same parking lot Coach K's wife is going to walk through to get to the third row of the bleachers.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/086.mp3"
   },
   {
    "t": "narrate",
-   "text": "He is, at seventeen, in a chain. The chain is the team. The team is what he has been, all summer, becoming part of."
+   "text": "He is, at seventeen, in a chain. The chain is the team. The team is what he has been, all summer, becoming part of.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/087.mp3"
   },
   {
    "t": "narrate",
-   "text": "The walk-through ends at six fifty-five."
+   "text": "The walk-through ends at six fifty-five.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/088.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert bleachers]Coach K, at the bench, claps once."
+   "text": "[shot:insert bleachers]Coach K, at the bench, claps once.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/089.mp3"
   },
   {
    "t": "say",
    "char": "Coach K",
    "text": "Good walk-through. Eat. Sleep. Hydrate. Be at the field tomorrow at three. Vinton arrives at four. Game is at six. Pete — chart room with me at three thirty before warm-up. Brent — talk to me before walk-through tomorrow about cadence on the new wrinkle.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/090.mp3"
   },
   {
    "t": "narrate",
-   "text": "Ben looks up."
+   "text": "Ben looks up.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/091.mp3"
   },
   {
    "t": "say",
    "char": "Coach K",
    "text": "Right foot is right foot. You don't think about it. You let it happen. Hear me?",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/092.mp3"
   },
   {
    "t": "say",
@@ -473,15 +529,18 @@
    "t": "say",
    "char": "Coach K",
    "text": "[shot:closeup person]The rest of you. Go home. Don't do anything stupid tonight. I love you all.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/094.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]The team breaks."
+   "text": "[shot:establish]The team breaks.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/095.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]Ben walks to the Civic."
+   "text": "[shot:establish]Ben walks to the Civic.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/096.mp3"
   },
   {
    "t": "show",
@@ -491,11 +550,13 @@
   },
   {
    "t": "narrate",
-   "text": "Coach Dale, at the truck loading the equipment cart, gives Ben the small nod."
+   "text": "Coach Dale, at the truck loading the equipment cart, gives Ben the small nod.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/098.mp3"
   },
   {
    "t": "narrate",
-   "text": "Ben gives the nod back."
+   "text": "Ben gives the nod back.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/099.mp3"
   },
   {
    "t": "hide",
@@ -511,7 +572,8 @@
   },
   {
    "t": "narrate",
-   "text": "He gets in the Civic. He drives."
+   "text": "He gets in the Civic. He drives.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/103.mp3"
   },
   {
    "t": "bg",
@@ -519,7 +581,8 @@
   },
   {
    "t": "narrate",
-   "text": "He stops at home."
+   "text": "He stops at home.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/105.mp3"
   },
   {
    "t": "show",
@@ -541,13 +604,15 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup gracie]His mother is at the kitchen with Gracie, helping Gracie with the second-to-last page of the sticker activity book. Gracie, when Ben comes in, looks up."
+   "text": "[shot:closeup gracie]His mother is at the kitchen with Gracie, helping Gracie with the second-to-last page of the sticker activity book. Gracie, when Ben comes in, looks up.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/109.mp3"
   },
   {
    "t": "say",
    "char": "Gracie",
    "text": "Ben. Mom said you got TE-1.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/110.mp3"
   },
   {
    "t": "say",
@@ -559,7 +624,8 @@
    "t": "say",
    "char": "Gracie",
    "text": "I don't know what TE-1 means but Mom says it is a big deal.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/112.mp3"
   },
   {
    "t": "say",
@@ -569,13 +635,15 @@
   },
   {
    "t": "narrate",
-   "text": "Gracie thinks about this."
+   "text": "Gracie thinks about this.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/114.mp3"
   },
   {
    "t": "say",
    "char": "Gracie",
    "text": "Are you going to win.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/115.mp3"
   },
   {
    "t": "say",
@@ -587,11 +655,13 @@
    "t": "say",
    "char": "Gracie",
    "text": "If you don't win, are you going to be sad.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/117.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]Ben thinks for a beat."
+   "text": "[shot:establish]Ben thinks for a beat.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/118.mp3"
   },
   {
    "t": "say",
@@ -603,21 +673,25 @@
    "t": "say",
    "char": "Gracie",
    "text": "Okay.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/120.mp3"
   },
   {
    "t": "narrate",
-   "text": "Gracie returns to the stickers."
+   "text": "Gracie returns to the stickers.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/121.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup anita]Anita, at the table, smiles at Ben. The smile is the smile of a mother whose son has just answered her eleven-year-old daughter's small philosophical football question with the answer the daughter needed."
+   "text": "[shot:closeup anita]Anita, at the table, smiles at Ben. The smile is the smile of a mother whose son has just answered her eleven-year-old daughter's small philosophical football question with the answer the daughter needed.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/122.mp3"
   },
   {
    "t": "say",
    "char": "Anita",
    "text": "Eat dinner before you go to Maya's.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/123.mp3"
   },
   {
    "t": "say",
@@ -629,7 +703,8 @@
    "t": "say",
    "char": "Anita",
    "text": "She texted me. She said tell Ben to come over. She said she has a thing.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/125.mp3"
   },
   {
    "t": "say",
@@ -649,45 +724,53 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish_b]He eats. The dinner Anita has made is — Bianca had, by the four-thirty-table arrangement, sent over a cinnamon coffee cake that Eileen had brought yesterday and that the Kowalskis are, this evening, having for dessert."
+   "text": "[shot:establish_b]He eats. The dinner Anita has made is — Bianca had, by the four-thirty-table arrangement, sent over a cinnamon coffee cake that Eileen had brought yesterday and that the Kowalskis are, this evening, having for dessert.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/129.mp3"
   },
   {
    "t": "narrate",
-   "text": "Anita has made enchiladas for the main. The enchiladas are — Anita's enchiladas, the recipe she does it with. Ben eats two. Gracie eats one. Bill, who has come in from the weeds, eats three."
+   "text": "Anita has made enchiladas for the main. The enchiladas are — Anita's enchiladas, the recipe she does it with. Ben eats two. Gracie eats one. Bill, who has come in from the weeds, eats three.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/130.mp3"
   },
   {
    "t": "say",
    "char": "Bill",
    "text": "Eileen.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/131.mp3"
   },
   {
    "t": "say",
    "char": "Anita",
    "text": "What about her.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/132.mp3"
   },
   {
    "t": "say",
    "char": "Bill",
    "text": "Coach K's wife. Different Eileen. Anita said Ben had mentioned the name had come up.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/133.mp3"
   },
   {
    "t": "say",
    "char": "Anita",
    "text": "What about her.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/134.mp3"
   },
   {
    "t": "say",
    "char": "Bill",
    "text": "[shot:closeup person_b]I worked with her father. In the early nineties. At the warehouse out on Ledbetter. He was a — he was a foreman. Decent guy. I didn't know she'd married Coach K. I just put the name together at dinner.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/135.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup ben]Ben, at the table, looks up."
+   "text": "[shot:closeup ben]Ben, at the table, looks up.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/136.mp3"
   },
   {
    "t": "say",
@@ -699,7 +782,8 @@
    "t": "say",
    "char": "Bill",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/138.mp3"
   },
   {
    "t": "say",
@@ -711,13 +795,15 @@
    "t": "say",
    "char": "Bill",
    "text": "I worked with a man named Don Murchison who had a daughter named Eileen. Don was at the warehouse for, I don't know, fifteen years. We worked the same shift in maybe ninety-three, ninety-four. I left in ninety-five.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/140.mp3"
   },
   {
    "t": "say",
    "char": "Bill",
    "text": "We didn't keep in touch. Don was — Don was one of those men, the kind who you work with and you like and then your shifts change and that's it. He died in maybe two thousand and four, I think. I read the obituary in the paper.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/141.mp3"
   },
   {
    "t": "say",
@@ -729,19 +815,23 @@
    "t": "say",
    "char": "Bill",
    "text": "[shot:closeup person_b]Once or twice. She came by to bring Don lunch. I would have met her then. I don't remember her face. I just — the name's not common. There's three Eileens in this town, including Jesse Henderson's mom. Coach K's wife is the third. I just put it together.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/143.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish_c]Ben, at the table, registers — with the small careful attention his summer has been training — that his father has just, in three sentences, given him a piece of additional context about Eileen Kazantzakis that he had not, until this moment, known."
+   "text": "[shot:establish_c]Ben, at the table, registers — with the small careful attention his summer has been training — that his father has just, in three sentences, given him a piece of additional context about Eileen Kazantzakis that he had not, until this moment, known.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/144.mp3"
   },
   {
    "t": "narrate",
-   "text": "He does not, in the moment, do anything with the context."
+   "text": "He does not, in the moment, do anything with the context.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/145.mp3"
   },
   {
    "t": "narrate",
-   "text": "He files it."
+   "text": "He files it.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/146.mp3"
   },
   {
    "t": "say",
@@ -753,7 +843,8 @@
    "t": "say",
    "char": "Bill",
    "text": "Anyway. Tomorrow. You're starting. Don't let it get to your head. Don't let it shrink your head either. Just play.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/148.mp3"
   },
   {
    "t": "say",
@@ -775,7 +866,8 @@
   },
   {
    "t": "narrate",
-   "text": "He drives to Maya's at eight twenty-six."
+   "text": "He drives to Maya's at eight twenty-six.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/153.mp3"
   },
   {
    "t": "show",
@@ -797,21 +889,25 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup maya]Maya is on the porch. Linda is on the porch."
+   "text": "[shot:closeup maya]Maya is on the porch. Linda is on the porch.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/157.mp3"
   },
   {
    "t": "narrate",
-   "text": "The two of them are, this Friday evening, in the arrangement they have been in every evening for the past three weeks — Linda in the wicker, Maya in the second porch chair, two iced teas on the small table, the third pulled out and waiting."
+   "text": "The two of them are, this Friday evening, in the arrangement they have been in every evening for the past three weeks — Linda in the wicker, Maya in the second porch chair, two iced teas on the small table, the third pulled out and waiting.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/158.mp3"
   },
   {
    "t": "narrate",
-   "text": "Ben climbs the porch steps. Maya hands him the third iced tea."
+   "text": "Ben climbs the porch steps. Maya hands him the third iced tea.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/159.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "TE-1.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/160.mp3"
   },
   {
    "t": "say",
@@ -823,21 +919,25 @@
    "t": "say",
    "char": "Linda",
    "text": "Sit, Benjamin.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/162.mp3"
   },
   {
    "t": "narrate",
-   "text": "He sits."
+   "text": "He sits.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/163.mp3"
   },
   {
    "t": "narrate",
-   "text": "[mood:dusk][shot:establish]The three of them sit on the porch in the dusk."
+   "text": "[mood:dusk][shot:establish]The three of them sit on the porch in the dusk.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/164.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "Tomorrow.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/165.mp3"
   },
   {
    "t": "say",
@@ -849,7 +949,8 @@
    "t": "say",
    "char": "Linda",
    "text": "What time is the game.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/167.mp3"
   },
   {
    "t": "say",
@@ -861,7 +962,8 @@
    "t": "say",
    "char": "Linda",
    "text": "[shot:closeup person]Twenty-four-minute halves. That's not a real game.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/169.mp3"
   },
   {
    "t": "say",
@@ -873,13 +975,15 @@
    "t": "say",
    "char": "Linda",
    "text": "Okay.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/171.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "text": "Ben.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/172.mp3"
   },
   {
    "t": "say",
@@ -891,7 +995,8 @@
    "t": "say",
    "char": "Maya",
    "text": "[shot:closeup person_b]I want to ask you something. You can say no.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/174.mp3"
   },
   {
    "t": "say",
@@ -903,11 +1008,13 @@
    "t": "say",
    "char": "Maya",
    "text": "Can you — when the game is over. Can you come by here. I'm at the shop till eight. I'll be home by eight forty-five. I want to hear about it.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/176.mp3"
   },
   {
    "t": "narrate",
-   "text": "Ben thinks for a beat."
+   "text": "Ben thinks for a beat.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/177.mp3"
   },
   {
    "t": "say",
@@ -919,13 +1026,15 @@
    "t": "say",
    "char": "Maya",
    "text": "I don't care.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/179.mp3"
   },
   {
    "t": "say",
    "char": "Linda",
    "text": "[shot:closeup person]Bring soup.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/180.mp3"
   },
   {
    "t": "say",
@@ -937,15 +1046,18 @@
    "t": "say",
    "char": "Linda",
    "text": "Whoever's. We have all of it. The soup is — the soup is, at this point, a community resource.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/182.mp3"
   },
   {
    "t": "narrate",
-   "text": "Ben laughs. Maya laughs. Linda, in the wicker, smiles."
+   "text": "Ben laughs. Maya laughs. Linda, in the wicker, smiles.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/183.mp3"
   },
   {
    "t": "narrate",
-   "text": "[beat:still][shot:establish~]The porch, in the dusk, holds the three of them."
+   "text": "[beat:still][shot:establish~]The porch, in the dusk, holds the three of them.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/184.mp3"
   },
   {
    "t": "hide",
@@ -965,15 +1077,18 @@
   },
   {
    "t": "narrate",
-   "text": "At ten oh-two Ben drives home."
+   "text": "At ten oh-two Ben drives home.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/189.mp3"
   },
   {
    "t": "narrate",
-   "text": "He pulls into the Kowalski driveway at ten-fourteen."
+   "text": "He pulls into the Kowalski driveway at ten-fourteen.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/190.mp3"
   },
   {
    "t": "narrate",
-   "text": "The house is mostly dark. Bill is asleep — Bill has been getting up at five to do the lawn before the heat, and has been going to bed by nine-thirty all week. Gracie is asleep."
+   "text": "The house is mostly dark. Bill is asleep — Bill has been getting up at five to do the lawn before the heat, and has been going to bed by nine-thirty all week. Gracie is asleep.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/191.mp3"
   },
   {
    "t": "show",
@@ -989,17 +1104,20 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup anita]Anita is in the kitchen with the small under-cabinet light on, drinking her morning coffee at her four-AM-equivalent, which is, tonight, ten-fifteen PM."
+   "text": "[shot:closeup anita]Anita is in the kitchen with the small under-cabinet light on, drinking her morning coffee at her four-AM-equivalent, which is, tonight, ten-fifteen PM.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/194.mp3"
   },
   {
    "t": "narrate",
-   "text": "She looks up when Ben comes in."
+   "text": "She looks up when Ben comes in.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/195.mp3"
   },
   {
    "t": "say",
    "char": "Anita",
    "text": "Good evening?",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/196.mp3"
   },
   {
    "t": "say",
@@ -1011,7 +1129,8 @@
    "t": "say",
    "char": "Anita",
    "text": "Maya?",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/198.mp3"
   },
   {
    "t": "say",
@@ -1021,13 +1140,15 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]Anita laughs."
+   "text": "[shot:establish]Anita laughs.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/200.mp3"
   },
   {
    "t": "say",
    "char": "Anita",
    "text": "The soup is — the soup is everybody's now.",
-   "expr": "happy"
+   "expr": "happy",
+   "voice": "assets/audio/voice/vol6_ch19_chains/201.mp3"
   },
   {
    "t": "say",
@@ -1039,7 +1160,8 @@
    "t": "say",
    "char": "Anita",
    "text": "Sleep.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch19_chains/203.mp3"
   },
   {
    "t": "say",
@@ -1049,7 +1171,8 @@
   },
   {
    "t": "narrate",
-   "text": "He kisses her cheek. He goes upstairs."
+   "text": "He kisses her cheek. He goes upstairs.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/205.mp3"
   },
   {
    "t": "hide",
@@ -1065,47 +1188,58 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:night]He showers."
+   "text": "[mood:night]He showers.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/209.mp3"
   },
   {
    "t": "narrate",
-   "text": "He gets in bed."
+   "text": "He gets in bed.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/210.mp3"
   },
   {
    "t": "narrate",
-   "text": "He sets the alarm for ten — Saturday morning sleeping in, the small Saturday-before-a-game ritual Coach K had specifically encouraged."
+   "text": "He sets the alarm for ten — Saturday morning sleeping in, the small Saturday-before-a-game ritual Coach K had specifically encouraged.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/211.mp3"
   },
   {
    "t": "narrate",
-   "text": "He turns off the lamp."
+   "text": "He turns off the lamp.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/212.mp3"
   },
   {
    "t": "narrate",
-   "text": "The room is dark."
+   "text": "The room is dark.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/213.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert cat]Through the window, the cicadas are loud. Mister, the cat — the half-Kowalski cat, the one Gracie had named — comes in through the door Ben had, by habit, left cracked, jumps onto the bed, and curls up at Ben's feet."
+   "text": "[shot:insert cat]Through the window, the cicadas are loud. Mister, the cat — the half-Kowalski cat, the one Gracie had named — comes in through the door Ben had, by habit, left cracked, jumps onto the bed, and curls up at Ben's feet.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/214.mp3"
   },
   {
    "t": "narrate",
-   "text": "Ben does not, this evening, displace the cat."
+   "text": "Ben does not, this evening, displace the cat.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/215.mp3"
   },
   {
    "t": "narrate",
-   "text": "In the dark, the inventory runs through him: TE-1. Eileen in the third row tomorrow. Coach K calling the plays. The chain. Marcus and the two-tight wrinkle on first down. Tucker at LT-1. Brent."
+   "text": "In the dark, the inventory runs through him: TE-1. Eileen in the third row tomorrow. Coach K calling the plays. The chain. Marcus and the two-tight wrinkle on first down. Tucker at LT-1. Brent.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/216.mp3"
   },
   {
    "t": "narrate",
-   "text": "The team — what he has been, all summer, becoming part of. Tomorrow he is going to play a game. He is going to play it as well as he can. He is not going to look up at the bleachers."
+   "text": "The team — what he has been, all summer, becoming part of. Tomorrow he is going to play a game. He is going to play it as well as he can. He is not going to look up at the bleachers.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/217.mp3"
   },
   {
    "t": "narrate",
-   "text": "He is not going to mention to anybody, ever, what Coach Dale told him in the shed. The chain is going to stay in his chest. The right foot is going to be the right foot."
+   "text": "He is not going to mention to anybody, ever, what Coach Dale told him in the shed. The chain is going to stay in his chest. The right foot is going to be the right foot.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/218.mp3"
   },
   {
    "t": "narrate",
-   "text": "He sleeps."
+   "text": "He sleeps.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/219.mp3"
   },
   {
    "t": "bg",
@@ -1113,95 +1247,118 @@
   },
   {
    "t": "narrate",
-   "text": "In a different bedroom in a different house in a different cul-de-sac, Coach K is in his bed beside Eileen."
+   "text": "In a different bedroom in a different house in a different cul-de-sac, Coach K is in his bed beside Eileen.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/221.mp3"
   },
   {
    "t": "narrate",
-   "text": "Eileen is asleep."
+   "text": "Eileen is asleep.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/222.mp3"
   },
   {
    "t": "narrate",
-   "text": "Coach K is not."
+   "text": "Coach K is not.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/223.mp3"
   },
   {
    "t": "narrate",
-   "text": "Coach K is lying on his back looking at the ceiling, doing the small Friday-night-before-a-game thing he has been doing for twenty years, which is going through the depth chart in his head and double-checking that the choices he made are the choices he stands by."
+   "text": "Coach K is lying on his back looking at the ceiling, doing the small Friday-night-before-a-game thing he has been doing for twenty years, which is going through the depth chart in his head and double-checking that the choices he made are the choices he stands by.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/224.mp3"
   },
   {
    "t": "narrate",
-   "text": "He goes through the chart. He stands by the choices."
+   "text": "He goes through the chart. He stands by the choices.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/225.mp3"
   },
   {
    "t": "narrate",
-   "text": "On TE-1: the kid said the right thing on Tuesday. He could not have known. He said it anyway. The kid is the kind of seventeen-year-old you do not see twice in twenty years. Dale told him."
+   "text": "On TE-1: the kid said the right thing on Tuesday. He could not have known. He said it anyway. The kid is the kind of seventeen-year-old you do not see twice in twenty years. Dale told him.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/226.mp3"
   },
   {
    "t": "narrate",
-   "text": "He had told Dale on the field yesterday, and Dale, who had been his friend for seventeen years, had made the Dale-decision to tell the kid. He had known Dale would. He had told Dale because he had known Dale would."
+   "text": "He had told Dale on the field yesterday, and Dale, who had been his friend for seventeen years, had made the Dale-decision to tell the kid. He had known Dale would. He had told Dale because he had known Dale would.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/227.mp3"
   },
   {
    "t": "narrate",
-   "text": "The kid will, by tomorrow, know. The kid will not, by tomorrow or ever, mention it. That is the kind of kid."
+   "text": "The kid will, by tomorrow, know. The kid will not, by tomorrow or ever, mention it. That is the kind of kid.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/228.mp3"
   },
   {
    "t": "narrate",
-   "text": "The kid is going to start at TE-1 tomorrow. Eileen is going to be in the third row. He is, tomorrow, going to coach the game he is going to coach. The right foot is, by Friday morning, the right foot. He loves them all."
+   "text": "The kid is going to start at TE-1 tomorrow. Eileen is going to be in the third row. He is, tomorrow, going to coach the game he is going to coach. The right foot is, by Friday morning, the right foot. He loves them all.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/229.mp3"
   },
   {
    "t": "narrate",
-   "text": "He turns off the lamp."
+   "text": "He turns off the lamp.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/230.mp3"
   },
   {
    "t": "narrate",
-   "text": "He sleeps."
+   "text": "He sleeps.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/231.mp3"
   },
   {
    "t": "narrate",
-   "text": "The cicadas, in the late August Texas night, are loud."
+   "text": "The cicadas, in the late August Texas night, are loud.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/232.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert bed]Maya, in her bed at her grandmother's, is asleep."
+   "text": "[shot:insert bed]Maya, in her bed at her grandmother's, is asleep.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/233.mp3"
   },
   {
    "t": "narrate",
-   "text": "Diego, at Centro, is on the inventory floor with the team — fifteen minutes past the start of the count."
+   "text": "Diego, at Centro, is on the inventory floor with the team — fifteen minutes past the start of the count.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/234.mp3"
   },
   {
    "t": "narrate",
-   "text": "Sam, at her bedroom in her mother's house, is asleep."
+   "text": "Sam, at her bedroom in her mother's house, is asleep.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/235.mp3"
   },
   {
    "t": "narrate",
-   "text": "Jesse, in his bed at his parents', is asleep."
+   "text": "Jesse, in his bed at his parents', is asleep.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/236.mp3"
   },
   {
    "t": "narrate",
-   "text": "Bianca, in her bed in the house that Mike is not in, is asleep."
+   "text": "Bianca, in her bed in the house that Mike is not in, is asleep.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/237.mp3"
   },
   {
    "t": "narrate",
-   "text": "The town, in the small ways towns in mid-August do this work the night before a Saturday, holds."
+   "text": "The town, in the small ways towns in mid-August do this work the night before a Saturday, holds.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/238.mp3"
   },
   {
    "t": "narrate",
-   "text": "The Saturday is tomorrow."
+   "text": "The Saturday is tomorrow.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/239.mp3"
   },
   {
    "t": "narrate",
-   "text": "The Saturday is, in its architecture, the day the volume's threads are going to converge."
+   "text": "The Saturday is, in its architecture, the day the volume's threads are going to converge.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/240.mp3"
   },
   {
    "t": "narrate",
-   "text": "Tonight, in the dark, the threads are still apart."
+   "text": "Tonight, in the dark, the threads are still apart.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/241.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]Tonight is, for everybody in the volume, the small calm before."
+   "text": "[shot:establish]Tonight is, for everybody in the volume, the small calm before.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/242.mp3"
   },
   {
    "t": "narrate",
-   "text": "Sleep."
+   "text": "Sleep.",
+   "voice": "assets/audio/voice/vol6_ch19_chains/243.mp3"
   },
   {
    "t": "end"

@@ -23,7 +23,8 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:day_bright][shot:insert laptop]The ThinkPad wakes when she opens it. The message from F.T. sits at the top of the chat window, timestamped 15:22 — the exact minute her phone had buzzed at Cosmic Comics."
+      "text": "[mood:day_bright][shot:insert laptop]The ThinkPad wakes when she opens it. The message from F.T. sits at the top of the chat window, timestamped 15:22 — the exact minute her phone had buzzed at Cosmic Comics.",
+      "voice": "assets/audio/voice/vol6_ch1_maya_bedroom/003.mp3"
     },
     {
       "t": "say",
@@ -65,13 +66,15 @@
       "t": "say",
       "char": "F.T.",
       "expr": "neutral",
-      "text": "\"thing three. [wave amp=5 freq=2]diego ramos is alive[/wave]. i want you to know that first. he is not okay, but he is alive. he is being held in a building on the east side of the subdivision that is not currently on any map.\""
+      "text": "\"thing three. [wave amp=5 freq=2]diego ramos is alive[/wave]. i want you to know that first. he is not okay, but he is alive. he is being held in a building on the east side of the subdivision that is not currently on any map.\"",
+      "voice": "assets/audio/voice/vol6_ch1_maya_bedroom/010.mp3"
     },
     {
       "t": "say",
       "char": "F.T.",
       "expr": "neutral",
-      "text": "\"i don't need you to do anything with any of this today. i am telling you so you can sleep. your job, for now, is to keep noticing. that is the thing you are best at. please keep doing it. — f.t.\""
+      "text": "\"i don't need you to do anything with any of this today. i am telling you so you can sleep. your job, for now, is to keep noticing. that is the thing you are best at. please keep doing it. — f.t.\"",
+      "voice": "assets/audio/voice/vol6_ch1_maya_bedroom/011.mp3"
     },
     {
       "t": "narrate",
@@ -84,12 +87,14 @@
     {
       "t": "think",
       "char": "Maya",
-      "text": "F.T. said three things. All three probably true. Diego alive. The tower is the repeater. The radio is the carrier. My dad knows F.T. I think my dad has always known F.T."
+      "text": "F.T. said three things. All three probably true. Diego alive. The tower is the repeater. The radio is the carrier. My dad knows F.T. I think my dad has always known F.T.",
+      "voice": "assets/audio/voice/vol6_ch1_maya_bedroom/014.mp3"
     },
     {
       "t": "think",
       "char": "Maya",
-      "text": "I am going to try to sleep. I am going to keep noticing."
+      "text": "I am going to try to sleep. I am going to keep noticing.",
+      "voice": "assets/audio/voice/vol6_ch1_maya_bedroom/015.mp3"
     },
     {
       "t": "narrate",

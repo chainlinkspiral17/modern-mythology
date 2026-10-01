@@ -29,7 +29,8 @@
   },
   {
    "t": "narrate",
-   "text": "[trip:1.2][mood:dawn_warm]The drive back to Centro is four minutes."
+   "text": "[trip:1.2][mood:dawn_warm]The drive back to Centro is four minutes.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/005.mp3"
   },
   {
    "t": "narrate",
@@ -41,35 +42,43 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]Diego, in the passenger seat, with the medium horchata for Doug between his thighs and the quarter-burrito on the dashboard and the empty El Diablito packets accumulated on the center console, watches the small parallel side road pass in the headlights."
+   "text": "[shot:establish]Diego, in the passenger seat, with the medium horchata for Doug between his thighs and the quarter-burrito on the dashboard and the empty El Diablito packets accumulated on the center console, watches the small parallel side road pass in the headlights.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/008.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup diego]He thinks, with the small careful attention he has been training all summer: I just had dinner with BT."
+   "text": "[shot:closeup diego]He thinks, with the small careful attention he has been training all summer: I just had dinner with BT.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/009.mp3"
   },
   {
    "t": "narrate",
-   "text": "He thinks: the team is going to know. Jessa is going to know."
+   "text": "He thinks: the team is going to know. Jessa is going to know.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/010.mp3"
   },
   {
    "t": "narrate",
-   "text": "He thinks: the team is not going to like it."
+   "text": "He thinks: the team is not going to like it.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/011.mp3"
   },
   {
    "t": "narrate",
-   "text": "He thinks: it is — it is okay that the team is not going to like it."
+   "text": "He thinks: it is — it is okay that the team is not going to like it.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/012.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert five]He thinks: I am, for the first time in five weeks, doing something at this job that the team has not pre-agreed to. I am going to find out, this week, what it costs."
+   "text": "[shot:insert five]He thinks: I am, for the first time in five weeks, doing something at this job that the team has not pre-agreed to. I am going to find out, this week, what it costs.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/013.mp3"
   },
   {
    "t": "narrate",
-   "text": "He thinks: I am also going to find out what it is for."
+   "text": "He thinks: I am also going to find out what it is for.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/014.mp3"
   },
   {
    "t": "narrate",
-   "text": "The Altima pulls into the Centro lot at four thirty-six."
+   "text": "The Altima pulls into the Centro lot at four thirty-six.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/015.mp3"
   },
   {
    "t": "bg",
@@ -77,7 +86,8 @@
   },
   {
    "t": "narrate",
-   "text": "The dock door is unlocked."
+   "text": "The dock door is unlocked.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/017.mp3"
   },
   {
    "t": "show",
@@ -87,51 +97,61 @@
   },
   {
    "t": "narrate",
-   "text": "They walk in. Doug is in the break room. Doug looks up."
+   "text": "They walk in. Doug is in the break room. Doug looks up.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/019.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert horchata]Diego sets the medium horchata on the table in front of Doug."
+   "text": "[shot:insert horchata]Diego sets the medium horchata on the table in front of Doug.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/020.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "Sorry it's late.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/021.mp3"
   },
   {
    "t": "narrate",
-   "text": "Doug, in the break room, looks at the horchata. Doug looks at Diego. Doug looks at BT, behind Diego in the doorway. Doug looks back at the horchata."
+   "text": "Doug, in the break room, looks at the horchata. Doug looks at Diego. Doug looks at BT, behind Diego in the doorway. Doug looks back at the horchata.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/022.mp3"
   },
   {
    "t": "say",
    "char": "Doug",
    "text": "What kept you.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/023.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "I drank yours.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/024.mp3"
   },
   {
    "t": "narrate",
-   "text": "Doug, after a beat, smiles — the smallest possible smile, the Doug-smile, the smile of a man who has decided that the small human comedy of the moment is worth a smile but not, today, a sentence."
+   "text": "Doug, after a beat, smiles — the smallest possible smile, the Doug-smile, the smile of a man who has decided that the small human comedy of the moment is worth a smile but not, today, a sentence.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/025.mp3"
   },
   {
    "t": "say",
    "char": "Doug",
    "text": "[shot:closeup person]Thanks, kid.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/026.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]Doug picks up the horchata."
+   "text": "[shot:establish]Doug picks up the horchata.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/027.mp3"
   },
   {
    "t": "narrate",
-   "text": "Doug returns to Karamazov."
+   "text": "Doug returns to Karamazov.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/028.mp3"
   },
   {
    "t": "show",
@@ -143,7 +163,8 @@
    "t": "say",
    "char": "BT",
    "text": "I'll be in cereal.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/030.mp3"
   },
   {
    "t": "hide",
@@ -151,45 +172,53 @@
   },
   {
    "t": "narrate",
-   "text": "BT goes."
+   "text": "BT goes.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/032.mp3"
   },
   {
    "t": "narrate",
-   "text": "Diego stands in the break-room doorway for a beat."
+   "text": "Diego stands in the break-room doorway for a beat.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/033.mp3"
   },
   {
    "t": "say",
    "char": "Doug",
    "text": "[shot:closeup person]Diego.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/034.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "[shot:closeup person_b]Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/035.mp3"
   },
   {
    "t": "say",
    "char": "Doug",
    "text": "Good night?",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/036.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "Yeah, Doug. It was — it was fine.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/037.mp3"
   },
   {
    "t": "say",
    "char": "Doug",
    "text": "Good.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/038.mp3"
   },
   {
    "t": "narrate",
-   "text": "Doug turns the page."
+   "text": "Doug turns the page.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/039.mp3"
   },
   {
    "t": "hide",
@@ -201,11 +230,13 @@
   },
   {
    "t": "narrate",
-   "text": "Diego goes back to canned soup."
+   "text": "Diego goes back to canned soup.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/042.mp3"
   },
   {
    "t": "narrate",
-   "text": "The second half of the shift is the second half of the shift."
+   "text": "The second half of the shift is the second half of the shift.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/043.mp3"
   },
   {
    "t": "narrate",
@@ -227,37 +258,43 @@
   },
   {
    "t": "narrate",
-   "text": "Marisol, passing Diego's aisle at six twenty-four, slows briefly."
+   "text": "Marisol, passing Diego's aisle at six twenty-four, slows briefly.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/048.mp3"
   },
   {
    "t": "say",
    "char": "Marisol",
    "text": "[shot:closeup person]El Rancho?",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/049.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/050.mp3"
   },
   {
    "t": "say",
    "char": "Marisol",
    "text": "Hugo do the burrito with the potatoes?",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/051.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/052.mp3"
   },
   {
    "t": "say",
    "char": "Marisol",
    "text": "Good. Tell Hugo's mother the recipe is correct.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/053.mp3"
   },
   {
    "t": "hide",
@@ -265,7 +302,8 @@
   },
   {
    "t": "narrate",
-   "text": "She keeps walking."
+   "text": "She keeps walking.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/055.mp3"
   },
   {
    "t": "narrate",
@@ -277,15 +315,18 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]Marisol is, in her own way, also a Doug."
+   "text": "[shot:establish]Marisol is, in her own way, also a Doug.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/058.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]Diego had not, until this morning, fully understood that."
+   "text": "[shot:establish]Diego had not, until this morning, fully understood that.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/059.mp3"
   },
   {
    "t": "narrate",
-   "text": "He stocks the stewed tomatoes."
+   "text": "He stocks the stewed tomatoes.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/060.mp3"
   },
   {
    "t": "bg",
@@ -293,43 +334,53 @@
   },
   {
    "t": "narrate",
-   "text": "Diego goes out the dock door for his second break at six forty-eight."
+   "text": "Diego goes out the dock door for his second break at six forty-eight.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/062.mp3"
   },
   {
    "t": "narrate",
-   "text": "The dock is empty."
+   "text": "The dock is empty.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/063.mp3"
   },
   {
    "t": "narrate",
-   "text": "The cedar scrub is, at six forty-eight, beginning to do the thing the scrub does in the hour before sunrise — the small transition from dark to scrub, with the small first cicadas warming up in the trees beyond the fence."
+   "text": "The cedar scrub is, at six forty-eight, beginning to do the thing the scrub does in the hour before sunrise — the small transition from dark to scrub, with the small first cicadas warming up in the trees beyond the fence.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/064.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert smear]The eastern horizon, above the cedar, has the rust-colored thermal smear at its standard intensity for a clear morning."
+   "text": "[shot:insert smear]The eastern horizon, above the cedar, has the rust-colored thermal smear at its standard intensity for a clear morning.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/065.mp3"
   },
   {
    "t": "narrate",
-   "text": "Diego, with his coffee, stands at the edge of the dock."
+   "text": "Diego, with his coffee, stands at the edge of the dock.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/066.mp3"
   },
   {
    "t": "narrate",
-   "text": "He looks east."
+   "text": "He looks east.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/067.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup diego~]He thinks, for the first time in five weeks: BT."
+   "text": "[shot:closeup diego~]He thinks, for the first time in five weeks: BT.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/068.mp3"
   },
   {
    "t": "narrate",
-   "text": "He thinks: BT is the only other person on this dock who has, this week, looked east."
+   "text": "He thinks: BT is the only other person on this dock who has, this week, looked east.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/069.mp3"
   },
   {
    "t": "narrate",
-   "text": "He thinks: I told BT, on Tuesday, that I didn't know what the haze was. I told BT that the light does weird stuff. I told BT a thing I knew was not true."
+   "text": "He thinks: I told BT, on Tuesday, that I didn't know what the haze was. I told BT that the light does weird stuff. I told BT a thing I knew was not true.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/070.mp3"
   },
   {
    "t": "narrate",
-   "text": "He thinks: I did not, in the car at the lay-by, tell BT what the haze actually is. I had several openings. I chose not to."
+   "text": "He thinks: I did not, in the car at the lay-by, tell BT what the haze actually is. I had several openings. I chose not to.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/071.mp3"
   },
   {
    "t": "narrate",
@@ -341,7 +392,8 @@
   },
   {
    "t": "narrate",
-   "text": "He thinks: I have, this week, started to do something with BT. I have not yet decided how far I am going to do it."
+   "text": "He thinks: I have, this week, started to do something with BT. I have not yet decided how far I am going to do it.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/074.mp3"
   },
   {
    "t": "narrate",
@@ -353,31 +405,38 @@
   },
   {
    "t": "narrate",
-   "text": "[beat:still]He thinks: the cost is becoming visible to me."
+   "text": "[beat:still]He thinks: the cost is becoming visible to me.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/077.mp3"
   },
   {
    "t": "narrate",
-   "text": "He thinks, with the small careful honesty he is, this summer, occasionally able to do: I do not, today, know what to do about the cost."
+   "text": "He thinks, with the small careful honesty he is, this summer, occasionally able to do: I do not, today, know what to do about the cost.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/078.mp3"
   },
   {
    "t": "narrate",
-   "text": "He drinks his coffee."
+   "text": "He drinks his coffee.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/079.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert smear]He looks at the smear."
+   "text": "[shot:insert smear]He looks at the smear.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/080.mp3"
   },
   {
    "t": "narrate",
-   "text": "The smear is still there."
+   "text": "The smear is still there.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/081.mp3"
   },
   {
    "t": "narrate",
-   "text": "The smear is, this morning, the same smear."
+   "text": "The smear is, this morning, the same smear.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/082.mp3"
   },
   {
    "t": "narrate",
-   "text": "He goes back inside at six fifty-six."
+   "text": "He goes back inside at six fifty-six.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/083.mp3"
   },
   {
    "t": "bg",
@@ -385,11 +444,13 @@
   },
   {
    "t": "narrate",
-   "text": "The shift ends at eight oh-four."
+   "text": "The shift ends at eight oh-four.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/085.mp3"
   },
   {
    "t": "narrate",
-   "text": "Diego clocks out. He goes out the back door. His truck is in its usual spot. BT's Altima is — Diego registers, walking past — still in the lot. BT is at the Altima, in the driver's seat with the door open, looking at the seat."
+   "text": "Diego clocks out. He goes out the back door. His truck is in its usual spot. BT's Altima is — Diego registers, walking past — still in the lot. BT is at the Altima, in the driver's seat with the door open, looking at the seat.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/086.mp3"
   },
   {
    "t": "show",
@@ -401,111 +462,131 @@
    "t": "say",
    "char": "BT",
    "text": "Diego.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/088.mp3"
   },
   {
    "t": "narrate",
-   "text": "Diego stops."
+   "text": "Diego stops.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/089.mp3"
   },
   {
    "t": "say",
    "char": "BT",
    "text": "[shot:closeup person]There's an El Diablito packet under my thigh. It leaked.",
-   "expr": "serious"
+   "expr": "serious",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/090.mp3"
   },
   {
    "t": "narrate",
-   "text": "Diego, after a beat, laughs."
+   "text": "Diego, after a beat, laughs.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/091.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "Oh, man.",
-   "expr": "happy"
+   "expr": "happy",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/092.mp3"
   },
   {
    "t": "say",
    "char": "BT",
    "text": "I am going to drive home with orange sauce on my pants.",
-   "expr": "serious"
+   "expr": "serious",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/093.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "You are.",
-   "expr": "happy"
+   "expr": "happy",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/094.mp3"
   },
   {
    "t": "say",
    "char": "BT",
    "text": "[shot:closeup person]There is no — there is no arrangement for this. There is no rag.",
-   "expr": "serious"
+   "expr": "serious",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/095.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "There's a roll of paper towels in my truck. Hold on.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/096.mp3"
   },
   {
    "t": "narrate",
-   "text": "He goes to his truck. He gets the paper towels — the half-roll he keeps in the cab for the small occasions a man with a truck needs a paper towel. He brings the roll over."
+   "text": "He goes to his truck. He gets the paper towels — the half-roll he keeps in the cab for the small occasions a man with a truck needs a paper towel. He brings the roll over.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/097.mp3"
   },
   {
    "t": "narrate",
-   "text": "He hands BT the roll."
+   "text": "He hands BT the roll.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/098.mp3"
   },
   {
    "t": "say",
    "char": "BT",
    "text": "Thanks, man.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/099.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]BT cleans the seat. BT cleans his pants. The orange sauce has, by Diego's count, also gotten on the lower edge of BT's polo. BT cleans that too."
+   "text": "[shot:establish]BT cleans the seat. BT cleans his pants. The orange sauce has, by Diego's count, also gotten on the lower edge of BT's polo. BT cleans that too.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/100.mp3"
   },
   {
    "t": "say",
    "char": "BT",
    "text": "I'm — I'm going home. I'm gonna shower. I'm gonna sleep till four. I'm gonna come back tonight and we are gonna do inventory.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/101.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/102.mp3"
   },
   {
    "t": "say",
    "char": "BT",
    "text": "Diego.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/103.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/104.mp3"
   },
   {
    "t": "say",
    "char": "BT",
    "text": "[shot:closeup bt]Thanks. For coming.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/105.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "Yeah, man. Thanks for the burrito.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/106.mp3"
   },
   {
    "t": "say",
    "char": "BT",
    "text": "Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/107.mp3"
   },
   {
    "t": "hide",
@@ -513,43 +594,53 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]BT gets in the Altima. He starts the engine. He pulls out of the lot."
+   "text": "[shot:establish]BT gets in the Altima. He starts the engine. He pulls out of the lot.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/109.mp3"
   },
   {
    "t": "narrate",
-   "text": "Diego watches him go to the end of the row, signal left, turn out."
+   "text": "Diego watches him go to the end of the row, signal left, turn out.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/110.mp3"
   },
   {
    "t": "narrate",
-   "text": "He gets in his truck."
+   "text": "He gets in his truck.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/111.mp3"
   },
   {
    "t": "narrate",
-   "text": "He sits for a minute."
+   "text": "He sits for a minute.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/112.mp3"
   },
   {
    "t": "narrate",
-   "text": "He thinks, with the small surprise his interior is occasionally able to do: I had a good time."
+   "text": "He thinks, with the small surprise his interior is occasionally able to do: I had a good time.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/113.mp3"
   },
   {
    "t": "narrate",
-   "text": "He thinks: the team is not going to like that I had a good time."
+   "text": "He thinks: the team is not going to like that I had a good time.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/114.mp3"
   },
   {
    "t": "narrate",
-   "text": "He thinks: I am, this morning, going to drive home and eat eggs with my grandmother and sleep and come back tonight and do inventory."
+   "text": "He thinks: I am, this morning, going to drive home and eat eggs with my grandmother and sleep and come back tonight and do inventory.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/115.mp3"
   },
   {
    "t": "narrate",
-   "text": "He thinks: the rest is for next week."
+   "text": "He thinks: the rest is for next week.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/116.mp3"
   },
   {
    "t": "narrate",
-   "text": "He starts the truck."
+   "text": "He starts the truck.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/117.mp3"
   },
   {
    "t": "narrate",
-   "text": "He drives home."
+   "text": "He drives home.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/118.mp3"
   },
   {
    "t": "bg",
@@ -563,11 +654,13 @@
   },
   {
    "t": "narrate",
-   "text": "His grandmother is at the kitchen window when he pulls in."
+   "text": "His grandmother is at the kitchen window when he pulls in.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/121.mp3"
   },
   {
    "t": "narrate",
-   "text": "He kisses her on the temple. He sits at the table. She makes the eggs."
+   "text": "He kisses her on the temple. He sits at the table. She makes the eggs.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/122.mp3"
   },
   {
    "t": "narrate",
@@ -575,27 +668,32 @@
   },
   {
    "t": "narrate",
-   "text": "She sits, today, with him — it is Friday morning, and Friday mornings she has, this summer, decided are sitting mornings, because Friday is the small end of the week and she has decided that the small end of the week deserves the small intimacy of the table."
+   "text": "She sits, today, with him — it is Friday morning, and Friday mornings she has, this summer, decided are sitting mornings, because Friday is the small end of the week and she has decided that the small end of the week deserves the small intimacy of the table.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/124.mp3"
   },
   {
    "t": "narrate",
-   "text": "He eats."
+   "text": "He eats.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/125.mp3"
   },
   {
    "t": "narrate",
-   "text": "She watches him."
+   "text": "She watches him.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/126.mp3"
   },
   {
    "t": "say",
    "char": "Abuela",
    "text": "[shot:closeup person]Mijo. You look like you have eaten something good already.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/127.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "Abuela. How do you know.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/128.mp3"
   },
   {
    "t": "say",
@@ -611,45 +709,53 @@
   },
   {
    "t": "narrate",
-   "text": "He laughs."
+   "text": "He laughs.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/131.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "Abuela. I went to El Rancho. With BT.",
-   "expr": "happy"
+   "expr": "happy",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/132.mp3"
   },
   {
    "t": "say",
    "char": "Abuela",
    "text": "BT is the new one. The one the team does not like.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/133.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "[shot:closeup person]Yeah.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/134.mp3"
   },
   {
    "t": "say",
    "char": "Abuela",
    "text": "And.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/135.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]He thinks for a long moment."
+   "text": "[shot:establish]He thinks for a long moment.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/136.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "And — abuela, I had a good time. I think. I think he might be a person I could be friends with. The team is not going to like that. I am going to have to figure out — I am going to have to figure out what I do about that.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/137.mp3"
   },
   {
    "t": "narrate",
-   "text": "She nods."
+   "text": "She nods.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/138.mp3"
   },
   {
    "t": "say",
@@ -671,27 +777,32 @@
   },
   {
    "t": "narrate",
-   "text": "He thinks about this."
+   "text": "He thinks about this.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/142.mp3"
   },
   {
    "t": "say",
    "char": "Diego",
    "text": "[shot:closeup person_b]Yeah, abuela.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/143.mp3"
   },
   {
    "t": "say",
    "char": "Abuela",
    "text": "Eat. Sleep. Tonight is inventory. Tomorrow morning I will see you again.",
-   "expr": "neutral"
+   "expr": "neutral",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/144.mp3"
   },
   {
    "t": "narrate",
-   "text": "He eats."
+   "text": "He eats.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/145.mp3"
   },
   {
    "t": "narrate",
-   "text": "She does not, today, ask anything more."
+   "text": "She does not, today, ask anything more.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/146.mp3"
   },
   {
    "t": "bg",
@@ -703,59 +814,73 @@
   },
   {
    "t": "narrate",
-   "text": "He sleeps from nine AM to four PM."
+   "text": "He sleeps from nine AM to four PM.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/149.mp3"
   },
   {
    "t": "narrate",
-   "text": "The blackout curtains are drawn. The room is dark. The fan, on the ceiling, clicks on the third rotation. He has, since June, stopped counting."
+   "text": "The blackout curtains are drawn. The room is dark. The fan, on the ceiling, clicks on the third rotation. He has, since June, stopped counting.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/150.mp3"
   },
   {
    "t": "narrate",
-   "text": "He dreams, at one PM, of the dock."
+   "text": "He dreams, at one PM, of the dock.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/151.mp3"
   },
   {
    "t": "narrate",
-   "text": "In the dream, BT is on the dock with him."
+   "text": "In the dream, BT is on the dock with him.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/152.mp3"
   },
   {
    "t": "narrate",
-   "text": "In the dream, BT is looking east at the haze."
+   "text": "In the dream, BT is looking east at the haze.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/153.mp3"
   },
   {
    "t": "narrate",
-   "text": "In the dream, Diego — for the first time in five weeks of dreaming about the dock — turns and tells BT what the haze is."
+   "text": "In the dream, Diego — for the first time in five weeks of dreaming about the dock — turns and tells BT what the haze is.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/154.mp3"
   },
   {
    "t": "narrate",
-   "text": "BT, in the dream, listens."
+   "text": "BT, in the dream, listens.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/155.mp3"
   },
   {
    "t": "narrate",
-   "text": "BT, in the dream, after Diego is done telling him, says: yeah, man. I figured. I just wasn't sure if it was, like — if I could ask."
+   "text": "BT, in the dream, after Diego is done telling him, says: yeah, man. I figured. I just wasn't sure if it was, like — if I could ask.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/156.mp3"
   },
   {
    "t": "narrate",
-   "text": "Diego, in the dream, says: you could have asked."
+   "text": "Diego, in the dream, says: you could have asked.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/157.mp3"
   },
   {
    "t": "narrate",
-   "text": "BT, in the dream, says: yeah. okay."
+   "text": "BT, in the dream, says: yeah. okay.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/158.mp3"
   },
   {
    "t": "narrate",
-   "text": "The dream, after, fades."
+   "text": "The dream, after, fades.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/159.mp3"
   },
   {
    "t": "narrate",
-   "text": "Diego wakes at four eleven PM."
+   "text": "Diego wakes at four eleven PM.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/160.mp3"
   },
   {
    "t": "narrate",
-   "text": "He opens the blackout curtain."
+   "text": "He opens the blackout curtain.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/161.mp3"
   },
   {
    "t": "narrate",
-   "text": "The afternoon light comes in."
+   "text": "The afternoon light comes in.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/162.mp3"
   },
   {
    "t": "narrate",
@@ -767,7 +892,8 @@
   },
   {
    "t": "narrate",
-   "text": "He gets up."
+   "text": "He gets up.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/165.mp3"
   },
   {
    "t": "bg",
@@ -775,27 +901,33 @@
   },
   {
    "t": "narrate",
-   "text": "His grandmother is making sopa de pollo downstairs — the recipe she does it with, not Linda's, the small Graciela-recipe with the lime and the avocado on top."
+   "text": "His grandmother is making sopa de pollo downstairs — the recipe she does it with, not Linda's, the small Graciela-recipe with the lime and the avocado on top.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/167.mp3"
   },
   {
    "t": "narrate",
-   "text": "He eats the sopa de pollo at five."
+   "text": "He eats the sopa de pollo at five.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/168.mp3"
   },
   {
    "t": "narrate",
-   "text": "He drives to Centro at nine forty."
+   "text": "He drives to Centro at nine forty.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/169.mp3"
   },
   {
    "t": "narrate",
-   "text": "The shift starts at ten."
+   "text": "The shift starts at ten.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/170.mp3"
   },
   {
    "t": "narrate",
-   "text": "The night, as it turns out, is going to be a long one."
+   "text": "The night, as it turns out, is going to be a long one.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/171.mp3"
   },
   {
    "t": "narrate",
-   "text": "But that is the next chapter."
+   "text": "But that is the next chapter.",
+   "voice": "assets/audio/voice/vol6_ch16_dawn/172.mp3"
   },
   {
    "t": "narrate",

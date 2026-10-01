@@ -29,7 +29,8 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:day_bright]The door at the back of the strip mall is unlocked, exactly as promised."
+   "text": "[mood:day_bright]The door at the back of the strip mall is unlocked, exactly as promised.",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/005.mp3"
   },
   {
    "t": "show",
@@ -57,89 +58,105 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup maya]Maya is sitting on the desk. She has two iced coffees. She hands one to Sam."
+   "text": "[shot:closeup maya]Maya is sitting on the desk. She has two iced coffees. She hands one to Sam.",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/011.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"Hey.\""
+   "text": "\"Hey.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/012.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"Hey.\""
+   "text": "\"Hey.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/013.mp3"
   },
   {
    "t": "narrate",
-   "text": "Sam takes the coffee. Sam sits on an overturned milk crate opposite the desk. Maya closes the door. She slides a bolt Sam did not realize was there."
+   "text": "Sam takes the coffee. Sam sits on an overturned milk crate opposite the desk. Maya closes the door. She slides a bolt Sam did not realize was there.",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/014.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"Okay.\""
+   "text": "\"Okay.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/015.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"Okay.\""
+   "text": "\"Okay.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/016.mp3"
   },
   {
    "t": "narrate",
-   "text": "They look at each other."
+   "text": "They look at each other.",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/017.mp3"
   },
   {
    "t": "narrate",
-   "text": "Maya is, Sam registers, about three inches shorter than she is. Dark hair in a single braid over one shoulder. Glasses. A shirt from a band Sam doesn't know. The specific careful stillness of a kid who has trained herself out of fidgeting."
+   "text": "Maya is, Sam registers, about three inches shorter than she is. Dark hair in a single braid over one shoulder. Glasses. A shirt from a band Sam doesn't know. The specific careful stillness of a kid who has trained herself out of fidgeting.",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/018.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "[shot:closeup person]\"I don't know what I'm doing here.\""
+   "text": "[shot:closeup person]\"I don't know what I'm doing here.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/019.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"I know. That's fine.\""
+   "text": "\"I know. That's fine.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/020.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"I — my boyfriend is —\""
+   "text": "\"I — my boyfriend is —\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/021.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"Diego. Yeah. I know.\""
+   "text": "\"Diego. Yeah. I know.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/022.mp3"
   },
   {
    "t": "narrate",
-   "text": "Sam exhales."
+   "text": "Sam exhales.",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/023.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "[shot:closeup person]\"Maya. How do you know.\""
+   "text": "[shot:closeup person]\"Maya. How do you know.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/024.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "[shot:closeup person_b]\"Because somebody told me. Somebody who told me before you knew yourself, actually. I want to tell you three things, and if any of them freak you out, you can leave and I won't follow up. Okay?\""
+   "text": "[shot:closeup person_b]\"Because somebody told me. Somebody who told me before you knew yourself, actually. I want to tell you three things, and if any of them freak you out, you can leave and I won't follow up. Okay?\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/025.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"Okay.\""
+   "text": "\"Okay.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/026.mp3"
   },
   {
    "t": "say",
@@ -155,7 +172,8 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup sam]Sam is silent."
+   "text": "[shot:closeup sam]Sam is silent.",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/029.mp3"
   },
   {
    "t": "say",
@@ -171,19 +189,22 @@
   },
   {
    "t": "narrate",
-   "text": "Sam stares at her."
+   "text": "Sam stares at her.",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/032.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "(gently) \"I am sorry I am the one telling you this.\""
+   "text": "(gently) \"I am sorry I am the one telling you this.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/033.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"Don't — Maya. I already figured it out. I figured it out last night. I watched him text somebody under the kitchen table at dinner. It was — I already knew. Keep going.\""
+   "text": "\"Don't — Maya. I already figured it out. I figured it out last night. I watched him text somebody under the kitchen table at dinner. It was — I already knew. Keep going.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/034.mp3"
   },
   {
    "t": "say",
@@ -201,39 +222,46 @@
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"I saw them —\""
+   "text": "\"I saw them —\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/037.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"— who are watching out for you. Not watching you. Watching over you. Graciela vouched for them.\""
+   "text": "\"— who are watching out for you. Not watching you. Watching over you. Graciela vouched for them.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/038.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup sam~]Sam puts her forehead on her hand."
+   "text": "[shot:closeup sam~]Sam puts her forehead on her hand.",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/039.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "(not quite steadily) \"Maya. This is — this is so much.\""
+   "text": "(not quite steadily) \"Maya. This is — this is so much.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/040.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"I know.\""
+   "text": "\"I know.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/041.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"How did — how did you get here first.\""
+   "text": "\"How did — how did you get here first.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/042.mp3"
   },
   {
    "t": "narrate",
-   "text": "Maya thinks about it. Then she says, honestly:"
+   "text": "Maya thinks about it. Then she says, honestly:",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/043.mp3"
   },
   {
    "t": "say",
@@ -251,45 +279,53 @@
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"Your dad.\""
+   "text": "\"Your dad.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/046.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"Jimmy Daigle.\""
+   "text": "\"Jimmy Daigle.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/047.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"I know. I mean — are you okay.\""
+   "text": "\"I know. I mean — are you okay.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/048.mp3"
   },
   {
    "t": "narrate",
-   "text": "Maya pauses."
+   "text": "Maya pauses.",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/049.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "[shot:closeup person_b]\"That's a nice question. I don't — yeah. I think so. I'm not, maybe. But I'm okay for now. Thank you for asking.\""
+   "text": "[shot:closeup person_b]\"That's a nice question. I don't — yeah. I think so. I'm not, maybe. But I'm okay for now. Thank you for asking.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/050.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "[shot:closeup person]\"Sure.\""
+   "text": "[shot:closeup person]\"Sure.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/051.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert coffee]Sam drinks some of her coffee. Her hand is, she notices, not shaking. She had expected it to be shaking. She makes a small mental note to come back, later, to the fact that it is not."
+   "text": "[shot:insert coffee]Sam drinks some of her coffee. Her hand is, she notices, not shaking. She had expected it to be shaking. She makes a small mental note to come back, later, to the fact that it is not.",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/052.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"What do we do.\""
+   "text": "\"What do we do.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/053.mp3"
   },
   {
    "t": "say",
@@ -307,67 +343,79 @@
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"Five days.\""
+   "text": "\"Five days.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/056.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"Yeah. Sunday. Rick will get a thing to me Sunday night. I will show it to you Monday. Then we make a plan.\""
+   "text": "\"Yeah. Sunday. Rick will get a thing to me Sunday night. I will show it to you Monday. Then we make a plan.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/057.mp3"
   },
   {
    "t": "narrate",
-   "text": "Sam nods."
+   "text": "Sam nods.",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/058.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"I need to ask you something. And I want you to tell me the truth.\""
+   "text": "\"I need to ask you something. And I want you to tell me the truth.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/059.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "[shot:closeup person_b]\"Okay.\""
+   "text": "[shot:closeup person_b]\"Okay.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/060.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"Is Diego — is he being hurt.\""
+   "text": "\"Is Diego — is he being hurt.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/061.mp3"
   },
   {
    "t": "narrate",
-   "text": "Maya is quiet."
+   "text": "Maya is quiet.",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/062.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"I don't know. F.T. said not okay, but alive. That is all he said. I am going to assume it is the worse of the possible meanings until I learn otherwise. I think we should both assume that. But I do not know.\""
+   "text": "\"I don't know. F.T. said not okay, but alive. That is all he said. I am going to assume it is the worse of the possible meanings until I learn otherwise. I think we should both assume that. But I do not know.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/063.mp3"
   },
   {
    "t": "narrate",
-   "text": "Sam closes her eyes. Sam opens them."
+   "text": "Sam closes her eyes. Sam opens them.",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/064.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"Okay.\""
+   "text": "\"Okay.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/065.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"Sam.\""
+   "text": "\"Sam.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/066.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"Yeah.\""
+   "text": "\"Yeah.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/067.mp3"
   },
   {
    "t": "say",
@@ -383,95 +431,111 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup sam]Sam looks at her for a long moment."
+   "text": "[shot:closeup sam]Sam looks at her for a long moment.",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/070.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"Thank you.\""
+   "text": "\"Thank you.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/071.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"Yeah.\""
+   "text": "\"Yeah.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/072.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"Maya.\""
+   "text": "\"Maya.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/073.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"Yeah.\""
+   "text": "\"Yeah.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/074.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"I might need you to tell me things like that sometimes. Even if it feels dumb.\""
+   "text": "\"I might need you to tell me things like that sometimes. Even if it feels dumb.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/075.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"It won't feel dumb.\""
+   "text": "\"It won't feel dumb.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/076.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"It will.\""
+   "text": "\"It will.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/077.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"Okay. I'll tell you anyway.\""
+   "text": "\"Okay. I'll tell you anyway.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/078.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]They sit for a minute. Sam drinks her coffee. Maya drinks hers."
+   "text": "[shot:establish]They sit for a minute. Sam drinks her coffee. Maya drinks hers.",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/079.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"One more thing, and then we are going to go out to the store and you are going to browse for forty-five minutes and I am going to ring you up for a back issue of something, and we are going to look like two girls who went to the comic shop together on a Tuesday.\""
+   "text": "\"One more thing, and then we are going to go out to the store and you are going to browse for forty-five minutes and I am going to ring you up for a back issue of something, and we are going to look like two girls who went to the comic shop together on a Tuesday.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/080.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"Okay.\""
+   "text": "\"Okay.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/081.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"Ben Kowalski.\""
+   "text": "\"Ben Kowalski.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/082.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"Ben — the one at the Pit Stop?\""
+   "text": "\"Ben — the one at the Pit Stop?\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/083.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"Yeah.\""
+   "text": "\"Yeah.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/084.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"What about him.\""
+   "text": "\"What about him.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/085.mp3"
   },
   {
    "t": "say",
@@ -489,35 +553,41 @@
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"His dad is —\""
+   "text": "\"His dad is —\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/088.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"His dad is something. I don't know what yet. F.T. hasn't told me. I don't know if F.T. knows. But Jesse is going to need us too.\""
+   "text": "\"His dad is something. I don't know what yet. F.T. hasn't told me. I don't know if F.T. knows. But Jesse is going to need us too.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/089.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"Okay.\""
+   "text": "\"Okay.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/090.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"That's the group. Five of us. Plus the adults who are watching. You, me, Ben, Jesse. And Diego, when we get him.\""
+   "text": "\"That's the group. Five of us. Plus the adults who are watching. You, me, Ben, Jesse. And Diego, when we get him.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/091.mp3"
   },
   {
    "t": "narrate",
-   "text": "[beat:chill][shot:closeup sam]When. Not if. Sam catches it. She nods."
+   "text": "[beat:chill][shot:closeup sam]When. Not if. Sam catches it. She nods.",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/092.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"Okay. Five.\""
+   "text": "\"Okay. Five.\"",
+   "voice": "assets/audio/voice/vol6_ch3_back_room/093.mp3"
   },
   {
    "t": "flag",

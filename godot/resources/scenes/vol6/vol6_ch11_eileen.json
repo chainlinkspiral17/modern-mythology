@@ -35,15 +35,18 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:morning_bright][shot:insert door]At eight oh-three the doorbell rings."
+      "text": "[mood:morning_bright][shot:insert door]At eight oh-three the doorbell rings.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/006.mp3"
     },
     {
       "t": "narrate",
-      "text": "She is not, at eight oh-three on a Monday morning, expecting anybody."
+      "text": "She is not, at eight oh-three on a Monday morning, expecting anybody.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/007.mp3"
     },
     {
       "t": "narrate",
-      "text": "She gets up. She puts the coffee cup down on the wicker chair's arm. She crosses through the kitchen to the front of the house. She opens the door."
+      "text": "She gets up. She puts the coffee cup down on the wicker chair's arm. She crosses through the kitchen to the front of the house. She opens the door.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/008.mp3"
     },
     {
       "t": "hide",
@@ -67,21 +70,25 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup eileen]Eileen Henderson is on the porch."
+      "text": "[shot:closeup eileen]Eileen Henderson is on the porch.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/013.mp3"
     },
     {
       "t": "narrate",
-      "text": "Eileen is in jeans and a sleeveless blouse. Eileen has, in her hand, a paper bag from the bakery on Magnolia."
+      "text": "Eileen is in jeans and a sleeveless blouse. Eileen has, in her hand, a paper bag from the bakery on Magnolia.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/014.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Bianca. I am — I am sorry to come by without calling. I was driving back from the bakery. I thought of you. I have, in this bag, two cinnamon rolls and one of those cheese danishes. I am willing to share. May I come in for half an hour.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/015.mp3"
     },
     {
       "t": "narrate",
-      "text": "Bianca looks at her."
+      "text": "Bianca looks at her.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/016.mp3"
     },
     {
       "t": "narrate",
@@ -95,19 +102,23 @@
       "t": "say",
       "char": "Bianca",
       "text": "[shot:closeup person]Eileen. Yes. Come in. I made coffee already. There's a second pot.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/019.mp3"
     },
     {
       "t": "narrate",
-      "text": "Eileen comes in."
+      "text": "Eileen comes in.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/020.mp3"
     },
     {
       "t": "narrate",
-      "text": "The two of them go to the kitchen."
+      "text": "The two of them go to the kitchen.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/021.mp3"
     },
     {
       "t": "narrate",
-      "text": "[mood:kitchen_practical][shot:establish]They sit at the kitchen table."
+      "text": "[mood:kitchen_practical][shot:establish]They sit at the kitchen table.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/022.mp3"
     },
     {
       "t": "narrate",
@@ -119,17 +130,20 @@
     },
     {
       "t": "narrate",
-      "text": "For a moment they sit."
+      "text": "For a moment they sit.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/025.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Bianca. How are you.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/026.mp3"
     },
     {
       "t": "narrate",
-      "text": "Bianca thinks."
+      "text": "Bianca thinks.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/027.mp3"
     },
     {
       "t": "say",
@@ -145,23 +159,27 @@
     },
     {
       "t": "narrate",
-      "text": "Eileen nods."
+      "text": "Eileen nods.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/030.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/031.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "You?",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/032.mp3"
     },
     {
       "t": "narrate",
-      "text": "Eileen thinks."
+      "text": "Eileen thinks.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/033.mp3"
     },
     {
       "t": "say",
@@ -185,23 +203,27 @@
       "t": "say",
       "char": "Bianca",
       "text": "Good.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/037.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/038.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "[shot:closeup person]And you.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/039.mp3"
     },
     {
       "t": "narrate",
-      "text": "Eileen pauses."
+      "text": "Eileen pauses.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/040.mp3"
     },
     {
       "t": "say",
@@ -223,13 +245,15 @@
     },
     {
       "t": "narrate",
-      "text": "Bianca looks at her."
+      "text": "Bianca looks at her.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/044.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Eileen.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/045.mp3"
     },
     {
       "t": "say",
@@ -263,115 +287,138 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert table]Bianca, at the table, does not, for a long moment, respond."
+      "text": "[shot:insert table]Bianca, at the table, does not, for a long moment, respond.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/051.mp3"
     },
     {
       "t": "narrate",
-      "text": "She drinks her coffee."
+      "text": "She drinks her coffee.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/052.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thinks about her mother's wicker chair on the back porch."
+      "text": "She thinks about her mother's wicker chair on the back porch.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/053.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thinks about the radio in her brother's house in Houston."
+      "text": "She thinks about the radio in her brother's house in Houston.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/054.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup bianca~]She thinks: the four-thirty hour has been mine. I have been, on purpose, alone in it."
+      "text": "[shot:closeup bianca~]She thinks: the four-thirty hour has been mine. I have been, on purpose, alone in it.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/055.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thinks: it has been, in the way of being alone in it, the thing that has, this summer, been working."
+      "text": "She thinks: it has been, in the way of being alone in it, the thing that has, this summer, been working.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/056.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thinks: and now Eileen Henderson is sitting at my kitchen table at eight oh-three on a Monday morning with a bag of cinnamon rolls and is, in her gentle way, asking whether the four-thirty hour might also, sometimes, be the four-thirty table."
+      "text": "She thinks: and now Eileen Henderson is sitting at my kitchen table at eight oh-three on a Monday morning with a bag of cinnamon rolls and is, in her gentle way, asking whether the four-thirty hour might also, sometimes, be the four-thirty table.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/057.mp3"
     },
     {
       "t": "narrate",
-      "text": "[beat:lift]She thinks, finally: I am going to say yes."
+      "text": "[beat:lift]She thinks, finally: I am going to say yes.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/058.mp3"
     },
     {
       "t": "narrate",
-      "text": "She is, she registers, slightly surprised by this."
+      "text": "She is, she registers, slightly surprised by this.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/059.mp3"
     },
     {
       "t": "narrate",
-      "text": "She had not, at four eleven, predicted that she was going to say yes to anything today."
+      "text": "She had not, at four eleven, predicted that she was going to say yes to anything today.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/060.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Eileen. I would like that. Not — not every morning. Not even most. But once in a while. Yes.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/061.mp3"
     },
     {
       "t": "narrate",
-      "text": "Eileen smiles."
+      "text": "Eileen smiles.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/062.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "[shot:closeup person_b]Good.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/063.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Tomorrow?",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/064.mp3"
     },
     {
       "t": "narrate",
-      "text": "Bianca laughs. It is the first laugh she has had this morning. The laugh is small and surprised and real."
+      "text": "Bianca laughs. It is the first laugh she has had this morning. The laugh is small and surprised and real.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/065.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Eileen. Tomorrow.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/066.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Five AM.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/067.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "[shot:closeup person]Five AM.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/068.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "I'll bring the coffee.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/069.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "I have plenty of coffee.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/070.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "I'll bring it anyway. The kind I like is from the place on Magnolia. You'll like it.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/071.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/072.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert cinnamon_roll]Eileen reaches into the bakery bag. She takes out a cinnamon roll. She puts it on the small plate Bianca had set in front of her. She does not yet eat it."
+      "text": "[shot:insert cinnamon_roll]Eileen reaches into the bakery bag. She takes out a cinnamon roll. She puts it on the small plate Bianca had set in front of her. She does not yet eat it.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/073.mp3"
     },
     {
       "t": "say",
@@ -389,55 +436,66 @@
       "t": "say",
       "char": "Bianca",
       "text": "Okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/076.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "Bianca.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/077.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "[shot:closeup person]Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/078.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "[shot:closeup person_b]I have wanted to do this since June. I have been waiting until I thought you would say yes. I am sorry it took me this long. I should have come earlier.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/079.mp3"
     },
     {
       "t": "narrate",
-      "text": "Bianca looks at her."
+      "text": "Bianca looks at her.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/080.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Eileen. You came at the right time. Don't be sorry. I would have said no, in June. I am — I am ready, today, to say yes. That is — that is the thing that matters. You came when I was ready. Thank you.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/081.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert hands]Eileen reaches across the table and squeezes Bianca's hand. The squeeze is brief, firm, the squeeze of a woman who has, in the past four months, become a person who knows how to squeeze a hand without making a thing of it."
+      "text": "[shot:insert hands]Eileen reaches across the table and squeezes Bianca's hand. The squeeze is brief, firm, the squeeze of a woman who has, in the past four months, become a person who knows how to squeeze a hand without making a thing of it.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/082.mp3"
     },
     {
       "t": "narrate",
-      "text": "She lets go."
+      "text": "She lets go.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/083.mp3"
     },
     {
       "t": "narrate",
-      "text": "She picks up the cinnamon roll."
+      "text": "She picks up the cinnamon roll.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/084.mp3"
     },
     {
       "t": "narrate",
-      "text": "She eats."
+      "text": "She eats.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/085.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]They sit at the table for another forty minutes."
+      "text": "[shot:establish]They sit at the table for another forty minutes.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/086.mp3"
     },
     {
       "t": "narrate",
@@ -457,55 +515,67 @@
     },
     {
       "t": "narrate",
-      "text": "They do not, in the forty minutes, talk about Mike."
+      "text": "They do not, in the forty minutes, talk about Mike.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/091.mp3"
     },
     {
       "t": "narrate",
-      "text": "They do not, in the forty minutes, talk about Jim's confession."
+      "text": "They do not, in the forty minutes, talk about Jim's confession.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/092.mp3"
     },
     {
       "t": "narrate",
-      "text": "They do not, in the forty minutes, talk about the substation, which has been, since July, an empty building with a FOR SALE sign in the front window that nobody has, in the six weeks the sign has been up, called about."
+      "text": "They do not, in the forty minutes, talk about the substation, which has been, since July, an empty building with a FOR SALE sign in the front window that nobody has, in the six weeks the sign has been up, called about.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/093.mp3"
     },
     {
       "t": "narrate",
-      "text": "They do not, in the forty minutes, talk about NexCorp."
+      "text": "They do not, in the forty minutes, talk about NexCorp.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/094.mp3"
     },
     {
       "t": "narrate",
-      "text": "They talk about the small things that two women in their late forties talk about, in a kitchen, on a Monday morning, when they have decided, together, that this is going to be one of the hours in which they do not perform anything."
+      "text": "They talk about the small things that two women in their late forties talk about, in a kitchen, on a Monday morning, when they have decided, together, that this is going to be one of the hours in which they do not perform anything.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/095.mp3"
     },
     {
       "t": "narrate",
-      "text": "It is, Bianca registers afterward, the longest she has talked about nothing with another adult since June."
+      "text": "It is, Bianca registers afterward, the longest she has talked about nothing with another adult since June.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/096.mp3"
     },
     {
       "t": "narrate",
-      "text": "It is, she registers further, exactly the right thing."
+      "text": "It is, she registers further, exactly the right thing.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/097.mp3"
     },
     {
       "t": "narrate",
-      "text": "At eight forty-six Eileen leaves."
+      "text": "At eight forty-six Eileen leaves.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/098.mp3"
     },
     {
       "t": "narrate",
-      "text": "She hugs Bianca at the door. The hug is brief."
+      "text": "She hugs Bianca at the door. The hug is brief.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/099.mp3"
     },
     {
       "t": "say",
       "char": "Eileen",
       "text": "[shot:closeup person]Tomorrow. Five AM.",
-      "expr": "happy"
+      "expr": "happy",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/100.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "[shot:closeup person]Tomorrow.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/101.mp3"
     },
     {
       "t": "narrate",
-      "text": "Eileen goes to her Honda. Eileen pulls out. Eileen drives off."
+      "text": "Eileen goes to her Honda. Eileen pulls out. Eileen drives off.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/102.mp3"
     },
     {
       "t": "hide",
@@ -513,65 +583,80 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:morning_bright][shot:closeup bianca]Bianca stands at the door for a long moment."
+      "text": "[mood:morning_bright][shot:closeup bianca]Bianca stands at the door for a long moment.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/104.mp3"
     },
     {
       "t": "narrate",
-      "text": "Then she closes the door. She goes back to the kitchen. She picks up the coffee cups. She takes them to the sink. She rinses them. She puts them in the dishwasher."
+      "text": "Then she closes the door. She goes back to the kitchen. She picks up the coffee cups. She takes them to the sink. She rinses them. She puts them in the dishwasher.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/105.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thinks, at the sink: I am going to call my brother."
+      "text": "She thinks, at the sink: I am going to call my brother.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/106.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thinks: I am going to call him today. Not Tuesday. Today."
+      "text": "She thinks: I am going to call him today. Not Tuesday. Today.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/107.mp3"
     },
     {
       "t": "narrate",
-      "text": "She thinks: I am going to ask him about the radio."
+      "text": "She thinks: I am going to ask him about the radio.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/108.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]She picks up her phone from the counter."
+      "text": "[shot:insert phone]She picks up her phone from the counter.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/109.mp3"
     },
     {
       "t": "narrate",
-      "text": "She finds her brother's number."
+      "text": "She finds her brother's number.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/110.mp3"
     },
     {
       "t": "narrate",
-      "text": "She presses call."
+      "text": "She presses call.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/111.mp3"
     },
     {
       "t": "narrate",
-      "text": "The line rings. Three rings. Four. Five. The voicemail picks up. Her brother's voice, recorded, says — in the way her brother has been recording his voicemail since 2014: Hey. You've reached Carlos. Leave a message. I'll get back to you."
+      "text": "The line rings. Three rings. Four. Five. The voicemail picks up. Her brother's voice, recorded, says — in the way her brother has been recording his voicemail since 2014: Hey. You've reached Carlos. Leave a message. I'll get back to you.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/112.mp3"
     },
     {
       "t": "narrate",
-      "text": "She waits for the beep."
+      "text": "She waits for the beep.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/113.mp3"
     },
     {
       "t": "say",
       "char": "Bianca",
       "text": "Carlos. Hey, it's me. I — I want to ask you something. About Dad's radio. The one he was working on when he died. Do you still have it. Call me back when you can.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/114.mp3"
     },
     {
       "t": "narrate",
-      "text": "She hangs up."
+      "text": "She hangs up.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/115.mp3"
     },
     {
       "t": "narrate",
-      "text": "She puts the phone down."
+      "text": "She puts the phone down.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/116.mp3"
     },
     {
       "t": "narrate",
-      "text": "She stands at the counter for a long minute."
+      "text": "She stands at the counter for a long minute.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/117.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Then she goes back to the porch."
+      "text": "[shot:establish]Then she goes back to the porch.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/118.mp3"
     },
     {
       "t": "hide",
@@ -589,15 +674,18 @@
     },
     {
       "t": "narrate",
-      "text": "The cicadas, by nine fourteen, are at their full pitch."
+      "text": "The cicadas, by nine fourteen, are at their full pitch.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/122.mp3"
     },
     {
       "t": "narrate",
-      "text": "The light in the back yard has shifted into the small late-morning angle. The crepe myrtle is doing its work. The grass is browning. The wicker chair, on the porch, holds her."
+      "text": "The light in the back yard has shifted into the small late-morning angle. The crepe myrtle is doing its work. The grass is browning. The wicker chair, on the porch, holds her.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/123.mp3"
     },
     {
       "t": "narrate",
-      "text": "She drinks the last of her coffee."
+      "text": "She drinks the last of her coffee.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/124.mp3"
     },
     {
       "t": "narrate",
@@ -609,47 +697,58 @@
     },
     {
       "t": "narrate",
-      "text": "The tape is — temporarily — off."
+      "text": "The tape is — temporarily — off.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/127.mp3"
     },
     {
       "t": "narrate",
-      "text": "The not-tape is — for this morning, at this hour, in this chair — the thing that is happening instead."
+      "text": "The not-tape is — for this morning, at this hour, in this chair — the thing that is happening instead.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/128.mp3"
     },
     {
       "t": "narrate",
-      "text": "She does not know how long it will hold."
+      "text": "She does not know how long it will hold.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/129.mp3"
     },
     {
       "t": "narrate",
-      "text": "She does not, this morning, need to know."
+      "text": "She does not, this morning, need to know.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/130.mp3"
     },
     {
       "t": "narrate",
-      "text": "The morning continues."
+      "text": "The morning continues.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/131.mp3"
     },
     {
       "t": "narrate",
-      "text": "The cicadas are loud."
+      "text": "The cicadas are loud.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/132.mp3"
     },
     {
       "t": "narrate",
-      "text": "The kitchen, behind her, is clean."
+      "text": "The kitchen, behind her, is clean.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/133.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert door]There is, somewhere in the house, a small wicker chair from her mother's porch in Lubbock and a soft dark green robe from her husband and a daughter's bedroom door at the top of the stairs that has been, all summer, closed during the day."
+      "text": "[shot:insert door]There is, somewhere in the house, a small wicker chair from her mother's porch in Lubbock and a soft dark green robe from her husband and a daughter's bedroom door at the top of the stairs that has been, all summer, closed during the day.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/134.mp3"
     },
     {
       "t": "narrate",
-      "text": "She sits in the chair."
+      "text": "She sits in the chair.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/135.mp3"
     },
     {
       "t": "narrate",
-      "text": "She breathes."
+      "text": "She breathes.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/136.mp3"
     },
     {
       "t": "narrate",
-      "text": "The morning, in the way mornings in Texas do in mid-August, holds."
+      "text": "The morning, in the way mornings in Texas do in mid-August, holds.",
+      "voice": "assets/audio/voice/vol6_ch11_eileen/137.mp3"
     },
     {
       "t": "hide",

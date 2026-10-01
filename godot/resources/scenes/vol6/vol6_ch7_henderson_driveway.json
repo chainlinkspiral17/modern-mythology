@@ -41,145 +41,171 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2][mood:night]Ben walks Jesse to the front porch."
+      "text": "[trip:1.2][mood:night]Ben walks Jesse to the front porch.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/007.mp3"
     },
     {
       "t": "narrate",
-      "text": "They sit on the steps."
+      "text": "They sit on the steps.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/008.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "text": "[shot:closeup person]Ben.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/009.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/010.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "text": "He's going to be okay.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/011.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "He's going to be — Jess. He's going to need a lot. But yeah. The first part is done. The first part is the worst part. The rest is just work.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/012.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "text": "You sure.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/013.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "[shot:closeup person_b]I am, Jess. I am sure.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/014.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "text": "Why are you sure.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/015.mp3"
     },
     {
       "t": "narrate",
-      "text": "Ben thinks about it."
+      "text": "Ben thinks about it.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/016.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Because he came up the stairs by himself. Because he sat at the table. Because he asked your mom for pot roast. Those are the things that are not the eye. Those are him. He had enough of him to come up. The rest is — the rest is what the help does.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/017.mp3"
     },
     {
       "t": "narrate",
-      "text": "Jesse exhales."
+      "text": "Jesse exhales.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/018.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "text": "[shot:closeup jesse]I love him, Ben.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/019.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "I know, Jess.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/020.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "text": "I love my dad.",
-      "expr": "sad"
+      "expr": "sad",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/021.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "I know.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/022.mp3"
     },
     {
       "t": "narrate",
-      "text": "Jesse cries, briefly, on the steps."
+      "text": "Jesse cries, briefly, on the steps.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/023.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Ben puts an arm around his shoulders. The arm stays for maybe forty seconds. Then Ben takes it back. Jesse wipes his face on the sleeve of the button-down he is wearing tonight, the one Eileen had told him to put on for dinner."
+      "text": "[shot:establish]Ben puts an arm around his shoulders. The arm stays for maybe forty seconds. Then Ben takes it back. Jesse wipes his face on the sleeve of the button-down he is wearing tonight, the one Eileen had told him to put on for dinner.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/024.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Get some sleep, Jess. Tomorrow's the courthouse for Sam. We're not all going. But she's going to need texts. We're on text duty.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/025.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "text": "I'll text her in the morning.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/026.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Good.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/027.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "text": "Ben.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/028.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "[shot:closeup person_b]Yeah.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/029.mp3"
     },
     {
       "t": "say",
       "char": "Jesse",
       "text": "Thank you.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/030.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "Yeah, Jess.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/031.mp3"
     },
     {
       "t": "narrate",
-      "text": "Ben gets up. He walks to his truck."
+      "text": "Ben gets up. He walks to his truck.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/032.mp3"
     },
     {
       "t": "hide",
@@ -187,53 +213,64 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone~]In the truck, before he starts it, his phone buzzes."
+      "text": "[shot:insert phone~]In the truck, before he starts it, his phone buzzes.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/034.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "[beat:hit]ben. my grandmother fell down the stairs. she's at the hospital. broken hip. she's going to be okay. i'm at the er with her now. you don't have to come. i just wanted to tell you.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/035.mp3"
     },
     {
       "t": "narrate",
-      "text": "Ben reads the message."
+      "text": "Ben reads the message.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/036.mp3"
     },
     {
       "t": "narrate",
-      "text": "He reads it twice."
+      "text": "He reads it twice.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/037.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He starts the truck."
+      "text": "[shot:establish]He starts the truck.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/038.mp3"
     },
     {
       "t": "narrate",
-      "text": "He drives, not home, but to the hospital — the one on the New Auburn side of the highway, twenty-three minutes away — because Ben is the kind of person who is not, when one of his people is at an emergency room, going to wait to be invited."
+      "text": "He drives, not home, but to the hospital — the one on the New Auburn side of the highway, twenty-three minutes away — because Ben is the kind of person who is not, when one of his people is at an emergency room, going to wait to be invited.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/039.mp3"
     },
     {
       "t": "narrate",
-      "text": "He texts back, at the first red light:"
+      "text": "He texts back, at the first red light:",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/040.mp3"
     },
     {
       "t": "say",
       "char": "Ben",
       "text": "on my way. don't argue.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/041.mp3"
     },
     {
       "t": "narrate",
-      "text": "Maya does not, in fact, argue."
+      "text": "Maya does not, in fact, argue.",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/042.mp3"
     },
     {
       "t": "narrate",
-      "text": "The reply comes in eight seconds:"
+      "text": "The reply comes in eight seconds:",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/043.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
       "text": "[shot:closeup person]ok. third floor. waiting room. thank you.",
-      "expr": "neutral"
+      "expr": "neutral",
+      "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/044.mp3"
     },
     {
       "t": "hide",

@@ -47,12 +47,14 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:night]Ben, in the driver's seat, does not start the engine."
+   "text": "[mood:night]Ben, in the driver's seat, does not start the engine.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/008.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
-   "text": "[shot:closeup person]Okay. We have eight minutes. Go. What does everyone know that the others don't."
+   "text": "[shot:closeup person]Okay. We have eight minutes. Go. What does everyone know that the others don't.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/009.mp3"
   },
   {
    "t": "show",
@@ -88,7 +90,8 @@
   },
   {
    "t": "narrate",
-   "text": "Maya goes first. Maya says, in a flat steady voice that surprises Sam:"
+   "text": "Maya goes first. Maya says, in a flat steady voice that surprises Sam:",
+   "voice": "assets/audio/voice/vol6_ch5_truck/016.mp3"
   },
   {
    "t": "say",
@@ -113,22 +116,26 @@
   {
    "t": "say",
    "char": "Sam",
-   "text": "The sedan people have a name?"
+   "text": "The sedan people have a name?",
+   "voice": "assets/audio/voice/vol6_ch5_truck/021.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
-   "text": "The woman is Claire Moyer. She's with the Houston Chronicle. She is working on a piece. Her partner is — I don't know his name. I think he's her brother. My grandmother has met them. My grandmother vouched."
+   "text": "The woman is Claire Moyer. She's with the Houston Chronicle. She is working on a piece. Her partner is — I don't know his name. I think he's her brother. My grandmother has met them. My grandmother vouched.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/022.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
-   "text": "[shot:closeup person]Okay."
+   "text": "[shot:closeup person]Okay.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/023.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
-   "text": "Okay. Sam?"
+   "text": "Okay. Sam?",
+   "voice": "assets/audio/voice/vol6_ch5_truck/024.mp3"
   },
   {
    "t": "show",
@@ -173,7 +180,8 @@
   },
   {
    "t": "narrate",
-   "text": "Ben nods."
+   "text": "Ben nods.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/033.mp3"
   },
   {
    "t": "say",
@@ -193,17 +201,20 @@
   {
    "t": "say",
    "char": "Maya",
-   "text": "[shot:closeup person_b]Jesus."
+   "text": "[shot:closeup person_b]Jesus.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/037.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
-   "text": "Yeah."
+   "text": "Yeah.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/038.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
-   "text": "[shot:closeup person]Jess?"
+   "text": "[shot:closeup person]Jess?",
+   "voice": "assets/audio/voice/vol6_ch5_truck/039.mp3"
   },
   {
    "t": "show",
@@ -229,22 +240,26 @@
   {
    "t": "say",
    "char": "Sam",
-   "text": "Jess."
+   "text": "Jess.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/044.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
-   "text": "Yeah."
+   "text": "Yeah.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/045.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
-   "text": "[shot:closeup person]Your dad is a good man."
+   "text": "[shot:closeup person]Your dad is a good man.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/046.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
-   "text": "I'm — yeah, Sam. I know. Thanks."
+   "text": "I'm — yeah, Sam. I know. Thanks.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/047.mp3"
   },
   {
    "t": "show",
@@ -274,7 +289,8 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:night][shot:establish]A long silence in the truck."
+   "text": "[mood:night][shot:establish]A long silence in the truck.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/053.mp3"
   },
   {
    "t": "say",
@@ -289,31 +305,37 @@
   {
    "t": "say",
    "char": "Maya",
-   "text": "That's why Claire has been watching Sam. She's protecting the story's source — Sam is not, yet, a source, but Sam is the key to the story's credibility, because Sam is the chief's daughter."
+   "text": "That's why Claire has been watching Sam. She's protecting the story's source — Sam is not, yet, a source, but Sam is the key to the story's credibility, because Sam is the chief's daughter.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/056.mp3"
   },
   {
    "t": "narrate",
-   "text": "Ben nods."
+   "text": "Ben nods.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/057.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
-   "text": "Yeah. That's my read too."
+   "text": "Yeah. That's my read too.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/058.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
-   "text": "[shot:closeup person_b]We are in a thing."
+   "text": "[shot:closeup person_b]We are in a thing.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/059.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
-   "text": "[beat:still]We are in a thing."
+   "text": "[beat:still]We are in a thing.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/060.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
-   "text": "What do we do tomorrow."
+   "text": "What do we do tomorrow.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/061.mp3"
   },
   {
    "t": "say",
@@ -328,17 +350,20 @@
   {
    "t": "say",
    "char": "Sam",
-   "text": "What's Plan B."
+   "text": "What's Plan B.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/064.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
-   "text": "I don't know yet. I am not going to know until we see if Plan A works. Plan A is, on paper, better. Plan A is the adults. We let them."
+   "text": "I don't know yet. I am not going to know until we see if Plan A works. Plan A is, on paper, better. Plan A is the adults. We let them.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/065.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
-   "text": "Saturday."
+   "text": "Saturday.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/066.mp3"
   },
   {
    "t": "say",
@@ -352,95 +377,114 @@
   },
   {
    "t": "narrate",
-   "text": "Jesse exhales."
+   "text": "Jesse exhales.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/069.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
-   "text": "[shot:closeup person]You want to tell my mother —"
+   "text": "[shot:closeup person]You want to tell my mother —",
+   "voice": "assets/audio/voice/vol6_ch5_truck/070.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
-   "text": "Yeah."
+   "text": "Yeah.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/071.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
-   "text": "— that her husband is being —"
+   "text": "— that her husband is being —",
+   "voice": "assets/audio/voice/vol6_ch5_truck/072.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
-   "text": "Yeah."
+   "text": "Yeah.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/073.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
-   "text": "Ben."
+   "text": "Ben.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/074.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
-   "text": "Yeah."
+   "text": "Yeah.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/075.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
-   "text": "Thank you."
+   "text": "Thank you.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/076.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
-   "text": "Yeah, Jess."
+   "text": "Yeah, Jess.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/077.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]They sit for a moment."
+   "text": "[shot:establish]They sit for a moment.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/078.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
-   "text": "Friday, I — I have the six-to-two at the Kwik Stop. I am on shift when the rescue is happening."
+   "text": "Friday, I — I have the six-to-two at the Kwik Stop. I am on shift when the rescue is happening.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/079.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
-   "text": "Yeah. On purpose. You are in a public location, visible, with Jen as a witness, doing exactly what a seventeen-year-old should be doing. That is your alibi. That is also the thing that makes your dad sleep slightly better Friday night."
+   "text": "Yeah. On purpose. You are in a public location, visible, with Jen as a witness, doing exactly what a seventeen-year-old should be doing. That is your alibi. That is also the thing that makes your dad sleep slightly better Friday night.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/080.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
-   "text": "[shot:closeup sam~]My dad is going to be involved in the rescue."
+   "text": "[shot:closeup sam~]My dad is going to be involved in the rescue.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/081.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
-   "text": "Yes. In some way. I don't know which side of it. But yes."
+   "text": "Yes. In some way. I don't know which side of it. But yes.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/082.mp3"
   },
   {
    "t": "narrate",
-   "text": "A long silence."
+   "text": "A long silence.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/083.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
-   "text": "Okay."
+   "text": "Okay.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/084.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
-   "text": "Okay."
+   "text": "Okay.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/085.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
-   "text": "Okay."
+   "text": "Okay.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/086.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
-   "text": "[shot:closeup person]Okay."
+   "text": "[shot:closeup person]Okay.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/087.mp3"
   },
   {
    "t": "say",
@@ -455,21 +499,25 @@
   {
    "t": "say",
    "char": "Sam",
-   "text": "Okay."
+   "text": "Okay.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/090.mp3"
   },
   {
    "t": "say",
    "char": "Maya",
-   "text": "Ben. My bike's here. I —"
+   "text": "Ben. My bike's here. I —",
+   "voice": "assets/audio/voice/vol6_ch5_truck/091.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
-   "text": "I'm driving you home. Truck, now. Sam and Jesse, out."
+   "text": "I'm driving you home. Truck, now. Sam and Jesse, out.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/092.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]Sam and Jesse get out. Ben starts the engine. Maya, in the passenger seat, looks at Ben."
+   "text": "[shot:establish]Sam and Jesse get out. Ben starts the engine. Maya, in the passenger seat, looks at Ben.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/093.mp3"
   },
   {
    "t": "hide",
@@ -488,16 +536,19 @@
   {
    "t": "say",
    "char": "Maya",
-   "text": "Thank you."
+   "text": "Thank you.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/097.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
-   "text": "Seatbelt, kid."
+   "text": "Seatbelt, kid.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/098.mp3"
   },
   {
    "t": "narrate",
-   "text": "Maya clicks the seatbelt. The truck pulls away from the curb."
+   "text": "Maya clicks the seatbelt. The truck pulls away from the curb.",
+   "voice": "assets/audio/voice/vol6_ch5_truck/099.mp3"
   },
   {
    "t": "hide",

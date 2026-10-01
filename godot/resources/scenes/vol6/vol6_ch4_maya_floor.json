@@ -37,12 +37,14 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup grandmother]Her grandmother is in the doorway, hands folded, watching without pressing. She has not crossed the threshold."
+      "text": "[shot:closeup grandmother]Her grandmother is in the doorway, hands folded, watching without pressing. She has not crossed the threshold.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/007.mp3"
     },
     {
       "t": "say",
       "char": "Ms. Caldwell",
-      "text": "Honey. You do not have to."
+      "text": "Honey. You do not have to.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/008.mp3"
     },
     {
       "t": "show",
@@ -53,22 +55,26 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "I know."
+      "text": "I know.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/010.mp3"
     },
     {
       "t": "say",
       "char": "Ms. Caldwell",
-      "text": "I can come in if you want. I can stay in the hall if you want."
+      "text": "I can come in if you want. I can stay in the hall if you want.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/011.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
-      "text": "[shot:closeup person]Stay. Please."
+      "text": "[shot:closeup person]Stay. Please.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/012.mp3"
     },
     {
       "t": "say",
       "char": "Ms. Caldwell",
-      "text": "Okay."
+      "text": "Okay.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/013.mp3"
     },
     {
       "t": "narrate",
@@ -80,15 +86,18 @@
     },
     {
       "t": "narrate",
-      "text": "Maya slides the knife under the edge of the third board. The board lifts. Easier than she expects. Somebody has lifted it before."
+      "text": "Maya slides the knife under the edge of the third board. The board lifts. Easier than she expects. Somebody has lifted it before.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/016.mp3"
     },
     {
       "t": "narrate",
-      "text": "[mood:dream_blur][shot:insert envelope~]Under the board is a small shallow cavity. In the cavity is a single flat manila envelope, yellowed at the edges, sealed. On the front, in a handwriting Maya has never seen before — her grandfather's — is written, in pencil: for whoever is ready."
+      "text": "[mood:dream_blur][shot:insert envelope~]Under the board is a small shallow cavity. In the cavity is a single flat manila envelope, yellowed at the edges, sealed. On the front, in a handwriting Maya has never seen before — her grandfather's — is written, in pencil: for whoever is ready.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/017.mp3"
     },
     {
       "t": "narrate",
-      "text": "Maya lifts the envelope out. She sits back on her heels. She looks up at her grandmother."
+      "text": "Maya lifts the envelope out. She sits back on her heels. She looks up at her grandmother.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/018.mp3"
     },
     {
       "t": "narrate",
@@ -108,17 +117,20 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup grandmother]Her grandmother is crying, silently, with the small dignified crying of older women who have been waiting seventeen years for a specific door to open and have, this evening, heard it unlatch."
+      "text": "[shot:closeup grandmother]Her grandmother is crying, silently, with the small dignified crying of older women who have been waiting seventeen years for a specific door to open and have, this evening, heard it unlatch.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/022.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
-      "text": "Grandma."
+      "text": "Grandma.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/023.mp3"
     },
     {
       "t": "say",
       "char": "Ms. Caldwell",
-      "text": "Open it, sweetheart. I'm alright."
+      "text": "Open it, sweetheart. I'm alright.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/024.mp3"
     },
     {
       "t": "narrate",
@@ -153,37 +165,44 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "[shot:closeup person]Grandma. This man —"
+      "text": "[shot:closeup person]Grandma. This man —",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/032.mp3"
     },
     {
       "t": "say",
       "char": "Ms. Caldwell",
-      "text": "Yes."
+      "text": "Yes.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/033.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
-      "text": "[shot:closeup person]Do you know his name."
+      "text": "[shot:closeup person]Do you know his name.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/034.mp3"
     },
     {
       "t": "say",
       "char": "Ms. Caldwell",
-      "text": "Your grandfather called him the one who asks. Your grandfather did not know his real name. Your grandfather was told, once, that the name he used was a handle, not a name. The handle was Dean."
+      "text": "Your grandfather called him the one who asks. Your grandfather did not know his real name. Your grandfather was told, once, that the name he used was a handle, not a name. The handle was Dean.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/035.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
-      "text": "D. Dean."
+      "text": "D. Dean.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/036.mp3"
     },
     {
       "t": "say",
       "char": "Ms. Caldwell",
-      "text": "Is that what he calls himself now."
+      "text": "Is that what he calls himself now.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/037.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
-      "text": "Yes."
+      "text": "Yes.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/038.mp3"
     },
     {
       "t": "show",
@@ -193,16 +212,19 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup grandmother]Ms. Caldwell is quiet for a moment."
+      "text": "[shot:closeup grandmother]Ms. Caldwell is quiet for a moment.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/040.mp3"
     },
     {
       "t": "say",
       "char": "Ms. Caldwell",
-      "text": "Well. He has, apparently, not needed to update his business cards."
+      "text": "Well. He has, apparently, not needed to update his business cards.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/041.mp3"
     },
     {
       "t": "narrate",
-      "text": "A small laugh. Dry. Both of them."
+      "text": "A small laugh. Dry. Both of them.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/042.mp3"
     },
     {
       "t": "show",
@@ -213,41 +235,49 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "Grandma. Mr. Dean has been — he was at a funeral in Graustark last week. I know this because he talked to a woman named Joanna LeMoine whose name I have also heard. He has been around this whole time."
+      "text": "Grandma. Mr. Dean has been — he was at a funeral in Graustark last week. I know this because he talked to a woman named Joanna LeMoine whose name I have also heard. He has been around this whole time.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/044.mp3"
     },
     {
       "t": "say",
       "char": "Ms. Caldwell",
-      "text": "Yes, honey. I suspect he has."
+      "text": "Yes, honey. I suspect he has.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/045.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
-      "text": "What do I — what do I do with this."
+      "text": "What do I — what do I do with this.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/046.mp3"
     },
     {
       "t": "say",
       "char": "Ms. Caldwell",
-      "text": "Nothing, tonight. You put it back in the envelope. You put the envelope under the board. You put the rug back. You come downstairs and I will make you a sandwich and you will eat it because you have not eaten since eleven, which I noticed."
+      "text": "Nothing, tonight. You put it back in the envelope. You put the envelope under the board. You put the rug back. You come downstairs and I will make you a sandwich and you will eat it because you have not eaten since eleven, which I noticed.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/047.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
-      "text": "Grandma."
+      "text": "Grandma.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/048.mp3"
     },
     {
       "t": "say",
       "char": "Ms. Caldwell",
-      "text": "Yes."
+      "text": "Yes.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/049.mp3"
     },
     {
       "t": "say",
       "char": "Maya",
-      "text": "Should I — should I tell F.T. I've seen it."
+      "text": "Should I — should I tell F.T. I've seen it.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/050.mp3"
     },
     {
       "t": "narrate",
-      "text": "Ms. Caldwell considers this."
+      "text": "Ms. Caldwell considers this.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/051.mp3"
     },
     {
       "t": "say",
@@ -262,15 +292,18 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "Okay."
+      "text": "Okay.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/054.mp3"
     },
     {
       "t": "narrate",
-      "text": "Maya slides the photograph back into the envelope. She slides the envelope back into the cavity. She replaces the board. She smooths the rug back over it. She stands."
+      "text": "Maya slides the photograph back into the envelope. She slides the envelope back into the cavity. She replaces the board. She smooths the rug back over it. She stands.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/055.mp3"
     },
     {
       "t": "narrate",
-      "text": "[mood:candlelight_low][shot:establish]Her grandmother, still in the doorway, opens her arms. Maya goes. Her grandmother holds her."
+      "text": "[mood:candlelight_low][shot:establish]Her grandmother, still in the doorway, opens her arms. Maya goes. Her grandmother holds her.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/056.mp3"
     },
     {
       "t": "show",
@@ -295,7 +328,8 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup maya]Maya holds onto her. She does not cry this time. She has cried already. She is, now, simply absorbing."
+      "text": "[shot:closeup maya]Maya holds onto her. She does not cry this time. She has cried already. She is, now, simply absorbing.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/061.mp3"
     },
     {
       "t": "show",
@@ -306,55 +340,66 @@
     {
       "t": "think",
       "char": "Maya",
-      "text": "the man in the charcoal suit knew my grandfather in 1978."
+      "text": "the man in the charcoal suit knew my grandfather in 1978.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/063.mp3"
     },
     {
       "t": "think",
       "char": "Maya",
-      "text": "the man in the charcoal suit visited Joanna LeMoine last week."
+      "text": "the man in the charcoal suit visited Joanna LeMoine last week.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/064.mp3"
     },
     {
       "t": "think",
       "char": "Maya",
-      "text": "the man in the charcoal suit is eighty-something and does not look it."
+      "text": "the man in the charcoal suit is eighty-something and does not look it.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/065.mp3"
     },
     {
       "t": "think",
       "char": "Maya",
-      "text": "the man in the charcoal suit is not, as I had begun to suspect, the enemy."
+      "text": "the man in the charcoal suit is not, as I had begun to suspect, the enemy.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/066.mp3"
     },
     {
       "t": "think",
       "char": "Maya",
-      "text": "the man in the charcoal suit is the author of the errand F.T. is running."
+      "text": "the man in the charcoal suit is the author of the errand F.T. is running.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/067.mp3"
     },
     {
       "t": "think",
       "char": "Maya",
-      "text": "F.T. is working for Mr. Dean. Or with him. Or against him. Or — some third arrangement the categories do not quite cover."
+      "text": "F.T. is working for Mr. Dean. Or with him. Or against him. Or — some third arrangement the categories do not quite cover.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/068.mp3"
     },
     {
       "t": "think",
       "char": "Maya",
-      "text": "I have one week."
+      "text": "I have one week.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/069.mp3"
     },
     {
       "t": "think",
       "char": "Maya",
-      "text": "I am going to use it."
+      "text": "I am going to use it.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/070.mp3"
     },
     {
       "t": "narrate",
-      "text": "Her grandmother kisses her on the forehead."
+      "text": "Her grandmother kisses her on the forehead.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/071.mp3"
     },
     {
       "t": "say",
       "char": "Ms. Caldwell",
-      "text": "Now come eat your sandwich, sweetheart."
+      "text": "Now come eat your sandwich, sweetheart.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/072.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Maya goes downstairs. The radio, in her grandmother's room, is silent. It will, as Ms. Caldwell has been tracking, remain silent until Saturday. Saturday is three days away. Friday — though Maya does not, yet, know this — is two."
+      "text": "[shot:establish]Maya goes downstairs. The radio, in her grandmother's room, is silent. It will, as Ms. Caldwell has been tracking, remain silent until Saturday. Saturday is three days away. Friday — though Maya does not, yet, know this — is two.",
+      "voice": "assets/audio/voice/vol6_ch4_maya_floor/073.mp3"
     },
     {
       "t": "hide",

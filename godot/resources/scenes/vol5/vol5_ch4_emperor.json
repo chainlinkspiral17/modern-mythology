@@ -35,31 +35,38 @@
   },
   {
    "t": "narrate",
-   "text": "[trip:1.2][mood:night]THE EMPEROR. He sits on his stone throne, ram heads at the corners, ankh-tipped scepter, Aries red. He has built the world he sits on. He cannot leave it."
+   "text": "[trip:1.2][mood:night]THE EMPEROR. He sits on his stone throne, ram heads at the corners, ankh-tipped scepter, Aries red. He has built the world he sits on. He cannot leave it.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/006.mp3"
   },
   {
    "t": "narrate",
-   "text": "Authority. Structure. Control. The empire that endures. And reversed: the patriarch who outlives his own usefulness. The throne that becomes a coffin."
+   "text": "Authority. Structure. Control. The empire that endures. And reversed: the patriarch who outlives his own usefulness. The throne that becomes a coffin.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/007.mp3"
   },
   {
    "t": "narrate",
-   "text": "[stage:dante helm]The riverboat sighed beneath Dante D'Ambrosio's feet."
+   "text": "[stage:dante helm]The riverboat sighed beneath Dante D'Ambrosio's feet.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/008.mp3"
   },
   {
    "t": "narrate",
-   "text": "A low groan of stressed timbers and rusting metal. Or maybe that was just his own bones settling deeper into the Louisiana muck side of the border. Sixty years old. Christ."
+   "text": "A low groan of stressed timbers and rusting metal. Or maybe that was just his own bones settling deeper into the Louisiana muck side of the border. Sixty years old. Christ.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/009.mp3"
   },
   {
    "t": "narrate",
-   "text": "Sixty years of sweat and deals done in shadows thick as gumbo gravy, all to build this — this floating palace of fusion confusion. D'Ambrosio's. His name plastered on the side in gaudy, vaguely Italianate script that was, he was almost certain, peeling."
+   "text": "Sixty years of sweat and deals done in shadows thick as gumbo gravy, all to build this — this floating palace of fusion confusion. D'Ambrosio's. His name plastered on the side in gaudy, vaguely Italianate script that was, he was almost certain, peeling.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/010.mp3"
   },
   {
    "t": "narrate",
-   "text": "He had not gone outside to look in eight months. The signage was a job for younger men."
+   "text": "He had not gone outside to look in eight months. The signage was a job for younger men.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/011.mp3"
   },
   {
    "t": "narrate",
-   "text": "His kingdom. His goddamn cage."
+   "text": "His kingdom. His goddamn cage.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/012.mp3"
   },
   {
    "t": "narrate",
@@ -71,43 +78,53 @@
   },
   {
    "t": "narrate",
-   "text": "Nicola Greer at the hostess stand, moving with that infuriating, oblivious grace, probably unaware she was carrying the next damn complication right there under her apron."
+   "text": "Nicola Greer at the hostess stand, moving with that infuriating, oblivious grace, probably unaware she was carrying the next damn complication right there under her apron.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/015.mp3"
   },
   {
    "t": "narrate",
-   "text": "Dante had not yet decided, himself, whether he had noticed."
+   "text": "Dante had not yet decided, himself, whether he had noticed.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/016.mp3"
   },
   {
    "t": "narrate",
-   "text": "The thing about owning a place was that you noticed everything. The thing about staying in business was that you chose, carefully and continuously, what to do with what you had noticed."
+   "text": "The thing about owning a place was that you noticed everything. The thing about staying in business was that you chose, carefully and continuously, what to do with what you had noticed.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/017.mp3"
   },
   {
    "t": "narrate",
-   "text": "[mood:candlelight_low][shot:insert bourbon]He poured himself a bourbon. Neat. No ice. Ice was for the weak. Ice diluted the truth of the thing."
+   "text": "[mood:candlelight_low][shot:insert bourbon]He poured himself a bourbon. Neat. No ice. Ice was for the weak. Ice diluted the truth of the thing.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/018.mp3"
   },
   {
    "t": "narrate",
-   "text": "The amber liquid burned, a familiar fire that did little to warm the chill that had settled in his marrow years ago."
+   "text": "The amber liquid burned, a familiar fire that did little to warm the chill that had settled in his marrow years ago.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/019.mp3"
   },
   {
    "t": "narrate",
-   "text": "He remembered deals made on docks slick with more than just river water. Handshakes that felt like signing away pieces of his soul, one calloused palm at a time. Necessary sacrifices, he had called them then. Building the dream."
+   "text": "He remembered deals made on docks slick with more than just river water. Handshakes that felt like signing away pieces of his soul, one calloused palm at a time. Necessary sacrifices, he had called them then. Building the dream.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/020.mp3"
   },
   {
    "t": "narrate",
-   "text": "Now, sitting in the heart of that dream, the dream felt suspiciously like the other place. The polite term, in the papers, was his shady past. Dante had stopped reading the papers in 2009. He still received them. He used them, mostly, to wrap fish."
+   "text": "Now, sitting in the heart of that dream, the dream felt suspiciously like the other place. The polite term, in the papers, was his shady past. Dante had stopped reading the papers in 2009. He still received them. He used them, mostly, to wrap fish.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/021.mp3"
   },
   {
    "t": "narrate",
-   "text": "He took another swallow."
+   "text": "He took another swallow.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/022.mp3"
   },
   {
    "t": "narrate",
-   "text": "Let 'em bubble."
+   "text": "Let 'em bubble.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/023.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]The air hung thick in the helm — a miasma of yesterday's garlic, tomorrow's dread, and the ever-present humidity creeping in from the sluggish river outside."
+   "text": "[shot:establish]The air hung thick in the helm — a miasma of yesterday's garlic, tomorrow's dread, and the ever-present humidity creeping in from the sluggish river outside.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/024.mp3"
   },
   {
    "t": "narrate",
@@ -119,23 +136,28 @@
   },
   {
    "t": "narrate",
-   "text": "His palm came away with a faint smear. Legacy, that's what they called it. Felt more like rust settling deep in his lungs."
+   "text": "His palm came away with a faint smear. Legacy, that's what they called it. Felt more like rust settling deep in his lungs.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/027.mp3"
   },
   {
    "t": "narrate",
-   "text": "[mood:arcana_cool]His carefully constructed empire, built brick by bloody brick, felt precarious tonight. Listing to one side, maybe. He could feel the damp rot setting in. Not just in the woodwork. Somewhere deeper, in the foundations."
+   "text": "[mood:arcana_cool]His carefully constructed empire, built brick by bloody brick, felt precarious tonight. Listing to one side, maybe. He could feel the damp rot setting in. Not just in the woodwork. Somewhere deeper, in the foundations.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/028.mp3"
   },
   {
    "t": "narrate",
-   "text": "The boat, at its mooring, was not, strictly, listing. He had checked the levels last month himself, with the spirit level his father had given him for his confirmation. The boat was plumb. The listing was happening somewhere else."
+   "text": "The boat, at its mooring, was not, strictly, listing. He had checked the levels last month himself, with the spirit level his father had given him for his confirmation. The boat was plumb. The listing was happening somewhere else.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/029.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup dante]His sons. Dio mio."
+   "text": "[shot:closeup dante]His sons. Dio mio.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/030.mp3"
   },
   {
    "t": "narrate",
-   "text": "Alberto, the older one. The steady one. Mr. Logic and Order. Out in Houston now, probably crunching numbers in some glass tower, building his own sterile version of this place, thinking he was improving on the original."
+   "text": "Alberto, the older one. The steady one. Mr. Logic and Order. Out in Houston now, probably crunching numbers in some glass tower, building his own sterile version of this place, thinking he was improving on the original.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/031.mp3"
   },
   {
    "t": "narrate",
@@ -147,83 +169,103 @@
   },
   {
    "t": "narrate",
-   "text": "Alberto had visited in May. They had had dinner. Alberto had ordered the duck and sent it back. The duck had been correct. Neither had discussed it. That, Dante knew, had been the entire content of the visit."
+   "text": "Alberto had visited in May. They had had dinner. Alberto had ordered the duck and sent it back. The duck had been correct. Neither had discussed it. That, Dante knew, had been the entire content of the visit.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/034.mp3"
   },
   {
    "t": "narrate",
-   "text": "Then there was Antonio. The restless one. The artista. All fire and inspiration and zero common sense. Off in New Orleans now, chasing some fool dream with that punk Jimmy Daigle."
+   "text": "Then there was Antonio. The restless one. The artista. All fire and inspiration and zero common sense. Off in New Orleans now, chasing some fool dream with that punk Jimmy Daigle.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/035.mp3"
   },
   {
    "t": "narrate",
-   "text": "Antonio was the ghost of Dante's own reckless youth, a reminder of passions Dante had buried under layers of responsibility and calculated cruelty. The kid unnerved him. That untamed energy. Dangerous."
+   "text": "Antonio was the ghost of Dante's own reckless youth, a reminder of passions Dante had buried under layers of responsibility and calculated cruelty. The kid unnerved him. That untamed energy. Dangerous.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/036.mp3"
   },
   {
    "t": "narrate",
-   "text": "You couldn't build anything lasting on fire alone. Fire just burned itself out. Left ashes."
+   "text": "You couldn't build anything lasting on fire alone. Fire just burned itself out. Left ashes.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/037.mp3"
   },
   {
    "t": "narrate",
-   "text": "He had not had dinner with Antonio in three years. They spoke on the phone every six weeks, on the first Sunday of an even-numbered month. Antonio always called. Dante always answered. Neither had ever said anything important. Both knew this."
+   "text": "He had not had dinner with Antonio in three years. They spoke on the phone every six weeks, on the first Sunday of an even-numbered month. Antonio always called. Dante always answered. Neither had ever said anything important. Both knew this.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/038.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]Down on the dining room floor, Nicola finished walking some out-of-town suit to Table 14 and returned to the hostess stand. Dante watched her movements — too fluid, too unaware of the weight she carried."
+   "text": "[shot:establish]Down on the dining room floor, Nicola finished walking some out-of-town suit to Table 14 and returned to the hostess stand. Dante watched her movements — too fluid, too unaware of the weight she carried.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/039.mp3"
   },
   {
    "t": "narrate",
-   "text": "Kids these days. No structure. No goddamn respect for the foundations."
+   "text": "Kids these days. No structure. No goddamn respect for the foundations.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/040.mp3"
   },
   {
    "t": "narrate",
-   "text": "He had, last week, watched her pause on her break in the back hallway, her hand pressed flat against her stomach in a gesture that was, to anyone who had ever tended a pregnant woman or owned a bar, unmistakable."
+   "text": "He had, last week, watched her pause on her break in the back hallway, her hand pressed flat against her stomach in a gesture that was, to anyone who had ever tended a pregnant woman or owned a bar, unmistakable.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/041.mp3"
   },
   {
    "t": "narrate",
-   "text": "He had pretended he had not seen. He had walked past her on his way to the office. She had not looked up. He had not slowed. The kindness, in his world, was the not-mentioning."
+   "text": "He had pretended he had not seen. He had walked past her on his way to the office. She had not looked up. He had not slowed. The kindness, in his world, was the not-mentioning.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/042.mp3"
   },
   {
    "t": "narrate",
-   "text": "He suspected he would have to mention it eventually."
+   "text": "He suspected he would have to mention it eventually.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/043.mp3"
   },
   {
    "t": "narrate",
-   "text": "He suspected he would do so badly."
+   "text": "He suspected he would do so badly.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/044.mp3"
   },
   {
    "t": "narrate",
-   "text": "A movement at Table 14 caught his eye."
+   "text": "A movement at Table 14 caught his eye.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/045.mp3"
   },
   {
    "t": "narrate",
-   "text": "The out-of-town suit — the man Nicola had just seated, alone, no order yet — was leaving. Standing up. Smoothing his lapels with the small unconscious gesture of a man who had once cared, deeply, about his appearance."
+   "text": "The out-of-town suit — the man Nicola had just seated, alone, no order yet — was leaving. Standing up. Smoothing his lapels with the small unconscious gesture of a man who had once cared, deeply, about his appearance.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/046.mp3"
   },
   {
    "t": "narrate",
-   "text": "He was forgettable. He was forgettable in the practiced way Dante had encountered, perhaps a dozen times in his life, at meetings he had not fully understood the agenda of. Each of those meetings had cost him something later."
+   "text": "He was forgettable. He was forgettable in the practiced way Dante had encountered, perhaps a dozen times in his life, at meetings he had not fully understood the agenda of. Each of those meetings had cost him something later.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/047.mp3"
   },
   {
    "t": "narrate",
-   "text": "The man left a folded note on the table. He left a hundred-dollar bill weighted on top of it."
+   "text": "The man left a folded note on the table. He left a hundred-dollar bill weighted on top of it.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/048.mp3"
   },
   {
    "t": "narrate",
-   "text": "He did not go through the front door. He exited through the side entrance, the one nearest the river. He moved with the unhurried economy of a man who knew his way around the boat better than he had any reason to."
+   "text": "He did not go through the front door. He exited through the side entrance, the one nearest the river. He moved with the unhurried economy of a man who knew his way around the boat better than he had any reason to.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/049.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert window~]Dante stood at the leaded window, bourbon in hand, and watched the man cross the gangway toward the parking lot."
+   "text": "[shot:insert window~]Dante stood at the leaded window, bourbon in hand, and watched the man cross the gangway toward the parking lot.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/050.mp3"
   },
   {
    "t": "narrate",
-   "text": "He felt a thing he had not felt in some time."
+   "text": "He felt a thing he had not felt in some time.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/051.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup dante]The thing was not exactly fear. It was the older, more useful cousin of fear: attention."
+   "text": "[shot:closeup dante]The thing was not exactly fear. It was the older, more useful cousin of fear: attention.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/052.mp3"
   },
   {
    "t": "narrate",
-   "text": "He set the bourbon down. He moved to the small intercom that connected the helm to the bar. He depressed the button."
+   "text": "He set the bourbon down. He moved to the small intercom that connected the helm to the bar. He depressed the button.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/053.mp3"
   },
   {
    "t": "show",
@@ -234,7 +276,8 @@
   {
    "t": "say",
    "char": "dante",
-   "text": "Sammy."
+   "text": "Sammy.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/055.mp3"
   },
   {
    "t": "show",
@@ -245,32 +288,38 @@
   {
    "t": "say",
    "char": "sammy",
-   "text": "Yeah, Mr. D."
+   "text": "Yeah, Mr. D.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/057.mp3"
   },
   {
    "t": "say",
    "char": "dante",
-   "text": "The gentleman who just left from Table 14. Did he leave a card with you earlier."
+   "text": "The gentleman who just left from Table 14. Did he leave a card with you earlier.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/058.mp3"
   },
   {
    "t": "say",
    "char": "sammy",
-   "text": "Yes sir."
+   "text": "Yes sir.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/059.mp3"
   },
   {
    "t": "say",
    "char": "dante",
-   "text": "You still got it."
+   "text": "You still got it.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/060.mp3"
   },
   {
    "t": "say",
    "char": "sammy",
-   "text": "Yes sir."
+   "text": "Yes sir.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/061.mp3"
   },
   {
    "t": "say",
    "char": "dante",
-   "text": "Bring it up."
+   "text": "Bring it up.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/062.mp3"
   },
   {
    "t": "narrate",
@@ -278,112 +327,137 @@
   },
   {
    "t": "narrate",
-   "text": "The man was, by now, crossing the parking lot toward a dark sedan he had parked carefully in the shadow of the dumpster, beyond the reach of the security camera that Dante had installed in 2003 and that the man, somehow, had known to avoid."
+   "text": "The man was, by now, crossing the parking lot toward a dark sedan he had parked carefully in the shadow of the dumpster, beyond the reach of the security camera that Dante had installed in 2003 and that the man, somehow, had known to avoid.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/064.mp3"
   },
   {
    "t": "narrate",
-   "text": "The sedan started. The sedan reversed. The sedan exited the parking lot at a sedate, legal speed, turned right onto River Road, and was gone."
+   "text": "The sedan started. The sedan reversed. The sedan exited the parking lot at a sedate, legal speed, turned right onto River Road, and was gone.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/065.mp3"
   },
   {
    "t": "narrate",
-   "text": "Dante watched the place where the sedan had been for a full thirty seconds before he turned away from the window."
+   "text": "Dante watched the place where the sedan had been for a full thirty seconds before he turned away from the window.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/066.mp3"
   },
   {
    "t": "narrate",
-   "text": "There was a knock. Sammy at the office door, three short raps."
+   "text": "There was a knock. Sammy at the office door, three short raps.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/067.mp3"
   },
   {
    "t": "say",
    "char": "dante",
-   "text": "Come."
+   "text": "Come.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/068.mp3"
   },
   {
    "t": "narrate",
-   "text": "[mood:candlelight_low]Sammy came. Sixty-one years old, pouring at D'Ambrosio's since the boat had opened. The kind of long-suffering Catholic loyalty that Dante had, over the decades, both relied on and quietly mocked. Sammy held out a small white card."
+   "text": "[mood:candlelight_low]Sammy came. Sixty-one years old, pouring at D'Ambrosio's since the boat had opened. The kind of long-suffering Catholic loyalty that Dante had, over the decades, both relied on and quietly mocked. Sammy held out a small white card.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/069.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert card]Plain stock. Nothing embossed. Just a name and a phone number, printed in a font that could have been Times New Roman or could have been something more careful, and a single line of italic text below."
+   "text": "[shot:insert card]Plain stock. Nothing embossed. Just a name and a phone number, printed in a font that could have been Times New Roman or could have been something more careful, and a single line of italic text below.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/070.mp3"
   },
   {
    "t": "say",
    "char": "dante",
-   "text": "Mr. D. Dean. Consulting. Dispute resolution and legacy planning."
+   "text": "Mr. D. Dean. Consulting. Dispute resolution and legacy planning.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/071.mp3"
   },
   {
    "t": "narrate",
-   "text": "Dante stared at the card. He read the name three times. He read the line below it twice. He turned the card over. The back was blank."
+   "text": "Dante stared at the card. He read the name three times. He read the line below it twice. He turned the card over. The back was blank.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/072.mp3"
   },
   {
    "t": "narrate",
-   "text": "[beat:chill]He had not, in sixty years of dealing with consulting men in plain suits with forgettable faces, ever seen a card quite like this one. It was not the design that disturbed him. It was the way the design assumed he would understand it."
+   "text": "[beat:chill]He had not, in sixty years of dealing with consulting men in plain suits with forgettable faces, ever seen a card quite like this one. It was not the design that disturbed him. It was the way the design assumed he would understand it.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/073.mp3"
   },
   {
    "t": "say",
    "char": "dante",
-   "text": "He say anything else, Sammy?"
+   "text": "He say anything else, Sammy?",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/074.mp3"
   },
   {
    "t": "say",
    "char": "sammy",
-   "text": "Said he'd be back. Said he wasn't in a hurry."
+   "text": "Said he'd be back. Said he wasn't in a hurry.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/075.mp3"
   },
   {
    "t": "say",
    "char": "dante",
-   "text": "He pay for nothin'?"
+   "text": "He pay for nothin'?",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/076.mp3"
   },
   {
    "t": "say",
    "char": "sammy",
-   "text": "Tipped a hundred."
+   "text": "Tipped a hundred.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/077.mp3"
   },
   {
    "t": "say",
    "char": "dante",
-   "text": "For nothing."
+   "text": "For nothing.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/078.mp3"
   },
   {
    "t": "say",
    "char": "sammy",
-   "text": "For nothing, Mr. D."
+   "text": "For nothing, Mr. D.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/079.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]Dante nodded, slowly. He set the card on the desk, square to the corner, the way he set things he meant to come back to."
+   "text": "[shot:establish]Dante nodded, slowly. He set the card on the desk, square to the corner, the way he set things he meant to come back to.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/080.mp3"
   },
   {
    "t": "say",
    "char": "dante",
-   "text": "Thanks, Sammy. Get back down."
+   "text": "Thanks, Sammy. Get back down.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/081.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]Sammy went back down. The office door clicked shut behind him."
+   "text": "[shot:establish]Sammy went back down. The office door clicked shut behind him.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/082.mp3"
   },
   {
    "t": "narrate",
-   "text": "Dante stood at the desk for a long moment, looking at the card."
+   "text": "Dante stood at the desk for a long moment, looking at the card.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/083.mp3"
   },
   {
    "t": "narrate",
-   "text": "He had built D'Ambrosio's, brick by bloody brick, against competition that had, in the spring of 1991, ceased to exist in a manner Dante had not personally arranged but had not, at the time, mourned. He had outlasted all of them."
+   "text": "He had built D'Ambrosio's, brick by bloody brick, against competition that had, in the spring of 1991, ceased to exist in a manner Dante had not personally arranged but had not, at the time, mourned. He had outlasted all of them.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/084.mp3"
   },
   {
    "t": "narrate",
-   "text": "But he had not outlasted time. Nobody outlasted time. Time was the only competitor against whom even Dante D'Ambrosio's particular brand of patience and brutality had no leverage."
+   "text": "But he had not outlasted time. Nobody outlasted time. Time was the only competitor against whom even Dante D'Ambrosio's particular brand of patience and brutality had no leverage.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/085.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert card~]The card on the desk was, he understood with a clarity that did not require articulation, time's calling card."
+   "text": "[shot:insert card~]The card on the desk was, he understood with a clarity that did not require articulation, time's calling card.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/086.mp3"
   },
   {
    "t": "narrate",
-   "text": "It was not personal. It was not even hostile. It was simply here, in the way a tide was here when it came in, and a man could either move his chair up the beach in good time or get his shoes wet."
+   "text": "It was not personal. It was not even hostile. It was simply here, in the way a tide was here when it came in, and a man could either move his chair up the beach in good time or get his shoes wet.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/087.mp3"
   },
   {
    "t": "narrate",
-   "text": "His shoes were already wet. He could feel it, through the leather. He could feel it in his marrow."
+   "text": "His shoes were already wet. He could feel it, through the leather. He could feel it in his marrow.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/088.mp3"
   },
   {
    "t": "narrate",
@@ -395,23 +469,28 @@
   },
   {
    "t": "narrate",
-   "text": "He thought, briefly, of Alberto."
+   "text": "He thought, briefly, of Alberto.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/091.mp3"
   },
   {
    "t": "narrate",
-   "text": "He thought, briefly, of Antonio."
+   "text": "He thought, briefly, of Antonio.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/092.mp3"
   },
   {
    "t": "narrate",
-   "text": "He thought of Nicola Greer down on the floor, smiling the smile that did not reach her eyes. He thought of the man who had not ordered. He thought of the card on his desk."
+   "text": "He thought of Nicola Greer down on the floor, smiling the smile that did not reach her eyes. He thought of the man who had not ordered. He thought of the card on his desk.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/093.mp3"
   },
   {
    "t": "narrate",
-   "text": "He thought: I have outlived more men than I have killed, but only by a small margin, and only because some of them killed themselves."
+   "text": "He thought: I have outlived more men than I have killed, but only by a small margin, and only because some of them killed themselves.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/094.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]The thought was not regret. The thought was inventory."
+   "text": "[shot:establish]The thought was not regret. The thought was inventory.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/095.mp3"
   },
   {
    "t": "narrate",
@@ -427,15 +506,18 @@
   },
   {
    "t": "narrate",
-   "text": "Then he set the card back down. Square to the corner. Where it would be when he came back to it."
+   "text": "Then he set the card back down. Square to the corner. Where it would be when he came back to it.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/099.mp3"
   },
   {
    "t": "narrate",
-   "text": "A man who burned his evidence was a man who was afraid. A man who kept his evidence on the corner of his desk, square, was a man who had decided to know."
+   "text": "A man who burned his evidence was a man who was afraid. A man who kept his evidence on the corner of his desk, square, was a man who had decided to know.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/100.mp3"
   },
   {
    "t": "narrate",
-   "text": "Dante D'Ambrosio had not, in sixty years, ever decided not to know."
+   "text": "Dante D'Ambrosio had not, in sixty years, ever decided not to know.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/101.mp3"
   },
   {
    "t": "narrate",
@@ -443,15 +525,18 @@
   },
   {
    "t": "narrate",
-   "text": "He stood up, smoothed his shirt — the white shirt with the red wine stain near the third button that he had not had the decency to change before service — and he walked out of the office, down the narrow stairs, into the heart of the boat that was both his kingdom and his cage."
+   "text": "He stood up, smoothed his shirt — the white shirt with the red wine stain near the third button that he had not had the decency to change before service — and he walked out of the office, down the narrow stairs, into the heart of the boat that was both his kingdom and his cage.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/103.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]The dining room received him the way a congregation receives a priest who has aged into a kind of permanent fixture: with the small reverent inattention of people who have stopped, decades ago, being surprised that he was still there."
+   "text": "[shot:establish]The dining room received him the way a congregation receives a priest who has aged into a kind of permanent fixture: with the small reverent inattention of people who have stopped, decades ago, being surprised that he was still there.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/104.mp3"
   },
   {
    "t": "narrate",
-   "text": "He moved among the tables. He shook a hand. He bent to murmur something into Mrs. Karras's ear that made her laugh, which had been the goal. He clapped Sammy on the shoulder, with affection that was not, for once, performative."
+   "text": "He moved among the tables. He shook a hand. He bent to murmur something into Mrs. Karras's ear that made her laugh, which had been the goal. He clapped Sammy on the shoulder, with affection that was not, for once, performative.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/105.mp3"
   },
   {
    "t": "narrate",
@@ -459,35 +544,43 @@
   },
   {
    "t": "narrate",
-   "text": "Nicola, who had not until that nod been entirely sure he was going to acknowledge her this evening, returned the nod with a fractional widening of the smile that, on someone else, might have been gratitude."
+   "text": "Nicola, who had not until that nod been entirely sure he was going to acknowledge her this evening, returned the nod with a fractional widening of the smile that, on someone else, might have been gratitude.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/107.mp3"
   },
   {
    "t": "narrate",
-   "text": "Dante D'Ambrosio, the Emperor on his crumbling throne, made the rounds of his dying empire, and the empire received him, and the river, outside, continued its slow indifferent program."
+   "text": "Dante D'Ambrosio, the Emperor on his crumbling throne, made the rounds of his dying empire, and the empire received him, and the river, outside, continued its slow indifferent program.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/108.mp3"
   },
   {
    "t": "narrate",
-   "text": "The card on the desk upstairs sat square to the corner. Waiting."
+   "text": "The card on the desk upstairs sat square to the corner. Waiting.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/109.mp3"
   },
   {
    "t": "narrate",
-   "text": "The bourbon, in his veins, did its slow work."
+   "text": "The bourbon, in his veins, did its slow work.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/110.mp3"
   },
   {
    "t": "narrate",
-   "text": "Sixty years. Sixty goddamn years."
+   "text": "Sixty years. Sixty goddamn years.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/111.mp3"
   },
   {
    "t": "narrate",
-   "text": "He poured another, at the bar. Sammy pretended not to notice."
+   "text": "He poured another, at the bar. Sammy pretended not to notice.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/112.mp3"
   },
   {
    "t": "narrate",
-   "text": "The boat groaned. The river, outside, flowed slow and dark, carrying its secrets toward the inevitable sea."
+   "text": "The boat groaned. The river, outside, flowed slow and dark, carrying its secrets toward the inevitable sea.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/113.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup dante]The Emperor, at the helm of nothing, drank."
+   "text": "[shot:closeup dante]The Emperor, at the helm of nothing, drank.",
+   "voice": "assets/audio/voice/vol5_ch4_emperor/114.mp3"
   },
   {
    "t": "end"

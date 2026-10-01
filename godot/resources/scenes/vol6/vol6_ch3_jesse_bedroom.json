@@ -39,114 +39,132 @@
   },
   {
    "t": "narrate",
-   "text": "He has eaten dinner — chicken and rice, which his mother made, which he ate without tasting — and he has been sitting on the floor with his back against his bed ever since, with his Telecaster unplugged in his lap, not playing it, just holding it."
+   "text": "He has eaten dinner — chicken and rice, which his mother made, which he ate without tasting — and he has been sitting on the floor with his back against his bed ever since, with his Telecaster unplugged in his lap, not playing it, just holding it.",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/007.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert phone]His phone pings."
+   "text": "[shot:insert phone]His phone pings.",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/008.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "role": "— text —",
    "expr": "neutral",
-   "text": "hey."
+   "text": "hey.",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/009.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
    "role": "— text —",
    "expr": "neutral",
-   "text": "hey. you ok?"
+   "text": "hey. you ok?",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/010.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "role": "— text —",
    "expr": "neutral",
-   "text": "yeah. sort of. i met maya today. we talked. she filled me in."
+   "text": "yeah. sort of. i met maya today. we talked. she filled me in.",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/011.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "role": "— text —",
    "expr": "neutral",
-   "text": "jess i don't know what to do about your dad."
+   "text": "jess i don't know what to do about your dad.",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/012.mp3"
   },
   {
    "t": "narrate",
-   "text": "He stares at the screen."
+   "text": "He stares at the screen.",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/013.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
    "role": "— text —",
    "expr": "neutral",
-   "text": "[shot:closeup person]me neither."
+   "text": "[shot:closeup person]me neither.",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/014.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "role": "— text —",
    "expr": "neutral",
-   "text": "ben says we wait for one more thing. maya says sunday or monday. i am trying to be patient."
+   "text": "ben says we wait for one more thing. maya says sunday or monday. i am trying to be patient.",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/015.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "role": "— text —",
    "expr": "neutral",
-   "text": "are you ok. like, at home. with him."
+   "text": "are you ok. like, at home. with him.",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/016.mp3"
   },
   {
    "t": "narrate",
-   "text": "[mood:macro_haze][shot:closeup jesse]Jesse looks up at his bedroom door. It is closed. Behind it, somewhere in the house, he can hear the faint sound of his mother running the dishwasher. He cannot hear his father. His father has been in the darkroom since six-fifteen."
+   "text": "[mood:macro_haze][shot:closeup jesse]Jesse looks up at his bedroom door. It is closed. Behind it, somewhere in the house, he can hear the faint sound of his mother running the dishwasher. He cannot hear his father. His father has been in the darkroom since six-fifteen.",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/017.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
    "role": "— text —",
    "expr": "neutral",
-   "text": "idk. he's been weird. mom is pretending she doesn't notice. he doesn't come up for meals some nights. he goes down there and stays down there."
+   "text": "idk. he's been weird. mom is pretending she doesn't notice. he doesn't come up for meals some nights. he goes down there and stays down there.",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/018.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "role": "— text —",
    "expr": "neutral",
-   "text": "is he scary weird or sad weird."
+   "text": "is he scary weird or sad weird.",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/019.mp3"
   },
   {
    "t": "narrate",
-   "text": "Jesse thinks."
+   "text": "Jesse thinks.",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/020.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
    "role": "— text —",
    "expr": "neutral",
-   "text": "both. mostly sad. sometimes scary. not at me. at himself."
+   "text": "both. mostly sad. sometimes scary. not at me. at himself.",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/021.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "role": "— text —",
    "expr": "neutral",
-   "text": "[shot:closeup person]ok. that's a data point. hold on to it. we'll figure it out."
+   "text": "[shot:closeup person]ok. that's a data point. hold on to it. we'll figure it out.",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/022.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "role": "— text —",
    "expr": "neutral",
-   "text": "jess"
+   "text": "jess",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/023.mp3"
   },
   {
    "t": "say",
    "char": "Sam",
    "role": "— text —",
    "expr": "neutral",
-   "text": "thank you for trusting me."
+   "text": "thank you for trusting me.",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/024.mp3"
   },
   {
    "t": "narrate",
@@ -158,7 +176,8 @@
   },
   {
    "t": "narrate",
-   "text": "It has always been a comforting vibration. It is less comforting tonight."
+   "text": "It has always been a comforting vibration. It is less comforting tonight.",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/027.mp3"
   },
   {
    "t": "narrate",
@@ -171,52 +190,61 @@
   {
    "t": "think",
    "char": "Jesse",
-   "text": "My dad is being used as a camera. And he is the only person in the house who does not know it."
+   "text": "My dad is being used as a camera. And he is the only person in the house who does not know it.",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/030.mp3"
   },
   {
    "t": "think",
    "char": "Jesse",
-   "text": "My mom knows something is wrong. My mom is going to need to be told. My mom is not, yet, going to believe me. That is the next thing."
+   "text": "My mom knows something is wrong. My mom is going to need to be told. My mom is not, yet, going to believe me. That is the next thing.",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/031.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:insert phone]He sets the guitar aside. He picks up the phone. He texts Ben:"
+   "text": "[shot:insert phone]He sets the guitar aside. He picks up the phone. He texts Ben:",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/032.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
    "role": "— text · to Ben —",
    "expr": "neutral",
-   "text": "hey. i need help with my mom. not tonight. soon. thinking maybe this weekend. will you help."
+   "text": "hey. i need help with my mom. not tonight. soon. thinking maybe this weekend. will you help.",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/033.mp3"
   },
   {
    "t": "narrate",
-   "text": "Ben replies in eight seconds."
+   "text": "Ben replies in eight seconds.",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/034.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "role": "— text —",
    "expr": "neutral",
-   "text": "yes. bring her to the pit stop on saturday morning. i'll be on shift. tell her it's breakfast. i'll handle it."
+   "text": "yes. bring her to the pit stop on saturday morning. i'll be on shift. tell her it's breakfast. i'll handle it.",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/035.mp3"
   },
   {
    "t": "narrate",
-   "text": "Jesse exhales."
+   "text": "Jesse exhales.",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/036.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
    "role": "— text —",
    "expr": "neutral",
-   "text": "thanks, ben."
+   "text": "thanks, ben.",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/037.mp3"
   },
   {
    "t": "say",
    "char": "Ben",
    "role": "— text —",
    "expr": "neutral",
-   "text": "[beat:lift]it's what friends do, jess."
+   "text": "[beat:lift]it's what friends do, jess.",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/038.mp3"
   },
   {
    "t": "narrate",
@@ -233,11 +261,13 @@
   {
    "t": "think",
    "char": "Jesse",
-   "text": "I am going to be okay. I am going to be okay if I have Ben and Sam and Maya. I am, as of tonight, going to have Ben and Sam and Maya."
+   "text": "I am going to be okay. I am going to be okay if I have Ben and Sam and Maya. I am, as of tonight, going to have Ben and Sam and Maya.",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/042.mp3"
   },
   {
    "t": "narrate",
-   "text": "He gets up. He puts the Telecaster back in its case. He opens his bedroom door. He goes downstairs to say goodnight to his mother — because he has not, he realizes, said goodnight to his mother in eight days."
+   "text": "He gets up. He puts the Telecaster back in its case. He opens his bedroom door. He goes downstairs to say goodnight to his mother — because he has not, he realizes, said goodnight to his mother in eight days.",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/043.mp3"
   },
   {
    "t": "bg",
@@ -261,19 +291,22 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:kitchen_practical][shot:closeup mrs_henderson]She is at the sink, drying her hands."
+   "text": "[mood:kitchen_practical][shot:closeup mrs_henderson]She is at the sink, drying her hands.",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/048.mp3"
   },
   {
    "t": "say",
    "char": "Mrs. Henderson",
    "expr": "neutral",
-   "text": "\"Hey, kiddo.\""
+   "text": "\"Hey, kiddo.\"",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/049.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
    "expr": "neutral",
-   "text": "\"Hey, Mom.\""
+   "text": "\"Hey, Mom.\"",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/050.mp3"
   },
   {
    "t": "narrate",
@@ -287,23 +320,27 @@
    "t": "say",
    "char": "Mrs. Henderson",
    "expr": "neutral",
-   "text": "\"You okay, Jess?\""
+   "text": "\"You okay, Jess?\"",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/053.mp3"
   },
   {
    "t": "say",
    "char": "Jesse",
    "expr": "neutral",
-   "text": "\"Yeah, Mom. Just — yeah. Night.\""
+   "text": "\"Yeah, Mom. Just — yeah. Night.\"",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/054.mp3"
   },
   {
    "t": "say",
    "char": "Mrs. Henderson",
    "expr": "neutral",
-   "text": "\"Goodnight, sweetheart.\""
+   "text": "\"Goodnight, sweetheart.\"",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/055.mp3"
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]He goes back upstairs."
+   "text": "[shot:establish]He goes back upstairs.",
+   "voice": "assets/audio/voice/vol6_ch3_jesse_bedroom/056.mp3"
   },
   {
    "t": "jump",
