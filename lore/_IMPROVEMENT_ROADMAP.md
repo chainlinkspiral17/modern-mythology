@@ -2983,7 +2983,10 @@ recorded paragraph, now 2-4 consecutive lines, same words), 29 trimmed,
 line's recording at its pauses (silencedetect; each cut at the piece's
 share of the words, snapped to the nearest pause) — synthetic test on
 the prelude's real 08-03 history: 24/24 clips cut in the right gap.
-Re-run with --again. **Draft 3 targets:** the trimmed 29 (audio could
+Re-run with --again. **Deck re-run (same day): 922 recordings cut
+into 2,646 lines; vol5 2,831 / 2,949 voiced, vol6 7,324 / 8,308; only 17
+lines still skipped; audio audit 0 over 20,639 paths.** Not yet heard
+by ear. **Draft 3 targets:** the trimmed 29 (audio could
 be cut at the pause after the kept words); the vol 7 scenes have no
 voice zips yet; a loudness pass across takes from different days.
 
