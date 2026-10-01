@@ -2923,6 +2923,28 @@ CharLayer for bare keys that cross eras (`miriam`); vol1's chorus
 Lena's prompt says 2050s and vol7's wiki said 2025 — the user
 ruled the 2050s (2026-09-26); both wikis are rewritten to it.
 
+**2026-10-01 · GOOGLE DRIVE · incoming/.** The user: "start an incoming
+folder in the google drive project folder that I can reference in chat
+for various things." `ModernMythology/incoming` (Drive folder id
+12p3INRnze8yI4JJHYq0VynC9Yy5PePZf), with a README. Any session reads it
+through the Google Drive connector (search `parentId = '12p3INRnze8yI4JJHYq0VynC9Yy5PePZf'`,
+then read_file_content / download_file_content). Hero Studio's SAVE
+never writes or deletes there (rclone copies only its own folders).
+
+**2026-10-01 · SHEET 40 · drafts 40-43 judged; portraits seen.** The
+first sheet since draft 39. Landed: the barn insert (a tractor of
+wheels, bales), Small Wood's house insert (the house), the lake's far
+shore, the skatepark's pool, the chapel whole with its cross, the cedar
+tower whole, the comic shop's standee out of the lens, the diner's flat
+checker. Still wrong: the cape's fog reads as a flat white sheet below
+the rail (a box is not fog — blobs, greyer); the cabin bedroom is still
+orange wall (the camera needs the window and the bed in, not the
+partition); the bar front is mostly brick. The hero frames (the default
+waist-up) read well, but every SAD frame cut the head off — the old
+mood tilt was built for the wide; it now fades out as the shot tightens.
+The sheet now shoots EVERY hero on disk (it used the manifest's 10) at
+mcu / cu / ecu too, so sheet 41 shows whether the close-ups find faces.
+
 **2026-10-01 · PAINT OR PASS · draft 1.** The user: "we'll narrow
 individual areas once more hero assets populate them, can you compare
 generations built up from raw static scene data and paint or pass on

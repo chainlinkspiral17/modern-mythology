@@ -178,6 +178,13 @@ func _shoot_heroes(manifest: Dictionary) -> void:
 		return
 	var heroes: Array = manifest.get("heroes", [])
 	var exprs: Array = manifest.get("expressions", ["neutral"])
+	# The heroes ON DISK, not the manifest's list (2026-10-01: the manifest
+	# is written where the repo is, which held 10 models, while the Deck
+	# holds every model Hero Studio made — they live on Google Drive, not
+	# in git). The GNM experiment files are left out.
+	var disk: Array = _heroes_on_disk()
+	if not disk.is_empty():
+		heroes = disk
 	if heroes.is_empty():
 		return
 	var portrait: SubViewportContainer = PORTRAIT_SCENE.instantiate() as SubViewportContainer
@@ -202,7 +209,31 @@ func _shoot_heroes(manifest: Dictionary) -> void:
 			portrait.call("set_expression", expr)
 			await _settle(SETTLE_EXPR)
 			_save(portrait, "_heroes/%s__%s" % [file.get_basename(), expr], true)
+		# the director's dialogue sizes at eye level, neutral, a fixed take
+		# (portrait direction, 2026-10-01) — so a sheet shows whether the
+		# close-ups land on each model's face
+		if portrait.has_method("set_shot"):
+			portrait.call("set_expression", "neutral")
+			for sz in ["mcu", "cu", "ecu"]:
+				portrait.call("set_shot", sz, "eye", 7)
+				await _settle(SETTLE_EXPR)
+				_save(portrait, "_heroes/%s__shot_%s" % [file.get_basename(), sz], true)
+			portrait.call("set_shot", "medium", "eye", 7)
 	portrait.queue_free()
+
+
+func _heroes_on_disk() -> Array:
+	var out: Array = []
+	var root := "res://assets/3d/characters/heroes"
+	var d := DirAccess.open(root)
+	if d == null:
+		return out
+	for f: String in d.get_files():
+		if not f.ends_with(".glb") or f.ends_with("_gnm.glb"):
+			continue
+		out.append({"path": root + "/" + f, "file": f})
+	out.sort_custom(func(a: Dictionary, b: Dictionary) -> bool: return String(a["file"]) < String(b["file"]))
+	return out
 
 
 # ── capture ───────────────────────────────────────────────────────

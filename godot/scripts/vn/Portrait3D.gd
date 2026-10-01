@@ -374,7 +374,12 @@ func _process(delta: float) -> void:
 		pos.y += sin(_mood_t * freq * TAU) * amp * _motion_scale
 	_camera.position = pos
 	# Pitch + yaw — start from defaults, layer offsets + animation
-	var pitch: float = _mood.get("pitch_off", 0.0)
+	# The old moods tilted the camera down for sad/tired — built for the
+	# wide frame; in a tighter shot it cropped the head off (the 2026-10-01
+	# sheet). The director owns the angle now: the mood's tilt fades out
+	# as the shot tightens (full at wide, none from the medium close-up in).
+	var tilt_keep: float = clampf((_motion_scale - 0.5) * 2.0, 0.0, 1.0)
+	var pitch: float = float(_mood.get("pitch_off", 0.0)) * tilt_keep
 	var yaw: float = _mood.get("yaw_off", 0.0)
 	# Sway (horizontal yaw)
 	if _mood.has("sway_amp") and _mood.has("sway_freq"):
