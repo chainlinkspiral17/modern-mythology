@@ -9,7 +9,8 @@
 # the rest of your Drive. Models and pictures then go to the Drive
 # folder "ModernMythology"; git keeps only a small manifest.
 #
-#   bash godot/tools/drive_setup.sh
+#   bash godot/tools/drive_setup.sh            # set up, or check
+#   bash godot/tools/drive_setup.sh --fresh    # start the sign-in over
 set -euo pipefail
 BIN="$HOME/.local/bin"
 mkdir -p "$BIN"
@@ -28,6 +29,12 @@ if [ -z "$RC" ]; then
   RC="$BIN/rclone"
 fi
 echo "rclone: $("$RC" version | head -1)"
+# --fresh: throw away the gdrive connection and sign in from scratch (an
+# "Auth state doesn't match" from a stale browser tab, a broken token)
+if [ "${1:-}" = "--fresh" ]; then
+  "$RC" config delete gdrive 2>/dev/null || true
+  echo "old gdrive connection removed — close any old sign-in tabs; use only the one that opens now"
+fi
 if ! "$RC" listremotes | grep -qx 'gdrive:'; then
   echo
   echo "A browser window will open. Sign in to Google and click Allow."
