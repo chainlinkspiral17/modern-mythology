@@ -250,8 +250,8 @@ say "    · allow the MIDI prompt (including 'control and reprogram')."
 say "    · follow Baud Girl's installer. Don't touch the cable or the synth until it says done."
 say "    · then CLOSE that browser window — this script picks up from there."
 [ "$WARNINGS" -gt 0 ] && say "    · $WARNINGS warning(s) above — read them first."
-read -r -p "Type GO to open the installer (anything else quits): " ans
-[ "$ans" = "GO" ] || { say "quit — nothing was changed."; exit 0; }
+read -r -p "Type go to open the installer (anything else quits): " ans
+[ "$(echo "$ans" | tr "[:upper:]" "[:lower:]")" = "go" ] || { say "quit — nothing was changed."; exit 0; }
 
 # ── 3 + 4. inhibit sleep, launch installer ──────────────────────
 if [[ "$BROWSER" == flatpak\ run\ * ]]; then

@@ -165,6 +165,19 @@ those tools.
   The decoder was checked against the real reply prefix published in
   the open-firmware docs (unpacks to `00 59 11 … "FM-"`).
 
+### 2026-10-01 — first hardware run on the Deck
+
+- Identity query over `amidi` worked on real hardware first try
+  (PipeWire did NOT hold the port): stock unit reads `FM-1_015`.
+  Decoder confirmed.
+- The Deck has ONE USB-C port. With the dock attached, the FM-1 sits
+  behind the dock's hub (sysfs `1-1.1`, hub product `USB2.0 Hub`),
+  and AC power comes through that same dock. "Direct + on AC" is
+  impossible on a Deck: flash on battery (≥ 50 % is a warning, not a
+  blocker) with the FM-1 on a C-to-C data cable in the Deck's port.
+- The GO prompt was case-sensitive and a lowercase `go` quit. Now
+  case-insensitive.
+
 ## TEMPLATE
 
 ```
