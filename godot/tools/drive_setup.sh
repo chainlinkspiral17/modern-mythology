@@ -35,5 +35,15 @@ if ! "$RC" listremotes | grep -qx 'gdrive:'; then
   echo
   "$RC" config create gdrive drive scope=drive.file
 fi
+# A "gdrive" remote can exist without a working sign-in (an earlier
+# setup that never finished: "empty token found"). Test it; if it does
+# not answer, sign in again. Press Enter at any question rclone asks.
+if ! "$RC" lsd gdrive: >/dev/null 2>&1; then
+  echo
+  echo "The gdrive connection has no working sign-in. A browser window will open:"
+  echo "sign in to Google and click Allow. Press Enter at any question here."
+  echo
+  "$RC" config reconnect gdrive:
+fi
 "$RC" mkdir gdrive:ModernMythology
 "$RC" lsd gdrive: | grep -q ModernMythology && echo "DRIVE READY — Hero Studio's SAVE now puts models and pictures on Google Drive"
