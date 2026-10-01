@@ -213,6 +213,15 @@ with ≥ 12 samples and ≥ 5 cm wide) and the cu and ecu frame from it
 (`FACE_FRAMES`: ecu = neck −0.01 … +0.20 m, eyes on the upper third).
 Measured headless: necks 1.50-1.54 m, 8-11 cm wide.
 
+**Sheet 42 verdict — the face-anchored close sizes.** The ecu now lands
+on the face for ~45 of 51 (Frasier's eyes behind his glasses, Aria under
+her hair, Diego, Jimmy, the women with long hair). Two follow-ups:
+short-haired men whose neck reads high (Jimmy, Thomas) sat low in the cu
+under a band of empty headroom — the cu's top is capped 6 cm over the
+figure, the ecu's at the crown, and the frame slides down instead; and
+the Frog (all eye) and the Stranger (all hood) never get an automatic
+ecu (`PortraitDirector.NO_ECU`; a writer's [portrait:ecu] still can).
+
 NEXT (draft 2): the Deck verdict on the sizes per model (Meshy faces
 sit at different heights — a per-model face offset table if the ecu
 misses eyes); a catchlight for cu/ecu; matching the portrait's key to

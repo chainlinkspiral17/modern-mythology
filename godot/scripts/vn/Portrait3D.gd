@@ -573,6 +573,13 @@ func set_shot(size: String, angle: String = "eye", seed: int = -1) -> void:
 		var ff: Dictionary = FACE_FRAMES[size]
 		b = _neck_y + float(ff["b"])
 		t = _neck_y + float(ff["t"])
+		# never frame air over the crown (sheet 42: Jimmy and Thomas — short
+		# hair, a neck read high — sat low under a band of empty headroom):
+		# the cu's top stops 6 cm over the figure, the ecu's at the crown
+		var cap: float = TARGET_HEIGHT_M + (0.06 if size == "cu" else 0.0)
+		if t > cap:
+			b -= t - cap
+			t = cap
 	var frame_h: float = t - b
 	var fov: float = float(f["fov"]) + float(_roll.get("fov", 0.0))
 	var dist: float = (frame_h * 0.5) / tan(deg_to_rad(fov * 0.5))

@@ -54,6 +54,11 @@ const AUTHORITY := {
 	"erica_campbell": true, "the_demon": true, "father_amato": true,
 }
 
+# Models whose face is not a face in an extreme close-up: the Frog's is
+# all eye, the Stranger's all hood (sheet 42). The director tops out at
+# the close-up for them.
+const NO_ECU := {"the_frog": true, "the_stranger": true}
+
 const INTENSE := {"angry": 2, "surprised": 2, "nervous": 1, "sad": 1, "tired": 0, "happy": 0, "neutral": 0, "demon_chaos": 2}
 const VULNERABLE := {"sad": true, "tired": true}
 const UNEASY := {"nervous": true, "demon_chaos": true}
@@ -120,6 +125,8 @@ static func choose(ctx: Dictionary) -> Dictionary:
 			why = "pushing in"
 	elif score >= 1:
 		why = "charged line"
+	if want == size_index("ecu") and NO_ECU.has(glb):
+		want = size_index("cu")
 	var angle: String = "eye"
 	if UNEASY.has(mood):
 		angle = "dutch"
