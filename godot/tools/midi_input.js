@@ -326,6 +326,31 @@ class MidiInput {
     return this.send(bytes);
   }
 
+  // ── Firmware identity (read-only) ──────────────────────────────
+  // Sends the vendor identity query the official updater opens with
+  // (F0 00 32 45 00 00 00 40 7F F7) and decodes the reply into e.g.
+  // "FM-1_015" (stock) or "FM-1_092" (Baud Girl FM-1+VA). This is the
+  // ONLY message with the 00 32 45 header the tools ever send — the
+  // rest of that protocol is the flasher. Resolves null on timeout.
+  identify(timeoutMs = 3000) {
+    return new Promise(resolve => {
+      if (!this.output || !this.input) return resolve(null);
+      if (!this.sysexOk) return resolve({ error: 'SysEx not permitted' });
+      const q = [0xF0, 0x00, 0x32, 0x45, 0x00, 0x00, 0x00, 0x40, 0x7F, 0xF7];
+      let done = false;
+      const onSx = e => {
+        const d = e.detail.data;
+        if (d.length < 20 || d[1] !== 0x00 || d[2] !== 0x32 || d[3] !== 0x45) return;
+        const id = fm1DecodeIdentity(d);
+        if (!id) return;
+        done = true; window.removeEventListener('midiinput-sysex', onSx); resolve(id);
+      };
+      window.addEventListener('midiinput-sysex', onSx);
+      this.send(q);
+      setTimeout(() => { if (!done) { window.removeEventListener('midiinput-sysex', onSx); resolve(null); } }, timeoutMs);
+    });
+  }
+
   // ── Echo helpers (tool-facing — gated by the OUT toggle) ────────
   // A one-shot: note on, timed note off. For pluck-style instruments.
   echoPluck(note, vel01, durMs) {
@@ -361,6 +386,33 @@ class MidiInput {
       outEnabled: this.outEnabled,
     };
   }
+}
+
+// ── FM-1 identity reply decoder ────────────────────────────────────
+// Body between F0 and F7 is a 7-bit LSB-first bitstream that unpacks
+// to a 34-byte JieLi ID block starting 00 59 11; bytes 6..30 hold
+// "<model>_<version>". Mirrors fm1_identify.py in
+// ip2k/mvave-fm1-open-firmware. Returns {name, model, version,
+// firmware: 'stock'|'baudgirl'} or null.
+function fm1DecodeIdentity(bytes) {
+  const d = [...bytes];
+  if (d[0] !== 0xF0 || d[d.length - 1] !== 0xF7) return null;
+  let acc = 0, bits = 0; const out = [];
+  for (const b of d.slice(1, -1)) {
+    acc |= (b & 0x7F) << bits; bits += 7;
+    while (bits >= 8) { out.push(acc & 0xFF); acc >>>= 8; bits -= 8; }
+  }
+  if (out.length < 31 || out[0] !== 0x00 || out[1] !== 0x59 || out[2] !== 0x11) return null;
+  const field = String.fromCharCode(...out.slice(6, 31));
+  const m = field.match(/([A-Za-z0-9-]{2,})_(\d+)/);
+  if (!m) return null;
+  const version = parseInt(m[2], 10);
+  return {
+    name: m[1] + '_' + String(version).padStart(3, '0'),
+    model: m[1], version,
+    // Stock ships as 014 / 015; Baud Girl's FM-1+VA builds are 020+.
+    firmware: version >= 20 ? 'baudgirl' : 'stock',
+  };
 }
 
 // ── CC → <input type=range> binding ────────────────────────────────

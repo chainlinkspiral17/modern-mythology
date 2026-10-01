@@ -95,7 +95,7 @@
     <h1>FM-1 CONSOLE · M-VAVE FM-1 ↔ MM TOOLS</h1>
     <span class="badge bad" id="badge-midi">MIDI: starting…</span>
     <span class="badge" id="badge-sysex">SYSEX: —</span>
-    <span class="badge" id="badge-fw" title="Firmware can't be read back over MIDI; this is your note to yourself.">FW: unknown</span>
+    <span class="badge" id="badge-fw" title="Press IDENTIFY (read-only) to read the version from the synth.">FW: unknown</span>
     <span class="sub">connection · monitor · knob learn · program change · DX7 patch push. Chrome / Edge only (Web MIDI).</span>
   </header>
 
@@ -127,9 +127,14 @@
             <option value="stock">stock M-VAVE (V14 / V15)</option>
             <option value="baudgirl">Baud Girl FM-1+VA</option>
           </select>
+          <button id="fw-identify" title="Read-only: sends the 10-byte identity query the official updater starts with, decodes the version.">IDENTIFY</button>
         </div>
+        <div class="msg" id="fw-msg"></div>
         <div class="note" id="fw-note">
-          The FM-1 never reports its firmware over MIDI (no identity reply, no dump read-back), so tell the console what you flashed and it will tune the advice below. Saved in this browser.
+          Press IDENTIFY to read the firmware version from the synth (read-only), or pick it by hand. Saved in this browser.
+        </div>
+        <div class="note" style="margin-top:6px;">
+          <b>Installing Baud Girl's firmware?</b> On the Deck, run <b>godot/tools/fm1_flash.sh</b> — it checks cable / hub / power, blocks sleep, opens her installer in a clean Chrome profile, and verifies the result. The flash itself happens in her installer, never from these tools.
         </div>
       </div>
 
@@ -258,7 +263,7 @@ window.addEventListener('midiinput-disconnected', () => { refreshBadges(); log('
 
 // ── Firmware selector (self-reported) ───────────────────────────
 const FW_NOTES = {
-  '': 'The FM-1 never reports its firmware over MIDI (no identity reply, no dump read-back), so tell the console what you flashed and it will tune the advice below. Saved in this browser.',
+  '': 'Press IDENTIFY to read the firmware version from the synth (read-only), or pick it by hand. Saved in this browser.',
   stock: 'Stock V14/V15: Dexed core, 128 tones, 16-step sequencer. Accepts DX7 voice dumps + parameter changes; sends no clock or active sensing. Knob CC output unconfirmed — use LEARN to find out. The macOS updater downgrades V15 → V14; don\'t run it.',
   baudgirl: 'Baud Girl FM-1+VA (FM-1_02x–09x): list-style menus, all four knobs live from any screen, VA (303 / supersaw) engine, 64-step sequencer, fixed detune / LFO / feedback / note-off. Still the Dexed core, so DX7 pushes should land in FM mode; the VA engine is not reachable via DX7 SysEx. Installed from Chrome/Edge over Web MIDI — same permission this page asks for.',
 };
@@ -272,6 +277,18 @@ function refreshFw() {
 }
 $('fw-sel').addEventListener('change', () => { try { localStorage.setItem('mm_fm1_firmware', $('fw-sel').value); } catch (e) {} refreshFw(); });
 refreshFw();
+$('fw-identify').addEventListener('click', async () => {
+  $('fw-msg').textContent = 'asking…';
+  log('out', 'identity query (read-only): F0 00 32 45 00 00 00 40 7F F7');
+  const id = await mi.identify();
+  if (!id) { $('fw-msg').textContent = mi.output ? 'no reply in 3 s — check the IN port and that the synth is in normal mode.' : 'no OUT port selected.'; return; }
+  if (id.error) { $('fw-msg').textContent = id.error + ' — reload and allow "control and reprogram".'; return; }
+  $('fw-sel').value = id.firmware;
+  try { localStorage.setItem('mm_fm1_firmware', id.firmware); } catch (e) {}
+  refreshFw();
+  $('badge-fw').textContent = 'FW: ' + id.name + (id.firmware === 'baudgirl' ? ' · Baud Girl FM-1+VA' : ' · stock');
+  $('fw-msg').textContent = 'read from device: ' + id.name;
+});
 
 // ── Knob learn slots ─────────────────────────────────────────────
 const KNOBS = [
@@ -484,7 +501,10 @@ function decode(d) {
   if (st === 0xF0) {
     let who = 'sysex';
     if (d[1] === 0x43) who = 'sysex · Yamaha/DX7 format';
-    else if (d[1] === 0x00 && d[2] === 0x32 && d[3] === 0x45) who = 'sysex · FM-1 vendor (updater protocol)';
+    else if (d[1] === 0x00 && d[2] === 0x32 && d[3] === 0x45) {
+      const id = fm1DecodeIdentity(d);
+      who = id ? 'sysex · FM-1 identity reply → ' + id.name : 'sysex · FM-1 vendor (updater protocol)';
+    }
     else if (d[1] === 0x7E || d[1] === 0x7F) who = 'sysex · universal';
     return { text: who + ' · ' + d.length + 'B' };
   }

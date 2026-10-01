@@ -102,12 +102,21 @@ those tools.
 - Updater mode re-enumerates as `ota-FM-1` (`4D4A:4155`). We detect
   that name and refuse to treat it as an instrument.
 - Sends nothing unprompted: no clock, no active sensing, no reply to
-  universal identity request or DX7 dump request.
+  the universal identity request or a DX7 dump request. It DOES
+  answer the vendor identity query `F0 00 32 45 00 00 00 40 7F F7`
+  with a 41-byte reply: a 7-bit LSB-first bitstream that unpacks to
+  a 34-byte block starting `00 59 11`, with `FM-1_0xx` at bytes
+  6..30. Stock is 014/015; Baud Girl FM-1+VA builds are 020+.
+  `MidiInput.identify()` / `fm1DecodeIdentity()` implement this.
 - Stock engine is the Dexed / msfa core; firmware analysis says it
   accepts DX7 voice dumps and parameter changes with no read-back.
   So we can push, never verify except by ear.
 - Vendor SysEx header `00 32 45` is the firmware-update protocol.
-  Never send it. The monitor labels it when seen.
+  The identity query above is the ONLY message with that header the
+  tools may send. Never send the upgrade command (`F0 22 24 35 7F
+  F7`) or answer loader read requests (`00 32 41 41`) from these
+  tools — that is a flasher, and there is no recovery for a bad
+  write (one flash bank, no proven mask-ROM boot).
 - Whether the knobs transmit CC (and on which numbers) is
   undocumented for both stock and Baud Girl firmware → MIDI-learn
   everywhere, never hard-coded CC numbers.
@@ -132,6 +141,29 @@ those tools.
 - The FM-1 CONSOLE asks the user which firmware is on the device and
   stores it in `localStorage.mm_fm1_firmware`. There is no way to
   read it back over MIDI, so self-report is the only option.
+
+### 2026-10-01 — firmware install helper, not a flasher
+
+- `fm1_flash.sh` wraps Baud Girl's web installer instead of flashing.
+  Her FM-1+VA image only exists inside that installer, and the update
+  protocol has documented unknowns (an obfuscated step-1 check,
+  syscmds 33–36/48 unsafe to send). The script automates everything
+  around the write: Desktop Mode, browser + Flatpak MIDI device
+  access, FM-1 present and NOT behind a hub/dock (sysfs name has a
+  `.`), Deck on AC, version read before/after, a logind sleep+idle
+  lock for the browser's lifetime, and a dedicated browser profile so
+  `flatpak run` blocks until the installer window closes.
+- Post-flash states: `4c4a:c755` = booted; `4d4a:4155` = parked in
+  the loader (resumable: re-run, her installer resumes); neither =
+  stop, read docs/07 in the open-firmware repo.
+- Raw-MIDI identity (`amidi`) is often blocked by PipeWire holding
+  the port ("Device or resource busy"). The console's IDENTIFY goes
+  through Chrome's ALSA-sequencer path and works alongside PipeWire.
+- Correction to the first entry: firmware CAN be read back, via the
+  vendor identity query. Patches still can't.
+- Tested here against a fake sysfs tree and a synthetic reply only.
+  The decoder was checked against the real reply prefix published in
+  the open-firmware docs (unpacks to `00 59 11 … "FM-"`).
 
 ## TEMPLATE
 
