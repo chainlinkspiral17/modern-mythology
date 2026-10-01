@@ -104,6 +104,9 @@ the result is intelligible-enough with 30% static overlay.
   the files made by THAT client id; switching to your own client id
   would hide everything the shared one made. Under your own app the
   project connection takes full `drive` scope (it still only copies).
+- **Never make git wait on the Drive.** Google Drive creates a few files
+  a second regardless of size — thousands of voice lines take hours.
+  Commit the small files first; upload in recorded, resumable chunks.
 - **Inventory, then send.** The Drive's whole audio library is listed,
   previewed and sent per file — the game takes only what was picked.
 

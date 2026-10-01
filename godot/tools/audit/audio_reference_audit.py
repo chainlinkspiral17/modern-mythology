@@ -54,6 +54,13 @@ ALLOW = {
 }
 
 
+# Folders that are gitignored and live on Google Drive (.gitignore,
+# meshy_pipeline DRIVE_DIRS). SAVE commits the scene "voice" keys BEFORE
+# a long upload finishes (2026-10-01), so a path here may be ahead of
+# the manifest; a checkout gets the files with `meshy_pipeline.py drive-pull`.
+DRIVE_HELD = ("assets/audio/voice/", "assets/audio/drive/")
+
+
 def on_drive():
     """Audio that lives on Google Drive, not in git (2026-10-01: the voice
     lines from import_voice_dropins.sh, the music sent from Hero Studio's
@@ -129,7 +136,7 @@ def bank_key_tables():
 
 def main():
     show_all = "--all" in sys.argv
-    seen, bad = 0, 0
+    seen, bad, held = 0, 0, 0
     drive = on_drive()
     for f in files():
         try:
@@ -140,6 +147,9 @@ def main():
             p = m.group(1)
             seen += 1
             if os.path.exists(os.path.join(GODOT, p)) or p in drive:
+                continue
+            if p.startswith(DRIVE_HELD):
+                held += 1          # gitignored + on the Drive: no checkout has it until drive-pull
                 continue
             if p in ALLOW:
                 if show_all:
@@ -175,6 +185,9 @@ def main():
             print("info    %-54s no scenario bed (uses the location drone)"
                   % k)
 
+    if held:
+        print("drive-held %d voice/drive path(s) not in this checkout "
+              "(meshy_pipeline.py drive-pull fetches them)" % held)
     print("\naudio_reference_audit · %d path(s) · %d bank route(s) · "
           "%d scenario bed(s) · %d problem(s)"
           % (seen, routed, len(keys), bad))

@@ -2974,6 +2974,20 @@ on the Deck (the builder must run there). **Sheet 44 checks:** the
 three sizes step visibly; the bedroom window insert; the cape bench
 lit enough to read.
 
+**2026-10-01 · SAVE survives a long upload.** The Deck's first voice
+import worked (audio in place, game plays it) but SAVE's Drive upload
+hit its 2-hour limit at 2,836 of 7,553 files (Drive creates ~0.4
+files/s on rclone's shared client, whatever their size) and the crash
+took the git commit with it — the vol 6 voice keys stayed on the Deck.
+Now: git commits + pushes FIRST; the Drive upload goes in chunks (one
+per folder: a voice scene, the heroes …) of only the pending files
+(--files-from --no-traverse, 8 transfers), each chunk recorded in the
+manifest as it lands, no time limit; a stopped upload resumes on the
+next SAVE; the manifest is committed after, even when partial.
+audio_reference_audit counts gitignored voice/ + drive/ paths as
+Drive-held (the keys can be ahead of the manifest). Tested with a
+simulated drop mid-upload: 3/9 recorded, the rerun sent the other 6.
+
 **2026-10-01 · GOOGLE DRIVE · your own client id.** The user made their
 own Google OAuth client (rclone.org/drive/#making-your-own-client-id).
 `bash godot/tools/drive_setup.sh --client` asks for the id + secret

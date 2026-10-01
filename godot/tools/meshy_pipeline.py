@@ -452,59 +452,86 @@ def git_status():
         return {"error": str(ex), "unsaved": [], "unpushed": 0, "drive": drive_status()}
 
 
+def _commit_push(message, steps):
+    """git add the Hero Studio paths, commit, push. Appends to steps;
+    returns (ok, status). A rejected push is rebased once and retried."""
+    st = git_status()
+    if st.get("error"):
+        steps.append(st["error"])
+        return False, st
+    branch = st["branch"]
+    if branch == "HEAD":
+        steps.append("the checkout is not on a branch (detached HEAD) — check out a branch first")
+        return False, st
+    if st["unsaved"]:
+        code, out, err = _git("add", "-A", "--", *_save_pathspecs())
+        if code:
+            steps.append(f"git add failed: {err}")
+            return False, git_status()
+        n = len(st["unsaved"])
+        msg = message or f"Hero Studio: {n} file{'s' if n != 1 else ''} saved from the tool ({datetime.now().strftime('%Y-%m-%d %H:%M')})"
+        code, out, err = _git("commit", "-q", "-m", msg)
+        if code:
+            steps.append(f"git commit failed: {err or out}")
+            return False, git_status()
+        steps.append(f"committed {n} file{'s' if n != 1 else ''}: {msg}")
+    else:
+        code, out, _ = _git("rev-list", "--count", f"origin/{branch}..HEAD", timeout=10)
+        if code == 0 and out.strip() == "0":
+            steps.append("nothing new to commit")
+            return True, git_status()
+    for attempt in (1, 2):
+        code, out, err = _git("push", "-u", "origin", f"HEAD:{branch}", timeout=300)
+        if code == 0:
+            steps.append(f"pushed to origin/{branch}")
+            return True, git_status()
+        text = (err or out)
+        if attempt == 1 and ("rejected" in text or "fetch first" in text or "non-fast-forward" in text):
+            steps.append("push rejected (the branch moved on the server) — rebasing onto it")
+            # --autostash: the Deck usually has an unrelated dirty file (project.godot); it must not block the save
+            code2, out2, err2 = _git("pull", "--rebase", "--autostash", "origin", branch, timeout=300)
+            if code2:
+                _git("rebase", "--abort", timeout=30)
+                steps.append(f"rebase failed and was undone: {(err2 or out2)[-400:]}")
+                return False, git_status()
+            steps.append("rebased; pushing again")
+            continue
+        steps.append(f"push failed: {text[-400:]}")
+        return False, git_status()
+    return False, git_status()
+
+
 def git_save_push(message=None):
-    """git add the Hero Studio paths, commit, push to the current branch.
-    A rejected push (someone else pushed) is rebased once and retried.
-    Returns what happened, step by step, for the page's log."""
+    """SAVE: git FIRST (the small files — scene JSON, roster, manifest), then
+    the big files to Google Drive, then the updated manifest to git.
+
+    The order changed 2026-10-01: a 7,553-file voice upload ran past its
+    2-hour limit on the Deck and the crash took the commit with it — the
+    vol 6 voice keys stayed on the Deck only. Git no longer waits on the
+    Drive; the Drive upload resumes where it stopped on the next SAVE."""
     steps = []
     with _git_lock:
+        ok, st = _commit_push(message, steps)
+        if not ok:
+            return {"ok": False, "steps": steps, "status": st}
         drive_ok = True
         ds = drive_status()
         if ds["configured"]:
-            dres = drive_push()
+            try:
+                dres = drive_push()
+            except Exception as ex:  # noqa: BLE001
+                dres = {"ok": False, "steps": [f"Google Drive upload stopped: {ex}"]}
             steps += dres["steps"]
             drive_ok = dres["ok"]
+            if not drive_ok:
+                steps.append("the files uploaded so far are recorded; SAVE again to carry on from there")
         elif ds["pending"]:
             drive_ok = False
-            steps.append(f"Google Drive is not set up — {ds['pending']} model/picture file(s) are NOT backed up. "
+            steps.append(f"Google Drive is not set up — {ds['pending']} big file(s) are NOT backed up. "
                          "Run: bash godot/tools/drive_setup.sh")
-        st = git_status()
-        if st.get("error"):
-            return {"ok": False, "steps": steps + [st["error"]], "status": st}
-        branch = st["branch"]
-        if branch == "HEAD":
-            return {"ok": False, "steps": ["the checkout is not on a branch (detached HEAD) — check out a branch first"], "status": st}
-        if st["unsaved"]:
-            code, out, err = _git("add", "-A", "--", *_save_pathspecs())
-            if code:
-                return {"ok": False, "steps": [f"git add failed: {err}"], "status": git_status()}
-            n = len(st["unsaved"])
-            msg = message or f"Hero Studio: {n} file{'s' if n != 1 else ''} saved from the tool ({datetime.now().strftime('%Y-%m-%d %H:%M')})"
-            code, out, err = _git("commit", "-q", "-m", msg)
-            if code:
-                return {"ok": False, "steps": [f"git commit failed: {err or out}"], "status": git_status()}
-            steps.append(f"committed {n} file{'s' if n != 1 else ''}: {msg}")
-        else:
-            steps.append("nothing new to commit")
-        for attempt in (1, 2):
-            code, out, err = _git("push", "-u", "origin", f"HEAD:{branch}", timeout=300)
-            if code == 0:
-                steps.append(f"pushed to origin/{branch}")
-                return {"ok": drive_ok, "steps": steps, "status": git_status()}
-            text = (err or out)
-            if attempt == 1 and ("rejected" in text or "fetch first" in text or "non-fast-forward" in text):
-                steps.append("push rejected (the branch moved on the server) — rebasing onto it")
-                # --autostash: the Deck usually has an unrelated dirty file (project.godot); it must not block the save
-                code2, out2, err2 = _git("pull", "--rebase", "--autostash", "origin", branch, timeout=300)
-                if code2:
-                    _git("rebase", "--abort", timeout=30)
-                    steps.append(f"rebase failed and was undone: {(err2 or out2)[-400:]}")
-                    return {"ok": False, "steps": steps, "status": git_status()}
-                steps.append("rebased; pushing again")
-                continue
-            steps.append(f"push failed: {text[-400:]}")
-            return {"ok": False, "steps": steps, "status": git_status()}
-    return {"ok": False, "steps": steps, "status": git_status()}
+        # the manifest (what the Drive now holds) — even after a partial upload
+        ok2, st = _commit_push("Hero Studio: Drive manifest (" + datetime.now().strftime('%Y-%m-%d %H:%M') + ")", steps)
+        return {"ok": drive_ok and ok2, "steps": steps, "status": st}
 
 
 # ── GOOGLE DRIVE (the big files) ────────────────────────────────────
@@ -614,9 +641,31 @@ def drive_status():
             "pending_files": pend[:12], "rclone": bool(_rclone())}
 
 
+def _record_on_drive(paths):
+    """Write these local files into the manifest as held by the Drive."""
+    man = load_drive_manifest()
+    files = man.setdefault("files", {})
+    now = now_iso()
+    for r in paths:
+        p = REPO.parent / r
+        if p.is_file():
+            files[r] = {"size": p.stat().st_size, "md5": _md5(p), "at": now}
+    man["remote"] = DRIVE_REMOTE
+    DRIVE_MANIFEST.write_text(json.dumps(man, indent=1, sort_keys=True) + "\n")
+
+
 def drive_push():
-    """Copy every model and picture up to the Drive, then write the manifest."""
+    """Copy every big file the Drive lacks up to it, in chunks (one per
+    folder: a voice scene, the heroes, …), recording each chunk in the
+    manifest as it lands — an interrupted upload resumes, not restarts.
+
+    Only the pending files are sent (--files-from, --no-traverse), so a
+    SAVE does not list thousands of remote files to find the new ones.
+    Google Drive creates only a few files a second whatever their size
+    (the 2026-10-01 voice: 7,553 lines, ~0.4 files/s on rclone's shared
+    client) — there is no time limit any more; the progress line shows."""
     import subprocess
+    import tempfile
     rc = _rclone()
     if not rc:
         return {"ok": False, "steps": ["rclone is not installed — run: bash godot/tools/drive_setup.sh"]}
@@ -624,37 +673,41 @@ def drive_push():
     with _drive_lock:
         pend = drive_pending()
         if not pend:
-            return {"ok": True, "steps": ["Google Drive: already holds every model and picture"]}
-        for d in DRIVE_DIRS:
-            src = REPO.parent / d
-            if not src.exists():
+            return {"ok": True, "steps": ["Google Drive: already holds every big file"]}
+        # chunk: <drive dir>/<first sub-folder> (or the dir itself)
+        chunks = {}
+        for r in pend:
+            d = next((d for d in DRIVE_DIRS if r.startswith(d + "/")), None)
+            if d is None:
                 continue
-            args = [rc, "copy", str(src), f"{DRIVE_REMOTE}/{d}", "--transfers", "4"]
-            for ext in sorted(DRIVE_EXTS):
-                args += ["--include", f"*{ext}"]
-            if DRIVE_LIVE:
-                # from the terminal: show the upload as it goes (it can take
-                # minutes; silence read as a hang on the Deck, 2026-10-01)
-                print(f"uploading {d} …", flush=True)
-                r = subprocess.run(args + ["--progress", "--stats-one-line"], timeout=7200)
-                if r.returncode:
-                    steps.append(f"Google Drive upload failed for {d} (see the lines above)")
-                    return {"ok": False, "steps": steps}
-                continue
-            r = subprocess.run(args, capture_output=True, text=True, timeout=3600)
+            rest = r[len(d) + 1:]
+            key = d + "/" + rest.split("/", 1)[0] if "/" in rest else d
+            chunks.setdefault((d, key), []).append(r)
+        done = 0
+        total = len(pend)
+        for (d, key), rels in sorted(chunks.items()):
+            with tempfile.NamedTemporaryFile("w", suffix=".txt", delete=False) as tf:
+                for r in rels:
+                    tf.write(r[len(d) + 1:] + "\n")
+                lst = tf.name
+            args = [rc, "copy", str(REPO.parent / d), f"{DRIVE_REMOTE}/{d}", "--files-from", lst,
+                    "--no-traverse", "--transfers", "8", "--checkers", "16"]
+            try:
+                if DRIVE_LIVE:
+                    print(f"uploading {key} ({len(rels)} file(s); {done}/{total} done) …", flush=True)
+                    r = subprocess.run(args + ["--progress", "--stats-one-line"])
+                    err = "see the lines above"
+                else:
+                    r = subprocess.run(args, capture_output=True, text=True)
+                    err = (r.stderr or r.stdout or "")[-300:]
+            finally:
+                os.unlink(lst)
             if r.returncode:
-                steps.append(f"Google Drive upload failed for {d}: {(r.stderr or r.stdout)[-300:]}")
+                steps.append(f"Google Drive upload failed for {key}: {err} ({done} of {total} file(s) up)")
                 return {"ok": False, "steps": steps}
-        man = load_drive_manifest()
-        files = man.setdefault("files", {})
-        now = now_iso()
-        for p in _drive_local_files():
-            r = str(p.relative_to(REPO.parent))
-            files[r] = {"size": p.stat().st_size, "md5": _md5(p), "at": files.get(r, {}).get("at", now)
-                        if files.get(r, {}).get("md5") == _md5(p) else now}
-        man["remote"] = DRIVE_REMOTE
-        DRIVE_MANIFEST.write_text(json.dumps(man, indent=1, sort_keys=True) + "\n")
-        steps.append(f"Google Drive: uploaded {len(pend)} file(s) to {DRIVE_REMOTE}")
+            _record_on_drive(rels)
+            done += len(rels)
+        steps.append(f"Google Drive: uploaded {done} file(s) to {DRIVE_REMOTE}")
     return {"ok": True, "steps": steps}
 
 
