@@ -202,6 +202,17 @@ hero GLB gets no portrait (the dialogue box names them). A show node's
 image for the scene; the retired busts, compositions and placeholders
 are never used.
 
+**Sheet 41 verdict — the close sizes on 51 heroes.** mcu and cu landed
+on nearly every face. The ecu missed on about a third: every model is
+scaled to 1.8 m INCLUDING hair and hats, so a frame placed as a
+fraction of height drops below big hair — Frasier's locs, Aria's hair,
+the Frog's hat, the Stranger's hood filled the frame; Jimmy and Diego
+cropped. `Portrait3D._measure_neck()` now finds each model's neck at
+load (the narrowest slice of the mesh, 74-90 % of the height, slices
+with ≥ 12 samples and ≥ 5 cm wide) and the cu and ecu frame from it
+(`FACE_FRAMES`: ecu = neck −0.01 … +0.20 m, eyes on the upper third).
+Measured headless: necks 1.50-1.54 m, 8-11 cm wide.
+
 NEXT (draft 2): the Deck verdict on the sizes per model (Meshy faces
 sit at different heights — a per-model face offset table if the ecu
 misses eyes); a catchlight for cu/ecu; matching the portrait's key to

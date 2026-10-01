@@ -81,6 +81,18 @@ const YAW_THREE_QUARTER: float = 0.40       # rad (~23°) — the old 3/4 offset
 const ANGLE_ELEVATION := {"eye": 0.0, "low": -0.16, "high": 0.14, "dutch": 0.0}   # rad: camera below / above the frame centre
 const DUTCH_ROLL: float = 0.105             # rad (~6°)
 const WIDE_FRAME_H: float = 0.68 * TARGET_HEIGHT_M
+# FACE-ANCHORED close shots (sheet 41, 2026-10-01): every model is scaled
+# to TARGET_HEIGHT_M INCLUDING its hair and hats, so a frame placed as a
+# fraction of height missed the face on a third of the cast (Frasier's
+# locs, Aria's hair, the Frog's hat, the Stranger's hood filled the ECU;
+# Jimmy and Diego cropped). The neck — the narrowest slice of the mesh
+# between the shoulders and the head — is measured at load, and the cu
+# and ecu are framed from it (metres above / below the neck).
+const FACE_FRAMES := {
+	"cu":  {"b": -0.20, "t": 0.33},
+	"ecu": {"b": -0.01, "t": 0.20},     # eyes ≈ neck + 0.13: the upper third
+}
+var _neck_y: float = -1.0                    # measured; < 0 = not found, fall back to fractions
 var _shot_size: String = "medium"
 var _shot_angle: String = "eye"
 var _motion_scale: float = 1.0               # mood push/bob/shake shrink with the frame
@@ -436,6 +448,7 @@ func load_character(glb_path: String, expression: String = "") -> bool:
 	_loaded_glb_path = glb_path
 	# Auto-orient + auto-scale to the portrait's target framing
 	_orient_and_scale_character(_current_character)
+	_neck_y = _measure_neck(_current_character)
 	# Per-character lighting palette (e.g. Sam under sodium-buzz
 	# Kwik Stop fluorescents). Rewrites the resting key/fill/back
 	# state so all mood deltas compose on top of the right palette.
@@ -556,6 +569,10 @@ func set_shot(size: String, angle: String = "eye", seed: int = -1) -> void:
 	var h: float = TARGET_HEIGHT_M
 	var b: float = float(f["b"]) * h
 	var t: float = float(f["t"]) * h
+	if _neck_y > 0.0 and FACE_FRAMES.has(size):
+		var ff: Dictionary = FACE_FRAMES[size]
+		b = _neck_y + float(ff["b"])
+		t = _neck_y + float(ff["t"])
 	var frame_h: float = t - b
 	var fov: float = float(f["fov"]) + float(_roll.get("fov", 0.0))
 	var dist: float = (frame_h * 0.5) / tan(deg_to_rad(fov * 0.5))
@@ -705,6 +722,72 @@ func _orient_and_scale_character(root: Node3D) -> void:
 	                         -((aabb_min.z + aabb_max.z) / 2.0) * s)
 	print("[Portrait3D] orient — scale=%.3f, position=(%.2f, %.2f, %.2f)"
 		% [s, root.position.x, root.position.y, root.position.z])
+
+
+## The neck's height in the anchor's space: the narrowest horizontal slice
+## of the mesh (its X extent) between 74 % and 90 % of the figure's
+## height, below the head. -1 when it cannot be read (no mesh data).
+func _measure_neck(root: Node3D) -> float:
+	var h: float = TARGET_HEIGHT_M
+	# 74-90 %: below the crown's taper (which would read as "narrow"), above
+	# the A-pose arms' shoulder line
+	var lo: float = 0.74 * h
+	var hi: float = 0.90 * h
+	var bins: int = 36
+	var mins: PackedFloat32Array = PackedFloat32Array()
+	var maxs: PackedFloat32Array = PackedFloat32Array()
+	var counts: PackedInt32Array = PackedInt32Array()
+	mins.resize(bins)
+	maxs.resize(bins)
+	counts.resize(bins)
+	for i in bins:
+		mins[i] = INF
+		maxs[i] = -INF
+	var seen: int = 0
+	for n: Node in _collect_mesh_instances(root):
+		var mi: MeshInstance3D = n as MeshInstance3D
+		if mi == null or mi.mesh == null:
+			continue
+		var xf: Transform3D = _anchor.global_transform.affine_inverse() * mi.global_transform
+		for si in mi.mesh.get_surface_count():
+			var arrays: Array = mi.mesh.surface_get_arrays(si)
+			if arrays.size() <= Mesh.ARRAY_VERTEX:
+				continue
+			var verts: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
+			var stride: int = maxi(1, verts.size() / 60000)
+			var vi: int = 0
+			while vi < verts.size():
+				var p: Vector3 = xf * verts[vi]
+				vi += stride
+				if p.y < lo or p.y >= hi:
+					continue
+				var bi: int = int((p.y - lo) / (hi - lo) * bins)
+				mins[bi] = minf(mins[bi], p.x)
+				maxs[bi] = maxf(maxs[bi], p.x)
+				counts[bi] += 1
+				seen += 1
+	if seen < 200:
+		return -1.0
+	# the narrowest slice below the head: search from the shoulders up and
+	# stop once the width has grown again past the minimum (the head)
+	var best_i: int = -1
+	var best_w: float = INF
+	for i in bins:
+		# a slice needs enough samples to have a width, and a neck is never
+		# under 5 cm (a lone vertex read as "0 m wide" — john_frank, 2026-10-01)
+		if counts[i] < 12:
+			continue
+		var w: float = maxs[i] - mins[i]
+		if w < 0.05:
+			continue
+		if w < best_w:
+			best_w = w
+			best_i = i
+	if best_i < 0:
+		return -1.0
+	var neck: float = lo + (float(best_i) + 0.5) / bins * (hi - lo)
+	print("[Portrait3D] neck at %.2f m (width %.2f m)" % [neck, best_w])
+	return neck
 
 
 func _collect_mesh_instances(node: Node, out: Array[Node] = []) -> Array[Node]:
