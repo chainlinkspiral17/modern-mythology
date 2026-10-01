@@ -511,6 +511,7 @@ DRIVE_DIRS = [
 DRIVE_EXTS = {".glb", ".png", ".jpg", ".jpeg", ".webp"}
 _md5_cache = {}
 _drive_lock = threading.Lock()
+DRIVE_LIVE = False      # the CLI sets it: rclone shows its progress in the terminal
 
 
 def _rclone():
@@ -613,6 +614,15 @@ def drive_push():
             args = [rc, "copy", str(src), f"{DRIVE_REMOTE}/{d}", "--transfers", "4"]
             for ext in sorted(DRIVE_EXTS):
                 args += ["--include", f"*{ext}"]
+            if DRIVE_LIVE:
+                # from the terminal: show the upload as it goes (it can take
+                # minutes; silence read as a hang on the Deck, 2026-10-01)
+                print(f"uploading {d} …", flush=True)
+                r = subprocess.run(args + ["--progress", "--stats-one-line"], timeout=7200)
+                if r.returncode:
+                    steps.append(f"Google Drive upload failed for {d} (see the lines above)")
+                    return {"ok": False, "steps": steps}
+                continue
             r = subprocess.run(args, capture_output=True, text=True, timeout=3600)
             if r.returncode:
                 steps.append(f"Google Drive upload failed for {d}: {(r.stderr or r.stdout)[-300:]}")
@@ -1859,6 +1869,11 @@ def main():
         load_roster()  # validate early
         return cmd_serve(args)
     if args.cmd in ("save", "drive-push", "drive-pull"):
+        global DRIVE_LIVE
+        DRIVE_LIVE = True
+        if args.cmd != "drive-pull":
+            n = len(drive_pending())
+            print(f"{n} model/picture file(s) to put on Google Drive" + (" — this can take a few minutes" if n > 5 else ""), flush=True)
         res = {"save": git_save_push, "drive-push": drive_push, "drive-pull": drive_pull}[args.cmd]()
         for step in res["steps"]:
             print(step)
