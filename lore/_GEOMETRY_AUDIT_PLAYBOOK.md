@@ -158,6 +158,24 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-10-02 · the marker audit judges by CUE WORD — name parts for what they are
+
+- `vantage_obstruction_audit --markers` picks a marker's subject as the
+  nearest part whose name matches the marker's cue (`shot_insert_door`
+  → any part with "door" in it). A floor-wear strip named
+  `Lane_Door_Sink` became the door shot's subject, lay under the
+  camera, and read as OCCLUDED by the island top — two rebuilds chasing
+  geometry before the name was the fix (`Lane_Entry_Sink`). Name wear,
+  lanes and stains for the place, never for the thing they lead to.
+- The grammar gate's OUTSIDE check knows floors by NAME (FLOORISH:
+  floor, ground, gravel, deck, lawn …). A wagon parked on a slab called
+  "Street" "touches no floor"; the same slab as "Ground_Street" is a
+  floor. Name every walk-on exterior slab with a floor word.
+- The doorway gate treats any door-sized leaf near an opening as a
+  door and wants BOTH sides of its swing clear — a hall table, boots
+  and a window frame all count. A door that cannot be hung honestly
+  is better absent (hinges on the jamb say where it went).
+
 ### 2026-09-30 (later) · a name can hide a building from the audit; `--propose` can pick the wrong room
 
 **What happened.** Two of draft 43's four frames were authored by the

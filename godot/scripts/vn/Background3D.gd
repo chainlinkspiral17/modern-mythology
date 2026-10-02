@@ -353,9 +353,17 @@ const CAMERA_PRESETS := {
 		# the SE open floor looking NW across the island to the sink
 		# corner (faucet blender (-2.0,5.4)) — the Lovers chapter's
 		# whole geography (sink, island, doorway) in one wide.
-		"camera_origin": Vector3(3.3, 1.75, -1.3),
-		"camera_rotation": Vector3(-0.10, 0.912, 0.0),
-		"fov": 60.0,
+		# RE-VANTAGED 2026-10-02 (the Deck: "direction still isn't strong
+		# at all, vol 5. camera and director attention not where they
+		# should be"): from just inside the FRONT DOOR looking north
+		# across the island to the sink, where Philip is under it with
+		# the faucet — the coffee pots and the returned casserole on the
+		# island, the dish rack and the open cabinet behind, the loom in
+		# the west corner, the east window at the frame's right. The
+		# 09-03 vantage from the SE corner put all of it out of frame.
+		"camera_origin": Vector3(0.55, 1.62, -0.85),
+		"camera_rotation": Vector3(-0.07, 0.12, 0.0),
+		"fov": 64.0,
 		"suppress_input": true,
 	},
 	# ── VOL 5 — Empress — Natalie's San Francisco apartment ──────

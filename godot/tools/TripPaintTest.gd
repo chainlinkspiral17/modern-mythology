@@ -7,6 +7,7 @@ extends Control
 ##   godot --path godot --rendering-driver opengl3 res://tools/TripPaintTest.tscn -- \
 ##     --preset diner_interior --vol 5 --out /tmp/x.png [--inked 0.85] [--paint 0]
 ##     [--trip 0 : no trip at all] [--energy 0.22 : a quiet verse instead of a loud beat]
+##     [--marker shot_insert_door : shoot from that [shot:] marker instead of the preset]
 
 const BG_SCENE := preload("res://scenes/vn/Background3D.tscn")
 
@@ -36,6 +37,18 @@ func _ready() -> void:
 		var mc: Node = bg.call("get_locale_mood_cycler")
 		if mc != null and mc.has_method("apply_style_or_mood"):
 			mc.call("apply_style_or_mood", mood)
+	# --marker shot_insert_door: shoot from one of the locale's [shot:] markers
+	var mk: String = String(args.get("marker", ""))
+	if mk != "":
+		var m: Node3D = bg.call("find_shot_marker", mk)
+		var cam: Camera3D = bg.get_node("SubViewport/Camera3D") as Camera3D
+		if m == null:
+			push_error("no marker " + mk)
+			get_tree().quit(1)
+			return
+		cam.global_transform = m.global_transform
+		if m.has_meta("fov"):
+			cam.fov = float(m.get_meta("fov"))
 	# --yaw_deg 3: turn the view a little (does the paper travel with the room?)
 	var yaw: float = float(String(args.get("yaw_deg", "0")))
 	if yaw != 0.0:

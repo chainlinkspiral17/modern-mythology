@@ -997,31 +997,36 @@ def build_bedroom():
              (bd_x, bd_y + 0.99, 0.725),   # floor to 1.45, against the mattress (2026-09-23: it hung 11 cm over the legs)
              (1.50, 0.10, 1.45), (0.32, 0.22, 0.14, 1.0))
 
-    # ── Dresser — opposite the bed (south part of room)
-    dr_x, dr_y = -3.0, +3.4
+    # ── Dresser — against the WEST wall, drawers facing EAST into the
+    #    aisle beside the bed. (2026-10-02, the Deck: "her room still
+    #    isn't designed practically, the wardrobe/drawer at the foot of
+    #    the bed can't open" — it sat at the bed's foot with its drawers
+    #    14 cm from the mid-wall at Y=3.) 71 cm of floor between the
+    #    drawer fronts and the bed's west edge.
+    dr_x, dr_y = -4.63, +3.95      # back face 2 cm off the wall (the overlap gate caught it 7 cm in)
     make_box("Bedroom_Dresser_Body",
              (dr_x, dr_y, 0.50),
-             (1.40, 0.50, 1.00), (0.32, 0.20, 0.14, 1.0))
-    # Drawers (3 drawers visible)
+             (0.50, 1.40, 1.00), (0.32, 0.20, 0.14, 1.0))
+    # Drawers (3 drawers, on the east face)
     for i in range(3):
         dz = 0.20 + i * 0.30
         make_box(f"Bedroom_Dresser_Drawer_{i}_Front",
-                 (dr_x, dr_y - 0.26, dz),
-                 (1.32, 0.02, 0.24), (0.40, 0.28, 0.18, 1.0))
+                 (dr_x + 0.26, dr_y, dz),
+                 (0.02, 1.32, 0.24), (0.40, 0.28, 0.18, 1.0))
         make_box(f"Bedroom_Dresser_Knob_{i}_L",
-                 (dr_x - 0.30, dr_y - 0.27, dz),
-                 (0.04, 0.02, 0.04), COL_METAL_BRASS)
+                 (dr_x + 0.27, dr_y - 0.30, dz),
+                 (0.02, 0.04, 0.04), COL_METAL_BRASS)
         make_box(f"Bedroom_Dresser_Knob_{i}_R",
-                 (dr_x + 0.30, dr_y - 0.27, dz),
-                 (0.04, 0.02, 0.04), COL_METAL_BRASS)
-    # The face-down picture
+                 (dr_x + 0.27, dr_y + 0.30, dz),
+                 (0.02, 0.04, 0.04), COL_METAL_BRASS)
+    # The face-down picture (on the dresser's north end)
     make_box("Bedroom_Dresser_Picture",
-             (dr_x + 0.30, dr_y, 1.005),
-             (0.22, 0.16, 0.012), (0.32, 0.22, 0.14, 1.0))
+             (dr_x, dr_y + 0.30, 1.005),
+             (0.16, 0.22, 0.012), (0.32, 0.22, 0.14, 1.0))
     # Back of frame visible (face down)
     make_box("Bedroom_Dresser_PictureBack",
-             (dr_x + 0.30, dr_y, 1.013),
-             (0.20, 0.14, 0.002), (0.22, 0.16, 0.10, 1.0))
+             (dr_x, dr_y + 0.30, 1.013),
+             (0.14, 0.20, 0.002), (0.22, 0.16, 0.10, 1.0))
 
     # ── Laundry pile (MrMyst's last visit) — corner of the room
     lp_x, lp_y = -4.6, +5.5
@@ -1039,13 +1044,13 @@ def build_bedroom():
 
     # ── Bedside lamp on the dresser
     make_cyl("Bedroom_LampBase",
-             (dr_x - 0.40, dr_y, 1.02),   # on the dresser (2026-09-23: 2 cm over it)
+             (dr_x, dr_y - 0.45, 1.02),   # on the dresser's south end (2026-09-23: 2 cm over it)
              0.06, 0.04, COL_METAL_BRASS)
     make_cyl("Bedroom_LampPole",
-             (dr_x - 0.40, dr_y, 1.14),
+             (dr_x, dr_y - 0.45, 1.14),
              0.012, 0.20, COL_METAL_BRASS)
     make_cyl("Bedroom_LampShade",
-             (dr_x - 0.40, dr_y, 1.31),   # on the pole (2026-09-23: 3 cm down it)
+             (dr_x, dr_y - 0.45, 1.31),   # on the pole (2026-09-23: 3 cm down it)
              0.08, 0.14, (0.86, 0.78, 0.62, 1.0), segments=10)
 
 

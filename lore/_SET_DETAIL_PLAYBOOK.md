@@ -84,6 +84,46 @@ henderson) got there by accumulating exactly these layers.
 
 ## Recent lessons
 
+### 2026-10-02 · the Roberts kitchen · bones before props, and the lane of the camera
+
+- The Deck: "the lovers domicile needs to feel domestic and lived in,
+  proof of life, not a sterile empty thing." The D4 pass went in first
+  (Philip under the sink mid-repair, two of everything drying, the
+  returned casserole, breakfast interrupted, boots and gloves and the
+  trowel at the door, the basil on the sill, her loom, the laundry, the
+  crumple by the bin, the lane door → island → sink, TWO mug rings) —
+  and the room still read as a cream box. The BONES were missing: a
+  sink, a stove and a fridge standing apart on bare wall, no counters
+  between them, no uppers, no backsplash, no window over the sink. A
+  kitchen is its RUNS. Props cannot carry a room whose architecture
+  says nobody built it. Run D3-bones before D4 on any locale that
+  was placed from a template.
+- WALL FACE ≠ WALL LINE. make_wall builds 20 cm thick on the line; the
+  first backsplash and window sat inside the wall, invisible. Anchor
+  wall-mounted things at ROOM_D − 0.10 (and check the locale's own
+  earlier fixes: this file had learned it twice already, per window).
+- A locale's establishing camera is PART of its set dressing. The old
+  vantage (SE corner, across the island) put every bit of life out of
+  frame; from inside the front door looking north, the chapter's
+  geography — island, sink, window, loom — is one wide. Re-vantage
+  BEFORE judging a props pass, or you will add props the camera never
+  sees.
+- The doorway (D5): the front door was a 2.2 m hole onto the void —
+  `shot_insert_door` stared at nothing. The prose had the whole
+  exterior: the screen door (a lattice of fine bars — it casts the
+  grid of light), the porch under its eave, three steps, the gravel
+  drive, the wagon at the curb, trees past it. The gates then taught
+  two rules: a solid door LEAF anywhere near a doorway must have both
+  sides of its swing clear (hall table, boots and even a window frame
+  count), and a locale's background colour is the sky behind every
+  window and open door — a dark interior brown reads as night outside.
+- `TripPaintTest --marker <name>` shoots from a [shot:] marker through
+  the real stack: judge inserts there, not from the sheet alone.
+- Elicia's bungalow: the dresser hugged the bed's foot with its drawers
+  14 cm from the mid-wall ("the wardrobe/drawer at the foot of the bed
+  can't open"). Every container must have its open side on open floor;
+  check this with the room's walls, not the furniture alone.
+
 ### 2026-08-19 · WEAR HAS AN AGE — the cabin's two inhabitants
 
 - First full wear-personality pass (cabin_interior, the "land of

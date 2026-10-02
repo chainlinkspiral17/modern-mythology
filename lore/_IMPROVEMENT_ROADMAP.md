@@ -3004,6 +3004,27 @@ audio_reference_audit counts gitignored voice/ + drive/ paths as
 Drive-held (the keys can be ahead of the manifest). Tested with a
 simulated drop mid-upload: 3/9 recorded, the rerun sent the other 6.
 
+**2026-10-02 · VOL 5 BACKGROUND PROGRAM · pass 1 (the user: "I'm
+flagging all of vol 5 for background work. it's all really rough …
+work slow and methodical").** The loop that makes this possible: bpy
+builds any locale here in seconds; `TripPaintTest --preset X --mood
+<the scene's own> [--trip 0 | --energy 0.22]` renders it through the
+real stack; judged at 1:1. Worklist = 26 vol 5 presets over ~20 GLBs
+(diner ×2, riverfront ×2, graustark ×4, cathedral ×2, bungalow,
+roberts_kitchen, natalie/montreal/new_orleans/elicia apartments,
+houston office + studio, hospice, vehicle cab, cafe, riverboat
+interior, chapel, new_orleans office/bar/room). DONE this pass:
+diner (lights, clock, windows), bungalow (the dresser off the bed's
+foot, drawers to the aisle), roberts_kitchen (D4 proof of life + the
+kitchen's BONES + re-vantaged establish — see _SET_DETAIL_PLAYBOOK
+2026-10-02). NEXT, in order: roberts_kitchen's ceiling hotspot and
+flat walls (D2); cathedral_interior lighting (renders near-black); the
+riverboat interior; Natalie's apartment (vol 5's second-most-used
+room); then down the list. The vol 5 DIRECTION pass ("camera and
+director attention not where they should be") rides along: each
+locale's establish re-vantaged to the chapter's geography, its
+[shot:] markers checked against the prose.
+
 **2026-10-02 · THE PAINTED ROOM · draft 5 — the Deck's five notes.**
 "getting there, but still too bright and contrasty in the diner, and
 too muddy and details lost in the exterior … the neon line border is

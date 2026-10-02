@@ -130,7 +130,7 @@ shader_parameter/tint_color = Color(0.62, 0.74, 0.86, 1)
 
 [sub_resource type="Environment" id="Env_Locale"]
 background_mode = 1
-background_color = Color(0.16, 0.12, 0.10, 1)
+background_color = Color(0.72, 0.78, 0.86, 1)   ; a morning sky behind the windows and the screen door (2026-10-02)
 ambient_light_source = 2
 ambient_light_color = Color(0.78, 0.62, 0.42, 1)
 ambient_light_energy = 0.85
@@ -143,7 +143,7 @@ adjustment_brightness = 1.0
 adjustment_contrast = 1.06
 adjustment_saturation = 0.94
 glow_enabled = true
-glow_intensity = 0.7
+glow_intensity = 0.45
 glow_bloom = 0.12
 glow_blend_mode = 1
 glow_hdr_threshold = 0.95
@@ -175,7 +175,7 @@ shadow_enabled = false
 [node name="Practical_Overhead" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.45, -3.5)
 light_color = Color(0.98, 0.94, 0.82, 1)
-light_energy = 1.5
+light_energy = 1.0
 shadow_enabled = false
 omni_range = 4.5
 
@@ -346,9 +346,11 @@ position = Vector3(3.2, 1.5, -3.5)
 rotation = Vector3(-0.5901, -2.2083, 0.0)
 metadata/fov = 32.0
 
+; the door from the island's south side, not from above the island
+; (2026-10-02): the boots and the mud at the threshold are in it now
 [node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0, 1.55, -2.8)
-rotation = Vector3(0, 3.1416, 0)
+position = Vector3(0, 1.50, -1.85)
+rotation = Vector3(-0.12, 3.1416, 0)
 metadata/fov = 42.0
 
 [node name="shot_closeup_boy" type="Marker3D" parent="." groups=["vn_shot"]]
