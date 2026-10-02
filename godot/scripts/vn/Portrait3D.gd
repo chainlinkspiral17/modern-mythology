@@ -223,11 +223,13 @@ const STARTLE_DECAY: float = 2.5            # 1/s
 # moves the medium: sorrow runs wetter and paler, anger inks harder and
 # hatches deeper, joy is a bright clean wash.
 const LOOK_BASE := {
-	"look_contrast": 1.06, "look_sat": 1.12, "look_temp": 0.0,
-	"look_grain": 0.30, "look_rim": 0.55, "look_vignette": 0.18, "look_fade": 0.6,
-	"look_wash": 0.80, "look_cel": 0.50, "look_bands": 4.0, "look_matte": 0.80,
-	"look_ink": 0.75, "look_ink_thr": 0.18, "look_hatch": 0.45, "look_paper": 0.70,
-	"look_bleed": 0.60, "look_wobble": 1.0,
+	# draft 2 of the painted hero (2026-10-02, "doesn't look like watercolor
+	# at all"): the wash and the paper carry the look; the ink is a pencil
+	"look_contrast": 1.06, "look_sat": 1.10, "look_temp": 0.0,
+	"look_grain": 0.20, "look_rim": 0.45, "look_vignette": 0.15, "look_fade": 0.6,
+	"look_wash": 0.85, "look_cel": 0.25, "look_bands": 4.0, "look_matte": 0.85,
+	"look_ink": 0.45, "look_ink_thr": 0.22, "look_hatch": 0.25, "look_paper": 0.80,
+	"look_bleed": 0.80, "look_wobble": 1.0,
 }
 const MOOD_LOOK := {
 	"happy":     {"look_temp": 0.30, "look_sat": 0.12, "look_hatch": -0.30, "look_wash": 0.10},

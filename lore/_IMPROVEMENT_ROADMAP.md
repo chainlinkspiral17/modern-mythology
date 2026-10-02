@@ -3004,6 +3004,21 @@ audio_reference_audit counts gitignored voice/ + drive/ paths as
 Drive-held (the keys can be ahead of the manifest). Tested with a
 simulated drop mid-upload: 3/9 recorded, the rerun sent the other 6.
 
+**2026-10-02 · THE PAINTED ROOM · draft 4 — a real watercolour.** The
+Deck on draft 3: "better, but it doesn't look like watercolor at all.
+keep working and go ahead and get vol 5 up to snuff." The watercolour
+model is now one shared include (wash regions, bleeding, stepped
+layers, pigment density, pooled rims, dry paper, pencil) used by the
+room pass and the hero look alike — see _SHADER_VISUALS_PLAYBOOK
+2026-10-02 (iv). Rendered here on the real diner, riverfront and
+cathedral (bpy builds all three now; TripPaintTest `--trip 0` /
+`--energy 0.22`) and John over the in-game diner. **Draft 5 targets:**
+the Deck verdict in play; the cathedral renders very dark (its lights
+need the diner treatment); Graustark + the bayou lighthouse through
+the same loop; the layering strength per volume (vol 6 may want it
+softer); the Steam Deck's frame time with the 64-tap wash on both
+passes.
+
 **2026-10-02 · THE PAINTED ROOM · draft 3 — vol 5's tenor kept, lit.**
 The Deck on draft 2: "vol 5 looks bad still … I want the look vol 6
 has, but with vol 5's tenor. I didn't want it to go away. It was just

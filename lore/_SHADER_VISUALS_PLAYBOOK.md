@@ -228,6 +228,31 @@ through them in order.
 
 ## Recent lessons
 
+### 2026-10-02 (iv) · a real watercolour: the model, shared by room and hero
+
+- The Deck on draft 3: "better, but it doesn't look like watercolor at
+  all." A softened render with outlines is not a painting. What reads
+  as watercolour, now in `watercolor.gdshaderinc` (both the room pass
+  and the hero look `#include` it): WASH regions (Kuwahara, 4×4 taps a
+  quadrant, radius 5-6 px — big enough to make regions); BLEEDING (at a
+  colour border the lookup is displaced by low-frequency noise, so two
+  washes feather); LAYERS (a gradient becomes 2-3 stepped washes whose
+  thresholds wander with the brush load — the cue the lit diner ceiling
+  was missing); PIGMENT density (Bousseau: c·(1−(1−c)(d−1)), blotches at
+  brush-load scale, granulation at the tooth); EDGE DARKENING at colour
+  borders AND layer borders (pigment pools as a wash dries — the
+  strongest cue); DRY PAPER in the lights, broken by the tooth; the
+  sheet's tooth and mottle over all; a PENCIL under the paint (thin,
+  broken, graphite in the local colour) instead of ink.
+- `fwidth()` on the stepped value gives the layer borders for free.
+- Values still re-key to the source (mean exposure downward only, a
+  knee, a mild lift toward the paper's luma): a night watercolour is
+  deep blue with paper showing, not cream mud.
+- The hero's ink dropped to a pencil (look_ink 0.45, thr 0.22, hatch
+  0.25); its wash, bleed and paper carry the look now.
+- Judge at 1:1 crops, not the montage: the tooth and the pooled rims
+  vanish at half size.
+
 ### 2026-10-02 (iii) · vol 5's tenor is the TRIP, and it rides OVER the paint as ink
 
 - The Deck, with a screenshot: "I want the look vol 6 has, but with

@@ -6,6 +6,7 @@ extends Control
 ##
 ##   godot --path godot --rendering-driver opengl3 res://tools/TripPaintTest.tscn -- \
 ##     --preset diner_interior --vol 5 --out /tmp/x.png [--inked 0.85] [--paint 0]
+##     [--trip 0 : no trip at all] [--energy 0.22 : a quiet verse instead of a loud beat]
 
 const BG_SCENE := preload("res://scenes/vn/Background3D.tscn")
 
@@ -29,6 +30,8 @@ func _ready() -> void:
 		return
 	var trip: Node = get_node_or_null("/root/TripSync")
 	var mat: ShaderMaterial = null
+	if String(args.get("trip", "1")) == "0":
+		trip = null                      # --trip 0: the painted room alone
 	if trip != null:
 		trip.call("push_register", String(trip.call("register_for_volume", vol)), self)
 		mat = trip.call("attach", bg)
@@ -37,12 +40,15 @@ func _ready() -> void:
 	# a lively bar, held still: the aura at its brightest, a beat just landed
 	if trip != null and mat != null:
 		trip.set_process(false)
-		trip.set("energy", 0.7)
-		trip.set("bass", 0.6)
-		trip.set("mid", 0.5)
-		trip.set("high", 0.4)
-		trip.set("pulse", 0.6)
-		trip.set("ring_t", 0.25)
+		# --energy 0.7 (default): a loud bar with a beat just landed;
+		# --energy 0.22: a quiet verse, the usual moment
+		var en: float = float(String(args.get("energy", "0.7")))
+		trip.set("energy", en)
+		trip.set("bass", en * 0.85)
+		trip.set("mid", en * 0.7)
+		trip.set("high", en * 0.55)
+		trip.set("pulse", 0.6 if en > 0.5 else 0.0)
+		trip.set("ring_t", 0.25 if en > 0.5 else 10.0)
 		trip.call("_push_to", mat)
 		trip.call("_push_register_to", mat)
 		mat.set_shader_parameter("paint_under", float(String(args.get("inked", "0.85"))))

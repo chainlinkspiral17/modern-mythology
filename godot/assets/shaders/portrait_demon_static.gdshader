@@ -23,6 +23,8 @@
 // ════════════════════════════════════════════════════════════════
 shader_type canvas_item;
 
+#include "res://assets/shaders/watercolor.gdshaderinc"
+
 // Master multiplier — at 0 the shader is a pass-through. CharLayer's
 // set_demon_mode(true) flips this to 1.0 for demon portraits; the
 // VN debug panel can also nudge it for heroes to mix in any of the
@@ -129,77 +131,23 @@ vec3 hsv2rgb(vec3 c) {
     return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
 }
 
-float luma(vec3 c) { return dot(c, vec3(0.299, 0.587, 0.114)); }
-
-float vnoise(vec2 p) {
-    vec2 i = floor(p);
-    vec2 f = fract(p);
-    f = f * f * (3.0 - 2.0 * f);
-    float a = hash21(i);
-    float b = hash21(i + vec2(1.0, 0.0));
-    float c = hash21(i + vec2(0.0, 1.0));
-    float d = hash21(i + vec2(1.0, 1.0));
-    return mix(mix(a, b, f.x), mix(c, d, f.x), f.y);
-}
-
-float fbm(vec2 p) {
-    float v = 0.0;
-    float amp = 0.5;
-    for (int i = 0; i < 4; i++) {
-        v += amp * vnoise(p);
-        p *= 2.03;
-        amp *= 0.5;
-    }
-    return v;
-}
-
-// Kuwahara: the flattest of four quadrants wins — painterly areas with
-// crisp borders between them (alpha-weighted: the empty background
-// does not bleed black into the figure)
-vec3 kuwahara(sampler2D tex, vec2 uv, vec2 px, float r) {
-    vec3 best = texture(tex, uv).rgb;
-    float bestv = 1e9;
-    for (int q = 0; q < 4; q++) {
-        vec2 dir = vec2((q == 0 || q == 2) ? -1.0 : 1.0, (q < 2) ? -1.0 : 1.0);
-        vec3 m = vec3(0.0);
-        vec3 sq = vec3(0.0);
-        float w = 0.0;
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                vec4 t = texture(tex, uv + dir * vec2(float(i), float(j)) * px * r * 0.5);
-                m += t.rgb * t.a;
-                sq += t.rgb * t.rgb * t.a;
-                w += t.a;
-            }
-        }
-        if (w > 0.01) {
-            m /= w;
-            vec3 var3 = sq / w - m * m;
-            float v = var3.r + var3.g + var3.b;
-            if (v < bestv) {
-                bestv = v;
-                best = m;
-            }
-        }
-    }
-    return best;
-}
-
 void fragment() {
     // Master gate — strength=0 → pure pass-through.
     if (strength <= 0.001 && look <= 0.001) {
         COLOR = texture(TEXTURE, UV);
     } else if (strength <= 0.001) {
+        // ── THE PAINTED HERO, draft 2 (2026-10-02): a watercolour, not a
+        //    cartoon. The model from watercolor.gdshaderinc: wash regions,
+        //    feathered borders, pigment that settles, darker wash rims,
+        //    the paper bare in the lights, a pencil under it.
         vec2 px = TEXTURE_PIXEL_SIZE;
         vec2 c = UV - vec2(0.5);
-        vec2 P = UV / px;                                   // pixel coords
-        // the hand's wobble: a static warp of where the brush and pen land
-        vec2 wob = (vec2(vnoise(UV * vec2(38.0, 42.0)), vnoise(UV * vec2(41.0, 37.0) + 7.3)) - 0.5)
+        vec2 P = UV / px;
+        vec2 wob = (vec2(wc_vnoise(UV * vec2(38.0, 42.0)), wc_vnoise(UV * vec2(41.0, 37.0) + 7.3)) - 0.5)
                    * px * 3.0 * look_wobble * look;
         vec2 uv = UV + wob;
         vec4 base = texture(TEXTURE, uv);
         float a = base.a;
-        // silhouette ring (alpha around this pixel, 4 px)
         float amax = 0.0;
         float amin = 1.0;
         for (int i = 0; i < 8; i++) {
@@ -208,90 +156,70 @@ void fragment() {
             amax = max(amax, sa);
             amin = min(amin, sa);
         }
-        // WASH: flatten the CG shading into areas of pigment
-        vec3 flat_c = kuwahara(TEXTURE, uv, px, mix(1.5, 5.0, look_wash));
-        vec3 col = mix(base.rgb, flat_c, look_wash * look);
+        vec3 wide = wc_ring(TEXTURE, uv, px, 7.0);
+        float e = wc_edge(TEXTURE, uv, px * 2.0) * 0.55 / (0.12 + wc_luma(wide));
+        // BLEED at the borders, then the WASH
+        float border = smoothstep(0.08, 0.5, e);
+        vec2 drift = (vec2(wc_fbm(UV * vec2(70.0, 74.0)), wc_fbm(UV * vec2(63.0, 81.0) + 9.0)) - 0.5)
+                     * px * 10.0 * look_bleed * border * look;
+        vec4 k = wc_kuwahara(TEXTURE, uv + drift, px, mix(2.0, 6.5, look_wash));
+        vec3 col = mix(base.rgb, k.rgb, look_wash * look);
         // de-plastic: the specular sheen folds back into the local colour
-        float lum = luma(col);
+        float lum = wc_luma(col);
         float tamed = lum - max(lum - 0.60, 0.0) * 0.75;
         col *= mix(1.0, tamed / max(lum, 1e-3), look_matte * look);
-        // soft cel bands
-        lum = luma(col);
+        // soft cel bands (a light touch: the shadow shapes simplify)
+        lum = wc_luma(col);
         float bl = lum * look_bands;
         float q = (floor(bl) + smoothstep(0.30, 0.70, fract(bl))) / look_bands;
         col *= mix(1.0, q / max(lum, 1e-3), look_cel * look);
         // grade: temperature, saturation, contrast, shadows into the room
         col.r += look_temp * 0.10 * look;
         col.b -= look_temp * 0.10 * look;
-        lum = luma(col);
+        lum = wc_luma(col);
         col = mix(vec3(lum), col, mix(1.0, look_sat, look));
         col = (col - 0.5) * mix(1.0, look_contrast, look) + 0.5;
         col = mix(col, col * 0.6 + look_shadow.rgb * 0.4, (1.0 - smoothstep(0.0, 0.35, lum)) * 0.5 * look);
-        // watercolour is translucent: values lift toward the paper
-        col = mix(col, vec3(1.0) - (vec3(1.0) - col) * 0.88, look_wash * 0.35 * look);
-        // pigment pools where washes meet (flat vs a wider average)
-        vec3 wide = vec3(0.0);
-        float ww = 0.0;
-        for (int i = 0; i < 8; i++) {
-            float ang = float(i) * 0.785398 + 0.39;
-            vec4 t = texture(TEXTURE, uv + vec2(cos(ang), sin(ang)) * px * 7.0);
-            wide += t.rgb * t.a;
-            ww += t.a;
-        }
-        wide /= max(ww, 1e-3);
-        float pool = clamp(length(flat_c - wide) * 2.2, 0.0, 1.0);
-        col *= 1.0 - pool * 0.30 * look_wash * look;
-        // granulation: pigment settles in the paper's tooth
-        float gran = fbm(UV * vec2(70.0, 74.0) + 3.1);
-        float paper = fbm(UV * vec2(210.0, 220.0));
-        col *= 1.0 - (gran - 0.5) * 0.30 * look_paper * look;
-        col *= mix(1.0, 0.93 + 0.12 * paper, look_paper * look);
-        // watercolour has no true black: the deepest washes stay pigment,
-        // and the paper's tooth shows through them (hair was a flat blob)
-        float dk = 1.0 - smoothstep(0.04, 0.24, luma(col));
-        col += dk * (0.07 + (gran - 0.5) * 0.16 + paper * 0.05) * look_paper * look;
-        // INK: luminance + silhouette edges, wobbled and broken
-        float e = 0.0;
-        {
-            vec2 o = px * 1.4;
-            float tl = luma(texture(TEXTURE, uv + vec2(-o.x, -o.y)).rgb);
-            float tc = luma(texture(TEXTURE, uv + vec2(0.0, -o.y)).rgb);
-            float tr = luma(texture(TEXTURE, uv + vec2(o.x, -o.y)).rgb);
-            float ml = luma(texture(TEXTURE, uv + vec2(-o.x, 0.0)).rgb);
-            float mr = luma(texture(TEXTURE, uv + vec2(o.x, 0.0)).rgb);
-            float bl2 = luma(texture(TEXTURE, uv + vec2(-o.x, o.y)).rgb);
-            float bc = luma(texture(TEXTURE, uv + vec2(0.0, o.y)).rgb);
-            float br = luma(texture(TEXTURE, uv + vec2(o.x, o.y)).rgb);
-            float gx = -tl - 2.0 * ml - bl2 + tr + 2.0 * mr + br;
-            float gy = -tl - 2.0 * tc - tr + bl2 + 2.0 * bc + br;
-            e = sqrt(gx * gx + gy * gy);
-        }
-        float line = smoothstep(look_ink_thr, look_ink_thr + 0.18, e);
-        line = max(line, smoothstep(0.15, 0.6, amax - amin) * 0.9);   // the outline
-        line *= mix(1.0, 0.35 + 0.9 * smoothstep(0.25, 0.65, vnoise(P * 0.07)), 0.8);   // the pen lifts
-        vec3 ink = look_shadow.rgb * 0.55 + vec3(0.03, 0.025, 0.04);
-        col = mix(col, ink, clamp(line, 0.0, 1.0) * look_ink * look);
-        // HATCHING in the shadows: two diagonals, the second only in the deepest
-        float sh = luma(col);
+        // PIGMENT: blotches at the brush's scale, granulation at the tooth
+        float g_blotch = wc_fbm(UV * vec2(9.0, 9.5) + 1.3);
+        float g_tooth = wc_fbm(UV * vec2(110.0, 118.0) + 2.0);
+        float dens = 1.0 + (g_blotch - 0.5) * 0.7 * look + (g_tooth - 0.5) * 0.45 * look_paper * look;
+        col = wc_pigment(col, dens);
+        // EDGE DARKENING at every wash rim and along the silhouette
+        float sil = smoothstep(0.15, 0.6, amax - amin);
+        float rim_w = max(smoothstep(0.06, 0.45, e), sil * 0.8) * (0.7 + 0.6 * g_tooth);
+        col = wc_pigment(col, 1.0 + 0.5 * rim_w * look);
+        // DRY PAPER in the lights
+        vec3 sheet = vec3(0.96, 0.94, 0.90);
+        float hi = smoothstep(0.70, 0.95, wc_luma(base.rgb));
+        col = mix(col, sheet, hi * smoothstep(0.30, 0.70, g_tooth) * 0.6 * look);
+        // the tooth over everything; the darks never quite black
+        col *= mix(1.0, 0.93 + 0.12 * g_tooth, look_paper * look);
+        float dk = 1.0 - smoothstep(0.04, 0.24, wc_luma(col));
+        col += dk * (0.06 + (g_tooth - 0.5) * 0.14) * look_paper * look;
+        // PENCIL under the paint: thin, broken, graphite — and a light
+        // trace of the silhouette
+        float line = smoothstep(look_ink_thr, look_ink_thr + 0.25, e);
+        line = max(line, sil * 0.7);
+        line *= 0.35 + 0.9 * smoothstep(0.30, 0.65, wc_vnoise(P * 0.07));
+        vec3 graphite = mix(col * 0.5, look_shadow.rgb * 0.6 + vec3(0.08), 0.5);
+        col = mix(col, graphite, clamp(line, 0.0, 1.0) * look_ink * look);
+        // HATCHING in the deepest shadows, pencil-light
+        float sh = wc_luma(col);
         float h1 = smoothstep(0.80, 0.97, abs(fract((P.x + P.y) / 7.0) - 0.5) * 2.0);
-        float h2 = smoothstep(0.80, 0.97, abs(fract((P.x - P.y) / 7.0) - 0.5) * 2.0);
-        float shadow1 = 1.0 - smoothstep(0.20, 0.40, sh);
-        float shadow2 = 1.0 - smoothstep(0.10, 0.24, sh);
-        float hatch = max(h1 * shadow1, h2 * shadow2) * smoothstep(0.3, 0.6, vnoise(P * 0.03 + 11.0));
-        col = mix(col, ink, hatch * 0.55 * look_hatch * look);
-        // rim: the edge of the figure catches the room's key (softer now)
+        float shadow1 = 1.0 - smoothstep(0.16, 0.34, sh);
+        float hatch = h1 * shadow1 * smoothstep(0.3, 0.6, wc_vnoise(P * 0.03 + 11.0));
+        col = mix(col, graphite, hatch * 0.45 * look_hatch * look);
+        // the room's key catches the edge, softly; a figure vignette
         float inner = clamp(a - amin, 0.0, 1.0);
-        col = mix(col, col + look_rim_color.rgb * 0.6, inner * look_rim * 0.6 * look);
+        col = mix(col, col + look_rim_color.rgb * 0.5, inner * look_rim * 0.5 * look);
         col *= 1.0 - smoothstep(0.35, 0.85, length(c * vec2(1.0, 0.8))) * look_vignette * look;
-        // grain, static (no boil)
-        float g = hash21(floor(P)) - 0.5;
-        col += g * 0.06 * look_grain * look;
-        // BLEED: the silhouette goes ragged and the wash runs past it
+        // the silhouette goes ragged and the wash runs past it
         float edge = clamp((1.0 - amin) * amax, 0.0, 1.0);
-        float rag = (gran - 0.5) * 1.2 * look_bleed * look * edge;
+        float rag = (g_tooth - 0.5) * 1.2 * look_bleed * look * edge;
         float outa = clamp(a + rag, 0.0, 1.0);
-        float run = clamp(amax - a, 0.0, 1.0) * look_bleed * look * smoothstep(0.45, 0.75, gran) * 0.55;
-        vec3 runc = mix(flat_c, vec3(1.0), 0.35);
+        float run = clamp(amax - a, 0.0, 1.0) * look_bleed * look * smoothstep(0.45, 0.75, g_blotch) * 0.5;
+        vec3 runc = mix(k.rgb, sheet, 0.4);
         vec3 outc = mix(runc, col, step(0.001, a) * clamp(a / max(outa, 1e-3), 0.0, 1.0));
         outa = max(outa, run);
         outa *= 1.0 - smoothstep(0.80, 1.0, UV.y) * look_fade * look;
