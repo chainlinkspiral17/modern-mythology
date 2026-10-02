@@ -1248,7 +1248,11 @@ func _apply_bg_3d(preset_id: String) -> void:
 		_bg_3d_node.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		var trip3d: Node = get_node_or_null("/root/TripSync")
 		if trip3d != null and trip3d.has_method("attach"):
-			trip3d.call("attach", _bg_3d_node)   # the 3D bg breathes too
+			# the 3D bg breathes too — over its painted pass, in the aura's
+			# inked form (Background3D.TRIP_PAINT_UNDER, 2026-10-02)
+			var tm: ShaderMaterial = trip3d.call("attach", _bg_3d_node)
+			if tm != null and "TRIP_PAINT_UNDER" in _bg_3d_node:
+				tm.set_shader_parameter("paint_under", float(_bg_3d_node.get("TRIP_PAINT_UNDER")))
 		# ... and it TRAILS too. The 3D path sets `_bg.texture = null`,
 		# so a feedback rig bound to the TextureRect alone would go
 		# dark on every locale scene — which is most of the VN and all

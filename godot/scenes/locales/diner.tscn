@@ -161,12 +161,12 @@ background_mode = 1
 background_color = Color(0.05, 0.04, 0.03, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.45, 0.36, 0.26, 1)
-ambient_light_energy = 1.0
+ambient_light_energy = 0.75
 fog_enabled = true
 fog_light_color = Color(0.30, 0.22, 0.14, 1)
 fog_density = 0.006
 glow_enabled = true
-glow_intensity = 0.85
+glow_intensity = 0.55
 glow_bloom = 0.15
 glow_blend_mode = 1
 glow_hdr_threshold = 0.9
@@ -190,14 +190,14 @@ shadow_enabled = false
 [node name="CounterFluorescent_N" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0, -2)
 light_color = Color(0.95, 0.92, 0.80, 1)
-light_energy = 8.0
+light_energy = 4.5
 omni_range = 12.0
 shadow_enabled = false
 
 [node name="CounterFluorescent_S" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0, 2)
 light_color = Color(0.95, 0.92, 0.80, 1)
-light_energy = 8.0
+light_energy = 4.5
 omni_range = 12.0
 shadow_enabled = false
 
@@ -719,9 +719,10 @@ rotation = Vector3(0, 1.5708, 0)
 [node name="cast_kitchen_door" type="Marker3D" parent="." groups=["vn_cast"]]
 position = Vector3(4.2, 0, 3.6)
 
+; the clock on the galley's east wall (x 4.91, facing west) — 2026-10-02
 [node name="shot_insert_clock" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0, 2.05, 1.4)
-rotation = Vector3(0.172, 3.1416, 0.0)
+position = Vector3(3.15, 2.55, 3.25)
+rotation = Vector3(0.155, -1.5708, 0.0)
 metadata/fov = 40.0
 
 [node name="shot_insert_booth6" type="Marker3D" parent="." groups=["vn_shot"]]

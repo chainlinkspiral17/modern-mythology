@@ -228,6 +228,30 @@ through them in order.
 
 ## Recent lessons
 
+### 2026-10-02 (iii) · vol 5's tenor is the TRIP, and it rides OVER the paint as ink
+
+- The Deck, with a screenshot: "I want the look vol 6 has, but with
+  vol 5's tenor. I didn't want it to go away. It was just poorly lit."
+  The green edges and the glare were TripSync's arcana aura on the
+  Background3D CONTAINER — above the painted pass, so the "painter's
+  bed" (which only quieted the locale's own stack) never touched it.
+  The bed and the vol-5 "firmer hand" were the wrong diagnosis and are
+  gone; one hand paints every volume, only the paper changes.
+- UNDER the painter the aura vanishes: Kuwahara flattens its lines, the
+  colour-edge ink eats its hue. OVER the painter, screen-blended light
+  on medium-bright paper is glare. The answer is the trip's own INKED
+  branch (`paint_under` uniform, GameEngine sets 0.85 on attach): the
+  lines darken toward the register's hue, the flats take its tint — a
+  colour print carrying neon. Tested with a held loud beat (energy 0.7,
+  pulse 0.6) on the real diner: no glare, the tenor reads.
+- "Poorly lit" was real too: the diner's two counter fluorescents at
+  energy 8.0 (+ ambient 1.0, glow 0.85) rendered the room near-white
+  before any pass. 4.5 / 0.75 / 0.55. The painter's downward exposure
+  holds the MEAN; local clipping is the lights' to fix.
+- bpy (Blender as a pip module) runs here: build_diner.py in 20 s, then
+  the contact sheet and tools/TripPaintTest.tscn render the REAL locale
+  through the real stack. Judge locales that way, not from sheet JPEGs.
+
 ### 2026-10-02 (ii) · the painted room, balanced (vol 5's Deck notes)
 
 - The Deck: ch 0 "muddy establishing shot, no real details make it

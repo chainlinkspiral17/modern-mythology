@@ -50,6 +50,12 @@ uniform float line_amount : hint_range(0.0, 2.0) = 1.0;    // aura on the edges
 uniform float flow_amount : hint_range(0.0, 2.0) = 1.0;    // colour wash in the flats
 uniform float hue_amount : hint_range(0.0, 2.0) = 1.0;     // hue drift + saturation lift
 uniform float ripple_amount : hint_range(0.0, 2.0) = 1.0;  // the beat's ring of light
+// PAINTED PICTURE (2026-10-02): the VN rooms are watercolour now, a
+// medium-bright paper everywhere, and screen-blended light on paper is
+// glare (the Deck: "awful"). With paint_under > 0 the aura leans to its
+// INKED form — lines darken toward the register's hue, flats take a
+// tint — the way a colour print carries neon. 0 = the old behaviour.
+uniform float paint_under : hint_range(0.0, 1.0) = 0.0;
 
 // ── the player's MIX (Settings.trip_flow / lines / colour / beat) ──
 // Four dials multiplied into the register so the balance can be
@@ -282,7 +288,7 @@ void fragment() {
         // bright the aura becomes coloured INK — the lines darken toward
         // the register's hue, a colour print — and the flats take a soft
         // multiplied tint instead of a glow. `bright` cross-fades the two.
-        float bright = smoothstep(0.50, 0.85, y);
+        float bright = clamp(smoothstep(0.50, 0.85, y) + paint_under, 0.0, 1.0);
         vec3 lit = 1.0 - (1.0 - col) * (1.0 - rainbow * line_k);
         vec3 inked = col * mix(vec3(1.0), rainbow * 0.85, line_k * 1.35);
         col = mix(lit, inked, bright);

@@ -3004,6 +3004,31 @@ audio_reference_audit counts gitignored voice/ + drive/ paths as
 Drive-held (the keys can be ahead of the manifest). Tested with a
 simulated drop mid-upload: 3/9 recorded, the rerun sent the other 6.
 
+**2026-10-02 · THE PAINTED ROOM · draft 3 — vol 5's tenor kept, lit.**
+The Deck on draft 2: "vol 5 looks bad still … I want the look vol 6
+has, but with vol 5's tenor. I didn't want it to go away. It was just
+poorly lit" / "Awful looking" (screenshot: green aura + glare). The
+tenor is TripSync's arcana aura over the painting; the painter's bed
+and the vol-5 hand were the wrong fix and are removed. The aura now
+renders in its inked form over the paint (trip_sync `paint_under`
+0.85) — tested on the real diner (bpy builds locales here now) with a
+held loud beat: green ink on the edges, no glare. The diner's lights
+were the "poorly lit": fluorescents 8.0 → 4.5, ambient 1.0 → 0.75,
+glow 0.85 → 0.55. THE CLOCK ("still without numbers or hands … hanging
+above an expo and not on the wall, where it should probably be to the
+left"): every dial part was built on the far side of the face, and the
+clock floated at x=0 over the expo line; rebuilt on the galley's east
+wall (x 4.91, the framed-photos wall, left of frame from the front
+door), dial facing the room, hands/pegs/hub/nail, marker re-aimed —
+verified in a local render reading 3:47; then raised ("still hanging
+too low, coming down into the doorway") to clear the door under it.
+THE WINDOWS at 3:47 AM ("too bright, even with exterior lighting of the
+paddleboat"): the west wall's five panes were pie-case glass, near
+white — now night glass (0.13, 0.15, 0.21). **Draft 4 targets:** the Deck
+verdict in play with music (the inked aura at real energy); the other
+vol 5 locales' lighting (cathedral, Graustark) through TripPaintTest;
+`paint_under` per register (community/milk_honey may want less ink).
+
 **2026-10-02 · THE PAINTED ROOM · draft 2 — balance.** Deck notes: ch 0
 muddy + no detail; the diner washed out, "far too bright"; ch 1 no
 interior; vol 5 "real rough … needs a strong direction balance pass";
