@@ -267,6 +267,11 @@ The three `*_gnm` GLBs are not in the roster and are skipped by the sheet.
 4. *"Character not in scene is present"* — see GameEngine: a bg in a
    DIFFERENT place clears the stage.
 
+**Sheet 44 verdict (2026-10-02).** The eye-anchored sizes hold across
+the cast: three distinct steps, eyes near the upper third, the ecu on
+the face. The per-hero eye table is the thing to keep current —
+regenerate it from an ecu sheet whenever a model is replaced.
+
 NEXT (draft 2): the Deck verdict on the sizes per model (Meshy faces
 sit at different heights — a per-model face offset table if the ecu
 misses eyes); a catchlight for cu/ecu; matching the portrait's key to

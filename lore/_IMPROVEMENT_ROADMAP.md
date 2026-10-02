@@ -3004,6 +3004,19 @@ audio_reference_audit counts gitignored voice/ + drive/ paths as
 Drive-held (the keys can be ahead of the manifest). Tested with a
 simulated drop mid-upload: 3/9 recorded, the rerun sent the other 6.
 
+**2026-10-02 · SHEET 44 · eye anchors judged.** The three close sizes
+step visibly on all 51 heroes (chest-up → head and shoulders → brow
+to mouth) and the eyes sit near the upper third in nearly every
+frame — sheet 43's mcu ≈ cu is gone, and the ecu no longer slides to a
+cheek or hairline. The bedroom's `shot_insert_window` now frames the
+window over the bed. **Draft 5 targets:** the window glass is an opaque
+flat grey-green box, so "the gray-green of cedars" is only a colour:
+put cedar silhouettes beyond the east wall and make the pane read as
+glass (a lighter centre, the muntins' shadow); the sheet still saves
+the raw portrait viewport, so the hero LOOK pass (rim, grade, grain)
+needs a composited capture to be judged off-Deck; cathedral_interior
+has never been built on the Deck.
+
 **2026-10-01 · GOOGLE DRIVE · your own client id.** The user made their
 own Google OAuth client (rclone.org/drive/#making-your-own-client-id).
 `bash godot/tools/drive_setup.sh --client` asks for the id + secret
