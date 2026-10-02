@@ -3004,6 +3004,63 @@ audio_reference_audit counts gitignored voice/ + drive/ paths as
 Drive-held (the keys can be ahead of the manifest). Tested with a
 simulated drop mid-upload: 3/9 recorded, the rerun sent the other 6.
 
+**2026-10-02 · THE CH 0 CRASH (hotfix d25eaf11).** "game crashed on
+loading up ch 0: _tell_mood_painted: Invalid call. Nonexistent 'float'
+constructor." `get_shader_parameter("paint")` is null until something
+sets the uniform; the game never did, every test tool had. RULE: never
+read a uniform back from a ShaderMaterial for logic — keep the value
+in a variable. And a test that mirrors the GAME's call order (load a
+locale without set_paint) is now in the loop: `crashtest.gd` pattern —
+instantiate Background3D, load_location, 10 frames, no other calls.
+THE CATHEDRAL (ch 1): dark under every mood because its materials are
+authored dark (concrete 0.14, brick 0.22, dark plank ceiling) with the
+workbench lamp the only key at the VN vantage — a model chapter's
+look, not a bug. Left for the Deck's verdict once it is built there.
+
+**2026-10-02 · VOL 5 BACKGROUND PROGRAM · pass 2 — DIRECTION, shot by
+shot, and GLASS IS GLASS.** The method now: render every `[shot:]`
+marker of a locale through `TripPaintTest --marker shot_x` into one
+montage, read the chapter's cue lines beside it, and re-aim each
+marker from the prose as a camera point + a target point
+(`aim(cam, tgt)` → pitch/yaw, see _VN_DIRECTION_PLAYBOOK 2026-10-02).
+Shipped: NATALIE'S APARTMENT (ch 12/18) — six markers; `insert card`
+framed a plant and a stool, `closeup natalie` a bare wall, `insert
+phone` a counter the phone was INSIDE (the north counter's slab was
+centred on top_z, 3 cm above the west counter's — the phone, the mug
+and its ring were buried in it; builder fixed). RIVERBOAT INTERIOR
+(ch 4) — `insert window` sat at 4.70, in the void between decks,
+looking up at a table's underside; now Dante at the leaded pane, 3/4
+from beside the chair, the pane re-coloured for Friday NIGHT (the
+dining room's candle glow, not daylight) and its lead cames 3.5 cm at
+25 cm standing proud of the glass (they were brass hairlines INSIDE the
+pane — invisible); `closeup dante` faced a bulkhead port, now his
+father's clock behind him; the bourbon closer. HOUSTON OFFICE (ch
+10/11) — `insert monitor` looked at the monitor's BACK, `insert
+photograph` at the chair's base, `closeup anna` at a wall; all six
+re-aimed, and the ESTABLISH re-vantaged into her office (the old
+vantage was the open floor from the door — the prose is "the glass
+wall of her office"; now the teak desk, the two monitors, the lamp,
+and the floor through the north partition's glass). HOUSTON DESIGN
+STUDIO (ch 11) — `insert monitor` looked at the third monitor's back,
+`insert phone` down an empty desk; both at their object. HOSPICE (ch
+13) — `closeup alice` was a top-down pillow (now the bed's head and the
+window from its foot), `insert rose` a speck on a bright sill
+(closer), `insert chair` the chair's own back from behind (now its
+seat). GLASS: the builders write every pane with an alpha below 1
+and the GLB carries it, but the importer's default material is opaque
+— Erica's "glass-walled office" was a box, the helm's leaded window a
+wall. `scripts/LocaleGlass.gd` (preloaded by Background3D, applied to
+every instanced locale) turns vertex alpha into real transparency: no
+rebuild, no Blender on the Deck. NEXT (pass 3): houston_design_studio
++ hospice_room markers (rendered, judged next), then montreal /
+new_orleans / elicia apartments, graustark ×4, vehicle cab, cafe,
+chapel, new_orleans office/bar/room, dambrosios_formal,
+riverfront_park; Houston `establish_b` still has a cubicle partition
+at frame-left (nudge the camera west); the riverboat's dining room
+through the leaded pane is a warm glow, not a room (light the dining
+floor for the helm's view); roberts_kitchen ceiling hotspot; the
+cathedral verdict.
+
 **2026-10-02 · VOL 5 BACKGROUND PROGRAM · pass 1 (the user: "I'm
 flagging all of vol 5 for background work. it's all really rough …
 work slow and methodical").** The loop that makes this possible: bpy

@@ -28,6 +28,9 @@ extends SubViewportContainer
 #   suppress_input : if true, the location's interactable Player
 #                    node is removed so it doesn't compete for
 #                    input or move while the VN bg is on screen
+## glass is glass (2026-10-02) — preloaded, not by class_name: a fresh pull
+## has no global-class cache entry for it until the editor rescans
+const GlassPass := preload("res://scripts/LocaleGlass.gd")
 const CAMERA_PRESETS := {
 	"diner_interior": {
 		"scene": "res://scenes/locales/diner.tscn",
@@ -429,9 +432,15 @@ const CAMERA_PRESETS := {
 		# right, the glass office at far left. Near-level pitch keeps
 		# the low drop-ceiling from crowding the top of frame; wide FOV
 		# for the big floorplate.
-		"camera_origin": Vector3(3.8, 1.68, -1.0),
-		"camera_rotation": Vector3(-0.04, deg_to_rad(58.0), 0.0),
-		"fov": 64.0,
+		# 2026-10-02 · RE-VANTAGED: the chapter is Erica's OFFICE (the teak
+		# desk, "the glass wall of her office", Houston beyond) — the old
+		# vantage was the open floor from the door with her office a box at
+		# far left (opaque until LocaleGlass). Now inside the office at its
+		# SE corner looking NW: the desk and chair, the north partition's
+		# glass, the floor and the towers through it.
+		"camera_origin": Vector3(-2.72, 1.58, -0.38),
+		"camera_rotation": Vector3(-0.179, 0.531, 0.0),
+		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"houston_design_studio": {
@@ -2430,6 +2439,9 @@ func load_location(preset_id: String) -> bool:
 		last_load_error = "scene failed to load (GLB present — import error?): %s" % String(spec.get("scene", ""))
 		return false
 	_location_instance = ps.instantiate()
+	# Glass is glass (2026-10-02): the builders' vertex alpha becomes
+	# real transparency — before this every pane was an opaque slab.
+	GlassPass.apply(_location_instance)
 	# CRITICAL: suppress interactive nodes BEFORE adding to tree.
 	# Once added, every script in the locale's _ready cascade caches
 	# references to the Player / HUD / etc — and the queue_free that

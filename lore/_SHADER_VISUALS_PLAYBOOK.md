@@ -279,6 +279,35 @@ through them in order.
 - Judge at 1:1 crops, not the montage: the tooth and the pooled rims
   vanish at half size.
 
+### 2026-10-02 (vi) · glass is glass — vertex alpha becomes transparency at load (LocaleGlass)
+
+- Every builder writes glass with an alpha below 1 (Houston's glass
+  wall 0.30, its partitions 0.50, the helm's cabinet glass, a cooler
+  jug 0.55) and the GLB's COLOR_0 carries it (VEC4) — but the glTF
+  importer's material for a material-less primitive is opaque, so
+  every pane rendered as a painted slab. Erica's "glass-walled office"
+  was a box; the riverboat's leaded window over the dining room was a
+  wall; the lead cames sat INSIDE the pane, invisible.
+- `scripts/LocaleGlass.gd` — `apply(root)` walks the instanced locale,
+  reads each surface's ARRAY_COLOR, and where alpha < 0.98 sets a
+  duplicate StandardMaterial3D with TRANSPARENCY_ALPHA + vertex colour
+  as albedo + no culling. Background3D calls it right after
+  `instantiate()`. No GLB rebuild — the Deck needs no Blender for it.
+- PRELOAD it, do not rely on `class_name`: the global class cache only
+  learns a new class on an editor scan or `--import`; before that
+  Background3D failed to parse and every test tool hung for its full
+  timeout ("Nonexistent function set_paper_for_volume in base
+  SubViewportContainer" is what a script that failed to load looks like
+  from the outside).
+- Transparent surfaces do not write depth; the painter reads colour,
+  not depth, so the washes and the pencil see through glass as the eye
+  does. Anything a builder gave an alpha for a reason OTHER than
+  see-through (none found in vol 5's builders; survey before vol 6/7)
+  will now show through — a lampshade at 0.7 is a lit shade, fine.
+- A leaded window reads by its LATTICE: 2 cm cames at 50 cm vanished
+  under the Kuwahara; 3.5 cm at 25 cm, standing 1.5 cm proud of the
+  pane each side, in lead grey, hold.
+
 ### 2026-10-02 (iii) · vol 5's tenor is the TRIP, and it rides OVER the paint as ink
 
 - The Deck, with a screenshot: "I want the look vol 6 has, but with

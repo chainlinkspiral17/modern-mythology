@@ -316,27 +316,30 @@ position = Vector3(-2.2, 1.5, -1.4)
 rotation = Vector3(-0.145182, -0.750929, 0)
 metadata/fov = 54.0
 
+; RE-AIMED 2026-10-02: the close-up was a top-down pillow (now the bed's head and
+; the window from its foot), the rose a speck on a bright sill (closer), the chair
+; its own back from behind (now its seat, where the presence sits).
 ; closeup: Alice against the pillow, the window light behind her
 [node name="shot_closeup_alice" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.0, 1.35, -4.3)
-rotation = Vector3(-0.457, -0.96, 0)
+position = Vector3(0.600, 1.350, -2.400)
+rotation = Vector3(-0.1323, 0.1526, 0.0)
 metadata/fov = 36.0
 
 ; insert: the white rose in the votive glass on the windowsill
 ; (2026-09-19: the window and its sill are east of the bed, the votive at
 ; blender (1.5, 5.36, 0.9); the lens turns north-east to it)
 [node name="shot_insert_rose" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.433, 1.322, -4.610)
-rotation = Vector3(-0.21, -1.0, 0.0)
-metadata/fov = 38.0
+position = Vector3(1.050, 1.180, -4.850)
+rotation = Vector3(-0.2310, -0.7230, 0.0)
+metadata/fov = 30.0
 
 ; insert: the visitor chair by the window - where the presence sits
 ; (2026-09-19: the lens stood against the monitor cart's pole; it looks
 ; from just north of the cart, blender (-0.9, 4.5, 0.9), west-north-west)
 [node name="shot_insert_chair" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.9, 0.9, -4.5)
-rotation = Vector3(-0.177, 1.107, 0.0)
-metadata/fov = 42.0
+position = Vector3(-2.600, 1.250, -3.600)
+rotation = Vector3(-0.3936, -0.4636, 0.0)
+metadata/fov = 40.0
 
 ; practicals authored by practical_author.py (2026-09-11):
 ; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)

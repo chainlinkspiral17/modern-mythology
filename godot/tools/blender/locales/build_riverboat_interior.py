@@ -100,7 +100,8 @@ COL_LINEN         = (0.94, 0.90, 0.84, 1.0)
 COL_FELT_GREEN    = (0.18, 0.40, 0.24, 1.0)
 
 COL_WINDOW_GLASS  = (0.62, 0.78, 0.82, 0.85)
-COL_LEADED_GLASS  = (0.72, 0.84, 0.88, 0.85)
+COL_LEAD_CAME     = (0.30, 0.30, 0.32, 1.0)
+COL_LEADED_GLASS  = (0.46, 0.38, 0.26, 0.45)  # (2026-10-02: old glass, warm — and GLASS: LocaleGlass turns the alpha into transparency at load, the dining room shows through)
 COL_BOTTLE_BROWN  = (0.42, 0.22, 0.10, 1.0)
 COL_BOTTLE_GREEN  = (0.18, 0.32, 0.20, 1.0)
 COL_BOTTLE_CLEAR  = (0.62, 0.74, 0.78, 0.70)
@@ -1090,14 +1091,16 @@ def build_helm():
              (0.0, -3.0, cz + 1.40),
              (2.90, 0.06, 1.40), COL_LEADED_GLASS)
     # Leaded lattice — diamond pattern (just N-S + E-W lines)
-    for i in range(-2, 3):
+    # (2026-10-02: a leaded window reads by its LATTICE — 2 cm cames at 50 cm
+    # vanished in the painter; 3.5 cm at 25 cm, and the lead's grey, not brass)
+    for i in range(-5, 6):
         make_box(f"Helm_LWindow_MullV_{i}",
-                 (i * 0.50, -3.0, cz + 1.40),
-                 (0.02, 0.04, 1.40), COL_BRASS_DARK)
-    for j in range(-1, 2):
+                 (i * 0.25, -3.0, cz + 1.40),
+                 (0.035, 0.09, 1.40), COL_LEAD_CAME)   # proud of the 6 cm pane both sides
+    for j in range(-2, 3):
         make_box(f"Helm_LWindow_MullH_{j}",
-                 (0.0, -3.0, cz + 1.40 + j * 0.40),
-                 (2.90, 0.04, 0.02), COL_BRASS_DARK)
+                 (0.0, -3.0, cz + 1.40 + j * 0.28),
+                 (2.90, 0.09, 0.035), COL_LEAD_CAME)
     make_box("Helm_LWindow_Frame_T",
              (0.0, -3.0, cz + 2.16),
              (2.90, 0.06, 0.10), COL_WALL_DARK)

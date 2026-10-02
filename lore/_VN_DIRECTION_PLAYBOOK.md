@@ -291,6 +291,48 @@ over-the-shoulder two-shot when two heroes trade lines.
 
 ## Recent lessons
 
+### 2026-10-02 · re-aim a marker from the PROSE: a camera point and a target point, never a rotation by hand
+
+- The Deck: "direction still isn't strong at all, vol 5. camera and
+  director attention not where they should be." Rendering every
+  `[shot:]` marker of a locale into one montage (`TripPaintTest
+  --preset X --marker shot_x`, one PNG each, tiled) showed why: markers
+  were authored as position + a guessed rotation, and the subject was
+  often not in frame at all — Natalie's `insert card` framed a plant
+  and a stool, `closeup natalie` a bare wall at arm's length, the
+  riverboat's `insert window` sat BETWEEN DECKS looking up at a table's
+  underside, Houston's `insert monitor` looked at the monitor's back.
+- The fix is per shot, from the chapter's cue line: pick the camera
+  point and the TARGET point in godot coordinates (blender (x, y, z) →
+  godot (x, z, −y)), and let `aim()` make the rotation:
+  `pitch = atan2(dy, hypot(dx, dz))`, `yaw = atan2(−dx, −dz)`. Write
+  the tscn block by regex on `position`/`transform`, `rotation`,
+  `metadata/fov`; find the block's END as the next `[node` or EOF (a
+  blank-line search raised on the last block and silently wrote
+  nothing — the render then showed the OLD aims and nearly passed as
+  the new ones).
+- An insert's camera sits 0.6–1.0 m from the object, 30–50° down,
+  fov 34–42, oblique along the surface (never plan-view). A close-up's
+  marker is a BACKDROP for the overlaid portrait: the room behind the
+  speaker 3–5 m deep (Dante: his father's clock; Erica: her office's
+  second monitor and files; Natalie: the sofa, the window, the door),
+  not the wall at arm's length.
+- Then `marker_aim_audit` and `vantage_obstruction_audit --markers X`
+  must both be clean: the aim audit found `Natalies_Phone` claiming the
+  `closeup natalie` cue (renamed `Her_Phone`); the obstruction audit
+  casts the new aims.
+- The obstruction audit is the LAST gate, after the render looks right:
+  Houston's contract insert read well three times and was wrong three
+  times — the lens inside the south wall (a blank frame), then the
+  chair back across the line, then the banker's box, then the lens
+  INSIDE a filing cabinet (a dark bar at frame-left that looked like a
+  door jamb). Each move came from the audit's named obstructor, not
+  from the picture.
+- What a render shows that the numbers do not: the thing you aimed at
+  may be INSIDE another part (Natalie's phone in the counter slab), or
+  the glass you aimed through may be a wall (see _SHADER_VISUALS
+  2026-10-02 (vi)). Judge the montage before the audit.
+
 ### 2026-09-19 · a check's pass must land somewhere the fail does not; a flag set by every path remembers nothing
 
 - **Decorative checks.** Two empathy checks had pass and fail pointing

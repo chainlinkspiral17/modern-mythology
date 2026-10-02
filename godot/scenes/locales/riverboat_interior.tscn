@@ -510,20 +510,25 @@ position = Vector3(0, 5.10, 0.6)
 rotation = Vector3(0, 3.1416, 0)
 
 [node name="shot_closeup_dante" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0, 6.7, 2.1)
-rotation = Vector3(0, 0, 0)
-metadata/fov = 34.0
+position = Vector3(0.500, 6.620, 0.300)
+rotation = Vector3(0.0481, 0.2121, 0.0)
+metadata/fov = 36.0
 
 [node name="shot_insert_bourbon" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.050, 6.443, -0.974)
-rotation = Vector3(0.0407, -0.7470, 0.0)
+position = Vector3(2.300, 6.600, -1.250)
+rotation = Vector3(-0.1598, -0.7141, 0.0)
 metadata/fov = 30.0
 
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.000, 4.700, 0.855)
-rotation = Vector3(-1.1056, -2.9878, 0.0)
+position = Vector3(1.050, 6.700, 2.200)
+rotation = Vector3(-0.5846, 2.8674, 0.0)
 metadata/fov = 44.0
 
+; RE-AIMED 2026-10-02 (the Deck: "camera and director attention not where they
+; should be"): insert window THROUGH the leaded pane from beside the chair, down
+; at the dining floor (it sat between decks, at a table's underside; the pane
+; is glass since LocaleGlass); closeup dante with the
+; father's clock behind him (it faced a bulkhead port); the bourbon closer.
 ; insert: the calling card on the helm desk, square to the corner
 [node name="shot_insert_card" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 6.25, 1.9)

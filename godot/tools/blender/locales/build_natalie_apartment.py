@@ -219,7 +219,9 @@ def build_kitchenette():
     # Counter run east — under fridge
     make_box("Kitchen_Counter_N", (-1.50, 5.050, 0.46),
              (2.40, 0.70, 0.92), PAL_APT_COUNTER["formica"])
-    make_box("Kitchen_Counter_N_Top", (-1.50, 5.050, top_z),
+    # (2026-10-02: the slab was centred ON top_z, so it stood 0.95..1.01 while
+    # the west counter's top is 0.92..0.98 — the phone and the mug were inside it)
+    make_box("Kitchen_Counter_N_Top", (-1.50, 5.050, top_z - 0.03),
              (2.50, 0.80, 0.06), PAL_APT_COUNTER["top"])
     # Stove
     make_box("Stove_Body", (0.05, 5.050, 0.46),
@@ -367,8 +369,8 @@ def build_use_states_d4():
     make_box("Tarot_Deck_Skew", (RUG_X - 0.795, RUG_Y - 0.555, 0.057), (0.075, 0.125, 0.012),
              (0.32, 0.26, 0.40, 1.0))
     # Coffee mug on the kitchen counter + the ring it left earlier
-    make_mug("Counter_Mug", -1.2, 4.95, 0.92, (0.62, 0.28, 0.24, 1.0))
-    make_cyl("Counter_MugRing", (-0.95, 4.90, 0.925), 0.045, 0.002,
+    make_mug("Counter_Mug", -1.2, 4.95, 0.98, (0.62, 0.28, 0.24, 1.0))
+    make_cyl("Counter_MugRing", (-0.95, 4.90, 0.981), 0.045, 0.002,
              (0.38, 0.30, 0.24, 1.0), segments=10)
     # Blanket half-slid off the sofa
     make_chamfer_box("Sofa_Blanket", (SOFA_X - 0.45, SOFA_Y - 0.05, 0.47), (0.55, 0.42, 0.06),
@@ -417,7 +419,8 @@ def build_hero_props_2026_09():
     # word so the desk insert keeps the desk)
     make_chair("Writing_Chair", 2.5, 1.25, yaw=3.14159, wood=wood, w=0.40)
     # ── NATALIE'S PHONE · kitchen counter north (top 0.98) ──
-    make_box("Natalies_Phone", (-1.85, 5.05, 0.9855), (0.070, 0.140, 0.011),
+    # (2026-10-02: "Natalies_Phone" carried the closeup-natalie cue word)
+    make_box("Her_Phone", (-1.85, 5.05, 0.9855), (0.070, 0.140, 0.011),
              (0.13, 0.13, 0.15, 1.0))
 
 

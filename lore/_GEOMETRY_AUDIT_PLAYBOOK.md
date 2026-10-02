@@ -167,6 +167,15 @@ banisters classed · pans as containers.
   camera, and read as OCCLUDED by the island top — two rebuilds chasing
   geometry before the name was the fix (`Lane_Entry_Sink`). Name wear,
   lanes and stains for the place, never for the thing they lead to.
+- Second collision the same day: `Natalies_Phone` claimed the
+  `shot_closeup_natalie` cue in `marker_aim_audit` ("140° off axis") —
+  a hero prop named for its OWNER carries the owner's close-up cue.
+  `Her_Phone` keeps the `phone` cue and drops hers.
+- A slab CENTRED on a counter's returned top_z (`make_box(…, top_z)`
+  with a 6 cm size) stands 3 cm above the counter it joins, and
+  everything placed "on top_z" is inside it (Natalie's phone, mug and
+  ring). make_counter's top_z is the SURFACE; a joining slab's centre
+  is top_z − half its thickness.
 - The grammar gate's OUTSIDE check knows floors by NAME (FLOORISH:
   floor, ground, gravel, deck, lawn …). A wagon parked on a slab called
   "Street" "touches no floor"; the same slab as "Ground_Street" is a
