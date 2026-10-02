@@ -72,3 +72,8 @@ godot/assets/audio/voice/**/*.wav
 godot/assets/audio/voice/**/*.webm
 godot/assets/audio/voice/**/*.import
 godot/assets/audio/drive/
+
+# Locale GLBs are build artifacts (Blender, per machine): godot/tools/blender
+# builds them; the Deck and this checkout each keep their own.
+godot/assets/3d/locales/*.glb
+godot/assets/3d/locales/*.glb.import
