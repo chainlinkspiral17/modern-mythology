@@ -214,18 +214,28 @@ const STARTLE_DECAY: float = 2.5            # 1/s
 # a fade at the base. LOOK_BASE is every hero at rest; MOOD_LOOK pushes
 # it the way the line feels (deltas, added); the room sets temperature,
 # the rim's colour and the shadows' tint. Eased, never cut.
+# 2026-10-02, the Deck: "less plastic, more cartoon sketch, with
+# watercolor vibe." The look became a painted pass: washes, soft cel
+# bands, pigment pooling, paper grain, broken ink lines, hatching, a
+# ragged bleed into the room (portrait_demon_static.gdshader), and the
+# models' own materials are made MATTE on load (_matte_materials) — the
+# plastic sheen was in the material before any shader saw it. The mood
+# moves the medium: sorrow runs wetter and paler, anger inks harder and
+# hatches deeper, joy is a bright clean wash.
 const LOOK_BASE := {
-	"look_aberr": 0.80, "look_contrast": 1.12, "look_sat": 1.04, "look_temp": 0.0,
-	"look_bloom": 0.45, "look_grain": 0.45, "look_rim": 0.95, "look_vignette": 0.28,
-	"look_fade": 0.6,
+	"look_contrast": 1.06, "look_sat": 1.12, "look_temp": 0.0,
+	"look_grain": 0.30, "look_rim": 0.55, "look_vignette": 0.18, "look_fade": 0.6,
+	"look_wash": 0.80, "look_cel": 0.50, "look_bands": 4.0, "look_matte": 0.80,
+	"look_ink": 0.75, "look_ink_thr": 0.18, "look_hatch": 0.45, "look_paper": 0.70,
+	"look_bleed": 0.60, "look_wobble": 1.0,
 }
 const MOOD_LOOK := {
-	"happy":     {"look_bloom": 0.40, "look_temp": 0.35, "look_sat": 0.12},
-	"sad":       {"look_sat": -0.45, "look_temp": -0.55, "look_contrast": -0.08, "look_vignette": 0.40, "look_rim": -0.30},
-	"tired":     {"look_sat": -0.32, "look_contrast": -0.14, "look_grain": 0.25, "look_vignette": 0.25},
-	"angry":     {"look_contrast": 0.18, "look_temp": 0.08, "look_sat": -0.08, "look_aberr": 0.90, "look_rim": 0.35},   # the mood's key is already hot
-	"nervous":   {"look_aberr": 0.80, "look_grain": 0.40, "look_sat": -0.15},
-	"surprised": {"look_bloom": 0.55, "look_contrast": 0.08},
+	"happy":     {"look_temp": 0.30, "look_sat": 0.12, "look_hatch": -0.30, "look_wash": 0.10},
+	"sad":       {"look_sat": -0.30, "look_temp": -0.50, "look_bleed": 0.30, "look_wash": 0.15, "look_ink": -0.25, "look_vignette": 0.25},
+	"tired":     {"look_sat": -0.30, "look_contrast": -0.08, "look_bleed": 0.20, "look_ink": -0.15},
+	"angry":     {"look_contrast": 0.14, "look_temp": -0.10, "look_sat": -0.20, "look_ink": 0.20, "look_ink_thr": -0.04, "look_hatch": 0.35, "look_bands": -1.0},
+	"nervous":   {"look_wobble": 0.8, "look_hatch": 0.20, "look_sat": -0.15},
+	"surprised": {"look_contrast": 0.08, "look_ink": 0.10},
 }
 const LOOK_EASE: float = 4.0                # 1/s
 var _look_on: bool = true
@@ -539,6 +549,7 @@ func load_character(glb_path: String, expression: String = "") -> bool:
 	_loaded_glb_path = glb_path
 	# Auto-orient + auto-scale to the portrait's target framing
 	_orient_and_scale_character(_current_character)
+	_matte_materials(_current_character)
 	_neck_y = _measure_neck(_current_character)
 	_head_xz = _measure_head(_current_character, _neck_y) if _neck_y > 0.0 else Vector2.ZERO
 	# Per-character lighting palette (e.g. Sam under sodium-buzz
@@ -671,6 +682,13 @@ func _push_look(delta: float) -> void:
 	mat.set_shader_parameter("look_rim_color", _rim_now)
 	mat.set_shader_parameter("look_shadow", _shadow_target)
 	mat.set_shader_parameter("look", 1.0)
+
+
+## Jump the eased look straight to its target (a still capture).
+func snap_look() -> void:
+	_look_now = _look_target.duplicate()
+	_rim_now = _rim_target
+	_push_look(0.0)
 
 
 ## Clean renders (a tool, a debug comparison): the look off.
@@ -985,6 +1003,28 @@ func _measure_head(root: Node3D, neck: float) -> Vector2:
 	head = head.limit_length(0.15)
 	print("[Portrait3D] head at x %.3f z %.3f m off the axis" % [head.x, head.y])
 	return head
+
+
+## The Meshy models arrive glossy — roughness and specular read as
+## plastic before any post pass sees them (the Deck, 2026-10-02: "less
+## plastic"). Each surface gets a matte copy of its material: full
+## roughness, no metal, a whisper of specular. Colour and texture keep.
+func _matte_materials(root: Node3D) -> void:
+	for n: Node in _collect_mesh_instances(root):
+		var mi: MeshInstance3D = n as MeshInstance3D
+		if mi == null or mi.mesh == null:
+			continue
+		for si in mi.mesh.get_surface_count():
+			var src: Material = mi.get_active_material(si)
+			var bm: BaseMaterial3D = src as BaseMaterial3D
+			if bm == null:
+				continue
+			var m: BaseMaterial3D = bm.duplicate() as BaseMaterial3D
+			m.roughness = 1.0
+			m.metallic = 0.0
+			m.metallic_specular = 0.12
+			m.clearcoat_enabled = false
+			mi.set_surface_override_material(si, m)
 
 
 func _collect_mesh_instances(node: Node, out: Array[Node] = []) -> Array[Node]:

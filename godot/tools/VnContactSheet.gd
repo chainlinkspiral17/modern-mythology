@@ -187,9 +187,23 @@ func _shoot_heroes(manifest: Dictionary) -> void:
 		heroes = disk
 	if heroes.is_empty():
 		return
+	# THE LOOK (2026-10-02): the raw viewport (_save) never shows the
+	# portrait's painted pass — it is a material on the container. The
+	# container now sits inside its own SubViewport over a neutral paper
+	# grey, and `__look_*` frames capture that composite, so the sheet
+	# shows the real heroes the way the game draws them.
+	var look_vp := SubViewport.new()
+	look_vp.size = Vector2i(600, 640)
+	look_vp.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+	add_child(look_vp)
+	var paper := ColorRect.new()
+	paper.color = Color(0.56, 0.54, 0.50)
+	paper.size = Vector2(600, 640)
+	look_vp.add_child(paper)
 	var portrait: SubViewportContainer = PORTRAIT_SCENE.instantiate() as SubViewportContainer
-	add_child(portrait)
-	portrait.position = Vector2(1300, 0)
+	look_vp.add_child(portrait)
+	portrait.position = Vector2.ZERO
+	portrait.size = Vector2(600, 640)
 	for hv in heroes:
 		if not (hv is Dictionary):
 			continue
@@ -218,8 +232,17 @@ func _shoot_heroes(manifest: Dictionary) -> void:
 				portrait.call("set_shot", sz, "eye", 7)
 				await _settle(SETTLE_EXPR)
 				_save(portrait, "_heroes/%s__shot_%s" % [file.get_basename(), sz], true)
+			# the painted look, composited: the three sizes, then two moods
+			for lk: Array in [["mcu", "neutral"], ["cu", "neutral"], ["ecu", "neutral"], ["cu", "sad"], ["cu", "angry"]]:
+				portrait.call("set_shot", String(lk[0]), "eye", 7)
+				portrait.call("set_expression", String(lk[1]))
+				if portrait.has_method("snap_look"):
+					portrait.call("snap_look")
+				await _settle(SETTLE_EXPR)
+				_save_texture(look_vp.get_texture(), "_heroes/%s__look_%s_%s" % [file.get_basename(), lk[0], lk[1]])
+			portrait.call("set_expression", "neutral")
 			portrait.call("set_shot", "medium", "eye", 7)
-	portrait.queue_free()
+	look_vp.queue_free()
 
 
 func _heroes_on_disk() -> Array:
@@ -241,6 +264,18 @@ func _settle(frames: int) -> void:
 	for i in frames:
 		await get_tree().process_frame
 	await RenderingServer.frame_post_draw
+
+
+func _save_texture(tex: Texture2D, rel: String) -> void:
+	if tex == null:
+		return
+	var img: Image = tex.get_image()
+	if img == null:
+		return
+	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(OUT_DIR + "/" + rel.get_base_dir()))
+	img.convert(Image.FORMAT_RGB8)
+	img.save_jpg(ProjectSettings.globalize_path(OUT_DIR + "/" + rel) + ".jpg", 0.9)
+	_report["captured"] = int(_report.get("captured", 0)) + 1
 
 
 func _save(container: SubViewportContainer, rel: String, force_png: bool = false) -> void:

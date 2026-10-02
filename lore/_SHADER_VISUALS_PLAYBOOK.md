@@ -228,6 +228,32 @@ through them in order.
 
 ## Recent lessons
 
+### 2026-10-02 · the painted hero (watercolour + ink over the 3D portraits)
+
+- The Deck: "less plastic, more cartoon sketch, with watercolor vibe."
+  Two halves, both needed: the Meshy materials go MATTE on load
+  (roughness 1, no metal, specular 0.12 — the sheen lives in the
+  material before any shader), and the container's `look` pass paints:
+  Kuwahara washes (4 quadrants × 9 alpha-weighted taps — the flattest
+  wins, so CG gradients become pigment areas with crisp borders), soft
+  cel bands, a value lift toward the paper, pigment pooling where
+  washes meet, fbm granulation + paper tooth, Sobel ink lines plus the
+  silhouette, gapped by noise ("the pen lifts"), two-direction hatching
+  in the shadows, a ragged bleed past the silhouette.
+- Watercolour has no true black: lift the deepest values and let the
+  paper show through them, or hair renders as a flat hole.
+- Everything static — no boil, no per-frame noise (the same Deck asked
+  for less motion). Grain is per pixel, not per frame.
+- Mood moves the MEDIUM, not just the grade: sorrow runs wetter and
+  paler (bleed up, ink down), anger inks harder and hatches deeper
+  (fewer bands), joy is a bright clean wash. The mood's own red key
+  already warms anger — its grade runs slightly cool or it floods orange.
+- Judge it on the CONTACT SHEET's `__look_*` frames: the portrait
+  container sits in its own SubViewport there, so the capture includes
+  its material. The repo holds only seven old July hero GLBs (the real
+  51 are on the Deck + Drive) — a local render is never the verdict.
+
+
 ### 2026-10-01 · the 3D heroes get a look (they were clean CG over a processed room)
 
 - Each locale renders through its OWN post stack inside its viewport;

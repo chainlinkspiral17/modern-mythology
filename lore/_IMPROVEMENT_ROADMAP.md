@@ -3004,6 +3004,20 @@ audio_reference_audit counts gitignored voice/ + drive/ paths as
 Drive-held (the keys can be ahead of the manifest). Tested with a
 simulated drop mid-upload: 3/9 recorded, the rerun sent the other 6.
 
+**2026-10-02 · PORTRAITS · draft 4 — the painted hero.** The Deck: "more
+shaders and post-processing, less plastic, more cartoon sketch, with
+watercolor vibe." Matte materials on load + a watercolour-and-ink pass
+on the portrait container (washes, cel bands, pooling, granulation,
+broken ink, hatching, ragged bleed; static, no boil), steered by mood
+and room — see _SHADER_VISUALS_PLAYBOOK 2026-10-02. Rendered here over
+the diner (John, Frasier; the local GLBs are older than the Deck's).
+**Draft 5 targets:** the Deck verdict on the real heroes; ink weight by
+shot size (the ecu's lines run heavy); a paper colour per volume
+register (vol 6 milk_honey warm, vol 5 arcana cooler); the sheet
+now captures the composited look (`_heroes/<hero>__look_<size>_<mood>.jpg`,
+over paper grey) — judge the real heroes there; Deck frame time with three
+portraits up.
+
 **2026-10-02 · SHEET 44 · eye anchors judged.** The three close sizes
 step visibly on all 51 heroes (chest-up → head and shoulders → brow
 to mouth) and the eyes sit near the upper third in nearly every
