@@ -77,3 +77,11 @@ godot/assets/audio/drive/
 # builds them; the Deck and this checkout each keep their own.
 godot/assets/3d/locales/*.glb
 godot/assets/3d/locales/*.glb.import
+godot/assets/3d/cathedral/*.glb
+godot/assets/3d/cathedral/*.glb.import
+godot/assets/3d/agents/*.glb
+godot/assets/3d/agents/*.glb.import
+godot/assets/3d/atmosphere/*.glb
+godot/assets/3d/atmosphere/*.glb.import
+godot/assets/3d/dioramas/*.glb
+godot/assets/3d/dioramas/*.glb.import
