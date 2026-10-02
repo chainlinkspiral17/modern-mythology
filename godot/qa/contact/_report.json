@@ -1,0 +1,16 @@
+{
+	"captured": 2245,
+	"heroes": 51,
+	"only": "",
+	"presets": 145,
+	"seconds": 832.747,
+	"skip_reasons": {
+		"cathedral_interior": "GLB missing: res://assets/3d/cathedral/cathedral_interior.glb"
+	},
+	"skipped_glb": [
+		"cathedral_interior"
+	],
+	"skipped_marker": [],
+	"skipped_scene": [],
+	"when": "2026-10-01T18:59:48"
+}
