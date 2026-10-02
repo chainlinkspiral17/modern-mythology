@@ -16,6 +16,7 @@ extends Control
 ##   ./godot/tools/contact_sheet.sh                 # everything
 ##   ./godot/tools/contact_sheet.sh --only=cabin    # presets whose id starts with
 ##   ./godot/tools/contact_sheet.sh --png           # lossless (default is JPEG 0.82)
+##   ./godot/tools/contact_sheet.sh --raw           # rooms without the painted pass
 ##
 ## then ./godot/tools/contact_push.sh to hand the frames to Claude.
 ##
@@ -46,6 +47,7 @@ const SETTLE_CUT := 6
 const SETTLE_EXPR := 24   # the portrait's mood motion has a phase; a third of a second in
 
 var _only: String = ""
+var _raw: bool = false        # --raw: the rooms without the painted pass (geometry judging)
 var _png: bool = false
 var _jpg_quality: float = 0.82
 var _report: Dictionary = {
@@ -62,6 +64,8 @@ func _ready() -> void:
 			_only = arg.substr(7)
 		elif arg == "--png":
 			_png = true
+		elif arg == "--raw":
+			_raw = true
 	_t0 = Time.get_ticks_msec()
 	_run()
 
@@ -101,6 +105,10 @@ func _shoot_presets(manifest: Dictionary) -> void:
 	var bg: SubViewportContainer = BG_SCENE.instantiate() as SubViewportContainer
 	add_child(bg)
 	bg.position = Vector2.ZERO
+	# the rooms are painted in play (painted_scene.gdshader, 2026-10-02),
+	# so the sheet shows them painted; --raw judges the bare geometry
+	if _raw and bg.has_method("set_paint"):
+		bg.call("set_paint", 0.0)
 	var presets: Array = manifest.get("presets", [])
 	for pv in presets:
 		if not (pv is Dictionary):

@@ -3004,6 +3004,22 @@ audio_reference_audit counts gitignored voice/ + drive/ paths as
 Drive-held (the keys can be ahead of the manifest). Tested with a
 simulated drop mid-upload: 3/9 recorded, the rerun sent the other 6.
 
+**2026-10-02 · THE PAINTED ROOM · draft 1.** Sheet 45 verdict from the
+Deck: "portraits generally work very well, I'm pleased for now.
+background clashing with the new art style and models. let's bridge
+the gap." Every 3D VN background now ends in a watercolour-and-ink pass
+in the heroes' language (painted_scene.gdshader in a layer inside
+Background3D's viewport, above the locale's own stack; paper colour by
+volume). Tested over sheet-45 frames of the diner, kwik stop, cosmic,
+cabin, cape and bar with the heroes' look laid on top, and live in a
+Background3D. **Draft 2 targets:** the Deck verdict in play; the locale
+style packs underneath (neon edges, rings, ASCII) still show through —
+a "painted" style pack per locale that hands the painter clean flat
+colour would read cleaner than painting over neon; the 2D PNG /
+composition backgrounds are not painted yet; the TripSync aura on top
+of a painted room; frame time on the Deck (two full-screen ~70-tap
+passes plus the portraits).
+
 **2026-10-02 · PORTRAITS · draft 4 — the painted hero.** The Deck: "more
 shaders and post-processing, less plastic, more cartoon sketch, with
 watercolor vibe." Matte materials on load + a watercolour-and-ink pass

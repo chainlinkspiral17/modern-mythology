@@ -1257,6 +1257,8 @@ func _apply_bg_3d(preset_id: String) -> void:
 		if trip3d != null and _trip_fb != null \
 				and trip3d.has_method("add_feedback_source"):
 			trip3d.call("add_feedback_source", _trip_fb, _bg_3d_node)
+	if _bg_3d_node.has_method("set_paper_for_volume"):
+		_bg_3d_node.call("set_paper_for_volume", int(_scene_data.get("vol", _vol)))
 	# Per-locale ambient bed: duck the Music Player way down and raise
 	# this locale's inverted ambient soundtrack. Independent of whether
 	# the GLB is present (below) — the scene IS this locale either way,

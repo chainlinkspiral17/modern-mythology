@@ -2291,8 +2291,64 @@ var _loaded_preset: String = ""
 var _location_instance: Node = null
 
 
+# ── THE PAINTED ROOM (2026-10-02) ─────────────────────────────────
+# The Deck: "background clashing with the new art style and models.
+# let's bridge the gap." The heroes are watercolour and ink now; the
+# rooms were flat vertex-colour CG. A last pass paints the room in the
+# same language (painted_scene.gdshader): a CanvasLayer inside our
+# SubViewport, ABOVE the locale's own PostProcess (layer 50), so it
+# paints whatever the locale's style pack left. (The container's own
+# material slot is TripSync's — the trip still breathes on top.) The
+# PAPER is the volume's: each register is painted on its own stock.
+const PAINTED_LAYER: int = 90
+const VOLUME_PAPER := {
+	5: Color(0.90, 0.91, 0.88),   # arcana — a cool, grey-white rag
+	6: Color(0.96, 0.91, 0.81),   # milk & honey / the community — warm cream
+	7: Color(0.91, 0.93, 0.89),   # the cedars — a green-grey wash paper
+}
+const DEFAULT_PAPER := Color(0.94, 0.91, 0.84)
+var _painted_mat: ShaderMaterial = null
+
+
 func _ready() -> void:
 	custom_minimum_size = Vector2(BG_W, BG_H)
+	_add_painted_pass()
+
+
+func _add_painted_pass() -> void:
+	var vp: SubViewport = get_node_or_null("SubViewport") as SubViewport
+	var sh: Shader = load("res://assets/shaders/painted_scene.gdshader") as Shader
+	if vp == null or sh == null:
+		return
+	var layer := CanvasLayer.new()
+	layer.name = "PaintedPass"
+	layer.layer = PAINTED_LAYER
+	layer.add_to_group("world_render")   # the picture, not HUD — F4 leaves it
+	var bb := BackBufferCopy.new()
+	bb.copy_mode = BackBufferCopy.COPY_MODE_VIEWPORT
+	layer.add_child(bb)
+	var rect := ColorRect.new()
+	rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_painted_mat = ShaderMaterial.new()
+	_painted_mat.shader = sh
+	rect.material = _painted_mat
+	layer.add_child(rect)
+	vp.add_child(layer)
+
+
+## The volume's paper (GameEngine, on every 3D bg). 0 = the default stock.
+func set_paper_for_volume(vol: int) -> void:
+	if _painted_mat == null:
+		return
+	var c: Color = VOLUME_PAPER.get(vol, DEFAULT_PAPER)
+	_painted_mat.set_shader_parameter("paper_color", c)
+
+
+## 0..1 — 0 shows the locale as rendered (a debug comparison).
+func set_paint(amount: float) -> void:
+	if _painted_mat != null:
+		_painted_mat.set_shader_parameter("paint", clampf(amount, 0.0, 1.0))
 
 
 # ── Public API ────────────────────────────────────────────────────

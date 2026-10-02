@@ -228,6 +228,33 @@ through them in order.
 
 ## Recent lessons
 
+### 2026-10-02 · the painted room (the backgrounds join the heroes' watercolour)
+
+- The Deck: "background clashing with the new art style and models.
+  let's bridge the gap." `painted_scene.gdshader` is the room's half of
+  the language: Kuwahara washes, a lift toward the volume's PAPER (not
+  white), pigment pooling at real colour borders, ink along COLOUR
+  edges, one hatch direction in the shadows, granulation + tooth, and
+  the painting thinning to bare paper at the frame margins.
+- Where it lives: a CanvasLayer (layer 90, "PaintedPass", group
+  `world_render`) INSIDE Background3D's SubViewport, above the locale's
+  own PostProcess (layer 50) — it paints whatever the style pack left.
+  Not the container's material: that slot is TripSync's.
+- Godot will not route a built-in TEXTURE and a uniform sampler through
+  the same function, nor two samplers with different hints/filters —
+  "called more than once using both built-ins and uniform textures".
+  A failed canvas shader draws SOLID WHITE, silently. The pass reads
+  only `hint_screen_texture`; the test tool stacks it the same way.
+- Edges in COLOUR, not brightness (red on grey is one brightness), over
+  a 2.5 px reach and a high threshold: the locales' post bands light
+  into rings, and a fine brightness test inked every ring. The brush
+  warp must stay a whisper (0.25) on rooms — more bends banded light
+  into marble (the diner's ceiling).
+- Paper per volume register (Background3D.VOLUME_PAPER): vol 5 cool rag,
+  vol 6 warm cream, vol 7 green-grey. The sheet now shows rooms painted;
+  `contact_sheet.sh --raw` for geometry judging.
+
+
 ### 2026-10-02 · the painted hero (watercolour + ink over the 3D portraits)
 
 - The Deck: "less plastic, more cartoon sketch, with watercolor vibe."
