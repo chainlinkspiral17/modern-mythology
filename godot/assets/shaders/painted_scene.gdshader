@@ -23,15 +23,15 @@ uniform sampler2D screen_tex : hint_screen_texture, filter_linear_mipmap;
 
 uniform float paint        : hint_range(0.0, 1.0) = 1.0;
 uniform float wash         : hint_range(0.0, 1.0) = 0.85;   // how far the render flattens into wash regions
-uniform float wash_radius  : hint_range(1.0, 12.0) = 6.0;   // px: the brush's width
-uniform float bleed        : hint_range(0.0, 2.0) = 1.2;    // feathering where washes meet
-uniform float blotch       : hint_range(0.0, 1.0) = 0.45;   // pigment density, brush-load scale
+uniform float wash_radius  : hint_range(1.0, 12.0) = 4.0;   // px: the brush's width (6 ate the riverboat's rails)
+uniform float bleed        : hint_range(0.0, 2.0) = 0.8;    // feathering where washes meet
+uniform float blotch       : hint_range(0.0, 1.0) = 0.25;   // pigment density, brush-load scale
 uniform float grain        : hint_range(0.0, 1.0) = 0.55;   // granulation, paper-tooth scale
-uniform float edge_dark    : hint_range(0.0, 2.0) = 1.0;    // pigment pooling at wash rims
+uniform float edge_dark    : hint_range(0.0, 2.0) = 0.8;    // pigment pooling at wash rims
 uniform float dry          : hint_range(0.0, 1.0) = 0.6;    // the lights left as bare paper
 uniform float paper        : hint_range(0.0, 1.0) = 0.75;   // the sheet's tooth over everything
 uniform float layers       : hint_range(2.0, 9.0) = 5.0;    // washes come in LAYERS: a gradient is 2-3 washes, not a ramp
-uniform float layering     : hint_range(0.0, 1.0) = 0.65;   // how far a smooth gradient becomes stepped washes
+uniform float layering     : hint_range(0.0, 1.0) = 0.4;    // how far a smooth gradient becomes stepped washes
 uniform float sat          : hint_range(0.0, 1.6) = 1.05;
 uniform float pencil       : hint_range(0.0, 1.0) = 0.35;   // the drawing under the paint
 uniform float pencil_thr   : hint_range(0.02, 1.2) = 0.40;
@@ -46,14 +46,22 @@ uniform float knee         : hint_range(0.3, 1.0) = 0.66;
 uniform float knee_squash  : hint_range(0.0, 1.0) = 0.60;
 uniform float target_key   : hint_range(0.1, 0.9) = 0.46;
 uniform float expose       : hint_range(0.0, 1.0) = 1.0;
+// THE PAPER MOVES WITH THE PICTURE (the Deck, 2026-10-02: "the same
+// repeating watercolor wash texture stays static in background, which
+// makes it super noticeable"). Screen-space noise sits still while a
+// camera track slides the room under it. Background3D pushes the view's
+// yaw/pitch as a UV shift every frame, so the blotches, tooth and
+// wobble travel with what they are painted on.
+uniform vec2 noise_shift = vec2(0.0, 0.0);
 
 vec4 paint_from(sampler2D TEX, vec2 uv0, vec2 px) {
     if (paint <= 0.001) {
         return texture(TEX, uv0);
     }
-    vec2 P = uv0 / px;
+    vec2 un = uv0 - noise_shift;        // noise coordinates: anchored to the view
+    vec2 P = un / px;
     // the hand wanders a little: a static warp of where the brush lands
-    vec2 wob = (vec2(wc_vnoise(uv0 * vec2(24.0, 18.0)), wc_vnoise(uv0 * vec2(21.0, 26.0) + 5.7)) - 0.5)
+    vec2 wob = (vec2(wc_vnoise(un * vec2(24.0, 18.0)), wc_vnoise(un * vec2(21.0, 26.0) + 5.7)) - 0.5)
                * px * 4.0 * wobble * paint;
     vec2 uv = uv0 + wob;
     vec3 src = texture(TEX, uv).rgb;
@@ -65,24 +73,27 @@ vec4 paint_from(sampler2D TEX, vec2 uv0, vec2 px) {
     // ── BLEED: at a border the lookup wanders along low-frequency noise,
     //    so two washes feather into each other instead of meeting at a line
     float border = smoothstep(0.08, 0.5, e);
-    vec2 drift = (vec2(wc_fbm(uv0 * vec2(60.0, 34.0)), wc_fbm(uv0 * vec2(53.0, 41.0) + 9.0)) - 0.5)
+    vec2 drift = (vec2(wc_fbm(un * vec2(60.0, 34.0)), wc_fbm(un * vec2(53.0, 41.0) + 9.0)) - 0.5)
                  * px * 12.0 * bleed * border * paint;
     // ── WASH: the render flattens into regions of pigment
     vec3 flat_c = wc_kuwahara(TEX, uv + drift, px, wash_radius).rgb;
     vec3 col = mix(src, flat_c, wash * paint);
     float l = wc_luma(col);
     col = mix(vec3(l), col, mix(1.0, sat, paint));
-    float g_blotch = wc_fbm(uv0 * vec2(13.0, 7.5) + 1.3);
-    float g_tooth = wc_fbm(uv0 * vec2(95.0, 54.0) + 2.0);
+    float g_blotch = wc_fbm(un * vec2(13.0, 7.5) + 1.3);
+    float g_tooth = wc_fbm(un * vec2(95.0, 54.0) + 2.0);
 
     // ── LAYERS: a painter lays a gradient as two or three washes, each
     //    with its own irregular border — the value steps, the threshold
     //    wandering with the brush load, and the hue rides along
+    //    — only where there IS a gradient: on a flat dark wall the steps
+    //    wandered into a map of blobs (the warehouse, 2026-10-02)
     float lv = max(wc_luma(col), 1e-3);
-    float stepped = (floor(lv * layers + (g_blotch - 0.5) * 0.9) + 0.5) / layers;
-    float lv2 = mix(lv, stepped, layering * paint);
+    float graded = smoothstep(0.015, 0.09, abs(lv - local));
+    float stepped = (floor(lv * layers + (g_blotch - 0.5) * 0.5) + 0.5) / layers;
+    float lv2 = mix(lv, stepped, layering * graded * paint);
     col *= lv2 / lv;
-    float layer_edge = smoothstep(0.0, 0.08, fwidth(stepped)) * layering;
+    float layer_edge = smoothstep(0.0, 0.08, fwidth(stepped)) * layering * graded;
 
     // ── PIGMENT: density varies inside a wash — blotches the size of a
     //    brush load, granulation at the paper's tooth
@@ -97,7 +108,7 @@ vec4 paint_from(sampler2D TEX, vec2 uv0, vec2 px) {
     float dry_mask = hi * smoothstep(0.30, 0.70, g_tooth) * dry * paint;
     col = mix(col, paper_color.rgb, dry_mask);
     // ── PAPER: the sheet's texture over everything; the darks never quite black
-    float mottle = wc_fbm(uv0 * vec2(5.0, 3.0) + 7.0);
+    float mottle = wc_fbm(un * vec2(5.0, 3.0) + 7.0);
     col *= mix(1.0, (0.90 + 0.18 * g_tooth) * (0.96 + 0.08 * mottle), paper * paint);
     float dk = 1.0 - smoothstep(0.04, 0.22, wc_luma(col));
     col += dk * (0.02 + (g_tooth - 0.5) * 0.06) * paper * paint;

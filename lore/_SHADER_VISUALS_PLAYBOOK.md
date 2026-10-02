@@ -228,6 +228,32 @@ through them in order.
 
 ## Recent lessons
 
+### 2026-10-02 (v) · the watercolour in play: five Deck notes, five causes
+
+- "Too bright and contrasty in the diner": ch 0 runs under `[mood:night]`
+  — palette 9, dither, scanline 0.5, shadow_lift 0.6 — and my tests had
+  used the locale's default pack. ALWAYS render a scene under its own
+  [mood:] (TripPaintTest `--mood`). Under paint, a mood's SIGNAL
+  artifacts (quantization, dither, scanlines, fringe, shadow lift) now
+  go quiet (MoodCycler.set_painted); its neon / ASCII / film — the tenor
+  — stay. Scanlines are retro cosplay the design bible bars anyway.
+- "Muddy, details lost" (exterior) / "blobby" (warehouse) / "underwater"
+  (the Empress): wash LAYERING stepped the value even on flat dark
+  walls, so a flat region became a map of random blobs, and a lamp's
+  gradient on a ceiling became bright patches. Layering is now gated to
+  where a gradient actually exists (|local − ring mean|), its
+  perturbation halved, blotch 0.45 → 0.25, wash radius 6 → 4.
+- "Neon line border coming on a bit strong": under paint the trip's
+  inked line is a tint (line factor 1.35 → 0.5 at paint_under 1).
+- "The same wash texture stays static in background": screen-space noise
+  sits still under a camera track. Background3D now pushes the view's
+  yaw/pitch as a UV shift (`noise_shift`, yaw/fov_h, pitch/fov_v) every
+  frame; the blotches, tooth and wobble travel with the picture. Verified
+  by cross-correlation: a 3° pan moved the room 36 px and the texture
+  28-41 px the same way.
+- A one-pan check beats a montage: `TripPaintTest --yaw_deg 3` and
+  compare two frames.
+
 ### 2026-10-02 (iv) · a real watercolour: the model, shared by room and hero
 
 - The Deck on draft 3: "better, but it doesn't look like watercolor at

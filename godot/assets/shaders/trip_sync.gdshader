@@ -290,14 +290,16 @@ void fragment() {
         // multiplied tint instead of a glow. `bright` cross-fades the two.
         float bright = clamp(smoothstep(0.50, 0.85, y) + paint_under, 0.0, 1.0);
         vec3 lit = 1.0 - (1.0 - col) * (1.0 - rainbow * line_k);
-        vec3 inked = col * mix(vec3(1.0), rainbow * 0.85, line_k * 1.35);
+        // under paint the ink is a tint, not a border (the Deck: "the neon
+        // line border is coming on a bit strong, needs subtle")
+        vec3 inked = col * mix(vec3(1.0), rainbow * 0.85, line_k * mix(1.35, 0.5, paint_under));
         col = mix(lit, inked, bright);
 
         // ── the flats breathe in colour, not in place: a glow in the dark, a tint in the light ──
         vec3 wash = aura_color(hue_base + 0.5 + n2 * 0.2, 0.0);
         float wash_k = open * 0.11 * (0.4 + 0.6 * energy) * breath * flow_amount * mix_colour * amount;
         vec3 washed_dark = 1.0 - (1.0 - col) * (1.0 - clamp(wash * (1.0 - y) * wash_k, 0.0, 1.0));
-        vec3 washed_bright = col * mix(vec3(1.0), wash * 1.10, clamp(wash_k * 2.2, 0.0, 0.8));
+        vec3 washed_bright = col * mix(vec3(1.0), wash * 1.10, clamp(wash_k * mix(2.2, 1.0, paint_under), 0.0, 0.8));
         col = mix(washed_dark, washed_bright, bright);
 
         // ── sparks · fixed points that flash on the beat (they never travel) ──

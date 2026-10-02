@@ -3004,6 +3004,26 @@ audio_reference_audit counts gitignored voice/ + drive/ paths as
 Drive-held (the keys can be ahead of the manifest). Tested with a
 simulated drop mid-upload: 3/9 recorded, the rerun sent the other 6.
 
+**2026-10-02 · THE PAINTED ROOM · draft 5 — the Deck's five notes.**
+"getting there, but still too bright and contrasty in the diner, and
+too muddy and details lost in the exterior … the neon line border is
+coming on a bit strong" / "the warehouse looks terrible … blobby" /
+"the same repeating watercolor wash texture stays static" / "the
+empress. looks like underwater". Causes and fixes in
+_SHADER_VISUALS_PLAYBOOK 2026-10-02 (v): the scene's own [mood:] under
+the paint (signal artifacts quieted), gradient-gated layering, lighter
+ink, the paper anchored to the view. Verified on the diner and
+riverfront under `night`, the warehouse under `arcana_warehouse`.
+**STANDING ORDER (the user): "background passes just need much further
+work. iterate and iterate."** Open from the same session, NOT the
+painter: (a) Elicia's room — the wardrobe/drawers at the foot of the
+bed cannot open (set design); (b) the Lovers' domicile (roberts_
+kitchen) "needs to feel domestic and lived in, proof of life, not a
+sterile empty thing" (a D4 use-states pass, _SET_DETAIL_PLAYBOOK);
+(c) "direction still isn't strong at all, vol 5. camera and director
+attention not where they should be" (the vol 5 [shot:] coverage and
+marker aim — a chapter-by-chapter direction pass).
+
 **2026-10-02 · THE PAINTED ROOM · draft 4 — a real watercolour.** The
 Deck on draft 3: "better, but it doesn't look like watercolor at all.
 keep working and go ahead and get vol 5 up to snuff." The watercolour

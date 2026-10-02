@@ -28,6 +28,19 @@ func _ready() -> void:
 		push_error("preset did not load")
 		get_tree().quit(1)
 		return
+	# --mood night: the scene's [mood:] directive, as GameEngine would apply it
+	var mood: String = String(args.get("mood", ""))
+	if mood != "":
+		for i in 3:
+			await get_tree().process_frame     # the locale's PostProcess _ready first
+		var mc: Node = bg.call("get_locale_mood_cycler")
+		if mc != null and mc.has_method("apply_style_or_mood"):
+			mc.call("apply_style_or_mood", mood)
+	# --yaw_deg 3: turn the view a little (does the paper travel with the room?)
+	var yaw: float = float(String(args.get("yaw_deg", "0")))
+	if yaw != 0.0:
+		var cam: Camera3D = bg.get_node("SubViewport/Camera3D") as Camera3D
+		cam.rotation.y += deg_to_rad(yaw)
 	var trip: Node = get_node_or_null("/root/TripSync")
 	var mat: ShaderMaterial = null
 	if String(args.get("trip", "1")) == "0":

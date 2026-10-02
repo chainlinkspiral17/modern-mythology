@@ -1967,7 +1967,31 @@ func _apply_warble(strata_warble: float, osc: float, pulse: float) -> void:
 	})
 
 
-func _apply(preset: Dictionary) -> void:
+# UNDER THE PAINT (2026-10-02): when the VN paints the room, a mood's
+# SIGNAL artifacts — colour quantization, dither, scanlines, fringe, the
+# shadow lift — go quiet: they posterize what the painter then layers
+# again (ch 0's "night": palette 9, scanline 0.5, shadow_lift 0.6 read
+# as "too bright and contrasty"), and scanlines are retro cosplay the
+# design bible bars anyway. The mood's neon, ASCII, film and blur — its
+# tenor — stay exactly as authored. Background3D sets it.
+var painted: bool = false
+
+
+func set_painted(on: bool) -> void:
+	painted = on
+	if current_index >= 0 and current_index < MOODS.size():
+		_apply(MOODS[current_index])
+
+
+func _apply(preset_in: Dictionary) -> void:
+	var preset: Dictionary = preset_in
+	if painted:
+		preset = preset_in.duplicate()
+		preset["palette"] = maxf(float(preset.get("palette", 12.0)), 24.0)
+		preset["dither"] = 0.0
+		preset["scanline"] = 0.0
+		preset["aberration"] = 0.0
+		preset["shadow_lift"] = minf(float(preset.get("shadow_lift", 0.0)), 0.15)
 	# Global shader-strength scaler: when the per-percent tuner is
 	# active OR the F10 cycle is set, multiply EVERY shader's
 	# strength by the same factor — that way the user gets a single

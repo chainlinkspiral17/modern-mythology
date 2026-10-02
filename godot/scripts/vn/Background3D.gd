@@ -2313,6 +2313,7 @@ const DEFAULT_PAPER := Color(0.94, 0.91, 0.84)
 # neon aura) and the room's own lighting; the painting is the same
 # everywhere. Only the paper changes with the volume.
 var _painted_mat: ShaderMaterial = null
+var _noise_shift: Vector2 = Vector2.ZERO
 # THE TRIP OVER THE PAINT (2026-10-02). The Deck: "I want the look vol
 # 6 has, but with vol 5's tenor. I didn't want it to go away. It was
 # just poorly lit." The register's tenor is TripSync's aura on the
@@ -2328,6 +2329,10 @@ const TRIP_PAINT_UNDER: float = 0.85
 func _ready() -> void:
 	custom_minimum_size = Vector2(BG_W, BG_H)
 	_add_painted_pass()
+
+
+func _process(_delta: float) -> void:
+	_push_noise_shift()
 
 
 func _add_painted_pass() -> void:
@@ -2364,6 +2369,7 @@ func set_paper_for_volume(vol: int) -> void:
 func set_paint(amount: float) -> void:
 	if _painted_mat != null:
 		_painted_mat.set_shader_parameter("paint", clampf(amount, 0.0, 1.0))
+	_tell_mood_painted()
 
 
 # ── Public API ────────────────────────────────────────────────────
@@ -2439,7 +2445,31 @@ func load_location(preset_id: String) -> bool:
 	# index properties / apply methods are ready to be called.
 	if Engine.has_singleton("VnDebugState") or get_node_or_null("/root/VnDebugState") != null:
 		call_deferred("_reapply_locale_state")
+	call_deferred("_tell_mood_painted")    # after the locale's PostProcess _ready
 	return true
+
+
+## The locale's mood stack quiets its signal artifacts under the paint
+## (MoodCycler.set_painted); the tenor stays.
+func _tell_mood_painted() -> void:
+	var mc: Node = get_locale_mood_cycler()
+	if mc != null and mc.has_method("set_painted"):
+		mc.call("set_painted", _painted_mat != null and float(_painted_mat.get_shader_parameter("paint")) > 0.0)
+
+
+## The paper travels with the picture: the view's yaw and pitch as a UV
+## shift for the painter's noise (a pan slides the room; the blotches
+## and tooth slide with it).
+func _push_noise_shift() -> void:
+	if _painted_mat == null or _camera == null:
+		return
+	var fov_v: float = deg_to_rad(_camera.fov)
+	var aspect: float = float(BG_W) / float(BG_H)
+	var fov_h: float = 2.0 * atan(tan(fov_v * 0.5) * aspect)
+	var shift := Vector2(_camera.rotation.y / fov_h, _camera.rotation.x / fov_v)
+	if shift.distance_to(_noise_shift) > 1e-5:
+		_noise_shift = shift
+		_painted_mat.set_shader_parameter("noise_shift", shift)
 
 
 func _reapply_locale_state() -> void:
