@@ -228,6 +228,32 @@ through them in order.
 
 ## Recent lessons
 
+### 2026-10-02 (ii) · the painted room, balanced (vol 5's Deck notes)
+
+- The Deck: ch 0 "muddy establishing shot, no real details make it
+  through. diner is an eyesore, washed out and too bright, far too
+  bright"; "vol 5 is real rough with this look, needs a strong
+  direction balance pass"; vol 6 "looks good". Draft 1 LIFTED every
+  value toward cream paper and faded the margins to bright paper —
+  night went to grey mud, a bright room to glare.
+- A painted pass must keep the scene's VALUES: re-key to the source's
+  brightness at the end (value_keep), compress highlights over a knee,
+  fade margins to paper darkened to the local value, read ink edges
+  RELATIVE to local light (night edges are small in absolute terms).
+- Downward-only auto-exposure: the diner rendered near-white before
+  any painting. A 6×5 tap grid gives the frame's mean; a room brighter
+  than target_key is brought down, a dark one never brightened.
+  Full-res taps: the Compatibility back buffer has no mip chain — a
+  `textureLod(…, 4.0)` read returned nothing and the exposure did zero.
+- THE PAINTER'S BED: paint over a CLEAN render. The locale's own stack
+  (MoodCycler) keeps lighting + trip response but drops quantization,
+  dither, scanlines, fringe, ASCII, neon, motion, old film, blur while
+  the VN paints (`set_painted_bed`). Even the "raw" mood quantized at
+  palette 32 — the diner's ceiling rings. Vol 6's moods were mostly
+  clean already; that is why it read well and vol 5 did not.
+- Each register gets its own hand (Background3D.VOLUME_PAINT): vol 5
+  lower key, more contrast, stronger ink, cooler; vol 6 the defaults.
+
 ### 2026-10-02 · the painted room (the backgrounds join the heroes' watercolour)
 
 - The Deck: "background clashing with the new art style and models.

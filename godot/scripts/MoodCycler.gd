@@ -1967,7 +1967,34 @@ func _apply_warble(strata_warble: float, osc: float, pulse: float) -> void:
 	})
 
 
-func _apply(preset: Dictionary) -> void:
+# THE PAINTER'S BED (2026-10-02). When the VN paints the room
+# (Background3D's painted pass), this stack hands the painter a CLEAN
+# render: the mood keeps its LIGHTING and its trip response, but every
+# screen effect the painter would trace — colour quantization (the
+# diner's "raw" mood still banded light into rings at palette 32),
+# dither, scanlines, fringe, ASCII, neon edges, motion lines, old film,
+# blur — is off. The Deck: vol 5 "real rough with this look, needs a
+# strong direction balance pass"; vol 6 (mostly clean moods) read well.
+var painted_bed: bool = false
+const PAINTED_BED_OFF := {
+	"palette": 256.0, "dither": 0.0, "scanline": 0.0, "aberration": 0.0,
+	"ascii": 0.0, "dir_ascii": 0.0, "motion": 0.0, "neon": 0.0,
+	"oldfilm": 0.0, "blur": 0.0, "shadow_lift": 0.0,
+}
+
+
+func set_painted_bed(on: bool) -> void:
+	painted_bed = on
+	if current_index >= 0 and current_index < MOODS.size():
+		_apply(MOODS[current_index])
+
+
+func _apply(preset_in: Dictionary) -> void:
+	var preset: Dictionary = preset_in
+	if painted_bed:
+		preset = preset_in.duplicate()
+		for k: String in PAINTED_BED_OFF:
+			preset[k] = PAINTED_BED_OFF[k]
 	# Global shader-strength scaler: when the per-percent tuner is
 	# active OR the F10 cycle is set, multiply EVERY shader's
 	# strength by the same factor — that way the user gets a single

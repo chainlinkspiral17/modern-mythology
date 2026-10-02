@@ -3004,6 +3004,22 @@ audio_reference_audit counts gitignored voice/ + drive/ paths as
 Drive-held (the keys can be ahead of the manifest). Tested with a
 simulated drop mid-upload: 3/9 recorded, the rerun sent the other 6.
 
+**2026-10-02 · THE PAINTED ROOM · draft 2 — balance.** Deck notes: ch 0
+muddy + no detail; the diner washed out, "far too bright"; ch 1 no
+interior; vol 5 "real rough … needs a strong direction balance pass";
+Planned Community / vol 6 "looks a lot better". Draft 2: the pass keeps
+the scene's values (re-key, highlight knee, dark-paper margins,
+relative ink, wash radius 3.5 → 2.0), downward-only auto-exposure (the
+diner renders near-white before any painting), the PAINTER'S BED (the
+locale's stack drops quantization / ASCII / neon / dither under the
+painter — the diner's rings were the "raw" mood's palette 32), and a
+per-volume hand (vol 5 firmer and lower-keyed; vol 6 unchanged). Ch 1's
+missing interior is not the painter: cathedral_interior.glb (and its
+four prop GLBs) have never been built on the Deck. **Draft 3 targets:**
+the Deck verdict on vol 5 with the bed on; the scenes' [mood:] beats
+that WERE the direction (silent film, noir, ink_blue) need painted
+equivalents now that the bed turns their effects off; vol 7's hand.
+
 **2026-10-02 · THE PAINTED ROOM · draft 1.** Sheet 45 verdict from the
 Deck: "portraits generally work very well, I'm pleased for now.
 background clashing with the new art style and models. let's bridge

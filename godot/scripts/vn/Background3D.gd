@@ -2307,7 +2307,17 @@ const VOLUME_PAPER := {
 	7: Color(0.91, 0.93, 0.89),   # the cedars — a green-grey wash paper
 }
 const DEFAULT_PAPER := Color(0.94, 0.91, 0.84)
+# Each register is painted with its own hand (the direction balance pass,
+# 2026-10-02). Vol 6 read well on the Deck as tuned — it keeps the
+# shader defaults. Vol 5 (arcana: night diners, cathedrals, neon left
+# over from the old stack) gets a firmer hand: a lower key, more
+# contrast, stronger ink, cooler and a touch less saturated.
+const VOLUME_PAINT := {
+	5: {"target_key": 0.40, "s_curve": 0.45, "ink": 0.72, "sat": 0.80, "lift": 0.04, "margin": 0.18, "hatch": 0.45},
+	7: {"target_key": 0.48, "sat": 0.85, "ink": 0.55},
+}
 var _painted_mat: ShaderMaterial = null
+var _painted_on: bool = true
 
 
 func _ready() -> void:
@@ -2343,12 +2353,29 @@ func set_paper_for_volume(vol: int) -> void:
 		return
 	var c: Color = VOLUME_PAPER.get(vol, DEFAULT_PAPER)
 	_painted_mat.set_shader_parameter("paper_color", c)
+	# the volume's hand: reset every key to the shader default, then apply
+	var prof: Dictionary = VOLUME_PAINT.get(vol, {})
+	for k: String in ["target_key", "s_curve", "ink", "sat", "lift", "margin", "hatch"]:
+		if prof.has(k):
+			_painted_mat.set_shader_parameter(k, float(prof[k]))
+		else:
+			_painted_mat.set_shader_parameter(k, null)   # null = the shader's own default
 
 
 ## 0..1 — 0 shows the locale as rendered (a debug comparison).
 func set_paint(amount: float) -> void:
 	if _painted_mat != null:
 		_painted_mat.set_shader_parameter("paint", clampf(amount, 0.0, 1.0))
+	_painted_on = amount > 0.0
+	_bed_for_painter()
+
+
+## The locale's own stack hands the painter a clean render (MoodCycler's
+## painted bed: lighting stays, quantization / ASCII / neon / dither go).
+func _bed_for_painter() -> void:
+	var mc: Node = get_locale_mood_cycler()
+	if mc != null and mc.has_method("set_painted_bed"):
+		mc.call("set_painted_bed", _painted_on and _painted_mat != null)
 
 
 # ── Public API ────────────────────────────────────────────────────
@@ -2424,6 +2451,8 @@ func load_location(preset_id: String) -> bool:
 	# index properties / apply methods are ready to be called.
 	if Engine.has_singleton("VnDebugState") or get_node_or_null("/root/VnDebugState") != null:
 		call_deferred("_reapply_locale_state")
+	# after the locale's PostProcess _ready has applied its style pack
+	call_deferred("_bed_for_painter")
 	return true
 
 
