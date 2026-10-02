@@ -2322,6 +2322,7 @@ const DEFAULT_PAPER := Color(0.94, 0.91, 0.84)
 # everywhere. Only the paper changes with the volume.
 var _painted_mat: ShaderMaterial = null
 var _noise_shift: Vector2 = Vector2.ZERO
+var _paint_amount: float = 1.0               # (never read back from the material: an unset uniform is null — the ch 0 crash, 2026-10-02)
 # THE TRIP OVER THE PAINT (2026-10-02). The Deck: "I want the look vol
 # 6 has, but with vol 5's tenor. I didn't want it to go away. It was
 # just poorly lit." The register's tenor is TripSync's aura on the
@@ -2375,8 +2376,9 @@ func set_paper_for_volume(vol: int) -> void:
 
 ## 0..1 — 0 shows the locale as rendered (a debug comparison).
 func set_paint(amount: float) -> void:
+	_paint_amount = clampf(amount, 0.0, 1.0)
 	if _painted_mat != null:
-		_painted_mat.set_shader_parameter("paint", clampf(amount, 0.0, 1.0))
+		_painted_mat.set_shader_parameter("paint", _paint_amount)
 	_tell_mood_painted()
 
 
@@ -2462,7 +2464,7 @@ func load_location(preset_id: String) -> bool:
 func _tell_mood_painted() -> void:
 	var mc: Node = get_locale_mood_cycler()
 	if mc != null and mc.has_method("set_painted"):
-		mc.call("set_painted", _painted_mat != null and float(_painted_mat.get_shader_parameter("paint")) > 0.0)
+		mc.call("set_painted", _painted_mat != null and _paint_amount > 0.0)
 
 
 ## The paper travels with the picture: the view's yaw and pitch as a UV
