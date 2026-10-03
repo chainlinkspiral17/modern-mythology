@@ -3017,6 +3017,35 @@ authored dark (concrete 0.14, brick 0.22, dark plank ceiling) with the
 workbench lamp the only key at the VN vantage — a model chapter's
 look, not a bug. Left for the Deck's verdict once it is built there.
 
+**2026-10-03 · WINDOWS CUT ACROSS VOL 5 (draft N+1 of the glass
+pass).** Every remaining vol 5 window on a solid wall is cut with
+`make_wall_with_openings`: Natalie's (W + SE; its W "frame" was a
+solid plate — four bars now), the Houston office (the whole north
+wall behind the glass wall — the towers show), the design studio,
+the cafe (its two street windows were half over the door opening;
+centred on their wall pieces now; the back-corner window cut too),
+the New Orleans office (S + E), bar (SW + SE) and room (N; its
+frame plate four bars). The hospice was already cut. Elicia's west
+side gets a skyline plate with lit windows behind the whole wall;
+Montreal's bookshelf is runs of varied books with two laid flat per
+row. Elicia's skyline: a near-black plate 12 m out with 180 lit
+windows (at 3 m it stood in the window practical's light and read
+as a grey wall; the practical moved 50 cm off the pane); the four
+free-standing towers of the first pass are gone (they stood inside
+the plate); `shot_insert_skyline` added for "watching the indifferent
+city lights". The cafe's front was a 4 m hole with nothing beyond
+(its door insert saw "81 % sky" once the walls were cut): a glazed
+front with a door pair now, and a Mile End street outside it —
+sidewalk, curb, street, the facade opposite, a lamp post, a parked
+car, a street tree. Deck must REBUILD: natalie_apartment, houston_office,
+houston_design_studio, cafe_olimpico, new_orleans_office,
+new_orleans_bar, new_orleans_room, elicia_apartment,
+montreal_apartment. Draft N+1: what is OUTSIDE each cut — the
+Houston towers exist, the cafe's street and the bar's street do
+not (a hole onto the sky reads as daylight; the night chapters
+want a street with a lamp); the diner's glass wall segment and the
+bungalow's skylight are their own cases.
+
 **2026-10-03 · THE THREE APARTMENTS — character passes (ch 14 / 15 /
 16).** The Roberts standard applied to the rest of vol 5's homes, each
 from its chapter's own inventory. MONTREAL (John Frank, "a cluttered

@@ -356,12 +356,20 @@ def build_wrecked_command_center_2026_10():
     make_rot_box("Slate_Leaning", (1.72, 1.75, 0.20), (0.42, 0.03, 0.28), dark, pitch=-0.35)   # against the sofa's east arm
     # ── Montreal's dusk through the west window: tower blocks, their
     #    windows lit; the harbour's lights far off
-    for i, (bx, by, bw, bd, bh) in enumerate(((-9.5, 1.0, 3.0, 3.0, 11.0), (-11.0, 5.5, 2.6, 2.6, 15.0), (-8.6, 7.6, 2.2, 2.2, 8.0), (-13.0, -1.5, 3.4, 3.4, 13.0))):
-        make_box(f"Tower_{i}", (bx, by, bh / 2.0 - 4.0), (bw, bd, bh), (0.22, 0.22, 0.28, 1.0))
-        for r in range(int(bh / 0.9)):
-            for c in range(3):
-                if rnd.random() < 0.55:
-                    make_box(f"Tower_{i}_Win_{r}_{c}", (bx + bw / 2.0 + 0.01, by - bd / 3.0 + c * bd / 3.0, -3.6 + r * 0.9), (0.02, 0.36, 0.40), rnd.choice(((0.98, 0.84, 0.46, 1.0), (0.96, 0.92, 0.70, 1.0), (0.80, 0.86, 0.96, 1.0))))
+    # (the four free-standing towers of the first pass stood inside the skyline
+    # plate once it moved out to 12 m, and one blocked the skyline insert — the
+    # plate alone is the city now)
+    # a SKYLINE PLATE behind the whole west side (2026-10-03: the four towers
+    # stood just outside the window's sightline; the panes showed the sky)
+    # (at 3 m past the glass the plate stood in the window practical's light and
+    # read as a grey wall — 12 m out now, near-black, the windows bigger)
+    rnd2 = random.Random(21)
+    make_box("Skyline_Plate", (-12.0, 3.0, 4.0), (0.3, 40.0, 18.0), (0.07, 0.07, 0.11, 1.0))
+    for r in range(12):
+        for c in range(30):
+            if rnd2.random() < 0.5:
+                make_box(f"Skyline_Win_{r}_{c}", (-11.84, -16.5 + c * 1.35 + rnd2.uniform(-0.1, 0.1), -4.0 + r * 1.4), (0.02, 0.62, 0.72),
+                         rnd2.choice(((0.98, 0.84, 0.46, 1.0), (0.96, 0.92, 0.70, 1.0), (0.80, 0.86, 0.96, 1.0), (0.90, 0.60, 0.40, 1.0))))
     for i in range(9):
         make_box(f"Harbour_Light_{i}", (-24.0, -6.0 + i * 1.6, -1.6 + rnd.uniform(0.0, 0.8)), (0.3, 0.4, 0.4), rnd.choice(((0.96, 0.22, 0.18, 1.0), (0.98, 0.78, 0.30, 1.0))))
     make_box("Harbour_Water", (-24.0, 2.0, -3.0), (16.0, 30.0, 0.1), (0.10, 0.12, 0.18, 1.0))

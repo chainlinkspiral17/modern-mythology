@@ -93,13 +93,27 @@ def build_living():
         make_box(f"ArmC_Leg_{i}", (ax+lx, ay+ly, 0.12), (0.06, 0.06, 0.24), COL_WOOD)
     # Bookshelf east wall — overflowing
     sx2 = +2.66   # its back on the E wall's face (2026-09-25: 16 cm off it)
+    # (2026-10-03: seven identical 12 cm books a shelf read as a rack of boxes;
+    # a shelf is a run of thicknesses and heights, a lean at the end of a row,
+    # a few laid flat — the 20 cm north of each run holds the collection)
+    import random as _r
+    rnd = _r.Random(27)
     for shf in range(6):
         sz = 0.20 + shf*0.40
         make_box(f"BookShelf_{shf}", (sx2, 1.55, sz), (0.40, 1.40, 0.02), COL_WOOD)
-        for bi in range(7):
-            bx = sx2; by = 1.55 - 0.50 + bi*0.16
-            spine = COL_BOOK_SPINES[(shf*3+bi)%len(COL_BOOK_SPINES)]
-            make_box(f"Book_{shf}_{bi}", (bx, by, sz+0.16), (0.10, 0.12, 0.30), spine)
+        y = 1.55 - 0.66
+        bi = 0
+        while y < 1.86:   # the run ends short of the flats and the collection at 2.14
+            t = rnd.choice((0.022, 0.028, 0.034, 0.042, 0.050))
+            h = rnd.choice((0.19, 0.22, 0.25, 0.28, 0.31))
+            d = rnd.uniform(0.14, 0.22)
+            spine = COL_BOOK_SPINES[(shf*5+bi*3)%len(COL_BOOK_SPINES)]
+            make_box(f"Book_{shf}_{bi}", (sx2 + rnd.uniform(-0.02, 0.02), y + t/2.0, sz + 0.01 + h/2.0), (d, t, h), spine)
+            y += t + rnd.choice((0.0, 0.0, 0.0, 0.006))
+            bi += 1
+        if shf in (1, 4):   # two laid flat on the run's end
+            for k in range(2):
+                make_box(f"Book_{shf}_Flat_{k}", (sx2, 1.96, sz + 0.01 + 0.018 * k + 0.009), (0.16, 0.11, 0.018), COL_BOOK_SPINES[(shf+k)%len(COL_BOOK_SPINES)])
     make_box("BookShelf_Side_S", (sx2+0.02, 0.83, 1.30), (0.44, 0.04, 2.60), COL_WOOD)   # to the floor (2026-09-22: 20 cm up)
     make_box("BookShelf_Side_N", (sx2+0.02, 2.27, 1.30), (0.44, 0.04, 2.60), COL_WOOD)
 

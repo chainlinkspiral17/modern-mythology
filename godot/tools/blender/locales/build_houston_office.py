@@ -35,7 +35,7 @@ if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, make_chamfer_box, make_lathe, make_tube, make_rot_box, export_glb
 from _props.furniture import make_chair, make_lamp
-from _props.structure import make_floor, make_wall, make_ceiling, make_window, make_crown_molding
+from _props.structure import make_floor, make_wall, make_ceiling, make_window, make_crown_molding, make_wall_with_openings
 from _props.decor import make_wall_clock, make_floor_plant
 from _props.safety import make_smoke_detector, make_hvac_vent, make_fluorescent_tube_fixture, make_ceiling_speaker, make_security_camera
 from _props.detail import (make_wall_outlet, make_wall_tint_band, make_traffic_wear, make_floor_stain)
@@ -76,7 +76,9 @@ def build_shell():
             ("Wall_W", -ROOM_W/2.0, 'Y', ROOM_D+0.4, +1),
             ("Wall_E", +ROOM_W/2.0, 'Y', ROOM_D+0.4, -1)]:
         make_wall(nm, (x, ROOM_D/2.0, 0), length=length, height=CEIL, axis=ax, palette=PAL_WALL, baseboard_face_sign=bb)
-    make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
+    # (2026-10-03: the north wall is CUT for the glass wall — it was solid behind it, the towers outside never seen)
+    make_wall_with_openings("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=-1,
+                            openings=[(0.0, 1.45, 9.4, 2.60)])
     make_wall("Wall_S", (0.0, 0.0, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
     for nm, ax, length, wx, wy in [("Crown_W",'Y',ROOM_D,-ROOM_W/2.0+0.10,ROOM_D/2.0),("Crown_E",'Y',ROOM_D,+ROOM_W/2.0-0.10,ROOM_D/2.0),("Crown_N",'X',ROOM_W,0.0,ROOM_D-0.10),("Crown_S",'X',ROOM_W,0.0,+0.10)]:

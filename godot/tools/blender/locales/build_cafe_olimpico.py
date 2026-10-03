@@ -7,7 +7,7 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, export_glb
-from _props.structure import make_floor, make_wall, make_ceiling, make_window, make_crown_molding
+from _props.structure import make_floor, make_wall, make_ceiling, make_window, make_crown_molding, make_wall_with_openings
 from _props.store_fixtures import make_counter, make_counter_bullnose
 from _props.food_service import make_donut_display, make_coffee_pots
 from _props.decor import make_wall_clock, make_faded_poster
@@ -23,19 +23,24 @@ ROOM_W = 8.0; ROOM_D = 6.0; CEIL = 3.00
 
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4, palette={"vinyl": COL_FLOOR_TILE, "seam": COL_GROUT})
-    for nm, x, ax, bb in [("Wall_W", -ROOM_W/2.0, 'Y', +1), ("Wall_E", +ROOM_W/2.0, 'Y', -1)]:
-        make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis=ax, palette=PAL, baseboard_face_sign=bb)
+    # (2026-10-03: walls CUT round their windows — they were solid behind the panes)
+    make_wall_with_openings("Wall_W", (-ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL, baseboard_face_sign=+1,
+                            openings=[(4.3, 1.65, 1.16, 1.26)])
+    make_wall("Wall_E", (+ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL, baseboard_face_sign=-1)
     make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=-1)
-    make_wall("Wall_S_W", (-3.0, 0.0, 0), length=2.0, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1)
-    make_wall("Wall_S_E", (+3.0, 0.0, 0), length=2.0, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1)
+    make_wall_with_openings("Wall_S_W", (-3.0, 0.0, 0), length=2.0, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1,
+                            openings=[(-3.0, 1.60, 1.60, 1.60)])
+    make_wall_with_openings("Wall_S_E", (+3.0, 0.0, 0), length=2.0, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1,
+                            openings=[(3.0, 1.60, 1.60, 1.60)])
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (4.0, 0.20, 0.60), PAL["wall"])
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
     for nm, ax, length, wx, wy in [("Crown_W",'Y',ROOM_D,-ROOM_W/2.0+0.10,ROOM_D/2.0),("Crown_E",'Y',ROOM_D,+ROOM_W/2.0-0.10,ROOM_D/2.0),("Crown_N",'X',ROOM_W,0.0,ROOM_D-0.10),("Crown_S",'X',ROOM_W,0.0,+0.10)]:
         make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax, ceil_z=CEIL, palette={"wood": COL_WOOD})
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
-    make_window("Window_SW", (-2.0, 0.10, 1.60), width=2.20, height=1.60, room_dir=+1)
+    # (2026-10-03: centred on their wall pieces — at ±2.0, 2.2 wide, half of each hung over the door opening)
+    make_window("Window_SW", (-3.0, 0.10, 1.60), width=1.60, height=1.60, room_dir=+1)
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
-    make_window("Window_SE", (+2.0, 0.10, 1.60), width=2.20, height=1.60, room_dir=+1)
+    make_window("Window_SE", (+3.0, 0.10, 1.60), width=1.60, height=1.60, room_dir=+1)
     # 2026-08 tail pass: the BELL over the door + the BACK-CORNER
     # window in the W wall (X-thin, hand-built) the corner table
     # sits under.
@@ -161,12 +166,60 @@ def build_pendants_2026_09():
     make_pendant("SeatingPendant", 0.0, 1.80, 2.60, 3.10, shade_col=(0.18, 0.18, 0.20, 1.0), shade_r=0.20)
 
 
+def build_front_and_street_2026_10():
+    """THE FRONT AND THE STREET (2026-10-03). The door insert saw "81 %
+    sky": the cafe's front was a 4 m hole with nothing beyond it, and
+    once the walls were cut round the windows the lens looked straight
+    out. A cafe front is a glass door pair in a glazed wall, and a
+    Mile End street beyond it: the sidewalk, the curb, the street, the
+    facade opposite with its windows, a lamp post, a parked car, a
+    street tree."""
+    frame = (0.18, 0.18, 0.20, 1.0)
+    glass = (0.78, 0.84, 0.86, 0.25)
+    # the glazed front: two door leaves in the middle, a fixed light each side
+    for nm, x0, x1, door in (("Front_Light_W", -2.0, -1.0, False), ("Front_Door_L", -1.0, 0.0, True), ("Front_Door_R", 0.0, 1.0, True), ("Front_Light_E", 1.0, 2.0, False)):
+        cx, w = (x0 + x1) / 2.0, x1 - x0
+        make_box(f"{nm}_Glass", (cx, 0.0, 1.20), (w - 0.10, 0.02, 2.30), glass)
+        make_box(f"{nm}_Stile_W", (x0 + 0.03, 0.0, 1.20), (0.06, 0.06, 2.40), frame)
+        make_box(f"{nm}_Stile_E", (x1 - 0.03, 0.0, 1.20), (0.06, 0.06, 2.40), frame)
+        make_box(f"{nm}_Rail_T", (cx, 0.0, 2.37), (w, 0.06, 0.06), frame)
+        make_box(f"{nm}_Rail_B", (cx, 0.0, 0.08), (w, 0.06, 0.16), frame)
+        if door:
+            make_box(f"{nm}_Rail_M", (cx, 0.0, 0.95), (w, 0.06, 0.06), frame)
+            make_box(f"{nm}_Pull", (cx + (0.30 if 'L' in nm else -0.30), -0.06, 1.05), (0.03, 0.04, 0.30), P.METAL_STEEL)
+            make_box(f"{nm}_Pull_In", (cx + (0.30 if 'L' in nm else -0.30), 0.06, 1.05), (0.03, 0.04, 0.30), P.METAL_STEEL)
+    make_box("Front_Sign_Band", (0.0, -0.11, 2.70), (4.0, 0.02, 0.50), (0.16, 0.30, 0.28, 1.0))
+    make_box("Front_Sign_Text", (0.0, -0.125, 2.70), (1.80, 0.01, 0.22), (0.92, 0.88, 0.70, 1.0))
+    # the street
+    make_box("Ground_Sidewalk", (0.0, -2.2, -0.03), (24.0, 4.4, 0.06), (0.60, 0.58, 0.54, 1.0))
+    for i in range(1, 12):
+        make_box(f"Sidewalk_Joint_{i}", (-12.0 + i * 2.0, -2.2, 0.001), (0.012, 4.4, 0.004), (0.46, 0.44, 0.40, 1.0))
+    make_box("Curb", (0.0, -4.45, -0.06), (24.0, 0.14, 0.14), (0.68, 0.66, 0.62, 1.0))
+    make_box("Ground_Street", (0.0, -10.0, -0.14), (24.0, 11.0, 0.06), (0.30, 0.30, 0.31, 1.0))
+    make_box("Street_Centreline", (0.0, -10.0, -0.108), (24.0, 0.10, 0.004), (0.86, 0.78, 0.40, 1.0))
+    make_box("Out_Facade", (0.0, -16.0, 5.0), (26.0, 0.6, 10.0), (0.62, 0.46, 0.34, 1.0))
+    for r in range(3):
+        for c in range(9):
+            make_box(f"Out_Facade_Win_{r}_{c}", (-10.0 + c * 2.5, -15.69, 2.2 + r * 2.9), (1.1, 0.02, 1.6), (0.26, 0.30, 0.36, 1.0))
+    make_box("Out_Facade_Shopfront", (0.0, -15.6, 1.4), (26.0, 0.2, 2.8), (0.30, 0.26, 0.24, 1.0))
+    # a lamp post, a parked car, a street tree
+    make_cyl("Lamp_Post", (-3.2, -4.1, 2.0), 0.06, 4.0, (0.20, 0.22, 0.24, 1.0), segments=8)
+    make_cyl("Lamp_Post_Arm", (-3.2, -4.5, 3.9), 0.03, 0.8, (0.20, 0.22, 0.24, 1.0), segments=6, axis='Y')
+    make_box("Lamp_Post_Head", (-3.2, -4.9, 3.85), (0.30, 0.50, 0.14), (0.92, 0.88, 0.70, 1.0))
+    from _props.vehicles import make_car
+    make_car("Parked_Car", 3.0, -6.2, 4.4, (0.30, 0.34, 0.46, 1.0), along="X", z0=-0.11)
+    from _props.trees import make_broadleaf
+    make_broadleaf("Street_Tree", 5.5, -2.6, 6.0, (0.36, 0.48, 0.26, 1.0), (0.36, 0.28, 0.20, 1.0))
+    make_box("Tree_Grate", (5.5, -2.6, 0.001), (1.2, 1.2, 0.004), (0.26, 0.26, 0.28, 1.0))
+
+
 def main():
     clear_scene(); build_shell(); build_bar_counter(); build_seating(); build_pennants_and_decor(); build_ceiling_infra()
     build_hero_props_2026_09()
     build_pendants_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/cafe_olimpico.glb"))
     print(f"\n[build_cafe_olimpico] exporting to {out}")
+    build_front_and_street_2026_10()
     export_glb(out)
 
 if __name__ == "__main__": main()

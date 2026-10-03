@@ -346,7 +346,13 @@ through them in order.
   passable again, so a window shot that still hits a wall says
   `Wall_N stands between the lens and …` and names the wall to cut.
 - The default `P.GLASS` alpha went 0.45 → 0.25: at 0.45 every view out
-  of a window was a pale wash over what lay beyond.
+  of a window was a pale wash over what lay beyond. `P.GLASS_WARM`
+  (make_window's "afternoon sun" pane) went 0.70 → 0.22: at 0.70 every
+  west window was a beige slab — Elicia's skyline sat behind one.
+- A bed's head against a window's SPANDREL is a bed against a wall:
+  furniture_grammar's BED rule reads spandrel pieces of any size now
+  (the cut walls are piers + spandrel + lintel, and a 1.2 m spandrel
+  under a 1.5 m wall-size floor failed the old filter).
 - A leaded window reads by its LATTICE: 2 cm cames at 50 cm vanished
   under the Kuwahara; 3.5 cm at 25 cm, standing 1.5 cm proud of the
   pane each side, in lead grey, hold.

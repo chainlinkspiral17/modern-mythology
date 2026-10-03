@@ -60,7 +60,7 @@ if _BLENDER_TOOLS not in sys.path:
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, make_chamfer_box, make_lathe, make_tube, make_blob, make_rot_box, export_glb
 from _props.furniture import make_table, make_chair, make_lamp
-from _props.structure import (
+from _props.structure import (make_wall_with_openings, 
     make_floor, make_wall, make_ceiling, make_window,
     make_crown_molding, make_door_hinges,
 )
@@ -118,9 +118,11 @@ def build_shell():
     make_floor("Floor", (0.0, ROOM_D / 2.0, 0.0),
                size_x=ROOM_W + 0.4, size_y=ROOM_D + 0.4,
                palette={"vinyl": COL_FLOOR_OAK, "seam": COL_FLOOR_OAK_SM})
-    make_wall("Wall_W", (-ROOM_W / 2.0, ROOM_D / 2.0, 0),
+    # (2026-10-03: the walls behind the windows are CUT — they were solid)
+    make_wall_with_openings("Wall_W", (-ROOM_W / 2.0, ROOM_D / 2.0, 0),
               length=ROOM_D + 0.4, height=CEIL_Z, axis='Y',
-              palette=PAL_APT_WALL, baseboard_face_sign=+1)
+              palette=PAL_APT_WALL, baseboard_face_sign=+1,
+              openings=[(2.5, 1.45, 1.70, 1.70)])
     make_wall("Wall_E", (+ROOM_W / 2.0, ROOM_D / 2.0, 0),
               length=ROOM_D + 0.4, height=CEIL_Z, axis='Y',
               palette=PAL_APT_WALL, baseboard_face_sign=-1)
@@ -130,9 +132,10 @@ def build_shell():
     make_wall("Wall_S_W", (-2.30, 0.0, 0),   # to the door edge the hinges mark (2026-09-23: 40 cm short)
               length=2.40, height=CEIL_Z, axis='X',
               palette=PAL_APT_WALL, baseboard_face_sign=+1)
-    make_wall("Wall_S_E", (+2.30, 0.0, 0),
+    make_wall_with_openings("Wall_S_E", (+2.30, 0.0, 0),
               length=2.40, height=CEIL_Z, axis='X',
-              palette=PAL_APT_WALL, baseboard_face_sign=+1)
+              palette=PAL_APT_WALL, baseboard_face_sign=+1,
+              openings=[(2.0, 1.40, 1.40, 1.20)])
     # the opening is x -1.10..1.10 and the leaf -1.10..-0.20: the wall
     # closes the 1.3 m of daylight east of it, under Wall_S_AboveDoor
     # (2026-09-25, doorway_audit OPENING)
@@ -154,8 +157,11 @@ def build_shell():
     # Tall west window (afternoon sun)
     # on the wall's room face, glass in front of the frame (2026-09-24: frame and glass
     # were offset from the wall's CENTRE line — inside the wall, never visible)
-    make_box("Window_W_Frame", (-ROOM_W / 2.0 + 0.12, 2.5, 1.45),
-             (0.04, 1.80, 1.80), P.METAL_STEEL)
+    # (2026-10-03: the frame was a solid plate behind the glass — four bars)
+    for nm, fy, fz, sy, sz in (("Window_W_Frame_T", 2.5, 2.32, 1.80, 0.06), ("Window_W_Frame_B", 2.5, 0.58, 1.80, 0.06),
+                               ("Window_W_Frame_S", 1.63, 1.45, 0.06, 1.80), ("Window_W_Frame_N", 3.37, 1.45, 0.06, 1.80),
+                               ("Window_W_Mullion", 2.5, 1.45, 0.04, 1.70)):
+        make_box(nm, (-ROOM_W / 2.0 + 0.12, fy, fz), (0.04, sy, sz), P.METAL_STEEL)
     make_box("Window_W_Glass", (-ROOM_W / 2.0 + 0.1425, 2.5, 1.45),
              (0.005, 1.70, 1.70), P.GLASS_WARM)
     # South window beside door

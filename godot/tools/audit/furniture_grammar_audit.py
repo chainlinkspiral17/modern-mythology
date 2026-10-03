@@ -453,7 +453,11 @@ def check_beds(boxes):
     wall — the head of a bed goes to a wall the way a desk does; a bed
     floating mid-room with its pillows toward the door is the Deck's
     "bedroom oddity" (2026-09-10). Beds with no pillows are skipped."""
-    walls = [b for b in boxes if WALLISH.search(b[0]) and max(b[2]) * 2 > 1.5 and b[2][2] * 2 > 1.5]
+    # (2026-10-03: a SPANDREL — the wall under a window — is a wall for a
+    # bed's head whatever its height; make_wall_with_openings cuts every
+    # window wall into piers + spandrel + lintel now, and a bed under a
+    # window backs the spandrel)
+    walls = [b for b in boxes if WALLISH.search(b[0]) and ((max(b[2]) * 2 > 1.5 and b[2][2] * 2 > 1.5) or re.search(r"spandrel", b[0], re.I))]
     pillows = [b for b in boxes if re.search(r"pillow", b[0], re.I)]
     out = []
     for n, c, h in boxes:

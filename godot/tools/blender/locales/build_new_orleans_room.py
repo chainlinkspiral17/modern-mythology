@@ -7,7 +7,7 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, export_glb
-from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding
+from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_wall_with_openings
 from _props.decor import make_wall_clock, make_faded_poster
 from _props.safety import make_smoke_detector
 from _props.detail import (make_floor_stain, make_light_switch, make_threshold, make_traffic_wear, make_wall_outlet, make_wall_tint_band)
@@ -23,7 +23,8 @@ def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4, palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
     for nm, x, bb in [("Wall_W", -ROOM_W/2.0, +1), ("Wall_E", +ROOM_W/2.0, -1)]:
         make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL, baseboard_face_sign=bb)
-    make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=-1)
+    make_wall_with_openings("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=-1,
+                            openings=[(0.0, 1.60, 1.20, 1.20)])   # cut for the sash window (2026-10-03)
     make_wall("Wall_S_W", (-1.5, 0.0, 0), length=1.2, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1)
     make_wall("Wall_S_E", (+1.5, 0.0, 0), length=1.2, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1)
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4, with_grid=False)
@@ -32,9 +33,12 @@ def build_shell():
     # Sash window N wall
     # on the wall's room face, glass in front of the frame (2026-09-24: frame and glass
     # were offset from the wall's CENTRE line — inside the wall, never visible)
-    make_box("Window_N_Frame", (0.0, ROOM_D-0.12, 1.60), (1.40, 0.04, 1.40), (0.42, 0.30, 0.20, 1.0))
-    make_box("Window_N_Glass", (0.0, ROOM_D-0.1425, 1.60), (1.20, 0.005, 1.20), (0.78, 0.84, 0.86, 0.55))
-    make_box("Window_N_Mull", (0.0, ROOM_D-0.16, 1.60), (1.20, 0.04, 0.04), (0.42, 0.30, 0.20, 1.0))
+    # (2026-10-03: the frame was a solid plate behind the glass — four bars)
+    for nm, fx, fz, sx, sz in (("Window_N_Frame_T", 0.0, 2.27, 1.40, 0.06), ("Window_N_Frame_B", 0.0, 0.93, 1.40, 0.06),
+                               ("Window_N_Frame_L", -0.67, 1.60, 0.06, 1.40), ("Window_N_Frame_R", 0.67, 1.60, 0.06, 1.40)):
+        make_box(nm, (fx, ROOM_D-0.125, fz), (sx, 0.04, sz), (0.42, 0.30, 0.20, 1.0))   # on the glass, which bears on the wall
+    make_box("Window_N_Glass", (0.0, ROOM_D-0.1025, 1.60), (1.26, 0.005, 1.26), (0.78, 0.84, 0.86, 0.30))   # on the wall face, 3 cm over the opening's edges
+    make_box("Window_N_Mull", (0.0, ROOM_D-0.125, 1.60), (1.30, 0.04, 0.04), (0.42, 0.30, 0.20, 1.0))   # bar to bar
     # Peeling wallpaper strips on E wall
     for pi in range(3):
         py = 1.0 + pi*1.5

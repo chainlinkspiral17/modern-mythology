@@ -7,7 +7,7 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, export_glb
-from _props.structure import make_floor, make_wall, make_ceiling, make_window, make_crown_molding
+from _props.structure import make_floor, make_wall, make_ceiling, make_window, make_crown_molding, make_wall_with_openings
 from _props.decor import make_faded_poster, make_floor_plant
 from _props.safety import make_fluorescent_tube_fixture, make_hvac_vent, make_smoke_detector
 from _props.detail import (make_floor_stain, make_traffic_wear, make_wall_outlet, make_wall_tint_band)
@@ -27,7 +27,8 @@ def build_shell():
     for r in range(int(CEIL*4)):
         make_box(f"Wall_W_Brick_{r}", (-ROOM_W/2.0+0.04 + 0.0631, ROOM_D/2.0, r*0.25+0.12), (0.005, ROOM_D, 0.012), COL_BRICK_SEAM)
     make_wall("Wall_E", (+ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=-1)
-    make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
+    make_wall_with_openings("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=-1,
+                            openings=[(0.0, 2.10, 5.0, 1.60)])   # cut for Window_N (2026-10-03)
     make_wall("Wall_S", (0.0, 0.0, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4, with_grid=False)
     # Exposed ductwork running E-W

@@ -6,7 +6,7 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, export_glb
-from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
+from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_wall_with_openings
 from _props.store_fixtures import make_counter, make_counter_bullnose
 from _props.decor import make_wall_clock
 from _props.safety import make_fluorescent_tube_fixture, make_smoke_detector, make_ceiling_speaker
@@ -23,8 +23,11 @@ def build_shell():
     for nm, x, bb in [("Wall_W", -ROOM_W/2.0, +1), ("Wall_E", +ROOM_W/2.0, -1)]:
         make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL, baseboard_face_sign=bb)
     make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=-1)
-    make_wall("Wall_S_W", (-3.0, 0.0, 0), length=2.4, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1)
-    make_wall("Wall_S_E", (+3.0, 0.0, 0), length=2.4, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1)
+    # (2026-10-03: CUT round the street windows — solid behind the panes before)
+    make_wall_with_openings("Wall_S_W", (-3.0, 0.0, 0), length=2.4, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1,
+                            openings=[(-3.0, 1.60, 1.00, 1.20)])
+    make_wall_with_openings("Wall_S_E", (+3.0, 0.0, 0), length=2.4, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1,
+                            openings=[(3.0, 1.60, 1.00, 1.20)])
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4, palette={"tile": (0.30, 0.22, 0.14, 1.0), "grid": (0.18, 0.12, 0.10, 1.0)})
     for nm, ax, length, wx, wy in [("Crown_W",'Y',ROOM_D,-ROOM_W/2.0+0.10,ROOM_D/2.0),("Crown_E",'Y',ROOM_D,+ROOM_W/2.0-0.10,ROOM_D/2.0),("Crown_N",'X',ROOM_W,0.0,ROOM_D-0.10),("Crown_S",'X',ROOM_W,0.0,+0.10)]:
         make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax, ceil_z=CEIL, palette={"wood": COL_BRASS})
