@@ -321,6 +321,15 @@ over-the-shoulder two-shot when two heroes trade lines.
   must both be clean: the aim audit found `Natalies_Phone` claiming the
   `closeup natalie` cue (renamed `Her_Phone`); the obstruction audit
   casts the new aims.
+- PER-PRESET OVERRIDES WIN. A marker named `<shot>__<preset_id>` is
+  the one used while that preset is loaded, and the plain `<shot>`
+  only the fallback — so re-aiming the plain marker changes nothing
+  for that preset. The diner's Empress room had
+  `shot_closeup_dean__dambrosios_formal` standing past the port wall
+  (copied from the auto person frames) overriding a plain Dean marker
+  I had carefully re-aimed; two renders of "the same" marker were
+  identical before I found it. `grep -c "<shot>"` the tscn first: a
+  count of 2 means an override exists.
 - The obstruction audit is the LAST gate, after the render looks right:
   Houston's contract insert read well three times and was wrong three
   times — the lens inside the south wall (a blank frame), then the

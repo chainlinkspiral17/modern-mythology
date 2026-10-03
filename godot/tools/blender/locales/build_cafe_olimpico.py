@@ -6,11 +6,11 @@ import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, export_glb, make_tube, make_chamfer_box
 from _props.structure import make_floor, make_wall, make_ceiling, make_window, make_crown_molding, make_wall_with_openings
 from _props.store_fixtures import make_counter, make_counter_bullnose
 from _props.food_service import make_donut_display, make_coffee_pots
-from _props.decor import make_wall_clock, make_faded_poster
+from _props.decor import make_wall_clock, make_faded_poster, make_floor_plant
 from _props.safety import make_smoke_detector, make_ceiling_speaker, make_fluorescent_tube_fixture
 
 PAL = {"wall": (0.86, 0.78, 0.62, 1.0), "baseboard": (0.42, 0.32, 0.22, 1.0)}
@@ -213,6 +213,100 @@ def build_front_and_street_2026_10():
     make_box("Tree_Grate", (5.5, -2.6, 0.001), (1.2, 1.2, 0.004), (0.26, 0.26, 0.28, 1.0))
 
 
+def build_olimpico_2026_10():
+    """CHARACTER PASS (2026-10-03). The chapter: "Café Olimpico on
+    Saint-Viateur … the single espresso … the small water glass … the
+    small round metal table in the back corner, under the window … A
+    shaft of late-morning sunlight fell across the table … the dust
+    motes … the bell over the café door … a small table by the front
+    window … Marco, the barista … the menu she had already memorized."
+    An Italian café in Mile End: the soccer on the TV, tricolour
+    bunting, the team photographs, the chalk menu over the bar, cannoli
+    and biscotti, sugar and napkins on every table, two more tables,
+    the paper rack and the coat stand by the door, a plant, and the
+    motes in the back window's light."""
+    import random
+    rnd = random.Random(19)
+    wood = COL_WOOD
+    chrome = P.METAL_STEEL
+    top = 1.11
+    # ── the soccer on the TV, high on the east wall
+    ex = ROOM_W / 2.0 - 0.10
+    make_box("Cafe_TV", (ex - 0.05, 1.20, 2.35), (0.08, 0.90, 0.54), (0.10, 0.10, 0.12, 1.0))
+    make_box("Cafe_TV_Screen", (ex - 0.095, 1.20, 2.35), (0.01, 0.80, 0.45), (0.30, 0.62, 0.34, 1.0))
+    make_box("Cafe_TV_Pitch_Line", (ex - 0.10, 1.20, 2.35), (0.004, 0.76, 0.012), (0.90, 0.92, 0.88, 1.0))
+    make_box("Cafe_TV_Bracket", (ex - 0.03, 1.20, 2.10), (0.06, 0.20, 0.04), (0.30, 0.30, 0.32, 1.0))
+    # ── tricolour bunting along the east wall and over the bar
+    make_tube("Bunting_String_E", [(ex - 0.03, 0.4, 2.80), (ex - 0.03, 2.0, 2.66), (ex - 0.03, 3.6, 2.80), (ex - 0.03, 5.2, 2.66)], 0.004, (0.30, 0.28, 0.26, 1.0), segments=4)
+    for i in range(16):
+        y = 0.55 + i * 0.30
+        z = 2.80 - 0.14 * abs(((y - 0.4) % 3.2) / 1.6 - 1.0) * 1.0
+        make_box(f"Bunting_E_{i}", (ex - 0.035, y, z - 0.10), (0.01, 0.16, 0.18), [(0.20, 0.56, 0.32, 1.0), (0.94, 0.94, 0.92, 1.0), (0.82, 0.22, 0.22, 1.0)][i % 3])
+    # ── the team photographs on the west wall, round the poster
+    for i, (y, z, w, h) in enumerate(((1.65, 1.95, 0.30, 0.22), (2.05, 1.60, 0.24, 0.30), (2.35, 2.05, 0.22, 0.18), (3.75, 1.65, 0.28, 0.22), (3.65, 2.10, 0.22, 0.28))):
+        make_box(f"Team_Photo_{i}_Frame", (-ROOM_W / 2.0 + 0.115, y, z), (0.025, w, h), (0.20, 0.16, 0.12, 1.0))
+        make_box(f"Team_Photo_{i}_Pic", (-ROOM_W / 2.0 + 0.130, y, z), (0.004, w - 0.04, h - 0.04), [(0.58, 0.62, 0.66, 1.0), (0.72, 0.66, 0.54, 1.0), (0.52, 0.60, 0.52, 1.0)][i % 3])
+    # ── the chalk menu over the bar, east of the clock
+    make_box("Menu_Board_Frame", (2.9, ROOM_D - 0.11, 2.20), (0.96, 0.02, 0.70), wood)
+    make_box("Menu_Board", (2.9, ROOM_D - 0.125, 2.20), (0.88, 0.01, 0.62), (0.12, 0.14, 0.12, 1.0))
+    for i in range(7):
+        make_box(f"Menu_Line_{i}", (2.9 + rnd.uniform(-0.06, 0.06), ROOM_D - 0.132, 2.44 - i * 0.08), (0.40 + rnd.uniform(-0.12, 0.18), 0.002, 0.022), [(0.92, 0.88, 0.70, 1.0), (0.96, 0.60, 0.60, 1.0), (0.70, 0.90, 0.96, 1.0)][i % 3])
+        make_box(f"Menu_Price_{i}", (3.24, ROOM_D - 0.132, 2.44 - i * 0.08), (0.08, 0.002, 0.018), (0.92, 0.88, 0.70, 1.0))
+    # ── on the bar: cannoli on a tray, the biscotti jar, a tip jar, the sugar station
+    make_box("Cannoli_Tray", (1.20, 4.72, top + 0.01), (0.40, 0.26, 0.02), chrome)
+    for i in range(5):
+        make_cyl(f"Cannolo_{i}", (1.05 + i * 0.075, 4.72 + (i % 2) * 0.06, top + 0.045), 0.022, 0.12, (0.86, 0.72, 0.46, 1.0), segments=8, axis='Y')
+        make_cyl(f"Cannolo_{i}_Cream", (1.05 + i * 0.075, 4.72 + (i % 2) * 0.06 + 0.066, top + 0.045), 0.018, 0.008, (0.96, 0.94, 0.88, 1.0), segments=8, axis='Y')
+    make_cyl("Biscotto_Jar", (0.80, 4.70, top + 0.11), 0.07, 0.22, (0.80, 0.86, 0.88, 0.5), segments=10)
+    for i in range(6):
+        make_box(f"Biscotto_{i}", (0.80 + rnd.uniform(-0.03, 0.03), 4.70 + rnd.uniform(-0.03, 0.03), top + 0.06 + i * 0.025), (0.09, 0.025, 0.02), (0.78, 0.60, 0.34, 1.0))
+    make_cyl("Biscotto_Lid", (0.80, 4.70, top + 0.225), 0.072, 0.012, chrome, segments=10)
+    make_cyl("Cafe_Tip_Jar", (-0.90, 4.68, top + 0.07), 0.05, 0.14, (0.80, 0.86, 0.88, 0.5), segments=10)
+    make_box("Cafe_Tip_Bills", (-0.90, 4.68, top + 0.04), (0.06, 0.04, 0.07), (0.56, 0.62, 0.50, 1.0))
+    make_box("Sugar_Station", (-1.50, 4.70, top + 0.03), (0.22, 0.14, 0.06), (0.40, 0.30, 0.20, 1.0))
+    for i in range(3):
+        make_box(f"Sugar_Packets_{i}", (-1.58 + i * 0.08, 4.70, top + 0.085), (0.05, 0.10, 0.05), [(0.94, 0.92, 0.86, 1.0), (0.86, 0.60, 0.34, 1.0), (0.94, 0.92, 0.86, 1.0)][i])
+    # ── sugar and napkins on every table
+    for i, (tx, ty, tz) in enumerate(((-2.0, 0.95, 0.76), (2.0, 1.80, 0.76), (-3.25, 4.25, 0.76), (0.0, 3.30, 0.76), (-2.30, 3.00, 0.76))):
+        make_cyl(f"Table_Sugar_{i}", (tx + 0.26, ty - 0.20, tz + 0.055), 0.025, 0.11, (0.80, 0.86, 0.88, 0.6), segments=8)
+        make_cyl(f"Table_Sugar_{i}_Top", (tx + 0.26, ty - 0.20, tz + 0.118), 0.027, 0.016, chrome, segments=8)
+        make_box(f"Table_Napkins_{i}", (tx - 0.24, ty - 0.22, tz + 0.05), (0.12, 0.08, 0.10), chrome)
+        make_box(f"Table_Napkins_{i}_Paper", (tx - 0.24, ty - 0.265, tz + 0.05), (0.09, 0.004, 0.07), (0.94, 0.94, 0.90, 1.0))
+    # ── two more round tables with their chairs
+    for ti, (tx, ty) in enumerate(((0.0, 3.30), (-2.30, 3.00))):
+        make_cyl(f"More_Table_{ti}_Top", (tx, ty, 0.74), 0.42, 0.04, COL_MARBLE)
+        make_cyl(f"More_Table_{ti}_Pedestal", (tx, ty, 0.36), 0.06, 0.72, COL_ESPRESSO_TRIM)
+        make_cyl(f"More_Table_{ti}_Foot", (tx, ty, 0.02), 0.24, 0.04, COL_ESPRESSO_TRIM)
+        for ci, cx_off in enumerate((-0.60, 0.60)):
+            cx, cy = tx + cx_off, ty
+            make_cyl(f"More_Table_{ti}_Chair_{ci}_Seat", (cx, cy, 0.46), 0.20, 0.04, COL_WOOD)
+            for lx_ in (-0.14, 0.14):
+                for ly_ in (-0.14, 0.14):
+                    make_cyl(f"More_Table_{ti}_Chair_{ci}_Leg_{lx_:+.2f}_{ly_:+.2f}", (cx + lx_, cy + ly_, 0.22), 0.015, 0.44, COL_WOOD, segments=6)
+            make_box(f"More_Table_{ti}_Chair_{ci}_Back", (cx + (-0.18 if cx_off < 0 else 0.18), cy, 0.74), (0.04, 0.40, 0.56), COL_WOOD)
+        make_cyl(f"More_Table_{ti}_Saucer", (tx - 0.05, ty + 0.08, 0.7625), 0.06, 0.005, P.PAPER)
+        make_cyl(f"More_Table_{ti}_Cup", (tx - 0.05, ty + 0.08, 0.795), 0.04, 0.06, P.PAPER)
+    # ── by the door: the paper rack, the coat stand; a plant in the north-east corner
+    make_box("Paper_Rack_Frame", (1.60, 0.45, 0.45), (0.40, 0.22, 0.90), (0.30, 0.30, 0.32, 1.0))
+    for i in range(3):
+        make_box(f"Paper_{i}", (1.60, 0.36 + i * 0.03, 0.30 + i * 0.26), (0.30, 0.02, 0.26), [(0.90, 0.88, 0.82, 1.0), (0.86, 0.84, 0.78, 1.0), (0.92, 0.90, 0.84, 1.0)][i])
+        make_box(f"Paper_{i}_Masthead", (1.60, 0.345 + i * 0.03, 0.40 + i * 0.26), (0.24, 0.002, 0.03), (0.20, 0.20, 0.24, 1.0))
+    # (east of the door, beside the paper rack — west of it the jacket hung over Table_0)
+    make_cyl("Coat_Stand_Base", (1.20, 0.40, 0.02), 0.18, 0.04, (0.20, 0.18, 0.16, 1.0), segments=10)
+    make_cyl("Coat_Stand_Pole", (1.20, 0.40, 0.90), 0.02, 1.76, (0.20, 0.18, 0.16, 1.0), segments=8)
+    for i in range(4):
+        import math
+        a = i * 1.5708
+        make_cyl(f"Coat_Stand_Hook_{i}", (1.20 + 0.08 * math.cos(a), 0.40 + 0.08 * math.sin(a), 1.72), 0.012, 0.16, (0.20, 0.18, 0.16, 1.0), segments=5, axis='X' if i % 2 == 0 else 'Y')
+    # a long coat on the stand, to the base (a short jacket "hung above" the base for the grammar gate)
+    make_chamfer_box("Coat_Stand_Coat", (1.20, 0.40, 0.88), (0.22, 0.26, 1.64), (0.26, 0.30, 0.40, 1.0), chamfer=0.03)
+    make_chamfer_box("Coat_Stand_Coat_Collar", (1.20, 0.40, 1.72), (0.26, 0.30, 0.08), (0.22, 0.26, 0.36, 1.0), chamfer=0.02)
+    make_floor_plant("Cafe_Plant", (3.55, 5.45, 0.0))
+    # ── the motes in the back window's shaft of light
+    for i in range(9):
+        make_cyl(f"Mote_{i}", (-3.1 + rnd.uniform(-0.3, 0.3), 3.9 + rnd.uniform(-0.4, 0.5), 1.0 + rnd.uniform(0.0, 0.9)), 0.006, 0.006, (0.96, 0.92, 0.80, 0.75), segments=6)
+
+
 def main():
     clear_scene(); build_shell(); build_bar_counter(); build_seating(); build_pennants_and_decor(); build_ceiling_infra()
     build_hero_props_2026_09()
@@ -220,6 +314,7 @@ def main():
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/cafe_olimpico.glb"))
     print(f"\n[build_cafe_olimpico] exporting to {out}")
     build_front_and_street_2026_10()
+    build_olimpico_2026_10()
     export_glb(out)
 
 if __name__ == "__main__": main()

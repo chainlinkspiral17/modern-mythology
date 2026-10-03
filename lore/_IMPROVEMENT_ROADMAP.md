@@ -3017,6 +3017,42 @@ authored dark (concrete 0.14, brick 0.22, dark plank ceiling) with the
 workbench lamp the only key at the VN vantage — a model chapter's
 look, not a bug. Left for the Deck's verdict once it is built there.
 
+**2026-10-03 · THE EMPRESS'S FLOOR (ch 3, dambrosios_formal = the
+diner's west room).** The Empress plays on "the power plays at Table
+4, the whispered betrayals at Table 9 … the crystal at the empty
+Table 6 … the speakers in Table 12's section … at Table 14, a man …
+watching her", on "damask tablecloths" under "calculated mood
+lighting". The west room held one banquet table with ten chairs — a
+wedding, not a Friday — with the 2026-08 dressing's four corner
+tables (4, 9, 12, 14) round it. The banquet table is gone; Tables 3,
+6 and 7 take the middle of the floor (cloths to the floor, a votive,
+settings and glasses, a numbered tent each; Table 6 laid and empty
+with its crystal); the speakers hang in the far corners; the folded
+NOTE lies on Table 14 beside the hundred (it lay on the banquet
+table); John's Fool-chapter notebook now exists on Booth 6's table
+(its insert had settled on that note across the building, the only
+"note" there was). Markers: Nicola at the hostess stand from the
+archway, Dean at Table 14, the note, the room's two close-up frames
+INSIDE the room (they stood past the port wall). The Empress's own hostess podium stands at this floor's door, in
+the corridor east of the partition doorway (the wrong-room gate
+caught her close-up resolving to the Fool chapters' vestibule podium,
+17.6 m from the camera); `shot_closeup_nicola` and its per-preset
+override both frame it. Deck must REBUILD diner. Draft N+1: the
+"intimate but not improper" light is the chandelier alone — the
+votives want practicals; the cloths are plain cream, not damask.
+
+**2026-10-03 · CAFÉ OLIMPICO — character pass (ch 19).** From the
+chapter's nouns and the real café: the soccer on a TV high on the
+east wall, tricolour bunting along it, five team photographs round the
+poster, the chalk menu over the bar beside the clock, cannoli on a
+tray and the biscotti jar, a tip jar, the sugar station, sugar and
+napkins on every table, two more marble tables with their bentwood
+chairs, the paper rack and a coat stand by the door, a plant in the
+north-east corner, nine motes in the back window's shaft of light.
+Clean on every gate (the coat on the stand reaches its base — a
+jacket "hung above" the base failed the grammar gate; the biscotti
+share their jar's name prefix). Deck must REBUILD cafe_olimpico.
+
 **2026-10-03 · NEW ORLEANS ×3 — character passes (ch 7 / 8).** The
 Roberts standard on the Chariot and Strength rooms, from their
 chapters' nouns. ANTONIO'S OFFICE ("the cramped office above what

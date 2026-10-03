@@ -1338,100 +1338,89 @@ def build_west_extension():
     # ── FORMAL DINING (Y=-6..-1) — large, formal, port-side view ──
     pd_cx = EX_cx
     pd_cy = -3.5
-    table_w = 3.20
-    table_d = 1.10
-    table_top_z = 0.76
-    # White-linen table
-    make_box("WestFormal_Table_Top", (pd_cx, pd_cy, table_top_z),
-             (table_w, table_d, 0.04), (0.94, 0.90, 0.78, 1.0))
-    # the table under the linen (2026-09-22: the set stood on its cloth)
-    for pi_, px_ in enumerate((pd_cx - table_w * 0.35, pd_cx + table_w * 0.35)):
-        make_box(f"WestFormal_Table_Pedestal_{pi_}", (px_, pd_cy, (table_top_z - 0.02) / 2.0),
-                 (0.30, 0.60, table_top_z - 0.02), COL_WOOD_TRIM)
-    for sgn in (-1, +1):
-        make_box(f"WestFormal_Cloth_NS_{sgn:+d}",
-                 (pd_cx, pd_cy + sgn * (table_d/2 + 0.002),
-                  table_top_z - 0.30),
-                 (table_w + 0.04, 0.004, 0.60),
-                 (0.94, 0.90, 0.78, 1.0))
-        make_box(f"WestFormal_Cloth_EW_{sgn:+d}",
-                 (pd_cx + sgn * (table_w/2 + 0.002), pd_cy,
-                  table_top_z - 0.30),
-                 (0.004, table_d + 0.04, 0.60),
-                 (0.94, 0.90, 0.78, 1.0))
-    # Brass table runner
-    make_box("WestFormal_TableRunner",
-             (pd_cx, pd_cy, table_top_z + 0.022),
-             (table_w - 0.20, 0.32, 0.004),
-             (0.62, 0.42, 0.24, 1.0))
-    # Place settings (5 per side = 10 total)
-    for side_sgn in (-1, +1):
-        for p in range(5):
-            sx = pd_cx - 1.30 + p * 0.65
-            sy = pd_cy + side_sgn * 0.34
-            # Charger
-            make_cyl(f"WestFormal_Charger_{side_sgn:+d}_{p}",
-                     (sx, sy, table_top_z + 0.030),
-                     0.16, 0.010, (0.62, 0.42, 0.24, 1.0),
-                     segments=10, axis='Z')
-            # Plate
-            make_cyl(f"WestFormal_Plate_{side_sgn:+d}_{p}",
-                     (sx, sy, table_top_z + 0.045),
-                     0.14, 0.012, (0.94, 0.92, 0.88, 1.0),
-                     segments=10, axis='Z')
-            # Knife + fork
-            make_box(f"WestFormal_Knife_{side_sgn:+d}_{p}",
-                     (sx + 0.20, sy, table_top_z + 0.025),
-                     (0.20, 0.02, 0.005), COL_BRASS)
-            make_box(f"WestFormal_Fork_{side_sgn:+d}_{p}",
-                     (sx - 0.20, sy, table_top_z + 0.025),
-                     (0.20, 0.02, 0.005), COL_BRASS)
-            # Wine glass
-            make_cyl(f"WestFormal_Glass_{side_sgn:+d}_{p}",
-                     (sx + 0.04, sy - side_sgn * 0.22, table_top_z + 0.10),
-                     0.030, 0.16, (0.86, 0.92, 0.94, 1.0),
-                     segments=6, axis='Z')
-    # 10 formal chairs (5 per long side)
-    for side_sgn in (-1, +1):
-        for c in range(5):
-            cx_ch = pd_cx - 1.30 + c * 0.65
-            cy_ch = pd_cy + side_sgn * 0.90
-            make_box(f"WestFormal_Chair_{side_sgn:+d}_{c}_Seat",
-                     (cx_ch, cy_ch, 0.46),
-                     (0.42, 0.44, 0.06), (0.32, 0.20, 0.12, 1.0))
-            for lx in (-1, +1):
-                for ly in (-1, +1):
-                    make_box(f"WestFormal_Chair_{side_sgn:+d}_{c}_Leg_{lx:+d}_{ly:+d}",
-                             (cx_ch + lx * 0.18, cy_ch + ly * 0.19, 0.23),
-                             (0.04, 0.04, 0.46), (0.32, 0.20, 0.12, 1.0))
-            back_dy = side_sgn * 0.19
-            for bx_off in (-0.16, 0.0, +0.16):
-                make_box(f"WestFormal_Chair_{side_sgn:+d}_{c}_Back_{bx_off:+.2f}",
-                         (cx_ch + bx_off, cy_ch + back_dy, 0.82),
-                         (0.04, 0.04, 0.70), (0.32, 0.20, 0.12, 1.0))
-            make_box(f"WestFormal_Chair_{side_sgn:+d}_{c}_BackTop",
-                     (cx_ch, cy_ch + back_dy, 1.16),
-                     (0.40, 0.05, 0.05), (0.32, 0.20, 0.12, 1.0))
-            make_box(f"WestFormal_Chair_{side_sgn:+d}_{c}_Cushion",
-                     (cx_ch, cy_ch, 0.50), (0.40, 0.40, 0.04),
-                     COL_VINYL_RED_DK)
-    # Captain chairs at the heads
-    for end_i, sgn_x in enumerate([+1, -1]):
-        ecx = pd_cx + sgn_x * (table_w/2 + 0.45)
-        ecy = pd_cy
-        make_box(f"WestFormal_Head_{end_i}_Seat",
-                 (ecx, ecy, 0.46), (0.46, 0.46, 0.06),
-                 (0.32, 0.20, 0.12, 1.0))
-        for lx in (-1, +1):
-            for ly in (-1, +1):
-                make_box(f"WestFormal_Head_{end_i}_Leg_{lx:+d}_{ly:+d}",
-                         (ecx + lx * 0.20, ecy + ly * 0.20, 0.23),
-                         (0.04, 0.04, 0.46), (0.32, 0.20, 0.12, 1.0))
-        back_dx = sgn_x * 0.20
-        for bz_off in (-0.18, 0.0, +0.18):
-            make_box(f"WestFormal_Head_{end_i}_Back_{bz_off:+.2f}",
-                     (ecx + back_dx, ecy + bz_off, 0.82),
-                     (0.05, 0.04, 0.70), (0.32, 0.20, 0.12, 1.0))
+    # THE RESTAURANT FLOOR (2026-10-03). The Empress chapter plays on a
+    # floor of numbered tables — "the power plays at Table 4, the
+    # whispered betrayals at Table 9 … the crystal at the empty Table 6
+    # … Table 7 … the bass from the speakers in Table 12's section …
+    # Across the dining room, at Table 14, a man … was watching her" —
+    # on "damask tablecloths", under "calculated mood lighting … set
+    # tonight to intimate but not improper". One banquet table with ten
+    # chairs was a wedding, not a Friday. Seven tables now: cloths to
+    # the floor, a votive, settings and glasses, a numbered tent each;
+    # Table 6 laid and empty; Table 14 by the port window with Dean's
+    # chair facing the room, the hundred and the folded paper on it;
+    # sconces on the port wall, the speakers in the far corners.
+    import random as _rnd
+    rng = _rnd.Random(3)
+    cloth = (0.90, 0.86, 0.76, 1.0)
+    damask = (0.84, 0.78, 0.66, 1.0)
+    seat_col = COL_VINYL_RED_DK
+    chair_wood = (0.32, 0.20, 0.12, 1.0)
+    # (the four corners hold Tables 4, 9, 12 and 14 from the 2026-08 dressing;
+    # these three take the middle of the floor)
+    tables = (("3", -12.4, -2.5, 2), ("6", -11.3, -3.9, 2), ("7", -13.0, -4.2, 2))
+    def chair(nm, cx, cy, yaw_dir):
+        # yaw_dir: ('x', ±1) or ('y', ±1) — which way the back faces away from the table
+        make_box(f"{nm}_Seat", (cx, cy, 0.46), (0.42, 0.42, 0.06), chair_wood)
+        make_box(f"{nm}_Cushion", (cx, cy, 0.50), (0.40, 0.40, 0.04), seat_col)
+        for lx in (-1, 1):
+            for ly in (-1, 1):
+                make_box(f"{nm}_Leg_{lx:+d}_{ly:+d}", (cx + lx * 0.18, cy + ly * 0.18, 0.23), (0.04, 0.04, 0.46), chair_wood)
+        ax, sgn = yaw_dir
+        bx, by = (cx + sgn * 0.19, cy) if ax == 'x' else (cx, cy + sgn * 0.19)
+        size = (0.04, 0.40, 0.70) if ax == 'x' else (0.40, 0.04, 0.70)
+        make_box(f"{nm}_Back", (bx, by, 0.82), size, chair_wood)
+    for num, tx, ty, seats in tables:
+        nm = f"Tbl{num}"
+        r = 0.40 if seats == 2 else 0.52
+        make_cyl(f"{nm}_Pedestal", (tx, ty, 0.36), 0.06, 0.72, chair_wood, segments=8, axis='Z')
+        make_cyl(f"{nm}_Foot", (tx, ty, 0.02), 0.26, 0.04, chair_wood, segments=10, axis='Z')
+        make_cyl(f"{nm}_Top", (tx, ty, 0.74), r, 0.04, (0.40, 0.26, 0.16, 1.0), segments=14, axis='Z')
+        make_cyl(f"{nm}_Cloth", (tx, ty, 0.78), r + 0.04, 0.012, cloth, segments=14, axis='Z')
+        # the cloth's fall, the damask under it
+        make_cyl(f"{nm}_Cloth_Fall", (tx, ty, 0.395), r + 0.035, 0.77, damask, segments=14, axis='Z')   # to the floor (a fall that stopped a foot short "hung above" the foot for the grammar gate)
+        make_cyl(f"{nm}_Votive", (tx, ty, 0.82), 0.03, 0.07, (0.88, 0.84, 0.72, 0.7), segments=8, axis='Z')
+        make_sphere_low(f"{nm}_Flame", (tx, ty, 0.87), 0.02, (0.98, 0.78, 0.32, 1.0), rings=2, segments=4)
+        make_box(f"{nm}_Tent", (tx + 0.16, ty + 0.14, 0.82), (0.07, 0.015, 0.07), (0.94, 0.92, 0.86, 1.0))
+        make_box(f"{nm}_Tent_Digit", (tx + 0.16, ty + 0.132, 0.82), (0.03 if len(num) == 1 else 0.05, 0.002, 0.04), (0.20, 0.18, 0.16, 1.0))
+        dirs = [('x', -1), ('x', 1), ('y', -1), ('y', 1)][:seats]
+        for k, (ax, sgn) in enumerate(dirs):
+            cx = tx + (sgn * (r + 0.28) if ax == 'x' else 0.0)
+            cy = ty + (sgn * (r + 0.28) if ax == 'y' else 0.0)
+            chair(f"{nm}_Chair_{k}", cx, cy, (ax, sgn))
+            # the setting in front of each chair
+            px = tx + (sgn * (r - 0.18) if ax == 'x' else 0.0)
+            py = ty + (sgn * (r - 0.18) if ax == 'y' else 0.0)
+            make_cyl(f"{nm}_Plate_{k}", (px, py, 0.792), 0.12, 0.010, (0.94, 0.92, 0.88, 1.0), segments=10, axis='Z')
+            make_cyl(f"{nm}_Glass_{k}", (px + 0.14, py + 0.10, 0.86), 0.028, 0.15, (0.86, 0.92, 0.94, 0.5), segments=6, axis='Z')
+            make_box(f"{nm}_Knife_{k}", (px + 0.17, py - 0.02, 0.79), (0.02, 0.18, 0.004), COL_BRASS)
+            make_box(f"{nm}_Fork_{k}", (px - 0.17, py - 0.02, 0.79), (0.02, 0.18, 0.004), COL_BRASS)
+        if num == "6":
+            # laid and EMPTY: the crystal, four glasses, no diners
+            for k in range(4):
+                make_cyl(f"{nm}_Crystal_{k}", (tx - 0.12 + (k % 2) * 0.24, ty - 0.12 + (k // 2) * 0.24, 0.87), 0.03, 0.17, (0.90, 0.94, 0.96, 0.5), segments=6, axis='Z')
+    # THE EMPRESS'S STATION (2026-10-03): a hostess podium at THIS floor's door,
+    # in the corridor east of the partition's doorway — "Back at the hostess
+    # stand, Nicola smoothed her uniform … She looked out at the restaurant"
+    # (the vestibule podium at +7 is the Fool chapters' and 20 m away; the
+    # wrong-room gate caught her close-up landing there)
+    hx, hy = -11.0, -0.45
+    make_box("Damb_Hostess_Base", (hx, hy, 0.54), (0.80, 0.50, 1.08), COL_WOOD_TRIM)
+    make_box("Damb_Hostess_Top", (hx, hy, 1.105), (0.86, 0.56, 0.05), (0.42, 0.30, 0.18, 1.0))
+    make_box("Damb_Hostess_Book", (hx - 0.10, hy, 1.142), (0.34, 0.26, 0.024), (0.30, 0.18, 0.12, 1.0))
+    make_box("Damb_Hostess_Book_Pages", (hx - 0.10, hy, 1.156), (0.30, 0.22, 0.004), (0.92, 0.90, 0.84, 1.0))
+    make_box("Damb_Hostess_Menus", (hx + 0.26, hy + 0.10, 1.15), (0.22, 0.30, 0.04), (0.36, 0.20, 0.14, 1.0))
+    make_cyl("Damb_Hostess_Pen", (hx - 0.10, hy + 0.16, 1.135), 0.005, 0.13, (0.20, 0.22, 0.30, 1.0), segments=6, axis='X')
+    make_cyl("Damb_Hostess_Lamp_Foot", (hx + 0.28, hy - 0.14, 1.14), 0.06, 0.02, COL_BRASS, segments=8, axis='Z')
+    make_cyl("Damb_Hostess_Lamp_Post", (hx + 0.28, hy - 0.14, 1.29), 0.012, 0.30, COL_BRASS, segments=6, axis='Z')
+    make_cyl("Damb_Hostess_Lamp_Shade", (hx + 0.28, hy - 0.14, 1.46), 0.09, 0.10, (0.94, 0.86, 0.66, 1.0), segments=10, axis='Z')
+    make_box("Damb_Hostess_Sign", (hx, hy - 0.256, 0.90), (0.30, 0.012, 0.08), COL_BRASS)
+    # the speakers in the far corners, hung from the ceiling (sconces on the
+    # port wall hung in its window openings — the chandelier and the votives
+    # are the "calculated mood lighting")
+    for i, sx in enumerate((EX_X_W + 0.30, EX_X_E - 0.30)):
+        make_box(f"WestFormal_Speaker_{i}", (sx, -5.7, D_H - 0.20), (0.26, 0.26, 0.40), (0.14, 0.14, 0.16, 1.0))
+        make_box(f"WestFormal_Speaker_{i}_Grille", (sx, -5.56, D_H - 0.20), (0.20, 0.01, 0.32), (0.26, 0.26, 0.28, 1.0))
     # ── Large brass chandelier over the formal table ──
     ch_z_top = D_H            # the chain meets the ceiling (2026-09-22: 10 cm short)
     ch_z_low = ch_z_top - 1.20
@@ -6109,7 +6098,17 @@ def build_dambrosios_dressing_2026_08():
 def build_formal_note_2026_09():
     """THE NOTE ("The folded paper sat on the table.") — the folded
     paper on the formal room's table runner (dambrosios_formal)."""
-    make_box("Folded_Note", (-11.6, -3.35, 0.794), (0.10, 0.07, 0.006), (0.92, 0.90, 0.84, 1.0))
+    # THE NOTEBOOK at Booth 6 (named for the chapter, not its owner — "Johns_" carried the closeup-john cue) (2026-10-03): the Fool chapters cue [insert
+    # notebook] here and no notebook existed — the marker had settled on the
+    # folded NOTE across the building. Open on the booth table, the pen in it.
+    make_box("Fool_Notebook_L", (-8.12, 3.85, 0.766), (0.13, 0.19, 0.012), (0.92, 0.90, 0.84, 1.0))
+    make_box("Fool_Notebook_R", (-7.98, 3.85, 0.766), (0.13, 0.19, 0.012), (0.94, 0.92, 0.86, 1.0))
+    for k in range(5):
+        make_box(f"Fool_Notebook_Line_{k}", (-8.12, 3.92 - k * 0.03, 0.773), (0.09 - 0.01 * (k % 3), 0.004, 0.002), (0.24, 0.24, 0.28, 1.0))
+    make_cyl("Fool_Notebook_Pen", (-8.05, 3.80, 0.778), 0.005, 0.12, (0.20, 0.22, 0.30, 1.0), segments=6, axis='X')
+    # (2026-10-03: on TABLE 14 — the banquet table it lay on is a floor of tables now)
+    make_box("Folded_Note", (-10.15, -5.42, 0.759), (0.10, 0.07, 0.006), (0.92, 0.90, 0.84, 1.0))
+    make_box("Table14_Hundred", (-10.02, -5.30, 0.757), (0.14, 0.064, 0.002), (0.60, 0.66, 0.56, 1.0))
 
 
 def build_far_town_2026_09():
