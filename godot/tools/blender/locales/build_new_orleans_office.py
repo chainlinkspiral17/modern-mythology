@@ -31,10 +31,11 @@ import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, make_chamfer_box, make_lathe, make_tube, make_rot_box, export_glb
+from _props.objects import make_bottle
+from _props.geometry import clear_scene, make_box, make_cyl, make_chamfer_box, make_lathe, make_tube, make_rot_box, export_glb, make_dome
 from _props.furniture import make_pendant
 from _props.structure import make_floor, make_wall, make_ceiling, make_window, make_crown_molding, make_wall_with_openings
-from _props.decor import make_wall_clock, make_faded_poster, make_floor_plant
+from _props.decor import make_wall_clock, make_faded_poster, make_floor_plant, make_calendar
 from _props.safety import make_fluorescent_tube_fixture, make_smoke_detector
 from _props.detail import (make_floor_stain, make_traffic_wear, make_wall_outlet, make_wall_tint_band, make_scuff_band)
 
@@ -53,7 +54,7 @@ def build_shell():
                             openings=[(3.0, 1.80, 1.60, 2.00)])
     make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=-1)
     make_wall_with_openings("Wall_S", (0.0, 0.0, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1,
-                            openings=[(-0.80, 1.45, 1.40, 1.20)])
+                            openings=[(-0.80, 1.45, 1.40, 1.20), (0.85, 1.45, 0.66, 0.76)])   # + the leaded window (2026-10-03)
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4, palette={"tile": (0.62, 0.42, 0.22, 1.0)})
     for nm, ax, length, wx, wy in [("Crown_W",'Y',ROOM_D,-ROOM_W/2.0+0.10,ROOM_D/2.0),("Crown_E",'Y',ROOM_D,+ROOM_W/2.0-0.10,ROOM_D/2.0),("Crown_N",'X',ROOM_W,0.0,ROOM_D-0.10),("Crown_S",'X',ROOM_W,0.0,+0.10)]:
         make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax, ceil_z=CEIL, palette={"wood": COL_OAK_DARK})
@@ -172,10 +173,13 @@ def build_hero_props():
     # The small leaded window beside it (the charcoal-suit watch)
     # on the wall's room face, glass in front of the frame (2026-09-24: frame and glass
     # were offset from the wall's CENTRE line — inside the wall, never visible)
-    make_box("Leaded_Win_Frame", (0.85, 0.14, 1.45), (0.80, 0.08, 0.90), wood)
-    make_box("Leaded_Win_Glass", (0.85, 0.205, 1.45), (0.66, 0.05, 0.76), (0.50, 0.56, 0.60, 0.5))
-    make_box("Leaded_Win_MullV", (0.85, 0.20, 1.45), (0.03, 0.04, 0.76), wood)
-    make_box("Leaded_Win_MullH", (0.85, 0.20, 1.45), (0.66, 0.04, 0.03), wood)
+    # (2026-10-03: the frame was a solid plate behind the glass — four bars)
+    for nm, fx, fz, sx, sz in (("Leaded_Window_Frame_T", 0.85, 1.87, 0.80, 0.07), ("Leaded_Window_Frame_B", 0.85, 1.03, 0.80, 0.07),
+                               ("Leaded_Window_Frame_L", 0.485, 1.45, 0.07, 0.90), ("Leaded_Window_Frame_R", 1.215, 1.45, 0.07, 0.90)):
+        make_box(nm, (fx, 0.14, fz), (sx, 0.08, sz), wood)
+    make_box("Leaded_Window_Glass", (0.85, 0.205, 1.45), (0.66, 0.05, 0.76), (0.50, 0.56, 0.60, 0.22))   # (2026-10-03: at 0.5 the street was a grey wash)
+    make_box("Leaded_Window_MullV", (0.85, 0.20, 1.45), (0.03, 0.04, 0.76), wood)
+    make_box("Leaded_Window_MullH", (0.85, 0.20, 1.45), (0.66, 0.04, 0.03), wood)
     # Emergency bourbon (second drawer) + the chipped glass on the desk
     # (draft 3: on the desk beside the glass — out of the second drawer,
     # which is where it lives; at (2.75, 5.15) it stood on the floor by
@@ -251,11 +255,100 @@ def build_draft3_2026_09():
     make_box("Out_S_Balcony", (0.0, -7.4, 3.2), (12.0, 0.5, 0.08), (0.14, 0.14, 0.15, 1.0))
 
 
+def build_hot_office_2026_10():
+    """CHARACTER PASS (2026-10-03). The chapter: "the cramped office above
+    what would, eventually, be Ember & Ash … hot because it was August
+    … the window air-conditioning unit Jimmy had installed … dropped the
+    rolled architectural plans … the half-empty bottle of bourbon from the
+    file cabinet … The carpet [worn by pacing] … set two coffees on the
+    desk … the small leaded window … ancient oaks dripping Spanish moss …
+    an older man … leaning against a streetlight." A man building a
+    restaurant from this room: the drafting table with the elevation on
+    it, the permits board, the sample boards, the fixture boxes, the hard
+    hat; a box fan on the floor for August; the drip pan under the AC;
+    the two coffees; and the Marigny outside the window — the oaks, the
+    moss, the streetlight on the corner."""
+    wood = (0.36, 0.26, 0.16, 1.0)
+    paper = (0.90, 0.88, 0.82, 1.0)
+    ink = (0.24, 0.24, 0.28, 1.0)
+    card = (0.60, 0.48, 0.32, 1.0)
+    # ── the drafting table, east of the desk, the elevation on it
+    tx, ty = 2.45, 2.30
+    for lx, ly in ((-0.45, -0.30), (0.45, -0.30), (-0.45, 0.30), (0.45, 0.30)):
+        make_box(f"Draft_Leg_{lx:+.2f}_{ly:+.2f}", (tx + lx, ty + ly, 0.42), (0.05, 0.05, 0.84), wood)
+    make_rot_box("Draft_Board", (tx, ty, 0.94), (1.10, 0.80, 0.04), wood, pitch=0.42)
+    make_rot_box("Draft_Sheet", (tx, ty + 0.012, 0.965), (0.90, 0.64, 0.004), paper, pitch=0.42)
+    for i in range(5):
+        make_rot_box(f"Draft_Line_{i}", (tx - 0.30 + i * 0.15, ty + 0.012, 0.968 + 0.0), (0.012, 0.50, 0.003), ink, pitch=0.42)
+    make_rot_box("Draft_Line_H", (tx, ty - 0.14 * 0.91, 0.968 + 0.14 * 0.41), (0.84, 0.012, 0.003), ink, pitch=0.42)
+    make_rot_box("Draft_TSquare", (tx - 0.30, ty - 0.26 * 0.91, 0.975 + 0.26 * 0.41), (0.56, 0.03, 0.008), (0.82, 0.80, 0.74, 1.0), pitch=0.42)
+    make_box("Draft_Lip", (tx, ty - 0.40 * 0.907, 0.94 - 0.40 * 0.41 + 0.03), (1.10, 0.03, 0.05), wood)
+    # ── the permits board and the calendar on the north wall, west of the clock
+    wy = ROOM_D - 0.10
+    make_box("Permit_Board", (-2.2, wy - 0.014, 1.75), (1.20, 0.028, 0.80), (0.62, 0.48, 0.30, 1.0))
+    import random
+    rnd = random.Random(31)
+    for i in range(9):
+        px = -2.72 + rnd.uniform(0.0, 1.04)
+        pz = 1.42 + rnd.uniform(0.0, 0.58)
+        w, h = rnd.choice(((0.14, 0.20), (0.20, 0.14), (0.11, 0.16)))
+        make_box(f"Permit_{i}", (px, wy - 0.031, pz), (w, 0.003, h), rnd.choice((paper, (0.96, 0.92, 0.70, 1.0), (0.84, 0.90, 0.96, 1.0))))
+        for k in range(3):
+            make_box(f"Permit_{i}_Line_{k}", (px, wy - 0.034, pz + h * 0.28 - k * h * 0.22), (w * rnd.uniform(0.4, 0.8), 0.002, 0.006), ink)
+        make_cyl(f"Permit_{i}_Pin", (px, wy - 0.036, pz + h / 2.0 - 0.012), 0.006, 0.006, (0.80, 0.20, 0.18, 1.0), segments=6, axis='Y')
+    make_calendar("Site_Calendar", (-0.95, wy, 1.65), axis='X')
+    # ── sample boards leaning on the west wall south of the bookcase
+    # (three boards stacked against the W wall's face, touching; the samples
+    # on the front one — the two behind only show their edges)
+    for i, (y, tint, kind) in enumerate(((0.80, (0.52, 0.30, 0.22, 1.0), "brick"), (0.86, (0.42, 0.30, 0.20, 1.0), "wood"), (0.92, (0.72, 0.74, 0.70, 1.0), "tile"))):
+        make_rot_box(f"Sample_Board_{i}", (-3.385 + i * 0.02, y, 0.42), (0.02, 0.50, 0.80), (0.86, 0.84, 0.78, 1.0), pitch=0.0, roll=0.0)
+        if i == 2:
+            for k in range(6):
+                make_box(f"Sample_{k}", (-3.329, y - 0.18 + (k % 3) * 0.18, 0.28 + (k // 3) * 0.30), (0.012, 0.14, 0.22),
+                         (tint[0] * (0.85 + 0.1 * k), tint[1] * (0.85 + 0.1 * k), tint[2] * (0.85 + 0.1 * k), 1.0))
+    # ── fixture boxes by the front door, the hard hat on the filing cabinet
+    # (in the north-west corner: by the front door they stood in its swing and on the sample boards)
+    make_box("Fixture_Box_A", (-2.9, 5.45, 0.22), (0.50, 0.40, 0.44), card)
+    make_box("Fixture_Box_B", (-2.9, 5.45, 0.62), (0.44, 0.36, 0.36), (0.58, 0.46, 0.30, 1.0))
+    make_box("Fixture_Box_Label", (-2.9, 5.245, 0.26), (0.24, 0.004, 0.10), paper)
+    make_box("Fixture_Box_Label_Line", (-2.9, 5.242, 0.27), (0.18, 0.002, 0.012), ink)
+    # (on the floor by the drafting table — on the filing cabinet it stood in the back door's swing)
+    make_lathe("Hard_Hat", (3.12, 2.05, 0.01), [(0.0, 0.0), (0.14, 0.0), (0.135, 0.04), (0.12, 0.08), (0.09, 0.12), (0.05, 0.145), (0.0, 0.15)], (0.92, 0.72, 0.18, 1.0), segments=12)
+    make_cyl("Hard_Hat_Brim", (3.12, 2.05, 0.005), 0.17, 0.01, (0.92, 0.72, 0.18, 1.0), segments=12)
+    # ── August: the box fan on the floor, the drip pan under the AC
+    make_box("Box_Fan", (1.9, 1.55, 0.27), (0.52, 0.14, 0.52), (0.80, 0.78, 0.72, 1.0))
+    make_cyl("Box_Fan_Grille", (1.9, 1.475, 0.29), 0.21, 0.01, (0.30, 0.30, 0.32, 1.0), segments=16, axis='Y')
+    make_cyl("Box_Fan_Hub", (1.9, 1.47, 0.29), 0.04, 0.01, (0.80, 0.78, 0.72, 1.0), segments=10, axis='Y')
+    make_box("Box_Fan_Foot", (1.9, 1.55, 0.005), (0.56, 0.20, 0.01), (0.30, 0.30, 0.32, 1.0))
+    make_tube("Box_Fan_Cord", [(2.10, 1.62, 0.06), (2.60, 1.90, 0.02), (3.30, 2.10, 0.02)], 0.006, (0.16, 0.16, 0.18, 1.0), segments=5)
+    make_box("AC_Drip_Pan", (-0.80, 0.42, 0.015), (0.40, 0.30, 0.03), (0.60, 0.60, 0.58, 1.0))
+    make_box("AC_Drip_Water", (-0.80, 0.42, 0.032), (0.30, 0.20, 0.004), (0.46, 0.52, 0.56, 1.0))
+    make_floor_stain("AC_Drip_Ring", (-0.80, 0.70), radius=0.12, tint=(0.44, 0.38, 0.30, 1.0))
+    # ── the two coffees Jimmy set on the desk, a tape measure, a water bottle
+    for i, (cx, cy) in enumerate(((0.92, 3.22), (0.80, 3.10))):
+        make_cyl(f"Coffee_Cup_{i}", (cx, cy, 0.85), 0.04, 0.12, (0.92, 0.90, 0.86, 1.0), segments=10)
+        make_cyl(f"Coffee_Cup_{i}_Lid", (cx, cy, 0.915), 0.042, 0.01, (0.20, 0.20, 0.22, 1.0), segments=10)
+    make_cyl("Tape_Measure", (-0.90, 3.18, 0.825), 0.035, 0.07, (0.90, 0.72, 0.20, 1.0), segments=10)
+    make_bottle("Water_Bottle", -0.95, 3.85, 0.79, (0.80, 0.86, 0.90, 0.6), h=0.22, r=0.032)
+    # ── the Marigny outside the south windows: oaks dripping moss, the
+    #    streetlight on the corner, the sidewalk
+    from _props.trees import make_broadleaf
+    make_broadleaf("Oak_W", -4.6, -3.4, 7.5, (0.30, 0.42, 0.22, 1.0), (0.34, 0.26, 0.18, 1.0))
+    make_broadleaf("Oak_E", 4.2, -3.8, 7.0, (0.32, 0.44, 0.24, 1.0), (0.34, 0.26, 0.18, 1.0))
+    for i, (mx, my, mz, ml) in enumerate(((-4.0, -2.6, 3.4, 1.4), (-5.2, -3.0, 3.0, 1.1), (-3.6, -4.0, 3.8, 1.6), (3.6, -3.0, 3.2, 1.3), (4.8, -3.4, 3.6, 1.5), (4.4, -4.4, 2.9, 1.0))):
+        make_box(f"Moss_Drape_{i}", (mx, my, mz), (0.10, 0.08, ml), (0.56, 0.62, 0.50, 1.0))
+    make_cyl("Streetlight_Pole", (2.5, -1.5, 2.2), 0.05, 4.4, (0.22, 0.24, 0.26, 1.0), segments=8)
+    make_cyl("Streetlight_Arm", (2.5, -1.9, 4.3), 0.025, 0.8, (0.22, 0.24, 0.26, 1.0), segments=6, axis='Y')
+    make_box("Streetlight_Head", (2.5, -2.3, 4.25), (0.28, 0.46, 0.14), (0.92, 0.88, 0.70, 1.0))
+    make_box("Ground_Sidewalk_S", (0.0, -0.9, -0.02), (16.0, 1.0, 0.04), (0.58, 0.56, 0.52, 1.0))
+
+
 def main():
     clear_scene(); build_shell(); build_desk_and_chair(); build_bookcase_and_filing(); build_decor(); build_ceiling_infra()
     build_hero_props()
     build_detail_pass_2026_08()
     build_draft3_2026_09()
+    build_hot_office_2026_10()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/new_orleans_office.glb"))
     print(f"\n[build_new_orleans_office] exporting to {out}")
     export_glb(out)

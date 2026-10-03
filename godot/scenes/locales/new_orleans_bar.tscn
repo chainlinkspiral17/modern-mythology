@@ -343,10 +343,12 @@ rotation = Vector3(-0.0947189, 1.88826, 0)
 metadata/fov = 56.0
 
 ; closeup: Douglas in the west booth
+; RE-AIMED 2026-10-03: from the corner booth across the room — the bar, the bottle wall,
+; the neon behind him (it faced the booth's back and a dark wall)
 [node name="shot_closeup_douglas" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-3.890, 1.612, -2.880)
-rotation = Vector3(-0.2618, 2.8798, 0.0)
-metadata/fov = 36.0
+position = Vector3(-3.900, 1.350, -0.500)
+rotation = Vector3(0.0336, -0.8330, 0.0)
+metadata/fov = 38.0
 
 ; insert: the long mirror behind the bar
 [node name="shot_insert_mirror" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -355,10 +357,11 @@ rotation = Vector3(0.0000, 0.0000, 0.0)
 metadata/fov = 44.0
 
 ; insert: the game on the bar TV, muted, neon ghosts (Strength)
+; RE-AIMED 2026-10-03: up at the set over the back bar (it cut the screen off at the top)
 [node name="shot_insert_tv" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 1.7, -4.6)
-rotation = Vector3(0, 0, 0)
-metadata/fov = 42.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.600, 1.600, -3.600)
+rotation = Vector3(0.3004, -0.0000, 0.0)
+metadata/fov = 34.0
 
 ; insert: his hands on the sticky tabletop (Strength)
 [node name="shot_insert_hands" type="Marker3D" parent="." groups=["vn_shot"]]

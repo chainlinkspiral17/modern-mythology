@@ -3017,6 +3017,44 @@ authored dark (concrete 0.14, brick 0.22, dark plank ceiling) with the
 workbench lamp the only key at the VN vantage — a model chapter's
 look, not a bug. Left for the Deck's verdict once it is built there.
 
+**2026-10-03 · NEW ORLEANS ×3 — character passes (ch 7 / 8).** The
+Roberts standard on the Chariot and Strength rooms, from their
+chapters' nouns. ANTONIO'S OFFICE ("the cramped office above what
+would, eventually, be Ember & Ash … hot because it was August"): a
+drafting table with the elevation and a T-square, the permits board
+under nine pinned papers, the site calendar, three sample boards
+(brick, wood, tile) against the west wall, fixture boxes labelled for
+the restaurant, a hard hat, a box fan on the floor, the drip pan under
+the AC with its ring, the two coffees Jimmy set down, a tape measure,
+a water bottle; the leaded window cut through the wall (its frame was
+a plate); outside — two oaks dripping Spanish moss, the streetlight on
+the corner the watcher leans on, the sidewalk. THE DIVE ("buzzing neon
+… the sticky tabletop … the back door"): three taps and a bar mat, a
+tip jar, napkin dispensers, ashtrays, a bowl of peanuts, the register,
+a glass rack hung over the bar on chains, a COLD BEER neon over the
+mirror, string lights along the north wall, Mardi Gras beads on the
+mirror and the TV, a dartboard with its chalk scores, the specials
+board, a gator head on the wall, the back door with its RESTROOM
+sign, the street at night outside (sidewalk, curb, street, the facade
+opposite, a lamp, a parked car). THE ROOM OVER THE LAUNDROMAT: the
+window moved OVER THE DESK ("the small desk under the window" — it
+was over the bed's head), the door hung in its opening with the chain
+the chapter rattles, the shade half drawn, the LAUNDROMAT sign glowing
+up from the facade below the window, the street three floors down and
+the facade across, a towel on its hook, shoes under the bed, a rug,
+paperbacks on the dresser, a transistor radio and a mug on the desk,
+the key and the cigarettes on the nightstand, a wastebasket, a box of
+dryer sheets. Markers re-aimed from the renders: Antonio's close-up
+(the street windows behind him — it was the desk top), the office's
+window insert (through the LEADED window at the oaks and the
+streetlight — it framed the east pane), Douglas's close-up in the bar
+(across the room from his booth — it faced the booth's back), the
+bar TV (it cut the screen off), the room's letter (it framed the bed)
+and mirror (a bare wall). All three clean on every gate. Deck must
+REBUILD all three. Draft N+1: the office is still four times canon's twelve by
+ten (a full rebuild at scale); the bar's booth wants its own light;
+the room's bare bulb is the only practical.
+
 **2026-10-03 · WINDOWS CUT ACROSS VOL 5 (draft N+1 of the glass
 pass).** Every remaining vol 5 window on a solid wall is cut with
 `make_wall_with_openings`: Natalie's (W + SE; its W "frame" was a

@@ -5,12 +5,12 @@ import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, export_glb, make_tube, make_dome
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_wall_with_openings
 from _props.store_fixtures import make_counter, make_counter_bullnose
 from _props.decor import make_wall_clock
 from _props.safety import make_fluorescent_tube_fixture, make_smoke_detector, make_ceiling_speaker
-from _props.objects import make_liquor_bottle
+from _props.objects import make_liquor_bottle, make_bowl
 
 PAL = {"wall": (0.42, 0.30, 0.22, 1.0), "baseboard": (0.18, 0.12, 0.10, 1.0)}
 COL_FLOOR = (0.32, 0.22, 0.16, 1.0); COL_SEAM = (0.18, 0.12, 0.10, 1.0)
@@ -196,10 +196,99 @@ def build_hero_props_2026_09():
              (0.36, 0.28, 0.21, 1.0))
 
 
+def build_dive_2026_10():
+    """CHARACTER PASS (2026-10-03). The chapter: "the bar TV … Muted …
+    under the buzzing neon of three different beer signs, two of which
+    had … His hands rested on the sticky tabletop … the cheap vinyl …
+    the saltshaker … a tired-looking woman behind the bar … deliveries
+    coming through the back door." A Marigny dive: the taps and the
+    bar's clutter, a COLD BEER neon over the mirror, string lights,
+    Mardi Gras beads on the mirror and the TV, a dartboard and its
+    chalk scores, the gator on the wall, the specials board, the back
+    door with its RESTROOM sign, and the street at night outside the
+    windows."""
+    wood = (0.35, 0.24, 0.15, 1.0)
+    brass = COL_BRASS
+    top = 1.16
+    # ── on the bar: the taps, the mat, the tip jar, napkins, ashtrays, peanuts, the register
+    make_box("Tap_Tower", (-0.70, 4.30, top + 0.14), (0.42, 0.10, 0.28), (0.72, 0.72, 0.74, 1.0))
+    for i, tx in enumerate((-0.84, -0.70, -0.56)):
+        make_cyl(f"Tap_{i}_Spout", (tx, 4.22, top + 0.16), 0.012, 0.08, brass, segments=6, axis='Y')
+        make_cyl(f"Tap_{i}_Handle", (tx, 4.30, top + 0.36), 0.018, 0.16, [(0.86, 0.20, 0.18, 1.0), (0.14, 0.14, 0.16, 1.0), (0.92, 0.84, 0.40, 1.0)][i], segments=6)
+    make_box("Bar_Mat", (-0.70, 3.95, top + 0.006), (0.60, 0.28, 0.012), (0.12, 0.12, 0.14, 1.0))
+    make_cyl("Tip_Jar", (0.30, 4.35, top + 0.08), 0.06, 0.16, (0.78, 0.84, 0.86, 0.5), segments=10)
+    make_box("Tip_Jar_Bills", (0.30, 4.35, top + 0.05), (0.07, 0.05, 0.08), (0.56, 0.62, 0.50, 1.0))
+    for i, nx in enumerate((-2.0, 1.4)):
+        make_box(f"Napkin_Dispenser_{i}", (nx, 4.40, top + 0.07), (0.14, 0.09, 0.14), (0.62, 0.62, 0.64, 1.0))
+        make_box(f"Napkin_{i}", (nx, 4.345, top + 0.07), (0.10, 0.004, 0.09), (0.94, 0.94, 0.90, 1.0))
+    for i, ax in enumerate((-1.5, 0.9)):
+        make_cyl(f"Bar_Ashtray_{i}", (ax, 3.90, top + 0.015), 0.055, 0.03, (0.30, 0.30, 0.32, 1.0), segments=10)
+    make_bowl("Peanut_Bowl", 2.2, 3.95, top, (0.46, 0.40, 0.32, 1.0), r=0.09, h=0.05)
+    make_box("Register", (2.0, 4.50, top + 0.14), (0.40, 0.36, 0.28), (0.62, 0.62, 0.60, 1.0))
+    make_box("Register_Keys", (2.0, 4.33, top + 0.19), (0.30, 0.02, 0.10), (0.30, 0.30, 0.32, 1.0))
+    make_box("Register_Drawer", (2.0, 4.31, top + 0.05), (0.36, 0.02, 0.08), (0.50, 0.50, 0.48, 1.0))
+    # ── the glass rack over the bar
+    make_box("Glass_Rack", (0.0, 4.15, 2.30), (3.0, 0.40, 0.03), wood)
+    for i in range(4):
+        make_cyl(f"Glass_Rack_Rail_{i}", (0.0, 4.00 + i * 0.10, 2.27), 0.008, 3.0, brass, segments=6, axis='X')
+    for i in range(14):
+        make_cyl(f"Hung_Glass_{i}", (-1.3 + i * 0.2, 4.05 + (i % 3) * 0.10, 2.18), 0.035, 0.14, (0.80, 0.86, 0.88, 0.5), segments=8)
+    for i, cx in enumerate((-1.3, 1.3)):
+        make_cyl(f"Glass_Rack_Chain_{i}", (cx, 4.15, 2.76), 0.006, 0.88, (0.30, 0.30, 0.32, 1.0), segments=5)
+    # ── neon: COLD BEER over the mirror; the string lights along the north wall
+    make_box("ColdBeer_Box", (-0.65, 5.92, 3.0), (1.40, 0.06, 0.36), (0.14, 0.12, 0.14, 1.0))
+    make_box("ColdBeer_Tube", (-0.65, 5.88, 3.0), (1.10, 0.02, 0.16), (0.30, 0.78, 0.96, 1.0))
+    make_tube("String_Lights", [(-4.3, 5.86, 2.95), (-2.5, 5.86, 2.80), (-0.7, 5.86, 2.95), (1.1, 5.86, 2.80), (2.9, 5.86, 2.95), (4.3, 5.86, 2.82)], 0.005, (0.16, 0.16, 0.18, 1.0), segments=4)
+    for i in range(14):
+        sx = -4.1 + i * 0.6
+        sz = 2.95 - 0.15 * abs(((sx + 4.3) % 3.6) / 1.8 - 1.0) * 1.0
+        make_cyl(f"String_Bulb_{i}", (sx, 5.86, sz - 0.05), 0.02, 0.05, [(0.96, 0.82, 0.40, 1.0), (0.90, 0.40, 0.44, 1.0), (0.44, 0.86, 0.60, 1.0)][i % 3], segments=6)
+    # ── Mardi Gras beads on the mirror and the TV
+    for i, (x0, x1, z, col) in enumerate(((-2.8, -1.6, 2.55, (0.60, 0.26, 0.74, 1.0)), (-1.4, -0.2, 2.50, (0.26, 0.70, 0.36, 1.0)), (0.2, 1.4, 2.55, (0.92, 0.78, 0.22, 1.0)), (2.1, 3.1, 2.76, (0.60, 0.26, 0.74, 1.0)))):   # the last over the TV's top edge
+        make_tube(f"Beads_{i}", [(x0, 5.86, z + 0.18), ((x0 + x1) / 2.0, 5.84, z - 0.12), (x1, 5.86, z + 0.18)], 0.012, col, segments=6)
+    # ── dartboard and the chalk scores on the east wall; the specials board on the north
+    make_cyl("Dartboard", (ROOM_W / 2.0 - 0.125, 2.0, 1.73), 0.23, 0.04, (0.20, 0.18, 0.16, 1.0), segments=16, axis='X')
+    make_cyl("Dartboard_Bull", (ROOM_W / 2.0 - 0.148, 2.0, 1.73), 0.03, 0.006, (0.80, 0.20, 0.18, 1.0), segments=10, axis='X')
+    for i in range(6):
+        make_box(f"Dartboard_Wedge_{i}", (ROOM_W / 2.0 - 0.147, 2.0 + 0.14 * (1 if i % 2 else -1) * (0.5 + 0.5 * (i // 2)) * 0.4, 1.73 + 0.12 * ((i // 2) - 1)), (0.004, 0.05, 0.05), (0.86, 0.82, 0.70, 1.0) if i % 2 else (0.20, 0.48, 0.30, 1.0))
+    make_box("Score_Board", (ROOM_W / 2.0 - 0.112, 1.30, 1.70), (0.012, 0.40, 0.50), (0.12, 0.14, 0.12, 1.0))
+    for i in range(5):
+        make_box(f"Score_Line_{i}", (ROOM_W / 2.0 - 0.118, 1.30 - 0.12 + (i % 2) * 0.22, 1.88 - i * 0.07), (0.002, 0.10, 0.012), (0.88, 0.88, 0.84, 1.0))
+    make_box("Specials_Board", (3.9, 5.885, 2.05), (0.60, 0.012, 0.80), (0.12, 0.14, 0.12, 1.0))
+    make_box("Specials_Board_Frame", (3.9, 5.895, 2.05), (0.66, 0.008, 0.86), wood)
+    for i in range(5):
+        make_box(f"Specials_Line_{i}", (3.9 + (0.03 if i % 2 else -0.03), 5.878, 2.33 - i * 0.14), (0.38 - (i % 3) * 0.06, 0.002, 0.03), [(0.92, 0.88, 0.70, 1.0), (0.96, 0.60, 0.60, 1.0), (0.70, 0.90, 0.96, 1.0)][i % 3])
+    # ── the gator on the wall over the bottle shelves' west end
+    make_box("Gator_Head", (-3.75, 5.80, 2.65), (0.52, 0.20, 0.16), (0.30, 0.34, 0.22, 1.0))
+    make_box("Gator_Snout", (-4.08, 5.80, 2.62), (0.20, 0.14, 0.10), (0.30, 0.34, 0.22, 1.0))
+    make_box("Gator_Jaw", (-3.95, 5.80, 2.56), (0.36, 0.16, 0.04), (0.42, 0.40, 0.28, 1.0))
+    for i in range(6):
+        make_box(f"Gator_Tooth_{i}", (-4.12 + i * 0.07, 5.72 + (i % 2) * 0.16, 2.585), (0.015, 0.012, 0.025), (0.92, 0.90, 0.82, 1.0))
+    for i, oy in enumerate((5.72, 5.88)):
+        make_dome(f"Gator_Eye_{i}", (-3.62, oy, 2.73), 0.025, (0.86, 0.70, 0.20, 1.0), rings=3, segments=8)
+    # ── the back door on the east wall's north end, the RESTROOM sign
+    make_box("Back_Door", (ROOM_W / 2.0 - 0.125, 5.40, 1.05), (0.05, 0.90, 2.10), (0.30, 0.22, 0.14, 1.0))
+    make_cyl("Back_Door_Knob", (ROOM_W / 2.0 - 0.17, 5.05, 1.02), 0.03, 0.04, brass, segments=8, axis='X')
+    make_box("Back_Door_Sign", (ROOM_W / 2.0 - 0.112, 5.40, 2.35), (0.012, 0.44, 0.14), (0.92, 0.90, 0.84, 1.0))
+    make_box("Back_Door_Sign_Text", (ROOM_W / 2.0 - 0.118, 5.40, 2.35), (0.002, 0.34, 0.05), (0.16, 0.16, 0.18, 1.0))
+    # ── the street at night outside the south windows
+    make_box("Ground_Sidewalk", (0.0, -2.0, -0.03), (24.0, 4.0, 0.06), (0.52, 0.50, 0.46, 1.0))
+    make_box("Curb", (0.0, -4.05, -0.06), (24.0, 0.14, 0.14), (0.60, 0.58, 0.54, 1.0))
+    make_box("Ground_Street", (0.0, -9.5, -0.14), (24.0, 11.0, 0.06), (0.24, 0.24, 0.26, 1.0))
+    make_box("Out_Facade", (0.0, -15.5, 4.0), (26.0, 0.6, 8.0), (0.40, 0.32, 0.26, 1.0))
+    for c in range(8):
+        make_box(f"Out_Facade_Win_{c}", (-9.0 + c * 2.6, -15.19, 4.5), (1.0, 0.02, 1.4), [(0.92, 0.78, 0.40, 1.0), (0.16, 0.18, 0.22, 1.0), (0.80, 0.60, 0.44, 1.0)][c % 3])
+    make_cyl("Street_Lamp_Pole", (-3.0, -3.7, 2.0), 0.05, 4.0, (0.20, 0.22, 0.24, 1.0), segments=8)
+    make_box("Street_Lamp_Head", (-3.0, -4.1, 3.9), (0.28, 0.46, 0.14), (0.96, 0.88, 0.60, 1.0))
+    from _props.vehicles import make_car
+    make_car("Parked_Car", 2.8, -6.0, 4.4, (0.26, 0.26, 0.30, 1.0), along="X", z0=-0.11)
+
+
 def main():
     clear_scene(); build_shell(); build_bar(); build_jukebox(); build_decor(); build_ceiling_fan(); build_ceiling_infra()
     build_hero_props()
     build_hero_props_2026_09()
+    build_dive_2026_10()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/new_orleans_bar.glb"))
     print(f"\n[build_new_orleans_bar] exporting to {out}")
     export_glb(out)

@@ -318,9 +318,11 @@ rotation = Vector3(-0.110822, 2.47755, 0)
 metadata/fov = 54.0
 
 ; closeup: Antonio behind the desk
+; RE-AIMED 2026-10-03: Antonio at the desk with the street windows behind him
+; (it was the desk top at elbow height)
 [node name="shot_closeup_antonio" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.1, 1.3, -2.2)
-rotation = Vector3(-0.208026, -0.885067, 0)
+position = Vector3(1.600, 1.500, -4.000)
+rotation = Vector3(-0.0955, 2.6779, 0.0)
 metadata/fov = 36.0
 
 ; closeup: Jimmy on the pacing carpet
@@ -344,7 +346,9 @@ rotation = Vector3(-0.11, -0.88, 0.0)
 metadata/fov = 40.0
 
 ; insert: the east window over the street
+; RE-AIMED 2026-10-03: the LEADED window to the street ("looked out at the neighborhood …
+; leaning against a streetlight") — it framed the east pane, a flat warm glow
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.3, 1.5, -2.4)
-rotation = Vector3(0.152984, -1.08991, 0)
-metadata/fov = 42.0
+position = Vector3(0.850, 1.420, -0.950)
+rotation = Vector3(0.1021, -3.0904, 0.0)
+metadata/fov = 40.0
