@@ -279,6 +279,36 @@ through them in order.
 - Judge at 1:1 crops, not the montage: the tooth and the pooled rims
   vanish at half size.
 
+### 2026-10-02 (vii) · the stills lied: the TRAIL rig over the paint (ch 0 "still too muddy … neon lines overwhelming")
+
+- The Deck, with a ch 0 screenshot: "I saw stills that looked to fix
+  this, in action, still looks terrible. first five chapters I flipped
+  through looked unchanged." Every still came from TripPaintTest, which
+  attached the trip's AURA to the painted bg exactly as GameEngine does
+  — and never mounted the trip's FEEDBACK rig, which GameEngine does on
+  every background: a buffer that catches the picture's lights above
+  luma 0.6 and the aura's edges, re-projects them a hair larger every
+  frame (fb_zoom 0.10/s, decay 6.5) and screens the sum back over the
+  picture. On a photo that is a slow bloom. On a watercolour it is a
+  halo round every lit wall, bright neon on every edge (the edge feed
+  is fed back as LIGHT, whatever `paint_under` made of the aura's own
+  lines), and a smear of every detail in motion. A/B on the riverfront:
+  A (the rig as shipped) is the Deck's screenshot; B is the painting.
+- Fix: `TripSync.paint_under_3d` (GameEngine sets it to the bg's
+  TRIP_PAINT_UNDER when it attaches); when the trail's live source is
+  a SubViewportContainer, the gain and the edge feed scale by (1 −
+  that) — 15 % of a trail over a painting. And in the aura itself the
+  inked cross-fade now reaches 1 under paint (`paint_under * 1.25`:
+  the 15 % of screen glow that was left read as neon once the trail
+  fed it), the inked line 0.5 → 0.32.
+- RULE: the test tool mounts EVERY layer the game mounts. TripPaintTest
+  now attaches the feedback rig too (`--trails 0` leaves it off,
+  `--trails_paint 0` runs it as the Deck saw it). A still that skips a
+  layer is a still of a different game.
+- The Deck's build is `gl_compatibility`, the same renderer these
+  renders use — the painter itself is identical there; the gap was the
+  rig, not the driver.
+
 ### 2026-10-02 (vi) · glass is glass — vertex alpha becomes transparency at load (LocaleGlass)
 
 - Every builder writes glass with an alpha below 1 (Houston's glass

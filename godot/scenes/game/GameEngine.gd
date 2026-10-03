@@ -1252,7 +1252,11 @@ func _apply_bg_3d(preset_id: String) -> void:
 			# inked form (Background3D.TRIP_PAINT_UNDER, 2026-10-02)
 			var tm: ShaderMaterial = trip3d.call("attach", _bg_3d_node)
 			if tm != null and "TRIP_PAINT_UNDER" in _bg_3d_node:
-				tm.set_shader_parameter("paint_under", float(_bg_3d_node.get("TRIP_PAINT_UNDER")))
+				var pu: float = float(_bg_3d_node.get("TRIP_PAINT_UNDER"))
+				tm.set_shader_parameter("paint_under", pu)
+				# … and the TRAIL rig knows the surface is a painting (its
+				# halo and edge feed scale down — the ch 0 mud, 2026-10-02)
+				trip3d.set("paint_under_3d", pu)
 		# ... and it TRAILS too. The 3D path sets `_bg.texture = null`,
 		# so a feedback rig bound to the TextureRect alone would go
 		# dark on every locale scene — which is most of the VN and all

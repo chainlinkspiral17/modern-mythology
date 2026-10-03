@@ -288,11 +288,13 @@ void fragment() {
         // bright the aura becomes coloured INK — the lines darken toward
         // the register's hue, a colour print — and the flats take a soft
         // multiplied tint instead of a glow. `bright` cross-fades the two.
-        float bright = clamp(smoothstep(0.50, 0.85, y) + paint_under, 0.0, 1.0);
+        // (2026-10-02 ii: under paint the cross-fade reaches 1 — the 15 % of
+        // screen-blended glow that was left read as neon once the trail fed it)
+        float bright = clamp(smoothstep(0.50, 0.85, y) + paint_under * 1.25, 0.0, 1.0);
         vec3 lit = 1.0 - (1.0 - col) * (1.0 - rainbow * line_k);
         // under paint the ink is a tint, not a border (the Deck: "the neon
         // line border is coming on a bit strong, needs subtle")
-        vec3 inked = col * mix(vec3(1.0), rainbow * 0.85, line_k * mix(1.35, 0.5, paint_under));
+        vec3 inked = col * mix(vec3(1.0), rainbow * 0.85, line_k * mix(1.35, 0.32, paint_under));
         col = mix(lit, inked, bright);
 
         // ── the flats breathe in colour, not in place: a glow in the dark, a tint in the light ──

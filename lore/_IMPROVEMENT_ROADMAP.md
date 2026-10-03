@@ -3017,6 +3017,21 @@ authored dark (concrete 0.14, brick 0.22, dark plank ceiling) with the
 workbench lamp the only key at the VN vantage — a model chapter's
 look, not a bug. Left for the Deck's verdict once it is built there.
 
+**2026-10-02 · THE STILLS LIED — the trail rig over the paint (ch 0).**
+The Deck: "still too muddy, can't make out details. neon lines
+overwhelming the models … I saw stills that looked to fix this, in
+action, still looks terrible. first five chapters unchanged." The
+game mounts TripSync's FEEDBACK rig over every background; the test
+tool never did. Over a watercolour the rig is a halo, neon edges and
+a smear. Fixed in TripSync (`paint_under_3d`: the trail's gain and
+edge feed × (1 − 0.85) over a painted 3D bg), the aura's inked
+cross-fade reaching 1 under paint, and TripPaintTest mounting the rig
+so stills are the game (_SHADER_VISUALS_PLAYBOOK 2026-10-02 (vii)).
+No rebuild on the Deck: scripts and shaders only. If ch 0 STILL reads
+unchanged after this pull, the next diagnostic is PSYCHEDELIA at 0 in
+settings: the painting alone, no trip — it tells whether the painter
+runs at all on the Deck.
+
 **2026-10-02 · VOL 5 BACKGROUND PROGRAM · pass 2 — DIRECTION, shot by
 shot, and GLASS IS GLASS.** The method now: render every `[shot:]`
 marker of a locale through `TripPaintTest --marker shot_x` into one

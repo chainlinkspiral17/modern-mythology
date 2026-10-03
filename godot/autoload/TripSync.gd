@@ -108,6 +108,16 @@ var mix_lines: float = 1.0
 var mix_colour: float = 1.0
 var mix_beat: float = 1.0
 var mix_trails: float = 1.0
+# THE TRAIL OVER THE PAINT (2026-10-02). The VN's 3D rooms are a
+# watercolour; the feedback buffer screens their lights and the aura's
+# edges back over them, a hair larger every frame — on a painting that
+# is a halo round every lit wall and bright neon on every edge (the
+# Deck's ch 0 screenshot: "still too muddy, can't make out details.
+# neon lines overwhelming the models"; the test stills never mounted
+# the rig, so they looked fixed). GameEngine sets this to the bg's
+# TRIP_PAINT_UNDER; when the live source is a SubViewportContainer the
+# trail's gain and its edge feed are scaled by (1 − this).
+var paint_under_3d: float = 0.0
 const SOFT_SURFACE_SCALE: float = 0.45
 
 # ── THE FEEDBACK (2026-09-11) ─────────────────────────────────────
@@ -537,6 +547,7 @@ func _update_feedback(dt: float, local_active: bool) -> void:
 	var gain: float = effective_amount() * mix_trails * fb_amount
 	# The source must be a texture that is actually on screen.
 	var src_tex: Texture2D = null
+	var painted: float = 0.0
 	for e in _fb_shows:
 		var srcs: Array = e["srcs"]
 		for i in range(srcs.size() - 1, -1, -1):
@@ -550,7 +561,10 @@ func _update_feedback(dt: float, local_active: bool) -> void:
 			var t: Texture2D = _feedback_tex_of(item_v as CanvasItem)
 			if t != null:
 				src_tex = t
+				if item_v is SubViewportContainer:
+					painted = clampf(paint_under_3d, 0.0, 1.0)
 				break
+	gain *= 1.0 - painted
 	var mounted: bool = src_tex != null
 	# No mounted surface: mirror the root viewport's live camera, if
 	# there is one and the VN is not holding the global layer aside.
@@ -611,7 +625,7 @@ func _update_feedback(dt: float, local_active: bool) -> void:
 	# The aura is fed back at the register's line weight × the player's
 	# LINES dial, so TRAILS and LINES agree about how much line there is.
 	wm.set_shader_parameter("edge_amount",
-		float(reg.get("fb_amount", 0.5)) * mix_lines * 1.2)
+		float(reg.get("fb_amount", 0.5)) * mix_lines * 1.2 * (1.0 - painted))
 	var stex_size: Vector2 = src_tex.get_size()
 	wm.set_shader_parameter("src_px", Vector2(
 		1.0 / maxf(1.0, stex_size.x), 1.0 / maxf(1.0, stex_size.y)))

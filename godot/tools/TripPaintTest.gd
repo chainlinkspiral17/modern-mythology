@@ -58,11 +58,25 @@ func _ready() -> void:
 	var mat: ShaderMaterial = null
 	if String(args.get("trip", "1")) == "0":
 		trip = null                      # --trip 0: the painted room alone
+	var inked: float = float(String(args.get("inked", "0.85")))
 	if trip != null:
 		trip.call("push_register", String(trip.call("register_for_volume", vol)), self)
 		mat = trip.call("attach", bg)
+		mat.set_shader_parameter("paint_under", inked)
+		# the TRAIL rig, mounted as GameEngine mounts it (2026-10-02: the
+		# stills without it "looked to fix this; in action, still terrible")
+		# --trails 0 leaves it off; --trails_paint 0 runs it as before the
+		# painted scale (the game as the Deck saw it)
+		if String(args.get("trails", "1")) != "0" and trip.has_method("attach_feedback"):
+			var fb: Control = trip.call("attach_feedback", bg) as Control
+			if fb != null:
+				fb.z_index = 10
+				add_child(fb)
+				trip.call("add_feedback_source", fb, bg)
+			if String(args.get("trails_paint", "1")) != "0":
+				trip.set("paint_under_3d", inked)
 	for i in 90:
-		await get_tree().process_frame     # the register fade completes
+		await get_tree().process_frame     # the register fade completes, the trail accumulates
 	# a lively bar, held still: the aura at its brightest, a beat just landed
 	if trip != null and mat != null:
 		trip.set_process(false)
@@ -77,7 +91,7 @@ func _ready() -> void:
 		trip.set("ring_t", 0.25 if en > 0.5 else 10.0)
 		trip.call("_push_to", mat)
 		trip.call("_push_register_to", mat)
-		mat.set_shader_parameter("paint_under", float(String(args.get("inked", "0.85"))))
+		mat.set_shader_parameter("paint_under", inked)
 	for i in 4:
 		await get_tree().process_frame
 	await RenderingServer.frame_post_draw
