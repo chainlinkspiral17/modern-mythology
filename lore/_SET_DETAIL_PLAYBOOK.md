@@ -84,6 +84,45 @@ henderson) got there by accumulating exactly these layers.
 
 ## Recent lessons
 
+### 2026-10-03 · a home is ROOMS, not a box with furniture in it (the Roberts house)
+
+- The Deck, on the Lovers' domicile after a bones pass AND a proof-of-
+  life pass: "still looking wrong … I want it to feel cozy, brimming
+  with detail. Photos, and collections and comfy furniture and book
+  shelves and lived in spaces, not antiseptic and sterile … a foyer, a
+  living room, a dining room/kitchen, I want to have character." Two
+  passes of props on an 8×6 box were still a box. Character comes from
+  PLAN first: interior walls that make a foyer (walls either side of
+  the front door, a cased opening north), a living room with its own
+  paint, a dining room with a wainscot — and THEN each room's furniture
+  and its collections. build_house_rooms_2026_10 is the model.
+- What each room needs to read as itself: FOYER — the mat and the boots,
+  the hall table, a bench with coats on hooks, a mirror, a ceiling
+  fixture. LIVING — a window over the sofa, the sofa with a quilt and
+  a throw pillow, an armchair with a throw, a coffee table with a book
+  stack and a mug and the reading glasses, a rug with a border, a
+  BOOKCASE with books of fourteen thicknesses and a collection among
+  them (shells, sea glass, pinecones, a framed photo), a gallery wall
+  of five mismatched frames, a floor lamp, a side table with a lamp.
+  DINING — a table for four with chairs that do not match, a pendant
+  over it, a rug, a HUTCH with the plates standing and the preserves in
+  three colours, a sideboard under the window with standing frames and
+  the garden's flowers in a jar and a bowl of fruit, cookbooks on a
+  shelf, a wainscot and a chair rail. Every one of these is a box, a
+  cylinder or a lathe; `_wall_frame`, `_book_row`, `_bookcase` make
+  them cheap.
+- Each fixture gets its practical in the tscn (the floor lamp, the side
+  lamp, the pendant, the foyer's fixture) — a lamp with no light is a
+  prop, a lamp with a light is a room.
+- A sink is a basin CUT INTO the counter: four strips of counter round
+  a hole, a steel floor and four walls 18 cm down, the base cabinet
+  stopping under the floor. A white block standing on the counter with
+  the faucet on its room side read as "sink on backwards".
+- The audits catch what the eye forgives at montage size: frames
+  standing 3–4 cm off their shelf, a switch floating off a thinner
+  interior wall, a faucet handle not reaching its pipe, a soap bottle
+  left over the new hole. Run support_audit after every density pass.
+
 ### 2026-10-02 · the Roberts kitchen · bones before props, and the lane of the camera
 
 - The Deck: "the lovers domicile needs to feel domestic and lived in,

@@ -3017,6 +3017,24 @@ authored dark (concrete 0.14, brick 0.22, dark plank ceiling) with the
 workbench lamp the only key at the VN vantage — a model chapter's
 look, not a bug. Left for the Deck's verdict once it is built there.
 
+**2026-10-03 · THE ROBERTS HOUSE — foyer · living room · dining room
+(the Deck: "mackenzie home still looking wrong. sink on backwards? I
+want it to feel cozy, brimming with detail … a foyer, a living room,
+a dining room/kitchen, I want to have character").** Interior walls
+make a foyer and a living room; the dining room gets a wainscot; each
+room its furniture and its collections (_SET_DETAIL_PLAYBOOK
+2026-10-03 has the inventory). The sink is a basin cut into the
+counter with the faucet at the backsplash. Four practicals added for
+the new fixtures; `shot_establish_b` (the living room) and
+`shot_establish_dining` added; the Polaroid insert re-aimed at the
+hall table's new place. Deck must REBUILD roberts_kitchen. Draft N+1:
+the kitchen's west end (the loom's old corner) is bare; the radio's
+sill could carry more of Philip's driftwood; the foyer's north
+opening is a plain header — a transom or a glazed pair of doors would
+read older; the living room's window wants the yard beyond it (a
+make_backyard_view south); photos are tinted rectangles — the
+HeroImage path could put real pictures in the frames.
+
 **2026-10-02 · THE STILLS LIED — the trail rig over the paint (ch 0).**
 The Deck: "still too muddy, can't make out details. neon lines
 overwhelming the models … I saw stills that looked to fix this, in
