@@ -65,6 +65,44 @@ def make_wall(prefix, anchor, *, length, height=3.0, thickness=0.20,
                      (length, 0.012, 0.16), base_col)
 
 
+def make_wall_with_openings(prefix, anchor, *, length, openings, height=3.0, thickness=0.20,
+                            axis='Y', palette=None, baseboard_face_sign=-1):
+    """make_wall with HOLES in it (2026-10-03). `openings` is a list of
+    (centre_along, z_centre, width, opening_height) — centre_along is the
+    opening's centre on the wall's axis (x for an X wall, y for a Y wall).
+    Builds piers between the openings, a spandrel under each (with its
+    baseboard) and a lintel over each. A window built with make_window on
+    a wall that is not cut is a pane on a wall: nothing beyond it can be
+    seen (every window in every apartment was that until Montreal's
+    drainpipe insert looked straight into Wall_N)."""
+    palette = palette or {}
+    wall_col = palette.get("wall", P.WALL_CREAM)
+    base_col = palette.get("baseboard", P.WALL_BASEBOARD)
+    cx, cy, _ = anchor
+    along0 = (cy if axis == 'Y' else cx) - length / 2.0
+    cuts = sorted(openings, key=lambda o: o[0])
+    def seg(name, a0, a1, z0, z1, base):
+        if a1 - a0 <= 0.005 or z1 - z0 <= 0.005:
+            return
+        mid, ln, zc, h = (a0 + a1) / 2.0, a1 - a0, (z0 + z1) / 2.0, z1 - z0
+        if axis == 'Y':
+            make_box(name, (cx, mid, zc), (thickness, ln, h), wall_col)
+            if base and z0 < 0.01:
+                make_box(f"{name}_Base", (cx + baseboard_face_sign * (thickness / 2.0 + 0.006), mid, 0.08), (0.012, ln, 0.16), base_col)
+        else:
+            make_box(name, (mid, cy, zc), (ln, thickness, h), wall_col)
+            if base and z0 < 0.01:
+                make_box(f"{name}_Base", (mid, cy + baseboard_face_sign * (thickness / 2.0 + 0.006), 0.08), (ln, 0.012, 0.16), base_col)
+    cursor = along0
+    for i, (oc, oz, ow, oh) in enumerate(cuts):
+        a0, a1 = oc - ow / 2.0, oc + ow / 2.0
+        seg(f"{prefix}_Pier_{i}", cursor, a0, 0.0, height, True)
+        seg(f"{prefix}_Spandrel_{i}", a0, a1, 0.0, oz - oh / 2.0, True)
+        seg(f"{prefix}_Lintel_{i}", a0, a1, oz + oh / 2.0, height, False)
+        cursor = a1
+    seg(f"{prefix}_Pier_{len(cuts)}", cursor, along0 + length, 0.0, height, True)
+
+
 def make_ceiling(prefix, anchor, *, size_x, size_y, palette=None,
                  with_grid=True, with_stains=True):
     """Drop-tile ceiling with grid + occasional water stains."""

@@ -32,7 +32,7 @@ from _props.furniture import make_table, make_chair, make_bench, make_lamp, make
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, export_glb, make_chamfer_box, make_dome, make_taper_cyl, make_lathe
 from _props.structure import (
-    make_floor, make_wall, make_ceiling, make_window,
+    make_floor, make_wall, make_wall_with_openings, make_ceiling, make_window,
     make_crown_molding, make_door_hinges,
 )
 from _props.store_fixtures import make_counter, make_counter_bullnose
@@ -84,18 +84,25 @@ def build_shell():
     make_wall("Wall_W", (-ROOM_W / 2.0, ROOM_D / 2.0, 0),
               length=ROOM_D + 0.4, height=CEIL_Z, axis='Y',
               palette=PAL_DOMESTIC_WALL, baseboard_face_sign=+1)
-    make_wall("Wall_E", (+ROOM_W / 2.0, ROOM_D / 2.0, 0),
+    # (2026-10-03: every wall with a window is CUT round it — they were solid
+    # behind their panes, so the yard, the street and the porch were never
+    # seen through them)
+    make_wall_with_openings("Wall_E", (+ROOM_W / 2.0, ROOM_D / 2.0, 0),
               length=ROOM_D + 0.4, height=CEIL_Z, axis='Y',
-              palette=PAL_DOMESTIC_WALL, baseboard_face_sign=-1)
-    make_wall("Wall_N", (0.0, ROOM_D, 0),
+              palette=PAL_DOMESTIC_WALL, baseboard_face_sign=-1,
+              openings=[(3.5, 1.55, 1.80, 1.20)])
+    make_wall_with_openings("Wall_N", (0.0, ROOM_D, 0),
               length=ROOM_W + 0.4, height=CEIL_Z, axis='X',
-              palette=PAL_DOMESTIC_WALL, baseboard_face_sign=-1)
-    make_wall("Wall_S_W", (-2.55, 0.0, 0),   # to the header's edge (2026-09-22: 40 cm short)
+              palette=PAL_DOMESTIC_WALL, baseboard_face_sign=-1,
+              openings=[(-2.0, 1.98, 1.30, 0.84)])
+    make_wall_with_openings("Wall_S_W", (-2.55, 0.0, 0),   # to the header's edge (2026-09-22: 40 cm short)
               length=2.90, height=CEIL_Z, axis='X',
-              palette=PAL_DOMESTIC_WALL, baseboard_face_sign=+1)
-    make_wall("Wall_S_E", (+2.55, 0.0, 0),
+              palette=PAL_DOMESTIC_WALL, baseboard_face_sign=+1,
+              openings=[(-2.8, 1.58, 1.40, 1.00)])
+    make_wall_with_openings("Wall_S_E", (+2.55, 0.0, 0),
               length=2.90, height=CEIL_Z, axis='X',
-              palette=PAL_DOMESTIC_WALL, baseboard_face_sign=+1)
+              palette=PAL_DOMESTIC_WALL, baseboard_face_sign=+1,
+              openings=[(2.0, 1.40, 1.40, 1.20)])
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL_Z - 0.30),
              (2.20, 0.20, 0.60), PAL_DOMESTIC_WALL["wall"])
     make_ceiling("Ceil", (0.0, ROOM_D / 2.0, CEIL_Z),
@@ -732,13 +739,13 @@ def build_house_rooms_2026_10():
     # ── LIVING ROOM ─────────────────────────────────────────────────
     # the paint: dusty sage panels on the room's three solid walls (the
     # window cut out of the south one)
-    make_box("Living_Paint_W", (-3.895, 1.75, 1.30), (0.01, 3.30, 2.28), COL_LIVING_PAINT)
-    make_box("Living_Paint_E", (-1.30 - T / 2.0 - 0.005, 2.65, 1.30), (0.01, 1.50, 2.28), COL_LIVING_PAINT)
-    make_box("Living_Paint_E_F", (-1.30 - T / 2.0 - 0.005, 1.00, 1.30), (0.01, 1.80, 2.28), COL_LIVING_PAINT)
-    make_box("Living_Paint_S_W", (-3.75, 0.105, 1.30), (0.30, 0.01, 2.28), COL_LIVING_PAINT)
-    make_box("Living_Paint_S_E", (-1.80, 0.105, 1.30), (0.88, 0.01, 2.28), COL_LIVING_PAINT)
-    make_box("Living_Paint_S_Over", (-2.80, 0.105, 2.33), (1.60, 0.01, 0.22), COL_LIVING_PAINT)
-    make_box("Living_Paint_S_Under", (-2.80, 0.105, 0.60), (1.60, 0.01, 0.88), COL_LIVING_PAINT)
+    make_box("Living_Panel_W", (-3.895, 1.75, 1.30), (0.01, 3.30, 2.28), COL_LIVING_PAINT)
+    make_box("Living_Panel_E", (-1.30 - T / 2.0 - 0.005, 2.65, 1.30), (0.01, 1.50, 2.28), COL_LIVING_PAINT)
+    make_box("Living_Panel_E_F", (-1.30 - T / 2.0 - 0.005, 1.00, 1.30), (0.01, 1.80, 2.28), COL_LIVING_PAINT)
+    make_box("Living_Panel_S_W", (-3.75, 0.105, 1.30), (0.30, 0.01, 2.28), COL_LIVING_PAINT)
+    make_box("Living_Panel_S_E", (-1.80, 0.105, 1.30), (0.88, 0.01, 2.28), COL_LIVING_PAINT)
+    make_box("Living_Panel_S_Over", (-2.80, 0.105, 2.33), (1.60, 0.01, 0.22), COL_LIVING_PAINT)
+    make_box("Living_Panel_S_Under", (-2.80, 0.105, 0.60), (1.60, 0.01, 0.88), COL_LIVING_PAINT)
     # the window over the sofa (south wall, built toward the room)
     make_window("Window_Living", (-2.80, 0.10, 1.58), width=1.40, height=1.00, room_dir=+1)
     make_box("Window_Living_Sill", (-2.80, 0.17, 1.06), (1.54, 0.14, 0.04), wood)

@@ -336,10 +336,12 @@ rotation = Vector3(-0.513856, -0.71883, 0)
 metadata/fov = 40.0
 
 ; insert: the teacup on the coffee table
+; RE-AIMED 2026-10-03: her mother's teacup on the counter, 0.7 m off (it was a speck
+; across the room behind the ring light)
 [node name="shot_insert_teacup" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(3.275, 1.797, -3.782)
-rotation = Vector3(-0.5236, 0.7854, 0.0)
-metadata/fov = 40.0
+position = Vector3(1.550, 1.220, -4.650)
+rotation = Vector3(-0.3255, -0.5667, 0.0)
+metadata/fov = 30.0
 
 ; insert: the little red light, a baleful eye
 [node name="shot_insert_camera" type="Marker3D" parent="." groups=["vn_shot"]]

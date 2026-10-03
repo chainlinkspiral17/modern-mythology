@@ -309,18 +309,21 @@ rotation = Vector3(-0.206388, 2.39321, 0)
 metadata/fov = 54.0
 
 ; closeup: Jimmy on the rented sofa
+; RE-AIMED 2026-10-03: the backdrop is the sofa he crashed on, the lace curtain
+; and the shutters behind it (it was the cushions at arm's length)
 [node name="shot_closeup_jimmy" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.2, 1.3, -0.9)
-rotation = Vector3(-0.310983, 0.785398, 0)
+position = Vector3(-1.150, 1.420, -3.100)
+rotation = Vector3(-0.0942, 2.5682, 0.0)
 metadata/fov = 36.0
 
 ; insert: the microwave on the kitchenette
 ; (2026-09-19: the ajar door is on its hinge at the microwave now, blender
 ; (1.01, 5.24); the lens turns north-east to it)
+; RE-AIMED 2026-10-03: the greasy door FACE ON (his reflection) — it was the side of the box
 [node name="shot_insert_microwave" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.4, 1.2, -4.6)
-rotation = Vector3(-0.09, -0.76, 0)
-metadata/fov = 40.0
+position = Vector3(1.300, 1.220, -4.500)
+rotation = Vector3(-0.1088, 0.1095, 0.0)
+metadata/fov = 30.0
 
 ; insert: up at the ceiling fan
 [node name="shot_insert_ceiling_fan" type="Marker3D" parent="." groups=["vn_shot"]]

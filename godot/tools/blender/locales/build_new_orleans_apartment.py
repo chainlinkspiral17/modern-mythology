@@ -35,10 +35,10 @@ if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, make_chamfer_box, make_lathe, make_tube, make_rot_box, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding
-from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster
+from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster, make_calendar
 from _props.safety import make_smoke_detector
 from _props.detail import (make_floor_stain, make_light_switch, make_threshold, make_traffic_wear, make_wall_outlet, make_wall_tint_band)
-from _props.objects import make_can
+from _props.objects import make_can, make_bottle, make_plate
 from _props.furniture import make_bed
 
 PAL = {"wall": (0.92, 0.84, 0.66, 1.0), "baseboard": (0.42, 0.28, 0.18, 1.0)}
@@ -297,6 +297,63 @@ def build_draft3_2026_09():
         make_box(f"Out_Facade_Gallery_{gi}", (0.0, -11.6, -3.4 + gi * 3.4 + 3.2), (18.0, 0.6, 0.08), (0.14, 0.14, 0.15, 1.0))
 
 
+def build_dumpster_fire_2026_10():
+    """CHARACTER PASS (2026-10-03). The chapter: "a gumbo of stale
+    bourbon, sweat, cheap perfume clinging to the rented sofa … The
+    floor felt sticky. Everything felt sticky … The kitchenette. A
+    monument to neglect. The sink full of cloudy glasses. An ashtray
+    overflowing … A dumpster fire of a life." A sublet he crashed in:
+    empties by the sofa, the pizza box, clothes on the floor, the
+    duffel half unpacked at the bed's foot, the shoes kicked off at the
+    door, the dishes, the pan, the second bottle, the mail, the
+    cigarettes; the landlord's calendar, a Saints pennant on the brick,
+    the cracked mirror, a votive on the TV stand, the sticky stain."""
+    amber = (0.52, 0.32, 0.14, 0.85)
+    paper = (0.90, 0.88, 0.82, 1.0)
+    # ── by the sofa: empties, a can on its side, the pizza box
+    make_bottle("Empty_0", -1.58, 2.05, 0.0, amber, h=0.26, r=0.035)
+    make_bottle("Empty_1", -1.50, 2.32, 0.0, (0.30, 0.34, 0.26, 0.85), h=0.24, r=0.033)
+    make_cyl("Empty_2_Side", (-1.70, 1.68, 0.035), 0.035, 0.24, amber, segments=8, axis='Y')
+    make_cyl("Can_Side_2", (-1.45, 2.65, 0.033), 0.033, 0.12, (0.66, 0.18, 0.16, 1.0), segments=8, axis='X')
+    make_box("Pizza_Box", (-1.40, 3.05, 0.02), (0.42, 0.42, 0.04), (0.74, 0.62, 0.42, 1.0))
+    make_rot_box("Pizza_Box_Lid", (-1.40, 3.33, 0.215), (0.42, 0.42, 0.01), (0.70, 0.58, 0.40, 1.0), pitch=1.25)   # hinged at the box's north edge, its low end on the floor
+    make_cyl("Pizza_Crust", (-1.30, 3.00, 0.048), 0.05, 0.015, (0.78, 0.60, 0.34, 1.0), segments=8)
+    make_floor_stain("Sticky_Stain", (-1.62, 2.55), radius=0.16, tint=(0.44, 0.36, 0.26, 1.0))
+    # ── clothes: a shirt, the jeans, a sock; the duffel at the bed's foot
+    make_chamfer_box("Shirt_Floor", (-1.90, 3.75, 0.04), (0.42, 0.32, 0.08), (0.56, 0.50, 0.62, 1.0), chamfer=0.03)
+    make_chamfer_box("Jeans_Floor", (-1.25, 3.95, 0.035), (0.62, 0.30, 0.07), (0.26, 0.30, 0.42, 1.0), chamfer=0.03)
+    make_box("Sock_Floor", (-0.95, 3.72, 0.015), (0.08, 0.16, 0.03), (0.80, 0.80, 0.76, 1.0))
+    make_chamfer_box("Duffel", (0.90, 2.60, 0.16), (0.62, 0.34, 0.32), (0.26, 0.28, 0.24, 1.0), chamfer=0.05)
+    make_box("Duffel_Strap", (0.90, 2.60, 0.33), (0.40, 0.05, 0.02), (0.18, 0.18, 0.16, 1.0))
+    make_chamfer_box("Duffel_Sleeve_Out", (1.26, 2.52, 0.05), (0.26, 0.14, 0.10), (0.62, 0.56, 0.44, 1.0), chamfer=0.03)
+    make_box("Shoe_A", (0.42, 0.46, 0.05), (0.11, 0.30, 0.10), (0.16, 0.14, 0.12, 1.0))
+    make_rot_box("Shoe_B", (0.60, 0.42, 0.06), (0.11, 0.30, 0.10), (0.16, 0.14, 0.12, 1.0), yaw=0.4)
+    # ── the kitchenette's week: plates, the pan, the second bottle on its
+    #    side, the mail, the cigarettes and the lighter
+    for k in range(2):
+        make_plate(f"Dirty_Plate_{k}", -0.30, 5.72, 0.965 + k * 0.014, (0.82, 0.80, 0.74, 1.0), r=0.11)
+    make_box("Dirty_Plate_Smear", (-0.28, 5.72, 0.996), (0.08, 0.06, 0.002), (0.56, 0.40, 0.26, 1.0))
+    make_cyl("Pan", (0.92, 5.78, 0.985), 0.12, 0.04, (0.20, 0.20, 0.22, 1.0), segments=12)
+    make_cyl("Pan_Handle", (0.76, 5.78, 0.99), 0.012, 0.18, (0.20, 0.20, 0.22, 1.0), segments=6, axis='X')
+    make_cyl("Second_Bottle_Side", (0.50, 5.33, 1.00), 0.035, 0.22, amber, segments=8, axis='X')
+    make_box("Mail_Pile", (-1.00, 5.50, 0.98), (0.20, 0.28, 0.03), paper)
+    make_box("Mail_Pile_Red", (-0.98, 5.52, 0.998), (0.18, 0.10, 0.004), (0.80, 0.26, 0.22, 1.0))
+    make_box("Cigarette_Pack", (-0.95, 5.76, 0.975), (0.055, 0.085, 0.02), (0.20, 0.42, 0.26, 1.0))
+    make_box("Lighter", (-0.86, 5.70, 0.973), (0.025, 0.06, 0.012), (0.86, 0.28, 0.20, 1.0))
+    make_cyl("Cloudy_Glass_3", (-0.88, 5.42, 1.02), 0.03, 0.10, (0.72, 0.74, 0.70, 0.6), segments=8)
+    make_cyl("Cloudy_Glass_4_Side", (-0.40, 5.40, 0.995), 0.03, 0.10, (0.72, 0.74, 0.70, 0.6), segments=8, axis='Y')
+    # ── the walls: the landlord's calendar, a Saints pennant on the
+    #    brick, a cracked mirror; the votive on the TV stand
+    make_calendar("Sublet_Calendar", (1.90, ROOM_D - 0.1, 1.70), axis='X')
+    make_box("Pennant", (ROOM_W / 2.0 - 0.112, 1.20, 2.20), (0.006, 0.50, 0.18), (0.84, 0.70, 0.30, 1.0))
+    make_box("Pennant_Stripe", (ROOM_W / 2.0 - 0.115, 1.03, 2.20), (0.004, 0.14, 0.18), (0.10, 0.10, 0.10, 1.0))
+    make_box("Cracked_Mirror_Frame", (-ROOM_W / 2.0 + 0.112, 4.50, 1.60), (0.02, 0.44, 0.60), (0.30, 0.24, 0.18, 1.0))
+    make_box("Cracked_Mirror_Glass", (-ROOM_W / 2.0 + 0.124, 4.50, 1.60), (0.004, 0.38, 0.54), (0.62, 0.66, 0.68, 1.0))
+    make_rot_box("Mirror_Crack", (-ROOM_W / 2.0 + 0.127, 4.52, 1.62), (0.002, 0.006, 0.40), (0.30, 0.32, 0.34, 1.0), roll=0.5)
+    make_cyl("Votive", (3.05, 2.55, 0.69), 0.03, 0.08, (0.86, 0.82, 0.74, 1.0), segments=8)
+    make_box("Votive_Label", (3.018, 2.55, 0.69), (0.004, 0.04, 0.05), (0.40, 0.50, 0.70, 1.0))
+
+
 def main():
     clear_scene(); build_shell(); build_shuttered_windows(); build_bed(); build_armoire(); build_decor(); build_ceiling_infra()
     build_hero_props()
@@ -304,6 +361,7 @@ def main():
     build_use_states_d4()
     build_hero_props_2026_09()
     build_draft3_2026_09()
+    build_dumpster_fire_2026_10()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/new_orleans_apartment.glb"))
     print(f"\n[build_new_orleans_apartment] exporting to {out}")
     export_glb(out)

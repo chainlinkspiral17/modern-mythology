@@ -334,6 +334,19 @@ through them in order.
   does. Anything a builder gave an alpha for a reason OTHER than
   see-through (none found in vol 5's builders; survey before vol 6/7)
   will now show through — a lampshade at 0.7 is a lit shade, fine.
+- GLASS NEEDS A HOLE (2026-10-03). `make_window` builds a frame and a
+  pane ON a wall; `make_wall` never cuts one. Every apartment window
+  was a pane in front of a solid wall — Montreal's north "frame" was
+  even a solid steel plate behind its glass — so the alley, the yard,
+  the street and the dusk towers the builders made were never
+  visible. `make_wall_with_openings(…, openings=[(centre_along, z,
+  w, h)])` builds piers, a spandrel and a lintel round each opening;
+  Montreal, Elicia's and the Roberts house are cut now. Audit the
+  pane too: the obstruction audit treats `glass`/`pane` names as
+  passable again, so a window shot that still hits a wall says
+  `Wall_N stands between the lens and …` and names the wall to cut.
+- The default `P.GLASS` alpha went 0.45 → 0.25: at 0.45 every view out
+  of a window was a pale wash over what lay beyond.
 - A leaded window reads by its LATTICE: 2 cm cames at 50 cm vanished
   under the Kuwahara; 3.5 cm at 25 cm, standing 1.5 cm proud of the
   pane each side, in lead grey, hold.

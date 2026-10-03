@@ -94,6 +94,13 @@ _PASSABLE_RE = re.compile(r"(fog|haze|mist|smoke|steam|cloud|canopy|foliage|_C[0
 # Calling them passable made the cabin's crow insert pass while the
 # frame showed a grey pane and no crow. A lens sees through a window
 # only when the window has no glass (make_window(see_through=True)).
+# GLASS AGAIN (2026-10-03): scripts/LocaleGlass.gd turns the builders'
+# vertex alpha into real transparency at load, so a pane IS seen
+# through now (Montreal's drainpipe insert looks out through the north
+# window). A pane the builder made opaque on purpose (the diner's
+# night glass, alpha 1.0) will pass here and show a slab in the render
+# — the montage is the gate for those.
+_GLASS_RE = re.compile(r"(glass|_pane\b|pane_)", re.I)
 _SOLID_RE = re.compile(r"(trunk|stump|log|pole|post|butt)", re.I)
 
 
@@ -101,6 +108,8 @@ class _Passable:
     """regex-like: .search(name) is truthy for foliage / fog / spray
     parts a lens may stand in and see through — never for a trunk."""
     def search(self, name):
+        if _GLASS_RE.search(name):
+            return True
         return bool(_PASSABLE_RE.search(name)) and not _SOLID_RE.search(name)
 
 

@@ -3017,6 +3017,49 @@ authored dark (concrete 0.14, brick 0.22, dark plank ceiling) with the
 workbench lamp the only key at the VN vantage — a model chapter's
 look, not a bug. Left for the Deck's verdict once it is built there.
 
+**2026-10-03 · THE THREE APARTMENTS — character passes (ch 14 / 15 /
+16).** The Roberts standard applied to the rest of vol 5's homes, each
+from its chapter's own inventory. MONTREAL (John Frank, "a cluttered
+archive of selves"): four Criterion posters, eleven torn journal pages
+pinned over the desk, notebook ziggurats on every surface (coffee
+table, bistro table, sofa, radiator, two on the floor), the desk lamp
+and pen cup and the notebook open mid-line, the kitchen drawer half
+out with the private notebook in it, the bookshelf's collection (key
+bowl, DVDs, pen jar, photo, plant, camera), the winter coat and boots
+by the door. NEW ORLEANS (Jimmy's sublet, "a dumpster fire of a
+life"): empties and a can by the sofa, the pizza box open, a shirt and
+jeans on the floor, the duffel half unpacked at the bed's foot, shoes
+kicked off at the door, the sticky stain, dirty plates, the pan, a
+second bottle on its side, the mail, the cigarettes and lighter, the
+landlord's calendar, a Saints pennant on the brick, a cracked mirror,
+a votive on the TV stand. ELICIA'S (the Tower, "ruins of some
+forgotten exposition"): the work table under the west window with two
+dead monitors, the keyboard, the drive stacks, a dead plant and the
+cable ivy off its edge; the story-map whiteboard under fourteen
+post-its and the corkboard of the photographs she stopped taking; her
+prints leaning unhung; the low case of binders, film cans and drive
+cases; a tripod standing for the camera; ten more pages, four more
+slates; Montreal's dusk through the west window (four tower blocks
+with their windows lit, the harbour's red and gold afar). All three
+clean on overlap, support and both marker audits. Markers re-aimed
+from the renders: Montreal's mug (the NARWHAL one, on the desk) and
+notebook (the one open on the desk) and the drainpipe (through the
+window — which found the window was a pane on a solid wall, see
+_SHADER_VISUALS 2026-10-03: `make_wall_with_openings` cuts the hole;
+Montreal, Elicia's and the Roberts house are cut, the default glass
+thinned); New Orleans' Jimmy (the sofa and the lace window behind
+him) and the microwave (face on); Elicia's teacup (0.7 m off). Deck
+must REBUILD all three AND roberts_kitchen. Draft N+1: Elicia's dusk
+towers stand just outside her west window's sightline (the panes show
+the environment's sky) — a wide skyline plate with lit windows behind
+the whole west side; cut the windows
+of the other locales (`grep -l make_window` — the diner's, the
+bungalow's, the hospice's, Natalie's: every one is a pane on a wall); (this
+pass was built blind from the prose while the first renders ran);
+Montreal's bookshelf still has identical books (vary them with
+_book_row); New Orleans wants the bruised-purple window light the
+chapter names; Elicia's sofa is a plain slab.
+
 **2026-10-03 · THE ROBERTS HOUSE — foyer · living room · dining room
 (the Deck: "mackenzie home still looking wrong. sink on backwards? I
 want it to feel cozy, brimming with detail … a foyer, a living room,

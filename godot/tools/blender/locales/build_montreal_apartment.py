@@ -6,7 +6,8 @@ import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.furniture import make_lamp
+from _props.geometry import clear_scene, make_box, make_cyl, export_glb, make_chamfer_box
 from _props.structure import make_floor, make_wall, make_ceiling, make_window, make_crown_molding
 from _props.store_fixtures import make_counter, make_counter_bullnose
 from _props.decor import make_wall_clock, make_faded_poster, make_floor_plant
@@ -24,7 +25,14 @@ def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4, palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
     for nm, x, ax, bb in [("Wall_W", -ROOM_W/2.0, 'Y', +1), ("Wall_E", +ROOM_W/2.0, 'Y', -1)]:
         make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis=ax, palette=PAL, baseboard_face_sign=bb)
-    make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=-1)
+    # the north wall CUT around the window (x -1.1..1.1, z 0.6..2.6) — it was
+    # solid behind the pane, so the alley the chapter looks at was a wall
+    # (2026-10-03): two piers, a spandrel under the sill, a lintel over it
+    make_wall("Wall_N_Pier_W", (-2.15, ROOM_D, 0), length=2.10, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=-1)
+    make_wall("Wall_N_Pier_E", (+2.15, ROOM_D, 0), length=2.10, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=-1)
+    make_box("Wall_N_Spandrel", (0.0, ROOM_D, 0.30), (2.20, 0.20, 0.60), PAL["wall"])
+    make_box("Wall_N_Spandrel_Base", (0.0, ROOM_D - 0.106, 0.08), (2.20, 0.012, 0.16), PAL["baseboard"])
+    make_box("Wall_N_Lintel", (0.0, ROOM_D, CEIL - 0.10), (2.20, 0.20, 0.20), PAL["wall"])
     make_wall("Wall_S_W", (-2.0, 0.0, 0), length=2.0, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1)
     make_wall("Wall_S_E", (+2.0, 0.0, 0), length=2.0, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1)
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL["wall"])
@@ -34,8 +42,14 @@ def build_shell():
     # Tall north window with snow-light through
     # on the wall's room face, glass in front of the frame (2026-09-24: frame and glass
     # were offset from the wall's CENTRE line — inside the wall, never visible)
-    make_box("Window_N_Frame", (0.0, ROOM_D-0.12, 1.60), (2.20, 0.04, 2.00), P.METAL_STEEL)
-    make_box("Window_N_Glass", (0.0, ROOM_D-0.1425, 1.60), (2.00, 0.005, 1.80), (0.78, 0.84, 0.92, 0.65))
+    # (2026-10-03: the "frame" was a solid steel PLATE behind the glass — the
+    # alley the chapter looks at was never visible; a frame is four bars
+    # and two mullions)
+    for nm, cx, cz, w, h in (("Window_N_Frame_T", 0.0, 2.57, 2.20, 0.06), ("Window_N_Frame_B", 0.0, 0.63, 2.20, 0.06),
+                             ("Window_N_Frame_L", -1.07, 1.60, 0.06, 2.00), ("Window_N_Frame_R", 1.07, 1.60, 0.06, 2.00),
+                             ("Window_N_Mullion_V", 0.0, 1.60, 0.04, 1.88), ("Window_N_Mullion_H", 0.0, 1.60, 2.08, 0.04)):
+        make_box(nm, (cx, ROOM_D-0.12, cz), (w, 0.04, h), P.METAL_STEEL)
+    make_box("Window_N_Glass", (0.0, ROOM_D-0.1425, 1.60), (2.00, 0.005, 1.80), (0.78, 0.84, 0.92, 0.22))   # (2026-10-03: glass is glass now — at 0.65 the alley was a pale wash; the brick, the moss and the drainpipe show)
     # Heavy curtains either side
     for cs in (-1, +1):
         make_box(f"Curtain_{cs:+d}", (cs*1.30, ROOM_D-0.08, 1.60), (0.20, 0.06, 2.00), COL_CURTAIN)
@@ -274,12 +288,124 @@ def build_hero_props_2026_09():
                  (0.96, 0.92, 0.80, 0.75), segments=6)
 
 
+def build_archive_of_selves_2026_10():
+    """CHARACTER PASS (2026-10-03, the Deck's standard from the Roberts
+    house: "cozy, brimming with detail. Photos, and collections and
+    comfy furniture and book shelves and lived in spaces"). The chapter:
+    "His apartment … was a cluttered archive of selves. Movie posters
+    (mostly Criterion Collection reprints now) jostled for wall space
+    with pages torn from obscure literary journals. Notebooks filled
+    with fragmented observations and abandoned narratives formed
+    precarious ziggurats on every available surface." So: four posters,
+    a cluster of torn pages pinned over the desk, ziggurats on EVERY
+    surface (the coffee table, the bistro table, the floor by the desk,
+    the sofa, the floor by the armchair), the desk lamp and the pen cup
+    and the notebook open mid-line, the kitchen drawer half out with the
+    private notebook in it, the bookshelf's collection (DVDs, a camera,
+    a photo, a jar of pens, a small plant), a winter coat and boots by
+    the door."""
+    import random
+    rnd = random.Random(14)
+    wood = (0.42, 0.30, 0.20, 1.0)
+    paper = (0.90, 0.88, 0.82, 1.0)
+    ink = (0.24, 0.24, 0.28, 1.0)
+    # ── four posters: a dark field, a pale title band, two lines
+    def poster(name, face_xy, z, facing, field, band, w=0.60, h=0.90):
+        fx, fy = face_xy
+        nx, ny = {"+X": (1, 0), "-X": (-1, 0), "+Y": (0, 1), "-Y": (0, -1)}[facing]
+        along_y = facing in ("+X", "-X")
+        def sz(wd, ht, th): return (th, wd, ht) if along_y else (wd, th, ht)
+        make_box(f"{name}_Sheet", (fx + nx * 0.004, fy + ny * 0.004, z), sz(w, h, 0.008), field)
+        make_box(f"{name}_Band", (fx + nx * 0.009, fy + ny * 0.009, z - h * 0.32), sz(w * 0.84, h * 0.16, 0.002), band)
+        for i in range(2):
+            make_box(f"{name}_Line_{i}", (fx + nx * 0.011, fy + ny * 0.011, z - h * 0.32 + 0.03 - i * 0.035), sz(w * (0.5 - i * 0.14), 0.012, 0.002), ink)
+        make_box(f"{name}_Figure", (fx + nx * 0.009, fy + ny * 0.009, z + h * 0.12), sz(w * 0.42, h * 0.46, 0.002), (field[0] * 1.7, field[1] * 1.6, field[2] * 1.5, 1.0))
+    poster("Poster_Criterion_A", (-2.0, 0.105), 1.72, "+Y", (0.16, 0.20, 0.30, 1.0), (0.88, 0.84, 0.72, 1.0))
+    poster("Poster_Criterion_B", (1.95, 0.105), 1.68, "+Y", (0.30, 0.14, 0.14, 1.0), (0.90, 0.88, 0.80, 1.0), w=0.56, h=0.84)
+    poster("Poster_Criterion_C", (2.8965, 2.68), 1.72, "-X", (0.12, 0.22, 0.20, 1.0), (0.86, 0.84, 0.70, 1.0), w=0.56, h=0.84)
+    poster("Poster_Criterion_D", (-2.8965, 4.30), 1.70, "+X", (0.34, 0.26, 0.12, 1.0), (0.90, 0.86, 0.74, 1.0), w=0.50, h=0.76)
+    # ── torn journal pages pinned over the desk (west wall, y 2.95..3.85)
+    for i in range(11):
+        py = 2.95 + rnd.uniform(0.0, 0.90)
+        pz = 1.25 + rnd.uniform(0.0, 0.95)
+        w, h = rnd.choice(((0.12, 0.17), (0.14, 0.20), (0.10, 0.15), (0.16, 0.12)))
+        tint = rnd.choice((paper, (0.86, 0.84, 0.76, 1.0), (0.92, 0.90, 0.86, 1.0)))
+        make_box(f"Torn_Page_{i}", (-2.8965 + 0.004, py, pz), (0.006, w, h), tint)
+        for k in range(3):
+            make_box(f"Torn_Page_{i}_Line_{k}", (-2.8965 + 0.009, py, pz + h * 0.25 - k * h * 0.22), (0.002, w * rnd.uniform(0.45, 0.8), 0.006), ink)
+        make_cyl(f"Torn_Page_{i}_Pin", (-2.8965 + 0.010, py, pz + h / 2.0 - 0.012), 0.006, 0.006, (0.80, 0.20, 0.18, 1.0), segments=6, axis='X')
+    # ── ziggurats on every surface
+    def ziggurat(prefix, x, y, z0, n):
+        for k in range(n):
+            make_box(f"{prefix}_{k}", (x + 0.012 * (k % 2) - 0.006, y + 0.008 * ((k + 1) % 2), z0 + k * 0.035 + 0.0175),
+                     (0.20 - 0.015 * k, 0.26 - 0.015 * k, 0.035),
+                     [(0.62, 0.24, 0.24, 1.0), (0.24, 0.42, 0.52, 1.0), (0.72, 0.62, 0.30, 1.0), (0.30, 0.30, 0.34, 1.0), (0.46, 0.52, 0.36, 1.0)][(k + n) % 5])
+    ziggurat("Zig_Coffee", -1.05, 2.60, 0.445, 3)
+    ziggurat("Zig_Bistro", 1.22, 3.72, 0.765, 3)
+    ziggurat("Zig_DeskFloor", -2.72, 2.70, 0.0, 6)
+    ziggurat("Zig_Sofa", -1.22, 1.22, 0.49, 2)   # the west cushion (the throw lies on the east one)
+    ziggurat("Zig_ChairFloor", -2.78, 1.72, 0.0, 4)
+    ziggurat("Zig_Radiator", 0.52, 4.80, 0.84, 2)
+    # ── the desk: the lamp, the pen cup, the notebook open mid-line
+    make_lamp("Desk_Lamp", -2.82, 3.66, base_z=0.765, h=0.42)
+    make_cyl("Pen_Cup", (-1.62, 3.66, 0.815), 0.035, 0.10, (0.32, 0.36, 0.40, 1.0), segments=8)
+    for i, (dx, dy) in enumerate(((-0.01, 0.0), (0.012, 0.01), (0.0, -0.012))):
+        make_cyl(f"Pen_{i}", (-1.62 + dx, 3.66 + dy, 0.90), 0.004, 0.14, [(0.20, 0.22, 0.30, 1.0), (0.70, 0.20, 0.18, 1.0), (0.86, 0.80, 0.40, 1.0)][i], segments=5)
+    make_box("Desk_Notebook_Open_L", (-1.83, 3.26, 0.773), (0.14, 0.20, 0.012), paper)
+    make_box("Desk_Notebook_Open_R", (-1.68, 3.26, 0.773), (0.14, 0.20, 0.012), (0.92, 0.90, 0.84, 1.0))
+    for k in range(5):
+        make_box(f"Desk_Notebook_Line_{k}", (-1.83, 3.33 - k * 0.03, 0.780), (0.09 - 0.01 * (k % 3), 0.004, 0.002), ink)
+    make_cyl("Desk_Pen_Open", (-1.70, 3.20, 0.785), 0.005, 0.13, (0.20, 0.22, 0.30, 1.0), segments=6, axis='X')
+    # ── the kitchen drawer half out, the private notebook inside
+    make_box("Kitchen_Drawer_Open", (1.98, 4.10, 0.80), (0.26, 0.40, 0.03), wood)
+    make_box("Kitchen_Drawer_Front", (1.86, 4.10, 0.80), (0.02, 0.42, 0.14), (0.52, 0.40, 0.28, 1.0))
+    for sgn in (-1, 1):
+        make_box(f"Kitchen_Drawer_Side_{sgn:+d}", (1.98, 4.10 + sgn * 0.195, 0.86), (0.26, 0.01, 0.10), wood)
+    make_cyl("Kitchen_Drawer_Knob", (1.845, 4.10, 0.80), 0.012, 0.02, P.METAL_STEEL, segments=6, axis='X')
+    make_box("Private_Notebook", (1.98, 4.10, 0.825), (0.14, 0.20, 0.02), (0.22, 0.20, 0.26, 1.0))
+    make_box("Private_Notebook_Band", (1.98, 4.10, 0.837), (0.14, 0.03, 0.002), (0.62, 0.24, 0.24, 1.0))
+    # ── the bookshelf's collection, in the 20 cm north of each shelf's books
+    sx2 = 2.66
+    for shf, (kind) in enumerate(("keys", "dvds", "pens", "photo", "plant", "camera")):
+        z = 0.20 + shf * 0.40 + 0.01
+        y = 2.14
+        if kind == "keys":
+            make_bowl("Shelf_Key_Bowl", sx2, y, z, (0.46, 0.56, 0.52, 1.0), r=0.07, h=0.04)
+        elif kind == "dvds":
+            for k in range(5):
+                make_box(f"Shelf_DVD_{k}", (sx2, y, z + 0.015 * k + 0.0075), (0.13, 0.18, 0.015), [(0.16, 0.16, 0.18, 1.0), (0.62, 0.60, 0.56, 1.0), (0.30, 0.22, 0.20, 1.0)][k % 3])
+        elif kind == "pens":
+            make_cyl("Shelf_Pen_Jar", (sx2, y, z + 0.055), 0.04, 0.11, (0.72, 0.80, 0.78, 0.6), segments=8)
+            for k in range(4):
+                make_cyl(f"Shelf_Pen_{k}", (sx2 + 0.012 * (k - 1.5), y + 0.008 * (k % 2), z + 0.11), 0.004, 0.16, (0.20 + 0.1 * k, 0.22, 0.30, 1.0), segments=5)
+        elif kind == "photo":
+            make_box("Shelf_Photo_Frame", (sx2 + 0.05, y, z + 0.08), (0.02, 0.14, 0.16), (0.24, 0.18, 0.12, 1.0))
+            make_box("Shelf_Photo_Pic", (sx2 + 0.038, y, z + 0.08), (0.004, 0.11, 0.13), (0.58, 0.62, 0.66, 1.0))
+            make_box("Shelf_Photo_Strut", (sx2 + 0.10, y, z + 0.04), (0.08, 0.02, 0.08), (0.24, 0.18, 0.12, 1.0))
+        elif kind == "plant":
+            make_cyl("Shelf_Plant_Pot", (sx2, y, z + 0.045), 0.045, 0.09, (0.72, 0.42, 0.28, 1.0), segments=8)
+            for k in range(3):
+                make_box(f"Shelf_Plant_Leaf_{k}", (sx2 + 0.03 * (k - 1), y + 0.02 * (k % 2), z + 0.13 + 0.02 * k), (0.06, 0.05, 0.008), (0.34, 0.52, 0.26, 1.0))
+        else:
+            make_box("Shelf_Camera", (sx2, y, z + 0.035), (0.12, 0.08, 0.07), (0.14, 0.14, 0.16, 1.0))
+            make_cyl("Shelf_Camera_Lens", (sx2 - 0.07, y, z + 0.04), 0.025, 0.03, (0.10, 0.10, 0.12, 1.0), segments=8, axis='X')
+    # ── the winter coat and the boots by the door (Montreal)
+    make_box("Coat_Hooks", (1.45, 0.115, 1.74), (0.30, 0.02, 0.05), wood)
+    make_chamfer_box("Winter_Coat", (1.42, 0.205, 1.26), (0.26, 0.16, 0.86), (0.22, 0.26, 0.34, 1.0), chamfer=0.03)   # against the hook rail
+    make_chamfer_box("Winter_Coat_Hood", (1.42, 0.195, 1.74), (0.28, 0.14, 0.12), (0.26, 0.30, 0.38, 1.0), chamfer=0.03)
+    make_box("Scarf", (1.56, 0.155, 1.40), (0.08, 0.06, 0.60), (0.62, 0.24, 0.24, 1.0))
+    make_box("Boot_A", (1.25, 0.36, 0.12), (0.12, 0.30, 0.24), (0.20, 0.18, 0.16, 1.0))
+    make_box("Boot_B", (1.42, 0.38, 0.12), (0.12, 0.30, 0.24), (0.20, 0.18, 0.16, 1.0))
+    make_box("Boot_Tray", (1.34, 0.38, 0.006), (0.40, 0.36, 0.012), (0.30, 0.30, 0.32, 1.0))
+
+
 def main():
     clear_scene(); build_shell(); build_living(); build_dining_nook(); build_floor_lamp(); build_kitchenette(); build_radiator_under_window(); build_decor(); build_ceiling_infra()
     build_hero_props()
     build_detail_pass_2026_08()
     build_use_states_d4()
     build_hero_props_2026_09()
+    build_archive_of_selves_2026_10()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/montreal_apartment.glb"))
     print(f"\n[build_montreal_apartment] exporting to {out}")
     export_glb(out)

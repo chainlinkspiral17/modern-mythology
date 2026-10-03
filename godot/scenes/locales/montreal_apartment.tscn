@@ -315,16 +315,18 @@ rotation = Vector3(-0.163163, 2.28963, 0)
 metadata/fov = 54.0
 
 ; insert: the notebook on the reading chair
+; RE-AIMED 2026-10-03: the mug insert is the NARWHAL mug on the desk (it framed
+; the bistro table's); the notebook insert the one open on the desk (it framed the sofa)
 [node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.986, 1.116, -3.461)
-rotation = Vector3(-0.5236, 2.8798, 0.0)
-metadata/fov = 40.0
+position = Vector3(-1.450, 1.150, -2.750)
+rotation = Vector3(-0.5550, 0.5462, 0.0)
+metadata/fov = 34.0
 
 ; insert: the mug at the sofa arm
 [node name="shot_insert_mug" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.2, 1, -1.9)
-rotation = Vector3(-0.5233, 0.7774, 0.0)
-metadata/fov = 38.0
+position = Vector3(-2.050, 1.100, -3.050)
+rotation = Vector3(-0.3524, 0.7854, 0.0)
+metadata/fov = 32.0
 
 ; insert: the phone on the desk, face-up, the four-word thread
 [node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -339,10 +341,12 @@ rotation = Vector3(0.35, 0, 0)   ; low, tilted up into the window's light with t
 metadata/fov = 42.0
 
 ; insert: the graffiti-scarred drainpipe, when the light hits it
+; RE-AIMED 2026-10-03: from inside at the window, THROUGH the glass at the pipe
+; across the alley (the lens stood in the alley against the pipe)
 [node name="shot_insert_drainpipe" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022, 1.662, -7.200)
-rotation = Vector3(-0.0808, -1.5528, 0.0)   ; in the alley, looking back up the pipe (2026-09-25: it looked at the pipe through the window glass, which is opaque here)
-metadata/fov = 42.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.350, 1.450, -4.550)
+rotation = Vector3(-0.0517, -0.3709, 0.0)   ; in the alley, looking back up the pipe (2026-09-25: it looked at the pipe through the window glass, which is opaque here)
+metadata/fov = 30.0
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
 ; every closeup of a person cued here cuts to it (the scene had no closeup marker)

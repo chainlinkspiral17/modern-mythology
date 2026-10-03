@@ -118,6 +118,17 @@ henderson) got there by accumulating exactly these layers.
   a hole, a steel floor and four walls 18 cm down, the base cabinet
   stopping under the floor. A white block standing on the counter with
   the faucet on its room side read as "sink on backwards".
+- The same pass on three apartments the same day (Montreal, New
+  Orleans, Elicia's): read the chapter for its NOUNS first, then build
+  every one of them — a "cluttered archive of selves" is posters AND
+  torn pages AND ziggurats on every surface; a "dumpster fire" is
+  empties AND the pizza box AND clothes on the floor AND the duffel; a
+  "ruined command center" is dead monitors AND the story-map
+  whiteboard AND the prints she never hung. Twenty to thirty objects a
+  room, each named in the prose or following from it.
+- `make_tube` polylines are boxed WHOLE by the overlap audit: a cable
+  that runs along a table and drops to the floor "hits" the stretcher
+  under the table. Split it where it leaves the table.
 - The audits catch what the eye forgives at montage size: frames
   standing 3–4 cm off their shelf, a switch floating off a thinner
   interior wall, a faucet handle not reaching its pipe, a soap bottle

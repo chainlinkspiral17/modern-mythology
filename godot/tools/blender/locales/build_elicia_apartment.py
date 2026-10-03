@@ -15,8 +15,9 @@ import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
-from _props.structure import make_floor, make_wall, make_ceiling, make_window, make_crown_molding, make_door_hinges
+from _props.furniture import make_table
+from _props.geometry import clear_scene, make_box, make_cyl, export_glb, make_rot_box, make_tube
+from _props.structure import make_floor, make_wall, make_wall_with_openings, make_ceiling, make_window, make_crown_molding, make_door_hinges
 from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster
 from _props.safety import make_smoke_detector, make_hvac_vent, make_fluorescent_tube_fixture
 from _props.detail import (make_floor_stain, make_light_switch, make_threshold, make_traffic_wear, make_wall_outlet, make_wall_tint_band)
@@ -30,11 +31,13 @@ ROOM_W = 7.0; ROOM_D = 5.5; CEIL = 2.60
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
                palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
-    make_wall("Wall_W", (-ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL, baseboard_face_sign=+1)
+    make_wall_with_openings("Wall_W", (-ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL, baseboard_face_sign=+1,
+                            openings=[(3.0, 1.40, 1.60, 1.40)])   # Window_W (2026-10-03: the wall was solid behind the pane)
     make_wall("Wall_E", (+ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL, baseboard_face_sign=-1)
     make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=-1)
     make_wall("Wall_S_W", (-2.5, 0.0, 0), length=2.0, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1)
-    make_wall("Wall_S_E", (+2.5, 0.0, 0), length=2.0, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1)
+    make_wall_with_openings("Wall_S_E", (+2.5, 0.0, 0), length=2.0, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1,
+                            openings=[(2.0, 1.40, 1.40, 1.20)])   # Window_SE
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (3.0, 0.20, 0.60), PAL["wall"])
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4, with_grid=False)
     for nm, ax, length, wx, wy in [
@@ -258,12 +261,119 @@ def build_door_infill_frontdoor_leaf_2026_09():
     "doorways ... misaligned"): close the gap to the door and its frame."""
     make_wall("Wall_Fill_FrontDoor_Leaf_E", (0.650, 0.000, 0), length=1.700, height=2.000, axis='X', palette=PAL, baseboard_face_sign=+1)
 
+def build_wrecked_command_center_2026_10():
+    """CHARACTER PASS (2026-10-03). The chapter: "once Elicia Duchane's
+    sleek command center, now resembled the ruins of some forgotten
+    exposition … Data slates lay like fallen monoliths on the floor
+    amidst drifts of rejected script pages. Cables snaked across
+    surfaces like dormant metallic ivy." What a command center leaves
+    when it falls: the long work table under the west window with two
+    dead monitors, the keyboard, the drive stacks, a dead plant; the
+    story-map whiteboard on the north wall under its post-its, the
+    corkboard of the photographs she stopped taking; her prints,
+    unhung, leaning on the wall; the low case of binders and film cans;
+    a tripod standing for the camera; many more pages, slates and
+    cables; and Montreal's dusk through the west window — tower blocks
+    with their lights, the harbour's red and gold afar."""
+    import random
+    rnd = random.Random(16)
+    wood = COL_WOOD
+    paper = (0.88, 0.86, 0.80, 1.0)
+    dark = (0.18, 0.20, 0.24, 1.0)
+    # ── the work table under the west window, the dead monitors
+    make_table("Work_Table", -2.90, 3.00, w=0.60, d=1.90, h=0.75, wood=(0.30, 0.30, 0.32, 1.0))
+    for i, (ty, tilt) in enumerate(((2.45, 0.0), (3.35, 0.0))):
+        make_box(f"Dead_Monitor_{i}_Foot", (-2.98, ty, 0.765), (0.18, 0.14, 0.02), (0.14, 0.14, 0.16, 1.0))
+        make_box(f"Dead_Monitor_{i}_Neck", (-2.98, ty, 0.84), (0.04, 0.03, 0.14), (0.14, 0.14, 0.16, 1.0))
+        make_box(f"Dead_Monitor_{i}", (-2.98, ty, 1.05), (0.03, 0.56, 0.34), (0.14, 0.14, 0.16, 1.0))
+        make_box(f"Dead_Monitor_{i}_Screen", (-2.963, ty, 1.05), (0.004, 0.50, 0.28), (0.10, 0.11, 0.13, 1.0))
+    make_box("Keyboard", (-2.76, 2.90, 0.765), (0.14, 0.42, 0.02), (0.22, 0.22, 0.24, 1.0))
+    for k in range(4):
+        make_box(f"Drive_Stack_{k}", (-2.80, 3.78, 0.75 + k * 0.03 + 0.015), (0.18, 0.12, 0.03), [(0.20, 0.20, 0.22, 1.0), (0.32, 0.32, 0.34, 1.0)][k % 2])
+    make_cyl("Dead_Plant_Pot", (-2.80, 2.18, 0.80), 0.06, 0.10, (0.52, 0.42, 0.34, 1.0), segments=8)
+    for k in range(3):
+        make_rot_box(f"Dead_Plant_Stalk_{k}", (-2.80 + 0.03 * (k - 1), 2.18 + 0.02 * k, 0.94), (0.008, 0.008, 0.18), (0.42, 0.36, 0.22, 1.0), pitch=0.6 * (k - 1), roll=0.3)
+    # ── cables: the ivy, across the table and down to the floor
+    make_tube("Cable_Ivy_Table_0", [(-2.98, 2.45, 0.78), (-2.80, 2.70, 0.77), (-2.62, 2.60, 0.77), (-2.60, 2.60, 0.02), (-2.20, 2.30, 0.02)], 0.008, (0.30, 0.32, 0.34, 1.0), segments=5)
+    # (two tubes: the overlap audit boxes a whole polyline, and one tube from
+    # the table top to the floor "hits" the stretcher under the table)
+    make_tube("Cable_Ivy_Table_1", [(-2.98, 3.35, 0.78), (-2.70, 3.55, 0.77), (-2.60, 3.80, 0.77)], 0.008, (0.26, 0.28, 0.30, 1.0), segments=5)
+    make_tube("Cable_Ivy_Drop_1", [(-2.60, 3.80, 0.77), (-2.48, 3.85, 0.60), (-2.46, 3.86, 0.02), (-2.00, 4.30, 0.02), (-1.40, 4.10, 0.02)], 0.008, (0.26, 0.28, 0.30, 1.0), segments=5)
+    make_tube("Cable_Ivy_Floor_3", [(0.60, 3.20, 0.02), (1.20, 3.60, 0.02), (1.90, 3.30, 0.02), (2.40, 3.80, 0.02)], 0.009, (0.30, 0.32, 0.34, 1.0), segments=5)
+    make_tube("Cable_Ivy_Floor_4", [(-0.80, 1.30, 0.02), (-1.40, 1.80, 0.02), (-1.60, 2.40, 0.02)], 0.009, (0.26, 0.28, 0.30, 1.0), segments=5)
+    # ── the story map: a whiteboard on the north wall under post-its;
+    #    the corkboard of her photographs beside it
+    wy = ROOM_D - 0.10
+    make_box("Whiteboard_Frame", (-1.80, wy - 0.012, 1.62), (1.64, 0.024, 1.04), (0.60, 0.62, 0.64, 1.0))
+    make_box("Whiteboard", (-1.80, wy - 0.026, 1.62), (1.56, 0.004, 0.96), (0.94, 0.95, 0.94, 1.0))
+    for i in range(14):
+        px = -2.50 + rnd.uniform(0.0, 1.40)
+        pz = 1.22 + rnd.uniform(0.0, 0.80)
+        make_box(f"PostIt_{i}", (px, wy - 0.030, pz), (0.07, 0.003, 0.07), rnd.choice(((0.96, 0.90, 0.40, 1.0), (0.98, 0.70, 0.40, 1.0), (0.60, 0.86, 0.96, 1.0), (0.80, 0.94, 0.60, 1.0))))
+    for i in range(6):
+        make_box(f"Whiteboard_Line_{i}", (-1.80 + rnd.uniform(-0.6, 0.6), wy - 0.029, 1.62 + rnd.uniform(-0.4, 0.4)), (rnd.uniform(0.2, 0.6), 0.002, 0.008), rnd.choice(((0.20, 0.30, 0.60, 1.0), (0.70, 0.20, 0.20, 1.0), (0.20, 0.20, 0.22, 1.0))))
+    make_box("Corkboard", (-3.00, wy - 0.014, 1.62), (0.70, 0.028, 0.56), (0.62, 0.48, 0.30, 1.0))
+    for i in range(7):
+        px = -3.30 + rnd.uniform(0.0, 0.60)
+        pz = 1.40 + rnd.uniform(0.0, 0.42)
+        make_box(f"Pinned_Photo_{i}", (px, wy - 0.031, pz), (0.10, 0.003, 0.08), rnd.choice(((0.58, 0.62, 0.66, 1.0), (0.72, 0.66, 0.54, 1.0), (0.52, 0.60, 0.52, 1.0), (0.76, 0.70, 0.58, 1.0))))
+    # ── her prints, unhung, leaning on the west wall south of the window
+    for i, (y, h, w, tint) in enumerate(((1.30, 0.60, 0.80, (0.52, 0.56, 0.60, 1.0)), (1.36, 0.50, 0.70, (0.70, 0.62, 0.50, 1.0)), (1.42, 0.44, 0.60, (0.46, 0.54, 0.50, 1.0)))):
+        make_rot_box(f"Print_{i}_Frame", (-3.27 + i * 0.045, y, h / 2.0 + 0.01), (0.03, w, h), (0.22, 0.20, 0.18, 1.0), roll=0.0, pitch=0.0)
+        make_rot_box(f"Print_{i}_Pic", (-3.253 + i * 0.045, y, h / 2.0 + 0.01), (0.004, w - 0.06, h - 0.06), tint)
+    # ── the low case of binders and film cans under the north poster
+    make_box("Low_Case_Top", (0.0, 5.20, 0.90), (1.60, 0.32, 0.02), wood)
+    make_box("Low_Case_Bot", (0.0, 5.20, 0.01), (1.60, 0.32, 0.02), wood)
+    for sx in (-0.79, 0.79):
+        make_box(f"Low_Case_Side_{sx:+.2f}", (sx, 5.20, 0.455), (0.02, 0.32, 0.91), wood)
+    make_box("Low_Case_Shelf", (0.0, 5.20, 0.46), (1.56, 0.30, 0.02), wood)
+    run = -0.76
+    for i in range(12):
+        t = rnd.choice((0.05, 0.06, 0.07))
+        make_box(f"Binder_{i}", (run + t / 2.0, 5.20, 0.47 + 0.15), (t, 0.26, 0.30), rnd.choice(((0.20, 0.22, 0.26, 1.0), (0.86, 0.84, 0.78, 1.0), (0.40, 0.20, 0.18, 1.0), (0.24, 0.34, 0.46, 1.0))))
+        run += t + 0.004
+    for i in range(5):
+        make_cyl(f"Film_Can_{i}", (-0.60 + i * 0.09, 5.22, 0.02 + 0.014 * i + 0.0125), 0.11, 0.025, [(0.60, 0.60, 0.62, 1.0), (0.46, 0.46, 0.48, 1.0)][i % 2], segments=12)
+    for i in range(3):
+        make_box(f"Drive_Case_{i}", (0.40 + i * 0.16, 5.20, 0.09), (0.12, 0.24, 0.14), (0.26, 0.26, 0.28, 1.0))
+    # ── a tripod standing for the camera, facing the sofa
+    tx, ty = 0.45, 2.75
+    import math
+    for i in range(3):
+        a = i * 2.094 + 0.5
+        make_rot_box(f"Tripod_Leg_{i}", (tx + math.cos(a) * 0.18, ty + math.sin(a) * 0.18, 0.62), (0.02, 0.02, 1.30), (0.16, 0.16, 0.18, 1.0), pitch=0.26 * math.sin(a), roll=-0.26 * math.cos(a))
+    make_cyl("Tripod_Collar", (tx, ty, 1.21), 0.05, 0.10, (0.16, 0.16, 0.18, 1.0), segments=8)   # where the legs meet
+    make_cyl("Tripod_Head", (tx, ty, 1.29), 0.04, 0.06, (0.16, 0.16, 0.18, 1.0), segments=8)
+    make_box("Tripod_Plate", (tx, ty, 1.33), (0.08, 0.06, 0.02), (0.22, 0.22, 0.24, 1.0))
+    # ── more of the ruin: pages, slates, a slate against the sofa
+    for i in range(10):
+        px, py = rnd.uniform(-2.2, 2.2), rnd.uniform(2.0, 4.6)
+        if abs(px - 0.45) < 0.5 and abs(py - 2.75) < 0.5:
+            continue
+        make_rot_box(f"Script_Page_{i}", (px, py, 0.006 + 0.002 * (i % 3)), (0.21, 0.28, 0.003), paper, yaw=rnd.uniform(-0.8, 0.8))
+    for i, (sx, sy) in enumerate(((-1.9, 4.3), (1.6, 2.4), (-0.6, 3.9))):
+        make_rot_box(f"Slate_More_{i}", (sx, sy, 0.018), (0.42, 0.28, 0.03), dark, yaw=rnd.uniform(-0.6, 0.6))
+    make_rot_box("Slate_Leaning", (1.72, 1.75, 0.20), (0.42, 0.03, 0.28), dark, pitch=-0.35)   # against the sofa's east arm
+    # ── Montreal's dusk through the west window: tower blocks, their
+    #    windows lit; the harbour's lights far off
+    for i, (bx, by, bw, bd, bh) in enumerate(((-9.5, 1.0, 3.0, 3.0, 11.0), (-11.0, 5.5, 2.6, 2.6, 15.0), (-8.6, 7.6, 2.2, 2.2, 8.0), (-13.0, -1.5, 3.4, 3.4, 13.0))):
+        make_box(f"Tower_{i}", (bx, by, bh / 2.0 - 4.0), (bw, bd, bh), (0.22, 0.22, 0.28, 1.0))
+        for r in range(int(bh / 0.9)):
+            for c in range(3):
+                if rnd.random() < 0.55:
+                    make_box(f"Tower_{i}_Win_{r}_{c}", (bx + bw / 2.0 + 0.01, by - bd / 3.0 + c * bd / 3.0, -3.6 + r * 0.9), (0.02, 0.36, 0.40), rnd.choice(((0.98, 0.84, 0.46, 1.0), (0.96, 0.92, 0.70, 1.0), (0.80, 0.86, 0.96, 1.0))))
+    for i in range(9):
+        make_box(f"Harbour_Light_{i}", (-24.0, -6.0 + i * 1.6, -1.6 + rnd.uniform(0.0, 0.8)), (0.3, 0.4, 0.4), rnd.choice(((0.96, 0.22, 0.18, 1.0), (0.98, 0.78, 0.30, 1.0))))
+    make_box("Harbour_Water", (-24.0, 2.0, -3.0), (16.0, 30.0, 0.1), (0.10, 0.12, 0.18, 1.0))
+
+
 def main():
     clear_scene(); build_shell(); build_living(); build_studio_nook(); build_decor(); build_ceiling_infra()
     build_hero_props()
     build_detail_pass_2026_08()
     build_use_states_d4()
     build_eviction_notice_2026_08()
+    build_wrecked_command_center_2026_10()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/elicia_apartment.glb"))
     build_door_infill_frontdoor_leaf_2026_09()
     print(f"\n[build_elicia_apartment] exporting to {out}")
