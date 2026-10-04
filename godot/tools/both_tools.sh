@@ -139,8 +139,14 @@ else
 fi
 
 # ── 3. One set of API keys for both folders ─────────────────────────────────
+# The main folder holds the real files; the comic folder links to them. A key
+# saved only in the comic folder (e.g. OpenAI from the comic inspector) moves
+# to the main folder first, so Hero Studio sees it too.
 for k in .runway_key .google_key .openai_key .meshy_key; do
   src="$MAIN/godot/tools/$k"; dst="$COMIC/godot/tools/$k"
+  if [ ! -e "$src" ] && [ -f "$dst" ] && [ ! -L "$dst" ]; then
+    mv "$dst" "$src" && chmod 600 "$src" && echo "  $k moved to the main folder so both tools share it"
+  fi
   if [ -f "$src" ] && [ ! -e "$dst" ] && [ ! -L "$dst" ]; then
     ln -s "$src" "$dst" && echo "  comic folder uses the main folder's $k"
   fi
