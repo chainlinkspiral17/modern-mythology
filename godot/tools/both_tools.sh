@@ -47,6 +47,42 @@ open_url() {
 
 answers() { curl -s -o /dev/null --max-time 2 "$1"; }
 
+# The comic images were purged from the comic branch's history on GitHub
+# (2026-10-04, they live on Google Drive). An older comic folder cannot
+# fast-forward onto the slimmed history; this lines it up without touching a
+# single file on disk: find the slimmed twin of this folder's commit, move
+# HEAD there with reset --mixed (index only), then fast-forward. A backup ref
+# keeps the old history locally. Returns 1 when the divergence is something
+# else (left to the plain warning).
+IMG_PATHS=(godot/assets/comic lore/drift_wood/refs)
+IMG_RX='\.(png|jpg|jpeg|webp)$'
+resync_comic() {
+  local remote="origin/$COMIC_BR" n want c match=""
+  n=$(git -C "$COMIC" rev-list --objects "$remote..HEAD" -- "${IMG_PATHS[@]}" 2>/dev/null | grep -cE "$IMG_RX" || true)
+  [ "${n:-0}" -gt 0 ] || return 1
+  if ! git -C "$COMIC" diff --quiet || ! git -C "$COMIC" diff --cached --quiet; then
+    echo "  ! GitHub's comic history was slimmed, and this folder has edits not yet saved. Left as is."
+    echo "    Do not press SAVE in the comic tool until this is sorted; ask Claude to re-sync it."
+    return 0
+  fi
+  want=$(git -C "$COMIC" ls-tree -r HEAD | grep -vE $'\t'"(godot/assets/comic/|lore/drift_wood/refs/).*$IMG_RX" | md5sum | cut -c1-32)
+  for c in $(git -C "$COMIC" rev-list -n 400 "$remote"); do
+    if [ "$(git -C "$COMIC" ls-tree -r "$c" | md5sum | cut -c1-32)" = "$want" ]; then match=$c; break; fi
+  done
+  if [ -z "$match" ]; then
+    echo "  ! GitHub's comic history was slimmed, and this folder has commits GitHub does not. Left as is."
+    echo "    Do not press SAVE in the comic tool until this is sorted; ask Claude to re-sync it."
+    return 0
+  fi
+  git -C "$COMIC" update-ref "refs/backup/comic-before-slim-$(date +%Y%m%d-%H%M%S)" HEAD
+  if git -C "$COMIC" reset -q --mixed "$match" && git -C "$COMIC" merge -q --ff-only "$remote"; then
+    echo "  re-synced onto the slimmed comic history (images left GitHub; yours stay on disk)"
+  else
+    echo "  ! re-sync stopped part-way; nothing on disk changed. Ask Claude."
+  fi
+  return 0
+}
+
 if [ "${1:-}" = "stop" ]; then stop_all; echo "  Stopped Hero Studio and the comic inspector."; exit 0; fi
 
 cur=$(git symbolic-ref --short -q HEAD || echo "(no branch)")
@@ -99,7 +135,7 @@ if [ -e "$COMIC/.git" ]; then
   echo "· updating the comic folder…"
   if git -C "$COMIC" pull -q --ff-only origin "$COMIC_BR" 2>/tmp/both_tools_pull.log; then
     echo "  ok"
-  else
+  elif ! resync_comic; then
     echo "  ! not updated: your copy and GitHub have both changed. Starting with what you have."
   fi
 else
