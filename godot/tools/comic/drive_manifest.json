@@ -1,0 +1,2515 @@
+{
+ "files": {
+  "godot/assets/comic/vol10/google/dw_1997-09-12_cafeteria.png": {
+   "at": "2026-10-04T22:37:03+00:00",
+   "md5": "2bba9f6132662eb50398395573a18c2a",
+   "size": 1803162
+  },
+  "godot/assets/comic/vol10/openai/bk_1998-10-15_the_halloween_issue_title_page.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "a504d8c758bb342849b5e87ba20661c2",
+   "size": 3754677
+  },
+  "godot/assets/comic/vol10/openai/bk_1998-10-16_the_halloween_issue_the_cafeteria_at_night.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "adf865047dae9bcd4bc581cc35a1907d",
+   "size": 4024873
+  },
+  "godot/assets/comic/vol10/openai/bk_1998-10-30_the_halloween_issue_the_stone_head_walks.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "451145cf04172972fd4221ef0b7ca766",
+   "size": 4326576
+  },
+  "godot/assets/comic/vol10/openai/bk_1998-10-30_the_halloween_issue_the_stone_head_walks_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "4bc3075f326a85a6b7861b0052b22b18",
+   "size": 4173245
+  },
+  "godot/assets/comic/vol10/openai/bk_1998-11-13_the_halloween_issue_the_sign_spells.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "c06e4c7e8be547929063554cf64f38f9",
+   "size": 4065225
+  },
+  "godot/assets/comic/vol10/openai/bk_1998-11-27_the_halloween_issue_the_copier.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "1663caf84f350ac4103dd99888e79d46",
+   "size": 4105622
+  },
+  "godot/assets/comic/vol10/openai/bk_1998-11-27_the_halloween_issue_the_copier_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "0c5da5d1bdf3e9a010b95c98ae36c670",
+   "size": 4207611
+  },
+  "godot/assets/comic/vol10/openai/bk_2000-08-21_the_frontier_week_the_stranger.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "dc4a2840a6c36509fb097cf4b5055a29",
+   "size": 4055431
+  },
+  "godot/assets/comic/vol10/openai/bk_2000-08-22_the_frontier_week_the_saloon_sign.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "bcb6884747b015d08890173e5926cd08",
+   "size": 3754652
+  },
+  "godot/assets/comic/vol10/openai/bk_2000-08-23_the_frontier_week_the_boundary_stone.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "288b4ddc2915932cc59f9145f7fe8830",
+   "size": 3861714
+  },
+  "godot/assets/comic/vol10/openai/bk_2000-08-24_the_frontier_week_the_gambler.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "c15bc6e5ae926fd61e367903da6f5d32",
+   "size": 3991823
+  },
+  "godot/assets/comic/vol10/openai/bk_2001-04-09_slash_the_green_coat.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "0a846f6a7fd4392381a21251fd08eaeb",
+   "size": 3896869
+  },
+  "godot/assets/comic/vol10/openai/bk_2001-04-16_slash_the_registration.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "c02ebd25eabc45f70d68edbda6763130",
+   "size": 4140215
+  },
+  "godot/assets/comic/vol10/openai/bk_2001-05-07_slash_the_clipping.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "75c99d7a104908ac2a979242c2467576",
+   "size": 3925679
+  },
+  "godot/assets/comic/vol10/openai/bk_2001-06-18_slash_lot_c_at_night.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "f97a238d14b31cc6e9269c25c4512261",
+   "size": 4088393
+  },
+  "godot/assets/comic/vol10/openai/bk_2001-07-23_slash_the_boat_that_cant_be_here.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "32d55a094b1d17eaa070a510afb1fb2b",
+   "size": 4162000
+  },
+  "godot/assets/comic/vol10/openai/bk_2001-09-10_slash_the_dining_room.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "186127d4c3c46c61e72e6b6bc865654d",
+   "size": 3975064
+  },
+  "godot/assets/comic/vol10/openai/bk_2001-10-29_slash_the_card_in_the_bag.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "4a922d6c822ea765bfa472d0dd32828a",
+   "size": 4033791
+  },
+  "godot/assets/comic/vol10/openai/bk_2002-03-11_slash_the_mat_cutter.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "ebf2cc9011c0d51293ef1f8816ac11bb",
+   "size": 3845023
+  },
+  "godot/assets/comic/vol10/openai/bk_2002-10-14_noir_week_ii_the_client.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "8a2abf39fd3cbe72bae5483104e645dc",
+   "size": 3347868
+  },
+  "godot/assets/comic/vol10/openai/bk_2002-11-18_slash_the_bay_at_low_tide.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "4e99c68559884fd4e4b7b35ac4d5b004",
+   "size": 4435337
+  },
+  "godot/assets/comic/vol10/openai/bk_2003-08-02_the_sinkhole_title_page.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "3f0c07b05a66b6956be288f4db42b4f5",
+   "size": 3864570
+  },
+  "godot/assets/comic/vol10/openai/bk_2006-10-04_rust_code_bbs_the_banner.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "a10511bd652ec1bab2e3c77947e5486d",
+   "size": 2415938
+  },
+  "godot/assets/comic/vol10/openai/bk_2006-11-08_rust_code_bbs_the_helicopter_arrives.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "49cba80fd11ce5818b6d2b6bf44510a2",
+   "size": 2186567
+  },
+  "godot/assets/comic/vol10/openai/bk_2008-04-14_the_render_week_the_town_loads.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "2b646f16c1bc8bf213c2cbee83c9558c",
+   "size": 2884372
+  },
+  "godot/assets/comic/vol10/openai/bk_2025-02-19_the_scumm_stick_give_coffee_to_bird.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "0e0cba70fadf75841778c077430a725e",
+   "size": 3343143
+  },
+  "godot/assets/comic/vol10/openai/dw_1997-09-12_cafeteria.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "95970c6223a4085712a31305820e4d55",
+   "size": 4289240
+  },
+  "godot/assets/comic/vol10/openai/dw_1997-09-26_vending_machine.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "b8639d91ffb78a914b34dfd8daba1a2e",
+   "size": 4085903
+  },
+  "godot/assets/comic/vol10/openai/dw_1997-09-26_vending_machine_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "2a42532585c0790f821eab4505d9b7bb",
+   "size": 4050875
+  },
+  "godot/assets/comic/vol10/openai/dw_1997-10-10_assembly.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "778ad62691baaa5d10f39636813cf499",
+   "size": 4153545
+  },
+  "godot/assets/comic/vol10/openai/dw_1997-10-24_back_page.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "43b3d1ac54d8bcb3b703ce389f76758b",
+   "size": 3885891
+  },
+  "godot/assets/comic/vol10/openai/dw_1997-11-07_the_review.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "f6814d87dc88edbffeb250af8d605bf8",
+   "size": 3839574
+  },
+  "godot/assets/comic/vol10/openai/dw_1997-11-21_thanksgiving.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "8c3009b202ce118d70398e735ba5e4ea",
+   "size": 3661541
+  },
+  "godot/assets/comic/vol10/openai/dw_1997-11-21_thanksgiving_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "a78d4d4468a539f3033bb3d2bc3051e1",
+   "size": 3857632
+  },
+  "godot/assets/comic/vol10/openai/dw_1997-11-21_thanksgiving_t3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "1083934c02a59dfa9a6b76bcfbb338fc",
+   "size": 3815811
+  },
+  "godot/assets/comic/vol10/openai/dw_1997-12-05_caricature.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "621bf57e71b8d74e78fe4f616a20222e",
+   "size": 4369857
+  },
+  "godot/assets/comic/vol10/openai/dw_1997-12-19_she_lives_here.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "29195f7ca96c74918763a4b53eaf12e8",
+   "size": 4286565
+  },
+  "godot/assets/comic/vol10/openai/dw_1998-01-16_the_rain.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "76cebcc3a9a26d3a8eff35188d8ad145",
+   "size": 4154511
+  },
+  "godot/assets/comic/vol10/openai/dw_1998-01-30_bus_driver.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "700aedd6707f3d82ac99cfabc5777a21",
+   "size": 4189372
+  },
+  "godot/assets/comic/vol10/openai/dw_1998-02-13_crab_derby.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "d435c8bd7f0087ad490a37bb30c57c42",
+   "size": 4148541
+  },
+  "godot/assets/comic/vol10/openai/dw_1998-02-13_crab_derby_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "9304747f80c2b6eabc0c3b64e637c8de",
+   "size": 4335543
+  },
+  "godot/assets/comic/vol10/openai/dw_1998-02-27_video_store.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "eb381816283fdf2dd592d934fc676ddd",
+   "size": 4214683
+  },
+  "godot/assets/comic/vol10/openai/dw_1998-03-13_grunion.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "5c5c8ec814da94a6458e84462235c8de",
+   "size": 3946005
+  },
+  "godot/assets/comic/vol10/openai/dw_1998-03-13_grunion_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "1f4c211e76ab5c04910a8aded68e10c3",
+   "size": 3955544
+  },
+  "godot/assets/comic/vol10/openai/dw_1998-03-13_grunion_t3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "ed4c321bb827aaff7750d39a1f9082bd",
+   "size": 3746279
+  },
+  "godot/assets/comic/vol10/openai/dw_1998-03-27_mixtape.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "227505d693192af6b68d477203b00db4",
+   "size": 4076164
+  },
+  "godot/assets/comic/vol10/openai/dw_1998-03-27_mixtape_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "e1549881278990ee1b37008617b3c00c",
+   "size": 3940002
+  },
+  "godot/assets/comic/vol10/openai/dw_1998-04-24_ballot.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "3a87fa7b556bf473e83e4a6a08b4360d",
+   "size": 3970473
+  },
+  "godot/assets/comic/vol10/openai/dw_1998-04-24_ballot_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "54424d23157c76ec54f216af844e54bb",
+   "size": 3930941
+  },
+  "godot/assets/comic/vol10/openai/dw_1998-05-08_the_photo.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "bb9e11760d42421132c16caabbfe4267",
+   "size": 3897824
+  },
+  "godot/assets/comic/vol10/openai/dw_1998-05-22_the_yearbook.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "7219230963f060ee4c7a32db57b81b1c",
+   "size": 3944605
+  },
+  "godot/assets/comic/vol10/openai/dw_1998-05-22_the_yearbook_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "2307d131281116039d688ba777366787",
+   "size": 3945438
+  },
+  "godot/assets/comic/vol10/openai/dw_1998-06-05_last_bell.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "3891ac6042ca421095df77afba6fa8db",
+   "size": 4401509
+  },
+  "godot/assets/comic/vol10/openai/dw_1998-06-05_last_bell_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "f0f400dc355f91482ba4175f5b7dcf8e",
+   "size": 4183801
+  },
+  "godot/assets/comic/vol10/openai/dw_1998-09-11_a_year_in.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "1d148e3e9ca36dba8153ad0d017aeea1",
+   "size": 4370927
+  },
+  "godot/assets/comic/vol10/openai/dw_1998-09-25_the_envelope.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "3d8f4b9c720bd93705bdb3331c870f9d",
+   "size": 3949856
+  },
+  "godot/assets/comic/vol10/openai/dw_1998-10-09_still_there.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "901f7b77ade9d2cde463c4122dce1ca5",
+   "size": 3989434
+  },
+  "godot/assets/comic/vol10/openai/dw_1998-10-23_gully_asks.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "0970e9f45baae1b6308b670a961f1130",
+   "size": 4187359
+  },
+  "godot/assets/comic/vol10/openai/dw_1998-11-06_gone.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "de3f3af72e4eab9d06c0f52aa87f9346",
+   "size": 4124537
+  },
+  "godot/assets/comic/vol10/openai/dw_1998-11-20_thanksgiving_ii.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "7357e0279bbb77a4532e7313a0401ba8",
+   "size": 4030906
+  },
+  "godot/assets/comic/vol10/openai/dw_1998-11-20_thanksgiving_ii_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "cca423d17b27d68e6f2f8d6ccb435731",
+   "size": 3702943
+  },
+  "godot/assets/comic/vol10/openai/dw_1998-11-20_thanksgiving_ii_t3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "9c16b9daeaab5dc4bc18930c16aa11f6",
+   "size": 3669697
+  },
+  "godot/assets/comic/vol10/openai/dw_1998-12-04_the_dumpster.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "da1d15e71c28a7a00dfc4256dd1d9c52",
+   "size": 4225395
+  },
+  "godot/assets/comic/vol10/openai/dw_1998-12-04_the_dumpster_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "a70954208ccdfa5c0377732f74e53a42",
+   "size": 4279527
+  },
+  "godot/assets/comic/vol10/openai/dw_1998-12-04_the_dumpster_t3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "5aa00980b24c8ad8d47d8a66287d3fc3",
+   "size": 4103635
+  },
+  "godot/assets/comic/vol10/openai/dw_1998-12-18_still_here.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "9227d6c3c7da4b1425842c93b1f115d7",
+   "size": 4098236
+  },
+  "godot/assets/comic/vol10/openai/dw_1998-12-18_still_here_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "5b754d6ca989c485b9e707c5009e890f",
+   "size": 4066132
+  },
+  "godot/assets/comic/vol10/openai/dw_1998-12-18_still_here_t3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "ed4c62da4d61c63066423cb9494d18ca",
+   "size": 3951706
+  },
+  "godot/assets/comic/vol10/openai/dw_1998-12-18_still_here_t4.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "1dce1a7bb9c19edf5e02eb3b6efc72a0",
+   "size": 3966507
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-01-15_the_rain_ii.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "086f3f9484cd468f005c0c603c2c18e4",
+   "size": 4234429
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-01-29_applications.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "025036c7a14e8d4bd7069b1eb4d7043a",
+   "size": 4147639
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-01-29_applications_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "bae56addb7e2e0e741d03551caa4d499",
+   "size": 3999576
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-01-29_applications_t3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "f2c70a2dea2c11627bebfafbd1e238af",
+   "size": 4043758
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-02-12_crab_derby_ii.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "a5fc33c73fb25a83b0eab2dbdaf055f0",
+   "size": 3906905
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-02-26_grunion_early.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "c5ca52a21779d739dbdc74df22f3bcfd",
+   "size": 4072586
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-02-26_grunion_early_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "51c605570be0fac2bb025ee4cb9ddbb5",
+   "size": 4002127
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-03-12_red_pen.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "5ea218835d04e9aa5fafc48a9dac9d1e",
+   "size": 3616469
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-03-12_red_pen_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "b6e469666e3b91f1a632a453397ee960",
+   "size": 3547686
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-03-26_the_map.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "c6048e7430900ffd87b5169294152640",
+   "size": 4103956
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-03-26_the_map_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "2dcd1bad7a14b1c9760280e39787c3de",
+   "size": 4227237
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-04-09_bus_schedule.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "ab8b51d7a72d97a01f0c3435da652048",
+   "size": 4090577
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-04-09_bus_schedule_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "1d2a607249e8efc2bb93eb2bc0ba7e40",
+   "size": 3956751
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-04-23_the_phantom.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "92fa1a7d2271ea68882b5cd050853034",
+   "size": 4038168
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-04-23_the_phantom_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "3274a89979135565707ab9124d9ff8f3",
+   "size": 4276126
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-05-07_most_likely_again.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "7109d508bfe37532a23676c11dc6b35e",
+   "size": 4252543
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-05-07_most_likely_again_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "6c4954f10d50c26b5d885c2e5ef4deac",
+   "size": 4053736
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-05-21_the_back_page_last.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "26f82b86a56fd5d9bb88bf1e71d666d8",
+   "size": 4018567
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-05-21_the_back_page_last_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "637912b0d1963e7ba0b177c632a2ee76",
+   "size": 3898007
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-05-21_the_back_page_last_t3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "5dc7ca209c8f13afe9344c95bb4895c0",
+   "size": 3968060
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-05-21_the_back_page_last_t4.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "ef7ff7e0cd540e82514941b74e988eb6",
+   "size": 3868937
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-05-21_the_back_page_last_t5.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "bac805517d25ff08f2a1d1d762713f19",
+   "size": 3972709
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-06-04_signing_off.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "f41d1c21f499d1671d42cb38b36e9fd5",
+   "size": 3208328
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-06-04_signing_off_t10.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "e297e5ab05eea6ede41692e4650f02c5",
+   "size": 4046678
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-06-04_signing_off_t11.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "f9b637cea49749beb5ed569696f3a786",
+   "size": 4069931
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-06-04_signing_off_t12.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "7f7da56234d13125e21e0be5cdde6977",
+   "size": 3962769
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-06-04_signing_off_t13.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "0331e0d15a56a4396cc43435d8d12c93",
+   "size": 4197905
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-06-04_signing_off_t14.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "4c30cec56e4039cc341ffb43e21394f2",
+   "size": 4466667
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-06-04_signing_off_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "82727c7f9d30b3c4e90e290ac07d8e02",
+   "size": 3969514
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-06-04_signing_off_t3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "2d339d40809e47d1c9355b8bc953ecfc",
+   "size": 3856608
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-06-04_signing_off_t4.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "4f7453c5698b4bcd01012663ee1a4b38",
+   "size": 3980355
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-06-04_signing_off_t5.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "1bf04a7dd159d9a28dde3e2868b4d252",
+   "size": 3383761
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-06-04_signing_off_t6.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "f525575249f2ddc96edf54da0c0c78bf",
+   "size": 3480356
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-06-04_signing_off_t7.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "8eec72b48de2c8afdf955add8ec7f41a",
+   "size": 4223317
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-06-04_signing_off_t8.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "8f32ffa6cbfadc93ca06be98ac05ae48",
+   "size": 4044113
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-06-04_signing_off_t9.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "a008e719dd82213415243f4415c528e5",
+   "size": 4047757
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-20_first_daily.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "f93a4bc725d1f8bd8f063a97306027f3",
+   "size": 3864615
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-20_first_daily_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "e3d23a434d1a4ba12d20fee44c7b9283",
+   "size": 3485760
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-20_first_daily_t3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "1752a3e53fb8382f209a6acd8526607e",
+   "size": 3646627
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-20_first_daily_t4.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "a3e58aec8fbc50a6b5b425344a301f92",
+   "size": 3567738
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-20_first_daily_t5.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "98811952d223d7f51255288502cc3e61",
+   "size": 3349020
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-20_first_daily_t6.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "20cab6850663fa91ed01887159b5f22b",
+   "size": 3792995
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-20_first_daily_t7.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "b803aecb3113c963393a7725ea58afb0",
+   "size": 3364811
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-21_the_print_shop.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "e95709ba14069c915f88535e5054413e",
+   "size": 3896533
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-21_the_print_shop_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "d5c2b7721c822d69197fdf31786d9a7c",
+   "size": 3706923
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-21_the_print_shop_t3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "e95fda5df21c699f47c077a5a2421ca9",
+   "size": 3606982
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-21_the_print_shop_t4.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "8715842788aac7c349abd7613da91b65",
+   "size": 3962214
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-21_the_print_shop_t5.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "5cf744f3de553f420631710989a62c43",
+   "size": 4152153
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-21_the_print_shop_t6.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "4df60e5e474e50125d9bd74d23f592c1",
+   "size": 4222789
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-21_the_print_shop_t7.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "d3c02f640be48c3661444199cacfcb64",
+   "size": 4102532
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-21_the_print_shop_t8.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "5d539e003f95503aa0f47ba30d651622",
+   "size": 3837877
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-21_the_print_shop_t9.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "9bf5098897e3cefeb50367526a028060",
+   "size": 3954364
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-22_composition_ii.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "4efdf61d21b20388a55af40d3d036d3f",
+   "size": 3529329
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-22_composition_ii_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "3ad8be231cdb394da325764e4bd58dea",
+   "size": 3744628
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-22_composition_ii_t3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "e0ad643b5265b704bbf65a64d1416c11",
+   "size": 3814852
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-23_the_commute.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "b28b74a1c24395bfd8a34007b07faa3e",
+   "size": 3793559
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-23_the_commute_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "daed8d7a12373a9be056d3ad752e0c62",
+   "size": 3647419
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-23_the_commute_t3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "d7bdb69a72eb1512e845a94b8a5e22f7",
+   "size": 3903892
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-23_the_commute_t4.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "28b6fe33c0413de484bcb878bab4b90e",
+   "size": 3599486
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-23_the_commute_t5.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "8fbde516fa5ace259a8a0d8122e5a020",
+   "size": 3834560
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-24_first_digest.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "15702a5b836599a91cb2c587ccf029f2",
+   "size": 2593688
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-24_first_digest_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "d493221c2053f416e1a752c89b31891b",
+   "size": 3837334
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-24_first_digest_t3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "0ccd4f44cba5c8eb17aeabd91dbe0921",
+   "size": 3870329
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-27_the_second_monday.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "ffd2a1c7d0644f79112df9204d836492",
+   "size": 4170241
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-28_lot_c_zero.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "48d2b75dc050b097e4f3c160ac302f7b",
+   "size": 3570662
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-28_lot_c_zero_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "c65853b5f3eb0c6d71b8fc6267cc8372",
+   "size": 3383862
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-28_lot_c_zero_t3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "eb6150831bc900d9f7cb0fce3b6c5f4e",
+   "size": 3937477
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-28_lot_c_zero_t4.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "0f8d1d08b34e8962ecbfbf6bce27c423",
+   "size": 3834440
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-28_lot_c_zero_t5.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "9267efadbdcc32bb3034ef6814d80f22",
+   "size": 4163970
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-29_everything_in_the_car.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "c98c250ce95bb17b21e49a063164ebc9",
+   "size": 3862937
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-29_everything_in_the_car_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "df5ac45e9562d0c6968506bc8afe58c7",
+   "size": 4096079
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-30_two_hundred.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "221a750d2187a0cbdcb73b5b4eaacd5f",
+   "size": 3769070
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-30_two_hundred_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "aa8b285c4c46a7bb8272207b4b4eae4e",
+   "size": 3302225
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-30_two_hundred_t3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "b6ff0dfe1bc255e021f4555af43b6cc2",
+   "size": 3404952
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-09-30_two_hundred_t4.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "cc8d1f0ba572f259afe05c70633dc706",
+   "size": 4045687
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-10-01_the_wrong_panel.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "4dadf799fa264e9fa439cd1f32395fdf",
+   "size": 3598542
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-10-01_the_wrong_panel_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "cf858b14a6ad3074b25d17e20c74b10e",
+   "size": 3371132
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-10-01_the_wrong_panel_t3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "1b5e856818640be3fc7ddc7d6949f7f8",
+   "size": 3978414
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-10-01_the_wrong_panel_t4.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "107ab678c98855617e836812f3cd91f1",
+   "size": 3905724
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-10-04_the_thesis_promise.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "d12d3430e8c4db6a5ff18d6c1890ec28",
+   "size": 3965018
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-10-05_the_microfilm.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "192b7e65cdc59f04f97491e94066f951",
+   "size": 3511276
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-10-06_the_college_cafeteria.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "2ba30840cfa2c9adb0139d2f4e8e6c5d",
+   "size": 3805497
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-10-06_the_college_cafeteria_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "0b3443182b5df1e3191c67cf0576c3c0",
+   "size": 3727229
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-10-07_drawing_the_lot.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "8b32c27f97099dfd6651b97463f619fe",
+   "size": 4130306
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-10-08_the_third_digest.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "26b83b7f445c5f6a6a5be79a60640b2c",
+   "size": 4114667
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-10-08_the_third_digest_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "e0a374b1fe0b7b20ac695723e2ef8169",
+   "size": 4097439
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-10-11_what_its_called.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "1a429c0560b8b239d7326edf7bcb128e",
+   "size": 3883785
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-10-11_what_its_called_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "5b38f81d9c7d2c917ae85a21f929543d",
+   "size": 3897583
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-11-15_dog_monday.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "dfaec77dea61c95343962efac56bd704",
+   "size": 3829460
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-11-15_dog_monday_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "cf02ec9a2bd6f34eb846c5c873f017b1",
+   "size": 3882906
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-11-15_dog_monday_t3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "6e8489da123f34ba0c5a56e5e94e1bf1",
+   "size": 3709189
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-11-15_dog_monday_t4.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "bb7f9dca52770778adb8eb728c82d356",
+   "size": 3289461
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-11-15_dog_monday_t5.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "c66fb160da30964fa87f6c535b37c1de",
+   "size": 3753286
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-11-15_dog_monday_t6.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "197eedddc6b326076e415beb5a3bc045",
+   "size": 3377844
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-11-15_dog_monday_t7.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "16f3916627567d62267df49011b5a6e3",
+   "size": 4059754
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-11-15_dog_monday_t8.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "3a551561fe1586bf61b8b33893219f08",
+   "size": 3756896
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-11-16_the_walk.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "408c2fba1746290ad20b00b4dc1cf2e5",
+   "size": 3951138
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-11-16_the_walk_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "c7300a6722747b5148ed90c791017e7b",
+   "size": 3753600
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-11-16_the_walk_t3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "650d5ee58f1da2987f42b99c5a12ce51",
+   "size": 4026572
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-11-17_the_vet.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "7be732575ee2d57b34ab3d6b49fd0a14",
+   "size": 3635397
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-11-17_the_vet_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "e9f097975aecf56cb974927bbb2efac8",
+   "size": 3808928
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-11-18_under_the_table.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "1071feb641491bab138048593fc634e9",
+   "size": 3117214
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-11-18_under_the_table_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "6bf9c12f6684a8104ecbaddc1290a9cf",
+   "size": 3361018
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-11-18_under_the_table_t3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "c5b8e80949882a73183fc1b68684954a",
+   "size": 3793155
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-11-19_gully_meets_him.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "97e0db7104e4ed510ed4922cbe47c01a",
+   "size": 3939402
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-11-19_gully_meets_him_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "e6a6918acba33b3573c4c8f7728533a1",
+   "size": 2878192
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-12-20_the_postcard.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "f8b6d173dc025ef1e9014fba15fb9593",
+   "size": 3518467
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-12-20_the_postcard_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "433d4a4dbddc0fbfa8612c98728776a4",
+   "size": 3966188
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-12-21_the_shack.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "17997b506bbc3e6ca5447ed5dd19baeb",
+   "size": 4176275
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-12-21_the_shack_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "8e01229e5cc955bd531bd4aa9848125c",
+   "size": 4060086
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-12-21_the_shack_t3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "d1b90f0f58544e2e0029014d4c631250",
+   "size": 3920634
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-12-21_the_shack_t4.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "4ab15e6e2e5e6763bc40f041c59d1311",
+   "size": 4146323
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-12-21_the_shack_t5.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "b9815646b409bdd328e295cfac7c19dd",
+   "size": 4102922
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-12-22_the_reply.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "5617c6966a494140702426b9b447dbcc",
+   "size": 4218934
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-12-23_the_phone.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "87570b25d3cc812da83281ec7c4c52c6",
+   "size": 3816233
+  },
+  "godot/assets/comic/vol10/openai/dw_1999-12-24_christmas_eve.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "311c0e3132ea915413eef84c39064fa3",
+   "size": 3958541
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-01-14_the_rain_2000.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "2d89a8e675872e805dfa420144498c88",
+   "size": 4167773
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-02-11_gullys_first_flyer.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "cd786d3e98b91f8e8d41feb5aebc7b0a",
+   "size": 4060586
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-02-11_gullys_first_flyer_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "3466afcb214b1c39d6cff2d6baa0b735",
+   "size": 3908925
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-02-11_gullys_first_flyer_t3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "c89affb73c51d9508328ada14de0201c",
+   "size": 3907568
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-02-28_too_good_1.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "a58ca5c907b08d8fc9f8fd21677b7ab4",
+   "size": 3910502
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-03-01_too_good_2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "17993175228704f436978dd0aaa19091",
+   "size": 3641405
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-03-01_too_good_2_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "43a73f306582bbbcbead01cfdb656bfd",
+   "size": 3552992
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-03-01_too_good_2_t3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "0a5c4806737f13f6df9fb51d6fb4ecdf",
+   "size": 3816618
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-03-02_three_drafts.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "5bf97886949ea414d4d0b5cd9eb08420",
+   "size": 3468818
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-03-02_three_drafts_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "0d063441de64f3fa53dc006c0e1a287a",
+   "size": 3882180
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-03-03_free_school.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "9e00f28ec79ff0df63c1ebec6956fd45",
+   "size": 3880744
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-03-03_free_school_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "72217b9688ccb04d16323509af727f8c",
+   "size": 4021341
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-03-03_free_school_t3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "1abd66caa7b1f190342cc40332b7ef82",
+   "size": 4157104
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-03-06_toast.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "abaa27f91f3ee86dbe1ccaa30be653fe",
+   "size": 4076866
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-03-10_grunion_iii.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "8f5222b722aba6f9e7f8caddecc243f4",
+   "size": 4035382
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-04-17_the_job.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "56be973ceaf7256ee903c6e44e352171",
+   "size": 3892518
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-04-18_pull_dont_push.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "47f92e0ee96f1fd2772dca5e9d7e7d39",
+   "size": 4021824
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-04-18_pull_dont_push_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "fe284e889a170fb10f8b638ededd1f83",
+   "size": 3852489
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-04-18_pull_dont_push_t3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "3dbaf07126d175f6eeb069e1fa814dd7",
+   "size": 3783599
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-04-20_eight_fifty.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "d204c0af59d8321c3e662fa4e8b5b2a2",
+   "size": 4126371
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-04-25_the_window.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "3a810e3b6a91f819c8f417a1b361dad2",
+   "size": 4066609
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-04-27_what_people_frame_1.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "5322a9e7d271b4f84c96132fbbc1a420",
+   "size": 4091511
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-05-04_what_people_frame_2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "ac825db5b2f032e9d10235175691af27",
+   "size": 4045287
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-05-04_what_people_frame_2_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "2a0deb90dc027dd46b3f80e1f931ad0f",
+   "size": 3973410
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-05-04_what_people_frame_2_t3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "88b2d66a21deac441e81124a6f46c84e",
+   "size": 4119376
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-05-11_what_people_frame_3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "8bc1bd067d0992ef235e031bdaa31b82",
+   "size": 3332490
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-05-11_what_people_frame_3_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "242ac1c64060b5de3ceda2d4f297cb20",
+   "size": 3837950
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-06-02_last_bell_ii.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "67a2bbba010f1c1ad4e34f43d12c40bb",
+   "size": 3799380
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-06-02_last_bell_ii_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "a5a4895d1ad0929fe36197ca15e455a7",
+   "size": 3830347
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-07-04_the_fourth.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "871cfb55a096b29509e58e1e3ee9c578",
+   "size": 3613761
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-08-08_tourists.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "4bdc2a3442865aa40144d47cf4f24419",
+   "size": 3833953
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-08-08_tourists_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "2e57ddf8d73c130918c7bf98940a3869",
+   "size": 3850813
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-09-12_anniversary_three.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "5149400b23b1b63ec7b431b17ac21616",
+   "size": 3920754
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-09-18_seattle_mon.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "8649c7ce1b980b96ce85069386cc55d9",
+   "size": 3886133
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-09-18_seattle_mon_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "07a794632729ba3d22cf5db44cc368f8",
+   "size": 4080199
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-09-18_seattle_mon_t3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "d91b096ac3c31d1a6fca8827df6fc591",
+   "size": 3864238
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-09-19_seattle_tue.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "fd432a168cd439d6d5ff38413192ba9d",
+   "size": 4125023
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-09-19_seattle_tue_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "45dff2f3a9b3ae8906babf530b5f7c79",
+   "size": 4101498
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-09-20_seattle_wed.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "9165ed4e8212668541cdbfa6bf33d02b",
+   "size": 3668311
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-02_bags.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "d52427834d98a11025c4e5236ed04fba",
+   "size": 3947901
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-02_bags_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "6d0bb388ecc46f2ce0dabf509f274d46",
+   "size": 3939363
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-03_foam_core.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "dd34be358995aad59fae0066b1bf665d",
+   "size": 3554741
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-04_the_racket.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "6b4fb60413d8ecd6c3459c57b4170c58",
+   "size": 3301151
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-04_the_racket_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "8bdb111beef8d2c4faa68951604abcb8",
+   "size": 3494984
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-04_the_racket_t3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "641aefbc2da482d024c805c689cfab18",
+   "size": 3522712
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-05_three_and_a_half.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "8f6e1ad624af3993878e005b0d965a27",
+   "size": 4138086
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-05_three_and_a_half_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "2c7048942176928f5cf2a421fc87ce2f",
+   "size": 4032693
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-06_digest_cover_week_1.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "2a2d1bc5b997ef1b730692153cb17a4e",
+   "size": 3867555
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-09_racket_to_chloe.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "d9fd8a504a235a542f68a5047ae6e6c2",
+   "size": 3977153
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-09_racket_to_chloe_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "2edd267fce795eee9583fc464e63ef03",
+   "size": 3944294
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-10_fried_clams.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "f515664ff05fc0604cb84ae06c0b02a4",
+   "size": 3976218
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-10_fried_clams_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "c1c7fedccf97f2eedf2a6e81e09e31c3",
+   "size": 3853056
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-11_the_portfolio.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "4b1af8360292dfd3dbdc6c50b0a0f164",
+   "size": 4049780
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-11_the_portfolio_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "5f54ae106871ce786dfe3da4ebc588cb",
+   "size": 3922261
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-11_the_portfolio_t3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "26937ac14465c736501ab6fc592758ef",
+   "size": 3987007
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-12_goodbye_to_the_dog.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "c9e6ee00803e87e2c511d5ddc5af72ef",
+   "size": 4022425
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-12_goodbye_to_the_dog_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "b083c7afff00809262f39db996a32e33",
+   "size": 4125073
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-12_goodbye_to_the_dog_t3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "1df7228146f27b0cf4909e3b4cc1035b",
+   "size": 4106015
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-12_goodbye_to_the_dog_t4.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "99d57537b2fdfe1f7353283dec0af1fe",
+   "size": 4310086
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-12_goodbye_to_the_dog_t5.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "88c6f3cbe84984d282398637075e670b",
+   "size": 3987286
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-12_goodbye_to_the_dog_t6.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "0304513df5f701c7f4bc603302d135ed",
+   "size": 4155534
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-13_digest_cover_week_2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "403ad53ed3569075419a14e0fd29bc72",
+   "size": 3638862
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-16_the_deadline_that_wasnt.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "09995ecce3191c790392bdeeef8f8714",
+   "size": 3908575
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-16_the_deadline_that_wasnt_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "c1ea05ac9b9e2a9f59e6c6789c4dfdf1",
+   "size": 4052705
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-16_the_deadline_that_wasnt_t3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "42c8e8a224d138acfa824c6f0d4ac862",
+   "size": 3941825
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-17_the_phone_number.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "42a574e99a64407d449b0b09146d9fa4",
+   "size": 3812234
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-18_the_map_packed.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "8873104c2314a05eda7a17e8b4e2f7a6",
+   "size": 4015726
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-18_the_map_packed_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "1e71036021b912ff689e1ba87318212f",
+   "size": 3869891
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-19_the_three_of_them.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "2cbeb46fbfc00f8d269780b3fad4a2ae",
+   "size": 4349071
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-20_the_last_night.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "85e00671c9dd9bfc883b09734094ea18",
+   "size": 4101885
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-20_the_last_night_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "ac0061ddf69024ac841cb01182d782e4",
+   "size": 4032270
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-23_the_schedule.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "6cf3f25345e152b80e3d0be9c52fbe07",
+   "size": 3914973
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-24_saturday_asked.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "13331ed81854f02c27ce1c99226cd86b",
+   "size": 3171013
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-25_the_chore_coat_bought.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "a09541f0fe69a69731a132c16b38a95d",
+   "size": 4328672
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-26_the_porch_narrowest.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "8c2d0ec87adf5221d67431822fa0bc6c",
+   "size": 3869464
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-26_the_porch_narrowest_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "6d3d8d901d89f7f6535a6ec88c229c2d",
+   "size": 4067119
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-27_digest_cover_week_4.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "82e84b44ac3d965861c7e554221254d8",
+   "size": 4192817
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-29_greyhound.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "c456b8a3bde1b55699dc58d54788d17f",
+   "size": 4088960
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-10-30_the_day_after.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "1f9c9ee3d8c471e028dd0eccfa473e13",
+   "size": 3781240
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-11-15_dog_night_2000.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "5fdae29a0b22837b24714877fb6a483e",
+   "size": 3528193
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-12-08_the_chore_coat.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "56fd22085ec15082d6567e3bcb378771",
+   "size": 3653096
+  },
+  "godot/assets/comic/vol10/openai/dw_2000-12-22_december_2000.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "c327285d8c815724a64275558c9180cb",
+   "size": 4032020
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-01-10_the_rain_2001_before.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "9926e7412c8c9ac056f63054bf2e7a3f",
+   "size": 3663128
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-01-10_the_rain_2001_before_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "5ca6b8d9bf76b936cf3319150df8a1d1",
+   "size": 3755005
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-01-11_the_rain_2001_eve.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "9d5bc982a446fa2777299581b3175c8b",
+   "size": 4009531
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-01-12_the_rain_2001.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "2c7b3fe9c5ad60932f5cf3723a8be343",
+   "size": 4045077
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-01-15_what_people_frame_1.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "4175bbb76ad744766816c64ed0e9a31f",
+   "size": 3656919
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-01-17_what_people_frame_2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "a24bb81e854efff1cdfcb805281281de",
+   "size": 3785682
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-01-17_what_people_frame_2_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "65e38c26c7dcd0a3063532bca1edacd4",
+   "size": 3879558
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-02-05_what_people_frame_3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "33dd4034ccd1b07604738cb21c5a6aa2",
+   "size": 3988233
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-02-09_crab_derby_2001.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "d2b20048f559cc35edcc2949c7739d90",
+   "size": 3760015
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-02-14_what_people_frame_5.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "c763f4bac56e26f8225aa0a7f46fbcac",
+   "size": 4071591
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-02-14_what_people_frame_5_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "3d9cbbbff91dac6398a400523281cbd2",
+   "size": 3753104
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-02-22_what_people_frame_4.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "a3949421eff5de1aad89e18f3b61b443",
+   "size": 4035126
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-02-22_what_people_frame_4_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "5a57078af5db785b9c2725d6f4edc223",
+   "size": 4008401
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-02-22_what_people_frame_4_t3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "ce58609dd38fc38e73a87bdbdd38a869",
+   "size": 4258476
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-02-26_what_people_frame_6.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "af6ff797d50def34010a3313054bb6ab",
+   "size": 3893672
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-02-26_what_people_frame_6_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "3ff17155ca5f0efc472eefc30737fcdb",
+   "size": 3854898
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-03-07_what_people_frame_7.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "4a71d8429f315120fa9dbca8b0d35687",
+   "size": 3707634
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-03-09_grunion_iv.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "66ef5fff7b36de48ec470eceead35075",
+   "size": 3655699
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-03-16_what_people_frame_8.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "97bfd586d34c75a0f70b3c9584bd9a76",
+   "size": 3894103
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-03-16_what_people_frame_8_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "2ecd54527bb6183375a471933358538c",
+   "size": 3898330
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-05-18_postcards_1.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "947ee9ebd205883d5aa2326378b7a892",
+   "size": 3729500
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-05-25_postcards_3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "9418fd46638d9019c58d05db84e5a4ba",
+   "size": 3979362
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-06-01_last_bell_2001.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "4bd677ec1d0cd126b0d4878bd1320f6d",
+   "size": 3986437
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-06-08_postcards_2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "fe327895883f45364421545d134038a3",
+   "size": 3953333
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-06-08_postcards_2_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "bc89d481b566aa77a0ad99dbbbc11b67",
+   "size": 3800198
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-06-15_postcards_4.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "3e83f0f08b780d083a200b9f451ff6ee",
+   "size": 3961513
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-06-15_postcards_4_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "61f3e79154247a48d896948c2fb54d11",
+   "size": 3908592
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-07-04_the_fourth_2001.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "117991d1230ce4f2f577cb962cd491fc",
+   "size": 3691958
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-07-04_the_fourth_2001_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "4d9d1983bf5bc7779bc96a54465aa2d6",
+   "size": 3599420
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-08-14_tourists_2001.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "881f4c87837803b66b0eb31c5c736641",
+   "size": 3857011
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-09-12_anniversary_four.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "bc39edb0ed619e5114afdd145c7e90e9",
+   "size": 3872280
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-10-09_lot_c.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "2f02e32be38650b120188e7dfb1fe034",
+   "size": 4163665
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-10-09_lot_c_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "4d0e0eaf021ced75da5177ad6836fe5d",
+   "size": 3961003
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-10-10_lot_c_2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "ced53f3cbfbf9abee697cf468074e058",
+   "size": 4005352
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-10-10_lot_c_2_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "3ac71a1fb82f4867f8624d898eb0111d",
+   "size": 4026899
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-10-11_lot_c_3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "fc4501e24c24623f94f62dd666c0d67e",
+   "size": 3884177
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-10-11_lot_c_3_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "caa96f3f01851b06eebad48835727c20",
+   "size": 4131264
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-10-12_lot_c_4.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "e5d2ad849a38b1c1fdca6f5512331ab0",
+   "size": 4274093
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-10-15_lot_c_5.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "b5b355ffb16bd06002a2ede132896a85",
+   "size": 4133545
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-11-14_dog_night_2001_before.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "adb3b552538c93479f3b358140d21652",
+   "size": 3733672
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-11-14_dog_night_2001_before_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "2ee6e3546db28b1f038209bf009d3744",
+   "size": 3759005
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-11-15_dog_night_2001.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "7a09f0b740917f543f6bed84e9afb488",
+   "size": 3769317
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-11-16_dog_night_2001_after.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "06cfb184ae88f84f71d5ab467fca1c05",
+   "size": 3939124
+  },
+  "godot/assets/comic/vol10/openai/dw_2001-12-21_december_2001.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "62ed51bd333effbc422a400c99e3b265",
+   "size": 4011733
+  },
+  "godot/assets/comic/vol10/openai/dw_2002-01-11_the_rain_2002.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "a29244d6d2c0398375004ab9fd8da1a7",
+   "size": 3947836
+  },
+  "godot/assets/comic/vol10/openai/dw_2002-02-07_crab_derby_2002_before.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "4d100b4a51c2acc0350b614da4d86d81",
+   "size": 3835810
+  },
+  "godot/assets/comic/vol10/openai/dw_2002-02-08_crab_derby_2002.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "9c89a7d8c0dd2d1e5bb1047d2ea4fe9a",
+   "size": 3461477
+  },
+  "godot/assets/comic/vol10/openai/dw_2002-02-08_crab_derby_2002_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "109b27a57d6f6b3e10e8d5d2545ff16b",
+   "size": 3632016
+  },
+  "godot/assets/comic/vol10/openai/dw_2002-02-11_crab_derby_2002_after.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "5582c7d2dffb3b6015fd592fc209bc7d",
+   "size": 3526820
+  },
+  "godot/assets/comic/vol10/openai/dw_2002-03-15_grunion_v.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "a0435f96c48c5c43ecf291defe9848c2",
+   "size": 4097757
+  },
+  "godot/assets/comic/vol10/openai/dw_2002-03-15_grunion_v_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "0337505995fd50798c6ee8060db9c283",
+   "size": 3794619
+  },
+  "godot/assets/comic/vol10/openai/dw_2002-06-04_last_bell_2002.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "5ed2dceea4bb50706c51699e7651f75b",
+   "size": 3808216
+  },
+  "godot/assets/comic/vol10/openai/dw_2002-06-04_last_bell_2002_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "02c3e94028419969267b18b91b33f4f0",
+   "size": 3926300
+  },
+  "godot/assets/comic/vol10/openai/dw_2002-06-04_last_bell_2002_t3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "6297920602883990835f2ca25418a1e4",
+   "size": 4103283
+  },
+  "godot/assets/comic/vol10/openai/dw_2002-06-07_corner_box.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "9bcba2b5b313c1fdde9771b7c6440a83",
+   "size": 3808650
+  },
+  "godot/assets/comic/vol10/openai/dw_2002-07-04_the_fourth_2002.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "f2ece472b9c5e3eac32c4d5b0851db89",
+   "size": 3742751
+  },
+  "godot/assets/comic/vol10/openai/dw_2002-08-15_tourist_season_2002_before.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "c15db3e78e06a1e6b9c4be0e46d7c6b3",
+   "size": 3761113
+  },
+  "godot/assets/comic/vol10/openai/dw_2002-08-16_tourist_season_2002.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "db5e0788be70246fa237804d058864e8",
+   "size": 3813689
+  },
+  "godot/assets/comic/vol10/openai/dw_2002-08-19_tourist_season_2002_after.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "5505ea5e0681f98d48e36e9851f312fa",
+   "size": 3297585
+  },
+  "godot/assets/comic/vol10/openai/dw_2002-09-13_twenty_two.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "17265e955dc12c61feeeb0b032a7b5a8",
+   "size": 3983915
+  },
+  "godot/assets/comic/vol10/openai/dw_2002-09-13_twenty_two_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "4911a7e32e86a988e2bba52efd7499c0",
+   "size": 3964549
+  },
+  "godot/assets/comic/vol10/openai/dw_2002-10-05_noir_cover.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "9cb18d2f6ad01f2df4543baeeca9baeb",
+   "size": 4009848
+  },
+  "godot/assets/comic/vol10/openai/dw_2002-10-07_noir_1.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "d9b3ed7a86fbefd1c063c85f1ef6f8e2",
+   "size": 3642986
+  },
+  "godot/assets/comic/vol10/openai/dw_2002-10-08_noir_2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "b5a1904e503d5f5b25792bb1e6c7c7b5",
+   "size": 3642998
+  },
+  "godot/assets/comic/vol10/openai/dw_2002-10-08_noir_2_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "2242325421f3a4a379e854375d2d1c3e",
+   "size": 3874413
+  },
+  "godot/assets/comic/vol10/openai/dw_2002-10-08_noir_2_t3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "6f30128649139e13d0e0917d05c68a9b",
+   "size": 3895832
+  },
+  "godot/assets/comic/vol10/openai/dw_2002-10-09_noir_3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "1d3680adb63817d69dacef5ba9908f03",
+   "size": 3779407
+  },
+  "godot/assets/comic/vol10/openai/dw_2002-10-09_noir_3_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "35193a5c93c760b83334d4e650732a97",
+   "size": 3869340
+  },
+  "godot/assets/comic/vol10/openai/dw_2002-10-09_noir_3_t3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "e3d68a6d388e543da5a30b27bba36cf5",
+   "size": 3758332
+  },
+  "godot/assets/comic/vol10/openai/dw_2002-10-10_noir_4.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "a7970b874e7dc16c95ceb46db2b48feb",
+   "size": 3973699
+  },
+  "godot/assets/comic/vol10/openai/dw_2002-10-11_noir_5.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "6e1b663674c04c667ea8ee2d3b15839a",
+   "size": 3733160
+  },
+  "godot/assets/comic/vol10/openai/dw_2002-11-08_espresso_machine.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "9bca3aeb63ac45556ee1951cc3bb48b1",
+   "size": 3748663
+  },
+  "godot/assets/comic/vol10/openai/dw_2002-11-08_espresso_machine_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "3ba2bab49e30fffd827210a92b62ea53",
+   "size": 3916635
+  },
+  "godot/assets/comic/vol10/openai/dw_2002-11-08_espresso_machine_t3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "47e076f9ad2507eee99c0ea0e4c233e6",
+   "size": 3853841
+  },
+  "godot/assets/comic/vol10/openai/dw_2002-11-12_espresso_machine_2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "1c94c055ac33b4c32d84f851b7117a47",
+   "size": 4067958
+  },
+  "godot/assets/comic/vol10/openai/dw_2002-11-12_espresso_machine_2_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "630c6e0669d5dd38b1a69a0a6cda0bb9",
+   "size": 4153010
+  },
+  "godot/assets/comic/vol10/openai/dw_2002-11-13_the_grinder.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "a599eb11230a03d9f8820995d948042d",
+   "size": 3866798
+  },
+  "godot/assets/comic/vol10/openai/dw_2002-11-13_the_grinder_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "6668d93320c1ca5c6299ebdbadccf89d",
+   "size": 3671386
+  },
+  "godot/assets/comic/vol10/openai/dw_2002-11-14_thursday_the_dog_returns.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "c3ec6e6c93e9f412260e44c3cb2c412f",
+   "size": 3961495
+  },
+  "godot/assets/comic/vol10/openai/dw_2002-11-15_espresso_machine_3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "86243632612c12c63c1a3de735aafa15",
+   "size": 3841400
+  },
+  "godot/assets/comic/vol10/openai/dw_2002-12-20_on_the_dock.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "f99eeb1cfbfab1a4d0e54f8ec53c7669",
+   "size": 4049195
+  },
+  "godot/assets/comic/vol10/openai/dw_2003-01-10_the_rain_2003.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "4bb776653f444877c5cf5beb3ab976df",
+   "size": 4323455
+  },
+  "godot/assets/comic/vol10/openai/dw_2003-07-11_unprinted_1.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "17825d7bf6d887243c64ed845bbc56a0",
+   "size": 4075059
+  },
+  "godot/assets/comic/vol10/openai/dw_2003-07-11_unprinted_1_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "13708428ddfb70d7ee786805541fc403",
+   "size": 3259947
+  },
+  "godot/assets/comic/vol10/openai/dw_2004-01-05_online.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "02748071213932fe6b3ade7817d7ccca",
+   "size": 2657226
+  },
+  "godot/assets/comic/vol10/openai/dw_2004-01-11_bad_color_1.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "586aa8bfc0307e9bcd018b808dae4d0f",
+   "size": 3324995
+  },
+  "godot/assets/comic/vol10/openai/dw_2004-01-13_the_chorus.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "191ee91e116c0fc22fc311baa09d4b8a",
+   "size": 2298252
+  },
+  "godot/assets/comic/vol10/openai/dw_2004-01-19_the_third_visitor.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "8245f8e9b5f2c0654dc26887d2d906fc",
+   "size": 2602912
+  },
+  "godot/assets/comic/vol10/openai/dw_2004-02-02_six_a_week.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "052506dcd6e3d8a7598f7c64966320bb",
+   "size": 2613237
+  },
+  "godot/assets/comic/vol10/openai/dw_2006-09-11_nine_years_before.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "30df2d65b6ab3c3bc8b103c97ec9f5b4",
+   "size": 2504851
+  },
+  "godot/assets/comic/vol10/openai/dw_2006-11-08_under_the_door.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "c8353a00d7224fe4c2f0945542063017",
+   "size": 2767678
+  },
+  "godot/assets/comic/vol10/openai/dw_2006-11-09_seventy_two_hours.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "fb26c7c46bd4b27be19e6c340bf0df36",
+   "size": 2547964
+  },
+  "godot/assets/comic/vol10/openai/dw_2006-11-12_sunday_the_garage_at_3am.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "eb7dc786f24389105bef772438a82004",
+   "size": 2889393
+  },
+  "godot/assets/comic/vol10/openai/dw_2006-11-13_the_front_page.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "26454072591fe7aa00b1960985d9efd4",
+   "size": 2628613
+  },
+  "godot/assets/comic/vol10/openai/dw_2006-11-14_ringtones.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "d9afae2d9d451922b7de15fa13d603dd",
+   "size": 2306579
+  },
+  "godot/assets/comic/vol10/openai/dw_2006-11-16_the_week_after_preview.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "64751e7a90e0f8ad6f2e02f9b5a6017e",
+   "size": 2667557
+  },
+  "godot/assets/comic/vol10/openai/dw_2007-08-15_tourists_2007_the_walk_map.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "a4e56d381c8554ad30712d66562ff1b6",
+   "size": 2578634
+  },
+  "godot/assets/comic/vol10/openai/dw_2007-10-19_last_call.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "13103c30dde6545b9c0e195cf8e7e5f3",
+   "size": 2400940
+  },
+  "godot/assets/comic/vol10/openai/dw_2008-03-15_the_florence_paper.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "071c717d94fa12c863ac4c7915d4ff9e",
+   "size": 2299266
+  },
+  "godot/assets/comic/vol10/openai/dw_2009-06-08_best_man_1.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "8ffe8537f8d9e33d5e659bbe6408c86e",
+   "size": 2383110
+  },
+  "godot/assets/comic/vol10/openai/dw_2018-06-24_newport_2am.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "85bae5dc2e6285f159b25f247cdd0cb5",
+   "size": 3600268
+  },
+  "godot/assets/comic/vol10/openai/dw_2018-06-24_newport_2am_t2.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "c438debcc1543478e095513d33f43891",
+   "size": 3326460
+  },
+  "godot/assets/comic/vol10/openai/rc_2006-11-13_rolfcoptr_1.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "f90bff2631cd5be81a72a22fd7e0ae15",
+   "size": 1347455
+  },
+  "godot/assets/comic/vol10/openai/rc_2006-11-15_rolfcoptr_3.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "2a6132d2b13d7bd4962dba7f027b2688",
+   "size": 1409469
+  },
+  "godot/assets/comic/vol10/openai/ro_2023-06-11_lincoln_city.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "b0525377e96e5e18e65a73b5ef734523",
+   "size": 3276378
+  },
+  "godot/assets/comic/vol10/openai/ro_2025-08-25_the_yellow_slicker.png": {
+   "at": "2026-10-04T22:39:55+00:00",
+   "md5": "224126b6ef373590797db7d20d5ed192",
+   "size": 3616162
+  },
+  "godot/assets/comic/vol10/runway/bk_1998-10-16_the_halloween_issue_the_cafeteria_at_night.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "7123a392f76facc99e662abecfe93a4b",
+   "size": 6356252
+  },
+  "godot/assets/comic/vol10/runway/bk_1998-10-30_the_halloween_issue_the_stone_head_walks.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "1d1ffb7b58cac48315cd68df476e9f29",
+   "size": 6916295
+  },
+  "godot/assets/comic/vol10/runway/bk_1998-10-30_the_halloween_issue_the_stone_head_walks_t2.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "7e851d905956dcdfa6230baffb7ecc31",
+   "size": 6435483
+  },
+  "godot/assets/comic/vol10/runway/bk_1998-11-13_the_halloween_issue_the_sign_spells.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "6402a703625985c724c8c19f29c8dfd0",
+   "size": 6197904
+  },
+  "godot/assets/comic/vol10/runway/bk_1998-11-13_the_halloween_issue_the_sign_spells_t2.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "7499047db0b1b743d7799efe4c71ad41",
+   "size": 6304984
+  },
+  "godot/assets/comic/vol10/runway/bk_1998-11-27_the_halloween_issue_the_copier.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "401c98bb17ae48fce8719fc550f5eb5b",
+   "size": 6288566
+  },
+  "godot/assets/comic/vol10/runway/dw_1997-09-12_cafeteria.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "0b13a7a5701b23b0936b3d22cd012edd",
+   "size": 7062836
+  },
+  "godot/assets/comic/vol10/runway/dw_1997-09-26_vending_machine.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "eacbc9b68fc83d0ecbd6950b79c59e08",
+   "size": 6815924
+  },
+  "godot/assets/comic/vol10/runway/dw_1997-09-26_vending_machine_t2.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "a239dd8a57a38b594537046bea3493da",
+   "size": 6447331
+  },
+  "godot/assets/comic/vol10/runway/dw_1997-09-26_vending_machine_t3.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "38646f7be7677aa7e30f971c64d95b80",
+   "size": 6936152
+  },
+  "godot/assets/comic/vol10/runway/dw_1997-10-10_assembly.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "f8ce91491bf1cb7224c1ffbcacf8df8f",
+   "size": 2237209
+  },
+  "godot/assets/comic/vol10/runway/dw_1997-10-10_assembly_t2.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "1bd8cb57292e651fc9228762fc4c430f",
+   "size": 6574078
+  },
+  "godot/assets/comic/vol10/runway/dw_1997-10-10_assembly_t3.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "57c10e3b8c2c58fbe020c59777639ed6",
+   "size": 1929298
+  },
+  "godot/assets/comic/vol10/runway/dw_1997-10-10_assembly_t4.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "7e5e9188c43f08e069c85ff916dc4563",
+   "size": 6432321
+  },
+  "godot/assets/comic/vol10/runway/dw_1997-10-24_back_page.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "deb365a45a62ae0a033aff39a5bb3ffb",
+   "size": 6461869
+  },
+  "godot/assets/comic/vol10/runway/dw_1997-11-07_the_review.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "c9afd4409c36ee62d608f5ca1962c1e1",
+   "size": 6534070
+  },
+  "godot/assets/comic/vol10/runway/dw_1997-11-21_thanksgiving.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "6b99ab56828ec367d7f9707dd6c73546",
+   "size": 6072443
+  },
+  "godot/assets/comic/vol10/runway/dw_1997-12-05_caricature.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "55c609ae13efce9db27c80a7d6968ece",
+   "size": 7390506
+  },
+  "godot/assets/comic/vol10/runway/dw_1997-12-19_she_lives_here.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "c96cf830f9f857df55f3db060ea66561",
+   "size": 6662169
+  },
+  "godot/assets/comic/vol10/runway/dw_1997-12-19_she_lives_here_t2.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "bf54dd75279d3748129b341635808ca5",
+   "size": 6459046
+  },
+  "godot/assets/comic/vol10/runway/dw_1998-01-16_the_rain.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "a4481b1dec936a33bae6395661732e18",
+   "size": 6098365
+  },
+  "godot/assets/comic/vol10/runway/dw_1998-01-16_the_rain_t2.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "39b20255b202bbf3711f72ae1ee657ef",
+   "size": 7064445
+  },
+  "godot/assets/comic/vol10/runway/dw_1998-01-30_bus_driver.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "0a575dc3a939f9837b36d73a0868615e",
+   "size": 6353816
+  },
+  "godot/assets/comic/vol10/runway/dw_1998-01-30_bus_driver_t2.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "32c05c279e91c3a4aff9d70be449e659",
+   "size": 6425128
+  },
+  "godot/assets/comic/vol10/runway/dw_1998-01-30_bus_driver_t3.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "8fb1f87a1a070a1d7d2f83d27b1ce4df",
+   "size": 6373003
+  },
+  "godot/assets/comic/vol10/runway/dw_1998-02-13_crab_derby.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "a54f7b0fdf9db07beeaaca64fdf92d0c",
+   "size": 6599298
+  },
+  "godot/assets/comic/vol10/runway/dw_1998-02-27_video_store.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "d314aa5a75e877cbfdfd4766bb344908",
+   "size": 6257456
+  },
+  "godot/assets/comic/vol10/runway/dw_1998-02-27_video_store_t2.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "c75d3ca141c9350b317e3dbdbcd64381",
+   "size": 6644079
+  },
+  "godot/assets/comic/vol10/runway/dw_1998-03-13_grunion.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "1f0a865e02824dd936226babb1558977",
+   "size": 6496120
+  },
+  "godot/assets/comic/vol10/runway/dw_1998-03-13_grunion_t2.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "664854da6a55299cdc4711e7e38f082b",
+   "size": 6136387
+  },
+  "godot/assets/comic/vol10/runway/dw_1998-03-13_grunion_t3.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "bff5cd0053a225d9f90d4357fd8beb78",
+   "size": 6368540
+  },
+  "godot/assets/comic/vol10/runway/dw_1998-03-27_mixtape.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "7dbab2b428dd3a3252e5b083e301a1d8",
+   "size": 6106328
+  },
+  "godot/assets/comic/vol10/runway/dw_1998-04-10_spring_special.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "6834a73a303c4810ec84389f070a838c",
+   "size": 6872694
+  },
+  "godot/assets/comic/vol10/runway/dw_1998-04-24_ballot.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "bc7460d44f33d86814a8d5c1d9d47c01",
+   "size": 5407783
+  },
+  "godot/assets/comic/vol10/runway/dw_1998-05-08_the_photo.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "56e68da52c8f2b62b4337a6f1dca3ba0",
+   "size": 6228450
+  },
+  "godot/assets/comic/vol10/runway/dw_1998-05-08_the_photo_t2.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "ab04a93e32e62aa3c04fea472fa04ffd",
+   "size": 6456608
+  },
+  "godot/assets/comic/vol10/runway/dw_1998-05-22_the_yearbook.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "0f3eddef3eec8eb9751da8c01bb762c9",
+   "size": 6678010
+  },
+  "godot/assets/comic/vol10/runway/dw_1998-05-22_the_yearbook_t2.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "c7da8c90c098962846603edac5cccbd3",
+   "size": 5935681
+  },
+  "godot/assets/comic/vol10/runway/dw_1998-06-05_last_bell.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "9216a320be0dccc24a1eba0a4b6c1721",
+   "size": 5967867
+  },
+  "godot/assets/comic/vol10/runway/dw_1998-09-11_a_year_in.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "8b84f46bdd355170ae822dcea65e059d",
+   "size": 6360585
+  },
+  "godot/assets/comic/vol10/runway/dw_1998-09-25_the_envelope.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "31a0cbd49f3c386214b67d2400dc3512",
+   "size": 6358440
+  },
+  "godot/assets/comic/vol10/runway/dw_1998-10-09_still_there.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "508cce4965145ef121da7bdc30b8d807",
+   "size": 6431629
+  },
+  "godot/assets/comic/vol10/runway/dw_1998-10-23_gully_asks.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "8696fff717f2383c728fc0782326f6af",
+   "size": 6930961
+  },
+  "godot/assets/comic/vol10/runway/dw_1998-11-06_gone.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "522e3efaa36f12a284907057658215c7",
+   "size": 6538752
+  },
+  "godot/assets/comic/vol10/runway/dw_1998-11-06_gone_t2.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "1ed049c0fc1e74ed8b49896a59da1405",
+   "size": 6406335
+  },
+  "godot/assets/comic/vol10/runway/dw_1998-11-20_thanksgiving_ii.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "d4dea7313e56e218104d94a104bbfa70",
+   "size": 5981586
+  },
+  "godot/assets/comic/vol10/runway/dw_1998-12-04_the_dumpster.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "513014f5ab95798870a6f945884c6446",
+   "size": 6455366
+  },
+  "godot/assets/comic/vol10/runway/dw_1998-12-04_the_dumpster_t2.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "370c579a754b0574f893ea735b78a3d6",
+   "size": 6664421
+  },
+  "godot/assets/comic/vol10/runway/dw_1998-12-04_the_dumpster_t3.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "69d8469646c9c1b0afcf621a8e35067e",
+   "size": 6244082
+  },
+  "godot/assets/comic/vol10/runway/dw_1998-12-04_the_dumpster_t4.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "3cda3f4b2174df0164dd2917bbd83b6d",
+   "size": 6758891
+  },
+  "godot/assets/comic/vol10/runway/dw_1998-12-18_still_here.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "4a62f097af736522c066c0277282e2d1",
+   "size": 6578223
+  },
+  "godot/assets/comic/vol10/runway/dw_1999-01-15_the_rain_ii.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "5c01f23347262a95514ad63eaee1626b",
+   "size": 6698528
+  },
+  "godot/assets/comic/vol10/runway/dw_1999-01-15_the_rain_ii_t2.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "1fbb28c90a09df7cb009a4739448cacb",
+   "size": 6792347
+  },
+  "godot/assets/comic/vol10/runway/dw_1999-01-29_applications.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "61aa5d49c7d4fc8b144479ed9366a936",
+   "size": 6259146
+  },
+  "godot/assets/comic/vol10/runway/dw_1999-02-12_crab_derby_ii.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "7d2609bc99b0c6b25f049576a42af6ee",
+   "size": 6320591
+  },
+  "godot/assets/comic/vol10/runway/dw_1999-02-12_crab_derby_ii_t2.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "079fbf73937edc0e3898e0d796d68677",
+   "size": 6705210
+  },
+  "godot/assets/comic/vol10/runway/dw_1999-02-12_crab_derby_ii_t3.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "3349cfce4ce5b201451a8263e68b816d",
+   "size": 6735035
+  },
+  "godot/assets/comic/vol10/runway/dw_1999-02-26_grunion_early.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "67ab8f7bc05bb0569c84348d120d19ce",
+   "size": 6822344
+  },
+  "godot/assets/comic/vol10/runway/dw_1999-03-12_red_pen.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "748767beb35f5fd6e0a18c7d811c5c3f",
+   "size": 6389180
+  },
+  "godot/assets/comic/vol10/runway/dw_1999-03-12_red_pen_t2.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "6630823390b73a4e6ae3f30a6fc1c169",
+   "size": 5861074
+  },
+  "godot/assets/comic/vol10/runway/dw_1999-03-12_red_pen_t3.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "237a48d494839fe691b142503a40b2d4",
+   "size": 5593046
+  },
+  "godot/assets/comic/vol10/runway/dw_1999-03-12_red_pen_t4.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "22add3f2c5f0303a2555de9444f80d31",
+   "size": 6281500
+  },
+  "godot/assets/comic/vol10/runway/dw_1999-03-26_the_map.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "2dc6ba6de68986d6832c34e6cff7dd4b",
+   "size": 7099405
+  },
+  "godot/assets/comic/vol10/runway/dw_1999-03-26_the_map_t2.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "b072342200a7390b82b8a68aec24e7ae",
+   "size": 6577852
+  },
+  "godot/assets/comic/vol10/runway/dw_1999-04-09_bus_schedule.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "1c0969783be1b60f0023c4638ec6ee53",
+   "size": 6539051
+  },
+  "godot/assets/comic/vol10/runway/dw_1999-04-23_the_phantom.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "3268ff120b5c33a976c9982f3d7e6dd9",
+   "size": 6527182
+  },
+  "godot/assets/comic/vol10/runway/dw_1999-04-23_the_phantom_t2.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "ffe2bfc8c5ddfce14becf319c3f5088a",
+   "size": 6871655
+  },
+  "godot/assets/comic/vol10/runway/dw_1999-05-07_most_likely_again.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "9bb3f79c5871c3dbee542a2d7ed71004",
+   "size": 6535737
+  },
+  "godot/assets/comic/vol10/runway/dw_1999-05-07_most_likely_again_t2.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "86778846cd9b08c1bcfc53fae5cd87da",
+   "size": 5558734
+  },
+  "godot/assets/comic/vol10/runway/dw_1999-05-07_most_likely_again_t3.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "ff7b86e08160a6cc08e531409fd7cb40",
+   "size": 7057154
+  },
+  "godot/assets/comic/vol10/runway/dw_1999-05-21_the_back_page_last.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "d51914c8bfa3cdacfe9c54aa085cf2c2",
+   "size": 6492116
+  },
+  "godot/assets/comic/vol10/runway/dw_1999-06-04_signing_off.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "f365f5da94235b89614dc1c3a71eff38",
+   "size": 6013683
+  },
+  "godot/assets/comic/vol10/runway/dw_1999-06-04_signing_off_t2.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "7d189a3fd54d1f2be32a775a17e237b2",
+   "size": 6359830
+  },
+  "godot/assets/comic/vol10/runway/dw_1999-06-04_signing_off_t3.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "384b78fc05a328cefaede2da309010aa",
+   "size": 6860629
+  },
+  "godot/assets/comic/vol10/runway/dw_1999-09-20_first_daily.png": {
+   "at": "2026-10-04T22:40:49+00:00",
+   "md5": "7c4be2997515cedc81840af0238a677a",
+   "size": 4108506
+  },
+  "godot/assets/comic/vol10/sheets/sheet_barnaby.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "c2a59f536b50444b6c09939b4297008b",
+   "size": 2564211
+  },
+  "godot/assets/comic/vol10/sheets/sheet_barnaby_ii.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "e7bd4d900e1b1bbde5e8415a0891b611",
+   "size": 2395755
+  },
+  "godot/assets/comic/vol10/sheets/sheet_barnaby_ii_t2.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "17975d4c1df80549ab08f793eb2d0a6c",
+   "size": 2490230
+  },
+  "godot/assets/comic/vol10/sheets/sheet_chloe_17.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "d74cfb271c2fc2687c0676927e3a4551",
+   "size": 3539293
+  },
+  "godot/assets/comic/vol10/sheets/sheet_chloe_28.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "37071bd02f074cee8d3741a84c792aa3",
+   "size": 2124240
+  },
+  "godot/assets/comic/vol10/sheets/sheet_chloe_34.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "c798204fea0bc930e611172e435dd03b",
+   "size": 2060701
+  },
+  "godot/assets/comic/vol10/sheets/sheet_chloe_44.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "41d39f32c96d1769d5b9dce15038d319",
+   "size": 2833578
+  },
+  "godot/assets/comic/vol10/sheets/sheet_chorus_and_meme.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "39488da6ee4276dfa8620fbded688810",
+   "size": 1770170
+  },
+  "godot/assets/comic/vol10/sheets/sheet_era1.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "338ccbca2a328a78e789d45745adc1f3",
+   "size": 3295459
+  },
+  "godot/assets/comic/vol10/sheets/sheet_era1_t2.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "dc97c16fccc7b128ec3a0e06441f66f1",
+   "size": 3508403
+  },
+  "godot/assets/comic/vol10/sheets/sheet_era2.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "880cfa256e281d73ed56652c84f22174",
+   "size": 2407506
+  },
+  "godot/assets/comic/vol10/sheets/sheet_era2_t2.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "4400248233d9ab7a3072f62a894e1a09",
+   "size": 2376208
+  },
+  "godot/assets/comic/vol10/sheets/sheet_era2_t3.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "2df6f13ca2cb5d1341ef816e625a64e3",
+   "size": 2253777
+  },
+  "godot/assets/comic/vol10/sheets/sheet_era3.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "5670356e5b3695f170d26d99fb51a428",
+   "size": 2303925
+  },
+  "godot/assets/comic/vol10/sheets/sheet_era4.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "58f065145ffb7a3581598861d4886eab",
+   "size": 2769727
+  },
+  "godot/assets/comic/vol10/sheets/sheet_frontier_cast.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "995bc88541c7d51a5a6b3e0e00b312c1",
+   "size": 3162484
+  },
+  "godot/assets/comic/vol10/sheets/sheet_gully_17.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "533bf3c794733f5c168fc990fbc2416a",
+   "size": 3208694
+  },
+  "godot/assets/comic/vol10/sheets/sheet_gully_17_t2.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "e110baaaee1bff9c054a8b6c55dcf3b8",
+   "size": 2931718
+  },
+  "godot/assets/comic/vol10/sheets/sheet_gully_17_u1.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "30fe40b8cd8d7749abc6397479d05fd3",
+   "size": 558501
+  },
+  "godot/assets/comic/vol10/sheets/sheet_gully_17_u2.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "30fe40b8cd8d7749abc6397479d05fd3",
+   "size": 558501
+  },
+  "godot/assets/comic/vol10/sheets/sheet_gully_17_u3.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "30fe40b8cd8d7749abc6397479d05fd3",
+   "size": 558501
+  },
+  "godot/assets/comic/vol10/sheets/sheet_gully_27.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "8cceecc920753d99bfcf4bbbe5c178d5",
+   "size": 2204248
+  },
+  "godot/assets/comic/vol10/sheets/sheet_gully_27_t2.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "fa238112bb2d807f98b2deef3db67bba",
+   "size": 2278766
+  },
+  "godot/assets/comic/vol10/sheets/sheet_gully_35.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "ad39b29e03f21b6953a7cdb850d24ab2",
+   "size": 2773384
+  },
+  "godot/assets/comic/vol10/sheets/sheet_gully_48.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "1a378d839c1d92617ee957e5c3879872",
+   "size": 2610260
+  },
+  "godot/assets/comic/vol10/sheets/sheet_julian.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "bfd20e3824c743b15736cfedb95a73ef",
+   "size": 2227984
+  },
+  "godot/assets/comic/vol10/sheets/sheet_loc_beach.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "d33dc4d3e647a004144270ed4e71b946",
+   "size": 2901275
+  },
+  "godot/assets/comic/vol10/sheets/sheet_loc_frame_shop.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "cc6ce3696be8eaae95d729a9597c51e0",
+   "size": 3537363
+  },
+  "godot/assets/comic/vol10/sheets/sheet_loc_garage.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "b3e55bab3cbfce45d727b19015785b17",
+   "size": 3164560
+  },
+  "godot/assets/comic/vol10/sheets/sheet_loc_garage_t2.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "96b99e61c560c70bba2a0ffaa71bcb82",
+   "size": 2990140
+  },
+  "godot/assets/comic/vol10/sheets/sheet_loc_gullys.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "ec0d927ad8eb2c3d99806b939c22e55f",
+   "size": 2638840
+  },
+  "godot/assets/comic/vol10/sheets/sheet_loc_lanes.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "bc3ee7b82eeeaf3dfb0dabc9c4cf59da",
+   "size": 2472442
+  },
+  "godot/assets/comic/vol10/sheets/sheet_loc_main_street.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "036b8792b0d0764c8e5fc9c250e42770",
+   "size": 3659104
+  },
+  "godot/assets/comic/vol10/sheets/sheet_loc_mill.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "645559cdf8de4e111bb0edac04d7600d",
+   "size": 2980301
+  },
+  "godot/assets/comic/vol10/sheets/sheet_loc_motel.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "722d59a4ccc8fc776c8a1fa2d938aacd",
+   "size": 2360595
+  },
+  "godot/assets/comic/vol10/sheets/sheet_loc_mudflats.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "88a6fcccea71688862af6e6c9d5e0cbe",
+   "size": 2736849
+  },
+  "godot/assets/comic/vol10/sheets/sheet_loc_roflcopter_sets.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "a1f54c693969196138cc63902f54eda3",
+   "size": 2741325
+  },
+  "godot/assets/comic/vol10/sheets/sheet_objects_marks.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "75b52bb2c40f08f5e930e814c467d31c",
+   "size": 1362538
+  },
+  "godot/assets/comic/vol10/sheets/sheet_objects_paper.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "9760f8efd14b07e510cc99bcc3198612",
+   "size": 2913969
+  },
+  "godot/assets/comic/vol10/sheets/sheet_objects_tools.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "d91179371f326624489936542b574f87",
+   "size": 2718975
+  },
+  "godot/assets/comic/vol10/sheets/sheet_objects_vehicles_food.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "09bd4425bae922fee8859cdf1cf77aae",
+   "size": 2415000
+  },
+  "godot/assets/comic/vol10/sheets/sheet_pomegranate_host.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "76a069c48ae89b304169656cf2cc7f2d",
+   "size": 2054629
+  },
+  "godot/assets/comic/vol10/sheets/sheet_slash_cast.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "00da3e399834ad8f49726f458f7d524b",
+   "size": 3180479
+  },
+  "godot/assets/comic/vol10/sheets/sheet_supporting.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "79023a380da1de5dcee90ae745f6cb5e",
+   "size": 2313204
+  },
+  "godot/assets/comic/vol10/sheets/sheet_the_bird.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "03ca02bd9158538b8b2c78471e99dc97",
+   "size": 2683172
+  },
+  "godot/assets/comic/vol10/sheets/sheet_timberline_people.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "5d89cc493fb557d7b69f04a483e8353f",
+   "size": 2737464
+  },
+  "godot/assets/comic/vol10/sheets/sheet_town_1999.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "f4f71b50c30a9dfa735e0c14d487e187",
+   "size": 3642727
+  },
+  "godot/assets/comic/vol10/sheets/sheet_town_2000s.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "4b2cfa71b4a22a59b1780b76ae1ae02e",
+   "size": 2348341
+  },
+  "godot/assets/comic/vol10/sheets/sheet_wood_17.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "00abb22914a443f5630cf15f74d32437",
+   "size": 6066820
+  },
+  "godot/assets/comic/vol10/sheets/sheet_wood_20.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "daa4af923e328cad6adad05b34dd292d",
+   "size": 3047575
+  },
+  "godot/assets/comic/vol10/sheets/sheet_wood_26.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "91d109001a6daa32eb59cb64834e7680",
+   "size": 2116954
+  },
+  "godot/assets/comic/vol10/sheets/sheet_wood_34.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "dbf4753c3c273c173e5cfaa84a99c2ec",
+   "size": 2214402
+  },
+  "godot/assets/comic/vol10/sheets/sheet_wood_44.png": {
+   "at": "2026-10-04T22:41:34+00:00",
+   "md5": "19695851a3f72e74603ba20715934636",
+   "size": 2583989
+  }
+ },
+ "remote": "gdrive:ModernMythology"
+}
