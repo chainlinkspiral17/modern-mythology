@@ -69,6 +69,19 @@ if [ ! -f godot/tools/meshy_pipeline.py ]; then
   exit 1
 fi
 
+# Hero Studio moved to the game branch on 2026-09-30 and gained Google Drive
+# there; an older copy (e.g. the meshy branch) has no Drive support.
+if ! grep -q "def drive_push" godot/tools/meshy_pipeline.py; then
+  git fetch -q origin "+refs/heads/$GAME_BR_HINT:refs/remotes/origin/$GAME_BR_HINT" 2>/dev/null
+  echo
+  echo "✗ The Hero Studio on this branch ($cur) is an older copy without Google Drive."
+  echo "  The current one is on the game branch. Your models and other uncommitted"
+  echo "  files stay in the folder when you switch. Switch, then run this again:"
+  echo
+  echo "    cd $MAIN && git checkout $GAME_BR_HINT"
+  exit 1
+fi
+
 # ── 1. Main folder: update only if it is a plain fast-forward ──────────────
 echo "· updating the main folder…"
 if git pull -q --ff-only origin "$cur" 2>/tmp/both_tools_pull.log; then
