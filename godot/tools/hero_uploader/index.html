@@ -181,6 +181,7 @@
     <button id="btn-recovered" class="secondary small" title="models pulled back from the Meshy account (meshy_recover.py fetch-all) waiting to be given to a character" style="display:none">recovered</button>
     <span class="keys" id="keys" title="click to set / test API keys" style="cursor:pointer"></span>
     <button id="btn-keys" class="secondary small">keys</button>
+    <button id="btn-reset-settings" class="secondary small" title="your generation and Meshy choices are remembered between entries and reloads; this puts the roster defaults back">reset settings</button>
     <button id="btn-save" class="save small" title="git add + commit + push everything the tool produced (models, chosen pictures, manifest, roster) to the current branch" style="display:none">SAVE</button>
   </div>
 </header>
@@ -543,6 +544,52 @@ function renderRoster() {
 // ════════════════════════════════════════════════════════════════
 // Entry panel
 // ════════════════════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════════════
+// Remembered settings (2026-10-04, the user: "settings stay the same
+// between asset pages"). Generation and Meshy choices carry from entry to
+// entry and survive a reload (this browser only, never git). Pose is kept
+// per kind (heroes vs props). Prompt, canon and aspect stay per entry —
+// they describe that asset. The two overwrite boxes are kept for this
+// session only, so a reload never leaves overwriting switched on.
+// ════════════════════════════════════════════════════════════════
+const SETTINGS_KEY = 'heroStudio.settings.v1';
+const GLOBAL_CONTROLS = {            // control id → kind of value
+  'o-provider': 'value', 'o-quality': 'value', 'o-count': 'value', 'o-multiview': 'checked',
+  'o-modeltype': 'value', 'o-polycount': 'value', 'o-texture': 'value', 'o-texres': 'value',
+  'o-ultra': 'checked', 'o-mesh-multiview': 'checked',
+};
+let SETTINGS = loadSettings();
+function loadSettings() {
+  try { const v = JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}'); return (v && typeof v === 'object') ? v : {}; }
+  catch (e) { return {}; }
+}
+function storeSettings() {
+  try { localStorage.setItem(SETTINGS_KEY, JSON.stringify(SETTINGS)); } catch (e) { /* private mode: session memory still works */ }
+}
+function remember(id) {
+  const el = $(id); if (!el) return;
+  const kind = GLOBAL_CONTROLS[id];
+  if (kind) SETTINGS[id] = kind === 'checked' ? el.checked : el.value;
+  if (id === 'o-model') { SETTINGS.models = SETTINGS.models || {}; SETTINGS.models[$('o-provider').value] = el.value; }
+  if (id === 'o-pose') { const e = entry(); if (e) { SETTINGS.poseByKind = SETTINGS.poseByKind || {}; SETTINGS.poseByKind[e.kind] = el.value; } }
+  storeSettings();
+}
+// put a remembered value back on a control (only if the control can show it)
+function restore(id, fallback) {
+  const el = $(id); if (!el) return;
+  const kind = GLOBAL_CONTROLS[id];
+  const v = id in SETTINGS ? SETTINGS[id] : fallback;
+  if (v === undefined || v === null) return;
+  if (kind === 'checked') { el.checked = !!v; return; }
+  if (el.tagName === 'SELECT' && ![...el.options].some(o => o.value === String(v))) return;
+  el.value = String(v);
+}
+function resetSettings() {
+  SETTINGS = {}; storeSettings();
+  log('ok', 'Settings back to the roster defaults.');
+  if (state.selected) select(state.selected);
+}
+
 function select(slug) {
   state.selected = slug;
   state.droppedGlb = null;
@@ -559,16 +606,22 @@ function select(slug) {
   $('e-canon').placeholder = 'No description of the look in the text yet — the fallback prompt will be used. Add quotes here (or to canon[] in meshy_roster.json; try: python3 godot/tools/meshy_canon.py ' + e.slug + ').';
   $('e-canon-src').textContent = (e.canon || []).length ? 'sources: ' + [...new Set((e.canon || []).map(q => q.src))].join(' · ') : 'no canon quotes';
   $('o-append').checked = (e.prompt_mode || state.roster.defaults?.prompt_mode) === 'append';
-  $('o-pose').value = e.pose || '';
+  const rememberedPose = (SETTINGS.poseByKind || {})[e.kind];
+  $('o-pose').value = rememberedPose !== undefined ? rememberedPose : (e.pose || '');
   fillSelect($('o-aspect'), state.roster.aspects, e.aspect);
-  $('o-provider').value = state.roster.defaults?.provider || 'google';
-  onProviderChange();
   const d = state.roster.defaults || {};
-  $('o-modeltype').value = d.model_type || 'standard';
-  $('o-polycount').value = d.polycount || 10000;
-  $('o-texture').value = d.texture === false ? '0' : '1';
-  $('o-texres').value = d.texture_resolution || '4k';
-  $('o-mesh-multiview').checked = !!(e.status.chosen?.side || e.status.chosen?.back);
+  restore('o-provider', d.provider || 'google');
+  onProviderChange();
+  restore('o-modeltype', d.model_type || 'standard');
+  restore('o-polycount', d.polycount || 10000);
+  restore('o-texture', d.texture === false ? '0' : '1');
+  restore('o-texres', d.texture_resolution || '4k');
+  restore('o-quality', 'medium');
+  restore('o-count', 1);
+  restore('o-multiview', false);
+  restore('o-ultra', false);
+  // until you set it yourself: on when this entry has side/back views
+  restore('o-mesh-multiview', !!(e.status.chosen?.side || e.status.chosen?.back));
   $('drop-dest').textContent = e.file;
   $('git-cmd').style.display = 'none';
   renderViews(); renderPreview(); refreshFullPrompt(); updateCosts();
@@ -582,7 +635,7 @@ function fillSelect(sel, values, current) {
 function onProviderChange() {
   const p = $('o-provider').value;
   const prov = state.roster.providers[p] || state.roster.providers.google;
-  fillSelect($('o-model'), prov.models, state.roster.defaults?.[p + '_model'] || prov.default);
+  fillSelect($('o-model'), prov.models, (SETTINGS.models || {})[p] || state.roster.defaults?.[p + '_model'] || prov.default);
   $('o-quality-wrap').style.display = p === 'openai' ? '' : 'none';
   updateCosts();
 }
@@ -932,6 +985,10 @@ function batchCommand() {
 // Events
 // ════════════════════════════════════════════════════════════════
 function bind() {
+  for (const id of [...Object.keys(GLOBAL_CONTROLS), 'o-model', 'o-pose']) {
+    $(id)?.addEventListener('change', () => { remember(id); updateCosts(); });
+  }
+  $('btn-reset-settings')?.addEventListener('click', resetSettings);
   for (const id of ['f-search', 'f-kind', 'f-vol', 'f-state']) $(id).addEventListener('input', renderRoster);
   $('btn-batch').addEventListener('click', batchCommand);
   const toggleKeys = () => { const k = $('keys-panel'); k.style.display = k.style.display === 'none' ? '' : 'none'; if (k.style.display === '') renderKeyStatus(state.roster?.key_report || {}); };
