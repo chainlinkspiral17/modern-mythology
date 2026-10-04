@@ -113,6 +113,7 @@ else
     git worktree add -q --track -b "$COMIC_BR" "$COMIC" "origin/$COMIC_BR" \
       || { echo "✗ Could not create the comic folder."; exit 1; }
   fi
+  COMIC_CREATED=1
   # Comic work made in the main folder earlier and never committed (renders,
   # queues in out/): copy it across. Copy only, never overwrite.
   for d in godot/assets/comic godot/tools/comic/out; do
@@ -131,6 +132,16 @@ for k in .runway_key .google_key .openai_key .meshy_key; do
     ln -s "$src" "$dst" && echo "  comic folder uses the main folder's $k"
   fi
 done
+
+# ── 3b. A new comic folder lacks the images that live only on Google Drive ───
+if [ "${COMIC_CREATED:-0}" = 1 ] && [ -f "$COMIC/godot/tools/comic/comic_drive.py" ]; then
+  echo "· fetching comic images from Google Drive (only what the new folder lacks)…"
+  if ( cd "$COMIC" && python3 godot/tools/comic/comic_drive.py pull ) > /tmp/both_tools_drive.log 2>&1; then
+    echo "  ok"
+  else
+    echo "  ! not fetched — $(tail -1 /tmp/both_tools_drive.log)"
+  fi
+fi
 
 # ── 4. Start both ───────────────────────────────────────────────────────────
 stop_all
@@ -161,6 +172,7 @@ echo
 [ $comic_ok = 1 ] && echo "  COMIC INSPECTOR  $COMIC_URL"
 [ $comic_ok = 1 ] && echo "                   folder $COMIC  [$COMIC_BR]"
 echo
+echo "  SAVE in either page: text to git, models and pictures to Google Drive."
 echo "  Both keep running after you close this terminal."
 echo "  Logs: /tmp/hero_studio.log  /tmp/comic_inspector.log"
 echo "  Stop both: run the same command with  stop  at the end."
