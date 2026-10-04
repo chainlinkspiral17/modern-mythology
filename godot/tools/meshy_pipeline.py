@@ -79,11 +79,13 @@ OUT_DIRS = {
 KEY_FILES = {
     "google": TOOLS / ".google_key",
     "runway": TOOLS / ".runway_key",
+    "openai": TOOLS / ".openai_key",      # the same file the comic tool reads
     "meshy": TOOLS / ".meshy_key",
 }
 KEY_ENVS = {
     "google": ["GOOGLE_API_KEY", "GEMINI_API_KEY"],
     "runway": ["RUNWAYML_API_KEY"],
+    "openai": ["OPENAI_API_KEY"],
     "meshy": ["MESHY_API_KEY"],
 }
 
@@ -134,6 +136,30 @@ RUNWAY_RATIOS = {
 }
 RUNWAY_REF_TAG_RE = re.compile(r"^[A-Za-z][A-Za-z0-9_]{2,15}$")
 
+# ── OpenAI (GPT Image — the ChatGPT image models) ──────────────────────────
+OPENAI_BASE = "https://api.openai.com/v1"
+# family "free": any WIDTHxHEIGHT (multiples of 16, ratio 1:3..3:1) — exact
+#               aspect ratios; "std": only 1024x1024 / 1536x1024 / 1024x1536.
+OPENAI_MODELS = {
+    "gpt-image-2":            "free",
+    "gpt-image-2.5-sunburst": "free",    # precision tier
+    "gpt-image-2.5-flare":    "free",    # fast tier
+    "gpt-image-1.5":          "std",
+    "gpt-image-1":            "std",
+    "gpt-image-1-mini":       "std",
+    "chatgpt-image-latest":   "std",
+}
+OPENAI_DEFAULT_MODEL = "gpt-image-2"
+OPENAI_QUALITIES = ("low", "medium", "high", "auto")
+OPENAI_SIZES = {
+    "free": {"1:1": "1024x1024", "3:4": "1152x1536", "4:3": "1536x1152", "9:16": "864x1536",
+             "16:9": "1536x864", "2:3": "1024x1536", "3:2": "1536x1024", "4:5": "1024x1280",
+             "5:4": "1280x1024", "21:9": "1792x768"},
+    "std":  {"1:1": "1024x1024", "3:4": "1024x1536", "4:3": "1536x1024", "9:16": "1024x1536",
+             "16:9": "1536x1024", "2:3": "1024x1536", "3:2": "1536x1024", "4:5": "1024x1536",
+             "5:4": "1536x1024", "21:9": "1536x1024"},
+}
+
 # ── Meshy (OpenAPI v1) ──────────────────────────────────────────────────────
 MESHY_BASE = "https://api.meshy.ai/openapi/v1"
 MESHY_MODEL_TYPES = {"standard", "smart-topology"}
@@ -158,6 +184,7 @@ COST_HINTS = {
     "google:gemini": 0.04,
     "google:imagen": 0.04,
     "runway": 0.08,
+    "openai": 0.07,            # medium quality; high is roughly 3x
     "meshy:draft": 0.20,       # untextured image-to-3d
     "meshy:textured": 0.80,    # image-to-3d with texture + PBR
 }
@@ -178,6 +205,7 @@ def slugify(s):
 KEY_PREFIX_HINT = {
     "google": ("AIza", "a Gemini API key from https://aistudio.google.com/apikey (starts with AIza…)"),
     "runway": ("key_", "a Runway dev API key from https://dev.runwayml.com (starts with key_…)"),
+    "openai": ("sk-", "an OpenAI API key from https://platform.openai.com/api-keys (starts with sk-…)"),
     "meshy": ("msy_", "a Meshy API key from https://www.meshy.ai/api (starts with msy_…)"),
 }
 
@@ -271,7 +299,7 @@ def _classify_http_error(msg, provider):
     return msg[-240:]
 
 
-PLACEHOLDER_RE = re.compile(r"^(AIza|key_|msy_)?[.…_\-x*]*$", re.I)
+PLACEHOLDER_RE = re.compile(r"^(AIza|key_|msy_|sk-)?[.…_\-x*]*$", re.I)
 MIN_KEY_LEN = 20
 
 
@@ -310,6 +338,14 @@ def check_key(provider, key):
                           headers={"Authorization": f"Bearer {key}", "X-Runway-Version": RUNWAY_API_VERSION}, timeout=30)
             bal = r.get("creditBalance", "?")
             return {"ok": True, "message": f"ok — {bal} credits" + warn}
+        if provider == "openai":
+            r = http_json("GET", f"{OPENAI_BASE}/models", headers={"Authorization": f"Bearer {key}"}, timeout=30)
+            ids = sorted(m.get("id", "") for m in r.get("data", []))
+            img = [i for i in ids if i.startswith(("gpt-image", "chatgpt-image"))]
+            if not img:
+                return {"ok": True, "message": "ok — key works, but it lists no GPT Image models "
+                        "(the organization may need verifying: platform.openai.com/settings/organization/general)" + warn}
+            return {"ok": True, "message": f"ok — {len(img)} GPT Image model(s): {', '.join(img[:4])}" + warn}
         if provider == "google":
             r = http_json("GET", f"{GOOGLE_BASE}/models?pageSize=5", headers={"x-goog-api-key": key}, timeout=30)
             n = len(r.get("models", []))
@@ -1054,6 +1090,10 @@ def paint_scene(preset, frame, provider="google", model=None, count=2, note="", 
             got = runway_generate("Repaint @frame. " + prompt, "16:9", model, get_api_key("runway"),
                                   refs=[(str(src), "frame")], log=log)
             blobs += got
+    elif provider == "openai":
+        model = model or OPENAI_DEFAULT_MODEL
+        blobs = openai_generate("Repaint the reference frame. " + prompt, "16:9", model, get_api_key("openai"),
+                                refs=[str(src)], count=count, log=log)
     else:
         model = model or GOOGLE_DEFAULT_MODEL
         if GOOGLE_MODELS.get(model) != "gemini":
@@ -1090,7 +1130,7 @@ def save_scene_composite(preset, stem, png_b64, recipe):
 
 def cmd_doctor(args):
     print(f"repo: {REPO.parent}   git: {_git_head()}   python: {sys.version.split()[0]}")
-    print(f"key files live in: {rel(TOOLS)}/  (.google_key  .runway_key  .meshy_key — gitignored)\n")
+    print(f"key files live in: {rel(TOOLS)}/  (.google_key  .runway_key  .openai_key  .meshy_key — gitignored)\n")
     rep = key_report(args.providers or None, check=not args.no_check)
     bad = 0
     for prov, r in rep.items():
@@ -1100,7 +1140,7 @@ def cmd_doctor(args):
         if r["ok"] is False:
             bad += 1
             if not r["present"]:
-                print(f"        → export {r['env']}=…   or   echo '…' > {r['file']}")
+                print(f"        → python3 godot/tools/meshy_pipeline.py keys {prov}   (paste it; input is hidden)")
     if bad:
         print("\nfix the BAD rows above:  python3 godot/tools/meshy_pipeline.py keys   (or Hero Studio → KEYS)",
               file=sys.stderr)
@@ -1500,6 +1540,122 @@ def runway_ratio(model, aspect, explicit=None):
     return table[aspect]
 
 
+def _multipart(fields, files):
+    """multipart/form-data body. files: [(field, filename, mime, bytes)]."""
+    import uuid as _uuid
+    boundary = "----mm" + _uuid.uuid4().hex
+    out = []
+    for k, v in fields.items():
+        out += [f"--{boundary}\r\n".encode(),
+                f'Content-Disposition: form-data; name="{k}"\r\n\r\n'.encode(),
+                str(v).encode("utf-8"), b"\r\n"]
+    for field, fname, mime, blob in files:
+        out += [f"--{boundary}\r\n".encode(),
+                f'Content-Disposition: form-data; name="{field}"; filename="{fname}"\r\n'.encode(),
+                f"Content-Type: {mime}\r\n\r\n".encode(), blob, b"\r\n"]
+    out.append(f"--{boundary}--\r\n".encode())
+    return b"".join(out), f"multipart/form-data; boundary={boundary}"
+
+
+def _openai_post(path, api_key, body=None, multipart=None, timeout=300):
+    """POST to the OpenAI API; JSON or multipart. Raises RuntimeError("HTTP n …")."""
+    headers = {"Authorization": f"Bearer {api_key}", "Accept": "application/json"}
+    if multipart is not None:
+        data, ctype = multipart
+    else:
+        data, ctype = json.dumps(body).encode("utf-8"), "application/json"
+    headers["Content-Type"] = ctype
+    req = urllib.request.Request(f"{OPENAI_BASE}{path}", data=data, method="POST", headers=headers)
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            return json.loads(resp.read().decode("utf-8"))
+    except urllib.error.HTTPError as e:
+        detail = ""
+        try:
+            detail = e.read().decode("utf-8", "replace")[:1200]
+        except Exception:  # noqa: BLE001
+            pass
+        raise RuntimeError(f"HTTP {e.code} on POST {OPENAI_BASE}{path}: {detail}") from e
+
+
+def _openai_explain(msg):
+    low = msg.lower()
+    if "http 403" in low and "verif" in low:
+        return ("OpenAI refused: the organization must be verified to use GPT Image models — "
+                "platform.openai.com/settings/organization/general. " + msg[-300:])
+    if "moderation" in low or "safety system" in low:
+        return "OpenAI's safety system refused this prompt (moderation_blocked). " + msg[-300:]
+    if "http 401" in low:
+        return "OpenAI rejected the key (401) — paste it again under KEYS. " + msg[-200:]
+    if "billing" in low or "insufficient_quota" in low:
+        return "OpenAI: no credit / quota on this account. " + msg[-200:]
+    return msg
+
+
+def openai_generate(prompt, aspect, model, api_key, refs=(), count=1, quality="medium", log=print):
+    """GPT Image (the ChatGPT image models). Text only → /images/generations;
+    with reference images (side/back views, scene paint-overs) →
+    /images/edits as image[] files. A parameter a model rejects (size,
+    quality, input_fidelity) is dropped or relaxed and the call retried."""
+    family = OPENAI_MODELS.get(model, "free" if model.startswith("gpt-image-2") else "std")
+    size = OPENAI_SIZES[family].get(aspect, "1024x1024")
+    n = max(1, min(10, int(count)))
+    body = {"model": model, "prompt": prompt[:32000], "n": n, "size": size}
+    if quality and quality != "auto":
+        body["quality"] = quality
+    files = []
+    for r in refs:
+        rp = Path(r)
+        mime = mimetypes.guess_type(rp.name)[0] or "image/png"
+        files.append(("image[]", rp.name, mime, rp.read_bytes()))
+    if files:
+        body["input_fidelity"] = "high"      # keep the front view's design; ignored by gpt-image-2
+    dropped = []
+    for attempt in range(4):
+        try:
+            if files:
+                resp = _openai_post("/images/edits", api_key,
+                                    multipart=_multipart({k: v for k, v in body.items()}, files))
+            else:
+                resp = _openai_post("/images/generations", api_key, body=body)
+            break
+        except RuntimeError as e:
+            msg = str(e)
+            low = msg.lower()
+            if "http 400" in low and attempt < 3:
+                fixed = False
+                for field in ("input_fidelity", "quality", "size"):
+                    if field in low and field in body:
+                        if field == "size" and body["size"] != "auto":
+                            body["size"] = "auto"
+                        else:
+                            body.pop(field)
+                        dropped.append(field)
+                        fixed = True
+                        break
+                if fixed:
+                    log(f"    openai: {model} refused {dropped[-1]}; retrying without it")
+                    continue
+            if "http 429" in low or "http 5" in low:
+                if attempt < 3:
+                    time.sleep(SUBMIT_BACKOFF * (2 ** attempt))
+                    continue
+            raise RuntimeError(_openai_explain(msg)) from e
+    out = []
+    for item in resp.get("data", []):
+        if item.get("b64_json"):
+            out.append((base64.b64decode(item["b64_json"]), "image/png"))
+        elif item.get("url"):
+            req = urllib.request.Request(item["url"], headers={"Accept": "*/*"})
+            with urllib.request.urlopen(req, timeout=180) as r:
+                out.append((r.read(), r.headers.get("Content-Type", "image/png").split(";")[0]))
+    if not out:
+        raise RuntimeError(f"OpenAI returned no image: {json.dumps(resp)[:300]}")
+    log(f"    openai {model} · {body.get('size')} · {body.get('quality', 'auto')} quality · {len(out)} image(s)"
+        + (" · from the reference" if files else ""))
+    return out
+
+
 def runway_generate(prompt, aspect, model, api_key, refs=(), seed=None,
                     ratio=None, log=print):
     """Submit text_to_image, poll, download. `refs` = [(path, tag)]."""
@@ -1691,8 +1847,11 @@ def stage_image(roster, entry, opts, log=print):
         model = opts.get("model") or roster["defaults"].get("google_model", GOOGLE_DEFAULT_MODEL)
     elif provider == "runway":
         model = opts.get("model") or roster["defaults"].get("runway_model", RUNWAY_DEFAULT_MODEL)
+    elif provider == "openai":
+        model = opts.get("model") or roster["defaults"].get("openai_model", OPENAI_DEFAULT_MODEL)
     else:
-        raise ValueError(f"provider must be google or runway, got {provider!r}")
+        raise ValueError(f"provider must be google, runway or openai, got {provider!r}")
+    quality = opts.get("quality") or roster["defaults"].get("openai_quality", "medium")
     count = max(1, int(opts.get("count") or 1))
     aspect = opts.get("aspect") or entry["aspect"]
     if aspect not in GOOGLE_ASPECTS:
@@ -1715,6 +1874,8 @@ def stage_image(roster, entry, opts, log=print):
     # front
     if provider == "google":
         blobs = gen(front_prompt, aspect, model, api_key, count=count, log=log)
+    elif provider == "openai":
+        blobs = openai_generate(front_prompt, aspect, model, api_key, count=count, quality=quality, log=log)
     else:
         blobs = []
         for _ in range(count):
@@ -1739,6 +1900,9 @@ def stage_image(roster, entry, opts, log=print):
                 log(f"    skip {view}: Imagen cannot take a reference image; use a gemini-* model")
                 continue
             blobs = gen(prompt, aspect, model, api_key, refs=[front], count=1, log=log)
+        elif provider == "openai":
+            blobs = openai_generate("The reference image shows the front view. " + prompt, aspect, model,
+                                    api_key, refs=[front], count=1, quality=quality, log=log)
         else:
             blobs = gen("@front " + prompt, aspect, model, api_key,
                         refs=[(front, "front")], seed=opts.get("seed"),
@@ -1853,6 +2017,8 @@ def estimate_cost(entries, opts, stages):
             if provider == "google":
                 fam = GOOGLE_MODELS.get(model or GOOGLE_DEFAULT_MODEL, "gemini")
                 total += n * COST_HINTS[f"google:{fam}"]
+            elif provider == "openai":
+                total += n * COST_HINTS["openai"] * (3 if opts.get("quality") == "high" else 1)
             else:
                 total += n * COST_HINTS["runway"]
         if "mesh" in stages:
@@ -2045,6 +2211,8 @@ def make_handler(runner, roster_path):
                 roster["providers"] = {
                     "google": {"models": list(GOOGLE_MODELS), "default": GOOGLE_DEFAULT_MODEL},
                     "runway": {"models": list(RUNWAY_MODELS), "default": RUNWAY_DEFAULT_MODEL},
+                    "openai": {"models": list(OPENAI_MODELS), "default": OPENAI_DEFAULT_MODEL,
+                               "qualities": list(OPENAI_QUALITIES)},
                     "meshy": {"model_types": sorted(MESHY_MODEL_TYPES),
                               "texture_resolutions": sorted(MESHY_TEXTURE_RES),
                               "poses": sorted(MESHY_POSES)},
@@ -2186,7 +2354,7 @@ def make_handler(runner, roster_path):
                     return self._json({"error": "bad json"}, 400)
                 prov = req.get("provider")
                 if prov not in KEY_FILES:
-                    return self._json({"error": "provider must be google|runway|meshy"}, 400)
+                    return self._json({"error": "provider must be google|runway|openai|meshy"}, 400)
                 if req.get("key"):
                     why = placeholder_reason(clean_key(req["key"]))
                     if why:
@@ -2276,12 +2444,14 @@ def cmd_serve(args):
 # ── CLI ─────────────────────────────────────────────────────────────────────
 
 def add_image_opts(ap):
-    ap.add_argument("--provider", choices=["google", "runway"],
+    ap.add_argument("--provider", choices=["google", "runway", "openai"],
                     help="image provider (default: roster defaults.provider, else google)")
     ap.add_argument("--model", help="provider model id (see GOOGLE_MODELS / RUNWAY_MODELS)")
     ap.add_argument("--count", type=int, default=1, help="front-view candidates per entry")
     ap.add_argument("--aspect", help="override roster aspect (1:1, 3:4, 9:16, ...)")
     ap.add_argument("--ratio", help="Runway only: explicit ratio string, e.g. 1080:1440")
+    ap.add_argument("--quality", choices=list(OPENAI_QUALITIES),
+                    help="OpenAI only: low / medium (default) / high / auto")
     ap.add_argument("--seed", type=int, help="Runway only: seed for reproducible tweaks")
     ap.add_argument("--multiview", action="store_true",
                     help="also generate side + back views from the chosen front (feeds multi-image-to-3d)")

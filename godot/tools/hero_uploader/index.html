@@ -193,6 +193,8 @@
       <input id="key-google" type="text" placeholder="AIza…" autocomplete="off" spellcheck="false"></div>
     <div><label>Runway — dev API key (key_…) · <a href="https://dev.runwayml.com" target="_blank" style="color:var(--brass)">dev.runwayml.com</a></label>
       <input id="key-runway" type="text" placeholder="key_…" autocomplete="off" spellcheck="false"></div>
+    <div><label>OpenAI — API key (sk-…) · <a href="https://platform.openai.com/api-keys" target="_blank" style="color:var(--brass)">platform.openai.com/api-keys</a> · shared with the comic tool</label>
+      <input id="key-openai" type="text" placeholder="sk-…" autocomplete="off" spellcheck="false"></div>
     <div><label>Meshy — API key (msy_…) · <a href="https://www.meshy.ai/api" target="_blank" style="color:var(--brass)">meshy.ai/api</a></label>
       <input id="key-meshy" type="text" placeholder="msy_…" autocomplete="off" spellcheck="false"></div>
   </div>
@@ -283,9 +285,10 @@
         <h3>2 · Concept image</h3>
         <div class="row">
           <div><label>provider</label>
-            <select id="o-provider"><option value="google">Google (Gemini / Imagen)</option><option value="runway">Runway</option></select></div>
+            <select id="o-provider"><option value="google">Google (Gemini / Imagen)</option><option value="runway">Runway</option><option value="openai">OpenAI (GPT Image · ChatGPT)</option></select></div>
           <div><label>model</label><select id="o-model"></select></div>
           <div><label>aspect</label><select id="o-aspect"></select></div>
+          <div id="o-quality-wrap" style="display:none"><label>quality (OpenAI)</label><select id="o-quality"><option value="low">low · cheapest</option><option value="medium" selected>medium</option><option value="high">high · ~3× cost</option><option value="auto">auto</option></select></div>
           <div><label>candidates</label><input id="o-count" type="number" min="1" max="4" value="1"></div>
         </div>
         <div class="row tight">
@@ -369,7 +372,7 @@ const state = {
 };
 const $ = (id) => document.getElementById(id);
 const OUT_DIR = { hero: 'godot/assets/3d/characters/heroes', demon: 'godot/assets/3d/characters/demons', prop: 'godot/assets/3d/props' };
-const COST = { 'google:gemini': 0.04, 'google:imagen': 0.04, runway: 0.08, 'meshy:draft': 0.20, 'meshy:textured': 0.80 };
+const COST = { 'google:gemini': 0.04, 'google:imagen': 0.04, runway: 0.08, openai: 0.07, 'meshy:draft': 0.20, 'meshy:textured': 0.80 };
 
 function log(level, msg) {
   const e = document.createElement('div');
@@ -430,12 +433,13 @@ function normaliseRoster() {
   state.roster.providers = state.roster.providers || {
     google: { models: ['gemini-2.5-flash-image', 'gemini-3.1-flash-image', 'gemini-3-pro-image-preview', 'imagen-4.0-generate-001', 'imagen-4.0-fast-generate-001', 'imagen-4.0-ultra-generate-001'], default: 'gemini-2.5-flash-image' },
     runway: { models: ['gen4_image', 'gen4_image_turbo', 'gemini_2.5_flash', 'gemini_image3.1_flash', 'gemini_image3_pro', 'gpt_image_2', 'seedream5_pro', 'seedream5_lite'], default: 'gen4_image' },
+    openai: { models: ['gpt-image-2', 'gpt-image-2.5-sunburst', 'gpt-image-2.5-flare', 'gpt-image-1.5', 'gpt-image-1', 'gpt-image-1-mini', 'chatgpt-image-latest'], default: 'gpt-image-2' },
   };
   state.roster.aspects = state.roster.aspects || ['1:1', '16:9', '2:3', '21:9', '3:2', '3:4', '4:3', '4:5', '5:4', '9:16'];
 }
 
 function renderKeys(keys, report) {
-  $('keys').innerHTML = ['google', 'runway', 'meshy'].map(k => {
+  $('keys').innerHTML = ['google', 'runway', 'openai', 'meshy'].map(k => {
     const r = report?.[k];
     const cls = r ? (r.ok === true ? 'ok' : (r.ok === false ? 'bad' : (r.present ? 'ok' : ''))) : (keys[k] ? 'ok' : '');
     const title = r ? (r.present ? `${r.source} ${r.masked} ${r.message || ''}` : 'no key — click to add') : (keys[k] ? 'key found' : 'no key — click to add');
@@ -445,11 +449,11 @@ function renderKeys(keys, report) {
 
 function renderKeyStatus(report) {
   const lines = [];
-  for (const k of ['google', 'runway', 'meshy']) {
+  for (const k of ['google', 'runway', 'openai', 'meshy']) {
     const r = report[k]; if (!r) continue;
     const st = r.ok === true ? '✓' : (r.ok === false ? '✗' : '·');
     lines.push(`${st} ${k.padEnd(7)} ${(r.source || 'MISSING').padEnd(34)} ${(r.masked || '').padEnd(14)} ${r.message || ''}`);
-    if (!r.present) lines.push(`         → paste above, or: export ${r.env}=…  /  echo '…' > ${r.file}`);
+    if (!r.present) lines.push(`         → paste it above, or in a terminal: python3 godot/tools/meshy_pipeline.py keys ${k}`);
   }
   $('keys-status').textContent = lines.join('\n');
 }
@@ -468,7 +472,7 @@ async function testKeys() {
 async function saveKeys() {
   if (!state.connected) { $('keys-status').textContent = 'Not connected to the runner — start meshy_pipeline.py serve first.'; return; }
   const report = {};
-  for (const k of ['google', 'runway', 'meshy']) {
+  for (const k of ['google', 'runway', 'openai', 'meshy']) {
     const v = $('key-' + k).value.trim();
     if (!v) continue;
     $('keys-status').textContent = `saving + testing ${k}…`;
@@ -577,8 +581,9 @@ function fillSelect(sel, values, current) {
 
 function onProviderChange() {
   const p = $('o-provider').value;
-  const prov = state.roster.providers[p];
+  const prov = state.roster.providers[p] || state.roster.providers.google;
   fillSelect($('o-model'), prov.models, state.roster.defaults?.[p + '_model'] || prov.default);
+  $('o-quality-wrap').style.display = p === 'openai' ? '' : 'none';
   updateCosts();
 }
 
@@ -618,7 +623,9 @@ function promptOverrides() {
 function updateCosts() {
   const p = $('o-provider').value, m = $('o-model').value || '';
   const n = Number($('o-count').value || 1) + ($('o-multiview').checked ? 2 : 0);
-  const unit = p === 'google' ? COST[m.startsWith('imagen') ? 'google:imagen' : 'google:gemini'] : COST.runway;
+  const unit = p === 'google' ? COST[m.startsWith('imagen') ? 'google:imagen' : 'google:gemini']
+    : p === 'openai' ? COST.openai * ($('o-quality').value === 'high' ? 3 : $('o-quality').value === 'low' ? 0.3 : 1)
+    : COST.runway;
   $('img-cost').textContent = `~$${(n * unit).toFixed(2)} (rough)`;
   $('mesh-cost').textContent = `~$${COST[$('o-texture').value === '1' ? 'meshy:textured' : 'meshy:draft'].toFixed(2)} (rough)`;
 }
@@ -795,6 +802,7 @@ async function refreshRoster(keepSelection = true) {
 function imageOpts() {
   return {
     provider: $('o-provider').value, model: $('o-model').value, aspect: $('o-aspect').value,
+    ...($('o-provider').value === 'openai' ? { quality: $('o-quality').value } : {}),
     count: Number($('o-count').value || 1), multiview: $('o-multiview').checked,
     overwrite: $('o-overwrite-img').checked, ...promptOverrides(),
   };
@@ -912,6 +920,7 @@ function batchCommand() {
   const o = imageOpts(), m = meshOpts();
   const flags = [`--provider ${o.provider}`, `--model ${o.model}`];
   if (o.multiview) flags.push('--multiview');
+  if (o.quality) flags.push(`--quality ${o.quality}`);
   flags.push(m.texture ? '--texture' : '--no-texture');
   if (m.model_type !== 'standard') flags.push(`--model-type ${m.model_type} --polycount ${m.polycount}`);
   const sel = slugs.length === state.roster.entries.length ? 'all' : slugs.join(' ');
@@ -933,7 +942,7 @@ function bind() {
   $('btn-keys-save').addEventListener('click', saveKeys);
   $('btn-keys-test').addEventListener('click', testKeys);
   $('o-provider').addEventListener('change', onProviderChange);
-  for (const id of ['o-model', 'o-count', 'o-multiview', 'o-texture']) $(id).addEventListener('change', updateCosts);
+  for (const id of ['o-model', 'o-count', 'o-multiview', 'o-texture', 'o-quality']) $(id).addEventListener('change', updateCosts);
   for (const id of ['e-prompt', 'e-canon', 'o-append']) $(id).addEventListener('input', refreshFullPrompt);
   $('o-provider').addEventListener('change', refreshFullPrompt);
   $('btn-image').addEventListener('click', () => submitJob('image'));

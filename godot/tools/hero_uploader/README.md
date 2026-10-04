@@ -3,7 +3,7 @@
 One page that walks a roster entry through the whole 3D pipeline:
 
 ```
-roster prompt ──► concept image (Google Gemini/Imagen or Runway) ──► Meshy image-to-3D ──► GLB at the canonical path
+roster prompt ──► concept image (Google Gemini/Imagen, Runway, or OpenAI GPT Image) ──► Meshy image-to-3D ──► GLB at the canonical path
                   + optional side/back views (multi-image-to-3d)              heroes/ · demons/ · props/
 ```
 
@@ -40,7 +40,12 @@ Common reasons a key "doesn't work":
   <https://aistudio.google.com/apikey> (starts with `AIza`), not a
   Google Cloud service-account JSON or an OAuth client. Runway needs a
   *dev API* key from <https://dev.runwayml.com> (`key_…`), not the
-  web-app login. Meshy keys come from <https://www.meshy.ai/api>
+  web-app login. OpenAI needs an *API* key from
+  <https://platform.openai.com/api-keys> (`sk-…`), not a ChatGPT
+  subscription; GPT Image models may also require the organization to
+  be verified (platform.openai.com/settings/organization/general) —
+  the key test says so. It is the same `godot/tools/.openai_key` the
+  comic tool reads. Meshy keys come from <https://www.meshy.ai/api>
   (`msy_…`).
 - **Pasted with decoration.** Quotes, `export NAME=…`, a `Bearer `
   prefix, CRLF or a BOM are all stripped automatically now.
@@ -117,9 +122,11 @@ falls through to the base model.
    (A-pose, flat grey background, etc.) is added automatically. Expand
    *full prompt as sent* to see exactly what the runner will send,
    including the Runway character count.
-3. **Generate image** — choose provider + model + aspect + how many
+3. **Generate image** — choose provider (Google, Runway, OpenAI) + model + aspect
+   (+ quality for OpenAI: low / medium / high) + how many
    candidates. Tick *side + back views* to also render a profile and a
-   back view from the chosen front (Gemini image models or Runway with a
+   back view from the chosen front (Gemini image models, OpenAI GPT
+   Image through its edits endpoint, or Runway with a
    reference; Imagen can't take references). Candidates appear as
    thumbnails; click one to make it the chosen `front.png` / `side.png`
    / `back.png`. *Upload my own image* uses a hand-picked reference
@@ -143,6 +150,7 @@ Jobs run one at a time in the runner; the Jobs panel tails their logs.
 cd /home/deck/Downloads/modern-mythology && python3 godot/tools/meshy_pipeline.py list
 cd /home/deck/Downloads/modern-mythology && python3 godot/tools/meshy_pipeline.py run frasier_temple --provider google --multiview --texture
 cd /home/deck/Downloads/modern-mythology && python3 godot/tools/meshy_pipeline.py run demon --provider runway --model gen4_image --no-texture
+cd /home/deck/Downloads/modern-mythology && python3 godot/tools/meshy_pipeline.py run frasier_temple --provider openai --model gpt-image-2 --quality high --multiview --texture
 cd /home/deck/Downloads/modern-mythology && python3 godot/tools/meshy_pipeline.py run all --dry-run
 ```
 
@@ -201,7 +209,7 @@ link opens `scenes.html`:
 1. **Raw frames** — every locale frame of this machine's contact sheet
    (`godot/qa/contact/<preset>/<mood>__<shot>.jpg`, run
    `contact_sheet.sh` first). Pick one.
-2. **Generate** — Google (gemini-2.5-flash-image) or Runway (gen4_image)
+2. **Generate** — Google (gemini-2.5-flash-image), Runway (gen4_image) or OpenAI (gpt-image-2)
    repaints it with the raw frame as the REFERENCE. The prompt (shown,
    editable) asks to keep the camera, layout and every object, give the
    surfaces real material and light, no retro, no people or text, and
