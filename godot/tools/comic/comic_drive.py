@@ -267,6 +267,17 @@ def _commit(message, steps):
     return True
 
 
+def _local_only_images(ref):
+    """Images held by commits this folder has and `ref` lacks. After the
+    comic images were purged from GitHub's history (2026-10-04), an old
+    folder's history still holds them; merging it would put ~1.8 GB back."""
+    code, out, _ = _git("rev-list", "--objects", f"{ref}..HEAD", "--", *DRIVE_DIRS, timeout=300)
+    if code:
+        return []
+    return [ln.split(" ", 1)[1] for ln in out.splitlines()
+            if " " in ln and Path(ln.split(" ", 1)[1]).suffix.lower() in DRIVE_EXTS]
+
+
 def _pull_merge(branch, steps):
     """git pull --no-rebase; on a conflict keep the Deck's references.json and
     the branch's version of everything else (the README's Deck paste)."""
@@ -274,6 +285,15 @@ def _pull_merge(branch, steps):
     if code == 2:
         steps.append(f"git: origin/{branch} does not exist yet — this push creates it")
         return True
+    code, _, err = _git("fetch", "-q", "origin", f"+refs/heads/{branch}:refs/remotes/origin/{branch}", timeout=600)
+    if code == 0:
+        stale = _local_only_images(f"origin/{branch}")
+        if stale:
+            steps.append(f"NOT merged: this folder's history still holds {len(stale)} comic image(s) that were "
+                         "removed from GitHub to free space; merging would upload them again. Re-sync this "
+                         "folder first (run the start command, both_tools.sh, once), then SAVE again. "
+                         "Your files are not touched.")
+            return False
     code, out, err = _git("pull", "--no-rebase", "--no-edit", "origin", branch, timeout=600)
     if code == 0:
         return True
