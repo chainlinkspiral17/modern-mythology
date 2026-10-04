@@ -29,3 +29,15 @@ godot/assets/sky/*.hdr
 godot/assets/sky/*.exr
 godot/assets/sky/*.png
 godot/assets/sky/*.jpg
+
+# Comic images live on Google Drive (godot/tools/comic/comic_drive.py, the
+# inspector's SAVE); git keeps godot/tools/comic/drive_manifest.json.
+# Images git already tracks stay tracked; new ones are not added.
+godot/assets/comic/**/*.png
+godot/assets/comic/**/*.jpg
+godot/assets/comic/**/*.jpeg
+godot/assets/comic/**/*.webp
+lore/drift_wood/refs/**/*.png
+lore/drift_wood/refs/**/*.jpg
+lore/drift_wood/refs/**/*.jpeg
+lore/drift_wood/refs/**/*.webp

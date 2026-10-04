@@ -40,6 +40,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import comic_tool as ct  # noqa: E402
+import comic_drive as cdrive  # noqa: E402  (Google Drive, shared with Hero Studio)
 
 REPO = ct.REPO
 ASSETS = REPO / "godot" / "assets" / "comic" / "vol10"
@@ -563,6 +564,35 @@ def api_jobs():
         return {"jobs": [_job_view(j) for j in sorted(JOBS.values(), key=lambda j: -j["created"])][:40]}
 
 
+# ── SAVE: text to git, images to Google Drive (comic_drive.py) ───────────
+
+SAVE = {"running": False, "ok": None, "steps": [], "started": None, "finished": None}
+SAVE_LOCK = threading.Lock()
+
+
+def api_save_status():
+    with SAVE_LOCK:
+        return dict(SAVE, steps=list(SAVE["steps"]))
+
+
+def start_save():
+    with SAVE_LOCK:
+        if SAVE["running"]:
+            return dict(SAVE, steps=list(SAVE["steps"]))
+        SAVE.update(running=True, ok=None, steps=["saving…"], started=time.time(), finished=None)
+
+    def run():
+        try:
+            res = cdrive.save()
+        except Exception as e:  # noqa: BLE001
+            res = {"ok": False, "steps": [f"SAVE stopped: {e}"]}
+        with SAVE_LOCK:
+            SAVE.update(running=False, ok=res["ok"], steps=res["steps"], finished=time.time())
+
+    threading.Thread(target=run, daemon=True).start()
+    return api_save_status()
+
+
 # ── http ─────────────────────────────────────────────────────────────────
 
 class H(BaseHTTPRequestHandler):
@@ -613,6 +643,10 @@ class H(BaseHTTPRequestHandler):
                 return self._send(200, api_models())
             if path == "/api/jobs":
                 return self._send(200, api_jobs())
+            if path == "/api/drive":
+                return self._send(200, cdrive.status())
+            if path == "/api/save":
+                return self._send(200, api_save_status())
             if path.startswith("/asset/"):
                 return self._file(ASSETS, urllib.parse.unquote(path[len("/asset/"):]))
             if path.startswith("/file/"):
@@ -631,6 +665,8 @@ class H(BaseHTTPRequestHandler):
         try:
             if u.path == "/api/generate":
                 return self._send(200, start_job(body))
+            if u.path == "/api/save":
+                return self._send(200, start_save())
             if u.path == "/api/review":
                 return self._send(200, set_review(body.get("id"), body.get("status"), body.get("note")))
             if u.path == "/api/wardrobe":
@@ -679,6 +715,11 @@ PAGE = r"""<!DOCTYPE html>
 header{display:flex;gap:18px;align-items:baseline;padding:12px 18px;border-bottom:1px solid var(--rule)}
 header h1{margin:0;color:var(--gold-hi);font-size:15px;letter-spacing:.18em}header .sub{color:var(--dim);font-style:italic}
 header .keys{margin-left:auto;font-size:11px}header .keys b{color:var(--em-hi)}header .keys s{color:var(--red)}
+.savebar{display:flex;gap:8px;align-items:baseline;font-size:11px}.savebar b{color:var(--em-hi)}.savebar s{color:var(--red)}
+.savebar button{background:var(--bg-1);border:1px solid var(--gold);color:var(--gold-hi);padding:3px 12px;font:inherit;cursor:pointer;letter-spacing:.12em}
+.savebar button:disabled{opacity:.5;cursor:wait}
+#save-log{position:fixed;right:14px;bottom:14px;max-width:min(560px,92vw);max-height:40vh;overflow:auto;background:var(--bg-1);border:1px solid var(--rule);padding:10px 12px;font-size:11px;white-space:pre-wrap;z-index:8;color:var(--text)}
+#save-log.ok{border-color:var(--em)}#save-log.bad{border-color:var(--red)}
 .mode{display:flex;gap:4px}.mode button{background:var(--bg-1);border:1px solid var(--rule);color:var(--text);padding:3px 10px;font:inherit;cursor:pointer;letter-spacing:.1em}
 .mode button.on{color:var(--gold-hi);border-color:var(--gold)}
 main{display:grid;grid-template-columns:380px 1fr;height:calc(100% - 50px)}
@@ -730,7 +771,9 @@ kbd{border:1px solid var(--rule);padding:0 4px;color:var(--dim)}
 </style></head><body>
 <header><h1>COMIC INSPECTOR</h1><span class="sub">Drift Wood / ROFLCOPTER · vol 10 · the run on disk · build __BUILD__</span>
 <div class="mode"><button id="m-strips" class="on">STRIPS</button><button id="m-sheets">SHEETS</button><button id="m-refs">REFS</button><button id="m-jobs">JOBS</button><button id="m-keys">KEYS</button></div>
-<div class="keys" id="keys"></div></header>
+<div class="keys" id="keys"></div>
+<div class="savebar"><span id="drive" title="Google Drive (shared with Hero Studio)">drive · …</span><button id="b-save" onclick="doSave()" title="text to git, images to Google Drive">SAVE</button></div></header>
+<div id="save-log" hidden></div>
 <main><aside>
 <div class="filters">
 <input type="text" id="q" placeholder="search id · title · arc · cast · location">
@@ -894,6 +937,10 @@ document.addEventListener('keydown',e=>{if(e.target.tagName==='INPUT'||e.target.
  if(e.key==='/'){e.preventDefault();$('#q').focus();}});
 setInterval(()=>{if(MODE==='jobs')renderJobs();},4000);
 const _open=open;open=function(id){history.replaceState(null,'','#'+MODE+'/'+encodeURIComponent(id)+'/'+TAB);return _open(id);};
+async function loadDrive(){try{const d=await api('/api/drive');$('#drive').innerHTML=d.configured?(d.pending?`drive · <s>${d.pending} not backed up</s>`:'drive · <b>all backed up</b>'):`drive · <s>not set up</s>`;$('#drive').title=d.configured?`Google Drive ${d.remote} · ${d.on_drive} image(s) recorded`:`Set up once (shared with Hero Studio): ${d.setup}`;}catch(e){$('#drive').textContent='drive · ?';}}
+function showSave(r){const el=$('#save-log');el.hidden=false;el.className=r.running?'':(r.ok?'ok':'bad');el.textContent=(r.running?'SAVE · running…\n':(r.ok?'SAVE · done\n':'SAVE · needs attention\n'))+(r.steps||[]).join('\n')+(r.running?'':'\n\n(click to close)');el.onclick=r.running?null:()=>{el.hidden=true;};$('#b-save').disabled=!!r.running;}
+async function doSave(){let r=await api('/api/save',{method:'POST',body:'{}'});showSave(r);while(r.running){await new Promise(z=>setTimeout(z,2000));r=await api('/api/save');showSave(r);}loadDrive();}
+loadDrive();api('/api/save').then(r=>{if(r.running){doSave();}}).catch(()=>{});
 loadKeys();(async()=>{const h=location.hash.slice(1).split('/');await loadStrips();if(h[0]==='keys'||h[0]==='jobs'){setMode(h[0]);}else if(h[0]&&h[1]){if(h[2])TAB=h[2];if(h[0]!=='strips'){setMode(h[0]);await (h[0]==='sheets'?loadSheets():loadRefs());}open(decodeURIComponent(h[1]));}})();
 </script></body></html>
 """

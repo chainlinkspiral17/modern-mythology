@@ -341,19 +341,57 @@ references the same way. Nothing in a strip JSON refers to a file —
 only to ids and tags — so references can be re-rendered, replaced or
 moved without touching the scripts.
 
-## Saving from the Deck and pulling
+## Saving from the Deck: text to git, images to Google Drive
 
-The Deck edits `references.json` (approvals, syncs, uploads) and adds
-renders; this side edits strips, sheets and the tool. Both can touch
-`references.json`, so the paste below commits the Deck's work, merges,
-keeps the Deck's `references.json` if the two collide, takes this
-side's version of anything else that collides, and then runs
-`refs sync`, which re-registers every sheet from `style_sheets.json`
-and re-tags them. Nothing on the Deck is lost; nothing new is missed.
+Press **SAVE** in the inspector's header (or run the line below). It
+does what the old Deck paste did, without putting images in git:
+
+1. commits the comic's text (strips, `references.json`, manifests);
+2. pulls the branch, keeping the Deck's `references.json` if both sides
+   changed it and this side's version of anything else, then
+   `refs sync` re-registers every sheet from `style_sheets.json`;
+3. pushes;
+4. uploads new renders, sheets and reference pictures to Google Drive
+   (the `ModernMythology` folder Hero Studio uses, same relative paths);
+5. commits and pushes `drive_manifest.json`, the small record of what
+   the Drive holds (size + md5 per image).
+
+Git never waits on the Drive: if an upload stops, what landed is
+recorded and the next SAVE carries on. Images already in git stay
+there; new ones are ignored by git (`.gitignore`) and live on the Drive.
+The header shows `drive · all backed up` or how many are not yet.
 
 ```bash
-cd /home/deck/Downloads/modern-mythology && git add -A godot/assets/comic godot/tools/comic/strips godot/tools/comic/references.json && git commit -q -m "comic · references and renders from the Deck" ; git pull --no-rebase --no-edit origin claude/cool-hypatia-3firgv || { git checkout --ours -- godot/tools/comic/references.json 2>/dev/null; git diff --name-only --diff-filter=U | grep -v references.json | xargs -r git checkout --theirs -- ; git add -A godot/assets/comic godot/tools/comic ; git commit -q -m "merge · the Deck's references kept" ; } ; python3 godot/tools/comic/comic_tool.py refs sync && git push -u origin claude/cool-hypatia-3firgv ; bash godot/tools/comic/inspect.sh
+cd /home/deck/Downloads/modern-mythology-comic && python3 godot/tools/comic/comic_drive.py save
 ```
+
+The comic tool and Hero Studio share one Drive sign-in (rclone keeps it
+in your home folder). If the badge says `not set up`, sign in once from
+the game-branch folder:
+
+```bash
+cd /home/deck/Downloads/modern-mythology && bash godot/tools/drive_setup.sh
+```
+
+A checkout missing images (a fresh clone, another machine) pulls them
+back; it never overwrites a local file:
+
+```bash
+cd /home/deck/Downloads/modern-mythology-comic && python3 godot/tools/comic/comic_drive.py pull
+```
+
+`python3 godot/tools/comic/comic_drive.py status` lists what is not on
+the Drive yet.
+
+**Folder.** Run side by side with Hero Studio, the comic tool lives in
+`/home/deck/Downloads/modern-mythology-comic` (a second folder on this
+branch; `both_tools.sh` on the meshy branch sets it up). Older commands
+in this README that say `cd /home/deck/Downloads/modern-mythology` mean
+that comic folder when the two run together.
+
+**Trade-off.** Renders saved this way are on the Drive, not GitHub, so a
+cloud session reading this branch sees the strips and the manifest but
+not new pictures.
 
 ## Backups (outside the canon)
 
