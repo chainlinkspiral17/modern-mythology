@@ -686,7 +686,7 @@
       "file": "godot/assets/comic/vol10/sheets/sheet_town_1999.png",
       "url": null,
       "runway_task_id": null,
-      "status": "missing",
+      "status": "draft",
       "source": "style_sheets.json",
       "notes": ""
     },
@@ -710,7 +710,7 @@
       "file": "godot/assets/comic/vol10/sheets/sheet_town_2000s.png",
       "url": null,
       "runway_task_id": null,
-      "status": "missing",
+      "status": "draft",
       "source": "style_sheets.json",
       "notes": ""
     },
@@ -732,7 +732,7 @@
       "file": "godot/assets/comic/vol10/sheets/sheet_timberline_people.png",
       "url": null,
       "runway_task_id": null,
-      "status": "missing",
+      "status": "draft",
       "source": "style_sheets.json",
       "notes": ""
     },
@@ -788,7 +788,7 @@
       "file": "godot/assets/comic/vol10/sheets/sheet_slash_cast.png",
       "url": null,
       "runway_task_id": null,
-      "status": "missing",
+      "status": "draft",
       "source": "style_sheets.json",
       "notes": ""
     },
@@ -807,7 +807,7 @@
       "file": "godot/assets/comic/vol10/sheets/sheet_frontier_cast.png",
       "url": null,
       "runway_task_id": null,
-      "status": "missing",
+      "status": "draft",
       "source": "style_sheets.json",
       "notes": ""
     },
@@ -841,7 +841,7 @@
       "file": "godot/assets/comic/vol10/sheets/sheet_pomegranate_host.png",
       "url": null,
       "runway_task_id": null,
-      "status": "missing",
+      "status": "draft",
       "source": "style_sheets.json",
       "notes": ""
     },
@@ -876,7 +876,7 @@
       "file": "godot/assets/comic/vol10/sheets/sheet_julian.png",
       "url": null,
       "runway_task_id": null,
-      "status": "missing",
+      "status": "draft",
       "source": "style_sheets.json",
       "notes": ""
     }
