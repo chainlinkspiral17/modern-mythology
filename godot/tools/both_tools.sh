@@ -123,8 +123,31 @@ echo "· updating the main folder…"
 if git pull -q --ff-only origin "$cur" 2>/tmp/both_tools_pull.log; then
   echo "  ok"
 else
-  echo "  ! not updated: your copy and GitHub have both changed. Starting with what you have."
-  sed 's/^/    /' /tmp/both_tools_pull.log | grep -v '^    hint' | head -3
+  # Both sides moved: GitHub has new commits and this folder has its own (a
+  # Hero Studio SAVE that did not push, say). Do what Hero Studio's SAVE does
+  # on this branch: replay this folder's commits on top of GitHub's
+  # (--autostash keeps unsaved edits). A conflict is undone on the spot and
+  # nothing changes. A backup ref keeps the folder's previous state.
+  git fetch -q origin "+refs/heads/$cur:refs/remotes/origin/$cur" 2>/dev/null || true
+  ahead=$(git rev-list --count "origin/$cur..HEAD" 2>/dev/null || echo "?")
+  behind=$(git rev-list --count "HEAD..origin/$cur" 2>/dev/null || echo "?")
+  echo "  your copy has $ahead commit(s) GitHub lacks; GitHub has $behind you lack — replaying yours on top…"
+  git update-ref "refs/backup/main-before-sync-$(date +%Y%m%d-%H%M%S)" HEAD
+  if git -c user.name="${GIT_AUTHOR_NAME:-$(git config user.name || echo deck)}" \
+        -c user.email="${GIT_AUTHOR_EMAIL:-$(git config user.email || echo deck@localhost)}" \
+        pull -q --rebase --autostash origin "$cur" >/tmp/both_tools_pull.log 2>&1; then
+    echo "  ok — up to date, your $ahead commit(s) kept on top (SAVE in Hero Studio pushes them)"
+  else
+    git rebase --abort >/dev/null 2>&1 || true
+    echo "  ! could not combine them without a conflict; undone, nothing changed. Starting with what you have."
+    grep -iE "conflict|error" /tmp/both_tools_pull.log | head -3 | sed 's/^/    /'
+  fi
+fi
+if grep -q "def openai_generate" godot/tools/meshy_pipeline.py; then
+  echo "  Hero Studio $(git log -1 --format=%h) · image providers: Google, Runway, OpenAI (ChatGPT)"
+else
+  echo "  ! Hero Studio $(git log -1 --format=%h) has no OpenAI yet (it is on GitHub's $GAME_BR_HINT)."
+  echo "    Paste this whole output to Claude to sort out the update."
 fi
 
 # ── 2. Comic folder: create once, then update like the main one ────────────
