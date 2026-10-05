@@ -185,12 +185,17 @@ shadow_enabled = false
 ; dusk / candlelight arcana moods. Four practicals, each at the real
 ; fixture geometry (blender (bx,by,bz) → godot (bx,bz,-by)).
 
-; Hermit lighthouse lantern beacon — bayou south end
-[node name="Beacon_Lighthouse" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 20.1, 382)
-light_color = Color(1.0, 0.94, 0.74, 1)
-light_energy = 2.6
-omni_range = 22
+; Hermit — the lighthouse is DEAD since 2026-10-04 (broken at ten
+; metres, lantern room fallen; build_graustark _build_hermit_lighthouse_
+; ruin): its beacon is gone. The quarter's only light is Joanna's
+; writing candle on the desk in the patched shotgun house — blender
+; (54.05, -379.75, 1.365) → godot (54.05, 1.365, 379.75). It lights the
+; room and the east and south panes from outside at dusk and night.
+[node name="Practical_Candle" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.05, 1.40, 379.75)
+light_color = Color(1.0, 0.66, 0.34, 1)
+light_energy = 0.7
+omni_range = 4.5
 
 ; Moon Static Drive-In — neon-red marquee at the entrance
 [node name="Neon_DriveInMarquee" type="OmniLight3D" parent="."]
@@ -224,42 +229,49 @@ omni_range = 9
 ;   cottage + gate   (50, -380 / -387.8) herb bed (52.2, -379)
 ;   Minstral wreck   (38, -120)          paddlebox (42.2, -124)
 [node name="shot_insert_sinkhole" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.0, 6.0, 300.0)
-rotation = Vector3(-1.3135, -1.5708, 0.0)
+position = Vector3(23.300, 1.700, 336.600)
+rotation = Vector3(-0.3808, 0.3416, 0.0)
+metadata/fov = 55.0
 
 [node name="shot_insert_chalk" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 2.30, 374.5)
-rotation = Vector3(-0.04, -1.57, 0.0)
+position = Vector3(42.850, 1.450, 374.850)
+rotation = Vector3(-0.1770, -1.1071, 0.0)
+metadata/fov = 40.0
 
 [node name="shot_insert_beam" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.2, 1.60, 371.0)
-rotation = Vector3(-0.08, -1.57, 0.0)
+position = Vector3(38.200, 2.400, 374.600)
+rotation = Vector3(0.0796, -1.1607, 0.0)
+metadata/fov = 40.0
 
 [node name="shot_insert_rubble" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.6, 1.20, 370.6)
-rotation = Vector3(-0.1491, 0.5713, 0.0)
+position = Vector3(34.600, 1.500, 366.400)
+rotation = Vector3(-0.2584, -0.9561, 0.0)
+metadata/fov = 50.0
 
 [node name="shot_insert_cottage" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.0, 1.55, 385.0)
-rotation = Vector3(-0.05, 0.0, 0.0)
+position = Vector3(56.300, 1.700, 373.600)
+rotation = Vector3(0.1171, 2.3007, 0.0)
+metadata/fov = 50.0
 
 [node name="shot_insert_gate" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.0, 1.15, 389.6)
-rotation = Vector3(-0.12, 0.0, 0.0)
+position = Vector3(51.300, 1.200, 390.600)
+rotation = Vector3(-0.2103, -0.2812, 0.0)
+metadata/fov = 42.0
 
 [node name="shot_insert_herbs" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.2, 0.95, 381.4)
-rotation = Vector3(-0.1021, -1.2636, 0.0)
+position = Vector3(57.300, 1.250, 383.400)
+rotation = Vector3(-0.3092, 0.4636, 0.0)
+metadata/fov = 42.0
 
-; (2026-09-24: 7.5 m back from the Minstral's Green's hull, looking W at
-; hull, deckhouse and stack — 23 cm off the hull, the lens saw one plate)
 [node name="shot_insert_wreck" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.000, 1.800, 121.000)
-rotation = Vector3(0.02, 1.5708, 0.0)
+position = Vector3(58.000, 2.400, 108.000)
+rotation = Vector3(0.1002, 1.8623, 0.0)
+metadata/fov = 50.0
 
 [node name="shot_insert_paddlebox" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.6, 2.60, 126.4)
-rotation = Vector3(-0.14, 0.62, 0.0)
+position = Vector3(45.200, 0.900, 129.200)
+rotation = Vector3(-0.1028, 0.4636, 0.0)
+metadata/fov = 46.0
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -384,66 +396,55 @@ script = ExtResource("14_dbgm")
 
 ; insert: the chalked wall, charcoal against pale concrete (ch17_star)
 [node name="shot_insert_wall" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.6, 1.9, 374.8)
-rotation = Vector3(-0.1851, -1.4204, 0.0)
-metadata/fov = 42.0
+position = Vector3(41.000, 1.620, 374.600)
+rotation = Vector3(0.0453, -1.4659, 0.0)
+metadata/fov = 46.0
 
-; insert: the crow on the I-beam, a witness (ch17_star)
 [node name="shot_insert_crow" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.2, 1.5, 369.3)
-rotation = Vector3(-0.2545, 2.3621, 0.0)
-metadata/fov = 42.0
+position = Vector3(39.600, 2.550, 371.900)
+rotation = Vector3(0.1779, -0.4528, 0.0)
+metadata/fov = 34.0
 
-; insert: the letter on the door-desk — "I am ready." (ch17_star)
 [node name="shot_insert_letter" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.45, 1.55, 381.6)
-rotation = Vector3(-0.4813, -2.8422, 0.0)
-metadata/fov = 42.0
+position = Vector3(53.150, 1.620, 380.850)
+rotation = Vector3(-0.5074, -0.8678, 0.0)
+metadata/fov = 36.0
 
-; insert: the candle, lit then blown out (ch17_star)
 [node name="shot_insert_candle" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.7, 1.45, 382.0)
-rotation = Vector3(-0.3082, -2.5360, 0.0)
-metadata/fov = 42.0
+position = Vector3(53.400, 1.550, 379.300)
+rotation = Vector3(-0.2714, -2.1763, 0.0)
+metadata/fov = 36.0
 
-; insert: the Minstral's Green, rusting quiet (Wheel/World)
 [node name="shot_insert_steamship" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.0, 2.5, 127.0)
-rotation = Vector3(0, 0, 0)
-metadata/fov = 42.0
+position = Vector3(61.000, 1.450, 127.500)
+rotation = Vector3(0.0478, 1.2096, 0.0)
+metadata/fov = 48.0
 
-; closeup: the Child at the river's edge (Wheel/World)
 [node name="shot_closeup_child" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.6, 1.3, 118.6)
-rotation = Vector3(-0.7142, 0.6742, 0.0)
-metadata/fov = 45.0
+position = Vector3(39.750, -0.750, 135.300)
+rotation = Vector3(-0.1375, 0.0831, 0.0)
+metadata/fov = 40.0
 
-; insert: the black egg doohickey (Wheel/World)
 [node name="shot_insert_doohickey" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.162, 1.031, 117.786)
-rotation = Vector3(-0.2618, -0.5236, 0.0)
-metadata/fov = 42.0
+position = Vector3(39.750, -0.950, 134.450)
+rotation = Vector3(-0.2187, 0.1974, 0.0)
+metadata/fov = 34.0
 
-; insert: the smoke ring over the water, the wildflower (World)
 [node name="shot_insert_smoke_ring" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.3, 2.5, 122.6)
-rotation = Vector3(0.3337, 2.5536, 0.0)
-metadata/fov = 42.0
+position = Vector3(43.800, 3.000, 121.400)
+rotation = Vector3(-0.0850, 2.3425, 0.0)
+metadata/fov = 38.0
 
-; insert: the folded 1987 receipt behind the chip
 [node name="shot_insert_receipt" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.2, 1.45, 375.2)
-rotation = Vector3(-0.2352, -1.5708, 0.0)
-metadata/fov = 42.0
+position = Vector3(43.250, 1.420, 375.000)
+rotation = Vector3(-0.1753, -2.1137, 0.0)
+metadata/fov = 34.0
 
-; insert: Joanna's notebook on the door-desk
 [node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.2, 1.55, 381.5)
-rotation = Vector3(-0.5601, -3.1416, 0.0)
-metadata/fov = 42.0
+position = Vector3(53.300, 1.620, 381.450)
+rotation = Vector3(-0.4829, -0.9151, 0.0)
+metadata/fov = 38.0
 
-; practicals authored by practical_author.py (2026-09-11):
-; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
 [node name="Writing_Candle_Practical" type="OmniLight3D" parent="."]
 position = Vector3(52.150, 1.195, 382.650)
 light_color = Color(1.000, 0.720, 0.420, 1)
@@ -496,22 +497,57 @@ omni_range = 5.00
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10)
 ; every closeup of a person cued here cuts to it (the scene had no closeup marker)
 [node name="shot_closeup_person__graustark_ruins" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(65.017, 1.250, 388.732)
-rotation = Vector3(0.0000, 0.7854, 0.0)
+position = Vector3(54.600, 1.550, 387.200)
+rotation = Vector3(0.0103, 0.6683, 0.0)
 metadata/fov = 45.0
 
-; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
-; the far side of the same spot, so two speakers alternate sides
 [node name="shot_closeup_person_b__graustark_ruins" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(63.510, 1.250, 389.673)
-rotation = Vector3(0.0000, -0.2618, 0.0)
+position = Vector3(57.200, 1.400, 384.000)
+rotation = Vector3(-0.2808, 0.3652, 0.0)
 metadata/fov = 45.0
 
-; the ruins' child frame = the ruins' person frame (2026-09-12): the plain shot_closeup_child is 272 m away
-[node name="shot_closeup_child__graustark_ruins" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(65.017, 1.250, 388.732)
-rotation = Vector3(0.0000, 0.7854, 0.0)
-metadata/fov = 45.0
+[node name="shot_closeup_joanna" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(40.050, 1.150, 377.550)
+rotation = Vector3(-0.2992, -0.8036, 0.0)
+metadata/fov = 40.0
 
-; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
-; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_joanna__graustark_cottage" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(52.900, 1.500, 387.600)
+rotation = Vector3(0.0119, 0.3142, 0.0)
+metadata/fov = 40.0
+
+[node name="shot_wide_house" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(51.600, 1.620, 382.950)
+rotation = Vector3(-0.1230, -0.4931, 0.0)
+metadata/fov = 62.0
+
+[node name="shot_wide_threshold" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(52.750, 1.450, 386.900)
+rotation = Vector3(0.0830, 0.3393, 0.0)
+metadata/fov = 50.0
+
+[node name="shot_wide_sinkhole" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(13.000, 1.750, 337.400)
+rotation = Vector3(-0.0033, 0.0926, 0.0)
+metadata/fov = 55.0
+
+[node name="shot_closeup_frog" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(43.600, 2.950, 130.000)
+rotation = Vector3(0.0000, 0.2292, 0.0)
+metadata/fov = 22.0
+
+[node name="shot_closeup_person__graustark_wreck" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(43.400, 3.100, 130.200)
+rotation = Vector3(-0.0158, 0.1912, 0.0)
+metadata/fov = 24.0
+
+[node name="shot_closeup_person_b__graustark_wreck" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(43.000, 0.300, 134.500)
+rotation = Vector3(0.2421, 0.0760, 0.0)
+metadata/fov = 34.0
+
+[node name="shot_closeup_person_b__graustark_chalk_wall" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(42.600, 1.200, 375.600)
+rotation = Vector3(-0.4376, 2.0989, 0.0)
+metadata/fov = 40.0
+

@@ -158,6 +158,31 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-10-04 · the ground under the hero props: check it, then place on the MESH
+
+- Graustark's ruin quarter — every prop of four chapters — was built at
+  z 0 on top of the bayou CHANNEL (terrain −3..−4.5). No gate reads
+  props against a terrain grid: the recorder sees boxes, never the
+  district's bpy-built ground. Before a pass on any open-air locale,
+  sample the ground under the hero props (the builder's own elevation
+  function) — four metres of air is invisible to every audit and
+  obvious in the first render.
+- **Place on the triangulated mesh, not the analytic field.** A 6 m
+  grid interpolates between vertices; wherever the field changes inside
+  a cell (a carved bank, a fill edge, a void's lip) the function names a
+  height the ground is not at. `terrain_surface_z()` in
+  build_graustark returns the triangle's height (faces [a,b,c]+[a,c,d]).
+- **A preservation zone can bury what it preserves.** The district's
+  flat z 0 over the riverfront zone covered the riverfront's river at
+  −2.5 — D'Ambrosio's boat on dry land in every district view.
+- **A sloped heightfield's box swallows what stands on it.** A mud
+  mesh on the bank put the Child, the footprints and the wildflower
+  inside its AABB (17 clips); colour the terrain's own strata instead
+  (graustark_color now gives carved banks the tidal/bed colours).
+- **Capped solid cylinders are not a pit.** The sinkhole's four rings,
+  widest on top, rendered a raised lid; a void is open bands wound to
+  face up and in, with the terrain cut below them.
+
 ### 2026-10-02 · the marker audit judges by CUE WORD — name parts for what they are
 
 - `vantage_obstruction_audit --markers` picks a marker's subject as the

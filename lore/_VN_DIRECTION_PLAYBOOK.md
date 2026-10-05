@@ -291,6 +291,39 @@ over-the-shoulder two-shot when two heroes trade lines.
 
 ## Recent lessons
 
+### 2026-10-04 · a montage staged on one background shows one face — switch rooms per vignette
+
+- Judgement (vol 5 ch 20) is a montage: Erica in Houston, John in
+  Montreal, Dante at the helm, Jimmy in the empty room, Natalie, Doug
+  at the Iron Crow, the Roberts, Elicia, Nicola in the car. It was
+  staged on the wreck preset, so every `[shot:closeup X]` fell to the
+  director's substitute pool — and the pool held ONE closeup: the
+  Child by the river. Ten characters, one picture. A chapter that
+  travels gets a `{"t":"bg"}` node at each vignette's first line
+  (ch 5 already did it for four rooms); each switch is cheap (the
+  PackedScene is cached), and the cues inside are re-pointed at what
+  THAT room has (`closeup douglas`, not `doug`; `insert phone`, not a
+  stray `insert smoke_ring`).
+- **Stage a chapter on the preset where its establishes happen.** The
+  Star ran on the cottage preset while five of its seven `[shot:
+  establish]` lines are at the wall; every establish cut to the
+  cottage. Count where the establishes are before choosing `bg`.
+- **A place visited inside a chapter is a `wide <id>` marker, not an
+  establish.** "At the threshold of her makeshift shelter" and "She
+  closed the door of the shotgun house" are scenes in a second place;
+  `[shot:wide threshold]` / `[shot:wide house]` cut there and leave
+  the chapter's establish (the wall) for the lines that are at the
+  wall. `wrong_room_audit` checks only RESOLVED closeups — a blind
+  closeup's substitute is unaudited, so author the closeups a chapter
+  asks for (`shot_closeup_joanna`, per-preset overrides) rather than
+  trusting the pool.
+- **A passenger's camera sits at SEATED eye height** — cushion top +
+  ~0.72 m — and the cabin must have the car's real headroom. Miriam's
+  Subaru first put Natalie's eye 0.52 m over the cushion under a roof
+  0.89 m up: two seatbacks filled the frame and the road was a sliver.
+  Raised to 1.36 under a 1.62 roof, the frame looks over the seats and
+  through the gap — the shot the prose describes.
+
 ### 2026-10-02 · re-aim a marker from the PROSE: a camera point and a target point, never a rotation by hand
 
 - The Deck: "direction still isn't strong at all, vol 5. camera and

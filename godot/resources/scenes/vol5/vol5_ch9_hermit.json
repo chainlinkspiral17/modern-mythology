@@ -521,7 +521,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]She thought, with the small clear honesty her best poems also had: something has been starting for a long time, and I am only now beginning to be the kind of person who can notice.",
+      "text": "[shot:wide sinkhole]She thought, with the small clear honesty her best poems also had: something has been starting for a long time, and I am only now beginning to be the kind of person who can notice.",
       "voice": "assets/audio/voice/vol5_ch9_hermit/103.mp3"
     },
     {
@@ -546,7 +546,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:dusk][shot:establish]At the threshold of her makeshift shelter — the back half of what had been a small shotgun house, the front half of which had folded into the void in 2021 and which Joanna had patched, with Philip Roberts's help one weekend, into something almost weatherproof — she paused.",
+      "text": "[mood:dusk][shot:wide threshold]At the threshold of her makeshift shelter — the back half of what had been a small shotgun house, the front half of which had folded into the void in 2021 and which Joanna had patched, with Philip Roberts's help one weekend, into something almost weatherproof — she paused.",
       "voice": "assets/audio/voice/vol5_ch9_hermit/108.mp3"
     },
     {
@@ -606,7 +606,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]The Hermit, in her labyrinth, kept the lantern.",
+      "text": "[shot:wide threshold~]The Hermit, in her labyrinth, kept the lantern.",
       "voice": "assets/audio/voice/vol5_ch9_hermit/120.mp3"
     },
     {

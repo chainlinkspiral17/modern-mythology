@@ -727,7 +727,7 @@
     },
     {
       "t": "bg",
-      "src": "3d:vehicle_cab"
+      "src": "3d:miriam_subaru"
     },
     {
       "t": "narrate",
@@ -841,7 +841,7 @@
     },
     {
       "t": "narrate",
-      "text": "There was, in the car, a small radiant silence. Miriam's eyes met Natalie's in the rearview. Miriam smiled slightly.",
+      "text": "[shot:closeup person_b]There was, in the car, a small radiant silence. Miriam's eyes met Natalie's in the rearview. Miriam smiled slightly.",
       "voice": "assets/audio/voice/vol5_ch18_moon/156.ogg"
     },
     {
@@ -851,7 +851,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]They reached the county line at seven fifty-two AM.\n\nMiriam pulled into a gas station just past the sign. She got out, stretched, filled the tank, came back. She turned to Natalie.",
+      "text": "[shot:wide station]They reached the county line at seven fifty-two AM.\n\nMiriam pulled into a gas station just past the sign. She got out, stretched, filled the tank, came back. She turned to Natalie.",
       "voice": "assets/audio/voice/vol5_ch18_moon/158.mp3"
     },
     {
@@ -967,7 +967,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]The crow had come to deliver. The crow had delivered. The crow was going home.",
+      "text": "[shot:insert crow]The crow had come to deliver. The crow had delivered. The crow was going home.",
       "voice": "assets/audio/voice/vol5_ch18_moon/178.ogg"
     },
     {

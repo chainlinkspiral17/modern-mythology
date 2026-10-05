@@ -48,7 +48,9 @@ COLS, ROWS = 9, 3
 # Vantages where the near geometry IS the shot: the cab presets frame
 # the dash / the seat backs on purpose; the dock-end preset sits with
 # its feet over the water and the planks fill the bottom of frame.
-DELIBERATE = {"vehicle_cab", "vehicle_cab_rear", "lake_palestine_dock"}
+# (2026-10-04: miriam_subaru — vol 5's back-seat camera looks through
+# the gap between the front seats; the seatbacks frame it on purpose.)
+DELIBERATE = {"vehicle_cab", "vehicle_cab_rear", "lake_palestine_dock", "miriam_subaru"}
 NEAR_M, NEAR_FRAC = 1.0, 0.30
 WALL_M, WALL_FRAC = 2.6, 0.45
 # EMPTY (2026-09-07 · the diner's first shot was a yellow field with a
@@ -63,6 +65,10 @@ EMBED_TOL = 0.18
 DELIBERATE_MARKERS = {
     ("cabin_road", "shot_insert_drone"), ("cabin_road", "shot_insert_crow"),
     ("miller_back_porch", "shot_insert_myrtle"), ("new_auburn_road", "shot_insert_cypress"),
+    # (2026-10-04) inside Miriam's Subaru the back-seat close-ups are at
+    # arm's length by design: the gap between the front seats Nicola
+    # reaches through, and Miriam's eyes in the rearview.
+    ("miriam_subaru", "shot_closeup_person"), ("miriam_subaru", "shot_closeup_person_b"),
 }
 # Builders whose recorded boxes do not sit where the runtime puts them
 # (harmony_terrain drapes its props over a heightfield the recorder

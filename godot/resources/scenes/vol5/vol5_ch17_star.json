@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "3d:graustark_cottage"
+      "src": "3d:graustark_chalk_wall"
     },
     {
       "t": "hide",
@@ -620,7 +620,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]She closed the door of the shotgun house behind her. Lit the candle. Sat at the desk-that-was-a-door-on-bricks. Took out a single piece of paper.",
+      "text": "[shot:wide house]She closed the door of the shotgun house behind her. Lit the candle. Sat at the desk-that-was-a-door-on-bricks. Took out a single piece of paper.",
       "voice": "assets/audio/voice/vol5_ch17_star/123.mp3"
     },
     {

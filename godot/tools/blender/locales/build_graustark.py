@@ -101,6 +101,48 @@ BAYOU_CENTERLINE = [
 RF_ZONE_X = (-200.0, +220.0)
 RF_ZONE_Y = (-200.0, +200.0)
 
+# THE RUIN QUARTER'S FILL (2026-10-04). The Hermit / Star / Judgement /
+# World chapters stage at the quarter round (50, -380) — which is the
+# BAYOU CHANNEL: terrain -3..-4.5 m, water at -2.5. Every hero prop
+# (chalked wall, I-beam, cottage path, desk) sat at z 0, four metres
+# above the mud, and the establishes showed a lighthouse on piles over
+# open water. The prose has the answer: "the limestone they had dug out
+# of the riverbed in the cleanup year, the limestone they had left in
+# piles at the edges of the void" — the quarter is a limestone-fill
+# spit raised to z 0 (build_ruin_ground_2026_10). Props the shared
+# district builders drop inside this rectangle at bayou depth (a
+# skiff, a crab-trap pile, a hydrant, the lighthouse pier) are skipped.
+RUIN_FILL_X = (12.0, 74.0)
+RUIN_FILL_Y = (-397.0, -318.0)      # S edge clears the rail ties at y -400
+RUIN_FILL_Z = 0.0
+# THE SINKHOLE as a real void (2026-10-04). It was four SOLID capped
+# cylinders, widest on top — a raised disc with a lid, not a pit. The
+# terrain inside the lip now drops below the floor and
+# build_sinkhole_bowl_2026_10() lines it with terraced, open bands;
+# the fill rings the lip out to SINK_FILL_R so the rim stands on ground.
+SINK_X, SINK_Y = 10.0, -300.0
+SINK_R = 35.5
+SINK_FILL_R = 54.0
+
+
+# The riverfront river's basin (build_riverfront.build_river: water box
+# x -25..55, y -100..100; the quay wall at x -18) and the Minstral's
+# slough beside the wreck. Grid vertices inside are carved below the bed.
+RF_RIVER_X = (-18.0, 54.0)
+RF_RIVER_Y = (-99.0, 99.0)
+SLOUGH_X = (41.0, 56.0)
+SLOUGH_Y = (-140.0, -99.0)
+RIVER_CARVE_Z = -3.2
+
+
+def _in_ruin_fill(x, y):
+    """True on the ruin quarter's limestone fill OR inside the void —
+    anywhere the shared district builders must not drop bayou things."""
+    if (RUIN_FILL_X[0] <= x <= RUIN_FILL_X[1]
+            and RUIN_FILL_Y[0] <= y <= RUIN_FILL_Y[1]):
+        return True
+    return math.hypot(x - SINK_X, y - SINK_Y) <= SINK_FILL_R
+
 
 def _seg_dist(px, py, x0, y0, x1, y1):
     """Perpendicular distance from (px,py) to segment ((x0,y0),(x1,y1)).
@@ -146,7 +188,22 @@ def graustark_elevation(x, y):
     # Riverfront preservation
     if (RF_ZONE_X[0] <= x <= RF_ZONE_X[1]
             and RF_ZONE_Y[0] <= y <= RF_ZONE_Y[1]):
+        # 2026-10-04: the flat preservation field BURIED the riverfront's
+        # river (water -2.5, field 0) — D'Ambrosio's moored boat stood on
+        # dry ground in every district view, and the Minstral's Green
+        # (World: "down here by the river") had no river. The river's
+        # basin and the Minstral's slough, which joins it from the south,
+        # are carved below the bed now.
+        if RF_RIVER_X[0] <= x <= RF_RIVER_X[1] and RF_RIVER_Y[0] <= y <= RF_RIVER_Y[1]:
+            return RIVER_CARVE_Z
+        if SLOUGH_X[0] <= x <= SLOUGH_X[1] and SLOUGH_Y[0] <= y <= SLOUGH_Y[1]:
+            return RIVER_CARVE_Z
         return SEA_LEVEL_Z
+    # The void and the ruin fill (2026-10-04) — see RUIN_FILL / SINK_*.
+    if math.hypot(x - SINK_X, y - SINK_Y) < SINK_R:
+        return -26.0           # below the bowl's floor: the bowl is the surface
+    if _in_ruin_fill(x, y):
+        return RUIN_FILL_Z
 
     d = bayou_distance(x, y)
 
@@ -192,6 +249,28 @@ def graustark_elevation(x, y):
     return z
 
 
+def terrain_surface_z(x, y):
+    """The height of the TERRAIN MESH at (x, y) — the 6 m grid's
+    triangles as build_district_elevation_field() emits them (faces
+    [a,b,c] + [a,c,d]), not the analytic field. Wherever the field
+    changes inside a cell (a carved bank, the fill's edge, the void's
+    lip) graustark_elevation() names a height the ground is not at;
+    props placed with it float or sink (2026-10-04)."""
+    fx = (x - DIST_MIN_X) / (DIST_MAX_X - DIST_MIN_X) * GROUND_NX
+    fy = (y - DIST_MIN_Y) / (DIST_MAX_Y - DIST_MIN_Y) * GROUND_NY
+    i, j = int(math.floor(fx)), int(math.floor(fy))
+    u, v = fx - i, fy - j
+
+    def vz(ii, jj):
+        return graustark_elevation(
+            DIST_MIN_X + (DIST_MAX_X - DIST_MIN_X) * ii / GROUND_NX,
+            DIST_MIN_Y + (DIST_MAX_Y - DIST_MIN_Y) * jj / GROUND_NY)
+    za, zb, zc, zd = vz(i, j), vz(i + 1, j), vz(i + 1, j + 1), vz(i, j + 1)
+    if u >= v:
+        return za + u * (zb - za) + v * (zc - zb)
+    return za + v * (zd - za) + u * (zc - zd)
+
+
 # ── STRATUM PALETTE ────────────────────────────────────────────
 # Each stratum has its own vertex colour so the player reads the
 # Z bands as distinct material zones from any angle.
@@ -202,13 +281,22 @@ COL_TIDAL     = (0.36, 0.38, 0.26, 1.0)   # alga-stained mud
 COL_BAYOU_BED = (0.20, 0.22, 0.16, 1.0)   # tannic shallow
 COL_CHANNEL   = (0.14, 0.14, 0.12, 1.0)   # silt floor
 COL_RF_ZONE   = (0.34, 0.32, 0.24, 1.0)   # riverfront zone neutral
+COL_RUIN_FILL = (0.50, 0.47, 0.40, 1.0)   # the cleanup year's limestone fill
 
 
 def graustark_color(x, y, z):
     """Stratum colour at (x,y,z)."""
     if (RF_ZONE_X[0] <= x <= RF_ZONE_X[1]
             and RF_ZONE_Y[0] <= y <= RF_ZONE_Y[1]):
+        # the carved river banks + the Minstral's slough read as wet mud
+        # (2026-10-04), the rest of the zone stays neutral
+        if z < -1.5:
+            return COL_BAYOU_BED
+        if z < -0.3:
+            return COL_TIDAL
         return COL_RF_ZONE
+    if _in_ruin_fill(x, y) and z > -1.0:
+        return COL_RUIN_FILL
     if z < -3.0:
         return COL_CHANNEL
     if z < -1.5:
@@ -2160,6 +2248,9 @@ def _build_hermit_lighthouse():
     the south end of the bayou. A keeper's dwelling at the base."""
     print("[graustark]   Hermit — Bayou Lighthouse")
     cx, cy = ARCANA_LOCALES['Hermit_Lighthouse'][0]
+    if _in_ruin_fill(cx, cy):
+        _build_hermit_lighthouse_ruin()
+        return
     gz = graustark_elevation(cx, cy)
     # Platform (concrete pad on cypress piles)
     base_z = max(gz, 0.0) + 0.5     # at least at sea level
@@ -2175,15 +2266,10 @@ def _build_hermit_lighthouse():
     ht._make_box_local("Hermit_Deck",
                        (cx, cy, base_z),
                        (9.0, 9.0, 0.40), COL_CONCRETE)
-    # Keeper's cottage at base
-    kx = cx + 1.5
-    ky = cy + 1.5
-    ht._make_box_local("Hermit_Cottage",
-                       (kx, ky, base_z + 2.6 / 2 + 0.2),
-                       (4.0, 4.0, 2.6), COL_STUCCO_WHITE)
-    ht._make_box_local("Hermit_Cottage_Roof",
-                       (kx, ky, base_z + 2.6 + 0.30),
-                       (4.4, 4.4, 0.40), COL_TIN_FRESH)
+    # The keeper's cottage (a 4x4 white stucco box) stood here until
+    # 2026-10-04. The ruin chapters' prose puts JOANNA'S PATCHED SHOTGUN
+    # HOUSE on this pad — build_shotgun_house_2026_10() — so the pad now
+    # carries that, and the lighthouse keeps only its tower.
     # Lighthouse tower — 3 tapering banded boxes
     LH_H = 18.0
     for i in range(6):
@@ -2210,6 +2296,47 @@ def _build_hermit_lighthouse():
         "Hermit_Lantern_Light",
         (cx - 2.0, cy - 2.0, base_z + 0.4 + LH_H + 1.2),
         0.5, (1.0, 0.94, 0.74, 1.0), rings=2, segments=6)
+
+
+def _build_hermit_lighthouse_ruin():
+    """THE DEAD LIGHT (2026-10-04). The ruin quarter stands on the
+    cleanup year's fill now, so the bayou lighthouse is not a working
+    beacon on a pile platform any more: the Calamity broke the tower at
+    ten metres and dropped the lantern room into the rubble. The
+    Hermit's lantern in vol 5 is Joanna's failing flashlight — the
+    landmark beside her door keeps no light. Faded stripes, a dark
+    doorway, rust weeping from the break. (The gauntlet's working
+    lighthouse is its own scene, bayou_lighthouse.tscn — untouched.)"""
+    from _props.geometry import make_box as _mb, make_rot_box as _mrb
+    tx, ty = 43.0, -385.5          # west of the yard: it crowded the house
+    white = (0.70, 0.67, 0.60, 1.0)
+    red = (0.56, 0.31, 0.25, 1.0)
+    stain = (0.30, 0.22, 0.17, 1.0)
+    _mb("Hermit_Plinth", (tx, ty, 0.25), (4.4, 4.4, 0.50), (0.46, 0.44, 0.40, 1.0))
+    top = 0.50
+    for i in range(3):
+        r = 1.8 - i * 0.10
+        _mb(f"Hermit_Lighthouse_{i}", (tx, ty, top + 1.5), (r * 2, r * 2, 3.0),
+            white if i % 2 == 0 else red)
+        top += 3.0
+    # The break: two jagged stubs of the fourth band, unequal
+    _mb("Hermit_Lighthouse_Break_W", (tx - 0.75, ty, top + 0.55), (1.5, 3.1, 1.10), red)
+    _mb("Hermit_Lighthouse_Break_NE", (tx + 0.80, ty + 0.75, top + 0.90), (1.4, 1.6, 1.80), red)
+    # Rust weeping from the break and from the door head
+    for si, (sx, sw, sh) in enumerate(((-0.9, 0.16, 2.6), (0.3, 0.10, 3.4), (1.1, 0.14, 1.9))):
+        _mb(f"Hermit_Lighthouse_Streak_{si}", (tx + sx, ty - 1.81, top - sh / 2.0),
+            (sw, 0.02, sh), stain)
+    _mb("Hermit_Lighthouse_Door", (tx, ty - 1.815, 0.50 + 1.0), (0.95, 0.03, 2.0),
+        (0.08, 0.07, 0.07, 1.0))
+    _mb("Hermit_Lighthouse_DoorHead", (tx, ty - 1.83, 0.50 + 2.08), (1.15, 0.06, 0.16), white)
+    # The lantern room, fallen west into the rubble; its cap beside it
+    _mrb("Hermit_Lantern_Fallen", (38.0, -389.0, 1.05), (2.4, 2.4, 1.6),
+         (0.62, 0.60, 0.52, 1.0), yaw=0.35, roll=0.42)
+    _mrb("Hermit_LanternCap_Fallen", (35.6, -391.5, 0.36), (2.6, 2.6, 0.6),
+         (0.20, 0.18, 0.18, 1.0), yaw=-0.5, pitch=0.18)
+    for gi, (gx, gy) in enumerate(((39.6, -390.9), (40.4, -389.6), (37.0, -386.9))):
+        _mb(f"Hermit_Lantern_Glass_{gi}", (gx, gy, 0.012), (0.34, 0.22, 0.024),
+            (0.70, 0.78, 0.80, 0.45))
 
 
 def _build_strength_carnival():
@@ -2721,6 +2848,8 @@ COL_TRAP_WIRE = (0.42, 0.38, 0.30, 1.0)
 
 def _emit_crab_trap_pile(name, cx, cy):
     """Stack of 3-4 wire crab traps at a dock corner."""
+    if _in_ruin_fill(cx, cy):
+        return      # under the ruin fill (2026-10-04)
     gz = graustark_elevation(cx, cy)
     for i in range(4):
         ht._make_box_local(
@@ -3295,6 +3424,12 @@ def _build_lighthouse_dock():
     water + small mooring posts."""
     print("[graustark]   lighthouse dock")
     lx, ly = ARCANA_LOCALES['Hermit_Lighthouse'][0]
+    if _in_ruin_fill(lx, ly + 5.0):
+        # 2026-10-04: the quarter is limestone fill now (RUIN_FILL) —
+        # a pier running north from the pad would be a boardwalk laid
+        # on dry ground, through Joanna's void. No dock here.
+        print("[graustark]     (skipped — lighthouse pad sits on the ruin fill)")
+        return
     # Pier extends 12m to the north (toward the bayou main channel)
     pier_dir_x, pier_dir_y = 0.0, 1.0
     pier_len = 12.0
@@ -3434,6 +3569,8 @@ COL_HYDRANT_YEL = (0.86, 0.72, 0.30, 1.0)
 
 def _emit_hydrant(name, cx, cy):
     """Red fire hydrant: short stout post + yellow cap."""
+    if _in_ruin_fill(cx, cy):
+        return      # under the ruin fill (2026-10-04)
     gz = graustark_elevation(cx, cy)
     ht._make_box_local(f"{name}_Body",
                        (cx, cy, gz + 0.45),
@@ -3536,6 +3673,8 @@ COL_BOAT_PAINT_WHITE = (0.92, 0.90, 0.84, 1.0)
 
 def _emit_fishing_boat(name, cx, cy, facing, hull_color):
     """Small flat-bottom fishing skiff — hull + outboard motor."""
+    if _in_ruin_fill(cx, cy):
+        return      # under the ruin fill (2026-10-04)
     gz = BAYOU_WATER_Z
     fy = -1 if facing == '-Y' else (+1 if facing == '+Y' else 0)
     fx = -1 if facing == '-X' else (+1 if facing == '+X' else 0)
@@ -3929,15 +4068,32 @@ def _build_truss_bridge():
                 f"Graustark_TrussBridge_Vert_{side_sgn:+d}_{v}",
                 (vx, truss_y, deck_z + TRUSS_H / 2),
                 (0.30, 0.30, TRUSS_H), COL_TRUSS_STEEL)
-        # Diagonal members — V pattern (8 panels)
+    # 2026-10-04: the diagonals were HORIZONTAL bars at mid-height (an
+    # axis box can't lean), so the truss read as a ladder fence across
+    # every ruin-quarter frame. Real Warren diagonals now, chord to
+    # chord, alternating; and the deck stands on three concrete bents
+    # over the ruin fill (it spanned 80 m on its two end pylons alone).
+    from _props.geometry import make_rot_box as _mrb
+    panel = span / 8.0
+    lean = math.atan2(TRUSS_H - 0.2, panel)        # chord centre to chord centre
+    diag_len = math.hypot(TRUSS_H - 0.2, panel)
+    for side_sgn in (-1, +1):
+        truss_y = bridge_cy + side_sgn * 9.0
         for v in range(8):
-            t = -1 + (2 * v + 1) / 8
-            vx = bridge_cx + t * (span / 2)
-            # Single tilted diagonal per panel (box approximation)
+            vx = bridge_cx - span / 2.0 + (v + 0.5) * panel
+            _mrb(f"Graustark_TrussBridge_Web_{side_sgn:+d}_{v}",
+                 (vx, truss_y, deck_z + 0.2 + (TRUSS_H - 0.2) / 2.0),
+                 (diag_len, 0.22, 0.26), COL_TRUSS_STEEL,
+                 pitch=lean if v % 2 == 0 else -lean)
+    for bi, bx in enumerate((14.0, 32.0, 50.0)):
+        for col_y in (bridge_cy - 6.0, bridge_cy + 6.0):
             ht._make_box_local(
-                f"Graustark_TrussBridge_Diag_{side_sgn:+d}_{v}",
-                (vx, truss_y, deck_z + TRUSS_H / 2),
-                (span / 8 * 1.05, 0.20, 0.30), COL_TRUSS_STEEL)
+                f"Graustark_TrussBridge_Bent_{bi}_Col_{col_y:.0f}",
+                (bx, col_y, (deck_z - 0.2 - 0.6) / 2.0),
+                (1.0, 1.0, deck_z - 0.2 - 0.6), COL_CONCRETE)
+        ht._make_box_local(f"Graustark_TrussBridge_Bent_{bi}_Cap",
+                           (bx, bridge_cy, deck_z - 0.2 - 0.3),
+                           (1.4, 15.0, 0.6), COL_CONCRETE)
     # Bridge pylons — concrete supports at each end where the
     # road comes off the berm down to the bayou
     for end_sgn in (-1, +1):
@@ -4182,7 +4338,10 @@ NPC_SPAWNS = [
     ("Cemetery_mourner1", -360.0, -184.0, '-Y', 'elderly'),
     ("Cemetery_mourner2", -358.0, -187.0, '-Y', 'female_avg'),
     # ── Lighthouse keeper ──
-    ("Hermit_keeper",    +52.0, -378.0,  '-X', 'elderly'),
+    # 2026-10-04: was (+52, -378) — inside Joanna's shotgun house now.
+    # The light is dead; the old keeper walks the fill west of the
+    # quarter, out of Joanna's frames (she lives alone with the animals).
+    ("Hermit_keeper",    +24.0, -388.0,  '+X', 'elderly'),
     # ── Daigle's roadhouse patrons (outside) ──
     ("Daigle_patron1",   +256.0, -384.0, '+Y', 'male_heavy'),
     ("Daigle_patron2",   +264.0, -384.0, '+Y', 'male_tall'),
@@ -4599,7 +4758,7 @@ def build_district_characters_and_props():
     from human_sculpt import human_figure
     placed_hero = placed_planar = placed_prim = failed = 0
     for label, x, y, facing, body_type in NPC_SPAWNS:
-        z = graustark_elevation(x, y)
+        z = RUIN_FILL_Z if _in_ruin_fill(x, y) else graustark_elevation(x, y)
         try:
             # 1. Hero GLB
             if label in HERO_GLB_PATHS:
@@ -4721,7 +4880,9 @@ def build_ruin_draft2_2026_08():
                 h * 0.45), (1.1, 0.06, 1.5), (0.14, 0.12, 0.11, 1.0))
     # Leaning chimney stacks — two, opposite leans faked by offset
     # stacked boxes (no rotation in the pipeline).
-    for ci, (cx2, cy2, lean) in enumerate(((18.0, -358.0, 0.35), (-4.0, -330.0, -0.30))):
+    # (2026-10-04: stack 1 at (-4, -330) stood INSIDE the void — r 33 of the
+    # 35.5 m lip; moved to the fill west of the arch.)
+    for ci, (cx2, cy2, lean) in enumerate(((18.0, -358.0, 0.35), (-8.0, -344.0, -0.30))):
         for zi in range(4):
             _mb(f"Ruin_Chimney_{ci}_{zi}", (cx2 + lean * zi, cy2, 1.0 + zi * 1.9),
                 (1.3 - zi * 0.08, 1.3 - zi * 0.08, 2.0), brick_dk if zi % 2 else brick)
@@ -4745,9 +4906,10 @@ def build_ruin_draft2_2026_08():
         _mc(f"Ruin_Scrub_{ti2}", (tx2, ty2, 0.5), 0.9, 1.0, scrub, segments=8)
     # A downed power pole crossing the quarter road — the Calamity
     # left the infrastructure where it fell.
-    _mc("Ruin_Pole_Downed", (24.0, -366.0, 0.35), 0.14, 11.0, (0.34, 0.28, 0.22, 1.0),
+    # (2026-10-04: x 24 → 30, onto the ruin fill — it lay over open bayou.)
+    _mc("Ruin_Pole_Downed", (27.5, -366.0, 0.14), 0.14, 11.0, (0.34, 0.28, 0.22, 1.0),
         axis='Y', segments=8)
-    _mb("Ruin_Pole_Crossarm", (24.0, -361.5, 0.55), (1.8, 0.14, 0.14), (0.30, 0.25, 0.20, 1.0))
+    _mb("Ruin_Pole_Crossarm", (27.5, -361.5, 0.35), (1.8, 0.14, 0.14), (0.30, 0.25, 0.20, 1.0))
 
 
 def build_ruin_quarter_2026_08():
@@ -4762,48 +4924,52 @@ def build_ruin_quarter_2026_08():
     conc = (0.52, 0.50, 0.46, 1.0)
     conc_dk = (0.40, 0.38, 0.35, 1.0)
     rust = (0.46, 0.28, 0.18, 1.0)
-    # THE SINKHOLE: stepped rings descending, broken-pavement lip
-    sx, sy = 10.0, -300.0
-    for ri, (r, dz) in enumerate(((34.0, -2.0), (26.0, -7.0), (18.0, -13.0), (10.0, -19.0))):
-        _mc(f"Sinkhole_Ring_{ri}", (sx, sy, dz), r, 4.5, conc_dk if ri % 2 else (0.30, 0.28, 0.26, 1.0), segments=20)
-    _mc("Sinkhole_Floor", (sx, sy, -22.0), 8.0, 0.5, (0.18, 0.16, 0.15, 1.0), segments=16)
+    # THE SINKHOLE: the void itself is build_sinkhole_bowl_2026_10() —
+    # the four solid capped rings that stood here (widest on TOP: a
+    # raised disc with a lid) are gone. Broken pavement on the lip,
+    # on the apron just outside the edge (r 35.5 hung them half over
+    # the void).
+    sx, sy = SINK_X, SINK_Y
     for li in range(10):
         import math as _m
         a = li * 0.63
-        _mb(f"Sinkhole_Lip_{li}", (sx + _m.cos(a) * 35.5, sy + _m.sin(a) * 35.5, 0.3),
+        _mb(f"Sinkhole_Lip_{li}", (sx + _m.cos(a) * 37.6, sy + _m.sin(a) * 37.6, 0.3),
             (3.0, 2.0, 0.7), conc)
     # Joanna's chalked wall + the I-beam, near the cottage
-    _mb("Chalked_Wall", (44.0, -374.0, 2.0), (0.3, 8.0, 4.0), (0.55, 0.54, 0.52, 1.0))
-    _mb("Chalk_Verses_A", (43.82, -376.0, 2.2), (0.02, 2.6, 0.5), (0.85, 0.84, 0.80, 1.0))
-    _mb("Chalk_Verses_B", (43.82, -372.5, 1.5), (0.02, 2.0, 0.4), (0.82, 0.80, 0.76, 1.0))
-    _mb("I_Beam", (40.5, -371.0, 1.05), (0.3, 9.0, 0.3), rust)
-    _mb("I_Beam_Buried_End", (40.5, -375.3, 0.2), (0.5, 1.0, 0.5), conc_dk)
+    # (2026-10-04: a jagged broken top — two upper stubs either side of
+    # a notch with rebar; the verses are lines of written words now,
+    # build_haberdashery_2026_10 — they were two pale rectangles.)
+    wall_col = (0.55, 0.54, 0.52, 1.0)
+    _mb("Chalked_Wall", (44.0, -374.0, 1.5), (0.3, 8.0, 3.0), wall_col)
+    _mb("Chalked_Wall_Top_S", (44.0, -376.3, 3.5), (0.3, 3.4, 1.0), wall_col)
+    _mb("Chalked_Wall_Top_N", (44.0, -371.1, 3.225), (0.3, 2.2, 0.45), wall_col)
+    for rbi in range(5):
+        _mc(f"Chalked_Wall_Rebar_{rbi}", (44.0 + (0.06 if rbi % 2 else -0.06), -374.3 + rbi * 0.45,
+            3.0 + (0.22 + 0.06 * (rbi % 3)) / 2.0), 0.009, 0.22 + 0.06 * (rbi % 3), rust, segments=6)
+    # THE I-BEAM (2026-10-04): "the crow was perched on a section of
+    # rusted I-beam ten feet above her" / "part of the kitchen's
+    # structural skeleton" — it spans two broken concrete pier stubs at
+    # z 2.6 now (it lay at 1.05, knee height, with its 'buried end'
+    # floating over the bayou).
+    _mb("I_Beam", (40.5, -371.0, 2.60), (0.02, 9.0, 0.24), rust)            # the web
+    _mb("I_Beam_Flange_T", (40.5, -371.0, 2.735), (0.30, 9.0, 0.03), rust)
+    _mb("I_Beam_Flange_B", (40.5, -371.0, 2.465), (0.30, 9.0, 0.03), rust)
+    for pi_, py_ in enumerate((-375.0, -367.0)):
+        _mb(f"I_Beam_Pier_{pi_}", (40.5, py_, 1.225), (0.5, 0.5, 2.45), conc_dk)
     # Rubble field with one flat-topped sitting block
-    for i, (dx, dy, s) in enumerate(((2, -3, 1.2), (-4, 1, 0.9), (5, 4, 1.6), (-2, 6, 1.1),
-                                     (7, -1, 0.8), (0, -6, 1.4), (-6, -4, 1.0), (3, 8, 0.9))):
+    # (2026-10-04: two stones moved — one sat across the haberdashery's
+    # north wall, one on the I-beam's north pier.)
+    for i, (dx, dy, s) in enumerate(((3.5, -1.5, 1.2), (-4, 1, 0.9), (5, 4, 1.6), (-2, 6, 1.1),
+                                     (7, -1, 0.8), (-3, -7.5, 1.4), (-6, -4, 1.0), (3, 8, 0.9))):
         _mb(f"Ruin_Rubble_{i}", (38.0 + dx, -364.0 + dy, s * 0.25), (s, s * 0.8, s * 0.5), conc)
-    _mb("Sitting_Block", (47.5, -370.0, 0.225), (0.9, 0.7, 0.45), conc_dk)
-    # Cottage path + gate + herbs (cottage at +50, -380)
-    # from the platform deck's S edge (y -384.5) to the gate (2026-09-23:
-    # the first three stones lay under the deck, and the path ran
-    # through pile 6)
-    for fi in range(3):
-        _mb(f"Flagstone_{fi}", (50.0, -385.0 - fi * 1.0, 0.03), (0.9, 0.8, 0.05), (0.58, 0.56, 0.50, 1.0))
-    for gx in (49.5, 50.5):
-        _mb(f"Gate_Post_{gx:.1f}", (gx, -387.8, 0.6), (0.12, 0.12, 1.2), (0.42, 0.30, 0.20, 1.0))
-    # was (52.2,-379): inside the 9x9 concrete deck. Beside it now.
-    _mb("Herb_Bed", (58.5, -379.0, 0.10), (2.0, 3.0, 0.20), (0.36, 0.28, 0.20, 1.0))
-    for hi in range(6):
-        _mb(f"Herb_{hi}", (57.9 + (hi % 3) * 0.6, -380.0 + (hi // 3) * 1.2, 0.32),
-            (0.35, 0.35, 0.25), (0.34, 0.48, 0.28, 1.0))
-    # The Minstral's Green: beached steamship, listed, paddlewheel
-    # cover top = the Frog's seat
-    _mb("Minstral_Hull", (38.0, -120.0, 0.6), (7.0, 20.0, 5.0), (0.30, 0.40, 0.34, 1.0))
-    _mb("Minstral_Deckhouse", (38.0, -116.0, 4.2), (4.5, 8.0, 2.2), (0.36, 0.44, 0.38, 1.0))
-    _mc("Minstral_Stack", (38.0, -112.0, 6.4), 0.7, 3.0, rust, segments=10)
-    _mb("Minstral_Paddlebox", (42.2, -124.0, 1.4), (2.4, 4.5, 1.6), rust)
-    _mb("Minstral_Paddlebox_Top", (42.2, -124.0, 2.25), (2.6, 4.7, 0.1), (0.38, 0.24, 0.16, 1.0))
-    _mc("Minstral_Paddlebox_Hub", (43.6, -124.0, 1.2), 1.4, 0.4, (0.30, 0.20, 0.14, 1.0), segments=12, axis='X')
+    # "Joanna sat down on a chunk of broken concrete" — inside the
+    # haberdashery shell, facing the verses (2026-10-04: it stood
+    # BEHIND the wall from every camera).
+    _mb("Sitting_Block", (41.4, -376.3, 0.245), (0.9, 0.7, 0.45), conc_dk)   # on the tile floor (top 0.02)
+    # Cottage path + gate + herbs: build_shotgun_house_2026_10() lays
+    # the path, the fence, the gate and the herb patch now.
+    # The Minstral's Green: build_minstral_wreck_2026_10() — listed
+    # hull, broken paddlewheel, mud, the doll, the shore.
 
 
 def build_star_night_2026_09():
@@ -4832,29 +4998,36 @@ def build_star_night_2026_09():
     brick_dk = (0.36, 0.26, 0.21, 1.0)
     door_wood = (0.44, 0.34, 0.24, 1.0)
     paper = (0.93, 0.91, 0.85, 1.0)
-    # ── THE CROW · on the I-beam (top z 1.20), the witness ──
-    _mc("Star_Crow_Leg_0", (40.49, -370.01, 1.2025), 0.004, 0.005, crow_black, segments=6)
-    _mc("Star_Crow_Leg_1", (40.51, -369.99, 1.2025), 0.004, 0.005, crow_black, segments=6)
-    _mb("Star_Crow_Body", (40.5, -370.0, 1.236), (0.055, 0.095, 0.062), crow_black)
-    _mb("Star_Crow_Head", (40.5, -370.047, 1.284), (0.036, 0.036, 0.034),
-        (0.12, 0.12, 0.14, 1.0))
-    _mb("Star_Crow_Beak", (40.5, -370.08, 1.276), (0.024, 0.030, 0.012),
-        (0.16, 0.15, 0.14, 1.0))
-    _mb("Star_Crow_Tail", (40.5, -369.9225, 1.245), (0.040, 0.060, 0.014), crow_black)
-    # ── THE DESK-THAT-WAS-A-DOOR-ON-BRICKS · deck, S of cottage ──
-    for bi, bx2 in enumerate((52.0, 53.2)):
-        _mb(f"Desk_Bricks_{bi}", (bx2, -382.4, 0.88), (0.25, 0.35, 0.36), brick_dk)
-    _mb("Desk_Door_Blade", (52.6, -382.4, 1.0825), (1.90, 0.75, 0.045), door_wood)
+    # ── THE CROW · on the I-beam (top z 2.75 since 2026-10-04), the
+    # witness — the real crow kit (_props.creatures.make_crow), not
+    # the six-box sketch: the inserts frame it from 1.8 m.
+    from _props.creatures import make_crow as _make_crow
+    _make_crow("Star_Crow", 40.5, -370.0, 2.75, facing=1.0, scale=1.0)
+    # ── THE DESK-THAT-WAS-A-DOOR-ON-BRICKS · INSIDE the shotgun house
+    # since 2026-10-04 ("She stepped inside ... sat at her small desk"),
+    # under the east window; the house floor's top is z 0.78
+    # (build_shotgun_house_2026_10).
+    F = 0.78
+    dx = 53.83
+    for bi, by2 in enumerate((-381.3, -379.7)):
+        _mb(f"Desk_Bricks_{bi}", (dx, by2, F + 0.18), (0.35, 0.25, 0.36), brick_dk)
+    _mb("Desk_Door_Blade", (dx, -380.5, F + 0.3825), (0.75, 1.90, 0.045), door_wood)
+    _mb("Desk_Crate", (53.10, -380.5, F + 0.21), (0.42, 0.42, 0.42), (0.50, 0.40, 0.28, 1.0))
+    top = F + 0.405
     # ── THE LETTER · "I am ready." — J. LeMoine ──
-    _mb("Offering_Letter", (52.45, -382.3, 1.1065), (0.21, 0.28, 0.003), paper)
-    _mb("Letter_Envelope", (52.95, -382.52, 1.108), (0.22, 0.11, 0.006),
+    _mb("Offering_Letter", (53.74, -380.30, top + 0.0015), (0.21, 0.28, 0.003), paper)
+    _mb("Letter_Envelope", (53.66, -381.12, top + 0.003), (0.22, 0.11, 0.006),
         (0.88, 0.85, 0.78, 1.0))
+    _mc("Writing_Pen", (53.56, -380.62, top + 0.005), 0.005, 0.14,
+        (0.12, 0.12, 0.14, 1.0), axis='Y', segments=6)
+    _mc("Writing_Flashlight", (53.64, -379.86, top + 0.02), 0.02, 0.17,
+        (0.22, 0.22, 0.24, 1.0), axis='X', segments=8)
     # ── THE CANDLE · lit at the desk, blown out at the end ──
-    _mc("Writing_Candle_Holder", (52.15, -382.65, 1.115), 0.050, 0.020,
+    _mc("Writing_Candle_Holder", (54.05, -379.75, top + 0.010), 0.050, 0.020,
         (0.50, 0.44, 0.30, 1.0), segments=10)
-    _mc("Writing_Candle", (52.15, -382.65, 1.195), 0.022, 0.140,
+    _mc("Writing_Candle", (54.05, -379.75, top + 0.090), 0.022, 0.140,
         (0.90, 0.87, 0.78, 1.0), segments=8)
-    _mc("Writing_Candle_Flame", (52.15, -382.65, 1.285), 0.010, 0.040,
+    _mc("Writing_Candle_Flame", (54.05, -379.75, top + 0.180), 0.010, 0.040,
         (1.0, 0.82, 0.42, 1.0), segments=6)
 
 
@@ -4888,9 +5061,13 @@ def build_world_shore_2026_09():
     from _props.geometry import make_box as _mb, make_cyl as _mc
     from human_sculpt import human_figure
     skin = (0.72, 0.54, 0.40, 1.0)
-    # ── THE CHILD · river's edge, east of the hull ──
-    cx2, cy2 = 43.5, -117.0
-    base = max(graustark_elevation(cx2, cy2), 0.05)
+    # ── THE CHILD · river's edge, south of the stern ──
+    # (2026-10-04: was (43.5, -117) on flat dry ground — there was no
+    # river. The slough (SLOUGH_X/Y) is carved east of the hull now; the
+    # Child stands on its mud bank a metre from the water, within the
+    # establishing frame. Heights come from the MESH, the bank slopes.)
+    cx2, cy2 = 39.6, -133.5
+    base = terrain_surface_z(cx2, cy2)
     human_figure("Ruins_Child", base_x=cx2, base_y=cy2, base_z=base,
                  scale=0.62, facing='-Y', body_type='male_avg',
                  skin_color=skin,
@@ -4900,13 +5077,14 @@ def build_world_shore_2026_09():
                  shoe_color=skin)
     _mc("Doohickey_Egg", (cx2, cy2 - 0.20, base + 0.80), 0.035, 0.055,
         (0.06, 0.06, 0.08, 1.0), segments=8)
-    _mc("Child_Crawdad_Hole", (cx2 + 0.5, cy2 - 0.7, base + 0.005), 0.05, 0.010,
+    hx3, hy3 = cx2 + 0.5, cy2 - 0.7
+    _mc("Child_Crawdad_Hole", (hx3, hy3, terrain_surface_z(hx3, hy3) + 0.022), 0.05, 0.010,
         (0.16, 0.12, 0.09, 1.0), segments=8)
-    _mc("Child_Stick", (cx2 + 0.35, cy2 - 0.45, base + 0.02), 0.008, 0.50,
-        (0.40, 0.30, 0.20, 1.0), axis='Y', segments=6)
+    _mc("Child_Stick", (cx2 + 0.35, cy2 - 0.45, terrain_surface_z(cx2 + 0.35, cy2 - 0.45) + 0.025),
+        0.008, 0.50, (0.40, 0.30, 0.20, 1.0), axis='Y', segments=6)
     for fi2, (fx3, fy3) in enumerate(((cx2 - 0.15, cy2 - 0.35),
                                       (cx2 + 0.12, cy2 - 0.42))):
-        _mb(f"Child_Footprint_{fi2}", (fx3, fy3, base + 0.002),
+        _mb(f"Child_Footprint_{fi2}", (fx3, fy3, terrain_surface_z(fx3, fy3) + 0.0165),
             (0.055, 0.095, 0.003), (0.22, 0.17, 0.12, 1.0))
     # ── THE FROG · on the paddlebox top (z 2.30) ──
     frog_green = (0.30, 0.42, 0.28, 1.0)
@@ -4928,10 +5106,13 @@ def build_world_shore_2026_09():
     # inside the Minstral hull bbox and no lens could reach it)
     _mc("Smoke_Ring", (41.9, -123.2, 2.75), 0.14, 0.015,
         (0.85, 0.85, 0.88, 0.35), segments=12)
-    wfz = max(graustark_elevation(42.5, -116.5), 0.05)
-    _mc("Wildflower_Stem", (42.5, -116.5, wfz + 0.09), 0.008, 0.18,
+    # "a single pink wildflower growing at the river's edge" — at the
+    # waterline of the slough's bank now (water z -2.5).
+    wfx, wfy = 40.55, -131.8
+    wfz = terrain_surface_z(wfx, wfy)
+    _mc("Wildflower_Stem", (wfx, wfy, wfz + 0.09), 0.008, 0.18,
         (0.30, 0.44, 0.26, 1.0), segments=6)
-    _mc("Wildflower_Pink", (42.5, -116.5, wfz + 0.19), 0.035, 0.012,
+    _mc("Wildflower_Pink", (wfx, wfy, wfz + 0.19), 0.035, 0.012,
         (0.88, 0.52, 0.62, 1.0), segments=8)
 
 
@@ -4944,9 +5125,635 @@ def build_chalk_wall_2026_09():
     of it; and JOANNA'S NOTEBOOK on the door-desk at the cottage
     ("She sat at her small desk ... and opened the notebook")."""
     from _props.geometry import make_box as _mb
-    _mb("Wall_Chip", (43.84, -375.2, 1.30), (0.02, 0.09, 0.11), (0.42, 0.40, 0.38, 1.0))
-    _mb("Folded_Receipt", (43.826, -375.2, 1.30), (0.006, 0.06, 0.09), (0.86, 0.80, 0.62, 1.0))
-    _mb("Joanna_Notebook", (53.2, -382.2, 1.111), (0.15, 0.20, 0.012), (0.30, 0.26, 0.24, 1.0))
+    # ("a few inches to the right of the chalk" — the viewer faces +x,
+    # so right is -y: just south of the third verse since 2026-10-04)
+    _mb("Wall_Chip", (43.84, -375.35, 1.30), (0.02, 0.09, 0.11), (0.42, 0.40, 0.38, 1.0))
+    _mb("Folded_Receipt", (43.826, -375.35, 1.30), (0.006, 0.06, 0.09), (0.86, 0.80, 0.62, 1.0))
+    # (was Joanna_Notebook: the cue word "joanna" now names HER —
+    # build_shotgun_house_2026_10 stages the figure — so the notebook
+    # carries the cue word "notebook" only.) On the desk, z top 1.185.
+    _mb("Writing_Notebook", (53.97, -380.98, 1.191), (0.15, 0.20, 0.012), (0.30, 0.26, 0.24, 1.0))
+
+
+def _h01(a, b):
+    """Deterministic 0..1 hash (no random.seed games)."""
+    v = math.sin(a * 12.9898 + b * 78.233) * 43758.5453
+    return v - math.floor(v)
+
+
+def build_sinkhole_bowl_2026_10():
+    """THE SINKHOLE, draft 2 (2026-10-04). "At the lip of the sinkhole
+    proper she paused ... The void breathed up at her." Draft 1 was four
+    SOLID capped cylinders, widest on top — from any camera, a raised
+    concrete disc with a lid. Now: the terrain inside the lip drops
+    below the floor (graustark_elevation), and the void is lined with
+    open terraced bands — steep strata faces alternating with rubble
+    ledges, darkening with depth to a black pool — jittered so no ring
+    is a circle. A flat apron covers the coarse grid's dip outside the
+    lip; broken pavement slides in over the edge; a chain fence the
+    town gave up on stands back from it.
+
+    Draft N+1: the "phantom brass band" — a faint practical deep in the
+    gut for the night moods; debris on the ledges (a car, a sign)."""
+    from _props.geometry import (_finalize_mesh as _fm, make_box as _mb,
+                                 make_rot_box as _mrb, make_cyl as _mc)
+    segs = 44
+    prof = [(35.5, 0.03), (34.4, -1.6), (31.0, -2.3), (29.0, -6.4), (25.5, -7.0),
+            (23.0, -11.8), (19.5, -12.6), (17.0, -16.8), (13.0, -17.6),
+            (10.5, -21.0), (8.0, -22.0)]
+    rings = []
+    for k, (r, z) in enumerate(prof):
+        ring = []
+        for sgi in range(segs):
+            th = 2.0 * math.pi * sgi / segs
+            if k == 0:
+                rr, zz = r + _h01(k, sgi) * 1.0, z
+            else:
+                rr = r + (_h01(k, sgi) - 0.5) * 1.6
+                zz = z + (_h01(k + 31, sgi) - 0.5) * 0.5
+            ring.append((SINK_X + rr * math.cos(th), SINK_Y + rr * math.sin(th), zz))
+        rings.append(ring)
+    nb = len(rings) - 1
+    for k in range(nb):
+        outer, inner = rings[k], rings[k + 1]
+        faces = [[sgi, (sgi + 1) % segs, segs + (sgi + 1) % segs, segs + sgi]
+                 for sgi in range(segs)]          # outer→inner: faces up/in
+        t = k / float(nb - 1)
+        base = (0.40, 0.37, 0.32) if k % 2 == 0 else (0.50, 0.47, 0.40)
+        col = tuple(base[c] * (1.0 - 0.80 * t) + 0.02 for c in range(3)) + (1.0,)
+        _fm(f"Sinkhole_Band_{k}", outer + inner, faces, col)
+    inner = rings[-1]
+    _fm("Sinkhole_Floor", [(SINK_X, SINK_Y, -22.3)] + inner,
+        [[0, 1 + sgi, 1 + (sgi + 1) % segs] for sgi in range(segs)],
+        (0.05, 0.05, 0.06, 1.0))
+    # The apron: flat ground over the 6 m grid's dip just outside the lip
+    ap_out = [(SINK_X + 44.0 * math.cos(2.0 * math.pi * sgi / segs),
+               SINK_Y + 44.0 * math.sin(2.0 * math.pi * sgi / segs), 0.02) for sgi in range(segs)]
+    ap_in = [(x, y, 0.02) for (x, y, _z) in rings[0]]
+    _fm("Sinkhole_Apron", ap_out + ap_in,
+        [[sgi, (sgi + 1) % segs, segs + (sgi + 1) % segs, segs + sgi] for sgi in range(segs)],
+        (0.47, 0.44, 0.38, 1.0))
+    # Broken pavement sliding in over the edge (outer end up on the apron)
+    conc = (0.52, 0.50, 0.46, 1.0)
+    for di, th in enumerate((-2.45, -2.02, -1.62, -1.22, -0.80, -0.42, 0.90, 2.30)):
+        _mrb(f"Sinkhole_Slab_{di}", (SINK_X + 34.6 * math.cos(th), SINK_Y + 34.6 * math.sin(th), -0.55),
+             (3.2, 2.2, 0.24), conc if di % 2 else (0.44, 0.42, 0.38, 1.0), yaw=th, pitch=-0.42)
+    # The fence the town gave up on — r 42.5, the cameras' side
+    post_col = (0.46, 0.46, 0.44, 1.0)
+    ths = [-2.30 + 0.15 * i for i in range(11)]
+    pts = [(SINK_X + 42.5 * math.cos(t), SINK_Y + 42.5 * math.sin(t)) for t in ths]
+    for pi_, (px, py) in enumerate(pts):
+        _mc(f"Sinkhole_Fence_Post_{pi_}", (px, py, 0.92), 0.03, 1.80, post_col, segments=6)
+    for wi in range(len(pts) - 1):
+        if wi in (3, 7):
+            continue                       # cut sections — people go through
+        (ax, ay), (bx, by) = pts[wi], pts[wi + 1]
+        ln = math.hypot(bx - ax, by - ay) - 0.07
+        yaw = math.atan2(by - ay, bx - ax)
+        for zi, wz in enumerate((0.45, 1.05, 1.70)):
+            _mrb(f"Sinkhole_Fence_Wire_{wi}_{zi}", ((ax + bx) / 2.0, (ay + by) / 2.0, wz),
+                 (ln, 0.012, 0.012), post_col, yaw=yaw)
+    sx_, sy_ = pts[5]
+    _mb("Sinkhole_Sign", (sx_, sy_ - 0.05, 1.30), (0.62, 0.03, 0.44), (0.88, 0.86, 0.80, 1.0))
+    _mb("Sinkhole_Sign_Band", (sx_, sy_ - 0.0675, 1.43), (0.62, 0.005, 0.12), (0.72, 0.18, 0.14, 1.0))
+
+
+def _verse_lines(prefix, y_left, z_top, n_lines, width, col, seed, x_face=43.85):
+    """Lines of handwritten words on the chalked wall's west face: each
+    word a short stroke, read left → right (the viewer faces +x, so
+    left is +y). The verses were two pale rectangles until 2026-10-04."""
+    from _props.geometry import make_box as _mb
+    for li in range(n_lines):
+        z = z_top - li * 0.085
+        line_w = width * (0.55 + 0.45 * _h01(seed, li))
+        if li == n_lines - 1:
+            line_w *= 0.6
+        yy, wi = y_left, 0
+        while True:
+            wl = 0.04 + 0.16 * _h01(seed + 7, li * 13 + wi)
+            if (y_left - yy) + wl > line_w:
+                break
+            _mb(f"{prefix}_L{li}_W{wi}", (x_face - 0.004, yy - wl / 2.0, z),
+                (0.006, wl, 0.022 + 0.008 * _h01(seed + 3, wi)), col)
+            yy -= wl + 0.035
+            wi += 1
+
+
+def build_haberdashery_2026_10():
+    """THE HABERDASHERY (2026-10-04) — "a relatively smooth section of
+    wall inside the gutted shell of what might have been a haberdashery
+    — or maybe the small library". Draft 1 had the wall alone: a grey
+    slab with two pale rectangles, seen from a field. Now the wall is the
+    east wall of a gutted shop: a checker floor with tiles gone, a north
+    wall broken down to knee height where the I-beam crosses it, a south
+    wall with an empty window and a doorway "that opened onto nothing",
+    the west wall fallen into a heap (the camera stands in the gap); the
+    shop's leavings (the display counter, a hat block, spools, a crushed
+    hat, the fallen hat stand); and the WRITING: Hermit's three chalk
+    verses (the third her own), the Star's charcoal verses, older
+    washed-out chalk, the chip with the receipt to the right of the
+    chalk. Joanna's place — the concrete block she sits on — carries her
+    satchel, flashlight, chalk nubs, charcoal, the stolen lipstick.
+
+    Draft N+1: the cat and Rumpus (no creature kit for them yet); chalk
+    dust on the floor at the wall foot as a pale smear; the shop sign."""
+    from _props.geometry import make_box as _mb, make_cyl as _mc, make_rot_box as _mrb
+    brick = (0.48, 0.36, 0.29, 1.0)
+    brick_dk = (0.40, 0.30, 0.24, 1.0)
+    tile_a, tile_b = (0.62, 0.60, 0.55, 1.0), (0.34, 0.29, 0.25, 1.0)
+    FT = 0.02                                   # tile top
+    # ── the checker floor, tiles missing ──
+    skip_fp = [(40.25, 40.75, -375.25, -374.75)]     # the I-beam's south pier
+    for i in range(12):
+        for j in range(13):
+            x0, y0 = 36.6 + i * 0.6, -377.95 + j * 0.6
+            x1, y1 = x0 + 0.6, y0 + 0.6
+            if any(x0 < b and x1 > a and y0 < d and y1 > c for (a, b, c, d) in skip_fp):
+                continue
+            gone = _h01(i * 3 + 1, j * 7 + 2)
+            if gone < (0.40 if i < 2 else 0.16):
+                continue
+            _mb(f"Haberdash_Tile_{i}_{j}", (x0 + 0.3, y0 + 0.3, FT / 2.0), (0.59, 0.59, FT),
+                tile_a if (i + j) % 2 == 0 else tile_b)
+    # ── north wall: broken low where the beam crosses, tall at the corner ──
+    for wi_, (xa, xb, h) in enumerate(((36.9, 39.2, 0.90), (39.2, 41.6, 1.25), (41.6, 43.85, 3.10))):
+        _mb(f"Haberdash_Wall_N_{wi_}", ((xa + xb) / 2.0, -369.9, h / 2.0), (xb - xa, 0.30, h),
+            brick if wi_ != 1 else brick_dk)
+    # ── south wall: stub, an empty window, the doorway onto nothing ──
+    ys = -378.15
+    _mb("Haberdash_Wall_S_Stub", (37.5, ys, 0.55), (1.0, 0.30, 1.10), brick_dk)
+    _mb("Haberdash_Wall_S_0_Pier_W", (38.3, ys, 1.35), (0.6, 0.30, 2.70), brick)
+    _mb("Haberdash_Wall_S_0_Spandrel", (39.1, ys, 0.50), (1.0, 0.30, 1.00), brick)
+    _mb("Haberdash_Wall_S_0_Lintel", (39.1, ys, 2.45), (1.0, 0.30, 0.50), brick)
+    _mb("Haberdash_Wall_S_0_Pier_E", (39.9, ys, 1.35), (0.6, 0.30, 2.70), brick)
+    for jx in (40.26, 41.34):
+        _mb(f"Haberdash_Doorway_Jamb_{jx:.2f}", (jx, ys, 1.10), (0.12, 0.30, 2.20), brick_dk)
+    _mb("Haberdash_Doorway_Lintel", (40.80, ys, 2.325), (1.20, 0.30, 0.25), brick_dk)
+    _mb("Haberdash_Wall_S_2", (42.625, ys, 1.70), (2.45, 0.30, 3.40), brick)
+    # ── the west wall, fallen into a heap ──
+    for hi_, (hx, hy, sx_, sy_, sz_, yaw, rl) in enumerate((
+            (36.3, -376.4, 1.3, 0.9, 0.55, 0.3, 0.10), (36.6, -374.6, 1.0, 1.4, 0.45, -0.2, 0.0),
+            (36.2, -372.9, 1.5, 0.8, 0.70, 0.5, -0.12), (36.8, -371.3, 0.8, 0.7, 0.35, 0.1, 0.0))):
+        _mrb(f"Haberdash_Heap_{hi_}", (hx, hy, sz_ / 2.0), (sx_, sy_, sz_), brick_dk if hi_ % 2 else brick,
+             yaw=yaw, roll=rl)
+    # ── the shop's leavings ──
+    wood = (0.40, 0.30, 0.22, 1.0)
+    _mb("Haberdash_Counter", (42.6, -377.60, FT + 0.475), (1.6, 0.55, 0.95), wood)
+    _mb("Haberdash_Counter_Glass", (42.95, -377.60, FT + 0.955), (0.80, 0.50, 0.01), (0.74, 0.80, 0.80, 0.30))
+    _mc("Haberdash_HatBlock", (42.15, -377.60, FT + 0.95 + 0.11), 0.10, 0.22, (0.62, 0.50, 0.36, 1.0), segments=10)
+    for spi, (spx, spy) in enumerate(((39.0, -374.2), (39.6, -373.1), (41.9, -372.6), (38.3, -376.0), (42.8, -376.4))):
+        _mc(f"Haberdash_Spool_{spi}", (spx, spy, FT + 0.025), 0.025, 0.045,
+            ((0.62, 0.20, 0.20, 1.0), (0.22, 0.30, 0.52, 1.0), (0.76, 0.70, 0.40, 1.0))[spi % 3],
+            axis='X', segments=8)
+    _mc("Haberdash_HatStand_Pole", (38.7, -373.4, FT + 0.02), 0.02, 1.6, wood, axis='Y', segments=6)
+    _mc("Haberdash_HatStand_Foot", (38.7, -374.35, FT + 0.015), 0.16, 0.03, wood, segments=10)
+    _mc("Haberdash_Hat_Brim", (39.5, -376.9, FT + 0.0075), 0.17, 0.015, (0.20, 0.18, 0.16, 1.0), segments=12)
+    _mc("Haberdash_Hat_Crown", (39.5, -376.9, FT + 0.015 + 0.04), 0.10, 0.08, (0.22, 0.20, 0.18, 1.0), segments=10)
+    for di, (dx_, dy_, w_, d_, t_) in enumerate(((38.2, -372.0, 1.4, 0.9, 0.12), (42.6, -371.4, 0.8, 1.1, 0.10))):
+        _mb(f"Haberdash_Debris_{di}", (dx_, dy_, FT + t_ / 2.0), (w_, d_, t_), (0.50, 0.48, 0.44, 1.0))
+    # ── Joanna's place: the block, and what her pockets yield ──
+    bt = FT + 0.45                                    # Sitting_Block top
+    _mb("Joanna_Satchel", (41.40, -375.89, FT + 0.125), (0.32, 0.12, 0.25), (0.34, 0.33, 0.24, 1.0))
+    _mc("Joanna_Flashlight", (41.18, -376.40, bt + 0.02), 0.02, 0.17, (0.22, 0.22, 0.24, 1.0), axis='Y', segments=8)
+    for ci_, (ox, oy) in enumerate(((0.10, -0.12), (0.18, -0.05), (0.24, -0.16))):
+        _mb(f"Joanna_Chalk_Nub_{ci_}", (41.40 + ox, -376.30 + oy, bt + 0.006), (0.012, 0.032, 0.012),
+            (0.88, 0.87, 0.82, 1.0))
+    _mb("Joanna_Charcoal", (41.62, -376.42, bt + 0.007), (0.018, 0.05, 0.014), (0.07, 0.07, 0.07, 1.0))
+    _mc("Joanna_Lipstick", (41.30, -376.12, bt + 0.009), 0.009, 0.05, (0.62, 0.12, 0.18, 1.0), axis='X', segments=8)
+    _mc("Chalk_Tin", (43.60, -374.30, FT + 0.04), 0.06, 0.08, (0.50, 0.48, 0.46, 1.0), segments=10)
+    # ── THE WRITING (left = north). Charcoal: the Star's verses ──
+    char = (0.08, 0.08, 0.08, 1.0)
+    chalk = (0.88, 0.87, 0.82, 1.0)
+    faint = (0.66, 0.65, 0.61, 1.0)
+    _verse_lines("Charcoal_Verse_A", -370.60, 2.35, 8, 1.50, char, 11)
+    _verse_lines("Charcoal_Verse_B", -370.60, 1.55, 6, 1.40, char, 23)
+    _verse_lines("Charcoal_Verse_C", -372.35, 1.15, 5, 1.20, char, 37)
+    # chalk: the Hermit's two downloaded verses and her own third
+    _verse_lines("Chalk_Verse_1", -373.90, 2.35, 6, 1.15, chalk, 41)
+    _verse_lines("Chalk_Verse_2", -373.90, 1.80, 5, 1.15, chalk, 53)
+    _verse_lines("Chalk_Verse_3", -373.90, 1.30, 4, 1.10, chalk, 67)
+    # older chalk, washed by rain
+    _verse_lines("Chalk_Old_1", -375.80, 2.20, 5, 1.40, faint, 71)
+    _verse_lines("Chalk_Old_2", -376.20, 1.35, 4, 1.30, faint, 83)
+
+
+def _wall_run(prefix, axis, fixed, a0, a1, z0, z1, thick, openings, col):
+    """A wall from z0 to z1 with openings [(centre_along, sill_above_z0,
+    width, height)] cut as piers / spandrels / lintels (make_wall_with_
+    openings, but standing on a raised floor)."""
+    from _props.geometry import make_box as _mb
+
+    def seg(nm, b0, b1, c0, c1):
+        if b1 - b0 <= 0.005 or c1 - c0 <= 0.005:
+            return
+        mid, ln, zc, hh = (b0 + b1) / 2.0, b1 - b0, (c0 + c1) / 2.0, c1 - c0
+        if axis == 'X':
+            _mb(nm, (mid, fixed, zc), (ln, thick, hh), col)
+        else:
+            _mb(nm, (fixed, mid, zc), (thick, ln, hh), col)
+    cur = a0
+    cuts = sorted(openings)
+    for i, (oc, sill, ow, oh) in enumerate(cuts):
+        b0, b1 = oc - ow / 2.0, oc + ow / 2.0
+        seg(f"{prefix}_Pier_{i}", cur, b0, z0, z1)
+        seg(f"{prefix}_Spandrel_{i}", b0, b1, z0, z0 + sill)
+        seg(f"{prefix}_Lintel_{i}", b0, b1, z0 + sill + oh, z1)
+        cur = b1
+    seg(f"{prefix}_Pier_{len(cuts)}", cur, a1, z0, z1)
+
+
+def _window_set(prefix, axis, fixed, centre, z_sill, w, h, depth):
+    """Frame (sill, head, jambs, muntin) + a glass pane in an opening."""
+    from _props.geometry import make_box as _mb
+    fr = (0.84, 0.82, 0.74, 1.0)
+    bw = 0.05
+    def box(nm, along, z, la, lz, d=depth):
+        if axis == 'Y':
+            _mb(nm, (fixed, along, z), (d, la, lz), fr)
+        else:
+            _mb(nm, (along, fixed, z), (la, d, lz), fr)
+    box(f"{prefix}_Frame_Sill", centre, z_sill + bw / 2.0, w, bw)
+    box(f"{prefix}_Frame_Head", centre, z_sill + h - bw / 2.0, w, bw)
+    for sgn in (-1, 1):
+        box(f"{prefix}_Frame_Jamb_{'L' if sgn < 0 else 'R'}", centre + sgn * (w / 2.0 - bw / 2.0),
+            z_sill + h / 2.0, bw, h - 2 * bw)
+    box(f"{prefix}_Frame_Muntin", centre, z_sill + h / 2.0, 0.035, h - 2 * bw, d=0.04)
+    glass = (0.78, 0.84, 0.86, 0.25)
+    if axis == 'Y':
+        _mb(f"{prefix}_Pane", (fixed, centre, z_sill + h / 2.0), (0.008, w - 2 * bw, h - 2 * bw), glass)
+    else:
+        _mb(f"{prefix}_Pane", (centre, fixed, z_sill + h / 2.0), (w - 2 * bw, 0.008, h - 2 * bw), glass)
+
+
+def _crate_shelf(prefix, x_back, y, z0, w=0.45, d=0.32, h=0.35, col=(0.56, 0.44, 0.30, 1.0), seed=0):
+    """An open fruit crate on its side against a west wall (opening +x),
+    books standing in it."""
+    from _props.geometry import make_box as _mb
+    t = 0.018
+    xc = x_back + d / 2.0
+    _mb(f"{prefix}_Back", (x_back + t / 2.0, y, z0 + h / 2.0), (t, w, h), col)
+    _mb(f"{prefix}_Bottom", (xc + t / 2.0, y, z0 + t / 2.0), (d - t, w, t), col)
+    _mb(f"{prefix}_Top", (xc + t / 2.0, y, z0 + h - t / 2.0), (d - t, w, t), col)
+    for sgn in (-1, 1):
+        _mb(f"{prefix}_Side_{'S' if sgn < 0 else 'N'}", (xc + t / 2.0, y + sgn * (w / 2.0 - t / 2.0), z0 + h / 2.0 ),
+            (d - t, t, h - 2 * t), col)
+    yy = y - w / 2.0 + t + 0.01
+    bi = 0
+    pal = ((0.46, 0.18, 0.16), (0.20, 0.28, 0.40), (0.66, 0.60, 0.44), (0.24, 0.34, 0.24), (0.52, 0.40, 0.22))
+    while True:
+        bw = 0.025 + 0.03 * _h01(seed, bi)
+        if yy + bw > y + w / 2.0 - t - 0.01:
+            break
+        bh = (h - 2 * t) * (0.62 + 0.30 * _h01(seed + 5, bi))
+        bd = 0.15 + 0.07 * _h01(seed + 9, bi)
+        _mb(f"{prefix}_Book_{bi}", (x_back + t + bd / 2.0, yy + bw / 2.0, z0 + t + bh / 2.0),
+            (bd, bw, bh), pal[bi % 5] + (1.0,))
+        yy += bw + 0.004
+        bi += 1
+
+
+def build_shotgun_house_2026_10():
+    """JOANNA'S PATCHED SHOTGUN HOUSE (2026-10-04) — "the back half of
+    what had been a small shotgun house, the front half of which had
+    folded into the void in 2021 and which Joanna had patched, with
+    Philip Roberts's help one weekend, into something almost
+    weatherproof." Draft 1 was the lighthouse keeper's 4x4 stucco box on
+    a pile platform over open water, and her desk stood outside on the
+    deck.
+
+    The back half, raised on brick piers: clapboard gone grey-green, a
+    tin gable roof with a new sheet and a blue tarp where it was
+    patched, the torn north end closed with three mismatched plywood
+    panels under the tarp, floor joists still jutting where the front
+    rooms were. The back door (south) with two steps, the flagstone path
+    she laid herself, a salvaged picket fence and the gate the man in
+    the charcoal suit paused at; her herb patch, newly planted; the
+    clothesline; the rain barrel; Rumpus asleep in the sun.
+
+    Inside (the Hermit's and the Star's closing scenes): her desk — a
+    door on two stacks of bricks — under the east window with the
+    candle, letter, envelope, pen, notebook and the failing flashlight;
+    her poems pinned round the window; the mattress on a pallet against
+    the plywood wall; a crate bookshelf; the candle niche beside the
+    door; her old D'Ambrosio's apron on a hook; the crow's gifts on the
+    west sill — the key that fits no lock, two bottle caps, a button.
+
+    Draft N+1: the porch-light question (none — the candle is the only
+    light, keep it that way); a cat; the crow on the patched roof
+    (ch9/ch21 — the beam crow is the one bird for now); curtains."""
+    from _props.geometry import (make_box as _mb, make_cyl as _mc, make_rot_box as _mrb,
+                                 make_gable as _mg, make_blob as _mbl, make_taper_cyl as _mtc)
+    X0, X1, Y0, Y1 = 50.6, 54.4, -383.5, -377.0
+    F, H, T = 0.78, 2.9, 0.12
+    WT = F + H
+    siding = (0.60, 0.65, 0.60, 1.0)
+    skin = (0.72, 0.66, 0.54, 1.0)
+    brick = (0.50, 0.32, 0.26, 1.0)
+    # ── on brick piers ──
+    for pi_, px in enumerate((50.85, 52.5, 54.15)):
+        for pj, py in enumerate((-383.25, -380.25, -377.25)):
+            _mb(f"Shotgun_Foundation_Pier_{pi_}{pj}", (px, py, 0.35), (0.35, 0.35, 0.70), brick)
+    _mb("Shotgun_Floor", ((X0 + X1) / 2.0, (Y0 + Y1) / 2.0, F - 0.04), (X1 - X0, Y1 - Y0, 0.08),
+        (0.46, 0.36, 0.26, 1.0))
+    # ── walls (exterior) + interior panels, the same openings ──
+    win_w = (-381.2, 0.95, 0.85, 1.25)
+    win_e = (-380.5, 0.95, 0.95, 1.25)
+    door = (51.55, 0.0, 0.92, 2.08)
+    win_s = (53.45, 0.95, 0.80, 1.25)
+    _wall_run("Shotgun_Wall_W", 'Y', X0 + T / 2.0, Y0, Y1, F, WT, T, [win_w], siding)
+    _wall_run("Shotgun_Wall_E", 'Y', X1 - T / 2.0, Y0, Y1, F, WT, T, [win_e], siding)
+    _wall_run("Shotgun_Wall_S", 'X', Y0 + T / 2.0, X0 + T, X1 - T, F, WT, T, [door, win_s], siding)
+    PS = 0.012
+    _wall_run("Shotgun_Panel_W", 'Y', X0 + T + PS / 2.0, Y0 + T, Y1 - T, F, WT - 0.06, PS, [win_w], skin)
+    _wall_run("Shotgun_Panel_E", 'Y', X1 - T - PS / 2.0, Y0 + T, Y1 - T, F, WT - 0.06, PS, [win_e], skin)
+    _wall_run("Shotgun_Panel_S", 'X', Y0 + T + PS / 2.0, X0 + T + PS, X1 - T - PS, F, WT - 0.06, PS,
+              [door, win_s], skin)
+    # the torn north end: three mismatched plywood panels, battens, tarp
+    for pi_, (xa, xb, col) in enumerate(((X0 + T, 51.90, (0.66, 0.54, 0.36, 1.0)),
+                                         (51.90, 53.10, (0.58, 0.50, 0.40, 1.0)),
+                                         (53.10, X1 - T, (0.70, 0.60, 0.42, 1.0)))):
+        # (named for the cue word: "insert cottage" frames the patch)
+        _mb(f"Shotgun_Cottage_Wall_N_Ply_{pi_}", ((xa + xb) / 2.0, Y1 - T / 2.0, F + H / 2.0), (xb - xa, T, H), col)
+    for bi, bx in enumerate((51.90, 53.10)):
+        _mb(f"Shotgun_Wall_N_Batten_{bi}", (bx, Y1 + 0.01, F + (H - 0.9) / 2.0), (0.06, 0.02, H - 0.9),
+            (0.52, 0.44, 0.34, 1.0))
+    _mb("Shotgun_Wall_N_Tarp", (52.5, Y1 + 0.005, WT - 0.45), (X1 - X0 - 0.10, 0.01, 0.90),
+        (0.22, 0.36, 0.58, 1.0))
+    # torn stubs of the side walls + the floor joists where the front rooms were
+    for sgn, wx in ((-1, X0 + T / 2.0), (1, X1 - T / 2.0)):
+        _mb(f"Shotgun_Wall_{'W' if sgn < 0 else 'E'}_Torn", (wx, Y1 + 0.25, F + 0.65), (T, 0.50, 1.30), siding)
+    for ji, jx in enumerate((51.15, 51.85, 52.55, 53.25, 53.95)):
+        ln = 0.45 + 0.5 * _h01(ji, 5)
+        _mb(f"Shotgun_Joist_{ji}", (jx, Y1 + ln / 2.0, F - 0.14), (0.05, ln, 0.20), (0.40, 0.32, 0.24, 1.0))
+    _mb("Shotgun_Ceiling", ((X0 + X1) / 2.0, (Y0 + Y1) / 2.0, WT - 0.03), (X1 - X0 - 2 * T, Y1 - Y0 - 2 * T, 0.06),
+        (0.80, 0.76, 0.66, 1.0))
+    # ── gable + tin roof, patched ──
+    _mg("Shotgun_Gable", ((X0 + X1) / 2.0, (Y0 + Y1) / 2.0, WT + 0.70), (X1 - X0, Y1 - Y0, 1.40), siding,
+        ridge_axis='Y')
+    a = math.atan2(1.40, (X1 - X0) / 2.0)
+    run = (X1 - X0) / 2.0 + 0.35
+    slope = run / math.cos(a)
+    ridge_z = WT + 1.40
+    tin = (0.50, 0.42, 0.36, 1.0)
+    for sgn in (-1, 1):
+        cxr = 52.5 + sgn * run / 2.0 + sgn * math.sin(a) * 0.035
+        czr = ridge_z - (run / 2.0) * math.tan(a) + math.cos(a) * 0.035
+        _mrb(f"Shotgun_Roof_{'W' if sgn < 0 else 'E'}", (cxr, (Y0 + Y1) / 2.0, czr),
+             (slope, Y1 - Y0 + 0.60, 0.05), tin, pitch=sgn * a)
+    _mb("Shotgun_Roof_Ridge", (52.5, (Y0 + Y1) / 2.0, ridge_z + 0.07), (0.24, Y1 - Y0 + 0.60, 0.06),
+        (0.42, 0.36, 0.30, 1.0))
+
+    def on_slope(sgn, d, off):
+        return (52.5 + sgn * (d * math.cos(a) + math.sin(a) * off), ridge_z - d * math.sin(a) + math.cos(a) * off)
+    px_, pz_ = on_slope(1, 1.25, 0.075)
+    _mrb("Shotgun_Roof_Patch_Tin", (px_, -378.3, pz_), (1.5, 2.2, 0.025), (0.70, 0.72, 0.72, 1.0), pitch=a)
+    px_, pz_ = on_slope(-1, 1.05, 0.070)
+    _mrb("Shotgun_Roof_Patch_Tarp", (px_, -377.75, pz_), (2.0, 1.6, 0.02), (0.22, 0.36, 0.58, 1.0), pitch=-a)
+    # ── windows ──
+    _window_set("Shotgun_Win_W", 'Y', X0 + T / 2.0, win_w[0], F + win_w[1], win_w[2], win_w[3], T)
+    _window_set("Shotgun_Win_E", 'Y', X1 - T / 2.0, win_e[0], F + win_e[1], win_e[2], win_e[3], T)
+    _window_set("Shotgun_Win_S", 'X', Y0 + T / 2.0, win_s[0], F + win_s[1], win_s[2], win_s[3], T)
+    _mb("Shotgun_Win_W_Board", (X0 - 0.015, win_w[0], F + win_w[1] + 0.40), (0.03, win_w[2] + 0.24, 0.18),
+        (0.56, 0.48, 0.36, 1.0))
+    # the crow's gifts on the west window's inner sill
+    stool_z = F + win_w[1] + 0.05 + 0.015
+    _mb("Shotgun_Win_W_Stool", (X0 + T + 0.07, win_w[0], stool_z), (0.14, win_w[2] + 0.06, 0.03), (0.80, 0.78, 0.70, 1.0))
+    st = stool_z + 0.015
+    _mb("Crow_Gift_Key", (X0 + T + 0.08, win_w[0] - 0.22, st + 0.002), (0.022, 0.055, 0.004), (0.70, 0.62, 0.36, 1.0))
+    for ci_, cy_ in enumerate((-381.05, -380.98)):
+        _mc(f"Crow_Gift_Cap_{ci_}", (X0 + T + 0.07, cy_, st + 0.003), 0.014, 0.006, (0.74, 0.70, 0.62, 1.0), segments=10)
+    _mc("Crow_Gift_Button", (X0 + T + 0.10, win_w[0] + 0.16, st + 0.003), 0.010, 0.005, (0.24, 0.40, 0.70, 1.0), segments=8)
+    # ── the back door, open into the room; casing; steps ──
+    jw = door[0] - door[2] / 2.0
+    _mb("Shotgun_Door_Leaf", (jw + 0.025, Y0 + T + 0.47, F + 1.02), (0.04, 0.88, 2.04), (0.46, 0.38, 0.28, 1.0))
+    for jx in (jw - 0.05, door[0] + door[2] / 2.0 + 0.05):
+        _mb(f"Shotgun_Door_Casing_{jx:.2f}", (jx, Y0 - 0.0125, F + 1.065), (0.10, 0.025, 2.13), (0.80, 0.78, 0.70, 1.0))
+    _mb("Shotgun_Door_Casing_Head", (door[0], Y0 - 0.0125, F + door[3] + 0.06), (door[2] + 0.20, 0.025, 0.12),
+        (0.80, 0.78, 0.70, 1.0))
+    _mb("Shotgun_Step_Upper", (door[0], Y0 - 0.175, 0.26), (1.10, 0.35, 0.52), (0.46, 0.44, 0.40, 1.0))
+    _mb("Shotgun_Step_Lower", (door[0], Y0 - 0.525, 0.13), (1.10, 0.35, 0.26), (0.46, 0.44, 0.40, 1.0))
+    # ── inside ──
+    pin = X0 + T + PS                                 # west panel face 50.732
+    pie = X1 - T - PS                                 # east panel face 54.268
+    _mb("Shotgun_Rug", (52.5, -381.0, F + 0.004), (1.30, 2.20, 0.008), (0.54, 0.30, 0.26, 1.0))
+    _mb("Shotgun_Bed_Pallet", (51.22, -378.10, F + 0.07), (0.95, 1.95, 0.14), (0.62, 0.52, 0.38, 1.0))
+    _mb("Shotgun_Mattress", (51.22, -378.12, F + 0.14 + 0.08), (0.92, 1.90, 0.16), (0.82, 0.80, 0.72, 1.0))
+    mt = F + 0.30
+    _mb("Shotgun_Quilt", (51.22, -378.62, mt + 0.015), (0.94, 1.30, 0.03), (0.50, 0.40, 0.56, 1.0))
+    _mb("Shotgun_Pillow", (51.22, -377.42, mt + 0.06), (0.50, 0.30, 0.12), (0.86, 0.84, 0.78, 1.0))
+    for ci_, cyy in enumerate((-380.45, -379.95)):
+        for k in range(3):
+            _crate_shelf(f"Shotgun_Crate_{ci_}{k}", pin, cyy, F + 0.35 * k, seed=ci_ * 10 + k)
+    for ji, jy in enumerate((-380.58, -380.45, -380.30)):
+        _mc(f"Shotgun_Herb_Jar_{ji}", (50.92, jy, F + 1.05 + 0.06), 0.04, 0.12, (0.70, 0.74, 0.62, 0.55), segments=10)
+    _mb("Shotgun_Niche_Shelf", (52.52, Y0 + T + PS + 0.06, F + 1.25), (0.45, 0.12, 0.025), (0.56, 0.46, 0.34, 1.0))
+    _mc("Shotgun_Niche_Candle", (52.42, Y0 + T + PS + 0.06, F + 1.2625 + 0.04), 0.02, 0.08, (0.90, 0.87, 0.78, 1.0), segments=8)
+    _mb("Shotgun_Niche_Matches", (52.64, Y0 + T + PS + 0.06, F + 1.2625 + 0.008), (0.05, 0.035, 0.016), (0.70, 0.30, 0.20, 1.0))
+    _mc("Shotgun_Apron_Hook", (pin + 0.02, -382.70, F + 1.77), 0.008, 0.04, (0.30, 0.30, 0.30, 1.0), axis='X', segments=6)
+    _mb("DAmbrosio_Apron", (pin + 0.01, -382.70, F + 1.45), (0.02, 0.36, 0.60), (0.24, 0.34, 0.30, 1.0))
+    _mc("Shotgun_Dog_Bed", (52.25, -382.60, F + 0.05), 0.36, 0.10, (0.52, 0.42, 0.32, 1.0), segments=12)
+    _mc("Shotgun_Water_Jug", (53.20, -383.05, F + 0.15), 0.10, 0.30, (0.70, 0.76, 0.78, 0.6), segments=10)
+    for pi_, (py, pz) in enumerate(((-381.40, 2.05), (-381.72, 2.30), (-379.60, 2.10), (-379.28, 2.36),
+                                    (-380.50, 3.30))):
+        _mb(f"Shotgun_Poem_{pi_}", (pie - 0.002, py, F + pz - 0.78), (0.004, 0.21, 0.28),
+            (0.92, 0.90, 0.84, 1.0))
+    # ── the yard: path, fence, gate, herbs, line, barrel, Rumpus ──
+    for fi, (fy, fw, fd, fxj) in enumerate(((-388.05, 0.62, 0.50, -0.06), (-387.30, 0.55, 0.46, 0.05),
+                                           (-386.58, 0.60, 0.52, -0.02), (-385.84, 0.52, 0.44, 0.07),
+                                           (-385.12, 0.58, 0.48, -0.04), (-384.47, 0.56, 0.40, 0.02))):
+        _mb(f"Flagstone_{fi}", (door[0] + fxj, fy, 0.015), (fw, fd, 0.03), (0.58, 0.56, 0.50, 1.0))
+    fy0 = -388.40
+    fence_w = (0.84, 0.82, 0.76, 1.0)
+    posts = (45.0, 46.9, 48.8, 50.95, 52.15, 54.10, 56.0, 57.6)
+    for px in posts:
+        _mb(f"Yard_Fence_Post_{px:.2f}", (px, fy0, 0.575), (0.09, 0.09, 1.15), (0.50, 0.42, 0.32, 1.0))
+    for a_, b_ in zip(posts, posts[1:]):
+        if (a_, b_) == (50.95, 52.15):
+            continue                                  # the gate
+        if a_ >= 54.10:                               # wire section
+            for zi, wz in enumerate((0.45, 0.90)):
+                _mb(f"Yard_Fence_Wire_{a_:.1f}_{zi}", ((a_ + b_) / 2.0, fy0, wz), (b_ - a_ - 0.09, 0.008, 0.008),
+                    (0.40, 0.40, 0.40, 1.0))
+            continue
+        for zi, rz in enumerate((0.30, 0.85)):
+            _mb(f"Yard_Fence_Rail_{a_:.1f}_{zi}", ((a_ + b_) / 2.0, fy0, rz), (b_ - a_ - 0.09, 0.05, 0.07), fence_w)
+        xx, k = a_ + 0.12, 0
+        while xx < b_ - 0.10:
+            k += 1
+            if _h01(xx, 3) > 0.12:
+                _mb(f"Yard_Fence_Picket_{a_:.1f}_{k}", (xx, fy0 - 0.035, 0.53), (0.07, 0.02, 1.0),
+                    (fence_w, (0.78, 0.74, 0.62, 1.0), (0.70, 0.72, 0.70, 1.0))[int(_h01(k, xx) * 3) % 3])
+            xx += 0.14
+    for py in (-386.5, -384.5, -382.5, -380.5, -378.5, -377.0):
+        _mb(f"Yard_Fence_E_Post_{py:.1f}", (57.6, py, 0.575), (0.09, 0.09, 1.15), (0.50, 0.42, 0.32, 1.0))
+    eps = (fy0, -386.5, -384.5, -382.5, -380.5, -378.5, -377.0)
+    for a_, b_ in zip(eps, eps[1:]):
+        for zi, wz in enumerate((0.45, 0.90)):
+            _mb(f"Yard_Fence_E_Wire_{a_:.1f}_{zi}", (57.6, (a_ + b_) / 2.0, wz), (0.008, b_ - a_ - 0.09, 0.008),
+                (0.40, 0.40, 0.40, 1.0))
+    # the gate leaf, swung in
+    gx = 52.15 - 0.045 - 0.025
+    for si in range(6):
+        _mb(f"Yard_Gate_Leaf_Slat_{si}", (gx, fy0 + 0.045 + 0.08 + si * 0.15, 0.55), (0.02, 0.10, 0.90), fence_w)
+    for zi, rz in enumerate((0.28, 0.82)):
+        _mb(f"Yard_Gate_Leaf_Rail_{zi}", (gx - 0.02, fy0 + 0.045 + 0.46, rz), (0.02, 0.92, 0.07), fence_w)
+    # the herb patch, newly planted
+    hb = (55.0, 56.8, -382.6, -378.6)
+    bed_w = (0.46, 0.36, 0.26, 1.0)
+    _mb("Herb_Bed_Board_S", ((hb[0] + hb[1]) / 2.0, hb[2] + 0.02, 0.10), (hb[1] - hb[0], 0.04, 0.20), bed_w)
+    _mb("Herb_Bed_Board_N", ((hb[0] + hb[1]) / 2.0, hb[3] - 0.02, 0.10), (hb[1] - hb[0], 0.04, 0.20), bed_w)
+    _mb("Herb_Bed_Board_W", (hb[0] + 0.02, (hb[2] + hb[3]) / 2.0, 0.10), (0.04, hb[3] - hb[2] - 0.08, 0.20), bed_w)
+    _mb("Herb_Bed_Board_E", (hb[1] - 0.02, (hb[2] + hb[3]) / 2.0, 0.10), (0.04, hb[3] - hb[2] - 0.08, 0.20), bed_w)
+    _mb("Herb_Bed_Soil", ((hb[0] + hb[1]) / 2.0, (hb[2] + hb[3]) / 2.0, 0.08), (hb[1] - hb[0] - 0.08, hb[3] - hb[2] - 0.08, 0.16),
+        (0.26, 0.20, 0.15, 1.0))
+    greens = ((0.30, 0.48, 0.26, 1.0), (0.42, 0.52, 0.36, 1.0), (0.24, 0.40, 0.22, 1.0), (0.50, 0.56, 0.44, 1.0))
+    for hi in range(8):
+        hx, hy = 55.35 + (hi % 2) * 0.9, -382.15 + (hi // 2) * 0.62
+        r_ = 0.13 + 0.07 * _h01(hi, 2)
+        _mbl(f"Herb_{hi}", (hx, hy, 0.16 + r_ * 0.7), r_, greens[hi % 4], noise=0.30, seed=hi, squash=0.75)
+    for si in range(5):
+        _mtc(f"Herb_Seedling_{si}", (55.9, -379.40 + si * 0.14, 0.16 + 0.04), 0.02, 0.004, 0.08, (0.40, 0.60, 0.30, 1.0), segments=5)
+    _mb("Herb_Seed_Packet", (56.35, -379.10, 0.16 + 0.002), (0.07, 0.11, 0.004), (0.86, 0.66, 0.30, 1.0))
+    _mrb("Herb_Trowel", (55.62, -379.20, 0.16 + 0.06), (0.06, 0.02, 0.20), (0.50, 0.50, 0.52, 1.0), roll=0.3)
+    _mc("Herb_Watering_Can", (57.05, -381.4, 0.14), 0.12, 0.28, (0.44, 0.52, 0.50, 1.0), segments=10)
+    _mrb("Herb_Watering_Can_Spout", (57.05, -381.62, 0.20), (0.03, 0.22, 0.03), (0.44, 0.52, 0.50, 1.0), roll=0.6)
+    # the clothesline, the rain barrel
+    _mc("Yard_Line_Post", (57.0, -385.6, 1.0), 0.05, 2.0, (0.46, 0.38, 0.30, 1.0), segments=8)
+    lx0, ly0, lx1, ly1 = 57.0, -385.6, X1 + 0.01, -382.6
+    lyaw = math.atan2(ly1 - ly0, lx1 - lx0)
+    lln = math.hypot(lx1 - lx0, ly1 - ly0)
+    _mrb("Yard_Line", ((lx0 + lx1) / 2.0, (ly0 + ly1) / 2.0, 1.95), (lln - 0.10, 0.008, 0.008), (0.80, 0.78, 0.72, 1.0), yaw=lyaw)
+    for ci_, (f_, w_, h_, col) in enumerate(((0.35, 0.50, 0.55, (0.58, 0.62, 0.70, 1.0)), (0.62, 0.40, 0.60, (0.82, 0.74, 0.56, 1.0)))):
+        cx_, cy_ = lx0 + (lx1 - lx0) * f_, ly0 + (ly1 - ly0) * f_
+        _mrb(f"Yard_Line_Cloth_{ci_}", (cx_, cy_, 1.95 - 0.004 - h_ / 2.0), (w_, 0.015, h_), col, yaw=lyaw)
+    _mc("Yard_Rain_Barrel", (X1 + 0.36, Y0 + 0.36, 0.45), 0.30, 0.90, (0.34, 0.30, 0.26, 1.0), segments=12)
+    # Rumpus, asleep in the sun by the steps (the one-eyed dog)
+    tan = (0.62, 0.50, 0.36, 1.0)
+    _mbl("Rumpus_Body", (53.25, -385.05, 0.17), 0.30, tan, noise=0.10, seed=4, squash=0.55)
+    _mbl("Rumpus_Head", (52.90, -385.30, 0.12), 0.12, tan, noise=0.08, seed=9, squash=0.85)
+    _mb("Rumpus_Eye_Patch", (52.83, -385.40, 0.15), (0.05, 0.02, 0.04), (0.18, 0.14, 0.12, 1.0))
+    _mtc("Rumpus_Tail", (53.58, -384.80, 0.08), 0.03, 0.01, 0.22, tan, segments=6)
+
+
+def build_minstral_wreck_2026_10():
+    """THE MINSTRAL'S GREEN, draft 2 (2026-10-04) — "where the Minstral's
+    Green steamship rusts quiet like a beached metal whale dreaming of
+    deeper waters". Draft 1: a green box, a box deckhouse, a stack
+    INSIDE the deckhouse, a solid paddlebox and a disc — on dry flat
+    ground, with no river anywhere (the riverfront's river was buried).
+
+    Now: a shaped hull (stern, tapered bow) beached on the slough's bank,
+    its starboard side over the water with a waterline stain and rust
+    weeping from the scuppers; a weathered deck aft; the deckhouse with
+    its windows (one boarded, one still glazed) and its doorway; a
+    pilothouse; two stacks abreast, one broken; the broken paddlebox
+    cover with boards gone, the wheel inside sagged into the river —
+    rims, spokes, buckets, two buckets missing; the rails half gone.
+    The slough's water, reeds and cypress knees at the waterline, wet
+    mud on the bank where the Child squats, a life-ring in the grass,
+    cypress on the far bank ("sunlight drips through the cypress trees
+    lining the riverbank").
+
+    Draft N+1: the doll under the hull ("gone by Wednesday" — keep it
+    gone); the "Minstral's Green" lettering on the paddlebox (Label3D);
+    the far bank's character (the Frog's east)."""
+    from _props.geometry import (make_box as _mb, make_cyl as _mc, make_rot_box as _mrb,
+                                 make_prism as _mp, make_tube as _mt, make_taper_cyl as _mtc,
+                                 make_lathe as _ml, make_heightfield as _mhf)
+    green = (0.30, 0.40, 0.34, 1.0)
+    green_dk = (0.24, 0.32, 0.28, 1.0)
+    rust = (0.46, 0.28, 0.18, 1.0)
+    hx, hy = 38.0, -120.0
+    poly = [(-3.5, -10.0), (3.5, -10.0), (3.5, 5.5), (2.6, 8.2), (1.2, 9.6), (0.0, 10.0),
+            (-1.2, 9.6), (-2.6, 8.2), (-3.5, 5.5)]
+    _mp("Minstral_Hull", (hx, hy, 0.05), poly, 6.10, green, axis='Z')        # z -3.0 .. 3.1
+    # waterline stain + rust on the starboard side (x 41.5, over the water)
+    _mb("Minstral_Hull_Waterline", (41.51, -122.0, -2.10), (0.02, 15.5, 0.85), (0.12, 0.14, 0.12, 1.0))
+    for ri_, (ry, rw, rh) in enumerate(((-128.6, 0.18, 1.9), (-126.9, 0.12, 2.6), (-119.3, 0.20, 1.6),
+                                         (-117.1, 0.10, 2.2), (-115.4, 0.16, 1.4))):
+        _mb(f"Minstral_Hull_Rust_{ri_}", (41.51, ry, 3.05 - rh / 2.0), (0.02, rw, rh), rust)
+    _mb("Minstral_Hull_Breach", (41.51, -118.4, -0.9), (0.02, 1.3, 0.8), (0.05, 0.05, 0.05, 1.0))
+    # deck aft of the deckhouse — weathered boards, a rotted hole
+    _mb("Minstral_Deck", (hx, -125.05, 3.115), (6.80, 9.70, 0.03), (0.40, 0.34, 0.27, 1.0))
+    _mb("Minstral_Deck_Hole", (36.9, -127.2, 3.135), (1.2, 0.9, 0.01), (0.06, 0.05, 0.05, 1.0))
+    # rails: posts + top rail, starboard + stern, gaps where they went
+    for side, rx in (("S", 41.35), ("P", 34.65)):
+        ys_ = [-129.6 + 1.5 * k for k in range(11)]
+        for k, ry in enumerate(ys_):
+            if (side, k) in (("S", 3), ("S", 4), ("P", 6)):
+                continue
+            _mb(f"Minstral_Rail_{side}_Post_{k}", (rx, ry, 3.13 + 0.45), (0.06, 0.06, 0.90), rust)
+        for k in range(len(ys_) - 1):
+            if (side, k) in (("S", 2), ("S", 3), ("S", 4), ("P", 5), ("P", 6)):
+                continue
+            _mb(f"Minstral_Rail_{side}_Top_{k}", (rx, (ys_[k] + ys_[k + 1]) / 2.0, 3.13 + 0.90 + 0.025),
+                (0.06, 1.5 - 0.06, 0.05), rust)
+    for k, rx in enumerate((35.4, 36.9, 38.4, 39.9)):
+        _mb(f"Minstral_Rail_Stern_Post_{k}", (rx, -129.75, 3.13 + 0.45), (0.06, 0.06, 0.90), rust)
+    # deckhouse, pilothouse, two stacks abreast (one broken)
+    _mb("Minstral_Deckhouse", (hx, -116.0, 4.2), (4.5, 8.0, 2.2), (0.36, 0.44, 0.38, 1.0))
+    for wi_, wy in enumerate((-118.6, -116.9, -115.2, -113.5)):
+        _mb(f"Minstral_Deckhouse_Win_{wi_}", (40.26, wy, 4.40), (0.02, 0.75, 0.62),
+            (0.06, 0.07, 0.07, 1.0) if wi_ != 2 else (0.56, 0.48, 0.36, 1.0))
+    _mb("Minstral_Deckhouse_Win_1_Pane", (40.275, -116.9, 4.40), (0.008, 0.62, 0.50), (0.78, 0.84, 0.86, 0.25))
+    _mb("Minstral_Deckhouse_Doorway", (hx, -120.01, 4.05), (0.90, 0.02, 1.90), (0.06, 0.06, 0.06, 1.0))
+    _mb("Minstral_Pilothouse", (hx, -113.6, 6.20), (2.4, 2.4, 1.8), (0.40, 0.48, 0.42, 1.0))
+    _mb("Minstral_Pilothouse_Roof", (hx, -113.6, 7.16), (2.8, 2.8, 0.12), green_dk)
+    for wi_, (wx, wy, sx_, sy_) in enumerate(((39.21, -113.6, 0.02, 1.8), (36.79, -113.6, 0.02, 1.8),
+                                              (hx, -112.39, 1.8, 0.02))):
+        _mb(f"Minstral_Pilothouse_Win_{wi_}", (wx, wy, 6.45), (sx_, sy_, 0.70), (0.06, 0.07, 0.07, 1.0))
+    _mc("Minstral_Stack", (37.0, -118.6, 5.30 + 2.0), 0.50, 4.0, rust, segments=12)
+    _mc("Minstral_Stack_Crown", (37.0, -118.6, 9.30 + 0.12), 0.64, 0.24, (0.36, 0.22, 0.15, 1.0), segments=12)
+    _mc("Minstral_Stack_Broken", (39.0, -118.6, 5.30 + 0.8), 0.50, 1.6, rust, segments=12)
+    # the paddlebox cover (the Frog's seat stays: top z 2.30) and the wheel
+    _mb("Minstral_Paddlebox_Top", (42.2, -124.0, 2.25), (2.6, 4.7, 0.1), (0.38, 0.24, 0.16, 1.0))
+    for nm, py in (("Fore", -121.70), ("Aft", -126.30)):
+        _mb(f"Minstral_Paddlebox_{nm}", (42.45, py, 1.30), (1.90, 0.10, 1.80), rust)
+    for bi in range(10):
+        if bi in (3, 4, 5, 7):
+            continue                                   # boards gone — the wheel shows
+        by_ = -126.25 + 0.225 + bi * 0.45
+        bz0 = 0.40 + (0.7 if bi in (2, 8) else 0.0)
+        _mb(f"Minstral_Paddlebox_Board_{bi}", (43.40, by_, (bz0 + 2.20) / 2.0), (0.10, 0.43, 2.20 - bz0),
+            (0.42, 0.26, 0.17, 1.0) if bi % 2 else rust)
+    wc_z, wr = -0.75, 1.90
+    for rx in (41.75, 43.15):
+        path = [(rx, -124.0 + wr * math.cos(2 * math.pi * k / 28), wc_z + wr * math.sin(2 * math.pi * k / 28))
+                for k in range(29)]
+        _mt(f"Minstral_Wheel_Rim_{rx:.2f}", path, 0.04, (0.30, 0.20, 0.14, 1.0), segments=6)
+        for k in range(4):
+            _mrb(f"Minstral_Wheel_Spoke_{rx:.2f}_{k}", (rx, -124.0, wc_z), (0.06, 2 * wr - 0.10, 0.06),
+                 (0.30, 0.20, 0.14, 1.0), roll=k * math.pi / 4.0)
+    for k in range(8):
+        if k in (2, 5):
+            continue
+        t_ = 2 * math.pi * k / 8 + 0.2
+        _mrb(f"Minstral_Wheel_Bucket_{k}", (42.45, -124.0 + 1.60 * math.cos(t_), wc_z + 1.60 * math.sin(t_)),
+             (1.36, 0.05, 0.50), (0.36, 0.26, 0.18, 1.0), roll=t_ - math.pi / 2.0)
+    _mc("Minstral_Wheel_Shaft", (42.45, -124.0, wc_z), 0.18, 1.62, (0.24, 0.18, 0.14, 1.0), axis='X', segments=10)
+    # the slough's water (z -2.5, the riverfront river's level; ends at its S edge)
+    _mb("Minstral_Slough_Water", (48.7, -120.25, -2.51), (16.6, 40.5, 0.02), (0.12, 0.18, 0.22, 1.0))
+    # (the bank's wet mud is the terrain's own colour — graustark_color
+    # gives the carved slopes the tidal/bed strata; a separate mud mesh
+    # follows the slope, and its bounding box swallows the Child.)
+    # reeds at the waterline, cypress knees in the shallows
+    for ci_, (rx, ry) in enumerate(((40.45, -136.2), (40.40, -129.9), (40.50, -110.6), (40.42, -104.8),
+                                    (55.25, -133.5), (55.30, -121.0), (55.20, -108.4))):
+        gz = terrain_surface_z(rx, ry)
+        for k in range(5):
+            hh = 0.8 + 0.5 * _h01(ci_, k)
+            _mc(f"Reeds_{ci_}_{k}", (rx + 0.09 * math.cos(k * 1.3), ry + 0.09 * math.sin(k * 1.3), gz + hh / 2.0),
+                0.008, hh, (0.44, 0.48, 0.30, 1.0), segments=4)
+    for ki, (kx, ky) in enumerate(((41.1, -134.6), (41.4, -133.2), (41.0, -107.5), (54.6, -126.0), (54.8, -113.0))):
+        gz = terrain_surface_z(kx, ky)
+        hh = -2.5 + 0.35 + 0.2 * _h01(ki, 1) - gz
+        _mtc(f"Cypress_Knee_{ki}", (kx, ky, gz + hh / 2.0), 0.09, 0.03, hh, (0.40, 0.32, 0.24, 1.0), segments=6)
+    # a life-ring in the grass by the stern
+    ring = [(0.30 + 0.06 * math.cos(2 * math.pi * k / 8), 0.06 * math.sin(2 * math.pi * k / 8)) for k in range(8)]
+    _ml("Minstral_Lifering", (34.4, -133.4, 0.06), ring, (0.70, 0.34, 0.28, 1.0), segments=14, loop=True)
+    # cypress lining the far bank (and one on the near bank, south)
+    for ti, (tx, ty) in enumerate(((60.5, -134.0), (61.5, -124.5), (60.0, -114.0), (62.0, -104.5), (29.5, -141.0))):
+        _emit_cypress(f"Minstral_Cypress_{ti}", tx, ty, terrain_surface_z(tx, ty))
 
 
 def main():
@@ -4981,6 +5788,10 @@ def main():
     build_star_night_2026_09()
     build_world_shore_2026_09()
     build_chalk_wall_2026_09()
+    build_sinkhole_bowl_2026_10()
+    build_haberdashery_2026_10()
+    build_shotgun_house_2026_10()
+    build_minstral_wreck_2026_10()
     export_glb()
 
 

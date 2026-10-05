@@ -298,9 +298,9 @@ const CAMERA_PRESETS := {
 		# rooflines and chimneys on the skyline.
 		# blender cam (66, −390, 2.4) → godot (66, 2.4, +390);
 		# aim at shells (18,−335,4): yaw=atan2(48,55), slight down.
-		"camera_origin": Vector3(66.0, 2.40, 390.0),
-		"camera_rotation": Vector3(-0.03, 0.718, 0.0),
-		"fov": 62.0,
+		"camera_origin": Vector3(63.50, 3.20, 393.50),
+		"camera_rotation": Vector3(-0.037, 0.653, 0.0),
+		"fov": 58.0,
 		"suppress_input": true,
 	},
 	# ── VOL 5 — Hermit — Joanna's chalked wall + the crow's perch ─
@@ -313,9 +313,9 @@ const CAMERA_PRESETS := {
 		# verses fill frame-right. Hermit stages chalk 11×, beam 8×.
 		# blender cam (36, −371, 1.9) → godot (36, 1.9, 371);
 		# yaw = atan2(−8, −3).
-		"camera_origin": Vector3(36.0, 1.90, 371.0),
-		"camera_rotation": Vector3(0.0, -1.93, 0.0),
-		"fov": 55.0,
+		"camera_origin": Vector3(35.20, 1.75, 370.40),
+		"camera_rotation": Vector3(-0.021, -2.023, 0.0),
+		"fov": 56.0,
 		"suppress_input": true,
 	},
 	# ── VOL 5 — Star — the cottage (the annual offering) ─────────
@@ -327,9 +327,9 @@ const CAMERA_PRESETS := {
 		# cottage (50,−380) + herb bed (52.2,−379) mid, the broken
 		# skyline shells 40-70m beyond.
 		# blender cam (50, −394, 1.8) → godot (50, 1.8, 394); yaw 0.
-		"camera_origin": Vector3(50.0, 1.80, 394.0),
-		"camera_rotation": Vector3(-0.02, 0.0, 0.0),
-		"fov": 58.0,
+		"camera_origin": Vector3(49.20, 1.65, 394.00),
+		"camera_rotation": Vector3(0.041, -0.234, 0.0),
+		"fov": 55.0,
 		"suppress_input": true,
 	},
 	# ── VOL 5 — Judgement — the Minstral's Green wreck ────────────
@@ -342,8 +342,8 @@ const CAMERA_PRESETS := {
 		# rising left. Judgement stages the wreck 4×.
 		# blender cam (50, −134, 2.2) → godot (50, 2.2, 134);
 		# yaw = atan2(11, 16), slight up to catch the stack.
-		"camera_origin": Vector3(50.0, 2.20, 134.0),
-		"camera_rotation": Vector3(0.05, 0.602, 0.0),
+		"camera_origin": Vector3(45.50, 0.37, 141.50),
+		"camera_rotation": Vector3(0.041, 0.275, 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
@@ -1324,6 +1324,20 @@ const CAMERA_PRESETS := {
 	# parked-car conversation — Ben's truck (ch5), the El Rancho lay-by
 	# (ch16), the Civic (ch19/20/22), Miriam's car (vol5 ch18), Miller's
 	# truck on the highway (ch8). One crew cab stands for all of them.
+	"miriam_subaru": {
+		"scene": "res://scenes/locales/miriam_subaru.tscn",
+		"requires_glb": "res://assets/3d/locales/miriam_subaru.glb",
+		# vol 5's car (2026-10-04): Miriam's dark-green 2009 Subaru wagon
+		# on a two-lane road through cane fields at dawn. The camera is
+		# Natalie in the back seat, left of centre, looking through the
+		# gap between the front seats over the dash at the road; Nicola's
+		# window (and the sun) on the right. The Moon and Judgement
+		# borrowed vol 6's parked pickup (vehicle_cab) until now.
+		"camera_origin": Vector3(-0.18, 1.36, 0.72),
+		"camera_rotation": Vector3(-0.101, -0.107, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
 	"vehicle_cab": {
 		"scene": "res://scenes/locales/vehicle_cab.tscn",
 		"requires_glb": "res://assets/3d/locales/vehicle_cab.glb",

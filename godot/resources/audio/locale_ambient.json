@@ -337,6 +337,10 @@
       "bed": "assets/audio/bgm/vol6_two_lane.wav",
       "gain": 0.4
     },
+    "miriam_subaru": {
+      "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
+      "gain": 0.4
+    },
     "vehicle_cab_side": {
       "bed": "assets/audio/bgm/vol6_two_lane.wav",
       "gain": 0.72

@@ -77,6 +77,12 @@ godot/assets/audio/drive/
 # builds them; the Deck and this checkout each keep their own.
 godot/assets/3d/locales/*.glb
 godot/assets/3d/locales/*.glb.import
+# textures Godot extracts from a locale GLB that embeds hero figures
+# (graustark: 2026-10-04) — import output, megabytes each
+godot/assets/3d/locales/*_Image_*.jpg
+godot/assets/3d/locales/*_Image_*.jpg.import
+godot/assets/3d/locales/*_normal.png
+godot/assets/3d/locales/*_normal.png.import
 godot/assets/3d/cathedral/*.glb
 godot/assets/3d/cathedral/*.glb.import
 godot/assets/3d/agents/*.glb

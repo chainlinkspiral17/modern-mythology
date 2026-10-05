@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "3d:graustark_ruins"
+      "src": "3d:graustark_wreck"
     },
     {
       "t": "hide",
@@ -153,13 +153,17 @@
       "voice": "assets/audio/voice/vol5_ch21_world/027.ogg"
     },
     {
+      "t": "bg",
+      "src": "3d:graustark_cottage"
+    },
+    {
       "t": "narrate",
       "text": "Up in the ruins, things are stirrin'. You can almost smell the fragile hope mixin' with the mildew.",
       "voice": "assets/audio/voice/vol5_ch21_world/028.ogg"
     },
     {
       "t": "narrate",
-      "text": "Joanna LeMoine's patch of herbs looks greener today — maybe talkin' back to her when she scrawls those spooky truths on busted concrete. Her dog, the one-eyed one, sleeps twitching in a sunbeam.",
+      "text": "[shot:insert herbs]Joanna LeMoine's patch of herbs looks greener today — maybe talkin' back to her when she scrawls those spooky truths on busted concrete. Her dog, the one-eyed one, sleeps twitching in a sunbeam.",
       "voice": "assets/audio/voice/vol5_ch21_world/029.ogg"
     },
     {
@@ -219,6 +223,10 @@
       "t": "narrate",
       "text": "[shot:establish]She had, on waking, begun planting.",
       "voice": "assets/audio/voice/vol5_ch21_world/040.ogg"
+    },
+    {
+      "t": "bg",
+      "src": "3d:graustark_wreck"
     },
     {
       "t": "narrate",

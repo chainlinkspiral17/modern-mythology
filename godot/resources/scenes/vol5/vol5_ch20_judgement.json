@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "3d:graustark_wreck"
+      "src": "3d:graustark_ruins"
     },
     {
       "t": "hide",
@@ -60,7 +60,7 @@
     },
     {
       "t": "narrate",
-      "text": "[beat:hit][shot:establish~]And then the stillness broke.",
+      "text": "[beat:hit][shot:wide sinkhole~]And then the stillness broke.",
       "voice": "assets/audio/voice/vol5_ch20_judgement/011.ogg"
     },
     {
@@ -189,6 +189,10 @@
       "voice": "assets/audio/voice/vol5_ch20_judgement/036.ogg"
     },
     {
+      "t": "bg",
+      "src": "3d:houston_office"
+    },
+    {
       "t": "narrate",
       "text": "[shot:closeup erica]In Houston, high in her sterile tower, the Italian marble floor beneath Erica Campbell's expensive shoes did shudder — or perhaps it was only the vibration traveling up her own spine from the epicenter miles away.",
       "voice": "assets/audio/voice/vol5_ch20_judgement/037.ogg"
@@ -230,7 +234,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert smoke_ring]She reached for the phone. She thumbed the painter's contact. She pressed call. He picked up on the second ring.",
+      "text": "[shot:insert phone]She reached for the phone. She thumbed the painter's contact. She pressed call. He picked up on the second ring.",
       "voice": "assets/audio/voice/vol5_ch20_judgement/045.ogg"
     },
     {
@@ -262,7 +266,7 @@
     {
       "t": "say",
       "c": "erica",
-      "text": "[shot:closeup person]I need to come over.",
+      "text": "[shot:closeup erica]I need to come over.",
       "char": "erica",
       "voice": "assets/audio/voice/vol5_ch20_judgement/050.mp3"
     },
@@ -294,6 +298,10 @@
       "t": "narrate",
       "text": "Erica, for the first time in fourteen years, walked away from both of them before the close of business.",
       "voice": "assets/audio/voice/vol5_ch20_judgement/055.ogg"
+    },
+    {
+      "t": "bg",
+      "src": "3d:montreal_apartment"
     },
     {
       "t": "narrate",
@@ -357,13 +365,17 @@
     },
     {
       "t": "narrate",
-      "text": "The narwhal mug looked back, cheerfully, with its tiny accordion.",
+      "text": "[shot:insert mug]The narwhal mug looked back, cheerfully, with its tiny accordion.",
       "voice": "assets/audio/voice/vol5_ch20_judgement/068.ogg"
     },
     {
       "t": "narrate",
       "text": "John laughed once — the short surprised laugh he had, over the past months, started laughing mostly around Elicia — and, in the small clean moment of the laugh, understood that he was going to Texas.",
       "voice": "assets/audio/voice/vol5_ch20_judgement/069.ogg"
+    },
+    {
+      "t": "bg",
+      "src": "3d:graustark_chalk_wall"
     },
     {
       "t": "narrate",
@@ -449,6 +461,10 @@
       "voice": "assets/audio/voice/vol5_ch20_judgement/085.ogg"
     },
     {
+      "t": "bg",
+      "src": "3d:miriam_subaru"
+    },
+    {
       "t": "narrate",
       "text": "§ From a Chorus of Displaced Dreamers, observing the psychic static",
       "voice": "assets/audio/voice/vol5_ch20_judgement/086.mp3"
@@ -482,6 +498,10 @@
       "t": "narrate",
       "text": "Hold on.",
       "voice": "assets/audio/voice/vol5_ch20_judgement/092.ogg"
+    },
+    {
+      "t": "bg",
+      "src": "3d:riverboat_interior"
     },
     {
       "t": "narrate",
@@ -525,7 +545,7 @@
     },
     {
       "t": "narrate",
-      "text": "Consulting. — was still on his desk, square to the corner, where he had placed it nine months before.",
+      "text": "[shot:insert card]Consulting. — was still on his desk, square to the corner, where he had placed it nine months before.",
       "voice": "assets/audio/voice/vol5_ch20_judgement/101.ogg"
     },
     {
@@ -553,7 +573,7 @@
     },
     {
       "t": "narrate",
-      "text": "Dante raised his bourbon glass to the card. He drank the glass dry, this time. He set the glass down on top of the card — not covering it, just touching it — and he walked out of the office onto the deck.",
+      "text": "[shot:insert bourbon]Dante raised his bourbon glass to the card. He drank the glass dry, this time. He set the glass down on top of the card — not covering it, just touching it — and he walked out of the office onto the deck.",
       "voice": "assets/audio/voice/vol5_ch20_judgement/106.ogg"
     },
     {
@@ -572,8 +592,12 @@
       "voice": "assets/audio/voice/vol5_ch20_judgement/109.ogg"
     },
     {
+      "t": "bg",
+      "src": "3d:new_orleans_office"
+    },
+    {
       "t": "narrate",
-      "text": "[shot:insert beam]In Houston, his older son Alberto received a phone call at the same moment. He answered. The voice on the other end was his assistant's. The assistant said only sir. Alberto understood. He set the phone down without speaking.",
+      "text": "[shot:insert phone]In Houston, his older son Alberto received a phone call at the same moment. He answered. The voice on the other end was his assistant's. The assistant said only sir. Alberto understood. He set the phone down without speaking.",
       "voice": "assets/audio/voice/vol5_ch20_judgement/110.ogg"
     },
     {
@@ -583,7 +607,7 @@
     },
     {
       "t": "narrate",
-      "text": "In New Orleans, his younger son Antonio received the same phone call. He did not answer.",
+      "text": "[shot:closeup antonio]In New Orleans, his younger son Antonio received the same phone call. He did not answer.",
       "voice": "assets/audio/voice/vol5_ch20_judgement/112.ogg"
     },
     {
@@ -612,8 +636,12 @@
       "voice": "assets/audio/voice/vol5_ch20_judgement/117.ogg"
     },
     {
+      "t": "bg",
+      "src": "3d:new_orleans_room"
+    },
+    {
       "t": "narrate",
-      "text": "[mood:dawn_warm][shot:closeup jimmy]In New Orleans, the humid haze thickened. Tasting metallic.",
+      "text": "[mood:dawn_warm][shot:establish b]In New Orleans, the humid haze thickened. Tasting metallic.",
       "voice": "assets/audio/voice/vol5_ch20_judgement/118.ogg"
     },
     {
@@ -643,7 +671,7 @@
     },
     {
       "t": "narrate",
-      "text": "The room was empty. Douglas was not there. Douglas's things were not there either. The bed was made. The sink was clean. The desk was clear.",
+      "text": "[shot:establish]The room was empty. Douglas was not there. Douglas's things were not there either. The bed was made. The sink was clean. The desk was clear.",
       "voice": "assets/audio/voice/vol5_ch20_judgement/124.ogg"
     },
     {
@@ -680,7 +708,7 @@
     {
       "t": "say",
       "c": "maya",
-      "text": "[shot:closeup person]Dad?",
+      "text": "Dad?",
       "char": "antonio",
       "voice": "assets/audio/voice/vol5_ch20_judgement/131.mp3"
     },
@@ -749,6 +777,10 @@
       "voice": "assets/audio/voice/vol5_ch20_judgement/141.ogg"
     },
     {
+      "t": "bg",
+      "src": "3d:natalie_apartment"
+    },
+    {
       "t": "narrate",
       "text": "[shot:closeup natalie]In her lonely apartment in Simons, Natalie David — who had gotten home from the county-line bus drop two hours ago and had been sleeping on the rug — woke up all at once.",
       "voice": "assets/audio/voice/vol5_ch20_judgement/142.ogg"
@@ -765,7 +797,7 @@
     },
     {
       "t": "narrate",
-      "text": "The Hanged Man card — the one she had taken with her to the county line, the one that had still been in her coat pocket when she came home — rose from the rug where her coat had fallen,",
+      "text": "[shot:insert card]The Hanged Man card — the one she had taken with her to the county line, the one that had still been in her coat pocket when she came home — rose from the rug where her coat had fallen,",
       "voice": "assets/audio/voice/vol5_ch20_judgement/145.ogg"
     },
     {
@@ -803,7 +835,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]The record player, in the corner, clicked on. Not to Nina Simone this time. To the silence between tracks, which was, in Natalie's apartment, its own kind of song.",
+      "text": "[shot:insert record_player]The record player, in the corner, clicked on. Not to Nina Simone this time. To the silence between tracks, which was, in Natalie's apartment, its own kind of song.",
       "voice": "assets/audio/voice/vol5_ch20_judgement/152.ogg"
     },
     {
@@ -822,8 +854,12 @@
       "voice": "assets/audio/voice/vol5_ch20_judgement/155.ogg"
     },
     {
+      "t": "bg",
+      "src": "3d:hospice_room"
+    },
+    {
       "t": "narrate",
-      "text": "[shot:insert sinkhole]Alice Newsom, Death's own avatar, had crossed the threshold four hours earlier.",
+      "text": "[shot:closeup alice]Alice Newsom, Death's own avatar, had crossed the threshold four hours earlier.",
       "voice": "assets/audio/voice/vol5_ch20_judgement/156.ogg"
     },
     {
@@ -833,7 +869,7 @@
     },
     {
       "t": "narrate",
-      "text": "The white rose, on the windowsill of Room 217, had continued to bloom.",
+      "text": "[shot:insert rose]The white rose, on the windowsill of Room 217, had continued to bloom.",
       "voice": "assets/audio/voice/vol5_ch20_judgement/158.ogg"
     },
     {
@@ -847,8 +883,12 @@
       "voice": "assets/audio/voice/vol5_ch20_judgement/160.ogg"
     },
     {
+      "t": "bg",
+      "src": "3d:houston_design_studio"
+    },
+    {
       "t": "narrate",
-      "text": "Back in Houston, Anna Logue watched the perfect lines on her monitor waver. Distort. Dissolve into static.",
+      "text": "[shot:insert monitor]Back in Houston, Anna Logue watched the perfect lines on her monitor waver. Distort. Dissolve into static.",
       "voice": "assets/audio/voice/vol5_ch20_judgement/161.ogg"
     },
     {
@@ -892,8 +932,12 @@
       "voice": "assets/audio/voice/vol5_ch20_judgement/169.ogg"
     },
     {
+      "t": "bg",
+      "src": "3d:new_orleans_bar"
+    },
+    {
       "t": "narrate",
-      "text": "[shot:closeup doug]In New Orleans, Douglas Forte stood from his corner booth at the Iron Crow — he had been there since ten, a bourbon in front of him, a copy of the Times-Picayune open to the crossword, waiting — the phantom weight of grief replaced by the immediate physical weight of the shaking world.",
+      "text": "[shot:closeup douglas]In New Orleans, Douglas Forte stood from his corner booth at the Iron Crow — he had been there since ten, a bourbon in front of him, a copy of the Times-Picayune open to the crossword, waiting — the phantom weight of grief replaced by the immediate physical weight of the shaking world.",
       "voice": "assets/audio/voice/vol5_ch20_judgement/170.ogg"
     },
     {
@@ -940,7 +984,7 @@
     {
       "t": "say",
       "c": "douglas",
-      "text": "[shot:closeup person_b]I know. It's okay. I knew, eventually. I forgive you.",
+      "text": "[shot:closeup douglas]I know. It's okay. I knew, eventually. I forgive you.",
       "char": "jimmy",
       "voice": "assets/audio/voice/vol5_ch20_judgement/179.mp3"
     },
@@ -990,6 +1034,10 @@
       "voice": "assets/audio/voice/vol5_ch20_judgement/188.ogg"
     },
     {
+      "t": "bg",
+      "src": "3d:roberts_kitchen"
+    },
+    {
       "t": "narrate",
       "text": "[shot:establish]In their cluttered bungalow, Mackenzie Roberts and Philip Roberts clung together as the earth groaned. Their small sanctuary suddenly, terrifyingly fragile. The fences would not hold against this. The garden trembled.",
       "voice": "assets/audio/voice/vol5_ch20_judgement/189.ogg"
@@ -1017,13 +1065,13 @@
     {
       "t": "say",
       "c": "philip",
-      "text": "[shot:closeup person]I'll get them. You call Elicia. Tell her whatever we hear, she hears.",
+      "text": "[shot:closeup philip]I'll get them. You call Elicia. Tell her whatever we hear, she hears.",
       "char": "natalie",
       "voice": "assets/audio/voice/vol5_ch20_judgement/194.mp3"
     },
     {
       "t": "narrate",
-      "text": "Mackenzie nodded. Picked up the phone.\n\nThe phone, before she dialed, rang.\n\nIt was not Elicia. It was a number with an area code Mackenzie did not recognize. A voice on the other end — male, calm, Louisiana-accented, older:",
+      "text": "[shot:closeup mackenzie]Mackenzie nodded. Picked up the phone.\n\nThe phone, before she dialed, rang.\n\nIt was not Elicia. It was a number with an area code Mackenzie did not recognize. A voice on the other end — male, calm, Louisiana-accented, older:",
       "voice": "assets/audio/voice/vol5_ch20_judgement/195.mp3"
     },
     {
@@ -1046,6 +1094,10 @@
       "voice": "assets/audio/voice/vol5_ch20_judgement/198.mp3"
     },
     {
+      "t": "bg",
+      "src": "3d:elicia_apartment"
+    },
+    {
       "t": "narrate",
       "text": "[shot:closeup elicia]In Montreal, Elicia Duchane felt the crash complete itself.",
       "voice": "assets/audio/voice/vol5_ch20_judgement/199.ogg"
@@ -1062,7 +1114,7 @@
     },
     {
       "t": "narrate",
-      "text": "She was in her Mile End apartment above the bagel shop. The camera was on the windowsill, running, as it had been running every day since December.",
+      "text": "[shot:insert camera]She was in her Mile End apartment above the bagel shop. The camera was on the windowsill, running, as it had been running every day since December.",
       "voice": "assets/audio/voice/vol5_ch20_judgement/202.ogg"
     },
     {
@@ -1078,7 +1130,7 @@
     {
       "t": "say",
       "c": "elicia",
-      "text": "[shot:closeup person]Something is happening. I don't know what. I am going to keep the camera rolling. I am going to show you what this is, in real time, as I find out.",
+      "text": "[shot:closeup elicia]Something is happening. I don't know what. I am going to keep the camera rolling. I am going to show you what this is, in real time, as I find out.",
       "char": "natalie",
       "voice": "assets/audio/voice/vol5_ch20_judgement/205.mp3"
     },
@@ -1110,6 +1162,10 @@
       "t": "narrate",
       "text": "[shot:establish]She picked up her phone again. She opened the airline app. She began, with shaking hands, the small practical work of finding a flight.",
       "voice": "assets/audio/voice/vol5_ch20_judgement/210.mp3"
+    },
+    {
+      "t": "bg",
+      "src": "3d:miriam_subaru"
     },
     {
       "t": "narrate",
@@ -1184,8 +1240,12 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert crow]The car kept west.\n\nThe crow, which had gone back to Joanna, was no longer the escort. Some other small bright guide was, ahead of them, on the road.",
+      "text": "[shot:establish~]The car kept west.\n\nThe crow, which had gone back to Joanna, was no longer the escort. Some other small bright guide was, ahead of them, on the road.",
       "voice": "assets/audio/voice/vol5_ch20_judgement/224.mp3"
+    },
+    {
+      "t": "bg",
+      "src": "3d:graustark_wreck"
     },
     {
       "t": "narrate",
@@ -1259,7 +1319,7 @@
     },
     {
       "t": "narrate",
-      "text": "The Frog, in the wreckage, inhaled.",
+      "text": "[shot:closeup frog]The Frog, in the wreckage, inhaled.",
       "voice": "assets/audio/voice/vol5_ch20_judgement/239.ogg"
     },
     {

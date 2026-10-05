@@ -3017,6 +3017,119 @@ authored dark (concrete 0.14, brick 0.22, dark plank ceiling) with the
 workbench lamp the only key at the VN vantage — a model chapter's
 look, not a bug. Left for the Deck's verdict once it is built there.
 
+**2026-10-04 · MIRIAM'S SUBARU — new locale, draft 1 (ch 18 Moon ·
+ch 20 Judgement).** "Miriam's car was a 2009 Subaru wagon, dark green,
+immaculate. The back seat had a folded blanket and a thermos of
+coffee ... the crow ... settled on the roof." Both chapters borrowed
+vol 6's `vehicle_cab` — Ben's crew-cab pickup PARKED at a scrub
+turnout, the camera at the front console — for a wagon MOVING through
+cane fields with the women in the back seat. `build_miriam_subaru.py`
++ preset `miriam_subaru`: the camera is Natalie, back seat, left of
+centre, through the gap between the front seats over the dash at a
+two-lane road through cane at dawn (sun through Nicola's passenger-side
+window); the blanket and thermos, Nicola's duffel at her feet, Miriam's
+canvas bag and travel mug up front, the cash in Natalie's door pocket,
+the rearview ("Miriam's eyes met Natalie's in the rearview" now cuts
+to it); the crow rides on the roof. 260 m ahead: the county-line sign,
+the gas station (canopy, pumps, the store with the ice machine and the
+metal bench, the price pylon, the traffic light over the exit with the
+crow on it), the same Subaru parked at a pump — `wide station` and
+`insert crow` play the county-line beats on the same set — the I-49
+overpass, a sugar mill steaming on the horizon. Deck must BUILD
+miriam_subaru (new GLB).
+Draft 2 targets: the road does not move (a motion shader pass for the
+drive); figures are not staged (the frames hold their places); a
+Deck look at the dawn key through the passenger glass.
+
+**2026-10-04 · GRAUSTARK'S RUIN QUARTER + THE MINSTRAL'S GREEN
+(ch 9 Hermit · 17 Star · 20 Judgement · 21 World) — draft 2.** The
+four presets were the last untouched vol 5 backgrounds, and the
+establishes showed why: a red-and-white lighthouse on piles over open
+water, a grey slab with two pale rectangles, a green box on a flat
+field. Root causes, all in `build_graustark.py`:
+- THE QUARTER WAS IN THE BAYOU CHANNEL. Every hero prop (chalked wall,
+  I-beam, cottage path, desk) stood at z 0 over terrain at −3..−4.5 —
+  four metres of air over the water. The prose names the fix: the
+  cleanup year's limestone, "left in piles at the edges of the void".
+  `graustark_elevation` raises a fill plateau (`RUIN_FILL_*`, plus a
+  54 m disc round the void); the 6 m grid's edge cells make a natural
+  embankment. District props that land on it at bayou depth (a skiff,
+  crab traps, a hydrant, the lighthouse pier) skip.
+- THE SINKHOLE WAS A LID. Four solid capped cylinders, widest on top =
+  a raised disc. Now the terrain inside the lip drops below the floor
+  and `build_sinkhole_bowl_2026_10` lines it with open terraced bands
+  (strata faces / rubble ledges, darkening to a black pool), an apron
+  over the coarse grid's dip at the lip, pavement sliding in, the
+  fence the town gave up on.
+- THE RIVERFRONT'S RIVER WAS BURIED. The preservation zone returned
+  z 0 everywhere — over the riverfront river at −2.5 — so D'Ambrosio's
+  boat stood on dry ground in every district view and the World's
+  "down here by the river" had no river. The basin is carved, and the
+  Minstral's slough joins it from the south beside the wreck.
+- PROPS WERE PLACED ON THE WRONG HEIGHT. `terrain_surface_z(x, y)` is
+  the height of the TRIANGULATED mesh (the 6 m cells), not the
+  analytic field; the Child, the wildflower, reeds, knees and cypress
+  stand on it now.
+Built from the chapters' nouns: THE HABERDASHERY ("the gutted shell
+of what might have been a haberdashery") round Joanna's wall —
+checker floor with tiles gone, broken north wall where the I-beam
+crosses (the beam now ten feet up on two pier stubs, "the crow perched
+on a section of rusted I-beam ten feet above her"), empty window, the
+doorway onto nothing, the fallen west wall, counter + hat block +
+spools + crushed hat, her block with satchel/flashlight/chalk/charcoal/
+lipstick; the WRITING as lines of words (three chalk verses, the
+Star's charcoal verses, washed-out older chalk) with the receipt chip
+"to the right of the chalk". JOANNA'S PATCHED SHOTGUN HOUSE replaces
+the keeper's stucco box: back half on brick piers, tin gable with a
+new sheet and a blue tarp, the torn north end in mismatched plywood,
+joists jutting where the front rooms were; inside her desk-door-on-
+bricks under the east window (candle, letter, envelope, pen, notebook,
+flashlight — the desk stood OUTSIDE on the deck), pinned poems,
+mattress on a pallet, crate bookshelf, candle niche by the door, her
+D'Ambrosio's apron on a hook, the crow's gifts on the west sill; the
+flagstone path, salvaged picket fence + the gate, the herb bed newly
+planted, the clothesline, rain barrel, Rumpus asleep by the steps.
+THE DEAD LIGHT: the district lighthouse is broken at ten metres, its
+lantern room fallen (the Hermit's lantern is a failing flashlight;
+the beacon practical is gone, `Practical_Candle` lights the room).
+THE MINSTRAL'S GREEN: shaped hull beached on the slough bank, waterline
+stain and rust, deck + rails half gone, deckhouse windows, pilothouse,
+two stacks abreast (one broken — the old stack stood INSIDE the
+deckhouse), the paddlebox cover with boards gone and the wheel (rims,
+spokes, buckets) sagged into the water under the Frog's seat; reeds,
+cypress knees, a life-ring, cypress on the far bank. The HWY 90 truss
+gets real Warren diagonals (they were horizontal bars — a ladder fence
+in every frame) and three bents over the fill.
+DIRECTION: the Star is staged on the chalk-wall preset (five of its
+seven establishes are at the wall); the house beats cut to new
+`wide house` / `wide threshold` markers and the Hermit's lip moment to
+`wide sinkhole`; the World opens at the river (it opened in the ruin
+quarter with the Frog's close-ups pointing at a fence), switches to
+the cottage for Joanna's section and back. JUDGEMENT IS A MONTAGE —
+staged on the wreck, its ten close-ups all fell to the one closeup in
+the pool: the Child. It now cuts through fifteen rooms already built
+this month (Houston office, Montreal, the wall, the cab, the riverboat,
+Antonio's office, the room over the laundromat, Natalie's, the
+hospice, the design studio, the Iron Crow, the Roberts house, Elicia's,
+the cab, the wreck) with each vignette's cues re-pointed at what that
+room has (Erica's phone, the narwhal mug, the card and the bourbon at
+the helm, the record player, the rose, Philip and Mackenzie, Elicia's
+camera, the Frog). Deck must REBUILD graustark.
+Draft 3 targets: a Deck look at every Graustark frame (the fill's
+edges from the cottage establish; the sinkhole wide at night); the
+cat, and Rumpus at the wall (no creature kit for them yet); the crow
+on the patched roof for the Hermit/World lines (one bird for now);
+"Minstral's Green" lettering on the paddlebox (Label3D); the post
+office on Elm (Judgement's Joanna beat plays at the wall); a helm
+for Dante (the montage uses the riverboat dining room); the doll
+stays gone. NEXT IN VOL 5: the Hierophant (ch 5) plays "Outside St.
+Jude's Acadian Church" on the Lovers' ROADSIDE chapel and "the park
+near the Old Armory ... the abandoned bandstand" on the riverfront —
+the district has St. Jude's, the bandstand and the armory, but as
+far-LOD box stacks, and the bandstand stands 550 m from the armory.
+The ruin-quarter treatment (fill the nouns, presets at the real
+buildings) is the next pass.
+
 **2026-10-03 · THE EMPRESS'S FLOOR (ch 3, dambrosios_formal = the
 diner's west room).** The Empress plays on "the power plays at Table
 4, the whispered betrayals at Table 9 … the crystal at the empty
