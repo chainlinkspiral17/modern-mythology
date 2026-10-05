@@ -331,6 +331,17 @@ light_energy = 3.4
 omni_range = 5.5
 shadow_enabled = false
 
+; The Empress's floor at table height (2026-10-05): seven votives — Tables
+; 3, 6, 7 in the middle, 4, 9, 12, 14 in the corners — carried by ONE low
+; warm wash over the floor rather than seven lights (the diner is far past
+; the ~12-light guideline). Blender (-12.0, -3.6, 0.95) → godot below.
+[node name="WestFormalVotiveGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0, 0.95, 3.6)
+light_color = Color(1.0, 0.70, 0.36, 1)
+light_energy = 0.9
+omni_range = 3.4
+shadow_enabled = false
+
 ; Sideboard candelabra glow (interior sideboard against east wall of formal)
 [node name="WestFormalCandelabra" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 1.55, 3.5)

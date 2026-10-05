@@ -147,3 +147,112 @@ def make_crow_pair(prefix, x, y, z, gap=0.34, facing=1.0, scale=1.0):
               facing=facing, scale=scale, perched=True)
     make_crow("%s_B" % prefix, x + gap * 0.5, y + 0.05, z,
               facing=-facing, scale=scale * 0.95, perched=True)
+
+
+# ── DOG + CAT (2026-10-05) ────────────────────────────────────────
+# Joanna's animals are in four vol 5 chapters — "The cat, sensing the
+# shift, stopped cleaning its paw. The dog raised its head." "Her dog,
+# the one-eyed one, sleeps twitching in a sunbeam." — and were three
+# lumps. Same rules as the crow: silhouette first (a dog lying sphinx
+# reads by its raised head + forelegs out; a sitting cat by its pointed
+# ears + the tail wrapped round its feet), one bright eye, no rig.
+#
+# Orientation: `heading` is the way the animal FACES — '+X', '-X', '+Y'
+# or '-Y' (default '-Y', toward the usual camera side). `z` is the
+# ground (or the top of what it lies on).
+
+DOG_TAN = (0.62, 0.50, 0.36, 1.0)
+DOG_MUZZLE = (0.78, 0.68, 0.54, 1.0)
+DOG_DARK = (0.24, 0.18, 0.14, 1.0)
+CAT_GREY = (0.44, 0.42, 0.40, 1.0)
+CAT_DARK = (0.26, 0.25, 0.24, 1.0)
+PET_EYE = (0.92, 0.86, 0.52, 1.0)
+
+
+def _frame(x, y, z, heading):
+    hx, hy = {'+X': (1, 0), '-X': (-1, 0), '+Y': (0, 1), '-Y': (0, -1)}[heading]
+    sx, sy = -hy, hx                    # the animal's left
+
+    def P(fwd, side, up):
+        return (x + hx * fwd + sx * side, y + hy * fwd + sy * side, z + up)
+
+    axis_fwd = 'X' if hx else 'Y'
+    axis_side = 'Y' if hx else 'X'
+
+    def S(fwd, side, up):               # a box size in the animal's frame
+        return (abs(hx) * fwd + abs(sx) * side, abs(hy) * fwd + abs(sy) * side, up)
+    return P, S, axis_fwd, axis_side
+
+
+def make_dog(prefix, x, y, z, heading='-Y', pose='lying', scale=1.0, coat=DOG_TAN,
+             muzzle=DOG_MUZZLE, one_eyed=False):
+    """A medium mutt. pose: 'lying' (sphinx, head up — "the dog raised
+    its head"), 'curled' (asleep, nose to tail), 'sitting'."""
+    s = float(scale)
+    P, S, AF, AS = _frame(x, y, z, heading)
+    if pose == 'curled':
+        make_blob(f"{prefix}_Body", P(0.0, 0.0, 0.15 * s), 0.27 * s, coat, noise=0.10, seed=4, squash=0.55)
+        make_blob(f"{prefix}_Head", P(0.16 * s, 0.10 * s, 0.20 * s), 0.10 * s, coat, noise=0.06, seed=9, squash=0.8)
+        make_box(f"{prefix}_Muzzle", P(0.24 * s, 0.13 * s, 0.17 * s), S(0.10 * s, 0.07 * s, 0.06 * s), muzzle)
+        make_box(f"{prefix}_Ear", P(0.13 * s, 0.17 * s, 0.25 * s), S(0.06 * s, 0.04 * s, 0.07 * s), DOG_DARK)
+        make_box(f"{prefix}_Tail", P(0.10 * s, -0.20 * s, 0.035 * s), S(0.30 * s, 0.05 * s, 0.05 * s), coat)
+        return
+    if pose == 'sitting':
+        make_blob(f"{prefix}_Haunch", P(-0.12 * s, 0.0, 0.16 * s), 0.18 * s, coat, noise=0.08, seed=3, squash=0.85)
+        make_blob(f"{prefix}_Chest", P(0.05 * s, 0.0, 0.36 * s), 0.14 * s, coat, noise=0.06, seed=5, squash=1.15)
+        for sd in (-1, 1):
+            make_taper_cyl(f"{prefix}_Foreleg_{sd:+d}", P(0.12 * s, sd * 0.06 * s, 0.14 * s),
+                           0.03 * s, 0.025 * s, 0.28 * s, coat, segments=6)
+        hz, hf = 0.58 * s, 0.12 * s
+    else:  # lying, sphinx
+        make_blob(f"{prefix}_Chest", P(0.10 * s, 0.0, 0.15 * s), 0.17 * s, coat, noise=0.07, seed=5, squash=0.88)
+        make_blob(f"{prefix}_Hips", P(-0.20 * s, 0.0, 0.13 * s), 0.16 * s, coat, noise=0.07, seed=3, squash=0.80)
+        for sd in (-1, 1):
+            # (boxes: as horizontal tapers the tail and legs recorded a
+            # clip with the haberdashery's floor tiles; boxes record clean)
+            make_box(f"{prefix}_Foreleg_{sd:+d}", P(0.30 * s, sd * 0.07 * s, 0.035 * s), S(0.24 * s, 0.06 * s, 0.06 * s), coat)
+            make_blob(f"{prefix}_Paw_{sd:+d}", P(0.43 * s, sd * 0.07 * s, 0.03 * s), 0.035 * s, muzzle,
+                      noise=0.04, seed=7, squash=0.8)
+            make_blob(f"{prefix}_Hindleg_{sd:+d}", P(-0.18 * s, sd * 0.13 * s, 0.08 * s), 0.08 * s, coat,
+                      noise=0.06, seed=8, squash=0.9)
+        hz, hf = 0.38 * s, 0.28 * s
+    # neck, head, muzzle, nose, ears, eyes
+    make_blob(f"{prefix}_Neck", P(hf - 0.06 * s, 0.0, hz - 0.08 * s), 0.09 * s, coat, noise=0.05, seed=2, squash=1.1)
+    make_blob(f"{prefix}_Head", P(hf, 0.0, hz), 0.10 * s, coat, noise=0.06, seed=9, squash=0.9)
+    make_box(f"{prefix}_Muzzle", P(hf + 0.11 * s, 0.0, hz - 0.035 * s), S(0.12 * s, 0.08 * s, 0.07 * s), muzzle)
+    make_box(f"{prefix}_Nose", P(hf + 0.175 * s, 0.0, hz - 0.015 * s), S(0.02 * s, 0.04 * s, 0.03 * s), DOG_DARK)
+    for sd in (-1, 1):
+        make_box(f"{prefix}_Ear_{sd:+d}", P(hf - 0.02 * s, sd * 0.085 * s, hz + 0.02 * s),
+                 S(0.05 * s, 0.03 * s, 0.10 * s), DOG_DARK)
+        if one_eyed and sd > 0:
+            make_box(f"{prefix}_Eye_Scar_{sd:+d}", P(hf + 0.07 * s, sd * 0.058 * s, hz + 0.025 * s),
+                     S(0.03 * s, 0.006 * s, 0.006 * s), DOG_DARK)
+        else:
+            make_cyl(f"{prefix}_Eye_{sd:+d}", P(hf + 0.07 * s, sd * 0.06 * s, hz + 0.025 * s),
+                     0.012 * s, 0.006 * s, PET_EYE, segments=6, axis=AS)
+    make_box(f"{prefix}_Tail", P(-0.42 * s, 0.05 * s, 0.035 * s), S(0.30 * s, 0.05 * s, 0.05 * s), coat)
+
+
+def make_cat(prefix, x, y, z, heading='-Y', pose='sitting', scale=1.0, coat=CAT_GREY, dark=CAT_DARK):
+    """A cat. pose: 'sitting' (upright, tail round its feet) or 'loaf'
+    (paws tucked, a cat on a ledge)."""
+    s = float(scale)
+    P, S, AF, AS = _frame(x, y, z, heading)
+    if pose == 'loaf':
+        make_blob(f"{prefix}_Body", P(0.0, 0.0, 0.09 * s), 0.13 * s, coat, noise=0.06, seed=4, squash=0.70)
+        hz, hf = 0.17 * s, 0.13 * s
+    else:
+        make_blob(f"{prefix}_Haunch", P(-0.03 * s, 0.0, 0.09 * s), 0.11 * s, coat, noise=0.06, seed=4, squash=0.85)
+        make_blob(f"{prefix}_Chest", P(0.04 * s, 0.0, 0.19 * s), 0.075 * s, coat, noise=0.05, seed=6, squash=1.2)
+        for sd in (-1, 1):
+            make_cyl(f"{prefix}_Foreleg_{sd:+d}", P(0.07 * s, sd * 0.03 * s, 0.07 * s), 0.016 * s, 0.14 * s,
+                     coat, segments=6)
+        make_box(f"{prefix}_Tail", P(0.02 * s, 0.10 * s, 0.015 * s), S(0.22 * s, 0.03 * s, 0.03 * s), dark)
+        hz, hf = 0.30 * s, 0.06 * s
+    make_blob(f"{prefix}_Head", P(hf, 0.0, hz), 0.06 * s, coat, noise=0.05, seed=9, squash=0.92)
+    make_box(f"{prefix}_Muzzle", P(hf + 0.05 * s, 0.0, hz - 0.018 * s), S(0.03 * s, 0.04 * s, 0.03 * s), coat)
+    for sd in (-1, 1):
+        make_taper_cyl(f"{prefix}_Ear_{sd:+d}", P(hf - 0.005 * s, sd * 0.032 * s, hz + 0.062 * s),
+                       0.022 * s, 0.003 * s, 0.05 * s, dark, segments=5)
+        make_cyl(f"{prefix}_Eye_{sd:+d}", P(hf + 0.046 * s, sd * 0.024 * s, hz + 0.012 * s),
+                 0.009 * s, 0.005 * s, PET_EYE, segments=6, axis=AS)

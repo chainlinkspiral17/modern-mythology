@@ -5349,6 +5349,12 @@ def build_haberdashery_2026_10():
     _mb("Joanna_Charcoal", (41.62, -376.42, bt + 0.007), (0.018, 0.05, 0.014), (0.07, 0.07, 0.07, 1.0))
     _mc("Joanna_Lipstick", (41.30, -376.12, bt + 0.009), 0.009, 0.05, (0.62, 0.12, 0.18, 1.0), axis='X', segments=8)
     _mc("Chalk_Tin", (43.60, -374.30, FT + 0.04), 0.06, 0.08, (0.50, 0.48, 0.46, 1.0), segments=10)
+    # Her animals (2026-10-05): "The cat, sensing the shift, stopped
+    # cleaning its paw. The dog raised its head." Rumpus lies by her
+    # block, head up; the cat sits at the foot of the written wall.
+    from _props.creatures import make_dog as _dog, make_cat as _cat
+    _dog("Rumpus_Wall", 42.35, -376.40, FT, heading='-Y', pose='lying', one_eyed=True)
+    _cat("Joanna_Cat", 43.35, -375.00, FT, heading='-X', pose='sitting')
     # ── THE WRITING (left = north). Charcoal: the Star's verses ──
     char = (0.08, 0.08, 0.08, 1.0)
     chalk = (0.88, 0.87, 0.82, 1.0)
@@ -5655,12 +5661,10 @@ def build_shotgun_house_2026_10():
         cx_, cy_ = lx0 + (lx1 - lx0) * f_, ly0 + (ly1 - ly0) * f_
         _mrb(f"Yard_Line_Cloth_{ci_}", (cx_, cy_, 1.95 - 0.004 - h_ / 2.0), (w_, 0.015, h_), col, yaw=lyaw)
     _mc("Yard_Rain_Barrel", (X1 + 0.36, Y0 + 0.36, 0.45), 0.30, 0.90, (0.34, 0.30, 0.26, 1.0), segments=12)
-    # Rumpus, asleep in the sun by the steps (the one-eyed dog)
-    tan = (0.62, 0.50, 0.36, 1.0)
-    _mbl("Rumpus_Body", (53.25, -385.05, 0.17), 0.30, tan, noise=0.10, seed=4, squash=0.55)
-    _mbl("Rumpus_Head", (52.90, -385.30, 0.12), 0.12, tan, noise=0.08, seed=9, squash=0.85)
-    _mb("Rumpus_Eye_Patch", (52.83, -385.40, 0.15), (0.05, 0.02, 0.04), (0.18, 0.14, 0.12, 1.0))
-    _mtc("Rumpus_Tail", (53.58, -384.80, 0.08), 0.03, 0.01, 0.22, tan, segments=6)
+    # Rumpus, asleep in the sun by the steps — "Her dog, the one-eyed one,
+    # sleeps twitching in a sunbeam" (the creature kit's dog, 2026-10-05)
+    from _props.creatures import make_dog as _dog
+    _dog("Rumpus_Yard", 52.60, -384.75, 0.0, heading='-X', pose='curled', one_eyed=True)
 
 
 def build_minstral_wreck_2026_10():

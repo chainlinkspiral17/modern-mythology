@@ -3017,6 +3017,19 @@ authored dark (concrete 0.14, brick 0.22, dark plank ceiling) with the
 workbench lamp the only key at the VN vantage — a model chapter's
 look, not a bug. Left for the Deck's verdict once it is built there.
 
+**2026-10-05 · JOANNA'S ANIMALS + THE EMPRESS'S VOTIVES.** The creature
+kit had only the crow. `_props/creatures.py` gains `make_dog` (lying
+sphinx head-up · curled asleep · sitting; one-eyed option) and
+`make_cat` (sitting · loaf). Rumpus lies by Joanna's block at the wall
+and the cat sits at the wall's foot — Joanna's closeup now frames "The
+cat ... The dog raised its head"; Rumpus sleeps curled by the shotgun
+house's steps ("sleeps twitching in a sunbeam"). The Empress's floor:
+votives on the four corner tables (only the middle three had them) and
+ONE low warm wash at table height for all seven (the diner is far past
+the ~12-light guideline — one light, not seven). Deck must REBUILD
+graustark and diner. Draft N+1: the cat cleaning its paw (a pose); the
+crow on the patched roof; damask as a woven tone, not a flat colour.
+
 **2026-10-05 · THE HIEROPHANT AT HOME (ch 5) — St. Jude's + the park by
 the Old Armory, draft 2 of both district landmarks.** §I "Outside St.
 Jude's Acadian Church" played on the Lovers' roadside chapel; §IV "the
@@ -3154,9 +3167,9 @@ edges from the cottage establish; the sinkhole wide at night); the
 cat, and Rumpus at the wall (no creature kit for them yet); the crow
 on the patched roof for the Hermit/World lines (one bird for now);
 "Minstral's Green" lettering on the paddlebox (Label3D); the post
-office on Elm (Judgement's Joanna beat plays at the wall); a helm
-for Dante (the montage uses the riverboat dining room); the doll
-stays gone. NEXT IN VOL 5: the Hierophant (ch 5) plays "Outside St.
+office on Elm (Judgement's Joanna beat plays at the wall); the doll
+stays gone. (Correction 2026-10-05: the riverboat preset IS the helm —
+Dante's office upstairs — so the montage's Dante cut is right.) NEXT IN VOL 5: the Hierophant (ch 5) plays "Outside St.
 Jude's Acadian Church" on the Lovers' ROADSIDE chapel and "the park
 near the Old Armory ... the abandoned bandstand" on the riverfront —
 the district has St. Jude's, the bandstand and the armory, but as

@@ -6055,6 +6055,12 @@ def build_dambrosios_dressing_2026_08():
         # Wine glass per cover.
         make_cyl(f"Damb_{tag}_Glass", (tx - 0.14, ty - 0.12, 0.83), 0.03, 0.15,
                  (0.86, 0.92, 0.94, 1.0), segments=6, axis='Z')
+        # A votive on every table (2026-10-05): "calculated mood lighting"
+        # — the middle tables had theirs, the corners had none.
+        make_cyl(f"Damb_{tag}_Votive", (tx + 0.08, ty - 0.10, 0.795), 0.03, 0.07,
+                 (0.88, 0.84, 0.72, 0.7), segments=8, axis='Z')
+        make_sphere_low(f"Damb_{tag}_Votive_Flame", (tx + 0.08, ty - 0.10, 0.845), 0.02,
+                        (0.98, 0.78, 0.32, 1.0), rings=2, segments=4)
     # Table 14: the CHECK FOLDER + the unanswered calling card
     # (Dean's "check, please" with nothing ordered).
     make_box("Damb_T14_CheckFolder", (-9.72, -5.05, 0.765), (0.17, 0.24, 0.018),
