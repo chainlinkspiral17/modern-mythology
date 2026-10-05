@@ -5,7 +5,7 @@ import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb, make_tube, make_dome
+from _props.geometry import clear_scene, make_box, make_cyl, export_glb, make_tube, make_dome, make_taper_cyl
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_wall_with_openings
 from _props.store_fixtures import make_counter, make_counter_bullnose
 from _props.decor import make_wall_clock
@@ -122,6 +122,11 @@ def build_hero_props():
     make_box("Booth_Back_S", (-3.1, 0.32, 0.80), (1.6, 0.10, 0.70), vinyl)
     make_box("Booth_Table", (-3.4, 1.35, 0.74), (1.10, 0.75, 0.05), wood)
     make_box("Booth_Table_Leg", (-3.4, 1.35, 0.37), (0.10, 0.10, 0.72), (0.20, 0.19, 0.20, 1.0))
+    # The booth's own light (2026-10-05): a wall sconce over the table on
+    # the west wall — Doug's corner had only the room's pendants.
+    make_box("Booth_Sconce_Plate", (-4.39, 1.35, 1.78), (0.02, 0.14, 0.22), (0.30, 0.24, 0.16, 1.0))
+    make_box("Booth_Sconce_Arm", (-4.32, 1.35, 1.80), (0.12, 0.02, 0.02), (0.30, 0.24, 0.16, 1.0))
+    make_taper_cyl("Booth_Sconce_Shade", (-4.20, 1.35, 1.80), 0.09, 0.05, 0.14, (0.86, 0.56, 0.28, 1.0), segments=10)
     make_cyl("Saltshaker", (-3.25, 1.30, 0.80), 0.022, 0.08, (0.88, 0.88, 0.84, 0.9), segments=8)
     make_box("Folded_Twenty", (-3.25, 1.30, 0.8286), (0.05, 0.035, 0.006), (0.55, 0.62, 0.50, 1.0))
     for bi, (bx, by) in enumerate(((-3.6, 1.5), (-3.15, 1.55))):

@@ -174,6 +174,16 @@ light_energy = 1.3
 omni_range = 4.0
 shadow_enabled = false
 
+; The LAUNDROMAT sign below the window (2026-10-05): the room's second
+; practical. Its pink glow comes up past the sill onto the shade and the
+; ceiling by the window. Blender (0.9, 5.55, -0.20) → godot.
+[node name="Practical_LaundromatSign" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, -0.20, -5.55)
+light_color = Color(0.98, 0.50, 0.70, 1)
+light_energy = 1.1
+omni_range = 4.5
+shadow_enabled = false
+
 [node name="Back_None" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 4, 4)
 light_color = Color(0.42, 0.32, 0.22, 1)

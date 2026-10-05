@@ -208,6 +208,16 @@ light_energy = 1.5
 omni_range = 3.4
 shadow_enabled = false
 
+; The booth's sconce (2026-10-05): blender (-4.20, 1.35, 1.80) → godot
+; (-4.20, 1.80, -1.35). Warm, short — it lights Doug's table and the
+; booth's vinyl, not the room.
+[node name="Practical_BoothSconce" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.15, 1.74, -1.35)
+light_color = Color(1.0, 0.68, 0.36, 1)
+light_energy = 0.8
+omni_range = 2.4
+shadow_enabled = false
+
 [node name="JukeboxGlow" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8, 1.5, -1.0)
 light_color = Color(1.0, 0.6, 0.42, 1)

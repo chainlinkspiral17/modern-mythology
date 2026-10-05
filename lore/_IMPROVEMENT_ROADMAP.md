@@ -3249,7 +3249,10 @@ bar TV (it cut the screen off), the room's letter (it framed the bed)
 and mirror (a bare wall). All three clean on every gate. Deck must
 REBUILD all three. Draft N+1: the office is still four times canon's twelve by
 ten (a full rebuild at scale); the bar's booth wants its own light;
-the room's bare bulb is the only practical.
+the room's bare bulb is the only practical. (2026-10-05: the booth
+has a wall sconce with its own practical over Doug's table; the room's
+LAUNDROMAT sign below the window is its second practical. Still open:
+the office at canon scale.)
 
 **2026-10-03 · WINDOWS CUT ACROSS VOL 5 (draft N+1 of the glass
 pass).** Every remaining vol 5 window on a solid wall is cut with
