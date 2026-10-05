@@ -337,6 +337,14 @@
       "bed": "assets/audio/bgm/vol6_two_lane.wav",
       "gain": 0.4
     },
+    "graustark_st_jude": {
+      "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
+      "gain": 0.5
+    },
+    "graustark_armory_park": {
+      "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
+      "gain": 0.64
+    },
     "miriam_subaru": {
       "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
       "gain": 0.4

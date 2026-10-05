@@ -551,3 +551,19 @@ position = Vector3(42.600, 1.200, 375.600)
 rotation = Vector3(-0.4376, 2.0989, 0.0)
 metadata/fov = 40.0
 
+; ── the Hierophant (2026-10-05): St. Jude's on a Sunday, the park by the Old Armory
+[node name="shot_closeup_paul__graustark_st_jude" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-198.400, 1.700, -176.600)
+rotation = Vector3(0.0418, 0.2247, 0.0)
+metadata/fov = 40.0
+
+[node name="shot_closeup_maya__graustark_st_jude" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-191.800, 1.150, -178.400)
+rotation = Vector3(-0.0840, 0.9048, 0.0)
+metadata/fov = 42.0
+
+[node name="shot_insert_notebook__graustark_armory_park" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(229.150, 4.250, 343.600)
+rotation = Vector3(-0.5526, 2.8879, 0.0)
+metadata/fov = 28.0
+

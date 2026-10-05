@@ -3017,6 +3017,40 @@ authored dark (concrete 0.14, brick 0.22, dark plank ceiling) with the
 workbench lamp the only key at the VN vantage — a model chapter's
 look, not a bug. Left for the Deck's verdict once it is built there.
 
+**2026-10-05 · THE HIEROPHANT AT HOME (ch 5) — St. Jude's + the park by
+the Old Armory, draft 2 of both district landmarks.** §I "Outside St.
+Jude's Acadian Church" played on the Lovers' roadside chapel; §IV "the
+park near the Old Armory ... the abandoned bandstand" played on the
+riverfront's parking lot. Both now play in the district, on two new
+presets (`graustark_st_jude`, `graustark_armory_park`):
+- ST. JUDE'S FRONT was a solid block: the steeple's 5 m base stood over
+  the entrance and swallowed the door, the portico and all three steps.
+  Rebuilt: a gable roof; the tower over an open entry (piers + lintel,
+  the doors at the back of the recess), belfry louvres, a rose window;
+  a portico on two columns; two steps to the front walk. The church
+  straddled the riverfront zone's edge (half its steps under 1.2 m of
+  field) — a level CIVIC PAD under it, and one under the armory, which
+  stood on a 7 m slope.
+- SR12 and the other district roads floated ~3 m over the flat zone (a
+  berm's declared grade); on the flat zone and the pads they lie on the
+  ground now (HWY 90 stays a berm).
+- §I dressing: the street, curbs, sidewalks, front walk; "a long black
+  car idling by the curb" with its exhaust; two parked cars; the
+  fellowship table (cloth, lemonade dispenser, cup stack, cookies); the
+  trash can with the cup in it; the parish sign; a live oak with moss;
+  four parishioners in Sunday clothes. `closeup paul` frames the door
+  he walks out of, `closeup maya` the lemonade table.
+- §IV: a small park on the armory's east side — gravel paths, THE
+  ABANDONED BANDSTAND (octagonal deck, posts, verdigris roof, two rail
+  sections gone and one in the grass, weeds, cans, the crow on the
+  rail), three chipped benches (John's with his open notebook and the
+  pigeon), two lamps (one globe smashed), a trash can, two live oaks.
+  `insert notebook` frames John's notebook on the bench.
+Deck must REBUILD graustark.
+Draft 3 targets: heat shimmer for §I's `lunch`; the armory's east face
+(doors, plaque) and the park's street edge; working lamps as dusk
+practicals; check the district priest figure's framing at the door.
+
 **2026-10-04 · MIRIAM'S SUBARU — new locale, draft 1 (ch 18 Moon ·
 ch 20 Judgement).** "Miriam's car was a 2009 Subaru wagon, dark green,
 immaculate. The back seat had a folded blanket and a thermos of

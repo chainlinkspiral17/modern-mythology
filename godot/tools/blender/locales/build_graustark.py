@@ -128,6 +128,9 @@ SINK_FILL_R = 54.0
 # The riverfront river's basin (build_riverfront.build_river: water box
 # x -25..55, y -100..100; the quay wall at x -18) and the Minstral's
 # slough beside the wreck. Grid vertices inside are carved below the bed.
+# St. Jude's (Hierophant §I) and the park by the Old Armory (§IV)
+CIVIC_PADS = [(-248.0, -150.0, 148.0, 248.0, 0.0),
+              (168.0, 252.0, -372.0, -306.0, 2.9)]
 RF_RIVER_X = (-18.0, 54.0)
 RF_RIVER_Y = (-99.0, 99.0)
 SLOUGH_X = (41.0, 56.0)
@@ -185,6 +188,13 @@ def graustark_elevation(x, y):
     the existing build_riverfront geometry sits ON TOP of a flat
     field rather than fighting carved bayou geometry.
     """
+    # Civic pads (2026-10-05): St. Jude's straddled the riverfront zone's
+    # edge (half its steps under the field's 1.2 m), and the Old Armory
+    # stood on a 7 m slope. Each gets level ground; the grid's edge cells
+    # make the grade back to the field.
+    for (px0, px1, py0, py1, pz) in CIVIC_PADS:
+        if px0 <= x <= px1 and py0 <= y <= py1:
+            return pz
     # Riverfront preservation
     if (RF_ZONE_X[0] <= x <= RF_ZONE_X[1]
             and RF_ZONE_Y[0] <= y <= RF_ZONE_Y[1]):
@@ -550,9 +560,21 @@ def _emit_road_strip(name, waypoints, half_w, color):
         return z0 + (z1 - z0) * t
 
     verts, faces = [], []
+    def on_flat(x, y):
+        # (2026-10-05) a berm's declared grade floated SR12 ~3 m over
+        # the riverfront zone's flat field — beside St. Jude's. On the
+        # flat zone and the civic pads the strip lies on the ground.
+        if RF_ZONE_X[0] <= x <= RF_ZONE_X[1] and RF_ZONE_Y[0] <= y <= RF_ZONE_Y[1]:
+            return True
+        return any(px0 <= x <= px1 and py0 <= y <= py1 for (px0, px1, py0, py1, _pz) in CIVIC_PADS)
     for i in range(len(sm) - 1):
         x0, y0 = sm[i]; x1, y1 = sm[i + 1]
         z0 = interp_z(i); z1 = interp_z(i + 1)
+        if name != "HWY90":      # the interstate stays a raised berm
+            if on_flat(x0, y0):
+                z0 = terrain_surface_z(x0, y0) + 0.06
+            if on_flat(x1, y1):
+                z1 = terrain_surface_z(x1, y1) + 0.06
         dx, dy = x1 - x0, y1 - y0
         seg = math.hypot(dx, dy) or 1.0
         nx, ny = -dy / seg, dx / seg
@@ -1416,39 +1438,37 @@ def _build_hierophant_church():
     ht._make_box_local("Hier_Church_Nave",
                        (cx, cy, gz + H / 2 + 0.50),
                        (W, D, H), COL_STUCCO_WHITE)
-    # Hipped roof — flat plate + small ridge
-    ht._make_box_local("Hier_Church_Roof",
-                       (cx, cy, gz + H + 0.30),
-                       (W + 0.6, D + 0.6, 0.60), COL_TIN_FRESH)
-    ht._make_box_local("Hier_Church_Ridge",
-                       (cx, cy, gz + H + 0.90),
-                       (W * 0.20, D - 1.5, 0.40), COL_TIN_FRESH)
-    # Front gable + steeple on the south end (facing the riverfront)
-    steeple_cy = cy - D / 2 - 2.0
-    # Steeple base
-    ht._make_box_local("Hier_Church_SteepleBase",
-                       (cx, steeple_cy, gz + 6.0 / 2),
-                       (5.0, 5.0, 6.0), COL_STUCCO_WHITE)
-    # Steeple tower (3 stacked tapering boxes)
-    ht._make_box_local("Hier_Church_Steeple_Mid",
-                       (cx, steeple_cy, gz + 9.0),
-                       (4.0, 4.0, 6.0), COL_STUCCO_WHITE)
-    ht._make_box_local("Hier_Church_Steeple_Belfry",
-                       (cx, steeple_cy, gz + 13.0),
-                       (3.4, 3.4, 2.0), COL_STUCCO_CREAM)
-    # Pointed spire (small pyramid box stack)
+    # (2026-10-05, the Hierophant pass) THE FRONT, rebuilt: the steeple's
+    # 5 m base used to stand as a solid block over the entrance — the
+    # door, the portico's roof and columns and all three steps were
+    # inside it. Now: a gable roof over the nave; the tower stands over
+    # an open entry (two piers + a lintel, the doors at the back of the
+    # recess on the nave front); a portico on two columns in front of it;
+    # two steps down to the front walk.
+    from _props.geometry import make_gable as _mg
+    _mg("Hier_Church_Roof", (cx, cy, gz + H + 0.5 + 2.0), (W + 0.8, D + 0.8, 4.0), COL_TIN_FRESH,
+        ridge_axis='Y')
+    front_y = cy - D / 2                       # nave front face (186)
+    ty0, ty1 = front_y - 3.6, front_y          # the tower's depth
+    tcy = (ty0 + ty1) / 2.0
+    for s_ in (-1, +1):
+        ht._make_box_local(f"Hier_Church_Tower_Pier_{s_:+d}",
+                           (cx + s_ * 1.75, tcy, gz + 3.0), (1.5, 3.6, 6.0), COL_STUCCO_WHITE)
+    ht._make_box_local("Hier_Church_Tower_Lintel", (cx, tcy, gz + 4.8), (2.0, 3.6, 2.4), COL_STUCCO_WHITE)
+    ht._make_box_local("Hier_Church_Tower_Floor", (cx, tcy, gz + 0.25), (2.0, 3.6, 0.5), COL_LIMESTONE)
+    ht._make_box_local("Hier_Church_Steeple_Mid", (cx, tcy, gz + 9.25), (5.0, 3.6, 6.5), COL_STUCCO_WHITE)
+    ht._make_box_local("Hier_Church_Steeple_Belfry", (cx, tcy, gz + 13.5), (3.4, 3.4, 2.0), COL_STUCCO_CREAM)
+    for bi_, (bx_, by_, sx_, sy_) in enumerate(((0.0, -1.71, 1.0, 0.02), (0.0, 1.71, 1.0, 0.02),
+                                                (-1.71, 0.0, 0.02, 1.0), (1.71, 0.0, 0.02, 1.0))):
+        ht._make_box_local(f"Hier_Church_Belfry_Louver_{bi_}", (cx + bx_, tcy + by_, gz + 13.5),
+                           (sx_, sy_, 1.2), (0.30, 0.26, 0.22, 1.0))
+    zs = gz + 14.5
     for i, h in enumerate([1.5, 1.2, 0.8]):
-        ht._make_box_local(
-            f"Hier_Church_Spire_{i}",
-            (cx, steeple_cy, gz + 14.5 + sum([1.5,1.2,0.8][:i]) + h/2),
-            (2.4 - i*0.6, 2.4 - i*0.6, h), COL_TIN_FRESH)
-    # Cross on top
-    ht._make_box_local("Hier_Church_Cross_V",
-                       (cx, steeple_cy, gz + 18.72),
-                       (0.12, 0.12, 1.4), COL_BLACK_IRON)
-    ht._make_box_local("Hier_Church_Cross_H",
-                       (cx, steeple_cy, gz + 18.6),
-                       (0.80, 0.12, 0.12), COL_BLACK_IRON)
+        ht._make_box_local(f"Hier_Church_Spire_{i}", (cx, tcy, zs + h / 2), (2.4 - i * 0.6, 2.4 - i * 0.6, h),
+                           COL_TIN_FRESH)
+        zs += h
+    ht._make_box_local("Hier_Church_Cross_V", (cx, tcy, zs + 0.7), (0.12, 0.12, 1.4), COL_BLACK_IRON)
+    ht._make_box_local("Hier_Church_Cross_H", (cx, tcy, zs + 0.95), (0.80, 0.12, 0.12), COL_BLACK_IRON)
     # Stained-glass arched window panels — 4 each long side
     for side_sgn in (-1, +1):
         side_x = cx + side_sgn * (W / 2 + 0.05)
@@ -1460,27 +1480,24 @@ def _build_hierophant_church():
                 (side_x, wy, gz + 5.5),
                 (0.10, 1.4, 3.6),
                 (0.20, 0.34, 0.52, 1.0))   # blue stained glass
-    # Front door
-    ht._make_box_local("Hier_Church_Door",
-                       (cx, cy - D / 2 - 0.05, gz + 1.5),
-                       (1.6, 0.10, 3.0), COL_DOOR_DARK)
-    # Front portico — small overhang above the door supported by
-    # two limestone columns
-    pcy = cy - D / 2 - 1.4
-    ht._make_box_local("Hier_Church_Portico_Roof",
-                       (cx, pcy, gz + 4.6),
-                       (5.0, 2.8, 0.40), COL_LIMESTONE)
-    for s in (-1, +1):
-        ht._make_cyl_local(
-            f"Hier_Church_Portico_Col_{s:+d}",
-            (cx + s * 2.0, pcy, gz + 4.6 / 2),
-            0.30, 4.4, COL_LIMESTONE, segments=8)
-    # Front steps
-    for s in range(3):
-        ht._make_box_local(
-            f"Hier_Church_Step_{s}",
-            (cx, pcy - 1.4 - s * 0.4, gz + 0.18 + s * 0.18),
-            (5.6 + s * 0.8, 0.4, 0.18), COL_LIMESTONE)
+    # The doors at the back of the recess, a rose window over the tower
+    ht._make_box_local("Hier_Church_Door", (cx, front_y - 0.05, gz + 0.5 + 1.35), (1.7, 0.10, 2.7), COL_DOOR_DARK)
+    from _props.geometry import make_cyl as _mcy
+    _mcy("Hier_Church_Rose_Window", (cx, ty0 - 0.03, gz + 9.6), 0.9, 0.06,
+         (0.52, 0.26, 0.30, 1.0), segments=16, axis='Y')
+    # Portico in front of the tower: deck, two columns, roof
+    py0, py1 = ty0 - 3.0, ty0
+    pcy = (py0 + py1) / 2.0
+    ht._make_box_local("Hier_Church_Portico_Deck", (cx, pcy, gz + 0.25), (6.0, 3.0, 0.5), COL_LIMESTONE)
+    for s_ in (-1, +1):
+        ht._make_cyl_local(f"Hier_Church_Portico_Col_{s_:+d}", (cx + s_ * 2.4, py0 + 0.45, gz + 0.5 + 1.95),
+                           0.26, 3.9, COL_LIMESTONE, segments=10)
+    ht._make_box_local("Hier_Church_Portico_Roof", (cx, pcy, gz + 4.575), (6.0, 3.0, 0.35), COL_LIMESTONE)
+    ht._make_box_local("Hier_Church_Portico_Pediment", (cx, py0 + 0.15, gz + 5.05), (6.0, 0.3, 0.6), COL_STUCCO_CREAM)
+    # Steps down to the front walk
+    for s_, (stz, sw) in enumerate(((0.333, 6.0), (0.167, 6.8))):
+        ht._make_box_local(f"Hier_Church_Step_{s_}", (cx, py0 - 0.25 - s_ * 0.5, gz + stz / 2.0), (sw, 0.5, stz),
+                           COL_LIMESTONE)
     # Buttresses along the nave — 4 per side
     for side_sgn in (-1, +1):
         for b in range(4):
@@ -4277,6 +4294,10 @@ _NPC_PALETTES = [
 # (~200 tris/figure). The split limits the planar cost to ~43k tris
 # for the 12 narrative-anchored characters while keeping the
 # 35 background extras cheap.
+# Spawns the planar reference must not stand in for (they are in a vol 5
+# frame): they fall through to a dressed primitive figure.
+PRIMITIVE_ONLY = {'Church_priest', 'Church_attendee'}
+
 TIER_1_LABELS = {
     'Diner_John',             # Fool — John Frank at D'Ambrosio's
     'FQ_Elicia',              # Priestess — Elicia at her curio shop
@@ -4353,8 +4374,13 @@ NPC_SPAWNS = [
     # ── Magician cathedral approach ──
     ("Cath_visitor",      +290.0, +366.0, '+Y', 'male_avg'),
     # ── Church entrance ──
-    ("Church_priest",    -200.0, +185.0, '-Y', 'elderly'),
-    ("Church_attendee",  -196.0, +183.0, '-Y', 'female_avg'),
+    # (2026-10-05) were (-200, 185) / (-196, 183): inside the old solid
+    # steeple base. With the entry opened the priest stood in the doorway
+    # as the planar REFERENCE mannequin (no hero file on disk) — a pale
+    # nude dummy at St. Jude's door. Beside the front walk now, and
+    # dressed (PRIMITIVE_ONLY below).
+    ("Church_priest",    -202.0, +178.1, '-Y', 'elderly'),
+    ("Church_attendee",  -197.6, +178.1, '-X', 'female_avg'),
     # ── Frog shop owner ──
     ("Frog_owner",       +152.0, +296.0, '-Y', 'male_heavy'),
     # ── Gas station attendant + customer ──
@@ -4765,8 +4791,10 @@ def build_district_characters_and_props():
                 if _instance_hero_glb(label, x, y, z, facing):
                     placed_hero += 1
                     continue
-            # 2. Planar reference for tier-1 spawns missing a hero
-            if planar_ready and label in TIER_1_LABELS:
+            # 2. Planar reference for tier-1 spawns missing a hero —
+            # never where a vol 5 frame can see them (an undressed
+            # reference mannequin; 2026-10-05)
+            if planar_ready and label in TIER_1_LABELS and label not in PRIMITIVE_ONLY:
                 if _instance_planar_npc(label, x, y, z, facing,
                                          body_type):
                     placed_planar += 1
@@ -5756,6 +5784,219 @@ def build_minstral_wreck_2026_10():
         _emit_cypress(f"Minstral_Cypress_{ti}", tx, ty, terrain_surface_z(tx, ty))
 
 
+def _sedan_2026_10(prefix, cx, cy, col, length=4.7, facing_west=True):
+    """A sedan parked along an east-west curb (long axis x)."""
+    from _props.geometry import make_box as _mb, make_cyl as _mc
+    L, Wd = length, 1.85
+    _mb(f"{prefix}_Body", (cx, cy, 0.65), (L, Wd, 0.70), col)
+    _mb(f"{prefix}_Glass", (cx + (0.25 if facing_west else -0.25), cy, 1.24), (L * 0.52, Wd - 0.20, 0.48),
+        (0.10, 0.12, 0.14, 0.65))
+    _mb(f"{prefix}_Roof", (cx + (0.25 if facing_west else -0.25), cy, 1.505), (L * 0.52, Wd - 0.20, 0.05), col)
+    fx = cx - L / 2.0 if facing_west else cx + L / 2.0
+    rx = cx + L / 2.0 if facing_west else cx - L / 2.0
+    sg = -1 if facing_west else 1
+    for wx in (fx - sg * 0.85, rx + sg * 0.85):
+        for s_ in (-1, 1):
+            _mc(f"{prefix}_Wheel_{wx:.1f}_{s_:+d}", (wx, cy + s_ * (Wd / 2.0 - 0.10), 0.34), 0.34, 0.22,
+                (0.08, 0.08, 0.08, 1.0), axis='Y', segments=14)
+    _mb(f"{prefix}_Grille", (fx + sg * 0.005, cy, 0.66), (0.01, 1.10, 0.28), (0.70, 0.72, 0.74, 1.0))
+    for s_ in (-1, 1):
+        _mb(f"{prefix}_Headlight_{s_:+d}", (fx + sg * 0.005, cy + s_ * 0.70, 0.74), (0.01, 0.30, 0.12),
+            (0.92, 0.90, 0.80, 1.0))
+        _mb(f"{prefix}_Taillight_{s_:+d}", (rx - sg * 0.005, cy + s_ * 0.72, 0.80), (0.01, 0.26, 0.14),
+            (0.62, 0.10, 0.08, 1.0))
+
+
+def build_st_jude_sunday_2026_10():
+    """ST. JUDE'S ON A SUNDAY (Hierophant §I, 2026-10-05) — "Outside St.
+    Jude's Acadian Church": the heat off the asphalt, the church steps,
+    the small crowd leaving the service, the ladies with tight smiles,
+    Maya's cup of lemonade-flavored water (she drops it in the trash),
+    and "a long black car idling by the curb". The chapter played on the
+    Lovers' roadside chapel until now.
+
+    The street in front of the church (a curb, sidewalks, the front walk
+    to the new steps), the long black car idling at the curb with its
+    exhaust in the heat, two parked cars, the fellowship table on the
+    lawn (cloth, the lemonade dispenser, the cup stack, cookies), the
+    trash can on the sidewalk with a cup in it, the parish sign, a live
+    oak with moss, four parishioners in Sunday clothes.
+
+    Draft 2: heat shimmer (a post-process for `lunch`); the priest's
+    figure at the door is the district hero — check its framing."""
+    from _props.geometry import make_box as _mb, make_cyl as _mc, make_blob as _mbl
+    from human_sculpt import human_figure
+    conc = (0.70, 0.68, 0.64, 1.0)
+    _mb("StJude_Street_Asphalt", (-209.6, 171.5, 0.02), (52.8, 7.0, 0.04), (0.24, 0.24, 0.26, 1.0))
+    _mb("StJude_Street_Line", (-209.6, 171.5, 0.0405), (52.8, 0.10, 0.001), (0.86, 0.74, 0.22, 1.0))
+    _mb("StJude_Curb_N", (-209.6, 175.1, 0.075), (52.8, 0.20, 0.15), conc)
+    _mb("StJude_Sidewalk_N", (-209.6, 176.4, 0.06), (52.8, 2.4, 0.12), conc)
+    _mb("StJude_Sidewalk_S", (-209.6, 166.8, 0.06), (52.8, 2.4, 0.12), conc)
+    _mb("StJude_Curb_S", (-209.6, 167.9, 0.075), (52.8, 0.20, 0.15), conc)
+    _mb("StJude_Front_Walk", (-200.0, 178.0, 0.06), (3.0, 0.8, 0.12), conc)
+    _mb("StJude_Lawn_Ground", (-211.0, 181.8, 0.01), (50.0, 8.4, 0.02), (0.36, 0.46, 0.26, 1.0))
+    # the long black car, idling — Paul's — and the parked cars
+    _sedan_2026_10("StJude_Black_Car", -206.2, 173.9, (0.05, 0.05, 0.06, 1.0), length=5.6)
+    _mbl("StJude_Black_Car_Exhaust_Smoke", (-203.05, 174.45, 0.34), 0.20, (0.80, 0.80, 0.82, 0.30), noise=0.3, seed=2, squash=0.7)
+    _sedan_2026_10("StJude_Parked_Car_0", -224.0, 173.9, (0.66, 0.68, 0.70, 1.0))
+    _sedan_2026_10("StJude_Parked_Car_1", -189.8, 173.9, (0.42, 0.14, 0.16, 1.0))
+    # the fellowship table on the lawn
+    tx, ty, top = -194.6, 180.6, 0.74
+    _mb("StJude_Table_Top", (tx, ty, top), (1.8, 0.76, 0.04), (0.72, 0.70, 0.66, 1.0))
+    _mb("StJude_Table_Cloth", (tx, ty, top + 0.023), (1.84, 0.80, 0.006), (0.94, 0.93, 0.90, 1.0))
+    for lx in (-0.82, 0.82):
+        for ly in (-0.30, 0.30):
+            _mc(f"StJude_Table_Leg_{lx:+.1f}_{ly:+.1f}", (tx + lx, ty + ly, 0.02 + 0.35), 0.02, 0.70,
+                (0.40, 0.40, 0.42, 1.0), segments=6)
+    ct = top + 0.026
+    _mc("StJude_Lemonade_Base", (tx - 0.50, ty, ct + 0.02), 0.15, 0.04, (0.80, 0.80, 0.82, 1.0), segments=12)
+    _mc("StJude_Lemonade_Dispenser", (tx - 0.50, ty, ct + 0.04 + 0.18), 0.14, 0.36, (0.96, 0.88, 0.42, 0.6), segments=14)
+    _mb("StJude_Lemonade_Spigot", (tx - 0.50, ty - 0.15, ct + 0.10), (0.04, 0.03, 0.03), (0.86, 0.86, 0.88, 1.0))
+    _mc("StJude_Cup_Stack", (tx + 0.10, ty + 0.15, ct + 0.10), 0.04, 0.20, (0.96, 0.96, 0.94, 1.0), segments=10)
+    for ci_, (cx_, cy_) in enumerate(((0.25, -0.18), (0.38, 0.05), (-0.20, -0.22))):
+        _mc(f"StJude_Cup_{ci_}", (tx + cx_, ty + cy_, ct + 0.045), 0.035, 0.09, (0.96, 0.96, 0.94, 1.0), segments=10)
+    _mb("StJude_Cookie_Tray", (tx + 0.60, ty, ct + 0.01), (0.40, 0.30, 0.02), (0.82, 0.82, 0.84, 1.0))
+    for ki in range(5):
+        _mc(f"StJude_Cookie_{ki}", (tx + 0.48 + (ki % 3) * 0.11, ty - 0.06 + (ki // 3) * 0.12, ct + 0.025),
+            0.035, 0.01, (0.70, 0.52, 0.30, 1.0), segments=8)
+    # the trash can on the sidewalk, the cup in it
+    _mc("StJude_Trash_Can", (-196.6, 176.9, 0.12 + 0.45), 0.28, 0.90, (0.20, 0.26, 0.22, 1.0), segments=12)
+    _mc("StJude_Trash_Can_Cup", (-196.55, 176.92, 1.0), 0.035, 0.09, (0.96, 0.96, 0.94, 1.0), segments=10)
+    # the parish sign
+    for px in (-207.4, -205.6):
+        _mb(f"StJude_Sign_Post_{px:.1f}", (px, 177.9, 0.02 + 0.80), (0.08, 0.08, 1.60), (0.30, 0.24, 0.18, 1.0))
+    _mb("StJude_Sign_Board", (-206.5, 177.9, 1.10), (1.72, 0.08, 1.0), (0.92, 0.90, 0.84, 1.0))
+    _mb("StJude_Sign_Band", (-206.5, 177.855, 1.45), (1.72, 0.01, 0.20), (0.46, 0.14, 0.14, 1.0))
+    # a live oak with moss on the west lawn
+    _mc("StJude_Oak_Trunk", (-213.5, 180.5, 0.02 + 2.1), 0.45, 4.2, (0.36, 0.30, 0.24, 1.0), segments=10)
+    for oi, (ox, oy, oz, r) in enumerate(((0.0, 0.0, 5.6, 3.2), (-2.2, 0.8, 5.0, 2.4), (2.0, -0.6, 5.2, 2.6),
+                                          (0.4, 1.8, 6.4, 2.2))):
+        _mbl(f"StJude_Oak_Canopy_{oi}", (-213.5 + ox, 180.5 + oy, oz), r, (0.26, 0.36, 0.20, 1.0), noise=0.25,
+             seed=oi + 3, squash=0.7)
+    for mi, (mx, my) in enumerate(((-1.6, -1.4), (1.2, -1.8), (-2.4, 0.2), (2.4, 0.6))):
+        _mb(f"StJude_Oak_Moss_{mi}", (-213.5 + mx, 180.5 + my, 3.9), (0.22, 0.10, 1.0), (0.56, 0.58, 0.48, 1.0))
+    # the small crowd leaving the service
+    for fi, (fx, fy, face, body, jacket, pants, hair) in enumerate((
+            (-193.4, 181.9, '-X', 'female_avg', (0.62, 0.30, 0.44, 1.0), (0.62, 0.30, 0.44, 1.0), (0.82, 0.72, 0.52, 1.0)),
+            (-195.9, 181.9, '+X', 'female_slim', (0.30, 0.42, 0.62, 1.0), (0.30, 0.42, 0.62, 1.0), (0.66, 0.62, 0.58, 1.0)),
+            (-203.9, 178.6, '+X', 'male_avg', (0.16, 0.16, 0.20, 1.0), (0.16, 0.16, 0.20, 1.0), (0.20, 0.16, 0.12, 1.0)),
+            (-209.8, 179.2, '+Y', 'male_heavy', (0.40, 0.36, 0.30, 1.0), (0.22, 0.22, 0.26, 1.0), (0.42, 0.40, 0.38, 1.0)))):
+        human_figure(f"StJude_Parishioner_{fi}", base_x=fx, base_y=fy, base_z=0.02, scale=1.0, facing=face,
+                     body_type=body, skin_color=(0.74, 0.58, 0.46, 1.0) if fi % 2 else (0.58, 0.42, 0.32, 1.0),
+                     hair_color=hair, jacket_color=jacket, pants_color=pants, shoe_color=(0.12, 0.10, 0.09, 1.0))
+
+
+def _park_bench_2026_10(prefix, cx, cy, z0, facing='+Y', worn=0):
+    """A park bench: slats on cast-iron ends, the back on the far side
+    from where it faces. Chipped: alternate slats weathered darker."""
+    from _props.geometry import make_box as _mb
+    iron = (0.16, 0.16, 0.17, 1.0)
+    paint = (0.30, 0.40, 0.30, 1.0)
+    chip = (0.46, 0.40, 0.32, 1.0)
+    along_x = facing in ('+Y', '-Y')
+    back = -1 if facing in ('+Y', '+X') else 1
+
+    def box(nm, a, b, z, sa, sb, sz, col):   # a = along the bench, b = across it
+        if along_x:
+            _mb(nm, (cx + a, cy + b, z), (sa, sb, sz), col)
+        else:
+            _mb(nm, (cx + b, cy + a, z), (sb, sa, sz), col)
+    for e in (-0.85, 0.85):
+        box(f"{prefix}_End_{e:+.2f}", e, 0.0, z0 + 0.225, 0.06, 0.55, 0.45, iron)
+        box(f"{prefix}_BackPost_{e:+.2f}", e, back * 0.245, z0 + 0.45 + 0.24, 0.06, 0.06, 0.48, iron)
+    for k, off in enumerate((-0.18, 0.0, 0.18)):
+        box(f"{prefix}_Slat_{k}", 0.0, off, z0 + 0.46, 1.76, 0.14, 0.04, chip if (k + worn) % 2 else paint)
+    for k, bz in enumerate((0.70, 0.86)):
+        box(f"{prefix}_Back_Slat_{k}", 0.0, back * 0.245, z0 + bz, 1.76, 0.03, 0.12, paint if (k + worn) % 2 else chip)
+
+
+def build_armory_park_2026_10():
+    """THE PARK NEAR THE OLD ARMORY (Hierophant §IV, 2026-10-05) — "John
+    sat on a chipped park bench ... Paul stopped near the abandoned
+    bandstand. Surveyed the empty park like a king surveying barren
+    lands." "A pigeon landed on the bench beside him." "The crow on the
+    bandstand watched him go." The chapter played on the riverfront's
+    parking lot; the district's bandstand stands 550 m away with a band
+    playing in front of it. So: a small park on the armory's east side
+    (on the civic pad, z 2.9) — crossing gravel paths, an ABANDONED
+    bandstand (octagonal deck, posts, verdigris roof, two rail sections
+    gone and one lying in the grass, weeds, cans), three chipped benches
+    (John's with his open notebook and the pigeon), two lamps (one globe
+    smashed), a trash can, two live oaks; the crow on the bandstand rail.
+
+    Draft 2: the armory's own east face (doors, the plaque); the street
+    edge of the park; dusk practicals in the lamps that still work."""
+    from _props.geometry import (make_box as _mb, make_cyl as _mc, make_blob as _mbl, make_prism as _mp,
+                                 make_lathe as _ml, make_rot_box as _mrb, make_taper_cyl as _mtc)
+    from _props.creatures import make_crow as _crow
+    Z0 = 2.9
+    _mb("ArmoryPark_Lawn_Ground", (232.0, -336.0, Z0 + 0.01), (36.0, 40.0, 0.02), (0.38, 0.46, 0.28, 1.0))
+    grav = (0.62, 0.58, 0.50, 1.0)
+    _mb("ArmoryPark_Path_EW", (232.0, -337.0, Z0 + 0.0275), (36.0, 1.6, 0.015), grav)
+    _mb("ArmoryPark_Path_NS", (232.0, -336.0, Z0 + 0.0275), (1.6, 40.0, 0.015), grav)
+    # THE BANDSTAND
+    bx, by, R = 238.0, -326.0, 3.4
+    octo = [(R * math.cos(math.pi / 8 + k * math.pi / 4), R * math.sin(math.pi / 8 + k * math.pi / 4)) for k in range(8)]
+    _mp("Bandstand_Deck", (bx, by, Z0 + 0.35), octo, 0.70, (0.56, 0.50, 0.42, 1.0), axis='Z')
+    posts = []
+    for k in range(8):
+        a = math.pi / 8 + k * math.pi / 4
+        px, py = bx + (R - 0.3) * math.cos(a), by + (R - 0.3) * math.sin(a)
+        posts.append((px, py))
+        _mc(f"Bandstand_Post_{k}", (px, py, Z0 + 0.70 + 1.35), 0.09, 2.70, (0.78, 0.76, 0.70, 1.0), segments=8)
+    for k in range(8):
+        if k in (5, 1):
+            continue                      # 5: the steps; 1: the section that fell
+        (ax, ay), (cx2, cy2) = posts[k], posts[(k + 1) % 8]
+        ln = math.hypot(cx2 - ax, cy2 - ay) - 0.18
+        yaw = math.atan2(cy2 - ay, cx2 - ax)
+        for zi, rz in enumerate((1.60, 0.95)):
+            _mrb(f"Bandstand_Rail_{k}_{zi}", ((ax + cx2) / 2.0, (ay + cy2) / 2.0, Z0 + rz), (ln, 0.06, 0.06),
+                 (0.74, 0.72, 0.66, 1.0), yaw=yaw)
+    _mrb("Bandstand_Rail_Fallen", (bx + 5.2, by + 2.6, Z0 + 0.05), (2.4, 0.06, 0.06), (0.70, 0.68, 0.62, 1.0), yaw=0.4)
+    _ml("Bandstand_Roof", (bx, by, Z0 + 3.40), [(R + 0.4, 0.0), (0.30, 1.70), (0.0, 1.85)], (0.36, 0.50, 0.42, 1.0),
+        segments=8)
+    _mc("Bandstand_Finial", (bx, by, Z0 + 3.40 + 1.85 + 0.30), 0.04, 0.60, (0.20, 0.20, 0.20, 1.0), segments=6)
+    sy = by - R * math.cos(math.pi / 8)
+    _mb("Bandstand_Step_Upper", (bx, sy - 0.25, Z0 + 0.233), (1.6, 0.50, 0.466), (0.52, 0.46, 0.40, 1.0))
+    _mb("Bandstand_Step_Lower", (bx, sy - 0.75, Z0 + 0.117), (1.6, 0.50, 0.233), (0.52, 0.46, 0.40, 1.0))
+    for wi in range(9):
+        a = wi * 0.70
+        _mtc(f"Bandstand_Weed_{wi}", (bx + (R + 0.25) * math.cos(a), by + (R + 0.25) * math.sin(a), Z0 + 0.02 + 0.18),
+             0.10, 0.02, 0.36, (0.40, 0.48, 0.28, 1.0), segments=5)
+    for ci_, (cx_, cy_) in enumerate(((bx - 1.2, by - 4.6), (bx + 2.6, by - 3.9))):
+        _mc(f"Bandstand_Litter_Can_{ci_}", (cx_, cy_, Z0 + 0.02 + 0.033), 0.033, 0.12, (0.70, 0.20, 0.16, 1.0), axis='X', segments=8)
+    a7 = math.pi / 8 + 7 * math.pi / 4
+    (ax, ay), (cx2, cy2) = posts[7], posts[0]
+    _crow("Bandstand_Crow", (ax + cx2) / 2.0, (ay + cy2) / 2.0, Z0 + 1.63, facing=1.0)
+    # the benches — John's facing the bandstand, his notebook, the pigeon
+    _park_bench_2026_10("John_Bench", 229.5, -345.0, Z0 + 0.02, facing='+Y', worn=1)
+    _park_bench_2026_10("ArmoryPark_Bench_1", 245.0, -345.0, Z0 + 0.02, facing='+Y')
+    _park_bench_2026_10("ArmoryPark_Bench_2", 222.0, -328.0, Z0 + 0.02, facing='+X', worn=1)
+    seat = Z0 + 0.02 + 0.48
+    _mb("John_Notebook_Cover", (228.80, -344.95, seat + 0.003), (0.31, 0.22, 0.006), (0.20, 0.18, 0.16, 1.0))
+    _mb("John_Notebook_Pages", (228.80, -344.95, seat + 0.009), (0.29, 0.20, 0.006), (0.94, 0.92, 0.86, 1.0))
+    _mb("John_Notebook_Spine", (228.80, -344.95, seat + 0.0125), (0.006, 0.20, 0.001), (0.50, 0.48, 0.44, 1.0))
+    _mc("John_Pen", (228.98, -344.80, seat + 0.017), 0.005, 0.14, (0.10, 0.10, 0.12, 1.0), axis='Y', segments=6)
+    _mbl("Pigeon_Body", (230.25, -344.98, seat + 0.075), 0.09, (0.52, 0.54, 0.58, 1.0), noise=0.08, seed=5, squash=0.8)
+    _mbl("Pigeon_Head", (230.25, -345.08, seat + 0.155), 0.045, (0.44, 0.48, 0.52, 1.0), noise=0.06, seed=6, squash=0.9)
+    _mb("Pigeon_Beak", (230.25, -345.135, seat + 0.150), (0.012, 0.02, 0.01), (0.30, 0.26, 0.24, 1.0))
+    # lamps (one globe smashed), a trash can, two live oaks
+    for li, (lx, ly, ok) in enumerate(((230.0, -339.2, True), (234.0, -334.6, False))):
+        _mc(f"ArmoryPark_Lamp_{li}_Post", (lx, ly, Z0 + 0.02 + 1.8), 0.06, 3.6, (0.14, 0.14, 0.15, 1.0), segments=8)
+        if ok:
+            _mbl(f"ArmoryPark_Lamp_{li}_Globe", (lx, ly, Z0 + 3.82 + 0.18), 0.20, (0.94, 0.92, 0.84, 1.0), noise=0.02, seed=1, squash=1.0)
+        else:
+            _mc(f"ArmoryPark_Lamp_{li}_Socket", (lx, ly, Z0 + 3.82 + 0.05), 0.07, 0.10, (0.20, 0.20, 0.20, 1.0), segments=8)
+    _mc("ArmoryPark_Trash_Can", (226.6, -345.3, Z0 + 0.02 + 0.45), 0.26, 0.90, (0.20, 0.26, 0.22, 1.0), segments=12)
+    for oi, (ox, oy) in enumerate(((220.5, -350.5), (246.5, -321.5))):
+        _mc(f"ArmoryPark_Oak_{oi}_Trunk", (ox, oy, Z0 + 0.02 + 2.0), 0.42, 4.0, (0.36, 0.30, 0.24, 1.0), segments=10)
+        for k, (dx, dy, dz, r) in enumerate(((0.0, 0.0, 5.4, 3.0), (-1.8, 0.9, 4.8, 2.2), (1.9, -0.7, 5.0, 2.4))):
+            _mbl(f"ArmoryPark_Oak_{oi}_Canopy_{k}", (ox + dx, oy + dy, Z0 + dz), r, (0.26, 0.36, 0.20, 1.0),
+                 noise=0.25, seed=oi * 5 + k, squash=0.7)
+        _mb(f"ArmoryPark_Oak_{oi}_Moss", (ox + 1.4, oy - 1.2, Z0 + 3.6), (0.20, 0.10, 0.9), (0.56, 0.58, 0.48, 1.0))
+
+
 def main():
     # Phase 0 — riverfront. Each rf.build_* writes into the scene.
     # We mirror riverfront's main() build order verbatim so the
@@ -5792,6 +6033,8 @@ def main():
     build_haberdashery_2026_10()
     build_shotgun_house_2026_10()
     build_minstral_wreck_2026_10()
+    build_st_jude_sunday_2026_10()
+    build_armory_park_2026_10()
     export_glb()
 
 

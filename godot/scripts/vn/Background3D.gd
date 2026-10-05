@@ -284,6 +284,24 @@ const CAMERA_PRESETS := {
 		"fov": 62.0,
 		"suppress_input": true,
 	},
+	"graustark_st_jude": {
+		"scene": "res://scenes/locales/graustark.tscn",
+		"requires_glb": "res://assets/3d/locales/graustark.glb",
+		# St. Jude's Acadian Church from across its street on a Sunday (Hierophant §I): the black car idling at the curb, the steps, the fellowship table — 2026-10-05.
+		"camera_origin": Vector3(-194.50, 1.65, -168.60),
+		"camera_rotation": Vector3(0.273, 0.383, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"graustark_armory_park": {
+		"scene": "res://scenes/locales/graustark.tscn",
+		"requires_glb": "res://assets/3d/locales/graustark.glb",
+		# the park by the Old Armory at dusk (Hierophant §IV): the abandoned bandstand, John's bench, the armory beyond — 2026-10-05.
+		"camera_origin": Vector3(247.00, 4.55, 353.00),
+		"camera_rotation": Vector3(0.051, 0.716, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
 	"graustark_ruins": {
 		"scene": "res://scenes/locales/graustark.tscn",
 		"requires_glb": "res://assets/3d/locales/graustark.glb",
