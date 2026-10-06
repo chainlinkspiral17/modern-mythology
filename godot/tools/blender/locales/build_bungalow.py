@@ -464,18 +464,13 @@ def build_partitions():
     make_box("Wall_NS_Studio_AboveDoor", (+1.5, +1.5, 2.45),
              (0.10, 1.00, 0.50), COL_WALL_CREAM)
 
-    # ── Storage closet wall — splits the back of the studio into a
-    # small closet at the south corner (the OLD laundry room, now
-    # the storage room for Pomegranate Hour boxes).
-    make_box("Closet_W", (-1.0, +2.0, 1.35),
-             (0.10, 2.00, 2.70), COL_WALL_CREAM)
-    # Closet wraps around — north wall at Y=+3 is shared with mid_S
-    # E wall — short stub closing the closet
-    make_box("Closet_S", (-0.0, +1.0, 1.35),
-             (2.0, 0.10, 2.70), COL_WALL_CREAM)
-    # Closet door at X=-0.7 (sliding door, depicted shut)
-    # (Actually we leave a 0.7m opening on the east wall; closing
-    # wall doesn't continue past door.)
+    # ── (2026-10-05) The "storage closet" walls are gone. Two stub walls
+    # (x -1.0 and y +1.0) cut the living room into an L round a closet,
+    # and the closet's slatted door stood IN the living room -> studio
+    # doorway (x +1.5, y 1-2) — the doorway Elicia "paused in". The
+    # Pomegranate Hour boxes stay where they were, a stack in the living
+    # room; the gauntlet's `the_storage_closet` space (0.4, 1.6) stands
+    # beside them.
 
     # ── Bedroom accent wall — paint a darker teal on bedroom side
     make_box("BedroomAccentWall_N",
@@ -1173,21 +1168,8 @@ def build_storage_closet():
              (+0.42, +1.40, 0.9175),
              (0.10, 0.10, 0.001), COL_PAPER)
 
-    # Door — slatted, mostly closed (we leave a small visible slit)
-    # The east edge of the closet is at X=+1.4; door is at +1.45
-    # IN the partition's 1.0 m opening (y 1.0-2.0), in its plane
-    # (2026-09-24, the user: "doorways ... misaligned": the leaf was 1.4 m
-    # wide, stood 10 cm proud of the wall and ran 0.2 m into the solid
-    # partition on both sides — under the bookshelf at the north end)
-    make_box("Closet_Door",
-             (+1.50, +1.5, 1.10),
-             (0.04, 1.00, 2.20), (0.42, 0.30, 0.20, 1.0))
-    # Slats, on its living-room face
-    for i in range(8):
-        sz = 0.30 + i * 0.20
-        make_box(f"Closet_Door_Slat_{i}",
-                 (+1.47, +1.5, sz),
-                 (0.02, 0.92, 0.05), (0.36, 0.24, 0.16, 1.0))
+    # (the slatted closet door that closed the studio doorway: removed
+    # 2026-10-05 with the closet's walls — the doorway is open)
 
 
 # ════════════════════════════════════════════════════════════════
@@ -1691,20 +1673,12 @@ def build_priestess_dressing():
                  (0.05, 0.025, 0.012),
                  (0.86, 0.78, 0.32, 1.0))   # autumn-yellow
 
-    # ── PH tapes label on the storage closet door ──
-    # Storage closet has its own builder; this just adds a small
-    # masking-tape label on the door so the storage reads as the
-    # PH-tape archive.
-    closet_door_x = 1.50   # the storage closet door (Closet_Door, x 1.5, y 1.5 — in the partition since 2026-09-24)
-    closet_door_y = 1.50   # (2026-09-10: was (-3, -0.8), a label on open air)
-    make_box("Priestess_PHTapes_Label",
-             (closet_door_x + 0.02, closet_door_y, 1.62),
-             (0.005, 0.18, 0.06),
+    # ── PH tapes label, masking tape on the front of the top Pomegranate
+    # Hour box (2026-10-05: it was on the closet door, removed with the
+    # closet; Closet_PHBox_3 at (-0.2, 1.3), its front face y 1.10)
+    make_box("Priestess_PHTapes_Label", (-0.20, 1.0975, 0.80), (0.18, 0.005, 0.06),
              (0.92, 0.88, 0.72, 1.0))   # cream masking tape
-    # Hand-printed letters as a darker streak
-    make_box("Priestess_PHTapes_Letters",
-             (closet_door_x + 0.022, closet_door_y, 1.62),
-             (0.003, 0.14, 0.012),
+    make_box("Priestess_PHTapes_Letters", (-0.20, 1.0945, 0.80), (0.14, 0.003, 0.012),
              (0.22, 0.18, 0.14, 1.0))
 
 

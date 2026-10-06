@@ -130,7 +130,8 @@ SINK_FILL_R = 54.0
 # slough beside the wreck. Grid vertices inside are carved below the bed.
 # St. Jude's (Hierophant §I) and the park by the Old Armory (§IV)
 CIVIC_PADS = [(-248.0, -150.0, 148.0, 248.0, 0.0),
-              (168.0, 252.0, -372.0, -306.0, 2.9)]
+              (168.0, 252.0, -372.0, -306.0, 2.9),
+              (258.0, 345.0, 334.0, 424.0, 1.4)]          # Frasier's warehouse lot (2026-10-05)
 RF_RIVER_X = (-18.0, 54.0)
 RF_RIVER_Y = (-99.0, 99.0)
 SLOUGH_X = (41.0, 56.0)
@@ -4296,7 +4297,7 @@ _NPC_PALETTES = [
 # 35 background extras cheap.
 # Spawns the planar reference must not stand in for (they are in a vol 5
 # frame): they fall through to a dressed primitive figure.
-PRIMITIVE_ONLY = {'Church_priest', 'Church_attendee'}
+PRIMITIVE_ONLY = {'Church_priest', 'Church_attendee', 'Cath_apprentice'}
 
 TIER_1_LABELS = {
     'Diner_John',             # Fool — John Frank at D'Ambrosio's
@@ -4372,7 +4373,7 @@ NPC_SPAWNS = [
     # ── Carnival caretaker ──
     ("Carnival_caretaker", -474.0, +400.0, '+X', 'elderly'),
     # ── Magician cathedral approach ──
-    ("Cath_visitor",      +290.0, +366.0, '+Y', 'male_avg'),
+    ("Cath_visitor",      +318.5, +372.0, '-X', 'male_avg'),
     # ── Church entrance ──
     # (2026-10-05) were (-200, 185) / (-196, 183): inside the old solid
     # steeple base. With the entry opened the priest stood in the doorway
@@ -4395,8 +4396,8 @@ NPC_SPAWNS = [
     ("Casino_gambler1",  -204.0, +287.0, '-Y', 'male_tall'),
     ("Casino_gambler2",  -196.0, +287.0, '-Y', 'female_avg'),
     # ── Cathedral approach (Frasier territory) ──
-    ("Cath_Frasier",     +296.0, +362.0, '+Y', 'male_tall'),
-    ("Cath_apprentice",  +302.0, +360.0, '+Y', 'teen'),
+    ("Cath_Frasier",     +318.5, +376.0, '-X', 'male_tall'),
+    ("Cath_apprentice",  +318.5, +379.0, '-X', 'teen'),
     # ── Suburban kids playing on the SW residential road ──
     ("Suburb_kid_1",     -480.0, +220.0, '+X', 'child'),
     ("Suburb_kid_2",     -478.0, +220.0, '-X', 'child'),
@@ -5536,6 +5537,13 @@ def build_shotgun_house_2026_10():
              (slope, Y1 - Y0 + 0.60, 0.05), tin, pitch=sgn * a)
     _mb("Shotgun_Roof_Ridge", (52.5, (Y0 + Y1) / 2.0, ridge_z + 0.07), (0.24, Y1 - Y0 + 0.60, 0.06),
         (0.42, 0.36, 0.30, 1.0))
+    # "The crow settled on the patched roof above the door" (Hermit) /
+    # "The crow sits on the patched roof of the shotgun house" (World) —
+    # on the ridge over the back door (2026-10-05). The beam crow at the
+    # wall is never in the same frame: the haberdashery's south wall
+    # hides the beam from every cottage camera.
+    from _props.creatures import make_crow as _crow_roof
+    _crow_roof("Roof_Crow", 52.5, Y0 + 0.25, ridge_z + 0.10, facing=1.0)
 
     def on_slope(sgn, d, off):
         return (52.5 + sgn * (d * math.cos(a) + math.sin(a) * off), ridge_z - d * math.sin(a) + math.cos(a) * off)
@@ -6001,6 +6009,73 @@ def build_armory_park_2026_10():
         _mb(f"ArmoryPark_Oak_{oi}_Moss", (ox + 1.4, oy - 1.2, Z0 + 3.6), (0.20, 0.10, 0.9), (0.56, 0.58, 0.48, 1.0))
 
 
+def build_cathedral_yard_2026_10():
+    """THE CATHEDRAL OF RUST AND CODE, from outside (Magician, ch 1 —
+    2026-10-05). "The warehouse did not stand. The warehouse slumped —
+    a great rusting beast at the industrial edge of Graustark ...
+    sighing petrochemical breath into the humid twilight. Outside, kudzu
+    vines thick as wrists throttled the chain-link fence." The preset
+    stood 57 m off on an empty plain at night: the building a small dark
+    block, no fence, no kudzu. Now the camera stands in the lot by the
+    fence corner, the building close enough to loom; the lot is level
+    (CIVIC_PADS), cracked, weeded, with oil drums; the west fence is
+    throttled by kudzu; rust weeps down the brick from the windows and
+    a run of roof sags; a sodium yard light (with its practical) gives
+    the brick a colour in the warehouse's purple night.
+
+    Draft 2: the roll gate on the street side; a refinery flare on the
+    horizon ("petrochemical breath"); the boarded windows' plywood."""
+    from _props.geometry import (make_box as _mb, make_cyl as _mc, make_blob as _mbl, make_tube as _mt,
+                                 make_rot_box as _mrb, make_taper_cyl as _mtc)
+    z = CIVIC_PADS[2][4]
+    # the lot: cracked concrete, weeds in the cracks
+    _mb("Cath_Lot_Ground", (296.0, 348.0, z + 0.015), (64.0, 20.0, 0.03), (0.46, 0.44, 0.40, 1.0))
+    for ci, (cx, cy, ln, yaw) in enumerate(((272.0, 350.0, 6.0, 0.4), (281.0, 345.5, 4.5, -0.3), (290.0, 353.0, 7.0, 0.9),
+                                            (300.0, 347.0, 5.0, 0.2), (309.0, 352.0, 6.5, -0.6), (276.0, 355.5, 3.5, 1.2))):
+        _mrb(f"Cath_Lot_Crack_{ci}", (cx, cy, z + 0.031), (ln, 0.05, 0.002), (0.24, 0.23, 0.21, 1.0), yaw=yaw)
+    for wi in range(14):
+        wx, wy = 268.0 + (wi * 3.7) % 40.0, 342.5 + (wi * 2.3) % 14.0
+        _mtc(f"Cath_Lot_Weed_{wi}", (wx, wy, z + 0.03 + 0.17), 0.12, 0.02, 0.34, (0.34, 0.44, 0.22, 1.0), segments=5)
+    # the chain-link fence down the west edge of the lot, and the kudzu throttling it
+    fx = 262.0
+    posts = [342.0 + 3.0 * k for k in range(21)]
+    for k, py in enumerate(posts):
+        _mc(f"Cath_Fence_Post_{k}", (fx, py, z + 1.05), 0.04, 2.10, (0.50, 0.50, 0.48, 1.0), segments=6)
+    _mt("Cath_Fence_Rail", [(fx, posts[0], z + 2.08), (fx, posts[-1], z + 2.08)], 0.025, (0.50, 0.50, 0.48, 1.0), segments=6)
+    for k in range(len(posts) - 1):
+        _mb(f"Cath_Fence_Mesh_{k}", (fx, (posts[k] + posts[k + 1]) / 2.0, z + 1.02), (0.01, 2.92, 1.98), (0.62, 0.64, 0.62, 0.35))
+    kud = ((0.30, 0.50, 0.20, 1.0), (0.38, 0.56, 0.24, 1.0), (0.26, 0.44, 0.18, 1.0))
+    for k in range(26):
+        py = 342.5 + k * 2.35
+        h = 0.5 + 1.7 * ((k * 37) % 10) / 10.0
+        _mbl(f"Cath_Kudzu_{k}", (fx + (0.25 if k % 2 else -0.25), py, z + h), 0.55 + 0.35 * ((k * 13) % 5) / 5.0,
+             kud[k % 3], noise=0.30, seed=k, squash=0.75)
+        if k % 3 == 0:
+            _mbl(f"Cath_Kudzu_Drape_{k}", (fx + 0.2, py + 0.6, z + 2.15), 0.45, kud[(k + 1) % 3], noise=0.35, seed=k + 50, squash=0.6)
+        if k % 4 == 1:
+            _mt(f"Cath_Kudzu_Vine_{k}", [(fx + 0.06, py - 0.4, z + 0.05), (fx + 0.06, py, z + 1.1), (fx + 0.06, py + 0.5, z + 2.05)],
+                0.03, (0.22, 0.30, 0.14, 1.0), segments=5)
+    # oil drums by the building's corner, one on its side
+    for di, (dx, dy, tip) in enumerate(((283.0, 352.6, False), (283.75, 352.95, False), (284.4, 351.7, True))):
+        if tip:
+            _mc(f"Cath_Oil_Drum_{di}", (dx, dy, z + 0.03 + 0.29), 0.29, 0.88, (0.46, 0.24, 0.16, 1.0), axis='X', segments=12)
+        else:
+            _mc(f"Cath_Oil_Drum_{di}", (dx, dy, z + 0.03 + 0.44), 0.29, 0.88, (0.30, 0.34, 0.40, 1.0) if di else (0.46, 0.24, 0.16, 1.0), segments=12)
+    # the sodium yard light on its pole
+    _mc("Cath_Yard_Light_Pole", (286.0, 349.0, z + 3.25), 0.09, 6.5, (0.30, 0.30, 0.30, 1.0), segments=8)
+    _mc("Cath_Yard_Light_Arm", (286.0, 349.5, z + 6.45), 0.04, 1.0, (0.30, 0.30, 0.30, 1.0), axis='Y', segments=6)
+    _mb("Cath_Yard_Light_Head", (286.0, 350.05, z + 6.38), (0.32, 0.50, 0.16), (0.98, 0.70, 0.36, 1.0))
+    # a second light partway up the fence, so the kudzu reads at night
+    _mc("Cath_Fence_Light_Pole", (264.6, 371.0, z + 2.75), 0.07, 5.5, (0.30, 0.30, 0.30, 1.0), segments=8)
+    _mc("Cath_Fence_Light_Arm", (264.0, 371.0, z + 5.45), 0.035, 1.2, (0.30, 0.30, 0.30, 1.0), axis='X', segments=6)
+    _mb("Cath_Fence_Light_Head", (263.45, 371.0, z + 5.38), (0.44, 0.28, 0.14), (0.98, 0.70, 0.36, 1.0))
+    # rust weeping down the south face from the windows; the slumped run of roof
+    for ri, rx in enumerate((284.6, 287.6, 290.6, 293.6, 296.6, 299.6, 305.0, 308.0)):
+        _mb(f"Magician_Cath_Rust_Streak_{ri}", (rx, 358.985, z + 3.4), (0.22 + 0.06 * (ri % 3), 0.01, 3.6 + 0.6 * (ri % 2)),
+            (0.40, 0.20, 0.12, 1.0))
+    _mrb("Magician_Cath_Roof_Sag", (293.0, 366.0, z + 11.95), (12.0, 13.0, 0.30), (0.36, 0.30, 0.26, 1.0), roll=-0.07, pitch=0.05)
+
+
 def main():
     # Phase 0 — riverfront. Each rf.build_* writes into the scene.
     # We mirror riverfront's main() build order verbatim so the
@@ -6039,6 +6114,7 @@ def main():
     build_minstral_wreck_2026_10()
     build_st_jude_sunday_2026_10()
     build_armory_park_2026_10()
+    build_cathedral_yard_2026_10()
     export_glb()
 
 

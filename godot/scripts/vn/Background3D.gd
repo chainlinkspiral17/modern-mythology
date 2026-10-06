@@ -205,6 +205,9 @@ const CAMERA_PRESETS := {
 	# ── VOL 5 — Priestess chapter ─────────────────────────────────
 	"bungalow_interior": {
 		"scene": "res://scenes/locales/bungalow.tscn",
+		# (2026-10-05) inside the living room by the studio doorway, across
+		# the boxes to the bedroom door — it stood in the kitchen looking
+		# into the bedroom.
 		"requires_glb": "res://assets/3d/locales/bungalow.glb",
 		# SURVEYED 2026-07-11 (scratchpad survey.py): the bungalow's
 		# center is the STORAGE CLOSET (blender x -1..+1.4, y 1..3) —
@@ -215,8 +218,8 @@ const CAMERA_PRESETS := {
 		# the front door looking NW up the living strip.
 		# RE-VANTAGED 2026-09-03 by vantage_obstruction_audit --propose
 		# (user: "another establishing shot that is 90 percent wall").
-		"camera_origin": Vector3(1.50, 1.85, -3.50),
-		"camera_rotation": Vector3(-0.06, 0.916, 0.0),
+		"camera_origin": Vector3(1.20, 1.60, -0.35),
+		"camera_rotation": Vector3(-0.194, 0.986, 0.0),
 		"fov": 66.0,
 		"suppress_input": true,
 	},
@@ -278,9 +281,11 @@ const CAMERA_PRESETS := {
 	# aim (292, 372, 7): yaw = atan2(−30, 34), a little up.
 	"cathedral_exterior": {
 		"scene": "res://scenes/locales/graustark.tscn",
+		# (2026-10-05) in the lot by the kudzu fence, the warehouse looming —
+		# it stood 57 m off on an empty plain.
 		"requires_glb": "res://assets/3d/locales/graustark.glb",
-		"camera_origin": Vector3(262.0, 3.10, -338.0),
-		"camera_rotation": Vector3(0.086, -0.7226, 0.0),
+		"camera_origin": Vector3(265.50, 3.00, -343.50),
+		"camera_rotation": Vector3(0.056, -0.378, 0.0),
 		"fov": 62.0,
 		"suppress_input": true,
 	},

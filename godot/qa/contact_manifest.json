@@ -991,63 +991,6 @@
    "scene_missing": false
   },
   {
-   "id": "vehicle_cab",
-   "scene": "res://scenes/locales/vehicle_cab.tscn",
-   "vol": 6,
-   "uses": 9,
-   "moods": [
-    "dawn_warm",
-    "day_bright"
-   ],
-   "markers": [
-    {
-     "name": "shot_closeup_person",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_person_b",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_insert_charred_wood",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_cup",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_flautas",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_packet",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_phone",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_radio",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_sedan",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_table",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_truck",
-     "type": "insert"
-    }
-   ],
-   "scene_missing": false
-  },
-  {
    "id": "cabin_road",
    "scene": "res://scenes/locales/cabin_road.tscn",
    "vol": 7,
@@ -1292,6 +1235,63 @@
     },
     {
      "name": "shot_insert_sign",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
+   "id": "vehicle_cab",
+   "scene": "res://scenes/locales/vehicle_cab.tscn",
+   "vol": 6,
+   "uses": 8,
+   "moods": [
+    "day_bright",
+    "morning_bright"
+   ],
+   "markers": [
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_charred_wood",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cup",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_flautas",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_packet",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_phone",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_radio",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_sedan",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_table",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_truck",
      "type": "insert"
     }
    ],
@@ -1966,6 +1966,39 @@
    "scene_missing": false
   },
   {
+   "id": "new_orleans_bar",
+   "scene": "res://scenes/locales/new_orleans_bar.tscn",
+   "vol": 1,
+   "uses": 5,
+   "moods": [
+    "candlelight_low",
+    "bar_pendant_amber"
+   ],
+   "markers": [
+    {
+     "name": "shot_establish_b",
+     "type": "establish"
+    },
+    {
+     "name": "shot_closeup_douglas",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_hands",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_mirror",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_tv",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
    "id": "briar_falls_rest_stop",
    "scene": "res://scenes/locales/briar_falls.tscn",
    "vol": 2,
@@ -2179,6 +2212,55 @@
    "scene_missing": false
   },
   {
+   "id": "natalie_apartment",
+   "scene": "res://scenes/locales/natalie_apartment.tscn",
+   "vol": 5,
+   "uses": 4,
+   "moods": [
+    "night",
+    "dream_blur"
+   ],
+   "markers": [
+    {
+     "name": "shot_establish_b",
+     "type": "establish"
+    },
+    {
+     "name": "shot_closeup_natalie",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_nicola",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_card",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_deck",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_desk",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_door",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_phone",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_record_player",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
    "id": "new_auburn_strip_mall",
    "scene": "res://scenes/locales/new_auburn_road.tscn",
    "vol": 6,
@@ -2226,39 +2308,6 @@
     },
     {
      "name": "shot_insert_van",
-     "type": "insert"
-    }
-   ],
-   "scene_missing": false
-  },
-  {
-   "id": "new_orleans_bar",
-   "scene": "res://scenes/locales/new_orleans_bar.tscn",
-   "vol": 1,
-   "uses": 4,
-   "moods": [
-    "candlelight_low",
-    "bar_pendant_amber"
-   ],
-   "markers": [
-    {
-     "name": "shot_establish_b",
-     "type": "establish"
-    },
-    {
-     "name": "shot_closeup_douglas",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_insert_hands",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_mirror",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_tv",
      "type": "insert"
     }
    ],
@@ -2457,19 +2506,289 @@
    "scene_missing": false
   },
   {
-   "id": "natalie_apartment",
-   "scene": "res://scenes/locales/natalie_apartment.tscn",
+   "id": "graustark_chalk_wall",
+   "scene": "res://scenes/locales/graustark.tscn",
    "vol": 5,
    "uses": 3,
    "moods": [
     "night",
-    "dream_blur"
+    "dusk"
+   ],
+   "markers": [
+    {
+     "name": "shot_closeup_child",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_frog",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_joanna",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b__graustark_chalk_wall",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_beam",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_candle",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_chalk",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cottage",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_crow",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_doohickey",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_gate",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_herbs",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_letter",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_notebook",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_paddlebox",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_receipt",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_rubble",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_sinkhole",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_smoke_ring",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_steamship",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_wall",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_wreck",
+     "type": "insert"
+    },
+    {
+     "name": "shot_wide_house",
+     "type": "wide"
+    },
+    {
+     "name": "shot_wide_sinkhole",
+     "type": "wide"
+    },
+    {
+     "name": "shot_wide_threshold",
+     "type": "wide"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
+   "id": "graustark_wreck",
+   "scene": "res://scenes/locales/graustark.tscn",
+   "vol": 5,
+   "uses": 3,
+   "moods": [
+    "day_bright",
+    "macro_haze"
+   ],
+   "markers": [
+    {
+     "name": "shot_closeup_child",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_frog",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_joanna",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person__graustark_wreck",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b__graustark_wreck",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_beam",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_candle",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_chalk",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cottage",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_crow",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_doohickey",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_gate",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_herbs",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_letter",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_notebook",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_paddlebox",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_receipt",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_rubble",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_sinkhole",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_smoke_ring",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_steamship",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_wall",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_wreck",
+     "type": "insert"
+    },
+    {
+     "name": "shot_wide_house",
+     "type": "wide"
+    },
+    {
+     "name": "shot_wide_sinkhole",
+     "type": "wide"
+    },
+    {
+     "name": "shot_wide_threshold",
+     "type": "wide"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
+   "id": "houston_office",
+   "scene": "res://scenes/locales/houston_office.tscn",
+   "vol": 5,
+   "uses": 3,
+   "moods": [
+    "studio",
+    "lunch"
    ],
    "markers": [
     {
      "name": "shot_establish_b",
      "type": "establish"
     },
+    {
+     "name": "shot_closeup_anna",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_erica",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_contract",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_desk",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_monitor",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_phone",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_photograph",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
+   "id": "miriam_subaru",
+   "scene": "res://scenes/locales/miriam_subaru.tscn",
+   "vol": 5,
+   "uses": 3,
+   "moods": [
+    "dawn_warm"
+   ],
+   "markers": [
     {
      "name": "shot_closeup_natalie",
      "type": "closeup"
@@ -2479,19 +2798,52 @@
      "type": "closeup"
     },
     {
-     "name": "shot_insert_card",
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_blanket",
      "type": "insert"
     },
     {
-     "name": "shot_insert_deck",
+     "name": "shot_insert_crow",
      "type": "insert"
     },
     {
-     "name": "shot_insert_desk",
-     "type": "insert"
+     "name": "shot_wide_station",
+     "type": "wide"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
+   "id": "new_orleans_office",
+   "scene": "res://scenes/locales/new_orleans_office.tscn",
+   "vol": 5,
+   "uses": 3,
+   "moods": [
+    "lunch",
+    "studio"
+   ],
+   "markers": [
+    {
+     "name": "shot_establish_b",
+     "type": "establish"
     },
     {
-     "name": "shot_insert_door",
+     "name": "shot_closeup_antonio",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_jimmy",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_bourbon",
      "type": "insert"
     },
     {
@@ -2499,7 +2851,7 @@
      "type": "insert"
     },
     {
-     "name": "shot_insert_record_player",
+     "name": "shot_insert_window",
      "type": "insert"
     }
    ],
@@ -2611,31 +2963,6 @@
     {
      "name": "shot_wide_grill",
      "type": "wide"
-    }
-   ],
-   "scene_missing": false
-  },
-  {
-   "id": "riverfront_park",
-   "scene": "res://scenes/locales/riverfront.tscn",
-   "vol": 1,
-   "uses": 3,
-   "moods": [
-    "day_bright",
-    "dusk"
-   ],
-   "markers": [
-    {
-     "name": "shot_closeup_person__riverfront_park",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_person_b__riverfront_park",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_insert_notebook",
-     "type": "insert"
     }
    ],
    "scene_missing": false
@@ -3178,6 +3505,47 @@
    "scene_missing": false
   },
   {
+   "id": "elicia_apartment",
+   "scene": "res://scenes/locales/elicia_apartment.tscn",
+   "vol": 5,
+   "uses": 2,
+   "moods": [
+    "dusk",
+    "dream_blur"
+   ],
+   "markers": [
+    {
+     "name": "shot_establish_b",
+     "type": "establish"
+    },
+    {
+     "name": "shot_closeup_elicia",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_camera",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_eviction_notice",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_laptop",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_skyline",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_teacup",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
    "id": "estuary_7_template",
    "scene": "res://scenes/locales/estuary_7_template.tscn",
    "vol": 7,
@@ -3351,13 +3719,13 @@
    "scene_missing": false
   },
   {
-   "id": "houston_office",
-   "scene": "res://scenes/locales/houston_office.tscn",
+   "id": "hospice_room",
+   "scene": "res://scenes/locales/hospice_room.tscn",
    "vol": 5,
    "uses": 2,
    "moods": [
-    "studio",
-    "lunch"
+    "dawn_warm",
+    "dream_blur"
    ],
    "markers": [
     {
@@ -3365,16 +3733,36 @@
      "type": "establish"
     },
     {
-     "name": "shot_closeup_anna",
+     "name": "shot_closeup_alice",
      "type": "closeup"
     },
     {
-     "name": "shot_closeup_erica",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_insert_contract",
+     "name": "shot_insert_chair",
      "type": "insert"
+    },
+    {
+     "name": "shot_insert_rose",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
+   "id": "houston_design_studio",
+   "scene": "res://scenes/locales/houston_design_studio.tscn",
+   "vol": 5,
+   "uses": 2,
+   "moods": [
+    ""
+   ],
+   "markers": [
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
     },
     {
      "name": "shot_insert_desk",
@@ -3386,10 +3774,6 @@
     },
     {
      "name": "shot_insert_phone",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_photograph",
      "type": "insert"
     }
    ],
@@ -3513,6 +3897,51 @@
    "scene_missing": false
   },
   {
+   "id": "montreal_apartment",
+   "scene": "res://scenes/locales/montreal_apartment.tscn",
+   "vol": 5,
+   "uses": 2,
+   "moods": [
+    "morning_bright",
+    "studio"
+   ],
+   "markers": [
+    {
+     "name": "shot_establish_b",
+     "type": "establish"
+    },
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_drainpipe",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_dust",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_mug",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_notebook",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_phone",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
    "id": "new_auburn_cedar_route",
    "scene": "res://scenes/locales/new_auburn_road.tscn",
    "vol": 6,
@@ -3598,13 +4027,13 @@
    "scene_missing": false
   },
   {
-   "id": "new_orleans_office",
-   "scene": "res://scenes/locales/new_orleans_office.tscn",
+   "id": "new_orleans_room",
+   "scene": "res://scenes/locales/new_orleans_room.tscn",
    "vol": 5,
    "uses": 2,
    "moods": [
-    "lunch",
-    "studio"
+    "night",
+    "tv_glow_blue"
    ],
    "markers": [
     {
@@ -3612,23 +4041,19 @@
      "type": "establish"
     },
     {
-     "name": "shot_closeup_antonio",
+     "name": "shot_closeup_douglas",
      "type": "closeup"
     },
     {
-     "name": "shot_closeup_jimmy",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_insert_bourbon",
+     "name": "shot_insert_letter",
      "type": "insert"
     },
     {
-     "name": "shot_insert_phone",
+     "name": "shot_insert_mirror",
      "type": "insert"
     },
     {
-     "name": "shot_insert_window",
+     "name": "shot_insert_tv",
      "type": "insert"
     }
    ],
@@ -3658,6 +4083,108 @@
     },
     {
      "name": "shot_insert_list",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
+   "id": "riverboat_interior",
+   "scene": "res://scenes/locales/riverboat_interior.tscn",
+   "vol": 5,
+   "uses": 2,
+   "moods": [
+    "night",
+    "candlelight_low"
+   ],
+   "markers": [
+    {
+     "name": "shot_closeup_dante",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_bourbon",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_card",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_window",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
+   "id": "riverfront_park",
+   "scene": "res://scenes/locales/riverfront.tscn",
+   "vol": 1,
+   "uses": 2,
+   "moods": [
+    "day_bright"
+   ],
+   "markers": [
+    {
+     "name": "shot_closeup_person__riverfront_park",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b__riverfront_park",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_notebook",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
+   "id": "roberts_kitchen",
+   "scene": "res://scenes/locales/roberts_kitchen.tscn",
+   "vol": 5,
+   "uses": 2,
+   "moods": [
+    "morning_bright",
+    "memory_warm"
+   ],
+   "markers": [
+    {
+     "name": "shot_establish_b",
+     "type": "establish"
+    },
+    {
+     "name": "shot_establish_dining",
+     "type": "establish"
+    },
+    {
+     "name": "shot_closeup_boy",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_mackenzie",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_philip",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_door",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_faucet",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_polaroid",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_radio",
      "type": "insert"
     }
    ],
@@ -4256,6 +4783,14 @@
      "type": "closeup"
     },
     {
+     "name": "shot_closeup_frog",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_joanna",
+     "type": "closeup"
+    },
+    {
      "name": "shot_insert_beam",
      "type": "insert"
     },
@@ -4326,6 +4861,18 @@
     {
      "name": "shot_insert_wreck",
      "type": "insert"
+    },
+    {
+     "name": "shot_wide_house",
+     "type": "wide"
+    },
+    {
+     "name": "shot_wide_sinkhole",
+     "type": "wide"
+    },
+    {
+     "name": "shot_wide_threshold",
+     "type": "wide"
     }
    ],
    "scene_missing": false
@@ -4502,26 +5049,6 @@
     {
      "name": "shot_insert_smear",
      "type": "insert"
-    }
-   ],
-   "scene_missing": false
-  },
-  {
-   "id": "chapel_exterior",
-   "scene": "res://scenes/locales/roadside_chapel.tscn",
-   "vol": 5,
-   "uses": 1,
-   "moods": [
-    "lunch"
-   ],
-   "markers": [
-    {
-     "name": "shot_closeup_maya",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_paul",
-     "type": "closeup"
     }
    ],
    "scene_missing": false
@@ -4833,43 +5360,6 @@
    "scene_missing": false
   },
   {
-   "id": "elicia_apartment",
-   "scene": "res://scenes/locales/elicia_apartment.tscn",
-   "vol": 5,
-   "uses": 1,
-   "moods": [
-    "dusk",
-    "dream_blur"
-   ],
-   "markers": [
-    {
-     "name": "shot_establish_b",
-     "type": "establish"
-    },
-    {
-     "name": "shot_closeup_elicia",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_insert_camera",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_eviction_notice",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_laptop",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_teacup",
-     "type": "insert"
-    }
-   ],
-   "scene_missing": false
-  },
-  {
    "id": "equipment_shed",
    "scene": "res://scenes/locales/equipment_shed.tscn",
    "vol": 6,
@@ -4978,17 +5468,24 @@
    "scene_missing": false
   },
   {
-   "id": "graustark_chalk_wall",
+   "id": "graustark_armory_park",
    "scene": "res://scenes/locales/graustark.tscn",
    "vol": 5,
    "uses": 1,
    "moods": [
-    "dusk",
-    "night"
+    "dusk"
    ],
    "markers": [
     {
      "name": "shot_closeup_child",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_frog",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_joanna",
      "type": "closeup"
     },
     {
@@ -5028,7 +5525,7 @@
      "type": "insert"
     },
     {
-     "name": "shot_insert_notebook",
+     "name": "shot_insert_notebook__graustark_armory_park",
      "type": "insert"
     },
     {
@@ -5062,6 +5559,18 @@
     {
      "name": "shot_insert_wreck",
      "type": "insert"
+    },
+    {
+     "name": "shot_wide_house",
+     "type": "wide"
+    },
+    {
+     "name": "shot_wide_sinkhole",
+     "type": "wide"
+    },
+    {
+     "name": "shot_wide_threshold",
+     "type": "wide"
     }
    ],
    "scene_missing": false
@@ -5072,12 +5581,19 @@
    "vol": 5,
    "uses": 1,
    "moods": [
-    "night",
-    "dawn_warm"
+    ""
    ],
    "markers": [
     {
      "name": "shot_closeup_child",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_frog",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_joanna__graustark_cottage",
      "type": "closeup"
     },
     {
@@ -5151,6 +5667,18 @@
     {
      "name": "shot_insert_wreck",
      "type": "insert"
+    },
+    {
+     "name": "shot_wide_house",
+     "type": "wide"
+    },
+    {
+     "name": "shot_wide_sinkhole",
+     "type": "wide"
+    },
+    {
+     "name": "shot_wide_threshold",
+     "type": "wide"
     }
    ],
    "scene_missing": false
@@ -5161,12 +5689,19 @@
    "vol": 5,
    "uses": 1,
    "moods": [
-    "day_bright",
-    "macro_haze"
+    "dawn_warm"
    ],
    "markers": [
     {
-     "name": "shot_closeup_child__graustark_ruins",
+     "name": "shot_closeup_child",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_frog",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_joanna",
      "type": "closeup"
     },
     {
@@ -5248,22 +5783,49 @@
     {
      "name": "shot_insert_wreck",
      "type": "insert"
+    },
+    {
+     "name": "shot_wide_house",
+     "type": "wide"
+    },
+    {
+     "name": "shot_wide_sinkhole",
+     "type": "wide"
+    },
+    {
+     "name": "shot_wide_threshold",
+     "type": "wide"
     }
    ],
    "scene_missing": false
   },
   {
-   "id": "graustark_wreck",
+   "id": "graustark_st_jude",
    "scene": "res://scenes/locales/graustark.tscn",
    "vol": 5,
    "uses": 1,
    "moods": [
-    "dawn_warm",
-    "night"
+    "lunch"
    ],
    "markers": [
     {
      "name": "shot_closeup_child",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_frog",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_joanna",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_maya__graustark_st_jude",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_paul__graustark_st_jude",
      "type": "closeup"
     },
     {
@@ -5337,6 +5899,18 @@
     {
      "name": "shot_insert_wreck",
      "type": "insert"
+    },
+    {
+     "name": "shot_wide_house",
+     "type": "wide"
+    },
+    {
+     "name": "shot_wide_sinkhole",
+     "type": "wide"
+    },
+    {
+     "name": "shot_wide_threshold",
+     "type": "wide"
     }
    ],
    "scene_missing": false
@@ -5426,35 +6000,6 @@
    "scene_missing": false
   },
   {
-   "id": "hospice_room",
-   "scene": "res://scenes/locales/hospice_room.tscn",
-   "vol": 5,
-   "uses": 1,
-   "moods": [
-    "dawn_warm",
-    "dream_blur"
-   ],
-   "markers": [
-    {
-     "name": "shot_establish_b",
-     "type": "establish"
-    },
-    {
-     "name": "shot_closeup_alice",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_insert_chair",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_rose",
-     "type": "insert"
-    }
-   ],
-   "scene_missing": false
-  },
-  {
    "id": "hospital_room",
    "scene": "res://scenes/locales/hospital_room.tscn",
    "vol": 6,
@@ -5507,38 +6052,6 @@
     },
     {
      "name": "shot_insert_hands",
-     "type": "insert"
-    }
-   ],
-   "scene_missing": false
-  },
-  {
-   "id": "houston_design_studio",
-   "scene": "res://scenes/locales/houston_design_studio.tscn",
-   "vol": 5,
-   "uses": 1,
-   "moods": [
-    ""
-   ],
-   "markers": [
-    {
-     "name": "shot_closeup_person",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_person_b",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_insert_desk",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_monitor",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_phone",
      "type": "insert"
     }
    ],
@@ -5847,51 +6360,6 @@
    "scene_missing": false
   },
   {
-   "id": "montreal_apartment",
-   "scene": "res://scenes/locales/montreal_apartment.tscn",
-   "vol": 5,
-   "uses": 1,
-   "moods": [
-    "morning_bright",
-    "studio"
-   ],
-   "markers": [
-    {
-     "name": "shot_establish_b",
-     "type": "establish"
-    },
-    {
-     "name": "shot_closeup_person",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_person_b",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_insert_drainpipe",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_dust",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_mug",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_notebook",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_phone",
-     "type": "insert"
-    }
-   ],
-   "scene_missing": false
-  },
-  {
    "id": "new_auburn_bypass",
    "scene": "res://scenes/locales/new_auburn_road.tscn",
    "vol": 6,
@@ -6042,39 +6510,6 @@
     },
     {
      "name": "shot_insert_van",
-     "type": "insert"
-    }
-   ],
-   "scene_missing": false
-  },
-  {
-   "id": "new_orleans_room",
-   "scene": "res://scenes/locales/new_orleans_room.tscn",
-   "vol": 5,
-   "uses": 1,
-   "moods": [
-    "night",
-    "tv_glow_blue"
-   ],
-   "markers": [
-    {
-     "name": "shot_establish_b",
-     "type": "establish"
-    },
-    {
-     "name": "shot_closeup_douglas",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_insert_letter",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_mirror",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_tv",
      "type": "insert"
     }
    ],
@@ -6368,35 +6803,6 @@
    "scene_missing": false
   },
   {
-   "id": "riverboat_interior",
-   "scene": "res://scenes/locales/riverboat_interior.tscn",
-   "vol": 5,
-   "uses": 1,
-   "moods": [
-    "candlelight_low",
-    "night"
-   ],
-   "markers": [
-    {
-     "name": "shot_closeup_dante",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_insert_bourbon",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_card",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_window",
-     "type": "insert"
-    }
-   ],
-   "scene_missing": false
-  },
-  {
    "id": "riverfront_exterior",
    "scene": "res://scenes/locales/riverfront.tscn",
    "vol": 5,
@@ -6415,47 +6821,6 @@
     },
     {
      "name": "shot_insert_notebook",
-     "type": "insert"
-    }
-   ],
-   "scene_missing": false
-  },
-  {
-   "id": "roberts_kitchen",
-   "scene": "res://scenes/locales/roberts_kitchen.tscn",
-   "vol": 5,
-   "uses": 1,
-   "moods": [
-    "morning_bright",
-    "memory_warm"
-   ],
-   "markers": [
-    {
-     "name": "shot_closeup_boy",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_mackenzie",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_philip",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_insert_door",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_faucet",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_polaroid",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_radio",
      "type": "insert"
     }
    ],
@@ -6946,5 +7311,5 @@
   "tired",
   "nervous"
  ],
- "frames": 1559
+ "frames": 1644
 }

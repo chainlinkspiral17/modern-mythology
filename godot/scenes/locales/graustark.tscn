@@ -197,6 +197,25 @@ light_color = Color(1.0, 0.66, 0.34, 1)
 light_energy = 0.7
 omni_range = 4.5
 
+; Frasier's yard light (2026-10-05): sodium over the warehouse lot, so the
+; brick and the kudzu read in the Magician's purple night. Blender
+; (286, 350.05, 7.7) → godot.
+; The fence light (2026-10-05): halfway up the kudzu fence. Blender
+; (263.45, 371.0, 6.7) → godot.
+[node name="Practical_CathFenceLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 263.45, 6.6, -371.0)
+light_color = Color(1.0, 0.64, 0.32, 1)
+light_energy = 2.0
+omni_range = 16.0
+shadow_enabled = false
+
+[node name="Practical_CathYardLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 286.0, 7.6, -350.05)
+light_color = Color(1.0, 0.64, 0.32, 1)
+light_energy = 2.4
+omni_range = 20.0
+shadow_enabled = false
+
 ; Moon Static Drive-In — neon-red marquee at the entrance
 [node name="Neon_DriveInMarquee" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -500, 4.8, -173)

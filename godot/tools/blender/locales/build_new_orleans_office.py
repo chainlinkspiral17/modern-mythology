@@ -43,7 +43,7 @@ stair to. Now:
     graffiti, roof trusses lost in shadow, the cypress beam hanging
     crooked on two chain hoists over two ladders, salvaged doors and
     planks, a clawfoot tub, the crew's radio on a sawhorse, a work light.
-Draft 5 targets: the crew's lunch litter; the radio's practical; the
+Draft 5 targets (the lunch litter went in 2026-10-05): the radio's practical; the
 iron stair outside the front door; the man's cigarette ember.
 """
 import os, sys, math
@@ -379,6 +379,11 @@ def build_warehouse():
     make_box("Crew_Radio", (2.2, 6.3, z + 0.955), (0.36, 0.14, 0.17), (0.30, 0.30, 0.32, 1.0))
     make_cyl("Crew_Radio_Antenna", (2.33, 6.3, z + 1.24), 0.004, 0.40, (0.70, 0.70, 0.72, 1.0), segments=4)
     make_box("Crew_Lunch_Cooler", (2.9, 6.3, z + 0.98), (0.40, 0.28, 0.22), (0.74, 0.20, 0.18, 1.0))
+    # the crew is "outside, on their thirty-minute lunch": what they left
+    make_box("Crew_Lunch_Bag", (2.35, 6.92, z + 0.13), (0.18, 0.12, 0.26), (0.66, 0.52, 0.34, 1.0))
+    for ci, (cx, cy) in enumerate(((2.70, 6.95), (2.84, 7.05))):
+        make_cyl(f"Crew_Lunch_Can_{ci}", (cx, cy, z + 0.06), 0.033, 0.12, ((0.70, 0.16, 0.14, 1.0), (0.82, 0.82, 0.80, 1.0))[ci], segments=10)
+    make_blob("Crew_Lunch_Foil", (3.05, 6.85, z + 0.04), 0.06, (0.82, 0.82, 0.84, 1.0), noise=0.35, seed=5, squash=0.6)
     # a work light on its tripod
     make_cyl("Work_Light_Pole", (2.8, 8.5, z + 0.95), 0.02, 1.9, (0.20, 0.20, 0.20, 1.0), segments=6)
     for k in range(3):

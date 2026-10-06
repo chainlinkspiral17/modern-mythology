@@ -3253,6 +3253,39 @@ the room's bare bulb is the only practical. (2026-10-05: the booth
 has a wall sconce with its own practical over Doug's table; the room's
 LAUNDROMAT sign below the window is its second practical.)
 
+**2026-10-05 · THE VOL 5 CONTACT SHEET + THE CATHEDRAL FROM OUTSIDE.**
+All 24 vol 5 presets rendered under their chapters' leading moods into
+one sheet (the Arc 0 loop, run locally; `qa/contact_manifest.json`
+regenerated for the Deck's VnContactSheet). The weakest frame was the
+Magician's opening, `cathedral_exterior`: 57 m off on an empty plain
+at night, Frasier's warehouse a small dark block — and the prose's
+"kudzu vines thick as wrists throttled the chain-link fence" not built.
+Draft 2: a level lot under the warehouse (CIVIC_PADS), cracked and
+weeded, oil drums; the chain-link fence down the west edge throttled by
+kudzu (blobs, drapes, vines); rust weeping down the brick; a sagging run
+of roof (it "slumped"); two sodium yard lights with practicals so the
+brick and the kudzu read in the purple night; the camera in the lot at
+the fence corner with the fence receding down the left and the building
+looming right. The district staged Frasier, his apprentice (no model:
+the reference mannequin) and a visitor at the door — the prose has him
+inside — they stand round the east side now, the apprentice dressed.
+Also: the crow on the shotgun house's ridge ("settled on the patched
+roof above the door"); the crew's lunch litter in Antonio's warehouse.
+THE BUNGALOW (the sheet's next weakest — a sparse blue room): its
+preset stood in the kitchen looking into the BEDROOM; and the living
+room, the Priestess's main room, was an L round a "storage closet" —
+two stub walls cut it in half, and the closet's slatted door was
+mounted IN the living room -> studio doorway Elicia "paused in". The
+closet's walls and door are gone (the gauntlet's station coordinates
+all still hold — `the_storage_closet` stands by the Pomegranate Hour
+boxes, which stay put, their tape label moved onto the top box); the
+preset stands in the living room by the studio doorway, across the
+boxes to the bedroom door. The full floor-plan redraw (kitchen open to
+the living room, the windowsill basil in the main frame) is a gauntlet
+design call — left for the user. Still weak on the sheet: the wreck's
+flat hull side. Deck must REBUILD graustark, new_orleans_office and
+bungalow.
+
 **2026-10-05 · ANTONIO'S OFFICE AT CANON SCALE — draft 4, the rebuild
 (ch 7 Chariot · ch 5 §III · ch 20).** "The office was twelve feet by
 ten. He could pace it in eight strides." Drafts 1-3 were a 7 x 6 m
