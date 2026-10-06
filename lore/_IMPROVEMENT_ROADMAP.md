@@ -3282,9 +3282,12 @@ boxes, which stay put, their tape label moved onto the top box); the
 preset stands in the living room by the studio doorway, across the
 boxes to the bedroom door. The full floor-plan redraw (kitchen open to
 the living room, the windowsill basil in the main frame) is a gauntlet
-design call — left for the user. Still weak on the sheet: the wreck's
-flat hull side. Deck must REBUILD graustark, new_orleans_office and
-bungalow.
+design call — left for the user. THE WRECK's flat hull side (the
+sheet's third): plating strakes in two greens with seams, a wooden rub
+rail at the sheer, paint failing to primer and rust in patches, a row
+of brass-rimmed portholes, and on the stern the name board with her
+name blocked in over the rudder post. Deck must REBUILD graustark,
+new_orleans_office and bungalow.
 
 **2026-10-05 · ANTONIO'S OFFICE AT CANON SCALE — draft 4, the rebuild
 (ch 7 Chariot · ch 5 §III · ch 20).** "The office was twelve feet by

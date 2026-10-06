@@ -5713,6 +5713,36 @@ def build_minstral_wreck_2026_10():
                                          (-117.1, 0.10, 2.2), (-115.4, 0.16, 1.4))):
         _mb(f"Minstral_Hull_Rust_{ri_}", (41.51, ry, 3.05 - rh / 2.0), (0.02, rw, rh), rust)
     _mb("Minstral_Hull_Breach", (41.51, -118.4, -0.9), (0.02, 1.3, 0.8), (0.05, 0.05, 0.05, 1.0))
+    # (2026-10-05, the contact sheet's flat hull) PLATING: strakes along
+    # the starboard side in two greens with a dark seam between, a
+    # wooden rub rail at the sheer, paint failing to primer and rust in
+    # patches, a row of portholes with brass rims; on the stern the name
+    # board (her name blocked in) and the rudder post.
+    strake_cols = ((0.31, 0.42, 0.35, 1.0), (0.27, 0.37, 0.31, 1.0))
+    for si, (sz0, sz1) in enumerate(((-1.6, -0.7), (-0.7, 0.2), (0.2, 1.1), (1.1, 2.0), (2.0, 2.9))):
+        _mb(f"Minstral_Hull_Strake_{si}", (41.515, -121.0, (sz0 + sz1) / 2.0), (0.02, 17.6, sz1 - sz0 - 0.04),
+            strake_cols[si % 2])
+        _mb(f"Minstral_Hull_Seam_{si}", (41.512, -121.0, sz1), (0.012, 17.6, 0.04), (0.12, 0.16, 0.14, 1.0))
+    _mb("Minstral_Hull_RubRail", (41.58, -120.6, 2.95), (0.16, 18.6, 0.16), (0.36, 0.26, 0.18, 1.0))
+    for pi_, (py, pz, w, h, col) in enumerate(((-127.6, 0.6, 1.4, 0.9, (0.62, 0.30, 0.22, 1.0)),
+                                               (-123.2, 1.6, 1.0, 0.6, (0.50, 0.28, 0.18, 1.0)),
+                                               (-114.6, 0.3, 1.8, 1.1, (0.62, 0.30, 0.22, 1.0)),
+                                               (-112.4, 2.2, 0.9, 0.5, (0.46, 0.26, 0.18, 1.0)),
+                                               (-125.5, -0.9, 1.2, 0.7, (0.44, 0.24, 0.16, 1.0)))):
+        _mb(f"Minstral_Hull_Peel_{pi_}", (41.528, py, pz), (0.01, w, h), col)
+    for k in range(8):
+        py = -128.6 + k * 2.0
+        if -124.9 < py < -121.4:
+            continue                                   # behind the paddlebox
+        _mc(f"Minstral_Porthole_{k}_Rim", (41.535, py, 1.55), 0.20, 0.03, (0.70, 0.56, 0.30, 1.0), segments=12, axis='X')
+        _mc(f"Minstral_Porthole_{k}_Glass", (41.552, py, 1.55), 0.15, 0.01, (0.10, 0.12, 0.12, 1.0), segments=12, axis='X')
+    _mb("Minstral_Stern_NameBoard", (hx, -130.03, 2.30), (4.2, 0.04, 0.62), (0.84, 0.80, 0.68, 1.0))
+    for li, lx in enumerate([-1.75 + 0.27 * k for k in range(14)]):
+        if li == 9:
+            continue                                   # the gap: MINSTRAL'S | GREEN
+        _mb(f"Minstral_Stern_Name_Letter_{li}", (hx + lx, -130.055, 2.30), (0.17, 0.01, 0.34), (0.20, 0.30, 0.24, 1.0))
+    _mc("Minstral_Rudder_Post", (hx, -130.12, -0.6), 0.10, 4.6, (0.30, 0.20, 0.14, 1.0), segments=8)
+    _mb("Minstral_Rudder_Blade", (hx, -130.75, -1.9), (0.12, 1.1, 1.6), (0.36, 0.22, 0.16, 1.0))
     # deck aft of the deckhouse — weathered boards, a rotted hole
     _mb("Minstral_Deck", (hx, -125.05, 3.115), (6.80, 9.70, 0.03), (0.40, 0.34, 0.27, 1.0))
     _mb("Minstral_Deck_Hole", (36.9, -127.2, 3.135), (1.2, 0.9, 0.01), (0.06, 0.05, 0.05, 1.0))
