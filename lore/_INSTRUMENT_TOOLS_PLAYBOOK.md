@@ -193,6 +193,49 @@ those tools.
   was blocked by an open Chrome tab. Prefer IDENTIFY when Chrome is
   running.
 
+### 2026-10-06 — Felucca and SLOOP firmwares
+
+- Both are open source (GPL-3.0). Felucca is hugelton/Felucca by Leo
+  Kuroshita (Hügelton). SLOOP is isod89/sloop-fm1 by 3dSam and is a
+  Felucca fork. Read the repos' `web/EDITOR_PROTOCOL.md` and
+  `firmware/src` before guessing anything about them.
+- USB identity changes: both re-enumerate as `1209:0001` with the
+  MIDI port and product named "Felucca" (SLOOP keeps the name on
+  purpose). `1209:0001` is a shared pid.codes hobby ID, so the flash
+  script only accepts it when the product or ALSA card id says
+  Felucca. The updater loader stays `4d4a:4155`.
+- Version: the vendor identity query still answers, with `FM-1_9XY`
+  built from release X.Y (Felucca 1.0.x is `FM-1_910`, SLOOP 2.3 is
+  `FM-1_923`). The ranges collide, so `fm1DecodeIdentity` calls 9xx
+  "felucca family". The editor INFO request `F0 7D 46 4C 01 F7` is
+  read-only and names them: "FELUCCA v1.0.3" or "FELUCCA SLOOP 2.3".
+  Only send INFO when the port is named Felucca or the vendor reply
+  was 9xx. Stock and Baud Girl never see it (browser-tested).
+- Both are multitimbral. MidiInput now takes `{role}` (lead / bass /
+  chords / drums). OUT channel 0 means auto, which resolves through
+  `FM1_PROFILES`: Felucca lead 1, bass 2, chords 3, drums 4 (track 4
+  needs its engine set to DRUM). SLOOP is 1 / 2 / 3 / drums on 10.
+  Stock and Baud Girl stay on ch1. A fixed OUT channel in the console
+  overrides auto for every tool.
+- Both drum engines take General MIDI drum notes, so the drum tool's
+  GM map works unchanged.
+- Neither has a DX7 engine. `mi.dx7Ok()` blocks the console patch
+  push, ALG 1 ONLY, and RIFFMASTER FM's push. Sounds are edited in
+  each firmware's own web editor over its FL SysEx protocol. We don't
+  speak that protocol yet, and it's the natural next integration.
+- Recovery differs. SLOOP has a USB rescue (hold OCT− at power-on,
+  then reinstall). Felucca's installer says a failed install that
+  won't boot needs a Transporter dongle. Both installers ask for a
+  direct cable, which conflicts with the Deck-through-dock setup, so
+  the script warns harder for Felucca.
+- Installers are hosted: hugelton.github.io/Felucca/ and
+  isod89.github.io/sloop-fm1/. SLOOP's INSTALL-SLOOP.bat is
+  Windows-only and not needed. `fm1_flash.sh --firmware
+  baudgirl|felucca|sloop` picks one, or the script shows a menu.
+- Tested against fake USB/ALSA trees and a fake Web MIDI port in
+  headless Chromium (18 firmware × tool combinations). Not yet on
+  hardware with either firmware.
+
 ## TEMPLATE
 
 ```

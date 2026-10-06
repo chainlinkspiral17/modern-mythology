@@ -442,7 +442,7 @@ window.addEventListener('gamepadinput-axis', e => {
 // ── FM-1 / MIDI routing ──────────────────────────────────────────
 // FM-1 keys pluck the Karplus-Strong string at that pitch.
 let _fromMidi = false;
-const mi = new MidiInput();
+const mi = new MidiInput({ role: 'lead' });
 mi.start();
 mountMidiOverlay(mi, { learnTargets: [
   { id: 'strings.brightness', label: 'BRIGHTNESS', el: 'brightness' },

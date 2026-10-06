@@ -34,6 +34,18 @@
  * target here is MIDI-LEARN: click LEARN, turn the knob, done. The
  * learned map is saved in localStorage and shared by every tool.
  *
+ * Felucca and SLOOP (open-source replacement firmwares) re-enumerate
+ * as USB 1209:0001 with the MIDI port named "Felucca" (SLOOP keeps the
+ * name). Both are four-track multitimbral, so OUT routing goes by the
+ * tool's ROLE (lead / bass / chords / drums) through FM1_PROFILES:
+ *   Felucca  ch1-4 = tracks 1-4 (ROUT CH1-4, the default)
+ *   SLOOP    ch1-3 = synth tracks 1-3, ch10 = drums (GM notes),
+ *            ch4-16 = the selected track
+ * They report FM-1_9XY to the vendor identity query (same family, so
+ * ambiguous); the editor protocol's read-only INFO (F0 7D 46 4C 01 F7)
+ * answers "FELUCCA v1.0.3" or "FELUCCA SLOOP 2.3", which settles it.
+ * Neither understands DX7 SysEx.
+ *
  * Web MIDI needs Chrome or Edge (same requirement as the Baud Girl
  * installer). Firefox ships it behind a site-permission flow; Safari
  * doesn't have it.
@@ -49,7 +61,24 @@
 "use strict";
 
 const MIDI_LS_KEY = 'mm_midi_prefs';
-const MIDI_DEVICE_HINTS = [/fm-?1/i, /m-?vave/i, /mvave/i];
+const MIDI_DEVICE_HINTS = [/fm-?1/i, /m-?vave/i, /mvave/i, /felucca/i, /sloop/i];
+const MIDI_FELUCCA_PORT = /felucca|sloop/i;
+
+// Per-firmware routing. roles: tool role → OUT channel (multitimbral
+// firmwares only). dx7: whether DX7 voice / parameter SysEx means
+// anything to it.
+const FM1_PROFILES = {
+  stock:    { label: 'stock M-VAVE',      dx7: true,  roles: null },
+  baudgirl: { label: 'Baud Girl FM-1+VA', dx7: true,  roles: null },
+  felucca:  { label: 'Felucca',           dx7: false,
+              roles: { lead: 1, bass: 2, chords: 3, drums: 4 },
+              roleNames: { lead: 'track 1', bass: 'track 2', chords: 'track 3', drums: 'track 4 (set its engine to DRUM)' } },
+  sloop:    { label: 'SLOOP',             dx7: false,
+              roles: { lead: 1, bass: 2, chords: 3, drums: 10 },
+              roleNames: { lead: 'synth 1', bass: 'synth 2', chords: 'synth 3', drums: 'drum track' } },
+};
+const FM1_LS_FIRMWARE = 'mm_fm1_firmware';
+const FM1_LS_FIRMWARE_NAME = 'mm_fm1_firmware_name';
 const MIDI_OTA_HINT = /ota-?fm-?1/i;
 
 function _midiLoadPrefs() {
@@ -79,7 +108,15 @@ class MidiInput {
     this.status = 'idle';          // idle | unsupported | denied | no-device | connected | ota
     this.statusDetail = '';
     this.channel = prefs.channel ?? 0;          // input filter: 0 = omni, 1..16
-    this.outChannel = prefs.outChannel ?? 1;    // 1..16
+    this.outChannel = prefs.outChannel ?? 0;    // 0 = auto (by firmware + role), 1..16 = fixed
+    this.role = opts.role || 'lead';            // lead | bass | chords | drums
+    this.autoIdentify = opts.autoIdentify !== false;
+    this.firmware = '';
+    this.firmwareName = '';
+    try {
+      this.firmware = localStorage.getItem(FM1_LS_FIRMWARE) || '';
+      this.firmwareName = localStorage.getItem(FM1_LS_FIRMWARE_NAME) || '';
+    } catch (e) { /* storage blocked */ }
     this.outEnabled = prefs.outEnabled ?? false;
     this.ccMap = prefs.ccMap || {};             // targetId -> cc number
     this.preferredIn = prefs.inName || null;
@@ -193,6 +230,11 @@ class MidiInput {
       window.dispatchEvent(new CustomEvent('midiinput-connected', {
         detail: { inName: this.input && this.input.name, outName: this.output && this.output.name }
       }));
+      // Read-only: learn which firmware is on the synth so OUT routing
+      // and the DX7 guard follow it. Same queries the installers send.
+      if (this.autoIdentify && this.sysexOk && this.input && this.output) {
+        setTimeout(() => { this.identify().catch(() => {}); }, 400);
+      }
     }
     this._savePrefs();
   }
@@ -218,7 +260,34 @@ class MidiInput {
     this._pickPorts();
   }
   setChannel(ch)    { this.channel = ch | 0; this._savePrefs(); }
-  setOutChannel(ch) { this.outChannel = Math.max(1, Math.min(16, ch | 0)); this._savePrefs(); }
+  setOutChannel(ch) { this.outChannel = Math.max(0, Math.min(16, ch | 0)); this._savePrefs(); }
+  profile() { return FM1_PROFILES[this.firmware] || null; }
+  // The channel OUT actually uses: a fixed choice wins; auto follows
+  // the firmware's track map for this tool's role, else channel 1.
+  resolvedOutChannel() {
+    if (this.outChannel > 0) return this.outChannel;
+    const p = this.profile();
+    return (p && p.roles && p.roles[this.role]) || 1;
+  }
+  outRouteLabel() {
+    const ch = this.resolvedOutChannel();
+    const p = this.profile();
+    const auto = this.outChannel === 0;
+    const where = auto && p && p.roleNames ? ' · ' + p.label + ' ' + p.roleNames[this.role] : '';
+    return 'ch ' + ch + (auto ? ' (auto)' : ' (fixed)') + where;
+  }
+  dx7Ok() { const p = this.profile(); return !p || p.dx7; }
+  setFirmware(fw, name) {
+    this.firmware = fw || '';
+    this.firmwareName = name || '';
+    try {
+      localStorage.setItem(FM1_LS_FIRMWARE, this.firmware);
+      localStorage.setItem(FM1_LS_FIRMWARE_NAME, this.firmwareName);
+    } catch (e) { /* ignore */ }
+    window.dispatchEvent(new CustomEvent('midiinput-firmware', {
+      detail: { firmware: this.firmware, name: this.firmwareName, route: this.outRouteLabel() }
+    }));
+  }
   setOutEnabled(on) { this.outEnabled = !!on; if (!on) this.allNotesOff(); this._savePrefs(); }
 
   // ── CC learn ────────────────────────────────────────────────────
@@ -304,7 +373,7 @@ class MidiInput {
     try { this.output.send(bytes); return true; }
     catch (e) { this._setStatus(this.status, 'send failed: ' + (e.message || e)); return false; }
   }
-  _st(type, ch) { return type | (((ch || this.outChannel) - 1) & 0x0F); }
+  _st(type, ch) { return type | (((ch || this.resolvedOutChannel()) - 1) & 0x0F); }
   noteOn(note, vel01 = 0.8, ch)  { return this.send([this._st(0x90, ch), note & 0x7F, Math.max(1, Math.min(127, Math.round(vel01 * 127)))]); }
   noteOff(note, ch)              { return this.send([this._st(0x80, ch), note & 0x7F, 0]); }
   cc(cc, value, ch)              { return this.send([this._st(0xB0, ch), cc & 0x7F, Math.max(0, Math.min(127, value | 0))]); }
@@ -316,7 +385,7 @@ class MidiInput {
   allNotesOff(ch) {
     this._echoNote = -1;
     if (!this.output) return false;
-    const chans = ch ? [ch] : [this.outChannel];
+    const chans = ch ? [ch] : [this.resolvedOutChannel()];
     for (const c of chans) { this.cc(123, 0, c); this.cc(120, 0, c); }
     return true;
   }
@@ -327,28 +396,51 @@ class MidiInput {
   }
 
   // ── Firmware identity (read-only) ──────────────────────────────
-  // Sends the vendor identity query the official updater opens with
-  // (F0 00 32 45 00 00 00 40 7F F7) and decodes the reply into e.g.
-  // "FM-1_015" (stock) or "FM-1_092" (Baud Girl FM-1+VA). This is the
-  // ONLY message with the 00 32 45 header the tools ever send — the
-  // rest of that protocol is the flasher. Resolves null on timeout.
-  identify(timeoutMs = 3000) {
+  // Two read-only queries, both ones the firmwares' own installers or
+  // editors send:
+  //  1. vendor identity F0 00 32 45 00 00 00 40 7F F7 → "FM-1_015"
+  //     (stock), "FM-1_09x" (Baud Girl), "FM-1_9XY" (Felucca family).
+  //     The ONLY 00 32 45 message the tools ever send — the rest of that
+  //     protocol is the flasher.
+  //  2. Felucca editor INFO F0 7D 46 4C 01 F7 → "FELUCCA v1.0.3" or
+  //     "FELUCCA SLOOP 2.3". Only sent when the port is named Felucca
+  //     or the vendor reply was 9xx, never to stock / Baud Girl.
+  // Resolves {name, firmware, package, version} or null; also updates
+  // this.firmware (fires midiinput-firmware).
+  _await(match, bytes, timeoutMs) {
     return new Promise(resolve => {
-      if (!this.output || !this.input) return resolve(null);
-      if (!this.sysexOk) return resolve({ error: 'SysEx not permitted' });
-      const q = [0xF0, 0x00, 0x32, 0x45, 0x00, 0x00, 0x00, 0x40, 0x7F, 0xF7];
       let done = false;
       const onSx = e => {
-        const d = e.detail.data;
-        if (d.length < 20 || d[1] !== 0x00 || d[2] !== 0x32 || d[3] !== 0x45) return;
-        const id = fm1DecodeIdentity(d);
-        if (!id) return;
-        done = true; window.removeEventListener('midiinput-sysex', onSx); resolve(id);
+        const r = match(e.detail.data);
+        if (!r) return;
+        done = true; window.removeEventListener('midiinput-sysex', onSx); resolve(r);
       };
       window.addEventListener('midiinput-sysex', onSx);
-      this.send(q);
+      this.send(bytes);
       setTimeout(() => { if (!done) { window.removeEventListener('midiinput-sysex', onSx); resolve(null); } }, timeoutMs);
     });
+  }
+  vendorIdentity(timeoutMs = 3000) {
+    return this._await(d => (d.length >= 20 && d[1] === 0x00 && d[2] === 0x32 && d[3] === 0x45) ? fm1DecodeIdentity(d) : null,
+      [0xF0, 0x00, 0x32, 0x45, 0x00, 0x00, 0x00, 0x40, 0x7F, 0xF7], timeoutMs);
+  }
+  editorInfo(timeoutMs = 1500) {
+    return this._await(d => fm1DecodeEditorInfo(d), [0xF0, 0x7D, 0x46, 0x4C, 0x01, 0xF7], timeoutMs);
+  }
+  async identify(timeoutMs = 3000) {
+    if (!this.output || !this.input) return null;
+    if (!this.sysexOk) return { error: 'SysEx not permitted' };
+    if (this._identifying) return this._identifying;
+    this._identifying = (async () => {
+      const vendor = await this.vendorIdentity(timeoutMs);
+      const portSaysFelucca = MIDI_FELUCCA_PORT.test((this.input.name || '') + ' ' + (this.output.name || ''));
+      let info = null;
+      if (portSaysFelucca || (vendor && vendor.firmware === 'felucca')) info = await this.editorInfo();
+      const id = fm1MergeIdentity(vendor, info);
+      if (id) this.setFirmware(id.firmware, id.name);
+      return id;
+    })();
+    try { return await this._identifying; } finally { this._identifying = null; }
   }
 
   // ── Echo helpers (tool-facing — gated by the OUT toggle) ────────
@@ -384,6 +476,9 @@ class MidiInput {
       last: this.lastEvent,
       sysex: this.sysexOk,
       outEnabled: this.outEnabled,
+      firmware: this.firmware,
+      firmwareName: this.firmwareName,
+      route: this.outRouteLabel(),
     };
   }
 }
@@ -393,7 +488,9 @@ class MidiInput {
 // to a 34-byte JieLi ID block starting 00 59 11; bytes 6..30 hold
 // "<model>_<version>". Mirrors fm1_identify.py in
 // ip2k/mvave-fm1-open-firmware. Returns {name, model, version,
-// firmware: 'stock'|'baudgirl'} or null.
+// firmware: 'stock'|'baudgirl'|'felucca'} or null. 'felucca' means
+// the Felucca family (Felucca or SLOOP): fm1DecodeEditorInfo tells
+// them apart.
 function fm1DecodeIdentity(bytes) {
   const d = [...bytes];
   if (d[0] !== 0xF0 || d[d.length - 1] !== 0xF7) return null;
@@ -410,9 +507,33 @@ function fm1DecodeIdentity(bytes) {
   return {
     name: m[1] + '_' + String(version).padStart(3, '0'),
     model: m[1], version,
-    // Stock ships as 014 / 015; Baud Girl's FM-1+VA builds are 020+.
-    firmware: version >= 20 ? 'baudgirl' : 'stock',
+    // Stock ships as 014 / 015; Baud Girl's FM-1+VA builds are 020..099;
+    // Felucca and SLOOP release builds are 9XY (from version X.Y).
+    firmware: version >= 900 ? 'felucca' : version >= 20 ? 'baudgirl' : 'stock',
   };
+}
+
+// Felucca-family editor INFO reply: F0 7D 46 4C 01 <string 0> ... F7.
+// The string is "FELUCCA " + version: "FELUCCA v1.0.3" (Felucca) or
+// "FELUCCA SLOOP 2.3" (SLOOP). Returns {name, firmware, raw} or null.
+function fm1DecodeEditorInfo(bytes) {
+  const d = [...bytes];
+  if (d.length < 7 || d[0] !== 0xF0 || d[1] !== 0x7D || d[2] !== 0x46 || d[3] !== 0x4C || d[4] !== 0x01) return null;
+  let s = '';
+  for (let i = 5; i < d.length - 1 && d[i] !== 0 && s.length < 32; i++) s += String.fromCharCode(d[i]);
+  if (!/^FELUCCA\b/i.test(s)) return null;
+  const rest = s.replace(/^FELUCCA\s*/i, '').trim();
+  const sloop = /SLOOP/i.test(rest);
+  return { raw: s, firmware: sloop ? 'sloop' : 'felucca', name: sloop ? rest : 'Felucca ' + rest };
+}
+
+function fm1MergeIdentity(vendor, info) {
+  if (info) return { name: info.name, firmware: info.firmware, package: vendor ? vendor.name : null, raw: info.raw };
+  if (vendor) {
+    const name = vendor.firmware === 'felucca' ? vendor.name + ' (Felucca-based; editor silent)' : vendor.name;
+    return { name, firmware: vendor.firmware, package: vendor.name, version: vendor.version };
+  }
+  return null;
 }
 
 // ── CC → <input type=range> binding ────────────────────────────────
@@ -478,7 +599,8 @@ function mountMidiOverlay(mi, opts = {}) {
         </label>
       </div>
     </div>
-    <div id="mio-held" style="color:#d8a060;font-size:10px;margin-top:5px;">held: —</div>
+    <div id="mio-fw" style="color:#88b87a;font-size:10px;margin-top:5px;">fw: —</div>
+    <div id="mio-held" style="color:#d8a060;font-size:10px;margin-top:2px;">held: —</div>
     <div id="mio-last" style="color:#7a5828;font-size:10px;margin-top:2px;font-style:italic;">last: —</div>
     <div id="mio-learn" style="margin-top:6px;${targets.length ? '' : 'display:none;'}">
       <div style="display:flex;gap:4px;align-items:center;">
@@ -499,7 +621,13 @@ function mountMidiOverlay(mi, opts = {}) {
   const statusEl = $('mio-status'), inSel = $('mio-in'), outSel = $('mio-out'), chSel = $('mio-ch');
   const outEn = $('mio-out-en'), heldEl = $('mio-held'), lastEl = $('mio-last');
   const targetSel = $('mio-target'), learnBtn = $('mio-learn-btn'), forgetBtn = $('mio-forget');
-  const mapEl = $('mio-map'), msgEl = $('mio-msg');
+  const mapEl = $('mio-map'), msgEl = $('mio-msg'), fwEl = $('mio-fw');
+  function refreshFwLine() {
+    const p = mi.profile();
+    fwEl.textContent = 'fw: ' + (mi.firmwareName || (p ? p.label : 'unknown')) + ' · OUT ' + mi.outRouteLabel();
+  }
+  refreshFwLine();
+  window.addEventListener('midiinput-firmware', refreshFwLine);
 
   chSel.innerHTML = '<option value="0">omni</option>' +
     Array.from({ length: 16 }, (_, i) => `<option value="${i + 1}">ch ${i + 1}</option>`).join('');

@@ -508,7 +508,7 @@ window.addEventListener('gamepadinput-axis', e => {
 // Same mono last-note-priority model as RIFFMASTER SYNTH. The FM-1's
 // 27 keys sit high for a bass — drop the synth's octave shift or
 // just play the left end; notes land wherever you send them.
-const mi = new MidiInput();
+const mi = new MidiInput({ role: 'bass' });
 mi.start();
 mountMidiOverlay(mi, { learnTargets: [
   { id: 'bass.glide', label: 'GLIDE', el: 'glide' },

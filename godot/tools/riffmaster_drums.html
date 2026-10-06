@@ -531,7 +531,7 @@ function refreshHeld() {
 // hardware lines up.
 const GM_NOTES = [36, 38, 42, 46, 39, 37, 49, 51, 45, 50];   // kick snare hh_c hh_o clap rim crash ride tom_lo tom_hi
 let _fromMidi = false;
-const mi = new MidiInput();
+const mi = new MidiInput({ role: 'drums' });
 mi.start();
 mountMidiOverlay(mi, { learnTargets: [
   { id: 'drums.swing', label: 'SWING', el: 'swing' },

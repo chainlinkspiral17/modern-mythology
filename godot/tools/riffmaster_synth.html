@@ -1009,7 +1009,7 @@ setInterval(refreshAudioStateBadge, 500);
 // attacks, further keys glide (legato), releasing back to a still-
 // held key glides there, last release lets the envelope go. Pitch
 // bend wheel/CC on the FM-1 = the whammy (±200 cents).
-const mi = new MidiInput();
+const mi = new MidiInput({ role: 'lead' });
 mi.start();
 mountMidiOverlay(mi, { learnTargets: [
   { id: 'synth.glide', label: 'GLIDE', el: 'glide' },

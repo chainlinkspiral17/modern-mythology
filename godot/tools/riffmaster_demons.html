@@ -495,7 +495,7 @@ function refreshHeld() {
 // ── FM-1 / MIDI routing ──────────────────────────────────────────
 // Each FM-1 key fires a demon (note % roster size). No OUT echo —
 // these are textures, not pitches.
-const mi = new MidiInput();
+const mi = new MidiInput({ role: 'lead' });
 mi.start();
 mountMidiOverlay(mi, { learnTargets: [
   { id: 'demons.looprate', label: 'LOOP RATE', el: 'loop-rate' },

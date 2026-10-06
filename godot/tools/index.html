@@ -107,9 +107,9 @@
     </div>
 
     <div style="background: var(--bg-1); border: 1px solid var(--rule); padding: 14px 20px; margin-bottom: 18px;">
-      <div style="color: var(--gold-hi); font-size: 12px; letter-spacing: 0.12em; margin-bottom: 6px;">QUICKSTART · M-VAVE FM-1 (STOCK OR BAUD GIRL FM-1+VA)</div>
+      <div style="color: var(--gold-hi); font-size: 12px; letter-spacing: 0.12em; margin-bottom: 6px;">QUICKSTART · M-VAVE FM-1 (STOCK · BAUD GIRL FM-1+VA · FELUCCA · SLOOP)</div>
       <div style="font-size: 11px; line-height: 1.55;">
-        <b style="color: var(--gold);">0.</b> Installing Baud Girl's FM-1+VA firmware? Run <b>godot/tools/fm1_flash.sh</b> in Desktop Mode first — it preflights cable / hub / power, blocks sleep, opens her installer, and verifies the version afterwards.
+        <b style="color: var(--gold);">0.</b> Installing a firmware (Baud Girl FM-1+VA, Felucca or SLOOP)? Run <b>godot/tools/fm1_flash.sh</b> in Desktop Mode first — it asks which one, preflights cable / hub / power, blocks sleep, opens that firmware's own installer, and verifies the result afterwards. On Felucca / SLOOP the tools route by instrument automatically: lead → ch1, bass → ch2, chords → ch3, drums → ch4 (Felucca) or ch10 (SLOOP).
         <b style="color: var(--gold);">1.</b> USB-C the FM-1 to the machine, power it on in normal play mode (not the updater — if a port called <i>ota-FM-1</i> shows up, finish the flash and power-cycle).
         <b style="color: var(--gold);">2.</b> Open any instrument in <b>Chrome or Edge</b> (Web MIDI — same requirement as the Baud Girl installer). Allow the MIDI prompt; say yes to SysEx too if you want to push patches.
         <b style="color: var(--gold);">3.</b> The <span style="color: var(--emerald-hi);">FM-1 · MIDI</span> panel (bottom-right, left of the Riffmaster panel) should read <i>connected</i>. Its keys now play the instrument. Pick the port by hand if it enumerated as a bare <i>USB Composite Device</i>.
@@ -186,7 +186,7 @@
       </a>
       <a class="tile" href="fm1_console.html">
         <div class="ttl">FM-1 CONSOLE</div>
-        <div class="desc">Bridge for the M-VAVE FM-1 hardware synth (stock or Baud Girl FM-1+VA firmware). Port picker + status, read-only firmware IDENTIFY, MIDI monitor with decode, four-slot knob CC learn (shared with every instrument), program change, on-screen keyboard mirroring the FM-1's keys, and DX7 single-voice SysEx push of the RIFFMASTER FM presets to the hardware engine.</div>
+        <div class="desc">Bridge for the M-VAVE FM-1 hardware synth (stock, Baud Girl FM-1+VA, Felucca or SLOOP firmware — auto-detected). Port picker + status, read-only firmware IDENTIFY, MIDI monitor with decode, four-slot knob CC learn (shared with every instrument), program change, on-screen keyboard mirroring the FM-1's keys, and DX7 single-voice SysEx push of the RIFFMASTER FM presets to the hardware engine.</div>
         <div class="tags"><span class="tag midi">FM-1</span><span class="tag audio">MIDI</span></div>
       </a>
       <a class="tile" href="ambient_synth.html">

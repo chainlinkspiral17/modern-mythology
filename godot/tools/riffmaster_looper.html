@@ -580,7 +580,7 @@ window.addEventListener('gamepadinput-button', e => {
 // armed track, exactly like a strum. Loop playback goes through
 // pling(), so with OUT→FM-1 on the loops play the hardware.
 let _fromMidi = false;
-const mi = new MidiInput();
+const mi = new MidiInput({ role: 'chords' });
 mi.start();
 mountMidiOverlay(mi, { learnTargets: [{ id: 'vol', label: 'VOL', el: 'vol' }] });
 window.addEventListener('midiinput-connected', ensureAudio);

@@ -511,7 +511,7 @@ window.addEventListener('gamepadinput-axis', e => {
 // First key auto-starts the arp like a fret press does. With
 // OUT→FM-1 on, the arp plays the hardware engine at the arp rate.
 const midiHeld = new Set();
-const mi = new MidiInput();
+const mi = new MidiInput({ role: 'chords' });
 mi.start();
 mountMidiOverlay(mi, { learnTargets: [
   { id: 'arp.rate', label: 'RATE', el: 'rate' },

@@ -474,7 +474,7 @@ window.addEventListener('gamepadinput-axis', e => {
 // FM-1 keys → pluck the 2-op engine. Learned knobs → the six sliders
 // (shared mm_midi_prefs map). Pitch bend acts like the whammy.
 let _fromMidi = false;
-const mi = new MidiInput();
+const mi = new MidiInput({ role: 'lead' });
 mi.start();
 mountMidiOverlay(mi, { learnTargets: [
   { id: 'fm.ratio',   label: 'MOD RATIO', el: 'ratio' },
@@ -503,7 +503,12 @@ document.getElementById('send-fm1').addEventListener('click', () => {
     susPct:    parseInt(document.getElementById('sus').value),
     releaseMs: parseInt(document.getElementById('release').value),
   });
-  const ok = mi.sendSysex(dx7VoiceSysex(voice, mi.outChannel));
+  if (!mi.dx7Ok()) {
+    document.getElementById('now-meta').textContent = (mi.firmwareName || 'this firmware') +
+      ' has no DX7 engine — build sounds in its own editor (see fm1_console.html)';
+    return;
+  }
+  const ok = mi.sendSysex(dx7VoiceSysex(voice, mi.resolvedOutChannel()));
   document.getElementById('now-meta').textContent = ok
     ? 'sent "' + voice.name.trim() + '" to the FM-1 as a DX7 voice · play a key there'
     : (mi.sysexOk ? 'no OUT port selected (see FM-1 · MIDI panel)' : 'SysEx not permitted — open fm1_console.html');

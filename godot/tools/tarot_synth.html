@@ -1244,7 +1244,7 @@ window.addEventListener('gamepadinput-axis', e => {
 // scale snap — the keyboard IS the scale). The sequencer and card
 // pads also go through trigger(), so OUT→FM-1 mirrors all of it.
 let _fromMidi = false;
-const mi = new MidiInput();
+const mi = new MidiInput({ role: 'chords' });
 mi.start();
 mountMidiOverlay(mi, { learnTargets: [
   { id: 'tarot.bpm', label: 'BPM', el: 'bpm' },
