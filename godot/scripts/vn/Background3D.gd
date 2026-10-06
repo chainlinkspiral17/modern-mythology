@@ -535,9 +535,9 @@ const CAMERA_PRESETS := {
 		# door looking NE across the desk toward the window — 3/4 angle
 		# so the oak desk + banker's lamp read with depth, not a flat
 		# head-on stare.
-		"camera_origin": Vector3(-2.2, 1.65, -0.6),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(-37.7), 0.0),
-		"fov": 60.0,
+		"camera_origin": Vector3(-1.45, 1.62, -0.42),
+		"camera_rotation": Vector3(-0.218, -0.750, 0.0),
+		"fov": 62.0,
 		"suppress_input": true,
 	},
 	"new_orleans_apartment": {

@@ -166,19 +166,20 @@ light_color = Color(0.96, 0.84, 0.62, 1)
 light_energy = 0.7
 shadow_enabled = false
 
-; Warm overhead for the wood-paneled office so it reads (was key 0.4)
+; The ceiling fan's globe (2026-10-05: the room is canon's 12 x 10 now —
+; blender (0, 1.45, 2.26) → godot)
 [node name="Practical_Overhead" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9, -3.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 2.24, -1.45)
 light_color = Color(1.0, 0.86, 0.62, 1)
 light_energy = 1.3
-omni_range = 5.5
+omni_range = 3.6
 shadow_enabled = false
 
 ; Banker's-lamp green-glass glow on the desk (north end)
 ; (2026-09-19: on the lamp's shade, blender (-0.6, 3.64, 1.06) — it hung
 ; 0.85 m off the lamp, over the far side of the desk)
 [node name="Practical_BankerLamp" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 1.0, -3.64)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, 1.05, -2.17)
 light_color = Color(0.6, 1.0, 0.68, 1)
 light_energy = 0.9
 omni_range = 2.2
@@ -188,6 +189,16 @@ shadow_enabled = false
 transform = Transform3D(-0.866, 0.354, -0.354, 0, 0.707, 0.707, 0.5, 0.612, -0.612, 0, 4, -6)
 light_color = Color(0.42, 0.32, 0.22, 1)
 light_energy = 0.2
+shadow_enabled = false
+
+; The warehouse below (2026-10-05): the work light on its tripod lights the
+; floor the lookout looks down onto — the cypress beam, the salvage.
+; Blender (2.8, 8.42, -1.65) → godot.
+[node name="Practical_WorkLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, -1.65, -8.42)
+light_color = Color(1.0, 0.86, 0.56, 1)
+light_energy = 2.2
+omni_range = 11.0
 shadow_enabled = false
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
@@ -310,45 +321,38 @@ offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
 
-; ── vn_shot coverage (2026-08-09 · arcana sets round 2) ────────
-; rotation B: from the back door across the office to the front
+; the warehouse below through the lookout: the cypress beam going up crooked (re-aimed 2026-10-05 for the canon-scale room)
 [node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.2, 1.55, -5.4)
-rotation = Vector3(-0.110822, 2.47755, 0)
-metadata/fov = 54.0
+position = Vector3(-0.550, 1.550, -3.300)
+rotation = Vector3(-0.6728, -0.0613, 0.0)
+metadata/fov = 58.0
 
-; closeup: Antonio behind the desk
-; RE-AIMED 2026-10-03: Antonio at the desk with the street windows behind him
-; (it was the desk top at elbow height)
+; Antonio in his chair at the desk, the lookout behind him (re-aimed 2026-10-05 for the canon-scale room)
 [node name="shot_closeup_antonio" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.600, 1.500, -4.000)
-rotation = Vector3(-0.0955, 2.6779, 0.0)
-metadata/fov = 36.0
-
-; closeup: Jimmy on the pacing carpet
-[node name="shot_closeup_jimmy" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.9, 1.3, -3.6)
-rotation = Vector3(-0.207274, 2.57026, 0)
-metadata/fov = 36.0
-
-; insert: the phone on the desk
-[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.6, 1.15, -2.7)
-rotation = Vector3(-0.283808, -0.785398, 0)
-metadata/fov = 38.0
-
-; insert: the bourbon on the bookcase shelf
-; (2026-09-19: the bottle is on the desk beside the chipped glass, blender
-; (0.55, 3.45, 0.93); the lens looks over the chair's west arm at it)
-[node name="shot_insert_bourbon" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.3, 1.05, -2.75)
-rotation = Vector3(-0.11, -0.88, 0.0)
+position = Vector3(-0.400, 1.640, -0.980)
+rotation = Vector3(-0.3204, -0.2559, 0.0)
 metadata/fov = 40.0
 
-; insert: the east window over the street
-; RE-AIMED 2026-10-03: the LEADED window to the street ("looked out at the neighborhood …
-; leaning against a streetlight") — it framed the east pane, a flat warm glow
+; Jimmy's coffees on the desk, the leaded window he watches from beyond (re-aimed 2026-10-05 for the canon-scale room)
+[node name="shot_closeup_jimmy" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.600, 1.600, -2.750)
+rotation = Vector3(-0.5900, -2.9341, 0.0)
+metadata/fov = 42.0
+
+; the smartphone face-down on the desk (re-aimed 2026-10-05 for the canon-scale room)
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.100, 1.220, -1.450)
+rotation = Vector3(-0.6557, -0.4636, 0.0)
+metadata/fov = 32.0
+
+; the bourbon and the chipped glass (re-aimed 2026-10-05 for the canon-scale room)
+[node name="shot_insert_bourbon" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.450, 1.180, -1.550)
+rotation = Vector3(-0.3626, -0.4049, 0.0)
+metadata/fov = 34.0
+
+; through the leaded window: the streetlight across, the man in the charcoal suit (re-aimed 2026-10-05 for the canon-scale room)
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.850, 1.420, -0.950)
-rotation = Vector3(0.1021, -3.0904, 0.0)
+position = Vector3(0.720, 1.520, -0.780)
+rotation = Vector3(-0.3476, -2.9929, 0.0)
 metadata/fov = 40.0

@@ -3251,8 +3251,35 @@ REBUILD all three. Draft N+1: the office is still four times canon's twelve by
 ten (a full rebuild at scale); the bar's booth wants its own light;
 the room's bare bulb is the only practical. (2026-10-05: the booth
 has a wall sconce with its own practical over Doug's table; the room's
-LAUNDROMAT sign below the window is its second practical. Still open:
-the office at canon scale.)
+LAUNDROMAT sign below the window is its second practical.)
+
+**2026-10-05 · ANTONIO'S OFFICE AT CANON SCALE — draft 4, the rebuild
+(ch 7 Chariot · ch 5 §III · ch 20).** "The office was twelve feet by
+ten. He could pace it in eight strides." Drafts 1-3 were a 7 x 6 m
+period law office (four times the canon, banker's furniture, a drafting
+table, a ROTARY phone for a man whose phone screen says Q. PAUL) with
+the street at the office's own floor level for a room the prose climbs
+a stair to. `build_new_orleans_office.py` rewritten: 3.66 x 3.05 m
+under a 2.75 m ceiling; the front door to the iron stair (W), the back
+door to the back stair Jimmy comes up (E), Jimmy's AC in one street
+sash and the small leaded window (with cames) beside it (S), an interior
+LOOKOUT over the warehouse (N). His desk under the lookout facing the
+street; the smartphone face-down, the bourbon and the chipped glass,
+the rolled plans with paper ends, Jimmy's two coffees, the banker's
+lamp, a laptop; the visitor's chair; the file cabinet with the hard hat;
+the permits board and sample boards; the worn runner where he paces;
+the ceiling fan; the box fan and the drip pan. A storey down: the
+street, Creole cottages with iron galleries, two oaks with moss, the
+streetlight with the man in the charcoal suit beside it, the dark sedan
+by the dumpster. A storey down to the north: the warehouse — brick and
+graffiti, trusses, the cypress beam hanging crooked on two chain hoists
+over two ladders, salvaged doors and planks, a clawfoot tub, the crew's
+radio and cooler on a sawhorse, a work light (its practical lights the
+floor the lookout sees). Every marker re-aimed; `establish_b` looks
+down through the lookout. Deck must REBUILD new_orleans_office.
+Draft 5 targets: the crew's lunch litter; the radio's practical; the
+iron stair outside the front door; the man's cigarette ember; a Deck
+look at the 12 x 10 room's preset from the front door.
 
 **2026-10-03 · WINDOWS CUT ACROSS VOL 5 (draft N+1 of the glass
 pass).** Every remaining vol 5 window on a solid wall is cut with
