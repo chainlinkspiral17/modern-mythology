@@ -45,7 +45,8 @@ PAL_WALL = {"wall": (0.86, 0.84, 0.80, 1.0), "baseboard": (0.32, 0.30, 0.28, 1.0
 COL_CARPET = (0.32, 0.30, 0.32, 1.0); COL_CARPET_SEAM = (0.22, 0.20, 0.22, 1.0)
 COL_DESK = (0.42, 0.32, 0.22, 1.0); COL_PARTITION = (0.62, 0.62, 0.60, 1.0)
 COL_CHAIR = (0.18, 0.16, 0.18, 1.0); COL_MONITOR = (0.10, 0.12, 0.14, 1.0)
-COL_GLASS = (0.78, 0.84, 0.86, 0.50); COL_TRIM = (0.32, 0.28, 0.24, 1.0)
+COL_GLASS = (0.74, 0.82, 0.86, 0.16);   # (2026-10-05: 0.50 — the partitions + window + glass wall stacked to a white haze over the establish)
+COL_TRIM = (0.32, 0.28, 0.24, 1.0)
 COL_SCREEN = (0.20, 0.34, 0.46, 1.0); COL_ACCENT_WARM = (0.72, 0.30, 0.22, 1.0)
 COL_BOOKCASE = (0.40, 0.30, 0.20, 1.0); COL_CREDENZA = (0.36, 0.27, 0.18, 1.0)
 COL_BOOK_TINTS = [(0.62,0.26,0.22,1.0),(0.24,0.34,0.46,1.0),(0.30,0.42,0.30,1.0),
@@ -197,7 +198,7 @@ def build_window_blinds():
     # Blinds removed (hero-prop pass): the office is "glass walls,
     # chrome accents" and Erica watches the freeway + hawk through
     # them — full-height glazing instead.
-    make_box("Glass_Wall", (0.0, ROOM_D-0.06, 1.40), (9.4, 0.04, 2.80), (0.55, 0.66, 0.74, 0.30))
+    make_box("Glass_Wall", (0.0, ROOM_D-0.06, 1.40), (9.4, 0.04, 2.80), (0.55, 0.66, 0.74, 0.20))
     for mi, mx in enumerate((-3.2, -1.1, 1.1, 3.2)):
         make_box(f"Glass_Mullion_{mi}", (mx, ROOM_D-0.05, 1.40), (0.06, 0.06, 2.80), (0.42, 0.44, 0.46, 1.0))
 

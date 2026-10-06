@@ -3253,6 +3253,23 @@ the room's bare bulb is the only practical. (2026-10-05: the booth
 has a wall sconce with its own practical over Doug's table; the room's
 LAUNDROMAT sign below the window is its second practical.)
 
+**2026-10-05 · THE SUBARU DRIVES; ERICA'S GLASS CLEARS.** MIRIAM'S
+SUBARU draft 2: "moving west on a two-lane road through cane fields" —
+the road did not move. Nothing can move the car (a preset track moves
+only the camera, which would leave the car), so the WORLD moves:
+`scripts/RoadScroller.gd` on the scene streams every part named Cane_*,
+Pole_* and Road_Delineator_* toward the camera at 24 m/s, each part
+wrapping round the 880 m span on its own centre — and only while the
+active camera is inside the car, so the county-line station marker
+holds still (headless test: 9.7 m of cane in 60 frames inside, 0.0 at
+the station). New: white delineator posts with amber reflectors on both
+shoulders every 25 m, the motion cue at the side windows. HOUSTON
+OFFICE: the preset stands inside Erica's glass office, the east
+partition 20 cm off the lens — partitions, window and glass wall at 0.50
+/ 0.30 alpha stacked to a white haze over half the establish; 0.16 /
+0.20 now, the cubicle row reads through it. Deck must REBUILD
+miriam_subaru and houston_office.
+
 **2026-10-05 · THE VOL 5 CONTACT SHEET + THE CATHEDRAL FROM OUTSIDE.**
 All 24 vol 5 presets rendered under their chapters' leading moods into
 one sheet (the Arc 0 loop, run locally; `qa/contact_manifest.json`

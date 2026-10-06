@@ -125,6 +125,15 @@ def build_roadside():
     for wi, wx in enumerate((-0.75, 0.0, 0.75)):
         make_box(f"Pole_Wire_{wi}", (px + wx, (ys[0] + ys[-1]) / 2.0, 8.106), (0.012, ys[-1] - ys[0], 0.012),
                  (0.20, 0.20, 0.20, 1.0))
+    # delineator posts on both shoulders every 25 m — the motion cue at the
+    # side windows (RoadScroller streams them past, 2026-10-05)
+    for k in range(36):
+        py = -437.5 + k * 25.0
+        for sgn in (-1, 1):
+            dx = ROAD_CX + sgn * 4.55
+            make_box(f"Road_Delineator_{k}_{'W' if sgn < 0 else 'E'}", (dx, py, 0.55), (0.08, 0.08, 1.10), (0.92, 0.92, 0.90, 1.0))
+            make_box(f"Road_Delineator_{k}_{'W' if sgn < 0 else 'E'}_Reflector", (dx, py - 0.045, 0.95), (0.06, 0.01, 0.10),
+                     (0.96, 0.70, 0.20, 1.0))
     # the county-line sign, facing the oncoming car
     for sx in (3.2, 4.8):
         make_box(f"County_Sign_Post_{sx:.1f}", (sx, 228.0, 1.10), (0.08, 0.08, 2.2), (0.60, 0.60, 0.58, 1.0))

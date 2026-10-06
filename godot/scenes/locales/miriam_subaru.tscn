@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://miriam_subaru_vol5"]
+[gd_scene load_steps=25 format=3 uid="uid://miriam_subaru_vol5"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/miriam_subaru.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
 [ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
+[ext_resource type="Script" path="res://scripts/RoadScroller.gd" id="17_road"]
 
 [sub_resource type="ShaderMaterial" id="Mat_Post"]
 shader = ExtResource("4_post")
@@ -188,6 +189,11 @@ omni_range = 12.0
 shadow_enabled = false
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
+
+; The drive (2026-10-05): the wagon stays put, the cane, the poles and the
+; delineators stream past it while the camera is inside the car.
+[node name="RoadScroller" type="Node" parent="."]
+script = ExtResource("17_road")
 
 [node name="PostProcess" type="CanvasLayer" parent="."]
 layer = 50
