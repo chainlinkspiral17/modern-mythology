@@ -3334,6 +3334,83 @@ Draft 5 targets: the crew's lunch litter; the radio's practical; the
 iron stair outside the front door; the man's cigarette ember; a Deck
 look at the 12 x 10 room's preset from the front door.
 
+**2026-10-06 · THE DOCK AT PRE-DAWN + GRACIELA'S KITCHEN, ONCE + THE GAS & GO STOCKED + THE BACK LOT (vol 6
+contact sheet, its two weakest frames).** CENTRO_DOCK rendered black:
+the dawn bands stood 520 m out where the 0.004 fog left 12 % of them,
+lit only by ambient. The stockroom's environment is a pre-dawn
+ProceduralSky now (navy overhead, a warm horizon to story-east;
+`sky_curve` 0.35 so the warmth climbs off the ground line; both
+directional lights `sky_mode` light-only so no sun discs), the fog is
+the horizon's own tone and thinner (aerial perspective, not mud), the
+far treeline bands are cedar-scrub height (4-7 m, were 8-17 m: a wall
+over the dawn) and the THERMAL SMEAR is seven thin ragged rust veils —
+a sky card 55 m out scaled to the far horizon's angle (an insert's
+subject must be inside marker_aim's 40 m). GRACIELA'S KITCHEN was TWO
+template locales of one canonical room (`ramos_kitchen_morning` ch 1 /
+10, `grandmother_kitchen_morning` ch 16 / 18 / 22 / 23) — a store-kit
+counter, a centre table and a grey box each. One room now,
+`_props/ramos_kitchen.py`, dressed per locale: "the small round table
+under the window" with the radio, the salt box, a veladora and an aloe
+on the sill and the side drive outside (his truck in it, or only its
+oil stain — "the truck is the bait"); the counter run with canisters,
+the molcajete, the limes, the double sink under an open shelf of mugs,
+the dish rack, the white enamel range with THE CLOCK ABOVE THE STOVE
+(8:15 / 4:38), the fridge papered in forty years; Talavera accents;
+the china hutch, the back door standing open on its screen door and
+the patio (lemon tree, clothesline, cedar fence, live oak); the hall
+with the front door, the console lamp, the foot of the stair; the
+Guadalupe with its palm cross, his school pictures climbing the wall,
+the Sacred Heart, the baker's rack; Saltillo tile, a serape runner, a
+ceiling fan, the pendant over the table. Dressings: the yellow plate
+with the chip, her Sentinel, the fruit, the second letter, the caldo,
+the comal, the onion and the bay leaf (eggs) · the rosary, the black
+coffee, the cordless phone charging, the soup, the chorizo eggs in the
+skillet (rosary). Both envs carry a morning ProceduralSky with
+`fog_sky_affect = 0` (the fog had tinted the sky through the window
+brown). Five practicals at real fixtures (pendant, fan kit, hood lamp,
+hall lamp, a window sky fill). Every marker re-authored; the unused
+pie insert dropped. AUDIT: `locale_geometry_audit` runs
+`_props/ramos_kitchen` for real (a shared ROOM module was invisible to
+every gate — 0 objects — until it joined the real-module list). Deck
+must REBUILD centro_stockroom, grandmother_kitchen_morning and
+ramos_kitchen_morning. Draft 3 targets (kitchen): the half-bath door
+off the hall; the cordless charge light as a practical; steam over the
+pot (a mood); the clock reads faint at the preset's distance; the
+ceiling fan dominates the preset's top third — try a 44" fan. Draft N+1
+(dock): the dock lamp's cone on the apron; a parked trailer at the far
+bay. THE GAS & GO (the sheet's "toy blocks"): every shelf product was a
+solid saturated block. `build_merchandise_2026_10` stocks the aisle the
+way a gas station does — chip bags with a band and a crimp up top,
+candy trays of bars, jerky and nuts at the hand, motor-oil quarts and
+washer-fluid jugs at the shins — with price strips and tags on every
+edge, end panels, the water stacked at the counter end; the cigarette
+wall is packs by brand; a roller grill by the coffee; six-packs are
+carriers with can tops. The two south "windows" were panes on SOLID
+walls: cut, mullioned, decaled — and outside them the lot, Gallatin's
+four lanes, the median palms and, across the intersection, the Kwik
+Stop's red front with Sam's Corolla in its lot (ch 2's night watch). A
+day ProceduralSky (`fog_sky_affect = 0`). Skip's side of the counter:
+the drop safe with the receipt rolls, his cooler and his energy drink,
+the case of bags, the trash, the fatigue mat; his phone and his vape on
+the counter, the lottery case, the impulse rack; the east wall's ice
+merchandiser, ATM and hiring poster. The preset stood 1.5 m from the
+aisle (shelving only): it now looks over Skip's shoulder at the counter,
+the door and the pumps. Deck must REBUILD nexcorp_gas_go. Draft N+1: the
+car-wash tunnel out back; a back-bar behind the counter (the cigarette
+wall belongs there, not on the north wall); the night mood should dim
+the sky (ch 2's lot scene is at night). THE STRIP MALL'S BACK LOT (ch 14 /
+20 / 22, "a long blank wall"): `build_back_lot_2026_10` puts in what the
+prose lists — "three dumpsters and a small parked U-Haul that has been
+there for three weeks", "a chain-link fence at the back separating the
+lot from a small drainage easement and a stand of cedar" (its gap at the
+south end where the Civic comes in) — and the back wall's working life:
+a meter and conduit at every unit, door numbers on every door but the
+unit's, wall packs over the plain doors (none over the unit's, which "has
+no signage"), scupper rust, corner bollards, oil stains, the Foxhole's
+pallets. Deck must REBUILD new_auburn_road. Draft N+1: the dark sedan's
+empty space by the far dumpster; the sodium head as a cobra head with its
+practical; roof-top units on the parapet's skyline.
+
 **2026-10-03 · WINDOWS CUT ACROSS VOL 5 (draft N+1 of the glass
 pass).** Every remaining vol 5 window on a solid wall is cut with
 `make_wall_with_openings`: Natalie's (W + SE; its W "frame" was a

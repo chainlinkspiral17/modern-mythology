@@ -69,6 +69,10 @@ DELIBERATE_MARKERS = {
     # arm's length by design: the gap between the front seats Nicola
     # reaches through, and Miriam's eyes in the rearview.
     ("miriam_subaru", "shot_closeup_person"), ("miriam_subaru", "shot_closeup_person_b"),
+    # (2026-10-06) the dock's smear insert is a SKY shot by design: "Above
+    # the cedar, on the far horizon, the rust-colored thermal smear" — the
+    # smear is a sky card, the cedars are passable, the ground is ignored.
+    ("centro_stockroom", "shot_insert_smear"),
 }
 # Builders whose recorded boxes do not sit where the runtime puts them
 # (harmony_terrain drapes its props over a heightfield the recorder

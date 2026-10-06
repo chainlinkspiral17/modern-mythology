@@ -63,6 +63,16 @@ SNACK_TINTS = [
 
 CEIL_Z = 3.00
 
+# (2026-10-06) packaging, not primaries: a gas station's shelves read by
+# their BRAND grammar — a bag with a band and a crimp, a tray of bars, a
+# quart of oil with its cap — never by a solid saturated block
+BRAND_TINTS = [
+    (0.80, 0.18, 0.14, 1.0), (0.16, 0.30, 0.62, 1.0), (0.94, 0.74, 0.16, 1.0),
+    (0.24, 0.50, 0.26, 1.0), (0.44, 0.20, 0.46, 1.0), (0.90, 0.46, 0.14, 1.0),
+    (0.12, 0.12, 0.14, 1.0), (0.86, 0.84, 0.80, 1.0),
+]
+BAND_TINTS = [(0.96, 0.86, 0.30, 1.0), (0.96, 0.96, 0.94, 1.0), (0.82, 0.16, 0.14, 1.0), (0.14, 0.14, 0.16, 1.0)]
+
 
 def clear_scene():
     for obj in list(bpy.data.objects):
@@ -166,10 +176,15 @@ def build_shell():
     make_box("Wall_N", (0.0, 9.0, CEIL_Z/2.0),
              (12.4, 0.20, CEIL_Z), COL_WALL_WHITE)
     # South wall — door at center, brand-blue panel
-    make_box("Wall_S_W", (-3.80, 0.0, CEIL_Z/2.0),
-             (4.40, 0.20, CEIL_Z), COL_WALL_NEXCORP)
-    make_box("Wall_S_E", (+3.80, 0.0, CEIL_Z/2.0),
-             (4.40, 0.20, CEIL_Z), COL_WALL_NEXCORP)
+    # (2026-10-06: the two picture windows were glass panes on SOLID
+    # walls — the store could not see its own pumps. Cut.)
+    from _props.structure import make_wall_with_openings
+    make_wall_with_openings("Wall_S_W", (-3.80, 0.0, 0), length=4.40, height=CEIL_Z, axis='X',
+                            palette={"wall": COL_WALL_NEXCORP, "baseboard": COL_METAL_BLACK},
+                            baseboard_face_sign=+1, openings=[(-4.20, 1.65, 2.20, 1.40)])
+    make_wall_with_openings("Wall_S_E", (+3.80, 0.0, 0), length=4.40, height=CEIL_Z, axis='X',
+                            palette={"wall": COL_WALL_NEXCORP, "baseboard": COL_METAL_BLACK},
+                            baseboard_face_sign=+1, openings=[(+4.20, 1.65, 2.20, 1.40)])
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL_Z - 0.30),
              (3.20, 0.20, 0.60), COL_WALL_NEXCORP)
     # Brand sign — NEXCORP letters on white panel on the south wall
@@ -185,8 +200,15 @@ def build_shell():
     make_box("Door_Glass", (0.0, 0.0, 1.05), (2.80, 0.04, 2.00), COL_GLASS)
     # South-side picture windows showing the canopy + pumps
     for sgn, cx in [(-1, -4.20), (+1, +4.20)]:
-        make_box(f"Window_S_{sgn:+d}", (cx, -0.02, 1.65),
-                 (2.20, 0.04, 1.40), COL_GLASS)
+        make_box(f"Window_S_{sgn:+d}", (cx, 0.0, 1.65),
+                 (2.20, 0.012, 1.40), (0.70, 0.82, 0.86, 0.22))
+        for k, (dx, w) in enumerate(((-1.06, 0.08), (1.06, 0.08), (0.0, 0.05))):
+            make_box(f"Window_S_{sgn:+d}_Mullion_{k}", (cx + dx, 0.0, 1.65), (w, 0.10, 1.40), COL_METAL_STEEL)
+        for k, z in enumerate((0.97, 2.33)):
+            make_box(f"Window_S_{sgn:+d}_Rail_{k}", (cx, 0.0, z), (2.20, 0.10, 0.06), COL_METAL_STEEL)
+        # the window decals: hours, the rewards card, a hiring sign
+        make_box(f"Window_S_{sgn:+d}_Decal", (cx - 0.55 * sgn, 0.012, 1.20), (0.40, 0.003, 0.28),
+                 (0.96, 0.96, 0.94, 1.0) if sgn < 0 else (0.94, 0.80, 0.20, 1.0))
     # Ceiling
     make_box("Ceiling", (0.0, 4.5, CEIL_Z + 0.05),
              (12.4, 9.4, 0.10), COL_CEILING_TILE)
@@ -241,12 +263,6 @@ def build_counter():
         shz = 1.40 + sh * 0.42
         make_box(f"CigShelf_{sh}", (cig_x, cig_y, shz),
                  (3.20, 0.22, 0.02), (0.72, 0.60, 0.46, 1.0))
-        for ci in range(12):
-            box_x = cig_x - 1.45 + ci * 0.26
-            make_box(f"CigBox_{sh}_{ci}",
-                     (box_x, cig_y - 0.04, shz + 0.13),
-                     (0.20, 0.12, 0.22),
-                     SNACK_TINTS[(sh+ci) % len(SNACK_TINTS)])
 
 
 # ════════════════════════════════════════════════════════════════
@@ -367,13 +383,6 @@ def build_floor_props():
             make_box(f"Aisle_Shelf_{sh}_y{sy_sgn:+d}",
                      (ax, ay + sy_sgn * 0.21, shz),
                      (5.0, 0.36, 0.04), COL_METAL_STEEL)
-            for p in range(10):
-                px = ax - 2.25 + p * 0.50
-                tint = SNACK_TINTS[(sh + p) % len(SNACK_TINTS)]
-                ph = 0.20 + ((sh + p) % 3) * 0.05
-                make_box(f"Aisle_Product_{sh}_y{sy_sgn:+d}_{p}",
-                         (px, ay + sy_sgn * 0.23, shz + 0.02 + ph / 2.0),
-                         (0.16, 0.20, ph), tint)
     # Aisle top sign — corporate blue
     make_box("Aisle_Sign", (ax, ay, 2.30),
              (5.0, 0.10, 0.26), COL_WALL_NEXCORP)
@@ -421,15 +430,214 @@ def build_floor_props():
                  (0.96, 0.75, 0.02), COL_METAL_STEEL)   # side to side, to the back panel
         for b in range(3):
             bx = fx - 0.30 + b * 0.30
+            carton = BRAND_TINTS[(sh * 3 + b) % len(BRAND_TINTS)]
             make_box(f"BeerFridge_Sixpack_{sh}_{b}",
-                     (bx, fy, shz + 0.01 + 0.15),   # on the shelf (it hung 4 cm over it)
-                     (0.24, 0.24, 0.30), SNACK_TINTS[(sh+b) % len(SNACK_TINTS)])
+                     (bx, fy, shz + 0.01 + 0.065),   # a carrier of six cans (2026-10-06: was a 30 cm block)
+                     (0.24, 0.16, 0.13), carton)
+            make_box(f"BeerFridge_Sixpack_{sh}_{b}_Band", (bx, fy - 0.081, shz + 0.01 + 0.08), (0.24, 0.003, 0.04), (0.94, 0.92, 0.86, 1.0))
+            for ci in range(6):
+                make_cyl(f"BeerFridge_Sixpack_{sh}_{b}_Can_{ci}", (bx - 0.075 + (ci % 3) * 0.075, fy - 0.035 + (ci // 3) * 0.07, shz + 0.01 + 0.14),
+                         0.032, 0.02, (0.76, 0.78, 0.80, 1.0), segments=8)
 
     # Restroom door — west wall, marked with M/W signs
     make_box("Restroom_Door", (-5.96, 1.4, 1.05),
              (0.04, 0.90, 2.10), (0.42, 0.30, 0.18, 1.0))
     make_box("Restroom_Sign", (-5.94, 1.4, 2.30),
              (0.02, 0.30, 0.10), (0.96, 0.96, 0.96, 1.0))
+
+
+# ════════════════════════════════════════════════════════════════
+# MERCHANDISE (2026-10-06 · vol 6 contact sheet: "toy blocks")
+# ════════════════════════════════════════════════════════════════
+def _merch_section(tag, kind, x0, front_y, sgn, z0, k):
+    """Fill one 0.48 m shelf section with a FACING of one product.
+    front_y = the shelf's front edge; sgn = the direction the shelf
+    faces (-1 south, +1 north); z0 = the shelf's top."""
+    body = BRAND_TINTS[k % len(BRAND_TINTS)]
+    band = BAND_TINTS[k % len(BAND_TINTS)]
+    def Y(d):                                   # d metres back from the front edge
+        return front_y - sgn * d
+    if kind == "chips":
+        for i in range(3):
+            x = x0 + 0.08 + i * 0.16
+            h = 0.28 + 0.02 * ((i + k) % 2)
+            make_box(f"{tag}_Chips_{i}", (x, Y(0.07), z0 + h / 2.0), (0.15, 0.10, h), body)
+            make_box(f"{tag}_Chips_{i}_Band", (x, Y(0.019), z0 + h * 0.62), (0.15, 0.004, 0.07), band)
+            make_box(f"{tag}_Chips_{i}_Crimp", (x, Y(0.07), z0 + h + 0.008), (0.15, 0.02, 0.016), body)
+            make_box(f"{tag}_Chips_{i}_Back", (x, Y(0.20), z0 + h / 2.0 - 0.01), (0.15, 0.10, h - 0.02), body)
+    elif kind == "candy":
+        for t in range(2):
+            x = x0 + 0.12 + t * 0.24
+            make_box(f"{tag}_Candy_Tray_{t}", (x, Y(0.09), z0 + 0.025), (0.22, 0.16, 0.05), (0.86, 0.78, 0.64, 1.0))
+            make_box(f"{tag}_Candy_Tray_{t}_Header", (x, Y(0.165), z0 + 0.10), (0.22, 0.01, 0.10), BRAND_TINTS[(k + t) % len(BRAND_TINTS)])
+            for b in range(6):
+                make_box(f"{tag}_Candy_Tray_{t}_Bar_{b}", (x - 0.09 + b * 0.036, Y(0.06), z0 + 0.05 + 0.04),
+                         (0.03, 0.016, 0.08), BRAND_TINTS[(k + t + 2) % len(BRAND_TINTS)])
+    elif kind == "oil":
+        cols = ((0.12, 0.12, 0.14, 1.0), (0.16, 0.30, 0.62, 1.0), (0.94, 0.74, 0.16, 1.0))
+        for i in range(4):
+            x = x0 + 0.06 + i * 0.12
+            c = cols[(i // 2 + k) % 3]
+            for r in range(2):
+                make_box(f"{tag}_Oil_{i}_{r}", (x, Y(0.05 + r * 0.11), z0 + 0.095), (0.09, 0.06, 0.19), c)
+            make_cyl(f"{tag}_Oil_{i}_0_Cap", (x + 0.02, Y(0.05), z0 + 0.205), 0.016, 0.03, (0.86, 0.84, 0.80, 1.0), segments=6)
+            make_box(f"{tag}_Oil_{i}_0_Label", (x, Y(0.019), z0 + 0.09), (0.08, 0.003, 0.08), (0.94, 0.92, 0.86, 1.0))
+    elif kind == "jug":
+        for i in range(2):
+            x = x0 + 0.12 + i * 0.24
+            make_box(f"{tag}_Jug_{i}", (x, Y(0.08), z0 + 0.14), (0.18, 0.12, 0.28), (0.34, 0.60, 0.88, 1.0))
+            make_cyl(f"{tag}_Jug_{i}_Cap", (x + 0.05, Y(0.08), z0 + 0.295), 0.022, 0.03, (0.94, 0.94, 0.92, 1.0), segments=6)
+            make_box(f"{tag}_Jug_{i}_Label", (x, Y(0.019), z0 + 0.12), (0.14, 0.003, 0.10), (0.96, 0.96, 0.94, 1.0))
+            make_box(f"{tag}_Jug_{i}_Back", (x, Y(0.22), z0 + 0.14), (0.18, 0.12, 0.28), (0.30, 0.54, 0.80, 1.0))
+    elif kind == "tubes":
+        for i in range(5):
+            x = x0 + 0.05 + i * 0.095
+            make_cyl(f"{tag}_Tube_{i}", (x, Y(0.05), z0 + 0.115), 0.038, 0.23, body, segments=10)
+            make_cyl(f"{tag}_Tube_{i}_Lid", (x, Y(0.05), z0 + 0.2375), 0.040, 0.015, band, segments=10)
+            make_cyl(f"{tag}_Tube_{i}_Back", (x, Y(0.14), z0 + 0.115), 0.038, 0.23, body, segments=10)
+    elif kind == "jerky":
+        for i in range(4):
+            x = x0 + 0.06 + i * 0.12
+            for r in range(3):
+                make_box(f"{tag}_Jerky_{i}_{r}", (x, Y(0.03 + r * 0.06), z0 + 0.10), (0.11, 0.025, 0.20),
+                         ((0.26, 0.16, 0.10, 1.0), (0.12, 0.12, 0.14, 1.0))[(i + k) % 2])
+            make_box(f"{tag}_Jerky_{i}_Label", (x, Y(0.016), z0 + 0.13), (0.09, 0.002, 0.05), (0.80, 0.18, 0.14, 1.0))
+    elif kind == "cookies":
+        for i in range(2):
+            x = x0 + 0.12 + i * 0.24
+            for st in range(3):
+                make_box(f"{tag}_Cookies_{i}_{st}", (x, Y(0.08), z0 + 0.025 + st * 0.05), (0.20, 0.13, 0.048),
+                         BRAND_TINTS[(k + i + st) % len(BRAND_TINTS)] if st == 2 else body)
+    elif kind == "nuts":
+        for i in range(4):
+            x = x0 + 0.06 + i * 0.12
+            for r in range(2):
+                make_cyl(f"{tag}_Nuts_{i}_{r}", (x, Y(0.05 + r * 0.10), z0 + 0.06), 0.045, 0.12, body, segments=10)
+            make_cyl(f"{tag}_Nuts_{i}_0_Lid", (x, Y(0.05), z0 + 0.125), 0.046, 0.012, band, segments=10)
+
+
+def build_merchandise_2026_10():
+    """The aisle stocked as a gas station stocks it — snacks up top,
+    candy and jerky at the hand, auto supply at the shins; price strips
+    on every shelf edge; end caps; the water stacked at the counter end.
+    Skip's counter: the lottery case, the impulse rack, his phone and
+    his vape; the cigarette wall as packs; a roller grill by the coffee."""
+    ax, ay = -1.0, 4.0
+    plan = {0: ("oil", "jug", "oil", "jug", "oil", "jug", "oil", "jug", "oil", "jug"),
+            1: ("candy", "jerky", "candy", "nuts", "candy", "jerky", "candy", "nuts", "candy", "jerky"),
+            2: ("chips", "chips", "tubes", "cookies", "chips", "chips", "tubes", "cookies", "chips", "chips")}
+    for sh in range(3):
+        shz = 0.50 + sh * 0.45
+        top = shz + 0.02
+        for sgn in (-1, +1):
+            front_y = ay + sgn * 0.39
+            for p, kind in enumerate(plan[sh] if sgn < 0 else tuple(reversed(plan[sh]))):
+                x0 = ax - 2.48 + p * 0.50
+                _merch_section(f"Aisle_Stock_{sh}_y{sgn:+d}_{p}", kind, x0, front_y, sgn, top, sh * 7 + p + (3 if sgn > 0 else 0))
+            make_box(f"Aisle_Price_Strip_{sh}_y{sgn:+d}", (ax, front_y + sgn * 0.003, shz - 0.002), (5.0, 0.006, 0.04),
+                     (0.94, 0.94, 0.92, 1.0))
+            for p in range(10):
+                make_box(f"Aisle_Price_Strip_{sh}_y{sgn:+d}_Tag_{p}", (ax - 2.30 + p * 0.50, front_y + sgn * 0.0065, shz - 0.002),
+                         (0.05, 0.002, 0.028), (0.96, 0.84, 0.20, 1.0) if (p + sh) % 4 == 0 else (0.98, 0.98, 0.96, 1.0))
+    # end panels and the water at the counter end
+    for e in (-1, 1):
+        make_box(f"Aisle_End_Panel_{e:+d}", (ax + e * 2.52, ay, 0.95), (0.04, 0.80, 1.70), COL_METAL_STEEL)
+    for k in range(3):
+        for j in range(2):
+            make_box(f"Aisle_Endcap_Water_{k}_{j}", (ax + 2.78, ay - 0.15 + j * 0.30, 0.11 + k * 0.22), (0.40, 0.28, 0.22),
+                     (0.70, 0.82, 0.92, 1.0))
+            make_box(f"Aisle_Endcap_Water_{k}_{j}_Label", (ax + 2.981, ay - 0.15 + j * 0.30, 0.11 + k * 0.22), (0.003, 0.20, 0.08),
+                     (0.16, 0.30, 0.62, 1.0))
+    make_box("Aisle_Endcap_Water_Sign", (ax + 2.78, ay, 0.75), (0.36, 0.02, 0.18), (0.96, 0.86, 0.20, 1.0))
+
+    # Skip's counter (top at 1.07): the lottery case, the impulse rack on the
+    # customer face, and on his side his phone and his vape
+    cx, cy = 3.5, 1.4
+    top = 1.07
+    make_box("Lottery_Case", (cx + 1.45, cy - 0.05, top + 0.18), (0.56, 0.24, 0.36), (0.80, 0.86, 0.90, 1.0))
+    for k in range(6):
+        make_box(f"Lottery_Case_Roll_{k}", (cx + 1.24 + k * 0.085, cy - 0.17, top + 0.18), (0.07, 0.004, 0.30),
+                 BRAND_TINTS[(k * 3) % len(BRAND_TINTS)])
+    make_box("Impulse_Rack", (cx - 0.20, cy - 0.33, 0.60), (1.10, 0.06, 0.70), COL_METAL_BLACK)
+    for r in range(3):
+        for k in range(8):
+            make_box(f"Impulse_Rack_Gum_{r}_{k}", (cx - 0.68 + k * 0.135, cy - 0.366, 0.38 + r * 0.22), (0.11, 0.012, 0.16),
+                     BRAND_TINTS[(r * 5 + k) % len(BRAND_TINTS)])
+    make_box("Skip_Phone", (cx - 0.35, cy + 0.22, top + 0.004), (0.075, 0.15, 0.008), (0.10, 0.10, 0.12, 1.0))
+    make_box("Skip_Phone_Screen", (cx - 0.35, cy + 0.22, top + 0.0085), (0.065, 0.13, 0.001), (0.36, 0.52, 0.70, 1.0))
+    make_cyl("Skip_Vape", (cx - 0.20, cy + 0.20, top + 0.009), 0.009, 0.11, (0.22, 0.24, 0.30, 1.0), axis='X', segments=6)
+    make_cyl("Skip_Vape_Tip", (cx - 0.14, cy + 0.20, top + 0.009), 0.006, 0.02, (0.70, 0.72, 0.74, 1.0), axis='X', segments=6)
+    make_cyl("Tip_Jar", (cx - 1.55, cy - 0.10, top + 0.08), 0.06, 0.16, (0.80, 0.86, 0.90, 1.0), segments=10)
+    make_box("Tip_Jar_Label", (cx - 1.55, cy - 0.161, top + 0.08), (0.06, 0.002, 0.04), (0.94, 0.92, 0.86, 1.0))
+
+    # the cigarette wall as PACKS, by brand, and the vape row under it
+    cig_x, cig_y = 0.6, 8.78
+    brands = ((0.96, 0.96, 0.94, 1.0), (0.82, 0.16, 0.14, 1.0), (0.86, 0.72, 0.36, 1.0), (0.22, 0.52, 0.32, 1.0),
+              (0.16, 0.30, 0.62, 1.0), (0.12, 0.12, 0.14, 1.0))
+    for sh in range(3):
+        shz = 1.40 + sh * 0.42
+        for k in range(26):
+            px = cig_x - 1.50 + k * 0.12
+            col = brands[(k // 4 + sh) % len(brands)]
+            for r in range(2):
+                make_box(f"CigShelf_{sh}_Pack_{k}_{r}", (px + r * 0.055, cig_y - 0.05, shz + 0.055), (0.05, 0.025, 0.09), col)
+            make_box(f"CigShelf_{sh}_Pack_{k}_Cap", (px + 0.0275, cig_y - 0.0635, shz + 0.085), (0.105, 0.002, 0.03),
+                     (0.94, 0.94, 0.92, 1.0) if col != (0.96, 0.96, 0.94, 1.0) else (0.82, 0.16, 0.14, 1.0))
+    make_box("CigShelf_Header", (cig_x, cig_y + 0.11, 2.72), (3.20, 0.02, 0.18), COL_WALL_NEXCORP)
+
+    # a roller grill by the coffee: eight rollers, five dogs
+    gx, gy = -5.0, 4.55
+    make_box("Roller_Grill_Base", (gx, gy, 0.94), (0.46, 0.40, 0.12), COL_METAL_STEEL)
+    for k in range(8):
+        make_cyl(f"Roller_Grill_Roller_{k}", (gx, gy - 0.16 + k * 0.045, 1.012), 0.014, 0.40, (0.78, 0.78, 0.76, 1.0),
+                 axis='X', segments=6)
+    for k in (1, 2, 4, 5, 7):
+        make_cyl(f"Roller_Grill_Dog_{k}", (gx, gy - 0.16 + k * 0.045, 1.036), 0.012, 0.16, (0.70, 0.30, 0.20, 1.0),
+                 axis='X', segments=6)
+    make_box("Roller_Grill_Sneeze_Guard", (gx, gy, 1.16), (0.46, 0.40, 0.006), (0.80, 0.86, 0.90, 0.6))
+    for e in (-1, 1):
+        make_box(f"Roller_Grill_Sneeze_Guard_Post_{e:+d}", (gx + e * 0.22, gy + 0.18, 1.08), (0.015, 0.015, 0.16), COL_METAL_STEEL)
+
+
+def build_skips_side_2026_10():
+    """Skip's side of the counter and the east wall (2026-10-06: the
+    preset looks over his shoulder and saw a bare black slab and a
+    blank wall). Under the counter: open shelves with the bag rolls, the
+    drop safe, the receipt rolls, his little cooler, the trash can; the
+    fatigue mat he stands on. The east wall: the ice merchandiser, the
+    ATM, the hiring poster."""
+    cx, cy = 3.5, 1.4
+    back = cy + 0.30                            # the counter body's north face
+    # on the floor against the body's back face (it is a solid box): the
+    # case of bags, the drop safe with the receipt rolls on it
+    make_box("Counter_Back_Bags_Case", (cx - 1.30, back + 0.10, 0.065), (0.50, 0.20, 0.13), (0.94, 0.94, 0.92, 1.0))
+    make_box("Counter_Back_Bags_Case_Logo", (cx - 1.30, back + 0.201, 0.065), (0.20, 0.003, 0.08), COL_WALL_NEXCORP)
+    make_box("Counter_Back_Safe", (cx + 0.60, back + 0.14, 0.21), (0.46, 0.28, 0.42), (0.20, 0.20, 0.22, 1.0))
+    make_cyl("Counter_Back_Safe_Dial", (cx + 0.60, back + 0.285, 0.26), 0.035, 0.012, (0.70, 0.70, 0.68, 1.0), axis='Y', segments=10)
+    make_box("Counter_Back_Safe_Slot", (cx + 0.60, back + 0.282, 0.38), (0.24, 0.004, 0.02), (0.08, 0.08, 0.09, 1.0))
+    for k in range(4):
+        make_cyl(f"Counter_Back_Safe_Receipt_Roll_{k}", (cx + 0.47 + k * 0.09, back + 0.14, 0.46), 0.04, 0.08, (0.96, 0.96, 0.94, 1.0),
+                 axis='Y', segments=10)
+    make_box("Skip_Cooler", (cx + 1.25, back + 0.24, 0.20), (0.46, 0.32, 0.40), (0.86, 0.22, 0.18, 1.0))
+    make_box("Skip_Cooler_Lid", (cx + 1.25, back + 0.24, 0.415), (0.48, 0.34, 0.03), (0.94, 0.94, 0.92, 1.0))
+    make_cyl("Skip_Cooler_Energy_Can", (cx + 1.18, back + 0.24, 0.49), 0.03, 0.12, (0.16, 0.16, 0.18, 1.0), segments=8)
+    make_box("Skip_Fatigue_Mat", (cx, back + 0.55, 0.008), (2.40, 0.70, 0.016), (0.12, 0.12, 0.13, 1.0))
+    make_cyl("Counter_Back_Trash", (cx - 1.75, back + 0.30, 0.28), 0.17, 0.56, (0.26, 0.28, 0.30, 1.0), segments=12)
+    make_cyl("Counter_Back_Trash_Liner", (cx - 1.75, back + 0.30, 0.565), 0.175, 0.03, (0.10, 0.10, 0.10, 1.0), segments=12)
+    # the east wall: the ice merchandiser by the door, the ATM, the poster
+    ix = 5.52
+    make_box("Ice_Merchandiser", (ix, 3.20, 0.95), (0.76, 1.30, 1.90), (0.96, 0.96, 0.96, 1.0))
+    make_box("Ice_Merchandiser_Band", (ix - 0.381, 3.20, 1.62), (0.004, 1.30, 0.34), (0.16, 0.40, 0.72, 1.0))
+    make_box("Ice_Merchandiser_Lettering", (ix - 0.384, 3.20, 1.62), (0.002, 0.70, 0.20), (0.96, 0.96, 0.96, 1.0))
+    for k in range(2):
+        make_box(f"Ice_Merchandiser_Door_{k}", (ix - 0.381, 2.88 + k * 0.64, 0.80), (0.004, 0.60, 1.10), (0.84, 0.88, 0.92, 1.0))
+        make_box(f"Ice_Merchandiser_Handle_{k}", (ix - 0.40, 3.12 + k * 0.16, 0.95), (0.03, 0.03, 0.30), COL_METAL_STEEL)
+    make_box("ATM_Body", (5.66, 5.05, 0.80), (0.48, 0.60, 1.60), (0.30, 0.32, 0.36, 1.0))
+    make_box("ATM_Screen", (5.418, 5.05, 1.30), (0.004, 0.34, 0.24), (0.36, 0.56, 0.78, 1.0))
+    make_box("ATM_Keypad", (5.38, 5.05, 1.05), (0.08, 0.30, 0.03), (0.60, 0.60, 0.62, 1.0))
+    make_box("ATM_Topper", (5.66, 5.05, 1.70), (0.48, 0.60, 0.20), COL_WALL_NEXCORP)
+    make_box("Hiring_Poster", (5.895, 1.40, 1.55), (0.006, 0.46, 0.62), (0.96, 0.92, 0.36, 1.0))
+    make_box("Hiring_Poster_Header", (5.891, 1.40, 1.78), (0.002, 0.40, 0.10), COL_WALL_NEXCORP)
 
 
 # ════════════════════════════════════════════════════════════════
@@ -466,6 +674,58 @@ def build_pump_canopy():
     # Asphalt slab visible through window (the lot in front)
     make_box("Lot_Asphalt", (0.0, cy, -0.05),
              (10.0, 5.0, 0.10), (0.20, 0.20, 0.22, 1.0))
+    build_street_2026_10()
+
+
+def build_street_2026_10():
+    """What the south glass looks at (2026-10-06): the lot running out
+    to Gallatin, the curb and the sidewalk, four lanes, the median with
+    its palms, and across the intersection the Kwik Stop's red front —
+    "Sam ... has been parked in the Kwik Stop lot for eleven minutes,
+    watching the Gas & Go through her windshield"."""
+    asphalt, line = (0.24, 0.24, 0.26, 1.0), (0.92, 0.90, 0.80, 1.0)
+    make_box("Lot_Apron", (0.0, -10.0, -0.05), (34.0, 7.0, 0.10), asphalt)
+    for k in range(6):
+        make_box(f"Lot_Apron_Stripe_{k}", (-12.0 + k * 2.6, -9.0, 0.002), (0.10, 4.0, 0.004), line)
+    make_box("Lot_Curb", (0.0, -13.6, 0.06), (34.0, 0.30, 0.22), (0.70, 0.70, 0.68, 1.0))
+    make_box("Lot_Sidewalk", (0.0, -14.6, 0.05), (34.0, 1.8, 0.10), (0.74, 0.72, 0.68, 1.0))
+    make_box("Gallatin_Road", (0.0, -22.0, -0.05), (80.0, 13.0, 0.10), asphalt)
+    for k in range(10):
+        make_box(f"Gallatin_Road_Dash_{k}", (-36.0 + k * 8.0, -18.8, 0.002), (3.0, 0.12, 0.004), line)
+        make_box(f"Gallatin_Road_Dash_B_{k}", (-36.0 + k * 8.0, -25.2, 0.002), (3.0, 0.12, 0.004), line)
+    make_box("Gallatin_Median", (0.0, -22.0, 0.10), (80.0, 2.2, 0.20), (0.40, 0.50, 0.28, 1.0))
+    for k in range(6):
+        px = -25.0 + k * 10.0
+        make_cyl(f"Gallatin_Median_Palm_{k}_Trunk", (px, -22.0, 3.6), 0.20, 7.0, (0.52, 0.44, 0.36, 1.0), segments=8)
+        for f in range(8):
+            ang = f * math.pi / 4.0
+            make_box(f"Gallatin_Median_Palm_{k}_Frond_{f}", (px + 0.9 * math.cos(ang), -22.0 + 0.9 * math.sin(ang), 7.2 - 0.2 * (f % 2)),
+                     (1.6 if f % 2 == 0 else 0.6, 0.6 if f % 2 == 0 else 1.6, 0.05), (0.30, 0.46, 0.28, 1.0))
+    make_box("Gallatin_Far_Sidewalk", (0.0, -29.6, 0.05), (80.0, 2.2, 0.10), (0.74, 0.72, 0.68, 1.0))
+    # the Kwik Stop across the intersection: its lot, its red front, its canopy
+    make_box("KwikStop_Lot", (6.0, -38.0, -0.05), (30.0, 14.0, 0.10), asphalt)
+    make_box("KwikStop_Front_Wall", (6.0, -46.0, 2.0), (18.0, 0.4, 4.1), (0.90, 0.88, 0.84, 1.0))
+    make_box("KwikStop_Front_Band", (6.0, -45.75, 3.55), (18.0, 0.1, 0.70), (0.78, 0.14, 0.12, 1.0))
+    make_box("KwikStop_Front_Glass", (6.0, -45.79, 1.35), (12.0, 0.04, 1.90), (0.26, 0.32, 0.36, 1.0))
+    make_box("KwikStop_Canopy_Roof", (6.0, -38.0, 4.6), (12.0, 6.0, 0.4), (0.92, 0.90, 0.86, 1.0))
+    make_box("KwikStop_Canopy_Band", (6.0, -35.0, 4.4), (12.2, 0.12, 0.45), (0.78, 0.14, 0.12, 1.0))
+    for sx in (1.0, 11.0):
+        make_cyl(f"KwikStop_Canopy_Post_{sx:.0f}", (sx, -38.0, 2.2), 0.18, 4.4, (0.78, 0.78, 0.76, 1.0), segments=8)
+    make_box("KwikStop_Sign_Pole", (-7.0, -33.0, 3.5), (0.3, 0.3, 7.0), (0.50, 0.50, 0.50, 1.0))
+    make_box("KwikStop_Sign", (-7.0, -33.0, 6.6), (2.4, 0.3, 1.4), (0.78, 0.14, 0.12, 1.0))
+    # Sam's Corolla in the Kwik Stop lot, nose to the street
+    make_box("Corolla_Body", (-1.0, -36.0, 0.62), (1.76, 4.40, 0.70), (0.62, 0.64, 0.66, 1.0))
+    make_box("Corolla_Cabin", (-1.0, -36.2, 1.20), (1.60, 2.20, 0.50), (0.24, 0.28, 0.30, 1.0))
+    for k, (wx, wy) in enumerate(((-1.85, -34.6), (-0.15, -34.6), (-1.85, -37.4), (-0.15, -37.4))):
+        make_cyl(f"Corolla_Wheel_{k}", (wx, wy, 0.32), 0.32, 0.22, (0.14, 0.14, 0.15, 1.0), axis='X', segments=10)
+    # the houses past it, the sky line
+    for k in range(5):
+        make_box(f"Far_House_{k}", (-24.0 + k * 12.0, -60.0, 2.4), (9.0, 7.0, 4.8), (0.92, 0.88, 0.80, 1.0))
+        make_box(f"Far_House_{k}_Roof", (-24.0 + k * 12.0, -60.0, 5.2), (9.6, 7.6, 0.8), (0.64, 0.34, 0.24, 1.0))
+    for k in range(3):
+        make_cyl(f"Street_Light_{k}_Pole", (-12.0 + k * 14.0, -15.2, 4.0), 0.10, 8.0, (0.50, 0.50, 0.52, 1.0), segments=6)
+        make_box(f"Street_Light_{k}_Arm", (-12.0 + k * 14.0, -16.2, 7.9), (0.12, 2.0, 0.12), (0.50, 0.50, 0.52, 1.0))
+        make_box(f"Street_Light_{k}_Head", (-12.0 + k * 14.0, -17.1, 7.8), (0.30, 0.60, 0.15), (0.40, 0.40, 0.42, 1.0))
 
 
 # ════════════════════════════════════════════════════════════════
@@ -570,6 +830,8 @@ def main():
     build_lockers()
     build_office()
     build_floor_props()
+    build_merchandise_2026_10()
+    build_skips_side_2026_10()
     build_pump_canopy()
     build_hero_props_2026_09()
     export_glb()

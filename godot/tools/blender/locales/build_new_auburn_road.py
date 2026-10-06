@@ -370,6 +370,95 @@ def build_live_oak_2026_09():
     # hatch nosed north (2026-09-25)
     make_rot_box("Civic_Phone_Screen", (6.85, 38.9205, 1.0724), (0.062, 0.126, 0.001), (0.66, 0.80, 0.96, 1.0), roll=-0.5695)
 
+def build_back_lot_2026_10():
+    """THE LOADING AREA, from the prose (vol 6 contact sheet, 2026-10-06:
+    "a long blank wall"). "The loading area is a long single strip of
+    asphalt behind all the units, with a chain-link fence at the back
+    separating the lot from a small drainage easement and a stand of
+    cedar beyond. There are, behind the strip mall, three dumpsters and a
+    small parked U-Haul that has been there for three weeks and a single
+    sodium lamp on a pole" · "a vehicle ... parked at the far end of the
+    lot in the shadow of the dumpster" · the unit's door "a metal service
+    door, painted institutional gray, with no signage".
+
+      · the three dumpsters along the back wall, clear of the doors;
+      · the U-Haul, three weeks parked (a soft front tyre, dust);
+      · the chain-link fence on the lot's road side with its gap at the
+        south end where the Civic comes in, the easement and its cedar;
+      · the back wall's infrastructure: a meter and conduit at every
+        unit, door numbers on all but the unit's, wall packs over the
+        plain doors (none over the unit's), scupper rust, two bollards,
+        oil stains, the Foxhole's pallets.
+    """
+    mx, my = 17.0, 47.0
+    wx = mx - 5.0                                 # the back wall's face
+    steel = (0.45, 0.46, 0.48, 1.0)
+    # the three dumpsters
+    for k, dy in enumerate((7.2, -5.8, -9.9)):
+        y = my + dy
+        col = ((0.20, 0.34, 0.26, 1.0), (0.22, 0.30, 0.42, 1.0), (0.20, 0.34, 0.26, 1.0))[k]
+        make_box(f"Dumpster_{k}_Body", (wx - 0.82, y, 0.66), (1.20, 1.90, 1.12), col)
+        make_rot_box(f"Dumpster_{k}_Lid", (wx - 0.84, y, 1.25), (1.26, 1.94, 0.05), (0.14, 0.14, 0.15, 1.0), pitch=0.0, roll=0.06)
+        make_box(f"Dumpster_{k}_Rust", (wx - 1.423, y + 0.3, 0.50), (0.004, 0.70, 0.40), (0.44, 0.26, 0.16, 1.0))
+        make_box(f"Dumpster_{k}_Label", (wx - 1.424, y - 0.45, 0.92), (0.003, 0.40, 0.18), (0.90, 0.88, 0.80, 1.0))
+        for c, (cx, cy) in enumerate(((-0.45, -0.80), (-0.45, 0.80), (0.45, -0.80), (0.45, 0.80))):
+            make_cyl(f"Dumpster_{k}_Caster_{c}", (wx - 0.82 + cx, y + cy, 0.06), 0.06, 0.06, (0.10, 0.10, 0.10, 1.0), axis='Y', segments=8)
+        make_box(f"Dumpster_{k}_Stain", (wx - 0.9, y, 0.032), (1.60, 2.40, 0.002), (0.17, 0.17, 0.18, 1.0))
+    # the U-Haul: a 10' box truck, white with the orange band, nose north, three weeks parked
+    ux, uy = 8.0, my + 6.0
+    make_box("UHaul_Box", (ux, uy - 0.6, 1.70), (2.20, 3.40, 2.30), (0.94, 0.94, 0.92, 1.0))
+    make_box("UHaul_Box_Band", (ux - 1.102, uy - 0.6, 1.95), (0.004, 3.40, 0.90), (0.92, 0.46, 0.14, 1.0))
+    make_box("UHaul_Box_Band_E", (ux + 1.102, uy - 0.6, 1.95), (0.004, 3.40, 0.90), (0.92, 0.46, 0.14, 1.0))
+    make_box("UHaul_Box_Door", (ux, uy - 2.302, 1.55), (2.00, 0.004, 1.90), (0.86, 0.86, 0.84, 1.0))
+    make_box("UHaul_Cab", (ux, uy + 1.85, 1.15), (2.00, 1.50, 1.40), (0.94, 0.94, 0.92, 1.0))
+    make_box("UHaul_Cab_Windshield", (ux, uy + 2.601, 1.55), (1.80, 0.004, 0.55), (0.18, 0.22, 0.26, 1.0))
+    for sgn, nm in ((-1, "W"), (1, "E")):
+        make_box(f"UHaul_Cab_Window_{nm}", (ux + sgn * 1.001, uy + 1.95, 1.55), (0.004, 0.80, 0.50), (0.18, 0.22, 0.26, 1.0))
+    make_box("UHaul_Frame", (ux, uy, 0.48), (1.80, 5.60, 0.30), (0.14, 0.14, 0.15, 1.0))
+    make_box("UHaul_Bumper", (ux, uy + 2.65, 0.55), (2.10, 0.12, 0.20), (0.70, 0.70, 0.70, 1.0))
+    for k, (wx2, wy2, r) in enumerate(((ux - 1.0, uy + 1.80, 0.36), (ux + 1.0, uy + 1.80, 0.32),
+                                       (ux - 1.0, uy - 1.60, 0.38), (ux + 1.0, uy - 1.60, 0.38))):
+        make_cyl(f"UHaul_Wheel_{k}", (wx2, wy2, r), r, 0.28, (0.12, 0.12, 0.13, 1.0), axis='X', segments=12)
+    make_box("UHaul_Dust_Windshield", (ux, uy + 2.603, 1.40), (1.60, 0.002, 0.20), (0.52, 0.48, 0.42, 1.0))
+    # the chain-link fence on the road side, its gap at the south end
+    fx = 5.95
+    y0, y1 = my - 7.0, my + 11.0
+    n = int((y1 - y0) / 3.0) + 1
+    for k in range(n):
+        make_cyl(f"Chainlink_Post_{k}", (fx, y0 + k * 3.0, 0.92), 0.035, 1.84, steel, segments=6)
+    make_cyl("Chainlink_Top_Rail", (fx, (y0 + y1) / 2.0, 1.82), 0.022, y1 - y0, steel, axis='Y', segments=6)
+    make_box("Chainlink_Mesh", (fx, (y0 + y1) / 2.0, 0.92), (0.01, y1 - y0, 1.78), (0.56, 0.58, 0.60, 0.40))
+    make_cyl("Chainlink_Gate_Post", (fx, y0, 0.92), 0.05, 1.84, steel, segments=6)
+    # the easement beyond it and its stand of cedar
+    for k, (cx, cy, r) in enumerate(((4.3, my - 4.0, 1.1), (4.1, my + 1.5, 1.3), (4.4, my + 6.5, 1.0), (4.0, my + 10.0, 1.2))):
+        make_blob(f"Cedar_Easement_{k}", (cx, cy, r * 0.9), r, COL_CEDAR_SCRUB, noise=0.24, seed=90 + k, squash=0.85)
+    # the back wall: a meter at every unit, door numbers, wall packs, scuppers
+    doors = ((-8.0, "plain"), (-3.5, "plain"), (-1.0, "unit"), (1.5, "foxhole"), (5.5, "plain"), (9.0, "plain"))
+    for k, (dy, kind) in enumerate(doors):
+        y = my + dy
+        my_ = y - 0.85 if kind == "plain" and dy == -3.5 else y + 0.85   # (door 1's other side is the unit's window)
+        make_box(f"BackWall_Meter_{k}", (wx - 0.07, my_, 1.50), (0.14, 0.30, 0.40), (0.62, 0.62, 0.60, 1.0))
+        make_cyl(f"BackWall_Meter_{k}_Dial", (wx - 0.145, my_, 1.55), 0.07, 0.02, (0.80, 0.84, 0.86, 1.0), axis='X', segments=10)
+        make_cyl(f"BackWall_Meter_{k}_Conduit", (wx - 0.04, my_, 2.85), 0.025, 2.30, steel, segments=6)
+        if kind != "unit":
+            make_box(f"BackWall_Door_Number_{k}", (wx - 0.004, y, 2.30), (0.006, 0.30, 0.14), (0.90, 0.90, 0.86, 1.0))
+            make_box(f"BackWall_Door_Number_{k}_Ink", (wx - 0.0075, y, 2.30), (0.002, 0.14, 0.09), (0.12, 0.12, 0.14, 1.0))
+        if kind == "plain":
+            make_box(f"BackWall_Wallpack_{k}", (wx - 0.10, y, 2.75), (0.20, 0.30, 0.22), (0.30, 0.30, 0.32, 1.0))
+            make_box(f"BackWall_Wallpack_{k}_Lens", (wx - 0.201, y, 2.72), (0.004, 0.24, 0.12), (0.44, 0.42, 0.36, 1.0))
+    for k, dy in enumerate((-6.0, 0.0, 6.5)):
+        make_box(f"BackWall_Scupper_{k}", (wx - 0.10, my + dy, 4.00), (0.20, 0.25, 0.12), (0.50, 0.50, 0.50, 1.0))
+        make_box(f"BackWall_Scupper_{k}_Rust", (wx - 0.003, my + dy, 3.10), (0.004, 0.22, 1.70), (0.46, 0.34, 0.24, 1.0))
+    for k in range(2):
+        make_cyl(f"Bollard_{k}", (wx - 0.30, my + (k * 2 - 1) * 11.25, 0.55), 0.08, 1.10, (0.90, 0.74, 0.14, 1.0), segments=10)   # the corners
+    for k, (sx, sy, r) in enumerate(((9.0, my - 2.0, 0.6), (10.5, my + 3.0, 0.45), (7.6, my - 6.0, 0.7))):
+        make_cyl(f"StripMall_Lot_Oil_Stain_{k}", (sx, sy, 0.0315), r, 0.002, (0.18, 0.18, 0.19, 1.0), segments=10)
+    # the Foxhole's pallets beside its kegs
+    for k in range(3):
+        make_box(f"Foxhole_Pallet_{k}", (wx - 0.75, my + 3.9, 0.07 + k * 0.14), (1.00, 1.20, 0.13), (0.62, 0.50, 0.34, 1.0))
+    make_rot_box("Foxhole_Pallet_Leaning", (wx - 0.10, my + 4.0, 0.62), (0.13, 1.00, 1.20), (0.56, 0.44, 0.30, 1.0), pitch=-0.12)
+
+
 def build_cypress_motel_2026_09():
     """THE CYPRESS (vol6 ch15, Room 7 — re-homed 2026-09-03). "A motel
     from the 1970s, single-story, twelve rooms in a long L around a
@@ -613,6 +702,7 @@ def main():
     build_vol6_landmarks()
     build_foxhole_strip_mall_2026_08()
     build_live_oak_2026_09()
+    build_back_lot_2026_10()
     build_cypress_motel_2026_09()
     build_front_lot()
     build_cedar_route()

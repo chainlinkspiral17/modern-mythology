@@ -863,8 +863,11 @@ const CAMERA_PRESETS := {
 		# spilling out over the dock edge and bumpers, the warm dock
 		# lamp above, pre-dawn blue everywhere else. The truck has not
 		# come yet.
-		"camera_origin": Vector3(-2.6, 0.6, -10.6),
-		"camera_rotation": Vector3(0.146, -2.253, 0.0),
+		# (2026-10-05) at the dock's edge where Diego stands with his coffee,
+		# looking out over the apron and the cedar at the pre-dawn sky and the
+		# smear — it looked back into the stockroom from the black apron.
+		"camera_origin": Vector3(-0.90, 1.62, -7.70),
+		"camera_rotation": Vector3(0.030, -0.053, 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
@@ -961,14 +964,13 @@ const CAMERA_PRESETS := {
 	"grandmother_kitchen_morning": {
 		"scene": "res://scenes/locales/grandmother_kitchen_morning.tscn",
 		"requires_glb": "res://assets/3d/locales/grandmother_kitchen_morning.glb",
-		# Abuela's warm kitchen 5×5 (godot x∈[-2.5,2.5], z∈[0,-5], ceil
-		# 2.6). Round pedestal table centre with pie+fruit (godot 0,-2.5),
-		# sink+counter NW (godot -1.25,-4), stove centre-N (1.25,-4) with
-		# kettle, china hutch W wall, braided rug under the table. Camera
-		# in the SE quadrant just inside the door looking NW across the
-		# table toward the counter — the whole cozy kitchen in one wide.
-		"camera_origin": Vector3(1.7, 1.58, -0.8),
-		"camera_rotation": Vector3(-0.05, deg_to_rad(47.3), 0.0),
+		# Graciela's kitchen, the eggs mornings (2026-10-06: one room with
+		# ramos_kitchen_morning, built by _props/ramos_kitchen.py). From the
+		# back-door corner looking NW: the small round table under the
+		# window (the radio on the sill, the drive and his truck outside),
+		# the counter run, the range with the clock above it.
+		"camera_origin": Vector3(1.90, 1.58, -0.55),
+		"camera_rotation": Vector3(-0.128, 0.887, 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
@@ -1203,14 +1205,13 @@ const CAMERA_PRESETS := {
 	"ramos_kitchen_morning": {
 		"scene": "res://scenes/locales/ramos_kitchen_morning.tscn",
 		"requires_glb": "res://assets/3d/locales/ramos_kitchen_morning.glb",
-		# Family kitchen 5.5×5 (godot x∈[-2.75,2.75], z∈[0,-5], ceil 2.6).
-		# Sink + counter + coffee NW corner (godot -1.375,-4.0), round
-		# pedestal table centre (godot 0,-2.5), stove NE (1.375,-4.0),
-		# fridge E wall (2.25,-1.0). Camera SE just inside the door looking
-		# NW across the table to the sink corner; stove + fridge at right.
-		# RE-VANTAGED 2026-09-03: the SE vantage at x 2.2 stood inside the fridge (E wall, x 1.9..2.6); moved west of it, same NW look across the table
-		"camera_origin": Vector3(1.20, 1.58, -0.80),
-		"camera_rotation": Vector3(-0.05, deg_to_rad(48.2), 0.0),
+		# Graciela's kitchen, the rosary afternoon (2026-10-06: one room
+		# with grandmother_kitchen_morning, built by _props/ramos_kitchen.py).
+		# From the hall doorway looking NW at "the small round table under
+		# the window" — the rosary, the coffee, the cordless phone — the
+		# canisters and the sink beyond.
+		"camera_origin": Vector3(-0.25, 1.58, -0.45),
+		"camera_rotation": Vector3(-0.179, 0.517, 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
@@ -2304,15 +2305,16 @@ const CAMERA_PRESETS := {
 	"nexcorp_gas_go": {
 		"scene": "res://scenes/locales/nexcorp_gas_go.tscn",
 		"requires_glb": "res://assets/3d/locales/nexcorp_gas_go.glb",
-		# The Harmony Creek Gas & Go (Skip's shift) — its rich build
-		# existed with no tscn while its scenes played over the
-		# FM-3411 fueling station. Interior 12×9, pumps + canopy
-		# beyond the south glass, locker room back-NW (#4 is
-		# Skip's). Camera inside the door looking N across the
-		# store to the counter.
-		"camera_origin": Vector3(0.0, 1.65, -1.5),
-		"camera_rotation": Vector3(-0.02, deg_to_rad(10.0), 0.0),
-		"fov": 64.0,
+		# The Harmony Creek Gas & Go (Skip's shift) — interior 12×9,
+		# pumps + canopy beyond the south glass, locker room back-NW
+		# (#4 is Skip's). (2026-10-06: the camera stood 1.5 m from the
+		# aisle and saw only shelving.) From the store's east side by
+		# the office looking S over Skip's side of the counter — his
+		# stool, the register, the pump controller — to the door and the
+		# pumps under the canopy through the south glass.
+		"camera_origin": Vector3(2.30, 1.70, -5.60),
+		"camera_rotation": Vector3(-0.151, -2.854, 0.0),
+		"fov": 62.0,
 		"suppress_input": true,
 	},
 	"cliffside_circus": {

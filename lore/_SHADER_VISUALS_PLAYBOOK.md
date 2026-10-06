@@ -228,6 +228,21 @@ through them in order.
 
 ## Recent lessons
 
+### 2026-10-06 · skies through windows: geometry out past the fog reads black; the fog tints the sky
+
+- The dock's dawn was band geometry 520 m out — lit only by ambient
+  and 88 % fogged at density 0.004: one black frame. A sky is the
+  ENVIRONMENT's job (ProceduralSkyMaterial: top / horizon / curve);
+  geometry is for a card in the near distance (the thermal smear,
+  55 m). `sky_curve` 0.10 hugs the warmth to the ground line where the
+  terrain hides it; 0.25-0.35 lets it climb.
+- `fog_sky_affect` defaults to 1.0: a warm interior fog (0.62, 0.46,
+  0.32 at 0.4 energy) turned the morning sky through the kitchen window
+  BROWN. Interiors that look out: `fog_sky_affect = 0`.
+- A DirectionalLight draws a sun disc in a procedural sky where it
+  points from — a fluorescent "key" faked as a directional must be
+  `sky_mode = 1` (light only).
+
 ### 2026-10-02 (v) · the watercolour in play: five Deck notes, five causes
 
 - "Too bright and contrasty in the diner": ch 0 runs under `[mood:night]`

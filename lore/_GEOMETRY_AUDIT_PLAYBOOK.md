@@ -158,6 +158,24 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-10-06 · a ROOM module shared by two locales is invisible until it RUNS
+
+- Graciela's kitchen is one room dressed for two locales, so its
+  geometry lives in `_props/ramos_kitchen.py` and both builders are
+  three lines. The first gate run said "clean (0 objects)": the
+  recorder stubs every `_props.*` module to no-ops unless it is in
+  `locale_geometry_audit`'s real-module list, and a builder's own
+  `make_box` rebinding never reaches an imported module. A green gate
+  on a NEW builder is a reading to check — look at the object count.
+- A composite / room module goes at the END of that list (it imports
+  the helper modules above it). `_finalize_mesh` is not recorded: raw
+  quad meshes (the Saltillo tile, four meshes of quads) are invisible
+  to the gates, which is right for a floor and wrong for anything that
+  can clip — keep solids on make_box / make_cyl.
+- The support audit counts foliage as no support: blooms resting in a
+  `_Leaves` blob float unless they are named foliage themselves
+  (`Geranium_Leaves_Bloom_k`); cut flowers get stems to the vase.
+
 ### 2026-10-04 · the ground under the hero props: check it, then place on the MESH
 
 - Graustark's ruin quarter — every prop of four chapters — was built at

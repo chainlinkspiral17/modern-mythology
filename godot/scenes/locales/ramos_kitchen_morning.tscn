@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ramos_kitchen_morning_locale"]
+[gd_scene load_steps=26 format=3 uid="uid://ramos_kitchen_morning_locale"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/ramos_kitchen_morning.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -128,16 +128,36 @@ shader_parameter/wobble_freq = 0.85
 shader_parameter/tint_amount = 0.18
 shader_parameter/tint_color = Color(1.00, 0.86, 0.52, 1)
 
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_Morning"]
+; (2026-10-06: the window and the back door look OUT now — a Texas morning
+; sky over the drive and the yard, not the old dark-brown backdrop)
+sky_top_color = Color(0.36, 0.54, 0.84, 1)
+sky_horizon_color = Color(0.84, 0.86, 0.84, 1)
+sky_curve = 0.25
+sky_energy_multiplier = 1.0
+ground_bottom_color = Color(0.20, 0.20, 0.16, 1)
+ground_horizon_color = Color(0.62, 0.62, 0.56, 1)
+ground_curve = 0.05
+ground_energy_multiplier = 0.6
+sun_angle_max = 8.0
+sun_curve = 0.1
+
+[sub_resource type="Sky" id="Sky_Morning"]
+sky_material = SubResource("SkyMat_Morning")
+radiance_size = 3
+
 [sub_resource type="Environment" id="Env_Locale"]
-background_mode = 1
+background_mode = 2
+sky = SubResource("Sky_Morning")
 background_color = Color(0.12, 0.10, 0.06, 1)
 ambient_light_source = 2
-ambient_light_color = Color(0.96, 0.84, 0.62, 1)
+ambient_light_color = Color(0.92, 0.88, 0.80, 1)
 ambient_light_energy = 0.95
 fog_enabled = true
 fog_light_color = Color(0.62, 0.46, 0.32, 1)
 fog_light_energy = 0.4
-fog_density = 0.004
+fog_density = 0.0012
+fog_sky_affect = 0.0
 adjustment_enabled = true
 adjustment_brightness = 1.04
 adjustment_contrast = 1.04
@@ -172,12 +192,45 @@ light_color = Color(0.62, 0.74, 0.86, 1)
 light_energy = 0.2
 shadow_enabled = false
 
-; Warm overhead pendant practical (morning kitchen ceiling fixture)
+; The pendant over the small round table under the window (2026-10-06:
+; was a free omni at the room's centre; the table is under the window now)
 [node name="Practical_Overhead" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -2.5)
-light_color = Color(1.0, 0.88, 0.64, 1)
-light_energy = 1.1
-omni_range = 4.5
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.55, 1.70, -2.7)
+light_color = Color(1.0, 0.82, 0.56, 1)
+light_energy = 1.0
+omni_range = 3.2
+shadow_enabled = false
+
+; the ceiling fan's light kit
+[node name="Practical_FanLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.98, -2.4)
+light_color = Color(1.0, 0.92, 0.76, 1)
+light_energy = 0.6
+omni_range = 4.0
+shadow_enabled = false
+
+; the lamp under the range hood
+[node name="Practical_HoodLamp" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.10, 1.50, -4.60)
+light_color = Color(1.0, 0.86, 0.60, 1)
+light_energy = 0.35
+omni_range = 1.4
+shadow_enabled = false
+
+; the lamp on the hall console, through the doorway
+[node name="Practical_HallLamp" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10, 1.23, 1.33)
+light_color = Color(1.0, 0.80, 0.54, 1)
+light_energy = 0.45
+omni_range = 2.0
+shadow_enabled = false
+
+; skylight through the west window onto the table
+[node name="Window_Sky_Fill" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.10, 1.50, -2.70)
+light_color = Color(0.82, 0.88, 1.0, 1)
+light_energy = 0.5
+omni_range = 2.6
 shadow_enabled = false
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
@@ -300,46 +353,45 @@ offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
 
-; insert: the hands — over Sam's, on the top of his head (ch1/ch10)
+; ── vn_shot coverage (2026-10-06, the room rebuilt: one kitchen, two dressings) ──
+; insert: the hands — the worn places in the oilcloth where they land (ch1/ch10)
 [node name="shot_insert_hands" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.482, 1.486, -1.283)
-rotation = Vector3(-0.2618, -1.0472, 0.0)
+position = Vector3(-1.050, 1.250, -2.100)
+rotation = Vector3(-0.6627, 0.5967, 0.0)
 metadata/fov = 42.0
 
-; insert: eggs scrambled with chorizo, in the pan (ch10)
+; insert: the eggs and the chorizo in the skillet (ch10)
 [node name="shot_insert_eggs" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 1.35, -3.35)
-rotation = Vector3(-0.4784, -0.7429, 0.0)
+position = Vector3(0.950, 1.550, -3.750)
+rotation = Vector3(-0.6648, 0.3303, 0.0)
 metadata/fov = 42.0
 
-; insert: the cordless phone, its green charge light (ch1)
+; insert: the cordless phone face-up on the table, charging (ch1)
 [node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 1.1, -2.05)
-rotation = Vector3(-0.5558, 0.7854, 0.0)
+position = Vector3(-1.350, 1.200, -2.100)
+rotation = Vector3(-0.6154, 0.7621, 0.0)
 metadata/fov = 42.0
 
-; insert: the north window, late-summer light (ch10)
+; insert: the window over the table — the drive, the neighbour's stucco, the palm (ch10)
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.45, -4.0)
-rotation = Vector3(0, 0, 0)
-metadata/fov = 42.0
+position = Vector3(-0.700, 1.450, -2.700)
+rotation = Vector3(-0.0294, 1.5708, 0.0)
+metadata/fov = 50.0
 
-; insert: the soup she brings (ch10)
+; insert: the soup at his place (ch10)
 [node name="shot_insert_soup" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.62, 1.1, -1.85)
-rotation = Vector3(-0.5519, 0.8643, 0.0)
+position = Vector3(-0.950, 1.250, -2.250)
+rotation = Vector3(-0.6947, 0.6470, 0.0)
 metadata/fov = 42.0
 
-; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
-; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+; his face across the small table, the counter and the fridge behind him (2026-10-06)
 [node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.077, 1.612, -1.841)
-rotation = Vector3(-0.2618, 0.7854, 0.0)
+position = Vector3(-1.620, 1.300, -2.280)
+rotation = Vector3(-0.1307, -1.0680, 0.0)
 metadata/fov = 45.0
 
-; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
-; the far side of the same spot, so two speakers alternate sides
+; her face across the table, the window at her side, the canisters behind (2026-10-06)
 [node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.990, 1.612, -3.753)
-rotation = Vector3(-0.2618, -2.3562, 0.0)
+position = Vector3(-1.020, 1.300, -2.420)
+rotation = Vector3(-0.1056, 0.4874, 0.0)
 metadata/fov = 45.0

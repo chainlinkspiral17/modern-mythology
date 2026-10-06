@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://nexcorp_gas_go"]
+[gd_scene load_steps=26 format=3 uid="uid://nexcorp_gas_go"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/nexcorp_gas_go.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -128,8 +128,23 @@ shader_parameter/wobble_freq = 0.85
 shader_parameter/tint_amount = 0.18
 shader_parameter/tint_color = Color(0.52, 0.60, 0.74, 1)
 
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_Day"]
+; (2026-10-06: the south windows are cut — the lot, Gallatin and the Kwik
+; Stop across it under a Texas sky, not a flat grey backdrop)
+sky_top_color = Color(0.40, 0.56, 0.80, 1)
+sky_horizon_color = Color(0.80, 0.82, 0.82, 1)
+sky_curve = 0.25
+ground_bottom_color = Color(0.22, 0.22, 0.22, 1)
+ground_horizon_color = Color(0.60, 0.60, 0.58, 1)
+sun_angle_max = 8.0
+
+[sub_resource type="Sky" id="Sky_Day"]
+sky_material = SubResource("SkyMat_Day")
+radiance_size = 3
+
 [sub_resource type="Environment" id="Env_Locale"]
-background_mode = 1
+background_mode = 2
+sky = SubResource("Sky_Day")
 background_color = Color(0.30, 0.34, 0.42, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.58, 0.60, 0.64, 1)
@@ -137,7 +152,8 @@ ambient_light_energy = 0.8
 fog_enabled = true
 fog_light_color = Color(0.40, 0.44, 0.52, 1)
 fog_light_energy = 0.3
-fog_density = 0.004
+fog_density = 0.002
+fog_sky_affect = 0.0
 adjustment_enabled = true
 adjustment_brightness = 1.0
 adjustment_contrast = 1.04

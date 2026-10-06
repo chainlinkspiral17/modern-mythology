@@ -343,7 +343,11 @@ def install_stubs():
     for real_mod in ("detail", "trees", "objects", "drones",
                      "creatures", "vehicles", "buildings", "furniture", "structure", "shelving", "decor",
                      "food_service", "cleaning", "coolers_drinks",
-                     "signage", "store_fixtures", "safety"):
+                     "signage", "store_fixtures", "safety",
+                     # whole ROOMS shared by two locales (2026-10-06: the
+                     # Ramos kitchen is one room dressed twice) — last, as
+                     # they import the modules above
+                     "ramos_kitchen"):
         mpath = os.path.join(BLENDER, "_props", real_mod + ".py")
         if not os.path.exists(mpath):
             continue

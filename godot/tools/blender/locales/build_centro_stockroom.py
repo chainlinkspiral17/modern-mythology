@@ -28,7 +28,7 @@ import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_taper_cyl, make_blob, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling
 
 # ── High back-of-house footprint ──
@@ -251,16 +251,60 @@ def build_hero_props_2026_09():
         make_box(f"Bale_Strap_{si}_E", (3.3575, sy, 0.35), (0.015, 0.04, 0.70), (0.20, 0.20, 0.22, 1.0))
     make_box("Hands_Bale_Grip_A", (2.75, 0.40, 0.7015), (0.12, 0.08, 0.003), (0.56, 0.46, 0.32, 1.0))
     make_box("Hands_Bale_Grip_B", (3.05, 0.40, 0.7015), (0.12, 0.08, 0.003), (0.56, 0.46, 0.32, 1.0))
-    make_box("Far_Cedar_Band", (0.0, 30.0, 3.0), (24.0, 2.0, 6.0), (0.14, 0.18, 0.14, 1.0))
-    make_box("Thermal_Smear", (0.0, 34.0, 7.0), (30.0, 0.4, 2.4), (0.98, 0.62, 0.34, 1.0))   # the last light on the ridge — hot enough to survive dusk's ambient (2026-09-25: its insert was black on every sheet)
+    # (2026-10-05: the cedar slab and the hard orange smear bar are
+    # build_dawn_east_2026_10 now — scattered cedars, a sky, a haze)
     # The dock view is an EXTERIOR now (stump-hunt horizon rule):
     # ground past the apron and receding treeline bands north.
     from _props.detail import make_far_bands
     make_box("Ground_Far_N", (0.0, 120.0, -0.03), (400.0, 220.0, 0.02), (0.15, 0.20, 0.13, 1.0))
     make_far_bands("FarTrees", (0.13, 0.20, 0.11),
-                   [(60.0, 90.0, 8.0, 0.90), (120.0, 150.0, 11.0, 0.70),
-                    (220.0, 240.0, 14.0, 0.52), (400.0, 380.0, 17.0, 0.40)],
+                   # (2026-10-06: were 8-17 m — a wall over the horizon that hid
+                   # the dawn and the smear; Texas cedar scrub is low and flat)
+                   [(60.0, 90.0, 4.0, 0.90), (120.0, 150.0, 5.0, 0.70),
+                    (220.0, 240.0, 6.0, 0.52), (400.0, 380.0, 7.0, 0.40)],
                    sides="N", cy=8.0, profile="treeline")
+
+
+def build_dawn_east_2026_10():
+    """THE VIEW FROM THE DOCK, pre-dawn (ch 10 / ch 16, 2026-10-05). "The
+    cedar scrub is, at five oh-six, beginning to register as scrub rather
+    than as dark. The sky behind it, to the east, is doing the particular
+    pre-dawn thing the Texas sky does — not yet light, no longer dark ...
+    Above the cedar, on the far horizon, the rust-colored thermal smear
+    is visible." The contact sheet's darkest frame: outside the roll-up
+    there was a navy background the grade crushed to black, one slab of
+    'cedar' and a hard orange bar. The dock faces +Y (the story's east).
+
+      · THE SKY as the scene's ProceduralSkyMaterial — deep blue overhead
+        easing to a warm horizon where the sun will come;
+      · THE SMEAR as a haze in that sky: three soft translucent rust bands,
+        widest and faintest on top, over the cedar line;
+      · THE CEDAR SCRUB as scattered dark cedars past the apron — near,
+        then thicker, then the treeline bands.
+    """
+    # THE SKY itself is the scene's ProceduralSkyMaterial now (2026-10-06):
+    # band boxes out past the fog were lit only by ambient and read black.
+    # a haze, not a bar: seven thin overlapping veils, ragged ends, the
+    # densest low and off-centre, fading upward. A sky CARD 55 m out,
+    # scaled to subtend the far horizon's angle from the dock (it stands
+    # over the 60 m treeline band, inside the insert audit's 40 m reach
+    # of shot_insert_smear and well inside the fog)
+    smear_y = 55.0
+    for k, (dx, z, h, a, w) in enumerate(((2.3, 4.5, 0.7, 0.40, 23.0), (6.8, 4.85, 0.9, 0.32, 33.0),
+                                          (-3.4, 5.15, 1.0, 0.24, 28.0), (5.1, 5.55, 1.5, 0.18, 48.0),
+                                          (-8.0, 5.9, 1.25, 0.14, 26.0), (3.4, 6.45, 2.0, 0.10, 62.0),
+                                          (11.4, 7.1, 1.7, 0.07, 40.0))):
+        make_box(f"Sky_Thermal_Smear_{k}", (dx, smear_y + k * 0.5, z), (w, 0.3, h), (0.84, 0.52, 0.36, a))
+    # the cedar scrub past the apron: near, then thicker
+    for k in range(48):
+        cx = -26.0 + (k * 7.3) % 52.0
+        cy = 16.0 + (k * 11.7) % 34.0 + (k // 16) * 6.0
+        if abs(cx) < 4.0 and cy < 22.0:
+            continue                                   # keep the truck lane clear
+        h = 1.6 + 1.6 * ((k * 37) % 10) / 10.0
+        r = 0.6 + 0.5 * ((k * 13) % 7) / 7.0
+        make_taper_cyl(f"Cedar_{k}", (cx, cy, h / 2.0), r, 0.08, h, (0.14, 0.20, 0.14, 1.0), segments=7)
+        make_cyl(f"Cedar_{k}_Trunk", (cx, cy, 0.15), 0.08, 0.30, (0.24, 0.18, 0.14, 1.0), segments=6)
 
 
 def main():
@@ -272,6 +316,7 @@ def main():
     build_store_door()
     build_fluorescents()
     build_hero_props_2026_09()
+    build_dawn_east_2026_10()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/centro_stockroom.glb"))
     print(f"\n[build_centro_stockroom] exporting to {out}")

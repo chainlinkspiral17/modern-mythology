@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://centro_stockroom_vol6"]
+[gd_scene load_steps=26 format=3 uid="uid://centro_stockroom_vol6"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/centro_stockroom.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -128,20 +128,45 @@ shader_parameter/wobble_freq = 0.85
 shader_parameter/tint_amount = 0.18
 shader_parameter/tint_color = Color(0.7, 0.6, 0.44, 1)
 
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_Dawn"]
+; (2026-10-06: "The sky behind it, to the east, is doing the particular
+; pre-dawn thing" — band geometry out past the fog lit only by ambient
+; and rendered black; the sky itself carries the dawn now. Story east
+; is Godot -Z, where the horizon warms.)
+sky_top_color = Color(0.10, 0.13, 0.28, 1)
+sky_horizon_color = Color(0.66, 0.50, 0.44, 1)
+sky_curve = 0.35
+sky_energy_multiplier = 1.0
+ground_bottom_color = Color(0.03, 0.04, 0.05, 1)
+ground_horizon_color = Color(0.30, 0.26, 0.26, 1)
+ground_curve = 0.02
+ground_energy_multiplier = 0.5
+sun_angle_max = 1.0
+sun_curve = 0.01
+
+[sub_resource type="Sky" id="Sky_Dawn"]
+sky_material = SubResource("SkyMat_Dawn")
+radiance_size = 3
+
 [sub_resource type="Environment" id="Env_Locale"]
-background_mode = 1
+background_mode = 2
+sky = SubResource("Sky_Dawn")
 background_color = Color(0.12, 0.14, 0.24, 1)
 ; (2026-09-24: pre-dawn — the dock's smear insert looks out at "a clear
 ; morning" horizon; the near-black background made it one black frame)
 ambient_light_source = 2
-ambient_light_color = Color(0.44, 0.48, 0.44, 1)
-ambient_light_energy = 1.0
+ambient_light_color = Color(0.46, 0.50, 0.54, 1)
+ambient_light_energy = 1.25
+; (2026-10-06: 1.0 — the scrub past the apron read as black, not "scrub rather than dark")
 ; (2026-09-24, sheet 28: was 0.65 — dark-albedo set under the night/dusk
 ; palette moods rendered black; the shader playbook's 2026-07-12 rule: ambient 1.0-1.8)
 fog_enabled = true
-fog_light_color = Color(0.30, 0.34, 0.32, 1)
-fog_light_energy = 0.3
-fog_density = 0.004
+; (2026-10-06: was a 0.09 grey-green at 0.004 — every distant thing faded to
+; mud; now the dawn horizon's own tone, thinner: aerial perspective)
+fog_light_color = Color(0.50, 0.44, 0.46, 1)
+fog_light_energy = 0.8
+fog_density = 0.0025
+fog_sky_affect = 0.15
 adjustment_enabled = true
 adjustment_brightness = 1.0
 adjustment_contrast = 1.1
@@ -196,12 +221,14 @@ transform = Transform3D(-0.94, 0.321, -0.117, 0, 0.342, 0.94, 0.342, 0.883, -0.3
 light_color = Color(0.9, 0.95, 1, 1)
 light_energy = 0.5
 shadow_enabled = false
+sky_mode = 1
 
 [node name="Fill_Cool" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 4, 0)
 light_color = Color(0.4, 0.44, 0.46, 1)
 light_energy = 0.12
 shadow_enabled = false
+sky_mode = 1
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -325,8 +352,8 @@ script = ExtResource("14_dbgm")
 
 ; insert: the rust-colored thermal smear on the far horizon
 [node name="shot_insert_smear" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.65, -18.0)
-rotation = Vector3(0.3200, 0.0, 0.0)   ; 16 m off the ridge band, not 24 (2026-09-25)
+position = Vector3(0.000, 1.650, -18.000)
+rotation = Vector3(0.0767, -0.0621, 0.0)   ; at the low dense veil of the smear over the cedar line (2026-10-06)
 metadata/fov = 42.0
 ; (2026-09-24: the smear is on the eastern HORIZON above the cedar —
 ; the camera stood 2 m from it looking up at a slab; now from the dock)
