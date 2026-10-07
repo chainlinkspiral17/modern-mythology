@@ -120,10 +120,10 @@ def build_brand_and_register():
     make_box("BrandSign", (ROOM_W/4.0, ROOM_D-0.06, 2.10), (1.60, 0.06, 0.50), COL_ACCENT)
     # Impulse-buy rack in front of the register counter — the rack
     # itself (2026-09-22: fifteen items hung in three rows on nothing)
-    make_box("Impulse_Rack", (ROOM_W/4.0, ROOM_D-1.5-0.62, 0.55), (1.90, 0.06, 1.10), P.METAL_BLACK)
+    make_box("Impulse_Rack", (1.40, ROOM_D-1.5-0.53, 0.55), (1.50, 0.06, 1.10), P.METAL_BLACK)
     for r in range(3):
         for c in range(5):
-            make_box(f"Impulse_{r}_{c}", (ROOM_W/4.0-0.72+c*0.36, ROOM_D-1.5-0.62, 0.62+r*0.22),
+            make_box(f"Impulse_{r}_{c}", (1.40-0.56+c*0.28, ROOM_D-1.5-0.53, 0.62+r*0.22),
                      (0.14, 0.03, 0.16), P.SNACK_TINTS[(r+c) % len(P.SNACK_TINTS)])
 
 def build_hero_props():

@@ -336,17 +336,15 @@ metadata/fov = 40.0
 
 ; insert: the pallet packed wrong by the day side (ch10)
 [node name="shot_insert_pallet" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, 1.1, -1.05)
-rotation = Vector3(-0.8404, 0.8330, 0.0)
+position = Vector3(2.150, 1.450, -3.700)
+rotation = Vector3(-0.5954, 1.2252, 0.0)
 metadata/fov = 42.0
 
-; insert: Diego's phone (ch10)
 [node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 1.1, -1.35)
-rotation = Vector3(-0.5943, 0.7854, 0.0)
+position = Vector3(1.700, 1.100, -3.800)
+rotation = Vector3(-0.4366, 0.7854, 0.0)
 metadata/fov = 42.0
 
-; insert: the five pushed across (ch16 el rancho, staged here)
 [node name="shot_insert_five" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.671, 1.298, -0.744)
 rotation = Vector3(-0.2618, 1.0472, 0.0)
@@ -366,12 +364,10 @@ metadata/fov = 42.0
 
 ; insert: Russell's clipboard — BT written next to cereal (ch22)
 [node name="shot_insert_clipboard" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45, 1.15, -0.95)
-rotation = Vector3(-0.5560, -0.8380, 0.0)
+position = Vector3(1.450, 1.200, -3.620)
+rotation = Vector3(-0.5716, 0.9662, 0.0)
 metadata/fov = 42.0
 
-; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
-; every closeup of a person cued here cuts to it (the scene had no closeup marker)
 [node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-0.855, 1.768, -1.649)
 rotation = Vector3(-0.2618, -1.0472, 0.0)

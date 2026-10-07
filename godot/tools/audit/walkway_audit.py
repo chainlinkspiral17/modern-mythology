@@ -33,8 +33,21 @@ TOUCH = 0.05          # m · closer than this the two are ONE fixture (an endcap
 STORES = ("kwik_stop", "centro_grocery_aisle", "nexcorp_fueling_station", "nexcorp_gas_go")
 FIXTURE = re.compile(
     r"^(Aisle_Endcap_Water|Aisle_?\d*|EndCap_[^_]+|Produce|Card_Bale|Checkout|Counter|Register|Cooler_\d+|"
-    r"Ice_Merchandiser|ATM|Coffee_Counter|CoffeeCounter|Coffee_Base|SodaPyr|BeerFridge|Slurpee|MagRack)(?=_|$)", re.I)
+    r"Ice_Merchandiser|ATM|Coffee_Counter|CoffeeCounter|Coffee_Base|SodaPyr|BeerFridge|Slurpee|MagRack|"
+    # islands (2026-10-07: the Kwik Stop's ice-cream chest stood 0.70 m in
+    # front of the cooler doors and this list did not know its name)
+    r"Novelty_Cooler|Freezer|Meat_Case|Deli_Case|Frozen_Bank|Pallet|Break_Bench|Break_Locker|Hot_Case|HotCase|"
+    r"Impulse_Rack|Vape_Kiosk|Newspaper)(?=_|$)", re.I)
 BANK = re.compile(r"^Cooler_\d+$", re.I)      # reach-in doors in a row along a wall are one bank
+# pieces that are ONE assemblage though they do not touch
+PAIRS = {frozenset(("Break_Bench", "Break_Locker")),     # the bench in front of its lockers
+         frozenset(("Impulse_Rack", "Register"))}        # the rack on the register's face
+# staged on purpose: the story puts it in the lane
+DELIBERATE = {
+    # "Diego parks the hand truck. He starts pulling cases of stewed tomatoes
+    # off the pallet and onto the lower shelf" — 3 AM, the store closed
+    ("centro_grocery_aisle", "Pallet"),
+}
 
 
 def footprints(boxes):
@@ -58,6 +71,8 @@ def audit(locale):
     for i, a in enumerate(ks):
         for b in ks[i + 1:]:
             if BANK.match(a) and BANK.match(b):
+                continue
+            if frozenset((a, b)) in PAIRS or (locale, a) in DELIBERATE or (locale, b) in DELIBERATE:
                 continue
             A, B = fx[a], fx[b]
             gap = max(B[0] - A[2], A[0] - B[2], B[1] - A[3], A[1] - B[3])

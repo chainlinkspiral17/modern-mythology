@@ -89,11 +89,15 @@ def build_endcaps():
     for ei, sgn in enumerate((-1, 1)):
         make_endcap(f"EndCap_{ei}", (sgn * (AISLE_LEN / 2.0 + 0.32), AISLE_YS[1], 0.0))   # on aisle 1's ends
     # A soda-bottle pyramid display at the west endcap mouth
-    make_soda_bottle_pyramid("SodaPyr", (-3.5, 1.6, 0.60), tiers=3, base_count=4)
+    # (the soda pyramid went 2026-10-07: it stood in the chest freezer's doors and
+    # 0.35 m off the produce — no cue names it)
 
 def build_cooler_wall():
     # Refrigerated reach-in wall along the north wall — dairy / drinks.
-    make_cooler_row("Cooler", 7.4, [-3.4, -1.1, 1.2, 3.5], cz=1.45,
+    # (2026-10-07) re-spaced: door 3 0.93 m clear of the meat case, door 0 0.94 m
+    # clear of the frozen bank's corner; the propped door and its crate move with it
+    make_cooler_row("Cooler", 7.4, [-2.75, -1.08, 0.59, 2.22],
+                    cz=1.45,
                     shelves=5, cans_per_shelf=6, sixpacks_per_shelf=4)
 
 def build_aisle_signs():
@@ -142,7 +146,7 @@ def build_checkout():
 
 def build_produce():
     # Angled two-tier produce stand in the SW, piled with fruit/veg.
-    px, py = -3.75, 2.4   # (2026-10-07: 10 cm into aisle 0 at -3.6)
+    px, py = -3.75, 2.65   # (2026-10-07: 10 cm into aisle 0 at -3.6; 0.93 m off the chest freezer, 0.90 m off the bale)
     make_chamfer_box("Produce_Base", (px, py, 0.315), (1.40, 1.40, 0.63), (0.42, 0.30, 0.20, 1.0))   # the tier sits ON it (was 3 cm over)
     make_box("Produce_Tier1", (px, py-0.10, 0.66), (1.40, 1.20, 0.06), (0.52, 0.38, 0.26, 1.0))
     make_box("Produce_Tier2", (px, py+0.30, 0.92), (1.40, 0.60, 0.06), (0.52, 0.38, 0.26, 1.0))
@@ -268,10 +272,10 @@ def build_dressing():
     # Stack of hand baskets by the south entrance
     for bi in range(4):
         make_box(f"Basket_{bi}", (-ROOM_W/2.0+0.7, 0.6, 0.05+bi*0.10), (0.34, 0.24, 0.10), (0.62, 0.30, 0.24, 1.0))   # from the floor (2026-09-22)
-    # Wet-floor cone
-    make_chamfer_box("Cone_Base", (1.4, 1.30, 0.02), (0.30, 0.30, 0.04), (0.96, 0.72, 0.20, 1.0), chamfer=0.01)
-    make_lathe("Cone_Body", (1.4, 1.30, 0.04), [(0.13, 0.0), (0.12, 0.05), (0.03, 0.62), (0.0, 0.64)], (0.96, 0.72, 0.20, 1.0), segments=12)   # draft 4: a cone
-    make_box("Cone_Sign", (1.4, 1.222, 0.36), (0.12, 0.002, 0.10), (0.16, 0.16, 0.18, 1.0))   # a sleeve on the cone's face (2026-09-25: it ran through the cone's axis)
+    # Wet-floor cone (2026-10-07: out of the deli case's doors, at aisle 0's mouth)
+    make_chamfer_box("Cone_Base", (0.6, 2.05, 0.02), (0.30, 0.30, 0.04), (0.96, 0.72, 0.20, 1.0), chamfer=0.01)
+    make_lathe("Cone_Body", (0.6, 2.05, 0.04), [(0.13, 0.0), (0.12, 0.05), (0.03, 0.62), (0.0, 0.64)], (0.96, 0.72, 0.20, 1.0), segments=12)   # draft 4: a cone
+    make_box("Cone_Sign", (0.6, 1.972, 0.36), (0.12, 0.002, 0.10), (0.16, 0.16, 0.18, 1.0))   # a sleeve on the cone's face (2026-09-25: it ran through the cone's axis)
 
 def build_departments():
     """2026-08-03 hero-prop pass: meat counter, deli case, the
@@ -294,32 +298,38 @@ def build_departments():
         make_box(f"Meat_Tray_{mi}", (mcx, mcy - 0.80 + mi * 0.55, 1.13), (0.60, 0.42, 0.06),
                  [(0.72, 0.32, 0.30, 1.0), (0.80, 0.46, 0.42, 1.0)][mi % 2])
     # Deli case + wipe-down worktop
-    dcx, dcy = 1.70, 0.60   # S wall E section, between the entrance and the queue; glass faces north
-    make_chamfer_box("Deli_Case_Body", (dcx, dcy, 0.55), (1.60, 1.00, 1.10), (0.86, 0.86, 0.84, 1.0))
-    make_box("Deli_Case_Glass", (dcx, dcy + 0.47, 1.28), (1.50, 0.04, 0.50), glass)
-    make_box("Deli_Worktop", (dcx, dcy - 0.33, 0.92), (1.50, 0.30, 0.05), steel)
+    dcx, dcy = 1.67, 0.60   # S wall E section, between the entrance and the queue; glass faces north
+    # (2026-10-07: 1.10 m wide, was 1.60 — 0.63 m to the checkout; 0.91 now)
+    make_chamfer_box("Deli_Case_Body", (dcx, dcy, 0.55), (1.10, 1.00, 1.10), (0.86, 0.86, 0.84, 1.0))
+    make_box("Deli_Case_Glass", (dcx, dcy + 0.47, 1.28), (1.00, 0.04, 0.50), glass)
+    make_box("Deli_Worktop", (dcx, dcy - 0.33, 0.92), (1.00, 0.30, 0.05), steel)
     # Pallet + hand truck + the forgotten pallet jack
-    make_box("Pallet", (-1.0, 1.55, 0.08), (1.00, 1.20, 0.16), (0.62, 0.48, 0.30, 1.0))
-    make_chamfer_box("Pallet_Load", (-1.0, 1.55, 0.46), (0.90, 1.05, 0.60), (0.68, 0.56, 0.38, 1.0))
-    make_rot_box("HandTruck_Frame", (-1.9, 1.5, 0.60), (0.08, 0.40, 1.20), (0.62, 0.28, 0.24, 1.0), roll=0.0)
-    make_box("HandTruck_Toe", (-1.86, 1.5, 0.04), (0.30, 0.44, 0.03), steel)
-    for wi3, wy3 in enumerate((1.28, 1.72)):
-        make_lathe(f"HandTruck_Wheel_{wi3}", (-1.94, wy3, 0.0), [(0.0, 0.0), (0.12, 0.0), (0.12, 0.05), (0.0, 0.05)], P.METAL_BLACK, segments=10)
-    make_box("PalletJack_Forks", (2.3, 1.60, 0.08), (0.56, 1.20, 0.12), (0.86, 0.52, 0.16, 1.0))   # reach the tiller (2026-09-22: 5 cm short)
-    make_box("PalletJack_Tiller", (2.3, 2.20, 0.55), (0.08, 0.10, 0.90), (0.30, 0.30, 0.32, 1.0))
+    # THE PALLET in Aisle Seven (2026-10-07): "Diego parks the hand truck. He
+    # starts pulling cases of stewed tomatoes off the pallet and onto the
+    # lower shelf." It stood in the entry zone, 0.40 m off aisle 0 and 0.50 m
+    # off the chest freezer; now it is where the work is — in the lane,
+    # against the shelf being stocked, at 3 AM with no shopper in the store.
+    # The forgotten pallet jack (no cue) is gone.
+    plx, ply = 0.90, 4.15
+    make_box("Pallet", (plx, ply, 0.08), (1.20, 1.00, 0.16), (0.62, 0.48, 0.30, 1.0))
+    make_chamfer_box("Pallet_Load", (plx, ply, 0.46), (1.05, 0.90, 0.60), (0.68, 0.56, 0.38, 1.0))
+    make_rot_box("HandTruck_Frame", (plx - 0.90, ply + 0.10, 0.60), (0.40, 0.08, 1.20), (0.62, 0.28, 0.24, 1.0), roll=0.0)
+    make_box("HandTruck_Toe", (plx - 0.90, ply + 0.06, 0.04), (0.44, 0.30, 0.03), steel)
+    for wi3, wx3 in enumerate((plx - 1.12, plx - 0.68)):
+        make_lathe(f"HandTruck_Wheel_{wi3}", (wx3, ply + 0.14, 0.0), [(0.0, 0.0), (0.12, 0.0), (0.12, 0.05), (0.0, 0.05)], P.METAL_BLACK, segments=10)
     # Cooler swing door propped open with the milk crate (sticking
     # lock since July)
-    make_box("Cooler_Door_Leaf", (-3.72, 7.375, 1.00), (0.30, 0.05, 1.90), (0.82, 0.84, 0.86, 1.0))   # against the frame (2026-09-22: 2.5 cm off it)
-    make_tube("Cooler_Door_Handle", [(-3.60, 7.34, 0.85), (-3.60, 7.30, 0.85), (-3.60, 7.30, 1.15), (-3.60, 7.34, 1.15)], 0.012, steel, segments=6)   # standoffs meet the leaf
-    make_box("Milk_Crate_Prop", (-3.55, 7.19, 0.14), (0.32, 0.32, 0.28), (0.30, 0.44, 0.62, 1.0))   # against the leaf it props
+    make_box("Cooler_Door_Leaf", (-3.07, 7.375, 1.00), (0.30, 0.05, 1.90), (0.82, 0.84, 0.86, 1.0))   # against the frame (2026-09-22: 2.5 cm off it)
+    make_tube("Cooler_Door_Handle", [(-2.95, 7.34, 0.85), (-2.95, 7.30, 0.85), (-2.95, 7.30, 1.15), (-2.95, 7.34, 1.15)], 0.012, steel, segments=6)   # standoffs meet the leaf
+    make_box("Milk_Crate_Prop", (-2.90, 7.19, 0.14), (0.32, 0.32, 0.28), (0.30, 0.44, 0.62, 1.0))   # against the leaf it props
     # Frozen run: upright glass doors, W wall north end
     make_chamfer_box("Frozen_Bank", (-4.62, 6.8, 1.10), (0.55, 1.70, 2.20), (0.80, 0.84, 0.88, 1.0))
     for fi in range(3):
         make_box(f"Frozen_Door_{fi}", (-4.34, 6.25 + fi * 0.56, 1.15), (0.03, 0.50, 1.80), glass)
     # The cardboard bale at the aisle's north mouth
-    make_chamfer_box("Card_Bale", (-4.15, 4.92, 0.70), (0.90, 0.64, 1.40), (0.44, 0.48, 0.52, 1.0))
-    make_box("Card_Bale_Lid", (-4.15, 4.92, 1.42), (0.86, 0.60, 0.05), steel)
-    make_box("Card_Bale_Stack", (-4.15, 4.90, 0.90), (0.70, 0.50, 0.30), (0.66, 0.54, 0.36, 1.0))
+    make_chamfer_box("Card_Bale", (-4.15, 4.57, 0.70), (0.90, 0.64, 1.40), (0.44, 0.48, 0.52, 1.0))
+    make_box("Card_Bale_Lid", (-4.15, 4.57, 1.42), (0.86, 0.60, 0.05), steel)
+    make_box("Card_Bale_Stack", (-4.15, 4.55, 0.90), (0.70, 0.50, 0.30), (0.66, 0.54, 0.36, 1.0))
     # Register cubby (Diego's backpack)
     # cashier side, against the counter's back (2026-09-22: it sat 18 cm
     # inside the counter front AND inside the meat case)
@@ -352,9 +362,9 @@ def build_hero_props_2026_09():
     """
     steel = (0.62, 0.63, 0.64, 1.0)
     # ── THE COOLER THERMOMETER · inner face of the door leaf ──
-    make_box("Cooler_Thermometer", (-3.70, 7.344, 1.45), (0.050, 0.012, 0.140),
+    make_box("Cooler_Thermometer", (-3.05, 7.344, 1.45), (0.050, 0.012, 0.140),
              (0.90, 0.89, 0.86, 1.0))
-    make_box("Thermometer_Needle", (-3.70, 7.336, 1.43), (0.008, 0.004, 0.030),
+    make_box("Thermometer_Needle", (-3.05, 7.336, 1.43), (0.008, 0.004, 0.030),
              (0.80, 0.22, 0.18, 1.0))
     # ── THE FIVE · on the checkout belt, between ribs ──
     make_box("Five_Dollar_Bill", (3.50, 1.42, 0.9614), (0.156, 0.066, 0.0015),
@@ -365,15 +375,15 @@ def build_hero_props_2026_09():
     make_box("Scanner_Window", (2.55, 2.4014, 0.7825), (0.036, 0.006, 0.020),
              (0.70, 0.24, 0.20, 1.0))
     # ── RUSSELL'S CLIPBOARD + PEN · flat on the pallet load ──
-    make_box("Russell_Clipboard", (-1.0, 1.40, 0.766), (0.240, 0.320, 0.012),
+    make_box("Russell_Clipboard", (0.900, 4.000, 0.766), (0.240, 0.320, 0.012),
              (0.55, 0.42, 0.28, 1.0))
-    make_box("Clipboard_Sheet", (-1.0, 1.41, 0.7735), (0.210, 0.280, 0.002),
+    make_box("Clipboard_Sheet", (0.900, 4.010, 0.7735), (0.210, 0.280, 0.002),
              (0.94, 0.93, 0.88, 1.0))
-    make_box("Clipboard_Clip", (-1.0, 1.255, 0.782), (0.060, 0.030, 0.020), steel)
-    make_cyl("Russell_Pen", (-0.94, 1.47, 0.7795), 0.005, 0.130,
+    make_box("Clipboard_Clip", (0.900, 3.855, 0.782), (0.060, 0.030, 0.020), steel)
+    make_cyl("Russell_Pen", (0.960, 4.070, 0.7795), 0.005, 0.130,
              (0.24, 0.28, 0.52, 1.0), axis='Y', segments=6)
     # ── DIEGO'S PHONE · beside the clipboard ──
-    make_box("Diegos_Phone", (-0.70, 1.70, 0.7655), (0.070, 0.140, 0.011),
+    make_box("Diegos_Phone", (1.200, 4.300, 0.7655), (0.070, 0.140, 0.011),
              (0.13, 0.13, 0.15, 1.0))
 
 
@@ -402,7 +412,7 @@ def build_draft4_2026_09():
     make_floor_stain("Wear_Wet_Spot", (1.55, 1.45), radius=0.22, tint=(0.70, 0.70, 0.68, 1.0), segments=10)
     for li, lx in enumerate((-1.80, -1.40)):
         make_box(f"Wear_Wheel_Line_{li}", (lx, 3.05, 0.004), (0.02, 1.10, 0.003), (0.60, 0.60, 0.56, 1.0))
-    make_floor_stain("Wear_Arc_Cooler", (-3.55, 7.05), radius=0.30, tint=(0.68, 0.68, 0.64, 1.0), segments=10)
+    make_floor_stain("Wear_Arc_Cooler", (-2.90, 7.05), radius=0.30, tint=(0.68, 0.68, 0.64, 1.0), segments=10)
     # ── D3 ──
     make_box("Floor_Box", (4.10, 2.30, 0.02), (0.14, 0.14, 0.04), (0.42, 0.42, 0.40, 1.0))
     # each cord as straight segments: the recorder boxes a tube by its

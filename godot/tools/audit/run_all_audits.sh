@@ -306,6 +306,16 @@ WKOUT="$(python3 walkway_audit.py 2>/dev/null)" || {
 echo "$WKOUT" | tail -1
 echo ""
 
+# ── Case-access gate (2026-10-07) ─────────────────────────────
+# "The glass case can't be opened by the island obstructing it" (the
+# user). 0.90 m clear in front of every glass-front case's doors. Zero.
+echo "── case_access_audit.py ──"
+CAOUT="$(python3 case_access_audit.py 2>/dev/null)" || {
+    echo "$CAOUT" | grep "^BLOCKED" | head -20
+    echo "REGRESSION  case_access_audit found a case whose doors cannot open (ceiling 0)"; exit 1; }
+echo "$CAOUT" | tail -1
+echo ""
+
 # ── Scene-syntax gate (2026-09-25) ────────────────────────────
 # highway_101 and small_wood_road were skipped on every contact sheet:
 # `Color(r, g, b)` — Godot's parser wants four arguments — and the

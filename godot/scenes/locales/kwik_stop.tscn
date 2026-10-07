@@ -428,9 +428,10 @@ rotation = Vector3(-0.0871245, -1.21388, 0)
 metadata/fov = 58.0
 
 ; rotation C: from the coffee station looking east across the aisles to the counter
+; (2026-10-07: up the cooler lane — at -4.4,5.8 it stood nose-to-nose with the end cap now on aisle 1)
 [node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-4.4, 1.55, -5.8)
-rotation = Vector3(-0.0578942, -1.70822, 0)
+position = Vector3(-4.350, 1.550, -6.850)
+rotation = Vector3(-0.0726, -1.6509, 0.0)
 metadata/fov = 56.0
 
 ; insert: Sam's phone on the counter — it buzzes (ch2/ch6)

@@ -108,6 +108,13 @@ henderson) got there by accumulating exactly these layers.
   diagonal half-metre off a corner. `walkway_audit.py` measures it; the
   user saw "shelves blocking shelves" the first time the stock read as
   real — dense, legible stock exposes a cramped plan that blocks hid.
+- A CASE IS OPENED. A reach-in cooler, a freezer, a display case needs
+  0.9 m of floor in front of its doors — the swing and the person in it —
+  and a lane measure between fixtures does not see that floor (the Kwik
+  Stop's ice-cream chest sat 0.70 m in front of the glass doors and
+  passed). `case_access_audit.py` checks it. When a gate is named by a
+  list of fixture names, a fixture missing from the list is invisible to
+  it: add the islands.
 
 ### 2026-10-03 · a home is ROOMS, not a box with furniture in it (the Roberts house)
 

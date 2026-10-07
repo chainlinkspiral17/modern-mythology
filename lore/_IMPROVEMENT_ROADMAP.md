@@ -3388,6 +3388,31 @@ Deck must REBUILD kwik_stop, centro_grocery_aisle,
 nexcorp_fueling_station, nexcorp_gas_go. Draft N+1: extend
 walkway_audit's STORES to the diner, the cafes and the bars (tables and
 chairs: the same question at a different scale).
+THE USER, again: "No they don't — the glass case can't be opened by the
+island obstructing it." Right: walkway_audit measured the gaps BETWEEN
+fixtures and never the floor a door swings into, and it did not know the
+islands' names. The Kwik Stop's ice-cream chest (`Novelty_Cooler`, the
+island) stood 0.70 m in front of beer-cooler doors 0 and 1. NEW GATE
+`case_access_audit.py` (in the suite, ceiling 0): 0.90 m clear in front of
+every glass-front case's doors (the door face is the side away from its
+wall). Its first run found eleven more blocked doors and walkway's widened
+island list found eleven cramped lanes; all fixed: the chest is 0.70 m
+deep and centred in the cooler lane (0.98 m to the doors, 0.98 m to aisle
+1); the grocery's cooler doors re-spaced off the meat case and the frozen
+bank (the propped door, its milk crate, its thermometer and its wear arc
+moved with door 0 — the crate stays in the swing ON PURPOSE, named in
+DELIBERATE), the soda pyramid and the un-cued pallet jack gone, the deli
+case 1.10 m wide (0.91 m to the checkout), the produce stand and the bale
+0.9 m off the freezer and the frozen bank, the wet-floor cone out of the
+deli's doors; the PALLET is in Aisle Seven's lane against the shelf being
+stocked, as the prose has it ("Diego parks the hand truck ... off the
+pallet and onto the lower shelf", 3 AM — DELIBERATE in walkway_audit), its
+clipboard and phone with it, its three markers re-aimed; the fueling
+station's impulse rack moved with its register (it had stayed in front of
+a cooler). The Kwik Stop's establish_c went up the cooler lane (it stood
+nose-to-nose with the end cap). Deck must REBUILD kwik_stop,
+centro_grocery_aisle, nexcorp_fueling_station.
+
 NEXT (queued): Bianca's kitchen is the Miller kitchen again —
 `bianca_kitchen_morning` (ch 22 / 23) and `miller_kitchen` are one room
 on Meadowlark Circle (the cul-de-sac through the window, the green robe

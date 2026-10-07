@@ -2973,10 +2973,13 @@ def build_hero_props_2026_08():
         make_box(f"Break_Bench_Leg_{bi}", (4.45 + lx, 8.25 + ly, 0.195), (0.04, 0.04, 0.39), wood)
     for li, lx in enumerate((4.25, 4.65)):
         make_box(f"Break_Locker_{li}", (lx, 8.70, 0.95), (0.38, 0.35, 1.90), (0.44, 0.50, 0.54, 1.0))
-    # Indoor ice-cream novelty cooler (the one acting up)
-    make_box("Novelty_Cooler", (-1.2, 7.4, 0.45), (1.60, 0.80, 0.90), (0.86, 0.88, 0.90, 1.0))
-    make_box("Novelty_Cooler_Lid", (-1.2, 7.4, 0.92), (1.55, 0.75, 0.04), (0.55, 0.62, 0.66, 0.6))
-    make_box("Novelty_Cooler_Decal", (-1.2, 6.99, 0.55), (1.20, 0.01, 0.40), (0.92, 0.56, 0.62, 1.0))
+    # Indoor ice-cream novelty cooler (the one acting up). (2026-10-07, the
+    # user: "the glass case can't be opened by the island obstructing it" —
+    # at y 7.4 it stood 0.70 m in front of beer-cooler doors 0 and 1; a 0.70 m
+    # chest now, centred in the lane: 0.98 m to the doors, 0.98 m to aisle 1)
+    make_box("Novelty_Cooler", (-1.2, 7.175, 0.45), (1.60, 0.70, 0.90), (0.86, 0.88, 0.90, 1.0))
+    make_box("Novelty_Cooler_Lid", (-1.2, 7.175, 0.92), (1.55, 0.65, 0.04), (0.55, 0.62, 0.66, 0.6))
+    make_box("Novelty_Cooler_Decal", (-1.2, 6.82, 0.55), (1.20, 0.01, 0.40), (0.92, 0.56, 0.62, 1.0))
     # Tip cup at the register
     make_cyl("Tip_Cup", (4.55, 3.6, 1.12), 0.05, 0.14, (0.80, 0.82, 0.72, 0.7), segments=8)
 
