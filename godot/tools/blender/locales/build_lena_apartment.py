@@ -44,7 +44,8 @@ from _props.furniture import make_chair, make_lamp
 from _props import palette as P
 from _props.geometry import (clear_scene, make_box, make_cyl, make_lathe, make_chamfer_box,
                              make_tube, make_rot_box, export_glb)
-from _props.structure import make_floor, make_wall, make_ceiling, make_window
+from _props.views import make_view
+from _props.structure import make_floor, make_wall, make_ceiling, make_window, make_wall_with_openings
 from _props.decor import make_floor_plant, make_faded_poster
 from _props.safety import make_smoke_detector
 
@@ -66,11 +67,12 @@ CHAIR_WOODS = [(0.46, 0.34, 0.22, 1.0), (0.56, 0.44, 0.30, 1.0),
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
                palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
-    for nm, x, bb in [("Wall_W", -ROOM_W/2.0, +1), ("Wall_E", +ROOM_W/2.0, -1)]:
-        make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=bb)
+    # (2026-10-07) Wall_W out of the loop: its window is cut
+    make_wall_with_openings("Wall_W", (-ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(1.30, 1.50, 1.10, 1.10)])
+    make_wall("Wall_E", (+ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=-1)
     make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
     make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
-    make_wall("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall_with_openings("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(1.75, 1.42, 1.00, 1.20)])   # cut 2026-10-07: its window was a pane on a solid wall
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4, with_grid=False)
     # The front door itself, ajar-closed in the opening, with the
@@ -120,7 +122,7 @@ def build_kitchen():
     at the SW corner end, dish drainer, kettle, braided rug."""
     # The window over the sink → the alley + the Starfish Nebula mural
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
-    make_window("Kitchen_Window", (-ROOM_W/2.0 + 0.10, 1.30, 1.50), width=1.10, height=1.10, axis='Y', room_dir=+1)
+    make_window("Kitchen_Window", (-ROOM_W/2.0 + 0.10, 1.30, 1.50), width=1.10, height=1.10, axis='Y', room_dir=+1, see_through=True)
     # Counter run (2026-09-23: the whole run — counter, sink, stove,
     # kettle, grinder — stood 10 cm inside the W wall; shifted out 0.10)
     make_box("Counter_Body", (-2.10, 1.40, 0.44), (0.60, 2.00, 0.88), COL_WOOD)
@@ -216,7 +218,7 @@ def build_front_room():
     # The front window (Wall_S_E) — "she went to the front window
     # and looked down"
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
-    make_window("Front_Window", (1.75, 0.10, 1.42), width=1.00, height=1.20, room_dir=+1)
+    make_window("Front_Window", (1.75, 0.10, 1.42), width=1.00, height=1.20, room_dir=+1, see_through=True)
     # Couch against the partition's east reach, facing south — its west
     # end at 0.17, clear of the bedroom door's swing (x to 0.08) and
     # its east end 3 cm off the shelf (2026-09-25: at 0.70 it reached -0.25)
@@ -664,6 +666,8 @@ def main():
     build_wear_personality_2026_08()
     build_hero_props_2026_09()
     build_draft4_2026_09()
+    # what is outside the window (2026-10-07, _props/views.py)
+    make_view("View_S", "S", 0.0, 1.75, kind="street", ground_z=-3.2, seed=11)   # Hemlock, one floor down
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/lena_apartment.glb"))
     print(f"\n[build_lena_apartment] exporting to {out}")

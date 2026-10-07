@@ -26,7 +26,7 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, export_glb
-from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
+from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_wall_with_openings
 from _props.store_fixtures import make_counter, make_register
 from _props.decor import make_wall_clock, make_floor_plant
 from _props.safety import make_smoke_detector, make_hvac_vent
@@ -57,10 +57,10 @@ def build_shell():
                   palette=PAL_WALL, baseboard_face_sign=bb)
     make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X',
               palette=PAL_WALL, baseboard_face_sign=-1)
-    make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL,
-              axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
-    make_wall("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL,
-              axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall_with_openings("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL,   # cut 2026-10-07: its window was a pane on a solid wall
+              axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(-2.25, 1.60, 1.80, 1.45)])
+    make_wall_with_openings("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL,   # cut 2026-10-07: its window was a pane on a solid wall
+              axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(2.25, 1.60, 1.80, 1.45)])
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
     for nm, ax, length, wx, wy in [
@@ -84,7 +84,7 @@ def build_storefront():
     # rings when she comes in — the shop's opening image).
     for tag, wx in [("SW", -2.25), ("SE", 2.25)]:
         # built toward the room (2026-09-23: into the S wall, invisible)
-        make_window(f"Win_{tag}", (wx, 0.10, 1.60), width=1.80, height=1.45, room_dir=+1)
+        make_window(f"Win_{tag}", (wx, 0.10, 1.60), width=1.80, height=1.45, room_dir=+1, see_through=True)
     make_box("DoorBell_Arm", (0.55, 0.16, 2.28), (0.03, 0.14, 0.03), COL_STEEL)
     make_cyl("DoorBell", (0.55, 0.26, 2.22), 0.05, 0.07, COL_BRASS, segments=10)
     # A low window-display plinth in the SW glass: two sticks on

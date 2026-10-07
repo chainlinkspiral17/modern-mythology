@@ -316,6 +316,17 @@ CAOUT="$(python3 case_access_audit.py 2>/dev/null)" || {
 echo "$CAOUT" | tail -1
 echo ""
 
+# ── Window-backing gate (2026-10-07) ──────────────────────────
+# Twenty-five rooms built their windows as panes on SOLID walls:
+# LocaleGlass made the glass clear and behind it was plaster — every
+# room read sealed. A pane whose wall is uncut behind it fails. Zero.
+echo "── window_backing_audit.py ──"
+WBOUT="$(python3 window_backing_audit.py 2>/dev/null)" || {
+    echo "$WBOUT" | grep "✗" | head -20
+    echo "REGRESSION  window_backing_audit found a window on a solid wall (ceiling 0)"; exit 1; }
+echo "$WBOUT" | tail -1
+echo ""
+
 # ── Scene-syntax gate (2026-09-25) ────────────────────────────
 # highway_101 and small_wood_road were skipped on every contact sheet:
 # `Color(r, g, b)` — Godot's parser wants four arguments — and the

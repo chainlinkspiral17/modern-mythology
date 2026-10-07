@@ -53,7 +53,7 @@ from _props.geometry import clear_scene, make_box, make_chamfer_box, make_cyl, m
 from _props.furniture import make_chair, make_stool, make_bench
 from _props.detail import make_traffic_wear, make_floor_stain, make_light_switch, make_wall_outlet
 from _props.vehicles import make_car
-from _props.structure import make_floor, make_wall, make_ceiling, make_window
+from _props.structure import make_floor, make_wall, make_ceiling, make_window, make_wall_with_openings
 from _props.store_fixtures import make_counter, make_register
 from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster
 from _props.safety import make_smoke_detector, make_hvac_vent, make_fluorescent_tube_fixture
@@ -86,7 +86,7 @@ def build_shell():
     make_wall("Alley_Door_Fill_W", (2.60, ROOM_D, 0), length=0.20, height=CEIL-0.60, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
     make_wall("Alley_Door_Fill_E", (3.65, ROOM_D, 0), length=0.10, height=CEIL-0.60, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
     make_box("Alley_Door_Header", (3.15, ROOM_D, 2.125), (0.90, 0.20, 0.15), PAL_WALL["wall"])
-    make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall_with_openings("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(-2.75, 1.55, 2.60, 1.50)])   # cut 2026-10-07: its window was a pane on a solid wall
     make_wall("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
@@ -255,7 +255,7 @@ def build_retail():
     # Front window + the parents' bench under it (NO staged board
     # games — the mural across Main does the window's work)
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
-    make_window("Win_S", (-2.75, 0.10, 1.55), width=2.60, height=1.50, room_dir=+1)
+    make_window("Win_S", (-2.75, 0.10, 1.55), width=2.60, height=1.50, room_dir=+1, see_through=True)
     # (draft 3: the kit bench)
     make_bench("Wait_Bench", -2.75, 0.55, length=1.80, wood=COL_WOOD, h=0.45)
 

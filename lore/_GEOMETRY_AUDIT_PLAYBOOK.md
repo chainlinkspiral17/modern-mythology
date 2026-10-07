@@ -158,6 +158,23 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-10-07 · window_backing_audit: a pane on a solid wall is a gate, not a habit
+
+- New gate (run_all_audits, ceiling 0): every thin upright *_Glass /
+  *_Pane / *_Warm / *_Glint_N part is tested against the full-height
+  Wall* parts in its plane (0.35 m); a wall that covers the pane's
+  centre is a SOLID BACKING. Its first run over 122 builders, after the
+  three hand batches, still found Kwik Stop's two storefront windows
+  (make_box walls, never cut) — the canopy, the pumps and NexCorp
+  across the intersection had never been seen from inside.
+- DELIBERATE holds what stays solid on purpose: Ember & Ash's
+  CornerAcross (a liminal threshold) and the Roberts house (no camera
+  reaches it). Mirrors, cases, frames, screens, kiosks are excluded by
+  name (NOT_WINDOW).
+- Cutting a wall opens air under what hung on it: Kwik Stop's hose
+  reel and a decal's sign floated at once. Run support_audit on the
+  locale right after any cut.
+
 ### 2026-10-06 · a ROOM module shared by two locales is invisible until it RUNS
 
 - Graciela's kitchen is one room dressed for two locales, so its

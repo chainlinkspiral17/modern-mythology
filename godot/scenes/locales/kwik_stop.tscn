@@ -458,10 +458,12 @@ rotation = Vector3(-0.6206, -0.7086, 0.0)
 metadata/fov = 42.0
 
 ; insert: the south glass, the lot beyond (ch4)
+; (2026-10-07: it was pitched 56 deg down into the tables; the wall is
+; cut now — out through the west picture window, decals and the lot)
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.833, 2.275, -2.572)
-rotation = Vector3(-0.9767, 2.9670, 0.0)
-metadata/fov = 42.0
+position = Vector3(-3.000, 1.550, -3.000)
+rotation = Vector3(-0.0340, 2.9697, 0.0)
+metadata/fov = 50.0
 
 ; insert: the NexCorp van, engine running, facing her (ch15)
 [node name="shot_insert_van" type="Marker3D" parent="." groups=["vn_shot"]]

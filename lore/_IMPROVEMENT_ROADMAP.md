@@ -3519,6 +3519,28 @@ Caldwell rooms and Daily Grind (none look out yet); exterior key light
 for the outsides (lit by ambient only, they read dim against the
 interior practicals).
 
+**2026-10-07 · WINDOWS, batch 3 (the loop-built ones).** Pit Stop
+(both storefront panes + the two W booth windows + the kitchen's N
+window: its W "frames" were SOLID 1.70 x 1.55 slabs — real head, sill
+and jambs now; the 4.4 m treelines 8 m out became fields with low
+treelines at 31-35 m; a street past the front), Chillwave (its D5
+street), Lena's (the kitchen window onto the alley's Starfish Nebula
+mural — the mural is finally SEEN; the front window onto Hemlock a
+floor down), Board Lords (Main Street), Hans's back kitchen (the
+hemlock at 4 AM, a dusk-blue sky). Deck must REBUILD those five.
+Still solid: ember_ash_office's CornerAcross — a LIMINAL threshold
+(the man in the charcoal suit); cutting it is a liminal-JSON decision,
+not a window pass.
+
+**2026-10-07 · window_backing_audit + Kwik Stop's storefront.** A new
+gate in the suite (ceiling 0): any pane whose wall is uncut behind it
+fails. Its first sweep found Kwik Stop's picture windows on solid
+make_box walls — cut now (piers, spandrel, lintel), the warm glass
+0.70 → 0.35 so the lot reads; the hose reel moved onto the pier, the
+burger decal's sign onto the glass; shot_insert_window ("the south
+glass, the lot beyond") re-aimed out of the tables and through it.
+Deck must REBUILD kwik_stop and pit_stop_interior.
+
 NEXT (queued): Bianca's kitchen is the Miller kitchen again —
 `bianca_kitchen_morning` (ch 22 / 23) and `miller_kitchen` are one room
 on Meadowlark Circle (the cul-de-sac through the window, the green robe

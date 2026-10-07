@@ -28,7 +28,8 @@ if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.furniture import make_table, make_chair
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, export_glb
-from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
+from _props.views import make_view
+from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_wall_with_openings
 from _props.store_fixtures import (make_counter, make_counter_bullnose, make_register,
                                    make_credit_card_terminal)
 from _props.food_service import (make_coffee_pots, make_donut_display,
@@ -57,16 +58,18 @@ COL_GLASS = (0.62, 0.72, 0.76, 0.6)
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
                palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
-    for nm, x, bb in [("Wall_W", -ROOM_W/2.0, +1), ("Wall_E", +ROOM_W/2.0, -1)]:
-        make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y',
-                  palette=PAL_WALL, baseboard_face_sign=bb)
-    make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X',
-              palette=PAL_WALL, baseboard_face_sign=-1)
+    # (2026-10-07) Wall_W out of the loop: its window is cut
+    make_wall_with_openings("Wall_W", (-ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y',
+                  palette=PAL_WALL, baseboard_face_sign=+1, openings=[(1.55, 1.60, 1.54, 1.40), (3.55, 1.60, 1.54, 1.40)])
+    make_wall("Wall_E", (+ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y',
+                  palette=PAL_WALL, baseboard_face_sign=-1)
+    make_wall_with_openings("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X',   # cut 2026-10-07: its window was a pane on a solid wall
+              palette=PAL_WALL, baseboard_face_sign=-1, openings=[(-3.2, 1.65, 1.40, 1.10)])
     # South wall with a centred entry-door gap.
-    make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL,
-              axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
-    make_wall("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL,
-              axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall_with_openings("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL,   # cut 2026-10-07: its window was a pane on a solid wall
+              axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(-3.18, 1.60, 1.96, 1.50)])
+    make_wall_with_openings("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL,   # cut 2026-10-07: its window was a pane on a solid wall
+              axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(3.18, 1.60, 1.96, 1.50)])
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
     for nm, ax, length, wx, wy in [
@@ -82,17 +85,22 @@ def build_windows():
     # built toward the room (2026-09-23: into the S wall, invisible);
     # 1.96 wide so the SW frame clears the corner booth's back
     for tag, wx in [("SW", -3.18), ("SE", 3.18)]:
-        make_window(f"Win_{tag}", (wx, 0.10, 1.60), width=1.96, height=1.50, room_dir=+1)
+        make_window(f"Win_{tag}", (wx, 0.10, 1.60), width=1.96, height=1.50, room_dir=+1, see_through=True)
     # W wall windows beside the booth row — the lot is out the W
     # glass (hand-built X-thin panes).
     for tag, wy in [("W_Front", 1.55), ("W_Mid", 3.55)]:
         wx = -ROOM_W/2.0 + 0.10
-        make_box(f"Win_{tag}_Frame", (wx, wy, 1.60), (0.06, 1.70, 1.55), COL_WOOD)
-        make_box(f"Win_{tag}_Glass", (wx+0.01, wy, 1.60), (0.03, 1.54, 1.40), COL_GLASS)
+        # (2026-10-07: the "frame" was one solid 1.70 x 1.55 slab — a
+        # brown board over the cut; now head, sill and two jambs)
+        for fn, fy, fz, fsy, fsz in (("Head", wy, 2.335, 1.70, 0.08), ("Sill", wy, 0.865, 1.70, 0.08),
+                                     ("JambS", wy - 0.81, 1.60, 0.08, 1.55), ("JambN", wy + 0.81, 1.60, 0.08, 1.55)):
+            make_box(f"Win_{tag}_Frame_{fn}", (wx, fy, fz), (0.06, fsy, fsz), COL_WOOD)
+        # (2026-10-07: the wall is cut; the opaque glass box went — the lot is SEEN)
         make_box(f"Win_{tag}_Mullion", (wx+0.02, wy, 1.60), (0.03, 0.05, 1.40), COL_WOOD)
+        make_box(f"Win_{tag}_Glint", (wx, wy - 0.40, 1.60), (0.004, 0.03, 1.40), (0.84, 0.88, 0.92, 1.0))   # sill to head
     # Kitchen window on the N wall — Ben catalogues the parking-lot
     # cars through this from the grill (vol6_ch2).
-    make_window("Win_Kitchen", (-3.2, ROOM_D-0.10, 1.65), width=1.40, height=1.10)
+    make_window("Win_Kitchen", (-3.2, ROOM_D-0.10, 1.65), width=1.40, height=1.10, see_through=True)
 
 
 def _booth(tag, by, corner=False):
@@ -376,11 +384,15 @@ def build_beyond_glass_2026_08():
     # Lot light pole + far treeline wall (edge-of-set).
     make_cyl("Lot_Pole", (-11.5, 4.5, 3.0), 0.09, 6.0, (0.40, 0.40, 0.42, 1.0), segments=8)
     make_box("Lot_Pole_Head", (-11.2, 4.5, 6.0), (0.7, 0.25, 0.18), (0.30, 0.30, 0.32, 1.0))
-    make_box("Lot_Treeline_W", (-13.6, 4.5, 2.2), (0.4, 12.0, 4.4), (0.13, 0.18, 0.13, 1.0))
+    # (2026-10-07: the windows are cut — a 4.4 m slab at 8 m filled them;
+    # a field past the lot and a low treeline far enough back for sky)
+    make_box("Lot_Field_W", (-23.95, 4.5, -0.03), (21.1, 40.0, 0.04), (0.36, 0.40, 0.26, 1.0))
+    make_box("Lot_Treeline_W", (-34.6, 4.5, 1.0), (0.6, 40.0, 2.0), (0.22, 0.28, 0.19, 1.0))
     # ── North strip (out the kitchen window): the lot corner Ben
     # catalogues + the same treeline running behind ──
     make_box("Lot_Asphalt_N", (-2.0, 11.0, -0.02), (8.0, 3.6, 0.04), (0.30, 0.30, 0.32, 1.0))
-    make_box("Lot_Treeline_N", (-2.0, 13.2, 2.2), (10.0, 0.4, 4.4), (0.13, 0.18, 0.13, 1.0))
+    make_box("Lot_Field_N", (-0.15, 22.0, -0.03), (26.5, 18.0, 0.04), (0.36, 0.40, 0.26, 1.0))
+    make_box("Lot_Treeline_N", (-2.0, 31.3, 1.0), (30.0, 0.6, 2.0), (0.22, 0.28, 0.19, 1.0))
     # ── South: the state-highway strip + the building across it ──
     make_box("Road_S", (0.0, -3.2, -0.02), (16.0, 3.0, 0.04), (0.26, 0.26, 0.28, 1.0))
     make_box("Road_S_Centerline", (0.0, -3.2, 0.005), (14.0, 0.10, 0.01), (0.85, 0.76, 0.30, 1.0))
@@ -460,6 +472,8 @@ def main():
     build_beyond_glass_2026_08()
     build_hero_props_2026_09()
     build_prints_2026_09()
+    # what is outside the window (2026-10-07, _props/views.py)
+    make_view("View_S", "S", 0.0, 0.0, kind="street", ground_z=0.0, seed=12)   # the road past the front lot
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/pit_stop_interior.glb"))
     print(f"\n[build_pit_stop_interior] exporting to {out}")

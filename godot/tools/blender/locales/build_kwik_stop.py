@@ -73,7 +73,7 @@ COL_CEILING_TILE    = (0.94, 0.92, 0.84, 1.0)
 COL_CEILING_GRID    = (0.58, 0.54, 0.46, 1.0)
 COL_CEILING_STAIN   = (0.72, 0.62, 0.42, 1.0)
 COL_GLASS           = (0.78, 0.84, 0.86, 0.45)
-COL_GLASS_WARM      = (0.96, 0.84, 0.62, 0.70)   # sunset-through-window
+COL_GLASS_WARM      = (0.96, 0.84, 0.62, 0.35)   # sunset-through-window (2026-10-07: 0.70 → 0.35, the walls are cut and the lot is meant to be SEEN)
 COL_METAL_STEEL     = (0.66, 0.68, 0.70, 1.0)
 COL_METAL_BLACK     = (0.18, 0.16, 0.14, 1.0)
 COL_BRAND_NAVY      = (0.18, 0.32, 0.50, 1.0)    # Harmony Creek Estates banner
@@ -262,10 +262,21 @@ def build_shell():
     make_box("Wall_N_Base", (0.0, 9.0 - (WALL_THICK/2.0 + 0.006), 0.08),
              (12.4, 0.012, 0.16), COL_WALL_BASEBOARD)
     # South wall — door at centre, brand-red panel either side
-    make_box("Wall_S_W", (-3.75, 0.0, CEIL_Z/2.0),
-             (4.50, WALL_THICK, CEIL_Z), COL_BRAND_RED)
-    make_box("Wall_S_E", (+3.75, 0.0, CEIL_Z/2.0),
-             (4.50, WALL_THICK, CEIL_Z), COL_BRAND_RED)
+    # (2026-10-07: these were solid boxes — the picture windows were
+    # panes on a red wall and the canopy, pumps and NexCorp across the
+    # intersection were never seen. Cut: two piers, a spandrel under
+    # the glass and a lintel over it, each side.)
+    for nm, wc, gx in (("Wall_S_W", -3.75, -3.50), ("Wall_S_E", +3.75, +3.50)):
+        x0, x1, g0, g1 = wc - 2.25, wc + 2.25, gx - 1.20, gx + 1.20
+        z0, z1 = 0.85, 2.25                     # the glass's sill and head
+        make_box(f"{nm}_Pier_0", ((x0 + g0) / 2.0, 0.0, CEIL_Z/2.0),
+                 (g0 - x0, WALL_THICK, CEIL_Z), COL_BRAND_RED)
+        make_box(f"{nm}_Pier_1", ((g1 + x1) / 2.0, 0.0, CEIL_Z/2.0),
+                 (x1 - g1, WALL_THICK, CEIL_Z), COL_BRAND_RED)
+        make_box(f"{nm}_Spandrel", (gx, 0.0, z0 / 2.0),
+                 (2.40, WALL_THICK, z0), COL_BRAND_RED)
+        make_box(f"{nm}_Lintel", (gx, 0.0, (z1 + CEIL_Z) / 2.0),
+                 (2.40, WALL_THICK, CEIL_Z - z1), COL_BRAND_RED)
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL_Z - 0.30),
              (3.20, WALL_THICK, 0.60), COL_BRAND_RED)
 
@@ -2757,7 +2768,7 @@ def build_paper_towel_dispenser():
 def build_outside_hose_reel():
     # Coiled water-hose reel mounted on the south wall outside,
     # west of the door. Concentric cylinders simulate the coil.
-    hx, hy = -4.20, -0.30   # (2026-09-22: the coil sat 8 cm into the wall, the bracket 3 cm off it)
+    hx, hy = -5.70, -0.30   # (2026-09-22: the coil sat 8 cm into the wall, the bracket 3 cm off it; 2026-10-07: onto the pier — x -4.2 is the cut window now)
     base_z = 1.20
     # Mount bracket, on the wall's outer face (y -0.10)
     make_box("HoseReel_Bracket", (hx, hy + 0.15, base_z),
@@ -2957,7 +2968,7 @@ def build_hero_props_2026_08():
     make_box("Decal_Lottery", (-4.1, 0.105, 1.62), (0.55, 0.01, 0.40), (0.90, 0.72, 0.24, 0.85))   # on the panel's inner face (2026-09-22: inside the wall)
     make_box("Decal_Cigs", (-3.4, 0.105, 1.45), (0.50, 0.01, 0.35), (0.70, 0.28, 0.24, 0.85))
     make_box("Decal_Burger", (-2.9, 0.105, 1.30), (0.45, 0.01, 0.45), (0.88, 0.62, 0.30, 0.9))
-    make_box("Decal_Burger_Sign", (-2.9, -0.035, 1.10), (0.30, 0.008, 0.12), (0.94, 0.90, 0.80, 0.9))
+    make_box("Decal_Burger_Sign", (-2.9, 0.112, 1.10), (0.30, 0.008, 0.12), (0.94, 0.90, 0.80, 0.9))
     make_box("Decal_Burger_Eye", (-2.98, 0.111, 1.40), (0.05, 0.008, 0.05), (0.14, 0.14, 0.15, 1.0))
     # Convex security mirror above the door, angled at the counter
     make_cyl("Convex_Mirror", (0.0, 0.30, 2.55), 0.28, 0.06, (0.62, 0.68, 0.72, 1.0), axis='Y', segments=14)

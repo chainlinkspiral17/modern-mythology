@@ -42,7 +42,7 @@ from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_chamfer_box, make_blob, make_cyl, make_lathe, make_tube, make_taper_cyl, make_rot_box, export_glb
 from _props.furniture import make_chair
 from _props.detail import make_traffic_wear, make_floor_stain, make_scuff_band, make_light_switch, make_wall_outlet, make_cord_run
-from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_case_shell
+from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_case_shell, make_wall_with_openings
 from _props.store_fixtures import make_counter, make_counter_bullnose, make_register
 from _props.shelving import make_snack_aisle, make_endcap
 from _props.food_service import make_coffee_pots
@@ -58,8 +58,9 @@ COUNTER_CX = -1.65   # draft 4 · the north counter runs x -2.70..-0.60
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
                palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
-    for nm, x, bb in [("Wall_W", -ROOM_W/2.0, +1), ("Wall_E", +ROOM_W/2.0, -1)]:
-        make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=bb)
+    # (2026-10-07) Wall_W out of the loop: its window is cut
+    make_wall_with_openings("Wall_W", (-ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(2.6, 1.50, 1.10, 1.10)])
+    make_wall("Wall_E", (+ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=-1)
     make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
     # Baseboards face INTO the room (+Y) on the south segments — the
     # default sign put them on the street side until draft 4.
@@ -313,7 +314,7 @@ def build_communal_table():
     make_box("Butter_Dish", (-0.28, 2.45, 0.80), (0.16, 0.10, 0.06), (0.90, 0.88, 0.80, 1.0))
     # The Hemlock window + sill + the chair beside it (W wall)
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
-    make_window("Win_W", (-2.90, 2.6, 1.50), width=1.10, height=1.10, axis='Y', room_dir=+1)
+    make_window("Win_W", (-2.90, 2.6, 1.50), width=1.10, height=1.10, axis='Y', room_dir=+1, see_through=True)
     make_box("Win_W_Sill", (-2.86, 2.6, 0.95), (0.26, 1.10, 0.06), wood)
     # (draft 4: a kit chair, back to the window, at y 2.75 — at 2.6 its
     # seat shared 0.1 m with the speed rack's frame)
