@@ -8,7 +8,8 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, export_glb
-from _props.structure import make_floor, make_wall, make_ceiling, make_window
+from _props.views import make_view
+from _props.structure import make_floor, make_wall, make_ceiling, make_window, make_wall_with_openings
 from _props.store_fixtures import make_register
 from _props.food_service import make_coffee_pots, make_donut_display, make_paper_cup_stack, make_sugar_creamer_caddy
 from _props.decor import make_floor_plant
@@ -29,16 +30,16 @@ def build_shell():
     for nm, x, bb in [("Wall_W", -ROOM_W/2.0, +1), ("Wall_E", +ROOM_W/2.0, -1)]:
         make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=bb)
     make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
-    make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
-    make_wall("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall_with_openings("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(-2.25, 1.60, 1.70, 1.40)])   # cut 2026-10-07: its window was a pane on a solid wall
+    make_wall_with_openings("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(2.25, 1.60, 1.70, 1.40)])   # cut 2026-10-07: its window was a pane on a solid wall
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
     # 2026-08 tail pass: FRONT WINDOWS in both S segments (street
     # light on the tables) + the BELL over the entry door.
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
-    make_window("Win_SW", (-2.25, 0.10, 1.60), width=1.70, height=1.40, room_dir=+1)
+    make_window("Win_SW", (-2.25, 0.10, 1.60), width=1.70, height=1.40, room_dir=+1, see_through=True)
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
-    make_window("Win_SE", (+2.25, 0.10, 1.60), width=1.70, height=1.40, room_dir=+1)
+    make_window("Win_SE", (+2.25, 0.10, 1.60), width=1.70, height=1.40, room_dir=+1, see_through=True)
     make_box("DoorBell_Arm", (0.55, 0.16, 2.28), (0.03, 0.14, 0.03), COL_STEEL)
     make_cyl("DoorBell", (0.55, 0.26, 2.22), 0.05, 0.07, (0.82, 0.72, 0.42, 1.0), segments=10)
     # BACK DOOR in the N wall's E end (to the alley), mostly closed.
@@ -236,6 +237,8 @@ def main():
     build_decor()
     build_ceiling_infra()
     build_hero_props_2026_09()
+    # what is outside the window (2026-10-07, _props/views.py)
+    make_view("View_S", "S", 0.0, 0.0, kind="street", ground_z=0.0, seed=3)
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/daily_grind_interior.glb"))
     print(f"\n[build_daily_grind_interior] exporting to {out}")

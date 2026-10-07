@@ -228,6 +228,17 @@ through them in order.
 
 ## Recent lessons
 
+### 2026-10-07 · scene_default must not carry a sky: a missing key means "keep the scene's"
+
+- MoodCycler's LIGHTING_PRESETS[0] "scene_default" carried a hard-coded
+  NIGHT sky_top / sky_horizon / fog_color. F11 back to it, or stepping
+  out of lightshow_extreme, wrote those onto the scene's own
+  ProceduralSkyMaterial: every authored day sky went night. The fix is
+  the ambient pattern already there (energy -1 = keep base): the sky
+  and fog base are captured in _collect_lights, and a preset without
+  sky_* / fog_color keys resolves to them. A "default" preset holds
+  NO values — only sentinels.
+
 ### 2026-10-06 · skies through windows: geometry out past the fog reads black; the fog tints the sky
 
 - The dock's dawn was band geometry 520 m out — lit only by ambient

@@ -23,9 +23,10 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, make_tube, export_glb
+from _props.views import make_view
 from _props.structure import make_case_shell
 from _props.structure import (make_floor, make_wall, make_ceiling,
-                              make_crown_molding, make_window)
+                              make_crown_molding, make_window, make_wall_with_openings)
 from _props.detail import (make_floor_stain, make_light_switch, make_threshold, make_traffic_wear, make_wall_outlet, make_wall_tint_band)
 
 ROOM_W = 4.6      # x ∈ [-2.3, 2.3]
@@ -71,8 +72,8 @@ def build_shell():
     for nm, x, bb in [("Wall_W", -ROOM_W / 2.0, +1), ("Wall_E", +ROOM_W / 2.0, -1)]:
         make_wall(nm, (x, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL,
                   axis='Y', palette=pal, baseboard_face_sign=bb)
-    make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W + 0.4, height=CEIL,
-              axis='X', palette=pal, baseboard_face_sign=-1)
+    make_wall_with_openings("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W + 0.4, height=CEIL,   # cut 2026-10-07: its window was a pane on a solid wall
+              axis='X', palette=pal, baseboard_face_sign=-1, openings=[(0.0, 1.55, 1.60, 1.30)])
     make_wall("Wall_S_W", (-(ROOM_W / 4.0 + 0.5), 0.0, 0),
               length=ROOM_W / 2.0 - 1.0, height=CEIL, axis='X', palette=pal, baseboard_face_sign=+1)
     make_wall("Wall_S_E", (+(ROOM_W / 4.0 + 0.5), 0.0, 0),
@@ -95,7 +96,7 @@ def build_shell():
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
     make_window("Window_N", (0.0, ROOM_D - 0.10, 1.55), width=1.60, height=1.30,
                 cross_mullion=True,
-                palette={"glass": COL_RAINGLASS, "warm": (0.42, 0.48, 0.54, 0.5)})
+                palette={"glass": COL_RAINGLASS, "warm": (0.42, 0.48, 0.54, 0.5)}, see_through=True)
 
 
 def build_desk():
@@ -280,6 +281,8 @@ def main():
     build_wall_dressing()
     build_detail_pass_2026_08()
     build_hero_props_2026_09()
+    # what is outside the window (2026-10-07, _props/views.py)
+    make_view("View_N", "N", ROOM_D, 0.0, kind="back", ground_z=0.0, seed=1)   # the subdivision back yard in the rain
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/miller_office.glb"))
     print(f"\n[build_miller_office] exporting to {out}")

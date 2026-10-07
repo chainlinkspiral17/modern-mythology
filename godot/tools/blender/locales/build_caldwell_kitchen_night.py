@@ -5,7 +5,8 @@ if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.furniture import make_table, make_chair
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, export_glb
-from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
+from _props.views import make_view
+from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_wall_with_openings
 from _props.store_fixtures import make_counter, make_counter_bullnose, make_register
 from _props.shelving import make_snack_aisle, make_endcap
 from _props.food_service import make_coffee_pots
@@ -26,7 +27,7 @@ def build_shell():
                palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
     for nm, x, bb in [("Wall_W", -ROOM_W/2.0, +1), ("Wall_E", +ROOM_W/2.0, -1)]:
         make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=bb)
-    make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
+    make_wall_with_openings("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=-1, openings=[(-1.5, 1.52, 1.20, 1.00)])   # cut 2026-10-07: its window was a pane on a solid wall
     make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
     make_wall("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
@@ -87,7 +88,7 @@ def build_hero_props():
     """2026-08-03 tail pass: the night window Maya pauses at (the
     dogs), the water glass, the stair mouth, burners + oven face on
     the blank stove."""
-    make_window("Window_N", (-1.5, ROOM_D-0.10, 1.52), width=1.20, height=1.00)
+    make_window("Window_N", (-1.5, ROOM_D-0.10, 1.52), width=1.20, height=1.00, see_through=True)
     make_cyl("Water_Glass", (-1.55, 4.1500, 1.02), 0.035, 0.12, (0.55, 0.62, 0.66, 0.5), segments=8)
     make_box("Stair_Newel", (0.92, 0.15, 0.60), (0.10, 0.10, 1.20), (0.46, 0.34, 0.22, 1.0))
     for s in range(3):
@@ -137,6 +138,8 @@ def main():
     build_ceiling_infra()
     build_hero_props()
     build_detail_pass_2026_08()
+    # what is outside the window (2026-10-07, _props/views.py)
+    make_view("View_N", "N", ROOM_D, -1.5, kind="back", ground_z=0.0, seed=9)
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/caldwell_kitchen_night.glb"))
     print(f"\n[build_caldwell_kitchen_night] exporting to {out}")

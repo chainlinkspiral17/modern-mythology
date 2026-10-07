@@ -35,7 +35,7 @@ if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_chamfer_box, make_cyl, make_lathe, make_tube, export_glb
 from _props.detail import make_traffic_wear, make_floor_stain, make_scuff_band, make_light_switch, make_wall_outlet
-from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_case_shell
+from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_case_shell, make_wall_with_openings
 from _props.food_service import make_coffee_pots
 from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster, make_calendar
 from _props.safety import make_smoke_detector, make_hvac_vent, make_fluorescent_tube_fixture
@@ -73,8 +73,8 @@ def build_shell():
               palette=PAL_WALL, baseboard_face_sign=-1)
     make_box("Wall_N_AboveDoor", (0.0, ROOM_D, CEIL-0.30), (1.2, 0.20, 0.60), PAL_WALL["wall"])
     # S front wall — two solid segments flanking the entrance
-    make_wall("Wall_S_W", (-2.25, 0.0, 0), length=2.5, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
-    make_wall("Wall_S_E", (+2.25, 0.0, 0), length=2.5, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall_with_openings("Wall_S_W", (-2.25, 0.0, 0), length=2.5, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(-2.25, 1.55, 2.00, 1.30)])   # cut 2026-10-07: its window was a pane on a solid wall
+    make_wall_with_openings("Wall_S_E", (+2.25, 0.0, 0), length=2.5, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(2.25, 1.55, 2.00, 1.30)])   # cut 2026-10-07: its window was a pane on a solid wall
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
     for nm, ax, length, wx, wy in [("Crown_W", 'Y', ROOM_D, -ROOM_W/2.0+0.10, ROOM_D/2.0),
@@ -193,9 +193,9 @@ def build_window_booths():
         make_cyl(f"Booth_{bi}_Mug", (bx - 0.10, 0.85, 0.80), 0.04, 0.09, COL_MUG, segments=8)
     # Two front windows on the S wall segments
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
-    make_window("Window_W", (-2.25, 0.10, 1.55), width=2.0, height=1.30, room_dir=+1)
+    make_window("Window_W", (-2.25, 0.10, 1.55), width=2.0, height=1.30, room_dir=+1, see_through=True)
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
-    make_window("Window_E", (+2.25, 0.10, 1.55), width=2.0, height=1.30, room_dir=+1)
+    make_window("Window_E", (+2.25, 0.10, 1.55), width=2.0, height=1.30, room_dir=+1, see_through=True)
 
 
 def build_jukebox():
@@ -284,7 +284,16 @@ def build_exterior():
     make_lathe("Lamppost_Pole", (5.8, -4.0, 0.0), [(0.16, 0.0), (0.16, 0.05), (0.09, 0.10), (0.07, 5.0), (0.0, 5.0)], (0.30, 0.30, 0.32, 1.0), segments=8)
     make_tube("Lamppost_Arm", [(5.8, -4.0, 4.9), (5.8, -4.6, 5.0), (5.8, -5.3, 4.95)], 0.04, (0.30, 0.30, 0.32, 1.0), segments=6)
     make_box("Lamppost_Head", (5.8, -5.5, 4.88), (0.24, 0.62, 0.14), (0.44, 0.46, 0.50, 1.0))
-    make_box("Treeline_S", (0.0, -12.0, 2.6), (30.0, 0.6, 5.2), (0.10, 0.14, 0.10, 1.0))
+    # (2026-10-07: the windows are cut — the flat 5.2 m slab read as a
+    # black wall through them; a low understory and a row of crowns)
+    # a field past the road, then the treeline far enough back that the
+    # sky shows over it from the booths
+    make_box("Field_S", (0.0, -22.0, -0.03), (60.0, 25.0, 0.04), (0.36, 0.40, 0.26, 1.0))
+    make_box("Treeline_S", (0.0, -34.0, 0.8), (60.0, 0.6, 1.6), (0.24, 0.30, 0.20, 1.0))
+    for ti in range(13):
+        tx = -27.0 + ti * 4.5 + (0.8 if ti % 2 else -0.6)
+        ch = 1.4 + (ti * 37 % 5) * 0.25   # crowns rest on the understory
+        make_cyl(f"Treeline_Crown_{ti}", (tx, -34.0, 1.5 + ch / 2.0), 1.8 + (ti % 3) * 0.4, ch, (0.22 + (ti % 3) * 0.03, 0.30, 0.20, 1.0), segments=8)
 
 
 def build_draft3_2026_09():

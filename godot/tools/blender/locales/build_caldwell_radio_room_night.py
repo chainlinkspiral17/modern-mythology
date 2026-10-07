@@ -13,8 +13,9 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.views import make_view
 from _props.structure import (make_floor, make_wall, make_ceiling,
-                              make_crown_molding, make_window)
+                              make_crown_molding, make_window, make_wall_with_openings)
 from _props.food_service import make_coffee_pots
 from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster, make_calendar
 from _props.safety import make_smoke_detector, make_hvac_vent, make_fluorescent_tube_fixture
@@ -42,8 +43,8 @@ def build_shell():
               palette=PAL_WALL, baseboard_face_sign=-1)
     make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL,
               axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
-    make_wall("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL,
-              axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall_with_openings("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL,   # cut 2026-10-07: its window was a pane on a solid wall
+              axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(1.55, 1.55, 1.00, 0.90)])
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4, with_grid=False)
     for nm, ax, length, wx, wy in [("Crown_W", 'Y', ROOM_D, -ROOM_W/2.0+0.10, ROOM_D/2.0),
@@ -244,7 +245,7 @@ def build_window():
     make_window("WindowS", (+1.55, 0.10, 1.55), width=1.00, height=0.90,
                 palette={"glass": (0.10, 0.12, 0.18, 0.7),
                          "warm": (0.24, 0.20, 0.16, 0.5),
-                         "frame": COL_WOOD_DK}, room_dir=+1)
+                         "frame": COL_WOOD_DK}, room_dir=+1, see_through=True)
 
 
 def build_ceiling_infra():
@@ -275,6 +276,8 @@ def main():
     build_window()
     build_ceiling_infra()
     build_decor()
+    # what is outside the window (2026-10-07, _props/views.py)
+    make_view("View_S", "S", 0.0, 1.55, kind="back", ground_z=0.0, seed=10)
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/caldwell_radio_room_night.glb"))
     print(f"\n[build_caldwell_radio_room_night] exporting to {out}")

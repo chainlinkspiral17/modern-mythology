@@ -1026,9 +1026,11 @@ const LIGHTING_PRESETS: Array = [
 	{"name": "scene_default", "dir_mult": 1.0, "practical_mult": 1.0,
 	"dir_tint": Color.WHITE, "tint_mix": 0.0,
 	"sun_pitch_deg": NAN, "sun_yaw_deg": NAN,
-	"ambient_color": Color.WHITE, "ambient_energy": -1.0,
-	"sky_top": Color(0.04, 0.05, 0.10, 1), "sky_horizon": Color(0.10, 0.12, 0.18, 1),
-	"sky_energy": 1.0, "fog_color": Color(0.05, 0.06, 0.08, 1)},
+	"ambient_color": Color.WHITE, "ambient_energy": -1.0},
+	# (2026-10-07: scene_default carried a hard-coded NIGHT sky + fog
+	# tint — F11 back to it, or stepping out of lightshow_extreme, turned
+	# every authored ProceduralSky night. No sky_* / fog_color keys =
+	# keep the scene's own.)
 	{"name": "midday",        "dir_mult": 14.0, "practical_mult": 0.0,
 	"dir_tint": Color(1.0, 0.97, 0.92, 1), "tint_mix": 0.95,
 	"sun_pitch_deg": -78.0, "sun_yaw_deg": 18.0,
@@ -1330,6 +1332,10 @@ var _world_env: WorldEnvironment = null
 var _world_env_base_energy: float = 0.50
 var _world_env_base_color: Color = Color.WHITE
 var _sky_material: ProceduralSkyMaterial = null
+var _sky_base_top: Color = Color(0.04, 0.05, 0.10, 1)
+var _sky_base_horizon: Color = Color(0.10, 0.12, 0.18, 1)
+var _sky_base_energy: float = 1.0
+var _fog_base_color: Color = Color(0.05, 0.06, 0.08, 1)
 
 # ── LIGHTING TRANSITION STATE ─────────────────────────────────────
 # Natural day → night transitions: when the user cycles F11 or
@@ -1563,9 +1569,13 @@ func _collect_lights(node: Node) -> void:
 		if _world_env.environment:
 			_world_env_base_energy = _world_env.environment.ambient_light_energy
 			_world_env_base_color = _world_env.environment.ambient_light_color
+			_fog_base_color = _world_env.environment.fog_light_color
 			var sky: Sky = _world_env.environment.sky
 			if sky and sky.sky_material is ProceduralSkyMaterial:
 				_sky_material = sky.sky_material as ProceduralSkyMaterial
+				_sky_base_top = _sky_material.sky_top_color
+				_sky_base_horizon = _sky_material.sky_horizon_color
+				_sky_base_energy = _sky_material.sky_energy_multiplier
 	for child in node.get_children():
 		_collect_lights(child)
 
@@ -1734,19 +1744,22 @@ func _apply_lighting_blended(src: Dictionary, dst: Dictionary, t: float) -> void
 		_world_env.environment.ambient_light_energy = lerp(amb_e_src, amb_e_dst, ts)
 		_world_env.environment.ambient_light_color = amb_c_src.lerp(amb_c_dst, ts)
 		# Fog tint follows the sky horizon so haze reads consistently.
-		if src.has("fog_color") and dst.has("fog_color"):
-			_world_env.environment.fog_light_color = (
-				(src["fog_color"] as Color).lerp(dst["fog_color"], ts)
-			)
-	# Sky cross-fade: ProceduralSkyMaterial colours + energy.
-	if _sky_material and src.has("sky_top") and dst.has("sky_top"):
-		_sky_material.sky_top_color = (src["sky_top"] as Color).lerp(dst["sky_top"], ts)
-		_sky_material.sky_horizon_color = (
-			(src["sky_horizon"] as Color).lerp(dst["sky_horizon"], ts)
-		)
-		_sky_material.sky_energy_multiplier = lerp(
-			float(src["sky_energy"]), float(dst["sky_energy"]), ts
-		)
+		# A preset without fog_color (scene_default) keeps the scene's.
+		var fog_src: Color = src.get("fog_color", _fog_base_color)
+		var fog_dst: Color = dst.get("fog_color", _fog_base_color)
+		_world_env.environment.fog_light_color = fog_src.lerp(fog_dst, ts)
+	# Sky cross-fade: ProceduralSkyMaterial colours + energy. A preset
+	# without sky_* keys (scene_default) keeps the scene's authored sky.
+	if _sky_material:
+		var top_src: Color = src.get("sky_top", _sky_base_top)
+		var top_dst: Color = dst.get("sky_top", _sky_base_top)
+		var hor_src: Color = src.get("sky_horizon", _sky_base_horizon)
+		var hor_dst: Color = dst.get("sky_horizon", _sky_base_horizon)
+		var en_src: float = float(src.get("sky_energy", _sky_base_energy))
+		var en_dst: float = float(dst.get("sky_energy", _sky_base_energy))
+		_sky_material.sky_top_color = top_src.lerp(top_dst, ts)
+		_sky_material.sky_horizon_color = hor_src.lerp(hor_dst, ts)
+		_sky_material.sky_energy_multiplier = lerp(en_src, en_dst, ts)
 
 
 func _unhandled_input(event: InputEvent) -> void:

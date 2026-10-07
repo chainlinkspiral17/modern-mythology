@@ -84,6 +84,22 @@ henderson) got there by accumulating exactly these layers.
 
 ## Recent lessons
 
+### 2026-10-07 · a cut window frames a few degrees: size the outside from the marker, not the plan
+
+- From a booth marker 5 m back at eye height, a 1.3 m window spans
+  about −9° to +6°. The Missing Link's 5.2 m treeline at 14 m filled
+  ALL of it: rays out of the cut glass hit trees in ambient light,
+  and the window read black even with a day sky behind. Put the far
+  band where its top sits below the window's upper sightline (here a
+  field and a 3 m treeline at 34 m): the top third of the pane is sky.
+  Check by raycasting from the marker through the pane (bpy
+  scene.ray_cast after running the builder in-process) before
+  rendering.
+- A window can only be cut once you have checked what the builder
+  already puts outside: four of batch 2's rooms (cosmic comics, Finn,
+  the Missing Link, the Salty Tome) had a D5 outside behind a SOLID
+  wall. Cut the wall and keep theirs; don't add a second view.
+
 ### 2026-10-07 · stock reads by PACKAGING; a kit defect is fixed in the kit
 
 - Solid saturated blocks on a shelf read as toys at any count. A shelf

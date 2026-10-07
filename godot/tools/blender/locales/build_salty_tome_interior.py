@@ -14,7 +14,7 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, make_tube, export_glb
-from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
+from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_wall_with_openings
 from _props.store_fixtures import make_counter, make_register
 from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster, make_calendar
 from _props.safety import make_smoke_detector, make_hvac_vent
@@ -104,7 +104,7 @@ def build_shell():
     make_wall("Wall_N_E", (3.8, ROOM_D, 0), length=0.8, height=CEIL, axis='X',
               palette=PAL_WALL, baseboard_face_sign=-1)
     make_box("Wall_N_AboveDoor", (2.9, ROOM_D, CEIL-0.30), (1.0, 0.20, 0.60), PAL_WALL["wall"])
-    make_wall("Wall_S_W", (-2.5, 0.0, 0), length=3.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall_with_openings("Wall_S_W", (-2.5, 0.0, 0), length=3.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(-2.5, 1.55, 2.40, 1.30)])   # cut 2026-10-07: its window was a pane on a solid wall
     make_wall("Wall_S_E", (+2.5, 0.0, 0), length=3.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
@@ -239,7 +239,7 @@ def build_decor():
                      palette={"leaf": (0.36, 0.46, 0.32, 1.0)})
     # Front window on the S-W wall segment
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
-    make_window("Window_Front", (-2.5, 0.10, 1.55), width=2.4, height=1.30, room_dir=+1)
+    make_window("Window_Front", (-2.5, 0.10, 1.55), width=2.4, height=1.30, room_dir=+1, see_through=True)
 
 
 def build_back_annex_2026_08():

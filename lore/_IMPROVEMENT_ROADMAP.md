@@ -3500,6 +3500,25 @@ caldwell_kitchen_night, daily_grind, cosmic_comics_interior,
 missing_link, salty_tome, caldwell_radio_room; then the loop-built ones
 (pit_stop_interior, chillwave, lena_apartment, ember_ash_office).
 
+**2026-10-07 · WINDOWS, batch 2 (ten rooms) + a sky bug.** Cut:
+kai_apartment (a side yard, upstairs), finn_apartment (its D5 treeline
+now SEEN), miller_office (the back yard in the rain, the neighbour's
+house), hospital_room (the street three storeys down),
+caldwell_kitchen_night (the back yard, night sky), daily_grind (the
+street through both front windows), cosmic_comics, the Missing Link
+and the Salty Tome (their D5 streets now seen through the cut glass),
+caldwell_radio_room_night (the back yard). Skies by mood (day, dusk,
+rain, night). The Missing Link's treeline slab read black through the
+cut panes: a field and a low treeline at 34 m now, sky over them.
+MoodCycler: scene_default no longer overwrites the scene's sky/fog
+with a night one (F11 / leaving lightshow_extreme). Deck must REBUILD
+those ten. Draft N+1: the loop-built windows (pit_stop_interior,
+chillwave, lena_apartment W, ember_ash_office E, board_lords,
+hans_bakery_back_kitchen); window markers for kai, hospital, the
+Caldwell rooms and Daily Grind (none look out yet); exterior key light
+for the outsides (lit by ambient only, they read dim against the
+interior practicals).
+
 NEXT (queued): Bianca's kitchen is the Miller kitchen again —
 `bianca_kitchen_morning` (ch 22 / 23) and `miller_kitchen` are one room
 on Meadowlark Circle (the cul-de-sac through the window, the green robe
