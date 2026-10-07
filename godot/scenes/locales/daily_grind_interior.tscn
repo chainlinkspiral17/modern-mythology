@@ -372,3 +372,9 @@ metadata/fov = 45.0
 position = Vector3(-0.119, 1.612, -4.879)
 rotation = Vector3(-0.2618, 2.8798, 0.0)
 metadata/fov = 45.0
+; (2026-10-07) out the front glass: the street
+[node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.600, 1.500, -1.900)
+rotation = Vector3(-0.0377, 3.0157, 0.0)
+metadata/fov = 52.0
+

@@ -2465,6 +2465,10 @@
     {
      "name": "shot_insert_tower",
      "type": "insert"
+    },
+    {
+     "name": "shot_insert_window",
+     "type": "insert"
     }
    ],
    "scene_missing": false
@@ -3177,6 +3181,10 @@
     {
      "name": "shot_insert_table",
      "type": "insert"
+    },
+    {
+     "name": "shot_insert_window",
+     "type": "insert"
     }
    ],
    "scene_missing": false
@@ -3201,6 +3209,10 @@
     },
     {
      "name": "shot_insert_radio",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_window",
      "type": "insert"
     }
    ],
@@ -6024,6 +6036,10 @@
     {
      "name": "shot_insert_hands",
      "type": "insert"
+    },
+    {
+     "name": "shot_insert_window",
+     "type": "insert"
     }
    ],
    "scene_missing": false
@@ -6052,6 +6068,10 @@
     },
     {
      "name": "shot_insert_hands",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_window",
      "type": "insert"
     }
    ],
@@ -6088,6 +6108,10 @@
     },
     {
      "name": "shot_insert_kitchen",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_window",
      "type": "insert"
     }
    ],
@@ -7311,5 +7335,5 @@
   "tired",
   "nervous"
  ],
- "frames": 1644
+ "frames": 1650
 }

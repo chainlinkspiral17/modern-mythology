@@ -345,6 +345,12 @@ position = Vector3(-1.718, 1.612, -3.622)
 rotation = Vector3(-0.2618, -2.3562, 0.0)
 metadata/fov = 45.0
 
+; (2026-10-07) out through the cut N window: the side yard, the neighbour's wall
+[node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.350, 1.550, -3.300)
+rotation = Vector3(-0.0612, 0.0613, 0.0)
+metadata/fov = 52.0
+
 ; practicals authored by practical_author.py (2026-09-11):
 ; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
 [node name="Lamp_Head_Practical" type="OmniLight3D" parent="."]

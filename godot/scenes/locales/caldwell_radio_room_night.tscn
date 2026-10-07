@@ -360,6 +360,12 @@ position = Vector3(-0.752, 1.612, -4.479)
 rotation = Vector3(-0.2618, -2.6180, 0.0)
 metadata/fov = 45.0
 
+; (2026-10-07) out the radio room's window: the back yard, the dark
+[node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.300, 1.550, -1.900)
+rotation = Vector3(-0.0569, -3.1100, 0.0)
+metadata/fov = 52.0
+
 ; practicals authored by practical_author.py (2026-09-11):
 ; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
 [node name="Fluor_0_Tube_Practical" type="OmniLight3D" parent="."]

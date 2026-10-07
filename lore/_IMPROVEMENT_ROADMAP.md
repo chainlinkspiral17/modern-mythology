@@ -3541,6 +3541,24 @@ burger decal's sign onto the glass; shot_insert_window ("the south
 glass, the lot beyond") re-aimed out of the tables and through it.
 Deck must REBUILD kwik_stop and pit_stop_interior.
 
+**2026-10-07 · window inserts.** shot_insert_window added where no
+shot looked out (sightline raycast-checked through the pane before
+writing, the window's own mullions ignored): kai_apartment (the side
+yard), hospital_room (moved off the vitals monitor: the street below),
+caldwell_kitchen_night (over the sink, the back yard at night),
+caldwell_radio_room_night (the yard; its open S door now shows the
+yard too — a booth with an outside door), daily_grind_interior (the
+street, the facades across, a parked car). Scene-only; no rebuild.
+
+**2026-10-07 · scale checks (BUILD BIG, measured before enlarging).**
+The Kwik Stop against its six chapters: one counter girl, "the back
+cooler hums against the far wall", "the table by the window", the Gas &
+Go "across the intersection" seen from it — a small store; 12 x 9 m
+stands (a 30 m Centro this is not). The vol 6 bedrooms measure 4.0-4.8
+x 4.5-5.6 m — larger than real rooms already; what read claustrophobic
+was the SEALED windows, cut this pass. Next by the rule: the
+Henderson and Kowalski kitchens onto `_props/kitchen_kit.py`.
+
 NEXT (queued): Bianca's kitchen is the Miller kitchen again —
 `bianca_kitchen_morning` (ch 22 / 23) and `miller_kitchen` are one room
 on Meadowlark Circle (the cul-de-sac through the window, the green robe

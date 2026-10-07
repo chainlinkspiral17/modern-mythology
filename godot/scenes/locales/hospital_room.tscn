@@ -355,3 +355,9 @@ metadata/fov = 45.0
 position = Vector3(0.958, 1.612, -4.126)
 rotation = Vector3(-0.2618, 2.6180, 0.0)
 metadata/fov = 45.0
+; (2026-10-07) out and down through the cut window: the street three storeys below
+[node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.000, 1.600, -3.300)
+rotation = Vector3(-0.2379, 0.0653, 0.0)
+metadata/fov = 52.0
+
