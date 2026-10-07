@@ -17,7 +17,7 @@ GLINT = (0.82, 0.88, 0.92, 1.0)
 def make_cooler_door(prefix, anchor, *,
                      shelves=5, cans_per_shelf=6, sixpacks_per_shelf=5,
                      palette=None, include_six_packs=True,
-                     include_cans=True):
+                     include_cans=True, stock="beverage", seed=0):
     """A single glass-front beverage cooler door, wall-recessed.
     anchor=(door_center_x, wall_y, door_center_z).
     Caller chains multiple doors along a wall."""
@@ -73,6 +73,16 @@ def make_cooler_door(prefix, anchor, *,
         make_box(f"{prefix}_Shelf_{sh}",
                  (cx, wall_y + 0.30, shz),
                  (1.26, 0.36, 0.02), steel)
+        if stock == "dairy":
+            # the merch grammar's dairy plan (2026-10-07): sections across
+            # the shelf, the product's face at the shelf's front edge
+            from . import merch as M
+            row = M.PLANS["dairy"][sh % len(M.PLANS["dairy"])]
+            w = 1.20 / len(row)
+            for si, kind in enumerate(row):
+                M.merch_section(f"{prefix}_Stock_{sh}_{si}", kind, cx - 0.60 + si * w, wall_y + 0.12, -1,
+                                shz + 0.01, seed + sh * 3 + si, width=w)
+            continue
         if include_six_packs:
             for b in range(sixpacks_per_shelf):
                 bx = cx - 0.48 + b * 0.24

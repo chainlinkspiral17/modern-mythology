@@ -3559,6 +3559,73 @@ x 4.5-5.6 m — larger than real rooms already; what read claustrophobic
 was the SEALED windows, cut this pass. Next by the rule: the
 Henderson and Kowalski kitchens onto `_props/kitchen_kit.py`.
 
+**2026-10-07 · THE HENDERSON KITCHEN ON THE KIT (draft N).** It was a
+store counter (`make_counter`) and a chamfered box for a stove. From
+the prose: "He stands at the kitchen sink for a long minute ...
+Through the open window, the cicadas are loud" (ch14, ch20) — the sink
+faced a SOLID N wall. Now: the N wall cut over the sink, the window
+open (frame only), the back yard past it (`make_view` back); a base
+run wall to wall on the N face in the Hendersons' oak and gold formica
+with brass pulls, almond subway tile, the kit sink under the window, a
+dishwasher, the kit range (its own oven face — the pot roast's "on
+warm"), uppers either side of the window and clear of the clock; "the
+kettle his mother uses and his father does not" on the back burner.
+The cream fridge with its magnets stays. `kitchen_kit` gains `rail=`
+(the door rails were hard-coded white shaker: cream stripes on oak).
+shot_insert_coffee re-aimed onto the pot; shot_insert_window added (the
+sink window, ch20's cicadas). Deck must REBUILD henderson_kitchen (and
+miller_kitchen, unchanged in look). Draft N+1: the porch build's
+lit-window match on the S side; wear on the formica at the sink; the
+basement stair void deeper than a 2 cm card.
+
+**2026-10-07 · WINDOWS, batch 4 (the gate's own list).** window_backing_audit
+was blind to every make_wall (no install_stubs); fixed, it found 17 more
+panes on solid walls and, with its new frame-board test, 20 windows
+whose "frame" was one solid board over the opening. All cut / ringed
+(`structure.make_frame_ring`): Ben's room (the back yard a floor down),
+the cabin (both S windows, both E — its Sitka and station wagon now
+seen), Coach K's (the side yard past the curtain), Cosmic Comics (the
+street), the courthouse (sky and the square behind the bench), El
+Rancho's drive-thru (the lane), Faust's (the street two floors down),
+Finn's S window, Kowalski's E window (its neighbour's yard), the
+fueling station's storefront (the pumps), the pharmacy (the street),
+Wagner's (the back yard at dusk), Asylum Ward C's bays (the grounds),
+the bayou lighthouse, Cafe Olimpico's back corner, the hospice
+(the garden), the New Orleans apartment (the gallery), the Roberts
+kitchen E, Simon's (the fire escape), the drive-in (the screen and
+the moon). Skies added by mood. Exteriors keep their dark boards
+(bar_exterior, kowalski_backyard: the unlit room the street sees).
+The gate now reads 0 across 122 builders. Deck must REBUILD all of
+those listed plus henderson_kitchen and miller_kitchen.
+
+**2026-10-07 · THE KOWALSKI KITCHEN ON THE KIT.** A store counter and a
+chamfered-box stove, and the upper cabinets ran ACROSS the sink window
+(cut in batch 1) — the yard Gracie's dad yells about the weeds in was
+half behind a cabinet. Now the kit run in honey maple and butcher-block
+laminate with pewter pulls and biscuit tile, the sink under the window,
+the range where Bill cooks the eggs, uppers either side of the window
+("hot sauce is in the cabinet to the left of the stove": Upper_Mid),
+and the under-cabinet light Anita sits by under Upper_Mid — its
+practical moved with it. The courthouse seal sat in the wall the
+window cut opened; seated on its mount. Deck must REBUILD
+kowalski_kitchen and courthouse_chamber. Draft N+1: the upper doors
+with one ajar (draft 5's target), the dish rack's dishes. DONE IN THE
+SAME PASS: the hot sauce cabinet (the last upper left of the stove) is
+open — a shell, its shelf, the red bottle and its neighbours, the door
+swung 70 degrees — and shot_insert_hotsauce frames it from the stove
+side (it pointed up into the old solid box's underside).
+
+**2026-10-07 · THE DAIRY CASE HOLDS DAIRY (centro_grocery_aisle).** The
+twelve-door cooler was the beverage kit — beer six-packs and soda cans
+under a DAIRY sign. The merch grammar gains the dairy kinds (gallon
+jugs with the cap colour code, gable-top half-gallons, egg cartons,
+butter, yogurt cups with foils, shredded-cheese bags) and a "dairy"
+plan; `make_cooler_door(stock="dairy")` faces them shelf by shelf under
+the `_Stock_` tag so join_stock merges them. Deck must REBUILD
+centro_grocery_aisle (an 11-minute build here). Draft N+1: the
+manager's office window over the front; the meat case's cuts by the
+same grammar; shelf talkers.
+
 NEXT (queued): Bianca's kitchen is the Miller kitchen again —
 `bianca_kitchen_morning` (ch 22 / 23) and `miller_kitchen` are one room
 on Meadowlark Circle (the cul-de-sac through the window, the green robe

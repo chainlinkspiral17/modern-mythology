@@ -1618,6 +1618,10 @@
     {
      "name": "shot_insert_table",
      "type": "insert"
+    },
+    {
+     "name": "shot_insert_window",
+     "type": "insert"
     }
    ],
    "scene_missing": false
@@ -7335,5 +7339,5 @@
   "tired",
   "nervous"
  ],
- "frames": 1650
+ "frames": 1651
 }

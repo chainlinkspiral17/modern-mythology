@@ -25,7 +25,6 @@ from _props import palette as P
 from _props.geometry import (clear_scene, make_box, make_chamfer_box, make_cyl, make_lathe,
                              make_tube, make_rot_box, export_glb)
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_wall_with_openings
-from _props.store_fixtures import make_counter, make_counter_bullnose, make_register
 from _props.shelving import make_snack_aisle, make_endcap
 from _props.food_service import make_coffee_pots, make_donut_display
 from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster, make_calendar
@@ -36,13 +35,26 @@ ROOM_W = 6.0; ROOM_D = 5.0; CEIL = 2.6
 PAL_WALL = {"wall": (0.92, 0.86, 0.74, 1.0), "baseboard": (0.42, 0.32, 0.22, 1.0)}
 COL_FLOOR = (0.74, 0.58, 0.38, 1.0); COL_SEAM = (0.42, 0.30, 0.18, 1.0); COL_WOOD = (0.46, 0.34, 0.22, 1.0)
 COL_ACCENT = (0.62, 0.42, 0.22, 1.0)
+# the kitchen on the kit (2026-10-07): the Kowalskis' honey maple and
+# butcher-block laminate; the counter stays at the 0.92 every dressing
+# prop already stands on
+from _props import kitchen_kit as K
+Y_BACK = ROOM_D - 0.10
+TOP_Z = 0.92
+SINK_X, RANGE_X = -ROOM_W/4.0, ROOM_W/4.0
+HOT_X0 = RANGE_X - 0.42 - 0.46        # the hot sauce cabinet's left edge
+MAPLE = (0.58, 0.44, 0.28, 1.0); MAPLE_DK = (0.46, 0.34, 0.22, 1.0)
+BLOCK = (0.66, 0.50, 0.32, 1.0); BLOCK_EDGE = (0.50, 0.36, 0.22, 1.0)
+PEWTER = (0.48, 0.48, 0.46, 1.0); BISCUIT = (0.90, 0.84, 0.72, 1.0)
+
+from _props.structure import make_frame_ring   # (2026-10-07: the frame boards → rings)
 
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
                palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
-    for nm, x, bb in [("Wall_W", -ROOM_W/2.0, +1), ("Wall_E", +ROOM_W/2.0, -1)]:
-        make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y',
-                  palette=PAL_WALL, baseboard_face_sign=bb)
+    # (2026-10-07, window_backing_audit) the loop unrolled: Wall_E is cut
+    make_wall("Wall_W", (-ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall_with_openings("Wall_E", (+ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=-1, openings=[(3.000, 1.550, 1.500, 1.100)])
     make_wall_with_openings("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X',
               palette=PAL_WALL, baseboard_face_sign=-1, openings=[(-1.5, 1.52, 1.50, 1.00)])   # cut 2026-10-07: the window was a pane on a solid wall
     make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
@@ -57,29 +69,50 @@ def build_shell():
         make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax, ceil_z=CEIL, palette={"wood": COL_WOOD})
 
 def build_counter():
-    # make_counter's `depth` is the X extent, `length` the Y —
-    # so length>depth built this counter ROTATED 90 DEGREES:
-    # a narrow face against the wall and the run jutting into
-    # the room. Swapped 2026-08-12 (same bug as the New
-    # Orleans bar and the pit stop's lunch counter).
-    top_z = make_counter("Counter", (-ROOM_W/4.0, ROOM_D-0.45, 0.0), length=0.70, depth=2.40, height=0.92,
-                         palette={"formica": (0.78, 0.66, 0.42, 1.0), "top": (0.32, 0.22, 0.14, 1.0), "kick": (0.32, 0.22, 0.14, 1.0)})
-    make_counter_bullnose("Counter", (-ROOM_W/4.0, ROOM_D-0.45 - 0.35, top_z), length=2.40, axis='X')
-    # Sink
-    make_box("Sink_Bowl", (-ROOM_W/4.0, ROOM_D-0.45, 0.86), (0.50, 0.40, 0.12), (0.86, 0.86, 0.84, 1.0))
-    # draft 4 (2026-09-18): a gooseneck faucet with its handle
-    make_lathe("Sink_Faucet_Base", (-ROOM_W/4.0, ROOM_D-0.78, top_z), [(0.035, 0.0), (0.03, 0.01), (0.02, 0.02), (0.02, 0.06)], P.METAL_STEEL, segments=8)
-    make_tube("Sink_Faucet", [(-ROOM_W/4.0, ROOM_D-0.78, top_z+0.05), (-ROOM_W/4.0, ROOM_D-0.78, top_z+0.24), (-ROOM_W/4.0, ROOM_D-0.84, top_z+0.30), (-ROOM_W/4.0, ROOM_D-0.94, top_z+0.30), (-ROOM_W/4.0, ROOM_D-0.45, top_z+0.24)], 0.014, P.METAL_STEEL, segments=6)
-    make_cyl("Sink_Faucet_Handle", (-ROOM_W/4.0+0.07, ROOM_D-0.78, top_z+0.06), 0.008, 0.06, P.METAL_STEEL, axis='X', segments=5)
-    # Stove
-    make_chamfer_box("Stove_Body", (ROOM_W/4.0, ROOM_D-0.45, 0.45), (0.70, 0.70, 0.92), (0.86, 0.84, 0.80, 1.0))
-    make_box("Stove_Top", (ROOM_W/4.0, ROOM_D-0.45, 0.92), (0.70, 0.70, 0.04), P.METAL_BLACK)
-    for bi, (ox, oy) in enumerate(((-0.17, -0.17), (0.17, -0.17), (-0.17, 0.17), (0.17, 0.17))):
-        make_cyl(f"Stove_Burner_{bi}", (ROOM_W/4.0+ox, ROOM_D-0.45+oy, 0.945), 0.09, 0.01, (0.14, 0.14, 0.15, 1.0), segments=10)
-    for ki in range(4):
-        make_lathe(f"Stove_Knob_{ki}", (ROOM_W/4.0 - 0.24 + ki * 0.16, ROOM_D-0.45-0.352, 0.80), [(0.0, 0.0), (0.02, 0.0), (0.022, 0.012), (0.014, 0.02), (0.0, 0.02)], (0.16, 0.16, 0.17, 1.0), segments=8)
-    # on the oven door (2026-09-23: 1.8 cm in front of it)
-    make_tube("Stove_Oven_Bar", [(ROOM_W/4.0-0.28, ROOM_D-0.45-0.362, 0.62), (ROOM_W/4.0+0.28, ROOM_D-0.45-0.362, 0.62)], 0.012, P.METAL_STEEL, segments=6)
+    """The N run on the kitchen kit (2026-10-07). It was a store counter
+    (make_counter) with a chamfered box for a stove, and the upper
+    cabinets ran ACROSS the sink window — the back yard Gracie's dad
+    yells about the weeds in was half behind a cabinet. Now: base
+    cabinets wall to wall, the sink under the window, the range where
+    Bill cooks the eggs, uppers either side of the window — "hot sauce
+    is in the cabinet to the left of the stove" — and the under-cabinet
+    light Anita sits by under the run left of the stove."""
+    K.base_run("Counter", -ROOM_W/2.0 + 0.10, ROOM_W/2.0 - 0.10, Y_BACK, top_z=TOP_Z,
+               body=MAPLE, top=BLOCK, edge=BLOCK_EDGE, pull=PEWTER, rail=MAPLE_DK,
+               gaps=[(RANGE_X - 0.38, RANGE_X + 0.38)])
+    K.sink("Sink", SINK_X, Y_BACK, TOP_Z)
+    K.range_("Stove", RANGE_X, Y_BACK, TOP_Z)
+    for nm, a, b in (("Upper_W", -ROOM_W/2.0 + 0.10, SINK_X - 0.86),
+                     ("Upper_Mid", SINK_X + 0.86, HOT_X0),
+                     ("Upper_E", RANGE_X + 0.42, ROOM_W/2.0 - 0.10)):
+        K.upper_run(nm, a, b, Y_BACK, z0=1.46, z1=2.20, body=MAPLE, pull=PEWTER, rail=MAPLE_DK)
+    # THE HOT SAUCE CABINET (draft 5's "one upper door ajar"): the last
+    # upper left of the stove, open — "Hot sauce is in the cabinet to the
+    # left of the stove if you want it" (ch8) — a shell, its shelf, the
+    # bottle and its neighbours, the door swung 70 degrees
+    from _props.structure import make_case_shell
+    from _props.geometry import make_rot_box
+    hx0, hx1 = HOT_X0, RANGE_X - 0.42
+    hxc, hw = (hx0 + hx1) / 2.0, hx1 - hx0
+    make_case_shell("HotSauce_Cab", (hxc, Y_BACK - 0.17, 1.83), (hw, 0.34, 0.74), MAPLE, open_face='-Y')
+    make_box("HotSauce_Cab_Shelf", (hxc, Y_BACK - 0.17, 1.83), (hw - 0.04, 0.30, 0.018), MAPLE_DK)
+    make_box("HotSauce_Cab_Crown", (hxc, Y_BACK - 0.33, 2.23), (hw + 0.02, 0.05, 0.06), MAPLE)
+    for bi, (bx, col, ht) in enumerate(((-0.11, (0.78, 0.14, 0.10, 1.0), 0.16), (0.0, (0.86, 0.66, 0.20, 1.0), 0.22),
+                                         (0.11, (0.30, 0.22, 0.16, 1.0), 0.19))):
+        nm = "HotSauce_Bottle" if bi == 0 else f"HotSauce_Cab_Jar_{bi}"
+        make_cyl(nm, (hxc + bx, Y_BACK - 0.20, 1.839 + ht / 2.0), 0.028, ht, col, segments=8)
+        make_cyl(f"{nm}_Cap", (hxc + bx, Y_BACK - 0.20, 1.839 + ht + 0.012), 0.016 if bi == 0 else 0.03, 0.024,
+                 (0.94, 0.92, 0.86, 1.0) if bi == 0 else (0.20, 0.20, 0.22, 1.0), segments=8)
+    for bi, bx in enumerate((-0.10, 0.06)):
+        make_cyl(f"HotSauce_Cab_Can_{bi}", (hxc + bx, Y_BACK - 0.18, 1.48 + 0.06), 0.035, 0.12, (0.62, 0.20, 0.16, 1.0), segments=8)
+    # the door, hinged on the cabinet's LEFT edge, swung 70 degrees out
+    import math
+    sw = math.radians(70.0)                  # the swing, out into the room
+    dw = hw - 0.012
+    make_rot_box("HotSauce_Cab_Door", (hx0 + math.cos(sw) * dw / 2.0, Y_BACK - 0.34 - math.sin(sw) * dw / 2.0, 1.83),
+                 (dw, 0.018, 0.72), MAPLE, yaw=-sw)
+    for nm, a, b in (("Splash_W", -ROOM_W/2.0 + 0.10, SINK_X - 0.86), ("Splash_E", SINK_X + 0.86, ROOM_W/2.0 - 0.10)):
+        K.backsplash(nm, a, b, Y_BACK, TOP_Z, 1.44, tile=BISCUIT, grout=(0.76, 0.70, 0.58, 1.0))
 
 def build_table():
     tx, ty = 0.0, ROOM_D/2.0
@@ -96,7 +129,7 @@ def build_clock():
 def build_window():
     # on the wall's room face, glass in front of the frame (2026-09-24: frame and glass
     # were offset from the wall's CENTRE line — inside the wall, never visible)
-    make_box("Window_E_Frame", (ROOM_W/2.0-0.12, ROOM_D/2.0+0.5, 1.55), (0.04, 1.60, 1.20), P.METAL_STEEL)
+    make_frame_ring("Window_E_Frame", (ROOM_W/2.0-0.12, ROOM_D/2.0+0.5, 1.55), (0.04, 1.60, 1.20), P.METAL_STEEL)
     make_box("Window_E_Glass", (ROOM_W/2.0-0.1425, ROOM_D/2.0+0.5, 1.55), (0.005, 1.50, 1.10), (0.78, 0.84, 0.86, 0.55))
 
 def build_ceiling_infra():
@@ -122,9 +155,9 @@ def build_dressing():
     """Counter + table + wall dressing so it reads as a family kitchen."""
     cw_x = -ROOM_W/4.0; cw_y = ROOM_D-0.45
     make_coffee_pots("Coffee", (cw_x-1.0, cw_y+0.50, 0.94), pots=1)   # the kit puts a lone pot 0.5 in front of its anchor (2026-09-25)
-    make_box("DishRack_Base", (cw_x+0.9, cw_y, 0.95), (0.34, 0.30, 0.03), P.METAL_STEEL)
+    make_box("DishRack_Base", (cw_x+0.9, cw_y, TOP_Z+0.015), (0.34, 0.30, 0.03), P.METAL_STEEL)
     for ti in range(5):
-        make_box(f"DishRack_Tine_{ti}", (cw_x+0.74+ti*0.06, cw_y, 1.05), (0.01, 0.24, 0.16), P.METAL_STEEL)
+        make_box(f"DishRack_Tine_{ti}", (cw_x+0.74+ti*0.06, cw_y, TOP_Z+0.11), (0.01, 0.24, 0.16), P.METAL_STEEL)
     make_calendar("Calendar", (-ROOM_W/2.0+0.05, 2.0, 1.6))
     # Table centrepiece: napkin holder + salt & pepper
     tx, ty = 0.0, ROOM_D/2.0
@@ -142,12 +175,12 @@ def build_hero_props():
     wood = (0.52, 0.40, 0.26, 1.0)
     # Upper cabinets over the counter + the box left of the stove
     # on the wall face (2026-09-23: 9.5 cm into the N wall)
-    make_chamfer_box("Upper_Cabs", (-1.5, ROOM_D-0.275, 1.85), (2.40, 0.35, 0.72), wood)
-    for di, dx in enumerate((-2.3, -1.75, -1.2, -0.65)):
-        make_box(f"Upper_Cab_Door_{di}", (dx, ROOM_D-0.46, 1.85), (0.50, 0.02, 0.64), (0.58, 0.46, 0.30, 1.0))
-    make_chamfer_box("HotSauce_Cab", (0.75, ROOM_D-0.275, 1.85), (0.60, 0.35, 0.72), wood)   # on the wall face (2026-09-23: 9.5 cm into it)
-    # The under-cabinet light — the only light in the ch19 beat
-    make_box("UnderCab_Light", (-1.5, ROOM_D-0.38, 1.46), (1.20, 0.05, 0.04), (0.98, 0.90, 0.70, 1.0))
+    # (2026-10-07: the uppers are the kit's, in build_counter — the hot
+    # sauce is behind Upper_Mid's last door, left of the stove)
+    # The under-cabinet light — the only light in the ch19 beat — under
+    # Upper_Mid's front edge
+    make_box("UnderCab_Light", ((SINK_X + 0.86 + RANGE_X - 0.42) / 2.0, Y_BACK - 0.26, 1.44),
+             (RANGE_X - 0.42 - SINK_X - 0.86 - 0.10, 0.05, 0.04), (0.98, 0.90, 0.70, 1.0))   # under Upper_Mid AND the hot sauce cabinet
     # The window over the sink onto the backyard
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
     make_window("Sink_Window", (-1.5, ROOM_D - 0.10, 1.52), width=1.50, height=1.00, see_through=True)
@@ -216,8 +249,8 @@ def build_draft4_2026_09():
     make_traffic_wear("Wear_Path_B", [(-0.3, 3.1), (-1.0, 3.5), (-1.5, 3.7)], width=0.42, tint=floor_dk)
     for ci, (cx, cy) in enumerate([(tx-0.80, ty), (tx+0.80, ty), (tx, ty-0.62), (tx, ty+0.62)]):
         make_floor_stain(f"Wear_Patch_Seat_{ci}", (cx, cy), radius=0.26, tint=(0.66, 0.52, 0.34, 1.0), segments=10)
-    make_box("Wear_Elbow_Strip", (-ROOM_W/4.0, ROOM_D-0.45-0.36, 0.9174), (2.2, 0.06, 0.004), (0.28, 0.19, 0.12, 1.0))
-    make_scuff_band("Wear_Drip", (-ROOM_W/4.0, ROOM_D-0.45-0.35), 0.6, axis='X', height=0.12, band_z=0.60, tint=(0.62, 0.52, 0.34, 1.0))
+    make_box("Wear_Elbow_Strip", (-ROOM_W/4.0, Y_BACK-0.62+0.02, TOP_Z+0.002), (2.2, 0.06, 0.004), (0.50, 0.36, 0.22, 1.0))
+    make_scuff_band("Wear_Drip", (-ROOM_W/4.0, Y_BACK-0.62-0.024), 0.6, axis='X', height=0.12, band_z=0.60, tint=(0.62, 0.52, 0.34, 1.0))
     make_box("Wear_Hand_Patch", (ROOM_W/2.0-0.55-0.362, 1.0-0.10, 1.30), (0.003, 0.14, 0.20), (0.74, 0.74, 0.76, 1.0))
     make_chamfer_box("Wear_Daisy_Spot", (-2.28, 1.5, 0.535), (0.50, 0.55, 0.02), (0.42, 0.36, 0.30, 1.0), chamfer=0.008)
     for hi in range(6):

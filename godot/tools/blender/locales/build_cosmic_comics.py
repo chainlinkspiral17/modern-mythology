@@ -72,6 +72,10 @@ CEIL_Z = 2.80
 # ════════════════════════════════════════════════════════════════
 # SHELL
 # ════════════════════════════════════════════════════════════════
+from _props.structure import make_wall_with_openings   # (2026-10-07)
+
+from _props.views import make_view   # (2026-10-07)
+
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D / 2.0, 0.0),
                size_x=ROOM_W + 0.4, size_y=ROOM_D + 0.4)
@@ -86,10 +90,10 @@ def build_shell():
               length=ROOM_W + 0.4, height=CEIL_Z, axis='X',
               baseboard_face_sign=-1)
     # South wall split around door (door at X∈[-1.5, 1.5])
-    make_wall("Wall_S_W", (-3.25, 0.0, 0),
-              length=3.50, height=CEIL_Z, axis='X', baseboard_face_sign=+1)
-    make_wall("Wall_S_E", (+3.25, 0.0, 0),
-              length=3.50, height=CEIL_Z, axis='X', baseboard_face_sign=+1)
+    make_wall_with_openings("Wall_S_W", (-3.25, 0.0, 0),   # cut 2026-10-07 (window_backing_audit): the window was a pane on a solid wall
+              length=3.50, height=CEIL_Z, axis='X', baseboard_face_sign=+1, openings=[(-3.200, 1.400, 2.400, 1.400)])
+    make_wall_with_openings("Wall_S_E", (+3.25, 0.0, 0),   # cut 2026-10-07 (window_backing_audit): the window was a pane on a solid wall
+              length=3.50, height=CEIL_Z, axis='X', baseboard_face_sign=+1, openings=[(3.200, 1.400, 2.400, 1.400)])
     # Door header
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL_Z - 0.30),
              (3.20, 0.20, 0.60), P.WALL_CREAM)
@@ -219,6 +223,8 @@ def main():
         os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/cosmic_comics.glb"))
     print(f"\n[build_cosmic_comics] exporting to {out_path}")
+    # what is outside the window (2026-10-07, _props/views.py)
+    make_view("View_S", "S", 0.0, 0.0, kind="street", ground_z=0.0, seed=23)   # the street past the front glass
     export_glb(out_path)
 
 

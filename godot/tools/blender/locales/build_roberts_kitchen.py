@@ -77,6 +77,8 @@ ROOM_D = 6.0
 CEIL_Z = 2.60
 
 
+from _props.structure import make_frame_ring   # (2026-10-07: the frame boards → rings)
+
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D / 2.0, 0.0),
                size_x=ROOM_W + 0.4, size_y=ROOM_D + 0.4,
@@ -130,7 +132,7 @@ def build_shell():
     # Back-yard window (east wall, faces sage curtains)
     # on the wall's room face, glass in front of the frame (2026-09-24: frame and glass
     # were offset from the wall's CENTRE line — inside the wall, never visible)
-    make_box("Window_E_Frame", (ROOM_W / 2.0 - 0.12, 3.5, 1.55),
+    make_frame_ring("Window_E_Frame", (ROOM_W / 2.0 - 0.12, 3.5, 1.55),
              (0.04, 1.80, 1.20), P.METAL_STEEL)
     make_box("Window_E_Glass", (ROOM_W / 2.0 - 0.1425, 3.5, 1.55),
              (0.005, 1.70, 1.10), P.GLASS)

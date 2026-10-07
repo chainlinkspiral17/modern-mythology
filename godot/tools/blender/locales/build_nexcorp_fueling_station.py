@@ -16,11 +16,16 @@ PAL_WALL = {"wall":(0.88,0.88,0.86,1.0),"baseboard":(0.42,0.42,0.40,1.0)}
 COL_FLOOR = (0.78,0.78,0.74,1.0); COL_SEAM = (0.42,0.42,0.40,1.0); COL_WOOD = (0.62,0.62,0.60,1.0)
 COL_ACCENT = (0.18,0.32,0.50,1.0)  # NexCorp navy — a bruise that doesn't know it's a bruise yet
 
+from _props.structure import make_wall_with_openings   # (2026-10-07)
+
+from _props.structure import make_frame_ring   # (2026-10-07: the frame boards → rings)
+
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
                palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
-    for nm, x, bb in [("Wall_W", -ROOM_W/2.0, +1), ("Wall_E", +ROOM_W/2.0, -1)]:
-        make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=bb)
+    # (2026-10-07, window_backing_audit) the loop unrolled: Wall_W is cut
+    make_wall_with_openings("Wall_W", (-ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(3.000, 1.400, 2.400, 1.600)])
+    make_wall("Wall_E", (+ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=-1)
     make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
     make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
     make_wall("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
@@ -92,7 +97,7 @@ def build_storefront():
     wx = -ROOM_W/2.0
     # on the wall's room face, glass in front of the frame (2026-09-24: frame and glass
     # were offset from the wall's CENTRE line — inside the wall, never visible)
-    make_box("Storefront_Frame", (wx+0.13, ROOM_D/2.0, 1.40), (0.06, 2.60, 1.80), P.METAL_STEEL)
+    make_frame_ring("Storefront_Frame", (wx+0.13, ROOM_D/2.0, 1.40), (0.06, 2.60, 1.80), P.METAL_STEEL, bar=0.10)
     make_box("Storefront_Glass", (wx+0.17, ROOM_D/2.0, 1.40), (0.02, 2.40, 1.60), (0.66, 0.78, 0.86, 0.40))
     # SIX pumps on three islands, navy-branded — "The unmarked van
     # is at pump six" needs a pump six to be at

@@ -334,7 +334,9 @@ def build_aisles():
 
 # ── the back: dairy, receiving, meat ──────────────────────────────
 def build_back():
-    make_cooler_row("Cooler", COOLER_WALL_Y, DAIRY_DOORS, cz=1.25, shelves=5, cans_per_shelf=6, sixpacks_per_shelf=4)
+    # the DAIRY case holds dairy (2026-10-07: it held beer six-packs and soda
+    # cans) — gallons low, half-gallons, eggs and butter, yogurt and cheese
+    make_cooler_row("Cooler", COOLER_WALL_Y, DAIRY_DOORS, cz=1.25, shelves=5, stock="dairy")
     make_box("Dairy_Sign", (DAIRY_DOORS[5], YN - 0.03, 3.20), (6.0, 0.06, 0.60), COL_ACCENT)
     make_box("Dairy_Sign_Letters", (DAIRY_DOORS[5], YN - 0.065, 3.20), (3.4, 0.01, 0.30), PAPER)
     # the propped door, its crate, Russell's thermometer on its inner face

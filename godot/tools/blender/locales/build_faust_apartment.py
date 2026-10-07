@@ -65,14 +65,20 @@ SPINES = [
 ]
 
 
+from _props.structure import make_wall_with_openings   # (2026-10-07)
+
+from _props.views import make_view   # (2026-10-07)
+
+from _props.structure import make_frame_ring   # (2026-10-07: the frame boards → rings)
+
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D / 2.0, 0.0), size_x=ROOM_W + 0.4,
                size_y=ROOM_D + 0.4, palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
     pal = {"wall": COL_WALL, "baseboard": COL_BASE}
     make_wall("Wall_W", (-ROOM_W / 2.0, ROOM_D / 2.0, 0), length=ROOM_D + 0.4,
               height=CEIL, axis='Y', palette=pal, baseboard_face_sign=+1)
-    make_wall("Wall_E", (+ROOM_W / 2.0, ROOM_D / 2.0, 0), length=ROOM_D + 0.4,
-              height=CEIL, axis='Y', palette=pal, baseboard_face_sign=-1)
+    make_wall_with_openings("Wall_E", (+ROOM_W / 2.0, ROOM_D / 2.0, 0), length=ROOM_D + 0.4,   # cut 2026-10-07 (window_backing_audit): the window was a pane on a solid wall
+              height=CEIL, axis='Y', palette=pal, baseboard_face_sign=-1, openings=[(2.400, 1.650, 1.550, 1.450)])
     make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W + 0.4, height=CEIL,
               axis='X', palette=pal, baseboard_face_sign=-1)
     make_wall("Wall_S", (0.0, 0.0, 0), length=ROOM_W + 0.4, height=CEIL,
@@ -113,7 +119,7 @@ def build_window():
     """E wall, centered y=2.4: frame + cool glass + half-drawn
     curtains on a rod."""
     wx = ROOM_W / 2.0 - 0.14   # frame on the E wall face at 2.90 (2026-09-24: inside the wall)
-    make_box("Win_Frame", (wx, 2.4, 1.65), (0.08, 1.75, 1.65), COL_FRAME)
+    make_frame_ring("Win_Frame", (wx, 2.4, 1.65), (0.08, 1.75, 1.65), COL_FRAME, bar=0.10)
     make_box("Win_Glass", (wx - 0.01, 2.4, 1.65), (0.05, 1.55, 1.45), COL_GLASS)
     make_box("Win_Mullion_V", (wx - 0.03, 2.4, 1.65), (0.05, 0.06, 1.45), COL_FRAME)
     make_box("Win_Mullion_H", (wx - 0.03, 2.4, 1.65), (0.05, 1.55, 0.06), COL_FRAME)
@@ -255,6 +261,8 @@ def main():
     build_kitchenette()
     build_bicycle()
     build_fixtures()
+    # what is outside the window (2026-10-07, _props/views.py)
+    make_view("View_E", "E", ROOM_W / 2.0, 2.4, kind="street", ground_z=-6.0, seed=25)   # two floors down: the street at 4 AM
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/faust_apartment.glb"))
     print(f"\n[build_faust_apartment] exporting to {out}")

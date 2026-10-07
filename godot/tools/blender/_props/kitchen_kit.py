@@ -32,7 +32,7 @@ NICKEL = (0.68, 0.68, 0.66, 1.0)
 
 
 def base_run(prefix, x0, x1, y_back, *, depth=0.62, top_z=0.98, door_w=0.50,
-             body=WHITE_SHAKER, top=QUARTZ, edge=QUARTZ_EDGE, pull=NICKEL, gaps=()):
+             body=WHITE_SHAKER, top=QUARTZ, edge=QUARTZ_EDGE, pull=NICKEL, gaps=(), rail=WHITE_SHAKER_DK):
     """Base cabinets x0..x1. `gaps` = [(gx0, gx1), ...] left open (no
     carcass, no top) for a range; a dishwasher gap keeps its top."""
     y0 = y_back - depth
@@ -55,8 +55,8 @@ def base_run(prefix, x0, x1, y_back, *, depth=0.62, top_z=0.98, door_w=0.50,
         for k in range(n):
             dx = a + dw * (k + 0.5)
             make_box(f"{prefix}_{si}_Door_{k}", (dx, y0 - 0.009, 0.42), (dw - 0.012, 0.018, 0.58), body)
-            make_box(f"{prefix}_{si}_Door_{k}_Rail_T", (dx, y0 - 0.0195, 0.67), (dw - 0.06, 0.003, 0.05), WHITE_SHAKER_DK)
-            make_box(f"{prefix}_{si}_Door_{k}_Rail_B", (dx, y0 - 0.0195, 0.17), (dw - 0.06, 0.003, 0.05), WHITE_SHAKER_DK)
+            make_box(f"{prefix}_{si}_Door_{k}_Rail_T", (dx, y0 - 0.0195, 0.67), (dw - 0.06, 0.003, 0.05), rail)
+            make_box(f"{prefix}_{si}_Door_{k}_Rail_B", (dx, y0 - 0.0195, 0.17), (dw - 0.06, 0.003, 0.05), rail)
             make_box(f"{prefix}_{si}_Drawer_{k}", (dx, y0 - 0.009, top_z - 0.135), (dw - 0.012, 0.018, 0.15), body)
             make_box(f"{prefix}_{si}_Drawer_{k}_Pull", (dx, y0 - 0.026, top_z - 0.135), (min(0.16, dw * 0.4), 0.016, 0.012), pull)
             kx = dx + (dw / 2.0 - 0.06) * (1 if k % 2 else -1)
@@ -64,7 +64,7 @@ def base_run(prefix, x0, x1, y_back, *, depth=0.62, top_z=0.98, door_w=0.50,
 
 
 def upper_run(prefix, x0, x1, y_back, *, z0=1.46, z1=2.20, depth=0.34, door_w=0.45,
-              body=WHITE_SHAKER, pull=NICKEL):
+              body=WHITE_SHAKER, pull=NICKEL, rail=WHITE_SHAKER_DK):
     w, cx = x1 - x0, (x0 + x1) / 2.0
     y0 = y_back - depth
     make_box(f"{prefix}_Carcass", (cx, (y0 + y_back) / 2.0, (z0 + z1) / 2.0), (w, depth, z1 - z0), body)
@@ -74,8 +74,8 @@ def upper_run(prefix, x0, x1, y_back, *, z0=1.46, z1=2.20, depth=0.34, door_w=0.
     for k in range(n):
         dx = x0 + dw * (k + 0.5)
         make_box(f"{prefix}_Door_{k}", (dx, y0 - 0.009, (z0 + z1) / 2.0), (dw - 0.012, 0.018, z1 - z0 - 0.02), body)
-        make_box(f"{prefix}_Door_{k}_Rail_T", (dx, y0 - 0.0195, z1 - 0.05), (dw - 0.06, 0.003, 0.05), WHITE_SHAKER_DK)
-        make_box(f"{prefix}_Door_{k}_Rail_B", (dx, y0 - 0.0195, z0 + 0.05), (dw - 0.06, 0.003, 0.05), WHITE_SHAKER_DK)
+        make_box(f"{prefix}_Door_{k}_Rail_T", (dx, y0 - 0.0195, z1 - 0.05), (dw - 0.06, 0.003, 0.05), rail)
+        make_box(f"{prefix}_Door_{k}_Rail_B", (dx, y0 - 0.0195, z0 + 0.05), (dw - 0.06, 0.003, 0.05), rail)
         kx = dx + (dw / 2.0 - 0.05) * (1 if k % 2 else -1)
         make_box(f"{prefix}_Door_{k}_Pull", (kx, y0 - 0.026, z0 + 0.12), (0.012, 0.016, 0.12), pull)
 

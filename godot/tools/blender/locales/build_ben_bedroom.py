@@ -51,6 +51,10 @@ COL_CLOCK = (0.90, 0.24, 0.16, 1.0)     # red LED digits
 COL_RUG = (0.30, 0.32, 0.30, 1.0)
 
 
+from _props.structure import make_wall_with_openings   # (2026-10-07)
+
+from _props.views import make_view   # (2026-10-07)
+
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D / 2.0, 0.0), size_x=ROOM_W + 0.4,
                size_y=ROOM_D + 0.4, palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
@@ -58,8 +62,8 @@ def build_shell():
     for nm, x, bb in [("Wall_W", -ROOM_W / 2.0, +1), ("Wall_E", +ROOM_W / 2.0, -1)]:
         make_wall(nm, (x, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL,
                   axis='Y', palette=pal, baseboard_face_sign=bb)
-    make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W + 0.4, height=CEIL,
-              axis='X', palette=pal, baseboard_face_sign=-1)
+    make_wall_with_openings("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W + 0.4, height=CEIL,   # cut 2026-10-07 (window_backing_audit): the window was a pane on a solid wall
+              axis='X', palette=pal, baseboard_face_sign=-1, openings=[(0.450, 1.540, 1.000, 0.920)])
     # South wall split around the door opening (west of center)
     make_wall("Wall_S_E", (0.85, 0.0, 0), length=ROOM_W - 1.5, height=CEIL,
               axis='X', palette=pal, baseboard_face_sign=+1)
@@ -207,6 +211,8 @@ def main():
     build_desk()
     build_gear_and_pack()
     build_detail_pass_2026_08()
+    # what is outside the window (2026-10-07, _props/views.py)
+    make_view("View_N", "N", ROOM_D, 0.45, kind="back", ground_z=-2.9, seed=21)   # upstairs at the Kowalskis': the back yard, the cicadas
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/ben_bedroom.glb"))
     print(f"\n[build_ben_bedroom] exporting to {out}")

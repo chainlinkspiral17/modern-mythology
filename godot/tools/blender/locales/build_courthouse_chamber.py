@@ -26,14 +26,20 @@ COL_WINDOW_GLASS = (0.74, 0.84, 0.86, 0.55)
 ROOM_W = 11.0; ROOM_D = 12.0; CEIL = 4.40
 
 
+from _props.structure import make_wall_with_openings   # (2026-10-07)
+
+from _props.views import make_view   # (2026-10-07)
+
+from _props.structure import make_frame_ring   # (2026-10-07: the frame boards → rings)
+
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
                palette={"vinyl": COL_FLOOR_PARQUET, "seam": COL_SEAM})
     for nm, x, bb in [("Wall_W", -ROOM_W/2.0, +1), ("Wall_E", +ROOM_W/2.0, -1)]:
         make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y',
                   palette=PAL, baseboard_face_sign=bb)
-    make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X',
-              palette=PAL, baseboard_face_sign=-1)
+    make_wall_with_openings("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X',   # cut 2026-10-07 (window_backing_audit): the window was a pane on a solid wall
+              palette=PAL, baseboard_face_sign=-1, openings=[(0.000, 3.200, 2.200, 1.600)])
     # S wall — single center door opening
     make_wall("Wall_S_W", (-3.0, 0.0, 0), length=5.0, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1)
     make_wall("Wall_S_E", (+3.0, 0.0, 0), length=5.0, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1)
@@ -60,7 +66,7 @@ def build_arched_window_behind_bench():
     # Tall arched window centered on N wall above the judge's bench
     # on the wall's room face, glass in front of the frame (2026-09-24: frame and glass
     # were offset from the wall's CENTRE line — inside the wall, never visible)
-    make_box("Window_Frame", (0.0, ROOM_D-0.12, 3.20), (2.40, 0.04, 1.80), COL_BRASS)
+    make_frame_ring("Window_Frame", (0.0, ROOM_D-0.12, 3.20), (2.40, 0.04, 1.80), COL_BRASS)
     make_box("Window_Glass", (0.0, ROOM_D-0.1425, 3.20), (2.20, 0.005, 1.60), COL_WINDOW_GLASS)
     # Arch top — three half-discs
     for i, px in enumerate([-0.60, 0.0, +0.60]):
@@ -190,7 +196,7 @@ def build_flag_and_seal():
         make_box(f"Flag_Drape_W_{ci}", (cx+0.40, ROOM_D-0.30, 3.10), (0.60, 0.04, 0.40), fc2)
     # Court seal mounted high above the bench arched window
     make_box("Seal_Mount", (0.0, ROOM_D-0.12, 4.10), (0.80, 0.04, 0.40), COL_WOOD_DARK)   # on the wall face (2026-09-23: inside the wall)
-    make_cyl("Seal", (0.0, ROOM_D-0.06, 4.10), 0.34, 0.04, COL_BRASS, axis='Y', segments=18)
+    make_cyl("Seal", (0.0, ROOM_D-0.16, 4.10), 0.34, 0.04, COL_BRASS, axis='Y', segments=18)   # on its mount's face (2026-10-07: it sat in the wall; the window cut left it in the air)
 
 
 def build_ceiling_infra():
@@ -615,6 +621,8 @@ def main():
     build_justice_wave2_props()
     build_arraignment_props()
     build_hero_props_2026_09()
+    # what is outside the window (2026-10-07, _props/views.py)
+    make_view("View_N", "N", ROOM_D, 0.0, kind="street", ground_z=0.0, seed=24)   # behind the bench: the square, the roofs across
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/courthouse_chamber.glb"))
     print(f"\n[build_courthouse_chamber] exporting to {out}")

@@ -330,9 +330,11 @@ rotation = Vector3(-0.144038, -2.36474, 0)
 metadata/fov = 54.0
 
 ; insert: the hot sauce cabinet
+; (2026-10-07: the cabinet is open now — from the stove side, standing,
+; past the swung door onto the shelf and the bottle)
 [node name="shot_insert_hotsauce" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.75, 1.5, -3.9)
-rotation = Vector3(0.363527, 0, 0)
+position = Vector3(1.200, 1.650, -3.400)
+rotation = Vector3(0.1835, 0.2630, 0.0)
 metadata/fov = 42.0
 
 ; insert: the little TV by the window
@@ -376,7 +378,7 @@ metadata/fov = 45.0
 ; ── draft 4 (2026-09-18): the under-cabinet light Anita sits by — "the only light in the ch19 beat" ──
 ; blender (-1.5, 4.62, 1.44) → godot (-1.5, 1.44, -4.62). Warm tungsten strip.
 [node name="UnderCab_Light_Practical" type="OmniLight3D" parent="."]
-position = Vector3(-1.500, 1.440, -4.620)
+position = Vector3(0.220, 1.400, -4.640)
 light_color = Color(0.960, 0.840, 0.600, 1)
 light_energy = 1.20
 shadow_enabled = false

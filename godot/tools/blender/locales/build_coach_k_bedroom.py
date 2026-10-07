@@ -46,13 +46,17 @@ COL_PAPER = (0.78, 0.76, 0.68, 1.0)
 COL_FAN = (0.55, 0.50, 0.42, 1.0)
 
 
+from _props.structure import make_wall_with_openings   # (2026-10-07)
+
+from _props.views import make_view   # (2026-10-07)
+
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D / 2.0, 0.0), size_x=ROOM_W + 0.4,
                size_y=ROOM_D + 0.4, palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
     pal = {"wall": COL_WALL, "baseboard": COL_BASE}
-    for nm, x, bb in [("Wall_W", -ROOM_W / 2.0, +1), ("Wall_E", +ROOM_W / 2.0, -1)]:
-        make_wall(nm, (x, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL,
-                  axis='Y', palette=pal, baseboard_face_sign=bb)
+    # (2026-10-07, window_backing_audit) the loop unrolled: Wall_W is cut
+    make_wall_with_openings("Wall_W", (-ROOM_W / 2.0, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL, axis='Y', palette=pal, baseboard_face_sign=+1, openings=[(2.600, 1.550, 1.100, 1.000)])
+    make_wall("Wall_E", (+ROOM_W / 2.0, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL, axis='Y', palette=pal, baseboard_face_sign=-1)
     make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W + 0.4, height=CEIL,
               axis='X', palette=pal, baseboard_face_sign=-1)
     make_wall("Wall_S", (0.0, 0.0, 0), length=ROOM_W + 0.4, height=CEIL,
@@ -183,6 +187,8 @@ def main():
     build_dresser()
     build_hero_props()
     build_detail_pass_2026_08()
+    # what is outside the window (2026-10-07, _props/views.py)
+    make_view("View_W", "W", -ROOM_W / 2.0, 2.6, kind="side", ground_z=0.0, seed=22)   # the seam of night past the curtain: the side yard
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/coach_k_bedroom.glb"))
     print(f"\n[build_coach_k_bedroom] exporting to {out}")

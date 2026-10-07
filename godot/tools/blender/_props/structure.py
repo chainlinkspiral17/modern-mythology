@@ -65,6 +65,32 @@ def make_wall(prefix, anchor, *, length, height=3.0, thickness=0.20,
                      (length, 0.012, 0.16), base_col)
 
 
+def make_frame_ring(prefix, center, size, color, *, bar=0.06, depth=0.10):
+    """A window frame as a RING — head, sill and two jambs — from the
+    (center, size) of the solid slab a builder used to lay (2026-10-07).
+    Twenty windows' "frames" were one thin board the size of the
+    opening, standing in the glass's plane: through the cut wall the
+    player saw the board. Same plane, same outer size, the middle open."""
+    cx, cy, cz = center
+    sx, sy, sz = size
+    thin_x = sx <= sy                 # the frame lies in an E/W wall
+    # a frame has DEPTH: the slab's glass leaned on it a few cm off its
+    # plane; a ring as thin as the board left every pane floating
+    if thin_x:
+        sx = max(sx, depth)
+    else:
+        sy = max(sy, depth)
+    along = sy if thin_x else sx
+    for nm, dz in (("Head", sz / 2.0 - bar / 2.0), ("Sill", -sz / 2.0 + bar / 2.0)):
+        make_box(f"{prefix}_{nm}", (cx, cy, cz + dz), (sx, sy, bar), color)
+    for nm, sgn in (("JambA", -1), ("JambB", 1)):
+        off = sgn * (along / 2.0 - bar / 2.0)
+        if thin_x:
+            make_box(f"{prefix}_{nm}", (cx, cy + off, cz), (sx, bar, sz - 2 * bar), color)
+        else:
+            make_box(f"{prefix}_{nm}", (cx + off, cy, cz), (bar, sy, sz - 2 * bar), color)
+
+
 def make_wall_with_openings(prefix, anchor, *, length, openings, height=3.0, thickness=0.20,
                             axis='Y', palette=None, baseboard_face_sign=-1):
     """make_wall with HOLES in it (2026-10-03). `openings` is a list of

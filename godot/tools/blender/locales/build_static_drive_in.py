@@ -29,6 +29,8 @@ COL_SODA_FOUNTAIN = (0.62, 0.66, 0.70, 1.0); COL_CANDY = (0.86, 0.74, 0.42, 1.0)
 ROOM_W = 7.0; ROOM_D = 5.0; CEIL = 2.90
 
 
+from _props.structure import make_frame_ring   # (2026-10-07: the frame boards → rings)
+
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
                palette={"vinyl": COL_FLOOR_LINO, "seam": COL_SEAM})
@@ -52,7 +54,7 @@ def build_shell():
 
 def build_picture_window_and_view():
     # Big horizontal window N — frame + glass.
-    make_box("Window_Frame", (0.0, ROOM_D-0.04, 1.70), (4.20, 0.04, 1.40), COL_NEON_MARQUEE)   # wall to wall
+    make_frame_ring("Window_Frame", (0.0, ROOM_D-0.04, 1.70), (4.20, 0.04, 1.40), COL_NEON_MARQUEE)   # wall to wall
     make_box("Window_Glass", (0.0, ROOM_D-0.06, 1.70), (4.00, 0.005, 1.30), COL_GLASS)
     # (2026-09-23) the wall under the sill and over the head: the
     # opening ran floor to ceiling around a 1.4 m window

@@ -7,6 +7,8 @@ from _props import palette as P
 from _props.geometry import make_blob, clear_scene, make_box, make_chamfer_box, make_cyl, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_wall_with_openings
 from _props.views import make_view
+from _props import kitchen_kit as K
+from _props.geometry import make_lathe, make_tube
 from _props.store_fixtures import make_counter, make_counter_bullnose, make_register
 from _props.shelving import make_snack_aisle, make_endcap
 from _props.food_service import make_coffee_pots, make_donut_display
@@ -18,6 +20,14 @@ ROOM_W = 6.5; ROOM_D = 5.5; CEIL = 2.6
 PAL_WALL = {"wall": (0.92, 0.86, 0.74, 1.0), "baseboard": (0.42, 0.32, 0.22, 1.0)}
 COL_FLOOR = (0.74, 0.58, 0.38, 1.0); COL_SEAM = (0.42, 0.30, 0.18, 1.0); COL_WOOD = (0.46, 0.34, 0.22, 1.0)
 COL_ACCENT = (0.62, 0.42, 0.22, 1.0)
+# the kitchen on the kit (2026-10-07): the Hendersons' oak and gold
+# formica, not the Millers' white shaker
+Y_BACK = ROOM_D - 0.10                 # the N wall's room face
+TOP_Z = 0.94
+SINK_X, RANGE_X = -ROOM_W/4.0, ROOM_W/4.0
+OAK = (0.56, 0.42, 0.28, 1.0); OAK_DK = (0.42, 0.30, 0.20, 1.0)
+FORMICA = (0.78, 0.66, 0.42, 1.0); FORMICA_EDGE = (0.62, 0.50, 0.30, 1.0)
+BRASS = (0.70, 0.58, 0.30, 1.0); ALMOND = (0.90, 0.86, 0.76, 1.0)
 
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
@@ -25,8 +35,11 @@ def build_shell():
     for nm, x, bb in [("Wall_W", -ROOM_W/2.0, +1), ("Wall_E", +ROOM_W/2.0, -1)]:
         make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y',
                   palette=PAL_WALL, baseboard_face_sign=bb)
-    make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X',
-              palette=PAL_WALL, baseboard_face_sign=-1)
+    # the window over the sink (2026-10-07): "He stands at the kitchen
+    # sink for a long minute ... Through the open window, the cicadas
+    # are loud" (ch14) — the N wall was solid and the sink faced plaster
+    make_wall_with_openings("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X',
+              palette=PAL_WALL, baseboard_face_sign=-1, openings=[(SINK_X, 1.62, 1.20, 0.92)])
     make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
     make_wall_with_openings("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1,
                             openings=[(1.45, 1.50, 0.90, 1.05)])   # cut 2026-10-07: the front window was a pane on a solid wall
@@ -40,20 +53,33 @@ def build_shell():
         make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax, ceil_z=CEIL, palette={"wood": COL_WOOD})
 
 def build_counter():
-    # make_counter's `depth` is the X extent, `length` the Y —
-    # so length>depth built this counter ROTATED 90 DEGREES:
-    # a narrow face against the wall and the run jutting into
-    # the room. Swapped 2026-08-12 (same bug as the New
-    # Orleans bar and the pit stop's lunch counter).
-    top_z = make_counter("Counter", (-ROOM_W/4.0, ROOM_D-0.45, 0.0), length=0.70, depth=2.40, height=0.92,
-                         palette={"formica": (0.78, 0.66, 0.42, 1.0), "top": (0.32, 0.22, 0.14, 1.0), "kick": (0.32, 0.22, 0.14, 1.0)})
-    make_counter_bullnose("Counter", (-ROOM_W/4.0, ROOM_D-0.45 - 0.35, top_z), length=2.40, axis='X')
-    # Sink
-    make_box("Sink_Bowl", (-ROOM_W/4.0, ROOM_D-0.45, 0.86), (0.50, 0.40, 0.12), (0.86, 0.86, 0.84, 1.0))
-    make_cyl("Sink_Faucet", (-ROOM_W/4.0, ROOM_D-0.55, top_z+0.04), 0.015, 0.30, P.METAL_STEEL)
-    # Stove
-    make_chamfer_box("Stove_Body", (ROOM_W/4.0, ROOM_D-0.45, 0.45), (0.70, 0.70, 0.92), (0.86, 0.84, 0.80, 1.0))
-    make_box("Stove_Top", (ROOM_W/4.0, ROOM_D-0.45, 0.92), (0.70, 0.70, 0.04), P.METAL_BLACK)
+    """The N run on the kitchen kit (2026-10-07): base cabinets wall to
+    wall on the N wall's face, the sink under the window, a gap for the
+    range, uppers either side of the window and clear of the clock.
+    (It was make_counter — a store counter — and a chamfered box.)"""
+    K.base_run("Counter", -ROOM_W/2.0 + 0.10, ROOM_W/2.0 - 0.10, Y_BACK, top_z=TOP_Z,
+               body=OAK, top=FORMICA, edge=FORMICA_EDGE, pull=BRASS, rail=OAK_DK,
+               gaps=[(RANGE_X - 0.38, RANGE_X + 0.38)])
+    K.sink("Sink", SINK_X, Y_BACK, TOP_Z)
+    K.range_("Stove", RANGE_X, Y_BACK, TOP_Z)
+    K.dishwasher("Dishwasher", SINK_X + 0.90, Y_BACK - 0.62, TOP_Z)
+    for nm, a, b in (("Upper_W", -ROOM_W/2.0 + 0.10, SINK_X - 0.70),
+                     ("Upper_Mid", SINK_X + 0.70, -0.30),
+                     ("Upper_E", RANGE_X + 0.55, ROOM_W/2.0 - 0.10)):
+        K.upper_run(nm, a, b, Y_BACK, z0=1.46, z1=2.20, body=OAK, pull=BRASS, rail=OAK_DK)
+    K.backsplash("Splash", -ROOM_W/2.0 + 0.10, ROOM_W/2.0 - 0.10, Y_BACK, TOP_Z, 1.11, tile=ALMOND,
+                 grout=(0.76, 0.72, 0.62, 1.0))
+    # the open window over the sink: sash up, the screen in
+    make_window("Sink_Window", (SINK_X, Y_BACK, 1.62), width=1.20, height=0.92, room_dir=-1,
+                see_through=True, palette={"frame": (0.92, 0.90, 0.84, 1.0)})
+    make_box("Sink_Window_Sill", (SINK_X, Y_BACK - 0.06, 1.62 - 0.46 - 0.02), (1.34, 0.12, 0.04), (0.92, 0.90, 0.84, 1.0))
+    # the kettle his mother uses and his father does not (ch20), on the
+    # back left burner
+    kx, ky = RANGE_X - 0.19, Y_BACK - 0.33 + 0.16
+    make_lathe("Kettle", (kx, ky, TOP_Z), [(0.10, 0.0), (0.11, 0.04), (0.10, 0.12), (0.06, 0.17), (0.02, 0.18), (0.0, 0.18)],
+               (0.22, 0.42, 0.40, 1.0), segments=14)
+    make_tube("Kettle_Spout", [(kx + 0.09, ky, TOP_Z + 0.06), (kx + 0.15, ky, TOP_Z + 0.12), (kx + 0.18, ky, TOP_Z + 0.15)], 0.014, (0.22, 0.42, 0.40, 1.0))
+    make_tube("Kettle_Handle", [(kx - 0.06, ky, TOP_Z + 0.16), (kx - 0.02, ky, TOP_Z + 0.24), (kx + 0.04, ky, TOP_Z + 0.16)], 0.010, (0.16, 0.14, 0.12, 1.0))
 
 def build_table():
     tx, ty = 0.0, ROOM_D/2.0
@@ -79,10 +105,10 @@ def build_fridge():
 def build_dressing():
     """Counter + table + wall dressing for a working family kitchen."""
     cw_x = -ROOM_W/4.0; cw_y = ROOM_D-0.45
-    make_coffee_pots("Coffee", (cw_x-1.0, cw_y+0.50, 0.94), pots=1)   # the kit puts a lone pot 0.5 in front of its anchor (2026-09-25)
-    make_box("DishRack_Base", (cw_x+0.9, cw_y, 0.95), (0.34, 0.30, 0.03), P.METAL_STEEL)
+    make_coffee_pots("Coffee", (cw_x-1.0, cw_y+0.50, TOP_Z), pots=1)   # the kit puts a lone pot 0.5 in front of its anchor (2026-09-25)
+    make_box("DishRack_Base", (cw_x+0.9, cw_y, TOP_Z+0.015), (0.34, 0.30, 0.03), P.METAL_STEEL)
     for ti in range(5):
-        make_box(f"DishRack_Tine_{ti}", (cw_x+0.74+ti*0.06, cw_y, 1.05), (0.01, 0.24, 0.16), P.METAL_STEEL)
+        make_box(f"DishRack_Tine_{ti}", (cw_x+0.74+ti*0.06, cw_y, TOP_Z+0.11), (0.01, 0.24, 0.16), P.METAL_STEEL)
     make_calendar("Calendar", (-ROOM_W/2.0+0.05, 2.0, 1.6))
     tx, ty = 0.0, ROOM_D/2.0
     make_box("NapkinHolder", (tx, ty, 0.82), (0.14, 0.06, 0.12), (0.86, 0.84, 0.80, 1.0))
@@ -119,13 +145,9 @@ def build_hero_props():
     make_box("Stair_Newel", (0.92, 0.15, 0.60), (0.10, 0.10, 1.20), wood)
     for s in range(3):
         make_box(f"Stair_Tread_{s}", (1.4, 0.20 + s * 0.28, (0.185 + s * 0.18) / 2.0), (0.80, 0.28, 0.185 + s * 0.18), wood)   # solid step (2026-09-08)
-    # Oven face on the stove front (the pot roast on warm)
-    sx, sy = ROOM_W/4.0, ROOM_D-0.45
-    make_chamfer_box("Oven_Door", (sx, sy-0.36, 0.50), (0.60, 0.03, 0.55), (0.72, 0.70, 0.66, 1.0))
-    make_box("Oven_Window", (sx, sy-0.375, 0.55), (0.40, 0.015, 0.26), (0.14, 0.12, 0.10, 1.0))
-    make_box("Oven_Handle", (sx, sy-0.39, 0.80), (0.50, 0.03, 0.04), (0.55, 0.57, 0.58, 1.0))
+    # (the oven face is the kit range's own now, 2026-10-07)
     # Microwave, counter east end
-    make_chamfer_box("Microwave", (-0.25, ROOM_D-0.45, 1.14), (0.50, 0.38, 0.30), (0.30, 0.30, 0.32, 1.0))
+    make_chamfer_box("Microwave", (0.15, Y_BACK-0.30, TOP_Z+0.15), (0.50, 0.38, 0.30), (0.30, 0.30, 0.32, 1.0))
     # ── THE POT ROAST · the chapter's hero object ──────────────
     # (2026-08-12, shot_marker_audit --props) [shot:insert pot_roast]
     # fires 3x in a MODEL CHAPTER — "Eileen has made a pot roast…
@@ -181,8 +203,8 @@ def build_hero_props():
         make_cyl(f"Setting_{si}_Plate", (tx+dx, ty+dy, 0.77), 0.11, 0.012, (0.90, 0.88, 0.84, 1.0), segments=12)
         make_box(f"Setting_{si}_Fork", (tx+dx-0.15, ty+dy, 0.772), (0.02, 0.12, 0.008), (0.60, 0.62, 0.63, 1.0))
     # Coffee mugs by the pot: three poured, one never drunk
-    for mi, (mx, my) in enumerate(((-2.3, ROOM_D-0.40), (-2.15, ROOM_D-0.65), (0.35, ty-0.05))):   # on the counter, which is on the wall now (2026-09-25)
-        make_cyl(f"Mug_{mi}", (mx, my, 0.99 if mi < 2 else 0.79), 0.04, 0.09,
+    for mi, (mx, my) in enumerate(((-2.98, Y_BACK-0.20), (-2.36, Y_BACK-0.45), (0.35, ty-0.05))):   # on the counter, which is on the wall now (2026-09-25)
+        make_cyl(f"Mug_{mi}", (mx, my, TOP_Z+0.045 if mi < 2 else 0.79), 0.04, 0.09,
                  [(0.72, 0.30, 0.22, 1.0), (0.30, 0.40, 0.52, 1.0), (0.86, 0.82, 0.74, 1.0)][mi], segments=10)
 
 
@@ -252,6 +274,7 @@ def main():
     build_hero_props_2026_09()
     # what is outside the window (2026-10-07, _props/views.py)
     make_view("View_S", "S", 0.0, 1.45, kind="front", ground_z=0.0, seed=2)   # Magnolia: the front yard, the street, the houses across
+    make_view("View_N", "N", ROOM_D, SINK_X, kind="back", ground_z=0.0, seed=13)   # past the sink: the back yard, the shed, the cicadas
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/henderson_kitchen.glb"))
     print(f"\n[build_henderson_kitchen] exporting to {out}")

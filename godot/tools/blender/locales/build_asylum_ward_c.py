@@ -25,6 +25,10 @@ COL_GURNEY = (0.86, 0.86, 0.82, 1.0); COL_CUPOLA_GLASS = (0.74, 0.84, 0.86, 0.55
 ROOM_W = 5.0; ROOM_D = 14.0; CEIL = 3.40
 
 
+from _props.structure import make_frame_ring   # (2026-10-07: the frame boards → rings)
+
+from _props.views import make_view   # (2026-10-07)
+
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
                palette={"vinyl": COL_FLOOR_TILE, "seam": COL_FLOOR_SEAM})
@@ -66,7 +70,7 @@ def build_shell():
               axis='Y', palette=PAL, baseboard_face_sign=-1)
     # Window bay glass
     for bi, by in enumerate([4.20, 9.80]):
-        make_box(f"WindowBay_{bi}_Frame", (+ROOM_W/2.0-0.04, by, 1.60),
+        make_frame_ring(f"WindowBay_{bi}_Frame", (+ROOM_W/2.0-0.04, by, 1.60),
                  (0.04, 2.20, 1.40), (0.42, 0.32, 0.22, 1.0))
         make_box(f"WindowBay_{bi}_Glass", (+ROOM_W/2.0-0.06, by, 1.60),
                  (0.005, 2.00, 1.20), COL_CUPOLA_GLASS)
@@ -630,6 +634,8 @@ def main():
     build_death_wave2_props()
     build_wheelchair_2026_08()
     build_wear_personality_2026_08()
+    # what is outside the window (2026-10-07, _props/views.py)
+    make_view("View_E", "E", ROOM_W/2.0, 7.0, kind="back", ground_z=0.0, span=28.0, seed=28)   # the hospital grounds past the window bays
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/asylum_ward_c.glb"))
     print(f"\n[build_asylum_ward_c] exporting to {out}")

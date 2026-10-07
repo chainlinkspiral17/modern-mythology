@@ -42,13 +42,25 @@ DELIBERATE = {
     # roberts_kitchen is the set the story shoots
     ("roberts_house", "FrontPicWindow"),
     ("roberts_house", "KitchenWin"),
+    # Board Lords' deck wall is a glass DISPLAY case against the wall
+    ("board_lords_interior", "DeckWall"),
+    # EXTERIORS: a dark board behind a house's glass is the unlit room
+    # the street sees — the right call where no interior is built
+    ("bar_exterior", "Win"),
+    ("kowalski_backyard", "KWin"),
 }
+
+
+SLAB = re.compile(r"frame", re.I)
 
 
 def panes_and_walls(loc):
     P.record_builder(os.path.join(P.A.LOCALES, "build_%s.py" % loc))
     panes, walls = [], []
+    slabs = []
     for n, c, h in P.A.BOXES:
+        if SLAB.search(n) and not PANE.search(n) and min(h[0], h[1]) <= 0.05 and 2 * h[2] > 0.5:
+            slabs.append((n, c, h))
         if WALL.search(n) and 2 * h[2] > 1.5:
             walls.append((n, c, h))
             continue
@@ -58,6 +70,7 @@ def panes_and_walls(loc):
         if thin > 0.03 or 2 * h[2] < 0.35 or 2 * max(h[0], h[1]) < 0.0:
             continue
         panes.append((n, c, h))
+    walls += [("SLAB:" + n, c, h) for n, c, h in slabs]
     return panes, walls
 
 
@@ -80,6 +93,13 @@ def audit(loc):
                 in_plane = abs(wc[0] - c[0]) <= PLANE + wh[0]
                 covers = wc[1] - wh[1] < c[1] < wc[1] + wh[1]
             covers = covers and wc[2] - wh[2] < c[2] < wc[2] + wh[2]
+            if wn.startswith("SLAB:"):
+                # a solid FRAME over the opening (2026-10-07: Pit Stop's west
+                # "frames" were 1.70 x 1.55 boards over the cut glass): in
+                # the pane's plane and spanning most of it
+                span = (2 * wh[0] >= 1.6 * h[0]) if along_x else (2 * wh[1] >= 1.6 * h[1])
+                covers = covers and span and 2 * wh[2] >= 1.6 * h[2] and in_plane and \
+                    abs((wc[1] - c[1]) if along_x else (wc[0] - c[0])) <= 0.12
             if in_plane and covers:
                 seen.add(stem)
                 out.append((stem, wn, c))
@@ -88,6 +108,11 @@ def audit(loc):
 
 
 def main(argv):
+    # the stubs execute the shared _props modules (structure's make_wall
+    # among them) through the recorder — without them the gate saw only
+    # walls a builder laid with make_box itself (2026-10-07: its first
+    # version ran real bpy, 6 minutes, and was blind to every make_wall)
+    P.A.install_stubs()
     locs = argv[1:] or sorted(os.path.basename(p)[6:-3] for p in glob.glob(os.path.join(P.A.LOCALES, "build_*.py")))
     total = 0
     for loc in locs:
@@ -98,7 +123,8 @@ def main(argv):
             continue
         for stem, wall, c in bad:
             total += 1
-            print("  ✗ %-28s %-26s on solid %s at (%.2f, %.2f, %.2f)" % (loc, stem, wall, c[0], c[1], c[2]))
+            what = ("behind a solid frame board %s" % wall[5:]) if wall.startswith("SLAB:") else ("on solid %s" % wall)
+            print("  ✗ %-28s %-26s %s at (%.2f, %.2f, %.2f)" % (loc, stem, what, c[0], c[1], c[2]))
     print("window_backing_audit · %d locale(s) · %d pane(s) on a solid wall" % (len(locs), total))
     return 1 if total else 0
 

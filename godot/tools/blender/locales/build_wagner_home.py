@@ -52,6 +52,12 @@ SPINES = [
 ]
 
 
+from _props.structure import make_wall_with_openings   # (2026-10-07)
+
+from _props.views import make_view   # (2026-10-07)
+
+from _props.structure import make_frame_ring   # (2026-10-07: the frame boards → rings)
+
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D / 2.0, 0.0), size_x=ROOM_W + 0.4,
                size_y=ROOM_D + 0.4, palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
@@ -60,8 +66,8 @@ def build_shell():
               height=CEIL, axis='Y', palette=pal, baseboard_face_sign=+1)
     make_wall("Wall_E", (+ROOM_W / 2.0, ROOM_D / 2.0, 0), length=ROOM_D + 0.4,
               height=CEIL, axis='Y', palette=pal, baseboard_face_sign=-1)
-    make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W + 0.4, height=CEIL,
-              axis='X', palette=pal, baseboard_face_sign=-1)
+    make_wall_with_openings("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W + 0.4, height=CEIL,   # cut 2026-10-07 (window_backing_audit): the window was a pane on a solid wall
+              axis='X', palette=pal, baseboard_face_sign=-1, openings=[(0.300, 1.600, 1.700, 1.300)])
     make_wall("Wall_S", (0.0, 0.0, 0), length=ROOM_W + 0.4, height=CEIL,
               axis='X', palette=pal, baseboard_face_sign=+1)
     make_ceiling("Ceil", (0.0, ROOM_D / 2.0, CEIL), size_x=ROOM_W + 0.4,
@@ -74,7 +80,7 @@ def build_shell():
 
 def build_window():
     """N wall window with half-open curtains."""
-    make_box("Win_Frame", (0.3, ROOM_D - 0.06, 1.60), (1.9, 0.08, 1.5), COL_FRAME)
+    make_frame_ring("Win_Frame", (0.3, ROOM_D - 0.06, 1.60), (1.9, 0.08, 1.5), COL_FRAME)
     make_box("Win_Glass", (0.3, ROOM_D - 0.08, 1.60), (1.7, 0.05, 1.3), COL_GLASS)
     make_box("Win_Mull", (0.3, ROOM_D - 0.10, 1.60), (0.06, 0.05, 1.3), COL_FRAME)
     make_box("Win_Sill", (0.3, ROOM_D - 0.14, 0.82), (2.1, 0.20, 0.06), COL_FRAME)
@@ -180,6 +186,8 @@ def main():
     build_tv()
     build_seating_extras()
     build_details()
+    # what is outside the window (2026-10-07, _props/views.py)
+    make_view("View_N", "N", ROOM_D, 0.30, kind="back", ground_z=0.0, seed=27)   # the back yard, early evening
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/wagner_home.glb"))
     print(f"\n[build_wagner_home] exporting to {out}")

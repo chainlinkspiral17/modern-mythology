@@ -48,6 +48,8 @@ COL_WROUGHT = (0.16, 0.14, 0.14, 1.0); COL_SHUTTER = (0.42, 0.52, 0.36, 1.0)
 COL_BED_WOOD = (0.32, 0.20, 0.14, 1.0); COL_LINEN = (0.92, 0.86, 0.78, 1.0)
 ROOM_W = 7.0; ROOM_D = 6.0; CEIL = 3.40
 
+from _props.structure import make_frame_ring   # (2026-10-07: the frame boards → rings)
+
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4, palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
     # East wall is brick
@@ -78,7 +80,7 @@ def build_shuttered_windows():
     # the piers INSIDE; the iron rail on the gallery deck OUTSIDE (draft
     # 3 — the whole set used to sit inside the wall's thickness)
     for sgn, sx in [(-1, -2.50), (+1, +2.50)]:
-        make_box(f"Window_{sgn:+d}_Frame", (sx, 0.0, 1.80), (1.40, 0.04, 2.40), (0.42, 0.32, 0.22, 1.0))
+        make_frame_ring(f"Window_{sgn:+d}_Frame", (sx, 0.0, 1.80), (1.40, 0.04, 2.40), (0.42, 0.32, 0.22, 1.0), bar=0.10)
         make_box(f"Window_{sgn:+d}_Glass", (sx, -0.02, 1.80), (1.20, 0.005, 2.20), (0.96, 0.84, 0.62, 0.70))
         make_box(f"Window_{sgn:+d}_Mullion", (sx, -0.015, 1.80), (0.04, 0.02, 2.20), (0.42, 0.32, 0.22, 1.0))
         for shs in (-1, +1):

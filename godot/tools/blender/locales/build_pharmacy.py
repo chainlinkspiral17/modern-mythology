@@ -53,6 +53,10 @@ PRODUCTS = [
 ]
 
 
+from _props.structure import make_wall_with_openings   # (2026-10-07)
+
+from _props.views import make_view   # (2026-10-07)
+
 def _stocked_run(prefix, x0, x1, y, z, seed=0):
     n = max(3, int((x1 - x0) / 0.30))
     w = (x1 - x0) / n
@@ -75,8 +79,8 @@ def build_shell():
               height=CEIL, axis='Y', palette=pal, baseboard_face_sign=-1)
     make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W + 0.4, height=CEIL,
               axis='X', palette=pal, baseboard_face_sign=-1)
-    make_wall("Wall_S", (0.0, 0.0, 0), length=ROOM_W + 0.4, height=CEIL,
-              axis='X', palette=pal, baseboard_face_sign=+1)
+    make_wall_with_openings("Wall_S", (0.0, 0.0, 0), length=ROOM_W + 0.4, height=CEIL,   # cut 2026-10-07 (window_backing_audit): the window was a pane on a solid wall
+              axis='X', palette=pal, baseboard_face_sign=+1, openings=[(-0.600, 1.450, 2.400, 1.600)])
     make_ceiling("Ceil", (0.0, ROOM_D / 2.0, CEIL), size_x=ROOM_W + 0.4,
                  size_y=ROOM_D + 0.4, with_grid=True, with_stains=False,
                  palette={"tile": COL_CEIL})
@@ -181,6 +185,8 @@ def main():
     build_mirror()
     build_office()
     build_checkout()
+    # what is outside the window (2026-10-07, _props/views.py)
+    make_view("View_S", "S", 0.0, 0.0, kind="street", ground_z=0.0, seed=26)   # the street past the storefront
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/pharmacy.glb"))
     print(f"\n[build_pharmacy] exporting to {out}")

@@ -30,6 +30,8 @@ COL_BRASS = (0.74, 0.56, 0.28, 1.0)
 ROOM_W = 5.0; ROOM_D = 7.0; CEIL = 2.80
 
 
+from _props.structure import make_frame_ring   # (2026-10-07: the frame boards → rings)
+
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
                palette={"vinyl": COL_FLOOR_HARDWOOD, "seam": COL_FLOOR_SEAM})
@@ -51,7 +53,7 @@ def build_shell():
 
 def build_front_window_and_fire_escape():
     # Front window (S, between Wall_S_W and Wall_S_E)
-    make_box("FrontWindow_Frame", (0.0, 0.04, 1.55), (2.00, 0.04, 1.20), (0.42, 0.32, 0.22, 1.0))   # wall to wall (2026-09-22: 20 cm short of each)
+    make_frame_ring("FrontWindow_Frame", (0.0, 0.04, 1.55), (2.00, 0.04, 1.20), (0.42, 0.32, 0.22, 1.0), bar=0.10)   # wall to wall (2026-09-22: 20 cm short of each)
     make_box("FrontWindow_Glass", (0.0, 0.06, 1.55), (1.80, 0.005, 1.00), COL_WINDOW_GLASS)
     make_box("FrontWindow_Apron", (0.0, 0.0, 0.475), (2.00, 0.20, 0.95), (0.42, 0.32, 0.22, 1.0))   # the wall under the sill
     # Outside: fire-escape platform + railing visible just past the glass

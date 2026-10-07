@@ -24,11 +24,18 @@ PAL_WALL = {"wall":(0.96,0.84,0.62,1.0),"baseboard":(0.62,0.42,0.22,1.0)}
 COL_FLOOR = (0.62,0.46,0.30,1.0); COL_SEAM = (0.32,0.22,0.14,1.0); COL_WOOD = (0.42,0.30,0.18,1.0)
 COL_ACCENT = (0.78,0.42,0.22,1.0)
 
+from _props.structure import make_wall_with_openings   # (2026-10-07)
+
+from _props.structure import make_frame_ring   # (2026-10-07: the frame boards → rings)
+
+from _props.views import make_view   # (2026-10-07)
+
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
                palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
-    for nm, x, bb in [("Wall_W", -ROOM_W/2.0, +1), ("Wall_E", +ROOM_W/2.0, -1)]:
-        make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=bb)
+    # (2026-10-07, window_backing_audit) the loop unrolled: Wall_E is cut
+    make_wall("Wall_W", (-ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall_with_openings("Wall_E", (+ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=-1, openings=[(4.850, 1.450, 0.600, 1.040)])
     make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
     make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
     make_wall("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
@@ -158,7 +165,7 @@ def build_drive_thru_2026_08():
     order everyone yells through the window instead)."""
     wx = ROOM_W/2.0 - 0.10
     # X-thin window (E wall — hand-built; make_window is Y-axis only).
-    make_box("DriveThru_Frame", (wx, 4.6, 1.45), (0.08, 1.30, 1.20), (0.55, 0.55, 0.58, 1.0))
+    make_frame_ring("DriveThru_Frame", (wx, 4.6, 1.45), (0.08, 1.30, 1.20), (0.55, 0.55, 0.58, 1.0))
     make_box("DriveThru_Glass", (wx+0.01, 4.85, 1.45), (0.03, 0.60, 1.04), (0.62, 0.72, 0.76, 0.6))
     make_box("DriveThru_Slide", (wx+0.02, 4.30, 1.45), (0.03, 0.55, 1.04), (0.58, 0.68, 0.72, 0.7))
     make_box("DriveThru_Sill", (wx-0.10, 4.6, 0.86), (0.30, 1.40, 0.05), (0.66, 0.62, 0.56, 1.0))
@@ -215,6 +222,8 @@ def main():
     build_neon_sign()
     build_string_lights()
     build_ceiling_infra()
+    # what is outside the window (2026-10-07, _props/views.py)
+    make_view("View_E", "E", ROOM_W/2.0, 4.85, kind="street", ground_z=0.0, seed=29)   # the drive-thru lane, the road past it
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/el_rancho_taqueria.glb"))
     print(f"\n[build_el_rancho_taqueria] exporting to {out}")

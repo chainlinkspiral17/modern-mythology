@@ -72,6 +72,9 @@ PLANS = {
               ("candy", "candy"), ("candy", "jerky", "candy")),
     "auto": (("jug", "oil"), ("oil", "jug", "oil"), ("candy", "jerky"), ("chips", "tubes")),
     "bread": (("cookies", "cookies"), ("chips", "chips"), ("chips", "cookies"), ("chips", "chips"), ("cookies", "chips")),
+    # the dairy case, bottom shelf first (make_cooler_door stock="dairy")
+    "dairy": (("gallon", "gallon"), ("gallon", "gallon", "gallon"), ("halfgal", "halfgal", "halfgal"),
+              ("eggs", "butter", "eggs"), ("yogurt", "cheese", "yogurt")),
     "grocery": (("cans", "cans", "jars"), ("cans", "pasta", "cans"), ("cereal", "pasta", "cereal"),
                 ("cereal", "cereal", "pasta"), ("bottles", "jars", "bottles")),
 }
@@ -194,6 +197,62 @@ def merch_section(tag, kind, x0, front_y, sgn, z0, k, width=0.48):
                          ((0.70, 0.22, 0.14, 1.0), (0.88, 0.70, 0.40, 1.0), (0.40, 0.48, 0.20, 1.0))[(k + i) % 3], segments=6)
             make_cyl(f"{tag}_Jar_{i}_0_Lid", (x, Y(0.045), z0 + 0.14), 0.043, 0.02, BAND_TINTS[(k + i) % 4], segments=6)
             make_cyl(f"{tag}_Jar_{i}_0_Label", (x, Y(0.045), z0 + 0.06), 0.0425, 0.06, WHITE, segments=6)
+    # ── the dairy case (2026-10-07): the grocery's twelve-door cooler held
+    # beer six-packs and soda cans. Milk reads by its jug and cap colour
+    # (red whole, blue 2 %, cyan 1 %, pink skim), a half-gallon by its
+    # gable, eggs by the grey pulp carton, yogurt by the cup and foil.
+    elif kind == "gallon":
+        caps = ((0.82, 0.16, 0.14, 1.0), (0.18, 0.34, 0.72, 1.0), (0.36, 0.70, 0.86, 1.0), (0.90, 0.52, 0.64, 1.0))
+        n, xs = fit(0.17)
+        for i in range(n):
+            x = xs + i * 0.17
+            cap = caps[(k + i // 2) % len(caps)]
+            for r in range(1 if _LEAN else 2):
+                make_box(f"{tag}_Gallon_{i}_{r}", (x, Y(0.08 + r * 0.16), z0 + 0.12), (0.15, 0.15, 0.24), (0.95, 0.95, 0.92, 1.0))
+            make_box(f"{tag}_Gallon_{i}_0_Shoulder", (x, Y(0.08), z0 + 0.255), (0.10, 0.10, 0.03), (0.95, 0.95, 0.92, 1.0))
+            make_cyl(f"{tag}_Gallon_{i}_0_Cap", (x, Y(0.08), z0 + 0.28), 0.022, 0.02, cap, segments=6)
+            make_box(f"{tag}_Gallon_{i}_0_Label", (x, Y(0.004), z0 + 0.12), (0.12, 0.002, 0.08), cap)
+    elif kind == "halfgal":
+        n, xs = fit(0.11)
+        for i in range(n):
+            x = xs + i * 0.11
+            col = ((0.92, 0.92, 0.88, 1.0), (0.94, 0.86, 0.40, 1.0), (0.96, 0.62, 0.20, 1.0))[(k + i // 3) % 3]
+            for r in range(1 if _LEAN else 2):
+                make_box(f"{tag}_Carton_{i}_{r}", (x, Y(0.05 + r * 0.10), z0 + 0.10), (0.095, 0.095, 0.20), col)
+                make_box(f"{tag}_Carton_{i}_{r}_Gable", (x, Y(0.05 + r * 0.10), z0 + 0.215), (0.095, 0.03, 0.03), col)
+            make_box(f"{tag}_Carton_{i}_0_Band", (x, Y(0.0015), z0 + 0.14), (0.095, 0.003, 0.05), BRAND_TINTS[(k + 1) % len(BRAND_TINTS)])
+    elif kind == "eggs":
+        n, xs = fit(0.32)
+        for i in range(n):
+            x = xs + i * 0.32
+            for st in range(3):
+                make_box(f"{tag}_Eggs_{i}_{st}", (x, Y(0.07), z0 + 0.035 + st * 0.07), (0.30, 0.12, 0.068),
+                         (0.70, 0.70, 0.68, 1.0) if (i + st + k) % 3 else (0.92, 0.88, 0.80, 1.0))
+            make_box(f"{tag}_Eggs_{i}_Label", (x, Y(0.009), z0 + 0.175), (0.12, 0.002, 0.04), (0.20, 0.42, 0.24, 1.0))
+    elif kind == "butter":
+        n, xs = fit(0.14)
+        for i in range(n):
+            x = xs + i * 0.14
+            for st in range(2):
+                make_box(f"{tag}_Butter_{i}_{st}", (x, Y(0.04), z0 + 0.035 + st * 0.07), (0.12, 0.065, 0.068),
+                         (0.96, 0.88, 0.48, 1.0) if (i + k) % 2 else (0.92, 0.92, 0.88, 1.0))
+            make_box(f"{tag}_Butter_{i}_Band", (x, Y(0.0065), z0 + 0.105), (0.12, 0.002, 0.02), (0.20, 0.32, 0.62, 1.0))
+    elif kind == "yogurt":
+        n, xs = fit(0.08)
+        for i in range(n):
+            x = xs + i * 0.08
+            col = BRAND_TINTS[(k + i // 4) % len(BRAND_TINTS)]
+            for st in range(2):
+                make_cyl(f"{tag}_Yogurt_{i}_{st}", (x, Y(0.04), z0 + 0.045 + st * 0.09), 0.034, 0.088, (0.94, 0.94, 0.90, 1.0), segments=6)
+                make_cyl(f"{tag}_Yogurt_{i}_{st}_Foil", (x, Y(0.04), z0 + 0.0905 + st * 0.09), 0.035, 0.003, col, segments=6)
+    elif kind == "cheese":
+        n, xs = fit(0.17)
+        for i in range(n):
+            x = xs + i * 0.17
+            make_box(f"{tag}_Cheese_{i}", (x, Y(0.03), z0 + 0.11), (0.15, 0.03, 0.22),
+                     ((0.94, 0.62, 0.18, 1.0), (0.96, 0.86, 0.50, 1.0))[(i + k) % 2])
+            make_box(f"{tag}_Cheese_{i}_Seal", (x, Y(0.03), z0 + 0.225), (0.15, 0.03, 0.01), (0.94, 0.94, 0.92, 1.0))
+            make_box(f"{tag}_Cheese_{i}_Window", (x, Y(0.0145), z0 + 0.08), (0.08, 0.002, 0.07), (0.98, 0.80, 0.40, 1.0))
     elif kind == "pasta":
         n, xs = fit(0.14)
         for i in range(n):

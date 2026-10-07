@@ -380,10 +380,18 @@ rotation = Vector3(-0.5679, 0.6718, 0.0)
 metadata/fov = 42.0
 
 ; insert: the coffee on the counter
+; (2026-10-07: re-aimed onto the pot — the counter is the kit run now)
 [node name="shot_insert_coffee" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 1.4, -3.55)
-rotation = Vector3(-0.5009, 0.4213, 0.0)
+position = Vector3(-2.200, 1.400, -3.550)
+rotation = Vector3(-0.2025, 0.2728, 0.0)
 metadata/fov = 42.0
+
+; (2026-10-07) insert: the window over the sink, open — "Through the
+; window, the cicadas are loud" (ch20): the back yard past the faucet
+[node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.350, 1.600, -3.900)
+rotation = Vector3(-0.0781, 0.0538, 0.0)
+metadata/fov = 50.0
 
 ; insert: the door (the basement door, cracked the small specific way)
 [node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]

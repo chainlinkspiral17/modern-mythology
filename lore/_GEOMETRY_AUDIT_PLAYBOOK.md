@@ -158,6 +158,22 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-10-07 · a gate that does not call install_stubs() audits nothing shared
+
+- window_backing_audit's first version ran the builders against REAL
+  bpy (6 minutes) and recorded only the boxes a builder laid itself —
+  every make_wall in _props.structure was invisible, so it passed
+  rooms whose windows sat on solid walls. With P.A.install_stubs() it
+  runs in 9 s over 122 builders and found 17 more. Every new gate:
+  call install_stubs() in main, then make it FAIL on a known-bad
+  locale before trusting a zero.
+- Its second test: a thin part named *Frame* that spans most of a
+  pane, in its plane, is a solid BOARD over the opening (20 windows
+  had one — Pit Stop's pattern). `structure.make_frame_ring()` takes
+  the slab's (center, size) and lays head, sill and jambs instead, with
+  depth so the glass that leaned on the board still touches; set `bar`
+  to the board's margin round the glass or the pane floats.
+
 ### 2026-10-07 · window_backing_audit: a pane on a solid wall is a gate, not a habit
 
 - New gate (run_all_audits, ceiling 0): every thin upright *_Glass /

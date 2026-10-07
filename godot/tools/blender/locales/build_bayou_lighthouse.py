@@ -26,6 +26,8 @@ COL_PAPER = (0.92, 0.86, 0.74, 1.0); COL_OIL_LAMP = (0.96, 0.62, 0.28, 1.0)
 RADIUS = 2.40; CEIL = 6.00  # ground floor; lens stage rises above
 
 
+from _props.structure import make_frame_ring   # (2026-10-07: the frame boards → rings)
+
 def build_cylindrical_shell():
     make_floor("Floor", (0.0, 0.0, 0.0), size_x=RADIUS*2 + 0.4, size_y=RADIUS*2 + 0.4,
                palette={"vinyl": COL_FLOOR_PLANK, "seam": COL_FLOOR_SEAM})
@@ -99,7 +101,7 @@ def build_keepers_quarters():
 
 def build_bayou_view_window():
     # Single arched window on the N side, cypress water + tree visible
-    make_box("Window_N_Frame", (0.0, +RADIUS-0.04, 2.20), (1.40, 0.04, 1.40), COL_BRASS)
+    make_frame_ring("Window_N_Frame", (0.0, +RADIUS-0.04, 2.20), (1.40, 0.04, 1.40), COL_BRASS)
     make_box("Window_N_Glass", (0.0, +RADIUS-0.06, 2.20), (1.20, 0.005, 1.20),
              (0.78, 0.84, 0.86, 0.50))
     # Outside backdrop — bayou water + cypress at distance

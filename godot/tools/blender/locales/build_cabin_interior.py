@@ -67,11 +67,16 @@ COL_GLASS = (0.42, 0.52, 0.55, 0.6)
 COL_WOOL = (0.42, 0.46, 0.55, 1.0)
 
 
+from _props.structure import make_wall_with_openings   # (2026-10-07)
+
+from _props.structure import make_frame_ring   # (2026-10-07: the frame boards → rings)
+
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
                palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
-    for nm, x, bb in [("Wall_W", -ROOM_W/2.0, +1), ("Wall_E", +ROOM_W/2.0, -1)]:
-        make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=bb)
+    # (2026-10-07, window_backing_audit) the loop unrolled: Wall_E is cut
+    make_wall("Wall_W", (-ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall_with_openings("Wall_E", (+ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=-1, openings=[(1.450, 1.750, 1.060, 0.820), (4.200, 1.600, 1.240, 0.940)])
     # the N wall built round a REAL opening for the kitchen window
     # (2026-09-23: the wall was solid, so the crow "seen through the
     # glass" on the outside sill was never in any frame)
@@ -85,8 +90,8 @@ def build_shell():
     make_box("Wall_N_Base", (0.0, ROOM_D - 0.106, 0.08), (ROOM_W + 0.4, 0.012, 0.16), PAL_WALL["baseboard"])
     # the outside sill the crow stands on
     make_box("Kitchen_Window_OutSill", ((kw_x0 + kw_x1) / 2.0, ROOM_D + 0.275, 1.04), (1.10, 0.35, 0.04), wcol)
-    make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
-    make_wall("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall_with_openings("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(-2.000, 1.450, 1.100, 1.000)])   # cut 2026-10-07 (window_backing_audit): the window was a pane on a solid wall
+    make_wall_with_openings("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(2.000, 1.450, 0.950, 0.950)])   # cut 2026-10-07 (window_backing_audit): the window was a pane on a solid wall
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.45), (2.0, 0.20, 0.90), PAL_WALL["wall"])
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
                  with_grid=False, with_stains=False,
@@ -388,7 +393,7 @@ def build_east_room():
     # The window above the bed (E wall) — cedars beyond
     # on the wall's room face, glass in front of the frame (2026-09-24: frame and glass
     # were offset from the wall's CENTRE line — inside the wall, never visible)
-    make_box("EBed_Win_Frame", (2.88, 1.45, 1.75), (0.04, 1.20, 0.95), COL_WOOD_DK)
+    make_frame_ring("EBed_Win_Frame", (2.88, 1.45, 1.75), (0.04, 1.20, 0.95), COL_WOOD_DK)
     # "the window above the bed gave her the gray-green of cedars" (ch1):
     # the glass was a dark solid pane with nothing behind it (sheet 42) —
     # it is the cedars' grey-green now, with a cross of glazing bars
@@ -452,7 +457,7 @@ def build_wall_dressing():
     make_cyl("OilLamp_Flame", (0.0, 2.9, CEIL - 0.54), 0.010, 0.04, (1.0, 0.72, 0.24, 1.0), segments=5)
     # Curtained E window in the main… now inside the east room wall
     # segment north of the partition (main room's east outlook)
-    make_box("Window_E_Frame", (2.88, 4.2, 1.6), (0.04, 1.4, 1.1), COL_WOOD_DK)
+    make_frame_ring("Window_E_Frame", (2.88, 4.2, 1.6), (0.04, 1.4, 1.1), COL_WOOD_DK, bar=0.08)
     make_box("Window_E_Glass", (2.85, 4.2, 1.6), (0.02, 1.24, 0.94), COL_GLASS)
     for sgn in (-1, +1):
         make_box("Window_E_Curtain_%+d" % sgn, (2.815, 4.2 + sgn * 0.55, 1.6),

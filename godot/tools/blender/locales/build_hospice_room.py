@@ -59,6 +59,8 @@ COL_FLOWER = [(0.88, 0.46, 0.52, 1.0), (0.92, 0.74, 0.36, 1.0), (0.80, 0.56, 0.7
 ROOM_W = 6.0; ROOM_D = 5.5; CEIL = 2.80
 WIN_X = 1.5   # draft 3: the north window's centre (east of the bed)
 
+from _props.structure import make_frame_ring   # (2026-10-07: the frame boards → rings)
+
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4, palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
     for nm, x, bb in [("Wall_W", -ROOM_W/2.0, +1), ("Wall_E", +ROOM_W/2.0, -1)]:
@@ -80,7 +82,7 @@ def build_shell():
     # Large window N wall (soft natural light)
     # (the sill at 0.9 — a hospice window over a bed's head; the wall
     # behind the mattress is the spandrel, which the bed rule reads)
-    make_box("Window_N_Frame", (WIN_X, ROOM_D, 1.70), (2.00, 0.04, 1.60), COL_MEDICAL)
+    make_frame_ring("Window_N_Frame", (WIN_X, ROOM_D, 1.70), (2.00, 0.04, 1.60), COL_MEDICAL, bar=0.10)
     make_box("Window_N_Glass", (WIN_X, ROOM_D + 0.0231, 1.70), (1.80, 0.005, 1.40), (0.92, 0.92, 0.86, 0.50))
     make_box("Window_N_Mullion", (WIN_X, ROOM_D - 0.005, 1.70), (0.04, 0.02, 1.40), COL_MEDICAL)
     # the sill (the votive stands on it), the sheer curtains inside

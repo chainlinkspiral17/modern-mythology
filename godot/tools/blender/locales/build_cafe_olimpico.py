@@ -21,6 +21,8 @@ COL_ESPRESSO = (0.78, 0.78, 0.74, 1.0); COL_ESPRESSO_TRIM = (0.32, 0.22, 0.14, 1
 COL_PENNANT_BLUE = (0.18, 0.32, 0.62, 1.0); COL_PENNANT_RED = (0.78, 0.22, 0.20, 1.0)
 ROOM_W = 8.0; ROOM_D = 6.0; CEIL = 3.00
 
+from _props.structure import make_frame_ring   # (2026-10-07: the frame boards → rings)
+
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4, palette={"vinyl": COL_FLOOR_TILE, "seam": COL_GROUT})
     # (2026-10-03: walls CUT round their windows — they were solid behind the panes)
@@ -47,7 +49,7 @@ def build_shell():
     make_box("DoorBell_Arm", (0.55, 0.16, 2.42), (0.03, 0.14, 0.03), P.METAL_STEEL)
     make_cyl("DoorBell", (0.55, 0.26, 2.36), 0.05, 0.07, (0.82, 0.72, 0.42, 1.0), segments=10)
     wx = -ROOM_W/2.0 + 0.10
-    make_box("Win_BackCorner_Frame", (wx, 4.3, 1.65), (0.06, 1.30, 1.40), COL_WOOD)
+    make_frame_ring("Win_BackCorner_Frame", (wx, 4.3, 1.65), (0.06, 1.30, 1.40), COL_WOOD)
     make_box("Win_BackCorner_Glass", (wx+0.01, 4.3, 1.65), (0.03, 1.16, 1.26), (0.68, 0.76, 0.78, 0.6))
     make_box("Win_BackCorner_Mullion", (wx+0.02, 4.3, 1.65), (0.03, 0.05, 1.26), COL_WOOD)
 
