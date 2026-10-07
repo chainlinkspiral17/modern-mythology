@@ -3444,6 +3444,39 @@ frame edge. NEXT BY THE SAME RULE: the Kwik Stop (a model chapter, 12 x
 9 m — check it against the prose before enlarging), the vol 6 bedrooms
 (4 x 4 m template boxes), the family kitchens (the Miller rebuild).
 
+**2026-10-07 · THE MILLER KITCHEN, BUILT BIG (miller_kitchen draft 9,
+bianca_kitchen_morning draft 2).** Two template boxes of one room —
+`bianca_kitchen_morning` is Bianca's 4:11 in the same kitchen on
+Meadowlark Circle ("the green terrycloth robe is on the hook by the back
+door", "Mike's chair, which is on the short side near the window"). One
+room now, `_props/miller_kitchen.py`, on `_props/kitchen_kit.py`: a 9 x 7 m
+open kitchen (2.75 m ceiling) — the shaker run with the French-door
+fridge, the coffee corner, the range under its hood and chimney, the
+double sink under a CUT window onto the front yard and the cul-de-sac
+(the prose looked through a window that did not exist) with THE LIGHT
+OVER THE SINK in its valance; the island and three stools; the
+breakfast table east with Sammy's head, Bianca's long side, Mike's short
+end by the east window (sheers, the lit garage window beyond); the back
+door and the robe; the pantry, the wall phone and its worn patch, the
+calendar, the message board; the doorway to the front hall (the stair,
+the front door, the coats); a 5 m cased opening onto the family room
+(sofa, coffee table, armchair, TV, bookshelf, floor lamp, the backyard
+window and its crape myrtle). Across the street the Gellers' house with
+Don's porch light (a practical). Dressings: family (Mike's 6:24 coffee
+and phone, the French toast, the cinnamon roll, the kolaches, the jar,
+the Sentinel, the photographs, the white sedan) and dawn (the kettle,
+the grinder, her cup at Mike's end, the cordless, the stationery and the
+small drawer, Sammy's cereal; the pendants dark — "she does not turn on
+the overhead"; a cool 4 AM ambient). Morning / pre-dawn skies; seven
+practicals at real fixtures; 22 markers re-authored; the kitchen kit
+gained handle posts that reach the body. The grocery's calendar was
+buried in its wall (the helper faces +X): on the face now. Deck must
+REBUILD miller_kitchen, bianca_kitchen_morning (and centro_grocery_aisle
+for the calendar). Draft N+1: the upstairs landing from the stair's foot;
+the family room's evening practicals; Sammy's school things on the
+island; the sedan's two silhouettes; the henderson and kowalski kitchens
+onto the kit (same template, same build-big pass).
+
 NEXT (queued): Bianca's kitchen is the Miller kitchen again —
 `bianca_kitchen_morning` (ch 22 / 23) and `miller_kitchen` are one room
 on Meadowlark Circle (the cul-de-sac through the window, the green robe

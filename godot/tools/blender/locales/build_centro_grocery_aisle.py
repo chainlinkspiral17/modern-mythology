@@ -420,7 +420,9 @@ def build_east():
     for e in (-1, 1):
         make_cyl(f"Produce_Sign_Wire_{e:+d}", (-10.0 + e * 1.8, 6.5, (3.75 + CEIL) / 2.0), 0.006, CEIL - 3.75, STEEL, segments=4)
     make_box("Produce_Sign_Letters", (-10.0, 6.465, 3.40), (2.6, 0.01, 0.34), PAPER)
-    make_calendar("Calendar", (X1 - 0.05, 5.4, 1.70))
+    # the staff calendar on the east wall's face, faced into the store (-X)
+    make_box("Calendar_Body", (XE - 0.003, 5.4, 1.70), (0.005, 0.40, 0.50), (0.78, 0.62, 0.46, 1.0))
+    make_box("Calendar_Grid", (XE - 0.006, 5.4, 1.55), (0.001, 0.34, 0.20), PAPER)
 
 
 # ── outside the glass ──────────────────────────────────────────────

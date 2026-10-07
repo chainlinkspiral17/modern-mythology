@@ -607,15 +607,12 @@ const CAMERA_PRESETS := {
 	"miller_kitchen": {
 		"scene": "res://scenes/locales/miller_kitchen.tscn",
 		"requires_glb": "res://assets/3d/locales/miller_kitchen.glb",
-		# Sam's family kitchen 7×6 (godot x∈[-3.5,3.5], z∈[0,-6], ceil
-		# 2.6). Round pedestal table dead-centre (godot 0,-3), sink+counter
-		# NW (godot -1.75,-5), stove centre-N (1.75,-5), fridge NE
-		# (3.0,-5), E window. Camera in the SE quadrant just inside the
-		# door looking NW across the table toward the sink corner — the
-		# whole working kitchen in one 3/4 wide.
-		"camera_origin": Vector3(2.4, 1.60, -0.8),
-		"camera_rotation": Vector3(-0.05, deg_to_rad(48.6), 0.0),
-		"fov": 60.0,
+		# The Miller kitchen on Meadowlark Circle built big (2026-10-07): a
+		# 9 x 7 m open kitchen, family room and front hall (_props/miller_kitchen.py).
+		# From the family room side of the wide opening, looking N across the island to the sink window (the cul-de-sac), the range, the fridge; the breakfast table at right.
+		"camera_origin": Vector3(1.60, 1.65, 0.50),
+		"camera_rotation": Vector3(-0.061, 0.391, 0.0),
+		"fov": 62.0,
 		"suppress_input": true,
 	},
 	"centro_grocery_aisle": {
@@ -1221,14 +1218,12 @@ const CAMERA_PRESETS := {
 	"bianca_kitchen_morning": {
 		"scene": "res://scenes/locales/bianca_kitchen_morning.tscn",
 		"requires_glb": "res://assets/3d/locales/bianca_kitchen_morning.glb",
-		# Family kitchen 6×5 (godot x∈[-3,3], z∈[0,-5], ceil 2.6). Sink +
-		# counter NW (godot -1.5,-4.0), rectangular table centre (godot
-		# 0,-2.5), stove centre-N (1.5,-4.0), fridge E wall (2.5,-1.0).
-		# Camera SE just inside the door looking NW across the table to the
-		# sink corner; stove centre-back, fridge at frame right.
-		"camera_origin": Vector3(2.1, 1.58, -0.8),
-		"camera_rotation": Vector3(-0.05, deg_to_rad(48.3), 0.0),
-		"fov": 60.0,
+		# The Miller kitchen on Meadowlark Circle built big (2026-10-07): a
+		# 9 x 7 m open kitchen, family room and front hall (_props/miller_kitchen.py).
+		# From the sideboard by the east window, looking SW over Mike's chair and the table to the back door's robe and the dark family room.
+		"camera_origin": Vector3(3.90, 1.60, -6.00),
+		"camera_rotation": Vector3(-0.106, 2.495, 0.0),
+		"fov": 62.0,
 		"suppress_input": true,
 	},
 	"hospital_room": {

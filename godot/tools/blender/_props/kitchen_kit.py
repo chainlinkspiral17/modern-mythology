@@ -119,7 +119,7 @@ def range_(prefix, cx, y_back, top_z, *, width=0.76, depth=0.66):
     make_box(f"{prefix}_Oven_Window", (cx, y0 - 0.0245, 0.50), (width - 0.20, 0.002, 0.30), BLACK_GLASS)
     make_cyl(f"{prefix}_Oven_Handle", (cx, y0 - 0.06, 0.82), 0.012, width - 0.12, NICKEL, axis='X', segments=8)
     for sgn in (-1, 1):
-        make_box(f"{prefix}_Oven_Handle_Post_{sgn:+d}", (cx + sgn * (width / 2.0 - 0.08), y0 - 0.04, 0.82), (0.02, 0.04, 0.02), NICKEL)
+        make_box(f"{prefix}_Oven_Handle_Post_{sgn:+d}", (cx + sgn * (width / 2.0 - 0.08), y0 - 0.025, 0.82), (0.02, 0.05, 0.02), NICKEL)
     for k in range(5):
         make_cyl(f"{prefix}_Knob_{k}", (cx - width / 2.0 + 0.10 + k * (width - 0.20) / 4.0, y0 - 0.02, top_z - 0.10), 0.02, 0.025,
                  STAINLESS_DK, axis='Y', segments=8)
@@ -137,6 +137,8 @@ def fridge(prefix, cx, y_back, *, width=0.86, depth=0.74, height=1.78):
             make_box(f"{prefix}_Handle_{nm}_Post_{e:+d}", (cx + sgn * 0.04, y0 - 0.055, 1.20 + e * 0.33), (0.02, 0.03, 0.02), NICKEL)
     make_box(f"{prefix}_Freezer", (cx, y0 - 0.02, 0.33), (width - 0.01, 0.04, 0.56), STAINLESS)
     make_cyl(f"{prefix}_Freezer_Handle", (cx, y0 - 0.07, 0.55), 0.012, width - 0.16, NICKEL, axis='X', segments=8)
+    for e in (-1, 1):
+        make_box(f"{prefix}_Freezer_Handle_Post_{e:+d}", (cx + e * (width / 2.0 - 0.12), y0 - 0.045, 0.55), (0.02, 0.05, 0.02), NICKEL)
     make_box(f"{prefix}_Dispenser", (cx - width / 4.0, y0 - 0.041, 1.30), (0.18, 0.002, 0.28), (0.24, 0.24, 0.26, 1.0))
 
 

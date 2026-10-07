@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://miller_kitchen_vol6"]
+[gd_scene load_steps=26 format=3 uid="uid://miller_kitchen_vol6"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/miller_kitchen.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -128,8 +128,23 @@ shader_parameter/wobble_freq = 0.85
 shader_parameter/tint_amount = 0.18
 shader_parameter/tint_color = Color(0.78, 0.86, 0.92, 1)
 
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_Win"]
+; (2026-10-07: the sink window, the east window and the family room window
+; look out now — a sky, not a dark-brown backdrop)
+sky_top_color = Color(0.38, 0.56, 0.82, 1)
+sky_horizon_color = Color(0.84, 0.86, 0.84, 1)
+sky_curve = 0.25
+ground_bottom_color = Color(0.20, 0.20, 0.18, 1)
+ground_horizon_color = Color(0.50, 0.50, 0.46, 1)
+sun_angle_max = 8.0
+
+[sub_resource type="Sky" id="Sky_Win"]
+sky_material = SubResource("SkyMat_Win")
+radiance_size = 3
+
 [sub_resource type="Environment" id="Env_Locale"]
-background_mode = 1
+background_mode = 2
+sky = SubResource("Sky_Win")
 background_color = Color(0.10, 0.08, 0.06, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.86, 0.74, 0.52, 1)
@@ -137,7 +152,8 @@ ambient_light_energy = 0.85
 fog_enabled = true
 fog_light_color = Color(0.62, 0.46, 0.32, 1)
 fog_light_energy = 0.4
-fog_density = 0.005
+fog_density = 0.0015
+fog_sky_affect = 0.0
 adjustment_enabled = true
 adjustment_brightness = 1.0
 adjustment_contrast = 1.06
@@ -171,37 +187,6 @@ transform = Transform3D(-0.866, 0.354, -0.354, 0, 0.707, 0.707, 0.5, 0.612, -0.6
 light_color = Color(0.62, 0.74, 0.86, 1)
 light_energy = 0.3
 shadow_enabled = false
-
-; Overhead practical for the ceiling fluorescents (two tubes at
-; blender y≈1.8/4.2, z=2.6 → godot z=2.6, gz=-1.8/-4.2). One soft
-; warm-white omni centred over the room reads as the kitchen light.
-[node name="Practical_Overhead" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -3.0)
-light_color = Color(0.98, 0.92, 0.8, 1)
-light_energy = 1.4
-omni_range = 5.5
-shadow_enabled = false
-
-; ── vn_shot (2026-08) ──────────────────────────────────────────
-; The landline: blender (-2.85, 5.90, 1.42) → godot (-2.85, 1.42,
-; -5.90). Camera pulls back into the room, level with the base.
-[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 1.55, -4.45)
-rotation = Vector3(-0.63, 0.0, 0.0)   ; over the cell phone on the counter from 0.7 m in front, looking down 36° (2026-09-25: the counter moved under the old spot; the reframe tool then chose a bare-wall view)
-
-; The skillet: blender (1.59, 5.10, 0.97) → godot (1.59, 0.97, -5.10).
-[node name="shot_insert_french_toast" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.557, 1.717, -2.394)
-rotation = Vector3(-0.6112, 0.8249, 0.0)
-
-; Window_E, sink-side light.
-[node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.10, 1.55, -3.30)
-rotation = Vector3(0.0000, -1.4219, 0.0)
-
-[node name="shot_insert_sink_light" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444, 1.292, -4.600)
-rotation = Vector3(-0.2618, 1.3090, 0.0)
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -323,78 +308,164 @@ offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
 
+; the pendant over the table
+[node name="Table_Pendant_Practical" type="OmniLight3D" parent="."]
+position = Vector3(2.700, 1.500, -3.400)
+light_color = Color(1.00, 0.84, 0.62, 1)
+light_energy = 1.00
+shadow_enabled = false
+omni_range = 3.4
 
-; ── vn_shot coverage (2026-08-08 directing pass 3) ────────
-; rotation B: from the fridge corner looking back across the dinner table to the sink wall
+; island pendant
+[node name="Island_Pendant_0_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-1.900, 1.650, -4.600)
+light_color = Color(1.00, 0.86, 0.66, 1)
+light_energy = 0.70
+shadow_enabled = false
+omni_range = 2.8
+
+; island pendant
+[node name="Island_Pendant_1_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-0.500, 1.650, -4.600)
+light_color = Color(1.00, 0.86, 0.66, 1)
+light_energy = 0.70
+shadow_enabled = false
+omni_range = 2.8
+
+; the small light over the sink — 'the soft contained light it does in this hour'
+[node name="UnderCab_Light_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-0.600, 2.050, -6.620)
+light_color = Color(1.00, 0.88, 0.66, 1)
+light_energy = 0.80
+shadow_enabled = false
+omni_range = 2.4
+
+; the hood lamp
+[node name="Range_Hood_Lamp_Lens_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-2.100, 1.550, -6.600)
+light_color = Color(1.00, 0.86, 0.60, 1)
+light_energy = 0.35
+shadow_enabled = false
+omni_range = 1.4
+
+; the family room's floor lamp
+[node name="FR_Floor_Lamp_Practical" type="OmniLight3D" parent="."]
+position = Vector3(2.700, 1.520, 0.700)
+light_color = Color(1.00, 0.82, 0.56, 1)
+light_energy = 0.60
+shadow_enabled = false
+omni_range = 3.0
+
+; Don Geller's porch light across the cul-de-sac
+[node name="Don_Porch_Light_Practical" type="OmniLight3D" parent="."]
+position = Vector3(2.750, 2.100, -29.850)
+light_color = Color(1.00, 0.82, 0.52, 1)
+light_energy = 0.90
+shadow_enabled = false
+omni_range = 4.5
+
+; the lit garage window — Sam's father is in the garage
+[node name="Thru_E_Garage_Window_Practical" type="OmniLight3D" parent="."]
+position = Vector3(9.300, 1.600, -3.400)
+light_color = Color(1.00, 0.86, 0.56, 1)
+light_energy = 0.70
+shadow_enabled = false
+omni_range = 3.0
+
+; ── vn_shot coverage (2026-10-07, the Miller kitchen built big: one room, two dressings) ──
+; rotation B: from the hall doorway east across the island to the table and the east window
 [node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.05, 1.55, -5.3)
-rotation = Vector3(-0.239725, 2.54088, 0)
-metadata/fov = 56.0
+position = Vector3(-4.000, 1.620, -1.900)
+rotation = Vector3(-0.0539, -1.3507, 0.0)
+metadata/fov = 58.0
 
-; rotation C: sink-side POV over the table toward the nook TV and back door
+; rotation C: from the east window corner back across the kitchen to the hall and the family room
 [node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.6, 1.5, -4.6)
-rotation = Vector3(-0.200695, -2.19105, 0)
-metadata/fov = 54.0
+position = Vector3(4.000, 1.620, -5.600)
+rotation = Vector3(-0.0624, 2.0183, 0.0)
+metadata/fov = 58.0
 
-; insert: the table setting - fruit bowl and four chairs
+; insert: the landline on the west wall — it never rings
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-3.300, 1.550, -3.000)
+rotation = Vector3(-0.1133, 1.2131, 0.0)
+metadata/fov = 40.0
+
+; insert: the French toast in the skillet (ch11)
+[node name="shot_insert_french_toast" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.000, 1.550, -5.700)
+rotation = Vector3(-0.5590, 0.5912, 0.0)
+metadata/fov = 40.0
+
+; insert: the sink window — the front yard, the cul-de-sac
+[node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.600, 1.550, -5.400)
+rotation = Vector3(0.0000, -0.0000, 0.0)
+metadata/fov = 50.0
+
+; insert: the small light over the sink (ch11)
+[node name="shot_insert_sink_light" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.200, 1.500, -5.600)
+rotation = Vector3(0.4155, 0.6288, 0.0)
+metadata/fov = 45.0
+
+; insert: the table
 [node name="shot_insert_table" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.500, 1.436, -1.268)
-rotation = Vector3(-0.5236, 0.0000, 0.0)
-metadata/fov = 42.0
+position = Vector3(1.600, 1.450, -2.400)
+rotation = Vector3(-0.4234, -0.8330, 0.0)
+metadata/fov = 45.0
 
-; insert: the fridge door - magnets, notes, the family surface
+; insert: the fridge and its papers
 [node name="shot_insert_fridge" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.7, 1.45, -3.9)
-rotation = Vector3(-0.235286, -0.717541, 0)
-metadata/fov = 42.0
+position = Vector3(-2.600, 1.500, -4.900)
+rotation = Vector3(-0.1647, 0.8285, 0.0)
+metadata/fov = 45.0
 
-; insert: the hands at the two worn places on the table (ch4/ch11)
+; insert: the worn places where the hands meet
 [node name="shot_insert_hands" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.15, -2.15)
-rotation = Vector3(-0.4923, -0.4324, 0.0)
+position = Vector3(2.000, 1.350, -2.600)
+rotation = Vector3(-0.4615, -1.0304, 0.0)
 metadata/fov = 42.0
 
-; insert: the cinnamon roll on the small plate, not yet eaten (ch11)
+; insert: Eileen's cinnamon roll, untouched
 [node name="shot_insert_cinnamon_roll" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 1.15, -2.85)
-rotation = Vector3(-0.5589, -0.5880, 0.0)
-metadata/fov = 42.0
+position = Vector3(3.600, 1.250, -4.400)
+rotation = Vector3(-0.4506, 2.5088, 0.0)
+metadata/fov = 40.0
 
-; insert: the jar Bianca takes (ch11)
+; insert: the jar
 [node name="shot_insert_jar" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 1.15, -2.35)
-rotation = Vector3(-0.5083, -0.7576, 0.0)
-metadata/fov = 42.0
+position = Vector3(1.600, 1.200, -2.600)
+rotation = Vector3(-0.4565, -0.8330, 0.0)
+metadata/fov = 40.0
 
-; insert: the three kolaches from the place on Alamosa (ch11)
+; insert: the kolaches from the place on Alamosa
 [node name="shot_insert_kolaches" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 1.2, -2.85)
-rotation = Vector3(-0.7248, 0.0429, 0.0)
-metadata/fov = 42.0
+position = Vector3(2.200, 1.250, -4.400)
+rotation = Vector3(-0.4712, -2.6070, 0.0)
+metadata/fov = 40.0
 
-; insert: the white sedan at the curb, from the sink window (ch15)
+; insert: the white sedan at the curb, through the sink window
 [node name="shot_insert_sedan" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.300, 1.055, -7.713)
-rotation = Vector3(-0.2618, 0.2618, 0.0)
-metadata/fov = 42.0
+position = Vector3(-0.600, 1.600, -5.900)
+rotation = Vector3(-0.0627, 0.0898, 0.0)
+metadata/fov = 40.0
 
-; insert: he looks at the photographs
+; insert: the photographs on the island
 [node name="shot_insert_photographs" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 1.35, -4.5)
-rotation = Vector3(-0.5668, 0.6401, 0.0)
-metadata/fov = 42.0
+position = Vector3(-0.200, 1.450, -3.700)
+rotation = Vector3(-0.4599, 0.5061, 0.0)
+metadata/fov = 40.0
 
-; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
-; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+; closeup: Mike's chair at the short end, the east window behind
 [node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.109, 1.612, -1.825)
-rotation = Vector3(-0.2618, 0.7854, 0.0)
+position = Vector3(2.000, 1.250, -2.750)
+rotation = Vector3(-0.0517, -1.2278, 0.0)
 metadata/fov = 45.0
 
-; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
-; the far side of the same spot, so two speakers alternate sides
+; reverse: the head of the table, the kitchen behind
 [node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.804, 1.612, -3.738)
-rotation = Vector3(-0.2618, -2.3562, 0.0)
+position = Vector3(3.300, 1.250, -4.200)
+rotation = Vector3(-0.0532, 2.0106, 0.0)
 metadata/fov = 45.0
+
