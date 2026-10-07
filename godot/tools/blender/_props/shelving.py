@@ -10,38 +10,24 @@ from .geometry import make_box, make_cyl
 
 def make_snack_aisle(prefix, anchor, *, length=6.0, shelf_count=5,
                      products_per_shelf=12, palette=None,
-                     top_signs=None):
-    """E-W snack aisle with N shelves on both sides + top signs.
+                     top_signs=None, plan="convenience", seed=0):
+    """E-W gondola with `shelf_count` shelves on both sides + top signs.
     anchor=(center_x, run_center_y, base_z).
-    top_signs: optional (south_label, north_label) tuple."""
+    top_signs: optional (south_label, north_label) tuple.
+
+    2026-10-07: rebuilt on _props.merch — the "shelves" were 32 cm
+    VERTICAL fins with every product a floating saturated block beside
+    them (the vol 6 sheet's "toy blocks"). A spine, horizontal plates,
+    packaging by `plan` (merch.PLANS: convenience · chips · candy · auto
+    · grocery). products_per_shelf is kept for old callers and ignored."""
+    from .merch import stock_gondola
     palette = palette or {}
     base = palette.get("base", P.COUNTER_DARK)
     shelf_metal = palette.get("shelf", P.METAL_STEEL)
-    tints = palette.get("tints", P.SNACK_TINTS)
     cx, cy, bz = anchor
-    # Base support
-    make_box(f"{prefix}_Base", (cx, cy, bz + 0.10),
-             (length, 0.70, 0.20), base)
-    # 5 shelves both sides
-    for sh in range(shelf_count):
-        shz = bz + 0.34 + sh * 0.40
-        for sy_sgn in (-1, +1):
-            make_box(f"{prefix}_Shelf_{sh}_y{sy_sgn:+d}",
-                     (cx, cy + sy_sgn * 0.32, shz),
-                     (length, 0.04, 0.32), shelf_metal)
-            make_box(f"{prefix}_PriceTag_{sh}_y{sy_sgn:+d}",
-                     (cx, cy + sy_sgn * 0.32, shz - 0.10),
-                     (length, 0.001, 0.04), P.PAPER)
-            for p in range(products_per_shelf):
-                px = -(length / 2.0) + (p + 0.5) * (length / products_per_shelf)
-                tint = tints[(sh * 3 + p) % len(tints)]
-                base_h_table = [0.18, 0.22, 0.26, 0.30, 0.16, 0.20]
-                base_h: float = base_h_table[(sh + p) % len(base_h_table)]
-                make_box(f"{prefix}_Snack_{sh}_y{sy_sgn:+d}_{p}",
-                         (cx + px, cy + sy_sgn * 0.26,
-                          shz + base_h / 2.0 + 0.02),
-                         (length / products_per_shelf * 0.6, 0.20, base_h),
-                         tint)
+    levels = [bz + 0.34 + sh * 0.40 for sh in range(shelf_count)]
+    stock_gondola(prefix, (cx, cy, bz), length=length, levels=levels, plan=plan, seed=seed,
+                  base_col=base, metal=shelf_metal, tag_col=P.PAPER, end_panels=False)
     # Optional top signs hanging from ceiling structure
     if top_signs is not None:
         label_text_tint = P.PAPER
@@ -75,12 +61,12 @@ def make_endcap(prefix, anchor, *, palette=None, shelves=4):
         shz = bz + 0.40 + sh * 0.34
         make_box(f"{prefix}_Shelf_{sh}", (cx, cy, shz),
                  (0.62, 0.70, 0.02), metal)
-        for p in range(4):
-            px = -0.20 + p * 0.14
-            tint = tints[(sh + p) % len(tints)]
-            make_box(f"{prefix}_Product_{sh}_{p}",
-                     (cx + px, cy, shz + 0.10),
-                     (0.10, 0.50, 0.18), tint)
+        # stocked from both faces (2026-10-07: were four floating blocks)
+        from .merch import merch_section
+        kind = ("tubes", "candy", "nuts", "cookies", "jerky")[sh % 5]   # all under the 32 cm between plates
+        for sgn in (-1, 1):
+            merch_section(f"{prefix}_Stock_{sh}_{sgn:+d}", kind, cx - 0.30, cy + sgn * 0.35, sgn, shz + 0.01,
+                          sh * 5 + (2 if sgn > 0 else 0), width=0.60)
     make_box(f"{prefix}_Header", (cx, cy, bz + 0.40 + shelves * 0.34),
              (0.62, 0.78, 0.20), header)
 

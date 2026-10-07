@@ -341,7 +341,7 @@ def install_stubs():
     # objects before this line was widened (2026-08-12), which also
     # means their clipping went unchecked.
     for real_mod in ("detail", "trees", "objects", "drones",
-                     "creatures", "vehicles", "buildings", "furniture", "structure", "shelving", "decor",
+                     "creatures", "vehicles", "buildings", "furniture", "structure", "merch", "shelving", "decor",
                      "food_service", "cleaning", "coolers_drinks",
                      "signage", "store_fixtures", "safety",
                      # whole ROOMS shared by two locales (2026-10-06: the

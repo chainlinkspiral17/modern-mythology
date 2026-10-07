@@ -367,7 +367,7 @@ def build_office():
 # ════════════════════════════════════════════════════════════════
 def build_floor_props():
     # Single short aisle (gas station, not a grocery)
-    ax, ay = -1.0, 4.0
+    ax, ay = -0.8, 4.0      # (2026-10-07: 0.86 m to the coffee bar at -1.0)
     make_box("Aisle_Base", (ax, ay, 0.10),
              (5.0, 0.80, 0.20), COL_COUNTER_LAMINATE)
     # Center spine panel the two shelf sides hang off (a real
@@ -450,70 +450,11 @@ def build_floor_props():
 # MERCHANDISE (2026-10-06 · vol 6 contact sheet: "toy blocks")
 # ════════════════════════════════════════════════════════════════
 def _merch_section(tag, kind, x0, front_y, sgn, z0, k):
-    """Fill one 0.48 m shelf section with a FACING of one product.
-    front_y = the shelf's front edge; sgn = the direction the shelf
-    faces (-1 south, +1 north); z0 = the shelf's top."""
-    body = BRAND_TINTS[k % len(BRAND_TINTS)]
-    band = BAND_TINTS[k % len(BAND_TINTS)]
-    def Y(d):                                   # d metres back from the front edge
-        return front_y - sgn * d
-    if kind == "chips":
-        for i in range(3):
-            x = x0 + 0.08 + i * 0.16
-            h = 0.28 + 0.02 * ((i + k) % 2)
-            make_box(f"{tag}_Chips_{i}", (x, Y(0.07), z0 + h / 2.0), (0.15, 0.10, h), body)
-            make_box(f"{tag}_Chips_{i}_Band", (x, Y(0.019), z0 + h * 0.62), (0.15, 0.004, 0.07), band)
-            make_box(f"{tag}_Chips_{i}_Crimp", (x, Y(0.07), z0 + h + 0.008), (0.15, 0.02, 0.016), body)
-            make_box(f"{tag}_Chips_{i}_Back", (x, Y(0.20), z0 + h / 2.0 - 0.01), (0.15, 0.10, h - 0.02), body)
-    elif kind == "candy":
-        for t in range(2):
-            x = x0 + 0.12 + t * 0.24
-            make_box(f"{tag}_Candy_Tray_{t}", (x, Y(0.09), z0 + 0.025), (0.22, 0.16, 0.05), (0.86, 0.78, 0.64, 1.0))
-            make_box(f"{tag}_Candy_Tray_{t}_Header", (x, Y(0.165), z0 + 0.10), (0.22, 0.01, 0.10), BRAND_TINTS[(k + t) % len(BRAND_TINTS)])
-            for b in range(6):
-                make_box(f"{tag}_Candy_Tray_{t}_Bar_{b}", (x - 0.09 + b * 0.036, Y(0.06), z0 + 0.05 + 0.04),
-                         (0.03, 0.016, 0.08), BRAND_TINTS[(k + t + 2) % len(BRAND_TINTS)])
-    elif kind == "oil":
-        cols = ((0.12, 0.12, 0.14, 1.0), (0.16, 0.30, 0.62, 1.0), (0.94, 0.74, 0.16, 1.0))
-        for i in range(4):
-            x = x0 + 0.06 + i * 0.12
-            c = cols[(i // 2 + k) % 3]
-            for r in range(2):
-                make_box(f"{tag}_Oil_{i}_{r}", (x, Y(0.05 + r * 0.11), z0 + 0.095), (0.09, 0.06, 0.19), c)
-            make_cyl(f"{tag}_Oil_{i}_0_Cap", (x + 0.02, Y(0.05), z0 + 0.205), 0.016, 0.03, (0.86, 0.84, 0.80, 1.0), segments=6)
-            make_box(f"{tag}_Oil_{i}_0_Label", (x, Y(0.019), z0 + 0.09), (0.08, 0.003, 0.08), (0.94, 0.92, 0.86, 1.0))
-    elif kind == "jug":
-        for i in range(2):
-            x = x0 + 0.12 + i * 0.24
-            make_box(f"{tag}_Jug_{i}", (x, Y(0.08), z0 + 0.14), (0.18, 0.12, 0.28), (0.34, 0.60, 0.88, 1.0))
-            make_cyl(f"{tag}_Jug_{i}_Cap", (x + 0.05, Y(0.08), z0 + 0.295), 0.022, 0.03, (0.94, 0.94, 0.92, 1.0), segments=6)
-            make_box(f"{tag}_Jug_{i}_Label", (x, Y(0.019), z0 + 0.12), (0.14, 0.003, 0.10), (0.96, 0.96, 0.94, 1.0))
-            make_box(f"{tag}_Jug_{i}_Back", (x, Y(0.22), z0 + 0.14), (0.18, 0.12, 0.28), (0.30, 0.54, 0.80, 1.0))
-    elif kind == "tubes":
-        for i in range(5):
-            x = x0 + 0.05 + i * 0.095
-            make_cyl(f"{tag}_Tube_{i}", (x, Y(0.05), z0 + 0.115), 0.038, 0.23, body, segments=10)
-            make_cyl(f"{tag}_Tube_{i}_Lid", (x, Y(0.05), z0 + 0.2375), 0.040, 0.015, band, segments=10)
-            make_cyl(f"{tag}_Tube_{i}_Back", (x, Y(0.14), z0 + 0.115), 0.038, 0.23, body, segments=10)
-    elif kind == "jerky":
-        for i in range(4):
-            x = x0 + 0.06 + i * 0.12
-            for r in range(3):
-                make_box(f"{tag}_Jerky_{i}_{r}", (x, Y(0.03 + r * 0.06), z0 + 0.10), (0.11, 0.025, 0.20),
-                         ((0.26, 0.16, 0.10, 1.0), (0.12, 0.12, 0.14, 1.0))[(i + k) % 2])
-            make_box(f"{tag}_Jerky_{i}_Label", (x, Y(0.016), z0 + 0.13), (0.09, 0.002, 0.05), (0.80, 0.18, 0.14, 1.0))
-    elif kind == "cookies":
-        for i in range(2):
-            x = x0 + 0.12 + i * 0.24
-            for st in range(3):
-                make_box(f"{tag}_Cookies_{i}_{st}", (x, Y(0.08), z0 + 0.025 + st * 0.05), (0.20, 0.13, 0.048),
-                         BRAND_TINTS[(k + i + st) % len(BRAND_TINTS)] if st == 2 else body)
-    elif kind == "nuts":
-        for i in range(4):
-            x = x0 + 0.06 + i * 0.12
-            for r in range(2):
-                make_cyl(f"{tag}_Nuts_{i}_{r}", (x, Y(0.05 + r * 0.10), z0 + 0.06), 0.045, 0.12, body, segments=10)
-            make_cyl(f"{tag}_Nuts_{i}_0_Lid", (x, Y(0.05), z0 + 0.125), 0.046, 0.012, band, segments=10)
+    """One 0.48 m facing — the grammar lives in _props/merch.py now (it
+    began here, 2026-10-06, and the shelving kit and the Kwik Stop share
+    it). make_box's delegate has put _props on the path by this call."""
+    from _props.merch import merch_section
+    merch_section(tag, kind, x0, front_y, sgn, z0, k, width=0.48)
 
 
 def build_merchandise_2026_10():
@@ -522,7 +463,7 @@ def build_merchandise_2026_10():
     on every shelf edge; end caps; the water stacked at the counter end.
     Skip's counter: the lottery case, the impulse rack, his phone and
     his vape; the cigarette wall as packs; a roller grill by the coffee."""
-    ax, ay = -1.0, 4.0
+    ax, ay = -0.8, 4.0      # (2026-10-07: 0.86 m to the coffee bar at -1.0)
     plan = {0: ("oil", "jug", "oil", "jug", "oil", "jug", "oil", "jug", "oil", "jug"),
             1: ("candy", "jerky", "candy", "nuts", "candy", "jerky", "candy", "nuts", "candy", "jerky"),
             2: ("chips", "chips", "tubes", "cookies", "chips", "chips", "tubes", "cookies", "chips", "chips")}
@@ -625,13 +566,16 @@ def build_skips_side_2026_10():
     make_cyl("Counter_Back_Trash", (cx - 1.75, back + 0.30, 0.28), 0.17, 0.56, (0.26, 0.28, 0.30, 1.0), segments=12)
     make_cyl("Counter_Back_Trash_Liner", (cx - 1.75, back + 0.30, 0.565), 0.175, 0.03, (0.10, 0.10, 0.10, 1.0), segments=12)
     # the east wall: the ice merchandiser by the door, the ATM, the poster
-    ix = 5.52
-    make_box("Ice_Merchandiser", (ix, 3.20, 0.95), (0.76, 1.30, 1.90), (0.96, 0.96, 0.96, 1.0))
-    make_box("Ice_Merchandiser_Band", (ix - 0.381, 3.20, 1.62), (0.004, 1.30, 0.34), (0.16, 0.40, 0.72, 1.0))
-    make_box("Ice_Merchandiser_Lettering", (ix - 0.384, 3.20, 1.62), (0.002, 0.70, 0.20), (0.96, 0.96, 0.96, 1.0))
+    # the ice merchandiser stands OUTSIDE by the door, as gas stations keep
+    # it (2026-10-07: inside it left 0.38 m to the counter and 0.90 m to
+    # the ATM); seen through the east picture window
+    ix, iy = 2.45, -0.62
+    make_box("Ice_Merchandiser", (ix, iy, 0.95), (1.30, 0.76, 1.90), (0.96, 0.96, 0.96, 1.0))
+    make_box("Ice_Merchandiser_Band", (ix, iy - 0.381, 1.62), (1.30, 0.004, 0.34), (0.16, 0.40, 0.72, 1.0))
+    make_box("Ice_Merchandiser_Lettering", (ix, iy - 0.384, 1.62), (0.70, 0.002, 0.20), (0.96, 0.96, 0.96, 1.0))
     for k in range(2):
-        make_box(f"Ice_Merchandiser_Door_{k}", (ix - 0.381, 2.88 + k * 0.64, 0.80), (0.004, 0.60, 1.10), (0.84, 0.88, 0.92, 1.0))
-        make_box(f"Ice_Merchandiser_Handle_{k}", (ix - 0.40, 3.12 + k * 0.16, 0.95), (0.03, 0.03, 0.30), COL_METAL_STEEL)
+        make_box(f"Ice_Merchandiser_Door_{k}", (ix - 0.32 + k * 0.64, iy - 0.381, 0.80), (0.60, 0.004, 1.10), (0.84, 0.88, 0.92, 1.0))
+        make_box(f"Ice_Merchandiser_Handle_{k}", (ix - 0.08 + k * 0.16, iy - 0.40, 0.95), (0.03, 0.03, 0.30), COL_METAL_STEEL)
     make_box("ATM_Body", (5.66, 5.05, 0.80), (0.48, 0.60, 1.60), (0.30, 0.32, 0.36, 1.0))
     make_box("ATM_Screen", (5.418, 5.05, 1.30), (0.004, 0.34, 0.24), (0.36, 0.56, 0.78, 1.0))
     make_box("ATM_Keypad", (5.38, 5.05, 1.05), (0.08, 0.30, 0.03), (0.60, 0.60, 0.62, 1.0))
@@ -737,6 +681,11 @@ def export_glb():
     os.makedirs(out_dir, exist_ok=True)
     out_path = os.path.join(out_dir, OUTPUT_NAME)
     print(f"\n[build_nexcorp_gas_go] exporting to {out_path}")
+    try:    # one mesh per stocked fixture (2026-10-07, _props.geometry.join_stock)
+        from _props.geometry import join_stock
+        join_stock()
+    except Exception as _e:
+        print("[join_stock] skipped:", _e)
     bpy.ops.object.select_all(action='SELECT')
     base = {'filepath': out_path, 'export_format': 'GLB',
             'use_selection': False, 'export_apply': True,

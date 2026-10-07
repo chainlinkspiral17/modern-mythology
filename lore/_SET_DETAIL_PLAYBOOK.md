@@ -84,6 +84,31 @@ henderson) got there by accumulating exactly these layers.
 
 ## Recent lessons
 
+### 2026-10-07 · stock reads by PACKAGING; a kit defect is fixed in the kit
+
+- Solid saturated blocks on a shelf read as toys at any count. A shelf
+  reads by its packaging grammar — a bag's band and crimp, a tray of
+  bars, a can's label, a bottle's neck, a box's panel — in brand tints
+  with one band colour, faced in rows of one product per section the
+  way stores face them. `_props/merch.py` holds it; use `stock_gondola`
+  for any aisle and `merch_section` for any single shelf.
+- The same defect lived in a shared kit AND a vendored copy (the Kwik
+  Stop's). Fix it in the kit, then grep the builders for the copy —
+  `SNACK_TINTS[` finds every block-stocking loop left.
+- Fixing a support can unmask a FLOAT: the aisle's fins had been the
+  "support" under a produce stand's tiers and scale. When an old
+  fixture changes shape, re-run support_audit on its neighbours.
+- Thousands of packages are thousands of draw calls: join each
+  fixture's stock into one mesh at export (`join_stock`) and keep the
+  packages sharp-edged.
+- A STORE IS WALKED. Lay fixtures out by the lanes between them, not
+  by their footprints: ≥ 0.90 m between any two fixtures that are not one
+  piece (1.1-1.4 m between gondolas reads as a real aisle), an endcap ON
+  its aisle's end or in open floor with a metre round it, never a
+  diagonal half-metre off a corner. `walkway_audit.py` measures it; the
+  user saw "shelves blocking shelves" the first time the stock read as
+  real — dense, legible stock exposes a cramped plan that blocks hid.
+
 ### 2026-10-03 · a home is ROOMS, not a box with furniture in it (the Roberts house)
 
 - The Deck, on the Lovers' domicile after a bones pass AND a proof-of-

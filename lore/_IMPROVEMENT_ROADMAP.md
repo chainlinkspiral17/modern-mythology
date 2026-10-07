@@ -3334,6 +3334,71 @@ Draft 5 targets: the crew's lunch litter; the radio's practical; the
 iron stair outside the front door; the man's cigarette ember; a Deck
 look at the 12 x 10 room's preset from the front door.
 
+**2026-10-07 · THE SHELVES, EVERYWHERE (the sheet's most repeated
+defect).** Every stocked store showed the same "toy blocks": the shared
+`make_snack_aisle` (grocery aisle, fueling station) and the Kwik Stop's
+vendored copy built each "shelf" as a 32 cm VERTICAL fin, with every
+product a floating saturated block beside it. `_props/merch.py` is the
+merchandise grammar the Gas & Go pass began — chip bags with a band and
+a crimp, candy trays, jerky, nuts, cookies, crisp tubes, motor oil,
+washer fluid, and for the grocery: cereal boxes with panels, stacked
+cans with labels, bottles with necks, jars with lids, pasta with
+windows — plus `stock_gondola` (base, a shelving spine, horizontal plates
+both sides, price strips and tags, the stock by PLAN: convenience · chips
+· candy · auto · grocery). `make_snack_aisle` and `make_endcap` are
+built on it; the Kwik Stop (CHIPS/SNACKS aisle, CANDY/JERKY aisle, both
+end-caps) and the Gas & Go use it; the grocery aisle stocks as a
+grocery. Fixed on the way: the grocery queue post stood inside aisle 0,
+the produce stand 10 cm into its end, its tiers 3 cm over their base and
+its scale hanging from nothing (the aisle's fins had been "supporting"
+them); the Kwik Stop's stale price strips at the old fin pitch retired.
+PERFORMANCE: a stocked store is thousands of packages — `join_stock()`
+(`_props.geometry`, called by every export) joins each fixture's
+`_Stock_` parts into one mesh (Kwik Stop 3364 parts -> 4 meshes; grocery
+6647 -> 5); packages are sharp-edged (the auto-chamfer tripled their
+vertices). The gates read builder names, not the GLB, so they are
+unchanged. The fueling station's preset stood 2 m up at an aisle end
+(a shelf top and an endcap header): at eye height in the open lane now.
+Deck must REBUILD kwik_stop, centro_grocery_aisle,
+nexcorp_fueling_station, nexcorp_gas_go. Draft N+1: the reach-in
+coolers (`make_cooler_row`, the Kwik Stop's beer cooler) still hold
+blocks — bottles and cans by the same grammar; the cigarette walls; the
+pegboard chip racks hang flat plates.
+
+THE USER, same day: "Looks like shelves blocking shelves and aisles too
+cramped for pedestrians." Measured, it was worse than it looked: the
+grocery had 0.50 m between two gondolas and 0.15 m from aisle 0 to the
+checkout; the Kwik Stop's endcaps stood 0.42 m off aisle 0's corners and
+its soda pyramid 0.40 m off the aisle face; the fueling station's aisles
+were 0.90 m apart, its endcap 0.23 m from the coolers and its register
+0.05 m from the cooler bank; the Gas & Go's ice merchandiser 0.38 m from
+the counter. Re-laid: the grocery is two 4 m aisles 1.40 m apart with
+the endcaps on aisle 1's ends (Aisle_3 removed), the checkout lane 1.15
+m, the bale clear of the produce; the Kwik Stop's endcaps on the WEST
+ends of its two aisles and the pyramid in the open entry zone; the
+fueling station's aisles 1.20 m apart, its register narrower and west of
+the coolers, its coffee counter against the north wall east of the
+restroom door, one endcap against the front wall; the Gas & Go's ice
+chest OUTSIDE by the door (where gas stations keep it) and its aisle
+0.2 m east of the coffee bar. NEW GATE `walkway_audit.py` (in the suite,
+ceiling 0): every pair of floor-standing store fixtures at least 0.90 m
+apart unless they touch as one fixture — it found four lanes the first
+measurement had missed. The grocery GLB is 7.5 MB now (two aisles).
+Deck must REBUILD kwik_stop, centro_grocery_aisle,
+nexcorp_fueling_station, nexcorp_gas_go. Draft N+1: extend
+walkway_audit's STORES to the diner, the cafes and the bars (tables and
+chairs: the same question at a different scale).
+NEXT (queued): Bianca's kitchen is the Miller kitchen again —
+`bianca_kitchen_morning` (ch 22 / 23) and `miller_kitchen` are one room
+on Meadowlark Circle (the cul-de-sac through the window, the green robe
+on the hook by the back door, Mike's chair at the short side by the
+window). `_props/kitchen_kit.py` (shaker base and upper runs, subway
+tile, a stainless sink, slide-in range, French-door fridge, dishwasher)
+is written for it: rebuild the Miller room on the kit with the sink
+window CUT (the prose's front-yard view has no window today) and the
+east window and back door cut, keep its eight story passes, and build
+Bianca's locale from it with her dressing.
+
 **2026-10-06 · THE DOCK AT PRE-DAWN + GRACIELA'S KITCHEN, ONCE + THE GAS & GO STOCKED + THE BACK LOT (vol 6
 contact sheet, its two weakest frames).** CENTRO_DOCK rendered black:
 the dawn bands stood 520 m out where the 0.004 fog left 12 % of them,

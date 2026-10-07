@@ -160,6 +160,37 @@ def gltf_color_kwargs(op=None):
     return kw
 
 
+def join_stock(marker="_Stock_"):
+    """Join every mesh whose name holds `marker` into ONE mesh per
+    fixture (the name before the marker) — 2026-10-07: a stocked store
+    is thousands of packages, each its own mesh and draw call (the Kwik
+    Stop went 5 MB -> 13 MB, the grocery aisle to 21 MB). The gates read
+    the builder's names at build time, so nothing they measure changes;
+    the GLB gets one `<fixture>_Stock` mesh per gondola. All parts carry
+    the same "Col" corner attribute, which the join keeps."""
+    if bpy is None:
+        return 0
+    groups = {}
+    for o in list(bpy.data.objects):
+        if o.type == 'MESH' and marker in o.name:
+            groups.setdefault(o.name.split(marker)[0] + marker.rstrip("_"), []).append(o)
+    joined = 0
+    for key, objs in groups.items():
+        if len(objs) < 2:
+            continue
+        bpy.ops.object.select_all(action='DESELECT')
+        for o in objs:
+            o.select_set(True)
+        bpy.context.view_layer.objects.active = objs[0]
+        bpy.ops.object.join()
+        objs[0].name = key
+        joined += len(objs) - 1
+    bpy.ops.object.select_all(action='DESELECT')
+    if joined:
+        print(f"[props.join_stock] joined {joined} stock parts into {len(groups)} fixture meshes")
+    return joined
+
+
 def export_glb(out_path, *, export_lights=False, export_cameras=False):
     """Standard glTF export — select-all + use_selection=False so
     every object lands in the GLB. Defaults match what all our
@@ -168,6 +199,7 @@ def export_glb(out_path, *, export_lights=False, export_cameras=False):
         return
     import os
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
+    join_stock()
     bpy.ops.object.select_all(action='SELECT')
     base = {'filepath': out_path, 'export_format': 'GLB',
             'use_selection': False, 'export_apply': True,

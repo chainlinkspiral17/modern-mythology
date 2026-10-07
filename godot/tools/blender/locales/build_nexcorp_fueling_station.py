@@ -33,16 +33,17 @@ def build_register_counter():
     # a narrow face against the wall and the run jutting into
     # the room. Swapped 2026-08-12 (same bug as the New
     # Orleans bar and the pit stop's lunch counter).
-    top_z = make_counter("Register", (ROOM_W/4.0, ROOM_D-1.5, 0.0), length=1.00, depth=2.40, height=0.95,
+    # (2026-10-07) 1.60 m wide and 0.6 m west: it ran to x 3.2, 0.05 m off the cooler bank
+    top_z = make_counter("Register", (1.40, ROOM_D-1.5, 0.0), length=1.00, depth=1.60, height=0.95,
                          palette={"formica": COL_WOOD, "top": (0.18, 0.12, 0.20, 1.0), "kick": (0.18, 0.12, 0.20, 1.0)})
     make_register("RegisterMachine", (ROOM_W/4.0, ROOM_D-1.5-0.30, top_z))
 
 def build_endcaps():
-    for ei, ex in enumerate([-3.0, +3.0]):
-        # y+1.0 put endcap 1 inside the register counter (which
-        # spans x 0.8-3.2 at y 4.0-5.0). Endcaps flank the aisle
-        # mouth, forward of the register.
-        make_endcap(f"EndCap_{ei}", (ex, ROOM_D/2.0 - 0.9, 0.0))
+    # (2026-10-07, the user: "shelves blocking shelves and aisles too
+    # cramped") — endcap 1 stood 0.23 m off the coolers, endcap 0 against
+    # aisle 0's end. The front zone holds ONE, against the front wall east
+    # of the door: 1.24 m to the coolers, 1.4 m to the aisles.
+    make_endcap("EndCap_1", (1.70, 0.55, 0.0))
 
 def build_ceiling_infra():
     for j in range(2):
@@ -69,13 +70,16 @@ def build_coolers():
 
 def build_aisles():
     for ai in range(2):
-        make_snack_aisle(f"Aisle_{ai}", (-1.2, 1.8+ai*1.6, 0.0), length=3.0, shelf_count=4)
+        # (2026-10-07) 1.20 m between the runs (was 0.90), 2.5 m long so the
+        # lane to the register stays open
+        make_snack_aisle(f"Aisle_{ai}", (-1.70, (1.60, 3.50)[ai], 0.0), length=2.4, shelf_count=4, plan=("auto", "convenience")[ai], seed=ai * 3)
 
 def build_coffee_hotcase():
     # Coffee station on a short NW counter
     # out of the door's swing (2026-09-24, the user: doorways obstructed)
-    make_box("CoffeeCounter", (-ROOM_W/2.0+0.9, ROOM_D-1.0 - 0.380, 0.45), (1.40, 0.60, 0.90), COL_WOOD)
-    make_coffee_pots("Coffee", (-ROOM_W/2.0+0.9, ROOM_D-1.0 - 0.380, 0.90), pots=2)   # the counter top (2026-09-23: 4 cm over it)
+    # against the north wall east of the restroom door (2026-10-07: it stood a metre off the wall, 0.47 m from aisle 1)
+    make_box("CoffeeCounter", (-1.20, ROOM_D-0.10-0.30, 0.45), (1.40, 0.60, 0.90), COL_WOOD)
+    make_coffee_pots("Coffee", (-1.20, ROOM_D-0.10-0.30, 0.90), pots=2)   # the counter top (2026-09-23: 4 cm over it)
     # Roller-grill hot case on the register counter
     hx = ROOM_W/4.0
     make_box("HotCase", (hx-0.7, ROOM_D-1.5, 1.08), (0.50, 0.40, 0.30), (0.86, 0.72, 0.34, 1.0))

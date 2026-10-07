@@ -1166,11 +1166,14 @@ const CAMERA_PRESETS := {
 		# Big gas-station store 8×6 (godot x∈[-4,4], z∈[0,-6], ceil 2.8).
 		# Register counter NE (godot 2.0,-4.5) under a backlit brand sign,
 		# glass-door coolers along the E wall, snack aisles centre-W,
-		# storefront window + pumps on the W wall. Camera SW just inside
-		# the door looking NE across the aisles to the register + coolers.
-		"camera_origin": Vector3(-3.0, 2.0, -0.9),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(-54.3), 0.0),
-		"fov": 66.0,
+		# storefront window + pumps on the W wall. (2026-10-07: the camera
+		# stood 2 m up at the aisle's west end and saw a shelf top and an
+		# endcap header.) Just inside the door, south of the aisles, eye
+		# height, looking NE up the open lane: the stocked aisle ends at
+		# left, the register under its sign, the coolers at right.
+		"camera_origin": Vector3(-0.40, 1.62, -0.35),
+		"camera_rotation": Vector3(-0.107, -0.617, 0.0),
+		"fov": 64.0,
 		"suppress_input": true,
 	},
 	"sam_bedroom": {
@@ -2312,8 +2315,8 @@ const CAMERA_PRESETS := {
 		# the office looking S over Skip's side of the counter — his
 		# stool, the register, the pump controller — to the door and the
 		# pumps under the canopy through the south glass.
-		"camera_origin": Vector3(2.30, 1.70, -5.60),
-		"camera_rotation": Vector3(-0.151, -2.854, 0.0),
+		"camera_origin": Vector3(3.00, 1.70, -5.50),
+		"camera_rotation": Vector3(-0.161, -3.049, 0.0),
 		"fov": 62.0,
 		"suppress_input": true,
 	},

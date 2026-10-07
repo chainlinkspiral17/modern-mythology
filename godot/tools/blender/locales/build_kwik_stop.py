@@ -747,30 +747,17 @@ def build_snack_aisles():
     # Two aisles E-W, at Y=3.5 and Y=5.5. Narrower than v1, with
     # end-caps that lean forward (slanted feel from the reference).
     for j, ay in enumerate([3.5, 5.5]):
-        # Base support
-        make_box(f"Aisle_{j}_Base", (0.0, ay, 0.10),
-                 (6.0, 0.70, 0.20), COL_COUNTER_DARK)
-        # 5 product shelves
-        for sh in range(5):
-            shz = 0.34 + sh * 0.40
-            for sy_sgn in (-1, +1):
-                # Shelf plank
-                make_box(f"Aisle_{j}_Shelf_{sh}_y{sy_sgn:+d}",
-                         (0.0, ay + sy_sgn * 0.32, shz),
-                         (6.0, 0.04, 0.32), COL_METAL_STEEL)
-                # Price-tag strip
-                make_box(f"Aisle_{j}_PriceTag_{sh}_y{sy_sgn:+d}",
-                         (0.0, ay + sy_sgn * 0.32, shz - 0.10),
-                         (6.0, 0.001, 0.04), COL_PAPER)
-                # Products — vary height for visual interest
-                for p in range(12):
-                    px = -2.75 + p * 0.50
-                    tint = SNACK_TINTS[(j * 11 + sh * 3 + p) % len(SNACK_TINTS)]
-                    # Vary heights: tall bottles, short bags, etc.
-                    base_h = [0.18, 0.22, 0.26, 0.30, 0.16, 0.20][(j + sh + p) % 6]
-                    make_box(f"Aisle_{j}_Snack_{sh}_y{sy_sgn:+d}_{p}",
-                             (px, ay + sy_sgn * 0.26, shz + base_h / 2.0 + 0.02),
-                             (0.20, 0.20, base_h), tint)
+        # (2026-10-07) the gondola from the shared merchandise grammar:
+        # a spine, five horizontal plates a side, the stock as PACKAGING
+        # — the "shelves" were 32 cm vertical fins and every product a
+        # floating saturated block (the vol 6 sheet's "toy blocks").
+        # make_box's delegate has put _props on the path by now.
+        from _props.merch import stock_gondola
+        stock_gondola(f"Aisle_{j}", (0.0, ay, 0.0), length=6.0,
+                      levels=[0.34 + sh * 0.40 for sh in range(5)],
+                      plan=("chips", "candy")[j], seed=j * 7,
+                      base_col=COL_COUNTER_DARK, metal=COL_METAL_STEEL, tag_col=COL_PAPER,
+                      end_panels=False)
         # Top aisle-label sign (CHIPS / SNACKS / etc.)
         # Two different brand-coloured labels per aisle, hung from
         # the ceiling structure (NS faces)
@@ -792,30 +779,32 @@ def build_snack_aisles():
 
     # ── End-caps (the small slanted stands near windows, per ref) ──
     # Two end-caps placed near the south windows for cross-traffic
-    for sgn, sx in [(-1, -3.40), (+1, +3.40)]:
+    # (2026-10-07, the user: "shelves blocking shelves and aisles too
+    # cramped for pedestrians" — they stood 0.42 m off aisle 0's corners
+    # at x ±3.4. On the WEST ends of the two aisles now, as end caps are:
+    # 1.08 m to the coffee bar, the entry zone left open)
+    for sgn, sx, ecy in [(-1, -3.32, 3.5), (+1, -3.32, 5.5)]:
         # Body (slightly angled — we fake angle with a thinner base)
         make_box(f"EndCap_{sgn:+d}_Base",
-                 (sx, 2.35, 0.12),
+                 (sx, ecy, 0.12),
                  (0.60, 0.80, 0.24), COL_COUNTER_DARK)
-        for ui, uy in enumerate((2.35 - 0.36, 2.35 + 0.36)):   # uprights (2026-09-22)
+        for ui, uy in enumerate((ecy - 0.36, ecy + 0.36)):   # uprights (2026-09-22)
             make_box(f"EndCap_{sgn:+d}_Upright_{ui}", (sx, uy, (0.24 + 2.02) / 2.0),
                      (0.04, 0.04, 2.02 - 0.24), COL_METAL_STEEL)
         # 4 narrow shelves stacked
         for sh in range(4):
             shz = 0.40 + sh * 0.34
             make_box(f"EndCap_{sgn:+d}_Shelf_{sh}",
-                     (sx, 2.35, shz),
+                     (sx, ecy, shz),
                      (0.62, 0.70, 0.02), COL_METAL_STEEL)
-            # 4 products per shelf (smaller than aisle products)
-            for p in range(4):
-                px = sx - 0.20 + p * 0.14
-                tint = SNACK_TINTS[(sgn + sh + p) % len(SNACK_TINTS)]
-                make_box(f"EndCap_{sgn:+d}_Product_{sh}_{p}",
-                         (px, 2.35, shz + 0.10),
-                         (0.10, 0.50, 0.18), tint)
+            # stocked from both faces (2026-10-07: four floating blocks)
+            from _props.merch import merch_section
+            for fs in (-1, 1):
+                merch_section(f"EndCap_{sgn:+d}_Stock_{sh}_{fs:+d}", ("tubes", "candy", "nuts", "cookies")[sh],
+                              sx - 0.30, ecy + fs * 0.35, fs, shz + 0.01, sh * 3 + sgn + fs, width=0.60)
         # Top header
         make_box(f"EndCap_{sgn:+d}_Header",
-                 (sx, 2.35, 1.92),
+                 (sx, ecy, 1.92),
                  (0.62, 0.78, 0.20), COL_BRAND_RED)
 
 
@@ -1528,22 +1517,10 @@ def build_slurpee_fountain():
 
 
 def build_price_tag_strips():
-    # Edge-of-shelf white price strips on each snack aisle shelf.
-    # The aisles are at Y=3.5 and Y=5.5 with 5 shelves each. Strips
-    # face south on the south aisle, north on the north aisle.
-    for ai, ay in enumerate([3.5, 5.5]):
-        face_y = ay + (-0.3425 if ai == 0 else +0.3425)   # on the shelf faces (0.34)
-        for sh in range(5):
-            shz = 0.30 + sh * 0.36
-            make_box(f"PriceStrip_Aisle{ai}_S{sh}",
-                     (0.0, face_y, shz),
-                     (5.0, 0.005, 0.04), COL_PRICE_TAG)
-            # Small dollar-amount marks (3 visible per shelf)
-            for d_i, dx in enumerate([-1.6, 0.0, +1.6]):
-                make_box(f"PriceMark_Aisle{ai}_S{sh}_T{d_i}",
-                         (dx, face_y + 0.003 * (1 if ai == 0 else -1),
-                          shz),
-                         (0.16, 0.001, 0.02), COL_METAL_BLACK)
+    """Retired 2026-10-07: the aisles are _props.merch gondolas now and
+    carry their own price strips and tags at their real shelf heights
+    (these sat at the old 0.36 pitch, on fins that are gone)."""
+    return
 
 
 def build_customer_detritus():
@@ -2487,7 +2464,7 @@ def build_baseboard_quarter_round():
 def build_soda_bottle_pyramid():
     # 2L bottle pyramid on a foreground end-cap — replaces a generic
     # cardboard pyramid with proper cylindrical bottle stack.
-    bx, by = -1.40, 2.60
+    bx, by = -2.40, 1.60      # (2026-10-07: 0.40 m off aisle 0's face at -1.40, 2.60 — the entry zone, clear all round)
     base_z = 0.40
     # the riser the bottom tier stands on (2026-09-22: the pyramid
     # began 25 cm above the floor)
@@ -2889,6 +2866,11 @@ def export_glb():
     out_path = os.path.join(out_dir, OUTPUT_NAME)
     print(f"\n[build_kwik_stop] exporting to {out_path}")
     print(f"[build_kwik_stop] scene objects: {len(bpy.context.scene.objects)}")
+    try:    # one mesh per stocked fixture (2026-10-07, _props.geometry.join_stock)
+        from _props.geometry import join_stock
+        join_stock()
+    except Exception as _e:
+        print("[join_stock] skipped:", _e)
     bpy.ops.object.select_all(action='SELECT')
     base = {'filepath': out_path, 'export_format': 'GLB',
             'use_selection': False, 'export_apply': True,

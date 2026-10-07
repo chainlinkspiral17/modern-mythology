@@ -295,6 +295,17 @@ PLOUT="$(python3 placement_audit.py 2>/dev/null)" || {
 echo "$PLOUT" | tail -1
 echo ""
 
+# ── Walkway gate (2026-10-07) ─────────────────────────────────
+# "Looks like shelves blocking shelves and aisles too cramped for
+# pedestrians" (the user). Every store fixture pair at least 0.90 m apart
+# unless they touch as one fixture. Zero.
+echo "── walkway_audit.py ──"
+WKOUT="$(python3 walkway_audit.py 2>/dev/null)" || {
+    echo "$WKOUT" | grep "^CRAMPED" | head -20
+    echo "REGRESSION  walkway_audit found a lane too narrow to walk (ceiling 0)"; exit 1; }
+echo "$WKOUT" | tail -1
+echo ""
+
 # ── Scene-syntax gate (2026-09-25) ────────────────────────────
 # highway_101 and small_wood_road were skipped on every contact sheet:
 # `Color(r, g, b)` — Godot's parser wants four arguments — and the

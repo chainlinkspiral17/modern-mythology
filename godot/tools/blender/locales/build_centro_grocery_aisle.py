@@ -65,25 +65,29 @@ def build_shell():
             ("Crown_S", 'X', ROOM_W, 0.0, +0.10)]:
         make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax, ceil_z=CEIL, palette={"wood": COL_WOOD})
 
+# (2026-10-07, the user: "shelves blocking shelves and aisles too cramped
+# for pedestrians") — three 6 m runs in an 8 m room left 0.50 m between
+# aisles 1 and 3 and 0.15 m between aisle 0 and the checkout. Two 4 m
+# runs now, 1.40 m apart, 1.15 m from the checkout lane, the endcaps on
+# aisle 1's ends.
+AISLE_YS = (2.90, 5.00)
+AISLE_LEN = 4.0
+
+
 def build_aisles():
-    for ai in range(2):
-        ay = ROOM_D * (0.35 + ai * 0.30)
-        make_snack_aisle(f"Aisle_{ai}", (0.0, ay, 0.0), length=6.0, shelf_count=5)
-        # Shelf-edge price-tag rails (the inventory chapter runs on
-        # facings and tags)
-        for side in (-1, 1):
-            for lvl in range(5):
-                make_box(f"TagRail_{ai}_{side}_{lvl}", (0.0, ay + side * 0.35, 0.30 + lvl * 0.36),   # on the shelf faces (2026-09-22: 28 cm out)
-                         (6.0, 0.012, 0.035), (0.94, 0.94, 0.92, 1.0))
+    for ai, ay in enumerate(AISLE_YS):
+        make_snack_aisle(f"Aisle_{ai}", (0.0, ay, 0.0), length=AISLE_LEN, shelf_count=5, plan="grocery", seed=ai * 5)
+        # (the shelf-edge price strips and tags — "the inventory chapter
+        # runs on facings and tags" — are the gondola kit's own now)
     # Two more runs so "Aisle Seven … Aisle Nine" reads as a store,
     # not a pair
     # (2026-09-22) Aisle_2 was a 4.4 m gondola at y 2.72 — bodily
     # INSIDE Aisle_0 at y 2.80. Removed; three runs read as a store.
-    make_snack_aisle("Aisle_3", (0.0, ROOM_D * 0.80, 0.0), length=6.0, shelf_count=5)
+    # (Aisle_3 removed 2026-10-07: 0.50 m from aisle 1 — no room to walk)
 
 def build_endcaps():
-    for ei, ex in enumerate([-3.5, +3.5]):
-        make_endcap(f"EndCap_{ei}", (ex, ROOM_D/2.0+1.0, 0.0))
+    for ei, sgn in enumerate((-1, 1)):
+        make_endcap(f"EndCap_{ei}", (sgn * (AISLE_LEN / 2.0 + 0.32), AISLE_YS[1], 0.0))   # on aisle 1's ends
     # A soda-bottle pyramid display at the west endcap mouth
     make_soda_bottle_pyramid("SodaPyr", (-3.5, 1.6, 0.60), tiers=3, base_count=4)
 
@@ -95,7 +99,7 @@ def build_cooler_wall():
 def build_aisle_signs():
     # Hanging numbered aisle signs over each aisle's south mouth.
     for ai in range(2):
-        ay = ROOM_D * (0.35 + ai * 0.30) - 3.0
+        ay = AISLE_YS[ai] - 3.0
         for wo in (-0.35, 0.35):   # inside the board's width; board top to the ceiling (2026-09-22: 5 cm short, 20 cm outside)
             make_cyl(f"AisleNum_{ai}_Wire_{'L' if wo<0 else 'R'}", (wo, ay, CEIL-0.255), 0.006, 0.51, P.METAL_STEEL)
         make_box(f"AisleNum_{ai}_Board", (0.0, ay, CEIL-0.68), (0.80, 0.05, 0.34), COL_ACCENT)
@@ -125,9 +129,9 @@ def build_checkout():
     # Order divider bar on the belt
     make_box("Checkout_Divider", (cx-0.05, cy+0.20, top_z+0.06), (0.40, 0.03, 0.05), (0.72, 0.20, 0.18, 1.0))
     # Queue guide rail (customer side, west)
-    for qi, qy in (("S", cy-0.9), ("N", cy+0.9)):
+    for qi, qy in (("S", cy-0.9), ("N", cy+0.55)):   # N post clear of aisle 0 (2026-10-07: it stood in the gondola)
         make_lathe(f"Queue_Post_{qi}", (cx-0.9, qy, 0.0), [(0.14, 0.0), (0.13, 0.02), (0.03, 0.04), (0.02, 0.95), (0.03, 0.98), (0.0, 0.98)], P.METAL_STEEL, segments=10)
-    make_tube("Queue_Rail", [(cx-0.9, cy-0.9, 0.95), (cx-0.9, cy+0.9, 0.95)], 0.014, P.METAL_STEEL, segments=6)
+    make_tube("Queue_Rail", [(cx-0.9, cy-0.9, 0.95), (cx-0.9, cy+0.55, 0.95)], 0.014, P.METAL_STEEL, segments=6)
     # Impulse candy rack facing the lane (west face of the counter)
     for ri in range(3):
         rz = top_z - 0.16 - ri*0.24
@@ -138,10 +142,11 @@ def build_checkout():
 
 def build_produce():
     # Angled two-tier produce stand in the SW, piled with fruit/veg.
-    px, py = -3.6, 2.4
-    make_chamfer_box("Produce_Base", (px, py, 0.30), (1.40, 1.40, 0.60), (0.42, 0.30, 0.20, 1.0))
+    px, py = -3.75, 2.4   # (2026-10-07: 10 cm into aisle 0 at -3.6)
+    make_chamfer_box("Produce_Base", (px, py, 0.315), (1.40, 1.40, 0.63), (0.42, 0.30, 0.20, 1.0))   # the tier sits ON it (was 3 cm over)
     make_box("Produce_Tier1", (px, py-0.10, 0.66), (1.40, 1.20, 0.06), (0.52, 0.38, 0.26, 1.0))
     make_box("Produce_Tier2", (px, py+0.30, 0.92), (1.40, 0.60, 0.06), (0.52, 0.38, 0.26, 1.0))
+    make_box("Produce_Tier2_Riser", (px, py+0.30, 0.79), (1.40, 0.60, 0.20), (0.42, 0.30, 0.20, 1.0))
     # Piles of produce (short cylinders grouped by colour)
     prod_cols = [(0.82, 0.24, 0.20, 1.0), (0.92, 0.58, 0.20, 1.0), (0.86, 0.82, 0.32, 1.0),
                  (0.36, 0.54, 0.28, 1.0), (0.62, 0.30, 0.42, 1.0)]
@@ -158,7 +163,7 @@ def build_produce():
     # A hanging scale over the produce
     make_lathe("Produce_Scale_Body", (px+0.5, py, 1.47), [(0.12, 0.0), (0.13, 0.02), (0.13, 0.14), (0.10, 0.16), (0.0, 0.16)], P.METAL_STEEL, segments=12)
     make_cyl("Produce_Scale_Dial", (px+0.5, py-0.132, 1.55), 0.09, 0.006, (0.92, 0.92, 0.88, 1.0), axis='Y', segments=14)
-    make_tube("Produce_Scale_Rod", [(px+0.5, py, 1.63), (px+0.5, py, 2.15)], 0.008, P.METAL_STEEL, segments=5)
+    make_tube("Produce_Scale_Rod", [(px+0.5, py, 1.63), (px+0.5, py, CEIL)], 0.008, P.METAL_STEEL, segments=5)   # to the ceiling (2026-10-07: it ended in the air at 2.15)
     make_lathe("Produce_Scale_Pan", (px+0.5, py, 1.30), [(0.0, 0.0), (0.16, 0.0), (0.18, 0.03), (0.16, 0.04), (0.0, 0.035)], (0.72, 0.74, 0.78, 1.0), segments=14)
     for ci2 in range(3):
         ang2 = ci2 * 2.094
@@ -312,9 +317,9 @@ def build_departments():
     for fi in range(3):
         make_box(f"Frozen_Door_{fi}", (-4.34, 6.25 + fi * 0.56, 1.15), (0.03, 0.50, 1.80), glass)
     # The cardboard bale at the aisle's north mouth
-    make_chamfer_box("Card_Bale", (-4.15, 4.35, 0.70), (0.90, 0.80, 1.40), (0.44, 0.48, 0.52, 1.0))
-    make_box("Card_Bale_Lid", (-4.15, 4.35, 1.42), (0.86, 0.76, 0.05), steel)
-    make_box("Card_Bale_Stack", (-4.15, 4.30, 0.90), (0.70, 0.60, 0.30), (0.66, 0.54, 0.36, 1.0))
+    make_chamfer_box("Card_Bale", (-4.15, 4.92, 0.70), (0.90, 0.64, 1.40), (0.44, 0.48, 0.52, 1.0))
+    make_box("Card_Bale_Lid", (-4.15, 4.92, 1.42), (0.86, 0.60, 0.05), steel)
+    make_box("Card_Bale_Stack", (-4.15, 4.90, 0.90), (0.70, 0.50, 0.30), (0.66, 0.54, 0.36, 1.0))
     # Register cubby (Diego's backpack)
     # cashier side, against the counter's back (2026-09-22: it sat 18 cm
     # inside the counter front AND inside the meat case)
