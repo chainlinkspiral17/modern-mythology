@@ -347,7 +347,7 @@ def install_stubs():
                      # whole ROOMS shared by two locales (2026-10-06: the
                      # Ramos kitchen is one room dressed twice) — last, as
                      # they import the modules above
-                     "ramos_kitchen", "kitchen_kit", "miller_kitchen"):
+                     "ramos_kitchen", "kitchen_kit", "miller_kitchen", "views"):
         mpath = os.path.join(BLENDER, "_props", real_mod + ".py")
         if not os.path.exists(mpath):
             continue

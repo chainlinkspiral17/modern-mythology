@@ -24,7 +24,8 @@ if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import (clear_scene, make_box, make_chamfer_box, make_cyl, make_lathe,
                              make_tube, make_rot_box, export_glb)
-from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
+from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_wall_with_openings
+from _props.views import make_view
 from _props.store_fixtures import make_counter, make_counter_bullnose, make_register
 from _props.shelving import make_snack_aisle, make_endcap
 from _props.food_service import make_coffee_pots
@@ -45,7 +46,7 @@ def build_shell():
                palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
     for nm, x, bb in [("Wall_W", -ROOM_W/2.0, +1), ("Wall_E", +ROOM_W/2.0, -1)]:
         make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=bb)
-    make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
+    make_wall_with_openings("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=-1, openings=[(0.0, 1.50, 1.20, 1.00)])   # cut 2026-10-07: the window was a pane on a solid wall
     make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
     make_wall("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
@@ -101,7 +102,7 @@ def build_rug():
 
 def build_win():
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
-    make_window("Window_N", (0.0, ROOM_D - 0.10, 1.50), width=1.20, height=1.00)
+    make_window("Window_N", (0.0, ROOM_D - 0.10, 1.50), width=1.20, height=1.00, see_through=True)
 
 def build_ceiling_infra():
     # THE CEILING FAN — clicks on the third, sixth, ninth rotation.
@@ -264,7 +265,7 @@ def build_draft4_2026_09():
     make_wall_outlet("Outlet_N_2", (0.30, ROOM_D), axis='X', face_sign=-1, z=0.30, aged=True)
     make_cord_run("Cord_5", (-0.05, 3.28, 0.60), (0.30, ROOM_D - 0.12, 0.30), sag=0.02)
     # ── D5 · the backyard through the north window ──
-    make_backyard_view("Yard", ROOM_D, span=6.0, tree=(2.6, 3.0))
+    # (2026-10-07: the back-yard view went — Sam's window looks at the cul-de-sac, from upstairs: View_N)
 
 
 
@@ -287,6 +288,8 @@ def main():
     build_hero_props()
     build_hero_props_2026_09()
     build_draft4_2026_09()
+    # what is outside the window (2026-10-07, _props/views.py)
+    make_view("View_N", "N", ROOM_D, 0.0, kind="front", ground_z=-2.9, logo_mailbox=True)   # upstairs at the Millers': the cul-de-sac, the NexCorp mailbox across
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/sam_bedroom.glb"))
     build_door_infill_sams_door_2026_09()

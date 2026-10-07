@@ -26,7 +26,8 @@ if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, export_glb
 from _props.structure import (make_floor, make_wall, make_ceiling,
-                              make_crown_molding, make_window)
+                              make_crown_molding, make_window, make_wall_with_openings)
+from _props.views import make_view
 from _props.detail import (make_floor_stain, make_light_switch, make_threshold, make_traffic_wear, make_wall_outlet, make_wall_tint_band)
 from _props.furniture import make_bed
 
@@ -69,9 +70,10 @@ def build_shell():
     make_floor("Floor", (0.0, ROOM_D / 2.0, 0.0), size_x=ROOM_W + 0.4,
                size_y=ROOM_D + 0.4, palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
     pal = {"wall": COL_WALL, "baseboard": COL_BASE}
-    for nm, x, bb in [("Wall_W", -ROOM_W / 2.0, +1), ("Wall_E", +ROOM_W / 2.0, -1)]:
-        make_wall(nm, (x, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL,
-                  axis='Y', palette=pal, baseboard_face_sign=bb)
+    make_wall_with_openings("Wall_W", (-ROOM_W / 2.0, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL, axis='Y', palette=pal,
+                            baseboard_face_sign=+1, openings=[(3.3, 1.55, 1.10, 1.10)])   # cut 2026-10-07: the window was a pane on a solid wall
+    make_wall("Wall_E", (+ROOM_W / 2.0, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL,
+              axis='Y', palette=pal, baseboard_face_sign=-1)
     make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W + 0.4, height=CEIL,
               axis='X', palette=pal, baseboard_face_sign=-1)
     make_wall("Wall_S_W", (-(ROOM_W / 4.0 + 0.5), 0.0, 0),
@@ -184,7 +186,7 @@ def build_dresser_window():
     # Window high on the west wall
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
     make_window("Window", (-ROOM_W / 2.0 + 0.10, 3.3, 1.55), width=1.10, height=1.10,
-                cross_mullion=True, axis='Y',
+                cross_mullion=True, axis='Y', see_through=True,
                 palette={"glass": COL_GLASS, "warm": (1.0, 0.82, 0.52, 0.7)}, room_dir=+1)
     # Lace curtains (two panels + a valance)
     make_box("Curtain_Valance", (-ROOM_W / 2.0 + 0.10, 3.3, 2.18), (0.03, 1.4, 0.20), COL_LACE)
@@ -320,6 +322,8 @@ def main():
     build_dressing()
     build_hero_props()
     build_detail_pass_2026_08()
+    # what is outside the window (2026-10-07, _props/views.py)
+    make_view("View_W", "W", -ROOM_W / 2.0, 3.3, kind="side", ground_z=0.0, seed=6)   # the side yard, the neighbour close
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/graciela_bedroom.glb"))
     print(f"\n[build_graciela_bedroom] exporting to {out}")

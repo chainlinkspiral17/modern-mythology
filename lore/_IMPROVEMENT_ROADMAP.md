@@ -3477,6 +3477,29 @@ the family room's evening practicals; Sammy's school things on the
 island; the sedan's two silhouettes; the henderson and kowalski kitchens
 onto the kit (same template, same build-big pass).
 
+**2026-10-07 · WINDOWS YOU CAN SEE OUT OF (the claustrophobia pass, batch
+1).** 25 builders still built their windows as panes on SOLID walls —
+nothing outside, the rooms sealed. `_props/views.py` `make_view(prefix,
+side, wall_line, center, kind, ground_z)` lays out what is past any wall:
+'front' (lawn, walk, curb, street, the houses across with porch lights
+and mailboxes, a tree, street lights), 'back' (lawn, patio, fence, a
+tree, the neighbours' roofs), 'side' (the neighbour's wall close, its
+window, the AC pad), 'street' (walk, curb, two lanes, parked cars, the
+facades across, lamp posts); `ground_z` drops it a storey for upstairs
+rooms. Batch 1, cut (`make_wall_with_openings`, the window
+`see_through`, a sky in the env): sam_bedroom (upstairs at the Millers':
+the cul-de-sac and the NexCorp mailbox across — its back-yard view went,
+its window insert re-aimed out and down), maya_bedroom and
+kowalski_kitchen (their existing back-yard views now seen), jesse and
+diego bedrooms (upstairs back yards), henderson_kitchen (the front on
+Magnolia), safehouse_bedroom (between the boards, a side yard),
+graciela_bedroom (west: the side yard). Skies by each scene's dominant
+mood (night rooms get a night sky). Deck must REBUILD those eight.
+Batch 2 next: kai, finn, miller_office, hospital_room,
+caldwell_kitchen_night, daily_grind, cosmic_comics_interior,
+missing_link, salty_tome, caldwell_radio_room; then the loop-built ones
+(pit_stop_interior, chillwave, lena_apartment, ember_ash_office).
+
 NEXT (queued): Bianca's kitchen is the Miller kitchen again —
 `bianca_kitchen_morning` (ch 22 / 23) and `miller_kitchen` are one room
 on Meadowlark Circle (the cul-de-sac through the window, the green robe

@@ -17,7 +17,8 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, make_tube, export_glb
-from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
+from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_wall_with_openings
+from _props.views import make_view
 from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster, make_calendar
 from _props.safety import make_smoke_detector, make_fluorescent_tube_fixture
 from _props.detail import (make_traffic_wear, make_floor_stain,
@@ -39,7 +40,8 @@ def build_shell():
         make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=bb)
     make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
     make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
-    make_wall("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall_with_openings("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1,
+                            openings=[(1.45, 1.45, 0.90, 1.20)])   # cut 2026-10-07: the boards now cover an opening — light between them
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4, with_grid=False)
     for nm, ax, length, wx, wy in [
@@ -146,7 +148,7 @@ def build_window():
     # Boarded-over front window on the SE south-wall segment.
     wx = 1.45
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
-    make_window("Win_S", (wx, 0.10, 1.45), width=0.90, height=1.20, room_dir=+1)
+    make_window("Win_S", (wx, 0.10, 1.45), width=0.90, height=1.20, room_dir=+1, see_through=True)
     # Nailed planks across the glass (blocking the view out).
     for bi, bz in enumerate([0.95, 1.30, 1.65]):
         make_box(f"Win_Board_{bi}", (wx, 0.14, bz), (1.02, 0.04, 0.18), COL_WOOD)
@@ -331,6 +333,8 @@ def main():
     build_hero_props()
     build_detail_pass_2026_08()
     build_hero_props_2026_09()
+    # what is outside the window (2026-10-07, _props/views.py)
+    make_view("View_S", "S", 0.0, 1.45, kind="side", ground_z=0.0, seed=5)   # between the boards: a side yard, a neighbour's wall
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/safehouse_bedroom.glb"))
     build_door_infill_door_leaf_2026_09()

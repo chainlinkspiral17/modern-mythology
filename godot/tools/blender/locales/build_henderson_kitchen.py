@@ -5,7 +5,8 @@ if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.furniture import make_table, make_chair
 from _props import palette as P
 from _props.geometry import make_blob, clear_scene, make_box, make_chamfer_box, make_cyl, export_glb
-from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
+from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_wall_with_openings
+from _props.views import make_view
 from _props.store_fixtures import make_counter, make_counter_bullnose, make_register
 from _props.shelving import make_snack_aisle, make_endcap
 from _props.food_service import make_coffee_pots, make_donut_display
@@ -27,7 +28,8 @@ def build_shell():
     make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X',
               palette=PAL_WALL, baseboard_face_sign=-1)
     make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
-    make_wall("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall_with_openings("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1,
+                            openings=[(1.45, 1.50, 0.90, 1.05)])   # cut 2026-10-07: the front window was a pane on a solid wall
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4, with_grid=False)
     for nm, ax, length, wx, wy in [
@@ -106,7 +108,7 @@ def build_hero_props():
     # Front window, S wall east of the doorway — matches the porch
     # build's lit window at x=+2.55
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
-    make_window("Front_Window", (1.45, 0.10, 1.50), width=0.90, height=1.05, room_dir=+1)
+    make_window("Front_Window", (1.45, 0.10, 1.50), width=0.90, height=1.05, room_dir=+1, see_through=True)
     # The basement door, E wall, dark stair void behind
     make_box("Basement_Doorframe", (ROOM_W/2.0-0.04, 1.6, 1.08), (0.10, 1.00, 2.16), wood)
     make_chamfer_box("Basement_Door", (ROOM_W/2.0-0.07, 1.6, 1.05), (0.05, 0.85, 2.05), (0.42, 0.32, 0.22, 1.0))
@@ -248,6 +250,8 @@ def main():
     build_fridge()
     build_ceiling_infra()
     build_hero_props_2026_09()
+    # what is outside the window (2026-10-07, _props/views.py)
+    make_view("View_S", "S", 0.0, 1.45, kind="front", ground_z=0.0, seed=2)   # Magnolia: the front yard, the street, the houses across
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/henderson_kitchen.glb"))
     print(f"\n[build_henderson_kitchen] exporting to {out}")
