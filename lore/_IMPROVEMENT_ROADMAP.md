@@ -3413,6 +3413,37 @@ a cooler). The Kwik Stop's establish_c went up the cooler lane (it stood
 nose-to-nose with the end cap). Deck must REBUILD kwik_stop,
 centro_grocery_aisle, nexcorp_fueling_station.
 
+THE USER: "Don't be afraid to make spaces and floorplans bigger.
+Backgrounds always felt small and claustrophobic." — now a STANDING RULE
+(CLAUDE.md, THE DRAFTING PROGRAM rule 5: size a room from the prose and
+the real thing, then err larger; enlarge the room before shaving the
+furniture). First application, CENTRO FOODS DRAFT 6: the supermarket was
+a 10 x 8 m box with two gondolas for a store whose staff "covers all
+twelve aisles and the produce wet wall and the dairy case and the meat
+counter". `build_centro_grocery_aisle.py` rewritten at 30 x 22 m under a
+5.4 m open-structure ceiling (bar joists, the main duct, a sprinkler main,
+fluorescent strips hung on wires): the storefront with sliding doors, two
+glass runs, the cart corral; four checkout lanes with lane lights and bag
+carousels and the service desk; the produce wet wall (sloped misted
+tiers) and three produce islands, the hanging scale; six 9 m gondolas
+FRONT-TO-BACK (Aisles 5-9 with numbered blades, 1.9 m lanes, end caps on
+the action alley); the dairy wall of twelve reach-in doors with the
+propped one (milk crate, Russell's thermometer); receiving's flap doors
+and the bale; the meat counter's service case; the deli and its slicer
+counter, the bakery, the frozen bank; the bread racks; the lot outside.
+The pallet is in Aisle Seven with the clipboard, phone and scanner on
+it. `_props/merch.py` grew `axis='Y'` gondolas (a 90-degree turn) and
+`lean=True` (front facings only: a 30 m store's back stock is never in
+frame); furniture_grammar skips `_Stock_` (merchandise is not furniture:
+527 s -> 16 s). Every marker and the preset re-authored; eight
+practicals at the strips and runs. Deck must REBUILD
+centro_grocery_aisle. Draft 7 targets: the reach-in contents by the
+grammar; the manager's office window over the front; WEAR and D3 at the
+new scale; shelf talkers; the other half of the twelve aisles past the
+frame edge. NEXT BY THE SAME RULE: the Kwik Stop (a model chapter, 12 x
+9 m — check it against the prose before enlarging), the vol 6 bedrooms
+(4 x 4 m template boxes), the family kitchens (the Miller rebuild).
+
 NEXT (queued): Bianca's kitchen is the Miller kitchen again —
 `bianca_kitchen_morning` (ch 22 / 23) and `miller_kitchen` are one room
 on Meadowlark Circle (the cul-de-sac through the window, the green robe

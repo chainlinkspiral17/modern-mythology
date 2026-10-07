@@ -117,6 +117,16 @@ Rules:
 4. When the user says a space "feels like a set", the fix is
    usually SCALE + EDGES + COVERAGE (run the geometry past the
    frame, hide the world edge, add camera setups), not more props.
+5. **Build BIG (user, 2026-10-07): "Don't be afraid to make spaces
+   and floorplans bigger. Backgrounds always felt small and
+   claustrophobic."** Size a room from what the prose says happens in
+   it and what such a place really measures — a supermarket with
+   twelve aisles is not a 10 x 8 m box — and then err LARGER: generous
+   lanes (1.4 m+ between store fixtures, 0.9 m in front of every case
+   door), real ceiling heights, rooms that open onto other rooms. When
+   a pass finds a cramped plan, enlarge the room before shaving the
+   furniture. `walkway_audit` and `case_access_audit` are floors, not
+   targets.
 
 ## DEBUG HUD — F4 IS THE MASTER TOGGLE (hard rule)
 

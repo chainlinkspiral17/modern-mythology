@@ -621,16 +621,16 @@ const CAMERA_PRESETS := {
 	"centro_grocery_aisle": {
 		"scene": "res://scenes/locales/centro_grocery_aisle.tscn",
 		"requires_glb": "res://assets/3d/locales/centro_grocery_aisle.glb",
-		# Grocery sales floor 10×8 (godot x∈[-5,5], z∈[0,-8], ceil 3.0).
-		# Two snack aisles run E-W across the room (blender y=2.8 & 5.2 →
-		# godot z=-2.8 & -5.2, each 6m along X), endcaps at x=±3.5, chest
-		# freezer E wall, hanging aisle sign centre. Camera in the SE
-		# quadrant just inside the entrance looking NW down the aisles:
-		# both shelf rows recede to the far NW, freezer at right. Eye
-		# lifted to 1.85 and wide FOV for the big floorplate.
-		"camera_origin": Vector3(3.2, 1.85, -0.8),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(52.7), 0.0),
-		"fov": 66.0,
+		# Centro Foods' sales floor at supermarket scale (2026-10-07: was a
+		# 10 x 8 m box). 30 x 22 m under a 5.4 m structure: checkouts and the
+		# service desk at the front, produce and its wet wall west, six
+		# front-to-back gondolas (Aisles 5-9, Seven in the middle), dairy,
+		# receiving and the meat counter along the back, deli, bakery and the
+		# frozen bank east. From behind the checkouts by the service desk,
+		# looking NW across the action alley to the aisle mouths and produce.
+		"camera_origin": Vector3(11.80, 1.75, -6.00),
+		"camera_rotation": Vector3(-0.035, 1.297, 0.0),
+		"fov": 64.0,
 		"suppress_input": true,
 	},
 	"centro_break_room": {

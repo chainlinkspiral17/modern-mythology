@@ -32,7 +32,8 @@ WALK_MIN = 0.90       # m · the narrowest lane a shopper passes another in
 TOUCH = 0.05          # m · closer than this the two are ONE fixture (an endcap on its aisle's end)
 STORES = ("kwik_stop", "centro_grocery_aisle", "nexcorp_fueling_station", "nexcorp_gas_go")
 FIXTURE = re.compile(
-    r"^(Aisle_Endcap_Water|Aisle_?\d*|EndCap_[^_]+|Produce|Card_Bale|Checkout|Counter|Register|Cooler_\d+|"
+    r"^(Aisle_Endcap_Water|Aisle_?\d*|EndCap_[^_]+|Produce_Island_\d+|Produce_Bin_\d+|Produce|Card_Bale|Checkout_\d+|Checkout|Counter|"
+    r"Register_Cubby|Register|Cooler_\d+|Wet_Wall|Service_Desk|Bakery_Counter|Bread_Rack|Cart_Corral|"
     r"Ice_Merchandiser|ATM|Coffee_Counter|CoffeeCounter|Coffee_Base|SodaPyr|BeerFridge|Slurpee|MagRack|"
     # islands (2026-10-07: the Kwik Stop's ice-cream chest stood 0.70 m in
     # front of the cooler doors and this list did not know its name)

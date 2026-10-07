@@ -35,6 +35,7 @@ WALL = re.compile(r"(^|_)(wall|partition|pier|spandrel|lintel)(_|$)", re.I)
 DELIBERATE = {
     # "the propped cooler door + milk crate" — the sticking lock since July
     ("centro_grocery_aisle", "Milk_Crate_Prop"),
+    ("centro_grocery_aisle", "Cooler_Door_Milk_Crate_Prop"),
 }
 SKIP = re.compile(r"(floor|ground|rug|mat\b|mat_|runner|stain|wear|scuff|decal|grout|tile|threshold|slab|lot_|stripe|ceil)", re.I)
 

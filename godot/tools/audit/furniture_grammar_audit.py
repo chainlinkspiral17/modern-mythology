@@ -120,7 +120,7 @@ NOT_SEATING = re.compile(r"(side|end|night|console|hall|lamp|plant|tv|outline|zo
 # desk turned to watch the AC; the WGUR operator console facing the rack.
 DESK_FREESTANDING_LOCALES = {"miller_office", "new_orleans_office", "ember_ash_office", "wgur_transmitter_shack"}
 # pit_desk: a casino pit boss's podium stands in the pit (le roulant, 2026-09-23)
-DESK_FREESTANDING = re.compile(r"(judge|clerk|helm|newspaper|desk_[0-9]_top|reception|teller|island|kiosk|studio|cat_desk|drafting|drawing|pit_desk)", re.I)
+DESK_FREESTANDING = re.compile(r"(judge|clerk|helm|newspaper|desk_[0-9]_top|reception|teller|island|kiosk|studio|cat_desk|drafting|drawing|pit_desk|service_desk)", re.I)
 TOPISH = re.compile(r"(top|surface|slab)(_[0-9]+)?$", re.I)
 
 
@@ -550,6 +550,10 @@ def main():
         boxes = VO.boxes_for(locale)
         if not boxes or len(boxes) < 20:
             continue
+        # store stock is merchandise, not furniture (2026-10-07: a supermarket's
+        # 15 000 packages made the pairwise checks run nine minutes); its
+        # clips and floats stay with prop_overlap_audit and support_audit
+        boxes = [b for b in boxes if "_Stock_" not in b[0]]
         intra = check_intra(boxes)
         poke = check_poke(boxes)
         outside = check_outside(boxes)

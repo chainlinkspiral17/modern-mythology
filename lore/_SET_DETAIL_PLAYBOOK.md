@@ -115,6 +115,12 @@ henderson) got there by accumulating exactly these layers.
   passed). `case_access_audit.py` checks it. When a gate is named by a
   list of fixture names, a fixture missing from the list is invisible to
   it: add the islands.
+- BUILD BIG (the user, 2026-10-07: "Backgrounds always felt small and
+  claustrophobic"). Size from the prose and the real place, then err
+  larger. A supermarket is 25-40 m deep with 2-3 m between departments;
+  a family kitchen opens onto the next room. When a gate says cramped,
+  the first question is "is the ROOM too small?", not "which shelf do I
+  shave?". Big stores need `lean=True` stock and the axis='Y' gondola.
 
 ### 2026-10-03 · a home is ROOMS, not a box with furniture in it (the Roberts house)
 
