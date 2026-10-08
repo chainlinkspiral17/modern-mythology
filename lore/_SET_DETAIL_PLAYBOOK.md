@@ -84,6 +84,17 @@ henderson) got there by accumulating exactly these layers.
 
 ## Recent lessons
 
+### 2026-10-08 · a flat ground that ends at a wall reads as a plinth
+
+- The user, on the cabin's new yard: "Why are the vehicles on a big block
+  that sits above the bottom of the cabin." The yard was a flat slab out
+  to a dark forest band, and in perspective its far edge sat at eye level,
+  so the lit ground read as the TOP of a block. A pale, inked gravel disc
+  on it read as a second, higher one. Run the ground UP into the set's edge
+  (berm heightfields in a ring outside the action, so the recorder's
+  bounding boxes never cover anything standing in the clearing). Keep
+  surface patches within a tone of the ground they lie on.
+
 ### 2026-10-08 · a scene can be on the wrong HOUSE, and a set can need an outside
 
 - Twelve vol 7 scenes on Tem's Oregon cabin porch were shot on the

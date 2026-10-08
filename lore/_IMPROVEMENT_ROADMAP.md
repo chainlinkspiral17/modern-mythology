@@ -3876,6 +3876,19 @@ west south window ("seen from the west south window").
 The interior is still the 6 x 6 m room the prose overfills: a table for
 seven, a daybed, two armchairs, a stove corner, a kitchen and an east
 room. Enlarging it (CLAUDE.md rule 5) is the cabin's next interior draft.
+THEN, the user: "Why are the vehicles on a big block that sits above the
+bottom of the cabin." They were at foundation level, and the frame made
+them look raised:
+- The gravel was a pale flat polygon with an inked edge, so it read as a
+  plinth.
+- The yard was one flat plane out to the forest band, so its far edge met
+  the dark band at eye level, like the top of a block with the cabin sunk
+  into it.
+The fix: the gravel is now a tone off the dirt, and the clearing's edge
+RISES 1.8 m into the trees on a ring of berm heightfields, outside
+everything that stands in the clearing. The bands stand on the crest.
+Lesson: a flat ground plane that ends at a wall reads as a block. Run the
+ground UP to the set's edge.
 Deck must REBUILD cabin_interior. PORCH DRAFT 2 also:
 - an exterior light for the preset (the outside is lit by the interior's rig and reads dusky under morning_bright);
 - the gravel road out of the clearing;

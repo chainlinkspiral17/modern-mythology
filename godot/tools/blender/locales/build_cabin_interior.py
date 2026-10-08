@@ -72,7 +72,7 @@ if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.furniture import make_chair, make_table, make_bed
 from _props import palette as P
 from _props.geometry import (make_taper_cyl, clear_scene, make_box, make_cyl, make_lathe,
-                             make_chamfer_box, make_tube, make_rot_box, make_prism, export_glb)
+                             make_chamfer_box, make_tube, make_rot_box, make_prism, make_heightfield, export_glb)
 from _props.structure import make_floor, make_wall, make_ceiling, make_window
 from _props.food_service import make_coffee_pots  # noqa: F401 (unused, kept for parity)
 
@@ -86,6 +86,7 @@ COL_IRON_WM = (0.20, 0.19, 0.20, 1.0)
 COL_COPPER = (0.72, 0.42, 0.22, 1.0)
 COL_GLASS = (0.42, 0.52, 0.55, 0.6)
 COL_WOOL = (0.42, 0.46, 0.55, 1.0)
+GRAVEL = (0.35, 0.33, 0.27, 1.0)   # a tone off the yard's dirt, not a pale slab (2026-10-08: it read as a raised block)
 YARD_Z = -0.40   # the ground round the cabin: the floor stands on a 0.40 m foundation (2026-10-08)
 
 
@@ -734,8 +735,8 @@ def build_hero_props_2026_09():
     # cars, parked nose-in to the porch either side of the steps — they
     # were four boxes each, standing where the porch now is)
     from _props.vehicles import make_car
-    make_cyl("Gravel_Turnaround", (0.2, -5.9, YARD_Z + 0.006), 3.6, 0.012, (0.42, 0.40, 0.36, 1.0), segments=20)   # round, and a tone off the dirt (a pale slab on the 10-08 sheet)
-    make_cyl("Gravel_Turnaround_Shop", (-4.4, -6.0, YARD_Z + 0.004), 2.4, 0.008, (0.42, 0.40, 0.36, 1.0), segments=16)   # where the truck pulls in, in front of the shop
+    make_cyl("Gravel_Turnaround", (0.2, -5.9, YARD_Z + 0.006), 3.6, 0.012, GRAVEL, segments=36)   # round, and a tone off the dirt (a pale slab on the 10-08 sheet)
+    make_cyl("Gravel_Turnaround_Shop", (-4.4, -6.0, YARD_Z + 0.004), 2.4, 0.008, GRAVEL, segments=28)   # where the truck pulls in, in front of the shop
     make_car("Finn_Truck", -5.4, -6.2, 4.8, (0.44, 0.48, 0.42, 1.0), pickup=True, along="Y", z0=YARD_Z)
     make_car("Station_Wagon", 3.7, -5.9, 5.0, (0.48, 0.36, 0.26, 1.0), along="Y", z0=YARD_Z)
     # the wagon's roof rack, on the roofline (z0 + 1.46)
@@ -876,11 +877,38 @@ def build_exterior_2026_10():
             (6.6, -2.4, 0.30, 16.0), (7.2, 2.8, 0.38, 20.0), (6.4, 7.4, 0.32, 17.0),
             (3.6, 11.0, 0.34, 18.0), (-5.6, 11.6, 0.30, 16.0))):
         _sitka(f"Yard_Sitka_{ti}", tx, ty, tr, tht, trunk, crown)
+    # the clearing's EDGE RISES (2026-10-08, the user: "Why are the vehicles
+    # on a big block that sits above the bottom of the cabin"): the yard was
+    # one flat plane to the forest band, so its far edge met the dark band
+    # at eye level — the whole clearing read as a plinth with the cabin sunk
+    # in it. The ground climbs 1.8 m into the trees now, in a ring of berms
+    # outside everything that stands in the clearing, and the band stands
+    # on the berms' crest.
+    import math as _mm
+    duff = (0.24, 0.24, 0.17, 1.0)
+    rise = 1.8
+    def berm(name, x0, y0, cols, rows, t_of):
+        cell = 0.9
+        hs = []
+        for r in range(rows):
+            row = []
+            for c in range(cols):
+                x, y = x0 + c * cell, y0 + r * cell
+                t = max(0.0, min(1.0, t_of(x, y)))
+                wob = 0.14 * _mm.sin(1.7 * x + 0.9 * y) * _mm.sin(0.8 * x - 1.3 * y) * 4.0 * t * (1.0 - t)
+                row.append(rise * (t * t * (3.0 - 2.0 * t)) + wob)
+            hs.append(row)
+        make_heightfield(name, (x0, y0, YARD_Z), cell, hs, duff, skirt=0.3)
+    berm("Forest_Berm_E", 11.5, -18.5, 6, 40, lambda x, y: (x - 11.5) / 3.5)
+    berm("Forest_Berm_W", -16.0, -18.5, 6, 40, lambda x, y: (-11.5 - x) / 3.5)
+    berm("Forest_Berm_N", -11.7, 12.5, 27, 5, lambda x, y: (y - 12.5) / 2.5)
+    berm("Forest_Berm_S", -11.7, -18.5, 27, 6, lambda x, y: (-14.0 - y) / 3.5)
     band = (0.10, 0.15, 0.11, 1.0)
-    make_box("Forest_Band_S", (0.0, -18.0, YARD_Z + 7.0), (32.0, 1.0, 14.0), band)
-    make_box("Forest_Band_N", (0.0, 15.5, YARD_Z + 7.0), (32.0, 1.0, 14.0), band)
+    bz, bh = YARD_Z + rise, 14.0 - rise
+    make_box("Forest_Band_S", (0.0, -18.0, bz + bh / 2.0), (32.0, 1.0, bh), band)
+    make_box("Forest_Band_N", (0.0, 15.5, bz + bh / 2.0), (32.0, 1.0, bh), band)
     for e, nm in ((-1, "W"), (1, "E")):
-        make_box(f"Forest_Band_{nm}", (e * 15.5, -1.25, YARD_Z + 7.0), (1.0, 32.5, 14.0), band)
+        make_box(f"Forest_Band_{nm}", (e * 15.5, -1.25, bz + bh / 2.0), (1.0, 32.5, bh), band)
 
 
 def build_shop_wing_2026_10():
