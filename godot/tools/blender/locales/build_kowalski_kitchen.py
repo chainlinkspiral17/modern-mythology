@@ -158,7 +158,7 @@ def build_dressing():
     make_box("DishRack_Base", (cw_x+0.9, cw_y, TOP_Z+0.015), (0.34, 0.30, 0.03), P.METAL_STEEL)
     for ti in range(5):
         make_box(f"DishRack_Tine_{ti}", (cw_x+0.74+ti*0.06, cw_y, TOP_Z+0.11), (0.01, 0.24, 0.16), P.METAL_STEEL)
-    make_calendar("Calendar", (-ROOM_W/2.0+0.05, 2.0, 1.6))
+    make_calendar("Calendar", (-ROOM_W/2.0+0.1025, 2.0, 1.6))
     # Table centrepiece: napkin holder + salt & pepper
     tx, ty = 0.0, ROOM_D/2.0
     make_box("NapkinHolder", (tx, ty, 0.82), (0.14, 0.06, 0.12), (0.86, 0.84, 0.80, 1.0))

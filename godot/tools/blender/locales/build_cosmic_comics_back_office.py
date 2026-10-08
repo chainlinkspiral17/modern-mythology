@@ -92,7 +92,7 @@ def build_filing():
             make_box(f"Filing_{ci}_Label_{di}", (cx-0.14, 0.677, 1.26-di*0.30), (0.07, 0.006, 0.03), (0.92, 0.90, 0.84, 1.0))
 
 def build_cal():
-    make_calendar("Calendar", (+ROOM_W/2.0-0.05, ROOM_D/2.0, 1.70))
+    make_calendar("Calendar", (ROOM_W/2.0-0.1025, ROOM_D/2.0, 1.70))
 
 def build_bulb():
     # "lit by a single overhead with a pull chain" — the bulb is the

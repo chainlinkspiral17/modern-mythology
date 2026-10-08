@@ -164,9 +164,87 @@ def build_ceiling_infra():
 
 def build_decor():
     make_wall_clock("Clock", (2.150, 3.0, 1.90), frozen_hour=11, frozen_min=8, facing='-X')
-    make_calendar("Calendar", (-ROOM_W/2.0+0.05, 4.0, 1.70))
+    make_calendar("Calendar", (-ROOM_W/2.0+0.1025, 4.0, 1.70))
     make_floor_plant("Plant", (-ROOM_W/2.0+0.45, ROOM_D-0.5, 0.0), kind="fern")
 
+
+
+def build_lived_in_2026_10():
+    """HER ROOM, LIVED IN (2026-10-08). The user: "Too bare and empty, the
+    Caldwell." Forty years in one room: the quilt pieced in squares, her
+    cane against the nightstand (the hip is healed; she does not yet trust
+    it), her slippers, her robe on the back of the door, the family on the
+    wall over the bed and in frames on the dresser — Thomas in the middle —
+    her reading chair in the corner with an afghan and its lamp table, a
+    low bookshelf, curtains at the radio's window, a picture rail."""
+    from _props.geometry import make_chamfer_box, make_blob, make_lathe
+    WF, EF, NF = -ROOM_W/2.0 + 0.10, ROOM_W/2.0 - 0.10, ROOM_D - 0.10
+    walnut, walnut_dk = COL_WOOD, COL_WOOD_DK
+    # ── the quilt: squares pieced across the blanket ──
+    qcols = ((0.78, 0.40, 0.42, 1.0), (0.92, 0.86, 0.70, 1.0), (0.46, 0.58, 0.66, 1.0), (0.62, 0.70, 0.48, 1.0), (0.86, 0.66, 0.40, 1.0))
+    for i in range(6):
+        for j in range(4):
+            make_box(f"Quilt_Square_{i}_{j}", (0.81 + i * 0.216, 3.22 + j * 0.22, 0.5905), (0.20, 0.20, 0.001), qcols[(i * 3 + j * 2) % len(qcols)])
+    # ── the cane against the nightstand, the slippers ──
+    make_tube("Cane", [(0.56, 4.38, 0.02), (0.54, 4.42, 0.84), (0.53, 4.50, 0.90), (0.535, 4.56, 0.86)], 0.012, walnut_dk)
+    make_cyl("Cane_Tip", (0.56, 4.38, 0.015), 0.016, 0.03, (0.10, 0.10, 0.10, 1.0), segments=6)
+    for e in (-1, 1):
+        make_chamfer_box(f"Slipper_{e:+d}", (0.45 + e * 0.07, 3.55, 0.025), (0.10, 0.26, 0.05), (0.62, 0.48, 0.58, 1.0), chamfer=0.02)
+    make_cyl("Nightstand_Water", (0.42, 4.70, 0.645), 0.035, 0.09, (0.70, 0.78, 0.82, 0.6), segments=10)
+    make_box("Nightstand_Book", (0.18, 4.62, 0.615), (0.16, 0.22, 0.03), (0.30, 0.40, 0.52, 1.0))
+    # ── the robe on the back of the hall door ──
+    make_cyl("Door_Hook", (-0.25, 0.10, 1.78), 0.008, 0.04, (0.70, 0.58, 0.30, 1.0), axis='Y', segments=6)
+    make_chamfer_box("Door_Robe", (-0.25, 0.12, 1.36), (0.42, 0.06, 0.86), (0.36, 0.52, 0.56, 1.0), chamfer=0.02)
+    make_box("Door_Robe_Belt", (-0.25, 0.152, 1.24), (0.40, 0.006, 0.04), (0.30, 0.44, 0.48, 1.0))
+    # ── the family over the bed; frames on the dresser, Thomas in the middle ──
+    for fi, (fx, fz, fw, fh) in enumerate(((0.95, 1.62, 0.30, 0.38), (1.40, 1.72, 0.40, 0.30), (1.85, 1.58, 0.26, 0.34), (1.40, 1.42, 0.22, 0.16))):
+        make_box(f"Wall_Photo_{fi}", (fx, NF - 0.015, fz), (fw, 0.03, fh), walnut_dk)
+        make_box(f"Wall_Photo_{fi}_Print", (fx, NF - 0.031, fz), (fw - 0.06, 0.002, fh - 0.06),
+                 ((0.56, 0.50, 0.44, 1.0), (0.46, 0.44, 0.42, 1.0), (0.60, 0.54, 0.46, 1.0), (0.52, 0.48, 0.44, 1.0))[fi])
+    for fi, (fy, fh) in enumerate(((2.68, 0.20), (2.85, 0.26), (3.05, 0.18))):
+        make_box(f"Dresser_Frame_{fi}", (-1.80, fy, 0.96 + fh / 2.0), (0.02, 0.14, fh), (0.70, 0.58, 0.30, 1.0) if fi == 1 else walnut_dk)
+        make_box(f"Dresser_Frame_{fi}_Stand", (-1.84, fy, 0.96 + fh * 0.25), (0.06, 0.02, fh * 0.5), walnut_dk)
+    make_box("Dresser_Runner", (-1.89, 2.60, 0.962), (0.40, 1.10, 0.004), (0.96, 0.95, 0.92, 1.0))
+    make_box("Jewelry_Box", (-1.95, 2.10, 1.01), (0.18, 0.14, 0.10), (0.52, 0.28, 0.24, 1.0))
+    # ── her reading chair in the south-west corner, the afghan, the lamp table ──
+    ax, ay = -1.60, 0.85
+    upholstery = (0.58, 0.46, 0.38, 1.0)
+    make_chamfer_box("Armchair_Base", (ax, ay, 0.20), (0.76, 0.76, 0.40), upholstery, chamfer=0.04)
+    make_chamfer_box("Armchair_Seat", (ax, ay + 0.04, 0.46), (0.56, 0.58, 0.12), (0.64, 0.52, 0.42, 1.0), chamfer=0.04)
+    make_chamfer_box("Armchair_Back", (ax, ay - 0.31, 0.78), (0.70, 0.14, 0.64), upholstery, chamfer=0.05)
+    for e in (-1, 1):
+        make_chamfer_box(f"Armchair_Arm_{e:+d}", (ax + e * 0.32, ay, 0.56), (0.12, 0.76, 0.32), upholstery, chamfer=0.04)
+    make_box("Armchair_Afghan", (ax, ay - 0.24, 1.00), (0.66, 0.08, 0.36), (0.72, 0.54, 0.30, 1.0))
+    make_box("Armchair_Afghan_Band", (ax, ay - 0.199, 0.98), (0.66, 0.002, 0.05), (0.42, 0.56, 0.48, 1.0))
+    make_table("Lamp_Table", -2.00, 1.55, w=0.36, d=0.36, h=0.56, wood=walnut)
+    make_lamp("Reading_Lamp", -2.00, 1.55, base_z=0.56, h=0.50, shade_col=(0.92, 0.84, 0.66, 1.0))
+    for bi in range(3):
+        make_box(f"Lamp_Table_Book_{bi}", (-1.94, 1.48, 0.575 + bi * 0.03), (0.15 - bi * 0.01, 0.20, 0.03), ((0.42, 0.24, 0.20, 1.0), (0.26, 0.36, 0.30, 1.0), (0.80, 0.74, 0.60, 1.0))[bi])
+    # ── a low bookshelf on the W wall north of the dresser ──
+    bx0, by0, by1 = WF, 3.45, 4.15
+    make_box("Bookshelf_Back", (bx0 + 0.01, (by0 + by1) / 2.0, 0.55), (0.02, by1 - by0, 1.10), walnut_dk)
+    for e in (-1, 1):
+        make_box(f"Bookshelf_Side_{e:+d}", (bx0 + 0.15, (by0 + by1) / 2.0 + e * ((by1 - by0) / 2.0 - 0.01), 0.55), (0.30, 0.02, 1.10), walnut)
+    for si, sz in enumerate((0.02, 0.38, 0.74, 1.09)):
+        make_box(f"Bookshelf_Shelf_{si}", (bx0 + 0.15, (by0 + by1) / 2.0, sz), (0.30, by1 - by0 - 0.04, 0.02), walnut)
+        if si < 3:
+            y = by0 + 0.04
+            for bi in range(10):
+                t = 0.03 + 0.012 * ((bi + si) % 3); h = 0.22 + 0.04 * ((bi * 7 + si) % 3)
+                if y + t > by1 - 0.04:
+                    break
+                make_box(f"Bookshelf_Book_{si}_{bi}", (bx0 + 0.14, y + t / 2.0, sz + 0.01 + h / 2.0), (0.20, t, h),
+                         ((0.48, 0.22, 0.20, 1.0), (0.22, 0.32, 0.46, 1.0), (0.72, 0.64, 0.46, 1.0), (0.30, 0.42, 0.30, 1.0))[(bi + si) % 4])
+                y += t + 0.003
+    # ── curtains at the radio's window, a picture rail round the room ──
+    make_cyl("Window_Curtain_Rod", (1.55, 0.23, 2.16), 0.01, 1.40, (0.70, 0.58, 0.30, 1.0), axis='X', segments=6)
+    for e, cx in ((-1, 0.88), (1, 2.14 - 0.09)):
+        make_box(f"Window_Curtain_{e:+d}", (cx, 0.23, 1.55), (0.16, 0.05, 1.20), (0.82, 0.70, 0.58, 1.0))
+    for e in (-1, 1):
+        make_box(f"Window_Curtain_Bracket_{e:+d}", (1.55 + e * 0.66, 0.16, 2.16), (0.02, 0.14, 0.02), (0.70, 0.58, 0.30, 1.0))
+    for nm, c, sz in (("W", (WF + 0.012, ROOM_D / 2.0, 2.25), (0.024, ROOM_D - 0.2, 0.04)),
+                      ("N", (0.0, NF - 0.012, 2.25), (ROOM_W - 0.2, 0.024, 0.04))):
+        make_box(f"Picture_Rail_{nm}", c, sz, walnut)
 
 def main():
     clear_scene()
@@ -176,6 +254,7 @@ def main():
     build_window()
     build_ceiling_infra()
     build_decor()
+    build_lived_in_2026_10()
     # the back yard a storey down (2026-10-08: her room is UPSTAIRS)
     make_view("View_S", "S", 0.0, 1.55, kind="back", ground_z=-2.9, seed=10)
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),

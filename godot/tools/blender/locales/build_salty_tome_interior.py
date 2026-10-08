@@ -233,7 +233,7 @@ def build_ceiling_and_sign():
 
 def build_decor():
     make_wall_clock("Clock", (3.900, 1.2, 2.10), frozen_hour=5, frozen_min=10, facing='-X')
-    make_calendar("Calendar", (-ROOM_W/2.0+0.05, 5.4, 2.05))
+    make_calendar("Calendar", (-ROOM_W/2.0+0.1025, 5.4, 2.05))
     make_faded_poster("Poster", (+ROOM_W/2.0-0.05 - 0.0535, 5.6, 1.70), into_room=-1)
     make_floor_plant("Plant", (+ROOM_W/2.0-0.40, 0.55, 0.0),
                      palette={"leaf": (0.36, 0.46, 0.32, 1.0)})

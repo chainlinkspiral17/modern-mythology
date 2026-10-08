@@ -91,7 +91,7 @@ def build_office_dressing():
     make_box("Pegboard", (-ROOM_W/2.0+0.06, ROOM_D-1.4, 1.6), (0.04, 1.2, 0.8), (0.62, 0.44, 0.28, 1.0))
     for wi in range(5):
         make_box(f"WorkOrder_{wi}", (-ROOM_W/2.0+0.10, ROOM_D-1.9+wi*0.24, 1.6), (0.02, 0.16, 0.22), (0.90, 0.88, 0.82, 1.0))
-    make_calendar("Calendar", (-ROOM_W/2.0+0.06, ROOM_D-0.4, 1.5))
+    make_calendar("Calendar", (-ROOM_W/2.0+0.1025, ROOM_D-0.4, 1.5))
     # Parts shelf on the east wall with boxed parts
     sx = ROOM_W/2.0-0.22
     make_box("PartsShelf", (sx, ROOM_D-1.4, 1.3), (0.30, 1.10, 1.60), COL_WOOD)

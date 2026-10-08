@@ -3763,6 +3763,36 @@ blobs on a trunk), not cones; Jesse's room has its carpet ("puts the
 phone face-down on the carpet") and show bills. Deck must REBUILD
 hospital_room, centro_stockroom, jesse_bedroom.
 
+**2026-10-08 · LINDA CALDWELL'S HOUSE, LIVED IN.** The user: "Too bare
+and empty, the Caldwell." Forty years in one house, from the prose:
+- **Kitchen:** a china hutch (blue and white plates on edge, cups, a
+  doily and a vase), the rotary wall phone with its coiled cord and
+  notepad, a chair rail and a painted lower wall, the canister set, a
+  bread box, a spice shelf, her pill box and magnifier, the soup on the
+  front burner ("soup in the kitchen"), a dish towel on the oven handle,
+  café curtains tied back so her radio and two violets show on the sill,
+  a checked cloth and a fruit bowl on the table, cookbooks and a recipe
+  box and two photographs on the east wall, the fridge door's photos and
+  magnets, a braided rug at the sink.
+- **Her room:** a pieced quilt, her cane against the nightstand, slippers,
+  a water glass and a book, her robe on the back of the hall door, the
+  family over the bed and three frames on the dresser (Thomas's in brass,
+  in the middle) with a runner and a jewelry box, her reading chair with
+  an afghan and its lamp table and books, a low bookshelf, curtains at
+  the radio's window, a picture rail.
+- **The porch:** ch19 — "Linda in the wicker, Maya in the second porch
+  chair, two iced teas on the small table, the third pulled out and
+  waiting": the two rockers became her wicker chair (woven skirt, fan
+  back, floral cushion; the blanket over its arm), Maya's white chair and
+  the third pulled out; the house's FRONT DOOR in the house wall (it had
+  none — Maya "stands in the doorway"), the house number and mailbox,
+  geraniums on the railing, a wind chime.
+Also: 14 wall calendars across the game stood 5 cm INSIDE their walls
+(the `+0.05` template offset on 20 cm walls) — on the face now; and the
+calendar's month grid printed into the wall on every east wall.
+Deck must REBUILD the three Caldwell sets and the calendar rooms
+(list_stale_builds catches decor.py).
+
 NEXT (queued): Bianca's kitchen is the Miller kitchen again —
 `bianca_kitchen_morning` (ch 22 / 23) and `miller_kitchen` are one room
 on Meadowlark Circle (the cul-de-sac through the window, the green robe

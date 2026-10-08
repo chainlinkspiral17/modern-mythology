@@ -14,7 +14,7 @@ logs with bark; the hanging planter's chain; the street lamp's sodium
 practical for the nine-fifty-three car; Deck: night establish and
 `insert radio`.
 """
-import os, sys
+import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
@@ -101,9 +101,33 @@ def _make_rocker(prefix, cx, cy):
     for si, sy in enumerate((cy-0.20, cy+0.20)):
         make_tube(f"{prefix}_Stretcher_{si}", [(cx-0.22, sy, 0.20), (cx+0.22, sy, 0.20)], 0.012, COL_WOOD, segments=5)
 
+WICKER = (0.76, 0.62, 0.42, 1.0); WICKER_DK = (0.58, 0.46, 0.30, 1.0)
+
+
+def _wicker_chair(prefix, wx, wy):
+    """Linda's wicker chair (ch12/ch19: "Linda in the wicker"), facing the
+    railing (-Y): a woven skirt, a floral cushion, arms, the fan back."""
+    make_chamfer_box(f"{prefix}_Skirt", (wx, wy, 0.20), (0.66, 0.60, 0.40), WICKER, chamfer=0.04)
+    for k in range(4):
+        make_box(f"{prefix}_Weave_{k}", (wx, wy - 0.3005, 0.06 + k * 0.09), (0.60, 0.002, 0.012), WICKER_DK)
+    make_chamfer_box(f"{prefix}_Seat", (wx, wy - 0.03, 0.44), (0.54, 0.50, 0.08), (0.80, 0.56, 0.52, 1.0), chamfer=0.03)
+    make_box(f"{prefix}_Back", (wx, wy + 0.25, 0.61), (0.66, 0.10, 0.42), WICKER)
+    make_cyl(f"{prefix}_Back_Fan", (wx, wy + 0.25, 0.98), 0.38, 0.08, WICKER, axis='Y', segments=20)
+    for k, r in enumerate((0.30, 0.20)):
+        make_cyl(f"{prefix}_Back_Fan_Ring_{k}", (wx, wy + 0.209 - k * 0.002, 0.98), r, 0.002, WICKER_DK, axis='Y', segments=18)
+    for e in (-1, 1):
+        make_box(f"{prefix}_Arm_{e:+d}", (wx + e * 0.30, wy - 0.02, 0.64), (0.08, 0.54, 0.06), WICKER)
+        make_box(f"{prefix}_Arm_{e:+d}_Post", (wx + e * 0.30, wy - 0.25, 0.505), (0.06, 0.06, 0.21), WICKER_DK)
+
+
 def build_chairs():
-    for ci, cx in enumerate([-1.5, +1.5]):
-        _make_rocker(f"Rocker_{ci}", cx, ROOM_D/2.0)
+    """The porch's three chairs (ch19: "Linda in the wicker, Maya in the
+    second porch chair, two iced teas on the small table, the third pulled
+    out and waiting") — it had two rockers (2026-10-08)."""
+    from _props.furniture import make_chair
+    _wicker_chair("Wicker_Chair", -1.40, ROOM_D/2.0)
+    make_chair("Porch_Chair_Maya", 1.10, ROOM_D/2.0, yaw=3.1416, wood=(0.90, 0.90, 0.86, 1.0))
+    make_chair("Porch_Chair_Third", -0.40, ROOM_D/2.0 + 0.58, yaw=3.40, wood=(0.90, 0.90, 0.86, 1.0))   # pulled out at the table, clear of the front door's swing
 
 def build_door():
     # the frame as a ring between the door posts, the screen see-through
@@ -206,9 +230,9 @@ def build_porch_props_2026_08():
     make_cyl("Radio_Antenna_B", (1.562, 0.18, 1.395), 0.005, 0.14, (0.62, 0.64, 0.66, 1.0), segments=6)
     # The blanket over a chair back, one corner hanging lower.
     # over Rocker_0's back (cx -1.5, back at cy + 0.22; 2026-09-22 it hung 30 cm in front of it)
-    make_box("Blanket_Fold", (-1.35, ROOM_D/2.0 + 0.22, 0.78), (0.55, 0.16, 0.10), (0.52, 0.36, 0.30, 1.0))
-    make_box("Blanket_Drop", (-1.35, ROOM_D/2.0 + 0.175, 0.52), (0.50, 0.05, 0.42), (0.49, 0.34, 0.28, 1.0))
-    make_box("Blanket_Corner", (-1.15, ROOM_D/2.0 + 0.18, 0.30), (0.16, 0.04, 0.16), (0.46, 0.32, 0.27, 1.0))
+    # the small light blanket, folded over the wicker's west arm
+    make_box("Blanket_Fold", (-1.70, ROOM_D/2.0 - 0.02, 0.69), (0.16, 0.40, 0.04), (0.52, 0.36, 0.30, 1.0))
+    make_box("Blanket_Drop", (-1.79, ROOM_D/2.0 - 0.02, 0.46), (0.02, 0.38, 0.44), (0.49, 0.34, 0.28, 1.0))
     # The cake on its plate at the side table, two slices gone —
     # a porch cake is a cake being eaten.
     make_cyl("Cake_Plate", (tx + 0.10, ty + 0.10, 0.545), 0.13, 0.012, (0.90, 0.88, 0.84, 1.0), segments=12)
@@ -271,11 +295,50 @@ def build_draft4_2026_09():
     make_far_bands("Far", (0.42, 0.38, 0.36, 1.0), [(11.0, 12.0, 4.5, 0.85), (18.0, 16.0, 6.0, 0.7)], sides="S", cy=0.0, profile="roofline")
 
 
+
+def build_lived_in_2026_10():
+    """THE PORCH, LIVED IN (2026-10-08; the user: "Too bare and empty, the
+    Caldwell"): the house's front door in the house wall (Maya "stands in
+    the doorway watching her grandmother breathe" — the wall had no door),
+    the house number and the mailbox by it, geraniums in clay pots on the
+    railing, a wind chime under the beam."""
+    from _props.geometry import make_blob
+    NF = ROOM_D - 0.10
+    door_col = (0.30, 0.42, 0.40, 1.0); trim = (0.92, 0.90, 0.84, 1.0)
+    for nm, c, sz in (("Head", (0.0, NF - 0.03, 2.13), (1.08, 0.06, 0.10)),
+                      ("JambW", (-0.50, NF - 0.03, 1.04), (0.08, 0.06, 2.08)),
+                      ("JambE", (0.50, NF - 0.03, 1.04), (0.08, 0.06, 2.08))):
+        make_box(f"House_Door_Frame_{nm}", c, sz, trim)
+    make_box("House_Door", (0.0, NF - 0.02, 1.03), (0.90, 0.04, 2.04), door_col)
+    for k, (pz, ph) in enumerate(((0.45, 0.60), (1.20, 0.60))):
+        for e in (-1, 1):
+            make_box(f"House_Door_Panel_{k}_{e:+d}", (e * 0.20, NF - 0.042, pz), (0.30, 0.004, ph), (0.26, 0.36, 0.34, 1.0))
+    make_box("House_Door_Lite", (0.0, NF - 0.042, 1.78), (0.60, 0.004, 0.30), (0.42, 0.34, 0.22, 1.0))
+    make_cyl("House_Door_Knob", (0.36, NF - 0.07, 1.00), 0.03, 0.06, (0.70, 0.58, 0.30, 1.0), axis='Y', segments=8)
+    make_box("House_Number", (-0.85, NF - 0.01, 1.75), (0.30, 0.02, 0.12), (0.70, 0.58, 0.30, 1.0))
+    make_box("House_Mailbox", (-0.85, NF - 0.05, 1.35), (0.30, 0.10, 0.22), (0.20, 0.20, 0.22, 1.0))
+    make_box("House_Mailbox_Lid", (-0.85, NF - 0.06, 1.47), (0.32, 0.12, 0.02), (0.20, 0.20, 0.22, 1.0))
+    # geraniums on the west railing
+    for gi, gx in enumerate((-2.55, -2.12)):
+        make_lathe(f"Geranium_Pot_{gi}", (gx, 0.10, 1.025), [(0.05, 0.0), (0.07, 0.12), (0.075, 0.13), (0.0, 0.13)], (0.70, 0.40, 0.28, 1.0), segments=10)
+        make_blob(f"Geranium_{gi}", (gx, 0.10, 1.22), 0.10, (0.28, 0.46, 0.26, 1.0), noise=0.30, seed=80 + gi, squash=0.7)
+        make_blob(f"Geranium_{gi}_Bloom", (gx + 0.03, 0.08, 1.29), 0.05, (0.86, 0.22, 0.24, 1.0), noise=0.25, seed=90 + gi, squash=0.8)
+    # the wind chime under the south beam, east of the door
+    cx_, cy_ = 2.30, 0.12
+    make_cyl("Wind_Chime_String", (cx_, cy_, 2.525), 0.003, 0.15, (0.20, 0.20, 0.20, 1.0), segments=4)
+    make_cyl("Wind_Chime_Ring", (cx_, cy_, 2.445), 0.06, 0.01, (0.46, 0.34, 0.24, 1.0), segments=12)
+    for t in range(5):
+        a = t * 1.2566
+        ln = 0.22 + 0.05 * t
+        make_cyl(f"Wind_Chime_Tube_{t}", (cx_ + 0.045 * math.cos(a), cy_ + 0.045 * math.sin(a), 2.445 - ln / 2.0), 0.008, ln,
+                 (0.78, 0.80, 0.82, 1.0), segments=6)
+
 def main():
     clear_scene()
     build_shell()
     build_railing()
     build_chairs()
+    build_lived_in_2026_10()
     build_door()
     build_porchlamp()
     build_dressing()

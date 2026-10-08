@@ -122,15 +122,19 @@ def make_calendar(prefix, anchor, *, palette=None, axis='Y'):
     palette = palette or {}
     paper = palette.get("paper", (0.78, 0.62, 0.46, 1.0))
     cx, cy, cz = anchor
+    # the grid prints on the ROOM side (2026-10-08: on every east wall it
+    # printed +x, behind the sheet, into the wall)
     if str(axis).upper() == 'X':
+        d = -1 if cy > 1.0 else 1
         make_box(f"{prefix}_Body", (cx, cy, cz),
                  (0.40, 0.005, 0.50), paper)
-        make_box(f"{prefix}_Grid", (cx, cy - 0.002, cz - 0.15),
+        make_box(f"{prefix}_Grid", (cx, cy + 0.002 * d, cz - 0.15),
                  (0.34, 0.001, 0.20), P.PAPER)
         return
+    d = -1 if cx > 0 else 1
     make_box(f"{prefix}_Body", (cx, cy, cz),
              (0.005, 0.40, 0.50), paper)
-    make_box(f"{prefix}_Grid", (cx + 0.002, cy, cz - 0.15),
+    make_box(f"{prefix}_Grid", (cx + 0.002 * d, cy, cz - 0.15),
              (0.001, 0.34, 0.20), P.PAPER)
 
 

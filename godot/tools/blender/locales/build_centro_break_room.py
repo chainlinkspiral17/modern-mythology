@@ -127,7 +127,7 @@ def build_break_decor():
     # Wall clock on the N wall beside the bulletin board
     make_wall_clock("Clock", (1.70, ROOM_D - 0.100, 2.10), frozen_hour=12, frozen_min=30, facing='-Y')   # on the N wall's face wherever it is (2026-09-25: literal 3.9 floated when the room grew)
     # Wall calendar on the E wall (make_calendar was imported/unused)
-    make_calendar("Calendar", (ROOM_W/2.0-0.06, 1.20, 1.60))
+    make_calendar("Calendar", (ROOM_W/2.0-0.1025, 1.20, 1.60))
     # Corner floor plant (make_floor_plant was imported/unused)
     make_floor_plant("Plant", (ROOM_W/2.0-0.55, 0.60, 0.0))
     # Swing-lid trash bin by the counter
