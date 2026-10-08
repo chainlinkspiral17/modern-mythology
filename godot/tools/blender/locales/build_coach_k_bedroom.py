@@ -179,6 +179,37 @@ def build_detail_pass_2026_08():
                      face_sign=-1, aged=True)
 
 
+
+def build_twenty_years_2026_10():
+    """THE COACH'S BEDROOM, TWENTY YEARS IN (2026-10-08; "too bare and
+    empty"): the wedding photograph over the headboard, a framed team
+    picture and a plaque on the east wall, a cedar chest at the foot of
+    the bed, the reading chair by the window with his sweater over it,
+    the hamper."""
+    from _props.geometry import make_chamfer_box, make_lathe
+    EF, NF, SF, WF = ROOM_W/2.0 - 0.10, ROOM_D - 0.10, 0.10, -ROOM_W/2.0 + 0.10
+    frame = (0.30, 0.22, 0.16, 1.0)
+    make_box("Wedding_Photo", (0.0, NF - 0.015, 1.65), (0.50, 0.03, 0.40), frame)
+    make_box("Wedding_Photo_Print", (0.0, NF - 0.031, 1.65), (0.42, 0.002, 0.32), (0.66, 0.62, 0.56, 1.0))
+    for fi, (fx, fw) in enumerate(((-0.65, 0.24), (0.65, 0.24))):
+        make_box(f"Over_Bed_Frame_{fi}", (fx, NF - 0.015, 1.62), (fw, 0.03, 0.30), frame)
+        make_box(f"Over_Bed_Frame_{fi}_Print", (fx, NF - 0.031, 1.62), (fw - 0.06, 0.002, 0.24), (0.54, 0.50, 0.46, 1.0))
+    make_box("Team_Picture", (EF - 0.015, 3.10, 1.65), (0.03, 0.70, 0.46), frame)
+    make_box("Team_Picture_Print", (EF - 0.031, 3.10, 1.65), (0.002, 0.62, 0.38), (0.40, 0.46, 0.38, 1.0))
+    make_box("Coach_Plaque", (EF - 0.012, 3.10, 1.22), (0.024, 0.30, 0.22), (0.42, 0.28, 0.18, 1.0))
+    make_box("Coach_Plaque_Brass", (EF - 0.025, 3.10, 1.22), (0.002, 0.22, 0.14), (0.86, 0.70, 0.30, 1.0))
+    make_chamfer_box("Cedar_Chest", (0.0, 2.05, 0.24), (1.10, 0.48, 0.48), (0.54, 0.34, 0.22, 1.0), chamfer=0.02)
+    make_box("Cedar_Chest_Quilt", (0.0, 2.05, 0.485), (1.00, 0.40, 0.03), (0.42, 0.50, 0.60, 1.0))
+    ax, ay = WF + 0.45, 1.20
+    upholstery = (0.36, 0.34, 0.30, 1.0)
+    make_chamfer_box("Reading_Chair_Base", (ax, ay, 0.20), (0.74, 0.74, 0.40), upholstery, chamfer=0.04)
+    make_chamfer_box("Reading_Chair_Seat", (ax + 0.04, ay, 0.46), (0.56, 0.56, 0.12), (0.42, 0.40, 0.36, 1.0), chamfer=0.04)
+    make_chamfer_box("Reading_Chair_Back", (ax - 0.30, ay, 0.78), (0.14, 0.70, 0.64), upholstery, chamfer=0.05)
+    for e in (-1, 1):
+        make_chamfer_box(f"Reading_Chair_Arm_{e:+d}", (ax, ay + e * 0.31, 0.56), (0.74, 0.12, 0.32), upholstery, chamfer=0.04)
+    make_box("Reading_Chair_Sweater", (ax - 0.22, ay, 0.96), (0.08, 0.60, 0.30), (0.30, 0.36, 0.28, 1.0))
+    make_lathe("Hamper", (EF - 0.30, NF - 0.30, 0.0), [(0.20, 0.0), (0.22, 0.55), (0.0, 0.55)], (0.62, 0.56, 0.46, 1.0), segments=12)
+
 def main():
     clear_scene()
     build_shell()
@@ -189,6 +220,7 @@ def main():
     build_detail_pass_2026_08()
     # what is outside the window (2026-10-07, _props/views.py)
     make_view("View_W", "W", -ROOM_W / 2.0, 2.6, kind="side", ground_z=0.0, seed=22)   # the seam of night past the curtain: the side yard
+    build_twenty_years_2026_10()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/coach_k_bedroom.glb"))
     print(f"\n[build_coach_k_bedroom] exporting to {out}")

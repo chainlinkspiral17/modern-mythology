@@ -3821,6 +3821,19 @@ Next by the probe: kai_apartment, ben_bedroom, coach_k_bedroom (vol 6);
 then the older volumes' barest — lacombe_service_garage, christian_ice_co,
 le_roulant_casino, roadside_chapel, houston_design_studio, pharmacy.
 
+SAME DAY, the next three: **ben_bedroom** — the athlete's walls (the
+pennant and framed team photograph over the headboard, a trophy shelf
+with the game ball over a dresser, a sports print by the door, the
+hamper); **coach_k_bedroom** — twenty years in (the wedding photograph and
+two frames over the bed, the team picture and a plaque, the cedar chest
+with a quilt at the bed's foot, a reading chair with his sweater, the
+hamper); **kai_apartment** — the studio had a kitchen table and "the
+clock on the kitchen wall" and no kitchen: a kitchenette on the kit west
+of the window (sink, two burners, uppers, a mini fridge, the kettle, a
+dish rack with one plate and one mug), a rug under the table. Deck must
+REBUILD henderson_garage, centro_stockroom, hospital_room,
+pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
+
 NEXT (queued): Bianca's kitchen is the Miller kitchen again —
 `bianca_kitchen_morning` (ch 22 / 23) and `miller_kitchen` are one room
 on Meadowlark Circle (the cul-de-sac through the window, the green robe

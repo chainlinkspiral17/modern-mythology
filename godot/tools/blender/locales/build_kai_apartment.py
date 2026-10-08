@@ -82,7 +82,7 @@ def build_dressing():
     for i, (lx, ly) in enumerate([(-0.16, -0.16), (0.16, -0.16), (-0.16, 0.16), (0.16, 0.16)]):
         make_box(f"Chair_Leg_{i}", (dx+lx, dy-0.55+ly, 0.23), (0.05, 0.05, 0.44), P.METAL_BLACK)
     # Floor plant, NW corner (make_floor_plant was imported/unused)
-    make_floor_plant("Plant", (-ROOM_W/2.0+0.5, ROOM_D-0.6, 0.0), palette={"leaf": (0.40, 0.50, 0.38, 1.0), "pot": (0.44, 0.34, 0.24, 1.0)})
+    make_floor_plant("Plant", (ROOM_W/2.0-0.45, 0.55, 0.0), palette={"leaf": (0.40, 0.50, 0.38, 1.0), "pot": (0.44, 0.34, 0.24, 1.0)})   # SE corner (2026-10-08: the kitchenette took the NW)
 
 def build_win():
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
@@ -144,6 +144,34 @@ def build_detail_pass_2026_08():
                      face_sign=-1, aged=True)
 
 
+
+def build_kitchenette_2026_10():
+    """THE KITCHENETTE (2026-10-08; "too bare and empty"). Kai "sat at the
+    kitchen table with a glass of water"; "the clock on the kitchen wall
+    said seven oh-eight" — the studio had the table and the clock and no
+    kitchen. A short run on the N wall west of the window: base cabinets,
+    the sink, a two-burner cooktop, uppers, a mini fridge under the
+    counter's end; a kettle, a dish rack with one plate and one mug."""
+    from _props import kitchen_kit as K
+    from _props.geometry import make_lathe, make_chamfer_box
+    yb, top = ROOM_D - 0.10, 0.90
+    x0, x1 = -ROOM_W/2.0 + 0.10, -0.95
+    body = (0.80, 0.76, 0.66, 1.0); laminate = (0.62, 0.60, 0.56, 1.0)
+    K.base_run("Kitchenette", x0, x1, yb, top_z=top, body=body, top=laminate, edge=(0.40, 0.40, 0.42, 1.0),
+               pull=(0.30, 0.30, 0.32, 1.0), rail=(0.70, 0.66, 0.56, 1.0))
+    K.sink("Kitchenette_Sink", (x0 + x1) / 2.0 + 0.10, yb, top, width=0.50, depth=0.40)
+    K.upper_run("Kitchenette_Upper", x0, x1, yb, z0=1.46, z1=2.10, body=body, pull=(0.30, 0.30, 0.32, 1.0), rail=(0.70, 0.66, 0.56, 1.0))
+    make_box("Cooktop", (x0 + 0.28, yb - 0.30, top + 0.02), (0.36, 0.50, 0.04), (0.10, 0.10, 0.12, 1.0))
+    for bi, by in enumerate((yb - 0.18, yb - 0.42)):
+        make_cyl(f"Cooktop_Burner_{bi}", (x0 + 0.28, by, top + 0.041), 0.07, 0.002, (0.30, 0.30, 0.32, 1.0), segments=12)
+    make_lathe("Kettle", (x0 + 0.28, yb - 0.18, top + 0.042), [(0.08, 0.0), (0.09, 0.04), (0.08, 0.12), (0.04, 0.16), (0.0, 0.16)],
+               (0.70, 0.72, 0.74, 1.0), segments=12)
+    make_box("Dish_Rack", (x1 - 0.18, yb - 0.30, top + 0.02), (0.30, 0.34, 0.04), (0.80, 0.82, 0.84, 1.0))
+    make_cyl("Dish_Rack_Plate", (x1 - 0.18, yb - 0.30, top + 0.16), 0.11, 0.015, (0.94, 0.94, 0.90, 1.0), axis='Y', segments=14)
+    make_cyl("Dish_Rack_Mug", (x1 - 0.06, yb - 0.38, top + 0.09), 0.04, 0.09, (0.30, 0.42, 0.56, 1.0), segments=10)
+    make_chamfer_box("Mini_Fridge", (x1 + 0.12, yb - 0.27, 0.42), (0.22, 0.50, 0.84), (0.90, 0.90, 0.88, 1.0), chamfer=0.02)
+    make_box("Kitchen_Rug", (0.60, 3.60, 0.005), (1.60, 1.20, 0.01), (0.50, 0.40, 0.34, 1.0))
+
 def main():
     clear_scene()
     build_shell()
@@ -156,6 +184,7 @@ def main():
     build_hero_props()
     build_detail_pass_2026_08()
     # what is outside the window (2026-10-07, _props/views.py)
+    build_kitchenette_2026_10()
     make_view("View_N", "N", ROOM_D, 0.0, kind="side", ground_z=-3.0, seed=7)
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/kai_apartment.glb"))

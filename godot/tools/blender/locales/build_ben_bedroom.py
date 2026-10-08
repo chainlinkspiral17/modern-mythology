@@ -204,6 +204,45 @@ def build_detail_pass_2026_08():
                      face_sign=-1, aged=True)
 
 
+
+def build_athletes_walls_2026_10():
+    """BEN'S WALLS (2026-10-08; "too bare and empty" — 27 % of them held
+    anything at eye height). A tidy athlete's room keeps its football on
+    the walls: the team pennant and the framed team photograph over the
+    headboard, a shelf of trophies, a dresser under it, a sports print by
+    the door, the hamper in the corner."""
+    from _props.geometry import make_chamfer_box, make_lathe
+    from _props.decor import make_faded_poster
+    EF, NF, SF, WF = ROOM_W/2.0 - 0.10, ROOM_D - 0.10, 0.10, -ROOM_W/2.0 + 0.10
+    navy, gold = (0.16, 0.22, 0.42, 1.0), (0.90, 0.72, 0.24, 1.0)
+    wood = (0.50, 0.38, 0.26, 1.0)
+    # the pennant and the team photo over the headboard (E wall)
+    make_box("Pennant_Base", (EF - 0.005, 2.90, 1.75), (0.01, 0.10, 0.30), navy)
+    for k in range(6):
+        w = 0.62 - k * 0.10
+        make_box(f"Pennant_{k}", (EF - 0.006, 2.90 - 0.05 - w / 2.0 + 0.05, 1.75 + 0.12 - k * 0.048), (0.008, w, 0.05), navy if k % 2 == 0 else (0.18, 0.24, 0.46, 1.0))
+    make_box("Pennant_Letters", (EF - 0.012, 2.62, 1.76), (0.002, 0.30, 0.08), gold)
+    make_box("Team_Photo", (EF - 0.015, 3.60, 1.70), (0.03, 0.60, 0.42), (0.22, 0.18, 0.14, 1.0))
+    make_box("Team_Photo_Print", (EF - 0.031, 3.60, 1.70), (0.002, 0.52, 0.34), (0.40, 0.46, 0.38, 1.0))
+    for r in range(2):
+        for c in range(7):
+            make_box(f"Team_Photo_Player_{r}_{c}", (EF - 0.033, 3.40 + c * 0.066, 1.62 + r * 0.12), (0.002, 0.04, 0.07), navy if (r + c) % 2 else (0.86, 0.84, 0.80, 1.0))
+    # the dresser on the E wall south of the bed, the trophy shelf over it
+    dy0, dy1 = 0.45, 1.65
+    make_box("Dresser", (EF - 0.25, (dy0 + dy1) / 2.0, 0.42), (0.50, dy1 - dy0, 0.84), wood)
+    for di in range(3):
+        make_box(f"Dresser_Drawer_{di}", (EF - 0.505, (dy0 + dy1) / 2.0, 0.15 + di * 0.27), (0.01, dy1 - dy0 - 0.06, 0.22), (0.42, 0.30, 0.20, 1.0))
+        make_box(f"Dresser_Pull_{di}", (EF - 0.52, (dy0 + dy1) / 2.0, 0.15 + di * 0.27), (0.02, 0.14, 0.02), (0.20, 0.20, 0.22, 1.0))
+    make_box("Dresser_Speaker", (EF - 0.25, 0.70, 0.92), (0.14, 0.14, 0.16), (0.12, 0.12, 0.14, 1.0))
+    make_box("Trophy_Shelf", (EF - 0.11, 1.05, 1.45), (0.22, 1.10, 0.025), wood)
+    for ti, (ty, th) in enumerate(((0.65, 0.26), (0.92, 0.20), (1.15, 0.30), (1.42, 0.22))):
+        make_box(f"Trophy_{ti}_Base", (EF - 0.11, ty, 1.4625 + 0.03), (0.08, 0.08, 0.06), (0.16, 0.14, 0.12, 1.0))
+        make_lathe(f"Trophy_{ti}", (EF - 0.11, ty, 1.5225), [(0.012, 0.0), (0.012, th * 0.5), (0.05, th * 0.75), (0.04, th), (0.0, th)], gold, segments=10)
+    make_cyl("Game_Ball", (EF - 0.11, 1.30, 1.4625 + 0.08), 0.08, 0.20, (0.50, 0.28, 0.16, 1.0), axis='Y', segments=10)
+    # a sports print by the door (S wall), the hamper in the NW corner
+    make_faded_poster("Poster_S", (1.10, SF + 0.0025, 1.55), axis='X', into_room=+1, kind="sports")
+    make_lathe("Hamper", (WF + 0.30, NF - 0.30, 0.0), [(0.20, 0.0), (0.22, 0.55), (0.0, 0.55)], (0.70, 0.64, 0.52, 1.0), segments=12)
+
 def main():
     clear_scene()
     build_shell()
@@ -213,6 +252,7 @@ def main():
     build_detail_pass_2026_08()
     # what is outside the window (2026-10-07, _props/views.py)
     make_view("View_N", "N", ROOM_D, 0.45, kind="back", ground_z=-2.9, seed=21)   # upstairs at the Kowalskis': the back yard, the cicadas
+    build_athletes_walls_2026_10()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/ben_bedroom.glb"))
     print(f"\n[build_ben_bedroom] exporting to {out}")
