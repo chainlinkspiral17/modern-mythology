@@ -327,6 +327,18 @@ WBOUT="$(python3 window_backing_audit.py 2>/dev/null)" || {
 echo "$WBOUT" | tail -1
 echo ""
 
+# ── Seat-clearance gate (2026-10-08) ──────────────────────────
+# "Chairs facing each other with no room between seems a big problem"
+# (the user, on the hospital waiting room: two rows built FACING, their
+# seat fronts 14 cm apart). Facing seats need 0.75 m between their fronts
+# unless a table stands between them. Zero.
+echo "── seat_clearance_audit.py ──"
+SCOUT="$(python3 seat_clearance_audit.py 2>/dev/null)" || {
+    echo "$SCOUT" | grep "✗" | head -20
+    echo "REGRESSION  seat_clearance_audit found facing seats with no room between (ceiling 0)"; exit 1; }
+echo "$SCOUT" | tail -1
+echo ""
+
 # ── Scene-syntax gate (2026-09-25) ────────────────────────────
 # highway_101 and small_wood_road were skipped on every contact sheet:
 # `Color(r, g, b)` — Godot's parser wants four arguments — and the

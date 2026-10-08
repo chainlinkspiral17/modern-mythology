@@ -303,8 +303,15 @@ def build_dawn_east_2026_10():
             continue                                   # keep the truck lane clear
         h = 1.6 + 1.6 * ((k * 37) % 10) / 10.0
         r = 0.6 + 0.5 * ((k * 13) % 7) / 7.0
-        make_taper_cyl(f"Cedar_{k}", (cx, cy, h / 2.0), r, 0.08, h, (0.14, 0.20, 0.14, 1.0), segments=7)
-        make_cyl(f"Cedar_{k}_Trunk", (cx, cy, 0.15), 0.08, 0.30, (0.24, 0.18, 0.14, 1.0), segments=6)
+        # (2026-10-08) Ashe juniper is a lumpy bush, not a cone (the contact
+        # sheet read a field of party hats): three noise blobs stacked and
+        # narrowing, a trunk up to the lowest
+        col = ((0.14, 0.20, 0.14, 1.0), (0.17, 0.22, 0.15, 1.0), (0.12, 0.18, 0.13, 1.0))[k % 3]
+        z0 = max(0.25, 0.35 * h - 0.80 * r)
+        make_cyl(f"Cedar_{k}_Trunk", (cx, cy, (z0 + 0.10) / 2.0), 0.08, z0 + 0.10, (0.24, 0.18, 0.14, 1.0), segments=6)
+        for bi, (fz, fr) in enumerate(((0.35, 1.0), (0.64, 0.74), (0.88, 0.46))):
+            make_blob(f"Cedar_{k}_Crown_{bi}", (cx + 0.08 * ((k + bi) % 3 - 1), cy, h * fz), r * fr, col,
+                      noise=0.30, seed=k * 3 + bi, squash=0.85)
 
 
 def main():

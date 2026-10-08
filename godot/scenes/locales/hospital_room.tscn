@@ -188,6 +188,35 @@ light_energy = 0.2
 shadow_enabled = false
 
 ; Cool-white overhead fluorescents (blender fluor at y=1.5 & 3.5, CEIL 2.8)
+; (2026-10-08) the waiting room next door: its four troffers
+[node name="Wait_Fluor_0_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-9.000, 2.550, -1.400)
+light_color = Color(0.92, 0.94, 0.90, 1)
+light_energy = 1.10
+shadow_enabled = false
+omni_range = 4.0
+
+[node name="Wait_Fluor_1_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-5.600, 2.550, -1.400)
+light_color = Color(0.92, 0.94, 0.90, 1)
+light_energy = 1.10
+shadow_enabled = false
+omni_range = 4.0
+
+[node name="Wait_Fluor_2_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-9.000, 2.550, -3.700)
+light_color = Color(0.92, 0.94, 0.90, 1)
+light_energy = 1.10
+shadow_enabled = false
+omni_range = 4.0
+
+[node name="Wait_Fluor_3_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-5.600, 2.550, -3.700)
+light_color = Color(0.92, 0.94, 0.90, 1)
+light_energy = 1.10
+shadow_enabled = false
+omni_range = 4.0
+
 [node name="Practical_Overhead_S" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, -1.5)
 light_color = Color(0.9, 0.94, 0.96, 1)
@@ -331,9 +360,10 @@ offset_bottom = 980.0
 script = ExtResource("14_dbgm")
 
 ; insert: the paper cup of coffee she has not drunk
+; (2026-10-08) her coffee, not drunk, on the seat beside hers — the waiting room next door
 [node name="shot_insert_coffee" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, 0.95, -3.95)
-rotation = Vector3(-0.6300, 0.7051, 0.0)
+position = Vector3(-7.500, 1.100, -3.750)
+rotation = Vector3(-0.5707, 0.4834, 0.0)
 metadata/fov = 42.0
 
 ; insert: she takes Linda's free hand in both of hers

@@ -158,6 +158,19 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-10-08 · seat_clearance_audit: a seat faces away from its back
+
+- The user, on the new hospital waiting room: "Chairs facing each other
+  with no room between seems a big problem." Two rows meant back to back
+  were built facing — a sign flip in `face=` — their seat fronts 14 cm
+  apart. New gate (in the suite, ceiling 0): every `<stem>_Seat` takes its
+  facing from its `<stem>_Back*` parts; two seats facing each other across
+  their width need 0.75 m between their fronts unless a table, desk,
+  counter or booth table stands between. Its first sweep over 122
+  builders found exactly that room — every other facing pair has its
+  table. When a helper takes a direction argument, gate the RESULT, not
+  the argument.
+
 ### 2026-10-07 · solid stair steps are not wall slabs
 
 - placement_audit's HALF_SLAB test flagged the Centro office's ship

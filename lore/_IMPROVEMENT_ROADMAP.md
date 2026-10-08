@@ -3738,6 +3738,31 @@ finds them: decor.py changed).
 Deck must REBUILD the Caldwell porch, kitchen and radio room, and every
 plant room (list_stale_builds: decor.py changed).
 
+**2026-10-08 · THE WAITING ROOM IS NOT ROOM 318 (hospital_room).** Ch7:
+"Maya is in the waiting room when Ben arrives ... a chair against the back
+wall ... coffee from the vending machine". Ch8: Room 318 — the bed, the
+IV, "the visitor's chair", Anita "by the window". One 5 x 5 box held both
+(the waiting chairs and vending machine against the patient's wall; the
+hospital_waiting preset framed a bed). The waiting room is its own room
+now, next door in the same GLB: 7.9 x 5 m under four troffers (their
+practicals), beam seating on the back wall and back to back, the drink
+and snack machines, a water cooler, a TV on its bracket, a magazine
+table, a ficus, a window three storeys up with the street below, the
+double doors to the corridor. The preset and shot_insert_coffee frame
+it; Room 318's headboard is seated on its own deck (it had leaned on the
+waiting chairs). Deck must REBUILD hospital_room.
+
+**2026-10-08 · facing seats.** The user: "Chairs facing each other with
+no room between seems a big problem." The waiting room's middle rows were
+built FACING (seat fronts 14 cm apart); they are back to back now — the
+north row faces the back wall's row across 1.29 m, the south row the
+doors. New gate `seat_clearance_audit` (0.75 m between facing seat fronts
+unless a table stands between; ceiling 0) — its first sweep found only
+this room. Same pass: centro_dock's cedars are lumpy junipers (three noise
+blobs on a trunk), not cones; Jesse's room has its carpet ("puts the
+phone face-down on the carpet") and show bills. Deck must REBUILD
+hospital_room, centro_stockroom, jesse_bedroom.
+
 NEXT (queued): Bianca's kitchen is the Miller kitchen again —
 `bianca_kitchen_morning` (ch 22 / 23) and `miller_kitchen` are one room
 on Meadowlark Circle (the cul-de-sac through the window, the green robe

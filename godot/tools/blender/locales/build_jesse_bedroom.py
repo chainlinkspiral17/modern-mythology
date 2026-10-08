@@ -21,14 +21,14 @@ from _props.furniture import make_bed
 ROOM_W = 4.8; ROOM_D = 5.1; CEIL = 2.6
 # Plum-charcoal walls, amber accent — dark and warm, a practice-space vibe.
 PAL_WALL = {"wall": (0.34, 0.29, 0.33, 1.0), "baseboard": (0.20, 0.16, 0.18, 1.0)}
-COL_FLOOR = (0.34, 0.28, 0.24, 1.0); COL_SEAM = (0.20, 0.16, 0.14, 1.0); COL_WOOD = (0.40, 0.30, 0.20, 1.0)
+COL_FLOOR = (0.34, 0.28, 0.24, 1.0); COL_CARPET = (0.40, 0.36, 0.38, 1.0); COL_SEAM = (0.20, 0.16, 0.14, 1.0); COL_WOOD = (0.40, 0.30, 0.20, 1.0)
 COL_ACCENT = (0.86, 0.56, 0.28, 1.0)     # warm amber
 COL_FOAM = (0.22, 0.20, 0.22, 1.0)       # acoustic foam
 COL_BLANKET = (0.52, 0.30, 0.28, 1.0)    # warm rust futon blanket
 
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
-               palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
+               palette={"vinyl": COL_CARPET, "seam": COL_CARPET})   # wall-to-wall carpet, no seams (2026-10-08: "puts the phone face-down on the carpet")
     for nm, x, bb in [("Wall_W", -ROOM_W/2.0, +1), ("Wall_E", +ROOM_W/2.0, -1)]:
         make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y',
                   palette=PAL_WALL, baseboard_face_sign=bb)
@@ -80,7 +80,7 @@ def build_posters():
     for pi in range(3):
         px = -ROOM_W/2.0+0.05
         py = 0.9 + pi*1.4
-        make_faded_poster(f"Poster_Band_{pi}", (px + 0.0535, py, 1.55), into_room=+1)
+        make_faded_poster(f"Poster_Band_{pi}", (px + 0.0535, py, 1.55), into_room=+1, kind="band")   # show bills (2026-10-08)
 
 def build_win():
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)

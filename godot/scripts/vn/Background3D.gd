@@ -1247,16 +1247,14 @@ const CAMERA_PRESETS := {
 	"hospital_waiting": {
 		"scene": "res://scenes/locales/hospital_room.tscn",
 		"requires_glb": "res://assets/3d/locales/hospital_room.glb",
-		# vol6_ch7's WAITING ROOM beat — the NE corner of the hospital
-		# build: four linked chairs (godot x -0.85..0.83, z -4.55),
-		# vending machine (-1.9,-4.55), paper coffee cup on the end
-		# seat. Camera south of the row looking N so the bed stays out
-		# of frame — waiting, not visiting.
-		# RE-VANTAGED 2026-09-03 by vantage_obstruction_audit --propose
-		# (user: "another establishing shot that is 90 percent wall").
-		"camera_origin": Vector3(1.05, 1.50, -2.05),
-		"camera_rotation": Vector3(-0.05, 0.262, 0.0),
-		"fov": 58.0,
+		# (2026-10-08) vol6_ch7's WAITING ROOM is its own room now, next door
+		# to Room 318 (godot x -10.6..-2.7, z 0..-5): beam seating on the
+		# back wall where Maya sits with the coffee she has not drunk, the
+		# rows back to back, the vending machines on the east wall. From
+		# inside the double doors, north-west across the rows to her chair.
+		"camera_origin": Vector3(-5.3, 1.6, -0.8),
+		"camera_rotation": Vector3(-0.1570, 0.6573, 0.0),
+		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"safehouse_bedroom": {

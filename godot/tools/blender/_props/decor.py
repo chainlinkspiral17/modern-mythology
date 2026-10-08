@@ -155,8 +155,16 @@ def make_faded_poster(prefix, anchor, *, palette=None, axis='Y', into_room=None,
         into_room = (-1 if cy >= 0 else 1) if along_x else (-1 if cx >= 0 else 1)
     d = into_room
     kinds = ("band", "movie", "comic", "sports")
+    seed = sum(ord(ch) * (i + 1) for i, ch in enumerate(prefix))
     if kind is None:
-        kind = kinds[sum(ord(ch) * (i + 1) for i, ch in enumerate(prefix)) % len(kinds)]
+        kind = kinds[seed % len(kinds)]
+    k = seed // len(kinds)                 # varies the colours WITHIN a kind (2026-10-08:
+                                           # three show bills on one wall were one bill)
+    fields = ((0.22, 0.20, 0.28, 1.0), (0.46, 0.18, 0.18, 1.0), (0.16, 0.30, 0.32, 1.0), (0.30, 0.26, 0.18, 1.0), (0.84, 0.80, 0.70, 1.0))
+    brights = ((0.86, 0.46, 0.30, 1.0), (0.84, 0.72, 0.36, 1.0), (0.42, 0.62, 0.62, 1.0), (0.76, 0.40, 0.56, 1.0), (0.52, 0.70, 0.40, 1.0))
+
+    def bright(i):
+        return brights[(k + i) % len(brights)]
 
     def box(name, u, v, w, h, col, layer=1):
         off = 0.0035 * d * layer
@@ -176,27 +184,28 @@ def make_faded_poster(prefix, anchor, *, palette=None, axis='Y', into_room=None,
     ink = palette.get("ink", (0.26, 0.22, 0.22, 1.0))
     box("Body", 0.0, 0.0, 0.60, 0.80, paper, layer=0)
     if kind == "band":
-        box("Field", 0.0, 0.02, 0.54, 0.70, (0.22, 0.20, 0.28, 1.0))
-        for bi, col in enumerate(((0.86, 0.46, 0.30, 1.0), (0.84, 0.72, 0.36, 1.0), (0.42, 0.62, 0.62, 1.0))):
-            box(f"Figure_{bi}", 0.0, 0.10 - bi * 0.09, 0.46, 0.06, col, layer=2)
+        box("Field", 0.0, 0.02, 0.54, 0.70, fields[k % 4])
+        for bi in range(3):
+            w = (0.46, 0.38, 0.30, 0.46)[(k + bi) % 4]
+            box(f"Figure_{bi}", 0.0, 0.10 - bi * 0.09, w, 0.06, bright(bi), layer=2)
         box("Title", 0.0, 0.27, 0.46, 0.09, (0.94, 0.90, 0.80, 1.0), layer=2)
         for li in range(3):
             box(f"Dates_{li}", 0.0, -0.20 - li * 0.045, 0.30 - li * 0.06, 0.018, (0.90, 0.86, 0.78, 1.0), layer=2)
     elif kind == "movie":
-        box("Field", 0.0, 0.02, 0.54, 0.70, (0.30, 0.36, 0.48, 1.0))
+        box("Field", 0.0, 0.02, 0.54, 0.70, ((0.30, 0.36, 0.48, 1.0), (0.48, 0.30, 0.26, 1.0), (0.24, 0.38, 0.30, 1.0))[k % 3])
         disc("Figure_Head", 0.0, 0.14, 0.075, (0.12, 0.12, 0.16, 1.0), layer=2)
         box("Figure_Shoulders", 0.0, -0.02, 0.30, 0.16, (0.12, 0.12, 0.16, 1.0), layer=2)
-        box("Glow", 0.0, 0.22, 0.54, 0.04, (0.90, 0.62, 0.36, 1.0), layer=2)
+        box("Glow", 0.0, 0.22, 0.54, 0.04, bright(0), layer=2)
         box("Title", 0.0, -0.20, 0.46, 0.08, (0.92, 0.80, 0.42, 1.0), layer=2)
         box("Credits", 0.0, -0.29, 0.40, 0.03, (0.80, 0.80, 0.80, 1.0), layer=2)
     elif kind == "comic":
-        box("Title", 0.0, 0.30, 0.54, 0.12, (0.84, 0.30, 0.26, 1.0))
-        cols = ((0.92, 0.80, 0.34, 1.0), (0.40, 0.56, 0.80, 1.0), (0.86, 0.48, 0.38, 1.0), (0.56, 0.72, 0.46, 1.0))
+        box("Title", 0.0, 0.30, 0.54, 0.12, bright(3))
+        cols = tuple(bright(i) for i in range(4))
         for pi_, (u, v) in enumerate(((-0.135, 0.10), (0.135, 0.10), (-0.135, -0.18), (0.135, -0.18))):
             box(f"Figure_{pi_}", u, v, 0.25, 0.26, cols[pi_])
         box("Logo", 0.0, 0.30, 0.30, 0.05, (0.96, 0.94, 0.88, 1.0), layer=2)
     else:   # sports
-        box("Field", 0.0, 0.02, 0.54, 0.70, (0.28, 0.46, 0.34, 1.0))
+        box("Field", 0.0, 0.02, 0.54, 0.70, ((0.28, 0.46, 0.34, 1.0), (0.20, 0.28, 0.46, 1.0), (0.46, 0.22, 0.20, 1.0))[k % 3])
         disc("Figure_Ball", 0.10, 0.10, 0.12, (0.90, 0.56, 0.24, 1.0), layer=2)
         box("Figure_Stripe", -0.10, -0.06, 0.08, 0.40, (0.94, 0.92, 0.86, 1.0), layer=2)
         box("Title", 0.0, -0.27, 0.46, 0.08, ink if ink != (0.26, 0.22, 0.22, 1.0) else (0.94, 0.92, 0.86, 1.0), layer=2)

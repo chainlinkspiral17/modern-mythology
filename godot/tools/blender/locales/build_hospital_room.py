@@ -42,7 +42,7 @@ def build_bed():
     make_bed("Bed", bx, by, head="+Y", w=0.98, d=2.00, style="hospital",
              frame_col=frame, mattress_col=mattress, blanket_col=(0.52, 0.70, 0.72, 1.0),
              pillow_col=(0.96, 0.96, 0.92, 1.0))
-    make_box("Bed_Headboard", (bx, by+1.02, 0.62), (1.00, 0.06, 0.60), board)
+    make_box("Bed_Headboard", (bx, by+0.98, 0.62), (1.00, 0.06, 0.60), board)   # on the head posts (2026-10-08: it leaned on the waiting chairs, which have moved next door)
     make_box("Bed_Footboard", (bx, by-0.95, 0.52), (1.00, 0.06, 0.40), board)   # on the foot posts (2026-09-23: 7 cm off them)
 
 def build_monitor():
@@ -102,21 +102,99 @@ def build_ceiling_infra():
         make_fluorescent_tube_fixture(f"Fluor_{j}", (0.0, ypos, CEIL), length=1.40, width=0.34)
     make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
 
-def build_waiting_corner():
-    """2026-08-03 tail pass: vol6_ch7 is a WAITING ROOM scene — a
-    linked chair row + vending machine dress the far corner so the
-    new hospital_waiting preset can frame it without the patient
-    bed."""
-    for ci in range(4):
-        cx = -0.85 + ci * 0.56
-        make_box(f"Wait_Chair_{ci}_Seat", (cx, 4.55, 0.44), (0.50, 0.46, 0.05), (0.36, 0.46, 0.56, 1.0))
-        make_box(f"Wait_Chair_{ci}_Back", (cx, 4.76, 0.72), (0.50, 0.05, 0.50), (0.32, 0.42, 0.52, 1.0))
-    make_box("Wait_Chair_Beam", (0.0, 4.55, 0.385), (2.3, 0.08, 0.06), (0.55, 0.57, 0.58, 1.0))   # under the seats (2026-09-23: 4.5 cm under them)
-    make_box("Vending_Machine", (-1.90, 4.55, 0.93), (0.85, 0.75, 1.85), (0.62, 0.28, 0.24, 1.0))
-    make_box("Vending_Face", (-1.90, 4.16, 1.10), (0.55, 0.05, 1.20), (0.26, 0.30, 0.38, 1.0))
-    make_cyl("Paper_Coffee_Cup", (-0.85, 4.42, 0.50), 0.035, 0.10, (0.88, 0.86, 0.80, 1.0), segments=8)
+WX0, WX1, WY1 = -10.6, -2.7, 5.0       # the waiting room: W wall, the shared E edge, N wall (centre lines)
 
 
+def _beam_seats(tag, x0, y, n, face, col_seat=(0.36, 0.46, 0.56, 1.0), col_back=(0.32, 0.42, 0.52, 1.0)):
+    """A row of linked waiting-room chairs on a steel beam: seats, backs,
+    arms between them, the beam on two legs. face=-1 faces -Y, +1 faces +Y."""
+    pitch = 0.56
+    steel = (0.55, 0.57, 0.58, 1.0)
+    for ci in range(n):
+        cx = x0 + ci * pitch
+        make_box(f"{tag}_{ci}_Seat", (cx, y, 0.44), (0.50, 0.46, 0.05), col_seat)
+        make_box(f"{tag}_{ci}_Back", (cx, y - face * 0.21, 0.72), (0.50, 0.05, 0.50), col_back)
+    for ai in range(n + 1):
+        make_box(f"{tag}_Arm_{ai}", (x0 - pitch / 2.0 + ai * pitch, y, 0.62), (0.04, 0.40, 0.04), steel)
+        make_box(f"{tag}_Arm_{ai}_Post", (x0 - pitch / 2.0 + ai * pitch, y + face * 0.12, 0.53), (0.03, 0.03, 0.16), steel)
+    L = n * pitch
+    make_box(f"{tag}_Beam", (x0 + (n - 1) * pitch / 2.0, y, 0.385), (L, 0.08, 0.06), steel)
+    for e in (-1, 1):
+        lx = x0 + (n - 1) * pitch / 2.0 + e * (L / 2.0 - 0.25)
+        make_box(f"{tag}_Leg_{e:+d}", (lx, y, 0.18), (0.06, 0.06, 0.36), steel)
+        make_box(f"{tag}_Foot_{e:+d}", (lx, y, 0.01), (0.08, 0.44, 0.02), steel)
+
+
+def build_waiting_room():
+    """THE WAITING ROOM (2026-10-08). Ch7: "Maya is in the waiting room
+    when Ben arrives ... She is in a chair against the back wall ... a paper
+    cup of coffee from the vending machine that she has not drunk." Ch8 is
+    Room 318: the bed, the IV, "the visitor's chair, which is too large for
+    her". They were one 5 x 5 box — the waiting room's chairs and vending
+    machine against the patient's wall. The waiting room is its own room
+    now, next door to the west, 7.9 x 5 m under fluorescent troffers: beam
+    seating along the back wall and back to back down the middle, the drink
+    and snack machines on the east wall, a water cooler, a TV high on the
+    west wall, a magazine table, a window three storeys up, the double doors
+    to the corridor."""
+    pal = {"wall": (0.80, 0.80, 0.74, 1.0), "baseboard": (0.30, 0.30, 0.30, 1.0)}
+    make_floor("Wait_Floor", ((WX0 + WX1) / 2.0, WY1 / 2.0, 0.0), size_x=WX1 - WX0, size_y=WY1 + 0.4,
+               palette={"vinyl": (0.66, 0.64, 0.58, 1.0), "seam": (0.40, 0.40, 0.38, 1.0)})
+    make_wall_with_openings("Wait_Wall_W", (WX0, WY1 / 2.0, 0), length=WY1 + 0.4, height=CEIL, axis='Y', palette=pal,
+                            baseboard_face_sign=+1, openings=[(2.5, 1.55, 1.80, 1.40)])
+    make_wall("Wait_Wall_N", ((WX0 + WX1) / 2.0 - 0.1, WY1, 0), length=WX1 - WX0 - 0.2, height=CEIL, axis='X', palette=pal, baseboard_face_sign=-1)
+    for nm, a, b in (("Wait_Wall_S_W", WX0 - 0.1, -6.2), ("Wait_Wall_S_E", -4.4, WX1)):
+        make_wall(nm, ((a + b) / 2.0, 0.0, 0), length=b - a, height=CEIL, axis='X', palette=pal, baseboard_face_sign=+1)
+    make_box("Wait_Wall_S_AboveDoor", (-5.3, 0.0, CEIL - 0.30), (1.8, 0.20, 0.60), pal["wall"])
+    make_ceiling("Wait_Ceil", ((WX0 + WX1) / 2.0, WY1 / 2.0, CEIL), size_x=WX1 - WX0, size_y=WY1 + 0.4)
+    # the double doors to the corridor, closed, a wired-glass light in each
+    for e in (-1, 1):
+        dx = -5.3 + e * 0.45
+        make_box(f"Wait_Door_{e:+d}", (dx, 0.06, 1.05), (0.88, 0.05, 2.10), (0.62, 0.66, 0.70, 1.0))
+        make_box(f"Wait_Door_{e:+d}_Light", (dx, 0.09, 1.55), (0.22, 0.01, 0.40), (0.30, 0.34, 0.40, 1.0))
+        make_box(f"Wait_Door_{e:+d}_Plate", (dx - e * 0.30, 0.09, 1.05), (0.10, 0.01, 0.30), (0.80, 0.80, 0.78, 1.0))
+    make_box("Wait_Sign_Waiting", (-5.3, 0.105, 2.42), (0.90, 0.01, 0.18), (0.24, 0.40, 0.60, 1.0))
+    # the back wall's row (Maya's chair) and the middle back-to-back rows
+    _beam_seats("Wait_Row_Back", -9.6, WY1 - 0.45, 7, face=-1)
+    # the middle rows BACK TO BACK (2026-10-08: they were built FACING, seat
+    # fronts 14 cm apart — the user: "Chairs facing each other with no room
+    # between seems a big problem"); the north row faces the back wall's row
+    # across 1.29 m, the south row faces the doors
+    _beam_seats("Wait_Row_Mid_N", -8.9, 2.80, 5, face=+1)
+    _beam_seats("Wait_Row_Mid_S", -8.9, 2.30, 5, face=-1)
+    # her coffee on the seat beside hers, not drunk
+    make_cyl("Paper_Coffee_Cup", (-9.6 + 3 * 0.56, WY1 - 0.45, 0.515), 0.035, 0.10, (0.88, 0.86, 0.80, 1.0), segments=8)
+    make_cyl("Paper_Coffee_Cup_Lid", (-9.6 + 3 * 0.56, WY1 - 0.45, 0.57), 0.037, 0.01, (0.20, 0.20, 0.22, 1.0), segments=8)
+    # the machines on the east wall, faced west
+    ex = WX1 - 0.10
+    for mi, (my, body, face) in enumerate(((3.70, (0.62, 0.20, 0.18, 1.0), (0.80, 0.84, 0.88, 1.0)),
+                                            (2.70, (0.20, 0.22, 0.26, 1.0), (0.36, 0.46, 0.56, 1.0)))):
+        nm = ("Vending_Machine", "Vending_Snack")[mi]
+        make_box(nm, (ex - 0.40, my, 0.93), (0.78, 0.86, 1.86), body)
+        make_box(f"{nm}_Face", (ex - 0.795, my - 0.08, 1.10), (0.01, 0.58, 1.20), face)
+        make_box(f"{nm}_Slot", (ex - 0.795, my + 0.30, 0.25), (0.01, 0.20, 0.12), (0.10, 0.10, 0.12, 1.0))
+        if mi == 1:
+            for r in range(5):
+                for c in range(4):
+                    make_box(f"Vending_Snack_Item_{r}_{c}", (ex - 0.803, my - 0.28 + c * 0.14, 0.62 + r * 0.22), (0.004, 0.10, 0.14),
+                             P.SNACK_TINTS[(r * 4 + c) % len(P.SNACK_TINTS)])
+    make_box("Water_Cooler_Body", (ex - 0.18, 1.55, 0.50), (0.32, 0.32, 1.00), (0.90, 0.90, 0.88, 1.0))
+    make_cyl("Water_Cooler_Jug", (ex - 0.18, 1.55, 1.18), 0.13, 0.36, (0.60, 0.74, 0.86, 0.6), segments=12)
+    # the TV high on the west wall, on its bracket, the late news
+    make_box("Wait_TV_Bracket", (WX0 + 0.20, 2.5, 2.25), (0.20, 0.10, 0.10), (0.20, 0.20, 0.22, 1.0))
+    make_box("Wait_TV", (WX0 + 0.34, 3.8, 2.10), (0.08, 0.90, 0.54), (0.10, 0.10, 0.12, 1.0))
+    make_box("Wait_TV_Bracket_Arm", (WX0 + 0.20, 3.8, 2.10), (0.20, 0.10, 0.10), (0.20, 0.20, 0.22, 1.0))
+    make_box("Wait_TV_Screen", (WX0 + 0.381, 3.8, 2.10), (0.002, 0.82, 0.46), (0.34, 0.42, 0.52, 1.0))
+    # a magazine table between the rows and the window, a plant
+    make_box("Wait_Table", (-9.9, 1.10, 0.25), (0.60, 0.60, 0.50), (0.46, 0.36, 0.26, 1.0))
+    for mi in range(3):
+        make_box(f"Wait_Magazine_{mi}", (-9.95 + mi * 0.06, 1.05 + mi * 0.05, 0.505 + mi * 0.006), (0.21, 0.28, 0.006),
+                 P.SNACK_TINTS[(mi * 3) % len(P.SNACK_TINTS)])
+    make_floor_plant("Wait_Plant", (WX0 + 0.45, WY1 - 0.50, 0.0), kind="ficus")
+    make_window("Wait_Window", (WX0 + 0.10, 2.5, 1.55), width=1.80, height=1.40, axis='Y', room_dir=+1, see_through=True)
+    for j in range(4):
+        make_fluorescent_tube_fixture(f"Wait_Fluor_{j}", (-9.0 + (j % 2) * 3.4, 1.4 + (j // 2) * 2.3, CEIL), length=1.40, width=0.34)
+    make_wall_clock("Wait_Clock", (-6.2, WY1 - 0.10, 2.20), frozen_hour=12, frozen_min=14, facing='-Y')
 
 def build_detail_pass_2026_08():
     """D2 surface breakup + first D3 (generic template pass per
@@ -166,11 +244,12 @@ def main():
     build_tray_table()
     build_window()
     build_ceiling_infra()
-    build_waiting_corner()
+    build_waiting_room()
     build_detail_pass_2026_08()
     build_hero_props_2026_09()
     # what is outside the window (2026-10-07, _props/views.py)
     make_view("View_N", "N", ROOM_D, 1.3, kind="street", ground_z=-9.0, seed=2)
+    make_view("Wait_View_W", "W", WX0, 2.5, kind="street", ground_z=-9.0, span=8.0, seed=30)   # the waiting room's window, three storeys up
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/hospital_room.glb"))
     print(f"\n[build_hospital_room] exporting to {out}")
