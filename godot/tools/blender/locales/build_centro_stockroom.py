@@ -314,6 +314,69 @@ def build_dawn_east_2026_10():
                       noise=0.30, seed=k * 3 + bi, squash=0.85)
 
 
+
+def build_back_of_house_2026_10():
+    """THE STOCKROOM'S WALLS (2026-10-08; "too bare and empty" — 12 % of the
+    walls held anything at eye height). Back of house: the workbench with
+    "the stockroom drawer" where Jessa keeps the canvas gloves, the empty
+    pallets stacked by the dock, a stretch-wrap roll, the mop sink and its
+    bucket by the swing doors, yellow bollards at the dock door, a dock
+    board, the electrical panel and its conduit, a high wall fan, the
+    extinguisher, the first-aid box and the eyewash, the safety posters."""
+    from _props.geometry import make_chamfer_box, make_tube
+    WF, EF, SF, NF = -ROOM_W/2.0 + 0.10, ROOM_W/2.0 - 0.10, 0.10, ROOM_D - 0.10
+    steel = (0.56, 0.58, 0.60, 1.0); steel_dk = (0.34, 0.36, 0.38, 1.0)
+    yellow = (0.94, 0.78, 0.16, 1.0); red = (0.80, 0.16, 0.14, 1.0); white = (0.94, 0.94, 0.90, 1.0)
+    # the workbench on the W wall north of the rack, its drawer, the gloves
+    bx, by = WF + 0.25, 6.55
+    make_box("Workbench_Top", (bx, by, 0.90), (0.50, 1.50, 0.05), (0.56, 0.44, 0.30, 1.0))
+    for e in (-1, 1):
+        for f in (-1, 1):
+            make_box(f"Workbench_Leg_{e:+d}_{f:+d}", (bx + e * 0.20, by + f * 0.68, 0.44), (0.05, 0.05, 0.88), steel_dk)
+    make_box("Workbench_Drawer", (bx + 0.21, by - 0.30, 0.80), (0.08, 0.50, 0.14), steel)
+    make_box("Workbench_Drawer_Pull", (bx + 0.255, by - 0.30, 0.80), (0.01, 0.16, 0.02), steel_dk)
+    make_box("Workbench_Shelf", (bx, by, 0.20), (0.35, 1.31, 0.03), (0.56, 0.44, 0.30, 1.0))
+    for gi in range(2):
+        make_box(f"Canvas_Gloves_{gi}", (bx - 0.05 + gi * 0.10, by + 0.30, 0.935), (0.10, 0.20, 0.02), (0.86, 0.78, 0.58, 1.0))
+    make_box("Box_Cutter", (bx - 0.10, by + 0.05, 0.93), (0.03, 0.14, 0.015), yellow)
+    make_box("Tape_Gun", (bx + 0.05, by - 0.20, 0.97), (0.10, 0.22, 0.10), red)
+    make_box("Receiving_Clipboard", (WF + 0.008, by, 1.45), (0.015, 0.24, 0.32), (0.60, 0.46, 0.30, 1.0))
+    make_box("Receiving_Clipboard_Sheet", (WF + 0.017, by, 1.42), (0.002, 0.21, 0.26), white)
+    # the empty pallets stacked against the dock wall, west of the door
+    for k in range(6):
+        make_box(f"Empty_Pallet_{k}", (-2.35, NF - 0.62, 0.075 + k * 0.15), (1.00, 1.20, 0.14), (0.62, 0.50, 0.34, 1.0))
+    make_cyl("Stretch_Wrap", (-2.35, NF - 0.62, 0.90 + 0.25), 0.06, 0.50, (0.80, 0.86, 0.90, 0.7), segments=10)
+    # the mop sink and the bucket by the swing doors
+    make_box("Mop_Sink", (-2.95, SF + 0.30, 0.25), (0.70, 0.60, 0.50), (0.86, 0.86, 0.84, 1.0))
+    make_box("Mop_Sink_Basin", (-2.95, SF + 0.30, 0.49), (0.58, 0.48, 0.02), (0.56, 0.58, 0.60, 1.0))
+    make_tube("Mop_Sink_Faucet", [(-2.95, SF + 0.01, 0.90), (-2.95, SF + 0.18, 0.92), (-2.95, SF + 0.22, 0.80)], 0.015, steel)
+    make_cyl("Mop_Bucket", (-1.55, 0.62, 0.20), 0.20, 0.40, yellow, segments=12)
+    make_box("Mop_Bucket_Wringer", (-1.55, 0.62, 0.46), (0.24, 0.20, 0.12), (0.30, 0.30, 0.32, 1.0))
+    make_cyl("Mop_Handle", (-1.48, 0.62, 0.95), 0.014, 1.00, (0.62, 0.48, 0.30, 1.0), segments=6)
+    # yellow bollards either side of the dock door; the dock board leaning
+    for e in (-1, 1):
+        make_cyl(f"Dock_Bollard_{e:+d}", (e * 1.70, NF - 0.25, 0.55), 0.10, 1.10, yellow, segments=12)
+        make_cyl(f"Dock_Bollard_{e:+d}_Cap", (e * 1.70, NF - 0.25, 1.12), 0.11, 0.04, (0.20, 0.20, 0.22, 1.0), segments=12)
+    make_box("Dock_Board", (2.45, NF - 0.06, 0.70), (0.90, 0.06, 1.40), steel)
+    make_box("Dock_Board_Stripe", (2.45, NF - 0.095, 1.25), (0.90, 0.01, 0.10), yellow)
+    # the electrical panel on the W wall, its conduit to the ceiling; a wall fan high
+    make_box("Electrical_Panel", (WF + 0.08, 7.55, 1.55), (0.16, 0.60, 0.90), (0.62, 0.64, 0.64, 1.0))
+    make_box("Electrical_Panel_Label", (WF + 0.162, 7.55, 1.85), (0.002, 0.20, 0.06), yellow)
+    make_cyl("Electrical_Panel_Conduit", (WF + 0.05, 7.55, (2.00 + CEIL) / 2.0), 0.02, CEIL - 2.00, steel_dk, segments=6)
+    make_cyl("Wall_Fan_Bracket", (WF + 0.08, 4.40, 3.35), 0.03, 0.16, steel_dk, axis='X', segments=8)
+    make_cyl("Wall_Fan_Cage", (WF + 0.28, 4.40, 3.35), 0.32, 0.18, (0.30, 0.32, 0.34, 1.0), axis='X', segments=16)
+    # the safety corner on the S wall west of the doors
+    make_cyl("Extinguisher", (-1.25, SF + 0.09, 0.70), 0.08, 0.50, red, segments=10)
+    make_box("Extinguisher_Bracket", (-1.25, SF + 0.01, 0.80), (0.10, 0.02, 0.12), steel_dk)
+    make_box("Extinguisher_Sign", (-1.25, SF + 0.005, 1.70), (0.30, 0.01, 0.30), red)
+    make_box("FirstAid_Box", (-1.75, SF + 0.06, 1.40), (0.32, 0.12, 0.26), white)
+    make_box("FirstAid_Cross_H", (-1.75, SF + 0.121, 1.40), (0.14, 0.002, 0.04), red)
+    make_box("FirstAid_Cross_V", (-1.75, SF + 0.121, 1.40), (0.04, 0.002, 0.14), red)
+    make_box("Eyewash_Station", (-2.25, SF + 0.08, 1.30), (0.30, 0.16, 0.36), (0.20, 0.52, 0.30, 1.0))
+    for pi, (px, col) in enumerate(((-3.10, (0.94, 0.86, 0.30, 1.0)), (-2.70, (0.30, 0.50, 0.74, 1.0)))):
+        make_box(f"Safety_Poster_{pi}", (px, SF + 0.005, 1.75), (0.34, 0.01, 0.46), col)
+        make_box(f"Safety_Poster_{pi}_Text", (px, SF + 0.011, 1.70), (0.26, 0.002, 0.24), white)
+
 def main():
     clear_scene()
     build_shell()
@@ -324,6 +387,7 @@ def main():
     build_fluorescents()
     build_hero_props_2026_09()
     build_dawn_east_2026_10()
+    build_back_of_house_2026_10()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/centro_stockroom.glb"))
     print(f"\n[build_centro_stockroom] exporting to {out}")

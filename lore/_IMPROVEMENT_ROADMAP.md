@@ -3793,6 +3793,34 @@ calendar's month grid printed into the wall on every east wall.
 Deck must REBUILD the three Caldwell sets and the calendar rooms
 (list_stale_builds catches decor.py).
 
+**2026-10-08 · THE BAREST VOL 6 ROOMS, DRESSED.** A bareness probe
+(`$S/bareness.py`: dressing groups per m2, eye-level wall coverage) ranked
+the game; the vol 6 rooms on it, dressed from their prose:
+- **henderson_garage** — "his father's territory", swept "on the first
+  Saturday of each month": steel shelving with labelled bins, the
+  toolbox, screw cans, gas can and bucket; garden tools on hooks; the
+  push broom and dustpan (Jesse swept twice); the camping chairs bagged
+  on the bench shelf; Nate's cooler and the Mountain Dew; the mower; an
+  overhead rack of boxes; two shop lights on chains.
+- **centro_stockroom** (12 % wall coverage) — the workbench with "the
+  stockroom drawer" and the canvas gloves, the box cutter and tape gun,
+  the receiving clipboard; empty pallets stacked by the dock with the
+  stretch wrap; the mop sink and bucket; bollards at the dock door; the
+  dock board; the electrical panel; a high wall fan; the extinguisher,
+  first aid, eyewash and safety posters.
+- **hospital_room** (Room 318) — the headwall (gas outlets, call box, the
+  light over the bed), the nurse's whiteboard, a TV on its arm, a clock,
+  the sink and towels and sanitizer, get-well cards and flowers on the
+  sill Anita stands at, the pitcher and the straw cup and tissues on the
+  tray, the call button on the rail, a pillow on the visitor's chair.
+- **pit_stop_office** — Rick's father's office: the corkboard of permits
+  over the desk, the opening-day photograph, the desk phone and the
+  invoice spike, the floor safe, cases of to-go supplies, a shelf with
+  the radio, a chair mat, the wastebasket.
+Next by the probe: kai_apartment, ben_bedroom, coach_k_bedroom (vol 6);
+then the older volumes' barest — lacombe_service_garage, christian_ice_co,
+le_roulant_casino, roadside_chapel, houston_design_studio, pharmacy.
+
 NEXT (queued): Bianca's kitchen is the Miller kitchen again —
 `bianca_kitchen_morning` (ch 22 / 23) and `miller_kitchen` are one room
 on Meadowlark Circle (the cul-de-sac through the window, the green robe

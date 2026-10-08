@@ -233,6 +233,64 @@ def build_hero_props_2026_09():
     make_box("Hands_Blanket_Crease_B", (0.13, 3.08, 0.705), (0.05, 0.12, 0.010), (0.50, 0.56, 0.60, 1.0))
 
 
+
+def build_room_318_lived_in_2026_10():
+    """ROOM 318, A WEEK IN (2026-10-08; "too bare and empty"). Ch8: Linda
+    with the IV in her Morse-key hand, Maya at the bed, Gracie on "the
+    visitor's chair, which is too large for her", Anita "by the window".
+    The headwall behind the bed (gas outlets, the call box, the light over
+    it), the nurse's whiteboard, a TV on its arm, a clock, the sink and the
+    sanitizer by the door, get-well cards and flowers on the sill, the
+    pitcher and the cup with a straw on the tray, the call button clipped
+    to the rail, a pillow on the visitor's chair."""
+    from _props.geometry import make_lathe, make_blob, make_tube, make_chamfer_box
+    WF, EF, NF, SF = -ROOM_W/2.0 + 0.10, ROOM_W/2.0 - 0.10, ROOM_D - 0.10, 0.10
+    white = (0.94, 0.94, 0.92, 1.0); grey = (0.66, 0.68, 0.70, 1.0); steel = (0.62, 0.64, 0.66, 1.0)
+    # the headwall over the bed
+    make_box("Headwall", (BED_X, NF - 0.03, 1.35), (1.50, 0.06, 0.50), (0.80, 0.82, 0.80, 1.0))
+    for k, col in enumerate(((0.30, 0.56, 0.32, 1.0), (0.94, 0.94, 0.92, 1.0), (0.80, 0.70, 0.20, 1.0))):
+        make_cyl(f"Headwall_Outlet_{k}", (BED_X - 0.50 + k * 0.18, NF - 0.065, 1.42), 0.03, 0.01, col, axis='Y', segments=10)
+    make_box("Headwall_CallBox", (BED_X + 0.45, NF - 0.07, 1.35), (0.18, 0.02, 0.22), grey)
+    make_box("Overbed_Light", (BED_X, NF - 0.06, 1.85), (1.10, 0.12, 0.10), white)
+    # the whiteboard on the W wall
+    make_box("Nurse_Whiteboard", (WF + 0.01, 3.20, 1.50), (0.02, 0.90, 0.60), white)
+    make_box("Nurse_Whiteboard_Frame", (WF + 0.005, 3.20, 1.50), (0.01, 0.94, 0.64), grey)
+    for li in range(4):
+        make_box(f"Nurse_Whiteboard_Line_{li}", (WF + 0.021, 3.05 + (li % 2) * 0.10, 1.68 - li * 0.11), (0.002, 0.45 - (li % 3) * 0.08, 0.02),
+                 ((0.20, 0.30, 0.70, 1.0), (0.70, 0.20, 0.20, 1.0))[li % 2])
+    # the TV on its arm, high on the E wall, toward the bed
+    make_box("TV_Arm_Plate", (EF - 0.01, 3.40, 2.05), (0.02, 0.16, 0.20), (0.24, 0.24, 0.26, 1.0))
+    make_box("TV_Arm", (EF - 0.20, 3.40, 2.05), (0.36, 0.05, 0.05), (0.24, 0.24, 0.26, 1.0))
+    make_box("TV", (EF - 0.40, 3.40, 2.05), (0.05, 0.70, 0.42), (0.10, 0.10, 0.12, 1.0))
+    make_box("TV_Screen", (EF - 0.426, 3.40, 2.05), (0.002, 0.64, 0.36), (0.24, 0.30, 0.38, 1.0))
+    make_wall_clock("Clock", (EF, 1.30, 2.10), frozen_hour=10, frozen_min=40, facing='-X')
+    # the sink by the door, its towels; the sanitizer
+    make_box("Sink_Cabinet", (WF + 0.28, 0.75, 0.42), (0.56, 0.60, 0.84), (0.82, 0.80, 0.74, 1.0))
+    make_box("Sink_Top", (WF + 0.28, 0.75, 0.855), (0.58, 0.62, 0.03), white)
+    make_box("Sink_Basin", (WF + 0.30, 0.75, 0.871), (0.40, 0.40, 0.002), grey)
+    make_tube("Sink_Faucet", [(WF + 0.05, 0.75, 0.87), (WF + 0.06, 0.75, 1.10), (WF + 0.20, 0.75, 1.12), (WF + 0.24, 0.75, 1.06)], 0.012, steel)
+    make_box("Paper_Towels", (WF + 0.07, 0.75, 1.45), (0.14, 0.30, 0.34), white)
+    make_box("Sanitizer", (-1.10, SF + 0.05, 1.30), (0.12, 0.10, 0.22), white)
+    make_box("Sanitizer_Pump", (-1.10, SF + 0.11, 1.20), (0.04, 0.02, 0.03), grey)
+    # the sill: get-well cards and flowers — the window Anita stands at
+    make_box("Window_Sill", (1.30, NF - 0.08, 0.76), (1.84, 0.16, 0.03), white)
+    cols = ((0.86, 0.52, 0.56, 1.0), (0.96, 0.86, 0.40, 1.0), (0.52, 0.70, 0.86, 1.0), (0.64, 0.80, 0.56, 1.0))
+    for ci in range(4):
+        make_box(f"GetWell_Card_{ci}", (0.62 + ci * 0.20, NF - 0.10, 0.775 + 0.07), (0.12, 0.01, 0.14), cols[ci])
+    make_lathe("Flowers_Vase", (1.75, NF - 0.08, 0.775), [(0.05, 0.0), (0.06, 0.08), (0.04, 0.18), (0.05, 0.22), (0.0, 0.22)], (0.70, 0.84, 0.86, 1.0), segments=12)
+    make_blob("Flowers_Greens", (1.75, NF - 0.08, 1.06), 0.12, (0.30, 0.50, 0.28, 1.0), noise=0.3, seed=21, squash=0.8)
+    for fi, (dx, dz, col) in enumerate(((-0.05, 1.12, (0.94, 0.80, 0.30, 1.0)), (0.06, 1.10, (0.90, 0.46, 0.56, 1.0)), (0.0, 1.17, (0.96, 0.96, 0.94, 1.0)))):
+        make_blob(f"Flowers_Bloom_{fi}", (1.75 + dx, NF - 0.08, dz), 0.045, col, noise=0.2, seed=30 + fi, squash=0.8)
+    # the tray: pitcher, the cup with a straw, tissues
+    make_lathe("Tray_Pitcher", (0.52, 2.10, 0.90), [(0.05, 0.0), (0.06, 0.16), (0.05, 0.20), (0.0, 0.20)], (0.86, 0.80, 0.70, 1.0), segments=10)
+    make_cyl("Tray_Straw_Cup", (0.82, 1.90, 0.95), 0.035, 0.10, white, segments=10)
+    make_cyl("Tray_Straw_Cup_Straw", (0.84, 1.90, 1.04), 0.004, 0.12, (0.86, 0.30, 0.40, 1.0), segments=4)
+    make_box("Tray_Tissues", (0.92, 2.10, 0.94), (0.18, 0.12, 0.08), (0.60, 0.74, 0.84, 1.0))
+    # the call button clipped to the bed's rail; a pillow on the visitor's chair
+    make_box("Call_Button", (0.32, 3.30, 0.62), (0.03, 0.08, 0.04), grey)
+    make_tube("Call_Button_Cord", [(0.32, 3.34, 0.60), (0.40, 3.70, 0.45), (0.45, 4.40, 0.80), (BED_X + 0.45, NF - 0.08, 1.30)], 0.004, grey)
+    make_chamfer_box("Visitor_Pillow", (-1.70, 1.66, 0.52), (0.36, 0.24, 0.12), (0.82, 0.86, 0.88, 1.0), chamfer=0.03)
+
 def main():
     clear_scene()
     build_shell()
@@ -247,6 +305,7 @@ def main():
     build_waiting_room()
     build_detail_pass_2026_08()
     build_hero_props_2026_09()
+    build_room_318_lived_in_2026_10()
     # what is outside the window (2026-10-07, _props/views.py)
     make_view("View_N", "N", ROOM_D, 1.3, kind="street", ground_z=-9.0, seed=2)
     make_view("Wait_View_W", "W", WX0, 2.5, kind="street", ground_z=-9.0, span=8.0, seed=30)   # the waiting room's window, three storeys up

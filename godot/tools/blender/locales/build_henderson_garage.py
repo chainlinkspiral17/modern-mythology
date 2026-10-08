@@ -278,6 +278,89 @@ def build_hero_props_2026_09():
                  (0.14, 0.14, 0.15, 1.0), axis='Y', segments=10)
 
 
+
+def build_fathers_garage_2026_10():
+    """THE FATHER'S GARAGE, LIVED IN (2026-10-08; "too bare and empty").
+    Ch5: "Jesse has always, privately, thought of the garage as his
+    father's territory"; his father "sweeps the garage, on the first
+    Saturday of each month, with the thoroughness of a man who believes
+    that a floor is a kind of moral statement"; it smells "of turpentine
+    and sawdust and cold metal". So: the steel shelving with labelled bins,
+    the toolbox, coffee cans of screws, the gas can; the garden tools on
+    their hooks; the push broom and dustpan Jesse swept with (twice); the
+    camping chairs folded under the bench ("the camping chairs Jesse pulls
+    out from under the workbench"); Nate's cooler with the Mountain Dew;
+    the mower in the corner; an overhead rack of boxes; two shop lights."""
+    from _props.geometry import make_chamfer_box, make_tube
+    steel = (0.56, 0.58, 0.60, 1.0); steel_dk = (0.36, 0.38, 0.40, 1.0)
+    EF, WF, NF = ROOM_W/2.0 - 0.10, -ROOM_W/2.0 + 0.10, ROOM_D - 0.10
+    # ── steel shelving on the E wall, between the fridge and the bass cab ──
+    sx0, sy0, sy1 = EF - 0.45, 1.85, 3.30
+    for e in ((sy0 + 0.02), (sy1 - 0.02)):
+        for xx in (sx0 + 0.02, EF - 0.02):
+            make_box(f"Shelving_Post_{xx:.2f}_{e:.2f}", (xx, e, 0.95), (0.03, 0.03, 1.90), steel_dk)
+    bins = ((0.30, 0.46, 0.70, 1.0), (0.84, 0.70, 0.22, 1.0), (0.34, 0.36, 0.38, 1.0), (0.72, 0.28, 0.22, 1.0))
+    for si, sz in enumerate((0.10, 0.55, 1.00, 1.45, 1.88)):
+        make_box(f"Shelving_Shelf_{si}", ((sx0 + EF) / 2.0, (sy0 + sy1) / 2.0, sz), (0.45, sy1 - sy0, 0.02), steel)
+        if si in (1, 2):
+            for bi in range(4):
+                by = sy0 + 0.20 + bi * 0.35
+                make_box(f"Shelving_Bin_{si}_{bi}", ((sx0 + EF) / 2.0, by, sz + 0.12), (0.38, 0.30, 0.22), bins[(si + bi) % 4])
+                make_box(f"Shelving_Bin_{si}_{bi}_Label", (sx0 + 0.035, by, sz + 0.17), (0.002, 0.12, 0.05), (0.96, 0.96, 0.92, 1.0))
+        elif si == 3:
+            make_box("Shelving_Toolbox", ((sx0 + EF) / 2.0, sy0 + 0.35, sz + 0.11), (0.30, 0.48, 0.20), (0.80, 0.18, 0.14, 1.0))
+            make_box("Shelving_Toolbox_Handle", ((sx0 + EF) / 2.0, sy0 + 0.35, sz + 0.23), (0.04, 0.30, 0.03), (0.16, 0.16, 0.18, 1.0))
+            for ci in range(3):
+                make_cyl(f"Shelving_ScrewCan_{ci}", ((sx0 + EF) / 2.0, sy0 + 0.80 + ci * 0.16, sz + 0.08), 0.06, 0.15, (0.66, 0.50, 0.30, 1.0), segments=10)
+        elif si == 0:
+            make_box("Shelving_GasCan", ((sx0 + EF) / 2.0, sy0 + 0.30, sz + 0.17), (0.20, 0.32, 0.32), (0.80, 0.16, 0.12, 1.0))
+            make_tube("Shelving_GasCan_Spout", [((sx0 + EF) / 2.0, sy0 + 0.40, sz + 0.33), ((sx0 + EF) / 2.0 - 0.06, sy0 + 0.46, sz + 0.40)], 0.012, (0.20, 0.20, 0.22, 1.0))
+            make_cyl("Shelving_Bucket", ((sx0 + EF) / 2.0, sy0 + 0.95, sz + 0.15), 0.14, 0.28, (0.92, 0.92, 0.88, 1.0), segments=12)
+    # ── the garden tools on their hooks on the W wall, by the door ──
+    for ti, (ty, nm, col, hd) in enumerate(((0.45, "Rake", (0.62, 0.48, 0.30, 1.0), (0.30, 0.04, 0.10)),
+                                            (0.70, "Shovel", (0.62, 0.48, 0.30, 1.0), (0.20, 0.03, 0.28)),
+                                            (0.95, "Hoe", (0.62, 0.48, 0.30, 1.0), (0.14, 0.03, 0.10)))):
+        make_box(f"Tool_Hook_{ti}", (WF + 0.04, ty, 1.80), (0.08, 0.02, 0.02), steel_dk)
+        make_cyl(f"Tool_{nm}_Handle", (WF + 0.06, ty, 1.12), 0.016, 1.40, col, segments=6)
+        hsz = hd if nm != "Rake" else (0.04, 0.30, 0.06)
+        make_box(f"Tool_{nm}_Head", (WF + 0.06, ty, 0.43 - hsz[2] / 2.0), hsz, steel_dk)   # on the handle's end
+    # the push broom and the dustpan against the wall by the bench (he swept twice)
+    make_tube("Push_Broom_Handle", [(0.10, NF - 0.12, 0.08), (0.12, NF - 0.03, 1.40)], 0.014, (0.62, 0.48, 0.30, 1.0))
+    make_box("Push_Broom_Head", (0.10, NF - 0.16, 0.05), (0.46, 0.08, 0.10), (0.22, 0.20, 0.18, 1.0))
+    make_box("Dustpan", (-0.20, NF - 0.10, 0.12), (0.26, 0.02, 0.24), (0.86, 0.68, 0.20, 1.0))
+    # the camping chairs folded under the workbench
+    for ci in range(2):
+        # in their bags, lying on the bench's lower shelf
+        make_chamfer_box(f"Camp_Chair_Folded_{ci}", (0.95 + ci * 0.80, 5.50, 0.315 + 0.09 + ci * 0.0), (0.72, 0.20, 0.18), ((0.20, 0.36, 0.30, 1.0), (0.70, 0.30, 0.18, 1.0))[ci], chamfer=0.03)
+    # Nate's cooler by the amp, the cans on its lid
+    make_chamfer_box("Cooler_Nate", (-1.55, 1.90, 0.20), (0.56, 0.36, 0.40), (0.24, 0.42, 0.70, 1.0), chamfer=0.03)
+    make_box("Cooler_Nate_Lid", (-1.55, 1.90, 0.415), (0.58, 0.38, 0.03), (0.92, 0.92, 0.88, 1.0))
+    for k in range(3):
+        make_cyl(f"Cooler_Nate_Can_{k}", (-1.72 + k * 0.12, 1.92, 0.49), 0.033, 0.12, (0.44, 0.72, 0.24, 1.0), segments=10)
+    # the mower in the NW corner
+    mx, my = -2.15, 5.30
+    make_chamfer_box("Mower_Deck", (mx, my, 0.24), (0.55, 0.55, 0.16), (0.70, 0.16, 0.12, 1.0), chamfer=0.04)
+    make_chamfer_box("Mower_Engine", (mx, my, 0.40), (0.26, 0.26, 0.18), (0.20, 0.20, 0.22, 1.0), chamfer=0.03)
+    for e in (-1, 1):
+        for f in (-1, 1):
+            make_cyl(f"Mower_Wheel_{e:+d}_{f:+d}", (mx + e * 0.27, my + f * 0.22, 0.09), 0.09, 0.05, (0.12, 0.12, 0.12, 1.0), axis='X', segments=10)
+    make_tube("Mower_Handle", [(mx - 0.20, my - 0.25, 0.30), (mx - 0.20, my - 0.75, 0.95), (mx + 0.20, my - 0.75, 0.95), (mx + 0.20, my - 0.25, 0.30)], 0.012, steel_dk)
+    # an overhead storage rack over the back west quarter, boxes on it
+    rx0, rx1, ry0, ry1, rz = -2.60, -1.20, 3.90, 5.60, 2.30
+    make_box("Overhead_Rack", ((rx0 + rx1) / 2.0, (ry0 + ry1) / 2.0, rz), (rx1 - rx0, ry1 - ry0, 0.04), steel)
+    for xx in (rx0 + 0.04, rx1 - 0.04):
+        for yy in (ry0 + 0.04, ry1 - 0.04):
+            make_box(f"Overhead_Rack_Rod_{xx:.2f}_{yy:.2f}", (xx, yy, (rz + CEIL) / 2.0), (0.03, 0.03, CEIL - rz), steel_dk)
+    for bi, (bx, by, bw, bd, bh) in enumerate(((-2.30, 4.20, 0.50, 0.40, 0.30), (-1.70, 4.25, 0.45, 0.45, 0.25),
+                                               (-2.25, 4.90, 0.55, 0.50, 0.32), (-1.60, 5.00, 0.40, 0.40, 0.28), (-2.00, 5.40, 0.60, 0.28, 0.24))):
+        make_box(f"Overhead_Box_{bi}", (bx, by, rz + 0.02 + bh / 2.0), (bw, bd, bh), (0.70, 0.56, 0.38, 1.0) if bi % 2 else (0.62, 0.50, 0.34, 1.0))
+    # two shop lights on their chains
+    for li, ly in enumerate((1.80, 4.00)):
+        make_box(f"Shop_Light_{li}", (1.30, ly, 2.38), (1.22, 0.18, 0.06), (0.86, 0.86, 0.84, 1.0))
+        make_box(f"Shop_Light_{li}_Tube", (1.30, ly, 2.346), (1.18, 0.06, 0.008), (0.98, 0.98, 0.94, 1.0))
+        for e in (-1, 1):
+            make_cyl(f"Shop_Light_{li}_Chain_{e:+d}", (1.30 + e * 0.55, ly, (2.41 + CEIL) / 2.0), 0.004, CEIL - 2.41, steel_dk, segments=4)
+
 def main():
     clear_scene()
     build_shell()
@@ -285,6 +368,7 @@ def main():
     build_band_gear()
     build_wall_dressing()
     build_hero_props_2026_09()
+    build_fathers_garage_2026_10()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/henderson_garage.glb"))
     print(f"\n[build_henderson_garage] exporting to {out}")

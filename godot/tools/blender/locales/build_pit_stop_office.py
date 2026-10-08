@@ -125,6 +125,46 @@ def build_hero_props_2026_09():
     make_box("Legal_Pad_List", (0.34, 4.48, 0.7715), (0.10, 0.14, 0.0005), (0.26, 0.26, 0.30, 1.0))   # ON the legal pad (2026-09-23: in the air in front of the chair)
 
 
+
+def build_back_office_lived_in_2026_10():
+    """THE BACK OFFICE, LIVED IN (2026-10-08; "too bare and empty"). Rick's
+    father's desk in Rick's father's office: the corkboard of permits and
+    certificates over it, the framed photograph of the opening day, the
+    desk phone and the invoice spike, the floor safe, cases of to-go cups
+    and napkins, a shelf with the radio, a chair mat, the wastebasket."""
+    from _props.geometry import make_chamfer_box, make_lathe
+    WF, EF, NF = -ROOM_W/2.0 + 0.10, ROOM_W/2.0 - 0.10, ROOM_D - 0.10
+    white = (0.94, 0.93, 0.88, 1.0); cork = (0.64, 0.48, 0.32, 1.0); frame = (0.30, 0.22, 0.16, 1.0)
+    # the corkboard over the desk: permit, food-handler cards, a schedule
+    make_box("Office_Corkboard", (0.30, NF - 0.015, 1.65), (1.00, 0.03, 0.60), cork)
+    for pi, (px, pz, pw, ph, col) in enumerate(((-0.05, 1.75, 0.22, 0.28, white), (0.20, 1.80, 0.16, 0.10, (0.96, 0.86, 0.50, 1.0)),
+                                               (0.20, 1.62, 0.16, 0.10, (0.96, 0.86, 0.50, 1.0)), (0.50, 1.68, 0.30, 0.40, white),
+                                               (0.10, 1.48, 0.20, 0.12, (0.70, 0.84, 0.94, 1.0)))):
+        make_box(f"Office_Corkboard_Sheet_{pi}", (0.30 + px - 0.20, NF - 0.031, pz), (pw, 0.002, ph), col)
+    make_box("Opening_Day_Photo", (-0.60, NF - 0.015, 1.70), (0.36, 0.03, 0.28), frame)
+    make_box("Opening_Day_Photo_Print", (-0.60, NF - 0.031, 1.70), (0.30, 0.002, 0.22), (0.58, 0.54, 0.48, 1.0))
+    # on the desk: the phone, the invoice spike
+    make_chamfer_box("Desk_Phone", (0.78, 4.82, 0.80), (0.20, 0.18, 0.08), (0.20, 0.20, 0.22, 1.0), chamfer=0.02)
+    make_box("Desk_Phone_Handset", (0.78, 4.80, 0.855), (0.06, 0.20, 0.04), (0.20, 0.20, 0.22, 1.0))
+    make_cyl("Invoice_Spike_Base", (0.35, 4.86, 0.77), 0.04, 0.02, (0.20, 0.20, 0.22, 1.0), segments=10)
+    make_cyl("Invoice_Spike", (0.35, 4.86, 0.86), 0.003, 0.16, (0.70, 0.72, 0.74, 1.0), segments=4)
+    for k in range(4):
+        make_box(f"Invoice_Spike_Slip_{k}", (0.35, 4.86, 0.79 + k * 0.012), (0.10, 0.14, 0.002), white if k % 2 else (0.96, 0.88, 0.70, 1.0))
+    # the floor safe against the W wall, a box of to-go supplies on the E side
+    make_chamfer_box("Floor_Safe", (WF + 0.27, 2.20, 0.30), (0.52, 0.52, 0.60), (0.22, 0.24, 0.26, 1.0), chamfer=0.02)
+    make_cyl("Floor_Safe_Dial", (WF + 0.535, 2.20, 0.40), 0.05, 0.02, (0.70, 0.72, 0.74, 1.0), axis='X', segments=12)
+    make_box("Floor_Safe_Handle", (WF + 0.54, 2.20, 0.25), (0.02, 0.12, 0.02), (0.70, 0.72, 0.74, 1.0))
+    for k, (bz, label) in enumerate(((0.20, (0.80, 0.16, 0.14, 1.0)), (0.60, (0.30, 0.50, 0.70, 1.0)), (1.00, (0.80, 0.16, 0.14, 1.0)))):
+        make_box(f"ToGo_Case_{k}", (EF - 0.25, 1.55, bz), (0.48, 0.60, 0.40), (0.72, 0.58, 0.40, 1.0))
+        make_box(f"ToGo_Case_{k}_Label", (EF - 0.491, 1.55, bz + 0.05), (0.002, 0.30, 0.14), label)
+    # a shelf on the E wall above the cases: the radio, a box of receipt rolls
+    make_box("Office_Shelf", (EF - 0.12, 2.40, 1.55), (0.24, 0.80, 0.025), frame)
+    make_chamfer_box("Office_Radio", (EF - 0.12, 2.25, 1.64), (0.18, 0.30, 0.16), (0.66, 0.60, 0.50, 1.0), chamfer=0.02)
+    make_box("Receipt_Rolls", (EF - 0.12, 2.62, 1.61), (0.16, 0.22, 0.10), white)
+    # the chair mat, the wastebasket
+    make_box("Chair_Mat", (0.0, 3.90, 0.004), (1.10, 0.90, 0.008), (0.78, 0.80, 0.80, 1.0))
+    make_lathe("Wastebasket", (-1.05, 4.40, 0.0), [(0.12, 0.0), (0.15, 0.32), (0.0, 0.32)], (0.30, 0.30, 0.32, 1.0), segments=12)
+
 def main():
     clear_scene()
     build_shell()
@@ -133,6 +173,7 @@ def main():
     build_office_dressing()
     build_ceiling_infra()
     build_hero_props_2026_09()
+    build_back_office_lived_in_2026_10()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/pit_stop_office.glb"))
     print(f"\n[build_pit_stop_office] exporting to {out}")
