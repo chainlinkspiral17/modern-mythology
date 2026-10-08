@@ -84,6 +84,19 @@ henderson) got there by accumulating exactly these layers.
 
 ## Recent lessons
 
+### 2026-10-08 · read the chapter before the builder: a room can be the wrong room
+
+- caldwell_radio_room_night was a broadcast booth with an ON AIR sign. Ch5
+  says it is a grandmother's upstairs BEDROOM with a shortwave and a Morse
+  key. Every detail pass since had dressed the wrong room. The porch was a
+  walled room. A locale's first check, before any detail: who uses it,
+  what floor it is on, what the prose says is in it (`grep` the scene
+  JSONs for the locale id and read every line with a room noun).
+- Template fingerprints show only on a contact sheet: the same three
+  posters, the same potted plant in the same south-west corner, room
+  after room. Fix them in the SHARED helper with a deterministic variety
+  (`kind=` or a hash of the prefix), not room by room.
+
 ### 2026-10-07 · a department reads by ITS goods; a case is never generic stock
 
 - The grocery's dairy case was the beverage kit (six-packs and cans

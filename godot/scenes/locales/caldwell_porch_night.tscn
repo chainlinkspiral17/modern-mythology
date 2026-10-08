@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://caldwell_porch_night_locale"]
+[gd_scene load_steps=26 format=3 uid="uid://caldwell_porch_night_locale"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/caldwell_porch_night.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -128,8 +128,22 @@ shader_parameter/wobble_freq = 0.85
 shader_parameter/tint_amount = 0.18
 shader_parameter/tint_color = Color(0.96, 0.62, 0.28, 1)
 
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_Win"]
+; (2026-10-07: the window is cut — a night sky past it, not a flat backdrop)
+sky_top_color = Color(0.06, 0.08, 0.16, 1)
+sky_horizon_color = Color(0.22, 0.24, 0.32, 1)
+sky_curve = 0.25
+ground_bottom_color = Color(0.05, 0.05, 0.06, 1)
+ground_horizon_color = Color(0.12, 0.12, 0.14, 1)
+sun_angle_max = 8.0
+
+[sub_resource type="Sky" id="Sky_Win"]
+sky_material = SubResource("SkyMat_Win")
+radiance_size = 3
+
 [sub_resource type="Environment" id="Env_Locale"]
-background_mode = 1
+background_mode = 2
+sky = SubResource("Sky_Win")
 background_color = Color(0.10, 0.06, 0.04, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.64, 0.48, 0.34, 1)
@@ -137,6 +151,7 @@ ambient_light_energy = 1.0
 ; (2026-09-24, sheet 28: was 0.65 — dark-albedo set under the night/dusk
 ; palette moods rendered black; the shader playbook's 2026-07-12 rule: ambient 1.0-1.8)
 fog_enabled = true
+fog_sky_affect = 0.0
 fog_light_color = Color(0.42, 0.28, 0.20, 1)
 fog_light_energy = 0.5
 fog_density = 0.007
@@ -176,7 +191,7 @@ shadow_enabled = false
 
 ; Warm carriage porch-lamp at the visible wall fixture (blender -1.5,0.30,2.14)
 [node name="Practical_PorchLamp" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2.14, -0.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.725, 2.14, -0.3)
 light_color = Color(0.98, 0.82, 0.56, 1)
 light_energy = 2.2
 omni_range = 4.2

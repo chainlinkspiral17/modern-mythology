@@ -21,6 +21,16 @@ ROOM_W = 6.0; ROOM_D = 5.0; CEIL = 2.6
 PAL_WALL = {"wall":(0.92,0.86,0.74,1.0),"baseboard":(0.42,0.32,0.22,1.0)}
 COL_FLOOR = (0.74,0.58,0.38,1.0); COL_SEAM = (0.42,0.30,0.18,1.0); COL_WOOD = (0.46,0.34,0.22,1.0)
 COL_ACCENT = (0.62,0.42,0.22,1.0)
+# Linda Caldwell's kitchen on the kit (2026-10-08): pale sage cabinets,
+# cream laminate with a chrome edge, the pink tile, chrome pulls
+from _props import kitchen_kit as K
+from _props.geometry import make_lathe, make_tube
+Y_BACK = ROOM_D - 0.10
+TOP_Z = 0.92
+SINK_X, RANGE_X = -1.5, ROOM_W/4.0
+SAGE = (0.64, 0.72, 0.60, 1.0); SAGE_DK = (0.52, 0.60, 0.50, 1.0)
+CREAM = (0.92, 0.88, 0.78, 1.0); CHROME = (0.80, 0.82, 0.84, 1.0)
+PINK = (0.90, 0.74, 0.74, 1.0)
 
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
@@ -34,20 +44,35 @@ def build_shell():
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4, with_grid=False)
 
 def build_counter():
-    # make_counter's `depth` is the X extent, `length` the Y —
-    # so length>depth built this counter ROTATED 90 DEGREES:
-    # a narrow face against the wall and the run jutting into
-    # the room. Swapped 2026-08-12 (same bug as the New
-    # Orleans bar and the pit stop's lunch counter).
-    top_z = make_counter("Counter", (-ROOM_W/4.0, ROOM_D-0.50, 0.0), length=0.70, depth=2.40, height=0.92,
-                         palette={"formica": (0.78, 0.66, 0.42, 1.0), "top": (0.32, 0.22, 0.14, 1.0), "kick": (0.32, 0.22, 0.14, 1.0)})
-    make_counter_bullnose("Counter", (-ROOM_W/4.0, ROOM_D-0.50 - 0.35, top_z), length=2.40, axis='X')
-    # Sink + faucet (was missing)
-    make_box("Sink_Bowl", (-ROOM_W/4.0, ROOM_D-0.45, 0.86), (0.50, 0.40, 0.12), (0.86, 0.86, 0.84, 1.0))
-    make_cyl("Sink_Faucet", (-ROOM_W/4.0, ROOM_D-0.55, top_z+0.04), 0.015, 0.30, P.METAL_STEEL)
-    # Stove (was missing)
-    make_box("Stove_Body", (ROOM_W/4.0, ROOM_D-0.45, 0.45), (0.70, 0.70, 0.92), (0.86, 0.84, 0.80, 1.0))
-    make_box("Stove_Top", (ROOM_W/4.0, ROOM_D-0.45, 0.92), (0.70, 0.70, 0.04), P.METAL_BLACK)
+    """The N run on the kitchen kit (2026-10-08: a store counter and a box
+    stove). The sink under the window — "Maya, in the kitchen, pouring
+    herself a glass of water before bed, pauses at the window" — the
+    range, uppers clear of the window and the clock, the pink tile, and
+    the sill with the radio on it ("The radio, on the windowsill, stays
+    off")."""
+    K.base_run("Counter", -ROOM_W/2.0 + 0.10, ROOM_W/2.0 - 0.10, Y_BACK, top_z=TOP_Z,
+               body=SAGE, top=CREAM, edge=CHROME, pull=CHROME, rail=SAGE_DK,
+               gaps=[(RANGE_X - 0.38, RANGE_X + 0.38)])
+    K.sink("Sink", SINK_X, Y_BACK, TOP_Z)
+    K.range_("Stove", RANGE_X, Y_BACK, TOP_Z)
+    for nm, a, b in (("Upper_W", -ROOM_W/2.0 + 0.10, SINK_X - 0.75), ("Upper_Mid", 0.40, RANGE_X - 0.42),
+                     ("Upper_E", RANGE_X + 0.42, ROOM_W/2.0 - 0.10)):
+        K.upper_run(nm, a, b, Y_BACK, z0=1.46, z1=2.20, body=SAGE, pull=CHROME, rail=SAGE_DK)
+    K.backsplash("Splash", -ROOM_W/2.0 + 0.10, ROOM_W/2.0 - 0.10, Y_BACK, TOP_Z, 1.00, tile=PINK,
+                 grout=(0.78, 0.62, 0.62, 1.0))
+    # the sill, and her radio on it — off
+    make_box("Window_Sill", (SINK_X, Y_BACK - 0.07, 1.005), (1.34, 0.14, 0.03), CREAM)
+    rx = SINK_X - 0.38
+    make_box("Sill_Radio", (rx, Y_BACK - 0.08, 1.02 + 0.07), (0.26, 0.11, 0.14), (0.88, 0.82, 0.68, 1.0))
+    make_box("Sill_Radio_Grille", (rx - 0.05, Y_BACK - 0.1355, 1.02 + 0.07), (0.12, 0.002, 0.10), (0.46, 0.34, 0.24, 1.0))
+    make_cyl("Sill_Radio_Dial", (rx + 0.08, Y_BACK - 0.138, 1.02 + 0.07), 0.03, 0.006, (0.94, 0.86, 0.56, 1.0), axis='Y', segments=12)
+    make_box("Sill_Radio_Handle", (rx, Y_BACK - 0.08, 1.02 + 0.15), (0.16, 0.02, 0.02), (0.46, 0.34, 0.24, 1.0))
+    # the percolator on the back burner
+    make_lathe("Percolator", (RANGE_X + 0.19, Y_BACK - 0.33 + 0.16, TOP_Z), [(0.07, 0.0), (0.08, 0.04), (0.06, 0.20), (0.05, 0.24), (0.0, 0.24)],
+               CHROME, segments=12)
+    make_lathe("Percolator_Knob", (RANGE_X + 0.19, Y_BACK - 0.33 + 0.16, TOP_Z + 0.24), [(0.02, 0.0), (0.02, 0.03), (0.0, 0.04)],
+               (0.70, 0.74, 0.78, 1.0), segments=8)
+    make_tube("Percolator_Spout", [(RANGE_X + 0.25, Y_BACK - 0.17, TOP_Z + 0.16), (RANGE_X + 0.29, Y_BACK - 0.17, TOP_Z + 0.20)], 0.01, CHROME)
 
 def build_table():
     tx, ty = 0.0, ROOM_D/2.0
@@ -67,7 +92,6 @@ def build_fridge():
 
 def build_dressing():
     cw_x = -ROOM_W/4.0; cw_y = ROOM_D-0.45
-    make_coffee_pots("Coffee", (cw_x-1.0, cw_y+0.45, 0.94), pots=1)   # the kit puts a lone pot 0.5 in front of its anchor (2026-09-25)
     make_calendar("Calendar", (-ROOM_W/2.0+0.05, 2.0, 1.6))
     tx, ty = 0.0, ROOM_D/2.0
     make_box("NapkinHolder", (tx, ty, 0.82), (0.14, 0.06, 0.12), (0.86, 0.84, 0.80, 1.0))
@@ -89,15 +113,11 @@ def build_hero_props():
     dogs), the water glass, the stair mouth, burners + oven face on
     the blank stove."""
     make_window("Window_N", (-1.5, ROOM_D-0.10, 1.52), width=1.20, height=1.00, see_through=True)
-    make_cyl("Water_Glass", (-1.55, 4.1500, 1.02), 0.035, 0.12, (0.55, 0.62, 0.66, 0.5), segments=8)
+    make_cyl("Water_Glass", (SINK_X + 0.62, Y_BACK - 0.40, TOP_Z + 0.06), 0.035, 0.12, (0.55, 0.62, 0.66, 0.5), segments=8)
     make_box("Stair_Newel", (0.92, 0.15, 0.60), (0.10, 0.10, 1.20), (0.46, 0.34, 0.22, 1.0))
     for s in range(3):
         make_box(f"Stair_Tread_{s}", (1.4, 0.20 + s * 0.28, (0.185 + s * 0.18) / 2.0), (0.80, 0.28, 0.185 + s * 0.18), (0.46, 0.34, 0.22, 1.0))   # solid step (2026-09-08)
-    sx, sy = ROOM_W/4.0, ROOM_D-0.45
-    for bi, (ox, oy) in enumerate(((-0.16, -0.16), (0.16, -0.16), (-0.16, 0.16), (0.16, 0.16))):
-        make_cyl(f"Stove_Burner_{bi}", (sx+ox, sy+oy, 0.95), 0.09, 0.012, (0.16, 0.16, 0.18, 1.0), segments=10)
-    make_box("Oven_Door_Face", (sx, sy-0.36, 0.50), (0.60, 0.03, 0.55), (0.72, 0.70, 0.66, 1.0))
-    make_box("Oven_Handle", (sx, sy-0.39, 0.80), (0.50, 0.03, 0.04), (0.55, 0.57, 0.58, 1.0))
+    # (2026-10-08: the burners and oven face are the kit range's own)
 
 
 

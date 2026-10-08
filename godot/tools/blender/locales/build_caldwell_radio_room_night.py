@@ -1,18 +1,32 @@
-"""caldwell_radio_room_night — Caldwell's late-night radio room. A
-small station booth: a broadcast console with a mixing board (channel
-strips + VU meters), an on-air mic on a boom arm, a monitor + second
-CRT, an equipment rack on the W wall (reel-to-reel deck + cart
-machines + EQ with glowing readouts), an ON AIR sign over the door,
-coffee going cold on the desk. Night mood — a single bare bulb + the
-warm glow of the gear. Rebuilt from the bare auto-generated template
-(which imported store/shelving/food helpers it never used and shipped
-only a desk-top + monitor box + two filing boxes).
+"""caldwell_radio_room_night — Linda Caldwell's bedroom, upstairs, and her
+shortwave (vol 6 ch5 "1776 kHz").
+
+DRAFT 1 OF THE RIGHT ROOM (2026-10-08). The prose: "At Maya's
+grandmother's house, the upstairs window is lit. She is, at eleven PM on
+a Thursday in late May, at her shortwave radio ... sending, on 1776 kHz,
+a single phrase, over and over, in Morse code she has not used since
+1989, in the cadence her husband Thomas had taught her." Maya "sits on
+the edge of the bed"; "Maya helps her into bed, and Maya turns off the
+radio". The builder had made a broadcast STATION BOOTH — a mixing board,
+a boom mic, an equipment rack, an ON AIR sign, two fluorescent tubes —
+and the window pass had given it a ground-floor yard. Now her bedroom:
+the radio desk on the east wall beside the south window (the coax out
+through the sash, the window the street sees lit), the transceiver with
+its amber S-meter, the straight key, the headphones, the open log, QSL
+cards pinned above, Thomas's photograph; the bed with its foot toward
+the desk; a nightstand and its lamp; a dresser with a mirror; the door to
+the hall closed; the back yard a storey down.
+
+DRAFT 2 targets: the quilt's pattern; the log's handwriting rows;
+Thomas's photo as a portrait; the coax's drip loop at the sash; the
+hall light under the door.
 """
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_tube, export_glb
+from _props.furniture import make_table, make_chair, make_lamp
 from _props.views import make_view
 from _props.structure import (make_floor, make_wall, make_ceiling,
                               make_crown_molding, make_window, make_wall_with_openings)
@@ -46,6 +60,11 @@ def build_shell():
     make_wall_with_openings("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL,   # cut 2026-10-07: its window was a pane on a solid wall
               axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(1.55, 1.55, 1.00, 0.90)])
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
+    # the door to the hall, closed; the wall fills the rest of the opening
+    for nm, a, b in (("Wall_S_DoorFill_W", -1.0, -0.45), ("Wall_S_DoorFill_E", 0.45, 1.0)):
+        make_wall(nm, ((a + b) / 2.0, 0.0, 0), length=b - a, height=2.0, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_box("Hall_Door", (0.0, 0.06, 1.0), (0.90, 0.05, 2.0), COL_WOOD)
+    make_cyl("Hall_Door_Knob", (0.32, 0.10, 0.98), 0.03, 0.05, (0.70, 0.58, 0.30, 1.0), axis='Y', segments=8)
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4, with_grid=False)
     for nm, ax, length, wx, wy in [("Crown_W", 'Y', ROOM_D, -ROOM_W/2.0+0.10, ROOM_D/2.0),
                                     ("Crown_E", 'Y', ROOM_D, +ROOM_W/2.0-0.10, ROOM_D/2.0),
@@ -54,230 +73,111 @@ def build_shell():
                            ceil_z=CEIL, palette={"wood": COL_WOOD_DK})
 
 
-def build_console_desk():
-    """Broadcast desk + mixing board against the N wall."""
-    dx, dy = 0.0, ROOM_D - 0.42   # the desk back edge ON the N wall (2026-09-07)
-    top_z = 0.74
-    # Desk top + modesty panel + side legs
-    make_box("Desk_Top", (dx, dy, top_z), (2.20, 0.80, 0.05), COL_WOOD)
-    make_box("Desk_Modesty", (dx, dy+0.36, 0.38), (2.20, 0.04, 0.72), COL_WOOD_DK)
-    for sgn in (-1, +1):
-        make_box(f"Desk_Leg_{sgn:+d}", (dx + sgn*1.02, dy, 0.36), (0.08, 0.76, 0.72), COL_WOOD_DK)
 
-    # ── Mixing board (angled console) sitting on the desk ──
-    bx, by = 0.0, dy - 0.06
-    make_box("Board_Body", (bx, by, top_z + 0.06), (1.60, 0.56, 0.10), COL_CONSOLE)
-    make_box("Board_Face", (bx, by - 0.02, top_z + 0.13), (1.56, 0.50, 0.02), COL_PANEL)
-    # 8 channel strips: a fader slot + fader cap + two knobs + a channel LED
-    for ci in range(8):
-        cx = bx - 0.68 + ci * 0.195
-        # fader travel slot
-        make_box(f"Board_FaderSlot_{ci}", (cx, by + 0.12, top_z + 0.14),
-                 (0.02, 0.18, 0.004), COL_METAL_DK)
-        # fader cap
-        make_box(f"Board_FaderCap_{ci}", (cx, by + 0.08 + (ci % 3) * 0.03, top_z + 0.15),
-                 (0.05, 0.05, 0.02), COL_FADER)
-        # two rotary knobs above the fader
-        for ki, ky in enumerate([by - 0.10, by - 0.02]):
-            make_cyl(f"Board_Knob_{ci}_{ki}", (cx, ky, top_z + 0.15),
-                     0.022, 0.03, COL_KNOB, axis='Z', segments=8)
-        # channel-on LED (alternating green/red)
-        lc = COL_LED_GREEN if ci % 2 == 0 else COL_LED_RED
-        make_cyl(f"Board_LED_{ci}", (cx, by - 0.18, top_z + 0.15),
-                 0.010, 0.008, lc, axis='Z', segments=6)
-    # Two VU meters flanking the strips (glowing amber windows)
-    for sgn in (-1, +1):
-        make_box(f"Board_VU_Housing_{sgn:+d}", (bx + sgn*0.70, by - 0.06, top_z + 0.15),
-                 (0.20, 0.20, 0.03), COL_PANEL)
-        make_box(f"Board_VU_Glass_{sgn:+d}", (bx + sgn*0.70, by - 0.16, top_z + 0.17),
-                 (0.16, 0.005, 0.10), COL_VU_AMBER)
-
-    # ── Monitor (CRT) + keyboard on the desk, W side ──
-    mx, my = -1.10, dy + 0.18
-    make_box("Monitor_Case", (mx, my, top_z + 0.22), (0.42, 0.40, 0.38), (0.86, 0.82, 0.74, 1.0))
-    make_box("Monitor_Screen", (mx, my - 0.20, top_z + 0.24), (0.32, 0.02, 0.26), COL_SCREEN)
-    for di, dxo in enumerate([-0.06, 0.0, +0.06]):
-        make_box(f"Monitor_Phosphor_{di}", (mx + dxo, my - 0.201 - 0.0101, top_z + 0.26),
-                 (0.02, 0.001, 0.05), COL_PHOSPHOR)
-    make_box("Keyboard", (mx, my - 0.34, top_z + 0.03), (0.36, 0.14, 0.03), (0.20, 0.20, 0.22, 1.0))
-    # Small second monitor (log/queue), E side
-    make_box("Monitor2_Case", (1.10, dy + 0.20, top_z + 0.18), (0.34, 0.32, 0.30), (0.20, 0.20, 0.22, 1.0))
-    make_box("Monitor2_Screen", (0.80, dy + 0.03, top_z + 0.20), (0.26, 0.02, 0.22), COL_SCREEN)
-    make_box("Monitor2_Line", (0.80, dy + 0.02, top_z + 0.22), (0.20, 0.001, 0.02), COL_PHOSPHOR)
+RX, RY0, RY1 = ROOM_W/2.0 - 0.10, 0.55, 1.95      # the radio desk: E wall face, its south and north ends
+DESK_D, DESK_Z = 0.62, 0.74
 
 
-def build_mic_and_boom():
-    """On-air mic on a boom arm clamped to the desk, with pop filter."""
-    dx, dy = 0.0, ROOM_D - 0.42   # the desk back edge ON the N wall (2026-09-07)
-    top_z = 0.78
-    clamp_x, clamp_y = -0.40, dy - 0.40
-    # Clamp base at desk edge
-    make_box("MicBoom_Clamp", (clamp_x, clamp_y, top_z), (0.08, 0.10, 0.10), COL_METAL_DK)
-    # Vertical post
-    make_cyl("MicBoom_Post", (clamp_x, clamp_y, top_z + 0.30), 0.014, 0.56, COL_METAL_DK, axis='Z')
-    # (2026-09-23: the two arms, the mic and the pop filter were four
-    # pieces in the air, none touching the next. One chain now: post
-    # top → arm toward the operator → arm across → drop → mic.)
-    make_cyl("MicBoom_Arm", (clamp_x, clamp_y - 0.20, top_z + 0.56),
-             0.012, 0.40, COL_METAL_DK, axis='Y')
-    make_cyl("MicBoom_Arm2", (clamp_x + 0.15, clamp_y - 0.40, top_z + 0.56),
-             0.012, 0.30, COL_METAL_DK, axis='X')
-    make_cyl("MicBoom_Drop", (clamp_x + 0.30, clamp_y - 0.40, top_z + 0.515),
-             0.010, 0.09, COL_METAL_DK, axis='Z')
-    # Mic capsule hanging from the arm
-    mic_x, mic_y, mic_z = clamp_x + 0.30, clamp_y - 0.40, top_z + 0.34
-    make_cyl("Mic_Body", (mic_x, mic_y, mic_z), 0.035, 0.16, COL_BAKELITE, axis='Z', segments=10)
-    make_cyl("Mic_Grille", (mic_x, mic_y, mic_z + 0.10), 0.040, 0.06, COL_METAL, axis='Z', segments=10)
-    # Pop filter (thin disc in front of the mic, facing operator)
-    make_cyl("Mic_PopFilter", (mic_x, mic_y - 0.043, mic_z + 0.06), 0.07, 0.006,
-             (0.10, 0.10, 0.12, 0.6), axis='Y', segments=12)
-    # Headphones hooked on the desk edge
-    hx, hy = 0.85, dy - 0.42
-    make_cyl("Phones_Band", (hx, hy, top_z + 0.06), 0.10, 0.03, COL_BAKELITE, axis='X', segments=12)
-    for sgn in (-1, +1):
-        # against the band (2026-09-23: 5 cm off it)
-        make_cyl(f"Phones_Cup_{sgn:+d}", (hx + sgn*0.0375, hy, top_z + 0.06),
-                 0.06, 0.045, COL_BAKELITE, axis='X', segments=10)
+def build_radio_desk():
+    """The desk on the east wall beside the window, and on it the station
+    she has kept since Thomas: the transceiver, its power supply, the
+    straight key, the headphones, the log open at tonight."""
+    x0 = RX - DESK_D
+    dx, dy = (x0 + RX) / 2.0, (RY0 + RY1) / 2.0
+    make_table("Radio_Desk", dx, dy, w=DESK_D, d=RY1 - RY0, h=DESK_Z, wood=COL_WOOD)
+    top = DESK_Z
+    # the transceiver against the wall, its face to the room (-X)
+    make_box("Radio_Transceiver", (RX - 0.20, dy + 0.15, top + 0.08), (0.36, 0.42, 0.16), COL_METAL_DK)
+    make_box("Radio_Dial", (RX - 0.381, dy + 0.15, top + 0.10), (0.002, 0.36, 0.09), (0.18, 0.18, 0.20, 1.0))
+    make_box("Radio_Dial_Meter", (RX - 0.383, dy + 0.27, top + 0.11), (0.002, 0.08, 0.04), COL_VU_AMBER)
+    make_box("Radio_Dial_Freq", (RX - 0.383, dy + 0.08, top + 0.11), (0.002, 0.14, 0.03), (0.96, 0.66, 0.30, 1.0))
+    for ki, ky in enumerate((-0.02, 0.06, 0.20, 0.28)):
+        make_cyl(f"Radio_Knob_{ki}", (RX - 0.39, dy + ky, top + 0.035), 0.016 if ki % 2 else 0.024, 0.02, COL_KNOB, axis='X', segments=10)
+    make_box("Radio_PSU", (RX - 0.16, dy - 0.24, top + 0.06), (0.28, 0.20, 0.12), (0.24, 0.24, 0.26, 1.0))
+    make_box("Radio_PSU_Meter", (RX - 0.301, dy - 0.24, top + 0.08), (0.002, 0.08, 0.05), (0.90, 0.88, 0.80, 1.0))
+    # the straight key: base, lever, the black knob under her fingers
+    kx, ky = x0 + 0.22, dy + 0.05
+    make_box("Morse_Key_Base", (kx, ky, top + 0.01), (0.16, 0.08, 0.02), COL_BAKELITE)
+    make_box("Morse_Key_Lever", (kx - 0.01, ky, top + 0.035), (0.13, 0.012, 0.012), COL_METAL)
+    make_cyl("Morse_Key_Knob", (kx - 0.07, ky, top + 0.05), 0.016, 0.012, COL_BAKELITE, segments=10)
+    make_tube("Morse_Key_Lead", [(kx + 0.08, ky, top + 0.01), (RX - 0.38, dy - 0.02, top + 0.01)], 0.003, COL_BAKELITE)
+    # the headphones, set down on the desk, the band up
+    hx, hy = x0 + 0.20, dy + 0.42
+    for e in (-1, 1):
+        make_cyl(f"Headphones_Cup_{e:+d}", (hx, hy + e * 0.08, top + 0.03), 0.045, 0.05, COL_BAKELITE, axis='Y', segments=10)
+    make_tube("Headphones_Band", [(hx, hy - 0.08, top + 0.07), (hx, hy - 0.04, top + 0.15), (hx, hy + 0.04, top + 0.15), (hx, hy + 0.08, top + 0.07)], 0.008, COL_METAL_DK)
+    # the log, open at tonight, the pencil
+    make_box("Log_Book_L", (x0 + 0.24, dy - 0.32, top + 0.006), (0.20, 0.15, 0.012), (0.94, 0.92, 0.84, 1.0))
+    make_box("Log_Book_R", (x0 + 0.24, dy - 0.17, top + 0.006), (0.20, 0.15, 0.012), (0.94, 0.92, 0.84, 1.0))
+    for li in range(5):
+        make_box(f"Log_Book_Line_{li}", (x0 + 0.17 + li * 0.03, dy - 0.32, top + 0.0125), (0.004, 0.12, 0.001), (0.30, 0.30, 0.42, 1.0))
+    make_cyl("Log_Pencil", (x0 + 0.32, dy - 0.25, top + 0.005), 0.004, 0.15, (0.90, 0.72, 0.24, 1.0), axis='Y', segments=6)
+    # a cup of tea gone cold, and Thomas
+    make_cyl("Tea_Cup", (x0 + 0.12, dy + 0.62, top + 0.04), 0.04, 0.08, (0.92, 0.90, 0.86, 1.0), segments=10)
+    make_box("Thomas_Photo", (RX - 0.05, dy + 0.58, top + 0.11), (0.03, 0.14, 0.18), (0.62, 0.50, 0.34, 1.0))
+    make_box("Thomas_Photo_Print", (RX - 0.066, dy + 0.58, top + 0.11), (0.002, 0.10, 0.14), (0.42, 0.40, 0.38, 1.0))
+    # the desk lamp (the light the window shows the street)
+    make_lamp("Desk_Lamp", x0 + 0.48, dy + 0.52, base_z=top, h=0.42, shade_col=(0.86, 0.74, 0.46, 1.0))
+    # the coax: off the transceiver's back, along the wall, out the sash
+    make_tube("Coax", [(RX - 0.01, dy + 0.15, top + 0.17), (RX - 0.01, dy + 0.15, top + 0.40), (RX - 0.01, RY0 - 0.30, top + 0.40), (1.95, 0.16, 1.15)], 0.008, COL_BAKELITE)
+    # her chair at the desk, facing the radio
+    make_chair("Radio_Chair", x0 - 0.30, dy, yaw=1.5708, wood=COL_WOOD_DK)
+    # QSL cards above the desk on a cork board
+    make_box("QSL_Board", (RX - 0.01, dy, 1.62), (0.02, 1.10, 0.60), (0.62, 0.48, 0.32, 1.0))
+    cols = ((0.86, 0.32, 0.26, 1.0), (0.30, 0.52, 0.76, 1.0), (0.94, 0.84, 0.40, 1.0), (0.44, 0.66, 0.42, 1.0), (0.94, 0.92, 0.86, 1.0))
+    for qi in range(10):
+        make_box(f"QSL_Card_{qi}", (RX - 0.021, dy - 0.44 + (qi % 5) * 0.22, 1.76 - (qi // 5) * 0.26), (0.002, 0.14, 0.09), cols[qi % len(cols)])
 
 
-def build_equipment_rack():
-    """Equipment rack on the W wall: reel-to-reel + cart decks + EQ."""
-    rx = -ROOM_W/2.0 + 0.35
-    ry = 1.30
-    # Rack frame
-    make_box("Rack_Body", (rx, ry, 1.05), (0.55, 0.70, 2.05), COL_METAL_DK)
-    make_box("Rack_Face", (rx + 0.27, ry, 1.05), (0.02, 0.62, 1.95), COL_PANEL)
-
-    # Reel-to-reel deck (top bay) — panel + two reels + heads
-    rr_z = 1.72
-    make_box("Reel_Panel", (rx + 0.28, ry, rr_z), (0.02, 0.60, 0.46), (0.24, 0.24, 0.26, 1.0))
-    for sgn, rlbl in ((-1, "L"), (+1, "R")):
-        make_cyl(f"Reel_{rlbl}", (rx + 0.30, ry + sgn*0.16, rr_z + 0.04),
-                 0.13, 0.03, (0.42, 0.42, 0.44, 1.0), axis='X', segments=14)
-        make_cyl(f"Reel_{rlbl}_Hub", (rx + 0.31, ry + sgn*0.16, rr_z + 0.04),
-                 0.04, 0.035, COL_METAL_DK, axis='X', segments=8)
-    # Tape path heads (three small blocks between the reels)
-    for hi, hy in enumerate([-0.04, 0.0, +0.04]):
-        make_box(f"Reel_Head_{hi}", (rx + 0.31, ry + hy, rr_z - 0.14),
-                 (0.02, 0.02, 0.05), COL_METAL)
-
-    # Cart machines (mid bay) — three stacked with slots + status LEDs
-    for ci in range(3):
-        cz = 1.28 - ci * 0.20
-        make_box(f"Cart_{ci}", (rx + 0.28, ry, cz), (0.02, 0.58, 0.16), (0.18, 0.18, 0.20, 1.0))
-        make_box(f"Cart_{ci}_Slot", (rx + 0.29, ry - 0.06, cz + 0.02), (0.01, 0.34, 0.05), COL_METAL_DK)
-        make_cyl(f"Cart_{ci}_LED", (rx + 0.29, ry + 0.22, cz + 0.02),
-                 0.010, 0.006, COL_LED_RED if ci == 0 else COL_LED_GREEN, axis='X', segments=6)
-
-    # EQ / processor (bottom bay) — a row of small faders + an amber readout
-    eq_z = 0.66
-    make_box("EQ_Panel", (rx + 0.28, ry, eq_z), (0.02, 0.58, 0.18), (0.16, 0.16, 0.18, 1.0))
-    for fi in range(7):
-        fy = ry - 0.22 + fi * 0.075
-        make_box(f"EQ_Fader_{fi}", (rx + 0.29, fy, eq_z + (fi % 3)*0.02 - 0.02),
-                 (0.01, 0.02, 0.05), COL_FADER)
-    make_box("EQ_Readout", (rx + 0.29, ry + 0.20, eq_z + 0.05), (0.01, 0.10, 0.05), COL_VU_AMBER)
-
-
-def build_on_air_sign():
-    """ON AIR sign over the S door (lit red)."""
-    sx, sy, sz = 0.0, 0.12, 2.18
-    make_box("OnAir_Backing", (sx, sy, sz), (0.90, 0.06, 0.30), (0.10, 0.10, 0.12, 1.0))
-    make_box("OnAir_Face", (sx, sy - 0.032 + 0.0151 - 0.0162, sz), (0.80, 0.005, 0.22), (0.16, 0.06, 0.06, 1.0))
-    # "ON" + "AIR" letter blocks (emissive red)
-    make_box("OnAir_ON", (sx - 0.20, sy - 0.035 + 0.0161 - 0.0122, sz), (0.26, 0.001, 0.12), COL_ONAIR)
-    make_box("OnAir_AIR", (sx + 0.22, sy - 0.035 + 0.0161 - 0.0122, sz), (0.30, 0.001, 0.12), COL_ONAIR)
-
-
-def build_coffee_and_clutter():
-    dx, dy = 0.0, ROOM_D - 0.42   # the desk back edge ON the N wall (2026-09-07)
-    top_z = 0.76
-    # THE MORSE KEY (vol6 ch5: "sending, on 1776 kHz, a single
-    # phrase, over and over, in Morse code she has not used since
-    # 1989") — brass straight key on its bakelite base, front and
-    # center where the operator's hand falls
-    make_box("MorseKey_Base", (dx - 0.30, dy - 0.32, top_z + 0.015), (0.16, 0.11, 0.03),
-             COL_BAKELITE)
-    make_box("MorseKey_Lever", (dx - 0.30, dy - 0.30, top_z + 0.06), (0.03, 0.14, 0.015),
-             (0.74, 0.58, 0.28, 1.0))
-    make_cyl("MorseKey_Knob", (dx - 0.30, dy - 0.36, top_z + 0.08), 0.022, 0.025,
-             (0.16, 0.14, 0.12, 1.0), axis='Z', segments=8)
-    make_cyl("MorseKey_Pivot", (dx - 0.30, dy - 0.26, top_z + 0.055), 0.015, 0.03,
-             (0.74, 0.58, 0.28, 1.0), axis='X', segments=6)
-    # The frequency, penciled on a card propped against the board
-    make_box("FreqCard", (dx + 0.22, dy - 0.26, top_z + 0.06), (0.14, 0.015, 0.10),
-             (0.86, 0.82, 0.72, 1.0))
-    make_box("FreqCard_Digits", (dx + 0.22, dy - 0.27, top_z + 0.06), (0.10, 0.01, 0.03),
-             (0.28, 0.26, 0.24, 1.0))
-    # Coffee mug on the desk (going cold), E side near the operator
-    mug_x, mug_y = 0.55, dy - 0.42
-    make_cyl("Mug_Body", (mug_x, mug_y, top_z + 0.05), 0.045, 0.10, (0.72, 0.30, 0.22, 1.0),
-             axis='Z', segments=12)
-    make_cyl("Mug_Coffee", (mug_x, mug_y, top_z + 0.095 + 0.0086), 0.038, 0.006, (0.20, 0.12, 0.08, 1.0),
-             axis='Z', segments=12)
-    make_cyl("Mug_Handle", (mug_x + 0.055, mug_y, top_z + 0.05), 0.022, 0.012, (0.72, 0.30, 0.22, 1.0),
-             axis='X', segments=8)
-    # Coffee maker on a small side table, SE corner (make_coffee_pots was unused)
-    st_x, st_y = ROOM_W/2.0 - 0.45, 0.95
-    make_box("SideTable_Top", (st_x, st_y, 0.72), (0.60, 0.72, 0.04), COL_WOOD)
-    for (lx, ly) in [(-0.25, -0.30), (0.25, -0.30), (-0.25, 0.30), (0.25, 0.30)]:
-        make_box(f"SideTable_Leg_{int(lx*100)}_{int(ly*100)}",
-                 (st_x + lx, st_y + ly, 0.36), (0.04, 0.04, 0.72), COL_WOOD_DK)
-    # pots span 0.5m in y; anchor +0.25 so the pair centers on the table
-    make_coffee_pots("CoffeeMaker", (st_x, st_y + 0.25, 0.74), pots=2)
-    # Desk lamp (gooseneck) at the console corner
-    lp_x, lp_y = -1.00, dy + 0.10
-    make_box("Lamp_Base", (lp_x, lp_y, top_z + 0.02), (0.14, 0.14, 0.03), COL_METAL_DK)
-    make_cyl("Lamp_Column", (lp_x, lp_y, top_z + 0.20), 0.012, 0.34, COL_METAL_DK, axis='Z')
-    make_cyl("Lamp_Arm", (lp_x + 0.10, lp_y - 0.06, top_z + 0.36), 0.010, 0.24, COL_METAL_DK, axis='X')
-    make_cyl("Lamp_Head", (lp_x + 0.20, lp_y - 0.06, top_z + 0.34), 0.06, 0.08,
-             (0.96, 0.86, 0.52, 1.0), axis='Z', segments=10)
-
-
-def build_bulb():
-    make_cyl("Bulb_Cord", (0.0, ROOM_D/2.0, CEIL-0.30), 0.005, 0.60, P.METAL_BLACK)
-    make_cyl("Bulb_Glass", (0.0, ROOM_D/2.0, CEIL-0.67), 0.06, 0.14, (0.96, 0.86, 0.46, 1.0))   # on the cord (2026-09-23: 19 cm under it)
+def build_bedroom():
+    """The bed (its foot toward the desk, where Maya sits on its edge), the
+    nightstand and its lamp, the dresser and its mirror, a rug."""
+    from _props.furniture import make_bed
+    make_bed("Bed", 1.35, ROOM_D - 1.10, head="+Y", w=1.40, d=2.00, style="frame", frame_col=COL_WOOD,
+             blanket_col=(0.62, 0.44, 0.48, 1.0), pillows=2)
+    make_box("Bed_Quilt_Fold", (1.35, ROOM_D - 2.02, 0.60), (1.30, 0.22, 0.05), (0.86, 0.80, 0.66, 1.0))
+    make_table("Nightstand", 0.30, ROOM_D - 0.40, w=0.46, d=0.40, h=0.60, wood=COL_WOOD)
+    make_lamp("Bedside_Lamp", 0.30, ROOM_D - 0.40, base_z=0.60, h=0.48)
+    make_box("Reading_Glasses", (0.20, ROOM_D - 0.52, 0.605), (0.12, 0.04, 0.01), (0.30, 0.24, 0.20, 1.0))
+    make_box("Dresser", (-ROOM_W/2.0 + 0.36, 2.60, 0.48), (0.52, 1.30, 0.96), COL_WOOD)
+    for di in range(3):
+        make_box(f"Dresser_Drawer_{di}", (-ROOM_W/2.0 + 0.625, 2.60, 0.18 + di * 0.30), (0.01, 1.20, 0.24), COL_WOOD_DK)
+        for e in (-1, 1):
+            make_box(f"Dresser_Pull_{di}_{e:+d}", (-ROOM_W/2.0 + 0.64, 2.60 + e * 0.32, 0.18 + di * 0.30), (0.02, 0.10, 0.02), (0.70, 0.58, 0.30, 1.0))
+    make_box("Dresser_Mirror", (-ROOM_W/2.0 + 0.12, 2.60, 1.45), (0.03, 0.80, 0.90), COL_WOOD_DK)
+    make_box("Dresser_Mirror_Glass", (-ROOM_W/2.0 + 0.137, 2.60, 1.45), (0.004, 0.70, 0.80), (0.58, 0.64, 0.68, 1.0))
+    for bi, (bx, col) in enumerate(((-0.30, (0.86, 0.72, 0.62, 1.0)), (-0.10, (0.62, 0.70, 0.82, 1.0)))):
+        make_cyl(f"Dresser_Bottle_{bi}", (-ROOM_W/2.0 + 0.36, 2.60 + bx, 0.96 + 0.06), 0.03, 0.12, col, segments=8)
+    make_box("Rug", (0.10, 2.40, 0.006), (2.0, 1.40, 0.012), (0.54, 0.36, 0.34, 1.0))
 
 
 def build_window():
-    # Small window on the S wall east of the door (night — dark warm glass)
-    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    # the south window by the radio — the one the street sees lit
     make_window("WindowS", (+1.55, 0.10, 1.55), width=1.00, height=0.90,
-                palette={"glass": (0.10, 0.12, 0.18, 0.7),
-                         "warm": (0.24, 0.20, 0.16, 0.5),
-                         "frame": COL_WOOD_DK}, room_dir=+1, see_through=True)
+                palette={"frame": COL_WOOD_DK}, room_dir=+1, see_through=True)
 
 
 def build_ceiling_infra():
-    for j in range(2):
-        ypos = ROOM_D * (0.30 + j * 0.40)
-        make_fluorescent_tube_fixture(f"Fluor_{j}", (0.0, ypos, CEIL), length=1.40, width=0.34)
-    make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
-    make_hvac_vent("HVAC", (ROOM_W/2.0 - 0.7, ROOM_D - 0.6, CEIL))
+    make_cyl("Ceiling_Dome", (0.0, ROOM_D/2.0, CEIL - 0.06), 0.16, 0.10, (0.94, 0.90, 0.78, 1.0), segments=12)
+    make_smoke_detector("Smoke", (-0.8, ROOM_D/2.0, CEIL))
 
 
 def build_decor():
-    make_wall_clock("Clock", (2.150, 3.6, 1.90), frozen_hour=2, frozen_min=14, facing='-X')
-    make_calendar("Calendar", (-ROOM_W/2.0+0.05, 3.6, 1.85))
-    make_faded_poster("StationLicense", (+ROOM_W/2.0-0.05 - 0.0535, 2.2, 1.55), into_room=-1)
-    make_floor_plant("Plant", (-ROOM_W/2.0+0.45, ROOM_D-0.5, 0.0),
-                     palette={"leaf": (0.34, 0.44, 0.30, 1.0)})
+    make_wall_clock("Clock", (2.150, 3.0, 1.90), frozen_hour=11, frozen_min=8, facing='-X')
+    make_calendar("Calendar", (-ROOM_W/2.0+0.05, 4.0, 1.70))
+    make_floor_plant("Plant", (-ROOM_W/2.0+0.45, ROOM_D-0.5, 0.0), kind="fern")
 
 
 def main():
     clear_scene()
     build_shell()
-    build_console_desk()
-    build_mic_and_boom()
-    build_equipment_rack()
-    build_on_air_sign()
-    build_coffee_and_clutter()
-    build_bulb()
+    build_radio_desk()
+    build_bedroom()
     build_window()
     build_ceiling_infra()
     build_decor()
-    # what is outside the window (2026-10-07, _props/views.py)
-    make_view("View_S", "S", 0.0, 1.55, kind="back", ground_z=0.0, seed=10)
+    # the back yard a storey down (2026-10-08: her room is UPSTAIRS)
+    make_view("View_S", "S", 0.0, 1.55, kind="back", ground_z=-2.9, seed=10)
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/caldwell_radio_room_night.glb"))
     print(f"\n[build_caldwell_radio_room_night] exporting to {out}")

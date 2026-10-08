@@ -226,25 +226,55 @@ def make_air_freshener_tree(prefix, anchor, *, count=3, palette=None):
                  (0.005, 0.02, 0.06), (0.42, 0.30, 0.20, 1.0))
 
 
-def make_floor_plant(prefix, anchor, *, palette=None):
-    """Decorative leafy potted plant on the floor."""
+def make_floor_plant(prefix, anchor, *, palette=None, kind=None):
+    """A potted plant on the floor. anchor=(x, y, floor_z).
+
+    2026-10-08: it was ONE plant in 37 rooms — the same three-ring pot and
+    a stack of disc "leaves" floating 10 cm off a pencil stem, in the same
+    south-west corner of every template room on the contact sheet. A plant
+    reads by its kind: `kind` picks one (snake / fern / ficus / monstera),
+    and when not given the prefix's hash does."""
+    from .geometry import make_blob, make_tube, make_rot_box, make_lathe
     palette = palette or {}
-    leaf = palette.get("leaf", (0.42, 0.52, 0.36, 1.0))
-    pot = palette.get("pot", (0.46, 0.34, 0.22, 1.0))
-    px, py, base_z = anchor
-    # the pot stands ON the floor (2026-09-22: it started 17 cm up, in
-    # every room that used this helper)
-    for r in range(3):
-        make_cyl(f"{prefix}_Pot_{r}",
-                 (px, py, base_z + 0.03 + r * 0.06),
-                 0.18 - r * 0.02, 0.06, pot)
-    make_cyl(f"{prefix}_Pot_Fill", (px, py, base_z + 0.19), 0.12, 0.02, (0.28, 0.20, 0.14, 1.0))   # in the pot's rim (2026-09-22: 2 cm over it)
-    make_cyl(f"{prefix}_Stem", (px, py, base_z + 0.31), 0.02, 0.22, (0.36, 0.30, 0.22, 1.0), segments=6)
-    for li, lz in enumerate([0.42, 0.50, 0.58, 0.64]):
-        for ang_i in range(6):
-            ang = ang_i * (math.pi * 2.0 / 6.0) + li * 0.3
-            ox = math.cos(ang) * 0.16
-            oy = math.sin(ang) * 0.16
-            make_cyl(f"{prefix}_Leaf_{li}_{ang_i}",
-                     (px + ox, py + oy, base_z + lz),
-                     0.04, 0.08, leaf)
+    px, py, z0 = anchor
+    kinds = ("snake", "fern", "ficus", "monstera")
+    if kind is None:
+        kind = kinds[sum(ord(ch) * (i + 3) for i, ch in enumerate(prefix)) % len(kinds)]
+    leaf = palette.get("leaf", {"snake": (0.24, 0.40, 0.24, 1.0), "fern": (0.44, 0.60, 0.30, 1.0),
+                                "ficus": (0.26, 0.44, 0.24, 1.0), "monstera": (0.18, 0.40, 0.24, 1.0)}[kind])
+    pot = palette.get("pot", ((0.62, 0.40, 0.28, 1.0), (0.86, 0.84, 0.80, 1.0), (0.26, 0.28, 0.30, 1.0),
+                              (0.70, 0.52, 0.34, 1.0))[kinds.index(kind)])
+    soil = (0.24, 0.17, 0.12, 1.0)
+    # the pot: a turned profile, the soil just under its rim
+    ph = 0.30 if kind in ("snake", "ficus") else 0.24
+    make_lathe(f"{prefix}_Pot", (px, py, z0), [(0.13, 0.0), (0.15, 0.02), (0.18, ph - 0.03), (0.19, ph), (0.0, ph)], pot, segments=14)
+    make_cyl(f"{prefix}_Pot_Fill", (px, py, z0 + ph - 0.015), 0.165, 0.02, soil, segments=12)
+    top = z0 + ph - 0.005
+    if kind == "snake":
+        dark = (0.18, 0.30, 0.18, 1.0)
+        for b in range(7):
+            ang = b * 2.399
+            r = 0.04 + 0.03 * (b % 3)
+            h = 0.48 + 0.10 * ((b * 5) % 4)
+            make_rot_box(f"{prefix}_Leaf_{b}", (px + math.cos(ang) * r, py + math.sin(ang) * r, top + h / 2.0),
+                         (0.07, 0.012, h), leaf if b % 2 else dark, yaw=ang, pitch=0.0, roll=0.10 * ((b % 3) - 1))
+    elif kind == "fern":
+        for b in range(3):
+            ang = b * 2.09
+            make_blob(f"{prefix}_Leaf_{b}", (px + math.cos(ang) * 0.10, py + math.sin(ang) * 0.10, top + 0.14), 0.24,
+                      leaf, noise=0.35, seed=7 + b, squash=0.55)
+        make_blob(f"{prefix}_Leaf_Crown", (px, py, top + 0.24), 0.18, leaf, noise=0.30, seed=11, squash=0.6)
+    elif kind == "ficus":
+        make_tube(f"{prefix}_Trunk", [(px, py, top - 0.01), (px + 0.03, py, top + 0.45), (px - 0.02, py + 0.02, top + 0.85)], 0.025,
+                  (0.40, 0.32, 0.24, 1.0), segments=6)
+        for b, (dx, dy, dz, r) in enumerate(((0.0, 0.02, 0.92, 0.26), (0.12, -0.06, 0.74, 0.18), (-0.12, 0.08, 0.66, 0.16))):
+            make_blob(f"{prefix}_Leaf_{b}", (px + dx, py + dy, top + dz), r, leaf, noise=0.28, seed=17 + b, squash=0.85)
+    else:   # monstera: stems from the soil, a broad leaf on each
+        for b in range(5):
+            ang = b * 1.257 + 0.3
+            r = 0.30 + 0.06 * (b % 2)
+            lx, ly, lz = px + math.cos(ang) * r, py + math.sin(ang) * r, top + 0.42 + 0.12 * (b % 3)
+            make_tube(f"{prefix}_Stem_{b}", [(px + math.cos(ang) * 0.03, py + math.sin(ang) * 0.03, top - 0.01),
+                                            (px + math.cos(ang) * r * 0.5, py + math.sin(ang) * r * 0.5, lz - 0.05),
+                                            (lx, ly, lz)], 0.008, (0.30, 0.48, 0.28, 1.0), segments=5)
+            make_rot_box(f"{prefix}_Leaf_{b}", (lx, ly, lz), (0.24, 0.20, 0.012), leaf, yaw=ang, pitch=0.0, roll=0.0)

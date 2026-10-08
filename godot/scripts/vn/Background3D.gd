@@ -863,8 +863,12 @@ const CAMERA_PRESETS := {
 		# (2026-10-05) at the dock's edge where Diego stands with his coffee,
 		# looking out over the apron and the cedar at the pre-dawn sky and the
 		# smear — it looked back into the stockroom from the black apron.
+		# (2026-10-08) tilted down 12 degrees: the contact sheet showed
+		# only sky and a black tree line — the dock edge, its bumpers and
+		# the apron's lane stripes are the foreground now, the horizon and
+		# the smear in the upper third.
 		"camera_origin": Vector3(-0.90, 1.62, -7.70),
-		"camera_rotation": Vector3(0.030, -0.053, 0.0),
+		"camera_rotation": Vector3(-0.210, -0.053, 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
@@ -1048,16 +1052,16 @@ const CAMERA_PRESETS := {
 	"caldwell_radio_room_night": {
 		"scene": "res://scenes/locales/caldwell_radio_room_night.tscn",
 		"requires_glb": "res://assets/3d/locales/caldwell_radio_room_night.glb",
-		# Late-night radio booth 4.5×5 (godot x∈[-2.25,2.25], z∈[0,-5],
-		# ceil 2.6). Broadcast console desk + mixing board against the N
-		# wall (blender 0,3.9 → godot 0,-3.9), on-air mic on a boom,
-		# CRT monitors, equipment rack on the W wall (godot -1.875,-1.3),
-		# ON AIR sign over the S door. Camera in the SE quadrant just
-		# inside the door looking NW across to the console: mixing board
-		# centre-back, equipment rack at frame left, warm gear glow.
-		"camera_origin": Vector3(1.4, 1.58, -0.7),
-		"camera_rotation": Vector3(-0.05, deg_to_rad(29.5), 0.0),
-		"fov": 60.0,
+		# (2026-10-08) LINDA CALDWELL'S BEDROOM, upstairs, and her shortwave
+		# (ch5: "the upstairs window is lit ... at her shortwave radio";
+		# Maya "sits on the edge of the bed") — it was built as a broadcast
+		# booth. 4.5×5 (godot x∈[-2.25,2.25], z∈[0,-5], ceil 2.6). From
+		# just inside the hall door, north-east across the room: the radio
+		# desk on the east wall by the window, her chair, the lamp; the
+		# bed's foot toward it; the QSL cards above.
+		"camera_origin": Vector3(-0.6, 1.6, -0.6),
+		"camera_rotation": Vector3(-0.2194, -0.7328, 0.0),
+		"fov": 62.0,
 		"suppress_input": true,
 	},
 	"foxhole_bar": {

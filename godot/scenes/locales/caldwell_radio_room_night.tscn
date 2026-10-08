@@ -187,38 +187,28 @@ light_color = Color(0.42, 0.32, 0.22, 1)
 light_energy = 0.15
 shadow_enabled = false
 
-; Bare-bulb pendant, room center (blender 0,2.5,1.74 → godot 0,1.74,-2.5)
-[node name="BareBulb" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.74, -2.5)
-light_color = Color(0.96, 0.84, 0.52, 1)
-light_energy = 1.0
+; (2026-10-08) her bedroom's lights: the desk lamp (the window the street
+; sees lit), the radio's amber dial, the bedside lamp
+[node name="Desk_Lamp_Practical" type="OmniLight3D" parent="."]
+position = Vector3(2.010, 1.040, -1.770)
+light_color = Color(0.98, 0.84, 0.56, 1)
+light_energy = 0.85
 shadow_enabled = false
-omni_range = 4.0
+omni_range = 2.6
 
-; Warm amber glow off the mixing board / VU meters at the console
-; (blender 0,3.9,1.0 → godot 0,1.0,-3.9)
-[node name="ConsoleGlow" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.0, -3.9)
-light_color = Color(0.96, 0.80, 0.42, 1)
-light_energy = 0.7
+[node name="Radio_Dial_Practical" type="OmniLight3D" parent="."]
+position = Vector3(1.700, 0.840, -1.400)
+light_color = Color(0.98, 0.70, 0.32, 1)
+light_energy = 0.35
 shadow_enabled = false
-omni_range = 3.0
+omni_range = 1.4
 
-; Warm gooseneck desk-lamp glow (blender -1.0,3.7,1.1 → godot -1.0,1.1,-3.7)
-[node name="DeskLamp" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0, 1.1, -3.7)
-light_color = Color(0.96, 0.86, 0.54, 1)
-light_energy = 0.6
+[node name="Bedside_Lamp_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.300, 0.950, -4.600)
+light_color = Color(0.98, 0.86, 0.62, 1)
+light_energy = 0.40
 shadow_enabled = false
-omni_range = 2.5
-
-; Red ON AIR sign glow over the S door (blender 0,0.12,2.18 → godot 0,2.18,-0.12)
-[node name="OnAirGlow" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 2.18, -0.12)
-light_color = Color(0.96, 0.24, 0.18, 1)
-light_energy = 0.55
-shadow_enabled = false
-omni_range = 2.5
+omni_range = 2.4
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -341,50 +331,32 @@ offset_bottom = 980.0
 script = ExtResource("14_dbgm")
 
 ; insert: 1776 kHz, Morse she has not used since 1989
+; (2026-10-08) over her chair onto the transceiver, the key, the log
 [node name="shot_insert_radio" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 1.15, -3.05)
-rotation = Vector3(0, 0, 0)
+position = Vector3(1.050, 1.300, -1.000)
+rotation = Vector3(-0.4201, -1.1526, 0.0)
 metadata/fov = 42.0
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
 ; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+; (2026-10-08) Linda at the radio, from the bed
 [node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.601, 1.612, -2.137)
-rotation = Vector3(-0.2618, 0.5236, 0.0)
+position = Vector3(1.000, 1.450, -3.000)
+rotation = Vector3(-0.1684, -3.0109, 0.0)
 metadata/fov = 45.0
 
 ; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
 ; the far side of the same spot, so two speakers alternate sides
+; (2026-10-08) Maya on the edge of the bed, from the desk
 [node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.752, 1.612, -4.479)
-rotation = Vector3(-0.2618, -2.6180, 0.0)
+position = Vector3(1.300, 1.450, -1.500)
+rotation = Vector3(-0.2690, -0.0345, 0.0)
 metadata/fov = 45.0
 
 ; (2026-10-07) out the radio room's window: the back yard, the dark
+; (2026-10-08) out the window and down: the back yard a storey below
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.300, 1.550, -1.900)
-rotation = Vector3(-0.0569, -3.1100, 0.0)
+position = Vector3(0.900, 1.550, -1.900)
+rotation = Vector3(-0.4058, -3.0319, 0.0)
 metadata/fov = 52.0
 
-; practicals authored by practical_author.py (2026-09-11):
-; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
-[node name="Fluor_0_Tube_Practical" type="OmniLight3D" parent="."]
-position = Vector3(0.000, 2.520, -1.500)
-light_color = Color(0.920, 0.920, 0.850, 1)
-light_energy = 1.30
-shadow_enabled = false
-omni_range = 4.03
-
-[node name="Fluor_1_Tube_Practical" type="OmniLight3D" parent="."]
-position = Vector3(0.000, 2.520, -3.500)
-light_color = Color(0.920, 0.920, 0.850, 1)
-light_energy = 1.30
-shadow_enabled = false
-omni_range = 4.03
-
-[node name="Lamp_Column_Practical" type="OmniLight3D" parent="."]
-position = Vector3(-1.000, 0.960, -4.680)
-light_color = Color(0.950, 0.780, 0.500, 1)
-light_energy = 1.30
-shadow_enabled = false
-omni_range = 2.00

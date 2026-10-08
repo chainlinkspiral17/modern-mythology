@@ -3705,6 +3705,39 @@ mandala tapestry in lavender and teal on its rod, fringe loose, clear of
 the corkboard. Deck must REBUILD every poster room (list_stale_builds
 finds them: decor.py changed).
 
+**2026-10-08 · CONTACT SHEET, round two of fixes.** From the sheet:
+- **caldwell_radio_room_night was the WRONG ROOM.** Ch5: "the upstairs
+  window is lit ... at her shortwave radio ... Morse code ... the cadence
+  her husband Thomas had taught her"; Maya "sits on the edge of the bed",
+  "helps her into bed". The builder had made a broadcast STATION BOOTH
+  (mixing board, boom mic, rack, ON AIR sign, fluorescent tubes) and the
+  window pass gave it a ground-floor yard. Rebuilt as Linda Caldwell's
+  bedroom: the radio desk on the east wall by the south window (the
+  transceiver and its amber dial, the straight key, headphones, the log
+  open, QSL cards, Thomas's photo, the coax out the sash), the bed's foot
+  toward it, nightstand and lamp, dresser and mirror, the hall door
+  closed, the yard a storey down. Seven studio lights out; desk-lamp,
+  radio-dial and bedside practicals in; preset and four markers re-aimed.
+- **caldwell_porch_night was a room** — walled to the ceiling on three
+  sides, the railing inside its south wall. Now open: the house wall and
+  the roof on posts and beams, railings south (split at the screen door,
+  the frame a ring, the screen see-through), west and east; the carriage
+  lamp on a post (its practical moved), the conduit down the corner post,
+  a night sky.
+- **caldwell_kitchen_night on the kit** in Linda's palette (sage, cream
+  laminate, chrome, pink tile): the sink under the window with its sill
+  and her radio on it ("The radio, on the windowsill, stays off"), a
+  percolator on the back burner, the floating water glass on the counter.
+- **centro_dock** looked at sky only: tilted 12 degrees down — the dock
+  edge, bumpers and the apron's lanes in the foreground. (Its cone trees
+  are draft-1 crude: blobs next pass.)
+- **`decor.make_floor_plant`** was ONE plant in 37 rooms (disc leaves
+  floating off a pencil stem) in the same south-west corner: now snake
+  plant / fern / ficus / monstera by `kind=` or the prefix's hash, soil
+  to leaf connected (0 floats, 0 clips across the 37).
+Deck must REBUILD the Caldwell porch, kitchen and radio room, and every
+plant room (list_stale_builds: decor.py changed).
+
 NEXT (queued): Bianca's kitchen is the Miller kitchen again —
 `bianca_kitchen_morning` (ch 22 / 23) and `miller_kitchen` are one room
 on Meadowlark Circle (the cul-de-sac through the window, the green robe

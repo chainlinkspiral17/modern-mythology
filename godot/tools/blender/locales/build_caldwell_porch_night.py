@@ -28,6 +28,7 @@ from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster, m
 from _props.safety import make_smoke_detector, make_hvac_vent, make_fluorescent_tube_fixture
 
 ROOM_W = 6.0; ROOM_D = 4.0; CEIL = 2.8
+POST_XS = (-2.90, -1.725, -0.55, 0.55, 1.725, 2.90)   # the south posts: corners, mid, the door
 PAL_WALL = {"wall":(0.62,0.46,0.32,1.0),"baseboard":(0.32,0.22,0.14,1.0)}
 COL_FLOOR = (0.42,0.30,0.20,1.0); COL_SEAM = (0.22,0.14,0.10,1.0); COL_WOOD = (0.42,0.30,0.18,1.0)
 COL_ACCENT = (0.96,0.62,0.32,1.0)
@@ -35,20 +36,51 @@ COL_ACCENT = (0.96,0.62,0.32,1.0)
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
                palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
-    for nm, x, bb in [("Wall_W", -ROOM_W/2.0, +1), ("Wall_E", +ROOM_W/2.0, -1)]:
-        make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=bb)
+    # A PORCH, NOT A ROOM (2026-10-08): it was walled on three sides to the
+    # ceiling — on the contact sheet an orange box with a fan in it, the
+    # railing standing inside its south wall. Now the house wall (N) and
+    # the roof on posts and header beams, open west, east and south, the
+    # night past the railings.
     make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
-    make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
-    make_wall("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
-    make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4, with_grid=False)
+    for pi_, px in enumerate(POST_XS):
+        make_box(f"Porch_Post_{pi_}", (px, 0.10, (CEIL - 0.20) / 2.0), (0.12, 0.12, CEIL - 0.20), COL_WOOD)
+    for e in (-1, 1):
+        make_box(f"Porch_Post_N_{e:+d}", (e * (ROOM_W/2.0 - 0.10), ROOM_D - 0.16, (CEIL - 0.20) / 2.0), (0.12, 0.12, CEIL - 0.20), COL_WOOD)
+        make_box(f"Porch_Beam_{'W' if e < 0 else 'E'}", (e * (ROOM_W/2.0 - 0.10), (0.04 + ROOM_D - 0.10) / 2.0, CEIL - 0.10),
+                 (0.14, ROOM_D - 0.14, 0.20), COL_WOOD)
+    make_box("Porch_Beam_S", (0.0, 0.10, CEIL - 0.10), (ROOM_W - 0.06, 0.14, 0.20), COL_WOOD)
+    make_box("Porch_Fascia", (0.0, -0.02, CEIL + 0.02), (ROOM_W + 0.40, 0.04, 0.26), (0.90, 0.88, 0.82, 1.0))
+
+BAL = [(0.022, 0.0), (0.022, 0.10), (0.032, 0.16), (0.02, 0.24), (0.026, 0.42), (0.02, 0.60), (0.03, 0.70), (0.022, 0.78), (0.022, 0.86)]
+
+
+def _rail_run(tag, a, b, fixed, axis):
+    """A railing between two posts: top and bottom rails, turned balusters."""
+    L, mid = b - a, (a + b) / 2.0
+    if axis == 'X':
+        make_chamfer_box(f"{tag}_Top", (mid, fixed, 1.00), (L, 0.08, 0.05), COL_WOOD, chamfer=0.01)
+        make_box(f"{tag}_Bottom", (mid, fixed, 0.10), (L, 0.05, 0.04), COL_WOOD)
+    else:
+        make_chamfer_box(f"{tag}_Top", (fixed, mid, 1.00), (0.08, L, 0.05), COL_WOOD, chamfer=0.01)
+        make_box(f"{tag}_Bottom", (fixed, mid, 0.10), (0.05, L, 0.04), COL_WOOD)
+    n = max(1, int(L / 0.30))
+    for vi in range(n):
+        t = a + (vi + 0.5) * L / n
+        make_lathe(f"{tag}_Bal_{vi}", (t, fixed, 0.12) if axis == 'X' else (fixed, t, 0.12), BAL, COL_WOOD, segments=8)
+
 
 def build_railing():
-    make_chamfer_box("Rail_Top", (0.0, 0.10, 1.00), (ROOM_W-1.0, 0.08, 0.05), COL_WOOD, chamfer=0.01)
-    make_box("Rail_Bottom", (0.0, 0.10, 0.10), (ROOM_W-1.0, 0.05, 0.04), COL_WOOD)
-    for vi in range(10):
-        vx = -(ROOM_W-1.0)/2.0+vi*0.6
-        make_lathe(f"Rail_Bal_{vi}", (vx, 0.10, 0.12), [(0.022, 0.0), (0.022, 0.10), (0.032, 0.16), (0.02, 0.24), (0.026, 0.42), (0.02, 0.60), (0.03, 0.70), (0.022, 0.78), (0.022, 0.86)], COL_WOOD, segments=8)
+    # the south run split at the screen door, post to post; the open
+    # west and east sides railed post to house
+    xs = POST_XS
+    for k in range(len(xs) - 1):
+        a, b = xs[k] + 0.06, xs[k + 1] - 0.06
+        if a < 0.0 < b:          # the door's opening
+            continue
+        _rail_run(f"Rail_S_{k}", a, b, 0.10, 'X')
+    for e in (-1, 1):
+        _rail_run(f"Rail_{'W' if e < 0 else 'E'}", 0.16, ROOM_D - 0.22, e * (ROOM_W/2.0 - 0.10), 'Y')
 
 def _make_rocker(prefix, cx, cy):
     """Compound rocking chair — seat faces south (toward the railing),
@@ -74,19 +106,23 @@ def build_chairs():
         _make_rocker(f"Rocker_{ci}", cx, ROOM_D/2.0)
 
 def build_door():
-    make_box("ScreenDoor_Frame", (0.0, 0.0, 1.05), (1.00, 0.04, 2.10), COL_WOOD)
-    make_box("ScreenDoor_Screen", (0.0, 0.03, 1.05), (0.80, 0.01, 1.90), (0.28,0.30,0.26,1.0))
+    # the frame as a ring between the door posts, the screen see-through
+    from _props.structure import make_frame_ring
+    make_frame_ring("ScreenDoor_Frame", (0.0, 0.10, 1.05), (0.98, 0.06, 2.10), COL_WOOD, bar=0.10)
+    make_box("ScreenDoor_Screen", (0.0, 0.10, 1.05), (0.78, 0.01, 1.90), (0.28, 0.30, 0.26, 0.35))
+    make_box("ScreenDoor_KickRail", (0.0, 0.09, 0.40), (0.78, 0.03, 0.08), COL_WOOD)
 
 def build_porchlamp():
+    LX = -1.725   # on the mid post (2026-10-08: it hung on the south wall that came out)
     # Wall-mounted carriage lamp: bracket, glass housing, warm bulb.
-    make_box("PorchLamp_Bracket", (-1.5, 0.16, CEIL-0.66), (0.05, 0.20, 0.05), P.METAL_BLACK)
-    make_tube("PorchLamp_Housing", [(-1.5-0.09, 0.30-0.09, CEIL-0.82), (-1.5-0.09, 0.30-0.09, CEIL-0.50)], 0.006, P.METAL_BLACK, segments=4)
+    make_box("PorchLamp_Bracket", (LX, 0.21, CEIL-0.66), (0.05, 0.20, 0.05), P.METAL_BLACK)
+    make_tube("PorchLamp_Housing", [(LX-0.09, 0.30-0.09, CEIL-0.82), (LX-0.09, 0.30-0.09, CEIL-0.50)], 0.006, P.METAL_BLACK, segments=4)
     for ci2, (ux, uy) in enumerate(((1, -1), (-1, 1), (1, 1))):
-        make_tube(f"PorchLamp_Housing_{ci2}", [(-1.5+ux*0.09, 0.30+uy*0.09, CEIL-0.82), (-1.5+ux*0.09, 0.30+uy*0.09, CEIL-0.50)], 0.006, P.METAL_BLACK, segments=4)
-    make_lathe("PorchLamp_Cap", (-1.5, 0.30, CEIL-0.50), [(0.12, 0.0), (0.06, 0.06), (0.02, 0.10), (0.0, 0.10)], P.METAL_BLACK, segments=8)
-    make_lathe("PorchLamp_Foot", (-1.5, 0.30, CEIL-0.84), [(0.0, 0.0), (0.10, 0.0), (0.10, 0.02), (0.0, 0.02)], P.METAL_BLACK, segments=8)
-    make_box("PorchLamp_Glass", (-1.5, 0.30, CEIL-0.66), (0.14, 0.14, 0.30), P.GLASS_WARM)
-    make_lathe("PorchLamp_Bulb", (-1.5, 0.30, CEIL-0.76), [(0.0, 0.0), (0.025, 0.01), (0.03, 0.05), (0.018, 0.09), (0.0, 0.10)], COL_ACCENT, segments=8)
+        make_tube(f"PorchLamp_Housing_{ci2}", [(LX+ux*0.09, 0.30+uy*0.09, CEIL-0.82), (LX+ux*0.09, 0.30+uy*0.09, CEIL-0.50)], 0.006, P.METAL_BLACK, segments=4)
+    make_lathe("PorchLamp_Cap", (LX, 0.30, CEIL-0.50), [(0.12, 0.0), (0.06, 0.06), (0.02, 0.10), (0.0, 0.10)], P.METAL_BLACK, segments=8)
+    make_lathe("PorchLamp_Foot", (LX, 0.30, CEIL-0.84), [(0.0, 0.0), (0.10, 0.0), (0.10, 0.02), (0.0, 0.02)], P.METAL_BLACK, segments=8)
+    make_box("PorchLamp_Glass", (LX, 0.30, CEIL-0.66), (0.14, 0.14, 0.30), P.GLASS_WARM)
+    make_lathe("PorchLamp_Bulb", (LX, 0.30, CEIL-0.76), [(0.0, 0.0), (0.025, 0.01), (0.03, 0.05), (0.018, 0.09), (0.0, 0.10)], COL_ACCENT, segments=8)
 
 def build_dressing():
     # Side table between the rockers, with a mug and a folded paper.
@@ -222,7 +258,8 @@ def build_draft4_2026_09():
     make_scuff_band("Wear_Scuff_Threshold", (0.0, 0.29), 0.80, axis='X', height=0.03, band_z=0.02, tint=(0.26, 0.19, 0.13, 1.0))
     make_box("Wear_Rail_Hands", (-0.9, 0.10, 1.027), (0.60, 0.06, 0.004), (0.52, 0.40, 0.28, 1.0))
     make_light_switch("Switch_1", (0.75, ROOM_D), axis='X', face_sign=-1, z=1.20, aged=True)
-    make_tube("Conduit_1", [(-ROOM_W/2.0 + 0.10, 0.20, 0.30), (-ROOM_W/2.0 + 0.10, 0.20, CEIL - 0.05), (-1.6, 0.20, CEIL - 0.05)], 0.01, (0.36, 0.36, 0.38, 1.0), segments=5)
+    # (2026-10-08) up the corner post's north face, along the south beam to the lamp
+    make_tube("Conduit_1", [(-ROOM_W/2.0 + 0.10, 0.17, 0.30), (-ROOM_W/2.0 + 0.10, 0.17, CEIL - 0.24), (-1.725, 0.17, CEIL - 0.24)], 0.01, (0.36, 0.36, 0.38, 1.0), segments=5)
     make_cyl("Hose_Bib", (2.60, ROOM_D - 0.10, 0.45), 0.02, 0.12, (0.62, 0.60, 0.56, 1.0), axis='Y', segments=6)
     # D5
     for hi in range(9):
