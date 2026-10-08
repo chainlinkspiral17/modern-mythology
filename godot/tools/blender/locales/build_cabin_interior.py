@@ -94,10 +94,18 @@ def _sitka(prefix, x, y, r, h, trunk, crown):
     """A Sitka spruce on the yard: a tapered trunk under a tiered,
     drooping crown that starts a quarter of the way up."""
     make_taper_cyl(f"{prefix}_Trunk", (x, y, YARD_Z + h / 2.0), r, r * 0.35, h, trunk, segments=8)
+    # (draft 5, 2026-10-08) four drooping TIERS in two greens, each skirt
+    # flaring out under the one above — one cone lit khaki in the sun
     R, H = min(2.0, r * 6.5), h * 0.80
-    make_lathe(f"{prefix}_Crown", (x, y, YARD_Z + h * 0.25),
-               [(0.0, 0.0), (R, 0.10 * H), (R * 0.70, 0.30 * H), (R * 0.82, 0.32 * H), (R * 0.50, 0.55 * H),
-                (R * 0.62, 0.57 * H), (R * 0.30, 0.80 * H), (0.0, H)], crown, segments=10)
+    z0 = YARD_Z + h * 0.25
+    dark = (crown[0] * 0.70, crown[1] * 0.74, crown[2] * 0.72, 1.0)
+    for ti, (zb, zt, rb) in enumerate(((0.00, 0.40, 1.00), (0.22, 0.62, 0.80), (0.44, 0.82, 0.58), (0.64, 1.00, 0.36))):
+        rr, t = R * rb, (zt - zb) * H
+        # a SKIRT: the underside rises from the drooping rim to the trunk
+        # (the first try flared from a ring and read as stacked bells)
+        make_lathe(f"{prefix}_Crown_T{ti}", (x, y, z0 + zb * H),
+                   [(0.0, 0.16 * t), (rr, 0.0), (rr * 0.88, 0.08 * t), (rr * 0.40, 0.70 * t), (0.0, t)],
+                   crown if ti % 2 == 0 else dark, segments=10)
 
 
 from _props.structure import make_wall_with_openings   # (2026-10-07)
@@ -632,10 +640,10 @@ def build_through_windows_2026_08():
     # out, where the turnaround and the porch went; tapered trunks under
     # tiered crowns now, the canopy box gone)
     for ti, (tx3, ty3, tr3, th3) in enumerate((
-            (-3.6, -10.5, 0.30, 16.0), (-0.4, -12.0, 0.38, 19.0),
+            (-3.9, -10.5, 0.30, 16.0), (2.2, -12.6, 0.38, 19.0),
             (2.8, -10.8, 0.28, 15.0), (5.6, -12.6, 0.34, 18.0))):
         _sitka("Thru_S_Sitka_%d" % ti, tx3, ty3, tr3, th3, trunk, canopy)
-    for fi3, (fx3, fl3, fh3) in enumerate(((-4.2, 3.4, 0.55), (-0.6, 3.0, 0.70), (2.8, 3.6, 0.50), (6.0, 2.6, 0.62))):
+    for fi3, (fx3, fl3, fh3) in enumerate(((-4.6, 3.0, 0.55), (-7.6, 2.6, 0.70), (3.6, 3.0, 0.50), (6.8, 2.6, 0.62))):
         make_chamfer_box("Thru_S_FernLine_%d" % fi3, (fx3, -9.4 - 0.2 * fi3, YARD_Z + fh3 / 2.0),
                          (fl3, 1.3, fh3), fern, chamfer=0.12)
     # NORTH · woodpile lean-to, a pale trunk, the creek strip — on the
@@ -752,6 +760,14 @@ def build_hero_props_2026_09():
     from _props.vehicles import make_car
     make_cyl("Gravel_Turnaround", (0.2, -5.9, YARD_Z + 0.006), 3.6, 0.012, GRAVEL, segments=36)   # round, and a tone off the dirt (a pale slab on the 10-08 sheet)
     make_cyl("Gravel_Turnaround_Shop", (-4.4, -6.0, YARD_Z + 0.004), 2.4, 0.008, GRAVEL, segments=28)   # where the truck pulls in, in front of the shop
+    # the road out (draft 5): the gravel track leaves the turnaround to the
+    # south and goes into the trees through a cut in the bank — the way
+    # the wagon came up "at nine fifty-two"; two darker wheel tracks on it
+    road = [(-1.3, -8.9), (1.5, -8.9), (-1.0, -18.0), (-4.4, -18.0)]
+    _prism_ccw_z("Gravel_Road", road, YARD_Z + 0.004, 0.008, GRAVEL)
+    for wi, off in enumerate((0.75, 2.05)):
+        trk = [(-1.3 + off - 0.16, -9.0), (-1.3 + off + 0.16, -9.0), (-4.4 + off * 1.2 + 0.16, -17.9), (-4.4 + off * 1.2 - 0.16, -17.9)]
+        _prism_ccw_z(f"Gravel_Road_Track_{wi}", trk, YARD_Z + 0.0085, 0.001, (0.29, 0.27, 0.22, 1.0))
     make_car("Finn_Truck", -5.4, -6.2, 4.8, (0.44, 0.48, 0.42, 1.0), pickup=True, along="Y", z0=YARD_Z)
     make_car("Station_Wagon", 3.7, -5.9, 5.0, (0.48, 0.36, 0.26, 1.0), along="Y", z0=YARD_Z)
     # the wagon's roof rack, on the roofline (z0 + 1.46)
@@ -790,6 +806,11 @@ def build_door_infill_front_door_2026_09():
     "doorways ... misaligned"): close the gap to the door and its frame."""
     make_wall("Wall_Fill_Front_Door_W", (-0.738, 0.000, 0), length=0.525, height=2.500, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
     make_wall("Wall_Fill_Front_Door_E", (0.738, 0.000, 0), length=0.525, height=2.500, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+
+def _prism_ccw_z(name, poly, z, h, col):
+    """A flat footprint (any quad on the ground) at centre height z, h thick."""
+    _prism_ccw(name, (0.0, 0.0, z), poly, h, col, axis="Z")
+
 
 def _prism_ccw(name, center, poly, length, col, axis="X"):
     """make_prism wants the polygon counter-clockwise; take it either way."""
@@ -917,7 +938,10 @@ def build_exterior_2026_10():
     berm("Forest_Berm_E", 11.5, -18.5, 6, 40, lambda x, y: (x - 11.5) / 3.5)
     berm("Forest_Berm_W", -16.0, -18.5, 6, 40, lambda x, y: (-11.5 - x) / 3.5)
     berm("Forest_Berm_N", -11.7, 12.5, 27, 5, lambda x, y: (y - 12.5) / 2.5)
-    berm("Forest_Berm_S", -11.7, -18.5, 27, 6, lambda x, y: (-14.0 - y) / 3.5)
+    # the S berm parts where the road leaves the clearing (draft 5): a cut
+    # through the bank, x -4.5 .. 0.9
+    berm("Forest_Berm_S", -11.7, -18.5, 9, 6, lambda x, y: (-14.0 - y) / 3.5)
+    berm("Forest_Berm_SE", 0.9, -18.5, 13, 6, lambda x, y: (-14.0 - y) / 3.5)
     # the berms' foot: sword fern and salal where the yard meets the slope
     # (draft 4: the clearing's edge was a clean line where dirt met duff)
     from _props.trees import make_fern
@@ -929,7 +953,9 @@ def build_exterior_2026_10():
         foot += [("E", 10.95 + 0.25 * ((i * 7) % 3), y), ("W", -10.95 - 0.25 * ((i * 5) % 3), y)]
     for i in range(14):
         x = -10.2 + i * 1.6
-        foot += [("N", x, 11.95 + 0.2 * ((i * 3) % 3)), ("S", x, -13.45 - 0.2 * ((i * 7) % 3))]
+        foot += [("N", x, 11.95 + 0.2 * ((i * 3) % 3))]
+        if not -3.8 < x < 0.9:      # the road
+            foot += [("S", x, -13.45 - 0.2 * ((i * 7) % 3))]
     k = 0
     for side, fx, fy in foot:
         if any((fx - tx) ** 2 + (fy - ty) ** 2 < 1.4 ** 2 for tx, ty in trunks) or (side == "N" and abs(fy - 11.5) < 0.7 and -5.0 < fx < 5.0):
@@ -966,7 +992,7 @@ def build_shop_wing_2026_10():
     YS, YN = 0.40, 6.10        # outer south face … outer north face
     H = 2.70
     make_wall_with_openings("Shop_Wall_S", ((X0 + X1) / 2.0, YS + 0.10, 0), length=X1 - X0, height=H, axis='X',
-                            palette=PAL_WALL, baseboard_face_sign=+1, openings=[(-5.000, 1.450, 1.000, 0.900)])
+                            palette=PAL_WALL, baseboard_face_sign=+1, openings=[(-5.000, 1.450, 1.000, 0.900), (-6.300, 1.000, 0.900, 2.000)])
     make_wall("Shop_Wall_N", ((X0 + X1) / 2.0, YN - 0.10, 0), length=X1 - X0, height=H, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
     make_wall("Shop_Wall_W", (X0 + 0.10, (YS + YN) / 2.0, 0), length=YN - YS - 0.40, height=H, axis='Y', palette=PAL_WALL, baseboard_face_sign=+1)
     make_box("Shop_Floor", ((X0 + 0.2 + X1) / 2.0, (YS + YN) / 2.0, -0.02), (X1 - X0 - 0.2, YN - YS - 0.4, 0.04), COL_FLOOR)
@@ -993,12 +1019,30 @@ def build_shop_wing_2026_10():
     make_chamfer_box("Shop_Bench_Cedar_Blank", (-5.2, YS + 0.60, 0.96), (0.30, 0.14, 0.12), (0.62, 0.43, 0.26, 1.0), chamfer=0.01)
     for gi in range(4):
         make_box(f"Shop_Bench_Gouge_{gi}", (-4.55 + gi * 0.06, YS + 0.66, 0.9075), (0.025, 0.20, 0.015), COL_IRON)
+    # the shop's door (draft 5): board-and-batten in the S wall, a stone
+    # step down to the yard, and stepping stones round to the porch steps —
+    # the way Olaf walked from the bench to the house
+    door_c, bat_c = (0.30, 0.21, 0.14, 1.0), (0.38, 0.27, 0.18, 1.0)
+    make_box("Shop_Door", (-6.30, YS + 0.13, 1.00), (0.88, 0.05, 2.00), door_c)
+    for ri, rz in enumerate((0.30, 1.70)):
+        make_box(f"Shop_Door_Batten_{ri}", (-6.30, YS + 0.093, rz), (0.80, 0.024, 0.13), bat_c)
+    make_box("Shop_Door_Head", (-6.30, YS + 0.10, 2.025), (0.90, 0.20, 0.05), wall_c)
+    make_cyl("Shop_Door_Latch", (-5.98, YS + 0.075, 1.00), 0.02, 0.04, COL_IRON, axis='Y', segments=8)
+    make_box("Shop_Door_Step", (-6.30, YS - 0.22, (YARD_Z - 0.20) / 2.0), (1.00, 0.44, -0.20 - YARD_Z), stone)
+    for si, (sx2, sy2) in enumerate(((-6.0, -0.55), (-5.4, -1.05), (-4.7, -1.45), (-3.95, -1.80), (-3.2, -2.15),
+                                     (-2.45, -2.40), (-1.65, -2.55), (-0.95, -2.55))):
+        make_cyl(f"Shop_Path_Stepping_Stone_{si}", (sx2, sy2, YARD_Z + 0.015), 0.21 + 0.03 * (si % 2), 0.03, stone, segments=9)
     # siding on the wing's two outside faces
     for k in range(1, 12):
         z = k * 0.225
         if z > H - 0.20:
             break
-        for ri, (a, b) in enumerate(((X0, -5.52), (-4.48, X1)) if 0.98 < z < 1.92 else ((X0, X1),)):
+        holes = ([(-5.52, -4.48)] if 0.98 < z < 1.92 else []) + ([(-6.77, -5.83)] if z < 2.02 else [])
+        cuts, cur = [], X0
+        for a2, b2 in sorted(holes):
+            cuts.append((cur, a2)); cur = b2
+        cuts.append((cur, X1))
+        for ri, (a, b) in enumerate(cuts):
             make_box(f"Shop_Siding_S_{k}_{ri}", ((a + b) / 2.0, YS - 0.003, z), (b - a, 0.006, 0.012), seam)
         make_box(f"Shop_Siding_W_{k}", (X0 - 0.003, (YS + YN) / 2.0, z), (0.006, YN - YS, 0.012), seam)
 

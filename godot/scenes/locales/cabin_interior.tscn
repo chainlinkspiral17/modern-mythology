@@ -582,9 +582,9 @@ rotation = Vector3(-0.1334, 2.2058, 0)
 metadata/fov = 42.0
 
 [node name="shot_insert_door__cabin_porch" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.350, 1.450, 1.600)
-rotation = Vector3(-0.2181, 0.2235, 0)
-metadata/fov = 45.0
+position = Vector3(0.500, 1.500, 2.300)
+rotation = Vector3(-0.1936, 0.2196, 0)
+metadata/fov = 55.0
 
 [node name="shot_closeup_person__cabin_porch" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.900, 1.600, 0.500)
@@ -622,3 +622,27 @@ light_color = Color(0.62, 0.70, 0.82, 1)
 light_energy = 0.35
 shadow_enabled = false
 metadata/daylight = true
+
+; ── the windows' square of yellow (draft 5) · cabin_porch only ──
+; "The light from the cabin's south window threw a square of yellow onto
+; the porch boards": a warm spot just inside each south window, aimed
+; down through the glass onto the deck. Not daylight-tagged: the lamps
+; inside burn all day; at night they are what lights the porch.
+[node name="South_Window_W_Spill__cabin_porch" type="SpotLight3D" parent="."]
+position = Vector3(-2.000, 1.750, -0.300)
+rotation = Vector3(-0.8961, -3.1416, 0)
+light_color = Color(1.0, 0.76, 0.42, 1)
+light_energy = 2.6
+shadow_enabled = false
+spot_range = 4.0
+spot_angle = 30.0
+
+[node name="South_Window_E_Spill__cabin_porch" type="SpotLight3D" parent="."]
+position = Vector3(2.000, 1.750, -0.300)
+rotation = Vector3(-0.8961, -3.1416, 0)
+light_color = Color(1.0, 0.76, 0.42, 1)
+light_energy = 2.6
+shadow_enabled = false
+spot_range = 4.0
+spot_angle = 30.0
+

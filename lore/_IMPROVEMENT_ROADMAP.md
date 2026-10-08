@@ -3900,7 +3900,30 @@ DRAFT 4 (same day):
 - Sword fern and salal line the berms' foot.
 - The front door is board-and-batten. As a flat slab the paint pass
   blotched it into a giant disc.
-Deck must REBUILD cabin_interior. PORCH DRAFT 5:
+DRAFT 5 (same day):
+- Night window light: two warm spots just inside the south windows,
+  aimed down through the glass onto the boards. They are porch-only
+  (`__cabin_porch`) and NOT daylight-tagged, since the lamps burn all day.
+- The road out: a gravel track with two wheel tracks leaves the
+  turnaround south into the trees, through a cut in the bank. The south
+  berm is split around it, and a tree and the fern line moved off its
+  line.
+- Olaf's shop has a board-and-batten door in its south wall, a stone step
+  and eight stepping stones round to the porch steps.
+- The Sitka crowns are four drooping tiers in two greens. A first try
+  flared each tier from a ring and read as stacked bells; a skirt's
+  underside RISES to the trunk.
+- `insert door` is reframed wider (fov 55): the door, the bench and the
+  boots.
+PORCH DRAFT 6:
+- The night spill is soft on the boards. Give it a crisper square:
+  spot_angle_attenuation, or a lit decal on the deck.
+- Moss on the roofs.
+- Siding as boards with a shadow line.
+- Window boxes or a drying line on the porch (lived-in).
+- The road's far end into the band (a few trunks in front of it).
+- Walk the twelve chapters' framing on the Deck.
+Earlier list, superseded:
 - the gravel road out of the clearing;
 - tiered two-tone crowns (the lit cones still read khaki);
 - the window's square of yellow on the boards at night;
