@@ -773,6 +773,10 @@
      "type": "insert"
     },
     {
+     "name": "shot_insert_office",
+     "type": "insert"
+    },
+    {
      "name": "shot_insert_pallet",
      "type": "insert"
     },
@@ -7339,5 +7343,5 @@
   "tired",
   "nervous"
  ],
- "frames": 1651
+ "frames": 1652
 }

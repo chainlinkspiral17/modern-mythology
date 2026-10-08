@@ -158,6 +158,14 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-10-07 · solid stair steps are not wall slabs
+
+- placement_audit's HALF_SLAB test flagged the Centro office's ship
+  stair: 17 solid steps, each 18 cm thick and up to 3 m tall, one end
+  on no wall. A step is a legitimate tall thin solid — `step|stair|
+  tread|riser` joined NOT_SLAB. When a new shape trips a slab test,
+  name the class in the exemption regex; don't rename the parts.
+
 ### 2026-10-07 · a gate that does not call install_stubs() audits nothing shared
 
 - window_backing_audit's first version ran the builders against REAL

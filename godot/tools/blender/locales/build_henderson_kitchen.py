@@ -32,9 +32,12 @@ BRASS = (0.70, 0.58, 0.30, 1.0); ALMOND = (0.90, 0.86, 0.76, 1.0)
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
                palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
-    for nm, x, bb in [("Wall_W", -ROOM_W/2.0, +1), ("Wall_E", +ROOM_W/2.0, -1)]:
-        make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y',
-                  palette=PAL_WALL, baseboard_face_sign=bb)
+    make_wall("Wall_W", (-ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y',
+              palette=PAL_WALL, baseboard_face_sign=+1)
+    # the basement door's opening (2026-10-07: the wall was solid behind a
+    # 2 cm dark card — the ch7 hinge opened onto plaster)
+    make_wall_with_openings("Wall_E", (+ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y',
+              palette=PAL_WALL, baseboard_face_sign=-1, openings=[(1.6, 1.025, 0.85, 2.05)])
     # the window over the sink (2026-10-07): "He stands at the kitchen
     # sink for a long minute ... Through the open window, the cicadas
     # are loud" (ch14) — the N wall was solid and the sink faced plaster
@@ -69,6 +72,14 @@ def build_counter():
         K.upper_run(nm, a, b, Y_BACK, z0=1.46, z1=2.20, body=OAK, pull=BRASS, rail=OAK_DK)
     K.backsplash("Splash", -ROOM_W/2.0 + 0.10, ROOM_W/2.0 - 0.10, Y_BACK, TOP_Z, 1.11, tile=ALMOND,
                  grout=(0.76, 0.72, 0.62, 1.0))
+    # WEAR (2026-10-07): the formica worn pale at the sink's edge, the
+    # runner in front of it, the floor's path sink - stove - table
+    make_box("Wear_Formica_Sink", (SINK_X, Y_BACK - 0.60, TOP_Z + 0.001), (0.90, 0.05, 0.002), (0.88, 0.80, 0.58, 1.0))
+    make_box("Sink_Runner", (SINK_X, Y_BACK - 0.98, 0.006), (1.20, 0.60, 0.012), (0.42, 0.26, 0.20, 1.0))
+    make_box("Sink_Runner_Band", (SINK_X, Y_BACK - 0.98, 0.0125), (1.10, 0.50, 0.002), (0.62, 0.44, 0.30, 1.0))
+    from _props.detail import make_traffic_wear
+    make_traffic_wear("Wear_Path_Sink", [(SINK_X, Y_BACK - 1.35), (0.0, Y_BACK - 1.70), (RANGE_X, Y_BACK - 0.95)], width=0.45,
+                      tint=(0.68, 0.53, 0.35, 1.0))
     # the open window over the sink: sash up, the screen in
     make_window("Sink_Window", (SINK_X, Y_BACK, 1.62), width=1.20, height=0.92, room_dir=-1,
                 see_through=True, palette={"frame": (0.92, 0.90, 0.84, 1.0)})
@@ -136,11 +147,35 @@ def build_hero_props():
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
     make_window("Front_Window", (1.45, 0.10, 1.50), width=0.90, height=1.05, room_dir=+1, see_through=True)
     # The basement door, E wall, dark stair void behind
-    make_box("Basement_Doorframe", (ROOM_W/2.0-0.04, 1.6, 1.08), (0.10, 1.00, 2.16), wood)
-    make_chamfer_box("Basement_Door", (ROOM_W/2.0-0.07, 1.6, 1.05), (0.05, 0.85, 2.05), (0.42, 0.32, 0.22, 1.0))
-    # on the wall face (2026-09-24: inside the wall — the basement door's
-    # dark was never visible)
-    make_box("Basement_Void", (ROOM_W/2.0-0.11, 1.6, 1.00), (0.02, 0.80, 2.00), (0.06, 0.05, 0.05, 1.0))
+    # the frame as a ring (it was a solid board the size of the door) and
+    # the door CRACKED — 25 degrees into the kitchen, hinged at its north
+    # jamb — onto a real stair going down
+    from _props.structure import make_frame_ring
+    from _props.geometry import make_rot_box
+    import math
+    make_frame_ring("Basement_Doorframe", (ROOM_W/2.0-0.04, 1.6, 1.08), (0.10, 1.00, 2.16), wood, bar=0.075)
+    crack = math.radians(25.0)
+    hx, hy = ROOM_W/2.0 - 0.07, 1.6 + 0.425
+    make_rot_box("Basement_Door", (hx - math.sin(crack) * 0.425, hy - math.cos(crack) * 0.425, 1.05), (0.05, 0.85, 2.05),
+                 (0.42, 0.32, 0.22, 1.0), yaw=-crack)
+    make_cyl("Basement_Door_Knob", (hx - math.sin(crack) * 0.80 - 0.04, hy - math.cos(crack) * 0.80, 1.00), 0.03, 0.05,
+             (0.70, 0.58, 0.30, 1.0), axis='X', segments=8)
+    # THE STAIR DOWN: a landing, nine steps falling east into the dark,
+    # the well's walls and ceiling, a dark end wall where the light gives out
+    well = (0.30, 0.27, 0.24, 1.0); tread = (0.36, 0.28, 0.20, 1.0)
+    wx0, wy0, wy1 = ROOM_W/2.0 + 0.10, 1.12, 2.08
+    make_box("Basement_Landing", (wx0 + 0.25, 1.6, -0.03), (0.50, wy1 - wy0, 0.06), tread)
+    for i in range(9):
+        z = -0.19 * (i + 1)
+        make_box(f"Basement_Step_{i}", (wx0 + 0.50 + 0.25 * (i + 0.5), 1.6, z - 0.03), (0.25, wy1 - wy0, 0.06), tread)
+        make_box(f"Basement_Riser_{i}", (wx0 + 0.50 + 0.25 * i + 0.005, 1.6, z + 0.095), (0.01, wy1 - wy0, 0.19), well)
+    span = 0.50 + 0.25 * 9
+    for nm, y in (("S", wy0 - 0.05), ("N", wy1 + 0.05)):
+        make_box(f"Basement_Well_{nm}", (wx0 + span / 2.0, y, (CEIL - 1.9) / 2.0), (span, 0.10, CEIL + 1.9), well)
+    make_box("Basement_Well_Ceiling", (wx0 + span / 2.0, 1.6, 2.15), (span, wy1 - wy0, 0.10), well)
+    make_box("Basement_Well_End", (wx0 + span + 0.05, 1.6, (CEIL - 1.9) / 2.0), (0.10, wy1 - wy0 + 0.20, CEIL + 1.9), (0.06, 0.05, 0.05, 1.0))
+    make_box("Basement_Well_Floor", (wx0 + span - 0.20, 1.6, -1.90), (0.50, wy1 - wy0, 0.06), (0.10, 0.09, 0.08, 1.0))
+    make_tube("Basement_Handrail", [(wx0 + 0.45, wy1 - 0.06, 0.88), (wx0 + span - 0.10, wy1 - 0.06, 0.88 - 1.71)], 0.02, wood)
     # Stair mouth (up), S gap edge
     make_box("Stair_Newel", (0.92, 0.15, 0.60), (0.10, 0.10, 1.20), wood)
     for s in range(3):

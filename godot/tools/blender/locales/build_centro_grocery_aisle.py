@@ -49,7 +49,7 @@ if _BT not in sys.path:
 from _props import palette as P
 from _props.geometry import (clear_scene, make_box, make_chamfer_box, make_cyl, make_lathe,
                              make_tube, make_rot_box, make_blob, export_glb)
-from _props.structure import make_floor, make_wall, make_wall_with_openings, make_ceiling
+from _props.structure import make_floor, make_wall, make_wall_with_openings, make_ceiling, make_frame_ring
 from _props.store_fixtures import make_counter, make_register, make_credit_card_terminal
 from _props.shelving import make_endcap
 from _props.food_service import make_coffee_pots, make_donut_display
@@ -156,10 +156,18 @@ def build_front():
         make_box(f"Checkout_{k}_Candy_Rack", (cx - 0.47, CHECK_Y - 0.60, 0.55), (0.04, 1.10, 1.10), DARK)
         for sh in range(4):
             make_box(f"Checkout_{k}_Candy_Rack_Shelf_{sh}", (cx - 0.55, CHECK_Y - 0.60, 0.14 + sh * 0.27), (0.12, 1.10, 0.02), STEEL)
-            for c in range(6):
-                make_box(f"Checkout_{k}_Candy_Rack_Box_{sh}_{c}", (cx - 0.55, CHECK_Y - 1.08 + c * 0.19, 0.20 + sh * 0.27),
-                         (0.10, 0.16, 0.10), ((0.80, 0.18, 0.14, 1.0), (0.94, 0.74, 0.16, 1.0), (0.16, 0.30, 0.62, 1.0),
-                                              (0.24, 0.50, 0.26, 1.0))[(c + sh + k) % 4])
+            # the impulse stock by the merch grammar (2026-10-07: solid toy
+            # blocks) — gum tubes, jerky, nuts, faced to the lane (-X),
+            # authored along X and turned onto the rack's Y run
+            from _props import merch as M
+            px, py = cx - 0.55, CHECK_Y - 0.60
+            M._ROT, M._LEAN = (px, py), True
+            try:
+                for si, kind in enumerate((("tubes", "jerky"), ("jerky", "nuts"), ("tubes", "tubes"), ("nuts", "jerky"))[sh]):
+                    M.merch_section(f"Checkout_{k}_Candy_Rack_Stock_{sh}_{si}", kind, px - 0.55 + si * 0.55, py + 0.06, +1,
+                                    0.14 + sh * 0.27 + 0.01, k * 7 + sh * 3 + si, width=0.55)
+            finally:
+                M._ROT, M._LEAN = None, False
         _lane_light(f"Checkout_{k}_Lane_Light", cx + 0.40, CHECK_Y - 1.45, k + 1)   # at the lane's entry, off the counter
     # THE FIVE on lane 1's belt; DIEGO'S BACKPACK in the cubby behind lane 1
     cx = CHECK_XS[0]
@@ -169,10 +177,10 @@ def build_front():
     # the customer service desk, east wall front
     make_counter("Service_Desk", (13.30, 2.70, 0.0), length=3.20, depth=0.80, height=1.05,
                  palette={"formica": COL_ACCENT, "top": (0.24, 0.26, 0.28, 1.0), "kick": DARK})
-    make_box("Service_Desk_Sign", (13.30, 2.70, 3.30), (0.06, 2.40, 0.50), (0.94, 0.94, 0.90, 1.0))
+    make_box("Service_Desk_Sign", (13.30, 3.75, 3.30), (0.06, 2.40, 0.50), (0.94, 0.94, 0.90, 1.0))
     for e in (-1, 1):
-        make_cyl(f"Service_Desk_Sign_Wire_{e:+d}", (13.30, 2.70 + e * 1.0, (3.55 + CEIL) / 2.0), 0.006, CEIL - 3.55, STEEL, segments=4)
-    make_box("Service_Desk_Sign_Letters", (13.26, 2.70, 3.30), (0.01, 1.80, 0.22), COL_ACCENT)
+        make_cyl(f"Service_Desk_Sign_Wire_{e:+d}", (13.30, 3.75 + e * 1.0, (3.55 + CEIL) / 2.0), 0.006, CEIL - 3.55, STEEL, segments=4)
+    make_box("Service_Desk_Sign_Letters", (13.26, 3.75, 3.30), (0.01, 1.80, 0.22), COL_ACCENT)
     # the cart corral just inside the entrance, west
     for k in range(5):
         _cart(f"Cart_Corral_{k}", -3.40 + k * 0.20, 1.40)
@@ -281,6 +289,19 @@ def build_aisles():
                       plan=plans[k], seed=k * 5, axis='Y', base_col=DARK, metal=STEEL, tag_col=PAPER, lean=True)
         # the end cap on the south end, faced to the action alley
         make_endcap(f"EndCap_{k}", (gx, G_Y0 - 0.42, 0.0), palette={"header": COL_ACCENT})
+        # SHELF TALKERS (2026-10-07): the flags that stick out of the price
+        # strips into the lane, read face-on by someone walking it — SALE
+        # yellow, NEW red, Centro-value green — five a side, at eye level
+        talkers = (((0.98, 0.86, 0.22, 1.0), (0.82, 0.16, 0.14, 1.0)), ((0.86, 0.20, 0.16, 1.0), (0.98, 0.98, 0.96, 1.0)),
+                   ((0.96, 0.96, 0.92, 1.0), COL_ACCENT))
+        for s_ in (-1, 1):
+            for j in range(5):
+                ty = G_Y0 + 1.1 + j * 1.75 + (0.45 if s_ > 0 else 0.0)
+                lvl = G_LEVELS[2 + (j + k) % 2]
+                fx = gx + s_ * 0.356                       # the price strip's face
+                col, band = talkers[(j + k + (1 if s_ > 0 else 0)) % 3]
+                make_box(f"Talker_{k}_{s_:+d}_{j}", (fx + s_ * 0.06, ty, lvl - 0.0625), (0.12, 0.004, 0.075), col)
+                make_box(f"Talker_{k}_{s_:+d}_{j}_Band", (fx + s_ * 0.06, ty, lvl - 0.0125), (0.12, 0.004, 0.025), band)
     # a blade over every lane's mouth: the aisle number, a category strip
     for k, lx in enumerate(LANE_XS):
         n = 5 + k
@@ -332,6 +353,46 @@ def build_aisles():
     make_box("Wear_Lane_Seven", (AISLE_7_X, (G_Y0 + G_Y1) / 2.0, 0.0018), (0.70, G_Y1 - G_Y0, 0.002), (0.72, 0.71, 0.66, 1.0))
 
 
+def _meat_tray(tag, tx, ty, z0, kind, k):
+    """One steel tray (0.46 x 0.60) and its cut, a price tag on a pick at
+    the tray's front. z0 = the case bed's top."""
+    make_box(tag, (tx, ty, z0 + 0.01), (0.46, 0.60, 0.02), (0.74, 0.76, 0.78, 1.0))
+    top = z0 + 0.02
+    red, red_dk, fat = (0.70, 0.18, 0.16, 1.0), (0.56, 0.14, 0.12, 1.0), (0.94, 0.88, 0.80, 1.0)
+    if kind == "steaks":
+        for i in range(3):
+            y = ty - 0.18 + i * 0.18
+            make_chamfer_box(f"{tag}_Steak_{i}_Fat", (tx, y, top + 0.010), (0.30, 0.15, 0.020), fat, chamfer=0.008)
+            make_chamfer_box(f"{tag}_Steak_{i}", (tx - 0.01, y, top + 0.026), (0.27, 0.13, 0.012), red if i % 2 else red_dk, chamfer=0.005)
+    elif kind == "ground":
+        for i in range(2):
+            make_blob(f"{tag}_Ground_{i}", (tx, ty - 0.13 + i * 0.27, top + 0.03), 0.12, (0.78, 0.30, 0.30, 1.0),
+                      noise=0.30, seed=40 + k + i, squash=0.30)
+    elif kind == "chops":
+        for i in range(4):
+            y = ty - 0.21 + i * 0.14
+            make_chamfer_box(f"{tag}_Chop_{i}", (tx + 0.02, y, top + 0.012), (0.24, 0.11, 0.024), (0.86, 0.56, 0.52, 1.0), chamfer=0.006)
+            make_box(f"{tag}_Chop_{i}_Bone", (tx - 0.12, y, top + 0.014), (0.06, 0.03, 0.028), fat)
+    elif kind == "chicken":
+        for i in range(6):
+            make_blob(f"{tag}_Chicken_{i}", (tx - 0.10 + (i % 2) * 0.20, ty - 0.18 + (i // 2) * 0.18, top + 0.03), 0.07,
+                      (0.94, 0.80, 0.70, 1.0), noise=0.25, seed=60 + k + i, squash=0.50)
+    elif kind == "links":
+        for i in range(7):
+            y = ty - 0.24 + i * 0.08
+            for j in range(2):
+                make_cyl(f"{tag}_Link_{i}_{j}", (tx - 0.09 + j * 0.18, y, top + 0.024), 0.024, 0.16,
+                         (0.66, 0.36, 0.28, 1.0), axis='X', segments=8)
+    elif kind == "roast":
+        make_blob(f"{tag}_Roast", (tx, ty, top + 0.07), 0.14, red_dk, noise=0.18, seed=80 + k, squash=0.65)
+        for i in range(3):
+            make_box(f"{tag}_Roast_Twine_{i}", (tx - 0.08 + i * 0.08, ty, top + 0.07), (0.008, 0.26, 0.15), fat)
+    # the price tag on its pick, at the tray's front
+    make_cyl(f"{tag}_Tag_Pick", (tx + 0.15, ty - 0.27, top + 0.04), 0.003, 0.08, (0.92, 0.92, 0.90, 1.0), segments=4)
+    make_box(f"{tag}_Tag", (tx + 0.15, ty - 0.275, top + 0.085), (0.08, 0.004, 0.05), (0.98, 0.98, 0.96, 1.0))
+    make_box(f"{tag}_Tag_Price", (tx + 0.15, ty - 0.278, top + 0.08), (0.05, 0.002, 0.015), (0.80, 0.16, 0.14, 1.0))
+
+
 # ── the back: dairy, receiving, meat ──────────────────────────────
 def build_back():
     # the DAIRY case holds dairy (2026-10-07: it held beer six-packs and soda
@@ -371,9 +432,15 @@ def build_back():
     make_box("Meat_Case_Glass_Rail", ((mx0 + mx1) / 2.0, my - 0.53, 1.635), (mx1 - mx0 - 0.1, 0.04, 0.03), STEEL)
     for gi, (gx, gw) in enumerate(((-2.5, 0.03), (-2.4, 0.012), (1.0, 0.02), (2.9, 0.03))):
         make_box(f"Meat_Case_Glint_{gi}", ((mx0 + mx1) / 2.0 + gx, my - 0.53, 1.36), (gw, 0.004, 0.52), (0.86, 0.90, 0.92, 1.0))
+    # the case's white bed, and on it twelve steel trays of CUTS (2026-10-07:
+    # they were twelve flat red slabs) — a tray reads by what is on it
+    make_box("Meat_Case_Bed", ((mx0 + mx1) / 2.0, my, 1.105), (mx1 - mx0 - 0.08, 0.86, 0.01), (0.94, 0.94, 0.92, 1.0))
+    kinds = ("steaks", "ground", "chops", "chicken", "links", "roast")
     for mi in range(12):
-        make_box(f"Meat_Tray_{mi}", (mx0 + 0.40 + mi * 0.53, my, 1.13), (0.46, 0.60, 0.06),
-                 ((0.72, 0.32, 0.30, 1.0), (0.80, 0.46, 0.42, 1.0), (0.62, 0.24, 0.24, 1.0))[mi % 3])
+        tx = mx0 + 0.40 + mi * 0.53
+        _meat_tray(f"Meat_Tray_{mi}", tx, my, 1.11, kinds[mi % len(kinds)], mi)
+        if mi < 11:   # the parsley line between trays
+            make_box(f"Meat_Parsley_{mi}", (tx + 0.265, my, 1.125), (0.05, 0.58, 0.03), (0.28, 0.52, 0.22, 1.0))
     make_box("Meat_Back_Counter", ((mx0 + mx1) / 2.0, YN - 0.30, 0.46), (mx1 - mx0, 0.55, 0.92), (0.72, 0.74, 0.76, 1.0))
     make_box("Meat_Sign", ((mx0 + mx1) / 2.0, YN - 0.03, 3.20), (4.0, 0.06, 0.60), (0.62, 0.18, 0.16, 1.0))
     make_box("Meat_Sign_Letters", ((mx0 + mx1) / 2.0, YN - 0.065, 3.20), (2.2, 0.01, 0.30), PAPER)
@@ -448,6 +515,85 @@ def build_lot():
     make_far_bands("Far", (0.46, 0.44, 0.42, 1.0), [(22.0, 34.0, 5.0, 0.85), (32.0, 40.0, 7.0, 0.7)], sides="S", cy=0.0, profile="roofline")
 
 
+# ── the manager's office over the front (2026-10-07) ─────────────
+OF_X0, OF_Y1, OF_Z = 11.4, 2.30, 3.00        # office west edge, front face, floor top
+HATCH_X1, HATCH_Y1 = 13.9, 1.00              # the stair's hole in the slab
+
+
+def build_office():
+    """THE MANAGER'S OFFICE — "she covers ... the manager's office and the
+    break room" — a mezzanine over the front's south-east corner, above
+    the service desk: a slab on a column, its front wall cut for a window
+    over the sales floor (the blinds half down, a lamp lit behind), and a
+    steel ship's stair under the slab along the south wall, clear of the
+    storefront glass and the desk's clerk side."""
+    slab = (0.52, 0.53, 0.54, 1.0)
+    office_wall = (0.84, 0.83, 0.78, 1.0)
+    # the slab, with the hatch over the stair's top
+    make_box("Office_Slab_N", ((OF_X0 + XE) / 2.0, (HATCH_Y1 + OF_Y1) / 2.0, OF_Z - 0.075), (XE - OF_X0, OF_Y1 - HATCH_Y1, 0.15), slab)
+    make_box("Office_Slab_SE", ((HATCH_X1 + XE) / 2.0, (YS + HATCH_Y1) / 2.0, OF_Z - 0.075), (XE - HATCH_X1, HATCH_Y1 - YS, 0.15), slab)
+    make_box("Office_Slab_Fascia", ((OF_X0 + XE) / 2.0, OF_Y1 + 0.02, OF_Z - 0.20), (XE - OF_X0, 0.04, 0.40), COL_ACCENT)
+    make_box("Office_Column", (OF_X0 + 0.10, OF_Y1 - 0.10, (OF_Z - 0.15) / 2.0), (0.14, 0.14, OF_Z - 0.15), STEEL)
+    make_box("Office_Column_Foot", (OF_X0 + 0.10, OF_Y1 - 0.10, 0.01), (0.24, 0.24, 0.02), STEEL)
+    # the front wall: piers, the spandrel and the lintel round the window
+    wx0, wx1, wz0, wz1 = OF_X0 + 0.50, XE - 0.50, OF_Z + 0.55, OF_Z + 1.75
+    wy = OF_Y1 - 0.06
+    for nm, a, b, z0, z1 in (("Pier_W", OF_X0, wx0, OF_Z, CEIL), ("Pier_E", wx1, XE, OF_Z, CEIL),
+                             ("Spandrel", wx0, wx1, OF_Z, wz0), ("Lintel", wx0, wx1, wz1, CEIL)):
+        make_box(f"Office_Wall_{nm}", ((a + b) / 2.0, wy, (z0 + z1) / 2.0), (b - a, 0.12, z1 - z0), office_wall)
+    make_box("Office_Wall_W", (OF_X0 + 0.06, (YS + OF_Y1 - 0.12) / 2.0, (OF_Z + CEIL) / 2.0), (0.12, OF_Y1 - 0.12 - YS, CEIL - OF_Z), office_wall)
+    # the window: a frame ring, the glass, the blinds half down
+    make_frame_ring("Office_Window_Frame", ((wx0 + wx1) / 2.0, wy, (wz0 + wz1) / 2.0), (wx1 - wx0, 0.12, wz1 - wz0), STEEL, bar=0.05)
+    make_box("Office_Window_Glass", ((wx0 + wx1) / 2.0, wy, (wz0 + wz1) / 2.0), (wx1 - wx0 - 0.10, 0.01, wz1 - wz0 - 0.10), (0.72, 0.80, 0.84, 0.25))
+    make_box("Office_Blind_Head", ((wx0 + wx1) / 2.0, wy - 0.09, wz1 - 0.08), (wx1 - wx0 - 0.10, 0.06, 0.06), (0.90, 0.90, 0.86, 1.0))
+    for k in range(9):
+        make_box(f"Office_Blind_Slat_{k}", ((wx0 + wx1) / 2.0, wy - 0.09, wz1 - 0.14 - k * 0.055), (wx1 - wx0 - 0.12, 0.05, 0.008),
+                 (0.92, 0.92, 0.88, 1.0))
+    for e in (-1, 1):
+        make_box(f"Office_Blind_Cord_{e:+d}", ((wx0 + wx1) / 2.0 + e * 0.9, wy - 0.09, wz1 - 0.36), (0.006, 0.006, 0.50), (0.92, 0.92, 0.88, 1.0))
+    # inside: the desk, its chair, the monitor, the lamp, a file cabinet,
+    # the corkboard of schedules on the back wall
+    dx, dy = 13.2, 0.95
+    make_box("Office_Desk", (dx, dy, OF_Z + 0.375), (1.60, 0.70, 0.75), (0.46, 0.36, 0.26, 1.0))
+    make_box("Office_Monitor", (dx - 0.30, dy - 0.15, OF_Z + 0.75 + 0.20), (0.50, 0.04, 0.32), (0.14, 0.14, 0.16, 1.0))
+    make_box("Office_Monitor_Stand", (dx - 0.30, dy - 0.10, OF_Z + 0.75 + 0.03), (0.16, 0.12, 0.06), (0.14, 0.14, 0.16, 1.0))
+    make_box("Office_Monitor_Screen", (dx - 0.30, dy - 0.172, OF_Z + 0.75 + 0.20), (0.46, 0.004, 0.28), (0.40, 0.56, 0.64, 1.0))
+    make_cyl("Office_Lamp_Base", (dx + 0.55, dy + 0.10, OF_Z + 0.76), 0.07, 0.02, (0.20, 0.20, 0.22, 1.0), segments=8)
+    make_cyl("Office_Lamp_Post", (dx + 0.55, dy + 0.10, OF_Z + 0.97), 0.012, 0.40, (0.20, 0.20, 0.22, 1.0), segments=6)
+    make_cyl("Office_Lamp_Shade", (dx + 0.55, dy + 0.10, OF_Z + 1.20), 0.12, 0.12, (0.96, 0.86, 0.60, 1.0), segments=10)
+    make_box("Office_Chair_Seat", (dx, dy + 0.62, OF_Z + 0.46), (0.48, 0.46, 0.08), (0.18, 0.18, 0.20, 1.0))
+    make_box("Office_Chair_Base", (dx, dy + 0.62, OF_Z + 0.21), (0.08, 0.08, 0.42), (0.18, 0.18, 0.20, 1.0))
+    make_box("Office_Chair_Back", (dx, dy + 0.86, OF_Z + 0.78), (0.46, 0.06, 0.56), (0.18, 0.18, 0.20, 1.0))
+    make_box("Office_File_Cabinet", (XE - 0.28, 1.70, OF_Z + 0.66), (0.46, 0.60, 1.32), (0.56, 0.58, 0.58, 1.0))
+    make_box("Office_Corkboard", ((dx + XE) / 2.0 - 0.2, YS + 0.015, OF_Z + 1.45), (1.20, 0.03, 0.80), (0.64, 0.48, 0.32, 1.0))
+    for k in range(5):
+        make_box(f"Office_Corkboard_Sheet_{k}", ((dx + XE) / 2.0 - 0.65 + k * 0.22, YS + 0.032, OF_Z + 1.45 + (0.12 if k % 2 else -0.10)),
+                 (0.18, 0.004, 0.24), PAPER)
+    # the hatch's guard rail on the office floor (open at the stair's head)
+    for k, x in enumerate((12.30, 13.10, HATCH_X1 - 0.03)):
+        make_box(f"Office_Rail_Post_{k}", (x, HATCH_Y1 + 0.03, OF_Z + 0.50), (0.04, 0.04, 1.00), STEEL)
+    make_box("Office_Rail_Top", ((12.28 + HATCH_X1) / 2.0, HATCH_Y1 + 0.03, OF_Z + 1.00), (HATCH_X1 - 12.28, 0.05, 0.04), STEEL)
+    make_box("Office_Rail_Mid", ((12.28 + HATCH_X1) / 2.0, HATCH_Y1 + 0.03, OF_Z + 0.50), (HATCH_X1 - 12.28, 0.03, 0.03), STEEL)
+    make_box("Office_Rail_E", (HATCH_X1 + 0.03, (YS + HATCH_Y1) / 2.0, OF_Z + 0.50), (0.04, HATCH_Y1 - YS, 1.00), STEEL)
+    # the ship's stair: solid steps rising west along the south wall
+    n = 17
+    sx0, sx1 = 14.70, 11.62                  # the first riser's face, the top step's far edge
+    run = (sx0 - sx1) / n
+    for i in range(n):
+        h = OF_Z * (i + 1) / n
+        x = sx0 - run * (i + 0.5)
+        make_box(f"Office_Stair_Step_{i}", (x, (YS + HATCH_Y1 - 0.10) / 2.0, h / 2.0), (run, HATCH_Y1 - 0.10 - YS, h), (0.40, 0.41, 0.42, 1.0))
+        make_box(f"Office_Stair_Nosing_{i}", (x + run / 2.0 - 0.015, (YS + HATCH_Y1 - 0.10) / 2.0, h - 0.005), (0.03, HATCH_Y1 - 0.10 - YS, 0.01),
+                 (0.86, 0.74, 0.20, 1.0))
+    ry = HATCH_Y1 - 0.10 - 0.02
+    for k in range(3):                       # posts off the 1st, 9th and 16th steps
+        i = (0, 8, 15)[k]
+        x = sx0 - run * (i + 0.5)
+        make_box(f"Office_Stair_Post_{k}", (x, ry, OF_Z * (i + 1) / n + 0.45), (0.04, 0.04, 0.90), STEEL)
+    make_tube("Office_Stair_Rail", [(sx0 - run * 0.5, ry, OF_Z * 1 / n + 0.90), (sx0 - run * 15.5, ry, OF_Z * 16 / n + 0.90)], 0.02, STEEL)
+    make_box("Office_Door_Sign", (XE - 0.70, wy + 0.065, OF_Z + 2.05), (0.60, 0.006, 0.18), PAPER)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -457,6 +603,7 @@ def main():
     build_back()
     build_east()
     build_lot()
+    build_office()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/centro_grocery_aisle.glb"))
     print(f"\n[build_centro_grocery_aisle] exporting to {out}")

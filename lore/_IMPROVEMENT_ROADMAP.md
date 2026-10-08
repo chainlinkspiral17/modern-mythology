@@ -3517,7 +3517,11 @@ chillwave, lena_apartment W, ember_ash_office E, board_lords,
 hans_bakery_back_kitchen); window markers for kai, hospital, the
 Caldwell rooms and Daily Grind (none look out yet); exterior key light
 for the outsides (lit by ambient only, they read dim against the
-interior practicals).
+interior practicals). [CORRECTED 2026-10-07: not so — every interior's
+Key/Fill/Back directionals run with shadows OFF, so the outsides take the
+same key as the room. What reads dim is dark material (the Missing
+Link's treeline) and facades turned from the key; fix by value, not by
+adding lights.]
 
 **2026-10-07 · WINDOWS, batch 3 (the loop-built ones).** Pit Stop
 (both storefront panes + the two W booth windows + the kitchen's N
@@ -3625,6 +3629,50 @@ the `_Stock_` tag so join_stock merges them. Deck must REBUILD
 centro_grocery_aisle (an 11-minute build here). Draft N+1: the
 manager's office window over the front; the meat case's cuts by the
 same grammar; shelf talkers.
+
+**2026-10-07 · THE MANAGER'S OFFICE + THE MEAT CASE (centro_grocery_aisle)
+· THE BASEMENT STAIR + SINK WEAR (henderson_kitchen).** Centro: "the
+manager's office" is a mezzanine over the front's SE corner above the
+service desk — a slab on a column with a green fascia, its front wall cut
+for a window over the floor (blinds half down, the desk, monitor and
+lamp behind them, a warm `Office_Lamp_Practical`), a corkboard of
+schedules, a hatch rail, and a steel ship's stair under the slab along
+the south wall (clear of the storefront glass and the desk clerk's side;
+the desk's hanging sign moved north out of the office wall);
+shot_insert_office frames it from the checkout lanes. The meat case's
+twelve red slabs are cuts: steaks with their fat, ground-beef mounds,
+chops with bones, chicken, sausage links, tied roasts, each tray with a
+price tag on a pick and parsley lines between. Henderson: the basement
+door's frame is a ring, the E wall cut behind it, the door CRACKED 25
+degrees onto a landing and nine steps falling into the dark (the well's
+walls, ceiling, handrail and a black end wall) — it was a 2 cm card;
+the formica worn pale at the sink, a runner, the floor's path. Deck must
+REBUILD centro_grocery_aisle and henderson_kitchen. Draft N+1: shelf
+talkers and price-check signs (Centro); the office's door at the stair
+head; a bulb on a pull chain in Henderson's well (lit in ch7?).
+SAME PASS: shelf talkers — five a side on every gondola, at eye level,
+flags out of the price strips (SALE yellow, NEW red, Centro green).
+Remaining Centro N+1: a price-check station; the office door at the
+stair head.
+
+**2026-10-07 · THE LAST TOY BLOCKS (Centro checkouts, the Kwik Stop's
+tobacco wall and pegboard).** Centro's four checkout candy racks held
+solid saturated blocks: now gum tubes, jerky and nuts by the merch
+grammar, authored along X and turned onto the racks' Y run with the
+`_ROT` pivot (`_LEAN` on). The Kwik Stop's cigarette wall — a model
+chapter, behind Sam all summer — was 18 x 16 cm bricks in snack colours
+standing 4 cm INSIDE the east wall on a 2 cm rail: now a shelf plate
+off the wall face and flip-top packs faced out two high, a brand to a
+slot (white under its red band, gold foil, menthol green, blue, black),
+joined as stock; the old band-painting pass (`build_cigarette_pack_faces`)
+retired. The pegboard chip bags were 5 mm cards: now bags with a body,
+a band and a crimp under the hook. Deck must REBUILD kwik_stop and
+centro_grocery_aisle. Draft N+1: SNACK_TINTS still colours lottery
+tickets, magazines, prepaid cards and gumballs — fine as colour, but
+check each reads as its object at the counter shots. And the red
+stacked boxes on the yellow mat by the Kwik Stop's door (shot_closeup_
+customer) still read as toy blocks — find their builder and give them
+a carton's grammar (band, handle cut, the 12-pack print).
 
 NEXT (queued): Bianca's kitchen is the Miller kitchen again —
 `bianca_kitchen_morning` (ch 22 / 23) and `miller_kitchen` are one room

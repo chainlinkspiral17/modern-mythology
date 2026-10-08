@@ -84,6 +84,19 @@ henderson) got there by accumulating exactly these layers.
 
 ## Recent lessons
 
+### 2026-10-07 · a department reads by ITS goods; a case is never generic stock
+
+- The grocery's dairy case was the beverage kit (six-packs and cans
+  under a DAIRY sign); its meat case was twelve red slabs. A
+  department reads by what only it sells: milk by the jug and the cap
+  colour code, half-gallons by the gable, eggs by the grey pulp; meat by
+  the fat rim on a steak, the bone on a chop, the twine on a roast, the
+  parsley line between trays and the price tag on its pick. Add the
+  department's KINDS to the merch grammar and a plan, then let the case
+  helper take `stock=` — never hand-stock one case.
+- Shelf talkers are what make a lane read as a supermarket lane at
+  distance: flags out of the price strip, face-on to the walker.
+
 ### 2026-10-07 · a cut window frames a few degrees: size the outside from the marker, not the plan
 
 - From a booth marker 5 m back at eye height, a 1.3 m window spans

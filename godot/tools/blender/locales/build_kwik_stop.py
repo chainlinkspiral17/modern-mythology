@@ -551,15 +551,26 @@ def build_counter():
     cig_x = 5.87
     for sh in range(3):
         shz = 1.40 + sh * 0.32
+        # a shelf PLATE off the wall face (it was a 2 cm rail and the packs
+        # stood 4 cm inside the wall)
         make_box(f"CigShelf_{sh}",
-                 (cig_x, cy, shz),
-                 (0.02, 3.20, 0.04), COL_METAL_STEEL)
+                 (cig_x - 0.005, cy, shz + 0.01),
+                 (0.07, 3.20, 0.02), COL_METAL_STEEL)
+        # the packs (2026-10-07: they were 18 x 16 cm bricks in snack
+        # colours) — flip-top packs faced out, two high, a brand per slot:
+        # a white body under its colour band, the gold foil, the menthol green
+        brands = (((0.96, 0.95, 0.92, 1.0), (0.78, 0.12, 0.12, 1.0)), ((0.92, 0.84, 0.52, 1.0), (0.62, 0.48, 0.18, 1.0)),
+                  ((0.94, 0.95, 0.94, 1.0), (0.12, 0.46, 0.30, 1.0)), ((0.96, 0.95, 0.92, 1.0), (0.18, 0.30, 0.62, 1.0)),
+                  ((0.18, 0.18, 0.20, 1.0), (0.80, 0.70, 0.40, 1.0)))
         for c in range(12):
             cy_pos = cy - 1.50 + c * 0.28
-            tint = SNACK_TINTS[(sh + c) % len(SNACK_TINTS)]
-            make_box(f"CigBox_{sh}_{c}",
-                     (cig_x + 0.04, cy_pos, shz + 0.10),
-                     (0.06, 0.18, 0.16), tint)
+            body, band = brands[(sh * 5 + c) % len(brands)]
+            for pk in range(4):
+                py_ = cy_pos - 0.0975 + pk * 0.065
+                for st in range(2):
+                    z = shz + 0.02 + 0.0425 + st * 0.085
+                    make_box(f"CigRack_Stock_{sh}_{c}_{pk}_{st}", (cig_x - 0.026, py_, z), (0.032, 0.058, 0.085), body)
+                    make_box(f"CigRack_Stock_{sh}_{c}_{pk}_{st}_Band", (cig_x - 0.0425, py_, z + 0.025), (0.001, 0.058, 0.03), band)
 
 
 # ════════════════════════════════════════════════════════════════
@@ -2023,7 +2034,7 @@ def build_ice_chest_outside():
 
 
 def build_polish_pass_3():
-    build_cigarette_pack_faces()
+    # build_cigarette_pack_faces() — retired 2026-10-07: the packs carry their own bands
     build_donut_display()
     build_creamer_sugar_caddy()
     build_endcap_soccer()
@@ -2200,9 +2211,11 @@ def build_hanging_chip_rack():
                      0.005, 0.06, COL_METAL_STEEL, axis='Y')
             # Chip bag (varies by tint cycle)
             tint = SNACK_TINTS[(r * 4 + c) % len(SNACK_TINTS)]
-            make_box(f"PegBag_{r}_{c}",
-                     (cx + 0.0275, hook_y, hook_z - 0.06),   # against its hook
-                     (0.005, 0.16, 0.20), tint)
+            # a BAG (2026-10-07: a 5 mm card): pillowed body off the panel
+            # face, the brand band across it, the crimp at the top under the hook
+            make_box(f"PegBag_{r}_{c}", (cx + 0.04, hook_y, hook_z - 0.11), (0.04, 0.16, 0.20), tint)
+            make_box(f"PegBag_{r}_{c}_Band", (cx + 0.0605, hook_y, hook_z - 0.13), (0.001, 0.16, 0.06), (0.96, 0.92, 0.80, 1.0))
+            make_box(f"PegBag_{r}_{c}_Crimp", (cx + 0.04, hook_y, hook_z + 0.0), (0.012, 0.16, 0.02), tint)
 
 
 def build_prepaid_card_spinner():
