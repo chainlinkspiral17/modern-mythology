@@ -3672,7 +3672,13 @@ tickets, magazines, prepaid cards and gumballs — fine as colour, but
 check each reads as its object at the counter shots. And the red
 stacked boxes on the yellow mat by the Kwik Stop's door (shot_closeup_
 customer) still read as toy blocks — find their builder and give them
-a carton's grammar (band, handle cut, the 12-pack print).
+a carton's grammar (band, handle cut, the 12-pack print). DONE: they
+were `CupStack` (red-cup cases), with `CharcoalStack` and `BeerStack`
+the same solid-slab pyramids — now kraft cup cases with their red band
+and three loose sleeves of cups by the SALE topper; charcoal bags three,
+two, one with red labels and crimped tops; the beer 30-racks as cases,
+two courses a layer, banded faces and handle cuts — all joined as
+stock.
 
 NEXT (queued): Bianca's kitchen is the Miller kitchen again —
 `bianca_kitchen_morning` (ch 22 / 23) and `miller_kitchen` are one room

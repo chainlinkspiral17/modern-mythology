@@ -1620,33 +1620,51 @@ def build_stockroom_through_curtain():
 def build_more_floor_displays():
     # Beer 30-rack pyramid south of the cooler row
     bx, by = -2.65, 7.20   # clear of the novelty cooler (2026-09-22: 20 cm into it)
-    for layer_i in range(3):
-        layer_w = 1.20 - layer_i * 0.30
-        layer_d = 0.60 - layer_i * 0.10
-        make_box(f"BeerStack_Layer_{layer_i}",
-                 (bx, by, 0.15 + layer_i * 0.30),   # case on case, on the floor
-                 (layer_w, layer_d, 0.30), COL_BRAND_NAVY)
-        # White label band on each layer
-        make_box(f"BeerStack_Band_{layer_i}",
-                 (bx, by - layer_d / 2 - 0.005, 0.15 + layer_i * 0.30),
-                 (layer_w * 0.80, 0.005, 0.08), COL_PAPER)
+    # (2026-10-07: three solid navy slabs — now the 30-racks themselves,
+    # two courses a layer, each case with its white band on the face and
+    # the handle cut in its end; joined as stock)
+    for course in range(6):
+        li = course // 2
+        nx, ny = 4 - li, (2 if li < 2 else 1)
+        z = 0.0725 + course * 0.145
+        for ix in range(nx):
+            for iy in range(ny):
+                x = bx + (ix - (nx - 1) / 2.0) * 0.30
+                y = by + (iy - (ny - 1) / 2.0) * 0.28
+                tag = f"BeerStack_Stock_{course}_{ix}_{iy}"
+                make_box(tag, (x, y, z), (0.29, 0.27, 0.145), COL_BRAND_NAVY)
+                if iy == 0:
+                    make_box(f"{tag}_Band", (x, y - 0.1355, z + 0.02), (0.26, 0.001, 0.05), COL_PAPER)
+                if ix in (0, nx - 1):
+                    sx = -1 if ix == 0 else 1
+                    make_box(f"{tag}_Handle", (x + sx * 0.1455, y, z + 0.03), (0.001, 0.10, 0.025), (0.08, 0.08, 0.10, 1.0))
     # Charcoal-bag pyramid near west window
     cx, cy = -4.55, 2.30
+    # (2026-10-07: three black slabs — now bags, three, two, one, each
+    # with its red label and the crimped fold at the top)
     for li in range(3):
-        lw = 0.96 - li * 0.24
-        make_box(f"CharcoalStack_{li}",
-                 (cx, cy, 0.14 + li * 0.28),   # bag on bag
-                 (lw, 0.50, 0.28), COL_METAL_BLACK)
-        make_box(f"CharcoalLabel_{li}",
-                 (cx, cy - 0.255, 0.14 + li * 0.28),
-                 (lw * 0.7, 0.005, 0.10), COL_LOTTERY_RED)
+        n = 3 - li
+        for bi in range(n):
+            x = cx + (bi - (n - 1) / 2.0) * 0.32
+            z = 0.14 + li * 0.28
+            tag = f"CharcoalStack_Stock_{li}_{bi}"
+            make_box(tag, (x, cy, z), (0.31, 0.50, 0.25), COL_METAL_BLACK)
+            make_box(f"{tag}_Crimp", (x, cy, z + 0.135), (0.29, 0.06, 0.02), COL_METAL_BLACK)
+            make_box(f"{tag}_Label", (x, cy - 0.2505, z), (0.22, 0.001, 0.10), COL_LOTTERY_RED)
     # Cardboard pyramid of red-cup 12-packs near east window
     cup_x, cup_y = 3.55, 1.55
-    for li in range(2):
-        lw = 0.80 - li * 0.24
-        make_box(f"CupStack_{li}",
-                 (cup_x, cup_y, 0.12 + li * 0.24),   # case on case
-                 (lw, 0.40, 0.24), COL_BRAND_RED)
+    # (2026-10-07: two solid red slabs — now kraft cases printed with the
+    # red band, two below and one on top, three loose sleeves of cups
+    # beside the SALE topper)
+    for li, xs in enumerate(((-0.205, 0.205), (0.0,))):
+        for ci, dx in enumerate(xs):
+            z = 0.12 + li * 0.24
+            tag = f"CupStack_Stock_{li}_{ci}"
+            make_box(tag, (cup_x + dx, cup_y, z), (0.40, 0.40, 0.24), COL_BOX_KRAFT)
+            make_box(f"{tag}_Band", (cup_x + dx, cup_y - 0.2005, z + 0.03), (0.40, 0.001, 0.09), COL_BRAND_RED)
+    for si in range(3):
+        make_cyl(f"CupStack_Stock_Sleeve_{si}", (cup_x - 0.05 + si * 0.09 - 0.09, cup_y + 0.10, 0.48 + 0.045), 0.045, 0.30,
+                 COL_BRAND_RED, axis='Y', segments=8)
     # SALE topper sign
     make_box("CupStack_SaleSign", (cup_x, cup_y - 0.2, 0.57),   # stands on the top case
              (0.40, 0.005, 0.18), COL_LOTTERY_YEL)
