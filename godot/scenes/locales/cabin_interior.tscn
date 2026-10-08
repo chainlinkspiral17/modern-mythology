@@ -537,3 +537,60 @@ light_color = Color(1.000, 0.450, 0.150, 1)
 light_energy = 0.90
 shadow_enabled = false
 omni_range = 2.60
+
+; ── TEM'S PORCH (2026-10-08) · the cabin_porch preset's coverage ──
+; Per-preset markers (Background3D.find_shot_marker): while cabin_porch
+; is loaded these win over the room's plain markers of the same name,
+; so a porch scene's [shot:establish] rotation, its closeups and its
+; inserts stay OUTSIDE. Twelve vol 7 porch scenes were shot on the
+; Millers' Texas back porch; they are on Tem's porch now.
+
+[node name="shot_establish_b__cabin_porch" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.350, 1.550, 1.350)
+rotation = Vector3(-0.1295, -1.4402, 0)
+metadata/fov = 58.0
+
+[node name="shot_establish_c__cabin_porch" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(4.400, 1.250, 2.300)
+rotation = Vector3(-0.0639, 1.2548, 0)
+metadata/fov = 56.0
+
+[node name="shot_insert_crow__cabin_porch" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.000, 1.250, 1.550)
+rotation = Vector3(-0.1987, 1.0122, 0)
+metadata/fov = 40.0
+
+[node name="shot_insert_cedar__cabin_porch" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.050, 1.300, 1.250)
+rotation = Vector3(-0.5251, 2.7150, 0)
+metadata/fov = 35.0
+
+[node name="shot_insert_cigarette__cabin_porch" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.850, 1.400, 1.000)
+rotation = Vector3(-0.4229, -2.4981, 0)
+metadata/fov = 40.0
+
+[node name="shot_insert_coffee__cabin_porch" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.000, 1.250, 1.250)
+rotation = Vector3(-0.4064, -2.7150, 0)
+metadata/fov = 35.0
+
+[node name="shot_insert_truck__cabin_porch" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.300, 1.550, 1.600)
+rotation = Vector3(-0.1820, 2.3699, 0)
+metadata/fov = 42.0
+
+[node name="shot_insert_door__cabin_porch" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.350, 1.450, 1.600)
+rotation = Vector3(-0.2181, 0.2235, 0)
+metadata/fov = 45.0
+
+[node name="shot_closeup_person__cabin_porch" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.900, 1.600, 0.500)
+rotation = Vector3(-0.0644, 1.9333, 0)
+metadata/fov = 45.0
+
+[node name="shot_closeup_person_b__cabin_porch" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.600, 1.600, 1.500)
+rotation = Vector3(-0.0644, -1.2083, 0)
+metadata/fov = 45.0

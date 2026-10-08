@@ -1818,6 +1818,23 @@ const CAMERA_PRESETS := {
 		"fov": 62.0,
 		"suppress_input": true,
 	},
+	"cabin_porch": {
+		"scene": "res://scenes/locales/cabin_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
+		# (2026-10-08) Tem's porch — twelve vol 7 scenes ("Tem was on the
+		# porch with a coffee in her hand", the cedar with Eddvard's hand on
+		# the rail, the smokers' tin, the crow on the railing) were shot on
+		# the Millers' Texas back porch. The cabin set grew an outside for
+		# it: roof, foundation, the porch on the south wall, the turnaround,
+		# the clearing. Camera in the turnaround between the truck and the
+		# wagon (blender 0.5, -7.4, eye 1.65 over the yard), looking N up
+		# the steps at the porch, the door and the two south windows.
+		# Its own markers are suffixed __cabin_porch in the cabin's .tscn.
+		"camera_origin": Vector3(0.50, 1.25, 7.40),
+		"camera_rotation": Vector3(-0.0365, 0.1171, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
 	"cabin_interior_bed": {
 		"scene": "res://scenes/locales/cabin_interior_bed.tscn",
 		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",

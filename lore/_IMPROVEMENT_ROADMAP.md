@@ -3834,6 +3834,40 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-08 · TEM'S PORCH IS NOT THE MILLERS' PORCH (cabin_porch, draft
+1).** Twelve vol 7 scenes are set on the porch of Tem's off-grid Oregon
+cabin ("Tem was on the porch with a coffee in her hand", the cedar with
+Eddvard's hand on the rail, "the small tin Tem kept on the porch for the
+people who smoked", the crow on the railing, "the small gravel turnaround
+in front of the cabin's porch"). All twelve were shot on
+`miller_back_porch`, the Millers' TEXAS back porch: a different house in a
+different state. The cabin had no outside at all: a box of walls with a
+flat lid, standing on nothing, and the two vehicles parked against its
+front wall.
+- **The cabin got a building's outside** (`build_exterior_2026_10`):
+  - a gable roof, the gable ends filled, a vent under the ridge;
+  - a stone foundation, so the floor stands 0.40 m over the yard;
+  - siding lines broken at the openings;
+  - the stovepipe out of the north wall and up past the eave;
+  - the yard, with Sitkas round the clearing and a dark forest band past them where the set ends.
+- **The porch** (`build_porch_2026_10`):
+  - deck, step, four posts and a shed roof on a ledger;
+  - railings with a wide cap carrying her mug, the cedar hand (palm-up, fingers curled) and the smokers' tin with a butt in it, plus the crow on the west rail;
+  - the bench under the west window with a blanket, one chair, boots by the door, firewood under the east window;
+  - the rain barrel at the corner and the chopping block in the yard. No porch lamp: there are no wires.
+- **The turnaround** moved south of the porch. Finn's truck and the station wagon are now kit cars parked nose-in, where before they were four boxes each.
+- **A 0.40 m slot over the front door** showed the interior thermometer; the door head is closed.
+- **The `cabin_porch` preset** shoots from the turnaround. It has ten `__cabin_porch` markers, so the plain interior establish_b/c and closeups never cut a porch scene back inside. `insert bowls` (ch15: "the bowls were on the table") deliberately keeps the interior marker.
+- **Wiring:** the twelve chapters point at `3d:cabin_porch`. Vol 6's three Miller-porch uses stay on the Millers' porch, whose ambient bed is now the vol 6 one (it was the cabin woodstove).
+
+Deck must REBUILD cabin_interior. PORCH DRAFT 2:
+- an exterior light for the preset (the outside is lit by the interior's rig and reads dusky under morning_bright);
+- the gravel road out of the clearing;
+- tiered two-tone crowns;
+- the window's square of yellow on the boards at night;
+- moss on the roof;
+- siding as boards with a shadow line.
+
 NEXT (queued): Bianca's kitchen is the Miller kitchen again —
 `bianca_kitchen_morning` (ch 22 / 23) and `miller_kitchen` are one room
 on Meadowlark Circle (the cul-de-sac through the window, the green robe

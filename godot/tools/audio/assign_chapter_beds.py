@@ -170,7 +170,7 @@ PLACES = {
         "cabin_interior": "vol7_cabin_woodstove",
         "cabin_interior_bed": "vol7_cabin_woodstove",
         "cabin_road": "vol7_cabin_woodstove",
-        "miller_back_porch": "vol7_cabin_woodstove",
+        "cabin_porch": "vol7_cabin_woodstove",   # Tem's porch (2026-10-08: was the Millers' Texas porch)
         "lena_apartment": "vol7_apartment_rain",
         "salty_tome_alley": "vol7_painting_room",
         "salty_tome_interior": "vol7_shop_signal_bell",

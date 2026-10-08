@@ -158,6 +158,20 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-10-08 · a sloped prism records as its bounding box: split it at the wall line
+
+- The recorder stores `make_prism` (and `make_rot_box`, `make_tube`) as an
+  axis-aligned box. A gable roof slab from eave to ridge therefore "clipped"
+  the north wall, the pot-rack straps and the oil lamp's chain 0.27 m deep,
+  though its underside only touches the wall's top edge. Do not excuse
+  roof-vs-wall in the gate. Split the slab where the real geometry meets
+  the wall: an eave piece outside the wall's outer face and a main piece
+  whose underside starts AT the wall top over the wall's outer corner. Each
+  piece's box then touches and never sinks.
+- The same holds for a tube that turns a corner: a stovepipe out of a wall
+  and up past an eave records as one box spanning both legs. Build the
+  horizontal stub as a tube and the rise as a cylinder.
+
 ### 2026-10-08 · seat_clearance_audit: a seat faces away from its back
 
 - The user, on the new hospital waiting room: "Chairs facing each other

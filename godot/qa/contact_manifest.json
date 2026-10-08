@@ -244,61 +244,149 @@
    "scene_missing": false
   },
   {
-   "id": "miller_back_porch",
-   "scene": "res://scenes/locales/miller_back_porch.tscn",
+   "id": "cabin_porch",
+   "scene": "res://scenes/locales/cabin_interior.tscn",
    "vol": 7,
-   "uses": 16,
+   "uses": 12,
    "moods": [
     "candlelight_low",
-    "morning_bright"
+    "dusk"
    ],
    "markers": [
     {
-     "name": "shot_establish_b",
+     "name": "shot_establish_b__cabin_porch",
      "type": "establish"
     },
     {
-     "name": "shot_establish_c",
+     "name": "shot_establish_c__cabin_porch",
      "type": "establish"
     },
     {
-     "name": "shot_closeup_person",
+     "name": "shot_closeup_person__cabin_porch",
      "type": "closeup"
     },
     {
-     "name": "shot_closeup_person_b",
+     "name": "shot_closeup_person_b__cabin_porch",
      "type": "closeup"
+    },
+    {
+     "name": "shot_insert_bowl",
+     "type": "insert"
     },
     {
      "name": "shot_insert_bowls",
      "type": "insert"
     },
     {
-     "name": "shot_insert_cedar",
+     "name": "shot_insert_cap",
      "type": "insert"
     },
     {
-     "name": "shot_insert_cigarette",
+     "name": "shot_insert_cedar__cabin_porch",
      "type": "insert"
     },
     {
-     "name": "shot_insert_crow",
+     "name": "shot_insert_charred_wood",
      "type": "insert"
     },
     {
-     "name": "shot_insert_door",
+     "name": "shot_insert_chest",
      "type": "insert"
     },
     {
-     "name": "shot_insert_myrtle",
+     "name": "shot_insert_cigarette__cabin_porch",
      "type": "insert"
     },
     {
-     "name": "shot_insert_truck",
+     "name": "shot_insert_coffee__cabin_porch",
      "type": "insert"
     },
     {
-     "name": "shot_insert_wicker",
+     "name": "shot_insert_crow__cabin_porch",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cup",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_desk",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_disc",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_disc_case",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_door__cabin_porch",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_doorknob",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_eggs",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_face",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_hand",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_hands",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_headset",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_hexagon",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_notebook",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_package",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_phone",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_player",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_stick",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_table",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_truck__cabin_porch",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_wagon",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_window",
      "type": "insert"
     }
    ],
@@ -2214,6 +2302,66 @@
     },
     {
      "name": "shot_insert_window",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
+   "id": "miller_back_porch",
+   "scene": "res://scenes/locales/miller_back_porch.tscn",
+   "vol": 6,
+   "uses": 4,
+   "moods": [
+    "morning_bright"
+   ],
+   "markers": [
+    {
+     "name": "shot_establish_b",
+     "type": "establish"
+    },
+    {
+     "name": "shot_establish_c",
+     "type": "establish"
+    },
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_bowls",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cedar",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cigarette",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_crow",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_door",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_myrtle",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_truck",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_wicker",
      "type": "insert"
     }
    ],
@@ -7343,5 +7491,5 @@
   "tired",
   "nervous"
  ],
- "frames": 1652
+ "frames": 1687
 }

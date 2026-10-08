@@ -40,6 +40,22 @@ and the Sitka trunks as lathes with bark taper; the table's SEVEN
 chairs told apart (one with a cushion, one mended); Deck: the
 contact sheet's establish + `insert bowls` under candlelight_low.
 
+THE OUTSIDE + TEM'S PORCH · draft 1 (2026-10-08): twelve vol 7 porch
+scenes were shot on the Millers' Texas back porch. The cabin grew a
+building's outside (gable roof, foundation, siding, the stovepipe up
+past the eave, the yard and the clearing's Sitkas) and the porch on its
+south wall (deck, step, four posts, shed roof, rails with the coffee,
+the cedar hand, the smokers' tin and the crow on them; the bench, a
+chair, boots, firewood, the rain barrel, the chopping block). The
+`cabin_porch` preset (Background3D) shoots it from the turnaround; its
+markers are suffixed __cabin_porch. PORCH DRAFT 2 targets: the outside
+is lit by the interior's rig (dim under morning_bright) — a per-preset
+exterior light; the gravel road out of the clearing to the SW (cabin_
+road's track); the crowns are single lathes (tiers with droop, a second
+tone); the window's "square of yellow on the porch boards" at night (a
+spot through the south window); moss on the roof and the step's edge;
+the siding as boards with a shadow line rather than seams on a slab.
+
 Coordinate frame: Blender Z-up, y=0 south wall with the door, +Y
 into the cabin, x=±3.0, back wall y=6.0, ceiling 3.4 (raised for
 the loft). glTF export remaps to Godot (x, z, -y).
@@ -51,7 +67,7 @@ if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.furniture import make_chair, make_table, make_bed
 from _props import palette as P
 from _props.geometry import (make_taper_cyl, clear_scene, make_box, make_cyl, make_lathe,
-                             make_chamfer_box, make_tube, make_rot_box, export_glb)
+                             make_chamfer_box, make_tube, make_rot_box, make_prism, export_glb)
 from _props.structure import make_floor, make_wall, make_ceiling, make_window
 from _props.food_service import make_coffee_pots  # noqa: F401 (unused, kept for parity)
 
@@ -65,6 +81,17 @@ COL_IRON_WM = (0.20, 0.19, 0.20, 1.0)
 COL_COPPER = (0.72, 0.42, 0.22, 1.0)
 COL_GLASS = (0.42, 0.52, 0.55, 0.6)
 COL_WOOL = (0.42, 0.46, 0.55, 1.0)
+YARD_Z = -0.40   # the ground round the cabin: the floor stands on a 0.40 m foundation (2026-10-08)
+
+
+def _sitka(prefix, x, y, r, h, trunk, crown):
+    """A Sitka spruce on the yard: a tapered trunk under a tiered,
+    drooping crown that starts a quarter of the way up."""
+    make_taper_cyl(f"{prefix}_Trunk", (x, y, YARD_Z + h / 2.0), r, r * 0.35, h, trunk, segments=8)
+    R, H = min(2.0, r * 6.5), h * 0.80
+    make_lathe(f"{prefix}_Crown", (x, y, YARD_Z + h * 0.25),
+               [(0.0, 0.0), (R, 0.10 * H), (R * 0.70, 0.30 * H), (R * 0.82, 0.32 * H), (R * 0.50, 0.55 * H),
+                (R * 0.62, 0.57 * H), (R * 0.30, 0.80 * H), (0.0, H)], crown, segments=10)
 
 
 from _props.structure import make_wall_with_openings   # (2026-10-07)
@@ -101,6 +128,9 @@ def build_shell():
     make_box("Thermometer_Tube", (0.0, 0.13, 2.60), (0.02, 0.02, 0.20), (0.72, 0.24, 0.20, 1.0))
     # The front door itself
     make_box("Front_Door", (0.0, 0.06, 1.05), (0.95, 0.05, 2.10), COL_WOOD_DK)
+    # the door's head, up to the wall above it (2026-10-08: a 0.40 m slot
+    # over the door showed the thermometer from the porch)
+    make_box("Wall_S_DoorHead", (0.0, 0.0, 2.30), (0.951, 0.20, 0.40), PAL_WALL["wall"])
     make_cyl("Door_Latch", (0.36, 0.10, 1.02), 0.025, 0.04, COL_IRON, axis='Y', segments=8)
     # Bedroom partition: the east room (Tem/Lena's) behind x=+1.0
     make_wall("East_Part", (1.0, 1.3, 0), length=2.6, height=CEIL, axis='Y', palette=PAL_WALL)
@@ -577,24 +607,29 @@ def build_through_windows_2026_08():
     trunk = (0.36, 0.28, 0.22, 1.0)
     canopy = (0.16, 0.24, 0.16, 1.0)
     fern = (0.24, 0.36, 0.20, 1.0)
-    # SOUTH · the stand, 5-8m past the wall
+    # SOUTH · the stand past the turnaround (2026-10-08: it stood 5-8 m
+    # out, where the turnaround and the porch went; tapered trunks under
+    # tiered crowns now, the canopy box gone)
     for ti, (tx3, ty3, tr3, th3) in enumerate((
-            (-3.2, -5.5, 0.28, 7.0), (-0.8, -7.0, 0.35, 8.5),
-            (1.6, -5.8, 0.26, 6.5), (3.4, -7.5, 0.32, 8.0))):
-        make_cyl("Thru_S_Sitka_%d" % ti, (tx3, ty3, th3 / 2.0), tr3, th3,
-                 trunk, segments=7)
-    make_box("Thru_S_Canopy", (0.0, -7.0, 6.4), (12.0, 4.5, 3.2), canopy)
-    make_box("Thru_S_FernLine", (0.0, -4.8, 0.35), (11.0, 1.4, 0.7), fern)
-    # NORTH · woodpile lean-to, a pale trunk, the creek strip
-    make_box("Thru_N_Leanto_Roof", (-2.6, 8.0, 1.7), (2.2, 1.4, 0.10),
+            (-3.6, -10.5, 0.30, 16.0), (-0.4, -12.0, 0.38, 19.0),
+            (2.8, -10.8, 0.28, 15.0), (5.6, -12.6, 0.34, 18.0))):
+        _sitka("Thru_S_Sitka_%d" % ti, tx3, ty3, tr3, th3, trunk, canopy)
+    for fi3, (fx3, fl3, fh3) in enumerate(((-4.2, 3.4, 0.55), (-0.6, 3.0, 0.70), (2.8, 3.6, 0.50), (6.0, 2.6, 0.62))):
+        make_chamfer_box("Thru_S_FernLine_%d" % fi3, (fx3, -9.4 - 0.2 * fi3, YARD_Z + fh3 / 2.0),
+                         (fl3, 1.3, fh3), fern, chamfer=0.12)
+    # NORTH · woodpile lean-to, a pale trunk, the creek strip — on the
+    # yard's ground (0.40 below the floor) and the roof on four posts
+    make_box("Thru_N_Leanto_Roof", (-2.6, 8.0, 1.30), (2.2, 1.4, 0.10),
              (0.40, 0.32, 0.24, 1.0))
-    make_box("Thru_N_Ground", (-2.6, 8.0, -0.02), (3.0, 2.4, 0.04), (0.30, 0.26, 0.20, 1.0))
-    for pi3, pz3 in enumerate((0.14, 0.42, 0.70)):
+    for pi4, (px4, py4) in enumerate(((-3.65, 7.35), (-1.55, 7.35), (-3.65, 8.65), (-1.55, 8.65))):
+        make_box("Thru_N_Leanto_Post_%d" % pi4, (px4, py4, (YARD_Z + 1.25) / 2.0), (0.08, 0.08, 1.25 - YARD_Z),
+                 (0.36, 0.28, 0.20, 1.0))
+    for pi3, pz3 in enumerate((-0.26, 0.02, 0.30)):
         make_box("Thru_N_Woodrow_%d" % pi3, (-2.6, 8.0, pz3), (2.0, 1.1, 0.28),
                  (0.48, 0.38, 0.26, 1.0))
-    make_cyl("Thru_N_PaleTrunk", (0.6, 9.5, 3.0), 0.30, 6.0,
-             (0.55, 0.50, 0.42, 1.0), segments=7)
-    make_box("Thru_N_CreekStrip", (0.0, 11.5, 0.02), (10.0, 1.2, 0.04),
+    make_taper_cyl("Thru_N_PaleTrunk", (0.6, 9.5, YARD_Z + 3.0), 0.30, 0.16, 6.0,
+                   (0.55, 0.50, 0.42, 1.0), segments=7)
+    make_box("Thru_N_CreekStrip", (0.0, 11.5, YARD_Z + 0.02), (10.0, 1.2, 0.04),
              (0.35, 0.42, 0.44, 0.9))
 
 
@@ -688,18 +723,17 @@ def build_hero_props_2026_09():
     # ── THE HANDS · blanket creases (blanket top 0.575) ──
     make_box("Hands_Blanket_Crease_A", (-2.25, 1.35, 0.581), (0.16, 0.05, 0.012), (0.50, 0.36, 0.27, 1.0))
     make_box("Hands_Blanket_Crease_B", (-2.20, 1.22, 0.580), (0.05, 0.13, 0.010), (0.48, 0.34, 0.26, 1.0))
-    # ── OUTSIDE · gravel turnaround north of the fern line ──
-    make_box("Gravel_Turnaround", (1.2, -2.4, -0.03), (10.0, 2.6, 0.05), (0.55, 0.52, 0.47, 1.0))
-    make_box("Finn_Truck_Body", (-1.15, -2.4, 0.62), (4.40, 1.80, 0.65), (0.44, 0.48, 0.42, 1.0))
-    make_box("Finn_Truck_Cab", (-1.85, -2.4, 1.22), (1.60, 1.70, 0.55), (0.40, 0.44, 0.38, 1.0))
-    for wi, (wx2, wy2) in enumerate(((-2.65, -1.375), (0.35, -1.375), (-2.65, -3.425), (0.35, -3.425))):
-        make_cyl(f"Finn_Truck_Wheel_{wi}", (wx2, wy2, 0.32), 0.32, 0.25, (0.14, 0.14, 0.15, 1.0), axis='Y', segments=10)
-    make_box("Station_Wagon_Body", (3.5, -2.4, 0.80), (4.60, 1.80, 0.70), (0.48, 0.36, 0.26, 1.0))
-    make_box("Station_Wagon_Cabin", (3.7, -2.4, 1.40), (3.00, 1.70, 0.50), (0.42, 0.32, 0.24, 1.0))
-    make_box("Station_Wagon_Windows", (3.7, -1.535, 1.40), (2.60, 0.030, 0.36), (0.26, 0.30, 0.36, 1.0))
-    make_box("Station_Wagon_Rack", (3.7, -2.4, 1.68), (2.40, 1.20, 0.06), (0.30, 0.30, 0.32, 1.0))
-    for wi2, (wx3, wy3) in enumerate(((2.0, -1.375), (5.0, -1.375), (2.0, -3.425), (5.0, -3.425))):
-        make_cyl(f"Station_Wagon_Wheel_{wi2}", (wx3, wy3, 0.34), 0.34, 0.25, (0.14, 0.14, 0.15, 1.0), axis='Y', segments=10)
+    # ── OUTSIDE · "the small gravel turnaround in front of the cabin's
+    # porch" (2026-10-08: it moved south of the new porch, onto the yard's
+    # ground 0.40 below the cabin floor; the two vehicles are the kit's
+    # cars, parked nose-in to the porch either side of the steps — they
+    # were four boxes each, standing where the porch now is)
+    from _props.vehicles import make_car
+    make_cyl("Gravel_Turnaround", (0.2, -5.9, YARD_Z + 0.006), 3.6, 0.012, (0.42, 0.40, 0.36, 1.0), segments=20)   # round, and a tone off the dirt (a pale slab on the 10-08 sheet)
+    make_car("Finn_Truck", -3.3, -5.7, 4.8, (0.44, 0.48, 0.42, 1.0), pickup=True, along="Y", z0=YARD_Z)
+    make_car("Station_Wagon", 3.7, -5.9, 5.0, (0.48, 0.36, 0.26, 1.0), along="Y", z0=YARD_Z)
+    # the wagon's roof rack, on the roofline (z0 + 1.46)
+    make_box("Station_Wagon_Rack", (3.7, -6.2, YARD_Z + 1.48), (1.20, 1.40, 0.04), (0.30, 0.30, 0.32, 1.0))
 
 
 def build_kerosene_infra_2026_09():
@@ -735,6 +769,263 @@ def build_door_infill_front_door_2026_09():
     make_wall("Wall_Fill_Front_Door_W", (-0.738, 0.000, 0), length=0.525, height=2.500, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
     make_wall("Wall_Fill_Front_Door_E", (0.738, 0.000, 0), length=0.525, height=2.500, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
 
+def _prism_ccw(name, center, poly, length, col, axis="X"):
+    """make_prism wants the polygon counter-clockwise; take it either way."""
+    area = sum(poly[i][0] * poly[(i + 1) % len(poly)][1] - poly[(i + 1) % len(poly)][0] * poly[i][1]
+               for i in range(len(poly)))
+    make_prism(name, center, poly if area > 0 else list(reversed(poly)), length, col, axis=axis)
+
+
+def build_exterior_2026_10():
+    """THE OUTSIDE OF THE CABIN (2026-10-08). Twelve vol 7 chapters are
+    set on the cabin's porch and they were shot on the Millers' TEXAS
+    back porch — a different house in a different state — because the
+    cabin had no outside: a box of walls with a flat lid, on nothing,
+    the vehicles parked against the front wall. To build a porch the
+    cabin needs the rest of a building first:
+
+    - a gable ROOF on the walls (ridge E-W over the room's middle, the
+      eaves overhanging 0.45 m), the gable ends filled;
+    - the FOUNDATION: the floor stands 0.40 m over the yard (a cabin
+      in a rain forest is never on the dirt), a stone course round it;
+    - board SIDING lines on the outside faces, broken at the openings;
+    - the STOVEPIPE outside, out of the north wall and up past the eave;
+    - the YARD: ground to the forest, Sitkas round the clearing and a
+      dark band past them where the set ends.
+    """
+    ground = (0.31, 0.28, 0.21, 1.0)
+    stone = (0.42, 0.41, 0.38, 1.0)
+    shake = (0.30, 0.25, 0.21, 1.0)
+    seam = (0.40, 0.29, 0.19, 1.0)
+    make_box("Yard_Ground", (0.0, -2.0, YARD_Z - 0.02), (32.0, 36.0, 0.04), ground)
+    # foundation: a stone course under the walls, floor to ground
+    fz, fh = YARD_Z / 2.0, -YARD_Z
+    make_box("Foundation_S", (0.0, 0.0, fz), (ROOM_W + 0.2, 0.20, fh), stone)
+    make_box("Foundation_N", (0.0, ROOM_D, fz), (ROOM_W + 0.2, 0.20, fh), stone)
+    for e, nm in ((-1, "W"), (1, "E")):
+        make_box(f"Foundation_{nm}", (e * ROOM_W / 2.0, ROOM_D / 2.0, fz), (0.20, ROOM_D - 0.2, fh), stone)
+    # the roof: two slabs from eave to ridge, the gable ends under them
+    pitch = 0.60
+    under_s = lambda y: CEIL + pitch * (y + 0.20)              # on the side walls' outer corners (y -0.20 / 6.20)
+    ridge_y = ROOM_D / 2.0
+    ridge_z = under_s(ridge_y)
+    eave = 0.45
+    th = 0.18
+    # each slab in two: the eave past the wall's outside face, the main
+    # plane from that face up (the recorder reads a prism as its bounding
+    # box — one piece would read as a roof sunk into every wall top)
+    def slab(name, ya, yb, under):
+        _prism_ccw(name, (0.0, 0.0, 0.0),
+                   [(ya, under(ya)), (yb, under(yb)), (yb, under(yb) + th), (ya, under(ya) + th)], ROOM_W + 1.2, shake)
+    under_n = lambda y: ridge_z - pitch * (y - ridge_y)
+    slab("Roof_S_Eave", -0.20 - eave, -0.20, under_s)
+    slab("Roof_S", -0.20, ridge_y, under_s)
+    slab("Roof_N", ridge_y, ROOM_D + 0.20, under_n)
+    slab("Roof_N_Eave", ROOM_D + 0.20, ROOM_D + 0.20 + eave, under_n)
+    # the frieze boards close the slit between the wall tops and the roof
+    for e, nm in ((-1, "S"), (1, "N")):
+        make_box(f"Roof_Frieze_{nm}", (0.0, ROOM_D / 2.0 + e * (ROOM_D / 2.0 + 0.103), CEIL - 0.05), (ROOM_W - 0.2, 0.006, 0.10), shake)
+    make_box("Roof_Ridge", (0.0, ridge_y, ridge_z + th + 0.03), (ROOM_W + 1.2, 0.26, 0.06), (0.24, 0.20, 0.17, 1.0))
+    for e, nm in ((-1, "W"), (1, "E")):
+        _prism_ccw(f"Gable_{nm}", (e * ROOM_W / 2.0, 0.0, 0.0),
+                   [(-0.20, CEIL), (ROOM_D + 0.20, CEIL), (ridge_y, ridge_z - 0.02)], 0.20, PAL_WALL["wall"])
+        # the gable's vent, under the ridge
+        make_box(f"Gable_{nm}_Vent", (e * (ROOM_W / 2.0 + 0.105), ridge_y, ridge_z - 0.55), (0.01, 0.40, 0.30), (0.20, 0.15, 0.11, 1.0))
+    # siding: the board lines on the outside faces, broken at the openings
+    def rows(lo, hi, holes):
+        """[lo, hi] minus the hole spans → the board runs."""
+        runs, cur = [], lo
+        for a, b in sorted(holes):
+            if a > cur:
+                runs.append((cur, a))
+            cur = max(cur, b)
+        if cur < hi:
+            runs.append((cur, hi))
+        return runs
+    s_holes = [((-2.55, -1.45), (0.95, 1.95)), ((1.525, 2.475), (0.975, 1.925)), ((-0.50, 0.50), (0.0, 2.10))]
+    e_holes = [((0.92, 1.98), (1.34, 2.16)), ((3.58, 4.82), (1.13, 2.07))]
+    for k in range(1, 15):
+        z = k * 0.225
+        if z > CEIL - 0.30:
+            break
+        for ri, (a, b) in enumerate(rows(-2.9, 2.9, [h[0] for h in s_holes if h[1][0] - 0.01 < z < h[1][1] + 0.01])):
+            if b - a > 0.05:
+                make_box(f"Siding_S_{k}_{ri}", ((a + b) / 2.0, -0.103, z), (b - a, 0.006, 0.012), seam)
+        for ri, (a, b) in enumerate(rows(-0.20, ROOM_D - 0.10, [h[0] for h in e_holes if h[1][0] - 0.01 < z < h[1][1] + 0.01])):
+            if b - a > 0.05:
+                make_box(f"Siding_E_{k}_{ri}", (ROOM_W / 2.0 + 0.103, (a + b) / 2.0, z), (0.006, b - a, 0.012), seam)
+        make_box(f"Siding_W_{k}", (-ROOM_W / 2.0 - 0.103, (ROOM_D - 0.30) / 2.0, z), (0.006, ROOM_D - 0.10, 0.012), seam)
+    # the stovepipe outside: out of the thimble, past the eave, up over the roof
+    sx, pz = 2.3, 2.48
+    py = ROOM_D + 0.20 + eave + 0.20
+    make_tube("Stove_Pipe_Out", [(sx, ROOM_D + 0.10, pz), (sx, py - 0.12, pz), (sx, py, pz + 0.12)], 0.09, COL_IRON_WM, segments=10)
+    make_cyl("Stove_Pipe_Out_Rise", (sx, py, (pz + 0.12 + ridge_z + 0.9) / 2.0), 0.09, ridge_z + 0.9 - pz - 0.12, COL_IRON_WM, segments=10)
+    make_lathe("Stove_Pipe_Out_Cap", (sx, py, ridge_z + 0.9),
+               [(0.10, 0.0), (0.10, 0.06), (0.0, 0.06), (0.0, 0.10), (0.20, 0.10), (0.0, 0.20)], COL_IRON, segments=10)
+    # the clearing's edge: Sitkas round the cabin, a dark band past them
+    trunk = (0.36, 0.28, 0.22, 1.0)
+    crown = (0.16, 0.24, 0.16, 1.0)
+    for ti, (tx, ty, tr, tht) in enumerate((
+            (-6.6, -3.2, 0.32, 17.0), (-7.4, 1.8, 0.36, 19.0), (-6.2, 6.4, 0.30, 16.0),
+            (6.6, -2.4, 0.30, 16.0), (7.2, 2.8, 0.38, 20.0), (6.4, 7.4, 0.32, 17.0),
+            (3.6, 11.0, 0.34, 18.0), (-5.6, 11.6, 0.30, 16.0))):
+        _sitka(f"Yard_Sitka_{ti}", tx, ty, tr, tht, trunk, crown)
+    band = (0.10, 0.15, 0.11, 1.0)
+    make_box("Forest_Band_S", (0.0, -18.0, YARD_Z + 7.0), (32.0, 1.0, 14.0), band)
+    make_box("Forest_Band_N", (0.0, 15.5, YARD_Z + 7.0), (32.0, 1.0, 14.0), band)
+    for e, nm in ((-1, "W"), (1, "E")):
+        make_box(f"Forest_Band_{nm}", (e * 15.5, -1.25, YARD_Z + 7.0), (1.0, 32.5, 14.0), band)
+
+
+def build_porch_2026_10():
+    """TEM'S PORCH (2026-10-08) — "the small porch", from the prose:
+
+    - "He came up the porch steps" · "The figure walked down the porch
+      steps": the deck stands 0.40 over the yard, one step between.
+    - "She set the coffee on the porch railing" (ch5): her mug on the
+      rail cap.
+    - "a piece of cedar, the size of his thumb ... on the porch rail"
+      (ch13): Eddvard's hand, palm-up, the fingers slightly curled.
+    - "the small tin Tem kept on the porch for the people who smoked"
+      (ch13): on the rail at the east end, a butt in it.
+    - "The crow was on the porch railing" (ch15): on the west rail.
+    - "The light from the cabin's south window threw a square of yellow
+      onto the porch boards": the deck runs under both south windows.
+    - "Per's old Buick at an angle on the porch side" · "the small
+      gravel turnaround in front of the cabin's porch".
+    Plus what a porch in a wet forest holds: the bench under the west
+    window, one chair, boots by the door, the firewood under the east
+    window out of the rain, a rain barrel at the corner, the chopping
+    block in the yard. No porch lamp — there are no wires up here.
+
+    The deck runs between the side walls' ends (x ±2.90), from the
+    south wall's face to y -1.92; the shed roof hangs off a ledger on
+    the wall and lands on a beam on four posts.
+    """
+    deck_col = (0.46, 0.35, 0.24, 1.0)
+    deck_seam = (0.28, 0.20, 0.13, 1.0)
+    rail_col = (0.40, 0.30, 0.20, 1.0)
+    X0, X1 = -2.90, 2.90
+    Y0, Y1 = -0.10, -1.92
+    make_box("Porch_Deck", (0.0, (Y0 + Y1) / 2.0, -0.02), (X1 - X0, Y0 - Y1, 0.04), deck_col)
+    n = int((X1 - X0) / 0.14)
+    for i in range(1, n):
+        x = X0 + i * (X1 - X0) / n
+        make_box(f"Porch_Deck_Seam_{i}", (x, (Y0 + Y1) / 2.0, 0.0015), (0.006, Y0 - Y1 - 0.02, 0.003), deck_seam)
+    # the rim and the skirt down to the yard
+    make_box("Porch_Skirt_S", (0.0, Y1 + 0.02, (YARD_Z - 0.04) / 2.0), (X1 - X0, 0.04, -0.04 - YARD_Z), COL_WOOD_DK)
+    for e, nm in ((-1, "W"), (1, "E")):
+        make_box(f"Porch_Skirt_{nm}", (e * (X1 - 0.02), (Y0 + Y1 + 0.04) / 2.0, (YARD_Z - 0.04) / 2.0),
+                 (0.04, Y0 - Y1 - 0.04, -0.04 - YARD_Z), COL_WOOD_DK)
+    # the step, centred on the door
+    make_box("Porch_Step_0", (0.0, Y1 - 0.16, (YARD_Z - 0.20) / 2.0), (1.24, 0.32, -0.20 - YARD_Z), deck_col)
+    make_box("Porch_Step_0_Nosing", (0.0, Y1 - 0.315, -0.215), (1.24, 0.03, 0.03), COL_WOOD_DK)
+    # posts, the beam on them, the ledger on the wall, the shed roof between
+    PY = -1.80
+    post_xs = (-2.80, -0.70, 0.70, 2.80)
+    beam_top = 2.66
+    for pi, px in enumerate(post_xs):
+        make_box(f"Porch_Post_{pi}", (px, PY, (beam_top - 0.16) / 2.0), (0.12, 0.12, beam_top - 0.16), rail_col)
+    make_box("Porch_Beam", (0.0, PY, beam_top - 0.08), (X1 - X0, 0.14, 0.16), rail_col)
+    make_box("Porch_Ledger", (0.0, Y0 - 0.03, 2.86), (X1 - X0, 0.06, 0.14), rail_col)
+    r_wall, r_beam = 2.94, beam_top
+    slope = (r_wall - r_beam) / (Y0 - 0.06 - PY)
+    _prism_ccw("Porch_Roof", (0.0, 0.0, 0.0),
+               [(Y0 - 0.06, r_wall), (Y1 - 0.14, r_beam - slope * (PY - Y1 + 0.14)),
+                (Y1 - 0.14, r_beam - slope * (PY - Y1 + 0.14) + 0.08), (Y0 - 0.06, r_wall + 0.08)],
+               X1 - X0 - 0.02, (0.34, 0.28, 0.23, 1.0))
+    make_box("Porch_Roof_Fascia", (0.0, Y1 - 0.15, r_beam - slope * (PY - Y1 + 0.14) - 0.02), (X1 - X0 - 0.02, 0.02, 0.14), rail_col)
+    # railings: the south run in two halves (the steps between the middle
+    # posts), the west and east runs from the wall to the corner posts.
+    # A wide flat cap — the coffee, the tin and the cedar sit on it.
+    CAP = 0.94
+    def run(tag, a, b, fixed, axis):
+        L, mid = b - a, (a + b) / 2.0
+        if axis == 'X':
+            make_chamfer_box(f"{tag}_Cap", (mid, fixed, CAP - 0.02), (L, 0.12, 0.04), rail_col, chamfer=0.008)
+            make_box(f"{tag}_Bottom", (mid, fixed, 0.12), (L, 0.06, 0.05), rail_col)
+        else:
+            make_chamfer_box(f"{tag}_Cap", (fixed, mid, CAP - 0.02), (0.12, L, 0.04), rail_col, chamfer=0.008)
+            make_box(f"{tag}_Bottom", (fixed, mid, 0.12), (0.06, L, 0.05), rail_col)
+        k = max(1, int(L / 0.14))
+        for i in range(k):
+            t = a + (i + 0.5) * L / k
+            make_box(f"{tag}_Bal_{i}", (t, fixed, (0.145 + CAP - 0.04) / 2.0) if axis == 'X' else (fixed, t, (0.145 + CAP - 0.04) / 2.0),
+                     (0.04, 0.04, CAP - 0.04 - 0.145), rail_col)
+    run("Porch_Rail_SW", post_xs[0] + 0.06, post_xs[1] - 0.06, PY, 'X')
+    run("Porch_Rail_SE", post_xs[2] + 0.06, post_xs[3] - 0.06, PY, 'X')
+    run("Porch_Rail_W", PY + 0.06, Y0 - 0.01, post_xs[0], 'Y')
+    run("Porch_Rail_E", PY + 0.06, Y0 - 0.01, post_xs[3], 'Y')
+    # ── the rail's three things ──
+    cedar = (0.62, 0.43, 0.26, 1.0)
+    cedar_wet = (0.48, 0.32, 0.20, 1.0)
+    # Eddvard's hand: "a piece of cedar, the size of his thumb, not
+    # recently placed by the wet color of it" — palm-up, fingers curled
+    hx, hy = -1.30, PY
+    make_chamfer_box("Porch_Cedar_Hand", (hx, hy, CAP + 0.0125), (0.075, 0.040, 0.025), cedar_wet, chamfer=0.006)
+    make_cyl("Porch_Cedar_Hand_Palm", (hx + 0.008, hy, CAP + 0.0255), 0.014, 0.002, cedar, segments=8)
+    for fi in range(4):
+        make_box(f"Porch_Cedar_Hand_Finger_{fi}", (hx - 0.024, hy - 0.012 + fi * 0.008, CAP + 0.027), (0.018, 0.005, 0.004), cedar)
+    # her coffee, set on the railing when she saw it was Finn's truck
+    mx, my = 1.25, PY
+    make_lathe("Porch_Coffee_Mug", (mx, my, CAP),
+               [(0.038, 0.0), (0.042, 0.006), (0.044, 0.09), (0.046, 0.10), (0.040, 0.10), (0.0, 0.095)],
+               (0.82, 0.78, 0.70, 1.0), segments=12)
+    make_cyl("Porch_Coffee_Mug_Coffee", (mx, my, CAP + 0.088), 0.038, 0.004, (0.22, 0.14, 0.09, 1.0), segments=12)
+    make_tube("Porch_Coffee_Mug_Handle", [(mx + 0.044, my, CAP + 0.075), (mx + 0.070, my, CAP + 0.068),
+                                          (mx + 0.072, my, CAP + 0.035), (mx + 0.044, my, CAP + 0.028)],
+              0.007, (0.82, 0.78, 0.70, 1.0), segments=5)
+    # the smokers' tin, at the east end of the rail, a butt in it
+    tx, ty = 2.45, PY
+    make_lathe("Porch_Cigarette_Tin", (tx, ty, CAP),
+               [(0.045, 0.0), (0.048, 0.004), (0.048, 0.028), (0.044, 0.028), (0.044, 0.006), (0.0, 0.006)],
+               (0.56, 0.58, 0.58, 1.0), segments=12)
+    make_cyl("Porch_Cigarette_Ash", (tx, ty, CAP + 0.008), 0.040, 0.004, (0.36, 0.35, 0.33, 1.0), segments=10)
+    make_cyl("Porch_Cigarette_Butt", (tx + 0.005, ty + 0.01, CAP + 0.016), 0.0045, 0.030, (0.90, 0.86, 0.76, 1.0), axis='X', segments=6)
+    make_cyl("Porch_Cigarette_Butt_Filter", (tx - 0.014, ty + 0.01, CAP + 0.016), 0.0046, 0.010, (0.80, 0.56, 0.32, 1.0), axis='X', segments=6)
+    # the crow, on the west rail
+    from _props.creatures import make_crow
+    make_crow("Porch_Crow", post_xs[0], -1.05, CAP, facing=1.0)
+    # ── against the wall ──
+    # the bench under the west window
+    bx = -2.00
+    make_chamfer_box("Porch_Bench_Seat", (bx, -0.42, 0.45), (1.40, 0.40, 0.05), rail_col, chamfer=0.01)
+    make_box("Porch_Bench_Back", (bx, -0.245, 0.675), (1.40, 0.05, 0.40), rail_col)   # on the seat's back edge
+    for li, (lx, ly) in enumerate(((bx - 0.62, -0.60), (bx + 0.62, -0.60), (bx - 0.62, -0.26), (bx + 0.62, -0.26))):
+        make_box(f"Porch_Bench_Leg_{li}", (lx, ly, 0.2125), (0.05, 0.05, 0.425), rail_col)
+    # a folded wool blanket on the bench's end (the cedar chest's blankets go everywhere)
+    make_chamfer_box("Porch_Bench_Blanket", (bx - 0.45, -0.44, 0.50), (0.36, 0.30, 0.05), COL_WOOL, chamfer=0.012)
+    # one kit chair east of the door, facing the yard
+    make_chair("Porch_Chair", 1.30, -0.70, yaw=3.1416, wood=rail_col, w=0.44)
+    # boots by the door, out of the swing
+    for bi, bxx in enumerate((-1.12, -0.97)):
+        make_chamfer_box(f"Porch_Boot_{bi}_Foot", (bxx, -0.34, 0.04), (0.10, 0.26, 0.08), (0.16, 0.18, 0.15, 1.0), chamfer=0.02)
+        make_cyl(f"Porch_Boot_{bi}_Shaft", (bxx, -0.27, 0.23), 0.055, 0.30, (0.16, 0.18, 0.15, 1.0), segments=10)
+    make_box("Porch_Doormat", (0.0, -0.40, 0.006), (0.85, 0.50, 0.012), (0.36, 0.30, 0.22, 1.0))
+    # the firewood under the east window, out of the rain
+    for r in range(3):
+        for c in range(3):
+            make_cyl(f"Porch_Firewood_{r}_{c}", (2.42, -0.24 - c * 0.155, 0.075 + r * 0.14),
+                     0.072, 0.56, COL_WOOD if (r + c) % 2 else COL_WOOD_DK, segments=7, axis='X')
+    # ── off the porch ──
+    # the rain barrel at the west corner, under the eave's drip line
+    make_lathe("Rain_Barrel", (-3.62, -0.62, YARD_Z),
+               [(0.27, 0.0), (0.30, 0.04), (0.32, 0.42), (0.30, 0.82), (0.28, 0.86), (0.0, 0.85)],
+               (0.30, 0.34, 0.30, 1.0), segments=14)
+    make_cyl("Rain_Barrel_Water", (-3.62, -0.62, YARD_Z + 0.845), 0.27, 0.006, (0.20, 0.24, 0.24, 1.0), segments=14)
+    for hi, hz in enumerate((0.16, 0.68)):
+        make_cyl(f"Rain_Barrel_Hoop_{hi}", (-3.62, -0.62, YARD_Z + hz), 0.315, 0.03, COL_IRON, segments=14)
+    # the chopping block in the yard, the axe laid across it
+    cbx, cby = 4.6, -1.2
+    make_lathe("Chopping_Block", (cbx, cby, YARD_Z),
+               [(0.28, 0.0), (0.26, 0.04), (0.25, 0.44), (0.0, 0.44)], (0.50, 0.40, 0.28, 1.0), segments=12)
+    make_cyl("Chopping_Block_Rings", (cbx, cby, YARD_Z + 0.441), 0.18, 0.002, (0.62, 0.50, 0.34, 1.0), segments=12)
+    make_box("Chopping_Block_Axe_Handle", (cbx + 0.12, cby, YARD_Z + 0.457), (0.62, 0.035, 0.03), (0.66, 0.52, 0.32, 1.0))
+    make_box("Chopping_Block_Axe_Head", (cbx - 0.16, cby, YARD_Z + 0.462), (0.06, 0.16, 0.04), COL_IRON)
+    for ci, (sx2, sy2, syaw) in enumerate(((4.2, -1.55, 0.3), (4.95, -0.85, 1.4), (4.4, -0.70, 2.2))):
+        make_rot_box(f"Chopping_Block_Split_{ci}", (sx2, sy2, YARD_Z + 0.05), (0.36, 0.10, 0.10), COL_WOOD, yaw=syaw)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -750,6 +1041,8 @@ def main():
     build_through_windows_2026_08()
     build_hero_props_2026_09()
     build_kerosene_infra_2026_09()
+    build_exterior_2026_10()
+    build_porch_2026_10()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/cabin_interior.glb"))
     build_door_infill_front_door_2026_09()

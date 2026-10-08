@@ -84,6 +84,23 @@ henderson) got there by accumulating exactly these layers.
 
 ## Recent lessons
 
+### 2026-10-08 · a scene can be on the wrong HOUSE, and a set can need an outside
+
+- Twelve vol 7 scenes on Tem's Oregon cabin porch were shot on the
+  Millers' Texas back porch (`miller_back_porch`), the nearest preset
+  with "porch" in its name. Check a preset against the chapter's
+  geography as well as its room noun: whose house, which state, and
+  which volume's cast stands there. Find the borrowed presets by listing
+  each preset's chapters by volume. A preset used across volumes that
+  never share a location is the tell.
+- A locale can have NO outside: the cabin was walls with a flat lid on
+  nothing. Before a porch, a stoop or a yard can be built, the building
+  needs a roof, a foundation (and so a ground lower than its floor),
+  exterior faces and a clearing with an edge. Build the exterior on the
+  interior's set and give it its own preset with `__<preset>` markers
+  (Background3D.find_shot_marker). Otherwise the plain interior markers
+  cut every porch scene's establish rotation and closeups back inside.
+
 ### 2026-10-08 · read the chapter before the builder: a room can be the wrong room
 
 - caldwell_radio_room_night was a broadcast booth with an ON AIR sign. Ch5
