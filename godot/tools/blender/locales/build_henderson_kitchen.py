@@ -175,6 +175,13 @@ def build_hero_props():
     make_box("Basement_Well_Ceiling", (wx0 + span / 2.0, 1.6, 2.15), (span, wy1 - wy0, 0.10), well)
     make_box("Basement_Well_End", (wx0 + span + 0.05, 1.6, (CEIL - 1.9) / 2.0), (0.10, wy1 - wy0 + 0.20, CEIL + 1.9), (0.06, 0.05, 0.05, 1.0))
     make_box("Basement_Well_Floor", (wx0 + span - 0.20, 1.6, -1.90), (0.50, wy1 - wy0, 0.06), (0.10, 0.09, 0.08, 1.0))
+    # the bare bulb on its long cord near the well's foot, lit low — what
+    # little light comes up the stairs past the cracked door (ch7: "His
+    # eyes adjust to the kitchen light")
+    bx_ = wx0 + span - 0.35
+    make_cyl("Basement_Bulb_Cord", (bx_, 1.6, (2.10 + 0.36) / 2.0), 0.004, 2.10 - 0.36, (0.10, 0.10, 0.10, 1.0), segments=4)
+    make_cyl("Basement_Bulb_Socket", (bx_, 1.6, 0.34), 0.02, 0.05, (0.20, 0.18, 0.16, 1.0), segments=8)
+    make_cyl("Basement_Bulb", (bx_, 1.6, 0.28), 0.035, 0.08, (1.0, 0.90, 0.66, 1.0), segments=8)
     make_tube("Basement_Handrail", [(wx0 + 0.45, wy1 - 0.06, 0.88), (wx0 + span - 0.10, wy1 - 0.06, 0.88 - 1.71)], 0.02, wood)
     # Stair mouth (up), S gap edge
     make_box("Stair_Newel", (0.92, 0.15, 0.60), (0.10, 0.10, 1.20), wood)

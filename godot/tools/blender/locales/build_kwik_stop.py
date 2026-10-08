@@ -865,25 +865,34 @@ def build_newspaper_stack():
 
 
 def build_magazine_rack():
-    # Slanted magazine rack against the west wall, near windows
-    mrx, mry = -5.30, 2.35   # clear of the coffee counter's south end (2026-09-22: 20 cm into it)
-    # Body
-    make_box("MagRack_Body", (mrx, mry, 0.92),
-             (0.36, 1.10, 1.84), COL_METAL_BLACK)
-    # 5 slanted shelves with magazines
+    # A stepped magazine rack against the west wall, near the windows
+    # (2026-10-07: it was a solid black 0.36 x 1.10 x 1.84 box with its
+    # shelves and magazines modelled INSIDE it). Now: a plinth, two side
+    # panels and a back on the wall face, five tiers stepping back as
+    # they rise, each a ledge with a lip and a riser, and the covers faced
+    # out four to a tier — masthead band, cover photo.
+    mrx_front, mry, L = -5.30, 2.35, 1.10
+    back = -5.886                                  # on the baseboard's face
+    blk = COL_METAL_BLACK
+    make_box("MagRack_Plinth", ((back + mrx_front) / 2.0, mry, 0.105), (mrx_front - back, L, 0.21), blk)
+    make_box("MagRack_Back", (back + 0.015, mry, 0.95), (0.03, L, 1.90), blk)
+    for e in (-1, 1):
+        make_box(f"MagRack_Side_{e:+d}", ((back + mrx_front) / 2.0, mry + e * (L / 2.0 + 0.015), 0.95),
+                 (mrx_front - back, 0.03, 1.90), blk)
+    masts = ((0.96, 0.96, 0.94, 1.0), (0.82, 0.16, 0.14, 1.0), (0.14, 0.14, 0.16, 1.0), (0.96, 0.84, 0.20, 1.0))
     for i in range(5):
-        sy = mry - 0.46 + i * 0.24
-        # Shelf
-        make_box(f"MagRack_Shelf_{i}",
-                 (mrx, sy, 0.46 + i * 0.24),
-                 (0.36, 0.24, 0.02), COL_METAL_STEEL)
-        # Magazines (slanted so we see the cover)
-        for m in range(2):
-            mx = mrx + 0.04 - m * 0.04
-            col = SNACK_TINTS[(i + m * 2) % len(SNACK_TINTS)]
-            make_box(f"MagRack_Mag_{i}_{m}",
-                     (mx, sy + 0.02, 0.62 + i * 0.24),
-                     (0.10, 0.18, 0.26), col)
+        xf = mrx_front - 0.02 - i * 0.11            # this tier's front edge
+        z = 0.22 + i * 0.30                         # its ledge top
+        make_box(f"MagRack_Shelf_{i}", (xf - 0.05, mry, z - 0.01), (0.10, L, 0.02), COL_METAL_STEEL)
+        make_box(f"MagRack_Lip_{i}", (xf + 0.005, mry, z + 0.015), (0.01, L, 0.05), COL_METAL_STEEL)
+        make_box(f"MagRack_Riser_{i}", (xf - 0.105, mry, z + 0.15), (0.01, L, 0.30), blk)
+        for m in range(4):
+            y = mry - 0.405 + m * 0.27
+            tag = f"MagRack_Stock_{i}_{m}"
+            make_box(tag, (xf - 0.03, y, z + 0.14), (0.012, 0.21, 0.28), SNACK_TINTS[(i * 3 + m) % len(SNACK_TINTS)])
+            make_box(f"{tag}_Masthead", (xf - 0.0235, y, z + 0.245), (0.001, 0.21, 0.05), masts[(i + m) % len(masts)])
+            make_box(f"{tag}_Photo", (xf - 0.0235, y + 0.01, z + 0.12), (0.001, 0.15, 0.13),
+                     ((0.62, 0.48, 0.40, 1.0), (0.30, 0.38, 0.52, 1.0), (0.48, 0.56, 0.36, 1.0))[(i + 2 * m) % 3])
 
 
 # ════════════════════════════════════════════════════════════════

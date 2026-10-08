@@ -3680,6 +3680,31 @@ two, one with red labels and crimped tops; the beer 30-racks as cases,
 two courses a layer, banded faces and handle cuts — all joined as
 stock.
 
+**2026-10-08 · draft N+2 items.** Henderson: the bare bulb on its long
+cord near the well's foot, lit low (`Basement_Bulb_Practical`, 0.55) —
+ch7: "His eyes adjust to the kitchen light" — the only light past the
+cracked door. The Kwik Stop's magazine rack was a solid black 0.36 x
+1.10 x 1.84 box with its shelves and magazines modelled INSIDE it: now a
+plinth, sides and a back on the west wall's face, five tiers stepping
+back as they rise (ledge, lip, riser), four covers a tier with
+mastheads and cover photos. The Centro office "door at the stair head"
+was moot — the ship's stair rises through a hatch INSIDE the office.
+Deck must REBUILD henderson_kitchen and kwik_stop.
+
+**2026-10-08 · THE VOL 6 CONTACT SHEET, first findings.** Every vol 6
+preset rendered in its chapter mood and tiled (`$S/montage.py`). First
+nine frames: Sam's and Maya's rooms read as ONE room — the same three
+"posters" on the west wall, each a tan sheet with a dark block and bar
+(empty frames on the sheet), Maya's third half behind her corkboard.
+`decor.make_faded_poster` now draws a DESIGN — band bill, movie
+one-sheet, comic page, sports — sun-faded, with a white margin, picked
+by `kind=` or by the prefix's hash, so all 38 rooms that hang posters
+vary without edits (0 floats, 0 clips across the 38). Sam's three are
+chosen (comic, one-sheet, show bill); Maya's west wall is hers now: a
+mandala tapestry in lavender and teal on its rod, fringe loose, clear of
+the corkboard. Deck must REBUILD every poster room (list_stale_builds
+finds them: decor.py changed).
+
 NEXT (queued): Bianca's kitchen is the Miller kitchen again —
 `bianca_kitchen_morning` (ch 22 / 23) and `miller_kitchen` are one room
 on Meadowlark Circle (the cul-de-sac through the window, the green robe

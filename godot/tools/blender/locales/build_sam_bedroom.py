@@ -95,7 +95,8 @@ def build_posters():
     # Comic / movie posters along the west wall
     for pi in range(3):
         px = -ROOM_W/2.0+0.05; py = 1.0 + pi*1.5
-        make_faded_poster(f"Poster_W_{pi}", (px + 0.0535, py, 1.55), into_room=+1)
+        make_faded_poster(f"Poster_W_{pi}", (px + 0.0535, py, 1.55), into_room=+1,
+                          kind=("comic", "movie", "band")[pi])   # his: a comic page, a one-sheet, a show bill (2026-10-08)
 
 def build_rug():
     make_cyl("Rug", (0.0, ROOM_D/2.0, 0.012), 1.20, 0.005, COL_BLUE_DK)

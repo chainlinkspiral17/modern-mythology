@@ -182,6 +182,14 @@ light_energy = 0.5
 shadow_enabled = false
 
 ; Overhead fluorescent practical
+; (2026-10-07) the basement's bare bulb, low, past the cracked door
+[node name="Basement_Bulb_Practical" type="OmniLight3D" parent="."]
+position = Vector3(5.750, 0.250, -1.600)
+light_color = Color(1.0, 0.82, 0.55, 1)
+light_energy = 0.55
+omni_range = 3.2
+shadow_enabled = false
+
 [node name="Practical_Overhead" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -2.75)
 light_color = Color(0.98, 0.92, 0.8, 1)

@@ -102,11 +102,25 @@ def build_desk_lamp():
                  P.SNACK_TINTS[bi%len(P.SNACK_TINTS)])
 
 def build_posters():
-    # Band / art posters along the west wall
-    for pi in range(3):
-        px = -ROOM_W/2.0+0.05
-        py = 1.0 + pi*1.5
-        make_faded_poster(f"Poster_W_{pi}", (px + 0.0535, py, 1.60), into_room=+1)
+    # HER west wall (2026-10-08): it carried the same three posters as
+    # Sam's, the third half behind her corkboard — on the contact sheet
+    # the two rooms were one room. A mandala tapestry in her lavender and
+    # teal, hung by its rod, its fringe loose; the corkboard stays hers.
+    wx = -ROOM_W/2.0 + 0.10 + 0.0025           # on the wall's face
+    ty, tz, tw, th = 2.10, 1.62, 1.50, 1.10
+    make_box("Tapestry_Body", (wx, ty, tz), (0.005, tw, th), (0.22, 0.38, 0.42, 1.0))
+    for k, (r, col) in enumerate(((0.46, (0.66, 0.56, 0.78, 1.0)), (0.36, (0.92, 0.88, 0.78, 1.0)),
+                                  (0.26, (0.30, 0.56, 0.58, 1.0)), (0.15, (0.82, 0.52, 0.58, 1.0)),
+                                  (0.06, (0.96, 0.90, 0.70, 1.0)))):
+        make_cyl(f"Tapestry_Ring_{k}", (wx + 0.0035 + 0.0021 * k, ty, tz), r, 0.002, col, axis='X', segments=20)
+    for ci, (dy, dz) in enumerate(((-0.58, 0.40), (0.58, 0.40), (-0.58, -0.40), (0.58, -0.40))):
+        make_cyl(f"Tapestry_Corner_{ci}", (wx + 0.0035, ty + dy, tz + dz), 0.08, 0.002, (0.66, 0.56, 0.78, 1.0), axis='X', segments=12)
+    for e in (-1, 1):
+        make_box(f"Tapestry_Border_{e:+d}", (wx + 0.0035, ty, tz + e * (th / 2.0 - 0.04)), (0.002, tw - 0.06, 0.03), (0.92, 0.88, 0.78, 1.0))
+    make_cyl("Tapestry_Rod", (wx + 0.012, ty, tz + th / 2.0 + 0.012), 0.012, tw + 0.12, (0.52, 0.40, 0.28, 1.0), axis='Y', segments=8)
+    for fi in range(14):
+        make_box(f"Tapestry_Fringe_{fi}", (wx, ty - tw / 2.0 + 0.06 + fi * (tw - 0.12) / 13.0, tz - th / 2.0 - 0.035),
+                 (0.004, 0.012, 0.07), (0.92, 0.88, 0.78, 1.0))
 
 def build_rug():
     make_cyl("Rug", (0.0, ROOM_D/2.0, 0.012), 1.20, 0.005, COL_ACCENT)
