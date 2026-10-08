@@ -151,6 +151,25 @@ Position note: lamp omnis are placed AT the lamp-head mesh position
 
 ## Recent lessons
 
+### 2026-10-08 · an OUTSIDE area of a shared set gets its own sun, and the sun follows the mood
+
+- The cabin's porch (`cabin_porch` preset, on cabin_interior.tscn) was lit
+  by the room's rig: a cool 0.45 key with no shadow. It read as dusk under
+  every look. Two mechanisms now:
+  - A Light3D named `<name>__<preset_id>` is dropped by Background3D for
+    every other preset of the set, before it enters the tree, the way the
+    `__preset` markers are. Only a suffix that names a real preset counts:
+    `Prac_PorchScreen_W__2` is a numbered copy and stays.
+  - A light carrying `metadata/daylight` stays out of the lighting-preset
+    rig. MoodCycler scales it by the mood's time of day
+    (`DAYLIGHT_BY_MOOD`: full by day, 0.35 at dusk, off under night and
+    candlelight_low). `[mood:]` is a post-process look and never touched
+    the lights, so a sun would otherwise shine through the porch's night
+    scenes.
+- One orthogonal shadow map (`directional_shadow_mode = 0`, 40 m) suits a
+  small exterior set.
+
+
 ### 2026-09-24 · the rooms with no key
 
 - **Fill + practicals is not a lighting rig.** Three rooms (equipment

@@ -595,3 +595,30 @@ metadata/fov = 45.0
 position = Vector3(-1.600, 1.600, 1.500)
 rotation = Vector3(-0.0644, -1.2083, 0)
 metadata/fov = 45.0
+
+; ── the porch's own light (2026-10-08) · cabin_porch only ──
+; The outside was lit by the room's rig (a cool 0.45 key with no shadow)
+; and read as dusk under morning_bright. A low ESE morning sun with
+; shadows (the eaves and the porch roof shade the wall; the rails throw
+; their bars on the boards; ONE orthogonal shadow map over 40 m — the
+; default cascades drew an arc seam across the shaded door) and a cool sky fill from the south onto the
+; front. Both carry metadata/daylight: MoodCycler scales them by the
+; mood's time of day (off under night / candlelight_low). The `__cabin_porch` suffix: Background3D drops these lights for
+; every other preset of this set, so the room inside never sees them.
+[node name="Porch_Sun__cabin_porch" type="DirectionalLight3D" parent="."]
+rotation = Vector3(-0.5410, 1.0300, 0)
+light_color = Color(1.0, 0.92, 0.80, 1)
+light_energy = 0.95
+shadow_enabled = true
+shadow_bias = 0.06
+shadow_normal_bias = 1.5
+directional_shadow_mode = 0
+directional_shadow_max_distance = 40.0
+metadata/daylight = true
+
+[node name="Porch_SkyFill__cabin_porch" type="DirectionalLight3D" parent="."]
+rotation = Vector3(-0.9500, 0.4000, 0)
+light_color = Color(0.62, 0.70, 0.82, 1)
+light_energy = 0.35
+shadow_enabled = false
+metadata/daylight = true

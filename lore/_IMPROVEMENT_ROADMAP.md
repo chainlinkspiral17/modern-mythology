@@ -3889,7 +3889,26 @@ RISES 1.8 m into the trees on a ring of berm heightfields, outside
 everything that stands in the clearing. The bands stand on the crest.
 Lesson: a flat ground plane that ends at a wall reads as a block. Run the
 ground UP to the set's edge.
-Deck must REBUILD cabin_interior. PORCH DRAFT 2 also:
+DRAFT 4 (same day):
+- The porch has its OWN light: a low east-southeast morning sun with
+  shadows plus a cool sky fill, named `__cabin_porch` so Background3D
+  drops them for the room's presets. They carry `metadata/daylight`, so
+  MoodCycler turns the sun down at dusk and off under night and
+  candlelight_low. The night porch is lit by the windows, as the prose
+  has it.
+- The crowns are greener.
+- Sword fern and salal line the berms' foot.
+- The front door is board-and-batten. As a flat slab the paint pass
+  blotched it into a giant disc.
+Deck must REBUILD cabin_interior. PORCH DRAFT 5:
+- the gravel road out of the clearing;
+- tiered two-tone crowns (the lit cones still read khaki);
+- the window's square of yellow on the boards at night;
+- moss on the roof;
+- siding as boards;
+- the shop's door and its path;
+- `insert door` reframed wider (fov 45 frames only the door's middle).
+Earlier list, kept:
 - an exterior light for the preset (the outside is lit by the interior's rig and reads dusky under morning_bright);
 - the gravel road out of the clearing;
 - tiered two-tone crowns;

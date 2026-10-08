@@ -1348,6 +1348,20 @@ var _light_lerp_target: Dictionary = {}   # the "to" preset
 # Two parallel arrays so we can scale directional vs practical
 # differently — sodium lamps off at midday, key sun pumped up.
 var _directional_lights: Array = []     # Array[DirectionalLight3D]
+# DAYLIGHT (2026-10-08): a light carrying `metadata/daylight` is the sun
+# of an OUTSIDE area of a set (the cabin's porch). [mood:] moods are a
+# post-process look and never touched the lights, so a porch sun shone
+# through every night scene. Such lights stay out of the lighting-preset
+# rig and follow the mood's time of day instead (DAYLIGHT_BY_MOOD; 1.0
+# for any mood not listed).
+var _daylight_lights: Array = []        # Array[Light3D]
+var _daylight_base_energy: Array = []   # Array[float]
+const DAYLIGHT_BY_MOOD := {
+	"dusk": 0.35, "golden_hour": 0.70, "blue_hour": 0.12, "dawn_warm": 0.55,
+	"night": 0.0, "midnight": 0.0, "3_47_am": 0.0, "candlelight_low": 0.0,
+	"liminal_night": 0.0, "sodium_streetlamp": 0.0, "convenience_night": 0.0,
+	"rain_interior": 0.25, "rainy_window": 0.25, "tv_glow_blue": 0.0,
+}
 var _directional_base_energy: Array[float] = []
 var _directional_base_color: Array[Color] = []
 var _directional_base_rotation: Array[Vector3] = []  # euler degrees, original
@@ -1548,7 +1562,10 @@ func _ready() -> void:
 
 
 func _collect_lights(node: Node) -> void:
-	if node is DirectionalLight3D:
+	if node is Light3D and node.has_meta("daylight"):
+		_daylight_lights.append(node)
+		_daylight_base_energy.append((node as Light3D).light_energy)
+	elif node is DirectionalLight3D:
 		_directional_lights.append(node)
 		_directional_base_energy.append((node as Light3D).light_energy)
 		_directional_base_color.append((node as Light3D).light_color)
@@ -1998,6 +2015,13 @@ func set_painted(on: bool) -> void:
 
 func _apply(preset_in: Dictionary) -> void:
 	var preset: Dictionary = preset_in
+	var day: float = float(DAYLIGHT_BY_MOOD.get(String(preset_in.get("name", "")), 1.0))
+	for i in range(_daylight_lights.size()):
+		if not is_instance_valid(_daylight_lights[i]):
+			continue
+		var dl: Light3D = _daylight_lights[i]
+		dl.light_energy = float(_daylight_base_energy[i]) * day
+		dl.visible = day > 0.0
 	if painted:
 		preset = preset_in.duplicate()
 		preset["palette"] = maxf(float(preset.get("palette", 12.0)), 24.0)

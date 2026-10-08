@@ -2499,6 +2499,12 @@ func load_location(preset_id: String) -> bool:
 	# Glass is glass (2026-10-02): the builders' vertex alpha becomes
 	# real transparency — before this every pane was an opaque slab.
 	GlassPass.apply(_location_instance)
+	# PER-PRESET LIGHTS (2026-10-08), the markers' convention carried to
+	# lights: a Light3D named `<name>__<preset_id>` belongs to that preset's
+	# AREA of a shared set and is dropped, before it enters the tree (so the
+	# mood stack never collects it), for every other preset. The cabin's
+	# porch has a morning sun; the room inside must not.
+	_strip_other_preset_lights(_location_instance, preset_id)
 	# CRITICAL: suppress interactive nodes BEFORE adding to tree.
 	# Once added, every script in the locale's _ready cascade caches
 	# references to the Player / HUD / etc — and the queue_free that
@@ -2526,6 +2532,21 @@ func load_location(preset_id: String) -> bool:
 		call_deferred("_reapply_locale_state")
 	call_deferred("_tell_mood_painted")    # after the locale's PostProcess _ready
 	return true
+
+
+func _strip_other_preset_lights(root: Node, preset_id: String) -> void:
+	for n in root.find_children("*", "Light3D", true, false):
+		var nm: String = String(n.name)
+		var cut: int = nm.find("__")
+		if cut < 0:
+			continue
+		# only a suffix that NAMES a preset marks a light (a fixture's own
+		# `Prac_PorchScreen_W__2` is a numbered copy, not an area)
+		var owner_preset: String = nm.substr(cut + 2)
+		if owner_preset == preset_id or not CAMERA_PRESETS.has(owner_preset):
+			continue
+		n.get_parent().remove_child(n)
+		n.free()
 
 
 ## The locale's mood stack quiets its signal artifacts under the paint

@@ -228,6 +228,17 @@ through them in order.
 
 ## Recent lessons
 
+### 2026-10-08 · the paint pass blotches a FLAT field into a disc
+
+- Under the new porch sun, the cabin's front door, one flat dark slab
+  0.95 x 2.1 m, showed a huge dark half-disc and octagons down its edge.
+  Moving trees and disabling shadows changed nothing. It was the painted
+  pass's screen-space blotches, legible only on a large untextured field.
+  The fix was geometry, not the shader: the door became board-and-batten
+  (seams, battens, a Z-brace, strap hinges). Before blaming a shadow or a
+  light, toggle shadows off. If the shape stays, it is the paper.
+
+
 ### 2026-10-07 · scene_default must not carry a sky: a missing key means "keep the scene's"
 
 - MoodCycler's LIGHTING_PRESETS[0] "scene_default" carried a hard-coded

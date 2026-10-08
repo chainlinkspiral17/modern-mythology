@@ -72,7 +72,7 @@ if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.furniture import make_chair, make_table, make_bed
 from _props import palette as P
 from _props.geometry import (make_taper_cyl, clear_scene, make_box, make_cyl, make_lathe,
-                             make_chamfer_box, make_tube, make_rot_box, make_prism, make_heightfield, export_glb)
+                             make_chamfer_box, make_tube, make_rot_box, make_prism, make_heightfield, make_blob, export_glb)
 from _props.structure import make_floor, make_wall, make_ceiling, make_window
 from _props.food_service import make_coffee_pots  # noqa: F401 (unused, kept for parity)
 
@@ -138,6 +138,21 @@ def build_shell():
     # over the door showed the thermometer from the porch)
     make_box("Wall_S_DoorHead", (0.0, 0.0, 2.30), (0.951, 0.20, 0.40), PAL_WALL["wall"])
     make_cyl("Door_Latch", (0.36, 0.10, 1.02), 0.025, 0.04, COL_IRON, axis='Y', segments=8)
+    # its OUTSIDE (2026-10-08, the porch): a board-and-batten door — four
+    # boards with their seams, the Z-brace, two strap hinges and the
+    # thumb-latch's handle. A flat dark slab under the porch sun was one
+    # field the paint pass blotched into a disc.
+    dy = 0.035 - 0.004
+    for bi, bx in enumerate((-0.2375, 0.0, 0.2375)):
+        make_box(f"Front_Door_Out_Seam_{bi}", (bx, dy, 1.05), (0.012, 0.008, 2.06), (0.22, 0.15, 0.10, 1.0))
+    for ri, rz in enumerate((0.28, 1.82)):
+        make_box(f"Front_Door_Out_Batten_{ri}", (0.0, dy - 0.012, rz), (0.86, 0.024, 0.14), (0.40, 0.29, 0.19, 1.0))
+    make_prism("Front_Door_Out_Brace", (0.0, dy - 0.012, 0.0),
+               [(-0.40, 0.36), (-0.27, 0.36), (0.40, 1.74), (0.27, 1.74)], 0.024, (0.40, 0.29, 0.19, 1.0), axis="Y")
+    for hi, hz in enumerate((0.28, 1.82)):
+        make_box(f"Front_Door_Out_Hinge_{hi}", (-0.25, dy - 0.027, hz), (0.42, 0.006, 0.05), COL_IRON)
+    make_tube("Front_Door_Out_Handle", [(0.36, dy, 1.10), (0.36, dy - 0.06, 1.07), (0.36, dy - 0.06, 0.95), (0.36, dy, 0.92)],
+              0.012, COL_IRON, segments=5)
     # Bedroom partition: the east room (Tem/Lena's) behind x=+1.0
     make_wall("East_Part", (1.0, 1.3, 0), length=2.6, height=CEIL, axis='Y', palette=PAL_WALL)
     make_box("East_Part_Header", (1.0, 2.85, CEIL-0.35), (0.16, 0.55, 0.70), PAL_WALL["wall"])
@@ -611,7 +626,7 @@ def build_through_windows_2026_08():
     the strip of creek the prose keeps hearing.
     """
     trunk = (0.36, 0.28, 0.22, 1.0)
-    canopy = (0.16, 0.24, 0.16, 1.0)
+    canopy = (0.11, 0.25, 0.13, 1.0)
     fern = (0.24, 0.36, 0.20, 1.0)
     # SOUTH · the stand past the turnaround (2026-10-08: it stood 5-8 m
     # out, where the turnaround and the porch went; tapered trunks under
@@ -871,10 +886,10 @@ def build_exterior_2026_10():
                [(0.10, 0.0), (0.10, 0.06), (0.0, 0.06), (0.0, 0.10), (0.20, 0.10), (0.0, 0.20)], COL_IRON, segments=10)
     # the clearing's edge: Sitkas round the cabin, a dark band past them
     trunk = (0.36, 0.28, 0.22, 1.0)
-    crown = (0.16, 0.24, 0.16, 1.0)
+    crown = (0.11, 0.25, 0.13, 1.0)   # greener: under the porch sun the old tone lit tan (2026-10-08)
     for ti, (tx, ty, tr, tht) in enumerate((
             (-9.0, -3.6, 0.32, 17.0), (-10.0, 1.8, 0.36, 19.0), (-9.2, 7.0, 0.30, 16.0),
-            (6.6, -2.4, 0.30, 16.0), (7.2, 2.8, 0.38, 20.0), (6.4, 7.4, 0.32, 17.0),
+            (8.4, -0.6, 0.30, 16.0), (7.2, 3.6, 0.38, 20.0), (6.4, 7.4, 0.32, 17.0),
             (3.6, 11.0, 0.34, 18.0), (-5.6, 11.6, 0.30, 16.0))):
         _sitka(f"Yard_Sitka_{ti}", tx, ty, tr, tht, trunk, crown)
     # the clearing's EDGE RISES (2026-10-08, the user: "Why are the vehicles
@@ -903,6 +918,27 @@ def build_exterior_2026_10():
     berm("Forest_Berm_W", -16.0, -18.5, 6, 40, lambda x, y: (-11.5 - x) / 3.5)
     berm("Forest_Berm_N", -11.7, 12.5, 27, 5, lambda x, y: (y - 12.5) / 2.5)
     berm("Forest_Berm_S", -11.7, -18.5, 27, 6, lambda x, y: (-14.0 - y) / 3.5)
+    # the berms' foot: sword fern and salal where the yard meets the slope
+    # (draft 4: the clearing's edge was a clean line where dirt met duff)
+    from _props.trees import make_fern
+    fern_c, salal_c = (0.22, 0.36, 0.22, 1.0), (0.14, 0.24, 0.15, 1.0)
+    trunks = [(-9.0, -3.6), (-10.0, 1.8), (-9.2, 7.0), (8.4, -0.6), (7.2, 3.6), (6.4, 7.4), (3.6, 11.0), (-5.6, 11.6)]
+    foot = []
+    for i in range(16):
+        y = -13.0 + i * 1.6
+        foot += [("E", 10.95 + 0.25 * ((i * 7) % 3), y), ("W", -10.95 - 0.25 * ((i * 5) % 3), y)]
+    for i in range(14):
+        x = -10.2 + i * 1.6
+        foot += [("N", x, 11.95 + 0.2 * ((i * 3) % 3)), ("S", x, -13.45 - 0.2 * ((i * 7) % 3))]
+    k = 0
+    for side, fx, fy in foot:
+        if any((fx - tx) ** 2 + (fy - ty) ** 2 < 1.4 ** 2 for tx, ty in trunks) or (side == "N" and abs(fy - 11.5) < 0.7 and -5.0 < fx < 5.0):
+            continue
+        if k % 3 == 2:
+            make_blob(f"Edge_Salal_{side}_{k}", (fx, fy, YARD_Z + 0.22), 0.42, salal_c, noise=0.25, seed=k, squash=0.6)
+        else:
+            make_fern(f"Edge_Fern_{side}_{k}", fx, fy, h=0.62 + 0.08 * (k % 3), fronds=6, col=fern_c, z0=YARD_Z)
+        k += 1
     band = (0.10, 0.15, 0.11, 1.0)
     bz, bh = YARD_Z + rise, 14.0 - rise
     make_box("Forest_Band_S", (0.0, -18.0, bz + bh / 2.0), (32.0, 1.0, bh), band)
