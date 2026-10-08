@@ -3860,7 +3860,23 @@ front wall.
 - **The `cabin_porch` preset** shoots from the turnaround. It has ten `__cabin_porch` markers, so the plain interior establish_b/c and closeups never cut a porch scene back inside. `insert bowls` (ch15: "the bowls were on the table") deliberately keeps the interior marker.
 - **Wiring:** the twelve chapters point at `3d:cabin_porch`. Vol 6's three Miller-porch uses stay on the Millers' porch, whose ambient bed is now the vol 6 one (it was the cabin woodstove).
 
-Deck must REBUILD cabin_interior. PORCH DRAFT 2:
+SAME DAY, the user: "The cabin looks too small on the outside." It did.
+A 6 m front under a 0.6 pitch read as a garden shed, for a house that
+seats seven, keeps a sleeping loft and an east room. Two changes:
+- The roof is now at a loft's pitch (0.95, ridge ~6.4 m).
+- The cabin grew OLAF'S SHOP, a 4 x 5.7 m west wing under its own lower
+  gable, set back from the porch wall. Its window shows the carving bench
+  with a cedar blank and the gouges. The cabin's west wall has no
+  openings, so the room inside is unchanged. The north wall's 10 cm stub
+  past the west face is trimmed flush to meet it.
+The preset now frames the whole front. Finn's truck parks in front of the
+shop on a second lobe of gravel. The interior's `insert truck` stood
+outside the west wall, where the shop now is; it is now inside, at the
+west south window ("seen from the west south window").
+The interior is still the 6 x 6 m room the prose overfills: a table for
+seven, a daybed, two armchairs, a stove corner, a kitchen and an east
+room. Enlarging it (CLAUDE.md rule 5) is the cabin's next interior draft.
+Deck must REBUILD cabin_interior. PORCH DRAFT 2 also:
 - an exterior light for the preset (the outside is lit by the interior's rig and reads dusky under morning_bright);
 - the gravel road out of the clearing;
 - tiered two-tone crowns;

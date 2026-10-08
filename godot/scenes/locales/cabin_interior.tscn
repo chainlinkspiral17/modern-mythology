@@ -395,10 +395,11 @@ script = ExtResource("14_dbgm")
 
 ; ── 2026-09-01 hero-prop wave · fifteen blind cues ──────────────
 ; insert: Finn's grandfather's Toyota at the turnaround (west south window)
+; (2026-10-08) inside, at the west south window — "Finn's grandfather's Toyota, seen from the west south window"; it stood outside the west wall, where Olaf's shop is now
 [node name="shot_insert_truck" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.602, 1.495, -0.455)
-rotation = Vector3(-0.2618, -2.6180, 0.0)
-metadata/fov = 42.0
+position = Vector3(-1.900, 1.600, -0.450)
+rotation = Vector3(-0.1192, 2.6571, 0)
+metadata/fov = 40.0
 
 ; insert: the wagon came up the road at nine fifty-two (east south window)
 [node name="shot_insert_wagon" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -577,7 +578,7 @@ metadata/fov = 35.0
 
 [node name="shot_insert_truck__cabin_porch" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.300, 1.550, 1.600)
-rotation = Vector3(-0.1820, 2.3699, 0)
+rotation = Vector3(-0.1334, 2.2058, 0)
 metadata/fov = 42.0
 
 [node name="shot_insert_door__cabin_porch" type="Marker3D" parent="." groups=["vn_shot"]]

@@ -1827,11 +1827,12 @@ const CAMERA_PRESETS := {
 		# the Millers' Texas back porch. The cabin set grew an outside for
 		# it: roof, foundation, the porch on the south wall, the turnaround,
 		# the clearing. Camera in the turnaround between the truck and the
-		# wagon (blender 0.5, -7.4, eye 1.65 over the yard), looking N up
-		# the steps at the porch, the door and the two south windows.
+		# wagon (blender -0.6, -8.0, eye 1.65 over the yard), looking NNW at
+		# the whole front: the porch, the door, the two south windows and
+		# Olaf's shop to the west under its lower gable.
 		# Its own markers are suffixed __cabin_porch in the cabin's .tscn.
-		"camera_origin": Vector3(0.50, 1.25, 7.40),
-		"camera_rotation": Vector3(-0.0365, 0.1171, 0.0),
+		"camera_origin": Vector3(-0.60, 1.25, 8.00),
+		"camera_rotation": Vector3(0.0921, 0.1732, 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},

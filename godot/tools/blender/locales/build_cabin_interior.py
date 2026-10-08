@@ -48,7 +48,12 @@ south wall (deck, step, four posts, shed roof, rails with the coffee,
 the cedar hand, the smokers' tin and the crow on them; the bench, a
 chair, boots, firewood, the rain barrel, the chopping block). The
 `cabin_porch` preset (Background3D) shoots it from the turnaround; its
-markers are suffixed __cabin_porch. PORCH DRAFT 2 targets: the outside
+markers are suffixed __cabin_porch. SAME DAY (the user: "The cabin
+looks too small on the outside"): the roof went to a loft's pitch (ridge
+~6.4 m) and the cabin grew OLAF'S SHOP, a west wing under its own lower
+gable (build_shop_wing_2026_10); the truck parks in front of it.
+PORCH DRAFT 2 targets: the shop's door (on its west gable) and a path
+to it; the outside
 is lit by the interior's rig (dim under morning_bright) — a per-preset
 exterior light; the gravel road out of the clearing to the SW (cabin_
 road's track); the crowns are single lathes (tiers with droop, a second
@@ -108,7 +113,7 @@ def build_shell():
     # (2026-09-23: the wall was solid, so the crow "seen through the
     # glass" on the outside sill was never in any frame)
     kw_x0, kw_x1, kw_z0, kw_z1 = -2.10, -1.10, 1.005, 1.955
-    wn_x0, wn_x1 = -(ROOM_W + 0.4) / 2.0, (ROOM_W + 0.4) / 2.0
+    wn_x0, wn_x1 = -(ROOM_W + 0.2) / 2.0, (ROOM_W + 0.4) / 2.0   # west end flush with Wall_W's outer face: Olaf's shop abuts it (2026-10-08)
     wcol = PAL_WALL["wall"]
     make_box("Wall_N", ((kw_x1 + wn_x1) / 2.0, ROOM_D, CEIL / 2.0), (wn_x1 - kw_x1, 0.20, CEIL), wcol)
     make_box("Wall_N_W", ((wn_x0 + kw_x0) / 2.0, ROOM_D, CEIL / 2.0), (kw_x0 - wn_x0, 0.20, CEIL), wcol)
@@ -730,7 +735,8 @@ def build_hero_props_2026_09():
     # were four boxes each, standing where the porch now is)
     from _props.vehicles import make_car
     make_cyl("Gravel_Turnaround", (0.2, -5.9, YARD_Z + 0.006), 3.6, 0.012, (0.42, 0.40, 0.36, 1.0), segments=20)   # round, and a tone off the dirt (a pale slab on the 10-08 sheet)
-    make_car("Finn_Truck", -3.3, -5.7, 4.8, (0.44, 0.48, 0.42, 1.0), pickup=True, along="Y", z0=YARD_Z)
+    make_cyl("Gravel_Turnaround_Shop", (-4.4, -6.0, YARD_Z + 0.004), 2.4, 0.008, (0.42, 0.40, 0.36, 1.0), segments=16)   # where the truck pulls in, in front of the shop
+    make_car("Finn_Truck", -5.4, -6.2, 4.8, (0.44, 0.48, 0.42, 1.0), pickup=True, along="Y", z0=YARD_Z)
     make_car("Station_Wagon", 3.7, -5.9, 5.0, (0.48, 0.36, 0.26, 1.0), along="Y", z0=YARD_Z)
     # the wagon's roof rack, on the roofline (z0 + 1.46)
     make_box("Station_Wagon_Rack", (3.7, -6.2, YARD_Z + 1.48), (1.20, 1.40, 0.04), (0.30, 0.30, 0.32, 1.0))
@@ -805,7 +811,7 @@ def build_exterior_2026_10():
     for e, nm in ((-1, "W"), (1, "E")):
         make_box(f"Foundation_{nm}", (e * ROOM_W / 2.0, ROOM_D / 2.0, fz), (0.20, ROOM_D - 0.2, fh), stone)
     # the roof: two slabs from eave to ridge, the gable ends under them
-    pitch = 0.60
+    pitch = 0.95   # (2026-10-08, the user: "the cabin looks too small on the outside") a loft's roof, ridge ~6.4 m — was 0.60, a shed's
     under_s = lambda y: CEIL + pitch * (y + 0.20)              # on the side walls' outer corners (y -0.20 / 6.20)
     ridge_y = ROOM_D / 2.0
     ridge_z = under_s(ridge_y)
@@ -866,7 +872,7 @@ def build_exterior_2026_10():
     trunk = (0.36, 0.28, 0.22, 1.0)
     crown = (0.16, 0.24, 0.16, 1.0)
     for ti, (tx, ty, tr, tht) in enumerate((
-            (-6.6, -3.2, 0.32, 17.0), (-7.4, 1.8, 0.36, 19.0), (-6.2, 6.4, 0.30, 16.0),
+            (-9.0, -3.6, 0.32, 17.0), (-10.0, 1.8, 0.36, 19.0), (-9.2, 7.0, 0.30, 16.0),
             (6.6, -2.4, 0.30, 16.0), (7.2, 2.8, 0.38, 20.0), (6.4, 7.4, 0.32, 17.0),
             (3.6, 11.0, 0.34, 18.0), (-5.6, 11.6, 0.30, 16.0))):
         _sitka(f"Yard_Sitka_{ti}", tx, ty, tr, tht, trunk, crown)
@@ -875,6 +881,62 @@ def build_exterior_2026_10():
     make_box("Forest_Band_N", (0.0, 15.5, YARD_Z + 7.0), (32.0, 1.0, 14.0), band)
     for e, nm in ((-1, "W"), (1, "E")):
         make_box(f"Forest_Band_{nm}", (e * 15.5, -1.25, YARD_Z + 7.0), (1.0, 32.5, 14.0), band)
+
+
+def build_shop_wing_2026_10():
+    """OLAF'S SHOP · the west wing (2026-10-08, the user: "The cabin looks
+    too small on the outside"). A 6 m box under a shallow roof read as a
+    garden shed from the turnaround — for a house that seats seven, sleeps
+    a loft and keeps an east room. The roof went steep (the loft's), and
+    the cabin grew the wing a man who carved "a little of it every Sunday
+    afternoon" for forty-five years would have built onto it: his carving
+    shop, 4 m by 5.7 m against the west wall (which has no openings, so
+    the room inside is untouched), set back 0.5 m from the porch's wall,
+    under its own lower gable. Its window shows the bench under it, dark.
+    """
+    wall_c = PAL_WALL["wall"]
+    shake = (0.30, 0.25, 0.21, 1.0)
+    seam = (0.40, 0.29, 0.19, 1.0)
+    stone = (0.42, 0.41, 0.38, 1.0)
+    X0, X1 = -7.1, -3.1        # outer west face … the cabin's west wall face
+    YS, YN = 0.40, 6.10        # outer south face … outer north face
+    H = 2.70
+    make_wall_with_openings("Shop_Wall_S", ((X0 + X1) / 2.0, YS + 0.10, 0), length=X1 - X0, height=H, axis='X',
+                            palette=PAL_WALL, baseboard_face_sign=+1, openings=[(-5.000, 1.450, 1.000, 0.900)])
+    make_wall("Shop_Wall_N", ((X0 + X1) / 2.0, YN - 0.10, 0), length=X1 - X0, height=H, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
+    make_wall("Shop_Wall_W", (X0 + 0.10, (YS + YN) / 2.0, 0), length=YN - YS - 0.40, height=H, axis='Y', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_box("Shop_Floor", ((X0 + 0.2 + X1) / 2.0, (YS + YN) / 2.0, -0.02), (X1 - X0 - 0.2, YN - YS - 0.4, 0.04), COL_FLOOR)
+    make_box("Foundation_Shop_S", ((X0 + X1) / 2.0, YS + 0.10, YARD_Z / 2.0), (X1 - X0, 0.20, -YARD_Z), stone)
+    make_box("Foundation_Shop_N", ((X0 + X1) / 2.0, YN - 0.10, YARD_Z / 2.0), (X1 - X0, 0.20, -YARD_Z), stone)
+    make_box("Foundation_Shop_W", (X0 + 0.10, (YS + YN) / 2.0, YARD_Z / 2.0), (0.20, YN - YS - 0.40, -YARD_Z), stone)
+    # the roof: its own gable, ridge E-W, lower than the cabin's eaves meet
+    pitch, th, eave = 0.95, 0.18, 0.40
+    ridge_y = (YS + YN) / 2.0
+    under = lambda y: H + pitch * (y - YS) if y <= ridge_y else H + pitch * (YN - y)
+    ridge_z = under(ridge_y)
+    L = X1 - X0 + 0.40
+    for nm, ya, yb in (("Shop_Roof_S_Eave", YS - eave, YS), ("Shop_Roof_S", YS, ridge_y),
+                       ("Shop_Roof_N", ridge_y, YN), ("Shop_Roof_N_Eave", YN, YN + eave)):
+        za, zb = under(ya) if ya >= YS else H - pitch * (YS - ya), under(yb) if yb <= YN else H - pitch * (yb - YN)
+        _prism_ccw(nm, (X1 - L / 2.0, 0.0, 0.0), [(ya, za), (yb, zb), (yb, zb + th), (ya, za + th)], L, shake)
+    make_box("Shop_Roof_Ridge", (X1 - L / 2.0, ridge_y, ridge_z + th + 0.03), (L, 0.26, 0.06), (0.24, 0.20, 0.17, 1.0))
+    _prism_ccw("Shop_Gable_W", (X0 + 0.10, 0.0, 0.0), [(YS, H), (YN, H), (ridge_y, ridge_z - 0.02)], 0.20, wall_c)
+    for e, nm in ((-1, "S"), (1, "N")):
+        make_box(f"Shop_Roof_Frieze_{nm}", ((X0 + X1) / 2.0, (YS - 0.003) if e < 0 else (YN + 0.003), H - 0.05), (X1 - X0, 0.006, 0.10), shake)
+    # the window and what is under it: the carving bench, a cedar blank, the gouges
+    make_window("Shop_Window", (-5.0, YS + 0.20, 1.45), width=1.00, height=0.90, room_dir=+1, see_through=True)
+    make_table("Shop_Bench", -5.0, YS + 0.62, w=1.70, d=0.62, h=0.90, wood=COL_WOOD_DK, top_col=COL_WOOD)
+    make_chamfer_box("Shop_Bench_Cedar_Blank", (-5.2, YS + 0.60, 0.96), (0.30, 0.14, 0.12), (0.62, 0.43, 0.26, 1.0), chamfer=0.01)
+    for gi in range(4):
+        make_box(f"Shop_Bench_Gouge_{gi}", (-4.55 + gi * 0.06, YS + 0.66, 0.9075), (0.025, 0.20, 0.015), COL_IRON)
+    # siding on the wing's two outside faces
+    for k in range(1, 12):
+        z = k * 0.225
+        if z > H - 0.20:
+            break
+        for ri, (a, b) in enumerate(((X0, -5.52), (-4.48, X1)) if 0.98 < z < 1.92 else ((X0, X1),)):
+            make_box(f"Shop_Siding_S_{k}_{ri}", ((a + b) / 2.0, YS - 0.003, z), (b - a, 0.006, 0.012), seam)
+        make_box(f"Shop_Siding_W_{k}", (X0 - 0.003, (YS + YN) / 2.0, z), (0.006, YN - YS, 0.012), seam)
 
 
 def build_porch_2026_10():
@@ -1042,6 +1104,7 @@ def main():
     build_hero_props_2026_09()
     build_kerosene_infra_2026_09()
     build_exterior_2026_10()
+    build_shop_wing_2026_10()
     build_porch_2026_10()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/cabin_interior.glb"))
