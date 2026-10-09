@@ -147,7 +147,7 @@ sky = SubResource("Sky_Win")
 background_color = Color(0.08, 0.06, 0.04, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.66, 0.56, 0.40, 1)
-ambient_light_energy = 0.6
+ambient_light_energy = 0.72
 fog_enabled = true
 fog_sky_affect = 0.0
 fog_light_color = Color(0.38, 0.30, 0.22, 1)
@@ -169,7 +169,7 @@ glow_hdr_scale = 2.4
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_Locale")
 
-[node name="Key_Window" type="DirectionalLight3D" parent="."]
+[node name="Key_Window__faust_bedroom" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707, 0.707, 0, -0.707, 0.707, 0, 6, 0)
 light_color = Color(0.66, 0.72, 0.92, 1)
 light_energy = 0.45
@@ -187,26 +187,68 @@ light_color = Color(0.42, 0.32, 0.22, 1)
 light_energy = 0.15
 shadow_enabled = false
 
-[node name="Practical_NightLamp" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85, 1.05, -4.65)
-light_color = Color(0.98, 0.84, 0.5, 1)
-light_energy = 1.0
+; DRAFT 3 practicals (2026-10-09): each tied to a fixture in the GLB
+[node name="NLamp_Bulb_Practical__faust_bedroom" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.82, 0.96, -6.35)
+light_color = Color(0.98, 0.80, 0.48, 1)
+light_energy = 1.1
 shadow_enabled = false
-omni_range = 2.2
+omni_range = 2.8
 
-[node name="Practical_Bulb" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, -2.5)
+; the bare bulb: on low at 4 am (he has just switched it on), off for the painting morning
+[node name="Bulb_Practical__faust_bedroom" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 2.30, -3.4)
 light_color = Color(1.0, 0.86, 0.52, 1)
+light_energy = 0.7
+shadow_enabled = false
+omni_range = 6.0
+
+; the bathroom's vanity bulb, left on: its spill through the open door
+[node name="Bath_Vanity_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.40, 2.12, -0.62)
+light_color = Color(0.96, 0.90, 0.78, 1)
+light_energy = 1.3
+shadow_enabled = true
+omni_range = 3.4
+
+[node name="Moon_Spill__faust_bedroom" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4, 1.9, -4.1)
+light_color = Color(0.6, 0.7, 0.95, 1)
+light_energy = 0.6
+shadow_enabled = false
+omni_range = 4.2
+
+; the sodium street lamp two floors down, lighting the ceiling
+[node name="Street_Sodium__faust_bedroom" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6, 0.2, -4.1)
+light_color = Color(1.0, 0.66, 0.32, 1)
+light_energy = 0.9
+shadow_enabled = true
+omni_range = 8.0
+
+; daylight through the E window (follows the mood: 0 at night)
+[node name="Sun_Window__faust_apartment_day" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.545, -0.251, 0.800, 0.000, 0.954, 0.300, -0.838, -0.163, 0.520, 6, 3.5, -4.1)
+light_color = Color(1.0, 0.94, 0.84, 1)
+light_energy = 1.3
+shadow_enabled = true
+metadata/daylight = true
+
+; the morning's skylight in the room (no shadows: it is the sky through two windows, not the sun)
+[node name="Day_Fill__faust_apartment_day" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.545, -0.251, 0.800, 0.000, 0.954, 0.300, -0.838, -0.163, 0.520, 0, 3, -3)
+light_color = Color(0.92, 0.94, 1.0, 1)
+light_energy = 0.55
+shadow_enabled = false
+metadata/daylight = true
+
+; the morning's bounce off the floor by the E window
+[node name="Window_Bounce__faust_apartment_day" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 1.4, -4.0)
+light_color = Color(1.0, 0.94, 0.84, 1)
 light_energy = 1.2
 shadow_enabled = false
-omni_range = 4.5
-
-[node name="Moon_Spill" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.7, -2.4)
-light_color = Color(0.6, 0.7, 0.95, 1)
-light_energy = 0.5
-shadow_enabled = false
-omni_range = 3.0
+omni_range = 6.5
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -328,37 +370,58 @@ offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
 
-; first inserts, authored by marker_author.py (2026-09-10): the locale had no vn_shot markers
+; DRAFT 3 coverage (2026-10-09): the bigger room, the bathroom mirror, the bed's own pair
 [node name="shot_insert_paint_table" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.994, 0.750, -1.050)
-rotation = Vector3(-0.2618, -1.3090, 0.0)
-metadata/fov = 35.0
+position = Vector3(2.550, 1.400, -3.350)
+rotation = Vector3(-0.6662, -2.1401, 0.0)
+metadata/fov = 40.0
 
 [node name="shot_insert_mirror" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.932, 1.879, -0.745)
-rotation = Vector3(-0.2618, 1.3090, 0.0)
-metadata/fov = 35.0
+position = Vector3(2.450, 1.650, -1.750)
+rotation = Vector3(-0.0551, 3.0987, 0.0)
+metadata/fov = 40.0
 
 [node name="shot_insert_easel" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.444, 1.250, -1.268)
-rotation = Vector3(-0.2618, -0.7854, 0.0)
-metadata/fov = 35.0
+position = Vector3(1.550, 1.450, -2.350)
+rotation = Vector3(-0.1363, -0.5404, 0.0)
+metadata/fov = 40.0
 
 [node name="shot_insert_curtain" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.362, 1.933, -1.000)
-rotation = Vector3(0.0595, -1.1766, 0.0)
+position = Vector3(2.200, 1.750, -3.200)
+rotation = Vector3(-0.0260, -1.0839, 0.0)
+metadata/fov = 40.0
+
+[node name="shot_insert_alarm" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.350, 0.950, -5.750)
+rotation = Vector3(-0.4527, 0.3961, 0.0)
 metadata/fov = 35.0
 
-; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
-; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_insert_coat" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.450, 1.450, -1.600)
+rotation = Vector3(-0.1010, -2.9376, 0.0)
+metadata/fov = 38.0
+
 [node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.025, 1.612, -2.093)
-rotation = Vector3(-0.2618, -0.2618, 0.0)
+position = Vector3(0.900, 1.600, -2.600)
+rotation = Vector3(-0.0932, -0.9179, 0.0)
 metadata/fov = 45.0
 
-; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
-; the far side of the same spot, so two speakers alternate sides
 [node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.725, 1.612, -4.706)
-rotation = Vector3(-0.2618, 2.8798, 0.0)
+position = Vector3(2.000, 1.600, -3.350)
+rotation = Vector3(-0.0841, 1.7544, 0.0)
 metadata/fov = 45.0
+
+[node name="shot_closeup_person__faust_bedroom" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.550, 1.250, -4.150)
+rotation = Vector3(-0.1690, 0.5880, 0.0)
+metadata/fov = 45.0
+
+[node name="shot_closeup_person_b__faust_bedroom" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.450, 1.150, -6.000)
+rotation = Vector3(-0.0817, -2.9562, 0.0)
+metadata/fov = 45.0
+
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.200, 1.700, -5.900)
+rotation = Vector3(-0.0969, 2.2282, 0.0)
+metadata/fov = 60.0

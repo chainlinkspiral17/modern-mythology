@@ -3834,6 +3834,51 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-09 · overnight run, pass 8: FAUST'S STUDIO, DRAFT 3 (build big +
+the prose's rooms).** Vol1's most-played interior was a 6 x 5 m box at
+2.7 m. It had no bathroom, the mirror cabinet hung over the kitchen sink,
+the books sat deep inside a dark case, and one night sky served the
+painting morning too. Rebuilt from the prose as an 8 x 6.6 m walk-up
+studio under 2.95 m:
+- **Bathroom (SE).** Its own walls, the door open on the lit vanity. The
+  mirror cabinet is open on the vitamins. Toilet, a tub behind a
+  half-drawn curtain, a towel rail. These cover "opens the mirror to get
+  his vitamins" and "To the bathroom. Pukes in the toilet."
+- **Entry.** The door is chained shut. The hooks carry the blue scrubs
+  and the white coat, with shoes and a work bag under them. The bicycle
+  leans on the bathroom wall.
+- **Kitchenette (W wall).** Fridge, counter, hot plate, sink, cupboards,
+  a cafe table with the mail and a pill organizer.
+- **Bookcase and reading corner.** A four-bay bookcase CARCASS with books
+  at the front edge (some stacks lying flat, rolled canvases), the
+  reading chair and its floor lamp.
+- **Bed corner.** The bed under his biggest canvas. The nightstand holds
+  the alarm, the water glass and the journal. The dresser carries
+  drug-rep sample boxes. The clock is stopped at 4:00.
+- **Painting corner (E window).** Easel on a drop cloth with the
+  elemental canvas, the paint table with palette and brush jar, a stool.
+  Canvases are leaned on the wall and laid on the floor. A radiator sits
+  under the window, and a desk under a second, N window.
+- **Views.** A street view out of the E window, a back view out of the N.
+
+Lighting and coverage:
+- `faust_apartment_day` carries a morning `env` (the new per-preset
+  environment) and its own sun and skylight. `faust_bedroom` keeps the
+  night rig: lamp, moon, sodium street lamp. See _LIGHTING_PLAYBOOK
+  2026-10-09.
+- 11 markers. The bed has its own closeup pair
+  (`__faust_bedroom`: Faust at the headboard, the woman at the foot).
+  The mirror insert is inside the bathroom. New inserts: the alarm, the
+  coat, establish_b.
+
+Draft 4 targets:
+- the hall beyond the entry door (an ajar variant for the morning exit);
+- a toilet insert for the waking's last line;
+- readable book titles;
+- dust and a paint-crusted floor at the easel;
+- the day wide's right third is the bathroom wall: re-stage that
+  vantage on the Deck.
+
 **2026-10-09 · overnight run, pass 7: CHILLWAVE'S SHELVES + THE SWALLOWED
 CONTENTS.** ChillWave (Cale's secondhand stick shop, vol 7 ch3/6) read as
 a counter in an empty room. Its cedar wall units' "frames" were SOLID

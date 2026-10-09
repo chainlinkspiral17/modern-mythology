@@ -59,6 +59,7 @@ def fixture_family(name):
 
 
 def practical_stem(name):
+    name = name.split("__")[0]    # a per-preset light (Background3D._strip_other_preset_lights)
     if name.endswith("_Practical"):
         stem = name[:-len("_Practical")]
     elif name.startswith("Practical_"):

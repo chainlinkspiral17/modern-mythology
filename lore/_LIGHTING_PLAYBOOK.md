@@ -151,6 +151,33 @@ Position note: lamp omnis are placed AT the lamp-head mesh position
 
 ## Recent lessons
 
+### 2026-10-09 · one set, two times of day: per-preset env + per-preset rigs
+
+- Faust's studio serves a 4 am preset (`faust_bedroom`, night and
+  dream_blur scenes) and a painting-morning preset
+  (`faust_apartment_day`, day_bright). Moods only change the post-process
+  look, so the morning window showed the set's night sky and the room had
+  the moonlit rig.
+- A preset may now carry `"env": {sky_top, sky_horizon, ground_horizon,
+  ground_bottom, ambient_color, ambient_energy, fog_color}`.
+  `Background3D._apply_preset_env` applies it to a COPY of the set's
+  Environment and its ProceduralSkyMaterial, so the other presets keep
+  the authored sky.
+- Each time of day gets its own lights through the `__<preset>` suffix:
+  - The night rig is `__faust_bedroom`: the nightstand lamp, the moon
+    spill, a sodium street lamp two floors down lighting the ceiling, and
+    the blue key.
+  - The morning is `__faust_apartment_day`: the sun through the E window
+    (shadowed, `metadata/daylight`), a shadowless skylight fill, and a
+    floor bounce.
+  - Lights with no suffix (the bathroom vanity, the warm fill) serve both.
+- A practical with a shadowed omni must sit OUT from the fixture's
+  housing. The vanity light 20 cm in front of the mirror cabinet threw
+  the cabinet's shadow down the whole wall below it. 50 cm out, it lights
+  the basin and spills a wedge through the bathroom door.
+- `orphan_practical_audit` strips a `__preset` suffix before it reads a
+  `_Practical` stem.
+
 ### 2026-10-08 · an OUTSIDE area of a shared set gets its own sun, and the sun follows the mood
 
 - The cabin's porch (`cabin_porch` preset, on cabin_interior.tscn) was lit

@@ -2016,25 +2016,29 @@ const CAMERA_PRESETS := {
 	"faust_apartment_day": {
 		"scene": "res://scenes/locales/faust_apartment.tscn",
 		"requires_glb": "res://assets/3d/locales/faust_apartment.glb",
-		# Studio 6×5 (godot x∈[-3,3], z∈[0,-5], ceil 2.7). Bed NW
-		# corner (godot -1.9,-4.2), E-wall window + curtains
-		# (z=-2.4), easel + canvas mid-SE (1.4,-2.2), W-wall
-		# bookcase, kitchenette SW. Camera just inside the door
-		# looking N — the whole studio in one wide: bed far left,
-		# window right, easel frame-right.
-		"camera_origin": Vector3(-0.7, 1.62, -0.6),
-		"camera_rotation": Vector3(-0.03, deg_to_rad(-21.0), 0.0),
+		# DRAFT 3 (2026-10-09): studio 8 x 6.6 (godot x in [-4,4],
+		# z in [0,-6.6], ceil 2.95). Bed NW corner (-2.85,-5.4), the
+		# painting corner by the E window (easel 2.3,-3.7), bathroom SE,
+		# W-wall bookcase + reading chair, kitchenette SW. Camera just
+		# inside the door looking N: bed far left, easel frame-right.
+		"camera_origin": Vector3(-0.20, 1.62, -0.75),
+		"camera_rotation": Vector3(-0.122, deg_to_rad(-12.0), 0.0),
 		"fov": 66.0,
+		# the painting morning: the set's sky is the 4 am one
+		"env": {"sky_top": Color(0.40, 0.58, 0.84, 1), "sky_horizon": Color(0.82, 0.86, 0.88, 1),
+			"ground_horizon": Color(0.52, 0.52, 0.50, 1), "ground_bottom": Color(0.30, 0.30, 0.28, 1),
+			"ambient_color": Color(0.86, 0.82, 0.74, 1), "ambient_energy": 1.05,
+			"fog_color": Color(0.80, 0.78, 0.72, 1)},
 		"suppress_input": true,
 	},
 	"faust_bedroom": {
 		"scene": "res://scenes/locales/faust_apartment.tscn",
 		"requires_glb": "res://assets/3d/locales/faust_apartment.glb",
 		# Same set, the 4am vantage — mid-room looking NW at the bed
-		# corner: red blanket, pillow, nightstand lamp + dream
-		# journal, headboard wall; bookcase edge frame left.
-		"camera_origin": Vector3(0.9, 1.50, -1.4),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(45.0), 0.0),
+		# corner: red blanket, the canvas over the headboard, the
+		# nightstand lamp + alarm; bookcase and reading chair frame-left.
+		"camera_origin": Vector3(0.70, 1.50, -2.70),
+		"camera_rotation": Vector3(-0.145, deg_to_rad(47.7), 0.0),
 		"fov": 58.0,
 		"suppress_input": true,
 	},
@@ -2500,6 +2504,7 @@ func load_location(preset_id: String) -> bool:
 	# mood stack never collects it), for every other preset. The cabin's
 	# porch has a morning sun; the room inside must not.
 	_strip_other_preset_lights(_location_instance, preset_id)
+	_apply_preset_env(_location_instance, spec)
 	# CRITICAL: suppress interactive nodes BEFORE adding to tree.
 	# Once added, every script in the locale's _ready cascade caches
 	# references to the Player / HUD / etc — and the queue_free that
@@ -2527,6 +2532,46 @@ func load_location(preset_id: String) -> bool:
 		call_deferred("_reapply_locale_state")
 	call_deferred("_tell_mood_painted")    # after the locale's PostProcess _ready
 	return true
+
+
+# PER-PRESET ENVIRONMENT (2026-10-09): one set, two times of day. A preset
+# may carry "env": {sky_top, sky_horizon, ground_horizon, ground_bottom,
+# ambient_color, ambient_energy, fog_color} — applied to a COPY of the
+# set's Environment and its ProceduralSkyMaterial, so Faust's studio is
+# 4 am through the bedroom preset and a painting morning through the day
+# preset without a second scene (moods are a post-process look and never
+# touched the sky: the morning window showed the night).
+func _apply_preset_env(root: Node, spec: Dictionary) -> void:
+	if not spec.has("env"):
+		return
+	var ov: Dictionary = spec["env"]
+	var found: Array[Node] = root.find_children("*", "WorldEnvironment", true, false)
+	if found.is_empty():
+		return
+	var we: WorldEnvironment = found[0] as WorldEnvironment
+	if we == null or we.environment == null:
+		return
+	var env: Environment = we.environment.duplicate() as Environment
+	if env.sky != null and env.sky.sky_material is ProceduralSkyMaterial:
+		var sky: Sky = env.sky.duplicate() as Sky
+		var mat: ProceduralSkyMaterial = (env.sky.sky_material as ProceduralSkyMaterial).duplicate() as ProceduralSkyMaterial
+		if ov.has("sky_top"):
+			mat.sky_top_color = ov["sky_top"]
+		if ov.has("sky_horizon"):
+			mat.sky_horizon_color = ov["sky_horizon"]
+		if ov.has("ground_horizon"):
+			mat.ground_horizon_color = ov["ground_horizon"]
+		if ov.has("ground_bottom"):
+			mat.ground_bottom_color = ov["ground_bottom"]
+		sky.sky_material = mat
+		env.sky = sky
+	if ov.has("ambient_color"):
+		env.ambient_light_color = ov["ambient_color"]
+	if ov.has("ambient_energy"):
+		env.ambient_light_energy = float(ov["ambient_energy"])
+	if ov.has("fog_color"):
+		env.fog_light_color = ov["fog_color"]
+	we.environment = env
 
 
 func _strip_other_preset_lights(root: Node, preset_id: String) -> void:
