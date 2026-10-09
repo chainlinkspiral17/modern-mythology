@@ -137,7 +137,15 @@ def build_oil_drums_and_vending():
         make_cyl(f"OilDrum_Top_{di}", (dx, dy, 1.02), 0.32, 0.02, P.METAL_BLACK, segments=10)
     # Vending machine in SE corner (the office vestibule)
     vx, vy = +ROOM_W/2.0 - 0.40, 1.00
-    make_box("Vending_Body", (vx, vy, 0.90), (0.40, 0.50, 1.80), COL_VEND_BLUE)
+    # (2026-10-09) a solid lower half under a GLAZED chamber — the bottles
+    # stood inside a solid body behind the window
+    make_box("Vending_Body", (vx, vy, 0.40), (0.40, 0.50, 0.80), COL_VEND_BLUE)
+    make_box("Vending_Chamber_Back", (vx + 0.19, vy, 1.30), (0.02, 0.50, 1.00), COL_VEND_BLUE)
+    for e, sgn in (("S", -1), ("N", 1)):
+        make_box(f"Vending_Chamber_Side_{e}", (vx, vy + sgn * 0.24, 1.30), (0.40, 0.02, 1.00), COL_VEND_BLUE)
+    make_box("Vending_Chamber_Top", (vx, vy, 1.79), (0.40, 0.50, 0.02), COL_VEND_BLUE)
+    for si, sz in enumerate((1.09, 1.39)):   # the spiral shelves the upper bottles stand on
+        make_box(f"Vending_Shelf_{si}", (vx, vy, sz), (0.36, 0.46, 0.02), (0.70, 0.72, 0.74, 1.0))
     make_box("Vending_Window", (vx-0.18 - 0.0231, vy, 1.20), (0.005, 0.40, 0.80), (0.78, 0.84, 0.86, 0.55))
     # Bottles inside (column of three)
     for bi in range(3):

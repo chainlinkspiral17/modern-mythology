@@ -25,7 +25,7 @@ import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_rot_box, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_wall_with_openings
 from _props.store_fixtures import make_counter, make_register
 from _props.decor import make_wall_clock, make_floor_plant
@@ -79,6 +79,44 @@ def build_shell():
     make_box("Part_Doorframe_E", (2.42, PART_Y, 1.05), (0.08, 0.24, 2.10), COL_CEDAR_DK)
 
 
+def _cedar_unit(prefix, face, sgn, y0, y1, h):
+    """A cedar wall unit on an E/W wall: back panel on the face, two sides,
+    a top — open at the front so its shelves and sticks show."""
+    d = 0.38
+    make_box(f"{prefix}_Back", (face - sgn * 0.01, (y0 + y1) / 2.0, h / 2.0), (0.02, y1 - y0, h), COL_CEDAR_DK)
+    for e, y in (("S", y0), ("N", y1)):
+        make_box(f"{prefix}_Side_{e}", (face - sgn * d / 2.0, y + (0.015 if e == "S" else -0.015), h / 2.0), (d, 0.03, h), COL_CEDAR_DK)
+    make_box(f"{prefix}_Top", (face - sgn * d / 2.0, (y0 + y1) / 2.0, h + 0.015), (d, y1 - y0, 0.03), COL_CEDAR_DK)
+
+
+def _cedar_unit_x(prefix, face, x0, x1, h):
+    """The same unit on the N wall (face at y = face, the room toward -y)."""
+    d = 0.38
+    make_box(f"{prefix}_Back", ((x0 + x1) / 2.0, face - 0.01, h / 2.0), (x1 - x0, 0.02, h), COL_CEDAR_DK)
+    for e, x in (("W", x0), ("E", x1)):
+        make_box(f"{prefix}_Side_{e}", (x + (0.015 if e == "W" else -0.015), face - d / 2.0, h / 2.0), (0.03, d, h), COL_CEDAR_DK)
+    make_box(f"{prefix}_Top", ((x0 + x1) / 2.0, face - d / 2.0, h + 0.015), (x1 - x0, d, 0.03), COL_CEDAR_DK)
+
+
+def build_island_2026_10():
+    """The front room's empty middle (2026-10-09): a double-sided cedar
+    island of sticks face-out, between the counter and the E wall unit,
+    with the week's new-arrivals card on its end."""
+    ix, iy0, iy1 = 1.35, 1.35, 3.35
+    make_box("Island_Base", (ix, (iy0 + iy1) / 2.0, 0.06), (0.62, iy1 - iy0, 0.12), (0.30, 0.22, 0.16, 1.0))
+    make_box("Island_Spine", (ix, (iy0 + iy1) / 2.0, 0.70), (0.04, iy1 - iy0, 1.16), COL_CEDAR_DK)
+    for e in (-1, 1):
+        make_box(f"Island_End_{e:+d}", (ix, iy0 + 0.015 if e < 0 else iy1 - 0.015, 0.70), (0.60, 0.03, 1.16), COL_CEDAR_DK)
+    for side, sgn in (("W", -1), ("E", 1)):
+        for zi in range(3):
+            sz = 0.40 + zi * 0.36
+            make_box(f"Island_Shelf_{side}_{zi}", (ix + sgn * 0.15, (iy0 + iy1) / 2.0, sz), (0.26, iy1 - iy0 - 0.06, 0.03), COL_CEDAR)
+            for ci in range(6):
+                make_rot_box(f"Island_Stick_{side}_{zi}_{ci}", (ix + sgn * 0.12, iy0 + 0.22 + ci * 0.31, sz + 0.095),
+                             (0.04, 0.12, 0.16), STICK_TINTS[(zi + ci + (side == "E")) % len(STICK_TINTS)], roll=sgn * 0.20)
+    make_box("Island_NewArrivals_Card", (ix, iy0 - 0.005, 1.10), (0.30, 0.004, 0.16), (0.94, 0.90, 0.80, 1.0))
+
+
 def build_storefront():
     # Glass either side of the door + THE BELL over the entry (it
     # rings when she comes in — the shop's opening image).
@@ -110,35 +148,43 @@ def build_counter_front():
     make_box("Paperback_Pages", (-1.2, ccy-0.15, top_z+0.030), (0.12, 0.18, 0.012), (0.90, 0.87, 0.78, 1.0))
     # Front display shelving: cedar wall units W + E with sticks
     # facing out (retail face of the alphabetized system).
-    for tag, sx in [("W", -ROOM_W/2.0+0.24), ("E", ROOM_W/2.0-0.24)]:
+    # (2026-10-09) the unit is a CARCASS now — a back panel on the wall, two
+    # sides and a top; its "frame" was one solid block that swallowed the
+    # shelves and every stick, so the front walls read as two dark slabs
+    for tag, sgn in [("W", -1), ("E", +1)]:
+        face = sgn * (ROOM_W/2.0 - 0.10)
+        sx = face - sgn * 0.19
+        _cedar_unit(f"FrontShelf_{tag}", face, sgn, 1.1, 3.7, 2.30)
         for zi in range(3):
             sz = 0.70 + zi * 0.55
-            make_box(f"FrontShelf_{tag}_{zi}", (sx, 2.4, sz), (0.36, 2.6, 0.04), COL_CEDAR)
+            make_box(f"FrontShelf_{tag}_{zi}", (sx, 2.4, sz), (0.34, 2.54, 0.04), COL_CEDAR)
             for ci in range(5):
                 make_box(f"FrontStick_{tag}_{zi}_{ci}", (sx, 1.4+ci*0.5, sz+0.10),
                          (0.16, 0.10, 0.16), STICK_TINTS[(zi+ci) % len(STICK_TINTS)])
-        make_box(f"FrontShelf_{tag}_Frame", (sx, 2.4, 1.15), (0.30, 2.7, 2.30), COL_CEDAR_DK)
 
 
 def build_back_inventory():
     # "The back was where the inventory lived." Cedar shelf rows on
     # the N + W walls, alphabetized by designer — small brass letter
     # tabs step along the shelf edges.
+    # (2026-10-09) carcasses, not solid blocks (see build_counter_front)
+    nface = ROOM_D - 0.10
+    _cedar_unit_x("InvShelf_N", nface, -2.2, 2.2 - 0.6 * 0, 2.70)
     for zi in range(4):
         sz = 0.55 + zi * 0.52
-        make_box(f"InvShelf_N_{zi}", (-0.6, ROOM_D-0.30, sz), (5.4, 0.36, 0.04), COL_CEDAR)
-        for ci in range(9):
-            make_box(f"InvStick_N_{zi}_{ci}", (-2.8+ci*0.55, ROOM_D-0.30, sz+0.10),
+        make_box(f"InvShelf_N_{zi}", (0.0, nface - 0.19, sz), (4.34, 0.34, 0.04), COL_CEDAR)
+        for ci in range(8):
+            make_box(f"InvStick_N_{zi}_{ci}", (-1.9+ci*0.54, nface - 0.19, sz+0.10),
                      (0.10, 0.16, 0.16), STICK_TINTS[(zi+ci) % len(STICK_TINTS)])
-        make_box(f"InvTab_N_{zi}", (-2.95+zi*1.5, ROOM_D-0.46, sz+0.02), (0.08, 0.02, 0.06), COL_BRASS)
-    make_box("InvShelf_N_Frame", (-0.6, ROOM_D-0.28, 1.35), (5.6, 0.30, 2.70), COL_CEDAR_DK)
+        make_box(f"InvTab_N_{zi}", (-2.0+zi*1.2, nface - 0.37, sz+0.02), (0.08, 0.02, 0.06), COL_BRASS)
+    wface = -(ROOM_W/2.0 - 0.10)
+    _cedar_unit(f"InvShelf_W", wface, -1, 4.95, 7.45, 2.70)
     for zi in range(4):
         sz = 0.55 + zi * 0.52
-        make_box(f"InvShelf_W_{zi}", (-ROOM_W/2.0+0.24, 6.2, sz), (0.36, 2.6, 0.04), COL_CEDAR)
+        make_box(f"InvShelf_W_{zi}", (wface + 0.19, 6.2, sz), (0.34, 2.44, 0.04), COL_CEDAR)
         for ci in range(5):
-            make_box(f"InvStick_W_{zi}_{ci}", (-ROOM_W/2.0+0.24, 5.2+ci*0.5, sz+0.10),
+            make_box(f"InvStick_W_{zi}_{ci}", (wface + 0.19, 5.2+ci*0.5, sz+0.10),
                      (0.16, 0.10, 0.16), STICK_TINTS[(zi+ci+2) % len(STICK_TINTS)])
-    make_box("InvShelf_W_Frame", (-ROOM_W/2.0+0.20, 6.2, 1.35), (0.30, 2.7, 2.70), COL_CEDAR_DK)
     # The WOODEN CRATE by the back-room doorway (trade-ins waiting
     # to be shelved).
     make_box("Crate", (2.6, PART_Y+0.375, 0.22), (0.55, 0.55, 0.42), (0.58, 0.44, 0.28, 1.0))   # against the partition's back face (2026-09-25: 17 cm off it)
@@ -333,6 +379,7 @@ def main():
     build_shell()
     build_storefront()
     build_counter_front()
+    build_island_2026_10()
     build_back_inventory()
     build_workbench()
     build_ceiling_infra()

@@ -361,7 +361,7 @@ def build_world_wave2_props():
     counter_z = 0.98      # the real counter top (see build_counter)
 
     # Aurélie's black composition notebook · open on the counter
-    aur_x = +0.60
+    aur_x = -0.45   # (2026-10-09: at +0.60 it lay UNDER the register)
     aur_y = 2.20          # (2026-09-09: was -0.20, a metre of open floor)
     make_box("Aurelie_Notebook_Cover",
              (aur_x, aur_y, counter_z + 0.014),

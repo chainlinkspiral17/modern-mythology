@@ -3834,6 +3834,34 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-09 · overnight run, pass 7: CHILLWAVE'S SHELVES + THE SWALLOWED
+CONTENTS.** ChillWave (Cale's secondhand stick shop, vol 7 ch3/6) read as
+a counter in an empty room. Its cedar wall units' "frames" were SOLID
+blocks that swallowed the shelves and every stick, so each wall unit was a
+dark slab, and the floor's middle was empty.
+- The units are carcasses now (back panel on the wall, sides, top), the
+  shelves pulled off the wall; the back room's inventory units likewise.
+- A double-sided cedar island of sticks with a new-arrivals card fills
+  the front floor.
+A scan for visible contents swallowed by a solid body found the same
+class elsewhere, now opened up:
+- Lena's bookshelf: 24 books inside a solid box. It is a carcass with
+  four boards and books of unequal height, one lying flat (its draft-5
+  target);
+- the Miller office's low shelf (binders);
+- the bungalow's bookshelf (the tarot decks, books, the cookie box);
+- the Lacombe vending machine: a solid lower half under a glazed
+  chamber with spiral shelves;
+- Aurelie's notebook lay UNDER the Frog register.
+(Card-terminal keys sit flush in their bodies by design.)
+The bungalow's walls were solid slabs with the window frames floating
+in front of them, so no window opened. `_wall_cut` now builds each
+windowed wall (S-W, S-E, N-E, E, W) as piers, a sill and a header
+around a real opening, the same way the cabin and Lena's flat do.
+Draft N+1: glimpses of the outside through those cuts (the side yard
+and the next lot's fence), and the Cosmic back office set unified with
+the shop's office glimpse.
+
 **2026-10-09 · overnight run, pass 6: THE BURIED-DECOR SWEEP (new gate).**
 Diego's room read bare because its things were INSIDE ITS WALLS: the
 jerseys and scarf 4 cm inside the north wall (and across its window),

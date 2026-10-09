@@ -222,10 +222,14 @@ def build_wall_dressing():
     make_box("Commend_2_Cert", (wx + 0.012, 1.7, 1.36), (0.01, 0.22, 0.28), COL_PAPER)
     # Family photo on a short bookshelf under the map
     make_box("LowShelf", (wx + 0.16, 3.4, 0.90), (0.30, 1.10, 0.04), COL_WALNUT)
-    make_box("LowShelf_Body", (wx + 0.16, 3.4, 0.44), (0.30, 1.10, 0.86), COL_WALNUT_DK)
+    # (2026-10-09) open, not a solid block that swallowed its binders
+    make_box("LowShelf_Plinth", (wx + 0.16, 3.4, 0.24), (0.30, 1.10, 0.48), COL_WALNUT_DK)
+    make_box("LowShelf_Back", (wx + 0.02, 3.4, 0.69), (0.02, 1.10, 0.42), COL_WALNUT_DK)
+    for e, sy in (("S", 2.86), ("N", 3.94)):
+        make_box(f"LowShelf_Side_{e}", (wx + 0.16, sy, 0.69), (0.30, 0.02, 0.42), COL_WALNUT_DK)
     for bi in range(8):
         by = 2.95 + bi * 0.12
-        make_box(f"LowBinder_{bi}", (wx + 0.16, by, 0.66), (0.24, 0.10, 0.34),
+        make_box(f"LowBinder_{bi}", (wx + 0.16, by, 0.65), (0.24, 0.10, 0.34),
                  [COL_BINDER_A, COL_BINDER_B, COL_BINDER_C][bi % 3])
     make_box("FamilyPhoto_Frame", (wx + 0.10, 3.9, 0.98), (0.16, 0.20, 0.14), COL_FRAME_GOLD)
     make_box("FamilyPhoto_Img", (wx + 0.10, 3.9, 0.98), (0.10, 0.14, 0.10), COL_PHOTO)

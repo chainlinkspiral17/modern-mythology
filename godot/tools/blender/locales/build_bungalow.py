@@ -284,6 +284,26 @@ CEIL_Z       =  2.70  # interior ceiling
 ROOF_Z       =  3.20  # exterior flat-roof top (accessible)
 
 
+def _wall_cut(name, axis, fixed, a0, a1, holes, h=2.70, t=0.20):
+    """A wall run from a0 to a1 along `axis` (at `fixed` across it), built as
+    piers, sills and headers round rectangular holes (u0, u1, z0, z1)."""
+    def box(nm, u0, u1, z0, z1):
+        if u1 - u0 < 1e-3 or z1 - z0 < 1e-3:
+            return
+        c = (u0 + u1) / 2.0
+        if axis == 'X':
+            make_box(nm, (c, fixed, (z0 + z1) / 2.0), (u1 - u0, t, z1 - z0), COL_WALL_OUTER)
+        else:
+            make_box(nm, (fixed, c, (z0 + z1) / 2.0), (t, u1 - u0, z1 - z0), COL_WALL_OUTER)
+    cur = a0
+    for i, (u0, u1, z0, z1) in enumerate(sorted(holes)):
+        box(f"{name}_Pier_{i}", cur, u0, 0.0, h)
+        box(f"{name}_Sill_{i}", u0, u1, 0.0, z0)
+        box(f"{name}_Head_{i}", u0, u1, z1, h)
+        cur = u1
+    box(f"{name}_Pier_{len(holes)}", cur, a1, 0.0, h)
+
+
 def build_shell():
     """Slab floor + four exterior walls + flat roof. The roof is
     accessible — flat with a low parapet so the ROOF threshold
@@ -304,10 +324,10 @@ def build_shell():
 
     # Exterior walls — east/west/north/south
     # South wall has front-door opening
-    make_box("Wall_S_W", (-3.4, INTERIOR_Y_S, 1.35),
-             (3.2, 0.20, 2.70), COL_WALL_OUTER)
-    make_box("Wall_S_E", (+3.4, INTERIOR_Y_S, 1.35),
-             (3.2, 0.20, 2.70), COL_WALL_OUTER)
+    # (2026-10-09) the window walls are CUT: the six windows stood inside
+    # solid wall boxes — invisible from inside and out
+    _wall_cut("Wall_S_W", 'X', INTERIOR_Y_S, -5.0, -1.8, [(-3.05, -1.95, 1.00, 2.00)])
+    _wall_cut("Wall_S_E", 'X', INTERIOR_Y_S, +1.8, +5.0, [(2.45, 3.55, 1.00, 2.00)])
     make_box("Wall_S_AboveDoor", (0.0, INTERIOR_Y_S, 2.50),
              (1.6, 0.20, 0.40), COL_WALL_OUTER)
     # the front door is 1.6 m with its frame; the opening was 3.6 m —
@@ -319,8 +339,7 @@ def build_shell():
     # North wall has the back-door (kitchen → yard) cutout
     make_box("Wall_N_W", (-3.4, INTERIOR_Y_N, 1.35),
              (3.2, 0.20, 2.70), COL_WALL_OUTER)
-    make_box("Wall_N_E", (+3.4, INTERIOR_Y_N, 1.35),
-             (3.2, 0.20, 2.70), COL_WALL_OUTER)
+    _wall_cut("Wall_N_E", 'X', INTERIOR_Y_N, +1.8, +5.0, [(2.15, 3.45, 1.10, 2.00)])
     make_box("Wall_N_AboveDoor", (0.0, INTERIOR_Y_N, 2.50),
              (1.6, 0.20, 0.40), COL_WALL_OUTER)
     # the back door, likewise (2026-09-24: 3.6 m opening, 1.6 m door)
@@ -328,10 +347,8 @@ def build_shell():
         make_box(f"Wall_N_DoorFill_{fs:+d}", (fs * 1.30, INTERIOR_Y_N, 1.35),
                  (1.00, 0.20, 2.70), COL_WALL_OUTER)
     # East/West walls — full height, no cuts
-    make_box("Wall_E", (INTERIOR_X_E, 3.0, 1.35),
-             (0.20, 6.0, 2.70), COL_WALL_OUTER)
-    make_box("Wall_W", (INTERIOR_X_W, 3.0, 1.35),
-             (0.20, 6.0, 2.70), COL_WALL_OUTER)
+    _wall_cut("Wall_E", 'Y', INTERIOR_X_E, 0.0, 6.0, [(1.35, 2.25, 1.25, 2.05)])
+    _wall_cut("Wall_W", 'Y', INTERIOR_X_W, 0.0, 6.0, [(0.75, 1.25, 1.65, 2.05), (3.90, 5.10, 1.10, 2.00)])
 
     # Front door + back door
     make_box("FrontDoor", (0.0, INTERIOR_Y_S - 0.04, 1.05),
@@ -730,9 +747,12 @@ def build_bookshelf():
     # mid-wall into the bedroom.
     sh_y = +2.48
     shelf_h = 1.80
-    make_box("Bookshelf_Frame",
-             (sh_x, sh_y, shelf_h / 2.0),
-             (0.20, 0.90, shelf_h), (0.38, 0.26, 0.18, 1.0))
+    # (2026-10-09) a carcass — back, sides, top — not a solid block: the
+    # tarot decks and the books stood INSIDE it
+    make_box("Bookshelf_Back", (sh_x + 0.09, sh_y, shelf_h / 2.0), (0.02, 0.90, shelf_h), (0.38, 0.26, 0.18, 1.0))
+    for e, sgn in (("S", -1), ("N", 1)):
+        make_box(f"Bookshelf_Side_{e}", (sh_x, sh_y + sgn * 0.44, shelf_h / 2.0), (0.20, 0.02, shelf_h), (0.38, 0.26, 0.18, 1.0))
+    make_box("Bookshelf_Top", (sh_x, sh_y, shelf_h - 0.01), (0.20, 0.90, 0.02), (0.38, 0.26, 0.18, 1.0))
     # 4 horizontal shelves
     for i in range(4):
         sz = 0.18 + i * 0.45
@@ -778,14 +798,15 @@ def build_bookshelf():
              (sh_x - 0.06, sh_y + 0.30, shelf_2_z),
              (0.16, 0.22, 0.04), COL_BOOK_BLUE)
 
-    # Shelf 3 (top) — mirror shard + cookie box
-    shelf_3_z = 0.18 + 3 * 0.45 + 0.13
+    # Shelf 3 (top) — mirror shard + cookie box, lying ON the plate (2026-10-09:
+    # at +0.13, a book's half-height, they floated once the solid frame went)
+    shelf_3_z = 0.18 + 3 * 0.45 + 0.0125
     # Mirror shard — angular, slightly off-axis
     make_box("Bookshelf_MirrorShard",
-             (sh_x - 0.06, sh_y - 0.28, shelf_3_z),
+             (sh_x - 0.06, sh_y - 0.28, shelf_3_z + 0.005),
              (0.10, 0.14, 0.01), (0.92, 0.94, 0.96, 1.0))
     make_box("Bookshelf_MirrorShard_Frame",
-             (sh_x - 0.06, sh_y - 0.28, shelf_3_z + 0.002),
+             (sh_x - 0.06, sh_y - 0.28, shelf_3_z + 0.016),
              (0.04, 0.06, 0.012), COL_METAL_STEEL)
     # Half-eaten cookie box ("nice cookies somebody gave you")
     make_box("Bookshelf_CookieBox",

@@ -344,11 +344,24 @@ def build_dressing():
                  (0.72, 0.62, 0.30, 1.0), (0.30, 0.46, 0.34, 1.0)]
     with shifted(globals(), 1.0, 0.95, ROOM_W=OLD_W, ROOM_D=OLD_D):   # the nook's E wall
         shx = ROOM_W/2.0 - 0.25   # against the E wall face (2026-09-23: 5 cm into it)
-        make_box("Shelf_Body", (shx, ROOM_D-1.2, 0.90), (0.30, 1.00, 1.80), COL_WOOD)
+        # (2026-10-09) a CARCASS — back, sides, top, four boards — not a
+        # solid box: the 24 books stood INSIDE it, so the shelf read as a
+        # plain block. Books of unequal height, one lying flat (draft-5 target).
+        make_box("Shelf_Back", (shx+0.14, ROOM_D-1.2, 0.90), (0.02, 1.00, 1.80), COL_WOOD)
+        for e, sy in (("S", ROOM_D-1.69), ("N", ROOM_D-0.71)):
+            make_box(f"Shelf_Side_{e}", (shx, sy, 0.90), (0.30, 0.02, 1.80), COL_WOOD)
+        make_box("Shelf_Top", (shx, ROOM_D-1.2, 1.79), (0.30, 1.00, 0.02), COL_WOOD)
+        heights = (0.26, 0.22, 0.25, 0.20, 0.24, 0.27)
         for r in range(4):
+            zb = 0.21 + r * 0.42
+            make_box(f"Shelf_Board_{r}", (shx, ROOM_D-1.2, zb), (0.28, 0.96, 0.02), COL_WOOD)
             for c in range(6):
-                make_box(f"Shelf_Book_{r}_{c}", (shx-0.03, ROOM_D-1.7+c*0.16, 0.35+r*0.42),
-                         (0.22, 0.12, 0.26), BOOK_COLS[(r+c) % 4])
+                if r == 3 and c >= 4:
+                    continue
+                hb = heights[(r * 2 + c) % 6]
+                make_box(f"Shelf_Book_{r}_{c}", (shx-0.03, ROOM_D-1.62+c*0.15, zb + 0.01 + hb/2.0),
+                         (0.22, 0.12, hb), BOOK_COLS[(r+c) % 4])
+        make_box("Shelf_Book_Flat", (shx-0.03, ROOM_D-0.92, 0.21 + 3*0.42 + 0.01 + 0.025), (0.22, 0.26, 0.05), BOOK_COLS[1])
     with shifted(globals(), 0.3, 0.95, ROOM_W=OLD_W, ROOM_D=OLD_D):   # the nook
         make_floor_plant("Plant", (1.60, ROOM_D-0.45, 0.0),   # NE corner, west of the shelf (2026-09-25: the bed moved onto its old spot)
                          palette={"leaf": (0.36, 0.48, 0.30, 1.0), "pot": (0.66, 0.40, 0.26, 1.0)})
