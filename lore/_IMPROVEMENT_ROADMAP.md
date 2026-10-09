@@ -3834,6 +3834,34 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-09 · overnight run, pass 13: MAYA'S UPSTAIRS (the room across the
+hall).** vol6 ch2 stages half of Maya's night in her grandmother's
+bedroom. "She crosses the hall. She opens her grandmother's bedroom
+door"; then [shot:closeup grandmother], [shot:insert hands], and "Why is
+there a radio in your room on 1776 kHz." The set was Maya's room only, so
+the closeup fell back to a substitute and the hands insert framed a
+stand-in crease on MAYA's duvet. `build_upstairs_2026_10` adds:
+- **The hall.** A runner and the hall light; her grandfather's
+  black-and-white photographs ("Your grandfather was a photographer");
+  the stair going down at the E end.
+- **Linda's room**, through her open door. The made bed and the creases
+  where they sat, now on HER blanket. The SHORTWAVE on the nightstand,
+  dial lit, antenna up. The reading lamp and glasses; the dresser with
+  his old camera and a framed print; the armchair and cardigan by the W
+  window over the dark yard.
+- **Coverage.** Practicals for the dial, the lamp and the hall, a moon at
+  the window. Markers: `shot_closeup_grandmother`, a re-aimed
+  `shot_insert_hands`, and `shot_insert_radio`.
+
+The builder's docstring had Maya as "Maya Miller (Chief Miller's
+daughter)". She is Maya Daigle, and Sam is the chief's daughter: the
+wrong-house class again (_SET_DETAIL_PLAYBOOK 2026-10-08).
+
+Draft 6 targets:
+- Maya's own N window view at the second floor's height;
+- the corkboard photos;
+- Deck framing of the grandmother closeup.
+
 **2026-10-09 · overnight run, pass 12: FINN'S APARTMENT, DRAFT 4 (build big +
 the prose's kitchen).** Vol7's six Finn scenes played in a 5.0 x 5.4 m
 room. The kitchen was a counter, and the bedroom partition stood across

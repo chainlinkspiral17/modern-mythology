@@ -1,5 +1,7 @@
-"""Maya's Bedroom — vol6 — Maya Miller (Chief Miller's daughter, a
-sharp, observant teenage girl). Distinct LAVENDER + teal palette and a
+"""Maya's Bedroom — vol6 — Maya Daigle (vol6_ch2: "Maya Daigle's Bedroom";
+she lives with her grandmother Linda in the house on the cul-de-sac —
+2026-10-09: this docstring had her as "Maya Miller (Chief Miller's
+daughter)", which is Sam), a sharp, observant teenage girl. Distinct LAVENDER + teal palette and a
 teen-girl prop set (vanity + round mirror + string lights, a bulletin
 board of photos & concert tickets, a bookshelf of paperbacks, a record
 player, plants, a patterned duvet + throw pillows, a hamper, a rug) so
@@ -14,17 +16,23 @@ DOOR (the opening had no leaf) with stickers; first WEAR; D3 switch,
 outlets, five cords; D5 the backyard through the north window (the
 shared `make_backyard_view`). The .tscn gains the fairy string's wash.
 
-DRAFT 5 targets: the corkboard's photos as photos; the bookshelf's
+DRAFT 5 (2026-10-09): the upstairs — the hall outside her door and her
+grandmother's room across it, where ch2 stages the closeup grandmother,
+the hands and the shortwave on 1776 kHz (build_upstairs_2026_10).
+
+DRAFT 6 targets: the corkboard's photos as photos; the bookshelf's
 paperbacks at a lean; the vanity mirror's frame as a lathe ring; the
 duvet's pattern (the teal band as a real stripe); the box fan's blades;
 Deck: the sheet's establish at night and `insert floorboard`.
 """
-import os, sys
+import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import (clear_scene, make_box, make_chamfer_box, make_cyl, make_lathe,
                              make_tube, make_rot_box, export_glb)
+from _props.furniture import make_bed, make_lamp
+from _props.geometry import make_blob
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_wall_with_openings
 from _props.store_fixtures import make_counter, make_counter_bullnose, make_register
 from _props.shelving import make_snack_aisle, make_endcap
@@ -267,10 +275,13 @@ def build_hero_props_2026_09():
              (0.82, 0.80, 0.74, 1.0))
     make_box("Photograph_Border", (0.30, 3.15, 0.0175), (0.094, 0.144, 0.0005),
              (0.35, 0.33, 0.30, 1.0))
-    make_box("Hands_Duvet_Crease_A", (0.30, 3.60, 0.596), (0.16, 0.05, 0.012),
-             (0.44, 0.34, 0.52, 1.0))
-    make_box("Hands_Duvet_Crease_B", (0.33, 3.72, 0.595), (0.05, 0.13, 0.010),
-             (0.42, 0.32, 0.50, 1.0))
+    # (2026-10-09: the creases where they sat moved to her GRANDMOTHER's
+    # bed — "Maya goes in. She sits on the edge of the bed. Her
+    # grandmother takes her hand." — Linda's room is built now)
+    make_box("Hands_Blanket_Crease_A", (-0.06, -4.15, 0.596), (0.16, 0.05, 0.012),
+             (0.48, 0.42, 0.54, 1.0))
+    make_box("Hands_Blanket_Crease_B", (-0.03, -4.03, 0.595), (0.05, 0.13, 0.010),
+             (0.46, 0.40, 0.52, 1.0))
 
 
 def build_draft4_2026_09():
@@ -325,6 +336,126 @@ def build_door_infill_mayas_door_2026_09():
     make_wall("Wall_Fill_Mayas_Door_W", (-0.762, 0.000, 0), length=0.475, height=2.000, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
     make_wall("Wall_Fill_Mayas_Door_E", (0.762, 0.000, 0), length=0.475, height=2.000, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
 
+def build_upstairs_2026_10():
+    """DRAFT 5 (2026-10-09) · THE HALL AND HER GRANDMOTHER'S ROOM. vol6 ch2
+    stages half its night across the hall: "She gets up. She crosses the
+    hall. She opens her grandmother's bedroom door, quietly, just an
+    inch." — [shot:closeup grandmother] "Her grandmother is awake in the
+    dark." — [shot:insert hands] — "Why is there a radio in your room on
+    1776 kHz." Those cues had nowhere to cut to. Now, S of Maya's door:
+      - the upstairs hall (runner, the hall light, her grandfather's
+        black-and-white photographs — "Your grandfather was a
+        photographer" — and the stair rail going down at the E end);
+      - Linda's room through its door, standing open: the made bed she
+        sits on the edge of, the SHORTWAVE on the nightstand with its
+        dial lit, the reading lamp and glasses, the dresser with his old
+        camera and a framed print, the armchair by the W window over the
+        dark yard."""
+    wall = (0.80, 0.76, 0.66, 1.0)              # the rest of the house is not lavender
+    pal = {"wall": wall, "baseboard": (0.46, 0.38, 0.30, 1.0)}
+    wood = (0.40, 0.30, 0.22, 1.0)
+    HY0, HY1 = -1.30, -0.10                     # hall faces (S, N)
+    GY0, GY1 = -5.50, -1.50                     # Linda's room faces
+    XW_, XE_ = -ROOM_W / 2.0 + 0.10, ROOM_W / 2.0 - 0.10
+    # floors, walls, ceiling
+    make_box("Hall_Floor", (-0.475, (HY0 + HY1) / 2.0 - 0.05, -0.01), (1.35 - XW_, HY1 - HY0 + 0.1, 0.02), (0.52, 0.40, 0.28, 1.0))
+    make_box("Linda_Floor", (0.0, (GY0 + GY1) / 2.0, -0.01), (ROOM_W, GY1 - GY0 + 0.2, 0.02), (0.50, 0.40, 0.30, 1.0))
+    make_ceiling("Upstairs_Ceil", (0.0, (GY0 + HY1) / 2.0 - 0.1, CEIL), size_x=ROOM_W + 0.4, size_y=HY1 - GY0 + 0.2,
+                 with_grid=False, with_stains=False, palette={"tile": (0.90, 0.88, 0.82, 1.0)})
+    for nm, x, bb in (("Hall_Wall_W", -ROOM_W / 2.0, +1), ("Hall_Wall_E", ROOM_W / 2.0, -1)):
+        make_wall(nm, (x, (HY0 + HY1) / 2.0, 0), length=HY1 - HY0, height=CEIL, axis='Y', palette=pal, baseboard_face_sign=bb)
+    gdoor = (0.70, 1.025, 0.85, 2.05)
+    make_wall_with_openings("Linda_Wall_N", (0.0, HY0 - 0.10, 0), length=ROOM_W + 0.2, height=CEIL, axis='X',
+                            palette=pal, baseboard_face_sign=-1, openings=[gdoor])
+    win = (-3.40, 1.50, 1.00, 1.10)
+    make_wall_with_openings("Linda_Wall_W", (-ROOM_W / 2.0, (GY0 + GY1) / 2.0, 0), length=GY1 - GY0, height=CEIL, axis='Y',
+                            palette=pal, baseboard_face_sign=+1, openings=[win])
+    make_wall("Linda_Wall_E", (ROOM_W / 2.0, (GY0 + GY1) / 2.0, 0), length=GY1 - GY0, height=CEIL, axis='Y', palette=pal, baseboard_face_sign=-1)
+    make_wall("Linda_Wall_S", (0.0, GY0 - 0.10, 0), length=ROOM_W + 0.2, height=CEIL, axis='X', palette=pal, baseboard_face_sign=+1)
+    # her door, standing open into her room (she is on the porch / awake)
+    hx_, hy_ = gdoor[0] - gdoor[2] / 2.0 + 0.01, GY1 - 0.02
+    a = math.radians(-72.0)
+    make_rot_box("Linda_Door_Leaf", (hx_ + 0.40 * math.cos(a), hy_ + 0.40 * math.sin(a), 1.015), (0.80, 0.04, 2.02), (0.86, 0.84, 0.78, 1.0), yaw=a)
+    for face, yy in (("Hall", HY0 + 0.01), ("Room", GY1 - 0.01)):
+        for nm, x in (("A", gdoor[0] - gdoor[2] / 2.0 - 0.035), ("B", gdoor[0] + gdoor[2] / 2.0 + 0.035)):
+            make_box(f"Linda_Door_Casing_{face}_{nm}", (x, yy, 1.06), (0.07, 0.02, 2.12), wood)
+        make_box(f"Linda_Door_Casing_{face}_Head", (gdoor[0], yy, 2.085), (gdoor[2] + 0.14, 0.02, 0.07), wood)
+    # ── the hall: runner, light, his photographs, the stair going down E ──
+    make_box("Hall_Runner", (-0.6, (HY0 + HY1) / 2.0, 0.006), (2.6, 0.56, 0.008), (0.46, 0.22, 0.20, 1.0))
+    make_cyl("Hall_Light", (-0.4, (HY0 + HY1) / 2.0, CEIL - 0.03), 0.14, 0.05, (0.94, 0.90, 0.78, 1.0), segments=12)
+    for k, x in enumerate((-1.95, -1.35, -0.75)):
+        make_box(f"Hall_Photo_{k}_Frame", (x, HY0 + 0.015, 1.55 + (0.06 if k % 2 else 0.0)), (0.34, 0.03, 0.40), (0.12, 0.12, 0.12, 1.0))
+        make_box(f"Hall_Photo_{k}_Print", (x, HY0 + 0.032, 1.55 + (0.06 if k % 2 else 0.0)), (0.26, 0.004, 0.30), ((0.62, 0.62, 0.60, 1.0), (0.40, 0.40, 0.40, 1.0), (0.52, 0.52, 0.50, 1.0))[k])
+    sx0 = 1.35
+    # the stair going down E: solid steps on the well's floor (the riser
+    # faces dark), the well's floor 1.2 m down
+    sy0, sy1 = HY0 + 0.05, -0.25
+    make_box("Stairwell_Floor", ((sx0 + XE_) / 2.0, (sy0 + sy1) / 2.0, -1.22), (XE_ - sx0, sy1 - sy0, 0.04), (0.18, 0.15, 0.12, 1.0))
+    for k in range(4):
+        top = -0.19 * (k + 1)
+        make_box(f"Stair_Step_{k}", (sx0 + 0.13 + 0.25 * k, (sy0 + sy1) / 2.0, (top - 1.20) / 2.0), (0.25, sy1 - sy0, top + 1.20), (0.30, 0.24, 0.18, 1.0))
+        make_box(f"Stair_Tread_{k}", (sx0 + 0.13 + 0.25 * k, (sy0 + sy1) / 2.0, top + 0.015), (0.26, sy1 - sy0, 0.03), wood)
+    for k, y in enumerate((HY0 + 0.06, HY1 - 0.06)):
+        make_box(f"Stair_Newel_{k}", (sx0, y, 0.55), (0.09, 0.09, 1.10), wood)
+    make_box("Stair_Handrail", (sx0, (HY0 + HY1) / 2.0, 0.92), (0.06, HY1 - HY0 - 0.12, 0.05), wood)
+    for k in range(8):
+        make_box(f"Stair_Baluster_{k}", (sx0, HY0 + 0.20 + k * 0.115, 0.46), (0.03, 0.03, 0.87), (0.90, 0.88, 0.82, 1.0))
+    # ── Linda's room ──
+    make_bed("Linda_Bed", -0.60, -4.45, head="-Y", w=1.40, d=2.0, style="frame", frame_col=wood,
+             blanket_col=(0.56, 0.50, 0.62, 1.0), pillows=2, made=True)
+    # the nightstand with THE SHORTWAVE, its dial lit on 1776
+    nx, ny = 0.45, GY0 + 0.21
+    make_box("Linda_Nightstand", (nx, ny, 0.30), (0.46, 0.40, 0.60), wood)
+    make_box("Linda_Nightstand_Drawer", (nx, ny + 0.205, 0.48), (0.38, 0.012, 0.14), (0.34, 0.26, 0.18, 1.0))
+    make_box("Shortwave_Radio", (nx - 0.02, ny - 0.02, 0.71), (0.38, 0.18, 0.22), (0.24, 0.22, 0.20, 1.0))
+    make_cyl("Shortwave_Dial", (nx + 0.06, ny + 0.072, 0.72), 0.055, 0.01, (1.0, 0.70, 0.30, 1.0), axis='Y', segments=14)
+    make_box("Shortwave_Dial_Needle", (nx + 0.075, ny + 0.078, 0.72), (0.004, 0.003, 0.08), (0.80, 0.16, 0.12, 1.0))
+    make_box("Shortwave_Grille", (nx - 0.11, ny + 0.071, 0.71), (0.13, 0.004, 0.16), (0.14, 0.12, 0.10, 1.0))
+    make_cyl("Shortwave_Knob", (nx + 0.14, ny + 0.075, 0.66), 0.018, 0.02, (0.70, 0.66, 0.56, 1.0), axis='Y', segments=8)
+    make_tube("Shortwave_Antenna", [(nx + 0.14, ny - 0.07, 0.82), (nx + 0.30, ny - 0.10, 1.38)], 0.005, (0.72, 0.72, 0.70, 1.0), segments=4)
+    make_box("Reading_Glasses", (nx + 0.12, ny + 0.12, 0.605), (0.12, 0.04, 0.01), (0.20, 0.18, 0.16, 1.0))
+    wx_ = -1.80
+    make_box("Linda_Nightstand_W", (wx_, ny, 0.30), (0.46, 0.40, 0.60), wood)
+    make_lamp("Linda_Lamp", wx_, ny - 0.04, base_z=0.60, h=0.48, shade_col=(0.90, 0.84, 0.70, 1.0))
+    make_cyl("Linda_Water_Glass", (wx_ + 0.14, ny + 0.10, 0.65), 0.03, 0.10, (0.80, 0.84, 0.86, 0.6), segments=8)
+    # the dresser on the E wall: his old camera, a framed print, a dish
+    dx_, dy_ = XE_ - 0.24, -3.10
+    make_box("Linda_Dresser", (dx_, dy_, 0.48), (0.46, 1.10, 0.96), wood)
+    for k in range(3):
+        make_box(f"Linda_Dresser_Drawer_{k}", (dx_ - 0.235, dy_, 0.22 + k * 0.28), (0.01, 1.0, 0.22), (0.34, 0.26, 0.18, 1.0))
+    make_box("Old_Camera_Body", (dx_, dy_ - 0.25, 1.05), (0.10, 0.12, 0.18), (0.14, 0.13, 0.12, 1.0))
+    make_cyl("Old_Camera_Lens", (dx_ - 0.07, dy_ - 0.25, 1.06), 0.035, 0.05, (0.10, 0.10, 0.10, 1.0), axis='X', segments=10)
+    make_box("Framed_Print", (dx_ + 0.05, dy_ + 0.15, 1.10), (0.03, 0.26, 0.30), (0.12, 0.12, 0.12, 1.0))
+    make_box("Framed_Print_Image", (dx_ + 0.033, dy_ + 0.15, 1.10), (0.004, 0.20, 0.24), (0.58, 0.58, 0.56, 1.0))
+    make_lathe("Linda_Dish", (dx_, dy_ + 0.42, 0.96), [(0.0, 0.0), (0.05, 0.0), (0.08, 0.03), (0.07, 0.035), (0.0, 0.008)], (0.70, 0.66, 0.58, 1.0), segments=12)
+    # the armchair by the W window, the cardigan over its arm
+    ax_, ay_ = XW_ + 0.45, -2.30
+    make_box("Linda_Armchair_Base", (ax_, ay_, 0.18), (0.74, 0.74, 0.36), (0.52, 0.44, 0.38, 1.0))
+    make_box("Linda_Armchair_Cushion", (ax_ + 0.06, ay_, 0.41), (0.56, 0.50, 0.10), (0.58, 0.50, 0.44, 1.0))
+    make_box("Linda_Armchair_Back", (ax_ - 0.29, ay_, 0.66), (0.16, 0.74, 0.60), (0.52, 0.44, 0.38, 1.0))
+    for nm, oy in (("S", -0.31), ("N", 0.31)):
+        make_box(f"Linda_Armchair_Arm_{nm}", (ax_ + 0.06, ay_ + oy, 0.46), (0.60, 0.12, 0.20), (0.52, 0.44, 0.38, 1.0))
+    make_box("Linda_Cardigan", (ax_ + 0.06, ay_ + 0.31, 0.575), (0.40, 0.16, 0.03), (0.70, 0.62, 0.66, 1.0))
+    # the W window: frame, glass, curtain; the dark yard and the fence past it
+    wy, wz, ww, wh = win
+    for nm, c, sz in (("Head", (-ROOM_W / 2.0, wy, wz + wh / 2.0 - 0.035), (0.10, ww, 0.07)),
+                      ("Sill", (-ROOM_W / 2.0, wy, wz - wh / 2.0 + 0.035), (0.10, ww, 0.07)),
+                      ("JambA", (-ROOM_W / 2.0, wy - ww / 2.0 + 0.035, wz), (0.10, 0.07, wh - 0.14)),
+                      ("JambB", (-ROOM_W / 2.0, wy + ww / 2.0 - 0.035, wz), (0.10, 0.07, wh - 0.14))):
+        make_box(f"Linda_Window_Frame_{nm}", c, sz, (0.86, 0.84, 0.78, 1.0))
+    make_box("Linda_Window_Glass", (-ROOM_W / 2.0, wy, wz), (0.01, ww - 0.14, wh - 0.14), (0.40, 0.46, 0.56, 0.5))
+    make_box("Linda_Window_Curtain", (XW_ + 0.06, wy - ww / 2.0 - 0.10, wz + 0.10), (0.05, 0.30, 1.40), (0.78, 0.74, 0.66, 1.0))
+    make_box("Linda_Window_Rod", (XW_ + 0.06, wy, wz + wh / 2.0 + 0.10), (0.03, ww + 0.50, 0.02), (0.60, 0.56, 0.48, 1.0))
+    for k, y in enumerate((wy - ww / 2.0 - 0.24, wy + ww / 2.0 + 0.24)):
+        make_box(f"Linda_Window_Rod_Bracket_{k}", (XW_ + 0.03, y, wz + wh / 2.0 + 0.10), (0.06, 0.02, 0.02), (0.60, 0.56, 0.48, 1.0))
+    make_box("Out_Yard_W", (-ROOM_W / 2.0 - 5.0, -3.4, -3.0), (10.0, 12.0, 0.05), (0.16, 0.20, 0.14, 1.0))
+    make_box("Out_Fence_W", (-ROOM_W / 2.0 - 7.0, -3.4, -2.1), (0.08, 12.0, 1.8), (0.36, 0.30, 0.24, 1.0))
+    make_blob("Out_Yard_Tree", (-ROOM_W / 2.0 - 4.5, -5.5, 1.6), 1.8, (0.12, 0.18, 0.14, 1.0), noise=0.22, seed=17, squash=0.9)
+    make_cyl("Out_Yard_Tree_Trunk", (-ROOM_W / 2.0 - 4.5, -5.5, -1.2), 0.16, 3.6, (0.20, 0.16, 0.12, 1.0), segments=8)
+    make_box("Linda_Rug", (-0.6, -2.80, 0.004), (2.0, 1.2, 0.008), (0.56, 0.42, 0.40, 1.0))
+    make_cyl("Linda_Ceiling_Light", (0.0, -3.5, CEIL - 0.03), 0.16, 0.05, (0.94, 0.90, 0.78, 1.0), segments=12)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -341,6 +472,7 @@ def main():
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/maya_bedroom.glb"))
     build_door_infill_mayas_door_2026_09()
+    build_upstairs_2026_10()
     print(f"\n[build_maya_bedroom] exporting to {out}")
     export_glb(out)
 
