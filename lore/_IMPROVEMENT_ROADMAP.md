@@ -3834,6 +3834,38 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-09 · overnight run, pass 15: THE KOWALSKI KITCHEN, DRAFT 5 (build big
++ the family room).** A 6 x 5 m room held the kitchen run, the table, the
+fridge, a couch a chair-width from the table, a TV on the kitchen wall
+and a stair nothing climbs. The prose has more: "Bill is at the kitchen
+table with the Sentinel"; "sat with the dog, watched five minutes of the
+noon news"; "He goes in through the garage"; his mother asleep behind
+"the bedroom door from the hallway". Rebuilt at 10.0 x 6.4 m:
+- **Kitchen (E half).** The run is laid out on the new N wall with the
+  kitchen kit's own constants: the sink under the back-yard window, the
+  hot sauce cabinet left of the stove. The table, pendant, fridge and E
+  window moved rigidly with `plan.shifted`, checked against a part
+  snapshot.
+- **Family room (W half).** The room is turned so the TV stands on the S
+  wall. The couch faces it with DAISY lying on her spot (`make_dog`).
+  Bill's recliner with the Sentinel on its arm, the area rug, a coffee
+  table with the remote, a floor lamp, a W-wall bookcase with a trophy,
+  family photos.
+- **S wall.** The garage door with Bill's work jacket and the boots, and
+  the hall opening with the bedroom door shut.
+- **Coverage.** Practicals for the floor lamp, the family-room light and
+  the TV's glow. Markers re-aimed; new `shot_insert_daisy`.
+- **The kit fact.** A kit function (`kitchen_kit.base_run`) builds in its
+  own module, so `plan.shifted` cannot move it: lay a kit run out with
+  new constants instead.
+
+Draft 6 targets:
+- the open floor between the table and the family room (an island or a
+  hutch);
+- the upper doors ajar;
+- the dish rack's dishes;
+- Deck framing.
+
 **2026-10-09 · overnight run, pass 14: SAM'S BEDROOM IS SAM MILLER'S (the
 wrong person).** Drafts 1-4 dressed `sam_bedroom` for "Sam (the kid
 protagonist; into Cosmic Comics and video games) ... boyish ... his

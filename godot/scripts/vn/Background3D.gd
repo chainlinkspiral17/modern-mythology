@@ -647,15 +647,10 @@ const CAMERA_PRESETS := {
 	"kowalski_kitchen": {
 		"scene": "res://scenes/locales/kowalski_kitchen.tscn",
 		"requires_glb": "res://assets/3d/locales/kowalski_kitchen.glb",
-		# Family kitchen 6×5 (godot x∈[-3,3], z∈[0,-5], ceil 2.6). Table
-		# dead-centre (godot 0,-2.5), sink+counter NW (godot -1.5,-4),
-		# stove centre-N (1.5,-4), fridge on the E wall (godot 2.45,-1),
-		# E window. Camera in the SE quadrant just inside the door looking
-		# NW across the table toward the sink corner — a 3/4 wide of the
-		# whole kitchen.
-		# RE-VANTAGED 2026-09-03: the SE vantage at x 2.1 stood inside the fridge (E wall, x 2.1..2.8); moved west of it, same NW look across the table
-		"camera_origin": Vector3(1.20, 1.58, -0.80),
-		"camera_rotation": Vector3(-0.05, deg_to_rad(51.3), 0.0),
+		# DRAFT 5 (2026-10-09): kitchen E + family room W, 10 x 6.4 (godot x in
+		# [-5,5], z in [0,-6.4]); camera inside the garage door looking NW.
+		"camera_origin": Vector3(3.70, 1.62, -0.85),
+		"camera_rotation": Vector3(-0.100, deg_to_rad(51.4), 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},

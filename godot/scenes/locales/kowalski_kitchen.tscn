@@ -184,7 +184,7 @@ shadow_enabled = false
 ; The pendant over the table (draft 4, 2026-09-18 — it was "overhead fluorescent" in a
 ; kitchen with no tubes): bulb at blender (0.0, 2.5, 2.16) → godot (0.0, 2.16, -2.5).
 [node name="Table_Pendant_Bulb_Practical" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.16, -2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.16, -3.3)
 light_color = Color(0.98, 0.92, 0.8, 1)
 light_energy = 1.3
 omni_range = 5.0
@@ -319,67 +319,94 @@ script = ExtResource("14_dbgm")
 ; ── vn_shot coverage (2026-08-08 directing pass 4) ────────
 ; rotation B: from the fridge corner across the table to the couch
 [node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.6, 1.55, -0.65)
-rotation = Vector3(-0.218728, 1.09545, 0)
+position = Vector3(4.300, 1.600, -0.850)
+rotation = Vector3(-0.1003, 1.1634, 0.0)
 metadata/fov = 56.0
 
-; rotation C: from the sink over the table to the TV and fridge
+; rotation C: from the kitchen W into the family room — the couch, Daisy, the TV
 [node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.3, 1.5, -4.35)
-rotation = Vector3(-0.144038, -2.36474, 0)
+position = Vector3(2.600, 1.600, -4.800)
+rotation = Vector3(-0.1561, 1.9922, 0.0)
 metadata/fov = 54.0
 
 ; insert: the hot sauce cabinet
 ; (2026-10-07: the cabinet is open now — from the stove side, standing,
 ; past the swung door onto the shelf and the bottle)
 [node name="shot_insert_hotsauce" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.200, 1.650, -3.400)
+position = Vector3(3.200, 1.650, -4.800)
 rotation = Vector3(0.1835, 0.2630, 0.0)
 metadata/fov = 42.0
 
-; insert: the little TV by the window
+; insert: the TV on its stand, the noon news (draft 5: the family room)
 [node name="shot_insert_tv" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.7, 1.25, -2)
-rotation = Vector3(-0.0867383, -1.5708, 0)
+position = Vector3(-3.000, 1.150, -1.950)
+rotation = Vector3(-0.1771, -3.1416, 0.0)
 metadata/fov = 40.0
 
 ; insert: Anita slides her phone across the table
 [node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65, 1.1, -1.95)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.65, 1.1, -2.75)
 rotation = Vector3(-0.5859, 0.7854, 0.0)
 metadata/fov = 42.0
 
 ; insert: the crossword
 [node name="shot_insert_crossword" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.65, 1.1, -2.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.35, 1.1, -3.05)
 rotation = Vector3(-0.5533, -0.8416, 0.0)
 metadata/fov = 42.0
 
 ; insert: two eggs over-easy, set in front of Maya without comment
 [node name="shot_insert_eggs" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.62, 1.1, -2.35)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.62, 1.1, -3.15)
 rotation = Vector3(-0.5841, 0.8415, 0.0)
 metadata/fov = 42.0
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
 ; every closeup of a person cued here cuts to it (the scene had no closeup marker)
 [node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.182, 1.612, -1.717)
+position = Vector3(1.818, 1.612, -2.517)
 rotation = Vector3(-0.2618, 0.7854, 0.0)
 metadata/fov = 45.0
 
 ; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
 ; the far side of the same spot, so two speakers alternate sides
 [node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-2.095, 1.612, -3.630)
+position = Vector3(-0.095, 1.612, -4.430)
 rotation = Vector3(-0.2618, -2.3562, 0.0)
 metadata/fov = 45.0
 
 ; ── draft 4 (2026-09-18): the under-cabinet light Anita sits by — "the only light in the ch19 beat" ──
 ; blender (-1.5, 4.62, 1.44) → godot (-1.5, 1.44, -4.62). Warm tungsten strip.
 [node name="UnderCab_Light_Practical" type="OmniLight3D" parent="."]
-position = Vector3(0.220, 1.400, -4.640)
+position = Vector3(2.220, 1.400, -6.040)
 light_color = Color(0.960, 0.840, 0.600, 1)
 light_energy = 1.20
 shadow_enabled = false
 omni_range = 2.60
+
+; DRAFT 5 (2026-10-09): the family room's lights; Daisy
+[node name="FloorLamp_Bulb_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-4.45, 1.44, -4.45)
+light_color = Color(1.0, 0.84, 0.58, 1)
+light_energy = 0.9
+shadow_enabled = false
+omni_range = 3.5
+
+[node name="Family_Ceiling_Light_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-3.0, 2.4, -3.0)
+light_color = Color(1.0, 0.9, 0.7, 1)
+light_energy = 0.8
+shadow_enabled = false
+omni_range = 5.0
+
+[node name="TV_Screen_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-3.0, 0.86, -0.55)
+light_color = Color(0.62, 0.74, 0.92, 1)
+light_energy = 0.5
+shadow_enabled = false
+omni_range = 2.2
+
+[node name="shot_insert_daisy" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.600, 1.200, -3.000)
+rotation = Vector3(-0.2455, 1.0460, 0.0)
+metadata/fov = 42.0
