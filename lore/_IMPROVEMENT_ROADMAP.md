@@ -3834,6 +3834,35 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-09 · overnight run, pass 18: DIEGO'S ROOM IS NOT A SHRINE (the wrong
+dressing).** Drafts 1-4 made `diego_bedroom` "a shrine to the pitch":
+jerseys, a scarf, a Mexico flag, striker posters, trophies, cleats.
+Nothing in vol6 has Diego playing anything, and ch0 says the opposite:
+"A photograph of Sam ... tucked into the corner of the mirror, which is
+the only decoration in the room besides a periodic table he has had since
+seventh grade and a calendar he stopped updating in March." Rebuilt from
+ch0/16/18/22/23 at 4.4 x 4.8 m:
+- **Bed.** The twin with the sheets pushed to one side.
+- **"The small desk that has been his desk since he was nine."** The
+  laptop, the water glass with a finger of water, the textbook, the blue
+  pen, the fourteen-line letter and its envelope on the corner, a lamp.
+- **The PERIODIC TABLE**, cell by cell, over the desk, and the calendar
+  stopped on March.
+- **The dresser by the door.** The clock that says three eleven, and the
+  mirror with SAM'S PHOTOGRAPH tucked in its corner.
+- **The window's two curtains.** The blackout pair his mother installed,
+  pushed aside, and the regular pair, half drawn.
+- **The rest.** The ceiling fan; the green duffel with the broken
+  front-pocket zipper, half-packed (shirts, the charger's cord, the
+  boots); the closet; his door.
+- **Coverage.** A desk-lamp practical; 10 markers (letter, envelope,
+  photo, duffel, window, bed, glass, establish, the closeup pair).
+
+Draft 6 targets:
+- the hall and Graciela's room;
+- the blackout curtains drawn as a scene state;
+- Deck framing.
+
 **2026-10-09 · overnight run, pass 17: THE CENTRO BREAK ROOM, DRAFT 3.** The
 night crew's room (vol6 ch18/ch22) was 5.6 x 4.6 m with TWO tables in one
 spot: the hero pass "squared the round table into a card table" by

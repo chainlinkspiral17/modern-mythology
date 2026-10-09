@@ -999,15 +999,14 @@ const CAMERA_PRESETS := {
 	"diego_bedroom": {
 		"scene": "res://scenes/locales/diego_bedroom.tscn",
 		"requires_glb": "res://assets/3d/locales/diego_bedroom.glb",
-		# Kid's bedroom 4×4.5 (godot x∈[-2,2], z∈[0,-4.5], ceil 2.6).
-		# Same shell as jesse_bedroom: bed W side (godot -1,-2.25),
-		# desk+lamp E (godot 1,-1.5), dresser E wall (godot 1.7,-3.2),
-		# soccer ball on the floor, N window. Camera in the SE corner just
-		# inside the door looking NW across to the bed: bed centre-back,
-		# window beyond, dresser at frame right. Tight FOV for the small room.
-		"camera_origin": Vector3(1.4, 1.55, -0.7),
-		"camera_rotation": Vector3(-0.05, deg_to_rad(46.3), 0.0),
-		"fov": 58.0,
+		# DRAFT 5 (2026-10-09): Diego's room at his grandmother's, 4.4 x 4.8
+		# (godot x in [-2.2,2.2], z in [0,-4.8]) — plain, as the prose says:
+		# the twin bed W, the small desk E under the periodic table, the
+		# dresser + mirror (Sam's photo) by the door, the window's two
+		# curtains N, the fan. Camera inside the door looking NW at the bed.
+		"camera_origin": Vector3(1.20, 1.58, -0.70),
+		"camera_rotation": Vector3(-0.156, deg_to_rad(36.9), 0.0),
+		"fov": 60.0,
 		"suppress_input": true,
 	},
 	# ── VOL 6/7/8 — batch 2 additions ────────────────────

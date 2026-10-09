@@ -1,7 +1,8 @@
 """Graciela's Bedroom — vol6 — Graciela Ramos (Diego's grandmother, 71,
 892 Ashberry Drive, Harmony Creek Estates). A devout Latina abuela's
 room: survived four hurricanes and two husbands. NOTHING like Diego's
-crisp-white soccer shrine down the hall — warm peach walls, dark
+spare room down the hall (2026-10-09: it was a soccer shrine; the prose has
+only the photo, the periodic table and the calendar) — warm peach walls, dark
 traditional wood, and a home altar (retablo) that is the hero of the
 room: crucifix, a framed Virgen de Guadalupe, saint statuettes, and
 votive candles (veladoras) whose glow is the room's motivated light
