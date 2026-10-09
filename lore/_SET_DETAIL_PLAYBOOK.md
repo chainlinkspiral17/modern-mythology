@@ -86,6 +86,20 @@ henderson) got there by accumulating exactly these layers.
 
 ### 2026-10-09 · enlarging a hand-placed room: shift the GROUPS, verify by diff
 
+- (Lena's apartment, the second room done this way.) The technique is
+  `_props/plan.py shifted(globals(), dx, dy, ROOM_W=old, ROOM_D=old)`.
+  Two traps:
+  - a helper imported INSIDE a function (`from _props.furniture import
+    make_bed`) binds the unwrapped original and does not move (the bed
+    stayed in the partition). Import it at module level, or call it as
+    `module.fn`;
+  - the audit recorder stubs any `_props` module it does not execute for
+    real. `plan` had to join its list, or `with shifted(...)` raised and
+    the builder recorded only half the room.
+- A marker that framed across a now-closed space (the bedroom's view of
+  the main room, through where the new wall stands) cannot be shifted;
+  re-author it inside the room it covers.
+
 - Tem's cabin went from 6 x 6 to 8 x 8 without retyping its hundreds of
   literal coordinates. Each furniture group moves rigidly to its corner
   of the new plan inside `with _shift(dx, dy):` (build_cabin_interior.py).

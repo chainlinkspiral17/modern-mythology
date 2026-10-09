@@ -3834,6 +3834,32 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-09 · overnight run, pass 4: LENA'S APARTMENT, 7 x 6.6 (draft 5).**
+Vol 7's second set (23 placements) was 5 x 5 m. 25 m2 held a kitchen, a
+table for four, a couch nook, a window chair, an easel and a bedroom.
+The table was jammed against the counter, the fridge stood in front of
+the front window, and THE BEDROOM WAS OPEN TO THE COUCH: no wall stood
+between them behind the partition, though "the bedroom closes behind its
+own door". The slippers "at the foot of the bed" stood outside the
+partition.
+- **The method:** the bigger-room technique, now shared as
+  `_props/plan.py shifted()`, with the audit recorder executing it for
+  real.
+  - Groups: kitchen and easel (-1, 0); table (-0.3, +0.3); window chair
+    (+0.25, +0.3); fridge and radiator (+1, 0) into the SE corner, out
+    of the window; bedroom (-1, +1.6) behind the partition, which moves
+    to y 3.6 and is closed by a new east wall; couch nook (+0.3, +0.95);
+    bookshelf on the E wall.
+  - The paths, cords and outlets were re-drawn by hand. The diff
+    against the snapshot checks every group.
+- **The markers:** 18 moved with their subjects; `establish_b` (now from
+  the nook across the main room), the nightstand and the charcoal
+  inserts were re-authored inside their rooms; `closeup_person` frames
+  the kitchen window and the mural.
+Draft 6: the old draft 5's list (real bookshelf shelves, the counter's
+doors, the radiator, the blind) plus the bedroom's empty east half and
+the main room's new floor.
+
 **2026-10-09 · overnight run, pass 3: THE FOXHOLE IS ONE VENUE (foxhole_bar
 draft 1 of the rebuild).** The prose plays one big room: "a hundred and
 ten people", the stage at the front with six LED fixtures on two truss
@@ -4079,7 +4105,7 @@ Earlier list, kept:
 - moss on the roof;
 - siding as boards with a shadow line.
 
-NEXT (queued): Bianca's kitchen is the Miller kitchen again —
+(DONE 2026-10-07 as miller_kitchen draft 9 — see that builder; this note was stale.) Bianca's kitchen is the Miller kitchen again —
 `bianca_kitchen_morning` (ch 22 / 23) and `miller_kitchen` are one room
 on Meadowlark Circle (the cul-de-sac through the window, the green robe
 on the hook by the back door, Mike's chair at the short side by the

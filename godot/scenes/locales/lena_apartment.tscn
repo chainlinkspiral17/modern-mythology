@@ -192,11 +192,11 @@ shadow_enabled = false
 ; stands in the west window's light at blender (-1.72, 2.35), board
 ; centre z 1.20 → godot (-1.72, 1.20, -2.35).
 [node name="shot_insert_canvas" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05, 1.28, -1.62)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.050, 1.280, -1.620)
 rotation = Vector3(-0.5726, 0.9450, 0.0)
 
 [node name="shot_insert_easel" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, 1.45, -1.30)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.550, 1.450, -1.300)
 rotation = Vector3(-0.3876, 0.8652, 0.0)
 
 ; ── vn_shot wave 2 (2026-08) · nebula + window ─────────────────
@@ -205,17 +205,17 @@ rotation = Vector3(-0.3876, 0.8652, 0.0)
 ; window shot LOOKS THROUGH at the mural — the pane, the alley,
 ; the patches, in that order.
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.35, 1.48, -1.30)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.350, 1.480, -1.300)
 rotation = Vector3(0.0, 1.5708, 0.0)
 
 [node name="shot_insert_mural" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.396, 2.475, -0.633)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.396, 2.475, -0.633)
 rotation = Vector3(-0.2618, 1.3090, 0.0)
 
 ; The patch shot favors patch 1 (blender y 0.55, z 2.30): high on
 ; the wall, the newest wrongness.
 [node name="shot_insert_patch" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.383, 2.591, -0.383)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.383, 2.591, -0.383)
 rotation = Vector3(-0.2618, 1.3090, 0.0)
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
@@ -324,79 +324,79 @@ script = ExtResource("13_riff")
 ; ── vn_shot coverage (2026-08-04 directing pass) ────────
 ; rotation B: from the bed corner looking past the couch to the kitchen — the whole studio in one reverse
 [node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.6, 1.5, -4.4)
-rotation = Vector3(-0.120581, -2.38476, 0)
+position = Vector3(1.200, 1.620, -5.900)
+rotation = Vector3(-0.0872, 2.6704, 0)
 metadata/fov = 58.0
 
 ; rotation C: kitchen-counter POV toward the couch and shelf
 [node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-2, 1.5, -0.8)
+position = Vector3(-3.000, 1.500, -0.800)
 rotation = Vector3(-0.154922, -0.896056, 0)
 metadata/fov = 54.0
 
 ; insert: the stove
 [node name="shot_insert_stove" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.224, 1.030, -1.456)
+position = Vector3(-2.224, 1.030, -1.456)
 rotation = Vector3(-0.2618, 2.3562, 0.0)
 metadata/fov = 36.0
 
 ; insert: the nightstand
 [node name="shot_insert_nightstand" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.6, 1.1, -4)
-rotation = Vector3(-0.56886, 0.950547, 0)
+position = Vector3(-1.000, 1.100, -5.400)
+rotation = Vector3(-0.5487, 0.5436, 0)
 metadata/fov = 36.0
 
 ; insert: the Estuary 7 stick on the side table (ch7/ch8 six-oclock)
 [node name="shot_insert_stick" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95, 1.05, -0.55)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.200, 1.050, -0.850)
 rotation = Vector3(-0.7014, -0.8208, 0.0)
 metadata/fov = 42.0
 
 ; insert: the hexagon laid out on the kitchen table (ch12_lena)
 [node name="shot_insert_hexagon" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 1.45, -1.15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.100, 1.450, -1.450)
 rotation = Vector3(-0.8271, -0.0252, 0.0)
 metadata/fov = 42.0
 
 ; insert: the eighth piece on the cloth's far corner (ch12_lena)
 [node name="shot_insert_eighth_piece" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 1.15, -1.6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.050, 1.150, -1.900)
 rotation = Vector3(-0.7693, 0.5698, 0.0)
 metadata/fov = 42.0
 
 ; insert: the sheet of paper, "Jorgen" at the top (ch6)
 [node name="shot_insert_paper" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 1.2, -0.95)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.650, 1.200, -1.250)
 rotation = Vector3(-0.7669, 0.4636, 0.0)
 metadata/fov = 42.0
 
 ; insert: the letter attempt from over her shoulder (ch6)
 [node name="shot_insert_letter" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85, 1.25, -0.85)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.150, 1.250, -1.150)
 rotation = Vector3(-0.6662, -0.5295, 0.0)
 metadata/fov = 42.0
 
 ; insert: Lena's phone, Tem's twelve-fourteen message (ch6)
 [node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 1.15, -0.9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.550, 1.150, -1.200)
 rotation = Vector3(-0.6403, -0.6435, 0.0)
 metadata/fov = 42.0
 
 ; insert: the deadbolt, locked for the first time in three years (ch7)
 [node name="shot_insert_deadbolt" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.34, 1.35, -0.72)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.340, 1.350, -0.720)
 rotation = Vector3(-0.2067, -3.1416, 0.0)
 metadata/fov = 42.0
 
 ; insert: Kai cutting bread on the small wooden board (ch7)
 [node name="shot_insert_bread" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.55, 1.35, -1.65)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.550, 1.350, -1.650)
 rotation = Vector3(-0.5404, 0.9427, 0.0)
 metadata/fov = 42.0
 
 ; insert: the bowl pushed an inch away from her (ch8 the_table)
 [node name="shot_insert_bowl" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 1.15, -1.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.400, 1.150, -1.550)
 rotation = Vector3(-0.6463, 0.7086, 0.0)
 metadata/fov = 42.0
 
@@ -419,22 +419,22 @@ script = ExtResource("14_dbgm")
 
 ; insert: the charcoal — S U N — left on the duvet where her thigh was (vol7 interlude ii)
 [node name="shot_insert_charcoal" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.266, 1.109, -3.165)
-rotation = Vector3(-0.2618, 1.3090, 0.0)
+position = Vector3(-1.200, 1.150, -4.550)
+rotation = Vector3(-0.3436, 1.1071, 0)
 metadata/fov = 42.0
 
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
 ; every closeup of a person cued here cuts to it (the scene had no closeup marker)
 [node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.161, 1.612, -1.670)
-rotation = Vector3(-0.2618, 0.7854, 0.0)
+position = Vector3(0.700, 1.610, -1.500)
+rotation = Vector3(-0.0484, 1.5556, 0)
 metadata/fov = 45.0
 
 ; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
 ; the far side of the same spot, so two speakers alternate sides
 [node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-2.101, 1.612, -2.276)
+position = Vector3(-3.101, 1.612, -2.276)
 rotation = Vector3(-0.2618, -1.3090, 0.0)
 metadata/fov = 45.0
 
@@ -442,7 +442,7 @@ metadata/fov = 45.0
 ; The dorm-era desk-lamp practical floated where no lamp stands; gone.
 ; The floor lamp east of the couch: blender (1.88, 3.95, 1.07) → godot (1.88, 1.07, -3.95).
 [node name="Floor_Lamp_Bulb_Practical" type="OmniLight3D" parent="."]
-position = Vector3(1.880, 1.070, -3.950)
+position = Vector3(2.180, 1.070, -4.900)
 light_color = Color(0.950, 0.780, 0.500, 1)
 light_energy = 1.40
 shadow_enabled = false
@@ -450,7 +450,7 @@ omni_range = 3.20
 
 ; The fairy string on the N wall, one warm wash at its middle: blender (0.0, 4.92, 2.10) → godot (0.0, 2.10, -4.92).
 [node name="Fairy_String_Practical" type="OmniLight3D" parent="."]
-position = Vector3(0.000, 2.100, -4.920)
+position = Vector3(1.400, 2.100, -6.520)
 light_color = Color(1.000, 0.820, 0.500, 1)
 light_energy = 0.90
 shadow_enabled = false
@@ -458,7 +458,7 @@ omni_range = 3.60
 
 ; The laundromat's sodium through the kitchen window over the sink: blender (-2.30, 1.30, 1.50) → godot (-2.30, 1.50, -1.30).
 [node name="Kitchen_Window_Practical" type="OmniLight3D" parent="."]
-position = Vector3(-2.300, 1.500, -1.300)
+position = Vector3(-3.300, 1.500, -1.300)
 light_color = Color(1.000, 0.620, 0.260, 1)
 light_energy = 1.00
 shadow_enabled = false

@@ -1,0 +1,75 @@
+"""plan.py — move a builder's furniture groups when its room grows (2026-10-09).
+
+THE BIGGER ROOM technique (lore/_SET_DETAIL_PLAYBOOK.md, 2026-10-09):
+a hand-placed room's groups were authored against its old walls. To
+enlarge the room without retyping hundreds of literal coordinates, each
+group is built inside
+
+    with shifted(globals(), dx, dy, ROOM_W=old_w, ROOM_D=old_d):
+        build_kitchen()
+
+which moves every part built in the block rigidly by (dx, dy) and hands
+the block the OLD room constants, so `ROOM_W/2 - 0.1` pieces land on the
+new wall. It wraps the builder's own geometry names (whatever of the
+known ones it imported) and the helper modules that functions import
+locally — call those as `module.fn` inside a shifted block (a name bound
+by `from x import fn` before the block is not wrapped).
+
+Verify by diff: record every part before the change and after; each part
+must have moved by exactly one of the planned shifts.
+"""
+import contextlib
+
+_CENTER = ("make_box", "make_cyl", "make_lathe", "make_chamfer_box", "make_rot_box", "make_taper_cyl",
+           "make_prism", "make_blob", "make_wall", "make_window", "make_frame_ring", "make_floor_plant",
+           "make_faded_poster", "make_smoke_detector", "make_calendar")
+_XY = ("make_chair", "make_table", "make_bed", "make_stool", "make_bench", "make_lamp")
+_PATH = ("make_tube",)
+
+
+@contextlib.contextmanager
+def shifted(g, dx, dy, **consts):
+    import _props.creatures as _C
+    import _props.detail as _D
+
+    def c3(f):
+        def w(name, center, *a, **k):
+            return f(name, (center[0] + dx, center[1] + dy) + tuple(center[2:]), *a, **k)
+        return w
+
+    def xy(f):
+        def w(name, x, y, *a, **k):
+            return f(name, x + dx, y + dy, *a, **k)
+        return w
+
+    def path(f):
+        def w(name, pts, *a, **k):
+            return f(name, [(q[0] + dx, q[1] + dy) + tuple(q[2:]) for q in pts], *a, **k)
+        return w
+
+    def two(f):
+        def w(name, a_, b_, *a, **k):
+            return f(name, (a_[0] + dx, a_[1] + dy) + tuple(a_[2:]), (b_[0] + dx, b_[1] + dy) + tuple(b_[2:]), *a, **k)
+        return w
+
+    saved_g, saved_m = {}, []
+    for names, wrap in ((_CENTER, c3), (_XY, xy), (_PATH, path)):
+        for n in names:
+            if n in g:
+                saved_g[n] = g[n]
+                g[n] = wrap(g[n])
+    for mod, n, wrap in ((_C, "make_crow", xy), (_D, "make_traffic_wear", path), (_D, "make_floor_stain", c3),
+                         (_D, "make_scuff_band", c3), (_D, "make_wall_outlet", c3), (_D, "make_light_switch", c3),
+                         (_D, "make_cord_run", two)):
+        if hasattr(mod, n):
+            saved_m.append((mod, n, getattr(mod, n)))
+            setattr(mod, n, wrap(getattr(mod, n)))
+    for k, v in consts.items():
+        saved_g[k] = g[k]
+        g[k] = v
+    try:
+        yield
+    finally:
+        g.update(saved_g)
+        for mod, n, f in saved_m:
+            setattr(mod, n, f)

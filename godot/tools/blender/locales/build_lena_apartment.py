@@ -31,16 +31,25 @@ the four chairs' woods told apart by more than colour (one with a
 cushion tied on); Deck: the contact sheet's `insert easel` under
 morning_bright, and whether the mural reads through the sink window.
 
+DRAFT 5 (2026-10-09, the overnight run): THE BIGGER ROOM — 7 x 6.6 (see
+the constants): the bedroom closed by its own east wall, the fridge out
+of the front window, the table off the counter, the slippers inside the
+bedroom. Its draft 6 targets are the old draft 5's (the bookshelf as real
+shelves, the counter's cabinet doors, the radiator, the front window's
+blind, the chairs' cushion) plus: the main room's new floor between the
+table and the nook wants a second rug or a plant; the bedroom's empty
+east half (a dresser, her clothes on the chair).
+
 Coordinate frame: Blender Z-up, y=0 front (Hemlock) wall with the
-door, +Y into the apartment, walls x=±2.5, back wall y=5.0, ceiling
-2.6. Kitchen along the W wall; bedroom nook behind a partition at
+door, +Y into the apartment, walls x=±3.5, back wall y=6.6, ceiling
+2.6 (2026-10-09: was ±2.5 and 5.0). Kitchen along the W wall; bedroom nook behind a partition at
 y=3.05; front room center/east. glTF export remaps to Godot
 (x, z, -y).
 """
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
-from _props.furniture import make_chair, make_lamp
+from _props.furniture import make_chair, make_lamp, make_bed
 from _props import palette as P
 from _props.geometry import (clear_scene, make_box, make_cyl, make_lathe, make_chamfer_box,
                              make_tube, make_rot_box, export_glb)
@@ -48,8 +57,20 @@ from _props.views import make_view
 from _props.structure import make_floor, make_wall, make_ceiling, make_window, make_wall_with_openings
 from _props.decor import make_floor_plant, make_faded_poster
 from _props.safety import make_smoke_detector
+from _props.plan import shifted
 
-ROOM_W = 5.0; ROOM_D = 5.0; CEIL = 2.6
+ROOM_W = 7.0; ROOM_D = 6.6; CEIL = 2.6
+# THE BIGGER ROOM (2026-10-09, the overnight run; CLAUDE.md rule 5): it was
+# 5 x 5 m — 25 m2 for a kitchen, a table for four, a couch nook, a window
+# chair, an easel and a bedroom — the table jammed against the counter,
+# the fridge standing in front of the front window, the bedroom open to
+# the couch. It is 7 x 6.6 now; each group moves RIGIDLY with the old
+# constants (_props/plan.py `shifted`):
+#   kitchen + easel (-1, 0) · table (-0.3, +0.3) · window chair (+0.25, +0.3)
+#   fridge + radiator (+1, 0) · bedroom (-1, +1.6) behind the partition at
+#   y 3.6, closed now by its own east wall · couch nook (+0.3, +0.95) ·
+#   the bookshelf on the E wall (+1, +0.95)
+OLD_W = 5.0; OLD_D = 5.0
 PAL_WALL = {"wall": (0.96, 0.86, 0.78, 1.0), "baseboard": (0.62, 0.46, 0.30, 1.0)}
 COL_FLOOR = (0.74, 0.58, 0.38, 1.0); COL_SEAM = (0.42, 0.30, 0.18, 1.0)
 COL_WOOD = (0.46, 0.34, 0.22, 1.0)
@@ -72,7 +93,7 @@ def build_shell():
     make_wall("Wall_E", (+ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=-1)
     make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
     make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
-    make_wall_with_openings("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(1.75, 1.42, 1.00, 1.20)])   # cut 2026-10-07: its window was a pane on a solid wall
+    make_wall_with_openings("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(2.00, 1.42, 1.00, 1.20)])   # (2026-10-09: +0.25, clear of the fridge) cut 2026-10-07: its window was a pane on a solid wall
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4, with_grid=False)
     # The front door itself, ajar-closed in the opening, with the
@@ -92,124 +113,132 @@ def build_shell():
         coat_cols = [(0.30, 0.34, 0.40, 1.0), (0.44, 0.30, 0.22, 1.0),
                      (0.26, 0.36, 0.30, 1.0), (0.52, 0.44, 0.30, 1.0)]
         make_box(f"Coat_{i}", (hx, 0.16, 1.32), (0.16, 0.10, 0.72), coat_cols[i])
-    # Bedroom partition at y=3.05 (x -2.5..+0.4) with its own door
-    make_wall("Bedroom_Part_W", (-1.625, 3.05, 0), length=1.75, height=CEIL,
-              axis='X', palette=PAL_WALL)
-    # The partition's east reach is a CASED OPENING to the couch nook,
-    # not a lone door frame standing in the room (2026-09-07 Deck:
-    # "door frames in the middle of rooms"): a mullion post, a header
-    # across the whole opening, and a post at the east wall.
-    make_box("Bedroom_Part_E", (0.275, 3.05, CEIL/2.0), (0.25, 0.16, CEIL), PAL_WALL["wall"])
-    make_box("Bedroom_Part_Header", (-0.30, 3.05, CEIL-0.25), (0.90, 0.16, 0.50), PAL_WALL["wall"])
-    make_box("Bedroom_Part_Header_E", (1.45, 3.05, CEIL-0.25), (2.10, 0.16, 0.50), PAL_WALL["wall"])
-    make_box("Bedroom_Part_Post_E", (ROOM_W/2.0 - 0.125, 3.05, (CEIL-0.5)/2.0), (0.25, 0.16, CEIL-0.5), PAL_WALL["wall"])
-    make_box("Bedroom_Part_Casing_W", (0.40, 3.05, (CEIL-0.5)/2.0), (0.04, 0.20, CEIL-0.5), COL_WOOD)
-    make_box("Bedroom_Part_Casing_E", (ROOM_W/2.0 - 0.25, 3.05, (CEIL-0.5)/2.0), (0.04, 0.20, CEIL-0.5), COL_WOOD)
-    make_box("Bedroom_Part_Casing_Top", (1.45, 3.05, CEIL-0.52), (2.14, 0.20, 0.06), COL_WOOD)
-    # the leaf fills its opening (Part_W ends at -0.75, Post_E starts at
-    # +0.15) — 2026-09-25: a 62 cm leaf at -0.62 overlapped the partition
-    # by 18 cm and left a 46 cm gap to the post
-    make_box("Bedroom_Door", (-0.30, 3.02, 1.02), (0.86, 0.04, 2.04), COL_WOOD)
-    # The three ceiling water stains ("proof her upstairs neighbor's
-    # bathtub leaked... painting them over would be a lie")
-    for i, (sx, sy, sr) in enumerate(((0.40, 3.55, 0.22), (0.62, 3.78, 0.14), (0.48, 3.98, 0.10))):
-        make_cyl(f"Ceil_Stain_{i}", (sx, sy, CEIL-0.005), sr, 0.004,
-                 (0.78, 0.70, 0.58, 1.0), segments=12)
+    # Bedroom partition at y=3.6 (2026-10-09: 3.05 — the bedroom is 2.8 m
+    # deep now) with its own door at x -1.30; west of the door the wall to
+    # the W wall, east of it a mullion, then the CASED OPENING to the couch
+    # nook across to the E wall's post
+    PY = 3.60
+    make_wall("Bedroom_Part_W", ((-ROOM_W/2.0 - 1.75) / 2.0, PY, 0), length=ROOM_W/2.0 - 1.75,
+              height=CEIL, axis='X', palette=PAL_WALL)
+    make_box("Bedroom_Part_E", (-0.725, PY, CEIL/2.0), (0.25, 0.16, CEIL), PAL_WALL["wall"])
+    make_box("Bedroom_Part_Header", (-1.30, PY, CEIL-0.25), (0.90, 0.16, 0.50), PAL_WALL["wall"])
+    ox0, ox1 = -0.60, ROOM_W/2.0 - 0.25
+    make_box("Bedroom_Part_Header_E", ((ox0 + ox1) / 2.0, PY, CEIL-0.25), (ox1 - ox0, 0.16, 0.50), PAL_WALL["wall"])
+    make_box("Bedroom_Part_Post_E", (ROOM_W/2.0 - 0.125, PY, (CEIL-0.5)/2.0), (0.25, 0.16, CEIL-0.5), PAL_WALL["wall"])
+    make_box("Bedroom_Part_Casing_W", (ox0, PY, (CEIL-0.5)/2.0), (0.04, 0.20, CEIL-0.5), COL_WOOD)
+    make_box("Bedroom_Part_Casing_E", (ox1, PY, (CEIL-0.5)/2.0), (0.04, 0.20, CEIL-0.5), COL_WOOD)
+    make_box("Bedroom_Part_Casing_Top", ((ox0 + ox1) / 2.0, PY, CEIL-0.52), (ox1 - ox0 + 0.04, 0.20, 0.06), COL_WOOD)
+    # the bedroom's EAST wall (2026-10-09): the bed and the couch nook were
+    # one open room behind the partition — "the bedroom closes behind its
+    # own door" — from the mullion to the N wall
+    make_wall("Bedroom_Wall_E", (-0.725, (PY + 0.08 + ROOM_D - 0.10) / 2.0, 0), length=ROOM_D - 0.10 - PY - 0.08,
+              height=CEIL, axis='Y', palette=PAL_WALL)
+    make_box("Bedroom_Door", (-1.30, PY - 0.03, 1.02), (0.86, 0.04, 2.04), COL_WOOD)
+    with shifted(globals(), 0.3, 0.95, ROOM_W=OLD_W, ROOM_D=OLD_D):   # over the couch nook
+        # The three ceiling water stains ("proof her upstairs neighbor's
+        # bathtub leaked... painting them over would be a lie")
+        for i, (sx, sy, sr) in enumerate(((0.40, 3.55, 0.22), (0.62, 3.78, 0.14), (0.48, 3.98, 0.10))):
+            make_cyl(f"Ceil_Stain_{i}", (sx, sy, CEIL-0.005), sr, 0.004,
+                     (0.78, 0.70, 0.58, 1.0), segments=12)
 
 
 def build_kitchen():
     """W wall: counter + sink under the alley window, stove, fridge
     at the SW corner end, dish drainer, kettle, braided rug."""
-    # The window over the sink → the alley + the Starfish Nebula mural
-    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
-    make_window("Kitchen_Window", (-ROOM_W/2.0 + 0.10, 1.30, 1.50), width=1.10, height=1.10, axis='Y', room_dir=+1, see_through=True)
-    # Counter run (2026-09-23: the whole run — counter, sink, stove,
-    # kettle, grinder — stood 10 cm inside the W wall; shifted out 0.10)
-    make_box("Counter_Body", (-2.10, 1.40, 0.44), (0.60, 2.00, 0.88), COL_WOOD)
-    make_box("Counter_Top", (-2.10, 1.40, 0.90), (0.64, 2.06, 0.05), COL_COUNTER)
-    make_box("Sink_Bowl", (-2.14, 1.30, 0.905), (0.42, 0.44, 0.05), (0.42, 0.44, 0.45, 1.0))
-    # draft 4 (2026-09-17): the faucet is a gooseneck, not a post
-    make_lathe("Faucet_Base", (-2.27, 1.30, 0.93), [(0.035, 0.0), (0.03, 0.01), (0.02, 0.02), (0.02, 0.06)], COL_STEEL, segments=8)
-    make_tube("Faucet", [(-2.27, 1.30, 0.98), (-2.27, 1.30, 1.16), (-2.23, 1.30, 1.22), (-2.16, 1.30, 1.22), (-2.11, 1.30, 1.17), (-2.10, 1.30, 1.12)],
-              0.014, COL_STEEL, segments=6)
-    make_cyl("Faucet_Handle", (-2.27, 1.365, 1.00), 0.008, 0.06, COL_STEEL, axis='Y', segments=5)
-    # Dish drainer beside the sink
-    make_box("Dish_Drainer", (-2.10, 1.82, 0.945), (0.34, 0.28, 0.06), COL_STEEL)
-    make_box("Drainer_Plate", (-2.10, 1.82, 1.00), (0.03, 0.20, 0.16), (0.86, 0.82, 0.74, 1.0))
-    # Stove at the counter's S end, kettle on it
-    make_chamfer_box("Stove_Body", (-2.08, 0.50, 0.44), (0.62, 0.62, 0.88), (0.82, 0.80, 0.76, 1.0), chamfer=0.01)
-    make_box("Stove_Top", (-2.08, 0.50, 0.895), (0.60, 0.60, 0.03), (0.22, 0.22, 0.24, 1.0))
-    for bi, (ox, oy) in enumerate(((-0.15, -0.15), (0.15, -0.15), (-0.15, 0.15), (0.15, 0.15))):
-        make_cyl(f"Burner_{bi}", (-2.08+ox, 0.50+oy, 0.912), 0.09, 0.01,
-                 (0.14, 0.14, 0.15, 1.0), segments=10)
-    # draft 4: the stove's face — four knobs, the oven door's seam and
-    # its towel bar, the kettle a turned body with a spout and bail
-    for ki in range(4):
-        make_lathe(f"Stove_Knob_{ki}", (-2.08 - 0.21 + ki * 0.14, 0.50 - 0.312, 0.80),
-                   [(0.0, 0.0), (0.02, 0.0), (0.022, 0.012), (0.014, 0.02), (0.0, 0.02)],
-                   (0.16, 0.16, 0.17, 1.0), segments=8)
-    make_box("Stove_Oven_Seam", (-2.08, 0.50 - 0.312, 0.66), (0.54, 0.004, 0.006), (0.60, 0.58, 0.55, 1.0))
-    make_tube("Stove_Oven_Bar", [(-2.32, 0.50 - 0.322, 0.60), (-1.84, 0.50 - 0.322, 0.60)], 0.012, COL_STEEL, segments=6)
-    make_lathe("Kettle", (-1.93, 0.35, 0.91),
-               [(0.06, 0.0), (0.10, 0.02), (0.105, 0.09), (0.08, 0.14), (0.05, 0.16), (0.055, 0.175), (0.02, 0.19), (0.0, 0.19)],
-               COL_STEEL, segments=12)
-    make_tube("Kettle_Spout", [(-2.02, 0.35, 0.97), (-2.06, 0.35, 1.02), (-2.08, 0.35, 1.07)], 0.012, COL_STEEL, segments=6)
-    make_tube("Kettle_Handle", [(-1.87, 0.35, 1.06), (-1.86, 0.35, 1.13), (-1.93, 0.35, 1.16), (-2.00, 0.35, 1.13), (-1.99, 0.35, 1.06)],
-              0.008, (0.20, 0.18, 0.16, 1.0), segments=5)
-    # Cast iron pan hanging by the stove; hand grinder + cone on top
-    # flat against the wall over the stove (2026-09-23: edge-on, half in
-    # the wall, and in front of the window once it showed)
-    make_cyl("CastIron_Pan", (-2.385, 0.50, 1.35), 0.14, 0.03, (0.16, 0.16, 0.17, 1.0), axis='X', segments=12)
-    make_tube("CastIron_Pan_Handle", [(-2.385, 0.50, 1.49), (-2.385, 0.50, 1.62)], 0.012, (0.16, 0.16, 0.17, 1.0), segments=5)
-    make_chamfer_box("Coffee_Grinder", (-2.18, 2.28, 1.00), (0.10, 0.10, 0.16), COL_WOOD, chamfer=0.006)
-    make_lathe("Coffee_Grinder_Hopper", (-2.18, 2.28, 1.08), [(0.03, 0.0), (0.045, 0.02), (0.045, 0.03), (0.0, 0.03)], COL_STEEL, segments=8)
-    make_tube("Coffee_Grinder_Crank", [(-2.18, 2.28, 1.11), (-2.18, 2.28, 1.14), (-2.12, 2.28, 1.14), (-2.12, 2.28, 1.17)], 0.005, COL_STEEL, segments=5)
-    make_lathe("Coffee_Cone", (-2.02, 2.28, 0.925), [(0.025, 0.0), (0.03, 0.005), (0.062, 0.085), (0.064, 0.09), (0.0, 0.09)],
-               (0.86, 0.82, 0.74, 1.0), segments=10)
-    # Fridge, E wall near the S corner ("four eggs in the carton on
-    # the second shelf") — a door seam, a chamfered pull, one photo
-    # under a magnet
-    make_chamfer_box("Fridge", (2.15, 0.55, 0.90), (0.66, 0.66, 1.80), (0.88, 0.86, 0.82, 1.0), chamfer=0.012)
-    make_box("Fridge_Door_Seam", (1.815, 0.55, 1.20), (0.004, 0.62, 0.006), (0.66, 0.64, 0.60, 1.0))
-    make_chamfer_box("Fridge_Handle", (1.80, 0.30, 1.10), (0.03, 0.04, 0.60), COL_STEEL, chamfer=0.008)
-    make_box("Fridge_Photo", (1.815, 0.62, 1.52), (0.003, 0.10, 0.075), (0.72, 0.66, 0.58, 1.0))
-    make_cyl("Fridge_Magnet", (1.812, 0.62, 1.565), 0.012, 0.004, (0.20, 0.32, 0.30, 1.0), axis='X', segments=8)
-    # Braided rag rug in front of the sink
-    make_cyl("Sink_Rug", (-1.85, 1.35, 0.010), 0.42, 0.006, COL_ACCENT, segments=14)
-    make_cyl("Sink_Rug_Ring", (-1.85, 1.35, 0.013), 0.30, 0.005, (0.66, 0.44, 0.40, 1.0), segments=14)
+    with shifted(globals(), -1.0, 0.0, ROOM_W=OLD_W, ROOM_D=OLD_D):   # the kitchen run on the W wall
+        # The window over the sink → the alley + the Starfish Nebula mural
+        # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+        make_window("Kitchen_Window", (-ROOM_W/2.0 + 0.10, 1.30, 1.50), width=1.10, height=1.10, axis='Y', room_dir=+1, see_through=True)
+        # Counter run (2026-09-23: the whole run — counter, sink, stove,
+        # kettle, grinder — stood 10 cm inside the W wall; shifted out 0.10)
+        make_box("Counter_Body", (-2.10, 1.40, 0.44), (0.60, 2.00, 0.88), COL_WOOD)
+        make_box("Counter_Top", (-2.10, 1.40, 0.90), (0.64, 2.06, 0.05), COL_COUNTER)
+        make_box("Sink_Bowl", (-2.14, 1.30, 0.905), (0.42, 0.44, 0.05), (0.42, 0.44, 0.45, 1.0))
+        # draft 4 (2026-09-17): the faucet is a gooseneck, not a post
+        make_lathe("Faucet_Base", (-2.27, 1.30, 0.93), [(0.035, 0.0), (0.03, 0.01), (0.02, 0.02), (0.02, 0.06)], COL_STEEL, segments=8)
+        make_tube("Faucet", [(-2.27, 1.30, 0.98), (-2.27, 1.30, 1.16), (-2.23, 1.30, 1.22), (-2.16, 1.30, 1.22), (-2.11, 1.30, 1.17), (-2.10, 1.30, 1.12)],
+                  0.014, COL_STEEL, segments=6)
+        make_cyl("Faucet_Handle", (-2.27, 1.365, 1.00), 0.008, 0.06, COL_STEEL, axis='Y', segments=5)
+        # Dish drainer beside the sink
+        make_box("Dish_Drainer", (-2.10, 1.82, 0.945), (0.34, 0.28, 0.06), COL_STEEL)
+        make_box("Drainer_Plate", (-2.10, 1.82, 1.00), (0.03, 0.20, 0.16), (0.86, 0.82, 0.74, 1.0))
+        # Stove at the counter's S end, kettle on it
+        make_chamfer_box("Stove_Body", (-2.08, 0.50, 0.44), (0.62, 0.62, 0.88), (0.82, 0.80, 0.76, 1.0), chamfer=0.01)
+        make_box("Stove_Top", (-2.08, 0.50, 0.895), (0.60, 0.60, 0.03), (0.22, 0.22, 0.24, 1.0))
+        for bi, (ox, oy) in enumerate(((-0.15, -0.15), (0.15, -0.15), (-0.15, 0.15), (0.15, 0.15))):
+            make_cyl(f"Burner_{bi}", (-2.08+ox, 0.50+oy, 0.912), 0.09, 0.01,
+                     (0.14, 0.14, 0.15, 1.0), segments=10)
+        # draft 4: the stove's face — four knobs, the oven door's seam and
+        # its towel bar, the kettle a turned body with a spout and bail
+        for ki in range(4):
+            make_lathe(f"Stove_Knob_{ki}", (-2.08 - 0.21 + ki * 0.14, 0.50 - 0.312, 0.80),
+                       [(0.0, 0.0), (0.02, 0.0), (0.022, 0.012), (0.014, 0.02), (0.0, 0.02)],
+                       (0.16, 0.16, 0.17, 1.0), segments=8)
+        make_box("Stove_Oven_Seam", (-2.08, 0.50 - 0.312, 0.66), (0.54, 0.004, 0.006), (0.60, 0.58, 0.55, 1.0))
+        make_tube("Stove_Oven_Bar", [(-2.32, 0.50 - 0.322, 0.60), (-1.84, 0.50 - 0.322, 0.60)], 0.012, COL_STEEL, segments=6)
+        make_lathe("Kettle", (-1.93, 0.35, 0.91),
+                   [(0.06, 0.0), (0.10, 0.02), (0.105, 0.09), (0.08, 0.14), (0.05, 0.16), (0.055, 0.175), (0.02, 0.19), (0.0, 0.19)],
+                   COL_STEEL, segments=12)
+        make_tube("Kettle_Spout", [(-2.02, 0.35, 0.97), (-2.06, 0.35, 1.02), (-2.08, 0.35, 1.07)], 0.012, COL_STEEL, segments=6)
+        make_tube("Kettle_Handle", [(-1.87, 0.35, 1.06), (-1.86, 0.35, 1.13), (-1.93, 0.35, 1.16), (-2.00, 0.35, 1.13), (-1.99, 0.35, 1.06)],
+                  0.008, (0.20, 0.18, 0.16, 1.0), segments=5)
+        # Cast iron pan hanging by the stove; hand grinder + cone on top
+        # flat against the wall over the stove (2026-09-23: edge-on, half in
+        # the wall, and in front of the window once it showed)
+        make_cyl("CastIron_Pan", (-2.385, 0.50, 1.35), 0.14, 0.03, (0.16, 0.16, 0.17, 1.0), axis='X', segments=12)
+        make_tube("CastIron_Pan_Handle", [(-2.385, 0.50, 1.49), (-2.385, 0.50, 1.62)], 0.012, (0.16, 0.16, 0.17, 1.0), segments=5)
+        make_chamfer_box("Coffee_Grinder", (-2.18, 2.28, 1.00), (0.10, 0.10, 0.16), COL_WOOD, chamfer=0.006)
+        make_lathe("Coffee_Grinder_Hopper", (-2.18, 2.28, 1.08), [(0.03, 0.0), (0.045, 0.02), (0.045, 0.03), (0.0, 0.03)], COL_STEEL, segments=8)
+        make_tube("Coffee_Grinder_Crank", [(-2.18, 2.28, 1.11), (-2.18, 2.28, 1.14), (-2.12, 2.28, 1.14), (-2.12, 2.28, 1.17)], 0.005, COL_STEEL, segments=5)
+        make_lathe("Coffee_Cone", (-2.02, 2.28, 0.925), [(0.025, 0.0), (0.03, 0.005), (0.062, 0.085), (0.064, 0.09), (0.0, 0.09)],
+                   (0.86, 0.82, 0.74, 1.0), segments=10)
+    with shifted(globals(), 1.0, 0.0, ROOM_W=OLD_W, ROOM_D=OLD_D):   # the SE corner, clear of the front window
+        # Fridge, E wall near the S corner ("four eggs in the carton on
+        # the second shelf") — a door seam, a chamfered pull, one photo
+        # under a magnet
+        make_chamfer_box("Fridge", (2.15, 0.55, 0.90), (0.66, 0.66, 1.80), (0.88, 0.86, 0.82, 1.0), chamfer=0.012)
+        make_box("Fridge_Door_Seam", (1.815, 0.55, 1.20), (0.004, 0.62, 0.006), (0.66, 0.64, 0.60, 1.0))
+        make_chamfer_box("Fridge_Handle", (1.80, 0.30, 1.10), (0.03, 0.04, 0.60), COL_STEEL, chamfer=0.008)
+        make_box("Fridge_Photo", (1.815, 0.62, 1.52), (0.003, 0.10, 0.075), (0.72, 0.66, 0.58, 1.0))
+        make_cyl("Fridge_Magnet", (1.812, 0.62, 1.565), 0.012, 0.004, (0.20, 0.32, 0.30, 1.0), axis='X', segments=8)
+    with shifted(globals(), -1.0, 0.0, ROOM_W=OLD_W, ROOM_D=OLD_D):   # at the sink
+        # Braided rag rug in front of the sink
+        make_cyl("Sink_Rug", (-1.85, 1.35, 0.010), 0.42, 0.006, COL_ACCENT, segments=14)
+        make_cyl("Sink_Rug_Ring", (-1.85, 1.35, 0.013), 0.30, 0.005, (0.66, 0.44, 0.40, 1.0), segments=14)
 
 
 def build_kitchen_table():
     """The small round oak table from the seventies — wobble in one
     leg — and four chairs that are not a matched set. The hexagon
     gets laid out here in ch12; four people eat here in ch8."""
-    tx, ty = -0.80, 1.26
-    # out of the door's swing (2026-09-24, the user: doorways obstructed;
-    # 2026-09-25: the north chair still reached 2.44 — the door's zone
-    # starts at 2.12; the south chair's back is now 2 cm off the S wall)
-    make_cyl("Table_Top", (tx, ty - 0.150, 0.745), 0.55, 0.045, COL_OAK, segments=16)
-    # draft 4: a seventies turned pedestal — the collar under the top,
-    # the swell, the ring, the flare into the foot
-    make_lathe("Table_Pedestal", (tx, ty - 0.150, 0.055),
-               [(0.11, 0.0), (0.075, 0.03), (0.065, 0.16), (0.085, 0.28), (0.065, 0.40), (0.06, 0.52),
-                (0.075, 0.58), (0.06, 0.62), (0.13, 0.665), (0.13, 0.67)],
-               COL_OAK, segments=12)
-    # Four feet — one shorter: the wobble
-    for fi, ang_off in enumerate(((0.30, 0.0), (-0.30, 0.0), (0.0, 0.30), (0.0, -0.30))):
-        h = 0.055 if fi != 2 else 0.047   # the wobbling leg
-        make_chamfer_box(f"Table_Foot_{fi}", (tx+ang_off[0], ty+ang_off[1] - 0.150, h/2.0),
-                         (0.34 if ang_off[1]==0.0 else 0.10,
-                          0.10 if ang_off[1]==0.0 else 0.34, h), COL_OAK, chamfer=0.012)
-    # Four mismatched chairs
-    # 0.78 m out, at the table (2026-09-23: at 1.0 m chair 0 stood in the counter)
-    # the fourth chair sits at the NE diagonal, not east: east of the
-    # table is the front door's swing (2026-09-25)
-    for ci, (cx, cy) in enumerate(((tx-0.78, ty), (tx+0.55, ty+0.55), (tx, ty-0.78), (tx, ty+0.78))):
-        wood = CHAIR_WOODS[ci]
-        back_dx = -0.20 if cx < tx else (0.20 if cx > tx else 0.0)
-        back_dy = -0.20 if cy < ty else (0.20 if cy > ty else 0.0)
-        import math as _mm
-        make_chair(f"KChair_{ci}", cx, cy - 0.150, yaw=_mm.atan2(back_dx, -back_dy) if (back_dx or back_dy) else 0.0, wood=wood, w=0.42)
+    with shifted(globals(), -0.3, 0.3, ROOM_W=OLD_W, ROOM_D=OLD_D):   # off the counter it was jammed against
+        tx, ty = -0.80, 1.26
+        # out of the door's swing (2026-09-24, the user: doorways obstructed;
+        # 2026-09-25: the north chair still reached 2.44 — the door's zone
+        # starts at 2.12; the south chair's back is now 2 cm off the S wall)
+        make_cyl("Table_Top", (tx, ty - 0.150, 0.745), 0.55, 0.045, COL_OAK, segments=16)
+        # draft 4: a seventies turned pedestal — the collar under the top,
+        # the swell, the ring, the flare into the foot
+        make_lathe("Table_Pedestal", (tx, ty - 0.150, 0.055),
+                   [(0.11, 0.0), (0.075, 0.03), (0.065, 0.16), (0.085, 0.28), (0.065, 0.40), (0.06, 0.52),
+                    (0.075, 0.58), (0.06, 0.62), (0.13, 0.665), (0.13, 0.67)],
+                   COL_OAK, segments=12)
+        # Four feet — one shorter: the wobble
+        for fi, ang_off in enumerate(((0.30, 0.0), (-0.30, 0.0), (0.0, 0.30), (0.0, -0.30))):
+            h = 0.055 if fi != 2 else 0.047   # the wobbling leg
+            make_chamfer_box(f"Table_Foot_{fi}", (tx+ang_off[0], ty+ang_off[1] - 0.150, h/2.0),
+                             (0.34 if ang_off[1]==0.0 else 0.10,
+                              0.10 if ang_off[1]==0.0 else 0.34, h), COL_OAK, chamfer=0.012)
+        # Four mismatched chairs
+        # 0.78 m out, at the table (2026-09-23: at 1.0 m chair 0 stood in the counter)
+        # the fourth chair sits at the NE diagonal, not east: east of the
+        # table is the front door's swing (2026-09-25)
+        for ci, (cx, cy) in enumerate(((tx-0.78, ty), (tx+0.55, ty+0.55), (tx, ty-0.78), (tx, ty+0.78))):
+            wood = CHAIR_WOODS[ci]
+            back_dx = -0.20 if cx < tx else (0.20 if cx > tx else 0.0)
+            back_dy = -0.20 if cy < ty else (0.20 if cy > ty else 0.0)
+            import math as _mm
+            make_chair(f"KChair_{ci}", cx, cy - 0.150, yaw=_mm.atan2(back_dx, -back_dy) if (back_dx or back_dy) else 0.0, wood=wood, w=0.42)
 
 
 def build_front_room():
@@ -218,88 +247,94 @@ def build_front_room():
     # The front window (Wall_S_E) — "she went to the front window
     # and looked down"
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
-    make_window("Front_Window", (1.75, 0.10, 1.42), width=1.00, height=1.20, room_dir=+1, see_through=True)
-    # Couch against the partition's east reach, facing south — its west
-    # end at 0.17, clear of the bedroom door's swing (x to 0.08) and
-    # its east end 3 cm off the shelf (2026-09-25: at 0.70 it reached -0.25)
-    sx, sy = 1.12, 3.60
-    # draft 4 (2026-09-17): upholstery has soft edges and rolled arms;
-    # the couch stands on four short turned feet
-    couch = (0.44, 0.40, 0.34, 1.0)
-    couch_dk = (0.40, 0.36, 0.30, 1.0)
-    for fi, (fx, fy) in enumerate(((sx - 0.90, sy - 0.38), (sx + 0.90, sy - 0.38), (sx - 0.90, sy + 0.38), (sx + 0.90, sy + 0.38))):
-        make_lathe(f"Couch_Foot_{fi}", (fx, fy, 0.0), [(0.03, 0.0), (0.035, 0.03), (0.025, 0.06), (0.03, 0.09)], COL_WOOD, segments=8)
-    make_chamfer_box("Couch_Base", (sx, sy, 0.26), (1.90, 0.85, 0.32), couch, chamfer=0.03)
-    make_chamfer_box("Couch_Back", (sx, sy+0.36, 0.62), (1.90, 0.18, 0.60), couch_dk, chamfer=0.04)
-    for ax in (sx-0.88, sx+0.88):
-        make_chamfer_box(f"Couch_Arm_{ax:.1f}", (ax, sy, 0.48), (0.16, 0.85, 0.42), couch_dk, chamfer=0.03)
-        make_cyl(f"Couch_ArmRoll_{ax:.1f}", (ax, sy - 0.04, 0.66), 0.075, 0.70, couch_dk, axis='Y', segments=10)
-    for pi, px in enumerate((sx-0.45, sx+0.45)):
-        make_chamfer_box(f"Couch_Cushion_{pi}", (px, sy-0.05, 0.46), (0.80, 0.66, 0.14), (0.48, 0.44, 0.38, 1.0), chamfer=0.03)
-    # The wool blanket, folded over the back
-    make_chamfer_box("Wool_Blanket", (sx-0.30, sy+0.36, 0.945), (0.70, 0.24, 0.06), (0.56, 0.40, 0.30, 1.0), chamfer=0.015)
-    # The chair by the window + the small wooden side table (the
-    # Estuary 7 beat happens on this table)
-    wchair = (0.36, 0.42, 0.38, 1.0)
-    wchair_dk = (0.33, 0.38, 0.34, 1.0)
-    for fi, (fx, fy) in enumerate(((1.40, 1.30), (2.00, 1.30), (1.40, 1.90), (2.00, 1.90))):
-        make_lathe(f"WChair_Foot_{fi}", (fx, fy, 0.0), [(0.03, 0.0), (0.035, 0.03), (0.025, 0.06), (0.03, 0.09)], COL_WOOD, segments=8)
-    make_chamfer_box("WChair_Base", (1.70, 1.60, 0.27), (0.72, 0.72, 0.36), wchair, chamfer=0.03)
-    make_chamfer_box("WChair_Cushion", (1.70, 1.56, 0.485), (0.52, 0.50, 0.07), wchair, chamfer=0.025)
-    make_chamfer_box("WChair_Back", (1.70, 1.94, 0.66), (0.72, 0.20, 0.62), wchair_dk, chamfer=0.04)
-    for ax in (1.36, 2.04):
-        make_chamfer_box(f"WChair_Arm_{ax:.2f}", (ax, 1.60, 0.52), (0.14, 0.70, 0.36), wchair_dk, chamfer=0.03)
-        make_cyl(f"WChair_ArmRoll_{ax:.2f}", (ax, 1.56, 0.68), 0.068, 0.58, wchair_dk, axis='Y', segments=10)
-    make_cyl("Side_Table_Top", (1.40, 0.95, 0.52), 0.28, 0.04, COL_WOOD, segments=12)
-    make_lathe("Side_Table_Post", (1.40, 0.95, 0.0),
-               [(0.14, 0.0), (0.12, 0.025), (0.05, 0.045), (0.04, 0.16), (0.055, 0.24), (0.035, 0.34), (0.045, 0.46), (0.07, 0.50)],
-               COL_WOOD, segments=10)
-    # Radiator pipe in the SE corner (the one that clicks)
-    make_cyl("Radiator_Pipe", (2.38, 0.25, 1.30), 0.04, 2.55, (0.60, 0.56, 0.50, 1.0), segments=8)
+    make_window("Front_Window", (2.00, 0.10, 1.42), width=1.00, height=1.20, room_dir=+1, see_through=True)
+    with shifted(globals(), 0.3, 0.95, ROOM_W=OLD_W, ROOM_D=OLD_D):   # the couch nook
+        # Couch against the partition's east reach, facing south — its west
+        # end at 0.17, clear of the bedroom door's swing (x to 0.08) and
+        # its east end 3 cm off the shelf (2026-09-25: at 0.70 it reached -0.25)
+        sx, sy = 1.12, 3.60
+        # draft 4 (2026-09-17): upholstery has soft edges and rolled arms;
+        # the couch stands on four short turned feet
+        couch = (0.44, 0.40, 0.34, 1.0)
+        couch_dk = (0.40, 0.36, 0.30, 1.0)
+        for fi, (fx, fy) in enumerate(((sx - 0.90, sy - 0.38), (sx + 0.90, sy - 0.38), (sx - 0.90, sy + 0.38), (sx + 0.90, sy + 0.38))):
+            make_lathe(f"Couch_Foot_{fi}", (fx, fy, 0.0), [(0.03, 0.0), (0.035, 0.03), (0.025, 0.06), (0.03, 0.09)], COL_WOOD, segments=8)
+        make_chamfer_box("Couch_Base", (sx, sy, 0.26), (1.90, 0.85, 0.32), couch, chamfer=0.03)
+        make_chamfer_box("Couch_Back", (sx, sy+0.36, 0.62), (1.90, 0.18, 0.60), couch_dk, chamfer=0.04)
+        for ax in (sx-0.88, sx+0.88):
+            make_chamfer_box(f"Couch_Arm_{ax:.1f}", (ax, sy, 0.48), (0.16, 0.85, 0.42), couch_dk, chamfer=0.03)
+            make_cyl(f"Couch_ArmRoll_{ax:.1f}", (ax, sy - 0.04, 0.66), 0.075, 0.70, couch_dk, axis='Y', segments=10)
+        for pi, px in enumerate((sx-0.45, sx+0.45)):
+            make_chamfer_box(f"Couch_Cushion_{pi}", (px, sy-0.05, 0.46), (0.80, 0.66, 0.14), (0.48, 0.44, 0.38, 1.0), chamfer=0.03)
+        # The wool blanket, folded over the back
+        make_chamfer_box("Wool_Blanket", (sx-0.30, sy+0.36, 0.945), (0.70, 0.24, 0.06), (0.56, 0.40, 0.30, 1.0), chamfer=0.015)
+    with shifted(globals(), 0.25, 0.3, ROOM_W=OLD_W, ROOM_D=OLD_D):   # by the front window
+        # The chair by the window + the small wooden side table (the
+        # Estuary 7 beat happens on this table)
+        wchair = (0.36, 0.42, 0.38, 1.0)
+        wchair_dk = (0.33, 0.38, 0.34, 1.0)
+        for fi, (fx, fy) in enumerate(((1.40, 1.30), (2.00, 1.30), (1.40, 1.90), (2.00, 1.90))):
+            make_lathe(f"WChair_Foot_{fi}", (fx, fy, 0.0), [(0.03, 0.0), (0.035, 0.03), (0.025, 0.06), (0.03, 0.09)], COL_WOOD, segments=8)
+        make_chamfer_box("WChair_Base", (1.70, 1.60, 0.27), (0.72, 0.72, 0.36), wchair, chamfer=0.03)
+        make_chamfer_box("WChair_Cushion", (1.70, 1.56, 0.485), (0.52, 0.50, 0.07), wchair, chamfer=0.025)
+        make_chamfer_box("WChair_Back", (1.70, 1.94, 0.66), (0.72, 0.20, 0.62), wchair_dk, chamfer=0.04)
+        for ax in (1.36, 2.04):
+            make_chamfer_box(f"WChair_Arm_{ax:.2f}", (ax, 1.60, 0.52), (0.14, 0.70, 0.36), wchair_dk, chamfer=0.03)
+            make_cyl(f"WChair_ArmRoll_{ax:.2f}", (ax, 1.56, 0.68), 0.068, 0.58, wchair_dk, axis='Y', segments=10)
+        make_cyl("Side_Table_Top", (1.40, 0.95, 0.52), 0.28, 0.04, COL_WOOD, segments=12)
+        make_lathe("Side_Table_Post", (1.40, 0.95, 0.0),
+                   [(0.14, 0.0), (0.12, 0.025), (0.05, 0.045), (0.04, 0.16), (0.055, 0.24), (0.035, 0.34), (0.045, 0.46), (0.07, 0.50)],
+                   COL_WOOD, segments=10)
+    with shifted(globals(), 1.0, 0.0, ROOM_W=OLD_W, ROOM_D=OLD_D):   # the SE corner
+        # Radiator pipe in the SE corner (the one that clicks)
+        make_cyl("Radiator_Pipe", (2.38, 0.25, 1.30), 0.04, 2.55, (0.60, 0.56, 0.50, 1.0), segments=8)
 
 
 def build_bedroom():
     """Behind the partition: the bed (kept from the old build), the
     nightstand, the thermostat that reads 61, two posters."""
-    # The bed is 1.94 long and the bedroom is 1.95 deep behind
-    # the y=3.05 partition — at ROOM_D-1.15 its footboard
-    # crossed into the partition. Pushed to the north wall.
-    # 2026-09-25: at bx -1.0 the bed's foot stood across the bedroom
-    # door's swing; against the W wall now (its east edge at -0.75 is
-    # the partition's end, where the door opening starts)
-    bx, by = -1.5, ROOM_D - 0.99
-    from _props.furniture import make_bed
-    # the shared bed, rose duvet made up (2026-09-07); her head- and footboards stay
-    make_bed("Bed", bx, by, head="+Y", w=1.50, d=1.94, style="frame",
-             frame_col=(0.42, 0.30, 0.20, 1.0), mattress_col=(0.92, 0.86, 0.78, 1.0),
-             blanket_col=(0.72, 0.46, 0.52, 1.0), pillow_col=(0.98, 0.94, 0.90, 1.0), pillows=2, made=True, headboard=False)
-    make_chamfer_box("Bed_Headboard", (bx, by+1.00, 0.66), (1.54, 0.08, 0.66), (0.40, 0.28, 0.18, 1.0), chamfer=0.012)
-    make_chamfer_box("Bed_Footboard", (bx, by-0.98, 0.42), (1.54, 0.08, 0.34), (0.40, 0.28, 0.18, 1.0), chamfer=0.012)
-    # vol7 interlude ii (2026-09-03): "Her thigh has charcoal on it in the
-    # shape of three letters: S U N ... There is no charcoal in the
-    # apartment." The residue it left on the duvet where she slept.
-    for ci, (dx, w) in enumerate(((-0.16, 0.06), (0.0, 0.05), (0.16, 0.06))):
-        make_box("Charcoal_Letter_%d" % ci, (bx - 0.10 + dx, by - 0.36, 0.5915), (w, 0.07, 0.003), (0.16, 0.15, 0.15, 1.0))
-    make_box("Charcoal_Smudge", (bx - 0.10, by - 0.30, 0.5911), (0.40, 0.06, 0.001), (0.36, 0.34, 0.34, 1.0))
-    make_chamfer_box("Nightstand", (bx+0.95, by+0.7, 0.30), (0.42, 0.42, 0.60), COL_WOOD, chamfer=0.01)
-    make_box("Nightstand_Drawer_Seam", (bx+0.95, by+0.7-0.212, 0.44), (0.34, 0.004, 0.006), (0.34, 0.24, 0.16, 1.0))
-    make_lathe("Nightstand_Pull", (bx+0.95, by+0.7-0.215, 0.36), [(0.0, 0.0), (0.012, 0.0), (0.014, 0.01), (0.008, 0.02), (0.0, 0.02)],
-               (0.66, 0.52, 0.24, 1.0), segments=8)
-    make_box("Clock", (bx+0.95, by+0.7, 0.66), (0.16, 0.10, 0.10), P.METAL_BLACK)
-    # Thermostat above the bed (reads 61)
-    make_box("Thermostat", (bx, ROOM_D-0.06, 1.85), (0.14, 0.05, 0.10), (0.88, 0.86, 0.82, 1.0))
-    # The small side table just OUTSIDE the bedroom door (Kai's cup)
-    make_box("Hall_Table", (-1.05, 2.78, 0.34), (0.36, 0.30, 0.68), COL_WOOD)   # west of the door, on the partition (2026-09-25: it stood in the door's swing)
-    # Posters on the W wall, bedroom side
-    for pi, py in enumerate((3.55, 4.35)):
-        make_faded_poster(f"Poster_W_{pi}", (-ROOM_W/2.0+0.05 + 0.0535, py, 1.50), into_room=+1)
-    # Space heater by the bedroom doorway
-    make_chamfer_box("Space_Heater", (1.05, 2.90, 0.18), (0.30, 0.16, 0.36), (0.80, 0.78, 0.74, 1.0), chamfer=0.01)
-    make_box("Heater_Grille", (1.05, 3.00, 0.18), (0.24, 0.02, 0.26), (0.94, 0.60, 0.34, 1.0))
-    for si in range(5):
-        make_box(f"Heater_Grille_Slat_{si}", (1.05, 3.012, 0.08 + si * 0.05), (0.24, 0.004, 0.012), (0.72, 0.70, 0.66, 1.0))
-    make_lathe("Space_Heater_Dial", (1.05 + 0.10, 2.90 - 0.085, 0.30), [(0.0, 0.0), (0.02, 0.0), (0.02, 0.01), (0.0, 0.01)],
-               (0.30, 0.30, 0.32, 1.0), segments=8)
+    with shifted(globals(), -1.0, 1.6, ROOM_W=OLD_W, ROOM_D=OLD_D):   # behind the partition, against the W and N walls
+        # The bed is 1.94 long and the bedroom is 1.95 deep behind
+        # the y=3.05 partition — at ROOM_D-1.15 its footboard
+        # crossed into the partition. Pushed to the north wall.
+        # 2026-09-25: at bx -1.0 the bed's foot stood across the bedroom
+        # door's swing; against the W wall now (its east edge at -0.75 is
+        # the partition's end, where the door opening starts)
+        bx, by = -1.5, ROOM_D - 0.99
+        # the shared bed, rose duvet made up (2026-09-07); her head- and footboards stay
+        make_bed("Bed", bx, by, head="+Y", w=1.50, d=1.94, style="frame",
+                 frame_col=(0.42, 0.30, 0.20, 1.0), mattress_col=(0.92, 0.86, 0.78, 1.0),
+                 blanket_col=(0.72, 0.46, 0.52, 1.0), pillow_col=(0.98, 0.94, 0.90, 1.0), pillows=2, made=True, headboard=False)
+        make_chamfer_box("Bed_Headboard", (bx, by+1.00, 0.66), (1.54, 0.08, 0.66), (0.40, 0.28, 0.18, 1.0), chamfer=0.012)
+        make_chamfer_box("Bed_Footboard", (bx, by-0.98, 0.42), (1.54, 0.08, 0.34), (0.40, 0.28, 0.18, 1.0), chamfer=0.012)
+        # vol7 interlude ii (2026-09-03): "Her thigh has charcoal on it in the
+        # shape of three letters: S U N ... There is no charcoal in the
+        # apartment." The residue it left on the duvet where she slept.
+        for ci, (dx, w) in enumerate(((-0.16, 0.06), (0.0, 0.05), (0.16, 0.06))):
+            make_box("Charcoal_Letter_%d" % ci, (bx - 0.10 + dx, by - 0.36, 0.5915), (w, 0.07, 0.003), (0.16, 0.15, 0.15, 1.0))
+        make_box("Charcoal_Smudge", (bx - 0.10, by - 0.30, 0.5911), (0.40, 0.06, 0.001), (0.36, 0.34, 0.34, 1.0))
+        make_chamfer_box("Nightstand", (bx+0.95, by+0.7, 0.30), (0.42, 0.42, 0.60), COL_WOOD, chamfer=0.01)
+        make_box("Nightstand_Drawer_Seam", (bx+0.95, by+0.7-0.212, 0.44), (0.34, 0.004, 0.006), (0.34, 0.24, 0.16, 1.0))
+        make_lathe("Nightstand_Pull", (bx+0.95, by+0.7-0.215, 0.36), [(0.0, 0.0), (0.012, 0.0), (0.014, 0.01), (0.008, 0.02), (0.0, 0.02)],
+                   (0.66, 0.52, 0.24, 1.0), segments=8)
+        make_box("Clock", (bx+0.95, by+0.7, 0.66), (0.16, 0.10, 0.10), P.METAL_BLACK)
+        # Thermostat above the bed (reads 61)
+        make_box("Thermostat", (bx, ROOM_D-0.06, 1.85), (0.14, 0.05, 0.10), (0.88, 0.86, 0.82, 1.0))
+    with shifted(globals(), -1.0, 0.55, ROOM_W=OLD_W, ROOM_D=OLD_D):   # by the bedroom door
+        # The small side table just OUTSIDE the bedroom door (Kai's cup)
+        make_box("Hall_Table", (-1.05, 2.78, 0.34), (0.36, 0.30, 0.68), COL_WOOD)   # west of the door, on the partition (2026-09-25: it stood in the door's swing)
+    with shifted(globals(), -1.0, 1.6, ROOM_W=OLD_W, ROOM_D=OLD_D):   # the bedroom's W wall
+        # Posters on the W wall, bedroom side
+        for pi, py in enumerate((3.55, 4.35)):
+            make_faded_poster(f"Poster_W_{pi}", (-ROOM_W/2.0+0.05 + 0.0535, py, 1.50), into_room=+1)
+    with shifted(globals(), 0.0, 0.55, ROOM_W=OLD_W, ROOM_D=OLD_D):   # by the nook's opening
+        # Space heater by the bedroom doorway
+        make_chamfer_box("Space_Heater", (1.05, 2.90, 0.18), (0.30, 0.16, 0.36), (0.80, 0.78, 0.74, 1.0), chamfer=0.01)
+        make_box("Heater_Grille", (1.05, 3.00, 0.18), (0.24, 0.02, 0.26), (0.94, 0.60, 0.34, 1.0))
+        for si in range(5):
+            make_box(f"Heater_Grille_Slat_{si}", (1.05, 3.012, 0.08 + si * 0.05), (0.24, 0.004, 0.012), (0.72, 0.70, 0.66, 1.0))
+        make_lathe("Space_Heater_Dial", (1.05 + 0.10, 2.90 - 0.085, 0.30), [(0.0, 0.0), (0.02, 0.0), (0.02, 0.01), (0.0, 0.01)],
+                   (0.30, 0.30, 0.32, 1.0), segments=8)
 
 
 def build_dressing():
@@ -307,18 +342,21 @@ def build_dressing():
     the old build the prose supports, kept."""
     BOOK_COLS = [(0.62, 0.24, 0.24, 1.0), (0.24, 0.42, 0.52, 1.0),
                  (0.72, 0.62, 0.30, 1.0), (0.30, 0.46, 0.34, 1.0)]
-    shx = ROOM_W/2.0 - 0.25   # against the E wall face (2026-09-23: 5 cm into it)
-    make_box("Shelf_Body", (shx, ROOM_D-1.2, 0.90), (0.30, 1.00, 1.80), COL_WOOD)
-    for r in range(4):
-        for c in range(6):
-            make_box(f"Shelf_Book_{r}_{c}", (shx-0.03, ROOM_D-1.7+c*0.16, 0.35+r*0.42),
-                     (0.22, 0.12, 0.26), BOOK_COLS[(r+c) % 4])
-    make_floor_plant("Plant", (1.60, ROOM_D-0.45, 0.0),   # NE corner, west of the shelf (2026-09-25: the bed moved onto its old spot)
-                     palette={"leaf": (0.36, 0.48, 0.30, 1.0), "pot": (0.66, 0.40, 0.26, 1.0)})
-    for i in range(9):
-        make_cyl(f"Fairy_{i}", (-1.6+i*0.4, ROOM_D-0.08, 2.10), 0.03, 0.03,
-                 (1.0, 0.82, 0.5, 1.0), segments=6)
-    make_cyl("Rug", (0.5, 2.2, 0.012), 0.95, 0.005, COL_ACCENT)
+    with shifted(globals(), 1.0, 0.95, ROOM_W=OLD_W, ROOM_D=OLD_D):   # the nook's E wall
+        shx = ROOM_W/2.0 - 0.25   # against the E wall face (2026-09-23: 5 cm into it)
+        make_box("Shelf_Body", (shx, ROOM_D-1.2, 0.90), (0.30, 1.00, 1.80), COL_WOOD)
+        for r in range(4):
+            for c in range(6):
+                make_box(f"Shelf_Book_{r}_{c}", (shx-0.03, ROOM_D-1.7+c*0.16, 0.35+r*0.42),
+                         (0.22, 0.12, 0.26), BOOK_COLS[(r+c) % 4])
+    with shifted(globals(), 0.3, 0.95, ROOM_W=OLD_W, ROOM_D=OLD_D):   # the nook
+        make_floor_plant("Plant", (1.60, ROOM_D-0.45, 0.0),   # NE corner, west of the shelf (2026-09-25: the bed moved onto its old spot)
+                         palette={"leaf": (0.36, 0.48, 0.30, 1.0), "pot": (0.66, 0.40, 0.26, 1.0)})
+    with shifted(globals(), 1.4, 1.6, ROOM_W=OLD_W, ROOM_D=OLD_D):   # over the nook, on the N wall (the bedroom wall would cut the old run)
+        for i in range(9):
+            make_cyl(f"Fairy_{i}", (-1.6+i*0.4, ROOM_D-0.08, 2.10), 0.03, 0.03,
+                     (1.0, 0.82, 0.5, 1.0), segments=6)
+    make_cyl("Rug", (0.8, 2.5, 0.012), 0.95, 0.005, COL_ACCENT)   # (2026-10-09: the floor's widened middle)
     # No fluorescents: this home lights by kettle, gooseneck and the
     # laundromat's orange spill (mood strata carry the rest)
     make_smoke_detector("Smoke", (0.9, ROOM_D/2.0, CEIL))
@@ -336,58 +374,59 @@ def build_canvas_2026_08():
     where a working painter stacks it — on the floor beside the
     easel, not in a tidy box.
     """
-    pine = (0.68, 0.56, 0.38, 1.0)
-    pine_dk = (0.52, 0.42, 0.28, 1.0)
-    gesso = (0.90, 0.88, 0.82, 1.0)
-    block = (0.36, 0.46, 0.52, 1.0)      # the blocked-in shape
-    block_dk = (0.24, 0.32, 0.40, 1.0)
-    ex, ey = -1.45, 2.35                 # in the west window's light, clear of the counter (2026-09-23: a leg through its top)
-    # Easel: two front legs splayed, one back leg, a mast, a tray
-    for sgn in (-1, 1):
-        make_box("Easel_Leg_%d" % sgn, (ex + sgn * 0.30, ey - 0.10, 0.72),
-                 (0.045, 0.045, 1.44), pine)
-    make_box("Easel_BackLeg", (ex, ey + 0.34, 0.70),
-             (0.045, 0.045, 1.40), pine_dk)
-    make_box("Easel_Mast", (ex, ey - 0.10, 1.05), (0.05, 0.05, 0.90), pine)
-    make_box("Easel_Tray", (ex, ey - 0.16, 0.86), (0.72, 0.09, 0.035), pine_dk)
-    make_box("Easel_TrayLip", (ex, ey - 0.20, 0.885), (0.72, 0.018, 0.030), pine)
-    # The board on the tray, leaning back with the mast
-    make_box("Canvas_Board", (ex, ey - 0.09, 1.20), (0.60, 0.022, 0.72), gesso)
-    make_box("Canvas_Edge_T", (ex, ey - 0.10, 1.555), (0.62, 0.030, 0.028), pine_dk)
-    make_box("Canvas_Edge_B", (ex, ey - 0.10, 0.845), (0.62, 0.030, 0.028), pine_dk)
-    # What is ON it: a blocked-in headland shape, unfinished at the
-    # right edge — the painting is in progress, which is the point.
-    make_box("Canvas_Block", (ex - 0.09, ey - 0.102, 1.13),
-             (0.34, 0.004, 0.40), block)
-    make_box("Canvas_Block_Dk", (ex - 0.14, ey - 0.104, 1.01),
-             (0.22, 0.004, 0.16), block_dk)
-    make_box("Canvas_Horizon", (ex, ey - 0.104, 1.28),
-             (0.56, 0.004, 0.012), block_dk)
-    # Brushes in a jar on the tray + a rag over the tray lip
-    make_cyl("Canvas_Jar", (ex + 0.24, ey - 0.15, 0.945),
-             0.045, 0.13, (0.72, 0.76, 0.74, 0.65), segments=10)
-    for bi, bo in enumerate((-0.012, 0.0, 0.014)):
-        make_cyl("Canvas_Brush_%d" % bi, (ex + 0.24 + bo, ey - 0.15, 1.055),
-                 0.006, 0.20, (0.62, 0.50, 0.32, 1.0), segments=6)
-    make_box("Canvas_Rag", (ex - 0.26, ey - 0.20, 0.865),
-             (0.16, 0.05, 0.10), (0.74, 0.70, 0.62, 1.0))
-    # Paint tubes stacked on the floor where a working painter keeps
-    # them — squeezed flat, capped, not in a box.
-    for ti, (tx2, ty2, col) in enumerate((
-            (ex - 0.34, ey - 0.30, (0.72, 0.24, 0.20, 1.0)),
-            (ex - 0.28, ey - 0.36, (0.24, 0.34, 0.52, 1.0)),
-            (ex - 0.38, ey - 0.40, (0.86, 0.80, 0.42, 1.0)),
-            (ex - 0.24, ey - 0.28, (0.30, 0.36, 0.28, 1.0)))):
-        make_cyl("Canvas_Tube_%d" % ti, (tx2, ty2, 0.022),
-                 0.018, 0.11, col, segments=6, axis='Y')
-        make_cyl("Canvas_TubeCap_%d" % ti, (tx2, ty2 - 0.062, 0.022),
-                 0.012, 0.02, (0.30, 0.30, 0.32, 1.0), segments=6, axis='Y')
-    # A finished board leaning face-in against the wall — the ones
-    # she is not looking at today.
-    make_box("Canvas_Stack_A", (ex - 0.40, ey + 0.05, 0.42),
-             (0.52, 0.030, 0.68), pine_dk)
-    make_box("Canvas_Stack_B", (ex - 0.44, ey + 0.02, 0.38),
-             (0.44, 0.026, 0.60), gesso)
+    with shifted(globals(), -1.0, 0.0, ROOM_W=OLD_W, ROOM_D=OLD_D):   # in the W window's light, with the kitchen
+        pine = (0.68, 0.56, 0.38, 1.0)
+        pine_dk = (0.52, 0.42, 0.28, 1.0)
+        gesso = (0.90, 0.88, 0.82, 1.0)
+        block = (0.36, 0.46, 0.52, 1.0)      # the blocked-in shape
+        block_dk = (0.24, 0.32, 0.40, 1.0)
+        ex, ey = -1.45, 2.35                 # in the west window's light, clear of the counter (2026-09-23: a leg through its top)
+        # Easel: two front legs splayed, one back leg, a mast, a tray
+        for sgn in (-1, 1):
+            make_box("Easel_Leg_%d" % sgn, (ex + sgn * 0.30, ey - 0.10, 0.72),
+                     (0.045, 0.045, 1.44), pine)
+        make_box("Easel_BackLeg", (ex, ey + 0.34, 0.70),
+                 (0.045, 0.045, 1.40), pine_dk)
+        make_box("Easel_Mast", (ex, ey - 0.10, 1.05), (0.05, 0.05, 0.90), pine)
+        make_box("Easel_Tray", (ex, ey - 0.16, 0.86), (0.72, 0.09, 0.035), pine_dk)
+        make_box("Easel_TrayLip", (ex, ey - 0.20, 0.885), (0.72, 0.018, 0.030), pine)
+        # The board on the tray, leaning back with the mast
+        make_box("Canvas_Board", (ex, ey - 0.09, 1.20), (0.60, 0.022, 0.72), gesso)
+        make_box("Canvas_Edge_T", (ex, ey - 0.10, 1.555), (0.62, 0.030, 0.028), pine_dk)
+        make_box("Canvas_Edge_B", (ex, ey - 0.10, 0.845), (0.62, 0.030, 0.028), pine_dk)
+        # What is ON it: a blocked-in headland shape, unfinished at the
+        # right edge — the painting is in progress, which is the point.
+        make_box("Canvas_Block", (ex - 0.09, ey - 0.102, 1.13),
+                 (0.34, 0.004, 0.40), block)
+        make_box("Canvas_Block_Dk", (ex - 0.14, ey - 0.104, 1.01),
+                 (0.22, 0.004, 0.16), block_dk)
+        make_box("Canvas_Horizon", (ex, ey - 0.104, 1.28),
+                 (0.56, 0.004, 0.012), block_dk)
+        # Brushes in a jar on the tray + a rag over the tray lip
+        make_cyl("Canvas_Jar", (ex + 0.24, ey - 0.15, 0.945),
+                 0.045, 0.13, (0.72, 0.76, 0.74, 0.65), segments=10)
+        for bi, bo in enumerate((-0.012, 0.0, 0.014)):
+            make_cyl("Canvas_Brush_%d" % bi, (ex + 0.24 + bo, ey - 0.15, 1.055),
+                     0.006, 0.20, (0.62, 0.50, 0.32, 1.0), segments=6)
+        make_box("Canvas_Rag", (ex - 0.26, ey - 0.20, 0.865),
+                 (0.16, 0.05, 0.10), (0.74, 0.70, 0.62, 1.0))
+        # Paint tubes stacked on the floor where a working painter keeps
+        # them — squeezed flat, capped, not in a box.
+        for ti, (tx2, ty2, col) in enumerate((
+                (ex - 0.34, ey - 0.30, (0.72, 0.24, 0.20, 1.0)),
+                (ex - 0.28, ey - 0.36, (0.24, 0.34, 0.52, 1.0)),
+                (ex - 0.38, ey - 0.40, (0.86, 0.80, 0.42, 1.0)),
+                (ex - 0.24, ey - 0.28, (0.30, 0.36, 0.28, 1.0)))):
+            make_cyl("Canvas_Tube_%d" % ti, (tx2, ty2, 0.022),
+                     0.018, 0.11, col, segments=6, axis='Y')
+            make_cyl("Canvas_TubeCap_%d" % ti, (tx2, ty2 - 0.062, 0.022),
+                     0.012, 0.02, (0.30, 0.30, 0.32, 1.0), segments=6, axis='Y')
+        # A finished board leaning face-in against the wall — the ones
+        # she is not looking at today.
+        make_box("Canvas_Stack_A", (ex - 0.40, ey + 0.05, 0.42),
+                 (0.52, 0.030, 0.68), pine_dk)
+        make_box("Canvas_Stack_B", (ex - 0.44, ey + 0.02, 0.38),
+                 (0.44, 0.026, 0.60), gesso)
 
 
 def build_starfish_nebula_2026_08():
@@ -445,65 +484,69 @@ def build_wear_personality_2026_08():
     too new to mark the floor, so it shows in the OBJECTS instead
     (a flattened cushion, a folded floor blanket).
     """
-    from _props.detail import make_traffic_wear, make_floor_stain, make_scuff_band
+    import _props.detail as _det   # module lookups, so `shifted` can wrap them (2026-10-09)
     floor_dk = (0.33, 0.29, 0.24, 1.0)
     coffee = (0.36, 0.25, 0.15, 1.0)
     # ── HER THREE YEARS ────────────────────────────────────────
     # One narrow path: door → kitchen → the easel light → bedroom.
     # A person alone walks a thinner line than a family.
-    make_traffic_wear("Wear_Lena_Path",
-                      [(0.6, 0.8), (-0.8, 1.2), (-1.6, 1.6), (-1.7, 2.3)],
+    _det.make_traffic_wear("Wear_Lena_Path",
+                      [(0.5, 0.8), (-0.4, 2.3), (-1.9, 2.6), (-2.4, 2.4)],   # (2026-10-09: door, round the table, to the easel)
                       width=0.38, tint=floor_dk)
-    make_traffic_wear("Wear_Lena_Path_Bed",
-                      [(-1.0, 1.9), (-0.62, 2.9)],
+    _det.make_traffic_wear("Wear_Lena_Path_Bed",
+                      [(-1.9, 2.6), (-1.4, 3.0), (-1.3, 3.45)],   # to the bedroom door
                       width=0.34, tint=floor_dk)
-    # THE CONE AND THE KETTLE · she "worked the cone and the
-    # kettle" — the cone lives at one spot on the counter: a ring
-    # of rings, and a drip line down the counter face.
-    for ri, (rx, ry, rr) in enumerate(((-2.14, 1.02, 0.055), (-2.24, 1.10, 0.045),
-                                       (-2.18, 0.94, 0.038))):
-        make_cyl("Wear_ConeRing_%d" % ri, (rx, ry, 0.928), rr, 0.003, coffee, segments=8)
-    make_scuff_band("Wear_Counter_Drip", (-1.86, 1.05), 0.5, axis='Y',
-                    height=0.14, band_z=0.62, tint=(0.30, 0.22, 0.14, 1.0))
-    # ── THE ARTIST'S FLOOR · around the easel (-1.72, 2.35) ──
-    # Paint lands where work happens: a constellation of small
-    # hard-edged drips in HER palette (the nebula's colors — she
-    # mixes what she paints with), plus one solvent bloom.
-    for di, (dx, dy, dr, col) in enumerate((
-            (-1.45, 2.05, 0.030, (0.34, 0.20, 0.46, 1.0)),
-            (-1.95, 2.10, 0.024, (0.16, 0.38, 0.44, 1.0)),
-            (-1.60, 2.62, 0.036, (0.62, 0.32, 0.42, 1.0)),
-            (-2.05, 2.50, 0.020, (0.88, 0.84, 0.66, 1.0)),
-            (-1.30, 2.40, 0.026, (0.13, 0.10, 0.26, 1.0)))):
-        make_cyl("Wear_PaintDrip_%d" % di, (dx, dy, 0.007), dr, 0.004, col, segments=6)
-    make_floor_stain("Wear_SolventBloom", (-1.80, 2.75), radius=0.14,
-                     tint=(0.38, 0.35, 0.30, 1.0), segments=9)
-    # Charcoal smudge on the west wall at hand height, where she
-    # steadies herself leaning in to the board.
-    make_box("Wear_CharcoalSmudge", (-2.394, 2.15, 1.32), (0.012, 0.16, 0.10),   # on the wall face (2026-09-23: inside it)
-             (0.24, 0.23, 0.22, 1.0))
+    with shifted(globals(), -1.0, 0.0, ROOM_W=OLD_W, ROOM_D=OLD_D):   # the counter and the easel
+        # THE CONE AND THE KETTLE · she "worked the cone and the
+        # kettle" — the cone lives at one spot on the counter: a ring
+        # of rings, and a drip line down the counter face.
+        for ri, (rx, ry, rr) in enumerate(((-2.14, 1.02, 0.055), (-2.24, 1.10, 0.045),
+                                           (-2.18, 0.94, 0.038))):
+            make_cyl("Wear_ConeRing_%d" % ri, (rx, ry, 0.928), rr, 0.003, coffee, segments=8)
+        _det.make_scuff_band("Wear_Counter_Drip", (-1.86, 1.05), 0.5, axis='Y',
+                        height=0.14, band_z=0.62, tint=(0.30, 0.22, 0.14, 1.0))
+        # ── THE ARTIST'S FLOOR · around the easel (-1.72, 2.35) ──
+        # Paint lands where work happens: a constellation of small
+        # hard-edged drips in HER palette (the nebula's colors — she
+        # mixes what she paints with), plus one solvent bloom.
+        for di, (dx, dy, dr, col) in enumerate((
+                (-1.45, 2.05, 0.030, (0.34, 0.20, 0.46, 1.0)),
+                (-1.95, 2.10, 0.024, (0.16, 0.38, 0.44, 1.0)),
+                (-1.60, 2.62, 0.036, (0.62, 0.32, 0.42, 1.0)),
+                (-2.05, 2.50, 0.020, (0.88, 0.84, 0.66, 1.0)),
+                (-1.30, 2.40, 0.026, (0.13, 0.10, 0.26, 1.0)))):
+            make_cyl("Wear_PaintDrip_%d" % di, (dx, dy, 0.007), dr, 0.004, col, segments=6)
+        _det.make_floor_stain("Wear_SolventBloom", (-1.80, 2.75), radius=0.14,
+                         tint=(0.38, 0.35, 0.30, 1.0), segments=9)
+        # Charcoal smudge on the west wall at hand height, where she
+        # steadies herself leaning in to the board.
+        make_box("Wear_CharcoalSmudge", (-2.394, 2.15, 1.32), (0.012, 0.16, 0.10),   # on the wall face (2026-09-23: inside it)
+                 (0.24, 0.23, 0.22, 1.0))
     # ── SIXTY-ONE DEGREES ──────────────────────────────────────
     # The thermostat reads what it reads; the draft towel at the
     # door base is how a cold apartment answers its own door.
-    make_box("Thermostat_Body", (2.46, 2.2, 1.45), (0.035, 0.14, 0.10),
-             (0.86, 0.84, 0.78, 1.0))
-    make_box("Thermostat_Needle", (2.44, 2.19, 1.45), (0.008, 0.05, 0.012),
-             (0.72, 0.24, 0.18, 1.0))
+    with shifted(globals(), 1.0, 0.3, ROOM_W=OLD_W, ROOM_D=OLD_D):   # the E wall
+        make_box("Thermostat_Body", (2.46, 2.2, 1.45), (0.035, 0.14, 0.10),
+                 (0.86, 0.84, 0.78, 1.0))
+        make_box("Thermostat_Needle", (2.44, 2.19, 1.45), (0.008, 0.05, 0.012),
+                 (0.72, 0.24, 0.18, 1.0))
     make_box("Wear_DraftTowel", (0.60, 0.14, 0.035), (0.85, 0.14, 0.07),
              (0.55, 0.50, 0.42, 1.0))
     # ── THE CROWDING (weeks, so: objects, not floor) ───────────
-    # Finn's end of the couch: one cushion sits lower and prouder
-    # at the front edge than its twin.
-    # (couch sits at (1.12, 3.60) since 2026-09-25; first placement floated in front
-    # of it and hit the partition — the flat sits ON Finn's cushion)
-    make_box("Wear_Cushion_Flat", (0.67, 3.51, 0.545), (0.74, 0.58, 0.030),
-             (0.45, 0.41, 0.35, 1.0))
-    # Kai's floor bed, folded and stacked by the couch arm each
-    # morning — a guest who folds is a guest who knows he's one.
-    make_box("Wear_FloorBed_Folded", (1.55, 2.55, 0.09), (0.55, 0.42, 0.18),
-             (0.50, 0.44, 0.36, 1.0))
-    make_box("Wear_FloorBed_Pillow", (1.55, 2.55, 0.225), (0.42, 0.30, 0.09),
-             (0.82, 0.78, 0.70, 1.0))
+    with shifted(globals(), 0.3, 0.95, ROOM_W=OLD_W, ROOM_D=OLD_D):   # the couch
+        # Finn's end of the couch: one cushion sits lower and prouder
+        # at the front edge than its twin.
+        # (couch sits at (1.12, 3.60) since 2026-09-25; first placement floated in front
+        # of it and hit the partition — the flat sits ON Finn's cushion)
+        make_box("Wear_Cushion_Flat", (0.67, 3.51, 0.545), (0.74, 0.58, 0.030),
+                 (0.45, 0.41, 0.35, 1.0))
+    with shifted(globals(), 0.6, 0.55, ROOM_W=OLD_W, ROOM_D=OLD_D):   # by the nook's opening
+        # Kai's floor bed, folded and stacked by the couch arm each
+        # morning — a guest who folds is a guest who knows he's one.
+        make_box("Wear_FloorBed_Folded", (1.55, 2.55, 0.09), (0.55, 0.42, 0.18),
+                 (0.50, 0.44, 0.36, 1.0))
+        make_box("Wear_FloorBed_Pillow", (1.55, 2.55, 0.225), (0.42, 0.30, 0.09),
+                 (0.82, 0.78, 0.70, 1.0))
 
 
 def build_hero_props_2026_09():
@@ -547,60 +590,64 @@ def build_hero_props_2026_09():
     cloth_col = (0.78, 0.74, 0.64, 1.0)
     paper_col = (0.94, 0.92, 0.86, 1.0)
 
-    # ── THE ESTUARY 7 STICK · side table (1.40, 0.95), top 0.54 ──
-    make_box("Estuary_Stick_Sleeve", (1.44, 0.95, 0.551), (0.26, 0.09, 0.020), waxpaper)
-    make_box("Estuary_Stick", (1.258, 0.95, 0.549), (0.10, 0.05, 0.016), (0.30, 0.26, 0.22, 1.0))
-    make_box("Stick_Label", (1.44, 0.95, 0.563), (0.10, 0.05, 0.002), (0.96, 0.95, 0.92, 1.0))
+    with shifted(globals(), 0.25, 0.3, ROOM_W=OLD_W, ROOM_D=OLD_D):   # the window side table
+        # ── THE ESTUARY 7 STICK · side table (1.40, 0.95), top 0.54 ──
+        make_box("Estuary_Stick_Sleeve", (1.44, 0.95, 0.551), (0.26, 0.09, 0.020), waxpaper)
+        make_box("Estuary_Stick", (1.258, 0.95, 0.549), (0.10, 0.05, 0.016), (0.30, 0.26, 0.22, 1.0))
+        make_box("Stick_Label", (1.44, 0.95, 0.563), (0.10, 0.05, 0.002), (0.96, 0.95, 0.92, 1.0))
 
-    # ── THE HEXAGON · kitchen table north half, tabletop 0.7675 ──
-    hx, hy = -0.80, 1.78
-    make_box("Hexagon_Cloth", (hx, hy, 0.770), (0.40, 0.36, 0.004), cloth_col)
-    import math as _m
-    for hi in range(6):
-        ang = _m.pi / 3.0 * hi + _m.pi / 6.0
-        make_box(f"Hexagon_Ring_{hi}",
-                 (hx + 0.13 * _m.cos(ang), hy + 0.13 * _m.sin(ang), 0.781),
-                 (0.085, 0.085, 0.018), cedar)
-    make_cyl("Hexagon_Center_Face", (hx, hy, 0.780), 0.055, 0.016, cedar_dk, segments=12)
-    make_cyl("Hexagon_Face_Inlay", (hx, hy, 0.7895), 0.030, 0.003,
-             (0.62, 0.46, 0.32, 1.0), segments=10)
-    # The ARIA piece beside the ring, still on the cloth
-    make_box("Hexagon_Aria_Piece", (-0.645, 1.635, 0.782), (0.070, 0.050, 0.020), cedar)
-    # The eighth piece — the one she holds in her palm — on the
-    # cloth's far corner, apart from the configuration
-    make_box("Eighth_Piece", (-0.955, 1.920, 0.782), (0.070, 0.050, 0.020), cedar_dk)
+    with shifted(globals(), -0.3, 0.3, ROOM_W=OLD_W, ROOM_D=OLD_D):   # the table
+        # ── THE HEXAGON · kitchen table north half, tabletop 0.7675 ──
+        hx, hy = -0.80, 1.78
+        make_box("Hexagon_Cloth", (hx, hy, 0.770), (0.40, 0.36, 0.004), cloth_col)
+        import math as _m
+        for hi in range(6):
+            ang = _m.pi / 3.0 * hi + _m.pi / 6.0
+            make_box(f"Hexagon_Ring_{hi}",
+                     (hx + 0.13 * _m.cos(ang), hy + 0.13 * _m.sin(ang), 0.781),
+                     (0.085, 0.085, 0.018), cedar)
+        make_cyl("Hexagon_Center_Face", (hx, hy, 0.780), 0.055, 0.016, cedar_dk, segments=12)
+        make_cyl("Hexagon_Face_Inlay", (hx, hy, 0.7895), 0.030, 0.003,
+                 (0.62, 0.46, 0.32, 1.0), segments=10)
+        # The ARIA piece beside the ring, still on the cloth
+        make_box("Hexagon_Aria_Piece", (-0.645, 1.635, 0.782), (0.070, 0.050, 0.020), cedar)
+        # The eighth piece — the one she holds in her palm — on the
+        # cloth's far corner, apart from the configuration
+        make_box("Eighth_Piece", (-0.955, 1.920, 0.782), (0.070, 0.050, 0.020), cedar_dk)
 
-    # ── THE LETTER TO JORGEN · table south-east, one sheet ──
-    make_box("Letter_Paper", (-0.55, 1.35, 0.769), (0.21, 0.28, 0.003), paper_col)
-    make_box("Letter_Name_Line", (-0.55, 1.46, 0.771), (0.12, 0.010, 0.001),
-             (0.30, 0.30, 0.34, 1.0))
-    make_cyl("Letter_Pen_Dry", (-0.42, 1.28, 0.7735), 0.005, 0.13,
-             (0.24, 0.24, 0.28, 1.0), axis='Y', segments=6)
-    make_cyl("Letter_Pen_Second", (-0.46, 1.44, 0.7735), 0.005, 0.13,
-             (0.52, 0.30, 0.24, 1.0), axis='Y', segments=6)
-    make_cyl("Letter_Coffee_Cup", (-0.76, 1.30, 0.813), 0.040, 0.088,
-             (0.86, 0.82, 0.76, 1.0), segments=10)
+        # ── THE LETTER TO JORGEN · table south-east, one sheet ──
+        make_box("Letter_Paper", (-0.55, 1.35, 0.769), (0.21, 0.28, 0.003), paper_col)
+        make_box("Letter_Name_Line", (-0.55, 1.46, 0.771), (0.12, 0.010, 0.001),
+                 (0.30, 0.30, 0.34, 1.0))
+        make_cyl("Letter_Pen_Dry", (-0.42, 1.28, 0.7735), 0.005, 0.13,
+                 (0.24, 0.24, 0.28, 1.0), axis='Y', segments=6)
+        make_cyl("Letter_Pen_Second", (-0.46, 1.44, 0.7735), 0.005, 0.13,
+                 (0.52, 0.30, 0.24, 1.0), axis='Y', segments=6)
+        make_cyl("Letter_Coffee_Cup", (-0.76, 1.30, 0.813), 0.040, 0.088,
+                 (0.86, 0.82, 0.76, 1.0), segments=10)
 
-    # ── LENA'S PHONE · by her place at the table ──
-    make_box("Lena_Phone", (-0.95, 1.30, 0.774), (0.070, 0.140, 0.012),
-             (0.16, 0.16, 0.18, 1.0))
-    make_box("Lena_Phone_Screen", (-0.95, 1.30, 0.781), (0.058, 0.124, 0.002),
-             (0.30, 0.36, 0.44, 1.0))
+        # ── LENA'S PHONE · by her place at the table ──
+        make_box("Lena_Phone", (-0.95, 1.30, 0.774), (0.070, 0.140, 0.012),
+                 (0.16, 0.16, 0.18, 1.0))
+        make_box("Lena_Phone_Screen", (-0.95, 1.30, 0.781), (0.058, 0.124, 0.002),
+                 (0.30, 0.36, 0.44, 1.0))
 
-    # ── THE BREAD · counter between drainer and grinder ──
-    make_box("Bread_Board", (-2.14, 2.08, 0.935), (0.30, 0.20, 0.018), COL_WOOD)
-    make_box("Bread_Loaf", (-2.18, 2.10, 0.979), (0.150, 0.095, 0.070),
-             (0.76, 0.58, 0.34, 1.0))
-    make_box("Bread_Slice", (-2.03, 2.04, 0.951), (0.020, 0.090, 0.014),
-             (0.88, 0.78, 0.58, 1.0))
-    make_box("Bread_Knife", (-2.10, 1.99, 0.947), (0.190, 0.024, 0.006), COL_STEEL)
-    make_box("Bread_Knife_Handle", (-1.985, 1.99, 0.947), (0.040, 0.028, 0.014), COL_WOOD)
+    with shifted(globals(), -1.0, 0.0, ROOM_W=OLD_W, ROOM_D=OLD_D):   # the counter
+        # ── THE BREAD · counter between drainer and grinder ──
+        make_box("Bread_Board", (-2.14, 2.08, 0.935), (0.30, 0.20, 0.018), COL_WOOD)
+        make_box("Bread_Loaf", (-2.18, 2.10, 0.979), (0.150, 0.095, 0.070),
+                 (0.76, 0.58, 0.34, 1.0))
+        make_box("Bread_Slice", (-2.03, 2.04, 0.951), (0.020, 0.090, 0.014),
+                 (0.88, 0.78, 0.58, 1.0))
+        make_box("Bread_Knife", (-2.10, 1.99, 0.947), (0.190, 0.024, 0.006), COL_STEEL)
+        make_box("Bread_Knife_Handle", (-1.985, 1.99, 0.947), (0.040, 0.028, 0.014), COL_WOOD)
 
-    # ── THE BOWL · the east place setting, an inch off true ──
-    make_cyl("Table_Place_Bowl", (-0.40, 1.450, 0.790), 0.075, 0.044,
-             (0.58, 0.52, 0.46, 1.0), segments=12)
-    make_cyl("Table_Place_Bowl_Inner", (-0.40, 1.450, 0.8145), 0.058, 0.005,
-             (0.42, 0.36, 0.30, 1.0), segments=12)
+    with shifted(globals(), -0.3, 0.3, ROOM_W=OLD_W, ROOM_D=OLD_D):   # the table
+        # ── THE BOWL · the east place setting, an inch off true ──
+        make_cyl("Table_Place_Bowl", (-0.40, 1.450, 0.790), 0.075, 0.044,
+                 (0.58, 0.52, 0.46, 1.0), segments=12)
+        make_cyl("Table_Place_Bowl_Inner", (-0.40, 1.450, 0.8145), 0.058, 0.005,
+                 (0.42, 0.36, 0.30, 1.0), segments=12)
 
 
 def build_draft4_2026_09():
@@ -625,32 +672,35 @@ def build_draft4_2026_09():
     the bed has not learned it yet.
     """
     from _props.detail import make_wall_outlet, make_light_switch, make_cord_run
+    # (2026-10-09: the 7 x 6.6 plan's own coordinates — the lamp moved with
+    # the couch nook, its outlets with the E wall)
     # ── the floor lamp, east of the couch, cord to the E wall ──
-    make_lamp("Floor_Lamp", 1.88, 3.95, base_z=0.0, h=1.45, shade_col=(0.90, 0.84, 0.70, 1.0))
-    make_wall_outlet("Outlet_E_1", (ROOM_W / 2.0, 3.00), axis='Y', face_sign=-1, z=0.30, aged=True)
+    make_lamp("Floor_Lamp", 2.18, 4.90, base_z=0.0, h=1.45, shade_col=(0.90, 0.84, 0.70, 1.0))
+    make_wall_outlet("Outlet_E_1", (ROOM_W / 2.0, 3.95), axis='Y', face_sign=-1, z=0.30, aged=True)
     # round the bookshelf, not through it (2026-09-23)
-    make_cord_run("Cord_1", (1.92, 3.95, 0.03), (1.95, 3.10, 0.03), sag=0.0)
-    make_cord_run("Cord_1b", (1.95, 3.10, 0.03), (ROOM_W / 2.0 - 0.13, 3.00, 0.30), sag=0.02)
+    make_cord_run("Cord_1", (2.22, 4.90, 0.03), (2.25, 4.05, 0.03), sag=0.0)
+    make_cord_run("Cord_1b", (2.25, 4.05, 0.03), (ROOM_W / 2.0 - 0.13, 3.95, 0.30), sag=0.02)
     # ── the switch by the door (S wall, east of the door) ──
     make_light_switch("Switch_Door", (1.15, 0.0), axis='X', face_sign=1, z=1.20, aged=True)   # on Wall_S_E (the opening runs x -1..1)
     # ── the space heater's cord to the E wall ──
-    make_wall_outlet("Outlet_E_2", (ROOM_W / 2.0, 2.60), axis='Y', face_sign=-1, z=0.30, aged=True)
-    make_cord_run("Cord_2", (1.21, 2.90, 0.10), (ROOM_W / 2.0 - 0.13, 2.60, 0.30), sag=0.04)
+    make_wall_outlet("Outlet_E_2", (ROOM_W / 2.0, 3.15), axis='Y', face_sign=-1, z=0.30, aged=True)
+    make_cord_run("Cord_2", (1.21, 3.45, 0.10), (ROOM_W / 2.0 - 0.13, 3.15, 0.30), sag=0.04)
     # ── the fairy lights' cord down the N wall's east end ──
-    make_wall_outlet("Outlet_E_3", (ROOM_W / 2.0, 4.75), axis='Y', face_sign=-1, z=0.30, aged=True)
-    make_cord_run("Cord_3", (1.62, ROOM_D - 0.10, 2.05), (ROOM_W / 2.0 - 0.13, 4.75, 0.30), sag=0.0)
+    make_wall_outlet("Outlet_E_3", (ROOM_W / 2.0, 6.20), axis='Y', face_sign=-1, z=0.30, aged=True)
+    make_cord_run("Cord_3", (3.02, ROOM_D - 0.10, 2.05), (ROOM_W / 2.0 - 0.13, 6.20, 0.30), sag=0.0)
     # ── the fridge, plugged in behind its own north flank ──
     make_wall_outlet("Outlet_E_4", (ROOM_W / 2.0, 0.98), axis='Y', face_sign=-1, z=0.30, aged=True)
-    make_cord_run("Cord_4", (2.40, 0.89, 0.12), (ROOM_W / 2.0 - 0.13, 0.98, 0.30), sag=0.0)
+    make_cord_run("Cord_4", (3.40, 0.89, 0.12), (ROOM_W / 2.0 - 0.13, 0.98, 0.30), sag=0.0)
     # ── one over the counter with nothing in it (the grinder is a hand grinder) ──
     make_wall_outlet("Outlet_W_1", (-ROOM_W / 2.0, 2.05), axis='Y', face_sign=1, z=1.10, aged=True)
     # ── BEDROOM WEAR · her side of the bed ──
-    bx, by = -1.5, ROOM_D - 0.99   # the bed moved west (2026-09-25, see build_bedroom)
+    bx, by = -2.5, ROOM_D - 0.99   # the bed against the W wall (2026-10-09: the bigger room)
     make_chamfer_box("Wear_HerSide", (bx - 0.36, by + 0.05, 0.5935), (0.56, 0.95, 0.004), (0.66, 0.42, 0.48, 1.0), chamfer=0.002)
     make_cyl("Wear_CupRing_N", (bx + 1.02, by + 0.60, 0.603), 0.040, 0.003, (0.36, 0.25, 0.15, 1.0), segments=10)
-    # her slippers at the foot of the bed, her side (the bed's west edge is 15 cm off the wall now)
-    make_rot_box("Slipper_L", (-1.75, 2.85, 0.03), (0.10, 0.26, 0.06), (0.52, 0.40, 0.36, 1.0), yaw=0.22)
-    make_rot_box("Slipper_R", (-1.61, 2.83, 0.03), (0.10, 0.26, 0.06), (0.52, 0.40, 0.36, 1.0), yaw=-0.12)
+    # her slippers at the foot of the bed, her side — INSIDE the bedroom
+    # now (2026-10-09: at y 2.85 they stood outside the old partition)
+    make_rot_box("Slipper_L", (-2.75, 4.45, 0.03), (0.10, 0.26, 0.06), (0.52, 0.40, 0.36, 1.0), yaw=0.22)
+    make_rot_box("Slipper_R", (-2.61, 4.43, 0.03), (0.10, 0.26, 0.06), (0.52, 0.40, 0.36, 1.0), yaw=-0.12)
 
 
 def main():
@@ -667,7 +717,7 @@ def main():
     build_hero_props_2026_09()
     build_draft4_2026_09()
     # what is outside the window (2026-10-07, _props/views.py)
-    make_view("View_S", "S", 0.0, 1.75, kind="street", ground_z=-3.2, seed=11)   # Hemlock, one floor down
+    make_view("View_S", "S", 0.0, 2.00, kind="street", ground_z=-3.2, seed=11)   # Hemlock, one floor down
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/lena_apartment.glb"))
     print(f"\n[build_lena_apartment] exporting to {out}")
