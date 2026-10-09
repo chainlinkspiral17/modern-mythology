@@ -59,7 +59,7 @@ def build_shell():
         make_box(f"Door_Glass_{di}", (-ROOM_W/2.0 + 0.02 - 0.0231, dy, 1.60),
                  (0.005, 0.30, 0.40), COL_DOOR_GLASS)
         # Room number plate
-        make_box(f"Door_Plate_{di}", (-ROOM_W/2.0 + 0.06, dy-0.70, 2.00),
+        make_box(f"Door_Plate_{di}", (-ROOM_W/2.0 + 0.103, dy-0.70, 2.00),
                  (0.005, 0.20, 0.10), (0.32, 0.42, 0.30, 1.0))
     # E wall — two large window bays + wall segments
     make_wall("Wall_E_S", (+ROOM_W/2.0, 1.40, 0), length=2.40, height=CEIL,

@@ -76,12 +76,12 @@ def build_plotter_and_mood_board():
     make_box("Plotter_Slot", (px-0.26, py, 0.85), (0.04, 1.20, 0.04), P.METAL_BLACK)
     make_box("Plotter_PaperOut", (px-0.30, py, 0.85), (0.05, 1.10, 0.005), P.PAPER)
     # Large mood board on east wall
-    make_box("MoodBoard", (+4.96, 5.0, 1.80), (0.04, 2.20, 1.40), (0.18, 0.16, 0.18, 1.0))
+    make_box("MoodBoard", (+4.88, 5.0, 1.80), (0.04, 2.20, 1.40), (0.18, 0.16, 0.18, 1.0))
     # Pinned items in cycling colors
     for pi in range(8):
         col = P.SNACK_TINTS[pi % len(P.SNACK_TINTS)]
         make_box(f"MoodPin_{pi}",
-                 (4.8969, 5.0 + (pi%4 - 1.5)*0.50, 1.50 + (pi//4)*0.50),
+                 (4.8569, 5.0 + (pi%4 - 1.5)*0.50, 1.50 + (pi//4)*0.50),
                  (0.005, 0.34, 0.26), col)
 
 def _task_chair(name, cx, cy, seat_col=(0.20, 0.22, 0.26, 1.0)):

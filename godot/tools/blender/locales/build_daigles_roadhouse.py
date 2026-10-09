@@ -114,11 +114,11 @@ def build_jukebox():
 
 def build_neon_schlitz():
     # Iconic neon over the bar centerline
-    make_box("Neon_Schlitz_BG", (0.0, ROOM_D-0.06, 2.20), (1.40, 0.04, 0.40), COL_NEON_SCHLITZ)
-    make_box("Neon_Schlitz_Letters", (0.0, ROOM_D-0.08 - 0.0231, 2.20), (1.20, 0.005, 0.24), P.PAPER)
+    make_box("Neon_Schlitz_BG", (0.0, ROOM_D-0.12, 2.20), (1.40, 0.04, 0.40), COL_NEON_SCHLITZ)
+    make_box("Neon_Schlitz_Letters", (0.0, ROOM_D-0.12 - 0.0231, 2.20), (1.20, 0.005, 0.24), P.PAPER)
     # Smaller "BEER" neon next to it
-    make_box("Neon_Beer_BG", (-2.20, ROOM_D-0.06, 2.20), (0.80, 0.04, 0.30), (0.96, 0.72, 0.20, 1.0))
-    make_box("Neon_Beer_Letters", (-2.20, ROOM_D-0.08 - 0.0231, 2.20), (0.64, 0.005, 0.18), P.PAPER)
+    make_box("Neon_Beer_BG", (-2.20, ROOM_D-0.12, 2.20), (0.80, 0.04, 0.30), (0.96, 0.72, 0.20, 1.0))
+    make_box("Neon_Beer_Letters", (-2.20, ROOM_D-0.12 - 0.0231, 2.20), (0.64, 0.005, 0.18), P.PAPER)
 
 
 def build_gator_head():
@@ -149,9 +149,9 @@ def build_decor():
     make_wall_clock("Clock", (-4.400, 5.5, 2.20), frozen_hour=4, frozen_min=15, facing='+X')
     make_faded_poster("Poster_S", (+ROOM_W/2.0-0.05 - 0.0535, 5.0, 1.50), into_room=-1)
     # Cardboard corkboard with stapled notices near the front (E wall)
-    make_box("Corkboard", (+ROOM_W/2.0-0.04, 1.7, 1.50), (0.04, 0.80, 0.60), (0.62, 0.46, 0.32, 1.0))
+    make_box("Corkboard", (+ROOM_W/2.0-0.12, 1.7, 1.50), (0.04, 0.80, 0.60), (0.62, 0.46, 0.32, 1.0))
     for ni in range(4):
-        nx = +ROOM_W/2.0 - 0.06
+        nx = +ROOM_W/2.0 - 0.10   # on the corkboard (2026-10-09: it and the notices stood inside the wall)
         ny = 1.40 + (ni % 2) * 0.30
         nz = 1.30 + (ni // 2) * 0.30
         make_box(f"Notice_{ni}", (nx - 0.0431, ny, nz), (0.005, 0.18, 0.14), (0.92, 0.86, 0.74, 1.0))

@@ -3834,6 +3834,39 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-09 · overnight run, pass 6: THE BURIED-DECOR SWEEP (new gate).**
+Diego's room read bare because its things were INSIDE ITS WALLS: the
+jerseys and scarf 4 cm inside the north wall (and across its window),
+the flag inside the west wall. A sweep of all 122 builders found the same
+error everywhere: decor placed from a wall's CENTRE line (`ROOM_W/2 -
+0.06` on a 20 cm wall whose face is at ROOM_W/2 - 0.10).
+- Jesse's acoustic foam and lyric sheets; Maya's corkboard, pins and
+  fairy lights; the Miller office's plat map and commendations;
+  Lena's thermostat and her bed's head (8 cm into the N wall);
+- Board Lords' parts pegboard; the Roberts calendar; Faust's and the
+  school newspaper's clocks; the pinboard;
+- Daigle's neon backings and corkboard; El Rancho's menu board and neon;
+  the ice company's services board; the Houston moodboard;
+- the Henderson, Frog, Pit Stop office, Miller and Lacombe pegboards;
+- the gym's mirror, the Mixing Glass back-bar mirror, Cafe Olimpico's
+  pennants, the Foxhole dressing room's set list, Cosmic's one-way
+  mirrors and a poster behind its manga wall, the bungalow's foam and
+  bathroom mirror, the Ember & Ash crew photo, Wagner's poster, the
+  restroom signs, the riverboat calendar.
+All are on their wall faces now. Diego's room also re-hangs its jerseys on the
+east wall and its posters as sports posters, and is toned down from
+washed-out.
+- **Doors** inside solid walls are proud of the room face: the Kwik
+  Stop restroom, Cosmic's service door, the Daily Grind's back door,
+  Kai's bathroom door, the Millers' porch door, the courthouse side
+  door, the riverboat's side door and leaded window.
+- **The gate:** `buried_decor_audit.py` (in the suite, ceiling 0) fails
+  any wall decor fully inside a wall.
+STILL OPEN (a different fix, cut openings): the diner's saloon and
+pilot-house windows and the bungalow's six windows sit inside SOLID walls
+(neither inside nor outside sees them); the riverboat's gangway door;
+the pharmacy's door glass sits in a wall pier.
+
 **2026-10-09 · overnight run, pass 5: THE ALLEY BEHIND THE SALTY TOME, A
 PLACE.** Vol 7's climax (ch14/16/18/20/21: the painting, the hour at the
 wall, the face opening its eyes before thirty-five people) played in a

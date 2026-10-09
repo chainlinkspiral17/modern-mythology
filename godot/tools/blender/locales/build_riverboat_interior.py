@@ -617,14 +617,14 @@ def build_main_dining():
     # area. We just paint a door visible on the east wall.
     # (Bar is at X=+2 to +6; east wall at +6)
     make_box("MD_SideDoor",
-             (HULL_X_E - 0.06, -3.0, MAIN_FLOOR_Z + 1.05),
+             (HULL_X_E - 0.12, -3.0, MAIN_FLOOR_Z + 1.05),
              (0.04, 1.20, 2.10), COL_WALL_DARK)
     make_box("MD_SideDoor_Knob",
-             (HULL_X_E - 0.08, -3.0 + 0.50, MAIN_FLOOR_Z + 1.05),
+             (HULL_X_E - 0.14, -3.0 + 0.50, MAIN_FLOOR_Z + 1.05),
              (0.04, 0.04, 0.04), COL_BRASS)
     # Side door frame
     make_box("MD_SideDoor_FrameT",
-             (HULL_X_E - 0.06, -3.0, MAIN_FLOOR_Z + 2.16),
+             (HULL_X_E - 0.12, -3.0, MAIN_FLOOR_Z + 2.16),
              (0.04, 1.30, 0.10), COL_BRASS_DARK)
 
 
@@ -683,21 +683,21 @@ def build_table_17():
              (0.92, 0.78, 0.46, 1.0), segments=10)
     # Window — the "deepest window" overlooking the muddy divide
     make_box("T17_DeepWindow",
-             (HULL_X_W + 0.06, -0.5, cz + 1.6),
+             (HULL_X_W + 0.12, -0.5, cz + 1.6),
              (0.04, 1.40, 1.30), COL_LEADED_GLASS)
     # Leaded-glass lattice (vertical mullions)
     for i in range(3):
         my = -0.5 - 0.55 + i * 0.55
         make_box(f"T17_DeepWindow_MullV_{i}",
-                 (HULL_X_W + 0.063, my, cz + 1.6),
+                 (HULL_X_W + 0.123, my, cz + 1.6),
                  (0.02, 0.04, 1.30), COL_BRASS_DARK)
     # Horizontal mullion
     make_box("T17_DeepWindow_MullH",
-             (HULL_X_W + 0.063, -0.5, cz + 1.6),
+             (HULL_X_W + 0.123, -0.5, cz + 1.6),
              (0.02, 1.40, 0.04), COL_BRASS_DARK)
     # Window frame
     make_box("T17_DeepWindow_FrameT",
-             (HULL_X_W + 0.062, -0.5, cz + 2.26),
+             (HULL_X_W + 0.122, -0.5, cz + 2.26),
              (0.02, 1.50, 0.06), COL_WALL_DARK)
 
 
@@ -1468,7 +1468,7 @@ def build_catering_office():
                  (0.001, 0.10, 0.04), COL_PAPER_AGED)
     # A wall calendar
     make_box("Cat_WallCalendar",
-             (-5.94, -1.0, cz + 1.70),
+             (-5.89, -1.0, cz + 1.70),
              (0.02, 0.50, 0.60), COL_PAPER)
     # An office chair
     make_box("Cat_OfficeChair_Seat",

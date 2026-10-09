@@ -136,7 +136,7 @@ def build_retail_counter():
 
 def build_pegboard_walls():
     # Tackle pegboards along the W and E walls
-    for side, wx, sign in [("W", -ROOM_W/2.0 + 0.06, +1), ("E", +ROOM_W/2.0 - 0.06, -1)]:
+    for side, wx, sign in [("W", -ROOM_W/2.0 + 0.12, +1), ("E", +ROOM_W/2.0 - 0.12, -1)]:   # on the faces (2026-10-09)
         make_box(f"Pegboard_{side}", (wx, ROOM_D/2.0 + 1.5, 1.60),
                  (0.04, 3.00, 1.40), COL_PEGBOARD)
         for ti in range(15):

@@ -212,14 +212,14 @@ def build_wall_dressing():
         make_box(f"Bench_Leg_{lx:.1f}", (lx, ny, 0.45), (0.06, 0.5, 0.90), COL_BENCH_DK)
     make_box("Bench_Shelf", (1.4, ny, 0.30), (2.1, 0.45, 0.03), COL_BENCH_DK)
     # Pegboard above the bench with hung tools
-    make_box("Pegboard", (1.4, ROOM_D - 0.04, 1.65), (2.0, 0.03, 0.95), COL_PEG)
-    make_box("Peg_Hammer_Handle", (0.8, ROOM_D - 0.07, 1.60), (0.035, 0.02, 0.30), COL_BENCH)
-    make_box("Peg_Hammer_Head", (0.8, ROOM_D - 0.07, 1.77), (0.14, 0.03, 0.05), COL_STEEL_DK)
-    make_box("Peg_Wrench", (1.15, ROOM_D - 0.07, 1.62), (0.04, 0.015, 0.26), COL_STEEL)
-    make_cyl("Peg_TapeRoll", (1.5, ROOM_D - 0.09, 1.62), 0.07, 0.04, COL_STEEL_DK,
+    make_box("Pegboard", (1.4, ROOM_D - 0.115, 1.65), (2.0, 0.03, 0.95), COL_PEG)
+    make_box("Peg_Hammer_Handle", (0.8, ROOM_D - 0.145, 1.60), (0.035, 0.02, 0.30), COL_BENCH)
+    make_box("Peg_Hammer_Head", (0.8, ROOM_D - 0.145, 1.77), (0.14, 0.03, 0.05), COL_STEEL_DK)
+    make_box("Peg_Wrench", (1.15, ROOM_D - 0.145, 1.62), (0.04, 0.015, 0.26), COL_STEEL)
+    make_cyl("Peg_TapeRoll", (1.5, ROOM_D - 0.15, 1.62), 0.07, 0.04, COL_STEEL_DK,
              segments=10, axis='Y')
-    make_box("Peg_Saw", (1.95, ROOM_D - 0.07, 1.60), (0.30, 0.015, 0.10), COL_STEEL)
-    make_box("Peg_Saw_Handle", (2.12, ROOM_D - 0.07, 1.60), (0.08, 0.02, 0.12), COL_BENCH_DK)
+    make_box("Peg_Saw", (1.95, ROOM_D - 0.145, 1.60), (0.30, 0.015, 0.10), COL_STEEL)
+    make_box("Peg_Saw_Handle", (2.12, ROOM_D - 0.145, 1.60), (0.08, 0.02, 0.12), COL_BENCH_DK)
     # Paint-can shelf on the west wall
     make_box("PaintShelf", (-ROOM_W / 2.0 + 0.20, 4.6, 1.35), (0.36, 1.4, 0.03), COL_BENCH_DK)
     for pi in range(4):

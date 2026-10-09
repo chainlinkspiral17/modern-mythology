@@ -107,7 +107,7 @@ def build_cases():
 
 def build_setlist_stickers():
     # Taped setlist on the east wall by the door.
-    make_box("Setlist_Paper", (1.95, 0.90, 1.45), (0.02, 0.24, 0.32), P.PAPER)
+    make_box("Setlist_Paper", (1.89, 0.90, 1.45), (0.02, 0.24, 0.32), P.PAPER)
     for li in range(6):
         make_box(f"Setlist_Line_{li}", (1.8984, 0.90, 1.58 - li*0.05), (0.002, 0.18, 0.012), (0.20,0.18,0.16,1.0))
     for ti, (ty, tz) in enumerate([(0.80,1.62),(1.02,1.55),(0.86,1.32)]):

@@ -158,6 +158,23 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-10-09 · buried_decor_audit: decor must sit IN FRONT of its wall
+
+- A room read bare because its dressing was inside its walls. A 20 cm
+  wall's room face is at `ROOM_W/2 - 0.10`; a poster placed at
+  `ROOM_W/2 - 0.06` is invisible. Support is satisfied (it touches the
+  wall), overlap is satisfied (it is in its own wall), window_backing does
+  not look at it. Three dozen builders carried it.
+- The gate: any DECOR-named part (poster, board, sign, mirror, clock,
+  calendar, pennant, foam, flag, jersey…) whose box lies ENTIRELY inside
+  a wall part's box. Hidden-by-design backs (`*_Back`) are excluded.
+- A fix moves the whole cluster (board + pins + text) as one, then
+  re-seats any text or tool that the move left hanging off its board (the
+  support gate flags those).
+- The same error hides DOORS and WINDOWS in solid walls. A door needs to
+  sit proud of the room face; a window needs a cut opening, which is
+  a different fix.
+
 ### 2026-10-08 · a sloped prism records as its bounding box: split it at the wall line
 
 - The recorder stores `make_prism` (and `make_rot_box`, `make_tube`) as an

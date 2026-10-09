@@ -243,14 +243,14 @@ def build_office():
 def build_retail():
     """Small-parts retail: bearings/trucks/wheels/wax pegwall on the
     E wall, plus the waiting bench under the front window."""
-    make_box("Parts_Pegboard", (4.44, 4.0, 1.35), (0.05, 2.00, 0.95), (0.62, 0.56, 0.46, 1.0))
+    make_box("Parts_Pegboard", (4.375, 4.0, 1.35), (0.05, 2.00, 0.95), (0.62, 0.56, 0.46, 1.0))
     for r in range(3):
         for c in range(5):
             py = 3.2 + c * 0.40
             pz = 1.05 + r * 0.30
-            make_box(f"Part_{r}_{c}", (4.38, py, pz), (0.07, 0.16, 0.14),
+            make_box(f"Part_{r}_{c}", (4.315, py, pz), (0.07, 0.16, 0.14),
                      [(0.72, 0.26, 0.22, 1.0), COL_STEEL, (0.86, 0.72, 0.26, 1.0)][(r + c) % 3])
-            make_cyl(f"Parts_Peg_{r}_{c}", (4.395, py, pz + 0.09), 0.005, 0.05, COL_STEEL, axis='X', segments=5)
+            make_cyl(f"Parts_Peg_{r}_{c}", (4.33, py, pz + 0.09), 0.005, 0.05, COL_STEEL, axis='X', segments=5)
     # Wheels in a low bin (draft 3: the bin off the east wall; the
     # wheels as wheels — rounded edges, a bearing seat)
     make_chamfer_box("Wheel_Bin", (4.1, 2.4, 0.275), (0.55, 0.55, 0.55), COL_WOOD)   # on the floor

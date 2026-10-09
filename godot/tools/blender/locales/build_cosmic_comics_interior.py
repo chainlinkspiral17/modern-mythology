@@ -216,7 +216,7 @@ def build_posters():
         py = 1.0 + pi*2.0
         make_faded_poster(f"Poster_W_{pi}", (-ROOM_W/2.0+0.05 + 0.0535, py, 1.70), palette={"body": COL_ACCENT}, into_room=+1)
     # Two more posters flanking the counter on the east wall
-    for pi, py in enumerate([4.6, 6.4]):
+    for pi, py in enumerate([6.6, 7.2]):   # (2026-10-09: the first hung behind the manga wall)
         make_faded_poster(f"Poster_E_{pi}", (ROOM_W/2.0-0.05 - 0.0535, py, 1.80),
                           palette={"body": HERO_COLS[pi % len(HERO_COLS)]}, into_room=-1)
 
@@ -310,8 +310,8 @@ def build_hero_props():
     # Back-office doorway + the one-way mirror beside it (N wall)
     from _props.structure import make_frame_ring
     make_frame_ring("Office_Doorframe", (3.6, ROOM_D - 0.13, 1.05), (1.10, 0.06, 2.12), wood, bar=0.075)
-    make_box("OneWay_Frame", (1.6, 7.95, 1.70), (1.30, 0.06, 1.00), (0.30, 0.26, 0.22, 1.0))
-    make_box("OneWay_Mirror", (1.6, 7.92, 1.70), (1.20, 0.04, 0.90), (0.46, 0.52, 0.56, 1.0))
+    make_box("OneWay_Frame", (1.6, 7.87, 1.70), (1.30, 0.06, 1.00), (0.30, 0.26, 0.22, 1.0))
+    make_box("OneWay_Mirror", (1.6, 7.835, 1.70), (1.20, 0.04, 0.90), (0.46, 0.52, 0.56, 1.0))
     # The small bench by the front window (Rick, 2018, for waiting kids)
     make_chamfer_box("Window_Bench", (-3.0, 1.05, 0.42), (1.60, 0.42, 0.06), wood)
     for lx in (-3.65, -2.35):

@@ -300,12 +300,12 @@ def build_bedroom():
         # 2026-09-25: at bx -1.0 the bed's foot stood across the bedroom
         # door's swing; against the W wall now (its east edge at -0.75 is
         # the partition's end, where the door opening starts)
-        bx, by = -1.5, ROOM_D - 0.99
+        bx, by = -1.5, ROOM_D - 1.15   # (2026-10-09: the bed's head and headboard stood 8 cm into the N wall)
         # the shared bed, rose duvet made up (2026-09-07); her head- and footboards stay
         make_bed("Bed", bx, by, head="+Y", w=1.50, d=1.94, style="frame",
                  frame_col=(0.42, 0.30, 0.20, 1.0), mattress_col=(0.92, 0.86, 0.78, 1.0),
                  blanket_col=(0.72, 0.46, 0.52, 1.0), pillow_col=(0.98, 0.94, 0.90, 1.0), pillows=2, made=True, headboard=False)
-        make_chamfer_box("Bed_Headboard", (bx, by+1.00, 0.66), (1.54, 0.08, 0.66), (0.40, 0.28, 0.18, 1.0), chamfer=0.012)
+        make_chamfer_box("Bed_Headboard", (bx, by+1.01, 0.66), (1.54, 0.08, 0.66), (0.40, 0.28, 0.18, 1.0), chamfer=0.012)
         make_chamfer_box("Bed_Footboard", (bx, by-0.98, 0.42), (1.54, 0.08, 0.34), (0.40, 0.28, 0.18, 1.0), chamfer=0.012)
         # vol7 interlude ii (2026-09-03): "Her thigh has charcoal on it in the
         # shape of three letters: S U N ... There is no charcoal in the
@@ -319,7 +319,7 @@ def build_bedroom():
                    (0.66, 0.52, 0.24, 1.0), segments=8)
         make_box("Clock", (bx+0.95, by+0.7, 0.66), (0.16, 0.10, 0.10), P.METAL_BLACK)
         # Thermostat above the bed (reads 61)
-        make_box("Thermostat", (bx, ROOM_D-0.06, 1.85), (0.14, 0.05, 0.10), (0.88, 0.86, 0.82, 1.0))
+        make_box("Thermostat", (bx, ROOM_D-0.125, 1.85), (0.14, 0.05, 0.10), (0.88, 0.86, 0.82, 1.0))
     with shifted(globals(), -1.0, 0.55, ROOM_W=OLD_W, ROOM_D=OLD_D):   # by the bedroom door
         # The small side table just OUTSIDE the bedroom door (Kai's cup)
         make_box("Hall_Table", (-1.05, 2.78, 0.34), (0.36, 0.30, 0.68), COL_WOOD)   # west of the door, on the partition (2026-09-25: it stood in the door's swing)
@@ -526,9 +526,9 @@ def build_wear_personality_2026_08():
     # The thermostat reads what it reads; the draft towel at the
     # door base is how a cold apartment answers its own door.
     with shifted(globals(), 1.0, 0.3, ROOM_W=OLD_W, ROOM_D=OLD_D):   # the E wall
-        make_box("Thermostat_Body", (2.46, 2.2, 1.45), (0.035, 0.14, 0.10),
+        make_box("Thermostat_Body", (2.382, 2.2, 1.45), (0.035, 0.14, 0.10),
                  (0.86, 0.84, 0.78, 1.0))
-        make_box("Thermostat_Needle", (2.44, 2.19, 1.45), (0.008, 0.05, 0.012),
+        make_box("Thermostat_Needle", (2.36, 2.19, 1.45), (0.008, 0.05, 0.012),
                  (0.72, 0.24, 0.18, 1.0))
     make_box("Wear_DraftTowel", (0.60, 0.14, 0.035), (0.85, 0.14, 0.07),
              (0.55, 0.50, 0.42, 1.0))
@@ -694,7 +694,7 @@ def build_draft4_2026_09():
     # ── one over the counter with nothing in it (the grinder is a hand grinder) ──
     make_wall_outlet("Outlet_W_1", (-ROOM_W / 2.0, 2.05), axis='Y', face_sign=1, z=1.10, aged=True)
     # ── BEDROOM WEAR · her side of the bed ──
-    bx, by = -2.5, ROOM_D - 0.99   # the bed against the W wall (2026-10-09: the bigger room)
+    bx, by = -2.5, ROOM_D - 1.15   # the bed against the W wall (2026-10-09: the bigger room)
     make_chamfer_box("Wear_HerSide", (bx - 0.36, by + 0.05, 0.5935), (0.56, 0.95, 0.004), (0.66, 0.42, 0.48, 1.0), chamfer=0.002)
     make_cyl("Wear_CupRing_N", (bx + 1.02, by + 0.60, 0.603), 0.040, 0.003, (0.36, 0.25, 0.15, 1.0), segments=10)
     # her slippers at the foot of the bed, her side — INSIDE the bedroom

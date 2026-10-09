@@ -22,7 +22,7 @@ from _props.detail import (make_traffic_wear, make_floor_stain,
 
 ROOM_W = 4.0; ROOM_D = 4.5; CEIL = 2.6
 # Crisp white walls — the room is a shrine to the pitch. Green + red accents.
-PAL_WALL = {"wall": (0.90, 0.91, 0.87, 1.0), "baseboard": (0.24, 0.52, 0.32, 1.0)}
+PAL_WALL = {"wall": (0.84, 0.85, 0.81, 1.0), "baseboard": (0.24, 0.52, 0.32, 1.0)}
 COL_FLOOR = (0.58, 0.50, 0.40, 1.0); COL_SEAM = (0.32, 0.24, 0.16, 1.0); COL_WOOD = (0.46, 0.34, 0.22, 1.0)
 COL_ACCENT = (0.20, 0.56, 0.34, 1.0)     # pitch green
 COL_RED = (0.78, 0.20, 0.20, 1.0)        # Mexico red
@@ -79,8 +79,8 @@ def build_posters():
     # A poster of a favorite striker (west wall)
     for pi in range(2):
         px = -ROOM_W/2.0+0.05
-        py = 1.0 + pi*1.6
-        make_faded_poster(f"Poster_Striker_{pi}", (px + 0.0535, py, 1.55), into_room=+1)
+        py = 0.95 + pi*1.25
+        make_faded_poster(f"Poster_Striker_{pi}", (px + 0.0535, py, 1.55), into_room=+1, kind="sports")
 
 def build_win():
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
@@ -127,15 +127,24 @@ def build_dressing():
     for ci, cx in enumerate([-0.2, 0.06]):
         make_box(f"Cleat_{ci}", (cx, 0.5, 0.06), (0.12, 0.30, 0.12), COL_ACCENT)
         make_box(f"CleatSole_{ci}", (cx, 0.5, 0.01), (0.13, 0.31, 0.03), P.METAL_BLACK)
-    # Jerseys + scarf pinned to the north wall
-    for ji, (jy, jc) in enumerate([(-0.7, COL_ACCENT), (0.7, COL_WHITE)]):
-        make_box(f"Jersey_{ji}", (jy, ROOM_D-0.06, 1.7), (0.60, 0.03, 0.80), jc)
-        make_box(f"Jersey_{ji}_Number", (jy, ROOM_D-0.09, 1.7), (0.20, 0.01, 0.30), COL_RED)
-    make_box("Scarf", (0.0, ROOM_D-0.06, 2.25), (1.40, 0.03, 0.18), COL_RED)
-    # Mexico / club flag on the west wall — green/white/red bands side by side
-    fx = -ROOM_W/2.0 + 0.06
+    # Jerseys pinned to the EAST wall south of the dresser, the scarf over
+    # the dresser (2026-10-09: they hung 4 cm INSIDE the north wall — and
+    # across its window — so the room's soccer read nowhere)
+    ex = ROOM_W/2.0 - 0.10
+    for ji, (jy, jc) in enumerate([(1.15, COL_ACCENT), (1.90, COL_WHITE)]):
+        make_box(f"Jersey_{ji}", (ex - 0.016, jy, 1.70), (0.03, 0.60, 0.80), jc)
+        make_box(f"Jersey_{ji}_Sleeves", (ex - 0.016, jy, 1.98), (0.03, 0.86, 0.22), jc)
+        make_box(f"Jersey_{ji}_Number", (ex - 0.036, jy, 1.66), (0.01, 0.20, 0.30), COL_RED)
+        make_box(f"Jersey_{ji}_Tack", (ex - 0.034, jy, 2.08), (0.006, 0.03, 0.03), P.METAL_BLACK)
+    make_box("Scarf", (ex - 0.016, ROOM_D-1.3, 2.05), (0.03, 1.10, 0.18), COL_RED)
+    for fi in range(2):
+        make_box(f"Scarf_Fringe_{fi}", (ex - 0.016, ROOM_D-1.3 + (fi * 2 - 1) * 0.58, 2.05), (0.03, 0.06, 0.16), COL_WHITE)
+    # Mexico / club flag on the west wall over the bed's side — the bands
+    # on the wall face (2026-10-09: they stood 4 cm inside the wall)
+    fx = -ROOM_W/2.0 + 0.10 + 0.011
     for bi, bc in enumerate([COL_ACCENT, COL_WHITE, COL_RED]):
-        make_box(f"Flag_Band_{bi}", (fx, 3.0+bi*0.32, 1.7), (0.02, 0.30, 0.90), bc)
+        make_box(f"Flag_Band_{bi}", (fx, 3.06+bi*0.32, 1.62), (0.02, 0.32, 0.90), bc)
+    make_cyl("Flag_Crest", (fx + 0.012, 3.38, 1.62), 0.10, 0.004, (0.62, 0.46, 0.20, 1.0), axis='X', segments=12)
     # Duffel bag by the door
     make_cyl("Duffel", (0.9, 0.5, 0.22), 0.24, 0.72, COL_ACCENT, axis='Y', segments=10)
     make_box("Duffel_Handle", (0.9, 0.5, 0.40), (0.30, 0.04, 0.06), P.METAL_BLACK)

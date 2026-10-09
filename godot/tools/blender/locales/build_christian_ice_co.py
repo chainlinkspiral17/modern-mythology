@@ -501,11 +501,11 @@ def build_ice_tools_and_crates():
                      (0.42, 0.005, 0.05), (0.44, 0.32, 0.20, 1.0))
 
     # Interior services price board on the E wall
-    bx = +ROOM_W/2.0 - 0.06
+    bx = +ROOM_W/2.0 - 0.12   # on the wall's face (2026-10-09)
     make_box("Services_Board_BG", (bx, 3.40, 1.90), (0.04, 1.10, 0.80), (0.20, 0.28, 0.34, 1.0))
-    make_box("Services_Board_Title", (bx - 0.02 - 0.0231, 3.40, 2.18), (0.005, 0.90, 0.12), COL_NEON_ICE)
+    make_box("Services_Board_Title", (bx - 0.0225, 3.40, 2.18), (0.005, 0.90, 0.12), COL_NEON_ICE)
     for li in range(4):
-        make_box(f"Services_Board_Row_{li}", (bx - 0.02 - 0.0231, 3.40, 2.00 - li * 0.16),
+        make_box(f"Services_Board_Row_{li}", (bx - 0.0225, 3.40, 2.00 - li * 0.16),
                  (0.005, 0.86, 0.05), P.PAPER)
 
 

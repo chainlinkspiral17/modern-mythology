@@ -94,10 +94,10 @@ def build_tow_truck():
 
 def build_parts_pegboard_and_workbench():
     # N wall: pegboard with tool silhouettes
-    make_box("Pegboard", (0.0, ROOM_D-0.06, 2.20), (4.00, 0.02, 1.40), COL_PEGBOARD)
+    make_box("Pegboard", (0.0, ROOM_D-0.11, 2.20), (4.00, 0.02, 1.40), COL_PEGBOARD)
     for ti in range(10):
         tx = -1.80 + ti * 0.40
-        make_box(f"Peg_Tool_{ti}", (tx, ROOM_D-0.10, 2.20),
+        make_box(f"Peg_Tool_{ti}", (tx, ROOM_D-0.1225, 2.20),
                  (0.06, 0.005, 0.36), (0.18, 0.18, 0.20, 1.0))
     # Workbench below
     make_box("Bench_Top",  (0.0, ROOM_D-0.50, 0.96), (3.60, 0.50, 0.06), (0.22, 0.16, 0.12, 1.0))

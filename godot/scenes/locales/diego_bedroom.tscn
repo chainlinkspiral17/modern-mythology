@@ -147,7 +147,7 @@ sky = SubResource("Sky_Win")
 background_color = Color(0.08, 0.08, 0.10, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.74, 0.78, 0.86, 1)
-ambient_light_energy = 0.78
+ambient_light_energy = 0.62
 fog_enabled = true
 fog_light_color = Color(0.42, 0.46, 0.62, 1)
 fog_light_energy = 0.4
@@ -172,7 +172,7 @@ environment = SubResource("Env_Locale")
 [node name="Key_DeskLamp" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 3, 3, 1)
 light_color = Color(0.86, 0.88, 0.96, 1)
-light_energy = 1.0
+light_energy = 0.80
 shadow_enabled = false
 
 [node name="Fill_Window" type="DirectionalLight3D" parent="."]

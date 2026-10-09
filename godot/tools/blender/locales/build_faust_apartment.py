@@ -241,7 +241,7 @@ def build_fixtures():
     make_box("Bulb_Cord", (0.0, 2.5, CEIL - 0.14), (0.02, 0.02, 0.28), COL_FRAME)
     make_cyl("Bulb", (0.0, 2.5, CEIL - 0.32), 0.055, 0.10, COL_LAMP, segments=8)
     # Wall clock, N wall — the 4am prop
-    make_cyl("Clock_Face", (0.8, ROOM_D - 0.06, 2.05), 0.17, 0.05, COL_CLOCK,
+    make_cyl("Clock_Face", (0.8, ROOM_D - 0.125, 2.05), 0.17, 0.05, COL_CLOCK,
              segments=14, axis='Y')
     make_box("Clock_Hand_H", (0.76, ROOM_D - 0.10, 2.08), (0.09, 0.015, 0.02), COL_FRAME)
     make_box("Clock_Hand_M", (0.8, ROOM_D - 0.10, 2.12), (0.02, 0.015, 0.13), COL_FRAME)

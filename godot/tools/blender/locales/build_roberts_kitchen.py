@@ -264,7 +264,7 @@ def build_living_room_tv_corner():
 def build_decor():
     make_wall_clock("Clock", (-3.900, 4.0, 2.10),
                     frozen_hour=8, frozen_min=15, facing='+X')
-    make_calendar("Calendar", (-3.95, 4.9, 1.60))   # (2026-10-03: the west wall's south half is the living room)
+    make_calendar("Calendar", (-3.8975, 4.9, 1.60))   # (2026-10-03: the west wall's south half is the living room)
     make_faded_poster("Poster", (3.8965, 2.9, 1.70), into_room=-1)
     make_floor_plant("Plant", (-3.55, 5.35, 0.0),
                      palette={"leaf": COL_CURTAIN_SAGE,

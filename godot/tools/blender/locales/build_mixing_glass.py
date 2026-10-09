@@ -63,7 +63,7 @@ def build_u_bar():
 
 def build_backbar():
     # Mirrored backbar wall N of bar with bottle racks
-    make_box("Backbar_Mirror", (0.0, ROOM_D-0.08, 1.80), (3.20, 0.04, 1.40), (0.74, 0.78, 0.82, 0.55))
+    make_box("Backbar_Mirror", (0.0, ROOM_D-0.12, 1.80), (3.20, 0.04, 1.40), (0.74, 0.78, 0.82, 0.55))
     make_box("Backbar_Counter", (0.0, ROOM_D-0.30, 1.10), (3.20, 0.40, 0.06), COL_BACK_WOOD)
     # Three shelves of bottles
     for si in range(3):

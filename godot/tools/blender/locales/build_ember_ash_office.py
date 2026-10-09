@@ -396,19 +396,19 @@ def build_back_stair_opening():
 def build_wall_photo_and_clock():
     # Wall photograph of an early ember-and-ash crew on the north
     # wall (above the desk, behind Antonio's chair)
-    make_box("CrewPhoto_Frame", (-0.50, ROOM_D - 0.05, 1.94),
+    make_box("CrewPhoto_Frame", (-0.50, ROOM_D - 0.12, 1.94),
              (0.72, 0.04, 0.50), COL_DESK_LEG)
-    make_box("CrewPhoto_Mat", (-0.50, ROOM_D - 0.06 - 0.0431, 1.94),
+    make_box("CrewPhoto_Mat", (-0.50, ROOM_D - 0.1425, 1.94),
              (0.66, 0.005, 0.44), COL_PAPER)
     # 5 darker rectangles · stylized crew members in the photo
     for ci in range(5):
         cx_off = -0.30 + ci * 0.15
         make_box("CrewPhoto_Person_%d" % ci,
-                 (-0.50 + cx_off, ROOM_D - 0.063, 1.94),
+                 (-0.50 + cx_off, ROOM_D - 0.1455, 1.94),
                  (0.06, 0.001, 0.16),
                  (0.38, 0.30, 0.22, 1.0))
     # Brass plaque under the photo
-    make_box("CrewPhoto_Plaque", (-0.50, ROOM_D - 0.06 - 0.0421, 1.66),
+    make_box("CrewPhoto_Plaque", (-0.50, ROOM_D - 0.1015, 1.66),
              (0.36, 0.003, 0.04), COL_BRASS)
 
     # Wall clock — stopped at the canonical morning hour

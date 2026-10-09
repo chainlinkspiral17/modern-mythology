@@ -137,8 +137,8 @@ def build_hero_props():
     the dumpster Vince's sedan waits near, the vape back-bar, the
     security dome, the pole sign."""
     # Restroom alcove off the N wall: door, tiled wall, toilet, pipe
-    make_box("Restroom_Door", (-2.4, ROOM_D-0.05, 1.03), (0.80, 0.06, 2.05), (0.62, 0.60, 0.56, 1.0))
-    make_box("Restroom_Plaque", (-2.4, ROOM_D-0.09, 1.75), (0.22, 0.02, 0.10), (0.30, 0.34, 0.44, 1.0))
+    make_box("Restroom_Door", (-2.4, ROOM_D-0.13, 1.03), (0.80, 0.06, 2.05), (0.62, 0.60, 0.56, 1.0))
+    make_box("Restroom_Plaque", (-2.4, ROOM_D-0.165, 1.75), (0.22, 0.02, 0.10), (0.30, 0.34, 0.44, 1.0))
     # Alcove built as an attached box behind the wall
     make_box("Restroom_Shell", (-2.4, ROOM_D+0.95, 1.20), (2.0, 1.7, 2.40), (0.66, 0.68, 0.66, 1.0))   # behind the N wall, not in it (2026-09-24)
     make_box("Restroom_Tile", (-2.4, ROOM_D+1.62, 1.10), (1.8, 0.05, 2.0), (0.78, 0.82, 0.80, 1.0))

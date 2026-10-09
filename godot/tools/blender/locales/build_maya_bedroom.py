@@ -164,7 +164,7 @@ def build_dressing():
                    [(0.02, 0.0), (0.03, 0.01), (0.032, 0.06 + 0.01 * ti), (0.018, 0.09 + 0.01 * ti), (0.012, 0.11 + 0.01 * ti), (0.016, 0.125 + 0.01 * ti), (0.0, 0.13 + 0.01 * ti)],
                    tc, segments=8)
     # Bulletin board (cork) with a scatter of photos + concert tickets, west wall
-    bbx = -ROOM_W/2.0 + 0.06
+    bbx = -ROOM_W/2.0 + 0.12   # on the wall's face (2026-10-09: the corkboard and its pins stood inside the wall)
     make_box("Corkboard", (bbx, ROOM_D-1.0, 1.55), (0.04, 1.10, 0.80), (0.62, 0.46, 0.30, 1.0))
     for pi in range(6):
         col = (0.90, 0.88, 0.82, 1.0) if pi % 2 == 0 else P.SNACK_TINTS[pi % len(P.SNACK_TINTS)]
@@ -206,7 +206,7 @@ def build_dressing():
     for i in range(8):
         make_cyl(f"Fairy_{i}", (-1.4+i*0.4, ROOM_D-0.08, 2.05), 0.028, 0.028, (1.0, 0.84, 0.6, 1.0), segments=6)
         if i < 7:
-            make_tube(f"Fairy_String_{i}", [(-1.4+i*0.4, ROOM_D-0.07, 2.06), (-1.2+i*0.4, ROOM_D-0.07, 2.02), (-1.0+i*0.4, ROOM_D-0.07, 2.06)], 0.003, (0.30, 0.30, 0.28, 1.0), segments=4)
+            make_tube(f"Fairy_String_{i}", [(-1.4+i*0.4, ROOM_D-0.12, 2.06), (-1.2+i*0.4, ROOM_D-0.12, 2.02), (-1.0+i*0.4, ROOM_D-0.12, 2.06)], 0.003, (0.30, 0.30, 0.28, 1.0), segments=4)
 
 def build_hero_props():
     """2026-08-03 hero-prop pass. THE LOOSE THIRD FLOORBOARD —

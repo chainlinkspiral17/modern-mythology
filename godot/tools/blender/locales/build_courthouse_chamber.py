@@ -561,8 +561,8 @@ def build_arraignment_props():
     """2026-08-03 tail pass: the side door the marshals use, the
     clerk's docket screen, Dean's manila folder in the second
     gallery row."""
-    make_box("Side_Door", (ROOM_W/2.0-0.06, 9.20, 1.05), (0.06, 0.95, 2.10), COL_WOOD_DARK)
-    make_cyl("Side_Door_Knob", (ROOM_W/2.0-0.11, 8.85, 1.02), 0.03, 0.04, (0.74, 0.58, 0.28, 1.0), axis='X', segments=8)
+    make_box("Side_Door", (ROOM_W/2.0-0.13, 9.20, 1.05), (0.06, 0.95, 2.10), COL_WOOD_DARK)
+    make_cyl("Side_Door_Knob", (ROOM_W/2.0-0.18, 8.85, 1.02), 0.03, 0.04, (0.74, 0.58, 0.28, 1.0), axis='X', segments=8)
     make_box("Clerk_Screen", (-1.55, 10.05, 1.15), (0.42, 0.06, 0.30), (0.14, 0.15, 0.17, 1.0))
     make_box("Clerk_Screen_Doc", (-1.55, 10.01, 1.15), (0.34, 0.01, 0.22), (0.86, 0.88, 0.84, 1.0))
     make_box("Deans_Folder", (-1.90, 2.70, 0.50), (0.30, 0.22, 0.02), (0.82, 0.72, 0.50, 1.0))

@@ -76,13 +76,13 @@ def build_register_counter():
                  (0.05, 0.06, 0.012), (0.70, 0.18, 0.12, 1.0))
 
 def build_menu_board():
-    mx, my, mz = ROOM_W/4.0, ROOM_D-0.06, 2.05
+    mx, my, mz = ROOM_W/4.0, ROOM_D-0.12, 2.05   # on the wall's face (2026-10-09: the menu board stood inside the wall)
     make_box("MenuBoard_Frame", (mx, my+0.01, mz), (2.34, 0.02, 1.02), P.METAL_STEEL)
     make_box("MenuBoard", (mx, my, mz), (2.24, 0.04, 0.92), (0.14,0.13,0.12,1.0))
     row_cols = [(0.98,0.86,0.44,1.0),(0.92,0.62,0.28,1.0),(0.86,0.44,0.30,1.0),(0.72,0.82,0.60,1.0)]
     for col_i in range(2):
         for row in range(4):
-            make_box(f"Menu_{col_i}_{row}", (mx-0.55+col_i*1.10, my-0.03 - 0.0131, mz+0.28-row*0.18),
+            make_box(f"Menu_{col_i}_{row}", (mx-0.55+col_i*1.10, my-0.0225, mz+0.28-row*0.18),
                      (0.80, 0.005, 0.05), row_cols[row])
 
 def build_salsa_station():
@@ -182,7 +182,7 @@ def build_drive_thru_2026_08():
     make_box("DriveThru_Lane", (ROOM_W/2.0+1.5, 4.2, -0.02), (2.6, 5.5, 0.04), (0.30, 0.30, 0.32, 1.0))
 
 def build_neon_sign():
-    sx = ROOM_W/2.0-0.06; sy = ROOM_D/2.0; sz = 2.0
+    sx = ROOM_W/2.0-0.145; sy = ROOM_D/2.0; sz = 2.0   # the neon off the wall's face (2026-10-09: inside the wall)
     pink=(0.96,0.24,0.62,1.0); cyan=(0.30,0.82,0.92,1.0); amber=(1.0,0.72,0.28,1.0)
     make_box("Neon_Board", (sx+0.03, sy, sz), (0.03, 1.80, 0.92), (0.10,0.08,0.10,1.0))
     make_cyl("Neon_Top", (sx, sy, sz+0.38), 0.02, 1.70, pink, axis='Y')

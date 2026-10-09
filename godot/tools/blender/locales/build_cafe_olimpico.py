@@ -133,7 +133,7 @@ def build_pennants_and_decor():
     pennant_colors = [COL_PENNANT_BLUE, COL_PENNANT_RED, COL_PENNANT_BLUE, COL_PENNANT_RED, COL_PENNANT_BLUE]
     for pi, col in enumerate(pennant_colors):
         px = -2.0 + pi*1.0
-        make_box(f"Pennant_{pi}", (px, ROOM_D-0.04, 2.50), (0.40, 0.04, 0.40), col)
+        make_box(f"Pennant_{pi}", (px, ROOM_D-0.12, 2.50), (0.40, 0.04, 0.40), col)
     make_wall_clock("Clock", (0.0, 5.900, 2.10), frozen_hour=10, frozen_min=30, facing='-Y')
     make_faded_poster("Poster_W", (-3.8965, 3.0, 1.80), into_room=+1)
 

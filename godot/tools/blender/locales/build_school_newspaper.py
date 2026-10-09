@@ -109,17 +109,17 @@ def build_layout_island():
 
 def build_pinboard():
     """W wall: cork board with pinned page mock-ups."""
-    make_box("Board_Frame", (-3.94, 3.0, 1.55), (0.06, 3.2, 1.5), COL_BOARD_FR)
-    make_box("Board_Cork", (-3.91, 3.0, 1.55), (0.04, 3.0, 1.3), COL_BOARD_CORK)
+    make_box("Board_Frame", (-3.87, 3.0, 1.55), (0.06, 3.2, 1.5), COL_BOARD_FR)
+    make_box("Board_Cork", (-3.84, 3.0, 1.55), (0.04, 3.0, 1.3), COL_BOARD_CORK)
     pins = [(2.0, 1.85), (2.6, 1.35), (3.2, 1.9), (3.8, 1.5), (2.3, 1.05), (3.5, 1.1)]
     for i, (py, pz) in enumerate(pins):
         col = COL_PAPER if i % 2 else COL_PAPER_DK
-        make_box(f"Pinned_{i}", (-3.88, py, pz), (0.02, 0.30, 0.40), col)
+        make_box(f"Pinned_{i}", (-3.81, py, pz), (0.02, 0.30, 0.40), col)
     # Jay Rose's comic strip — DRIFTWOOD — a horizontal four-panel
     # strip pinned along the board's top edge
-    make_box("DriftWood_Strip", (-3.87, 2.9, 2.10), (0.02, 1.30, 0.28), COL_PAPER)
+    make_box("DriftWood_Strip", (-3.80, 2.9, 2.10), (0.02, 1.30, 0.28), COL_PAPER)
     for p in range(4):
-        make_box(f"DriftWood_Panel_{p}", (-3.86, 2.42 + p * 0.32, 2.10),
+        make_box(f"DriftWood_Panel_{p}", (-3.79, 2.42 + p * 0.32, 2.10),
                  (0.015, 0.26, 0.22), COL_PAPER_DK)
 
 
@@ -153,7 +153,7 @@ def build_perimeter():
         make_box(f"Stack_{i}", (-3.1 + i * 0.65, 0.35, 0.90 + h / 2.0),
                  (0.42, 0.34, h), COL_PAPER if i % 2 else COL_PAPER_DK)
     # Wall clock over the chalkboard
-    make_cyl("Clock", (1.9, ROOM_D - 0.07, 2.45), 0.18, 0.05, COL_CLOCK,
+    make_cyl("Clock", (1.9, ROOM_D - 0.125, 2.45), 0.18, 0.05, COL_CLOCK,
              segments=14, axis='Y')
     make_box("Clock_Hand_H", (1.86, ROOM_D - 0.11, 2.47), (0.09, 0.015, 0.02),
              COL_TYPE)

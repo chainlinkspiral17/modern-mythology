@@ -95,7 +95,7 @@ def build_workbench():
     make_box("Vise_Body", (bx - 0.10, y0 + 0.4, top_z + 0.10), (0.16, 0.20, 0.12), COL_STEEL_DK)
     make_box("Vise_Jaw", (bx - 0.10, y0 + 0.30, top_z + 0.10), (0.16, 0.06, 0.10), COL_STEEL)
     # Pegboard above the bench with tool silhouettes
-    pbx = ROOM_W / 2.0 - 0.06
+    pbx = ROOM_W / 2.0 - 0.115   # on the wall's face (2026-10-09)
     make_box("Pegboard", (pbx, by, 1.62), (0.03, y1 - y0 - 0.2, 0.9), COL_PEG)
     tool_specs = [(-1.0, 0.5, 0.04), (-0.4, 0.3, 0.03), (0.2, 0.6, 0.05), (0.8, 0.4, 0.03), (1.2, 0.5, 0.06)]
     for ti, (toff, th, tw) in enumerate(tool_specs):

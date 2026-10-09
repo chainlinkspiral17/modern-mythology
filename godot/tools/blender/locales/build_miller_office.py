@@ -206,7 +206,7 @@ def build_wall_dressing():
     """W wall: a framed plat map of the subdivision + framed commendations
     + a family photo (the small domestic thing). A short bookshelf of
     binders under the map. A rug centering the room."""
-    wx = -ROOM_W / 2.0 + 0.05
+    wx = -ROOM_W / 2.0 + 0.115   # on the wall's face (2026-10-09: the map and the commendations hung inside it)
     # Framed subdivision plat map
     make_box("Map_Frame", (wx, 3.4, 1.70), (0.03, 1.30, 0.90), COL_WALNUT_DK)
     make_box("Map_Paper", (wx + 0.012, 3.4, 1.70), (0.01, 1.16, 0.78), COL_MAP)

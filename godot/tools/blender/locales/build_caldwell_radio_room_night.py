@@ -241,7 +241,7 @@ def build_lived_in_2026_10():
     for e, cx in ((-1, 0.88), (1, 2.14 - 0.09)):
         make_box(f"Window_Curtain_{e:+d}", (cx, 0.23, 1.55), (0.16, 0.05, 1.20), (0.82, 0.70, 0.58, 1.0))
     for e in (-1, 1):
-        make_box(f"Window_Curtain_Bracket_{e:+d}", (1.55 + e * 0.66, 0.16, 2.16), (0.02, 0.14, 0.02), (0.70, 0.58, 0.30, 1.0))
+        make_box(f"Window_Curtain_Bracket_{e:+d}", (1.55 + e * 0.59, 0.16, 2.16), (0.02, 0.14, 0.02), (0.70, 0.58, 0.30, 1.0))
     for nm, c, sz in (("W", (WF + 0.012, ROOM_D / 2.0, 2.25), (0.024, ROOM_D - 0.2, 0.04)),
                       ("N", (0.0, NF - 0.012, 2.25), (ROOM_W - 0.2, 0.024, 0.04))):
         make_box(f"Picture_Rail_{nm}", c, sz, walnut)

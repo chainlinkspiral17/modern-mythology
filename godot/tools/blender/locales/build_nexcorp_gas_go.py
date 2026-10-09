@@ -440,9 +440,9 @@ def build_floor_props():
                          0.032, 0.02, (0.76, 0.78, 0.80, 1.0), segments=8)
 
     # Restroom door — west wall, marked with M/W signs
-    make_box("Restroom_Door", (-5.96, 1.4, 1.05),
+    make_box("Restroom_Door", (-5.88, 1.4, 1.05),
              (0.04, 0.90, 2.10), (0.42, 0.30, 0.18, 1.0))
-    make_box("Restroom_Sign", (-5.94, 1.4, 2.30),
+    make_box("Restroom_Sign", (-5.89, 1.4, 2.30),
              (0.02, 0.30, 0.10), (0.96, 0.96, 0.96, 1.0))
 
 

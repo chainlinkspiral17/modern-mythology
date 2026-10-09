@@ -3000,8 +3000,8 @@ def build_hero_props_2026_08():
     make_box("Office_Door_Open", (5.90, 7.2, 1.05), (0.05, 0.85, 2.05), (0.50, 0.40, 0.28, 1.0))
     make_box("Office_Light_Pocket", (5.89, 7.2, 1.30), (0.02, 0.70, 1.70), (0.98, 0.92, 0.72, 1.0))
     # The employee bathroom door, north wall — RESTROOM plaque
-    make_box("Restroom_Door", (3.6, 8.94, 1.03), (0.80, 0.06, 2.05), (0.62, 0.60, 0.56, 1.0))
-    make_box("Restroom_Plaque", (3.6, 8.90, 1.75), (0.24, 0.02, 0.10), (0.30, 0.34, 0.44, 1.0))
+    make_box("Restroom_Door", (3.6, 8.87, 1.03), (0.80, 0.06, 2.05), (0.62, 0.60, 0.56, 1.0))
+    make_box("Restroom_Plaque", (3.6, 8.83, 1.75), (0.24, 0.02, 0.10), (0.30, 0.34, 0.44, 1.0))
     # The layered window decals on the west picture window: lottery,
     # dead cigarette brand, and the TASTE HOME hamburger missing an
     # eye (ported in from the exterior shell where it was hiding)

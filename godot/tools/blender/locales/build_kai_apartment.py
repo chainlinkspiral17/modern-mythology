@@ -113,7 +113,7 @@ def build_hero_props():
     # clear of the window (2026-09-24: once the clock faced the room it overlapped it)
     make_wall_clock("Clock_Kitchen", (0.95, 4.900, 2.05), frozen_hour=7, frozen_min=8, facing='-Y')
     # Bathroom door, E wall ("He showered.")
-    make_box("Bathroom_Door", (2.20, 1.4, 1.03), (0.05, 0.80, 2.05), (0.50, 0.40, 0.28, 1.0))
+    make_box("Bathroom_Door", (2.125, 1.4, 1.03), (0.05, 0.80, 2.05), (0.50, 0.40, 0.28, 1.0))
     make_cyl("Bathroom_Knob", (2.14, 1.10, 1.00), 0.025, 0.03, (0.66, 0.52, 0.24, 1.0), axis='X', segments=8)
 
 

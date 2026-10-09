@@ -123,13 +123,13 @@ def build_dressing():
     for ri in range(5):
         make_box(f"Record_{ri}", (2.07, 0.42+ri*0.07 + 0.600, 0.24), (0.42, 0.02, 0.34), P.SNACK_TINTS[ri % len(P.SNACK_TINTS)])
     # Egg-crate acoustic foam grid on the east wall
-    ex = ROOM_W/2.0 - 0.04
+    ex = ROOM_W/2.0 - 0.11   # on the wall's face (2026-10-09: 6 cm INSIDE the wall — the foam never showed)
     for r in range(4):
         for c in range(5):
             make_box(f"Foam_{r}_{c}", (ex, ROOM_D-1.9+c*0.34, 1.1+r*0.34), (0.02, 0.28, 0.28), COL_FOAM)
     # Lyric sheets pinned to the west wall
     for li in range(4):
-        make_box(f"Lyric_{li}", (-ROOM_W/2.0+0.06, 0.7+(li%2)*0.5, 2.05-(li//2)*0.5), (0.02, 0.24, 0.30), (0.88, 0.84, 0.76, 1.0))
+        make_box(f"Lyric_{li}", (-ROOM_W/2.0+0.11, 0.7+(li%2)*0.5, 2.05-(li//2)*0.5), (0.02, 0.24, 0.30), (0.88, 0.84, 0.76, 1.0))
     # Dresser against the north-east wall
     make_box("Dresser", (ROOM_W/2.0-0.32, ROOM_D-0.55, 0.45), (0.44, 0.9, 0.90), COL_WOOD)   # in the NE corner on both faces (2026-09-25: 2 cm into the E wall, 5 cm into the N)
     for di in range(3):

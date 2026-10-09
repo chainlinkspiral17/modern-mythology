@@ -43,8 +43,8 @@ def build_shell():
     make_box("DoorBell_Arm", (0.55, 0.16, 2.28), (0.03, 0.14, 0.03), COL_STEEL)
     make_cyl("DoorBell", (0.55, 0.26, 2.22), 0.05, 0.07, (0.82, 0.72, 0.42, 1.0), segments=10)
     # BACK DOOR in the N wall's E end (to the alley), mostly closed.
-    make_box("Back_Door", (2.95, ROOM_D-0.06, 1.05), (0.90, 0.06, 2.10), (0.36, 0.30, 0.24, 1.0))
-    make_cyl("Back_Door_Knob", (2.67, ROOM_D-0.12, 1.02), 0.03, 0.04, COL_STEEL, segments=8)
+    make_box("Back_Door", (2.95, ROOM_D-0.13, 1.05), (0.90, 0.06, 2.10), (0.36, 0.30, 0.24, 1.0))
+    make_cyl("Back_Door_Knob", (2.67, ROOM_D-0.19, 1.02), 0.03, 0.04, COL_STEEL, segments=8)
 
 def build_service_counter():
     # Espresso bar running along X in front of the north wall.

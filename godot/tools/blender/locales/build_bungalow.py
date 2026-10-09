@@ -707,7 +707,7 @@ def build_studio_and_editing_desk():
              0.038, 0.02, (0.20, 0.10, 0.06, 1.0), segments=10)
     # Studio acoustic foam panel on the east wall
     make_box("Studio_FoamPanel_1",
-             (INTERIOR_X_E - 0.06, STUDIO_CY + 0.7, 1.60),
+             (INTERIOR_X_E - 0.12, STUDIO_CY + 0.7, 1.60),
              (0.04, 1.20, 0.80), (0.30, 0.30, 0.32, 1.0))
 
 
@@ -1077,10 +1077,10 @@ def build_bathroom():
              0.014, 0.16, COL_METAL_BRASS, segments=8)
     # Mirror over sink (the WHOLE one)
     make_box("Bathroom_Mirror",
-             (INTERIOR_X_W + 0.06, sn_y, 1.45),
+             (INTERIOR_X_W + 0.12, sn_y, 1.45),
              (0.04, 0.80, 0.70), (0.94, 0.96, 0.98, 1.0))
     make_box("Bathroom_Mirror_Frame",
-             (INTERIOR_X_W + 0.062, sn_y, 1.45),
+             (INTERIOR_X_W + 0.11, sn_y, 1.45),
              (0.02, 0.84, 0.74), (0.42, 0.32, 0.20, 1.0))
 
     # Medicine cabinet (built into the wall behind/above the mirror)

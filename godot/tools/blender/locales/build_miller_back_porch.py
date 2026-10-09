@@ -137,9 +137,9 @@ def build_doors():
     make_box("ScreenDoor_Frame", (0.0, 0.0, 1.05), (1.00, 0.04, 2.10), COL_WOOD)
     make_box("ScreenDoor_Mesh", (0.0, 0.0231, 1.05), (0.96, 0.005, 2.00), COL_SCREEN)
     # The door to the HOUSE (north) — Sam knocks on this frame
-    make_box("House_Door_Frame", (-0.9, ROOM_D-0.06, 1.08), (1.04, 0.10, 2.16), COL_WOOD)
-    make_box("House_Door", (-0.9, ROOM_D-0.04, 1.05), (0.90, 0.05, 2.05), (0.50, 0.38, 0.26, 1.0))
-    make_cyl("House_Door_Knob", (-0.55, ROOM_D-0.10, 1.02), 0.03, 0.04, (0.66, 0.52, 0.24, 1.0), axis='Y', segments=8)
+    make_box("House_Door_Frame", (-0.9, ROOM_D-0.15, 1.08), (1.04, 0.10, 2.16), COL_WOOD)
+    make_box("House_Door", (-0.9, ROOM_D-0.125, 1.05), (0.90, 0.05, 2.05), (0.50, 0.38, 0.26, 1.0))
+    make_cyl("House_Door_Knob", (-0.55, ROOM_D-0.17, 1.02), 0.03, 0.04, (0.66, 0.52, 0.24, 1.0), axis='Y', segments=8)
     # The house's lit window onto the porch (vol7: "The porch was lit
     # by the cabin's south window")
     make_box("HouseWin_Frame", (1.60, ROOM_D-0.05, 1.60), (1.10, 0.08, 1.10), COL_WOOD)

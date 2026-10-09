@@ -174,8 +174,8 @@ def build_details():
                  (0.78, 0.72, 0.50, 1.0), segments=8, axis='X')
     # A black-metal poster over the record corner — dark field, pale
     # unreadable logo scrawl
-    make_box("Poster", (2.93, 1.55, 1.75), (0.03, 0.55, 0.75), (0.10, 0.10, 0.11, 1.0))
-    make_box("Poster_Logo", (2.91, 1.55, 1.95), (0.02, 0.40, 0.16), (0.72, 0.72, 0.68, 1.0))
+    make_box("Poster", (2.885, 1.55, 1.75), (0.03, 0.55, 0.75), (0.10, 0.10, 0.11, 1.0))
+    make_box("Poster_Logo", (2.865, 1.55, 1.95), (0.02, 0.40, 0.16), (0.72, 0.72, 0.68, 1.0))
 
 
 def main():

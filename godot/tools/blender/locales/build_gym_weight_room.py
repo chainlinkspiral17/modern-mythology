@@ -129,9 +129,9 @@ def build_dumbbells_and_plates():
             make_cyl(f"DB_{tier}_{i}_Bar", (dx, dy, tz + 0.09), 0.018, 0.26,
                      COL_PLATE_RIM, segments=6, axis='X')
     # Mirror panel above the rack
-    make_box("Mirror", (-ROOM_W / 2.0 + 0.05, 2.4, 1.7), (0.02, 2.6, 1.1), COL_MIRROR)
-    make_box("Mirror_Frame_T", (-ROOM_W / 2.0 + 0.06, 2.4, 2.27), (0.03, 2.65, 0.05), COL_IRON)
-    make_box("Mirror_Frame_B", (-ROOM_W / 2.0 + 0.06, 2.4, 1.13), (0.03, 2.65, 0.05), COL_IRON)
+    make_box("Mirror", (-ROOM_W / 2.0 + 0.11, 2.4, 1.7), (0.02, 2.6, 1.1), COL_MIRROR)
+    make_box("Mirror_Frame_T", (-ROOM_W / 2.0 + 0.115, 2.4, 2.27), (0.03, 2.65, 0.05), COL_IRON)
+    make_box("Mirror_Frame_B", (-ROOM_W / 2.0 + 0.115, 2.4, 1.13), (0.03, 2.65, 0.05), COL_IRON)
     # Plate trees
     for ti, (tx, ty) in enumerate([(-3.0, 5.6), (0.2, 5.9)]):
         make_cyl(f"Tree_{ti}_Post", (tx, ty, 0.55), 0.045, 1.1, COL_RACK, segments=8)

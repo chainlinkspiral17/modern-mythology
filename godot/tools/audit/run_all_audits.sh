@@ -339,6 +339,19 @@ SCOUT="$(python3 seat_clearance_audit.py 2>/dev/null)" || {
 echo "$SCOUT" | tail -1
 echo ""
 
+# ── Buried-decor gate (2026-10-09) ──────────────────────────────
+# The overnight run found jerseys, a flag, acoustic foam, a corkboard,
+# commendations, a thermostat and a run of pegboards, mirrors, menu boards
+# and neon backings 4-8 cm INSIDE their walls — placed from the wall's
+# centre line instead of its face; invisible, and every other gate passed
+# them. Wall decor must sit in front of its wall. Zero.
+echo "── buried_decor_audit.py ──"
+BDOUT="$(python3 buried_decor_audit.py 2>/dev/null)" || {
+    echo "$BDOUT" | grep "✗" | head -20
+    echo "REGRESSION  buried_decor_audit found wall decor inside a wall (ceiling 0)"; exit 1; }
+echo "$BDOUT" | tail -1
+echo ""
+
 # ── Scene-syntax gate (2026-09-25) ────────────────────────────
 # highway_101 and small_wood_road were skipped on every contact sheet:
 # `Color(r, g, b)` — Godot's parser wants four arguments — and the

@@ -227,8 +227,8 @@ def build_hero_props():
     make_box("SpeakSpell_Crack", (-1.57, 0.92, 1.66), (0.03, 0.03, 0.045), (0.44, 0.10, 0.09, 1.0))
     # One-way mirror to the sales floor (installed 1983)
     # east of the office door's reach (x 0.95) — 2026-09-25: its frame overlapped the doorway by 15 cm
-    make_box("OneWay_Mirror_Frame", (1.55, 0.10, 1.70), (1.20, 0.04, 0.95), (0.30, 0.26, 0.22, 1.0))
-    make_box("OneWay_Mirror", (1.55, 0.08, 1.70), (1.10, 0.02, 0.85), (0.46, 0.52, 0.56, 1.0))
+    make_box("OneWay_Mirror_Frame", (1.55, 0.12, 1.70), (1.20, 0.04, 0.95), (0.30, 0.26, 0.22, 1.0))
+    make_box("OneWay_Mirror", (1.55, 0.15, 1.70), (1.10, 0.02, 0.85), (0.46, 0.52, 0.56, 1.0))
     # Desk drawer pedestal (top drawer takes the slip; green folder
     # in the second)
     make_chamfer_box("Desk_Pedestal", (0.62 + DESK_DX, 3.5 + DESK_DY, 0.38), (0.52, 0.72, 0.70), (0.40, 0.30, 0.20, 1.0))
@@ -253,7 +253,7 @@ def build_hero_props():
     make_box("Office_Bolt_Plate", (0.85, 0.02, 1.20), (0.16, 0.02, 0.05), iron)
     make_box("Office_Bolt_Barrel", (0.78, 0.015, 1.20), (0.10, 0.025, 0.03), (0.60, 0.62, 0.64, 1.0))
     # Service/back door in the N wall, with its deadbolt
-    make_box("Service_Door", (1.2, ROOM_D-0.05, 1.03), (0.90, 0.05, 2.05), (0.34, 0.30, 0.28, 1.0))
+    make_box("Service_Door", (1.2, ROOM_D-0.125, 1.03), (0.90, 0.05, 2.05), (0.34, 0.30, 0.28, 1.0))
     make_box("Service_Deadbolt", (1.55, ROOM_D-0.09, 1.05), (0.06, 0.03, 0.10), (0.74, 0.60, 0.30, 1.0))
 
 
