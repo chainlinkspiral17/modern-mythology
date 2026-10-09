@@ -1067,33 +1067,26 @@ const CAMERA_PRESETS := {
 	"foxhole_bar": {
 		"scene": "res://scenes/locales/foxhole_bar.tscn",
 		"requires_glb": "res://assets/3d/locales/foxhole_bar.glb",
-		# Music-venue bar 8×6 (godot x∈[-4,4], z∈[0,-6], ceil 3.0). Long
-		# bar counter along the N wall (blender y=5 → godot z=-5, x∈[-3,3]),
-		# back-bar bottle shelves + mirror behind (z=-5.85), draft-tap
-		# tower, five stools (godot z=-4.1), two high-tops mid-room, neon
-		# signs on the N wall, warm pendants over the bar. Camera in the SW
-		# quadrant just inside the door looking NE along the bar: counter
-		# runs diagonally across frame, bottles + neon centre-back. Eye
-		# lifted to 1.90 and wide FOV for the big moody venue.
-		# RE-VANTAGED 2026-09-03: the SW vantage stood inside the PA cabinet by the door; a metre in and off the wall, same NE look along the bar
-		"camera_origin": Vector3(-1.90, 1.75, -1.50),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(-42.8), 0.0),
+		# THE FOXHOLE, the whole venue (2026-10-09 rebuild): a 12 x 16 m
+		# black box, the stage across the north end with its truss towers,
+		# the bar across the back. Camera at the back wall east of the bar
+		# ("Walk to the back. Stand against the back wall") looking up the
+		# floor past the FOH desk to the stage.
+		"camera_origin": Vector3(1.40, 1.70, -0.90),
+		"camera_rotation": Vector3(0.0151, 0.1365, 0.0),
 		"fov": 64.0,
 		"suppress_input": true,
 	},
 	"foxhole_stage": {
-		"scene": "res://scenes/locales/foxhole_stage.tscn",
-		"requires_glb": "res://assets/3d/locales/foxhole_stage.glb",
-		# Music-venue stage 8×5 (godot x∈[-4,4], z∈[0,-5], ceil 3.2). Raised
-		# stage deck along the N wall (blender y=4.2 → godot z=-4.2, 7.4m
-		# wide), drum kit centre (godot 0,-4.6), amp stacks flanking (godot
-		# ±1.9,-4.6), two mic stands downstage (z=-3.6), PA towers at the
-		# corners (godot ±3.3,-3.4). Camera from the audience floor (SW
-		# quadrant) looking NE at the stage: drums centre, amps + PA
-		# framing. Eye 1.95 and wide FOV for the tall venue.
-		"camera_origin": Vector3(-2.6, 1.95, -0.8),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(-41.6), 0.0),
-		"fov": 65.0,
+		# The same venue (2026-10-09: it was an auto-generated 8 x 5 shell —
+		# foxhole_stage.tscn is retired): standing on the floor by the rail,
+		# looking at the stage, the drum riser and the east tower. Its
+		# markers are suffixed __foxhole_stage in foxhole_bar.tscn.
+		"scene": "res://scenes/locales/foxhole_bar.tscn",
+		"requires_glb": "res://assets/3d/locales/foxhole_bar.glb",
+		"camera_origin": Vector3(2.40, 1.62, -9.00),
+		"camera_rotation": Vector3(0.0129, 0.5071, 0.0),
+		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"foxhole_dressing_room": {

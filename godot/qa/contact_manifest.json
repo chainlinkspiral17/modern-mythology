@@ -1778,6 +1778,10 @@
    ],
    "markers": [
     {
+     "name": "shot_closeup_chess",
+     "type": "closeup"
+    },
+    {
      "name": "shot_closeup_person",
      "type": "closeup"
     },
@@ -1787,6 +1791,10 @@
     },
     {
      "name": "shot_insert_lyrics",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_setlist",
      "type": "insert"
     }
    ],
@@ -3804,7 +3812,7 @@
   },
   {
    "id": "foxhole_stage",
-   "scene": "res://scenes/locales/foxhole_stage.tscn",
+   "scene": "res://scenes/locales/foxhole_bar.tscn",
    "vol": 1,
    "uses": 2,
    "moods": [
@@ -3812,12 +3820,20 @@
    ],
    "markers": [
     {
-     "name": "shot_closeup_person",
+     "name": "shot_closeup_chess",
      "type": "closeup"
     },
     {
-     "name": "shot_closeup_person_b",
+     "name": "shot_closeup_person__foxhole_stage",
      "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b__foxhole_stage",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_lyrics",
+     "type": "insert"
     },
     {
      "name": "shot_insert_setlist",
@@ -7491,5 +7507,5 @@
   "tired",
   "nervous"
  ],
- "frames": 1687
+ "frames": 1691
 }

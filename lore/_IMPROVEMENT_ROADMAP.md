@@ -3834,6 +3834,42 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-09 · overnight run, pass 3: THE FOXHOLE IS ONE VENUE (foxhole_bar
+draft 1 of the rebuild).** The prose plays one big room: "a hundred and
+ten people", the stage at the front with six LED fixtures on two truss
+towers at its lip, the DJ booth at its side, "Walk to the back. Stand
+against the back wall", "the bar in the back", "a high-top to the left
+of the stage", the rail, backstage, the set list taped to the floor. It
+was two template rooms: `foxhole_bar`, an 8 x 6 m bar with a stage
+crammed on its west wall, and `foxhole_stage`, an auto-generated
+8 x 5 m shell.
+- **The venue** (`build_foxhole_bar.py`, rewritten) is a 12 x 16 m black
+  box under a 4.6 m ceiling:
+  - the stage across the north end (deck, skirt, backdrop pleats, drum
+    riser and kit, two amps, three mics with their cords, wedges, the
+    lyrics flyer and the taped set list);
+  - the truss towers with their fixtures, the lighting pipe with six
+    cans, the PA on the floor off the stage's corners, the rail;
+  - Chess's DJ booth at the stage's east side;
+  - the FOH desk on its platform with Ricky's cooler and the snake taped
+    to the floor;
+  - high-tops down the west wall;
+  - the bar across the back's west half (back bar, mirror, three shelves
+    of bottles, neon, taps, stools) with a 1.1 m bartender's lane;
+  - the entrance doors, the restrooms, the backstage door off the
+    stage's wing, the work light in the back corner.
+- **Lights:** practicals on the fixtures (neon, the mirror glow, four
+  tower fixtures, two cans, the work light, Chess's laptop) and a stage
+  wash.
+- **Presets:** `foxhole_stage` now points at the same set (the
+  cabin-porch pattern) with its own `__foxhole_stage` markers.
+  foxhole_stage.tscn and its builder are retired.
+Draft 2:
+- the gig-night crowd (ch22's 110 people are an empty floor);
+- the bar's tap handles told apart;
+- flyers layered by date;
+- the stage too dark under `night` from the back.
+
 **2026-10-09 · overnight run, pass 2: BOARD LORDS draft 4.** The retail
 floor was empty linoleum between the deck wall and the counter.
 From vol 7 ch 2/5/9/10/12/16:

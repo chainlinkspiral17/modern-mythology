@@ -133,7 +133,7 @@ background_mode = 1
 background_color = Color(0.10, 0.06, 0.04, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.62, 0.42, 0.28, 1)
-ambient_light_energy = 0.55
+ambient_light_energy = 0.50
 fog_enabled = true
 fog_light_color = Color(0.42, 0.28, 0.20, 1)
 fog_light_energy = 0.5
@@ -157,7 +157,7 @@ environment = SubResource("Env_Locale")
 [node name="Key" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 6, 0)
 light_color = Color(0.96, 0.62, 0.28, 1)
-light_energy = 0.62
+light_energy = 0.40
 shadow_enabled = false
 
 [node name="Fill" type="DirectionalLight3D" parent="."]
@@ -172,40 +172,114 @@ light_color = Color(0.32, 0.42, 0.62, 1)
 light_energy = 0.25
 shadow_enabled = false
 
-; Practicals — warm bar pendants + back-bar glow + saturated neon accents (kept moody)
-[node name="Pendant_W" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2.4, -5.0)
-light_color = Color(0.98, 0.82, 0.54, 1)
-light_energy = 2.4
-omni_range = 3.2
+; ── THE FOXHOLE, the whole venue (2026-10-09) · the practicals ──
+; The neon and the mirror glow over the back bar; four of the six
+; fixtures on the truss towers and two cans on the lip pipe light the
+; stage ("a slow specific cycle of deep blue into deep purple into a
+; small magenta"); the one work light at the back of the room; Chess's
+; laptop at the booth. All shadowless; the house key and ambient dimmed.
+[node name="BackBar_Neon_0_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-4.500, 2.800, -0.450)
+light_color = Color(1.00, 0.24, 0.72, 1)
+light_energy = 2.00
+omni_range = 3.60
 shadow_enabled = false
 
-[node name="Pendant_E" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2.4, -5.0)
-light_color = Color(0.98, 0.82, 0.54, 1)
-light_energy = 2.4
-omni_range = 3.2
+[node name="BackBar_Neon_1_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-1.700, 2.800, -0.450)
+light_color = Color(0.30, 0.82, 0.96, 1)
+light_energy = 1.80
+omni_range = 3.40
 shadow_enabled = false
 
-[node name="BackBarGlow" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.9, -5.7)
+[node name="BackBar_Neon_2_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-3.100, 3.250, -0.450)
+light_color = Color(0.98, 0.72, 0.28, 1)
+light_energy = 1.60
+omni_range = 3.40
+shadow_enabled = false
+
+[node name="BackBar_Mirror_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-3.100, 1.800, -0.900)
 light_color = Color(0.96, 0.74, 0.42, 1)
-light_energy = 1.6
-omni_range = 3.2
+light_energy = 1.20
+omni_range = 2.60
 shadow_enabled = false
 
-[node name="Neon_Magenta" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1, 2.6, -5.85)
-light_color = Color(1.0, 0.24, 0.72, 1)
-light_energy = 2.2
-omni_range = 3.6
+[node name="Truss_0_LED_1_Practical" type="SpotLight3D" parent="."]
+position = Vector3(-4.150, 3.000, -12.100)
+rotation = Vector3(-0.3478, -1.2240, 0)
+light_color = Color(0.62, 0.26, 0.86, 1)
+light_energy = 8.0
+spot_range = 12.00
+spot_angle = 40.0
 shadow_enabled = false
 
-[node name="Neon_Cyan" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1, 2.6, -5.85)
-light_color = Color(0.3, 0.82, 0.96, 1)
+[node name="Truss_1_LED_1_Practical" type="SpotLight3D" parent="."]
+position = Vector3(4.150, 3.000, -12.100)
+rotation = Vector3(-0.3478, 1.2240, 0)
+light_color = Color(0.26, 0.55, 0.96, 1)
+light_energy = 8.0
+spot_range = 12.00
+spot_angle = 40.0
+shadow_enabled = false
+
+[node name="Truss_0_LED_2_Practical" type="SpotLight3D" parent="."]
+position = Vector3(-4.150, 3.800, -12.100)
+rotation = Vector3(-0.7645, -1.9068, 0)
+light_color = Color(0.86, 0.62, 0.22, 1)
+light_energy = 5.0
+spot_range = 12.00
+spot_angle = 40.0
+shadow_enabled = false
+
+[node name="Truss_1_LED_0_Practical" type="SpotLight3D" parent="."]
+position = Vector3(4.150, 2.000, -12.100)
+rotation = Vector3(-0.2437, 0.8999, 0)
+light_color = Color(0.86, 0.26, 0.60, 1)
+light_energy = 5.0
+spot_range = 10.00
+spot_angle = 30.0
+shadow_enabled = false
+
+[node name="Par_Light_2_Practical" type="SpotLight3D" parent="."]
+position = Vector3(-0.550, 3.700, -12.150)
+rotation = Vector3(-1.2056, -0.4825, 0)
+light_color = Color(1.00, 0.86, 0.66, 1)
+light_energy = 6.0
+spot_range = 8.00
+spot_angle = 30.0
+shadow_enabled = false
+
+[node name="Par_Light_3_Practical" type="SpotLight3D" parent="."]
+position = Vector3(0.550, 3.700, -12.150)
+rotation = Vector3(-1.0815, -0.0303, 0)
+light_color = Color(0.96, 0.70, 0.52, 1)
+light_energy = 5.0
+spot_range = 8.00
+spot_angle = 30.0
+shadow_enabled = false
+
+[node name="Work_Light_Head_Practical" type="OmniLight3D" parent="."]
+position = Vector3(5.150, 1.950, -0.980)
+light_color = Color(1.00, 0.86, 0.62, 1)
+light_energy = 2.20
+omni_range = 6.00
+shadow_enabled = false
+
+[node name="DJ_Laptop_Screen_Practical" type="OmniLight3D" parent="."]
+position = Vector3(4.970, 1.300, -13.000)
+light_color = Color(0.40, 0.56, 0.96, 1)
+light_energy = 0.80
+omni_range = 1.60
+shadow_enabled = false
+
+; the stage's general wash from the pipe over the lip (the rig, not a fixture of its own)
+[node name="Stage_Wash" type="OmniLight3D" parent="."]
+position = Vector3(0.000, 3.400, -13.600)
+light_color = Color(0.86, 0.46, 0.80, 1)
 light_energy = 1.8
-omni_range = 3.4
+omni_range = 7.5
 shadow_enabled = false
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
@@ -329,21 +403,47 @@ offset_bottom = 980.0
 script = ExtResource("14_dbgm")
 
 ; insert: the bridge lyrics on the back of the flyer, beside the amp
-[node name="shot_insert_lyrics" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1, 0.75, -2.3)
-rotation = Vector3(-0.5817, 0.8270, 0.0)
-metadata/fov = 42.0
-
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
 ; every closeup of a person cued here cuts to it (the scene had no closeup marker)
-[node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.036, 1.612, -3.021)
-rotation = Vector3(-0.2618, -1.0472, 0.0)
-metadata/fov = 45.0
-
 ; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
 ; the far side of the same spot, so two speakers alternate sides
-[node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.091, 1.612, -4.653)
-rotation = Vector3(-0.2618, 2.3562, 0.0)
+
+; ── markers: the venue (2026-10-09) ──
+; foxhole_bar (from the back of the room): the closeup against the bar's
+; neon, its reverse against the lit stage, Chess at the DJ booth, the
+; lyrics by Jesse's amp, the set list taped at his feet. foxhole_stage
+; (at the rail) has its own pair, suffixed __foxhole_stage.
+[node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.800, 1.620, -4.400)
+rotation = Vector3(-0.0141, 2.3276, 0)
 metadata/fov = 45.0
+
+[node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.400, 1.620, -3.200)
+rotation = Vector3(0.0366, -0.1160, 0)
+metadata/fov = 45.0
+
+[node name="shot_closeup_chess" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.700, 1.550, -11.000)
+rotation = Vector3(-0.1069, -0.6178, 0)
+metadata/fov = 42.0
+
+[node name="shot_insert_lyrics" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.550, 1.450, -13.050)
+rotation = Vector3(-0.7448, -0.7086, 0)
+metadata/fov = 40.0
+
+[node name="shot_insert_setlist" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.250, 1.400, -11.850)
+rotation = Vector3(-0.7964, 0.4636, 0)
+metadata/fov = 40.0
+
+[node name="shot_closeup_person__foxhole_stage" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.700, 1.620, -10.500)
+rotation = Vector3(0.1178, 0.2537, 0)
+metadata/fov = 45.0
+
+[node name="shot_closeup_person_b__foxhole_stage" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.800, 2.220, -13.300)
+rotation = Vector3(-0.0870, -2.9922, 0)
+metadata/fov = 48.0
