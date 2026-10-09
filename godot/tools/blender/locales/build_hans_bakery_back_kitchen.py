@@ -34,6 +34,23 @@ prep table (a low alpha slab); Greta's cloth drawer half-open with
 the cloth spilling; the crown molding on the south wall segments;
 and a Deck frame of shot_establish_b to judge the front-of-house
 depth through the pass.
+
+DRAFT 5 (2026-10-09, the overnight run; CLAUDE.md "build big"). Hans
+"had set the long dining table for thirteen" in a 6 x 5 m back kitchen
+that also held a deck oven, a proofer, a counter, a prep table and two
+racks: every aisle was a chair-width and the preset's right third was a
+grey slab — the cooling rack's "frame", a SOLID 1.7 m box with its
+shelves and loaves inside it (the speed rack's too). The room is
+9.0 x 7.6 under 3.0 m now, each area moved rigidly by plan.shifted():
+the bake line (counter + mixer W, oven + proofer E) on the new N wall,
+the table mid-room with 1.2 m+ aisles all round, the Hemlock-window
+corner and the prep bench on the W wall, the racks on the E wall —
+open post frames, trays on runners. The S wall (door, pass, bench)
+stays where the front of house expects it.
+Draft 6 targets: the E aisle is generous now — a bread shelf of the
+morning's loaves for the front, or the flour bin's partner; the
+proofer as real glass; lathed scored loaves; the flour haze slab;
+Greta's drawer half-open; Deck framing.
 """
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
@@ -48,8 +65,9 @@ from _props.shelving import make_snack_aisle, make_endcap
 from _props.food_service import make_coffee_pots
 from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster, make_calendar
 from _props.safety import make_smoke_detector, make_hvac_vent, make_fluorescent_tube_fixture
+from _props.plan import shifted
 
-ROOM_W = 6.0; ROOM_D = 5.0; CEIL = 2.8
+ROOM_W = 9.0; ROOM_D = 7.6; CEIL = 3.0   # draft 5 (2026-10-09): was 6.0 x 5.0 x 2.8
 PAL_WALL = {"wall":(0.96,0.84,0.62,1.0),"baseboard":(0.62,0.42,0.22,1.0)}
 COL_FLOOR = (0.62,0.46,0.30,1.0); COL_SEAM = (0.32,0.22,0.14,1.0); COL_WOOD = (0.42,0.30,0.18,1.0)
 COL_ACCENT = (0.78,0.42,0.22,1.0)
@@ -59,7 +77,7 @@ def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
                palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
     # (2026-10-07) Wall_W out of the loop: its window is cut
-    make_wall_with_openings("Wall_W", (-ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(2.6, 1.50, 1.10, 1.10)])
+    make_wall_with_openings("Wall_W", (-ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(2.6 + SH_W[1], 1.50, 1.10, 1.10)])
     make_wall("Wall_E", (+ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=-1)
     make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
     # Baseboards face INTO the room (+Y) on the south segments — the
@@ -69,11 +87,12 @@ def build_shell():
     # 2.65, z 1.0..1.9) so the front of house shows through it — two
     # piers, a spandrel under the sill, a lintel over the head.
     make_wall("Wall_S_E_L", (1.175, 0.0, 0), length=0.35, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
-    make_wall("Wall_S_E_R", (2.825, 0.0, 0), length=0.35, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall("Wall_S_E_R", ((2.65 + ROOM_W/2.0 + 0.2) / 2.0, 0.0, 0), length=ROOM_W/2.0 + 0.2 - 2.65, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
     make_box("Wall_S_E_Spandrel", (2.0, 0.0, 0.50), (1.30, 0.20, 1.00), PAL_WALL["wall"])
     make_box("Wall_S_E_Spandrel_Base", (2.0, 0.106, 0.08), (1.30, 0.012, 0.16), PAL_WALL["baseboard"])   # on the wall face, 1.2 cm proud (2026-09-23: inside the wall)
-    make_box("Wall_S_E_Lintel", (2.0, 0.0, 2.35), (1.30, 0.20, 0.90), PAL_WALL["wall"])
-    make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
+    make_box("Wall_S_E_Lintel", (2.0, 0.0, (1.90 + CEIL) / 2.0), (1.30, 0.20, CEIL - 1.90), PAL_WALL["wall"])
+    # the door's head stays at 2.2 m (the back-kitchen light hangs over it)
+    make_box("Wall_S_AboveDoor", (0.0, 0.0, (2.20 + CEIL) / 2.0), (2.0, 0.20, CEIL - 2.20), PAL_WALL["wall"])
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
     for nm, ax, length, wx, wy in [
             ("Crown_W", 'Y', ROOM_D, -ROOM_W/2.0+0.10, ROOM_D/2.0),
@@ -88,8 +107,9 @@ def build_tile():
     make_box("Backsplash_N", (0.0, ROOM_D-0.11, 1.35), (ROOM_W-0.4, 0.02, 0.90), tile)
     for gi in range(6):
         make_box(f"Grout_N_H_{gi}", (0.0, ROOM_D-0.10, 0.95+gi*0.15), (ROOM_W-0.4, 0.005, 0.01), grout)
-    for gi in range(11):
-        make_box(f"Grout_N_V_{gi}", (-2.6+gi*0.52, ROOM_D-0.10, 1.35), (0.01, 0.005, 0.90), grout)
+    nv = int((ROOM_W - 0.4) / 0.52)
+    for gi in range(nv + 1):
+        make_box(f"Grout_N_V_{gi}", (-(nv * 0.52) / 2.0 + gi*0.52, ROOM_D-0.10, 1.35), (0.01, 0.005, 0.90), grout)
     make_box("Wainscot_E", (ROOM_W/2.0-0.11, ROOM_D/2.0, 0.70), (0.02, ROOM_D-0.4, 1.20), tile)
 
 def build_counter():
@@ -118,22 +138,29 @@ def build_stove():
             make_cyl(f"Oven_Handle_Post_{di}_{k}", (sx-0.475, hy, dz-0.24), 0.012, 0.05, P.METAL_STEEL, axis='X', segments=6)
     make_chamfer_box("Oven_Hood", (sx, sy, 1.65), (1.10, 0.90, 0.30), P.METAL_STEEL)   # on the oven (2026-09-23: 5 cm over it)
 
-def build_bakery():
-    """Back-of-house bakery: a rolling speed rack of sheet trays + loaves,
-    a flour-dusted prep table with dough balls + a rolling pin, stacked
-    flour sacks, and a wall shelf of mixing bowls."""
+def build_speed_rack():
+    """A rolling speed rack of sheet trays + loaves. (Draft 5: the frame
+    was one SOLID 0.7 x 0.6 x 1.8 box with the trays inside it; four
+    corner posts and a top now.)"""
     # Speed rack (rolling tray rack) near the centre
     # Draft 4: the rack rolled to the east aisle (x 2.5, y 2.7) — at
     # (-2.55, 2.2) its frame shared floor with the window chair AND the
     # prep table once the table moved west off the side chairs.
     rx, ry = 2.5, 2.7
-    make_box("Rack_Frame", (rx, ry, 0.90), (0.70, 0.60, 1.80), P.METAL_STEEL)
+    for pi, (ox, oy) in enumerate(((-0.335, -0.285), (0.335, -0.285), (-0.335, 0.285), (0.335, 0.285))):
+        make_box(f"Rack_Post_{pi}", (rx + ox, ry + oy, 0.96), (0.03, 0.03, 1.74), P.METAL_STEEL)
+        make_cyl(f"Rack_Caster_{pi}", (rx + ox, ry + oy, 0.045), 0.045, 0.04, P.METAL_BLACK, axis='X', segments=8)
+    make_box("Rack_Top", (rx, ry, 1.815), (0.70, 0.60, 0.03), P.METAL_STEEL)
+    for ti, tz in enumerate([0.4, 0.7, 1.0, 1.3, 1.6]):
+        for sgn in (-1, 1):
+            make_box(f"Rack_Runner_{ti}_{sgn:+d}", (rx + sgn * 0.3125, ry, tz - 0.02), (0.015, 0.54, 0.01), P.METAL_STEEL)
     for ti, tz in enumerate([0.4, 0.7, 1.0, 1.3, 1.6]):
         make_box(f"Rack_Tray_{ti}", (rx, ry, tz), (0.64, 0.54, 0.03), (0.72, 0.72, 0.74, 1.0))
         for li in range(3):
             make_cyl(f"Rack_Loaf_{ti}_{li}", (rx-0.2+li*0.2, ry, tz+0.06), 0.06, 0.26, (0.72, 0.52, 0.30, 1.0), axis='X', segments=8)
-    for wi, wx in enumerate([-0.36, 0.36]):
-        make_cyl(f"Rack_Wheel_{wi}", (rx+wx, ry, 0.04), 0.05, 0.05, P.METAL_BLACK, axis='X', segments=8)
+
+
+def build_prep_table():
     # Flour-dusted prep table with dough balls + rolling pin
     # Draft 4: x -1.9 (was -1.5: the top's east edge at -0.9 ran into
     # the west side chairs at -1.06..-0.64); y 1.75.
@@ -146,12 +173,18 @@ def build_bakery():
     make_cyl("RollingPin", (tx-0.1, ty+0.22, 0.97), 0.04, 0.44, COL_WOOD, axis='X', segments=8)
     for hi, hx in enumerate((tx-0.36, tx+0.16)):
         make_cyl(f"RollingPin_Handle_{hi}", (hx, ty+0.22, 0.97), 0.014, 0.08, COL_WOOD, axis='X', segments=6)
+
+
+def build_flour_sacks():
     # Stacked flour sacks in the SW corner
     # seated by their squashed height (2026-09-24)
     for si, (sx2, sz) in enumerate([(-ROOM_W/2.0+0.6, 0.20), (-ROOM_W/2.0+0.55, 0.60), (-ROOM_W/2.0+0.85, 0.20)]):
         make_blob(f"FlourSack_{si}", (sx2, 0.7, sz), 0.21,
                   (0.88, 0.84, 0.76, 1.0), noise=0.16, seed=11 + si,
                   squash=0.95)
+
+
+def build_bowl_shelf():
     # Wall shelf of mixing bowls, west wall
     make_box("BowlShelf", (-ROOM_W/2.0+0.14, ROOM_D-1.4, 1.7), (0.10, 1.20, 0.06), COL_WOOD)
     for bi in range(3):
@@ -180,7 +213,7 @@ def build_proofer():
     for wi, wo in enumerate([-0.26, 0.26]):
         make_cyl(f"Proofer_Wheel_{wi}", (px+wo, py, 0.05), 0.05, 0.05, P.METAL_BLACK, axis='X', segments=8)
 
-def build_equipment():
+def build_mixer():
     # Planetary stand mixer on the north counter's west end.
     mx, my = -ROOM_W/4.0-0.9, ROOM_D-1.0
     top = 0.96
@@ -191,6 +224,9 @@ def build_equipment():
     # straight cylinders).
     make_lathe("Mixer_Whisk", (mx-0.10, my, top+0.20), [(0.012, 0.0), (0.045, 0.04), (0.05, 0.09), (0.03, 0.15), (0.012, 0.18), (0.012, 0.20)], P.METAL_STEEL, segments=8)
     make_lathe("Mixer_Bowl", (mx-0.10, my, top+0.05), [(0.06, 0.0), (0.105, 0.03), (0.13, 0.09), (0.135, 0.15), (0.128, 0.18)], P.METAL_STEEL, segments=12)
+
+
+def build_flour_bin():
     # Rolling flour ingredient bin in the SW.
     fx, fy = -ROOM_W/2.0+0.55, ROOM_D/2.0+0.75
     make_chamfer_box("FlourBin_Body", (fx, fy, 0.40), (0.50, 0.60, 0.72), (0.72, 0.60, 0.42, 1.0))
@@ -198,6 +234,9 @@ def build_equipment():
     make_cyl("FlourBin_Scoop", (fx, fy-0.10, 0.86), 0.05, 0.14, P.METAL_STEEL, segments=8)
     for wi, wo in enumerate([-0.20, 0.20]):
         make_cyl(f"FlourBin_Wheel_{wi}", (fx+wo, fy, 0.05), 0.05, 0.05, P.METAL_BLACK, axis='X', segments=8)
+
+
+def build_scale():
     # Platform baker's scale on the prep table's edge.
     sx, sy = -1.48, 1.93   # (draft 4: on the prep table's NE corner, off the dough and the pin)
     # stacked from the table top up (2026-09-23: every piece 2-4 cm apart)
@@ -209,14 +248,17 @@ def build_equipment():
 def build_cooling_rack():
     # Wire cooling rack of finished loaves, center-east floor.
     rx, ry = 2.2, ROOM_D/2.0 - 0.9
-    make_box("Cool_Frame", (rx, ry, 0.85), (0.66, 0.50, 1.70), P.METAL_STEEL)
+    # (draft 5: the "frame" was a solid 0.66 x 0.5 x 1.7 box that swallowed
+    # the shelves and loaves — the grey slab in the preset's right third)
+    for pi, (ox, oy) in enumerate(((-0.315, -0.235), (0.315, -0.235), (-0.315, 0.235), (0.315, 0.235))):
+        make_box(f"Cool_Post_{pi}", (rx + ox, ry + oy, 0.905), (0.03, 0.03, 1.65), P.METAL_STEEL)
+        make_cyl(f"Cool_Caster_{pi}", (rx + ox, ry + oy, 0.04), 0.04, 0.035, P.METAL_BLACK, axis='X', segments=8)
+    make_box("Cool_Top", (rx, ry, 1.715), (0.66, 0.50, 0.03), P.METAL_STEEL)
     for si, sz in enumerate([0.5, 0.85, 1.2, 1.55]):
         make_box(f"Cool_Shelf_{si}", (rx, ry, sz), (0.62, 0.46, 0.02), P.METAL_STEEL)
         for li in range(3):
             make_cyl(f"Cool_Loaf_{si}_{li}", (rx-0.18+li*0.18, ry, sz+0.07), 0.05, 0.24,
                      (0.74, 0.52, 0.30, 1.0), axis='Y', segments=8)
-    for wi, wo in enumerate([-0.28, 0.28]):
-        make_cyl(f"Cool_Wheel_{wi}", (rx+wo, ry, 0.04), 0.04, 0.05, P.METAL_BLACK, axis='X', segments=8)
 
 def build_utensil_rail():
     # Wall rail of hanging tools above the north counter.
@@ -255,9 +297,15 @@ def build_pass_window():
         make_cyl(f"Pass_Pastry_{pi}", (wx-0.28+pi*0.19, 0.30, 1.20), 0.05, 0.06,
                  (0.86, 0.64, 0.34, 1.0), segments=8)
 
-def build_decor():
+def build_calendar():
     make_calendar("Calendar", (-ROOM_W/2.0+0.1025, 1.4, 1.70))   # on the wall (2026-09-23: 2.7 cm off it)
+
+
+def build_poster():
     make_faded_poster("Poster_E", (ROOM_W/2.0-0.05 - 0.0535, 1.6, 1.60), into_room=-1)
+
+
+def build_plant():
     # (draft 4: by the pass window's east pier — at (-2.5, 4.4) the pot
     # stood inside the north counter's west end)
     make_floor_plant("Plant", (2.72, 0.48, 0.0))
@@ -266,9 +314,8 @@ def build_clock():
     make_wall_clock("Clock", (0.0, 4.900, CEIL-0.50), frozen_hour=6, frozen_min=1, facing='-Y')
 
 def build_ceiling_infra():
-    for j in range(2):
-        ypos = ROOM_D * (0.30 + j * 0.40)
-        make_fluorescent_tube_fixture(f"Fluor_{j}", (0.0, ypos, CEIL), length=1.40, width=0.34)
+    for j, (fx_, fy_) in enumerate(((-2.2, 2.3), (2.2, 2.3), (-2.2, 5.4), (2.2, 5.4))):
+        make_fluorescent_tube_fixture(f"Fluor_{j}", (fx_, fy_, CEIL), length=1.40, width=0.34)
     make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
 
 def build_communal_table():
@@ -312,6 +359,11 @@ def build_communal_table():
         make_cyl(f"Brotchen_{bi}", (-0.08 + bi * 0.09, 2.1, 0.92), 0.05, 0.07, (0.80, 0.62, 0.36, 1.0), segments=8)
     make_cyl("Preserve_Jar", (0.28, 2.45, 0.85), 0.045, 0.12, (0.48, 0.22, 0.30, 0.9), segments=8)
     make_box("Butter_Dish", (-0.28, 2.45, 0.80), (0.16, 0.10, 0.06), (0.90, 0.88, 0.80, 1.0))
+
+
+def build_window_corner():
+    import math as _m
+    wood = (0.46, 0.34, 0.22, 1.0)
     # The Hemlock window + sill + the chair beside it (W wall)
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
     make_window("Win_W", (-2.90, 2.6, 1.50), width=1.10, height=1.10, axis='Y', room_dir=+1, see_through=True)
@@ -319,6 +371,10 @@ def build_communal_table():
     # (draft 4: a kit chair, back to the window, at y 2.75 — at 2.6 its
     # seat shared 0.1 m with the speed rack's frame)
     make_chair("WinChair", -2.35, 2.75, yaw=-_m.pi/2.0, wood=wood, w=0.40)
+
+
+def build_counter_drawers():
+    wood_dk = (0.36, 0.26, 0.16, 1.0)
     # Greta's cloth drawer + the chapbook drawer, N counter faces
     make_box("Greta_Drawer", (-1.5, 3.64, 0.74), (0.44, 0.02, 0.16), wood_dk)   # on the counter face (2026-09-23: 2 cm off it)
     make_box("Greta_Cloth", (-1.5, 3.70, 0.70), (0.20, 0.12, 0.02), (0.88, 0.86, 0.80, 1.0))
@@ -408,18 +464,6 @@ def build_hero_props_2026_09():
              (0.16, 0.15, 0.14, 1.0))
     make_box("Crow_Tail", (0.1985, 3.008, 0.885), (0.060, 0.040, 0.014), crow_black)
 
-    # ── THE HANDS · floured prints at the west seat (y 1.65) ──
-    for who, py, fy0 in (("Marit", 1.620, 1.585), ("Aud", 1.705, 1.670)):
-        make_box(f"Hands_Print_{who}", (-0.400, py, 0.7815), (0.070, 0.085, 0.0015), flour)
-        for fi in range(4):
-            make_box(f"Hands_Print_{who}_F{fi}", (-0.325, fy0 + fi * 0.022, 0.7815),
-                     (0.055, 0.014, 0.0015), flour)
-
-    # ── THE BACK-KITCHEN LIGHT · wall shade over the south door ──
-    make_cyl("Bakery_Light_Shade", (0.0, 0.16, 2.32), 0.10, 0.12,
-             (0.30, 0.32, 0.30, 1.0), axis='Y', segments=10)
-    make_cyl("Bakery_Light_Bulb", (0.0, 0.245, 2.32), 0.035, 0.05,
-             (1.0, 0.85, 0.55, 1.0), axis='Y', segments=8)
     # ── 2026-09-01 second pass: the three cues the first wave's
     # truncated listing hid (brioche / coffee / bag; coffee aims
     # at the existing press) ──
@@ -430,6 +474,21 @@ def build_hero_props_2026_09():
     for li2, lx2 in enumerate((0.26, 0.32, 0.38)):
         make_cyl(f"Brioche_Lobe_{li2}", (lx2, 1.95, 0.817), 0.038, 0.050,
                  (0.78, 0.56, 0.28, 1.0), segments=8)
+    # ── THE HANDS · floured prints at the west seat (y 1.65) ──
+    for who, py, fy0 in (("Marit", 1.620, 1.585), ("Aud", 1.705, 1.670)):
+        make_box(f"Hands_Print_{who}", (-0.400, py, 0.7815), (0.070, 0.085, 0.0015), flour)
+        for fi in range(4):
+            make_box(f"Hands_Print_{who}_F{fi}", (-0.325, fy0 + fi * 0.022, 0.7815),
+                     (0.055, 0.014, 0.0015), flour)
+
+
+
+def build_door_props():
+    # ── THE BACK-KITCHEN LIGHT · wall shade over the south door ──
+    make_cyl("Bakery_Light_Shade", (0.0, 0.16, 2.32), 0.10, 0.12,
+             (0.30, 0.32, 0.30, 1.0), axis='Y', segments=10)
+    make_cyl("Bakery_Light_Bulb", (0.0, 0.245, 2.32), 0.035, 0.05,
+             (1.0, 0.85, 0.55, 1.0), axis='Y', segments=8)
     # THE BAG ("She handed him the bag."): the canvas stick bag on
     # the door bench beside Per's box
     make_box("Canvas_Bag", (1.62, 0.42, 0.555), (0.28, 0.20, 0.18),
@@ -443,40 +502,71 @@ def build_draft4_2026_09():
     see the module docstring. Cords are straight make_tube runs: the
     cord helper's diagonal segments are axis-aligned SLABS, not cords
     (its midpoint dips to half height, so a counter-to-outlet run is
-    a 0.4 m plank behind the counter)."""
+    a 0.4 m plank behind the counter). Draft 5 split this pass by AREA
+    (the build_wear_* / build_d3_* functions below) so each part moves
+    with the furniture it belongs to; the paths are re-walked here."""
     floor_dk = (0.54, 0.40, 0.26, 1.0)
     flour_dk = (0.72, 0.58, 0.42, 1.0)
-    cord = (0.16, 0.16, 0.18, 1.0)
-    # ── WEAR ──
-    # the flour path: prep table → the west aisle → the mixer end of
-    # the counter (the bakers' morning), and the oven approach down the
-    # east aisle to the stand spot between Roy's chair and the doors
-    make_traffic_wear("Wear_Path_Flour", [(-1.7, 2.25), (-1.75, 2.9), (-1.7, 3.5)], width=0.55, tint=flour_dk)
-    make_traffic_wear("Wear_Path_Oven", [(1.4, 2.0), (1.45, 3.2), (1.2, 3.85), (0.75, 4.0)], width=0.40, tint=floor_dk)
+    # ── WEAR · the paths, re-walked on the draft-5 plan ──
+    # the flour path: prep table → up the west aisle past the window
+    # chair → the mixer end of the counter (the bakers' morning)
+    make_traffic_wear("Wear_Path_Flour", [(-3.1, 2.55), (-2.7, 3.4), (-2.6, 5.0), (-2.7, 6.0)], width=0.55, tint=flour_dk)
+    # the oven approach down the east aisle to the oven doors
+    make_traffic_wear("Wear_Path_Oven", [(1.6, 1.4), (1.7, 4.6), (2.1, 5.6), (2.4, 6.4)], width=0.45, tint=floor_dk)
     make_traffic_wear("Wear_Path_Door", [(0.0, 0.3), (0.0, 0.55)], width=0.9, tint=floor_dk)
+
+
+def build_wear_table():
     for si, cy in enumerate((1.0, 1.65, 2.30, 2.95, 3.60)):
         for xi, cx in enumerate((-0.85, 0.85)):
             make_floor_stain(f"Wear_Seat_{si}_{xi}", (cx, cy), radius=0.25, tint=(0.58, 0.43, 0.28, 1.0), segments=10)
     # the elbow strips down the table's long edges (eleven forearms a
-    # morning), the flour dust on the prep table's near edge
+    # morning)
     for ei, ex in enumerate((-0.50, 0.50)):
         make_box(f"Wear_Edge_{ei}", (ex, 2.3, 0.7815), (0.06, 3.20, 0.003), (0.40, 0.29, 0.18, 1.0))
+
+
+def build_wear_prep():
+    # the flour dust on the prep table's near edge
     make_box("Wear_Flour_Edge", (-1.95, 1.47, 0.9315), (1.0, 0.10, 0.002), (0.94, 0.92, 0.86, 1.0))
-    # the grip patch under each oven handle, the kick scuff on the
-    # counter's face below the drawers, the proofer's door-edge patch
+
+
+def build_wear_oven():
+    # the grip patch under each oven handle, the proofer's door-edge patch
     sx, sy = +ROOM_W/4.0, ROOM_D-1.0
     for di, dz in enumerate([0.55, 1.05]):
         make_box(f"Wear_Grip_{di}", (sx-0.452 - 0.0506, sy, dz-0.19), (0.004, 0.30, 0.08), (0.36, 0.32, 0.30, 1.0))
-    make_scuff_band("Wear_Kick", (-1.0, ROOM_D-1.0-0.356), 0.8, axis='X', height=0.10, band_z=0.30, tint=(0.24, 0.16, 0.10, 1.0))
     make_box("Wear_Proofer_Edge", (ROOM_W/2.0-0.55-0.342, ROOM_D-1.4+0.24, 1.05), (0.003, 0.05, 0.60), (0.62, 0.62, 0.64, 1.0))
-    # ── D3 ──
+
+
+def build_wear_counter():
+    # the kick scuff on the counter's face below the drawers
+    make_scuff_band("Wear_Kick", (-1.0, ROOM_D-1.0-0.356), 0.8, axis='X', height=0.10, band_z=0.30, tint=(0.24, 0.16, 0.10, 1.0))
+
+
+_CORD = (0.16, 0.16, 0.18, 1.0)
+
+
+def build_d3_s():
     make_light_switch("Switch_1", (-1.25, 0.0), axis='X', face_sign=1, z=1.25, aged=True)
+
+
+def build_d3_nw():
     make_wall_outlet("Outlet_N_1", (-2.30, ROOM_D-0.02), axis='X', face_sign=-1, z=1.175, aged=True)
-    make_tube("Cord_1", [(-2.35, 4.19, 1.00), (-2.30, 4.86, 1.175)], 0.008, cord, segments=5)
+    make_tube("Cord_1", [(-2.35, 4.19, 1.00), (-2.30, 4.86, 1.175)], 0.008, _CORD, segments=5)
+
+
+def build_d3_ne():
     make_wall_outlet("Outlet_N_2", (2.35, ROOM_D), axis='X', face_sign=-1, z=0.40, aged=True)
-    make_tube("Cord_2", [(2.02, 4.60, 0.40), (2.35, 4.86, 0.40)], 0.008, cord, segments=5)
+    make_tube("Cord_2", [(2.02, 4.60, 0.40), (2.35, 4.86, 0.40)], 0.008, _CORD, segments=5)
+
+
+def build_d3_e():
     make_wall_outlet("Outlet_E_1", (ROOM_W/2.0-0.02, 3.4), axis='Y', face_sign=-1, z=0.35, aged=True)
-    make_tube("Cord_3", [(2.79, 3.30, 0.30), (2.86, 3.40, 0.35)], 0.008, cord, segments=5)
+    make_tube("Cord_3", [(2.79, 3.30, 0.30), (2.86, 3.40, 0.35)], 0.008, _CORD, segments=5)
+
+
+def build_hemlock():
     # ── D5 · the hemlock outside Win_W (4 AM: near-black green) ──
     make_box("Hemlock_Ground", (-5.6, 2.6, -0.03), (5.0, 7.0, 0.05), (0.16, 0.18, 0.14, 1.0))
     make_taper_cyl("Hemlock_Trunk", (-4.7, 3.1, 0.0), 0.20, 0.08, 4.2, (0.20, 0.16, 0.13, 1.0), segments=8)
@@ -485,6 +575,9 @@ def build_draft4_2026_09():
     make_taper_cyl("Hemlock_Trunk_Far", (-6.4, 1.2, 0.0), 0.16, 0.07, 4.0, (0.16, 0.13, 0.11, 1.0), segments=6)
     make_blob("Hemlock_Canopy_Far", (-6.4, 1.2, 3.0), 1.5, (0.11, 0.19, 0.15, 1.0), noise=0.24, seed=37, squash=0.75)
     make_box("Hemlock_Far_Band", (-8.2, 2.6, 2.2), (0.20, 10.0, 4.6), (0.06, 0.08, 0.12, 1.0))
+
+
+def build_foh():
     # ── D5 · the front of house through the pass (closed, dark) ──
     make_box("FOH_Floor", (2.0, -2.3, -0.03), (6.4, 4.2, 0.05), (0.34, 0.30, 0.26, 1.0))
     make_box("FOH_Ceil", (2.0, -2.3, CEIL+0.05), (6.4, 4.2, 0.10), (0.86, 0.86, 0.82, 1.0))
@@ -499,25 +592,53 @@ def build_draft4_2026_09():
     make_cyl("FOH_Table_Post", (-0.6, -2.6, 0.36), 0.04, 0.72, P.METAL_BLACK, segments=8)
 
 
+# ── DRAFT 5 · THE BIGGER ROOM (2026-10-09, lore/_SET_DETAIL_PLAYBOOK.md) ──
+# Each area was authored against the 6 x 5 walls; it is built inside
+# shifted(), handed the old ROOM_W/ROOM_D, and moved rigidly onto the
+# 9 x 7.6 plan. The S wall (the door, the pass, the bench) does not move.
+_OLD = dict(ROOM_W=6.0, ROOM_D=5.0)
+_EXTRA = ("make_counter", "make_counter_bullnose", "make_case_shell", "make_wall_clock", "make_wall_outlet",
+          "make_light_switch", "make_floor_stain", "make_scuff_band")
+SH_NW = (-1.2, 2.6)     # counter, mixer, utensil rail, drawers, kick, outlet N1
+SH_NE = (1.5, 2.6)      # oven + hood, proofer, their wear, outlet N2
+SH_TABLE = (0.0, 1.2)   # the communal table, its hero props, its wear
+SH_W = (-1.5, 1.2)      # the Hemlock window corner, bowl shelf, flour bin, calendar, the hemlock
+SH_SW = (-1.4, 0.3)     # prep table, scale, flour sacks
+SH_E = (1.5, 1.2)       # speed rack, cooling rack, poster, outlet E1
+SH_CLOCK = (0.0, 2.6)
+
+
+def _in(sh):
+    return shifted(globals(), sh[0], sh[1], extra=_EXTRA, extra_paths=("make_traffic_wear",), **_OLD)
+
+
 def main():
     clear_scene()
     build_shell()
     build_tile()
-    build_counter()
-    build_stove()
-    build_proofer()
-    build_bakery()
-    build_equipment()
-    build_cooling_rack()
-    build_utensil_rail()
-    build_pass_window()
-    build_decor()
-    build_clock()
-    build_communal_table()
-    build_ceiling_infra()
+    with _in(SH_NW):
+        build_counter(); build_mixer(); build_utensil_rail(); build_counter_drawers(); build_wear_counter(); build_d3_nw()
+    with _in(SH_NE):
+        build_stove(); build_proofer(); build_wear_oven(); build_d3_ne()
+    with _in(SH_TABLE):
+        build_communal_table(); build_hero_props_2026_09(); build_wear_table()
+    with _in(SH_W):
+        build_window_corner(); build_bowl_shelf(); build_flour_bin(); build_calendar(); build_hemlock()
+    with _in(SH_SW):
+        build_prep_table(); build_scale(); build_flour_sacks(); build_wear_prep()
+    with _in(SH_E):
+        build_speed_rack(); build_cooling_rack(); build_poster(); build_d3_e()
+    with _in(SH_CLOCK):
+        build_clock()
+    with _in((0.0, 0.0)):
+        build_pass_window()     # its x is ROOM_W/4 + 0.5: the cut in the S wall is at 2.0
+    build_plant()
     build_pers_box_2026_08()
-    build_hero_props_2026_09()
+    build_door_props()
+    build_d3_s()
+    build_foh()
     build_draft4_2026_09()
+    build_ceiling_infra()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/hans_bakery_back_kitchen.glb"))
     print(f"\n[build_hans_bakery_back_kitchen] exporting to {out}")

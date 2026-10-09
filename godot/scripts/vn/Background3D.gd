@@ -1121,14 +1121,18 @@ const CAMERA_PRESETS := {
 	"pit_stop_kitchen": {
 		"scene": "res://scenes/locales/pit_stop_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/pit_stop_interior.glb",
-		# Ben's side of the pass-through: the grill line on the N wall
-		# (flat-top godot -1,-8.45 under the vent hood), fryer, prep
-		# table, walk-in + milk crate W (godot -3.35,-6.45), office door
-		# E. Camera by the swing door looking NW down the line.
-		"camera_origin": Vector3(2.2, 1.65, -6.7),
-		"camera_rotation": Vector3(-0.03, 1.0, 0.0),
+		# KITCHEN DRAFT 2 (2026-10-09): the kitchen is y 6.1..10.9 in build
+		# coords (godot z -6.1..-10.9). The cook line on the N wall under
+		# one hood (flat-top godot -0.5,-10.45), Ben's window + hand sink
+		# left of it, the plating island mid-kitchen, walk-in + milk crate
+		# W, dish pit E. Camera inside the swing door looking NW down the
+		# line past the island.
+		"camera_origin": Vector3(3.70, 1.65, -6.75),
+		"camera_rotation": Vector3(-0.099, deg_to_rad(54.1), 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
+		# fluorescent kitchen, not the dining room's white key
+		"env": {"ambient_color": Color(0.84, 0.90, 0.84, 1), "ambient_energy": 0.62},
 	},
 	"pit_stop_back_booth": {
 		"scene": "res://scenes/locales/pit_stop_interior.tscn",
@@ -1712,14 +1716,14 @@ const CAMERA_PRESETS := {
 	"hans_bakery_back_kitchen": {
 		"scene": "res://scenes/locales/hans_bakery_back_kitchen.tscn",
 		"requires_glb": "res://assets/3d/locales/hans_bakery_back_kitchen.glb",
-		# Bakery back-of-house 6×5 (godot x∈[-3,3], z∈[0,-5], ceil 2.8).
-		# Counter NW (godot -1.5,-4.0), commercial deck oven + hood NE
-		# (1.5,-4.0), rolling speed rack of loaves centre (godot -0.3,-2.2),
-		# flour-dusted prep table with dough + rolling pin (godot -1.5,-1.7),
-		# flour sacks SW. Camera SE just inside the door looking NW across
-		# the prep table + speed rack to the counter; deck oven at right.
-		"camera_origin": Vector3(2.1, 1.62, -0.8),
-		"camera_rotation": Vector3(-0.05, deg_to_rad(48.3), 0.0),
+		# DRAFT 5 (2026-10-09): back-of-house 9 x 7.6 (godot x in [-4.5,4.5],
+		# z in [0,-7.6], ceil 3.0). The bake line on the N wall (counter +
+		# mixer W, deck oven + proofer E at godot 3.0,-7.1), the communal
+		# table mid-room (godot 0,-1.6..-5.1), the Hemlock window W
+		# (z -3.8), prep bench SW, racks E. Camera SE just inside the door
+		# looking NW across the table to the counter and the window.
+		"camera_origin": Vector3(3.20, 1.62, -0.90),
+		"camera_rotation": Vector3(-0.093, deg_to_rad(46.6), 0.0),
 		"fov": 62.0,
 		"suppress_input": true,
 	},

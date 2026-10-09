@@ -3834,6 +3834,45 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-09 · overnight run, pass 9: THE PIT STOP KITCHEN, DRAFT 2 (build
+big).** Ben's side of the pass-through (vol6 ch2/ch4/ch6) was a 3 m galley
+holding a grill, a fryer and one prep table, washed out under the dining
+room's white key. Its grill insert framed the backsplash. The building now
+runs 2 m further north, so the kitchen is 11 x 4.8 m:
+- **Cook line (N wall).** Range with a stockpot; flat-top on a chef base
+  with the patties, buns, press and spatula; two-well fryer; lowboy with
+  the cut veg and the ticket printer. One hood covers it all, with
+  filters, lights and the ticket rail on its lip, and the mat runs in
+  front.
+- **Ben's window and the back lot.** A hand sink sits under the window.
+  Out back there is a lot with the dumpster enclosure ("Dumpster at
+  two-fifteen"); the window insert frames it.
+- **Island and pass.** The plating island holds Ben's phone. The pass
+  counter carries an order up under a heat lamp.
+- **W end.** The walk-in has its condenser and temperature log. Dry
+  storage holds flour sacks and #10 cans, and there is a speed rack.
+- **E wall.** The dish pit: three-compartment sink, pre-rinse sprayer,
+  rack shelf, bus tub, floor drain.
+- **N wall, E end.** Paper-goods shelving.
+- **Surfaces and safety.** A K-class extinguisher, a quarry-tile floor,
+  and sage FRP to 2 m.
+
+Lighting and coverage:
+- Hood-light, pass heat lamp and three tube practicals.
+- The `pit_stop_kitchen` preset has a fluorescent `env`.
+- New markers: the kitchen's own closeup pair (`__pit_stop_kitchen`: Ben
+  at the flat-top, Jesse at the swing door).
+- Re-aimed: the grill insert (now looks down at the flat-top), the
+  window, the phone, the walk-in and the line wide.
+- The Louisiana pickup is black now, as the prose says.
+
+Draft 3 targets:
+- steam and smoke over the flat-top;
+- grease on the filters;
+- the back door to the dumpster;
+- the FOH's own pass (the dining room still has draft-1 booths);
+- Deck framing.
+
 **2026-10-09 · overnight run, pass 8: FAUST'S STUDIO, DRAFT 3 (build big +
 the prose's rooms).** Vol1's most-played interior was a 6 x 5 m box at
 2.7 m. It had no bathroom, the mirror cabinet hung over the kitchen sink,

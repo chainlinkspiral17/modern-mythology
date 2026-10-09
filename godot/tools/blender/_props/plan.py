@@ -28,7 +28,11 @@ _PATH = ("make_tube",)
 
 
 @contextlib.contextmanager
-def shifted(g, dx, dy, **consts):
+def shifted(g, dx, dy, extra=(), extra_paths=(), **consts):
+    """`extra` / `extra_paths`: more of the builder's own global names to
+    move, centre-first (`fn(name, (x, y[, z]), ...)`) or path-first
+    (`fn(name, [(x, y), ...], ...)`) — opt-in per builder, so a name a
+    builder already compensates by hand is never moved twice."""
     import _props.creatures as _C
     import _props.detail as _D
 
@@ -53,9 +57,9 @@ def shifted(g, dx, dy, **consts):
         return w
 
     saved_g, saved_m = {}, []
-    for names, wrap in ((_CENTER, c3), (_XY, xy), (_PATH, path)):
+    for names, wrap in ((_CENTER + tuple(extra), c3), (_XY, xy), (_PATH + tuple(extra_paths), path)):
         for n in names:
-            if n in g:
+            if n in g and n not in saved_g:     # never wrap a name twice
                 saved_g[n] = g[n]
                 g[n] = wrap(g[n])
     for mod, n, wrap in ((_C, "make_crow", xy), (_D, "make_traffic_wear", path), (_D, "make_floor_stain", c3),
