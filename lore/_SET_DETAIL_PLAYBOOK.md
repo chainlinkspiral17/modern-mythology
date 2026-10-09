@@ -84,6 +84,31 @@ henderson) got there by accumulating exactly these layers.
 
 ## Recent lessons
 
+### 2026-10-09 · the wrong THING: a misread noun, a vehicle, a side of the field
+
+Three more "the set is not what the prose says" cases. Each had survived
+several drafts because each draft polished the props it found.
+
+- **A misread noun.** The new_orleans_bar's "chalk table" (vol1) had been
+  built as a pool table. But the crowd SITS at it ("pushes Margaret into
+  the seat next to Faust", Emily's purse beside him, "cozy corner"), so
+  it is a chalkboard-topped bench table. When a noun is ambiguous, read
+  what the characters DO with it.
+- **One set standing for several things.** vehicle_cab is "one cab for
+  every vehicle". ch16's whole chapter is in BT's beige Altima, and its
+  spread was dressed into Ben's pickup. When a shared set fakes a
+  different object, give that object its own instance in the same set
+  (`plan.shifted` with `prefix` and now `dz`) and its own preset. Then
+  move the props the prose puts in it.
+- **Geography between two named places.** "Third row, behind the home
+  bench" puts the home stands on the home bench's side of the field. The
+  field had them on opposite sidelines, so Eileen sat with the visitors.
+  Check every relational phrase (behind, across, next to, by the gate):
+  the gates measure distances, not relations.
+- **Two parts the same cue matches.** `insert truck` framed Coach Dale's
+  truck because both trucks were named "Truck". Name the hero by its
+  owner (`CoachK_Truck_*`) and the other by its kind (`Dale_Pickup_*`).
+
 ### 2026-10-09 · one room, two sets: build one INSIDE the other from its own builder
 
 - Cosmic's back office was a separate set and also a glimpse behind the
