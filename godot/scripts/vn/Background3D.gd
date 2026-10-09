@@ -1865,14 +1865,15 @@ const CAMERA_PRESETS := {
 	"finn_apartment": {
 		"scene": "res://scenes/locales/finn_apartment.tscn",
 		"requires_glb": "res://assets/3d/locales/finn_apartment.glb",
-		# Small apartment 4.5×5 (godot x∈[-2.25,2.25], z∈[0,-5], ceil 2.6).
-		# Bed on the W side (godot -1.125,-2.5), desk + lamp on the E (godot
-		# 1.125,-1.5), dresser on the E wall (godot 1.95,-3.7), rug centre,
-		# N window, poster over the bed. Camera SE corner just inside the
-		# door looking NW across to the bed; dresser E wall, window beyond.
-		"camera_origin": Vector3(1.5, 1.55, -0.7),
-		"camera_rotation": Vector3(-0.05, deg_to_rad(49.0), 0.0),
-		"fov": 58.0,
+		# DRAFT 4 (2026-10-09): one-bedroom over the kayak shop, 8.4 x 7.6
+		# (godot x in [-4.2,4.2], z in [0,-7.6], ceil 2.7). Kitchen S: the run
+		# on the W wall under the alley window, the table with the charred
+		# wood (godot 0.3,-1.95), Finn's desk SW, the space heater + duffel
+		# E; bedroom N through the doorway (godot 1.6,-3.9). Camera inside
+		# the entry door (E wall) looking W across the kitchen.
+		"camera_origin": Vector3(3.60, 1.62, -2.00),
+		"camera_rotation": Vector3(-0.109, deg_to_rad(83.5), 0.0),
+		"fov": 62.0,
 		"suppress_input": true,
 	},
 	"kai_apartment": {

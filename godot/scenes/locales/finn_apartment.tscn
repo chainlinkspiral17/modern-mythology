@@ -187,26 +187,6 @@ light_color = Color(0.86, 0.62, 0.96, 1)
 light_energy = 0.2
 shadow_enabled = false
 
-; Warm desk-lamp practical on the kit lamp's bulb (blender 1.25, 1.70,
-; 1.16 — the desk moved to the east wall on 09-07 and the light had not)
-[node name="Lamp_Bulb_Practical" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 1.16, -1.7)
-light_color = Color(1.0, 0.84, 0.60, 1)
-light_energy = 1.1
-omni_range = 2.8
-shadow_enabled = false
-
-; ── vn_shot (2026-08) · the crow and the charred wood ──────────
-; Crow on the sill: blender (1.55, 0.30, 1.07) → godot (1.55,
-; 1.07, -0.30). Charred wood row: blender (~0.0, 1.60, 0.79).
-[node name="shot_insert_crow" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.55, 1.16, -1.05)
-rotation = Vector3(0.0046, -3.1416, 0.0)
-
-[node name="shot_insert_charred_wood" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.15, -1.02)
-rotation = Vector3(-0.72, 0.0, 0.0)
-
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]
@@ -327,88 +307,129 @@ offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
 
-; ── vn_shot coverage (2026-08-08 directing pass 4) ────────
-; rotation B: from the partition gap south to the kitchen table, desk and window
-[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.45, 1.5, -2.6)
-rotation = Vector3(-0.320315, 2.50757, 0)
-metadata/fov = 56.0
-
-; rotation C: from the kitchen counter over the table to the bed nook
-[node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.7, 1.5, -0.9)
-rotation = Vector3(-0.206461, -0.679414, 0)
-metadata/fov = 54.0
-
-; insert: the packed duffel by the door
-; (2026-09-19: the duffel is in the SE corner proper, blender (1.82, 0.42);
-; the lens looks east at it from beside the south wall, clear of the
-; kit desk chair's back posts)
-[node name="shot_insert_duffel" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.250, 0.750, -0.250)
-rotation = Vector3(-0.75, -1.28, 0.0)
-metadata/fov = 44.0
-
-; insert: the clock on the nightstand
-[node name="shot_insert_nightstand" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.993, 0.599, -3.798)
-rotation = Vector3(-0.2618, 1.3090, 0.0)
-metadata/fov = 42.0
-
-; insert: the hexagon on the cloth — the eighth piece into the hole
-[node name="shot_insert_hexagon" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 1.2, -1.15)
-rotation = Vector3(-0.6387, -0.6889, 0.0)
-metadata/fov = 42.0
-
-; insert: the thumb-sized carved cedar
-[node name="shot_insert_cedar" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 1.1, -1.3)
-rotation = Vector3(-0.5819, -0.5010, 0.0)
-metadata/fov = 42.0
-
-; insert: Finn's phone on the desk
-[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, 1.1, -0.9)
-rotation = Vector3(-0.6168, -0.5586, 0.0)
-metadata/fov = 42.0
-
-; insert: Finn's notebook on the desk
-[node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 1.1, -1.15)
-rotation = Vector3(-0.5830, -0.6585, 0.0)
-metadata/fov = 42.0
-
-; insert: the stick in its waxed-paper sleeve — the crow stood on it
-[node name="shot_insert_stick" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 1.15, -1.2)
-rotation = Vector3(-0.6075, 0.7188, 0.0)
-metadata/fov = 42.0
-
-; insert: the reader on the side table, the compact one from '49
-[node name="shot_insert_reader" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.750, 0.758, -3.122)
-rotation = Vector3(-0.2618, 0.2618, 0.0)
-metadata/fov = 42.0
-
-; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
-; every closeup of a person cued here cuts to it (the scene had no closeup marker)
-[node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.545, 1.612, -2.316)
-rotation = Vector3(-0.2618, 1.3090, 0.0)
-metadata/fov = 45.0
-
-; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
-; the far side of the same spot, so two speakers alternate sides
-[node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-2.068, 1.612, -3.016)
-rotation = Vector3(-0.2618, -1.8326, 0.0)
-metadata/fov = 45.0
-
-; draft 3 (2026-09-19): the ceiling dome is a fixture, so it is a light
-[node name="Ceiling_Dome_Practical" type="OmniLight3D" parent="."]
-position = Vector3(0.000, 2.440, -2.500)
-light_color = Color(0.960, 0.900, 0.740, 1)
-light_energy = 0.80
+; DRAFT 4 (2026-10-09): the 8.4 x 7.6 one-bedroom's fixtures + the bakery's back-kitchen light in the alley
+[node name="Lamp_Bulb_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-2.38, 1.16, -0.54)
+light_color = Color(0.98, 0.8, 0.52, 1)
+light_energy = 1.1
 shadow_enabled = false
-omni_range = 4.20
+omni_range = 3.0
+
+[node name="Kitchen_Light_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.3, 2.5, -1.95)
+light_color = Color(1.0, 0.88, 0.64, 1)
+light_energy = 1.0
+shadow_enabled = false
+omni_range = 5.5
+
+[node name="Bedroom_Light_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-1.0, 2.5, -5.7)
+light_color = Color(1.0, 0.86, 0.62, 1)
+light_energy = 0.8
+shadow_enabled = false
+omni_range = 5.0
+
+[node name="Space_Heater_Glow_Practical" type="OmniLight3D" parent="."]
+position = Vector3(3.7, 0.32, -3.54)
+light_color = Color(1.0, 0.5, 0.22, 1)
+light_energy = 0.6
+shadow_enabled = false
+omni_range = 1.8
+
+[node name="Out_Bakery_Light_Bulb_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-10.1, -0.58, -2.6)
+light_color = Color(1.0, 0.82, 0.52, 1)
+light_energy = 1.6
+shadow_enabled = false
+omni_range = 6.0
+
+[node name="shot_insert_crow" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.350, 1.350, -4.950)
+rotation = Vector3(-0.2206, 0.8442, 0.0)
+metadata/fov = 40.0
+
+[node name="shot_insert_charred_wood" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.850, 1.350, -1.350)
+rotation = Vector3(-0.6499, 0.6435, 0.0)
+metadata/fov = 40.0
+
+[node name="shot_insert_hexagon" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.250, 1.300, -1.400)
+rotation = Vector3(-0.6890, 0.5133, 0.0)
+metadata/fov = 40.0
+
+[node name="shot_insert_stick" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.150, 1.250, -1.650)
+rotation = Vector3(-0.6400, 0.7069, 0.0)
+metadata/fov = 40.0
+
+[node name="shot_insert_cedar" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.400, 1.250, -1.200)
+rotation = Vector3(-0.5719, 2.8287, 0.0)
+metadata/fov = 38.0
+
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.600, 1.300, -1.000)
+rotation = Vector3(-0.6421, 2.8555, 0.0)
+metadata/fov = 38.0
+
+[node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.200, 1.300, -1.050)
+rotation = Vector3(-0.6947, -2.8547, 0.0)
+metadata/fov = 38.0
+
+[node name="shot_insert_duffel" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.900, 1.200, -1.100)
+rotation = Vector3(-0.7610, -2.2753, 0.0)
+metadata/fov = 42.0
+
+[node name="shot_insert_patch" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.000, 1.000, -1.200)
+rotation = Vector3(-0.4788, -2.1876, 0.0)
+metadata/fov = 42.0
+
+[node name="shot_insert_bag" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.450, 1.400, -1.200)
+rotation = Vector3(-0.3985, 0.5543, 0.0)
+metadata/fov = 45.0
+
+[node name="shot_insert_reader" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-3.000, 1.200, -6.100)
+rotation = Vector3(-0.5882, 1.0156, 0.0)
+metadata/fov = 38.0
+
+[node name="shot_insert_nightstand" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-3.100, 1.350, -7.200)
+rotation = Vector3(-0.7753, 2.1860, 0.0)
+metadata/fov = 42.0
+
+[node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.200, 1.600, -2.900)
+rotation = Vector3(-0.1515, -1.8281, 0.0)
+metadata/fov = 45.0
+
+[node name="shot_insert_food" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.350, 1.450, -1.050)
+rotation = Vector3(-0.5626, 0.8885, 0.0)
+metadata/fov = 40.0
+
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.600, 1.600, -4.250)
+rotation = Vector3(-0.1611, 1.2073, 0.0)
+metadata/fov = 58.0
+
+[node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-3.200, 1.600, -3.300)
+rotation = Vector3(-0.0895, -1.9541, 0.0)
+metadata/fov = 58.0
+
+[node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.300, 1.450, -0.550)
+rotation = Vector3(-0.1510, -0.0000, 0.0)
+metadata/fov = 45.0
+
+[node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.300, 1.500, -3.300)
+rotation = Vector3(-0.1031, -3.1416, 0.0)
+metadata/fov = 45.0
+

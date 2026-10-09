@@ -3834,6 +3834,39 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-09 · overnight run, pass 12: FINN'S APARTMENT, DRAFT 4 (build big +
+the prose's kitchen).** Vol7's six Finn scenes played in a 5.0 x 5.4 m
+room. The kitchen was a counter, and the bedroom partition stood across
+a third of the preset. The prose's kitchen had no home: "He banked the
+space heater in the corner. He put the kettle on. He stood at the kitchen
+window looking down at the alley." Rebuilt at 8.4 x 7.6 m under 2.7:
+- **Kitchen run (W wall).** Fridge, stove with the kettle, the sink under
+  THE KITCHEN WINDOW, upper cupboards and a curtain. Two floors down
+  across the alley is the bakery's back wall, its door and the
+  back-kitchen light (lit), so Finn's window looks at the same light
+  Marina stands under in ch15.
+- **The table.** The cloth with five charred-wood pieces laid in a shape,
+  the hexagon, the stick in its sleeve, the plate Kai made him eat from,
+  the paper bag, three chairs.
+- **Around the kitchen.** The lit space heater in one corner and the
+  nine-month duffel in the other. The desk holds the lamp, phone,
+  notebook and carved cedar. A low bookcase; the entry door from the
+  stairs with its chain, a canvas coat and boots; the S window's sill
+  with the crow's marks.
+- **Bedroom (through a real cased doorway).** The raised bed on turned
+  posts over slatted crates, the nightstand with the reader and headset,
+  and THE CHAIR BESIDE THE BED with the crow on its back. A clothes rail,
+  a bench with the folded thermal and jeans, floor books, a dresser with
+  the change bowl and keys, and the N window over the neighbour's roof.
+- **Markers.** 18, re-authored for every cue the six chapters fire.
+
+Draft 5 targets:
+- a bathroom door;
+- the dish rack;
+- the crates' contents;
+- rain under the bakery light;
+- Deck framing.
+
 **2026-10-09 · overnight run, pass 11: THE MISSING LINK, DRAFT 4 (one building,
 built big, BIGFOOT).** CANON (user, 2026-10-09): **the Missing Link diner
 is Bigfoot-themed.** The creature "halfway between a man and an ape" on
