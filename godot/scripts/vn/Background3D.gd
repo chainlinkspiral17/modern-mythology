@@ -1177,13 +1177,15 @@ const CAMERA_PRESETS := {
 	"sam_bedroom": {
 		"scene": "res://scenes/locales/sam_bedroom.tscn",
 		"requires_glb": "res://assets/3d/locales/sam_bedroom.glb",
-		# Teen-boy bedroom 4×5 (godot x∈[-2,2], z∈[0,-5], ceil 2.6). Bed on
-		# the W side (godot -1,-2.5), computer desk + game corner on the E
-		# (godot 1,-1.5), N window, posters W wall. Camera SE corner just
-		# inside the door looking NW across to the bed, window beyond.
-		"camera_origin": Vector3(1.4, 1.55, -0.7),
-		"camera_rotation": Vector3(-0.05, deg_to_rad(48.0), 0.0),
-		"fov": 58.0,
+		# DRAFT 5 (2026-10-09): SAM MILLER's cornflower-blue room, upstairs at
+		# 1428 Meadowlark Circle, 4.8 x 5.6 (godot x in [-2.4,2.4], z in
+		# [0,-5.6]). Bed head to the W wall (godot -1.3,-3.55), the desk on
+		# the E wall, the window on the cul-de-sac N, the fan overhead,
+		# the dresser + closet by the door. Camera inside the door (SE)
+		# looking NW: the bed, the window, the fan.
+		"camera_origin": Vector3(1.60, 1.58, -0.75),
+		"camera_rotation": Vector3(-0.135, deg_to_rad(40.2), 0.0),
+		"fov": 62.0,
 		"suppress_input": true,
 	},
 	"school_field_evening": {

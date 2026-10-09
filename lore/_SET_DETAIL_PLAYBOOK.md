@@ -84,6 +84,26 @@ henderson) got there by accumulating exactly these layers.
 
 ## Recent lessons
 
+### 2026-10-09 · the wrong PERSON: read the chapters that load the preset, not the builder
+
+- Two vol6 bedrooms had been dressed for people who do not sleep in them,
+  and four drafts had polished the wrong room.
+  - `sam_bedroom` was a boy's comics-and-games room. Every chapter that
+    loads it is Sam MILLER's: "her cornflower blue bedroom", the
+    clicking fan, the WEDNESDAY LIST, the Kwik Stop polo.
+  - `maya_bedroom`'s docstring had "Maya Miller (Chief Miller's
+    daughter)". She is Maya Daigle, living with her grandmother, and
+    half her night happens in a room the set did not have.
+- **Before a pass**, list the chapters that load the preset (`grep
+  '3d:<preset>'`) and read their room sentences: who, what colour, what
+  the window looks at, what she does there. The builder's docstring is a
+  previous session's guess.
+- **A cue with no home is a room to build.** `[shot:closeup grandmother]`
+  cut to a substitute, and `insert hands` framed a stand-in crease on the
+  wrong bed. Building the room across the hall fixed both.
+- The other wrong-house cases are the 2026-10-08 entries below; the
+  2026-10-09 docstring/title sweep found no third bedroom.
+
 ### 2026-10-09 · build big, THEN FILL: an enlarged room is an empty hall until it gets work zones
 
 - Faust's studio, the Pit Stop kitchen and Hans's bakery each grew from

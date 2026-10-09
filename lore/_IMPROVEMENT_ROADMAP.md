@@ -3834,6 +3834,36 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-09 · overnight run, pass 14: SAM'S BEDROOM IS SAM MILLER'S (the
+wrong person).** Drafts 1-4 dressed `sam_bedroom` for "Sam (the kid
+protagonist; into Cosmic Comics and video games) ... boyish ... his
+door": a captain's bed, comic longboxes, a CRT, a console, a skateboard.
+Every scene that loads the preset (vol6 ch0/1/3/4/5/6/15) belongs to
+SAM MILLER, the chief's daughter, who works the Kwik Stop and drives the
+Corolla. Rebuilt as her room:
+- **Walls, fan and window.** "Her cornflower blue bedroom" with white
+  trim. THE FAN, which "clicks on the third rotation": five blades, the
+  light kit, the pull chain. The window on the cul-de-sac with drapes
+  and a drawn-aside sheer.
+- **Through the window, two floors down.** The front lawn and THE CRACKED
+  SPRINKLER throwing its arc onto the sidewalk's grey stripe. The street,
+  the houses across, and the mailboxes with the NexCorp logo
+  (`make_view` kind=front, logo_mailbox).
+- **Furniture.** The bed with the nightstand, lamp and dream notebook.
+  The desk with the legal pad, its top sheet the WEDNESDAY LIST, and the
+  corkboard over it. The dresser with her phone, the mirror and the Kwik
+  Stop name tag. The closet with the red polo hanging on its door for the
+  morning. A bookshelf, a laundry basket, her six-panel door.
+- **Coverage.** Practicals for the bedside lamp, the desk lamp and the
+  fan's light. 12 markers: window, sprinklers, phone, notebook, list,
+  legal pad, door, fan, establish b/c, the closeup pair.
+
+Draft 6 targets:
+- her parents' room down the hall (ch3's "insert door");
+- the fan's blades turning;
+- the wet sidewalk at 6:12;
+- Deck framing.
+
 **2026-10-09 · overnight run, pass 13: MAYA'S UPSTAIRS (the room across the
 hall).** vol6 ch2 stages half of Maya's night in her grandmother's
 bedroom. "She crosses the hall. She opens her grandmother's bedroom
