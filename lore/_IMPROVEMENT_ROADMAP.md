@@ -3834,6 +3834,37 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-09 · overnight run, pass 10: HANS'S BAKERY, DRAFT 5 (build big +
+the fill).** Vol7's table (8 scenes) had a 13-seat communal table in a
+6 x 5 m back kitchen, alongside a deck oven, a proofer, a counter, a prep
+table and two racks. Every aisle was a chair-width wide, and the preset's
+right third was a grey slab: the cooling rack's solid "frame", which
+swallowed its shelves and loaves (the speed rack's frame did the same).
+- **9 x 7.6 m under 3.0.** The builder's mixed functions were split by
+  area, and each area moved rigidly with `plan.shifted`. A part-by-part
+  snapshot diff confirmed that every part moved by its group's shift and
+  nothing else changed. The bake line sits on the N wall, the table
+  mid-room, the Hemlock-window corner and prep bench on the W wall, and
+  the racks on the E wall as open post frames on casters. The S wall
+  (door, pass, Per's bench) stayed put.
+- **The fill.** The bigger room first read as an empty hall. It now has
+  a maple baker's bench in the E aisle (dough mass, rounds, bannetons, a
+  scraper, tubs on the shelf), a timber wainscot on the W and S walls,
+  aprons on hooks, a hand sink by the door, and a plaster ceiling on four
+  beams. Two warm pendants hang over the table (with practicals), and
+  the tubes are kept over the bake line only.
+- **Light.** The walls were (0.96, 0.84, 0.62) under a 0.95 ambient and
+  a 1.1 shadowless key, so every frame was flat yellow. Now: aged-plaster
+  walls, ambient 0.58, key 0.62, and the pendants carry the table.
+
+Draft 6 targets:
+- the proofer as real glass;
+- lathed scored loaves;
+- the flour haze;
+- Greta's drawer half-open;
+- a bread shelf for the front in the E aisle's S end;
+- Deck framing.
+
 **2026-10-09 · overnight run, pass 9: THE PIT STOP KITCHEN, DRAFT 2 (build
 big).** Ben's side of the pass-through (vol6 ch2/ch4/ch6) was a 3 m galley
 holding a grill, a fryer and one prep table, washed out under the dining

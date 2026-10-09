@@ -57,7 +57,7 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_chamfer_box, make_blob, make_cyl, make_lathe, make_tube, make_taper_cyl, make_rot_box, export_glb
-from _props.furniture import make_chair
+from _props.furniture import make_chair, make_pendant
 from _props.detail import make_traffic_wear, make_floor_stain, make_scuff_band, make_light_switch, make_wall_outlet, make_cord_run
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_case_shell, make_wall_with_openings
 from _props.store_fixtures import make_counter, make_counter_bullnose, make_register
@@ -68,7 +68,7 @@ from _props.safety import make_smoke_detector, make_hvac_vent, make_fluorescent_
 from _props.plan import shifted
 
 ROOM_W = 9.0; ROOM_D = 7.6; CEIL = 3.0   # draft 5 (2026-10-09): was 6.0 x 5.0 x 2.8
-PAL_WALL = {"wall":(0.96,0.84,0.62,1.0),"baseboard":(0.62,0.42,0.22,1.0)}
+PAL_WALL = {"wall":(0.82,0.70,0.52,1.0),"baseboard":(0.62,0.42,0.22,1.0)}   # draft 5: aged plaster (0.96 yellow washed every frame out)
 COL_FLOOR = (0.62,0.46,0.30,1.0); COL_SEAM = (0.32,0.22,0.14,1.0); COL_WOOD = (0.42,0.30,0.18,1.0)
 COL_ACCENT = (0.78,0.42,0.22,1.0)
 COUNTER_CX = -1.65   # draft 4 · the north counter runs x -2.70..-0.60
@@ -93,7 +93,9 @@ def build_shell():
     make_box("Wall_S_E_Lintel", (2.0, 0.0, (1.90 + CEIL) / 2.0), (1.30, 0.20, CEIL - 1.90), PAL_WALL["wall"])
     # the door's head stays at 2.2 m (the back-kitchen light hangs over it)
     make_box("Wall_S_AboveDoor", (0.0, 0.0, (2.20 + CEIL) / 2.0), (2.0, 0.20, CEIL - 2.20), PAL_WALL["wall"])
-    make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
+    # plaster on beams (draft 5: the drop-tile grid read as an office; beams in the fill pass)
+    make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4, with_grid=False, with_stains=False,
+                 palette={"tile": (0.90, 0.86, 0.78, 1.0)})
     for nm, ax, length, wx, wy in [
             ("Crown_W", 'Y', ROOM_D, -ROOM_W/2.0+0.10, ROOM_D/2.0),
             ("Crown_E", 'Y', ROOM_D, +ROOM_W/2.0-0.10, ROOM_D/2.0),
@@ -314,7 +316,8 @@ def build_clock():
     make_wall_clock("Clock", (0.0, 4.900, CEIL-0.50), frozen_hour=6, frozen_min=1, facing='-Y')
 
 def build_ceiling_infra():
-    for j, (fx_, fy_) in enumerate(((-2.2, 2.3), (2.2, 2.3), (-2.2, 5.4), (2.2, 5.4))):
+    # tubes over the bake line only; the table has its pendants (draft 5 fill)
+    for j, (fx_, fy_) in enumerate(((-2.2, 6.1), (2.2, 6.1))):
         make_fluorescent_tube_fixture(f"Fluor_{j}", (fx_, fy_, CEIL), length=1.40, width=0.34)
     make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
 
@@ -512,7 +515,7 @@ def build_draft4_2026_09():
     # chair → the mixer end of the counter (the bakers' morning)
     make_traffic_wear("Wear_Path_Flour", [(-3.1, 2.55), (-2.7, 3.4), (-2.6, 5.0), (-2.7, 6.0)], width=0.55, tint=flour_dk)
     # the oven approach down the east aisle to the oven doors
-    make_traffic_wear("Wear_Path_Oven", [(1.6, 1.4), (1.7, 4.6), (2.1, 5.6), (2.4, 6.4)], width=0.45, tint=floor_dk)
+    make_traffic_wear("Wear_Path_Oven", [(1.6, 1.4), (1.6, 5.9), (2.4, 6.35)], width=0.45, tint=floor_dk)
     make_traffic_wear("Wear_Path_Door", [(0.0, 0.3), (0.0, 0.55)], width=0.9, tint=floor_dk)
 
 
@@ -592,6 +595,71 @@ def build_foh():
     make_cyl("FOH_Table_Post", (-0.6, -2.6, 0.36), 0.04, 0.72, P.METAL_BLACK, segments=8)
 
 
+def build_draft5_fill_2026_10():
+    """DRAFT 5 · THE FILL (2026-10-09). Built on the new 9 x 7.6 plan (no
+    shift). The bigger room read as an empty hall: the baker's bench in
+    the E aisle (the morning's dough, bannetons, the scraper), a timber
+    wainscot on the W and S walls, aprons and a hand sink by the door,
+    and a plaster ceiling on beams with two warm pendants over the
+    table in place of the drop-tile grid (it read as an office)."""
+    maple, maple_dk = (0.74, 0.60, 0.42, 1.0), (0.52, 0.40, 0.26, 1.0)
+    dough = (0.92, 0.88, 0.76, 1.0)
+    flour = (0.94, 0.92, 0.86, 1.0)
+    cane = (0.70, 0.56, 0.36, 1.0)
+    # ── the baker's bench, E aisle ──
+    bx, by, bw, bd = 2.55, 4.55, 0.90, 2.20
+    make_box("Bench_Top", (bx, by, 0.90), (bw, bd, 0.08), maple)
+    for li, (ox, oy) in enumerate(((-0.40, -1.05), (0.40, -1.05), (-0.40, 1.05), (0.40, 1.05))):
+        make_box(f"Bench_Leg_{li}", (bx + ox, by + oy, 0.43), (0.08, 0.08, 0.86), maple_dk)
+    make_box("Bench_Shelf", (bx, by, 0.22), (bw - 0.16, bd - 0.16, 0.03), maple_dk)
+    for ti, ty in enumerate((by - 0.6, by + 0.1)):
+        make_box(f"Bench_Tub_{ti}", (bx, ty, 0.355), (0.55, 0.45, 0.24), (0.86, 0.86, 0.84, 1.0))
+        make_box(f"Bench_Tub_{ti}_Lid", (bx, ty, 0.48), (0.57, 0.47, 0.02), (0.30, 0.46, 0.62, 1.0))
+    make_box("Bench_Flour_Dust", (bx - 0.05, by - 0.35, 0.941), (0.70, 1.10, 0.002), flour)
+    make_blob("Bench_Dough_Mass", (bx - 0.05, by - 0.55, 0.99), 0.17, dough, noise=0.12, seed=5, squash=0.45)
+    for di in range(6):
+        make_cyl(f"Bench_Dough_Round_{di}", (bx - 0.25 + (di % 2) * 0.30, by - 0.05 + (di // 2) * 0.24, 0.975), 0.075, 0.07, dough, segments=12)
+    make_box("Bench_Scraper", (bx + 0.25, by - 0.75, 0.948), (0.12, 0.10, 0.012), (0.70, 0.72, 0.74, 1.0))
+    make_box("Bench_Scraper_Grip", (bx + 0.25, by - 0.69, 0.962), (0.12, 0.02, 0.025), (0.20, 0.20, 0.22, 1.0))
+    # bannetons: cane proofing baskets, a stack and a row with dough in them
+    for k in range(4):
+        make_lathe(f"Banneton_Stack_{k}", (bx + 0.20, by + 0.80, 0.94 + k * 0.075),
+                   [(0.08, 0.0), (0.10, 0.02), (0.12, 0.075), (0.11, 0.075), (0.09, 0.02), (0.0, 0.01)], cane, segments=12)
+    for k in range(3):
+        make_lathe(f"Banneton_{k}", (bx - 0.22, by + 0.45 + k * 0.26, 0.94),
+                   [(0.07, 0.0), (0.09, 0.02), (0.11, 0.08), (0.10, 0.08), (0.08, 0.02), (0.0, 0.01)], cane, segments=12)
+        make_cyl(f"Banneton_{k}_Dough", (bx - 0.22, by + 0.45 + k * 0.26, 1.01), 0.085, 0.03, dough, segments=12)
+    make_box("Bench_Flour_Bag", (bx + 0.22, by + 0.30, 1.06), (0.26, 0.16, 0.24), (0.86, 0.80, 0.66, 1.0))
+    # ── timber wainscot: W wall (under the window's sill line) and the S wall W of the door ──
+    wain, cap = (0.50, 0.36, 0.22, 1.0), (0.40, 0.28, 0.17, 1.0)
+    XW = -ROOM_W / 2.0 + 0.10
+    make_box("Wainscot_W", (XW + 0.01, ROOM_D / 2.0, 0.45), (0.02, ROOM_D - 0.2, 0.90), wain)
+    make_box("Wainscot_W_Cap", (XW + 0.02, ROOM_D / 2.0, 0.915), (0.04, ROOM_D - 0.2, 0.03), cap)
+    make_box("Wainscot_S", ((XW - 1.0) / 2.0, 0.11, 0.45), (-1.0 - XW, 0.02, 0.90), wain)
+    make_box("Wainscot_S_Cap", ((XW - 1.0) / 2.0, 0.12, 0.915), (-1.0 - XW, 0.04, 0.03), cap)
+    for k in range(int((ROOM_D - 0.2) / 0.30)):
+        make_box(f"Wainscot_W_Batten_{k}", (XW + 0.025, 0.25 + k * 0.30, 0.45), (0.01, 0.025, 0.86), cap)
+    # ── by the door: a hand sink, the aprons on their hooks ──
+    hx = -2.55
+    make_box("Hand_Sink", (hx, 0.33, 0.86), (0.45, 0.40, 0.18), (0.86, 0.86, 0.84, 1.0))
+    make_box("Hand_Sink_Bowl", (hx, 0.35, 0.952), (0.36, 0.28, 0.006), (0.66, 0.68, 0.70, 1.0))
+    make_box("Hand_Sink_Bracket", (hx, 0.17, 0.66), (0.30, 0.06, 0.22), (0.62, 0.62, 0.64, 1.0))
+    make_cyl("Hand_Sink_Faucet", (hx, 0.17, 1.00), 0.015, 0.10, (0.70, 0.72, 0.74, 1.0), segments=6)
+    make_box("Hand_Sink_Spout", (hx, 0.23, 1.045), (0.025, 0.12, 0.02), (0.70, 0.72, 0.74, 1.0))
+    make_box("Towel_Dispenser", (hx + 0.45, 0.15, 1.35), (0.28, 0.10, 0.34), (0.90, 0.90, 0.88, 1.0))
+    ax0 = -3.40
+    make_box("Apron_Hook_Board", (ax0 + 0.25, 0.13, 1.66), (0.70, 0.02, 0.08), maple_dk)
+    for k, (ox, col) in enumerate(((0.0, (0.92, 0.90, 0.84, 1.0)), (0.30, (0.40, 0.46, 0.56, 1.0)), (0.55, (0.92, 0.90, 0.84, 1.0)))):
+        make_box(f"Apron_Hook_{k}", (ax0 + ox, 0.16, 1.64), (0.02, 0.04, 0.02), (0.30, 0.30, 0.32, 1.0))
+        make_box(f"Apron_{k}", (ax0 + ox, 0.165, 1.25), (0.22, 0.03, 0.78), col)
+        make_box(f"Apron_{k}_Strap", (ax0 + ox, 0.165, 1.645), (0.06, 0.032, 0.02), col)
+    # ── the ceiling: plaster on four beams, two warm pendants over the table ──
+    for k, y in enumerate((1.4, 3.2, 5.0, 6.8)):
+        make_box(f"Ceil_Beam_{k}", (0.0, y, CEIL - 0.12), (ROOM_W - 0.2, 0.18, 0.24), (0.36, 0.26, 0.17, 1.0))
+    for k, y in enumerate((2.6, 4.4)):
+        make_pendant(f"Table_Pendant_{k}", 0.0, y, 2.05, CEIL, shade_col=(0.30, 0.36, 0.30, 1.0), shade_r=0.20)
+
+
 # ── DRAFT 5 · THE BIGGER ROOM (2026-10-09, lore/_SET_DETAIL_PLAYBOOK.md) ──
 # Each area was authored against the 6 x 5 walls; it is built inside
 # shifted(), handed the old ROOM_W/ROOM_D, and moved rigidly onto the
@@ -639,6 +707,7 @@ def main():
     build_foh()
     build_draft4_2026_09()
     build_ceiling_infra()
+    build_draft5_fill_2026_10()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/hans_bakery_back_kitchen.glb"))
     print(f"\n[build_hans_bakery_back_kitchen] exporting to {out}")

@@ -146,8 +146,8 @@ background_mode = 2
 sky = SubResource("Sky_Win")
 background_color = Color(0.12, 0.10, 0.06, 1)
 ambient_light_source = 2
-ambient_light_color = Color(0.96, 0.84, 0.62, 1)
-ambient_light_energy = 0.95
+ambient_light_color = Color(0.88, 0.80, 0.68, 1)
+ambient_light_energy = 0.58
 fog_enabled = true
 fog_sky_affect = 0.0
 fog_light_color = Color(0.62, 0.46, 0.32, 1)
@@ -171,8 +171,8 @@ environment = SubResource("Env_Locale")
 
 [node name="Key" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 4, 12, 4)
-light_color = Color(1.00, 0.92, 0.68, 1)
-light_energy = 1.1
+light_color = Color(1.00, 0.92, 0.72, 1)
+light_energy = 0.62
 shadow_enabled = false
 
 [node name="Fill" type="DirectionalLight3D" parent="."]
@@ -437,31 +437,30 @@ shadow_enabled = false
 omni_range = 4.64
 
 [node name="Fluor_0_Tube_Practical" type="OmniLight3D" parent="."]
-position = Vector3(-2.200, 2.920, -2.300)
+position = Vector3(-2.200, 2.920, -6.100)
 light_color = Color(0.920, 0.920, 0.850, 1)
 light_energy = 1.30
 shadow_enabled = false
 omni_range = 4.35
 
 [node name="Fluor_1_Tube_Practical" type="OmniLight3D" parent="."]
-position = Vector3(2.200, 2.920, -2.300)
+position = Vector3(2.200, 2.920, -6.100)
 light_color = Color(0.920, 0.920, 0.850, 1)
 light_energy = 1.30
 shadow_enabled = false
 omni_range = 4.35
 
-; draft 5 (2026-10-09): the 9 x 7.6 room's back pair of tubes
-
-[node name="Fluor_2_Tube_Practical" type="OmniLight3D" parent="."]
-position = Vector3(-2.200, 2.920, -5.400)
-light_color = Color(0.920, 0.920, 0.850, 1)
-light_energy = 1.30
+; draft 5 fill (2026-10-09): the two warm pendants over the table
+[node name="Table_Pendant_0_Bulb_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.000, 1.980, -2.600)
+light_color = Color(1.0, 0.82, 0.56, 1)
+light_energy = 1.7
 shadow_enabled = false
-omni_range = 4.35
+omni_range = 5.0
 
-[node name="Fluor_3_Tube_Practical" type="OmniLight3D" parent="."]
-position = Vector3(2.200, 2.920, -5.400)
-light_color = Color(0.920, 0.920, 0.850, 1)
-light_energy = 1.30
+[node name="Table_Pendant_1_Bulb_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.000, 1.980, -4.400)
+light_color = Color(1.0, 0.82, 0.56, 1)
+light_energy = 1.7
 shadow_enabled = false
-omni_range = 4.35
+omni_range = 5.0

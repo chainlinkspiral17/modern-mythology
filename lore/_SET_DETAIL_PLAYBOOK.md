@@ -84,6 +84,35 @@ henderson) got there by accumulating exactly these layers.
 
 ## Recent lessons
 
+### 2026-10-09 · build big, THEN FILL: an enlarged room is an empty hall until it gets work zones
+
+- Faust's studio, the Pit Stop kitchen and Hans's bakery each grew from
+  their prose (8 x 6.6, 11 x 4.8, 9 x 7.6). The bakery, moved rigidly,
+  first rendered as a hall: the same furniture with two metres of bare
+  floor around it. A bigger plan needs a second, FILL pass:
+  - a work zone in every new aisle (the baker's bench, the plating
+    island, the dish pit);
+  - wall treatment that breaks the big planes (wainscot, FRP, tile to
+    2 m, a picture rail);
+  - a ceiling that says what the room is (beams and pendants, not the
+    office drop-tile grid).
+- **The solid-frame class, again.** Racks, carts and shelving built as
+  one box the size of the unit swallow their trays and loaves, and at
+  1.7 m tall they fill a third of a frame. Build them as posts plus
+  runners (or a carcass) on casters.
+- **Split mixed functions by AREA before shifting.** The bakery's
+  draft-4 pass held wear, D3 and D5 for five areas in one function. Split
+  it, and move each piece with the furniture it belongs to. Then re-walk
+  the wear PATHS on the new plan: a path joins two areas, so no single
+  group shift fits it.
+- **Verify the refactor with ZERO shifts first.** The diff must show only
+  the deliberate changes. Then apply the real shifts and diff again;
+  anything that moved by an unplanned amount is a constant the function
+  reads (the bakery's pass window computed its x from ROOM_W).
+- A helper the builder imports by name (`make_counter`, `make_wall_outlet`)
+  is moved only if it is listed in `shifted(..., extra=...)`. The list is
+  opt-in per builder, so builders that compensated by hand are untouched.
+
 ### 2026-10-09 · enlarging a hand-placed room: shift the GROUPS, verify by diff
 
 - (Lena's apartment, the second room done this way.) The technique is
