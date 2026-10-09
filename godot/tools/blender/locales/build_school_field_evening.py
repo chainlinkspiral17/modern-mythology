@@ -31,10 +31,24 @@ field house's light over its door — the corkboard is read under it —
 the scoreboard's cable and box, the goalposts' pads). The .tscn gains
 the field-house lamp.
 
-DRAFT 5 targets: the spectators and players as figures with a pose
-(the class belongs in _props); the bleachers' underside; the press box;
-the scoreboard's digits as digits; the parking lot's lamp practicals at
-dusk; Deck: the sheet's establish at dusk and `insert corkboard`.
+DRAFT 5 (2026-10-09) — the prose's geography. vol6 ch22 puts Eileen
+"Third row, behind the home bench"; drafts 1-4 had the only stands on
+the WEST sideline and the home bench (Coach K's stopwatch, the helmet
+rack) EAST, so her chair sat across the field in the visitors' seats.
+The home stands are now east, behind the home bench: open aluminium
+rows (seat plank, footboard, posts every 3 m, tie beams, the back
+guard rail, the aisle rail — the bleachers' underside was a draft-5
+target), the PRESS BOX on top with its stair; a visitors' stand west;
+the floodlight poles behind both. Coach K's truck is what ch13 says —
+"the white Ford F-250 with the camper shell and the ladder rack and the
+tape job on the driver's-side mirror" — not a bare red pickup, and
+`insert truck` frames it (it framed Coach Dale's truck by the shed).
+
+DRAFT 6 targets: the synthetic track ("the back stretch of the
+synthetic track", ch19) — a real one rings the field, so the lot, the
+gate and the field house move south and the stands outward; figures
+with a pose; the scoreboard's digits as digits; the lot's lamp
+practicals at dusk; Deck framing.
 """
 import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
@@ -130,40 +144,96 @@ def build_goalposts():
                      (ux, gy, 3.05 + 3.0), 0.06, 6.0, COL_GOAL, segments=8)
 
 
+HOME_SIDE = +1                 # the home bench, its stands and the press box are EAST
+
+
+def _stands(tag, sign, rows, half_len, cy, d0=6.0, press_box=False):
+    """Open aluminium stands (draft 5, 2026-10-09): a seat plank and a
+    footboard per row on posts every 3 m, tie beams, the back guard
+    rail, the aisle handrail — not the solid stepped block of drafts
+    1-4 (the bleachers' underside was a draft-5 target). `sign` +1
+    builds east of the east sideline, -1 west of the west one; d is
+    the depth from the stands' front edge, SIDE_X + d0 off centre."""
+    def X(d): return sign * (SIDE_X + d0 + d)
+    alum, plank = (0.66, 0.68, 0.70, 1.0), (0.74, 0.76, 0.78, 1.0)
+    y0, y1 = cy - half_len, cy + half_len
+    seat_top = lambda s: 0.45 + s * 0.42
+    for s in range(rows):
+        S = seat_top(s)
+        make_box(f"{tag}_Seat_{s}", (X(s * 0.8 + 0.63), cy, S - 0.025), (0.30, 2 * half_len, 0.05), plank)
+        if s:
+            make_box(f"{tag}_Foot_{s}", (X(s * 0.8 + 0.225), cy, S - 0.42 - 0.025), (0.45, 2 * half_len, 0.05), alum)
+    n = int(round(2 * half_len / 3.0))
+    for k in range(n + 1):
+        py = y0 + 0.15 + k * (2 * half_len - 0.3) / n
+        for s in range(rows):
+            S = seat_top(s)
+            make_box(f"{tag}_Post_{k}_{s}", (X(s * 0.8 + 0.63), py, (S - 0.05) / 2.0), (0.06, 0.06, S - 0.05), alum)
+            if s:
+                F = S - 0.42
+                make_box(f"{tag}_FootPost_{k}_{s}", (X(s * 0.8 + 0.225), py, (F - 0.05) / 2.0), (0.06, 0.06, F - 0.05), alum)
+        dd = (rows - 1) * 0.8 + 0.63
+        make_box(f"{tag}_Tie_{k}", (X(dd / 2.0 + 0.1), py, 0.30), (dd + 0.06, 0.05, 0.08), alum)
+    # the back guard rail behind the top row
+    top, back = seat_top(rows - 1), rows * 0.8 - 0.05
+    for k in range(n + 1):
+        py = y0 + 0.15 + k * (2 * half_len - 0.3) / n
+        make_box(f"{tag}_BackPost_{k}", (X(back), py, (top + 1.05) / 2.0), (0.05, 0.05, top + 1.05), alum)
+    make_box(f"{tag}_BackRail", (X(back), cy, top + 1.05), (0.06, 2 * half_len, 0.05), alum)
+    make_box(f"{tag}_BackRail_Mid", (X(back), cy, top + 0.55), (0.04, 2 * half_len, 0.04), alum)
+    # the aisle handrail up the middle, on posts that stand on the footboards
+    for s in range(1, rows):
+        F = seat_top(s) - 0.42
+        make_box(f"{tag}_Aisle_Post_{s}", (X(s * 0.8 + 0.10), cy, F + 0.45), (0.04, 0.04, 0.90), alum)
+    make_tube(f"{tag}_Aisle_Rail", [(X(0.8 + 0.10), cy, seat_top(1) - 0.42 + 0.92), (X((rows - 1) * 0.8 + 0.10), cy, seat_top(rows - 1) - 0.42 + 0.92)],
+              0.022, alum, segments=6)
+    # the concrete walk in front of the stands
+    make_box(f"{tag}_Walk", (X(-1.0), cy, 0.02), (2.0, 2 * half_len + 2.0, 0.04), (0.56, 0.55, 0.52, 1.0))
+    if press_box:
+        pd0, pd1, pz = rows * 0.8 + 0.05, rows * 0.8 + 2.85, top
+        pw = 10.0
+        make_box(f"{tag}_PressBox", (X((pd0 + pd1) / 2.0), cy, pz + 1.25), (pd1 - pd0, pw, 2.5), (0.82, 0.80, 0.74, 1.0))
+        make_box(f"{tag}_PressBox_Roof", (X((pd0 + pd1) / 2.0 - 0.15), cy, pz + 2.56), (pd1 - pd0 + 0.6, pw + 0.4, 0.12), (0.30, 0.36, 0.52, 1.0))
+        make_box(f"{tag}_PressBox_Glass", (X(pd0 - 0.005), cy, pz + 1.40), (0.01, pw - 0.6, 0.80), (0.30, 0.36, 0.40, 1.0))
+        for k in range(5):
+            make_box(f"{tag}_PressBox_Mullion_{k}", (X(pd0 - 0.012), cy - pw / 2.0 + 0.3 + k * (pw - 0.6) / 4.0, pz + 1.40), (0.012, 0.06, 0.80), (0.30, 0.36, 0.52, 1.0))
+        make_box(f"{tag}_PressBox_Sign", (X(pd0 - 0.01), cy, pz + 2.20), (0.01, 4.2, 0.40), (0.55, 0.14, 0.14, 1.0))
+        make_box(f"{tag}_PressBox_Sign_Text", (X(pd0 - 0.016), cy, pz + 2.20), (0.004, 3.4, 0.18), (0.92, 0.90, 0.84, 1.0))
+        for i, (dd, yy) in enumerate(((pd0 + 0.15, -1), (pd1 - 0.15, -1), (pd0 + 0.15, 1), (pd1 - 0.15, 1))):
+            make_box(f"{tag}_PressBox_Leg_{i}", (X(dd), cy + yy * (pw / 2.0 - 0.15), pz / 2.0), (0.14, 0.14, pz), (0.40, 0.42, 0.44, 1.0))
+        # the stair up its back to its door
+        for st in range(12):
+            make_box(f"{tag}_PressBox_Stair_{st}", (X(pd1 + 0.45), cy + pw / 2.0 - 0.6 - st * 0.28, (st + 1) * pz / 12.0 - 0.02), (0.90, 0.28, 0.04), (0.40, 0.42, 0.44, 1.0))
+        make_box(f"{tag}_PressBox_Stair_Stringer", (X(pd1 + 0.92), cy + pw / 2.0 - 2.2, pz / 2.0), (0.04, 3.6, pz), (0.40, 0.42, 0.44, 1.0))
+
+
 def build_bleachers():
-    # Home stands, west sideline, 36m long centered on the 50,
-    # 2.6m back from the sideline.
-    bx = -(SIDE_X + 2.6)
-    for step in range(9):
-        h = 0.4 + step * 0.42
-        make_box(f"Bleach_Riser_{step}", (bx - step * 0.55, MID_Y, h * 0.5),
-                 (0.55, 36.0, h), COL_METAL)
-        make_box(f"Bleach_Bench_{step}", (bx - step * 0.55, MID_Y, h + 0.03),   # on the riser (2026-09-22: 2 cm up)
-                 (0.50, 36.0, 0.06), (0.44, 0.36, 0.26, 1.0))
-    for ly in (MID_Y - 16.0, MID_Y + 16.0):
-        make_box(f"Bleach_Leg_{ly:.0f}", (bx - 2.4, ly, 1.7), (5.0, 0.10, 0.10), COL_METAL)
-    for ry in (MID_Y - 18.0, MID_Y + 18.0):
-        make_box(f"Bleach_Rail_{ry:.0f}", (bx - 1.6, ry, 1.5), (3.4, 0.06, 0.06), COL_METAL)
-    # Center aisle handrail
-    make_box("Bleach_Aisle_Rail", (bx - 2.2, MID_Y, 1.4), (4.6, 0.06, 0.06), COL_METAL)
+    """HOME stands east, behind the home bench — "Third row, behind
+    the home bench" (vol6 ch22). Drafts 1-4 built them along the WEST
+    sideline, across the field from the home bench, so Eileen's chair
+    sat in the visitors' stands. A smaller visitors' stand west."""
+    _stands("Bleach", HOME_SIDE, 9, 18.0, MID_Y, press_box=True)
+    _stands("VisBleach", -HOME_SIDE, 5, 12.0, MID_Y)
 
 
 def build_spectators():
-    # Friday-night crowd scattered up the stands.
-    bx = -(SIDE_X + 2.6)
     coats = [(0.42,0.30,0.34,1.0),(0.30,0.36,0.44,1.0),(0.46,0.42,0.30,1.0),
              (0.36,0.44,0.38,1.0),(0.52,0.40,0.36,1.0),(0.34,0.34,0.40,1.0)]
     skin = (0.62, 0.48, 0.40, 1.0)
-    seats = [(2,-14.0),(2,-6.5),(2,3.0),(3,8.5),(3,-2.0),(4,-10.0),(4,5.5),(4,13.0),
-             (5,0.5),(5,-6.0),(6,-12.5),(6,3.5),(6,9.0),(7,-3.5),(7,15.0),(8,6.0)]
-    for si, (step, yo) in enumerate(seats):
-        h = 0.4 + step * 0.42
-        seat_top = h + 0.06   # the bench's top face
-        px = bx - step * 0.55
-        py = MID_Y + yo
-        col = coats[si % len(coats)]
-        make_box(f"Fan_{si}_Torso", (px, py, seat_top + 0.24), (0.34, 0.34, 0.46), col)
-        make_cyl(f"Fan_{si}_Head", (px, py, seat_top + 0.55), 0.10, 0.16, skin, segments=8)   # on the shoulders
+    pants = (0.26, 0.28, 0.32, 1.0)
+    home = [(2,-14.0),(2,-3.5),(2,3.0),(3,8.5),(3,-2.0),(4,-10.0),(4,5.5),(4,13.0),
+            (5,0.5),(5,-6.0),(6,-12.5),(6,3.5),(6,9.0),(7,-3.5),(7,15.0),(8,6.0)]
+    away = [(1,-6.0),(1,4.5),(2,-1.0),(3,7.0),(3,-8.5),(4,2.0)]
+    for tag, sign, seats in (("Fan", HOME_SIDE, home), ("VisFan", -HOME_SIDE, away)):
+        for si, (step, yo) in enumerate(seats):
+            S = 0.45 + step * 0.42
+            px = sign * (SIDE_X + 6.0 + step * 0.8 + 0.63)
+            lx = sign * (SIDE_X + 6.0 + step * 0.8 + 0.39)
+            py = MID_Y + yo
+            col = coats[(si + (3 if sign < 0 else 0)) % len(coats)]
+            make_box(f"{tag}_{si}_Torso", (px, py, S + 0.24), (0.34, 0.34, 0.48), col)
+            make_cyl(f"{tag}_{si}_Head", (px, py, S + 0.56), 0.10, 0.16, skin, segments=8)   # on the shoulders
+            make_box(f"{tag}_{si}_Legs", (lx, py, S - 0.21), (0.18, 0.30, 0.42), pants)
 
 
 def build_players():
@@ -269,12 +339,10 @@ def build_floodlights():
     # from anywhere on the field.
     # x +-33.9: the west row must clear the BACK of the stands
     # (the mid pole used to stand inside the risers).
-    for pi, (px, py) in enumerate(((-(SIDE_X + 9.5), GL_S + 15.0 * YD),
-                                   (-(SIDE_X + 9.5), MID_Y),
-                                   (-(SIDE_X + 9.5), GL_N - 15.0 * YD),
-                                   (+(SIDE_X + 9.5), GL_S + 15.0 * YD),
-                                   (+(SIDE_X + 9.5), MID_Y),
-                                   (+(SIDE_X + 9.5), GL_N - 15.0 * YD))):
+    # draft 5: the poles stand behind the stands (home east at +18, visitors west at -12)
+    wx, ex = -(SIDE_X + 12.0), +(SIDE_X + 18.0)
+    for pi, (px, py) in enumerate(((wx, GL_S + 15.0 * YD), (wx, MID_Y), (wx, GL_N - 15.0 * YD),
+                                   (ex, GL_S + 15.0 * YD), (ex, MID_Y), (ex, GL_N - 15.0 * YD))):
         # draft 4 (2026-09-18): a tapered pole on its base plate, the
         # conduit up the field side, a transformer box at the foot
         make_lathe(f"Pole_{pi}", (px, py, 0.0), [(0.34, 0.0), (0.34, 0.04), (0.19, 0.06), (0.17, 6.0), (0.13, 12.0), (0.10, 18.0), (0.0, 18.0)], COL_POLE, segments=10)
@@ -345,24 +413,39 @@ def build_hero_props():
         make_box(f"Lot_Stripe_{si}", (-18.0 + si * 4.0, -6.4, 0.035), (0.10, 2.2, 0.01), (0.72, 0.70, 0.60, 1.0))
     # draft 4: the staged vehicles from the vehicle kit
     from _props.vehicles import make_car
-    make_car("F250", 13.5, -6.5, 5.6, (0.62, 0.20, 0.18, 1.0), pickup=True, along="Y", z0=0.03)
+    make_car("CoachK_Truck", 13.5, -6.5, 5.6, (0.90, 0.90, 0.88, 1.0), pickup=True, along="Y", z0=0.03)
+    # draft 5: "the white Ford F-250 with the camper shell and the ladder
+    # rack and the tape job on the driver's-side mirror" (vol6 ch13) — it was red and bare
+    fx, fy, fz = 13.5, -6.5, 0.03
+    make_box("CoachK_Truck_Camper_Shell", (fx, fy - 1.675, fz + 1.62), (1.70, 2.05, 0.26), (0.88, 0.88, 0.86, 1.0))
+    for sgn in (-1, 1):
+        make_box(f"CoachK_Truck_Camper_Window_{sgn:+d}", (fx + sgn * 0.855, fy - 1.675, fz + 1.63), (0.01, 1.50, 0.16), (0.20, 0.22, 0.26, 1.0))
+    make_box("CoachK_Truck_Camper_Rear_Glass", (fx, fy - 2.705, fz + 1.62), (1.40, 0.01, 0.20), (0.20, 0.22, 0.26, 1.0))
+    for i, (dx, dy) in enumerate(((-0.78, -2.6), (0.78, -2.6), (-0.78, -0.75), (0.78, -0.75))):
+        make_box(f"CoachK_Truck_Rack_Post_{i}", (fx + dx, fy + dy, fz + 1.90), (0.05, 0.05, 0.30), (0.20, 0.20, 0.22, 1.0))
+    for i, dy in enumerate((-2.6, -0.75)):
+        make_box(f"CoachK_Truck_Rack_Cross_{i}", (fx, fy + dy, fz + 2.07), (1.66, 0.06, 0.05), (0.20, 0.20, 0.22, 1.0))
+    for sgn in (-1, 1):
+        make_box(f"CoachK_Truck_Rack_Rail_{sgn:+d}", (fx + sgn * 0.60, fy - 0.80, fz + 2.115), (0.05, 4.20, 0.04), (0.20, 0.20, 0.22, 1.0))
+    make_box("CoachK_Truck_Ladder", (fx - 0.10, fy - 0.80, fz + 2.13), (0.42, 4.10, 0.07), (0.70, 0.70, 0.72, 1.0))
+    make_box("CoachK_Truck_Mirror_Tape", (fx - 1.112, fy + 0.60, fz + 1.10), (0.008, 0.10, 0.04), (0.70, 0.70, 0.66, 1.0))
     make_car("Civic", -22.0, -11.4, 4.4, (0.55, 0.58, 0.62, 1.0), along="Y", z0=0.03)
     make_car("Tacoma", -8.4, -12.9, 5.0, (0.24, 0.30, 0.26, 1.0), pickup=True, along="Y", z0=0.03)
-    # Eileen's folding chair — third row, south of the crowd
-    bx = -(SIDE_X + 2.6)
-    # draft 4: a folding chair — X-frame legs, a canvas seat, a low back
-    ex_, ey_ = bx - 2 * 0.55, MID_Y - 17.0
-    bench_top = 0.4 + 2 * 0.42 + 0.06   # Bleach_Bench_2 top (2026-09-22: the chair hung 2 cm over it)
+    # Eileen's folding chair — THIRD ROW OF THE HOME STANDS, behind the home
+    # bench (draft 5: the stands moved east), on row 2's footboard facing the field
+    ex_ = HOME_SIDE * (SIDE_X + 6.0 + 2 * 0.8 + 0.225)
+    ey_ = MID_Y - 9.5
+    bench_top = 0.45 + 2 * 0.42 - 0.42          # row 2's footboard top
     for sgn in (-1, 1):
         make_rot_box(f"Eileen_Chair_Leg_{sgn:+d}", (ex_, ey_ + sgn * 0.17, bench_top + 0.20), (0.025, 0.025, 0.46), (0.30, 0.30, 0.32, 1.0), yaw=0.0, roll=sgn * 0.55)
         make_rot_box(f"Eileen_Chair_LegB_{sgn:+d}", (ex_, ey_ - sgn * 0.17, bench_top + 0.20), (0.025, 0.025, 0.46), (0.30, 0.30, 0.32, 1.0), yaw=0.0, roll=-sgn * 0.55)
     make_chamfer_box("Eileen_Chair_Seat", (ex_, ey_, bench_top + 0.40), (0.42, 0.42, 0.03), (0.36, 0.42, 0.55, 1.0), chamfer=0.008)
-    make_rot_box("Eileen_Chair_Back", (ex_ - 0.20, ey_, bench_top + 0.60), (0.03, 0.42, 0.36), (0.32, 0.38, 0.50, 1.0), pitch=-0.15)
+    make_rot_box("Eileen_Chair_Back", (ex_ + HOME_SIDE * 0.20, ey_, bench_top + 0.60), (0.03, 0.42, 0.36), (0.32, 0.38, 0.50, 1.0), pitch=HOME_SIDE * 0.15)
     # Equipment shed + Coach Dale's truck, beyond the NW corner
     make_box("Equip_Shed", (-30.0, FIELD_LEN + 6.0, 1.3), (4.0, 3.0, 2.6), (0.48, 0.42, 0.34, 1.0))
     make_box("Equip_Shed_Roof", (-30.0, FIELD_LEN + 6.0, 2.75), (4.4, 3.4, 0.3), (0.34, 0.30, 0.26, 1.0))
     make_box("Equip_Shed_Door", (-30.0, FIELD_LEN + 4.46, 1.05), (1.3, 0.06, 2.1), (0.30, 0.26, 0.22, 1.0))
-    make_car("Dale_Truck", -30.0, FIELD_LEN + 11.3, 5.0, (0.44, 0.40, 0.34, 1.0), pickup=True, along="Y", z0=-0.03)
+    make_car("Dale_Pickup", -30.0, FIELD_LEN + 11.3, 5.0, (0.44, 0.40, 0.34, 1.0), pickup=True, along="Y", z0=-0.03)
     # Equipment cart + the morning's drill cones (south 20s)
     make_box("Equip_Cart", (SIDE_X + 3.4, GL_S + 8.0, 0.45), (0.9, 1.4, 0.70), steel)
     for wi, (wx, wy) in enumerate(((SIDE_X + 3.0, GL_S + 7.4), (SIDE_X + 3.8, GL_S + 7.4),

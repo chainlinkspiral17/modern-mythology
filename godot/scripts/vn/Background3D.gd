@@ -1181,15 +1181,13 @@ const CAMERA_PRESETS := {
 	"school_field_evening": {
 		"scene": "res://scenes/locales/school_field_evening.tscn",
 		"requires_glb": "res://assets/3d/locales/school_field_evening.glb",
-		# OUTDOOR football field at dusk. Build coords: x=sideline-to-
-		# sideline (±10), y=downfield (0=near/south end → far end at 14),
-		# z=up; godot(x,y,z)=(bx,bz,-by) so downfield = godot -Z, south end
-		# = godot z≈0. Goalposts at godot (0,-1.2) near & (0,-12.8) far;
-		# aluminium bleachers along the W sideline (godot x≈-11.2); four
-		# floodlight poles at the corners; chain-link fence far end. Camera
-		# off the SE corner of the south end, elevated, looking downfield
-		# NW: striped turf + both goalposts, bleachers frame-left, floods
-		# framing, dusk sky. (No interior -Z room convention here.)
+		# OUTDOOR: the true-scale gridiron (x sideline-to-sideline, +-24.4;
+		# y downfield, south end line 0 -> north 109.7; godot (x, z, -y)).
+		# Draft 5 (2026-10-09): the HOME stands and press box are EAST,
+		# behind the home bench ("third row, behind the home bench"); a
+		# visitors' stand west; the lot and the field gate south. Camera
+		# just past the south end line by the gate, looking downfield NW:
+		# striped turf and both goalposts, the home stands frame-right.
 		"camera_origin": Vector3(6.0, 2.8, 3.5),
 		"camera_rotation": Vector3(-0.06, deg_to_rad(31.0), 0.0),
 		"fov": 62.0,

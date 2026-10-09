@@ -183,51 +183,51 @@ shadow_enabled = false
 ; (blender (±33.9, 13.7/54.9/96.0) bank z 17.2 → godot y 17.2,
 ;  z -13.7/-54.9/-96.0). Friday-night-lights pools over the turf.
 [node name="Flood_SW" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.9, 17.2, -13.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.38, 17.2, -13.7)
 light_color = Color(0.96, 0.97, 1.0, 1)
 light_energy = 3.2
 omni_range = 46.0
 shadow_enabled = false
 
 [node name="Flood_W" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.9, 17.2, -54.9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.38, 17.2, -54.9)
 light_color = Color(0.96, 0.97, 1.0, 1)
 light_energy = 3.2
 omni_range = 46.0
 shadow_enabled = false
 
 [node name="Flood_NW" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.9, 17.2, -96.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.38, 17.2, -96.0)
 light_color = Color(0.96, 0.97, 1.0, 1)
 light_energy = 3.2
 omni_range = 46.0
 shadow_enabled = false
 
 [node name="Flood_SE" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.9, 17.2, -13.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.38, 17.2, -13.7)
 light_color = Color(0.96, 0.97, 1.0, 1)
 light_energy = 3.2
 omni_range = 46.0
 shadow_enabled = false
 
 [node name="Flood_E" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.9, 17.2, -54.9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.38, 17.2, -54.9)
 light_color = Color(0.96, 0.97, 1.0, 1)
 light_energy = 3.2
 omni_range = 46.0
 shadow_enabled = false
 
 [node name="Flood_NE" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.9, 17.2, -96.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.38, 17.2, -96.0)
 light_color = Color(0.96, 0.97, 1.0, 1)
 light_energy = 3.2
 omni_range = 46.0
 shadow_enabled = false
-; ── vn_shot wave (2026-08-19) · positions authored, aim
-; computed by marker_reaim.py (the post-aim-gate discipline)
+; insert: Coach K's white F-250 at the head of the lot — camper shell, ladder rack (draft 5: it framed Coach Dale's truck by the shed)
 [node name="shot_insert_truck" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.500, 1.608, -117.962)
-rotation = Vector3(-0.2618, 0.2618, 0.0)
+position = Vector3(17.600, 1.750, 10.400)
+rotation = Vector3(-0.0581, 0.9505, 0.0)
+metadata/fov = 46.0
 
 [node name="shot_insert_corkboard" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.234, 1.809, 6.730)
@@ -378,10 +378,10 @@ position = Vector3(0.000, 4.617, -115.950)
 rotation = Vector3(0.4363, 0.0000, 0.0)
 metadata/fov = 44.0
 
-; insert: the Friday-night crowd in the stands
+; insert: the home stands behind the home bench, the press box on top (draft 5: the stands moved east)
 [node name="shot_insert_bleachers" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-20.5, 1.5, -47)
-rotation = Vector3(0.0803829, 0.785398, 0)
+position = Vector3(22.384, 1.700, -33.864)
+rotation = Vector3(0.0792, -0.6541, 0.0)
 metadata/fov = 46.0
 
 ; insert: the Vinton bus pulls into the lot at four oh-three
@@ -402,10 +402,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.0, 0.95, -48.0)
 rotation = Vector3(-0.6068, -0.6747, 0.0)
 metadata/fov = 42.0
 
-; insert: the only folding chair in the third row
+; insert: Eileen's folding chair, third row behind the home bench
 [node name="shot_insert_folding_chair" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.9, 1.9, -38.6)
-rotation = Vector3(-0.2640, 2.0913, 0.0)
+position = Vector3(27.584, 1.900, -42.664)
+rotation = Vector3(-0.1023, -1.0424, 0.0)
 metadata/fov = 42.0
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
@@ -425,42 +425,42 @@ metadata/fov = 45.0
 ; practicals authored by practical_author.py (2026-09-11):
 ; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
 [node name="Lamp_3_0_Practical" type="OmniLight3D" parent="."]
-position = Vector3(33.084, 16.700, -21.860)
+position = Vector3(41.584, 16.700, -21.860)
 light_color = Color(0.950, 0.780, 0.500, 1)
 light_energy = 1.30
 shadow_enabled = false
 omni_range = 5.00
 
 [node name="Lamp_0_0_Practical" type="OmniLight3D" parent="."]
-position = Vector3(-33.084, 16.700, -21.860)
+position = Vector3(-35.584, 16.700, -21.860)
 light_color = Color(0.950, 0.780, 0.500, 1)
 light_energy = 1.30
 shadow_enabled = false
 omni_range = 5.00
 
 [node name="Lamp_4_0_Practical" type="OmniLight3D" parent="."]
-position = Vector3(33.084, 16.700, -53.864)
+position = Vector3(41.584, 16.700, -53.864)
 light_color = Color(0.950, 0.780, 0.500, 1)
 light_energy = 1.30
 shadow_enabled = false
 omni_range = 5.00
 
 [node name="Lamp_1_0_Practical" type="OmniLight3D" parent="."]
-position = Vector3(-33.084, 16.700, -53.864)
+position = Vector3(-35.584, 16.700, -53.864)
 light_color = Color(0.950, 0.780, 0.500, 1)
 light_energy = 1.30
 shadow_enabled = false
 omni_range = 5.00
 
 [node name="Lamp_5_0_Practical" type="OmniLight3D" parent="."]
-position = Vector3(33.084, 16.700, -85.868)
+position = Vector3(41.584, 16.700, -85.868)
 light_color = Color(0.950, 0.780, 0.500, 1)
 light_energy = 1.30
 shadow_enabled = false
 omni_range = 5.00
 
 [node name="Lamp_2_0_Practical" type="OmniLight3D" parent="."]
-position = Vector3(-33.084, 16.700, -85.868)
+position = Vector3(-35.584, 16.700, -85.868)
 light_color = Color(0.950, 0.780, 0.500, 1)
 light_energy = 1.30
 shadow_enabled = false

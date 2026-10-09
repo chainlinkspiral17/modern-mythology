@@ -3834,6 +3834,36 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-09 · overnight run, pass 20: THE SCHOOL FIELD, DRAFT 5 (the home
+stands are behind the home bench).** In vol6 ch22 Eileen sits "Third row,
+behind the home bench". Drafts 1-4 of `school_field_evening` had the only
+stands on the west sideline and the home bench (the stopwatch, the helmet
+rack, the coolers) on the east, so her chair stood across the field in
+what are the visitors' seats.
+- **The home stands, now east.** Open aluminium rows (seat plank,
+  footboard, posts every 3 m, tie beams, the back guard rail, the aisle
+  handrail, the concrete walk) replace the solid stepped block. The
+  underside was a draft-5 target. The PRESS BOX sits on top with its
+  stair.
+- **The visitors.** A five-row visitors' stand west, with Vinton fans.
+- **The floodlights.** The poles stand behind both stands, and the scene
+  floods and lamp practicals moved with them.
+- **Eileen's chair.** Third row, on the footboard behind the home bench.
+- **Coach K's truck.** It is now ch13's "white Ford F-250 with the camper
+  shell and the ladder rack and the tape job on the driver's-side mirror",
+  not a bare red pickup. `insert truck` had framed Coach Dale's truck by
+  the shed (both were "truck"). The parts are renamed `CoachK_Truck_*` /
+  `Dale_Pickup_*`, and the marker is re-aimed.
+- **Re-aimed markers.** `insert bleachers` and `insert folding_chair`.
+
+Draft 6 targets:
+- the synthetic track (ch19: "the back stretch of the synthetic track").
+  A real one rings the field, so the lot, the gate and the field house
+  move south and the stands outward;
+- figures with a pose;
+- the scoreboard's digits;
+- lot lamps at dusk.
+
 **2026-10-09 · overnight run, pass 19: THE IRON CROW, DRAFT 6 (build big +
 the chalk table was never a pool table).** `new_orleans_bar` (Strength,
 Judgement, and vol1's "A Hip Bar") had grown to a 9 x 6 m box holding a
