@@ -84,6 +84,22 @@ henderson) got there by accumulating exactly these layers.
 
 ## Recent lessons
 
+### 2026-10-09 · enlarging a hand-placed room: shift the GROUPS, verify by diff
+
+- Tem's cabin went from 6 x 6 to 8 x 8 without retyping its hundreds of
+  literal coordinates. Each furniture group moves rigidly to its corner
+  of the new plan inside `with _shift(dx, dy):` (build_cabin_interior.py).
+  The context manager wraps the builder's geometry names, plus the helper
+  modules that functions import locally, called as `module.fn` so the
+  wrap reaches them. It also hands the block the OLD room constants, so a
+  group's `ROOM_D - 0.1` pieces land on the new wall.
+- Paths that cross groups (traffic wear) and shell openings are re-drawn
+  by hand. Markers and practicals move with their subject's group, which
+  preserves every framing.
+- Record every part before the change and diff after: each part must
+  have moved by exactly one of the planned shifts. The diff is the proof
+  that nothing was left behind or moved twice.
+
 ### 2026-10-08 · a flat ground that ends at a wall reads as a plinth
 
 - The user, on the cabin's new yard: "Why are the vehicles on a big block

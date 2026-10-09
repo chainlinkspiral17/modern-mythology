@@ -1854,7 +1854,9 @@ const CAMERA_PRESETS := {
 		# end INSIDE the east room now (blender 1.2, 2.5, eye 1.05),
 		# between the partition and the bed, looking ESE: the made bed
 		# in the lower frame, the window over it (E wall, 2.85, 1.45).
-		"camera_origin": Vector3(1.20, 1.05, -2.50),
+		# 2026-10-09: the room is 8 x 8 and the east room 2.4 m wide (the
+		# partition at x 1.4, the bed +1 m) — the camera moved with the bed.
+		"camera_origin": Vector3(1.95, 1.05, -2.50),
 		# down the bed's length toward its foot and the desk, the window
 		# over the bed 24° left of centre (sheet 42: pitched 0.20 at the E
 		# wall it was all wall; square on, the wall filled 67 % at 1.8 m)

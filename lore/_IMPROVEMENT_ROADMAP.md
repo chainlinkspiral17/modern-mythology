@@ -3834,6 +3834,35 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-09 · TEM'S CABIN, 8 x 8 (cabin_interior, interior draft 7).**
+The room was 6 x 6 m for what the prose puts in it: a table that seats
+seven, the daybed, two armchairs at the stove, a kitchen under a loft and
+an east room. CLAUDE.md rule 5 says enlarge the room before shaving the
+furniture, so it is now 8 x 8.
+- **How:** the hundreds of hand-placed coordinates were not retyped. Each
+  furniture group moves RIGIDLY to its corner of the new plan through
+  `_shift(dx, dy)`, a context manager that wraps the builder's geometry
+  names (and the creature and floor-wear helpers) and hands the group the
+  OLD wall constants, so its wall-hugging pieces land on the new walls.
+  - kitchen, loft and the crow's window: (-1, +2)
+  - stove corner: (+1, +2)
+  - the table and everything on it: (0, +1)
+  - daybed: (-1, +0.6)
+  - east room: the bed wall +1, the desk wall +0.25, the partition from
+    1.0 to 1.4, so the east room is 2.4 m wide
+  - the door, the basin, the kerosene can and the west south window stay
+  - Olaf's and Tem's floor-wear paths are re-drawn by hand.
+- **Verification:** every recorded part was diffed against a pre-change
+  snapshot; each moved by exactly its group's shift.
+- **The scenes:** the 33 interior markers and three practicals moved with
+  their subjects' groups, so every framing is preserved. The wagon insert
+  now looks out of the east room's south window. The bed preset's camera
+  moved with the bed.
+- **The outside follows:** the roof pitch drops to 0.80 (ridge ~6.8 m),
+  Olaf's shop moves west with the wall, the yard's north edge moves out
+  2 m, the truck parks in front of the shop, and the stovepipe follows the
+  stove.
+
 **2026-10-08 · TEM'S PORCH IS NOT THE MILLERS' PORCH (cabin_porch, draft
 1).** Twelve vol 7 scenes are set on the porch of Tem's off-grid Oregon
 cabin ("Tem was on the porch with a coffee in her hand", the cedar with
