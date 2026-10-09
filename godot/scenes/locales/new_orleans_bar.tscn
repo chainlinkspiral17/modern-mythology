@@ -133,7 +133,7 @@ background_mode = 1
 background_color = Color(0.06, 0.04, 0.03, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.62, 0.42, 0.22, 1)
-ambient_light_energy = 0.75
+ambient_light_energy = 0.48
 fog_enabled = true
 fog_light_color = Color(0.42, 0.28, 0.16, 1)
 fog_light_energy = 0.5
@@ -154,76 +154,168 @@ glow_hdr_scale = 2.4
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_Locale")
 
+; ── DRAFT 6 RIG (2026-10-09): the Iron Crow at 13 x 9 m. A dive lit by its
+; fixtures — the bar pendants, the billiard lamp, the chalk-corner pendant,
+; the booth sconce, three beer neons, the TV, the IRON CROW neon, the cooler,
+; the jukebox — over a low warm key. Every omni sits under its fixture.
 [node name="Key_PendantAmber" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866, 0, -0.866, 0.5, 0, 6, 0)
 light_color = Color(1.00, 0.74, 0.36, 1)
-light_energy = 0.7
+light_energy = 0.38
 shadow_enabled = false
 
-[node name="Fill_JukeboxGlow" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 3, 2, 1)
-light_color = Color(0.96, 0.62, 0.30, 1)
-light_energy = 0.3
+; the street through the front windows: sodium, from the south
+[node name="Street_Spill" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.94, 0.342, 0, -0.342, 0.94, 0, 2, 2)
+light_color = Color(0.96, 0.72, 0.42, 1)
+light_energy = 0.14
 shadow_enabled = false
 
-[node name="Back_DoorSpill" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 2, 5)
-light_color = Color(0.62, 0.74, 0.86, 1)
-light_energy = 0.2
+; the bar pendants
+[node name="Pendant_0_Bulb_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-4.000, 2.120, -6.450)
+light_color = Color(1.00, 0.76, 0.44, 1)
+light_energy = 1.70
 shadow_enabled = false
+omni_range = 4.60
 
-; Practicals — jazz-warm bar pendants + ceiling-fan light + jukebox + bottle wall
-[node name="Pendant_W" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0, 2.5, -4.5)
-light_color = Color(1.0, 0.78, 0.42, 1)
-light_energy = 2.2
-omni_range = 3.0
+[node name="Pendant_1_Bulb_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-2.400, 2.120, -6.450)
+light_color = Color(1.00, 0.76, 0.44, 1)
+light_energy = 1.70
 shadow_enabled = false
+omni_range = 4.60
 
-[node name="Pendant_C" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 2.5, -4.5)
-light_color = Color(1.0, 0.78, 0.42, 1)
-light_energy = 2.2
-omni_range = 3.0
+[node name="Pendant_2_Bulb_Practical" type="OmniLight3D" parent="."]
+position = Vector3(2.300, 2.120, -6.450)
+light_color = Color(1.00, 0.76, 0.44, 1)
+light_energy = 1.70
 shadow_enabled = false
+omni_range = 4.60
 
-[node name="Pendant_E" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0, 2.5, -4.5)
-light_color = Color(1.0, 0.78, 0.42, 1)
-light_energy = 2.2
-omni_range = 3.0
+; the billiard lamp
+[node name="Pool_Lamp_Bulb_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-0.800, 1.550, -3.000)
+light_color = Color(1.00, 0.86, 0.60, 1)
+light_energy = 1.90
 shadow_enabled = false
+omni_range = 3.60
 
-[node name="FanLight" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 2.65, -3.0)
+; the chalk-corner pendant (vol1)
+[node name="Chalk_Lamp_Bulb_Practical" type="OmniLight3D" parent="."]
+position = Vector3(5.090, 1.660, -1.980)
+light_color = Color(1.00, 0.78, 0.48, 1)
+light_energy = 1.50
+shadow_enabled = false
+omni_range = 3.60
+
+; Douglas's booth sconce
+[node name="Booth_Sconce_Shade_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-6.050, 1.700, -1.330)
+light_color = Color(1.00, 0.68, 0.36, 1)
+light_energy = 1.00
+shadow_enabled = false
+omni_range = 2.60
+
+; three beer neons — two dead brands, one live
+[node name="BeerNeon_0_Tube_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-6.100, 2.300, -1.950)
+light_color = Color(0.96, 0.30, 0.32, 1)
+light_energy = 0.70
+shadow_enabled = false
+omni_range = 2.40
+
+[node name="BeerNeon_1_Tube_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-5.550, 2.400, -0.320)
+light_color = Color(0.30, 0.80, 0.68, 1)
+light_energy = 0.70
+shadow_enabled = false
+omni_range = 2.40
+
+[node name="BeerNeon_2_Tube_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-6.100, 2.400, -4.000)
+light_color = Color(0.96, 0.72, 0.30, 1)
+light_energy = 0.70
+shadow_enabled = false
+omni_range = 2.40
+
+; the bar TV, muted
+[node name="Bar_TV_Screen_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-3.200, 3.000, -8.450)
+light_color = Color(0.50, 0.80, 0.74, 1)
+light_energy = 0.80
+shadow_enabled = false
+omni_range = 3.20
+
+; IRON CROW over the mirror
+[node name="IronCrow_Tube_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.600, 3.150, -8.550)
+light_color = Color(1.00, 0.30, 0.24, 1)
+light_energy = 0.90
+shadow_enabled = false
+omni_range = 3.20
+
+; the beer cooler
+[node name="Cooler_Light_Practical" type="OmniLight3D" parent="."]
+position = Vector3(3.750, 1.550, -7.950)
+light_color = Color(0.84, 0.94, 1.00, 1)
+light_energy = 0.70
+shadow_enabled = false
+omni_range = 2.40
+
+; the jukebox
+[node name="Jukebox_LightBar_Practical" type="OmniLight3D" parent="."]
+position = Vector3(5.850, 1.500, -3.950)
+light_color = Color(1.00, 0.62, 0.40, 1)
+light_energy = 1.10
+shadow_enabled = false
+omni_range = 2.80
+
+[node name="Open_Neon_Tube_Practical" type="OmniLight3D" parent="."]
+position = Vector3(4.850, 2.150, -0.400)
+light_color = Color(1.00, 0.30, 0.34, 1)
+light_energy = 0.50
+shadow_enabled = false
+omni_range = 1.80
+
+; the back hall bulb
+[node name="Hall_Bulb_Practical" type="OmniLight3D" parent="."]
+position = Vector3(7.600, 2.550, -7.850)
+light_color = Color(1.00, 0.86, 0.58, 1)
+light_energy = 1.00
+shadow_enabled = false
+omni_range = 3.00
+
+; the street lamp outside
+[node name="Street_Lamp_Head_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-1.600, 3.600, 4.100)
+light_color = Color(1.00, 0.78, 0.46, 1)
+light_energy = 2.20
+shadow_enabled = false
+omni_range = 9.00
+
+; the fan light kits
+[node name="Fan_0_LightKit_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-3.600, 3.080, -2.600)
 light_color = Color(0.98, 0.82, 0.54, 1)
-light_energy = 1.6
-omni_range = 3.6
+light_energy = 0.80
 shadow_enabled = false
+omni_range = 4.20
 
+[node name="Fan_1_LightKit_Practical" type="OmniLight3D" parent="."]
+position = Vector3(3.200, 3.080, -4.600)
+light_color = Color(0.98, 0.82, 0.54, 1)
+light_energy = 0.80
+shadow_enabled = false
+omni_range = 4.20
+
+; the bottles lit from under the shelves
 [node name="BottleWallGlow" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.9, -5.6)
-light_color = Color(0.96, 0.72, 0.4, 1)
-light_energy = 1.5
-omni_range = 3.4
+position = Vector3(-1.000, 1.300, -8.550)
+light_color = Color(0.96, 0.72, 0.40, 1)
+light_energy = 0.90
 shadow_enabled = false
-
-; The booth's sconce (2026-10-05): blender (-4.20, 1.35, 1.80) → godot
-; (-4.20, 1.80, -1.35). Warm, short — it lights Doug's table and the
-; booth's vinyl, not the room.
-[node name="Practical_BoothSconce" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.15, 1.74, -1.35)
-light_color = Color(1.0, 0.68, 0.36, 1)
-light_energy = 0.8
-omni_range = 2.4
-shadow_enabled = false
-
-[node name="JukeboxGlow" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8, 1.5, -1.0)
-light_color = Color(1.0, 0.6, 0.42, 1)
-light_energy = 1.4
-omni_range = 2.8
-shadow_enabled = false
+omni_range = 3.00
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -345,52 +437,40 @@ offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
 
-; ── vn_shot coverage (2026-08-09 · arcana sets round 2) ────────
-; rotation B: from the arcade corner across the room to the west booth
+; ── vn_shot coverage — DRAFT 6 (2026-10-09), the 13 x 9 m room
+; reverse: from the bar's east end SW across the pool table to the booth and the street windows
 [node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(3.6, 1.5, -3.9)
-rotation = Vector3(-0.0947189, 1.88826, 0)
-metadata/fov = 56.0
+position = Vector3(4.000, 1.600, -7.200)
+rotation = Vector3(-0.0586, 2.1615, 0.0)
+metadata/fov = 58.0
 
-; closeup: Douglas in the west booth
-; RE-AIMED 2026-10-03: from the corner booth across the room — the bar, the bottle wall,
-; the neon behind him (it faced the booth's back and a dark wall)
+; closeup: Douglas in the corner booth — from his seat out across the table to the bar,
+; the TV and IRON CROW (a wall 2 m behind him filled the frame)
 [node name="shot_closeup_douglas" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-3.900, 1.350, -0.500)
-rotation = Vector3(0.0336, -0.8330, 0.0)
-metadata/fov = 38.0
+position = Vector3(-5.300, 1.300, -1.000)
+rotation = Vector3(0.0680, -0.5586, 0.0)
+metadata/fov = 40.0
 
-; insert: the long mirror behind the bar
+; insert: the long mirror behind the bar, from a stool
 [node name="shot_insert_mirror" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.000, 1.990, -4.870)
-rotation = Vector3(0.0000, 0.0000, 0.0)
+position = Vector3(-1.000, 1.600, -6.000)
+rotation = Vector3(0.0860, -0.0000, 0.0)
 metadata/fov = 44.0
 
-; insert: the game on the bar TV, muted, neon ghosts (Strength)
-; RE-AIMED 2026-10-03: up at the set over the back bar (it cut the screen off at the top)
+; insert: the game on the bar TV, muted (Strength)
 [node name="shot_insert_tv" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.600, 1.600, -3.600)
-rotation = Vector3(0.3004, -0.0000, 0.0)
+position = Vector3(-3.000, 2.000, -6.900)
+rotation = Vector3(0.5386, 0.1089, 0.0)
 metadata/fov = 34.0
 
 ; insert: his hands on the sticky tabletop (Strength)
 [node name="shot_insert_hands" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9, 1.15, -0.9)
-rotation = Vector3(-0.5253, 0.8646, 0.0)
+position = Vector3(-4.550, 1.300, -1.050)
+rotation = Vector3(-0.5511, 1.2526, 0.0)
 metadata/fov = 42.0
 
-; practicals authored by practical_author.py (2026-09-11):
-; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
-[node name="Pendant_0_Bulb_Practical" type="OmniLight3D" parent="."]
-position = Vector3(-2.000, 2.700, -2.200)
-light_color = Color(0.950, 0.780, 0.500, 1)
-light_energy = 1.30
-shadow_enabled = false
-omni_range = 5.00
-
-[node name="Pendant_1_Bulb_Practical" type="OmniLight3D" parent="."]
-position = Vector3(2.000, 2.700, -2.200)
-light_color = Color(0.950, 0.780, 0.500, 1)
-light_energy = 1.30
-shadow_enabled = false
-omni_range = 5.00
+; insert: the chalk table — Faust's drawing, the shots (vol1)
+[node name="shot_insert_chalk" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(4.200, 1.750, -1.200)
+rotation = Vector3(-0.7144, -1.1887, 0.0)
+metadata/fov = 44.0

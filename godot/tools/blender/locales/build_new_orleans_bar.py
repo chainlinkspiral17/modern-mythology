@@ -1,301 +1,587 @@
-"""VOL 5 · New Orleans Bar — cameo. Long mahogany bar, brass rail,
-bottle wall, pendant lamps, jukebox in corner.
+"""VOL 5 · THE IRON CROW — a Marigny dive (Strength, Judgement) · and
+vol1's "A Hip Bar" (the chalk table, the pinball, Missile Command).
+
+DRAFT 6 (2026-10-09) — rebuilt big from the prose. Draft 5 was a 9 x 6 m
+box with a 3.6 m hole where the front door should have been, a pool
+table built straight through Douglas's booth table, a round six-top
+jammed between them, and vol1's CHALK TABLE misread as the pool table
+— but the vol1 crowd SITS at the chalk table ("Faust and Jacob sit at
+the table ... Helen pushes Margaret into the seat next to Faust ...
+Emily puts her purse next to Faust ... Cozy corner"): it is a
+chalkboard-topped table with benches, in a corner, and Faust is
+"already drawing up some wacky shit" on it.
+
+The chapters, what each one needs from the room:
+
+- Strength: "The game flickered on the bar TV. Muted ... under the
+  buzzing neon of three different beer signs, two of which had been
+  advertising brands the bar no longer carried ... His corner booth
+  smelled faintly of stale smoke ... His hands rested on the sticky
+  tabletop ... the bartender — a tired-looking woman ... from behind
+  the bar ... He stood up from the booth. The cheap vinyl sighed ...
+  He left the empty bottles on the table ... a folded twenty under the
+  saltshaker ... walked out into the humid New Orleans night."
+- Judgement: "his corner booth at the Iron Crow ... The bar's lights
+  flickered. The bartender gripped the edge of the bar ... He walked
+  out of the Iron Crow into the shaking morning. He crossed the street."
+- vol1 ch3: the chalk table, shots, ginger beer, "Going out for a
+  smoke" (the front door + the sidewalk), "I didn't know they had
+  pinball here. Yes. And Missile Command, too."
+
+Plan (13 x 9 m, ceiling 3.9 m — an old Marigny storefront with a
+pressed-tin ceiling): the street front on the S wall (two big windows,
+a glazed door with a transom between them); the long bar on the N side
+with a real bartender's lane (1.0 m) between it and the back bar; the
+mirror, the bottle shelves, the TV up on the N wall where the corner
+booth can see it; Douglas's L booth in the SW corner under the three
+beer neons; the arcade (pinball, Missile Command) along the W wall; the
+pool table mid-floor under its billiard lamp; the chalk-table corner SE
+under the E window; the jukebox and the dartboard on the E wall; the
+back hall (kegs, restroom, the delivery door) through the E wall's
+north end; the street at night outside.
+
+Draft 7 targets: a second gas-lamp and the gallery balconies across
+the street read at window scale; the bartender's side (well, speed
+rail) at insert scale; a crossword Times-Picayune for Judgement's
+morning variant (a per-preset prop set, the way the day rigs work).
 """
-import os, sys
+import math, os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, export_glb, make_tube, make_dome, make_taper_cyl
-from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_wall_with_openings
-from _props.store_fixtures import make_counter, make_counter_bullnose
+from _props.structure import make_floor, make_wall, make_ceiling, make_window, make_wall_with_openings
+from _props.store_fixtures import make_counter_bullnose
 from _props.decor import make_wall_clock
-from _props.safety import make_fluorescent_tube_fixture, make_smoke_detector, make_ceiling_speaker
-from _props.objects import make_liquor_bottle, make_bowl
+from _props.objects import make_liquor_bottle, make_bowl, make_bottle, make_pint_glass, make_can
+from _props.detail import make_traffic_wear, make_floor_stain
 
-PAL = {"wall": (0.42, 0.30, 0.22, 1.0), "baseboard": (0.18, 0.12, 0.10, 1.0)}
-COL_FLOOR = (0.32, 0.22, 0.16, 1.0); COL_SEAM = (0.18, 0.12, 0.10, 1.0)
-COL_BAR = (0.42, 0.28, 0.18, 1.0); COL_TOP = (0.22, 0.14, 0.10, 1.0); COL_BRASS = (0.86, 0.62, 0.28, 1.0)
+ROOM_W = 13.0; ROOM_D = 9.0; CEIL = 3.90
+XW, XE = -ROOM_W / 2.0 + 0.10, ROOM_W / 2.0 - 0.10      # wall room faces
+YS, YN = 0.10, ROOM_D - 0.10
+PAL = {"wall": (0.50, 0.30, 0.21, 1.0), "baseboard": (0.16, 0.10, 0.08, 1.0)}
+COL_FLOOR = (0.34, 0.24, 0.17, 1.0); COL_SEAM = (0.20, 0.13, 0.10, 1.0)
+COL_WAIN = (0.24, 0.15, 0.10, 1.0); COL_RAIL = (0.30, 0.20, 0.13, 1.0)
+COL_BAR = (0.40, 0.22, 0.14, 1.0); COL_TOP = (0.24, 0.14, 0.09, 1.0); COL_BRASS = (0.86, 0.62, 0.28, 1.0)
 COL_BOTTLE_AMBER = (0.78, 0.42, 0.16, 1.0); COL_BOTTLE_CLEAR = (0.78, 0.84, 0.86, 0.55); COL_BOTTLE_GREEN = (0.32, 0.42, 0.20, 1.0)
-ROOM_W = 9.0; ROOM_D = 6.0; CEIL = 3.20
+VINYL = (0.40, 0.17, 0.15, 1.0); WOOD = (0.35, 0.24, 0.15, 1.0); IRON = (0.14, 0.14, 0.15, 1.0)
+GLASS = (0.80, 0.86, 0.88, 0.5)
+WIN_W_X, WIN_E_X, WIN_Z, WIN_WD, WIN_H = -3.4, 4.4, 1.80, 1.8, 1.5
+DOOR_X, DOOR_W, DOOR_H = 1.2, 1.1, 2.9                   # opening incl. the transom
+HALL_Y, HALL_W = 7.85, 1.0                               # back-hall opening in the E wall
+BAR_X0, BAR_X1, BAR_Y0, BAR_Y1, BAR_H = -5.0, 3.0, 6.25, 6.85, 1.06
+BACK_Y0 = 8.30                                           # back bar's front face
+BOOTH = (-5.07, 1.33)                                    # Douglas's table centre
+CHALK = (5.09, 1.98)                                     # the chalk table centre
+POOL = (-0.8, 3.0)
+
 
 def build_shell():
-    make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4, palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
-    for nm, x, bb in [("Wall_W", -ROOM_W/2.0, +1), ("Wall_E", +ROOM_W/2.0, -1)]:
-        make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL, baseboard_face_sign=bb)
-    make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=-1)
-    # (2026-10-03: CUT round the street windows — solid behind the panes before)
-    make_wall_with_openings("Wall_S_W", (-3.0, 0.0, 0), length=2.4, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1,
-                            openings=[(-3.0, 1.60, 1.00, 1.20)])
-    make_wall_with_openings("Wall_S_E", (+3.0, 0.0, 0), length=2.4, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1,
-                            openings=[(3.0, 1.60, 1.00, 1.20)])
-    make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4, palette={"tile": (0.30, 0.22, 0.14, 1.0), "grid": (0.18, 0.12, 0.10, 1.0)})
-    for nm, ax, length, wx, wy in [("Crown_W",'Y',ROOM_D,-ROOM_W/2.0+0.10,ROOM_D/2.0),("Crown_E",'Y',ROOM_D,+ROOM_W/2.0-0.10,ROOM_D/2.0),("Crown_N",'X',ROOM_W,0.0,ROOM_D-0.10),("Crown_S",'X',ROOM_W,0.0,+0.10)]:
-        make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax, ceil_z=CEIL, palette={"wood": COL_BRASS})
-    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
-    make_window("Window_SW", (-3.0, 0.10, 1.60), width=1.00, height=1.20, room_dir=+1)
-    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
-    make_window("Window_SE", (+3.0, 0.10, 1.60), width=1.00, height=1.20, room_dir=+1)
+    make_floor("Floor", (0.0, ROOM_D / 2.0, 0.0), size_x=ROOM_W + 0.4, size_y=ROOM_D + 0.4,
+               palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
+    make_wall("Wall_W", (-ROOM_W / 2.0, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL, axis='Y',
+              palette=PAL, baseboard_face_sign=+1)
+    make_wall_with_openings("Wall_E", (ROOM_W / 2.0, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL, axis='Y',
+                            palette=PAL, baseboard_face_sign=-1, openings=[(HALL_Y, 1.10, HALL_W, 2.20)])
+    make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W + 0.4, height=CEIL, axis='X', palette=PAL,
+              baseboard_face_sign=-1)
+    make_wall_with_openings("Wall_S", (0.0, 0.0, 0), length=ROOM_W + 0.4, height=CEIL, axis='X', palette=PAL,
+                            baseboard_face_sign=+1,
+                            openings=[(WIN_W_X, WIN_Z, WIN_WD, WIN_H), (DOOR_X, DOOR_H / 2.0, DOOR_W, DOOR_H),
+                                      (WIN_E_X, WIN_Z, WIN_WD, WIN_H)])
+    # the pressed-tin ceiling: dark-painted tin squares on a grid, a cornice round it
+    make_ceiling("Ceil", (0.0, ROOM_D / 2.0, CEIL), size_x=ROOM_W + 0.4, size_y=ROOM_D + 0.4,
+                 palette={"tile": (0.36, 0.30, 0.22, 1.0), "grid": (0.22, 0.17, 0.12, 1.0)})
+    for nm, c, s in (("Cornice_N", (0.0, YN - 0.06, CEIL - 0.09), (ROOM_W - 0.2, 0.12, 0.18)),
+                     ("Cornice_S", (0.0, YS + 0.06, CEIL - 0.09), (ROOM_W - 0.2, 0.12, 0.18)),
+                     ("Cornice_W", (XW + 0.06, ROOM_D / 2.0, CEIL - 0.09), (0.12, ROOM_D - 0.44, 0.18)),
+                     ("Cornice_E", (XE - 0.06, ROOM_D / 2.0, CEIL - 0.09), (0.12, ROOM_D - 0.44, 0.18))):
+        make_box(nm, c, s, (0.30, 0.24, 0.17, 1.0))
+    for nm, x in (("Window_SW", WIN_W_X), ("Window_SE", WIN_E_X)):
+        make_window(nm, (x, YS, WIN_Z), width=WIN_WD, height=WIN_H, room_dir=+1, see_through=True)
+
+
+def build_wainscot():
+    """Dark beadboard to 1.0 m on every wall, a chair rail on top —
+    sitting on the baseboard (z 0.16), stopping at the openings."""
+    top, z0 = 1.00, 0.16
+    zc, h = (top + z0) / 2.0, top - z0
+    runs = [("W", 'Y', XW, 0.10, ROOM_D - 0.10, None), ("N", 'X', YN, -ROOM_W / 2.0 + 0.10, ROOM_W / 2.0 - 0.10, None),
+            ("E0", 'Y', XE, 0.10, HALL_Y - HALL_W / 2.0, None), ("E1", 'Y', XE, HALL_Y + HALL_W / 2.0, ROOM_D - 0.10, None),
+            ("S0", 'X', YS, -ROOM_W / 2.0 + 0.10, DOOR_X - DOOR_W / 2.0, None),
+            ("S1", 'X', YS, DOOR_X + DOOR_W / 2.0, ROOM_W / 2.0 - 0.10, None)]
+    for tag, ax, line, a0, a1, _ in runs:
+        sign = {"W": 1, "E0": -1, "E1": -1, "N": -1, "S0": 1, "S1": 1}[tag]
+        mid, ln = (a0 + a1) / 2.0, a1 - a0
+        if ax == 'Y':
+            make_box(f"Wainscot_{tag}", (line + sign * 0.01, mid, zc), (0.02, ln, h), COL_WAIN)
+            make_box(f"ChairRail_{tag}", (line + sign * 0.02, mid, top + 0.02), (0.04, ln, 0.04), COL_RAIL)
+        else:
+            make_box(f"Wainscot_{tag}", (mid, line + sign * 0.01, zc), (ln, 0.02, h), COL_WAIN)
+            make_box(f"ChairRail_{tag}", (mid, line + sign * 0.02, top + 0.02), (ln, 0.04, 0.04), COL_RAIL)
+
+
+def build_front_door():
+    """The glazed street door (closed) with its transom; the push bar
+    and the bell; OPEN neon hung in the E window."""
+    dx, y = DOOR_X, 0.0
+    make_box("Front_Door_Frame_Head", (dx, y, 2.38), (DOOR_W, 0.24, 0.06), WOOD)
+    make_box("Front_Door_Transom", (dx, y, 2.64), (DOOR_W - 0.08, 0.03, 0.44), (0.62, 0.70, 0.74, 0.45))
+    make_box("Front_Door_Leaf", (dx, y + 0.02, 1.175), (DOOR_W - 0.06, 0.05, 2.33), (0.26, 0.17, 0.11, 1.0))
+    make_box("Front_Door_Glass", (dx, y + 0.05, 1.45), (DOOR_W - 0.34, 0.01, 1.30), (0.55, 0.62, 0.66, 0.45))
+    make_box("Front_Door_PushBar", (dx, y + 0.10, 1.05), (DOOR_W - 0.30, 0.03, 0.04), COL_BRASS)
+    for i, sx in enumerate((-0.38, 0.38)):
+        make_box(f"Front_Door_PushBar_Post_{i}", (dx + sx, y + 0.065, 1.05), (0.03, 0.04, 0.04), COL_BRASS)
+    make_box("Front_Door_Mat", (dx, 0.55, 0.008), (1.2, 0.8, 0.016), (0.16, 0.14, 0.12, 1.0))
+    make_box("Open_Neon_Box", (WIN_E_X + 0.45, YS + 0.08, 2.15), (0.62, 0.03, 0.26), (0.10, 0.10, 0.12, 1.0))
+    make_box("Open_Neon_Tube", (WIN_E_X + 0.45, YS + 0.10, 2.15), (0.50, 0.01, 0.14), (0.96, 0.30, 0.34, 1.0))
+    make_tube("Open_Neon_Chain", [(WIN_E_X + 0.25, YS + 0.08, 2.28), (WIN_E_X + 0.45, YS + 0.08, 2.52),
+                                  (WIN_E_X + 0.65, YS + 0.08, 2.28)], 0.004, IRON, segments=4)
+
 
 def build_bar():
-# make_counter's `depth` is the X extent and `length` is Y —
-    # so length=7.0/depth=1.20 built this bar ROTATED 90 DEGREES:
-    # a 7m counter running north-south, 1.65m of it through the
-    # north wall, with all five stools embedded in its flank.
-    # (Found 2026-08-12, once shared-module geometry recorded.)
-    top_z = make_counter("Bar", (0.0, 4.15, 0.0), length=1.20, depth=7.0, height=1.10, palette={"formica": COL_BAR, "top": COL_TOP, "kick": (0.18, 0.10, 0.06, 1.0)})
-    make_counter_bullnose("Bar", (0.0, 3.55, top_z), length=7.0,
-                          palette={"top": COL_TOP}, axis='X')
-    # Brass foot rail (cylinder along south face)
-    make_cyl("Bar_FootRail", (0.0, 3.52, 0.18), 0.025, 7.0, COL_BRASS, axis='X', segments=8)
-    # 5 bar stools (south side)
-    for si, sx in enumerate([-2.4, -1.2, 0.0, +1.2, +2.4]):
-        make_cyl(f"Stool_{si}_Seat", (sx, 3.20, 0.78), 0.18, 0.06, COL_BAR)
-        make_cyl(f"Stool_{si}_Pillar", (sx, 3.20, 0.40), 0.04, 0.74, COL_BRASS)
-        make_cyl(f"Stool_{si}_Foot", (sx, 3.20, 0.02), 0.16, 0.04, COL_BRASS)   # on the floor (2026-09-22: 2 cm up)
-    # Bottle wall north of bar (mounted shelves)
-    for shf in range(3):
-        sz = top_z + 0.30 + shf*0.40
-        # mounted ON the mirror's face, short of the TV (2026-09-22: 40 cm off the wall)
-        make_box(f"Bottle_Shelf_{shf}", (-0.65, 5.78, sz), (5.1, 0.20, 0.02), COL_TOP)
-        for bi in range(16):
-            bx = -3.0 + bi*0.32
-            tint = [COL_BOTTLE_AMBER, COL_BOTTLE_CLEAR, COL_BOTTLE_GREEN][(shf+bi)%3]
-            make_liquor_bottle(f"Bottle_{shf}_{bi}", bx, 5.78, sz + 0.01,
-                               tint, h=0.24 + ((shf + bi) % 3) * 0.035,
-                               r=0.033)
-    # Back mirror (long horizontal — bartender's reflection canon)
-    make_box("Bar_Mirror", (-0.65, 5.89, top_z+0.85), (5.1, 0.02, 1.50), (0.78, 0.84, 0.86, 0.85))   # on the wall; ends where the TV hangs
-
-def build_jukebox():
-    # Wurlitzer-style jukebox SE corner
-    jx, jy = +3.80, 1.20
-    make_box("Jukebox_Body", (jx, jy, 0.75), (0.80, 0.60, 1.50), (0.78, 0.42, 0.16, 1.0))
-    make_box("Jukebox_TopArch", (jx, jy, 1.70), (0.80, 0.60, 0.40), (0.62, 0.32, 0.14, 1.0))
-    make_box("Jukebox_Glass", (jx, jy-0.31, 1.10), (0.70, 0.04, 0.50), (0.32, 0.22, 0.18, 0.55))
-    make_box("Jukebox_LightBar", (jx, jy-0.32, 1.50), (0.70, 0.02, 0.10), (0.96, 0.78, 0.42, 1.0))
-
-def build_decor():
-    make_wall_clock("Clock", (0.0, 5.900, 2.60), frozen_hour=11, frozen_min=47, facing='-Y')
-    # Pendant lamps over bar
-    for pi, px in enumerate([-2.0, 0.0, +2.0]):
-        make_cyl(f"Pendant_{pi}_Cord", (px, 4.5, CEIL-0.25), 0.005, 0.50, P.METAL_BLACK)   # ceiling to shade (2026-09-22: 10 cm short of both)
-        make_box(f"Pendant_{pi}_Shade", (px, 4.5, CEIL-0.65), (0.30, 0.30, 0.30), (0.92, 0.74, 0.32, 1.0))
-
-def build_ceiling_fan():
-    # Slow-turning ceiling fan with a warm light kit (jazz-club canon).
-    fx, fy, fz = 0.0, 3.0, CEIL - 0.15
-    make_cyl("Fan_Downrod", (fx, fy, fz), 0.02, 0.30, P.METAL_BLACK)   # to the ceiling (2026-09-22: 2 cm short)
-    make_cyl("Fan_Motor", (fx, fy, fz - 0.23), 0.12, 0.14, COL_BRASS, segments=12)
-    blades = [(0.46, fy, 0.66, 0.16), (-0.46, fy, 0.66, 0.16),
-              (fx, fy+0.46, 0.16, 0.66), (fx, fy-0.46, 0.16, 0.66)]
-    for bi, (bx, by, sw, sd) in enumerate(blades):
-        make_box(f"Fan_Blade_{bi}", (bx, by, fz - 0.30), (sw, sd, 0.02), (0.36, 0.24, 0.14, 1.0))
-    make_cyl("Fan_LightKit", (fx, fy, fz - 0.36), 0.09, 0.12, (0.96, 0.84, 0.62, 1.0), segments=12)   # on the motor
-
-def build_ceiling_infra():
-    # A grimy dive lights by neon, TV glow and low pendants — no
-    # shop tubes
-    for pi, (px, py) in enumerate(((-2.0, 2.2), (2.0, 2.2))):
-        # (2026-09-22: these shared the bar pendants' names — Lamp_ now; shade on the cord, bulb in the shade)
-        make_cyl(f"Lamp_{pi}_Cord", (px, py, CEIL-0.16), 0.008, 0.32, P.METAL_BLACK)
-        make_cyl(f"Lamp_{pi}_Shade", (px, py, CEIL-0.39), 0.15, 0.14, (0.30, 0.24, 0.18, 1.0), segments=12)
-        make_cyl(f"Lamp_{pi}_Bulb", (px, py, CEIL-0.47), 0.05, 0.06, (1.0, 0.80, 0.45, 1.0), segments=8)
-
-
-def build_hero_props():
-    """2026-08-03 hero-prop pass: the muted bar TV (Strength's
-    refrain), the cheap-vinyl corner booth + saltshaker + folded
-    twenty + empties, three neon beer signs (two dead brands), the
-    CHALK TABLE (vol1's pool table) + cue rack, the pinball machine
-    + the Missile Command cabinet, and a six-top for the vol1
-    party."""
-    vinyl = (0.36, 0.20, 0.18, 1.0)
-    wood = (0.35, 0.24, 0.15, 1.0)
-    felt = (0.16, 0.36, 0.24, 1.0)
-    # The bar TV, muted, over the back bar
-    make_box("Bar_TV", (2.6, 5.86, 2.30), (1.10, 0.08, 0.62), (0.10, 0.10, 0.12, 1.0))   # on the wall (2026-09-22: 6 cm off it)
-    make_box("Bar_TV_Screen", (2.6, 5.81, 2.30), (0.98, 0.02, 0.52), (0.32, 0.40, 0.36, 1.0))
-    # Corner booth SW: L-benches + table + the props on it
-    make_box("Booth_Bench_W", (-4.15, 1.6, 0.30), (0.55, 1.9, 0.46), vinyl)
-    make_box("Booth_Back_W", (-4.38, 1.6, 0.80), (0.10, 1.9, 0.70), vinyl)
-    make_box("Booth_Bench_S", (-3.1, 0.55, 0.30), (1.6, 0.55, 0.46), vinyl)
-    make_box("Booth_Back_S", (-3.1, 0.32, 0.80), (1.6, 0.10, 0.70), vinyl)
-    make_box("Booth_Table", (-3.4, 1.35, 0.74), (1.10, 0.75, 0.05), wood)
-    make_box("Booth_Table_Leg", (-3.4, 1.35, 0.37), (0.10, 0.10, 0.72), (0.20, 0.19, 0.20, 1.0))
-    # The booth's own light (2026-10-05): a wall sconce over the table on
-    # the west wall — Doug's corner had only the room's pendants.
-    make_box("Booth_Sconce_Plate", (-4.39, 1.35, 1.78), (0.02, 0.14, 0.22), (0.30, 0.24, 0.16, 1.0))
-    make_box("Booth_Sconce_Arm", (-4.32, 1.35, 1.80), (0.12, 0.02, 0.02), (0.30, 0.24, 0.16, 1.0))
-    make_taper_cyl("Booth_Sconce_Shade", (-4.20, 1.35, 1.80), 0.09, 0.05, 0.14, (0.86, 0.56, 0.28, 1.0), segments=10)
-    make_cyl("Saltshaker", (-3.25, 1.30, 0.80), 0.022, 0.08, (0.88, 0.88, 0.84, 0.9), segments=8)
-    make_box("Folded_Twenty", (-3.25, 1.30, 0.8286), (0.05, 0.035, 0.006), (0.55, 0.62, 0.50, 1.0))
-    for bi, (bx, by) in enumerate(((-3.6, 1.5), (-3.15, 1.55))):
-        make_cyl(f"Empty_Bottle_{bi}", (bx, by, 0.86), 0.03, 0.20, (0.36, 0.26, 0.14, 0.8), segments=8)
-    # Three neon beer signs on the W wall — two dead brands, one live
-    for ni, (ny, col) in enumerate(((1.4, (0.86, 0.32, 0.34, 1.0)), (2.8, (0.30, 0.72, 0.62, 1.0)),
-                                    (4.2, (0.90, 0.70, 0.28, 1.0)))):
-        make_box(f"BeerNeon_{ni}_Box", (-4.42, ny, 2.05), (0.06, 0.85, 0.45), (0.14, 0.12, 0.14, 1.0))
-        make_box(f"BeerNeon_{ni}_Tube", (-4.38, ny, 2.05), (0.03, 0.65, 0.28), col)
-    # THE CHALK TABLE — vol1's pool table + the cue rack
-    make_box("Chalk_Table_Body", (-2.2, 1.9, 0.62), (2.24, 1.24, 0.36), wood)
-    make_box("Chalk_Table_Felt", (-2.2, 1.9, 0.805), (2.02, 1.02, 0.02), felt)
-    make_box("Chalk_Table_Rail", (-2.2, 1.9, 0.80), (2.24, 1.24, 0.05), (0.28, 0.19, 0.12, 1.0))
-    for lx, ly in ((-3.15, 1.4), (-1.25, 1.4), (-3.15, 2.4), (-1.25, 2.4)):
-        make_box(f"Chalk_Leg_{lx:.2f}_{ly:.1f}", (lx, ly, 0.30), (0.14, 0.14, 0.60), wood)
-    for bi in range(3):
-        make_cyl(f"Pool_Ball_{bi}", (-2.4 + bi * 0.22, 1.85 + 0.1 * (bi % 2), 0.845), 0.028, 0.056,
-                 [(0.86, 0.82, 0.74, 1.0), (0.72, 0.22, 0.18, 1.0), (0.14, 0.14, 0.16, 1.0)][bi], segments=8)
-    make_box("Cue_Rack", (-4.42, 0.9, 1.35), (0.06, 0.60, 1.10), wood)
-    for ci in range(4):
-        make_cyl(f"Cue_{ci}", (-4.38, 0.72 + ci * 0.12, 1.35), 0.012, 1.00, (0.66, 0.52, 0.34, 1.0), segments=5)
-    # Pinball + Missile Command along the E wall
-    make_box("Pinball_Body", (4.05, 3.1, 0.72), (0.72, 1.35, 0.35), (0.62, 0.26, 0.30, 1.0))
-    make_box("Pinball_Glass", (4.05, 3.1, 0.92), (0.66, 1.25, 0.03), (0.55, 0.62, 0.66, 0.4))
-    make_box("Pinball_Backbox", (4.05, 3.72, 1.50), (0.70, 0.16, 0.70), (0.70, 0.32, 0.36, 1.0))
-    for li in range(4):
-        make_box(f"Pinball_Leg_{li}", (3.80 + 0.5 * (li % 2), 2.55 + 1.1 * (li // 2), 0.28),
-                 (0.05, 0.05, 0.56), (0.55, 0.57, 0.58, 1.0))
-    make_box("MissileCmd_Cab", (4.10, 4.5, 0.88), (0.70, 0.80, 1.75), (0.16, 0.16, 0.20, 1.0))
-    make_box("MissileCmd_Screen", (3.78, 4.5, 1.25), (0.05, 0.55, 0.42), (0.14, 0.30, 0.22, 1.0))
-    make_box("MissileCmd_Marquee", (3.80, 4.5, 1.68), (0.05, 0.62, 0.18), (0.80, 0.30, 0.24, 1.0))
-    make_box("MissileCmd_Panel", (3.72, 4.5, 0.90), (0.16, 0.60, 0.06), (0.24, 0.24, 0.28, 1.0))
-    # A six-top for the vol1 party
-    make_cyl("Group_Table", (0.6, 1.75, 0.725), 0.65, 0.05, wood, segments=14)
-    make_cyl("Group_Table_Post", (0.6, 1.75, 0.35), 0.07, 0.70, (0.20, 0.19, 0.20, 1.0), segments=8)   # floor to top (2026-09-22: 2 cm up)
-    import math as _m
-    for ci in range(6):
-        ang = ci * (2.0 * _m.pi / 6.0) + 0.3
-        cx, cy = 0.6 + _m.cos(ang) * 1.0, 1.9 + _m.sin(ang) * 1.0
-        make_box(f"Group_Chair_{ci}_Seat", (cx, cy, 0.44), (0.38, 0.38, 0.04), wood)
-        # legs (2026-09-08)
-        for lx_ in (-1, 1):
-            for ly_ in (-1, 1):
-                make_box(f"Group_Chair_{ci}_Leg_{lx_:+d}_{ly_:+d}",
-                         (cx + lx_ * 0.15, cy + ly_ * 0.15, 0.22),
-                         (0.035, 0.035, 0.44), wood)
-        make_box(f"Group_Chair_{ci}_Back", (0.6 + _m.cos(ang) * 1.17, 1.9 + _m.sin(ang) * 1.17, 0.70),
-                 (0.38, 0.05, 0.48), wood)
+    """The long bar: panelled mahogany front, the top with its bullnose,
+    the brass foot rail on standoffs; the underbar on the bartender's
+    side; the back bar, the mirror, two bottle shelves on brackets."""
+    bx, bl = (BAR_X0 + BAR_X1) / 2.0, BAR_X1 - BAR_X0
+    by, bd = (BAR_Y0 + BAR_Y1) / 2.0, BAR_Y1 - BAR_Y0
+    make_box("Bar_Front", (bx, by, BAR_H / 2.0), (bl, bd, BAR_H), COL_BAR)
+    top_z = BAR_H + 0.06
+    make_box("Bar_Top", (bx, by - 0.10, BAR_H + 0.03), (bl + 0.10, bd + 0.20, 0.06), COL_TOP)
+    make_counter_bullnose("Bar", (bx, BAR_Y0 - 0.20, top_z), length=bl + 0.10, palette={"top": COL_TOP}, axis='X')
+    make_box("Bar_Kick", (bx, BAR_Y0 - 0.01, 0.08), (bl, 0.02, 0.16), (0.14, 0.08, 0.05, 1.0))
+    for i in range(9):                                   # raised panels on the customer face
+        px = BAR_X0 + 0.45 + i * (bl - 0.9) / 8.0
+        make_box(f"Bar_Panel_{i}", (px, BAR_Y0 - 0.012, 0.60), (0.70, 0.02, 0.62), (0.46, 0.27, 0.17, 1.0))
+    make_cyl("Bar_FootRail", (bx, BAR_Y0 - 0.22, 0.20), 0.025, bl - 0.2, COL_BRASS, axis='X', segments=8)
+    for i in range(6):
+        sx = BAR_X0 + 0.3 + i * (bl - 0.6) / 5.0
+        make_box(f"Bar_FootRail_Standoff_{i}", (sx, BAR_Y0 - 0.125, 0.20), (0.03, 0.25, 0.03), COL_BRASS)
+    make_box("Bar_End_E", (BAR_X1 + 0.015, by, BAR_H / 2.0), (0.03, bd, BAR_H), (0.46, 0.27, 0.17, 1.0))
+    # the underbar: the bartender's work shelf, the ice well, the speed rail
+    make_box("Underbar", (bx, BAR_Y1 + 0.22, 0.43), (bl - 0.2, 0.44, 0.86), (0.52, 0.52, 0.54, 1.0))
+    make_box("Ice_Well", (-1.6, BAR_Y1 + 0.22, 0.865), (0.80, 0.34, 0.01), (0.86, 0.90, 0.92, 1.0))
+    make_box("Speed_Rail", (-1.6, BAR_Y1 + 0.47, 0.70), (1.10, 0.06, 0.04), (0.62, 0.62, 0.64, 1.0))
+    for i in range(6):
+        make_liquor_bottle(f"Well_Bottle_{i}", -2.10 + i * 0.2, BAR_Y1 + 0.47, 0.72,
+                           [COL_BOTTLE_CLEAR, COL_BOTTLE_AMBER, COL_BOTTLE_GREEN][i % 3], h=0.26, r=0.03)
+    for i, x in enumerate((-3.4, 0.6)):
+        make_box(f"Bar_Mat_Rubber_{i}", (x, BAR_Y1 + 0.85, 0.008), (1.4, 0.60, 0.016), (0.10, 0.10, 0.11, 1.0))
+    # the back bar: cabinet, its top, the mirror, two glass shelves on brackets
+    cx0, cx1 = BAR_X0, 3.0
+    make_box("BackBar_Cabinet", ((cx0 + cx1) / 2.0, (BACK_Y0 + YN) / 2.0, 0.46), (cx1 - cx0, YN - BACK_Y0, 0.92), COL_BAR)
+    make_box("BackBar_Top", ((cx0 + cx1) / 2.0, (BACK_Y0 + YN) / 2.0 - 0.02, 0.95), (cx1 - cx0, YN - BACK_Y0 + 0.04, 0.06), COL_TOP)
+    for i in range(6):
+        make_box(f"BackBar_Door_{i}", (cx0 + 0.67 + i * 1.33, BACK_Y0 - 0.01, 0.48), (1.15, 0.02, 0.70), (0.46, 0.27, 0.17, 1.0))
+    make_box("Bar_Mirror", (-1.0, YN - 0.01, 1.85), (7.2, 0.02, 1.50), (0.36, 0.38, 0.38, 1.0))   # old smoky glass (draft 6: a bright pane read as a white wall)
+    for i, x in enumerate((-4.6, 2.6)):
+        make_box(f"Bar_Mirror_Pilaster_{i}", (x, YN - 0.04, 1.85), (0.16, 0.06, 1.62), COL_BAR)
+    make_box("Bar_Mirror_Head", (-1.0, YN - 0.05, 2.70), (7.6, 0.08, 0.12), COL_BAR)
+    for shf, sz in enumerate((1.42, 1.86)):
+        make_box(f"Bottle_Shelf_{shf}", (-1.0, YN - 0.13, sz), (6.6, 0.22, 0.02), (0.70, 0.78, 0.80, 0.55))
+        for j, x in enumerate((-4.0, -1.0, 2.0)):
+            make_box(f"Bottle_Shelf_{shf}_Bracket_{j}", (x, YN - 0.12, sz - 0.05), (0.03, 0.20, 0.08), COL_BRASS)
+        for bi in range(20):
+            bxp = -4.15 + bi * 0.33
+            tint = [COL_BOTTLE_AMBER, COL_BOTTLE_CLEAR, COL_BOTTLE_GREEN][(shf + bi) % 3]
+            make_liquor_bottle(f"Bottle_{shf}_{bi}", bxp, YN - 0.13, sz + 0.01, tint,
+                               h=0.24 + ((shf + bi) % 3) * 0.035, r=0.033)
+    for bi in range(16):                                 # the back bar top: the everyday bottles
+        make_liquor_bottle(f"BackBar_Bottle_{bi}", -4.4 + bi * 0.27, BACK_Y0 + 0.30, 0.98,
+                           [COL_BOTTLE_CLEAR, COL_BOTTLE_AMBER, COL_BOTTLE_AMBER, COL_BOTTLE_GREEN][bi % 4],
+                           h=0.28 + (bi % 3) * 0.03, r=0.036)
+    make_box("Register", (1.9, BACK_Y0 + 0.30, 1.12), (0.42, 0.38, 0.28), (0.60, 0.60, 0.58, 1.0))
+    make_box("Register_Keys", (1.9, BACK_Y0 + 0.10, 1.17), (0.32, 0.02, 0.10), (0.30, 0.30, 0.32, 1.0))
+    make_box("Register_Drawer", (1.9, BACK_Y0 + 0.10, 1.02), (0.36, 0.02, 0.06), (0.50, 0.50, 0.48, 1.0))
+    # the beer cooler at the back bar's east end: glass doors, cans inside, its own light
+    make_box("Cooler_Body", (3.75, (BACK_Y0 + YN) / 2.0, 0.95), (1.40, YN - BACK_Y0, 1.90), (0.18, 0.18, 0.20, 1.0))
+    for i, x in enumerate((3.42, 4.08)):
+        make_box(f"Cooler_Glass_{i}", (x, BACK_Y0 - 0.01, 1.00), (0.60, 0.02, 1.50), (0.70, 0.84, 0.90, 0.45))
+        make_box(f"Cooler_Handle_{i}", (x + (0.24 if i == 0 else -0.24), BACK_Y0 - 0.04, 1.05), (0.03, 0.04, 0.40), (0.62, 0.62, 0.64, 1.0))
+    for r_, z in enumerate((0.42, 0.86, 1.30)):
+        make_box(f"Cooler_Rack_{r_}", (3.75, BACK_Y0 + 0.30, z), (1.24, 0.50, 0.015), (0.70, 0.72, 0.74, 1.0))
+        for k in range(8):
+            make_can(f"Cooler_Can_{r_}_{k}", 3.22 + k * 0.15, BACK_Y0 + 0.15, z + 0.008,
+                     [(0.80, 0.20, 0.18, 1.0), (0.86, 0.80, 0.70, 1.0), (0.20, 0.36, 0.66, 1.0), (0.30, 0.50, 0.30, 1.0)][(k + r_) % 4])
+    make_box("Cooler_Light", (3.75, BACK_Y0 + 0.08, 1.80), (1.20, 0.06, 0.03), (0.90, 0.96, 1.0, 1.0))
 
 
-def build_hero_props_2026_09():
-    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
-
-    Three distinct cues. Built:
-
-    - THE BAR TV already existed in the 2026-08 hero pass — the
-      cue missed it because "tv" is under the matcher's 3-char
-      stem floor. Fixed with a SYNONYMS entry (tv -> bar_tv,
-      television), no new geometry.
-    - THE HANDS ("His hands rested on the sticky tabletop"):
-      residue grammar — two faint sticky sheen patches on the
-      corner booth's table where hands keep resting.
-
-    The tattoo cue (the ouroboros on Douglas's forearm) is ON A
-    PERSON — no honest anchor exists in the room; it stays
-    deliberately blind and VnDirector holds the wide (the
-    closeup_douglas precedent).
-    """
-    make_box("Hands_Sticky_Patch_A", (-3.30, 1.25, 0.7664), (0.14, 0.11, 0.0015),
-             (0.38, 0.30, 0.22, 1.0))
-    make_box("Hands_Sticky_Patch_B", (-3.52, 1.42, 0.7664), (0.11, 0.13, 0.0015),
-             (0.36, 0.28, 0.21, 1.0))
-
-
-def build_dive_2026_10():
-    """CHARACTER PASS (2026-10-03). The chapter: "the bar TV … Muted …
-    under the buzzing neon of three different beer signs, two of which
-    had … His hands rested on the sticky tabletop … the cheap vinyl …
-    the saltshaker … a tired-looking woman behind the bar … deliveries
-    coming through the back door." A Marigny dive: the taps and the
-    bar's clutter, a COLD BEER neon over the mirror, string lights,
-    Mardi Gras beads on the mirror and the TV, a dartboard and its
-    chalk scores, the gator on the wall, the specials board, the back
-    door with its RESTROOM sign, and the street at night outside the
-    windows."""
-    wood = (0.35, 0.24, 0.15, 1.0)
-    brass = COL_BRASS
-    top = 1.16
-    # ── on the bar: the taps, the mat, the tip jar, napkins, ashtrays, peanuts, the register
-    make_box("Tap_Tower", (-0.70, 4.30, top + 0.14), (0.42, 0.10, 0.28), (0.72, 0.72, 0.74, 1.0))
+def build_on_the_bar():
+    top = BAR_H + 0.06
+    make_box("Tap_Tower", (-0.70, 6.62, top + 0.14), (0.42, 0.10, 0.28), (0.72, 0.72, 0.74, 1.0))
     for i, tx in enumerate((-0.84, -0.70, -0.56)):
-        make_cyl(f"Tap_{i}_Spout", (tx, 4.22, top + 0.16), 0.012, 0.08, brass, segments=6, axis='Y')
-        make_cyl(f"Tap_{i}_Handle", (tx, 4.30, top + 0.36), 0.018, 0.16, [(0.86, 0.20, 0.18, 1.0), (0.14, 0.14, 0.16, 1.0), (0.92, 0.84, 0.40, 1.0)][i], segments=6)
-    make_box("Bar_Mat", (-0.70, 3.95, top + 0.006), (0.60, 0.28, 0.012), (0.12, 0.12, 0.14, 1.0))
-    make_cyl("Tip_Jar", (0.30, 4.35, top + 0.08), 0.06, 0.16, (0.78, 0.84, 0.86, 0.5), segments=10)
-    make_box("Tip_Jar_Bills", (0.30, 4.35, top + 0.05), (0.07, 0.05, 0.08), (0.56, 0.62, 0.50, 1.0))
-    for i, nx in enumerate((-2.0, 1.4)):
-        make_box(f"Napkin_Dispenser_{i}", (nx, 4.40, top + 0.07), (0.14, 0.09, 0.14), (0.62, 0.62, 0.64, 1.0))
-        make_box(f"Napkin_{i}", (nx, 4.345, top + 0.07), (0.10, 0.004, 0.09), (0.94, 0.94, 0.90, 1.0))
-    for i, ax in enumerate((-1.5, 0.9)):
-        make_cyl(f"Bar_Ashtray_{i}", (ax, 3.90, top + 0.015), 0.055, 0.03, (0.30, 0.30, 0.32, 1.0), segments=10)
-    make_bowl("Peanut_Bowl", 2.2, 3.95, top, (0.46, 0.40, 0.32, 1.0), r=0.09, h=0.05)
-    make_box("Register", (2.0, 4.50, top + 0.14), (0.40, 0.36, 0.28), (0.62, 0.62, 0.60, 1.0))
-    make_box("Register_Keys", (2.0, 4.33, top + 0.19), (0.30, 0.02, 0.10), (0.30, 0.30, 0.32, 1.0))
-    make_box("Register_Drawer", (2.0, 4.31, top + 0.05), (0.36, 0.02, 0.08), (0.50, 0.50, 0.48, 1.0))
-    # ── the glass rack over the bar
-    make_box("Glass_Rack", (0.0, 4.15, 2.30), (3.0, 0.40, 0.03), wood)
+        make_cyl(f"Tap_{i}_Spout", (tx, 6.54, top + 0.16), 0.012, 0.08, COL_BRASS, segments=6, axis='Y')
+        make_cyl(f"Tap_{i}_Handle", (tx, 6.62, top + 0.36), 0.018, 0.16,
+                 [(0.86, 0.20, 0.18, 1.0), (0.14, 0.14, 0.16, 1.0), (0.92, 0.84, 0.40, 1.0)][i], segments=6)
+    make_box("Bar_Mat", (-0.70, 6.35, top + 0.006), (0.60, 0.28, 0.012), (0.12, 0.12, 0.14, 1.0))
+    make_cyl("Tip_Jar", (0.40, 6.62, top + 0.08), 0.06, 0.16, (0.78, 0.84, 0.86, 0.5), segments=10)
+    make_box("Tip_Jar_Bills", (0.40, 6.62, top + 0.05), (0.07, 0.05, 0.08), (0.56, 0.62, 0.50, 1.0))
+    for i, nx in enumerate((-3.2, 1.6)):
+        make_box(f"Napkin_Dispenser_{i}", (nx, 6.66, top + 0.07), (0.14, 0.09, 0.14), (0.62, 0.62, 0.64, 1.0))
+        make_box(f"Napkin_{i}", (nx, 6.605, top + 0.07), (0.10, 0.004, 0.09), (0.94, 0.94, 0.90, 1.0))
+    for i, ax in enumerate((-4.0, -1.9, 0.9, 2.4)):
+        make_cyl(f"Bar_Ashtray_{i}", (ax, 6.25, top + 0.015), 0.055, 0.03, (0.30, 0.30, 0.32, 1.0), segments=10)
+    make_bowl("Peanut_Bowl", -2.6, 6.30, top, (0.46, 0.40, 0.32, 1.0), r=0.09, h=0.05)
+    # the last customer's glass and bottle, a coaster
+    make_pint_glass("Bar_Pint_0", -0.10, 6.22, top, (0.86, 0.66, 0.30, 0.7))
+    make_bottle("Bar_Longneck_0", 1.20, 6.30, top, (0.60, 0.34, 0.12, 0.9))
+    make_box("Bar_Coaster_0", (-0.10, 6.22, top + 0.002), (0.10, 0.10, 0.004), (0.86, 0.84, 0.78, 1.0))
+    # the glass rack over the bar, on chains to the tin
+    make_box("Glass_Rack", (0.0, 6.55, 2.45), (3.0, 0.40, 0.03), WOOD)
     for i in range(4):
-        make_cyl(f"Glass_Rack_Rail_{i}", (0.0, 4.00 + i * 0.10, 2.27), 0.008, 3.0, brass, segments=6, axis='X')
+        make_cyl(f"Glass_Rack_Rail_{i}", (0.0, 6.40 + i * 0.10, 2.42), 0.008, 3.0, COL_BRASS, segments=6, axis='X')
     for i in range(14):
-        make_cyl(f"Hung_Glass_{i}", (-1.3 + i * 0.2, 4.05 + (i % 3) * 0.10, 2.18), 0.035, 0.14, (0.80, 0.86, 0.88, 0.5), segments=8)
+        make_cyl(f"Hung_Glass_{i}", (-1.3 + i * 0.2, 6.45 + (i % 3) * 0.10, 2.33), 0.035, 0.14, GLASS, segments=8)
     for i, cx in enumerate((-1.3, 1.3)):
-        make_cyl(f"Glass_Rack_Chain_{i}", (cx, 4.15, 2.76), 0.006, 0.88, (0.30, 0.30, 0.32, 1.0), segments=5)
-    # ── neon: COLD BEER over the mirror; the string lights along the north wall
-    make_box("ColdBeer_Box", (-0.65, 5.92, 3.0), (1.40, 0.06, 0.36), (0.14, 0.12, 0.14, 1.0))
-    make_box("ColdBeer_Tube", (-0.65, 5.88, 3.0), (1.10, 0.02, 0.16), (0.30, 0.78, 0.96, 1.0))
-    make_tube("String_Lights", [(-4.3, 5.86, 2.95), (-2.5, 5.86, 2.80), (-0.7, 5.86, 2.95), (1.1, 5.86, 2.80), (2.9, 5.86, 2.95), (4.3, 5.86, 2.82)], 0.005, (0.16, 0.16, 0.18, 1.0), segments=4)
-    for i in range(14):
-        sx = -4.1 + i * 0.6
-        sz = 2.95 - 0.15 * abs(((sx + 4.3) % 3.6) / 1.8 - 1.0) * 1.0
-        make_cyl(f"String_Bulb_{i}", (sx, 5.86, sz - 0.05), 0.02, 0.05, [(0.96, 0.82, 0.40, 1.0), (0.90, 0.40, 0.44, 1.0), (0.44, 0.86, 0.60, 1.0)][i % 3], segments=6)
-    # ── Mardi Gras beads on the mirror and the TV
-    for i, (x0, x1, z, col) in enumerate(((-2.8, -1.6, 2.55, (0.60, 0.26, 0.74, 1.0)), (-1.4, -0.2, 2.50, (0.26, 0.70, 0.36, 1.0)), (0.2, 1.4, 2.55, (0.92, 0.78, 0.22, 1.0)), (2.1, 3.1, 2.76, (0.60, 0.26, 0.74, 1.0)))):   # the last over the TV's top edge
-        make_tube(f"Beads_{i}", [(x0, 5.86, z + 0.18), ((x0 + x1) / 2.0, 5.84, z - 0.12), (x1, 5.86, z + 0.18)], 0.012, col, segments=6)
-    # ── dartboard and the chalk scores on the east wall; the specials board on the north
-    make_cyl("Dartboard", (ROOM_W / 2.0 - 0.125, 2.0, 1.73), 0.23, 0.04, (0.20, 0.18, 0.16, 1.0), segments=16, axis='X')
-    make_cyl("Dartboard_Bull", (ROOM_W / 2.0 - 0.148, 2.0, 1.73), 0.03, 0.006, (0.80, 0.20, 0.18, 1.0), segments=10, axis='X')
+        make_cyl(f"Glass_Rack_Chain_{i}", (cx, 6.55, (2.465 + CEIL) / 2.0), 0.006, CEIL - 2.465, (0.30, 0.30, 0.32, 1.0), segments=5)
+
+
+def build_stools():
+    for si in range(7):
+        sx = -4.4 + si * 1.15
+        sy = BAR_Y0 - 0.55
+        make_cyl(f"Stool_{si}_Seat", (sx, sy, 0.77), 0.19, 0.08, VINYL, segments=12)
+        make_cyl(f"Stool_{si}_Pillar", (sx, sy, 0.375), 0.035, 0.69, (0.70, 0.70, 0.72, 1.0), segments=8)
+        make_cyl(f"Stool_{si}_Foot", (sx, sy, 0.0125), 0.20, 0.025, (0.30, 0.30, 0.32, 1.0), segments=12)
+        make_box(f"Stool_{si}_FootBar", (sx, sy, 0.30), (0.34, 0.025, 0.025), (0.70, 0.70, 0.72, 1.0))
+
+
+def build_tv_and_signs():
+    """The bar TV up on the N wall's west end over the bottles — where
+    the corner booth looks; the IRON CROW neon over the mirror; the
+    clock; the gator; the beads; the specials board."""
+    tx, tz = -3.2, 3.10
+    make_box("Bar_TV_Mount", (tx, YN - 0.04, tz), (0.30, 0.08, 0.20), IRON)
+    make_box("Bar_TV", (tx, YN - 0.12, tz), (1.30, 0.08, 0.76), (0.10, 0.10, 0.12, 1.0))
+    make_box("Bar_TV_Screen", (tx, YN - 0.165, tz), (1.20, 0.01, 0.66), (0.30, 0.46, 0.40, 1.0))
+    # the game: a green field, the line of scrimmage, the score bug
+    make_box("Bar_TV_Field_Line", (tx + 0.05, YN - 0.171, tz - 0.05), (0.02, 0.003, 0.50), (0.90, 0.92, 0.88, 1.0))
+    make_box("Bar_TV_ScoreBug", (tx - 0.38, YN - 0.171, tz - 0.26), (0.36, 0.003, 0.08), (0.12, 0.14, 0.30, 1.0))
+    make_tube("Bar_TV_Cord", [(tx + 0.10, YN - 0.08, tz - 0.38), (tx + 0.10, YN - 0.05, 2.75)], 0.008, IRON, segments=4)
+    # IRON CROW: a crow in neon over the mirror's head, the name beside it
+    cx, cz = 0.4, 3.18
+    make_box("IronCrow_Box", (cx, YN - 0.03, cz), (2.10, 0.06, 0.56), (0.12, 0.10, 0.12, 1.0))
+    red = (0.96, 0.26, 0.20, 1.0)
+    make_box("IronCrow_Tube", (cx + 0.30, YN - 0.07, cz + 0.05), (1.20, 0.02, 0.14), red)
+    make_box("IronCrow_Tube_Underline", (cx + 0.30, YN - 0.07, cz - 0.12), (1.30, 0.02, 0.025), red)
+    make_box("IronCrow_Bird_Body", (cx - 0.68, YN - 0.07, cz), (0.30, 0.02, 0.12), red)
+    make_box("IronCrow_Bird_Head", (cx - 0.50, YN - 0.07, cz + 0.08), (0.10, 0.02, 0.09), red)
+    make_box("IronCrow_Bird_Beak", (cx - 0.42, YN - 0.07, cz + 0.07), (0.07, 0.02, 0.025), (0.98, 0.78, 0.30, 1.0))
+    make_box("IronCrow_Bird_Tail", (cx - 0.88, YN - 0.07, cz - 0.04), (0.14, 0.02, 0.05), red)
+    make_box("IronCrow_Bird_Leg", (cx - 0.66, YN - 0.07, cz - 0.11), (0.02, 0.02, 0.10), red)
+    make_wall_clock("Clock", (2.15, YN, 3.20), frozen_hour=11, frozen_min=47, facing='-Y')
+    # the gator over the cooler
+    gx, gz = 3.85, 3.10
+    make_box("Gator_Plaque", (gx, YN - 0.02, gz), (0.90, 0.04, 0.34), WOOD)
+    make_box("Gator_Head", (gx + 0.05, YN - 0.13, gz), (0.52, 0.18, 0.16), (0.30, 0.34, 0.22, 1.0))
+    make_box("Gator_Snout", (gx - 0.30, YN - 0.13, gz - 0.03), (0.22, 0.14, 0.10), (0.30, 0.34, 0.22, 1.0))
+    make_box("Gator_Jaw", (gx - 0.20, YN - 0.13, gz - 0.09), (0.40, 0.16, 0.04), (0.42, 0.40, 0.28, 1.0))
     for i in range(6):
-        make_box(f"Dartboard_Wedge_{i}", (ROOM_W / 2.0 - 0.147, 2.0 + 0.14 * (1 if i % 2 else -1) * (0.5 + 0.5 * (i // 2)) * 0.4, 1.73 + 0.12 * ((i // 2) - 1)), (0.004, 0.05, 0.05), (0.86, 0.82, 0.70, 1.0) if i % 2 else (0.20, 0.48, 0.30, 1.0))
-    make_box("Score_Board", (ROOM_W / 2.0 - 0.112, 1.30, 1.70), (0.012, 0.40, 0.50), (0.12, 0.14, 0.12, 1.0))
+        make_box(f"Gator_Tooth_{i}", (gx - 0.36 + i * 0.07, YN - 0.13 + (0.06 if i % 2 else -0.06), gz - 0.065),
+                 (0.015, 0.012, 0.025), (0.92, 0.90, 0.82, 1.0))
+    for i, oy in enumerate((-0.07, 0.07)):
+        make_dome(f"Gator_Eye_{i}", (gx + 0.18, YN - 0.13 + oy, gz + 0.08), 0.025, (0.86, 0.70, 0.20, 1.0), rings=3, segments=8)
+    # Mardi Gras beads on the mirror's pilasters, and off the TV's corner (draft 6: not across the screen)
+    for i, (x0, x1, z, col) in enumerate(((-4.8, -4.4, 2.50, (0.60, 0.26, 0.74, 1.0)),
+                                          (2.4, 2.8, 2.50, (0.26, 0.70, 0.36, 1.0)))):
+        make_tube(f"Beads_{i}", [(x0, YN - 0.09, z + 0.20), ((x0 + x1) / 2.0, YN - 0.09, z - 0.10), (x1, YN - 0.09, z + 0.20)], 0.012, col, segments=6)
+    make_tube("Beads_2", [(tx - 0.62, YN - 0.17, tz + 0.37), (tx - 0.70, YN - 0.17, tz + 0.05), (tx - 0.68, YN - 0.17, tz - 0.30)],
+              0.012, (0.92, 0.78, 0.22, 1.0), segments=6)
+    # the specials board on the E wall's north end, over the bartender's exit
+    make_box("Specials_Board", (XE - 0.015, 6.55, 2.05), (0.012, 0.66, 0.80), (0.12, 0.14, 0.12, 1.0))
+    make_box("Specials_Board_Frame", (XE - 0.006, 6.55, 2.05), (0.008, 0.72, 0.86), WOOD)
     for i in range(5):
-        make_box(f"Score_Line_{i}", (ROOM_W / 2.0 - 0.118, 1.30 - 0.12 + (i % 2) * 0.22, 1.88 - i * 0.07), (0.002, 0.10, 0.012), (0.88, 0.88, 0.84, 1.0))
-    make_box("Specials_Board", (3.9, 5.885, 2.05), (0.60, 0.012, 0.80), (0.12, 0.14, 0.12, 1.0))
-    make_box("Specials_Board_Frame", (3.9, 5.895, 2.05), (0.66, 0.008, 0.86), wood)
+        make_box(f"Specials_Line_{i}", (XE - 0.023, 6.55 + (0.03 if i % 2 else -0.03), 2.33 - i * 0.14),
+                 (0.002, 0.40 - (i % 3) * 0.06, 0.03),
+                 [(0.92, 0.88, 0.70, 1.0), (0.96, 0.60, 0.60, 1.0), (0.70, 0.90, 0.96, 1.0)][i % 3])
+
+
+def build_booth():
+    """Douglas's corner booth, SW: cheap oxblood vinyl on an L of
+    benches, the table on its pedestal, the sconce, and on the table
+    what Strength leaves there — the empties, the saltshaker with the
+    folded twenty under it, an ashtray, the sticky patches where his
+    hands rest. Three beer neons round the corner: two dead brands,
+    one live."""
+    tx, ty = BOOTH
+    # W bench (he sits here, facing the room and the TV)
+    make_box("Booth_Bench_W", (XW + 0.395, 1.73, 0.23), (0.55, 1.90, 0.46), VINYL)
+    make_box("Booth_Back_W", (XW + 0.07, 1.73 - 0.275, 0.73), (0.10, 2.45, 0.54), VINYL)
+    make_box("Booth_Bench_S", (-5.47, YS + 0.405, 0.23), (1.60, 0.55, 0.46), VINYL)
+    make_box("Booth_Back_S", (-5.47 + 0.05, YS + 0.07, 0.73), (1.50, 0.10, 0.54), VINYL)
+    for i, (c, s) in enumerate((((XW + 0.395, 1.73, 0.475), (0.53, 1.86, 0.03)), ((-5.47, YS + 0.405, 0.475), (1.56, 0.53, 0.03)))):
+        make_box(f"Booth_Cushion_{i}", c, s, (0.46, 0.20, 0.17, 1.0))
+    make_box("Booth_Cushion_Tear", (XW + 0.40, 1.30, 0.492), (0.08, 0.14, 0.004), (0.80, 0.72, 0.56, 1.0))
+    make_box("Booth_Table", (tx, ty, 0.725), (1.10, 0.90, 0.05), WOOD)
+    make_box("Booth_Table_Edge", (tx, ty - 0.455, 0.725), (1.10, 0.01, 0.05), COL_BRASS)
+    make_cyl("Booth_Table_Leg", (tx, ty, 0.35), 0.05, 0.70, (0.20, 0.19, 0.20, 1.0), segments=8)
+    make_box("Booth_Table_Foot", (tx, ty, 0.015), (0.56, 0.56, 0.03), (0.20, 0.19, 0.20, 1.0))
+    # the sconce over the table on the W wall
+    make_box("Booth_Sconce_Plate", (XW + 0.01, ty, 1.78), (0.02, 0.14, 0.22), (0.30, 0.24, 0.16, 1.0))
+    make_box("Booth_Sconce_Arm", (XW + 0.08, ty, 1.80), (0.12, 0.02, 0.02), (0.30, 0.24, 0.16, 1.0))
+    make_taper_cyl("Booth_Sconce_Shade", (XW + 0.20, ty, 1.80), 0.09, 0.05, 0.14, (0.86, 0.56, 0.28, 1.0), segments=10)
+    t = 0.75
+    make_cyl("Saltshaker", (tx + 0.12, ty - 0.08, t + 0.04), 0.022, 0.08, (0.88, 0.88, 0.84, 0.9), segments=8)
+    make_box("Folded_Twenty", (tx + 0.12, ty - 0.08, t + 0.003), (0.08, 0.04, 0.006), (0.55, 0.62, 0.50, 1.0))
+    for bi, (bx, by) in enumerate(((tx - 0.25, ty + 0.18), (tx + 0.22, ty + 0.25))):
+        make_bottle(f"Empty_Bottle_{bi}", bx, by, t, (0.36, 0.26, 0.14, 0.8))
+    make_cyl("Booth_Ashtray", (tx + 0.30, ty - 0.22, t + 0.015), 0.055, 0.03, (0.30, 0.30, 0.32, 1.0), segments=10)
+    make_box("Booth_Ashtray_Butt", (tx + 0.30, ty - 0.22, t + 0.033), (0.04, 0.008, 0.008), (0.90, 0.86, 0.78, 1.0))
+    make_box("Hands_Sticky_Patch_A", (tx - 0.32, ty - 0.10, t + 0.0008), (0.14, 0.11, 0.0015), (0.38, 0.30, 0.22, 1.0))
+    make_box("Hands_Sticky_Patch_B", (tx - 0.30, ty + 0.14, t + 0.0008), (0.11, 0.13, 0.0015), (0.36, 0.28, 0.21, 1.0))
+    # three beer neons: over the booth, on the S pier by the booth, over the arcade
+    for ni, (c, s, tube, col) in enumerate((
+            ((XW + 0.03, 1.95, 2.30), (0.06, 0.90, 0.46), (XW + 0.07, 1.95, 2.30), (0.86, 0.32, 0.34, 1.0)),
+            ((-5.55, YS + 0.03, 2.40), (0.80, 0.06, 0.40), (-5.55, YS + 0.07, 2.40), (0.30, 0.72, 0.62, 1.0)),
+            ((XW + 0.03, 4.00, 2.40), (0.06, 0.85, 0.45), (XW + 0.07, 4.00, 2.40), (0.90, 0.70, 0.28, 1.0)))):
+        make_box(f"BeerNeon_{ni}_Box", c, s, (0.14, 0.12, 0.14, 1.0))
+        ts = (0.02, s[1] - 0.20, s[2] - 0.17) if s[0] < 0.1 else (s[0] - 0.20, 0.02, s[2] - 0.17)
+        make_box(f"BeerNeon_{ni}_Tube", tube, ts, col)
+
+
+def build_arcade():
+    """vol1: "I didn't know they had pinball here. Yes. And Missile
+    Command, too." Along the W wall north of the booth."""
+    py = 3.20
+    make_box("Pinball_Body", (XW + 0.95, py, 0.78), (1.35, 0.72, 0.30), (0.62, 0.26, 0.30, 1.0))
+    make_box("Pinball_Glass", (XW + 0.95, py, 0.945), (1.25, 0.66, 0.03), (0.55, 0.62, 0.66, 0.4))
+    make_box("Pinball_Backbox", (XW + 0.36, py, 1.42), (0.16, 0.70, 0.70), (0.70, 0.32, 0.36, 1.0))
+    make_box("Pinball_Backglass", (XW + 0.45, py, 1.45), (0.01, 0.60, 0.52), (0.92, 0.62, 0.34, 1.0))
+    make_box("Pinball_Neck", (XW + 0.36, py, 1.01), (0.14, 0.40, 0.14), (0.62, 0.26, 0.30, 1.0))
+    for li in range(4):
+        make_box(f"Pinball_Leg_{li}", (XW + 0.38 + 1.15 * (li % 2), py - 0.30 + 0.60 * (li // 2), 0.315),
+                 (0.05, 0.05, 0.63), (0.55, 0.57, 0.58, 1.0))
+    make_box("Pinball_Coin_Door", (XW + 1.630, py, 0.78), (0.01, 0.30, 0.22), (0.30, 0.30, 0.32, 1.0))
+    my = 4.70
+    make_box("MissileCmd_Cab", (XW + 0.40, my, 0.88), (0.80, 0.70, 1.76), (0.16, 0.16, 0.20, 1.0))
+    make_box("MissileCmd_Screen", (XW + 0.805, my, 1.28), (0.01, 0.54, 0.42), (0.14, 0.30, 0.22, 1.0))
+    make_box("MissileCmd_Marquee", (XW + 0.805, my, 1.66), (0.01, 0.62, 0.18), (0.80, 0.30, 0.24, 1.0))
+    make_box("MissileCmd_Panel", (XW + 0.88, my, 0.98), (0.16, 0.62, 0.06), (0.24, 0.24, 0.28, 1.0))
+    make_cyl("MissileCmd_Trackball", (XW + 0.88, my, 1.02), 0.035, 0.02, (0.86, 0.80, 0.30, 1.0), segments=10)
+    # the cigarette machine and the ATM in the nook past the bar's west end
+    make_box("Cig_Machine", (XW + 0.32, 7.25, 0.85), (0.62, 0.85, 1.70), (0.48, 0.42, 0.34, 1.0))
+    make_box("Cig_Machine_Window", (XW + 0.635, 7.25, 1.20), (0.01, 0.70, 0.40), (0.86, 0.80, 0.66, 1.0))
+    for k in range(6):
+        make_box(f"Cig_Machine_Knob_{k}", (XW + 0.65, 6.95 + k * 0.12, 0.88), (0.02, 0.06, 0.04), (0.76, 0.74, 0.70, 1.0))
+    make_box("ATM", (XW + 0.25, 8.35, 0.80), (0.50, 0.55, 1.60), (0.30, 0.32, 0.36, 1.0))
+    make_box("ATM_Screen", (XW + 0.505, 8.35, 1.30), (0.01, 0.30, 0.22), (0.30, 0.56, 0.62, 1.0))
+
+
+def build_pool():
+    """The pool table mid-floor under its billiard lamp; the cue rack
+    on the S wall pier between the window and the door."""
+    x, y = POOL
+    make_box("Pool_Table_Body", (x, y, 0.62), (2.50, 1.40, 0.36), WOOD)
+    make_box("Pool_Table_Felt", (x, y, 0.805), (2.24, 1.14, 0.02), (0.16, 0.36, 0.24, 1.0))
+    for i, (c, s) in enumerate((((x, y - 0.635, 0.82), (2.50, 0.13, 0.05)), ((x, y + 0.635, 0.82), (2.50, 0.13, 0.05)),
+                                ((x - 1.185, y, 0.82), (0.13, 1.14, 0.05)), ((x + 1.185, y, 0.82), (0.13, 1.14, 0.05)))):
+        make_box(f"Pool_Table_Rail_{i}", c, s, (0.28, 0.19, 0.12, 1.0))
+    for lx in (-1.05, 1.05):
+        for ly in (-0.55, 0.55):
+            make_box(f"Pool_Leg_{lx:+.2f}_{ly:+.2f}", (x + lx, y + ly, 0.22), (0.16, 0.16, 0.44), WOOD)
+    for bi in range(5):
+        make_cyl(f"Pool_Ball_{bi}", (x - 0.4 + bi * 0.22, y - 0.05 + 0.12 * (bi % 2), 0.843), 0.028, 0.056,
+                 [(0.86, 0.82, 0.74, 1.0), (0.72, 0.22, 0.18, 1.0), (0.14, 0.14, 0.16, 1.0), (0.86, 0.70, 0.20, 1.0),
+                  (0.22, 0.30, 0.66, 1.0)][bi], segments=8)
+    make_box("Pool_Cue_Chalk", (x + 1.185, y + 0.40, 0.857), (0.024, 0.024, 0.024), (0.30, 0.50, 0.80, 1.0))
+    # the billiard lamp: a long shade on two chains
+    make_box("Pool_Lamp_Shade", (x, y, 1.80), (1.60, 0.36, 0.16), (0.16, 0.30, 0.20, 1.0))
+    for i in range(3):
+        make_cyl(f"Pool_Lamp_Bulb_{i}" if i else "Pool_Lamp_Bulb", (x - 0.5 + i * 0.5, y, 1.70), 0.05, 0.04, (1.0, 0.88, 0.60, 1.0), segments=8)
+    for i, cx in enumerate((-0.6, 0.6)):
+        make_cyl(f"Pool_Lamp_Chain_{i}", (x + cx, y, (1.88 + CEIL) / 2.0), 0.006, CEIL - 1.88, (0.30, 0.30, 0.32, 1.0), segments=5)
+    make_box("Cue_Rack", (-1.2, YS + 0.03, 1.35), (0.60, 0.06, 1.10), WOOD)
+    for ci in range(4):
+        make_cyl(f"Cue_{ci}", (-1.38 + ci * 0.12, YS + 0.07, 1.35), 0.012, 1.00, (0.66, 0.52, 0.34, 1.0), segments=5)
+    # a high-top between the pool table and the chalk corner
+    hx, hy = 2.80, 2.60
+    make_cyl("HighTop_Top", (hx, hy, 1.04), 0.36, 0.04, WOOD, segments=14)
+    make_cyl("HighTop_Post", (hx, hy, 0.52), 0.04, 1.00, IRON, segments=8)
+    make_cyl("HighTop_Foot", (hx, hy, 0.015), 0.26, 0.03, IRON, segments=12)
+    for i, sy in enumerate((hy - 0.58, hy + 0.58)):
+        make_cyl(f"HighTop_Stool_{i}_Seat", (hx, sy, 0.77), 0.17, 0.06, WOOD, segments=12)
+        make_cyl(f"HighTop_Stool_{i}_Pillar", (hx, sy, 0.38), 0.03, 0.70, IRON, segments=8)
+        make_cyl(f"HighTop_Stool_{i}_Foot", (hx, sy, 0.0125), 0.18, 0.025, IRON, segments=12)
+    make_pint_glass("HighTop_Pint", hx + 0.10, hy, 1.06, (0.86, 0.66, 0.30, 0.7))
+
+
+def build_chalk_table():
+    """vol1's CHALK TABLE, SE: a chalkboard-topped table in the cozy
+    corner — the E bench along the wall and an L round the S wall under
+    the window, a loose bench on the west side. On it what vol1 puts
+    there: the shots, the ginger beer, the chalk, Faust's drawing."""
+    tx, ty = CHALK
+    make_box("Chalk_Bench_E", (XE - 0.395, 1.98, 0.23), (0.55, 2.40, 0.46), VINYL)
+    make_box("Chalk_Back_E", (XE - 0.07, 1.98 - 0.275, 0.73), (0.10, 2.95, 0.54), VINYL)
+    make_box("Chalk_Bench_S", (5.43, YS + 0.405, 0.23), (1.70, 0.55, 0.46), VINYL)
+    make_box("Chalk_Back_S", (5.43 - 0.05, YS + 0.07, 0.73), (1.60, 0.10, 0.54), VINYL)
+    make_box("Chalk_Bench_W_Seat", (tx - 0.88, ty + 0.05, 0.44), (0.40, 1.90, 0.05), WOOD)
+    for i, ly in enumerate((-0.80, 0.90)):
+        make_box(f"Chalk_Bench_W_Leg_{i}", (tx - 0.88, ty + 0.05 + ly, 0.2075), (0.34, 0.06, 0.415), WOOD)
+    make_box("Chalk_Table_Top", (tx, ty, 0.73), (1.08, 2.20, 0.04), (0.11, 0.14, 0.12, 1.0))
+    for i, (c, s) in enumerate((((tx, ty - 1.12, 0.735), (1.12, 0.04, 0.05)), ((tx, ty + 1.12, 0.735), (1.12, 0.04, 0.05)),
+                                ((tx - 0.56, ty, 0.735), (0.04, 2.28, 0.05)), ((tx + 0.56, ty, 0.735), (0.04, 2.28, 0.05)))):
+        make_box(f"Chalk_Table_Frame_{i}", c, s, WOOD)
+    for i, ly in enumerate((-0.80, 0.80)):
+        make_box(f"Chalk_Table_Leg_{i}", (tx, ty + ly, 0.355), (0.10, 0.10, 0.71), IRON)
+        make_box(f"Chalk_Table_Foot_{i}", (tx, ty + ly, 0.015), (0.70, 0.08, 0.03), IRON)
+    t = 0.75
+    # the drawing: a face in chalk lines, a star, a rocket, scribbles
+    chalk = [(0.94, 0.94, 0.90, 1.0), (0.96, 0.70, 0.74, 1.0), (0.70, 0.86, 0.96, 1.0), (0.96, 0.90, 0.56, 1.0)]
+    for i in range(12):
+        a = i * math.pi / 6.0
+        make_box(f"Chalk_Doodle_Face_{i}", (tx + 0.18 + 0.16 * math.cos(a), ty - 0.35 + 0.16 * math.sin(a), t + 0.0006),
+                 (0.07, 0.012, 0.001), chalk[0])
+    for i, (dx, dy) in enumerate(((0.12, -0.30), (0.24, -0.30))):
+        make_box(f"Chalk_Doodle_Eye_{i}", (tx + dx, ty + dy, t + 0.0006), (0.02, 0.02, 0.001), chalk[0])
+    make_box("Chalk_Doodle_Mouth", (tx + 0.18, ty - 0.42, t + 0.0006), (0.10, 0.012, 0.001), chalk[1])
     for i in range(5):
-        make_box(f"Specials_Line_{i}", (3.9 + (0.03 if i % 2 else -0.03), 5.878, 2.33 - i * 0.14), (0.38 - (i % 3) * 0.06, 0.002, 0.03), [(0.92, 0.88, 0.70, 1.0), (0.96, 0.60, 0.60, 1.0), (0.70, 0.90, 0.96, 1.0)][i % 3])
-    # ── the gator on the wall over the bottle shelves' west end
-    make_box("Gator_Head", (-3.75, 5.80, 2.65), (0.52, 0.20, 0.16), (0.30, 0.34, 0.22, 1.0))
-    make_box("Gator_Snout", (-4.08, 5.80, 2.62), (0.20, 0.14, 0.10), (0.30, 0.34, 0.22, 1.0))
-    make_box("Gator_Jaw", (-3.95, 5.80, 2.56), (0.36, 0.16, 0.04), (0.42, 0.40, 0.28, 1.0))
+        a = i * 2.0 * math.pi / 5.0
+        make_box(f"Chalk_Doodle_Star_{i}", (tx - 0.20 + 0.06 * math.cos(a), ty + 0.40 + 0.06 * math.sin(a), t + 0.0006),
+                 (0.14, 0.012, 0.001), chalk[3])
     for i in range(6):
-        make_box(f"Gator_Tooth_{i}", (-4.12 + i * 0.07, 5.72 + (i % 2) * 0.16, 2.585), (0.015, 0.012, 0.025), (0.92, 0.90, 0.82, 1.0))
-    for i, oy in enumerate((5.72, 5.88)):
-        make_dome(f"Gator_Eye_{i}", (-3.62, oy, 2.73), 0.025, (0.86, 0.70, 0.20, 1.0), rings=3, segments=8)
-    # ── the back door on the east wall's north end, the RESTROOM sign
-    make_box("Back_Door", (ROOM_W / 2.0 - 0.125, 5.40, 1.05), (0.05, 0.90, 2.10), (0.30, 0.22, 0.14, 1.0))
-    make_cyl("Back_Door_Knob", (ROOM_W / 2.0 - 0.17, 5.05, 1.02), 0.03, 0.04, brass, segments=8, axis='X')
-    make_box("Back_Door_Sign", (ROOM_W / 2.0 - 0.112, 5.40, 2.35), (0.012, 0.44, 0.14), (0.92, 0.90, 0.84, 1.0))
-    make_box("Back_Door_Sign_Text", (ROOM_W / 2.0 - 0.118, 5.40, 2.35), (0.002, 0.34, 0.05), (0.16, 0.16, 0.18, 1.0))
-    # ── the street at night outside the south windows
-    make_box("Ground_Sidewalk", (0.0, -2.0, -0.03), (24.0, 4.0, 0.06), (0.52, 0.50, 0.46, 1.0))
-    make_box("Curb", (0.0, -4.05, -0.06), (24.0, 0.14, 0.14), (0.60, 0.58, 0.54, 1.0))
-    make_box("Ground_Street", (0.0, -9.5, -0.14), (24.0, 11.0, 0.06), (0.24, 0.24, 0.26, 1.0))
-    make_box("Out_Facade", (0.0, -15.5, 4.0), (26.0, 0.6, 8.0), (0.40, 0.32, 0.26, 1.0))
-    for c in range(8):
-        make_box(f"Out_Facade_Win_{c}", (-9.0 + c * 2.6, -15.19, 4.5), (1.0, 0.02, 1.4), [(0.92, 0.78, 0.40, 1.0), (0.16, 0.18, 0.22, 1.0), (0.80, 0.60, 0.44, 1.0)][c % 3])
-    make_cyl("Street_Lamp_Pole", (-3.0, -3.7, 2.0), 0.05, 4.0, (0.20, 0.22, 0.24, 1.0), segments=8)
-    make_box("Street_Lamp_Head", (-3.0, -4.1, 3.9), (0.28, 0.46, 0.14), (0.96, 0.88, 0.60, 1.0))
+        make_box(f"Chalk_Doodle_Scrawl_{i}", (tx - 0.25 + (i % 2) * 0.05, ty - 0.80 + i * 0.05, t + 0.0006),
+                 (0.24 - i * 0.02, 0.01, 0.001), chalk[2 if i % 2 else 1])
+    make_box("Chalk_Doodle_Rocket", (tx + 0.10, ty + 0.75, t + 0.0006), (0.06, 0.26, 0.001), chalk[2])
+    make_cyl("Chalk_Tin", (tx + 0.38, ty + 0.95, t + 0.03), 0.045, 0.06, (0.62, 0.62, 0.64, 1.0), segments=10)
+    for i in range(4):
+        make_box(f"Chalk_Stick_{i}", (tx + 0.33 + i * 0.04, ty + 0.70, t + 0.006), (0.012, 0.08, 0.012), chalk[i])
+    # the round: shots, the ginger beer, two pints
+    for i in range(6):
+        make_cyl(f"Chalk_Shot_{i}", (tx - 0.36 + (i % 2) * 0.10, ty - 0.40 + (i // 2) * 0.22, t + 0.03), 0.022, 0.06, GLASS, segments=8)
+    make_bottle("Ginger_Beer", tx + 0.36, ty + 0.10, t, (0.80, 0.70, 0.40, 0.9))
+    for i, (dx, dy) in enumerate(((-0.30, 0.35), (0.34, -0.70))):
+        make_pint_glass(f"Chalk_Pint_{i}", tx + dx, ty + dy, t, (0.86, 0.66, 0.30, 0.7))
+    # Emily's purse on the bench next to Faust
+    make_box("Emily_Purse", (XE - 0.40, 2.70, 0.55), (0.26, 0.12, 0.18), (0.20, 0.30, 0.56, 1.0))
+    make_tube("Emily_Purse_Strap", [(XE - 0.50, 2.70, 0.64), (XE - 0.40, 2.70, 0.74), (XE - 0.30, 2.70, 0.64)], 0.006,
+              (0.12, 0.12, 0.14, 1.0), segments=4)
+    # its pendant
+    make_cyl("Chalk_Lamp_Cord", (tx, ty, (CEIL + 1.98) / 2.0), 0.006, CEIL - 1.98, IRON, segments=5)
+    make_taper_cyl("Chalk_Lamp_Shade", (tx, ty, 1.90), 0.22, 0.06, 0.16, (0.80, 0.40, 0.20, 1.0), segments=12)
+    make_cyl("Chalk_Lamp_Bulb", (tx, ty, 1.80), 0.05, 0.05, (1.0, 0.82, 0.50, 1.0), segments=8)
+    # the photos and flyers over the corner
+    for i, (y, z, w, h, col) in enumerate(((1.10, 1.70, 0.30, 0.40, (0.86, 0.80, 0.66, 1.0)),
+                                           (1.70, 1.85, 0.42, 0.56, (0.70, 0.30, 0.30, 1.0)),
+                                           (2.35, 1.70, 0.30, 0.30, (0.30, 0.40, 0.60, 1.0)),
+                                           (2.90, 1.90, 0.36, 0.48, (0.92, 0.84, 0.40, 1.0)))):
+        make_box(f"Chalk_Corner_Flyer_{i}", (XE - 0.006, y, z), (0.012, w, h), col)
+
+
+def build_jukebox_and_darts():
+    jx, jy = XE - 0.30, 3.95
+    make_box("Jukebox_Body", (jx, jy, 0.75), (0.60, 0.80, 1.50), (0.78, 0.42, 0.16, 1.0))
+    make_box("Jukebox_TopArch", (jx, jy, 1.70), (0.60, 0.80, 0.40), (0.62, 0.32, 0.14, 1.0))
+    make_box("Jukebox_Glass", (jx - 0.305, jy, 1.10), (0.01, 0.70, 0.50), (0.32, 0.22, 0.18, 0.55))
+    make_box("Jukebox_LightBar", (jx - 0.305, jy, 1.50), (0.01, 0.70, 0.10), (0.96, 0.78, 0.42, 1.0))
+    for i, dy in enumerate((-0.36, 0.36)):
+        make_box(f"Jukebox_Bubbler_{i}", (jx - 0.305, jy + dy, 1.10), (0.01, 0.05, 1.00), (0.96, 0.56, 0.30, 1.0))
+    dy = 5.50
+    make_cyl("Dartboard", (XE - 0.025, dy, 1.73), 0.23, 0.04, (0.20, 0.18, 0.16, 1.0), segments=16, axis='X')
+    make_cyl("Dartboard_Bull", (XE - 0.048, dy, 1.73), 0.03, 0.006, (0.80, 0.20, 0.18, 1.0), segments=10, axis='X')
+    for i in range(6):
+        make_box(f"Dartboard_Wedge_{i}", (XE - 0.047, dy + 0.14 * (1 if i % 2 else -1) * (0.5 + 0.5 * (i // 2)) * 0.4,
+                                          1.73 + 0.12 * ((i // 2) - 1)), (0.004, 0.05, 0.05),
+                 (0.86, 0.82, 0.70, 1.0) if i % 2 else (0.20, 0.48, 0.30, 1.0))
+    make_box("Dartboard_Surround", (XE - 0.008, dy, 1.73), (0.016, 0.80, 0.80), (0.12, 0.10, 0.10, 1.0))
+    make_box("Score_Board", (XE - 0.012, dy + 0.70, 1.70), (0.012, 0.40, 0.50), (0.12, 0.14, 0.12, 1.0))
+    for i in range(5):
+        make_box(f"Score_Line_{i}", (XE - 0.018, dy + 0.70 - 0.12 + (i % 2) * 0.22, 1.88 - i * 0.07), (0.002, 0.10, 0.012),
+                 (0.88, 0.88, 0.84, 1.0))
+    make_box("Oche_Tape", (XE - 2.37, dy, 0.001), (0.04, 0.60, 0.002), (0.86, 0.80, 0.30, 1.0))
+
+
+def build_back_hall():
+    """Through the E wall's north end: the short back hall — kegs, the
+    restroom door, the delivery door with its push bar and EXIT sign."""
+    hx0, hx1 = ROOM_W / 2.0 + 0.10, ROOM_W / 2.0 + 2.10
+    hy0, hy1 = HALL_Y - 0.95, ROOM_D - 0.10
+    hc = 3.0
+    make_box("Hall_Floor", ((hx0 + hx1) / 2.0, (hy0 + hy1) / 2.0, -0.05), (hx1 - hx0 + 0.1, hy1 - hy0 + 0.1, 0.10), (0.30, 0.30, 0.28, 1.0))
+    make_box("Hall_Ceil", ((hx0 + hx1) / 2.0, (hy0 + hy1) / 2.0, hc + 0.05), (hx1 - hx0 + 0.2, hy1 - hy0 + 0.2, 0.10), (0.56, 0.54, 0.50, 1.0))
+    hpal = {"wall": (0.62, 0.58, 0.48, 1.0), "baseboard": (0.20, 0.18, 0.16, 1.0)}
+    make_wall("Hall_Wall_S", ((hx0 + hx1) / 2.0, hy0 - 0.10, 0), length=hx1 - hx0, height=hc, axis='X', palette=hpal, baseboard_face_sign=+1)
+    make_wall("Hall_Wall_N", ((hx0 + hx1) / 2.0, hy1 + 0.10, 0), length=hx1 - hx0, height=hc, axis='X', palette=hpal, baseboard_face_sign=-1)
+    make_wall("Hall_Wall_E", (hx1 + 0.10, (hy0 + hy1) / 2.0, 0), length=hy1 - hy0 + 0.4, height=hc, axis='Y', palette=hpal, baseboard_face_sign=-1)
+    make_box("Back_Door", (hx1 - 0.025, HALL_Y, 1.05), (0.05, 0.92, 2.10), (0.44, 0.46, 0.48, 1.0))
+    make_box("Back_Door_PushBar", (hx1 - 0.08, HALL_Y, 1.02), (0.04, 0.72, 0.05), (0.70, 0.70, 0.72, 1.0))
+    make_box("Exit_Sign", (hx1 - 0.06, HALL_Y, 2.35), (0.10, 0.38, 0.16), (0.16, 0.16, 0.18, 1.0))
+    make_box("Exit_Sign_Face", (hx1 - 0.115, HALL_Y, 2.35), (0.01, 0.30, 0.10), (0.96, 0.24, 0.20, 1.0))
+    make_box("Restroom_Door", ((hx0 + hx1) / 2.0, hy1 - 0.025, 1.05), (0.82, 0.05, 2.10), (0.30, 0.22, 0.14, 1.0))
+    make_cyl("Restroom_Door_Knob", ((hx0 + hx1) / 2.0 + 0.30, hy1 - 0.07, 1.00), 0.03, 0.04, COL_BRASS, segments=8, axis='Y')
+    make_box("Restroom_Sign", ((hx0 + hx1) / 2.0, hy1 - 0.056, 1.60), (0.36, 0.012, 0.12), (0.92, 0.90, 0.84, 1.0))
+    for k in range(3):
+        kx = hx0 + 0.40 + k * 0.55
+        make_cyl(f"Keg_{k}", (kx, hy0 + 0.30, 0.30), 0.21, 0.60, (0.70, 0.72, 0.74, 1.0), segments=12)
+        make_cyl(f"Keg_{k}_Coupler", (kx, hy0 + 0.30, 0.63), 0.04, 0.06, (0.30, 0.30, 0.32, 1.0), segments=8)
+    make_cyl("Keg_3", (hx0 + 0.67, hy0 + 0.30, 0.90), 0.21, 0.60, (0.70, 0.72, 0.74, 1.0), segments=12)
+    make_box("Hand_Truck_Plate", (hx1 - 0.35, hy0 + 0.20, 0.02), (0.36, 0.22, 0.02), (0.30, 0.32, 0.34, 1.0))
+    make_box("Hand_Truck_Frame", (hx1 - 0.35, hy0 + 0.12, 0.62), (0.40, 0.04, 1.20), (0.30, 0.32, 0.34, 1.0))
+    make_cyl("Hall_Bulb_Cord", ((hx0 + hx1) / 2.0, HALL_Y, hc - 0.10), 0.006, 0.20, IRON, segments=5)
+    make_cyl("Hall_Bulb", ((hx0 + hx1) / 2.0, HALL_Y, hc - 0.24), 0.04, 0.08, (1.0, 0.86, 0.58, 1.0), segments=8)
+
+
+def build_ceiling():
+    """Two slow fans with light kits, the pendants over the bar."""
+    for fi, (fx, fy) in enumerate(((-3.6, 2.6), (3.2, 4.6))):
+        fz = CEIL - 0.25
+        make_cyl(f"Fan_{fi}_Downrod", (fx, fy, CEIL - 0.25), 0.02, 0.50, P.METAL_BLACK)
+        make_cyl(f"Fan_{fi}_Motor", (fx, fy, fz - 0.32), 0.12, 0.14, COL_BRASS, segments=12)
+        for bi, (dx, dy, sw, sd) in enumerate(((0.46, 0, 0.66, 0.16), (-0.46, 0, 0.66, 0.16), (0, 0.46, 0.16, 0.66), (0, -0.46, 0.16, 0.66))):
+            make_box(f"Fan_{fi}_Blade_{bi}", (fx + dx, fy + dy, fz - 0.33), (sw, sd, 0.02), (0.36, 0.24, 0.14, 1.0))
+        make_cyl(f"Fan_{fi}_LightKit", (fx, fy, fz - 0.45), 0.09, 0.12, (0.96, 0.84, 0.62, 1.0), segments=12)
+    for pi, px in enumerate((-4.0, -2.4, 2.3)):
+        make_cyl(f"Pendant_{pi}_Cord", (px, 6.45, (CEIL + 2.45) / 2.0), 0.005, CEIL - 2.45, P.METAL_BLACK)
+        make_taper_cyl(f"Pendant_{pi}_Shade", (px, 6.45, 2.37), 0.17, 0.05, 0.16, (0.92, 0.66, 0.28, 1.0), segments=12)
+        make_cyl(f"Pendant_{pi}_Bulb", (px, 6.45, 2.27), 0.05, 0.05, (1.0, 0.86, 0.56, 1.0), segments=8)
+
+
+def build_wear():
+    make_traffic_wear("Wear_Door_Bar", [(DOOR_X, 0.4), (1.4, 3.0), (0.6, 5.0)], width=0.9)
+    make_traffic_wear("Wear_Booth", [(-4.3, 1.4), (-3.0, 3.6), (-1.5, 5.0)], width=0.6)
+    make_traffic_wear("Wear_Hall", [(3.4, 7.4), (6.2, HALL_Y)], width=0.7)
+    for i, (c, r) in enumerate((((-1.4, 5.4), 0.25), ((0.8, 5.5), 0.18), ((5.0, 3.4), 0.2), ((-5.2, 2.3), 0.22))):
+        make_floor_stain(f"Floor_Stain_{i}", c, radius=r)
+
+
+def build_street():
+    """The Marigny at night outside the windows and the door."""
+    make_box("Ground_Sidewalk", (0.0, -2.0, -0.03), (30.0, 4.0, 0.06), (0.52, 0.50, 0.46, 1.0))
+    make_box("Curb", (0.0, -4.05, -0.06), (30.0, 0.14, 0.14), (0.60, 0.58, 0.54, 1.0))
+    make_box("Ground_Street", (0.0, -10.0, -0.14), (30.0, 12.0, 0.06), (0.24, 0.24, 0.26, 1.0))
+    make_box("Ground_Sidewalk_Far", (0.0, -17.0, -0.03), (30.0, 2.0, 0.06), (0.50, 0.48, 0.44, 1.0))
+    # Creole cottages across the street: pastel fronts, shutters, a gallery
+    cols = [(0.62, 0.70, 0.62, 1.0), (0.80, 0.62, 0.48, 1.0), (0.56, 0.62, 0.74, 1.0), (0.84, 0.76, 0.52, 1.0), (0.70, 0.50, 0.52, 1.0)]
+    for c in range(5):
+        cx = -11.0 + c * 5.5
+        make_box(f"Out_Cottage_{c}", (cx, -18.6, 2.8), (5.3, 1.2, 5.6), cols[c])
+        make_box(f"Out_Cottage_{c}_Roof", (cx, -18.9, 5.9), (5.5, 1.6, 0.6), (0.30, 0.26, 0.24, 1.0))
+        for w in range(2):
+            wx = cx - 1.2 + w * 2.4
+            lit = (c + w) % 3 == 0
+            make_box(f"Out_Cottage_{c}_Win_{w}", (wx, -17.99, 2.0), (0.90, 0.02, 2.2),
+                     (0.92, 0.78, 0.44, 1.0) if lit else (0.16, 0.18, 0.22, 1.0))
+            for s in (-1, 1):
+                make_box(f"Out_Cottage_{c}_Shutter_{w}_{s:+d}", (wx + s * 0.62, -17.98, 2.0), (0.32, 0.02, 2.2), (0.20, 0.36, 0.30, 1.0))
+        make_box(f"Out_Cottage_{c}_Gallery", (cx, -17.3, 3.9), (5.3, 1.4, 0.08), (0.36, 0.34, 0.32, 1.0))
+        for k in range(3):
+            make_box(f"Out_Cottage_{c}_Post_{k}", (cx - 2.4 + k * 2.4, -16.7, 1.95), (0.10, 0.10, 3.9), (0.86, 0.84, 0.80, 1.0))
+    make_cyl("Street_Lamp_Pole", (-1.6, -3.7, 2.0), 0.05, 4.0, (0.20, 0.22, 0.24, 1.0), segments=8)
+    make_box("Street_Lamp_Head", (-1.6, -4.1, 3.9), (0.28, 0.46, 0.14), (0.96, 0.88, 0.60, 1.0))
     from _props.vehicles import make_car
-    make_car("Parked_Car", 2.8, -6.0, 4.4, (0.26, 0.26, 0.30, 1.0), along="X", z0=-0.11)
+    make_car("Parked_Car", 5.6, -6.0, 4.4, (0.26, 0.26, 0.30, 1.0), along="X", z0=-0.11)
+    make_car("Parked_Car_1", -7.2, -6.0, 4.6, (0.48, 0.20, 0.18, 1.0), along="X", z0=-0.11)
 
 
 def main():
-    clear_scene(); build_shell(); build_bar(); build_jukebox(); build_decor(); build_ceiling_fan(); build_ceiling_infra()
-    build_hero_props()
-    build_hero_props_2026_09()
-    build_dive_2026_10()
+    clear_scene()
+    build_shell(); build_wainscot(); build_front_door()
+    build_bar(); build_on_the_bar(); build_stools(); build_tv_and_signs()
+    build_booth(); build_arcade(); build_pool(); build_chalk_table(); build_jukebox_and_darts()
+    build_back_hall(); build_ceiling(); build_wear(); build_street()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/new_orleans_bar.glb"))
     print(f"\n[build_new_orleans_bar] exporting to {out}")
     export_glb(out)
+
 
 if __name__ == "__main__": main()

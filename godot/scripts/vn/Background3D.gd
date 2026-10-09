@@ -518,15 +518,14 @@ const CAMERA_PRESETS := {
 	"new_orleans_bar": {
 		"scene": "res://scenes/locales/new_orleans_bar.tscn",
 		"requires_glb": "res://assets/3d/locales/new_orleans_bar.glb",
-		# Strength. Room 9×6 (godot x∈[-4.5,4.5], z∈[0,-6], ceil 3.2).
-		# Long mahogany bar along the N wall (blender y=4.5 → godot
-		# z=-4.5), bottle wall + mirror behind (z=-5.4), Wurlitzer
-		# jukebox SE corner (godot +3.8,-1.2). Camera just inside the
-		# S door, west of centre, looking NNE across the room: bar +
-		# bottle wall centre-back, jukebox at frame right, pendant lamps
-		# and ceiling fan overhead. Wide FOV for the big jazz-club room.
-		"camera_origin": Vector3(-2.5, 1.70, -0.8),
-		"camera_rotation": Vector3(-0.05, deg_to_rad(-34.0), 0.0),
+		# The Iron Crow, draft 6 (2026-10-09): 13 x 9 m (godot x in
+		# [-6.5,6.5], z in [0,-9], ceil 3.9). The long bar on the N side,
+		# Douglas's corner booth SW under the beer neons, the pool table
+		# mid-floor, the chalk-table corner SE. Camera just inside the
+		# street door by the chalk corner, looking NW across the pool
+		# table: the bar and its TV up on the N wall, the booth at left.
+		"camera_origin": Vector3(3.6, 1.65, -0.9),
+		"camera_rotation": Vector3(-0.045, deg_to_rad(56.1), 0.0),
 		"fov": 64.0,
 		"suppress_input": true,
 	},

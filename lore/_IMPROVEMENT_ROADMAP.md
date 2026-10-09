@@ -3834,6 +3834,55 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-09 · overnight run, pass 19: THE IRON CROW, DRAFT 6 (build big +
+the chalk table was never a pool table).** `new_orleans_bar` (Strength,
+Judgement, and vol1's "A Hip Bar") had grown to a 9 x 6 m box holding a
+bar, a pool table, Douglas's booth, a round six-top, a pinball machine and
+an arcade cabinet. The pool table was built straight through the booth
+table, and the S wall had a 3.6 m hole where the street door should be.
+The draft-2 hero pass had also misread vol1's CHALK TABLE as the pool
+table, but the crowd SITS at it: "Helen pushes Margaret into the seat next
+to Faust ... Emily puts her purse next to Faust ... Cozy corner". It is a
+chalkboard-topped bench table, and Faust is "already drawing up some wacky
+shit" on it. Rebuilt at 13 x 9 m under a 3.9 m pressed-tin ceiling:
+- **The street front.** Two big windows, and a glazed door with its
+  transom, push bar and mat. An OPEN neon hangs in the window.
+- **The bar.** The long panelled bar has its bullnose, a brass rail on
+  standoffs and seven stools. Behind it is a 1.0 m bartender's lane, the
+  underbar (ice well, speed rail), the back bar with its doors, bottles
+  and register, and a lit beer cooler. Above sit a smoky mirror between
+  pilasters, two glass shelves on brackets, and the glass rack on chains.
+- **Up on the N wall.** The muted TV with the game on it, where the booth
+  looks; an IRON CROW neon (a red crow and the name); the gator; the
+  clock.
+- **Douglas's corner booth, SW.** The cheap vinyl L (with a tear), the
+  table with the empties, the saltshaker over the folded twenty, an
+  ashtray, the sticky patches and the sconce. Exactly three beer neons
+  sit round it.
+- **The rest of the floor.** Pinball, Missile Command, the cigarette
+  machine and an ATM along the W wall; the pool table mid-floor under its
+  billiard lamp, the cue rack on the pier; a high-top.
+- **THE CHALK TABLE, SE.** The cozy corner: the bench L and a loose bench,
+  the chalkboard top with Faust's drawing (a face, a star, a rocket), the
+  chalk tin, six shots, the ginger beer, Emily's purse on the bench, its
+  pendant and the flyers.
+- **The E wall and the back hall.** The jukebox, the dartboard with the
+  oche tape. Through the E wall: kegs, the restroom door, the delivery
+  door with EXIT, and a hand truck.
+- **Outside.** Creole cottages across the street with shutters and
+  galleries, the street lamp, two parked cars.
+- **The rig.** Rebuilt as 19 omnis, each under its fixture; ambient 0.48.
+- **Coverage.** Six markers. `shot_insert_chalk` is new. The Douglas
+  closeup now looks out from his seat, because a wall 2 m behind him
+  filled the frame.
+
+Draft 7 targets:
+- the morning variant for Judgement (bourbon, the Times-Picayune
+  crossword) as a per-preset prop set;
+- the underbar at insert scale;
+- the pressed-tin pattern (the ceiling still reads as drop-tile);
+- Deck framing.
+
 **2026-10-09 · overnight run, pass 18: DIEGO'S ROOM IS NOT A SHRINE (the wrong
 dressing).** Drafts 1-4 made `diego_bedroom` "a shrine to the pitch":
 jerseys, a scarf, a Mexico flag, striker posters, trophies, cleats.
