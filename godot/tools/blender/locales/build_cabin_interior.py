@@ -302,8 +302,13 @@ def build_loft():
     the loft ladder.")"""
     make_box("Loft_Deck", (-1.6, 4.8, 2.10), (2.6, 2.4, 0.10), COL_WOOD)
     make_box("Loft_Beam", (-1.6, 3.62, 2.02), (2.6, 0.12, 0.16), COL_WOOD_DK)
-    make_box("Loft_Mattress", (-1.9, 5.0, 2.24), (1.30, 1.90, 0.18), (0.88, 0.84, 0.76, 1.0))
-    make_box("Loft_Blanket", (-1.9, 4.7, 2.34), (1.26, 1.10, 0.06), COL_WOOL)
+    make_chamfer_box("Loft_Mattress", (-1.9, 5.0, 2.24), (1.30, 1.90, 0.18), (0.88, 0.84, 0.76, 1.0), chamfer=0.04)   # (draft 9: soft edges)
+    make_chamfer_box("Loft_Blanket", (-1.9, 4.7, 2.36), (1.26, 1.10, 0.06), COL_WOOL, chamfer=0.02)
+    make_chamfer_box("Loft_Pillow", (-1.9, 5.65, 2.37), (0.60, 0.34, 0.08), (0.94, 0.90, 0.84, 1.0), chamfer=0.03)
+    # Marina's things at the loft's foot: a folded sweater and the
+    # flashlight she came down the ladder with
+    make_chamfer_box("Loft_Sweater", (-1.2, 4.3, 2.18), (0.30, 0.24, 0.06), (0.46, 0.26, 0.24, 1.0), chamfer=0.015)
+    make_cyl("Loft_Flashlight", (-1.0, 4.5, 2.17), 0.02, 0.18, (0.16, 0.16, 0.18, 1.0), axis='Y', segments=8)
     make_box("Loft_Rail", (-1.0, 3.66, 2.45), (1.6, 0.05, 0.06), COL_WOOD_DK)
     for bi, bx in enumerate((-1.6, -1.0, -0.4)):
         make_lathe(f"Loft_Rail_Bal_{bi}", (bx, 3.66, 2.12),   # turned (interior draft 8)
@@ -521,7 +526,9 @@ def build_daybed():
         make_chamfer_box("Daybed_Frame", (-2.42, 1.9, 0.21), (0.92, 2.00, 0.26), COL_WOOD_DK, chamfer=0.012)
         make_chamfer_box("Daybed_Mattress", (-2.42, 1.9, 0.44), (0.86, 1.92, 0.16), (0.90, 0.86, 0.78, 1.0), chamfer=0.03)
         make_cyl("Daybed_Bolster", (-2.78, 1.9, 0.62), 0.11, 1.85, COL_WOOL, axis='Y', segments=10)
-        make_chamfer_box("Daybed_Blanket", (-2.28, 1.5, 0.545), (0.84, 0.95, 0.06), (0.56, 0.40, 0.30, 1.0), chamfer=0.015)   # clear of the bolster (2026-09-07)
+        make_chamfer_box("Daybed_Blanket", (-2.33, 1.5, 0.545), (0.74, 0.95, 0.06), (0.56, 0.40, 0.30, 1.0), chamfer=0.015)   # clear of the bolster (2026-09-07)
+        # draped over the room-side edge, down the frame (interior draft 9)
+        make_chamfer_box("Daybed_Blanket_Drape", (-1.95, 1.5, 0.40), (0.02, 0.95, 0.29), (0.52, 0.37, 0.28, 1.0), chamfer=0.006)
     # Chair by the SOUTH window, main room ("The chair by the south
     # window" / "Finn on the floor by the south window")
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
@@ -630,6 +637,53 @@ def build_runner_2026_10():
     for ri, (sx2, sy2, col) in enumerate(((1.00, 1.70, (0.42, 0.30, 0.24, 1.0)), (0.84, 1.52, (0.56, 0.44, 0.30, 1.0)),
                                           (0.66, 1.32, (0.36, 0.40, 0.44, 1.0)), (0.46, 1.10, (0.50, 0.36, 0.28, 1.0)))):
         make_chamfer_box(f"Runner_Rug_Round_{ri}", (0.0, 1.75, 0.003 + ri * 0.002), (sx2, sy2, 0.006), col, chamfer=0.002)
+
+
+def build_cabin_draft9_2026_10():
+    """Interior draft 9 (2026-10-09, the 8 x 8 plan's own coordinates).
+
+    - THE STOVE'S SHELF: on the N wall between the antlers and the stove
+      pipe, on two iron brackets — the tins a cabin with no store for
+      twenty miles keeps (coffee, tea, sugar, matches), two jars, the
+      grinder.
+    - THE PEGS by the east room's door: a peg rail on the east room's
+      north wall, Tem's wool coat and a cap on it, the rain jacket — the
+      main room's south-east corner was bare floor and plaster.
+    """
+    # the shelf
+    sx0, sx1, sy, sz = 1.45, 2.55, ROOM_D - 0.10 - 0.11, 1.55
+    make_box("Stove_Shelf", ((sx0 + sx1) / 2.0, sy, sz), (sx1 - sx0, 0.22, 0.03), COL_WOOD)
+    for bi, bx in enumerate((sx0 + 0.12, sx1 - 0.12)):
+        make_box(f"Stove_Shelf_Bracket_{bi}", (bx, ROOM_D - 0.10 - 0.08, sz - 0.10), (0.03, 0.16, 0.17), COL_IRON)
+    tins = ((0.50, 0.18, 0.14, 0.16), (0.24, 0.32, 0.40, 0.13), (0.70, 0.64, 0.50, 0.11), (0.36, 0.20, 0.16, 0.09))
+    for ti, (r, g, b, h) in enumerate(tins):
+        tx = sx0 + 0.16 + ti * 0.17
+        make_lathe(f"Stove_Shelf_Tin_{ti}", (tx, sy, sz + 0.015),
+                   [(0.055, 0.0), (0.055, h), (0.058, h + 0.005), (0.058, h + 0.02), (0.0, h + 0.02)], (r, g, b, 1.0), segments=12)
+    for ji in range(2):
+        jx = sx0 + 0.86 + ji * 0.10
+        make_lathe(f"Stove_Shelf_Jar_{ji}", (jx, sy, sz + 0.015),
+                   [(0.04, 0.0), (0.045, 0.01), (0.045, 0.12), (0.035, 0.145), (0.033, 0.16)], (0.80, 0.82, 0.72, 0.85), segments=10)
+        make_cyl(f"Stove_Shelf_Jar_{ji}_Beans", (jx, sy, sz + 0.065), 0.042, 0.10, (0.38, 0.22, 0.14, 1.0), segments=10)
+    # the grinder, a box mill with its crank, at the shelf's end
+    make_box("Stove_Shelf_Grinder", (sx1 - 0.10, sy, sz + 0.075), (0.11, 0.11, 0.12), COL_WOOD_DK)
+    make_cyl("Stove_Shelf_Grinder_Hopper", (sx1 - 0.10, sy, sz + 0.150), 0.04, 0.03, COL_IRON, segments=8)
+    make_box("Stove_Shelf_Grinder_Crank", (sx1 - 0.10, sy, sz + 0.172), (0.10, 0.012, 0.012), COL_IRON)
+    # the pegs on the east room's north wall (its north face at y 3.0)
+    py, pz = 3.0 + 0.012, 1.68
+    make_box("Coat_Peg_Rail", (3.05, py, pz), (1.10, 0.024, 0.09), COL_WOOD)
+    for pi, px in enumerate((2.65, 3.05, 3.45)):
+        make_cyl(f"Coat_Peg_{pi}", (px, py + 0.05, pz), 0.012, 0.08, COL_WOOD_DK, axis='Y', segments=6)
+    # Tem's wool coat, the cap over it, the rain jacket on the third peg
+    make_chamfer_box("Coat_Wool", (2.65, py + 0.07, pz - 0.44), (0.44, 0.09, 0.86), (0.30, 0.30, 0.34, 1.0), chamfer=0.03)
+    make_chamfer_box("Coat_Wool_Collar", (2.65, py + 0.08, pz - 0.03), (0.30, 0.10, 0.08), (0.26, 0.26, 0.30, 1.0), chamfer=0.02)
+    make_lathe("Coat_Cap", (3.05, py + 0.10, pz - 0.10), [(0.09, 0.0), (0.09, 0.06), (0.06, 0.10), (0.0, 0.11)], (0.62, 0.30, 0.28, 1.0), segments=10)
+    make_chamfer_box("Coat_Rain_Jacket", (3.45, py + 0.07, pz - 0.40), (0.42, 0.08, 0.78), (0.24, 0.34, 0.26, 1.0), chamfer=0.03)
+    # a boot tray under them, the shape of a wet day
+    make_box("Coat_Boot_Tray", (3.05, 3.30, 0.012), (1.00, 0.40, 0.024), (0.20, 0.20, 0.20, 1.0))
+    for bi, bx in enumerate((2.80, 2.95)):
+        make_chamfer_box(f"Coat_Boot_{bi}_Foot", (bx, 3.32, 0.064), (0.10, 0.26, 0.08), (0.30, 0.22, 0.14, 1.0), chamfer=0.02)
+        make_cyl(f"Coat_Boot_{bi}_Shaft", (bx, 3.38, 0.24), 0.05, 0.27, (0.30, 0.22, 0.14, 1.0), segments=10)
 
 
 def build_crow_2026_08():
@@ -1333,6 +1387,7 @@ def main():
     build_east_room()
     build_wall_dressing()
     build_runner_2026_10()
+    build_cabin_draft9_2026_10()
     build_wear_personality_2026_08()
     build_through_windows_2026_08()
     build_hero_props_2026_09()

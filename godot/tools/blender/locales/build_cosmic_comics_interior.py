@@ -70,10 +70,14 @@ def build_shell():
     for nm, x, bb in [("Wall_W", -ROOM_W/2.0, +1), ("Wall_E", +ROOM_W/2.0, -1)]:
         make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y',
                   palette=PAL_WALL, baseboard_face_sign=bb)
-    make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X',
-              palette=PAL_WALL, baseboard_face_sign=-1)
+    # the back-office doorway is CUT (draft 5, 2026-10-09): it was a dark
+    # box on a solid wall behind a solid frame board
+    make_wall_with_openings("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X',
+                            palette=PAL_WALL, baseboard_face_sign=-1, openings=[(3.6, 1.025, 0.95, 2.05)])
     make_wall_with_openings("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(-3.0, 1.55, 2.60, 1.50)])   # cut 2026-10-07: its window was a pane on a solid wall
-    make_wall("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    # the storefront's second display window (draft 5, 2026-10-09): a shop
+    # front has glass both sides of its door; this half was solid plaster
+    make_wall_with_openings("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(3.0, 1.55, 2.60, 1.50)])
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
     for nm, ax, length, wx, wy in [
@@ -276,7 +280,7 @@ def build_dressing():
     make_box("Standee_Board", (-ROOM_W/2.0 + 0.9, 0.9, 0.98), (0.55, 0.05, 1.92), COL_ACCENT)
     make_box("Standee_Foot", (-ROOM_W/2.0 + 0.9, 1.05, 0.03), (0.55, 0.30, 0.03), (0.30, 0.22, 0.14, 1.0))
     # Stool behind the register
-    make_stool("Stool", ROOM_W/4.0 - 0.7, ROOM_D - 2.6, h=0.60, wood=(0.30, 0.26, 0.30, 1.0))   # draft 4: the kit stool
+    make_stool("Stool", 3.30, 5.55, h=0.60, wood=(0.30, 0.26, 0.30, 1.0))   # draft 4: the kit stool · draft 5: BEHIND the counter (it stood on the customer side)
 
 def build_hero_props():
     """2026-08-03 hero-prop pass — the props the vol6 comics-floor
@@ -304,8 +308,8 @@ def build_hero_props():
     make_box("Door_Deadbolt", (0.80, 0.06, 1.05), (0.06, 0.03, 0.10), brass)
     make_box("Door_Chain", (0.70, 0.06, 1.55), (0.10, 0.02, 0.03), (0.60, 0.62, 0.64, 1.0))
     # Back-office doorway + the one-way mirror beside it (N wall)
-    make_box("Office_Doorframe", (3.6, 7.96, 1.08), (1.10, 0.10, 2.16), wood)
-    make_box("Office_Doorway_Dark", (3.6, 7.92, 1.05), (0.95, 0.06, 2.05), (0.10, 0.09, 0.08, 1.0))
+    from _props.structure import make_frame_ring
+    make_frame_ring("Office_Doorframe", (3.6, ROOM_D - 0.13, 1.05), (1.10, 0.06, 2.12), wood, bar=0.075)
     make_box("OneWay_Frame", (1.6, 7.95, 1.70), (1.30, 0.06, 1.00), (0.30, 0.26, 0.22, 1.0))
     make_box("OneWay_Mirror", (1.6, 7.92, 1.70), (1.20, 0.04, 0.90), (0.46, 0.52, 0.56, 1.0))
     # The small bench by the front window (Rick, 2018, for waiting kids)
@@ -410,7 +414,7 @@ def build_draft4_2026_09():
     make_traffic_wear("Wear_Path_B", [(-1.2, 3.4), (0.6, 4.7), (1.8, 5.6), (2.4, 5.95)], width=0.50, tint=tile_dk)
     make_traffic_wear("Wear_Path_C", [(-1.2, 3.4), (-2.6, 3.8), (-3.2, 4.0)], width=0.36, tint=tile_dk)
     make_box("Wear_Elbow_Strip", (ROOM_W/4.0 - 0.2, ROOM_D - 1.5 - 0.50, 0.952), (1.40, 0.06, 0.004), (0.24, 0.18, 0.26, 1.0))
-    make_floor_stain("Wear_Ring_Behind", (ROOM_W/4.0 - 0.7, ROOM_D - 2.6), radius=0.26, tint=tile_dk, segments=10)
+    make_floor_stain("Wear_Ring_Behind", (3.30, 5.55), radius=0.26, tint=tile_dk, segments=10)
     for ji, (ay, row_w, row_x) in enumerate(((2.75, 5.0, 0.0), (4.0, 5.0, 0.0), (5.4, 3.6, -0.7))):
         make_scuff_band(f"Wear_Kick_Row_{ji}", (row_x, ay - 0.26), row_w - 0.3, axis='X', height=0.06, band_z=0.04, tint=(0.22, 0.16, 0.10, 1.0))
     make_box("Wear_Push_Plate", (0.55, 0.055, 1.10), (0.16, 0.004, 0.22), (0.40, 0.38, 0.36, 1.0))
@@ -441,6 +445,103 @@ def build_draft4_2026_09():
     make_far_bands("Far", (0.44, 0.40, 0.38, 1.0), [(13.0, 12.0, 4.5, 0.85), (16.0, 14.0, 6.5, 0.7)], sides="S", cy=0.0, profile="roofline")
 
 
+def build_draft5_2026_10():
+    """DRAFT 5 (2026-10-09), from vol 6 ch 1/2/4/12/21.
+
+    - THE BACK OFFICE, glimpsed. "Maya, at the back-office door, watches
+      Curtis handle the first hour"; "The wanderer is at the doorway of the
+      back office ... looking, specifically, at the shelf above the file
+      cabinet"; "Rick was napping in the back office"; "Curtis is at the
+      desk in the back office. The light is on." The doorway is cut; the
+      leaf stands open against the office's east side; through it the
+      file cabinet with the shelf above it, the desk and its lamp, and
+      the couch Rick naps on.
+    - THE STAFF SIDE. "Wren takes her bag to the small employee cubby
+      behind the counter"; "He puts the Sentinel on the small shelf where
+      Rick keeps his"; "He sets the thermos under the register".
+    - THE BINS get their front and back lips and the Tuesday shelf-talkers
+      ("He puts up the new shelf-talkers for the Tuesday rotation").
+    """
+    from _props.structure import make_wall as _mw
+    wood = (0.42, 0.30, 0.18, 1.0)
+    off_wall = (0.48, 0.44, 0.40, 1.0)
+    # the office: x 2.2 .. 5.0, y ROOM_D+0.1 .. 10.6
+    ox0, ox1, oy0, oy1 = 2.2, 5.0, ROOM_D + 0.1, 10.6
+    make_box("Office_Floor", ((ox0 + ox1) / 2.0, (oy0 + oy1) / 2.0, -0.01), (ox1 - ox0, oy1 - oy0, 0.02), (0.30, 0.27, 0.24, 1.0))
+    make_box("Office_Ceil", ((ox0 + ox1) / 2.0, (oy0 + oy1) / 2.0, CEIL + 0.02), (ox1 - ox0, oy1 - oy0, 0.04), (0.56, 0.54, 0.50, 1.0))
+    make_box("Office_Wall_W", (ox0 - 0.10, (oy0 + oy1) / 2.0, CEIL / 2.0), (0.20, oy1 - oy0, CEIL), off_wall)
+    make_box("Office_Wall_E", (ox1 + 0.10, (oy0 + oy1) / 2.0, CEIL / 2.0), (0.20, oy1 - oy0, CEIL), off_wall)
+    make_box("Office_Wall_N", ((ox0 + ox1) / 2.0, oy1 + 0.10, CEIL / 2.0), (ox1 - ox0 + 0.4, 0.20, CEIL), off_wall)
+    # the leaf, open 90 degrees against the office's east side of the jamb
+    make_box("Office_Door_Leaf", (4.05, oy0 + 0.46, 1.02), (0.04, 0.90, 2.02), (0.36, 0.28, 0.22, 1.0))
+    make_cyl("Office_Door_Knob", (4.01, oy0 + 0.80, 0.98), 0.025, 0.05, (0.70, 0.62, 0.40, 1.0), axis='X', segments=8)
+    # the file cabinet on the N wall, straight through the door, and THE shelf above it
+    fx, fy = 3.6, oy1 - 0.30
+    make_chamfer_box("Office_FileCabinet", (fx, fy, 0.66), (0.46, 0.60, 1.32), (0.44, 0.46, 0.44, 1.0), chamfer=0.01)
+    for di in range(4):
+        make_box(f"Office_FileCabinet_Drawer_{di}", (fx, fy - 0.305, 0.18 + di * 0.32), (0.40, 0.012, 0.28), (0.50, 0.52, 0.50, 1.0))
+        make_box(f"Office_FileCabinet_Pull_{di}", (fx, fy - 0.318, 0.27 + di * 0.32), (0.12, 0.014, 0.02), (0.70, 0.70, 0.68, 1.0))
+    make_box("Office_Shelf_Above_Cabinet", (fx, oy1 - 0.12, 1.72), (0.80, 0.24, 0.03), wood)
+    for bi, bx in enumerate((fx - 0.30, fx + 0.30)):
+        make_box(f"Office_Shelf_Bracket_{bi}", (bx, oy1 - 0.08, 1.64), (0.03, 0.16, 0.14), (0.20, 0.20, 0.22, 1.0))
+    # what lives on it: a run of trade paperbacks, a coffee can of pens, the
+    # dust rectangle where the Speak & Spell sat until Maya moved it
+    for bi in range(5):
+        make_box(f"Office_Shelf_Book_{bi}", (fx + 0.08 + bi * 0.05, oy1 - 0.13, 1.84), (0.04, 0.18, 0.21),
+                 [(0.62, 0.24, 0.24, 1.0), (0.24, 0.42, 0.52, 1.0), (0.72, 0.62, 0.30, 1.0)][bi % 3])
+    make_cyl("Office_Shelf_PenCan", (fx - 0.28, oy1 - 0.12, 1.79), 0.05, 0.11, (0.60, 0.20, 0.16, 1.0), segments=10)
+    make_box("Office_Shelf_DustGhost", (fx - 0.10, oy1 - 0.12, 1.736), (0.25, 0.19, 0.002), (0.50, 0.38, 0.24, 1.0))
+    # the desk on the W side, its lamp lit, the chair pulled out
+    make_table("Office_Desk", ox0 + 0.45, 9.30, w=0.70, d=1.30, h=0.75, wood=wood, top_col=wood)
+    make_lathe("Office_Lamp", (ox0 + 0.40, 9.75, 0.76), [(0.08, 0.0), (0.08, 0.02), (0.015, 0.03), (0.015, 0.36), (0.12, 0.36), (0.07, 0.48), (0.0, 0.48)],
+               (0.20, 0.36, 0.26, 1.0), segments=12)
+    make_box("Office_Desk_Papers", (ox0 + 0.45, 9.20, 0.758), (0.30, 0.40, 0.012), (0.90, 0.88, 0.82, 1.0))
+    make_box("Office_Desk_Folder", (ox0 + 0.50, 8.85, 0.762), (0.24, 0.32, 0.02), (0.82, 0.70, 0.36, 1.0))
+    from _props.furniture import make_chair
+    make_chair("Office_Chair", ox0 + 1.15, 9.20, yaw=-1.5708, wood=(0.30, 0.30, 0.32, 1.0), w=0.46)
+    # Rick's couch on the E wall (the Saturday nap)
+    cx2, cy2, L = ox1 - 0.45, 9.95, 1.20   # a loveseat, north of the open leaf
+    make_chamfer_box("Office_Couch_Base", (cx2, cy2, 0.20), (0.80, L, 0.40), (0.36, 0.30, 0.26, 1.0), chamfer=0.04)
+    make_chamfer_box("Office_Couch_Back", (ox1 - 0.12, cy2, 0.62), (0.16, L, 0.44), (0.32, 0.26, 0.22, 1.0), chamfer=0.04)
+    make_chamfer_box("Office_Couch_Cushion", (cx2 - 0.08, cy2, 0.45), (0.60, L - 0.10, 0.10), (0.40, 0.34, 0.28, 1.0), chamfer=0.035)
+    make_chamfer_box("Office_Couch_Blanket", (cx2 - 0.06, cy2 + 0.25, 0.515), (0.54, 0.50, 0.03), (0.30, 0.38, 0.52, 1.0), chamfer=0.01)
+    # ── the staff side ──
+    # the employee cubby east of the office door, a bag in one hole
+    kx, ky = 4.45, ROOM_D - 0.10 - 0.18
+    make_chamfer_box("Cubby_Carcass", (kx, ky, 0.55), (0.66, 0.36, 1.10), wood, chamfer=0.008)
+    for r in range(2):
+        for c in range(2):
+            make_box(f"Cubby_Hole_{r}_{c}", (kx - 0.16 + c * 0.32, ky - 0.181, 0.30 + r * 0.50), (0.28, 0.004, 0.42), (0.12, 0.10, 0.08, 1.0))
+    make_chamfer_box("Cubby_Wren_Bag", (kx - 0.16, ky - 0.10, 0.70), (0.26, 0.16, 0.30), (0.62, 0.38, 0.30, 1.0), chamfer=0.03)
+    # Rick's small shelf west of the door, the Sentinel folded on it, a mug
+    make_box("Rick_Shelf", (2.70, ROOM_D - 0.10 - 0.10, 1.45), (0.70, 0.20, 0.03), wood)
+    make_box("Rick_Shelf_Sentinel", (2.62, ROOM_D - 0.10 - 0.10, 1.475), (0.30, 0.17, 0.02), (0.86, 0.84, 0.78, 1.0))
+    make_box("Rick_Shelf_Sentinel_Masthead", (2.62, ROOM_D - 0.10 - 0.17, 1.4855), (0.26, 0.03, 0.002), (0.18, 0.18, 0.20, 1.0))
+    make_lathe("Rick_Shelf_Mug", (2.95, ROOM_D - 0.10 - 0.10, 1.465), [(0.04, 0.0), (0.042, 0.01), (0.044, 0.10), (0.0, 0.095)], (0.82, 0.78, 0.70, 1.0), segments=10)
+    # Curtis's thermos, under the register on the staff side
+    make_lathe("Thermos", (3.20, 6.85, 0.0), [(0.045, 0.0), (0.045, 0.24), (0.035, 0.27), (0.035, 0.31), (0.0, 0.31)], (0.24, 0.36, 0.30, 1.0), segments=12)
+    # ── the bins' lips and Tuesday's shelf-talkers ──
+    for ji, (ay, row_w, row_x) in enumerate(((2.75, 5.0, 0.0), (4.0, 5.0, 0.0), (5.4, 3.6, -0.7))):
+        for e, nm in ((-1, "F"), (1, "B")):
+            make_box(f"Bin_{ji}_Lip_{nm}", (row_x, ay + e * 0.24, 0.65), (row_w, 0.02, 0.10), (0.34, 0.25, 0.16, 1.0))
+        for ti in range(3):
+            make_box(f"Bin_{ji}_Talker_{ti}", (row_x - row_w / 3.0 + ti * row_w / 3.0, ay - 0.252, 0.66), (0.16, 0.004, 0.08),
+                     [(0.94, 0.90, 0.78, 1.0), (0.96, 0.84, 0.40, 1.0), (0.86, 0.94, 0.86, 1.0)][ti])
+
+
+def build_window_east_2026_10():
+    """The east display window (draft 5): the glass, a riser with the
+    month's graphic novels on stands, the PULL LIST card taped up."""
+    make_window("Win_SE", (3.0, 0.10, 1.55), width=2.60, height=1.50, room_dir=+1, see_through=True)
+    make_box("WinRiser_E", (3.0, 0.35, 0.40), (2.0, 0.50, 0.80), COL_WOOD)
+    for bi in range(4):
+        bx = 2.25 + bi * 0.50
+        make_rot_box(f"WinE_Book_{bi}", (bx, 0.40, 1.02), (0.30, 0.03, 0.40), HERO_COLS[(bi + 2) % len(HERO_COLS)], pitch=-0.20)
+        make_box(f"WinE_Book_{bi}_Stand", (bx, 0.50, 0.84), (0.12, 0.10, 0.08), (0.20, 0.18, 0.22, 1.0))
+    make_box("WinE_PullList_Card", (3.85, 0.1055, 1.95), (0.36, 0.01, 0.26), P.PAPER)
+    make_box("WinE_PullList_Text", (3.85, 0.1105, 1.98), (0.28, 0.004, 0.05), (0.52, 0.26, 0.62, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -465,6 +566,8 @@ def main():
     build_hero_props()
     build_hero_props_2026_09()
     build_draft4_2026_09()
+    build_draft5_2026_10()
+    build_window_east_2026_10()
     export_glb(out)
 
 if __name__ == "__main__":

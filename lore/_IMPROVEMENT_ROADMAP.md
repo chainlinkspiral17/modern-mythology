@@ -3834,6 +3834,35 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-09 · overnight run, pass 1: cabin interior draft 9 + COSMIC COMICS draft 5.**
+- **Cabin:**
+  - the daybed blanket drapes over the room-side edge;
+  - the loft has a soft mattress and blanket, a pillow, Marina's
+    sweater and the flashlight she came down with;
+  - a shelf on the N wall by the stove (tins, two jars of beans, the box
+    grinder);
+  - coat pegs on the east room's new wall with Tem's wool coat, a cap,
+    the rain jacket, and a boot tray under them. The main room's corner
+    by the east room's door was bare plaster.
+- **Cosmic Comics, from vol 6 ch 1/2/4/12/21:**
+  - THE BACK OFFICE WAS A DARK BOX on a solid wall behind a solid
+    frame board. The doorway is cut, with a frame ring and the leaf open.
+    Through it: the file cabinet with "the shelf above the file cabinet"
+    (paperbacks, a pen can, the dust ghost where the Speak & Spell sat),
+    the desk with its lamp lit (a practical: "The light is on"), and
+    Rick's loveseat for the Saturday nap;
+  - the staff side: the stool and its floor ring stood on the CUSTOMER
+    side and are behind the counter now; the employee cubby with Wren's
+    bag; Rick's small shelf with the Sentinel and a mug; Curtis's thermos
+    under the register;
+  - the bins have lips and the Tuesday shelf-talkers;
+  - THE STOREFRONT'S SECOND WINDOW: the east half of the front was solid
+    plaster. It is a display window now (graphic novels on stands, the
+    PULL LIST card), and `closeup_person_b`, which framed a bare purple
+    corner, frames the window and the street.
+Next for Cosmic: the bins' comics at a lean; the key wall's bags with a
+rim; the statues posed; the drop ceiling's grid is heavy in every wide.
+
 **2026-10-09 · TEM'S CABIN, interior draft 8.**
 - **The counter** was a flat yellow box under lamplight. It now has a
   darker body, three plank doors with their seams and knobs, a drawer

@@ -420,3 +420,14 @@ light_color = Color(0.420, 0.620, 0.960, 1)
 light_energy = 0.80
 shadow_enabled = false
 omni_range = 3.20
+
+; ── draft 5 (2026-10-09) · the back office's desk lamp ──
+; "Curtis is at the desk in the back office. The light is on." Seen
+; through the cut doorway; a little of it reaches the counter's end.
+; blender (2.60, 9.75, 1.12) → godot (2.60, 1.12, -9.75).
+[node name="Office_Lamp_Practical" type="OmniLight3D" parent="."]
+position = Vector3(2.600, 1.120, -9.750)
+light_color = Color(1.000, 0.780, 0.500, 1)
+light_energy = 0.85
+shadow_enabled = false
+omni_range = 3.20
