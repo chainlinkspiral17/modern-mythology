@@ -3834,6 +3834,30 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-09 · overnight run, pass 22: NATALIE'S APARTMENT, DRAFT 4 (the
+futon and the things the prose names).** Moon puts Nicola asleep "on the
+futon, under the twilight-colored quilt"; drafts 1-3 had a teal sofa. It is
+now a futon: a low slatted wood frame, the teal mattress folded into seat
+and back, wooden arms, the quilt over one arm. Also built from the
+chapters' own sentences:
+- **By the door.** The coat hook with her coat on it ("Took off her coat.
+  Hung it on the hook"), with her work shoes under it.
+- **The closet.** On the E wall.
+- **THE SPARE CORNER.** The dead nook between the stove and the bed, with
+  ten years of storage: boxes, a rolled rug, a record crate. In Judgement
+  she clears it for a crib.
+- **From Hanged.** "Discarded dance shoes soft as moth wings" in the
+  aisle, "stacks of books leaning at precarious Borgesian angles", the
+  "chipped porcelain teacups holding dried herbs" on the sill past the
+  Hanged Man, and a second deck fanned on the floor.
+- **From Moon.** The candle burning low on the rug, with a practical.
+
+Draft 5 targets:
+- the crib corner as a Judgement-morning variant;
+- the fridge's magnets and photo;
+- the room is 7 x 5.5 with the bed in a nook. Moon reads it as a
+  one-bedroom, so a bedroom through a doorway would be the build-big pass.
+
 **2026-10-09 · overnight run, pass 21: THE CAB, DRAFT 3 (the wrong VEHICLE:
 BT's Altima).** `vehicle_cab` is "one cab for every vehicle": Ben's green
 crew-cab pickup. But ch16, a 10.6k-character chapter set entirely in the

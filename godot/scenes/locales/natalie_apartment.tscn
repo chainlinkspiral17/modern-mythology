@@ -199,6 +199,14 @@ light_energy = 1.0
 shadow_enabled = false
 omni_range = 4.0
 
+; the candle she lit at midnight, burning low on the rug (draft 4, Moon)
+[node name="Rug_Candle_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-0.120, 0.160, -2.500)
+light_color = Color(1.00, 0.70, 0.40, 1)
+light_energy = 0.45
+shadow_enabled = false
+omni_range = 1.60
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]

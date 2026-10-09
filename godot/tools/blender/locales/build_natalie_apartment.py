@@ -46,12 +46,19 @@ window and the live oak's canopy; past the south-east window the
 parish street, a far facade and its lamp. Scene: the free-floating
 Practical_Lamp (nothing at 1.6, 1.6) becomes the under-cabinet
 light's practical; shot_insert_deck re-aimed at the moved deck.
-Draft 4 targets: the L-counter's corner as one piece; the fridge's
+DRAFT 4 (2026-10-09): the futon (it was a sofa); the coat hook and
+coat, the closet, THE SPARE CORNER (stove-to-bed nook: boxes, rug, the
+record crate) Judgement clears for a crib; Hanged's dance shoes, leaning
+book stacks and herb teacups; Moon's low candle (+ practical) and a deck
+fanned on the floor — build_draft4_2026_10.
+Draft 5 targets: the crib corner as a variant; a bedroom through a
+doorway (a one-bedroom, not a nook); and from draft 4's list:
+the L-counter's corner as one piece; the fridge's
 seam, magnets and a photo; the blinds' cord; a second bookshelf
 row of objects (a photo, a candle) so the shelf is hers; Deck: the
 SW preset for the moved living set + establish_b.
 """
-import os, sys
+import os, sys, math
 _BLENDER_TOOLS = os.path.normpath(
     os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BLENDER_TOOLS not in sys.path:
@@ -178,13 +185,22 @@ def build_living_room():
     # chamfered cushions, rolled arms; moved east + north out of the
     # door's swing)
     sx, sy = SOFA_X, SOFA_Y
-    make_chamfer_box("Sofa_Base", (sx, sy, 0.14), (1.80, 0.80, 0.28), COL_COUCH_TRIM, chamfer=0.02)   # to the floor (2026-09-23: 4 cm up)
-    for ci, cx in enumerate((-0.44, 0.44)):
-        make_chamfer_box(f"Sofa_Cushion_{ci}", (sx + cx, sy - 0.04, 0.36), (0.84, 0.70, 0.16), COL_COUCH_TEAL, chamfer=0.04)
-    make_chamfer_box("Sofa_Back", (sx, sy + 0.32, 0.74), (1.80, 0.20, 0.60), COL_COUCH_TEAL, chamfer=0.04)
+    # DRAFT 4 (2026-10-09): THE FUTON — "Nicola had slept, immediately, on
+    # the futon, under the twilight-colored quilt" (Moon). Drafts 1-3 built
+    # a teal sofa: now a low slatted wood frame, the teal mattress folded
+    # into seat and back, wooden arms.
+    make_chamfer_box("Sofa_Base", (sx, sy, 0.14), (1.80, 0.80, 0.28), COL_BED_FRAME, chamfer=0.01)
+    for si in range(5):
+        make_box(f"Futon_Front_Slat_{si}", (sx - 0.72 + si * 0.36, sy - 0.405, 0.14), (0.26, 0.012, 0.20), COL_WOOD_TRIM)
+    make_chamfer_box("Futon_Seat_Cushion", (sx, sy - 0.04, 0.355), (1.72, 0.70, 0.17), COL_COUCH_TEAL, chamfer=0.05)
+    make_chamfer_box("Sofa_Back", (sx, sy + 0.30, 0.74), (1.72, 0.18, 0.62), COL_COUCH_TEAL, chamfer=0.05)
+    for ti, tz in enumerate((0.58, 0.88)):
+        make_box(f"Futon_Back_Rail_{ti}", (sx, sy + 0.40, tz), (1.72, 0.03, 0.06), COL_BED_FRAME)
+    for ci, cx in enumerate((-0.43, 0.43)):
+        make_box(f"Futon_Tuft_{ci}", (sx + cx, sy - 0.04, 0.4415), (0.04, 0.04, 0.003), COL_COUCH_TRIM)
     for cs in (-1, +1):
-        make_chamfer_box(f"Sofa_Arm_{cs:+d}", (sx + cs * 0.94, sy, 0.40), (0.16, 0.80, 0.42), COL_COUCH_TRIM, chamfer=0.03)
-        make_cyl(f"Sofa_Arm_Roll_{cs:+d}", (sx + cs * 0.94, sy, 0.63), 0.085, 0.80, COL_COUCH_TRIM, axis='Y', segments=10)
+        make_box(f"Sofa_Arm_{cs:+d}", (sx + cs * 0.94, sy, 0.3575), (0.16, 0.80, 0.715), COL_BED_FRAME)
+        make_box(f"Futon_Arm_Cap_{cs:+d}", (sx + cs * 0.94, sy, 0.725), (0.18, 0.84, 0.02), COL_WOOD_TRIM)
     # Throw pillows (rose accent)
     for pi, px in enumerate([-0.50, +0.30, +0.70]):
         make_chamfer_box(f"Sofa_Pillow_{pi}", (sx + px, sy + 0.10, 0.53), (0.30, 0.20, 0.18), COL_ACCENT_ROSE, chamfer=0.03)   # on the cushions
@@ -320,7 +336,7 @@ def build_hero_props():
     # Futon-ify: the twilight quilt over the sofa/futon
     # (draft 3: folded over the sofa's east arm — it floated in the air
     # at (2.1, 2.4) with nothing under it)
-    make_chamfer_box("Twilight_Quilt", (SOFA_X + 0.94, SOFA_Y, 0.76), (0.34, 0.60, 0.09), (0.34, 0.30, 0.50, 1.0), chamfer=0.03)
+    make_chamfer_box("Twilight_Quilt", (SOFA_X + 0.94, SOFA_Y, 0.78), (0.34, 0.60, 0.09), (0.34, 0.30, 0.50, 1.0), chamfer=0.03)
     # Step-stool by the bookshelf, the scarf lamp ON a side table (it
     # floated at z 0.6), the blinds
     make_box("Step_Stool", (3.15, 3.55, 0.16), (0.36, 0.30, 0.32), (0.46, 0.34, 0.22, 1.0))
@@ -467,6 +483,59 @@ def build_draft3_2026_09():
     make_lathe("Out_S_Lamp_Globe", (3.2, -3.2, 3.6), [(0.0, 0.0), (0.16, 0.06), (0.14, 0.28), (0.0, 0.32)], (0.98, 0.88, 0.66, 1.0), segments=10)
 
 
+def build_draft4_2026_10():
+    """DRAFT 4 (2026-10-09) — the things the prose puts in the room that
+    the set did not have. Judgement: "Natalie took off her coat. Hung it
+    on the hook. Walked to the closet. Began ... clearing the spare corner
+    — the one she had kept, for ten years, as a storage space for things
+    she had not, strictly, needed — to make room for a crib." Hanged:
+    "a nest woven from discarded dance shoes soft as moth wings, stacks
+    of books leaning at precarious Borgesian angles, chipped porcelain
+    teacups holding dried herbs, and tarot decks fanned out on the floor
+    like fallen leaves." Moon: "the candle she had lit at midnight
+    burning low", on the rug among the cards."""
+    rose_pale = (0.92, 0.80, 0.78, 1.0)
+    porcelain = (0.92, 0.90, 0.86, 1.0)
+    # the coat hook by the door and her coat on it
+    make_box("Coat_Hook_Rail", (-1.60, 0.115, 1.70), (0.50, 0.03, 0.08), COL_WOOD_TRIM)
+    for hi, hx in enumerate((-1.75, -1.45)):
+        make_cyl(f"Coat_Hook_{hi}", (hx, 0.16, 1.70), 0.012, 0.06, P.METAL_BLACK, axis='Y', segments=6)
+    make_chamfer_box("Her_Coat", (-1.75, 0.20, 1.24), (0.44, 0.08, 0.90), (0.30, 0.28, 0.34, 1.0), chamfer=0.03)
+    make_box("Her_Coat_Collar", (-1.75, 0.20, 1.68), (0.20, 0.08, 0.06), (0.26, 0.24, 0.30, 1.0))
+    # her work shoes under it, and the soft dance shoes kicked off in the aisle
+    for si, (sx_, sy_) in enumerate(((-1.85, 0.30), (-1.66, 0.32))):
+        make_chamfer_box(f"Work_Shoe_{si}", (sx_, sy_, 0.04), (0.10, 0.26, 0.08), P.METAL_BLACK, chamfer=0.02)
+    for si, (sx_, sy_, yaw) in enumerate(((-1.30, 1.50, 0.5), (-1.15, 1.66, -0.3))):
+        make_rot_box(f"Dance_Shoe_{si}", (sx_, sy_, 0.025), (0.08, 0.22, 0.05), rose_pale, yaw=yaw)
+    # the closet on the E wall between the bookshelf and the step-stool
+    make_box("Closet_Door", (ROOM_W / 2.0 - 0.125, 3.10, 1.00), (0.05, 0.70, 2.00), (0.86, 0.82, 0.74, 1.0))
+    make_box("Closet_Door_Casing", (ROOM_W / 2.0 - 0.105, 3.10, 2.04), (0.02, 0.80, 0.08), COL_WOOD_TRIM)
+    make_cyl("Closet_Door_Knob", (ROOM_W / 2.0 - 0.17, 2.85, 0.98), 0.025, 0.04, (0.72, 0.62, 0.36, 1.0), axis='X', segments=8)
+    # THE SPARE CORNER: the dead nook between the stove and the bed, ten years of storage
+    for bi, (bx, by, bz, w, d, h) in enumerate(((0.70, 5.05, 0.20, 0.55, 0.50, 0.40), (0.72, 5.05, 0.60, 0.50, 0.46, 0.40),
+                                               (1.12, 5.12, 0.18, 0.30, 0.42, 0.36))):
+        make_box(f"Spare_Box_{bi}", (bx, by, bz), (w, d, h), (0.66, 0.54, 0.40, 1.0))
+        make_box(f"Spare_Box_{bi}_Tape", (bx, by, bz + h / 2.0 + 0.001), (0.05, d, 0.002), (0.80, 0.72, 0.56, 1.0))
+    make_cyl("Spare_Rolled_Rug", (0.75, 4.72, 0.08), 0.08, 0.80, (0.50, 0.36, 0.40, 1.0), axis='X', segments=10)
+    make_box("Spare_Record_Crate", (1.12, 5.12, 0.47), (0.32, 0.40, 0.22), (0.46, 0.36, 0.24, 1.0))
+    # chipped teacups with dried herbs on the windowsill, past the Hanged Man
+    for ti, ty in enumerate((2.70, 2.92, 3.14)):
+        make_lathe(f"Herb_Teacup_{ti}", (-3.32, ty, 0.575), [(0.0, 0.0), (0.025, 0.0), (0.03, 0.01), (0.042, 0.055), (0.0, 0.055)], porcelain, segments=10)
+        make_blob(f"Herb_Teacup_{ti}_Herbs", (-3.32, ty, 0.632), 0.034, [(0.46, 0.50, 0.32, 1.0), (0.52, 0.44, 0.40, 1.0), (0.40, 0.46, 0.30, 1.0)][ti], noise=0.4, seed=11 + ti, squash=0.5)
+    # stacks of books leaning beside the bookshelf
+    for bi in range(6):
+        make_box(f"Floor_Books_A_{bi}", (2.30, 2.25, 0.03 + bi * 0.055), (0.26 - (bi % 2) * 0.03, 0.20, 0.05), COL_BOOK_SPINES[bi % len(COL_BOOK_SPINES)])
+    for bi in range(5):
+        make_rot_box(f"Floor_Books_B_{bi}", (2.32 + bi * 0.012, 2.62, 0.03 + bi * 0.054), (0.24, 0.18, 0.05), COL_BOOK_SPINES[(bi + 3) % len(COL_BOOK_SPINES)], yaw=0.12 * bi)
+    # the candle burned low on the rug, the second deck fanned on the floor
+    make_cyl("Rug_Candle_Saucer", (RUG_X + 0.48, RUG_Y - 0.40, 0.026), 0.06, 0.008, porcelain, segments=12)
+    make_cyl("Rug_Candle", (RUG_X + 0.48, RUG_Y - 0.40, 0.055), 0.03, 0.05, (0.94, 0.90, 0.80, 1.0), segments=10)
+    make_cyl("Rug_Candle_Wick", (RUG_X + 0.48, RUG_Y - 0.40, 0.086), 0.002, 0.012, P.METAL_BLACK, segments=4)
+    for ci in range(7):
+        a = -0.9 + ci * 0.3
+        make_rot_box(f"Floor_Fan_Card_{ci}", (RUG_X + 0.55 + 0.10 * math.sin(a), RUG_Y + 0.35 + 0.10 * math.cos(a), 0.0235 + ci * 0.0006), (0.07, 0.11, 0.0008), (0.86, 0.82, 0.70, 1.0), yaw=-a)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -484,6 +553,7 @@ def main():
     build_detail_pass_2026_08()
     build_use_states_d4()
     build_draft3_2026_09()
+    build_draft4_2026_10()
     export_glb(out_path)
 
 
