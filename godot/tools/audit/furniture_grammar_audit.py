@@ -80,6 +80,10 @@ LANE_M = 1.4            # m · a parked car's centre sits ~1.0 m off the curb; a
 # classification of highway_101 / diner / riverfront: these three
 # classes were 90% of the count).
 VEHICLE_PART = re.compile(r"^(wheel|hub|spoke|tire|rim|body|cabin|cab|window|windows|windshield|winshld|rearwin|headlight|taillight|bumper|pillar|hood|lid|mirror|lightbar|pan|seat|grille|tailgate|wiper|door|handle|plate|glass|cushion|back|arm|shoulder)$", re.I)
+# make_bigfoot / make_dog / make_cat anatomy (2026-10-09: the Sasquatch's
+# belly, torso, hips and thighs are overlapping blobs on purpose)
+ANATOMY = re.compile(r"^(head|neck|torso|belly|hips|thigh|calf|leg|arm|armfur|shoulder|hand|foot|crest|face|brow|body|tail|ear|snout|haunch|chest)$", re.I)
+CREATURE = re.compile(r"(sasquatch|bigfoot|greeter|dog|cat|crow)", re.I)
 ROAD_SEG = re.compile(r"^(road|hwy|highway|street|lane|asphalt|curb|shoulder)", re.I)
 STRUCTURAL = re.compile(r"(wall|crown|molding|roof|chimney|eave|gable|ridge|joist|beam|truss|frame|jamb|header|sill|"
                         r"trim|baseboard|skirt|seam|stud|rafter|hull|deck|pillar|post|leg|rail|spray|stream|tube|wire|cable|rope|chain|port|porthole|strip|band|piling|stringer|girder|brace|lintel|partition|pedestal)", re.I)
@@ -201,6 +205,8 @@ def check_intra(boxes):
                     continue      # joints: wall corners, crown mitres, roof/chimney, frame members
                 if VO.PASSABLE.search(a[0]) or VO.PASSABLE.search(b[0]):
                     continue      # foliage tiers / lobes / fronds — cones and blobs as boxes
+                if CREATURE.search(a[0]) and ANATOMY.search(part_class(a[0])) and ANATOMY.search(part_class(b[0])):
+                    continue      # a creature's body: blobs as boxes, lobes overlap by design
                 if TUCK.search(part_class(a[0])) or TUCK.search(part_class(b[0])):
                     continue      # designed tucks: bullnose in a top, liquid in a pot, a book in its shelf
                 if VEHICLE_PART.search(part_class(a[0])) and VEHICLE_PART.search(part_class(b[0])):

@@ -187,36 +187,8 @@ light_color = Color(0.5, 0.56, 0.66, 1)
 light_energy = 0.22
 shadow_enabled = false
 
-[node name="Practical_CounterWarm" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -4.3)
-light_color = Color(0.98, 0.82, 0.5, 1)
-light_energy = 1.1
-omni_range = 4.5
-shadow_enabled = false
-
-[node name="Practical_KitchenPass" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -5.5)
-light_color = Color(0.92, 0.92, 0.84, 1)
-light_energy = 0.75
-omni_range = 3.6
-shadow_enabled = false
-
-[node name="Practical_JukeboxGlow" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0, 1.3, -2.9)
-light_color = Color(0.96, 0.6, 0.3, 1)
-light_energy = 0.7
-omni_range = 2.8
-shadow_enabled = false
-
-[node name="Practical_FrontFluor" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, -1.6)
-light_color = Color(0.92, 0.92, 0.86, 1)
-light_energy = 0.6
-omni_range = 3.6
-shadow_enabled = false
-
 [node name="StreetSpill_Exterior" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0, 1.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0, 1.4)
 light_color = Color(0.46, 0.54, 0.66, 1)
 light_energy = 0.7
 omni_range = 5.5
@@ -342,57 +314,125 @@ offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
 
+; DRAFT 4 (2026-10-09): the 10 x 7 room — the tubes, the jukebox, the counter, the porthole
+[node name="Fluor_1_Tube_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.0, 2.6, -2.2)
+light_color = Color(0.92, 0.92, 0.85, 1)
+light_energy = 1.1
+shadow_enabled = false
+omni_range = 5.0
 
-; ── vn_shot coverage (2026-08-08 directing pass 3) ────────
-; rotation B: counterman POV over the counter to the booths and the pumps outside
+[node name="Fluor_4_Tube_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.6, 2.6, -5.0)
+light_color = Color(0.92, 0.92, 0.85, 1)
+light_energy = 1.1
+shadow_enabled = false
+omni_range = 5.0
+
+[node name="Fluor_3_Tube_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-3.0, 2.6, -5.0)
+light_color = Color(0.92, 0.92, 0.85, 1)
+light_energy = 0.8
+shadow_enabled = false
+omni_range = 4.5
+
+[node name="Fluor_2_Tube_Practical" type="OmniLight3D" parent="."]
+position = Vector3(3.0, 2.6, -2.2)
+light_color = Color(0.92, 0.92, 0.85, 1)
+light_energy = 0.8
+shadow_enabled = false
+omni_range = 4.5
+
+[node name="Juke_Panel_Practical" type="OmniLight3D" parent="."]
+position = Vector3(4.3, 1.1, -3.0)
+light_color = Color(0.96, 0.6, 0.3, 1)
+light_energy = 0.8
+shadow_enabled = false
+omni_range = 2.8
+
+[node name="Practical_CounterWarm" type="OmniLight3D" parent="."]
+position = Vector3(0.6, 2.2, -4.95)
+light_color = Color(0.98, 0.82, 0.5, 1)
+light_energy = 0.9
+shadow_enabled = false
+omni_range = 4.5
+
+[node name="KitchenDoor_Porthole_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.6, 1.6, -6.75)
+light_color = Color(0.96, 0.9, 0.7, 1)
+light_energy = 0.5
+shadow_enabled = false
+omni_range = 2.2
+
+; from behind the counter's E end, SW over the stools to the booths and the windows
 [node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.8, 1.7, -5)
-rotation = Vector3(-0.178286, 2.7729, 0)
+position = Vector3(3.700, 1.750, -5.900)
+rotation = Vector3(-0.0901, 2.2022, 0.0)
 metadata/fov = 58.0
 
-; rotation C: from the jukebox looking down the length of the counter
+; from the jukebox looking W down the length of the counter
 [node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(3.1, 1.6, -1.7)
-rotation = Vector3(-0.0959401, 1.12701, 0)
+position = Vector3(4.200, 1.600, -3.600)
+rotation = Vector3(-0.0725, 1.3364, 0.0)
 metadata/fov = 56.0
 
-; insert: the pie case on the back counter
+; the pie case on the back-bar
 [node name="shot_insert_pie" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.234, 1.678, -2.914)
-rotation = Vector3(-0.2127, -0.6080, 0.0)
+position = Vector3(1.400, 1.550, -5.700)
+rotation = Vector3(-0.2668, -0.5248, 0.0)
 metadata/fov = 40.0
 
-; insert: the jukebox
+; the jukebox
 [node name="shot_insert_juke" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.2, 1.4, -2.1)
-rotation = Vector3(-0.347614, -0.870903, 0)
+position = Vector3(3.400, 1.450, -2.300)
+rotation = Vector3(-0.2439, -1.0499, 0.0)
 metadata/fov = 42.0
 
-; insert: the food came — Finn ate
+; the food came — Finn ate
 [node name="shot_insert_food" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0, 1.45, -3.65)
-rotation = Vector3(0, 0, 0)
+position = Vector3(1.550, 1.550, -4.050)
+rotation = Vector3(-0.5404, -0.0000, 0.0)
 metadata/fov = 42.0
 
-; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
-; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+; the wall of square photographs over the corner booth (vol1_link_booth)
+[node name="shot_insert_photo" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.900, 1.550, -4.600)
+rotation = Vector3(0.0000, 0.9601, 0.0)
+metadata/fov = 45.0
+
+; the laminated menu at the third stool (vol1_link_menu)
+[node name="shot_insert_menu" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.750, 1.550, -4.200)
+rotation = Vector3(-0.5271, -0.0907, 0.0)
+metadata/fov = 38.0
+
+; out the rain-glazed window: the apron, the pumps (vol1_link_window)
+[node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.100, 1.450, -1.700)
+rotation = Vector3(-0.0817, 3.0671, 0.0)
+metadata/fov = 48.0
+
+; the front door and its bell
+[node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.000, 1.600, -2.600)
+rotation = Vector3(-0.0376, -2.7960, 0.0)
+metadata/fov = 45.0
+
+; the Sasquatch, the crossing sign, the casts
+[node name="shot_insert_sasquatch" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.600, 1.500, -3.000)
+rotation = Vector3(-0.0267, 1.4100, 0.0)
+metadata/fov = 45.0
+
+; the third stool's eyeline: Aud behind the counter, the kitchen door
 [node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.610, 1.612, -2.222)
-rotation = Vector3(-0.2618, -0.7854, 0.0)
+position = Vector3(0.600, 1.450, -3.950)
+rotation = Vector3(0.0000, -0.0000, 0.0)
 metadata/fov = 45.0
 
-; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
-; the far side of the same spot, so two speakers alternate sides
+; behind the counter looking out at the stools and the booths
 [node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.302, 1.612, -4.135)
-rotation = Vector3(-0.2618, 2.3562, 0.0)
+position = Vector3(0.900, 1.550, -5.850)
+rotation = Vector3(-0.1150, 2.9870, 0.0)
 metadata/fov = 45.0
 
-; practicals authored by practical_author.py (2026-09-11):
-; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
-[node name="Fluor_1_Tube_Practical" type="OmniLight3D" parent="."]
-position = Vector3(0.000, 2.520, -3.200)
-light_color = Color(0.920, 0.920, 0.850, 1)
-light_energy = 1.30
-shadow_enabled = false
-omni_range = 4.03

@@ -180,14 +180,14 @@ light_energy = 0.28
 shadow_enabled = false
 
 [node name="Diner_WinGlow_W" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 1.7, -7.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.45, 1.7, -7.7)
 light_color = Color(1.0, 0.8, 0.48, 1)
 light_energy = 1.6
 shadow_enabled = false
 omni_range = 5.0
 
 [node name="Diner_WinGlow_E" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 1.7, -7.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.65, 1.7, -7.7)
 light_color = Color(1.0, 0.8, 0.48, 1)
 light_energy = 1.6
 shadow_enabled = false

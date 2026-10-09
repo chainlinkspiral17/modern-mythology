@@ -39,7 +39,14 @@ pull, a downspout at the diner's west corner. WEAR: two tire tracks
 from the road to the pumps, the oil stain at the island, the drip
 line under the awning's lip, the worn centre of the door step, the
 bench's sit shine, the rust streak at the sign pole's foot.
-Draft 3 targets: reconcile with the interior's plan (see that file);
+DRAFT 3 (2026-10-09, the overnight run). ONE BUILDING with the interior
+(build_missing_link_interior draft 4): the diner is 10 m across (x
+-6.5..3.5) and 10 m deep (the 7 m dining room + the kitchen behind), its
+four front windows are the four booths' windows, the door stays at the
+east end, interior = exterior + (1.5, -8.0). And it is a BIGFOOT diner
+(the user, 2026-10-09): the carved cedar Sasquatch greets by the door,
+the pole sign carries him under the name.
+Draft 4 targets:
 the diner's roofline neon; a second parked car; rain streaks on the
 plexiglass; the puddles as sheets with the sky in them (alpha);
 Deck: the shuttle_bench preset for the wire read against the sky.
@@ -51,6 +58,9 @@ from _props.geometry import clear_scene, make_box, make_cyl, make_lathe, make_tu
 from _props.vehicles import make_car
 from _props.trees import make_conifer
 from _props.detail import make_utility_pole, make_wire_run, make_floor_stain
+from _props.creatures import make_bigfoot
+
+WIN_XS = (-5.4, -3.5, -1.6, 0.3)     # the interior's booth windows, exterior x
 
 # ── Palette (rain dusk) ──
 COL_ASPHALT = (0.16, 0.16, 0.18, 1.0)
@@ -96,7 +106,8 @@ def build_ground():
         make_box(f"Puddle_{i}", (px, py, 0.029), (pw, pd, 0.008), COL_PUDDLE)
     # Grass fringes: south of road, and between apron and treeline
     make_box("Grass_S", (0.0, -2.0, 0.0), (34.0, 4.0, 0.04), COL_GRASS)
-    make_box("Grass_N", (0.0, 14.5, 0.0), (34.0, 5.0, 0.04), COL_GRASS)
+    # (draft 3: the diner runs to y 18; the grass fills round it and on back)
+    make_box("Grass_N", (0.0, 15.5, 0.0), (34.0, 15.0, 0.04), COL_GRASS)
 
 
 def build_gas_pumps():
@@ -121,33 +132,37 @@ def build_gas_pumps():
 
 
 def build_diner():
-    """The diner box: front face at y=8, x ∈ [-4.5, 3.5], flat roof."""
+    """The diner box: front face at y=8, x ∈ [-6.5, 3.5], flat roof, 10 m
+    deep (draft 3: was 8 x 5, a box the interior could not fit in)."""
     # Main volume
-    make_box("Diner_Body", (-0.5, 10.5, 1.7), (8.0, 5.0, 3.4), COL_CLAD)
+    make_box("Diner_Body", (-1.5, 13.0, 1.7), (10.0, 10.0, 3.4), COL_CLAD)
     # Red trim band + parapet cap
-    make_box("Diner_Band", (-0.5, 7.98, 2.95), (8.0, 0.10, 0.5), COL_TRIM)
-    make_box("Diner_Parapet", (-0.5, 10.5, 3.48), (8.2, 5.2, 0.16), COL_CLAD_DK)
-    # Warm window band along the front (proud of the face so it reads)
-    for i, wx in enumerate((-3.4, -1.9, -0.4, 1.1)):
-        make_box(f"Diner_Win_{i}", (wx, 7.955, 1.65), (1.25, 0.06, 1.15), COL_GLOW)   # in the front wall's face (8.00; 2026-09-22: 3 cm off it)
-        make_box(f"Diner_WinFrame_{i}", (wx, 7.975, 1.65), (1.40, 0.05, 1.30), COL_CLAD_DK)
+    make_box("Diner_Band", (-1.5, 7.98, 2.95), (10.0, 0.10, 0.5), COL_TRIM)
+    make_box("Diner_Parapet", (-1.5, 13.0, 3.48), (10.2, 10.2, 0.16), COL_CLAD_DK)
+    # Warm window band along the front: the four booths' windows
+    # (interior x -3.9, -2.0, -0.1, 1.8; sill 0.95, head 2.20)
+    for i, wx in enumerate(WIN_XS):
+        make_box(f"Diner_Win_{i}", (wx, 7.955, 1.575), (1.28, 0.06, 1.13), COL_GLOW)   # in the front wall's face (8.00; 2026-09-22: 3 cm off it)
+        make_box(f"Diner_WinFrame_{i}", (wx, 7.975, 1.575), (1.40, 0.05, 1.25), COL_CLAD_DK)
     # Glazed door, east end of the front, with concrete step
     make_box("Diner_Door", (2.4, 7.94, 1.25), (0.92, 0.08, 2.30), COL_DOOR)
     make_box("Diner_DoorGlass", (2.4, 7.90, 1.55), (0.62, 0.05, 1.20), COL_GLOW)
     make_box("Diner_Step", (2.4, 7.65, 0.09), (1.3, 0.7, 0.18), COL_CLAD_DK)
     # (draft 2: mullions in the windows, a pull on the door, a downspout)
-    for i, wx in enumerate((-3.4, -1.9, -0.4, 1.1)):
+    for i, wx in enumerate(WIN_XS):
         make_box(f"Diner_Mullion_{i}", (wx, 7.915, 1.65), (0.04, 0.02, 1.15), COL_CLAD_DK)
     make_tube("Diner_Door_Pull", [(2.75, 7.88, 0.95), (2.75, 7.88, 1.30)], 0.012, COL_CLAD, segments=6)
-    make_tube("Diner_Downspout", [(-4.55, 8.06, 3.35), (-4.55, 8.06, 0.30), (-4.55, 7.80, 0.12)], 0.04, COL_CLAD_DK, segments=6)
+    make_tube("Diner_Downspout", [(-6.55, 8.06, 3.35), (-6.55, 8.06, 0.30), (-6.55, 7.80, 0.12)], 0.04, COL_CLAD_DK, segments=6)
     # The bell over the door ("unsubtle about your leaving")
     # on the door's top edge. (2026-09-24: this comment once sat mid-call
     # and swallowed the colour — the Blender build died here)
     make_cyl("Door_Bell", (2.4, 7.86, 2.43), 0.05, 0.06, (0.66, 0.52, 0.24, 1.0),
              segments=8)
     # Roof clutter: A/C unit + vent
-    make_box("Diner_AC", (-2.5, 10.8, 3.85), (1.2, 1.0, 0.6), COL_CLAD_DK)
-    make_cyl("Diner_Vent", (1.5, 11.5, 3.83), 0.16, 0.55, COL_POLE, segments=8)   # on the parapet
+    make_box("Diner_AC", (-3.5, 13.0, 3.85), (1.2, 1.0, 0.6), COL_CLAD_DK)
+    make_cyl("Diner_Vent", (1.0, 15.5, 3.83), 0.16, 0.55, COL_POLE, segments=8)   # on the parapet (the kitchen hood)
+    # the carved cedar Sasquatch greeting at the door (interior 2.70, -0.65)
+    make_bigfoot("Greeter", 1.20, 7.35, heading='-Y', h=1.85, carved=True, seed=21)
 
 
 def build_pole_sign():
@@ -159,6 +174,11 @@ def build_pole_sign():
     make_box("Sign_Face_S", (-6.5, 6.44, 4.7), (2.6, 0.10, 1.1), COL_SIGN)
     make_box("Sign_Border", (-6.5, 6.5, 4.7), (2.75, 0.08, 1.25), COL_SIGN_RED)
     # Arrow panel under the main faces, pointing at the diner
+    # the Sasquatch painted beneath the name, both faces ("a creature
+    # halfway between a man and an ape ... with affection")
+    for nm, yy in (("N", 6.615), ("S", 6.385)):
+        make_box(f"Sign_Figure_{nm}", (-5.8, yy, 4.62), (0.24, 0.01, 0.50), (0.24, 0.16, 0.10, 1.0))
+        make_box(f"Sign_Figure_{nm}_Head", (-5.78, yy, 4.93), (0.12, 0.01, 0.12), (0.24, 0.16, 0.10, 1.0))
     make_box("Sign_Arrow", (-5.9, 6.5, 3.85), (1.3, 0.09, 0.4), COL_SIGN_RED)
     make_box("Sign_Arrow_Tip", (-5.15, 6.5, 3.85), (0.28, 0.09, 0.7), COL_SIGN_RED)
 
@@ -224,9 +244,9 @@ def build_backdrop():
     for i in range(12):
         tx = -15.0 + i * 2.8
         h = 5.2 + 1.6 * ((i * 5) % 3)
-        make_conifer(f"Tree_{i}", tx, 16.5 + 0.6 * (i % 2), h, COL_TREE if i % 2 == 0 else COL_TREE_LT, COL_WOODPOLE)
+        make_conifer(f"Tree_{i}", tx, 21.5 + 0.6 * (i % 2), h, COL_TREE if i % 2 == 0 else COL_TREE_LT, COL_WOODPOLE)
     for i in range(10):
-        make_conifer(f"Tree_Back_{i}", -13.6 + i * 3.1, 19.6 + 0.5 * (i % 3), 6.5 + 1.2 * ((i * 7) % 3), COL_TREE, COL_WOODPOLE)
+        make_conifer(f"Tree_Back_{i}", -13.6 + i * 3.1, 24.6 + 0.5 * (i % 3), 6.5 + 1.2 * ((i * 7) % 3), COL_TREE, COL_WOODPOLE)
     # Low hill band + dusk sky
     # (occluder slab deleted 2026-08-04 — a paper-thin wall 20m out
     # hiding the real receding bands built behind it)

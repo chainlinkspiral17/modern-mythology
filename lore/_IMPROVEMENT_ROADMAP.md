@@ -3834,6 +3834,53 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-09 · overnight run, pass 11: THE MISSING LINK, DRAFT 4 (one building,
+built big, BIGFOOT).** CANON (user, 2026-10-09): **the Missing Link diner
+is Bigfoot-themed.** The creature "halfway between a man and an ape" on
+the enamel sign is a Sasquatch.
+
+Draft 3's own first target was to reconcile the two builders: the
+interior's door was centred, the exterior's at the east end, and the
+exterior body was 8 m to the interior's 7. They are one building now:
+- **Plan.** The interior is 10 x 7 m. The exterior body runs
+  x -6.5..3.5 and 10 m deep, with the kitchen behind. The door is at the
+  east end, and interior = exterior + (1.5, -8.0); the interior's
+  outside props are placed from the exterior's coordinates.
+- **Booths.** Four front booths sit under four windows, which are the
+  exterior's four.
+- **The corner booth** (vol1 hub; vol7's "back booth") is in the NW,
+  under the wall of square photographs, with the polaroid taped among
+  them.
+- **Counter.** It has five stools; the third points at the kitchen door
+  (vol1_link_counter). The laminated menu stands at the third stool, and
+  the second mug, a foot to the left, is empty. The back-bar runs either
+  side of the door: coffee and register on one side, pie case and shake
+  mixer on the other.
+- **Jukebox** on the E wall by the door.
+- **Bigfoot.** `_props/creatures.make_bigfoot` (shaggy or chainsaw-carved
+  cedar) gives:
+  - a life-size Sasquatch on the W wall under a SASQUATCH CROSSING sign;
+  - plaster footprint casts in a shadow box;
+  - the silhouette over the kitchen door;
+  - the menu-board logo;
+  - a research-fund tip jar;
+  - the carved greeter by the door outside, seen from the lot, the
+    bench and the booths;
+  - the figure on both faces of the pole sign.
+- **Surfaces.** Knotty-pine wainscot and a chrome rail; a checker aisle.
+- **Coverage.** New inserts: the photo wall, the menu, the window, the
+  door, the Sasquatch.
+
+`furniture_grammar` now treats a creature's own overlapping blobs as
+anatomy, not a clip.
+
+Draft 5 targets:
+- the kitchen glimpse;
+- rain on the glass;
+- the seven photographs as their subjects;
+- the young man at the bench;
+- Deck framing.
+
 **2026-10-09 · overnight run, pass 10: HANS'S BAKERY, DRAFT 5 (build big +
 the fill).** Vol7's table (8 scenes) had a 13-seat communal table in a
 6 x 5 m back kitchen, alongside a deck oven, a proofer, a counter, a prep

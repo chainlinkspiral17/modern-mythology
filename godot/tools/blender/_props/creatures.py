@@ -256,3 +256,52 @@ def make_cat(prefix, x, y, z, heading='-Y', pose='sitting', scale=1.0, coat=CAT_
                        0.022 * s, 0.003 * s, 0.05 * s, dark, segments=5)
         make_cyl(f"{prefix}_Eye_{sd:+d}", P(hf + 0.046 * s, sd * 0.024 * s, hz + 0.012 * s),
                  0.009 * s, 0.005 * s, PET_EYE, segments=6, axis=AS)
+
+
+# ════════════════════════════════════════════════════════════════
+# BIGFOOT (2026-10-09 · the Missing Link is a Bigfoot diner — user).
+# The Pacific-northwest roadside Sasquatch: mid-stride-still, long
+# arms hanging past the hips, a sagittal crest, big flat feet. Built
+# standing on z (the floor or a base), every part overlapping the one
+# it hangs from. carved=True is the chainsaw-carved cedar greeter: a
+# warmer wood tone on a round-sawn stump base, the "fur" in facets.
+# ════════════════════════════════════════════════════════════════
+BIGFOOT_FUR = (0.30, 0.21, 0.15, 1.0)
+BIGFOOT_FACE = (0.22, 0.16, 0.12, 1.0)
+CEDAR_CARVED = (0.58, 0.40, 0.26, 1.0)
+CEDAR_STUMP = (0.46, 0.32, 0.22, 1.0)
+
+
+def make_bigfoot(prefix, x, y, z=0.0, heading='-Y', h=2.1, carved=False, seed=3):
+    """A standing Sasquatch `h` tall facing `heading` (its feet at z).
+    Returns the top z of the head."""
+    if carved:
+        make_cyl(f"{prefix}_Stump", (x, y, z + 0.09), 0.36, 0.18, CEDAR_STUMP, segments=14)
+        z += 0.18
+    fur = CEDAR_CARVED if carved else BIGFOOT_FUR
+    face = CEDAR_STUMP if carved else BIGFOOT_FACE
+    P, S, ax_f, ax_s = _frame(x, y, z, heading)
+    s = h / 2.1
+    rough = 0.16 if carved else 0.34          # chainsaw facets vs shag
+    for side, tag in ((-1, "L"), (1, "R")):
+        # big flat feet, a step apart (one a little forward)
+        make_box(f"{prefix}_Foot_{tag}", P(0.06 + (0.05 if side > 0 else 0.0), side * 0.15 * s, 0.035 * s), S(0.36 * s, 0.15 * s, 0.07 * s), face)
+        make_taper_cyl(f"{prefix}_Leg_{tag}", P(0.03 + (0.03 if side > 0 else 0.0), side * 0.15 * s, 0.49 * s), 0.10 * s, 0.13 * s, 0.86 * s, fur, segments=8)   # centre-anchored: 0.06..0.92
+        make_blob(f"{prefix}_Thigh_{tag}", P(0.03, side * 0.15 * s, 0.72 * s), 0.17 * s, fur, noise=rough, seed=seed + 20 + side, squash=1.5)
+        make_blob(f"{prefix}_Calf_{tag}", P(0.0, side * 0.15 * s, 0.32 * s), 0.13 * s, fur, noise=rough, seed=seed + 23 + side, squash=1.6)
+        # long arms hanging past the hips from sloped shoulders, a little forward
+        make_taper_cyl(f"{prefix}_Arm_{tag}", P(0.08 * s, side * 0.33 * s, 1.08 * s), 0.07 * s, 0.10 * s, 0.82 * s, fur, segments=8)   # shoulder 1.49 to wrist 0.67
+        for k, zz in enumerate((1.30, 0.98)):
+            make_blob(f"{prefix}_ArmFur_{tag}_{k}", P(0.08 * s, side * 0.34 * s, zz * s), 0.11 * s, fur, noise=rough, seed=seed + 30 + k + side, squash=1.7)
+        make_blob(f"{prefix}_Hand_{tag}", P(0.10 * s, side * 0.34 * s, 0.64 * s), 0.09 * s, face, noise=0.18, seed=seed + (1 if side > 0 else 2), squash=1.3)
+        make_blob(f"{prefix}_Shoulder_{tag}", P(0.03 * s, side * 0.24 * s, 1.46 * s), 0.16 * s, fur, noise=rough, seed=seed + 5 + side, squash=0.8)
+    make_blob(f"{prefix}_Hips", P(0.0, 0.0, 0.92 * s), 0.27 * s, fur, noise=rough, seed=seed + 7, squash=0.8)
+    make_blob(f"{prefix}_Belly", P(0.06 * s, 0.0, 1.12 * s), 0.27 * s, fur, noise=rough, seed=seed + 12, squash=1.0)
+    make_blob(f"{prefix}_Torso", P(-0.02 * s, 0.0, 1.32 * s), 0.33 * s, fur, noise=rough, seed=seed + 8, squash=1.1)
+    # the head hunched forward and down on a thick neck, a crest, the face
+    make_blob(f"{prefix}_Neck", P(0.06 * s, 0.0, 1.58 * s), 0.14 * s, fur, noise=rough, seed=seed + 13, squash=1.0)
+    make_blob(f"{prefix}_Head", P(0.12 * s, 0.0, 1.72 * s), 0.15 * s, fur, noise=rough * 0.8, seed=seed + 9, squash=1.15)
+    make_blob(f"{prefix}_Crest", P(0.08 * s, 0.0, 1.86 * s), 0.08 * s, fur, noise=0.12, seed=seed + 10, squash=1.4)
+    make_blob(f"{prefix}_Face", P(0.22 * s, 0.0, 1.70 * s), 0.09 * s, face, noise=0.10, seed=seed + 14, squash=1.1)
+    make_box(f"{prefix}_Brow", P(0.25 * s, 0.0, 1.77 * s), S(0.05 * s, 0.17 * s, 0.035 * s), fur)
+    return z + 2.0 * s

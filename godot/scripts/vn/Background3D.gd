@@ -1787,16 +1787,17 @@ const CAMERA_PRESETS := {
 	"missing_link_interior": {
 		"scene": "res://scenes/locales/missing_link_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/missing_link_interior.glb",
-		# Roadside bus-depot diner 7×6 (godot x∈[-3.5,3.5], z∈[0,-6], ceil
-		# 2.6). Lunch counter runs E-W (godot z≈-4.3, 5.4m wide) with five
-		# red-vinyl stools, a stainless back-counter + coffee station + pie
-		# case + pass-through door on the N wall, four window booths along
-		# the S front windows (godot z≈-0.95), Wurlitzer jukebox SE corner
-		# (godot 3.15,-2.9). Camera SW just inside the door looking NE along
-		# the counter to the back-bar; jukebox frame-right, booths in the fore.
-		"camera_origin": Vector3(-2.6, 1.65, -0.9),
-		"camera_rotation": Vector3(-0.05, deg_to_rad(-40.5), 0.0),
-		"fov": 62.0,
+		# DRAFT 4 (2026-10-09): the Bigfoot diner, 10 x 7 (godot x in [-5,5],
+		# z in [0,-7], ceil 2.8), one building with the exterior (interior =
+		# exterior + (1.5, -8)). Door at the front's EAST end (godot 3.9,0);
+		# four booths under four front windows; the counter (godot z -4.95)
+		# with five stools facing the kitchen door; the corner booth + the
+		# photo wall NW; the Sasquatch on the W wall; the jukebox on the E
+		# wall by the door. Camera just inside the door looking NW across
+		# the room: "You step in out of the rain."
+		"camera_origin": Vector3(3.60, 1.65, -0.90),
+		"camera_rotation": Vector3(-0.089, deg_to_rad(50.0), 0.0),
+		"fov": 64.0,
 		"suppress_input": true,
 	},
 	"cabin_interior": {
