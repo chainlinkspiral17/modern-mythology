@@ -310,8 +310,8 @@ def build_hero_props():
     # Back-office doorway + the one-way mirror beside it (N wall)
     from _props.structure import make_frame_ring
     make_frame_ring("Office_Doorframe", (3.6, ROOM_D - 0.13, 1.05), (1.10, 0.06, 2.12), wood, bar=0.075)
-    make_box("OneWay_Frame", (1.6, 7.87, 1.70), (1.30, 0.06, 1.00), (0.30, 0.26, 0.22, 1.0))
-    make_box("OneWay_Mirror", (1.6, 7.835, 1.70), (1.20, 0.04, 0.90), (0.46, 0.52, 0.56, 1.0))
+    make_box("OneWay_Frame", (2.05, 7.87, 1.70), (1.30, 0.06, 1.00), (0.30, 0.26, 0.22, 1.0))   # x = the office's mirror (2026-10-09)
+    make_box("OneWay_Mirror", (2.05, 7.835, 1.70), (1.20, 0.04, 0.90), (0.46, 0.52, 0.56, 1.0))
     # The small bench by the front window (Rick, 2018, for waiting kids)
     make_chamfer_box("Window_Bench", (-3.0, 1.05, 0.42), (1.60, 0.42, 0.06), wood)
     for lx in (-3.65, -2.35):
@@ -465,46 +465,8 @@ def build_draft5_2026_10():
     from _props.structure import make_wall as _mw
     wood = (0.42, 0.30, 0.18, 1.0)
     off_wall = (0.48, 0.44, 0.40, 1.0)
-    # the office: x 2.2 .. 5.0, y ROOM_D+0.1 .. 10.6
-    ox0, ox1, oy0, oy1 = 2.2, 5.0, ROOM_D + 0.1, 10.6
-    make_box("Office_Floor", ((ox0 + ox1) / 2.0, (oy0 + oy1) / 2.0, -0.01), (ox1 - ox0, oy1 - oy0, 0.02), (0.30, 0.27, 0.24, 1.0))
-    make_box("Office_Ceil", ((ox0 + ox1) / 2.0, (oy0 + oy1) / 2.0, CEIL + 0.02), (ox1 - ox0, oy1 - oy0, 0.04), (0.56, 0.54, 0.50, 1.0))
-    make_box("Office_Wall_W", (ox0 - 0.10, (oy0 + oy1) / 2.0, CEIL / 2.0), (0.20, oy1 - oy0, CEIL), off_wall)
-    make_box("Office_Wall_E", (ox1 + 0.10, (oy0 + oy1) / 2.0, CEIL / 2.0), (0.20, oy1 - oy0, CEIL), off_wall)
-    make_box("Office_Wall_N", ((ox0 + ox1) / 2.0, oy1 + 0.10, CEIL / 2.0), (ox1 - ox0 + 0.4, 0.20, CEIL), off_wall)
-    # the leaf, open 90 degrees against the office's east side of the jamb
-    make_box("Office_Door_Leaf", (4.05, oy0 + 0.46, 1.02), (0.04, 0.90, 2.02), (0.36, 0.28, 0.22, 1.0))
-    make_cyl("Office_Door_Knob", (4.01, oy0 + 0.80, 0.98), 0.025, 0.05, (0.70, 0.62, 0.40, 1.0), axis='X', segments=8)
-    # the file cabinet on the N wall, straight through the door, and THE shelf above it
-    fx, fy = 3.6, oy1 - 0.30
-    make_chamfer_box("Office_FileCabinet", (fx, fy, 0.66), (0.46, 0.60, 1.32), (0.44, 0.46, 0.44, 1.0), chamfer=0.01)
-    for di in range(4):
-        make_box(f"Office_FileCabinet_Drawer_{di}", (fx, fy - 0.305, 0.18 + di * 0.32), (0.40, 0.012, 0.28), (0.50, 0.52, 0.50, 1.0))
-        make_box(f"Office_FileCabinet_Pull_{di}", (fx, fy - 0.318, 0.27 + di * 0.32), (0.12, 0.014, 0.02), (0.70, 0.70, 0.68, 1.0))
-    make_box("Office_Shelf_Above_Cabinet", (fx, oy1 - 0.12, 1.72), (0.80, 0.24, 0.03), wood)
-    for bi, bx in enumerate((fx - 0.30, fx + 0.30)):
-        make_box(f"Office_Shelf_Bracket_{bi}", (bx, oy1 - 0.08, 1.64), (0.03, 0.16, 0.14), (0.20, 0.20, 0.22, 1.0))
-    # what lives on it: a run of trade paperbacks, a coffee can of pens, the
-    # dust rectangle where the Speak & Spell sat until Maya moved it
-    for bi in range(5):
-        make_box(f"Office_Shelf_Book_{bi}", (fx + 0.08 + bi * 0.05, oy1 - 0.13, 1.84), (0.04, 0.18, 0.21),
-                 [(0.62, 0.24, 0.24, 1.0), (0.24, 0.42, 0.52, 1.0), (0.72, 0.62, 0.30, 1.0)][bi % 3])
-    make_cyl("Office_Shelf_PenCan", (fx - 0.28, oy1 - 0.12, 1.79), 0.05, 0.11, (0.60, 0.20, 0.16, 1.0), segments=10)
-    make_box("Office_Shelf_DustGhost", (fx - 0.10, oy1 - 0.12, 1.736), (0.25, 0.19, 0.002), (0.50, 0.38, 0.24, 1.0))
-    # the desk on the W side, its lamp lit, the chair pulled out
-    make_table("Office_Desk", ox0 + 0.45, 9.30, w=0.70, d=1.30, h=0.75, wood=wood, top_col=wood)
-    make_lathe("Office_Lamp", (ox0 + 0.40, 9.75, 0.76), [(0.08, 0.0), (0.08, 0.02), (0.015, 0.03), (0.015, 0.36), (0.12, 0.36), (0.07, 0.48), (0.0, 0.48)],
-               (0.20, 0.36, 0.26, 1.0), segments=12)
-    make_box("Office_Desk_Papers", (ox0 + 0.45, 9.20, 0.758), (0.30, 0.40, 0.012), (0.90, 0.88, 0.82, 1.0))
-    make_box("Office_Desk_Folder", (ox0 + 0.50, 8.85, 0.762), (0.24, 0.32, 0.02), (0.82, 0.70, 0.36, 1.0))
-    from _props.furniture import make_chair
-    make_chair("Office_Chair", ox0 + 1.15, 9.20, yaw=-1.5708, wood=(0.30, 0.30, 0.32, 1.0), w=0.46)
-    # Rick's couch on the E wall (the Saturday nap)
-    cx2, cy2, L = ox1 - 0.45, 9.95, 1.20   # a loveseat, north of the open leaf
-    make_chamfer_box("Office_Couch_Base", (cx2, cy2, 0.20), (0.80, L, 0.40), (0.36, 0.30, 0.26, 1.0), chamfer=0.04)
-    make_chamfer_box("Office_Couch_Back", (ox1 - 0.12, cy2, 0.62), (0.16, L, 0.44), (0.32, 0.26, 0.22, 1.0), chamfer=0.04)
-    make_chamfer_box("Office_Couch_Cushion", (cx2 - 0.08, cy2, 0.45), (0.60, L - 0.10, 0.10), (0.40, 0.34, 0.28, 1.0), chamfer=0.035)
-    make_chamfer_box("Office_Couch_Blanket", (cx2 - 0.06, cy2 + 0.25, 0.515), (0.54, 0.50, 0.03), (0.30, 0.38, 0.52, 1.0), chamfer=0.01)
+    # (the back office itself is build_back_office_2026_10: the real one,
+    # not a glimpse — 2026-10-09)
     # ── the staff side ──
     # the employee cubby east of the office door, a bag in one hole
     kx, ky = 4.45, ROOM_D - 0.10 - 0.18
@@ -527,6 +489,36 @@ def build_draft5_2026_10():
         for ti in range(3):
             make_box(f"Bin_{ji}_Talker_{ti}", (row_x - row_w / 3.0 + ti * row_w / 3.0, ay - 0.252, 0.66), (0.16, 0.004, 0.08),
                      [(0.94, 0.90, 0.78, 1.0), (0.96, 0.84, 0.40, 1.0), (0.86, 0.94, 0.86, 1.0)][ti])
+
+
+def build_back_office_2026_10():
+    """THE BACK OFFICE, ONE SET WITH THE SHOP (2026-10-09). The office was
+    two things: a separate 4.6 x 5.2 set (cosmic_comics_back_office, the
+    preset five vol6 chapters play in) and a 2.8 m glimpse built behind
+    this shop's doorway. They disagreed: different furniture, the one-way
+    mirror on opposite sides of the door, and from the office set's
+    doorway no shop at all ("Maya, at the back-office door, watches Curtis
+    handle the first hour and a half from her doorway"). Now the office
+    set's own builder functions run here, translated so its doorway IS
+    this doorway (office (x, y) -> shop (x + 3.6, y + 8.0)) and prefixed
+    BO_; the cosmic_comics_back_office preset loads this scene. One
+    office, seen from both sides."""
+    import build_cosmic_comics_back_office as BO
+    from _props.plan import shifted
+    DX, DY = 3.6, ROOM_D
+    off_wall = (0.48, 0.44, 0.40, 1.0)
+    W, D = BO.ROOM_W, BO.ROOM_D
+    x0, x1, y1 = DX - W / 2.0, DX + W / 2.0, DY + D
+    # the office's shell (its S wall is this shop's N wall)
+    make_box("BO_Floor", (DX, DY + D / 2.0 + 0.05, -0.01), (W + 0.2, D - 0.1, 0.02), BO.COL_FLOOR)
+    # the office's own 2.6 m ceiling (its bulb, vent and detector hang from it)
+    make_box("BO_Ceil", (DX, DY + D / 2.0, BO.CEIL + 0.02), (W + 0.4, D, 0.04), (0.56, 0.54, 0.50, 1.0))
+    make_wall("BO_Wall_W", (x0, DY + D / 2.0 + 0.05, 0), length=D - 0.1, height=CEIL, axis='Y', palette=BO.PAL_WALL, baseboard_face_sign=+1)
+    make_wall("BO_Wall_E", (x1, DY + D / 2.0 + 0.05, 0), length=D - 0.1, height=CEIL, axis='Y', palette=BO.PAL_WALL, baseboard_face_sign=-1)
+    make_wall("BO_Wall_N", (DX, y1, 0), length=W + 0.4, height=CEIL, axis='X', palette=BO.PAL_WALL, baseboard_face_sign=-1)
+    with shifted(vars(BO), DX, DY, prefix="BO_", extra=("make_hvac_vent",)):
+        BO.build_desk(); BO.build_filing(); BO.build_cal(); BO.build_bulb(); BO.build_ceiling_infra()
+        BO.build_backoffice_detail(); BO.build_hero_props(); BO.build_hero_props_2026_09(); BO.build_draft4_2026_09()
 
 
 def build_window_east_2026_10():
@@ -567,6 +559,7 @@ def main():
     build_hero_props_2026_09()
     build_draft4_2026_09()
     build_draft5_2026_10()
+    build_back_office_2026_10()
     build_window_east_2026_10()
     export_glb(out)
 

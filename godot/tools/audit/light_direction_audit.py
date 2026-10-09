@@ -44,7 +44,8 @@ def main():
     for f in sorted(glob.glob(os.path.join(SCENES, "**", "*.tscn"), recursive=True)):
         for m in NODE.finditer(open(f).read()):
             name, body = m.group(1), m.group(2)
-            role = "key" if KEYLIKE.search(name) else "back" if BACKLIKE.search(name) else None
+            base = name.split("__")[0]   # "__cosmic_comics_back_office" is a preset, not a back light (2026-10-09)
+            role = "key" if KEYLIKE.search(base) else "back" if BACKLIKE.search(base) else None
             if role is None:
                 continue
             total += 1

@@ -187,8 +187,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09, 1.36, -2.59)
 rotation = Vector3(-0.4644, -0.9133, 0.0)
 
 [node name="shot_insert_mirror" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.92, 2.10, -0.97)
-rotation = Vector3(-0.3797, -2.6422, 0.0)
+position = Vector3(-0.500, 1.780, -1.200)
+rotation = Vector3(-0.0538, 2.3562, 0.0)
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 

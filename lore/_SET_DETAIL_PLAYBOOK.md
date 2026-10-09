@@ -84,6 +84,23 @@ henderson) got there by accumulating exactly these layers.
 
 ## Recent lessons
 
+### 2026-10-09 · one room, two sets: build one INSIDE the other from its own builder
+
+- Cosmic's back office was a separate set and also a glimpse behind the
+  shop's doorway, and the two disagreed (furniture, mirror side, no shop
+  through the office door).
+- The fix is not a third copy. The shop builder imports the office
+  builder and runs its functions inside
+  `plan.shifted(vars(module), dx, dy, prefix="XX_")`. The doorways align,
+  the names cannot collide, and the office stays authored in one place.
+  The office preset then loads the bigger scene, and its markers carry
+  over with the `__preset` suffix.
+- Verify by diffing the standalone set's parts against the prefixed copy:
+  every one present and shifted by exactly (dx, dy).
+- Audits that read a marker's or a light's NAME must strip `__preset`
+  first. "Fill_Desk__cosmic_comics_back_office" was classed as a back
+  light because of "back" in the suffix.
+
 ### 2026-10-09 · the wrong PERSON: read the chapters that load the preset, not the builder
 
 - Two vol6 bedrooms had been dressed for people who do not sleep in them,

@@ -686,14 +686,15 @@ const CAMERA_PRESETS := {
 		"suppress_input": true,
 	},
 	"cosmic_comics_back_office": {
-		"scene": "res://scenes/locales/cosmic_comics_back_office.tscn",
-		"requires_glb": "res://assets/3d/locales/cosmic_comics_back_office.glb",
-		# SURVEYED 2026-07-12: the old vantage sat at blender y=-0.5,
-		# OUTSIDE the south door, 0.4m from the door lintel. Now just
-		# inside the door looking N across the room: filing cabinets
-		# at frame-left, Maya's desk + monitor at the far (north) end,
-		# long-boxes down the east wall. Eye 1.70 (ceiling 2.6).
-		"camera_origin": Vector3(1.5, 1.60, -0.6),
+		"scene": "res://scenes/locales/cosmic_comics_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/cosmic_comics_interior.glb",
+		# ONE SET WITH THE SHOP (2026-10-09): the office is built behind the
+		# shop's back-office doorway (godot x 1.3..5.9, z -8.0..-13.2) from the
+		# office builder's own functions (BO_ parts); its markers + rig are
+		# the `__cosmic_comics_back_office` ones in the shop scene. Camera
+		# just inside the doorway looking NW across the office: filing
+		# cabinets frame-left, the desk + monitor at the N end.
+		"camera_origin": Vector3(5.10, 1.60, -8.60),
 		"camera_rotation": Vector3(-0.05, deg_to_rad(43.7), 0.0),
 		"fov": 60.0,
 		"suppress_input": true,

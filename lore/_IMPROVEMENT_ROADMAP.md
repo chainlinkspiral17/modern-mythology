@@ -3834,6 +3834,41 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-09 · overnight run, pass 16: COSMIC'S BACK OFFICE, ONE SET WITH THE
+SHOP.** The office existed twice:
+- the 4.6 x 5.2 m `cosmic_comics_back_office` set that five vol6 chapters
+  play in;
+- a 2.8 m glimpse built behind the shop's cut doorway.
+
+They disagreed: different furniture, and the one-way mirror on opposite
+sides of the door. From the office set's doorway there was no shop at
+all, yet ch12 has "Maya, at the back-office door, watches Curtis handle
+the first hour and a half from her doorway". Now:
+- **One builder.** The shop builder runs the office builder's OWN
+  functions inside `plan.shifted(vars(BO), 3.6, 8.0, prefix="BO_")`, so
+  the office's doorway IS the shop's. A diff confirmed all 242 office
+  parts landed shifted by exactly (3.6, 8.0) with nothing unprefixed. The
+  glimpse is retired.
+- **The office set** gets the shop's 0.95 m doorway with the leaf open on
+  the E jamb, and the one-way mirror moves to the WEST of the door,
+  where the shop has it.
+- **The preset** loads the shop scene. The office set's 17 markers and
+  its rig were carried over with a `__cosmic_comics_back_office` suffix;
+  its two practicals sit on the BO_ fixtures and are lit from both
+  rooms.
+- **Audits.** `plan.shifted` gains `prefix=`.
+  `vantage_obstruction_audit --markers` and `light_direction_audit` now
+  strip a `__preset` suffix before reading a subject or a role: "back"
+  in "_back_office" had made a fill light into a back light.
+
+The old office scene is unused now; its builder stays as the office's
+source.
+
+Draft targets:
+- Rick's couch in the office (the Saturday nap);
+- the preset vantage off the open leaf;
+- the service door's alley.
+
 **2026-10-09 · overnight run, pass 15: THE KOWALSKI KITCHEN, DRAFT 5 (build big
 + the family room).** A 6 x 5 m room held the kitchen run, the table, the
 fridge, a couch a chair-width from the table, a TV on the kitchen wall

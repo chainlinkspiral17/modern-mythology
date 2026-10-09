@@ -341,7 +341,11 @@ def markers_pass(only, show_all):
             inside = inside_any(o_b, boxes)
             st = frame_stats(o_b, rot[0], rot[1], fov, boxes)
             why = []
-            cm = re.match(r"shot_(insert|closeup)_(\w+)$", name)
+            # a __preset suffix is not the subject (2026-10-09) — stripped for
+            # INSERTS only: a suffixed closeup frames a person ("joanna"),
+            # and her cat's tail is not her
+            base = name.split("__")[0] if name.startswith("shot_insert_") else name
+            cm = re.match(r"shot_(insert|closeup)_(\w+)$", base)
             hits = M.matches_for(cm.group(2), name_geo) if cm else []
             if hits:
                 # A SUBJECT marker is judged by the cinematographer's
