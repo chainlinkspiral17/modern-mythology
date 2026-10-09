@@ -633,14 +633,10 @@ const CAMERA_PRESETS := {
 	"centro_break_room": {
 		"scene": "res://scenes/locales/centro_break_room.tscn",
 		"requires_glb": "res://assets/3d/locales/centro_break_room.glb",
-		# Employee break room 5×4 (godot x∈[-2.5,2.5], z∈[0,-4], ceil 2.6).
-		# Round pedestal table centre (godot 0,-2), vending machine E
-		# (godot 2.2,-3), galley kitchenette + sink along the W wall,
-		# fridge NW corner, bulletin board N wall. Camera in the SE
-		# quadrant just inside the door looking NW across the table toward
-		# the kitchenette — table, vending (right), board all in frame.
-		"camera_origin": Vector3(1.7, 1.58, -0.7),
-		"camera_rotation": Vector3(-0.05, deg_to_rad(52.8), 0.0),
+		# DRAFT 3 (2026-10-09): 7.2 x 5.6; camera in the corridor doorway
+		# looking N over the crew table to Doug's chair and the kitchenette.
+		"camera_origin": Vector3(0.60, 1.62, -0.65),
+		"camera_rotation": Vector3(-0.162, deg_to_rad(20.0), 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},

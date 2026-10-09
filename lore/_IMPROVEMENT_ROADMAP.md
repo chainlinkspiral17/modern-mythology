@@ -3834,6 +3834,28 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-09 · overnight run, pass 17: THE CENTRO BREAK ROOM, DRAFT 3.** The
+night crew's room (vol6 ch18/ch22) was 5.6 x 4.6 m with TWO tables in one
+spot: the hero pass "squared the round table into a card table" by
+building a card table over it and never retiring the round one. The dock
+door sat in the break room's own wall; the prose has "BT's footsteps
+cross the break-room corridor, hit the dock". Now 7.2 x 5.6 m:
+- **One crew table for six.** A folding table with mismatched chairs (kit
+  chairs and two plastic stackers), Marisol's thermos, Russell's
+  Express-News.
+- **DOUG'S CHAIR "against the back wall"**, his thermos at its feet and
+  the Karamazov on the floor beside it.
+- **Kitchenette.** The radio on a bracket shelf, keyed to the microwave.
+- **Lockers** on the E wall, and the time clock with its card rack.
+- **The doorway BT stands in**, open on the corridor, with the dock door
+  at its E end (push bar, wire glass, EXIT sign).
+- **Markers.** New `closeup_doug` and `closeup_bt`; the inserts re-aimed.
+
+Draft 4 targets:
+- names on the lockers;
+- the dock door lit by the sodium lamp through its wire glass;
+- Deck framing.
+
 **2026-10-09 · overnight run, pass 16: COSMIC'S BACK OFFICE, ONE SET WITH THE
 SHOP.** The office existed twice:
 - the 4.6 x 5.2 m `cosmic_comics_back_office` set that five vol6 chapters
