@@ -50,7 +50,7 @@ COLS, ROWS = 9, 3
 # its feet over the water and the planks fill the bottom of frame.
 # (2026-10-04: miriam_subaru — vol 5's back-seat camera looks through
 # the gap between the front seats; the seatbacks frame it on purpose.)
-DELIBERATE = {"vehicle_cab", "vehicle_cab_rear", "lake_palestine_dock", "miriam_subaru"}
+DELIBERATE = {"vehicle_cab", "vehicle_cab_rear", "vehicle_cab_altima", "lake_palestine_dock", "miriam_subaru"}
 NEAR_M, NEAR_FRAC = 1.0, 0.30
 WALL_M, WALL_FRAC = 2.6, 0.45
 # EMPTY (2026-09-07 · the diner's first shot was a yellow field with a

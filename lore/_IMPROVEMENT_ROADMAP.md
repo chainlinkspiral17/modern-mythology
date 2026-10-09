@@ -3834,6 +3834,37 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-09 · overnight run, pass 21: THE CAB, DRAFT 3 (the wrong VEHICLE:
+BT's Altima).** `vehicle_cab` is "one cab for every vehicle": Ben's green
+crew-cab pickup. But ch16, a 10.6k-character chapter set entirely in the
+car, is in BT's "2017, beige" Altima ("BT, at the wheel ... The car is the
+space BT gets to set the terms of"). Its El Rancho spread (the flauta box,
+the cup, the leaking El Diablito, the cradle phone) was dressed into Ben's
+pickup.
+- **The Altima.** It now parks in the same turnout, east of the truck
+  and nose to the road, with the picnic table off its left rear ("Eat in
+  the car, eat at the table?"). It has a sedan body: long low hood,
+  trunk deck, fascia, wheels.
+- **Its cab.** The cab is the truck's cab run through `plan.shifted` 14 cm
+  lower and in its own colours. `shifted` gains `dz` (centre-first and path
+  parts only; the default 0 leaves every other builder unchanged).
+- **The spread.** It moved into the Altima; the truck keeps Finn's duffel
+  (vol7).
+- **Preset and routing.** New preset `vehicle_cab_altima`; ch16 routes to
+  it. Its inserts (cup, flautas, packet, phone) and closeups (BT, Diego)
+  are `__vehicle_cab_altima` markers, with the closeups outside the
+  fenders the way the truck's are. The truck's El Rancho inserts are
+  retired.
+- **The rig.** The Altima's dome, phone and radio practicals are
+  per-preset.
+
+Draft 4 targets:
+- the Civic (ch19/ch20) still renders in the pickup;
+- the sedan's raked glass;
+- Finn's truck (vol7) is not Ben's green one;
+- the night rig;
+- ch4's rain.
+
 **2026-10-09 · overnight run, pass 20: THE SCHOOL FIELD, DRAFT 5 (the home
 stands are behind the home bench).** In vol6 ch22 Eileen sits "Third row,
 behind the home bench". Drafts 1-4 of `school_field_evening` had the only

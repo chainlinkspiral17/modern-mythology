@@ -193,6 +193,28 @@ light_energy = 0.25
 omni_range = 0.7
 shadow_enabled = false
 
+; the Altima's practicals (stripped from the set's other presets)
+[node name="Dome_Light__vehicle_cab_altima" type="OmniLight3D" parent="."]
+position = Vector3(9.500, 1.480, -0.200)
+light_color = Color(1.00, 0.90, 0.70, 1)
+light_energy = 0.45
+omni_range = 2.20
+shadow_enabled = false
+
+[node name="Phone_Glow__vehicle_cab_altima" type="OmniLight3D" parent="."]
+position = Vector3(9.720, 1.120, -1.500)
+light_color = Color(0.70, 0.82, 1.00, 1)
+light_energy = 0.35
+omni_range = 0.90
+shadow_enabled = false
+
+[node name="Radio_Glow__vehicle_cab_altima" type="OmniLight3D" parent="."]
+position = Vector3(9.540, 0.780, -1.380)
+light_color = Color(1.00, 0.72, 0.36, 1)
+light_energy = 0.25
+omni_range = 0.70
+shadow_enabled = false
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]
@@ -327,24 +349,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 1.05, -0.45)
 rotation = Vector3(0, 0, 0)
 metadata/fov = 42.0
 
-; insert: the El Diablito packet on the driver's seat, leaking slowly
-[node name="shot_insert_packet" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 1.25, 0.15)
-rotation = Vector3(-0.1620, -0.0156, 0.0)
-metadata/fov = 42.0
-
-; insert: the fountain cup in the holder — BT looks at the cup
-[node name="shot_insert_cup" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.218, 1.140, 0.566)
-rotation = Vector3(-0.2618, -0.2618, 0.0)
-metadata/fov = 42.0
-
-; insert: the flauta box open on the center console
-[node name="shot_insert_flautas" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.248, 1.045, 0.684)
-rotation = Vector3(-0.2618, 0.2618, 0.0)
-metadata/fov = 42.0
-
 ; insert: Claire's white sedan at the turnout
 [node name="shot_insert_sedan" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0, 1.4, 6.0)
@@ -398,3 +402,45 @@ metadata/fov = 45.0
 position = Vector3(4.711, 1.250, 2.936)
 rotation = Vector3(0.0000, -2.0944, 0.0)
 metadata/fov = 45.0
+
+; closeup: BT at the wheel, through the windshield's driver side from off the left fender
+[node name="shot_closeup_person__vehicle_cab_altima" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(7.950, 1.210, -2.250)
+rotation = Vector3(-0.0720, -2.5269, 0.0)
+metadata/fov = 45.0
+
+; closeup: BT (the same frame, named for the cue)
+[node name="shot_closeup_bt__vehicle_cab_altima" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(7.950, 1.210, -2.250)
+rotation = Vector3(-0.0720, -2.5269, 0.0)
+metadata/fov = 45.0
+
+; reverse: Diego in the passenger seat, from off the right fender
+[node name="shot_closeup_person_b__vehicle_cab_altima" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(11.050, 1.210, -2.250)
+rotation = Vector3(-0.0720, 2.5269, 0.0)
+metadata/fov = 45.0
+
+; insert: the fountain cup in the holder — BT looks at the cup
+[node name="shot_insert_cup__vehicle_cab_altima" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(9.250, 1.060, -0.550)
+rotation = Vector3(-0.6508, -0.5942, 0.0)
+metadata/fov = 42.0
+
+; insert: the flauta box open on the center console
+[node name="shot_insert_flautas__vehicle_cab_altima" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(9.700, 1.010, -0.450)
+rotation = Vector3(-0.7983, 0.5880, 0.0)
+metadata/fov = 42.0
+
+; insert: the El Diablito on the driver's seat, leaking slowly
+[node name="shot_insert_packet__vehicle_cab_altima" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(9.400, 1.060, -0.500)
+rotation = Vector3(-0.5973, 0.7141, 0.0)
+metadata/fov = 42.0
+
+; insert: the phone in the dashboard cradle — BT presses play
+[node name="shot_insert_phone__vehicle_cab_altima" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(9.550, 1.200, -1.050)
+rotation = Vector3(-0.1477, -0.3218, 0.0)
+metadata/fov = 42.0

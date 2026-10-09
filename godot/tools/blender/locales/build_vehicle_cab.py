@@ -54,6 +54,22 @@ WEAR (the heel-worn mat, the bolster's shine, the dash's dust line, a
 door ding, the ruts deeper by the truck); D3 (the phone's charger cord
 to the 12 V socket, the key ring, the pine tree on the mirror).
 The draft-2 targets above stay open for draft 3.
+
+DRAFT 3 (2026-10-09) — the wrong VEHICLE. ch16's El Rancho morning is
+in BT's "2017, beige" Altima, a sedan; the flauta box, the cup, the
+packets and BT's cradle phone were dressed into Ben's green pickup. The
+Altima is now built into the turnout east of the truck
+(build_altima_2026_10: the truck's cab run through plan.shifted 14 cm
+lower in its own colours, a sedan body round it) and carries the spread;
+the truck keeps Finn's duffel (vol7). New preset `vehicle_cab_altima`;
+ch16 routes to it; its inserts + closeups are `__vehicle_cab_altima`.
+
+Draft 4 targets: the Civic (vol6 ch19/ch20 — Ben/Jesse "in the Civic")
+still renders in the pickup: a hatch cab, or the Altima preset with a
+per-scene note; the sedan's raked windshield and roofline (the shifted
+cab keeps the truck's upright glass); Finn's truck (vol7) is not Ben's
+green one — the crow on the dash, the shortwave in the back; the night
+rig; rain for ch4_storm.
 """
 import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
@@ -271,7 +287,8 @@ def build_seats():
 
 
 def build_el_rancho():
-    """The El Rancho spread. "He opens the box on the center console
+    """The El Rancho spread — in BT's Altima since draft 3 (it is run
+    inside build_altima_2026_10's shifted block). "He opens the box on the center console
     between them. The flautas are five rolled fried chicken cylinders
     with a small cup of guacamole in the corner of the box. He pours
     one of the green-sauce packets over the flautas." Later the
@@ -307,6 +324,11 @@ def build_el_rancho():
     make_box("Packet_Diablito_Seat", (-0.36, 0.30, 0.9335), (0.05, 0.032, 0.005), SAUCE_RED)
     # the paper bag, folded, on the passenger floor
     make_box("El_Rancho_Bag", (0.52, 0.85, 0.53), (0.22, 0.14, 0.13), (0.72, 0.60, 0.42, 1.0))
+
+
+def build_finn_duffel():
+    """vol7 ch2_morning, in Finn's truck — split from the El Rancho
+    spread (2026-10-09), which moved into BT's Altima."""
     # Finn's duffel on the passenger seat (vol7 ch2_morning): the cloth
     # unwrapped, the piece of charred wood on it — "three inches long"
     make_box("Duffel", (0.50, 0.15, 1.035), (0.34, 0.26, 0.21), (0.32, 0.36, 0.30, 1.0))
@@ -377,6 +399,63 @@ def build_draft4_2026_09():
     make_box("Freshener", (0.0, 1.40, 1.42), (0.06, 0.003, 0.08), (0.24, 0.50, 0.30, 1.0))
 
 
+ALT_X, ALT_Y, ALT_DZ = 9.5, 0.5, -0.14          # the Altima's cab origin and how much lower it rides
+BEIGE = (0.72, 0.64, 0.52, 1.0)
+BEIGE_DK = (0.58, 0.51, 0.42, 1.0)
+
+
+def build_altima_2026_10():
+    """DRAFT 3 (2026-10-09): BT'S ALTIMA. ch16's whole morning happens in
+    "a 2017, beige, with the small clean of a car that has not been
+    washed recently but has not, otherwise, been allowed to get dirty
+    inside" — "BT, at the wheel ... The car is the space BT gets to set
+    the terms of" — and the El Rancho spread, the cradle phone, the
+    fountain cup were all dressed into Ben's green crew-cab pickup.
+    The Altima parks east of the truck in the turnout, nose to the
+    road, the picnic table off its left rear ("Eat in the car, eat at
+    the table?"); its cab is the truck's cab run through plan.shifted
+    14 cm lower and in its own colours (the doors, pillars, glass, dash,
+    wheel, seats and console), and the sedan body is built round it:
+    the long low hood, the trunk deck, the fascia, the wheels."""
+    from _props.plan import shifted
+    ax, ay, dz = ALT_X, ALT_Y, ALT_DZ
+    # the body round the cab: pan, floor, hood, cowl, fenders, fascia, trunk, quarters, wheels
+    make_box("Altima_Pan", (ax, ay - 0.10, 0.21), (1.80, 5.00, 0.10), RUBBER)
+    make_box("Altima_Cab_Floor", (ax, ay, 0.29), (1.80, 3.10, 0.06), DASH)
+    make_box("Altima_Hood_Block", (ax, ay + 2.27, 0.575), (1.80, 1.34, 0.50), BEIGE)
+    make_wedge("Altima_Hood_Slope", (ax, ay + 2.27, 0.89), (1.80, 1.34, 0.13), BEIGE, high_end="-Y")
+    make_box("Altima_Cowl", (ax, ay + 1.575, 0.69), (1.86, 0.05, 0.74), BEIGE)
+    for sgn, nm in ((1, "R"), (-1, "L")):
+        make_box(f"Altima_Fender_F_{nm}", (ax + sgn * 0.9125, ay + 2.27, 0.575), (0.025, 1.34, 0.50), BEIGE)
+        make_box(f"Altima_Quarter_{nm}", (ax + sgn * 0.9125, ay - 2.05, 0.60), (0.025, 0.90, 0.56), BEIGE)
+        make_box(f"Altima_Mirror_Arm_{nm}", (ax + sgn * 1.00, ay + 1.30, 1.12), (0.16, 0.04, 0.04), BEIGE_DK)
+        make_box(f"Altima_Mirror_{nm}", (ax + sgn * 1.12, ay + 1.30, 1.12), (0.08, 0.14, 0.12), BEIGE)
+    make_box("Altima_Fascia", (ax, ay + 2.965, 0.52), (1.84, 0.05, 0.40), BEIGE)
+    make_box("Altima_Grille", (ax, ay + 2.995, 0.56), (1.00, 0.01, 0.20), (0.14, 0.14, 0.15, 1.0))
+    make_box("Altima_Grille_Chrome", (ax, ay + 2.999, 0.67), (1.10, 0.004, 0.025), CHROME)
+    for sgn, nm in ((1, "R"), (-1, "L")):
+        make_box(f"Altima_Headlight_{nm}", (ax + sgn * 0.66, ay + 2.995, 0.72), (0.38, 0.01, 0.10), (0.88, 0.88, 0.84, 1.0))
+        make_box(f"Altima_Taillight_{nm}", (ax + sgn * 0.70, ay - 2.505, 0.80), (0.30, 0.01, 0.10), (0.70, 0.12, 0.10, 1.0))
+    make_box("Altima_Plate", (ax, ay + 2.995, 0.40), (0.30, 0.01, 0.15), (0.88, 0.86, 0.80, 1.0))
+    make_box("Altima_Trunk_Block", (ax, ay - 2.05, 0.60), (1.80, 0.90, 0.56), BEIGE)
+    make_box("Altima_Trunk_Deck", (ax, ay - 2.05, 0.90), (1.80, 0.90, 0.04), BEIGE_DK)
+    make_box("Altima_Rear_Fascia", (ax, ay - 2.52, 0.50), (1.84, 0.04, 0.36), BEIGE)
+    make_box("Altima_Badge", (ax, ay - 2.542, 0.70), (0.16, 0.004, 0.05), CHROME)
+    for wi, (wx, wy) in enumerate(((-1.06, 2.20), (1.06, 2.20), (-1.06, -1.95), (1.06, -1.95))):
+        make_cyl(f"Altima_Wheel_{wi}", (ax + wx, ay + wy, 0.32), 0.32, 0.22, RUBBER, axis="X", segments=14)
+        make_cyl(f"Altima_Hubcap_{wi}", (ax + wx + (0.115 if wx > 0 else -0.115), ay + wy, 0.32), 0.19, 0.01, (0.66, 0.68, 0.70, 1.0), axis="X", segments=10)
+    # the cab, run lower and in the Altima's colours; the spread on its console
+    with shifted(globals(), ax, ay, prefix="Altima_", dz=dz, extra=("make_blob", "make_wedge"),
+                 TRUCK_GREEN=BEIGE, TRUCK_GREEN_DK=BEIGE_DK, SEAT=(0.30, 0.30, 0.32, 1.0),
+                 SEAT_DK=(0.24, 0.24, 0.26, 1.0), HEADLINER=(0.70, 0.68, 0.64, 1.0)):
+        build_cab_shell()
+        build_dash()
+        build_seats()
+        build_el_rancho()
+        make_tube("Cord_1", [(0.22, 1.07, 1.19), (0.22, 1.02, 1.05), (0.10, 0.96, 0.85), (0.02, 0.94, 0.80)], 0.004, (0.90, 0.90, 0.88, 1.0), segments=4)
+        make_cyl("Socket_12V", (0.0, 0.925, 0.80), 0.014, 0.01, (0.12, 0.12, 0.13, 1.0), axis="Y", segments=8)
+
+
 def main():
     clear_scene()
     build_ground()
@@ -384,11 +463,12 @@ def main():
     build_cab_shell()
     build_dash()
     build_seats()
-    build_el_rancho()
+    build_finn_duffel()
     build_turnout_furniture()
     build_scrub()
     build_horizon()
     build_draft4_2026_09()
+    build_altima_2026_10()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/vehicle_cab.glb"))
     print(f"\n[build_vehicle_cab] exporting to {out}")

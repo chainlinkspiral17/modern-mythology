@@ -28,20 +28,23 @@ _PATH = ("make_tube",)
 
 
 @contextlib.contextmanager
-def shifted(g, dx, dy, extra=(), extra_paths=(), prefix="", **consts):
+def shifted(g, dx, dy, extra=(), extra_paths=(), prefix="", dz=0.0, **consts):
     """`extra` / `extra_paths`: more of the builder's own global names to
     move, centre-first (`fn(name, (x, y[, z]), ...)`) or path-first
     (`fn(name, [(x, y), ...], ...)`) — opt-in per builder, so a name a
     builder already compensates by hand is never moved twice.
     `prefix`: prepended to every wrapped part name — for building ANOTHER
     builder's area into this set (the Cosmic back office in the shop,
-    2026-10-09) without its names colliding with this set's own."""
+    2026-10-09) without its names colliding with this set's own.
+    `dz`: lifts or drops every centre-first / path part too (only those:
+    the x-y helpers take their own z0) — the Altima's cab is the truck's
+    cab run 14 cm lower (vehicle_cab, 2026-10-09)."""
     import _props.creatures as _C
     import _props.detail as _D
 
     def c3(f):
         def w(name, center, *a, **k):
-            return f(prefix + name, (center[0] + dx, center[1] + dy) + tuple(center[2:]), *a, **k)
+            return f(prefix + name, (center[0] + dx, center[1] + dy) + tuple(c + dz for c in center[2:3]), *a, **k)
         return w
 
     def xy(f):
@@ -51,12 +54,12 @@ def shifted(g, dx, dy, extra=(), extra_paths=(), prefix="", **consts):
 
     def path(f):
         def w(name, pts, *a, **k):
-            return f(prefix + name, [(q[0] + dx, q[1] + dy) + tuple(q[2:]) for q in pts], *a, **k)
+            return f(prefix + name, [(q[0] + dx, q[1] + dy) + tuple(c + dz for c in q[2:3]) for q in pts], *a, **k)
         return w
 
     def two(f):
         def w(name, a_, b_, *a, **k):
-            return f(prefix + name, (a_[0] + dx, a_[1] + dy) + tuple(a_[2:]), (b_[0] + dx, b_[1] + dy) + tuple(b_[2:]), *a, **k)
+            return f(prefix + name, (a_[0] + dx, a_[1] + dy) + tuple(c + dz for c in a_[2:3]), (b_[0] + dx, b_[1] + dy) + tuple(c + dz for c in b_[2:3]), *a, **k)
         return w
 
     saved_g, saved_m = {}, []

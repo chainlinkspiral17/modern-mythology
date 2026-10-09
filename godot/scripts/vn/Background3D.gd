@@ -1404,6 +1404,19 @@ const CAMERA_PRESETS := {
 		"fov": 50.0,
 		"suppress_input": true,
 	},
+	"vehicle_cab_altima": {
+		"scene": "res://scenes/locales/vehicle_cab.tscn",
+		"requires_glb": "res://assets/3d/locales/vehicle_cab.glb",
+		# ch16 El Rancho: BT's beige 2017 Altima, parked in the same
+		# turnout east of the truck (blender origin (9.5, 0.5), the cab
+		# 14 cm lower). Camera at its center console, looking forward
+		# over the dash through the windshield at the road (draft 3,
+		# 2026-10-09: the spread was dressed into Ben's pickup).
+		"camera_origin": Vector3(9.5, 1.14, -0.60),
+		"camera_rotation": Vector3(-0.14, 0.0, 0.0),
+		"fov": 72.0,
+		"suppress_input": true,
+	},
 	"vehicle_cab_rear": {
 		"scene": "res://scenes/locales/vehicle_cab.tscn",
 		"requires_glb": "res://assets/3d/locales/vehicle_cab.glb",

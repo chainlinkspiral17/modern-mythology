@@ -156,6 +156,7 @@ PLACES = {
         "vehicle_cab": "vol6_two_lane",
         "vehicle_cab_side": "vol6_two_lane",
         "vehicle_cab_rear": "vol6_two_lane",
+        "vehicle_cab_altima": "vol6_two_lane",
         "new_auburn_two_lane": "vol6_two_lane",
         "new_auburn_bypass": "vol6_two_lane",
         "new_auburn_cedar_route": "vol6_two_lane",
