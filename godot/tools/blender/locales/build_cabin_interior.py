@@ -223,8 +223,18 @@ def build_shell():
     make_tube("Front_Door_Out_Handle", [(0.36, dy, 1.10), (0.36, dy - 0.06, 1.07), (0.36, dy - 0.06, 0.95), (0.36, dy, 0.92)],
               0.012, COL_IRON, segments=5)
     # Bedroom partition: the east room (Tem/Lena's) behind x=+1.4 (2026-10-09: was 1.0 — the east room is 2.4 m wide now)
-    make_wall("East_Part", (1.4, 1.3, 0), length=2.6, height=CEIL, axis='Y', palette=PAL_WALL)
-    make_box("East_Part_Header", (1.4, 2.85, CEIL-0.35), (0.16, 0.55, 0.70), PAL_WALL["wall"])
+    make_wall("East_Part", (1.4, 1.45, 0), length=2.9, height=CEIL, axis='Y', palette=PAL_WALL)
+    # the east room's north wall and its door (interior draft 8): it was an
+    # alcove open to the main room — "Tem's room", "the east room" in the
+    # prose has a door Lena closes. The door near the partition, the plank
+    # leaf standing open into the room at ~70 degrees.
+    make_wall_with_openings("East_Room_Wall_N", ((1.5 + ROOM_W / 2.0 - 0.1) / 2.0, 2.90, 0), length=ROOM_W / 2.0 - 0.1 - 1.5,
+                            height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=-1,
+                            openings=[(1.975, 1.025, 0.85, 2.05)])
+    hx, hy, ang = 1.56, 2.79, -1.22
+    make_rot_box("East_Room_Door", (hx + 0.41 * _m.cos(ang), hy + 0.41 * _m.sin(ang), 1.02), (0.82, 0.04, 2.02), COL_WOOD_DK, yaw=ang)
+    make_rot_box("East_Room_Door_Batten", (hx + 0.41 * _m.cos(ang) + 0.025 * _m.sin(ang), hy + 0.41 * _m.sin(ang) - 0.025 * _m.cos(ang), 1.60),
+                 (0.74, 0.012, 0.12), (0.40, 0.29, 0.19, 1.0), yaw=ang)
 
 
 def build_kitchen():
@@ -233,7 +243,20 @@ def build_kitchen():
     CONE + carafe, mason jars, the rotary phone by the kitchen
     window."""
     # Counter, y 3.4..5.8 along the W wall
-    make_box("Counter_Body", (-1.90, 4.60, 0.46), (0.70, 2.40, 0.92), (0.78, 0.66, 0.42, 1.0))
+    make_box("Counter_Body", (-1.90, 4.60, 0.46), (0.70, 2.40, 0.92), (0.50, 0.38, 0.25, 1.0))   # (2026-10-09: was a flat yellow box)
+    # its face (interior draft 8): three plank doors, a drawer over each,
+    # turned knobs, the dark toe-kick — Olaf built it, so it is plank, not panel
+    face_x = -1.55 - 0.006
+    door_c, drawer_c = (0.56, 0.42, 0.27, 1.0), (0.60, 0.45, 0.29, 1.0)
+    for di in range(3):
+        dy = 3.40 + 0.40 + di * 0.80
+        make_box(f"Counter_Door_{di}", (face_x, dy, 0.38), (0.012, 0.74, 0.56), door_c)
+        for pi2 in (-1, 0, 1):
+            make_box(f"Counter_Door_{di}_Seam_{pi2 + 1}", (face_x - 0.007, dy + pi2 * 0.185, 0.38), (0.002, 0.008, 0.54), (0.30, 0.22, 0.14, 1.0))
+        make_cyl(f"Counter_Door_{di}_Knob", (face_x - 0.02, dy + 0.28, 0.52), 0.016, 0.03, COL_WOOD_DK, axis='X', segments=8)
+        make_box(f"Counter_Drawer_{di}", (face_x, dy, 0.79), (0.012, 0.74, 0.17), drawer_c)
+        make_box(f"Counter_Drawer_{di}_Pull", (face_x - 0.014, dy, 0.80), (0.016, 0.14, 0.022), COL_WOOD_DK)
+    make_box("Counter_Kick", (face_x, 4.60, 0.045), (0.012, 2.40, 0.09), (0.22, 0.16, 0.10, 1.0))
     make_box("Counter_Top", (-1.90, 4.60, 0.945), (0.74, 2.46, 0.05), (0.32, 0.22, 0.14, 1.0))
     # Pour-over cone + carafe ("She had made coffee in the cabin's
     # cone… the run of the water through the grounds")
@@ -283,7 +306,9 @@ def build_loft():
     make_box("Loft_Blanket", (-1.9, 4.7, 2.34), (1.26, 1.10, 0.06), COL_WOOL)
     make_box("Loft_Rail", (-1.0, 3.66, 2.45), (1.6, 0.05, 0.06), COL_WOOD_DK)
     for bi, bx in enumerate((-1.6, -1.0, -0.4)):
-        make_box(f"Loft_Rail_Bal_{bi}", (bx, 3.66, 2.30), (0.04, 0.04, 0.36), COL_WOOD_DK)
+        make_lathe(f"Loft_Rail_Bal_{bi}", (bx, 3.66, 2.12),   # turned (interior draft 8)
+                   [(0.024, 0.0), (0.024, 0.03), (0.014, 0.06), (0.022, 0.14), (0.012, 0.24), (0.020, 0.32), (0.024, 0.36)],
+                   COL_WOOD_DK, segments=8)
     # Ladder — against the loft's FRONT edge (the beam at y 3.62), rails
     # reaching the deck (2026-09-07 Deck: it stood UNDER the deck at
     # y 3.95, climbing into the loft's underside — "turned 90 degrees")
@@ -407,9 +432,15 @@ def build_table():
     make_lathe("Table_Foot", (tx, ty, 0.0), [(0.42, 0.0), (0.40, 0.06), (0.22, 0.09), (0.16, 0.10)], COL_WOOD_DK, segments=14)
     # seven chairs, the ring open toward the east partition (nobody sits
     # with their back in the wall)
+    # interior draft 8: SEVEN chairs gathered over forty years, not a set —
+    # one carries a wool cushion, one is newer and pale, one is the odd
+    # green-painted kitchen chair from somewhere else
+    woods = {4: (0.58, 0.44, 0.28, 1.0), 5: (0.30, 0.38, 0.32, 1.0)}
     for ci, ang in enumerate((0.30, 1.05, 1.80, 2.55, 3.30, 4.05, 4.80)):
         cx, cy = tx + _m.cos(ang) * 1.22, ty + _m.sin(ang) * 1.22
-        make_chair(f"Chair_{ci}", cx, cy, yaw=ang + 1.5708, wood=COL_WOOD, w=0.40)
+        make_chair(f"Chair_{ci}", cx, cy, yaw=ang + 1.5708, wood=woods.get(ci, COL_WOOD), w=0.43 if ci == 5 else 0.40)
+        if ci == 2:
+            make_chamfer_box("Chair_2_Cushion", (cx, cy, 0.475), (0.34, 0.34, 0.05), COL_WOOL, chamfer=0.015, yaw=ang + 1.5708)
     # ── OLAF'S TWO BOWLS · the hero prop of vol 7 ──────────────
     # (2026-08-12) The volume's central image — cued 21 times as
     # [shot:insert bowls] / [shot:insert bowl] across 46 chapters —
@@ -547,7 +578,9 @@ def build_east_room():
     make_lathe("Basin_Pitcher", (0.62, 0.24, 0.84),
                [(0.045, 0.0), (0.06, 0.03), (0.065, 0.12), (0.045, 0.19), (0.05, 0.22), (0.0, 0.22)],
                (0.86, 0.86, 0.84, 1.0), segments=10)
-    make_box("Basin_Mirror", (1.46, 2.35, 1.50), (0.03, 0.36, 0.50), (0.68, 0.74, 0.78, 1.0))
+    # over the basin on the S wall (2026-10-09: it stood INSIDE the partition, never seen)
+    make_box("Basin_Mirror_Frame", (0.75, 0.115, 1.45), (0.42, 0.03, 0.56), COL_WOOD_DK)
+    make_box("Basin_Mirror", (0.75, 0.133, 1.45), (0.34, 0.006, 0.48), (0.68, 0.74, 0.78, 1.0))
 
 
 def build_wall_dressing():
@@ -588,6 +621,15 @@ def build_wall_dressing():
         for sgn in (-1, +1):
             make_box("Window_E_Curtain_%+d" % sgn, (2.815, 4.2 + sgn * 0.55, 1.6),
                      (0.05, 0.34, 1.14), (0.60, 0.28, 0.24, 1.0))
+
+
+def build_runner_2026_10():
+    """The braided runner (interior draft 8, in the 8 x 8 plan's own
+    coordinates): from inside the door toward the table, the floor's
+    widened middle. Oval rounds of rag braid, outer to inner."""
+    for ri, (sx2, sy2, col) in enumerate(((1.00, 1.70, (0.42, 0.30, 0.24, 1.0)), (0.84, 1.52, (0.56, 0.44, 0.30, 1.0)),
+                                          (0.66, 1.32, (0.36, 0.40, 0.44, 1.0)), (0.46, 1.10, (0.50, 0.36, 0.28, 1.0)))):
+        make_chamfer_box(f"Runner_Rug_Round_{ri}", (0.0, 1.75, 0.003 + ri * 0.002), (sx2, sy2, 0.006), col, chamfer=0.002)
 
 
 def build_crow_2026_08():
@@ -678,7 +720,7 @@ def build_wear_personality_2026_08():
     with _shift(-1.0, 2.0):   # the kitchen counter
         # Counter drip-line below the kettle's pour path.
         # on the counter's face (2026-09-23: 2.4 cm in front of it)
-        _det.make_scuff_band("Wear_Counter_Drip", (-1.544, 4.60), 0.9, axis='Y',
+        _det.make_scuff_band("Wear_Counter_Drip", (-1.562, 4.60), 0.9, axis='Y',
                         height=0.10, band_z=0.55, tint=(0.26, 0.18, 0.11, 1.0))
 
     # ── TEM'S WEEKS ────────────────────────────────────────────
@@ -1290,6 +1332,7 @@ def main():
     build_daybed()
     build_east_room()
     build_wall_dressing()
+    build_runner_2026_10()
     build_wear_personality_2026_08()
     build_through_windows_2026_08()
     build_hero_props_2026_09()

@@ -3834,6 +3834,33 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-09 · TEM'S CABIN, interior draft 8.**
+- **The counter** was a flat yellow box under lamplight. It now has a
+  darker body, three plank doors with their seams and knobs, a drawer
+  over each, the toe-kick, and the drip line on the door fronts.
+- **The seven chairs** read as gathered over forty years, not a set: one
+  carries a wool cushion, one is newer and pale, and one is the odd
+  green-painted kitchen chair.
+- **The loft's balusters** are turned.
+- **A braided oval runner** lies inside the door, in the floor's widened
+  middle.
+- **THE EAST ROOM IS A ROOM.** It was an alcove open to the main room.
+  The partition now runs to a north wall with a door by the partition,
+  its plank leaf standing open into the room.
+- **The basin's mirror** stood INSIDE the partition, never seen. It now
+  hangs on the south wall over the basin.
+- **`establish_b`** had moved with the kitchen into the jar row under
+  the pot rack. It now stands off the counter, looking across the room to
+  the door.
+Draft 9 targets:
+- the daybed's blanket draped over the edge;
+- the crow's sill and the Sitkas seen from inside;
+- the loft's mattress and blanket, which are still boxes;
+- a shelf of jars and tins on the N wall by the stove;
+- the main room's south-east corner by the east room's door is bare;
+- Deck framing of the vol 7 rotation (establish b and c) in the bigger
+  room.
+
 **2026-10-09 · TEM'S CABIN, 8 x 8 (cabin_interior, interior draft 7).**
 The room was 6 x 6 m for what the prose puts in it: a table that seats
 seven, the daybed, two armchairs at the stove, a kitchen under a loft and

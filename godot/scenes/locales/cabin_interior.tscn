@@ -322,7 +322,7 @@ script = ExtResource("13_riff")
 ; ── vn_shot coverage (2026-08-04 directing pass) ────────
 ; rotation B: from the kitchen corner looking back at the door and daybed — the reverse for doorway beats
 [node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-3.200, 1.550, -6.900)
+position = Vector3(-2.000, 1.620, -7.200)
 rotation = Vector3(-0.0850194, -2.71183, 0)
 metadata/fov = 56.0
 
