@@ -728,6 +728,14 @@
    ],
    "markers": [
     {
+     "name": "shot_establish_b__salty_tome_alley",
+     "type": "establish"
+    },
+    {
+     "name": "shot_establish_c__salty_tome_alley",
+     "type": "establish"
+    },
+    {
      "name": "shot_establish_shop",
      "type": "establish"
     },
@@ -776,7 +784,7 @@
      "type": "insert"
     },
     {
-     "name": "shot_insert_coffee",
+     "name": "shot_insert_coffee__salty_tome_alley",
      "type": "insert"
     },
     {
@@ -7507,5 +7515,5 @@
   "tired",
   "nervous"
  ],
- "frames": 1691
+ "frames": 1693
 }

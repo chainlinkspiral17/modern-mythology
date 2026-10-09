@@ -3834,6 +3834,30 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-09 · overnight run, pass 5: THE ALLEY BEHIND THE SALTY TOME, A
+PLACE.** Vol 7's climax (ch14/16/18/20/21: the painting, the hour at the
+wall, the face opening its eyes before thirty-five people) played in a
+strip of asphalt between a 3.6 m mural wall and the store's 2.8 m back
+wall, with sky over both and nothing past either end.
+- the mural wall is a three-storey brick building with windows and a
+  cornice;
+- the store side has its upper storey (one window lit behind curtains)
+  and building corners to the entrance and the laundromat;
+- the laundromat is a building closing the far end, blind as the prose
+  says (a downspout, no door, no fire escape);
+- Petra's back-door light, with its practical;
+- rain pools and a drain;
+- the takeaway cup on the crate and its `insert coffee __alley` marker
+  (four cues cut to the kitchenette's mug before);
+- the street across the entrance;
+- two establishing alternates: from the entrance down the alley, and
+  from the far end back to the street.
+Next: the crowd states (ch20/21's thirty-five people); the face itself
+is a box stack (a painted figure at a draft's resolution); and THE
+COSMIC BACK OFFICE should be ONE set with the shop. The shop's doorway
+glimpse (2026-10-09) and `cosmic_comics_back_office` are two different
+rooms.
+
 **2026-10-09 · overnight run, pass 4: LENA'S APARTMENT, 7 x 6.6 (draft 5).**
 Vol 7's second set (23 placements) was 5 x 5 m. 25 m2 held a kitchen, a
 table for four, a couch nook, a window chair, an easel and a bedroom.

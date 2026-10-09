@@ -490,3 +490,29 @@ metadata/fov = 45.0
 position = Vector3(-2.196, 1.975, -9.667)
 rotation = Vector3(-0.2618, -0.5236, 0.0)
 metadata/fov = 45.0
+
+; ── the alley, a place (2026-10-09) ──
+; "the back-door light Petra had turned on at seven-thirty so the alley
+; would not be dark": the wall lamp over her back door. blender
+; (-3.3, 9.36, 2.40) -> godot (-3.3, 2.40, -9.36).
+[node name="BackDoor_Lamp_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-3.300, 2.400, -9.360)
+light_color = Color(1.000, 0.820, 0.560, 1)
+light_energy = 1.60
+shadow_enabled = false
+omni_range = 8.00
+
+[node name="shot_insert_coffee__salty_tome_alley" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.050, 0.950, -11.000)
+rotation = Vector3(-0.7470, 0.7509, 0)
+metadata/fov = 40.0
+
+[node name="shot_establish_b__salty_tome_alley" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-5.300, 1.620, -10.400)
+rotation = Vector3(0.0244, -1.4347, 0)
+metadata/fov = 58.0
+
+[node name="shot_establish_c__salty_tome_alley" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(4.000, 1.620, -10.200)
+rotation = Vector3(-0.0220, 1.5408, 0)
+metadata/fov = 58.0

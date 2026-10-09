@@ -13,7 +13,7 @@ import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, make_tube, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_tube, make_lathe, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_wall_with_openings
 from _props.store_fixtures import make_counter, make_register
 from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster, make_calendar
@@ -609,8 +609,76 @@ def build_alley_2026_09():
     # the crow on the dumpster lid
     make_crow("Alley_Crow", 2.0, 10.45, 1.28, facing=-1.0)
     # the laundromat's brick closes the far end
-    make_box("Laundromat_Brick_End", (5.65, 10.5, 1.80), (0.30, 3.40, 3.60), (0.40, 0.28, 0.22, 1.0))
+    # (2026-10-09: the laundromat's end is its whole building now — build_alley_2026_10)
     make_box("Alley_Entrance_Curb", (-5.6, 10.5, 0.03), (0.30, 3.40, 0.10), (0.52, 0.52, 0.50, 1.0))
+
+
+def build_alley_2026_10():
+    """THE ALLEY, A PLACE (2026-10-09, the overnight run). Vol 7's climax
+    happens here — thirty-five people at the wall, the face opening its
+    eyes — and the alley was a strip of asphalt between a 3.6 m mural
+    wall and the store's 2.8 m back wall, with sky over both and nothing
+    past either end. From ch14/16/18/20/21:
+
+    - the mural wall is a BUILDING: three storeys of brick over the mural,
+      dark windows, a cornice;
+    - the store side has its upper storey (the floor band over the annex,
+      three windows, one lit behind a curtain), and building corners fill
+      it to the entrance and to the laundromat;
+    - "The far end of the alley was the brick wall of the laundromat ...
+      There was no door in the laundromat's brick. There was no fire
+      escape": the laundromat is a building that closes the alley, a
+      downspout its only feature;
+    - "the back-door light Petra had turned on at seven-thirty so the alley
+      would not be dark": the wall lamp over her back door (its practical
+      lights the night scenes);
+    - "The puddles in the alley were the puddles": rain pools, a drain;
+    - "She set the cup on a milk crate": the takeaway cup on the crate
+      (the `insert coffee` cues cut to the kitchenette's mug before);
+    - "with the alley behind them and the town in front": the street
+      across the entrance — sidewalk, two lanes, the facades opposite.
+    """
+    brick = (0.42, 0.29, 0.23, 1.0); brick_dk = (0.36, 0.25, 0.20, 1.0)
+    glass_dk = (0.16, 0.18, 0.22, 1.0); sill = (0.56, 0.54, 0.50, 1.0)
+    # ── the mural building over the mural ──
+    make_box("Mural_Bldg_Upper", (0.0, 12.94, 6.40), (ROOM_W + 3.0, 2.12, 6.0), brick)
+    make_box("Mural_Bldg_Cornice", (0.0, 12.90, 9.50), (ROOM_W + 3.2, 2.24, 0.20), brick_dk)
+    for fi, wz in enumerate((5.3, 7.9)):
+        for wi, wx in enumerate((-4.0, -1.4, 1.4, 4.0)):
+            make_box(f"Mural_Bldg_Win_{fi}_{wi}", (wx, 11.872, wz), (0.95, 0.012, 1.30), glass_dk)
+            make_box(f"Mural_Bldg_Win_{fi}_{wi}_Sill", (wx, 11.84, wz - 0.69), (1.05, 0.08, 0.06), sill)
+    # ── the store side: the floor band, the upper storey, its windows ──
+    make_box("Store_Upper_Floorband", (0.0, 9.06, 2.85), (ROOM_W + 0.4, 0.12, 0.10), brick_dk)
+    make_box("Store_Upper_Storey", (0.0, 7.56, 4.75), (ROOM_W + 0.4, 3.12, 3.70), brick)
+    for wi, (wx, lit) in enumerate(((-2.4, False), (0.2, True), (2.8, False))):
+        make_box(f"Store_Upper_Win_{wi}", (wx, 9.126, 4.65), (1.00, 0.012, 1.30), (0.86, 0.70, 0.42, 1.0) if lit else glass_dk)
+        make_box(f"Store_Upper_Win_{wi}_Sill", (wx, 9.16, 3.96), (1.10, 0.08, 0.06), sill)
+        if lit:
+            for ci, cx in enumerate((wx - 0.38, wx + 0.38)):
+                make_box(f"Store_Upper_Win_{wi}_Curtain_{ci}", (cx, 9.135, 4.65), (0.20, 0.008, 1.24), (0.72, 0.52, 0.42, 1.0))
+    make_box("Alley_S_Bldg_W", (-4.90, 7.60, 3.30), (1.40, 3.00, 6.60), brick)
+    make_box("Alley_S_Bldg_E", (4.85, 7.60, 3.30), (1.30, 3.00, 6.60), brick)
+    # ── the laundromat closes the far end ──
+    make_box("Laundromat_Bldg", (8.50, 10.50, 3.30), (6.0, 9.0, 6.60), (0.40, 0.28, 0.22, 1.0))
+    make_box("Laundromat_Bldg_Cornice", (8.50, 10.50, 6.70), (6.0, 9.1, 0.20), brick_dk)
+    make_tube("Laundromat_Downspout", [(5.46, 11.60, 6.55), (5.46, 11.60, 0.30), (5.30, 11.60, 0.12)], 0.05, (0.44, 0.44, 0.46, 1.0), segments=8)
+    # ── Petra's back-door light ──
+    make_box("BackDoor_Lamp_Bracket", (-3.3, 9.20, 2.62), (0.06, 0.20, 0.06), COL_BLACK)
+    make_lathe("BackDoor_Lamp", (-3.3, 9.30, 2.36), [(0.0, 0.0), (0.06, 0.0), (0.10, 0.10), (0.11, 0.18), (0.04, 0.24), (0.0, 0.25)],
+               (0.94, 0.86, 0.62, 1.0), segments=12)
+    # ── rain pools and the drain ──
+    for pi, (px, py, pr) in enumerate(((-0.2, 10.3, 0.50), (2.9, 11.2, 0.36), (-4.0, 10.8, 0.62))):
+        make_cyl(f"Alley_Rainpool_{pi}", (px, py, 0.002), pr, 0.004, (0.20, 0.21, 0.24, 1.0), segments=18)
+    make_box("Alley_Drain", (0.9, 10.5, 0.003), (0.50, 0.50, 0.006), (0.12, 0.12, 0.13, 1.0))
+    for bi in range(5):
+        make_box(f"Alley_Drain_Bar_{bi}", (0.72 + bi * 0.09, 10.5, 0.008), (0.03, 0.46, 0.006), (0.30, 0.30, 0.32, 1.0))
+    # ── the cup on the crate ──
+    make_lathe("Alley_Coffee_Cup", (-1.47, 11.45, 0.32), [(0.035, 0.0), (0.045, 0.12), (0.048, 0.125), (0.048, 0.14), (0.0, 0.14)],
+               (0.90, 0.88, 0.82, 1.0), segments=12)
+    make_box("Alley_Coffee_Cup_Sleeve", (-1.47, 11.45, 0.385), (0.09, 0.09, 0.04), (0.56, 0.42, 0.28, 1.0))
+    # ── the town in front of the entrance ──
+    from _props.views import make_view
+    make_view("View_W", "W", -5.6, 10.5, kind="street", seed=5)
 
 
 def main():
@@ -630,6 +698,7 @@ def main():
     build_beyond_glass_2026_08()
     build_hero_props_2026_09()
     build_alley_2026_09()
+    build_alley_2026_10()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/salty_tome_interior.glb"))
     print(f"\n[build_salty_tome_interior] exporting to {out}")
