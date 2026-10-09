@@ -3834,6 +3834,25 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-09 · overnight run, pass 2: BOARD LORDS draft 4.** The retail
+floor was empty linoleum between the deck wall and the counter.
+From vol 7 ch 2/5/9/10/12/16:
+- the floor RACK of complete boards ("The board was in the rack. The
+  rack was full. The board was on the bottom.") with trucks and wheels,
+  the cracked 2034 Tess Mariana at the bottom;
+- the NEW DECKS on the wall behind the counter, with Lena's Tide Pool
+  Geometries run among them;
+- a hoodie rounder on its hangers;
+- Devon's chipped Tidewater mug and the wooden token box under the
+  counter;
+- griptape on the repair bench;
+- the bell as a turned bell on a coiled spring;
+- across Main, the drone at the laundromat's new downspout;
+- the pale puddle discs darkened.
+Next: the drop ceiling's grid reads office, not skate shop (an exposed
+ceiling or a painted one); stickers on the counter front; the
+shoe-and-apparel wall.
+
 **2026-10-09 · overnight run, pass 1: cabin interior draft 9 + COSMIC COMICS draft 5.**
 - **Cabin:**
   - the daybed blanket drapes over the room-side edge;

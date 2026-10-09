@@ -46,6 +46,7 @@ interior glow through its window at dusk; Deck: main_street preset +
 shot_establish_b for the street's depth.
 """
 import os, sys
+import math as _cm
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
@@ -98,7 +99,12 @@ def build_shell():
     # (2026-09-22: the bell hangs from a bracket under the header — it
     # floated over the door with nothing holding it)
     make_box("Door_Bell_Bracket", (0.0, 0.16, 2.44), (0.03, 0.12, 0.12), (0.22, 0.20, 0.18, 1.0))
-    make_cyl("Door_Bell", (0.0, 0.16, 2.35), 0.04, 0.06, (0.74, 0.58, 0.28, 1.0), segments=8)
+    # (draft 4) a turned brass bell on a coiled spring — "The bell rang"
+    make_tube("Door_Bell_Spring", [(0.012 * _cm.sin(t * 1.2), 0.16 + 0.012 * _cm.cos(t * 1.2), 2.38 - t * 0.0055) for t in range(14)],
+              0.003, (0.60, 0.60, 0.58, 1.0), segments=4)
+    make_lathe("Door_Bell", (0.0, 0.16, 2.225), [(0.05, 0.0), (0.046, 0.01), (0.032, 0.045), (0.018, 0.068), (0.010, 0.078), (0.0, 0.078)],
+               (0.74, 0.58, 0.28, 1.0), segments=12)
+    make_cyl("Door_Bell_Clapper", (0.0, 0.16, 2.22), 0.007, 0.03, (0.30, 0.26, 0.18, 1.0), segments=5)
     # (draft 3) the push bar and the kick plate
     make_tube("Front_Door_Bar", [(-0.70, 0.085, 1.02), (0.70, 0.085, 1.02)], 0.016, COL_STEEL, segments=6)
     for bx in (-0.66, 0.66):
@@ -410,7 +416,7 @@ def build_main_street_2026_09():
     make_tube("Streetlamp_Far_Arm", [(6.0, -8.3, 4.30), (6.0, -8.0, 4.36), (6.0, -7.6, 4.36)], 0.03, (0.28, 0.28, 0.30, 1.0), segments=6)
     make_box("Streetlamp_Far_Head", (6.0, -7.5, 4.25), (0.22, 0.40, 0.14), (0.92, 0.88, 0.72, 1.0))
     for pi_, (px_, py_, pr_) in enumerate(((-3.0, -5.5, 0.7), (2.2, -6.6, 0.55), (-7.5, -3.6, 0.8))):
-        make_cyl(f"Main_Puddle_{pi_}", (px_, py_, 0.003), pr_, 0.004, (0.46, 0.50, 0.54, 1.0), segments=12)
+        make_cyl(f"Main_Puddle_{pi_}", (px_, py_, 0.003), pr_, 0.004, (0.30, 0.32, 0.36, 1.0), segments=20)   # (draft 4) dark wet, not pale discs
 
 
 def build_draft3_2026_09():
@@ -449,6 +455,84 @@ def build_door_infill_alley_door_2026_09():
     make_wall("Wall_Fill_Alley_Door_W", (2.600, 7.000, 0), length=0.200, height=2.784, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
     make_wall("Wall_Fill_Alley_Door_E", (3.650, 7.000, 0), length=0.100, height=2.784, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
 
+def build_draft4_2026_10():
+    """DRAFT 4 (2026-10-09, the overnight run), from vol 7 ch 2/5/9/10/12/16.
+
+    The retail floor was empty linoleum between the deck wall and the
+    counter. A skate shop's floor:
+    - THE RACK of complete boards ("The board was in the rack. The rack
+      was full. The board was on the bottom.") — a floor rack, boards
+      standing on their tails, trucks and wheels on, the customers'
+      repairs among the stock;
+    - the NEW DECKS on the wall behind the counter ("Kai went to the wall
+      behind the counter where the new decks were") — the office
+      partition's face, Lena's Tide Pool Geometries run among them;
+    - a rounder of hoodies on the floor's east side;
+    - the counter's things: Devon's chipped Tidewater mug, the small
+      wooden box under the counter Jameson's tokens went into;
+    - a roll of griptape on the repair bench;
+    - across Main, the drone at the laundromat's downspout ("The drone
+      over the laundromat was, this morning, fixing a downspout").
+    """
+    from _props.drones import make_drone
+    steel_dk = (0.30, 0.32, 0.34, 1.0)
+    urethane = (0.92, 0.88, 0.66, 1.0)
+    # ── the rack ──
+    rx0, rx1, ry = -2.40, -0.60, 3.40
+    make_box("Board_Rack_Base", ((rx0 + rx1) / 2.0, ry, 0.025), (rx1 - rx0, 0.45, 0.05), COL_WOOD)
+    for ui, ux in enumerate((rx0 + 0.025, rx1 - 0.025)):
+        make_box(f"Board_Rack_Upright_{ui}", (ux, ry + 0.17, 0.50), (0.05, 0.05, 0.90), COL_WOOD)
+    make_box("Board_Rack_Rail", ((rx0 + rx1) / 2.0, ry + 0.17, 0.93), (rx1 - rx0, 0.05, 0.05), COL_WOOD)
+    for bi in range(7):
+        bx = rx0 + 0.18 + bi * 0.24
+        tint = DECK_TINTS[(bi * 3 + 1) % len(DECK_TINTS)]
+        make_chamfer_box(f"Rack_Board_{bi}_Deck", (bx, ry + 0.11, 0.47), (0.20, 0.015, 0.80), tint, chamfer=0.006)
+        make_box(f"Rack_Board_{bi}_Grip", (bx, ry + 0.1015, 0.47), (0.18, 0.002, 0.76), (0.12, 0.12, 0.13, 1.0))
+        for ti, tz in enumerate((0.20, 0.74)):
+            make_box(f"Rack_Board_{bi}_Truck_{ti}", (bx, ry + 0.135, tz), (0.16, 0.035, 0.04), steel_dk)
+            for wi, wx in enumerate((-0.09, 0.09)):
+                make_cyl(f"Rack_Board_{bi}_Wheel_{ti}_{wi}", (bx + wx, ry + 0.165, tz), 0.026, 0.028, urethane, axis='X', segments=10)
+    # the bottom board — the old Tess Mariana from 2034, the crack in its deck
+    make_box("Rack_Board_0_Crack", (rx0 + 0.18, ry + 0.102, 0.62), (0.006, 0.002, 0.22), (0.30, 0.22, 0.14, 1.0))
+    # ── the new decks on the partition behind the counter ──
+    for di in range(6):
+        dx = 2.85 + di * 0.30
+        tint = (0.24, 0.26, 0.28, 1.0) if di in (2, 3) else DECK_TINTS[(di * 5 + 2) % len(DECK_TINTS)]
+        make_chamfer_box(f"NewDeck_{di}", (dx, 6.035, 1.55), (0.22, 0.03, 0.82), tint, chamfer=0.01)
+        if di in (2, 3):   # Lena's Tide Pool Geometries: long black curves on a deep gray ground
+            make_box(f"NewDeck_{di}_Line", (dx, 6.018, 1.55), (0.02, 0.004, 0.70), (0.06, 0.06, 0.07, 1.0))
+        make_box(f"NewDeck_{di}_Peg", (dx, 6.035, 1.975), (0.04, 0.03, 0.03), COL_STEEL)
+    # ── the hoodie rounder ──
+    hx, hy = 1.30, 2.40
+    make_lathe("Rounder_Base", (hx, hy, 0.0), [(0.32, 0.0), (0.30, 0.04), (0.05, 0.06), (0.0, 0.06)], COL_STEEL, segments=14)
+    make_cyl("Rounder_Pole", (hx, hy, 0.68), 0.02, 1.24, COL_STEEL, segments=8)
+    make_lathe("Rounder_Ring", (hx, hy, 1.30), [(0.52, 0.0), (0.55, 0.015), (0.52, 0.03), (0.49, 0.015)], COL_STEEL, segments=24, loop=True)
+    for ki in range(4):
+        a = ki * _cm.pi / 2.0
+        make_tube(f"Rounder_Spoke_{ki}", [(hx, hy, 1.30), (hx + 0.52 * _cm.cos(a), hy + 0.52 * _cm.sin(a), 1.30)], 0.008, COL_STEEL, segments=4)
+    hood = [(0.20, 0.22, 0.26, 1.0), (0.52, 0.18, 0.16, 1.0), (0.30, 0.40, 0.30, 1.0), (0.78, 0.74, 0.66, 1.0)]
+    for si in range(8):
+        a = si * _cm.pi / 4.0 + 0.2
+        make_chamfer_box(f"Rounder_Shirt_{si}", (hx + 0.56 * _cm.cos(a), hy + 0.56 * _cm.sin(a), 0.97), (0.08, 0.40, 0.62),
+                         hood[si % 4], chamfer=0.03, yaw=a)
+        # its hanger: the hook over the ring, the shoulders into the hood
+        make_tube(f"Rounder_Shirt_{si}_Hanger", [(hx + 0.52 * _cm.cos(a), hy + 0.52 * _cm.sin(a), 1.33),
+                                                 (hx + 0.56 * _cm.cos(a), hy + 0.56 * _cm.sin(a), 1.32),
+                                                 (hx + 0.56 * _cm.cos(a), hy + 0.56 * _cm.sin(a), 1.25)], 0.005, COL_STEEL, segments=4)
+    # ── the counter's things ──
+    make_lathe("Tidewater_Mug", (1.55, 5.10, 0.95), [(0.040, 0.0), (0.043, 0.01), (0.045, 0.10), (0.0, 0.095)], (0.88, 0.86, 0.80, 1.0), segments=12)
+    make_box("Tidewater_Mug_Chip", (1.55 - 0.044, 5.10, 1.045), (0.008, 0.02, 0.012), (0.70, 0.56, 0.40, 1.0))
+    make_box("Tidewater_Mug_Band", (1.55, 5.10, 1.00), (0.092, 0.092, 0.012), (0.24, 0.40, 0.52, 1.0))
+    make_box("Token_Box", (0.52, 5.66, 0.33), (0.16, 0.10, 0.07), (0.50, 0.34, 0.20, 1.0))
+    make_box("Token_Box_Lid", (0.52, 5.66, 0.37), (0.17, 0.11, 0.01), (0.42, 0.28, 0.16, 1.0))
+    # ── griptape on the repair bench ──
+    make_cyl("Griptape_Roll", (-1.05, 6.40, 1.005), 0.06, 0.26, (0.10, 0.10, 0.11, 1.0), axis='X', segments=12)
+    make_box("Griptape_Sheet", (-0.85, 6.02, 0.948), (0.24, 0.40, 0.003), (0.12, 0.12, 0.13, 1.0))
+    # ── across Main: the laundromat's downspout and the drone at it ──
+    make_tube("Laundromat_Downspout", [(5.6, -8.88, 4.35), (5.6, -8.88, 0.30), (5.6, -8.70, 0.14)], 0.05, (0.46, 0.46, 0.46, 1.0), segments=8)
+    make_drone("Drone_Laundromat", 5.6, -8.15, 3.30, arm_down=True)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -461,6 +545,7 @@ def main():
     build_main_street_2026_09()
     build_decor()
     build_draft3_2026_09()
+    build_draft4_2026_10()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/board_lords_interior.glb"))
     build_door_infill_alley_door_2026_09()
