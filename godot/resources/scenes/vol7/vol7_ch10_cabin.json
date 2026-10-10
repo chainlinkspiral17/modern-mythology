@@ -204,6 +204,10 @@
       "t": "narrate"
     },
     {
+      "src": "3d:cabin_road_truck",
+      "t": "bg"
+    },
+    {
       "text": "[shot:establish]Per's wooden box was on the bench seat between them in the truck. Kai drove. The rain on Main was steady.",
       "t": "narrate"
     },
@@ -416,7 +420,7 @@
       "t": "say"
     },
     {
-      "src": "3d:cabin_porch",
+      "src": "3d:cabin_road",
       "t": "bg"
     },
     {
@@ -434,6 +438,10 @@
     {
       "text": "Tem's wagon was a hundred yards ahead through the cedars on the third switchback, and Kai followed her up to the clearing, and at eleven-twelve they came up the bluff and the cabin was where it was.",
       "t": "narrate"
+    },
+    {
+      "src": "3d:cabin_porch",
+      "t": "bg"
     },
     {
       "char": "tem",
@@ -533,19 +541,19 @@
       "opts": [
         {
           "text": "look at", "skill": "logic",
-          "goto": 99,
+          "goto": 101,
           "flag": "ch10_box_looked",
           "hide_if_flag": "ch10_box_looked"
         },
         {
           "text": "ask Per", "skill": "rhetoric",
-          "goto": 101,
+          "goto": 103,
           "flag": "ch10_box_asked",
           "hide_if_flag": "ch10_box_asked"
         },
         {
           "text": "leave it", "skill": "composure",
-          "goto": 104
+          "goto": 106
         }
       ]
     },
@@ -555,7 +563,7 @@
     },
     {
       "t": "jump",
-      "goto": 98
+      "goto": 100
     },
     {
       "t": "say",
@@ -569,7 +577,7 @@
     },
     {
       "t": "jump",
-      "goto": 98
+      "goto": 100
     },
     {
       "text": "The cabin took the four of them. The rain on the cedar roof did not change.",

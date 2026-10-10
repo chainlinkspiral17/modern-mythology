@@ -628,6 +628,10 @@
       "voice": "assets/audio/voice/vol6_ch14_live_oak/104.mp3"
     },
     {
+      "t": "bg",
+      "src": "3d:jesse_bedroom"
+    },
+    {
       "t": "narrate",
       "text": "He goes upstairs. His parents' bedroom door is closed. The light under the door is off. His father snores in the cadence his father has snored in for as long as Jesse has known what snoring is.",
       "voice": "assets/audio/voice/vol6_ch14_live_oak/105.mp3"
@@ -805,6 +809,10 @@
     {
       "t": "hide",
       "pos": "center"
+    },
+    {
+      "t": "bg",
+      "src": "3d:caldwell_porch_night"
     },
     {
       "t": "narrate",

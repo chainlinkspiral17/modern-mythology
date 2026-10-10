@@ -391,3 +391,15 @@ metadata/fov = 42.0
 position = Vector3(-5.250, 1.500, 6.450)
 rotation = Vector3(-0.0720, -2.5269, 0.0)
 metadata/fov = 45.0
+
+; closeup (2026-10-10): the driver, from the passenger end of the bench seat
+[node name="shot_closeup_person__cabin_road_truck" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-3.250, 1.360, 7.950)
+rotation = Vector3(0.0229, 1.8019, 0.0)
+metadata/fov = 48.0
+
+; closeup (2026-10-10): the passenger, from behind the wheel
+[node name="shot_closeup_person_b__cabin_road_truck" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-4.120, 1.360, 7.950)
+rotation = Vector3(0.0000, -1.8045, 0.0)
+metadata/fov = 48.0

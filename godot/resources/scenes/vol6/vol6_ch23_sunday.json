@@ -7,7 +7,7 @@
  "nodes": [
   {
    "t": "bg",
-   "src": "3d:grandmother_kitchen_morning"
+   "src": "3d:diego_bedroom"
   },
   {
    "t": "hide",
@@ -46,6 +46,10 @@
   {
    "t": "narrate",
    "text": "[mood:day_bright]He goes downstairs."
+  },
+  {
+   "t": "bg",
+   "src": "3d:grandmother_kitchen_morning"
   },
   {
    "t": "show",
@@ -144,6 +148,10 @@
   {
    "t": "hide",
    "pos": "right"
+  },
+  {
+   "t": "bg",
+   "src": "3d:diego_bedroom"
   },
   {
    "t": "narrate",

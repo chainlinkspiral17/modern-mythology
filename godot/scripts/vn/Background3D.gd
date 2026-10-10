@@ -1847,6 +1847,19 @@ const CAMERA_PRESETS := {
 		"fov": 62.0,
 		"suppress_input": true,
 	},
+	"lena_studio": {
+		"scene": "res://scenes/locales/lena_studio.tscn",
+		"requires_glb": "res://assets/3d/locales/lena_studio.glb",
+		# (2026-10-10) vol7 ch3: "a back room behind the Daily Grind ...
+		# Twelve by sixteen. One north window. A sink. Cold concrete" — the
+		# 3.66 x 4.88 m studio (godot x 0..3.66, z 0..-4.88). From inside the
+		# alley door, NW: the six-by-eight canvas on the W wall, the north
+		# window, the wool rug, the table's corner at right.
+		"camera_origin": Vector3(2.60, 1.60, -0.45),
+		"camera_rotation": Vector3(-0.092, 0.844, 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
 	"lena_apartment": {
 		"scene": "res://scenes/locales/lena_apartment.tscn",
 		"requires_glb": "res://assets/3d/locales/lena_apartment.glb",

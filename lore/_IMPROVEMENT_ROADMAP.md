@@ -3834,6 +3834,63 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-10 · overnight run, pass 45: LENA'S STUDIO (a new set) + THE SWEEP'S
+ROUTING (vol6/vol7).** A second prose-vs-set sweep (an Explore agent,
+23 chapters) found 14 chapters with mismatches. This pass fixes the ones
+an existing set, or one new room, can carry.
+
+**The new `lena_studio`** (vol7 ch3, which played its studio half in her
+apartment): "a back room behind the Daily Grind ... Twelve by sixteen. One
+north window. A sink. Cold concrete ... a wool rug from Margit's". It is
+built to the prose's own measure, 3.66 x 4.88 m:
+- **The canvas.** Six by eight on handmade bars on the W wall: the
+  eleventh underpainting in grays, umbers and the green; the scraped wound
+  lower right; the one line of bone black upper left; the clamp lamp.
+- **The table.** The glass palette with bone black, Naples yellow, the
+  green and titanium white; tubes, brush jars, solvent capped at the
+  corner, the muller and the jar of bone black she grinds; gesso and
+  stretcher bars under it.
+- **The room.** The apron on its hook, the utility sink, the wooden stool
+  and the space heater, the old canvases turned to the wall, the alley
+  past the window.
+
+**Routing (existing sets):**
+- vol6 Prelude: "Diego Ramos's bedroom ... is empty" goes to
+  `diego_bedroom` (it played in Sam's).
+- Live Oak: Jesse's bedtime goes to `jesse_bedroom` (it was the
+  Henderson kitchen; `shot_insert_door` added); Maya's porch coda goes to
+  `caldwell_porch_night`.
+- ch23 "Sunday": Diego's waking and his second letter go to
+  `diego_bedroom` (both played in his grandmother's kitchen).
+- vol7 ch5, ch10 and ch16: the drives up to the cabin go to
+  `cabin_road_truck` (they played on Main Street and in Hans's bakery);
+  ch10's road line goes to `cabin_road`. The truck gains in-cab
+  `closeup_person` / `person_b` markers (DELIBERATE, like the Subaru's),
+  because its cues were landing on the road markers 12–15 m away.
+
+**Still open from the sweep (new sets needed):**
+- Caldwell front yard, afternoon (ch23 Sunday 51–104: the folding table
+  under the pecan);
+- the Gallatin Ave NexCorp construction lot and water tower at dawn
+  (Prelude 86–95);
+- the Kowalski front yard (ch19 Chains);
+- Bianca on the Marin back porch at 1:15 AM (ch22 Sunday);
+- the Ramos front porch (ch23);
+- Bianca's bedroom (ch23 Sleep, minor);
+- Cypress Room 7 (ch15, minor);
+- vol7 ch2's coastal opening montage, ch12's drive south to the cape.
+
+Kai's truck is played by Finn's truck (`cabin_road_truck`) in ch10 and
+ch16, a stand-in.
+
+LESSON (vn_target_audit caught it): a chapter with a choice addresses its
+branches by NODE INDEX (`"goto": 99`, and the jumps back to the choice).
+Inserting `bg` nodes ahead of a choice shifts every target. ch10 needed
+its gotos bumped by the two nodes inserted before them. Before inserting
+nodes into any chapter, grep it for `"goto"`.
+
+Deck must BUILD lena_studio (a new GLB).
+
 **2026-10-10 · overnight run, pass 44: THE NEXCORP FUELING STATION, DRAFT 2
 (the wrong PLACE ×4).** vol6 ch6's three chapters ("Vince Walks", "Three
 Hundred in Twenties", "Nine Minutes") all played in an auto-generated

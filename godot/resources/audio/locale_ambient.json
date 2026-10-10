@@ -177,6 +177,10 @@
       "bed": "assets/audio/bgm/vol5_venue_ambient.wav",
       "gain": 0.88
     },
+    "lena_studio": {
+      "bed": "assets/audio/bgm/vol7_apartment_rain.wav",
+      "gain": 0.85
+    },
     "lena_apartment": {
       "bed": "assets/audio/bgm/vol7_apartment_rain.wav",
       "gain": 0.88

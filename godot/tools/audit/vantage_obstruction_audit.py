@@ -78,6 +78,9 @@ DELIBERATE_MARKERS = {
     ("nexcorp_fueling_station", "shot_closeup_diego__nexcorp_van_cargo"),
     ("nexcorp_fueling_station", "shot_closeup_person__nexcorp_van_cargo"),
     ("nexcorp_fueling_station", "shot_closeup_person_b__nexcorp_van_cargo"),
+    # (2026-10-10) the truck's bench seat: driver and passenger a cab-width apart
+    ("cabin_road", "shot_closeup_person__cabin_road_truck"),
+    ("cabin_road", "shot_closeup_person_b__cabin_road_truck"),
 }
 # Builders whose recorded boxes do not sit where the runtime puts them
 # (harmony_terrain drapes its props over a heightfield the recorder

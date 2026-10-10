@@ -511,6 +511,10 @@
       "t": "narrate"
     },
     {
+      "src": "3d:cabin_road_truck",
+      "t": "bg"
+    },
+    {
       "text": "They got in the truck. Kai turned the engine. He drove the road up.",
       "t": "narrate"
     },
