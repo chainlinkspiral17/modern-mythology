@@ -2192,6 +2192,19 @@ const CAMERA_PRESETS := {
 		"fov": 66.0,
 		"suppress_input": true,
 	},
+	"small_wood_cemetery": {
+		"scene": "res://scenes/locales/small_wood_cemetery.tscn",
+		"requires_glb": "res://assets/3d/locales/small_wood_cemetery.glb",
+		# vol2's graveside (2026-10-10): Small Wood's hillside lawn
+		# cemetery — firs and cedars, granite uprights and flat markers,
+		# the aunt's open grave under the canopy at the origin, the lane
+		# and the hearse. It played on the Graustark tomb city. Camera
+		# behind the folding chairs looking N past the canopy.
+		"camera_origin": Vector3(1.00, 1.70, 7.50),
+		"camera_rotation": Vector3(-0.076, 0.095, 0.0),
+		"fov": 58.0,
+		"suppress_input": true,
+	},
 	"parish_cemetery": {
 		"scene": "res://scenes/locales/parish_cemetery.tscn",
 		"requires_glb": "res://assets/3d/locales/parish_cemetery.glb",

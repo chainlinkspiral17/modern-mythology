@@ -3834,6 +3834,33 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-10 · overnight run, pass 28: THE SMALL WOOD CEMETERY (a new set
+from the sweep).** vol2's graveside ("the minister says something about
+roots and returns ... Jo stands beside you") is in Small Wood, Oregon. It
+played on `parish_cemetery`, Graustark's above-ground tomb city of white
+limestone vaults: a Louisiana burial form, for an in-ground funeral on
+the Oregon coast. That set stays as the Tarot Gauntlet's Judgement board.
+The new `small_wood_cemetery` is a lawn cemetery:
+- **The setting.** Douglas firs and red cedars ringing it, the firs
+  spaced so no two crowns cross. Granite uprights in rows, the old ones
+  mossed, flat bronze markers, a family obelisk.
+- **The aunt's grave.** The green carpet and the opening, the lowering
+  device with the casket on its straps and a spray on the lid. The dirt
+  mound under its tarp. The funeral home's canopy and valance, two rows
+  of folding chairs with a program on one, the flower sprays on easels,
+  the minister's lectern.
+- **Around it.** The gravel lane with the hearse, the hills going grey
+  in a fog-heavy overcast.
+- **Scene.** An overcast key (daylight) and a sea-side fill; four
+  markers.
+- **Wiring.** vol2_graveyard routes to the new set; the ambient bed and
+  the chapter-bed map gain it.
+
+Draft 2 targets:
+- the mourners;
+- the hillside's fall;
+- the ocean past the firs.
+
 **2026-10-10 · overnight run, pass 27: JESSE'S ROOM, DRAFT 5 (a bed, and the
 Telecaster).** The prose says "In his bedroom he sits on the edge of the
 bed ... He puts the notebook on the nightstand. He gets in bed", "his back

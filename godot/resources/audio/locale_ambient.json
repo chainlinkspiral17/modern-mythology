@@ -573,6 +573,10 @@
       "bed": "assets/audio/bgm/vol2_graveyard_solo.wav",
       "gain": 0.82
     },
+    "small_wood_cemetery": {
+      "bed": "assets/audio/bgm/vol2_graveyard_solo.wav",
+      "gain": 0.82
+    },
     "pharmacy_floor": {
       "bed": "assets/audio/bgm/vol1_pharmacy.wav",
       "gain": 0.82
