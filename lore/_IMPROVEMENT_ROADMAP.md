@@ -3834,6 +3834,29 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-10 · overnight run, pass 31: BIANCA'S OFFICE (the wrong PERSON's
+room, from the sweep).** In vol6 ch17 Bianca is "at her desk in the
+small office off the master bedroom, paying the August bills ... The
+electric bill is ninety-six dollars ... The cable bill is one
+seventy-two. The Visa bill ... She closes the laptop." It played in
+Mike's converted dining room downstairs (`miller_office`).
+- **Her room.** Built into the same set 30 m east, where none of Mike's
+  windows see it: a small upstairs room with the white writing desk
+  under a morning window over the back yard. On the desk: the open
+  laptop, the three statements with their logos and torn envelopes, the
+  checkbook, the calculator, her coffee, Sam's school photograph, a desk
+  lamp.
+- **Around the desk.** The chair, a carcass bookshelf (its first cut was
+  a solid box that swallowed the books, the solid-frame lesson again),
+  the August calendar, the wastebasket.
+- **Through the W doorway.** The master bedroom's carpet, the bed's
+  corner, the dresser.
+- **Preset and routing.** New preset `miller_office_bianca`; ch17 routes
+  to it. Suffixed markers (bills, laptop, Bianca) and lights (window
+  fill, desk-lamp practical).
+
+Draft 2 target: the rest of the upstairs (the master bedroom proper).
+
 **2026-10-10 · overnight run, pass 30: CLUB SHARP (a new set from the
 sweep).** vol1 ch4: "a club in the heart of nowhere, beating with life ...
 Club Sharp has a # for a logo. Dickens Dean seems to have the run of the

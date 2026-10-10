@@ -136,6 +136,7 @@ PLACES = {
         "miller_kitchen": "vol6_new_auburn_kitchen",
         "miller_back_porch": "vol6_new_auburn_kitchen",
         "miller_office": "vol6_new_auburn_kitchen",
+        "miller_office_bianca": "vol6_new_auburn_kitchen",
         "miller_garage": "vol6_new_auburn_kitchen",
         "henderson_kitchen": "vol6_new_auburn_kitchen",
         "henderson_porch_front": "vol6_new_auburn_kitchen",

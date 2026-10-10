@@ -222,6 +222,22 @@ rotation = Vector3(-0.154, -0.427, 0.0)   ; the north window, from inside the ro
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.577, 1.812, -3.890)
 rotation = Vector3(-0.2618, -2.6180, 0.0)   ; the file cabinet
 
+; Bianca's morning window (stripped from the set's other presets)
+[node name="Bianca_Window_Fill__miller_office_bianca" type="OmniLight3D" parent="."]
+position = Vector3(30.400, 1.800, -3.000)
+light_color = Color(1.00, 0.94, 0.84, 1)
+light_energy = 0.90
+shadow_enabled = false
+omni_range = 4.00
+
+; her desk lamp
+[node name="Bianca_Desk_Lamp_Bulb_Practical__miller_office_bianca" type="OmniLight3D" parent="."]
+position = Vector3(29.920, 1.087, -2.930)
+light_color = Color(1.00, 0.86, 0.62, 1)
+light_energy = 0.50
+shadow_enabled = false
+omni_range = 2.00
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]
@@ -382,3 +398,22 @@ light_color = Color(1.000, 0.720, 0.420, 1)
 light_energy = 0.55
 shadow_enabled = false
 omni_range = 2.00
+
+; ── vn_shot · miller_office_bianca (2026-10-10): Bianca's office off the master bedroom (vol6 ch17) ──
+; insert: the August bills — the electric, the cable, the Visa — and their envelopes
+[node name="shot_insert_bills__miller_office_bianca" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(30.450, 1.250, -2.430)
+rotation = Vector3(-0.6669, -0.4133, 0.0)
+metadata/fov = 40.0
+
+; insert: the laptop, the payment going through at nine twenty-eight
+[node name="shot_insert_laptop__miller_office_bianca" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(30.050, 1.250, -2.380)
+rotation = Vector3(-0.5214, -0.3672, 0.0)
+metadata/fov = 40.0
+
+; closeup: Bianca at her desk, from inside the door
+[node name="shot_closeup_bianca__miller_office_bianca" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(30.900, 1.550, -0.750)
+rotation = Vector3(-0.2586, 0.3292, 0.0)
+metadata/fov = 42.0

@@ -886,6 +886,19 @@ const CAMERA_PRESETS := {
 		"fov": 60.0,
 		"suppress_input": true,
 	},
+	"miller_office_bianca": {
+		"scene": "res://scenes/locales/miller_office.tscn",
+		"requires_glb": "res://assets/3d/locales/miller_office.glb",
+		# vol6 ch17: Bianca "at her desk in the small office off the master
+		# bedroom, paying the August bills" (2026-10-10: it played in Mike's
+		# converted dining room). Her room is built into this set 30 m east
+		# (blender x 28.2..31.8). Camera in the doorway from the master
+		# bedroom, looking at her desk under the morning window.
+		"camera_origin": Vector3(28.40, 1.60, -1.20),
+		"camera_rotation": Vector3(-0.234, -0.850, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
 	"miller_office": {
 		"scene": "res://scenes/locales/miller_office.tscn",
 		"requires_glb": "res://assets/3d/locales/miller_office.glb",

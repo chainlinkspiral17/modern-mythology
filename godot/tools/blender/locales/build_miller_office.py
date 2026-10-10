@@ -276,6 +276,88 @@ def build_hero_props_2026_09():
     make_box("Bills_Checkbook", (-0.75, 3.60, 0.7745), (0.16, 0.08, 0.009), (0.24, 0.30, 0.44, 1.0))
 
 
+BX = 30.0                    # Bianca's office stands 30 m east of Mike's (no window of his sees it)
+B_W, B_D, B_CEIL = 3.6, 3.4, 2.5
+
+
+def build_bianca_office_2026_10():
+    """BIANCA'S OFFICE (2026-10-10). vol6 ch17: "At nine seventeen AM Friday
+    she is at her desk in the small office off the master bedroom, paying
+    the August bills that have come in this week. The electric bill is
+    ninety-six dollars ... The cable bill is one seventy-two. The Visa bill
+    is — she opens it — higher than she had expected ... She closes the
+    laptop." That scene played in THIS room — Mike's converted dining room
+    downstairs — so it is built here as its own small room upstairs: the
+    white writing desk under the morning window over the back yard, the
+    open laptop, the three bills and their torn envelopes, the checkbook,
+    the calculator, her coffee, the lamp, Sam's school photograph, the
+    August calendar, the bookshelf, the basket of mail; through the
+    doorway in its W wall, the corner of the master bedroom. Preset
+    `miller_office_bianca`; its markers and lights are suffixed."""
+    from _props.geometry import make_lathe, make_rot_box
+    from _props.furniture import make_lamp
+    from _props.decor import make_calendar
+    x0, x1 = BX - B_W / 2.0, BX + B_W / 2.0
+    wp = {"wall": (0.86, 0.84, 0.80, 1.0), "baseboard": (0.94, 0.94, 0.92, 1.0)}
+    make_box("Bianca_Floor", (BX - 1.4, B_D / 2.0, -0.05), (B_W + 3.0, B_D + 0.4, 0.10), (0.66, 0.62, 0.56, 1.0))
+    make_box("Bianca_Ceil", (BX - 1.4, B_D / 2.0, B_CEIL + 0.05), (B_W + 3.0, B_D + 0.4, 0.10), (0.94, 0.94, 0.92, 1.0))
+    make_wall_with_openings("Bianca_Wall_W", (x0, B_D / 2.0, 0), length=B_D + 0.4, height=B_CEIL, axis='Y', palette=wp,
+                            baseboard_face_sign=+1, openings=[(1.20, 1.03, 0.90, 2.05)])
+    make_wall("Bianca_Wall_E", (x1, B_D / 2.0, 0), length=B_D + 0.4, height=B_CEIL, axis='Y', palette=wp, baseboard_face_sign=-1)
+    make_wall("Bianca_Wall_S", (BX - 1.4, 0.0, 0), length=B_W + 3.2, height=B_CEIL, axis='X', palette=wp, baseboard_face_sign=+1)
+    make_wall_with_openings("Bianca_Wall_N", (BX - 1.4, B_D, 0), length=B_W + 3.2, height=B_CEIL, axis='X', palette=wp,
+                            baseboard_face_sign=-1, openings=[(BX + 0.4, 1.50, 1.20, 1.10)])
+    make_window("Bianca_Window_N", (BX + 0.4, B_D - 0.10, 1.50), width=1.20, height=1.10, see_through=True)
+    # the master bedroom past the doorway: its carpet, the bed's corner, the dresser
+    make_wall("Bianca_Bedroom_Wall_W", (x0 - 3.0, B_D / 2.0, 0), length=B_D + 0.4, height=B_CEIL, axis='Y', palette=wp, baseboard_face_sign=+1)
+    make_box("Bianca_Bedroom_Carpet", (x0 - 1.5, B_D / 2.0, 0.005), (2.9, B_D - 0.2, 0.01), (0.70, 0.66, 0.60, 1.0))
+    make_box("Bianca_Bedroom_Bed_Frame", (x0 - 1.4, 2.2, 0.25), (1.60, 1.60, 0.50), (0.40, 0.30, 0.22, 1.0))
+    make_box("Bianca_Bedroom_Bed_Spread", (x0 - 1.4, 2.2, 0.53), (1.64, 1.64, 0.06), (0.62, 0.70, 0.76, 1.0))
+    make_box("Bianca_Bedroom_Dresser", (x0 - 2.7, 0.70, 0.45), (0.50, 1.00, 0.90), (0.40, 0.30, 0.22, 1.0))
+    # the desk under the window
+    dx, dy = BX + 0.4, B_D - 0.42
+    make_box("Bianca_Desk_Top", (dx, dy, 0.74), (1.20, 0.60, 0.03), (0.94, 0.93, 0.90, 1.0))
+    for i, (lx, ly) in enumerate(((-0.56, -0.26), (0.56, -0.26), (-0.56, 0.26), (0.56, 0.26))):
+        make_box(f"Bianca_Desk_Leg_{i}", (dx + lx, dy + ly, 0.36), (0.04, 0.04, 0.72), (0.92, 0.91, 0.88, 1.0))
+    make_box("Bianca_Desk_Drawer", (dx, dy - 0.29, 0.67), (0.60, 0.02, 0.11), (0.90, 0.89, 0.86, 1.0))
+    top = 0.755
+    make_box("Bianca_Laptop_Base", (dx - 0.10, dy - 0.02, top + 0.009), (0.32, 0.22, 0.018), (0.70, 0.72, 0.74, 1.0))
+    make_rot_box("Bianca_Laptop_Screen", (dx - 0.10, dy + 0.09, top + 0.12), (0.32, 0.012, 0.21), (0.70, 0.72, 0.74, 1.0), pitch=0.0, roll=0.0)
+    make_box("Bianca_Laptop_Display", (dx - 0.10, dy + 0.082, top + 0.12), (0.29, 0.002, 0.18), (0.36, 0.58, 0.80, 1.0))
+    # the bills: three statements and their torn envelopes
+    for i, (bx_, by_, col) in enumerate(((dx + 0.28, dy - 0.10, (0.96, 0.95, 0.92, 1.0)), (dx + 0.40, dy + 0.06, (0.94, 0.94, 0.96, 1.0)),
+                                        (dx + 0.18, dy + 0.12, (0.96, 0.94, 0.90, 1.0)))):
+        make_rot_box(f"Bill_{i}", (bx_, by_, top + 0.002 + i * 0.002), (0.216, 0.279, 0.002), col, yaw=0.15 * (i - 1))
+        make_rot_box(f"Bill_{i}_Logo", (bx_ - 0.06, by_ + 0.10, top + 0.004 + i * 0.002), (0.06, 0.03, 0.001),
+                     [(0.86, 0.40, 0.16, 1.0), (0.20, 0.36, 0.70, 1.0), (0.16, 0.24, 0.56, 1.0)][i], yaw=0.15 * (i - 1))
+        make_rot_box(f"Bill_{i}_Envelope", (dx - 0.45 + i * 0.05, dy - 0.15 + i * 0.03, top + 0.003 + i * 0.002), (0.24, 0.105, 0.003),
+                     (0.94, 0.94, 0.90, 1.0), yaw=0.3 * i)
+    make_box("Bianca_Checkbook", (dx + 0.45, dy - 0.18, top + 0.008), (0.17, 0.08, 0.016), (0.20, 0.30, 0.46, 1.0))
+    make_box("Bianca_Calculator", (dx - 0.42, dy + 0.12, top + 0.01), (0.09, 0.15, 0.02), (0.20, 0.20, 0.22, 1.0))
+    make_lathe("Bianca_Coffee_Mug", (dx + 0.50, dy + 0.18, top), [(0.0, 0.0), (0.04, 0.0), (0.042, 0.10), (0.0, 0.10)], (0.86, 0.80, 0.66, 1.0), segments=10)
+    make_box("Sam_School_Photo", (dx - 0.48, dy + 0.24, top + 0.08), (0.12, 0.02, 0.16), (0.40, 0.30, 0.22, 1.0))
+    make_lamp("Bianca_Desk_Lamp", dx - 0.48, dy - 0.05, base_z=top, h=0.42, shade_col=(0.94, 0.90, 0.80, 1.0), body_col=(0.80, 0.80, 0.78, 1.0))
+    from _props.furniture import make_chair
+    make_chair("Bianca_Chair", dx - 0.05, dy - 0.62, yaw=0.0, wood=(0.90, 0.89, 0.86, 1.0), seat_col=(0.62, 0.66, 0.70, 1.0), w=0.44)
+    # the bookshelf and the calendar on the E wall, the basket of mail, the wastebasket
+    # the bookshelf: a carcass (back, sides, top, three shelves) with the books ON the shelves
+    sx, sy0, sy1 = x1 - 0.10 - 0.16, 0.80, 1.60
+    white = (0.94, 0.93, 0.90, 1.0)
+    make_box("Bianca_Bookshelf_Back", (x1 - 0.10 - 0.01, (sy0 + sy1) / 2.0, 0.80), (0.02, sy1 - sy0, 1.60), white)
+    for i, y in enumerate((sy0 + 0.01, sy1 - 0.01)):
+        make_box(f"Bianca_Bookshelf_Side_{i}", (sx, y, 0.80), (0.32, 0.02, 1.60), white)
+    for s_i, z in enumerate((0.04, 0.54, 1.04, 1.585)):
+        make_box(f"Bianca_Bookshelf_Shelf_{s_i}", (sx, (sy0 + sy1) / 2.0, z), (0.32, sy1 - sy0 - 0.04, 0.03), white)
+    for s_i in range(3):
+        z0 = (0.04, 0.54, 1.04)[s_i] + 0.015
+        for k in range(6):
+            make_box(f"Bianca_Book_{s_i}_{k}", (sx + 0.02, 0.88 + k * 0.11, z0 + 0.13), (0.22, 0.08, 0.26),
+                     [(0.62, 0.30, 0.28, 1.0), (0.30, 0.44, 0.60, 1.0), (0.84, 0.76, 0.52, 1.0)][(s_i + k) % 3])
+    make_calendar("Bianca_Calendar_August", (x1 - 0.10, 2.40, 1.55), axis='Y')
+    make_cyl("Bianca_Wastebasket", (dx + 0.55, dy - 0.55, 0.15), 0.12, 0.30, (0.80, 0.80, 0.78, 1.0), segments=10)
+    make_view("Bianca_View_N", "N", B_D, BX + 0.4, kind="back", ground_z=0.0, seed=4)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -287,6 +369,7 @@ def main():
     build_hero_props_2026_09()
     # what is outside the window (2026-10-07, _props/views.py)
     make_view("View_N", "N", ROOM_D, 0.0, kind="back", ground_z=0.0, seed=1)   # the subdivision back yard in the rain
+    build_bianca_office_2026_10()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/miller_office.glb"))
     print(f"\n[build_miller_office] exporting to {out}")
