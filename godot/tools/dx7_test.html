@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>DX7 · Modern Mythology</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --bg-0: #050304; --bg-1: #0e0908; --ink: #1a1410;
+    --rule: #553318; --gold: #d8a060; --gold-hi: #ffd896;
+    --text: #c8a878; --text-dim: #7a5828;
+    --emerald: #4ea060; --emerald-hi: #a8e89c; --rust: #c87633; --burgundy: #7a1e26;
+    --red: #c64a3a; --amber: #f0b94a; --violet: #c8a4f0;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100vh; overflow: hidden; background: var(--bg-0); color: var(--text); font-family: "Courier New", monospace; }
+  body { display: grid; grid-template-rows: auto auto minmax(0, 1fr) auto auto; }
+  header { padding: 6px 14px; border-bottom: 1px solid var(--rule); display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  header h1 { margin: 0; font-size: 15px; letter-spacing: 0.18em; color: var(--gold-hi); }
+  .badge { font-size: 10px; letter-spacing: 0.08em; padding: 2px 7px; border: 1px solid var(--rule); color: var(--text-dim); }
+  .badge.ok { color: var(--emerald-hi); border-color: var(--emerald); }
+  .badge.warn { color: var(--amber); border-color: var(--amber); }
+  .badge.bad { color: var(--red); border-color: var(--red); }
+  .sub { color: var(--text-dim); font-size: 11px; font-style: italic; }
+  .transport { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; padding: 5px 14px; border-bottom: 1px solid var(--rule); font-size: 11px; }
+  .transport label { color: var(--text-dim); letter-spacing: 0.06em; display: inline-flex; align-items: center; gap: 4px; }
+  .transport .sep { width: 1px; height: 18px; background: var(--rule); }
+  select, input[type=number], input[type=text], input[type=url] { background: var(--ink); color: var(--gold-hi); border: 1px solid var(--rule); font-family: inherit; font-size: 11px; padding: 4px 5px; }
+  input[type=range] { accent-color: var(--rust); touch-action: none; }
+  button, .filebtn { background: var(--ink); color: var(--gold-hi); border: 1px solid var(--gold); padding: 5px 10px; min-height: 30px; font-family: inherit; font-size: 10px; letter-spacing: 0.08em; cursor: pointer; touch-action: manipulation; display: inline-flex; align-items: center; }
+  button:hover:not(:disabled), .filebtn:hover { background: var(--gold); color: var(--ink); }
+  button:disabled { opacity: 0.35; cursor: default; }
+  button.dim { color: var(--text-dim); border-color: var(--rule); }
+  button.on { background: var(--rust); color: var(--ink); border-color: var(--gold-hi); }
+  .filebtn input { display: none; }
+  main { display: grid; grid-template-columns: 300px minmax(0, 1fr); min-height: 0; }
+  #lib { border-right: 1px solid var(--rule); display: flex; flex-direction: column; min-height: 0; }
+  #libhead { padding: 5px 10px; border-bottom: 1px solid var(--rule); font-size: 10px; letter-spacing: 0.1em; color: var(--gold); display: flex; justify-content: space-between; gap: 6px; align-items: center; }
+  #libhead span { color: var(--text-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  #voices { list-style: none; margin: 0; padding: 0; overflow-y: auto; flex: 1; min-height: 0; touch-action: pan-y; }
+  #voices li { display: grid; grid-template-columns: 2.4ch 1fr; column-gap: 6px; padding: 4px 10px; border-bottom: 1px solid #22160c; cursor: pointer; min-height: 36px; align-content: center; }
+  #voices li .n { color: var(--text-dim); font-size: 10px; grid-row: span 2; align-self: center; }
+  #voices li .nm { color: var(--gold-hi); font-size: 12px; letter-spacing: 0.08em; white-space: pre; }
+  #voices li .ds { color: var(--text-dim); font-size: 9px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  #voices li:hover { background: #160e08; }
+  #voices li.sel { background: #2a1a0c; box-shadow: inset 3px 0 0 var(--gold); }
+  #editor { min-height: 0; min-width: 0; overflow: hidden; }
+  .kbwrap { border-top: 1px solid var(--rule); padding: 5px 14px 4px; display: flex; gap: 10px; align-items: stretch; }
+  .wheels { display: flex; gap: 8px; align-items: stretch; }
+  .wheel { display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 9px; color: var(--text-dim); letter-spacing: 0.08em; }
+  .wheel input { writing-mode: vertical-lr; direction: rtl; width: 26px; height: 74px; margin: 0; }
+  #kbd { position: relative; flex: 1; height: 88px; touch-action: none; user-select: none; -webkit-user-select: none; }
+  #kbd .k { position: absolute; top: 0; border: 1px solid var(--rule); cursor: pointer; }
+  #kbd .w { height: 100%; background: #e8dcc4; z-index: 1; border-color: #8a7050; border-radius: 0 0 3px 3px; }
+  #kbd .b { height: 60%; background: #1a1410; z-index: 2; border-color: #000; border-radius: 0 0 2px 2px; }
+  #kbd .k.on.w { background: var(--gold); }
+  #kbd .k.on.b { background: var(--rust); }
+  #kbd .k span { position: absolute; bottom: 3px; left: 0; right: 0; text-align: center; font-size: 9px; color: #7a5828; pointer-events: none; }
+  footer { padding: 4px 14px; border-top: 1px solid var(--rule); color: var(--text-dim); font-size: 10px; display: flex; gap: 14px; flex-wrap: wrap; }
+  footer a { color: var(--gold); text-decoration: none; }
+  kbd { border: 1px solid var(--rule); padding: 0 3px; color: var(--gold-hi); font-family: inherit; }
+  .msg { color: var(--emerald-hi); font-size: 10px; max-width: 360px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .msg.err { color: var(--red); }
+  .msg.warn { color: var(--amber); }
+  body.drop::after { content: 'DROP .SYX TO LOAD'; position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(5,3,4,.8); color: var(--gold-hi); font-size: 22px; letter-spacing: .2em; border: 2px dashed var(--gold); }
+</style>
+</head>
+<body>
+<header>
+  <h1>DX7</h1>
+  <span class="badge" id="b-audio">AUDIO: off · tap or press a key</span>
+  <span class="badge" id="b-engine">ENGINE: —</span>
+  <span class="badge" id="b-midi">MIDI: —</span>
+  <span class="badge" id="b-voices">VOICES 0/16</span>
+  <span class="sub">six operators, thirty-two algorithms · the msfa engine the FM-1 runs · load any DX7 cartridge</span>
+</header>
+
+<div class="transport">
+  <label class="filebtn" title="load a .syx cartridge or single-voice dump (or drop one on the page)">LOAD .SYX<input type="file" id="file" accept=".syx,.SYX,.bin,.dx7,application/octet-stream"></label>
+  <input type="url" id="url" placeholder="https://…/bank.syx" style="width:190px" title="fetch a .syx from a URL (http/https)">
+  <button class="dim" id="fetch">FETCH</button>
+  <button class="dim" id="expbank" title="download the bank (with your edits) as a 32-voice .syx">⇩ BANK .SYX</button>
+  <button class="dim" id="expvoice" title="download the current voice as a single-voice .syx">⇩ VOICE .SYX</button>
+  <span class="sep"></span>
+  <label>OCT <button class="dim" id="octdn" title="octave down (←)">−</button><b id="oct" style="color:var(--gold-hi);min-width:14px;text-align:center">3</b><button class="dim" id="octup" title="octave up (→)">+</button></label>
+  <label title="velocity for the on-screen and computer keyboards">VEL <input type="range" id="vel" min="0.05" max="1" step="0.01" value="0.8" style="width:70px"></label>
+  <button class="dim" id="hold" title="sustain pedal (hold Space)">SUSTAIN</button>
+  <button class="on" id="aud" title="play a short note when you pick a voice">AUDITION</button>
+  <button class="dim" id="panic" title="silence everything">PANIC</button>
+  <label title="output volume (CC 7 from MIDI also works)">VOL <input type="range" id="vol" min="0" max="2" step="0.01" value="1" style="width:70px"></label>
+  <span class="msg" id="msg"></span>
+</div>
+
+<main>
+  <section id="lib">
+    <div id="libhead">BANK <span id="bankname">—</span></div>
+    <ul id="voices"></ul>
+  </section>
+  <div id="editor"></div>
+</main>
+
+<div class="kbwrap">
+  <div class="wheels">
+    <div class="wheel">BEND<input type="range" id="pb" min="-1" max="1" step="0.01" value="0" title="pitch bend (springs back)"></div>
+    <div class="wheel">MOD<input type="range" id="mw" min="0" max="1" step="0.01" value="0" title="mod wheel (CC 1)"></div>
+  </div>
+  <div id="kbd"></div>
+</div>
+
+<footer>
+  <span>← <a href="index.html">all tools</a> · <a href="forge_synth.html">FORGE</a> · <a href="fm1_console.html">FM-1 CONSOLE</a> · <a href="daw.html">DAW</a></span>
+  <span>keys <kbd>Z</kbd>–<kbd>/</kbd> and <kbd>Q</kbd>–<kbd>]</kbd> · <kbd>←</kbd><kbd>→</kbd> octave · hold <kbd>Space</kbd> sustain · <kbd>↑</kbd><kbd>↓</kbd> voice</span>
+  <span>engine: msfa (Apache-2.0) port · edits save in this browser · ⇩ BANK .SYX to keep them</span>
+</footer>
+
+<script src="fm1_firmwares.js"></script>
+<script src="midi_input.js"></script>
+<script src="audio_kit.js"></script>
+<script src="touch_controls.js"></script>
+<script src="fm1_dx7.js"></script>
+<script src="dx7_synth.js"></script>
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const BANK_KEY = 'mm_dx7_bank', SLOT_KEY = 'mm_dx7_slot', OPTS_KEY = 'mm_dx7_opts';
+const NN = DX7.NOTE_NAMES;
+
+// ── audio + synth ────────────────────────────────────────────────
+const AC = window.AudioContext || window.webkitAudioContext;
+const ctx = new AC({ latencyHint: 'interactive' });
+const synth = new DX7Synth(ctx, { maxVoices: 16 });
+window.synth = synth; window.ctx = ctx;              // handy from the console
+const ready = synth.init().then(() => { engineBadge(true); return synth; }, e => { engineBadge(false, e); throw e; });
+window.dx7Ready = ready;
+
+function engineBadge(ok, e) {
+  const b = $('b-engine');
+  b.className = 'badge ' + (ok ? 'ok' : 'bad');
+  b.textContent = ok ? 'ENGINE: worklet · ' + ctx.sampleRate + ' Hz' : 'ENGINE: failed — ' + (e && e.message || e);
+}
+function refreshAudioBadge() {
+  const b = $('b-audio');
+  if (ctx.state === 'running') { b.className = 'badge ok'; b.textContent = 'AUDIO: on'; }
+  else { b.className = 'badge warn'; b.textContent = 'AUDIO: off · tap or press a key'; }
+}
+function ensureAudio() { if (ctx.state !== 'running') ctx.resume().then(refreshAudioBadge).catch(() => {}); }
+['pointerdown', 'keydown', 'touchstart'].forEach(ev => document.addEventListener(ev, ensureAudio, { capture: true }));
+ctx.onstatechange = refreshAudioBadge;
+refreshAudioBadge();
+setInterval(() => { $('b-voices').textContent = 'VOICES ' + synth.activeVoices + '/' + synth.maxVoices; }, 150);
+
+function msg(t, kind) { const m = $('msg'); m.textContent = t; m.title = t; m.className = 'msg' + (kind ? ' ' + kind : ''); }
+
+// ── demo bank (original patches, so the page makes sound before a cartridge is loaded) ──
+function demoVoice(name, alg, fb, ops, extra) {
+  const v = DX7.defaultVoice();
+  v.name = name; v.algorithm = alg - 1; v.feedback = fb;
+  ops.forEach((o, i) => { v.ops[i] = Object.assign(v.ops[i], o); });
+  return Object.assign(v, extra || {});
+}
+function demoBank() {
+  const off = { output: 0 };
+  const b = [
+    demoVoice('TINE PIANO', 5, 6, [
+      { output: 99, rates: [96, 25, 25, 67], levels: [99, 75, 0, 0], kvs: 2, rateScaling: 3 },
+      { output: 58, coarse: 1, rates: [95, 50, 35, 78], levels: [99, 75, 0, 0], kvs: 7, rateScaling: 3 },
+      { output: 99, rates: [95, 20, 20, 50], levels: [99, 95, 0, 0], kvs: 2, detune: 9 },
+      { output: 89, coarse: 14, rates: [95, 29, 20, 50], levels: [99, 95, 0, 0], kvs: 6, rateScaling: 3 },
+      { output: 99, rates: [95, 20, 20, 50], levels: [99, 95, 0, 0], kvs: 0, detune: 5 },
+      { output: 79, coarse: 1, rates: [95, 29, 20, 50], levels: [99, 95, 0, 0], kvs: 6 }]),
+    demoVoice('GLASS BELL', 5, 3, [
+      { output: 99, rates: [99, 30, 20, 30], levels: [99, 60, 0, 0], kvs: 2 },
+      { output: 72, coarse: 3, fine: 50, rates: [99, 40, 20, 30], levels: [99, 50, 0, 0], kvs: 5 },
+      { output: 90, coarse: 2, rates: [99, 25, 20, 30], levels: [99, 55, 0, 0], kvs: 2, detune: 10 },
+      { output: 70, coarse: 7, rates: [99, 45, 20, 30], levels: [99, 40, 0, 0], kvs: 5 },
+      { output: 80, coarse: 4, rates: [99, 22, 20, 30], levels: [99, 50, 0, 0], kvs: 2, detune: 4 },
+      { output: 60, coarse: 9, fine: 20, rates: [99, 50, 20, 30], levels: [99, 30, 0, 0], kvs: 4 }]),
+    demoVoice('DEEP BASS', 16, 6, [
+      { output: 99, rates: [99, 35, 30, 60], levels: [99, 85, 70, 0], kvs: 2 },
+      { output: 82, coarse: 1, rates: [99, 45, 30, 60], levels: [99, 60, 40, 0], kvs: 5 },
+      { output: 70, coarse: 2, rates: [99, 60, 30, 60], levels: [99, 40, 20, 0], kvs: 4 },
+      { output: 60, coarse: 3, rates: [99, 70, 30, 60], levels: [99, 30, 0, 0], kvs: 4 },
+      { output: 55, coarse: 1, rates: [99, 50, 30, 60], levels: [99, 40, 0, 0] },
+      { output: 50, coarse: 1, rates: [99, 40, 30, 60], levels: [99, 40, 0, 0] }], { transpose: 12 }),
+    demoVoice('SOFT PAD', 1, 4, [
+      { output: 95, rates: [40, 30, 30, 35], levels: [99, 90, 85, 0] },
+      { output: 66, coarse: 1, rates: [35, 30, 30, 35], levels: [99, 85, 80, 0] },
+      { output: 95, rates: [40, 30, 30, 35], levels: [99, 90, 85, 0], detune: 10 },
+      { output: 62, coarse: 2, rates: [30, 30, 30, 35], levels: [99, 80, 75, 0] },
+      { output: 55, coarse: 1, rates: [30, 30, 30, 35], levels: [99, 80, 70, 0], detune: 4 },
+      { output: 40, coarse: 3, rates: [30, 30, 30, 35], levels: [99, 70, 60, 0] }], { lfoSpeed: 30, lfoDelay: 40, lfoPmd: 6, pitchModSens: 3 }),
+  ];
+  while (b.length < 32) b.push(DX7.defaultVoice());
+  return b;
+}
+
+// ── bank ──────────────────────────────────────────────────────────
+let bank = demoBank(), bankName = 'demo (original patches)', cur = 0, audition = true;
+const b64 = u8 => { let s = ''; for (let i = 0; i < u8.length; i += 0x8000) s += String.fromCharCode.apply(null, u8.subarray(i, i + 0x8000)); return btoa(s); };
+const unb64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+try {
+  const s = localStorage.getItem(BANK_KEY);
+  if (s) { const j = JSON.parse(s); const r = DX7.parseSysex(unb64(j.syx)); if (r.voices.length) { bank = r.voices.slice(0, 32); bankName = j.name || 'saved bank'; } }
+  cur = Math.max(0, Math.min(31, +localStorage.getItem(SLOT_KEY) || 0));
+  const o = JSON.parse(localStorage.getItem(OPTS_KEY) || 'null');
+  if (o) synth.setState(Object.assign({}, o, { voice: bank[cur] }));
+} catch (e) { /* storage blocked or junk */ }
+while (bank.length < 32) bank.push(DX7.defaultVoice());
+
+let saveTimer = 0;
+function saveSoon() {
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => {
+    try {
+      localStorage.setItem(BANK_KEY, JSON.stringify({ name: bankName, syx: b64(DX7.bankToSysex(bank)) }));
+      localStorage.setItem(SLOT_KEY, String(cur));
+      const s = synth.getState(); delete s.voice; localStorage.setItem(OPTS_KEY, JSON.stringify(s));
+    } catch (e) { /* storage blocked */ }
+  }, 600);
+}
+
+function renderList() {
+  const ul = $('voices'); ul.textContent = '';
+  bank.forEach((v, i) => {
+    const li = document.createElement('li');
+    li.dataset.i = i;
+    if (i === cur) li.className = 'sel';
+    li.innerHTML = '<span class="n">' + String(i + 1).padStart(2, '0') + '</span><span class="nm"></span><span class="ds"></span>';
+    li.querySelector('.nm').textContent = DX7.voiceName(v);
+    li.querySelector('.ds').textContent = DX7.describe(v);
+    ul.appendChild(li);
+  });
+  $('bankname').textContent = bankName; $('bankname').title = bankName;
+}
+function selectVoice(i, play) {
+  cur = Math.max(0, Math.min(bank.length - 1, i));
+  synth.loadVoice(bank[cur]);
+  for (const li of $('voices').children) li.classList.toggle('sel', +li.dataset.i === cur);
+  const li = $('voices').children[cur]; if (li) li.scrollIntoView({ block: 'nearest' });
+  if (play && audition) { ensureAudio(); const t = ctx.currentTime + 0.03; synth.noteOn(60, +$('vel').value, t, 16); synth.noteOff(60, t + 0.6, 16); }
+  saveSoon();
+}
+$('voices').addEventListener('click', e => { const li = e.target.closest('li'); if (li) selectVoice(+li.dataset.i, true); });
+
+function loadBytes(bytes, name) {
+  const r = DX7.parseSysex(bytes);
+  if (!r.voices.length) { msg((name || 'file') + ': ' + (r.warnings[0] || 'no DX7 voices'), 'err'); return r; }
+  if (r.kind === 'voice' && r.voices.length < 32) {
+    // single voice(s): drop them into the bank from the current slot on
+    r.voices.forEach((v, k) => { if (cur + k < 32) bank[cur + k] = v; });
+    msg('loaded ' + r.voices.length + ' voice' + (r.voices.length > 1 ? 's' : '') + ' into slot ' + (cur + 1) + (r.warnings.length ? ' · ' + r.warnings.join('; ') : ''), r.warnings.length ? 'warn' : '');
+  } else {
+    bank = r.voices.slice(0, 32); while (bank.length < 32) bank.push(DX7.defaultVoice());
+    bankName = name || 'bank'; cur = 0;
+    const bad = r.checksums.filter(c => !c.ok).length;
+    msg(bankName + ': ' + r.format + ' · ' + r.voices.length + ' voices' + (r.banks.length > 1 ? ' (showing bank 1 of ' + r.banks.length + ')' : '') +
+      (bad ? ' · ' + bad + ' bad checksum(s), loaded anyway' : ' · checksum ok') + (r.warnings.length && !bad ? ' · ' + r.warnings[0] : ''), bad || r.warnings.length ? 'warn' : '');
+  }
+  renderList(); selectVoice(cur, false); saveSoon();
+  return r;
+}
+window.loadBytes = loadBytes;
+$('file').addEventListener('change', async e => {
+  const f = e.target.files && e.target.files[0]; if (!f) return;
+  loadBytes(new Uint8Array(await f.arrayBuffer()), f.name.replace(/\.[^.]+$/, ''));
+  e.target.value = '';
+});
+$('fetch').addEventListener('click', async () => {
+  const u = $('url').value.trim(); if (!u) return;
+  msg('fetching…');
+  try {
+    const r = await fetch(u); if (!r.ok) throw new Error('HTTP ' + r.status);
+    loadBytes(new Uint8Array(await r.arrayBuffer()), decodeURIComponent(u.split('/').pop().replace(/\.[^.]+$/, '')) || 'url');
+  } catch (e) { msg('fetch failed: ' + (e.message || e) + (location.protocol === 'file:' ? ' (file:// pages can only fetch http(s) URLs that allow CORS)' : ''), 'err'); }
+});
+document.addEventListener('dragover', e => { e.preventDefault(); document.body.classList.add('drop'); });
+document.addEventListener('dragleave', e => { if (!e.relatedTarget) document.body.classList.remove('drop'); });
+document.addEventListener('drop', async e => {
+  e.preventDefault(); document.body.classList.remove('drop');
+  const f = e.dataTransfer.files && e.dataTransfer.files[0]; if (f) loadBytes(new Uint8Array(await f.arrayBuffer()), f.name.replace(/\.[^.]+$/, ''));
+});
+function download(bytes, name) {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([bytes], { type: 'application/octet-stream' }));
+  a.download = name; document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+}
+const slug = s => String(s).trim().replace(/[^A-Za-z0-9._-]+/g, '_').replace(/^_+|_+$/g, '') || 'dx7';
+$('expbank').addEventListener('click', () => { download(DX7.bankToSysex(bank), slug(bankName) + '.syx'); msg('exported ' + slug(bankName) + '.syx (4104 bytes, 32 voices)'); });
+$('expvoice').addEventListener('click', () => { const v = synth.voice; download(DX7.voiceToSysex(v), slug(DX7.voiceName(v)) + '.syx'); msg('exported single voice "' + DX7.voiceName(v) + '"'); });
+
+// editor edits write back into the bank slot
+const editor = synth.mountEditor($('editor'));
+let listTimer = 0;
+synth.on('change', d => {
+  if (d.path === 'voice' || d.path === '*') return;
+  bank[cur] = synth.voice;
+  clearTimeout(listTimer);
+  listTimer = setTimeout(() => {
+    const li = $('voices').children[cur];
+    if (li) { li.querySelector('.nm').textContent = DX7.voiceName(bank[cur]); li.querySelector('.ds').textContent = DX7.describe(bank[cur]); }
+  }, 250);
+  saveSoon();
+});
+
+// ── transport controls ───────────────────────────────────────────
+let octave = 3;
+function setOct(o) { releaseAllKeys(); octave = Math.max(0, Math.min(7, o)); $('oct').textContent = octave; buildKbd(); }
+$('octdn').addEventListener('click', () => setOct(octave - 1));
+$('octup').addEventListener('click', () => setOct(octave + 1));
+let sustainLatched = false;
+function setSustain(on) { synth.cc(64, on ? 1 : 0); $('hold').classList.toggle('on', on); $('hold').classList.toggle('dim', !on); }
+$('hold').addEventListener('click', () => { sustainLatched = !sustainLatched; setSustain(sustainLatched); });
+$('aud').addEventListener('click', () => { audition = !audition; $('aud').classList.toggle('on', audition); $('aud').classList.toggle('dim', !audition); });
+$('panic').addEventListener('click', () => { releaseAllKeys(); synth.panic(); sustainLatched = false; setSustain(false); if (mi) try { mi.allNotesOff(); } catch (e) { /* ok */ } });
+$('vol').value = synth.state.gain;
+$('vol').addEventListener('input', () => synth.setParam('gain', +$('vol').value));
+synth.on('change', d => { if ((d.path === 'gain' || d.path === '*') && document.activeElement !== $('vol')) $('vol').value = synth.state.gain; });
+$('mw').addEventListener('input', () => synth.cc(1, +$('mw').value));
+$('pb').addEventListener('input', () => synth.pitchBend(+$('pb').value));
+const springBack = () => { if (+$('pb').value !== 0) { $('pb').value = 0; synth.pitchBend(0); } };
+$('pb').addEventListener('pointerup', springBack); $('pb').addEventListener('change', springBack);
+
+// ── playing (on-screen keys, computer keys, MIDI) ────────────────
+const held = new Map();
+let _fromMidi = false;
+function play(note, vel) { ensureAudio(); synth.noteOn(note, vel); if (!_fromMidi && mi && mi.echoNoteOn) try { mi.echoNoteOn(note, vel); } catch (e) { /* ok */ } markKey(note, true); }
+function stop(note) { synth.noteOff(note); if (!_fromMidi && mi && mi.echoNoteOff) try { mi.echoNoteOff(note); } catch (e) { /* ok */ } markKey(note, false); }
+function releaseAllKeys() { for (const [, n] of held) stop(n); held.clear(); }
+const vel = () => +$('vel').value;
+
+function buildKbd() {
+  const kb = $('kbd'); kb.textContent = '';
+  const base = 12 * (octave + 1), N = 37, whites = [];
+  for (let i = 0; i < N; i++) if (![1, 3, 6, 8, 10].includes(i % 12)) whites.push(i);
+  const ww = 100 / whites.length;
+  let wi = 0;
+  for (let i = 0; i < N; i++) {
+    const n = base + i, black = [1, 3, 6, 8, 10].includes(i % 12);
+    const k = document.createElement('div');
+    k.className = 'k ' + (black ? 'b' : 'w'); k.dataset.note = n;
+    if (black) { k.style.left = (wi * ww - ww * 0.32) + '%'; k.style.width = (ww * 0.64) + '%'; }
+    else { k.style.left = (wi * ww) + '%'; k.style.width = ww + '%'; wi++; if (i % 12 === 0) k.innerHTML = '<span>C' + (Math.floor(n / 12) - 1) + '</span>'; }
+    kb.appendChild(k);
+  }
+}
+function markKey(note, on) { const k = document.querySelector('#kbd .k[data-note="' + note + '"]'); if (k) k.classList.toggle('on', on); }
+const kb = $('kbd');
+kb.addEventListener('pointerdown', e => {
+  const k = e.target.closest('.k'); if (!k) return;
+  e.preventDefault();
+  try { kb.setPointerCapture(e.pointerId); } catch (err) { /* ok */ }
+  const r = k.getBoundingClientRect(), v = Math.max(0.15, Math.min(1, 0.35 + 0.65 * (e.clientY - r.top) / r.height));
+  const n = +k.dataset.note; held.set('p' + e.pointerId, n); play(n, Math.min(1, v * vel() / 0.8));
+});
+kb.addEventListener('pointermove', e => {
+  const id = 'p' + e.pointerId; if (!held.has(id)) return;
+  const el = document.elementFromPoint(e.clientX, e.clientY), k = el && el.closest ? el.closest('#kbd .k') : null;
+  if (!k) return;
+  const n = +k.dataset.note, curN = held.get(id);
+  if (n !== curN) { stop(curN); held.set(id, n); play(n, vel()); }
+});
+const kbUp = e => { const id = 'p' + e.pointerId; if (!held.has(id)) return; stop(held.get(id)); held.delete(id); };
+kb.addEventListener('pointerup', kbUp); kb.addEventListener('pointercancel', kbUp);
+
+const LOW = ['KeyZ', 'KeyS', 'KeyX', 'KeyD', 'KeyC', 'KeyV', 'KeyG', 'KeyB', 'KeyH', 'KeyN', 'KeyJ', 'KeyM', 'Comma', 'KeyL', 'Period', 'Semicolon', 'Slash'];
+const HIGH = ['KeyQ', 'Digit2', 'KeyW', 'Digit3', 'KeyE', 'KeyR', 'Digit5', 'KeyT', 'Digit6', 'KeyY', 'Digit7', 'KeyU', 'KeyI', 'Digit9', 'KeyO', 'Digit0', 'KeyP', 'BracketLeft', 'Equal', 'BracketRight'];
+function keyNote(code) {
+  let i = LOW.indexOf(code); if (i >= 0) return 12 * (octave + 1) + i;
+  i = HIGH.indexOf(code); if (i >= 0) return 12 * (octave + 2) + i;
+  return null;
+}
+const typing = e => { const t = e.target, tag = (t.tagName || '').toUpperCase(); return tag === 'TEXTAREA' || tag === 'SELECT' || (tag === 'INPUT' && /^(text|number|search|url)$/.test(t.type)) || (tag === 'INPUT' && t.classList.contains('nm')); };
+window.addEventListener('keydown', e => {
+  if (typing(e) || e.ctrlKey || e.metaKey || e.altKey) return;
+  if (e.code === 'Space') { e.preventDefault(); if (!e.repeat && !sustainLatched) setSustain(true); return; }
+  if (e.code === 'ArrowLeft') { e.preventDefault(); setOct(octave - 1); return; }
+  if (e.code === 'ArrowRight') { e.preventDefault(); setOct(octave + 1); return; }
+  if (e.code === 'ArrowUp' || e.code === 'ArrowDown') { e.preventDefault(); selectVoice(cur + (e.code === 'ArrowUp' ? -1 : 1), true); return; }
+  const n = keyNote(e.code);
+  if (n == null || e.repeat || held.has(e.code)) return;
+  e.preventDefault();
+  held.set(e.code, n); play(n, vel());
+});
+window.addEventListener('keyup', e => {
+  if (e.code === 'Space') { if (!sustainLatched) setSustain(false); return; }
+  if (!held.has(e.code)) return;
+  stop(held.get(e.code)); held.delete(e.code);
+});
+window.addEventListener('blur', () => { releaseAllKeys(); if (!sustainLatched) setSustain(false); });
+
+// ── Web MIDI (midi_input.js): notes, CCs, bend, program change, DX7 dumps ──
+let mi = null;
+try { if (typeof MidiInput === 'function') { mi = new MidiInput({ role: 'lead' }); mi.start(); } } catch (e) { mi = null; }
+window.addEventListener('midiinput-note', e => {
+  const d = e.detail; _fromMidi = true;
+  try { if (d.on && d.vel > 0) play(d.note, d.vel); else stop(d.note); } finally { _fromMidi = false; }
+});
+window.addEventListener('midiinput-cc', e => { const d = e.detail; if (d.target) return; synth.cc(d.cc, d.norm); if (d.cc === 1) $('mw').value = d.norm; });
+window.addEventListener('midiinput-pitchbend', e => { synth.pitchBend(e.detail.value); $('pb').value = e.detail.value; });
+window.addEventListener('midiinput-aftertouch', e => synth.aftertouch(e.detail.value));
+window.addEventListener('midiinput-program', e => selectVoice(e.detail.program % 32, false));
+window.addEventListener('midiinput-sysex', e => { const d = e.detail && e.detail.data; if (d && d[1] === 0x43 && (d[3] === 0x09 || d[3] === 0x00)) loadBytes(d, 'MIDI dump'); });
+function midiBadge() {
+  const b = $('b-midi');
+  if (!mi) { b.textContent = 'MIDI: unavailable'; return; }
+  const s = mi.snapshot ? mi.snapshot() : {};
+  if (mi.status === 'connected') { b.className = 'badge ok'; b.textContent = 'MIDI: ' + String(s.inName || 'in').slice(0, 24); }
+  else { b.className = 'badge' + (mi.status === 'unsupported' || mi.status === 'denied' ? ' bad' : ''); b.textContent = 'MIDI: ' + (mi.status || '—'); }
+}
+['midiinput-status', 'midiinput-connected', 'midiinput-disconnected'].forEach(ev => window.addEventListener(ev, midiBadge));
+window.addEventListener('midiinput-connected', ensureAudio);
+midiBadge();
+
+renderList();
+selectVoice(cur, false);
+buildKbd();
+</script>
+</body>
+</html>

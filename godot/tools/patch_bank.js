@@ -172,7 +172,7 @@
   }
   function dx7Items(bankName, bytes, prefix) {
     const r = G.DX7.parseSysex(new Uint8Array(bytes));
-    return r.voices.map((v, i) => ({ id: (prefix ? prefix + '/' : '') + i, name: (G.DX7.voiceName ? G.DX7.voiceName(v) : v.name || 'voice ' + (i + 1)).trim() || 'voice ' + (i + 1), category: 'fm', bank: bankName, index: i,
+    return r.voices.map((v, i) => ({ id: (prefix ? prefix + '/' : '') + i, name: (G.DX7.voiceName ? G.DX7.voiceName(v) : v.name || '').replace(/\s+/g, ' ').trim() || 'voice ' + (i + 1), category: 'fm', bank: bankName, index: i,
       summary: G.DX7.describe ? G.DX7.describe(v) : '' }));
   }
   async function prepare(srcId, onProgress) {

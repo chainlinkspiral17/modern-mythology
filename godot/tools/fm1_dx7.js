@@ -176,7 +176,9 @@ function dx7Checksum(bytes) {
 function dx7VoiceSysex(voice, channel = 1) {
   const vced = dx7VoiceToVced(voice);
   const n = ((channel | 0) - 1) & 0x0F;
-  const head = [0xF0, 0x43, 0x10 | n, 0x00, 0x01, 0x1B];
+  // sub-status 0 (0x0n) = bulk dump. 0x1n is a PARAMETER CHANGE: Dexed / the FM-1 read
+  // "F0 43 1n 00 01 1B" as "set parameter 1 to 27" and drop the voice (fixed 2026-10).
+  const head = [0xF0, 0x43, 0x00 | n, 0x00, 0x01, 0x1B];
   return Uint8Array.from([...head, ...vced, dx7Checksum(vced), 0xF7]);
 }
 
