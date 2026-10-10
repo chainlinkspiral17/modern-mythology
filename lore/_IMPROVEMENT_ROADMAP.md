@@ -3834,6 +3834,25 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-10 · overnight run, pass 37: THE VOL7 MONTAGE, SPLIT (from the
+sweep).** Frequency Interlude II played all its places on the warehouse
+cathedral. Four `bg` nodes now give each segment its place:
+- **The Speak & Spell** "in the back room of Cosmic Comics" goes to
+  `cosmic_comics_back_office`, which carries the prop and its insert.
+- **"FINN — Cape Perpetua trail, fog bank approaching"** goes to
+  `cape_perpetua_overlook`.
+- **The Demon's TX-LA-01 telemetry** stays on the cathedral, its speaker
+  "in the warehouse cathedral".
+- **"A JETTY, SMOLVUD — fog"** goes to the cape's fog (there is no jetty
+  set yet).
+- **The phone cue.** Finn's `insert phone` had no anchor on the cape, so
+  his phone now rests on the trailhead post with the dropped GPS pin on
+  its screen, with a marker.
+- **The JSON.** It was rewritten in its own 1-space indent, so the diff
+  is the four nodes and nothing else.
+
+Draft 2 target: a Smolvud jetty set for the Frog.
+
 **2026-10-10 · overnight run, pass 36: THE POST OFFICE ON ELM (a new set from
 the sweep).** vol5 ch20: "She was at the post office on Elm ... The
 envelope had gone into the outgoing bin ... The floor tiles of the post

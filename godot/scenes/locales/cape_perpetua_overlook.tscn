@@ -328,3 +328,9 @@ metadata/fov = 45.0
 position = Vector3(-4.573, 1.612, -12.575)
 rotation = Vector3(-0.2618, -2.3562, 0.0)
 metadata/fov = 45.0
+
+; insert: Finn's phone on the trailhead post, the GPS pin dropped (vol7 interlude II, 2026-10-10)
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.350, 1.550, 2.150)
+rotation = Vector3(-0.4807, 0.5667, 0.0)
+metadata/fov = 36.0

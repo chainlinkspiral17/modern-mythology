@@ -102,6 +102,12 @@ def build_lot():
     # the trailhead post with its three-branch board
     make_box("Trailhead_Post", (0.0, -1.6, 0.6), (0.12, 0.12, 1.2), WOOD_WET)
     make_box("Trailhead_Board", (0.0, -1.53, 1.0), (0.50, 0.03, 0.30), (0.42, 0.34, 0.24, 1.0))
+    # Finn's phone set on the post's top while he marks the coordinate (vol7
+    # interlude II: "He marks the GPS coordinate on his phone") — the
+    # insert's anchor, its screen a map with the dropped pin (2026-10-10)
+    make_box("Finn_Phone", (0.0, -1.6, 1.206), (0.07, 0.14, 0.012), (0.10, 0.10, 0.12, 1.0))
+    make_box("Finn_Phone_Screen", (0.0, -1.6, 1.2125), (0.062, 0.128, 0.001), (0.40, 0.62, 0.52, 1.0))
+    make_box("Finn_Phone_Pin", (0.008, -1.59, 1.2132), (0.012, 0.016, 0.0006), (0.92, 0.26, 0.20, 1.0))
 
 
 def build_trail():

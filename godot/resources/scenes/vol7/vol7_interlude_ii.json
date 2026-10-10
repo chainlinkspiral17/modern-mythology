@@ -28,6 +28,10 @@
    "duration": 3000
   },
   {
+   "t": "bg",
+   "src": "3d:cosmic_comics_back_office"
+  },
+  {
    "t": "narrate",
    "text": "[trip:1.2][mood:liminal_interior][ INTERCEPTED — frequency drift, source: a modified Speak & Spell in the back room of Cosmic Comics, Harmony Creek Estates, TX ]"
   },
@@ -46,6 +50,10 @@
   {
    "t": "narrate",
    "text": "She has never been to Oregon."
+  },
+  {
+   "t": "bg",
+   "src": "3d:cape_perpetua_overlook"
   },
   {
    "t": "narrate",
@@ -74,6 +82,10 @@
   {
    "t": "narrate",
    "text": "[shot:insert crow]The crow lands on the fence post beside him. The crow has been waiting."
+  },
+  {
+   "t": "bg",
+   "src": "3d:cathedral_interior"
   },
   {
    "t": "narrate",
@@ -163,6 +175,10 @@
   {
    "t": "narrate",
    "text": "The wheel does not turn faster. The wheel is the same wheel. There is only the one wheel."
+  },
+  {
+   "t": "bg",
+   "src": "3d:cape_perpetua_overlook"
   },
   {
    "t": "narrate",
