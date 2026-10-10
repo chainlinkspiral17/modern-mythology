@@ -3834,6 +3834,48 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-10 · overnight run, pass 46: THE YARD PARTY (a day preset on a night
+scene).** vol6 ch23 "Sunday" played its sticker-book ceremony (nodes
+51–104: "the Caldwell front yard at three forty-five PM ... The folding
+table from the Kowalski garage is set up under the pecan tree ... GRACIE —
+STICKER QUEEN in pink piping ... Linda is in the wicker chair from the
+Caldwell porch, which Maya has wheeled out to the yard") on the porch at
+NIGHT.
+- **`build_caldwell_porch_night.py` gains `build_yard_party_2026_10`.**
+  - The side lawn east of the porch with a big pecan.
+  - The folding table: the sheet cake with its piping, the sticker book
+    on its folded cloth, the lemonade pitcher and paper cups, plates,
+    knife, Anita's phone for the picture.
+  - Linda's wicker chair on the grass, three folding chairs facing the
+    table, Eileen's coffee-cake box set down on one.
+  - The house's body behind the porch (the day shows it), the side
+    fence, and the neighbourhood past it (lawns, the street on east,
+    three houses, trees), so there is no world edge.
+- **The new preset `caldwell_yard_afternoon`** shares the scene:
+  - the night rig (Key, Fill, Back, the porch-lamp practical) is
+    suffixed `__caldwell_porch_night`, so `_strip_other_preset_lights`
+    drops it in the day;
+  - the day preset brings its own 3:45 PM sun (suffixed) and an `env`
+    override (sky, ambient, fog colour);
+  - six suffixed markers: the cake, the photo phone, Bill, Anita, Gracie,
+    the reverse to the porch;
+  - ambient bed: live_oak_field.
+- **Routing.** The chapter's bg before "In the next cul-de-sac over"
+  points at it.
+
+The pattern is the lighting playbook's 2026-10-09 lesson, run in the other
+direction (a night set gaining a day area). The porch at night renders as
+before.
+
+Deck must REBUILD caldwell_porch_night.
+
+Draft 2 targets:
+- the people's places as cast markers (Bill at the cake, Gracie beside
+  her book);
+- the photograph's framing ("slightly off-center to the left");
+- the porch's own afternoon furniture for ch23's 5 PM porch scene (still
+  the night preset with a dusk mood).
+
 **2026-10-10 · overnight run, pass 45: LENA'S STUDIO (a new set) + THE SWEEP'S
 ROUTING (vol6/vol7).** A second prose-vs-set sweep (an Explore agent,
 23 chapters) found 14 chapters with mismatches. This pass fixes the ones

@@ -196,6 +196,13 @@ Position note: lamp omnis are placed AT the lamp-head mesh position
   the basin and spills a wedge through the bathroom door.
 - `orphan_practical_audit` strips a `__preset` suffix before it reads a
   `_Practical` stem.
+- (2026-10-10) Used again in the other direction: a NIGHT-only set gained
+  a day area. `caldwell_porch_night` grew a side lawn for ch23's 3:45 PM
+  party. Its four unsuffixed night lights became `__caldwell_porch_night`
+  (unsuffixed lights serve EVERY preset, so the day would have had the
+  porch lamp and the blue night key on). The new `caldwell_yard_afternoon`
+  brings a suffixed sun and an `env` override. Before you add a second
+  time of day to a set, suffix its existing rig first.
 
 ### 2026-10-08 · an OUTSIDE area of a shared set gets its own sun, and the sun follows the mood
 

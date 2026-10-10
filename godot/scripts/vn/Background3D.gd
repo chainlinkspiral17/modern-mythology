@@ -1025,6 +1025,23 @@ const CAMERA_PRESETS := {
 		"suppress_input": true,
 	},
 	# ── VOL 6/7/8 — batch 2 additions ────────────────────
+	"caldwell_yard_afternoon": {
+		"scene": "res://scenes/locales/caldwell_porch_night.tscn",
+		"requires_glb": "res://assets/3d/locales/caldwell_porch_night.glb",
+		# (2026-10-10) vol6 ch23 "Sunday": the Caldwell front yard at 3:45 PM
+		# — the side lawn E of the porch (godot x 6..16), the folding table
+		# under the pecan with the GRACIE — STICKER QUEEN cake, Linda's wicker
+		# chair on the grass. The night rig is suffixed to caldwell_porch_night;
+		# this preset brings its own sun and a day sky. From the front walk at
+		# the porch's E end, NE across the lawn to the table and the tree.
+		"camera_origin": Vector3(5.20, 1.65, 2.60),
+		"camera_rotation": Vector3(-0.054, -0.983, 0.0),
+		"fov": 62.0,
+		"env": {"sky_top": Color(0.40, 0.58, 0.84, 1), "sky_horizon": Color(0.88, 0.86, 0.78, 1),
+			"ground_horizon": Color(0.62, 0.60, 0.52, 1), "ground_bottom": Color(0.30, 0.30, 0.26, 1),
+			"ambient_color": Color(0.86, 0.86, 0.82, 1), "ambient_energy": 0.95, "fog_color": Color(0.82, 0.80, 0.74, 1)},
+		"suppress_input": true,
+	},
 	"caldwell_porch_night": {
 		"scene": "res://scenes/locales/caldwell_porch_night.tscn",
 		"requires_glb": "res://assets/3d/locales/caldwell_porch_night.glb",

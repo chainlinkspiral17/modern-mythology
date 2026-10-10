@@ -1219,71 +1219,6 @@
    "scene_missing": false
   },
   {
-   "id": "caldwell_porch_night",
-   "scene": "res://scenes/locales/caldwell_porch_night.tscn",
-   "vol": 6,
-   "uses": 8,
-   "moods": [
-    "night",
-    "dusk"
-   ],
-   "markers": [
-    {
-     "name": "shot_establish_b",
-     "type": "establish"
-    },
-    {
-     "name": "shot_establish_c",
-     "type": "establish"
-    },
-    {
-     "name": "shot_closeup_person",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_person_b",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_insert_bike",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_blanket",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_cake",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_car",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_iced_tea",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_phone",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_photo",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_radio",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_tea",
-     "type": "insert"
-    }
-   ],
-   "scene_missing": false
-  },
-  {
    "id": "finn_apartment",
    "scene": "res://scenes/locales/finn_apartment.tscn",
    "vol": 7,
@@ -1630,6 +1565,71 @@
     },
     {
      "name": "shot_insert_window",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
+   "id": "caldwell_porch_night",
+   "scene": "res://scenes/locales/caldwell_porch_night.tscn",
+   "vol": 6,
+   "uses": 7,
+   "moods": [
+    "night",
+    "dusk"
+   ],
+   "markers": [
+    {
+     "name": "shot_establish_b",
+     "type": "establish"
+    },
+    {
+     "name": "shot_establish_c",
+     "type": "establish"
+    },
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_bike",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_blanket",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cake",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_car",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_iced_tea",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_phone",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_photo",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_radio",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_tea",
      "type": "insert"
     }
    ],
@@ -5269,6 +5269,74 @@
    "scene_missing": false
   },
   {
+   "id": "caldwell_yard_afternoon",
+   "scene": "res://scenes/locales/caldwell_porch_night.tscn",
+   "vol": 6,
+   "uses": 1,
+   "moods": [
+    ""
+   ],
+   "markers": [
+    {
+     "name": "shot_establish_b__caldwell_yard_afternoon",
+     "type": "establish"
+    },
+    {
+     "name": "shot_establish_c",
+     "type": "establish"
+    },
+    {
+     "name": "shot_closeup_gracie__caldwell_yard_afternoon",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person__caldwell_yard_afternoon",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b__caldwell_yard_afternoon",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_bike",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_blanket",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cake__caldwell_yard_afternoon",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_car",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_iced_tea",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_phone",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_photo__caldwell_yard_afternoon",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_radio",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_tea",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
    "id": "cathedral_exterior",
    "scene": "res://scenes/locales/graustark.tscn",
    "vol": 5,
@@ -8135,5 +8203,5 @@
   "tired",
   "nervous"
  ],
- "frames": 1824
+ "frames": 1839
 }

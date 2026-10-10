@@ -333,12 +333,107 @@ def build_lived_in_2026_10():
         make_cyl(f"Wind_Chime_Tube_{t}", (cx_ + 0.045 * math.cos(a), cy_ + 0.045 * math.sin(a), 2.445 - ln / 2.0), 0.008, ln,
                  (0.78, 0.80, 0.82, 1.0), segments=6)
 
+
+def build_yard_party_2026_10():
+    """THE CALDWELL FRONT YARD, SUNDAY AFTERNOON (2026-10-10; vol6 ch23 "Sunday",
+    the sweep: the sticker-book ceremony played on the porch at night).
+    "the Caldwell front yard at three forty-five PM has been arranged for the
+    small specific event Anita has been organizing for two weeks. The folding
+    table from the Kowalski garage is set up under the pecan tree. On the table
+    is the cake — a sheet cake from the bakery on Magnolia, with white frosting
+    and the words GRACIE — STICKER QUEEN in pink piping. Beside the cake, on a
+    small folded cloth, sits Gracie's completed activity book ... Linda is in
+    the wicker chair from the Caldwell porch, which Maya has wheeled out to the
+    yard. Anita is at the table ... pouring lemonade into paper cups." ·
+    "Eileen has the cinnamon coffee cake in the small white box".
+    The yard opens east of the porch: the lawn, the pecan, the folding table
+    and what is on it, Linda's wicker chair on the grass, folding chairs, the
+    house's body behind the porch (the day shows it), the side fence and the
+    neighbour's roof past it. Preset `caldwell_yard_afternoon` (day lights
+    and markers suffixed)."""
+    from _props.geometry import make_blob
+    grass = (0.30, 0.44, 0.22, 1.0)
+    make_box("Side_Yard_Lawn", (11.0, 1.0, -0.03), (10.0, 10.0, 0.05), grass)
+    # the house behind the porch, which the day finally shows
+    make_box("House_Body_Facade", (0.0, ROOM_D + 4.1, 2.6), (11.0, 8.0, 5.2), (0.82, 0.78, 0.68, 1.0))
+    make_rot_box("House_Roof_S", (0.0, ROOM_D + 2.3, 5.75), (11.6, 4.6, 0.16), (0.36, 0.30, 0.28, 1.0), roll=0.42)
+    make_rot_box("House_Roof_N", (0.0, ROOM_D + 5.9, 5.75), (11.6, 4.6, 0.16), (0.36, 0.30, 0.28, 1.0), roll=-0.42)
+    for k, wy in enumerate((ROOM_D + 1.6, ROOM_D + 5.0)):
+        make_box(f"House_Body_Window_E_{k}", (5.505, wy, 1.6), (0.01, 1.0, 1.2), (0.40, 0.46, 0.50, 1.0))
+        make_box(f"House_Body_Window_E_{k}_Frame", (5.51, wy, 1.6), (0.01, 1.12, 1.32), (0.92, 0.90, 0.84, 1.0))
+    # the pecan tree
+    px, py = 11.2, 1.8
+    make_lathe("Pecan_Trunk", (px, py, -0.03), [(0.42, 0.0), (0.34, 0.6), (0.30, 3.2), (0.0, 3.25)], (0.36, 0.28, 0.22, 1.0), segments=12)
+    for k, (bx, by, bz, r) in enumerate(((0.0, 0.0, 5.0, 3.2), (-2.4, 0.6, 4.4, 2.4), (2.2, -0.8, 4.6, 2.4), (0.6, 2.2, 4.8, 2.2), (-0.8, -2.0, 4.2, 2.0))):
+        make_blob(f"Pecan_Crown_{k}", (px + bx, py + by, bz), r, (0.26, 0.40, 0.20, 1.0), noise=0.22, seed=300 + k, squash=0.62)
+    for k, (dx, dy, a) in enumerate(((1.0, 0.4, 0.5), (-1.1, 0.2, -0.6), (0.2, -1.1, 0.2))):
+        make_rot_box(f"Pecan_Limb_{k}", (px + dx * 0.9, py + dy * 0.9, 3.6), (0.20, 0.20, 2.2), (0.36, 0.28, 0.22, 1.0), pitch=a, roll=0.3 * dy)
+    # the folding table under it, and what is on it
+    tx, ty, th = 10.4, 0.6, 0.74
+    make_box("Folding_Table_Top", (tx, ty, th - 0.02), (1.83, 0.76, 0.04), (0.92, 0.92, 0.90, 1.0))
+    for e in (-1, 1):
+        make_rot_box(f"Folding_Table_Leg_{e:+d}", (tx + e * 0.80, ty, (th - 0.04) / 2.0), (0.04, 0.66, 0.70), (0.40, 0.40, 0.42, 1.0))
+    t = th
+    make_box("Cake_Board", (tx - 0.20, ty, t + 0.005), (0.52, 0.38, 0.01), (0.94, 0.92, 0.86, 1.0))
+    make_box("Cake", (tx - 0.20, ty, t + 0.06), (0.46, 0.32, 0.10), (0.98, 0.97, 0.94, 1.0))
+    make_box("Cake_Piping_Gracie", (tx - 0.26, ty + 0.03, t + 0.111), (0.26, 0.05, 0.003), (0.94, 0.56, 0.70, 1.0))
+    make_box("Cake_Piping_Sticker_Queen", (tx - 0.20, ty - 0.06, t + 0.111), (0.36, 0.04, 0.003), (0.94, 0.56, 0.70, 1.0))
+    make_box("Cake_Border", (tx - 0.20, ty - 0.165, t + 0.10), (0.46, 0.012, 0.02), (0.94, 0.56, 0.70, 1.0))
+    make_box("Sticker_Book_Cloth", (tx + 0.30, ty + 0.05, t + 0.004), (0.34, 0.28, 0.008), (0.86, 0.78, 0.94, 1.0))
+    make_box("Sticker_Book", (tx + 0.30, ty + 0.05, t + 0.016), (0.22, 0.28, 0.016), (0.96, 0.62, 0.16, 1.0))
+    make_box("Sticker_Book_Stars", (tx + 0.30, ty + 0.05, t + 0.0245), (0.14, 0.18, 0.001), (0.30, 0.56, 0.86, 1.0))
+    make_lathe("Lemonade_Pitcher", (tx + 0.66, ty + 0.12, t), [(0.0, 0.0), (0.07, 0.0), (0.075, 0.18), (0.055, 0.24), (0.0, 0.24)], (0.96, 0.92, 0.56, 1.0), segments=12)
+    for k in range(6):
+        make_cyl(f"Paper_Cup_{k}", (tx + 0.52 + (k % 3) * 0.09, ty - 0.18 + (k // 3) * 0.09, t + 0.05), 0.035, 0.10, (0.96, 0.96, 0.94, 1.0), segments=8)
+    make_box("Paper_Plates", (tx - 0.70, ty + 0.15, t + 0.012), (0.24, 0.24, 0.024), (0.96, 0.96, 0.94, 1.0))
+    make_box("Cake_Knife", (tx - 0.62, ty - 0.18, t + 0.003), (0.24, 0.025, 0.004), (0.74, 0.76, 0.78, 1.0))
+    make_box("Photo_Phone", (tx - 0.75, ty - 0.22, t + 0.005), (0.07, 0.14, 0.01), (0.13, 0.13, 0.15, 1.0))   # Anita's, for the picture
+    # Linda's wicker chair, wheeled out onto the grass from the porch
+    _wicker_chair("Lawn_Wicker", 8.70, 0.20)
+    # folding chairs for the guests
+    for k, (cx, cy) in enumerate(((12.3, -0.2), (12.5, 1.1), (9.4, -1.0))):
+        fx, fy = tx - cx, ty - cy                     # each faces the table
+        fl = math.hypot(fx, fy); fx, fy = fx / fl, fy / fl
+        yaw = math.atan2(fy, fx) - math.pi / 2.0      # local +y toward the table
+        make_rot_box(f"Lawn_Folding_Chair_{k}_Seat", (cx, cy, 0.45), (0.42, 0.42, 0.04), (0.40, 0.40, 0.42, 1.0), yaw=yaw)
+        make_rot_box(f"Lawn_Folding_Chair_{k}_Back", (cx - 0.20 * fx, cy - 0.20 * fy, 0.72), (0.42, 0.04, 0.50), (0.40, 0.40, 0.42, 1.0), yaw=yaw)
+        make_rot_box(f"Lawn_Folding_Chair_{k}_Legs", (cx, cy, 0.215), (0.40, 0.40, 0.43), (0.30, 0.30, 0.32, 1.0), yaw=yaw)
+    # Eileen's cinnamon coffee cake in its small white box, set down on a chair
+    make_box("Coffee_Cake_Box", (9.43, -0.95, 0.47 + 0.05), (0.20, 0.20, 0.10), (0.97, 0.97, 0.95, 1.0))   # toward the seat's front
+    # the side fence and the neighbour's roof past it
+    make_box("Side_Fence_Boards", (16.1, 1.0, 0.90), (0.05, 10.0, 1.80), (0.56, 0.44, 0.32, 1.0))
+    for k in range(6):
+        make_box(f"Side_Fence_Post_{k}", (16.0, -4.0 + k * 2.0, 0.95), (0.10, 0.10, 1.90), (0.46, 0.36, 0.26, 1.0))
+    make_box("Neighbour_House_Facade", (21.0, 2.0, 2.4), (8.0, 9.0, 4.8), (0.70, 0.74, 0.76, 1.0))
+    hd = 9.0 / 4.0 + 0.25
+    rz = 4.8 + hd * math.sin(0.42) + 0.08 - 0.02          # the eaves on the wall top
+    make_rot_box("Neighbour_Roof_N", (21.0, 2.0 + 9.0 / 4.0, rz), (8.6, 2.0 * hd, 0.16), (0.34, 0.32, 0.30, 1.0), roll=-0.42)
+    make_rot_box("Neighbour_Roof_S", (21.0, 2.0 - 9.0 / 4.0, rz), (8.6, 2.0 * hd, 0.16), (0.34, 0.32, 0.30, 1.0), roll=0.42)
+    # the rest of the neighbourhood the day shows: the lawns running back, the
+    # street on east, two more houses, the trees (no world edge past the fence)
+    make_box("Back_Lawns", (17.0, 23.0, -0.035), (46.0, 34.0, 0.04), grass)
+    make_box("Back_Lawns_W", (-10.0, 26.0, -0.035), (8.0, 28.0, 0.04), grass)
+    make_box("Neighbour_Lawn_E", (28.0, 1.0, -0.035), (24.0, 10.0, 0.04), grass)
+    make_box("Street_Strip_E", (23.0, -6.0, -0.03), (34.0, 4.0, 0.05), (0.26, 0.26, 0.28, 1.0))
+    for k, (hx, hy, hw, hdp, hh, col) in enumerate(((12.0, 21.0, 9.0, 8.0, 4.4, (0.78, 0.70, 0.58, 1.0)),
+                                                   (-6.0, 24.0, 10.0, 8.0, 4.8, (0.66, 0.72, 0.68, 1.0)),
+                                                   (28.0, 19.0, 9.0, 9.0, 4.2, (0.84, 0.82, 0.76, 1.0)))):
+        make_box(f"Street_House_{k}_Facade", (hx, hy, hh / 2.0), (hw, hdp, hh), col)
+        rh = hdp / 4.0 + 0.25
+        rzz = hh + rh * math.sin(0.42) + 0.08 - 0.02
+        make_rot_box(f"Street_House_{k}_Roof_N", (hx, hy + hdp / 4.0, rzz), (hw + 0.6, 2.0 * rh, 0.16), (0.32, 0.30, 0.30, 1.0), roll=-0.42)
+        make_rot_box(f"Street_House_{k}_Roof_S", (hx, hy - hdp / 4.0, rzz), (hw + 0.6, 2.0 * rh, 0.16), (0.32, 0.30, 0.30, 1.0), roll=0.42)
+    for k, (gx, gy) in enumerate(((4.0, 17.0), (20.0, 12.0), (32.0, 8.0), (6.0, 30.0))):
+        make_cyl(f"Street_Tree_{k}_Trunk", (gx, gy, 1.6), 0.24, 3.2, (0.36, 0.28, 0.22, 1.0), segments=8)
+        make_blob(f"Street_Tree_{k}_Crown", (gx, gy, 4.6), 2.6, (0.26, 0.40, 0.22, 1.0), noise=0.22, seed=330 + k, squash=0.7)
+
 def main():
     clear_scene()
     build_shell()
     build_railing()
     build_chairs()
     build_lived_in_2026_10()
+    build_yard_party_2026_10()
     build_door()
     build_porchlamp()
     build_dressing()
