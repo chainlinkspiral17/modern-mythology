@@ -1098,13 +1098,12 @@ const CAMERA_PRESETS := {
 	"foxhole_dressing_room": {
 		"scene": "res://scenes/locales/foxhole_dressing_room.tscn",
 		"requires_glb": "res://assets/3d/locales/foxhole_dressing_room.glb",
-		# Backstage dressing room 4×4 (godot x∈[-2,2], z∈[0,-4], ceil 2.6).
-		# Bulb-framed vanity mirror against the N wall (blender 0,3.6 →
-		# godot 0,-3.6), beat-up couch along the W wall (godot -1.52,-2),
-		# clothing rack E side (godot 1.62,-1.9), guitar cases on the floor,
-		# mini-fridge NE, taped setlist E wall. Camera in the SE quadrant
-		# just inside the door looking NW: vanity + lit mirror centre-back,
-		# couch at frame left. Tight FOV for the small backstage room.
+		# Backstage "dressing room" 4×4 (godot x∈[-2,2], z∈[0,-4], ceil
+		# 2.6): by Foxhole standard a storage closet (draft 3, 2026-10-10:
+		# the vanity, couch and fridge are gone) — steel shelving of the
+		# venue's supplies on the N wall, two folding chairs, the clothing
+		# rack E side, the band's cases, the mop bucket, the buzzing tube.
+		# Camera in the SE quadrant just inside the door looking NW.
 		"camera_origin": Vector3(1.3, 1.58, -0.7),
 		"camera_rotation": Vector3(-0.05, deg_to_rad(29.7), 0.0),
 		"fov": 60.0,

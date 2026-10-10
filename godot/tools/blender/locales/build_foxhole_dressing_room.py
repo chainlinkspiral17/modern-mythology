@@ -1,7 +1,23 @@
-"""foxhole_dressing_room — backstage at the Foxhole venue. Bulb-framed
-vanity mirror, clothing rack with garments, a beat-up couch, guitar
-cases, a taped-up setlist + stickers, a mini-fridge. Warm dressing-
-room bulb lighting (see .tscn).
+"""foxhole_dressing_room — backstage at the Foxhole venue (vol6 ch22).
+
+DRAFT 3 (2026-10-10) — the wrong REGISTER, the other way round. The
+prose: "The dressing room is, by Foxhole standard, a storage closet with
+two folding chairs and a clothing rack and a sign on the door that says
+DRESSING ROOM in marker. The fluorescent overhead has a slow buzz ... Em
+on one folding chair stretching her neck, Carl on the floor against the
+wall with his sticks rolling between his palms, Nate on the second
+folding chair on his phone, Jesse standing at the rack with one hand on
+the metal." Drafts 1-2 dressed it up as a green room — a bulb-framed
+vanity, a couch, a mini-fridge, a rug. It is the closet: the two folding
+chairs, the rack, the tube, the door and its marker sign, the band's
+cases, the setlist taped up; and what a venue's storage closet holds —
+the steel shelving on the N wall with the cleaning supplies, the paper
+towel and toilet paper flats, the bar's spare glassware crates, the
+mop bucket and its mop in the corner, the stack of spare folding chairs,
+the box of merch shirts; the floor left clear along the W wall for Carl.
+
+Draft 4 targets: the small hallway to the stage door; the buzz as a
+flicker on the tube's practical.
 """
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
@@ -167,17 +183,46 @@ def build_door_infill_dr_door_2026_09():
     "doorways ... misaligned"): close the gap to the door and its frame."""
     make_wall("DR_Door_Fill_E", (0.438, 0.000, 0), length=1.125, height=2.000, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
 
+def build_closet_2026_10():
+    """The storage closet's own things (see the module docstring)."""
+    steel = (0.56, 0.58, 0.60, 1.0); card = (0.66, 0.54, 0.38, 1.0)
+    sx0, sx1, sy = -1.20, 0.90, ROOM_D - 0.10 - 0.25
+    for i, x in enumerate((sx0, sx1)):
+        for j, y in enumerate((sy - 0.22, sy + 0.22)):
+            make_box(f"Shelving_Post_{i}_{j}", (x, y, 0.95), (0.04, 0.04, 1.90), steel)
+    for k, z in enumerate((0.15, 0.70, 1.25, 1.80)):
+        make_box(f"Shelving_Shelf_{k}", ((sx0 + sx1) / 2.0, sy, z), (sx1 - sx0 + 0.04, 0.48, 0.03), steel)
+    # what a venue keeps in its closet
+    for i in range(3):
+        make_box(f"Paper_Towel_Flat_{i}", (sx0 + 0.35 + i * 0.55, sy, 0.165 + 0.18), (0.50, 0.40, 0.36), (0.90, 0.88, 0.84, 1.0))
+    for i in range(4):
+        make_cyl(f"Cleaner_Bottle_{i}", (sx0 + 0.20 + i * 0.16, sy - 0.08, 0.715 + 0.12), 0.045, 0.24,
+                 [(0.30, 0.60, 0.86, 1.0), (0.92, 0.82, 0.30, 1.0), (0.86, 0.30, 0.30, 1.0), (0.40, 0.76, 0.40, 1.0)][i], segments=8)
+    for i in range(2):
+        make_box(f"Glass_Crate_{i}", (sx0 + 1.10 + i * 0.52, sy, 0.715 + 0.10), (0.48, 0.40, 0.20), (0.20, 0.20, 0.22, 1.0))
+    make_box("Merch_Box", (sx0 + 0.55, sy, 1.265 + 0.16), (0.60, 0.40, 0.32), card)
+    make_box("Merch_Box_Shirt", (sx0 + 0.55, sy - 0.05, 1.265 + 0.33), (0.40, 0.26, 0.02), (0.14, 0.14, 0.16, 1.0))
+    make_box("TP_Flat", (sx0 + 1.40, sy, 1.265 + 0.15), (0.50, 0.40, 0.30), (0.92, 0.92, 0.90, 1.0))
+    make_box("Spare_Cable_Coil", (sx0 + 0.40, sy, 1.815 + 0.06), (0.40, 0.36, 0.12), (0.10, 0.10, 0.12, 1.0))
+    # the mop bucket in the NE corner, the mop leaning
+    bx, by = ROOM_W / 2.0 - 0.10 - 0.30, ROOM_D - 0.10 - 0.95
+    make_box("Mop_Bucket", (bx, by, 0.20), (0.40, 0.34, 0.36), (0.86, 0.72, 0.20, 1.0))
+    make_box("Mop_Bucket_Wringer", (bx, by - 0.10, 0.44), (0.30, 0.10, 0.12), (0.30, 0.30, 0.32, 1.0))
+    from _props.geometry import make_rot_box
+    make_rot_box("Mop_Handle", (bx + 0.06, by + 0.06, 0.80), (0.025, 0.025, 1.30), (0.66, 0.52, 0.34, 1.0), roll=0.10)
+    # the stack of spare folding chairs against the W wall's N end
+    for i in range(5):
+        make_box(f"Chair_Stack_Folded_{i}", (-ROOM_W / 2.0 + 0.10 + 0.05 + i * 0.03, 3.35, 0.45), (0.025, 0.44, 0.88), (0.48, 0.42, 0.36, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
-    build_vanity()
     build_clothing_rack()
-    build_couch()
     build_cases()
     build_setlist_stickers()
-    build_mini_fridge()
-    build_rug()
     build_ceiling_infra()
+    build_closet_2026_10()
     build_hero_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/foxhole_dressing_room.glb"))

@@ -3834,6 +3834,25 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-10 · overnight run, pass 34: THE FOXHOLE "DRESSING ROOM" IS A
+CLOSET (from the sweep).** vol6 ch22: "a storage closet with two folding
+chairs and a clothing rack and a sign on the door that says DRESSING
+ROOM in marker. The fluorescent overhead has a slow buzz." Drafts 1-2 had
+dressed it up as a green room: a bulb-framed vanity, a couch, a
+mini-fridge, a rug.
+- **Removed.** The vanity, couch, fridge and rug, and the two scene
+  lights that only lit them.
+- **Kept.** The folding chairs, the rack, the tube, the door and its
+  marker sign, the cases, the setlist.
+- **Added: the closet's own things.** N-wall steel shelving of the
+  venue's supplies: paper-towel flats, cleaner bottles, glassware
+  crates, a merch box with a shirt, toilet paper, a cable coil.
+- **Added: the floor.** The mop bucket and its mop, the stack of spare
+  folding chairs, and floor left clear along the W wall for Carl.
+- **Markers.** A closeup re-aimed off the chair stack.
+
+Draft 4 target: the hallway to the stage door.
+
 **2026-10-10 · overnight run, pass 33: EL RANCHO FROM OUTSIDE (from the
 sweep).** vol6 ch16's taqueria segment happens entirely outside, in BT's
 car: "TAQUERIA EL RANCHO in red paint on a yellow building, with the small
