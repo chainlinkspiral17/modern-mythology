@@ -245,6 +245,10 @@
       "bed": "assets/audio/bgm/vol6_ambient.wav",
       "gain": 0.8
     },
+    "new_auburn_courtroom": {
+      "bed": "assets/audio/bgm/vol6_ambient.wav",
+      "gain": 0.8
+    },
     "salty_tome_interior": {
       "bed": "assets/audio/bgm/vol7_shop_signal_bell.wav",
       "gain": 0.8

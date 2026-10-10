@@ -1,6 +1,6 @@
-[gd_scene load_steps=24 format=3 uid="uid://small_wood_cemetery_locale"]
+[gd_scene load_steps=24 format=3 uid="uid://new_auburn_courtroom_locale"]
 
-[ext_resource type="PackedScene" path="res://assets/3d/locales/small_wood_cemetery.glb" id="1_glb"]
+[ext_resource type="PackedScene" path="res://assets/3d/locales/new_auburn_courtroom.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
 [ext_resource type="Shader" path="res://assets/shaders/demoscene_post.gdshader" id="4_post"]
 [ext_resource type="Script" path="res://scripts/MoodCycler.gd" id="5_mood"]
@@ -129,24 +129,20 @@ shader_parameter/tint_amount = 0.18
 shader_parameter/tint_color = Color(0.96, 0.84, 0.62, 1.0)
 
 [sub_resource type="Environment" id="Env_Locale"]
-; Small Wood, a grey coastal morning: the haze IS the horizon (fog sky-affecting)
+; the county courtroom by day: window light through blinds, warm globes, dark wood
 background_mode = 1
-background_color = Color(0.72, 0.76, 0.78, 1.0)
+background_color = Color(0.70, 0.74, 0.76, 1.0)
 ambient_light_source = 2
-ambient_light_color = Color(0.64, 0.68, 0.66, 1.0)
+ambient_light_color = Color(0.80, 0.76, 0.68, 1.0)
 ambient_light_energy = 0.62
 fog_enabled = true
-fog_light_color = Color(0.74, 0.77, 0.78, 1.0)
-fog_light_energy = 0.22
-fog_density = 0.010
-fog_sky_affect = 1.0
-fog_aerial_perspective = 1.0
-fog_height = 6.0
-fog_height_density = 0.05
+fog_light_color = Color(0.70, 0.66, 0.58, 1.0)
+fog_light_energy = 0.25
+fog_density = 0.004
 adjustment_enabled = true
-adjustment_brightness = 0.98
-adjustment_contrast = 1.04
-adjustment_saturation = 0.80
+adjustment_brightness = 1.0
+adjustment_contrast = 1.06
+adjustment_saturation = 0.90
 glow_enabled = true
 glow_intensity = 0.6
 glow_bloom = 0.08
@@ -154,26 +150,83 @@ glow_blend_mode = 1
 glow_hdr_threshold = 0.95
 glow_hdr_scale = 2.4
 
-[node name="SmallWoodCemetery" type="Node3D"]
+[node name="NewAuburnCourtroom" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_Locale")
 
-; ── RIG (2026-10-10): an overcast Oregon morning — a soft high key, a cool fill, no practicals
-; the overcast key, high and soft
-[node name="Overcast_Key" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.8569, -0.4193, 0.2999, 0.0000, 0.5817, 0.8134, -0.5155, 0.6970, -0.4984, 0, 10, 0)
-light_color = Color(0.92, 0.92, 0.88, 1)
-light_energy = 0.75
+; ── RIG (2026-10-10): the afternoon sun through the W windows' blinds, the room's globes
+; the afternoon through the W windows
+[node name="Sun_Key" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.3624, 0.4872, -0.7946, 0.0000, 0.8525, 0.5227, 0.9320, -0.1894, 0.3089, 0, 10, 0)
+light_color = Color(1.0, 0.92, 0.78, 1)
+light_energy = 0.8
 shadow_enabled = false
 metadata/daylight = true
 
-; the sea-side sky fill
+; a soft fill
 [node name="Sky_Fill" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.8253, 0.1936, -0.5304, 0.0000, 0.9394, 0.3429, 0.5646, -0.2830, 0.7753, 0, 10, 0)
-light_color = Color(0.7, 0.78, 0.86, 1)
+transform = Transform3D(-1.0000, -0.0000, 0.0000, 0.0000, 0.9211, 0.3894, -0.0000, 0.3894, -0.9211, 0, 10, 0)
+light_color = Color(0.8, 0.84, 0.9, 1)
 light_energy = 0.3
 shadow_enabled = false
+
+; the globes
+[node name="Pendant_0_0_Globe_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-4.000, 4.550, -4.000)
+light_color = Color(1.00, 0.88, 0.66, 1)
+light_energy = 1.00
+shadow_enabled = false
+omni_range = 6.50
+
+[node name="Pendant_0_1_Globe_Practical" type="OmniLight3D" parent="."]
+position = Vector3(4.000, 4.550, -4.000)
+light_color = Color(1.00, 0.88, 0.66, 1)
+light_energy = 1.00
+shadow_enabled = false
+omni_range = 6.50
+
+[node name="Pendant_1_0_Globe_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-4.000, 4.550, -9.000)
+light_color = Color(1.00, 0.88, 0.66, 1)
+light_energy = 1.00
+shadow_enabled = false
+omni_range = 6.50
+
+[node name="Pendant_1_1_Globe_Practical" type="OmniLight3D" parent="."]
+position = Vector3(4.000, 4.550, -9.000)
+light_color = Color(1.00, 0.88, 0.66, 1)
+light_energy = 1.00
+shadow_enabled = false
+omni_range = 6.50
+
+[node name="Pendant_2_0_Globe_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-4.000, 4.550, -14.000)
+light_color = Color(1.00, 0.88, 0.66, 1)
+light_energy = 1.00
+shadow_enabled = false
+omni_range = 6.50
+
+[node name="Pendant_2_1_Globe_Practical" type="OmniLight3D" parent="."]
+position = Vector3(4.000, 4.550, -14.000)
+light_color = Color(1.00, 0.88, 0.66, 1)
+light_energy = 1.00
+shadow_enabled = false
+omni_range = 6.50
+
+[node name="Pendant_3_0_Globe_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-4.000, 4.550, -19.000)
+light_color = Color(1.00, 0.88, 0.66, 1)
+light_energy = 1.00
+shadow_enabled = false
+omni_range = 6.50
+
+[node name="Pendant_3_1_Globe_Practical" type="OmniLight3D" parent="."]
+position = Vector3(4.000, 4.550, -19.000)
+light_color = Color(1.00, 0.88, 0.66, 1)
+light_energy = 1.00
+shadow_enabled = false
+omni_range = 6.50
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -295,27 +348,63 @@ offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
 
-; ── vn_shot coverage (2026-10-10) — the graveside
-; closeup: Jo beside you, over the grave to the stones and the firs
+; ── vn_shot coverage (2026-10-10) — the New Auburn County courtroom
+; reverse: from by the witness box over the well to the gallery and the back doors
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-5.600, 2.600, -19.400)
+rotation = Vector3(-0.1035, -2.6257, 0.0)
+metadata/fov = 56.0
+
+; closeup: Sam in the third row on the defense side
+[node name="shot_closeup_sam" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.600, 1.400, -10.200)
+rotation = Vector3(-0.0939, -2.3962, 0.0)
+metadata/fov = 42.0
+
+; closeup: her mother on her left
+[node name="shot_closeup_mrs_miller" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.400, 1.400, -10.000)
+rotation = Vector3(-0.1111, -2.4669, 0.0)
+metadata/fov = 42.0
+
+; closeup: the man in the charcoal suit, second row behind the prosecution table, across the aisle
+[node name="shot_closeup_dean" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.400, 1.620, -7.900)
+rotation = Vector3(-0.0791, 1.2321, 0.0)
+metadata/fov = 40.0
+
+; closeup: Mike Miller at the defense table
+[node name="shot_closeup_miller" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.400, 1.450, -15.600)
+rotation = Vector3(-0.0984, -2.5080, 0.0)
+metadata/fov = 42.0
+
+; closeup: the judge on the bench
 [node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(3.000, 1.620, 4.600)
-rotation = Vector3(-0.0522, 0.6696, 0.0)
-metadata/fov = 42.0
-
-; reverse: from the head of the grave back over the chairs to the lane and the hearse
-[node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.800, 1.620, -1.200)
-rotation = Vector3(-0.0519, -2.5761, 0.0)
-metadata/fov = 42.0
-
-; insert: the casket on the lowering straps, the spray on its lid
-[node name="shot_insert_casket" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.600, 1.400, 1.400)
-rotation = Vector3(-0.2531, 0.8520, 0.0)
+position = Vector3(0.000, 1.700, -15.000)
+rotation = Vector3(0.0367, -0.0000, 0.0)
 metadata/fov = 44.0
 
-; reverse: from among the old stones down to the canopy and the grave
-[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-12.000, 1.700, -6.000)
-rotation = Vector3(-0.0503, -2.0989, 0.0)
-metadata/fov = 52.0
+; reverse: from the well to the gallery
+[node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.400, 1.600, -15.500)
+rotation = Vector3(-0.0420, 3.0995, 0.0)
+metadata/fov = 44.0
+
+; insert: the folder handed up to the judge
+[node name="shot_insert_folder" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.200, 2.500, -18.800)
+rotation = Vector3(-0.4917, 0.2075, 0.0)
+metadata/fov = 40.0
+
+; insert: Miriam's dark green Subaru wagon at the curb, the door open
+[node name="shot_insert_subaru" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.600, 0.700, 3.200)
+rotation = Vector3(-0.0973, 2.8535, 0.0)
+metadata/fov = 44.0
+
+; insert: the quilt's faint outline on the seat
+[node name="shot_insert_quilt" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.900, 0.550, 6.600)
+rotation = Vector3(-0.3355, 2.8236, 0.0)
+metadata/fov = 40.0

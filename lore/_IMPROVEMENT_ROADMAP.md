@@ -3834,6 +3834,45 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-10 · overnight run, pass 32: THE NEW AUBURN COUNTY COURTROOM (a new
+set from the sweep) + a transposed-light fix.** vol6 ch8's arraignment is
+in the New Auburn County courtroom: "bigger than she had expected. The
+wood is darker". Sam is "in the third row"; the man in the charcoal suit
+is "in the second row, behind the prosecution table"; there is "the
+third row ... directly across the aisle", the clerk "beside the judge"
+at her screen, "the side door", "the bailiff at the door of the
+gallery". It played on `courthouse_chamber`, Graustark's parish
+small-claims room, which stays as the Gauntlet's Justice board. The new
+`new_auburn_courtroom` is 16 x 22 m under a 6 m coffered ceiling:
+- **The room.** Dark wainscot to 2.4 m with its cap. Tall W windows with
+  blinds, brass globe pendants.
+- **The gallery.** Two banks of eight pews either side of a carpeted
+  centre aisle; the bar rail and its gate.
+- **The well.** The prosecution and defense tables with chairs, folders
+  and pitchers; the lectern.
+- **The bench.** Up on its dais with the judge's chair, nameplate, gavel
+  block and the folder. The clerk's station beside it with her screen;
+  the witness box.
+- **The rest.** The empty two-tier jury box (an arraignment); the Texas
+  seal between the flags; the side door by the defense table, moved
+  clear of the jury box; the back double doors and the clock.
+- **Outside.** The steps down to the curb, with Miriam's dark green
+  Subaru wagon (door open, the quilt's outline on the seat), carried
+  over from the old set's `insert subaru` and `insert quilt`.
+- **Markers.** Ten, covering every cue. The preset sits in the aisle so
+  all closeups are within 12 m.
+- **The fix.** The light-direction gate caught a real bug in this
+  pass's own helper. `.tscn` `Transform3D` lists basis ROWS, and the
+  helper wrote columns. Every directional light it made tonight was
+  rotation-transposed: aimed down, but from the wrong compass side.
+  Erica's sun came from the NE, not the NW. All ten lights in the five
+  scenes are transposed back, and the playbook carries the rule.
+
+Draft 2 targets:
+- the gallery's people;
+- the hallway outside;
+- the 15:04 light.
+
 **2026-10-10 · overnight run, pass 31: BIANCA'S OFFICE (the wrong PERSON's
 room, from the sweep).** In vol6 ch17 Bianca is "at her desk in the
 small office off the master bedroom, paying the August bills ... The

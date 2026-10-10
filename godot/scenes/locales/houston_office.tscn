@@ -170,7 +170,7 @@ environment = SubResource("Env_Locale")
 ; corner glass, the sky fill from the N, the recessed downlights and her chrome lamp. No fluorescents.
 ; the Houston afternoon sun, low from the NW through both glass walls
 [node name="Sun_Key" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.7027, 0.0000, 0.7115, 0.4134, 0.8139, 0.4083, -0.5791, 0.5810, -0.5719, 0, 8, 0)
+transform = Transform3D(-0.7027, 0.4134, -0.5791, 0.0000, 0.8139, 0.5810, 0.7115, 0.4083, -0.5719, 0, 8, 0)
 light_color = Color(1.0, 0.88, 0.7, 1)
 light_energy = 1.0
 shadow_enabled = false
@@ -178,7 +178,7 @@ metadata/daylight = true
 
 ; the sky through the N glass
 [node name="Sky_Fill" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-1.0000, 0.0000, -0.0000, -0.0000, 0.9553, 0.2955, 0.0000, 0.2955, -0.9553, 0, 8, 0)
+transform = Transform3D(-1.0000, -0.0000, 0.0000, 0.0000, 0.9553, 0.2955, -0.0000, 0.2955, -0.9553, 0, 8, 0)
 light_color = Color(0.74, 0.82, 0.94, 1)
 light_energy = 0.35
 shadow_enabled = false

@@ -928,6 +928,19 @@ const CAMERA_PRESETS := {
 		"fov": 62.0,
 		"suppress_input": true,
 	},
+	"new_auburn_courtroom": {
+		"scene": "res://scenes/locales/new_auburn_courtroom.tscn",
+		"requires_glb": "res://assets/3d/locales/new_auburn_courtroom.glb",
+		# vol6 ch8 (2026-10-10): the New Auburn County courtroom, "bigger
+		# than she had expected. The wood is darker." It played on the
+		# Graustark parish small-claims room (the Gauntlet's Justice board).
+		# 16 x 22 (godot x in [-8,8], z in [0,-22]), the bench N. Camera in
+		# the centre aisle among the gallery's rows, looking up to the bench.
+		"camera_origin": Vector3(0.00, 1.75, -5.00),
+		"camera_rotation": Vector3(0.012, -0.000, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
 	"courthouse_chamber": {
 		"scene": "res://scenes/locales/courthouse_chamber.tscn",
 		"requires_glb": "res://assets/3d/locales/courthouse_chamber.glb",

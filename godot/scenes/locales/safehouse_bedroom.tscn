@@ -173,7 +173,7 @@ environment = SubResource("Env_Locale")
 ; windows, the fan globe, the bedside lamp, the hall bulb, the kitchen light at the hall's end.
 ; the sun from the NE through the porch window and the side window
 [node name="Sun_Key" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.7070, 0.0000, -0.7072, -0.4109, 0.8139, 0.4108, 0.5756, 0.5810, -0.5754, 0, 6, 0)
+transform = Transform3D(-0.7070, -0.4109, 0.5756, 0.0000, 0.8139, 0.5810, -0.7072, 0.4108, -0.5754, 0, 6, 0)
 light_color = Color(1.0, 0.9, 0.74, 1)
 light_energy = 0.85
 shadow_enabled = false
@@ -181,7 +181,7 @@ metadata/daylight = true
 
 ; the sky fill from the porch side
 [node name="Sky_Fill" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-1.0000, 0.0000, -0.0000, -0.0000, 0.9553, 0.2955, 0.0000, 0.2955, -0.9553, 0, 6, 0)
+transform = Transform3D(-1.0000, -0.0000, 0.0000, 0.0000, 0.9553, 0.2955, -0.0000, 0.2955, -0.9553, 0, 6, 0)
 light_color = Color(0.76, 0.82, 0.92, 1)
 light_energy = 0.3
 shadow_enabled = false

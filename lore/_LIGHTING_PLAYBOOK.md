@@ -151,6 +151,25 @@ Position note: lamp omnis are placed AT the lamp-head mesh position
 
 ## Recent lessons
 
+### 2026-10-10 · a .tscn Transform3D lists basis ROWS: write a light's rotation that way
+
+- A helper that built a directional light from yaw and pitch wrote the
+  rotation matrix's COLUMNS into `Transform3D(...)`. Godot serializes
+  basis ROWS (`basis.rows[i][j]`), so every light came in transposed:
+  the inverse rotation.
+- It still aimed down (the down component often survives transposition),
+  so it looked plausible. But it came from the wrong side: Erica
+  Campbell's sun through her NW glass arrived from the NE. Five scenes
+  carried it until `light_direction_audit` caught one whose transposed
+  ray pointed up.
+- The rule:
+  - Write `Transform3D(r00, r01, r02, r10, r11, r12, r20, r21, r22, ox,
+    oy, oz)` from rows.
+  - The light travels along `-basis.z`, where `basis.z` is column 2:
+    `(r02, r12, r22)`.
+  - After authoring, print that travel vector and check it against the
+    windows the light is meant to come through.
+
 ### 2026-10-09 · one set, two times of day: per-preset env + per-preset rigs
 
 - Faust's studio serves a 4 am preset (`faust_bedroom`, night and

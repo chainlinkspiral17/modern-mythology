@@ -170,7 +170,7 @@ environment = SubResource("Env_Locale")
 ; the screens' glow on the E wall. No drafting lamps, no fluorescents.
 ; the morning sun through the N glass
 [node name="Sun_Key" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.8910, 0.0000, -0.4540, -0.2373, 0.8525, 0.4657, 0.3870, 0.5227, -0.7596, 0, 8, 0)
+transform = Transform3D(-0.8910, -0.2373, 0.3870, 0.0000, 0.8525, 0.5227, -0.4540, 0.4657, -0.7596, 0, 8, 0)
 light_color = Color(1.0, 0.92, 0.8, 1)
 light_energy = 0.8
 shadow_enabled = false
@@ -178,7 +178,7 @@ metadata/daylight = true
 
 ; the sky through the N glass
 [node name="Sky_Fill" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-1.0000, 0.0000, -0.0000, -0.0000, 0.9689, 0.2474, 0.0000, 0.2474, -0.9689, 0, 8, 0)
+transform = Transform3D(-1.0000, -0.0000, 0.0000, 0.0000, 0.9689, 0.2474, -0.0000, 0.2474, -0.9689, 0, 8, 0)
 light_color = Color(0.8, 0.86, 0.94, 1)
 light_energy = 0.35
 shadow_enabled = false
