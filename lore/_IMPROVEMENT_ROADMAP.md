@@ -3834,6 +3834,36 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-10 · overnight run, pass 30: CLUB SHARP (a new set from the
+sweep).** vol1 ch4: "a club in the heart of nowhere, beating with life ...
+Club Sharp has a # for a logo. Dickens Dean seems to have the run of the
+place. There is a gigantic arcade downstairs, several dance floors, and a
+bowling alley". It played on the Foxhole, vol6's Texas punk black box.
+The new `club_sharp`, built big because it is a dream that keeps
+opening:
+- **The main floor.** 24 x 18 m with 6 m to the deck, light trusses with
+  their cans. Two dance floors of lit tiles.
+- **The bar.** The long bar with a chrome top and LED strip, nine stools,
+  the back bar of absinthe and other bottles, the absinthe fountain.
+- **Dickens Dean's booth.** Up three steps on the N dais: velvet, a
+  table with three absinthe glasses and the spoon, the # in neon over
+  it.
+- **The arcade downstairs.** On the W, a railed glass atrium opens onto
+  it, 4 m down a stair: 24 cabinets in rows with lit screens and
+  marquees, and starry carpet.
+- **The bowling alley.** Behind the S glass: six lanes running away 24 m
+  to their pin decks and pin-deck lights, scoring screens, ball returns.
+- **Scene.** Neon practicals; four markers. The preset camera sits on
+  the rail within 12 m of the booth closeups (the `wrong_room` FAR
+  rule).
+- **Wiring.** vol1 ch4's club_sharp, club_sharp_b and waking route to
+  it.
+
+Draft 2 targets:
+- the crowd;
+- the arcade's glow from the main floor (it reads dim past the rail);
+- the car outside.
+
 **2026-10-10 · overnight run, pass 29: THE SMALL WOOD REC CENTER (a new set
 from the sweep).** vol2's second interlude is set at "Small Wood Rec
 Center — a small, deteriorating one-room building on the main drag ...

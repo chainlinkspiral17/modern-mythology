@@ -581,6 +581,10 @@
       "bed": "assets/audio/bgm/vol5_venue_ambient.wav",
       "gain": 0.5
     },
+    "club_sharp": {
+      "bed": "assets/audio/bgm/vol5_venue_ambient.wav",
+      "gain": 0.6
+    },
     "pharmacy_floor": {
       "bed": "assets/audio/bgm/vol1_pharmacy.wav",
       "gain": 0.82

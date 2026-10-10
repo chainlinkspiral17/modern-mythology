@@ -2192,6 +2192,20 @@ const CAMERA_PRESETS := {
 		"fov": 66.0,
 		"suppress_input": true,
 	},
+	"club_sharp": {
+		"scene": "res://scenes/locales/club_sharp.tscn",
+		"requires_glb": "res://assets/3d/locales/club_sharp.glb",
+		# vol1 ch4's dream club (2026-10-10): "a gigantic arcade downstairs,
+		# several dance floors, and a bowling alley ... a # for a logo". It
+		# played on the Foxhole. 24 x 18 main floor; the arcade 4 m below
+		# the W atrium; the bowling alley behind the S glass. Camera at the
+		# atrium rail looking NE over the dance floors to the bar
+		# and Dickens Dean's booth under the #.
+		"camera_origin": Vector3(-2.00, 1.75, -6.00),
+		"camera_rotation": Vector3(-0.030, -0.755, 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
 	"small_wood_rec_center": {
 		"scene": "res://scenes/locales/small_wood_rec_center.tscn",
 		"requires_glb": "res://assets/3d/locales/small_wood_rec_center.glb",
