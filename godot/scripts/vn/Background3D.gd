@@ -1588,7 +1588,7 @@ const CAMERA_PRESETS := {
 		# NNE at the unit's back door in the dark, the flood at the far
 		# end, the mall's parapet over it. (ch14, ch20, ch22)
 		"camera_origin": Vector3(6.6, 1.35, -41.5),
-		"camera_rotation": Vector3(-0.02, -0.876, 0.0),
+		"camera_rotation": Vector3(-0.02, -1.215, 0.0),   # (2026-10-10: re-aimed at the unit, now two doors down from the Foxhole's)
 		"fov": 58.0,
 		"suppress_input": true,
 	},

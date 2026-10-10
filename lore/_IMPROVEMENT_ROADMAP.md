@@ -3834,6 +3834,22 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-10 · overnight run, pass 38: "TWO DOORS DOWN" (from the sweep).**
+The prose puts the unit "two doors down at the back of the strip mall"
+from the Foxhole's back door. The set had the unit's door right next to
+it.
+- **The unit.** Its door now stands 3.5 m further along the back wall,
+  with a plain service door between.
+- **What moved with it.** Its window with the papers taped inside, the
+  gap light under the door and its spill, and the `shot_insert_unit` /
+  `shot_insert_door` markers.
+- **The vantage.** `new_auburn_strip_mall` is re-aimed (yaw −1.215) so
+  the frame reads left to right: the Foxhole's lit door, the plain door,
+  then the unit's dark door with light under it.
+
+Draft 2 target: a third back door with its own grease bin, so "two doors"
+counts from the frame alone.
+
 **2026-10-10 · overnight run, pass 37: THE VOL7 MONTAGE, SPLIT (from the
 sweep).** Frequency Interlude II played all its places on the warehouse
 cathedral. Four `bg` nodes now give each segment its place:

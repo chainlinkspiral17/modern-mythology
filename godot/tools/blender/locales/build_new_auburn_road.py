@@ -304,7 +304,10 @@ def build_foxhole_strip_mall_2026_08():
         make_box("StripMall_LotStripe_%d" % si, (8.2, my + sy, 0.032),
                  (2.6, 0.10, 0.004), (0.55, 0.54, 0.50, 1.0))
     # Back doors of the row: four plain units...
-    for di, dy in enumerate((-8.0, -3.5, 5.5, 9.0)):
+    # (2026-10-10: "Two doors down at the back of the strip mall is the unit" —
+    # the unit and the plain door at -3.5 traded places so one door stands
+    # between it and the Foxhole's)
+    for di, dy in enumerate((-8.0, -1.0, 5.5, 9.0)):
         make_box("StripMall_BackDoor_%d" % di, (mx - 5.02, my + dy, 1.05),
                  (0.06, 0.95, 2.10), door_steel)
     # ...the Foxhole's section (rear door + one caged bulb + kegs).
@@ -319,14 +322,14 @@ def build_foxhole_strip_mall_2026_08():
     # a rear window PAPERED OVER (paper sheets slightly askew), the
     # door repainted darker than its neighbors, no lamp.
     ux = mx - 5.02
-    make_box("Unit_BackDoor", (ux, my - 1.0, 1.05), (0.06, 0.95, 2.10),
+    make_box("Unit_BackDoor", (ux, my - 3.5, 1.05), (0.06, 0.95, 2.10),
              (0.24, 0.23, 0.24, 1.0))
-    make_box("Unit_Window_Frame", (ux, my - 2.3, 1.60), (0.05, 1.30, 1.00), stucco_dk)
+    make_box("Unit_Window_Frame", (ux, my - 4.8, 1.60), (0.05, 1.30, 1.00), stucco_dk)
     for pi2, (poy, poz, w, h) in enumerate((
             (-0.30, 0.18, 0.62, 0.55), (0.28, -0.12, 0.66, 0.60),
             (0.02, 0.30, 0.55, 0.38))):
         make_box("Unit_Window_Paper_%d" % pi2,
-                 (ux - 0.035, my - 2.3 + poy, 1.60 + poz), (0.012, w, h), paper)
+                 (ux - 0.035, my - 4.8 + poy, 1.60 + poz), (0.012, w, h), paper)
     # The lot's one working floodlight aims at the OTHER end — the
     # unit sits in the dark on purpose.
     make_cyl("StripMall_FloodPole", (10.5, my + 9.5, 2.6), 0.09, 5.2, door_steel, segments=8)
@@ -358,8 +361,8 @@ def build_live_oak_2026_09():
     mx, my = 17.0, 47.0
     ux = mx - 5.02
     # the two-inch gap: a blade of light on the latch side of the unit's back door, and its spill on the lot
-    make_box("Unit_Door_Gap_Light", (ux - 0.035, my - 1.0 + 0.45, 1.05), (0.01, 0.05, 2.02), (0.98, 0.90, 0.66, 1.0))
-    make_box("Unit_Door_Light_Spill", (ux - 0.40, my - 0.55, 0.033), (0.70, 0.60, 0.002), (0.46, 0.40, 0.28, 1.0))
+    make_box("Unit_Door_Gap_Light", (ux - 0.035, my - 3.5 + 0.45, 1.05), (0.01, 0.05, 2.02), (0.98, 0.90, 0.66, 1.0))
+    make_box("Unit_Door_Light_Spill", (ux - 0.40, my - 3.05, 0.033), (0.70, 0.60, 0.002), (0.46, 0.40, 0.28, 1.0))
     # Jesse's Civic at the south-west corner of the lot, nose north, lights off
     make_car("Civic", 7.2, 38.0, 4.3, (0.34, 0.36, 0.40, 1.0), hatch=True, along="Y", z0=0.03)
     # the phone, lit, in the gap between the dash and the windshield,
