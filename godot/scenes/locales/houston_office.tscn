@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://houston_office_emperor"]
+[gd_scene load_steps=26 format=3 uid="uid://houston_office_emperor"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/houston_office.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -128,20 +128,32 @@ shader_parameter/wobble_freq = 0.85
 shader_parameter/tint_amount = 0.18
 shader_parameter/tint_color = Color(0.62, 0.74, 0.86, 1)
 
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_City"]
+; (draft 4, 2026-10-09) Houston late afternoon past floor-to-ceiling glass, twelve stories up
+sky_top_color = Color(0.34, 0.52, 0.80, 1)
+sky_horizon_color = Color(0.82, 0.80, 0.74, 1)
+sky_curve = 0.18
+ground_bottom_color = Color(0.30, 0.30, 0.30, 1)
+ground_horizon_color = Color(0.58, 0.56, 0.52, 1)
+
+[sub_resource type="Sky" id="Sky_City"]
+sky_material = SubResource("SkyMat_City")
+radiance_size = 3
+
 [sub_resource type="Environment" id="Env_Locale"]
-background_mode = 1
-background_color = Color(0.10, 0.10, 0.10, 1)
+background_mode = 2
+sky = SubResource("Sky_City")
 ambient_light_source = 2
-ambient_light_color = Color(0.86, 0.88, 0.92, 1)
-ambient_light_energy = 0.85
+ambient_light_color = Color(0.88, 0.88, 0.90, 1)
+ambient_light_energy = 0.70
 fog_enabled = true
-fog_light_color = Color(0.62, 0.64, 0.68, 1)
-fog_light_energy = 0.3
-fog_density = 0.003
+fog_light_color = Color(0.74, 0.72, 0.68, 1)
+fog_light_energy = 0.4
+fog_density = 0.004
 adjustment_enabled = true
 adjustment_brightness = 1.02
 adjustment_contrast = 1.04
-adjustment_saturation = 0.92
+adjustment_saturation = 0.94
 glow_enabled = true
 glow_intensity = 0.6
 glow_bloom = 0.08
@@ -154,60 +166,74 @@ glow_hdr_scale = 2.4
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_Locale")
 
-[node name="Key_Fluor" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.574, 0.819, 0, -0.819, 0.574, 0, 8, 0)
-light_color = Color(0.92, 0.94, 0.96, 1)
-light_energy = 0.85
-shadow_enabled = false
-
-[node name="Fill_Window" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 4, -6)
-light_color = Color(0.86, 0.88, 0.92, 1)
-light_energy = 0.4
-shadow_enabled = false
-
-[node name="Back_Corp" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 4, 4, 4)
-light_color = Color(0.62, 0.74, 0.86, 1)
-light_energy = 0.25
-shadow_enabled = false
-
-[node name="Fluor_Pool_S" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7, -2.0)
-light_color = Color(0.92, 0.92, 0.85, 1)
+; ── DRAFT 4 RIG (2026-10-09): the partner office twelve stories up. The sun from the NW through the
+; corner glass, the sky fill from the N, the recessed downlights and her chrome lamp. No fluorescents.
+; the Houston afternoon sun, low from the NW through both glass walls
+[node name="Sun_Key" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.7027, 0.0000, 0.7115, 0.4134, 0.8139, 0.4083, -0.5791, 0.5810, -0.5719, 0, 8, 0)
+light_color = Color(1.0, 0.88, 0.7, 1)
 light_energy = 1.0
-omni_range = 5.5
+shadow_enabled = false
+metadata/daylight = true
+
+; the sky through the N glass
+[node name="Sky_Fill" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-1.0000, 0.0000, -0.0000, -0.0000, 0.9553, 0.2955, 0.0000, 0.2955, -0.9553, 0, 8, 0)
+light_color = Color(0.74, 0.82, 0.94, 1)
+light_energy = 0.35
 shadow_enabled = false
 
-[node name="Fluor_Pool_M" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7, -4.5)
-light_color = Color(0.92, 0.92, 0.85, 1)
-light_energy = 1.0
-omni_range = 5.5
+; the recessed downlights
+[node name="Downlight_1_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.000, 2.800, -2.000)
+light_color = Color(1.00, 0.94, 0.84, 1)
+light_energy = 0.55
 shadow_enabled = false
+omni_range = 4.00
 
-[node name="Fluor_Pool_N" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7, -6.5)
-light_color = Color(0.92, 0.92, 0.85, 1)
-light_energy = 0.95
-omni_range = 5.5
+[node name="Downlight_4_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.000, 2.800, -4.600)
+light_color = Color(1.00, 0.94, 0.84, 1)
+light_energy = 0.55
 shadow_enabled = false
+omni_range = 4.00
 
-; (2026-09-19: on the kit lamp's bulb at the desk's NW corner, blender
-; (-4.05, 1.74, 1.10))
-[node name="Manager_Lamp_Bulb_Practical" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.05, 1.10, -1.74)
-light_color = Color(0.95, 0.78, 0.5, 1)
-light_energy = 1.1
-omni_range = 2.6
+[node name="Downlight_6_Practical" type="OmniLight3D" parent="."]
+position = Vector3(3.600, 2.800, -1.000)
+light_color = Color(1.00, 0.94, 0.84, 1)
+light_energy = 0.55
 shadow_enabled = false
+omni_range = 4.00
 
-[node name="WindowSpill" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, -6.6)
-light_color = Color(0.7, 0.8, 0.95, 1)
-light_energy = 0.7
-omni_range = 6.0
+[node name="Downlight_0_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-2.400, 2.800, -2.000)
+light_color = Color(1.00, 0.94, 0.84, 1)
+light_energy = 0.55
 shadow_enabled = false
+omni_range = 4.00
+
+; her chrome desk lamp
+[node name="Erica_Lamp_Bulb_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.880, 1.120, -4.650)
+light_color = Color(1.00, 0.86, 0.66, 1)
+light_energy = 0.80
+shadow_enabled = false
+omni_range = 2.50
+
+; the hall
+[node name="Hall_Downlight_0_Practical" type="OmniLight3D" parent="."]
+position = Vector3(1.000, 2.550, 1.800)
+light_color = Color(1.00, 0.94, 0.84, 1)
+light_energy = 0.60
+shadow_enabled = false
+omni_range = 3.50
+
+[node name="Hall_Downlight_1_Practical" type="OmniLight3D" parent="."]
+position = Vector3(4.000, 2.550, 1.800)
+light_color = Color(1.00, 0.94, 0.84, 1)
+light_energy = 0.60
+shadow_enabled = false
+omni_range = 3.50
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -329,103 +355,45 @@ offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
 
-; ── vn_shot coverage (2026-08-09 · the arcana sets get the markers their scripts call for) ────────
-; RE-AIMED 2026-10-02 (the Deck: "camera and director attention not where they
-; should be"): establish_b from the glass wall back to her office; the monitor
-; insert at the SCREEN (it looked at the back); the photograph at the photograph
-; (it framed the chair base); Erica's close-up with her office behind her, Anna's
-; with her cubicle (it faced a bare wall).
-; rotation B: from the glass wall down the WEST aisle to her office (the centre
-; aisle put a cubicle partition across the lens)
+; ── vn_shot coverage — DRAFT 4 (2026-10-09), the partner office
+; reverse: from the NW glass corner across the desk to the files, the door and the hall
 [node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-4.550, 1.550, -6.300)
-rotation = Vector3(-0.1242, -2.9320, 0.0)
-metadata/fov = 50.0
+position = Vector3(-3.900, 1.650, -6.300)
+rotation = Vector3(-0.0665, -2.2361, 0.0)
+metadata/fov = 54.0
 
-; closeup: Erica at the manager desk
+; closeup: Erica at the teak desk from its east end — the W glass and the city behind her (not the monitors' backs)
 [node name="shot_closeup_erica" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-2.750, 1.420, -2.580)
-rotation = Vector3(-0.1795, 2.5188, 0.0)
+position = Vector3(1.900, 1.380, -5.350)
+rotation = Vector3(-0.0669, 1.3633, 0.0)
 metadata/fov = 36.0
 
-; closeup: Anna in the cubicle row
-; (2026-09-19: the cubicle row moved north; the frame stands south of it,
-; blender y 3.2, so the partition no longer fills it)
-[node name="shot_closeup_anna" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.000, 1.400, -2.600)
-rotation = Vector3(-0.1799, -0.0000, 0.0)
-metadata/fov = 36.0
-
-; insert: the monitor on the manager desk
+; insert: over her shoulder, the motion denied on the monitor
 [node name="shot_insert_monitor" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-3.100, 1.220, -0.950)
-rotation = Vector3(-0.1935, 0.4791, 0.0)
+position = Vector3(0.250, 1.320, -5.650)
+rotation = Vector3(-0.2146, 2.5763, 0.0)
 metadata/fov = 38.0
 
-; insert: the desk surface
+; insert: the teak, custom-built — her hand on its surface
 [node name="shot_insert_desk" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-3.3, 1.25, -1)
-rotation = Vector3(-0.569444, 0.876058, 0)
+position = Vector3(-1.350, 1.400, -3.950)
+rotation = Vector3(-0.3995, -0.8851, 0.0)
 metadata/fov = 42.0
 
-; insert: the desk phone — it rang; she set it down (ch11)
+; insert: the desk phone
 [node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7, 1.15, -1.05)
-rotation = Vector3(-0.6184, 0.8194, 0.0)
+position = Vector3(-0.450, 1.250, -5.550)
+rotation = Vector3(-0.5321, 2.5297, 0.0)
 metadata/fov = 42.0
 
-; insert: the eleven-page D'Ambrosio draft (ch11)
+; insert: the eleven-page draft for Antonio D'Ambrosio
 [node name="shot_insert_contract" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.180, 1.240, -0.820)
-rotation = Vector3(-0.5473, -2.5294, 0.0)
+position = Vector3(-0.250, 1.250, -5.700)
+rotation = Vector3(-0.6885, 2.6779, 0.0)
 metadata/fov = 40.0
 
-; insert: her mother, Galveston, 1996 (ch11)
+; insert: her mother in a sun hat in Galveston, 1996 — the only personal item
 [node name="shot_insert_photograph" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.950, 1.000, -0.550)
-rotation = Vector3(-0.2783, -0.0000, 0.0)
+position = Vector3(0.550, 1.050, -5.700)
+rotation = Vector3(-0.3111, -2.5045, 0.0)
 metadata/fov = 30.0
-
-; practicals authored by practical_author.py (2026-09-11):
-; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
-[node name="Fluor_0_1_Tube_Practical" type="OmniLight3D" parent="."]
-position = Vector3(2.400, 2.720, -2.000)
-light_color = Color(0.920, 0.920, 0.850, 1)
-light_energy = 1.30
-shadow_enabled = false
-omni_range = 4.35
-
-[node name="Fluor_1_1_Tube_Practical" type="OmniLight3D" parent="."]
-position = Vector3(2.400, 2.720, -4.500)
-light_color = Color(0.920, 0.920, 0.850, 1)
-light_energy = 1.30
-shadow_enabled = false
-omni_range = 4.35
-
-[node name="Fluor_2_1_Tube_Practical" type="OmniLight3D" parent="."]
-position = Vector3(2.400, 2.720, -6.500)
-light_color = Color(0.920, 0.920, 0.850, 1)
-light_energy = 1.30
-shadow_enabled = false
-omni_range = 4.35
-
-[node name="Fluor_0_-1_Tube_Practical" type="OmniLight3D" parent="."]
-position = Vector3(-2.400, 2.720, -2.000)
-light_color = Color(0.920, 0.920, 0.850, 1)
-light_energy = 1.30
-shadow_enabled = false
-omni_range = 4.35
-
-[node name="Fluor_1_-1_Tube_Practical" type="OmniLight3D" parent="."]
-position = Vector3(-2.400, 2.720, -4.500)
-light_color = Color(0.920, 0.920, 0.850, 1)
-light_energy = 1.30
-shadow_enabled = false
-omni_range = 4.35
-
-[node name="Fluor_2_-1_Tube_Practical" type="OmniLight3D" parent="."]
-position = Vector3(-2.400, 2.720, -6.500)
-light_color = Color(0.920, 0.920, 0.850, 1)
-light_energy = 1.30
-shadow_enabled = false
-omni_range = 4.35

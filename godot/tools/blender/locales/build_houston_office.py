@@ -1,341 +1,330 @@
-"""VOL 5 · Houston Office — Emperor chapter.
-Generic corporate office: glass partition, cubicle row, fluorescents.
+"""VOL 5 · HOUSTON OFFICE — Erica Campbell's office (Wheel of Fortune,
+Justice, Judgement).
 
-DRAFT 3 (2026-09-19, lore/_VISUAL_PROGRAM.md §3 backgrounds pass, the
-arcana primitive upgrade's fourth room; 2 VN placements + the Emperor
-board). LAYOUT the gates never reported: the manager's glass
-partition ran along the SOUTH of her office, so the credenza stood
-through the glass and her chair sat against it; the cubicle row's
-west third overlapped the office's footprint; the teak drawer faces
-floated 18 cm east of the desk's end; the second monitor hung off the
-desk; the west outlet sat inside the bookcase's back; the office
-"door" was a horizontal bar in the glass. The office is the SW corner
-proper now — glass on its north and east with a glass door in the
-east, the credenza on the real south wall, the desk with two
-pedestals (the drawers on the east one, facing the sitter), the
-cubicle row moved north out of the office. PRIMITIVES: five-star
-office chairs with casters, pillars, arms (manager's and all three
-cubicles; the guest chairs from the kit); the manager's lamp from the
-kit; the phone as a wedge with a handset arc and cord; the cooler jug
-as a bottle; the cups as profiles. WEAR (Erica's mid-week): the
-cubicle aisle, chair mats under the three chairs, the manager's
-elbow strip, the mug ring, the hand smudge on the glass door. D3: a
-floor box behind the desk with the lamp's cord, the three monitors'
-cords down the partition backs. D5: past the glass wall the freeway
-deck twelve floors down and three towers against the sky. Scene: the
-lamp practical onto the kit lamp's bulb.
-Draft 4 targets: the drop ceiling's grid as tiles; the printer and
-its stand; a coat on the manager's door; the cubicle name plates;
-the hawk (a tiny glider past the glass); Deck: the E preset +
-establish_b.
+DRAFT 4 (2026-10-09) — the wrong REGISTER. Drafts 1-3 built "a generic
+corporate office: glass partition, cubicle row, fluorescents" with Erica
+in a glass box in its corner under a drop ceiling. The chapters say who
+she is and where: a law partner of fourteen years, "high in her sterile
+tower", "Outside her window, Houston in late afternoon: the freeway
+traffic doing its slow desperate ballet, the heat-shimmer rising off
+the asphalt twelve stories below ... a hawk" (the freeway was 12 m down,
+not twelve stories), "Her office was a temple to control. Glass walls.
+Chrome accents. Files indexed with obsessive precision", "the Italian
+marble floor beneath Erica Campbell's expensive shoes", "The desk was
+teak, custom-built, paid for in 2014", the eyedrops in "the third drawer
+of her desk", her "ergonomic chair", "the second monitor", "the small
+framed photograph on the corner of the desk, the only personal item in
+the office — her mother, age fifty-one, in a sun hat in Galveston", and
+her assistant Marcus, who "knocked on her door and pushed it open
+carrying two coffees ... set the coffee on the desk ... stepped back to
+the doorway and waited".
+
+Plan (9 x 7 m, ceiling 3.0, the twelfth floor): the corner office — the
+N and W walls floor-to-ceiling glass on mullions, the city and the
+freeway 42 m down, the hawk on its thermal below the sill line; marble
+underfoot, a charcoal rug; the teak desk mid-room facing the door, her
+back to the N glass, two monitors, the photograph on its corner, the
+phone, the chrome lamp, the eleven-page draft, Marcus's coffee and card;
+the low credenza against the N glass; two chrome-and-leather guest
+chairs; the seating group in the SW by the W glass; the E wall of
+lateral files (every drawer labelled) under the law reporters; the door
+in the S wall, ajar, a frosted sidelight; through it the hall and
+Marcus's desk. No diplomas — the photograph is "the only personal item".
+
+Coordinates: Blender Z-up, x -4.5..4.5, y 0 (the S wall, the door) ..
+7.0 (the N glass); the hall is y -3.6..0. glTF export -> Godot (x, z, -y).
+
+Draft 5 targets: the city at dusk (lit windows, the freeway's lights)
+as a per-preset variant for Wheel's end; the files' label holders
+legible at insert scale; Marcus as a presence (his jacket on his chair).
 """
 import os, sys
+import math as _m
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, make_chamfer_box, make_lathe, make_tube, make_rot_box, export_glb
 from _props.furniture import make_chair, make_lamp
-from _props.structure import make_floor, make_wall, make_ceiling, make_window, make_crown_molding, make_wall_with_openings
-from _props.decor import make_wall_clock, make_floor_plant
-from _props.safety import make_smoke_detector, make_hvac_vent, make_fluorescent_tube_fixture, make_ceiling_speaker, make_security_camera
-from _props.detail import (make_wall_outlet, make_wall_tint_band, make_traffic_wear, make_floor_stain)
+from _props.structure import make_floor, make_wall, make_wall_with_openings
+from _props.detail import make_wall_outlet, make_traffic_wear
 from _props.objects import make_mug
 
-PAL_WALL = {"wall": (0.86, 0.84, 0.80, 1.0), "baseboard": (0.32, 0.30, 0.28, 1.0)}
-COL_CARPET = (0.32, 0.30, 0.32, 1.0); COL_CARPET_SEAM = (0.22, 0.20, 0.22, 1.0)
-COL_DESK = (0.42, 0.32, 0.22, 1.0); COL_PARTITION = (0.62, 0.62, 0.60, 1.0)
-COL_CHAIR = (0.18, 0.16, 0.18, 1.0); COL_MONITOR = (0.10, 0.12, 0.14, 1.0)
-COL_GLASS = (0.74, 0.82, 0.86, 0.16);   # (2026-10-05: 0.50 — the partitions + window + glass wall stacked to a white haze over the establish)
-COL_TRIM = (0.32, 0.28, 0.24, 1.0)
-COL_SCREEN = (0.20, 0.34, 0.46, 1.0); COL_ACCENT_WARM = (0.72, 0.30, 0.22, 1.0)
-COL_BOOKCASE = (0.40, 0.30, 0.20, 1.0); COL_CREDENZA = (0.36, 0.27, 0.18, 1.0)
-COL_BOOK_TINTS = [(0.62,0.26,0.22,1.0),(0.24,0.34,0.46,1.0),(0.30,0.42,0.30,1.0),
-                  (0.52,0.44,0.24,1.0),(0.44,0.30,0.42,1.0),(0.30,0.30,0.34,1.0)]
-COL_BLIND = (0.86, 0.84, 0.78, 1.0)
-ROOM_W = 10.0; ROOM_D = 7.0; CEIL = 2.80
-CUB_Y = 4.2      # draft 3: the cubicle row's desk centre (was 3.5 — over the office)
-import math as _m
+ROOM_W = 9.0; ROOM_D = 7.0; CEIL = 3.0
+XW, XE, YS, YN = -ROOM_W / 2.0, ROOM_W / 2.0, 0.0, ROOM_D
+HALL_Y0 = -3.6
+DOOR_X, DOOR_W, DOOR_H = 2.7, 1.0, 2.30
+SIDE_X, SIDE_W = 3.55, 0.45
+GROUND_Z = -42.0                     # the street, twelve stories down
+
+PAL_WALL = {"wall": (0.90, 0.89, 0.86, 1.0), "baseboard": (0.30, 0.30, 0.31, 1.0)}
+MARBLE = (0.88, 0.86, 0.82, 1.0); MARBLE_SEAM = (0.72, 0.70, 0.66, 1.0)
+TEAK = (0.52, 0.34, 0.20, 1.0); TEAK_DK = (0.40, 0.26, 0.15, 1.0)
+CHROME = (0.78, 0.80, 0.82, 1.0); LEATHER = (0.12, 0.11, 0.12, 1.0)
+GLASS = (0.62, 0.72, 0.78, 0.14); MULLION = (0.36, 0.38, 0.40, 1.0)
+SCREEN = (0.20, 0.34, 0.46, 1.0); PAPER = (0.94, 0.93, 0.89, 1.0)
+FILE_GREY = (0.62, 0.62, 0.60, 1.0)
+REPORTERS = [(0.46, 0.16, 0.14, 1.0), (0.62, 0.50, 0.34, 1.0), (0.14, 0.18, 0.28, 1.0)]
 
 
-def make_office_chair(prefix, x, y, seat_z=0.50, w=0.42, back_dy=-0.20, col=COL_CHAIR, arms=True):
-    """A five-star office chair facing +Y (back on the -Y side)."""
-    make_chamfer_box(f"{prefix}_Seat", (x, y, seat_z), (w, w, 0.06), col, chamfer=0.02)
-    make_chamfer_box(f"{prefix}_Back", (x, y + back_dy, seat_z + 0.33), (w, 0.05, 0.60), col, chamfer=0.02)   # on the seat (2026-09-23: 3 cm over it)
-    make_lathe(f"{prefix}_Pillar", (x, y, 0.06), [(0.03, 0.0), (0.03, seat_z - 0.14), (0.05, seat_z - 0.11), (0.05, seat_z - 0.09), (0.0, seat_z - 0.09)], P.METAL_BLACK, segments=8)
+def make_office_chair(prefix, x, y, seat_z=0.50, w=0.50, face=-1, col=LEATHER):
+    """A five-star ergonomic chair; `face` -1 looks toward -Y (back on +Y)."""
+    bdy = -face * 0.22
+    make_chamfer_box(f"{prefix}_Seat", (x, y, seat_z), (w, w, 0.07), col, chamfer=0.025)
+    make_chamfer_box(f"{prefix}_Back", (x, y + bdy, seat_z + 0.37), (w - 0.02, 0.06, 0.68), col, chamfer=0.025)
+    make_cyl(f"{prefix}_Headroll", (x, y + bdy, seat_z + 0.74), 0.05, w - 0.06, col, axis='X', segments=8)
+    make_lathe(f"{prefix}_Pillar", (x, y, 0.06), [(0.03, 0.0), (0.03, seat_z - 0.14), (0.05, seat_z - 0.11), (0.05, seat_z - 0.09), (0.0, seat_z - 0.09)], CHROME, segments=8)
     for si in range(5):
         a = si * 2.0 * _m.pi / 5.0 + 0.3
-        make_rot_box(f"{prefix}_Star_{si}", (x + 0.14 * _m.cos(a), y + 0.14 * _m.sin(a), 0.055), (0.28, 0.035, 0.03), P.METAL_BLACK, yaw=a)
+        make_rot_box(f"{prefix}_Star_{si}", (x + 0.14 * _m.cos(a), y + 0.14 * _m.sin(a), 0.055), (0.28, 0.035, 0.03), CHROME, yaw=a)
         make_cyl(f"{prefix}_Caster_{si}", (x + 0.27 * _m.cos(a), y + 0.27 * _m.sin(a), 0.025), 0.025, 0.035, P.METAL_BLACK, axis='Y', segments=6)
-    if arms:
-        for ai, ax in enumerate((-w / 2.0 - 0.02, w / 2.0 + 0.02)):
-            make_tube(f"{prefix}_Arm_{ai}", [(x + ax, y - 0.12, seat_z + 0.03), (x + ax, y - 0.12, seat_z + 0.22), (x + ax, y + 0.16, seat_z + 0.22)], 0.016, (0.20, 0.20, 0.22, 1.0), segments=6)
+    for ai, ax in enumerate((-w / 2.0 - 0.02, w / 2.0 + 0.02)):
+        make_tube(f"{prefix}_Arm_{ai}", [(x + ax, y - face * 0.12, seat_z + 0.035), (x + ax, y - face * 0.12, seat_z + 0.24), (x + ax, y + face * 0.16, seat_z + 0.24)],
+                  0.016, CHROME, segments=6)
+
 
 def build_shell():
-    make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
-               palette={"vinyl": COL_CARPET, "seam": COL_CARPET_SEAM})
-    for nm, x, ax, length, bb in [
-            ("Wall_W", -ROOM_W/2.0, 'Y', ROOM_D+0.4, +1),
-            ("Wall_E", +ROOM_W/2.0, 'Y', ROOM_D+0.4, -1)]:
-        make_wall(nm, (x, ROOM_D/2.0, 0), length=length, height=CEIL, axis=ax, palette=PAL_WALL, baseboard_face_sign=bb)
-    # (2026-10-03: the north wall is CUT for the glass wall — it was solid behind it, the towers outside never seen)
-    make_wall_with_openings("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=-1,
-                            openings=[(0.0, 1.45, 9.4, 2.60)])
-    make_wall("Wall_S", (0.0, 0.0, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
-    make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
-    for nm, ax, length, wx, wy in [("Crown_W",'Y',ROOM_D,-ROOM_W/2.0+0.10,ROOM_D/2.0),("Crown_E",'Y',ROOM_D,+ROOM_W/2.0-0.10,ROOM_D/2.0),("Crown_N",'X',ROOM_W,0.0,ROOM_D-0.10),("Crown_S",'X',ROOM_W,0.0,+0.10)]:
-        make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax, ceil_z=CEIL, palette={"wood": COL_TRIM})
-    # Large mullioned window N wall, looking at downtown
-    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
-    make_window("Window_N", (0.0, ROOM_D - 0.10, 1.65), width=5.0, height=2.0,
-                palette={"glass": COL_GLASS})
-
-def build_cubicles():
-    # 3 cubicles in centre, partitioned (draft 3: the row at CUB_Y, north
-    # of the manager's office; five-star chairs)
-    for ci, cx in enumerate([-2.5, 0.0, +2.5]):
-        cy = CUB_Y
-        # Partition walls (chest-high)
-        for px_off, pn in [(-0.90, 'L'), (+0.90, 'R')]:
-            make_box(f"Cub_{ci}_Part_{pn}", (cx+px_off, cy, 0.85), (0.04, 1.20, 1.70), COL_PARTITION)
-        make_box(f"Cub_{ci}_Back", (cx, cy+0.60, 0.85), (1.80, 0.04, 1.70), COL_PARTITION)
-        # Desk
-        make_box(f"Cub_{ci}_Desk", (cx, cy, 0.72), (1.60, 0.70, 0.04), COL_DESK)
-        for li, (lx, ly) in enumerate([(cx-0.74,cy-0.30),(cx+0.74,cy-0.30),(cx-0.74,cy+0.30),(cx+0.74,cy+0.30)]):
-            make_box(f"Cub_{ci}_DeskLeg_{li}", (lx, ly, 0.36), (0.04, 0.04, 0.72), COL_TRIM)
-        # Monitor (bezel + inset glowing screen face + stand)
-        make_box(f"Cub_{ci}_Monitor", (cx, cy+0.20, 1.00), (0.50, 0.04, 0.30), COL_MONITOR)
-        make_box(f"Cub_{ci}_MonScreen", (cx, cy+0.178, 1.00), (0.44, 0.005, 0.24), COL_SCREEN)
-        make_box(f"Cub_{ci}_MonStand", (cx, cy+0.20, 0.80), (0.10, 0.10, 0.16), P.METAL_BLACK)
-        make_box(f"Cub_{ci}_MonFoot", (cx, cy+0.20, 0.73), (0.24, 0.18, 0.02), P.METAL_BLACK)
-        # Keyboard + a mug + a small paper tray on the desk
-        make_box(f"Cub_{ci}_KB", (cx, cy-0.12, 0.75), (0.44, 0.15, 0.02), (0.28, 0.28, 0.30, 1.0))
-        make_cyl(f"Cub_{ci}_Mug", (cx+0.55, cy-0.05, 0.79), 0.04, 0.10, COL_ACCENT_WARM)
-        make_box(f"Cub_{ci}_Papers", (cx-0.55, cy+0.05, 0.745), (0.24, 0.30, 0.02), P.PAPER)
-        # Chair
-        make_office_chair(f"Cub_{ci}_Chair", cx, cy-0.55)
-
-def build_glass_office():
-    # Manager's glass-walled office, the SW corner: glass on its NORTH
-    # and EAST (draft 3 — the glass ran along the south, so the credenza
-    # stood through it and the chair sat against it)
-    ox, oy = -3.5, 1.5
-    make_box("Office_PartN", (-3.75, 2.9, 1.40), (2.50, 0.04, 2.20), COL_GLASS)
-    make_box("Office_PartE", (-2.5, 1.0, 1.40), (0.04, 2.00, 2.20), COL_GLASS)
-    make_box("Office_Door", (-2.5, 2.45, 1.10), (0.04, 0.85, 2.20), (0.72, 0.80, 0.84, 0.45))
-    make_tube("Office_Door_Pull", [(-2.46, 2.15, 0.90), (-2.46, 2.15, 1.30)], 0.012, (0.42, 0.44, 0.46, 1.0), segments=6)
-    for mi, (mx, my, ml, ax) in enumerate(((-3.75, 2.9, 2.5, 'X'), (-2.5, 1.0, 2.0, 'Y'))):
-        make_box(f"Office_Rail_Top_{mi}", (mx, my, 2.52), ((ml, 0.06, 0.06) if ax == 'X' else (0.06, ml, 0.06)), (0.42, 0.44, 0.46, 1.0))
-        make_box(f"Office_Rail_Bot_{mi}", (mx, my, 0.30), ((ml, 0.06, 0.04) if ax == 'X' else (0.06, ml, 0.04)), (0.42, 0.44, 0.46, 1.0))
-    # Manager desk: teak top on two pedestals (the drawers on the east
-    # one, facing the sitter — draft 3: the faces floated off the end)
-    make_box("Manager_Desk", (ox, oy, 0.72), (1.40, 0.70, 0.04), COL_DESK)
-    make_box("Manager_Ped_W", (ox-0.50, oy, 0.35), (0.40, 0.60, 0.70), COL_DESK)
-    make_box("Manager_Ped_E", (ox+0.50, oy, 0.35), (0.40, 0.60, 0.70), COL_DESK)
-    # Leather chair (draft 3: five-star, arms, a headroll; 5 cm north
-    # of the credenza it used to touch)
-    make_office_chair("Manager_Chair", ox, oy-0.65, seat_z=0.55, w=0.50, back_dy=-0.22)
-    make_cyl("Manager_Chair_Headroll", (ox, oy-0.87, 1.24), 0.05, 0.46, COL_CHAIR, axis='X', segments=8)
-    # Monitor + lamp
-    make_box("Manager_Monitor", (ox, oy+0.20, 1.05), (0.60, 0.04, 0.36), COL_MONITOR)
-    make_box("Manager_MonScreen", (ox, oy+0.178, 1.05), (0.54, 0.005, 0.30), COL_SCREEN)
-    make_box("Manager_MonFoot", (ox, oy+0.20, 0.75), (0.30, 0.20, 0.02), P.METAL_BLACK)
-    # Desk phone (draft 3: a wedge base, handset arc, coiled cord)
-    make_chamfer_box("Manager_Phone_Base", (ox+0.42, oy-0.05, 0.765), (0.20, 0.24, 0.05), P.METAL_BLACK, chamfer=0.012)
-    make_tube("Manager_Phone_Handset", [(ox+0.34, oy+0.02, 0.805), (ox+0.42, oy+0.02, 0.835), (ox+0.50, oy+0.02, 0.805)], 0.016, (0.12,0.12,0.14,1.0), segments=8)
-    make_tube("Manager_Phone_Cord", [(ox+0.52, oy+0.05, 0.76), (ox+0.60, oy+0.20, 0.75), (ox+0.66, oy+0.32, 0.745)], 0.004, (0.12,0.12,0.14,1.0), segments=5)
-    # Papers / blotter
-    make_box("Manager_Blotter", (ox-0.10, oy-0.05, 0.745), (0.60, 0.40, 0.01), (0.30,0.28,0.30,1.0))
-    make_box("Manager_Papers", (ox-0.10, oy-0.05, 0.755), (0.26, 0.34, 0.02), P.PAPER)
-    # The lamp from the kit, NW corner of the desk (its practical on
-    # the bulb)
-    make_lamp("Manager_Lamp", ox-0.55, oy+0.24, base_z=0.74, h=0.50, shade_col=(0.30, 0.30, 0.32, 1.0), body_col=P.METAL_BLACK)
-    # Pen cup
-    make_cyl("Manager_PenCup", (ox-0.35, oy+0.22, 0.79), 0.04, 0.10, P.METAL_STEEL)
-
-def build_exec_furniture():
-    """Executive furnishings around the manager's glass office (SW):
-    a bookcase w/ books, two filing cabinets w/ pulls, a low credenza,
-    two guest chairs facing the desk, a framed diploma."""
-    # Bookcase against the W wall in the manager office
-    bcx, bcy = -4.72, 1.85   # (draft 3: inside the office's north glass at 2.9; one filing cabinet south of it)
-    make_box("Bookcase_Body", (bcx, bcy, 1.05), (0.36, 1.60, 2.10), COL_BOOKCASE)
-    make_box("Bookcase_Back", (bcx-0.16, bcy, 1.05), (0.04, 1.56, 2.06), COL_TRIM)
-    for si, sz in enumerate([0.40, 0.90, 1.40, 1.90]):
-        make_box(f"Bookcase_Shelf_{si}", (bcx, bcy, sz), (0.32, 1.56, 0.03), COL_TRIM)
-        # Row of spine-out books per shelf
-        for bi in range(9):
-            by = bcy - 0.68 + bi*0.155
-            h = 0.28 + (bi % 3)*0.04
-            make_box(f"Bookcase_Book_{si}_{bi}", (bcx+0.02, by, sz+0.02+h/2.0),
-                     (0.24, 0.13, h), COL_BOOK_TINTS[(si*3+bi) % len(COL_BOOK_TINTS)])
-    # Two filing cabinets, SW corner along W wall
-    for fi, fy in enumerate([0.55]):
-        fx = -4.66
-        make_box(f"Filing_{fi}_Body", (fx, fy, 0.66), (0.46, 0.56, 1.32), P.METAL_STEEL)
-        for di in range(3):
-            dz = 0.28 + di*0.42
-            make_box(f"Filing_{fi}_Drawer_{di}", (fx+0.22, fy, dz), (0.02, 0.50, 0.36), (0.56,0.58,0.60,1.0))
-            make_box(f"Filing_{fi}_Pull_{di}", (fx+0.24, fy, dz), (0.02, 0.18, 0.03), P.METAL_BLACK)
-    # Low credenza against the S wall behind the desk
-    # (draft 3: 1.6 wide at -3.5 — the 2.0 run poked through the east
-    # glass; its doors face the room, +Y)
-    crx, cry = -3.5, 0.35
-    make_box("Credenza_Body", (crx, cry, 0.42), (1.60, 0.44, 0.84), COL_CREDENZA)
-    make_box("Credenza_Top", (crx, cry, 0.86), (1.68, 0.50, 0.04), COL_DESK)
-    for pi, px in enumerate([-0.52, 0.0, +0.52]):
-        make_box(f"Credenza_Door_{pi}", (crx+px, cry+0.22, 0.42), (0.48, 0.02, 0.72), COL_CREDENZA)
-        make_box(f"Credenza_Pull_{pi}", (crx+px+0.18, cry+0.24, 0.42), (0.03, 0.02, 0.14), P.METAL_BLACK)
-    # A framed photo + a small trophy on the credenza top
-    make_box("Mother_Photo_Galveston", (-2.95, 1.25, 0.80), (0.16, 0.03, 0.14), COL_TRIM)  # the ONLY personal item — desk corner
-    # Two guest chairs facing the manager desk (north side)
-    # between the bookcase (x -4.54) and the office door's swing (x -3.42)
-    # — 2026-09-25: chair 1 stood 33 cm from the door
-    for gi, gx in enumerate([-4.28, -3.74]):
-        make_chair(f"Guest_{gi}", gx, 2.45, yaw=_m.pi, wood=(0.26, 0.20, 0.16, 1.0), seat_col=COL_CHAIR, w=0.44)
-    # Framed diploma on the W wall of the manager office
-
-def build_window_blinds():
-    # Blinds removed (hero-prop pass): the office is "glass walls,
-    # chrome accents" and Erica watches the freeway + hawk through
-    # them — full-height glazing instead.
-    make_box("Glass_Wall", (0.0, ROOM_D-0.06, 1.40), (9.4, 0.04, 2.80), (0.55, 0.66, 0.74, 0.20))
-    for mi, mx in enumerate((-3.2, -1.1, 1.1, 3.2)):
-        make_box(f"Glass_Mullion_{mi}", (mx, ROOM_D-0.05, 1.40), (0.06, 0.06, 2.80), (0.42, 0.44, 0.46, 1.0))
+    make_floor("Floor", (0.0, ROOM_D / 2.0, 0.0), size_x=ROOM_W + 0.4, size_y=ROOM_D + 0.4,
+               palette={"vinyl": MARBLE, "seam": MARBLE_SEAM})
+    make_wall("Wall_E", (XE, ROOM_D / 2.0, 0), length=ROOM_D + 0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=-1)
+    make_wall_with_openings("Wall_S", (0.0, YS, 0), length=ROOM_W + 0.4, height=CEIL, axis='X', palette=PAL_WALL,
+                            baseboard_face_sign=+1, openings=[(DOOR_X, DOOR_H / 2.0, DOOR_W, DOOR_H), (SIDE_X, DOOR_H / 2.0, SIDE_W, DOOR_H)])
+    # the ceiling: one smooth plane, the slot diffuser along the glass
+    make_box("Ceil", (0.0, ROOM_D / 2.0, CEIL + 0.05), (ROOM_W + 0.4, ROOM_D + 0.4, 0.10), (0.94, 0.94, 0.92, 1.0))
+    make_box("Ceil_Slot_N", (0.0, YN - 0.35, CEIL - 0.002), (ROOM_W - 0.8, 0.05, 0.004), (0.30, 0.30, 0.32, 1.0))
+    make_box("Ceil_Slot_W", (XW + 0.35, ROOM_D / 2.0, CEIL - 0.002), (0.05, ROOM_D - 0.8, 0.004), (0.30, 0.30, 0.32, 1.0))
+    for i, (x, y) in enumerate(((-2.4, 2.0), (0.0, 2.0), (2.4, 2.0), (-2.4, 4.6), (0.0, 4.6), (2.4, 4.6), (3.6, 1.0), (3.6, 6.0))):
+        make_cyl(f"Downlight_{i}", (x, y, CEIL - 0.004), 0.08, 0.008, (0.98, 0.96, 0.90, 1.0), segments=12)
+        make_cyl(f"Downlight_{i}_Trim", (x, y, CEIL - 0.003), 0.10, 0.006, CHROME, segments=12)
+    # the floor slab and ceiling run out past the glass to the building's edge
+    make_box("Slab_Edge_N", (-0.2, YN + 0.25, -0.15), (ROOM_W + 1.0, 0.50, 0.30), (0.50, 0.52, 0.54, 1.0))
+    make_box("Slab_Edge_W", (XW - 0.25, ROOM_D / 2.0 - 0.0, -0.15), (0.50, ROOM_D + 0.4, 0.30), (0.50, 0.52, 0.54, 1.0))
 
 
-def build_decor():
-    make_wall_clock("Clock", (0.0, 6.900, 2.30), frozen_hour=8, frozen_min=40, facing='-Y')
-    make_floor_plant("Plant_NE", (+4.0, ROOM_D-1.0, 0.0))
-    make_floor_plant("Plant_NW", (-4.0, ROOM_D-1.0, 0.0))
-    # Water cooler
-    make_box("WaterCooler_Body", (+4.6, 1.0, 0.55), (0.40, 0.40, 1.10), (0.86, 0.86, 0.84, 1.0))
-    make_lathe("WaterCooler_Jug", (+4.6, 1.0, 1.10), [(0.0, 0.0), (0.16, 0.0), (0.17, 0.30), (0.12, 0.40), (0.05, 0.45), (0.05, 0.50), (0.0, 0.50)], (0.78, 0.86, 0.92, 0.55), segments=12)
-    make_box("WaterCooler_Spout", (+4.6, 0.80, 0.85), (0.10, 0.04, 0.06), P.METAL_BLACK)
+def build_glass_walls():
+    """Floor-to-ceiling glass on the N and W: panes between mullions every
+    1.5 m (N) / 1.4 m (W), a base rail and a head rail, the corner post.
+    The mullions are named as the curtain WALL they are (the credenza
+    stands against them)."""
+    z0, z1 = 0.10, CEIL - 0.12
+    zc, zh = (z0 + z1) / 2.0, z1 - z0
+    make_box("Glass_N_Base", (0.0, YN, 0.05), (ROOM_W - 0.2, 0.10, 0.10), MULLION)
+    make_box("Glass_N_Head", (0.0, YN, CEIL - 0.06), (ROOM_W - 0.2, 0.10, 0.12), MULLION)
+    xs = [XW + 0.07] + [XW + i * 1.5 for i in range(1, 6)] + [XE - 0.10]
+    for i in range(len(xs) - 1):
+        a, b = xs[i] + (0.03 if i else 0.0), xs[i + 1] - (0.03 if i < len(xs) - 2 else 0.0)
+        make_box(f"Glass_N_{i}", ((a + b) / 2.0, YN, zc), (b - a, 0.02, zh), GLASS)
+    for i in range(1, 6):
+        make_box(f"Curtain_Wall_Mullion_N_{i}", (XW + i * 1.5, YN, zc), (0.06, 0.12, zh), MULLION)
+    make_box("Glass_W_Base", (XW, (YS + YN) / 2.0 + 0.0, 0.05), (0.10, ROOM_D - 0.27, 0.10), MULLION)
+    make_box("Glass_W_Head", (XW, (YS + YN) / 2.0 + 0.0, CEIL - 0.06), (0.10, ROOM_D - 0.27, 0.12), MULLION)
+    ys = [YS + 0.10] + [i * 1.4 for i in range(1, 5)] + [YN - 0.07]
+    for i in range(len(ys) - 1):
+        a, b = ys[i] + (0.03 if i else 0.0), ys[i + 1] - (0.03 if i < len(ys) - 2 else 0.0)
+        make_box(f"Glass_W_{i}", (XW, (a + b) / 2.0, zc), (0.02, b - a, zh), GLASS)
+    for i in range(1, 5):
+        make_box(f"Curtain_Wall_Mullion_W_{i}", (XW, i * 1.4, zc), (0.12, 0.06, zh), MULLION)
+    make_box("Curtain_Wall_Corner", (XW, YN, CEIL / 2.0), (0.14, 0.14, CEIL), MULLION)
+    make_box("Wall_S_Return_W", (XW - 0.05, YS, CEIL / 2.0), (0.10, 0.20, CEIL), PAL_WALL["wall"])
 
-def build_ceiling_infra():
-    for j, ypos in enumerate([2.0, 4.5, 6.5]):
-        for i in range(-1, 2):
-            make_fluorescent_tube_fixture(f"Fluor_{j}_{i}", (i*2.4, ypos, CEIL), length=1.40, width=0.32)
-    make_smoke_detector("Smoke", (0.0, 3.5, CEIL))
-    make_hvac_vent("HVAC", (-2.0, 5.5, CEIL), width=1.00, depth=0.50)
-    make_security_camera("Cam", (3.5, 5.5, CEIL))
-    make_ceiling_speaker("Speaker", (1.5, 4.0, CEIL))
 
-def build_hero_props():
-    """2026-08-03 tail pass: the second monitor with the settlement
-    open, armrests + pillar on the ergonomic chair she grips, the
-    teak desk's drawer faces (third drawer holds the eyedrops)."""
-    # (draft 3: on the desk, 0.38 wide, a hair east of the main screen —
-    # it hung 11 cm off the desk's end)
-    make_box("Second_Monitor", (-3.00, 1.72, 1.05), (0.38, 0.03, 0.28), (0.14, 0.15, 0.17, 1.0))
-    make_box("Second_Monitor_Doc", (-3.00, 1.705, 1.05), (0.30, 0.01, 0.20), (0.88, 0.88, 0.84, 1.0))
-    make_box("Second_Monitor_Foot", (-3.00, 1.74, 0.75), (0.20, 0.14, 0.02), P.METAL_BLACK)
-    make_box("Second_Monitor_Neck", (-3.00, 1.74, 0.85), (0.05, 0.04, 0.18), P.METAL_BLACK)
-    # (the chair's arms, pillar and casters come with make_office_chair)
-    # Teak drawer faces on the east pedestal's south face — the third
-    # holds the eyedrops (draft 3: they floated 18 cm east of the desk)
+def build_desk():
+    """The custom teak desk mid-room: she sits N of it, facing the door,
+    her back to the glass. Two pedestals, a modesty panel to the room,
+    the third drawer, a chrome edge."""
+    dx, dy = 0.0, 4.9
+    make_box("Teak_Desk_Top", (dx, dy, 0.76), (2.10, 0.95, 0.04), TEAK)
+    make_box("Teak_Desk_Edge", (dx, dy - 0.48, 0.76), (2.10, 0.012, 0.04), CHROME)
+    for i, px in enumerate((-0.80, 0.80)):
+        make_box(f"Teak_Desk_Pedestal_{i}", (dx + px, dy + 0.02, 0.37), (0.48, 0.86, 0.74), TEAK_DK)
+    make_box("Teak_Desk_Modesty", (dx, dy - 0.40, 0.46), (1.12, 0.03, 0.56), TEAK_DK)
     for di in range(3):
-        make_box(f"Desk_Drawer_{di}", (-3.0, 1.185, 0.55 - di * 0.19), (0.34, 0.03, 0.15), (0.40, 0.28, 0.16, 1.0))
-        make_box(f"Desk_Drawer_{di}_Pull", (-3.0, 1.165, 0.55 - di * 0.19), (0.12, 0.02, 0.025), (0.62, 0.64, 0.66, 1.0))
+        make_box(f"Desk_Drawer_{di}", (dx + 0.80, dy + 0.46, 0.60 - di * 0.20), (0.42, 0.02, 0.16), TEAK)
+        make_box(f"Desk_Drawer_{di}_Pull", (dx + 0.80, dy + 0.475, 0.60 - di * 0.20), (0.14, 0.012, 0.015), CHROME)
+    top = 0.78
+    # two monitors facing her (+Y), the second angled
+    for i, (mx, yaw) in enumerate(((-0.34, 0.0), (0.36, -0.22))):
+        nm = "Monitor" if i == 0 else "Second_Monitor"
+        make_rot_box(nm, (dx + mx, dy - 0.18, top + 0.30), (0.62, 0.03, 0.36), (0.10, 0.11, 0.12, 1.0), yaw=yaw)
+        make_rot_box(f"{nm}_Screen", (dx + mx + 0.016 * _m.sin(-yaw), dy - 0.18 + 0.016 * _m.cos(yaw), top + 0.30), (0.56, 0.004, 0.30),
+                     SCREEN if i == 0 else (0.86, 0.86, 0.82, 1.0), yaw=yaw)
+        make_box(f"{nm}_Neck", (dx + mx, dy - 0.20, top + 0.09), (0.05, 0.04, 0.16), CHROME)
+        make_box(f"{nm}_Foot", (dx + mx, dy - 0.20, top + 0.005), (0.22, 0.16, 0.01), CHROME)
+    make_box("Keyboard", (dx - 0.20, dy + 0.18, top + 0.008), (0.42, 0.14, 0.016), (0.20, 0.20, 0.22, 1.0))
+    make_box("Desk_Pad", (dx - 0.05, dy + 0.18, top + 0.002), (0.90, 0.42, 0.004), (0.18, 0.18, 0.20, 1.0))
+    # the phone, the chrome lamp, the photograph on the corner
+    make_chamfer_box("Desk_Phone_Base", (dx - 0.82, dy + 0.05, top + 0.025), (0.20, 0.24, 0.05), P.METAL_BLACK, chamfer=0.012)
+    make_tube("Desk_Phone_Handset", [(dx - 0.90, dy + 0.12, top + 0.065), (dx - 0.82, dy + 0.12, top + 0.095), (dx - 0.74, dy + 0.12, top + 0.065)], 0.016, (0.12, 0.12, 0.14, 1.0), segments=8)
+    make_box("Desk_Phone_Cell", (dx + 0.55, dy + 0.30, top + 0.005), (0.075, 0.15, 0.01), (0.10, 0.10, 0.12, 1.0))
+    make_lamp("Erica_Lamp", dx + 0.88, dy - 0.25, base_z=top, h=0.52, shade_col=CHROME, body_col=CHROME)
+    make_rot_box("Mother_Photo_Galveston", (dx + 0.92, dy + 0.30, top + 0.075), (0.16, 0.025, 0.14), CHROME, yaw=0.35, roll=0.0)
+    make_rot_box("Mother_Photo_Galveston_Print", (dx + 0.915, dy + 0.316, top + 0.075), (0.12, 0.004, 0.10), (0.74, 0.66, 0.50, 1.0), yaw=0.35)
+    make_rot_box("Mother_Photo_Galveston_Hat", (dx + 0.915, dy + 0.318, top + 0.10), (0.06, 0.002, 0.025), (0.92, 0.86, 0.66, 1.0), yaw=0.35)
+    # the eleven-page draft, squared; Marcus's coffee and his card
+    make_box("DAmbrosio_Contract", (dx - 0.50, dy + 0.30, top + 0.006), (0.216, 0.279, 0.012), PAPER)
+    make_box("Contract_Top_Sheet", (dx - 0.50, dy + 0.30, top + 0.0125), (0.200, 0.262, 0.001), (0.98, 0.98, 0.96, 1.0))
+    for i, (cx, cy) in enumerate(((dx + 0.32, dy - 0.02), (dx + 0.20, dy + 0.06))):
+        make_lathe(f"Coffee_{i}", (cx, cy, top), [(0.0, 0.0), (0.03, 0.0), (0.042, 0.13), (0.0, 0.13)], (0.94, 0.92, 0.88, 1.0), segments=10)
+        make_lathe(f"Coffee_{i}_Lid", (cx, cy, top + 0.13), [(0.0, 0.0), (0.044, 0.0), (0.044, 0.01), (0.0, 0.016)], (0.16, 0.16, 0.18, 1.0), segments=10)
+    make_box("Marcus_Card", (dx + 0.40, dy + 0.20, top + 0.002), (0.10, 0.07, 0.004), (0.96, 0.95, 0.90, 1.0))
+    make_office_chair("Erica_Chair", dx, dy + 0.85, seat_z=0.52, face=-1)
+    # the guest chairs: chrome frames, black leather
+    for gi, gx in enumerate((-0.55, 0.55)):
+        make_chair(f"Guest_{gi}", dx + gx, dy - 1.20, yaw=0.0, wood=CHROME, seat_col=LEATHER, w=0.50)
+    # the credenza against the N glass behind her
+    make_box("Credenza_Body", (dx, YN - 0.34, 0.33), (2.60, 0.48, 0.56), TEAK_DK)
+    make_box("Credenza_Top", (dx, YN - 0.34, 0.63), (2.66, 0.52, 0.04), TEAK)
+    make_box("Credenza_Plinth", (dx, YN - 0.34, 0.025), (2.50, 0.42, 0.05), CHROME)
+    for i in range(4):
+        make_box(f"Credenza_Door_{i}", (dx - 0.975 + i * 0.65, YN - 0.585, 0.33), (0.62, 0.012, 0.50), TEAK)
+    make_box("Bankers_Box", (dx + 0.85, YN - 0.34, 0.80), (0.40, 0.30, 0.30), (0.62, 0.50, 0.36, 1.0))
+    make_box("Bankers_Box_Label", (dx + 0.85, YN - 0.492, 0.80), (0.16, 0.004, 0.06), PAPER)
+    make_rug = make_box
+    make_rug("Rug", (0.4, 3.9, 0.006), (5.2, 4.2, 0.012), (0.20, 0.20, 0.22, 1.0))
 
 
-
-def build_detail_pass_2026_08():
-    """D2 surface breakup + first D3 (adaptive template pass per
-    lore/_SET_DETAIL_PLAYBOOK.md). Per-locale wear personality is
-    the next pass."""
-    pw = PAL_WALL["wall"]
-    band = (pw[0] * 0.90, pw[1] * 0.90, pw[2] * 0.88, 1.0)
-    make_wall_tint_band("Band_W", (-ROOM_W / 2.0 + 0.105, ROOM_D / 2.0, 0.0),
-                        length=ROOM_D - 0.4, axis='Y', band_z=CEIL - 0.16, tint=band)
-    make_wall_tint_band("Band_E", (ROOM_W / 2.0 - 0.105, ROOM_D / 2.0, 0.0),
-                        length=ROOM_D - 0.4, axis='Y', band_z=CEIL - 0.16, tint=band)
-    make_wall_outlet("Outlet_W", (-ROOM_W / 2.0, 4.0), axis='Y',
-                     face_sign=1, aged=False)   # (draft 3: north of the bookcase it sat inside)
-    make_wall_outlet("Outlet_E", (ROOM_W / 2.0, ROOM_D * 0.70), axis='Y',
-                     face_sign=-1, aged=False)
-
-
-def build_use_states_d4():
-    """D4 use states: the case files are OUT, the office is
-    mid-week — stacks off-square, a banker's box open, mugs."""
-    paper = (0.90, 0.88, 0.82, 1.0)
-    # Case files on the manager desk: three stacks, none square
-    make_box("Desk_Files_A", (-4.05, 1.42, 0.76), (0.24, 0.32, 0.06), paper)
-    make_box("Desk_Files_A2", (-4.02, 1.46, 0.80), (0.22, 0.30, 0.03),
-             (0.86, 0.84, 0.78, 1.0))
-    make_box("Desk_Files_B", (-3.70, 1.68, 0.75), (0.24, 0.32, 0.045), paper)
-    # Banker's box OPEN on the credenza, lid leaning against it
-    make_box("Bankers_Box", (-3.2, 0.35, 0.98), (0.40, 0.30, 0.26),
-             (0.62, 0.50, 0.36, 1.0))
-    make_box("Bankers_Box_Lid", (-2.82, 0.42, 1.02), (0.03, 0.32, 0.28),
-             (0.60, 0.48, 0.34, 1.0))
-    make_box("Bankers_Box_Tabs", (-3.2, 0.35, 1.13), (0.34, 0.24, 0.04), paper)
-    # Mugs: the manager's on the desk, one at the cubicle
-    make_mug("Desk_Mug", -3.45, 1.25, 0.735, (0.30, 0.36, 0.52, 1.0))
-    make_mug("Cub_Mug", -2.15, CUB_Y + 0.16, 0.74, (0.62, 0.58, 0.50, 1.0))
-    # Sticky notes on the manager monitor edge
-    for i, (ox, oz) in enumerate(((0.14, 0.05), (0.16, -0.06), (-0.15, 0.02))):
-        # ON the monitor's face (2026-09-23: in the air 34 cm in front of it)
-        make_box(f"Sticky_{i}", (-3.72 + ox * 0.5, 1.6725, 1.10 + oz), (0.05, 0.005, 0.05),
-                 (0.95, 0.88, 0.40, 1.0) if i != 1 else (0.70, 0.88, 0.60, 1.0))
-    # Water cooler: cup sleeve on top, one cup abandoned on the sill
-    make_lathe("Cooler_LoneCup", (4.35, 1.35, 0.0), [(0.0, 0.0), (0.025, 0.0), (0.033, 0.09), (0.0, 0.09)],
-               (0.92, 0.92, 0.90, 1.0), segments=8)
-
-def build_hero_props_2026_09():
-    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
-
-    Three distinct cues; the desk phone (Manager_Phone) and the
-    Galveston photograph (Mother_Photo_Galveston) exist — markers
-    only. Built: THE CONTRACT ("The draft contract for Antonio
-    D'Ambrosio, in its current form, ran to eleven pages, and
-    Erica was not happy with any of them") — the printed draft
-    squared on the credenza behind the desk, top sheet showing
-    (the desk top is fully claimed by blotter, papers, monitor foot
-    and phone — the print lives where a printout waits).
-    """
-    make_box("DAmbrosio_Contract", (-3.85, 0.35, 0.884), (0.216, 0.279, 0.008),
-             (0.85, 0.83, 0.78, 1.0))
-    make_box("Contract_Top_Sheet", (-3.85, 0.35, 0.8887), (0.200, 0.260, 0.0012),
-             (0.94, 0.93, 0.89, 1.0))
+def build_files():
+    """The E wall: lateral files every drawer labelled, chrome top edge;
+    the law reporters in their runs above."""
+    fx = XE - 0.10 - 0.25
+    y0, y1 = 1.30, 5.70
+    make_box("Lateral_Files", (fx, (y0 + y1) / 2.0, 0.55), (0.50, y1 - y0, 1.10), FILE_GREY)
+    make_box("Lateral_Files_Top", (fx - 0.01, (y0 + y1) / 2.0, 1.115), (0.52, y1 - y0 + 0.02, 0.03), CHROME)
+    n = 5
+    for c in range(n):
+        cy = y0 + (c + 0.5) * (y1 - y0) / n
+        for d in range(3):
+            dz = 0.20 + d * 0.34
+            make_box(f"File_Drawer_{c}_{d}", (fx - 0.255, cy, dz), (0.012, (y1 - y0) / n - 0.04, 0.30), (0.68, 0.68, 0.66, 1.0))
+            make_box(f"File_Label_{c}_{d}", (fx - 0.263, cy - 0.20, dz + 0.08), (0.004, 0.14, 0.05), PAPER)
+            make_box(f"File_Pull_{c}_{d}", (fx - 0.266, cy + 0.10, dz + 0.02), (0.012, 0.24, 0.02), CHROME)
+    # the reporters on three floating shelves
+    for s, sz in enumerate((1.55, 1.95, 2.35)):
+        make_box(f"Reporter_Shelf_{s}", (XE - 0.10 - 0.15, (y0 + y1) / 2.0, sz), (0.30, y1 - y0, 0.03), TEAK)
+        for b in range(28):
+            col = REPORTERS[(b // 7 + s) % len(REPORTERS)]
+            make_box(f"Reporter_{s}_{b}", (XE - 0.10 - 0.16, y0 + 0.12 + b * 0.155, sz + 0.015 + 0.14), (0.24, 0.13, 0.28), col)
 
 
-def build_draft3_2026_09():
-    """DRAFT 3 (2026-09-19) · wear, cords, the freeway below. No part
-    name carries a cue word (monitor · desk · phone · contract ·
-    photograph · photo)."""
-    wear = (COL_CARPET[0] * 0.84, COL_CARPET[1] * 0.84, COL_CARPET[2] * 0.84, 1.0)
-    cord = (0.16, 0.16, 0.18, 1.0)
-    make_traffic_wear("Wear_Aisle", [(-1.6, 3.2), (3.4, 3.2)], width=0.6, tint=wear)
-    for ci, cx in enumerate([-2.5, 0.0, +2.5]):
-        make_box(f"Wear_Mat_{ci}", (cx, CUB_Y - 0.5, 0.004), (0.90, 1.00, 0.004), (0.40, 0.38, 0.40, 1.0))
-    make_box("Wear_Elbow", (-3.5, 1.18, 0.7415), (1.10, 0.05, 0.003), (0.34, 0.26, 0.18, 1.0))
-    make_cyl("Wear_Mug_Ring", (-3.30, 1.30, 0.741), 0.045, 0.002, (0.30, 0.24, 0.18, 1.0), segments=10)
-    make_box("Wear_Door_Smudge", (-2.474, 2.30, 1.10), (0.004, 0.16, 0.14), (0.62, 0.66, 0.68, 0.6))
-    # D3 · a floor box behind the desk with the lamp's cord; the three
-    # cubicle screens' cords down the partition backs
-    make_box("Floor_Box", (-4.05, 1.95, 0.01), (0.12, 0.12, 0.02), (0.42, 0.44, 0.46, 1.0))
-    make_tube("Cord_1", [(-4.05, 1.86, 0.76), (-4.05, 1.94, 0.02)], 0.008, cord, segments=5)
-    for ci, cx in enumerate([-2.5, 0.0, +2.5]):
-        make_tube(f"Cord_{ci + 2}", [(cx + 0.10, CUB_Y + 0.36, 0.72), (cx + 0.10, CUB_Y + 0.57, 0.05)], 0.008, cord, segments=5)
-    # D5 · twelve floors down, the freeway deck; three towers on the sky
-    make_box("Out_Freeway", (0.0, ROOM_D + 9.0, -12.0), (60.0, 8.0, 0.4), (0.34, 0.34, 0.36, 1.0))
-    make_box("Out_Freeway_Barrier", (0.0, ROOM_D + 5.2, -11.6), (60.0, 0.3, 0.5), (0.62, 0.62, 0.60, 1.0))
-    for ti, (tx, tw, th) in enumerate(((-14.0, 8.0, 40.0), (6.0, 10.0, 52.0), (22.0, 7.0, 34.0))):
-        make_box(f"Out_Tower_{ti}", (tx, ROOM_D + 40.0, th / 2.0 - 12.0), (tw, 8.0, th), (0.44, 0.50, 0.56, 1.0))
-    make_box("Out_Ground_Far", (0.0, ROOM_D + 30.0, -12.2), (120.0, 60.0, 0.4), (0.30, 0.30, 0.30, 1.0))
+def build_seating():
+    """The SW seating group by the W glass: the low leather sofa on the S
+    wall, the glass-and-chrome table, an armchair facing the sofa."""
+    sx, sy = -2.8, 0.62
+    make_chamfer_box("Sofa_Base", (sx, sy, 0.22), (2.10, 0.86, 0.30), LEATHER, chamfer=0.03)
+    make_chamfer_box("Sofa_Back", (sx, YS + 0.20, 0.58), (2.10, 0.20, 0.46), LEATHER, chamfer=0.04)
+    for i, cx in enumerate((-0.52, 0.52)):
+        make_chamfer_box(f"Sofa_Cushion_{i}", (sx + cx, sy + 0.06, 0.42), (1.00, 0.68, 0.10), LEATHER, chamfer=0.03)
+    for i, cx in enumerate((-1.10, 1.10)):
+        make_chamfer_box(f"Sofa_Arm_{i}", (sx + cx, sy, 0.40), (0.12, 0.86, 0.36), LEATHER, chamfer=0.02)
+    for i, (lx, ly) in enumerate(((-0.95, -0.36), (0.95, -0.36), (-0.95, 0.30), (0.95, 0.30))):
+        make_box(f"Sofa_Leg_{i}", (sx + lx, sy + ly, 0.035), (0.04, 0.04, 0.07), CHROME)
+    tx, ty = -2.8, 1.85
+    make_box("Coffee_Table_Glass", (tx, ty, 0.40), (1.20, 0.65, 0.02), (0.70, 0.80, 0.84, 0.35))
+    for i, (lx, ly) in enumerate(((-0.56, -0.29), (0.56, -0.29), (-0.56, 0.29), (0.56, 0.29))):
+        make_box(f"Coffee_Table_Leg_{i}", (tx + lx, ty + ly, 0.195), (0.03, 0.03, 0.39), CHROME)
+    make_box("Coffee_Table_Book", (tx - 0.25, ty, 0.42), (0.32, 0.24, 0.02), (0.30, 0.32, 0.36, 1.0))
+    ax, ay = -2.8, 3.05
+    make_chamfer_box("Armchair_Seat", (ax, ay, 0.21), (0.78, 0.72, 0.42), LEATHER, chamfer=0.03)
+    make_chamfer_box("Armchair_Back", (ax, ay + 0.31, 0.68), (0.78, 0.12, 0.40), LEATHER, chamfer=0.03)
+    for i, cx in enumerate((-0.36, 0.36)):
+        make_chamfer_box(f"Armchair_Arm_{i}", (ax + cx, ay, 0.48), (0.08, 0.70, 0.14), LEATHER, chamfer=0.015)
+
+
+def build_door_and_hall():
+    """The door in the S wall, ajar into the office (Marcus 'stepped back
+    to the doorway and waited'), the frosted sidelight; the hall and
+    Marcus's desk facing her door."""
+    hx, hy = DOOR_X - DOOR_W / 2.0, YS + 0.10
+    ang = _m.radians(68.0)
+    L = DOOR_W - 0.04
+    make_rot_box("Office_Door", (hx + 0.02 + _m.cos(ang) * L / 2.0, hy + _m.sin(ang) * L / 2.0 + 0.0, 1.14), (L, 0.045, 2.28), TEAK, yaw=ang)
+    make_rot_box("Office_Door_Pull", (hx + 0.02 + _m.cos(ang) * (L - 0.10) + _m.sin(ang) * 0.04, hy + _m.sin(ang) * (L - 0.10) - _m.cos(ang) * 0.04, 1.05),
+                 (0.02, 0.02, 0.40), CHROME, yaw=ang)
+    make_box("Office_Door_Hinge", (hx + 0.01, hy, 1.14), (0.02, 0.03, 2.20), CHROME)
+    make_box("Sidelight_Glass", (SIDE_X, YS, DOOR_H / 2.0), (SIDE_W, 0.02, DOOR_H), (0.84, 0.86, 0.86, 0.55))
+    make_box("Name_Plate", (SIDE_X + 0.42, YS - 0.105, 1.55), (0.22, 0.008, 0.07), CHROME)
+    # the hall
+    hall_x0, hall_x1 = -1.6, 6.6
+    make_box("Hall_Floor", ((hall_x0 + hall_x1) / 2.0, (HALL_Y0 + YS) / 2.0, -0.05), (hall_x1 - hall_x0, -HALL_Y0, 0.10), (0.36, 0.36, 0.38, 1.0))
+    make_box("Hall_Ceil", ((hall_x0 + hall_x1) / 2.0, (HALL_Y0 + YS) / 2.0, CEIL - 0.25 + 0.05), (hall_x1 - hall_x0, -HALL_Y0, 0.10), (0.94, 0.94, 0.92, 1.0))
+    make_wall("Hall_Wall_S", ((hall_x0 + hall_x1) / 2.0, HALL_Y0 - 0.10, 0), length=hall_x1 - hall_x0 + 0.2, height=CEIL - 0.25, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall("Hall_Wall_W", (hall_x0 - 0.10, (HALL_Y0 + YS) / 2.0, 0), length=-HALL_Y0, height=CEIL - 0.25, axis='Y', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall("Hall_Wall_E", (hall_x1 + 0.10, (HALL_Y0 + YS) / 2.0, 0), length=-HALL_Y0, height=CEIL - 0.25, axis='Y', palette=PAL_WALL, baseboard_face_sign=-1)
+    make_box("Hall_Art", (0.6, HALL_Y0 + 0.012, 1.55), (1.40, 0.025, 0.95), (0.70, 0.58, 0.42, 1.0))
+    make_box("Hall_Art_Field", (0.6, HALL_Y0 + 0.027, 1.55), (1.20, 0.006, 0.75), (0.30, 0.40, 0.52, 1.0))
+    for i in range(2):
+        make_cyl(f"Hall_Downlight_{i}", (1.0 + i * 3.0, -1.8, CEIL - 0.25 - 0.004), 0.08, 0.008, (0.98, 0.96, 0.90, 1.0), segments=12)
+    # Marcus's desk facing her door, his chair behind it
+    mx, my = DOOR_X + 0.6, -2.30
+    make_box("Marcus_Desk_Top", (mx, my, 0.74), (1.70, 0.78, 0.04), (0.86, 0.85, 0.82, 1.0))
+    make_box("Marcus_Desk_Front", (mx, my + 0.37, 0.37), (1.70, 0.03, 0.70), (0.30, 0.30, 0.32, 1.0))
+    for i, px in enumerate((-0.82, 0.82)):
+        make_box(f"Marcus_Desk_Side_{i}", (mx + px, my, 0.36), (0.04, 0.74, 0.72), (0.30, 0.30, 0.32, 1.0))
+    make_box("Marcus_Monitor", (mx - 0.20, my + 0.20, 1.06), (0.56, 0.03, 0.34), (0.10, 0.11, 0.12, 1.0))
+    make_box("Marcus_Monitor_Neck", (mx - 0.20, my + 0.22, 0.85), (0.05, 0.04, 0.18), CHROME)
+    make_box("Marcus_Monitor_Foot", (mx - 0.20, my + 0.22, 0.765), (0.20, 0.14, 0.01), CHROME)
+    make_box("Marcus_Tray", (mx + 0.55, my + 0.05, 0.79), (0.30, 0.36, 0.06), P.METAL_BLACK)
+    make_box("Marcus_Tray_Papers", (mx + 0.55, my + 0.05, 0.81), (0.22, 0.30, 0.02), PAPER)
+    make_office_chair("Marcus_Chair", mx, my - 0.70, seat_z=0.48, w=0.46, face=+1, col=(0.24, 0.26, 0.30, 1.0))
+    make_traffic_wear("Wear_Hall", [(-1.2, -1.2), (DOOR_X, -1.0), (DOOR_X, -0.2)], width=0.8, tint=(0.0, 0.0, 0.0, 1.0))
+
+
+def build_city():
+    """Twelve stories down: the street grid, the elevated freeway deck,
+    the towers; the hawk on its thermal well below the sill; the
+    building's own glass face going down."""
+    gz = GROUND_Z
+    make_box("Out_Ground", (0.0, 40.0, gz - 0.1), (500.0, 500.0, 0.2), (0.34, 0.34, 0.34, 1.0))
+    for i, y in enumerate((22.0, 70.0, 118.0)):
+        make_box(f"Out_Street_EW_{i}", (0.0, y, gz + 0.01), (500.0, 14.0, 0.02), (0.24, 0.24, 0.26, 1.0))
+    for i, x in enumerate((-60.0, -18.0, 26.0, 70.0)):
+        make_box(f"Out_Street_NS_{i}", (x, 40.0, gz + 0.01), (14.0, 500.0, 0.02), (0.24, 0.24, 0.26, 1.0))
+    # the freeway: a deck on piers running E-W, its barriers, the traffic
+    fy, fz = 46.0, gz + 9.0
+    make_box("Out_Freeway_Deck", (0.0, fy, fz), (500.0, 18.0, 0.8), (0.52, 0.52, 0.50, 1.0))
+    for s in (-1, 1):
+        make_box(f"Out_Freeway_Barrier_{s:+d}", (0.0, fy + s * 8.9, fz + 0.9), (500.0, 0.3, 1.0), (0.66, 0.66, 0.62, 1.0))
+    for i in range(14):
+        make_cyl(f"Out_Freeway_Pier_{i}", (-130.0 + i * 20.0, fy, gz + 4.3), 1.0, 8.6, (0.56, 0.56, 0.54, 1.0), segments=10)
+    cols = [(0.86, 0.86, 0.84, 1.0), (0.22, 0.24, 0.30, 1.0), (0.66, 0.16, 0.14, 1.0), (0.30, 0.36, 0.44, 1.0), (0.80, 0.76, 0.62, 1.0)]
+    for i in range(22):
+        lane = (i % 4) - 1.5
+        make_box(f"Out_Car_{i}", (-110.0 + i * 10.7 + (i % 3) * 2.0, fy + lane * 3.6, fz + 0.95), (4.4, 1.8, 1.3), cols[i % len(cols)])
+    # the towers N and W, the near one with the office where a light comes on
+    towers = ((-40.0, 95.0, 30.0, 26.0, 150.0), (12.0, 120.0, 34.0, 30.0, 190.0), (60.0, 96.0, 26.0, 26.0, 120.0),
+              (-95.0, 84.0, 28.0, 34.0, 110.0), (-100.0, -20.0, 30.0, 30.0, 90.0), (110.0, 140.0, 30.0, 30.0, 160.0),
+              (-24.0, 62.0, 22.0, 18.0, 56.0))
+    for i, (tx, ty, tw, td, th) in enumerate(towers):
+        make_box(f"Out_Tower_{i}", (tx, ty, gz + th / 2.0), (tw, td, th), [(0.24, 0.32, 0.42, 1.0), (0.46, 0.44, 0.40, 1.0), (0.18, 0.24, 0.30, 1.0)][i % 3])
+        for f in range(0, int(th / 3.5), 2):
+            make_box(f"Out_Tower_{i}_Band_{f}", (tx, ty - td / 2.0 - 0.02, gz + f * 3.5 + 1.0), (tw + 0.02, 0.02, 0.6), (0.70, 0.74, 0.78, 1.0))
+    make_box("Out_Tower_6_LitWin", (-24.0 + 4.0, 62.0 - 9.02, gz + 42.0), (2.6, 0.02, 1.6), (0.98, 0.86, 0.56, 1.0))
+    # this building's own glass face, going down from the slab
+    make_box("Out_Facade_N", (-0.2, YN + 0.55, gz / 2.0 - 0.3), (ROOM_W + 30.0, 0.2, -gz - 0.6), (0.28, 0.34, 0.40, 1.0))
+    make_box("Out_Facade_W", (XW - 0.55, ROOM_D / 2.0 - 10.0, gz / 2.0 - 0.3), (0.2, ROOM_D + 30.0, -gz - 0.6), (0.28, 0.34, 0.40, 1.0))
+    for f in range(1, 12):
+        make_box(f"Out_Facade_N_Floor_{f}", (-0.2, YN + 0.66, -f * 3.5), (ROOM_W + 30.0, 0.02, 0.35), (0.50, 0.52, 0.54, 1.0))
+    # the hawk on its thermal below the sill line
+    hx, hy, hz = -6.0, 18.0, -8.0
+    make_box("Hawk_Body", (hx, hy, hz), (0.12, 0.40, 0.10), (0.36, 0.26, 0.18, 1.0))
+    for s in (-1, 1):
+        make_rot_box(f"Hawk_Wing_{s:+d}", (hx + s * 0.48, hy, hz + 0.04), (0.86, 0.30, 0.02), (0.40, 0.30, 0.20, 1.0), roll=s * 0.12)
+    make_box("Hawk_Tail", (hx, hy - 0.28, hz), (0.18, 0.14, 0.02), (0.62, 0.30, 0.18, 1.0))
+
+
+def build_details():
+    make_wall_outlet("Outlet_E", (XE, 6.3), axis='Y', face_sign=-1, aged=False)
+    make_wall_outlet("Outlet_S", (-0.6, YS), axis='X', face_sign=1, aged=False)
+    make_box("Floor_Box", (-0.4, 5.45, 0.003), (0.14, 0.14, 0.006), CHROME)
+    make_tube("Desk_Cord", [(-0.40, 5.32, 0.78), (-0.40, 5.40, 0.30), (-0.40, 5.45, 0.006)], 0.008, (0.16, 0.16, 0.18, 1.0), segments=5)
+    make_box("Thermostat", (XE - 0.11, 0.70, 1.45), (0.02, 0.10, 0.12), (0.92, 0.92, 0.90, 1.0))
 
 
 def main():
-    clear_scene(); build_shell(); build_cubicles(); build_glass_office(); build_exec_furniture(); build_window_blinds(); build_decor(); build_ceiling_infra()
-    build_hero_props()
-    build_detail_pass_2026_08()
-    build_use_states_d4()
-    build_hero_props_2026_09()
-    build_draft3_2026_09()
+    clear_scene()
+    build_shell(); build_glass_walls(); build_desk(); build_files(); build_seating(); build_door_and_hall(); build_city(); build_details()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/houston_office.glb"))
     print(f"\n[build_houston_office] exporting to {out}")
     export_glb(out)
+
 
 if __name__ == "__main__": main()

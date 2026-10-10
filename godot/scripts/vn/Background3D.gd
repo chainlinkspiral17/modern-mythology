@@ -446,24 +446,14 @@ const CAMERA_PRESETS := {
 	"houston_office": {
 		"scene": "res://scenes/locales/houston_office.tscn",
 		"requires_glb": "res://assets/3d/locales/houston_office.glb",
-		# Wheel / Justice. Room 10×7 (godot x∈[-5,5], z∈[0,-7], ceil
-		# 2.8 — low). Cubicle row across the centre (blender y=3.5 →
-		# godot z=-3.5), manager's glass-walled office SW corner (godot
-		# -3.5,-1.5), big mullioned downtown window on the N wall
-		# (z=-7). Camera in the SE quadrant just inside the door looking
-		# WNW: cubicle row centre-frame, the N window's light upper
-		# right, the glass office at far left. Near-level pitch keeps
-		# the low drop-ceiling from crowding the top of frame; wide FOV
-		# for the big floorplate.
-		# 2026-10-02 · RE-VANTAGED: the chapter is Erica's OFFICE (the teak
-		# desk, "the glass wall of her office", Houston beyond) — the old
-		# vantage was the open floor from the door with her office a box at
-		# far left (opaque until LocaleGlass). Now inside the office at its
-		# SE corner looking NW: the desk and chair, the north partition's
-		# glass, the floor and the towers through it.
-		"camera_origin": Vector3(-2.72, 1.58, -0.38),
-		"camera_rotation": Vector3(-0.179, 0.531, 0.0),
-		"fov": 60.0,
+		# Erica Campbell's partner office, twelve stories up (draft 4,
+		# 2026-10-09: it was a cubicle floor). 9 x 7 (godot x in
+		# [-4.5,4.5], z in [0,-7], ceil 3.0); the N and W walls are
+		# floor-to-ceiling glass. Camera just inside her door, looking NW
+		# across the teak desk to the corner glass and the city below.
+		"camera_origin": Vector3(3.9, 1.62, -1.5),
+		"camera_rotation": Vector3(-0.046, 0.945, 0.0),
+		"fov": 62.0,
 		"suppress_input": true,
 	},
 	"houston_design_studio": {

@@ -3834,6 +3834,44 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-10 · overnight run, pass 23: ERICA'S OFFICE, DRAFT 4 (the wrong
+REGISTER: a cubicle floor).** Drafts 1-3 of `houston_office` built "a
+generic corporate office: glass partition, cubicle row, fluorescents", with
+Erica in a glass box in its corner under a drop ceiling and the freeway 12
+m down. The chapters (Wheel, Justice, Judgement) describe a law partner of
+fourteen years "high in her sterile tower": "a temple to control. Glass
+walls. Chrome accents. Files indexed with obsessive precision", "the
+Italian marble floor", the custom teak desk, "the heat-shimmer rising off
+the asphalt twelve stories below", the hawk, and her assistant Marcus at
+her door with two coffees. Rebuilt at 9 x 7 m, ceiling 3.0:
+- **The corner.** N and W walls are floor-to-ceiling glass on mullions,
+  with the city 42 m down: street grid, the elevated freeway with its
+  traffic, banded towers, the near one's office window lit. The hawk
+  rides its thermal below the sill line.
+- **The room.** Marble and a charcoal rug; a smooth ceiling with
+  recessed downlights.
+- **The desk.** The teak desk mid-room facing the door, her back to the
+  glass. On it: two monitors, the phone, the chrome lamp, the eleven-page
+  draft, Marcus's two coffees and his card, and "the small framed
+  photograph on the corner of the desk, the only personal item" (so no
+  diplomas). The third drawer; her ergonomic chair; two chrome-and-leather
+  guest chairs; the credenza against the glass.
+- **The walls.** A SW seating group by the W glass. The E wall of lateral
+  files, every drawer labelled, under the law reporters.
+- **The door and the hall.** The door ajar with its frosted sidelight;
+  through it, the hall and Marcus's desk facing her door.
+- **Scene.** A ProceduralSky (it was a flat grey background); a sun key
+  from the NW (daylight metadata), a sky fill, downlight and lamp
+  practicals; seven markers, including the closeup from the desk's east
+  end with the city behind her. The audit allows the freestanding desk
+  (`DESK_FREESTANDING_LOCALES`), and the mullions are named as the
+  curtain wall the credenza stands against.
+
+Draft 5 targets:
+- the city at dusk as a per-preset variant (lit windows, freeway lights);
+- the file labels at insert scale;
+- Marcus's jacket on his chair.
+
 **2026-10-09 · overnight run, pass 22: NATALIE'S APARTMENT, DRAFT 4 (the
 futon and the things the prose names).** Moon puts Nicola asleep "on the
 futon, under the twilight-colored quilt"; drafts 1-3 had a teal sofa. It is
