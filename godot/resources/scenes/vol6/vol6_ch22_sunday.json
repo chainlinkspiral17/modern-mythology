@@ -64,6 +64,10 @@
    "text": "He is going to write the first of the three on Wednesday after the second letter is gone."
   },
   {
+   "t": "bg",
+   "src": "3d:miller_back_porch"
+  },
+  {
    "t": "narrate",
    "text": "[shot:closeup bianca]At the Marin house on Elm, Bianca is on the back porch with the cordless on the patio table beside her. She is not, this hour, on the line with anyone. She is wearing the green terrycloth robe Mike gave her in 2019."
   },
@@ -126,6 +130,10 @@
   {
    "t": "narrate",
    "text": "The summer has, by Sunday, exactly one day left."
+  },
+  {
+   "t": "bg",
+   "src": "3d:bianca_kitchen_morning"
   },
   {
    "t": "narrate",

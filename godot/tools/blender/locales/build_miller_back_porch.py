@@ -330,6 +330,17 @@ def build_draft3_2026_09():
     make_far_bands("Far", (0.30, 0.40, 0.24, 1.0), [(14.0, 16.0, 3.2, 0.85), (23.0, 22.0, 5.0, 0.65)], sides="S", cy=0.0)
 
 
+
+def build_bianca_night_2026_10():
+    """BIANCA AT 1:15 AM (2026-10-10; vol6 ch22 "Sunday" — the sweep: her back-
+    porch scene played in the kitchen). "Bianca is on the back porch with the
+    cordless on the patio table beside her. She is not, this hour, on the line
+    with anyone." The cordless handset, face-up on the side table's top by the
+    rocker, its antenna stub."""
+    cy = ROOM_D / 2.0
+    make_rot_box("Cordless_Phone", (0.12, cy + 0.06, 0.46 + 0.0125), (0.055, 0.17, 0.025), (0.86, 0.85, 0.80, 1.0), yaw=0.35)
+    make_rot_box("Cordless_Phone_Keys", (0.12, cy + 0.06, 0.46 + 0.0255), (0.040, 0.08, 0.001), (0.30, 0.30, 0.32, 1.0), yaw=0.35)
+
 def main():
     clear_scene()
     build_shell()
@@ -342,6 +353,7 @@ def main():
     build_crow_2026_08()
     build_hero_props_2026_09()
     build_draft3_2026_09()
+    build_bianca_night_2026_10()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/miller_back_porch.glb"))
     print(f"\n[build_miller_back_porch] exporting to {out}")

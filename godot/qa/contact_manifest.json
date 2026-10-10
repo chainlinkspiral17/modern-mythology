@@ -1815,6 +1815,43 @@
    "scene_missing": false
   },
   {
+   "id": "bianca_kitchen_morning",
+   "scene": "res://scenes/locales/bianca_kitchen_morning.tscn",
+   "vol": 6,
+   "uses": 6,
+   "moods": [
+    "night",
+    "kitchen_practical"
+   ],
+   "markers": [
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_cordless",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_porch_light",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_robe",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_stationery",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
    "id": "grandmother_kitchen_morning",
    "scene": "res://scenes/locales/grandmother_kitchen_morning.tscn",
    "vol": 6,
@@ -1935,43 +1972,6 @@
     },
     {
      "name": "shot_insert_window",
-     "type": "insert"
-    }
-   ],
-   "scene_missing": false
-  },
-  {
-   "id": "bianca_kitchen_morning",
-   "scene": "res://scenes/locales/bianca_kitchen_morning.tscn",
-   "vol": 6,
-   "uses": 5,
-   "moods": [
-    "night",
-    "kitchen_practical"
-   ],
-   "markers": [
-    {
-     "name": "shot_closeup_person",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_person_b",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_insert_cordless",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_porch_light",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_robe",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_stationery",
      "type": "insert"
     }
    ],
@@ -2148,15 +2148,22 @@
    "scene_missing": false
   },
   {
-   "id": "meadowlark_circle",
-   "scene": "res://scenes/locales/meadowlark_circle.tscn",
+   "id": "miller_back_porch",
+   "scene": "res://scenes/locales/miller_back_porch.tscn",
    "vol": 6,
    "uses": 5,
    "moods": [
-    "dawn_warm",
-    "macro_haze"
+    "morning_bright"
    ],
    "markers": [
+    {
+     "name": "shot_establish_b",
+     "type": "establish"
+    },
+    {
+     "name": "shot_establish_c",
+     "type": "establish"
+    },
     {
      "name": "shot_closeup_person",
      "type": "closeup"
@@ -2166,23 +2173,39 @@
      "type": "closeup"
     },
     {
-     "name": "shot_insert_sedan",
+     "name": "shot_insert_bowls",
      "type": "insert"
     },
     {
-     "name": "shot_insert_sprinklers",
+     "name": "shot_insert_cedar",
      "type": "insert"
     },
     {
-     "name": "shot_insert_van",
+     "name": "shot_insert_cigarette",
      "type": "insert"
     },
     {
-     "name": "shot_insert_water_tower",
+     "name": "shot_insert_crow",
      "type": "insert"
     },
     {
-     "name": "shot_insert_window",
+     "name": "shot_insert_door",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_myrtle",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_porch_light",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_truck",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_wicker",
      "type": "insert"
     }
    ],
@@ -2509,6 +2532,47 @@
    "scene_missing": false
   },
   {
+   "id": "meadowlark_circle",
+   "scene": "res://scenes/locales/meadowlark_circle.tscn",
+   "vol": 6,
+   "uses": 4,
+   "moods": [
+    "dawn_warm",
+    "rain_interior"
+   ],
+   "markers": [
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_sedan",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_sprinklers",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_van",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_water_tower",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_window",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
    "id": "meadowlark_circle_night",
    "scene": "res://scenes/locales/meadowlark_circle.tscn",
    "vol": 6,
@@ -2544,66 +2608,6 @@
     },
     {
      "name": "shot_insert_window",
-     "type": "insert"
-    }
-   ],
-   "scene_missing": false
-  },
-  {
-   "id": "miller_back_porch",
-   "scene": "res://scenes/locales/miller_back_porch.tscn",
-   "vol": 6,
-   "uses": 4,
-   "moods": [
-    "morning_bright"
-   ],
-   "markers": [
-    {
-     "name": "shot_establish_b",
-     "type": "establish"
-    },
-    {
-     "name": "shot_establish_c",
-     "type": "establish"
-    },
-    {
-     "name": "shot_closeup_person",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_person_b",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_insert_bowls",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_cedar",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_cigarette",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_crow",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_door",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_myrtle",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_truck",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_wicker",
      "type": "insert"
     }
    ],
@@ -5998,6 +6002,26 @@
    "scene_missing": false
   },
   {
+   "id": "gallatin_water_tower",
+   "scene": "res://scenes/locales/gallatin_water_tower.tscn",
+   "vol": 6,
+   "uses": 1,
+   "moods": [
+    "macro_haze"
+   ],
+   "markers": [
+    {
+     "name": "shot_establish_b",
+     "type": "establish"
+    },
+    {
+     "name": "shot_insert_van",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
    "id": "graciela_bedroom",
    "scene": "res://scenes/locales/graciela_bedroom.tscn",
    "vol": 6,
@@ -8203,5 +8227,5 @@
   "tired",
   "nervous"
  ],
- "frames": 1839
+ "frames": 1843
 }

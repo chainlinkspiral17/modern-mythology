@@ -3834,6 +3834,70 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-10 · overnight run, pass 48: BIANCA ON THE BACK PORCH AT 1:15 AM (from
+the sweep).** vol6 ch22 "Sunday": "Bianca is on the back porch with the
+cordless on the patio table beside her ... She has been here three hours"
+played in her kitchen.
+- **Routing.** Nodes 14–30 now play on `miller_back_porch` (the Millers'
+  porch, lit for night, with its crepe myrtle). The chapter goes back to
+  the kitchen at "She goes inside at one twenty".
+- **The phone.** The cordless handset lies on the side table by the
+  rocker (`build_bianca_night_2026_10`).
+- **The porch light.** `shot_insert_porch_light` is aimed at the porch
+  lamp. `shot_marker_audit`'s SYNONYMS gains `porch_light` →
+  porch_lamp / porchlamp, because the prose says "porch light" and the
+  builders say PorchLamp.
+- **Gallatin.** `foot_z` is renamed `leg_base`: phantom_surface_audit
+  read `tx, ty` plus `foot_z` as a surface claim at the tower's centre.
+
+CANON NOTE for the user: ch22 says "the Marin house on Elm", but Bianca
+and Mike's house is 1428 Meadowlark Circle everywhere else (and
+`bianca_kitchen_morning` is the Miller kitchen). The set follows the
+Millers.
+
+Also noticed: ch11 (08:03) and ch17 (08:22) play morning scenes on this
+NIGHT-lit porch. Draft target: a `miller_back_porch_morning` preset (the
+pass-46 pattern).
+
+Deck must REBUILD miller_back_porch.
+
+**2026-10-10 · overnight run, pass 47: THE WATER TOWER ON GALLATIN (a new set,
+from the sweep).** vol6 Prelude's "The Water Tower" (6:19 AM) played on
+Meadowlark Circle, where the tower is a distant landmark. The prose is up
+close: "The Harmony Creek water tower stands at the south end of Gallatin
+Avenue, behind the NexCorp lot, which is currently enclosed in a
+chain-link fence with green privacy screen ... sixty-two feet tall ...
+HARMONY CREEK in blue block letters and a small rendering of a creek that
+does not resemble the actual creek ... a white NexCorp Residential
+Solutions van is parked beside the fence ... the green privacy screen on
+the fence, behind which the machines have already begun their work."
+
+The new `gallatin_water_tower`:
+- **Gallatin Avenue** to its dead end: two lanes with curbs and
+  sidewalks, six small houses with driveways, trees, utility poles, the
+  street sign, the DEAD END sign and barrier.
+- **The NexCorp lot.** Chain-link with the green privacy screen and the
+  padlocked gate, the NexCorp construction sign. Over the screen: the
+  excavator (its boom and stick named as beams, pinned joints), spoil
+  heaps set into the ground, site lights, the site trailer.
+- **The tower.** 18.9 m to the top: four raked legs on footings,
+  bracing, riser, ladder, the tank with its catwalk, the letters wrapped
+  round the drum, the little blue creek under them.
+- **The van** beside the fence, with its NexCorp band and logo.
+- **Light and preset.** A dawn sky and a low sun out of the east. The
+  Prelude's node 86 is routed here; ambient bed: vol6_ambient.
+- **Naming.** The site's light mast first answered `insert tower`
+  ("Light_Tower_Base"), so it is `Site_Lights` now. The tower insert was
+  then dropped: no prose cue calls for it (the Prelude uses its
+  `vol6_water_tower` panel).
+
+Deck must BUILD gallatin_water_tower (a new GLB).
+
+Draft 2 targets:
+- Henderson's silhouette in the van's passenger seat;
+- the machines' work lights at 6:19;
+- dew on the screen.
+
 **2026-10-10 · overnight run, pass 46: THE YARD PARTY (a day preset on a night
 scene).** vol6 ch23 "Sunday" played its sticker-book ceremony (nodes
 51–104: "the Caldwell front yard at three forty-five PM ... The folding

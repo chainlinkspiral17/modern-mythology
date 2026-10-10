@@ -1,6 +1,6 @@
-[gd_scene load_steps=24 format=3 uid="uid://miller_back_porch_vol6"]
+[gd_scene load_steps=26 format=3 uid="uid://gallatin_water_tower_vol6"]
 
-[ext_resource type="PackedScene" path="res://assets/3d/locales/miller_back_porch.glb" id="1_glb"]
+[ext_resource type="PackedScene" path="res://assets/3d/locales/gallatin_water_tower.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
 [ext_resource type="Shader" path="res://assets/shaders/demoscene_post.gdshader" id="4_post"]
 [ext_resource type="Script" path="res://scripts/MoodCycler.gd" id="5_mood"]
@@ -23,15 +23,15 @@ shader_parameter/dither_strength = 0.10
 shader_parameter/scanline_strength = 0.18
 shader_parameter/chromatic_aberration = 0.0008
 shader_parameter/ascii_strength = 0.0
-shader_parameter/ascii_color = Color(0.96, 0.62, 0.28, 1)
-shader_parameter/ascii_bg = Color(0.10, 0.06, 0.04, 1)
+shader_parameter/ascii_color = Color(0.90, 0.90, 0.84, 1)
+shader_parameter/ascii_bg = Color(0.30, 0.31, 0.29, 1)
 
 [sub_resource type="ShaderMaterial" id="Mat_Ascii"]
 shader = ExtResource("6_ascii")
 shader_parameter/cell_size = 10.0
 shader_parameter/strength = 0.0
-shader_parameter/fg_color = Color(0.96, 0.62, 0.28, 1)
-shader_parameter/bg_color = Color(0.10, 0.06, 0.04, 1)
+shader_parameter/fg_color = Color(0.90, 0.90, 0.84, 1)
+shader_parameter/bg_color = Color(0.30, 0.31, 0.29, 1)
 shader_parameter/tint_from_scene = true
 shader_parameter/gamma = 0.85
 
@@ -40,9 +40,9 @@ shader = ExtResource("7_neon")
 shader_parameter/strength = 0.0
 shader_parameter/edge_threshold = 0.10
 shader_parameter/edge_thickness = 1.6
-shader_parameter/edge_color = Color(0.96, 0.42, 0.20, 1)
-shader_parameter/fill_low = Color(0.42, 0.20, 0.12, 1)
-shader_parameter/fill_high = Color(0.10, 0.06, 0.04, 1)
+shader_parameter/edge_color = Color(0.70, 0.74, 0.66, 1)
+shader_parameter/fill_low = Color(0.34, 0.36, 0.32, 1)
+shader_parameter/fill_high = Color(0.16, 0.17, 0.16, 1)
 shader_parameter/fill_gradient = 1.0
 shader_parameter/edge_glow = 0.4
 shader_parameter/scene_blend = 0.0
@@ -62,13 +62,13 @@ shader = ExtResource("8_dir")
 shader_parameter/strength = 0.0
 shader_parameter/cell_size = 10.0
 shader_parameter/edge_threshold = 0.10
-shader_parameter/line_color = Color(0.96, 0.42, 0.20, 1)
+shader_parameter/line_color = Color(0.70, 0.74, 0.66, 1)
 shader_parameter/fill_color = Color(0.02, 0.02, 0.03, 1)
 shader_parameter/tint_from_scene = false
 shader_parameter/input_scale = 1.0
 shader_parameter/mono_with_red = false
-shader_parameter/mono_white = Color(0.96, 0.62, 0.28, 1)
-shader_parameter/mono_red = Color(0.96, 0.42, 0.20, 1)
+shader_parameter/mono_white = Color(0.90, 0.90, 0.84, 1)
+shader_parameter/mono_red = Color(0.70, 0.74, 0.66, 1)
 shader_parameter/red_threshold = 0.20
 
 [sub_resource type="ShaderMaterial" id="Mat_Starscape"]
@@ -77,7 +77,7 @@ shader_parameter/strength = 0.0
 shader_parameter/cell_size = 10.0
 shader_parameter/time_scale = 0.40
 shader_parameter/sky_thresh = 0.10
-shader_parameter/star_white = Color(0.96, 0.62, 0.28, 1)
+shader_parameter/star_white = Color(0.90, 0.90, 0.84, 1)
 shader_parameter/galaxy_col = Color(0.78, 0.82, 0.95, 1)
 shader_parameter/chip_col = Color(0.62, 0.78, 0.88, 1)
 shader_parameter/galaxy_strength = 0.6
@@ -96,7 +96,7 @@ shader_parameter/strength = 0.0
 shader_parameter/motion_speed = 0.0
 shader_parameter/motion_dir = Vector2(1, 0)
 shader_parameter/cell_size = 9.0
-shader_parameter/line_color = Color(0.96, 0.62, 0.28, 1)
+shader_parameter/line_color = Color(0.90, 0.90, 0.84, 1)
 shader_parameter/trail_strength = 0.6
 shader_parameter/line_density = 0.85
 
@@ -111,7 +111,7 @@ shader_parameter/motion_dir = Vector2(1, 0)
 shader = ExtResource("12_oldfilm")
 shader_parameter/strength = 0.0
 shader_parameter/sim_fps = 18.0
-shader_parameter/tint_color = Color(0.96, 0.62, 0.28, 1)
+shader_parameter/tint_color = Color(0.90, 0.90, 0.84, 1)
 shader_parameter/tint_amount = 0.55
 shader_parameter/grain_strength = 0.18
 shader_parameter/flicker_strength = 0.20
@@ -126,77 +126,64 @@ shader_parameter/edge_ca = 0.012
 shader_parameter/wobble_amp = 0.0018
 shader_parameter/wobble_freq = 0.85
 shader_parameter/tint_amount = 0.18
-shader_parameter/tint_color = Color(0.96, 0.62, 0.28, 1)
+shader_parameter/tint_color = Color(0.70, 0.72, 0.60, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_Win"]
+; 6:19 AM over Harmony Creek: the dawn
+sky_top_color = Color(0.46, 0.58, 0.78, 1)
+sky_horizon_color = Color(0.96, 0.80, 0.62, 1)
+sky_curve = 0.25
+ground_bottom_color = Color(0.20, 0.20, 0.18, 1)
+ground_horizon_color = Color(0.50, 0.50, 0.46, 1)
+sun_angle_max = 8.0
+
+[sub_resource type="Sky" id="Sky_Win"]
+sky_material = SubResource("SkyMat_Win")
+radiance_size = 3
 
 [sub_resource type="Environment" id="Env_Locale"]
-background_mode = 1
-background_color = Color(0.10, 0.06, 0.04, 1)
+background_mode = 2
+sky = SubResource("Sky_Win")
+background_color = Color(0.55, 0.56, 0.52, 1)
 ambient_light_source = 2
-ambient_light_color = Color(0.62, 0.42, 0.28, 1)
-ambient_light_energy = 0.72
+ambient_light_color = Color(0.72, 0.76, 0.84, 1)
+ambient_light_energy = 0.70
 fog_enabled = true
-fog_light_color = Color(0.42, 0.28, 0.20, 1)
-fog_light_energy = 0.5
-fog_density = 0.007
+fog_sky_affect = 0.0
+fog_light_color = Color(0.86, 0.80, 0.72, 1)
+fog_light_energy = 0.2
+fog_density = 0.004
 adjustment_enabled = true
 adjustment_brightness = 1.0
-adjustment_contrast = 1.1
-adjustment_saturation = 0.94
+adjustment_contrast = 1.04
+adjustment_saturation = 0.92
 glow_enabled = true
-glow_intensity = 0.75
-glow_bloom = 0.16
+glow_intensity = 0.55
+glow_bloom = 0.08
 glow_blend_mode = 1
 glow_hdr_threshold = 0.95
 glow_hdr_scale = 2.4
 
-[node name="MillerBackPorch" type="Node3D"]
+[node name="GallatinWaterTower" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_Locale")
 
-[node name="Key_PorchLamp" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 6, 0)
-light_color = Color(0.96, 0.62, 0.28, 1)
-light_energy = 1.1
-shadow_enabled = false
-
-[node name="Fill_Sodium" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, -3, 4, 0)
-light_color = Color(0.96, 0.62, 0.28, 1)
-light_energy = 0.55
-shadow_enabled = false
-
-[node name="Back_NightCool" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 4, 5)
-light_color = Color(0.32, 0.42, 0.62, 1)
-light_energy = 0.32
-shadow_enabled = false
-
-; Practical tied to the visible porch-lamp bulb (blender -1.5,0.30,2.14
-; → godot -1.5, 2.14, -0.30). Warm omni so the fixture actually casts.
-[node name="Practical_PorchLamp" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2.14, -0.3)
-light_color = Color(1.0, 0.66, 0.3, 1)
-light_energy = 2.2
-omni_range = 3.8
-shadow_enabled = false
-
-; ── vn_shot wave (2026-08-19) · positions authored, aim by
-; marker_reaim.py
-[node name="shot_insert_crow" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 1.62, -0.71)
-rotation = Vector3(-0.4622, 2.2099, 0.0)
-
-[node name="shot_insert_cedar" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.48, 1.56, -0.67)
-rotation = Vector3(-0.4642, -2.1782, 0.0)
+; ── light rig (2026-10-10) — written row-major (the .tscn basis lists ROWS)
+; 6:19 AM: the sun just up out of the east, low, travelling west
+[node name="Sun_Dawn" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.1392, -0.2059, 0.9686, 0.0000, 0.9781, 0.2079, -0.9903, -0.0289, 0.1361, 30, 10, 30)
+light_color = Color(1.0, 0.78, 0.56, 1)
+light_energy = 0.95
+shadow_enabled = true
+metadata/daylight = true
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]
 layer = 50
 script = ExtResource("5_mood")
-mood_strata = Array[String](["raw", "noir", "ink_blue", "lithograph", "macro_haze", "silent_film_18", "sodium_streetlamp", "candlelight", "memory_warm"])
+mood_strata = Array[String](["raw", "noir", "linework", "lithograph", "silent_film_18", "candlelight", "memory_warm"])
 default_style_pack = ""
 
 [node name="NeonQuad" type="ColorRect" parent="PostProcess"]
@@ -294,31 +281,6 @@ location_json = ""
 [node name="PDRiffrocker" type="Node" parent="."]
 script = ExtResource("13_riff")
 
-; ── vn_shot coverage (2026-08-04 directing pass) ────────
-; rotation B: from the yard by the myrtle looking BACK at the porch, wicker and screen door — the reverse
-[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.2, 1.5, 3.6)
-rotation = Vector3(-0.0369498, 0.391948, 0)
-metadata/fov = 56.0
-
-; rotation C: along the porch boards, wicker in the near frame, the oak beyond
-[node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.687, 1.925, -0.311)
-rotation = Vector3(-0.2618, -0.7854, 0.0)
-metadata/fov = 50.0
-
-; insert: the wicker chair
-[node name="shot_insert_wicker" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.2, 1.2, -2.6)
-rotation = Vector3(-0.209033, -0.785398, 0)
-metadata/fov = 38.0
-
-; insert: the crepe myrtle in bloom
-[node name="shot_insert_myrtle" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.2, 1.5, 0.8)
-rotation = Vector3(0.199348, -2.35619, 0)
-metadata/fov = 40.0
-
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
 layer = 100
 
@@ -336,55 +298,15 @@ offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
 
-; insert: the cigarette put out in Tem's tin (vol7)
-[node name="shot_insert_cigarette" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, 1.4, -0.75)
-rotation = Vector3(-0.4059, 2.5899, 0.0)
-metadata/fov = 42.0
-
-; insert: the four bowls at the milk crate (vol7)
-[node name="shot_insert_bowls" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.55, 0.9, -0.85)
-rotation = Vector3(-0.7369, -0.7854, 0.0)
-metadata/fov = 42.0
-
-; insert: Finn's grandfather's Toyota at the turnaround (vol7)
-[node name="shot_insert_truck" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 1.4, 0.3)
-rotation = Vector3(-0.2730, 2.8954, 0.0)
-metadata/fov = 42.0
-
-; insert: the door to the house
-[node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.3, -3.1)
-rotation = Vector3(0, 0, 0)
-metadata/fov = 42.0
-
-; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
-; every closeup of a person cued here cuts to it (the scene had no closeup marker)
-[node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.848, 1.612, -2.628)
-rotation = Vector3(-0.2618, 2.0944, 0.0)
-metadata/fov = 45.0
-
-; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
-; the far side of the same spot, so two speakers alternate sides
-[node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.494, 1.612, -1.276)
-rotation = Vector3(-0.2618, -1.0472, 0.0)
-metadata/fov = 45.0
-
-; ── draft 3 (2026-09-18): the house window's spill onto the porch ──
-; HouseWin_Glow at blender (1.60, 3.92, 1.60) → godot (1.60, 1.60, -3.92). Tungsten through glass.
-[node name="HouseWin_Glow_Practical" type="OmniLight3D" parent="."]
-position = Vector3(1.600, 1.600, -3.850)
-light_color = Color(0.950, 0.780, 0.500, 1)
-light_energy = 1.20
-shadow_enabled = false
-omni_range = 3.50
-
-; insert (2026-10-10): the porch light over the steps, on at 1:15 AM ("Bianca had come out to the porch")
-[node name="shot_insert_porch_light" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.550, 1.450, -1.350)
-rotation = Vector3(0.4186, 2.4062, 0.0)
+; ── vn_shot coverage (2026-10-10) — the south end of Gallatin Avenue
+; insert: the white NexCorp Residential Solutions van beside the fence, engine off
+[node name="shot_insert_van" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-6.000, 1.850, 34.400)
+rotation = Vector3(-0.0973, 2.2794, 0.0)
 metadata/fov = 44.0
+
+; reverse: from beside the fence up Gallatin, the van at left
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.200, 1.700, 38.000)
+rotation = Vector3(0.0062, 0.0873, 0.0)
+metadata/fov = 60.0

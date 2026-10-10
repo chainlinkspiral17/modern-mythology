@@ -1395,6 +1395,20 @@ const CAMERA_PRESETS := {
 	# ── VOL 6 — Meadowlark Circle, Harmony Creek Estates (re-homed off
 	# louisiana_road 2026-09-01): the prelude's 6:12 sprinklers and the
 	# closing night's porch lights ────────────────────────────────────
+	"gallatin_water_tower": {
+		"scene": "res://scenes/locales/gallatin_water_tower.tscn",
+		"requires_glb": "res://assets/3d/locales/gallatin_water_tower.glb",
+		# (2026-10-10) vol6 Prelude, "The Water Tower", 6:19 AM: the south end
+		# of Gallatin Avenue (godot z 14 back to the fence at z 40), the
+		# NexCorp lot behind its green privacy screen, the machines over it,
+		# the 62 ft tower with HARMONY CREEK in blue block letters, the white
+		# van beside the fence. From the road 18 m short of the fence, south
+		# down Gallatin to it, the tower over it.
+		"camera_origin": Vector3(1.50, 1.65, 22.00),
+		"camera_rotation": Vector3(0.145, 3.117, 0.0),
+		"fov": 56.0,
+		"suppress_input": true,
+	},
 	"meadowlark_circle": {
 		"scene": "res://scenes/locales/meadowlark_circle.tscn",
 		"requires_glb": "res://assets/3d/locales/meadowlark_circle.glb",
