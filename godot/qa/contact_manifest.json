@@ -2649,39 +2649,6 @@
    "scene_missing": false
   },
   {
-   "id": "nexcorp_fueling_station",
-   "scene": "res://scenes/locales/nexcorp_fueling_station.tscn",
-   "vol": 6,
-   "uses": 4,
-   "moods": [
-    "morning_bright",
-    "day_bright"
-   ],
-   "markers": [
-    {
-     "name": "shot_closeup_person",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_person_b",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_insert_badge",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_cash",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_phone",
-     "type": "insert"
-    }
-   ],
-   "scene_missing": false
-  },
-  {
    "id": "ramos_kitchen_morning",
    "scene": "res://scenes/locales/ramos_kitchen_morning.tscn",
    "vol": 6,
@@ -3193,6 +3160,50 @@
     },
     {
      "name": "shot_insert_window",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
+   "id": "nexcorp_fueling_station",
+   "scene": "res://scenes/locales/nexcorp_fueling_station.tscn",
+   "vol": 6,
+   "uses": 3,
+   "moods": [
+    "morning_bright"
+   ],
+   "markers": [
+    {
+     "name": "shot_establish_b",
+     "type": "establish"
+    },
+    {
+     "name": "shot_closeup_boyd",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_tome",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_vince",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_badge",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cash",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_phone",
      "type": "insert"
     }
    ],
@@ -4447,6 +4458,58 @@
     },
     {
      "name": "shot_insert_tv",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
+   "id": "nexcorp_van_cargo",
+   "scene": "res://scenes/locales/nexcorp_fueling_station.tscn",
+   "vol": 6,
+   "uses": 2,
+   "moods": [
+    ""
+   ],
+   "markers": [
+    {
+     "name": "shot_establish_b",
+     "type": "establish"
+    },
+    {
+     "name": "shot_closeup_boyd",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_diego__nexcorp_van_cargo",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person__nexcorp_van_cargo",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b__nexcorp_van_cargo",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_tome",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_vince",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_badge",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cash",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_phone",
      "type": "insert"
     }
    ],
@@ -7114,6 +7177,94 @@
    "scene_missing": false
   },
   {
+   "id": "nexcorp_fueling_restroom",
+   "scene": "res://scenes/locales/nexcorp_fueling_station.tscn",
+   "vol": 6,
+   "uses": 1,
+   "moods": [
+    "fluorescent_corridor"
+   ],
+   "markers": [
+    {
+     "name": "shot_establish_b",
+     "type": "establish"
+    },
+    {
+     "name": "shot_closeup_boyd",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_tome",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_vince",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_badge",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cash",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_phone",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
+   "id": "nexcorp_fueling_store",
+   "scene": "res://scenes/locales/nexcorp_fueling_station.tscn",
+   "vol": 6,
+   "uses": 1,
+   "moods": [
+    "day_bright"
+   ],
+   "markers": [
+    {
+     "name": "shot_establish_b",
+     "type": "establish"
+    },
+    {
+     "name": "shot_closeup_boyd",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_tome",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_vince",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_badge",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cash",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_phone",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
    "id": "nightmare_cell",
    "scene": "res://scenes/locales/nightmare_cell.tscn",
    "vol": 6,
@@ -7953,5 +8104,5 @@
   "tired",
   "nervous"
  ],
- "frames": 1788
+ "frames": 1819
 }

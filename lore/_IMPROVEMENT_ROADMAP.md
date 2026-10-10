@@ -3834,6 +3834,69 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-10 · overnight run, pass 44: THE NEXCORP FUELING STATION, DRAFT 2
+(the wrong PLACE ×4).** vol6 ch6's three chapters ("Vince Walks", "Three
+Hundred in Twenties", "Nine Minutes") all played in an auto-generated
+8 x 6 m store interior. The prose happens on a forecourt off FM-3411:
+- "The unmarked van is at pump six"; "Claire pulls up at the far pump";
+  Vince leaves in "a beat-up sedan parked near the dumpster";
+- Tomé's "silver compact rental with a yellow air freshener", Claire
+  crossing the lot to knock on his window;
+- Boyd "leaning his forehead against the cool tile of the bathroom wall";
+- "In the back of the van, on the floor, wrapped in a blanket, Diego Ramos
+  opens his eyes."
+
+`build_nexcorp_fueling_station.py` is rewritten as the whole station:
+- **The forecourt.** The navy-banded canopy over four islands (pumps 1–8,
+  numbered panels, hoses, bollards), the unmarked white van at pump six,
+  Claire's car at pump one. The pylon with its prices on FM-3411,
+  utility poles, flat fields.
+- **The lot.** Tomé's silver rental in its stall with the yellow air
+  freshener and the bills on its console. The dumpster enclosure with
+  Vince's sedan (named `Getaway_Sedan` so it doesn't answer "closeup
+  vince").
+- **The store.** The glass front with ice chest and propane cage. Inside:
+  the counter by the window (register, Diet Coke and pretzels,
+  cigarettes, lottery), three gondolas, eight cooler doors, the coffee
+  counter.
+- **The men's room.** Tile with its band, urinal, sink and mirror, hand
+  dryer, the shut stall with its red latch.
+- **The van.** Its cargo bay is built inside it: tie-down rails, the dome
+  lamp, the grey blanket on the floor, a jug, a strap. Through to the cab
+  and the station beyond the windshield.
+
+Four presets on one scene:
+- `nexcorp_fueling_station`: the forecourt, down the lane to the van;
+- `nexcorp_fueling_store`: from the counter out the front window;
+- `nexcorp_fueling_restroom`;
+- `nexcorp_van_cargo`: in the bay; DELIBERATE, as are its markers.
+
+Routing:
+- ch6_tome starts in the store and steps out at "Claire pays."
+- ch6_boyd starts in the men's room, steps out at "The van is gone", and
+  plays its last scene in the van.
+- ch6_fueling_station cuts into the van for Diego.
+
+Ambient beds: two_lane for outside and the van, gas_and_go for the store,
+corporate_hum for the men's room. Lights: a low 07:31 sun out of the
+east, the canopy panels, troffers, the restroom tube, the van's dome.
+Markers: eight.
+
+Deck must REBUILD nexcorp_fueling_station.
+
+The three inserts for things held in hands are staged with set-down props:
+- the badge wallet open on the squeegee-bin lid at pump six;
+- Boyd's phone and Gatorade on the ice chest;
+- the three hundreds fanned on the rental's roof over the driver's door.
+  The audits read a `make_car` as a solid box, so no lens can look into
+  one; the bills are on its skin.
+The props are named for where they lie (`Ice_Chest_Phone`), not whose
+they are, because a `Boyds_` part answers "closeup boyd".
+
+Draft 3 targets:
+- oil stains under the pumps, window posters, restroom graffiti;
+- the van moving (ch6_boyd's last scene is on the road).
+
 **2026-10-10 · overnight run, pass 43: THE JETTY AT SMOLVUD (a new set; pass
 37's draft-2 target).** Frequency Interlude II's "[ AT A JETTY, SMOLVUD,
 OREGON — fog ]" played on the Cape Perpetua overlook. The prose: "The Frog

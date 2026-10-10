@@ -66,7 +66,19 @@
       "gain": 0.82
     },
     "nexcorp_fueling_station": {
+      "bed": "assets/audio/bgm/vol6_two_lane.wav",
+      "gain": 0.82
+    },
+    "nexcorp_fueling_store": {
       "bed": "assets/audio/bgm/vol6_gas_and_go_interior.wav",
+      "gain": 0.82
+    },
+    "nexcorp_fueling_restroom": {
+      "bed": "assets/audio/bgm/vol6_corporate_hum.wav",
+      "gain": 0.82
+    },
+    "nexcorp_van_cargo": {
+      "bed": "assets/audio/bgm/vol6_two_lane.wav",
       "gain": 0.82
     },
     "pit_stop_interior": {

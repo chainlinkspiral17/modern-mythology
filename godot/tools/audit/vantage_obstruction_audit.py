@@ -50,7 +50,7 @@ COLS, ROWS = 9, 3
 # its feet over the water and the planks fill the bottom of frame.
 # (2026-10-04: miriam_subaru — vol 5's back-seat camera looks through
 # the gap between the front seats; the seatbacks frame it on purpose.)
-DELIBERATE = {"vehicle_cab", "vehicle_cab_rear", "vehicle_cab_altima", "cabin_road_truck", "lake_palestine_dock", "miriam_subaru"}
+DELIBERATE = {"vehicle_cab", "vehicle_cab_rear", "vehicle_cab_altima", "cabin_road_truck", "lake_palestine_dock", "miriam_subaru", "nexcorp_van_cargo"}
 NEAR_M, NEAR_FRAC = 1.0, 0.30
 WALL_M, WALL_FRAC = 2.6, 0.45
 # EMPTY (2026-09-07 · the diner's first shot was a yellow field with a
@@ -73,6 +73,11 @@ DELIBERATE_MARKERS = {
     # the cedar, on the far horizon, the rust-colored thermal smear" — the
     # smear is a sky card, the cedars are passable, the ground is ignored.
     ("centro_stockroom", "shot_insert_smear"),
+    # (2026-10-10) inside the van at the NexCorp pump the cargo bay is 1.96 m
+    # wide: its close-ups are at arm's length by design, like the Subaru's.
+    ("nexcorp_fueling_station", "shot_closeup_diego__nexcorp_van_cargo"),
+    ("nexcorp_fueling_station", "shot_closeup_person__nexcorp_van_cargo"),
+    ("nexcorp_fueling_station", "shot_closeup_person_b__nexcorp_van_cargo"),
 }
 # Builders whose recorded boxes do not sit where the runtime puts them
 # (harmony_terrain drapes its props over a heightfield the recorder

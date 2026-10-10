@@ -1166,17 +1166,48 @@ const CAMERA_PRESETS := {
 	"nexcorp_fueling_station": {
 		"scene": "res://scenes/locales/nexcorp_fueling_station.tscn",
 		"requires_glb": "res://assets/3d/locales/nexcorp_fueling_station.glb",
-		# Big gas-station store 8×6 (godot x∈[-4,4], z∈[0,-6], ceil 2.8).
-		# Register counter NE (godot 2.0,-4.5) under a backlit brand sign,
-		# glass-door coolers along the E wall, snack aisles centre-W,
-		# storefront window + pumps on the W wall. (2026-10-07: the camera
-		# stood 2 m up at the aisle's west end and saw a shelf top and an
-		# endcap header.) Just inside the door, south of the aisles, eye
-		# height, looking NE up the open lane: the stocked aisle ends at
-		# left, the register under its sign, the coolers at right.
-		"camera_origin": Vector3(-0.40, 1.62, -0.35),
-		"camera_rotation": Vector3(-0.107, -0.617, 0.0),
-		"fov": 64.0,
+		# DRAFT 2 (2026-10-10): the whole station off FM-3411 (godot x in
+		# [-16,16]; the store's front at z 0, the canopy z 6..22). The
+		# forecourt: from the lane W of the van, at the canopy's N edge,
+		# down the lane to the unmarked van at pump six, its driver's door
+		# (where Vince leans) toward the lens; the canopy overhead.
+		"camera_origin": Vector3(-2.00, 1.70, 7.20),
+		"camera_rotation": Vector3(-0.044, -2.854, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"nexcorp_fueling_store": {
+		"scene": "res://scenes/locales/nexcorp_fueling_station.tscn",
+		"requires_glb": "res://assets/3d/locales/nexcorp_fueling_station.glb",
+		# Same set, the store: from beside the counter by the front window
+		# ("Claire is at the counter ... She watches it through the front
+		# window"), SSE out the glass to the lot and the silver rental.
+		"camera_origin": Vector3(-3.60, 1.65, -5.20),
+		"camera_rotation": Vector3(-0.036, -2.556, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"nexcorp_fueling_restroom": {
+		"scene": "res://scenes/locales/nexcorp_fueling_station.tscn",
+		"requires_glb": "res://assets/3d/locales/nexcorp_fueling_station.glb",
+		# Same set, the men's room behind the store's NE corner: from inside
+		# its door, the tile, the urinal, the sink and mirror, and the shut
+		# stall where Boyd has the worst nine minutes of his life.
+		"camera_origin": Vector3(7.25, 1.62, -12.40),
+		"camera_rotation": Vector3(-0.135, 0.632, 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	"nexcorp_van_cargo": {
+		"scene": "res://scenes/locales/nexcorp_fueling_station.tscn",
+		"requires_glb": "res://assets/3d/locales/nexcorp_fueling_station.glb",
+		# Same set, inside the unmarked van at pump six: from the rear doors
+		# forward over the grey blanket on the cargo floor to the cab and the
+		# station through the windshield. "In the back of the van, on the
+		# floor, wrapped in a blanket, Diego Ramos opens his eyes."
+		"camera_origin": Vector3(0.75, 1.48, 18.30),
+		"camera_rotation": Vector3(-0.092, 0.133, 0.0),
+		"fov": 70.0,
 		"suppress_input": true,
 	},
 	"sam_bedroom": {

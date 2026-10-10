@@ -166,6 +166,10 @@
       "voice": "assets/audio/voice/vol6_ch6_fueling_station/028.mp3"
     },
     {
+      "t": "bg",
+      "src": "3d:nexcorp_van_cargo"
+    },
+    {
       "t": "hide",
       "pos": "left"
     },
