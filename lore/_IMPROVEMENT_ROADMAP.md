@@ -3834,6 +3834,67 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-10 · overnight run, pass 39: THE DRUGSTORE, DRAFT 2 (build big).**
+vol1 ch2 "The Drugstore" played in an 8 x 6 m first-generation box. Its
+"annex" was gray, and the mirror was bolted to the sales floor. The
+prose:
+- "whitewalled fortress of solitude ... my kingdom — of cheap
+  fluorescents and impulse buys";
+- the office has the computer, the coffee and the pills, and Faust
+  "stands up and inspects himself in the mirror" before he "exits the
+  office";
+- "Deborah is helping a customer at the front table ... Faust checks the
+  bottle and hands it over";
+- Eric puts down lunch: Vietnamese, six eggrolls.
+
+`build_pharmacy.py` is rewritten as a chain drugstore, 26 x 22 m under a
+3.6 m drop ceiling of troffers:
+- **The front.** The storefront and sliding doors, the lot and the
+  street. The storefront is drawn as glints on open mullions (the
+  picture-window rule); vertex-alpha glass would also work, since
+  `LocaleGlass` makes it transparent at runtime. Two register stands with impulse racks, the baskets, the
+  security pedestals, a promo table, the magazine rack, the photo kiosk.
+- **The aisles.** Seven gondolas with endcaps and hanging aisle signs,
+  wall bays, and five cooler doors.
+- **The pharmacy.** It is raised 45 cm, so the pharmacist looks out over
+  the shelf tops:
+  - the PHARMACY soffit, and the DROP OFF / PICK UP / CONSULTATION
+    stations along the counter (the counter is "the front table");
+  - the will-call rack of white bags, the work island with its trays and
+    screens;
+  - THE LUNCH on the island: the bag, three clamshells (one open on its
+    eggrolls, with chopsticks), the sauce cups;
+  - the back wall of stock bottles.
+- **The office.** White walls and one green-white troffer. The desk holds
+  the monitor, the coffee, the open bottle with its cap off and three
+  tablets beside it. The full-length mirror is on the E wall. Also: the
+  reference shelf, the diplomas, the drug-rep samples on the file
+  cabinet, the corkboard, his jacket.
+- **East of the pharmacy.** The waiting chairs, the BP kiosk, the flu-shot
+  sign, the restroom and EMPLOYEES ONLY doors, the fountain.
+
+Scene and presets:
+- **Lights.** A new rig of troffer practicals (`Fluor_*_Practical`), a
+  key straight down, and the sun through the storefront.
+- **Markers.** Five, suffixed per preset. The four stale draft-1 inserts
+  (checkout, gum, register, office) are gone, and
+  `godot/qa/contact_manifest.json` is regenerated (it was stale for this
+  whole night's sets).
+- **`pharmacy_floor`.** From the counter's edge on the platform, down the
+  lane to the glass.
+- **`pharmacy_office`.** From the door corner: the desk and the mirror.
+
+Deck must REBUILD pharmacy.
+
+Draft 3 targets:
+- the trickle of customers' traces: a cart left in a lane, a basket at
+  the pickup, the queue stanchions;
+- seasonal endcaps for the chapter's month;
+- privacy glass on the consultation window;
+- depth past the restroom door;
+- the mirror as a real reflective surface (a ReflectionProbe or a
+  planar-mirror trick); it reads as a pale panel now.
+
 **2026-10-10 · overnight run, pass 38: "TWO DOORS DOWN" (from the sweep).**
 The prose puts the unit "two doors down at the back of the strip mall"
 from the Foxhole's back door. The set had the unit's door right next to

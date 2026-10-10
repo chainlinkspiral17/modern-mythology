@@ -146,8 +146,8 @@ background_mode = 2
 sky = SubResource("Sky_Win")
 background_color = Color(0.55, 0.56, 0.52, 1)
 ambient_light_source = 2
-ambient_light_color = Color(0.62, 0.63, 0.60, 1)
-ambient_light_energy = 0.85
+ambient_light_color = Color(0.80, 0.82, 0.80, 1)
+ambient_light_energy = 0.60
 fog_enabled = true
 fog_sky_affect = 0.0
 fog_light_color = Color(0.55, 0.56, 0.52, 1)
@@ -169,51 +169,164 @@ glow_hdr_scale = 2.4
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_Locale")
 
-[node name="Key_Overhead" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707, 0.707, 0, -0.707, 0.707, 0, 6, 0)
-light_color = Color(0.92, 0.95, 0.9, 1)
-light_energy = 1.0
+; ── light rig (2026-10-10, draft 2) — written row-major (the .tscn basis lists ROWS)
+; the troffer field as one soft key straight down (tilted 10 degrees north)
+[node name="Key_Troffers" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.1736, 0.9848, 0, -0.9848, 0.1736, 0, 8, -11)
+light_color = Color(0.94, 0.97, 0.94, 1)
+light_energy = 0.55
 shadow_enabled = false
 
-[node name="Fill_Warm" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, -2, 4, 0)
-light_color = Color(0.96, 0.88, 0.72, 1)
-light_energy = 0.3
-shadow_enabled = false
+; the day through the storefront glass, travelling north and down
+[node name="Sun_Storefront" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.8192, 0.5736, 0, -0.5736, 0.8192, 0, 8, 8)
+light_color = Color(1.0, 0.94, 0.82, 1)
+light_energy = 0.70
+shadow_enabled = true
+metadata/daylight = true
 
-[node name="Back" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 4, 4)
-light_color = Color(0.6, 0.64, 0.68, 1)
-light_energy = 0.2
+; the floor troffers: a practical under every other fixture in the grid
+[node name="Fluor_0_0_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.50, 3.35, -2.50)
+light_color = Color(0.93, 0.97, 0.93, 1)
+light_energy = 0.70
 shadow_enabled = false
+omni_range = 6.50
 
-[node name="Fluor_S" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.55, -1.6)
-light_color = Color(0.92, 0.96, 0.92, 1)
-light_energy = 1.3
+[node name="Fluor_0_2_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.50, 3.35, -10.40)
+light_color = Color(0.93, 0.97, 0.93, 1)
+light_energy = 0.70
 shadow_enabled = false
-omni_range = 4.5
+omni_range = 6.50
 
-[node name="Fluor_M" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.55, -3.2)
-light_color = Color(0.92, 0.96, 0.92, 1)
-light_energy = 1.3
+[node name="Fluor_1_1_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.00, 3.35, -6.80)
+light_color = Color(0.93, 0.97, 0.93, 1)
+light_energy = 0.70
 shadow_enabled = false
-omni_range = 4.5
+omni_range = 6.50
 
-[node name="Fluor_N" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.55, -4.8)
-light_color = Color(0.92, 0.96, 0.92, 1)
-light_energy = 1.3
+[node name="Fluor_1_3_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.00, 3.35, -13.80)
+light_color = Color(0.93, 0.97, 0.93, 1)
+light_energy = 0.70
 shadow_enabled = false
-omni_range = 4.5
+omni_range = 6.50
 
-[node name="Office_Lamp" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7, 1.15, -5.72)
-light_color = Color(0.98, 0.84, 0.55, 1)
-light_energy = 0.8
+[node name="Fluor_2_0_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.50, 3.35, -2.50)
+light_color = Color(0.93, 0.97, 0.93, 1)
+light_energy = 0.70
 shadow_enabled = false
-omni_range = 2.0
+omni_range = 6.50
+
+[node name="Fluor_2_2_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.50, 3.35, -10.40)
+light_color = Color(0.93, 0.97, 0.93, 1)
+light_energy = 0.70
+shadow_enabled = false
+omni_range = 6.50
+
+[node name="Fluor_3_1_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.00, 3.35, -6.80)
+light_color = Color(0.93, 0.97, 0.93, 1)
+light_energy = 0.70
+shadow_enabled = false
+omni_range = 6.50
+
+[node name="Fluor_3_3_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.00, 3.35, -13.80)
+light_color = Color(0.93, 0.97, 0.93, 1)
+light_energy = 0.70
+shadow_enabled = false
+omni_range = 6.50
+
+[node name="Fluor_4_0_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.50, 3.35, -2.50)
+light_color = Color(0.93, 0.97, 0.93, 1)
+light_energy = 0.70
+shadow_enabled = false
+omni_range = 6.50
+
+[node name="Fluor_4_2_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.50, 3.35, -10.40)
+light_color = Color(0.93, 0.97, 0.93, 1)
+light_energy = 0.70
+shadow_enabled = false
+omni_range = 6.50
+
+[node name="Fluor_5_1_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.00, 3.35, -6.80)
+light_color = Color(0.93, 0.97, 0.93, 1)
+light_energy = 0.70
+shadow_enabled = false
+omni_range = 6.50
+
+[node name="Fluor_5_3_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.00, 3.35, -13.80)
+light_color = Color(0.93, 0.97, 0.93, 1)
+light_energy = 0.70
+shadow_enabled = false
+omni_range = 6.50
+
+; the pharmacy, the gate, the back corners
+[node name="Fluor_Rx_0_0_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.00, 3.35, -17.00)
+light_color = Color(0.93, 0.97, 0.93, 1)
+light_energy = 0.75
+shadow_enabled = false
+omni_range = 5.00
+
+[node name="Fluor_Rx_1_0_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.50, 3.35, -17.00)
+light_color = Color(0.93, 0.97, 0.93, 1)
+light_energy = 0.75
+shadow_enabled = false
+omni_range = 5.00
+
+[node name="Fluor_Rx_0_1_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.00, 3.35, -20.20)
+light_color = Color(0.93, 0.97, 0.93, 1)
+light_energy = 0.75
+shadow_enabled = false
+omni_range = 5.00
+
+[node name="Fluor_Rx_1_1_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.50, 3.35, -20.20)
+light_color = Color(0.93, 0.97, 0.93, 1)
+light_energy = 0.75
+shadow_enabled = false
+omni_range = 5.00
+
+[node name="Fluor_Rx_Gate_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.00, 3.35, -17.00)
+light_color = Color(0.93, 0.97, 0.93, 1)
+light_energy = 0.60
+shadow_enabled = false
+omni_range = 4.50
+
+[node name="Fluor_Back_0_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.50, 3.35, -18.50)
+light_color = Color(0.93, 0.97, 0.93, 1)
+light_energy = 0.65
+shadow_enabled = false
+omni_range = 6.00
+
+[node name="Fluor_Back_1_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.50, 3.35, -18.50)
+light_color = Color(0.93, 0.97, 0.93, 1)
+light_energy = 0.65
+shadow_enabled = false
+omni_range = 6.00
+
+; the office: one 2x4 troffer, a shade green ("The fluorescents hum like a slow apology")
+[node name="Fluor_Office_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.90, 3.35, -20.20)
+light_color = Color(0.88, 1.00, 0.88, 1)
+light_energy = 0.95
+shadow_enabled = false
+omni_range = 4.60
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -335,37 +448,33 @@ offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
 
-; first inserts, authored by marker_author.py (2026-09-10): the locale had no vn_shot markers
-[node name="shot_insert_office" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.624, 1.613, -2.904)
-rotation = Vector3(-0.2108, -0.5646, 0.0)
-metadata/fov = 35.0
+; ── vn_shot coverage (2026-10-10, draft 2) — the drugstore and the office
+; closeup: Faust at the desk, from beside the file cabinet ("Think I'll try three")
+[node name="shot_closeup_person__pharmacy_office" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(5.550, 1.800, -21.000)
+rotation = Vector3(-0.0848, 1.7033, 0.0)
+metadata/fov = 42.0
 
-[node name="shot_insert_checkout" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.834, 1.434, -0.850)
-rotation = Vector3(-0.2618, 1.3090, 0.0)
-metadata/fov = 35.0
+; insert: "glances about his office" — from the chair to the mirror, the jacket, the corkboard
+[node name="shot_insert_office__pharmacy_office" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.450, 1.700, -20.600)
+rotation = Vector3(-0.1356, -2.1480, 0.0)
+metadata/fov = 50.0
 
-[node name="shot_insert_gum" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.334, 0.959, -0.950)
-rotation = Vector3(-0.2618, 1.5708, 0.0)
-metadata/fov = 35.0
+; closeup: Faust behind PICK UP, from the customer's side of "the front table"
+[node name="shot_closeup_person__pharmacy_floor" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.500, 1.620, -13.900)
+rotation = Vector3(0.1518, -0.2141, 0.0)
+metadata/fov = 42.0
 
-[node name="shot_insert_register" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.650, 1.579, -4.117)
-rotation = Vector3(-0.2618, -0.2618, 0.0)
-metadata/fov = 35.0
+; closeup: the customer (the happy old woman, Eric) across the counter, from Faust's side
+[node name="shot_closeup_person_b__pharmacy_floor" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.550, 2.020, -16.450)
+rotation = Vector3(-0.2478, 2.8198, 0.0)
+metadata/fov = 42.0
 
-; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
-; every closeup of a person cued here cuts to it (the scene had no closeup marker)
-[node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.210, 1.250, -2.491)
-rotation = Vector3(0.0000, 0.2618, 0.0)
-metadata/fov = 45.0
-
-; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
-; the far side of the same spot, so two speakers alternate sides
-[node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.922, 1.612, -5.150)
-rotation = Vector3(-0.2618, -2.8798, 0.0)
-metadata/fov = 45.0
+; reverse: from the front cross aisle up the lane to the PHARMACY soffit
+[node name="shot_establish_b__pharmacy_floor" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.500, 1.700, -4.900)
+rotation = Vector3(0.0540, 0.0270, 0.0)
+metadata/fov = 58.0

@@ -2098,27 +2098,28 @@ const CAMERA_PRESETS := {
 	"pharmacy_floor": {
 		"scene": "res://scenes/locales/pharmacy.tscn",
 		"requires_glb": "res://assets/3d/locales/pharmacy.glb",
-		# Retail interior 8×6 (godot x∈[-4,4], z∈[0,-6], ceil 2.8).
-		# Two gondola runs (x=±1.5, z∈[-1.2,-4.2]), RX counter + green
-		# sign at back (z=-5.15), mirror pillar E wall (3.9,-2.8),
-		# checkout by the door SW. Camera front-of-store center aisle
-		# looking N to the RX sign; mirror catches frame right.
-		"camera_origin": Vector3(0.0, 1.60, -0.9),
-		"camera_rotation": Vector3(-0.03, deg_to_rad(11.0), 0.0),
+		# DRAFT 2 (2026-10-10): the chain drugstore, 26 x 22 m (godot
+		# x in [-13,13], z in [0,-22], drop ceiling 3.6). "From my
+		# whitewalled fortress of solitude I emerge and bask upon my
+		# kingdom": the pharmacist's eye from the raised platform behind
+		# PICK UP, over the shelf tops down the lane between cosmetics and
+		# vitamins to the storefront glass and the lot. At the counter's
+		# edge, so the station signs hang above the frame, not across it.
+		"camera_origin": Vector3(1.20, 2.10, -15.98),
+		"camera_rotation": Vector3(-0.050, -3.123, 0.0),
 		"fov": 64.0,
 		"suppress_input": true,
 	},
 	"pharmacy_office": {
 		"scene": "res://scenes/locales/pharmacy.tscn",
 		"requires_glb": "res://assets/3d/locales/pharmacy.glb",
-		# Same set, the annex — NE corner behind the partition: desk
-		# against the N wall (3.2,-5.6) with lamp + ledger, file
-		# cabinet left, the partition window back onto the floor.
-		# RE-VANTAGED 2026-09-03 by vantage_obstruction_audit --propose
-		# (user: "another establishing shot that is 90 percent wall").
-		"camera_origin": Vector3(0.30, 1.55, -0.55),
-		"camera_rotation": Vector3(-0.05, 5.760, 0.0),
-		"fov": 56.0,
+		# Same set, the office behind the pharmacy (on its 45 cm platform):
+		# from the SW corner by the door — the desk with the computer, the
+		# coffee and the open bottle on the N wall, the full-length mirror
+		# on the E wall ("Faust stands up and inspects himself").
+		"camera_origin": Vector3(2.20, 2.07, -18.95),
+		"camera_rotation": Vector3(-0.232, -0.939, 0.0),
+		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"beach_night": {

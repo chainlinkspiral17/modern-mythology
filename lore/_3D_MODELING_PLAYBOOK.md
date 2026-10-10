@@ -399,6 +399,31 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-10-10 · a raised floor, a stocked store, and helpers that guess the wall
+
+**What happened.** The drugstore (draft 2, 26 x 22 m) put its pharmacy
+on a 45 cm platform with an office on it, and stocked seven gondolas.
+- **The office walls clipped the platform.** `make_wall` and
+  `make_wall_with_openings` ignore the anchor's z and always build from
+  the slab. A wall that crosses the platform's edge counts as a join; one
+  wholly inside its footprint is a CLIP.
+- **The first export was 31 MB.** The packages used `geometry.make_box`,
+  which auto-chamfers.
+- **The office calendar printed its grid into the wall.** `make_calendar`
+  decides which way the room is from the sign of x (or y): `x > 0` means
+  an east wall.
+
+**Rules.**
+1. Walls standing on a platform are boxes from `PLAT` to the ceiling:
+   piers, a lintel over the door, and a baseboard on the room face.
+2. Stock packages are always sharp-edged (`chamfer=0.0`, ≤ 8-segment
+   cylinders, named `<fixture>_Stock_…` so `join_stock` merges them).
+   Budget about two parts per facing item. Cosmetics at four boxes per
+   7 cm was a third of the store. With those, 10k parts export to 15 MB.
+3. Before hanging decor with a position-guessing helper, check its
+   heuristic against where the wall really is. Otherwise put it on a wall
+   where the guess holds: an N wall at y > 1, or an E wall at x > 0.
+
 ### 2026-09-30 · a hole is four boxes per layer; a bowl is seen from inside
 
 **What happened.** The skatepark's pool had been "suggested without

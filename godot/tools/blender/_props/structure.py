@@ -213,10 +213,13 @@ def make_window(prefix, anchor, *, width=2.60, height=1.50,
 
     see_through (2026-09-24): no glass and no warm pane — frame and
     mullions only, the opening left empty, two glints on the frame
-    line. The pipeline has no alpha: the glass and the warm pane render
-    as two OPAQUE panels, so a window something must be SEEN through
-    (the cabin's crow on the outside sill) cannot have them (the 3D
-    modelling playbook's picture-window rule)."""
+    line. When this was written the pipeline had no alpha: the glass and
+    the warm pane rendered as two OPAQUE panels, so a window something
+    must be SEEN through (the cabin's crow on the outside sill) could
+    not have them (the 3D modelling playbook's picture-window rule).
+    Since 2026-10-02 scripts/LocaleGlass.gd turns any vertex alpha below
+    0.98 into real transparency at load (P.GLASS is 0.25), so a tinted
+    pane beside a see_through frame now reads as glass."""
     palette = palette or {}
     glass = palette.get("glass", P.GLASS)
     frame = palette.get("frame", P.METAL_STEEL)
@@ -282,8 +285,9 @@ def make_case_shell(prefix, center, size, color, *, open_face='-Y', wall=0.02):
 
     2026-09-24 (support pass, twenty-third draft): every glass-front
     case in the kits was a SOLID body with its product modelled inside
-    it and a tinted "glass" slab in front — and this pipeline has no
-    alpha (vertex colour only), so the glass rendered as an opaque
+    it and a tinted "glass" slab in front — and this pipeline then had
+    no alpha (vertex colour only; LocaleGlass.gd, 2026-10-02, now makes
+    vertex alpha < 0.98 transparent), so the glass rendered as an opaque
     panel over a solid block: 95 objects per kwik stop cooler door that
     no camera could ever see. Build the shell; put the product on
     shelves inside it; frame the opening and leave the glass out.
