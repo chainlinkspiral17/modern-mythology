@@ -3834,6 +3834,62 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-10 · overnight run, pass 40: THE DAILY GRIND, DRAFT 3 (build big).**
+Lena's café played in a 7 x 6 m box under a 2.8 m ceiling. Vol 7
+describes it across many chapters:
+- the back door to the alley, the heat-pump compressor that runs "the
+  hot-water lines for the espresso bar";
+- "the ceramic milk pitchers ... on the bar in the order the morning
+  regulars liked their drinks pulled";
+- "standing at the bar looking through the front window at the
+  slate-gray light over Main";
+- the bell over the door, the CLOSED / OPEN sign;
+- Wren's hot chocolate with its one hand-cut marshmallow, bought from
+  Hans "for a stack of tokens";
+- the corner table with "the fourth chair".
+
+`build_daily_grind_interior.py` is rewritten as a corner storefront on
+Main, 12 x 10 m under a 3.6 m pressed-tin ceiling, glass on both street
+sides:
+- **The bar** along the back, facing the front window: the pastry case
+  of Hans's bread, the register with its token reader and tip jar, the
+  two-group machine with the five ceramic pitchers, the grinder, the
+  hand-off with Wren's hot chocolate, the under-counter milk cooler.
+- **The back bar** behind it: sink, pour-over station, hot-water
+  dispenser, decaf grinder, cups, beans, batch brewer; the mug shelves
+  and the chalkboard menu; the copper lines coming down from the heat
+  pump.
+- **The corner table** where the window walls meet: four chairs, Kai's
+  laptop (facing him) and phone, the Frequency paperback, Wren's
+  notebook, the duffel by the fourth chair.
+- **The rest of the room.** The window bar and stools, the side two-tops,
+  five round tables under exposed-bulb pendants, the banquette on the
+  brick wall under three of Lena's paintings on a track, the lounge
+  (couch, two armchairs, book-swap shelf, floor lamp), the community
+  board, the condiment station.
+- **The back hall.** The restroom, the hot-water tank, the back door
+  under EXIT.
+- **Outside.** Main, the cross street, and the tower on the hill.
+
+Scene and preset:
+- **Lights.** A new rig of pendant practicals and the overcast window
+  light.
+- **Markers.** Thirteen, including named closeups: lena (at the bar),
+  wren (at the counter), finn and tem (at the corner table). The tower
+  insert moved out to the slope below the tower, because inserts stay
+  within 40 m.
+- **Names.** Several parts are named so they don't match the closeup
+  cues: `Painting_*` (not "Lena_Canvas"), `Duffel` (not "Finn_Duffel"),
+  `HotWater_Dispenser`.
+
+Deck must REBUILD daily_grind_interior.
+
+Draft 4 targets:
+- rain on the glass and the wet street;
+- the studio door off the alley, seen through the back door's window;
+- the pre-six-oh-four dressing, with chairs up on the tables;
+- the dusk look for "Tem and Lena were the only two people".
+
 **2026-10-10 · overnight run, pass 39: THE DRUGSTORE, DRAFT 2 (build big).**
 vol1 ch2 "The Drugstore" played in an 8 x 6 m first-generation box. Its
 "annex" was gray, and the mirror was bolted to the sales floor. The

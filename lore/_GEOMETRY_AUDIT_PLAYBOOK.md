@@ -158,6 +158,27 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-10-10 · a prop named for a character answers that character's closeup cue
+
+`marker_aim_audit` and `vantage_obstruction_audit --markers` resolve a
+cue's subject by matching GEOMETRY NAMES. A closeup of a person ("closeup
+lena", "closeup finn") has no geometry of its own, so the audits pick up
+any part whose name contains the person's name. In the Daily Grind,
+`Lena_Canvas_2_Card` came out "91° off" `shot_closeup_lena`, and
+`Finn_Duffel_Strap` was "occluded" from `shot_closeup_finn`.
+`HotWater_Tower_Spout` answered `shot_insert_tower` ahead of the real
+`Watch_Tower`.
+
+**Rules.**
+1. Name possessions by WHAT they are (`Painting_k`, `Duffel`) and put the
+   owner in the comment.
+2. Give an insert's subject the only part carrying that word. The
+   hot-water "tower" became `HotWater_Dispenser`.
+3. `NEAR_MAX` is 40 m: an insert subject further out is a miss. A
+   cutaway to something on the horizon (the tower on the hill) takes its
+   marker out to within 40 m of the subject, not a long lens from the
+   room.
+
 ### 2026-10-09 · buried_decor_audit: decor must sit IN FRONT of its wall
 
 - A room read bare because its dressing was inside its walls. A 20 cm

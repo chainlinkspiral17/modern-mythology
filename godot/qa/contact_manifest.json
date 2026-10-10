@@ -2918,11 +2918,31 @@
    ],
    "markers": [
     {
+     "name": "shot_establish_b",
+     "type": "establish"
+    },
+    {
+     "name": "shot_closeup_finn",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_lena",
+     "type": "closeup"
+    },
+    {
      "name": "shot_closeup_person",
      "type": "closeup"
     },
     {
      "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_tem",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_wren",
      "type": "closeup"
     },
     {
@@ -7898,5 +7918,5 @@
   "tired",
   "nervous"
  ],
- "frames": 1777
+ "frames": 1782
 }

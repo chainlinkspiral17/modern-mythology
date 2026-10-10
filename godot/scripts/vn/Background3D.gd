@@ -1761,15 +1761,15 @@ const CAMERA_PRESETS := {
 	"daily_grind_interior": {
 		"scene": "res://scenes/locales/daily_grind_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/daily_grind_interior.glb",
-		# Coffee shop 7×6 (godot x∈[-3.5,3.5], z∈[0,-6], ceil 2.8). Espresso
-		# bar runs E-W along the N wall (godot z≈-5.2, 5.8m wide): chrome
-		# 2-group machine at the W end (godot -1.9,-5.25), pastry case +
-		# register at the E end (godot 2.0..3.0,-5.2), chalkboard menu above,
-		# three café tables mid-room, couch/armchair lounge nook NW. Camera
-		# just inside the S door, west of centre, looking NNE at the espresso
-		# bar + machine; pastry case + register at right, tables in the fore.
-		"camera_origin": Vector3(-1.6, 2.0, -0.8),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(-22.2), 0.0),
+		# DRAFT 3 (2026-10-10): the corner storefront on Main, 12 x 10 m
+		# (godot x in [-6,6], z in [0,-10], pressed tin at 3.6), glass on
+		# the S (Main) and W (cross street) walls. The bar runs along the
+		# back facing the front window: pastry case, register, the two-group
+		# machine with the milk pitchers, the hand-off; the back bar, shelves
+		# and chalkboard behind. Camera from by the window bar, past the
+		# round tables to the bar; the corner table is behind-left of it.
+		"camera_origin": Vector3(-3.40, 1.65, -1.30),
+		"camera_rotation": Vector3(-0.032, -0.688, 0.0),
 		"fov": 64.0,
 		"suppress_input": true,
 	},
