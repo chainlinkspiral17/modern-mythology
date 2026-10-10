@@ -3834,6 +3834,46 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-10 · overnight run, pass 43: THE JETTY AT SMOLVUD (a new set; pass
+37's draft-2 target).** Frequency Interlude II's "[ AT A JETTY, SMOLVUD,
+OREGON — fog ]" played on the Cape Perpetua overlook. The prose: "The Frog
+is not, technically, fishing. The Frog is waiting ... three young people
+will pass this jetty without noticing him ... The Frog will roll a fresh
+smoke ... The fog will accept the smoke." The new `smolvud_jetty` is a
+rubble-mound jetty at the river mouth:
+- **The jetty.** It runs 90 m out from the shore path, up a ramp onto a
+  gravel crest. Armour: basalt boulders, two rows a side, each its own
+  `Riprap_<n>_Boulder` so they interlock as geology. The roundhead
+  carries the green navigation light on its concrete base, with its
+  daymark.
+- **The Frog's place**, a third of the way out on the channel side: a
+  flat boulder with an old cushion, the tobacco tin and papers. The
+  bucket holds the butt of a rod whose line goes down into the channel.
+  The tackle box, the thermos.
+- **The shore.** The land, the beach slab falling into the surf east of
+  the jetty, the steeper bank into the channel west of it. The shore path
+  the three will walk at four, with its railing, bench, bin, lamp posts
+  and the jetty sign.
+- **Beyond.** The harbor floats, pilings and three boats across the
+  channel. Smolvud's roofs going grey on the rise behind.
+- **Fog.** Thick (density 0.016) with a soft high key. The nav light is
+  the one practical.
+- **Markers and routing.** Four markers (the Frog's closeup, the tin, the
+  rod, the profile from the path). The preset is on the crest 10 m short
+  of him. Interlude node 42 is routed here. Ambient bed: vol7_ambient.
+- **Lessons.** The ground is boxes and two sloped slabs, because the
+  audits record a heightfield as its bounding box, which swallowed every
+  house and boat. The fishing line is named a thread (NONSOLID), because
+  its bounding box crosses the core.
+
+Deck must BUILD smolvud_jetty (a new GLB).
+
+Draft 2 targets:
+- the Frog's smoke as a NONSOLID wisp;
+- gulls;
+- the tide line on the rocks;
+- the three's way past at the root (wet path, footprints).
+
 **2026-10-10 · overnight run, pass 42: WAGNER'S FRONT ROOM, DRAFT 2 (the wrong
 ROOM).** vol1 ch2 played Wagner's home as a 6 x 5 m "lived-in family front
 room" (beige sofa, framed pictures, a TV) with the record player tucked in

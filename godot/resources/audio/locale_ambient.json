@@ -341,6 +341,10 @@
       "bed": "assets/audio/bgm/vol5_store_ambient.wav",
       "gain": 0.82
     },
+    "smolvud_jetty": {
+      "bed": "assets/audio/bgm/vol7_ambient.wav",
+      "gain": 0.9
+    },
     "smolvud_coop": {
       "bed": "assets/audio/bgm/vol5_store_ambient.wav",
       "gain": 0.82

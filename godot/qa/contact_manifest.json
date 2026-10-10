@@ -2723,47 +2723,6 @@
    "scene_missing": false
   },
   {
-   "id": "cape_perpetua_overlook",
-   "scene": "res://scenes/locales/cape_perpetua_overlook.tscn",
-   "vol": 7,
-   "uses": 3,
-   "moods": [
-    "macro_haze",
-    "arcana_cool"
-   ],
-   "markers": [
-    {
-     "name": "shot_closeup_person",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_person_b",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_insert_bench",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_crow",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_hexagon",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_phone",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_truck",
-     "type": "insert"
-    }
-   ],
-   "scene_missing": false
-  },
-  {
    "id": "cathedral_interior",
    "scene": "res://scenes/cathedral.tscn",
    "vol": 7,
@@ -3632,6 +3591,46 @@
     },
     {
      "name": "shot_insert_window",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
+   "id": "cape_perpetua_overlook",
+   "scene": "res://scenes/locales/cape_perpetua_overlook.tscn",
+   "vol": 7,
+   "uses": 2,
+   "moods": [
+    "macro_haze"
+   ],
+   "markers": [
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_bench",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_crow",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_hexagon",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_phone",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_truck",
      "type": "insert"
     }
    ],
@@ -7738,6 +7737,34 @@
    "scene_missing": false
   },
   {
+   "id": "smolvud_jetty",
+   "scene": "res://scenes/locales/smolvud_jetty.tscn",
+   "vol": 7,
+   "uses": 1,
+   "moods": [
+    "arcana_cool"
+   ],
+   "markers": [
+    {
+     "name": "shot_establish_b",
+     "type": "establish"
+    },
+    {
+     "name": "shot_closeup_frog",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_rod",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_tin",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
    "id": "tideline_survey",
    "scene": "res://scenes/locales/tideline_survey.tscn",
    "vol": 7,
@@ -7926,5 +7953,5 @@
   "tired",
   "nervous"
  ],
- "frames": 1784
+ "frames": 1788
 }

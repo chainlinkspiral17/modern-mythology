@@ -1300,6 +1300,20 @@ const CAMERA_PRESETS := {
 	},
 	# ── VOL 7 — Cape Perpetua, the unmarked overlook (re-homed off
 	# cabin_road 2026-09-01; vol7_ch12_morning) ───────────────────────
+	"smolvud_jetty": {
+		"scene": "res://scenes/locales/smolvud_jetty.tscn",
+		"requires_glb": "res://assets/3d/locales/smolvud_jetty.glb",
+		# (2026-10-10) vol7 Frequency Interlude II, "[ AT A JETTY, SMOLVUD,
+		# OREGON — fog ]": the rubble-mound jetty at the river mouth (godot
+		# z 0..-86, crest at y 3.1), the Frog's flat rock a third of the way
+		# out on the channel side with his bucket, rod and tin, the green
+		# navigation light at the tip in the fog. From the crest ten metres
+		# short of his place, out along the jetty past him into the fog.
+		"camera_origin": Vector3(0.70, 4.72, -24.00),
+		"camera_rotation": Vector3(-0.060, 0.095, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
 	"cape_perpetua_overlook": {
 		"scene": "res://scenes/locales/cape_perpetua_overlook.tscn",
 		"requires_glb": "res://assets/3d/locales/cape_perpetua_overlook.glb",
