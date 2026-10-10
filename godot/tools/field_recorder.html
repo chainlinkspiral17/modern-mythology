@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>FIELD RECORDER · Modern Mythology</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --bg-0: #050304; --bg-1: #0e0908; --ink: #1a1410;
+    --rule: #553318; --gold: #d8a060; --gold-hi: #ffd896;
+    --text: #c8a878; --text-dim: #7a5828;
+    --emerald: #4ea060; --emerald-hi: #a8e89c; --rust: #c87633; --burgundy: #7a1e26;
+    --red: #c64a3a; --amber: #f0b94a;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100vh; overflow: hidden; background: var(--bg-0); color: var(--text); font-family: "Courier New", monospace; }
+  body { display: grid; grid-template-rows: auto 1fr auto; }
+  header { padding: 10px 18px; border-bottom: 1px solid var(--rule); display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+  header h1 { margin: 0; font-size: 15px; letter-spacing: 0.18em; color: var(--gold-hi); }
+  .badge { font-size: 10px; letter-spacing: 0.10em; padding: 2px 8px; border: 1px solid var(--rule); color: var(--text-dim); }
+  .badge.ok { color: var(--emerald-hi); border-color: var(--emerald); }
+  .badge.warn { color: var(--amber); border-color: var(--amber); }
+  .badge.bad { color: var(--red); border-color: var(--red); }
+  .sub { color: var(--text-dim); font-size: 11px; font-style: italic; }
+  main { display: grid; grid-template-columns: 320px 1fr 330px; overflow: hidden; }
+  section { border-right: 1px solid var(--rule); padding: 10px 14px; overflow-y: auto; }
+  section:last-child { border-right: none; }
+  h2 { margin: 12px 0 6px; color: var(--gold); font-size: 11px; letter-spacing: 0.16em; border-bottom: 1px solid var(--rule); padding-bottom: 3px; }
+  h2:first-child { margin-top: 0; }
+  .row { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; margin: 4px 0; font-size: 11px; }
+  .row > label { color: var(--text-dim); min-width: 52px; letter-spacing: 0.06em; }
+  select, input[type=text], input[type=number], textarea {
+    background: var(--ink); color: var(--gold-hi); border: 1px solid var(--rule); font-family: inherit; font-size: 11px; padding: 3px 6px; min-width: 0;
+  }
+  select, input[type=text], textarea { flex: 1; }
+  textarea { width: 100%; height: 46px; resize: vertical; }
+  button { background: var(--ink); color: var(--gold-hi); border: 1px solid var(--gold); padding: 4px 10px; font-family: inherit; font-size: 10px; letter-spacing: 0.10em; cursor: pointer; }
+  button:hover:not(:disabled) { background: var(--gold); color: var(--ink); }
+  button:disabled { opacity: 0.35; cursor: default; }
+  button.dim { color: var(--text-dim); border-color: var(--rule); }
+  button.hot { background: var(--burgundy); }
+  #rec { width: 100%; height: 64px; font-size: 18px; letter-spacing: 0.3em; background: #2a0c0e; border-color: var(--red); color: #ffb0a0; }
+  #rec.on { background: var(--red); color: #fff; animation: pulse 1s infinite; }
+  @keyframes pulse { 50% { box-shadow: 0 0 22px rgba(198,74,58,0.8); } }
+  .timer { font-size: 30px; color: var(--gold-hi); letter-spacing: 0.08em; text-align: center; margin: 6px 0; }
+  canvas.meter { width: 100%; height: 12px; display: block; margin: 3px 0; border: 1px solid var(--rule); }
+  .tags { display: flex; gap: 4px; flex-wrap: wrap; }
+  .tag { border: 1px solid var(--rule); color: var(--text-dim); padding: 1px 6px; font-size: 10px; cursor: pointer; user-select: none; }
+  .tag.on { color: var(--emerald-hi); border-color: var(--emerald); }
+  .note { color: var(--text-dim); font-size: 10px; line-height: 1.5; font-style: italic; }
+  .msg { color: var(--emerald-hi); font-size: 10px; min-height: 13px; margin: 3px 0; }
+  .msg.err { color: var(--red); }
+  .editor { display: grid; grid-template-rows: auto auto 1fr auto auto; gap: 6px; height: 100%; }
+  .wavewrap { position: relative; height: 210px; border: 1px solid var(--rule); }
+  .wavewrap canvas { position: absolute; inset: 0; width: 100%; height: 100%; cursor: crosshair; }
+  .stats { display: flex; gap: 16px; flex-wrap: wrap; font-size: 11px; color: var(--text-dim); }
+  .stats b { color: var(--gold-hi); font-weight: normal; }
+  .tools { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 6px; }
+  .tool { border: 1px solid var(--rule); background: var(--bg-1); padding: 6px 8px; font-size: 10px; }
+  .tool .t { color: var(--gold); letter-spacing: 0.10em; margin-bottom: 4px; }
+  .tool select, .tool input { width: 100%; margin-bottom: 4px; }
+  .list { font-size: 10px; }
+  .item { border: 1px solid var(--rule); background: var(--bg-1); padding: 5px 7px; margin-bottom: 4px; cursor: pointer; }
+  .item:hover { border-color: var(--gold); }
+  .item.sel { border-color: var(--rust); background: var(--ink); }
+  .item b { color: var(--gold-hi); font-weight: normal; letter-spacing: 0.04em; }
+  .item i { color: var(--text-dim); font-style: normal; display: block; margin-top: 2px; line-height: 1.35; }
+  .item .s { float: right; color: var(--emerald-hi); }
+  footer { padding: 6px 18px; border-top: 1px solid var(--rule); color: var(--text-dim); font-size: 10px; display: flex; gap: 16px; flex-wrap: wrap; }
+  footer a { color: var(--gold); text-decoration: none; }
+  kbd { border: 1px solid var(--rule); padding: 0 4px; color: var(--gold-hi); }
+</style>
+</head>
+<body>
+<header>
+  <h1>FIELD RECORDER</h1>
+  <span class="badge" id="b-input">INPUT: off</span>
+  <span class="badge" id="b-game">GAME FOLDER: not linked</span>
+  <span class="badge" id="b-store">LIBRARY: —</span>
+  <span class="sub">record the world · clean it · loop it · drop it into the game</span>
+</header>
+
+<main>
+  <!-- ── LEFT: capture + metadata ───────────────────────────── -->
+  <section>
+    <h2>INPUT</h2>
+    <div class="row"><label>DEVICE</label><select id="dev"></select></div>
+    <div class="row"><label>CHANNELS</label>
+      <select id="chans"><option value="2">stereo</option><option value="1">mono</option></select>
+      <label style="min-width:0">PRE-ROLL</label>
+      <select id="preroll"><option value="0">off</option><option value="3">3 s</option><option value="5" selected>5 s</option><option value="10">10 s</option><option value="30">30 s</option></select>
+    </div>
+    <div class="row">
+      <button id="arm">◉ ARM INPUT</button>
+      <label style="min-width:0;cursor:pointer;" title="Headphones only — on the Deck's speakers this feeds back."><input type="checkbox" id="monitor"> monitor</label>
+      <button class="dim" id="clipreset" title="reset clip / peak hold">CLR</button>
+    </div>
+    <canvas class="meter" id="mL"></canvas>
+    <canvas class="meter" id="mR"></canvas>
+    <div class="note" id="inhint">echo cancel / noise suppression / auto gain are switched OFF — set level on the recorder or mic, aim peaks around −12 dB.</div>
+
+    <div class="timer" id="timer">00:00.0</div>
+    <button id="rec" disabled>● REC</button>
+    <div class="row" style="margin-top:6px;">
+      <button id="mark" disabled>✚ MARK <kbd>M</kbd></button>
+      <span class="note">record <kbd>R</kbd> / Deck <kbd>A</kbd> · mark <kbd>X</kbd></span>
+    </div>
+    <div class="msg" id="recmsg"></div>
+
+    <h2>SLATE · METADATA</h2>
+    <div class="row"><label>TITLE</label><input type="text" id="m-title" placeholder="marina halyards, dawn"></div>
+    <div class="row"><label>LOCALE</label><input type="text" id="m-locale" list="locales" placeholder="game locale or real place"></div>
+    <datalist id="locales"></datalist>
+    <div class="row"><label>FOR TRACK</label><select id="m-track"><option value="">— none (library / field folder) —</option></select></div>
+    <div class="tags" id="tags"></div>
+    <div class="row"><textarea id="m-notes" placeholder="mic, position, weather, what's in it…"></textarea></div>
+    <div class="row"><button class="dim" id="gps">⌖ ADD LOCATION</button><span class="note" id="gpsv"></span></div>
+  </section>
+
+  <!-- ── CENTER: take editor ────────────────────────────────── -->
+  <section>
+    <div class="editor">
+      <div class="row" style="margin:0;">
+        <h2 style="margin:0;flex:1;border:none;" id="takename">NO TAKE · record, import, or pick one from the library</h2>
+        <button class="dim" id="import">⇪ IMPORT FILES</button>
+        <input type="file" id="importfile" accept="audio/*,.wav" multiple style="display:none;">
+      </div>
+      <div class="stats" id="stats"></div>
+      <div style="display:grid;grid-template-rows:1fr 90px;gap:6px;min-height:0;">
+        <div class="wavewrap" style="height:auto;"><canvas id="wave"></canvas></div>
+        <div class="wavewrap" style="height:auto;"><canvas id="spec"></canvas></div>
+      </div>
+      <div class="row">
+        <button id="play" disabled>▶ PLAY <kbd>␣</kbd></button>
+        <button id="playsel" disabled>▶ SELECTION</button>
+        <label style="min-width:0;cursor:pointer;"><input type="checkbox" id="loopplay"> loop</label>
+        <button class="dim" id="selall" disabled>SELECT ALL</button>
+        <button class="dim" id="undo" disabled>↶ UNDO</button>
+        <span class="note">drag on the waveform to select · click to move the playhead</span>
+      </div>
+      <div class="tools">
+        <div class="tool"><div class="t">TRIM</div><button id="t-trim" disabled>KEEP SELECTION</button><button class="dim" id="t-cutpre" disabled style="margin-top:4px;">DROP PRE-ROLL</button></div>
+        <div class="tool"><div class="t">HIGH-PASS</div><select id="hpf"><option>40</option><option selected>80</option><option>120</option><option>200</option></select><button id="t-hpf" disabled>APPLY (Hz)</button></div>
+        <div class="tool"><div class="t">DENOISE</div><select id="dn"><option value="6">gentle −6 dB</option><option value="12" selected>medium −12 dB</option><option value="20">strong −20 dB</option></select><button id="t-dn" disabled title="learns the noise from the selection, or the quietest half-second">APPLY</button></div>
+        <div class="tool"><div class="t">LOUDNESS</div><select id="norm"><option value="-23">bed −23 LUFS</option><option value="-18">room −18 LUFS</option><option value="-16">sfx −16 LUFS</option><option value="peak">peak −1 dBFS</option></select><button id="t-norm" disabled>NORMALISE</button></div>
+        <div class="tool"><div class="t">FADES</div><select id="fade"><option value="0.02,0.1">click-safe</option><option value="0.5,1.5" selected>soft</option><option value="2,4">long</option></select><button id="t-fade" disabled>APPLY</button></div>
+        <div class="tool"><div class="t">SEAMLESS LOOP</div><select id="xf"><option value="0.5">0.5 s xfade</option><option value="2" selected>2 s xfade</option><option value="5">5 s xfade</option></select><button id="t-loop" disabled>MAKE LOOP</button></div>
+        <div class="tool"><div class="t">CHANNELS</div><button id="t-mono" disabled>TO MONO</button><button class="dim" id="t-rev" disabled style="margin-top:4px;">REVERSE</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── RIGHT: export, wanted list, library ────────────────── -->
+  <section>
+    <h2>SAVE</h2>
+    <div class="row"><label>FORMAT</label><select id="bits"><option value="16">16-bit (game)</option><option value="24">24-bit (archive)</option></select></div>
+    <div class="row">
+      <button id="s-lib" disabled title="keep it in the browser library — TAPE STUDIO sees it too">✚ LIBRARY</button>
+      <button id="s-dl" disabled>⇩ WAV</button>
+      <button class="hot" id="s-game" disabled>⇢ INTO GAME</button>
+    </div>
+    <div class="msg" id="savemsg"></div>
+    <div class="note" id="savenote">INTO GAME writes <b>assets/audio/field/&lt;locale&gt;/&lt;title&gt;.wav</b> — or, with FOR TRACK set, the track's own path as .wav, which the game plays in place of the missing .ogg/.mp3. A seamless loop is written with WAV loop points so Godot loops it without a gap.</div>
+
+    <h2>GAME FOLDER</h2>
+    <div class="row"><button id="link">⌂ LINK modern-mythology FOLDER</button></div>
+    <div class="note" id="linknote">Pick the repo folder once (Chrome asks again after a restart). Without it, WAVs download to ~/Downloads and <b>field_ingest.py</b> moves them in.</div>
+
+    <h2>WANTED · catalog tracks with no audio</h2>
+    <div class="row">
+      <label style="min-width:0;cursor:pointer;"><input type="checkbox" id="w-field" checked> field-friendly first only</label>
+      <button class="dim" id="w-refresh">↻</button>
+    </div>
+    <div class="list" id="wanted"><div class="note">link the game folder to see what still needs recording.</div></div>
+
+    <h2>LIBRARY</h2>
+    <div class="list" id="library"></div>
+  </section>
+</main>
+
+<footer>
+  <span>← <a href="index.html">all tools</a> · <a href="tape_studio.html">TAPE STUDIO</a></span>
+  <span>SD-card takes from a Zoom / Tascam: <b>python3 godot/tools/field_ingest.py --help</b></span>
+  <span>Chrome / Edge · works from file://</span>
+</footer>
+
+<script src="gamepad_input.js"></script>
+<script src="audio_kit.js"></script>
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const FALLBACK_LOCALES = 'asylum_ward_c bayou_lighthouse bianca_kitchen_morning board_lords_interior bungalow cabin_interior cafe_olimpico caldwell_kitchen_night caldwell_porch_night caldwell_radio_room_night carnival_lot cathedral centro_break_room centro_grocery_aisle chillwave_interior christian_ice_co cosmic_comics_back_office cosmic_comics_interior courthouse_chamber daigles_roadhouse daily_grind_interior diego_bedroom diner el_rancho_taqueria elicia_apartment ember_ash_office finn_apartment foxhole_bar foxhole_dressing_room foxhole_stage frog_knows_best grandmother_kitchen_morning graustark hans_bakery_back_kitchen harmony_commercial harmony_district harmony_terrain henderson_kitchen hierophant_circuit hospice_room hospital_room houston_design_studio houston_office jesse_bedroom kai_apartment kowalski_kitchen kwik_stop lacombe_service_garage le_roulant_casino lena_apartment louisiana_road maya_bedroom miller_back_porch miller_kitchen missing_link_interior mixing_glass montreal_apartment natalie_apartment new_orleans_apartment new_orleans_bar new_orleans_office new_orleans_room nexcorp_fueling_station parish_cemetery pit_stop_interior pit_stop_office ramos_kitchen_morning riverboat_interior riverfront roadside_chapel roberts_house roberts_kitchen safehouse_bedroom salty_tome_interior sam_bedroom school_field_evening simon_apartment solenade_garden static_drive_in wgur_transmitter_shack'.split(' ');
+const TAGS = ['room tone', 'rain', 'wind', 'water', 'insects', 'birds', 'traffic', 'crowd', 'machinery', 'hum', 'kitchen', 'interior', 'exterior', 'night', 'dawn', 'day', 'loop', 'one-shot'];
+
+// ── state ────────────────────────────────────────────────────────
+let ctx = null, stream = null, srcNode = null, cap = null, monGain = null;
+let cur = null;          // { channels, sampleRate, markers, preRollFrames, loop, meta, libId, name }
+let undoStack = [];
+let sel = null;          // [a, b] frames
+let playhead = 0, player = null, playStart = 0, playFrom = 0;
+let wanted = [];
+const tagsOn = new Set();
+let gps = null;
+
+function msg(el, text, err) { const e = $(el); e.textContent = text; e.classList.toggle('err', !!err); }
+
+// ── metadata UI ──────────────────────────────────────────────────
+function fillLocales(list) { $('locales').innerHTML = list.map(l => `<option value="${l}">`).join(''); }
+fillLocales(FALLBACK_LOCALES);
+TAGS.forEach(t => {
+  const d = document.createElement('span'); d.className = 'tag'; d.textContent = t;
+  d.addEventListener('click', () => { tagsOn.has(t) ? tagsOn.delete(t) : tagsOn.add(t); d.classList.toggle('on', tagsOn.has(t)); });
+  $('tags').appendChild(d);
+});
+function setTags(list) {
+  tagsOn.clear(); (list || []).forEach(t => tagsOn.add(t));
+  [...$('tags').children].forEach(c => c.classList.toggle('on', tagsOn.has(c.textContent)));
+}
+$('gps').addEventListener('click', () => {
+  if (!navigator.geolocation) { $('gpsv').textContent = 'no geolocation here'; return; }
+  $('gpsv').textContent = 'locating…';
+  navigator.geolocation.getCurrentPosition(p => {
+    gps = { lat: +p.coords.latitude.toFixed(5), lon: +p.coords.longitude.toFixed(5), acc: Math.round(p.coords.accuracy) };
+    $('gpsv').textContent = gps.lat + ', ' + gps.lon + ' (±' + gps.acc + ' m)';
+  }, e => { $('gpsv').textContent = 'location refused / unavailable'; }, { timeout: 10000 });
+});
+function metaNow() {
+  return {
+    title: $('m-title').value.trim(), locale: $('m-locale').value.trim(), forTrack: $('m-track').value,
+    tags: [...tagsOn], notes: $('m-notes').value.trim(), gps,
+  };
+}
+function loadMeta(m) {
+  m = m || {};
+  $('m-title').value = m.title || ''; $('m-locale').value = m.locale || ''; $('m-notes').value = m.notes || '';
+  setTags(m.tags); gps = m.gps || null; $('gpsv').textContent = gps ? gps.lat + ', ' + gps.lon : '';
+  if (m.forTrack) { ensureTrackOption(m.forTrack); $('m-track').value = m.forTrack; }
+}
+function ensureTrackOption(id, label) {
+  if ([...$('m-track').options].some(o => o.value === id)) return;
+  const o = document.createElement('option'); o.value = id; o.textContent = label || id; $('m-track').appendChild(o);
+}
+
+// ── input ────────────────────────────────────────────────────────
+async function refreshDevices() {
+  const list = await AK.inputs.list();
+  const keep = $('dev').value;
+  $('dev').innerHTML = '<option value="">default input</option>' + list.map(d => {
+    const h = AK.inputs.hint(d.label);
+    return `<option value="${d.deviceId}">${(d.label || 'input ' + d.deviceId.slice(0, 6))}${h ? ' — ' + h : ''}</option>`;
+  }).join('');
+  if (keep) $('dev').value = keep;
+}
+async function arm() {
+  try {
+    if (!ctx) {
+      ctx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 48000, latencyHint: 'interactive' });
+    }
+    if (ctx.state === 'suspended') await ctx.resume();
+    disarm();
+    stream = await AK.inputs.open($('dev').value || undefined, parseInt($('chans').value));
+    srcNode = ctx.createMediaStreamSource(stream);
+    monGain = ctx.createGain(); monGain.gain.value = $('monitor').checked ? 1 : 0;
+    srcNode.connect(monGain); monGain.connect(ctx.destination);
+    cap = new AK.Capture(ctx, srcNode, { preRollSec: 30, maxChannels: parseInt($('chans').value) });
+    await cap.start();
+    await refreshDevices();
+    const tr = stream.getAudioTracks()[0], st = tr.getSettings ? tr.getSettings() : {};
+    const label = tr.label || 'input';
+    $('b-input').textContent = 'INPUT: ' + label.slice(0, 28) + ' · ' + ctx.sampleRate / 1000 + ' kHz' + (st.channelCount ? ' · ' + st.channelCount + 'ch' : '');
+    $('b-input').className = 'badge ok';
+    $('inhint').textContent = (AK.inputs.hint(label) || 'input') + ' · capture: ' + cap.mode +
+      (st.echoCancellation || st.noiseSuppression || st.autoGainControl ? ' · WARNING: the browser kept some voice processing on' : ' · raw (no voice processing)');
+    $('rec').disabled = false;
+    $('arm').textContent = '◉ RE-ARM';
+    msg('recmsg', 'armed. pre-roll is filling — a take can start up to ' + $('preroll').value + ' s before you hit REC.');
+  } catch (e) {
+    $('b-input').textContent = 'INPUT: ' + (e.name === 'NotAllowedError' ? 'mic permission denied' : 'failed');
+    $('b-input').className = 'badge bad';
+    msg('recmsg', String(e.message || e), true);
+  }
+}
+function disarm() {
+  if (cap) { cap.stop(); cap = null; }
+  if (srcNode) { try { srcNode.disconnect(); } catch (e) {} srcNode = null; }
+  if (stream) { stream.getTracks().forEach(t => t.stop()); stream = null; }
+}
+$('arm').addEventListener('click', arm);
+$('dev').addEventListener('change', () => { if (cap) arm(); });
+$('chans').addEventListener('change', () => { if (cap) arm(); });
+$('monitor').addEventListener('change', () => { if (monGain) monGain.gain.value = $('monitor').checked ? 1 : 0; });
+$('clipreset').addEventListener('click', () => { if (cap) cap.resetClip(); });
+if (navigator.mediaDevices && navigator.mediaDevices.addEventListener) navigator.mediaDevices.addEventListener('devicechange', refreshDevices);
+refreshDevices();
+
+// ── record ───────────────────────────────────────────────────────
+function toggleRec() {
+  if (!cap) return;
+  if (!cap.recording()) {
+    stopPlay();
+    cap.begin(parseFloat($('preroll').value));
+    $('rec').classList.add('on'); $('rec').textContent = '■ STOP';
+    $('mark').disabled = false;
+    msg('recmsg', 'recording' + (cap.take.preRollFrames ? ' (with ' + (cap.take.preRollFrames / cap.sampleRate).toFixed(1) + ' s pre-roll)' : ''));
+  } else {
+    const t = cap.end();
+    $('rec').classList.remove('on'); $('rec').textContent = '● REC';
+    $('mark').disabled = true;
+    const m = metaNow();
+    loadTake({
+      channels: t.channels, sampleRate: t.sampleRate, markers: t.markers, preRollFrames: t.preRollFrames, loop: null,
+      meta: Object.assign(m, { recordedAt: t.startedAt.toISOString(), device: stream && stream.getAudioTracks()[0].label }),
+      name: (m.title || 'take') + ' · ' + AK.util.stamp(t.startedAt),
+    });
+    msg('recmsg', 'take: ' + AK.util.fmtTime(t.channels[0].length / t.sampleRate) + (t.clipped ? ' · CLIPPED somewhere — check peaks' : '') + ' · not saved yet', t.clipped);
+    // auto-keep in the library so nothing recorded is ever lost
+    saveLib(true);
+  }
+}
+function mark() { if (cap && cap.recording()) { const m = cap.mark(); msg('recmsg', 'marker ' + m.label + ' at ' + AK.util.fmtTime(m.frame / cap.sampleRate)); } }
+$('rec').addEventListener('click', toggleRec);
+$('mark').addEventListener('click', mark);
+
+// ── editor ───────────────────────────────────────────────────────
+function loadTake(t) {
+  stopPlay();
+  cur = t; undoStack = []; sel = null; playhead = 0;
+  $('takename').textContent = (t.name || 'take').toUpperCase();
+  loadMeta(t.meta);
+  refreshEditor(true);
+}
+function pushUndo() { if (!cur) return; undoStack.push({ channels: cur.channels, markers: cur.markers, preRollFrames: cur.preRollFrames, loop: cur.loop }); if (undoStack.length > 6) undoStack.shift(); }
+function setChannels(chs, opts = {}) {
+  pushUndo();
+  cur.channels = chs;
+  if (opts.markers !== undefined) cur.markers = opts.markers;
+  if (opts.preRollFrames !== undefined) cur.preRollFrames = opts.preRollFrames;
+  if (opts.loop !== undefined) cur.loop = opts.loop;
+  sel = null; playhead = Math.min(playhead, chs[0].length - 1);
+  refreshEditor(true);
+}
+let specDirty = true;
+async function refreshEditor(statsToo) {
+  const has = !!cur;
+  ['play', 'playsel', 'selall', 't-trim', 't-cutpre', 't-hpf', 't-dn', 't-norm', 't-fade', 't-loop', 't-mono', 't-rev', 's-lib', 's-dl', 's-game']
+    .forEach(id => $(id).disabled = !has);
+  $('undo').disabled = !undoStack.length;
+  $('t-cutpre').disabled = !has || !cur.preRollFrames;
+  specDirty = true;
+  drawWave();
+  if (has) setTimeout(() => { if (specDirty) { AK.draw.spectrogram($('spec'), cur.channels, cur.sampleRate); specDirty = false; } }, 30);
+  if (has && statsToo) {
+    const pk = AK.util.db(AK.util.peakOf(cur.channels));
+    const dur = cur.channels[0].length / cur.sampleRate;
+    $('stats').innerHTML = `<span>length <b>${AK.util.fmtTime(dur)}</b></span><span>peak <b>${pk.toFixed(1)} dBFS</b></span>` +
+      `<span>${cur.sampleRate / 1000} kHz · <b>${cur.channels.length === 1 ? 'mono' : 'stereo'}</b></span>` +
+      (cur.preRollFrames ? `<span>pre-roll <b>${(cur.preRollFrames / cur.sampleRate).toFixed(1)} s</b></span>` : '') +
+      (cur.loop ? '<span><b style="color:var(--emerald-hi)">∞ loop-ready</b></span>' : '') +
+      `<span>loudness <b id="lufs">…</b></span>`;
+    if (dur < 600) AK.dsp.lufs(cur.channels, cur.sampleRate).then(l => { const e = $('lufs'); if (e) e.textContent = l.toFixed(1) + ' LUFS'; });
+    else $('lufs').textContent = '(long take — skipped)';
+  }
+}
+function drawWave() {
+  AK.draw.wave($('wave'), cur ? cur.channels : null, cur ? {
+    sel, markers: cur.markers, playhead, preRoll: cur.preRollFrames,
+    loop: cur.loop ? [cur.loop.start, cur.loop.end] : null,
+  } : {});
+}
+window.addEventListener('resize', () => { drawWave(); if (cur) AK.draw.spectrogram($('spec'), cur.channels, cur.sampleRate); });
+
+// selection on the waveform
+(() => {
+  const cv = $('wave');
+  let down = null;
+  const frameAt = ev => {
+    const r = cv.getBoundingClientRect();
+    return Math.max(0, Math.min(cur.channels[0].length - 1, Math.round(((ev.clientX - r.left) / r.width) * cur.channels[0].length)));
+  };
+  cv.addEventListener('pointerdown', ev => { if (!cur) return; down = frameAt(ev); cv.setPointerCapture(ev.pointerId); });
+  cv.addEventListener('pointermove', ev => { if (down === null || !cur) return; const f = frameAt(ev); sel = [Math.min(down, f), Math.max(down, f)]; drawWave(); });
+  cv.addEventListener('pointerup', ev => {
+    if (down === null || !cur) return;
+    const f = frameAt(ev);
+    if (Math.abs(f - down) < cur.sampleRate * 0.02) { sel = null; playhead = f; }
+    else sel = [Math.min(down, f), Math.max(down, f)];
+    down = null; drawWave();
+  });
+})();
+
+// playback
+function stopPlay() {
+  if (player) { try { player.stop(); } catch (e) {} player.onended = null; player = null; }
+  $('play').textContent = '▶ PLAY ␣';
+}
+async function play(selOnly) {
+  if (!cur) return;
+  if (player) { stopPlay(); return; }
+  if (!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 48000 });
+  if (ctx.state === 'suspended') await ctx.resume();
+  const buf = AK.util.toBuffer(ctx, cur.channels, cur.sampleRate);
+  player = ctx.createBufferSource(); player.buffer = buf; player.connect(ctx.destination);
+  const a = selOnly && sel ? sel[0] : playhead, b = selOnly && sel ? sel[1] : buf.length;
+  if ($('loopplay').checked) {
+    player.loop = true;
+    player.loopStart = (selOnly && sel ? sel[0] : 0) / cur.sampleRate;
+    player.loopEnd = (selOnly && sel ? sel[1] : buf.length) / cur.sampleRate;
+    player.start(0, a / cur.sampleRate);
+  } else player.start(0, a / cur.sampleRate, (b - a) / cur.sampleRate);
+  playStart = ctx.currentTime; playFrom = a;
+  const me = player;
+  player.onended = () => { if (player === me) { player = null; $('play').textContent = '▶ PLAY ␣'; drawWave(); } };
+  $('play').textContent = '■ STOP ␣';
+  const loopLen = player.loop ? (player.loopEnd - player.loopStart) * cur.sampleRate : 0;
+  const tick = () => {
+    if (player !== me) return;
+    let f = playFrom + (ctx.currentTime - playStart) * cur.sampleRate;
+    if (loopLen) { const ls = player.loopStart * cur.sampleRate; if (f >= ls + loopLen) f = ls + ((f - ls) % loopLen); }
+    AK.draw.wave($('wave'), cur.channels, { sel, markers: cur.markers, playhead: f, preRoll: cur.preRollFrames, loop: cur.loop ? [cur.loop.start, cur.loop.end] : null });
+    requestAnimationFrame(tick);
+  };
+  tick();
+}
+$('play').addEventListener('click', () => play(false));
+$('playsel').addEventListener('click', () => play(true));
+$('selall').addEventListener('click', () => { if (cur) { sel = [0, cur.channels[0].length]; drawWave(); } });
+$('undo').addEventListener('click', () => {
+  const u = undoStack.pop(); if (!u || !cur) return;
+  Object.assign(cur, u); sel = null; refreshEditor(true);
+});
+
+// processing
+async function busy(label, fn) {
+  msg('recmsg', label + '…');
+  await new Promise(r => setTimeout(r, 20));
+  try { await fn(); msg('recmsg', label + ' done.'); } catch (e) { msg('recmsg', label + ' failed: ' + (e.message || e), true); }
+}
+$('t-trim').addEventListener('click', () => {
+  if (!cur || !sel) { msg('recmsg', 'select a region first.', true); return; }
+  const [a, b] = sel;
+  setChannels(AK.dsp.trim(cur.channels, a, b), {
+    markers: cur.markers.filter(m => m.frame >= a && m.frame < b).map(m => ({ frame: m.frame - a, label: m.label })),
+    preRollFrames: Math.max(0, cur.preRollFrames - a), loop: null,
+  });
+});
+$('t-cutpre').addEventListener('click', () => {
+  if (!cur || !cur.preRollFrames) return;
+  const a = cur.preRollFrames;
+  setChannels(AK.dsp.trim(cur.channels, a, cur.channels[0].length), {
+    markers: cur.markers.filter(m => m.frame >= a).map(m => ({ frame: m.frame - a, label: m.label })), preRollFrames: 0, loop: null,
+  });
+});
+$('t-hpf').addEventListener('click', () => busy('high-pass', async () => setChannels(await AK.dsp.highpass(cur.channels, cur.sampleRate, parseInt($('hpf').value)))));
+$('t-dn').addEventListener('click', () => busy('denoise', async () => {
+  const o = { reductionDb: parseInt($('dn').value) };
+  if (sel && sel[1] - sel[0] > cur.sampleRate * 0.2) { o.noiseA = sel[0]; o.noiseB = sel[1]; }
+  setChannels(AK.dsp.denoise(cur.channels, cur.sampleRate, o));
+}));
+$('t-norm').addEventListener('click', () => busy('normalise', async () => {
+  const v = $('norm').value;
+  if (v === 'peak') { setChannels(AK.dsp.normalizePeak(cur.channels, -1)); return; }
+  const r = await AK.dsp.normalizeLufs(cur.channels, cur.sampleRate, parseFloat(v), -1);
+  setChannels(r.channels);
+  msg('recmsg', 'was ' + r.before.toFixed(1) + ' LUFS · gain ' + (r.gainDb >= 0 ? '+' : '') + r.gainDb.toFixed(1) + ' dB (peak ceiling −1 dBFS)');
+}));
+$('t-fade').addEventListener('click', () => { const [i, o] = $('fade').value.split(',').map(Number); setChannels(AK.dsp.fades(cur.channels, cur.sampleRate, i, o), { loop: null }); });
+$('t-loop').addEventListener('click', () => busy('loop', async () => {
+  const xf = parseFloat($('xf').value);
+  const base = sel && sel[1] - sel[0] > cur.sampleRate * xf * 3 ? AK.dsp.trim(cur.channels, sel[0], sel[1]) : cur.channels;
+  const out = AK.dsp.loop(base, cur.sampleRate, xf);
+  setChannels(out, { markers: [], preRollFrames: 0, loop: { start: 0, end: out[0].length - 1 } });
+  $('loopplay').checked = true;
+  if (!tagsOn.has('loop')) { tagsOn.add('loop'); setTags([...tagsOn]); }
+}));
+$('t-mono').addEventListener('click', () => setChannels(AK.dsp.mono(cur.channels)));
+$('t-rev').addEventListener('click', () => setChannels(AK.dsp.reverse(cur.channels), { markers: [], loop: null }));
+
+// ── import ───────────────────────────────────────────────────────
+$('import').addEventListener('click', () => $('importfile').click());
+$('importfile').addEventListener('change', async e => {
+  const files = [...e.target.files];
+  e.target.value = '';
+  if (!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 48000 });
+  for (const f of files) {
+    try {
+      const ab = await f.arrayBuffer();
+      const chunks = AK.wav.parseChunks(ab.slice(0));
+      const buf = await ctx.decodeAudioData(ab);
+      const mm = chunks.mmjs || {};
+      const meta = Object.assign({ title: chunks.info.INAM || (chunks.bext && chunks.bext.description) || f.name.replace(/\.[^.]+$/, ''),
+        notes: chunks.info.ICMT || '', tags: (chunks.info.IKEY || '').split(/;\s*/).filter(Boolean), source: f.name }, mm);
+      const take = { channels: AK.util.fromBuffer(buf), sampleRate: buf.sampleRate, markers: mm.markers || [], preRollFrames: 0,
+        loop: chunks.smpl || null, meta, name: meta.title || f.name };
+      if (files.length === 1) loadTake(take);
+      await AK.lib.put({ kind: 'field', name: take.name, sampleRate: take.sampleRate, meta, loop: take.loop, markers: take.markers }, take.channels);
+      msg('recmsg', 'imported ' + f.name + ' (' + AK.util.fmtTime(buf.duration) + ') into the library');
+    } catch (err) { msg('recmsg', f.name + ': ' + (err.message || err), true); }
+  }
+  refreshLibrary();
+});
+
+// ── save ─────────────────────────────────────────────────────────
+function exportMeta() {
+  const m = metaNow();
+  return Object.assign({}, cur.meta || {}, m, {
+    id: cur.libId || '', comment: m.notes, description: m.title, date: (cur.meta && cur.meta.recordedAt) || new Date().toISOString(),
+    originator: 'MM field recorder',
+  });
+}
+function wavBlob() {
+  return AK.wav.encode(cur.channels, cur.sampleRate, { bitDepth: parseInt($('bits').value), meta: exportMeta(), loop: cur.loop, markers: cur.markers });
+}
+function fileBase() {
+  const m = metaNow();
+  return AK.util.slug(m.title || (m.locale + ' take')) + '_' + AK.util.stamp((cur.meta && cur.meta.recordedAt) ? new Date(cur.meta.recordedAt) : new Date());
+}
+async function saveLib(quiet) {
+  if (!cur) return;
+  try {
+    const meta = exportMeta();
+    if (cur.libId) {
+      // channels may have changed: replace the record
+      await AK.lib.del(cur.libId);
+    }
+    const rec = await AK.lib.put({ id: cur.libId || undefined, kind: 'field', name: meta.title || cur.name, sampleRate: cur.sampleRate, meta, loop: cur.loop, markers: cur.markers }, cur.channels);
+    cur.libId = rec.id;
+    if (!quiet) msg('savemsg', 'in the library (TAPE STUDIO can load it).');
+    refreshLibrary();
+  } catch (e) { msg('savemsg', 'library save failed: ' + (e.message || e), true); }
+}
+$('s-lib').addEventListener('click', () => saveLib(false));
+$('s-dl').addEventListener('click', () => {
+  AK.util.download(wavBlob(), fileBase() + '.wav');
+  const side = new Blob([JSON.stringify(exportMeta(), null, 2)], { type: 'application/json' });
+  AK.util.download(side, fileBase() + '.json');
+  msg('savemsg', 'downloaded WAV + JSON sidecar.');
+});
+$('s-game').addEventListener('click', async () => {
+  if (!cur) return;
+  if (!AK.game.root) {
+    const ok = await AK.game.restore(true).catch(() => null);
+    if (!ok) { msg('savemsg', 'link the game folder first (or use ⇩ WAV + field_ingest.py).', true); return; }
+    refreshGameBadge();
+  }
+  const m = metaNow();
+  const w = wanted.find(t => t.id === m.forTrack);
+  let path;
+  if (m.forTrack) {
+    path = w ? w.wavSrc : null;
+    if (!path) {
+      try { const cat = await AK.game.catalog(); const t = cat.find(x => x.id === m.forTrack); if (t) path = t.src.replace(/\.[^.\/]+$/, '') + '.wav'; } catch (e) {}
+    }
+    if (!path) { msg('savemsg', 'track ' + m.forTrack + ' not found in the catalog.', true); return; }
+    if (await AK.game.exists(path) && !confirm(path + ' already exists. Replace it?')) return;
+  } else {
+    path = 'assets/audio/field/' + (AK.util.slug(m.locale) || 'unsorted') + '/' + fileBase() + '.wav';
+  }
+  try {
+    await AK.game.write(path, wavBlob());
+    await AK.game.write(path.replace(/\.wav$/, '.json'), new Blob([JSON.stringify(exportMeta(), null, 2)], { type: 'application/json' }));
+    msg('savemsg', 'wrote godot/' + path + (cur.loop ? ' (with loop points)' : '') + (m.forTrack ? ' — the game now plays it for ' + m.forTrack : ''));
+    if (cur.libId) AK.lib.update(cur.libId, { exportedTo: path }).catch(() => {});
+    if (m.forTrack) refreshWanted();
+  } catch (e) { msg('savemsg', 'write failed: ' + (e.message || e), true); }
+});
+
+// ── game folder + wanted ─────────────────────────────────────────
+function refreshGameBadge() {
+  const b = $('b-game');
+  if (AK.game.root) { b.textContent = 'GAME FOLDER: linked'; b.className = 'badge ok'; $('link').textContent = '⌂ RE-LINK FOLDER'; }
+  else if (!AK.game.supported()) { b.textContent = 'GAME FOLDER: unsupported here'; b.className = 'badge bad'; $('link').disabled = true; }
+  else if (AK.game._pending) { b.textContent = 'GAME FOLDER: click to re-allow'; b.className = 'badge warn'; }
+  else { b.textContent = 'GAME FOLDER: not linked'; b.className = 'badge'; }
+}
+$('b-game').addEventListener('click', async () => { if (AK.game._pending) { await AK.game.restore(true).catch(() => null); refreshGameBadge(); afterLink(); } });
+$('link').addEventListener('click', async () => {
+  try { await AK.game.link(); refreshGameBadge(); afterLink(); msg('savemsg', 'linked.'); }
+  catch (e) { if (e.name !== 'AbortError') msg('savemsg', e.message || String(e), true); }
+});
+async function afterLink() {
+  if (!AK.game.root) return;
+  try {
+    const dir = await AK.game._dir('scenes/locales', false);
+    const names = [];
+    for await (const [name] of dir.entries()) if (name.endsWith('.tscn')) names.push(name.replace(/\.tscn$/, ''));
+    if (names.length) fillLocales(names.sort());
+  } catch (e) { /* keep fallback list */ }
+  refreshWanted();
+}
+async function refreshWanted() {
+  if (!AK.game.root) return;
+  $('wanted').innerHTML = '<div class="note">checking the catalog…</div>';
+  try { wanted = await AK.game.wanted(); } catch (e) { $('wanted').innerHTML = '<div class="note">catalog unreadable: ' + (e.message || e) + '</div>'; return; }
+  wanted.forEach(t => ensureTrackOption(t.id, 'v' + t.vol + ' · ' + t.title));
+  const list = $('w-field').checked ? wanted.filter(t => t.fieldScore > 0) : wanted;
+  $('wanted').innerHTML = '';
+  if (!list.length) { $('wanted').innerHTML = '<div class="note">nothing missing' + ($('w-field').checked ? ' that reads like a field recording' : '') + '.</div>'; return; }
+  for (const t of list) {
+    const d = document.createElement('div'); d.className = 'item';
+    d.innerHTML = `<span class="s">${t.fieldScore > 0 ? '●'.repeat(Math.min(5, t.fieldScore)) : ''}</span><b>${t.title}</b><i>vol ${t.vol} · ${t.id}<br>${(t.desc || '').slice(0, 160)}</i>`;
+    d.addEventListener('click', () => {
+      ensureTrackOption(t.id, 'v' + t.vol + ' · ' + t.title);
+      $('m-track').value = t.id;
+      if (!$('m-title').value) $('m-title').value = t.title;
+      [...$('wanted').children].forEach(c => c.classList.toggle('sel', c === d));
+      msg('savemsg', 'target: ' + t.id + ' → ' + t.wavSrc);
+    });
+    $('wanted').appendChild(d);
+  }
+}
+$('w-field').addEventListener('change', refreshWanted);
+$('w-refresh').addEventListener('click', refreshWanted);
+
+// ── library ──────────────────────────────────────────────────────
+async function refreshLibrary() {
+  let list;
+  try { list = await AK.lib.list(); $('b-store').textContent = 'LIBRARY: ' + list.length + ' take' + (list.length === 1 ? '' : 's'); $('b-store').className = 'badge ok'; }
+  catch (e) { $('b-store').textContent = 'LIBRARY: unavailable'; $('b-store').className = 'badge bad'; return; }
+  $('library').innerHTML = list.length ? '' : '<div class="note">recorded takes are kept here automatically.</div>';
+  for (const r of list) {
+    const d = document.createElement('div'); d.className = 'item' + (cur && cur.libId === r.id ? ' sel' : '');
+    const m = r.meta || {};
+    d.innerHTML = `<span class="s">${r.loop ? '∞' : ''}</span><b>${r.name || 'take'}</b><i>${r.kind} · ${AK.util.fmtTime(r.durationSec || 0)} · ${new Date(r.created).toLocaleString()}${m.locale ? ' · ' + m.locale : ''}${r.exportedTo ? '<br>→ ' + r.exportedTo : ''}</i>` +
+      `<div style="margin-top:3px;"><button class="dim" data-a="del">✕ delete</button></div>`;
+    d.addEventListener('click', async ev => {
+      if (ev.target.dataset.a === 'del') { ev.stopPropagation(); if (confirm('Delete "' + (r.name || 'take') + '" from the library?')) { await AK.lib.del(r.id); if (cur && cur.libId === r.id) cur.libId = null; refreshLibrary(); } return; }
+      const chs = await AK.lib.pcm(r.id);
+      if (!chs) { msg('recmsg', 'take data missing.', true); return; }
+      loadTake({ channels: chs, sampleRate: r.sampleRate, markers: r.markers || [], preRollFrames: 0, loop: r.loop || null, meta: r.meta, name: r.name, libId: r.id });
+      refreshLibrary();
+    });
+    $('library').appendChild(d);
+  }
+}
+AK.lib.onChange(() => refreshLibrary());
+
+// ── meters loop ──────────────────────────────────────────────────
+function meters() {
+  if (cap) {
+    AK.draw.meter($('mL'), cap.peak[0], cap.hold[0], cap.rms[0], cap.clipped);
+    AK.draw.meter($('mR'), cap.peak[cap.channels > 1 ? 1 : 0], cap.hold[cap.channels > 1 ? 1 : 0], cap.rms[cap.channels > 1 ? 1 : 0], cap.clipped);
+    $('timer').textContent = AK.util.fmtTime(cap.recording() ? cap.elapsedSec() : 0);
+  }
+  requestAnimationFrame(meters);
+}
+meters();
+
+// ── keys + Deck buttons ──────────────────────────────────────────
+window.addEventListener('keydown', e => {
+  const tag = (e.target.tagName || '').toUpperCase();
+  if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+  if (e.key === 'r' || e.key === 'R') { e.preventDefault(); toggleRec(); }
+  else if (e.key === 'm' || e.key === 'M') { e.preventDefault(); mark(); }
+  else if (e.key === ' ') { e.preventDefault(); play(false); }
+});
+if (typeof GamepadInput === 'function') {
+  const gp = new GamepadInput(); gp.start();
+  window.addEventListener('gamepadinput-button', e => {
+    if (!e.detail.pressed || e.detail.synthetic) return;
+    if (e.detail.idx === 0) toggleRec();          // A
+    else if (e.detail.idx === 2) mark();          // X
+    else if (e.detail.idx === 1) stopPlay();      // B
+  });
+}
+
+// ── boot ─────────────────────────────────────────────────────────
+refreshGameBadge();
+AK.game.restore(false).then(h => { refreshGameBadge(); if (h) afterLink(); }).catch(() => refreshGameBadge());
+refreshLibrary();
+refreshEditor(false);
+</script>
+</body>
+</html>

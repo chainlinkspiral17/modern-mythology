@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>FM-1 FIRMWARE ATLAS · Modern Mythology</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --bg-0: #050304; --bg-1: #0e0908; --ink: #1a1410;
+    --rule: #553318; --gold: #d8a060; --gold-hi: #ffd896;
+    --text: #c8a878; --text-dim: #7a5828;
+    --emerald: #4ea060; --emerald-hi: #a8e89c; --rust: #c87633; --red: #c64a3a; --amber: #f0b94a; --violet: #c8a4f0;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg-0); color: var(--text); font-family: "Courier New", monospace; min-height: 100vh; }
+  header { padding: 20px 28px 12px; border-bottom: 1px solid var(--rule); }
+  header h1 { margin: 0; color: var(--gold-hi); font-size: 20px; letter-spacing: 0.18em; }
+  header .sub { color: var(--text-dim); font-size: 12px; font-style: italic; margin-top: 4px; }
+  .bar { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; padding: 10px 28px; border-bottom: 1px solid var(--rule); font-size: 11px; }
+  .chip { border: 1px solid var(--rule); color: var(--text-dim); padding: 2px 9px; cursor: pointer; user-select: none; }
+  .chip.on { color: var(--gold-hi); border-color: var(--gold); }
+  button { background: var(--ink); color: var(--gold-hi); border: 1px solid var(--gold); padding: 4px 10px; font-family: inherit; font-size: 10px; letter-spacing: 0.10em; cursor: pointer; }
+  button:hover { background: var(--gold); color: var(--ink); }
+  #found { color: var(--emerald-hi); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 12px; padding: 16px 28px 30px; }
+  .card { background: var(--bg-1); border: 1px solid var(--rule); padding: 12px 14px; font-size: 11px; line-height: 1.5; }
+  .card.mine { border-color: var(--emerald); box-shadow: 0 0 0 1px var(--emerald) inset; }
+  .card h3 { margin: 0; color: var(--gold-hi); font-size: 14px; letter-spacing: 0.08em; font-weight: normal; }
+  .card .by { color: var(--text-dim); font-size: 10px; }
+  .card .sum { margin: 6px 0; }
+  .tags { display: flex; gap: 4px; flex-wrap: wrap; margin: 4px 0; }
+  .t { border: 1px solid var(--rule); color: var(--text-dim); padding: 0 6px; font-size: 9px; letter-spacing: 0.06em; }
+  .t.k-synth { color: var(--gold-hi); border-color: var(--gold); }
+  .t.k-groovebox { color: var(--violet); border-color: #6b3fa0; }
+  .t.k-research, .t.k-sequencer { color: var(--amber); border-color: var(--amber); }
+  .t.k-game-port { color: #8ab4f0; border-color: #3b7fc4; }
+  .t.ok { color: var(--emerald-hi); border-color: var(--emerald); }
+  .t.no { color: var(--red); border-color: var(--red); }
+  dl { display: grid; grid-template-columns: 74px 1fr; gap: 1px 8px; margin: 6px 0 0; font-size: 10px; }
+  dt { color: var(--text-dim); }
+  dd { margin: 0; color: var(--text); word-break: break-word; }
+  a { color: var(--gold); }
+  code { color: var(--gold-hi); }
+  .others { padding: 0 28px 30px; font-size: 11px; color: var(--text-dim); line-height: 1.6; }
+  .others b { color: var(--text); font-weight: normal; }
+</style>
+</head>
+<body>
+<header>
+  <h1>FM-1 FIRMWARE ATLAS</h1>
+  <div class="sub" id="sub">every firmware for the M-VAVE FM-1 the tools know about — what it is, how it talks MIDI, how to install it, how to get back.</div>
+</header>
+<div class="bar">
+  <span>show:</span>
+  <span class="chip on" data-k="all">all</span>
+  <span class="chip" data-k="installable">installable</span>
+  <span class="chip" data-k="synth">synth</span>
+  <span class="chip" data-k="groovebox">groovebox</span>
+  <span class="chip" data-k="research">research / ports</span>
+  <span style="flex:1"></span>
+  <button id="check">⌕ WHICH ONE IS ON MY SYNTH?</button>
+  <span id="found"></span>
+  <a href="index.html">← all tools</a>
+</div>
+<div class="grid" id="grid"></div>
+<div class="others" id="others"></div>
+
+<script src="fm1_firmwares.js"></script>
+<script src="midi_input.js"></script>
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+let filter = 'all', mine = null;
+$('sub').textContent += ' Catalogued ' + FM1_REGISTRY.catalogued + '.';
+const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+const link = (u, t) => u ? `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(t || u.replace(/^https?:\/\//, ''))}</a>` : '—';
+
+function render() {
+  const g = $('grid'); g.innerHTML = '';
+  for (const f of FM1_FIRMWARES) {
+    if (filter === 'installable' && f.status !== 'installable') continue;
+    if (filter === 'synth' && f.kind !== 'synth') continue;
+    if (filter === 'groovebox' && f.kind !== 'groovebox') continue;
+    if (filter === 'research' && !['research', 'sequencer', 'game-port'].includes(f.kind)) continue;
+    const roles = f.roles ? ['lead', 'bass', 'chords', 'drums'].filter(r => f.roles[r]).map(r => r + ' ch' + f.roles[r]).join(' · ') : 'single part / unmapped';
+    const dx7 = f.dx7 === true ? '<span class="t ok">DX7 SysEx</span>' : f.dx7 === 'editor' ? '<span class="t">DX7 via editor</span>' : f.dx7 === false ? '<span class="t no">no DX7</span>' : '<span class="t">DX7 ?</span>';
+    const tools = f.status === 'installable' && f.usb ? '<span class="t ok">auto-detected</span>' : '<span class="t">not in the tools</span>';
+    const flash = f.installer ? `<code>fm1_flash.sh --firmware ${esc(f.id)}</code>` : '—';
+    const c = document.createElement('div');
+    c.className = 'card' + (mine && mine === f.id ? ' mine' : '');
+    c.innerHTML = `<h3>${esc(f.name)} <span style="color:var(--text-dim);font-size:11px;">${esc(f.version || '')}</span></h3>
+      <div class="by">${esc(f.author)} · ${esc(f.license)} · ${esc(f.date || '')}</div>
+      <div class="tags"><span class="t k-${esc(f.kind)}">${esc(f.kind)}</span><span class="t">${esc(f.status)}</span>${tools}${dx7}</div>
+      <div class="sum">${esc(f.summary || '')}</div>
+      <dl>
+        <dt>based on</dt><dd>${esc(f.base)}</dd>
+        <dt>install</dt><dd>${link(f.installer, 'web installer')}${f.cli ? ' · ' + esc(f.cli) : ''}</dd>
+        <dt>on the Deck</dt><dd>${flash}</dd>
+        <dt>editor</dt><dd>${link(f.editor, 'web editor')}</dd>
+        <dt>USB</dt><dd>${f.usb ? esc(f.usb.vidpid) + ' "' + esc(f.usb.products.join('" / "')) + '"' + (f.usb.unverified ? ' (unverified)' : '') : '—'}</dd>
+        <dt>identity</dt><dd>${f.identity ? esc(f.identity.pattern) : '—'}${f.info ? ' · INFO /' + esc(f.info.match) + '/' : ''}</dd>
+        <dt>MIDI OUT</dt><dd>${esc(roles)}${f.drums ? ' · drums: ' + esc(f.drums) : ''}</dd>
+        <dt>clock</dt><dd>${esc(f.clock || '—')}</dd>
+        <dt>recovery</dt><dd>${esc(f.recovery || '—')}</dd>
+        ${f.warnings && f.warnings.length ? `<dt>watch out</dt><dd>${esc(f.warnings.join(' · '))}</dd>` : ''}
+        <dt>source</dt><dd>${link(f.url)}</dd>
+      </dl>`;
+    g.appendChild(c);
+  }
+  $('others').innerHTML = '<b>Also out there, not catalogued yet:</b> ' + FM1_REGISTRY.others.map(esc).join(' · ') +
+    '.<br>' + esc(FM1_REGISTRY.others_note) + ' To add one: copy a block in <code>godot/tools/fm1_firmwares.js</code> (strict JSON), fill it from the project\'s usb.c / build.py / editor.c, reload.';
+}
+document.querySelectorAll('.chip').forEach(ch => ch.addEventListener('click', () => {
+  filter = ch.dataset.k; document.querySelectorAll('.chip').forEach(c => c.classList.toggle('on', c === ch)); render();
+}));
+render();
+
+// Read-only check: the same two queries the installers send.
+let mi = null;
+$('check').addEventListener('click', async () => {
+  $('found').textContent = 'asking…';
+  if (!mi) { mi = new MidiInput({ autoIdentify: false }); await mi.start(); await new Promise(r => setTimeout(r, 300)); }
+  if (mi.status !== 'connected') { $('found').textContent = mi.statusDetail || 'no FM-1 port'; return; }
+  const id = await mi.identify();
+  if (!id || id.error) { $('found').textContent = id && id.error ? id.error : 'no reply — is it in normal play mode?'; return; }
+  mine = id.firmware;
+  $('found').textContent = 'on your synth: ' + id.name + (fm1Firmware(id.firmware) ? '' : ' (' + id.firmware + ')');
+  render();
+  const el = document.querySelector('.card.mine'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+});
+</script>
+</body>
+</html>

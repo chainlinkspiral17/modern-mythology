@@ -107,9 +107,9 @@
     </div>
 
     <div style="background: var(--bg-1); border: 1px solid var(--rule); padding: 14px 20px; margin-bottom: 18px;">
-      <div style="color: var(--gold-hi); font-size: 12px; letter-spacing: 0.12em; margin-bottom: 6px;">QUICKSTART · M-VAVE FM-1 (STOCK · BAUD GIRL FM-1+VA · FELUCCA · SLOOP)</div>
+      <div style="color: var(--gold-hi); font-size: 12px; letter-spacing: 0.12em; margin-bottom: 6px;">QUICKSTART · M-VAVE FM-1 (ANY FIRMWARE — SEE THE ATLAS)</div>
       <div style="font-size: 11px; line-height: 1.55;">
-        <b style="color: var(--gold);">0.</b> Installing a firmware (Baud Girl FM-1+VA, Felucca or SLOOP)? Run <b>godot/tools/fm1_flash.sh</b> in Desktop Mode first — it asks which one, preflights cable / hub / power, blocks sleep, opens that firmware's own installer, and verifies the result afterwards. On Felucca / SLOOP the tools route by instrument automatically: lead → ch1, bass → ch2, chords → ch3, drums → ch4 (Felucca) or ch10 (SLOOP).
+        <b style="color: var(--gold);">0.</b> Installing a firmware? Browse the <a href="fm1_firmware_atlas.html" style="color: var(--gold-hi);">FIRMWARE ATLAS</a>, then run <b>godot/tools/fm1_flash.sh</b> in Desktop Mode — it lists every installable firmware, preflights cable / hub / power, blocks sleep, opens that firmware's own installer and verifies the result. On multi-track firmwares (Felucca and its forks) the tools route by instrument automatically, following each firmware's default tracks: bass → track 1, chords → 2, lead → 3, drums → its drum channel.
         <b style="color: var(--gold);">1.</b> USB-C the FM-1 to the machine, power it on in normal play mode (not the updater — if a port called <i>ota-FM-1</i> shows up, finish the flash and power-cycle).
         <b style="color: var(--gold);">2.</b> Open any instrument in <b>Chrome or Edge</b> (Web MIDI — same requirement as the Baud Girl installer). Allow the MIDI prompt; say yes to SysEx too if you want to push patches.
         <b style="color: var(--gold);">3.</b> The <span style="color: var(--emerald-hi);">FM-1 · MIDI</span> panel (bottom-right, left of the Riffmaster panel) should read <i>connected</i>. Its keys now play the instrument. Pick the port by hand if it enumerated as a bare <i>USB Composite Device</i>.
@@ -195,6 +195,26 @@
         <div class="tags"><span class="tag audio">drone</span></div>
       </a>
     </div>
+
+    <h2>RECORDING · tape loops and the world outside</h2>
+    <div class="grid">
+      <a class="tile" href="tape_studio.html">
+        <div class="ttl">TAPE STUDIO</div>
+        <div class="desc">Bento-style eight-track tape loop machine. Overdub / replace with tape-loop decay, resample the master into a track, count-in + click, per-track DJ filter / drive / crush / echo / verb sends, a master tape stage (saturation, wow, flutter, hiss, age, glue), a hold-to-shred stutter, MIDI clock out so SLOOP / Felucca / X0X follow it, PRINT the master into the library or straight into the game as a seamless loop.</div>
+        <div class="tags"><span class="tag audio">tape</span><span class="tag midi">FM-1 clock</span><span class="tag studio">loops</span></div>
+      </a>
+      <a class="tile" href="field_recorder.html">
+        <div class="ttl">FIELD RECORDER</div>
+        <div class="desc">Record the world on the Deck (or a USB recorder / the FM-1's USB audio): raw input, pre-roll so you never miss the moment, markers, slate metadata with locale, tags and location. Clean it — trim, high-pass, spectral denoise, loudness, fades — make a seamless loop, and write it straight into the game, including the WANTED list of catalog tracks that still have no audio.</div>
+        <div class="tags"><span class="tag audio">field</span><span class="tag studio">ambience</span></div>
+      </a>
+      <a class="tile" href="fm1_firmware_atlas.html">
+        <div class="ttl">FM-1 FIRMWARE ATLAS</div>
+        <div class="desc">Every firmware for the M-VAVE FM-1 the tools know: stock, FM-1+VA, Groove OS, Felucca and its forks (SLOOP, SLOOP ALG, X0X, Jangada, Melodee), research builds and game ports — install links, MIDI maps, DX7 support, recovery. One button reads which one is on your synth.</div>
+        <div class="tags"><span class="tag midi">FM-1</span><span class="tag studio">reference</span></div>
+      </a>
+    </div>
+    <div class="footer" style="margin-top:10px;">SD-card takes from a Zoom / Tascam and browser downloads go in with <b>python3 godot/tools/field_ingest.py</b> (wanted · scan · ingest · fill).</div>
 
     <h2>STUDIO · authoring tools for game assets</h2>
     <div class="grid">

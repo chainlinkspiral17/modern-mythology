@@ -61,25 +61,29 @@
 "use strict";
 
 const MIDI_LS_KEY = 'mm_midi_prefs';
-const MIDI_DEVICE_HINTS = [/fm-?1/i, /m-?vave/i, /mvave/i, /felucca/i, /sloop/i];
-const MIDI_FELUCCA_PORT = /felucca|sloop/i;
+// Everything firmware-specific comes from fm1_firmwares.js (load it
+// BEFORE this file). Without it the tools still work, single-timbral.
+const _FM1_REG = (typeof FM1_REGISTRY !== 'undefined') ? FM1_REGISTRY : { firmwares: [], loaders: { names: [] } };
+const _rxEsc = t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const _FM1_PRODUCTS = [...new Set(_FM1_REG.firmwares.flatMap(f => (f.usb && f.usb.products) || []))];
+const MIDI_DEVICE_HINTS = [/fm-?1/i, /m-?vave/i, /mvave/i, ..._FM1_PRODUCTS.map(n => new RegExp(_rxEsc(n), 'i'))];
+// Ports of the Felucca family (all enumerate as 1209:0001).
+const _FAMILY_PRODUCTS = [...new Set(_FM1_REG.firmwares.filter(f => f.usb && f.usb.vidpid === '1209:0001').flatMap(f => f.usb.products))];
+const MIDI_FELUCCA_PORT = _FAMILY_PRODUCTS.length ? new RegExp(_FAMILY_PRODUCTS.map(_rxEsc).join('|'), 'i') : /felucca/i;
+// Updater / boot modes: never a playable port.
+const MIDI_OTA_HINT = /ota-?fm-?1|\bupdate\b|wl80uboot/i;
 
-// Per-firmware routing. roles: tool role → OUT channel (multitimbral
-// firmwares only). dx7: whether DX7 voice / parameter SysEx means
-// anything to it.
-const FM1_PROFILES = {
-  stock:    { label: 'stock M-VAVE',      dx7: true,  roles: null },
-  baudgirl: { label: 'Baud Girl FM-1+VA', dx7: true,  roles: null },
-  felucca:  { label: 'Felucca',           dx7: false,
-              roles: { lead: 1, bass: 2, chords: 3, drums: 4 },
-              roleNames: { lead: 'track 1', bass: 'track 2', chords: 'track 3', drums: 'track 4 (set its engine to DRUM)' } },
-  sloop:    { label: 'SLOOP',             dx7: false,
-              roles: { lead: 1, bass: 2, chords: 3, drums: 10 },
-              roleNames: { lead: 'synth 1', bass: 'synth 2', chords: 'synth 3', drums: 'drum track' } },
-};
+// Per-firmware routing, built from the registry. roles: tool role → OUT
+// channel (multitimbral firmwares only). dx7: only `true` means F0 43
+// voice / parameter SysEx reaches an FM engine.
+const FM1_PROFILES = (() => {
+  const o = {};
+  for (const f of _FM1_REG.firmwares) o[f.id] = { label: f.name, dx7: f.dx7 === true, roles: f.roles || null, fw: f };
+  o['felucca-family'] = { label: 'Felucca family (unknown fork)', dx7: false, roles: null, fw: null };
+  return o;
+})();
 const FM1_LS_FIRMWARE = 'mm_fm1_firmware';
 const FM1_LS_FIRMWARE_NAME = 'mm_fm1_firmware_name';
-const MIDI_OTA_HINT = /ota-?fm-?1/i;
 
 function _midiLoadPrefs() {
   try {
@@ -273,7 +277,7 @@ class MidiInput {
     const ch = this.resolvedOutChannel();
     const p = this.profile();
     const auto = this.outChannel === 0;
-    const where = auto && p && p.roleNames ? ' · ' + p.label + ' ' + p.roleNames[this.role] : '';
+    const where = auto && p && p.roles && p.roles[this.role] ? ' · ' + p.label + ' ' + this.role + ' part' : '';
     return 'ch ' + ch + (auto ? ' (auto)' : ' (fixed)') + where;
   }
   dx7Ok() { const p = this.profile(); return !p || p.dx7; }
@@ -424,7 +428,7 @@ class MidiInput {
     return this._await(d => (d.length >= 20 && d[1] === 0x00 && d[2] === 0x32 && d[3] === 0x45) ? fm1DecodeIdentity(d) : null,
       [0xF0, 0x00, 0x32, 0x45, 0x00, 0x00, 0x00, 0x40, 0x7F, 0xF7], timeoutMs);
   }
-  editorInfo(timeoutMs = 1500) {
+  editorInfo(timeoutMs = 800) {   // replies take 10–50 ms (EDITOR_PROTOCOL.md)
     return this._await(d => fm1DecodeEditorInfo(d), [0xF0, 0x7D, 0x46, 0x4C, 0x01, 0xF7], timeoutMs);
   }
   async identify(timeoutMs = 3000) {
@@ -433,10 +437,11 @@ class MidiInput {
     if (this._identifying) return this._identifying;
     this._identifying = (async () => {
       const vendor = await this.vendorIdentity(timeoutMs);
-      const portSaysFelucca = MIDI_FELUCCA_PORT.test((this.input.name || '') + ' ' + (this.output.name || ''));
+      const portName = (this.input.name || '') + ' ' + (this.output.name || '');
+      const family = MIDI_FELUCCA_PORT.test(portName) || (vendor && vendor.family);
       let info = null;
-      if (portSaysFelucca || (vendor && vendor.firmware === 'felucca')) info = await this.editorInfo();
-      const id = fm1MergeIdentity(vendor, info);
+      if (family) info = await this.editorInfo();
+      const id = fm1MergeIdentity(vendor, info, portName);
       if (id) this.setFirmware(id.firmware, id.name);
       return id;
     })();
@@ -488,9 +493,9 @@ class MidiInput {
 // to a 34-byte JieLi ID block starting 00 59 11; bytes 6..30 hold
 // "<model>_<version>". Mirrors fm1_identify.py in
 // ip2k/mvave-fm1-open-firmware. Returns {name, model, version,
-// firmware: 'stock'|'baudgirl'|'felucca'} or null. 'felucca' means
-// the Felucca family (Felucca or SLOOP): fm1DecodeEditorInfo tells
-// them apart.
+// firmware, family} or null. firmware is a registry id, 'felucca-family'
+// (9xx and up: the INFO string decides), 'rescue' (FM-1_000: a Felucca
+// fork's USB rescue), 'loader' (ota-…: mid-update) or 'unknown'.
 function fm1DecodeIdentity(bytes) {
   const d = [...bytes];
   if (d[0] !== 0xF0 || d[d.length - 1] !== 0xF7) return null;
@@ -504,35 +509,61 @@ function fm1DecodeIdentity(bytes) {
   const m = field.match(/([A-Za-z0-9-]{2,})_(\d+)/);
   if (!m) return null;
   const version = parseInt(m[2], 10);
-  return {
-    name: m[1] + '_' + String(version).padStart(3, '0'),
-    model: m[1], version,
-    // Stock ships as 014 / 015; Baud Girl's FM-1+VA builds are 020..099;
-    // Felucca and SLOOP release builds are 9XY (from version X.Y).
-    firmware: version >= 900 ? 'felucca' : version >= 20 ? 'baudgirl' : 'stock',
-  };
+  const r = { name: m[1] + '_' + m[2].padStart(3, '0'), model: m[1], version, family: false, firmware: 'unknown' };
+  if (/^ota/i.test(m[1])) { r.firmware = 'loader'; return r; }
+  if (version === 0) { r.firmware = 'rescue'; return r; }
+  if (version >= 900) { r.family = true; r.firmware = 'felucca-family'; return r; }
+  // Single-firmware ranges (stock 009–019, FM-1+VA 020–099).
+  const hits = _FM1_REG.firmwares.filter(f => f.identity && f.identity.range &&
+    version >= f.identity.range[0] && version <= f.identity.range[1] && !(f.usb && f.usb.vidpid === '1209:0001'));
+  if (hits.length === 1) r.firmware = hits[0].id;
+  else if (version >= 9 && version <= 19) r.firmware = 'stock';
+  return r;
 }
 
-// Felucca-family editor INFO reply: F0 7D 46 4C 01 <string 0> ... F7.
-// The string is "FELUCCA " + version: "FELUCCA v1.0.3" (Felucca) or
-// "FELUCCA SLOOP 2.3" (SLOOP). Returns {name, firmware, raw} or null.
+// Felucca-family editor INFO reply: F0 7D 46 4C 01 <string> 00 … F7, e.g.
+// "FELUCCA v1.5.1", "FELUCCA SLOOP 2.5", "X0X 1.0.5 BETA", "JANGADA 0.9.4",
+// "MELODEE v1.1.0". Classified by the registry's info.match, in order.
+// Returns {raw, firmware, name} or null.
 function fm1DecodeEditorInfo(bytes) {
   const d = [...bytes];
   if (d.length < 7 || d[0] !== 0xF0 || d[1] !== 0x7D || d[2] !== 0x46 || d[3] !== 0x4C || d[4] !== 0x01) return null;
   let s = '';
-  for (let i = 5; i < d.length - 1 && d[i] !== 0 && s.length < 32; i++) s += String.fromCharCode(d[i]);
-  if (!/^FELUCCA\b/i.test(s)) return null;
-  const rest = s.replace(/^FELUCCA\s*/i, '').trim();
-  const sloop = /SLOOP/i.test(rest);
-  return { raw: s, firmware: sloop ? 'sloop' : 'felucca', name: sloop ? rest : 'Felucca ' + rest };
+  for (let i = 5; i < d.length - 1 && d[i] !== 0 && s.length < 32; i++) {
+    if (d[i] < 32 || d[i] > 126) break;
+    s += String.fromCharCode(d[i]);
+  }
+  s = s.trim();
+  if (!s) return null;
+  const hit = _FM1_REG.firmwares.find(f => f.info && new RegExp(f.info.match, 'i').test(s));
+  const firmware = hit ? hit.id : 'felucca-family';
+  // Friendly name: Felucca keeps its word; forks that prefix "FELUCCA "
+  // (SLOOP, SLOOP ALG) drop it; others are already self-named.
+  let name = s;
+  if (hit && hit.id !== 'felucca' && /^FELUCCA\s+/i.test(s)) name = s.replace(/^FELUCCA\s+/i, '');
+  else if (hit && hit.id === 'felucca') name = 'Felucca ' + s.replace(/^FELUCCA\s*/i, '');
+  return { raw: s, firmware, name };
 }
 
-function fm1MergeIdentity(vendor, info) {
+// Port names that belong to exactly one firmware (e.g. "Jangada").
+function fm1FirmwareFromPort(portName) {
+  const hits = _FM1_REG.firmwares.filter(f => f.usb && f.usb.vidpid === '1209:0001' &&
+    f.usb.products.some(p => p !== 'Felucca' && new RegExp(_rxEsc(p), 'i').test(portName || '')));
+  return hits.length === 1 ? hits[0].id : null;
+}
+
+function fm1MergeIdentity(vendor, info, portName) {
   if (info) return { name: info.name, firmware: info.firmware, package: vendor ? vendor.name : null, raw: info.raw };
+  const byPort = fm1FirmwareFromPort(portName);
   if (vendor) {
-    const name = vendor.firmware === 'felucca' ? vendor.name + ' (Felucca-based; editor silent)' : vendor.name;
-    return { name, firmware: vendor.firmware, package: vendor.name, version: vendor.version };
+    let fw = vendor.firmware, name = vendor.name;
+    if (byPort && (fw === 'felucca-family' || fw === 'unknown')) { fw = byPort; name = ((fm1Firmware(byPort) || {}).name || byPort) + ' (' + vendor.name + ')'; }
+    if (fw === 'felucca-family') name += ' (Felucca family; editor silent)';
+    if (fw === 'rescue') name += ' (USB rescue mode — reinstall)';
+    if (fw === 'loader') name += ' (updater — finish the install)';
+    return { name, firmware: fw, package: vendor.name, version: vendor.version };
   }
+  if (byPort) return { name: (fm1Firmware(byPort) || {}).name || byPort, firmware: byPort, package: null };
   return null;
 }
 
@@ -541,10 +572,13 @@ function fm1MergeIdentity(vendor, info) {
 // fires an 'input' event so the tool's own listeners run. Returns an
 // unbind function.
 function bindCcToRange(mi, targetId, rangeEl) {
-  const el = typeof rangeEl === 'string' ? document.getElementById(rangeEl) : rangeEl;
-  if (!el) return () => {};
+  // A string id is looked up on every CC, so a page that rebuilds its
+  // sliders keeps its learned knobs.
+  if (typeof rangeEl !== 'string' && !rangeEl) return () => {};
   const handler = e => {
     if (e.detail.target !== targetId) return;
+    const el = typeof rangeEl === 'string' ? document.getElementById(rangeEl) : rangeEl;
+    if (!el) return;
     const min = parseFloat(el.min || 0), max = parseFloat(el.max || 100);
     const step = parseFloat(el.step || 1) || 1;
     let v = min + e.detail.norm * (max - min);
@@ -565,7 +599,7 @@ function bindCcToRange(mi, targetId, rangeEl) {
 // bindCcToRange so a learned knob drives the slider immediately.
 function mountMidiOverlay(mi, opts = {}) {
   const targets = opts.learnTargets || [];
-  targets.forEach(t => { if (t.el) bindCcToRange(mi, t.id, t.el); });
+  if (opts.bind !== false) targets.forEach(t => { if (t.el) bindCcToRange(mi, t.id, t.el); });
 
   const panel = document.createElement('div');
   panel.style.cssText = `

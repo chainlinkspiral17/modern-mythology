@@ -124,10 +124,6 @@
         <div class="row">
           <select id="fw-sel">
             <option value="">— which firmware is on it? —</option>
-            <option value="stock">stock M-VAVE (V14 / V15)</option>
-            <option value="baudgirl">Baud Girl FM-1+VA</option>
-            <option value="felucca">Felucca (Hügelton)</option>
-            <option value="sloop">SLOOP (3dSam)</option>
           </select>
           <button id="fw-identify" title="Read-only: sends the 10-byte identity query the official updater starts with, decodes the version.">IDENTIFY</button>
         </div>
@@ -216,6 +212,7 @@
     <span>refs: <a href="https://github.com/ip2k/mvave-fm1-open-firmware" target="_blank">mvave-fm1-open-firmware</a> · <a href="https://baudgirl.com/" target="_blank">baudgirl.com</a></span>
   </footer>
 
+<script src="fm1_firmwares.js"></script>
 <script src="midi_input.js"></script>
 <script src="fm1_dx7.js"></script>
 <script>
@@ -264,13 +261,23 @@ window.addEventListener('midiinput-connected', e => { refreshBadges(); log('t', 
 window.addEventListener('midiinput-disconnected', () => { refreshBadges(); log('t', 'disconnected'); });
 
 // ── Firmware selector (self-reported) ───────────────────────────
-const FW_NOTES = {
-  '': 'Press IDENTIFY to read the firmware version from the synth (read-only), or pick it by hand. Saved in this browser.',
-  stock: 'Stock V14/V15: Dexed core, 128 tones, 16-step sequencer. Accepts DX7 voice dumps + parameter changes; sends no clock or active sensing. Knob CC output unconfirmed — use LEARN to find out. The macOS updater downgrades V15 → V14; don\'t run it.',
-  baudgirl: 'Baud Girl FM-1+VA (FM-1_02x–09x): list-style menus, all four knobs live from any screen, VA (303 / supersaw) engine, 64-step sequencer, fixed detune / LFO / feedback / note-off. Still the Dexed core, so DX7 pushes should land in FM mode; the VA engine is not reachable via DX7 SysEx. Installed from Chrome/Edge over Web MIDI — same permission this page asks for.',
-  felucca: 'Felucca (Hügelton Instruments, GPL-3.0): four tracks, each its own engine (13: ANALOG, FM6, PHASE, LOFI, SAMPLE, VOICE, TRIO, WHEEL, GRAIN, PHYS, NOISE, SLICE, DRUM). MIDI IN ch1-4 play tracks 1-4 (GLO > SYSTEM > ROUT CH1-4); keys send on the track\'s channel. OUT auto-routes: lead → 1, bass → 2, chords → 3, drums → 4 (set track 4\'s engine to DRUM; it plays GM notes). No DX7 SysEx — sounds are edited in its web editor: hugelton.github.io/Felucca/webapp/editor/. Port shows as "Felucca". A failed install that stops Felucca from booting needs a Transporter dongle to recover.',
-  sloop: 'SLOOP (3dSam, GPL-3.0, based on Felucca): groovebox, synth tracks 1-3 + a 16-sound drum track, 9 engines, 37 kits, song mode. MIDI IN ch1-3 = synths, ch10 = drums (GM notes → nearest lane), ch4-16 = the selected track. OUT auto-routes: lead → 1, bass → 2, chords → 3, drums → 10. Follows MIDI clock if GLO > SYSTEM > SYNC is USB. No DX7 SysEx — edit in isod89.github.io/sloop-fm1/webapp/editor/. Port shows as "Felucca". Rescue: hold OCT− while switching on, then install again.',
-};
+// Firmware list + notes come from fm1_firmwares.js.
+(() => {
+  const sel = $('fw-sel');
+  for (const f of FM1_FIRMWARES.filter(f => f.status === 'installable')) {
+    const o = document.createElement('option'); o.value = f.id; o.textContent = f.name + ' — ' + f.author; sel.appendChild(o);
+  }
+  const o = document.createElement('option'); o.value = 'felucca-family'; o.textContent = 'another Felucca fork'; sel.appendChild(o);
+})();
+const FW_NOTES = { '': 'Press IDENTIFY to read the firmware from the synth (read-only), or pick it by hand. Saved in this browser. Every known firmware: fm1_firmware_atlas.html.',
+  'felucca-family': 'A Felucca-based firmware the registry does not know yet: notes play, OUT stays on ch1 (set a fixed channel), no DX7. Add it to fm1_firmwares.js.' };
+for (const f of FM1_FIRMWARES) {
+  const roles = f.roles ? 'OUT auto-routes: ' + ['lead', 'bass', 'chords', 'drums'].filter(r => f.roles[r]).map(r => r + ' → ch' + f.roles[r]).join(', ') + '. ' : 'Single-part (or unmapped): OUT uses ch1 unless you fix a channel. ';
+  const dx7 = f.dx7 === true ? 'DX7 SysEx: yes. ' : f.dx7 === 'editor' ? 'DX7 patches only through its own web editor. ' : f.dx7 === false ? 'No DX7 SysEx. ' : 'DX7: unknown. ';
+  FW_NOTES[f.id] = f.name + ' ' + (f.version || '') + ' (' + f.author + ', ' + f.license + '): ' + (f.summary || '') + ' ' + roles + dx7 +
+    (f.drums ? 'Drums: ' + f.drums + '. ' : '') + (f.editor ? 'Editor: ' + f.editor + ' ' : '') + (f.recovery ? 'Recovery: ' + f.recovery + '. ' : '') +
+    (f.warnings && f.warnings.length ? 'Notes: ' + f.warnings.join('; ') + '.' : '');
+}
 try { $('fw-sel').value = localStorage.getItem('mm_fm1_firmware') || ''; } catch (e) {}
 function refreshFw() {
   const v = $('fw-sel').value;

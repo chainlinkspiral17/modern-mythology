@@ -5,49 +5,120 @@
 # (or any Linux desktop). Wraps the firmware author's own browser
 # installer: this script NEVER writes to the synth itself.
 #
-# Firmwares it knows (pick with --firmware, or from the menu):
-#   baudgirl  Baud Girl FM-1+VA   baudgirl.com/work/FM-1+VA/install
-#   felucca   Felucca (Hügelton)  hugelton.github.io/Felucca/
-#   sloop     SLOOP (3dSam)       isod89.github.io/sloop-fm1/
+# Which firmwares it offers, how each one shows up on USB, how to
+# tell them apart and how to recover — all of it comes from
+# fm1_firmwares.js (the same registry the browser tools use).
 #
 # What it automates:
 #   1. preflight — Desktop Mode, Chrome/Edge present (and allowed to
-#      see MIDI devices if it's a Flatpak), FM-1 plugged in, plugged
-#      in DIRECTLY (no dock/hub), Deck on AC power.
-#   2. reads the current firmware version (read-only identity query,
-#      the same 10 bytes the official updater sends first).
-#   3. blocks sleep / idle-suspend for the whole session.
-#   4. opens the installer in a clean, dedicated browser profile and
-#      waits for you to close that window.
-#   5. post-check — waits for the synth to come back, tells you
-#      whether it booted normally or is parked in updater mode
-#      (resumable: just re-run this script), reads the new version,
-#      writes a log.
+#      see MIDI devices if it's a Flatpak), FM-1 plugged in (and in
+#      which mode: playing / updater / boot / game port), hub in the
+#      path, Deck power.
+#   2. reads what's on it now (read-only: the vendor identity query
+#      the official updater sends first, plus the Felucca-family
+#      editor INFO request on 1209:0001 devices).
+#   3. blocks sleep / idle-suspend while the installer is open.
+#   4. opens the chosen firmware's installer in a clean browser
+#      profile and waits for you to close that window.
+#   5. post-check — playing again, parked in the updater (resumable:
+#      re-run with the same --firmware), or gone; is it the firmware
+#      you picked?; writes a log.
 #
 # What it does NOT do: the actual flash. Each firmware's image and
-# package checks live inside its own web installer, and the update protocol
-# still has documented unknowns with no recovery path for a bad
-# write (ip2k/mvave-fm1-open-firmware docs/03 + docs/07). The clicks
-# inside the installer page stay yours.
+# package checks live inside its own web installer, and a bad write
+# can need a hardware dongle to recover.
 #
 # Usage:
-#   ./fm1_flash.sh                      # full guided run, asks which firmware
-#   ./fm1_flash.sh --firmware sloop     # … straight to SLOOP's installer
+#   ./fm1_flash.sh                      # guided run, menu of firmwares
+#   ./fm1_flash.sh --firmware sloop     # straight to one (ids: --list)
+#   ./fm1_flash.sh --list               # every installable firmware
 #   ./fm1_flash.sh --check              # preflight + version read only
-#   FM1_INSTALLER_URL=https://… ./fm1_flash.sh   # override the page
+#   FM1_INSTALLER_URL=https://… ./fm1_flash.sh --firmware x   # override the page
 #   FM1_BROWSER="flatpak run com.google.Chrome" ./fm1_flash.sh
 # ════════════════════════════════════════════════════════════════
 
 set -u
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REGISTRY="${FM1_REGISTRY_FILE:-$SCRIPT_DIR/fm1_firmwares.js}"
 SYSFS_USB="${FM1_SYSFS_USB:-/sys/bus/usb/devices}"     # overridable for testing
 PROC_ASOUND="${FM1_PROC_ASOUND:-/proc/asound}"
 LOG_DIR="${FM1_LOG_DIR:-$HOME/fm1-flash-logs}"
-NORMAL_ID="4c4a:c755"     # FM-1 playing, stock or Baud Girl ("FM-1 Midi")
-FELUCCA_ID="1209:0001"    # FM-1 playing Felucca or SLOOP     ("Felucca")
-LOADER_ID="4d4a:4155"     # FM-1 OTA loader                  ("ota-FM-1")
 IDENTITY_QUERY='F0 00 32 45 00 00 00 40 7F F7'
-EDITOR_INFO='F0 7D 46 4C 01 F7'     # Felucca/SLOOP editor INFO (read-only)
+EDITOR_INFO='F0 7D 46 4C 01 F7'     # Felucca-family editor INFO (read-only)
+
+command -v python3 >/dev/null 2>&1 || { echo "python3 is needed (it ships with SteamOS)."; exit 1; }
+[ -f "$REGISTRY" ] || { echo "firmware registry not found: $REGISTRY"; exit 1; }
+
+# ── registry queries (python reads the JSON between the markers) ─────
+reg() {
+  python3 -I - "$REGISTRY" "$@" <<'PY'
+import json, re, sys
+src = open(sys.argv[1], encoding="utf-8").read()
+R = json.loads(re.search(r"/\*FM1-JSON-BEGIN\*/(.*)/\*FM1-JSON-END\*/", src, re.S).group(1))
+F = R["firmwares"]; cmd = sys.argv[2]; a = sys.argv[3:]
+by = {f["id"]: f for f in F}
+inst = [f for f in F if f.get("status") == "installable" and f.get("installer")]
+fam = lambda f: (f.get("usb") or {}).get("vidpid") == "1209:0001"
+if cmd == "installable":
+    print("\n".join(f["id"] for f in inst))
+elif cmd == "menu":
+    for i, f in enumerate(inst, 1):
+        print(f"{i:>2}) {f['name'][:16]:<16} {f['kind'][:9]:<9} {f['author'][:22]:<22} {(f.get('summary') or '')[:58]}")
+elif cmd == "pick":
+    n = int(a[0]) if a and a[0].isdigit() else 0
+    print(inst[n - 1]["id"] if 1 <= n <= len(inst) else "")
+elif cmd == "get":
+    v = by.get(a[0], {})
+    for k in a[1].split("."):
+        v = v.get(k) if isinstance(v, dict) else None
+    print("; ".join(map(str, v)) if isinstance(v, list) else ("" if v is None else v))
+elif cmd == "usb":          # vidpid<TAB>kind<TAB>product-regex  (kind: play | noMidi)
+    seen = set()
+    for f in F:
+        u = f.get("usb")
+        if not u or u.get("unverified"): continue
+        kind = "noMidi" if "no MIDI" in " ".join(f.get("warnings") or []) else "play"
+        for p in u["products"]:
+            key = (u["vidpid"], p)
+            if key in seen: continue
+            seen.add(key)
+            print(f"{u['vidpid']}\t{kind}\t{p}")
+elif cmd == "loaders":
+    print("\n".join(R["loaders"]["usb"]))
+elif cmd == "family-products":
+    print("\n".join(sorted({p for f in F if fam(f) for p in f["usb"]["products"]})))
+elif cmd == "classify":     # vendor-name info-string port-product → id<TAB>display
+    vendor, info, port = (a + ["", "", ""])[:3]
+    fid, disp = "", vendor or info or "(no reply)"
+    if info:
+        hit = next((f for f in F if f.get("info") and re.search(f["info"]["match"], info, re.I)), None)
+        fid = hit["id"] if hit else "felucca-family"
+        disp = info
+        if hit and hit["id"] == "felucca": disp = "Felucca " + re.sub(r"^FELUCCA\s*", "", info, flags=re.I)
+        elif hit and re.match(r"^FELUCCA\s+", info, re.I): disp = re.sub(r"^FELUCCA\s+", "", info, flags=re.I)
+        if vendor: disp += f" (package {vendor})"
+    else:
+        m = re.match(r"^(\S+?)_(\d+)$", vendor or "")
+        if m:
+            v = int(m.group(2))
+            if m.group(1).lower().startswith("ota"): fid, disp = "loader", vendor + " (updater)"
+            elif v == 0: fid, disp = "rescue", vendor + " (USB rescue mode)"
+            elif v >= 900:
+                byp = [f for f in F if fam(f) and any(p != "Felucca" and p.lower() in port.lower() for p in f["usb"]["products"])]
+                fid = byp[0]["id"] if len(byp) == 1 else "felucca-family"
+                disp = vendor + ("" if len(byp) == 1 else " (Felucca family — editor didn't answer)")
+            else:
+                hits = [f for f in F if f.get("identity") and f["identity"].get("range") and not fam(f)
+                        and f["identity"]["range"][0] <= v <= f["identity"]["range"][1]]
+                fid = hits[0]["id"] if len(hits) == 1 else ("stock" if 9 <= v <= 19 else "unknown")
+    name = by[fid]["name"] if fid in by else fid
+    if not info and fid in by and vendor: disp = f"{name} ({vendor})"
+    print(f"{fid}\t{disp}\t{name}")
+else:
+    sys.exit("unknown reg command " + cmd)
+PY
+}
 
 CHECK_ONLY=0
 TARGET=""
@@ -56,20 +127,14 @@ while [ $# -gt 0 ]; do
     --check)      CHECK_ONLY=1 ;;
     --firmware)   TARGET="${2:-}"; shift ;;
     --firmware=*) TARGET="${1#*=}" ;;
-    *) echo "unknown option: $1 (use --check, --firmware baudgirl|felucca|sloop)"; exit 1 ;;
+    --list)       reg menu; echo; echo "ids: $(reg installable | tr '\n' ' ')"; exit 0 ;;
+    *) echo "unknown option: $1 (use --check, --list, --firmware <id>)"; exit 1 ;;
   esac
   shift
 done
-
-case "$TARGET" in ""|baudgirl|felucca|sloop) ;;
-  *) echo "unknown firmware '$TARGET' (baudgirl | felucca | sloop)"; exit 1 ;; esac
-
-fw_label() { case "$1" in baudgirl) echo "Baud Girl FM-1+VA";; felucca) echo "Felucca";; sloop) echo "SLOOP";; *) echo "?";; esac; }
-fw_url()   { case "$1" in
-  baudgirl) echo "https://baudgirl.com/work/FM-1+VA/install" ;;
-  felucca)  echo "https://hugelton.github.io/Felucca/" ;;
-  sloop)    echo "https://isod89.github.io/sloop-fm1/" ;;
-esac; }
+if [ -n "$TARGET" ] && ! reg installable | grep -qx "$TARGET"; then
+  echo "unknown firmware '$TARGET'. Installable: $(reg installable | tr '\n' ' ')"; exit 1
+fi
 
 mkdir -p "$LOG_DIR" 2>/dev/null || LOG_DIR="/tmp"
 LOG="$LOG_DIR/fm1-flash-$(date +%Y%m%d-%H%M%S).log"
@@ -82,21 +147,30 @@ bad()  { say "  ✗ $*"; BLOCKERS=$((BLOCKERS + 1)); }
 WARNINGS=0
 BLOCKERS=0
 
+USB_TABLE="$(reg usb)"
+LOADER_IDS="$(reg loaders)"
+
 # ── helpers ─────────────────────────────────────────────────────
 
-# Echo "<sysfs-name> <vid:pid>" for the first FM-1 found (normal,
-# Felucca-family or loader). 1209:0001 is a shared hobbyist ID, so it
-# only counts when the product string says Felucca.
+# Echo "<sysfs-name> <mode> <vid:pid> <product>" for the first FM-1 found.
+# mode: play | loader | boot | noMidi. A shared vid:pid (1209:0001) only
+# counts when its product string is one the registry knows.
 find_fm1() {
-  local d vid pid
+  local d vid pid prod line pv kind pp
   for d in "$SYSFS_USB"/*; do
     [ -f "$d/idVendor" ] || continue
     vid=$(cat "$d/idVendor" 2>/dev/null); pid=$(cat "$d/idProduct" 2>/dev/null)
-    case "$vid:$pid" in
-      "$NORMAL_ID"|"$LOADER_ID") echo "$(basename "$d") $vid:$pid"; return 0 ;;
-      "$FELUCCA_ID")
-        if grep -qi felucca "$d/product" 2>/dev/null; then echo "$(basename "$d") $vid:$pid"; return 0; fi ;;
-    esac
+    prod=$(cat "$d/product" 2>/dev/null || true)
+    if echo "$LOADER_IDS" | grep -qx "$vid:$pid"; then
+      if [ "$vid:$pid" = "4c4a:8057" ]; then echo "$(basename "$d") boot $vid:$pid $prod"; else echo "$(basename "$d") loader $vid:$pid $prod"; fi
+      return 0
+    fi
+    while IFS=$'\t' read -r pv kind pp; do
+      [ "$pv" = "$vid:$pid" ] || continue
+      if [ "$pv" != "1209:0001" ] || echo "$prod" | grep -qiF "$pp"; then
+        echo "$(basename "$d") $kind $vid:$pid $prod"; return 0
+      fi
+    done <<< "$USB_TABLE"
   done
   return 1
 }
@@ -114,96 +188,75 @@ hub_chain() {
   echo "$out"
 }
 
-# ALSA raw-MIDI port of the FM-1 in normal mode, e.g. hw:2,0,0.
+# ALSA raw-MIDI port of the playing FM-1, e.g. hw:2,0,0.
 fm1_rawmidi_port() {
-  local c n
+  local vidpid="$1" c n
   for c in "$PROC_ASOUND"/card*; do
     [ -f "$c/usbid" ] || continue
-    case "$(tr 'A-F' 'a-f' < "$c/usbid")" in
-      "$NORMAL_ID") n="${c##*card}"; echo "hw:$n,0,0"; return 0 ;;
-      "$FELUCCA_ID")
-        if grep -qi felucca "$c/id" 2>/dev/null; then n="${c##*card}"; echo "hw:$n,0,0"; return 0; fi ;;
-    esac
+    if [ "$(tr 'A-F' 'a-f' < "$c/usbid")" = "$vidpid" ]; then n="${c##*card}"; echo "hw:$n,0,0"; return 0; fi
   done
   command -v amidi >/dev/null 2>&1 &&
-    amidi -l 2>/dev/null | awk 'tolower($0) ~ /fm-1|felucca/ && tolower($0) !~ /ota/ {print $2; exit}'
+    amidi -l 2>/dev/null | awk 'tolower($0) ~ /fm-1|felucca|jangada|melodee|x0x/ && tolower($0) !~ /ota|update/ {print $2; exit}'
 }
 
-# Felucca-family editor INFO reply: F0 7D 46 4C 01 "FELUCCA v1.0.3"\0 …
-# → "Felucca v1.0.3" / "SLOOP 2.3".
+hexbytes() { grep -oE '\b[0-9A-Fa-f]{2}\b' | tr '\n' ' '; }
+
+# Vendor identity reply → "FM-1_015" etc. (7-bit LSB-first → 34-byte
+# JieLi block 00 59 11 …; mirrors ip2k/mvave-fm1-open-firmware).
+decode_identity() {
+  python3 -I - "$1" <<'PY'
+import re, sys
+raw = [int(x, 16) for x in sys.argv[1].split()]
+if not raw or raw[0] != 0xF0 or raw[-1] != 0xF7: sys.exit()
+acc = bits = 0; out = []
+for b in raw[1:-1]:
+    acc |= (b & 0x7F) << bits; bits += 7
+    while bits >= 8: out.append(acc & 0xFF); acc >>= 8; bits -= 8
+blk = bytes(out[:34])
+if blk[:3] != b"\x00\x59\x11": sys.exit()
+m = re.search(rb"([A-Za-z0-9-]{2,})_(\d+)", blk[6:31])
+if m: print(m.group(1).decode() + "_" + m.group(2).decode().rjust(3, "0"))
+PY
+}
+
+# Editor INFO reply F0 7D 46 4C 01 "<string>" 00 … → the string.
 decode_editor_info() {
-  command -v python3 >/dev/null 2>&1 || return
-  python3 - "$1" <<'PY'
+  python3 -I - "$1" <<'PY'
 import sys
 raw = [int(x, 16) for x in sys.argv[1].split()]
-i = 0
-while i + 5 <= len(raw):
+for i in range(len(raw) - 5):
     if raw[i:i+5] == [0xF0, 0x7D, 0x46, 0x4C, 0x01]:
         s = ""
         for b in raw[i+5:]:
-            if b in (0, 0xF7) or len(s) >= 32: break
+            if b < 32 or b > 126 or len(s) >= 32: break
             s += chr(b)
-        if s.upper().startswith("FELUCCA"):
-            rest = s[7:].strip()
-            print(rest if "SLOOP" in rest.upper() else "Felucca " + rest)
-        break
-    i += 1
+        print(s.strip()); break
 PY
 }
 
-# Decode the 41-byte identity reply. The body between F0 and F7 is a
-# 7-bit LSB-first bitstream that unpacks to a 34-byte JieLi ID block
-# starting 00 59 11; the version is the decimal after "<model>_".
-# Mirrors fm1_identify.py in ip2k/mvave-fm1-open-firmware.
-decode_identity() {
-  command -v python3 >/dev/null 2>&1 || { echo "(python3 missing — raw reply logged)"; return; }
-  python3 - "$1" <<'PY'
-import re, sys
-raw = [int(x, 16) for x in sys.argv[1].split()]
-if not raw or raw[0] != 0xF0 or raw[-1] != 0xF7:
-    print("(no identity reply)"); sys.exit()
-body = raw[1:-1]
-acc = bits = 0; out = []
-for b in body:
-    acc |= (b & 0x7F) << bits; bits += 7
-    while bits >= 8:
-        out.append(acc & 0xFF); acc >>= 8; bits -= 8
-blk = bytes(out[:34])
-if blk[:3] != b"\x00\x59\x11":
-    print("(unrecognised reply)"); sys.exit()
-m = re.search(rb"([A-Za-z0-9-]{2,})_(\d+)", blk[6:31])
-print(f"{m.group(1).decode()}_{int(m.group(2)):03d}" if m else "(version field not found)")
-PY
-}
-
-# Read the version over raw MIDI. Read-only; only ever sends the query.
+# Read what's on the synth. Read-only. Prints "<id>\t<display>\t<name>".
 read_version() {
-  local port reply
-  command -v amidi >/dev/null 2>&1 || { echo "(amidi not installed — use IDENTIFY in fm1_console.html)"; return; }
-  port=$(fm1_rawmidi_port)
-  [ -n "$port" ] || { echo "(no FM-1 raw-MIDI port)"; return; }
+  local vidpid="$1" product="$2" port reply vendor="" info=""
+  command -v amidi >/dev/null 2>&1 || { printf 'unknown\t(amidi not installed — use IDENTIFY in fm1_console.html)\t?\n'; return; }
+  port=$(fm1_rawmidi_port "$vidpid")
+  [ -n "$port" ] || { printf 'unknown\t(no FM-1 raw-MIDI port)\t?\n'; return; }
   echo "  sending read-only identity query to $port: $IDENTITY_QUERY" >> "$LOG"
   reply=$(amidi -p "$port" -S "$IDENTITY_QUERY" -d -t 3 2>&1)
   echo "  reply: $reply" >> "$LOG"
   if echo "$reply" | grep -qi "busy"; then
-    echo "(port busy — another app has it open, usually a Chrome tab on the installer or fm1_console.html. Close Chrome and re-run, or press IDENTIFY in the console)"; return
+    printf 'unknown\t(port busy — another app has it open, usually a Chrome tab on an installer or fm1_console.html. Close Chrome and re-run, or press IDENTIFY in the console)\t?\n'; return
   fi
-  reply=$(echo "$reply" | grep -oE '\b[0-9A-Fa-f]{2}\b' | tr '\n' ' ')
-  local vendor info
-  vendor=$(decode_identity "$reply")
-  # Felucca / SLOOP both answer FM-1_9XY; their editor INFO names them.
-  if [[ "$vendor" == FM-1_9* ]] || [ "$(fm1_mode)" = "$FELUCCA_ID" ]; then
+  vendor=$(decode_identity "$(echo "$reply" | hexbytes)")
+  # The Felucca family shares 1209:0001 and colliding FM-1_9xx numbers;
+  # its editor INFO string names the fork.
+  if [ "$vidpid" = "1209:0001" ] || [[ "$vendor" == FM-1_9* ]]; then
     echo "  sending read-only editor INFO to $port: $EDITOR_INFO" >> "$LOG"
     info=$(amidi -p "$port" -S "$EDITOR_INFO" -d -t 2 2>&1)
     echo "  reply: $info" >> "$LOG"
-    info=$(decode_editor_info "$(echo "$info" | grep -oE '\b[0-9A-Fa-f]{2}\b' | tr '\n' ' ')")
-    if [ -n "$info" ]; then echo "$info (package $vendor)"; return; fi
-    [[ "$vendor" == FM-1_9* ]] && { echo "$vendor (Felucca or SLOOP — editor didn't answer)"; return; }
+    info=$(decode_editor_info "$(echo "$info" | hexbytes)")
   fi
-  echo "$vendor"
+  reg classify "$vendor" "$info" "$product"
 }
-
-fm1_mode() { local h; h=$(find_fm1) && echo "${h##* }"; }
 
 # Find Chrome / Edge / Chromium. Prints the command to run.
 find_browser() {
@@ -229,8 +282,12 @@ wait_for_fm1() {
   return 1
 }
 
+# split "dev mode vidpid product…"
+parse_hit() { DEV=$(echo "$1" | cut -d' ' -f1); MODE=$(echo "$1" | cut -d' ' -f2); VIDPID=$(echo "$1" | cut -d' ' -f3); PRODUCT=$(echo "$1" | cut -d' ' -f4-); }
+
 # ── 1. preflight ────────────────────────────────────────────────
 say "FM-1 firmware install helper · log: $LOG"
+say "  registry: $(reg installable | wc -l) installable firmwares (fm1_firmwares.js)"
 say ""
 say "→ preflight"
 
@@ -256,25 +313,26 @@ else
   fi
 fi
 
+DEV=""; MODE=""; VIDPID=""; PRODUCT=""
 HIT=$(find_fm1)
 if [ -z "$HIT" ]; then
   bad "FM-1 not detected over USB. Plug it in with a data-capable USB-C cable and switch it on."
-  DEV=""; MODE=""
 else
-  DEV="${HIT%% *}"; MODE="${HIT##* }"
-  if [ "$MODE" = "$LOADER_ID" ]; then
-    warn "FM-1 is in UPDATER mode (ota-FM-1). A previous install stopped part-way."
-    say  "      Re-open the SAME firmware's installer and press install again — it resumes from here. Don't unplug."
-  elif [ "$MODE" = "$FELUCCA_ID" ]; then
-    ok "FM-1 detected (running Felucca or SLOOP, USB $DEV)"
-  else
-    ok "FM-1 detected (normal mode, USB $DEV)"
-  fi
+  parse_hit "$HIT"
+  case "$MODE" in
+    loader) warn "FM-1 is in UPDATER mode ($VIDPID ${PRODUCT:-ota}). A previous install stopped part-way."
+            say  "      Re-open the SAME firmware's installer and press install again — it resumes from here. Don't unplug." ;;
+    boot)   bad "FM-1 is in boot mode (4c4a:8057 / WL80UBOOT) — the application isn't running."
+            say "      Stop here: recovery needs a FM-1 Transporter (or the firmware's documented rescue). Don't keep retrying installers." ;;
+    noMidi) warn "FM-1 is running a game port (${PRODUCT:-no MIDI}) — web installers can't reach it over MIDI."
+            say  "      Follow that port's own instructions to get back to a MIDI firmware." ;;
+    *)      ok "FM-1 detected (playing, $VIDPID \"${PRODUCT}\", USB $DEV)" ;;
+  esac
   CHAIN=$(hub_chain "$DEV")
   if [ -n "$CHAIN" ]; then
     warn "FM-1 is behind a hub:$CHAIN (a dock counts)"
-    say  "      The open-firmware project says no hubs or docks during writes."
-    say  "      Plug the FM-1 straight into the Deck's USB-C port and re-run."
+    say  "      Installers ask for a direct cable. On a Deck the dock is also the keyboard and power,"
+    say  "      so if you stay on it: unplug every other USB device from the dock, keep it on AC, don't touch the cable."
   else
     ok "connected directly (no hub in the path)"
   fi
@@ -295,12 +353,12 @@ if [ -n "$CAP" ]; then
 fi
 say "  · charge the FM-1 itself too — its battery can't be read from here."
 
-if [ "$MODE" = "$NORMAL_ID" ] || [ "$MODE" = "$FELUCCA_ID" ]; then
-  BEFORE=$(read_version)
+BEFORE_ID=""; BEFORE="(not read)"
+if [ "$MODE" = "play" ]; then
+  IFS=$'\t' read -r BEFORE_ID BEFORE _ <<< "$(read_version "$VIDPID" "$PRODUCT")"
   say "  · firmware now: $BEFORE"
-else
-  BEFORE="(not read)"
-  [ "$MODE" = "$LOADER_ID" ] && say "  · not querying the loader — leaving it alone for the installer."
+elif [ "$MODE" = "loader" ]; then
+  say "  · not querying the updater — leaving it alone for the installer."
 fi
 
 say ""
@@ -315,32 +373,25 @@ fi
 
 # ── 2. choose + confirm ─────────────────────────────────────────
 if [ -z "$TARGET" ]; then
-  say "→ which firmware?"
-  say "    1) Baud Girl FM-1+VA   keeps the stock FM engine, adds VA; closed source"
-  say "    2) Felucca             4 tracks, 13 engines (FM6, analog, granular, physical…); GPL"
-  say "    3) SLOOP               4-track groovebox: 3 synths + 16-sound drums, song mode; GPL"
+  say "→ which firmware? (details: godot/tools/fm1_firmware_atlas.html)"
+  reg menu | while IFS= read -r line; do say "   $line"; done
   read -r -p "Number (anything else quits): " pick
-  case "$pick" in 1) TARGET=baudgirl ;; 2) TARGET=felucca ;; 3) TARGET=sloop ;;
-    *) say "quit — nothing was changed."; exit 0 ;; esac
+  TARGET=$(reg pick "$pick")
+  [ -n "$TARGET" ] || { say "quit — nothing was changed."; exit 0; }
 fi
-INSTALLER_URL="${FM1_INSTALLER_URL:-$(fw_url "$TARGET")}"
-[ -n "$INSTALLER_URL" ] || { say "unknown firmware '$TARGET' (baudgirl | felucca | sloop)"; exit 1; }
-say "  · target: $(fw_label "$TARGET")"
-case "$TARGET" in
-  felucca)
-    say "  ! Felucca's own page: if an install fails and the FM-1 no longer starts,"
-    say "    recovering it needs a Transporter dongle. There is no USB rescue mode."
-    say "    Its installer also asks for a DIRECT cable. Unplug every other USB device from the dock." ;;
-  sloop)
-    say "  · SLOOP has a USB rescue: hold OCT− while switching on, then install again."
-    say "    Its installer also asks for a DIRECT cable. Unplug every other USB device from the dock."
-    say "    After it says Done, unplug and replug the FM-1 once (for its USB audio input)." ;;
-esac
-case "$BEFORE" in
-  *SLOOP*|Felucca*)
-    say "  · switching away from $BEFORE: back up first in its web editor (projects, presets, samples)."
-    say "    Projects don't carry between different firmwares." ;;
-esac
+TNAME=$(reg get "$TARGET" name)
+INSTALLER_URL="${FM1_INSTALLER_URL:-$(reg get "$TARGET" installer)}"
+say "  · target: $TNAME $(reg get "$TARGET" version) — $(reg get "$TARGET" author)"
+REC=$(reg get "$TARGET" recovery); [ -n "$REC" ] && say "  · if it goes wrong: $REC"
+WARN=$(reg get "$TARGET" warnings); [ -n "$WARN" ] && say "  ! its author says: $WARN"
+case "$REC" in *Transporter*|*dongle*) case "$REC" in *RESCUE*|*SAFE*) ;; *)
+  say "    No USB rescue key for this one — a failed write that won't boot needs a hardware dongle." ;; esac ;; esac
+if [ "$TARGET" = "$BEFORE_ID" ]; then
+  say "  · it's already on $TNAME — the installer may refuse the same version (that's normal)."
+elif [ -n "$(reg get "$BEFORE_ID" editor)" ] || [ "$BEFORE_ID" = "felucca-family" ]; then
+  say "  · switching away from $BEFORE: back up first in its web editor (projects, presets, samples)."
+  say "    Projects don't carry between different firmwares."
+fi
 
 say "→ ready. Next: a browser window opens on $INSTALLER_URL"
 say "    · allow the MIDI prompt (including 'control and reprogram')."
@@ -378,33 +429,34 @@ sleep 3
 HIT=$(wait_for_fm1 30)
 if [ -z "$HIT" ]; then
   say "  ✗ FM-1 not visible on USB."
-  say "    Unplug, switch it on, plug back in DIRECTLY, then run:  $0 --check"
-  say "    If it won't power on or enumerate at all, stop retrying — see"
-  say "    github.com/ip2k/mvave-fm1-open-firmware docs/07-recovery-and-risk.md"
+  say "    Unplug, switch it on, plug back in, then run:  $0 --check"
+  say "    If it won't power on or enumerate at all, stop retrying. Recovery for $TNAME: $REC"
   exit 2
 fi
-MODE="${HIT##* }"
-if [ "$MODE" = "$LOADER_ID" ]; then
-  say "  ! FM-1 is still in UPDATER mode (ota-FM-1) — the install didn't finish."
+parse_hit "$HIT"
+if [ "$MODE" = "loader" ]; then
+  say "  ! FM-1 is still in UPDATER mode ($VIDPID) — the install didn't finish."
   say "    Don't unplug it. Re-run:  $0 --firmware $TARGET   — the installer resumes from the loader."
   exit 3
 fi
-AFTER=$(read_version)
-ok "FM-1 back in normal mode"
+if [ "$MODE" = "boot" ]; then
+  say "  ✗ FM-1 came back in boot mode (WL80UBOOT). Recovery: $REC"
+  exit 4
+fi
+IFS=$'\t' read -r AFTER_ID AFTER AFTER_NAME <<< "$(read_version "$VIDPID" "$PRODUCT")"
+ok "FM-1 playing again ($VIDPID \"$PRODUCT\")"
 say "  · firmware before: $BEFORE"
 say "  · firmware after:  $AFTER"
-case "$AFTER" in
-  *SLOOP*)      GOT=sloop;    ok "that's SLOOP." ;;
-  Felucca*)     GOT=felucca;  ok "that's Felucca." ;;
-  FM-1_9*)      GOT=felucca-family; ok "a Felucca-family build (editor didn't answer — IDENTIFY in the console tells Felucca from SLOOP)." ;;
-  FM-1_0[2-9]*) GOT=baudgirl; ok "that's a Baud Girl FM-1+VA build." ;;
-  FM-1_01*)     GOT=stock;    warn "still a stock version — the installer may not have run its write step." ;;
-  *)            GOT="" ;;
+case "$AFTER_ID" in
+  "$TARGET")        ok "that's $TNAME." ;;
+  felucca-family)   ok "a Felucca-family build (its editor didn't name itself — IDENTIFY in fm1_console.html checks again)." ;;
+  rescue)           warn "it's in USB rescue mode — run the $TNAME installer again." ;;
+  unknown|"")       say "  · couldn't read the version from here — press IDENTIFY in fm1_console.html." ;;
+  *)                warn "expected $TNAME but the synth reports $AFTER — the install may not have taken." ;;
 esac
-if [ -n "$GOT" ] && [ "$GOT" != "$TARGET" ] && ! { [ "$GOT" = felucca-family ] && [ "$TARGET" != baudgirl ]; }; then
-  warn "expected $(fw_label "$TARGET") but the synth reports $AFTER — the install may not have taken."
-fi
-[ "$TARGET" = sloop ] && say "  · unplug and replug the FM-1 once so the computer finds SLOOP's USB audio input."
+case "$(reg get "$TARGET" summary) $(reg get "$TARGET" warnings)" in
+  *"USB audio"*) say "  · unplug and replug the FM-1 once so the computer finds its USB audio input." ;;
+esac
 say ""
 say "→ done. Open godot/tools/fm1_console.html and press IDENTIFY to confirm from the tools side."
 say "  log: $LOG"

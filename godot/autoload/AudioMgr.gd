@@ -559,6 +559,14 @@ func _load_audio(src: String) -> AudioStream:
 	# this, freshly-dropped voicelines silently fail to play.
 	var abs_path := ProjectSettings.globalize_path(path)
 	if not FileAccess.file_exists(abs_path):
+		# Field recordings and tape mixdowns land as a .wav next to the
+		# catalog's .ogg / .mp3 path (godot/tools/field_recorder.html,
+		# field_ingest.py). Try that sibling before giving up.
+		var ext0 := src.get_extension().to_lower()
+		if ext0 != "wav":
+			var wav_src := src.get_basename() + ".wav"
+			if ResourceLoader.exists("res://" + wav_src) or FileAccess.file_exists(ProjectSettings.globalize_path("res://" + wav_src)):
+				return _load_audio(wav_src)
 		return null
 	var bytes := FileAccess.get_file_as_bytes(abs_path)
 	if bytes.is_empty():
@@ -572,8 +580,16 @@ func _load_audio(src: String) -> AudioStream:
 		"ogg":
 			return AudioStreamOggVorbis.load_from_buffer(bytes)
 		"wav":
-			var w := AudioStreamWAV.new()
-			w.data = bytes
+			# load_from_buffer parses the RIFF header (format, rate,
+			# channels); assigning .data directly would play the header
+			# as audio at the default 8-bit / 44.1 kHz.
+			var w := AudioStreamWAV.load_from_buffer(bytes)
+			# A truncated / non-WAV file comes back as an empty stream,
+			# not null — treat zero length as unreadable too.
+			if w == null or w.get_length() <= 0.0:
+				w = null
+				_failed_srcs[src] = true
+				push_warning("AudioMgr: unreadable WAV (marking as skip): " + src)
 			return w
 	push_warning("AudioMgr: unsupported audio extension '%s' for %s" % [ext, src])
 	return null

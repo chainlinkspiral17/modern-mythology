@@ -236,6 +236,40 @@ those tools.
   headless Chromium (18 firmware × tool combinations). Not yet on
   hardware with either firmware.
 
+### 2026-10-10 — the firmware scene, as a registry
+
+- `godot/tools/fm1_firmwares.js` is now the single source of truth for
+  every firmware: USB identity, identity ranges, INFO match, roles, DX7,
+  installer, recovery. `midi_input.js` builds `FM1_PROFILES`, port hints
+  and classification from it. The console's picker, the atlas page and
+  `fm1_flash.sh` (python reads the JSON between the `FM1-JSON` markers)
+  read it too. To add a firmware, add a JSON block (strict JSON); no code
+  changes are needed.
+- **Correction to the 2026-10-06 entry:** the Felucca family's default
+  sounds (`TRK_DEF` in engines.c / ui.c) are track 1 bass, track 2
+  pad / keys, track 3 lead (SLOOP: 808 BOOM / RHODES / LOFI FLUTE). The
+  role map is lead 3, bass 1, chords 2. The first pass had lead 1 and
+  bass 2, which sent bass lines into lead patches.
+- Felucca forks all enumerate as `1209:0001`. Some keep the port name
+  "Felucca" (SLOOP, SLOOP ALG), others rename it ("X0X FM-1", "Jangada",
+  "Melodee"). Identity numbers collide: Jangada 0.9 and Felucca 0.9 are
+  both FM-1_909, and SLOOP ALG FM-1_985 collides with a Doom port. The
+  rules are:
+  - The INFO string decides, matched against registry `info.match` in
+    order, with specific forks listed first.
+  - A unique port name decides when the editor is silent.
+  - Anything else is "felucca-family": routing stays on ch1, no DX7.
+- Never treat these as playable: FM-1_000 (USB rescue), `ota-…` / any
+  "* Update" port (1209:0002), 4c4a:8057 WL80UBOOT. The flash script
+  blocks on boot mode.
+- Jangada and Melodee DO accept DX7 SysEx (live FM6 edits / banks), so
+  `dx7: true` there. SLOOP's is editor-only.
+- The editor INFO wait is 800 ms. Replies take 10–50 ms, and a long wait
+  delayed port-name fallback past the tools' first paint.
+- B-Boy Edition's repo is gone. fwradar.com was never readable from the
+  sandbox, and Groove OS's USB / MIDI facts are unverified (closed
+  source). Re-check those three before relying on them.
+
 ## TEMPLATE
 
 ```
