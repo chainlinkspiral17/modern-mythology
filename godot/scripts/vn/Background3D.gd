@@ -1237,14 +1237,14 @@ const CAMERA_PRESETS := {
 	"safehouse_bedroom": {
 		"scene": "res://scenes/locales/safehouse_bedroom.tscn",
 		"requires_glb": "res://assets/3d/locales/safehouse_bedroom.glb",
-		# Spare safehouse room 4×5 (godot x∈[-2,2], z∈[0,-5], ceil 2.6).
-		# Bare cot on the W side (godot -1,-2.5), a desk + monitor against
-		# the N wall (godot 0,-3.5), single bare bulb on a cord centre.
-		# Camera SE corner just inside the door looking NW across to the
-		# cot, the desk + monitor on the N wall beyond.
-		"camera_origin": Vector3(1.4, 1.55, -0.7),
-		"camera_rotation": Vector3(-0.05, deg_to_rad(48.0), 0.0),
-		"fov": 58.0,
+		# The safehouse's back bedroom (draft 3, 2026-10-10: a sickroom in
+		# Linda Caldwell's old frame house, not a spy's hideout). 5.2 x 4.8
+		# (godot x in [-2.6,2.6], z in [0,-4.8], ceil 2.7). Camera by the
+		# dresser inside the door, looking NW at the bed, the IV pole, the
+		# bedside table and chair, the porch window.
+		"camera_origin": Vector3(2.0, 1.62, -0.55),
+		"camera_rotation": Vector3(-0.139, 0.957, 0.0),
+		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"el_rancho_taqueria": {
@@ -2238,6 +2238,20 @@ const CAMERA_PRESETS := {
 		"suppress_input": true,
 	},
 	# ── Vols 5-7 · hero-prop pass (2026-08-03) ───────────────────
+	"cabin_road_truck": {
+		"scene": "res://scenes/locales/cabin_road.tscn",
+		"requires_glb": "res://assets/3d/locales/cabin_road.glb",
+		# vol7 ch2: inside Finn's grandfather's Toyota on the gravel
+		# pull-out off the approach (blender cab origin (-3.7, -8.2)),
+		# behind the road preset's camera. From the bench seat, forward
+		# over the dash (the crow on it, rain on the glass) up the road
+		# to the transition, the crossing and the stand (2026-10-09:
+		# it rendered in Ben's pickup on a Texas turnout).
+		"camera_origin": Vector3(-3.7, 1.33, 8.10),
+		"camera_rotation": Vector3(-0.10, 0.0, 0.0),
+		"fov": 72.0,
+		"suppress_input": true,
+	},
 	"cabin_road": {
 		"scene": "res://scenes/locales/cabin_road.tscn",
 		"requires_glb": "res://assets/3d/locales/cabin_road.glb",

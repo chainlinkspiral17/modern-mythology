@@ -3834,6 +3834,66 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-10 · overnight run, pass 25: THE SAFEHOUSE, DRAFT 3 (the wrong
+REGISTER: a sickroom, not a hideout).** Drafts 1-2 of `safehouse_bedroom`
+were a spy's den: a red-string corkboard, a CRT (also against the no-retro
+rule), a boarded window, a pizza box. The chapters (vol6 ch6, ch7, ch9)
+describe a quiet sickroom. "A small frame house on a county road ...
+owned, on paper, by ... Linda Caldwell". "Diego is in the back bedroom. A
+doctor ... She has set the IV." "She sets the slushie on the bedside
+table. She sits in the chair beside the bed." Graciela is on the back
+porch on the phone; Doyle is in the kitchen. Rebuilt as the back bedroom
+of an old frame house, 5.2 x 4.8 m:
+- **The bed.** Head to the W wall. The IV pole with its bag and drip
+  chamber, the line down to the bed.
+- **The bedside table.** The lamp, the blue-raspberry slushie with its
+  taped lid and red spoon, the water glass, his phone, Sam's spiral
+  notebook, the pill bottles. The chair beside the bed.
+- **The dresser.** A doily, Linda's old framed photographs, and Dr.
+  Patel's tray: gauze, saline bags, gloves, tape.
+- **The room.** A rag rug, the ceiling fan and its globe, painted walls
+  and a picture rail.
+- **Through the N window.** The back porch with Graciela's glider and
+  mug, then the yard: a clothesline with a sheet, post oaks, a wire fence,
+  the field, the treeline.
+- **Through the door.** The hall's bulb, and the kitchen at its end with
+  Doyle's coffee pot.
+- **Scene.** A NE sun key (daylight), sky fill, fan, lamp and hall
+  practicals, a kitchen fill. Twelve markers cover every cue in the three
+  chapters, including Graciela through the window and the hands on the
+  sheet.
+
+Draft 4 targets:
+- the front room and the kitchen as presets;
+- ch6's night on the porch;
+- Deck framing.
+
+**2026-10-10 · overnight run, pass 24: FINN'S TRUCK (the wrong VEHICLE, twice
+over).** vol7 ch2's drive, with the crow on the dashboard and "the
+shortwave receiver from his grandfather" humming "through the canvas of
+the duffel", rendered in Ben's green Texas pickup on a Texas turnout. And
+Finn's duffel, with the charred wood, rode on that pickup's passenger seat
+through every vol6 scene.
+- **The truck.** "An older Toyota that had belonged to Finn's
+  grandfather" is now built into `cabin_road`, on a gravel pull-out off
+  the approach. It sits behind the road preset's camera, so the eight
+  road scenes do not see it.
+- **Its cab.** `vehicle_cab`'s cab is run through `plan.shifted` in faded
+  red. Inside: the duffel, cloth and charred wood, and the shortwave's
+  antenna out of the zip; the crow on the dash; rain on the windshield.
+  The pull-out has alders, Sitkas and ferns.
+- **Preset and routing.** New preset `cabin_road_truck`; ch2 routes to
+  it, with suffixed radio, charred-wood, crow and Finn markers. The
+  road's orphan `insert crow` now frames the dash crow through the
+  windshield.
+- **Ben's truck.** It loses the duffel and its marker. Its hazard button
+  moves onto the dash face; it had floated 2 cm off.
+
+Draft 2 targets:
+- turn the truck to face downhill (`shifted` does not rotate);
+- a single cab, not Ben's crew cab;
+- the phone cradle is Ben's.
+
 **2026-10-10 · overnight run, pass 23: ERICA'S OFFICE, DRAFT 4 (the wrong
 REGISTER: a cubicle floor).** Drafts 1-3 of `houston_office` built "a
 generic corporate office: glass partition, cubicle row, fluorescents", with
