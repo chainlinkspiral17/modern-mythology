@@ -79,6 +79,21 @@ class AKCapture extends AudioWorkletProcessor {
 registerProcessor('ak-capture', AKCapture);
 `;
 
+// Load worklet source. On a file:// page a Blob URL is blob:null/… and Chrome
+// refuses it as a worklet module; a data: URL loads. Blob stays as the fallback
+// (http:// pages, browsers that refuse data: modules).
+AK.addWorklet = async function (ctx, src) {
+  const bytes = new TextEncoder().encode(src);
+  let bin = '';
+  for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+  const b64 = btoa(bin);
+  try { await ctx.audioWorklet.addModule('data:text/javascript;base64,' + b64); }
+  catch (e) {
+    const url = URL.createObjectURL(new Blob([src], { type: 'application/javascript' }));
+    try { await ctx.audioWorklet.addModule(url); } finally { URL.revokeObjectURL(url); }
+  }
+};
+
 AK.Capture = class {
   // opts: preRollSec, onChunk(chans), maxChannels
   constructor(ctx, sourceNode, opts = {}) {
@@ -108,8 +123,7 @@ AK.Capture = class {
     this.sink.connect(this.ctx.destination);
     try {
       if (!this.ctx.__akWorklet) {
-        const url = URL.createObjectURL(new Blob([AK_CAPTURE_WORKLET], { type: 'application/javascript' }));
-        await this.ctx.audioWorklet.addModule(url);
+        await AK.addWorklet(this.ctx, AK_CAPTURE_WORKLET);
         this.ctx.__akWorklet = true;
       }
       this.node = new AudioWorkletNode(this.ctx, 'ak-capture', {

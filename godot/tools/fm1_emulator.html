@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>FM-1 EMULATOR · Modern Mythology</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --bg-0: #050304; --bg-1: #0e0908; --ink: #1a1410;
+    --rule: #553318; --gold: #d8a060; --gold-hi: #ffd896;
+    --text: #c8a878; --text-dim: #7a5828;
+    --emerald: #4ea060; --emerald-hi: #a8e89c; --rust: #c87633; --burgundy: #7a1e26;
+    --red: #c64a3a; --amber: #f0b94a; --violet: #c8a4f0;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; min-height: 100vh; background: var(--bg-0); color: var(--text); font-family: "Courier New", monospace; }
+  body { display: grid; grid-template-rows: auto auto 1fr auto; min-height: 100vh; }
+  header { padding: 8px 16px; border-bottom: 1px solid var(--rule); display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  header h1 { margin: 0; font-size: 15px; letter-spacing: 0.18em; color: var(--gold-hi); }
+  .badge { font-size: 10px; letter-spacing: 0.08em; padding: 2px 7px; border: 1px solid var(--rule); color: var(--text-dim); }
+  .badge.ok { color: var(--emerald-hi); border-color: var(--emerald); }
+  .badge.warn { color: var(--amber); border-color: var(--amber); }
+  .badge.bad { color: var(--red); border-color: var(--red); }
+  .sub { color: var(--text-dim); font-size: 11px; font-style: italic; }
+  .transport { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 8px 16px; border-bottom: 1px solid var(--rule); font-size: 11px; }
+  .transport label { color: var(--text-dim); letter-spacing: 0.06em; }
+  select, input[type=number], input[type=text] { background: var(--ink); color: var(--gold-hi); border: 1px solid var(--rule); font-family: inherit; font-size: 11px; padding: 2px 5px; }
+  input[type=range] { width: 100%; margin: 0; accent-color: var(--rust); }
+  button { background: var(--ink); color: var(--gold-hi); border: 1px solid var(--gold); padding: 4px 9px; font-family: inherit; font-size: 10px; letter-spacing: 0.08em; cursor: pointer; }
+  button:hover:not(:disabled) { background: var(--gold); color: var(--ink); }
+  button:disabled { opacity: 0.35; cursor: default; }
+  button.dim { color: var(--text-dim); border-color: var(--rule); }
+  button.on { background: var(--rust); color: var(--ink); border-color: var(--gold-hi); }
+  #start { font-size: 13px; }
+  #recbtn { font-size: 14px; min-width: 64px; background: #2a0c0e; border-color: var(--red); color: #ffb0a0; }
+  #recbtn.on { background: var(--red); color: #fff; animation: pulse 1s infinite; }
+  @keyframes pulse { 50% { box-shadow: 0 0 18px rgba(198,74,58,0.8); } }
+  .posd { font-size: 18px; color: var(--gold-hi); min-width: 70px; letter-spacing: 0.06em; }
+  main { display: grid; grid-template-columns: minmax(0, 1fr) 340px; min-height: 0; }
+  .stage { padding: 12px 16px; display: flex; flex-direction: column; align-items: center; gap: 8px; min-width: 0; }
+  #face { width: 100%; max-width: min(1000px, calc((100vh - 190px) * 1.6)); position: relative; }
+  #face .off { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 10px; background: rgba(5, 3, 4, .72); border: 1px solid var(--rule); z-index: 2; text-align: center; padding: 16px; }
+  #face .off[hidden] { display: none; }
+  #face .off b { color: var(--gold-hi); letter-spacing: 0.12em; }
+  .keys { color: var(--text-dim); font-size: 10px; text-align: center; line-height: 1.7; max-width: 900px; }
+  .side { border-left: 1px solid var(--rule); padding: 8px 12px; overflow-y: auto; font-size: 11px; }
+  h2 { margin: 10px 0 5px; color: var(--gold); font-size: 11px; letter-spacing: 0.16em; border-bottom: 1px solid var(--rule); padding-bottom: 3px; }
+  h2:first-child { margin-top: 0; }
+  .row { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; margin: 3px 0; }
+  .knobs { display: grid; grid-template-columns: 58px 1fr 44px; gap: 3px 6px; align-items: center; color: var(--text-dim); }
+  .knobs output { color: var(--gold-hi); text-align: right; }
+  .note { color: var(--text-dim); font-size: 10px; line-height: 1.45; font-style: italic; }
+  .msg { color: var(--emerald-hi); font-size: 10px; min-height: 13px; margin: 3px 0; }
+  .msg.err { color: var(--red); }
+  table.map { border-collapse: collapse; width: 100%; font-size: 10px; }
+  table.map td { border-bottom: 1px solid #2a1a0c; padding: 2px 4px; }
+  table.map td:first-child { color: var(--gold-hi); width: 44px; }
+  .credits { font-size: 10px; line-height: 1.55; }
+  .credits a, footer a, .keys a { color: var(--gold); text-decoration: none; }
+  .credits b { color: var(--gold-hi); font-weight: normal; }
+  footer { padding: 5px 16px; border-top: 1px solid var(--rule); color: var(--text-dim); font-size: 10px; display: flex; gap: 14px; flex-wrap: wrap; }
+  kbd { border: 1px solid var(--rule); padding: 0 3px; color: var(--gold-hi); }
+  @media (max-width: 900px) { main { grid-template-columns: 1fr; } .side { border-left: 0; border-top: 1px solid var(--rule); } }
+</style>
+</head>
+<body>
+<header>
+  <h1>FM-1 EMULATOR</h1>
+  <span class="badge" id="b-audio">AUDIO: off · click START</span>
+  <span class="badge" id="b-emu">DEVICE: —</span>
+  <span class="badge" id="b-cpu">CPU: —</span>
+  <span class="badge" id="b-midi">MIDI IN: —</span>
+  <span class="badge" id="b-flash">FLASH: —</span>
+  <span class="sub">the FM-1's open firmwares, the authors' own builds, running here offline</span>
+</header>
+
+<div class="transport">
+  <label>FIRMWARE</label>
+  <select id="fw"></select>
+  <button id="start">⏻ START</button>
+  <button class="dim" id="reboot" disabled title="power-cycle the emulated FM-1 (its flash stays)">↻ REBOOT</button>
+  <button id="recbtn" disabled title="record the emulator's output into the shared take library">●</button>
+  <span class="posd" id="pos">00:00.0</span>
+  <label>VOLUME</label><input type="range" id="vol" min="0" max="1.5" step="0.01" value="0.9" style="width:120px">
+  <label style="cursor:pointer" title="the computer keyboard plays the panel, as the firmware's own page maps it"><input type="checkbox" id="kbd" checked> keyboard</label>
+</div>
+
+<main>
+  <div class="stage">
+    <div id="face"><div class="off" id="off"><b id="offname">FM-1</b><span class="note" id="offnote">START switches it on. The firmware boots exactly as on the instrument.</span></div></div>
+    <div class="keys" id="keyhelp"></div>
+  </div>
+
+  <div class="side">
+    <h2>PLAYING IT</h2>
+    <div class="row"><label>MIDI IN</label><select id="mi-in" style="flex:1"><option value="">—</option></select></div>
+    <div class="row"><label>CHANNEL</label>
+      <select id="mi-ch" title="re-channel incoming notes / CCs (the FM-1 keyboard sends on ch1)"><option value="0">as sent</option></select>
+      <span class="note" id="lastnote">—</span></div>
+    <table class="map" id="chmap"></table>
+    <div class="note" id="caps"></div>
+
+    <h2>RECORD → LIBRARY</h2>
+    <div class="row"><input type="text" id="recname" placeholder="take name (optional)" style="flex:1"></div>
+    <div class="msg" id="recmsg"></div>
+    <div class="note">● captures the emulator's output (before VOLUME) into the take library every tool shares — TAPE STUDIO and FIELD RECORDER list it as kind "emu".</div>
+
+    <h2>THE DEVICE'S FLASH</h2>
+    <div class="row">
+      <button class="dim" id="backup" disabled title="download the emulated FM-1's state (its saved projects / presets) as .json">⇩ BACKUP</button>
+      <button class="dim" id="restore" disabled title="restore a backup: the device reboots with it">⇪ RESTORE</button>
+      <input type="file" id="restorefile" accept=".json,application/json" style="display:none">
+      <button class="dim" id="hosted" disabled title="fetch the author's newest build from their site (online only) instead of the copy shipped here">☁ AUTHOR'S LATEST</button>
+    </div>
+    <div class="msg" id="flashmsg"></div>
+    <div class="note">What you save on the emulated FM-1 (projects, presets, patterns) stays in this browser, per firmware, and comes back next time.</div>
+
+    <h2>CREDITS</h2>
+    <div class="credits" id="credits"></div>
+  </div>
+</main>
+
+<footer>
+  <span>← <a href="index.html">all tools</a> · <a href="fm1_firmware_atlas.html">FIRMWARE ATLAS</a> · <a href="fm1_console.html">FM-1 CONSOLE</a> · <a href="tape_studio.html">TAPE STUDIO</a></span>
+  <span>drag a knob or scroll over it · <kbd>⇧</kbd>-click a button to hold it</span>
+</footer>
+
+<script src="fm1_firmwares.js"></script>
+<script src="midi_input.js"></script>
+<script src="audio_kit.js"></script>
+<script src="vendor/fm1emu/felucca/felucca_wasm.js"></script>
+<script src="vendor/fm1emu/felucca/felucca_worklet.js"></script>
+<script src="vendor/fm1emu/x0x/x0x_wasm.js"></script>
+<script src="vendor/fm1emu/x0x/x0x_worklet.js"></script>
+<script src="fm1_emu.js"></script>
+<script>
+"use strict";
+const $ = (id) => document.getElementById(id);
+const badge = (id, text, cls) => { const b = $(id); b.textContent = text; b.className = 'badge' + (cls ? ' ' + cls : ''); };
+const msg = (id, t, err) => { const m = $(id); m.textContent = t || ''; m.classList.toggle('err', !!err); };
+const LS_FW = 'fm1emu_page_fw', LS_VOL = 'fm1emu_page_vol';
+const ls = { get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch (e) { /* blocked */ } } };
+
+const KEYHELP = {
+  felucca: '<kbd>Z</kbd>–<kbd>/</kbd> <kbd>S</kbd> <kbd>D</kbd> <kbd>F</kbd> <kbd>H</kbd> <kbd>J</kbd> <kbd>L</kbd> <kbd>;</kbd> <kbd>\'</kbd> <kbd>Q</kbd>–<kbd>O</kbd> keys · <kbd>1</kbd>–<kbd>=</kbd> FX … REC · <kbd>[</kbd> <kbd>]</kbd> OCT · <kbd>↑</kbd> <kbd>↓</kbd> SELECT · <kbd>←</kbd> <kbd>→</kbd> ALGORITHM · quick save: SAVE, OCT+, OCT+',
+  x0x: 'white keys <kbd>Q</kbd>–<kbd>I</kbd> <kbd>A</kbd>–<kbd>K</kbd> · black keys <kbd>1</kbd>–<kbd>0</kbd> <kbd>-</kbd> · <kbd>␣</kbd> PLAY · <kbd>↵</kbd> REC · <kbd>⇧</kbd> SEL · <kbd>Esc</kbd> HOME · <kbd>Z</kbd> <kbd>X</kbd> OCT · <kbd>↑</kbd> <kbd>↓</kbd> SELECT',
+};
+
+let ctx = null, master = null, emu = null, panel = null, cap = null, recT = 0, booting = false;
+
+// ── firmware list ─────────────────────────────────────────────────────────────
+for (const f of window.FM1EMU_LIST) {
+  const o = document.createElement('option');
+  o.value = f.id;
+  o.textContent = f.name + ' ' + f.version + (f.vendored ? '' : ' (build missing)');
+  o.disabled = !f.vendored;
+  $('fw').appendChild(o);
+}
+$('fw').value = ls.get(LS_FW) || 'felucca';
+if (!$('fw').value) $('fw').value = 'felucca';
+for (let c = 1; c <= 16; c++) { const o = document.createElement('option'); o.value = c; o.textContent = '→ ch ' + c; $('mi-ch').appendChild(o); }
+$('vol').value = ls.get(LS_VOL) || 0.9;
+
+function info() { return window.FM1EMU_LIST.find((f) => f.id === $('fw').value); }
+function describe() {
+  const f = info();
+  $('offname').textContent = f.name.toUpperCase() + ' ' + f.version;
+  $('keyhelp').innerHTML = KEYHELP[f.id] || '';
+  $('chmap').innerHTML = Object.entries(f.channels).map(([c, w]) => `<tr><td>ch ${c}</td><td>${w}</td></tr>`).join('');
+  const short = (h) => h.slice(0, 7);
+  $('credits').innerHTML =
+    `<b>${f.name} ${f.version}</b> by <b>${f.author}</b> · ${f.license}<br>` +
+    `source: <a href="${f.source}" target="_blank" rel="noopener">${f.source.replace('https://', '')}</a> @ ${short(f.sourceCommit)} · ` +
+    `build: gh-pages @ ${short(f.pagesCommit)}<br>` +
+    `the author's own emulator: <a href="${f.hosted}" target="_blank" rel="noopener">${f.hosted.replace('https://', '')}</a><br>` +
+    `shipped here unmodified${f.id === 'x0x' ? ' + a MIDI-in export (x0x_web_midi.patch)' : ''} under GPL-3.0 — ` +
+    `<a href="vendor/fm1emu/${f.id}/SOURCE.md" target="_blank">SOURCE.md</a> · <a href="vendor/fm1emu/${f.id}/LICENSE" target="_blank">LICENSE</a><br>` +
+    `<span class="note">${f.notes}</span>` +
+    `<br><span class="note">M-VAVE and FM-1 are trademarks of their respective owners; ${f.name} and this project are independent of them.</span>`;
+}
+describe();
+
+// ── switching on ──────────────────────────────────────────────────────────────
+async function startEmu(source) {
+  if (booting) return;
+  booting = true;
+  const f = info();
+  $('start').disabled = true;
+  badge('b-emu', 'DEVICE: booting ' + f.name + '…', 'warn');
+  msg('flashmsg', '');
+  try {
+    await stopEmu();
+    // the device's own rate (44.1 kHz) or its pitch is off; a fresh context each time (one processor per name)
+    ctx = new AudioContext({ sampleRate: f.rate, latencyHint: 'interactive' });
+    master = ctx.createGain();
+    master.gain.value = +$('vol').value;
+    master.connect(ctx.destination);
+    emu = new FM1Emu(ctx, { id: f.id, output: master, source });
+    emu.addEventListener('load', (e) => badge('b-cpu', 'CPU: ' + e.detail.cpu.toFixed(1) + '%', e.detail.cpu > 60 ? 'warn' : 'ok'));
+    emu.addEventListener('flashsaved', () => badge('b-flash', 'FLASH: saved ' + new Date().toLocaleTimeString(), 'ok'));
+    emu.addEventListener('error', (e) => badge('b-emu', 'DEVICE: ' + (e.detail && e.detail.message || 'error'), 'bad'));
+    panel = emu.mountPanel($('face'), { keyboard: $('kbd').checked });
+    await emu.init();
+    await ctx.resume();
+    window.emu = emu;                                  // for the console
+    $('off').hidden = true;
+    badge('b-audio', 'AUDIO: ' + ctx.sampleRate + ' Hz', ctx.sampleRate === emu.rate ? 'ok' : 'warn');
+    badge('b-emu', 'DEVICE: ' + f.name + (source === 'hosted' ? ' (author\'s latest)' : '') + ' on', 'ok');
+    const fl = Object.keys(emu.getState().flash.data).length;
+    badge('b-flash', 'FLASH: ' + (fl ? fl + ' saved block' + (fl > 1 ? 's' : '') : 'factory'), fl ? 'ok' : '');
+    $('caps').textContent = (emu.caps.midi ? 'MIDI in: notes' + (f.id === 'felucca' ? ' + CCs' : '') : 'no MIDI in (panel only)') +
+      (emu.caps.realtime ? ' · follows MIDI clock / start / stop' + (f.id === 'felucca' ? ' (set MENU > MIDI > CLOCK to USB)' : '') : '') + '.';
+    cap = new AK.Capture(ctx, emu.output, { preRollSec: 0, maxChannels: 2 });
+    await cap.start();
+    for (const id of ['recbtn', 'reboot', 'backup', 'restore', 'hosted']) $(id).disabled = false;
+    $('start').textContent = '⏻ RESTART';
+  } catch (e) {
+    console.error(e);
+    badge('b-emu', 'DEVICE: could not start — ' + (e.message || e), 'bad');
+    if (source === 'hosted') msg('flashmsg', 'the author\'s site is not reachable (offline?) — START uses the shipped copy.', true);
+    $('off').hidden = false;
+  } finally {
+    $('start').disabled = false;
+    booting = false;
+  }
+}
+async function stopEmu() {
+  if (cap && cap.recording()) await finishRec();
+  if (cap) { cap.stop(); cap = null; }
+  if (panel) { panel.destroy(); panel = null; }
+  if (emu) { emu.dispose(); emu = null; }
+  if (ctx) { try { await ctx.close(); } catch (e) { /* closed */ } ctx = null; }
+  $('off').hidden = false;
+  for (const id of ['recbtn', 'reboot', 'backup', 'restore', 'hosted']) $(id).disabled = true;
+  badge('b-cpu', 'CPU: —');
+}
+$('start').addEventListener('click', () => startEmu());
+$('hosted').addEventListener('click', () => startEmu('hosted'));
+$('fw').addEventListener('change', () => { ls.set(LS_FW, $('fw').value); describe(); if (emu) startEmu(); });
+$('reboot').addEventListener('click', async () => { if (emu) { badge('b-emu', 'DEVICE: rebooting…', 'warn'); await emu.reboot(); badge('b-emu', 'DEVICE: ' + info().name + ' on', 'ok'); } });
+$('vol').addEventListener('input', () => { if (master) master.gain.setTargetAtTime(+$('vol').value, ctx.currentTime, 0.02); ls.set(LS_VOL, $('vol').value); });
+$('kbd').addEventListener('change', () => { if (emu && panel) { panel.destroy(); panel = emu.mountPanel($('face'), { keyboard: $('kbd').checked }); } });
+// page buttons must not keep focus: Space / Enter belong to the panel (X0X: PLAY / REC)
+document.addEventListener('click', (e) => { const b = e.target.closest && e.target.closest('button'); if (b) b.blur(); });
+
+// ── recording into the take library ───────────────────────────────────────────
+$('recbtn').addEventListener('click', async () => {
+  if (!cap) return;
+  if (cap.recording()) { await finishRec(); return; }
+  cap.begin(0);
+  $('recbtn').classList.add('on');
+  msg('recmsg', 'recording…');
+  recT = setInterval(() => { $('pos').textContent = AK.util.fmtTime(cap.elapsedSec()); }, 100);
+});
+async function finishRec() {
+  clearInterval(recT);
+  $('recbtn').classList.remove('on');
+  const t = cap.end();
+  if (!t || !t.channels[0].length) { msg('recmsg', 'nothing recorded', true); return; }
+  const f = info();
+  const title = ($('recname').value.trim() || f.name + ' emulator');
+  const name = title + ' · ' + AK.util.stamp();
+  try {
+    const rec = await AK.lib.put({ kind: 'emu', name, sampleRate: t.sampleRate,
+      meta: { title, tags: ['fm1', f.id], firmware: f.name + ' ' + f.version, clipped: t.clipped } }, t.channels);
+    msg('recmsg', AK.util.fmtTime(rec.durationSec) + ' → library as "' + rec.name + '"' + (t.clipped ? ' (clipped!)' : ''), t.clipped);
+  } catch (e) { msg('recmsg', 'library save failed: ' + (e.message || e), true); }
+}
+
+// ── backup / restore of the device's flash ────────────────────────────────────
+$('backup').addEventListener('click', () => {
+  if (!emu) return;
+  const s = emu.getState(), blob = new Blob([JSON.stringify(s)], { type: 'application/json' });
+  AK.util.download(blob, 'fm1emu_' + emu.id + '_' + AK.util.stamp() + '.json');
+  msg('flashmsg', 'backup: ' + Object.keys(s.flash.data).length + ' block(s)');
+});
+$('restore').addEventListener('click', () => $('restorefile').click());
+$('restorefile').addEventListener('change', async (e) => {
+  const file = e.target.files[0];
+  e.target.value = '';
+  if (!file || !emu) return;
+  try {
+    const s = JSON.parse(await file.text());
+    if (s.id !== emu.id) { msg('flashmsg', 'that backup is for ' + s.id + ', this is ' + emu.id, true); return; }
+    await emu.setState(s);
+    msg('flashmsg', 'restored ' + Object.keys(s.flash.data || {}).length + ' block(s); the device rebooted');
+  } catch (err) { msg('flashmsg', 'restore failed: ' + (err.message || err), true); }
+});
+
+// ── Web MIDI in (an FM-1, a keyboard, a DAW) ──────────────────────────────────
+const mi = new MidiInput({ role: 'lead' });
+function listPorts() {
+  const sel = $('mi-in'), cur = mi.input ? mi.input.id : '';
+  sel.innerHTML = '<option value="">—</option>' + mi.inputs().map((p) => `<option value="${p.id}">${p.name}</option>`).join('');
+  sel.value = cur;
+}
+window.addEventListener('midiinput-status', (e) => {
+  const s = e.detail.status;
+  badge('b-midi', 'MIDI IN: ' + (s === 'connected' && mi.input ? mi.input.name : s), s === 'connected' ? 'ok' : s === 'denied' || s === 'unsupported' ? 'bad' : '');
+  listPorts();
+});
+$('mi-in').addEventListener('change', () => mi.selectInput($('mi-in').value));
+window.addEventListener('midiinput-message', (e) => {
+  if (!emu || !emu.ready) return;
+  const d = Array.from(e.detail.data), ch = +$('mi-ch').value;
+  if (ch && d[0] >= 0x80 && d[0] < 0xF0) d[0] = (d[0] & 0xF0) | (ch - 1);
+  emu.midi(d);
+});
+window.addEventListener('midiinput-note', (e) => {
+  const n = e.detail;
+  if (n.on) $('lastnote').textContent = 'in: ' + (typeof midiNoteNameMI === 'function' ? midiNoteNameMI(n.note) : n.note) + ' ch' + n.ch + ' vel ' + n.raw;
+});
+mi.start();
+</script>
+</body>
+</html>

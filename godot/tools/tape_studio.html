@@ -397,8 +397,7 @@ function djSet(lp, hp, v) {
 async function startAudio() {
   if (ctx) { if (ctx.state === 'suspended') await ctx.resume(); return; }
   ctx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: SR, latencyHint: 'interactive' });
-  const url = URL.createObjectURL(new Blob([WORKLETS], { type: 'application/javascript' }));
-  await ctx.audioWorklet.addModule(url);
+  await AK.addWorklet(ctx, WORKLETS);
   tape = new AudioWorkletNode(ctx, 'mm-tape', {
     numberOfInputs: 1, numberOfOutputs: NT + 1, outputChannelCount: Array(NT + 1).fill(2),
     channelCount: 2, channelCountMode: 'explicit', channelInterpretation: 'speakers',

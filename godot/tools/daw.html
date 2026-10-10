@@ -272,8 +272,8 @@ function badges() {
   $('b-engine').textContent = 'ENGINE: ' + E.ctx.sampleRate / 1000 + ' kHz'; $('b-engine').className = 'badge ok';
   const forge = typeof ForgeSynth === 'function';
   $('b-forge').textContent = forge ? 'FORGE: ready' : 'FORGE: missing (basic synth)'; $('b-forge').className = 'badge ' + (forge ? 'ok' : 'warn');
-  const emu = typeof FM1Emu === 'function' && window.FM1EMU && Object.keys(window.FM1EMU).length;
-  $('b-emu').textContent = emu ? 'FM-1 EMU: ' + Object.keys(window.FM1EMU).join(' · ') : 'FM-1 EMU: not installed'; $('b-emu').className = 'badge ' + (emu ? 'ok' : 'warn');
+  const emus = typeof FM1Emu === 'function' ? (window.FM1EMU_LIST || []).filter(e => e.vendored) : [];
+  $('b-emu').textContent = emus.length ? 'FM-1 EMU: ' + emus.map(e => e.name).join(' · ') : 'FM-1 EMU: not installed'; $('b-emu').className = 'badge ' + (emus.length ? 'ok' : 'warn');
   const mi = E.midi;
   $('b-midi').textContent = 'MIDI: ' + (mi ? (mi.status === 'connected' ? (mi.firmwareName || mi.input && mi.input.name || 'connected') : mi.status) : 'off');
   $('b-midi').className = 'badge ' + (mi && mi.status === 'connected' ? 'ok' : '');

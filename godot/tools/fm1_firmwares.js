@@ -104,7 +104,8 @@ const FM1_REGISTRY = /*FM1-JSON-BEGIN*/{
       "roles": { "lead": 3, "bass": 1, "chords": 2, "drums": 4 }, "drums": "GM 35–81 on a DRUM track (track 4 by default)", "clock": "in INT / USB / TRS", "dx7": false,
       "recovery": "re-run the installer (finishes an interrupted write); OCT− + OCT+ for 5 s = UBOOT; a black screen / WL80UBOOT needs a FM-1 Transporter",
       "warnings": ["connect directly to the computer", "complete backup before returning to V15"],
-      "summary": "Four tracks, each its own engine (13: ANALOG, FM6, PHASE, LOFI, SAMPLE, VOICE, TRIO, WHEEL, GRAIN, PHYS, NOISE, SLICE, DRUM)."
+      "summary": "Four tracks, each its own engine (13: ANALOG, FM6, PHASE, LOFI, SAMPLE, VOICE, TRIO, WHEEL, GRAIN, PHYS, NOISE, SLICE, DRUM).",
+      "emulator": {"vendor": "vendor/fm1emu/felucca/", "processor": "felucca", "rate": 44100, "hosted": "https://hugelton.github.io/Felucca/webapp/try/", "commit": "92d0634be3def39b7ae2a099a326d2cf8270453f"}
     },
     {
       "id": "x0x", "name": "X0X", "author": "Charles Vestal", "url": "https://github.com/charlesvestal/fm1-x0x",
@@ -116,7 +117,8 @@ const FM1_REGISTRY = /*FM1-JSON-BEGIN*/{
       "roles": { "lead": 3, "bass": 2, "chords": null, "drums": 10 }, "drums": "GM: 909 on ch10, 808 on ch11", "clock": "follows clock in; clock out optional", "dx7": false,
       "recovery": "SAFE MODE after two boot crashes (installer still works); OCT− + OCT+ 5 s = update mode",
       "warnings": ["beta"],
-      "summary": "ReBirth-style: 909 (ch10), 808 (ch11), two 303s (ch2, ch3), a break slicer (ch4)."
+      "summary": "ReBirth-style: 909 (ch10), 808 (ch11), two 303s (ch2, ch3), a break slicer (ch4).",
+      "emulator": {"vendor": "vendor/fm1emu/x0x/", "processor": "x0x", "rate": 44100, "hosted": "https://charlesvestal.github.io/fm1-x0x/emu/", "commit": "225e01d0ec330abbde0409e51d14062d523d6598"}
     },
     {
       "id": "jangada", "name": "Jangada", "author": "zednaked", "url": "https://github.com/zednaked/jangada",
