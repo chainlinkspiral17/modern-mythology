@@ -153,6 +153,7 @@
         <option value="felucca">Felucca emulator (+ FORGE pad)</option>
         <option value="x0x">X0X emulator: 909 · 303s (+ FORGE keys/pad)</option>
         <option value="hw">the FM-1 itself over MIDI (+ FORGE)</option>
+        <option value="patch">PATCH BANK — real instruments, picked for the style</option>
       </select></div>
       <div class="row"><button id="g-go">⚄ GENERATE</button><span class="note" id="g-info"></span></div>
       <div class="row"><span class="note">re-roll one part:</span><button class="dim" data-reroll="drums">drums</button><button class="dim" data-reroll="bass">bass</button><button class="dim" data-reroll="chords">chords</button><button class="dim" data-reroll="lead">lead</button><button class="dim" data-reroll="pad">pad</button></div>
@@ -167,7 +168,7 @@
       <h2>DEVICES</h2>
       <div class="row">
         <button class="dim" data-add="forge">+ FORGE</button><button class="dim" data-add="kit">+ KIT</button>
-        <button class="dim" data-add="emu:felucca">+ FELUCCA</button><button class="dim" data-add="emu:x0x">+ X0X</button><button class="dim" data-add="hw">+ FM-1 HW</button>
+        <button class="dim" data-add="emu:felucca">+ FELUCCA</button><button class="dim" data-add="emu:x0x">+ X0X</button><button class="dim" data-add="hw">+ FM-1 HW</button><button class="dim" id="add-patch">+ PATCH BANK…</button>
       </div>
       <div id="devlist"></div>
       <h2>SELECTED TRACK</h2>
@@ -195,6 +196,9 @@
       <div class="msg" id="b-msg"></div>
       <div class="row"><button class="dim" id="b-dl" disabled>⇩ WAV</button><button class="dim" id="b-game" disabled>⇢ INTO GAME</button><select id="b-target" style="flex:1"><option value="">assets/audio/daw/…</option></select></div>
       <div class="note">Bounces land in the shared library too (TAPE STUDIO and FIELD RECORDER can open them). A seamless loop is written with WAV loop points, so the game loops it without a gap.</div>
+      <h2>CREDITS · instruments this project uses</h2>
+      <div id="credits" class="note">—</div>
+      <div class="row"><button class="dim" id="cr-copy">⎘ COPY CREDITS</button></div>
       <h2>MIDI FILES</h2>
       <div class="row"><button class="dim" id="x-song">⇩ SONG .mid</button><button class="dim" id="x-track">⇩ SELECTED TRACK .mid</button></div>
       <div class="note">The SLOOP / Felucca web editors import a .mid per track (piano roll page); any DAW takes the song.</div>
@@ -231,6 +235,10 @@
 <script src="vendor/fm1emu/x0x/x0x_wasm.js"></script>
 <script src="vendor/fm1emu/x0x/x0x_worklet.js"></script>
 <script src="fm1_emu.js"></script>
+<script src="patch_sources.js"></script>
+<script src="sampler.js"></script>
+<script src="dx7_synth.js"></script>
+<script src="patch_bank.js"></script>
 <script src="daw_engine.js"></script>
 <script>
 "use strict";
@@ -268,7 +276,7 @@ $('gatebtn').addEventListener('click', async () => {
     await E.load(saved && saved.v ? saved : DAW.Engine.newProject());
     P = E.project;
     $('gate').style.display = 'none';
-    badges();
+    badges(); takeInbox();
   } catch (e) { $('gatebtn').textContent = 'failed: ' + (e.message || e); }
 });
 function badges() {
@@ -326,7 +334,8 @@ $('new').addEventListener('click', async () => { if (!confirm('Start an empty pr
 function trackDevLabel(t) {
   if (t.kind === 'audio') return 'audio';
   const d = E.dev(t.deviceId);
-  return d ? d.name + (d.type === 'emu' || d.type === 'hw' ? ' · ch' + t.channel : '') : '— no device —';
+  const st = d && d.type === 'patch' ? patchStatus(d) : '';
+  return d ? d.name + (d.type === 'emu' || d.type === 'hw' ? ' · ch' + t.channel : '') + (st ? ' · ' + st : '') : '— no device —';
 }
 function renderHeads() {
   const L = $('thlist'); L.innerHTML = '';
@@ -698,12 +707,28 @@ window.addEventListener('midiinput-note', e => {
 $('g-dice').addEventListener('click', () => { $('g-seed').value = Math.floor(Math.random() * 1e6); });
 const ROLE_ORDER = ['drums', 'bass', 'chords', 'lead', 'pad'];
 const ROLE_LEVEL = { drums: 0.62, bass: 0.6, chords: 0.42, lead: 0.42, pad: 0.36 };
+// PATCH BANK picks per style — free-to-use sources (GeneralUser GS, jRhodes3d, Karoryfer CC0). GeneralUser ids are
+// 'gugs:<bank>.<program>' (GM program numbers from 0; bank 128 = drum kits: 0 standard, 8 room, 16 power, 24 electronic,
+// 25 TR-808, 32 jazz, 40 brush, 48 orchestra).
+const PATCH_PICKS = {
+  four_floor: { drums: 'gugs:128.24', bass: 'gugs:0.38', chords: 'gugs:0.90', lead: 'gugs:0.80', pad: 'gugs:0.89' },
+  boom_bap:   { drums: 'gugs:128.8',  bass: 'gugs:0.33', chords: 'jrhodes:st', lead: 'gugs:0.11', pad: 'gugs:0.48' },
+  lofi:       { drums: 'gugs:128.40', bass: 'meatbass:programs_04_pizz', chords: 'jrhodes:st', lead: 'gugs:0.73', pad: 'gugs:0.89' },
+  trap:       { drums: 'gugs:128.25', bass: 'gugs:0.38', chords: 'gugs:0.0', lead: 'gugs:0.10', pad: 'gugs:0.94' },
+  dnb:        { drums: 'gugs:128.24', bass: 'gugs:0.39', chords: 'gugs:0.89', lead: 'gugs:0.81', pad: 'gugs:0.91' },
+  shuffle:    { drums: 'gugs:128.32', bass: 'gugs:0.32', chords: 'gugs:0.17', lead: 'weresax:programs_sax', pad: 'gugs:0.16' },
+  motorik:    { drums: 'gugs:128.16', bass: 'gugs:0.33', chords: 'gugs:0.29', lead: 'gugs:0.62', pad: 'gugs:0.50' },
+  synthwave:  { drums: 'gugs:128.25', bass: 'gugs:0.38', chords: 'gugs:0.90', lead: 'gugs:0.81', pad: 'gugs:0.89' },
+  noir:       { drums: 'gugs:128.40', bass: 'gugs:0.32', chords: 'jrhodes:st', lead: 'weresax:programs_sax', pad: 'gugs:0.48' },
+  ambient:    { drums: 'gugs:128.48', bass: 'gugs:0.32', chords: 'gugs:0.88', lead: 'gugs:0.11', pad: 'gugs:0.91' },
+};
 const ROLE_VEL = { drums: 1, bass: 0.95, chords: 0.75, lead: 0.85, pad: 0.7 };
 // where each role plays for each "PLAY ON" choice (emulator / hardware channels from the firmware registry)
 function routing(inst) {
   const reg = id => (typeof fm1Firmware === 'function' && fm1Firmware(id)) || {};
   if (inst === 'felucca') { const r = reg('felucca').roles || { lead: 3, bass: 1, chords: 2, drums: 4 }; return { emu: 'felucca', map: { drums: r.drums, bass: r.bass, chords: r.chords, lead: r.lead } }; }
   if (inst === 'x0x') { const r = reg('x0x').roles || { lead: 3, bass: 2, drums: 10 }; return { emu: 'x0x', map: { drums: r.drums, bass: r.bass, lead: r.lead } }; }
+  if (inst === 'patch') return { patch: true, map: {} };
   if (inst === 'hw') { const p = E.midi && E.midi.profile && E.midi.profile(); const r = (p && p.roles) || { lead: 1 }; const map = {}; for (const k of ROLE_ORDER) if (r[k]) map[k] = r[k]; return { hw: true, map }; }
   return { map: {} };
 }
@@ -729,6 +754,11 @@ async function generate(opts) {
     const part = song.parts[role]; if (!part.clips.length) continue;
     let dev, ch = 1;
     if (rt.map[role] && (emuDev || hwDev)) { dev = emuDev || hwDev; ch = rt.map[role]; }
+    else if (rt.patch && typeof PatchBank !== 'undefined') {
+      const pick = (PATCH_PICKS[song.style] || PATCH_PICKS.lofi)[role];
+      const it = pick && await PatchBank.item(pick);
+      dev = await E.addDevice('patch', { name: it ? it.name : pick, patch: pick });
+    }
     else if (role === 'drums') dev = await E.addDevice('kit', { name: 'KIT' });
     else dev = await E.addDevice(typeof ForgeSynth === 'function' ? 'forge' : 'basic', { name: role.toUpperCase() + ' · ' + part.preset, preset: part.preset });
     const t = E.addTrack('midi', { name: role, role, deviceId: dev.id, channel: ch, color: COLORS[role] });
@@ -740,6 +770,7 @@ async function generate(opts) {
   if (emuDev) emuDev.clock = true;
   sel = { trackId: P.tracks[0] && P.tracks[0].id, clip: 0 };
   E.applyMaster(); E.emit('project');
+  if (rt.patch) { msg('g-msg', 'loading instruments from the PATCH BANK (first time downloads them)…'); E.whenReady().then(() => { msg('g-msg', 'instruments ready — ▶ to listen.'); renderCredits(); }); }
   $('g-info').textContent = song.styleName + ' · ' + song.keyName + ' ' + song.mode + ' · ' + song.bpm + ' BPM · ' + song.progressionText + ' · ' + song.bars + ' bars';
   msg('g-msg', 'generated (seed ' + song.seed + '). ▶ to listen · edit anything · EXPORT → BOUNCE.');
 }
@@ -797,13 +828,15 @@ function renderDevices() {
   for (const d of P.devices) {
     const users = P.tracks.filter(t => t.deviceId === d.id).map(t => t.name + (d.type === 'emu' || d.type === 'hw' ? '·' + t.channel : ''));
     const div = document.createElement('div'); div.className = 'item';
-    div.innerHTML = `<b>${esc(d.name)}</b> · ${d.type}${d.emuId ? ' ' + d.emuId : ''}${d.preset ? ' · ' + d.preset : ''}<br><span class="note">${users.length ? 'plays: ' + esc(users.join(', ')) : 'unused'}</span>
-      <div class="row">${d.type === 'forge' || d.type === 'kit' ? '<button class="dim" data-a="edit">EDITOR</button>' : ''}${d.type === 'emu' ? '<button class="dim" data-a="panel">FM-1 PANEL</button>' : ''}
+    const pst = d.type === 'patch' ? patchStatus(d) : '';
+    div.innerHTML = `<b>${esc(d.name)}</b> · ${d.type === 'patch' ? 'patch bank' : d.type}${d.emuId ? ' ' + d.emuId : ''}${d.preset ? ' · ' + d.preset : ''}${pst ? ' · <span style="color:var(--amber)">' + esc(pst) + '</span>' : ''}<br><span class="note">${users.length ? 'plays: ' + esc(users.join(', ')) : 'unused'}</span>
+      <div class="row">${d.type === 'forge' || d.type === 'kit' || d.type === 'patch' ? '<button class="dim" data-a="edit">EDITOR</button>' : ''}${d.type === 'patch' ? '<button class="dim" data-a="swap">CHANGE…</button>' : ''}${d.type === 'emu' ? '<button class="dim" data-a="panel">FM-1 PANEL</button>' : ''}
       ${d.type === 'emu' || d.type === 'hw' ? `<label style="cursor:pointer"><input type="checkbox" data-a="clock" ${d.clock ? 'checked' : ''}> clock → device</label>` : ''}<button class="dim" data-a="rm">✕</button></div>`;
     div.addEventListener('click', e => {
       const a = e.target.dataset.a;
       if (a === 'edit') openEditor(d);
       else if (a === 'panel') openPanel(d);
+      else if (a === 'swap') openPatchPicker(it => E.setPatch(d.id, it.uid, it.name).then(renderCredits));
       else if (a === 'clock') { d.clock = e.target.checked; saveSoon(); }
       else if (a === 'rm') { if (confirm('Remove ' + d.name + '?')) E.removeDevice(d.id); }
     });
@@ -821,9 +854,10 @@ function renderDevDetail() {
     <div class="row"><label>DEVICE</label><select id="dd-dev" style="flex:1"><option value="">—</option>${P.devices.map(x => `<option value="${x.id}" ${x.id === t.deviceId ? 'selected' : ''}>${esc(x.name)}</option>`).join('')}</select></div>
     ${d && (d.type === 'emu' || d.type === 'hw') ? `<div class="row"><label>CHANNEL</label><input type="number" id="dd-ch" min="1" max="16" value="${t.channel}"><span class="note">${d.type === 'emu' && d.emuId === 'x0x' ? '909 ch10 · 808 ch11 · 303s ch2/3 · break ch4' : 'Felucca family: bass 1 · chords 2 · lead 3 · drums 4 (Felucca) / 10'}</span></div>` : ''}
     ${d && d.type === 'forge' && presets.length ? `<div class="row"><label>PRESET</label><select id="dd-preset" style="flex:1">${presets.map(p => `<option value="${p.id}" ${p.id === d.preset ? 'selected' : ''}>${esc(p.category + ' · ' + p.name)}</option>`).join('')}</select></div>` : ''}
+    ${d && d.type === 'patch' ? `<div class="row"><label>PATCH</label><span style="flex:1;color:var(--gold-hi)">${esc(d.name)}</span><button class="dim" id="dd-swap">CHANGE…</button></div><div class="note" id="dd-credit"></div>${E.devices.get(d.id) && E.devices.get(d.id).keymap ? '<div class="note">kit keys: ' + E.devices.get(d.id).keymap.slice(0, 24).map(k => SeqGen.NOTE_NAMES[k.key % 12] + (Math.floor(k.key / 12) - 1) + ' ' + esc(k.name)).join(' · ') + '</div>' : ''}` : ''}
     <div class="row"><label>VELOCITY</label><input type="range" id="dd-vel" min="0.2" max="1.5" step="0.01" value="${t.vel ?? 1}"></div>
     ${d && d.type === 'hw' ? `<div class="row"><label>RETURN</label><select id="dd-ret" style="flex:1"><option value="">— no audio back —</option></select></div><div class="note">pick the FM-1's USB audio ("Felucca" on Felucca-family firmwares) to hear and bounce it here.</div>` : ''}
-    <div class="row">${d && (d.type === 'forge' || d.type === 'kit') ? '<button id="dd-edit">OPEN EDITOR</button>' : ''}${d && d.type === 'emu' ? '<button id="dd-panel">OPEN FM-1 PANEL</button>' : ''}</div>`;
+    <div class="row">${d && (d.type === 'forge' || d.type === 'kit' || d.type === 'patch') ? '<button id="dd-edit">OPEN EDITOR</button>' : ''}${d && d.type === 'emu' ? '<button id="dd-panel">OPEN FM-1 PANEL</button>' : ''}</div>`;
   $('dd-name').addEventListener('change', e => { t.name = e.target.value; renderHeads(); saveSoon(); });
   $('dd-dev').addEventListener('change', e => { t.deviceId = e.target.value || null; E.emit('project'); });
   if ($('dd-ch')) $('dd-ch').addEventListener('change', e => { t.channel = Math.max(1, Math.min(16, +e.target.value || 1)); renderHeads(); saveSoon(); });
@@ -831,6 +865,8 @@ function renderDevDetail() {
   $('dd-vel').addEventListener('input', e => { t.vel = +e.target.value; saveSoon(); });
   if ($('dd-edit')) $('dd-edit').addEventListener('click', () => openEditor(d));
   if ($('dd-panel')) $('dd-panel').addEventListener('click', () => openPanel(d));
+  if ($('dd-swap')) $('dd-swap').addEventListener('click', () => openPatchPicker(it => E.setPatch(d.id, it.uid, it.name).then(renderCredits)));
+  if ($('dd-credit') && typeof PatchBank !== 'undefined') PatchBank.credit(d.patch).then(c => { if (c && $('dd-credit')) $('dd-credit').textContent = c.line + ' — ' + c.licence + (c.game === 'free' ? '' : c.game === 'credit' ? ' (credit it)' : ' (share-alike)'); });
   if ($('dd-ret')) AK.inputs.list().then(list => {
     const s = $('dd-ret'); if (!s) return;
     list.forEach(i => s.add(new Option((i.label || 'input') + (AK.inputs.hint(i.label) ? ' — ' + AK.inputs.hint(i.label) : ''), i.deviceId)));
@@ -905,7 +941,8 @@ async function doBounce(loop) {
     const r = await E.bounce({ fromBar: from, toBar: to, loop });
     lastBounce = r;
     const name = (P.name || 'daw') + (loop ? ' loop' : ' song');
-    await AK.lib.put({ kind: 'daw-bounce', name: name + ' · ' + AK.util.stamp(), sampleRate: r.sampleRate, loop: r.loop, meta: { title: name, bpm: P.bpm, tags: ['daw', loop ? 'loop' : 'song'], key: SeqGen.NOTE_NAMES[P.key] + ' ' + P.mode } }, r.channels);
+    lastCredits = await E.credits();
+    await AK.lib.put({ kind: 'daw-bounce', name: name + ' · ' + AK.util.stamp(), sampleRate: r.sampleRate, loop: r.loop, meta: { title: name, bpm: P.bpm, tags: ['daw', loop ? 'loop' : 'song'], key: SeqGen.NOTE_NAMES[P.key] + ' ' + P.mode, comment: lastCredits.text || undefined, credits: lastCredits.text || undefined } }, r.channels);
     const pk = AK.util.db(AK.util.peakOf(r.channels));
     msg('b-msg', 'bounced ' + AK.util.fmtTime(r.channels[0].length / r.sampleRate) + ' · peak ' + pk.toFixed(1) + ' dBFS' + (r.loop ? ' · seamless loop' : '') + ' → library.');
     $('b-dl').disabled = $('b-game').disabled = false;
@@ -914,7 +951,8 @@ async function doBounce(loop) {
 }
 $('b-song').addEventListener('click', () => doBounce(false));
 $('b-loop').addEventListener('click', () => doBounce(true));
-function bounceBlob() { return AK.wav.encode(lastBounce.channels, lastBounce.sampleRate, { bitDepth: 16, loop: lastBounce.loop, meta: { title: P.name, description: P.name, originator: 'MM DAW', tags: ['daw'], bpm: P.bpm, date: new Date().toISOString() } }); }
+let lastCredits = { lines: [], worst: 'free', text: '' };
+function bounceBlob() { return AK.wav.encode(lastBounce.channels, lastBounce.sampleRate, { bitDepth: 16, loop: lastBounce.loop, meta: { title: P.name, description: P.name, originator: 'MM DAW', tags: ['daw'], bpm: P.bpm, date: new Date().toISOString(), comment: lastCredits.text ? 'Instruments: ' + lastCredits.text.replace(/\n/g, '; ') : undefined, credits: lastCredits.text || undefined } }); }
 $('b-dl').addEventListener('click', () => lastBounce && AK.util.download(bounceBlob(), AK.util.slug(P.name) + '.wav'));
 $('b-game').addEventListener('click', async () => {
   if (!lastBounce) return;
@@ -922,7 +960,13 @@ $('b-game').addEventListener('click', async () => {
   const id = $('b-target').value;
   let path = 'assets/audio/daw/' + AK.util.slug(P.name) + '.wav';
   if (id) { const cat = await AK.game.catalog(); const t = cat.find(x => x.id === id); if (t) path = t.src.replace(/\.[^.\/]+$/, '') + '.wav'; if (await AK.game.exists(path) && !confirm(path + ' exists. Replace?')) return; }
-  try { await AK.game.write(path, bounceBlob()); msg('b-msg', 'wrote godot/' + path + (id ? ' — the game plays it for ' + id : '')); if (id) refreshWanted(); }
+  try {
+    await AK.game.write(path, bounceBlob());
+    // instruments that need a credit leave a note beside the file (Godot ignores .txt) for the game's credits roll
+    if (lastCredits.worst !== 'free') await AK.game.write(path + '.credits.txt', new Blob([lastCredits.text + '\n'], { type: 'text/plain' }));
+    msg('b-msg', 'wrote godot/' + path + (id ? ' — the game plays it for ' + id : '') + (lastCredits.worst !== 'free' ? ' · credits in ' + path.split('/').pop() + '.credits.txt' : ''));
+    if (id) refreshWanted();
+  }
   catch (e) { msg('b-msg', 'write failed: ' + (e.message || e), true); }
 });
 $('x-song').addEventListener('click', () => AK.util.download(new Blob([E.exportMidi()], { type: 'audio/midi' }), AK.util.slug(P.name) + '.mid'));
@@ -972,12 +1016,76 @@ $('a-add').addEventListener('click', () => {
 AK.lib.onChange(listLib);
 
 // ═══════════════════════════════════════════════════════════════════
+// PATCH BANK: picker, load progress, credits, "ADD TO DAW" from patch_bank.html
+// ═══════════════════════════════════════════════════════════════════
+const patchProg = {};
+function patchStatus(d) {
+  const inst = E.devices.get(d.id);
+  if (inst && inst.error) return 'failed: ' + inst.error;
+  if (inst && inst.inner) return '';
+  const p = patchProg[d.id];
+  return !p ? 'loading…' : p.phase === 'samples' ? 'samples ' + p.done + '/' + p.total : p.phase === 'ready' ? '' : (p.phase || 'loading') + '…';
+}
+let progT = null;
+E.on('device-progress', ({ id, p }) => { patchProg[id] = p; clearTimeout(progT); progT = setTimeout(() => { if ($('tab-dev').classList.contains('on')) renderDevices(); renderHeads(); }, 120); });
+async function renderCredits() {
+  const box = $('credits'); if (!box || !P) return;
+  const c = await E.credits();
+  box.innerHTML = c.lines.length ? c.lines.map(l => `<div>${esc(l.line)} — <span class="${l.game === 'free' ? '' : 'warn'}" style="color:${l.game === 'free' ? 'var(--emerald-hi)' : l.game === 'credit' ? 'var(--amber)' : 'var(--rust)'}">${esc(l.licence)}</span></div>`).join('') + (c.worst !== 'free' ? '<div style="margin-top:4px">INTO GAME also writes these lines to a .credits.txt beside the file.</div>' : '') : 'only built-in synths — nothing to credit.';
+}
+$('cr-copy').addEventListener('click', async () => { const c = await E.credits(); navigator.clipboard && navigator.clipboard.writeText(c.text || 'no credits needed'); });
+function openPatchPicker(onPick) {
+  if (typeof PatchBank === 'undefined') { msg('g-msg', 'patch_bank.js is not loaded.', true); return; }
+  $('modaltitle').textContent = 'PATCH BANK · pick an instrument';
+  $('modal').classList.add('show');
+  const body = $('modalbody');
+  body.innerHTML = `<div style="padding:10px;display:grid;grid-template-rows:auto 1fr;height:100%;gap:8px">
+    <div class="row"><input type="text" id="pp-q" placeholder="search: rhodes, 808, strings, E.PIANO, kalimba…" style="flex:1;font-size:14px;padding:6px"><select id="pp-src"><option value="">all sources</option></select>
+    <label style="cursor:pointer"><input type="checkbox" id="pp-free"> no-credit only</label><a href="patch_bank.html" target="_blank" style="color:var(--gold)">open PATCH BANK ↗</a></div>
+    <div id="pp-list" style="overflow:auto"></div></div>`;
+  const srcs = PatchBank.sources();
+  srcs.forEach(s => $('pp-src').add(new Option(s.name + (s.dynamic ? ' (downloads its list)' : ''), s.id)));
+  let all = [];
+  const draw = () => {
+    const q = $('pp-q').value.toLowerCase().split(/\s+/).filter(Boolean), src = $('pp-src').value, free = $('pp-free').checked;
+    const list = all.filter(i => (!src || i.source === src) && (src || q.length || i.category !== 'waveform') && (!free || PatchBank.creditSync(i).game === 'free') && q.every(w => (i.name + ' ' + i.category + ' ' + (i.bank || '') + ' ' + i.source).toLowerCase().includes(w)));
+    $('pp-list').innerHTML = list.slice(0, 250).map((i, k) => { const c = PatchBank.creditSync(i); return `<div class="item" data-k="${k}" style="padding:8px"><b>${esc(i.name)}</b> · ${esc(i.category)} · <span class="note">${esc((PatchBank.source(i.source) || {}).name || i.source)}${i.bank ? ' · ' + esc(i.bank) : ''}</span> <span style="color:${c.game === 'free' ? 'var(--emerald-hi)' : c.game === 'credit' ? 'var(--amber)' : 'var(--rust)'};font-size:9px">${c.game.toUpperCase()}</span></div>`; }).join('') + (list.length > 250 ? '<div class="note" style="padding:8px">' + (list.length - 250) + ' more — search to narrow</div>' : '') + (!list.length ? '<div class="note" style="padding:8px">nothing here yet — pick a source (SoundFont / DX7 banks list their presets once downloaded).</div>' : '');
+    $('pp-list').querySelectorAll('[data-k]').forEach(el => el.addEventListener('click', () => { const it = list[+el.dataset.k]; closeModal(); onPick(it); }));
+  };
+  $('pp-q').addEventListener('input', draw); $('pp-free').addEventListener('change', draw);
+  $('pp-src').addEventListener('change', async () => {
+    const s = PatchBank.source($('pp-src').value);
+    if (s && ['sf2', 'dx7', 'dx7zip'].includes(s.kind) && !all.some(i => i.source === s.id)) { $('pp-list').innerHTML = '<div class="note" style="padding:8px">downloading ' + esc(s.name) + '…</div>'; try { await PatchBank.prepare(s.id); all = await PatchBank.all(); } catch (e) { $('pp-list').innerHTML = '<div class="note" style="padding:8px">failed: ' + esc(e.message) + '</div>'; return; } }
+    draw();
+  });
+  PatchBank.all().then(a => { all = a; draw(); });
+  setTimeout(() => $('pp-q') && $('pp-q').focus(), 50);
+}
+async function addPatchTrack(uid, name) {
+  const it = await PatchBank.item(uid);
+  const d = await E.addDevice('patch', { name: name || (it && it.name) || uid, patch: uid });
+  const drums = it && (it.category === 'drums' || it.category === 'percussion');
+  const t = E.addTrack('midi', { name: (name || (it && it.name) || 'patch').slice(0, 24), deviceId: d.id, color: drums ? COLORS.drums : COLORS.midi, role: drums ? 'drums' : '' });
+  sel = { trackId: t.id, clip: -1 }; E.emit('project'); renderCredits();
+  msg('g-msg', 'added "' + t.name + '" — double-click / double-tap its lane to make a clip, or arm ● and record.');
+}
+$('add-patch').addEventListener('click', () => openPatchPicker(it => addPatchTrack(it.uid, it.name)));
+// patch_bank.html → "ADD TO DAW": live over a BroadcastChannel, or waiting in the inbox
+function takeInbox() {
+  if (!P) return;
+  let inbox = []; try { inbox = JSON.parse(localStorage.getItem('mm_daw_inbox') || '[]'); localStorage.removeItem('mm_daw_inbox'); } catch (e) {}
+  inbox.filter(m => m.type === 'add-patch').forEach(m => addPatchTrack(m.id, m.name));
+}
+try { new BroadcastChannel('mm_daw').onmessage = e => { if (P && e.data && e.data.type === 'add-patch') { localStorage.removeItem('mm_daw_inbox'); addPatchTrack(e.data.id, e.data.name); } }; } catch (e) {}
+window.addEventListener('focus', takeInbox);
+
+// ═══════════════════════════════════════════════════════════════════
 // tabs + frame loop
 // ═══════════════════════════════════════════════════════════════════
 document.querySelectorAll('.tabs button').forEach(b => b.addEventListener('click', () => {
   document.querySelectorAll('.tabs button').forEach(x => x.classList.toggle('on', x === b));
   document.querySelectorAll('.pane').forEach(p => p.classList.toggle('on', p.id === 'tab-' + b.dataset.tab));
-  if (b.dataset.tab === 'exp') listLib();
+  if (b.dataset.tab === 'exp') { listLib(); renderCredits(); }
 }));
 let lastTick = -1;
 function frame() {

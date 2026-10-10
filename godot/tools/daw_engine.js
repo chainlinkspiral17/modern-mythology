@@ -31,6 +31,7 @@
     get FM1Emu() { return typeof FM1Emu !== 'undefined' ? FM1Emu : root.FM1Emu; },
     get MidiInput() { return typeof MidiInput !== 'undefined' ? MidiInput : root.MidiInput; },
     get SMF() { return typeof SMF !== 'undefined' ? SMF : root.SMF; },
+    get PatchBank() { return typeof PatchBank !== 'undefined' ? PatchBank : root.PatchBank; },
   };
 
   const KIT_MAP = {   // GM note → [forge preset, note to play it at, gain]
@@ -111,6 +112,33 @@
       this.measureHolds();
     }
     dispose() { for (const s of Object.values(this.voices)) s.dispose(); this.output.disconnect(); }
+  }
+
+  // ── an instrument from the PATCH BANK (patch_bank.js): sampler or DX7 ──
+  // Loads in the background (first use downloads + caches); notes before it's ready are dropped.
+  class PatchDevice {
+    constructor(ctx, { output, engine, patch, devId }) { this.ctx = ctx; this.engine = engine; this.patch = patch; this.devId = devId; this.output = output; this.inner = null; this.pendingState = null; this.error = ''; }
+    init() { this.ready = this._load(); }          // don't block project load on downloads; bounce() awaits .ready
+    async _load() {
+      const PB = G.PatchBank; if (!PB) { this.error = 'patch_bank.js not loaded'; return; }
+      try {
+        this.inner = await PB.createDevice(this.ctx, this.patch, { output: this.output, onProgress: p => this.engine.emit('device-progress', { id: this.devId, p }) });
+        if (this.pendingState) { try { this.inner.setState(this.pendingState); } catch (e) {} this.pendingState = null; }
+        if (this.bpmV !== undefined && 'bpm' in this.inner) this.inner.bpm = this.bpmV;
+        this.engine.emit('device-progress', { id: this.devId, p: { phase: 'ready' } });
+      } catch (e) { this.error = e.message || String(e); this.engine.emit('error', 'patch ' + this.patch + ': ' + this.error); }
+    }
+    get bpm() { return this.bpmV; } set bpm(v) { this.bpmV = v; if (this.inner && 'bpm' in this.inner) this.inner.bpm = v; }
+    noteOn(n, v, when, ch) { if (this.inner) this.inner.noteOn(n, v, when, ch); }
+    noteOff(n, when, ch) { if (this.inner) this.inner.noteOff(n, when, ch); }
+    allOff(when) { if (this.inner) this.inner.allOff(when); }
+    cc(num, v, when) { if (this.inner && this.inner.cc) this.inner.cc(num, v, when); }
+    pitchBend(v, when) { if (this.inner && this.inner.pitchBend) this.inner.pitchBend(v, when); }
+    get keymap() { return this.inner && this.inner.keymap; }
+    getState() { return this.inner && this.inner.getState ? this.inner.getState() : this.pendingState; }
+    setState(st) { if (this.inner) { try { this.inner.setState(st); } catch (e) {} } else this.pendingState = st; }
+    mountEditor(el) { return this.inner && this.inner.mountEditor ? this.inner.mountEditor(el) : null; }
+    dispose() { if (this.inner) { try { this.inner.dispose(); } catch (e) {} } }
   }
 
   // ── the real FM-1 over Web MIDI ───────────────────────────────────
@@ -196,7 +224,7 @@
 
     // ── devices ─────────────────────────────────────────────────────
     async addDevice(type, opts = {}) {
-      const d = { id: this.uid('dev'), type, name: opts.name || type, emuId: opts.emuId, preset: opts.preset, state: null, mix: this.defaultMix() };
+      const d = { id: this.uid('dev'), type, name: opts.name || type, emuId: opts.emuId, preset: opts.preset, patch: opts.patch, state: null, mix: this.defaultMix() };
       this.project.devices.push(d);
       await this.createDeviceRuntime(d);
       if (opts.preset) this.setPreset(d.id, opts.preset);
@@ -210,6 +238,7 @@
       else if (d.type === 'kit') inst = new KitDevice(this.ctx, { output: strip.in });
       else if (d.type === 'emu' && typeof G.FM1Emu === 'function') inst = new G.FM1Emu(this.ctx, { id: d.emuId || 'felucca', output: strip.in });
       else if (d.type === 'hw') inst = new HwDevice(this.ctx, { output: strip.in, engine: this });
+      else if (d.type === 'patch') inst = new PatchDevice(this.ctx, { output: strip.in, engine: this, patch: d.patch, devId: d.id });
       else inst = new BasicSynth(this.ctx, { output: strip.in });
       inst.__type = d.type;
       this.devices.set(d.id, inst);
@@ -548,8 +577,11 @@
     }
 
     // ── bounce (real time: emulators and hardware can't render offline) ──
+    // every device loaded (PATCH BANK instruments may still be downloading)
+    async whenReady() { await Promise.all([...this.devices.values()].map(i => i.ready).filter(Boolean)); }
     async bounce({ fromBar = 0, toBar, loop = false, tailSec = 2 } = {}) {
       await this.start();
+      await this.whenReady();
       const P = this.project, savedLoop = Object.assign({}, P.loop);
       const bars = (toBar ?? this.songBars()) - fromBar;
       const lenSec = bars * BAR * this.spt();
@@ -585,6 +617,20 @@
     async restore() { try { return await AK.lib.kvGet('daw_project'); } catch (e) { return null; } }
 
     // ── MIDI file ───────────────────────────────────────────────────
+    // ── credits for every PATCH BANK instrument the project uses ─────
+    async credits() {
+      const PB = G.PatchBank, ids = this.project.devices.filter(d => d.type === 'patch' && d.patch && this.project.tracks.some(t => t.deviceId === d.id)).map(d => d.patch);
+      if (!PB || !ids.length) return { lines: [], worst: 'free', text: '' };
+      return PB.credits(ids);
+    }
+    async setPatch(devId, patch, name) {      // swap a patch device's instrument, keeping its mixer strip
+      const d = this.dev(devId); if (!d) return;
+      this.removeDeviceRuntimeOnly(devId);
+      d.patch = patch; d.state = null; if (name) d.name = name;
+      await this.createDeviceRuntime(d); this.applyMix(); this.emit('project');
+    }
+    removeDeviceRuntimeOnly(id) { const inst = this.devices.get(id); if (inst) { try { inst.allOff(); inst.dispose(); } catch (e) {} } this.devices.delete(id); }
+
     exportMidi(trackIds) {
       const P = this.project, tracks = [];
       for (const tr of P.tracks) {
