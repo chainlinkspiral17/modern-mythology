@@ -485,6 +485,10 @@
       "bed": "assets/audio/bgm/vol7_cabin_woodstove.wav",
       "gain": 0.82
     },
+    "cabin_road_truck": {
+      "bed": "assets/audio/bgm/vol7_cabin_woodstove.wav",
+      "gain": 0.82
+    },
     "cathedral_exterior": {
       "bed": "assets/audio/bgm/vol5_ambient.ogg",
       "gain": 0.82

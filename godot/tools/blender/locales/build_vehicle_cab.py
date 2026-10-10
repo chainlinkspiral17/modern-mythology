@@ -64,6 +64,8 @@ lower in its own colours, a sedan body round it) and carries the spread;
 the truck keeps Finn's duffel (vol7). New preset `vehicle_cab_altima`;
 ch16 routes to it; its inserts + closeups are `__vehicle_cab_altima`.
 
+Same night: Finn's truck (vol7) moved out to cabin_road, the duffel with it.
+
 Draft 4 targets: the Civic (vol6 ch19/ch20 — Ben/Jesse "in the Civic")
 still renders in the pickup: a hatch cab, or the Altima preset with a
 per-scene note; the sedan's raked windshield and roofline (the shifted
@@ -223,7 +225,7 @@ def build_dash():
     make_cyl("Radio_Knob_Tune", (0.12, 0.925, 0.885), 0.012, 0.012, CHROME, axis="Y", segments=8)
     for ki, kx in enumerate((-0.10, 0.0, 0.10)):
         make_cyl(f"Climate_Knob_{ki}", (kx, 0.94, 0.76), 0.02, 0.014, DASH_LT, axis="Y", segments=8)   # on the dash face (0.95)
-    make_box("Hazard_Button", (0.0, 0.928, 0.985), (0.03, 0.004, 0.02), (0.80, 0.18, 0.12, 1.0))
+    make_box("Hazard_Button", (0.0, 0.948, 0.985), (0.03, 0.004, 0.02), (0.80, 0.18, 0.12, 1.0))
     # the phone in the dashboard cradle, screen lit
     make_box("Phone_Cradle", (0.22, 1.08, 1.25), (0.10, 0.03, 0.14), RUBBER)
     make_box("Phone_Cradle_Foot", (0.22, 1.08, 1.19), (0.06, 0.05, 0.02), RUBBER)
@@ -328,7 +330,10 @@ def build_el_rancho():
 
 def build_finn_duffel():
     """vol7 ch2_morning, in Finn's truck — split from the El Rancho
-    spread (2026-10-09), which moved into BT's Altima."""
+    spread (2026-10-09), which moved into BT's Altima. Not built in THIS
+    set any more: Finn's truck is in cabin_road (build_finn_truck_2026_10
+    runs this cab's functions there), and the duffel rode in Ben's pickup
+    through every vol6 scene."""
     # Finn's duffel on the passenger seat (vol7 ch2_morning): the cloth
     # unwrapped, the piece of charred wood on it — "three inches long"
     make_box("Duffel", (0.50, 0.15, 1.035), (0.34, 0.26, 0.21), (0.32, 0.36, 0.30, 1.0))
@@ -463,7 +468,6 @@ def main():
     build_cab_shell()
     build_dash()
     build_seats()
-    build_finn_duffel()
     build_turnout_furniture()
     build_scrub()
     build_horizon()

@@ -179,6 +179,14 @@ light_color = Color(0.74, 0.78, 0.7, 1)
 light_energy = 0.35
 shadow_enabled = false
 
+; the cab's fill under the rain (stripped from the road's other presets)
+[node name="Cab_Fill__cabin_road_truck" type="OmniLight3D" parent="."]
+position = Vector3(-3.700, 1.550, 7.800)
+light_color = Color(0.80, 0.84, 0.88, 1)
+light_energy = 0.35
+shadow_enabled = false
+omni_range = 2.20
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]
@@ -322,10 +330,11 @@ rotation = Vector3(0.4363, 0.7854, 0.0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90, 1.15, -7.20)
 rotation = Vector3(-0.4099, -2.3694, 0.0)
 
-; Up the climb where the skein crosses the gap in the stand
+; insert: the crow on the dashboard of Finn's truck, through the windshield from the pull-out (2026-10-09: it aimed at a road with no crow)
 [node name="shot_insert_crow" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.30, 1.80, -6.00)
-rotation = Vector3(0.30, 0.12, 0.0)
+position = Vector3(-3.000, 1.600, 4.300)
+rotation = Vector3(-0.0854, 2.9997, 0.0)
+metadata/fov = 40.0
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
 layer = 100
@@ -356,4 +365,29 @@ metadata/fov = 45.0
 [node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.509, 1.612, -6.344)
 rotation = Vector3(-0.2618, -3.1416, 0.0)
+metadata/fov = 45.0
+
+; ── vn_shot · cabin_road_truck (2026-10-09): inside Finn's grandfather's Toyota on the pull-out (vol7 ch2) ──
+; insert: the duffel on the seat — the shortwave's hum through the canvas, its antenna out of the zip
+[node name="shot_insert_radio__cabin_road_truck" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-3.800, 1.400, 8.150)
+rotation = Vector3(-0.2510, -1.3734, 0.0)
+metadata/fov = 42.0
+
+; insert: the charred wood unwrapped on the cloth
+[node name="shot_insert_charred_wood__cabin_road_truck" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-3.500, 1.500, 8.200)
+rotation = Vector3(-0.7043, -1.1071, 0.0)
+metadata/fov = 40.0
+
+; insert: the crow on the dashboard, the rain on the glass beyond it
+[node name="shot_insert_crow__cabin_road_truck" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-3.900, 1.350, 7.950)
+rotation = Vector3(0.0000, -0.4836, 0.0)
+metadata/fov = 42.0
+
+; closeup: Finn at the wheel, from off the left fender in the rain
+[node name="shot_closeup_finn__cabin_road_truck" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-5.250, 1.500, 6.450)
+rotation = Vector3(-0.0720, -2.5269, 0.0)
 metadata/fov = 45.0

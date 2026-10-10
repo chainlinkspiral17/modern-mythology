@@ -50,6 +50,8 @@ the bend and the preset from the asphalt, for the grade's read.
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
+_LOC = os.path.dirname(os.path.abspath(__file__))
+if _LOC not in sys.path: sys.path.insert(0, _LOC)
 from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_lathe, make_prism, make_rot_box, make_tube, export_glb
 
 COL_ASPHALT = (0.24, 0.24, 0.25, 1.0)   # wet coastal asphalt
@@ -332,6 +334,65 @@ def build_draft3_2026_09():
     make_tube("Branch_West_Fork", [(-2.75, 2.9, 0.09), (-2.95, 3.3, 0.16)], 0.025, COL_ALDER_BARK, segments=5)
 
 
+FT_X, FT_Y, FT_DZ = -3.7, -8.2, 0.05     # Finn's truck: cab origin on the pull-out, how high the pad lifts it
+FINN_RED = (0.50, 0.24, 0.20, 1.0)       # an older Toyota, sun-faded
+FINN_RED_DK = (0.38, 0.18, 0.16, 1.0)
+
+
+def build_finn_truck_2026_10():
+    """FINN'S TRUCK (2026-10-09). vol7 ch2: "The truck was an older Toyota
+    that had belonged to Finn's grandfather" ... "the radio in the back of
+    the truck — the shortwave receiver from his grandfather — turned
+    itself on ... The hum came through the canvas of the duffel" ...
+    "He stopped the truck on the small gravel shoulder at the bend of the
+    road where the alders thinned ... looking through the windshield at
+    the rain coming down through the alders. The crow on the dashboard
+    tilted its head at him ... He put the duffel back on the seat beside
+    the crow." That cab rendered in Ben's green pickup on a Texas
+    turnout (vehicle_cab), and Finn's duffel rode in Ben's truck through
+    every vol6 scene. Now the truck is here, on a gravel pull-out off the
+    approach BEHIND the road preset's camera (the cabin_road scenes do
+    not see it), looking up the road at the transition, the crossing and
+    the stand. Its cab is vehicle_cab's run through plan.shifted in
+    Finn's colours; the duffel, the cloth, the charred wood and the
+    shortwave's antenna on the seat, the crow on the dash, rain on the
+    glass. Preset `cabin_road_truck`; its markers are suffixed.
+    (It faces uphill — shifted does not rotate; draft 2: turn it.)"""
+    import build_vehicle_cab as VC
+    from _props.plan import shifted
+    from _props.creatures import make_crow
+    tx, ty, dz = FT_X, FT_Y, FT_DZ
+    # the pull-out: gravel off the asphalt's west edge, a puddle in it
+    make_box("Pullout_Gravel", (tx - 0.1, ty - 0.4, 0.025), (2.9, 8.6, 0.05), COL_GRAVEL)
+    make_box("Pullout_Puddle", (tx + 0.9, ty + 4.0, 0.0505), (0.9, 0.6, 0.001), (0.36, 0.40, 0.44, 1.0))
+    with shifted(vars(VC), tx, ty, prefix="FinnTruck_", dz=dz, extra=("make_blob", "make_wedge"),
+                 TRUCK_GREEN=FINN_RED, TRUCK_GREEN_DK=FINN_RED_DK, SEAT=(0.36, 0.32, 0.28, 1.0),
+                 SEAT_DK=(0.28, 0.25, 0.22, 1.0)):
+        VC.build_truck_exterior()
+        VC.build_cab_shell()
+        VC.build_dash()
+        VC.build_seats()
+        VC.build_finn_duffel()
+        # the shortwave in the duffel: its antenna out of the zip, a knob at the opening
+        VC.make_tube("Shortwave_Radio_Antenna", [(0.58, 0.20, 1.14), (0.62, 0.24, 1.32), (0.66, 0.27, 1.46)], 0.004, (0.70, 0.70, 0.72, 1.0), segments=4)
+        VC.make_box("Shortwave_Radio_Corner", (0.60, 0.20, 1.138), (0.10, 0.06, 0.012), (0.20, 0.18, 0.16, 1.0))
+        VC.make_cyl("Shortwave_Radio_Knob", (0.56, 0.205, 1.148), 0.012, 0.01, (0.80, 0.78, 0.70, 1.0), segments=8)
+        # rain on the windshield, outside the glass
+        import random as _r
+        rnd = _r.Random(7)
+        for i in range(34):
+            VC.make_box(f"Rain_Streak_{i}", (rnd.uniform(-0.82, 0.82), 1.5785, rnd.uniform(1.24, 1.66)), (0.005, 0.002, rnd.uniform(0.04, 0.14)), (0.80, 0.86, 0.92, 0.45))
+    make_crow("FinnTruck_Crow", tx + 0.32, ty + 1.24, 1.18 + dz + 0.002, facing=1.0, scale=0.75)
+    # the alders thinning round the pull-out, a Sitka behind
+    from _props.trees import make_broadleaf, make_fern
+    for i, (px, py) in enumerate(((-6.4, -11.5), (-6.8, -6.0), (2.9, -9.5), (3.2, -4.0))):
+        make_broadleaf(f"Alder_Pullout_{i}", px, py, 4.2, COL_ALDER, COL_ALDER_BARK, crown=0.30)
+    for i, (px, py, h) in enumerate(((-8.5, -14.0, 9.0), (-9.0, -4.5, 8.5), (5.8, -12.0, 9.5), (5.4, -2.5, 8.0))):
+        _conifer(f"Sitka_Pullout_{i}", px, py, h, COL_SITKA if i % 2 else COL_CEDAR)
+    for i, (px, py, fh) in enumerate(((-5.6, -3.6, 0.5), (-5.7, -12.8, 0.55), (2.8, -7.0, 0.5))):
+        make_fern(f"Fern_Pullout_{i}", px, py, h=fh, col=COL_FERN)
+
+
 def main():
     clear_scene()
     build_road()
@@ -341,6 +402,7 @@ def main():
     build_drones_2026_08()
     build_road_history_2026_08()
     build_draft3_2026_09()
+    build_finn_truck_2026_10()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/cabin_road.glb"))
     print(f"\n[build_cabin_road] exporting to {out}")
