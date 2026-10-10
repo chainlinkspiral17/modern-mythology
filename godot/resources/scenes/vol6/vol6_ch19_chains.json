@@ -48,6 +48,10 @@
    "voice": "assets/audio/voice/vol6_ch19_chains/008.mp3"
   },
   {
+   "t": "bg",
+   "src": "3d:kowalski_front_yard"
+  },
+  {
    "t": "narrate",
    "text": "He pulls into the Kowalski driveway at one fifty-three.",
    "voice": "assets/audio/voice/vol6_ch19_chains/009.mp3"

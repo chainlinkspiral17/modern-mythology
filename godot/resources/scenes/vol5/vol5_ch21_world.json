@@ -226,7 +226,7 @@
     },
     {
       "t": "bg",
-      "src": "3d:graustark_wreck"
+      "src": "3d:roberts_kitchen"
     },
     {
       "t": "narrate",
@@ -284,6 +284,10 @@
       "voice": "assets/audio/voice/vol5_ch21_world/051.ogg"
     },
     {
+      "t": "bg",
+      "src": "3d:graustark_wreck"
+    },
+    {
       "t": "narrate",
       "text": "Even Frasier Temple's tin-foil kingdom — that warehouse fulla scary-smart junk — hums different now. Less frantic static. More — purpose. Like the Demons learned some manners. Or maybe just got bored whisperin' doom.",
       "voice": "assets/audio/voice/vol5_ch21_world/052.ogg"
@@ -327,6 +331,10 @@
       "voice": "assets/audio/voice/vol5_ch21_world/059.mp3"
     },
     {
+      "t": "bg",
+      "src": "3d:graustark_ruins"
+    },
+    {
       "t": "narrate",
       "text": "[shot:insert sinkhole]But it ain't all sunshine and rehabilitated archetypes. This is still Graustark, son. Or what's left of it. Shadows got teeth here.",
       "voice": "assets/audio/voice/vol5_ch21_world/060.ogg"
@@ -350,6 +358,10 @@
       "t": "narrate",
       "text": "Then we'll see. Maya had, on learning this, said only: okay. She had not, yet, said more. She did not need to. The okay had done the work the okay had been called on to do.",
       "voice": "assets/audio/voice/vol5_ch21_world/064.ogg"
+    },
+    {
+      "t": "bg",
+      "src": "3d:roberts_kitchen"
     },
     {
       "t": "narrate",
@@ -380,6 +392,10 @@
       "t": "narrate",
       "text": "But the tools in Philip's shed had been, in the past two days, quietly organized into the arrangement Doug preferred when he worked, because Philip remembered what that arrangement had been, from 2018, when they had rebuilt the gate.",
       "voice": "assets/audio/voice/vol5_ch21_world/070.ogg"
+    },
+    {
+      "t": "bg",
+      "src": "3d:graustark_wreck"
     },
     {
       "t": "narrate",

@@ -475,6 +475,10 @@
       "voice": "assets/audio/voice/vol5_ch9_hermit/093.ogg"
     },
     {
+      "t": "bg",
+      "src": "3d:graustark_ruins"
+    },
+    {
       "t": "narrate",
       "text": "[mood:night][shot:insert sinkhole~]At the lip of the sinkhole proper she paused.",
       "voice": "assets/audio/voice/vol5_ch9_hermit/094.ogg"
@@ -530,6 +534,10 @@
       "voice": "assets/audio/voice/vol5_ch9_hermit/104.mp3"
     },
     {
+      "t": "bg",
+      "src": "3d:graustark_chalk_wall"
+    },
+    {
       "t": "narrate",
       "text": "[shot:insert crow]The animals followed her back along the path that wasn't a path, past the I-beam, past the chalked wall, past the place where the haberdashery had been.",
       "voice": "assets/audio/voice/vol5_ch9_hermit/105.ogg"
@@ -568,6 +576,10 @@
       "t": "narrate",
       "text": "She put the receipt back in her pocket. She stepped inside. Rumpus padded in after her. The crow settled on the patched roof above the door, with the proprietary air of a creature who has decided to stand the night watch and does not require to be asked.",
       "voice": "assets/audio/voice/vol5_ch9_hermit/112.mp3"
+    },
+    {
+      "t": "bg",
+      "src": "3d:graustark_shotgun_interior"
     },
     {
       "t": "narrate",

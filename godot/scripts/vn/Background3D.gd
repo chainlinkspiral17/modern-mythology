@@ -342,6 +342,24 @@ const CAMERA_PRESETS := {
 		"suppress_input": true,
 	},
 	# ── VOL 5 — Star — the cottage (the annual offering) ─────────
+	"graustark_shotgun_interior": {
+		"scene": "res://scenes/locales/graustark.tscn",
+		"requires_glb": "res://assets/3d/locales/graustark.glb",
+		# (2026-10-10) INSIDE Joanna's patched shotgun house (blender x
+		# 50.6-54.4, y -383.5..-377; floor top 0.78): "She sat at her small
+		# desk — a door laid across two stacks of bricks" (ch9), "Lit the
+		# candle. Sat at the desk-that-was-a-door-on-bricks" (ch17). The eye
+		# of shot_wide_house: just inside the door, NE to the desk under the
+		# east window, the candle on it. Night: the candle practicals are
+		# the light; the Texas sun stays suffixed to the day presets.
+		"camera_origin": Vector3(51.60, 1.62, 382.95),
+		"camera_rotation": Vector3(-0.123, -0.493, 0.0),
+		"fov": 62.0,
+		# (graustark.tscn has a flat background and one shared sun across eight
+		# presets; the walls shield the room, so only ambient and fog go dark)
+		"env": {"ambient_color": Color(0.42, 0.36, 0.30, 1), "ambient_energy": 0.55, "fog_color": Color(0.14, 0.12, 0.12, 1)},
+		"suppress_input": true,
+	},
 	"graustark_cottage": {
 		"scene": "res://scenes/locales/graustark.tscn",
 		"requires_glb": "res://assets/3d/locales/graustark.glb",
@@ -710,6 +728,19 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(-1.4, 1.5, -0.8),
 		"camera_rotation": Vector3(-0.192, -0.543, 0.0),
 		"fov": 58.0,
+		"suppress_input": true,
+	},
+	"kowalski_front_yard": {
+		"scene": "res://scenes/locales/kowalski_backyard.tscn",
+		"requires_glb": "res://assets/3d/locales/kowalski_backyard.glb",
+		# (2026-10-10) vol6 ch19 "The Chains": the FRONT of the Kowalski house
+		# (godot z 5.2 to the street at z 18): the stoop and the bed beside it
+		# where Bill pulls weeds on Friday afternoons, the garage, the
+		# driveway with Ben's Civic, the lawn, the street. From the sidewalk,
+		# NE up the lawn to the house front, the bed at left.
+		"camera_origin": Vector3(-4.00, 1.65, 13.80),
+		"camera_rotation": Vector3(-0.024, -0.626, 0.0),
+		"fov": 62.0,
 		"suppress_input": true,
 	},
 	"kowalski_backyard": {

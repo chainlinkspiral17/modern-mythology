@@ -3834,6 +3834,71 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-10 · overnight run, pass 50: THE KOWALSKI FRONT YARD + JOANNA'S HOUSE
+INSIDE (from the sweeps).**
+
+**The Kowalski front** (vol6 ch19 "The Chains": "He pulls into the
+Kowalski driveway at one fifty-three. Bill is, again, at the front yard
+... pulling weeds from the bed beside the porch", which played in Ben's
+truck cab). `build_kowalski_backyard.py` gains
+`build_front_yard_2026_10`: the house's sides and front (door, windows,
+the stoop with its little roof), the bed beside the stoop with its
+shrubs, the pulled weeds, the bucket, the kneeling pad, trowel and
+gloves; the attached garage; the driveway with Ben's Civic; the lawn,
+sidewalk, curb, street and the houses across. The new preset
+`kowalski_front_yard` shares the scene, with its own suffixed SW sun
+(the back yard's sun leaves the front in the house's shadow) and three
+suffixed markers (Bill, Ben, the reverse). ch19 is routed from node 9.
+
+**Joanna's house, inside** (vol5 ch9 and ch17: "She sat at her small
+desk — a door laid across two stacks of bricks", "Lit the candle. Sat at
+the desk-that-was-a-door-on-bricks", both playing on the chalk wall
+outside). The interior, desk, candle, cot and crate shelf were already
+built in `graustark.glb` (2026-10-04); only the camera was missing. The
+new preset `graustark_shotgun_interior` takes `shot_wide_house`'s eye
+inside the door, with an `env` that darkens ambient and fog (the scene
+has a flat background and one shared sun across eight presets, so no
+sky or sun change). ch9 is routed at "The flashlight failed", ch17 at
+"She closed the door of the shotgun house".
+
+**THE VOL5 SWEEP** (an Explore agent, all 27 chapters) found, beyond
+these two: ch4 Emperor's dining-room walk (→ dambrosios_formal), ch6
+Lovers' front hallway (NEW), ch9/ch17's sinkhole lip (→ graustark_ruins),
+ch18 Moon's county-line gas station (NEW, MODERATE), ch20 Judgement's
+Mile End flat after the eviction (NEW, MODERATE), ch21 World's bg cut
+landing a scene early (roberts_kitchen / cathedral / ruins), and a long
+MINOR tail of street walks and montage lines. Time-of-day: ch12 Hanged
+and ch18 Moon play after-midnight scenes on `natalie_apartment`'s
+AFTERNOON light, and ch13 Death's 3 AM on `hospice_room`'s lit window:
+three candidates for the pass-46/49 day-night pattern. Also: ch18,
+ch20 and ch21 credit several `say` nodes to the wrong speakers (Miriam's
+lines as natalie/nicola/aria; the Frog's as frasier) — a script fix,
+not a set fix.
+
+**The vol5 routing fixes from the sweep, same pass** (no new geometry;
+none of these chapters uses `goto`):
+- ch4 Emperor: Dante's walk down into the dining room goes to
+  `dambrosios_formal` from "The dining room received him".
+- ch9 Hermit: the sinkhole lip goes to `graustark_ruins` (the scene's
+  unsuffixed `shot_insert_sinkhole` / `shot_wide_sinkhole` serve it),
+  back to the chalk wall for the walk home, then into the house.
+- ch17 Star: the lip on the way home goes to `graustark_ruins`.
+- ch21 World: the wreck cut that landed on "The Roberts place" is now
+  `roberts_kitchen`; the Frog's voice-over about Frasier's warehouse and
+  "See. Completion." stays on the wreck (the kitchen has only named
+  closeups, so a generic `person_b` there read blind); the sinkhole
+  lines go to the ruins; Doug's arrival back to the Roberts; then the
+  wreck again from the Demons.
+
+Deck must REBUILD kowalski_backyard (graustark needs no rebuild).
+
+Draft 2 targets:
+- a ProceduralSky on kowalski_backyard.tscn (its flat colour reads as a
+  grey overcast on the front);
+- Bill's gloves on the kneeling pad, a wheelbarrow;
+- ch4, ch9/ch17 sinkhole, ch21's cut: the routing fixes above;
+- natalie_apartment at night, hospice_room at 3 AM.
+
 **2026-10-10 · overnight run, pass 49: THE BACK PORCH IN THE MORNING (pass 48's
 note).** ch11 at 08:03 ("The light in the back yard has shifted into the
 small late-morning angle. The crepe myrtle is doing its work ... sitting

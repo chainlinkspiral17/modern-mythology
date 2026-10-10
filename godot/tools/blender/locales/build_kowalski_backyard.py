@@ -191,6 +191,77 @@ def build_hero_props_2026_09():
     make_box("Butterfly_Wing_R", (1.372, 4.2, 0.558), (0.028, 0.020, 0.002), (0.90, 0.62, 0.20, 1.0))
 
 
+
+def build_front_yard_2026_10():
+    """THE FRONT OF THE HOUSE (2026-10-10; vol6 ch19 "The Chains" — the sweep:
+    Bill at the front yard played in Ben's truck cab). "He pulls into the
+    Kowalski driveway at one fifty-three. Bill is, again, at the front yard.
+    Bill is, this Friday afternoon, pulling weeds from the bed beside the
+    porch — the small Bill-task that has been, for three weeks, his
+    Friday-afternoon ritual." The house gets its sides and its front (the
+    door, the windows, the stoop, the attached garage), the flower bed beside
+    the stoop with the pulled weeds, the bucket, the trowel and the kneeling
+    pad; the front lawn, the driveway with Ben's Civic, the sidewalk, the
+    street and the houses across it. Preset `kowalski_front_yard` (its
+    markers suffixed); the same bright afternoon light as the back yard."""
+    import math
+    from _props.vehicles import make_car
+    from _props.geometry import make_blob, make_rot_box
+    FY = -5.2                                   # the house's front wall line
+    # the house's sides and its front
+    for e in (-1, 1):
+        make_box(f"House_Wall_Side_{e:+d}", (e * (YARD_W / 2.0), FY / 2.0, HOUSE_H / 2.0), (0.3, -FY, HOUSE_H), COL_SIDING_SHADE)
+    make_box("House_Wall_Front", (0.0, FY, HOUSE_H / 2.0), (YARD_W, 0.3, HOUSE_H), COL_SIDING)
+    make_box("House_Front_Door", (-1.2, FY - 0.16, 1.02), (0.92, 0.04, 2.04), (0.36, 0.22, 0.18, 1.0))
+    make_box("House_Front_Door_Knob", (-0.85, FY - 0.20, 1.00), (0.05, 0.04, 0.05), (0.72, 0.62, 0.36, 1.0))
+    for k, wx in enumerate((-3.6, 1.4, 3.6)):
+        make_box(f"House_Front_Window_{k}", (wx, FY - 0.155, 1.55), (1.20, 0.02, 1.10), (0.40, 0.46, 0.52, 1.0))
+        make_box(f"House_Front_Window_{k}_Trim", (wx, FY - 0.152, 1.55), (1.36, 0.01, 1.26), COL_TRIM)
+    # the stoop and its little roof on posts
+    make_box("Front_Stoop_Slab", (-1.2, FY - 0.85, 0.045), (2.4, 1.4, 0.09), COL_PATIO)   # one low slab the door opens over
+    make_box("Front_Stoop_Step", (-1.2, FY - 1.75, 0.03), (1.6, 0.40, 0.06), COL_PATIO)
+    for e in (-1, 1):
+        make_box(f"Front_Stoop_Post_{e:+d}", (-1.2 + e * 1.10, FY - 1.45, 0.09 + (2.60 - 0.09) / 2.0), (0.10, 0.10, 2.60 - 0.09), COL_TRIM)
+    make_box("Front_Stoop_Roof", (-1.2, FY - 0.80, 2.66), (2.6, 1.70, 0.12), COL_TRIM)
+    # the bed beside the stoop: mulch, shrubs, the pulled weeds, Bill's things
+    bx0, bx1 = -5.2, -2.6
+    make_box("Flower_Bed_Mulch", ((bx0 + bx1) / 2.0, FY - 0.70, 0.02), (bx1 - bx0, 1.10, 0.06), (0.36, 0.24, 0.16, 1.0))
+    make_box("Flower_Bed_Edging", ((bx0 + bx1) / 2.0, FY - 1.27, 0.06), (bx1 - bx0, 0.04, 0.12), (0.56, 0.54, 0.50, 1.0))
+    for k, sx in enumerate((-4.7, -3.9, -3.1)):
+        make_blob(f"Flower_Bed_Shrub_{k}", (sx, FY - 0.55, 0.40), 0.40, (0.24, 0.40, 0.20, 1.0), noise=0.22, seed=600 + k, squash=0.8)
+    make_blob("Pulled_Weeds_Pile", (-3.4, FY - 1.55, 0.06), 0.22, (0.40, 0.48, 0.24, 1.0), noise=0.35, seed=640, squash=0.35)
+    make_cyl("Weed_Bucket", (-2.9, FY - 1.75, 0.16), 0.15, 0.32, (0.86, 0.48, 0.16, 1.0), segments=12)
+    make_box("Kneeling_Pad", (-3.95, FY - 1.55, 0.02), (0.44, 0.28, 0.04), (0.20, 0.42, 0.30, 1.0))
+    make_rot_box("Garden_Trowel", (-3.65, FY - 1.40, 0.012), (0.06, 0.26, 0.02), (0.60, 0.62, 0.64, 1.0), yaw=0.6)
+    make_box("Garden_Gloves", (-4.30, FY - 1.50, 0.015), (0.14, 0.10, 0.03), (0.72, 0.62, 0.38, 1.0))
+    # the attached garage on the east, its door to the driveway
+    gx0, gx1 = YARD_W / 2.0, YARD_W / 2.0 + 4.0
+    make_box("Garage_Wall_Front", ((gx0 + gx1) / 2.0, FY, 1.35), (gx1 - gx0, 0.3, 2.70), COL_SIDING)
+    make_box("Garage_Wall_Side", (gx1, FY / 2.0, 1.35), (0.3, -FY, 2.70), COL_SIDING_SHADE)
+    make_box("Garage_Door", ((gx0 + gx1) / 2.0, FY - 0.16, 1.05), (3.0, 0.03, 2.10), COL_TRIM)
+    for k in range(4):
+        make_box(f"Garage_Door_Panel_Line_{k}", ((gx0 + gx1) / 2.0, FY - 0.177, 0.45 + k * 0.52), (3.0, 0.004, 0.03), (0.70, 0.70, 0.66, 1.0))
+    make_box("Garage_Roof", ((gx0 + 0.15 + gx1 + 0.15) / 2.0, FY / 2.0 - 0.075, 2.76), (gx1 - gx0, -FY + 0.15, 0.12), (0.36, 0.30, 0.28, 1.0))   # from the house wall's face out
+    # the front lawn, the driveway with Ben's Civic, the sidewalk, the curb, the street
+    make_box("Front_Lawn", (-2.0, (FY - 13.4) / 2.0, -0.02), (15.0, 13.4 + FY, 0.04), COL_LAWN)
+    make_box("Driveway_Concrete", (7.5, (FY - 13.4) / 2.0, -0.015), (3.8, 13.4 + FY, 0.05), COL_PATIO)
+    make_car("Driveway_Civic", 7.5, -9.4, 4.4, (0.42, 0.46, 0.52, 1.0), along="Y")
+    make_box("Front_Sidewalk", (1.0, -14.0, -0.01), (26.0, 1.2, 0.06), COL_PATIO)
+    make_box("Front_Curb", (1.0, -14.66, 0.02), (26.0, 0.12, 0.14), (0.60, 0.59, 0.56, 1.0))
+    make_box("Front_Street_Asphalt", (1.0, -17.9, -0.03), (40.0, 6.4, 0.05), (0.28, 0.28, 0.30, 1.0))
+    make_box("Front_Lawn_Across", (1.0, -26.0, -0.03), (40.0, 9.8, 0.04), COL_LAWN)
+    for k, (hx, col) in enumerate(((-8.0, (0.78, 0.72, 0.60, 1.0)), (3.0, (0.66, 0.70, 0.72, 1.0)), (14.0, (0.84, 0.80, 0.70, 1.0)))):
+        make_box(f"Across_House_{k}_Facade", (hx, -28.5, 1.5), (9.0, 7.0, 3.0), col)
+        rh = 7.0 / 4.0 + 0.25
+        rzz = 3.0 + rh * math.sin(0.42) + 0.08 - 0.02
+        make_rot_box(f"Across_House_{k}_Roof_N", (hx, -28.5 + 7.0 / 4.0, rzz), (9.6, 2.0 * rh, 0.16), (0.34, 0.30, 0.28, 1.0), roll=-0.42)
+        make_rot_box(f"Across_House_{k}_Roof_S", (hx, -28.5 - 7.0 / 4.0, rzz), (9.6, 2.0 * rh, 0.16), (0.34, 0.30, 0.28, 1.0), roll=0.42)
+    for k, (gx, gy) in enumerate(((-7.5, -11.0), (2.5, -12.2), (-12.0, -24.0), (9.0, -24.5))):
+        make_cyl(f"Front_Tree_{k}_Trunk", (gx, gy, 1.6), 0.22, 3.2, (0.36, 0.28, 0.22, 1.0), segments=8)
+        make_blob(f"Front_Tree_{k}_Crown", (gx, gy, 4.4), 2.2, (0.26, 0.40, 0.20, 1.0), noise=0.22, seed=660 + k, squash=0.7)
+    make_box("Mailbox_Post", (5.2, -13.2, 0.55), (0.08, 0.08, 1.10), (0.40, 0.32, 0.24, 1.0))
+    make_box("Mailbox", (5.2, -13.2, 1.18), (0.20, 0.46, 0.22), (0.20, 0.20, 0.22, 1.0))
+
 def main():
     clear_scene()
     build_ground()
@@ -198,6 +269,7 @@ def main():
     build_fence_and_tree()
     build_scene_props()
     build_hero_props_2026_09()
+    build_front_yard_2026_10()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/kowalski_backyard.glb"))
     print(f"\n[build_kowalski_backyard] exporting to {out}")

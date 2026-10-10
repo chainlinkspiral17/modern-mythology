@@ -604,6 +604,10 @@
       "voice": "assets/audio/voice/vol5_ch17_star/119.mp3"
     },
     {
+      "t": "bg",
+      "src": "3d:graustark_ruins"
+    },
+    {
       "t": "narrate",
       "text": "[shot:insert sinkhole]She did not, this time, slow at the lip of the sinkhole. The void breathed up at her in the same way it had breathed up at her in all the months and years she had been keeping the lonely watch — but the void, tonight, was not asking anything of her.",
       "voice": "assets/audio/voice/vol5_ch17_star/120.mp3"
@@ -617,6 +621,10 @@
       "t": "narrate",
       "text": "The void had received the answer.",
       "voice": "assets/audio/voice/vol5_ch17_star/122.mp3"
+    },
+    {
+      "t": "bg",
+      "src": "3d:graustark_shotgun_interior"
     },
     {
       "t": "narrate",

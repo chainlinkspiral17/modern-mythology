@@ -540,6 +540,10 @@
    "voice": "assets/audio/voice/vol5_ch4_emperor/103.mp3"
   },
   {
+    "t": "bg",
+    "src": "3d:dambrosios_formal"
+  },
+  {
    "t": "narrate",
    "text": "[shot:establish]The dining room received him the way a congregation receives a priest who has aged into a kind of permanent fixture: with the small reverent inattention of people who have stopped, decades ago, being surprised that he was still there.",
    "voice": "assets/audio/voice/vol5_ch4_emperor/104.mp3"

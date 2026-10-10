@@ -4186,6 +4186,115 @@
    "scene_missing": false
   },
   {
+   "id": "graustark_shotgun_interior",
+   "scene": "res://scenes/locales/graustark.tscn",
+   "vol": 5,
+   "uses": 2,
+   "moods": [
+    "dawn_warm",
+    "candlelight_low"
+   ],
+   "markers": [
+    {
+     "name": "shot_closeup_child",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_frog",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_joanna",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_beam",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_candle",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_chalk",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cottage",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_crow",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_doohickey",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_gate",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_herbs",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_letter",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_notebook",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_paddlebox",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_receipt",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_rubble",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_sinkhole",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_smoke_ring",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_steamship",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_wall",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_wreck",
+     "type": "insert"
+    },
+    {
+     "name": "shot_wide_house",
+     "type": "wide"
+    },
+    {
+     "name": "shot_wide_sinkhole",
+     "type": "wide"
+    },
+    {
+     "name": "shot_wide_threshold",
+     "type": "wide"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
    "id": "grunion_beach",
    "scene": "res://scenes/locales/grunion_beach.tscn",
    "vol": 2,
@@ -6864,6 +6973,42 @@
    "scene_missing": false
   },
   {
+   "id": "kowalski_front_yard",
+   "scene": "res://scenes/locales/kowalski_backyard.tscn",
+   "vol": 6,
+   "uses": 1,
+   "moods": [
+    ""
+   ],
+   "markers": [
+    {
+     "name": "shot_establish_b__kowalski_front_yard",
+     "type": "establish"
+    },
+    {
+     "name": "shot_closeup_bill__kowalski_front_yard",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person__kowalski_front_yard",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_butterfly",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_daisy",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
    "id": "lake_palestine",
    "scene": "res://scenes/locales/lake_palestine.tscn",
    "vol": 6,
@@ -8291,5 +8436,5 @@
   "tired",
   "nervous"
  ],
- "frames": 1857
+ "frames": 1890
 }

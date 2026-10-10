@@ -174,6 +174,15 @@ light_color = Color(0.62, 0.72, 0.88, 1)
 light_energy = 0.35
 shadow_enabled = false
 
+; ── the front yard's own sun (2026-10-10, preset kowalski_front_yard) — row-major
+; the house shades its front from the back yard's north sun; this one comes out of the SW
+[node name="Sun_Front__kowalski_front_yard" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.8192, 0.4263, -0.3838, 0.0000, 0.6691, 0.7431, 0.5736, -0.6087, 0.5481, -4, 10, 14)
+light_color = Color(1.0, 0.95, 0.84, 1)
+light_energy = 1.10
+shadow_enabled = true
+metadata/daylight = true
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]
@@ -332,3 +341,22 @@ metadata/fov = 45.0
 position = Vector3(0.061, 1.612, -3.887)
 rotation = Vector3(-0.2618, 0.0000, 0.0)
 metadata/fov = 45.0
+
+; ── vn_shot coverage (2026-10-10) — the front of the house (kowalski_front_yard)
+; closeup: Bill up from the bed beside the stoop, the stoop and the front door behind him
+[node name="shot_closeup_bill__kowalski_front_yard" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.600, 1.620, 9.200)
+rotation = Vector3(0.0209, 0.7854, 0.0)
+metadata/fov = 42.0
+
+; closeup: Ben by the Civic in the driveway ("Yeah, Dad.")
+[node name="shot_closeup_person__kowalski_front_yard" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.800, 1.700, 8.400)
+rotation = Vector3(0.0211, -2.2565, 0.0)
+metadata/fov = 42.0
+
+; reverse: from the stoop down the lawn to the driveway and the street
+[node name="shot_establish_b__kowalski_front_yard" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.400, 1.700, 6.600)
+rotation = Vector3(-0.0382, -2.3562, 0.0)
+metadata/fov = 60.0
