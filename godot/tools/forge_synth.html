@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>FORGE · Modern Mythology</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --bg-0: #050304; --bg-1: #0e0908; --ink: #1a1410;
+    --rule: #553318; --gold: #d8a060; --gold-hi: #ffd896;
+    --text: #c8a878; --text-dim: #7a5828;
+    --emerald: #4ea060; --emerald-hi: #a8e89c; --rust: #c87633; --burgundy: #7a1e26;
+    --red: #c64a3a; --amber: #f0b94a; --violet: #c8a4f0;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100vh; overflow: hidden; background: var(--bg-0); color: var(--text); font-family: "Courier New", monospace; }
+  body { display: grid; grid-template-rows: auto auto minmax(0, 1fr) auto auto; }
+  header { padding: 6px 14px; border-bottom: 1px solid var(--rule); display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  header h1 { margin: 0; font-size: 15px; letter-spacing: 0.18em; color: var(--gold-hi); }
+  .badge { font-size: 10px; letter-spacing: 0.08em; padding: 2px 7px; border: 1px solid var(--rule); color: var(--text-dim); }
+  .badge.ok { color: var(--emerald-hi); border-color: var(--emerald); }
+  .badge.warn { color: var(--amber); border-color: var(--amber); }
+  .badge.bad { color: var(--red); border-color: var(--red); }
+  .sub { color: var(--text-dim); font-size: 11px; font-style: italic; }
+  .transport { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; padding: 5px 14px; border-bottom: 1px solid var(--rule); font-size: 11px; }
+  .transport label { color: var(--text-dim); letter-spacing: 0.06em; display: inline-flex; align-items: center; gap: 4px; }
+  .transport .sep { width: 1px; height: 16px; background: var(--rule); }
+  select, input[type=number], input[type=text] { background: var(--ink); color: var(--gold-hi); border: 1px solid var(--rule); font-family: inherit; font-size: 11px; padding: 2px 5px; }
+  input[type=number] { width: 54px; }
+  input[type=range] { accent-color: var(--rust); }
+  button { background: var(--ink); color: var(--gold-hi); border: 1px solid var(--gold); padding: 3px 9px; font-family: inherit; font-size: 10px; letter-spacing: 0.08em; cursor: pointer; }
+  button:hover:not(:disabled) { background: var(--gold); color: var(--ink); }
+  button:disabled { opacity: 0.35; cursor: default; }
+  button.dim { color: var(--text-dim); border-color: var(--rule); }
+  button.on { background: var(--rust); color: var(--ink); border-color: var(--gold-hi); }
+  #rec { background: #2a0c0e; border-color: var(--red); color: #ffb0a0; }
+  #rec.on { background: var(--red); color: #fff; }
+  #editor { min-height: 0; overflow: hidden; }
+  .kbwrap { border-top: 1px solid var(--rule); padding: 5px 14px 4px; display: flex; gap: 10px; align-items: stretch; }
+  .wheels { display: flex; gap: 8px; align-items: stretch; }
+  .wheel { display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 9px; color: var(--text-dim); letter-spacing: 0.08em; }
+  .wheel input { writing-mode: vertical-lr; direction: rtl; width: 22px; height: 64px; margin: 0; }
+  #kbd { position: relative; flex: 1; height: 78px; touch-action: none; user-select: none; -webkit-user-select: none; }
+  #kbd .k { position: absolute; top: 0; border: 1px solid var(--rule); cursor: pointer; }
+  #kbd .w { height: 100%; background: #e8dcc4; z-index: 1; border-color: #8a7050; border-radius: 0 0 3px 3px; }
+  #kbd .b { height: 60%; background: #1a1410; z-index: 2; border-color: #000; border-radius: 0 0 2px 2px; }
+  #kbd .k.on.w { background: var(--gold); }
+  #kbd .k.on.b { background: var(--rust); }
+  #kbd .k span { position: absolute; bottom: 3px; left: 0; right: 0; text-align: center; font-size: 9px; color: #7a5828; pointer-events: none; }
+  #kbd .b span { color: #7a5828; bottom: 2px; }
+  footer { padding: 4px 14px; border-top: 1px solid var(--rule); color: var(--text-dim); font-size: 10px; display: flex; gap: 14px; flex-wrap: wrap; }
+  footer a { color: var(--gold); text-decoration: none; }
+  kbd { border: 1px solid var(--rule); padding: 0 3px; color: var(--gold-hi); font-family: inherit; }
+  .msg { color: var(--emerald-hi); font-size: 10px; }
+  .msg.err { color: var(--red); }
+</style>
+</head>
+<body>
+<header>
+  <h1>FORGE</h1>
+  <span class="badge" id="b-audio">AUDIO: off · click or press a key</span>
+  <span class="badge" id="b-midi">MIDI: —</span>
+  <span class="sub">a semi-modular synth · generators → lanes → snapins · drag a modulator onto any knob</span>
+</header>
+
+<div class="transport">
+  <label>BPM <input type="number" id="bpm" min="40" max="240" value="92" title="tempo for synced LFOs, delays and the trance gate"></label>
+  <label>OCT <button class="dim" id="octdn" title="octave down (←)">−</button><b id="oct" style="color:var(--gold-hi);min-width:14px;text-align:center">3</b><button class="dim" id="octup" title="octave up (→)">+</button></label>
+  <label title="velocity for the on-screen and computer keyboards">VEL <input type="range" id="vel" min="0.05" max="1" step="0.01" value="0.8" style="width:70px"></label>
+  <button class="dim" id="hold" title="sustain pedal (hold Space)">SUSTAIN</button>
+  <button class="dim" id="panic" title="silence everything">PANIC</button>
+  <span class="sep"></span>
+  <label title="render a held note offline and store it in the shared take library">RENDER <select id="rnote"></select></label>
+  <label>HOLD <input type="number" id="rsec" min="0.2" max="20" step="0.1" value="3"> s</label>
+  <input type="text" id="rname" placeholder="name" style="width:130px">
+  <button id="rec" title="render the note into the library (FIELD RECORDER / TAPE STUDIO can open it)">⏺ TO LIBRARY</button>
+  <button class="dim" id="rwav" title="render the note and download a WAV">⇩ WAV</button>
+  <span class="msg" id="rmsg"></span>
+  <span style="flex:1"></span>
+  <button class="dim" id="fm1panel" title="FM-1 / MIDI connection + knob LEARN for the 8 macros, mod wheel and volume">🎛 FM-1 / MIDI</button>
+</div>
+
+<main id="editor"></main>
+
+<div class="kbwrap">
+  <div class="wheels">
+    <div class="wheel">BEND<input type="range" id="pb" min="-1" max="1" step="0.01" value="0" title="pitch bend (springs back)"></div>
+    <div class="wheel">MOD<input type="range" id="mw" min="0" max="1" step="0.01" value="0" title="mod wheel (CC 1)"></div>
+  </div>
+  <div id="kbd"></div>
+</div>
+
+<footer>
+  <span>← <a href="index.html">all tools</a> · <a href="tape_studio.html">TAPE STUDIO</a> · <a href="field_recorder.html">FIELD RECORDER</a> · <a href="fm1_console.html">FM-1 CONSOLE</a></span>
+  <span>keys <kbd>Z</kbd>–<kbd>/</kbd> and <kbd>Q</kbd>–<kbd>]</kbd> · <kbd>←</kbd><kbd>→</kbd> octave · hold <kbd>Space</kbd> sustain · <kbd>Esc</kbd> stop routing</span>
+  <span>patches save in this browser · ⇩ JSON to keep them</span>
+</footer>
+
+<!-- MIDI-learn proxies: the FM-1 panel binds learned knobs to these range inputs -->
+<div hidden>
+  <input type="range" id="mac1" min="0" max="1" step="0.001" value="0"><input type="range" id="mac2" min="0" max="1" step="0.001" value="0">
+  <input type="range" id="mac3" min="0" max="1" step="0.001" value="0"><input type="range" id="mac4" min="0" max="1" step="0.001" value="0">
+  <input type="range" id="mac5" min="0" max="1" step="0.001" value="0"><input type="range" id="mac6" min="0" max="1" step="0.001" value="0">
+  <input type="range" id="mac7" min="0" max="1" step="0.001" value="0"><input type="range" id="mac8" min="0" max="1" step="0.001" value="0">
+  <input type="range" id="vol" min="0" max="1.5" step="0.01" value="0.8">
+</div>
+
+<script src="fm1_firmwares.js"></script>
+<script src="midi_input.js"></script>
+<script src="audio_kit.js"></script>
+<script src="forge_synth.js"></script>
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const LAST_KEY = 'mm_forge_last';      // this viewer's last patch (convenience)
+
+// ── audio + synth ────────────────────────────────────────────────
+const AC = window.AudioContext || window.webkitAudioContext;
+const ctx = new AC({ latencyHint: 'interactive' });
+const synth = new ForgeSynth(ctx, { maxVoices: 12 });
+synth.bpm = +$('bpm').value;
+let restored = false;
+try { const j = localStorage.getItem(LAST_KEY); if (j) restored = synth.setState(JSON.parse(j)); } catch (e) { restored = false; }
+if (!restored) synth.loadPreset('keys_tape_ep');
+const editor = synth.mountEditor($('editor'));
+synth.init().then(() => refreshAudioBadge());
+
+let saveTimer = 0;
+const saveSoon = () => { clearTimeout(saveTimer); saveTimer = setTimeout(() => { try { localStorage.setItem(LAST_KEY, JSON.stringify(synth.getState())); } catch (e) { /* storage blocked */ } }, 600); };
+synth.on('change', saveSoon);
+
+function refreshAudioBadge() {
+  const b = $('b-audio');
+  if (ctx.state === 'running') { b.className = 'badge ok'; b.textContent = 'AUDIO: ' + ctx.sampleRate + ' Hz' + (synth._worklet ? '' : ' · no worklet'); }
+  else { b.className = 'badge warn'; b.textContent = 'AUDIO: off · click or press a key'; }
+}
+function ensureAudio() { if (ctx.state !== 'running') ctx.resume().then(refreshAudioBadge).catch(() => {}); }
+['pointerdown', 'keydown', 'touchstart'].forEach(ev => document.addEventListener(ev, ensureAudio, { capture: true }));
+ctx.onstatechange = refreshAudioBadge;
+refreshAudioBadge();
+
+// ── transport controls ───────────────────────────────────────────
+$('bpm').addEventListener('change', () => { synth.bpm = Math.max(40, Math.min(240, +$('bpm').value || 92)); });
+let octave = 3;
+function setOct(o) { releaseAllKeys(); octave = Math.max(0, Math.min(7, o)); $('oct').textContent = octave; buildKbd(); }
+$('octdn').addEventListener('click', () => setOct(octave - 1));
+$('octup').addEventListener('click', () => setOct(octave + 1));
+let sustainLatched = false;
+function setSustain(on) { synth.cc(64, on ? 1 : 0); $('hold').classList.toggle('on', on); }
+$('hold').addEventListener('click', () => { sustainLatched = !sustainLatched; setSustain(sustainLatched); });
+$('panic').addEventListener('click', () => { releaseAllKeys(); synth.panic(); sustainLatched = false; $('hold').classList.remove('on'); if (mi) mi.allNotesOff(); });
+$('mw').addEventListener('input', () => synth.cc(1, +$('mw').value));
+$('pb').addEventListener('input', () => synth.pitchBend(+$('pb').value));
+const springBack = () => { if (+$('pb').value !== 0) { $('pb').value = 0; synth.pitchBend(0); } };
+$('pb').addEventListener('pointerup', springBack); $('pb').addEventListener('change', springBack);
+
+// ── playing (shared by on-screen keys, computer keys and MIDI) ────
+const held = new Map();     // source key → note
+let _fromMidi = false;
+function play(note, vel) {
+  ensureAudio();
+  synth.noteOn(note, vel);
+  if (!_fromMidi && mi) mi.echoNoteOn(note, vel);
+  markKey(note, true);
+}
+function stop(note) {
+  synth.noteOff(note);
+  if (!_fromMidi && mi) mi.echoNoteOff(note);
+  markKey(note, false);
+}
+function releaseAllKeys() { for (const [, n] of held) stop(n); held.clear(); }
+const vel = () => +$('vel').value;
+
+// on-screen keyboard: three octaves from C(octave)
+const NN = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+function buildKbd() {
+  const kb = $('kbd'); kb.textContent = '';
+  const base = 12 * (octave + 1), N = 37, whites = [];
+  for (let i = 0; i < N; i++) if (![1, 3, 6, 8, 10].includes(i % 12)) whites.push(i);
+  const ww = 100 / whites.length;
+  let wi = 0;
+  for (let i = 0; i < N; i++) {
+    const n = base + i, black = [1, 3, 6, 8, 10].includes(i % 12);
+    const k = document.createElement('div');
+    k.className = 'k ' + (black ? 'b' : 'w'); k.dataset.note = n;
+    if (black) { k.style.left = (wi * ww - ww * 0.32) + '%'; k.style.width = (ww * 0.64) + '%'; }
+    else { k.style.left = (wi * ww) + '%'; k.style.width = ww + '%'; wi++; if (i % 12 === 0) k.innerHTML = '<span>' + NN[0] + (Math.floor(n / 12) - 1) + '</span>'; }
+    kb.appendChild(k);
+  }
+}
+function markKey(note, on) { const k = document.querySelector('#kbd .k[data-note="' + note + '"]'); if (k) k.classList.toggle('on', on); }
+const kb = $('kbd');
+kb.addEventListener('pointerdown', e => {
+  const k = e.target.closest('.k'); if (!k) return;
+  e.preventDefault();
+  try { kb.setPointerCapture(e.pointerId); } catch (err) { /* ok */ }
+  const r = k.getBoundingClientRect(), v = Math.max(0.15, Math.min(1, 0.35 + 0.65 * (e.clientY - r.top) / r.height));
+  const n = +k.dataset.note; held.set('p' + e.pointerId, n); play(n, v * vel() / 0.8 > 1 ? 1 : v * vel() / 0.8);
+});
+kb.addEventListener('pointermove', e => {
+  const id = 'p' + e.pointerId; if (!held.has(id)) return;
+  const el = document.elementFromPoint(e.clientX, e.clientY), k = el && el.closest ? el.closest('#kbd .k') : null;
+  if (!k) return;
+  const n = +k.dataset.note, cur = held.get(id);
+  if (n !== cur) { stop(cur); held.set(id, n); play(n, vel()); }
+});
+const kbUp = e => { const id = 'p' + e.pointerId; if (!held.has(id)) return; stop(held.get(id)); held.delete(id); };
+kb.addEventListener('pointerup', kbUp); kb.addEventListener('pointercancel', kbUp);
+
+// computer keyboard: two rows (Z row = C(oct), Q row = an octave up)
+const LOW = ['KeyZ', 'KeyS', 'KeyX', 'KeyD', 'KeyC', 'KeyV', 'KeyG', 'KeyB', 'KeyH', 'KeyN', 'KeyJ', 'KeyM', 'Comma', 'KeyL', 'Period', 'Semicolon', 'Slash'];
+const HIGH = ['KeyQ', 'Digit2', 'KeyW', 'Digit3', 'KeyE', 'KeyR', 'Digit5', 'KeyT', 'Digit6', 'KeyY', 'Digit7', 'KeyU', 'KeyI', 'Digit9', 'KeyO', 'Digit0', 'KeyP', 'BracketLeft', 'Equal', 'BracketRight'];
+function keyNote(code) {
+  let i = LOW.indexOf(code); if (i >= 0) return 12 * (octave + 1) + i;
+  i = HIGH.indexOf(code); if (i >= 0) return 12 * (octave + 2) + i;
+  return null;
+}
+const typing = e => { const t = e.target, tag = (t.tagName || '').toUpperCase(); return tag === 'TEXTAREA' || tag === 'SELECT' || (tag === 'INPUT' && /^(text|number|search)$/.test(t.type)); };
+window.addEventListener('keydown', e => {
+  if (typing(e) || e.ctrlKey || e.metaKey || e.altKey) return;
+  if (e.code === 'Space') { e.preventDefault(); if (!e.repeat && !sustainLatched) setSustain(true); return; }
+  if (e.code === 'ArrowLeft') { e.preventDefault(); setOct(octave - 1); return; }
+  if (e.code === 'ArrowRight') { e.preventDefault(); setOct(octave + 1); return; }
+  const n = keyNote(e.code);
+  if (n == null || e.repeat || held.has(e.code)) return;
+  e.preventDefault();
+  held.set(e.code, n); play(n, vel());
+});
+window.addEventListener('keyup', e => {
+  if (e.code === 'Space') { if (!sustainLatched) setSustain(false); return; }
+  if (!held.has(e.code)) return;
+  stop(held.get(e.code)); held.delete(e.code);
+});
+window.addEventListener('blur', () => { releaseAllKeys(); if (!sustainLatched) setSustain(false); });
+
+// ── render a note → library / WAV ────────────────────────────────
+for (let n = 36; n <= 84; n++) { const o = document.createElement('option'); o.value = n; o.textContent = NN[n % 12] + (Math.floor(n / 12) - 1); if (n === 60) o.selected = true; $('rnote').appendChild(o); }
+function rmsg(t, err) { $('rmsg').textContent = t; $('rmsg').className = 'msg' + (err ? ' err' : ''); }
+async function renderNote() {
+  const note = +$('rnote').value, holdSec = Math.max(0.2, Math.min(20, +$('rsec').value || 3));
+  const st = synth.getState(), sr = ctx.sampleRate;
+  const tail = Math.min(8, Math.max(0.3, st.amp.r * 1.4 + 0.2) + (st.lanes.A.fx.concat(st.lanes.B.fx, st.lanes.C.fx).some(f => f.type === 'reverb' || f.type === 'delay') ? 2.5 : 0.3));
+  const len = Math.ceil((holdSec + tail) * sr);
+  const off = new OfflineAudioContext({ numberOfChannels: 2, length: len, sampleRate: sr });
+  const s2 = new ForgeSynth(off, { maxVoices: 4 });
+  await s2.init();
+  s2.bpm = synth.bpm;
+  s2.setState(st);
+  await s2.loaded();
+  s2.noteOn(note, vel(), 0.01);
+  s2.noteOff(note, 0.01 + holdSec);
+  const buf = await off.startRendering();
+  s2.dispose();
+  const L = buf.getChannelData(0).slice(0), R = buf.getChannelData(1).slice(0);
+  // trim the silent tail (−70 dB) and fade the last 10 ms
+  const thr = Math.pow(10, -70 / 20); let end = L.length;
+  while (end > sr * (holdSec * 0.5) && Math.abs(L[end - 1]) < thr && Math.abs(R[end - 1]) < thr) end--;
+  end = Math.min(L.length, end + Math.round(sr * 0.02));
+  const fade = Math.min(end, Math.round(sr * 0.01));
+  for (let i = 0; i < fade; i++) { const g = i / fade; L[end - 1 - i] *= g; R[end - 1 - i] *= g; }
+  return { chans: [L.slice(0, end), R.slice(0, end)], sr, note };
+}
+function renderName(note) { return ($('rname').value.trim() || synth.state.name) + ' ' + NN[note % 12] + (Math.floor(note / 12) - 1); }
+$('rec').addEventListener('click', async () => {
+  $('rec').disabled = true; $('rec').classList.add('on'); rmsg('rendering…');
+  try {
+    const r = await renderNote(), name = renderName(r.note);
+    const pk = AK.util.peakOf(r.chans);
+    await AK.lib.put({ kind: 'synth', name, sampleRate: r.sr,
+      meta: { title: name, tags: ['forge', synth.state.category || 'user'], root: r.note, preset: synth.presetId || null, patch: synth.state.name } }, r.chans);
+    rmsg('stored "' + name + '" in the library · ' + (r.chans[0].length / r.sr).toFixed(1) + ' s · peak ' + AK.util.db(pk).toFixed(1) + ' dB');
+  } catch (e) { rmsg('render failed: ' + (e.message || e), true); }
+  $('rec').disabled = false; $('rec').classList.remove('on');
+});
+$('rwav').addEventListener('click', async () => {
+  rmsg('rendering…');
+  try {
+    const r = await renderNote(), name = renderName(r.note);
+    const blob = AK.wav.encode(r.chans, r.sr, { bitDepth: 24, meta: { title: name, tags: ['forge'], comment: 'FORGE · ' + synth.state.name } });
+    AK.util.download(blob, AK.util.slug(name) + '.wav');
+    rmsg('downloaded ' + AK.util.slug(name) + '.wav');
+  } catch (e) { rmsg('render failed: ' + (e.message || e), true); }
+});
+
+// ── FM-1 / MIDI routing ──────────────────────────────────────────
+// Keys play the synth, CC 1 = mod wheel, CC 64 = sustain, CC 74 = M1 by
+// default; LEARN binds any knob to the 8 macros, the mod wheel or VOL.
+let mi = null;
+try { mi = new MidiInput({ role: 'lead' }); mi.start(); } catch (e) { mi = null; }
+const LEARN = [
+  ...Array.from({ length: 8 }, (_, i) => ({ id: 'forge.m' + (i + 1), label: 'MACRO ' + (i + 1), el: 'mac' + (i + 1) })),
+  { id: 'forge.mw', label: 'MOD WHEEL', el: 'mw' },
+  { id: 'vol', label: 'VOL', el: 'vol' },
+];
+for (let i = 0; i < 8; i++) $('mac' + (i + 1)).addEventListener('input', e => synth.setMacro(i, +e.target.value));
+$('vol').addEventListener('input', () => synth.setParam('master.gain', +$('vol').value));
+synth.on('macro', e => { const el = $('mac' + (e.i + 1)); if (el && document.activeElement !== el) el.value = e.value; });
+if (mi) {
+  LEARN.forEach(t => bindCcToRange(mi, t.id, t.el));     // learned knobs work with the panel closed
+  let panel = null;
+  $('fm1panel').addEventListener('click', () => {
+    if (panel) { panel.style.display = panel.style.display === 'none' ? '' : 'none'; return; }
+    panel = mountMidiOverlay(mi, { right: '10px', bind: false, learnTargets: LEARN });
+  });
+  const midiBadge = () => {
+    const b = $('b-midi'), s = mi.snapshot();
+    if (mi.status === 'connected') { b.className = 'badge ok'; b.textContent = 'MIDI: ' + (s.inName || 'in') .slice(0, 24); }
+    else { b.className = 'badge' + (mi.status === 'unsupported' || mi.status === 'denied' ? ' bad' : ''); b.textContent = 'MIDI: ' + mi.status; }
+  };
+  ['midiinput-status', 'midiinput-connected', 'midiinput-disconnected'].forEach(ev => window.addEventListener(ev, midiBadge));
+  midiBadge();
+  window.addEventListener('midiinput-connected', ensureAudio);
+  window.addEventListener('midiinput-note', e => {
+    const d = e.detail;
+    _fromMidi = true;
+    try { if (d.on && d.vel > 0) play(d.note, d.vel); else stop(d.note); } finally { _fromMidi = false; }
+  });
+  window.addEventListener('midiinput-cc', e => {
+    const d = e.detail;
+    if (d.target) return;                       // a learned knob — bindCcToRange handles it
+    synth.cc(d.cc, d.norm);
+    if (d.cc === 1) $('mw').value = d.norm;
+  });
+  window.addEventListener('midiinput-pitchbend', e => { synth.pitchBend(e.detail.value); $('pb').value = e.detail.value; });
+} else {
+  $('fm1panel').disabled = true; $('b-midi').textContent = 'MIDI: unavailable';
+}
+
+buildKbd();
+</script>
+</body>
+</html>

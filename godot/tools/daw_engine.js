@@ -82,13 +82,23 @@
         try { s.loadPreset(id); } catch (e) { /* missing preset → stays init */ }
         this.voices[id] = s;
       }
+      this.measureHolds();
+    }
+    // how long to hold each one-shot: a decaying preset (sustain 0) rings out its attack+decay,
+    // a sustaining one gets a short gate. Releasing early would cut the kick's tail.
+    measureHolds() {
+      this.hold = {};
+      for (const [id, s] of Object.entries(this.voices)) {
+        let a = null; try { a = s.getState().amp; } catch (e) {}
+        this.hold[id] = a && a.s <= 0.01 ? Math.min(4, (a.a || 0) + (a.d || 0.3)) : 0.12;
+      }
     }
     noteOn(n, v, when) {
       if (this.basic) return this.basic.noteOn(n, v, when);
       const m = this.map[n] || this.map[36 + ((n - 36) % 12 + 12) % 12] || ['perc_rim', 60, 0.8];
       const s = this.voices[m[0]]; if (!s) return;
       s.noteOn(m[1], Math.min(1, v * m[2]), when);
-      s.noteOff(m[1], when + 0.05);   // one-shots: the preset's envelope carries the tail
+      s.noteOff(m[1], when + ((this.hold && this.hold[m[0]]) || 0.12));
     }
     noteOff() {}
     allOff(when) { if (this.basic) this.basic.allOff(when); for (const s of Object.values(this.voices)) s.allOff(when); }
@@ -98,6 +108,7 @@
       if (!st) return;
       if (st.map) this.map = st.map;
       if (st.voices) for (const [k, s] of Object.entries(st.voices)) if (this.voices[k]) this.voices[k].setState(s);
+      this.measureHolds();
     }
     dispose() { for (const s of Object.values(this.voices)) s.dispose(); this.output.disconnect(); }
   }
@@ -284,7 +295,9 @@
       this.delay.delayTime.setTargetAtTime(Math.min(3.9, M.delayBeats * 60 / this.project.bpm), now, 0.05);
       this.delayFb.gain.setTargetAtTime(M.delayFb, now, 0.02);
       this.delayOut.gain.setTargetAtTime(M.delayMix, now, 0.02);
-      for (const inst of this.devices.values()) { if ('bpm' in inst) { try { inst.bpm = this.project.bpm; } catch (e) {} } }
+      for (const inst of this.devices.values()) {
+        for (const x of [inst, ...Object.values(inst.voices || {})]) if (x && 'bpm' in x) { try { x.bpm = this.project.bpm; } catch (e) {} }
+      }
     }
     levels(id) {
       const s = id ? this.strips.get(id) : null;
@@ -321,10 +334,18 @@
       this.schedTick = startTick;
       this.playing = true;
       this.sendClock('start', this.anchor.ctx);
+      this.syncDevices(this.anchor.ctx);
       this.startCovering(startTick, this.anchor.ctx);
       this.timer = setInterval(() => this.schedule(), TICK_MS);
       this.schedule();
       this.emit('transport', { playing: true });
+    }
+    // FORGE: restart tempo-synced LFOs / trance gates on the bar line
+    syncDevices(when) {
+      for (const inst of this.devices.values()) {
+        if (inst.syncAt) { try { inst.syncAt(when); } catch (e) {} }
+        if (inst.voices) for (const v of Object.values(inst.voices)) if (v.syncAt) { try { v.syncAt(when); } catch (e) {} }
+      }
     }
     stop() {
       if (!this.ctx) return;
@@ -356,6 +377,7 @@
           this.anchor = { ctx: tWrap, tick: P.loop.a * BAR };
           this.schedTick = P.loop.a * BAR;
           this.startCovering(this.schedTick, tWrap, true);
+          this.syncDevices(tWrap);
           this.emit('loop', { at: tWrap });
         } else {
           const tEnd = this.timeOf(songEnd);

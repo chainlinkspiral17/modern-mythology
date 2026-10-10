@@ -138,6 +138,36 @@ look-ahead loop. The audio→performance clock mapping comes from
   - The shredder is live-only. It is captured by PRINT and absent from
     STEMS.
 
+### 2026-10-10 — DAW, and worklets on file://
+
+- On a file:// page Chrome REFUSES a Blob-URL AudioWorklet module
+  (`blob:null/…`, "Unable to load a worklet's module"), and data: URLs
+  load. TAPE STUDIO shipped broken on the Deck because of this, and
+  AK.Capture had silently fallen back to ScriptProcessor. Always load
+  through `AK.addWorklet(ctx, src)`, which tries data: first and Blob
+  second.
+- Headless tests launched with `--allow-file-access-from-files` HID that
+  bug. Run browser tests WITHOUT it: the Deck's Chrome doesn't have it.
+- Top-level `const` / `class` in a classic script is script-scoped, not
+  `window.X`. `audio_kit.js` (AK), `midi_input.js` (MidiInput) and
+  `smf.js` are reached by bare name. `daw_engine.js` resolves globals
+  through a small `G` getter that tries the bare name, then `window`.
+- The DAW (`daw.html` + `daw_engine.js`, notes `{t,d,n,v}` at PPQ 96,
+  the same as `seqgen.js` / `smf.js`):
+  - Timing: a 25 ms timer schedules 120 ms ahead.
+  - Bounces run in real time, because emulators and hardware can't
+    render offline.
+  - A loop bounce plays the region twice and keeps pass two, so tails
+    wrap and the loop is exact-length and seamless. It is written with
+    WAV loop points for Godot.
+- KIT one-shots must release after their preset's attack + decay. A
+  fixed 50 ms gate cut the kick's 0.5 s tail.
+- Five generated parts at unity strips hit 0.999 into the limiter.
+  Generated tracks start balanced (drums 0.62 … pad 0.36), leaving about
+  1 dB of headroom.
+- MIDI export puts drums on GM ch10 unless the track is routed to an
+  emulator or hardware channel.
+
 ## TEMPLATE
 
 ```
