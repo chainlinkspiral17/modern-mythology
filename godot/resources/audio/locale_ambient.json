@@ -33,6 +33,10 @@
       "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
       "gain": 0.9
     },
+    "county_line_station": {
+      "bed": "assets/audio/bgm/vol5_ambient.ogg",
+      "gain": 0.9
+    },
     "louisiana_road": {
       "bed": "assets/audio/bgm/vol6_two_lane.wav",
       "gain": 1.0
@@ -177,6 +181,10 @@
       "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
       "gain": 0.88
     },
+    "natalie_apartment_night": {
+      "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
+      "gain": 0.88
+    },
     "new_orleans_apartment": {
       "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
       "gain": 0.88
@@ -202,6 +210,10 @@
       "gain": 0.9
     },
     "hospice_room": {
+      "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
+      "gain": 0.82
+    },
+    "hospice_room_night": {
       "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
       "gain": 0.82
     },

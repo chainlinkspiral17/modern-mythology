@@ -316,3 +316,15 @@ metadata/fov = 46.0
 position = Vector3(14.000, 3.600, 8.500)
 rotation = Vector3(-0.0306, 0.5116, 0.0)
 metadata/fov = 58.0
+
+; insert (2026-10-10, vol7 ch2): the sky over Smolvud, empty — the drones docked by six-thirty (a sky shot by design)
+[node name="shot_insert_drone" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.000, 3.450, 10.000)
+rotation = Vector3(0.5195, 2.7901, 0.0)
+metadata/fov = 50.0
+
+; closeup (2026-10-10, vol5 ch21): the young woman in the yellow slicker at the edge of the pier, reading at the channel edge just past the Frog's rock — from the crest, the harbor beyond (within the preset eye's 12 m)
+[node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.000, 4.720, -26.000)
+rotation = Vector3(-0.1230, 0.7086, 0.0)
+metadata/fov = 42.0

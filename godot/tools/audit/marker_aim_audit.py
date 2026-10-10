@@ -51,6 +51,7 @@ ANY_CONE_DEG = 55.0    # abstract markers: anything in a wide cone
 # WARN, not a failure — build the prop or re-home the cue to clear it.
 KNOWN_UNRESOLVED = {
     ("cabin_road", "shot_insert_crow"): "the crow is a cabin_interior hero prop; cabin_road's cue reads the sky",
+    ("smolvud_jetty", "shot_insert_drone"): "vol7 ch2: the drones are docked and the sky over Smolvud is empty — the cue reads the sky",
 }
 
 MARKER_RE = re.compile(

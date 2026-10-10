@@ -428,6 +428,30 @@ const CAMERA_PRESETS := {
 		"fov": 62.0,
 		"suppress_input": true,
 	},
+	"natalie_apartment_night": {
+		"scene": "res://scenes/locales/natalie_apartment.tscn",
+		"requires_glb": "res://assets/3d/locales/natalie_apartment.glb",
+		# (2026-10-10) THE SAME ROOM AT NIGHT: ch12 Hanged (after midnight to
+		# 3:42 AM, "moonlight slanting through the blinds") and ch18 Moon (5:00
+		# to 5:31 AM, before the Simons dawn) played on the afternoon light. The
+		# three daylight directionals are suffixed to natalie_apartment; this
+		# preset brings a moon through the W window and a dark env; the lamps
+		# and the candle serve both.
+		# Hanged Man / Moon. Room 7×5.5 (godot x∈[-3.5,3.5], z∈[0,-5.5],
+		# ceil 2.6). Teal sofa in the S-centre living area (blender
+		# -0.3,1.2 → godot -0.3,-1.2), tall afternoon window on the W
+		# wall (x=-3.5), bookshelf E wall, bed nook NE (godot 2.2,-4.5),
+		# kitchenette NW. Camera in the SW corner (by the window/door)
+		# looking ENE across the whole apartment: sofa in the near
+		# foreground, bookshelf + bed nook receding to the far NE, the
+		# W window backlighting the frame. One wide that reads the whole
+		# geography where "John and Natalie made the choice."
+		"camera_origin": Vector3(-2.6, 1.62, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(-60.7), 0.0),
+		"fov": 62.0,
+		"env": {"ambient_color": Color(0.34, 0.34, 0.46, 1), "ambient_energy": 0.42, "fog_color": Color(0.14, 0.14, 0.20, 1)},
+		"suppress_input": true,
+	},
 	"simon_apartment": {
 		"scene": "res://scenes/locales/simon_apartment.tscn",
 		"requires_glb": "res://assets/3d/locales/simon_apartment.glb",
@@ -596,6 +620,45 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(1.8, 1.60, -0.8),
 		"camera_rotation": Vector3(-0.05, deg_to_rad(36.2), 0.0),
 		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"hospice_room_night": {
+		"scene": "res://scenes/locales/hospice_room.tscn",
+		"requires_glb": "res://assets/3d/locales/hospice_room.glb",
+		# (2026-10-10) THE SAME ROOM AT 3 AM: ch13 Death ("lit only by the small
+		# under-cabinet light", 3 to 4:06 AM) played on the day's soft window.
+		# The day rig is suffixed to hospice_room; this preset keeps the
+		# under-cab practical and the hall spill, adds the monitor's glow,
+		# and turns the sky and ambient to night.
+		# Death. Room 6×5.5 (godot x∈[-3,3], z∈[0,-5.5], ceil 2.8).
+		# Adjustable bed centre-north (blender 0,3.2 → godot 0,-3.2,
+		# head raised toward the N window), soft-lit N window behind it
+		# (z=-5.5), IV stand at the bed's right (godot 1,-4.2), vitals
+		# cart at its left, the visitor's upholstered armchair south of
+		# the bed (godot -1.2,-1.8), bedside table with flowers.
+		# Camera in the SE quadrant looking NNW: the empty visitor chair
+		# in the near foreground, the bed with the window's gentle glow
+		# behind it — the vantage of the one who stays.
+		"camera_origin": Vector3(1.8, 1.60, -0.8),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(36.2), 0.0),
+		"fov": 60.0,
+		"env": {"sky_top": Color(0.04, 0.05, 0.10, 1), "sky_horizon": Color(0.14, 0.14, 0.20, 1),
+			"ground_horizon": Color(0.08, 0.08, 0.10, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.32, 0.32, 0.40, 1), "ambient_energy": 0.40, "fog_color": Color(0.12, 0.12, 0.16, 1)},
+		"suppress_input": true,
+	},
+	"county_line_station": {
+		"scene": "res://scenes/locales/county_line_station.tscn",
+		"requires_glb": "res://assets/3d/locales/county_line_station.glb",
+		# (2026-10-10) vol5 ch18 The Moon, 7:52 AM: the gas station just past
+		# the county-line sign. The two-island canopy (godot x -6..2, z -3),
+		# the Subaru at pump one, the store's front with the ice machine and
+		# the metal bench beside it, the exit with the traffic light where the
+		# crow lands, the road west to the overpass over the bayou. From the
+		# lot by the exit, SW to the Subaru at pump one under the canopy.
+		"camera_origin": Vector3(4.00, 1.65, -7.50),
+		"camera_rotation": Vector3(-0.004, 2.053, 0.0),
+		"fov": 62.0,
 		"suppress_input": true,
 	},
 	"louisiana_road": {
@@ -1224,9 +1287,11 @@ const CAMERA_PRESETS := {
 	"pit_stop_office": {
 		"scene": "res://scenes/locales/pit_stop_office.tscn",
 		"requires_glb": "res://assets/3d/locales/pit_stop_office.glb",
-		# Garage back-office 4×5 (godot x∈[-2,2], z∈[0,-5], ceil 2.6).
-		# Work desk + CRT monitor against the N wall (godot 0,-3.5),
-		# filing cabinets + pegboard on the W wall, parts shelf E. Camera
+		# The Pit Stop DINER's back office 4×5 (godot x∈[-2,2], z∈[0,-5], ceil
+		# 2.6) — re-dressed 2026-08-03 (dry-goods cases, the legal pad, the
+		# apron drawer); this comment said "garage" until 2026-10-10. Rick's
+		# father's desk + monitor against the N wall (godot 0,-3.5), filing
+		# cabinets on the W wall, the dry-goods shelf E. Camera
 		# SE just inside the door looking NNW across to the desk + monitor.
 		"camera_origin": Vector3(1.4, 1.58, -0.7),
 		"camera_rotation": Vector3(-0.05, deg_to_rad(26.6), 0.0),

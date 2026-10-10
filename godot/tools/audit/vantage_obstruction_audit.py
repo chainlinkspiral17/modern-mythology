@@ -81,6 +81,10 @@ DELIBERATE_MARKERS = {
     # (2026-10-10) the truck's bench seat: driver and passenger a cab-width apart
     ("cabin_road", "shot_closeup_person__cabin_road_truck"),
     ("cabin_road", "shot_closeup_person_b__cabin_road_truck"),
+    # (2026-10-10) the crow on the traffic light at the county line: a bird against the sky
+    ("county_line_station", "shot_insert_crow"),
+    # (2026-10-10) vol7 ch2 over the jetty: "the sky over Smolvud was empty" — the insert IS the sky
+    ("smolvud_jetty", "shot_insert_drone"),
 }
 # Builders whose recorded boxes do not sit where the runtime puts them
 # (harmony_terrain drapes its props over a heightfield the recorder

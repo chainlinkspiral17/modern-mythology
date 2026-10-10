@@ -154,13 +154,13 @@ glow_hdr_scale = 2.4
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_Locale")
 
-[node name="Key_AfternoonWindow" type="DirectionalLight3D" parent="."]
+[node name="Key_AfternoonWindow__natalie_apartment" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, -4, 8, 2)
 light_color = Color(1.00, 0.84, 0.62, 1)
 light_energy = 0.95
 shadow_enabled = false
 
-[node name="Fill_LampWarm" type="DirectionalLight3D" parent="."]
+[node name="Fill_LampWarm__natalie_apartment" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 2, 4, 1)
 light_color = Color(1.00, 0.78, 0.62, 1)
 light_energy = 0.5
@@ -177,7 +177,7 @@ light_energy = 1.1
 omni_range = 3.0
 shadow_enabled = false
 
-[node name="Back_Bookshelf" type="DirectionalLight3D" parent="."]
+[node name="Back_Bookshelf__natalie_apartment" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866, 0.354, -0.354, 0, 0.707, 0.707, 0.5, 0.612, -0.612, 0, 4, -6)
 light_color = Color(0.74, 0.78, 0.86, 1)
 light_energy = 0.25
@@ -206,6 +206,15 @@ light_color = Color(1.00, 0.70, 0.40, 1)
 light_energy = 0.45
 shadow_enabled = false
 omni_range = 1.60
+
+; ── the night (2026-10-10, preset natalie_apartment_night) — row-major
+; ch12 after midnight, ch18 before dawn: "moonlight slanting through the blinds" of the W window,
+; travelling east and down; the lamps and the candle (unsuffixed) are the room's light
+[node name="Moon_Window__natalie_apartment_night" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.1736, 0.4924, -0.8529, 0.0000, 0.8660, 0.5000, 0.9848, -0.0868, 0.1504, -8, 6, -2)
+light_color = Color(0.62, 0.70, 0.90, 1)
+light_energy = 0.45
+shadow_enabled = true
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 

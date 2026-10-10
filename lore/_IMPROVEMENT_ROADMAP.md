@@ -3834,6 +3834,81 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-10 · overnight run, pass 53: THE SWEEPS' MONTAGE ROUTING (existing
+sets).** Three stretches that played on the wrong set, fixed with bg
+nodes alone:
+- **vol5 ch21 World's close.** Miriam's car ("What movie, dear?") goes to
+  `miriam_subaru`, whose in-cab closeups carry the exchange; Sofia in Rio
+  returns to the Frog's seat at the wreck (there is no Rio set); Tem
+  "sitting at the edge of a pier" in Smolvud goes to `smolvud_jetty`.
+- **vol7 ch2 Morning's opening.** The drones coming in off the bluff over
+  Smolvud's roofs, the boardwalk to the river mouth, the tide pools by
+  the cannery: `smolvud_jetty` (the river mouth, the roofs on the rise,
+  the fog) instead of the Sitka road.
+- **The jetty's new markers.** `shot_insert_drone` is a sky shot by
+  design ("the sky over Smolvud was empty"): DELIBERATE in the vantage
+  audit, KNOWN_UNRESOLVED in marker_aim (the cue has no geometry, like
+  cabin_road's crow). `shot_closeup_person` puts Tem at the channel edge
+  just past the Frog's rock, within the preset eye's 12 m.
+- **Not done, on purpose.** ch6 Lovers' hallway is already covered: the
+  Roberts builder has the screen door with its lattice, the hall table
+  with keys, mail, pinecones and the Polaroid, and `shot_establish_b`
+  stands in the kitchen looking back at the door. ch20's Mile End flat
+  turns on canon (whether Elicia left the ch16 flat): a question for the
+  user. vol7 ch12's drive south would land on `highway_101`'s dusk.
+
+Draft 2 target: the Minstral's Green moored at the Smolvud jetty, since
+ch21 says the steamship was relocated there.
+
+**2026-10-10 · overnight run, pass 52: THE STATION AT THE COUNTY LINE (a new
+set, from the vol5 sweep).** vol5 ch18 The Moon's last scene ("Miriam
+pulled into a gas station just past the sign ... watched the Subaru pull
+out, turn west, cross the overpass ... The crow landed, instead, on the
+traffic light above the gas-station exit ... Sat on the metal bench
+beside the ice machine. Waited for the eight-thirty bus") played inside
+the Subaru. The new `county_line_station`:
+- **The forecourt.** An unbranded red-and-white canopy over two islands,
+  Miriam's dark-green Subaru alongside pump one (its canon colour from
+  `build_miriam_subaru`).
+- **The store.** A painted-block front with its glass, the ICE machine
+  and the metal bench beside it (a coffee cup on the seat), the propane
+  cage, the newspaper box, the bus-stop sign at the lot's edge.
+- **The exit.** The traffic light on its mast arm with the crow on the
+  arm (`make_crow`).
+- **The road.** Two lanes past the lot, climbing west to the overpass
+  over the bayou; the parish-line sign at the lot's east end; cypress
+  along both bayous.
+- **Light and markers.** A 7:52 AM sun out of the east, the canopy
+  panels still on. Six markers; the crow insert is a cutaway from above
+  the arm, declared DELIBERATE (a bird against the sky, like the cabin
+  road's). The preset eye stands by the exit, within 12 m of the person
+  markers (wrong_room's FAR rule). ch18 is routed at "They reached the
+  county line"; bed vol5_ambient.
+
+Deck must BUILD county_line_station (a new GLB).
+
+Draft 2 targets: the eight-thirty bus coming in from the west; the
+Subaru's filler door open with the hose in it; the parish's name on the
+sign once the prose gives one.
+
+**2026-10-10 · overnight run, pass 51: TWO ROOMS AT NIGHT (the vol5 sweep's
+time-of-day hits).** The pass-46/49 pattern, twice:
+- **`natalie_apartment_night`.** ch12 Hanged (after midnight to 3:42 AM,
+  "moonlight slanting through the blinds") and ch18 Moon (5:00 to 5:31
+  AM) played on the afternoon window. The three daylight directionals
+  are suffixed `__natalie_apartment` (ch20's late morning keeps them);
+  the night preset brings a moon through the W window and a dark
+  ambient/fog env; the lamps and the candle serve both. ch12 is routed
+  whole; ch18's apartment scenes too, except the 10:07 AM bus arrival.
+- **`hospice_room_night`.** ch13 Death (3 to 4:06 AM, "lit only by the
+  small under-cabinet light") played on the day's soft window. The
+  window key, overhead fill, window glow and bed lamp are suffixed
+  `__hospice_room`; the night keeps the under-cab practical and the
+  hall spill, adds the monitor's glow, and turns the sky (the scene has
+  a ProceduralSky) and ambient to night. ch13 is routed whole.
+
+Neither needs a Deck rebuild.
+
 **2026-10-10 · overnight run, pass 50: THE KOWALSKI FRONT YARD + JOANNA'S HOUSE
 INSIDE (from the sweeps).**
 

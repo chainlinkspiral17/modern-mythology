@@ -654,6 +654,10 @@
       "voice": "assets/audio/voice/vol5_ch21_world/120.ogg"
     },
     {
+      "t": "bg",
+      "src": "3d:miriam_subaru"
+    },
+    {
       "t": "narrate",
       "text": "It heard, faintly, a sound from the west — the sound, specifically, of a silver-haired woman named Miriam laughing at something the Third Consciousness had said,",
       "voice": "assets/audio/voice/vol5_ch21_world/121.ogg"
@@ -702,6 +706,10 @@
       "voice": "assets/audio/voice/vol5_ch21_world/128.mp3"
     },
     {
+      "t": "bg",
+      "src": "3d:graustark_wreck"
+    },
+    {
       "t": "narrate",
       "text": "And somewhere, in a city neither the Frog nor the crow had ever been to — a city called Rio de Janeiro, in a small concrete apartment on the thirty-second floor of a tower in a favela halfway up a green hillside — a young woman in her early twenties named Sofia woke from a dream.",
       "voice": "assets/audio/voice/vol5_ch21_world/129.ogg"
@@ -735,6 +743,10 @@
       "t": "narrate",
       "text": "[shot:insert notebook]She closed the notebook. She put it back. She got dressed. She went out into her city to go to work.",
       "voice": "assets/audio/voice/vol5_ch21_world/135.ogg"
+    },
+    {
+      "t": "bg",
+      "src": "3d:smolvud_jetty"
     },
     {
       "t": "narrate",

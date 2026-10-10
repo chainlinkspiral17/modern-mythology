@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "3d:hospice_room"
+      "src": "3d:hospice_room_night"
     },
     {
       "t": "hide",

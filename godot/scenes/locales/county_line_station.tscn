@@ -1,6 +1,6 @@
-[gd_scene load_steps=26 format=3 uid="uid://kowalski_backyard_vol6"]
+[gd_scene load_steps=26 format=3 uid="uid://county_line_station_vol5"]
 
-[ext_resource type="PackedScene" path="res://assets/3d/locales/kowalski_backyard.glb" id="1_glb"]
+[ext_resource type="PackedScene" path="res://assets/3d/locales/county_line_station.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
 [ext_resource type="Shader" path="res://assets/shaders/demoscene_post.gdshader" id="4_post"]
 [ext_resource type="Script" path="res://scripts/MoodCycler.gd" id="5_mood"]
@@ -23,15 +23,15 @@ shader_parameter/dither_strength = 0.10
 shader_parameter/scanline_strength = 0.18
 shader_parameter/chromatic_aberration = 0.0008
 shader_parameter/ascii_strength = 0.0
-shader_parameter/ascii_color = Color(0.96, 0.62, 0.28, 1)
-shader_parameter/ascii_bg = Color(0.10, 0.06, 0.04, 1)
+shader_parameter/ascii_color = Color(0.90, 0.90, 0.84, 1)
+shader_parameter/ascii_bg = Color(0.30, 0.31, 0.29, 1)
 
 [sub_resource type="ShaderMaterial" id="Mat_Ascii"]
 shader = ExtResource("6_ascii")
 shader_parameter/cell_size = 10.0
 shader_parameter/strength = 0.0
-shader_parameter/fg_color = Color(0.96, 0.62, 0.28, 1)
-shader_parameter/bg_color = Color(0.10, 0.06, 0.04, 1)
+shader_parameter/fg_color = Color(0.90, 0.90, 0.84, 1)
+shader_parameter/bg_color = Color(0.30, 0.31, 0.29, 1)
 shader_parameter/tint_from_scene = true
 shader_parameter/gamma = 0.85
 
@@ -40,9 +40,9 @@ shader = ExtResource("7_neon")
 shader_parameter/strength = 0.0
 shader_parameter/edge_threshold = 0.10
 shader_parameter/edge_thickness = 1.6
-shader_parameter/edge_color = Color(0.96, 0.42, 0.20, 1)
-shader_parameter/fill_low = Color(0.42, 0.20, 0.12, 1)
-shader_parameter/fill_high = Color(0.10, 0.06, 0.04, 1)
+shader_parameter/edge_color = Color(0.70, 0.74, 0.66, 1)
+shader_parameter/fill_low = Color(0.34, 0.36, 0.32, 1)
+shader_parameter/fill_high = Color(0.16, 0.17, 0.16, 1)
 shader_parameter/fill_gradient = 1.0
 shader_parameter/edge_glow = 0.4
 shader_parameter/scene_blend = 0.0
@@ -62,13 +62,13 @@ shader = ExtResource("8_dir")
 shader_parameter/strength = 0.0
 shader_parameter/cell_size = 10.0
 shader_parameter/edge_threshold = 0.10
-shader_parameter/line_color = Color(0.96, 0.42, 0.20, 1)
+shader_parameter/line_color = Color(0.70, 0.74, 0.66, 1)
 shader_parameter/fill_color = Color(0.02, 0.02, 0.03, 1)
 shader_parameter/tint_from_scene = false
 shader_parameter/input_scale = 1.0
 shader_parameter/mono_with_red = false
-shader_parameter/mono_white = Color(0.96, 0.62, 0.28, 1)
-shader_parameter/mono_red = Color(0.96, 0.42, 0.20, 1)
+shader_parameter/mono_white = Color(0.90, 0.90, 0.84, 1)
+shader_parameter/mono_red = Color(0.70, 0.74, 0.66, 1)
 shader_parameter/red_threshold = 0.20
 
 [sub_resource type="ShaderMaterial" id="Mat_Starscape"]
@@ -77,7 +77,7 @@ shader_parameter/strength = 0.0
 shader_parameter/cell_size = 10.0
 shader_parameter/time_scale = 0.40
 shader_parameter/sky_thresh = 0.10
-shader_parameter/star_white = Color(0.96, 0.62, 0.28, 1)
+shader_parameter/star_white = Color(0.90, 0.90, 0.84, 1)
 shader_parameter/galaxy_col = Color(0.78, 0.82, 0.95, 1)
 shader_parameter/chip_col = Color(0.62, 0.78, 0.88, 1)
 shader_parameter/galaxy_strength = 0.6
@@ -96,7 +96,7 @@ shader_parameter/strength = 0.0
 shader_parameter/motion_speed = 0.0
 shader_parameter/motion_dir = Vector2(1, 0)
 shader_parameter/cell_size = 9.0
-shader_parameter/line_color = Color(0.96, 0.62, 0.28, 1)
+shader_parameter/line_color = Color(0.90, 0.90, 0.84, 1)
 shader_parameter/trail_strength = 0.6
 shader_parameter/line_density = 0.85
 
@@ -111,7 +111,7 @@ shader_parameter/motion_dir = Vector2(1, 0)
 shader = ExtResource("12_oldfilm")
 shader_parameter/strength = 0.0
 shader_parameter/sim_fps = 18.0
-shader_parameter/tint_color = Color(0.96, 0.62, 0.28, 1)
+shader_parameter/tint_color = Color(0.90, 0.90, 0.84, 1)
 shader_parameter/tint_amount = 0.55
 shader_parameter/grain_strength = 0.18
 shader_parameter/flicker_strength = 0.20
@@ -126,12 +126,12 @@ shader_parameter/edge_ca = 0.012
 shader_parameter/wobble_amp = 0.0018
 shader_parameter/wobble_freq = 0.85
 shader_parameter/tint_amount = 0.18
-shader_parameter/tint_color = Color(0.96, 0.62, 0.28, 1)
+shader_parameter/tint_color = Color(0.70, 0.72, 0.60, 1)
 
 [sub_resource type="ProceduralSkyMaterial" id="SkyMat_Win"]
-; (2026-10-07: the window is cut — a day sky past it, not a flat backdrop)
-sky_top_color = Color(0.38, 0.56, 0.82, 1)
-sky_horizon_color = Color(0.84, 0.86, 0.84, 1)
+; 7:52 AM at the county line: a spring morning over the bayou
+sky_top_color = Color(0.44, 0.60, 0.84, 1)
+sky_horizon_color = Color(0.90, 0.88, 0.80, 1)
 sky_curve = 0.25
 ground_bottom_color = Color(0.20, 0.20, 0.18, 1)
 ground_horizon_color = Color(0.50, 0.50, 0.46, 1)
@@ -144,19 +144,19 @@ radiance_size = 3
 [sub_resource type="Environment" id="Env_Locale"]
 background_mode = 2
 sky = SubResource("Sky_Win")
-background_color = Color(0.62, 0.74, 0.88, 1)
+background_color = Color(0.55, 0.56, 0.52, 1)
 ambient_light_source = 2
-ambient_light_color = Color(0.72, 0.74, 0.70, 1)
-ambient_light_energy = 0.9
+ambient_light_color = Color(0.84, 0.86, 0.82, 1)
+ambient_light_energy = 0.80
 fog_enabled = true
 fog_sky_affect = 0.0
-fog_light_color = Color(0.70, 0.74, 0.72, 1)
-fog_light_energy = 0.15
-fog_density = 0.001
+fog_light_color = Color(0.86, 0.86, 0.80, 1)
+fog_light_energy = 0.2
+fog_density = 0.003
 adjustment_enabled = true
 adjustment_brightness = 1.0
-adjustment_contrast = 1.05
-adjustment_saturation = 1.08
+adjustment_contrast = 1.04
+adjustment_saturation = 0.92
 glow_enabled = true
 glow_intensity = 0.55
 glow_bloom = 0.08
@@ -164,46 +164,41 @@ glow_blend_mode = 1
 glow_hdr_threshold = 0.95
 glow_hdr_scale = 2.4
 
-[node name="KowalskiBackyard" type="Node3D"]
+[node name="CountyLineStation" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_Locale")
 
-[node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.707, 0.354, -0.612, 0, 0.865, 0.5, 0.707, 0.354, -0.612, 0, 4, 0)
-light_color = Color(1, 0.96, 0.86, 1)
-light_energy = 1.15
-shadow_enabled = false
-
-[node name="Patio_Bounce" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 1.4, -1.15)
-light_color = Color(1, 0.94, 0.82, 1)
-light_energy = 0.5
-omni_range = 5.0
-omni_attenuation = 1.4
-shadow_enabled = false
-
-[node name="Sky_Fill" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 4, 0)
-light_color = Color(0.62, 0.72, 0.88, 1)
-light_energy = 0.35
-shadow_enabled = false
-
-; ── the front yard's own sun (2026-10-10, preset kowalski_front_yard) — row-major
-; the house shades its front from the back yard's north sun; this one comes out of the SW
-[node name="Sun_Front__kowalski_front_yard" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.8192, 0.4263, -0.3838, 0.0000, 0.6691, 0.7431, 0.5736, -0.6087, 0.5481, -4, 10, 14)
-light_color = Color(1.0, 0.95, 0.84, 1)
-light_energy = 1.10
+; ── light rig (2026-10-10) — written row-major (the .tscn basis lists ROWS)
+; 7:52 AM: the sun out of the east, low, travelling west
+[node name="Sun_Morning" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.3090, -0.4318, 0.8474, 0.0000, 0.8910, 0.4540, -0.9511, -0.1403, 0.2753, 30, 10, 0)
+light_color = Color(1.0, 0.90, 0.74, 1)
+light_energy = 1.0
 shadow_enabled = true
 metadata/daylight = true
+
+; the canopy's panels, still on
+[node name="Canopy_Light_0_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.50, 4.60, -3.00)
+light_color = Color(0.94, 0.96, 0.98, 1)
+light_energy = 0.45
+shadow_enabled = false
+omni_range = 6.0
+
+[node name="Canopy_Light_1_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.50, 4.60, -3.00)
+light_color = Color(0.94, 0.96, 0.98, 1)
+light_energy = 0.45
+shadow_enabled = false
+omni_range = 6.0
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]
 layer = 50
 script = ExtResource("5_mood")
-mood_strata = Array[String](["raw", "noir", "ink_blue", "sodium_streetlamp", "candlelight", "memory_warm"])
+mood_strata = Array[String](["raw", "noir", "linework", "lithograph", "silent_film_18", "candlelight", "memory_warm"])
 default_style_pack = ""
 
 [node name="NeonQuad" type="ColorRect" parent="PostProcess"]
@@ -318,60 +313,39 @@ offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
 
-[node name="KitchenWindow_Spill" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 1.55, -0.3)
-light_color = Color(0.96, 0.72, 0.42, 1)
-light_energy = 1.1
-shadow_enabled = false
-omni_range = 3.5
+; ── vn_shot coverage (2026-10-10) — the station at the county line
+; wide: the station from the lot's NE corner — the canopy, the Subaru at pump one, the store
+[node name="shot_wide_station" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(16.000, 1.700, -10.000)
+rotation = Vector3(-0.0093, 1.9513, 0.0)
+metadata/fov = 60.0
 
-[node name="Back_Rim" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 4, 5)
-light_color = Color(0.32, 0.42, 0.62, 1)
-light_energy = 0.22
-shadow_enabled = false
-
-; insert: Daisy, as advertised, a coward
-[node name="shot_insert_daisy" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 0.7, -4.8)
-rotation = Vector3(-0.5129, 0.9759, 0.0)
+; closeup: Natalie at the edge of the lot, the road and the overpass behind her
+[node name="shot_closeup_natalie" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(10.000, 1.600, -9.500)
+rotation = Vector3(0.0000, -0.8961, 0.0)
 metadata/fov = 42.0
 
-; insert: the butterfly leaves
-[node name="shot_insert_butterfly" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7, 0.75, -3.7)
-rotation = Vector3(-0.3119, 0.6098, 0.0)
-metadata/fov = 42.0
-
-; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
-; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+; closeup: by the Subaru's rear door, from the island — the open lot and the store behind
 [node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.061, 1.612, -6.592)
-rotation = Vector3(-0.2618, -3.1416, 0.0)
-metadata/fov = 45.0
+position = Vector3(-5.200, 1.550, -0.800)
+rotation = Vector3(-0.0282, 1.8568, 0.0)
+metadata/fov = 42.0
 
-; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
-; the far side of the same spot, so two speakers alternate sides
+; closeup: the reverse, from the walk toward the pump and the canopy
 [node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.061, 1.612, -3.887)
-rotation = Vector3(-0.2618, 0.0000, 0.0)
-metadata/fov = 45.0
-
-; ── vn_shot coverage (2026-10-10) — the front of the house (kowalski_front_yard)
-; closeup: Bill up from the bed beside the stoop, the stoop and the front door behind him
-[node name="shot_closeup_bill__kowalski_front_yard" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.600, 1.620, 9.200)
-rotation = Vector3(0.0209, 0.7854, 0.0)
+position = Vector3(-8.000, 1.550, 3.800)
+rotation = Vector3(-0.0222, -0.2235, 0.0)
 metadata/fov = 42.0
 
-; closeup: Ben by the Civic in the driveway ("Yeah, Dad.")
-[node name="shot_closeup_person__kowalski_front_yard" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(3.800, 1.700, 8.400)
-rotation = Vector3(0.0211, -2.2565, 0.0)
-metadata/fov = 42.0
+; insert: the crow on the traffic light's arm above the exit — a cutaway from above the arm, against the sky
+[node name="shot_insert_crow" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(10.000, 6.400, -10.200)
+rotation = Vector3(-0.0917, -1.9757, 0.0)
+metadata/fov = 36.0
 
-; reverse: from the stoop down the lawn to the driveway and the street
-[node name="shot_establish_b__kowalski_front_yard" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.400, 1.700, 6.600)
-rotation = Vector3(-0.0382, -2.3562, 0.0)
+; reverse: from the metal bench beside the ice machine, north across the lot to the canopy
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.800, 1.550, 5.000)
+rotation = Vector3(0.0856, 0.1087, 0.0)
 metadata/fov = 60.0

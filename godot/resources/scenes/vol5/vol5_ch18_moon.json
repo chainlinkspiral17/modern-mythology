@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "3d:natalie_apartment"
+      "src": "3d:natalie_apartment_night"
     },
     {
       "t": "hide",
@@ -848,6 +848,10 @@
       "t": "narrate",
       "text": "The crow, on the roof, shifted its weight. The Subaru kept south.",
       "voice": "assets/audio/voice/vol5_ch18_moon/157.ogg"
+    },
+    {
+      "t": "bg",
+      "src": "3d:county_line_station"
     },
     {
       "t": "narrate",
