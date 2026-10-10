@@ -209,6 +209,10 @@
       "bed": "assets/audio/bgm/vol6_el_rancho_interior.wav",
       "gain": 0.82
     },
+    "el_rancho_drive_thru": {
+      "bed": "assets/audio/bgm/vol6_el_rancho_interior.wav",
+      "gain": 0.82
+    },
     "centro_break_room": {
       "bed": "assets/audio/bgm/vol6_kwik_stop_interior.wav",
       "gain": 0.8

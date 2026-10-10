@@ -218,6 +218,14 @@ light_energy = 1.3
 omni_range = 3.0
 shadow_enabled = false
 
+; the lot's pole light over the side lot (sodium)
+[node name="Lot_Pole_Lamp_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-11.410, 5.600, -7.500)
+light_color = Color(1.00, 0.78, 0.46, 1)
+light_energy = 2.2
+shadow_enabled = false
+omni_range = 12.00
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]
@@ -402,3 +410,23 @@ light_color = Color(0.920, 0.920, 0.850, 1)
 light_energy = 1.30
 shadow_enabled = false
 omni_range = 4.35
+
+; ── vn_shot · el_rancho_drive_thru (2026-10-10): outside, in the car (vol6 ch16) ──
+; closeup: BT at the wheel, through the driver's window, the yellow wall and the steer behind
+[node name="shot_closeup_person__el_rancho_drive_thru" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-7.960, 1.750, -7.400)
+rotation = Vector3(-0.1002, -2.7279, 0.0)
+metadata/fov = 44.0
+
+; reverse: Diego in the passenger seat, the lot and the pole light behind
+[node name="shot_closeup_person_b__el_rancho_drive_thru" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-7.960, 1.750, 1.400)
+rotation = Vector3(-0.1002, -0.4137, 0.0)
+metadata/fov = 44.0
+
+; closeup: Diego (the same frame, named for the cue)
+[node name="shot_closeup_diego__el_rancho_drive_thru" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-7.960, 1.750, 1.400)
+rotation = Vector3(-0.1002, -0.4137, 0.0)
+metadata/fov = 44.0
+

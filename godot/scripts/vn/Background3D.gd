@@ -1273,6 +1273,19 @@ const CAMERA_PRESETS := {
 		"fov": 60.0,
 		"suppress_input": true,
 	},
+	"el_rancho_drive_thru": {
+		"scene": "res://scenes/locales/el_rancho_taqueria.tscn",
+		"requires_glb": "res://assets/3d/locales/el_rancho_taqueria.glb",
+		# vol6 ch16 (2026-10-10): outside the taqueria at 4 AM — the yellow
+		# building, TAQUERIA EL RANCHO in red over the front, the faded
+		# steer's head on the W side, BT's Altima "in the spot under the
+		# steer's head" (the segment played on the dining room). Camera in
+		# the side lot by the pole light, looking at the car and the wall.
+		"camera_origin": Vector3(-12.00, 1.65, -0.20),
+		"camera_rotation": Vector3(-0.023, -1.212, 0.0),
+		"fov": 58.0,
+		"suppress_input": true,
+	},
 	"el_rancho_taqueria": {
 		"scene": "res://scenes/locales/el_rancho_taqueria.tscn",
 		"requires_glb": "res://assets/3d/locales/el_rancho_taqueria.glb",

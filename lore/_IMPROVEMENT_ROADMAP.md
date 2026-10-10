@@ -3834,6 +3834,29 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-10 · overnight run, pass 33: EL RANCHO FROM OUTSIDE (from the
+sweep).** vol6 ch16's taqueria segment happens entirely outside, in BT's
+car: "TAQUERIA EL RANCHO in red paint on a yellow building, with the small
+image of a steer's head on the side of the building under the sign, faded
+... The drive-thru is at the back ... He parks in the small lot at the
+side of the building, in the spot under the steer's head." It played on
+the dining room inside.
+- **The building.** `el_rancho_taqueria` grows the yellow skin (named
+  `Facade_*` so the corner joins with the walls pass), the roof and
+  parapet, and the red TAQUERIA / EL RANCHO sign board over the front.
+- **The W side.** The steer's head painted on the wall and faded to
+  orange: face, muzzle, horns, eyes, with its painted name above.
+- **The side lot.** Stripes and a wheel stop, BT's beige Altima in the
+  spot under the head, and the pole light with a sodium practical. The
+  drive-thru lane and the broken speaker already stood at the E window.
+- **Preset and routing.** New preset `el_rancho_drive_thru`; both ch16
+  El Rancho segments route to it. Car closeups are framed from outside
+  the doors, pulled back so the solid body does not fill them.
+
+Draft 2 targets:
+- the drive-thru window conversation's own framing (Hugo);
+- the front's sign at insert scale.
+
 **2026-10-10 · overnight run, pass 32: THE NEW AUBURN COUNTY COURTROOM (a new
 set from the sweep) + a transposed-light fix.** vol6 ch8's arraignment is
 in the New Auburn County courtroom: "bigger than she had expected. The

@@ -29,6 +29,7 @@ from _props.structure import make_wall_with_openings   # (2026-10-07)
 from _props.structure import make_frame_ring   # (2026-10-07: the frame boards → rings)
 
 from _props.views import make_view   # (2026-10-07)
+from _props.geometry import make_rot_box
 
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
@@ -211,6 +212,60 @@ def build_ceiling_infra():
         make_fluorescent_tube_fixture(f"Fluor_{j}", (0.0, ypos, CEIL), length=1.40, width=0.34)
     make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
 
+def build_exterior_2026_10():
+    """THE OUTSIDE (2026-10-10). vol6 ch16: "TAQUERIA EL RANCHO in red paint
+    on a yellow building, with the small image of a steer's head on the
+    side of the building under the sign, faded by twenty-some Texas summers
+    into the small orange that red paint becomes ... The drive-thru is at
+    the back ... BT pulls into the drive-thru lane ... He parks in the small
+    lot at the side of the building, in the spot under the steer's head."
+    The whole segment happens outside, in the car — and it played on the
+    dining room. The building gets its yellow skin and its parapet, the
+    red sign over the front, the faded steer's head painted on the W side
+    over the lot, the lot with its stripes, BT's beige Altima in the spot
+    under the head, the pole light; the drive-thru lane already runs past
+    the E window. Preset `el_rancho_drive_thru`."""
+    yel = (0.90, 0.74, 0.30, 1.0); red = (0.78, 0.18, 0.14, 1.0); faded = (0.88, 0.50, 0.26, 1.0)
+    ox = ROOM_W / 2.0 + 0.11            # the walls' outer faces (+0.01 proud)
+    H = CEIL + 0.70                     # the parapet's top
+    # the yellow skin, cut round the door and the drive-thru window
+    make_box("Facade_Skin_W", (-ox, ROOM_D / 2.0, H / 2.0), (0.02, ROOM_D + 0.44, H), yel)
+    make_box("Facade_Skin_N", (0.0, ROOM_D + 0.11, H / 2.0), (ROOM_W + 0.44, 0.02, H), yel)
+    for i, (x0, x1) in enumerate(((-ROOM_W / 2.0 - 0.12, -1.0), (1.0, ROOM_W / 2.0 + 0.12))):
+        make_box(f"Facade_Skin_S_{i}", ((x0 + x1) / 2.0, -0.11, H / 2.0), (x1 - x0, 0.02, H), yel)
+    make_box("Facade_Skin_S_Head", (0.0, -0.11, (2.2 + H) / 2.0), (2.0, 0.02, H - 2.2), yel)
+    for i, (y0, y1, z0, z1) in enumerate(((-0.22, 4.55, 0.0, H), (5.15, ROOM_D + 0.22, 0.0, H), (4.55, 5.15, 0.0, 0.93), (4.55, 5.15, 1.97, H))):
+        make_box(f"Facade_Skin_E_{i}", (ox, (y0 + y1) / 2.0, (z0 + z1) / 2.0), (0.02, y1 - y0, z1 - z0), yel)
+    make_box("Roof_Slab", (0.0, ROOM_D / 2.0, CEIL + 0.18), (ROOM_W + 0.40, ROOM_D + 0.40, 0.16), (0.40, 0.38, 0.36, 1.0))
+    make_box("Parapet_Cap_S", (0.0, -0.13, H + 0.03), (ROOM_W + 0.48, 0.06, 0.06), (0.86, 0.84, 0.80, 1.0))
+    # the sign over the front: red letters on the yellow, a board above the parapet
+    make_box("Sign_Board", (0.0, -0.16, H + 0.62), (5.6, 0.08, 1.10), yel)
+    make_box("Sign_Board_Legs", (0.0, -0.16, H + 0.03), (5.0, 0.06, 0.06), (0.30, 0.30, 0.32, 1.0))
+    for i in range(8):
+        make_box(f"Sign_Taqueria_Letter_{i}", (-2.2 + i * 0.62, -0.205, H + 0.86), (0.42, 0.01, 0.40), red)
+    for i in range(9):
+        make_box(f"Sign_El_Rancho_Letter_{i}", (-2.0 + i * 0.50, -0.205, H + 0.34), (0.34, 0.01, 0.32), red)
+    # the steer's head on the W side, under a painted name — faded to orange
+    hx, hy, hz = -ox - 0.012, 3.0, 1.75
+    make_box("Steer_Head_Painted_Face", (hx, hy, hz), (0.004, 0.62, 0.72), faded)
+    make_box("Steer_Head_Painted_Muzzle", (hx, hy, hz - 0.46), (0.004, 0.40, 0.26), faded)
+    for s in (-1, 1):
+        make_rot_box(f"Steer_Head_Painted_Horn_{s:+d}", (hx, hy + s * 0.60, hz + 0.40), (0.004, 0.70, 0.12), faded, roll=-s * 0.35)
+        make_box(f"Steer_Head_Painted_Eye_{s:+d}", (hx - 0.001, hy + s * 0.15, hz + 0.08), (0.004, 0.08, 0.08), (0.36, 0.20, 0.14, 1.0))
+    for i in range(9):
+        make_box(f"Steer_Wall_Name_Letter_{i}", (hx, hy - 1.6 + i * 0.40, hz + 1.12), (0.004, 0.28, 0.30), (0.86, 0.36, 0.22, 1.0))
+    # the side lot under the head, its stripes, BT's Altima in the spot, the pole light
+    make_box("Lot_Asphalt", (-ox - 5.0, ROOM_D / 2.0, -0.02), (10.0, ROOM_D + 6.0, 0.04), (0.30, 0.30, 0.32, 1.0))
+    for i, y in enumerate((0.6, 1.8 + 0.6, 4.2, 5.4)):
+        make_box(f"Lot_Stripe_{i}", (-ox - 2.9, y, 0.001), (5.0, 0.10, 0.004), (0.86, 0.86, 0.80, 1.0))
+    make_box("Lot_Wheel_Stop", (-ox - 0.75, hy, 0.06), (0.20, 1.60, 0.12), (0.70, 0.68, 0.62, 1.0))
+    from _props.vehicles import make_car
+    make_car("BT_Altima", -ox - 3.15, hy, 4.7, (0.72, 0.64, 0.52, 1.0), along="X", z0=0.0)
+    make_cyl("Lot_Pole", (-ox - 8.5, 7.5, 3.0), 0.08, 6.0, (0.30, 0.30, 0.32, 1.0), segments=8)
+    make_box("Lot_Pole_Head", (-ox - 8.0, 7.5, 5.95), (1.00, 0.36, 0.16), (0.30, 0.30, 0.32, 1.0))
+    make_box("Lot_Pole_Lamp", (-ox - 7.8, 7.5, 5.86), (0.60, 0.28, 0.02), (0.98, 0.88, 0.62, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -222,6 +277,7 @@ def main():
     build_neon_sign()
     build_string_lights()
     build_ceiling_infra()
+    build_exterior_2026_10()
     # what is outside the window (2026-10-07, _props/views.py)
     make_view("View_E", "E", ROOM_W/2.0, 4.85, kind="street", ground_z=0.0, seed=29)   # the drive-thru lane, the road past it
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),

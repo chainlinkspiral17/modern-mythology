@@ -124,6 +124,7 @@ PLACES = {
         "nexcorp_gas_go": "vol6_gas_and_go_interior",
         "nexcorp_fueling_station": "vol6_gas_and_go_interior",
         "el_rancho_taqueria": "vol6_el_rancho_interior",
+        "el_rancho_drive_thru": "vol6_el_rancho_interior",
         "school_field_evening": "vol6_live_oak_field",
         "gym_weight_room": "vol6_live_oak_field",
         "equipment_shed": "vol6_live_oak_field",
