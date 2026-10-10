@@ -459,15 +459,15 @@ const CAMERA_PRESETS := {
 	"houston_design_studio": {
 		"scene": "res://scenes/locales/houston_design_studio.tscn",
 		"requires_glb": "res://assets/3d/locales/houston_design_studio.glb",
-		# Emperor cameo. Room 10×7 (godot x∈[-5,5], z∈[0,-7], ceil 3.2).
-		# Three drafting tables in a row mid-room (blender y=3.5 → godot
-		# z=-3.5, x∈[-2.8,+2.8]), brick west wall, mullioned N window
-		# (z=-7). Camera in the SE quadrant just inside the door looking
-		# WNW across the drafting row: tables mid-frame, brick wall left,
-		# N window light beyond. Wide FOV for the big open studio.
-		"camera_origin": Vector3(3.8, 1.70, -1.0),
-		"camera_rotation": Vector3(-0.05, deg_to_rad(59.8), 0.0),
-		"fov": 64.0,
+		# Anna Logue's office (draft 3, 2026-10-10: "her meticulously
+		# greige Houston high-rise office, three floors down from" Erica's
+		# firm — it was a brick-and-duct loft). 7 x 6 (godot x in
+		# [-3.5,3.5], z in [0,-6], ceil 2.9), the N wall glass over the
+		# city. Camera inside the door, looking NE at her desk, its three
+		# monitors, the glass.
+		"camera_origin": Vector3(-2.9, 1.62, -0.7),
+		"camera_rotation": Vector3(-0.062, -0.954, 0.0),
+		"fov": 62.0,
 		"suppress_input": true,
 	},
 	# ── VOL 5 — Cameos — Montreal + Olimpico ─────────────────────

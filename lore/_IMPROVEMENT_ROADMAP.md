@@ -3834,6 +3834,57 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-10 · overnight run, pass 26: THE SWEEP (a background agent read every
+chapter-used preset against its prose) + ANNA LOGUE'S OFFICE.** The sweep
+found 17 mismatch classes. Fixed this pass:
+- **`houston_design_studio` → Anna Logue's office (draft 3).** It was "an
+  open-plan creative studio: drafting tables, brick wall, exposed duct",
+  a loft. Justice has "her meticulously greige Houston high-rise office,
+  three floors down from a law firm": Erica's firm, in Erica's tower.
+  Rebuilt at 7 x 6 m:
+  - one glass wall over the SAME city, Erica's `build_city` run through
+    `plan.shifted` 10.5 m lower, with its facade and hawk filtered out at
+    creation (not by deleting `bpy` objects, which the audits' recording
+    stubs would not see);
+  - greige walls and carpet;
+  - the long white-oak desk with THREE monitors (EMBER & ASH on the
+    third), the pen tablet, the cold brew, the glasses, the phone, the
+    mesh chair;
+  - the pitch deck pinned in a grid with Slide 7 dark, two air purifiers,
+    the credenza with the colour printer and swatch books, a low sofa,
+    one plant;
+  - a sky, a daylight key, downlight practicals, six markers.
+- **Routing.**
+  - vol6 ch4's storm "across the subdivision" played on the Louisiana
+    swamp (`louisiana_road`); it is now on `meadowlark_circle`.
+  - vol2's 1902 cannery narration played on a modern Texas grocery dock
+    (`centro_dock`); it is now on `grunion_beach`, the Oregon coast.
+  - vol1's L. Ron memory montage cut to Graciela Ramos's kitchen
+    (`grandmother_kitchen_morning`, picked for the word "grandmother"); it
+    now stays on `riverfront_park`, where Faust is telling it.
+- **Already shipped this run from the same list.** The safehouse (pass 25)
+  and Finn's truck (pass 24).
+
+STILL OPEN from the sweep (each needs a set, not a route):
+- vol2's Small Wood Rec Center dance plays on Harmony Creek's weight
+  room;
+- vol2's Oregon funeral plays on a Louisiana tomb cemetery
+  (`parish_cemetery`);
+- vol1's Club Sharp (an arcade, dance floors, a bowling alley) plays on
+  the Foxhole;
+- `courthouse_chamber` is a Louisiana small-claims room where vol6 needs
+  a Texas county criminal courtroom;
+- vol6 ch17's Bianca at "the small office off the master bedroom" plays
+  on Mike Miller's converted dining room;
+- vol7 ch12's co-op interior is missing (it plays on the street);
+- vol6 ch16's El Rancho drive-thru is shown as the dining room;
+- the vol7 interlude montage is on the cathedral;
+- vol5 ch20's post office is on the chalk wall;
+- the Foxhole dressing room is a "storage closet", not a bulb-mirror
+  vanity;
+- the D'Ambrosio's dining-floor builds disagree;
+- `jesse_bedroom` has a futon, but the prose has a bed and a nightstand.
+
 **2026-10-10 · overnight run, pass 25: THE SAFEHOUSE, DRAFT 3 (the wrong
 REGISTER: a sickroom, not a hideout).** Drafts 1-2 of `safehouse_bedroom`
 were a spy's den: a red-string corkboard, a CRT (also against the no-retro
