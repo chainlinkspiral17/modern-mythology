@@ -383,6 +383,10 @@
       "voice": "assets/audio/voice/vol5_ch20_judgement/070.ogg"
     },
     {
+      "t": "bg",
+      "src": "3d:graustark_post_office"
+    },
+    {
       "t": "narrate",
       "text": "She was at the post office on Elm. She had, three minutes before, handed the envelope to the clerk. The clerk had stamped it. The envelope had gone into the outgoing bin. Joanna had turned to leave.",
       "voice": "assets/audio/voice/vol5_ch20_judgement/071.ogg"
@@ -434,6 +438,10 @@
       "t": "narrate",
       "text": "The crow had delivered. The crow was now, as it had been meant to be, her escort home.",
       "voice": "assets/audio/voice/vol5_ch20_judgement/080.ogg"
+    },
+    {
+      "t": "bg",
+      "src": "3d:graustark_chalk_wall"
     },
     {
       "t": "narrate",

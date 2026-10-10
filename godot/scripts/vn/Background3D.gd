@@ -2256,6 +2256,19 @@ const CAMERA_PRESETS := {
 		"fov": 62.0,
 		"suppress_input": true,
 	},
+	"graustark_post_office": {
+		"scene": "res://scenes/locales/graustark_post_office.tscn",
+		"requires_glb": "res://assets/3d/locales/graustark_post_office.glb",
+		# vol5 ch20 (2026-10-10): the post office on Elm — the clerk's
+		# window, the outgoing bin, the PO boxes, and the line cracked
+		# through the tiles from the bin to the door (the beat played on the
+		# chalk wall). 9 x 7 (godot x in [-4.5,4.5], z in [0,-7]). Camera
+		# inside the open door, looking NW over the line to the counter.
+		"camera_origin": Vector3(3.90, 1.70, -1.70),
+		"camera_rotation": Vector3(-0.082, 1.040, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
 	"small_wood_rec_center": {
 		"scene": "res://scenes/locales/small_wood_rec_center.tscn",
 		"requires_glb": "res://assets/3d/locales/small_wood_rec_center.glb",

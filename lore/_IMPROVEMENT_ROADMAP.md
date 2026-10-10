@@ -3834,6 +3834,34 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-10 · overnight run, pass 36: THE POST OFFICE ON ELM (a new set from
+the sweep).** vol5 ch20: "She was at the post office on Elm ... The
+envelope had gone into the outgoing bin ... The floor tiles of the post
+office cracked in a single precise line from the outgoing bin to
+Joanna's feet. The line passed between her shoes. The line continued to
+the door. The door ... opened of its own accord." It played on the chalk
+wall in the ruins. The new `graustark_post_office` is a small-town
+Louisiana lobby, 9 x 7 m under a 4 m ceiling:
+- **The room.** Checkerboard tile, two ceiling fans with globes.
+- **The counter.** Three windows behind bronze grilles, with the scale
+  and the date stamp. The OUTGOING bin behind it with its letters, a
+  canvas hamper.
+- **The lobby.** A wall of brass PO boxes, the lobby table with its pen
+  on a chain, the flag, the clock at 10:44, the wanted board.
+- **The S front.** The window, and the door standing open.
+- **THE LINE.** One straight crack of jogging segments, with tile chips
+  along it, from under the bin's end of the counter to the door.
+- **Outside.** Elm Street with its fronts and a live oak.
+- **Scene and markers.** The rig is written row-major this time. Four
+  markers: the clerk's closeup (oblique, so the counter screen does not
+  fill it), Joanna halfway to the door, the crack insert.
+- **ch20.** It gains a switch to the post office at node 74 and back to
+  the chalk wall at "They walked back toward the ruins".
+
+Draft 2 targets:
+- the alley beside it, where the animals wait;
+- Elm Street beginning to lift.
+
 **2026-10-10 · overnight run, pass 35: THE SMOLVUD CO-OP (a new set from the
 sweep).** The organic co-op is named across nine vol7 chapters: Finn
 delivers its boxes by bike; Margaret has run it "since 2041"; there is

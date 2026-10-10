@@ -557,6 +557,10 @@
       "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
       "gain": 0.82
     },
+    "graustark_post_office": {
+      "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
+      "gain": 0.82
+    },
     "graustark_cottage": {
       "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
       "gain": 0.82
