@@ -858,11 +858,12 @@ function __fm1Patch(C) {
     _bindKnob(k) {
       let drag = null, wheel = 0;
       const x0x = this.p.look === 'x0x';
-      k.hit.addEventListener('pointerdown', (e) => { e.preventDefault(); k.hit.setPointerCapture(e.pointerId); drag = { y: e.clientY, acc: 0 }; });
+      k.hit.addEventListener('pointerdown', (e) => { e.preventDefault(); k.hit.setPointerCapture(e.pointerId); drag = { x: e.clientX, y: e.clientY, acc: 0 }; });
       k.hit.addEventListener('pointermove', (e) => {
         if (!drag) return;
-        drag.acc += drag.y - e.clientY;
-        drag.y = e.clientY;
+        // up or right turns clockwise (a finger on the Deck can slide either way)
+        drag.acc += (drag.y - e.clientY) + (e.clientX - drag.x);
+        drag.x = e.clientX; drag.y = e.clientY;
         const step = k.role === 'master' ? 3 : (x0x ? 7 : 8), n = Math.trunc(drag.acc / step);
         if (n) { drag.acc -= n * step; this.turn(k, n); }
       });

@@ -186,6 +186,7 @@
 
 <script src="gamepad_input.js"></script>
 <script src="audio_kit.js"></script>
+<script src="touch_controls.js"></script>
 <script>
 "use strict";
 const $ = id => document.getElementById(id);
@@ -377,6 +378,7 @@ window.addEventListener('resize', () => { drawWave(); if (cur) AK.draw.spectrogr
     const r = cv.getBoundingClientRect();
     return Math.max(0, Math.min(cur.channels[0].length - 1, Math.round(((ev.clientX - r.left) / r.width) * cur.channels[0].length)));
   };
+  cv.style.touchAction = 'none';    // a finger selects a region instead of scrolling the page
   cv.addEventListener('pointerdown', ev => { if (!cur) return; down = frameAt(ev); cv.setPointerCapture(ev.pointerId); });
   cv.addEventListener('pointermove', ev => { if (down === null || !cur) return; const f = frameAt(ev); sel = [Math.min(down, f), Math.max(down, f)]; drawWave(); });
   cv.addEventListener('pointerup', ev => {

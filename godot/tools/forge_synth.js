@@ -2678,6 +2678,12 @@ class Knob {
   _down(e) {
     if (e.button !== 0) return;
     e.preventDefault();
+    // a finger double-tap resets, like a mouse double-click
+    if (e.pointerType !== 'mouse' && !this.ed.armed) {
+      const now = performance.now();
+      if (now - (this._tapT || 0) < 320) { this._tapT = 0; this.o.set(this.sp.def); this.draw(); if (this.o.after) this.o.after(); return; }
+      this._tapT = now;
+    }
     const svg = this.sv.firstChild, rc = svg.getBoundingClientRect();
     const dist = Math.hypot(e.clientX - (rc.left + rc.width / 2), e.clientY - (rc.top + rc.height / 2)) * 40 / Math.max(1, rc.width);
     const t = this.o.target, s = this.ed.s;
@@ -2689,12 +2695,18 @@ class Knob {
       const rs = s.state.mods.filter(m => m.dst === t);
       route = rs.find(m => m.src === this.ed.sel) || rs[rs.length - 1] || null;
     }
-    this.drag = { y: e.clientY, route, start: route ? route.depth : toNorm(this.sp, this.o.get()), sv: this.o.get() };
+    this.drag = { x: e.clientX, y: e.clientY, route, start: route ? route.depth : toNorm(this.sp, this.o.get()), sv: this.o.get(), fine: false };
     try { this.el.setPointerCapture(e.pointerId); } catch (err) { /* ok */ }
   }
   _move(e) {
     const d = this.drag; if (!d) return;
-    const dy = d.y - e.clientY, k = e.shiftKey ? 1 / 700 : 1 / 160;
+    // up or right raises (fingers on the Deck slide either way); shift or a second finger = fine
+    const fine = e.shiftKey || !!(window.TouchControls && window.TouchControls.fine());
+    if (fine !== d.fine) {      // re-base so switching speed doesn't jump
+      d.fine = fine; d.x = e.clientX; d.y = e.clientY;
+      d.start = d.route ? d.route.depth : toNorm(this.sp, this.o.get()); d.sv = this.o.get(); return;
+    }
+    const dy = (d.y - e.clientY) + (e.clientX - d.x), k = fine ? 1 / 700 : 1 / 160;
     if (d.route) {
       const disp = this.ed.s._disp(this.o.target);
       this.ed.s.setModDepth(d.route.id, clamp(d.start + dy * k / disp, -1, 1));

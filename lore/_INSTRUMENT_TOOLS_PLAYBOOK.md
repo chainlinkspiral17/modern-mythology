@@ -310,6 +310,43 @@ those tools.
 - Web Audio feedback delays can't go below 128 samples, so the comb
   filter is capped at 340 Hz and the flanger at 3–9 ms.
 
+### 2026-10-10 — finger controls for the Deck touchscreen
+
+- User ask: press and slide (up/down AND left/right) for knobs and
+  sliders on the Deck's touchscreen. `touch_controls.js` is the shared
+  answer. Include it after `audio_kit.js` in any tool page.
+- Sliders: every `input[type=range]` is RELATIVE under a finger, so the
+  value never jumps to where you pressed:
+  - Up or right raises; 220 px of travel covers the full range.
+  - A second finger down gives fine control (1/5 speed).
+  - Double-tap resets to the slider's starting value (`data-default`
+    overrides).
+  - The mouse keeps the native behaviour.
+  - The browser's own slider touch handling is stopped with a
+    non-passive `touchstart` preventDefault. Pointer events still
+    arrive.
+- Knobs (FORGE, FM-1 emulator panel): drag amount = dx − dy, so right
+  and up both turn clockwise. When fine mode toggles mid-drag, re-base
+  the start point or the value jumps.
+- Canvases: `TouchControls.gesture(el, {grab, move, end, tap, doubleTap,
+  longPress, scroller})`.
+  - If the press grabs nothing, the finger pans the scroll parent. The
+    canvas needs `touch-action: none` (set by `gesture()`), or Chrome
+    pans the page and cancels the pointer.
+  - Long-press (550 ms) is the touch right-click: delete.
+- `preventDefault` on a touch `pointerdown` suppresses the compatibility
+  mouse events. Existing mousedown handlers then never double-fire, so
+  the mouse and finger paths can live side by side.
+- Hit zones that work for a mouse fail for a finger. A 1/16 note in an
+  8-bar pattern is about 7 px wide, so a 16 px "edge = resize" zone ate
+  every press and the note could never move. On a finger, edge-resize
+  only applies to notes ≥ 18 px wide, on their last third. The roll also
+  has ZOOM ±, and rows grow on `(any-pointer: coarse)`.
+- Testing: headless Chromium with `hasTouch: true` plus CDP
+  `Input.dispatchTouchEvent` (touchStart / touchMove / touchEnd)
+  produces real `pointerType: 'touch'` events. Playwright's
+  `touchscreen.tap` alone can't drag.
+
 ## TEMPLATE
 
 ```
