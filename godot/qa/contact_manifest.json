@@ -7844,6 +7844,10 @@
    ],
    "markers": [
     {
+     "name": "shot_establish_b",
+     "type": "establish"
+    },
+    {
      "name": "shot_closeup_person",
      "type": "closeup"
     },
@@ -7922,5 +7926,5 @@
   "tired",
   "nervous"
  ],
- "frames": 1783
+ "frames": 1784
 }

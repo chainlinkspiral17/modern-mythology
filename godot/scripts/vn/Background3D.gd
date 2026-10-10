@@ -2183,13 +2183,13 @@ const CAMERA_PRESETS := {
 	"wagner_home": {
 		"scene": "res://scenes/locales/wagner_home.tscn",
 		"requires_glb": "res://assets/3d/locales/wagner_home.glb",
-		# Family front room 6×5 (godot x∈[-3,3], z∈[0,-5], ceil 2.6).
-		# Sofa W wall (-2.35,-2.6) facing the CRT console E (2.45),
-		# coffee table between, armchair SE, N-wall window +
-		# curtains, bookshelf NW, floor lamp. Camera inside the door
-		# looking N — sofa left, window back, TV right.
-		"camera_origin": Vector3(0.7, 1.50, -0.7),
-		"camera_rotation": Vector3(-0.03, deg_to_rad(24.0), 0.0),
+		# DRAFT 2 (2026-10-10): Wagner's rented bungalow front room, 7.2 x 6
+		# (godot x in [-3.6,3.6], z in [0,-6], ceil 2.6), the kitchen and the
+		# hall opening off its N wall. From by the front window, NW across the
+		# rug to the stereo wall (turntable, speakers, crates, posters), the
+		# skateboard rack by the door at left, the TV and the openings beyond.
+		"camera_origin": Vector3(2.20, 1.60, -1.30),
+		"camera_rotation": Vector3(-0.084, 1.062, 0.0),
 		"fov": 63.0,
 		"suppress_input": true,
 	},

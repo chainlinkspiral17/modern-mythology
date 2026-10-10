@@ -3834,6 +3834,38 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-10 · overnight run, pass 42: WAGNER'S FRONT ROOM, DRAFT 2 (the wrong
+ROOM).** vol1 ch2 played Wagner's home as a 6 x 5 m "lived-in family front
+room" (beige sofa, framed pictures, a TV) with the record player tucked in
+a corner. The prose: "Wagner puts up his skateboard, goes to the record
+player, and starts some metal ... Burzum. Norwegian Black Metal ... They
+make haste to their ride of choice — JD, a beat-up piece of shit."
+`build_wagner_home.py` is rewritten as a skater-metalhead's rented
+bungalow front room, 7.2 x 6 m:
+- **The stereo wall.** The turntable on its credenza with the receiver,
+  the floor speakers, milk crates of LPs, a black sleeve on the floor,
+  three black posters with white logos.
+- **By the door.** The wall rack, with two boards on the hooks and his
+  leaning under them; shoes on the mat; a hoodie on the hook.
+- **The rest of the room.** The thrift sofa with its blanket, the coffee
+  table (cans, a skate magazine, the remote), the TV and console, a
+  guitar on its stand by a practice amp, the floor lamp.
+- **Through the openings.** The kitchen: pizza box, fridge, sink under
+  its window. The hall: a stub to his door.
+- **Out the front window.** The driveway, JD on it (faded maroon, a
+  primer patch), and the street of small houses.
+
+Scene: a day rig (front-window sun, the ceiling dome on, the kitchen
+dome). Seven markers; the two closeups are staged so a room, not a wall,
+stands behind each speaker.
+
+Deck must REBUILD wagner_home.
+
+Draft 3 targets:
+- poster imagery that reads as black metal without copying any band;
+- the evening for "Take the longboat out tonight";
+- the porch outside the door.
+
 **2026-10-10 · overnight run, pass 41: THE NEWSPAPER ROOM, DRAFT 2 (build big).**
 vol2 interlude three ("I joined the school newspaper on a whim ... Most of
 my friendships in Small Wood were forged out of that classroom and the

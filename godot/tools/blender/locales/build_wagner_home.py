@@ -1,193 +1,257 @@
-"""The Wagner home — vol1 ch2's living room (the visit after the
-skatepark). A lived-in family front room, early evening.
+"""Wagner's home — vol1 ch2, after the skatepark.
 
-Hero features: the three-seat sofa with throw cushions against the
-W wall, the TV on its console opposite, coffee table between them
-with mugs and a magazine, an armchair, the N-wall window with
-curtains, a bookshelf, floor lamp, framed pictures, and a braided
-rug tying it together.
+DRAFT 2 (2026-10-10). Draft 1 was a 6 x 5 m "lived-in family front room"
+— a beige sofa, a TV, framed pictures — with the record player tucked in
+a corner. The prose:
 
-Coordinate frame: Blender Z-up. y=0 is the entry (south) wall; +Y
-runs back into the room; walls at x=±3.0, back wall y=5.0, ceiling
-2.6. glTF export remaps to Godot (x, z, -y).
+  "INT. WAGNER'S HOME — DAY. Wagner puts up his skateboard, goes to the
+  record player, and starts some metal. — This here is the shit. — What
+  is this I'm hearing? — Burzum. Norwegian Black Metal ... — We need to
+  get a good crew. Take the longboat out tonight ... They make haste to
+  their ride of choice — JD, a beat-up piece of shit."
 
-Vantage wired in Background3D.CAMERA_PRESETS:
-  wagner_home — just inside the door, the room in one wide: sofa
-  left, window back, TV right.
+So it is a skater-metalhead's rented bungalow, the front room built around
+the stereo, 7.2 x 6.0 m under a 2.6 m ceiling, opening onto the kitchen
+and the hall:
+  · THE STEREO WALL (W): the turntable on its credenza with the receiver,
+    the floor speakers either side, the milk crates of LPs, a black
+    sleeve leaning out, the posters over it.
+  · BY THE DOOR: the wall rack where he "puts up" his skateboard (two on
+    the hooks, his leaning under them), the shoes on the mat.
+  · The thrift-store sofa on the E wall, the coffee table (cans, a skate
+    magazine, the remote), the rug; the TV on its low stand; a guitar on
+    its stand beside a practice amp; the floor lamp.
+  · Through the cased opening, the kitchen: the counter with a pizza box,
+    the fridge, the sink under its window. Through the other, the short
+    hall to his door.
+  · Out the front window: the yard, the driveway — and JD on it, the
+    beat-up sedan, faded maroon — and the street of small houses.
+
+Coordinate frame: Blender Z-up; y=0 is the front (S) wall, +Y runs back to
+the kitchen; walls x=+-3.6, back wall y=6.0, the kitchen to y=9.4.
+glTF export remaps to Godot (x, z, -y).
+
+Draft 3 targets: the band posters' imagery (the prose names Burzum —
+the posters should read as black-metal logos without copying any); the
+afternoon going to evening for "Take the longboat out tonight"; the
+porch and the step outside the door.
 """
 import math
-import os, sys
+import os
+import random
+import sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
-from _props.structure import make_floor, make_wall, make_ceiling
+from _props.geometry import clear_scene, make_box, make_cyl, make_lathe, make_rot_box, export_glb
+from _props.structure import make_floor, make_wall, make_wall_with_openings, make_ceiling, make_window
+from _props.views import make_view
+from _props.vehicles import make_car
 
-ROOM_W = 6.0
-ROOM_D = 5.0
+X0, X1 = -3.6, 3.6
+Y0, Y1 = 0.0, 6.0
 CEIL = 2.6
+KY1 = 9.4                       # the kitchen's back wall
+KX0 = 0.2                       # the kitchen's W wall
+HALL_X = -2.4                   # the hall opening's centre
 
-COL_WALL = (0.58, 0.52, 0.42, 1.0)      # warm family beige
-COL_BASE = (0.34, 0.28, 0.20, 1.0)
-COL_FLOOR = (0.40, 0.29, 0.18, 1.0)
-COL_SEAM = (0.30, 0.21, 0.13, 1.0)
-COL_CEIL = (0.60, 0.57, 0.50, 1.0)
-COL_SOFA = (0.36, 0.30, 0.24, 1.0)      # brown corduroy
-COL_SOFA_DK = (0.28, 0.23, 0.18, 1.0)
-COL_CUSHION = (0.52, 0.38, 0.24, 1.0)
-COL_CHAIR = (0.34, 0.38, 0.30, 1.0)     # olive armchair
-COL_WOOD = (0.34, 0.24, 0.16, 1.0)
-COL_TV_BODY = (0.24, 0.20, 0.17, 1.0)
-COL_TV_SCREEN = (0.55, 0.60, 0.62, 1.0) # cool glow — bloom lifts it
-COL_RUG = (0.44, 0.30, 0.22, 1.0)
-COL_RUG_RING = (0.34, 0.24, 0.18, 1.0)
-COL_CURTAIN = (0.50, 0.42, 0.30, 1.0)
-COL_GLASS = (0.35, 0.40, 0.50, 0.6)
-COL_FRAME = (0.20, 0.18, 0.15, 1.0)
-COL_LAMP = (1.00, 0.86, 0.55, 1.0)
-COL_SHADE = (0.66, 0.56, 0.38, 1.0)
-COL_PIC = (0.72, 0.68, 0.58, 1.0)
-SPINES = [
-    (0.48, 0.20, 0.16, 1.0), (0.22, 0.30, 0.24, 1.0), (0.60, 0.52, 0.36, 1.0),
-    (0.24, 0.22, 0.34, 1.0), (0.55, 0.38, 0.20, 1.0), (0.42, 0.44, 0.46, 1.0),
-]
+COL_WALL = (0.70, 0.68, 0.60, 1.0)      # landlord off-white, gone grey
+COL_BASE = (0.40, 0.34, 0.26, 1.0)
+COL_FLOOR = (0.52, 0.38, 0.26, 1.0)     # worn oak
+COL_SEAM = (0.38, 0.27, 0.18, 1.0)
+COL_TRIM = (0.82, 0.80, 0.74, 1.0)
+COL_DARK = (0.10, 0.10, 0.11, 1.0)
+COL_WOOD = (0.52, 0.36, 0.22, 1.0)
+COL_SOFA = (0.26, 0.24, 0.22, 1.0)      # a dark thrift-store sofa
+COL_SOFA_CUSH = (0.32, 0.30, 0.27, 1.0)
+COL_POSTER = (0.06, 0.06, 0.07, 1.0)
+COL_PAPER = (0.92, 0.90, 0.84, 1.0)
+COL_GLASS = (0.78, 0.84, 0.86, 0.25)
 
-
-from _props.structure import make_wall_with_openings   # (2026-10-07)
-
-from _props.views import make_view   # (2026-10-07)
-
-from _props.structure import make_frame_ring   # (2026-10-07: the frame boards → rings)
 
 def build_shell():
-    make_floor("Floor", (0.0, ROOM_D / 2.0, 0.0), size_x=ROOM_W + 0.4,
-               size_y=ROOM_D + 0.4, palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
+    make_floor("Floor", (0.0, (Y0 + Y1) / 2.0, 0.0), size_x=X1 - X0 + 0.4, size_y=Y1 - Y0 + 0.4,
+               palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
     pal = {"wall": COL_WALL, "baseboard": COL_BASE}
-    make_wall("Wall_W", (-ROOM_W / 2.0, ROOM_D / 2.0, 0), length=ROOM_D + 0.4,
-              height=CEIL, axis='Y', palette=pal, baseboard_face_sign=+1)
-    make_wall("Wall_E", (+ROOM_W / 2.0, ROOM_D / 2.0, 0), length=ROOM_D + 0.4,
-              height=CEIL, axis='Y', palette=pal, baseboard_face_sign=-1)
-    make_wall_with_openings("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W + 0.4, height=CEIL,   # cut 2026-10-07 (window_backing_audit): the window was a pane on a solid wall
-              axis='X', palette=pal, baseboard_face_sign=-1, openings=[(0.300, 1.600, 1.700, 1.300)])
-    make_wall("Wall_S", (0.0, 0.0, 0), length=ROOM_W + 0.4, height=CEIL,
-              axis='X', palette=pal, baseboard_face_sign=+1)
-    make_ceiling("Ceil", (0.0, ROOM_D / 2.0, CEIL), size_x=ROOM_W + 0.4,
-                 size_y=ROOM_D + 0.4, with_grid=False, with_stains=False,
-                 palette={"tile": COL_CEIL})
-    # Braided oval rug (rings suggested with two stacked slabs)
-    make_box("Rug_Outer", (0.0, 2.6, 0.008), (2.8, 2.0, 0.012), COL_RUG_RING)
-    make_box("Rug_Inner", (0.0, 2.6, 0.016), (2.2, 1.5, 0.010), COL_RUG)
+    make_wall("Wall_W", (X0, (Y0 + Y1) / 2.0, 0), length=Y1 - Y0 + 0.4, height=CEIL, axis='Y', palette=pal, baseboard_face_sign=+1)
+    make_wall("Wall_E", (X1, (Y0 + KY1) / 2.0, 0), length=KY1 - Y0 + 0.4, height=CEIL, axis='Y', palette=pal, baseboard_face_sign=-1)
+    # S: the front door and the front window on the driveway
+    make_wall_with_openings("Wall_S", (0.0, Y0, 0), length=X1 - X0 + 0.4, height=CEIL, axis='X', palette=pal,
+                            baseboard_face_sign=+1, openings=[(-2.5, 1.025, 0.95, 2.05), (1.2, 1.45, 2.2, 1.40)])
+    # N: the hall opening and the kitchen's cased opening
+    make_wall_with_openings("Wall_N", (0.0, Y1, 0), length=X1 - X0 + 0.4, height=CEIL, axis='X', palette=pal,
+                            baseboard_face_sign=-1, openings=[(HALL_X, 1.025, 0.90, 2.05), (1.7, 1.05, 1.60, 2.10)])
+    make_ceiling("Ceil", (0.0, (Y0 + KY1) / 2.0, CEIL), size_x=X1 - X0 + 0.4, size_y=KY1 - Y0 + 0.4,
+                 with_grid=False, with_stains=True, palette={"tile": (0.86, 0.85, 0.80, 1.0)})
+    # the front window: frame, glass, the curtains pushed open
+    make_window("Win_S", (1.2, Y0 + 0.10, 1.45), width=2.2, height=1.40, room_dir=+1, see_through=True,
+                palette={"frame": COL_TRIM}, cross_mullion=True)
+    make_box("Win_S_Glass", (1.2, Y0 + 0.02, 1.45), (2.2, 0.01, 1.40), COL_GLASS)
+    make_box("Win_S_Sill", (1.2, Y0 + 0.17, 0.74), (2.4, 0.14, 0.03), COL_TRIM)
+    make_cyl("Curtain_Rod", (1.2, Y0 + 0.16, 2.30), 0.015, 2.80, COL_DARK, segments=6, axis='X')
+    for k, bx in enumerate((-0.15, 2.55)):
+        make_box(f"Curtain_Rod_Bracket_{k}", (bx, Y0 + 0.135, 2.30), (0.03, 0.07, 0.03), COL_DARK)   # rod to the wall face
+    for k, (cx, w) in enumerate(((-0.10, 0.36), (2.50, 0.36))):
+        make_box(f"Curtain_{k}", (cx, Y0 + 0.19, 1.47), (w, 0.08, 1.64), (0.20, 0.16, 0.22, 1.0))
+        make_box(f"Curtain_{k}_Rod_Ring", (cx, Y0 + 0.16, 2.29), (0.06, 0.04, 0.04), COL_DARK)
+    # the front door, shut, and its deadbolt; the hall and kitchen casings
+    make_box("Front_Door", (-2.5, Y0, 1.02), (0.92, 0.05, 2.04), (0.40, 0.18, 0.14, 1.0))
+    make_cyl("Front_Door_Knob", (-2.15, Y0 + 0.06, 1.00), 0.028, 0.05, (0.72, 0.64, 0.40, 1.0), segments=8, axis='Y')
+    make_box("Front_Door_Deadbolt", (-2.15, Y0 + 0.04, 1.18), (0.05, 0.02, 0.05), (0.72, 0.64, 0.40, 1.0))
+    for nm, cx, w in (("Hall", HALL_X, 0.90), ("Kitchen", 1.7, 1.60)):
+        make_box(f"{nm}_Casing_Head", (cx, Y1 - 0.11, 2.12), (w + 0.16, 0.02, 0.10), COL_TRIM)
+        for s in (-1, 1):
+            make_box(f"{nm}_Casing_{s:+d}", (cx + s * (w / 2.0 + 0.04), Y1 - 0.11, 1.03), (0.08, 0.02, 2.06), COL_TRIM)
+    make_cyl("Ceiling_Dome", (0.3, 3.0, CEIL - 0.04), 0.18, 0.08, (0.94, 0.92, 0.84, 1.0), segments=14)
 
 
-def build_window():
-    """N wall window with half-open curtains."""
-    make_frame_ring("Win_Frame", (0.3, ROOM_D - 0.06, 1.60), (1.9, 0.08, 1.5), COL_FRAME)
-    make_box("Win_Glass", (0.3, ROOM_D - 0.08, 1.60), (1.7, 0.05, 1.3), COL_GLASS)
-    make_box("Win_Mull", (0.3, ROOM_D - 0.10, 1.60), (0.06, 0.05, 1.3), COL_FRAME)
-    make_box("Win_Sill", (0.3, ROOM_D - 0.14, 0.82), (2.1, 0.20, 0.06), COL_FRAME)
-    make_cyl("Curtain_Rod", (0.3, ROOM_D - 0.12, 2.42), 0.02, 2.3, COL_FRAME,   # on the wall (2026-09-23: 4 cm off it)
-             segments=6, axis='X')
-    make_box("Curtain_W", (-0.62, ROOM_D - 0.18, 1.55), (0.40, 0.12, 1.80), COL_CURTAIN)
-    make_box("Curtain_E", (1.22, ROOM_D - 0.18, 1.55), (0.40, 0.12, 1.80), COL_CURTAIN)
+def build_hall_and_kitchen():
+    pal = {"wall": COL_WALL, "baseboard": COL_BASE}
+    # the hall: a stub to his door
+    make_box("Hall_Floor", (HALL_X, Y1 + 0.9, -0.05), (1.4, 1.8, 0.10), COL_FLOOR)
+    for s in (-1, 1):
+        make_wall(f"Hall_Wall_{s:+d}", (HALL_X + s * 0.65, Y1 + 0.95, 0), length=1.70, height=CEIL, axis='Y', palette=pal,
+                  baseboard_face_sign=-s)
+    make_wall("Hall_Wall_End", (HALL_X, Y1 + 1.85, 0), length=1.50, height=CEIL, axis='X', palette=pal, baseboard_face_sign=-1)
+    make_box("Bedroom_Door", (HALL_X, Y1 + 1.73, 1.02), (0.80, 0.04, 2.04), (0.62, 0.54, 0.42, 1.0))
+    make_box("Bedroom_Door_Sticker", (HALL_X + 0.10, Y1 + 1.708, 1.45), (0.18, 0.002, 0.24), COL_POSTER)
+    make_cyl("Bedroom_Door_Knob", (HALL_X + 0.30, Y1 + 1.69, 0.98), 0.025, 0.05, (0.72, 0.64, 0.40, 1.0), segments=8, axis='Y')
+    # the kitchen through the cased opening
+    make_box("Kitchen_Floor", ((KX0 + X1) / 2.0, (Y1 + KY1) / 2.0, -0.05), (X1 - KX0 + 0.2, KY1 - Y1 + 0.2, 0.10), (0.66, 0.62, 0.52, 1.0))
+    make_wall("Kitchen_Wall_W", (KX0, (Y1 + KY1) / 2.0, 0), length=KY1 - Y1 + 0.2, height=CEIL, axis='Y', palette=pal, baseboard_face_sign=+1)
+    make_wall_with_openings("Kitchen_Wall_N", ((KX0 + X1) / 2.0, KY1, 0), length=X1 - KX0 + 0.4, height=CEIL, axis='X', palette=pal,
+                            baseboard_face_sign=-1, openings=[(1.6, 1.55, 1.0, 0.90)])
+    face = KY1 - 0.10
+    make_box("Kitchen_Counter", (1.30, face - 0.30, 0.44), (2.00, 0.60, 0.88), (0.56, 0.46, 0.34, 1.0))
+    make_box("Kitchen_Counter_Top", (1.30, face - 0.31, 0.90), (2.04, 0.64, 0.04), (0.72, 0.70, 0.64, 1.0))
+    make_box("Kitchen_Sink", (1.60, face - 0.31, 0.915), (0.60, 0.42, 0.01), (0.66, 0.68, 0.70, 1.0))
+    make_cyl("Kitchen_Faucet", (1.60, face - 0.08, 1.05), 0.012, 0.26, (0.70, 0.72, 0.74, 1.0), segments=6)
+    make_window("Kitchen_Win", (1.6, face, 1.55), width=1.0, height=0.90, room_dir=-1, see_through=True, palette={"frame": COL_TRIM})
+    make_box("Kitchen_Win_Glass", (1.6, KY1 - 0.02, 1.55), (1.0, 0.01, 0.90), COL_GLASS)
+    make_box("Pizza_Box", (0.70, face - 0.32, 0.945), (0.42, 0.42, 0.05), (0.80, 0.70, 0.52, 1.0))
+    for k in range(3):
+        make_cyl(f"Kitchen_Can_{k}", (2.05 + k * 0.09, face - 0.40, 0.98), 0.033, 0.12, (0.70, 0.12, 0.10, 1.0), segments=8)
+    make_box("Fridge", (X1 - 0.10 - 0.38, face - 0.40, 0.88), (0.74, 0.78, 1.76), (0.88, 0.88, 0.84, 1.0))
+    make_box("Fridge_Handle", (X1 - 0.10 - 0.70, face - 0.80, 1.20), (0.03, 0.03, 0.40), (0.60, 0.60, 0.60, 1.0))
+    make_box("Fridge_Flyer", (X1 - 0.10 - 0.40, face - 0.795, 1.40), (0.20, 0.002, 0.26), COL_PAPER)
+    make_cyl("Kitchen_Dome", (1.9, 7.8, CEIL - 0.04), 0.15, 0.08, (0.94, 0.92, 0.84, 1.0), segments=12)
 
 
-def build_sofa():
-    """Three-seat sofa against the W wall, facing the TV."""
-    sx = -2.35
-    make_box("Sofa_Base", (sx, 2.6, 0.21), (0.95, 2.2, 0.42), COL_SOFA_DK)   # on the floor (2026-09-24: 7 cm over it)
-    make_box("Sofa_Back", (sx - 0.32, 2.6, 0.62), (0.30, 2.2, 0.75), COL_SOFA)
-    for i, cy in enumerate((1.9, 2.6, 3.3)):
-        make_box(f"Sofa_Seat_{i}", (sx + 0.08, cy, 0.50), (0.72, 0.64, 0.16), COL_SOFA)
-    for cy in (1.55, 3.65):
-        make_box(f"Sofa_Arm_{cy:.2f}", (sx, cy, 0.52), (0.95, 0.22, 0.50), COL_SOFA)
-    make_box("Throw_Cushion_A", (sx - 0.10, 2.05, 0.72), (0.34, 0.34, 0.14), COL_CUSHION)
-    make_box("Throw_Cushion_B", (sx - 0.10, 3.15, 0.72), (0.34, 0.34, 0.14), COL_CUSHION)
+def build_stereo_wall():
+    """W wall: the turntable, the receiver, the speakers, the crates of LPs, the posters."""
+    face = X0 + 0.10
+    cy = 3.0
+    make_box("Stereo_Credenza", (face + 0.24, cy, 0.30), (0.48, 1.60, 0.60), COL_WOOD)
+    make_box("Stereo_Credenza_Top", (face + 0.24, cy, 0.615), (0.50, 1.64, 0.03), COL_WOOD)
+    t = 0.63
+    make_box("Receiver", (face + 0.24, cy + 0.42, t + 0.07), (0.40, 0.44, 0.14), COL_DARK)
+    make_box("Receiver_Dial", (face + 0.442, cy + 0.42, t + 0.08), (0.004, 0.30, 0.05), (0.86, 0.64, 0.28, 1.0))
+    make_box("Turntable_Plinth", (face + 0.24, cy - 0.30, t + 0.05), (0.38, 0.46, 0.10), (0.72, 0.60, 0.44, 1.0))
+    make_cyl("Turntable_Platter", (face + 0.24, cy - 0.33, t + 0.105), 0.15, 0.012, (0.74, 0.74, 0.76, 1.0), segments=20)
+    make_cyl("Turntable_Record", (face + 0.24, cy - 0.33, t + 0.115), 0.148, 0.004, (0.04, 0.04, 0.05, 1.0), segments=20)
+    make_cyl("Turntable_Record_Label", (face + 0.24, cy - 0.33, t + 0.1185), 0.045, 0.002, (0.90, 0.90, 0.88, 1.0), segments=12)
+    make_rot_box("Turntable_Tonearm", (face + 0.30, cy - 0.20, t + 0.13), (0.03, 0.22, 0.012), (0.72, 0.72, 0.74, 1.0), yaw=0.35)
+    make_cyl("Turntable_Tonearm_Post", (face + 0.38, cy - 0.12, t + 0.115), 0.015, 0.03, (0.72, 0.72, 0.74, 1.0), segments=8)
+    # the sleeve he pulled it from, leaning on the credenza's front
+    make_box("Record_Sleeve", (face + 0.486, cy - 0.10, 0.16), (0.012, 0.31, 0.31), COL_POSTER)   # standing on the floor against the credenza
+    # the floor speakers either side
+    for k, sy in enumerate((cy - 1.15, cy + 1.15)):
+        make_box(f"Speaker_{k}", (face + 0.18, sy, 0.48), (0.34, 0.30, 0.96), COL_DARK)
+        for d, (dz, r) in enumerate(((0.30, 0.10), (0.62, 0.06), (0.82, 0.03))):
+            make_cyl(f"Speaker_{k}_Driver_{d}", (face + 0.352, sy, dz), r, 0.006, (0.24, 0.24, 0.26, 1.0), segments=12, axis='X')
+    # the milk crates of LPs, two stacked
+    for k in range(2):
+        cz = 0.165 + k * 0.33
+        make_box(f"Milk_Crate_{k}", (face + 0.20, 4.85, cz), (0.34, 0.34, 0.32), (0.12, 0.26, 0.56, 1.0))
+        for r in range(9):
+            make_box(f"Milk_Crate_{k}_LP_{r}", (face + 0.12 + r * 0.022, 4.85, cz + 0.06), (0.012, 0.31, 0.31),
+                     (COL_POSTER, (0.40, 0.34, 0.30, 1.0), (0.60, 0.20, 0.16, 1.0))[(r + k) % 3])
+    # the posters over the stereo: black sheets, white jagged logos
+    rnd = random.Random(66)
+    for k, (py, w, h) in enumerate(((1.75, 0.60, 0.88), (3.0, 0.90, 0.60), (4.25, 0.60, 0.88))):
+        make_box(f"Poster_{k}", (X0 + 0.103, py, 1.75), (0.006, w, h), COL_POSTER)
+        for m in range(6):
+            make_box(f"Poster_{k}_Logo_{m}", (X0 + 0.107, py - w * 0.35 + m * w * 0.14, 1.75 + h * 0.28 + rnd.uniform(-0.04, 0.04)),
+                     (0.002, w * 0.10, rnd.uniform(0.04, 0.12)), (0.88, 0.88, 0.86, 1.0))
+        make_box(f"Poster_{k}_Image", (X0 + 0.107, py, 1.75 - h * 0.12), (0.002, w * 0.70, h * 0.40), (0.34, 0.34, 0.36, 1.0))
 
 
-def build_tv():
-    """CRT on its wood console, E wall."""
-    make_box("TV_Console", (2.45, 2.6, 0.28), (0.75, 1.5, 0.55), COL_WOOD)
-    make_box("TV_Body", (2.45, 2.6, 0.90), (0.66, 0.85, 0.68), COL_TV_BODY)
-    make_box("TV_Screen", (2.10, 2.6, 0.90), (0.05, 0.62, 0.48), COL_TV_SCREEN)
-    make_cyl("TV_Knob_A", (2.28, 3.02, 0.72), 0.035, 0.05, COL_FRAME, segments=8, axis='X')
-    make_cyl("TV_Knob_B", (2.28, 3.02, 0.88), 0.035, 0.05, COL_FRAME, segments=8, axis='X')
-    # Rabbit ears
-    make_cyl("TV_Ear_L", (2.45, 2.45, 1.55), 0.012, 0.62, COL_FRAME, segments=5)
-    make_cyl("TV_Ear_R", (2.55, 2.75, 1.55), 0.012, 0.62, COL_FRAME, segments=5)
+def build_door_corner():
+    """The skateboard rack by the door — 'Wagner puts up his skateboard' — and the shoes."""
+    face = X0 + 0.10
+    for k, z in enumerate((1.25, 1.62)):
+        for h in (-1, 1):
+            make_box(f"Skate_Rack_Hook_{k}_{h:+d}", (face + 0.05, 0.85 + h * 0.30, z - 0.04), (0.10, 0.03, 0.03), COL_DARK)
+        make_box(f"Skateboard_{k}_Deck", (face + 0.10, 0.85, z), (0.02, 0.80, 0.20), ((0.10, 0.10, 0.12, 1.0), (0.60, 0.20, 0.16, 1.0))[k])
+        for w in (-1, 1):
+            make_cyl(f"Skateboard_{k}_Wheel_{w:+d}", (face + 0.135, 0.85 + w * 0.28, z), 0.027, 0.05, (0.92, 0.88, 0.72, 1.0), segments=8, axis='X')
+    # his board, just put up — leaning under the rack, tail on the floor
+    make_rot_box("Skateboard_His_Deck", (face + 0.12, 0.85, 0.40), (0.04, 0.20, 0.80), (0.30, 0.42, 0.24, 1.0), roll=0.12)
+    make_box("Shoe_Mat", (-2.5, 0.55, 0.005), (0.90, 0.50, 0.01), (0.30, 0.26, 0.20, 1.0))
+    for k, (sx, sy, yaw) in enumerate(((-2.75, 0.45, 0.2), (-2.55, 0.60, -0.3), (-2.30, 0.48, 0.1))):
+        make_rot_box(f"Shoe_{k}", (sx, sy, 0.055), (0.11, 0.28, 0.09), ((0.10, 0.10, 0.12, 1.0), (0.80, 0.78, 0.74, 1.0), (0.12, 0.12, 0.14, 1.0))[k], yaw=yaw)
+    make_box("Coat_Hook", (-1.85, Y0 + 0.13, 1.70), (0.04, 0.06, 0.04), COL_DARK)
+    make_box("Coat_Hoodie", (-1.85, Y0 + 0.17, 1.33), (0.40, 0.06, 0.70), (0.14, 0.14, 0.16, 1.0))
 
 
-def build_seating_extras():
-    # Coffee table between sofa and TV
-    make_box("Coffee_Top", (0.0, 2.6, 0.42), (1.2, 0.7, 0.05), COL_WOOD)
-    for lx, ly in ((-0.5, 2.32), (0.5, 2.32), (-0.5, 2.88), (0.5, 2.88)):
-        make_box(f"Coffee_Leg_{lx:.1f}_{ly:.2f}", (lx, ly, 0.21), (0.05, 0.05, 0.42), COL_WOOD)
-    make_cyl("Mug_A", (-0.30, 2.50, 0.49), 0.045, 0.09, (0.60, 0.30, 0.24, 1.0), segments=8)
-    make_cyl("Mug_B", (-0.12, 2.72, 0.49), 0.045, 0.09, (0.30, 0.40, 0.52, 1.0), segments=8)
-    make_box("Magazine", (0.35, 2.55, 0.455), (0.30, 0.22, 0.012), (0.70, 0.66, 0.56, 1.0))
-    # Armchair, SE corner angled into the group (axis-aligned)
-    make_box("Chair_Base", (1.9, 1.0, 0.245), (0.85, 0.85, 0.49), COL_CHAIR)   # to the floor
-    make_box("Chair_Back", (1.9, 0.62, 0.65), (0.85, 0.26, 0.72), COL_CHAIR)
-    for cx in (1.52, 2.28):
-        make_box(f"Chair_Arm_{cx:.2f}", (cx, 1.0, 0.52), (0.16, 0.85, 0.46), COL_CHAIR)
+def build_living():
+    # the sofa on the E wall, facing the stereo
+    sx, sy = X1 - 0.10 - 0.45, 2.80
+    make_box("Sofa_Base", (sx, sy, 0.21), (0.90, 2.10, 0.42), COL_SOFA)
+    make_box("Sofa_Back", (sx + 0.34, sy, 0.62), (0.22, 2.10, 0.42), COL_SOFA)
+    for e in (-1, 1):
+        make_box(f"Sofa_Arm_{e:+d}", (sx - 0.02, sy + e * 0.97, 0.55), (0.84, 0.16, 0.26), COL_SOFA)
+    for k in range(3):
+        make_box(f"Sofa_SeatCush_{k}", (sx - 0.05, sy - 0.59 + k * 0.59, 0.47), (0.62, 0.58, 0.10), COL_SOFA_CUSH)
+    make_rot_box("Sofa_Blanket", (sx - 0.05, sy + 0.55, 0.53), (0.60, 0.40, 0.02), (0.46, 0.20, 0.16, 1.0), yaw=0.2)
+    # the rug and the coffee table with what's on it
+    make_box("Rug", (0.40, 2.80, 0.005), (2.60, 2.00, 0.01), (0.30, 0.26, 0.30, 1.0))
+    tx, ty = 0.90, 2.80
+    make_box("Coffee_Table_Top", (tx, ty, 0.42), (0.60, 1.10, 0.04), COL_WOOD)
+    for i, (lx, ly) in enumerate(((-0.26, -0.50), (0.26, -0.50), (-0.26, 0.50), (0.26, 0.50))):
+        make_box(f"Coffee_Table_Leg_{i}", (tx + lx, ty + ly, 0.20), (0.04, 0.04, 0.40), COL_WOOD)
+    for k, (cx, cy) in enumerate(((-0.10, -0.30), (0.12, -0.20), (0.05, 0.30))):
+        make_cyl(f"Coffee_Table_Can_{k}", (tx + cx, ty + cy, 0.50), 0.033, 0.12, ((0.70, 0.12, 0.10, 1.0), (0.20, 0.30, 0.60, 1.0), (0.70, 0.12, 0.10, 1.0))[k], segments=8)
+    make_rot_box("Skate_Magazine", (tx - 0.05, ty + 0.05, 0.445), (0.22, 0.29, 0.006), (0.86, 0.50, 0.20, 1.0), yaw=0.3)
+    make_box("TV_Remote", (tx + 0.18, ty + 0.12, 0.447), (0.05, 0.17, 0.014), COL_DARK)
+    # the TV on its low stand against the N wall
+    make_box("TV_Stand", (-0.40, Y1 - 0.10 - 0.22, 0.24), (1.40, 0.44, 0.48), COL_DARK)
+    make_box("TV_Panel", (-0.40, Y1 - 0.10 - 0.16, 0.86), (1.10, 0.05, 0.66), COL_DARK)
+    make_box("TV_Panel_Screen", (-0.40, Y1 - 0.10 - 0.186, 0.86), (1.04, 0.002, 0.60), (0.08, 0.09, 0.10, 1.0))
+    make_box("TV_Panel_Foot", (-0.40, Y1 - 0.10 - 0.16, 0.50), (0.30, 0.18, 0.04), COL_DARK)
+    make_box("Game_Console", (-0.80, Y1 - 0.10 - 0.25, 0.51), (0.30, 0.25, 0.06), COL_DARK)
+    # the guitar on its stand and the practice amp, in the SE corner by the window
+    make_box("Practice_Amp", (X1 - 0.10 - 0.22, 0.55, 0.22), (0.40, 0.26, 0.44), COL_DARK)
+    make_box("Practice_Amp_Grille", (X1 - 0.10 - 0.22, 0.679, 0.24), (0.34, 0.004, 0.30), (0.30, 0.30, 0.30, 1.0))
+    make_box("Guitar_Stand", (2.55, 0.62, 0.08), (0.30, 0.30, 0.16), COL_DARK)
+    make_rot_box("Guitar_Body", (2.55, 0.62, 0.40), (0.36, 0.08, 0.46), (0.06, 0.06, 0.07, 1.0), roll=-0.10)
+    make_rot_box("Guitar_Neck", (2.58, 0.66, 0.92), (0.05, 0.03, 0.62), (0.30, 0.20, 0.14, 1.0), roll=-0.10)
+    make_rot_box("Guitar_Headstock", (2.62, 0.69, 1.27), (0.08, 0.03, 0.16), (0.06, 0.06, 0.07, 1.0), roll=-0.10)
+    # the floor lamp at the sofa's N end
+    make_cyl("Floor_Lamp_Base", (X1 - 0.35, 4.25, 0.02), 0.14, 0.04, COL_DARK, segments=12)
+    make_cyl("Floor_Lamp_Pole", (X1 - 0.35, 4.25, 0.76), 0.014, 1.44, COL_DARK, segments=6)
+    make_cyl("Floor_Lamp_Shade", (X1 - 0.35, 4.25, 1.56), 0.18, 0.24, (0.86, 0.76, 0.56, 1.0), segments=12)
+    make_cyl("Floor_Lamp_Bulb", (X1 - 0.35, 4.25, 1.50), 0.035, 0.06, (0.98, 0.88, 0.62, 1.0), segments=8)
 
 
-def build_details():
-    # Bookshelf N wall, west of the window
-    make_box("Shelf_Case", (-2.2, ROOM_D - 0.22, 0.95), (1.1, 0.32, 1.9), COL_WOOD)
-    for zi, z in enumerate((0.35, 0.85, 1.35)):
-        make_box(f"Shelf_S{zi}", (-2.2, ROOM_D - 0.22, z), (1.0, 0.28, 0.03),
-                 (0.42, 0.30, 0.20, 1.0))
-        for i in range(7):
-            if (i + zi) % 5 == 3:
-                continue
-            k = (i * 5 + zi) % len(SPINES)
-            h = 0.20 + 0.04 * ((i + zi) % 3)
-            make_box(f"Shelf_Book_{zi}_{i}", (-2.62 + i * 0.13, ROOM_D - 0.22,
-                     z + 0.02 + h / 2.0), (0.10, 0.20, h), SPINES[k])
-    # Floor lamp beside the sofa
-    make_cyl("Lamp_Post", (-2.5, 1.15, 0.72), 0.025, 1.44, COL_FRAME, segments=6)
-    make_cyl("Lamp_Shade", (-2.5, 1.15, 1.55), 0.18, 0.24, COL_SHADE, segments=10)
-    make_cyl("Lamp_Bulb", (-2.5, 1.15, 1.44), 0.05, 0.06, COL_LAMP, segments=8)
-    # Framed pictures over the sofa
-    for i, (py, pw) in enumerate(((2.1, 0.5), (2.75, 0.35), (3.3, 0.45))):
-        make_box(f"Pic_{i}_Frame", (-2.93, py, 1.75), (0.04, pw, 0.42), COL_FRAME)
-        make_box(f"Pic_{i}", (-2.91, py, 1.75), (0.03, pw - 0.08, 0.34), COL_PIC)
-    # Ceiling fixture
-    make_cyl("Ceiling_Dome", (0.0, 2.5, CEIL - 0.10), 0.16, 0.16, COL_LAMP, segments=10)
-    # The record player (canon: "goes to the record player, starts
-    # some metal") — console table + turntable + spinning disc +
-    # record crate below, E wall south of the TV
-    make_box("Record_Console", (2.5, 1.55, 0.32), (0.7, 0.85, 0.62), COL_WOOD)
-    make_box("Turntable_Deck", (2.5, 1.55, 0.68), (0.6, 0.7, 0.08), COL_FRAME)
-    make_cyl("Turntable_Disc", (2.48, 1.52, 0.735), 0.26, 0.015, (0.10, 0.10, 0.11, 1.0),
-             segments=16)
-    make_cyl("Turntable_Label", (2.48, 1.52, 0.745), 0.06, 0.012, (0.62, 0.28, 0.24, 1.0),
-             segments=10)
-    make_box("Turntable_Arm", (2.72, 1.72, 0.75), (0.20, 0.03, 0.02), COL_FRAME)
-    make_box("Record_Crate", (2.675, 0.95, 0.20), (0.45, 0.35, 0.38), COL_WOOD)   # against the E wall (2026-09-25: 13 cm off it)
-    for i in range(5):
-        make_box(f"Record_{i}", (2.44 + i * 0.055, 0.95, 0.42), (0.012, 0.30, 0.30),
-                 (0.14 + 0.04 * (i % 3), 0.13, 0.14, 1.0))
-    # Wagner's skateboard, put up against the wall by the door
-    make_box("Skateboard_Deck", (1.05, 0.14, 0.55), (0.22, 0.05, 0.80), (0.50, 0.30, 0.18, 1.0))
-    for wz in (0.28, 0.82):
-        make_cyl(f"Skate_Wheels_{wz:.2f}", (1.05, 0.18, wz), 0.035, 0.20,
-                 (0.78, 0.72, 0.50, 1.0), segments=8, axis='X')
-    # A black-metal poster over the record corner — dark field, pale
-    # unreadable logo scrawl
-    make_box("Poster", (2.885, 1.55, 1.75), (0.03, 0.55, 0.75), (0.10, 0.10, 0.11, 1.0))
-    make_box("Poster_Logo", (2.865, 1.55, 1.95), (0.02, 0.40, 0.16), (0.72, 0.72, 0.68, 1.0))
+def build_outside():
+    """The yard, the driveway and JD on it; the street of small houses."""
+    make_view("View_S", "S", Y0, 0.0, kind="front", ground_z=0.0, seed=27)
+    make_box("Driveway", (1.5, -4.5, -0.001), (2.8, 9.0, 0.008), (0.62, 0.60, 0.56, 1.0))
+    make_box("Porch_Step", (-2.5, -0.55, 0.075), (1.40, 0.90, 0.16), (0.62, 0.60, 0.56, 1.0))
+    make_box("Walk_To_Drive", (-0.9, -0.55, -0.001), (1.80, 0.90, 0.008), (0.62, 0.60, 0.56, 1.0))
+    # JD: "a beat-up piece of shit" — a faded maroon sedan, nose to the house
+    make_car("JD", 1.5, -4.6, 4.70, (0.40, 0.18, 0.16, 1.0), along="Y")
+    make_box("JD_Primer_Patch", (1.5 - 0.885, -4.0, 0.62), (0.006, 0.80, 0.30), (0.56, 0.56, 0.54, 1.0))
 
 
 def main():
     clear_scene()
     build_shell()
-    build_window()
-    build_sofa()
-    build_tv()
-    build_seating_extras()
-    build_details()
-    # what is outside the window (2026-10-07, _props/views.py)
-    make_view("View_N", "N", ROOM_D, 0.30, kind="back", ground_z=0.0, seed=27)   # the back yard, early evening
+    build_hall_and_kitchen()
+    build_stereo_wall()
+    build_door_corner()
+    build_living()
+    build_outside()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/wagner_home.glb"))
     print(f"\n[build_wagner_home] exporting to {out}")
