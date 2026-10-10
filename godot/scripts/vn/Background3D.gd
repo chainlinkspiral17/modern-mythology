@@ -2244,6 +2244,18 @@ const CAMERA_PRESETS := {
 		"fov": 66.0,
 		"suppress_input": true,
 	},
+	"smolvud_coop": {
+		"scene": "res://scenes/locales/smolvud_coop.tscn",
+		"requires_glb": "res://assets/3d/locales/smolvud_coop.glb",
+		# vol7's organic co-op on Smolvud's Main Street (2026-10-10; ch12
+		# played the visit on the street). 12 x 9 (godot x in [-6,6], z in
+		# [0,-9]). Camera in the SW corner by the bulk bins, looking NE over
+		# the produce and the gondolas to Margaret's counter by the door.
+		"camera_origin": Vector3(-5.00, 1.65, -2.00),
+		"camera_rotation": Vector3(-0.048, -1.399, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
 	"small_wood_rec_center": {
 		"scene": "res://scenes/locales/small_wood_rec_center.tscn",
 		"requires_glb": "res://assets/3d/locales/small_wood_rec_center.glb",

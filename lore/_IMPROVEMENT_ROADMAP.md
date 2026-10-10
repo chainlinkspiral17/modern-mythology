@@ -3834,6 +3834,39 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-10 · overnight run, pass 35: THE SMOLVUD CO-OP (a new set from the
+sweep).** The organic co-op is named across nine vol7 chapters: Finn
+delivers its boxes by bike; Margaret has run it "since 2041"; there is
+"her apartment above the co-op"; it closes for a morning. It had never
+had a set, so ch12's visit ("Margaret was at the front ... at the counter
+going through the morning's invoices") played on Main Street outside
+Board Lords. The new `smolvud_coop` is an old storefront on Main, 12 x 9 m
+under a 3.4 m joisted ceiling:
+- **The street front.** Big front windows with rain on the glass, the
+  green door with its bell.
+- **Margaret's counter.** The register tablet, the invoice clipboard and
+  her pen, the scale, a tip jar.
+- **Hans's bread.** On its rack beside the counter, the seeded loaves.
+- **The floor.** Produce in crates on two tiered tables. Two gondolas of
+  jars, bags and cans. Seven bulk bins with scoops on the W wall under
+  the chalkboard prices. The cooler wall on the N: milk, eggs, the fish
+  co-op's smoked salmon.
+- **Finn's crates.** Labelled and stacked by the back door; the corkboard
+  by the front.
+- **Outside.** The awning, Finn's cargo bike, the wet street and the
+  facades across.
+- **Scene.** Pendant practicals, a cooler glow, a window rain fill; five
+  markers.
+- **ch12, split by three inserted `bg` nodes.** The walk stays on
+  `main_street`. "The co-op opened at six" cuts to the co-op. "The crow
+  was on the kitchen table" cuts to `finn_apartment` (the crow, the
+  cloth, the hexagon). The drive out returns to `main_street`.
+
+Draft 2 targets:
+- the stair to the apartment above;
+- Margaret's glasses;
+- the morning delivery staged on the crates.
+
 **2026-10-10 · overnight run, pass 34: THE FOXHOLE "DRESSING ROOM" IS A
 CLOSET (from the sweep).** vol6 ch22: "a storage closet with two folding
 chairs and a clothing rack and a sign on the door that says DRESSING

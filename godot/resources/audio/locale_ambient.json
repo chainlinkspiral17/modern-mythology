@@ -341,6 +341,10 @@
       "bed": "assets/audio/bgm/vol5_store_ambient.wav",
       "gain": 0.82
     },
+    "smolvud_coop": {
+      "bed": "assets/audio/bgm/vol5_store_ambient.wav",
+      "gain": 0.82
+    },
     "meadowlark_circle": {
       "bed": "assets/audio/bgm/vol6_ambient.wav",
       "gain": 0.72
