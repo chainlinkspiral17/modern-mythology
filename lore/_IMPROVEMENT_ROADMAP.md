@@ -3834,6 +3834,25 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-10 · overnight run, pass 27: JESSE'S ROOM, DRAFT 5 (a bed, and the
+Telecaster).** The prose says "In his bedroom he sits on the edge of the
+bed ... He puts the notebook on the nightstand. He gets in bed", "his back
+against his bed". Drafts 1-4 had a futon on the floor, so the room now has
+a twin on a frame, with the nightstand, its lamp, the notebooks, the clock
+and the lamp practical raised to match. And the guitar the chapters name
+every time ("his Telecaster unplugged in his lap") was a round-bodied
+cylinder. It is now a Telecaster:
+- the single-cut slab body in butterscotch and its horn;
+- the black pickguard, the chrome control plate and bridge;
+- the maple neck and fretboard, the six-in-line headstock with its
+  tuners.
+
+`insert guitar` and `insert telecaster` were framing the guitar case and
+the neck; both are re-aimed at the body.
+
+Draft 6 target: the Telecaster in his lap as the ch3 state; the body's
+proportions.
+
 **2026-10-10 · overnight run, pass 26: THE SWEEP (a background agent read every
 chapter-used preset against its prose) + ANNA LOGUE'S OFFICE.** The sweep
 found 17 mismatch classes. Fixed this pass:

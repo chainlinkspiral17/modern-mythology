@@ -1,8 +1,9 @@
 """Jesse's Bedroom — vol6 — Jesse (the music kid). DARK/WARM palette
 (plum-charcoal walls, amber accent) and a musician's prop set: a guitar
 on a stand + a practice amp, a record-crate + turntable, headphones,
-egg-crate acoustic foam on one wall, a mattress-on-the-floor / futon
-vibe, warm string lights, and lyric sheets pinned up — so it reads
+egg-crate acoustic foam on one wall, a bed (draft 5, 2026-10-10: "In his
+bedroom he sits on the edge of the bed ... He puts the notebook on the
+nightstand. He gets in bed" — drafts 1-4 had a futon on the floor), warm string lights, and lyric sheets pinned up — so it reads
 unmistakably as Jesse's, not a reskin of Diego's."""
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
@@ -46,11 +47,12 @@ def build_shell():
         make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax, ceil_z=CEIL, palette={"wood": COL_WOOD})
 
 def build_bed():
-    # Mattress on the floor / futon — low, no tall frame.
+    # A twin on a frame (draft 5, 2026-10-10: "sits on the edge of the bed",
+    # "sitting on the floor with his back against his bed" — not a futon).
     bx, by = -ROOM_W/4.0, ROOM_D - 0.15 - 0.92   # head to the N wall (2026-09-10)
     # the shared futon (2026-09-07: the pillow and blanket sat inside
     # the mattress)
-    make_bed("Futon", bx, by, head="+Y", w=1.24, d=1.84, style="futon",
+    make_bed("Bed", bx, by, head="+Y", w=1.10, d=1.96, style="frame",
              frame_col=(0.28, 0.22, 0.18, 1.0), mattress_col=(0.72, 0.66, 0.60, 1.0),
              blanket_col=COL_BLANKET, pillow_col=(0.86, 0.78, 0.66, 1.0), pillows=1, made=True)
 
@@ -99,16 +101,29 @@ def build_dressing():
     the east wall, lyric sheets pinned to the west wall, a dresser, and a
     corner plant (wires the imported make_floor_plant)."""
     bx, by = -ROOM_W/4.0, ROOM_D - 0.15 - 0.92   # head to the N wall (2026-09-10)
-    make_box("Nightstand", (bx+0.95, by+0.7, 0.24), (0.40, 0.40, 0.48), COL_WOOD)
-    make_box("Clock", (bx+1.06, by+0.84, 0.53), (0.15, 0.10, 0.10), P.METAL_BLACK)   # back corner, on the top (2026-09-23: 1 cm over it)
+    make_box("Nightstand", (bx+0.95, by+0.7, 0.29), (0.40, 0.40, 0.58), COL_WOOD)
+    make_box("Clock", (bx+1.06, by+0.84, 0.63), (0.15, 0.10, 0.10), P.METAL_BLACK)   # back corner, on the top (2026-09-23: 1 cm over it)
     # Guitar on an A-frame stand, SE corner
     gx, gy = ROOM_W/2.0-0.5, 0.9
     for ss in (-1, +1):
         make_cyl(f"GuitarStand_Leg_{ss:+d}", (gx+ss*0.12, gy, 0.30), 0.02, 0.60, P.METAL_BLACK, segments=6)
     make_cyl("GuitarStand_Cross", (gx, gy, 0.20), 0.02, 0.24, P.METAL_BLACK, axis='X', segments=6)
-    make_cyl("Guitar_Body", (gx, gy-0.04, 0.55), 0.20, 0.10, COL_ACCENT, axis='Y', segments=14)
-    make_box("Guitar_Neck", (gx, gy-0.04, 1.05), (0.07, 0.06, 0.90), COL_WOOD)
-    make_box("Guitar_Head", (gx, gy-0.04, 1.54), (0.10, 0.05, 0.18), P.METAL_BLACK)
+    # THE TELECASTER (draft 5, 2026-10-10: the prose names it every time —
+    # "his Telecaster unplugged in his lap"; it was a round-bodied guitar):
+    # the single-cut slab in butterscotch, the black pickguard, the chrome
+    # control plate, the maple neck and its six-in-line headstock
+    from _props.geometry import make_chamfer_box
+    tele = (0.86, 0.60, 0.26, 1.0); maple = (0.88, 0.76, 0.52, 1.0)
+    make_chamfer_box("Guitar_Telecaster_Body", (gx, gy-0.04, 0.52), (0.32, 0.045, 0.40), tele, chamfer=0.02)
+    make_chamfer_box("Guitar_Telecaster_Horn", (gx-0.10, gy-0.04, 0.75), (0.11, 0.045, 0.08), tele, chamfer=0.02)
+    make_box("Guitar_Pickguard", (gx-0.03, gy-0.064, 0.56), (0.20, 0.003, 0.24), (0.08, 0.08, 0.09, 1.0))
+    make_box("Guitar_Control_Plate", (gx+0.10, gy-0.064, 0.42), (0.06, 0.003, 0.16), (0.78, 0.80, 0.82, 1.0))
+    make_box("Guitar_Bridge", (gx, gy-0.064, 0.38), (0.10, 0.004, 0.06), (0.78, 0.80, 0.82, 1.0))
+    make_box("Guitar_Neck", (gx, gy-0.04, 1.06), (0.055, 0.035, 0.68), maple)
+    make_box("Guitar_Fretboard", (gx, gy-0.059, 1.06), (0.05, 0.004, 0.66), maple)
+    make_box("Guitar_Head", (gx+0.015, gy-0.04, 1.49), (0.085, 0.025, 0.20), maple)
+    for ti in range(6):
+        make_cyl(f"Guitar_Tuner_{ti}", (gx+0.065, gy-0.04, 1.41 + ti*0.03), 0.008, 0.03, (0.78, 0.80, 0.82, 1.0), axis='X', segments=6)
     # Practice amp next to the guitar
     ax, ay = ROOM_W/2.0-0.35, 1.7
     make_box("Amp_Cab", (ax, ay, 0.28), (0.44, 0.36, 0.56), (0.16, 0.14, 0.14, 1.0))
@@ -149,14 +164,14 @@ def build_hero_props():
     # Bedside lamp on the nightstand (2026-09-23: the lamp and both
     # notebooks stayed at y 2.95 when the bed and nightstand moved to the
     # N wall on 09-10 — on nothing, 1.2 m from the table they belong on)
-    make_cyl("Bedside_Lamp_Base", (-ROOM_W/4.0 + 0.83, ROOM_D - 0.25, 0.495),   # on the nightstand, room-relative (2026-09-24)
+    make_cyl("Bedside_Lamp_Base", (-ROOM_W/4.0 + 0.83, ROOM_D - 0.25, 0.595),   # on the nightstand, room-relative (2026-09-24)
              0.07, 0.03, wood, segments=10)
-    make_cyl("Bedside_Lamp_Post", (-ROOM_W/4.0 + 0.83, ROOM_D - 0.25, 0.61), 0.014, 0.20, (0.20, 0.19, 0.20, 1.0), segments=6)
-    make_cyl("Bedside_Lamp_Shade", (-ROOM_W/4.0 + 0.83, ROOM_D - 0.25, 0.76), 0.10, 0.14, (0.86, 0.76, 0.58, 1.0), segments=10)
+    make_cyl("Bedside_Lamp_Post", (-ROOM_W/4.0 + 0.83, ROOM_D - 0.25, 0.71), 0.014, 0.20, (0.20, 0.19, 0.20, 1.0), segments=6)
+    make_cyl("Bedside_Lamp_Shade", (-ROOM_W/4.0 + 0.83, ROOM_D - 0.25, 0.86), 0.10, 0.14, (0.86, 0.76, 0.58, 1.0), segments=10)
     # The bridge notebook + the songwriting notebook
     # the two notebooks stacked at the front of the top
-    make_box("Bridge_Notebook", (-0.08, 4.04, 0.4875), (0.15, 0.21, 0.015), (0.30, 0.44, 0.62, 1.0))
-    make_box("Song_Notebook", (-0.06, 4.05, 0.5025), (0.15, 0.21, 0.015), (0.62, 0.30, 0.26, 1.0))
+    make_box("Bridge_Notebook", (-0.08, 4.04, 0.5875), (0.15, 0.21, 0.015), (0.30, 0.44, 0.62, 1.0))
+    make_box("Song_Notebook", (-0.06, 4.05, 0.6025), (0.15, 0.21, 0.015), (0.62, 0.30, 0.26, 1.0))
     # Narrow the garage-sized S gap and hang the CLOSED door
     make_box("Door_Jamb_W", (-0.72, 0.0, 1.15), (0.56, 0.20, 2.30), PAL_WALL["wall"])
     make_box("Door_Jamb_E", (0.72, 0.0, 1.15), (0.56, 0.20, 2.30), PAL_WALL["wall"])
