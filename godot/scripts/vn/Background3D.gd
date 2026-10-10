@@ -2196,13 +2196,14 @@ const CAMERA_PRESETS := {
 	"school_newspaper": {
 		"scene": "res://scenes/locales/school_newspaper.tscn",
 		"requires_glb": "res://assets/3d/locales/school_newspaper.glb",
-		# Borrowed classroom 8×6 (godot x∈[-4,4], z∈[0,-6], ceil
-		# 2.9). Four desks butted into the layout island center
-		# (paste-up pages + typewriter), pinboard W wall, chalkboard
-		# N, teacher desk NE, E-window band pouring light. Camera
-		# inside the door looking N over the island.
-		"camera_origin": Vector3(-1.4, 1.60, -0.9),
-		"camera_rotation": Vector3(-0.04, deg_to_rad(-21.0), 0.0),
+		# DRAFT 2 (2026-10-10): a real classroom the paper colonised,
+		# 9.6 x 8.4 (godot x in [-4.8,4.8], z in [0,-8.4], ceil 3.0), the
+		# hall and its lockers past the S door. Layout island centre, the
+		# computers under the cork board (DRIFTWOOD across its top) on W,
+		# chalkboard and darkroom door N, windows on the field E. Camera
+		# just inside the door looking NW over the island to the board.
+		"camera_origin": Vector3(2.90, 1.60, -0.90),
+		"camera_rotation": Vector3(-0.051, 0.767, 0.0),
 		"fov": 64.0,
 		"suppress_input": true,
 	},

@@ -3834,6 +3834,43 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-10 · overnight run, pass 41: THE NEWSPAPER ROOM, DRAFT 2 (build big).**
+vol2 interlude three ("I joined the school newspaper on a whim ... Most of
+my friendships in Small Wood were forged out of that classroom and the
+late nights") played in an 8 x 6 m box with four desks. The prose: Katrina
+the photographer, Shannon on features, Jay Rose's one comic strip —
+DriftWood — "an understaffed, underfunded academic endeavor", deadlines,
+the football season. `build_school_newspaper.py` is rewritten as a real
+classroom the paper has colonised, 9.6 x 8.4 m under a 3.0 m drop ceiling:
+- **The layout island.** Four desks butted together under paste-up pages
+  with waxed columns, the waxer, the steel rule, the X-acto, rubber
+  cement, the old typewriter, Katrina's camera, Shannon's notebook. Six
+  chairs around it.
+- **The W wall.** The counter of beige computers (towers on the floor),
+  the laser printer, the scanner. Above it the cork board of page
+  dummies, with DRIFTWOOD's four panels pinned across its top.
+- **The N wall.** The chalkboard with last period's math, the clock at
+  4:40, the PA speaker, and the advisor's desk with its lamp and proofs.
+  The DARKROOM door has its red lamp.
+- **The E wall.** Three windows over radiators, blinds half down, with
+  Katrina's light table and negatives. Outside: the lot, and the football
+  field with goalposts, light towers, stands, press box and scoreboard.
+- **The S wall.** The bound volumes, the file cabinets, the paper cutter,
+  this week's bundles. The door stands open on the hall and its lockers.
+- **The room as a classroom.** A row of its own desks remains.
+- **Lights and markers.** A new rig: troffer practicals, the afternoon
+  through the E windows, the advisor's lamp, the darkroom lamp. Seven
+  markers.
+- **`placement_audit`.** DELIBERATE gains the radiators on the
+  under-window spandrels.
+
+Deck must REBUILD school_newspaper.
+
+Draft 3 targets:
+- the late-night version (troffers off, screens and the advisor's lamp);
+- the darkroom beyond its door;
+- the paper's masthead, once the prose names it.
+
 **2026-10-10 · overnight run, pass 40: THE DAILY GRIND, DRAFT 3 (build big).**
 Lena's café played in a 7 x 6 m box under a 2.8 m ceiling. Vol 7
 describes it across many chapters:

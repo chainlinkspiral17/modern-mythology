@@ -49,6 +49,7 @@ DELIBERATE = {
     ("nexcorp_gas_go", "Locker_Bench"): "a locker-room bench between the rows",
     ("houston_office", "Office_PartN"): "the manager office's L — meets Office_PartE",
     ("houston_office", "Office_PartE"): "the manager office's L — meets Office_PartN",
+    ("school_newspaper", "Radiator"): "under the E windows, its back on the 1.0 m spandrel (a wall the wall rule is too short to see)",
 }
 
 
