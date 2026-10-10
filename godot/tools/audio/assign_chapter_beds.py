@@ -77,6 +77,7 @@ PLACES = {
         "centro_dock": "vol2_seagash_drone",
         "parish_cemetery": "vol2_graveyard_solo",
         "small_wood_cemetery": "vol2_graveyard_solo",
+        "small_wood_rec_center": "vol5_venue_ambient",
     },
     5: {
         "cathedral_interior": "vol5_cathedral_drone",

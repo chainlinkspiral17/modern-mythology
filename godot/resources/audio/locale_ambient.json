@@ -310,7 +310,7 @@
       "gain": 0.76
     },
     "gym_weight_room": {
-      "bed": "assets/audio/bgm/vol2_ambient.wav",
+      "bed": "assets/audio/bgm/vol6_live_oak_field.wav",
       "gain": 0.7
     },
     "equipment_shed": {
@@ -576,6 +576,10 @@
     "small_wood_cemetery": {
       "bed": "assets/audio/bgm/vol2_graveyard_solo.wav",
       "gain": 0.82
+    },
+    "small_wood_rec_center": {
+      "bed": "assets/audio/bgm/vol5_venue_ambient.wav",
+      "gain": 0.5
     },
     "pharmacy_floor": {
       "bed": "assets/audio/bgm/vol1_pharmacy.wav",

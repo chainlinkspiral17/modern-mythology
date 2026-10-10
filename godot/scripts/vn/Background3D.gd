@@ -2192,6 +2192,20 @@ const CAMERA_PRESETS := {
 		"fov": 66.0,
 		"suppress_input": true,
 	},
+	"small_wood_rec_center": {
+		"scene": "res://scenes/locales/small_wood_rec_center.tscn",
+		"requires_glb": "res://assets/3d/locales/small_wood_rec_center.glb",
+		# vol2's second interlude (2026-10-10): Small Wood Rec Center, "a
+		# small, deteriorating one-room building on the main drag" on a
+		# dance night — it played on Harmony Creek's weight room. 12 x 9
+		# (godot x in [-6,6], z in [0,-9]). Camera just inside the glass
+		# doors ("standing at the entrance horrified") looking N across the
+		# dead zone to the deejay's table and the back.
+		"camera_origin": Vector3(-2.00, 1.65, -0.90),
+		"camera_rotation": Vector3(-0.074, -0.491, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
 	"small_wood_cemetery": {
 		"scene": "res://scenes/locales/small_wood_cemetery.tscn",
 		"requires_glb": "res://assets/3d/locales/small_wood_cemetery.glb",

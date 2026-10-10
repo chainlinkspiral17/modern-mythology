@@ -3834,6 +3834,35 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-10 · overnight run, pass 29: THE SMALL WOOD REC CENTER (a new set
+from the sweep).** vol2's second interlude is set at "Small Wood Rec
+Center — a small, deteriorating one-room building on the main drag ...
+that night was a dance instead of the usual casual come-as-you-are games
+of foosball, pool, and scattered cartridges popped into an old Nintendo
+system". It played on Harmony Creek High's weight room. The new
+`small_wood_rec_center` is 12 x 9 m:
+- **The shell.** Worn vinyl tile, wood paneling to 1.2 m, a
+  water-stained drop ceiling with six troffers (two dead). The glass
+  double doors and windows look onto the main drag at night: shopfronts
+  and a street lamp.
+- **The dance.** At the far wall: Jay Rose's folding table with two
+  decks, the mixer and a CD stack, speakers on stands, the party light's
+  three colored heads, streamers and balloons.
+- **The room shoved to its edges.** The pool table and a leaned cue, the
+  foosball, the TV cart with the Nintendo and scattered cartridges.
+- **The back.** The chair stack and the two fold-ups pulled out by the
+  magazine rack ("Janess and I made for the back").
+- **Fixtures.** The bulletin board, the drinking fountain, the restroom
+  doors, the snack window's shutter.
+- **Scene.** Troffer, party-light and street-lamp practicals; four
+  markers.
+- **Wiring.** Routed. `gym_weight_room`, now only vol6's, gets its own
+  vol6 bed.
+
+Draft 2 targets:
+- the eight kids and the shuffling pair;
+- the middle school gym's pick-up game.
+
 **2026-10-10 · overnight run, pass 28: THE SMALL WOOD CEMETERY (a new set
 from the sweep).** vol2's graveside ("the minister says something about
 roots and returns ... Jo stands beside you") is in Small Wood, Oregon. It
