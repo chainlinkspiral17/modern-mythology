@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://miller_back_porch_vol6"]
+[gd_scene load_steps=26 format=3 uid="uid://miller_back_porch_vol6"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/miller_back_porch.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -128,13 +128,28 @@ shader_parameter/wobble_freq = 0.85
 shader_parameter/tint_amount = 0.18
 shader_parameter/tint_color = Color(0.96, 0.62, 0.28, 1)
 
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_Win"]
+; (2026-10-07: the window is cut — a night sky past it, not a flat backdrop)
+sky_top_color = Color(0.06, 0.08, 0.16, 1)
+sky_horizon_color = Color(0.22, 0.24, 0.32, 1)
+sky_curve = 0.25
+ground_bottom_color = Color(0.05, 0.05, 0.06, 1)
+ground_horizon_color = Color(0.12, 0.12, 0.14, 1)
+sun_angle_max = 8.0
+
+[sub_resource type="Sky" id="Sky_Win"]
+sky_material = SubResource("SkyMat_Win")
+radiance_size = 3
+
 [sub_resource type="Environment" id="Env_Locale"]
-background_mode = 1
+background_mode = 2
+sky = SubResource("Sky_Win")
 background_color = Color(0.10, 0.06, 0.04, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.62, 0.42, 0.28, 1)
 ambient_light_energy = 0.72
 fog_enabled = true
+fog_sky_affect = 0.0
 fog_light_color = Color(0.42, 0.28, 0.20, 1)
 fog_light_energy = 0.5
 fog_density = 0.007
@@ -154,19 +169,19 @@ glow_hdr_scale = 2.4
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_Locale")
 
-[node name="Key_PorchLamp" type="DirectionalLight3D" parent="."]
+[node name="Key_PorchLamp__miller_back_porch" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 6, 0)
 light_color = Color(0.96, 0.62, 0.28, 1)
 light_energy = 1.1
 shadow_enabled = false
 
-[node name="Fill_Sodium" type="DirectionalLight3D" parent="."]
+[node name="Fill_Sodium__miller_back_porch" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, -3, 4, 0)
 light_color = Color(0.96, 0.62, 0.28, 1)
 light_energy = 0.55
 shadow_enabled = false
 
-[node name="Back_NightCool" type="DirectionalLight3D" parent="."]
+[node name="Back_NightCool__miller_back_porch" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 4, 5)
 light_color = Color(0.32, 0.42, 0.62, 1)
 light_energy = 0.32
@@ -174,7 +189,7 @@ shadow_enabled = false
 
 ; Practical tied to the visible porch-lamp bulb (blender -1.5,0.30,2.14
 ; → godot -1.5, 2.14, -0.30). Warm omni so the fixture actually casts.
-[node name="Practical_PorchLamp" type="OmniLight3D" parent="."]
+[node name="Practical_PorchLamp__miller_back_porch" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2.14, -0.3)
 light_color = Color(1.0, 0.66, 0.3, 1)
 light_energy = 2.2
@@ -190,6 +205,24 @@ rotation = Vector3(-0.4622, 2.2099, 0.0)
 [node name="shot_insert_cedar" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.48, 1.56, -0.67)
 rotation = Vector3(-0.4642, -2.1782, 0.0)
+
+; ── the morning (2026-10-10, preset miller_back_porch_morning) — row-major
+; 8 AM in mid-August: the sun out of the east over the fence, travelling west and down;
+; the porch roof keeps her in "the small shaded window"
+[node name="Sun_Morning__miller_back_porch_morning" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.5000, -0.4330, 0.7500, 0.0000, 0.8660, 0.5000, -0.8660, -0.2500, 0.4330, 8, 8, -2)
+light_color = Color(1.0, 0.92, 0.78, 1)
+light_energy = 1.15
+shadow_enabled = true
+metadata/daylight = true
+
+; the bounce off the yard under the porch roof
+[node name="Shade_Fill__miller_back_porch_morning" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, -1.6)
+light_color = Color(0.96, 0.94, 0.86, 1)
+light_energy = 0.55
+shadow_enabled = false
+omni_range = 6.0
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -376,7 +409,7 @@ metadata/fov = 45.0
 
 ; ── draft 3 (2026-09-18): the house window's spill onto the porch ──
 ; HouseWin_Glow at blender (1.60, 3.92, 1.60) → godot (1.60, 1.60, -3.92). Tungsten through glass.
-[node name="HouseWin_Glow_Practical" type="OmniLight3D" parent="."]
+[node name="HouseWin_Glow_Practical__miller_back_porch" type="OmniLight3D" parent="."]
 position = Vector3(1.600, 1.600, -3.850)
 light_color = Color(0.950, 0.780, 0.500, 1)
 light_energy = 1.20

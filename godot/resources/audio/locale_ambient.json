@@ -49,6 +49,10 @@
       "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
       "gain": 0.95
     },
+    "miller_back_porch_morning": {
+      "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
+      "gain": 0.95
+    },
     "cabin_porch": {
       "bed": "assets/audio/bgm/vol7_cabin_woodstove.wav",
       "gain": 0.82

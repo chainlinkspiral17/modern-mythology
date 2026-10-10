@@ -2148,70 +2148,6 @@
    "scene_missing": false
   },
   {
-   "id": "miller_back_porch",
-   "scene": "res://scenes/locales/miller_back_porch.tscn",
-   "vol": 6,
-   "uses": 5,
-   "moods": [
-    "morning_bright"
-   ],
-   "markers": [
-    {
-     "name": "shot_establish_b",
-     "type": "establish"
-    },
-    {
-     "name": "shot_establish_c",
-     "type": "establish"
-    },
-    {
-     "name": "shot_closeup_person",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_person_b",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_insert_bowls",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_cedar",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_cigarette",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_crow",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_door",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_myrtle",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_porch_light",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_truck",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_wicker",
-     "type": "insert"
-    }
-   ],
-   "scene_missing": false
-  },
-  {
    "id": "new_orleans_bar",
    "scene": "res://scenes/locales/new_orleans_bar.tscn",
    "vol": 1,
@@ -3150,6 +3086,70 @@
     },
     {
      "name": "shot_insert_photograph",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
+   "id": "miller_back_porch_morning",
+   "scene": "res://scenes/locales/miller_back_porch.tscn",
+   "vol": 6,
+   "uses": 3,
+   "moods": [
+    "morning_bright"
+   ],
+   "markers": [
+    {
+     "name": "shot_establish_b",
+     "type": "establish"
+    },
+    {
+     "name": "shot_establish_c",
+     "type": "establish"
+    },
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_bowls",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cedar",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cigarette",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_crow",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_door",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_myrtle",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_porch_light",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_truck",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_wicker",
      "type": "insert"
     }
    ],
@@ -4362,6 +4362,70 @@
     },
     {
      "name": "shot_insert_window",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
+   "id": "miller_back_porch",
+   "scene": "res://scenes/locales/miller_back_porch.tscn",
+   "vol": 6,
+   "uses": 2,
+   "moods": [
+    ""
+   ],
+   "markers": [
+    {
+     "name": "shot_establish_b",
+     "type": "establish"
+    },
+    {
+     "name": "shot_establish_c",
+     "type": "establish"
+    },
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_bowls",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cedar",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cigarette",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_crow",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_door",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_myrtle",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_porch_light",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_truck",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_wicker",
      "type": "insert"
     }
    ],
@@ -8227,5 +8291,5 @@
   "tired",
   "nervous"
  ],
- "frames": 1843
+ "frames": 1857
 }

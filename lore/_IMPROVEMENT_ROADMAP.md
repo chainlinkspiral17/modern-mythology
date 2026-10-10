@@ -3834,6 +3834,25 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-10 · overnight run, pass 49: THE BACK PORCH IN THE MORNING (pass 48's
+note).** ch11 at 08:03 ("The light in the back yard has shifted into the
+small late-morning angle. The crepe myrtle is doing its work ... sitting
+in her mother's wicker chair") and ch17 at 08:22 ("the specific warm
+morning Texas does in mid-August ... the small shaded window where a
+woman in a robe can sit and eat coffee cake") played on the night-lit
+porch.
+- **The sky.** `miller_back_porch.tscn` gets a ProceduralSky (night) in
+  place of its flat background colour (`add_sky.py`), so a preset's
+  `env` can turn it to morning.
+- **The night rig.** The five night lights (porch-lamp key, sodium fill,
+  cool back, the porch-lamp and house-window practicals) are suffixed
+  `__miller_back_porch`.
+- **The new `miller_back_porch_morning`.** Its own 8 AM sun out of the
+  east (suffixed, shadowed, daylight) and a shade fill under the porch
+  roof, plus a day `env` (sky, ambient, fog).
+- **Routing.** ch11 Eileen (two bg nodes) and ch17 Porch use it. ch22's
+  1:15 AM and ch11 Kitchen's predawn keep the night preset.
+
 **2026-10-10 · overnight run, pass 48: BIANCA ON THE BACK PORCH AT 1:15 AM (from
 the sweep).** vol6 ch22 "Sunday": "Bianca is on the back porch with the
 cordless on the patio table beside her ... She has been here three hours"

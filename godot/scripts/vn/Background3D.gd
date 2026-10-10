@@ -997,6 +997,28 @@ const CAMERA_PRESETS := {
 		"fov": 62.0,
 		"suppress_input": true,
 	},
+	"miller_back_porch_morning": {
+		"scene": "res://scenes/locales/miller_back_porch.tscn",
+		"requires_glb": "res://assets/3d/locales/miller_back_porch.glb",
+		# (2026-10-10) THE SAME PORCH IN THE MORNING (ch11 at 08:03, ch17 at
+		# 08:22: "the small shaded window where a woman in a robe can sit and
+		# eat coffee cake"). The night rig is suffixed to miller_back_porch;
+		# this preset brings an 8 AM sun, a shade fill and a day sky.
+		# Covered back porch 6×4 (godot x∈[-3,3], z∈[0,-4], ceil 2.8).
+		# Two rockers face the S railing (godot ±1.5,-2.0) with a round
+		# side table between them (godot 0,-2.0); balustrade + screen door
+		# along the S edge (godot z≈-0.1), firewood stack E wall, hanging
+		# planter, house wall to the N. Camera in the NE corner (by the
+		# house wall) looking SW across the rockers toward the railing: the
+		# porch furniture in the fore, the open railing beyond.
+		"camera_origin": Vector3(2.3, 1.62, -3.4),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(118.9), 0.0),
+		"fov": 62.0,
+		"env": {"sky_top": Color(0.42, 0.60, 0.86, 1), "sky_horizon": Color(0.88, 0.88, 0.82, 1),
+			"ground_horizon": Color(0.58, 0.56, 0.48, 1), "ground_bottom": Color(0.30, 0.30, 0.26, 1),
+			"ambient_color": Color(0.86, 0.84, 0.78, 1), "ambient_energy": 0.90, "fog_color": Color(0.86, 0.84, 0.78, 1)},
+		"suppress_input": true,
+	},
 	"jesse_bedroom": {
 		"scene": "res://scenes/locales/jesse_bedroom.tscn",
 		"requires_glb": "res://assets/3d/locales/jesse_bedroom.glb",
