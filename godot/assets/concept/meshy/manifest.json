@@ -3900,5 +3900,53 @@
     },
     "output": "godot/assets/3d/characters/heroes/bill_kowalski.glb",
     "file_size_kb": 36158.8
+  },
+  {
+    "at": "2026-10-11T20:42:41+00:00",
+    "stage": "image",
+    "slug": "gracie_kowalski",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Gracie Kowalski like this: Gracie \u2014 Ben's eleven-year-old sister \u2014 is on the patio. Gracie is sketching in a small notebook. Gracie watches her eat with the unembarrassed curiosity of an eleven-year-old who has, this morning, decided that Maya is the most interesting thing to ever happen to her family's kitchen. Additional direction: Gracie Kowalski, 11, Ben's sister. Small and quick, dark-blonde hair in two uneven braids, a gap-toothed grin of unembarrassed curiosity. An oversized purple t-shirt, denim shorts, scuffed sneakers, a small spiral sketchbook hugged to her chest and a pencil behind one ear.\nFull-body concept render of Gracie Kowalski, a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/gracie_kowalski/gracie_kowalski_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/gracie_kowalski/gracie_kowalski_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/gracie_kowalski/gracie_kowalski_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-11T20:46:08+00:00",
+    "stage": "mesh",
+    "slug": "gracie_kowalski",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a12cb4-3977-7507-b597-8eff9368d0b1",
+    "inputs": [
+      "godot/assets/concept/meshy/gracie_kowalski/front.png",
+      "godot/assets/concept/meshy/gracie_kowalski/side.png",
+      "godot/assets/concept/meshy/gracie_kowalski/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "smart-topology",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/gracie_kowalski.glb",
+    "file_size_kb": 54775.6
   }
 ]
