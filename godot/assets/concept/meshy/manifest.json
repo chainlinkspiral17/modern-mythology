@@ -2277,5 +2277,53 @@
     },
     "output": "godot/assets/3d/characters/heroes/nate_bassist.glb",
     "file_size_kb": 59546.8
+  },
+  {
+    "at": "2026-10-11T16:33:01+00:00",
+    "stage": "image",
+    "slug": "em_keys",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Em (Gallatin Band keys) like this: Em \u2014 the backing vocalist and occasional keyboardist, eighteen, three inches taller than anybody in the garage, with a small specific I am from Fort Worth energy Em \u2014 backing vocals, occasional keys, eighteen, the band's I am from Fort Worth energy Em packs her own mic, which she has, since June, been bringing to every practice in a small soft case her mother had given her at her high school graduation. She is five-three. He is six-one. She puts both her hands on either side of his face, like a girl her grandmother's age \u2014 like an actual grandmother \u2014 and looks up at him.\nFull-body concept render of Em (Gallatin Band keys), a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/em_keys/em_keys_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/em_keys/em_keys_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/em_keys/em_keys_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-11T16:46:14+00:00",
+    "stage": "mesh",
+    "slug": "em_keys",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a12bd2-aa37-76b6-b739-bab54f015269",
+    "inputs": [
+      "godot/assets/concept/meshy/em_keys/front.png",
+      "godot/assets/concept/meshy/em_keys/side.png",
+      "godot/assets/concept/meshy/em_keys/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "smart-topology",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/em_keys.glb",
+    "file_size_kb": 103753.3
   }
 ]
