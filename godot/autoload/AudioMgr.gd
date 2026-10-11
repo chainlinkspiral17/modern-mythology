@@ -558,6 +558,15 @@ func _fade_out() -> void:
 
 
 func _on_bgm_finished() -> void:
+	# A track that ends DURING a cross-fade must not swallow the queued one:
+	# without this the finished track restarted (or the queue advanced) and
+	# _pending_src was never played. Found by tests/godot_audiomgr.test.js.
+	if _pending_src != "":
+		var queued := _pending_src
+		_pending_src = ""
+		_fade_timer = 0.0
+		_start_bgm(queued)
+		return
 	# Oneshot resume — a play_oneshot_bgm caller asked us to snap
 	# back to a specific src when this track ends. Clears as soon
 	# as it fires so subsequent finishes use the normal queue/

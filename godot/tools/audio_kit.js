@@ -669,14 +669,34 @@ AK.dsp = {
     gated = gated.filter(m => L(m) > rel);
     return L(gated.reduce((a, b) => a + b, 0) / gated.length);
   },
-  // True peak (dBTP): 4× oversampled through the browser's resampler, like a BS.1770 meter.
+  // True peak (dBTP), ITU-R BS.1770 Annex 2 style: 4× oversampling with a polyphase
+  // windowed-sinc interpolator (3 phases × 12 taps, Hann). NOT the browser's resampler — Chrome
+  // interpolates buffers linearly, which can never exceed the sample peaks it sits between.
   async truePeak(chs, sr) {
-    const n = chs[0].length, up = 4;
-    const off = new OfflineAudioContext(chs.length, n * up, sr * up);
-    const src = off.createBufferSource(); src.buffer = AK.util.toBuffer(off, chs, sr); src.connect(off.destination); src.start();
-    const b = await off.startRendering();
-    let p = 0; for (let c = 0; c < b.numberOfChannels; c++) { const d = b.getChannelData(c); for (let i = 0; i < d.length; i++) { const a = d[i] < 0 ? -d[i] : d[i]; if (a > p) p = a; } }
-    return AK.util.db(p);
+    const P = 4, HALF = 6, phases = [];
+    for (let k = 1; k < P; k++) {
+      const frac = k / P, taps = new Float32Array(2 * HALF);
+      for (let j = 0; j < 2 * HALF; j++) {
+        const x = (j - HALF + 1) - frac;                       // distance from the interpolated point
+        const sinc = x === 0 ? 1 : Math.sin(Math.PI * x) / (Math.PI * x);
+        const w = 0.5 + 0.5 * Math.cos(Math.PI * x / (HALF + 0.5));   // Hann window
+        taps[j] = sinc * w;
+      }
+      phases.push(taps);
+    }
+    let pk = 0;
+    for (const c of chs) {
+      const n = c.length;
+      for (let i = 0; i < n; i++) { const a = c[i] < 0 ? -c[i] : c[i]; if (a > pk) pk = a; }
+      for (let i = HALF - 1; i < n - HALF; i++) {
+        for (const taps of phases) {
+          let acc = 0;
+          for (let j = 0, idx = i - HALF + 1; j < 2 * HALF; j++, idx++) acc += c[idx] * taps[j];
+          const a = acc < 0 ? -acc : acc; if (a > pk) pk = a;
+        }
+      }
+    }
+    return AK.util.db(pk);
   },
   // Look-ahead peak limiter (stereo-linked): the gain reaches its target before the peak arrives,
   // releases over `releaseMs`. Transparent below the ceiling.

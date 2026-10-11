@@ -251,6 +251,35 @@ look-ahead loop. The audio→performance clock mapping comes from
 - `set -e` doesn't fire inside a function called from `a || b`. Give
   installers explicit `|| return 1` checks.
 
+### 2026-10-11 — the test suite and what it caught on day one
+
+- `godot/tools/tests/run_tests.sh` holds the headless checks that used
+  to live in scratch folders. It has 7 suites (see its README) and runs
+  in ~4 min offline.
+  - Pages open from file:// without the allow-files flag.
+  - Any console error fails a suite.
+  - Network and slow paths are opt-in (`TEST_NETWORK`, `TEST_SLOW`).
+- It found two real bugs the first time it ran:
+  - **`AK.dsp.truePeak` was a sample-peak meter.** The browser resamples
+    buffers with linear interpolation, which can't exceed the samples
+    it joins. It's now a polyphase windowed-sinc 4× interpolator and
+    matches ffmpeg (−2.58 vs −2.6 dBTP).
+  - **AudioMgr cross-fade race.** If the playing track ended during the
+    0.6 s fade-out to a new one, `_on_bgm_finished` restarted the old
+    track and the queued `_pending_src` was dropped. The queued track
+    now wins.
+- The Godot suite builds a throwaway project from the REAL
+  `AudioMgr.gd` plus stub autoloads (`tests/godot/`), with fixture WAVs
+  written by node. Don't headless-import the real project for checks:
+  it scatters `.uid` files and extracted textures that a sandbox can't
+  `git clean`.
+- `--check-only --script` doesn't load autoloads, so every autoload
+  name reads as unknown. To compile-check game scripts, `load()` them
+  from a `-s` SceneTree script inside the project.
+- Rendering stems is N full offline renders. With FORGE devices that's
+  ~5 min for a 95 s track in a CPU-shared sandbox. Keep slow paths out
+  of the default run, and watch render time on the Deck.
+
 ## TEMPLATE
 
 ```
