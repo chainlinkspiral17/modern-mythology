@@ -3054,5 +3054,53 @@
     },
     "output": "godot/assets/3d/characters/heroes/greta.glb",
     "file_size_kb": 50102.4
+  },
+  {
+    "at": "2026-10-11T18:43:11+00:00",
+    "stage": "image",
+    "slug": "marit",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Marit like this: Marit was at the dining table. Sixty-eight. Per's mother. She was in a blue cardigan that had been her sister's before it had been hers. Marit got out of the back, slowly, in the blue cardigan with Greta's wool coat pulled over it \u2014 too big for her at the shoulders. Marit was at the table where she had been Saturday morning, in the same blue cardigan, in the same chair. She watched Marit at the milk crate with her bowl held in both hands. She held her bowl against her chest with both hands the way she had been holding it since six-thirty. Marit was seated on the milk crate with her bowl in her lap. Marit had her hands flat on the table. Additional direction: Marit, 68, Per's mother. Small, neat, a blue cardigan buttoned over a white blouse, grey slacks, house shoes, holding a small cedar bowl (Olaf's) in both hands.\nFull-body concept render of Marit, a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/marit/marit_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/marit/marit_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/marit/marit_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-11T18:46:44+00:00",
+    "stage": "mesh",
+    "slug": "marit",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a12c47-5f90-731a-966f-2fd89ef6bfa5",
+    "inputs": [
+      "godot/assets/concept/meshy/marit/front.png",
+      "godot/assets/concept/meshy/marit/side.png",
+      "godot/assets/concept/meshy/marit/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "smart-topology",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/marit.glb",
+    "file_size_kb": 38584.9
   }
 ]
