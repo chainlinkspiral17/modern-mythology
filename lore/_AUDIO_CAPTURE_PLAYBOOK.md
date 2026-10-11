@@ -422,6 +422,56 @@ look-ahead loop. The audio→performance clock mapping comes from
 - Taps can outrun decoding. Two quick take picks raced, and the older
   decode won. A pick sequence number now makes the latest pick win.
 
+### 2026-10-11 — "the DAW crackles and stops after a few seconds" (Deck)
+
+- **Measure before guessing.** An offline render of 8 bars, timed, gives
+  the audio graph's cost as a fraction of one core. Live playback has
+  to do the same work in real time, with less slack. On this
+  2.7 GHz Xeon (roughly a Deck core):
+  - songs measured 0.6–1.03 of a core after the library merge
+    (0.45–0.68 before);
+  - so on the Deck the audio thread runs out of time: it crackles,
+    then audio stops.
+  - Profiling per track, the **KIT cost 0.28–0.41** and a pad playing
+    chords 0.25–0.36. The master chain and the empty graph cost
+    0.01–0.02.
+- **Every FORGE synth costs audio time even when silent.** Each one
+  carries its preset's lanes and FX, typically two convolvers. The
+  kit built one FORGE synth per map piece, about 14 after the library
+  added cymbals and hand percussion, whether or not the song hit
+  them. Pieces now build on first hit and are prepared (built and
+  `init()`ed) from the song's drum notes before `play()` and offline
+  renders, in map order. Kit cost dropped to 0.16–0.21 with the same
+  sound.
+- **Per-synth reverbs are 15–25% of a song's cost.** They are part of
+  each preset's sound, so they were kept. Profile again before
+  removing anything.
+- **Buffer.** `mm_daw_buffer`: SMOOTH (default) = Chrome's `'playback'`
+  buffer, about 23 ms base vs about 10 ms interactive. FAST =
+  interactive, for playing live. Reload to switch.
+  - A fixed 60 ms hint gave about 245 ms total output latency in
+    headless Chrome, and the recording timing broke; don't go that
+    big.
+  - Flatpak Chrome's audio thread may lack real-time priority, so
+    headroom matters.
+- **Latency numbers carry the output latency they were measured
+  with.**
+  - CHECK-OUT saves `baseLatencyMs`/`outputLatencyMs` and now uses
+    the DAW's buffer mode.
+  - The DAW's loopback calibration stores `outMs`.
+  - `audioComp()` adds `outMs(now) − outMs(at measurement)`, because
+    hardware MIDI leaves when its audio is *heard* (`perfTime`).
+- **Never trust one `getOutputTimestamp()` reading.** Steady state is
+  rock-steady: one offset value over 400 readings, no drift. But for
+  about 2 s after the context starts, readings jump by up to a buffer
+  (18–23 ms with `'playback'`). `clockOffset()` takes the median of
+  the last 9 distinct readings, and both `perfTime` and `ctxAtPerf`
+  use it.
+- `daw_perf`'s old-engine comparison failed 2 of 6 times on the
+  untouched engine too. FORGE's run-to-run noise has a second mode of
+  exactly 1.4e-4. Tolerance is now 3e-4, and events must still match
+  exactly.
+
 ## TEMPLATE
 
 ```

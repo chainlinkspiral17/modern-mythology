@@ -70,10 +70,10 @@ suite('daw perf · scale lock, chords, arp, groove, step sequencer', async t => 
       P.swing = 0.55; P.loop.on = false;
       const oldEngine = s => { const ours = window.DAW; (0, eval)(s); const O = window.DAW; window.DAW = ours; window.__oldKitMap = O.KIT_MAP; const OE = new O.Engine(); Object.assign(OE, { ctx: E.ctx, verb: E.verb, devices: E.devices, project: E.project, start: async () => {} }); return OE; };
       const real = Math.random, rst = window.setTimeout;
-      const render = async eng => {          // seeded noise; FORGE's voice-reaping timers wait until the render is done
+      const render = async (eng, ids) => {   // seeded noise; FORGE's voice-reaping timers wait until the render is done
         let a = 12345; Math.random = () => { a = (a + 0x6D2B79F5) | 0; let x = Math.imul(a ^ (a >>> 15), 1 | a); x = (x + Math.imul(x ^ (x >>> 7), 61 | x)) ^ x; return ((x ^ (x >>> 14)) >>> 0) / 4294967296; };
         const q = []; window.setTimeout = f => { q.push(f); return 0; };
-        try { return await eng.renderOffline({ fromBar: 0, toBar: 1, tailSec: 0.3 }); }
+        try { return await eng.renderOffline({ fromBar: 0, toBar: 1, tailSec: 0.3, trackIds: ids || null }); }
         finally { Math.random = real; window.setTimeout = rst; q.forEach(f => { try { f(); } catch (e) {} }); }
       };
       const events = async eng => {          // every call renderOffline makes on its devices
@@ -85,9 +85,13 @@ suite('daw perf · scale lock, chords, arp, groove, step sequencer', async t => 
       const OE = oldEngine(src), out = {};
       // the kit as saved before the instrument library (2026-10-11): the old engine can't build the newer kit pieces
       const kd = P.devices.find(d => d.type === 'kit'); if (kd) E.devices.get(kd.id).setState({ map: JSON.parse(JSON.stringify(window.__oldKitMap)) });
+      // the old kit built every piece of its map up front; today's builds a piece on first use (2026-10-11, audio-thread
+      // load). Building draws seeded random numbers (noise, reverb impulses) in a different order, so the KIT is held to
+      // identical device events (below) and the sample-exact audio check covers the melodic tracks
       await render(E);                                        // warm-up: FORGE builds shared tables on its first offline render
       const o = await events(OE), n = await events(E);
-      out.forge = { same: o.L === n.L, events: o.n, audio: diff(o.res, n.res), peak: AK.util.peakOf(o.res.channels) };
+      const mel = P.tracks.filter(t => t.role !== 'drums').map(t => t.id), oa = await render(OE, mel), na = await render(E, mel);
+      out.forge = { same: o.L === n.L, events: o.n, audio: diff(oa, na), peak: AK.util.peakOf(o.res.channels) };
       // the same arrangement on BASIC synths: sample-exact (the old engine gets the same BasicSynth note-off fix)
       const j = JSON.parse(JSON.stringify(P)); j.devices.forEach(d => { d.type = 'basic'; d.state = null; delete d.preset; });
       await E.load(j); P = E.project; sel = { trackId: null, clip: -1 };
@@ -101,7 +105,9 @@ suite('daw perf · scale lock, chords, arp, groove, step sequencer', async t => 
     }, oldSrc);
     t.ok(r.forge.events > 50 && r.forge.peak > 0.05, 'FORGE render: ' + r.forge.events + ' device events, peak ' + r.forge.peak.toFixed(2));
     t.ok(r.forge.same, 'FORGE: device events differ from the old engine');
-    t.ok(r.forge.audio < 1e-4, 'FORGE audio vs old ' + r.forge.audio.toExponential(1) + ' (≈ its own run-to-run noise, 1e-5)');
+    // FORGE's own run-to-run noise has two observed modes: ~1e-5 and, in about 1 run in 3, exactly 1.4e-4 (−77 dBFS) —
+    // seen on the engine before the 2026-10-11 kit / clock changes too (2 of 6 runs). Events must still match exactly.
+    t.ok(r.forge.audio < 3e-4, 'FORGE audio vs old ' + r.forge.audio.toExponential(1) + ' (≈ its own run-to-run noise: 1e-5 or 1.4e-4)');
     t.ok(r.basic.peak > 0.05 && r.basic.events > 50, 'BASIC render audible ' + r.basic.peak);
     t.ok(r.basic.same, 'BASIC: device events differ from the old engine');
     t.ok(r.basic.off, 'a groove that is off changed the events'); t.ok(!r.grooveOn, 'a groove that is on left the events alone');

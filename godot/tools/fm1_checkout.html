@@ -1005,8 +1005,11 @@ const AUD = { ctx: null, stream: null, src: null, cap: null, probe: null, sink: 
 async function ensureCtx() {
   if (!AUD.ctx) {
     // Same settings as the DAW's context (44.1 kHz, interactive) so the latency number transfers.
-    try { AUD.ctx = new AudioContext({ sampleRate: 44100, latencyHint: 'interactive' }); }
-    catch (e) { AUD.ctx = new AudioContext({ latencyHint: 'interactive' }); }
+    // the DAW's output buffer (mm_daw_buffer: smooth = 'playback' by default, fast = interactive) so the round trip
+    // is measured the way the DAW will hear it; the DAW also corrects for any difference (baseLatency/outputLatency saved below)
+    let hint = 'playback'; try { if ((localStorage.getItem('mm_daw_buffer') || 'smooth') === 'fast') hint = 'interactive'; } catch (e) {}
+    try { AUD.ctx = new AudioContext({ sampleRate: 44100, latencyHint: hint }); }
+    catch (e) { AUD.ctx = new AudioContext({ latencyHint: hint }); }
   }
   if (AUD.ctx.state !== 'running') { try { await AUD.ctx.resume(); } catch (e) { /* needs a gesture */ } }
   return AUD.ctx;

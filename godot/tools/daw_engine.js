@@ -53,6 +53,10 @@
  *   events: 'record-arm', 'record' {on}, 'takes', 'latency'. DAW.GRIDS = the grid / record-quantize values
  *   (1/32 12 · 1/16 24 · 1/8 48 · 1/4 96 · 1/16T 16 · 1/8T 32 ticks) shared with the piano roll.
  *
+ * Output buffer: mm_daw_buffer 'smooth' (default, Chrome 'playback') | 'fast' ('interactive'); this.buffer, outMs().
+ *   Measured latencies carry the output latency they were taken with; audioComp() adds the difference (buf).
+ *   perfTime() / ctxAtPerf() go through clockOffset(): the median of recent getOutputTimestamp() readings.
+ *
  * Latency — which compensation applies where. Every recorded position is put back on SCHEDULED context time
  * (timeOf(tick): when the transport scheduled that tick). Facts it rests on:
  *   • perfTime(T) is when context time T reaches the speakers (getOutputTimestamp); ctxAtPerf() is its inverse.
@@ -193,52 +197,66 @@
 
   // ── drum kit of FORGE voices ──────────────────────────────────────
   class KitDevice {
-    // map: a saved kit's own map (built as is, so nothing is made and thrown away); else KIT_MAP + the style's pieces
-    constructor(ctx, { output, kit, map } = {}) { this.ctx = ctx; this.output = ctx.createGain(); this.output.connect(output); this.voices = {}; this.map = map ? Object.assign({}, map) : kitMapFor(kit); this.basic = null; }
+    // map: a saved kit's own map (built as is); else KIT_MAP + the style's pieces.
+    // A piece's FORGE synth is built the first time it is hit (scheduling runs ~120 ms ahead, so that is in
+    // time): a full kit map names ~14 presets and every FORGE synth costs audio-thread time even when silent —
+    // building them all made the kit the heaviest device in a song (see the audio playbook, 2026-10-11).
+    constructor(ctx, { output, kit, map } = {}) { this.ctx = ctx; this.output = ctx.createGain(); this.output.connect(output); this.voices = {}; this.pending = {}; this.hold = {}; this.map = map ? Object.assign({}, map) : kitMapFor(kit); this.basic = null; }
     async init() {
       if (typeof G.ForgeSynth !== 'function') { this.basic = new BasicSynth(this.ctx, { output: this.output, drums: true }); return; }
       this._ensureVoices();
-      await Promise.all(Object.values(this.voices).map(s => s.init()));
-      this.measureHolds();
     }
-    // one ForgeSynth per preset the map plays (built synchronously — init() only adds FORGE's worklet, which
-    // the drum presets don't need — so a map that arrives with setState() sounds at once); unused ones go
+    // drop built pieces the map no longer plays (nothing is built ahead of its first hit)
     _ensureVoices() {
       if (this.basic || typeof G.ForgeSynth !== 'function') return;
       const want = new Set(Object.values(this.map).map(m => m && m[0]).filter(Boolean));
-      for (const id of want) {
-        if (this.voices[id]) continue;
-        const s = new G.ForgeSynth(this.ctx, { output: this.output, maxVoices: 6 });
-        try { s.loadPreset(id); } catch (e) { /* missing preset → stays init */ }
-        s.init().catch(() => {});
-        this.voices[id] = s;
-      }
-      for (const id of Object.keys(this.voices)) if (!want.has(id)) { try { this.voices[id].dispose(); } catch (e) {} delete this.voices[id]; }
+      for (const id of Object.keys(this.voices)) if (!want.has(id)) { try { this.voices[id].dispose(); } catch (e) {} delete this.voices[id]; delete this.hold[id]; }
     }
+    // the piece's synth, built on first use (synchronously — drum presets don't need FORGE's worklet)
+    _voice(id) {
+      let s = this.voices[id];
+      if (s || this.basic || typeof G.ForgeSynth !== 'function') return s;
+      s = new G.ForgeSynth(this.ctx, { output: this.output, maxVoices: 6 });
+      try { s.loadPreset(id); } catch (e) { /* missing preset → stays init */ }
+      if (this.pending[id]) { try { s.setState(this.pending[id]); } catch (e) {} delete this.pending[id]; }
+      s.init().catch(() => {});
+      this.voices[id] = s;
+      this._measure(id);
+      return s;
+    }
+    // build every piece the given notes will hit (offline renders and tests can ask up front)
+    // (in map order, whatever order the notes come in: building consumes random numbers — noise, reverb impulses —
+    //  so a fixed order keeps seeded renders reproducible)
+    prepare(notes) {
+      const want = new Set((notes || []).map(n => this._piece(n)[0]));
+      for (const m of Object.values(this.map)) if (m && want.has(m[0])) this._voice(m[0]);
+      for (const id of want) this._voice(id);
+    }
+    // …and wait until they are fully set up (FORGE's init() also settles queued async work such as reverb
+    // impulses): a render must not start before that, or the first hits come out different
+    async ready(notes) { this.prepare(notes); await Promise.all(Object.values(this.voices).map(s => s.init())); }
+    _piece(n) { return this.map[n] || this.map[36 + ((n - 36) % 12 + 12) % 12] || ['perc_rim', 60, 0.8]; }
     // how long to hold each one-shot: a decaying preset (sustain 0) rings out its attack+decay,
     // a sustaining one gets a short gate. Releasing early would cut the kick's tail.
-    measureHolds() {
-      this.hold = {};
-      for (const [id, s] of Object.entries(this.voices)) {
-        let a = null; try { a = s.getState().amp; } catch (e) {}
-        this.hold[id] = a && a.s <= 0.01 ? Math.min(4, (a.a || 0) + (a.d || 0.3)) : 0.12;
-      }
+    _measure(id) {
+      let a = null; try { a = this.voices[id].getState().amp; } catch (e) {}
+      this.hold[id] = a && a.s <= 0.01 ? Math.min(4, (a.a || 0) + (a.d || 0.3)) : 0.12;
     }
+    measureHolds() { this.hold = {}; for (const id of Object.keys(this.voices)) this._measure(id); }
     noteOn(n, v, when) {
       if (this.basic) return this.basic.noteOn(n, v, when);
-      const m = this.map[n] || this.map[36 + ((n - 36) % 12 + 12) % 12] || ['perc_rim', 60, 0.8];
-      const s = this.voices[m[0]]; if (!s) return;
+      const m = this._piece(n), s = this._voice(m[0]); if (!s) return;
       s.noteOn(m[1], Math.min(1, v * m[2]), when);
-      s.noteOff(m[1], when + ((this.hold && this.hold[m[0]]) || 0.12));
+      s.noteOff(m[1], when + (this.hold[m[0]] || 0.12));
     }
     noteOff() {}
     allOff(when) { if (this.basic) this.basic.allOff(when); for (const s of Object.values(this.voices)) s.allOff(when); }
     cc() {} pitchBend() {}
-    getState() { return { map: this.map, voices: Object.fromEntries(Object.entries(this.voices).map(([k, s]) => [k, s.getState()])) }; }
+    getState() { return { map: this.map, voices: Object.assign({}, this.pending, Object.fromEntries(Object.entries(this.voices).map(([k, s]) => [k, s.getState()]))) }; }
     setState(st) {
       if (!st) return;
       if (st.map) { this.map = st.map; this._ensureVoices(); }
-      if (st.voices) for (const [k, s] of Object.entries(st.voices)) if (this.voices[k]) this.voices[k].setState(s);
+      if (st.voices) for (const [k, s] of Object.entries(st.voices)) { if (this.voices[k]) this.voices[k].setState(s); else this.pending[k] = s; }
       this.measureHolds();
     }
     dispose() { for (const s of Object.values(this.voices)) s.dispose(); this.output.disconnect(); }
@@ -307,7 +325,12 @@
   const REC_MODES = ['replace', 'overdub', 'loop'];       // 'loop' = overdub loop: every pass into one pattern
   const GRACE = PPQ / 4;          // a note struck up to a 1/16 before the record start lands on it
   const FADE_MS = 5;              // audio takes: fade in / out at the cut
-  const LS_FM1 = 'mm_fm1_latency_ms', LS_LAT = 'mm_daw_latency';
+  const LS_FM1 = 'mm_fm1_latency_ms', LS_LAT = 'mm_daw_latency', LS_CHECKOUT = 'mm_fm1_checkout', LS_BUF = 'mm_daw_buffer';
+  // Output buffer. SMOOTH (default): Chrome's 'playback' buffer (~23 ms, vs ~10 ms interactive) — the audio thread gets headroom, so a busy song on the Deck
+  // (Flatpak Chrome's audio thread may not get real-time priority) plays without crackles; live keys respond later.
+  // FAST: Chrome's interactive buffer, for playing live. Read once when the AudioContext is made (reload to change).
+  const BUFFERS = { smooth: 'playback', fast: 'interactive' };
+  const bufferMode = () => { let m = ''; try { m = root.localStorage.getItem(LS_BUF) || ''; } catch (e) {} return BUFFERS[m] !== undefined ? m : 'smooth'; };
   const FM1_INPUT_RX = /felucca|fm-?1|m-?vave|x0x/i;      // an input named like the FM-1's own USB audio
   const sleep = ms => new Promise(r => setTimeout(r, ms));
   // Frame-stamped input capture: every render quantum's input with the context frame it belongs to
@@ -402,7 +425,8 @@ registerProcessor('mm-daw-rec', MMDawRec);
 
     async start() {
       if (this.ctx) { if (this.ctx.state === 'suspended') await this.ctx.resume(); return; }
-      this.ctx = new (root.AudioContext || root.webkitAudioContext)({ sampleRate: RATE, latencyHint: 'interactive' });
+      this.buffer = bufferMode();
+      this.ctx = new (root.AudioContext || root.webkitAudioContext)({ sampleRate: RATE, latencyHint: BUFFERS[this.buffer] });
       const c = this.ctx;
       this.master = c.createGain();
       this.limiter = c.createDynamicsCompressor(); this.limiter.threshold.value = -2; this.limiter.knee.value = 0; this.limiter.ratio.value = 20; this.limiter.attack.value = 0.002; this.limiter.release.value = 0.1;
@@ -670,9 +694,23 @@ registerProcessor('mm-daw-rec', MMDawRec);
       return Math.max(this.anchor.tick, t);
     }
     perfTime(ctxTime) {
-      const ts = this.ctx.getOutputTimestamp ? this.ctx.getOutputTimestamp() : null;
-      if (ts && ts.performanceTime) return ts.performanceTime + (ctxTime - ts.contextTime) * 1000;
-      return performance.now() + (ctxTime - this.ctx.currentTime) * 1000;
+      const off = this.clockOffset();
+      return off != null ? (ctxTime + off) * 1000 : performance.now() + (ctxTime - this.ctx.currentTime) * 1000;
+    }
+    // performance clock − context clock (s), at the speakers: the median of recent getOutputTimestamp() readings.
+    // In steady state the offset is constant (measured: one value over 400 readings, no drift), but for ~2 s after
+    // the context starts Chrome settles its output path and single readings jump by up to a buffer (seen: 18–23 ms
+    // with 'playback'). The median of the last 9 distinct readings drops those spikes and follows the settling.
+    clockOffset() {
+      const ts = this.ctx && this.ctx.getOutputTimestamp ? this.ctx.getOutputTimestamp() : null;
+      if (!ts || !ts.performanceTime) return null;
+      const R = this._clk || (this._clk = { last: -1, v: [] });
+      if (ts.contextTime !== R.last) {
+        R.last = ts.contextTime; R.v.push(ts.performanceTime / 1000 - ts.contextTime); if (R.v.length > 9) R.v.shift();
+        R.med = R.v.slice().sort((a, b) => a - b)[R.v.length >> 1];
+        if (Math.abs(R.v[R.v.length - 1] - R.med) > 0.25) { R.v = [R.v[R.v.length - 1]]; R.med = R.v[0]; }   // a jump (resume): start over
+      }
+      return R.med;
     }
     swingDelay(tick, tr) {
       if (tr && this.project.groove) { const g = this._groove(tr); if (g) return g.delay(tick); }   // a groove replaces the swing slider
@@ -696,9 +734,16 @@ registerProcessor('mm-daw-rec', MMDawRec);
     }
 
     // ── transport ───────────────────────────────────────────────────
+    // every note the tracks on a kit device play (its pieces are built from these before playback / a render)
+    kitNotes(devId) {
+      const ns = new Set();
+      for (const t of this.project.tracks) if (t.deviceId === devId && t.patterns) for (const p of Object.values(t.patterns)) for (const n of p.notes || []) ns.add(n.n);
+      return [...ns];
+    }
     async play(fromTick) {
       await this.start();
       if (this.playing) this.stop();
+      for (const d of this.project.devices) { const k = d.type === 'kit' && this.devices.get(d.id); if (k && k.ready) await k.ready(this.kitNotes(d.id)); }
       const P = this.project;
       const startTick = fromTick ?? (P.loop.on ? P.loop.a * BAR : 0);
       this.anchor = { ctx: this.ctx.currentTime + 0.08, tick: startTick };
@@ -738,6 +783,7 @@ registerProcessor('mm-daw-rec', MMDawRec);
       this.emit('transport', { playing: false });
     }
     schedule() {
+      this.clockOffset();                    // keep the clock-offset median fed every tick
       if (!this.playing) return;
       const P = this.project, horizon = this.ctx.currentTime + LOOKAHEAD;
       for (let guard = 0; guard < 8; guard++) {
@@ -1040,7 +1086,7 @@ registerProcessor('mm-daw-rec', MMDawRec);
       const L = this.lat = { fm1: { ms: 30, src: 'default' }, input: { ms: 30, src: 'default' }, midi: { ms: 0, src: 'default' }, use: 'auto' };
       let saved = null; try { saved = JSON.parse(root.localStorage.getItem(LS_LAT) || 'null'); } catch (e) { /* blocked / bad JSON */ }
       if (saved && typeof saved === 'object') {
-        for (const k of ['fm1', 'input', 'midi']) if (saved[k] && Number.isFinite(+saved[k].ms)) L[k] = { ms: +saved[k].ms, src: String(saved[k].src || 'manual') };
+        for (const k of ['fm1', 'input', 'midi']) if (saved[k] && Number.isFinite(+saved[k].ms)) L[k] = Object.assign({ ms: +saved[k].ms, src: String(saved[k].src || 'manual') }, Number.isFinite(+saved[k].outMs) ? { outMs: +saved[k].outMs } : {});
         if (['auto', 'fm1', 'input'].includes(saved.use)) L.use = saved.use;
       }
       this.checkoutLatency();
@@ -1057,7 +1103,7 @@ registerProcessor('mm-daw-rec', MMDawRec);
     setLatency(kind, ms, src = 'manual') {
       if (!['fm1', 'input', 'midi'].includes(kind)) return;
       const v = Math.max(kind === 'midi' ? -100 : 0, Math.min(500, +ms || 0));
-      this.lat[kind] = { ms: Math.round(v * 10) / 10, src };
+      this.lat[kind] = { ms: Math.round(v * 10) / 10, src };          // (a measured play-along value gets its outMs after)
       this.saveLatency(); this.emit('latency', this.lat);
     }
     setLatencyUse(use) { if (['auto', 'fm1', 'input'].includes(use)) { this.lat.use = use; this.saveLatency(); this.emit('latency', this.lat); } }
@@ -1075,8 +1121,20 @@ registerProcessor('mm-daw-rec', MMDawRec);
     // clicks go through the same delayed click bus, so the look-ahead is already inside it)
     audioComp() {
       const kind = this.audioLatencyKind(), ms = this.lat[kind].ms, extra = kind === 'fm1' ? Math.round((this.outDelay || 0) * 1e5) / 100 : 0;
-      return { kind, ms, extra, total: ms + extra };
+      // a round trip measured with a different output buffer: the DAW's hardware MIDI leaves when its audio is
+      // HEARD (perfTime), so the take arrives later by exactly the output-latency difference
+      const at = kind === 'fm1' ? this.checkoutOutMs() : this.lat.input.outMs, now = this.outMs();
+      const buf = Number.isFinite(at) && Number.isFinite(now) ? Math.round((now - at) * 10) / 10 : 0;
+      return { kind, ms, extra, buf, total: ms + extra + buf };
     }
+    // this context's output latency (base + output), ms — what perfTime() adds between render and the speakers
+    outMs() { const c = this.ctx; return c ? ((c.baseLatency || 0) + (c.outputLatency || 0)) * 1000 : NaN; }
+    // the output latency FM-1 CHECK-OUT measured its round trip with (its saved results), ms
+    checkoutOutMs() {
+      try { const r = JSON.parse(root.localStorage.getItem(LS_CHECKOUT) || 'null'), l = r && r.latency; if (l && Number.isFinite(+l.baseLatencyMs)) return +l.baseLatencyMs + (+l.outputLatencyMs || 0); } catch (e) {}
+      return NaN;
+    }
+    setBufferMode(m) { if (BUFFERS[m] === undefined) return false; try { root.localStorage.setItem(LS_BUF, m); } catch (e) {} return true; }
     get latencyMs() { return this.lat[this.audioLatencyKind()].ms; }
     set latencyMs(v) { this.setLatency(this.audioLatencyKind(), v); }
 
@@ -1084,9 +1142,8 @@ registerProcessor('mm-daw-rec', MMDawRec);
     // performance time → the context time that was AUDIBLE then (inverse of perfTime): what a performer
     // heard when they struck the note. MIDI / key events carry their own stamp, so handler delays drop out.
     ctxAtPerf(perf) {
-      const ts = this.ctx.getOutputTimestamp ? this.ctx.getOutputTimestamp() : null;
-      if (ts && ts.performanceTime) return ts.contextTime + (perf - ts.performanceTime) / 1000;
-      return this.ctx.currentTime + (perf - performance.now()) / 1000;
+      const off = this.clockOffset();
+      return off != null ? perf / 1000 - off : this.ctx.currentTime + (perf - performance.now()) / 1000;
     }
     // the page stamps each MIDI / key event before it reaches liveNote (window listeners, capture phase)
     stampInput(perf) { if (Number.isFinite(perf)) this._evIn = { perf, at: performance.now() }; }
@@ -1450,7 +1507,7 @@ registerProcessor('mm-daw-rec', MMDawRec);
         if (got.length < Math.ceil(n * 0.75)) throw new Error('only ' + got.length + ' of ' + n + ' clicks came back — cable the output into the input (or hold the mic to the speaker) and turn it up');
         const med = got.length % 2 ? got[(got.length - 1) / 2] : (got[got.length / 2 - 1] + got[got.length / 2]) / 2;
         const mean = got.reduce((x, y) => x + y, 0) / got.length, sd = Math.sqrt(got.reduce((x, y) => x + (y - mean) ** 2, 0) / got.length);
-        this.setLatency('input', med, 'loopback');
+        this.setLatency('input', med, 'loopback'); this.lat.input.outMs = Math.round(this.outMs() * 10) / 10; this.saveLatency();
         return { ms: Math.round(med * 10) / 10, jitterMs: Math.round(sd * 100) / 100, samples, found: got.length, of: n };
       } finally { cap.stop(); }
     }
@@ -1491,7 +1548,7 @@ registerProcessor('mm-daw-rec', MMDawRec);
       const live = this.devices.get(d.id);
       let inst = null;
       if (d.type === 'forge' && typeof G.ForgeSynth === 'function') { inst = new G.ForgeSynth(off, { output, maxVoices: 16 }); await inst.init(); if (live && live.getState) inst.setState(live.getState()); }
-      else if (d.type === 'kit') { const ls = live && live.getState ? live.getState() : null; inst = new KitDevice(off, { output, kit: d.kit, map: ls && ls.map }); await inst.init(); if (live && live.getState) inst.setState(live.getState()); }
+      else if (d.type === 'kit') { const ls = live && live.getState ? live.getState() : null; inst = new KitDevice(off, { output, kit: d.kit, map: ls && ls.map }); await inst.init(); if (live && live.getState) inst.setState(live.getState()); await inst.ready(this.kitNotes(d.id)); }
       else if (d.type === 'patch') {
         const inner = live && live.inner; if (!inner) return null;
         if (inner.loadVoice) { inst = new inner.constructor(off, { output, maxVoices: 16 }); await inst.init(); inst.setState(inner.getState()); }

@@ -213,8 +213,10 @@ suite('library · FORGE presets, composer pools, KIT styles, preset browser', as
         const want = SeqGen.song({ seed, style, form: 'loop', key: song.key, mode: song.mode, bpm: song.bpm });
         const dev = role => { const t = P.tracks.find(x => x.role === role); return t && E.dev(t.deviceId); };
         const kit = dev('drums'), ki = kit && E.devices.get(kit.id);
+        const built0 = ki ? Object.keys(ki.voices).length : -1;               // pieces build on first hit
+        if (ki) ki.prepare(Object.keys(ki.map).map(Number));
         out.push({ style, picks: ['bass', 'chords', 'lead', 'pad'].map(r => dev(r) ? dev(r).preset === want.parts[r].preset : true).every(Boolean),
-          kick: ki && ki.map[36][0], snare: ki && ki.map[38][0], ride: ki && ki.map[51][0], voices: ki && Object.keys(ki.voices).sort().join(',') });
+          kick: ki && ki.map[36][0], snare: ki && ki.map[38][0], ride: ki && ki.map[51][0], voices: ki && Object.keys(ki.voices).sort().join(','), built0 });
       }
       return out;
     });
@@ -222,6 +224,7 @@ suite('library · FORGE presets, composer pools, KIT styles, preset browser', as
     const by = Object.fromEntries(r.map(x => [x.style, x]));
     t.eq([by.trap.kick, by.lofi.kick, by.noir.snare, by.noir.ride], ['kick_808', 'kick_felt', 'snare_brush', 'cym_ride']);
     t.eq(await D.p.evaluate(() => DAW.kitMapFor('ambient')[36][0] + ' ' + DAW.kitMapFor('nope')[70][0]), 'kick perc_shaker', 'unstyled kits use KIT_MAP');
+    for (const x of r) t.eq(x.built0, 0, x.style + ': no kit piece is built before it is hit');
     t.ok(!/hat_closed.*kick_808|kick_808/.test(by.lofi.voices) && by.trap.voices.includes('kick_808') && !by.trap.voices.split(',').includes('kick'), 'kit builds only the voices its map plays: ' + by.trap.voices);
   });
 
@@ -235,6 +238,7 @@ suite('library · FORGE presets, composer pools, KIT styles, preset browser', as
       proj.tracks = [];
       await E.load(proj);
       const kit = E.devices.get('dev1'), ep = E.devices.get('dev2');
+      kit.prepare(Object.keys(OLD).map(Number));
       E.snapshotStates();
       return { map: JSON.stringify(kit.map) === JSON.stringify(OLD), voices: Object.keys(kit.voices).sort().join(','), ep: JSON.stringify(ep.getState()) === JSON.stringify(st), saved: JSON.stringify(E.project.devices[0].state.map) === JSON.stringify(OLD) };
     });

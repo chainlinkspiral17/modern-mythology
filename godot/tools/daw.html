@@ -208,6 +208,7 @@
   <div class="lr"><b>MIDI NOTES</b><input type="number" id="lat-midi" min="-100" max="500" step="0.1"><span>ms</span><span class="src" id="lat-midi-src"></span><span></span></div>
   <div class="note">FM-1 keys, any MIDI keyboard, the computer keys: notes land where they were heard, by each event's own time stamp. This is only an extra nudge (normally 0).</div>
   <div class="lr" style="grid-template-columns:128px 1fr"><b>AUDIO TAKES USE</b><select id="lat-use"><option value="auto">auto (by the input's name)</option><option value="fm1">FM-1 RETURN</option><option value="input">PLAY-ALONG INPUT</option></select></div>
+  <div class="lr2"><b>BUFFER</b><button id="buf-smooth" class="dim" title="a larger output buffer (Chrome playback): fewer crackles when a song is busy (default)">SMOOTH</button><button id="buf-fast" class="dim" title="Chrome's interactive buffer: quickest response for playing live, crackles sooner when the song is busy">FAST</button><span class="note" id="buf-note"></span></div>
   <div class="note" id="lat-now"></div>
   <div class="msg" id="lat-msg"></div>
 </div>
@@ -511,7 +512,10 @@ function latUI() {
   }
   $('lat-use').value = L.use;
   const c = E.audioComp(), la = (E.outDelay * 1000).toFixed(1);
-  $('lat-now').textContent = 'audio takes now shift by ' + c.total.toFixed(1) + ' ms (' + (k === 'fm1' ? 'FM-1 RETURN + ' + la + ' ms master look-ahead' : 'PLAY-ALONG INPUT') + ') · ' + (E.inputLabel ? 'input “' + E.inputLabel + '”' : 'no input picked yet (EXPORT → RECORDING)') +
+  const want = (() => { try { return localStorage.getItem('mm_daw_buffer') || 'smooth'; } catch (e) { return 'smooth'; } })();
+  $('buf-smooth').classList.toggle('on', want === 'smooth'); $('buf-fast').classList.toggle('on', want === 'fast');
+  $('buf-note').textContent = 'output ' + E.outMs().toFixed(0) + ' ms' + (want !== E.buffer ? ' · RELOAD THE PAGE to switch' : '');
+  $('lat-now').textContent = 'audio takes now shift by ' + c.total.toFixed(1) + ' ms (' + (k === 'fm1' ? 'FM-1 RETURN + ' + la + ' ms master look-ahead' : 'PLAY-ALONG INPUT') + (c.buf ? ' ' + (c.buf > 0 ? '+ ' : '− ') + Math.abs(c.buf).toFixed(1) + ' ms for this output buffer' : '') + ') · ' + (E.inputLabel ? 'input “' + E.inputLabel + '”' : 'no input picked yet (EXPORT → RECORDING)') +
     ' · the master limiter looks ahead ' + la + ' ms; the click and the FM-1\'s MIDI are delayed to match, so a loopback reading includes it.';
 }
 E.on('latency', latUI);
@@ -519,6 +523,7 @@ $('latbtn').addEventListener('click', () => { $('latpanel').classList.toggle('sh
 $('lat-close').addEventListener('click', () => $('latpanel').classList.remove('show'));
 ['fm1', 'input', 'midi'].forEach(x => $('lat-' + x).addEventListener('change', () => E.setLatency(x, +$('lat-' + x).value, 'manual')));
 $('lat-use').addEventListener('change', () => E.setLatencyUse($('lat-use').value));
+for (const m of ['smooth', 'fast']) $('buf-' + m).addEventListener('click', () => { E.setBufferMode(m); latUI(); msg('lat-msg', m === E.buffer ? 'buffer: ' + m + '.' : 'buffer → ' + m + ': reload the page (the project is saved) to switch.'); });
 $('lat-co').addEventListener('click', () => {
   const v = E.checkoutLatency(true);
   if (v == null) { msg('lat-msg', 'no CHECK-OUT measurement yet: fm1_checkout.html → step 7 → MEASURE.', true); return; }

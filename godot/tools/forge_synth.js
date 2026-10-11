@@ -2781,7 +2781,7 @@ const FORGE_PRESETS = [
     macros: MAC('CRYSTAL', 'BLOOM', 'SPARKLE', 'MOTION', 'ECHO', 'SPACE', 'WIDTH', 'SOFT'),
     lanes: LN({ fx: [FX('chorus', { rate: 0.3, depth: 0.35, mix: 0.3 }), FX('eq', { low: -2, lowf: 150, high: 0, highf: 7000 }, 'fe'),
       FX('delay', { sync: true, div: '1/4d', fb: 0.4, tone: 6000, pp: true, mix: 0.15 }, 'fd'), FX('width', { width: 1.4 }, 'fw'), FX('reverb', { size: 7, damp: 0.35, mix: 0.45 }, 'fr')] }),
-    voice: { velSens: 0.35 }, master: { gain: 1.1 },
+    voice: { velSens: 0.35 }, master: { gain: 1.04 },
   } },
   { id: 'pad_dusk', name: 'Pad · Gulf Dusk', category: 'pads', tags: ['lofi', 'shuffle', 'ambient', 'warm', 'fifths'], state: {
     gens: [
