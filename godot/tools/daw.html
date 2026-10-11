@@ -515,7 +515,8 @@ function syncTransportUI() {
   punchUI();
   const M = P.master; $('m-vol').value = M.vol; $('m-verb').value = M.verbMix; $('m-size').value = M.verbSize; $('m-dmix').value = M.delayMix; $('m-dtime').value = M.delayBeats; $('m-dfb').value = M.delayFb;
 }
-$('play').addEventListener('click', () => E.playing || E._rplay ? E.stop() : E.playAuto());
+// ▶ while a render is still getting ahead does nothing (■ cancels it): a second tap used to cancel the wait
+$('play').addEventListener('click', () => E.playing ? E.stop() : E._rplay ? null : E.playAuto());
 // the PLAY mode button doubles as the render's progress (the transport bar must stay one line on the Deck)
 let rState = '';
 function playModeUI() { const m = E.playMode; $('playmode').textContent = rState || (m === 'render' ? 'RENDER' : 'LIVE'); $('playmode').classList.toggle('on', m === 'live'); $('playmode').classList.toggle('warn', !!rState && rState !== 'RENDER'); }
@@ -525,6 +526,7 @@ let rEdited = false;
 E.on('render-progress', x => {
   if (x.error) { rState = ''; playModeUI(); return; }             // the engine logged it (DIAG)
   rState = x.p >= 1 || rEdited ? rState : '◔ ' + Math.round(x.p * 100) + '%';
+  if (x.buffering) $('pos').textContent = x.eta == null ? 'WAIT…' : 'WAIT ' + Math.ceil(x.eta) + ' s';
   if (x.p >= 1 && !rEdited) rState = '';
   playModeUI();
 });
@@ -1422,7 +1424,7 @@ window.addEventListener('keydown', e => {
   const tag = (e.target.tagName || '').toUpperCase(); if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return;
   if (e.repeat) return;
   const k = e.key.toLowerCase();
-  if (k === ' ') { e.preventDefault(); E.playing || E._rplay ? E.stop() : E.playAuto(); return; }
+  if (k === ' ') { e.preventDefault(); E.playing || E._rplay ? E.stop() : E.playAuto(); return; }       // space toggles: it can cancel a wait
   if (k === 'r' && e.shiftKey) { $('rec').click(); return; }
   if (k === 'l' && !e.ctrlKey) { $('loopbtn').click(); return; }
   if (e.key === 'Delete' || e.key === 'Backspace') {
@@ -2379,7 +2381,8 @@ let lastTick = -1;
 function frame() {
   if (P) {
     const tk = E.tickNow();
-    if (tk !== lastTick) {
+    if (E._rplay && !E.playing) lastTick = -1;           // a render getting ahead: pos shows WAIT n s
+    else if (tk !== lastTick) {
       lastTick = tk;
       const bar = Math.floor(tk / BAR), beat = Math.floor(tk / PPQ) % 4, six = Math.floor(tk / (PPQ / 4)) % 4;
       const R = E.rec, cin = R && E.recording && !R.fly && R.cfg.countIn && tk < R.a * BAR;

@@ -109,6 +109,7 @@
   <span class="badge" id="b-daw" title="takes come from the DAW: an open, started DAW takes requests live; otherwise one opens">DAW: —</span>
   <span style="flex:1"></span>
   <label class="note">who <input type="text" id="who" style="width:110px" placeholder="your name"></label>
+  <button id="helpbtn" title="how to approve a song, step by step">? HOW TO</button>
   <a href="index.html" style="color:var(--text-dim)">tools</a>
 </header>
 <main>
@@ -197,6 +198,24 @@
   <span class="note" id="dawmsg"></span>
 </footer>
 
+<div class="modal" id="help"><div class="mbox" style="height:auto;max-height:94vh">
+  <div class="mhead"><b style="color:var(--gold-hi);font-weight:normal;letter-spacing:0.14em">HOW TO APPROVE A SONG</b><span style="flex:1"></span><button id="help-close">✕ CLOSE</button></div>
+  <div class="mbody" style="font-size:13px;line-height:1.6">
+    <ol>
+      <li><b>⌂ LINK GAME FOLDER</b> (top left) → pick the <code>godot</code> folder inside your checkout (<code>…/mm-fm1/godot</code>) → Chrome asks to let the page edit files → <b>Allow</b>. The badge then reads <i>GAME FOLDER: godot</i>. After a restart the button may say <b>⌂ ALLOW GAME FOLDER</b>: tap it once. <b>Without this, APPROVE can't put anything in the game.</b></li>
+      <li>Type your name in <b>who</b> (top right) — it goes into the approval record.</li>
+      <li>Pick a track in the list on the left. <b>CANDIDATES</b> shows tracks with takes waiting for a verdict; <b>MISSING</b> shows tracks with no music yet.</li>
+      <li>No takes yet? In the box under TAKES set how many (1–6), optionally write a <b>DIRECTION</b> (“slower, a lonely piano over rain”), then <b>⚄ MAKE TAKES</b>. A DAW tab opens and renders them — leave it open; the takes appear here when done (<b>⟳ RESCAN</b> if they don't).</li>
+      <li>Listen: <b>▶ PLAY</b> on a take (or keys 1–6). The intensity buttons show how its layers come in as a scene gets tense; <b>▶ PLAY AS SCENE</b> plays it against a real scene.</li>
+      <li>Like one? Optionally type why in the notes field, then <b>✓ APPROVE</b> on that take (key <b>a</b>). If another take was approved before, tap APPROVE a second time within 4 s to replace it. The take shows <b>APPROVED</b> and the game plays it from now on.</li>
+      <li>Don't want one? <b>✕ REJECT</b>, then tap it again to confirm (key <b>x</b> twice). Tick <i>reject deletes files</i> to delete its audio too. Rejected seeds are never made again.</li>
+      <li>None good? Change the DIRECTION / STYLE / ENERGY / INSTRUMENTS and <b>⚄ MAKE TAKES</b> again. <b>⟳ AGAIN</b> remakes one take from its saved settings.</li>
+      <li>Changed your mind later: <b>✕ REVOKE APPROVED TEMP</b> (tap twice) takes it back out of the game. Real recorded audio is never touched.</li>
+      <li>When you're done: back the music up (it never goes in git) and commit the approval list — see the commands at the bottom of the page / from Claude.</li>
+    </ol>
+    <div class="note">Keys: ↑ ↓ track · 1–6 pick a take · space play / stop · a approve · x reject · v revoke · l loop.</div>
+  </div>
+</div></div>
 <div class="modal" id="picker"><div class="mbox">
   <div class="mhead"><b id="pk-title" style="color:var(--gold-hi);font-weight:normal"></b><input type="text" id="pk-q" placeholder="search" style="flex:1"><button id="pk-close">✕ CLOSE</button></div>
   <div class="mbody" id="pk-body"></div>
@@ -987,6 +1006,9 @@ function renderPicker() {
 }
 $('pk-q').addEventListener('input', renderPicker);
 $('pk-close').addEventListener('click', () => $('picker').classList.remove('show'));
+$('helpbtn').addEventListener('click', () => $('help').classList.add('show'));
+$('help-close').addEventListener('click', () => $('help').classList.remove('show'));
+$('help').addEventListener('click', e => { if (e.target === $('help')) $('help').classList.remove('show'); });
 $('pk-body').addEventListener('click', e => {
   const b = e.target.closest('[data-pv]'); if (!b) return;
   const role = $('picker').dataset.role;
@@ -999,6 +1021,7 @@ $('pk-body').addEventListener('click', e => {
 // ═══════════════════════════════════════════════════════════════════
 window.addEventListener('keydown', e => {
   if (e.target.closest('input[type=text], input[type=number], textarea, select') || e.ctrlKey || e.metaKey || e.altKey) return;
+  if ($('help').classList.contains('show')) { if (e.key === 'Escape') $('help').classList.remove('show'); return; }
   if ($('picker').classList.contains('show')) { if (e.key === 'Escape') $('picker').classList.remove('show'); return; }
   const k = e.key;
   if (k === 'ArrowDown' || k === 'j') { stepTrack(1); e.preventDefault(); }

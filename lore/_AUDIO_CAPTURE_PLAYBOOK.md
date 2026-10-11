@@ -606,6 +606,39 @@ context keeps running into a fake sink, and the meters still move.
   button doubles as the render progress (`◔ 34%`) and the
   "EDIT ▶" hint, rather than adding a status span.
 
+### 2026-10-11 — Chrome runs every offline render with a worklet on ONE thread
+
+- On the Deck, ▶ in RENDER mode never started a 48-bar song. The
+  single render ran slower than real time there, so the wait to get
+  "far enough ahead" was minutes. LIVE (LIGHT) did play the credits
+  song.
+- Four parallel renders took 4× as long as one: Chrome renders every
+  OfflineAudioContext that has `audioWorklet.addModule` on one shared
+  worklet thread. Four plain contexts did run side by side. FORGE's
+  `init()` always loaded its crush worklet and `DawFX.prepare` loaded
+  the gate/duck worklets, so every DAW render was serialised.
+- Fix:
+  - `ForgeSynth({worklet:false})`: crush falls back to its waveshaper
+    curve.
+  - `renderOffline({worklets:false})` skips DawFX.
+  - `holdTail` makes the tail cover notes held past the chunk end.
+  - `clipAt` ends notes at the loop end.
+- PLAY: RENDER now renders 4-bar chunks in parallel:
+  - Chunk 1 streams through its tap worklet, so the first sound comes
+    in about 0.85 s.
+  - The rest render worklet-free beside it. They wait for chunk 1's
+    first block, because their device setup on the main thread
+    delayed it to 3.3 s.
+  - A 32-bar song renders in 22 s, down from 34 s single and 101 s
+    before windowing.
+  - The ▶ start rule uses total throughput across chunks.
+- Projects needing a worklet (gate inserts, ducking, PATCH BANK / DX7)
+  fall back to the single streamed render (`chunkable()`).
+- DIAG logs the render: first block, every quarter with its
+  × real time, every 5 s while stuck, done.
+- The AUDIO DIRECTOR got a **? HOW TO** guide after the user couldn't
+  find how to approve. The flow needs ⌂ LINK GAME FOLDER first.
+
 ## TEMPLATE
 
 ```

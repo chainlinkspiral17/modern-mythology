@@ -1120,6 +1120,9 @@ class ForgeSynth {
     // light: one oscillator per unison stack and no time-based effects — about a third of the audio-thread cost,
     // for live playback where a full patch would overload the audio thread (see the audio playbook, 2026-10-11)
     this.light = !!opts.light;
+    // worklet: false never loads the crush worklet (bitcrush / downsample fall back to their waveshaper curve). Chrome runs
+    // every OfflineAudioContext that has a worklet on ONE shared thread, so only worklet-free renders run in parallel.
+    this._noWorklet = opts.worklet === false;
     this._bpm = isNum(opts.bpm) ? clamp(opts.bpm, 20, 400) : 120;
     this.voices = [];
     this._ls = {};
@@ -1143,7 +1146,8 @@ class ForgeSynth {
   // ── lifecycle ────────────────────────────────────────────────────
   async init() {
     if (this._inited) return this;
-    try { await loadWorklet(this.ctx); this._worklet = true; } catch (e) { this._worklet = false; }
+    if (this._noWorklet) this._worklet = false;
+    else { try { await loadWorklet(this.ctx); this._worklet = true; } catch (e) { this._worklet = false; } }
     this._inited = true;
     if (this._worklet && this._usesCrush()) { this._rebuildLanes(); this._rebuildGlobalRoutes(); }
     await this.loaded();

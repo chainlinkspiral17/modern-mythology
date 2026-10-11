@@ -201,7 +201,7 @@
     // A piece's FORGE synth is built the first time it is hit (scheduling runs ~120 ms ahead, so that is in
     // time): a full kit map names ~14 presets and every FORGE synth costs audio-thread time even when silent —
     // building them all made the kit the heaviest device in a song (see the audio playbook, 2026-10-11).
-    constructor(ctx, { output, kit, map, light } = {}) { this.ctx = ctx; this.light = !!light; this.output = ctx.createGain(); this.output.connect(output); this.voices = {}; this.pending = {}; this.hold = {}; this.map = map ? Object.assign({}, map) : kitMapFor(kit); this.basic = null; }
+    constructor(ctx, { output, kit, map, light, worklet } = {}) { this.ctx = ctx; this.light = !!light; this.worklet = worklet; this.output = ctx.createGain(); this.output.connect(output); this.voices = {}; this.pending = {}; this.hold = {}; this.map = map ? Object.assign({}, map) : kitMapFor(kit); this.basic = null; }
     lightReverb() { let m = 0; for (const s of Object.values(this.voices)) if (s.lightReverb) m = Math.max(m, s.lightReverb()); return m; }
     async init() {
       if (typeof G.ForgeSynth !== 'function') { this.basic = new BasicSynth(this.ctx, { output: this.output, drums: true }); return; }
@@ -217,7 +217,7 @@
     _voice(id) {
       let s = this.voices[id];
       if (s || this.basic || typeof G.ForgeSynth !== 'function') return s;
-      s = new G.ForgeSynth(this.ctx, { output: this.output, maxVoices: 6, light: this.light });
+      s = new G.ForgeSynth(this.ctx, { output: this.output, maxVoices: 6, light: this.light, worklet: this.worklet });
       try { s.loadPreset(id); } catch (e) { /* missing preset → stays init */ }
       if (this.pending[id]) { try { s.setState(this.pending[id]); } catch (e) {} delete this.pending[id]; }
       s.init().catch(() => {});
@@ -1297,6 +1297,7 @@ registerProcessor('mm-daw-rec', MMDawRec);
       }
       // a render of the same region already running (▶ pressed again) is reused
       let job = this._rjob && this._rjob.key === key ? this._rjob : null;
+      if (!job && this.chunkable()) job = this._rjob = this._chunkJob({ key, a, b, loop, lenSec, tailSec, sr });
       if (!job) {
         job = this._rjob = { key, segs: [], frames: 0, total: Math.ceil((lenSec + tailSec) * sr), done: false, buf: null, began: performance.now(), subs: new Set(), err: null };
         const tell = () => { for (const f of [...job.subs]) f(); };
@@ -1332,10 +1333,12 @@ registerProcessor('mm-daw-rec', MMDawRec);
         if (job.err) { job.subs.delete(feed); this.emit('render-progress', { p: 1, bars: b - a, error: String(job.err.message || job.err) }); this.stop(); return; }
         if (R.t0 === null) {
           // start once the render keeps ahead: what is left to render must finish before playback needs it
-          const have = job.frames / sr, el = (performance.now() - job.began) / 1000, rate = el > 0.3 ? 0.85 * have / el : 0;
-          const left = job.total / sr - have, need = playLen / sr;
+          const have = job.frames / sr, el = (performance.now() - job.began) / 1000, rate = el > 0.3 ? 0.85 * (job.doneSec ?? have) / el : 0;
+          const left = job.total / sr - (job.doneSec ?? have), need = playLen / sr;
           if (!(job.done || (have >= Math.min(1, need) && rate > 0 && left / rate <= need - 1))) {
-            this.emit('render-progress', { p: job.frames / job.total, bars: b - a, buffering: true });
+            // seconds until it can start: the render must get far enough ahead (or finish)
+            const eta = rate > 0 ? Math.max(0, Math.min(left / rate, left / rate - (need - 1))) : null;
+            this.emit('render-progress', { p: job.frames / job.total, bars: b - a, buffering: true, eta });
             return;
           }
           begin(Math.round((c.currentTime + 0.08) * sr) / sr);
@@ -1357,6 +1360,7 @@ registerProcessor('mm-daw-rec', MMDawRec);
         if (job.done) {
           job.subs.delete(feed);
           this.emit('render-progress', { p: 1, bars: b - a });
+          if (!loop && R.t0 !== null) R.end = R.t0 + job.total / sr;    // a chunked render's true length (held notes, tails)
           if (loop && job.buf) {                         // pass 2 on: the folded loop, from the next wrap
             const len = job.buf.duration; let k = 1; while (R.t0 + k * len < c.currentTime + 0.05) k++;
             src(job.buf, R.t0 + k * len, true);
@@ -1365,6 +1369,84 @@ registerProcessor('mm-daw-rec', MMDawRec);
       };
       job.subs.add(feed); feed();
       return true;
+    }
+    // Chunked renders run in parallel only without worklets (Chrome: every offline context with one shares a thread), so
+    // projects needing one — gate inserts, ducking, PATCH BANK / DX7 / emulator devices — stream a single render instead.
+    // FORGE's bitcrush / downsample use their waveshaper fallback in chunks.
+    chunkable() {
+      const P = this.project; if (!P) return false;
+      if (P.devices.some(d => !['forge', 'kit', 'basic'].includes(d.type))) return false;
+      const mixes = [...P.devices.map(d => d.mix), ...P.tracks.filter(t => t.kind === 'audio').map(t => t.mix)].filter(Boolean);
+      return !mixes.some(m => m.duck || (m.fx || []).some(f => f.on !== false && f.type === 'gate'));
+    }
+    // PLAY: RENDER's parallel render: 4-bar chunks, each with its own tail (and any note held past its end); they overlap and
+    // sum like the full render. Chunk 1 streams its output back while it renders (its tap worklet puts it on Chrome's shared
+    // worklet thread) so the first sound comes in about a second; the rest render worklet-free beside it, 2–3 at a time.
+    _chunkJob({ key, a, b, loop, lenSec, tailSec, sr }) {
+      const spt = this.spt(), L = Math.round(lenSec * sr), frameOf = bar => Math.round((bar - a) * BAR * spt * sr);
+      const chunks = [];
+      for (let x = a; x < b;) { const n = Math.min(b - x, 4); chunks.push({ a: x, b: x + n, at: frameOf(x), out: null }); x += n; }
+      const job = { key, segs: [], frames: 0, total: Math.ceil((lenSec + tailSec) * sr), done: false, buf: null, began: performance.now(), subs: new Set(), err: null, chunks };
+      this._rjob = job;                                       // before the workers start: they stop when it changes
+      const PAR = Math.max(1, Math.min(3, ((root.navigator && root.navigator.hardwareConcurrency) || 4) - 2));   // + the streamed chunk
+      const tell = () => { for (const f of [...job.subs]) f(); };
+      const secs = () => ((performance.now() - job.began) / 1000).toFixed(1), speed = () => (job.frames / sr / Math.max(0.001, (performance.now() - job.began) / 1000)).toFixed(2) + '× real time';
+      this.note('render', 'for ▶: bars ' + (a + 1) + '–' + b + (loop ? ' (loop)' : '') + ' · ' + chunks.length + ' chunks, ' + PAR + ' at a time');
+      let next = 1, ready = 0, quarter = 0;
+      const regionSec = c => (c.b - c.a) * BAR * spt;
+      job.doneSec = 0;                                        // audio rendered so far, all chunks: the throughput for ▶'s start
+      const advance = () => {
+        while (ready < chunks.length && chunks[ready].out) {
+          const r = chunks[ready++]; if (ready > 1) job.segs.push({ at: r.at, chs: r.out });
+          job.frames = Math.max(job.frames, Math.min(job.total, frameOf(r.b)));
+        }
+      };
+      // chunk 1, streamed: its blocks are played as they arrive; the finished render only adds what the stream hadn't sent
+      const first = chunks[0], firstEnd = frameOf(first.b);
+      let streamed = 0, go;
+      // the other chunks wait for chunk 1's first block (their device setup would hold up its start), 2 s at most
+      const gate = new Promise(res => { go = res; setTimeout(res, 2000); });
+      const head = this.renderOffline({ fromBar: first.a, toBar: first.b, tailSec, sampleRate: sr, holdTail: true, clipAt: loop ? b * BAR : null,
+        onAudio: (at, chs) => {
+          if (first.out || at < streamed) return;
+          job.segs.push({ at, chs }); streamed = at + chs[0].length; job.doneSec = Math.max(job.doneSec, Math.min(streamed, firstEnd) / sr);
+          job.frames = Math.max(job.frames, Math.min(streamed, firstEnd));
+          if (at === 0) { this.note('render', 'first audio block after ' + secs() + ' s'); go(); }
+          tell();
+        } }).then(o => {
+          if (streamed < o.channels[0].length) job.segs.push({ at: streamed, chs: o.channels.map(ch => ch.slice(streamed)) });
+          first.out = o.channels; job.doneSec = Math.max(job.doneSec, regionSec(first)); advance(); tell();
+        });
+      const work = async () => {
+        await gate;
+        while (next < chunks.length && !job.err) {
+          if (this._rjob !== job) return;                     // another region / edit took over: stop rendering this one
+          const ch = chunks[next++];
+          const o = await this.renderOffline({ fromBar: ch.a, toBar: ch.b, tailSec, sampleRate: sr, worklets: false, holdTail: true, clipAt: loop ? b * BAR : null });
+          ch.out = o.channels; job.doneSec += regionSec(ch);
+          advance();
+          const q = Math.floor(4 * job.frames / job.total); if (q > quarter) { quarter = q; this.note('render', (25 * q) + '% after ' + secs() + ' s · ' + speed()); }
+          tell();
+        }
+      };
+      Promise.all([head, ...Array.from({ length: PAR }, work)]).then(() => {
+        if (job.err) return;
+        if (ready < chunks.length) { job.err = new Error('cancelled'); job.done = true; job.subs.clear(); return; }
+        const end = Math.max(...chunks.map(c => c.at + c.out[0].length)), n = loop ? L : end, out = [new Float32Array(n), new Float32Array(n)];
+        for (const c of chunks) for (let k = 0; k < 2; k++) {
+          const from = c.out[k] || c.out[0], o = out[k];
+          if (loop) for (let i = 0; i < from.length; i++) o[(c.at + i) % n] += from[i];        // folded: seamless loop
+          else for (let i = 0; i < from.length; i++) o[c.at + i] += from[i];
+        }
+        const fb = this.ctx.createBuffer(2, n, sr); fb.copyToChannel(out[0], 0); fb.copyToChannel(out[1], 1);
+        if (!loop) job.total = end;
+        job.frames = job.total; job.buf = fb; job.done = true;
+        this._rcache = { key, buf: fb };
+        if (this._rjob === job) this._rjob = null;
+        this.note('render', 'done in ' + secs() + ' s · ' + ((lenSec + tailSec) / Math.max(0.001, (performance.now() - job.began) / 1000)).toFixed(2) + '× real time');
+        tell();
+      }).catch(e => { job.err = e; job.done = true; if (this._rjob === job) this._rjob = null; this.fault('render for play', e); tell(); });
+      return job;
     }
     // LIGHT / FULL live sound: rebuild the devices (the project is untouched)
     async setLiveQuality(m) {
@@ -1795,12 +1877,12 @@ registerProcessor('mm-daw-rec', MMDawRec);
         const d = this.dev(t.deviceId); return !d || ['forge', 'kit', 'basic', 'patch'].includes(d.type) || !t.clips.length;
       });
     }
-    async _offlineDevice(off, d, output) {
+    async _offlineDevice(off, d, output, o = {}) {
       const live = this.devices.get(d.id);
       let inst = null;
-      const light = !!this._offLight;          // renders are full quality; light only to measure the live cost
-      if (d.type === 'forge' && typeof G.ForgeSynth === 'function') { inst = new G.ForgeSynth(off, { output, maxVoices: 16, light }); await inst.init(); if (live && live.getState) inst.setState(live.getState()); }
-      else if (d.type === 'kit') { const ls = live && live.getState ? live.getState() : null; inst = new KitDevice(off, { output, kit: d.kit, map: ls && ls.map, light }); await inst.init(); if (live && live.getState) inst.setState(live.getState()); await inst.ready(this.kitNotes(d.id)); }
+      const light = !!o.light, worklet = o.worklet === false ? false : undefined;   // renders are full quality; light only to measure the live cost
+      if (d.type === 'forge' && typeof G.ForgeSynth === 'function') { inst = new G.ForgeSynth(off, { output, maxVoices: 16, light, worklet }); await inst.init(); if (live && live.getState) inst.setState(live.getState()); }
+      else if (d.type === 'kit') { const ls = live && live.getState ? live.getState() : null; inst = new KitDevice(off, { output, kit: d.kit, map: ls && ls.map, light, worklet }); await inst.init(); if (live && live.getState) inst.setState(live.getState()); await inst.ready(this.kitNotes(d.id)); }
       else if (d.type === 'patch') {
         const inner = live && live.inner; if (!inner) return null;
         if (inner.loadVoice) { inst = new inner.constructor(off, { output, maxVoices: 16 }); await inst.init(); inst.setState(inner.getState()); }
@@ -1812,12 +1894,32 @@ registerProcessor('mm-daw-rec', MMDawRec);
     }
     // opts: fromBar, toBar, loop (fold the tail onto the head → seamless, exact length), tailSec,
     //       trackIds (only these — a stem), limiter (default true; stems render without it so they sum)
-    async renderOffline({ fromBar = 0, toBar, loop = false, tailSec = 3, trackIds = null, limiter = true, sampleRate = RATE, onProgress, onAudio, light = false } = {}) {
-      this._offLight = light;
+    // worklets: false — no AudioWorklet in the render (no gate inserts, ducking or crush worklet), so several renders run
+    //   in parallel (Chrome puts every offline context with a worklet on one shared thread). holdTail: the tail also
+    //   covers notes held past toBar (a chunk of a longer render). clipAt: notes end by this tick (a loop's end).
+    async renderOffline({ fromBar = 0, toBar, loop = false, tailSec = 3, trackIds = null, limiter = true, sampleRate = RATE, onProgress, onAudio, light = false, worklets = true, holdTail = false, clipAt = null } = {}) {
       await this.start(); await this.whenReady();
       const P = this.project, M = P.master, spt = this.spt();
       const t0 = fromBar * BAR, t1 = (toBar ?? this.songBars()) * BAR;
-      const lenSec = (t1 - t0) * spt, total = Math.ceil((lenSec + tailSec) * sampleRate);
+      const lenSec = (t1 - t0) * spt;
+      if (holdTail) {                        // the longest note started here that is still held at t1
+        let hold = 0;
+        for (const tr of this.activeTracks()) {
+          if (tr.kind !== 'midi' || (trackIds && !trackIds.includes(tr.id))) continue;
+          const pc = this._playCtx(tr);
+          for (const c of tr.clips) {
+            const p = tr.patterns[c.pid]; if (!p || !p.notes.length) continue;
+            const plen = p.lenBars * BAR, cs = c.bar * BAR, ce = cs + (c.bars || p.lenBars) * BAR;
+            if (ce <= t0 || cs >= t1) continue;
+            for (let base = cs; base < ce; base += plen) for (const n of pc.notes(p)) {
+              const on = base + n.t; if (on < t0 || on >= t1 || on >= ce) continue;
+              hold = Math.max(hold, (Math.min(on + n.d, ce, clipAt ?? Infinity) - t1) * spt);
+            }
+          }
+        }
+        tailSec += hold + (hold > 0 ? 0.1 : 0);
+      }
+      const total = Math.ceil((lenSec + tailSec) * sampleRate);
       const off = new OfflineAudioContext(2, total, sampleRate);
       // master chain, same as live
       const master = off.createGain(), out = off.createGain(); out.gain.value = M.vol;
@@ -1835,7 +1937,7 @@ registerProcessor('mm-daw-rec', MMDawRec);
       const dIn = off.createGain(), dl = off.createDelay(4), dFb = off.createGain(), dTone = off.createBiquadFilter(), dOut = off.createGain();
       dl.delayTime.value = Math.min(3.9, M.delayBeats * 60 / P.bpm); dFb.gain.value = M.delayFb; dTone.type = 'lowpass'; dTone.frequency.value = 4200; dOut.gain.value = M.delayMix;
       dIn.connect(dl); dl.connect(dTone); dTone.connect(dFb); dFb.connect(dl); dTone.connect(dOut); dOut.connect(master);
-      if (G.DawFX) await G.DawFX.prepare(off);
+      if (G.DawFX && worklets) await G.DawFX.prepare(off);
       const bus = { master, verbIn, delayIn: dIn };
       // which strips sound: the project's mute/solo, narrowed to trackIds for a stem
       const devMixes = [...P.devices.map(d => d.mix), ...P.tracks.filter(t => t.kind === 'audio').map(t => t.mix)].filter(Boolean);
@@ -1858,7 +1960,7 @@ registerProcessor('mm-daw-rec', MMDawRec);
         strips.set(sid, st);
         const d = this.dev(sid);
         if (d) {
-          const inst = await this._offlineDevice(off, d, st.in);
+          const inst = await this._offlineDevice(off, d, st.in, { light, worklet: worklets ? undefined : false });
           if (!inst) throw new Error(d.name + ' cannot render offline');
           insts.set(sid, inst);
           if (inst.syncAt) inst.syncAt(0);
@@ -1885,7 +1987,7 @@ registerProcessor('mm-daw-rec', MMDawRec);
             for (let base = cs; base < ce; base += plen) for (const n of pnotes) {
               const on = base + n.t; if (on < t0 || on >= t1 || on >= ce) continue;
               if (n.p !== undefined && !pc.plays(base, n)) continue;
-              const offT = Math.min(on + n.d, ce, loop ? t1 : Infinity);
+              const offT = Math.min(on + n.d, ce, loop ? t1 : Infinity, clipAt ?? Infinity);
               if (gr) {
                 const q = gr.note(on, Math.min(on + n.d, ce), n.n, n.v * (tr.vel ?? 1)), w = Math.max(0, (on - t0) * spt + q.on), wo = Math.max(w + 0.005, (offT - t0) * spt + q.off - 0.002);
                 ev.push({ w, f: () => { inst.noteOn(n.n, q.v, w, tr.channel); inst.noteOff(n.n, wo, tr.channel); } });
