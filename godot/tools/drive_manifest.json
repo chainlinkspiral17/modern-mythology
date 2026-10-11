@@ -155,6 +155,11 @@
    "md5": "a881b36e1d9fb311295a572a5addd2f2",
    "size": 66180
   },
+  "godot/assets/3d/characters/heroes/aud.glb": {
+   "at": "2026-10-11T19:24:12+00:00",
+   "md5": "e7fd3754ff6be3d99708767c07e00297",
+   "size": 43045840
+  },
   "godot/assets/3d/characters/heroes/ben_kowalski.glb": {
    "at": "2026-10-01T01:48:41+00:00",
    "md5": "fbae045c6b6ca658d8e568e0c2170c9b",
@@ -52344,6 +52349,41 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "3a4996aa6ac134f14b71771c01205170",
    "size": 87717
+  },
+  "godot/assets/concept/meshy/aud/aud_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T19:24:22+00:00",
+   "md5": "9e68334625b4349f4dd40512f2431be5",
+   "size": 2103782
+  },
+  "godot/assets/concept/meshy/aud/aud_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T19:24:22+00:00",
+   "md5": "108bfb219b18765fda23ad742b8ae64a",
+   "size": 2075355
+  },
+  "godot/assets/concept/meshy/aud/aud_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T19:24:22+00:00",
+   "md5": "88f7aaf6b36f45976c9677db91042402",
+   "size": 2000665
+  },
+  "godot/assets/concept/meshy/aud/back.png": {
+   "at": "2026-10-11T19:24:22+00:00",
+   "md5": "9e68334625b4349f4dd40512f2431be5",
+   "size": 2103782
+  },
+  "godot/assets/concept/meshy/aud/front.png": {
+   "at": "2026-10-11T19:24:22+00:00",
+   "md5": "108bfb219b18765fda23ad742b8ae64a",
+   "size": 2075355
+  },
+  "godot/assets/concept/meshy/aud/meshy_thumb.png": {
+   "at": "2026-10-11T19:24:22+00:00",
+   "md5": "51ae313419ec4d2cd9b63fb7ecd6a6e6",
+   "size": 70222
+  },
+  "godot/assets/concept/meshy/aud/side.png": {
+   "at": "2026-10-11T19:24:22+00:00",
+   "md5": "88f7aaf6b36f45976c9677db91042402",
+   "size": 2000665
   },
   "godot/assets/concept/meshy/ben_kowalski/ben_kowalski_front_meshy_recovered.png": {
    "at": "2026-10-01T01:23:48+00:00",
