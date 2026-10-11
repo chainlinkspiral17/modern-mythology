@@ -4113,5 +4113,53 @@
     },
     "output": "godot/assets/3d/characters/heroes/maya_daigle_age7.glb",
     "file_size_kb": 84212.9
+  },
+  {
+    "at": "2026-10-11T21:11:42+00:00",
+    "stage": "image",
+    "slug": "steamboat_model",
+    "kind": "prop",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "1:1",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes The steamboat model like this: a tiny, perfectly rendered model of D'Ambrosio's riverboat, crafted from tarnished silver spoons and motherboard fragments. The steamboat model on Frasier's workbench. Red hull, brass paddle-wheel, smokestack-in-progress. Half-built throughout most paintings. It sits now, quiet, a small tarnished monument to the thing it had represented. Frasier has not moved it. Frasier has, in fact, built a small glass case around it, and has sealed the case, and has written a small label beside the case, and the label reads: D'AMBROSIO'S. 1983\u20132026. REST. the hull is sanded. brass armature ready. the smokestack catches the workbench lamp. the pilot house has glass in it now. the steamboat's red is darker tonight than the lamp light should make it. somewhere on the workbench the silver-spoon riverboat sat patient, weighing what it weighed, waiting for him to decide.\nSingle-object concept render of The steamboat model, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/steamboat_model/steamboat_model_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/steamboat_model/steamboat_model_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/steamboat_model/steamboat_model_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-11T21:19:18+00:00",
+    "stage": "mesh",
+    "slug": "steamboat_model",
+    "kind": "prop",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a12cce-c036-75ac-97bf-90e6a114ac10",
+    "inputs": [
+      "godot/assets/concept/meshy/steamboat_model/front.png",
+      "godot/assets/concept/meshy/steamboat_model/side.png",
+      "godot/assets/concept/meshy/steamboat_model/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "smart-topology",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": null,
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/props/steamboat_model.glb",
+    "file_size_kb": 104208.0
   }
 ]
