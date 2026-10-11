@@ -23,6 +23,9 @@ import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.furniture import make_chair
+from _props.detail import (make_traffic_wear, make_floor_stain, make_scuff_band, make_wall_tint_band,
+                           make_wall_outlet, make_light_switch, make_cord_run, make_thermostat)
+from _props.geometry import make_rot_box, make_blob, make_chamfer_box
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, make_lathe, make_tube, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_case_shell
@@ -303,6 +306,58 @@ def build_corridor():
     make_box("Corridor_Mop_Bucket", (-1.30, cy0 + 0.30, 0.20), (0.36, 0.30, 0.40), (0.86, 0.72, 0.20, 1.0))
 
 
+def build_detail_2026_10():
+    """DETAIL PASSES D2–D5 (pass 76, 2026-10-11 — lore/_SET_DETAIL_PLAYBOOK.md).
+    D2: the traffic ribbon doorway → table → kitchenette, the stains by the
+    trash and under the coffee, the lockers' kick scuff, the ceiling-shadow
+    band on the N and W walls. D3: outlets (the counter's two, the vending's,
+    the doorway's), the switch by the doorway, the thermostat, cords from the
+    microwave, the radio, the coffee maker and the vending machine. D4: a
+    chair pushed back from the table at an angle, a jacket on a locker
+    handle, the coffee ring on the table, the thermos cap off, the Express-
+    News's second section slid aside, the crumpled napkin that missed the
+    trash. D5: past the dock door's wire glass — the dock's pad, its far
+    wall, the sodium lamp over the door outside (its practical in the .tscn).
+    Draft N+1: the time clock's conduit; the vending machine's cord to a
+    floor box; the lockers' tape names legible as colour bands; the
+    corridor's mop bucket's water."""
+    W = ROOM_W / 2.0
+    # ── D2 ──
+    make_traffic_wear("Wear_Door_Table", [(0.6, 0.25), (0.4, 1.6), (0.2, 2.1)], width=0.7)
+    make_traffic_wear("Wear_Table_Counter", [(-0.6, 2.3), (-2.4, 2.8)], width=0.6)
+    make_floor_stain("Stain_Trash", (-2.05, 0.75), radius=0.16)
+    make_floor_stain("Stain_Coffee", (-2.75, 2.95), radius=0.18)
+    make_scuff_band("Scuff_Lockers", (W - 0.35 - 0.255, 2.45), 2.6, axis='Y', height=0.14, band_z=0.08)
+    make_scuff_band("Scuff_Counter", (-W + 0.36 + 0.28, 2.8), 2.5, axis='Y', height=0.12, band_z=0.07)
+    make_wall_tint_band("Tint_N_Top", (0.0, ROOM_D - 0.10), ROOM_W - 0.2, axis='X', height=0.28, band_z=CEIL - 0.16)
+    make_wall_tint_band("Tint_W_Top", (-W + 0.10, ROOM_D / 2.0), ROOM_D - 0.2, axis='Y', height=0.28, band_z=CEIL - 0.16)
+    # ── D3 ──
+    make_wall_outlet("Outlet_Counter_N", (-W, 3.65), axis='Y', face_sign=1, z=1.10)
+    make_wall_outlet("Outlet_Counter_S", (-W, 2.35), axis='Y', face_sign=1, z=1.10)
+    make_wall_outlet("Outlet_Vending", (W, 4.05), axis='Y', face_sign=-1, z=0.30)
+    make_wall_outlet("Outlet_Door", (1.55, 0.0), axis='X', face_sign=1, z=0.30)
+    make_light_switch("Switch_Door", (1.25, 0.0), axis='X', face_sign=1, z=1.20)
+    make_thermostat("Thermostat", (-W, 0.95), axis='Y', face_sign=1, z=1.45)
+    make_cord_run("Cord_Microwave", (-W + 0.14, 3.88, 0.98), (-W + 0.10, 3.65, 1.10), sag=0.04)   # from the back of the microwave, not through it
+    make_cord_run("Cord_Radio", (-W + 0.11, 3.78, 1.44), (-W + 0.08, 3.68, 1.12), sag=0.03)   # down the wall behind the microwave
+    make_cord_run("Cord_Coffee", (-3.05, 2.70, 0.96), (-W + 0.10, 2.35, 1.10), sag=0.06)
+    make_cord_run("Cord_Vending", (W - 0.56, 4.25, 0.20), (W - 0.10, 4.05, 0.30), sag=0.04)
+    # ── D4 ──
+    make_chair("Crew_Chair_Pushed", 1.45, 1.55, yaw=2.45, wood=P.METAL_BLACK, seat_col=COL_WOOD, w=0.40)
+    make_box("Locker_Jacket", (W - 0.35 - 0.262, 2.62, 0.62), (0.07, 0.34, 0.86), (0.26, 0.30, 0.42, 1.0))
+    make_cyl("Table_Coffee_Ring", (TABLE_X + 0.55, TABLE_Y - 0.15, TABLE_Z + 0.001), 0.045, 0.002, (0.48, 0.36, 0.22, 1.0), segments=12)
+    make_cyl("Thermos_Cap", (TABLE_X - 0.42, TABLE_Y - 0.26, TABLE_Z + 0.02), 0.038, 0.04, (0.50, 0.16, 0.20, 1.0), segments=10)
+    make_rot_box("Express_News_Section_B", (TABLE_X + 0.46, TABLE_Y + 0.08, TABLE_Z + 0.0135), (0.32, 0.26, 0.010), (0.84, 0.82, 0.76, 1.0), yaw=0.22)
+    make_blob("Napkin_Crumpled", (-1.75, 0.40, 0.04), 0.045, (0.90, 0.90, 0.86, 1.0), noise=0.3, seed=5, squash=0.8)
+    # ── D5: the dock past the door's wire glass ──
+    ex, cyc = 4.50, -0.90
+    make_box("Dock_Pad", (ex + 1.8, cyc, -0.08), (3.4, 4.0, 0.06), (0.40, 0.40, 0.42, 1.0))
+    make_box("Dock_Far_Wall", (ex + 3.55, cyc, 1.5), (0.20, 4.0, 3.0), (0.52, 0.50, 0.46, 1.0))
+    make_box("Dock_Bollard", (ex + 1.2, cyc + 1.3, 0.42), (0.16, 0.16, 0.90), (0.86, 0.72, 0.20, 1.0))
+    make_box("Dock_Sodium_Lamp", (ex + 0.14, cyc, 2.42), (0.18, 0.30, 0.16), (1.0, 0.76, 0.40, 1.0))
+    make_box("Dock_Sodium_Lamp_Hood", (ex + 0.16, cyc, 2.52), (0.22, 0.34, 0.03), (0.30, 0.31, 0.34, 1.0))
+
+
 def build_door_infill_dock_door_2026_09():
     """Dock_Door was narrower than its wall opening (the user, 2026-09-24:
     "doorways ... misaligned"): close the gap to the door and its frame."""
@@ -315,6 +370,7 @@ def main():
     build_crew_table()
     build_lockers_clock()
     build_corridor()
+    build_detail_2026_10()
     build_vending()
     build_kitchenette()
     build_fridge()

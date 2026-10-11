@@ -172,6 +172,14 @@ light_color = Color(0.42, 0.42, 0.40, 1)
 light_energy = 0.18
 shadow_enabled = false
 
+; (pass 76) the dock's sodium lamp over the dock door, outside — through the wire glass
+[node name="Dock_Sodium_Lamp_Practical" type="OmniLight3D" parent="."]
+position = Vector3(4.640, 2.38, 0.900)
+light_color = Color(1.0, 0.72, 0.36, 1)
+light_energy = 1.4
+shadow_enabled = false
+omni_range = 5.0
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]
@@ -361,3 +369,8 @@ position = Vector3(3.000, 1.700, -5.100)
 rotation = Vector3(-0.1161, 2.2114, 0.0)
 metadata/fov = 60.0
 
+; establish (pass 76): from Doug's corner, over the table to the doorway and the corridor
+[node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.000, 1.600, -5.000)
+rotation = Vector3(-0.0814, 2.8521, 0.0)
+metadata/fov = 60.0

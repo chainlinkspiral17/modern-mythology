@@ -2199,6 +2199,10 @@
      "type": "establish"
     },
     {
+     "name": "shot_establish_c",
+     "type": "establish"
+    },
+    {
      "name": "shot_closeup_bt",
      "type": "closeup"
     },
@@ -10038,5 +10042,5 @@
   "tired",
   "nervous"
  ],
- "frames": 2252
+ "frames": 2253
 }

@@ -3834,6 +3834,24 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-11 · pass 76: THE CENTRO BREAK ROOM, detail passes D2–D5.** A
+scan of the busiest rooms against the detail passes they carry (wear /
+infrastructure / through-the-glass / use states) found the break room —
+54 cues on five chapters — with none. Now: the traffic ribbon doorway →
+table → kitchenette, the stains by the trash and under the coffee, the
+lockers' and counter's kick scuffs, the ceiling-shadow bands; outlets at
+the counter (two), the vending machine and the doorway, the switch, the
+thermostat, cords from the microwave, the radio, the coffee maker and the
+vending machine; a chair pushed back at an angle, a jacket on a locker
+handle, the coffee ring, the thermos cap off, the Express-News's second
+section slid aside, the napkin that missed the trash; past the dock
+door's wire glass the dock's pad, its far wall, a bollard and the sodium
+lamp over the door (a practical); a third establish from Doug's corner.
+Deck must REBUILD centro_break_room. **Draft N+1:** the same scan's next
+rooms — henderson_kitchen (no infrastructure), the Kwik Stop's wear
+(the model chapter has none in its builder), houston_office,
+caldwell_porch_night.
+
 **2026-10-11 · pass 75: THE CABIN, interior draft 15.** The skylight's
 shaft as a day-preset spot through the opening over the table (daylight-
 tagged, so it follows the hour); the kitchen pair's outside casing; the
