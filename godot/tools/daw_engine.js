@@ -1300,9 +1300,21 @@ registerProcessor('mm-daw-rec', MMDawRec);
       if (!job) {
         job = this._rjob = { key, segs: [], frames: 0, total: Math.ceil((lenSec + tailSec) * sr), done: false, buf: null, began: performance.now(), subs: new Set(), err: null };
         const tell = () => { for (const f of [...job.subs]) f(); };
+        // DIAG: how the render for ▶ is going (first block, every quarter with its speed, done / failed, or stuck)
+        const secs = () => ((performance.now() - job.began) / 1000).toFixed(1), speed = () => (job.frames / sr / Math.max(0.001, (performance.now() - job.began) / 1000)).toFixed(2) + '× real time';
+        let quarter = 0;
+        this.note('render', 'for ▶: bars ' + (a + 1) + '–' + b + (loop ? ' (loop)' : '') + ' · ' + (lenSec + tailSec).toFixed(1) + ' s of audio');
+        const watch = setInterval(() => { if (job.done) { clearInterval(watch); return; } this.note('render', 'still rendering · ' + secs() + ' s in · ' + (100 * job.frames / job.total).toFixed(0) + '% · ' + (job.frames ? speed() : 'NO AUDIO BLOCKS YET')); }, 5000);
         this.renderOffline({ fromBar: a, toBar: b, loop, tailSec, sampleRate: sr,
-          onAudio: (at, chs) => { if (job.done || at < job.frames) return; job.segs.push({ at, chs }); job.frames = at + chs[0].length; tell(); } })
+          onAudio: (at, chs) => {
+            if (job.done || at < job.frames) return;
+            job.segs.push({ at, chs }); job.frames = at + chs[0].length;
+            if (at === 0) this.note('render', 'first audio block after ' + secs() + ' s');
+            const q = Math.floor(4 * job.frames / job.total); if (q > quarter) { quarter = q; this.note('render', (25 * q) + '% after ' + secs() + ' s · ' + speed()); }
+            tell();
+          } })
           .then(o => {
+            clearInterval(watch); this.note('render', 'done in ' + secs() + ' s · ' + ((lenSec + tailSec) / Math.max(0.001, (performance.now() - job.began) / 1000)).toFixed(2) + '× real time' + (job.frames ? '' : ' · the stream sent nothing (played after the whole render)'));
             const n = o.channels[0].length, fb = c.createBuffer(2, n, sr);
             o.channels.forEach((ch, i) => { if (i < 2) fb.copyToChannel(ch, i); });
             if (!loop && job.frames < n) job.segs.push({ at: job.frames, chs: o.channels.map(ch => ch.slice(job.frames)) });
@@ -1311,7 +1323,7 @@ registerProcessor('mm-daw-rec', MMDawRec);
             if (this._rjob === job) this._rjob = null;
             tell();
           })
-          .catch(e => { job.err = e; job.done = true; if (this._rjob === job) this._rjob = null; this.fault('render for play', e); tell(); });
+          .catch(e => { clearInterval(watch); job.err = e; job.done = true; if (this._rjob === job) this._rjob = null; this.fault('render for play', e); tell(); });
       }
       const L = Math.round(lenSec * sr), playLen = loop ? L : job.total;
       let seg = 0;
