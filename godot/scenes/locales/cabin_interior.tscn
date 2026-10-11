@@ -310,6 +310,17 @@ light_energy = 1.10
 shadow_enabled = false
 omni_range = 4.2
 
+; (draft 15) the skylight's shaft — a day-preset spot through the opening over the table, so it reads under any sun
+[node name="Skylight_Shaft__cabin_interior_day" type="SpotLight3D" parent="."]
+position = Vector3(0.000, 5.300, -2.200)
+rotation = Vector3(-1.3763, 0.2915, 0)
+light_color = Color(1.0, 0.96, 0.88, 1)
+light_energy = 2.6
+shadow_enabled = false
+spot_range = 8.0
+spot_angle = 18.0
+metadata/daylight = true
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]

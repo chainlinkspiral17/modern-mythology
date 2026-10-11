@@ -980,6 +980,21 @@ def build_draft13_2026_10():
     make_chamfer_box("Coat_Peg_Coat", (-0.90, 0.10 + 0.08, 1.30), (0.26, 0.10, 0.86), (0.28, 0.30, 0.34, 1.0), chamfer=0.02)
 
 
+def build_draft15_2026_10():
+    """INTERIOR DRAFT 15 (2026-10-11): the kitchen pair's outside casing; the
+    loft's footboard; a carved lintel over the east room's door (a chip-carved
+    band). The skylight's shaft is a day-preset spot in the .tscn. Draft 16
+    targets: a window seat where the south chair stands (the chair is canon —
+    the seat would take its place); the tie beams' ends shaped; the gable
+    windows' muntins as a sash; the stove's thimble plate carved."""
+    kw_x0, kw_x1, kw_z0, kw_z1 = -3.40, -1.80, 1.005, 1.955
+    make_frame_ring("Kitchen_Window_Casing", ((kw_x0 + kw_x1) / 2.0, ROOM_D + 0.13, (kw_z0 + kw_z1) / 2.0 + 0.02), (1.80, 0.04, 1.10), (0.46, 0.34, 0.22, 1.0))
+    make_box("Loft_Footboard", (-3.25, 7.00 - 0.95 - 0.03, LOFT_Z + 0.10 + 0.20), (1.34, 0.04, 0.40), COL_WOOD_DK)
+    make_box("East_Room_Door_Lintel", (1.975, 2.90 - 0.10 - 0.025, 2.13), (1.02, 0.05, 0.14), (0.38, 0.27, 0.17, 1.0))
+    for ci, cx_ in enumerate([1.975 - 0.40 + 0.16 * i for i in range(6)]):
+        make_rot_box(f"East_Room_Door_Lintel_Chip_{ci}", (cx_, 2.90 - 0.10 - 0.052, 2.13), (0.07, 0.006, 0.07), (0.70, 0.52, 0.34, 1.0), roll=0.0, yaw=0.0, pitch=0.785)
+
+
 def build_crow_2026_08():
     """THE CROW at the cabin's kitchen window (north wall), seen
     through the glass from inside — the vol 7 motif made physical.
@@ -1721,6 +1736,7 @@ def main():
     build_nature_let_in_2026_10()
     build_draft12_2026_10()
     build_draft13_2026_10()
+    build_draft15_2026_10()
     with _shift(1.0, 2.0):
         build_stove_corner()
     with _shift(0.0, 1.0):

@@ -3834,6 +3834,17 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-11 · pass 75: THE CABIN, interior draft 15.** The skylight's
+shaft as a day-preset spot through the opening over the table (daylight-
+tagged, so it follows the hour); the kitchen pair's outside casing; the
+loft's footboard; a chip-carved lintel over the east room's door. Deck
+must REBUILD cabin_interior. **Draft 16 targets:** a window seat where
+the south chair stands (the chair is canon — the seat would take its
+place; ask); the tie beams' ends shaped; the gable windows' muntins as a
+sash; the stove's thimble plate carved; the night rig's practicals vs
+the day room's brightness — the paint pass darkens every interior and
+the day reads dim; a `lunch`-style mood for the daylight chapters.
+
 **2026-10-11 · pass 74: THE CABIN, interior drafts 13 + 14 (the user's two
 notes, again).** *"More windows ... lets nature in through windows,
 lighting, art and wood sculpture in the build itself."* A SKYLIGHT in the
