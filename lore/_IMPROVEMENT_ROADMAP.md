@@ -3834,6 +3834,17 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-11 · pass 81: NAMED CLOSEUPS AT THE CABIN'S TABLE (D6).** The
+most-seen room's sixty named cues (tem 22, per 11, lena 7, kai 7, finn 6,
+cale 4, marina 2, roy 2) all fell to the plain pair. A seat per name on
+the seven-chair ring (Per at the head facing the open side, Tem by the
+stove's side, Lena, Kai, Finn, Cale, Roy), each framed from across the
+table; Marina's in the loft on Eddvard's mattress. The bed scene keeps its
+own pair (its named cues are at the bed, not the table). No rebuild.
+**Draft N+1:** the seats are a guess where the prose does not seat them —
+read the table scenes (ch13 Cale/Marina, ch19 Roy) and move the names;
+Marit's one cue; the oil lamp hangs in the across-the-table frames.
+
 **2026-10-11 · pass 80: NAMED CLOSEUPS AT THE HENDERSONS' TABLE (D6).**
 `closeup jesse` (4), `jim` (2) and `mr_henderson` (2) resolved to the plain
 frame; three markers now frame the south chair (Jesse, from the sink

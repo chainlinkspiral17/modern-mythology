@@ -753,3 +753,94 @@ shadow_enabled = false
 spot_range = 4.0
 spot_angle = 30.0
 
+; ── named closeups at the table (pass 81): the seven chairs at r 1.22 round (0, 3.9), the ring open
+; toward the east partition; "Per at the head" faces the open side. Each seat from across the table.
+; closeup: tem at the chair at 0.30 rad, from across the table
+[node name="shot_closeup_tem" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.003, 1.450, -3.590)
+rotation = Vector3(-0.1314, -1.2708, 0.0)
+metadata/fov = 42.0
+
+; closeup: lena at the chair at 1.05 rad, from across the table
+[node name="shot_closeup_lena" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.522, 1.450, -2.989)
+rotation = Vector3(-0.1314, -0.5208, 0.0)
+metadata/fov = 42.0
+
+; closeup: kai at the chair at 1.80 rad, from across the table
+[node name="shot_closeup_kai" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.239, 1.450, -2.877)
+rotation = Vector3(-0.1314, 0.2292, 0.0)
+metadata/fov = 42.0
+
+; closeup: finn at the chair at 2.55 rad, from across the table
+[node name="shot_closeup_finn" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.872, 1.450, -3.314)
+rotation = Vector3(-0.1314, 0.9792, 0.0)
+metadata/fov = 42.0
+
+; closeup: per at the chair at 3.30 rad, from across the table
+[node name="shot_closeup_per" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.037, 1.450, -4.066)
+rotation = Vector3(-0.1314, 1.7292, 0.0)
+metadata/fov = 42.0
+
+; closeup: cale at the chair at 4.05 rad, from across the table
+[node name="shot_closeup_cale" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.646, 1.450, -4.728)
+rotation = Vector3(-0.1314, 2.4792, 0.0)
+metadata/fov = 42.0
+
+; closeup: roy at the chair at 4.80 rad, from across the table
+[node name="shot_closeup_roy" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.092, 1.450, -4.946)
+rotation = Vector3(-0.1314, -3.0540, 0.0)
+metadata/fov = 42.0
+
+; closeup: Marina in the loft, waking at four-twenty on Eddvard's mattress
+[node name="shot_closeup_marina" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.100, 2.950, -6.100)
+rotation = Vector3(-0.2045, 0.8076, 0.0)
+metadata/fov = 42.0
+
+; the porch's named closeups (pass 81): the table's named seats must not pull a porch cue inside
+[node name="shot_closeup_cale__cabin_porch" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.900, 1.600, 0.500)
+rotation = Vector3(-0.0644, 1.9333, 0)
+metadata/fov = 45.0
+
+[node name="shot_closeup_marina__cabin_porch" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.900, 1.600, 0.500)
+rotation = Vector3(-0.0644, 1.9333, 0)
+metadata/fov = 45.0
+
+[node name="shot_closeup_per__cabin_porch" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.900, 1.600, 0.500)
+rotation = Vector3(-0.0644, 1.9333, 0)
+metadata/fov = 45.0
+
+[node name="shot_closeup_tem__cabin_porch" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.900, 1.600, 0.500)
+rotation = Vector3(-0.0644, 1.9333, 0)
+metadata/fov = 45.0
+
+[node name="shot_closeup_finn__cabin_porch" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.900, 1.600, 0.500)
+rotation = Vector3(-0.0644, 1.9333, 0)
+metadata/fov = 45.0
+
+[node name="shot_closeup_lena__cabin_porch" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.900, 1.600, 0.500)
+rotation = Vector3(-0.0644, 1.9333, 0)
+metadata/fov = 45.0
+
+[node name="shot_closeup_kai__cabin_porch" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.900, 1.600, 0.500)
+rotation = Vector3(-0.0644, 1.9333, 0)
+metadata/fov = 45.0
+
+[node name="shot_closeup_roy__cabin_porch" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.900, 1.600, 0.500)
+rotation = Vector3(-0.0644, 1.9333, 0)
+metadata/fov = 45.0
+

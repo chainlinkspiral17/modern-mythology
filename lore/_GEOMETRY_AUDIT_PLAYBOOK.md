@@ -158,6 +158,25 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-10-11 · a character's name in ANY prop name answers that character's closeup
+
+- Adding `shot_closeup_tem` to the cabin resolved "tem" to
+  `Wear_Tem_Path_Seg0`, then `Wear_Tem_ChairSpot`, then `Wear_Tem_MugRing`
+  — three wear props named for whose chair they were under. `Finn_Truck_*`
+  answered `closeup_finn` from the yard; `Bens_Phone` answered `closeup_ben`;
+  `Finns_Toyota` and `Tems_Wagon` (pass 69), `Walt_Poster` (pass 64) the
+  same. `marker_aim_audit` picks the nearest geometry whose name contains
+  the cue's word, so a possessive in a prop name is a closeup target.
+- Rule: name props by WHAT and WHERE, never by whose (`Wear_Stove_Path`,
+  `Toyota_Truck`, `Island_Phone`, `Station_Wagon`). The owner belongs in
+  the comment. Before adding a named closeup, grep the builder for the
+  name and rename what it finds.
+- A named closeup that is plain (`shot_closeup_tem`) wins over another
+  area's suffixed `shot_closeup_person__<preset>`: the porch's "closeup
+  tem" pulled inside to the table. Every area with its own person pair
+  needs the names copied with its suffix (`shot_closeup_tem__cabin_porch`).
+
+
 ### 2026-10-10 · a prop named for a character answers that character's closeup cue
 
 `marker_aim_audit` and `vantage_obstruction_audit --markers` resolve a

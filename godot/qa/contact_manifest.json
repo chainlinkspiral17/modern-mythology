@@ -20,11 +20,43 @@
      "type": "establish"
     },
     {
+     "name": "shot_closeup_cale",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_finn",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_kai",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_lena",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_marina",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_per",
+     "type": "closeup"
+    },
+    {
      "name": "shot_closeup_person",
      "type": "closeup"
     },
     {
      "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_roy",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_tem",
      "type": "closeup"
     },
     {
@@ -262,11 +294,43 @@
      "type": "establish"
     },
     {
+     "name": "shot_closeup_cale",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_finn",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_kai",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_lena",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_marina",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_per",
+     "type": "closeup"
+    },
+    {
      "name": "shot_closeup_person",
      "type": "closeup"
     },
     {
      "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_roy",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_tem",
      "type": "closeup"
     },
     {
@@ -504,11 +568,43 @@
      "type": "establish"
     },
     {
+     "name": "shot_closeup_cale__cabin_porch",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_finn__cabin_porch",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_kai__cabin_porch",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_lena__cabin_porch",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_marina__cabin_porch",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_per__cabin_porch",
+     "type": "closeup"
+    },
+    {
      "name": "shot_closeup_person__cabin_porch",
      "type": "closeup"
     },
     {
      "name": "shot_closeup_person_b__cabin_porch",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_roy__cabin_porch",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_tem__cabin_porch",
      "type": "closeup"
     },
     {
@@ -10181,5 +10277,5 @@
   "tired",
   "nervous"
  ],
- "frames": 2283
+ "frames": 2307
 }

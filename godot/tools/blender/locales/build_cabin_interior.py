@@ -1092,15 +1092,15 @@ def build_wear_personality_2026_08():
     # the kit chair (draft 5): back west, he faces the room (2026-09-07)
     with _shift(-1.0, 0.6):   # by the daybed
         make_chair("Vigil_Chair", -1.70, 1.9, yaw=-1.5708, wood=COL_WOOD, w=0.42)
-    _det.make_traffic_wear("Wear_Tem_Path",
+    _det.make_traffic_wear("Wear_Stove_Path",
                       [(0.0, 1.0), (-1.6, 1.9), (-2.55, 2.5)],
                       width=0.30, tint=floor_new)
     with _shift(-1.0, 0.6):   # by the daybed
-        _det.make_floor_stain("Wear_Tem_ChairSpot", (-1.70, 1.95), radius=0.20,
+        _det.make_floor_stain("Wear_Stove_ChairSpot", (-1.70, 1.95), radius=0.20,
                          tint=floor_new, segments=8)
         # Her mug's ring on the daybed-side floor, one ring only —
         # weeks make one ring; decades make the kettle's.
-        make_cyl("Wear_Tem_MugRing", (-2.02, 1.55, 0.008), 0.045, 0.003,
+        make_cyl("Wear_Chair_MugRing", (-2.02, 1.55, 0.008), 0.045, 0.003,
                  (0.32, 0.22, 0.14, 1.0), segments=8)
 
 
@@ -1251,7 +1251,7 @@ def build_hero_props_2026_09():
     for wi, off in enumerate((0.75, 2.05)):
         trk = [(-1.3 + off - 0.16, -9.0), (-1.3 + off + 0.16, -9.0), (-4.4 + off * 1.2 + 0.16, -17.9), (-4.4 + off * 1.2 - 0.16, -17.9)]
         _prism_ccw_z(f"Gravel_Road_Track_{wi}", trk, YARD_Z + 0.0085, 0.001, (0.29, 0.27, 0.22, 1.0))
-    make_car("Finn_Truck", -6.6, -6.2, 4.8, (0.44, 0.48, 0.42, 1.0), pickup=True, along="Y", z0=YARD_Z)
+    make_car("Toyota_Truck", -6.6, -6.2, 4.8, (0.44, 0.48, 0.42, 1.0), pickup=True, along="Y", z0=YARD_Z)
     make_car("Station_Wagon", 3.7, -5.9, 5.0, (0.48, 0.36, 0.26, 1.0), along="Y", z0=YARD_Z)
     # the wagon's roof rack, on the roofline (z0 + 1.46)
     make_box("Station_Wagon_Rack", (3.7, -6.2, YARD_Z + 1.48), (1.20, 1.40, 0.04), (0.30, 0.30, 0.32, 1.0))
