@@ -605,6 +605,11 @@
    "md5": "0dcd30fd1060178555350d5abc9c2890",
    "size": 67899
   },
+  "godot/assets/3d/characters/heroes/finn.glb": {
+   "at": "2026-10-11T18:11:42+00:00",
+   "md5": "917f0f8466a3b8b0819874b48097265e",
+   "size": 59013192
+  },
   "godot/assets/3d/characters/heroes/frasier_temple.glb": {
    "at": "2026-10-01T01:48:41+00:00",
    "md5": "ca887edc74bafc8dd58180a7d8ec32dc",
@@ -52564,6 +52569,41 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "e82c6c08249f2a3ec9c9a49f996bd2a6",
    "size": 69946
+  },
+  "godot/assets/concept/meshy/finn/back.png": {
+   "at": "2026-10-11T18:11:51+00:00",
+   "md5": "e08a263ddb2664bf0a92bd7fe6c42505",
+   "size": 2029256
+  },
+  "godot/assets/concept/meshy/finn/finn_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T18:11:51+00:00",
+   "md5": "e08a263ddb2664bf0a92bd7fe6c42505",
+   "size": 2029256
+  },
+  "godot/assets/concept/meshy/finn/finn_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T18:11:51+00:00",
+   "md5": "61fe79440b335d215c7fef0d4b7cca1b",
+   "size": 2071812
+  },
+  "godot/assets/concept/meshy/finn/finn_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T18:11:51+00:00",
+   "md5": "950b9d5e335ea77356d22116b5937cd1",
+   "size": 1947693
+  },
+  "godot/assets/concept/meshy/finn/front.png": {
+   "at": "2026-10-11T18:11:51+00:00",
+   "md5": "61fe79440b335d215c7fef0d4b7cca1b",
+   "size": 2071812
+  },
+  "godot/assets/concept/meshy/finn/meshy_thumb.png": {
+   "at": "2026-10-11T18:11:51+00:00",
+   "md5": "d9c0fc488380c7982b50f0bb4d59b8a3",
+   "size": 102075
+  },
+  "godot/assets/concept/meshy/finn/side.png": {
+   "at": "2026-10-11T18:11:51+00:00",
+   "md5": "950b9d5e335ea77356d22116b5937cd1",
+   "size": 1947693
   },
   "godot/assets/concept/meshy/frasier_temple/frasier_temple_front_deck_01.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
