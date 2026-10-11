@@ -505,6 +505,11 @@
    "md5": "43b8aed82a78c9c43eec2cb69869167f",
    "size": 66263
   },
+  "godot/assets/3d/characters/heroes/em_keys.glb": {
+   "at": "2026-10-11T16:46:47+00:00",
+   "md5": "14f82824cdfb1c5355a15b65d0427af5",
+   "size": 106243392
+  },
   "godot/assets/3d/characters/heroes/erica_campbell.glb": {
    "at": "2026-10-01T01:48:41+00:00",
    "md5": "d775f6ef85d1438c3cb15952f8907c6f",
@@ -52349,6 +52354,41 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "76f163c5e3afe4059dbff63eadef1984",
    "size": 74920
+  },
+  "godot/assets/concept/meshy/em_keys/back.png": {
+   "at": "2026-10-11T16:47:05+00:00",
+   "md5": "41d27e084909b11619c30cc91dd9e74e",
+   "size": 2100522
+  },
+  "godot/assets/concept/meshy/em_keys/em_keys_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T16:47:05+00:00",
+   "md5": "41d27e084909b11619c30cc91dd9e74e",
+   "size": 2100522
+  },
+  "godot/assets/concept/meshy/em_keys/em_keys_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T16:47:05+00:00",
+   "md5": "5eedff0da0b34204e658501833adce37",
+   "size": 2132511
+  },
+  "godot/assets/concept/meshy/em_keys/em_keys_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T16:47:05+00:00",
+   "md5": "0988e2f126aac9391e6946d7a5606a0a",
+   "size": 1950366
+  },
+  "godot/assets/concept/meshy/em_keys/front.png": {
+   "at": "2026-10-11T16:47:05+00:00",
+   "md5": "5eedff0da0b34204e658501833adce37",
+   "size": 2132511
+  },
+  "godot/assets/concept/meshy/em_keys/meshy_thumb.png": {
+   "at": "2026-10-11T16:47:05+00:00",
+   "md5": "064530248dc1a9f7ad98316a4948d7c3",
+   "size": 84509
+  },
+  "godot/assets/concept/meshy/em_keys/side.png": {
+   "at": "2026-10-11T16:47:05+00:00",
+   "md5": "0988e2f126aac9391e6946d7a5606a0a",
+   "size": 1950366
   },
   "godot/assets/concept/meshy/erica_campbell/erica_campbell_front_meshy_recovered.png": {
    "at": "2026-10-01T01:23:48+00:00",
