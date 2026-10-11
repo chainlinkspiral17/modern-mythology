@@ -1356,6 +1356,12 @@ var _directional_lights: Array = []     # Array[DirectionalLight3D]
 # for any mood not listed).
 var _daylight_lights: Array = []        # Array[Light3D]
 var _daylight_base_energy: Array = []   # Array[float]
+# NIGHTLIGHT (2026-10-11): the mirror — a light carrying `metadata/nightlight`
+# (a moon, a lot's sodium) follows 1 - the mood's daylight: full under night,
+# 0.65 at dusk, off under any day mood. A set authored for its nights can
+# then carry an unsuffixed daylight sun for its day presets (New Auburn Road).
+var _nightlight_lights: Array = []      # Array[Light3D]
+var _nightlight_base_energy: Array = [] # Array[float]
 const DAYLIGHT_BY_MOOD := {
 	"dusk": 0.35, "golden_hour": 0.70, "blue_hour": 0.12, "dawn_warm": 0.55,
 	"night": 0.0, "midnight": 0.0, "3_47_am": 0.0, "candlelight_low": 0.0,
@@ -1565,6 +1571,9 @@ func _collect_lights(node: Node) -> void:
 	if node is Light3D and node.has_meta("daylight"):
 		_daylight_lights.append(node)
 		_daylight_base_energy.append((node as Light3D).light_energy)
+	elif node is Light3D and node.has_meta("nightlight"):
+		_nightlight_lights.append(node)
+		_nightlight_base_energy.append((node as Light3D).light_energy)
 	elif node is DirectionalLight3D:
 		_directional_lights.append(node)
 		_directional_base_energy.append((node as Light3D).light_energy)
@@ -2022,6 +2031,13 @@ func _apply(preset_in: Dictionary) -> void:
 		var dl: Light3D = _daylight_lights[i]
 		dl.light_energy = float(_daylight_base_energy[i]) * day
 		dl.visible = day > 0.0
+	var night: float = 1.0 - day
+	for i in range(_nightlight_lights.size()):
+		if not is_instance_valid(_nightlight_lights[i]):
+			continue
+		var nl: Light3D = _nightlight_lights[i]
+		nl.light_energy = float(_nightlight_base_energy[i]) * night
+		nl.visible = night > 0.0
 	if painted:
 		preset = preset_in.duplicate()
 		preset["palette"] = maxf(float(preset.get("palette", 12.0)), 24.0)

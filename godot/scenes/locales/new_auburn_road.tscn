@@ -187,6 +187,7 @@ transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 4,
 light_color = Color(0.66, 0.74, 0.95, 1)
 light_energy = 0.5
 shadow_enabled = false
+metadata/nightlight = true
 
 [node name="Fill_WarmBounce" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, -3, 4, 4)
@@ -203,6 +204,8 @@ shadow_enabled = false
 ; ── Sodium streetlamp practicals (2100K) at the cobra-head fixtures.
 ; Co-located with LAMP_FIXTURES in build_louisiana_road.py:
 ; godot(x,y,z) = (head_x, 5.0, -y). Outdoor set spans +/-Z legitimately.
+metadata/nightlight = true
+
 [node name="Sodium_W0" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, 5.0, 2.0)
 light_color = Color(1.0, 0.62, 0.26, 1)
@@ -289,6 +292,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.8, 3.0, -35.5)
 light_color = Color(0.95, 0.88, 0.70, 1)
 light_energy = 1.1
 omni_range = 4.5
+
+; (pass 73, 2026-10-11) the set was authored for the strip mall's nights (the moon, the cyan rim —
+; both nightlights now, off under the day moods); the lot (ch3) and the bypass (ch6, 6:42) play
+; by day: a Texas sun and a sky fill, daylight-tagged so the night moods switch them off. Row-major.
+[node name="Day_Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.7660, -0.5265, 0.3687, 0.0000, 0.5736, 0.8192, -0.6428, -0.6275, 0.4394, 0, 20, 0)
+light_color = Color(1.0, 0.95, 0.86, 1)
+light_energy = 1.1
+shadow_enabled = true
+metadata/daylight = true
+
+[node name="Day_SkyFill" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-1.0000, -0.0000, 0.0000, 0.0000, 0.2588, 0.9659, -0.0000, 0.9659, -0.2588, 0, 20, 10)
+light_color = Color(0.72, 0.80, 0.92, 1)
+light_energy = 0.45
+shadow_enabled = false
+metadata/daylight = true
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 

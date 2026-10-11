@@ -3834,6 +3834,23 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-11 · pass 73: `metadata/nightlight` — THE MIRROR, AND NEW AUBURN
+ROAD BY DAY.** MoodCycler gains the mirror of the daylight tag: a light
+carrying `metadata/nightlight` (a moon, a lot's sodium) follows
+1 − the mood's daylight — full under `night`, 0.65 at dusk, off under any
+day mood. New Auburn Road was the case: a Moon key and a cyan rim
+authored for the strip mall's nights, with Cosmic Comics' lot (ch3) and
+the bypass (ch6, 6:42) played by day under the moon. The moon and the rim
+are nightlights now; an unsuffixed daylight-tagged Texas sun and sky fill
+join the set for its day presets. Two untagged cuts got the mood the
+prose says (ch21's ride home at night, ch20's morning drive-by), since a
+cut without a `[mood:]` inherits whatever was in force. No Deck rebuild.
+**Draft N+1:** the Kwik Stop's day rig could keep a nightlight streetlamp
+for a night cut if one ever lands; the diner's lot by day the same way;
+every scene authored at night with a sun-less rig is a candidate for the
+pair (bar_exterior, grunion_beach, missing_link_exterior) if a day cut
+appears.
+
 **2026-10-11 · pass 72: DAYLIGHT-TAG THE EXTERIOR SUNS.** Six exterior
 sets serve day and night presets off one unsuffixed sun: Graustark (eight
 presets — the chalk wall at night under the Texas sun), Meadowlark Circle

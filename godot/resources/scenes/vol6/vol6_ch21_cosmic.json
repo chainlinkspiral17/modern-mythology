@@ -871,7 +871,7 @@
     },
     {
       "t": "narrate",
-      "text": "The ride home is twenty-three minutes.",
+      "text": "[mood:dusk]The ride home is twenty-three minutes.",
       "voice": "assets/audio/voice/vol6_ch21_cosmic/156.mp3"
     },
     {
