@@ -210,6 +210,11 @@
    "md5": "f52ba972f9a1050d9b136ac64d8e876c",
    "size": 66622
   },
+  "godot/assets/3d/characters/heroes/bt.glb": {
+   "at": "2026-10-11T20:22:59+00:00",
+   "md5": "5b8fffe3e5997af772ec22d9cd3fd00a",
+   "size": 41066152
+  },
   "godot/assets/3d/characters/heroes/cale.glb": {
    "at": "2026-10-11T18:21:46+00:00",
    "md5": "e5417a65c6245c64583175b653f8529c",
@@ -52439,6 +52444,56 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "a79cca1bc6c415c7323a67b512afff48",
    "size": 71924
+  },
+  "godot/assets/concept/meshy/bt/back.png": {
+   "at": "2026-10-11T20:23:12+00:00",
+   "md5": "c1374087e3fff399ac2370e135582480",
+   "size": 1989965
+  },
+  "godot/assets/concept/meshy/bt/bt_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T20:23:12+00:00",
+   "md5": "4c671de7e68b2d0a1444ec568a2c8c70",
+   "size": 1970044
+  },
+  "godot/assets/concept/meshy/bt/bt_back_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-11T20:23:12+00:00",
+   "md5": "c1374087e3fff399ac2370e135582480",
+   "size": 1989965
+  },
+  "godot/assets/concept/meshy/bt/bt_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T20:23:12+00:00",
+   "md5": "4566f7a01a905ef79e0fa756c091fc9e",
+   "size": 2066549
+  },
+  "godot/assets/concept/meshy/bt/bt_front_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-11T20:23:12+00:00",
+   "md5": "5561876b7c213b5371717a7785f5ce4c",
+   "size": 2033420
+  },
+  "godot/assets/concept/meshy/bt/bt_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T20:23:12+00:00",
+   "md5": "3de1bb96ff88f16684ec1c075efdd5ea",
+   "size": 1908444
+  },
+  "godot/assets/concept/meshy/bt/bt_side_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-11T20:23:12+00:00",
+   "md5": "1c7e6e1f3209024c7f4fa2cee7f74d48",
+   "size": 1896919
+  },
+  "godot/assets/concept/meshy/bt/front.png": {
+   "at": "2026-10-11T20:23:12+00:00",
+   "md5": "5561876b7c213b5371717a7785f5ce4c",
+   "size": 2033420
+  },
+  "godot/assets/concept/meshy/bt/meshy_thumb.png": {
+   "at": "2026-10-11T20:23:12+00:00",
+   "md5": "58a955b0d75de96923a6e5e76b88e469",
+   "size": 81930
+  },
+  "godot/assets/concept/meshy/bt/side.png": {
+   "at": "2026-10-11T20:23:12+00:00",
+   "md5": "1c7e6e1f3209024c7f4fa2cee7f74d48",
+   "size": 1896919
   },
   "godot/assets/concept/meshy/cale/back.png": {
    "at": "2026-10-11T18:21:59+00:00",
