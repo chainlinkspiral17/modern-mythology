@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
-"""music_encode.py — turn DAW / tape / field WAVs into the files the music catalog names.
+"""music_encode.py — turn tape / field WAVs into the files the music catalog names.
 
-The DAW's TEMP TRACKS and INTO GAME write `<src base>.wav` (+ `<base>.stems/*.wav` and
-`<base>.stems.json`) because a browser can't encode Vorbis. AudioMgr plays those .wav
-siblings fine, but they're big. This encodes them to the catalog's real path:
+FIELD RECORDER, TAPE STUDIO and field_ingest.py write `<src base>.wav` (+ older DAW writes:
+`<base>.stems/*.wav` and `<base>.stems.json`). AudioMgr plays those .wav siblings fine, but
+they're big. This encodes them to the catalog's REAL path — the result counts as real audio.
+Temp tracks don't need it: since 2026-10-11 the DAW / AUDIO DIRECTOR write them as small Ogg
+Vorbis (`<base>.temp.ogg`), and the AUDIO DIRECTOR's SHRINK re-encodes older WAV temps while
+keeping them temps — use that for a "(temp)" .wav, not this script.
 
     python3 -I godot/tools/music_encode.py                # every catalog track that has a .wav but no real file
     python3 -I godot/tools/music_encode.py vol1_title …   # just these ids

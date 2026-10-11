@@ -13,22 +13,27 @@
  *                    seconds BEFORE you pressed record.
  *   AK.wav           encode 16/24-bit PCM WAV with bext (BWF), LIST/INFO,
  *                    smpl (loop points Godot reads) and an mmjs chunk
- *                    (our metadata as JSON); parse those chunks back.
+ *                    (our metadata as JSON); parse those chunks back;
+ *                    decode PCM sample-exact (no resampling).
+ *   AK.ogg           Ogg Vorbis encoder (libvorbis as wasm, vendored in
+ *                    vendor/oggvorbis/, loaded on first use, no network).
  *   AK.lib           IndexedDB take library shared by every tool page,
  *                    plus a BroadcastChannel so open pages refresh.
  *   AK.game          link the godot/ folder once (File System Access),
  *                    read the music catalog, list tracks with no audio
  *                    yet ("wanted"), write files straight into assets/;
  *                    readFile / list / remove / copy for the AUDIO
- *                    DIRECTOR's review staging.
+ *                    DIRECTOR's review staging; writeMusic = the temp-
+ *                    track file contract (Ogg mix + stems + manifest).
  *   AK.dsp           offline cleanup: high-pass, normalise (peak or
  *                    approx. LUFS), fades, trim, seamless loop crossfade,
  *                    spectral noise gate, mixdown.
  *   AK.draw          waveform, spectrogram and meter painting.
  *
  * Godot side: AudioMgr._load_audio() falls back from a catalog
- * .ogg/.mp3 path to the same name with .wav, and loads raw WAVs with
- * AudioStreamWAV.load_from_buffer — which honours the smpl loop chunk.
+ * .ogg/.mp3 path to the same name with .wav (FIELD RECORDER / TAPE STUDIO:
+ * real audio; AudioStreamWAV.load_from_buffer honours the smpl loop chunk),
+ * then to <base>.temp.ogg (a temp track; its loop comes from the manifest).
  */
 "use strict";
 
@@ -441,6 +446,79 @@ AK.wav = {
     }
     return out;
   },
+
+  // PCM / float WAV → { channels: Float32Array[], sampleRate, loop: smpl {start, end} | null, bits }, sample-exact
+  // (decodeAudioData resamples to the context's rate and drops the loop)
+  decode(arrayBuffer) {
+    const c = this.parseChunks(arrayBuffer), f = c.chunks['fmt '], d = c.chunks.data;
+    if (!f || !d || f.length < 16) throw new Error('not a WAV file');
+    const fv = new DataView(f.buffer, f.byteOffset, f.length);
+    let fmt = fv.getUint16(0, true); const nch = fv.getUint16(2, true), sr = fv.getUint32(4, true), bits = fv.getUint16(14, true);
+    if (fmt === 0xFFFE && f.length >= 26) fmt = fv.getUint16(24, true);      // EXTENSIBLE: the subformat GUID starts with the tag
+    if (!nch || ![8, 16, 24, 32, 64].includes(bits) || (fmt !== 1 && fmt !== 3)) throw new Error('unsupported WAV (format ' + fmt + ', ' + bits + ' bit)');
+    const bps = bits / 8, frames = Math.floor(d.length / (nch * bps)), dv = new DataView(d.buffer, d.byteOffset, d.length);
+    const chs = Array.from({ length: nch }, () => new Float32Array(frames));
+    const rd = fmt === 3 ? (bits === 64 ? o => dv.getFloat64(o, true) : o => dv.getFloat32(o, true))
+      : bits === 16 ? o => dv.getInt16(o, true) / 32768 : bits === 24 ? o => (dv.getUint8(o) | dv.getUint8(o + 1) << 8 | dv.getInt8(o + 2) << 16) / 8388608
+      : bits === 32 ? o => dv.getInt32(o, true) / 2147483648 : o => (dv.getUint8(o) - 128) / 128;
+    for (let i = 0, o = 0; i < frames; i++) for (let k = 0; k < nch; k++, o += bps) chs[k][i] = rd(o);
+    return { channels: chs, sampleRate: sr, loop: c.smpl, bits };
+  },
+};
+
+// ═══════════════════════════════════════════════════════════════════
+// Ogg Vorbis — what the tools put into the game (16-bit WAV is ~10 MB a minute per file)
+// ═══════════════════════════════════════════════════════════════════
+// vendor/oggvorbis/ogg_vorbis_encoder.js (wasm-media-encoders: libvorbis as wasm, base64 inside) is loaded with a
+// <script> on first use and compiled once: works from file://, never touches the network. Encoding runs on the
+// page in 4 s blocks with a MessageChannel yield between them (timers are throttled in background tabs).
+// Ogg has no smpl chunk: a WAV-style loop {start, end (last frame played)} cuts the file at end + 1, so the
+// loop end IS the stream end, and the start goes in the track manifest as loop_offset (AudioMgr sets
+// AudioStreamOggVorbis.loop / loop_offset from it). Vorbis decodes sample-exact: Godot and Chrome both read
+// the exact length back from the last granule position.
+const AK_BASE = (typeof document !== 'undefined' && document.currentScript && document.currentScript.src) || (typeof location !== 'undefined' ? location.href : '');
+AK.ogg = {
+  // libvorbis VBR quality (-1…10). Measured on DAW temp tracks: mix q4 ≈ 0.6–0.9 MB/min, stems q1 ≈ 0.3–0.6 MB/min.
+  Q: { mix: 4, stem: 1 },
+  _mod: null,
+  load() {
+    if (this._mod) return this._mod;
+    return this._mod = (async () => {
+      if (typeof WasmMediaEncoder === 'undefined' || typeof WasmMediaEncoderOggWasmB64 === 'undefined') await new Promise((res, rej) => {
+        const s = document.createElement('script');
+        s.src = new URL('vendor/oggvorbis/ogg_vorbis_encoder.js', AK_BASE).href;
+        s.onload = res; s.onerror = () => rej(new Error('could not load vendor/oggvorbis/ogg_vorbis_encoder.js'));
+        document.head.appendChild(s);
+      });
+      const b = atob(WasmMediaEncoderOggWasmB64), u = new Uint8Array(b.length);
+      for (let i = 0; i < b.length; i++) u[i] = b.charCodeAt(i);
+      return WebAssembly.compile(u);
+    })().catch(e => { this._mod = null; throw e; });
+  },
+  // what a loop keeps: {loop, offset (s), start, frames}. The offset sits a quarter frame past the start so the
+  // frame Godot seeks to is right whether it truncates or rounds seconds × rate.
+  loopOf(loop, frames, sr) {
+    if (!loop || !(loop.end > loop.start)) return { loop: false, offset: 0, start: 0, frames };
+    const start = Math.max(0, loop.start | 0);
+    return { loop: true, offset: start ? (start + 0.25) / sr : 0, start, frames: Math.min(frames, (loop.end | 0) + 1) };
+  },
+  // channels: 1 or 2 Float32Arrays → Blob audio/ogg. opts: quality, loop {start, end}, onProgress(0…1)
+  async encode(channels, sampleRate, opts = {}) {
+    if (!channels.length || channels.length > 2) throw new Error('Ogg encode: 1 or 2 channels, got ' + channels.length);
+    const mod = await this.load();
+    const n = this.loopOf(opts.loop, channels[0].length, sampleRate).frames;
+    const enc = await WasmMediaEncoder.createEncoder('audio/ogg', mod);
+    enc.configure({ channels: channels.length, sampleRate, vbrQuality: opts.quality ?? this.Q.mix });
+    const parts = [], B = sampleRate * 4;
+    for (let i = 0; i < n; i += B) {
+      const j = Math.min(n, i + B);
+      parts.push(enc.encode(channels.map(c => c.subarray(i, j))).slice());     // the encoder owns its output buffer: copy
+      if (opts.onProgress) opts.onProgress(j / n);
+      await new Promise(r => { const c = new MessageChannel(); c.port1.onmessage = () => { c.port1.close(); r(); }; c.port2.postMessage(0); });
+    }
+    parts.push(enc.finalize().slice());
+    return new Blob(parts, { type: 'audio/ogg' });
+  },
 };
 
 // ═══════════════════════════════════════════════════════════════════
@@ -608,6 +686,66 @@ AK.game = {
   },
   async copy(from, to) { return this.write(to, await this.readFile(from)); },
   async catalog() { return JSON.parse(await this.readText('resources/music_catalog.json')); },
+  // ── temp music in the game (what AudioMgr._load_audio / _load_stems read) ──
+  // A catalog track's temp: <base>.temp.ogg · <base>.stems/<part>.ogg · <base>.stems.json (temp: true) ·
+  // <base>.temp.ogg.credits.txt. AudioMgr plays the real <src> first, then a <base>.wav (FIELD RECORDER /
+  // TAPE STUDIO — or an older temp), then the .temp.ogg, so real audio always wins. Temps from before
+  // 2026-10-11 are <base>.wav titled "(temp)" with .wav stems: recognised, revocable, shrinkable.
+  tempPaths(base) { return { mix: base + '.temp.ogg', stems: base + '.stems', manifest: base + '.stems.json', credits: base + '.temp.ogg.credits.txt' }; },
+  // a .wav at a game path: 'none' | 'temp' (ours: "(temp)" title / mmjs temp flag) | 'real' (someone's recording)
+  async wavKind(path) {
+    if (!(await this.exists(path))) return 'none';
+    try {
+      const f = await this.readFile(path), c = AK.wav.parseChunks(await f.slice(0, 262144).arrayBuffer());
+      const temp = (c.mmjs && c.mmjs.temp === true) || /\(temp\)/i.test((c.info && c.info.INAM) || '') || /\(temp\)/i.test((c.bext && c.bext.description) || '');
+      return temp ? 'temp' : 'real';
+    } catch (e) { return 'real'; }
+  },
+  // Write a track as Ogg Vorbis: the mix, its stems, then the manifest (always — Ogg has no smpl chunk, so the
+  // loop lives there), then credits; leftovers in <base>.stems/ (an older take's parts, a legacy temp's WAV
+  // stems) go. The old manifest is removed first: until the new one lands the game plays the mix alone.
+  // o: { mix: pcm, stems: [{name, role, layer, pcm}], loop, temp (default true), mixPath, title, credits (text),
+  //      extra (manifest fields), quality {mix, stem}, onProgress(0…1, what) }
+  // pcm: {channels, sampleRate[, loop]} or an async () => that, so long takes decode one file at a time.
+  async writeMusic(base, o) {
+    const temp = o.temp !== false, mixPath = o.mixPath || (temp ? base + '.temp.ogg' : base + '.ogg');
+    const Q = Object.assign({}, AK.ogg.Q, o.quality || {}), stems = o.stems || [], files = [], bytes = { mix: 0, stems: 0 };
+    const get = async s => typeof s === 'function' ? s() : s;
+    const prog = (k, f, what) => { if (o.onProgress) o.onProgress((k + f) / (1 + stems.length), what); };
+    await this.remove(base + '.stems.json');
+    const mix = await get(o.mix), sr = mix.sampleRate, loop = o.loop !== undefined ? o.loop : (mix.loop || null);
+    const L = AK.ogg.loopOf(loop, mix.channels[0].length, sr);
+    let blob = await AK.ogg.encode(mix.channels, sr, { quality: Q.mix, loop, onProgress: f => prog(0, f, 'mix') });
+    await this.write(mixPath, blob); files.push(mixPath); bytes.mix = blob.size;
+    const man = Object.assign({ v: 1, title: o.title || '', temp, format: 'ogg', length_sec: +(L.frames / sr).toFixed(3), frames: L.frames, sample_rate: sr,
+      loop: L.loop, loop_offset: L.offset, loop_start: L.start }, o.extra || {}, { mix: mixPath, quality: Q, stems: [] });
+    const keep = new Set();
+    for (let k = 0; k < stems.length; k++) {
+      const s = stems[k], name = AK.util.slug(s.name) + '.ogg', f = base + '.stems/' + name, pcm = await get(s.pcm);
+      blob = await AK.ogg.encode(pcm.channels, pcm.sampleRate, { quality: Q.stem, loop, onProgress: x => prog(k + 1, x, s.name) });
+      await this.write(f, blob); files.push(f); bytes.stems += blob.size; keep.add(name);
+      man.stems.push({ name: s.name, role: s.role || '', file: f, layer: +s.layer || 0 });
+    }
+    for (const e of await this.list(base + '.stems')) if (!keep.has(e.name)) await this.remove(base + '.stems/' + e.name);
+    if (!stems.length) await this.remove(base + '.stems');
+    man.bytes = bytes;
+    await this.write(base + '.stems.json', new Blob([JSON.stringify(man, null, 1)], { type: 'application/json' })); files.push(base + '.stems.json');
+    const cr = mixPath + '.credits.txt';
+    if (o.credits) { await this.write(cr, new Blob([String(o.credits).replace(/\n*$/, '\n')], { type: 'text/plain' })); files.push(cr); }
+    else await this.remove(cr);
+    return { files, bytes, manifest: man, seconds: L.frames / sr };
+  },
+  // Remove a temp from the game: the .temp.ogg, its credits, and the manifest + stems if they are a temp's.
+  // wavToo: the caller checked wavKind(<base>.wav) === 'temp' — an older temp's .wav goes as well.
+  // Real audio is never on this list. Returns the paths removed.
+  async removeTemp(base, wavToo) {
+    const gone = [], rm = async p => { if (await this.remove(p)) gone.push(p); };
+    let man = null; try { man = JSON.parse(await this.readText(base + '.stems.json')); } catch (e) {}
+    if (man && (man.temp === true || man.mix === base + '.temp.ogg' || (wavToo && (!man.mix || man.mix === base + '.wav')))) { await rm(base + '.stems.json'); await rm(base + '.stems'); }
+    await rm(base + '.temp.ogg'); await rm(base + '.temp.ogg.credits.txt');
+    if (wavToo) { await rm(base + '.wav'); await rm(base + '.wav.credits.txt'); }
+    return gone;
+  },
   // Field-friendliness: how much a track's brief reads like something
   // you can go and record, vs. something you'd compose.
   fieldScore(t) {
@@ -627,8 +765,8 @@ AK.game = {
     const out = [];
     for (const t of cat) {
       if (!t.src) continue;
-      const wavSrc = t.src.replace(/\.[^.\/]+$/, '') + '.wav';
-      const have = await this.exists(t.src) || await this.exists(wavSrc);
+      const base = t.src.replace(/\.[^.\/]+$/, ''), wavSrc = base + '.wav';
+      const have = await this.exists(t.src) || await this.exists(wavSrc) || await this.exists(base + '.temp.ogg');
       if (!have) out.push(Object.assign({}, t, { wavSrc, fieldScore: this.fieldScore(t) }));
     }
     return out.sort((a, b) => b.fieldScore - a.fieldScore || (a.vol - b.vol));

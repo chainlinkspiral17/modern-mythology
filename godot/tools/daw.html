@@ -309,7 +309,7 @@
       <div class="row"><label style="cursor:pointer;min-width:0"><input type="checkbox" id="b-master" checked> master to</label><select id="b-lufs"><option value="-14" selected>−14 LUFS (game music)</option><option value="-16">−16 LUFS</option><option value="-18">−18 LUFS (beds / ambience)</option><option value="-23">−23 LUFS (broadcast)</option></select><span class="note">true peak ≤ −1.5 dBTP (≤ −1 after OGG / MP3 encoding)</span></div>
       <div class="msg" id="b-msg"></div>
       <div class="row"><button class="dim" id="b-dl" disabled>⇩ WAV</button><button class="dim" id="b-game" disabled>⇢ INTO GAME</button><select id="b-target" style="flex:1"><option value="">assets/audio/daw/…</option></select></div>
-      <div class="note">Bounces render faster than real time unless a track plays on an FM-1 emulator or the hardware. They land in the shared library too. A seamless loop is written with WAV loop points. STEMS + MIX writes the stems and a <b>.stems.json</b> beside the track: the game layers them by intensity (pad → bass → drums → lead).</div>
+      <div class="note">Bounces render faster than real time unless a track plays on an FM-1 emulator or the hardware. They land in the shared library too. INTO GAME writes Ogg Vorbis (about a tenth of a WAV); a seamless loop's loop goes in the <b>.stems.json</b> manifest beside it (⇩ WAV downloads keep WAV loop points). STEMS + MIX writes the stems into that manifest too: the game layers them by intensity (pad → bass → drums → lead).</div>
       <h2>CREDITS · instruments this project uses</h2>
       <div id="credits" class="note">—</div>
       <div class="row"><button class="dim" id="cr-copy">⎘ COPY CREDITS</button></div>
@@ -1612,9 +1612,9 @@ async function refreshWanted() {
 }
 // TEMP TRACKS: for each catalog entry with no audio — compose from its brief, render offline, master and
 // write a CANDIDATE TAKE into review staging (assets/audio/review/<track id>/<take id>/). The AUDIO DIRECTOR
-// (audio_director.html) previews, approves or rejects takes; APPROVE copies one to <src base>.wav (+ stems +
-// manifest) where AudioMgr looks. "straight into game (skip review)" keeps the old direct write. A real file at
-// the .ogg / .mp3 path always wins over the .wav.
+// (audio_director.html) previews, approves or rejects takes; APPROVE encodes one to Ogg Vorbis where AudioMgr
+// looks: <src base>.temp.ogg (+ .stems/<part>.ogg + .stems.json). "straight into game (skip review)" writes the
+// same files directly. Real audio (the .ogg / .mp3 src, or a recorded <src base>.wav) always wins over a temp.
 let tempPick = null;
 const TEMP_MIN_SEC = 90;
 const REVIEW_DIR = 'assets/audio/review';
@@ -1847,7 +1847,7 @@ async function makeTakes(list, req) {
           entry.take = take; entry.dir = dir;
           directorNotify({ type: 'take', rid: req.rid, id: t.id, take, seed: song.seed });
         } else {
-          entry.files = await writeToGame(t.src.replace(/\.[^.\/]+$/, ''), r, lastStems, lastCredits, { title: t.title + ' (temp)' });
+          entry.files = await writeTempToGame(t.src.replace(/\.[^.\/]+$/, ''), r, lastStems, lastCredits, t.title, o.loop ? r.loop : null, tag);
         }
         done.push(entry);
       } catch (e) { done.push({ id: t.id, seed: m.seed, error: e.message || String(e) }); directorNotify({ type: 'take', rid: req.rid, id: t.id, error: e.message || String(e) }); }
@@ -2214,8 +2214,20 @@ async function doBounce(loop, stems) {
   } catch (e) { msg('b-msg', 'bounce failed: ' + (e.message || e), true); }
   $('b-song').disabled = $('b-loop').disabled = $('b-stems').disabled = false;
 }
-// write a bounce (and its stems + manifest) where the game looks: <base>.wav · <base>.stems/<part>.wav · <base>.stems.json
-async function writeToGame(base, r, stems, credits, meta) {
+// a render's stems as AK.game.writeMusic wants them
+const musicStems = (r, stems) => (stems || []).map(st => ({ name: st.name, role: st.role || '', layer: STEM_LAYER[st.name] ?? 0, pcm: { channels: st.channels, sampleRate: st.sampleRate || r.sampleRate } }));
+// "straight into game (skip review)": the temp as Ogg Vorbis, the files APPROVE writes (AK.game.writeMusic). An
+// older .wav temp at the same base would shadow it (a .wav comes before the .temp.ogg), so it goes; a real .wav stays.
+async function writeTempToGame(base, r, stems, credits, title, loop, tag) {
+  const out = await AK.game.writeMusic(base, { mix: r, stems: musicStems(r, stems), loop, title: title + ' (temp)', credits: credits.worst !== 'free' ? credits.text : '',
+    extra: { bpm: P.bpm, bars: r.bars, lufs: r.mastered ? +r.mastered.after.toFixed(1) : null, credits: credits.text || '' },
+    onProgress: (f, what) => msg('g-tempmsg', (tag ? tag + ' — ' : '') + 'encoding Ogg Vorbis (' + what + ') ' + Math.round(f * 100) + '%') });
+  if ((await AK.game.wavKind(base + '.wav')) === 'temp') { await AK.game.remove(base + '.wav'); await AK.game.remove(base + '.wav.credits.txt'); }
+  return out.files;
+}
+// a hand-made bounce for a catalog track whose src is .mp3 (no MP3 encoder here): the old WAV write, real audio —
+// <base>.wav · <base>.stems/<part>.wav · <base>.stems.json
+async function writeWavToGame(base, r, stems, credits, meta) {
   const enc = (chs, extra) => AK.wav.encode(chs, r.sampleRate, { bitDepth: 16, loop: r.loop, meta: Object.assign({ title: meta.title, description: meta.title, originator: 'MM DAW', tags: ['daw'], bpm: P.bpm, date: new Date().toISOString(), comment: credits.text ? 'Instruments: ' + credits.text.replace(/\n/g, '; ') : undefined }, extra || {}) });
   await AK.game.write(base + '.wav', enc(r.channels));
   const written = [base + '.wav'];
@@ -2241,14 +2253,20 @@ $('b-stems').addEventListener('click', () => doBounce(P.loop.on && confirm('Stem
 let lastCredits = { lines: [], worst: 'free', text: '' };
 function bounceBlob() { return AK.wav.encode(lastBounce.channels, lastBounce.sampleRate, { bitDepth: 16, loop: lastBounce.loop, meta: { title: P.name, description: P.name, originator: 'MM DAW', tags: ['daw'], bpm: P.bpm, date: new Date().toISOString(), comment: lastCredits.text ? 'Instruments: ' + lastCredits.text.replace(/\n/g, '; ') : undefined, credits: lastCredits.text || undefined } }); }
 $('b-dl').addEventListener('click', () => lastBounce && AK.util.download(bounceBlob(), AK.util.slug(P.name) + '.wav'));
+// INTO GAME: the bounce is real audio (hand-made), written as Ogg Vorbis — at the catalog track's own .ogg src
+// (or assets/audio/daw/<name>.ogg), stems + manifest beside it. A catalog .mp3 src keeps the old <base>.wav.
 $('b-game').addEventListener('click', async () => {
   if (!lastBounce) return;
   if (!AK.game.root && !(await AK.game.restore(true).catch(() => null))) { msg('b-msg', 'link the game folder first (GENERATE tab).', true); return; }
-  const id = $('b-target').value;
-  let path = 'assets/audio/daw/' + AK.util.slug(P.name) + '.wav';
-  if (id) { const cat = await AK.game.catalog(); const t = cat.find(x => x.id === id); if (t) path = t.src.replace(/\.[^.\/]+$/, '') + '.wav'; if (await AK.game.exists(path) && !confirm(path + ' exists. Replace?')) return; }
+  const id = $('b-target').value, r = lastBounce;
+  let base = 'assets/audio/daw/' + AK.util.slug(P.name), path = base + '.ogg';
+  if (id) { const cat = await AK.game.catalog(); const t = cat.find(x => x.id === id); if (t) { base = t.src.replace(/\.[^.\/]+$/, ''); path = /\.ogg$/i.test(t.src) ? t.src : base + '.wav'; } if (await AK.game.exists(path) && !confirm(path + ' exists. Replace?')) return; }
   try {
-    const written = await writeToGame(path.replace(/\.wav$/, ''), lastBounce, lastStems, lastCredits, { title: P.name });
+    let written;
+    if (path.endsWith('.wav')) written = await writeWavToGame(base, r, lastStems, lastCredits, { title: P.name });
+    else written = (await AK.game.writeMusic(base, { temp: false, mixPath: path, mix: r, stems: musicStems(r, lastStems), loop: r.loop, title: P.name,
+      credits: lastCredits.worst !== 'free' ? lastCredits.text : '', extra: { bpm: P.bpm, bars: r.bars, lufs: r.mastered ? +r.mastered.after.toFixed(1) : null, credits: lastCredits.text || '' },
+      onProgress: (f, what) => msg('b-msg', 'encoding Ogg Vorbis (' + what + ') ' + Math.round(f * 100) + '%') })).files;
     msg('b-msg', 'wrote ' + written.length + ' file(s): godot/' + path + (id ? ' — the game plays it for ' + id : '') + (lastStems ? ' + stems' : '') + (lastCredits.worst !== 'free' ? ' + credits' : ''));
     if (id) refreshWanted();
   }

@@ -51,6 +51,14 @@ const HEARD_PATH := "user://progress/music_heard.cfg"
 # fades in every stem whose threshold is at or below the level. Missing or
 # unreadable stems fall back to the mix, so a half-written export never breaks
 # playback. Intensity 1.0 = the full mix, which is the default.
+#
+# Temp tracks (the DAW / AUDIO DIRECTOR) are Ogg Vorbis: "<basename>.temp.ogg" +
+# "<basename>.stems/<part>.ogg", with a manifest marked `temp: true`. The lookup
+# order is the catalog src (real audio) → "<basename>.wav" (FIELD RECORDER /
+# TAPE STUDIO, or a temp from before Ogg) → "<basename>.temp.ogg", and a temp
+# manifest's stems never play over real audio. Ogg has no loop chunk: the
+# manifest's `loop` / `loop_offset` (seconds; the loop end is the stream end)
+# are set on every Ogg stream it names — its mix and its stems.
 const STEM_FADE := 1.5
 var adaptive_music: bool = true
 var _intensity: float = 1.0
@@ -288,17 +296,58 @@ func set_music_intensity(level: float, fade: float = STEM_FADE) -> void:
 
 
 ## True when `src` (a catalog path) has something playable on disk: the file,
-## the .wav sibling the tools write, or a stems manifest. The MusicDirector
+## the .wav sibling, the .temp.ogg temp, or a stems manifest. The MusicDirector
 ## only picks tracks that pass this, so missing catalog audio never silences
 ## a scene that already has music playing.
 func can_play(src: String) -> bool:
 	if src == "" or src in _failed_srcs:
 		return false
 	var base := src.get_basename()
-	for p in ["res://" + src, "res://" + base + ".wav", "res://" + base + ".stems.json"]:
-		if ResourceLoader.exists(p) or FileAccess.file_exists(p):
+	for p in [src, base + ".wav", base + ".temp.ogg", base + ".stems.json"]:
+		if _exists(p):
 			return true
 	return false
+
+
+func _exists(path: String) -> bool:
+	var p := "res://" + path
+	return ResourceLoader.exists(p) or FileAccess.file_exists(p)
+
+
+# A track's manifest (<basename>.stems.json) as a Dictionary, or null.
+func _manifest(base: String) -> Variant:
+	var path := "res://" + base + ".stems.json"
+	if not FileAccess.file_exists(path):
+		return null
+	var man = JSON.parse_string(FileAccess.get_file_as_string(path))
+	return man if typeof(man) == TYPE_DICTIONARY else null
+
+
+# Ogg loop points come from the manifest that names the file (as its mix or a
+# stem): loop + loop_offset. Any other Ogg (sfx, voice, a real track with no
+# manifest) is left as imported / loaded.
+func _apply_ogg_loop(src: String, s: AudioStream) -> void:
+	if not (s is AudioStreamOggVorbis):
+		return
+	var base := src.get_basename()
+	if base.get_base_dir().ends_with(".stems"):
+		base = base.get_base_dir().get_basename()
+	elif base.ends_with(".temp"):
+		base = base.get_basename()
+	var man = _manifest(base)
+	if man == null:
+		return
+	var named: bool = String(man.get("mix", "")) == src
+	var stems = man.get("stems", [])
+	if typeof(stems) == TYPE_ARRAY:
+		for st in stems:
+			if typeof(st) == TYPE_DICTIONARY and String(st.get("file", "")) == src:
+				named = true
+	if not named:
+		return
+	var ogg := s as AudioStreamOggVorbis
+	ogg.loop = bool(man.get("loop", false))
+	ogg.loop_offset = float(man.get("loop_offset", 0.0))
 
 
 func get_music_intensity() -> float:
@@ -314,12 +363,16 @@ func get_music_layers() -> Array:
 
 
 func _load_stems(src: String) -> AudioStream:
-	var man_path := "res://" + src.get_basename() + ".stems.json"
+	var base := src.get_basename()
+	var man_path := "res://" + base + ".stems.json"
 	if not FileAccess.file_exists(man_path):
 		return null
 	var man = JSON.parse_string(FileAccess.get_file_as_string(man_path))
 	if typeof(man) != TYPE_DICTIONARY or not man.has("stems"):
 		push_warning("AudioMgr: unreadable stems manifest, playing the mix: " + man_path)
+		return null
+	# a temp's stems never layer over real audio (the src itself, or a recorded .wav)
+	if bool(man.get("temp", false)) and (_exists(src) or _exists(base + ".wav")):
 		return null
 	var stems: Array = man["stems"]
 	if stems.is_empty() or stems.size() > AudioStreamSynchronized.MAX_STREAMS:
@@ -681,6 +734,7 @@ func _load_audio(src: String) -> AudioStream:
 		if s == null:
 			_failed_srcs[src] = true
 			push_warning("AudioMgr: failed to load BGM (marking as skip): " + src)
+		_apply_ogg_loop(src, s)
 		return s
 	# Fallback when the .import sidecar isn't generated yet (e.g.
 	# audio dropped in but the editor hasn't reimported). Without
@@ -689,12 +743,16 @@ func _load_audio(src: String) -> AudioStream:
 	if not FileAccess.file_exists(abs_path):
 		# Field recordings and tape mixdowns land as a .wav next to the
 		# catalog's .ogg / .mp3 path (godot/tools/field_recorder.html,
-		# field_ingest.py). Try that sibling before giving up.
+		# field_ingest.py); temp tracks as <basename>.temp.ogg (the DAW /
+		# AUDIO DIRECTOR). Real audio first: the .wav, then the temp.
 		var ext0 := src.get_extension().to_lower()
-		if ext0 != "wav":
+		if ext0 != "wav" and not src.ends_with(".temp.ogg"):
 			var wav_src := src.get_basename() + ".wav"
-			if ResourceLoader.exists("res://" + wav_src) or FileAccess.file_exists(ProjectSettings.globalize_path("res://" + wav_src)):
+			if _exists(wav_src):
 				return _load_audio(wav_src)
+			var temp_src := src.get_basename() + ".temp.ogg"
+			if _exists(temp_src):
+				return _load_audio(temp_src)
 		return null
 	var bytes := FileAccess.get_file_as_bytes(abs_path)
 	if bytes.is_empty():
@@ -706,7 +764,13 @@ func _load_audio(src: String) -> AudioStream:
 			s.data = bytes
 			return s
 		"ogg":
-			return AudioStreamOggVorbis.load_from_buffer(bytes)
+			var o := AudioStreamOggVorbis.load_from_buffer(bytes)
+			if o == null or o.get_length() <= 0.0:
+				_failed_srcs[src] = true
+				push_warning("AudioMgr: unreadable Ogg (marking as skip): " + src)
+				return null
+			_apply_ogg_loop(src, o)
+			return o
 		"wav":
 			# load_from_buffer parses the RIFF header (format, rate,
 			# channels); assigning .data directly would play the header

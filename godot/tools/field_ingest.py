@@ -213,7 +213,8 @@ def wanted(all_tracks=False):
         if not src:
             continue
         p = GODOT / src
-        if p.exists() or p.with_suffix(".wav").exists():
+        # real audio, a recorded .wav, or a temp track (<base>.temp.ogg) — same rule as AK.game.wanted()
+        if p.exists() or p.with_suffix(".wav").exists() or p.with_suffix(".temp.ogg").exists():
             continue
         t = dict(t, field_score=field_score(t), wav_src=str(Path(src).with_suffix(".wav")))
         if all_tracks or t["field_score"] > 0:

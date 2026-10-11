@@ -39,6 +39,54 @@ suite('dsp · loudness, true peak, mastering, worklets on file://', async t => {
     });
     t.ok(r < -80, 'stems sum residual ' + r.toFixed(1) + ' dB');
   });
+  await t.test('Ogg Vorbis: the vendored encoder runs from file:// with no network; Chrome decodes it back aligned and as loud', async () => {
+    const r = await p.evaluate(async () => {
+      const sr = 44100, n = sr * 10, L = new Float32Array(n), R = new Float32Array(n);
+      let seed = 7; const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647) - 0.5;
+      for (let i = 0; i < n; i++) {          // chords + a bass line + noisy hats: busy enough to cost real bits
+        const t = i / sr, beat = (i % 11025) / sr, f = [110, 146.8, 98, 130.8][Math.floor(t / 2) % 4];
+        const v = 0.18 * Math.sin(2 * Math.PI * f * t) + 0.1 * (Math.sin(2 * Math.PI * f * 2.5 * t) + Math.sin(2 * Math.PI * f * 3 * t)) + rnd() * 0.25 * Math.exp(-beat * 40);
+        L[i] = v; R[i] = 0.8 * v + 0.05 * Math.sin(2 * Math.PI * 660 * t);
+      }
+      const t0 = performance.now();
+      const blob = await AK.ogg.encode([L, R], sr, { quality: AK.ogg.Q.mix });
+      const encMs = performance.now() - t0;
+      const head = new TextDecoder().decode(new Uint8Array(await blob.slice(0, 4).arrayBuffer()));
+      const dec = await new OfflineAudioContext(2, 1, sr).decodeAudioData(await blob.arrayBuffer());
+      const D = [dec.getChannelData(0), dec.getChannelData(1)];
+      let e = 0, s = 0; for (let i = 0; i < n; i++) { e += (D[0][i] - L[i]) ** 2; s += L[i] ** 2; }
+      // a loop {start, end}: the file ends at end + 1 (the loop end IS the stream end); the start is the manifest's
+      const cut = await AK.ogg.encode([L, R], sr, { quality: 1, loop: { start: 4410, end: sr * 5 - 1 } });
+      const dcut = await new OfflineAudioContext(2, 1, sr).decodeAudioData(await cut.arrayBuffer());
+      const lo = AK.ogg.loopOf({ start: 4410, end: sr * 5 - 1 }, n, sr);
+      return { head, len: dec.length, n, lufsIn: await AK.dsp.lufs([L, R], sr), lufsOut: await AK.dsp.lufs(D, sr), snr: 10 * Math.log10(s / e), bytes: blob.size, encMs,
+        cutLen: dcut.length, lo, net: performance.getEntriesByType('resource').map(x => x.name).filter(u => !u.startsWith('file:')) };
+    });
+    t.eq(r.head, 'OggS'); t.eq(r.net, [], 'no network requests');
+    // Chrome's decoder does not trim the last page to its granule position (Godot does: the godot_audiomgr suite
+    // checks the exact length there): up to one Vorbis block of padding at the END, none at the start
+    t.ok(r.len >= r.n && r.len - r.n <= 2048, 'decoded length ' + r.len + ' vs ' + r.n);
+    t.near(r.lufsOut, r.lufsIn, 0.3, 'loudness'); t.ok(r.snr > 12, 'SNR ' + r.snr.toFixed(1) + ' dB');
+    const mbMin = r.bytes / 10 * 60 / 1048576;
+    t.ok(mbMin < 1.3, 'mix ' + mbMin.toFixed(2) + ' MB/min (a 16-bit WAV is 10.1)');
+    t.ok(r.cutLen >= 44100 * 5 && r.cutLen - 44100 * 5 <= 2048, 'loop cut at the end: ' + r.cutLen);
+    t.eq([r.lo.loop, r.lo.start, r.lo.frames], [true, 4410, 44100 * 5], 'loop cut');
+    t.ok(Math.floor(r.lo.offset * 44100) === 4410 && Math.round(r.lo.offset * 44100) === 4410, 'loop_offset lands on the start frame');
+    console.log(`    mix q${4}: ${mbMin.toFixed(2)} MB/min, encoded 10 s in ${r.encMs.toFixed(0)} ms`);
+  });
+  await t.test('AK.wav.decode reads 16 / 24-bit PCM sample-exact, with the smpl loop', async () => {
+    const r = await p.evaluate(async () => {
+      const sr = 22050, n = 3001, c = new Float32Array(n); for (let i = 0; i < n; i++) c[i] = 0.5 * Math.sin(i / 7);
+      const out = {};
+      for (const bits of [16, 24]) {
+        const d = AK.wav.decode(await AK.wav.encode([c, c], sr, { bitDepth: bits, loop: { start: 10, end: 2999 } }).arrayBuffer());
+        let m = 0; for (let i = 0; i < n; i++) m = Math.max(m, Math.abs(d.channels[1][i] - c[i]));
+        out[bits] = { len: d.channels[0].length, nch: d.channels.length, sr: d.sampleRate, loop: d.loop, err: m };
+      }
+      return out;
+    });
+    for (const b of [16, 24]) { t.eq([r[b].len, r[b].nch, r[b].sr, r[b].loop], [3001, 2, 22050, { start: 10, end: 2999 }]); t.ok(r[b].err < (b === 16 ? 1.5e-4 : 1e-6), b + '-bit error ' + r[b].err); }
+  });
   await t.test('AudioWorklets load from file:// (data: URL path)', async () => {
     const mode = await p.evaluate(async () => { const c = new AudioContext(); const cap = new AK.Capture(c, c.createGain(), {}); await cap.start(); const m = cap.mode; cap.stop(); return m; });
     t.eq(mode, 'worklet');
