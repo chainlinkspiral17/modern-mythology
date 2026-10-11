@@ -148,6 +148,39 @@ panel (Shift+F12) are both on. The readout shows:
 
 When a scene "sounds wrong", turn on the readout first.
 
+### 7. The DAW composes temp tracks from the director's briefs
+
+`python3 godot/tools/music_direction.py brief` writes
+`resources/music/temp_briefs.json`. It is generated, so never
+hand-edit it. `validate` warns when it is stale.
+
+The brief replays every scene the way the director would, assuming
+every catalog track has audio. For each track it records:
+- the scenes that play it, and why (cue / bgm / leitmotif / locale /
+  chapter);
+- the intensity those scenes drive (p10 / mean / p90 of the per-node
+  target);
+- whether stems are needed;
+- lexicon words, focal characters, locales;
+- choice / cg / interlude moments;
+- `energy` / `darkness`: the track's rank (0..1) against the game's
+  other music.
+
+The DAW's TEMP TRACKS (the "VN scenes first" box, on by default) uses
+it in four ways:
+- makes the most-played tracks first;
+- composes each one with `SeqGen.moodFromBrief`. The catalog text
+  decides style and mode, and the scenes' words fill in only when it
+  says nothing. Energy moves tempo and density inside the style;
+  darkness ≥ 0.8 pushes a bright mode to minor (≥ 0.95: phrygian);
+- gives a leitmotif track a song form;
+- always renders stems for a track whose scenes move its intensity.
+
+`simulate()` in `music_direction.py` is a Python port of the
+director's scoring. **Change both together.** The `godot_director`
+test runs the real GDScript and the port over every 20th real scene
+and fails on any per-node difference above 1e-4.
+
 ## Anti-patterns
 
 - ❌ **Put `bgm` nodes everywhere to force a track.** Use a cue
@@ -204,6 +237,26 @@ When a scene "sounds wrong", turn on the readout first.
      broad clean.
 - Three vol5 scenes had `.mp3` bgm srcs for `.ogg` catalog tracks.
   `validate` catches that class of drift now.
+
+### 2026-10-11 — director → DAW: temp tracks composed for their scenes
+
+- The user asked to sync the director with the DAW so temp tracks
+  fit the scenes. A brief file generated from the director (not a
+  second set of rules in the DAW) keeps one source of truth. The
+  Python port is guarded by a GDScript parity test; changing a
+  calm-word weight from 0.75 to 0.70 fails it.
+- First brief: **69 catalog tracks** are actually played by scenes:
+  31 via chapter lists, 20 as leitmotifs, 14 via bgm, 10 as locale
+  tracks. 12 need stems. The most-played are character themes: Tem
+  (29 scenes), Sam (22), Lena (20).
+- **Finding: the director barely varies its baseline between
+  scenes.** Scene baselines span only 0.47–0.51, because most lines
+  hit no lexicon word and `baseline = 0.5 + tension × 0.6`. Per-line
+  bumps, choices and CGs still move it, but scene to scene the score
+  plays at about the same strength. The briefs work around this with
+  ranks. The real fix is in the director: a bigger lexicon or a larger
+  tension gain. That's a tuning decision for the user, so it was not
+  changed silently.
 
 ## TEMPLATE
 

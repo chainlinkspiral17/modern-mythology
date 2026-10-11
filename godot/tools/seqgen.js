@@ -10,6 +10,7 @@
  *         parts: { drums|bass|chords|lead|pad: { role, patterns{pid:{name,lenBars,notes[]}}, clips[{bar,pid}], preset } } }
  *   SeqGen.part(role, songResult, { seed })    re-roll one part in place
  *   SeqGen.moodFromText(title, desc, id)       catalog brief → song options
+ *   SeqGen.moodFromBrief(track, brief)        + the MusicDirector's per-track brief (temp_briefs.json)
  *
  * Notes are { t, d, n, v } — start tick, duration ticks, MIDI note,
  * velocity 0..1 — at SeqGen.PPQ ticks per quarter note.
@@ -393,8 +394,35 @@
     const dark = ['phrygian', 'minor', 'harmonic'].includes(mode), bright = ['major', 'lydian', 'mixolydian'].includes(mode);
     return { style: m.style, form: theme && m.form !== 'loop' ? 'song' : m.form, mode, bpm, seed: hash(id || s), density: dark ? 0.45 : bright ? 0.62 : 0.55, matched: bestScore, toneScore: score[mode] || 0 };
   }
+  // The MusicDirector's brief for a track (resources/music/temp_briefs.json, from music_direction.py brief):
+  // start from the catalog text (+ the scenes' lexicon words, locales, characters), then move tempo, density and
+  // mode toward the intensity the director will actually drive in those scenes. No brief → moodFromText as is.
+  function moodFromBrief(t, b) {
+    const m = moodFromText(t.title, t.desc, t.id);
+    if (!b || !b.intensity) return Object.assign(m, { why: 'catalog text' });
+    // the catalog text was written for this track: it decides style / mode; the scenes' words only fill a blank
+    if (!m.matched || !m.toneScore) {
+      const extra = [(b.words || []).join(' '), (b.locales || []).join(' ')].join(' ');
+      const w = moodFromText(t.title, (t.desc || '') + ' ' + extra, t.id);
+      if (!m.matched && w.matched) { m.style = w.style; m.form = w.form; m.bpm = w.bpm; }
+      if (!m.toneScore && w.toneScore && SCALES[w.mode]) m.mode = w.mode;
+    }
+    // energy / darkness: this track's scenes ranked against the game's other music (0..1, 0.5 = typical)
+    const st = STYLES[m.style], e = b.energy ?? 0.5, dk = b.darkness ?? 0.5;
+    const [lo, hi] = st.bpm, span = hi - lo;
+    m.bpm = Math.round(Math.max(lo, Math.min(hi, m.bpm + (e - 0.5) * span)));
+    m.density = +Math.max(0.25, Math.min(0.85, m.density + (e - 0.5) * 0.4)).toFixed(2);
+    if (dk >= 0.8 && !MINORISH[m.mode]) m.mode = dk >= 0.95 ? 'phrygian' : 'minor';
+    else if (dk <= 0.2 && (m.mode === 'phrygian' || m.mode === 'harmonic')) m.mode = 'dorian';
+    const roles = b.roles || {}, lead = Object.keys(roles).sort((x, y) => roles[y] - roles[x])[0];
+    if (lead === 'leitmotif') m.form = 'song';                                // a character's theme has a shape
+    m.stems = !!b.stems;
+    m.why = b.scene_count + ' scene' + (b.scene_count === 1 ? '' : 's') + ' · ' + Object.entries(roles).map(([k, v]) => k + ' ' + v).join(', ') +
+      ' · energy ' + Math.round(e * 100) + '% · dark ' + Math.round(dk * 100) + '%' + (m.stems ? ' · stems' : '');
+    return m;
+  }
 
-  const API = { PPQ, BAR, S16, GM, SCALES, STYLES, FORMS, PROGS, NOTE_NAMES, rng, hash, deg2midi, chordPCs, song, part, moodFromText, romanFor };
+  const API = { PPQ, BAR, S16, GM, SCALES, STYLES, FORMS, PROGS, NOTE_NAMES, rng, hash, deg2midi, chordPCs, song, part, moodFromText, moodFromBrief, romanFor };
   if (typeof module !== 'undefined' && module.exports) module.exports = API;
   root.SeqGen = API;
 })(typeof window !== 'undefined' ? window : globalThis);

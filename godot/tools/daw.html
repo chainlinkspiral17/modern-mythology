@@ -254,7 +254,7 @@
       <h2>FOR THE GAME · catalog tracks with no audio</h2>
       <div class="row"><button id="g-temp" title="write, render, master and save temp tracks for catalog entries with no audio">⚄ TEMP TRACKS</button><input type="number" id="g-tempn" min="1" max="50" value="3" title="how many (the selected one if you picked one)"><label style="cursor:pointer;min-width:0"><input type="checkbox" id="g-tempstems" checked> stems</label></div>
       <div class="msg" id="g-tempmsg"></div>
-      <div class="row"><button class="dim" id="g-link">⌂ LINK GAME FOLDER</button><label style="cursor:pointer;min-width:0"><input type="checkbox" id="g-musiconly" checked> music-like first</label></div>
+      <div class="row"><button class="dim" id="g-link">⌂ LINK GAME FOLDER</button><label style="cursor:pointer;min-width:0"><input type="checkbox" id="g-musiconly" checked> music-like first</label><label style="cursor:pointer;min-width:0" title="order and shape temp tracks from the MusicDirector's briefs (resources/music/temp_briefs.json): the tracks most scenes play first, tempo / density / mode from how intense and dark those scenes read"><input type="checkbox" id="g-vnfirst" checked> VN scenes first</label></div>
       <div id="g-wanted" style="max-height:240px;overflow:auto"><div class="note">link the game folder to list the tracks still waiting for audio. Picking one sets style, mode and seed from its brief; GENERATE, then EXPORT → BOUNCE → INTO GAME writes it where the game looks.</div></div>
     </div>
 
@@ -1474,18 +1474,38 @@ async function reroll(role) {
 document.querySelectorAll('[data-reroll]').forEach(b => b.addEventListener('click', () => reroll(b.dataset.reroll)));
 
 // game catalog
+// The MusicDirector's briefs (python3 godot/tools/music_direction.py brief → resources/music/temp_briefs.json):
+// which catalog tracks the VN scenes actually play, how often, and how intense / dark those scenes read.
+let briefs = null;
+async function loadBriefs() {
+  try { const j = JSON.parse(await AK.game.readText('resources/music/temp_briefs.json')); briefs = Object.fromEntries((j.tracks || []).map(b => [b.id, b])); }
+  catch (e) { briefs = null; }
+}
+const briefOf = t => (briefs && $('g-vnfirst').checked && briefs[t.id]) || null;
+const moodOf = t => SeqGen.moodFromBrief(t, briefOf(t));
+function orderWanted() {
+  let list = $('g-musiconly').checked ? wanted.slice().sort((a, b) => a.fieldScore - b.fieldScore) : wanted.slice();
+  if (briefs && $('g-vnfirst').checked) {     // tracks the scenes play, most-played first; the rest keep their order after
+    const n = t => (briefs[t.id] ? briefs[t.id].scene_count : 0);
+    list = list.map((t, i) => [t, i]).sort((a, b) => n(b[0]) - n(a[0]) || a[1] - b[1]).map(x => x[0]);
+  }
+  return list;
+}
 async function refreshWanted() {
   if (!AK.game.root) return;
   try { wanted = await AK.game.wanted(); } catch (e) { $('g-wanted').innerHTML = '<div class="note">catalog unreadable: ' + esc(e.message) + '</div>'; return; }
-  const list = $('g-musiconly').checked ? wanted.slice().sort((a, b) => a.fieldScore - b.fieldScore) : wanted;
+  await loadBriefs();
+  const list = orderWanted();
   $('g-wanted').innerHTML = '';
   for (const t of list) {
-    const m = SeqGen.moodFromText(t.title, t.desc, t.id);
+    const m = moodOf(t), b = briefOf(t);
     const d = document.createElement('div'); d.className = 'item';
-    d.innerHTML = `<b>${esc(t.title)}</b> · v${t.vol} · <span style="color:var(--emerald-hi)">${esc(SeqGen.STYLES[m.style].name)} / ${m.form}</span><br><span class="note">${esc((t.desc || '').slice(0, 120))}</span>`;
+    d.innerHTML = `<b>${esc(t.title)}</b> · v${t.vol} · <span style="color:var(--emerald-hi)">${esc(SeqGen.STYLES[m.style].name)} / ${m.form} · ${m.mode} ${m.bpm}</span>` +
+      (b ? `<br><span class="note" style="color:var(--gold-hi)">♪ ${esc(m.why)}${b.chars.length ? ' · theme: ' + esc(b.chars.join(', ')) : ''}</span>` : '') +
+      `<br><span class="note">${esc((t.desc || '').slice(0, 120))}</span>`;
     d.addEventListener('click', () => {
       [...$('g-wanted').children].forEach(c => c.classList.toggle('sel', c === d)); tempPick = t;
-      $('g-style').value = m.style; $('g-form').value = m.form; $('g-mode').value = m.mode; $('g-key').value = ''; $('g-bpm').value = 0;
+      $('g-style').value = m.style; $('g-form').value = m.form; $('g-mode').value = m.mode; $('g-key').value = ''; $('g-bpm').value = b ? m.bpm : 0;
       $('g-seed').value = m.seed; $('g-dens').value = m.density;
       P.name = t.id; $('pname').value = t.id;
       if (![...$('b-target').options].some(o => o.value === t.id)) $('b-target').add(new Option('fill: ' + t.title, t.id));
@@ -1504,13 +1524,13 @@ const TEMP_MIN_SEC = 90;
 async function tempTracks() {
   if (!AK.game.root && !(await AK.game.restore(true).catch(() => null))) { msg('g-tempmsg', 'link the game folder first.', true); return; }
   if (!wanted.length) await refreshWanted();
-  const list = tempPick ? [tempPick] : ($('g-musiconly').checked ? wanted.slice().sort((a, b) => a.fieldScore - b.fieldScore) : wanted).slice(0, Math.max(1, +$('g-tempn').value || 1));
+  const list = tempPick ? [tempPick] : orderWanted().slice(0, Math.max(1, +$('g-tempn').value || 1));
   if (!list.length) { msg('g-tempmsg', 'every catalog track already has audio.'); return; }
   if (P.tracks.length && !confirm('Temp tracks replace the open project for each track (it stays undoable). Go?')) return;
   $('g-temp').disabled = true;
   const done = [];
   for (let i = 0; i < list.length; i++) {
-    const t = list[i], m = SeqGen.moodFromText(t.title, t.desc, t.id);
+    const t = list[i], m = moodOf(t);
     msg('g-tempmsg', (i + 1) + '/' + list.length + ' · ' + t.title + ' · ' + SeqGen.STYLES[m.style].name + ' ' + m.mode + ' — composing…');
     try {
       P.name = t.id;
@@ -1523,7 +1543,8 @@ async function tempTracks() {
       E.emit('project');
       await E.whenReady();
       msg('g-tempmsg', (i + 1) + '/' + list.length + ' · ' + t.title + ' — rendering…');
-      await doBounce(false, $('g-tempstems').checked && E.canRenderOffline());
+      // stems when asked — or when the director will move this track's intensity (its brief says so)
+      await doBounce(false, ($('g-tempstems').checked || m.stems) && E.canRenderOffline());
       if (!lastBounce) throw new Error('render failed');
       const base = t.src.replace(/\.[^.\/]+$/, '');
       const written = await writeToGame(base, lastBounce, lastStems, lastCredits, { title: t.title + ' (temp)' });
@@ -1539,6 +1560,7 @@ async function tempTracks() {
 $('g-temp').addEventListener('click', tempTracks);
 $('g-link').addEventListener('click', async () => { try { await AK.game.link(); refreshWanted(); } catch (e) { if (e.name !== 'AbortError') msg('g-msg', e.message || String(e), true); } });
 $('g-musiconly').addEventListener('change', refreshWanted);
+$('g-vnfirst').addEventListener('change', refreshWanted);
 AK.game.restore(false).then(h => { if (h) refreshWanted(); }).catch(() => {});
 
 // ═══════════════════════════════════════════════════════════════════

@@ -45,6 +45,41 @@ suite('daw · compose, render, stems, undo, temp tracks', async t => {
   });
 
   const SLOW = !!process.env.TEST_SLOW;   // stems = one full render per part (~5× the time)
+  await t.test('TEMP TRACKS follow the MusicDirector briefs: most-played first, composed for their scenes', async () => {
+    const game = fs.mkdtempSync(path.join(os.tmpdir(), 'mmbrief-'));
+    fs.mkdirSync(path.join(game, 'resources', 'music'), { recursive: true });
+    fs.writeFileSync(path.join(game, 'resources', 'music_catalog.json'), JSON.stringify([
+      { id: 'a_bed', vol: 1, title: 'A Bed', src: 'assets/audio/bgm/a_bed.ogg', desc: 'Quiet room tone.' },
+      { id: 'b_theme', vol: 1, title: 'B Theme', src: 'assets/audio/bgm/b_theme.ogg', desc: 'A character theme.' },
+      { id: 'c_free', vol: 1, title: 'C Unused', src: 'assets/audio/bgm/c_free.ogg', desc: 'Nobody plays this one.' }]));
+    const brief = (id, n, roles, e, dk, stems) => ({ id, scene_count: n, scenes: [], roles, baseline: 0.5, intensity: { p10: 0.4, mean: 0.5, p90: stems ? 0.7 : 0.5 }, stems, words: [], chars: [], locales: [], moments: {}, energy: e, darkness: dk });
+    fs.writeFileSync(path.join(game, 'resources', 'music', 'temp_briefs.json'), JSON.stringify({ tracks: [
+      brief('b_theme', 12, { leitmotif: 12 }, 0.9, 0.95, true), brief('a_bed', 3, { locale: 3 }, 0.1, 0.1, false)] }));
+    await p.exposeFunction('__bexists', rel => fs.existsSync(path.join(game, rel)));
+    await p.exposeFunction('__bread', rel => fs.readFileSync(path.join(game, rel), 'utf8'));
+    const r = await p.evaluate(async () => {
+      const keep = { root: AK.game.root, exists: AK.game.exists, readText: AK.game.readText };
+      AK.game.root = { name: 'brief' }; AK.game.exists = rel => window.__bexists(rel); AK.game.readText = rel => window.__bread(rel);
+      document.getElementById('g-musiconly').checked = false; document.getElementById('g-vnfirst').checked = true;
+      await refreshWanted();
+      const on = orderWanted().map(x => x.id), mb = moodOf(wanted.find(x => x.id === 'b_theme')), ma = moodOf(wanted.find(x => x.id === 'a_bed'));
+      const plain = SeqGen.moodFromText('B Theme', 'A character theme.', 'b_theme');
+      const shown = document.getElementById('g-wanted').textContent;
+      document.getElementById('g-vnfirst').checked = false; await refreshWanted();
+      const off = orderWanted().map(x => x.id), plainOrder = wanted.map(x => x.id);
+      document.getElementById('g-vnfirst').checked = true; document.getElementById('g-musiconly').checked = true;
+      Object.assign(AK.game, keep);
+      return { on, off, plainOrder, mb, ma, plain, shown };
+    });
+    t.eq(r.on, ['b_theme', 'a_bed', 'c_free'], 'most-played first, unplayed last');
+    t.eq(r.off, r.plainOrder, 'VN-first off: the usual order');
+    t.ok(r.on.join() !== r.off.join(), 'briefs change the order');
+    t.eq([r.mb.form, r.mb.stems], ['song', true], 'leitmotif → a song form; a moving intensity → stems');
+    t.ok(r.mb.bpm > r.ma.bpm || r.mb.style !== r.ma.style, `energy: ${r.mb.bpm} vs ${r.ma.bpm}`);
+    t.ok(['minor', 'phrygian', 'dorian', 'harmonic'].includes(r.mb.mode), 'dark scenes → a dark mode: ' + r.mb.mode);
+    t.ok(r.mb.density > r.plain.density, `busier than the text-only mood: ${r.mb.density} vs ${r.plain.density}`);
+    t.ok(/12 scenes/.test(r.shown) && /leitmotif 12/.test(r.shown), 'the list says why');
+  });
   await t.test('TEMP TRACKS writes a mastered ≥ 90 s track' + (SLOW ? ' + stems + manifest' : '') + ' into the game folder', async () => {
     const game = fs.mkdtempSync(path.join(os.tmpdir(), 'mmgame-'));
     fs.mkdirSync(path.join(game, 'resources'), { recursive: true });

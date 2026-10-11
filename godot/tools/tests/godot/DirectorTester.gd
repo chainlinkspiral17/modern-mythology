@@ -56,5 +56,16 @@ func _ready() -> void:
 	# 7. replay to a node index rebuilds the target without side effects
 	md.begin_scene("t_cued", cued); md.replay(2)
 	out["replay"] = md.state().target
+	# 3. parity: real scenes (written by the test) through the director — tools/music_direction.py replays the same
+	if FileAccess.file_exists("res://parity.json"):
+		var par := {}
+		for s in JSON.parse_string(FileAccess.get_file_as_string("res://parity.json")):
+			md.begin_scene(str(s.id), s)
+			var tg := []
+			for i in s.nodes.size():
+				md.on_node(i, s.nodes[i])
+				tg.append(md._target)
+			par[str(s.id)] = {"baseline": md._baseline, "focal": md._focal, "targets": tg}
+		out["parity"] = par
 	print("RESULT " + JSON.stringify(out))
 	get_tree().quit()

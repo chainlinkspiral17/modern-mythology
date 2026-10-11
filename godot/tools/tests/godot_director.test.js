@@ -34,6 +34,11 @@ suite('godot · VN MusicDirector', async t => {
     locales_auto: { 'assets/backgrounds/vol1_club_dance.jpg': { 1: 'vol1_club_thump' } },
     characters_auto: { sharp: { theme: 'vol1_sharp_theme', leitmotif: true } } }));
   for (const f of ['vol1_sharp_theme', 'vol1_club_thump', 'vol1_cue']) wav(path.join(proj, 'assets/audio/bgm', f + '.wav'));
+  // parity: every 20th real scene — the GDScript director and tools/music_direction.py must score them identically
+  const scDir = path.join(GAME, 'resources', 'scenes'), parity = [];
+  const files = fs.readdirSync(scDir).filter(v => /^vol\d+$/.test(v)).flatMap(v => fs.readdirSync(path.join(scDir, v)).filter(f => f.endsWith('.json')).map(f => path.join(scDir, v, f))).sort();
+  files.forEach((f, i) => { if (i % 20 === 0) { const s = JSON.parse(fs.readFileSync(f, 'utf8')); s.id = s.id || path.basename(f, '.json'); parity.push(s); } });
+  fs.writeFileSync(path.join(proj, 'parity.json'), JSON.stringify(parity));
   let r = null;
   await t.test('runs headless', async () => {
     cp.spawnSync(godot, ['--headless', '--path', proj, '--import'], { timeout: 180000 });
@@ -43,6 +48,27 @@ suite('godot · VN MusicDirector', async t => {
     r = JSON.parse(line.slice(7));
   });
   if (!r) return;
+  await t.test('parity: tools/music_direction.py scores real scenes exactly like the GDScript director', async () => {
+    t.ok(r.parity && Object.keys(r.parity).length >= 10, 'parity scenes ran: ' + Object.keys(r.parity || {}).length);
+    const py = cp.spawnSync('python3', ['-I', '-c', `
+import json, sys; sys.path.insert(0, ${JSON.stringify(TOOLS)})
+import music_direction as m
+d = json.load(open(${JSON.stringify(path.join(proj, 'resources', 'music', 'direction.json'))}))
+out = {}
+for s in json.load(open(${JSON.stringify(path.join(proj, 'parity.json'))})):
+    r = m.simulate(s['id'], s, d, {})
+    out[s['id']] = {'baseline': r['baseline'], 'focal': r['focal'], 'targets': r['targets']}
+print(json.dumps(out))`], { encoding: 'utf8' });
+    t.ok(py.status === 0, 'python: ' + py.stderr.slice(-400));
+    const P = JSON.parse(py.stdout); let worst = 0, where = '';
+    for (const [id, g] of Object.entries(r.parity)) {
+      const q = P[id]; t.ok(q, 'python skipped ' + id);
+      t.near(q.baseline, g.baseline, 1e-4, id + ' baseline'); t.eq(q.focal, g.focal, id + ' focal');
+      t.eq(q.targets.length, g.targets.length, id + ' nodes');
+      g.targets.forEach((v, i) => { const e = Math.abs(v - q.targets[i]); if (e > worst) { worst = e; where = id + ' node ' + i; } });
+    }
+    t.ok(worst < 1e-4, 'per-node target differs by ' + worst.toFixed(5) + ' at ' + where);
+  });
   await t.test('inference: tense writing plays harder than calm writing', async () => {
     t.ok(r.tense.target > r.calm.target + 0.25, `tense ${r.tense.target} vs calm ${r.calm.target}`);
     t.ok(r.tense.baseline > r.calm.baseline, 'scene baselines');

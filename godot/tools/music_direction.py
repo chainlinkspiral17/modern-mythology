@@ -9,6 +9,8 @@ tool keeps it honest.
                                                        # catalog + scenes (authored sections untouched)
     python3 godot/tools/music_direction.py validate   # CI: every reference resolves
     python3 godot/tools/music_direction.py report     # coverage: which scenes get which music, and why
+    python3 godot/tools/music_direction.py brief      # resources/music/temp_briefs.json — what each
+                                                       # track must do for its scenes (the DAW's TEMP TRACKS read it)
 
 Sections of direction.json
   defaults        tuning: base intensity, attack / release seconds, leitmotif cooldown…
@@ -205,6 +207,239 @@ def validate(direction, cat, sc):
     return errors, warns
 
 
+# ── the director, replayed in Python (keep in step with scripts/vn/MusicDirector.gd — the
+#    godot_director test runs both over the same scenes and compares) ─────────────────────
+_STRIP = '.,!?—'
+
+
+def text_score(text, direction):
+    """MusicDirector._text_score: tension of a line, -0.5 … +0.5."""
+    if not text:
+        return 0.0
+    low = text.lower()
+    lex = direction.get('lexicon', {})
+    step = float(direction.get('defaults', {}).get('word_step', 0.12))
+    words = set()
+    for w in low.split(' '):
+        if not w:
+            continue
+        w = w.strip()
+        for ch in _STRIP:                       # GDScript trims each suffix once, in this order
+            if w.endswith(ch):
+                w = w[:-1]
+        words.add(w)
+    sc = 0.0
+    for w in lex.get('tension', []):
+        if (' ' in w and w in low) or w in words:
+            sc += step
+    for w in lex.get('calm', []):
+        if (' ' in w and w in low) or w in words:
+            sc -= step * 0.75
+    sc += 0.06 * min(3, text.count('!'))
+    if len(text) < 28 and (text.endswith('!') or text.endswith('?') or text.endswith('—')):
+        sc += 0.05
+    caps = sum(1 for w in text.split(' ') if w and len(w) >= 3 and w == w.upper() and w != w.lower())
+    sc += 0.04 * min(3, caps)
+    if '…' in text or '...' in text:
+        sc -= 0.03
+    return max(-0.5, min(0.5, sc))
+
+
+def _clamp(v, a, b):
+    return max(a, min(b, v))
+
+
+def char_key(name):
+    return name.strip().lower().replace(' ', '_')
+
+
+def theme_of(direction, key):
+    for sec in ('characters', 'characters_auto'):
+        m = direction.get(sec, {}).get(key)
+        if isinstance(m, dict):
+            return m.get('theme', '') if m.get('leitmotif', True) else ''
+    return ''
+
+
+def locale_track(direction, src, vol):
+    for sec in ('locales', 'locales_auto'):
+        m = direction.get(sec, {}).get(src)
+        if isinstance(m, str):
+            return m
+        if isinstance(m, dict) and str(vol) in m:
+            return m[str(vol)]
+    return ''
+
+
+def simulate(sid, scene, direction, cat_by_src):
+    """One scene as the director plays it, assuming every catalog track has audio:
+    {tracks: [(catalog id, role)], baseline, targets: [per node], focal}."""
+    d = direction.get('defaults', {})
+    dv = lambda k, v: float(d.get(k, v))
+    nodes = scene.get('nodes', [])
+    vol = scene.get('vol', 0)
+    cue = direction.get('scenes', {}).get(sid, {})
+    cue = cue if isinstance(cue, dict) else {}
+    lines = [n for n in nodes if n.get('t') in ('narrate', 'say', 'think')]
+    tension = sum(text_score(str(n.get('text', '')), direction) for n in lines) / len(lines) if lines else 0.0
+    baseline = _clamp(dv('base_intensity', 0.5) + tension * 0.6, 0.15, 0.9)
+    pinned = False
+    if 'intensity' in cue:
+        baseline, pinned = _clamp(float(cue['intensity']), 0.0, 1.0), True
+    target = baseline
+    # focal character (most say/think lines, ≥ 30 %, themed)
+    focal = ''
+    if d.get('leitmotifs', True):
+        cnt, total = collections.Counter(), 0
+        for n in nodes:
+            if n.get('t') in ('say', 'think') and isinstance(n.get('char'), str):
+                cnt[char_key(n['char'])] += 1
+                total += 1
+        best, best_n = '', 0
+        for k, v in cnt.items():                # first-seen order, strictly greater — like the GDScript dict walk
+            if v > best_n and theme_of(direction, k):
+                best, best_n = k, v
+        focal = best if total and best_n / total >= 0.3 else ''
+    has_bgm = any(n.get('t') == 'bgm' or (n.get('t') == 'music' and 'track' in n) for n in nodes)
+    tracks, reason = [], 'chapter'
+    if cue.get('silence'):
+        reason = 'silence'
+    elif cue.get('track'):
+        tracks.append((cue['track'], 'cue')); reason = 'cue'
+    elif has_bgm:
+        reason = 'bgm'
+        for n in nodes:
+            if n.get('t') == 'bgm' and n.get('src') in cat_by_src:
+                tracks.append((cat_by_src[n['src']], 'bgm'))
+            elif n.get('t') == 'music' and n.get('track'):
+                tracks.append((n['track'], 'bgm'))
+    elif focal and theme_of(direction, focal):
+        tracks.append((theme_of(direction, focal), 'leitmotif')); reason = 'leitmotif'
+
+    def infer(v, peak):
+        nonlocal target
+        if not pinned:
+            target = max(target, v) if peak else v
+
+    def apply(b):
+        nonlocal target, pinned
+        if b.get('silence'):
+            return
+        if isinstance(b.get('track'), str) and b['track']:
+            tracks.append((b['track'], 'cue'))
+        if isinstance(b.get('intensity'), (int, float)) and not isinstance(b.get('intensity'), bool):
+            target, pinned = _clamp(float(b['intensity']), 0.0, 1.0), True
+        if b.get('auto'):
+            pinned = False
+
+    targets = []
+    for idx, n in enumerate(nodes):
+        t = n.get('t', '')
+        for b in cue.get('beats', []):
+            if not isinstance(b, dict):
+                continue
+            at = b.get('at')
+            if (isinstance(at, (int, float)) and not isinstance(at, bool) and int(at) == idx) or (isinstance(at, str) and at == t):
+                apply(b)
+        if t == 'music':
+            apply(n)
+        elif t == 'bg':
+            if not cue.get('track') and not has_bgm and reason == 'chapter':
+                lt = locale_track(direction, str(n.get('src', '')), vol)
+                if lt:
+                    tracks.append((lt, 'locale')); reason = 'locale'
+        elif t == 'choice':
+            infer(dv('choice_intensity', 0.85), True)
+        elif t == 'interlude':
+            infer(dv('interlude_intensity', 0.2), False)
+        elif t == 'cg':
+            infer(dv('cg_intensity', 0.9), True)
+        elif t in ('narrate', 'say', 'think'):
+            sc = text_score(str(n.get('text', '')), direction)
+            if t == 'think':
+                sc += dv('think_offset', -0.1)
+            infer(_clamp(baseline + sc, 0.05, 1.0), False)
+        elif t == 'end' and d.get('end_of_volume_release', True):
+            infer(baseline * 0.6, False)
+        targets.append(round(target, 4))
+    return {'tracks': tracks, 'reason': reason, 'baseline': round(baseline, 4), 'tension': round(tension, 4),
+            'targets': targets, 'focal': focal}
+
+
+def _pct(xs, q):
+    xs = sorted(xs)
+    return xs[min(len(xs) - 1, max(0, int(round(q * (len(xs) - 1)))))] if xs else 0.0
+
+
+def brief(direction, cat, sc):
+    """What each catalog track has to do for the scenes the director will play it in."""
+    by_id = {c['id']: c for c in cat}
+    cat_by_src = {c['src']: c['id'] for c in cat}
+    lex = direction.get('lexicon', {})
+    acc = collections.defaultdict(lambda: {'scenes': [], 'roles': collections.Counter(), 'targets': [], 'baselines': [],
+                                           'words': collections.Counter(), 'chars': collections.Counter(),
+                                           'locales': collections.Counter(), 'moments': collections.Counter()})
+    for sid, s in sorted(sc.items()):
+        sim = simulate(sid, s, direction, cat_by_src)
+        used = list(dict.fromkeys(sim['tracks']))
+        if not used:                                         # chapter tracks from the catalog, else nothing specific
+            used = [(c['id'], 'chapter') for c in cat if sid in (c.get('chapters') or [])]
+        text = ' '.join(str(n.get('text', '')).lower() for n in s.get('nodes', []) if n.get('t') in ('narrate', 'say', 'think'))
+        hits = [w for w in lex.get('tension', []) + lex.get('calm', []) if re.search(r'(?<![a-z])' + re.escape(w) + r'(?![a-z])', text)]
+        for tid, role in used:
+            if tid not in by_id:
+                continue
+            a = acc[tid]
+            a['scenes'].append(sid)
+            a['roles'][role] += 1
+            a['targets'] += sim['targets']
+            a['baselines'].append(sim['baseline'])
+            a['words'].update(hits)
+            if sim['focal']:
+                a['chars'][sim['focal']] += 1
+            for n in s.get('nodes', []):
+                if n.get('t') == 'bg' and n.get('src'):
+                    a['locales'][toks(str(n['src']))[0] if toks(str(n['src'])) else str(n['src'])] += 1
+                if n.get('t') in ('choice', 'cg', 'interlude'):
+                    a['moments'][n['t']] += 1
+    out = {}
+    for tid, a in acc.items():
+        c, tg = by_id[tid], a['targets'] or a['baselines']
+        lo, hi = _pct(tg, 0.1), _pct(tg, 0.9)
+        out[tid] = {
+            'id': tid, 'vol': c.get('vol'), 'title': c.get('title'), 'src': c.get('src'),
+            'scene_count': len(a['scenes']), 'scenes': a['scenes'][:16],
+            'roles': dict(a['roles'].most_common()),
+            'baseline': round(sum(a['baselines']) / len(a['baselines']), 3),
+            'intensity': {'p10': round(lo, 3), 'mean': round(sum(tg) / len(tg), 3) if tg else 0.5, 'p90': round(hi, 3)},
+            'stems': hi - lo >= 0.2,           # the director will move this track's intensity: render layered stems
+            'words': [w for w, _ in a['words'].most_common(10)],
+            'chars': [k for k, _ in a['chars'].most_common(4)],
+            'locales': [k for k, _ in a['locales'].most_common(4)],
+            'moments': dict(a['moments']),
+        }
+    # the director's absolute levels sit close together across the game (most lines carry no lexicon words), so
+    # also rank each track against the others: energy = its scenes' mean intensity, darkness = their tension
+    def rank(key):
+        vals = sorted(key(b) for b in out.values())
+        return lambda v: round((sum(1 for x in vals if x < v) + 0.5 * sum(1 for x in vals if x == v)) / len(vals), 3)
+    re_, rd = rank(lambda b: b['intensity']['mean']), rank(lambda b: b['baseline'])
+    for b in out.values():
+        b['energy'], b['darkness'] = re_(b['intensity']['mean']), rd(b['baseline'])
+    ranked = sorted(out.values(), key=lambda b: (-b['scene_count'], b['vol'] or 0, b['id']))
+    return {'_doc': 'GENERATED by `python3 godot/tools/music_direction.py brief` from direction.json, the catalog and '
+                    'every scene — never hand-edit. Per catalog track: the scenes the MusicDirector plays it in (assuming '
+                    'every track has audio), why (cue / bgm / leitmotif / locale / chapter), the intensity those scenes '
+                    'drive (0..1: p10 / mean / p90 of the director\'s per-node target), whether stems are needed, the '
+                    'lexicon words, focal characters, locales and choice / cg / interlude moments; energy / darkness rank the '
+                    'track against the others (0..1). The DAW\'s TEMP TRACKS '
+                    'compose from it. See lore/_MUSIC_DIRECTION_PLAYBOOK.md.',
+            'tracks': ranked}
+
+
+BRIEFS = os.path.join(GODOT, 'resources', 'music', 'temp_briefs.json')
+
+
 def report(direction, cat, sc):
     by_src = {c['src']: c['id'] for c in cat}
     rows = collections.Counter()
@@ -257,6 +492,9 @@ def main():
         print(f'wrote {os.path.relpath(DIRECTION, GODOT)}: {nl} locale suggestions, {nc} character themes')
     elif cmd == 'validate':
         errors, warns = validate(direction, cat, sc)
+        if os.path.exists(BRIEFS) and load_json(BRIEFS) != json.loads(json.dumps(brief(direction, cat, sc), ensure_ascii=False)):
+            warns.append('resources/music/temp_briefs.json is out of date with the scenes / direction — run '
+                         '`python3 godot/tools/music_direction.py brief` (the DAW\'s TEMP TRACKS read it)')
         for w in warns:
             print('warning: ' + w)
         for e in errors:
@@ -265,6 +503,14 @@ def main():
         sys.exit(1 if errors else 0)
     elif cmd == 'report':
         report(direction, cat, sc)
+    elif cmd == 'brief':
+        b = brief(direction, cat, sc)
+        with open(BRIEFS, 'w', encoding='utf-8') as f:
+            json.dump(b, f, indent=1, ensure_ascii=False)
+            f.write('\n')
+        t = b['tracks']
+        print(f'wrote {os.path.relpath(BRIEFS, GODOT)}: {len(t)} tracks the director plays, '
+              f'{sum(1 for x in t if x["stems"])} need stems; top: ' + ', '.join(f'{x["id"]} ({x["scene_count"]})' for x in t[:5]))
     else:
         sys.exit(__doc__)
 
