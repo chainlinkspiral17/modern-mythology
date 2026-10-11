@@ -3411,5 +3411,95 @@
     },
     "output": "godot/assets/3d/characters/heroes/margaret_coop.glb",
     "file_size_kb": 58195.7
+  },
+  {
+    "at": "2026-10-11T19:42:41+00:00",
+    "stage": "image",
+    "slug": "soren",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "Soren, 30s, who runs the Daily Grind coffee shop in Smolvud. Behind the counter in a canvas apron over a flannel shirt, sleeves rolled, jeans, boots, a rag over one shoulder.\nFull-body concept render of Soren, a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/soren/soren_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/soren/soren_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/soren/soren_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-11T19:43:53+00:00",
+    "stage": "image",
+    "slug": "soren",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Soren like this: Young black man, hip and wise.\nFull-body concept render of Soren, a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/soren/soren_front_openai_gpt-image-2.5-sunburst_02.png",
+      "godot/assets/concept/meshy/soren/soren_side_openai_gpt-image-2.5-sunburst_02.png",
+      "godot/assets/concept/meshy/soren/soren_back_openai_gpt-image-2.5-sunburst_02.png"
+    ]
+  },
+  {
+    "at": "2026-10-11T19:44:41+00:00",
+    "stage": "image",
+    "slug": "soren",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Soren like this: Young black man, hip and wise.\nFull-body concept render of Soren, a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/soren/soren_front_openai_gpt-image-2.5-sunburst_03.png",
+      "godot/assets/concept/meshy/soren/soren_side_openai_gpt-image-2.5-sunburst_03.png",
+      "godot/assets/concept/meshy/soren/soren_back_openai_gpt-image-2.5-sunburst_03.png"
+    ]
+  },
+  {
+    "at": "2026-10-11T19:48:21+00:00",
+    "stage": "mesh",
+    "slug": "soren",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a12c7f-27f0-7169-90ee-072f98ae9f36",
+    "inputs": [
+      "godot/assets/concept/meshy/soren/front.png",
+      "godot/assets/concept/meshy/soren/side.png",
+      "godot/assets/concept/meshy/soren/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "smart-topology",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/soren.glb",
+    "file_size_kb": 70151.6
   }
 ]
