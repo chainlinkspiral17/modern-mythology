@@ -1350,6 +1350,11 @@
    "md5": "f5dc0e806bb479c87083d72a3c30c423",
    "size": 153018
   },
+  "godot/assets/3d/characters/heroes/soren.glb": {
+   "at": "2026-10-11T19:53:40+00:00",
+   "md5": "97723f15bd0da9b86c2296e34fac9a2a",
+   "size": 71835256
+  },
   "godot/assets/3d/characters/heroes/tanya_horne.glb": {
    "at": "2026-10-01T01:48:41+00:00",
    "md5": "be62bab48825268674d8b11bd849e4d7",
@@ -54259,6 +54264,71 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "79471bc4b2f4f14e1a7aa32e20708a28",
    "size": 71019
+  },
+  "godot/assets/concept/meshy/soren/back.png": {
+   "at": "2026-10-11T19:53:54+00:00",
+   "md5": "64319b6ede95b9468c3cc70887649365",
+   "size": 1953925
+  },
+  "godot/assets/concept/meshy/soren/front.png": {
+   "at": "2026-10-11T19:53:54+00:00",
+   "md5": "22bcdfa927115c66b3358e752fefaf1e",
+   "size": 1988946
+  },
+  "godot/assets/concept/meshy/soren/meshy_thumb.png": {
+   "at": "2026-10-11T19:53:54+00:00",
+   "md5": "6b1c90a3057916fda819a0b09ee09749",
+   "size": 84056
+  },
+  "godot/assets/concept/meshy/soren/side.png": {
+   "at": "2026-10-11T19:53:54+00:00",
+   "md5": "709f825e4373b5b9c4d70cc87688973d",
+   "size": 1922376
+  },
+  "godot/assets/concept/meshy/soren/soren_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T19:53:54+00:00",
+   "md5": "9aa06ca66f1057a52f415f2045f388be",
+   "size": 2095105
+  },
+  "godot/assets/concept/meshy/soren/soren_back_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-11T19:53:54+00:00",
+   "md5": "c65104a7a6862171217fbf06ff8f5303",
+   "size": 2063799
+  },
+  "godot/assets/concept/meshy/soren/soren_back_openai_gpt-image-2.5-sunburst_03.png": {
+   "at": "2026-10-11T19:53:54+00:00",
+   "md5": "64319b6ede95b9468c3cc70887649365",
+   "size": 1953925
+  },
+  "godot/assets/concept/meshy/soren/soren_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T19:53:54+00:00",
+   "md5": "a9a7a7c9e4d64742f304123578461afb",
+   "size": 2076857
+  },
+  "godot/assets/concept/meshy/soren/soren_front_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-11T19:53:54+00:00",
+   "md5": "fad0723e4dc4d2c005d4f19fe09642e0",
+   "size": 1978895
+  },
+  "godot/assets/concept/meshy/soren/soren_front_openai_gpt-image-2.5-sunburst_03.png": {
+   "at": "2026-10-11T19:53:54+00:00",
+   "md5": "22bcdfa927115c66b3358e752fefaf1e",
+   "size": 1988946
+  },
+  "godot/assets/concept/meshy/soren/soren_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T19:53:54+00:00",
+   "md5": "c01587676b62b088bb9ea7af06d16c88",
+   "size": 1966838
+  },
+  "godot/assets/concept/meshy/soren/soren_side_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-11T19:53:54+00:00",
+   "md5": "a396ca7c76e7c30eeb7bf9b1c9ae768a",
+   "size": 1932568
+  },
+  "godot/assets/concept/meshy/soren/soren_side_openai_gpt-image-2.5-sunburst_03.png": {
+   "at": "2026-10-11T19:53:54+00:00",
+   "md5": "709f825e4373b5b9c4d70cc87688973d",
+   "size": 1922376
   },
   "godot/assets/concept/meshy/tanya_horne/front.png": {
    "at": "2026-10-01T01:23:48+00:00",
