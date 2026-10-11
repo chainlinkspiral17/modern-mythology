@@ -3597,5 +3597,53 @@
     },
     "output": "godot/assets/3d/characters/heroes/coach_k.glb",
     "file_size_kb": 39671.6
+  },
+  {
+    "at": "2026-10-11T20:12:01+00:00",
+    "stage": "image",
+    "slug": "coach_k_home",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Coach K (at home, ch19) like this: In a different bedroom in a different house in a different cul-de-sac, Coach K is in his bed beside Eileen. Eileen is asleep. Coach K is not. Coach K is lying on his back looking at the ceiling. Additional direction: Coach K, 50s, at home on a Friday night: a worn grey t-shirt and plaid flannel pyjama trousers, barefoot, reading glasses pushed up onto his close-cropped greying hair, a folded newspaper under one arm. The same thick shoulders, the same sun-lined face, unguarded.\nFull-body concept render of Coach K (at home, ch19), a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/coach_k_home/coach_k_home_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/coach_k_home/coach_k_home_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/coach_k_home/coach_k_home_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-11T20:14:56+00:00",
+    "stage": "mesh",
+    "slug": "coach_k_home",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a12c98-1ce4-7653-b6bc-76505d5ba43d",
+    "inputs": [
+      "godot/assets/concept/meshy/coach_k_home/front.png",
+      "godot/assets/concept/meshy/coach_k_home/side.png",
+      "godot/assets/concept/meshy/coach_k_home/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "smart-topology",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/coach_k_home.glb",
+    "file_size_kb": 41927.0
   }
 ]
