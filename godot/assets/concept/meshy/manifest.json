@@ -2095,5 +2095,139 @@
     "slug": "coach_guidry",
     "glb": "godot/assets/3d/characters/heroes/coach_guidry.glb",
     "when": "2026-09-26T22:48:12+00:00"
+  },
+  {
+    "at": "2026-10-04T23:20:21+00:00",
+    "stage": "image",
+    "slug": "sam_miller",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Sam Miller like this: Eighteen. Brown hair to her shoulders. The Kwik Stop pinks-and-blues uniform polo, untucked. Her name tag, plastic, reads SAM in marker because the corporate label-maker has been broken since 2019. She is in the t-shirt and pajama pants she sleeps in. She is barefoot. Her hair is on one side of her head in the way it always is when she wakes \u2014 the small tilt that has been the same since she was three. She is in her Kwik Stop polo. She is carrying her backpack. She has, Bianca registers, the specific clean morning face of a seventeen-year-old who has, this Friday, slept better than she has been sleeping. At seven thirty-one Sam comes downstairs in her Kwik Stop polo. Sammy has been up since seven, has come downstairs in her Kwik Stop polo and the jeans she has been wearing too many days in a row she has decided she wants Jen to see her with her hair up and her eyes clear and her back straight Sammy is, this afternoon, in the soft cotton shorts and the old t-shirt she wears at home on Sundays. Her hair is, in fact, exactly as she has worn it for the past two years.\nFull-body concept render of Sam Miller, a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/sam_miller/sam_miller_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/sam_miller/sam_miller_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/sam_miller/sam_miller_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-04T23:24:11+00:00",
+    "stage": "mesh",
+    "slug": "sam_miller",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a10938-65d2-76a7-81c8-23052c5fdea2",
+    "inputs": [
+      "godot/assets/concept/meshy/sam_miller/front.png",
+      "godot/assets/concept/meshy/sam_miller/side.png",
+      "godot/assets/concept/meshy/sam_miller/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "smart-topology",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/sam_miller.glb",
+    "file_size_kb": 62018.5
+  },
+  {
+    "at": "2026-10-04T23:25:44+00:00",
+    "stage": "image",
+    "slug": "chief_miller",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Chief Miller like this: Chief Dale Miller \u2014 Police Chief of Harmony Creek, thirteen years in the role, former marine, father of one He is in his civilian clothes \u2014 the gray slacks her mother had laid out this morning, the white shirt, no tie. His hands are not cuffed. He has, Ramirez had explained at six AM, agreed to a self-surrender arrangement that did not involve cuffs as long as he was cooperating, which he is, fully, intending to do. He looks, in the courtroom light, smaller than Sam had ever seen him. He is not in uniform. He is in jeans and the plaid shirt he wears when he is not, technically, performing as the Chief. He is not in uniform. He is in jeans and a short-sleeve shirt \u2014 the kind of shirt Sam has not, in some years, seen him in on a weekday evening. He has a glass of red wine. He smiles \u2014 the warm automatic smile he has been smiling at Sam since she was born, the smile Sam has never, in seventeen years, thought to question. He comes downstairs at 07:14. He is already in uniform.\nFull-body concept render of Chief Miller, a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/chief_miller/chief_miller_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/chief_miller/chief_miller_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/chief_miller/chief_miller_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-04T23:26:28+00:00",
+    "stage": "image",
+    "slug": "chief_miller",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front"
+    ],
+    "count": 1,
+    "prompt": "The story describes Chief Miller like this: serious, not smiling. Chief Dale Miller \u2014 Police Chief of Harmony Creek, thirteen years in the role, former marine, father of one\n\nHe is in his civilian clothes \u2014 the gray slacks her mother had laid out this morning, the white shirt, no tie. His hands are not cuffed. He has, Ramirez had explained at six AM, agreed to a self-surrender arrangement that did not involve cuffs as long as he was cooperating, which he is, fully, intending to do. He looks, in the courtroom light, smaller than Sam had ever seen him.\n\nHe is not in uniform. He is in jeans and the plaid shirt he wears when he is not, technically, performing as the Chief.\n\nHe is not in uniform. He is in jeans and a short-sleeve shirt \u2014 the kind of shirt Sam has not, in some years, seen him in on a weekday evening. He has a glass of red wine.\n\nHe smiles \u2014 the warm automatic smile he has been smiling at Sam since she was born, the smile Sam has never, in seventeen years, thought to question.\n\nHe comes downstairs at 07:14. He is already in uniform.\nFull-body concept render of Chief Miller, a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/chief_miller/chief_miller_front_openai_gpt-image-2.5-sunburst_02.png"
+    ]
+  },
+  {
+    "at": "2026-10-05T00:05:01+00:00",
+    "stage": "image",
+    "slug": "chief_miller",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Chief Miller like this: Serious, not smiling Additional direction: Chief Miller, Sam's father, the Harmony Creek police chief, 50. Barrel-chested, close-cropped grey hair, a dark navy police uniform shirt with a badge and epaulettes, duty belt, navy trousers, black boots, a campaign hat under one arm.\nFull-body concept render of Chief Miller, a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/chief_miller/chief_miller_front_openai_gpt-image-2.5-sunburst_03.png",
+      "godot/assets/concept/meshy/chief_miller/chief_miller_side_openai_gpt-image-2.5-sunburst_02.png",
+      "godot/assets/concept/meshy/chief_miller/chief_miller_back_openai_gpt-image-2.5-sunburst_02.png"
+    ]
+  },
+  {
+    "at": "2026-10-05T00:10:59+00:00",
+    "stage": "mesh",
+    "slug": "chief_miller",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a10963-4267-7596-8e6d-afcaa86a8726",
+    "inputs": [
+      "godot/assets/concept/meshy/chief_miller/front.png",
+      "godot/assets/concept/meshy/chief_miller/side.png",
+      "godot/assets/concept/meshy/chief_miller/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "smart-topology",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/chief_miller.glb",
+    "file_size_kb": 46477.2
   }
 ]
