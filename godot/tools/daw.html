@@ -75,6 +75,12 @@
   .kv input[type=range] { width: 100%; }
   canvas.meter { width: 100%; height: 6px; display: block; margin-top: 3px; }
   .item { border: 1px solid var(--rule); padding: 4px 6px; margin-bottom: 3px; cursor: pointer; font-size: 10px; }
+  .item.pick-row { min-height: 40px; font-size: 12px; display: flex; flex-wrap: wrap; align-items: center; gap: 4px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 5px; }
+  .chips .chip { min-height: 38px; min-width: 44px; padding: 0 11px; border-radius: 19px; font-size: 11px; letter-spacing: 0.06em; }
+  .chips .chip.on { background: var(--rust); color: var(--ink); }
+  .chips .chip i { font-style: normal; opacity: 0.65; font-size: 10px; }
+  button.pick { flex: 1; min-height: 40px; text-align: left; font-size: 12px; }
   .item:hover { border-color: var(--gold); }
   .item.sel { border-color: var(--rust); background: var(--ink); }
   .item b { color: var(--gold-hi); font-weight: normal; }
@@ -1387,15 +1393,31 @@ const ROLE_LEVEL = { drums: 0.62, bass: 0.6, chords: 0.42, lead: 0.42, pad: 0.36
 // 'gugs:<bank>.<program>' (GM program numbers from 0; bank 128 = drum kits: 0 standard, 8 room, 16 power, 24 electronic,
 // 25 TR-808, 32 jazz, 40 brush, 48 orchestra).
 // alternates per style and role (GeneralUser GS GM programs, bank 128 = kits) — the track seed picks one,
-// so two noir themes don't share all five instruments
+// so two noir themes don't share all five instruments. The two VSCO picks are real string / harp sections:
+// big WAVs (~60 MB per articulation) on their first download. FORGE alternates live in SeqGen.FORGE_POOLS.
 const PATCH_POOLS = {
-  noir:      { drums: ['gugs:128.32'], bass: ['gugs:0.35', 'gugs:0.33'], chords: ['gugs:0.4', 'gugs:0.0', 'gugs:0.26'], lead: ['gugs:0.66', 'gugs:0.59', 'gugs:0.71', 'gugs:0.11'], pad: ['gugs:0.49', 'gugs:0.92', 'gugs:0.52'] },
-  ambient:   { drums: ['gugs:128.40'], bass: ['gugs:0.35', 'gugs:0.42'], chords: ['gugs:0.92', 'gugs:0.4', 'gugs:0.46'], lead: ['gugs:0.12', 'gugs:0.14', 'gugs:0.98', 'gugs:0.75'], pad: ['gugs:0.89', 'gugs:0.95', 'gugs:0.99', 'gugs:0.52'] },
-  lofi:      { bass: ['gugs:0.33'], chords: ['gugs:0.4', 'gugs:0.0'], lead: ['gugs:0.11', 'gugs:0.24', 'gugs:0.12'], pad: ['gugs:0.49', 'gugs:0.52'] },
-  four_floor: { drums: ['gugs:128.25'], bass: ['gugs:0.39', 'gugs:0.87'], chords: ['gugs:0.81', 'gugs:0.95'], lead: ['gugs:0.84', 'gugs:0.98'], pad: ['gugs:0.90', 'gugs:0.95'] },
-  motorik:   { drums: ['gugs:128.24'], bass: ['gugs:0.38', 'gugs:0.34'], chords: ['gugs:0.90', 'gugs:0.27'], lead: ['gugs:0.81', 'gugs:0.84'], pad: ['gugs:0.89', 'gugs:0.95'] },
-  synthwave: { bass: ['gugs:0.39'], chords: ['gugs:0.81'], lead: ['gugs:0.84', 'gugs:0.86'], pad: ['gugs:0.95', 'gugs:0.90'] },
-  shuffle:   { drums: ['gugs:128.0'], bass: ['gugs:0.33'], chords: ['gugs:0.25', 'gugs:0.4'], lead: ['gugs:0.66', 'gugs:0.22', 'gugs:0.27'], pad: ['gugs:0.17'] },
+  noir:      { drums: ['gugs:128.32', 'gugs:128.40'], bass: ['gugs:0.35', 'gugs:0.33'], chords: ['gugs:0.4', 'gugs:0.0', 'gugs:0.26', 'gugs:0.11', 'gugs:0.5'],
+               lead: ['gugs:0.66', 'gugs:0.59', 'gugs:0.71', 'gugs:0.11', 'gugs:0.65', 'gugs:0.60', 'gugs:0.68', 'vsco:celloenssusvib'],
+               pad: ['gugs:0.49', 'gugs:0.92', 'gugs:0.52', 'gugs:0.44', 'gugs:0.48', 'gugs:0.94', 'gugs:0.53', 'gugs:0.89'] },
+  ambient:   { drums: ['gugs:128.40'], bass: ['gugs:0.35', 'gugs:0.42'], chords: ['gugs:0.92', 'gugs:0.4', 'gugs:0.46', 'gugs:0.88', 'gugs:0.94', 'gugs:0.19'],
+               lead: ['gugs:0.12', 'gugs:0.14', 'gugs:0.98', 'gugs:0.75', 'gugs:0.8', 'gugs:0.10', 'gugs:0.108', 'gugs:0.79', 'vsco:harp'],
+               pad: ['gugs:0.89', 'gugs:0.95', 'gugs:0.99', 'gugs:0.52', 'gugs:0.91', 'gugs:0.92', 'gugs:0.97', 'gugs:0.101', 'gugs:0.53'] },
+  lofi:      { bass: ['gugs:0.33', 'gugs:0.32', 'gugs:0.35'], chords: ['gugs:0.4', 'gugs:0.0', 'gugs:0.5', 'gugs:0.11', 'gugs:0.24'],
+               lead: ['gugs:0.11', 'gugs:0.24', 'gugs:0.12', 'gugs:0.10', 'gugs:0.108', 'gugs:0.73'], pad: ['gugs:0.49', 'gugs:0.52', 'gugs:0.89', 'gugs:0.88'] },
+  boom_bap:  { drums: ['gugs:128.8', 'gugs:128.0'], bass: ['gugs:0.33', 'gugs:0.32', 'gugs:0.38'], chords: ['jrhodes:st', 'gugs:0.4', 'gugs:0.5', 'gugs:0.11', 'gugs:0.7'],
+               lead: ['gugs:0.11', 'gugs:0.12', 'gugs:0.66', 'gugs:0.73', 'gugs:0.108'], pad: ['gugs:0.48', 'gugs:0.49', 'gugs:0.89'] },
+  four_floor: { drums: ['gugs:128.25'], bass: ['gugs:0.39', 'gugs:0.87', 'gugs:0.38'], chords: ['gugs:0.81', 'gugs:0.95', 'gugs:0.16', 'gugs:0.61', 'gugs:0.90'],
+               lead: ['gugs:0.84', 'gugs:0.98', 'gugs:0.114', 'gugs:0.9', 'gugs:0.81'], pad: ['gugs:0.90', 'gugs:0.95', 'gugs:0.89', 'gugs:0.50'] },
+  motorik:   { drums: ['gugs:128.24'], bass: ['gugs:0.38', 'gugs:0.34'], chords: ['gugs:0.90', 'gugs:0.27', 'gugs:0.16', 'gugs:0.6'],
+               lead: ['gugs:0.81', 'gugs:0.84', 'gugs:0.62', 'gugs:0.80'], pad: ['gugs:0.89', 'gugs:0.95', 'gugs:0.51', 'gugs:0.94'] },
+  synthwave: { bass: ['gugs:0.39', 'gugs:0.38'], chords: ['gugs:0.81', 'gugs:0.5', 'gugs:0.88'], lead: ['gugs:0.84', 'gugs:0.86', 'gugs:0.62', 'gugs:0.81'],
+               pad: ['gugs:0.95', 'gugs:0.90', 'gugs:0.50', 'gugs:0.51', 'gugs:0.89'] },
+  shuffle:   { drums: ['gugs:128.0', 'gugs:128.40'], bass: ['gugs:0.33', 'gugs:0.32'], chords: ['gugs:0.25', 'gugs:0.4', 'gugs:0.16', 'gugs:0.7', 'gugs:0.61'],
+               lead: ['gugs:0.66', 'gugs:0.22', 'gugs:0.27', 'gugs:0.65', 'gugs:0.56', 'gugs:0.114', 'gugs:0.11'], pad: ['gugs:0.17', 'gugs:0.48', 'gugs:0.61', 'gugs:0.21'] },
+  trap:      { drums: ['gugs:128.25'], bass: ['gugs:0.38', 'gugs:0.39'], chords: ['gugs:0.0', 'gugs:0.10', 'gugs:0.8', 'gugs:0.88'],
+               lead: ['gugs:0.10', 'gugs:0.9', 'gugs:0.8', 'gugs:0.81', 'gugs:0.45'], pad: ['gugs:0.94', 'gugs:0.52', 'gugs:0.91', 'gugs:0.44', 'gugs:0.48'] },
+  dnb:       { drums: ['gugs:128.24'], bass: ['gugs:0.39', 'gugs:0.38'], chords: ['gugs:0.89', 'gugs:0.4', 'gugs:0.95'], lead: ['gugs:0.81', 'gugs:0.84', 'gugs:0.98'],
+               pad: ['gugs:0.91', 'gugs:0.89', 'gugs:0.95', 'gugs:0.94'] },
 };
 const PATCH_PICKS = {
   four_floor: { drums: 'gugs:128.24', bass: 'gugs:0.38', chords: 'gugs:0.90', lead: 'gugs:0.80', pad: 'gugs:0.89' },
@@ -1448,7 +1470,7 @@ async function generate(opts) {
       const it = pick && await PatchBank.item(pick);
       dev = await E.addDevice('patch', { name: it ? it.name : pick, patch: pick });
     }
-    else if (role === 'drums') dev = await E.addDevice('kit', { name: 'KIT' });
+    else if (role === 'drums') dev = await E.addDevice('kit', { name: 'KIT', kit: song.style });
     else dev = await E.addDevice(typeof ForgeSynth === 'function' ? 'forge' : 'basic', { name: role.toUpperCase() + ' · ' + part.preset, preset: part.preset });
     const t = E.addTrack('midi', { name: role, role, deviceId: dev.id, channel: ch, color: COLORS[role] });
     t.patterns = part.patterns; t.clips = part.clips;
@@ -1852,6 +1874,7 @@ document.querySelectorAll('[data-add]').forEach(b => b.addEventListener('click',
   if (type === 'emu' || type === 'hw') d.clock = true;
   const t = E.track(sel.trackId); if (t && t.kind === 'midi' && confirm('Play the selected track "' + t.name + '" on ' + name + '?')) { t.deviceId = d.id; }
   E.emit('project');
+  if (d.type === 'forge') openForgePicker(d);
 }));
 function renderDevices() {
   const L = $('devlist'); L.innerHTML = '';
@@ -1883,7 +1906,7 @@ function renderDevDetail() {
   box.innerHTML = `<div class="row"><label>NAME</label><input type="text" id="dd-name" value="${esc(t.name)}" style="flex:1"></div>
     <div class="row"><label>DEVICE</label><select id="dd-dev" style="flex:1"><option value="">—</option>${P.devices.map(x => `<option value="${x.id}" ${x.id === t.deviceId ? 'selected' : ''}>${esc(x.name)}</option>`).join('')}</select></div>
     ${d && (d.type === 'emu' || d.type === 'hw') ? `<div class="row"><label>CHANNEL</label><input type="number" id="dd-ch" min="1" max="16" value="${t.channel}"><span class="note">${d.type === 'emu' && d.emuId === 'x0x' ? '909 ch10 · 808 ch11 · 303s ch2/3 · break ch4' : 'Felucca family: bass 1 · chords 2 · lead 3 · drums 4 (Felucca) / 10'}</span></div>` : ''}
-    ${d && d.type === 'forge' && presets.length ? `<div class="row"><label>PRESET</label><select id="dd-preset" style="flex:1">${presets.map(p => `<option value="${p.id}" ${p.id === d.preset ? 'selected' : ''}>${esc(p.category + ' · ' + p.name)}</option>`).join('')}</select></div>` : ''}
+    ${d && d.type === 'forge' && presets.length ? `<div class="row"><label>PRESET</label><button id="dd-preset" class="pick" title="browse ${presets.length} FORGE presets: search, categories, styles — tap to load and hear">${esc(forgePresetLabel(d))} ▾</button></div>` : ''}
     ${d && d.type === 'patch' ? `<div class="row"><label>PATCH</label><span style="flex:1;color:var(--gold-hi)">${esc(d.name)}</span><button class="dim" id="dd-swap">CHANGE…</button></div><div class="note" id="dd-credit"></div>${E.devices.get(d.id) && E.devices.get(d.id).keymap ? '<div class="note">kit keys: ' + E.devices.get(d.id).keymap.slice(0, 24).map(k => SeqGen.NOTE_NAMES[k.key % 12] + (Math.floor(k.key / 12) - 1) + ' ' + esc(k.name)).join(' · ') + '</div>' : ''}` : ''}
     <div class="row"><label>VELOCITY</label><input type="range" id="dd-vel" min="0.2" max="1.5" step="0.01" value="${t.vel ?? 1}"></div>
     ${d && d.type === 'hw' ? `<div class="row"><label>RETURN</label><select id="dd-ret" style="flex:1"><option value="">— no audio back —</option></select></div><div class="note">pick the FM-1's USB audio ("Felucca" on Felucca-family firmwares) to hear and bounce it here.</div>` : ''}
@@ -1891,7 +1914,7 @@ function renderDevDetail() {
   $('dd-name').addEventListener('change', e => { t.name = e.target.value; renderHeads(); saveSoon(); });
   $('dd-dev').addEventListener('change', e => { t.deviceId = e.target.value || null; E.emit('project'); });
   if ($('dd-ch')) $('dd-ch').addEventListener('change', e => { t.channel = Math.max(1, Math.min(16, +e.target.value || 1)); renderHeads(); saveSoon(); });
-  if ($('dd-preset')) $('dd-preset').addEventListener('change', e => { E.setPreset(d.id, e.target.value); renderDevices(); saveSoon(); });
+  if ($('dd-preset')) $('dd-preset').addEventListener('click', () => openForgePicker(d));
   $('dd-vel').addEventListener('input', e => { t.vel = +e.target.value; saveSoon(); });
   if ($('dd-edit')) $('dd-edit').addEventListener('click', () => openEditor(d));
   if ($('dd-panel')) $('dd-panel').addEventListener('click', () => openPanel(d));
@@ -1902,6 +1925,29 @@ function renderDevDetail() {
     list.forEach(i => s.add(new Option((i.label || 'input') + (AK.inputs.hint(i.label) ? ' — ' + AK.inputs.hint(i.label) : ''), i.deviceId)));
     const inst = E.devices.get(d.id); s.value = inst.returnDevice || '';
     s.addEventListener('change', async () => { try { await inst.setReturn(s.value); saveSoon(); } catch (e) { msg('g-msg', 'audio return: ' + e.message, true); } });
+  });
+}
+// FORGE preset browser (ForgeSynth.mountBrowser): a tap loads the preset into the device and plays a short preview
+function forgePresetLabel(d) {
+  const p = (window.FORGE_PRESETS || []).find(x => x.id === d.preset);
+  return p ? p.name + ' · ' + p.category : 'custom patch';
+}
+function openForgePicker(d) {
+  if (typeof ForgeSynth !== 'function' || !ForgeSynth.mountBrowser) return;
+  if (mounted) { try { mounted.destroy(); } catch (e) {} mounted = null; }
+  $('modaltitle').textContent = d.name + ' · FORGE PRESETS — tap one to load it and hear it';
+  $('modal').classList.add('show');
+  const body = $('modalbody'); body.innerHTML = '<div id="fp-box" style="height:100%"></div>';
+  mounted = ForgeSynth.mountBrowser($('fp-box'), {
+    current: d.preset, title: 'FORGE · ' + (window.FORGE_PRESETS || []).length, onClose: closeModal,
+    onPick: id => {
+      const old = d.preset;
+      E.setPreset(d.id, id);
+      if (old && d.name.endsWith(' · ' + old)) d.name = d.name.slice(0, -old.length) + id;    // generated names follow the patch
+      saveSoon();
+      const inst = E.devices.get(d.id);
+      if (inst && E.ctx && inst.noteOn) { const t = E.ctx.currentTime + 0.03; ForgeSynth.previewNotes(id).forEach(n => { inst.noteOn(n, 0.75, t); inst.noteOff(n, t + 0.7); }); }
+    },
   });
 }
 let mounted = null;
@@ -2206,17 +2252,23 @@ function openPatchPicker(onPick) {
   $('modaltitle').textContent = 'PATCH BANK · pick an instrument';
   $('modal').classList.add('show');
   const body = $('modalbody');
-  body.innerHTML = `<div style="padding:10px;display:grid;grid-template-rows:auto 1fr;height:100%;gap:8px">
-    <div class="row"><input type="text" id="pp-q" placeholder="search: rhodes, 808, strings, E.PIANO, kalimba…" style="flex:1;font-size:14px;padding:6px"><select id="pp-src"><option value="">all sources</option></select>
-    <label style="cursor:pointer"><input type="checkbox" id="pp-free"> no-credit only</label><a href="patch_bank.html" target="_blank" style="color:var(--gold)">open PATCH BANK ↗</a></div>
-    <div id="pp-list" style="overflow:auto"></div></div>`;
+  body.innerHTML = `<div style="padding:10px;display:grid;grid-template-rows:auto auto 1fr;height:100%;gap:8px">
+    <div class="row"><input type="text" id="pp-q" placeholder="search: rhodes, 808, strings, E.PIANO, kalimba…" style="flex:1;font-size:14px;padding:6px;min-height:40px"><select id="pp-src" style="min-height:40px"><option value="">all sources</option></select>
+    <label style="cursor:pointer;min-height:40px;display:inline-flex;align-items:center;gap:4px"><input type="checkbox" id="pp-free"> no-credit only</label><a href="patch_bank.html" target="_blank" style="color:var(--gold)">open PATCH BANK ↗</a></div>
+    <div id="pp-cats" class="chips"></div>
+    <div id="pp-list" style="overflow:auto;touch-action:pan-y"></div></div>`;
   const srcs = PatchBank.sources();
   srcs.forEach(s => $('pp-src').add(new Option(s.name + (s.dynamic ? ' (downloads its list)' : ''), s.id)));
-  let all = [];
+  let all = [], cat = '';
   const draw = () => {
     const q = $('pp-q').value.toLowerCase().split(/\s+/).filter(Boolean), src = $('pp-src').value, free = $('pp-free').checked;
-    const list = all.filter(i => (!src || i.source === src) && (src || q.length || i.category !== 'waveform') && (!free || PatchBank.creditSync(i).game === 'free') && q.every(w => (i.name + ' ' + i.category + ' ' + (i.bank || '') + ' ' + i.source).toLowerCase().includes(w)));
-    $('pp-list').innerHTML = list.slice(0, 250).map((i, k) => { const c = PatchBank.creditSync(i); return `<div class="item" data-k="${k}" style="padding:8px"><b>${esc(i.name)}</b> · ${esc(i.category)} · <span class="note">${esc((PatchBank.source(i.source) || {}).name || i.source)}${i.bank ? ' · ' + esc(i.bank) : ''}</span> <span style="color:${c.game === 'free' ? 'var(--emerald-hi)' : c.game === 'credit' ? 'var(--amber)' : 'var(--rust)'};font-size:9px">${c.game.toUpperCase()}</span></div>`; }).join('') + (list.length > 250 ? '<div class="note" style="padding:8px">' + (list.length - 250) + ' more — search to narrow</div>' : '') + (!list.length ? '<div class="note" style="padding:8px">nothing here yet — pick a source (SoundFont / DX7 banks list their presets once downloaded).</div>' : '');
+    const base = all.filter(i => (!src || i.source === src) && (src || q.length || cat || i.category !== 'waveform') && (!free || PatchBank.creditSync(i).game === 'free') && q.every(w => (i.name + ' ' + i.category + ' ' + (i.bank || '') + ' ' + i.source).toLowerCase().includes(w)));
+    const counts = {}; base.forEach(i => { counts[i.category] = (counts[i.category] || 0) + 1; });
+    $('pp-cats').innerHTML = `<button class="chip ${cat ? '' : 'on'}" data-cat="">ALL <i>${base.length}</i></button>` + Object.keys(counts).sort((a, b) => counts[b] - counts[a]).slice(0, 16).concat(cat && !counts[cat] ? [cat] : [])
+      .map(c => `<button class="chip ${c === cat ? 'on' : ''}" data-cat="${esc(c)}">${esc(c.toUpperCase())} <i>${counts[c] || 0}</i></button>`).join('');
+    $('pp-cats').querySelectorAll('[data-cat]').forEach(b => b.addEventListener('click', () => { cat = cat === b.dataset.cat ? '' : b.dataset.cat; draw(); }));
+    const list = base.filter(i => !cat || i.category === cat);
+    $('pp-list').innerHTML = list.slice(0, 250).map((i, k) => { const c = PatchBank.creditSync(i); return `<div class="item pick-row" data-k="${k}" style="padding:8px"><b>${esc(i.name)}</b> · ${esc(i.category)} · <span class="note">${esc((PatchBank.source(i.source) || {}).name || i.source)}${i.bank ? ' · ' + esc(i.bank) : ''}</span> <span style="color:${c.game === 'free' ? 'var(--emerald-hi)' : c.game === 'credit' ? 'var(--amber)' : 'var(--rust)'};font-size:9px">${c.game.toUpperCase()}</span></div>`; }).join('') + (list.length > 250 ? '<div class="note" style="padding:8px">' + (list.length - 250) + ' more — search to narrow</div>' : '') + (!list.length ? '<div class="note" style="padding:8px">nothing here yet — pick a source (SoundFont / DX7 banks list their presets once downloaded).</div>' : '');
     $('pp-list').querySelectorAll('[data-k]').forEach(el => el.addEventListener('click', () => { const it = list[+el.dataset.k]; closeModal(); onPick(it); }));
   };
   $('pp-q').addEventListener('input', draw); $('pp-free').addEventListener('change', draw);

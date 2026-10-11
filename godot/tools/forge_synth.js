@@ -21,7 +21,7 @@
  *   pitchBend(-1..1, when)      setMacro(0-7, value01, when)
  *   bpm (get/set)               syncAt(when) — restart synced LFOs + gates on a bar
  *   getState() → {v:1,…}        setState(obj | JSON string)
- *   loadPreset(id) → bool       presetList → [{id, name, category}]   presetId
+ *   loadPreset(id) → bool       presetList → [{id, name, category, tags}]   presetId
  *   getParam(path)  setParam(path, value, when)   (paths: see _resolve(), e.g.
  *     'gen.g1.level', 'filter.cutoff', 'env.2.d', 'lfo.1.rate', 'macro.3.value',
  *     'lane.A.gain', 'fx.s2.mix', 'mod.r4.depth', 'voice.glide', 'master.gain')
@@ -31,7 +31,10 @@
  *   modTargets() → [{id, label}]   modSources() → [{id, label, color}]
  *   on(type, fn) → off()   types: state | change | macro | mods | note | cc
  *   loadLibrarySample(id)       (needs audio_kit.js's AK.lib on the page)
- *   mountEditor(el, {presets: true}) → {destroy(), element}
+ *   mountEditor(el, {presets: true}) → {destroy(), element}   (its BROWSE button opens the browser below)
+ *   ForgeSynth.mountBrowser(el, {current, onPick(id, preset), onClose, title}) → {destroy(), element, setCurrent(id)}
+ *     — the finger-sized preset browser (search, category + style chips, ≥ 44 px tiles); the DAW's picker
+ *   ForgeSynth.categories → [{id, label}] in browsing order · ForgeSynth.presetTags(id) → [tag]
  *   activeVoices · output (GainNode → opts.output) · dispose()
  *   statics: ForgeSynth.defaultState() / normalizeState(s) / userPresets() /
  *            saveUserPreset(name, state) / deleteUserPreset(name)
@@ -1182,7 +1185,7 @@ class ForgeSynth {
   get activeVoices() { const t = this.ctx.currentTime; return this.voices.filter(v => v.end > t && v.t0 <= t + 0.2).length; }
 
   // ── presets / state ─────────────────────────────────────────────
-  get presetList() { return FORGE_PRESETS.map(p => ({ id: p.id, name: p.name, category: p.category })); }
+  get presetList() { return FORGE_PRESETS.map(p => ({ id: p.id, name: p.name, category: p.category, tags: presetTags(p.id) })); }
   get presetId() { return this._presetId; }
   loadPreset(id) {
     const p = FORGE_PRESETS.find(x => x.id === id);
@@ -2475,7 +2478,1332 @@ const FORGE_PRESETS = [
     lanes: LN({ fx: [FX('phaser', { rate: 0.2, depth: 0.6, freq: 900, fb: 0.5, mix: 0.4 }), FX('delay', { sync: true, div: '1/4', fb: 0.4, tone: 4000, pp: true, mix: 0.25 }), FX('width', { width: 1.6 }), FX('reverb', { size: 4, damp: 0.5, mix: 0.35 })] }),
     voice: { velSens: 0.3 }, master: { gain: 1.3 },
   } },
+
+  // ══ LIBRARY (2026-10-11) ══════════════════════════════════════════
+  // Weighted to what the DAW lacked: pads first. Each melodic patch has
+  // 8 macros that start at 0 (= the patch as voiced) and only ever add
+  // one direction of change; effects a macro fades in sit at mix 0.
+  // `tags` feed the browsers' search (styles + character words).
+
+  // ── PADS · strings / choirs ───────────────────────────────────────
+  { id: 'strings_noir', name: 'Strings · After Hours', category: 'pads', tags: ['noir', 'dark', 'strings', 'cello'], state: {
+    gens: [
+      { type: 'analog', shape: 'saw', unison: 5, detune: 11, spread: 0.85, level: 0.55 },
+      { type: 'analog', shape: 'pulse', pw: 0.35, coarse: -12, unison: 2, detune: 7, spread: 0.4, level: 0.25 },
+      { type: 'noise', color: 'pink', nfilt: 'bandpass', nfreq: 2500, nres: 0.2, level: 0.03 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 1700, res: 0.1, key: 0.45, env: 0.08 },
+    amp: E(0.55, 1.5, 0.85, 1.4),
+    envs: [E(0.005, 0.4, 0.3, 0.3), E(0.6, 2.5, 0.5, 1.2), E(0.3, 0.6, 0.5, 0.5)],
+    lfos: [{ shape: 'sine', rate: 5.1, retrig: true, fade: 1.2, amount: 0.4 }, { shape: 'sine', rate: 0.07, retrig: false }, { shape: 'triangle', rate: 0.13, retrig: false }],
+    mods: [R('lfo1', 'voice.pitch', 0.003), R('lfo2', 'filter.cutoff', 0.04), R('lfo3', 'gen.g1.pan', 0.2),
+      R('m1', 'filter.cutoff', 0.25), R('m2', 'lfo.1.amount', 0.6), R('m3', 'gen.g2.level', 0.3), R('m4', 'gen.g3.level', 0.12),
+      R('m5', 'fx.nc.mix', 0.4), R('m6', 'fx.nr.mix', 0.35), R('m7', 'fx.nt.mix', 1), R('m8', 'filter.cutoff', -0.2)],
+    macros: MAC('BRIGHT', 'VIBRATO', 'CELLOS', 'BOW NOISE', 'ENSEMBLE', 'SPACE', 'TAPE', 'DARK'),
+    lanes: LN({ fx: [FX('eq', { low: -3, lowf: 200, mid: -2, midf: 700, high: 1.5, highf: 6000 }), FX('tape', { sat: 0.3, wow: 0.4, flutter: 0.25, age: 0.45, hiss: 0.08, mix: 0 }, 'nt'),
+      FX('chorus', { rate: 0.35, depth: 0.45, mix: 0.3 }, 'nc'), FX('reverb', { size: 4.5, damp: 0.55, pre: 0.02, mix: 0.32 }, 'nr')] }),
+    voice: { velSens: 0.4 }, master: { gain: 1.3 },
+  } },
+  { id: 'strings_silver', name: 'Strings · Silver Screen', category: 'pads', tags: ['noir', 'shuffle', 'synthwave', 'strings', 'lush', 'bright'], state: {
+    gens: [
+      { type: 'analog', shape: 'saw', unison: 6, detune: 9, spread: 0.9, level: 0.5 },
+      { type: 'analog', shape: 'saw', coarse: 12, unison: 2, detune: 6, spread: 0.7, level: 0.16 },
+      { type: 'analog', shape: 'triangle', coarse: -12, level: 0.12 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 4200, res: 0.05, key: 0.3, env: 0.1 },
+    amp: E(0.9, 1, 0.9, 2),
+    envs: [E(0.005, 0.4, 0.3, 0.3), E(0.8, 1.5, 0.6, 1.5), E(0.3, 0.6, 0.5, 0.5)],
+    lfos: [{ shape: 'sine', rate: 5.6, retrig: true, fade: 1.4, amount: 0.5 }, { shape: 'sine', rate: 0.09, retrig: false }],
+    mods: [R('lfo1', 'voice.pitch', 0.0035), R('lfo2', 'gen.g2.level', 0.05),
+      R('m1', 'filter.cutoff', 0.2), R('m2', 'lfo.1.amount', 0.5), R('m3', 'gen.g2.level', 0.25), R('m4', 'gen.g3.level', 0.25),
+      R('m5', 'fx.ic.mix', 0.35), R('m6', 'fx.ir.mix', 0.3), R('m7', 'fx.ie.mix', 0.3), R('m8', 'filter.cutoff', -0.2)],
+    macros: MAC('BRIGHT', 'VIBRATO', 'OCTAVE', 'BODY', 'LUSH', 'HALL', 'ECHO', 'DARK'),
+    lanes: LN({ fx: [FX('eq', { low: -4, lowf: 180, mid: 2, midf: 2800, midq: 0.3, high: 3, highf: 8000 }), FX('chorus', { rate: 0.5, depth: 0.45, mix: 0.35 }, 'ic'),
+      FX('delay', { sync: true, div: '1/4d', fb: 0.3, tone: 4000, pp: true, mix: 0 }, 'ie'), FX('reverb', { size: 5, damp: 0.4, mix: 0.35 }, 'ir')] }),
+    voice: { velSens: 0.45 }, master: { gain: 1.45 },
+  } },
+  { id: 'strings_tremolo', name: 'Strings · Tremolo Stairwell', category: 'pads', tags: ['noir', 'trap', 'strings', 'tense', 'motion'], state: {
+    gens: [
+      { type: 'analog', shape: 'saw', unison: 4, detune: 10, spread: 0.8, level: 0.55 },
+      { type: 'analog', shape: 'saw', coarse: -12, unison: 2, detune: 6, spread: 0.5, level: 0.25 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 2600, res: 0.1, key: 0.4 },
+    amp: E(0.25, 1, 0.85, 0.9),
+    lfos: [{ shape: 'triangle', rate: 7.5, retrig: true, amount: 0.6 }, { shape: 'sine', rate: 0.15, retrig: false }],
+    mods: [R('lfo1', 'amp.level', -0.5), R('rand', 'lfo.1.rate', 0.03), R('lfo2', 'filter.cutoff', 0.03),
+      R('m1', 'lfo.1.amount', 0.4), R('m2', 'lfo.1.rate', 0.15), R('m3', 'filter.cutoff', 0.2), R('m4', 'gen.g2.level', 0.3),
+      R('m5', 'fx.tr.mix', 0.35), R('m6', 'fx.tp.mix', 0.5), R('m7', 'fx.tt.mix', 1), R('m8', 'filter.cutoff', -0.2)],
+    macros: MAC('TREMOLO', 'SPEED', 'BRIGHT', 'LOW STRINGS', 'SPACE', 'DREAD', 'TAPE', 'DARK'),
+    lanes: LN({ fx: [FX('eq', { low: -4, lowf: 160, mid: -1, midf: 600, high: 1, highf: 7000 }), FX('phaser', { rate: 0.09, depth: 0.7, freq: 500, fb: 0.5, mix: 0 }, 'tp'),
+      FX('tape', { sat: 0.3, wow: 0.35, flutter: 0.3, age: 0.4, hiss: 0.06, mix: 0 }, 'tt'), FX('reverb', { size: 3.5, damp: 0.5, mix: 0.3 }, 'tr')] }),
+    voice: { velSens: 0.5 }, master: { gain: 1.2 },
+  } },
+  { id: 'choir_crypt', name: 'Choir · Crypt Hum', category: 'pads', tags: ['noir', 'ambient', 'trap', 'choir', 'dark', 'eerie'], state: {
+    gens: [
+      { type: 'wavetable', table: 'vocal', morph: 0.8, unison: 3, detune: 9, spread: 0.7, level: 0.6 },
+      { type: 'sample', src: 'vox', loop: true, coarse: -12, level: 0.35 },
+      { type: 'noise', color: 'pink', nfilt: 'bandpass', nfreq: 700, nres: 0.3, level: 0.02 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 1400, res: 0.1, key: 0.3 },
+    amp: E(1.4, 1.5, 0.9, 2.2),
+    lfos: [{ shape: 'sine', rate: 0.06, retrig: false }, { shape: 'sine', rate: 4.8, retrig: true, fade: 1.5, amount: 0.5 }, { shape: 'sh', rate: 0.4, retrig: false }],
+    mods: [R('lfo1', 'gen.g1.morph', 0.2), R('lfo2', 'voice.pitch', 0.0025), R('lfo3', 'filter.cutoff', 0.02),
+      R('m1', 'gen.g1.morph', -0.6), R('m2', 'filter.cutoff', 0.2), R('m3', 'gen.g2.level', 0.3), R('m4', 'gen.g3.level', 0.1),
+      R('m5', 'lfo.1.amount', 1.5), R('m6', 'fx.cr.mix', 0.3), R('m7', 'fx.cd.mix', 0.3), R('m8', 'filter.cutoff', -0.2)],
+    macros: MAC('VOWEL AH', 'BRIGHT', 'BASSES', 'BREATH', 'MOTION', 'SPACE', 'ECHO', 'DARK'),
+    lanes: LN({ fx: [FX('eq', { low: -2, lowf: 120, mid: -3, midf: 2500 }), FX('chorus', { rate: 0.3, depth: 0.35, mix: 0.25 }),
+      FX('delay', { sync: true, div: '1/2', fb: 0.4, tone: 2500, pp: true, mix: 0 }, 'cd'), FX('reverb', { size: 7, damp: 0.6, mix: 0.42 }, 'cr')] }),
+    voice: { velSens: 0.3 }, master: { gain: 1.1 },
+  } },
+  { id: 'choir_angel', name: 'Choir · Angel Hall', category: 'pads', tags: ['ambient', 'choir', 'bright', 'mythic'], state: {
+    gens: [
+      { type: 'wavetable', table: 'vocal', morph: 0.05, unison: 4, detune: 8, spread: 0.9, level: 0.55 },
+      { type: 'sample', src: 'vox', loop: true, coarse: 12, level: 0.2 },
+      { type: 'analog', shape: 'sine', coarse: 12, level: 0.06 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 5500, res: 0.05, key: 0.2 },
+    amp: E(0.8, 1, 0.9, 2.5),
+    lfos: [{ shape: 'triangle', rate: 0.1, retrig: false, uni: true }, { shape: 'sine', rate: 5.3, retrig: true, fade: 1, amount: 0.4 }],
+    mods: [R('lfo1', 'gen.g1.morph', 0.3), R('lfo2', 'voice.pitch', 0.003),
+      R('m1', 'gen.g1.morph', 0.6), R('m2', 'fx.ae.high', 0.25), R('m3', 'gen.g2.level', 0.3), R('m4', 'fx.ad.mix', 0.35),
+      R('m5', 'lfo.1.amount', 1), R('m6', 'fx.ar.mix', 0.3), R('m7', 'fx.aw.width', 0.3), R('m8', 'filter.cutoff', -0.25)],
+    macros: MAC('VOWEL OO', 'AIR', 'OCTAVE', 'SHIMMER', 'MOTION', 'SPACE', 'WIDTH', 'HUSH'),
+    lanes: LN({ fx: [FX('eq', { low: -4, lowf: 200, mid: 2, midf: 1200, high: 0, highf: 8000 }, 'ae'), FX('delay', { sync: true, div: '1/4d', fb: 0.45, tone: 6000, pp: true, mix: 0.1 }, 'ad'),
+      FX('width', { width: 1.3 }, 'aw'), FX('reverb', { size: 8, damp: 0.3, mix: 0.45 }, 'ar')] }),
+    voice: { velSens: 0.35 }, master: { gain: 1.3 },
+  } },
+
+  // ── PADS · analog / evolving ──────────────────────────────────────
+  { id: 'pad_velvet', name: 'Pad · Velvet Booth', category: 'pads', tags: ['noir', 'lofi', 'boom_bap', 'warm', 'analog'], state: {
+    gens: [
+      { type: 'analog', shape: 'saw', unison: 3, detune: 8, spread: 0.6, level: 0.45 },
+      { type: 'analog', shape: 'saw', fine: 7, unison: 3, detune: 10, spread: 0.7, level: 0.35 },
+      { type: 'analog', shape: 'square', coarse: -12, level: 0.2 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 750, res: 0.28, key: 0.35, env: 0.18 },
+    amp: E(0.6, 1.5, 0.85, 1.6),
+    envs: [E(0.005, 0.4, 0.3, 0.3), E(1.2, 2.5, 0.3, 1.5), E(0.3, 0.6, 0.5, 0.5)],
+    lfos: [{ shape: 'triangle', rate: 0.17, retrig: false }, { shape: 'sine', rate: 0.4, retrig: false }],
+    mods: [R('lfo1', 'filter.cutoff', 0.05), R('lfo2', 'gen.g2.pan', 0.4),
+      R('m1', 'filter.cutoff', 0.3), R('m2', 'filter.res', 0.4), R('m3', 'fx.vp.mix', 0.5), R('m4', 'gen.g3.level', 0.3),
+      R('m5', 'lfo.1.amount', 2), R('m6', 'fx.vr.mix', 0.3), R('m7', 'fx.vt.mix', 1), R('m8', 'fx.vd.drive', 0.5)],
+    macros: MAC('BRIGHT', 'RESONANCE', 'PHASER', 'SUB', 'DRIFT', 'SPACE', 'TAPE', 'DRIVE'),
+    lanes: LN({ fx: [FX('dist', { mode: 'soft', drive: 0.05, tone: 9000, mix: 0.5 }, 'vd'), FX('phaser', { rate: 0.12, depth: 0.6, freq: 500, fb: 0.45, mix: 0.2 }, 'vp'),
+      FX('tape', { sat: 0.3, wow: 0.35, flutter: 0.2, age: 0.4, hiss: 0.05, mix: 0 }, 'vt'), FX('chorus', { rate: 0.3, depth: 0.4, mix: 0.3 }), FX('reverb', { size: 3, damp: 0.6, mix: 0.26 }, 'vr')] }),
+    voice: { velSens: 0.3 }, master: { gain: 1.45 },
+  } },
+  { id: 'pad_shimmer', name: 'Pad · Cathedral Shimmer', category: 'pads', tags: ['ambient', 'mythic', 'bright', 'shimmer', 'cathedral'], state: {
+    gens: [
+      { type: 'wavetable', table: 'glass', morph: 0.4, unison: 2, detune: 6, spread: 0.8, level: 0.45 },
+      { type: 'analog', shape: 'sine', coarse: 12, level: 0.18 },
+      { type: 'analog', shape: 'sine', coarse: 19, level: 0.07 },
+      { type: 'analog', shape: 'triangle', level: 0.3 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 4000, res: 0.05, key: 0.1 },
+    amp: E(1.5, 1, 0.9, 3),
+    lfos: [{ shape: 'sine', rate: 0.07, retrig: false, uni: true }, { shape: 'sine', rate: 0.23, retrig: false }],
+    mods: [R('lfo1', 'gen.g1.morph', 0.5), R('lfo2', 'gen.g3.level', 0.05),
+      R('m1', 'gen.g3.level', 0.15), R('m1', 'gen.g2.level', 0.1), R('m2', 'lfo.1.amount', 1), R('m3', 'fx.hd.fb', 0.3), R('m4', 'fx.hr.mix', 0.3),
+      R('m5', 'fx.hw.width', 0.25), R('m6', 'filter.cutoff', 0.15), R('m7', 'filter.cutoff', -0.25), R('m8', 'gen.g4.level', 0.3)],
+    macros: MAC('SHIMMER', 'MOTION', 'FEEDBACK', 'SPACE', 'WIDTH', 'BRIGHT', 'DARK', 'BODY'),
+    lanes: LN({ fx: [FX('delay', { sync: true, div: '1/4d', fb: 0.5, tone: 6500, pp: true, mix: 0.28 }, 'hd'), FX('width', { width: 1.5 }, 'hw'),
+      FX('reverb', { size: 10, damp: 0.25, pre: 0.04, mix: 0.55 }, 'hr')] }),
+    voice: { velSens: 0.3 }, master: { gain: 1.3 },
+  } },
+  { id: 'pad_bowed_glass', name: 'Pad · Bowed Glass', category: 'pads', tags: ['ambient', 'glass', 'eerie', 'bowed'], state: {
+    gens: [
+      { type: 'wavetable', table: 'glass', morph: 0.65, unison: 2, detune: 4, spread: 0.5, level: 0.5 },
+      { type: 'noise', color: 'pink', nfilt: 'bandpass', nfreq: 523, nres: 0.85, level: 0.08 },
+      { type: 'analog', shape: 'sine', coarse: 12, level: 0.1 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 6000, res: 0.05, key: 0.2 },
+    amp: E(0.45, 1.2, 0.85, 2.2),
+    envs: [E(0.3, 1.5, 0.2, 1), E(0.005, 0.5, 0.2, 0.4), E(0.3, 0.6, 0.5, 0.5)],
+    lfos: [{ shape: 'sine', rate: 0.3, retrig: true, amount: 0.5 }],
+    mods: [R('note', 'gen.g2.cutoff', 0.5), R('env1', 'gen.g2.level', 0.25), R('lfo1', 'gen.g1.morph', 0.15), R('rand', 'lfo.1.rate', 0.02),
+      R('m1', 'gen.g2.level', 0.25), R('m2', 'gen.g1.morph', -0.4), R('m3', 'gen.g3.level', 0.2), R('m4', 'lfo.1.amount', 0.5),
+      R('m5', 'fx.gr.mix', 0.35), R('m6', 'fx.gd.mix', 0.3), R('m7', 'filter.cutoff', 0.2), R('m8', 'filter.cutoff', -0.25)],
+    macros: MAC('FRICTION', 'WARM GLASS', 'OCTAVE', 'WOBBLE', 'SPACE', 'ECHO', 'BRIGHT', 'DARK'),
+    lanes: LN({ fx: [FX('eq', { low: -6, lowf: 250 }), FX('delay', { sync: true, div: '1/2', fb: 0.4, tone: 5000, pp: true, mix: 0.1 }, 'gd'), FX('reverb', { size: 6, damp: 0.35, mix: 0.42 }, 'gr')] }),
+    voice: { velSens: 0.4 }, master: { gain: 1.6 },
+  } },
+  { id: 'pad_bowed_metal', name: 'Pad · Bowed Saw Blade', category: 'pads', tags: ['noir', 'ambient', 'eerie', 'metal', 'bowed'], state: {
+    gens: [
+      { type: 'analog', shape: 'sine', level: 0.55 },
+      { type: 'analog', shape: 'sine', ratio: 2.32, level: 0.22 },
+      { type: 'analog', shape: 'sine', ratio: 4.25, level: 0.12 },
+      { type: 'analog', shape: 'sine', ratio: 6.8, level: 0.05 },
+      { type: 'noise', color: 'white', nfilt: 'bandpass', nfreq: 1200, nres: 0.7, level: 0.04 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 8000, res: 0.05, key: 0.1 },
+    amp: E(1, 2, 0.8, 3.5),
+    lfos: [{ shape: 'sine', rate: 0.21, retrig: false }, { shape: 'sine', rate: 0.13, retrig: false }, { shape: 'sine', rate: 5.5, retrig: true, fade: 2, amount: 0.3 }],
+    mods: [R('lfo1', 'gen.g2.level', 0.12), R('lfo2', 'gen.g3.level', 0.08), R('lfo3', 'voice.pitch', 0.004), R('note', 'gen.g5.cutoff', 0.5),
+      R('m1', 'lfo.3.amount', 0.7), R('m2', 'fx.mr.mix', 0.4), R('m3', 'gen.g3.level', 0.2), R('m3', 'gen.g4.level', 0.1), R('m4', 'fx.mc.mix', 0.35),
+      R('m5', 'fx.mv.mix', 0.3), R('m6', 'gen.g5.level', 0.1), R('m7', 'lfo.1.amount', 1), R('m8', 'filter.cutoff', -0.3)],
+    macros: MAC('SING', 'RING', 'METAL', 'COMB', 'SPACE', 'FRICTION', 'DRIFT', 'DARK'),
+    lanes: LN({ fx: [FX('comb', { freq: 90, fb: 0.5, damp: 0.5, mix: 0.15 }, 'mc'), FX('ring', { freq: 37, mix: 0 }, 'mr'), FX('reverb', { size: 8, damp: 0.45, mix: 0.5 }, 'mv')] }),
+    voice: { velSens: 0.3 }, master: { gain: 0.75 },
+  } },
+  { id: 'pad_tape_wobble', name: 'Pad · Warped Cassette', category: 'pads', tags: ['lofi', 'boom_bap', 'noir', 'tape', 'vintage', 'warm'], state: {
+    gens: [
+      { type: 'analog', shape: 'saw', unison: 3, detune: 12, spread: 0.6, level: 0.45 },
+      { type: 'analog', shape: 'triangle', coarse: 12, level: 0.12 },
+      { type: 'sample', src: 'vinyl', loop: true, mode: 'fixed', ratio: 1, level: 0.12 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 1300, res: 0.15, key: 0.3, env: 0.1, lanes: 'A' },
+    amp: E(0.5, 1.5, 0.8, 1.6),
+    mods: [R('m1', 'fx.wt.wow', 0.25), R('m2', 'fx.wt.age', 0.35), R('m3', 'gen.g3.level', 0.25), R('m4', 'filter.cutoff', 0.2),
+      R('m5', 'gen.g2.level', 0.2), R('m6', 'fx.wr.mix', 0.3), R('m7', 'fx.wt.mix', -0.7), R('m8', 'filter.cutoff', -0.2)],
+    macros: MAC('WOW', 'AGE', 'CRACKLE', 'BRIGHT', 'OCTAVE', 'SPACE', 'CLEAN', 'DARK'),
+    lanes: LN({ fx: [FX('tape', { sat: 0.45, wow: 0.75, flutter: 0.45, age: 0.65, hiss: 0.25, mix: 1 }, 'wt'), FX('eq', { low: 2, lowf: 150, high: -5, highf: 4500 }),
+      FX('chorus', { rate: 0.3, depth: 0.3, mix: 0.25 }), FX('reverb', { size: 2.5, damp: 0.7, mix: 0.25 }, 'wr')] }),
+    voice: { velSens: 0.3 }, master: { gain: 1.1 },
+  } },
+  { id: 'pad_organ_swell', name: 'Pad · Chapel Organ', category: 'pads', tags: ['ambient', 'shuffle', 'organ', 'cathedral', 'sacred'], state: {
+    gens: [
+      { type: 'wavetable', table: 'organ', morph: 1, level: 0.4 },
+      { type: 'analog', shape: 'sine', coarse: -12, level: 0.3 },
+      { type: 'wavetable', table: 'reed', morph: 0, coarse: 12, level: 0.08 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 3500, res: 0.05, key: 0.3 },
+    amp: E(0.35, 0.5, 1, 1.2),
+    lfos: [{ shape: 'sine', rate: 0.8, retrig: false }, { shape: 'sine', rate: 5.8, retrig: false, amount: 0 }],
+    mods: [R('lfo1', 'gen.g1.pan', 0.3), R('lfo2', 'amp.level', 0.12),
+      R('m1', 'gen.g3.level', 0.2), R('m2', 'gen.g2.level', 0.3), R('m3', 'lfo.2.amount', 1), R('m4', 'filter.cutoff', 0.2),
+      R('m5', 'fx.or.mix', 0.3), R('m6', 'filter.cutoff', -0.25), R('m7', 'fx.oc.rate', 0.5), R('m7', 'fx.oc.mix', 0.3), R('m8', 'fx.od.drive', 0.5)],
+    macros: MAC('MIXTURE', 'PEDAL 16', 'TREMULANT', 'BRIGHT', 'SPACE', 'SOFT', 'LESLIE', 'GRIT'),
+    lanes: LN({ fx: [FX('dist', { mode: 'soft', drive: 0.05, tone: 7000, mix: 0.4 }, 'od'), FX('chorus', { rate: 0.5, depth: 0.3, mix: 0.25 }, 'oc'),
+      FX('reverb', { size: 6, damp: 0.5, pre: 0.03, mix: 0.4 }, 'or')] }),
+    voice: { velSens: 0.1 }, master: { gain: 1.0 },
+  } },
+  { id: 'pad_cathedral_air', name: 'Air · Nave', category: 'pads', tags: ['ambient', 'mythic', 'air', 'breath', 'cathedral'], state: {
+    gens: [
+      { type: 'noise', color: 'pink', nfilt: 'bandpass', nfreq: 262, nres: 0.6, level: 1 },
+      { type: 'noise', color: 'pink', nfilt: 'bandpass', nfreq: 524, nres: 0.6, level: 0.5 },
+      { type: 'analog', shape: 'sine', level: 0.1 },
+    ],
+    filter: { on: false },
+    amp: E(1.6, 1, 0.9, 3),
+    lfos: [{ shape: 'sine', rate: 0.11, retrig: false }],
+    mods: [R('note', 'gen.g1.cutoff', 0.5), R('note', 'gen.g2.cutoff', 0.5), R('lfo1', 'gen.g1.cutoff', 0.01),
+      R('m1', 'gen.g3.level', 0.2), R('m2', 'gen.g2.level', 0.3), R('m3', 'lfo.1.amount', 3), R('m4', 'fx.xd.mix', 0.3),
+      R('m5', 'fx.xr.mix', 0.3), R('m6', 'fx.xw.width', 0.2), R('m7', 'fx.xe.high', -0.3), R('m8', 'fx.xe.low', 0.25)],
+    macros: MAC('TONE', 'AIR', 'WANDER', 'ECHO', 'SPACE', 'WIDTH', 'DARK', 'BODY'),
+    lanes: LN({ gain: 1.5, fx: [FX('eq', { low: -2, lowf: 100, high: 0, highf: 6000 }, 'xe'), FX('width', { width: 1.7 }, 'xw'),
+      FX('delay', { sync: true, div: '1/2', fb: 0.5, tone: 5000, pp: true, mix: 0.15 }, 'xd'), FX('reverb', { size: 10, damp: 0.3, pre: 0.05, mix: 0.6 }, 'xr')] }),
+    voice: { velSens: 0.3 }, master: { gain: 1.5 },
+  } },
+  { id: 'pad_sub_drone', name: 'Pad · Sub Basement', category: 'pads', tags: ['noir', 'ambient', 'trap', 'sub', 'dark', 'drone'], state: {
+    gens: [
+      { type: 'analog', shape: 'sine', coarse: -12, level: 0.6 },
+      { type: 'analog', shape: 'triangle', coarse: -12, fine: 4, level: 0.25 },
+      { type: 'analog', shape: 'saw', coarse: -12, unison: 2, detune: 10, spread: 0.5, level: 0.12 },
+      { type: 'noise', color: 'brown', nfilt: 'lowpass', nfreq: 200, level: 0.12 },
+      { type: 'analog', shape: 'sine', level: 0 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 260, res: 0.2, key: 0.2 },
+    amp: E(2, 1.5, 0.9, 3),
+    lfos: [{ shape: 'sine', rate: 0.09, retrig: false }, { shape: 'sine', rate: 0.5, retrig: false, amount: 0 }],
+    mods: [R('lfo1', 'filter.cutoff', 0.05), R('lfo2', 'amp.level', 0.25),
+      R('m1', 'filter.cutoff', 0.25), R('m1', 'gen.g3.level', 0.2), R('m2', 'lfo.2.amount', 1), R('m3', 'gen.g4.level', 0.2), R('m4', 'fx.bd.drive', 0.5),
+      R('m5', 'fx.br.mix', 0.25), R('m6', 'lfo.1.amount', 2), R('m7', 'gen.g5.level', 0.25), R('m8', 'fx.bw.width', 0.3)],
+    macros: MAC('GROWL', 'THROB', 'RUMBLE', 'DRIVE', 'SPACE', 'MOVE', 'GHOST', 'WIDTH'),
+    lanes: LN({ fx: [FX('dist', { mode: 'soft', drive: 0.1, tone: 3000, mix: 0.5 }, 'bd'), FX('eq', { low: 3, lowf: 60 }), FX('width', { width: 1 }, 'bw'),
+      FX('reverb', { size: 4, damp: 0.7, mix: 0.2 }, 'br')] }),
+    voice: { velSens: 0.2 }, master: { gain: 0.8 },
+  } },
+  { id: 'pad_neon_rain', name: 'Pad · Neon Rain', category: 'pads', tags: ['synthwave', 'motorik', 'dnb', 'motion', 'neon'], state: {
+    gens: [
+      { type: 'analog', shape: 'pulse', pw: 0.25, unison: 2, detune: 9, spread: 0.8, level: 0.4 },
+      { type: 'analog', shape: 'saw', unison: 2, detune: 14, spread: 0.8, level: 0.4 },
+      { type: 'wavetable', table: 'digital', morph: 0.5, level: 0.2 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 1400, res: 0.3, key: 0.3 },
+    amp: E(0.5, 1, 0.85, 1.5),
+    lfos: [{ shape: 'triangle', sync: true, div: '2/1', retrig: false }, { shape: 'sine', sync: true, div: '1/2', retrig: false, amount: 0.5 }, { shape: 'sine', rate: 0.17, retrig: false }],
+    mods: [R('lfo1', 'gen.g1.level', 0.3), R('lfo1', 'gen.g2.level', -0.3), R('lfo2', 'filter.cutoff', 0.08), R('lfo3', 'gen.g3.morph', 0.4),
+      R('m1', 'lfo.2.amount', 0.5), R('m2', 'filter.cutoff', 0.25), R('m3', 'filter.res', 0.35), R('m4', 'gen.g3.level', 0.25),
+      R('m5', 'fx.ne.mix', 0.3), R('m6', 'fx.nv.mix', 0.3), R('m7', 'fx.nw.width', 0.3), R('m8', 'fx.nx.mix', 0.5)],
+    macros: MAC('MOTION', 'BRIGHT', 'RESONANCE', 'DIGITAL', 'ECHO', 'SPACE', 'WIDTH', 'CRUSH'),
+    lanes: LN({ fx: [FX('dist', { mode: 'bitcrush', drive: 0.4, tone: 9000, mix: 0 }, 'nx'), FX('delay', { sync: true, div: '1/8d', fb: 0.4, tone: 3500, pp: true, mix: 0.15 }, 'ne'),
+      FX('chorus', { rate: 0.4, depth: 0.35, mix: 0.3 }), FX('width', { width: 1.3 }, 'nw'), FX('reverb', { size: 4, damp: 0.5, mix: 0.3 }, 'nv')] }),
+    voice: { velSens: 0.3 }, master: { gain: 1.2 },
+  } },
+  { id: 'pad_seance', name: 'Pad · Séance', category: 'pads', tags: ['noir', 'ambient', 'eerie', 'motion', 'choir'], state: {
+    gens: [
+      { type: 'wavetable', table: 'vocal', morph: 0.5, unison: 3, detune: 12, spread: 0.8, level: 0.5 },
+      { type: 'wavetable', table: 'hollow', morph: 0.3, coarse: -12, level: 0.25 },
+      { type: 'analog', shape: 'sine', coarse: 7, level: 0.05 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 2000, res: 0.2, key: 0.3 },
+    amp: E(1.8, 2, 0.85, 3),
+    lfos: [{ shape: 'sine', rate: 0.045, retrig: false }, { shape: 'sh', rate: 0.35, retrig: false }, { shape: 'triangle', rate: 0.09, retrig: false }],
+    mods: [R('lfo1', 'gen.g1.morph', 0.45), R('lfo2', 'filter.cutoff', 0.05), R('lfo3', 'gen.g2.morph', 0.3),
+      R('m1', 'fx.xr.mix', 0.35), R('m2', 'lfo.2.amount', 2), R('m3', 'gen.g1.morph', 0.4), R('m4', 'gen.g3.level', 0.15),
+      R('m5', 'fx.xv.mix', 0.3), R('m6', 'fx.xd.mix', 0.3), R('m7', 'filter.cutoff', 0.2), R('m8', 'fx.xt.wow', 0.6)],
+    macros: MAC('POSSESS', 'WANDER', 'VOWEL', 'FIFTH', 'SPACE', 'ECHO', 'BRIGHT', 'DRIFT'),
+    lanes: LN({ fx: [FX('ring', { freq: 180, mix: 0 }, 'xr'), FX('tape', { sat: 0.15, wow: 0.1, flutter: 0.1, age: 0.25, hiss: 0.03, mix: 1 }, 'xt'),
+      FX('delay', { sync: true, div: '1/2d', fb: 0.45, tone: 3500, pp: true, mix: 0.12 }, 'xd'), FX('reverb', { size: 8, damp: 0.5, mix: 0.45 }, 'xv')] }),
+    voice: { velSens: 0.3 }, master: { gain: 1.1 },
+  } },
+  { id: 'pad_gate', name: 'Pad · Streetlight Gate', category: 'pads', tags: ['synthwave', 'motorik', 'four_floor', 'gated', 'motion'], state: {
+    gens: [
+      { type: 'analog', shape: 'saw', unison: 4, detune: 12, spread: 0.8, level: 0.5 },
+      { type: 'analog', shape: 'square', coarse: -12, level: 0.2 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 2200, res: 0.2, key: 0.3 },
+    amp: E(0.05, 0.5, 0.9, 0.6),
+    lfos: [{ shape: 'sine', sync: true, div: '4/1', retrig: false }],
+    mods: [R('lfo1', 'filter.cutoff', 0.1),
+      R('m1', 'fx.gg.depth', -1), R('m2', 'filter.cutoff', 0.25), R('m3', 'lfo.1.amount', 1), R('m4', 'gen.g2.level', 0.25),
+      R('m5', 'fx.gd.mix', 0.3), R('m6', 'fx.gr.mix', 0.3), R('m7', 'filter.res', 0.35), R('m8', 'fx.gx.mix', 0.6)],
+    macros: MAC('OPEN GATE', 'BRIGHT', 'SWEEP', 'SUB', 'ECHO', 'SPACE', 'RESONANCE', 'DRIVE'),
+    lanes: LN({ fx: [FX('gate', { div: '1/16', pattern: 'x.xxx.x.x.xx.xx.', depth: 1, len: 0.6, smooth: 0.25, mix: 1 }, 'gg'), FX('dist', { mode: 'soft', drive: 0.35, tone: 7000, mix: 0 }, 'gx'),
+      FX('delay', { sync: true, div: '1/8d', fb: 0.35, tone: 4000, pp: true, mix: 0.18 }, 'gd'), FX('chorus', { rate: 0.4, depth: 0.3, mix: 0.25 }), FX('reverb', { size: 2.5, damp: 0.5, mix: 0.22 }, 'gr')] }),
+    voice: { velSens: 0.3 }, master: { gain: 1.3 },
+  } },
+  { id: 'pad_frost', name: 'Pad · Frost Window', category: 'pads', tags: ['ambient', 'trap', 'fm', 'glass', 'cold'], state: {
+    gens: [
+      { type: 'analog', shape: 'sine', level: 0.55 },
+      { type: 'fm', ratio: 3, fmTarget: 'g1', fmAmt: 0.02, level: 0 },
+      { type: 'fm', ratio: 7.01, fmTarget: 'g1', fmAmt: 0, level: 0 },
+      { type: 'analog', shape: 'sine', coarse: 12, fine: 6, level: 0.08 },
+      { type: 'analog', shape: 'sine', fine: -7, level: 0.3 },
+    ],
+    filter: { on: false },
+    amp: E(1.2, 2, 0.85, 3),
+    envs: [E(0.005, 0.4, 0.3, 0.3), E(0.005, 0.5, 0.2, 0.4), E(3, 4, 0.3, 3)],
+    lfos: [{ shape: 'sine', rate: 0.08, retrig: false }, { shape: 'sine', rate: 0.25, retrig: false }],
+    mods: [R('env3', 'gen.g2.fm', 0.12), R('lfo1', 'gen.g3.fm', 0.03), R('lfo2', 'gen.g4.level', 0.05),
+      R('m1', 'gen.g3.fm', 0.06), R('m2', 'gen.g2.fm', 0.15), R('m3', 'gen.g4.level', 0.15), R('m4', 'lfo.1.amount', 2),
+      R('m5', 'fx.fd.mix', 0.3), R('m6', 'fx.fr.mix', 0.3), R('m7', 'fx.fw.width', 0.3), R('m8', 'fx.fe.high', -0.3)],
+    macros: MAC('CRYSTAL', 'BLOOM', 'SPARKLE', 'MOTION', 'ECHO', 'SPACE', 'WIDTH', 'SOFT'),
+    lanes: LN({ fx: [FX('chorus', { rate: 0.3, depth: 0.35, mix: 0.3 }), FX('eq', { low: -2, lowf: 150, high: 0, highf: 7000 }, 'fe'),
+      FX('delay', { sync: true, div: '1/4d', fb: 0.4, tone: 6000, pp: true, mix: 0.15 }, 'fd'), FX('width', { width: 1.4 }, 'fw'), FX('reverb', { size: 7, damp: 0.35, mix: 0.45 }, 'fr')] }),
+    voice: { velSens: 0.35 }, master: { gain: 1.1 },
+  } },
+  { id: 'pad_dusk', name: 'Pad · Gulf Dusk', category: 'pads', tags: ['lofi', 'shuffle', 'ambient', 'warm', 'fifths'], state: {
+    gens: [
+      { type: 'analog', shape: 'saw', unison: 4, detune: 10, spread: 0.8, level: 0.45 },
+      { type: 'analog', shape: 'triangle', coarse: 7, level: 0.2 },
+      { type: 'analog', shape: 'triangle', coarse: 12, level: 0.1 },
+      { type: 'analog', shape: 'sine', coarse: -12, level: 0.2 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 700, res: 0.12, key: 0.35, env: 0.35 },
+    amp: E(1, 2, 0.85, 2),
+    envs: [E(0.005, 0.4, 0.3, 0.3), E(2.5, 3, 0.45, 2), E(0.3, 0.6, 0.5, 0.5)],
+    lfos: [{ shape: 'sine', rate: 0.1, retrig: false }],
+    mods: [R('lfo1', 'filter.cutoff', 0.04),
+      R('m1', 'filter.cutoff', 0.25), R('m2', 'gen.g2.level', 0.2), R('m3', 'gen.g3.level', 0.2), R('m4', 'gen.g4.level', 0.2),
+      R('m5', 'fx.dc.mix', 0.4), R('m6', 'fx.dr.mix', 0.3), R('m7', 'fx.dd.mix', 0.3), R('m8', 'filter.cutoff', -0.2)],
+    macros: MAC('BLOOM', 'FIFTH', 'OCTAVE', 'SUB', 'HAZE', 'SPACE', 'ECHO', 'DARK'),
+    lanes: LN({ fx: [FX('chorus', { rate: 0.25, depth: 0.4, mix: 0.25 }, 'dc'), FX('delay', { sync: true, div: '1/4', fb: 0.35, tone: 3000, pp: true, mix: 0 }, 'dd'),
+      FX('reverb', { size: 5, damp: 0.6, mix: 0.35 }, 'dr')] }),
+    voice: { velSens: 0.3 }, master: { gain: 1.2 },
+  } },
+  { id: 'pad_hollow', name: 'Pad · Hollow Body', category: 'pads', tags: ['motorik', 'ambient', 'reed', 'motion'], state: {
+    gens: [
+      { type: 'wavetable', table: 'hollow', morph: 0.2, unison: 3, detune: 10, spread: 0.7, level: 0.5 },
+      { type: 'wavetable', table: 'reed', morph: 0, coarse: -12, level: 0.2 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 1600, res: 0.2, key: 0.3 },
+    amp: E(0.7, 1.5, 0.85, 1.8),
+    lfos: [{ shape: 'triangle', rate: 0.15, retrig: false, uni: true }, { shape: 'sine', rate: 0.33, retrig: false }],
+    mods: [R('lfo1', 'gen.g1.morph', 0.5), R('lfo2', 'gen.g2.pan', 0.5),
+      R('m1', 'gen.g1.morph', 0.5), R('m2', 'gen.g2.level', 0.25), R('m3', 'lfo.1.amount', 1), R('m4', 'filter.cutoff', 0.25),
+      R('m5', 'fx.op.mix', 0.5), R('m6', 'fx.or.mix', 0.3), R('m7', 'fx.oe.mix', 0.3), R('m8', 'filter.cutoff', -0.2)],
+    macros: MAC('SQUARE', 'REED', 'MOTION', 'BRIGHT', 'PHASER', 'SPACE', 'ECHO', 'DARK'),
+    lanes: LN({ fx: [FX('phaser', { rate: 0.15, depth: 0.6, freq: 700, fb: 0.4, mix: 0 }, 'op'), FX('delay', { sync: true, div: '1/4d', fb: 0.35, tone: 3500, pp: true, mix: 0 }, 'oe'),
+      FX('chorus', { rate: 0.35, depth: 0.35, mix: 0.3 }), FX('reverb', { size: 4, damp: 0.5, mix: 0.3 }, 'or')] }),
+    voice: { velSens: 0.3 }, master: { gain: 1.05 },
+  } },
+
+  // ── KEYS ──────────────────────────────────────────────────────────
+  { id: 'keys_mk1', name: 'EP · Stage Mk I', category: 'keys', tags: ['lofi', 'boom_bap', 'noir', 'rhodes', 'electric piano'], state: {
+    gens: [
+      { type: 'analog', shape: 'sine', level: 0.7 },
+      { type: 'fm', ratio: 1, fmTarget: 'g1', fmAmt: 0.05, level: 0 },
+      { type: 'fm', ratio: 14, fmTarget: 'g1', fmAmt: 0, level: 0 },
+      { type: 'analog', shape: 'sine', fine: 3, level: 0.15 },
+    ],
+    filter: { on: false },
+    amp: E(0.002, 2.4, 0.25, 0.45),
+    envs: [E(0.001, 0.9, 0.15, 0.3), E(0.0008, 0.05, 0, 0.04), E(0.3, 0.6, 0.5, 0.5)],
+    lfos: [{ shape: 'sine', rate: 5.2, retrig: false, amount: 0 }],
+    mods: [R('env1', 'gen.g2.fm', 0.25), R('vel', 'gen.g2.fm', 0.25), R('env2', 'gen.g3.fm', 0.02), R('lfo1', 'gen.g1.pan', 0.5), R('lfo1', 'gen.g4.pan', -0.5),
+      R('m1', 'lfo.1.amount', 1), R('m2', 'gen.g2.fm', 0.15), R('m3', 'gen.g3.fm', 0.01), R('m4', 'fx.kp.mix', 0.5),
+      R('m5', 'fx.kd.drive', 0.5), R('m6', 'fx.kc.mix', 0.4), R('m7', 'fx.kr.mix', 0.3), R('m8', 'fx.ke.high', -0.25)],
+    macros: MAC('TREMOLO', 'BARK', 'TINE', 'PHASER', 'DRIVE', 'CHORUS', 'SPACE', 'WARM'),
+    lanes: LN({ fx: [FX('dist', { mode: 'soft', drive: 0.1, tone: 8000, mix: 0.6 }, 'kd'), FX('eq', { low: 1, lowf: 150, high: 0, highf: 5000 }, 'ke'),
+      FX('phaser', { rate: 0.4, depth: 0.5, freq: 800, fb: 0.4, mix: 0 }, 'kp'), FX('chorus', { rate: 0.6, depth: 0.3, mix: 0 }, 'kc'), FX('reverb', { size: 1.6, damp: 0.5, mix: 0.15 }, 'kr')] }),
+    voice: { velSens: 0.7 }, master: { gain: 0.85 },
+  } },
+  { id: 'keys_wurli', name: 'EP · Wurly Diner', category: 'keys', tags: ['lofi', 'boom_bap', 'shuffle', 'wurlitzer', 'electric piano', 'reed'], state: {
+    gens: [
+      { type: 'wavetable', table: 'reed', morph: 0.35, level: 0.5 },
+      { type: 'fm', ratio: 1, fmTarget: 'g1', fmAmt: 0.02, level: 0 },
+      { type: 'analog', shape: 'triangle', ratio: 2, level: 0.06 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 2600, res: 0.1, key: 0.5, env: 0.25 },
+    amp: E(0.002, 1.5, 0.2, 0.25),
+    envs: [E(0.001, 0.6, 0.1, 0.2), E(0.001, 0.4, 0.1, 0.2), E(0.3, 0.6, 0.5, 0.5)],
+    lfos: [{ shape: 'sine', rate: 5.6, retrig: false, amount: 0 }],
+    mods: [R('env1', 'gen.g2.fm', 0.15), R('vel', 'gen.g2.fm', 0.15), R('vel', 'filter.cutoff', 0.1), R('lfo1', 'amp.level', 0.3),
+      R('m1', 'lfo.1.amount', 1), R('m2', 'gen.g2.fm', 0.15), R('m3', 'fx.wd.drive', 0.5), R('m4', 'filter.cutoff', 0.2),
+      R('m5', 'gen.g1.morph', 0.5), R('m6', 'fx.wc.mix', 0.4), R('m7', 'fx.wr.mix', 0.3), R('m8', 'fx.wt.mix', 1)],
+    macros: MAC('TREMOLO', 'BITE', 'DRIVE', 'BRIGHT', 'NASAL', 'CHORUS', 'SPACE', 'TAPE'),
+    lanes: LN({ fx: [FX('dist', { mode: 'soft', drive: 0.2, tone: 7000, mix: 0.6 }, 'wd'), FX('tape', { sat: 0.3, wow: 0.3, flutter: 0.25, age: 0.45, hiss: 0.08, mix: 0 }, 'wt'),
+      FX('chorus', { rate: 0.5, depth: 0.3, mix: 0 }, 'wc'), FX('reverb', { size: 1.4, damp: 0.55, mix: 0.14 }, 'wr')] }),
+    voice: { velSens: 0.65 }, master: { gain: 1.0 },
+  } },
+  { id: 'keys_vibes', name: 'Vibes · Blue Note', category: 'keys', tags: ['noir', 'lofi', 'boom_bap', 'shuffle', 'vibraphone', 'mallet'], state: {
+    gens: [
+      { type: 'analog', shape: 'sine', level: 0.7 },
+      { type: 'analog', shape: 'sine', ratio: 4, level: 0.05 },
+      { type: 'analog', shape: 'sine', ratio: 10, level: 0 },
+      { type: 'noise', color: 'white', nfilt: 'bandpass', nfreq: 3000, nres: 0.3, level: 0 },
+    ],
+    filter: { on: false },
+    amp: E(0.001, 3.5, 0, 0.6),
+    envs: [E(0.0005, 1.2, 0, 0.5), E(0.0005, 0.08, 0, 0.05), E(0.0005, 0.012, 0, 0.01)],
+    lfos: [{ shape: 'sine', rate: 4.6, retrig: false, amount: 0 }],
+    mods: [R('env1', 'gen.g2.level', 0.2), R('env2', 'gen.g3.level', 0.12), R('env3', 'gen.g4.level', 0.08), R('lfo1', 'amp.level', 0.4), R('lfo1', 'gen.g1.pan', 0.25),
+      R('m1', 'lfo.1.amount', 1), R('m2', 'lfo.1.rate', 0.1), R('m3', 'gen.g3.level', 0.15), R('m3', 'gen.g4.level', 0.1), R('m4', 'gen.g2.level', 0.2),
+      R('m5', 'fx.vr.mix', 0.3), R('m6', 'fx.ve.mix', 0.3), R('m7', 'fx.vq.high', -0.3), R('m8', 'fx.vw.width', 0.4)],
+    macros: MAC('MOTOR', 'SPEED', 'HARD MALLET', 'OVERTONE', 'SPACE', 'ECHO', 'SOFT', 'WIDTH'),
+    lanes: LN({ fx: [FX('eq', { low: -2, lowf: 150, high: 1, highf: 6000 }, 'vq'), FX('delay', { sync: true, div: '1/4d', fb: 0.3, tone: 3500, pp: true, mix: 0 }, 've'),
+      FX('width', { width: 1.1 }, 'vw'), FX('reverb', { size: 2.2, damp: 0.45, mix: 0.2 }, 'vr')] }),
+    voice: { velSens: 0.7 }, master: { gain: 0.9 },
+  } },
+  { id: 'keys_celesta', name: 'Celesta · Attic', category: 'keys', tags: ['ambient', 'lofi', 'trap', 'celesta', 'bell', 'music box'], state: {
+    gens: [
+      { type: 'analog', shape: 'sine', coarse: 12, level: 0.6 },
+      { type: 'fm', ratio: 3.5, coarse: 12, fmTarget: 'g1', fmAmt: 0, level: 0 },
+      { type: 'analog', shape: 'sine', coarse: 24, level: 0 },
+      { type: 'analog', shape: 'triangle', level: 0 },
+    ],
+    filter: { on: false },
+    amp: E(0.001, 1.4, 0, 0.5),
+    envs: [E(0.0005, 0.25, 0, 0.2), E(0.0005, 0.5, 0, 0.3), E(0.3, 0.6, 0.5, 0.5)],
+    mods: [R('env1', 'gen.g2.fm', 0.06), R('vel', 'gen.g2.fm', 0.04), R('env2', 'gen.g3.level', 0.15),
+      R('m1', 'gen.g2.fm', 0.08), R('m2', 'gen.g3.level', 0.15), R('m3', 'fx.ce.mix', 0.3), R('m4', 'fx.cr.mix', 0.3),
+      R('m5', 'fx.ct.mix', 1), R('m6', 'fx.cq.high', -0.3), R('m7', 'fx.cw.width', 0.4), R('m8', 'gen.g4.level', 0.3)],
+    macros: MAC('CHIME', 'SPARKLE', 'ECHO', 'SPACE', 'WARBLE', 'SOFT', 'WIDTH', 'BODY'),
+    lanes: LN({ fx: [FX('eq', { low: -4, lowf: 300, high: 0, highf: 7000 }, 'cq'), FX('tape', { sat: 0.2, wow: 0.35, flutter: 0.35, age: 0.4, hiss: 0.05, mix: 0 }, 'ct'),
+      FX('delay', { sync: true, div: '1/8d', fb: 0.3, tone: 5000, pp: true, mix: 0.12 }, 'ce'), FX('width', { width: 1.1 }, 'cw'), FX('reverb', { size: 2.2, damp: 0.35, mix: 0.25 }, 'cr')] }),
+    voice: { velSens: 0.6 }, master: { gain: 1.25 },
+  } },
+  { id: 'keys_toy_piano', name: 'Toy Piano · Nursery', category: 'keys', tags: ['lofi', 'eerie', 'toy', 'vintage'], state: {
+    gens: [
+      { type: 'analog', shape: 'sine', level: 0.6 },
+      { type: 'analog', shape: 'sine', ratio: 2.9, level: 0.05 },
+      { type: 'analog', shape: 'sine', ratio: 5.4, level: 0 },
+      { type: 'noise', color: 'white', nfilt: 'highpass', nfreq: 3000, level: 0 },
+      { type: 'analog', shape: 'sine', fine: 12, level: 0.15 },
+    ],
+    filter: { on: false },
+    amp: E(0.001, 0.9, 0, 0.3),
+    envs: [E(0.0005, 0.35, 0, 0.2), E(0.0005, 0.12, 0, 0.1), E(0.0005, 0.015, 0, 0.01)],
+    mods: [R('env1', 'gen.g2.level', 0.25), R('env2', 'gen.g3.level', 0.12), R('env3', 'gen.g4.level', 0.15),
+      R('m1', 'gen.g5.pitch', 0.004), R('m2', 'gen.g4.level', 0.2), R('m3', 'gen.g3.level', 0.2), R('m4', 'fx.tt.mix', 0.4),
+      R('m5', 'fx.tr.mix', 0.3), R('m6', 'fx.tq.high', -0.3), R('m7', 'fx.tt.wow', 0.5), R('m8', 'gen.g2.level', 0.2)],
+    macros: MAC('DETUNE', 'CLACK', 'TINK', 'TAPE', 'SPACE', 'DARK', 'WOBBLE', 'LOW BAR'),
+    lanes: LN({ fx: [FX('tape', { sat: 0.2, wow: 0.2, flutter: 0.2, age: 0.4, hiss: 0.05, mix: 0.6 }, 'tt'), FX('eq', { low: -3, lowf: 250, high: 0, highf: 6000 }, 'tq'),
+      FX('reverb', { size: 1.2, damp: 0.5, mix: 0.18 }, 'tr')] }),
+    voice: { velSens: 0.6 }, master: { gain: 1.3 },
+  } },
+  { id: 'keys_harpsichord', name: 'Harpsichord · Parlor', category: 'keys', tags: ['ambient', 'baroque', 'eerie', 'harpsichord', 'plucked'], state: {
+    gens: [
+      { type: 'analog', shape: 'pulse', pw: 0.12, level: 0.35 },
+      { type: 'analog', shape: 'saw', coarse: 12, level: 0.2 },
+      { type: 'analog', shape: 'saw', fine: -6, level: 0.25 },
+      { type: 'noise', color: 'white', nfilt: 'bandpass', nfreq: 4000, nres: 0.3, level: 0 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 1600, res: 0.1, key: 0.5, env: 0.3 },
+    amp: E(0.001, 2.2, 0, 0.25),
+    envs: [E(0.005, 0.4, 0.3, 0.3), E(0.0005, 0.6, 0.2, 0.3), E(0.0005, 0.015, 0, 0.01)],
+    mods: [R('env3', 'gen.g4.level', 0.2),
+      R('m1', 'gen.g2.level', -0.2), R('m1', 'gen.g3.level', -0.25), R('m2', 'gen.g2.level', 0.25), R('m3', 'filter.cutoff', 0.2), R('m4', 'gen.g4.level', 0.2),
+      R('m5', 'fx.hr.mix', 0.3), R('m6', 'fx.he.mix', 0.3), R('m7', 'filter.cutoff', -0.2), R('m8', 'fx.ht.mix', 1)],
+    macros: MAC('LUTE STOP', '4 FOOT', 'BRIGHT', 'PLUCK', 'SPACE', 'ECHO', 'DARK', 'TAPE'),
+    lanes: LN({ fx: [FX('eq', { low: -6, lowf: 250, mid: 3, midf: 2000 }), FX('tape', { sat: 0.25, wow: 0.3, flutter: 0.3, age: 0.5, hiss: 0.06, mix: 0 }, 'ht'),
+      FX('delay', { sync: true, div: '1/8d', fb: 0.3, tone: 4000, pp: true, mix: 0 }, 'he'), FX('reverb', { size: 1.4, damp: 0.5, mix: 0.16 }, 'hr')] }),
+    voice: { velSens: 0.3 }, master: { gain: 1.45 },
+  } },
+  { id: 'keys_felt', name: 'Piano · Felt Lullaby', category: 'keys', tags: ['lofi', 'noir', 'ambient', 'boom_bap', 'piano', 'soft'], state: {
+    gens: [
+      { type: 'analog', shape: 'sine', level: 0.6 },
+      { type: 'analog', shape: 'triangle', fine: 2, level: 0.25 },
+      { type: 'fm', ratio: 1, fmTarget: 'g1', fmAmt: 0, level: 0 },
+      { type: 'noise', color: 'brown', nfilt: 'lowpass', nfreq: 600, level: 0 },
+      { type: 'analog', shape: 'sine', coarse: 12, level: 0.05 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 2200, res: 0.05, key: 0.5, env: 0.1 },
+    amp: E(0.004, 3, 0, 0.6),
+    envs: [E(0.001, 0.5, 0.05, 0.3), E(0.001, 1.5, 0.3, 0.5), E(0.0008, 0.03, 0, 0.02)],
+    mods: [R('env1', 'gen.g3.fm', 0.08), R('vel', 'gen.g3.fm', 0.06), R('env3', 'gen.g4.level', 0.3),
+      R('m1', 'filter.cutoff', -0.15), R('m2', 'gen.g3.fm', 0.06), R('m3', 'gen.g4.level', 0.25), R('m4', 'fx.ft.wow', 0.4),
+      R('m5', 'fx.ft.age', 0.4), R('m6', 'fx.fr.mix', 0.3), R('m7', 'gen.g5.level', 0.15), R('m8', 'filter.cutoff', 0.2)],
+    macros: MAC('FELT', 'HAMMER', 'THUMP', 'WOW', 'AGE', 'SPACE', 'OCTAVE', 'BRIGHT'),
+    lanes: LN({ fx: [FX('tape', { sat: 0.25, wow: 0.15, flutter: 0.1, age: 0.4, hiss: 0.08, mix: 1 }, 'ft'), FX('comp', { thresh: -20, ratio: 2.5, makeup: 2 }),
+      FX('eq', { low: 1, lowf: 150, high: -2, highf: 5000 }), FX('reverb', { size: 2.5, damp: 0.6, mix: 0.25 }, 'fr')] }),
+    voice: { velSens: 0.7 }, master: { gain: 0.9 },
+  } },
+  { id: 'keys_combo_organ', name: 'Organ · Roller Rink', category: 'keys', tags: ['shuffle', 'motorik', 'four_floor', 'organ', 'vintage'], state: {
+    gens: [
+      { type: 'analog', shape: 'square', level: 0.3 },
+      { type: 'analog', shape: 'square', coarse: 12, level: 0.15 },
+      { type: 'analog', shape: 'triangle', coarse: -12, level: 0.2 },
+      { type: 'analog', shape: 'pulse', pw: 0.2, coarse: 19, level: 0.05 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 3800, res: 0.1, key: 0.3 },
+    amp: E(0.003, 0.1, 1, 0.05),
+    lfos: [{ shape: 'sine', rate: 6.2, retrig: false, amount: 0.3 }],
+    mods: [R('lfo1', 'voice.pitch', 0.003),
+      R('m1', 'lfo.1.amount', 0.7), R('m2', 'filter.cutoff', 0.2), R('m3', 'gen.g2.level', 0.2), R('m4', 'gen.g4.level', 0.1),
+      R('m5', 'gen.g3.level', 0.2), R('m6', 'fx.cd.drive', 0.5), R('m7', 'fx.cr.mix', 0.3), R('m8', 'fx.ce.mix', 0.3)],
+    macros: MAC('VIBRATO', 'BRIGHT', '4 FOOT', 'MIXTURE', 'BASS', 'FUZZ', 'SPACE', 'ECHO'),
+    lanes: LN({ fx: [FX('dist', { mode: 'soft', drive: 0.1, tone: 6000, mix: 0.6 }, 'cd'), FX('delay', { sync: true, div: '1/8', fb: 0.3, tone: 3000, mix: 0 }, 'ce'),
+      FX('reverb', { size: 1.8, damp: 0.5, mix: 0.18 }, 'cr')] }),
+    voice: { velSens: 0.1 }, master: { gain: 0.75 },
+  } },
+  { id: 'keys_clav', name: 'Clav · Pawn Shop', category: 'keys', tags: ['shuffle', 'boom_bap', 'funk', 'clavinet'], state: {
+    gens: [
+      { type: 'analog', shape: 'pulse', pw: 0.1, level: 0.4 },
+      { type: 'analog', shape: 'saw', level: 0.25 },
+      { type: 'noise', color: 'white', nfilt: 'highpass', nfreq: 5000, level: 0 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 1400, res: 0.45, key: 0.5, env: 0.45 },
+    amp: E(0.001, 0.9, 0.25, 0.08),
+    envs: [E(0.005, 0.4, 0.3, 0.3), E(0.0005, 0.18, 0.1, 0.08), E(0.0005, 0.01, 0, 0.01)],
+    mods: [R('env3', 'gen.g3.level', 0.1),
+      R('m1', 'filter.res', 0.3), R('m2', 'filter.cutoff', 0.25), R('m3', 'fx.lp.mix', 0.5), R('m4', 'fx.ld.drive', 0.5),
+      R('m5', 'filter.cutoff', -0.2), R('m6', 'gen.g3.level', 0.15), R('m7', 'fx.lr.mix', 0.3), R('m8', 'fx.le.mix', 0.3)],
+    macros: MAC('WAH', 'BRIGHT', 'PHASER', 'DRIVE', 'MUTE', 'CLICK', 'SPACE', 'ECHO'),
+    lanes: LN({ fx: [FX('dist', { mode: 'soft', drive: 0.25, tone: 7000, mix: 0.5 }, 'ld'), FX('eq', { mid: 4, midf: 1500, low: -3, lowf: 120 }),
+      FX('phaser', { rate: 0.5, depth: 0.6, freq: 900, fb: 0.4, mix: 0 }, 'lp'), FX('delay', { sync: true, div: '1/8d', fb: 0.3, tone: 3000, mix: 0 }, 'le'), FX('reverb', { size: 0.8, damp: 0.5, mix: 0.1 }, 'lr')] }),
+    voice: { velSens: 0.6 }, master: { gain: 1.15 },
+  } },
+
+  // ── BASS ──────────────────────────────────────────────────────────
+  { id: 'bass_upright', name: 'Upright · Basement Club', category: 'bass', tags: ['noir', 'lofi', 'boom_bap', 'shuffle', 'upright', 'jazz'], state: {
+    gens: [
+      { type: 'analog', shape: 'sine', level: 0.7 },
+      { type: 'analog', shape: 'triangle', level: 0.25 },
+      { type: 'fm', ratio: 1, fmTarget: 'g1', fmAmt: 0, level: 0 },
+      { type: 'noise', color: 'brown', nfilt: 'lowpass', nfreq: 400, level: 0 },
+      { type: 'fm', ratio: 2, fmTarget: 'g2', fmAmt: 0, level: 0 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 1200, res: 0.05, key: 0.4, env: 0.15 },
+    amp: E(0.003, 1.6, 0, 0.12),
+    envs: [E(0.0008, 0.12, 0, 0.08), E(0.001, 0.25, 0.1, 0.1), E(0.0008, 0.04, 0, 0.03)],
+    mods: [R('env1', 'gen.g3.fm', 0.12), R('vel', 'gen.g3.fm', 0.06), R('env3', 'gen.g4.level', 0.35), R('env1', 'gen.g5.fm', 0.03),
+      R('m1', 'gen.g4.level', 0.3), R('m2', 'gen.g3.fm', 0.08), R('m3', 'gen.g5.fm', 0.05), R('m4', 'filter.cutoff', 0.2),
+      R('m5', 'fx.ue.mid', 0.2), R('m6', 'fx.ur.mix', 0.25), R('m7', 'fx.ud.mix', 0.6), R('m8', 'fx.ut.mix', 1)],
+    macros: MAC('THUMP', 'SNAP', 'BUZZ', 'BRIGHT', 'WOOD', 'ROOM', 'GROWL', 'TAPE'),
+    lanes: LN({ fx: [FX('dist', { mode: 'soft', drive: 0.4, tone: 3000, mix: 0 }, 'ud'), FX('eq', { low: 3, lowf: 90, mid: -3, midf: 400, high: -4, highf: 3000 }, 'ue'),
+      FX('comp', { thresh: -18, ratio: 3, attack: 0.008, release: 0.15, makeup: 3 }), FX('tape', { sat: 0.3, wow: 0.2, flutter: 0.15, age: 0.4, hiss: 0.04, mix: 0 }, 'ut'),
+      FX('reverb', { size: 0.8, damp: 0.6, mix: 0.08 }, 'ur')] }),
+    voice: { mode: 'mono', velSens: 0.55 }, master: { gain: 0.8 },
+  } },
+  { id: 'bass_fm', name: 'FM Bass · Lately', category: 'bass', tags: ['synthwave', 'dnb', 'four_floor', 'fm', 'punchy'], state: {
+    gens: [
+      { type: 'analog', shape: 'sine', level: 0.7 },
+      { type: 'fm', ratio: 1, fmTarget: 'g1', fmAmt: 0.05, level: 0 },
+      { type: 'fm', ratio: 1, fmTarget: 'g2', fmAmt: 0.1, level: 0 },
+      { type: 'analog', shape: 'sine', coarse: -12, level: 0.3 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 5000, res: 0.05, key: 0.3 },
+    amp: E(0.001, 0.8, 0.5, 0.1),
+    envs: [E(0.0005, 0.25, 0.1, 0.1), E(0.005, 0.5, 0.2, 0.4), E(0.3, 0.6, 0.5, 0.5)],
+    mods: [R('env1', 'gen.g2.fm', 0.3), R('vel', 'gen.g2.fm', 0.1), R('env1', 'gen.g3.fm', 0.1),
+      R('m1', 'gen.g2.fm', 0.15), R('m2', 'gen.g3.fm', 0.1), R('m3', 'gen.g4.level', 0.25), R('m4', 'fx.fd.drive', 0.5),
+      R('m5', 'fx.fc.mix', 0.4), R('m6', 'filter.cutoff', -0.3)],
+    macros: MAC('PUNCH', 'GROWL', 'SUB', 'DRIVE', 'CHORUS', 'DARK'),
+    lanes: LN({ fx: [FX('dist', { mode: 'soft', drive: 0.1, tone: 6000, mix: 0.5 }, 'fd'), FX('chorus', { rate: 0.4, depth: 0.25, mix: 0 }, 'fc'),
+      FX('comp', { thresh: -16, ratio: 4, attack: 0.004, release: 0.12, makeup: 2 }), FX('eq', { low: 2, lowf: 70 })] }),
+    voice: { mode: 'legato', glide: 0.02, velSens: 0.45 }, master: { gain: 0.55 },
+  } },
+  { id: 'bass_808', name: '808 · Long Boom', category: 'bass', tags: ['trap', 'boom_bap', '808', 'sub'], state: {
+    gens: [
+      { type: 'analog', shape: 'sine', level: 0.85 },
+      { type: 'analog', shape: 'triangle', coarse: 12, level: 0.06 },
+      { type: 'noise', color: 'white', nfilt: 'bandpass', nfreq: 3000, nres: 0.2, level: 0 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 6000, res: 0.05, key: 0 },
+    amp: E(0.002, 2.8, 0, 0.25),
+    envs: [E(0.0005, 0.06, 0, 0.05), E(0.005, 0.5, 0.2, 0.4), E(0.0005, 0.01, 0, 0.01)],
+    mods: [R('env1', 'voice.pitch', 0.15),
+      R('env3', 'gen.g3.level', 0.15),
+      R('m1', 'fx.8d.drive', 0.5), R('m2', 'gen.g2.level', 0.2), R('m3', 'fx.8q.high', 0.3), R('m4', 'filter.cutoff', -0.3),
+      R('m5', 'fx.8d.tone', 0.3), R('m6', 'fx.8r.mix', 0.25)],
+    macros: MAC('DISTORT', 'HARMONIC', 'ATTACK', 'DARK', 'BITE', 'ROOM'),
+    lanes: LN({ fx: [FX('dist', { mode: 'soft', drive: 0.3, tone: 3000, mix: 0.7 }, '8d'), FX('eq', { low: 2, lowf: 55, high: 0, highf: 3000 }, '8q'), FX('comp', { thresh: -14, ratio: 3, makeup: 2 }),
+      FX('reverb', { size: 1, damp: 0.6, mix: 0 }, '8r')] }),
+    voice: { mode: 'legato', glide: 0.07, velSens: 0.3 }, master: { gain: 0.56 },
+  } },
+  { id: 'bass_pluck', name: 'Bass · Night Drive', category: 'bass', tags: ['synthwave', 'motorik', 'four_floor', 'pluck', 'analog'], state: {
+    gens: [
+      { type: 'analog', shape: 'saw', level: 0.5 },
+      { type: 'analog', shape: 'square', fine: -6, level: 0.3 },
+      { type: 'analog', shape: 'sine', coarse: -12, level: 0.3 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 320, res: 0.35, key: 0.3, env: 0.45 },
+    amp: E(0.001, 0.4, 0.6, 0.08),
+    envs: [E(0.005, 0.4, 0.3, 0.3), E(0.0008, 0.22, 0.05, 0.12), E(0.3, 0.6, 0.5, 0.5)],
+    mods: [R('vel', 'filter.cutoff', 0.08),
+      R('m1', 'filter.cutoff', 0.3), R('m2', 'filter.res', 0.3), R('m3', 'gen.g3.level', 0.25), R('m4', 'fx.pd.drive', 0.5),
+      R('m5', 'gen.g2.level', 0.25), R('m6', 'filter.cutoff', -0.15)],
+    macros: MAC('CUTOFF', 'RESONANCE', 'SUB', 'DRIVE', 'SQUARE', 'DARK'),
+    lanes: LN({ fx: [FX('dist', { mode: 'soft', drive: 0.15, tone: 6000, mix: 0.5 }, 'pd'), FX('eq', { low: 2, lowf: 70 }), FX('comp', { thresh: -16, ratio: 3, makeup: 2 })] }),
+    voice: { mode: 'mono', velSens: 0.4 }, master: { gain: 0.57 },
+  } },
+  { id: 'bass_ladder', name: 'Bass · Fat Ladder', category: 'bass', tags: ['synthwave', 'dnb', 'motorik', 'boom_bap', 'analog', 'fat'], state: {
+    gens: [
+      { type: 'analog', shape: 'saw', level: 0.45 },
+      { type: 'analog', shape: 'saw', fine: 8, level: 0.35 },
+      { type: 'analog', shape: 'square', coarse: -12, level: 0.3 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 380, res: 0.45, key: 0.3, env: 0.4 },
+    amp: E(0.003, 0.5, 0.85, 0.12),
+    envs: [E(0.005, 0.4, 0.3, 0.3), E(0.001, 0.25, 0.15, 0.15), E(0.3, 0.6, 0.5, 0.5)],
+    mods: [R('m1', 'filter.cutoff', 0.3), R('m2', 'filter.res', 0.35), R('m3', 'fx.ld.drive', 0.5), R('m4', 'gen.g3.level', 0.3),
+      R('m5', 'gen.g2.pitch', 0.004), R('m6', 'filter.cutoff', -0.15)],
+    macros: MAC('CUTOFF', 'RESONANCE', 'DRIVE', 'SUB', 'DETUNE', 'DARK'),
+    lanes: LN({ fx: [FX('dist', { mode: 'soft', drive: 0.25, tone: 5000, mix: 0.6 }, 'ld'), FX('eq', { low: 2, lowf: 80 }), FX('comp', { thresh: -16, ratio: 3, makeup: 2 })] }),
+    voice: { mode: 'legato', glide: 0.04, velSens: 0.35 }, master: { gain: 0.5 },
+  } },
+  { id: 'bass_fender', name: 'Bass · Juke Fingered', category: 'bass', tags: ['shuffle', 'lofi', 'boom_bap', 'electric bass', 'warm'], state: {
+    gens: [
+      { type: 'analog', shape: 'triangle', level: 0.55 },
+      { type: 'analog', shape: 'saw', level: 0.15 },
+      { type: 'noise', color: 'brown', nfilt: 'lowpass', nfreq: 800, level: 0 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 900, res: 0.1, key: 0.4, env: 0.25 },
+    amp: E(0.002, 1.8, 0.2, 0.1),
+    envs: [E(0.005, 0.4, 0.3, 0.3), E(0.001, 0.35, 0.2, 0.15), E(0.0008, 0.03, 0, 0.02)],
+    mods: [R('env3', 'gen.g3.level', 0.25), R('vel', 'filter.cutoff', 0.08),
+      R('m1', 'filter.cutoff', 0.15), R('m2', 'fx.bd.drive', 0.4), R('m3', 'filter.cutoff', -0.2), R('m4', 'gen.g3.level', 0.25),
+      R('m5', 'fx.br.mix', 0.25), R('m6', 'gen.g2.level', 0.2)],
+    macros: MAC('PICK', 'GROWL', 'PALM MUTE', 'THUMP', 'ROOM', 'EDGE'),
+    lanes: LN({ fx: [FX('dist', { mode: 'soft', drive: 0.1, tone: 4000, mix: 0.5 }, 'bd'), FX('eq', { low: 2, lowf: 80, mid: 2, midf: 700 }),
+      FX('comp', { thresh: -18, ratio: 3.5, attack: 0.006, release: 0.12, makeup: 3 }), FX('reverb', { size: 0.8, damp: 0.6, mix: 0.06 }, 'br')] }),
+    voice: { mode: 'mono', velSens: 0.5 }, master: { gain: 0.65 },
+  } },
+  { id: 'bass_fretless', name: 'Fretless · Bayou Moan', category: 'bass', tags: ['noir', 'ambient', 'lofi', 'fretless', 'slide'], state: {
+    gens: [
+      { type: 'analog', shape: 'sine', level: 0.6 },
+      { type: 'analog', shape: 'triangle', level: 0.3 },
+      { type: 'analog', shape: 'saw', level: 0.08 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 700, res: 0.35, key: 0.4, env: 0.2 },
+    amp: E(0.01, 2.5, 0.4, 0.25),
+    envs: [E(0.005, 0.4, 0.3, 0.3), E(0.08, 0.6, 0.4, 0.3), E(0.3, 0.6, 0.5, 0.5)],
+    lfos: [{ shape: 'sine', rate: 4.8, retrig: true, fade: 0.6, amount: 0.5 }],
+    mods: [R('lfo1', 'voice.pitch', 0.003),
+      R('m1', 'filter.res', 0.3), R('m2', 'lfo.1.amount', 0.5), R('m3', 'filter.cutoff', 0.2), R('m4', 'fx.tc.mix', 0.4),
+      R('m5', 'fx.tr.mix', 0.25), R('m6', 'gen.g3.level', 0.15)],
+    macros: MAC('MWAH', 'VIBRATO', 'BRIGHT', 'CHORUS', 'ROOM', 'EDGE'),
+    lanes: LN({ fx: [FX('comp', { thresh: -18, ratio: 3, makeup: 2 }), FX('chorus', { rate: 0.5, depth: 0.3, mix: 0.25 }, 'tc'), FX('reverb', { size: 1.5, damp: 0.5, mix: 0.14 }, 'tr')] }),
+    voice: { mode: 'legato', glide: 0.12, velSens: 0.45 }, master: { gain: 0.95 },
+  } },
+
+  // ── LEADS ─────────────────────────────────────────────────────────
+  { id: 'lead_theremin', name: 'Lead · Ether', category: 'leads', tags: ['noir', 'ambient', 'theremin', 'eerie', 'mythic'], state: {
+    gens: [
+      { type: 'analog', shape: 'sine', level: 0.65 },
+      { type: 'analog', shape: 'triangle', level: 0.08 },
+      { type: 'analog', shape: 'sine', coarse: 12, level: 0.03 },
+    ],
+    filter: { on: false },
+    amp: E(0.12, 0.3, 0.9, 0.5),
+    lfos: [{ shape: 'sine', rate: 6.2, retrig: true, fade: 0.35, amount: 0.6 }],
+    mods: [R('lfo1', 'voice.pitch', 0.007),
+      R('m1', 'lfo.1.amount', 0.4), R('m2', 'lfo.1.rate', 0.05), R('m3', 'gen.g2.level', 0.2), R('m4', 'gen.g3.level', 0.15),
+      R('m5', 'fx.ee.mix', 0.3), R('m6', 'fx.er.mix', 0.3), R('m7', 'fx.et.mix', 1), R('m8', 'fx.eg.mix', 0.3)],
+    macros: MAC('VIBRATO', 'SPEED', 'BUZZ', 'OCTAVE', 'ECHO', 'SPACE', 'WARBLE', 'RING'),
+    lanes: LN({ fx: [FX('ring', { freq: 440, mix: 0 }, 'eg'), FX('tape', { sat: 0.2, wow: 0.5, flutter: 0.3, age: 0.4, hiss: 0.05, mix: 0 }, 'et'),
+      FX('delay', { sync: true, div: '1/4d', fb: 0.35, tone: 3500, pp: true, mix: 0.2 }, 'ee'), FX('reverb', { size: 5, damp: 0.4, mix: 0.4 }, 'er')] }),
+    voice: { mode: 'legato', glide: 0.25, velSens: 0.3 }, master: { gain: 0.95 },
+  } },
+  { id: 'lead_brass', name: 'Lead · Chrome Brass', category: 'leads', tags: ['synthwave', 'motorik', 'brass', 'analog'], state: {
+    gens: [
+      { type: 'analog', shape: 'saw', unison: 3, detune: 10, spread: 0.5, level: 0.6 },
+      { type: 'analog', shape: 'saw', coarse: -12, level: 0.2 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 600, res: 0.15, key: 0.4, env: 0.35 },
+    amp: E(0.04, 0.3, 0.85, 0.25),
+    envs: [E(0.005, 0.4, 0.3, 0.3), E(0.12, 0.5, 0.6, 0.3), E(0.3, 0.6, 0.5, 0.5)],
+    lfos: [{ shape: 'sine', rate: 5.4, retrig: true, fade: 0.6, amount: 0.3 }],
+    mods: [R('lfo1', 'voice.pitch', 0.004),
+      R('m1', 'filter.cutoff', 0.2), R('m2', 'fx.bd.drive', 0.5), R('m3', 'lfo.1.amount', 0.6), R('m4', 'gen.g2.level', 0.25),
+      R('m5', 'fx.be.mix', 0.3), R('m6', 'fx.br.mix', 0.3), R('m7', 'filter.res', 0.35), R('m8', 'fx.bw.width', 0.4)],
+    macros: MAC('BRASS', 'GROWL', 'VIBRATO', 'SUB', 'ECHO', 'SPACE', 'RESONANCE', 'WIDTH'),
+    lanes: LN({ gain: 1.3, fx: [FX('dist', { mode: 'soft', drive: 0.1, tone: 7000, mix: 0.5 }, 'bd'), FX('chorus', { rate: 0.4, depth: 0.3, mix: 0.3 }),
+      FX('delay', { sync: true, div: '1/8d', fb: 0.3, tone: 4000, pp: true, mix: 0.18 }, 'be'), FX('width', { width: 1.1 }, 'bw'), FX('reverb', { size: 2.2, damp: 0.5, mix: 0.18 }, 'br')] }),
+    voice: { mode: 'legato', glide: 0.03, velSens: 0.4 }, master: { gain: 1.5 },
+  } },
+  { id: 'lead_fm', name: 'Lead · Payphone FM', category: 'leads', tags: ['dnb', 'motorik', 'synthwave', 'fm', 'digital'], state: {
+    gens: [
+      { type: 'analog', shape: 'sine', level: 0.6 },
+      { type: 'fm', ratio: 2, fmTarget: 'g1', fmAmt: 0.15, level: 0 },
+      { type: 'fm', ratio: 3.01, fmTarget: 'g1', fmAmt: 0, level: 0 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 6000, res: 0.05, key: 0.2 },
+    amp: E(0.005, 0.4, 0.8, 0.2),
+    envs: [E(0.001, 0.3, 0.2, 0.2), E(0.005, 0.5, 0.2, 0.4), E(0.3, 0.6, 0.5, 0.5)],
+    lfos: [{ shape: 'sine', rate: 5.6, retrig: true, fade: 0.4, amount: 0.3 }],
+    mods: [R('env1', 'gen.g3.fm', 0.1), R('lfo1', 'voice.pitch', 0.004),
+      R('m1', 'gen.g2.fm', 0.2), R('m2', 'gen.g3.fm', 0.1), R('m3', 'fx.pc.mix', 0.6), R('m4', 'lfo.1.amount', 0.6),
+      R('m5', 'fx.pe.mix', 0.3), R('m6', 'fx.pr.mix', 0.3), R('m7', 'filter.cutoff', -0.3), R('m8', 'fx.pw.width', 0.4)],
+    macros: MAC('INDEX', 'BELL', 'CRUSH', 'VIBRATO', 'ECHO', 'SPACE', 'DARK', 'WIDTH'),
+    lanes: LN({ fx: [FX('dist', { mode: 'bitcrush', drive: 0.45, tone: 9000, mix: 0 }, 'pc'), FX('delay', { sync: true, div: '1/8d', fb: 0.35, tone: 4000, pp: true, mix: 0.18 }, 'pe'),
+      FX('width', { width: 1 }, 'pw'), FX('reverb', { size: 2, damp: 0.5, mix: 0.15 }, 'pr')] }),
+    voice: { mode: 'legato', glide: 0.04, velSens: 0.4 }, master: { gain: 1.05 },
+  } },
+  { id: 'lead_siren', name: 'Lead · Siren', category: 'leads', tags: ['trap', 'dnb', 'four_floor', 'vocal', 'mythic'], state: {
+    gens: [
+      { type: 'wavetable', table: 'vocal', morph: 0.2, unison: 2, detune: 6, spread: 0.4, level: 0.75 },
+      { type: 'analog', shape: 'sine', coarse: -12, level: 0.15 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 4000, res: 0.05, key: 0.3 },
+    amp: E(0.06, 0.3, 0.9, 0.4),
+    lfos: [{ shape: 'sine', rate: 5.4, retrig: true, fade: 0.5, amount: 0.5 }, { shape: 'triangle', rate: 0.4, retrig: true, amount: 0.5 }],
+    mods: [R('lfo1', 'voice.pitch', 0.004), R('lfo2', 'gen.g1.morph', 0.3),
+      R('m1', 'gen.g1.morph', 0.5), R('m2', 'lfo.2.amount', 0.5), R('m3', 'lfo.1.amount', 0.5), R('m4', 'gen.g2.level', 0.2),
+      R('m5', 'fx.se.mix', 0.3), R('m6', 'fx.sr.mix', 0.3), R('m7', 'filter.cutoff', 0.2), R('m8', 'filter.cutoff', -0.25)],
+    macros: MAC('VOWEL', 'WAH', 'VIBRATO', 'SUB', 'ECHO', 'SPACE', 'BRIGHT', 'DARK'),
+    lanes: LN({ gain: 1.5, fx: [FX('chorus', { rate: 0.4, depth: 0.25, mix: 0.2 }), FX('delay', { sync: true, div: '1/4d', fb: 0.35, tone: 4000, pp: true, mix: 0.2 }, 'se'),
+      FX('reverb', { size: 4, damp: 0.45, mix: 0.32 }, 'sr')] }),
+    voice: { mode: 'legato', glide: 0.1, velSens: 0.35 }, master: { gain: 1.5 },
+  } },
+  { id: 'lead_fuzz', name: 'Lead · Blown Speaker', category: 'leads', tags: ['synthwave', 'noir', 'fuzz', 'guitar'], state: {
+    gens: [
+      { type: 'analog', shape: 'saw', level: 0.5 },
+      { type: 'analog', shape: 'square', fine: 5, level: 0.3 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 2500, res: 0.2, key: 0.3, env: 0.1 },
+    amp: E(0.003, 0.3, 0.9, 0.25),
+    lfos: [{ shape: 'sine', rate: 5.5, retrig: true, fade: 0.4, amount: 0.3 }],
+    mods: [R('lfo1', 'voice.pitch', 0.006),
+      R('m1', 'fx.zd.drive', 0.4), R('m2', 'fx.zd.tone', 0.3), R('m3', 'lfo.1.amount', 0.6), R('m4', 'filter.cutoff', 0.2),
+      R('m5', 'fx.zx.mix', 0.3), R('m6', 'fx.zr.mix', 0.3), R('m7', 'fx.ze.mid', 0.2), R('m8', 'filter.res', 0.4)],
+    macros: MAC('FUZZ', 'TONE', 'VIBRATO', 'BRIGHT', 'ECHO', 'SPACE', 'HONK', 'WAH'),
+    lanes: LN({ fx: [FX('dist', { mode: 'hard', drive: 0.55, tone: 4500, mix: 1, level: 0.8 }, 'zd'), FX('eq', { low: -4, lowf: 200, mid: 4, midf: 900, midq: 0.4 }, 'ze'),
+      FX('delay', { sync: true, div: '1/8d', fb: 0.3, tone: 3000, pp: true, mix: 0.15 }, 'zx'), FX('reverb', { size: 2, damp: 0.5, mix: 0.16 }, 'zr')] }),
+    voice: { mode: 'legato', glide: 0.05, velSens: 0.3 }, master: { gain: 0.5 },
+  } },
+  { id: 'lead_ring', name: 'Lead · Saturn Ring', category: 'leads', tags: ['ambient', 'motorik', 'eerie', 'mythic', 'ring'], state: {
+    gens: [
+      { type: 'analog', shape: 'triangle', level: 0.6 },
+      { type: 'analog', shape: 'sine', coarse: 7, level: 0.15 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 7000, res: 0.05, key: 0.2 },
+    amp: E(0.02, 0.3, 0.85, 0.4),
+    lfos: [{ shape: 'sine', rate: 0.3, retrig: false }, { shape: 'sine', rate: 5.3, retrig: true, fade: 0.5, amount: 0 }],
+    mods: [R('lfo1', 'fx.rr.freq', 0.05), R('lfo2', 'voice.pitch', 0.005),
+      R('m1', 'fx.rr.mix', 0.4), R('m2', 'lfo.1.amount', 2), R('m3', 'gen.g2.level', 0.2), R('m4', 'fx.re.mix', 0.3),
+      R('m5', 'fx.rv.mix', 0.3), R('m6', 'lfo.2.amount', 1), R('m7', 'fx.rw.width', 0.4), R('m8', 'filter.cutoff', -0.3)],
+    macros: MAC('RING', 'ORBIT', 'FIFTH', 'ECHO', 'SPACE', 'VIBRATO', 'WIDTH', 'DARK'),
+    lanes: LN({ gain: 1.4, fx: [FX('ring', { freq: 330, mix: 0.45 }, 'rr'), FX('delay', { sync: true, div: '1/4d', fb: 0.4, tone: 4500, pp: true, mix: 0.2 }, 're'),
+      FX('width', { width: 1.2 }, 'rw'), FX('reverb', { size: 4, damp: 0.4, mix: 0.3 }, 'rv')] }),
+    voice: { mode: 'legato', glide: 0.06, velSens: 0.3 }, master: { gain: 1.5 },
+  } },
+
+  // ── WINDS · brass + woodwinds (FM / formant) ──────────────────────
+  { id: 'winds_brass', name: 'Brass · Smoky Section', category: 'winds', tags: ['noir', 'shuffle', 'four_floor', 'brass', 'fm'], state: {
+    gens: [
+      { type: 'analog', shape: 'sine', level: 0.55 },
+      { type: 'fm', ratio: 1, fmTarget: 'g1', fmAmt: 0.02, level: 0 },
+      { type: 'analog', shape: 'saw', unison: 2, detune: 8, spread: 0.5, level: 0.12 },
+      { type: 'noise', color: 'pink', nfilt: 'bandpass', nfreq: 1500, nres: 0.3, level: 0 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 2800, res: 0.05, key: 0.4, env: 0.2 },
+    amp: E(0.05, 0.4, 0.85, 0.22),
+    envs: [E(0.07, 0.5, 0.55, 0.2), E(0.06, 0.4, 0.6, 0.2), E(0.01, 0.08, 0, 0.05)],
+    lfos: [{ shape: 'sine', rate: 5, retrig: true, fade: 0.7, amount: 0.35 }],
+    mods: [R('env1', 'gen.g2.fm', 0.22), R('vel', 'gen.g2.fm', 0.08), R('env3', 'gen.g4.level', 0.05), R('lfo1', 'voice.pitch', 0.003),
+      R('m1', 'gen.g2.fm', 0.15), R('m2', 'gen.g3.level', 0.2), R('m3', 'gen.g4.level', 0.06), R('m4', 'lfo.1.amount', 0.6),
+      R('m5', 'filter.cutoff', 0.2), R('m6', 'fx.yr.mix', 0.3), R('m7', 'filter.cutoff', -0.25), R('m8', 'fx.ye.mix', 0.3)],
+    macros: MAC('BLARE', 'SECTION', 'BREATH', 'VIBRATO', 'BRIGHT', 'SPACE', 'MUTE', 'ECHO'),
+    lanes: LN({ fx: [FX('eq', { low: -3, lowf: 150, mid: 3, midf: 1200 }), FX('chorus', { rate: 0.4, depth: 0.25, mix: 0.2 }),
+      FX('delay', { sync: true, div: '1/8d', fb: 0.3, tone: 3500, mix: 0 }, 'ye'), FX('reverb', { size: 1.8, damp: 0.5, mix: 0.2 }, 'yr')] }),
+    voice: { velSens: 0.6 }, master: { gain: 1.0 },
+  } },
+  { id: 'winds_harmon', name: 'Trumpet · Harmon Mute', category: 'winds', tags: ['noir', 'shuffle', 'lofi', 'trumpet', 'jazz', 'muted'], state: {
+    gens: [
+      { type: 'wavetable', table: 'reed', morph: 1, level: 0.8 },
+      { type: 'fm', ratio: 1, fmTarget: 'g1', fmAmt: 0.02, level: 0 },
+      { type: 'noise', color: 'pink', nfilt: 'bandpass', nfreq: 2000, nres: 0.4, level: 0.03 },
+    ],
+    filter: { on: true, type: 'bandpass', cutoff: 1500, res: 0.25, key: 0.6, env: 0.12 },
+    amp: E(0.04, 0.3, 0.85, 0.2),
+    envs: [E(0.03, 0.4, 0.4, 0.2), E(0.03, 0.3, 0.5, 0.2), E(0.3, 0.6, 0.5, 0.5)],
+    lfos: [{ shape: 'sine', rate: 5.2, retrig: true, fade: 0.45, amount: 0.45 }],
+    mods: [R('env1', 'gen.g2.fm', 0.1), R('lfo1', 'voice.pitch', 0.0035),
+      R('m1', 'filter.cutoff', 0.15), R('m2', 'gen.g2.fm', 0.1), R('m3', 'gen.g3.level', 0.08), R('m4', 'lfo.1.amount', 0.55),
+      R('m5', 'fx.mr.mix', 0.3), R('m6', 'fx.me.mix', 0.3), R('m7', 'fx.md.mix', 0.6), R('m8', 'filter.cutoff', -0.15)],
+    macros: MAC('STEM OUT', 'BITE', 'AIR', 'VIBRATO', 'SPACE', 'ECHO', 'GROWL', 'DARK'),
+    lanes: LN({ gain: 1.5, fx: [FX('dist', { mode: 'soft', drive: 0.35, tone: 5000, mix: 0 }, 'md'), FX('eq', { low: -4, lowf: 200, mid: 2, midf: 1600 }),
+      FX('delay', { sync: true, div: '1/4d', fb: 0.3, tone: 3000, mix: 0.12 }, 'me'), FX('reverb', { size: 2.6, damp: 0.55, mix: 0.28 }, 'mr')] }),
+    voice: { mode: 'legato', glide: 0.05, velSens: 0.45 }, master: { gain: 1.5 },
+  } },
+  { id: 'winds_flute', name: 'Flute · River Mist', category: 'winds', tags: ['ambient', 'lofi', 'boom_bap', 'flute', 'breath'], state: {
+    gens: [
+      { type: 'analog', shape: 'sine', level: 0.55 },
+      { type: 'analog', shape: 'triangle', coarse: 12, level: 0.04 },
+      { type: 'noise', color: 'pink', nfilt: 'bandpass', nfreq: 1046, nres: 0.6, level: 0.12 },
+      { type: 'noise', color: 'white', nfilt: 'highpass', nfreq: 6000, level: 0.02 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 6000, res: 0.05, key: 0.2 },
+    amp: E(0.07, 0.3, 0.9, 0.25),
+    envs: [E(0.005, 0.4, 0.3, 0.3), E(0.005, 0.5, 0.2, 0.4), E(0.005, 0.06, 0, 0.04)],
+    lfos: [{ shape: 'sine', rate: 5, retrig: true, fade: 0.5, amount: 0.4 }],
+    mods: [R('note', 'gen.g3.cutoff', 0.5), R('lfo1', 'voice.pitch', 0.0035), R('lfo1', 'amp.level', 0.08), R('env3', 'gen.g4.level', 0.1),
+      R('m1', 'gen.g3.level', 0.15), R('m2', 'gen.g4.level', 0.1), R('m3', 'lfo.1.amount', 0.6), R('m4', 'gen.g2.level', 0.15),
+      R('m5', 'fx.lr.mix', 0.3), R('m6', 'fx.le.mix', 0.3), R('m7', 'filter.cutoff', 0.1), R('m8', 'filter.cutoff', -0.25)],
+    macros: MAC('BREATH', 'CHIFF', 'VIBRATO', 'OCTAVE', 'SPACE', 'ECHO', 'BRIGHT', 'DARK'),
+    lanes: LN({ fx: [FX('eq', { low: -4, lowf: 200 }), FX('delay', { sync: true, div: '1/4d', fb: 0.3, tone: 4000, pp: true, mix: 0.1 }, 'le'),
+      FX('reverb', { size: 3.5, damp: 0.45, mix: 0.35 }, 'lr')] }),
+    voice: { mode: 'legato', glide: 0.04, velSens: 0.4 }, master: { gain: 1.1 },
+  } },
+  { id: 'winds_clarinet', name: 'Clarinet · Speakeasy', category: 'winds', tags: ['noir', 'shuffle', 'clarinet', 'jazz', 'reed'], state: {
+    gens: [
+      { type: 'wavetable', table: 'reed', morph: 0, level: 0.6 },
+      { type: 'noise', color: 'pink', nfilt: 'bandpass', nfreq: 1500, nres: 0.5, level: 0.03 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 1800, res: 0.1, key: 0.7, env: 0.1 },
+    amp: E(0.05, 0.3, 0.9, 0.2),
+    envs: [E(0.005, 0.4, 0.3, 0.3), E(0.04, 0.3, 0.6, 0.2), E(0.3, 0.6, 0.5, 0.5)],
+    lfos: [{ shape: 'sine', rate: 4.8, retrig: true, fade: 0.7, amount: 0.25 }],
+    mods: [R('note', 'gen.g2.cutoff', 0.5), R('lfo1', 'voice.pitch', 0.003),
+      R('m1', 'gen.g1.morph', 0.4), R('m2', 'filter.cutoff', 0.2), R('m3', 'gen.g2.level', 0.08), R('m4', 'lfo.1.amount', 0.6),
+      R('m5', 'fx.qr.mix', 0.3), R('m6', 'fx.qe.mix', 0.3), R('m7', 'filter.cutoff', -0.2), R('m8', 'fx.qt.mix', 1)],
+    macros: MAC('REED', 'BRIGHT', 'BREATH', 'VIBRATO', 'SPACE', 'ECHO', 'CHALUMEAU', 'TAPE'),
+    lanes: LN({ fx: [FX('eq', { low: -3, lowf: 160, mid: 1, midf: 1200 }), FX('tape', { sat: 0.25, wow: 0.3, flutter: 0.2, age: 0.45, hiss: 0.06, mix: 0 }, 'qt'),
+      FX('delay', { sync: true, div: '1/4d', fb: 0.3, tone: 3000, mix: 0 }, 'qe'), FX('reverb', { size: 2.4, damp: 0.5, mix: 0.25 }, 'qr')] }),
+    voice: { mode: 'legato', glide: 0.03, velSens: 0.45 }, master: { gain: 0.85 },
+  } },
+  { id: 'winds_sax', name: 'Sax · Back Alley', category: 'winds', tags: ['noir', 'shuffle', 'lofi', 'boom_bap', 'saxophone', 'jazz'], state: {
+    gens: [
+      { type: 'wavetable', table: 'reed', morph: 0.7, level: 0.4 },
+      { type: 'fm', ratio: 1, fmTarget: 'g1', fmAmt: 0, level: 0 },
+      { type: 'analog', shape: 'saw', level: 0.2 },
+      { type: 'noise', color: 'pink', nfilt: 'bandpass', nfreq: 1800, nres: 0.5, level: 0.05 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 1600, res: 0.25, key: 0.6, env: 0.25 },
+    amp: E(0.03, 0.3, 0.85, 0.18),
+    envs: [E(0.02, 0.3, 0.3, 0.2), E(0.03, 0.4, 0.5, 0.2), E(0.3, 0.6, 0.5, 0.5)],
+    lfos: [{ shape: 'sine', rate: 5.3, retrig: true, fade: 0.6, amount: 0.4 }],
+    mods: [R('env1', 'gen.g2.fm', 0.08), R('vel', 'gen.g2.fm', 0.08), R('lfo1', 'voice.pitch', 0.004),
+      R('m1', 'fx.sd.drive', 0.4), R('m2', 'gen.g4.level', 0.08), R('m3', 'filter.cutoff', 0.2), R('m4', 'lfo.1.amount', 0.6),
+      R('m5', 'filter.cutoff', -0.2), R('m6', 'fx.sr.mix', 0.3), R('m7', 'fx.se.mix', 0.3), R('m8', 'fx.sq.mid', 0.2)],
+    macros: MAC('GROWL', 'BREATH', 'BRIGHT', 'VIBRATO', 'SUBTONE', 'SPACE', 'ECHO', 'HONK'),
+    lanes: LN({ fx: [FX('dist', { mode: 'soft', drive: 0.25, tone: 6000, mix: 0.5 }, 'sd'), FX('eq', { low: -3, lowf: 150, mid: 5, midf: 1100, midq: 0.35 }, 'sq'),
+      FX('delay', { sync: true, div: '1/4d', fb: 0.3, tone: 3000, mix: 0 }, 'se'), FX('reverb', { size: 2.2, damp: 0.55, mix: 0.25 }, 'sr')] }),
+    voice: { mode: 'legato', glide: 0.06, velSens: 0.5 }, master: { gain: 0.9 },
+  } },
+  { id: 'winds_harmonica', name: 'Harmonica · Delta', category: 'winds', tags: ['shuffle', 'noir', 'blues', 'harmonica', 'reed'], state: {
+    gens: [
+      { type: 'wavetable', table: 'reed', morph: 0.6, level: 0.45 },
+      { type: 'analog', shape: 'square', fine: 8, level: 0.25 },
+      { type: 'noise', color: 'pink', nfilt: 'bandpass', nfreq: 2400, nres: 0.3, level: 0.03 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 2200, res: 0.35, key: 0.5, env: 0.3 },
+    amp: E(0.02, 0.2, 0.9, 0.12),
+    envs: [E(0.005, 0.4, 0.3, 0.3), E(0.02, 0.25, 0.5, 0.15), E(0.3, 0.6, 0.5, 0.5)],
+    lfos: [{ shape: 'triangle', rate: 6, retrig: false, amount: 0.15 }],
+    mods: [R('lfo1', 'amp.level', 0.4),
+      R('m1', 'lfo.1.amount', 0.85), R('m2', 'filter.cutoff', 0.2), R('m3', 'fx.hd.drive', 0.5), R('m4', 'gen.g2.pitch', 0.002),
+      R('m5', 'gen.g3.level', 0.08), R('m6', 'fx.hr.mix', 0.3), R('m7', 'fx.he.mix', 0.35), R('m8', 'filter.cutoff', -0.15)],
+    macros: MAC('HAND TREMOLO', 'WAH', 'BULLET MIC', 'BEATING', 'BREATH', 'SPACE', 'SLAPBACK', 'DARK'),
+    lanes: LN({ fx: [FX('dist', { mode: 'soft', drive: 0.35, tone: 4500, mix: 0.6 }, 'hd'), FX('eq', { low: -6, lowf: 250, mid: 3, midf: 1500 }),
+      FX('delay', { sync: false, ms: 110, fb: 0.15, tone: 3000, mix: 0 }, 'he'), FX('reverb', { size: 1.2, damp: 0.5, mix: 0.16 }, 'hr')] }),
+    voice: { mode: 'legato', glide: 0.08, velSens: 0.45 }, master: { gain: 0.65 },
+  } },
+  { id: 'winds_horns', name: 'Horns · Fog Swell', category: 'winds', tags: ['noir', 'ambient', 'shuffle', 'french horn', 'brass', 'distant'], state: {
+    gens: [
+      { type: 'analog', shape: 'sine', level: 0.5 },
+      { type: 'fm', ratio: 1, fmTarget: 'g1', fmAmt: 0.01, level: 0 },
+      { type: 'analog', shape: 'triangle', unison: 3, detune: 9, spread: 0.7, level: 0.25 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 1100, res: 0.05, key: 0.4, env: 0.15 },
+    amp: E(0.35, 0.6, 0.9, 0.8),
+    envs: [E(0.3, 0.8, 0.6, 0.6), E(0.3, 0.8, 0.6, 0.6), E(0.3, 0.6, 0.5, 0.5)],
+    lfos: [{ shape: 'sine', rate: 4.6, retrig: true, fade: 1, amount: 0.25 }],
+    mods: [R('env1', 'gen.g2.fm', 0.1), R('lfo1', 'voice.pitch', 0.002),
+      R('m1', 'gen.g2.fm', 0.1), R('m1', 'filter.cutoff', 0.15), R('m2', 'gen.g3.level', 0.2), R('m3', 'lfo.1.amount', 0.6), R('m4', 'fx.or.mix', 0.3),
+      R('m5', 'fx.oe.mix', 0.3), R('m6', 'filter.cutoff', 0.2), R('m7', 'filter.cutoff', -0.2), R('m8', 'fx.ow.width', 0.4)],
+    macros: MAC('FORTE', 'SECTION', 'VIBRATO', 'DISTANCE', 'ECHO', 'BRIGHT', 'DARK', 'WIDTH'),
+    lanes: LN({ fx: [FX('chorus', { rate: 0.3, depth: 0.35, mix: 0.3 }), FX('delay', { sync: true, div: '1/4d', fb: 0.35, tone: 3000, pp: true, mix: 0 }, 'oe'),
+      FX('width', { width: 1.1 }, 'ow'), FX('reverb', { size: 4.5, damp: 0.55, mix: 0.38 }, 'or')] }),
+    voice: { velSens: 0.45 }, master: { gain: 0.9 },
+  } },
+
+  // ── PLUCKS · mallets · bells ──────────────────────────────────────
+  { id: 'pluck_harp', name: 'Harp · River Spirit', category: 'plucks', tags: ['ambient', 'mythic', 'harp', 'plucked'], state: {
+    gens: [
+      { type: 'sample', src: 'pluck', level: 1 },
+      { type: 'analog', shape: 'sine', level: 0.3 },
+      { type: 'analog', shape: 'sine', coarse: 12, level: 0.05 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 4500, res: 0.05, key: 0.3, env: 0.2 },
+    amp: E(0.001, 3.2, 0, 1.2),
+    envs: [E(0.005, 0.4, 0.3, 0.3), E(0.0008, 0.5, 0, 0.3), E(0.3, 0.6, 0.5, 0.5)],
+    mods: [R('m1', 'filter.cutoff', 0.2), R('m2', 'gen.g2.level', 0.2), R('m3', 'gen.g3.level', 0.15), R('m4', 'fx.pe.mix', 0.3),
+      R('m5', 'fx.pr.mix', 0.3), R('m6', 'fx.pe.fb', 0.3), R('m7', 'filter.cutoff', -0.25), R('m8', 'fx.pw.width', 0.4)],
+    macros: MAC('BRIGHT', 'BODY', 'OCTAVE', 'ECHO', 'SPACE', 'SHIMMER', 'WARM', 'WIDTH'),
+    lanes: LN({ gain: 1.4, fx: [FX('chorus', { rate: 0.3, depth: 0.2, mix: 0.15 }), FX('delay', { sync: true, div: '1/8d', fb: 0.3, tone: 5000, pp: true, mix: 0.12 }, 'pe'),
+      FX('width', { width: 1.1 }, 'pw'), FX('reverb', { size: 3.5, damp: 0.4, mix: 0.32 }, 'pr')] }),
+    voice: { velSens: 0.6 }, master: { gain: 1.5 },
+  } },
+  { id: 'pluck_kalimba', name: 'Kalimba · Porch Thumb', category: 'plucks', tags: ['lofi', 'ambient', 'boom_bap', 'kalimba', 'mallet'], state: {
+    gens: [
+      { type: 'sample', src: 'kalimba', level: 0.8 },
+      { type: 'noise', color: 'white', nfilt: 'bandpass', nfreq: 2500, nres: 0.3, level: 0 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 7000, res: 0.05, key: 0.2 },
+    amp: E(0.001, 2.2, 0, 0.5),
+    envs: [E(0.0005, 0.015, 0, 0.01), E(0.005, 0.5, 0.2, 0.4), E(0.3, 0.6, 0.5, 0.5)],
+    mods: [R('env1', 'gen.g2.level', 0.1),
+      R('m1', 'gen.g2.level', 0.15), R('m2', 'fx.ke.mix', 0.3), R('m3', 'fx.kr.mix', 0.3), R('m4', 'filter.cutoff', -0.3),
+      R('m5', 'fx.kt.mix', 1), R('m6', 'fx.kb.mix', 0.35), R('m7', 'fx.ke.fb', 0.3), R('m8', 'fx.kw.width', 0.4)],
+    macros: MAC('CLICK', 'ECHO', 'SPACE', 'WARM', 'TAPE', 'BUZZ', 'REPEATS', 'WIDTH'),
+    lanes: LN({ fx: [FX('dist', { mode: 'fold', drive: 0.4, tone: 6000, mix: 0 }, 'kb'), FX('tape', { sat: 0.25, wow: 0.3, flutter: 0.25, age: 0.45, hiss: 0.06, mix: 0 }, 'kt'),
+      FX('delay', { sync: true, div: '1/8d', fb: 0.3, tone: 4000, pp: true, mix: 0.18 }, 'ke'), FX('width', { width: 1.1 }, 'kw'), FX('reverb', { size: 1.8, damp: 0.45, mix: 0.2 }, 'kr')] }),
+    voice: { velSens: 0.6 }, master: { gain: 1.4 },
+  } },
+  { id: 'pluck_nylon', name: 'Guitar · Nylon Serenade', category: 'plucks', tags: ['noir', 'lofi', 'boom_bap', 'guitar', 'nylon'], state: {
+    gens: [
+      { type: 'sample', src: 'pluck', level: 1 },
+      { type: 'analog', shape: 'triangle', level: 0.1 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 2200, res: 0.05, key: 0.4, env: 0.15 },
+    amp: E(0.001, 2.6, 0, 0.35),
+    envs: [E(0.005, 0.4, 0.3, 0.3), E(0.001, 0.3, 0, 0.2), E(0.3, 0.6, 0.5, 0.5)],
+    mods: [R('vel', 'filter.cutoff', 0.08),
+      R('m1', 'filter.cutoff', 0.2), R('m2', 'fx.ge.low', 0.2), R('m3', 'fx.gc.mix', 0.35), R('m4', 'fx.gr.mix', 0.3),
+      R('m5', 'fx.gd.mix', 0.3), R('m6', 'fx.gt.mix', 1), R('m7', 'gen.g2.level', 0.2), R('m8', 'filter.cutoff', -0.2)],
+    macros: MAC('BRIGHT', 'BODY', 'CHORUS', 'SPACE', 'ECHO', 'TAPE', 'FUNDAMENTAL', 'DARK'),
+    lanes: LN({ gain: 1.2, fx: [FX('eq', { low: 2, lowf: 200, mid: -3, midf: 1000, high: -3, highf: 5000 }, 'ge'), FX('tape', { sat: 0.2, wow: 0.25, flutter: 0.2, age: 0.4, hiss: 0.05, mix: 0 }, 'gt'),
+      FX('chorus', { rate: 0.4, depth: 0.25, mix: 0.12 }, 'gc'), FX('delay', { sync: true, div: '1/4d', fb: 0.3, tone: 3000, mix: 0 }, 'gd'), FX('reverb', { size: 1.6, damp: 0.5, mix: 0.18 }, 'gr')] }),
+    voice: { velSens: 0.6 }, master: { gain: 1.5 },
+  } },
+  { id: 'bell_tubular', name: 'Bells · Bell Tower', category: 'plucks', tags: ['ambient', 'noir', 'mythic', 'bell', 'chime', 'cathedral'], state: {
+    gens: [
+      { type: 'analog', shape: 'sine', level: 0.5 },
+      { type: 'analog', shape: 'sine', ratio: 2.76, level: 0.3 },
+      { type: 'analog', shape: 'sine', ratio: 5.4, level: 0.05 },
+      { type: 'analog', shape: 'sine', ratio: 8.93, level: 0.02 },
+      { type: 'fm', ratio: 1.41, fmTarget: 'g1', fmAmt: 0, level: 0 },
+      { type: 'noise', color: 'white', nfilt: 'bandpass', nfreq: 3000, nres: 0.3, level: 0 },
+    ],
+    filter: { on: false },
+    amp: E(0.001, 6, 0, 3),
+    envs: [E(0.0005, 0.3, 0, 0.2), E(0.0005, 2.5, 0, 1.5), E(0.0005, 0.02, 0, 0.01)],
+    mods: [R('env1', 'gen.g5.fm', 0.08), R('env2', 'gen.g3.level', 0.15), R('env2', 'gen.g4.level', 0.1), R('env3', 'gen.g6.level', 0.08),
+      R('m1', 'gen.g5.fm', 0.08), R('m2', 'gen.g3.level', 0.15), R('m2', 'gen.g4.level', 0.08), R('m3', 'fx.tr.mix', 0.3), R('m4', 'fx.te.mix', 0.3),
+      R('m5', 'fx.tq.high', -0.3), R('m6', 'fx.tw.width', 0.4), R('m7', 'gen.g2.level', -0.2), R('m8', 'gen.g6.level', 0.15)],
+    macros: MAC('STRIKE', 'BRIGHT', 'SPACE', 'ECHO', 'DARK', 'WIDTH', 'PURE', 'HAMMER'),
+    lanes: LN({ fx: [FX('eq', { low: -4, lowf: 200, high: 0, highf: 6000 }, 'tq'), FX('delay', { sync: true, div: '1/4d', fb: 0.35, tone: 4000, pp: true, mix: 0 }, 'te'),
+      FX('width', { width: 1.2 }, 'tw'), FX('reverb', { size: 5, damp: 0.4, mix: 0.35 }, 'tr')] }),
+    voice: { velSens: 0.6 }, master: { gain: 0.9 },
+  } },
+  { id: 'bell_music_box', name: 'Music Box · Lullaby Tin', category: 'plucks', tags: ['lofi', 'ambient', 'trap', 'eerie', 'music box', 'toy'], state: {
+    gens: [
+      { type: 'analog', shape: 'sine', coarse: 12, level: 0.55 },
+      { type: 'analog', shape: 'sine', coarse: 12, ratio: 4.07, level: 0.02 },
+      { type: 'noise', color: 'white', nfilt: 'highpass', nfreq: 5000, level: 0 },
+    ],
+    filter: { on: false },
+    amp: E(0.001, 1.6, 0, 0.6),
+    envs: [E(0.0005, 0.2, 0, 0.1), E(0.0005, 0.008, 0, 0.01), E(0.3, 0.6, 0.5, 0.5)],
+    mods: [R('env1', 'gen.g2.level', 0.12), R('env2', 'gen.g3.level', 0.05),
+      R('m1', 'fx.bt.wow', 0.5), R('m2', 'gen.g2.level', 0.1), R('m3', 'gen.g3.level', 0.1), R('m4', 'fx.bt.age', 0.4),
+      R('m5', 'fx.br.mix', 0.3), R('m6', 'fx.be.mix', 0.3), R('m7', 'fx.bq.high', -0.3), R('m8', 'fx.bw.width', 0.4)],
+    macros: MAC('WIND DOWN', 'TINE', 'CLICK', 'AGE', 'SPACE', 'ECHO', 'DARK', 'WIDTH'),
+    lanes: LN({ fx: [FX('tape', { sat: 0.2, wow: 0.25, flutter: 0.3, age: 0.45, hiss: 0.1, mix: 0.7 }, 'bt'), FX('eq', { low: -6, lowf: 400, high: 0, highf: 7000 }, 'bq'),
+      FX('delay', { sync: true, div: '1/8d', fb: 0.3, tone: 4500, pp: true, mix: 0 }, 'be'), FX('width', { width: 1.1 }, 'bw'), FX('reverb', { size: 2, damp: 0.4, mix: 0.22 }, 'br')] }),
+    voice: { velSens: 0.5 }, master: { gain: 1.2 },
+  } },
+  { id: 'bell_glock', name: 'Glockenspiel · Toy Soldier', category: 'plucks', tags: ['trap', 'four_floor', 'ambient', 'glockenspiel', 'bell', 'bright'], state: {
+    gens: [
+      { type: 'analog', shape: 'sine', coarse: 24, level: 0.55 },
+      { type: 'analog', shape: 'sine', coarse: 24, ratio: 2.71, level: 0.04 },
+      { type: 'noise', color: 'white', nfilt: 'bandpass', nfreq: 7000, nres: 0.3, level: 0 },
+    ],
+    filter: { on: false },
+    amp: E(0.0005, 1.8, 0, 0.9),
+    envs: [E(0.0005, 0.4, 0, 0.2), E(0.0005, 0.012, 0, 0.01), E(0.3, 0.6, 0.5, 0.5)],
+    mods: [R('env1', 'gen.g2.level', 0.15), R('env2', 'gen.g3.level', 0.08),
+      R('m1', 'gen.g2.level', 0.12), R('m2', 'gen.g3.level', 0.12), R('m3', 'fx.lr.mix', 0.3), R('m4', 'fx.le.mix', 0.3),
+      R('m5', 'fx.lq.high', -0.3), R('m6', 'fx.lw.width', 0.4), R('m7', 'fx.le.fb', 0.3), R('m8', 'fx.lt.mix', 1)],
+    macros: MAC('METAL', 'HARD MALLET', 'SPACE', 'ECHO', 'SOFT', 'WIDTH', 'REPEATS', 'TAPE'),
+    lanes: LN({ fx: [FX('eq', { low: -6, lowf: 400, high: 0, highf: 8000 }, 'lq'), FX('tape', { sat: 0.2, wow: 0.3, flutter: 0.3, age: 0.4, hiss: 0.05, mix: 0 }, 'lt'),
+      FX('delay', { sync: true, div: '1/8', fb: 0.3, tone: 6000, pp: true, mix: 0.1 }, 'le'), FX('width', { width: 1.1 }, 'lw'), FX('reverb', { size: 2.8, damp: 0.35, mix: 0.3 }, 'lr')] }),
+    voice: { velSens: 0.6 }, master: { gain: 1.25 },
+  } },
+  { id: 'bell_bowl', name: 'Bowl · Temple Hum', category: 'plucks', tags: ['ambient', 'mythic', 'bowl', 'meditative'], state: {
+    gens: [
+      { type: 'sample', src: 'bowl', level: 0.7 },
+      { type: 'analog', shape: 'sine', level: 0.12 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 9000, res: 0.05, key: 0.1 },
+    amp: E(0.002, 4.5, 0, 3),
+    lfos: [{ shape: 'sine', rate: 1.1, retrig: false, amount: 0.5 }],
+    mods: [R('lfo1', 'amp.level', 0.08),
+      R('m1', 'gen.g2.level', 0.2), R('m2', 'lfo.1.amount', 1), R('m3', 'fx.wr.mix', 0.3), R('m4', 'fx.we.mix', 0.3),
+      R('m5', 'filter.cutoff', -0.35), R('m6', 'fx.ww.width', 0.4), R('m7', 'fx.wc.mix', 0.4), R('m8', 'lfo.1.rate', 0.1)],
+    macros: MAC('HUM', 'WOBBLE', 'SPACE', 'ECHO', 'DARK', 'WIDTH', 'RESONANCE', 'SPEED'),
+    lanes: LN({ fx: [FX('comb', { freq: 130, fb: 0.6, damp: 0.4, mix: 0 }, 'wc'), FX('delay', { sync: true, div: '1/2', fb: 0.4, tone: 4000, pp: true, mix: 0 }, 'we'),
+      FX('width', { width: 1.4 }, 'ww'), FX('reverb', { size: 6, damp: 0.45, mix: 0.45 }, 'wr')] }),
+    voice: { velSens: 0.5 }, master: { gain: 1.3 },
+  } },
+  { id: 'pluck_steel_pan', name: 'Steel Pan · Second Line', category: 'plucks', tags: ['shuffle', 'four_floor', 'steel drum', 'mallet', 'bright'], state: {
+    gens: [
+      { type: 'analog', shape: 'sine', level: 0.55 },
+      { type: 'analog', shape: 'sine', ratio: 2, level: 0.15 },
+      { type: 'analog', shape: 'sine', ratio: 3, level: 0.1 },
+      { type: 'fm', ratio: 1, fmTarget: 'g1', fmAmt: 0, level: 0 },
+    ],
+    filter: { on: false },
+    amp: E(0.003, 1.6, 0, 0.4),
+    envs: [E(0.0005, 0.08, 0, 0.05), E(0.0005, 0.05, 0, 0.04), E(0.05, 0.4, 0.4, 0.3)],
+    mods: [R('env1', 'gen.g4.fm', 0.06), R('env2', 'voice.pitch', -0.003), R('env3', 'gen.g2.level', 0.2),
+      R('m1', 'gen.g2.level', 0.2), R('m2', 'gen.g4.fm', 0.05), R('m3', 'fx.sr.mix', 0.3), R('m4', 'fx.se.mix', 0.3),
+      R('m5', 'fx.sc.mix', 0.4), R('m6', 'gen.g3.level', 0.15), R('m7', 'fx.sq.high', -0.3), R('m8', 'fx.sw.width', 0.4)],
+    macros: MAC('BLOOM', 'STRIKE', 'SPACE', 'ECHO', 'CHORUS', 'BRIGHT', 'SOFT', 'WIDTH'),
+    lanes: LN({ fx: [FX('eq', { low: -4, lowf: 200, mid: 2, midf: 1500, high: 0, highf: 6000 }, 'sq'), FX('chorus', { rate: 0.5, depth: 0.25, mix: 0.12 }, 'sc'),
+      FX('delay', { sync: true, div: '1/8d', fb: 0.3, tone: 4000, pp: true, mix: 0 }, 'se'), FX('width', { width: 1.1 }, 'sw'), FX('reverb', { size: 1.8, damp: 0.45, mix: 0.2 }, 'sr')] }),
+    voice: { velSens: 0.6 }, master: { gain: 1.05 },
+  } },
+  { id: 'pluck_neon', name: 'Pluck · Neon Raindrop', category: 'plucks', tags: ['synthwave', 'motorik', 'four_floor', 'dnb', 'trap', 'pluck', 'analog'], state: {
+    gens: [
+      { type: 'analog', shape: 'saw', unison: 2, detune: 10, spread: 0.6, level: 1 },
+      { type: 'analog', shape: 'square', coarse: 12, level: 0.12 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 1000, res: 0.35, key: 0.4, env: 0.45 },
+    amp: E(0.001, 0.45, 0.15, 0.25),
+    envs: [E(0.005, 0.4, 0.3, 0.3), E(0.0008, 0.18, 0, 0.15), E(0.3, 0.6, 0.5, 0.5)],
+    mods: [R('vel', 'filter.cutoff', 0.08),
+      R('m1', 'filter.cutoff', 0.25), R('m2', 'filter.res', 0.3), R('m3', 'fx.ed.mix', 0.3), R('m4', 'fx.er.mix', 0.3),
+      R('m5', 'gen.g2.level', 0.2), R('m6', 'fx.ex.drive', 0.5), R('m7', 'fx.ew.width', 0.4), R('m8', 'filter.cutoff', -0.15)],
+    macros: MAC('OPEN', 'RESONANCE', 'ECHO', 'SPACE', 'OCTAVE', 'DRIVE', 'WIDTH', 'DARK'),
+    lanes: LN({ gain: 1.5, fx: [FX('dist', { mode: 'soft', drive: 0.05, tone: 8000, mix: 0.5 }, 'ex'), FX('delay', { sync: true, div: '1/8d', fb: 0.45, tone: 4000, pp: true, mix: 0.28 }, 'ed'),
+      FX('chorus', { rate: 0.4, depth: 0.25, mix: 0.2 }), FX('width', { width: 1.2 }, 'ew'), FX('reverb', { size: 2.5, damp: 0.5, mix: 0.25 }, 'er')] }),
+    voice: { velSens: 0.45 }, master: { gain: 1.5 },
+  } },
+
+  // ── AMBIENT · textures + drones ───────────────────────────────────
+  { id: 'amb_rain', name: 'Rain · Tin Roof', category: 'ambient', tags: ['ambient', 'noir', 'rain', 'texture', 'weather'], state: {
+    gens: [
+      { type: 'noise', color: 'pink', nfilt: 'highpass', nfreq: 1200, nres: 0.1, level: 0.6 },
+      { type: 'noise', color: 'white', nfilt: 'bandpass', nfreq: 5000, nres: 0.2, level: 0.12 },
+      { type: 'noise', color: 'brown', nfilt: 'lowpass', nfreq: 300, level: 0.25 },
+    ],
+    filter: { on: false },
+    amp: E(1.5, 1, 0.9, 2.5),
+    lfos: [{ shape: 'sh', rate: 18, retrig: false, amount: 0.5 }, { shape: 'sine', rate: 0.07, retrig: false }],
+    mods: [R('lfo1', 'gen.g2.level', 0.12), R('lfo2', 'gen.g1.cutoff', 0.05),
+      R('m1', 'gen.g1.level', 0.2), R('m2', 'lfo.1.amount', 0.5), R('m3', 'gen.g3.level', 0.3), R('m4', 'fx.rc.mix', 0.3),
+      R('m5', 'fx.rr.mix', 0.35), R('m6', 'fx.rw.width', 0.3), R('m7', 'fx.rq.high', -0.4), R('m8', 'fx.rq.low', 0.25)],
+    macros: MAC('DOWNPOUR', 'DRIPS', 'RUMBLE', 'TIN ROOF', 'DISTANCE', 'WIDTH', 'INDOORS', 'WEIGHT'),
+    lanes: LN({ fx: [FX('comb', { freq: 180, fb: 0.4, damp: 0.5, mix: 0 }, 'rc'), FX('eq', { low: -3, lowf: 120, high: 0, highf: 6000 }, 'rq'),
+      FX('width', { width: 1.8 }, 'rw'), FX('reverb', { size: 2, damp: 0.5, mix: 0.25 }, 'rr')] }),
+    voice: { velSens: 0.3 }, master: { gain: 1.25 },
+  } },
+  { id: 'amb_wind', name: 'Wind · Levee', category: 'ambient', tags: ['ambient', 'noir', 'wind', 'texture', 'weather', 'eerie'], state: {
+    gens: [
+      { type: 'noise', color: 'pink', nfilt: 'bandpass', nfreq: 600, nres: 0.5, level: 1 },
+      { type: 'noise', color: 'white', nfilt: 'bandpass', nfreq: 1800, nres: 0.55, level: 0.3 },
+    ],
+    filter: { on: false },
+    amp: E(1.5, 1, 0.9, 3),
+    lfos: [{ shape: 'sine', rate: 0.13, retrig: false }, { shape: 'sine', rate: 0.07, retrig: false }, { shape: 'sine', rate: 0.21, retrig: false, uni: true }],
+    mods: [R('note', 'gen.g1.cutoff', 0.5), R('note', 'gen.g2.cutoff', 0.5), R('lfo1', 'gen.g1.cutoff', 0.06), R('lfo2', 'gen.g2.cutoff', 0.08), R('lfo3', 'amp.level', -0.25),
+      R('m1', 'gen.g2.level', 0.25), R('m2', 'lfo.1.amount', 2), R('m3', 'lfo.1.rate', 0.02), R('m4', 'fx.wv.mix', 0.3),
+      R('m5', 'fx.ww.width', 0.3), R('m6', 'fx.wq.high', -0.4), R('m7', 'fx.we.mix', 0.3), R('m8', 'gen.g1.level', 0.3)],
+    macros: MAC('HOWL', 'GUSTS', 'STORM', 'SPACE', 'WIDTH', 'MUFFLE', 'ECHO', 'BODY'),
+    lanes: LN({ gain: 1.5, fx: [FX('eq', { low: -3, lowf: 120, high: 0, highf: 6000 }, 'wq'), FX('delay', { sync: true, div: '1/2', fb: 0.4, tone: 3000, pp: true, mix: 0 }, 'we'),
+      FX('width', { width: 1.6 }, 'ww'), FX('reverb', { size: 4, damp: 0.5, mix: 0.35 }, 'wv')] }),
+    voice: { velSens: 0.3 }, master: { gain: 1.5 },
+  } },
+  { id: 'drone_cathedral', name: 'Drone · Cathedral Hum', category: 'ambient', tags: ['ambient', 'mythic', 'cathedral', 'organ', 'choir', 'drone'], state: {
+    gens: [
+      { type: 'wavetable', table: 'organ', morph: 0.6, coarse: -12, level: 0.35 },
+      { type: 'wavetable', table: 'vocal', morph: 0.7, unison: 2, detune: 6, spread: 0.7, level: 0.3 },
+      { type: 'analog', shape: 'sine', coarse: -24, level: 0.3 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 900, res: 0.1, key: 0.2 },
+    amp: E(3, 2, 0.9, 5),
+    lfos: [{ shape: 'sine', rate: 0.04, retrig: false }, { shape: 'sine', rate: 0.09, retrig: false }],
+    mods: [R('lfo1', 'gen.g2.morph', 0.3), R('lfo2', 'filter.cutoff', 0.05),
+      R('m1', 'filter.cutoff', 0.3), R('m2', 'gen.g2.level', 0.25), R('m3', 'gen.g3.level', 0.25), R('m4', 'fx.cc.mix', 0.3),
+      R('m5', 'lfo.1.amount', 1.5), R('m5', 'lfo.2.amount', 1.5), R('m6', 'fx.cv.mix', 0.3), R('m7', 'fx.ce.mix', 0.3), R('m8', 'fx.cw.width', 0.4)],
+    macros: MAC('OPEN', 'CHOIR', 'PEDAL', 'RESONANCE', 'MOTION', 'SPACE', 'ECHO', 'WIDTH'),
+    lanes: LN({ gain: 1.2, fx: [FX('comb', { freq: 65, fb: 0.5, damp: 0.6, mix: 0.2 }, 'cc'), FX('delay', { sync: true, div: '1/2', fb: 0.45, tone: 3000, pp: true, mix: 0 }, 'ce'),
+      FX('width', { width: 1.2 }, 'cw'), FX('reverb', { size: 10, damp: 0.5, pre: 0.05, mix: 0.55 }, 'cv')] }),
+    voice: { velSens: 0.2 }, master: { gain: 1.5 },
+  } },
+  { id: 'amb_radio', name: 'Static · Late Radio', category: 'ambient', tags: ['noir', 'ambient', 'radio', 'texture', 'lofi', 'eerie'], state: {
+    gens: [
+      { type: 'noise', color: 'white', nfilt: 'bandpass', nfreq: 1800, nres: 0.5, level: 0.5 },
+      { type: 'wavetable', table: 'vocal', morph: 0.5, level: 0.4 },
+      { type: 'analog', shape: 'sine', level: 0.15 },
+    ],
+    filter: { on: true, type: 'bandpass', cutoff: 1500, res: 0.4, key: 0 },
+    amp: E(0.3, 1, 0.9, 1),
+    lfos: [{ shape: 'sh', rate: 9, retrig: false }, { shape: 'sh', rate: 0.7, retrig: false, amount: 0.5 }, { shape: 'sine', rate: 0.3, retrig: false }],
+    mods: [R('lfo1', 'gen.g1.level', 0.25), R('lfo2', 'voice.pitch', 0.01), R('lfo3', 'filter.cutoff', 0.05),
+      R('m1', 'lfo.2.amount', 1.5), R('m2', 'gen.g1.level', 0.3), R('m3', 'gen.g2.level', 0.25), R('m4', 'fx.ad.mix', 0.4),
+      R('m5', 'fx.ag.mix', 0.3), R('m6', 'fx.av.mix', 0.3), R('m7', 'filter.cutoff', 0.2), R('m8', 'lfo.1.amount', 1)],
+    macros: MAC('DETUNE DIAL', 'STATIC', 'GHOST', 'CRUSH', 'HUM', 'SPACE', 'BAND', 'CRACKLE'),
+    lanes: LN({ gain: 1.5, fx: [FX('dist', { mode: 'bitcrush', drive: 0.3, tone: 6000, mix: 0.25 }, 'ad'), FX('ring', { freq: 60, mix: 0.08 }, 'ag'),
+      FX('reverb', { size: 1.5, damp: 0.5, mix: 0.2 }, 'av')] }),
+    voice: { velSens: 0.3 }, master: { gain: 1.5 },
+  } },
+  { id: 'drone_engine', name: 'Drone · Riverboat Engine', category: 'ambient', tags: ['ambient', 'noir', 'drone', 'machine', 'pulse'], state: {
+    gens: [
+      { type: 'analog', shape: 'saw', coarse: -24, level: 0.45 },
+      { type: 'analog', shape: 'pulse', pw: 0.2, coarse: -12, level: 0.2 },
+      { type: 'noise', color: 'brown', nfilt: 'lowpass', nfreq: 250, level: 0.3 },
+      { type: 'noise', color: 'white', nfilt: 'highpass', nfreq: 3000, level: 0 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 280, res: 0.3, key: 0.2 },
+    amp: E(2, 1, 0.9, 3),
+    lfos: [{ shape: 'sine', rate: 0.05, retrig: false }, { shape: 'sine', rate: 2.4, retrig: false, amount: 0.6 }],
+    mods: [R('lfo1', 'lfo.2.rate', 0.01), R('lfo2', 'amp.level', 0.35),
+      R('m1', 'lfo.2.rate', 0.05), R('m2', 'lfo.2.amount', 0.4), R('m3', 'fx.ed.drive', 0.5), R('m4', 'fx.ec.mix', 0.35),
+      R('m5', 'gen.g4.level', 0.1), R('m6', 'filter.cutoff', 0.2), R('m7', 'fx.er.mix', 0.3), R('m8', 'fx.ew.width', 0.4)],
+    macros: MAC('RPM', 'THROB', 'GRIND', 'HULL', 'STEAM', 'OPEN', 'SPACE', 'WIDTH'),
+    lanes: LN({ fx: [FX('dist', { mode: 'soft', drive: 0.2, tone: 2500, mix: 0.5 }, 'ed'), FX('comb', { freq: 45, fb: 0.5, damp: 0.6, mix: 0 }, 'ec'),
+      FX('eq', { low: 4, lowf: 60 }), FX('width', { width: 1 }, 'ew'), FX('reverb', { size: 3, damp: 0.6, mix: 0.2 }, 'er')] }),
+    voice: { velSens: 0.2 }, master: { gain: 1.2 },
+  } },
+  { id: 'drone_horizon', name: 'Drone · Mythic Horizon', category: 'ambient', tags: ['ambient', 'mythic', 'drone', 'fifths', 'shimmer'], state: {
+    gens: [
+      { type: 'wavetable', table: 'glass', morph: 0.3, unison: 2, detune: 5, spread: 0.8, level: 0.35 },
+      { type: 'wavetable', table: 'reed', morph: 0.5, coarse: -12, level: 0.25 },
+      { type: 'analog', shape: 'sine', coarse: 7, level: 0.12 },
+      { type: 'analog', shape: 'sine', coarse: -12, level: 0.2 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 3500, res: 0.05, key: 0.2 },
+    amp: E(3, 2, 0.9, 5),
+    lfos: [{ shape: 'sine', rate: 0.05, retrig: false, uni: true }, { shape: 'sine', rate: 0.03, retrig: false }, { shape: 'sine', rate: 0.11, retrig: false }],
+    mods: [R('lfo1', 'gen.g1.morph', 0.5), R('lfo2', 'gen.g2.morph', 0.4), R('lfo3', 'gen.g3.level', 0.08),
+      R('m1', 'gen.g1.level', 0.25), R('m2', 'gen.g3.level', 0.15), R('m3', 'lfo.1.amount', 1), R('m4', 'fx.he.mix', 0.3),
+      R('m5', 'fx.hv.mix', 0.3), R('m6', 'fx.hw.width', 0.3), R('m7', 'filter.cutoff', -0.25), R('m8', 'gen.g4.level', 0.25)],
+    macros: MAC('SHIMMER', 'FIFTH', 'MOTION', 'ECHO', 'SPACE', 'WIDTH', 'DARK', 'ROOT'),
+    lanes: LN({ gain: 1.3, fx: [FX('delay', { sync: true, div: '1/2', fb: 0.55, tone: 5000, pp: true, mix: 0.2 }, 'he'), FX('width', { width: 1.5 }, 'hw'),
+      FX('reverb', { size: 9, damp: 0.4, mix: 0.5 }, 'hv')] }),
+    voice: { velSens: 0.2 }, master: { gain: 1.5 },
+  } },
+
+  // ── DRUMS · kit pieces the KIT was missing ────────────────────────
+  { id: 'kick_808', name: 'Kick · 808 Boom', category: 'drums', tags: ['trap', 'boom_bap', 'kick', '808'], state: {
+    gens: [
+      { type: 'analog', shape: 'sine', mode: 'fixed', hz: 50, level: 0.95 },
+      { type: 'noise', color: 'white', nfilt: 'bandpass', nfreq: 2500, nres: 0.2, level: 0 },
+    ],
+    filter: { on: false },
+    amp: E(0.001, 1.6, 0, 0.2),
+    envs: [E(0.0005, 0.05, 0, 0.05), E(0.005, 0.5, 0.2, 0.4), E(0.0005, 0.008, 0, 0.01)],
+    mods: [R('env1', 'gen.g1.pitch', 0.35), R('env3', 'gen.g2.level', 0.3),
+      R('m1', 'gen.g1.pitch', 0.06), R('m2', 'fx.kd.drive', 0.5), R('m3', 'fx.kq.high', 0.3), R('m4', 'fx.kr.mix', 0.25)],
+    macros: MAC('TUNE', 'DRIVE', 'ATTACK', 'ROOM'),
+    lanes: LN({ fx: [FX('dist', { mode: 'soft', drive: 0.2, tone: 5000, mix: 0.6 }, 'kd'), FX('eq', { low: 2, lowf: 55, high: 0, highf: 3000 }, 'kq'), FX('comp', { thresh: -14, ratio: 3, makeup: 2 }),
+      FX('reverb', { size: 1, damp: 0.6, mix: 0 }, 'kr')] }),
+    voice: { velSens: 0.4 }, master: { gain: 0.8 },
+  } },
+  { id: 'kick_felt', name: 'Kick · Felt Pillow', category: 'drums', tags: ['lofi', 'boom_bap', 'noir', 'kick', 'soft'], state: {
+    gens: [
+      { type: 'analog', shape: 'sine', mode: 'fixed', hz: 58, level: 0.9 },
+      { type: 'noise', color: 'brown', nfilt: 'lowpass', nfreq: 900, level: 0 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 900, res: 0.05, key: 0 },
+    amp: E(0.002, 0.35, 0, 0.1),
+    envs: [E(0.0005, 0.04, 0, 0.03), E(0.005, 0.5, 0.2, 0.4), E(0.0005, 0.03, 0, 0.02)],
+    mods: [R('env1', 'gen.g1.pitch', 0.25), R('env3', 'gen.g2.level', 0.4),
+      R('m1', 'gen.g1.pitch', 0.06), R('m2', 'fx.ft.mix', 0.6), R('m3', 'gen.g2.level', 0.2), R('m4', 'filter.cutoff', 0.2)],
+    macros: MAC('TUNE', 'TAPE', 'THUMP', 'BRIGHT'),
+    lanes: LN({ fx: [FX('tape', { sat: 0.4, wow: 0.1, flutter: 0.1, age: 0.5, hiss: 0.02, mix: 0.4 }, 'ft'), FX('comp', { thresh: -16, ratio: 3, makeup: 3 })] }),
+    voice: { velSens: 0.5 }, master: { gain: 1.0 },
+  } },
+  { id: 'snare_brush', name: 'Snare · Brush Sweep', category: 'drums', tags: ['noir', 'lofi', 'shuffle', 'snare', 'brush', 'jazz'], state: {
+    gens: [
+      { type: 'noise', color: 'pink', nfilt: 'bandpass', nfreq: 3000, nres: 0.1, level: 1 },
+      { type: 'analog', shape: 'triangle', mode: 'fixed', hz: 200, level: 0 },
+    ],
+    filter: { on: false },
+    amp: E(0.012, 0.35, 0, 0.15),
+    envs: [E(0.002, 0.06, 0, 0.04), E(0.005, 0.5, 0.2, 0.4), E(0.3, 0.6, 0.5, 0.5)],
+    mods: [R('env1', 'gen.g2.level', 0.2), R('rand', 'gen.g1.cutoff', 0.02),
+      R('m1', 'gen.g1.cutoff', 0.1), R('m2', 'fx.sr.mix', 0.3), R('m3', 'gen.g2.level', 0.2), R('m4', 'gen.g1.cutoff', -0.1)],
+    macros: MAC('BRIGHT', 'ROOM', 'BODY', 'DARK'),
+    lanes: LN({ gain: 1.4, fx: [FX('eq', { low: -6, lowf: 200, mid: 2, midf: 2500 }), FX('reverb', { size: 1.2, damp: 0.5, mix: 0.15 }, 'sr')] }),
+    voice: { velSens: 0.7 }, master: { gain: 1.5 },
+  } },
+  { id: 'cym_ride', name: 'Ride · Smoky Bell', category: 'drums', tags: ['noir', 'shuffle', 'dnb', 'ride', 'cymbal', 'jazz'], state: {
+    gens: [
+      { type: 'analog', shape: 'square', mode: 'fixed', hz: 410, level: 0.2 },
+      { type: 'analog', shape: 'square', mode: 'fixed', hz: 583, level: 0.18 },
+      { type: 'fm', mode: 'fixed', hz: 1213, fmTarget: 'g1', fmAmt: 0.5, level: 0 },
+      { type: 'analog', shape: 'square', mode: 'fixed', hz: 911, level: 0.15 },
+      { type: 'analog', shape: 'sine', mode: 'fixed', hz: 2630, level: 0.04 },
+      { type: 'noise', color: 'white', level: 0.08 },
+    ],
+    filter: { on: true, type: 'highpass', cutoff: 4500, res: 0.15, key: 0 },
+    amp: E(0.0005, 1.6, 0, 1),
+    envs: [E(0.0005, 0.25, 0, 0.2), E(0.005, 0.5, 0.2, 0.4), E(0.3, 0.6, 0.5, 0.5)],
+    mods: [R('env1', 'gen.g5.level', 0.12), R('env1', 'filter.cutoff', 0.05),
+      R('m1', 'gen.g5.level', 0.15), R('m2', 'filter.cutoff', 0.1), R('m3', 'fx.yr.mix', 0.3), R('m4', 'filter.cutoff', -0.1)],
+    macros: MAC('BELL', 'TONE', 'WASH', 'DARK'),
+    lanes: LN({ fx: [FX('eq', { low: -12, lowf: 300, high: 2, highf: 9000 }), FX('reverb', { size: 1.4, damp: 0.4, mix: 0.12 }, 'yr')] }),
+    voice: { velSens: 0.6 }, master: { gain: 1.3 },
+  } },
+  { id: 'cym_crash', name: 'Crash · Last Call', category: 'drums', tags: ['four_floor', 'dnb', 'synthwave', 'crash', 'cymbal'], state: {
+    gens: [
+      { type: 'noise', color: 'white', nfilt: 'highpass', nfreq: 3500, nres: 0.1, level: 0.4 },
+      { type: 'analog', shape: 'square', mode: 'fixed', hz: 460, level: 0.12 },
+      { type: 'fm', mode: 'fixed', hz: 1637, fmTarget: 'g2', fmAmt: 0.7, level: 0 },
+      { type: 'analog', shape: 'square', mode: 'fixed', hz: 733, level: 0.1 },
+    ],
+    filter: { on: true, type: 'highpass', cutoff: 2500, res: 0.1, key: 0 },
+    amp: E(0.0008, 2.4, 0, 1.5),
+    envs: [E(0.0005, 0.3, 0, 0.3), E(0.005, 0.5, 0.2, 0.4), E(0.3, 0.6, 0.5, 0.5)],
+    mods: [R('env1', 'gen.g1.cutoff', 0.08),
+      R('m1', 'filter.cutoff', 0.1), R('m2', 'fx.cr.mix', 0.3), R('m3', 'gen.g2.level', 0.15), R('m4', 'filter.cutoff', -0.1)],
+    macros: MAC('BRIGHT', 'WASH', 'TRASH', 'DARK'),
+    lanes: LN({ fx: [FX('eq', { low: -12, lowf: 400, high: 2, highf: 10000 }), FX('reverb', { size: 2, damp: 0.4, mix: 0.15 }, 'cr')] }),
+    voice: { velSens: 0.6 }, master: { gain: 0.85 },
+  } },
+  { id: 'perc_shaker', name: 'Shaker · Sugar Tin', category: 'drums', tags: ['lofi', 'ambient', 'four_floor', 'shaker', 'percussion'], state: {
+    gens: [{ type: 'noise', color: 'white', nfilt: 'highpass', nfreq: 6500, nres: 0.2, level: 0.5 }],
+    filter: { on: false },
+    amp: E(0.008, 0.09, 0, 0.05),
+    mods: [R('rand', 'gen.g1.cutoff', 0.03), R('m1', 'gen.g1.cutoff', 0.08), R('m2', 'fx.hr.mix', 0.3), R('m3', 'gen.g1.cutoff', -0.08)],
+    macros: MAC('BRIGHT', 'ROOM', 'DARK'),
+    lanes: LN({ fx: [FX('eq', { low: -12, lowf: 500, high: 2, highf: 10000 }), FX('reverb', { size: 0.8, damp: 0.4, mix: 0.1 }, 'hr')] }),
+    voice: { velSens: 0.7 }, master: { gain: 1.1 },
+  } },
+  { id: 'perc_tamb', name: 'Tambourine · Revival', category: 'drums', tags: ['shuffle', 'four_floor', 'tambourine', 'percussion'], state: {
+    gens: [
+      { type: 'analog', shape: 'square', mode: 'fixed', hz: 3200, level: 0.15 },
+      { type: 'fm', mode: 'fixed', hz: 4710, fmTarget: 'g1', fmAmt: 0.6, level: 0 },
+      { type: 'noise', color: 'white', nfilt: 'highpass', nfreq: 7000, nres: 0.2, level: 0.35 },
+    ],
+    filter: { on: true, type: 'highpass', cutoff: 5000, res: 0.1, key: 0 },
+    amp: E(0.001, 0.25, 0, 0.15),
+    envs: [E(0.0005, 0.08, 0, 0.05), E(0.005, 0.5, 0.2, 0.4), E(0.3, 0.6, 0.5, 0.5)],
+    lfos: [{ shape: 'square', rate: 32, retrig: true, amount: 0 }],
+    mods: [R('env1', 'lfo.1.amount', 1), R('lfo1', 'gen.g3.level', 0.25),
+      R('m1', 'gen.g1.level', 0.15), R('m2', 'fx.tr.mix', 0.3), R('m3', 'filter.cutoff', -0.1)],
+    macros: MAC('JINGLE', 'ROOM', 'DARK'),
+    lanes: LN({ fx: [FX('eq', { low: -12, lowf: 500 }), FX('reverb', { size: 1, damp: 0.4, mix: 0.1 }, 'tr')] }),
+    voice: { velSens: 0.7 }, master: { gain: 1.0 },
+  } },
+  { id: 'perc_cowbell', name: 'Cowbell · Rodeo', category: 'drums', tags: ['four_floor', 'shuffle', 'cowbell', 'percussion', '808'], state: {
+    gens: [
+      { type: 'analog', shape: 'square', mode: 'fixed', hz: 540, level: 0.35 },
+      { type: 'analog', shape: 'square', mode: 'fixed', hz: 800, level: 0.3 },
+    ],
+    filter: { on: true, type: 'bandpass', cutoff: 900, res: 0.3, key: 0 },
+    amp: E(0.0005, 0.35, 0, 0.1),
+    envs: [E(0.0005, 0.04, 0, 0.03), E(0.005, 0.5, 0.2, 0.4), E(0.3, 0.6, 0.5, 0.5)],
+    mods: [R('env1', 'amp.level', 0.6), R('m1', 'gen.g1.pitch', 0.04), R('m1', 'gen.g2.pitch', 0.04), R('m2', 'fx.wr.mix', 0.3), R('m3', 'filter.cutoff', 0.1)],
+    macros: MAC('TUNE', 'ROOM', 'BRIGHT'),
+    lanes: LN({ fx: [FX('eq', { low: -6, lowf: 300 }), FX('reverb', { size: 0.8, damp: 0.5, mix: 0.08 }, 'wr')] }),
+    voice: { velSens: 0.6 }, master: { gain: 1.0 },
+  } },
+  { id: 'perc_conga', name: 'Conga · Second Line', category: 'drums', tags: ['shuffle', 'four_floor', 'conga', 'percussion', 'hand drum'], state: {
+    gens: [
+      { type: 'analog', shape: 'sine', level: 0.8 },
+      { type: 'analog', shape: 'triangle', ratio: 1.47, level: 0.1 },
+      { type: 'noise', color: 'white', nfilt: 'bandpass', nfreq: 1500, nres: 0.3, level: 0 },
+    ],
+    filter: { on: false },
+    amp: E(0.001, 0.4, 0, 0.1),
+    envs: [E(0.0005, 0.05, 0, 0.04), E(0.0005, 0.012, 0, 0.01), E(0.3, 0.6, 0.5, 0.5)],
+    mods: [R('env1', 'gen.g1.pitch', 0.04), R('env2', 'gen.g3.level', 0.3),
+      R('m1', 'gen.g1.pitch', 0.06), R('m2', 'gen.g3.level', 0.2), R('m3', 'fx.gr.mix', 0.3)],
+    macros: MAC('TUNE', 'SLAP', 'ROOM'),
+    lanes: LN({ fx: [FX('eq', { low: -2, lowf: 120, mid: 2, midf: 900 }), FX('reverb', { size: 0.9, damp: 0.5, mix: 0.1 }, 'gr')] }),
+    voice: { velSens: 0.7 }, master: { gain: 0.9 },
+  } },
+  { id: 'perc_clave', name: 'Clave · Woodblock', category: 'drums', tags: ['shuffle', 'four_floor', 'clave', 'woodblock', 'percussion'], state: {
+    gens: [
+      { type: 'analog', shape: 'sine', mode: 'fixed', hz: 2500, level: 0.6 },
+      { type: 'analog', shape: 'triangle', mode: 'fixed', hz: 1700, level: 0.2 },
+    ],
+    filter: { on: false },
+    amp: E(0.0005, 0.07, 0, 0.04),
+    mods: [R('m1', 'gen.g1.pitch', 0.06), R('m1', 'gen.g2.pitch', 0.06), R('m2', 'fx.vr.mix', 0.3)],
+    macros: MAC('TUNE', 'ROOM'),
+    lanes: LN({ fx: [FX('eq', { low: -8, lowf: 400 }), FX('reverb', { size: 0.7, damp: 0.4, mix: 0.1 }, 'vr')] }),
+    voice: { velSens: 0.6 }, master: { gain: 0.7 },
+  } },
+
+  // ── FX ────────────────────────────────────────────────────────────
+  { id: 'fx_impact', name: 'Impact · Door Slam', category: 'fx', tags: ['noir', 'trap', 'impact', 'hit', 'cinematic'], state: {
+    gens: [
+      { type: 'analog', shape: 'sine', mode: 'fixed', hz: 45, level: 0.9 },
+      { type: 'noise', color: 'brown', nfilt: 'lowpass', nfreq: 2000, level: 0 },
+      { type: 'noise', color: 'white', nfilt: 'bandpass', nfreq: 900, nres: 0.2, level: 0 },
+    ],
+    filter: { on: false },
+    amp: E(0.001, 2.2, 0, 1.5),
+    envs: [E(0.0005, 0.25, 0, 0.2), E(0.0005, 0.6, 0, 0.4), E(0.0005, 0.08, 0, 0.05)],
+    mods: [R('env1', 'gen.g1.pitch', 0.3), R('env2', 'gen.g2.level', 0.6), R('env3', 'gen.g3.level', 0.4),
+      R('m1', 'fx.id.drive', 0.5), R('m2', 'fx.ir.mix', 0.3), R('m3', 'gen.g1.pitch', -0.05), R('m4', 'gen.g3.level', 0.2)],
+    macros: MAC('DRIVE', 'SPACE', 'DEEPER', 'DEBRIS'),
+    lanes: LN({ fx: [FX('dist', { mode: 'soft', drive: 0.25, tone: 4000, mix: 0.6 }, 'id'), FX('comp', { thresh: -14, ratio: 4, makeup: 2 }),
+      FX('reverb', { size: 6, damp: 0.5, mix: 0.45 }, 'ir')] }),
+    voice: { velSens: 0.4 }, master: { gain: 0.5 },
+  } },
+  { id: 'fx_downer', name: 'Fall · Elevator Down', category: 'fx', tags: ['noir', 'synthwave', 'dnb', 'downlifter', 'transition'], state: {
+    gens: [{ type: 'analog', shape: 'saw', unison: 5, detune: 25, spread: 0.9, level: 0.3 }, { type: 'noise', color: 'white', level: 0.3 }],
+    filter: { on: true, type: 'lowpass', cutoff: 9000, res: 0.35, key: 0 },
+    amp: E(0.01, 0.1, 1, 1.5),
+    envs: [E(4, 0.1, 1, 1)],
+    mods: [R('env1', 'filter.cutoff', -0.55), R('env1', 'voice.pitch', -0.25), R('m1', 'filter.res', 0.3), R('m2', 'fx.dr.mix', 0.3), R('m3', 'fx.dp.mix', 0.4)],
+    macros: MAC('SCREAM', 'SPACE', 'PHASER'),
+    lanes: LN({ fx: [FX('phaser', { rate: 0.4, depth: 0.6, freq: 800, fb: 0.5, mix: 0.2 }, 'dp'), FX('delay', { sync: true, div: '1/8', fb: 0.4, tone: 5000, pp: true, mix: 0.2 }),
+      FX('width', { width: 1.5 }), FX('reverb', { size: 5, damp: 0.4, mix: 0.35 }, 'dr')] }),
+    voice: { velSens: 0.2 }, master: { gain: 0.9 },
+  } },
+  { id: 'fx_flicker', name: 'Flicker · Neon Sign', category: 'fx', tags: ['noir', 'ambient', 'synthwave', 'buzz', 'glitch', 'texture'], state: {
+    gens: [
+      { type: 'analog', shape: 'saw', mode: 'fixed', hz: 120, level: 0.25 },
+      { type: 'analog', shape: 'square', mode: 'fixed', hz: 60, level: 0.15 },
+      { type: 'noise', color: 'white', nfilt: 'bandpass', nfreq: 3500, nres: 0.3, level: 0.15 },
+    ],
+    filter: { on: true, type: 'lowpass', cutoff: 3000, res: 0.2, key: 0 },
+    amp: E(0.05, 0.5, 0.9, 0.5),
+    lfos: [{ shape: 'sh', rate: 12, retrig: false, amount: 0.6 }],
+    mods: [R('lfo1', 'amp.level', 0.6), R('m1', 'lfo.1.amount', 0.4), R('m2', 'fx.ld.mix', 0.5), R('m3', 'lfo.1.rate', 0.3), R('m4', 'fx.lv.mix', 0.3)],
+    macros: MAC('FLICKER', 'CRUSH', 'SPEED', 'SPACE'),
+    lanes: LN({ fx: [FX('dist', { mode: 'bitcrush', drive: 0.5, tone: 7000, mix: 0.2 }, 'ld'), FX('reverb', { size: 1.5, damp: 0.5, mix: 0.15 }, 'lv')] }),
+    voice: { velSens: 0.2 }, master: { gain: 0.7 },
+  } },
 ];
+// Browsing order of the categories (pickers group by these). A new category goes here too.
+const PRESET_CATEGORIES = [['pads', 'PADS'], ['keys', 'KEYS'], ['bass', 'BASS'], ['leads', 'LEADS'], ['winds', 'WINDS'],
+  ['plucks', 'PLUCKS · BELLS'], ['ambient', 'AMBIENT'], ['drums', 'DRUMS'], ['fx', 'FX']];
+// Tags for the presets that predate `tags` (their states stay untouched): DAW styles first, then character.
+const LEGACY_TAGS = {
+  kick: ['four_floor', 'boom_bap', 'kick'], snare: ['boom_bap', 'lofi', 'snare'], clap: ['four_floor', 'trap', 'clap'],
+  hat_closed: ['hat', 'cymbal'], hat_open: ['hat', 'cymbal'], perc_rim: ['noir', 'rim', 'percussion'], tom: ['tom'],
+  bass_sub: ['noir', 'lofi', 'boom_bap', 'sub'], bass_acid: ['motorik', 'synthwave', 'acid'], bass_reese: ['dnb', 'dark'],
+  keys_ep: ['lofi', 'noir', 'boom_bap', 'electric piano', 'rhodes'], keys_organ: ['shuffle', 'four_floor', 'organ'], keys_tape_ep: ['lofi', 'tape', 'electric piano'],
+  pad_warm: ['lofi', 'ambient', 'warm'], pad_glass: ['ambient', 'trap', 'glass'], strings_ensemble: ['shuffle', 'synthwave', 'strings'],
+  choir_vox: ['trap', 'ambient', 'choir'], pad_fluorescent: ['noir', 'eerie', 'buzz'],
+  pluck_bell: ['lofi', 'ambient', 'bell'], pluck_marimba: ['boom_bap', 'mallet', 'marimba'], arp_chip: ['motorik', 'chip', '8-bit'], pluck_dobro: ['shuffle', 'noir', 'guitar', 'slide'],
+  lead_saw: ['synthwave', 'dnb', 'motorik'], lead_square: ['trap', 'synthwave'], lead_whistle: ['noir', 'ambient', 'whistle'],
+  drone_dark: ['noir', 'ambient', 'dark', 'drone'], drone_bayou: ['ambient', 'noir', 'bayou', 'drone'],
+  fx_riser: ['riser', 'transition'], fx_noise_sweep: ['sweep', 'transition'],
+};
+function presetTags(id) { const p = FORGE_PRESETS.find(x => x.id === id); return ((p && p.tags) || LEGACY_TAGS[id] || []).slice(); }
 
 // ═══════════════════════════════════════════════════════════════════
 // Editor — mountEditor(el) builds the whole patch editor inside any
@@ -2553,6 +3881,8 @@ const EDITOR_CSS = `
 .fg-macros .fg-knob { width:100%; }
 .fg-macros .fg-kl { max-width:100%; }
 .fg-root.fg-arming .fg-knob.fg-mt svg { filter:drop-shadow(0 0 2px rgba(255,216,150,.55)); }
+.fg-root { position:relative; }
+.fg-browse { position:absolute; inset:0; z-index:5; background:var(--fg-bg0); }
 `;
 
 function h(tag, attrs, ...kids) {
@@ -2771,6 +4101,7 @@ class ForgeEditor {
     cancelAnimationFrame(this.raf);
     this.offs.forEach(f => f()); this.offs = [];
     window.removeEventListener('keydown', this._onKey);
+    if (this.browser) { this.browser.destroy(); this.browser = null; }
     if (this.ro) this.ro.disconnect();
     if (this.an) { try { this.s.output.disconnect(this.an); } catch (e) { /* ok */ } }
     this.root.remove();
@@ -2817,6 +4148,7 @@ class ForgeEditor {
     if (this.opts.presets !== false) this.root.appendChild(this._presetBar());
     const main = h('div', { class: 'fg-main' }, this._colGen(), this._colMid(), this._colFx());
     this.root.appendChild(main);
+    if (this.browser) this.root.appendChild(this.browser.element.parentNode);
     [...this.root.querySelectorAll('.fg-col')].forEach((c, i) => { c.scrollTop = scroll[i] || 0; });
     this._resize();
   }
@@ -2825,7 +4157,7 @@ class ForgeEditor {
     const s = this.s, bar = h('div', { class: 'fg-bar' });
     const sel = h('select', { title: 'factory + user presets' });
     sel.appendChild(h('option', { value: '', text: '— preset —' }));
-    const order = ['drums', 'bass', 'keys', 'pads', 'plucks', 'leads', 'ambient', 'fx'];
+    const order = ['drums', 'bass', 'keys', 'pads', 'plucks', 'leads', 'winds', 'ambient', 'fx'];
     const cats = {};
     s.presetList.forEach(p => (cats[p.category] = cats[p.category] || []).push(p));
     [...order, ...Object.keys(cats).filter(c => !order.includes(c))].forEach(cat => {
@@ -2857,6 +4189,7 @@ class ForgeEditor {
     });
     this.status = h('span', { class: 'fg-status' });
     bar.append(
+      h('button', { title: 'browse the presets by finger: search, categories, styles', text: '☰ BROWSE', onclick: () => this._browse() }),
       h('button', { class: 'dim', title: 'previous preset', text: '◀', onclick: () => step(-1) }), sel,
       h('button', { class: 'dim', title: 'next preset', text: '▶', onclick: () => step(1) }), name,
       h('button', { title: 'save as a user preset (this browser)', text: 'SAVE', onclick: () => {
@@ -2880,6 +4213,21 @@ class ForgeEditor {
       h('button', { class: 'dim', title: 'start from the init patch', text: 'INIT', onclick: () => s.setState(DEFAULT_STATE) }),
       msg, this.status);
     return bar;
+  }
+
+  // the preset browser as an overlay over the editor; a tap loads the preset and plays a short preview
+  _browse() {
+    if (this.browser) return;
+    const s = this.s, wrap = h('div', { class: 'fg-browse' });
+    this.root.appendChild(wrap);
+    const close = () => { if (!this.browser) return; this.browser.destroy(); this.browser = null; wrap.remove(); };
+    this.browser = mountBrowser(wrap, {
+      current: s.presetId, title: 'FORGE PRESETS', onClose: close,
+      onPick: id => {
+        s.loadPreset(id);
+        if (this.opts.preview !== false) { const t = s.ctx.currentTime + 0.03, P = FORGE_PRESETS.find(x => x.id === id); previewNotes(P).forEach(n => { s.noteOn(n, 0.75, t); s.noteOff(n, t + 0.7); }); }
+      },
+    });
   }
 
   // ── generators ─────────────────────────────────────────────────
@@ -3316,6 +4664,95 @@ ForgeSynth.createEffect = (ctx, type, params, opts = {}) => {
     dispose() { if (dead) return; dead = true; o.dispose(); try { input.disconnect(); output.disconnect(); } catch (e) { /* ok */ } },
   };
 };
+
+// ═══════════════════════════════════════════════════════════════════
+// Preset browser — built for a finger on the Deck's 1280×800 touchscreen:
+// a search box, one row of category chips, one row of style chips (the
+// DAW's song styles + character words, from each preset's tags) and a grid
+// of ≥ 44 px tiles. Tap a tile → onPick(id). Scrolls natively (pan-y).
+// ═══════════════════════════════════════════════════════════════════
+const BROWSER_CSS = `
+.fgb { --b-bg:#050304; --b-ink:#1a1410; --b-rule:#553318; --b-gold:#d8a060; --b-hi:#ffd896; --b-dim:#7a5828; --b-rust:#c87633;
+  font-family:"Courier New",monospace; color:#c8a878; background:var(--b-bg); height:100%; min-height:0; display:flex; flex-direction:column; box-sizing:border-box; }
+.fgb * { box-sizing:border-box; }
+.fgb-top { display:flex; gap:6px; align-items:center; padding:6px 8px; border-bottom:1px solid var(--b-rule); flex-wrap:wrap; }
+.fgb-top b { color:var(--b-gold); letter-spacing:.16em; font-size:12px; font-weight:normal; }
+.fgb-q { flex:1; min-width:160px; min-height:40px; font:14px "Courier New",monospace; background:var(--b-ink); color:var(--b-hi); border:1px solid var(--b-rule); padding:4px 8px; }
+.fgb button { font-family:inherit; cursor:pointer; touch-action:manipulation; }
+.fgb-x { min-height:40px; min-width:44px; background:var(--b-ink); color:var(--b-hi); border:1px solid var(--b-gold); font-size:12px; padding:0 10px; }
+.fgb-chips { display:flex; gap:5px; padding:5px 8px 0; flex-wrap:wrap; }
+.fgb-chip { min-height:38px; min-width:44px; padding:0 11px; background:var(--b-ink); color:var(--b-text, #c8a878); border:1px solid var(--b-rule); font-size:11px; letter-spacing:.08em; border-radius:19px; }
+.fgb-chip.on { background:var(--b-rust); color:var(--b-ink); border-color:var(--b-hi); }
+.fgb-chip i { font-style:normal; opacity:.65; margin-left:4px; font-size:10px; }
+.fgb-grid { flex:1; min-height:0; overflow-y:auto; -webkit-overflow-scrolling:touch; touch-action:pan-y; padding:8px; display:grid; grid-template-columns:repeat(auto-fill, minmax(176px, 1fr)); gap:6px; align-content:start; }
+.fgb-tile { min-height:48px; text-align:left; background:#0e0908; border:1px solid var(--b-rule); color:#c8a878; padding:5px 8px; display:flex; flex-direction:column; justify-content:center; gap:2px; }
+.fgb-tile .k { font-size:9px; letter-spacing:.12em; color:var(--b-dim); text-transform:uppercase; }
+.fgb-tile .n { font-size:12px; color:var(--b-hi); }
+.fgb-tile.cur { border-color:var(--b-hi); box-shadow:inset 0 0 0 1px var(--b-hi); background:#21160d; }
+.fgb-tile:active, .fgb-chip:active { filter:brightness(1.4); }
+.fgb-none { color:var(--b-dim); font-style:italic; padding:10px; grid-column:1/-1; }
+.fgb-foot { color:var(--b-dim); font-size:10px; padding:3px 8px 6px; }
+`;
+const BROWSE_STYLES = ['noir', 'ambient', 'lofi', 'boom_bap', 'synthwave', 'motorik', 'shuffle', 'four_floor', 'trap', 'dnb', 'dark', 'warm', 'eerie', 'mythic', 'motion'];
+// what a tap previews: a chord for pads / keys / winds-as-pads, a note for the rest
+function previewNotes(P) {
+  const c = P ? P.category : '';
+  return c === 'pads' || c === 'keys' ? [48, 55, 60, 64] : c === 'ambient' ? [48, 55] : c === 'bass' ? [36] : c === 'drums' ? [60] : c === 'leads' || c === 'winds' ? [67] : [60, 67];
+}
+function mountBrowser(el, opts) {
+  opts = opts || {};
+  if (!document.getElementById('forge-browser-style')) {
+    const st = document.createElement('style'); st.id = 'forge-browser-style'; st.textContent = BROWSER_CSS; document.head.appendChild(st);
+  }
+  let cur = opts.current || null, cat = '', style = '', q = '';
+  try { const m = JSON.parse(localStorage.getItem('mm_forge_browse') || '{}'); cat = m.cat || ''; style = m.style || ''; } catch (e) { /* storage blocked */ }
+  const keep = () => { try { localStorage.setItem('mm_forge_browse', JSON.stringify({ cat, style })); } catch (e) { /* storage blocked */ } };
+  const all = FORGE_PRESETS.map(p => ({ id: p.id, name: p.name, category: p.category, tags: presetTags(p.id) }));
+  const root = h('div', { class: 'fgb' });
+  const input = h('input', { type: 'search', class: 'fgb-q', placeholder: 'search: noir strings, choir, rhodes, 808, bell…', autocomplete: 'off' });
+  const top = h('div', { class: 'fgb-top' }, h('b', { text: opts.title || 'PRESETS' }), input,
+    h('button', { class: 'fgb-x', title: 'clear the search and filters', text: 'CLEAR', onclick: () => { q = ''; input.value = ''; cat = ''; style = ''; keep(); draw(); } }),
+    opts.onClose ? h('button', { class: 'fgb-x', title: 'close', text: '✕', onclick: () => opts.onClose() }) : null);
+  const catRow = h('div', { class: 'fgb-chips' }), styleRow = h('div', { class: 'fgb-chips' }), grid = h('div', { class: 'fgb-grid' }), foot = h('div', { class: 'fgb-foot' });
+  root.append(top, catRow, styleRow, grid, foot);
+  el.appendChild(root);
+  const words = () => q.toLowerCase().split(/\s+/).filter(Boolean);
+  const hay = p => (p.name + ' ' + p.id.replace(/_/g, ' ') + ' ' + p.category + ' ' + p.tags.join(' ')).toLowerCase();
+  const list = () => all.filter(p => (!cat || p.category === cat) && (!style || p.tags.includes(style)) && words().every(w => hay(p).includes(w)));
+  const chip = (label, on, n, fn, data) => { const b = h('button', { class: 'fgb-chip' + (on ? ' on' : ''), onclick: fn }, label, n != null ? h('i', { text: String(n) }) : null); if (data) b.dataset.v = data; return b; };
+  function draw() {
+    const base = all.filter(p => (!style || p.tags.includes(style)) && words().every(w => hay(p).includes(w)));
+    catRow.textContent = '';
+    catRow.appendChild(chip('ALL', !cat, base.length, () => { cat = ''; keep(); draw(); }, 'cat:'));
+    PRESET_CATEGORIES.forEach(([id, label]) => { const n = base.filter(p => p.category === id).length; if (n || cat === id) catRow.appendChild(chip(label, cat === id, n, () => { cat = cat === id ? '' : id; keep(); draw(); }, 'cat:' + id)); });
+    styleRow.textContent = '';
+    BROWSE_STYLES.forEach(t => { if (all.some(p => p.tags.includes(t))) styleRow.appendChild(chip(t.replace('_', ' ').toUpperCase(), style === t, null, () => { style = style === t ? '' : t; keep(); draw(); }, 'style:' + t)); });
+    const L = list();
+    grid.textContent = '';
+    L.forEach(p => {
+      const parts = p.name.split(' · '), kind = parts.length > 1 ? parts[0] : p.category, nm = parts.length > 1 ? parts.slice(1).join(' · ') : p.name;
+      const t = h('button', { class: 'fgb-tile' + (p.id === cur ? ' cur' : ''), title: p.id + ' · ' + p.tags.join(', ') }, h('span', { class: 'k', text: kind + ' · ' + p.category }), h('span', { class: 'n', text: nm }));
+      t.dataset.id = p.id;
+      t.addEventListener('click', () => { cur = p.id; grid.querySelectorAll('.fgb-tile').forEach(x => x.classList.toggle('cur', x.dataset.id === cur)); if (opts.onPick) opts.onPick(p.id, FORGE_PRESETS.find(x => x.id === p.id)); });
+      grid.appendChild(t);
+    });
+    if (!L.length) grid.appendChild(h('div', { class: 'fgb-none', text: 'nothing matches — CLEAR the filters.' }));
+    foot.textContent = L.length + ' of ' + all.length + ' presets · tap to load' + (opts.onPick ? ' + preview' : '');
+  }
+  input.addEventListener('input', () => { q = input.value; draw(); });
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') { const f = grid.querySelector('.fgb-tile'); if (f) f.click(); } else if (e.key === 'Escape' && opts.onClose) opts.onClose(); });
+  draw();
+  const c0 = grid.querySelector('.fgb-tile.cur'); if (c0 && c0.scrollIntoView) { try { c0.scrollIntoView({ block: 'nearest' }); } catch (e) { /* old engine */ } }
+  return {
+    element: root,
+    setCurrent(id) { cur = id; grid.querySelectorAll('.fgb-tile').forEach(x => x.classList.toggle('cur', x.dataset.id === cur)); },
+    destroy() { root.remove(); },
+  };
+}
+ForgeSynth.categories = PRESET_CATEGORIES.map(([id, label]) => ({ id, label }));
+ForgeSynth.presetTags = id => presetTags(id);
+ForgeSynth.previewNotes = id => previewNotes(FORGE_PRESETS.find(x => x.id === id));
+ForgeSynth.mountBrowser = (el, opts) => mountBrowser(el, opts);
 
 window.ForgeSynth = ForgeSynth;
 window.FORGE_PRESETS = FORGE_PRESETS;

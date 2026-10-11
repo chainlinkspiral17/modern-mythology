@@ -68,7 +68,7 @@ suite('daw perf · scale lock, chords, arp, groove, step sequencer', async t => 
       document.getElementById('g-inst').value = 'forge'; document.getElementById('g-style').value = 'boom_bap'; document.getElementById('g-form').value = 'loop';
       await generate({ force: true, seed: 11 }); await E.whenReady();
       P.swing = 0.55; P.loop.on = false;
-      const oldEngine = s => { const ours = window.DAW; (0, eval)(s); const O = window.DAW; window.DAW = ours; const OE = new O.Engine(); Object.assign(OE, { ctx: E.ctx, verb: E.verb, devices: E.devices, project: E.project, start: async () => {} }); return OE; };
+      const oldEngine = s => { const ours = window.DAW; (0, eval)(s); const O = window.DAW; window.DAW = ours; window.__oldKitMap = O.KIT_MAP; const OE = new O.Engine(); Object.assign(OE, { ctx: E.ctx, verb: E.verb, devices: E.devices, project: E.project, start: async () => {} }); return OE; };
       const real = Math.random, rst = window.setTimeout;
       const render = async eng => {          // seeded noise; FORGE's voice-reaping timers wait until the render is done
         let a = 12345; Math.random = () => { a = (a + 0x6D2B79F5) | 0; let x = Math.imul(a ^ (a >>> 15), 1 | a); x = (x + Math.imul(x ^ (x >>> 7), 61 | x)) ^ x; return ((x ^ (x >>> 14)) >>> 0) / 4294967296; };
@@ -83,6 +83,8 @@ suite('daw perf · scale lock, chords, arp, groove, step sequencer', async t => 
       };
       const diff = (a, b) => { let m = 0; for (let c = 0; c < 2; c++) { if (a.channels[c].length !== b.channels[c].length) return Infinity; for (let i = 0; i < a.channels[c].length; i++) m = Math.max(m, Math.abs(a.channels[c][i] - b.channels[c][i])); } return m; };
       const OE = oldEngine(src), out = {};
+      // the kit as saved before the instrument library (2026-10-11): the old engine can't build the newer kit pieces
+      const kd = P.devices.find(d => d.type === 'kit'); if (kd) E.devices.get(kd.id).setState({ map: JSON.parse(JSON.stringify(window.__oldKitMap)) });
       await render(E);                                        // warm-up: FORGE builds shared tables on its first offline render
       const o = await events(OE), n = await events(E);
       out.forge = { same: o.L === n.L, events: o.n, audio: diff(o.res, n.res), peak: AK.util.peakOf(o.res.channels) };

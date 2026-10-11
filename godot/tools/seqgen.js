@@ -8,6 +8,9 @@
  *   SeqGen.song({ seed, style, key, mode, bpm, form, density })
  *     → { bpm, swing, key, mode, style, form, progression, sections[],
  *         parts: { drums|bass|chords|lead|pad: { role, patterns{pid:{name,lenBars,notes[]}}, clips[{bar,pid}], preset } } }
+ *     part.preset is a FORGE preset id: the style's own pick or one of its FORGE_POOLS alternates, chosen by
+ *     hash(seed, role) — the notes never see that choice, so a seed keeps its notes whatever the pools hold.
+ *   SeqGen.presetFor(style, role, seed)        that pick on its own
  *   SeqGen.part(role, songResult, { seed })    re-roll one part in place
  *   SeqGen.moodFromText(title, desc, id)       catalog brief → song options
  *   SeqGen.moodFromBrief(track, brief, text)  + the MusicDirector's per-track brief (temp_briefs.json)
@@ -102,6 +105,40 @@
       drums: { shaker: '0010000000100000/0.25', rim: '0000000000000100/0.15' },
       bass: 'drone', chords: 'swell', lead: 'sparse', pad: 'drone', presets: { bass: 'drone_dark', chords: 'pad_glass', lead: 'pluck_bell', pad: 'pad_warm' } },
   };
+
+  // FORGE alternates per style and role, next to each style's own `presets` pick. Role rules: bass = mono
+  // patches (ambient's drone bass may be a pad), chords + pad = polyphonic, lead = anything melodic.
+  const FORGE_POOLS = {
+    four_floor: { bass: ['bass_pluck', 'bass_fm', 'bass_808'], chords: ['keys_combo_organ', 'pluck_neon', 'winds_brass', 'keys_mk1'],
+      lead: ['pluck_steel_pan', 'lead_siren', 'bell_glock', 'pluck_neon'], pad: ['pad_gate', 'pad_shimmer', 'pad_neon_rain', 'strings_silver'] },
+    boom_bap: { bass: ['bass_upright', 'bass_ladder', 'bass_fender', 'bass_808'], chords: ['keys_mk1', 'keys_wurli', 'keys_felt', 'keys_tape_ep', 'keys_clav'],
+      lead: ['keys_vibes', 'winds_sax', 'winds_flute', 'pluck_kalimba', 'pluck_nylon'], pad: ['pad_tape_wobble', 'pad_velvet', 'pad_dusk'] },
+    lofi: { bass: ['bass_upright', 'bass_fender', 'bass_fretless'], chords: ['keys_tape_ep', 'keys_felt', 'keys_wurli', 'keys_mk1', 'pluck_nylon'],
+      lead: ['pluck_kalimba', 'keys_vibes', 'bell_music_box', 'keys_celesta', 'winds_flute', 'pluck_nylon'], pad: ['pad_tape_wobble', 'pad_dusk', 'pad_velvet'] },
+    trap: { bass: ['bass_808'], chords: ['pad_frost', 'choir_crypt', 'bell_music_box', 'keys_celesta'],
+      lead: ['bell_glock', 'pluck_neon', 'lead_siren', 'keys_celesta', 'bell_music_box'], pad: ['choir_crypt', 'strings_tremolo', 'pad_seance', 'pad_sub_drone'] },
+    dnb: { bass: ['bass_ladder', 'bass_fm'], chords: ['pad_velvet', 'pad_shimmer', 'keys_mk1', 'pad_neon_rain'],
+      lead: ['lead_fm', 'lead_siren', 'pluck_neon', 'lead_brass'], pad: ['pad_neon_rain', 'pad_seance', 'pad_shimmer', 'pad_frost'] },
+    shuffle: { bass: ['bass_upright', 'bass_fender'], chords: ['keys_combo_organ', 'keys_wurli', 'winds_brass', 'keys_clav', 'keys_mk1'],
+      lead: ['winds_harmonica', 'winds_sax', 'winds_harmon', 'winds_clarinet', 'pluck_steel_pan', 'keys_vibes'], pad: ['strings_silver', 'winds_horns', 'pad_organ_swell', 'pad_dusk'] },
+    motorik: { bass: ['bass_pluck', 'bass_ladder'], chords: ['pluck_neon', 'keys_combo_organ', 'keys_harpsichord'],
+      lead: ['lead_brass', 'lead_ring', 'lead_fm'], pad: ['pad_neon_rain', 'pad_gate', 'pad_hollow'] },
+    synthwave: { bass: ['bass_pluck', 'bass_ladder', 'bass_fm'], chords: ['pad_gate', 'pad_velvet', 'pad_neon_rain', 'keys_mk1'],
+      lead: ['lead_brass', 'lead_fuzz', 'lead_square', 'lead_fm'], pad: ['strings_silver', 'pad_neon_rain', 'pad_shimmer', 'pad_velvet'] },
+    noir: { bass: ['bass_upright', 'bass_fretless'], chords: ['keys_felt', 'keys_vibes', 'keys_mk1', 'winds_brass', 'strings_noir'],
+      lead: ['winds_harmon', 'winds_clarinet', 'winds_sax', 'lead_theremin', 'keys_vibes', 'pluck_nylon'],
+      pad: ['strings_noir', 'choir_crypt', 'strings_tremolo', 'pad_tape_wobble', 'pad_sub_drone', 'pad_bowed_metal', 'winds_horns'] },
+    ambient: { bass: ['pad_sub_drone', 'drone_cathedral', 'drone_horizon'], chords: ['pad_shimmer', 'pad_bowed_glass', 'pad_cathedral_air', 'pad_frost', 'pad_organ_swell', 'choir_angel'],
+      lead: ['bell_tubular', 'bell_bowl', 'pluck_kalimba', 'keys_celesta', 'winds_flute', 'pluck_harp', 'lead_theremin'],
+      pad: ['pad_seance', 'pad_bowed_metal', 'drone_horizon', 'pad_dusk', 'pad_hollow', 'choir_angel', 'pad_cathedral_air'] },
+  };
+  function presetFor(styleId, role, seed) {
+    const st = STYLES[styleId]; if (!st) return null;
+    if (role === 'drums') return 'kit';
+    const base = st.presets[role], pool = ((FORGE_POOLS[styleId] || {})[role] || []).filter(x => x !== base);
+    const all = base ? [base, ...pool] : pool;
+    return all.length ? all[hash(String(seed) + ':forge:' + role) % all.length] : null;
+  }
 
   // ── forms: sections + which roles play ──────────────────────────
   const FORMS = {
@@ -295,7 +332,7 @@
     for (const [name, bars, roles] of FORMS[formId]) { sections.push({ name, bar, bars, roles }); bar += bars; }
     const roles = ['drums', 'bass', 'chords', 'lead', 'pad'];
     const parts = {};
-    for (const role of roles) parts[role] = { role, patterns: {}, clips: [], preset: role === 'drums' ? 'kit' : st.presets[role] };
+    for (const role of roles) parts[role] = { role, patterns: {}, clips: [], preset: presetFor(styleId, role, seed) };
     const opts = { density, bed: formId === 'bed' };
     // lead motif is shared across sections (A/A2 sound related), re-seeded per role
     for (const sec of sections) {
@@ -467,7 +504,7 @@
     return m;
   }
 
-  const API = { PPQ, BAR, S16, GM, SCALES, STYLES, FORMS, PROGS, NOTE_NAMES, rng, hash, deg2midi, chordPCs, song, part, moodFromText, moodFromBrief, applyDirection, romanFor };
+  const API = { PPQ, BAR, S16, GM, SCALES, STYLES, FORMS, PROGS, NOTE_NAMES, FORGE_POOLS, rng, hash, deg2midi, chordPCs, song, part, presetFor, moodFromText, moodFromBrief, applyDirection, romanFor };
   if (typeof module !== 'undefined' && module.exports) module.exports = API;
   root.SeqGen = API;
 })(typeof window !== 'undefined' ? window : globalThis);

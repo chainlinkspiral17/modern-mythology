@@ -303,7 +303,7 @@ those tools.
 - FORGE (`forge_synth.js`) is the Phase Plant-style synth:
   - Structure: generators → three lanes of snap-ins, a mod matrix
     (`{src, dst, depth}` in knob space), and 8 macros.
-  - 29 presets, with ids stable for the DAW. A DAW that schedules
+  - 29 presets (105 since the 2026-10-11 library), with ids stable for the DAW. A DAW that schedules
     noteOn/noteOff pairs ahead delivers them out of time order, which
     broke mono last-note priority. Mono events now go through a
     time-sorted log that rewinds.
@@ -630,6 +630,96 @@ those tools.
 - Verified: FM-1 USB audio on the Deck; round trip 142.9 ms
   (jitter 3.3 ms) in Flatpak Chrome, 149.9 ms in an earlier run. Takes
   align. Never monitor through the browser at this latency.
+
+### 2026-10-11 — the instrument library: FORGE 29 → 105 presets, pools, KIT styles, finger browser
+
+- User ask: "feels like more instruments and pads should be present."
+  FORGE gained 76 presets: 19 pads (noir / tremolo / silver-screen
+  strings, crypt + angel choirs, bowed glass, bowed saw blade, tape
+  wobble, chapel organ, "Air · Nave", sub drone, motion and gated pads,
+  FM frost…), 9 keys, 7 basses, 6 leads, a new `winds` category (7:
+  FM brass, Harmon trumpet, flute, clarinet, sax, harmonica, horns),
+  9 plucks / mallets / bells, 6 ambient textures + drones, 10 kit
+  pieces, 3 fx. The 29 originals are byte-identical (their FNV
+  fingerprints are pinned in `tests/library.test.js`).
+- **Preset design rules that held:**
+  - Macros start at 0 = the patch as voiced. Each macro adds one
+    direction only. An effect a macro brings in sits in the lane at
+    mix 0 (it still runs, so keep a lane to ~5 snap-ins).
+  - Route only to real targets: `fx.<sid>.<p>` needs `p` in that
+    snap-in's `mods`; `gen.<id>.fm` only on FM ops, `.cutoff` only on
+    noise gens, `.morph` only on wavetables. `normalizeState` drops a
+    bad route silently, so the library suite checks every one.
+  - Pitched noise = a bandpass noise gen plus `note → gen.<id>.cutoff`
+    at 0.5 (12000 ct × 0.5 / 60 st = exactly 100 ct per semitone).
+    That is the bow friction, flute breath, wind and "Air · Nave".
+  - The amp envelope can't be modulated. Tremolo is an LFO →
+    `amp.level`; `rand → lfo.N.rate` keeps a chord's voices out of step.
+  - A macro that raises a noise gen's level is not a "click": the amp
+    envelope shapes it into a noise tail. Clicks are env3 routes.
+  - Bandpass Q eats level: lower `nres` before reaching for gain.
+    Reverb / delay / chorus mix also lowers the dry. Master gain stops
+    at 1.5; a lane `gain` (up to 1.5) is the next stage.
+  - Mono vs poly is part of the patch's job: a legato patch on a chord
+    track plays one note. Composer pools: bass = mono / legato,
+    chords + pad = poly (the suite checks).
+- **Audit before trusting your ears (there are none in the sandbox):**
+  render every preset offline at 16–22 kHz with a per-category
+  pattern, then compare RMS over the active frames against the
+  category's originals, peak, sustain at note-off, and a fingerprint
+  (24 log bands + 16-point envelope + 10 ms modulation + spectral
+  motion). The first pass caught pads 15 dB quiet (pitched-noise
+  air), a wind bed 23 dB quiet, and near-twins (reese ≈ fat ladder,
+  Harmon ≈ harmonica) — fixed by a different filter type and
+  envelope, not by gain. All 105 renders take ~7 s in the suite.
+- Peaks: as voiced ≤ 0.99. With all eight macros up a patch may lean
+  on FORGE's soft limiter (0.98 ceiling; the waveshaper's oversampling
+  overshoots to ~0.995), never past full scale.
+- **To add a preset:** append to `FORGE_PRESETS` with a category from
+  `PRESET_CATEGORIES` (a new category goes there and in the editor's
+  select order), `tags` (DAW style ids first, then character words —
+  they drive the browser's chips and search), 8 named macros on
+  melodic patches. Run `run_tests.sh library`, then add it to
+  `SeqGen.FORGE_POOLS` for the styles it suits. Never edit a shipped
+  preset: copy it under a new id.
+- **Composer:** `SeqGen.presetFor(style, role, seed)` picks the style's
+  own preset or a pool alternate by `hash(seed:forge:role)`, outside
+  the note RNG. A seed keeps its notes; its instruments changed once,
+  with this library.
+- **KIT:** `KIT_MAP` now has a real ride, crash, shaker, tambourine,
+  cowbell, congas and clave (they used to be hats and the rim).
+  `KIT_STYLES` swaps pieces per style: 808 kick for trap, felt kick
+  for lo-fi, brushes for noir. A saved kit keeps its own map, and a kit
+  is built straight from that map. Building the style's voices first
+  and then swapping them shifted the seeded `Math.random` in
+  daw_perf's old-engine comparison; that test now compares with a
+  pre-library kit map, since the old engine can't build the new
+  pieces.
+- **PATCH BANK:** the builder only *looked* pinned: it cloned branch
+  tips, so a re-run could move every source. `SOURCES[*].commit` now
+  pins each source (`--update` reads the tips on purpose); the
+  regenerated catalog is identical for the old 21 sources. Added
+  VSCO 2 Community Edition (its `SFZ` branch, CC0, 75 programs: string
+  sections, solo strings, brass, woodwinds, harp, organ, mallets,
+  bells) and Karoryfer's Gogodze Phu (CC0 hand drums). Skipped Splendid
+  Grand Piano: "public domain by AKAI" with no licence file.
+  - VSCO WAVs are ~2 MB each: one articulation is 20–120 MB on first
+    download. Only two are in `PATCH_POOLS` (noir cello, ambient harp);
+    the rest of the widened pools are GeneralUser GS programs, which
+    are one download.
+  - VSCO maps piccolo and glockenspiel at written pitch, so they sound
+    an octave or two off (like Growlybass). The network suite checks
+    the flute instead.
+- **Pickers by finger:** `ForgeSynth.mountBrowser` is the one browser:
+  search, category chips, style chips, ≥ 44 px tiles, a tap loads and
+  previews. The DAW's PRESET button and FORGE's ☰ BROWSE both use it;
+  a FORGE device added from the menu opens it. The PATCH picker gained
+  category chips and 40 px rows. Filters are remembered per browser
+  (`mm_forge_browse`).
+- Open items: nobody has listened to the new presets on the Deck yet
+  (the numbers say balanced, not beautiful); CPU of 12-voice pads on
+  the Deck is unmeasured. The heaviest is `choir_angel` at 10
+  oscillators per voice, against `strings_ensemble`'s 9.
 
 ## TEMPLATE
 

@@ -17,5 +17,6 @@ suite('patch bank · real downloads (network)', async t => {
   await t.test('FluidR3 piano (midi-js) in tune, cached, needs a credit', async () => { const r = await check('fluid:acoustic_grand_piano', 69); t.near(r.cents, 0, 15); t.ok(r.cached); t.eq(r.credit, 'credit'); });
   await t.test('Yamaha ROM 1A voice (DX7 bank) in tune', async () => { const r = await check('rom1a:10', 69); t.near(r.cents, 0, 10); });
   await t.test('Tone.js cello (note-named folder) in tune', async () => { const r = await check('tonejs:cello', 69); t.near(r.cents, 0, 15); });
+  await t.test('VSCO 2 CE (SFZ branch, backslash default_path) in tune, CC0', async () => { const r = await check('vsco:flutesusvib', 81); t.near(r.cents, 0, 20); t.eq(r.credit, 'free'); });
   await t.test('no page errors', async () => t.noErrors(errors));
 });
