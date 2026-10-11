@@ -2490,5 +2490,53 @@
     },
     "output": "godot/assets/3d/characters/heroes/wren.glb",
     "file_size_kb": 74254.6
+  },
+  {
+    "at": "2026-10-11T17:34:07+00:00",
+    "stage": "image",
+    "slug": "tem",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Tem like this: Tem was in the wool sweater she had been in last night, jeans, and the wool socks the cabin kept on a small shelf by the door for anyone who arrived without their own. a blue that fell, in the same color family as Tem's, somewhere between azure and slate. The blue of the dye in the mirror over the basin \u2014 she lit the kerosene candle \u2014 was now mostly gray. The thrift-store dye held three weeks if you were lucky. She had been at the dye for nineteen days. Tem in the wool sweater under wax canvas. Tem looked at her with the wool sweater bunched at her shoulders and her hair flat from the cap she had pulled off in the kitchen earlier and her face clean of any of the careful management she had been wearing all day. Tem on the couch this morning with her hair flat on one side She was in the wool sweater she had been in yesterday and the jeans and the wool socks. Tem took her coat off and hung it on the hook by the office door where Petra had had hers hanging this morning.\nFull-body concept render of Tem, a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/tem/tem_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/tem/tem_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/tem/tem_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-11T17:37:20+00:00",
+    "stage": "mesh",
+    "slug": "tem",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a12c07-afe2-7080-abe7-13372d80cc1d",
+    "inputs": [
+      "godot/assets/concept/meshy/tem/front.png",
+      "godot/assets/concept/meshy/tem/side.png",
+      "godot/assets/concept/meshy/tem/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "smart-topology",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/tem.glb",
+    "file_size_kb": 56904.0
   }
 ]
