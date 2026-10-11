@@ -169,13 +169,14 @@ glow_hdr_scale = 2.4
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_Locale")
 
-[node name="Key_DeskLamp" type="DirectionalLight3D" parent="."]
+; (pass 60, 2026-10-11) the authored rig is suffixed to diego_bedroom: its time-of-day twin below brings its own
+[node name="Key_DeskLamp__diego_bedroom" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 3, 3, 1)
 light_color = Color(0.86, 0.88, 0.96, 1)
 light_energy = 0.80
 shadow_enabled = false
 
-[node name="Fill_Window" type="DirectionalLight3D" parent="."]
+[node name="Fill_Window__diego_bedroom" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 4, -6)
 light_color = Color(0.62, 0.74, 0.92, 1)
 light_energy = 0.45
@@ -184,11 +185,26 @@ shadow_enabled = false
 ; Practical at the desk lamp head (blender 0.8,1.70,1.16 → godot 0.8,1.16,-1.70)
 
 
-[node name="Back_Mood" type="DirectionalLight3D" parent="."]
+[node name="Back_Mood__diego_bedroom" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866, 0.354, -0.354, 0, 0.707, 0.707, 0.5, 0.612, -0.612, -3, 4, 2)
 light_color = Color(0.42, 0.52, 0.74, 1)
 light_energy = 0.2
 shadow_enabled = false
+
+; ── THE NIGHT (pass 60): diego_bedroom_night — the moon and the street through the N window;
+; the desk lamp (unsuffixed) is the room's light
+[node name="Moon_Window__diego_bedroom_night" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.7071, -0.4056, 0.5792, 0.0000, 0.8192, 0.5736, -0.7071, 0.4056, -0.5792, 0, 5, -6)
+light_color = Color(0.60, 0.68, 0.90, 1)
+light_energy = 0.3
+shadow_enabled = false
+
+[node name="Street_Glow__diego_bedroom_night" type="OmniLight3D" parent="."]
+position = Vector3(0.000, 2.600, -6.000)
+light_color = Color(1.00, 0.72, 0.38, 1)
+light_energy = 0.9
+shadow_enabled = false
+omni_range = 7.0
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 

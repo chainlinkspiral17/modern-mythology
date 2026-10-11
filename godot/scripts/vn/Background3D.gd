@@ -1061,6 +1061,29 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(1.4, 1.55, -0.7),
 		"camera_rotation": Vector3(-0.05, deg_to_rad(43.7), 0.0),
 		"fov": 58.0,
+		# (pass 60) the room is authored at night but its ambient (0.7 on a lamp key) rendered
+		# it as bright as the day twin: a night env so the night is night.
+		"env": {"ambient_color": Color(0.46, 0.42, 0.56, 1), "ambient_energy": 0.42, "fog_color": Color(0.14, 0.12, 0.18, 1)},
+		"suppress_input": true,
+	},
+	"maya_bedroom_day": {
+		"scene": "res://scenes/locales/maya_bedroom.tscn",
+		"requires_glb": "res://assets/3d/locales/maya_bedroom.glb",
+		# Teen-girl bedroom 4×5 (godot x∈[-2,2], z∈[0,-5], ceil 2.6). Bed
+		# along the W side (blender -1,2.5 → godot -1,-2.5), desk+lamp E
+		# (godot 1,-1.5), vanity dresser E wall (godot 1.7,-3.8), rug
+		# centre, N window, fairy lights. Camera in the SE corner just
+		# inside the door looking NW across to the bed: bed centre-back,
+		# window light beyond, vanity at frame right. Tight FOV, small room.
+		# (2026-10-11, pass 60) THE SAME ROOM at the other hour: ch1 (15:22, the ThinkPad), ch6 A Daigle (9:47), the prelude (6:16)
+		# played on the night rig and its moon.
+		# The authored rig is suffixed to maya_bedroom; this twin has its own lights and env.
+		"camera_origin": Vector3(1.4, 1.55, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(43.7), 0.0),
+		"fov": 58.0,
+		"env": {"sky_top": Color(0.40, 0.56, 0.80, 1), "sky_horizon": Color(0.84, 0.86, 0.84, 1),
+			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
+			"ambient_color": Color(0.82, 0.82, 0.80, 1), "ambient_energy": 0.90, "fog_color": Color(0.80, 0.82, 0.80, 1)},
 		"suppress_input": true,
 	},
 	"grandmother_kitchen_morning": {
@@ -1125,6 +1148,29 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(1.4, 1.55, -0.7),
 		"camera_rotation": Vector3(-0.05, deg_to_rad(46.3), 0.0),
 		"fov": 58.0,
+		# (pass 60) the room is authored at night but its ambient (0.7 on a lamp key) rendered
+		# it as bright as the day twin: a night env so the night is night.
+		"env": {"ambient_color": Color(0.46, 0.42, 0.56, 1), "ambient_energy": 0.42, "fog_color": Color(0.14, 0.12, 0.18, 1)},
+		"suppress_input": true,
+	},
+	"jesse_bedroom_day": {
+		"scene": "res://scenes/locales/jesse_bedroom.tscn",
+		"requires_glb": "res://assets/3d/locales/jesse_bedroom.glb",
+		# Kid's bedroom 4×4.5 (godot x∈[-2,2], z∈[0,-4.5], ceil 2.6). Bed
+		# along the W side (blender -1,2.25 → godot -1,-2.25), desk+lamp E
+		# (godot 1,-1.5), dresser E wall (godot 1.7,-3.2), posters W wall,
+		# N window. Camera in the SE corner just inside the door looking
+		# NW across to the bed: bed centre-back, window beyond, dresser at
+		# frame right. Tight FOV for the small room.
+		# (2026-10-11, pass 60) THE SAME ROOM at the other hour: ch6 Blowback (day_bright, "Jesse is on his bed") and ch20 Substation Nine
+		# (dusk — the daylight pair follows the mood to 0.35) on the night rig.
+		# The authored rig is suffixed to jesse_bedroom; this twin has its own lights and env.
+		"camera_origin": Vector3(1.4, 1.55, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(46.3), 0.0),
+		"fov": 58.0,
+		"env": {"sky_top": Color(0.40, 0.56, 0.80, 1), "sky_horizon": Color(0.84, 0.86, 0.84, 1),
+			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
+			"ambient_color": Color(0.82, 0.82, 0.80, 1), "ambient_energy": 0.90, "fog_color": Color(0.80, 0.82, 0.80, 1)},
 		"suppress_input": true,
 	},
 	"diego_bedroom": {
@@ -1138,6 +1184,26 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(1.20, 1.58, -0.70),
 		"camera_rotation": Vector3(-0.156, deg_to_rad(36.9), 0.0),
 		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"diego_bedroom_night": {
+		"scene": "res://scenes/locales/diego_bedroom.tscn",
+		"requires_glb": "res://assets/3d/locales/diego_bedroom.glb",
+		# DRAFT 5 (2026-10-09): Diego's room at his grandmother's, 4.4 x 4.8
+		# (godot x in [-2.2,2.2], z in [0,-4.8]) — plain, as the prose says:
+		# the twin bed W, the small desk E under the periodic table, the
+		# dresser + mirror (Sam's photo) by the door, the window's two
+		# curtains N, the fan. Camera inside the door looking NW at the bed.
+		# (2026-10-11, pass 60) THE SAME ROOM at the other hour: ch23 Sleep (ten PM at the desk), ch23 Sunday (mood:night, the blackout
+		# curtains), ch16 Dawn and ch22 Inventory (he sleeps the day behind the
+		# blackout curtains) on the day rig and its day sky.
+		# The authored rig is suffixed to diego_bedroom; this twin has its own lights and env.
+		"camera_origin": Vector3(1.20, 1.58, -0.70),
+		"camera_rotation": Vector3(-0.156, deg_to_rad(36.9), 0.0),
+		"fov": 60.0,
+		"env": {"sky_top": Color(0.05, 0.06, 0.13, 1), "sky_horizon": Color(0.16, 0.15, 0.21, 1),
+			"ground_horizon": Color(0.08, 0.08, 0.10, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.36, 0.36, 0.46, 1), "ambient_energy": 0.40, "fog_color": Color(0.12, 0.12, 0.16, 1)},
 		"suppress_input": true,
 	},
 	# ── VOL 6/7/8 — batch 2 additions ────────────────────
@@ -2221,6 +2287,45 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(3.60, 1.62, -2.00),
 		"camera_rotation": Vector3(-0.109, deg_to_rad(83.5), 0.0),
 		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"finn_apartment_night": {
+		"scene": "res://scenes/locales/finn_apartment.tscn",
+		"requires_glb": "res://assets/3d/locales/finn_apartment.glb",
+		# DRAFT 4 (2026-10-09): one-bedroom over the kayak shop, 8.4 x 7.6
+		# (godot x in [-4.2,4.2], z in [0,-7.6], ceil 2.7). Kitchen S: the run
+		# on the W wall under the alley window, the table with the charred
+		# wood (godot 0.3,-1.95), Finn's desk SW, the space heater + duffel
+		# E; bedroom N through the doorway (godot 1.6,-3.9). Camera inside
+		# the entry door (E wall) looking W across the kitchen.
+		# (2026-10-11, pass 60) THE SAME ROOM at the other hour: ch18 Aria (mood:night) and ch12 Morning's 4:42 on the dusk rig.
+		# The authored rig is suffixed to finn_apartment; this twin has its own lights and env.
+		"camera_origin": Vector3(3.60, 1.62, -2.00),
+		"camera_rotation": Vector3(-0.109, deg_to_rad(83.5), 0.0),
+		"fov": 62.0,
+		"env": {"sky_top": Color(0.05, 0.06, 0.13, 1), "sky_horizon": Color(0.16, 0.15, 0.21, 1),
+			"ground_horizon": Color(0.08, 0.08, 0.10, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.36, 0.36, 0.46, 1), "ambient_energy": 0.40, "fog_color": Color(0.12, 0.12, 0.16, 1)},
+		"suppress_input": true,
+	},
+	"finn_apartment_day": {
+		"scene": "res://scenes/locales/finn_apartment.tscn",
+		"requires_glb": "res://assets/3d/locales/finn_apartment.glb",
+		# DRAFT 4 (2026-10-09): one-bedroom over the kayak shop, 8.4 x 7.6
+		# (godot x in [-4.2,4.2], z in [0,-7.6], ceil 2.7). Kitchen S: the run
+		# on the W wall under the alley window, the table with the charred
+		# wood (godot 0.3,-1.95), Finn's desk SW, the space heater + duffel
+		# E; bedroom N through the doorway (godot 1.6,-3.9). Camera inside
+		# the entry door (E wall) looking W across the kitchen.
+		# (2026-10-11, pass 60) THE SAME ROOM at the other hour: ch12 Kai (11:15), ch12 Morning (after the bakery, morning), ch5 (morning_bright)
+		# on the dusk rig.
+		# The authored rig is suffixed to finn_apartment; this twin has its own lights and env.
+		"camera_origin": Vector3(3.60, 1.62, -2.00),
+		"camera_rotation": Vector3(-0.109, deg_to_rad(83.5), 0.0),
+		"fov": 62.0,
+		"env": {"sky_top": Color(0.40, 0.56, 0.80, 1), "sky_horizon": Color(0.84, 0.86, 0.84, 1),
+			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
+			"ambient_color": Color(0.82, 0.82, 0.80, 1), "ambient_energy": 0.90, "fog_color": Color(0.80, 0.82, 0.80, 1)},
 		"suppress_input": true,
 	},
 	"kai_apartment": {

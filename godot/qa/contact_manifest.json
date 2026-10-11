@@ -922,75 +922,6 @@
    "scene_missing": false
   },
   {
-   "id": "maya_bedroom",
-   "scene": "res://scenes/locales/maya_bedroom.tscn",
-   "vol": 6,
-   "uses": 10,
-   "moods": [
-    "day_bright",
-    "dream_blur"
-   ],
-   "markers": [
-    {
-     "name": "shot_establish_b",
-     "type": "establish"
-    },
-    {
-     "name": "shot_establish_c",
-     "type": "establish"
-    },
-    {
-     "name": "shot_closeup_grandmother",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_person",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_person_b",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_insert_board",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_envelope",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_floorboards",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_hands",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_laptop",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_notebook",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_photograph",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_radio",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_vanity",
-     "type": "insert"
-    }
-   ],
-   "scene_missing": false
-  },
-  {
    "id": "missing_link_interior",
    "scene": "res://scenes/locales/missing_link_interior.tscn",
    "vol": 1,
@@ -1224,63 +1155,6 @@
     },
     {
      "name": "shot_insert_thermometer",
-     "type": "insert"
-    }
-   ],
-   "scene_missing": false
-  },
-  {
-   "id": "diego_bedroom",
-   "scene": "res://scenes/locales/diego_bedroom.tscn",
-   "vol": 6,
-   "uses": 9,
-   "moods": [
-    "day_bright",
-    "dream_blur"
-   ],
-   "markers": [
-    {
-     "name": "shot_establish_b",
-     "type": "establish"
-    },
-    {
-     "name": "shot_closeup_person",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_person_b",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_insert_bed",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_duffel",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_envelope",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_glass",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_letter",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_phone",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_photo",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_window",
      "type": "insert"
     }
    ],
@@ -1932,13 +1806,13 @@
    "scene_missing": false
   },
   {
-   "id": "finn_apartment",
-   "scene": "res://scenes/locales/finn_apartment.tscn",
-   "vol": 7,
+   "id": "maya_bedroom",
+   "scene": "res://scenes/locales/maya_bedroom.tscn",
+   "vol": 6,
    "uses": 7,
    "moods": [
-    "tv_glow_blue",
-    "morning_bright"
+    "candlelight_low",
+    "night"
    ],
    "markers": [
     {
@@ -1950,6 +1824,10 @@
      "type": "establish"
     },
     {
+     "name": "shot_closeup_grandmother",
+     "type": "closeup"
+    },
+    {
      "name": "shot_closeup_person",
      "type": "closeup"
     },
@@ -1958,39 +1836,23 @@
      "type": "closeup"
     },
     {
-     "name": "shot_insert_bag",
+     "name": "shot_insert_board",
      "type": "insert"
     },
     {
-     "name": "shot_insert_cedar",
+     "name": "shot_insert_envelope",
      "type": "insert"
     },
     {
-     "name": "shot_insert_charred_wood",
+     "name": "shot_insert_floorboards",
      "type": "insert"
     },
     {
-     "name": "shot_insert_crow",
+     "name": "shot_insert_hands",
      "type": "insert"
     },
     {
-     "name": "shot_insert_door",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_duffel",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_food",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_hexagon",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_nightstand",
+     "name": "shot_insert_laptop",
      "type": "insert"
     },
     {
@@ -1998,19 +1860,15 @@
      "type": "insert"
     },
     {
-     "name": "shot_insert_patch",
+     "name": "shot_insert_photograph",
      "type": "insert"
     },
     {
-     "name": "shot_insert_phone",
+     "name": "shot_insert_radio",
      "type": "insert"
     },
     {
-     "name": "shot_insert_reader",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_stick",
+     "name": "shot_insert_vanity",
      "type": "insert"
     }
    ],
@@ -2149,59 +2007,6 @@
     },
     {
      "name": "shot_insert_truck",
-     "type": "insert"
-    }
-   ],
-   "scene_missing": false
-  },
-  {
-   "id": "jesse_bedroom",
-   "scene": "res://scenes/locales/jesse_bedroom.tscn",
-   "vol": 6,
-   "uses": 6,
-   "moods": [
-    "night",
-    "dusk"
-   ],
-   "markers": [
-    {
-     "name": "shot_closeup_person",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_person_b",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_insert_bed",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_desk",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_door",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_guitar",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_notebook",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_phone",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_telecaster",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_window",
      "type": "insert"
     }
    ],
@@ -2411,6 +2216,63 @@
     },
     {
      "name": "shot_insert_paperback",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
+   "id": "diego_bedroom_night",
+   "scene": "res://scenes/locales/diego_bedroom.tscn",
+   "vol": 6,
+   "uses": 5,
+   "moods": [
+    "night",
+    "day_bright"
+   ],
+   "markers": [
+    {
+     "name": "shot_establish_b",
+     "type": "establish"
+    },
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_bed",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_duffel",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_envelope",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_glass",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_letter",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_phone",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_photo",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_window",
      "type": "insert"
     }
    ],
@@ -2939,6 +2801,63 @@
    "scene_missing": false
   },
   {
+   "id": "diego_bedroom",
+   "scene": "res://scenes/locales/diego_bedroom.tscn",
+   "vol": 6,
+   "uses": 4,
+   "moods": [
+    "day_bright",
+    "dream_blur"
+   ],
+   "markers": [
+    {
+     "name": "shot_establish_b",
+     "type": "establish"
+    },
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_bed",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_duffel",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_envelope",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_glass",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_letter",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_phone",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_photo",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_window",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
    "id": "graustark_ruins",
    "scene": "res://scenes/locales/graustark.tscn",
    "vol": 5,
@@ -3051,6 +2970,59 @@
     {
      "name": "shot_wide_threshold",
      "type": "wide"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
+   "id": "jesse_bedroom",
+   "scene": "res://scenes/locales/jesse_bedroom.tscn",
+   "vol": 6,
+   "uses": 4,
+   "moods": [
+    "night",
+    "macro_haze"
+   ],
+   "markers": [
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_bed",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_desk",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_door",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_guitar",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_notebook",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_phone",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_telecaster",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_window",
+     "type": "insert"
     }
    ],
    "scene_missing": false
@@ -3563,6 +3535,90 @@
    "scene_missing": false
   },
   {
+   "id": "finn_apartment_day",
+   "scene": "res://scenes/locales/finn_apartment.tscn",
+   "vol": 7,
+   "uses": 3,
+   "moods": [
+    "morning_bright"
+   ],
+   "markers": [
+    {
+     "name": "shot_establish_b",
+     "type": "establish"
+    },
+    {
+     "name": "shot_establish_c",
+     "type": "establish"
+    },
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_bag",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cedar",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_charred_wood",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_crow",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_door",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_duffel",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_food",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_hexagon",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_nightstand",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_notebook",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_patch",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_phone",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_reader",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_stick",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
    "id": "foxhole_bar",
    "scene": "res://scenes/locales/foxhole_bar.tscn",
    "vol": 6,
@@ -3662,6 +3718,75 @@
     },
     {
      "name": "shot_insert_photograph",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
+   "id": "maya_bedroom_day",
+   "scene": "res://scenes/locales/maya_bedroom.tscn",
+   "vol": 6,
+   "uses": 3,
+   "moods": [
+    "day_bright",
+    "dawn_warm"
+   ],
+   "markers": [
+    {
+     "name": "shot_establish_b",
+     "type": "establish"
+    },
+    {
+     "name": "shot_establish_c",
+     "type": "establish"
+    },
+    {
+     "name": "shot_closeup_grandmother",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_board",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_envelope",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_floorboards",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_hands",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_laptop",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_notebook",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_photograph",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_radio",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_vanity",
      "type": "insert"
     }
    ],
@@ -4775,6 +4900,176 @@
    "scene_missing": false
   },
   {
+   "id": "finn_apartment",
+   "scene": "res://scenes/locales/finn_apartment.tscn",
+   "vol": 7,
+   "uses": 2,
+   "moods": [
+    "tv_glow_blue",
+    "dusk"
+   ],
+   "markers": [
+    {
+     "name": "shot_establish_b",
+     "type": "establish"
+    },
+    {
+     "name": "shot_establish_c",
+     "type": "establish"
+    },
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_bag",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cedar",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_charred_wood",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_crow",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_door",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_duffel",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_food",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_hexagon",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_nightstand",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_notebook",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_patch",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_phone",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_reader",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_stick",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
+   "id": "finn_apartment_night",
+   "scene": "res://scenes/locales/finn_apartment.tscn",
+   "vol": 7,
+   "uses": 2,
+   "moods": [
+    "dawn_warm",
+    "night"
+   ],
+   "markers": [
+    {
+     "name": "shot_establish_b",
+     "type": "establish"
+    },
+    {
+     "name": "shot_establish_c",
+     "type": "establish"
+    },
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_bag",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cedar",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_charred_wood",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_crow",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_door",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_duffel",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_food",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_hexagon",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_nightstand",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_notebook",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_patch",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_phone",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_reader",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_stick",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
    "id": "foxhole_dressing_room",
    "scene": "res://scenes/locales/foxhole_dressing_room.tscn",
    "vol": 6,
@@ -5028,6 +5323,59 @@
     },
     {
      "name": "shot_insert_phone",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
+   "id": "jesse_bedroom_day",
+   "scene": "res://scenes/locales/jesse_bedroom.tscn",
+   "vol": 6,
+   "uses": 2,
+   "moods": [
+    "dusk",
+    "day_bright"
+   ],
+   "markers": [
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_bed",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_desk",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_door",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_guitar",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_notebook",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_phone",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_telecaster",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_window",
      "type": "insert"
     }
    ],
@@ -8901,5 +9249,5 @@
   "tired",
   "nervous"
  ],
- "frames": 1998
+ "frames": 2078
 }

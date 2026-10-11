@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "3d:maya_bedroom"
+      "src": "3d:maya_bedroom_day"
     },
     {
       "t": "hide",

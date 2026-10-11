@@ -169,19 +169,20 @@ glow_hdr_scale = 2.4
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_Locale")
 
-[node name="Key_DeskLamp" type="DirectionalLight3D" parent="."]
+; (pass 60, 2026-10-11) the authored rig is suffixed to maya_bedroom: its time-of-day twin below brings its own
+[node name="Key_DeskLamp__maya_bedroom" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 3, 3, 1)
 light_color = Color(0.96, 0.78, 0.46, 1)
 light_energy = 1.0
 shadow_enabled = false
 
-[node name="Fill_Window" type="DirectionalLight3D" parent="."]
+[node name="Fill_Window__maya_bedroom" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 4, -6)
 light_color = Color(0.86, 0.92, 0.98, 1)
 light_energy = 0.45
 shadow_enabled = false
 
-[node name="Back_Mood" type="DirectionalLight3D" parent="."]
+[node name="Back_Mood__maya_bedroom" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866, 0.354, -0.354, 0, 0.707, 0.707, 0.5, 0.612, -0.612, -3, 4, 2)
 light_color = Color(0.86, 0.62, 0.96, 1)
 light_energy = 0.28
@@ -204,6 +205,22 @@ rotation = Vector3(-0.4687, -0.6234, 0.0)
 [node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.390, 1.024, -0.687)
 rotation = Vector3(-0.1992, -1.0525, 0.0)
+
+; ── THE DAY (pass 60): maya_bedroom_day — the sun past the N window (no direct sun through
+; a north window: a high cool sky through it, a warm sun from the NE skimming the sill)
+[node name="Day_Sun__maya_bedroom_day" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.7071, -0.5417, 0.4545, 0.0000, 0.6428, 0.7660, -0.7071, 0.5417, -0.4545, 0, 5, -6)
+light_color = Color(1.00, 0.94, 0.84, 1)
+light_energy = 0.9
+shadow_enabled = true
+metadata/daylight = true
+
+[node name="Day_SkyFill__maya_bedroom_day" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-1.0000, -0.0000, 0.0000, 0.0000, 0.2588, 0.9659, -0.0000, 0.9659, -0.2588, 0, 5, 0)
+light_color = Color(0.72, 0.80, 0.92, 1)
+light_energy = 0.55
+shadow_enabled = false
+metadata/daylight = true
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -414,7 +431,7 @@ light_energy = 0.5
 shadow_enabled = false
 omni_range = 2.4
 
-[node name="Moon_Linda_Window" type="OmniLight3D" parent="."]
+[node name="Moon_Linda_Window__maya_bedroom" type="OmniLight3D" parent="."]
 position = Vector3(-3.6, 1.8, 3.4)
 light_color = Color(0.62, 0.7, 0.92, 1)
 light_energy = 0.6

@@ -3834,6 +3834,35 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-11 · pass 60: THE BEDROOMS AT THE OTHER HOUR.** The mood-tag
+scan (every 3D cut's `[mood:]` against its scene's authored env) found four
+one-preset rooms played at both ends of the day on one rig: Maya's and
+Jesse's rooms are authored at night (night sky, desk-lamp key, Maya's moon
+through Linda's window) but ch1 (15:22), ch6 A Daigle (9:47), the prelude
+(6:16) / ch6 Blowback and ch20 Substation Nine (dusk) are day; Diego's is
+authored by day but ch23 Sleep / Sunday, ch16 Dawn and ch22 Inventory are
+night or behind the blackout curtains; Finn's is authored at dusk but ch12
+Kai (11:15), ch12 Morning, ch5 are day and ch18 Aria / the 4:42 are night.
+New `maya_bedroom_day`, `jesse_bedroom_day`, `diego_bedroom_night`,
+`finn_apartment_day`, `finn_apartment_night`: the template rig
+(Key/Fill/Back, + Maya's moon) suffixed to the base preset; a day twin
+brings a sun + sky fill (daylight-tagged, so a dusk cut's mood dims them)
+and a day env; a night twin a moon through the window (+ Diego's street
+glow) and a night env. Fifteen cuts routed. Maya's and Jesse's BASE presets
+(authored at night, but ambient 0.7 on a lamp key rendered them as bright as
+the day) get a night env of their own. No Deck rebuild. **Draft N+1:**
+Finn's three twins render nearly alike — the ceiling practicals (1.0–1.6)
+carry the room and the N window's pane reads navy by day (make_window's
+warm pane behind the glass): suffix the overheads to the dusk/night
+presets or dim them for the day, and cut the warm pane; then
+the remaining mixed rooms from the scan — school_field_evening (dawn
+two-a-days / 6 PM walk-through / Vinton under lights), miller_kitchen
+(ten cuts from 6:24 AM to 7:52 PM on one rig), bianca_kitchen_morning
+(the 4:30 AM cuts are "morning" by name but dark), safehouse_bedroom,
+new_orleans_room, hans_bakery_back_kitchen, salty_tome_alley; the
+blackout-curtain cuts want the curtains drawn (a prop state), not just
+the night env.
+
 **2026-10-11 · pass 59: THE CABIN, interior draft 12.** The loft's own
 window in the north wall over the kitchen window (the kitchen window's
 head cut again: from Eddvard's mattress, the lean-to and the creek); the

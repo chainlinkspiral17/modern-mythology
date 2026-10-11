@@ -169,22 +169,47 @@ glow_hdr_scale = 2.4
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_Locale")
 
-[node name="Key" type="DirectionalLight3D" parent="."]
+; (pass 60, 2026-10-11) the authored rig is suffixed to finn_apartment: its time-of-day twin below brings its own
+[node name="Key__finn_apartment" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 3, 3, 1)
 light_color = Color(0.98, 0.82, 0.52, 1)
 light_energy = 1.0
 shadow_enabled = false
 
-[node name="Fill" type="DirectionalLight3D" parent="."]
+[node name="Fill__finn_apartment" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 4, -6)
 light_color = Color(0.86, 0.92, 0.98, 1)
 light_energy = 0.4
 shadow_enabled = false
 
-[node name="Back" type="DirectionalLight3D" parent="."]
+[node name="Back__finn_apartment" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866, 0.354, -0.354, 0, 0.707, 0.707, 0.5, 0.612, -0.612, -3, 4, 2)
 light_color = Color(0.86, 0.62, 0.96, 1)
 light_energy = 0.2
+shadow_enabled = false
+
+; ── THE DAY (pass 60): finn_apartment_day — the sun through the S window (the street, the sea),
+; the sky through the N and the alley
+[node name="Day_Sun__finn_apartment_day" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.7071, 0.5417, -0.4545, 0.0000, 0.6428, 0.7660, 0.7071, -0.5417, 0.4545, 0, 5, 2)
+light_color = Color(1.00, 0.94, 0.84, 1)
+light_energy = 1.0
+shadow_enabled = true
+metadata/daylight = true
+
+[node name="Day_SkyFill__finn_apartment_day" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-1.0000, -0.0000, 0.0000, 0.0000, 0.2588, 0.9659, -0.0000, 0.9659, -0.2588, 0, 5, -3)
+light_color = Color(0.72, 0.80, 0.92, 1)
+light_energy = 0.5
+shadow_enabled = false
+metadata/daylight = true
+
+; ── THE NIGHT (pass 60): finn_apartment_night — the moon through the N window; the alley's
+; bakery bulb and the lamps (unsuffixed) are the light
+[node name="Moon_Window__finn_apartment_night" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.7071, -0.4545, 0.5417, 0.0000, 0.7660, 0.6428, -0.7071, 0.4545, -0.5417, 0, 5, -7)
+light_color = Color(0.60, 0.68, 0.90, 1)
+light_energy = 0.3
 shadow_enabled = false
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
