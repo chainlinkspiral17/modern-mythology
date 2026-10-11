@@ -59,11 +59,20 @@ suite('daw rec · count-in, punch, loop takes, latency', async t => {
     t.ok(/REC ⚙ 23 ms/.test(r2.btn), 'REC button: ' + r2.btn);
     t.ok(/FM-1 RETURN \+ [\d.]+ ms master look-ahead/.test(r2.now), 'panel says which number applies: ' + r2.now);
     const other = await o.ctx.newPage();                    // CHECK-OUT re-measures in another tab
-    await other.goto('file://' + require('path').join(require('./harness').TOOLS, 'index.html'));
-    await other.evaluate(() => localStorage.setItem('mm_fm1_latency_ms', '27.5'));
-    await p.waitForTimeout(300);
-    t.eq(await p.evaluate(() => E.lat.fm1), { ms: 27.5, src: 'checkout' }, 'storage event');
-    await other.evaluate(() => localStorage.setItem('mm_fm1_latency_ms', '23')); await other.close(); await p.waitForTimeout(200);
+    const fm1 = () => p.evaluate(() => E.lat.fm1);
+    let seen, via = 'storage event';
+    try {
+      await other.goto('file://' + require('path').join(require('./harness').TOOLS, 'index.html'));
+      await other.evaluate(() => localStorage.setItem('mm_fm1_latency_ms', '27.5'));
+      for (let i = 0; i < 30 && (seen = await fm1()).ms !== 27.5; i++) await p.waitForTimeout(100);
+      // Chromium sometimes drops the storage event: coming back to the DAW tab (focus) must pick the value up then
+      if (seen.ms !== 27.5) { via = 'focus'; await p.evaluate(() => window.dispatchEvent(new Event('focus'))); seen = await fm1(); }
+      await other.evaluate(() => localStorage.setItem('mm_fm1_latency_ms', '23'));
+    } finally { await other.close(); await p.bringToFront(); }   // never leave the DAW behind another tab: no frames → touch fails later
+    t.eq(seen, { ms: 27.5, src: 'checkout' }, 'CHECK-OUT value picked up live (' + via + ')');
+    for (let i = 0; i < 30 && (await fm1()).ms !== 23; i++) await p.waitForTimeout(100);
+    if ((await fm1()).ms !== 23) await p.evaluate(() => window.dispatchEvent(new Event('focus')));
+    t.eq((await fm1()).ms, 23, 'back to 23');
     const r3 = await p.evaluate(() => { E.setLatency('fm1', 40); const m = E.lat.fm1; E.checkoutLatency(); const kept = E.lat.fm1.ms; E.checkoutLatency(true); return { m, kept, back: E.lat.fm1 }; });
     t.eq([r3.m.src, r3.kept, r3.back.ms, r3.back.src], ['manual', 40, 23, 'checkout'], 'manual wins until CHECK-OUT is asked for');
   });

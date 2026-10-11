@@ -423,6 +423,60 @@ registerProcessor('mm-daw-rec', MMDawRec);
     }
     emit(ev, d) { (this.listeners[ev] || []).forEach(f => { try { f(d); } catch (e) { console.error(e); } }); }
 
+    // master limiter + reverb / delay send buses. Rebuilt from scratch when the output goes NaN: a NaN that reaches a
+    // compressor, a convolver or the delay's feedback loop stays there for good — everything after it falls silent.
+    _buildBuses() {
+      const c = this.ctx, old = this._bus;
+      if (old) { for (const n of old) { try { n.disconnect(); } catch (e) {} } try { this.master.disconnect(); } catch (e) {} }
+      this.limiter = c.createDynamicsCompressor(); this.limiter.threshold.value = -2; this.limiter.knee.value = 0; this.limiter.ratio.value = 20; this.limiter.attack.value = 0.002; this.limiter.release.value = 0.1;
+      this.master.connect(this.limiter); this.limiter.connect(this.out);
+      this.verbIn = c.createGain(); this.verb = c.createConvolver(); this.verbOut = c.createGain();
+      this.verbIn.connect(this.verb); this.verb.connect(this.verbOut); this.verbOut.connect(this.master);
+      this.delayIn = c.createGain(); this.delay = c.createDelay(4); this.delayFb = c.createGain(); this.delayTone = c.createBiquadFilter(); this.delayOut = c.createGain();
+      this.delayTone.type = 'lowpass'; this.delayTone.frequency.value = 4200;
+      this.delayIn.connect(this.delay); this.delay.connect(this.delayTone); this.delayTone.connect(this.delayFb); this.delayFb.connect(this.delay);
+      this.delayTone.connect(this.delayOut); this.delayOut.connect(this.master);
+      this._bus = [this.limiter, this.verbIn, this.verb, this.verbOut, this.delayIn, this.delay, this.delayFb, this.delayTone, this.delayOut];
+      if (old) {
+        for (const st of this.strips.values()) { try { st.sendA.disconnect(); st.sendB.disconnect(); } catch (e) {} st.sendA.connect(this.verbIn); st.sendB.connect(this.delayIn); }
+        this._verbSize = null; if (this.project) this.applyMaster();
+        if (this._taps) { this._taps.delete('master'); this._taps.delete('limiter'); }
+      }
+    }
+    // ── output watch (while playing, 4× a second): NaN anywhere in the mix, or silence while voices sound ──
+    _tap(key, node) {
+      const T = this._taps || (this._taps = new Map());
+      let t = T.get(key);
+      if (!t || t.node !== node) { const a = this.ctx.createAnalyser(); a.fftSize = 1024; node.connect(a); t = { node, a, buf: new Float32Array(1024) }; T.set(key, t); }
+      return t;
+    }
+    _level(t) { t.a.getFloatTimeDomainData(t.buf); let s = 0; for (const v of t.buf) { if (!Number.isFinite(v)) return NaN; s += v * v; } return Math.sqrt(s / t.buf.length); }
+    _watchOut() {
+      if (!this.playing || !this.ctx) return;
+      const name = id => { const d = this.dev(id) || this.track(id); return d ? d.name : id; };
+      for (const [id, st] of this.strips) { this._tap('in:' + id, st.in); this._tap('on:' + id, st.on); }   // in place before a fault: a fresh tap reads empty
+      const lv = { out: this._level(this._tap('out', this.out)), master: this._level(this._tap('master', this.master)), limiter: this._level(this._tap('limiter', this.limiter)) };
+      const W = this._watch || (this._watch = { hist: [], silent: 0, t: 0 });
+      W.t++;
+      if (W.t % 4 === 0) { W.hist.push(Number.isNaN(lv.out) ? 'NaN' : lv.out.toFixed(3)); if (W.hist.length > 20) W.hist.shift(); }
+      if (Number.isNaN(lv.out) || Number.isNaN(lv.master) || Number.isNaN(lv.limiter)) {
+        const bad = [];
+        for (const [id, st] of this.strips) {
+          if (Number.isNaN(this._level(this._tap('in:' + id, st.in)))) bad.push(name(id) + ' (the instrument itself)');
+          else if (Number.isNaN(this._level(this._tap('on:' + id, st.on)))) bad.push(name(id) + ' (its inserts / strip)');
+        }
+        this.note('error', 'output went NaN (invalid samples) — the mix falls silent. First seen in: ' + (bad.join(', ') || 'the master / send buses only') + '. Muting those strips and rebuilding the master + sends.');
+        for (const [id, st] of this.strips) if (bad.some(b => b.startsWith(name(id) + ' '))) { try { st.on.disconnect(); } catch (e) {} }
+        this._buildBuses();
+        return;
+      }
+      let voices = 0;
+      for (const inst of this.devices.values()) { const v = inst && inst.voices; voices += v ? (Array.isArray(v) ? v.length : Object.values(v).reduce((n, s) => n + (s && s.voices ? s.voices.length : 0), 0)) : 0; }
+      if (voices > 0 && lv.out < 1e-5) {
+        if (++W.silent === 8) this.note('silent', 'output silent for 2 s while ' + voices + ' voices play (master ' + lv.master.toExponential(1) + ', limiter ' + lv.limiter.toExponential(1) + ')');
+      } else W.silent = 0;
+    }
+    outputHistory() { return this._watch ? this._watch.hist.slice() : []; }
     // ── diagnostics: what went wrong on THIS machine (DAW → DIAG copies it as text) ──
     note(kind, msg) {
       const D = this.diag || (this.diag = []);
@@ -447,19 +501,12 @@ registerProcessor('mm-daw-rec', MMDawRec);
       if ('onsinkchange' in c) c.onsinkchange = () => this.note('audio', 'output device changed → ' + (c.sinkId || 'system default'));
       this.note('audio', 'context ' + c.state + ' · ' + c.sampleRate + ' Hz · buffer ' + this.buffer);
       this.master = c.createGain();
-      this.limiter = c.createDynamicsCompressor(); this.limiter.threshold.value = -2; this.limiter.knee.value = 0; this.limiter.ratio.value = 20; this.limiter.attack.value = 0.002; this.limiter.release.value = 0.1;
       this.out = c.createGain();
-      this.master.connect(this.limiter); this.limiter.connect(this.out); this.out.connect(c.destination);
+      this.out.connect(c.destination);
+      this._buildBuses();
       this.split = c.createChannelSplitter(2); this.out.connect(this.split);
       this.anL = c.createAnalyser(); this.anR = c.createAnalyser(); this.anL.fftSize = this.anR.fftSize = 1024;
       this.split.connect(this.anL, 0); this.split.connect(this.anR, 1);
-      // send buses
-      this.verbIn = c.createGain(); this.verb = c.createConvolver(); this.verbOut = c.createGain();
-      this.verbIn.connect(this.verb); this.verb.connect(this.verbOut); this.verbOut.connect(this.master);
-      this.delayIn = c.createGain(); this.delay = c.createDelay(4); this.delayFb = c.createGain(); this.delayTone = c.createBiquadFilter(); this.delayOut = c.createGain();
-      this.delayTone.type = 'lowpass'; this.delayTone.frequency.value = 4200;
-      this.delayIn.connect(this.delay); this.delay.connect(this.delayTone); this.delayTone.connect(this.delayFb); this.delayFb.connect(this.delay);
-      this.delayTone.connect(this.delayOut); this.delayOut.connect(this.master);
       // the master limiter looks ahead: everything on the master is heard outDelay (~6 ms) after it is scheduled.
       // The click (never in a bounce) and hardware MIDI are delayed to match, so all of it lands together.
       this.outDelay = await this._measureOutDelay();
@@ -775,6 +822,7 @@ registerProcessor('mm-daw-rec', MMDawRec);
       this.syncDevices(this.anchor.ctx);
       this.startCovering(startTick, this.anchor.ctx);
       this.timer = setInterval(() => this.schedule(), TICK_MS);
+      this._lastSched = 0; clearInterval(this._watchT); this._watchT = setInterval(() => { try { this._watchOut(); } catch (e) { this.fault('output watch', e); } }, 250);
       this.schedule();
       this.emit('transport', { playing: true });
     }
@@ -790,6 +838,7 @@ registerProcessor('mm-daw-rec', MMDawRec);
       if (!this.ctx) return;
       if (this.recording) this.stopRecord();
       if (this.timer) { clearInterval(this.timer); this.timer = null; }
+      clearInterval(this._watchT); this._watchT = null;
       const now = this.ctx.currentTime, wasPlaying = this.playing;
       if (this.playing) { this._stopTick = this.tickNow(); this.sendClock('stop', now); }
       this.playing = false;

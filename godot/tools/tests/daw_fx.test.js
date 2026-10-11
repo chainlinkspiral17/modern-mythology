@@ -127,4 +127,20 @@ suite('daw fx · inserts, ducking, automation', async t => {
     t.ok(/MM DAW diagnostics/.test(r.report) && /device KIT/.test(r.report) && /test boom/.test(r.report), 'DIAG report text');
     t.noErrors(errors);
   });
+  await t.test('NaN from one instrument: detected, that strip muted, master + sends rebuilt, the rest keeps sounding', async () => {
+    const r = await p.evaluate(async () => {
+      const { reset } = FXT; reset(); E.diag = [];
+      const t = P.tracks.find(x => x.role === 'chords'), st = E.strips.get(E.stripOf(t));
+      P.loop = { on: true, a: 0, b: 8 }; await E.play(0); await new Promise(res => setTimeout(res, 1200));
+      const bf = E.ctx.createBuffer(1, 512, 44100); bf.getChannelData(0).fill(NaN);
+      const src = E.ctx.createBufferSource(); src.buffer = bf; src.loop = true; src.connect(st.in); src.start();
+      await new Promise(res => setTimeout(res, 2500));
+      const out = E._level(E._tap('out', E.out)); E.stop(); src.stop(); src.disconnect();
+      st.on.connect(E.master); st.on.connect(st.sendA); st.on.connect(st.sendB);      // undo the mute for the next tests
+      return { out, errors: E.diag.filter(x => x.kind === 'error').map(x => x.msg), name: E.dev(t.deviceId).name };
+    });
+    t.ok(r.errors.some(m => m.includes('output went NaN') && m.includes(r.name)), 'NaN traced to ' + r.name + ': ' + JSON.stringify(r.errors.slice(0, 1)));
+    t.ok(Number.isFinite(r.out) && r.out > 0.01, 'output recovered: ' + r.out);
+    t.noErrors(errors);
+  });
 });

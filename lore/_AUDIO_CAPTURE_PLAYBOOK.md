@@ -499,6 +499,43 @@ look-ahead loop. The audio→performance clock mapping comes from
 - Rule: never swallow an exception in an audio path. Log it where the
   user can copy it.
 
+### 2026-10-11 — first DIAG from the Deck: everything "fine", output silent
+
+- The user's report showed:
+  - transport playing at 64 s, context running, no errors, no
+    stalls;
+  - every synth with voices;
+  - yet they heard less than a second of sound.
+
+  So the scheduler, the context and the devices are fine and the
+  OUTPUT is silent. That is the signature of NaN poisoning (a NaN
+  reaching the limiter, a convolver or a feedback delay silences
+  everything after it for good) or of audio leaving Chrome to the
+  wrong place. Headless Chrome 141 plays the same presets cleanly,
+  offline and live; the user runs Chrome 154.
+- Counting `noteOn` calls is not checking audio. Tests and DIAG now
+  read the actual output.
+- Output watch (4× a second while playing):
+  - It reads analysers on the master, the limiter, the output and
+    every strip (`in` = the instrument, `on` = after its inserts).
+    The strip taps exist before a fault, because a fresh analyser
+    reads zeros.
+  - On NaN it logs the first strip showing it, mutes that strip, and
+    rebuilds the limiter and send buses (`_buildBuses`), so the rest
+    plays on.
+  - It logs "silent while voices play".
+  - DIAG adds the output level history (rms per second).
+- Test flake root causes (all predated these changes):
+  - `daw_rec`: a fixed 300 ms wait for a cross-tab storage event on a
+    cold browser. The failing assertion then skipped
+    `other.close()`, which left the DAW behind another tab with no
+    frames, so a later touch test failed too. Fix: wait for the
+    condition, close in `finally`, `bringToFront`. The DAW also
+    re-reads the CHECK-OUT value on focus / visibility, because
+    Chromium can drop the storage event.
+  - `library`: unseeded noise flipped thresholds. Renders are now
+    seeded per preset.
+
 ## TEMPLATE
 
 ```

@@ -21,6 +21,13 @@ const RENDER = `(async function () {
     for (let len = 2; len <= n; len <<= 1) { const a = -2 * Math.PI / len, wr = Math.cos(a), wi = Math.sin(a); for (let i = 0; i < n; i += len) { let cr = 1, ci = 0; for (let k = 0; k < len / 2; k++) { const h = len / 2, ur = re[i + k], ui = im[i + k], vr = re[i + k + h] * cr - im[i + k + h] * ci, vi = re[i + k + h] * ci + im[i + k + h] * cr; re[i + k] = ur + vr; im[i + k] = ui + vi; re[i + k + h] = ur - vr; im[i + k + h] = ui - vi; const t = cr * wr - ci * wi; ci = cr * wi + ci * wr; cr = t; } } } }
   const edges = Array.from({ length: 25 }, (_, i) => 40 * Math.pow((SR / 2) / 40, i / 24));
   async function render(id, macros) {
+    // seeded per preset: noise / random sources made the thresholds below flip between runs (choir_vox peak 0.990,
+    // perc_shaker 0.0008 once) — the same preset must give the same verdict every time
+    const real = Math.random; let a = 0; for (const ch of id + (macros ? '+m' : '')) a = (a * 31 + ch.charCodeAt(0)) | 0;
+    Math.random = () => { a = (a + 0x6D2B79F5) | 0; let x = Math.imul(a ^ (a >>> 15), 1 | a); x = (x + Math.imul(x ^ (x >>> 7), 61 | x)) ^ x; return ((x ^ (x >>> 14)) >>> 0) / 4294967296; };
+    try { return await render1(id, macros); } finally { Math.random = real; }
+  }
+  async function render1(id, macros) {
     const P = FORGE_PRESETS.find(x => x.id === id), [notes, len] = PAT[P.category] || [[[60, 0, 1.4]], 2.6];
     const off = new OfflineAudioContext(2, Math.round(SR * len), SR);
     const s = new ForgeSynth(off, { output: off.destination, maxVoices: 12, bpm: 100 });

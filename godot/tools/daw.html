@@ -431,6 +431,8 @@ async function diagReport() {
     const users = P.tracks.filter(t => t.deviceId === d.id).map(t => t.name + (t.mute ? '(muted)' : ''));
     L.push('device ' + d.name + ' · ' + d.type + (d.preset ? ' ' + d.preset : '') + (d.patch ? ' ' + d.patch : '') + (inst ? '' : ' · NOT LOADED') + (inst && inst.error ? ' · error: ' + inst.error : '') + (v !== '' ? ' · voices ' + v : '') + ' · plays ' + (users.join(', ') || '—'));
   }
+  const hist = E.outputHistory ? E.outputHistory() : [];
+  if (hist.length) L.push('output level, last ' + hist.length + ' s (rms, oldest first): ' + hist.join(' '));
   L.push('— log (' + (E.diag || []).length + ') —');
   const t0 = (E.diag && E.diag[0] && E.diag[0].at) || 0;
   for (const x of E.diag || []) L.push('+' + ((x.at - t0) / 1000).toFixed(2) + 's ' + x.kind + (x.n > 1 ? ' ×' + x.n : '') + ' [' + x.ctx + '] ' + x.msg);
@@ -576,6 +578,9 @@ $('lat-cal').addEventListener('click', async () => {
 });
 // CHECK-OUT measured in another tab: pick it up live
 window.addEventListener('storage', e => { if (e.key === 'mm_fm1_latency_ms' && E.checkoutLatency() != null) { E.saveLatency(); latUI(); } });
+// a storage event can be missed (seen in Chromium): coming back to this tab — e.g. from FM-1 CHECK-OUT — re-reads it
+const relatency = () => { if (document.visibilityState !== 'visible' || !E.lat) return; const was = JSON.stringify(E.lat.fm1); if (E.checkoutLatency() != null && JSON.stringify(E.lat.fm1) !== was) { E.saveLatency(); latUI(); } };
+window.addEventListener('focus', relatency); document.addEventListener('visibilitychange', relatency);
 latUI();
 // every MIDI / key event's own time stamp reaches the engine before its note does (recording places notes by it)
 window.addEventListener('midiinput-message', e => E.stampInput(e.detail && e.detail.ts));
