@@ -53,7 +53,8 @@ itself through `_doc` strings. Its sections:
    before the director existed.
 
 A rule only counts if `AudioMgr.can_play(src)` is true. That means
-the src file, its `.wav` sibling or its `.stems.json` exists. The
+the src file, its `.wav` sibling, its `.temp.ogg` temp or its
+`.stems.json` exists. The
 music binaries live in Google Drive (see the audio playbook), so on a
 fresh checkout most tracks are missing. **A missing track must never
 silence a scene that already had music.** It falls through to the
@@ -196,8 +197,8 @@ APPROVE puts one where AudioMgr looks.
 | Where | What |
 |---|---|
 | `assets/audio/review/<track id>/<take id>/` | Staging: `mix.wav`, `stems/<role>.wav`, `stems.json`, `credits.txt` (only for non-free instruments) and `meta.json`. It is ignored by version control, excluded from `music_drive.sh`, and `review/.gdignore` stops Godot importing or exporting it. |
-| `<src base>.wav` · `<src base>.stems/<role>.wav` · `<src base>.stems.json` · `<src base>.wav.credits.txt` | What APPROVE writes: exactly what `AudioMgr._load_audio` / `_load_stems` read. Verified headless: an approved take plays as `AudioStreamSynchronized`, and intensity drops its layers. |
-| `resources/music/temp_approvals.json` | Committed, and written only by the AUDIO DIRECTOR. Per track: `approved` (take, seed, mood, the request, instruments, date, `by`, notes, loudness, files), `rejected` [{take, seed, …}] and `history`. |
+| `<src base>.temp.ogg` · `<src base>.stems/<role>.ogg` · `<src base>.stems.json` (`temp: true`, loop) · `<src base>.temp.ogg.credits.txt` | What APPROVE writes, encoded to Ogg Vorbis (`AK.game.writeMusic`, see the audio playbook): exactly what `AudioMgr._load_audio` / `_load_stems` read. About a tenth of the WAV size. Verified headless: Ogg stems play as `AudioStreamSynchronized`, every stem loops when the manifest says so, and intensity drops layers. |
+| `resources/music/temp_approvals.json` | Committed, and written only by the AUDIO DIRECTOR. Per track: `approved` (take, seed, mood, the request, instruments, date, `by`, notes, loudness, files, `format`, `bytes`, `quality`), `rejected` [{take, seed, …}] and `history` (approve / replace / reject / revoke / shrink). |
 
 - **Take id** = `YYYYMMDD-HHMMSS-s<seed>`. `meta.json` holds:
   - `mood` `{style, form, mode, key, bpm, density, seed}` and `why`;
@@ -224,8 +225,9 @@ APPROVE puts one where AudioMgr looks.
   - `length` is `{bars}` or `{sec}`. Seconds nudge the tempo so that
     whole bars land on the length exactly. An asked-for length renders
     folded (the tail wraps onto the head), so it is exact and seamless.
-  - `loop: true` also writes WAV loop points. Godot then loops the file
-    forever, so use it only for beds.
+  - `loop: true` also writes WAV loop points in staging; APPROVE turns
+    them into the manifest's `loop` / `loop_offset`. Godot then loops
+    the file forever, so use it only for beds.
   - `roles` chooses which of drums / bass / chords / lead / pad play.
   - `extraPads`: pad2 is the pad an octave up, pad3 its root an octave
     down. Each gets its own stem on layer 0.
@@ -234,15 +236,19 @@ APPROVE puts one where AudioMgr looks.
 - **Status per track:**
   - REAL AUDIO: a real `.ogg` / `.mp3`, or a `.wav` without the temp
     marker (a FIELD RECORDER take).
-  - APPROVED TEMP: a `.wav` titled "(temp)" or carrying `mmjs.temp`.
+  - APPROVED TEMP: a `<base>.temp.ogg`, or an older `.wav` titled
+    "(temp)" or carrying `mmjs.temp` (⇣ SHRINK re-encodes those to Ogg).
   - CANDIDATES (n).
   - MISSING.
 - **Safety:**
   - APPROVE refuses real audio.
   - Replacing an approved temp, REJECT and REVOKE each need a second tap
     within 4 s.
-  - REVOKE deletes only the temp `.wav` plus its stems, manifest and
-    credits.
+  - REVOKE deletes only the temp (`.temp.ogg`, or an older temp `.wav`)
+    plus its credits, and the manifest + stems only when the manifest is
+    a temp's (`AK.game.removeTemp`).
+  - SHRINK re-checks each `.wav` is a temp right before it re-encodes
+    it; real audio is never read.
 - **Preview = the game.**
   - The player layers the stems with AudioMgr's rule
     (`level + 0.0001 >= layer`) and linear `1 / fade` per second fades.
@@ -262,8 +268,9 @@ APPROVE puts one where AudioMgr looks.
      **and** as a localStorage `mm_director_event` write (a `storage`
      event). Both reach other file:// pages in Chrome; the director
      de-duplicates by `uid`.
-- The DAW's "straight into game (skip review)" box keeps the old direct
-  write, for when you don't want a review step. It is off by default.
+- The DAW's "straight into game (skip review)" box writes the same Ogg
+  files directly, for when you don't want a review step. It is off by
+  default.
 
 ## Anti-patterns
 
@@ -365,6 +372,22 @@ APPROVE puts one where AudioMgr looks.
 - `SeqGen.song` rolls the key only when none is given. Sending the
   recorded key to "regenerate identically" changed every note. So a
   regenerate request leaves `key` out unless the original asked for one.
+
+### 2026-10-11 — approved temps are Ogg Vorbis now
+
+- The user asked for small game audio, so APPROVE no longer copies the
+  staged WAVs: it encodes them to `<src base>.temp.ogg` +
+  `.stems/*.ogg` + a `temp: true` manifest (about a tenth of the size;
+  details in the audio playbook's "Temp music goes into the game as
+  small Ogg Vorbis").
+- `can_play` also accepts `<src base>.temp.ogg`, after the src and the
+  `.wav`, so the director's "first playable wins" list is unchanged for
+  real audio.
+- A seamless take's loop survives the trip: staging keeps WAV `smpl`;
+  APPROVE turns it into the manifest's `loop` / `loop_offset`, and
+  AudioMgr sets them on the Ogg streams.
+- ⇣ SHRINK converts temps approved as WAV before this change, and
+  records `shrink` in each track's history.
 
 ## TEMPLATE
 
