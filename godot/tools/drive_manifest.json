@@ -1595,6 +1595,11 @@
    "md5": "7af787d1fbbacc22eb2bb26ed704f3c5",
    "size": 67404
   },
+  "godot/assets/3d/props/steamboat_model.glb": {
+   "at": "2026-10-11T21:19:54+00:00",
+   "md5": "f89529c24fa2db16a5d757771ad22bfb",
+   "size": 106709020
+  },
   "godot/assets/3d/props/workbench_props.glb": {
    "at": "2026-10-11T16:25:59+00:00",
    "md5": "3e07eb206545df7fec52537b7969e078",
@@ -54829,6 +54834,41 @@
    "at": "2026-10-11T19:53:54+00:00",
    "md5": "709f825e4373b5b9c4d70cc87688973d",
    "size": 1922376
+  },
+  "godot/assets/concept/meshy/steamboat_model/back.png": {
+   "at": "2026-10-11T21:20:04+00:00",
+   "md5": "5c33e45a404e6c5e0a6b464cdf31e381",
+   "size": 1445281
+  },
+  "godot/assets/concept/meshy/steamboat_model/front.png": {
+   "at": "2026-10-11T21:20:04+00:00",
+   "md5": "0d1234b979737938e8ee61c826295f0a",
+   "size": 1446602
+  },
+  "godot/assets/concept/meshy/steamboat_model/meshy_thumb.png": {
+   "at": "2026-10-11T21:20:04+00:00",
+   "md5": "632e371d3dec01a9c0ac683986e2f3bd",
+   "size": 128372
+  },
+  "godot/assets/concept/meshy/steamboat_model/side.png": {
+   "at": "2026-10-11T21:20:04+00:00",
+   "md5": "25162f875d29f40abbc296ca2b6f23df",
+   "size": 1351782
+  },
+  "godot/assets/concept/meshy/steamboat_model/steamboat_model_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T21:20:04+00:00",
+   "md5": "5c33e45a404e6c5e0a6b464cdf31e381",
+   "size": 1445281
+  },
+  "godot/assets/concept/meshy/steamboat_model/steamboat_model_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T21:20:04+00:00",
+   "md5": "0d1234b979737938e8ee61c826295f0a",
+   "size": 1446602
+  },
+  "godot/assets/concept/meshy/steamboat_model/steamboat_model_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T21:20:04+00:00",
+   "md5": "25162f875d29f40abbc296ca2b6f23df",
+   "size": 1351782
   },
   "godot/assets/concept/meshy/tanya_horne/front.png": {
    "at": "2026-10-01T01:23:48+00:00",
