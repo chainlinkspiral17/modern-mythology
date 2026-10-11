@@ -695,6 +695,11 @@
    "md5": "ec6df2f98636a2cf0397cd9873930348",
    "size": 67574
   },
+  "godot/assets/3d/characters/heroes/hans.glb": {
+   "at": "2026-10-11T18:35:35+00:00",
+   "md5": "ddf667a8a77b56fe4cc690723610babe",
+   "size": 47556688
+  },
   "godot/assets/3d/characters/heroes/hector.glb": {
    "at": "2026-10-01T01:48:41+00:00",
    "md5": "04bfef99b58539ea2bfb8560547deaec",
@@ -52714,6 +52719,56 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "59b7654b16aa9581f63d89b61869462e",
    "size": 80210
+  },
+  "godot/assets/concept/meshy/hans/back.png": {
+   "at": "2026-10-11T18:35:49+00:00",
+   "md5": "0a150aedbd88f8cfd0259d1ca60da1f1",
+   "size": 2183621
+  },
+  "godot/assets/concept/meshy/hans/front.png": {
+   "at": "2026-10-11T18:35:49+00:00",
+   "md5": "78c644cfc119686af7b2eaa612935554",
+   "size": 2246738
+  },
+  "godot/assets/concept/meshy/hans/hans_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T18:35:49+00:00",
+   "md5": "1d04a542b45c4e0cd3833e9430e39bd0",
+   "size": 2143072
+  },
+  "godot/assets/concept/meshy/hans/hans_back_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-11T18:35:49+00:00",
+   "md5": "0a150aedbd88f8cfd0259d1ca60da1f1",
+   "size": 2183621
+  },
+  "godot/assets/concept/meshy/hans/hans_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T18:35:49+00:00",
+   "md5": "9caf83b7c83f289057f6988c5088b7b0",
+   "size": 2196534
+  },
+  "godot/assets/concept/meshy/hans/hans_front_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-11T18:35:49+00:00",
+   "md5": "78c644cfc119686af7b2eaa612935554",
+   "size": 2246738
+  },
+  "godot/assets/concept/meshy/hans/hans_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T18:35:49+00:00",
+   "md5": "1401911fd21331742eb605478daaee73",
+   "size": 2034684
+  },
+  "godot/assets/concept/meshy/hans/hans_side_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-11T18:35:49+00:00",
+   "md5": "f7b7856dd37d336d4a86aee74d5c8e5c",
+   "size": 2010784
+  },
+  "godot/assets/concept/meshy/hans/meshy_thumb.png": {
+   "at": "2026-10-11T18:35:49+00:00",
+   "md5": "53113119aba6ebf0704c4b81b8f72cd7",
+   "size": 78947
+  },
+  "godot/assets/concept/meshy/hans/side.png": {
+   "at": "2026-10-11T18:35:49+00:00",
+   "md5": "f7b7856dd37d336d4a86aee74d5c8e5c",
+   "size": 2010784
   },
   "godot/assets/concept/meshy/hector/front.png": {
    "at": "2026-10-01T01:23:48+00:00",
