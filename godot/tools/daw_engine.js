@@ -1422,8 +1422,11 @@ registerProcessor('mm-daw-rec', MMDawRec);
         while (next < chunks.length && !job.err) {
           if (this._rjob !== job) return;                     // another region / edit took over: stop rendering this one
           const ch = chunks[next++];
-          const o = await this.renderOffline({ fromBar: ch.a, toBar: ch.b, tailSec, sampleRate: sr, worklets: false, holdTail: true, clipAt: loop ? b * BAR : null });
-          ch.out = o.channels; job.doneSec += regionSec(ch);
+          // a chunk part-way through counts toward the throughput too (its suspend windows report how far it got)
+          let part = 0;
+          const o = await this.renderOffline({ fromBar: ch.a, toBar: ch.b, tailSec, sampleRate: sr, worklets: false, holdTail: true, clipAt: loop ? b * BAR : null,
+            onProgress: x => { if (x && x.at != null) { const v = regionSec(ch) * Math.min(1, x.at); job.doneSec += v - part; part = v; tell(); } } });
+          ch.out = o.channels; job.doneSec += regionSec(ch) - part;
           advance();
           const q = Math.floor(4 * job.frames / job.total); if (q > quarter) { quarter = q; this.note('render', (25 * q) + '% after ' + secs() + ' s · ' + speed()); }
           tell();

@@ -10,7 +10,7 @@
  *     ctx: { briefs, inst ('forge'), master (true), lufs (−14), onEvent({type: 'progress' | 'take' | 'done', …}) }
  *   TempMaker.compose(E, opts, inst) → song (loads a fresh generated project into E)
  *   TempMaker.render(E, { loop, stems, master, lufs, onProgress }) → { channels, sampleRate, loop, bars, mastered, stems }
- *   writeTake / writeToGame / seedsUsed / normOpts / takeMood / arrangeTo / shapeArrangement / stemGroups …
+ *   writeTake / writeTempToGame / seedsUsed / normOpts / takeMood / arrangeTo / shapeArrangement / stemGroups …
  *
  * Review staging: assets/audio/review/<track id>/<take id>/ mix.wav · stems/<role>.wav · stems.json · credits.txt · meta.json
  */
@@ -327,26 +327,15 @@
     await G.write(dir + 'meta.json', blobJson(meta));
     return files.concat('meta.json').map(f => dir + f);
   }
-  // write a render (and its stems + manifest) where the game looks: <base>.wav · <base>.stems/<part>.wav · <base>.stems.json
-  async function writeToGame(E, base, r, stems, credits, meta) {
-    const AK = AKg(), G = AK.game, bpm = E.project.bpm;
-    const enc = (chs, extra) => AK.wav.encode(chs, r.sampleRate, { bitDepth: 16, loop: r.loop, meta: Object.assign({ title: meta.title, description: meta.title, originator: 'MM DAW', tags: ['daw'], bpm, date: new Date().toISOString(), comment: credits.text ? 'Instruments: ' + credits.text.replace(/\n/g, '; ') : undefined }, extra || {}) });
-    await G.write(base + '.wav', enc(r.channels));
-    const written = [base + '.wav'];
-    if (stems && stems.length) {
-      const man = { v: 1, title: meta.title, bpm, bars: r.bars, length_sec: +(r.channels[0].length / r.sampleRate).toFixed(3), loop: !!r.loop,
-        lufs: r.mastered ? +r.mastered.after.toFixed(1) : null, credits: credits.text || '', mix: base + '.wav', stems: [] };
-      for (const st of stems) {
-        const f = base + '.stems/' + AK.util.slug(st.name) + '.wav';
-        await G.write(f, enc(st.channels, { title: meta.title + ' · ' + st.name }));
-        man.stems.push({ name: st.name, role: st.role || '', file: f, layer: STEM_LAYER[st.name] ?? 0 });
-        written.push(f);
-      }
-      await G.write(base + '.stems.json', blobJson(man));
-      written.push(base + '.stems.json');
-    }
-    if (credits.worst !== 'free') { await G.write(base + '.wav.credits.txt', new Blob([credits.text + '\n'], { type: 'text/plain' })); written.push(base + '.wav.credits.txt'); }
-    return written;
+  // "straight into game (skip review)": the temp as Ogg Vorbis — the files APPROVE writes (AK.game.writeMusic). An older
+  // .wav temp at the same base would shadow it (a .wav comes before the .temp.ogg), so it goes; a real .wav stays.
+  async function writeTempToGame(E, base, r, stems, credits, title, loop, onProgress) {
+    const G = AKg().game;
+    const out = await G.writeMusic(base, { mix: r, loop, title: title + ' (temp)', credits: credits.worst !== 'free' ? credits.text : '',
+      stems: (stems || []).map(st => ({ name: st.name, role: st.role || '', layer: STEM_LAYER[st.name] ?? 0, pcm: { channels: st.channels, sampleRate: st.sampleRate || r.sampleRate } })),
+      extra: { bpm: E.project.bpm, bars: r.bars, lufs: r.mastered ? +r.mastered.after.toFixed(1) : null, credits: credits.text || '' }, onProgress });
+    if ((await G.wavKind(base + '.wav')) === 'temp') { await G.remove(base + '.wav'); await G.remove(base + '.wav.credits.txt'); }
+    return out.files;
   }
 
   // make req.takes takes for each catalog track in `list` — compose from its brief + the request, render, master, then
@@ -405,7 +394,8 @@
             entry.take = take; entry.dir = dir;
             on({ type: 'take', id: t.id, take, seed: song.seed });
           } else {
-            entry.files = await writeToGame(E, t.src.replace(/\.[^.\/]+$/, ''), r, r.stems, credits, { title: t.title + ' (temp)' });
+            entry.files = await writeTempToGame(E, t.src.replace(/\.[^.\/]+$/, ''), r, r.stems, credits, t.title, o.loop ? r.loop : null,
+              (f, what) => say('write', 'encoding Ogg Vorbis (' + what + ') ' + Math.round(f * 100) + '%'));
             on({ type: 'take', id: t.id, seed: song.seed, game: true });
           }
           entry.render = r; entry.credits = credits;
@@ -422,6 +412,6 @@
   root.TempMaker = {
     ROLE_ORDER, ROLE_LEVEL, ROLE_VEL, COLORS, STEM_LAYER, EXTRA_PADS, TEMP_MIN_SEC, REVIEW_DIR, APPROVALS, PATCH_POOLS, PATCH_PICKS,
     routing, compose, loadBriefs, normOpts, takeMood, readApprovals, seedsUsed, nextSeed, arrangeTo, deviceFor, setInstrument,
-    padLayer, texturePreset, shapeArrangement, stemGroups, sumChannels, render, takeStamp, writeTake, writeToGame, makeTakes,
+    padLayer, texturePreset, shapeArrangement, stemGroups, sumChannels, render, takeStamp, writeTake, writeTempToGame, makeTakes,
   };
 })(typeof window !== 'undefined' ? window : globalThis);
