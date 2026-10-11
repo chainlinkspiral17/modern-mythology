@@ -63,7 +63,7 @@
   .bar { height: 6px; background: var(--ink); border: 1px solid var(--rule); margin: 4px 0; }
   .bar > div { height: 100%; width: 0; background: var(--gold); transition: width 0.1s; }
   .btns { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
-  .credit { background: var(--ink); border: 1px solid var(--rule); padding: 6px; color: var(--gold-hi); font-size: 11px; user-select: all; }
+  .creditline { background: var(--ink); border: 1px solid var(--rule); padding: 6px; color: var(--gold-hi); font-size: 11px; user-select: all; }
   #editor { margin-top: 8px; }
   #kbwrap { border-top: 1px solid var(--rule); display: grid; grid-template-columns: auto 1fr; gap: 8px; padding: 6px 10px; align-items: center; }
   #kbctl { display: flex; flex-direction: column; gap: 4px; }
@@ -269,7 +269,7 @@ function showSourceDetail(s, loading) {
     <div class="kv"><span>BY</span><span>${esc(s.author || '')}</span>${s.homepage ? `<span>SOURCE</span><span><a href="${esc(s.homepage)}" target="_blank" style="color:var(--gold)">${esc(s.repo || s.homepage)}</a></span>` : ''}
     ${s.commit ? `<span>PINNED</span><span>${esc(s.commit.slice(0, 10))}</span>` : ''}</div>
     ${licBlock({ licence: lic.name, game: lic.game, url: lic.url, note: lic.note })}
-    ${s.credit ? `<h2>CREDIT LINE</h2><div class="credit">${esc(s.credit)}</div>` : ''}
+    ${s.credit ? `<h2>CREDIT LINE</h2><div class="creditline">${esc(s.credit)}</div>` : ''}
     <div class="bar"><div id="d-bar"></div></div><div class="msg" id="d-msg">${loading ? 'downloading the bank…' : ''}</div>
     <div class="btns">${s.id !== 'local' ? '<button class="dim" id="d-forget">✕ REMOVE DOWNLOADS</button>' : ''}</div>`;
   if ($('d-forget')) $('d-forget').addEventListener('click', async () => { if (!confirm('Remove everything downloaded from ' + s.name + '? (it can be fetched again)')) return; await PB.forget(s.id); ST.cached = new Set([...ST.cached].filter(u => !u.startsWith(s.id + ':'))); await refreshCatalog(); refreshCache(); showSourceDetail(s); });
@@ -287,7 +287,7 @@ async function select(it) {
     <div class="kv"><span>SOURCE</span><span>${esc(s.name || it.source)}</span><span>TYPE</span><span>${esc(it.category)}${it.bank ? ' · ' + esc(it.bank) : ''}${it.program != null ? ' · GM ' + (it.program + 1) : ''}</span>
     ${it.summary ? `<span>ABOUT</span><span>${esc(it.summary)}</span>` : ''}</div>
     ${licBlock(c)}
-    <h2>CREDIT LINE</h2><div class="credit" id="d-credit">${esc(c.line)}</div>
+    <h2>CREDIT LINE</h2><div class="creditline" id="d-credit">${esc(c.line)}</div>
     <div class="bar"><div id="d-bar"></div></div><div class="msg" id="d-msg"></div>
     <div class="btns">
       <button id="d-load">▶ LOAD + PLAY</button>

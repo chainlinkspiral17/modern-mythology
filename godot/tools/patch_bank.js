@@ -75,8 +75,14 @@
       if (hit && hit.bytes) { memHit.add(url); return hit.bytes; }
       if (url.startsWith('local:')) throw new Error('missing local file ' + url);
       if (url.startsWith('data:')) return (await fetch(url)).arrayBuffer();
-      const r = await fetch(url, { cache: 'force-cache' });
-      if (!r.ok) throw new Error('HTTP ' + r.status + ' for ' + decodeURIComponent(url.split('/').slice(-2).join('/')));
+      // retry with back-off: Wi-Fi drops and GitHub's rate limiting are both transient
+      let r = null, err = null;
+      for (let a = 0; a < 4; a++) {
+        try { r = await fetch(url, { cache: 'force-cache' }); if (r.ok || r.status === 404) break; err = new Error('HTTP ' + r.status); }
+        catch (e) { err = e; r = null; }
+        await new Promise(res => setTimeout(res, 400 * Math.pow(2, a) + Math.random() * 300));
+      }
+      if (!r || !r.ok) throw new Error((r ? 'HTTP ' + r.status : (err && err.message) || 'fetch failed') + ' for ' + decodeURIComponent(url.split('/').slice(-2).join('/')));
       const bytes = await r.arrayBuffer();
       if (opts.store !== false) {
         await tx('files', 'readwrite', s => s.put({ url, bytes, size: bytes.byteLength, t: Date.now(), src: srcOfUrl(url) })).catch(e => console.warn('cache full?', e));
@@ -138,9 +144,15 @@
   let allCache = null;
   async function item(uid) {
     const [srcId, ...rest] = String(uid).split(':'); const id = rest.join(':');
-    const list = await items(srcId);
-    return list.find(i => i.id === id) || null;
+    let list = await items(srcId);
+    let it = list.find(i => i.id === id);
+    // SF2 / DX7 banks list their presets once downloaded: fetch the bank on first use
+    const src = source(srcId);
+    if (!it && src && ['sf2', 'dx7', 'dx7zip'].includes(src.kind) && !dynIndex.has(srcId)) { list = await prepareOnce(srcId); it = list.find(i => i.id === id); }
+    return it || null;
   }
+  const preparing = new Map();
+  function prepareOnce(srcId) { if (!preparing.has(srcId)) preparing.set(srcId, prepare(srcId).finally(() => preparing.delete(srcId))); return preparing.get(srcId); }
 
   // SF2 / DX7 banks: download + index (presets / voice names) so they appear in the lists
   const sf2Cache = new Map();     // srcId|localKey → parsed SF2
@@ -216,7 +228,8 @@
       const vels = [...new Set(fs.map(f => f.vel))].sort((a, b) => a - b), rrs = Math.max(...fs.map(f => f.rr));
       for (const f of fs) {
         const vi = vels.indexOf(f.vel), lo = Math.round(vi * 127 / vels.length) + 1, hi = Math.round((vi + 1) * 127 / vels.length);
-        zones.push({ sample: f.url, root: key, lokey: key, hikey: key, lovel: vi === 0 ? 0 : lo, hivel: hi, loop: { mode: 'one_shot' }, seq_length: rrs > 1 ? rrs : undefined, seq_position: rrs > 1 ? f.rr : undefined });
+        zones.push(G.SampleFormats.makeZone({ sample: f.url, name: f.name, root: key, lokey: key, hikey: key, lovel: vi === 0 ? 0 : lo, hivel: hi, loopMode: 'one_shot',
+          seqLength: rrs > 1 ? rrs : 1, seqPosition: rrs > 1 ? Math.min(f.rr, rrs) : 1, env: { release: 0.3 } }));
       }
       keymap.push({ key, name: art.replace(/_/g, ' ') });
       if (++key > 108) break;
@@ -243,17 +256,43 @@
       inst = await SF.parseSFZ(await fetchText(url), base, { readText: fetchText });
     } else if (src.kind === 'waveforms') {
       const url = urlOf(src, it.dir + it.file);
-      // 600-sample single cycle at 44.1 kHz = 73.5 Hz: loop the whole cycle
-      inst = { name: it.name, zones: [{ sample: url, root: 69 + 12 * Math.log2(44100 / 600 / 440), lokey: 0, hikey: 127, lovel: 0, hivel: 127, loop: { mode: 'loop_continuous', start: 0, end: 600 }, ampeg: { attack: 0.005, hold: 0, decay: 0.3, sustain: 0.8, release: 0.25 } }] };
-      inst.zones[0].tune = Math.round((inst.zones[0].root % 1) * 100); inst.zones[0].root = Math.floor(inst.zones[0].root);
+      // a 600-sample single cycle at 44.1 kHz sounds at 73.5 Hz (MIDI 38.35): loop the whole cycle
+      const r = 69 + 12 * Math.log2(44100 / 600 / 440), rootKey = Math.round(r);
+      inst = { format: 'files', name: it.name, unsupported: [], warnings: [], ccInit: {}, curves: {}, keyswitch: null, bend: null,
+        zones: [G.SampleFormats.makeZone({ sample: url, name: it.file, root: rootKey, tune: -Math.round((r - rootKey) * 100), loopMode: 'loop_continuous', loopStart: 0, loopEnd: 600,
+          env: { attack: 0.004, decay: 0.4, sustain: 0.75, release: 0.25 } })] };
     } else if (src.kind === 'files' || it.kind === 'files') {
       const files = it.urls ? it.urls : it.files.map(f => ({ name: f.split('/').pop(), url: urlOf(src, it.dir + f) }));
-      if (it.pitched !== false) { const r = SF.instrumentFromFiles(files, { name: it.name }); inst = r; if (!inst.zones.length) Object.assign(inst, kitFromFiles(files)); }
-      else inst = Object.assign({ name: it.name }, kitFromFiles(files));
+      const kit = () => Object.assign({ format: 'files', name: it.name, unsupported: [], warnings: [], ccInit: {}, curves: {}, keyswitch: null, bend: null }, kitFromFiles(files));
+      if (it.pitched !== false) { inst = SF.instrumentFromFiles(files, { name: it.name }); if (!inst.zones.length) inst = kit(); else inst.pitchedFiles = true; }
+      else inst = kit();
     } else throw new Error('cannot load ' + it.uid);
     inst.name = inst.name || it.name;
+    // big multi-layer SFZ pianos (Salamander: 16 layers ≈ 1 GB) → 4 layers: same keys, a fraction of the download
+    if (inst.format === 'sfz' && inst.zones.length > 240 && SF.thinLayers) SF.thinLayers(inst, 4);
     await SF.decodeAll(inst, ctx, fetchBytes, (done, total, bytes) => onProgress && onProgress({ phase: 'samples', done, total, bytes }));
+    // note-named folders: fill holes left by files that failed, and some libraries call middle C "C3"
+    if (inst.pitchedFiles && SF.respread) SF.respread(inst);
+    if (inst.pitchedFiles && SF.autoOctave) { try { SF.autoOctave(inst); } catch (e) {} }
+    inst.normGainDb = normGain(inst);
     return inst;
+  }
+  // sources are mastered anywhere from −30 to 0 dBFS: aim a typical note's peak at about −9 dBFS.
+  // SF2 banks (GeneralUser) are voiced as a whole, so they're left alone.
+  function normGain(inst) {
+    if (inst.format === 'sf2') return 0;
+    const peaks = [];
+    const zs = inst.zones.filter(z => z.buffer && z.trigger !== 'release');
+    const step = Math.max(1, Math.floor(zs.length / 24));
+    for (let i = 0; i < zs.length; i += step) {
+      const b = zs[i].buffer, n = Math.min(b.length, Math.round(b.sampleRate * 1.5)); let pk = 0;
+      for (let c = 0; c < b.numberOfChannels; c++) { const d = b.getChannelData(c); for (let k = 0; k < n; k += 2) { const a = d[k] < 0 ? -d[k] : d[k]; if (a > pk) pk = a; } }
+      if (pk > 1e-4) peaks.push(pk * Math.pow(10, (zs[i].gain || 0) / 20));
+    }
+    if (!peaks.length) return 0;
+    peaks.sort((a, b) => a - b);
+    const med = peaks[peaks.length >> 1];
+    return Math.max(-9, Math.min(18, Math.round(20 * Math.log10(0.35 / med))));
   }
   async function loadDx7(it) {
     const src = source(it.source);
@@ -282,8 +321,9 @@
       await dev.init(); dev.loadVoice(r.voice);
     } else {
       if (!G.SampleInstrument) throw new Error('sampler.js is not loaded');
-      dev = new G.SampleInstrument(ctx, { output: opts.output, maxVoices: opts.maxVoices });
-      await dev.init(); await dev.load(r.inst);
+      dev = new G.SampleInstrument(ctx, { output: opts.output, maxVoices: opts.maxVoices, fetchBytes });
+      await dev.init(); await dev.load(r.inst, { id: r.item.uid, fetchBytes });
+      if (r.inst.normGainDb) dev.set('gain', r.inst.normGainDb);
     }
     dev.patchId = r.item.uid; dev.patchName = r.item.name; dev.keymap = r.inst && r.inst.keymap;
     return dev;

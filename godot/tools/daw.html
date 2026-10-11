@@ -707,19 +707,19 @@ window.addEventListener('midiinput-note', e => {
 $('g-dice').addEventListener('click', () => { $('g-seed').value = Math.floor(Math.random() * 1e6); });
 const ROLE_ORDER = ['drums', 'bass', 'chords', 'lead', 'pad'];
 const ROLE_LEVEL = { drums: 0.62, bass: 0.6, chords: 0.42, lead: 0.42, pad: 0.36 };
-// PATCH BANK picks per style — free-to-use sources (GeneralUser GS, jRhodes3d, Karoryfer CC0). GeneralUser ids are
+// PATCH BANK picks per style — free-to-use and light: one GeneralUser GS download (32 MB) + jRhodes3d. GeneralUser ids are
 // 'gugs:<bank>.<program>' (GM program numbers from 0; bank 128 = drum kits: 0 standard, 8 room, 16 power, 24 electronic,
 // 25 TR-808, 32 jazz, 40 brush, 48 orchestra).
 const PATCH_PICKS = {
   four_floor: { drums: 'gugs:128.24', bass: 'gugs:0.38', chords: 'gugs:0.90', lead: 'gugs:0.80', pad: 'gugs:0.89' },
   boom_bap:   { drums: 'gugs:128.8',  bass: 'gugs:0.33', chords: 'jrhodes:st', lead: 'gugs:0.11', pad: 'gugs:0.48' },
-  lofi:       { drums: 'gugs:128.40', bass: 'meatbass:programs_04_pizz', chords: 'jrhodes:st', lead: 'gugs:0.73', pad: 'gugs:0.89' },
+  lofi:       { drums: 'gugs:128.40', bass: 'gugs:0.32', chords: 'jrhodes:st', lead: 'gugs:0.73', pad: 'gugs:0.89' },
   trap:       { drums: 'gugs:128.25', bass: 'gugs:0.38', chords: 'gugs:0.0', lead: 'gugs:0.10', pad: 'gugs:0.94' },
   dnb:        { drums: 'gugs:128.24', bass: 'gugs:0.39', chords: 'gugs:0.89', lead: 'gugs:0.81', pad: 'gugs:0.91' },
-  shuffle:    { drums: 'gugs:128.32', bass: 'gugs:0.32', chords: 'gugs:0.17', lead: 'weresax:programs_sax', pad: 'gugs:0.16' },
+  shuffle:    { drums: 'gugs:128.32', bass: 'gugs:0.32', chords: 'gugs:0.17', lead: 'gugs:0.65', pad: 'gugs:0.16' },
   motorik:    { drums: 'gugs:128.16', bass: 'gugs:0.33', chords: 'gugs:0.29', lead: 'gugs:0.62', pad: 'gugs:0.50' },
   synthwave:  { drums: 'gugs:128.25', bass: 'gugs:0.38', chords: 'gugs:0.90', lead: 'gugs:0.81', pad: 'gugs:0.89' },
-  noir:       { drums: 'gugs:128.40', bass: 'gugs:0.32', chords: 'jrhodes:st', lead: 'weresax:programs_sax', pad: 'gugs:0.48' },
+  noir:       { drums: 'gugs:128.40', bass: 'gugs:0.32', chords: 'jrhodes:st', lead: 'gugs:0.65', pad: 'gugs:0.48' },
   ambient:    { drums: 'gugs:128.48', bass: 'gugs:0.32', chords: 'gugs:0.88', lead: 'gugs:0.11', pad: 'gugs:0.91' },
 };
 const ROLE_VEL = { drums: 1, bass: 0.95, chords: 0.75, lead: 0.85, pad: 0.7 };

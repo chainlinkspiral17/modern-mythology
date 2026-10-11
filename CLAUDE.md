@@ -36,7 +36,9 @@ touching code:
    guitar, `midi_input.js` / `fm1_dx7.js` for the M-VAVE FM-1 synth).
    Read before touching any `godot/tools/riffmaster_*.html`,
    `tarot_synth.html`, `fm1_console.html`, FORGE (`forge_synth.js`),
-   the FM-1 emulators (`fm1_emu.js`), or those helpers. Every
+   the FM-1 emulators (`fm1_emu.js`), the PATCH BANK (`patch_bank.js`,
+   `patch_sources.js` — generated, `sampler.js`, `dx7_synth.js`), or
+   those helpers. Every
    FM-1 firmware fact lives in `godot/tools/fm1_firmwares.js`.
 8. `lore/_AUDIO_CAPTURE_PLAYBOOK.md` — FIELD RECORDER, TAPE STUDIO,
    the DAW (`daw.html` / `daw_engine.js` / `seqgen.js`), `field_ingest.py`,
