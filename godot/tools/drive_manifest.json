@@ -80,6 +80,11 @@
    "md5": "6ce611b34dd4bd0045a1dba1669cb7af",
    "size": 66351
   },
+  "godot/assets/3d/characters/heroes/anita_kowalski.glb": {
+   "at": "2026-10-11T20:31:26+00:00",
+   "md5": "7cb8e8fa634b58d50ce18e72795ace09",
+   "size": 51759116
+  },
   "godot/assets/3d/characters/heroes/anna_logue.glb": {
    "at": "2026-10-01T01:48:41+00:00",
    "md5": "c6805d678501fb6e2fe6e14e7ad6d682",
@@ -52359,6 +52364,41 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "02bb53b051a9fcb0403fbc88c9b5b429",
    "size": 81240
+  },
+  "godot/assets/concept/meshy/anita_kowalski/anita_kowalski_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T20:31:36+00:00",
+   "md5": "2b4758d696454a8832cf7abfff02cfda",
+   "size": 2216376
+  },
+  "godot/assets/concept/meshy/anita_kowalski/anita_kowalski_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T20:31:36+00:00",
+   "md5": "67741866f5220acb17cbd7f67fe3089f",
+   "size": 2215880
+  },
+  "godot/assets/concept/meshy/anita_kowalski/anita_kowalski_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T20:31:36+00:00",
+   "md5": "07756196b0a8f59ff6c93863e5d320cb",
+   "size": 2062641
+  },
+  "godot/assets/concept/meshy/anita_kowalski/back.png": {
+   "at": "2026-10-11T20:31:36+00:00",
+   "md5": "2b4758d696454a8832cf7abfff02cfda",
+   "size": 2216376
+  },
+  "godot/assets/concept/meshy/anita_kowalski/front.png": {
+   "at": "2026-10-11T20:31:36+00:00",
+   "md5": "67741866f5220acb17cbd7f67fe3089f",
+   "size": 2215880
+  },
+  "godot/assets/concept/meshy/anita_kowalski/meshy_thumb.png": {
+   "at": "2026-10-11T20:31:36+00:00",
+   "md5": "20938af12d6981fe1108ba8d4f88b886",
+   "size": 73784
+  },
+  "godot/assets/concept/meshy/anita_kowalski/side.png": {
+   "at": "2026-10-11T20:31:36+00:00",
+   "md5": "07756196b0a8f59ff6c93863e5d320cb",
+   "size": 2062641
   },
   "godot/assets/concept/meshy/anna_logue/anna_logue_front_meshy_recovered.png": {
    "at": "2026-10-01T01:23:48+00:00",
