@@ -201,7 +201,8 @@
     // A piece's FORGE synth is built the first time it is hit (scheduling runs ~120 ms ahead, so that is in
     // time): a full kit map names ~14 presets and every FORGE synth costs audio-thread time even when silent —
     // building them all made the kit the heaviest device in a song (see the audio playbook, 2026-10-11).
-    constructor(ctx, { output, kit, map } = {}) { this.ctx = ctx; this.output = ctx.createGain(); this.output.connect(output); this.voices = {}; this.pending = {}; this.hold = {}; this.map = map ? Object.assign({}, map) : kitMapFor(kit); this.basic = null; }
+    constructor(ctx, { output, kit, map, light } = {}) { this.ctx = ctx; this.light = !!light; this.output = ctx.createGain(); this.output.connect(output); this.voices = {}; this.pending = {}; this.hold = {}; this.map = map ? Object.assign({}, map) : kitMapFor(kit); this.basic = null; }
+    lightReverb() { let m = 0; for (const s of Object.values(this.voices)) if (s.lightReverb) m = Math.max(m, s.lightReverb()); return m; }
     async init() {
       if (typeof G.ForgeSynth !== 'function') { this.basic = new BasicSynth(this.ctx, { output: this.output, drums: true }); return; }
       this._ensureVoices();
@@ -216,7 +217,7 @@
     _voice(id) {
       let s = this.voices[id];
       if (s || this.basic || typeof G.ForgeSynth !== 'function') return s;
-      s = new G.ForgeSynth(this.ctx, { output: this.output, maxVoices: 6 });
+      s = new G.ForgeSynth(this.ctx, { output: this.output, maxVoices: 6, light: this.light });
       try { s.loadPreset(id); } catch (e) { /* missing preset → stays init */ }
       if (this.pending[id]) { try { s.setState(this.pending[id]); } catch (e) {} delete this.pending[id]; }
       s.init().catch(() => {});
@@ -330,12 +331,37 @@
   // (Flatpak Chrome's audio thread may not get real-time priority) plays without crackles; live keys respond later.
   // FAST: Chrome's interactive buffer, for playing live. Read once when the AudioContext is made (reload to change).
   const BUFFERS = { smooth: 'playback', fast: 'interactive' };
+  // Live sound: LIGHT (default) builds live FORGE synths with light: true — one oscillator per unison stack, no
+  // time-based effects (their reverb goes to the DAW's shared reverb instead). On the Deck a full song's live load
+  // made Chrome drop its audio output after ~0.5 s. FULL = the exact patches. Renders / bounces / takes are always full.
+  const LS_LIVE = 'mm_daw_live', LS_PLAY = 'mm_daw_play';
+  // PLAY: RENDER (default) renders the loop / song offline once — full quality, off Chrome's real-time audio thread —
+  // and plays the result like a WAV; LIVE synthesises in real time (needed to play keys / record; can overload slow machines)
+  const playModeOf = () => { let m = ''; try { m = root.localStorage.getItem(LS_PLAY) || ''; } catch (e) {} return m === 'live' ? 'live' : 'render'; };
+  const liveMode = () => { let m = ''; try { m = root.localStorage.getItem(LS_LIVE) || ''; } catch (e) {} return m === 'full' ? 'full' : 'light'; };
   const bufferMode = () => { let m = ''; try { m = root.localStorage.getItem(LS_BUF) || ''; } catch (e) {} return BUFFERS[m] !== undefined ? m : 'smooth'; };
   const FM1_INPUT_RX = /felucca|fm-?1|m-?vave|x0x/i;      // an input named like the FM-1's own USB audio
   const sleep = ms => new Promise(r => setTimeout(r, ms));
   // Frame-stamped input capture: every render quantum's input with the context frame it belongs to
   // (currentFrame), so a take is cut on the same AudioContext clock the transport schedules on —
   // the same stamping FM-1 CHECK-OUT's onset probe uses, so its latency number means the same thing here.
+  // PLAY: RENDER's tap: posts the offline render's output back in 16384-frame blocks while it renders
+  const TAP_WORKLET = `
+class MMDawTap extends AudioWorkletProcessor {
+  constructor() { super(); this.n = 16384; this.at = 0; this.i = 0; this.l = new Float32Array(this.n); this.r = new Float32Array(this.n); }
+  process(inputs) {
+    const x = inputs[0], L = x && x[0], R = x && (x[1] || x[0]), m = Math.min(128, this.n - this.i);
+    if (L) { this.l.set(L.subarray(0, m), this.i); this.r.set(R.subarray(0, m), this.i); }
+    this.i += m;
+    if (this.i >= this.n) {
+      this.port.postMessage({ at: this.at, l: this.l, r: this.r }, [this.l.buffer, this.r.buffer]);
+      this.at += this.n; this.i = 0; this.l = new Float32Array(this.n); this.r = new Float32Array(this.n);
+    }
+    return true;
+  }
+}
+registerProcessor('mm-daw-tap', MMDawTap);
+`;
   const REC_WORKLET = `
 class MMDawRec extends AudioWorkletProcessor {
   constructor() { super(); this.on = true; this.port.onmessage = e => { if (e.data === 'stop') this.on = false; }; }
@@ -402,7 +428,7 @@ registerProcessor('mm-daw-rec', MMDawRec);
   class Engine {
     constructor() {
       this.ctx = null; this.project = null; this.devices = new Map(); this.strips = new Map();
-      this.playing = false; this.recording = false; this.anchor = null; this.schedTick = 0; this.timer = null;
+      this.playing = false; this.recording = false; this.anchor = null; this.schedTick = 0; this.timer = null; this.liveQuality = liveMode();
       this.sources = []; this.midi = null; this.listeners = {}; this.inputStream = null; this.inputLabel = '';
       this.quantize = 24; this.rec = null; this._anchors = []; this._countIn = null; this._evIn = null; this.outDelay = 0;
       this.loadLatency();
@@ -438,7 +464,7 @@ registerProcessor('mm-daw-rec', MMDawRec);
       this.delayTone.connect(this.delayOut); this.delayOut.connect(this.master);
       this._bus = [this.limiter, this.verbIn, this.verb, this.verbOut, this.delayIn, this.delay, this.delayFb, this.delayTone, this.delayOut];
       if (old) {
-        for (const st of this.strips.values()) { try { st.sendA.disconnect(); st.sendB.disconnect(); } catch (e) {} st.sendA.connect(this.verbIn); st.sendB.connect(this.delayIn); }
+        for (const st of this.strips.values()) { try { st.sendA.disconnect(); st.sendB.disconnect(); } catch (e) {} st.sendA.connect(this.verbIn); st.sendB.connect(this.delayIn); if (st.lightVerb) { try { st.lightVerb.disconnect(); } catch (e) {} st.lightVerb.connect(this.verbIn); } }
         this._verbSize = null; if (this.project) this.applyMaster();
         if (this._taps) { this._taps.delete('master'); this._taps.delete('limiter'); }
       }
@@ -498,7 +524,7 @@ registerProcessor('mm-daw-rec', MMDawRec);
     fault(where, e) { this.note('error', where + ': ' + (e && e.message ? e.message : e) + (e && e.stack ? ' @ ' + String(e.stack).split('\n').slice(1, 3).map(x => x.trim()).join(' ← ') : '')); }
     async start() {
       if (this.ctx) { if (this.ctx.state !== 'running' && this.ctx.state !== 'closed') await this.ctx.resume(); return; }
-      this.buffer = bufferMode();
+      this.buffer = bufferMode(); this.liveQuality = liveMode();
       this.ctx = new (root.AudioContext || root.webkitAudioContext)({ sampleRate: RATE, latencyHint: BUFFERS[this.buffer] });
       const c = this.ctx;
       // the system can suspend / interrupt audio (another app, an output device switch — e.g. a USB audio device
@@ -563,8 +589,9 @@ registerProcessor('mm-daw-rec', MMDawRec);
     async createDeviceRuntime(d) {
       const strip = this.ensureStrip(d.id, d.mix || (d.mix = this.defaultMix()));
       let inst;
-      if (d.type === 'forge' && typeof G.ForgeSynth === 'function') inst = new G.ForgeSynth(this.ctx, { output: strip.in, maxVoices: 12 });
-      else if (d.type === 'kit') inst = new KitDevice(this.ctx, { output: strip.in, kit: d.kit, map: d.state && d.state.map });
+      const light = this.liveQuality === 'light';
+      if (d.type === 'forge' && typeof G.ForgeSynth === 'function') inst = new G.ForgeSynth(this.ctx, { output: strip.in, maxVoices: 12, light });
+      else if (d.type === 'kit') inst = new KitDevice(this.ctx, { output: strip.in, kit: d.kit, map: d.state && d.state.map, light });
       else if (d.type === 'emu' && typeof G.FM1Emu === 'function') inst = new G.FM1Emu(this.ctx, { id: d.emuId || 'felucca', output: strip.in });
       else if (d.type === 'hw') inst = new HwDevice(this.ctx, { output: strip.in, engine: this });
       else if (d.type === 'patch') inst = new PatchDevice(this.ctx, { output: strip.in, engine: this, patch: d.patch, devId: d.id });
@@ -575,6 +602,7 @@ registerProcessor('mm-daw-rec', MMDawRec);
       if (d.state) { try { inst.setState(d.state); } catch (e) { /* older state */ } }
       else if (d.preset && inst.loadPreset) { try { inst.loadPreset(d.preset); } catch (e) {} }
       if (inst.bpm !== undefined || 'bpm' in inst) { try { inst.bpm = this.project.bpm; } catch (e) {} }
+      try { this._lightSends(); } catch (e) {}
       return inst;
     }
     setPreset(devId, preset) {
@@ -692,6 +720,7 @@ registerProcessor('mm-daw-rec', MMDawRec);
     applyMix() {
       if (!this.ctx) return;
       const now = this.ctx.currentTime;
+      try { this._lightSends(); } catch (e) { this.fault('light sends', e); }
       // undo / redo swap mix objects in the project: follow them
       for (const [id, s] of this.strips) { const o = this.stripOwner(id); if (o && o.mix) s.mix = o.mix; }
       const mixes = [...this.strips.values()].map(s => s.mix);
@@ -851,6 +880,8 @@ registerProcessor('mm-daw-rec', MMDawRec);
       if (this.recording) this.stopRecord();
       if (this.timer) { clearInterval(this.timer); this.timer = null; }
       clearInterval(this._watchT); this._watchT = null;
+      if (this._rplay) { for (const s of this._rplay.srcs) { try { s.stop(); } catch (e) {} } this._rplay = null; }
+      this._rendered = null;
       const now = this.ctx.currentTime, wasPlaying = this.playing;
       if (this.playing) { this._stopTick = this.tickNow(); this.sendClock('stop', now); }
       this.playing = false;
@@ -864,6 +895,12 @@ registerProcessor('mm-daw-rec', MMDawRec);
     schedule() {
       this.clockOffset();                    // keep the clock-offset median fed every tick
       if (!this.playing) return;
+      if (this._rendered) {                  // rendered playback: nothing to schedule, just keep the playhead on the loop
+        const R = this._rendered, now = this.ctx.currentTime;
+        if (R.loop) { while (now >= this.anchor.ctx + R.lenSec) this.anchor = { ctx: this.anchor.ctx + R.lenSec, tick: R.a * BAR }; }
+        else if (now >= R.end) { this.note('stop', 'rendered song ended'); this.stop(); this.emit('ended'); }
+        return;
+      }
       const now = performance.now(), gap = this._lastSched ? now - this._lastSched : 0; this._lastSched = now;
       if (gap > LOOKAHEAD * 1000) this.note('stall', 'scheduler ran ' + Math.round(gap) + ' ms late (look-ahead ' + LOOKAHEAD * 1000 + ' ms): notes in that gap were late or lost');
       const P = this.project, horizon = this.ctx.currentTime + LOOKAHEAD;
@@ -1214,6 +1251,127 @@ registerProcessor('mm-daw-rec', MMDawRec);
     checkoutOutMs() {
       try { const r = JSON.parse(root.localStorage.getItem(LS_CHECKOUT) || 'null'), l = r && r.latency; if (l && Number.isFinite(+l.baseLatencyMs)) return +l.baseLatencyMs + (+l.outputLatencyMs || 0); } catch (e) {}
       return NaN;
+    }
+    get playMode() { return playModeOf(); }
+    setPlayMode(m) { if (m !== 'live' && m !== 'render') return false; try { root.localStorage.setItem(LS_PLAY, m); } catch (e) {} return true; }
+    // the transport's play: RENDER mode renders (cached until the project changes), LIVE synthesises
+    playAuto(fromTick) { return this.playMode === 'render' && !this.recording ? this.playRendered(fromTick) : this.play(fromTick); }
+    // Renders [a, b) once and streams it: the render's output comes back in blocks while it runs, so playback starts as
+    // soon as the render will stay ahead of it. Loops: the first pass streams, later passes play the folded (seamless)
+    // loop. The finished render is cached until the project, the region or the loop changes.
+    async playRendered(fromTick) {
+      await this.start();
+      if (this.playing || this._rplay) this.stop();
+      const P = this.project, c = this.ctx, sr = c.sampleRate, loop = !!(P.loop && P.loop.on);
+      const a = loop ? P.loop.a : Math.max(0, Math.floor((fromTick ?? this._stopTick ?? 0) / BAR)), b = loop ? P.loop.b : this.songBars();
+      if (b <= a) return false;
+      const key = JSON.stringify(P) + '|' + a + '|' + b + '|' + loop + '|' + sr;
+      const lenSec = (b - a) * BAR * this.spt(), tailSec = 3;
+      // the render already carries the master volume: undo the live master's gain so it isn't applied twice
+      const g = this._rgain || (this._rgain = c.createGain()); g.gain.value = P.master.vol > 0 ? 1 / P.master.vol : 0;
+      if (!this._rgainOn) { g.connect(this.out); this._rgainOn = true; }
+      const R = this._rplay = { loop, a, b, lenSec, srcs: [], t0: null, end: Infinity };
+      const src = (buf, when, loopIt = false) => {
+        const s = c.createBufferSource(); s.buffer = buf;
+        if (loopIt) { s.loop = true; s.loopStart = 0; s.loopEnd = buf.duration; }
+        s.connect(g); s.start(Math.max(when, c.currentTime)); s.endsAt = loopIt ? Infinity : when + buf.duration;
+        if (R.srcs.length > 64) R.srcs = R.srcs.filter(x => x.endsAt > c.currentTime);
+        R.srcs.push(s);
+      };
+      const begin = t0 => {
+        R.t0 = t0; this._rendered = R;
+        this.anchor = { ctx: t0, tick: a * BAR }; this._anchors = [{ ctx: t0, tick: a * BAR, n: 0 }];
+        this.playing = true; this._lastSched = 0;
+        this.timer = setInterval(() => this.schedule(), TICK_MS);
+        clearInterval(this._watchT); this._watchT = setInterval(() => { try { this._watchOut(); } catch (e) { this.fault('output watch', e); } }, 250);
+        this.emit('transport', { playing: true });
+      };
+      const cached = this._rcache && this._rcache.key === key ? this._rcache.buf : null;
+      if (cached) {
+        const t0 = Math.round((c.currentTime + 0.06) * sr) / sr;
+        src(cached, t0, loop);
+        R.end = loop ? Infinity : t0 + cached.duration;
+        begin(t0);
+        this.note('audio', 'playing rendered ' + (b - a) + ' bars' + (loop ? ' (loop)' : '') + ' · cached');
+        return true;
+      }
+      // a render of the same region already running (▶ pressed again) is reused
+      let job = this._rjob && this._rjob.key === key ? this._rjob : null;
+      if (!job) {
+        job = this._rjob = { key, segs: [], frames: 0, total: Math.ceil((lenSec + tailSec) * sr), done: false, buf: null, began: performance.now(), subs: new Set(), err: null };
+        const tell = () => { for (const f of [...job.subs]) f(); };
+        this.renderOffline({ fromBar: a, toBar: b, loop, tailSec, sampleRate: sr,
+          onAudio: (at, chs) => { if (job.done || at < job.frames) return; job.segs.push({ at, chs }); job.frames = at + chs[0].length; tell(); } })
+          .then(o => {
+            const n = o.channels[0].length, fb = c.createBuffer(2, n, sr);
+            o.channels.forEach((ch, i) => { if (i < 2) fb.copyToChannel(ch, i); });
+            if (!loop && job.frames < n) job.segs.push({ at: job.frames, chs: o.channels.map(ch => ch.slice(job.frames)) });
+            job.frames = Math.max(job.frames, n); job.buf = fb; job.done = true;
+            this._rcache = { key, buf: fb };
+            if (this._rjob === job) this._rjob = null;
+            tell();
+          })
+          .catch(e => { job.err = e; job.done = true; if (this._rjob === job) this._rjob = null; this.fault('render for play', e); tell(); });
+      }
+      const L = Math.round(lenSec * sr), playLen = loop ? L : job.total;
+      let seg = 0;
+      const feed = () => {
+        if (this._rplay !== R) { job.subs.delete(feed); return; }
+        if (job.err) { job.subs.delete(feed); this.emit('render-progress', { p: 1, bars: b - a, error: String(job.err.message || job.err) }); this.stop(); return; }
+        if (R.t0 === null) {
+          // start once the render keeps ahead: what is left to render must finish before playback needs it
+          const have = job.frames / sr, el = (performance.now() - job.began) / 1000, rate = el > 0.3 ? 0.85 * have / el : 0;
+          const left = job.total / sr - have, need = playLen / sr;
+          if (!(job.done || (have >= Math.min(1, need) && rate > 0 && left / rate <= need - 1))) {
+            this.emit('render-progress', { p: job.frames / job.total, bars: b - a, buffering: true });
+            return;
+          }
+          begin(Math.round((c.currentTime + 0.08) * sr) / sr);
+          if (!loop) R.end = R.t0 + job.total / sr;
+          this.note('audio', 'playing rendered ' + (b - a) + ' bars' + (loop ? ' (loop)' : '') + (job.done ? '' : ' · streaming, ' + have.toFixed(1) + ' s rendered ahead'));
+        }
+        for (; seg < job.segs.length; seg++) {
+          const s = job.segs[seg]; if (loop && s.at >= L) continue;
+          let when = R.t0 + s.at / sr;
+          if (when < c.currentTime + 0.02) {          // the render fell behind: hold the playhead back by the gap
+            const late = Math.round((c.currentTime + 0.1 - when) * sr) / sr;
+            R.t0 += late; R.end += late; this.anchor = { ctx: this.anchor.ctx + late, tick: this.anchor.tick }; when += late;
+            this.note('audio', 'render fell behind playback by ' + (late * 1000).toFixed(0) + ' ms');
+          }
+          const n = loop ? Math.min(s.chs[0].length, L - s.at) : s.chs[0].length, ab = c.createBuffer(2, n, sr);
+          s.chs.forEach((ch, i) => { if (i < 2) ab.copyToChannel(n < ch.length ? ch.subarray(0, n) : ch, i); });
+          src(ab, when);
+        }
+        if (job.done) {
+          job.subs.delete(feed);
+          this.emit('render-progress', { p: 1, bars: b - a });
+          if (loop && job.buf) {                         // pass 2 on: the folded loop, from the next wrap
+            const len = job.buf.duration; let k = 1; while (R.t0 + k * len < c.currentTime + 0.05) k++;
+            src(job.buf, R.t0 + k * len, true);
+          }
+        } else this.emit('render-progress', { p: job.frames / job.total, bars: b - a });
+      };
+      job.subs.add(feed); feed();
+      return true;
+    }
+    // LIGHT / FULL live sound: rebuild the devices (the project is untouched)
+    async setLiveQuality(m) {
+      if (m !== 'light' && m !== 'full') return false;
+      try { root.localStorage.setItem(LS_LIVE, m); } catch (e) {}
+      if (this.liveQuality === m) return true;
+      this.liveQuality = m; if (this.playing) this.stop();
+      if (this.project && this.ctx) { const P = this.project; await this.load(P); this.emit('project'); }
+      this.note('audio', 'live sound → ' + m);
+      return true;
+    }
+    // light: what the bypassed per-instrument reverbs would have added goes to the shared reverb bus instead
+    _lightSends() {
+      for (const [id, st] of this.strips) {
+        const inst = this.devices.get(id), m = this.liveQuality === 'light' && inst && inst.lightReverb ? inst.lightReverb() : 0;
+        if (!m) { if (st.lightVerb) st.lightVerb.gain.value = 0; continue; }
+        if (!st.lightVerb) { st.lightVerb = this.ctx.createGain(); st.on.connect(st.lightVerb); st.lightVerb.connect(this.verbIn); }
+        st.lightVerb.gain.value = m;
+      }
     }
     setBufferMode(m) { if (BUFFERS[m] === undefined) return false; try { root.localStorage.setItem(LS_BUF, m); } catch (e) {} return true; }
     get latencyMs() { return this.lat[this.audioLatencyKind()].ms; }
@@ -1628,8 +1786,9 @@ registerProcessor('mm-daw-rec', MMDawRec);
     async _offlineDevice(off, d, output) {
       const live = this.devices.get(d.id);
       let inst = null;
-      if (d.type === 'forge' && typeof G.ForgeSynth === 'function') { inst = new G.ForgeSynth(off, { output, maxVoices: 16 }); await inst.init(); if (live && live.getState) inst.setState(live.getState()); }
-      else if (d.type === 'kit') { const ls = live && live.getState ? live.getState() : null; inst = new KitDevice(off, { output, kit: d.kit, map: ls && ls.map }); await inst.init(); if (live && live.getState) inst.setState(live.getState()); await inst.ready(this.kitNotes(d.id)); }
+      const light = !!this._offLight;          // renders are full quality; light only to measure the live cost
+      if (d.type === 'forge' && typeof G.ForgeSynth === 'function') { inst = new G.ForgeSynth(off, { output, maxVoices: 16, light }); await inst.init(); if (live && live.getState) inst.setState(live.getState()); }
+      else if (d.type === 'kit') { const ls = live && live.getState ? live.getState() : null; inst = new KitDevice(off, { output, kit: d.kit, map: ls && ls.map, light }); await inst.init(); if (live && live.getState) inst.setState(live.getState()); await inst.ready(this.kitNotes(d.id)); }
       else if (d.type === 'patch') {
         const inner = live && live.inner; if (!inner) return null;
         if (inner.loadVoice) { inst = new inner.constructor(off, { output, maxVoices: 16 }); await inst.init(); inst.setState(inner.getState()); }
@@ -1641,7 +1800,8 @@ registerProcessor('mm-daw-rec', MMDawRec);
     }
     // opts: fromBar, toBar, loop (fold the tail onto the head → seamless, exact length), tailSec,
     //       trackIds (only these — a stem), limiter (default true; stems render without it so they sum)
-    async renderOffline({ fromBar = 0, toBar, loop = false, tailSec = 3, trackIds = null, limiter = true, sampleRate = RATE, onProgress } = {}) {
+    async renderOffline({ fromBar = 0, toBar, loop = false, tailSec = 3, trackIds = null, limiter = true, sampleRate = RATE, onProgress, onAudio, light = false } = {}) {
+      this._offLight = light;
       await this.start(); await this.whenReady();
       const P = this.project, M = P.master, spt = this.spt();
       const t0 = fromBar * BAR, t1 = (toBar ?? this.songBars()) * BAR;
@@ -1652,6 +1812,12 @@ registerProcessor('mm-daw-rec', MMDawRec);
       if (limiter) { const lim = off.createDynamicsCompressor(); lim.threshold.value = -2; lim.knee.value = 0; lim.ratio.value = 20; lim.attack.value = 0.002; lim.release.value = 0.1; master.connect(lim); lim.connect(out); }
       else master.connect(out);
       out.connect(off.destination);
+      if (onAudio) {                         // stream the output back while rendering (PLAY: RENDER starts on the first blocks)
+        await AK.addWorklet(off, TAP_WORKLET);
+        const tap = new AudioWorkletNode(off, 'mm-daw-tap', { numberOfInputs: 1, numberOfOutputs: 1, outputChannelCount: [1], channelCount: 2, channelCountMode: 'explicit' });
+        const z = off.createGain(); z.gain.value = 0; out.connect(tap); tap.connect(z); z.connect(off.destination);
+        tap.port.onmessage = e => { try { onAudio(e.data.at, [e.data.l, e.data.r]); } catch (x) { this.fault('render stream', x); } };
+      }
       const verbIn = off.createGain(), verb = off.createConvolver(), verbOut = off.createGain();
       verb.buffer = this.verb.buffer; verbOut.gain.value = M.verbMix; verbIn.connect(verb); verb.connect(verbOut); verbOut.connect(master);
       const dIn = off.createGain(), dl = off.createDelay(4), dFb = off.createGain(), dTone = off.createBiquadFilter(), dOut = off.createGain();
@@ -1691,6 +1857,9 @@ registerProcessor('mm-daw-rec', MMDawRec);
       const playing = active.filter(t => { const sid = sidOf(t); return strips.has(sid) && (sounding.has(sid) ? tracks.includes(t) : true); });
       // notes: same rules as live playback (patterns repeat inside clips, clipped at clip end, swing)
       const at = tick => (tick - t0) * spt + this.swingDelay(tick);
+      // notes are collected first and created a window at a time while the render runs (suspend / resume): a graph
+      // holding every voice of the song from the start costs every render quantum, so long renders went quadratic
+      const ev = [];
       let notes = 0;
       for (const tr of playing) {
         if (tr.kind === 'midi') {
@@ -1706,12 +1875,12 @@ registerProcessor('mm-daw-rec', MMDawRec);
               if (n.p !== undefined && !pc.plays(base, n)) continue;
               const offT = Math.min(on + n.d, ce, loop ? t1 : Infinity);
               if (gr) {
-                const q = gr.note(on, Math.min(on + n.d, ce), n.n, n.v * (tr.vel ?? 1)), w = Math.max(0, (on - t0) * spt + q.on);
-                inst.noteOn(n.n, q.v, w, tr.channel); inst.noteOff(n.n, Math.max(w + 0.005, (offT - t0) * spt + q.off - 0.002), tr.channel);
+                const q = gr.note(on, Math.min(on + n.d, ce), n.n, n.v * (tr.vel ?? 1)), w = Math.max(0, (on - t0) * spt + q.on), wo = Math.max(w + 0.005, (offT - t0) * spt + q.off - 0.002);
+                ev.push({ w, f: () => { inst.noteOn(n.n, q.v, w, tr.channel); inst.noteOff(n.n, wo, tr.channel); } });
                 notes++; continue;
               }
-              const vel = Math.max(0.02, Math.min(1, n.v * (tr.vel ?? 1)));
-              inst.noteOn(n.n, vel, at(on), tr.channel); inst.noteOff(n.n, Math.max(at(on) + 0.005, at(offT) - 0.002), tr.channel);
+              const vel = Math.max(0.02, Math.min(1, n.v * (tr.vel ?? 1))), w = at(on), wo = Math.max(w + 0.005, at(offT) - 0.002);
+              ev.push({ w, f: () => { inst.noteOn(n.n, vel, w, tr.channel); inst.noteOff(n.n, wo, tr.channel); } });
               notes++;
             }
           }
@@ -1728,7 +1897,24 @@ registerProcessor('mm-daw-rec', MMDawRec);
       }
       // automation: the whole timeline up front
       this._autoRange({ timeOf: tk => (tk - t0) * spt, strip: id => strips.get(id), inst: id => insts.get(id), cache: new Map(), seen: new Set(), fresh: true, cancel: null }, t0, t1);
-      for (const inst of insts.values()) if (inst.flush) await inst.flush();
+      const WIN = 2;
+      // by window only (stable): inside one, notes keep the order they always had — and the first two windows, which go in
+      // before the render starts, are one batch, so a short render calls its devices exactly as before (same random draws)
+      for (const e of ev) e.bk = Math.max(1, Math.floor(e.w / WIN));
+      ev.sort((x, y) => x.bk - y.bk);
+      const flush = async () => { for (const inst of insts.values()) if (inst.flush) await inst.flush(); };
+      let k = 0;
+      const upTo = t => { while (k < ev.length && ev[k].bk < t / WIN) { try { ev[k].f(); } catch (e) { this.fault('render note', e); } k++; } };
+      upTo(2 * WIN);                                        // each window's notes go in one window ahead of the render
+      for (let s = WIN; s < (total / sampleRate) && k < ev.length; s += WIN) {
+        const sAt = s;
+        off.suspend(sAt).then(async () => {
+          upTo(sAt + 2 * WIN); await flush();
+          if (onProgress) onProgress({ phase: 'render', notes, at: sAt / (total / sampleRate) });
+          off.resume();
+        });
+      }
+      await flush();
       if (onProgress) onProgress({ phase: 'render', notes });
       const buf = await off.startRendering();
       let chs = [buf.getChannelData(0).slice(0), buf.getChannelData(1).slice(0)];

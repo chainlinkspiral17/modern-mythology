@@ -22,7 +22,7 @@
   .badge.ok { color: var(--emerald-hi); border-color: var(--emerald); }
   .badge.warn { color: var(--amber); border-color: var(--amber); }
   .badge.bad { color: var(--red); border-color: var(--red); }
-  .transport { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; padding: 6px 12px; border-bottom: 1px solid var(--rule); }
+  .transport { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; padding: 6px 12px; border-bottom: 1px solid var(--rule); }
   .transport label { color: var(--text-dim); }
   select, input[type=number], input[type=text] { background: var(--ink); color: var(--gold-hi); border: 1px solid var(--rule); font-family: inherit; font-size: 11px; padding: 2px 4px; }
   input[type=number] { width: 52px; }
@@ -142,6 +142,7 @@
   /* recording: count-in · punch · mode · latency (transport) and takes rows (under a track) */
   .transport .rc { min-height: 24px; }
   .transport button.warn { color: var(--amber); border-color: var(--amber); }
+  #playmode { min-width: 58px; }
   .th .b button.tk.on { background: var(--emerald); color: var(--ink); border-color: var(--emerald-hi); }
   .tkh { display: flex; align-items: center; gap: 3px; padding: 0 4px 0 10px; border-bottom: 1px solid #1a1410; background: #0d0a08; }
   .tkh button { min-width: 36px; min-height: 36px; padding: 0 5px; font-size: 11px; }
@@ -186,9 +187,10 @@
 
 <div class="transport">
   <button id="play">▶</button><button id="stop" class="dim">■</button><button id="rec" class="rec">●</button>
+  <button id="playmode" class="dim rc" title="PLAY: RENDER renders the song or loop at full quality away from the live audio thread and plays it like a WAV — it starts about a second after ▶ and can't overload the Deck; edits are heard on the next ▶. LIVE plays every note in real time (keys, recording; can crackle or cut out on busy songs). Recording always plays LIVE. While it renders this shows how far it got.">RENDER</button>
   <span class="pos" id="pos">1.1.1</span>
   <label>BPM</label><input type="number" id="bpm" min="40" max="240" value="96">
-  <label>SWING</label><input type="range" id="swing" min="0" max="0.7" step="0.01" value="0" style="width:70px">
+  <label>SWING</label><input type="range" id="swing" min="0" max="0.7" step="0.01" value="0" style="width:56px">
   <label>KEY</label><select id="key"></select><select id="mode"></select>
   <button id="loopbtn" class="dim">⟲ LOOP</button><input type="number" id="loopa" min="1" value="1"> – <input type="number" id="loopb" min="2" value="9">
   <button id="metro" class="dim" title="click (never bounced)">♩</button>
@@ -216,6 +218,7 @@
   <div class="lr"><b>MIDI NOTES</b><input type="number" id="lat-midi" min="-100" max="500" step="0.1"><span>ms</span><span class="src" id="lat-midi-src"></span><span></span></div>
   <div class="note">FM-1 keys, any MIDI keyboard, the computer keys: notes land where they were heard, by each event's own time stamp. This is only an extra nudge (normally 0).</div>
   <div class="lr" style="grid-template-columns:128px 1fr"><b>AUDIO TAKES USE</b><select id="lat-use"><option value="auto">auto (by the input's name)</option><option value="fm1">FM-1 RETURN</option><option value="input">PLAY-ALONG INPUT</option></select></div>
+  <div class="lr2"><b>LIVE SOUND</b><button id="live-light" class="dim" title="LIVE playback / recording: reverbs, delays and chorus inside each instrument go to one shared reverb and no unison — about a third less load (default)">LIGHT</button><button id="live-full" class="dim" title="LIVE playback / recording with every instrument effect: heaviest — busy songs can overload the Deck">FULL</button><span class="note" id="live-note">PLAY: RENDER always uses full sound</span></div>
   <div class="lr2"><b>BUFFER</b><button id="buf-smooth" class="dim" title="a larger output buffer (Chrome playback): fewer crackles when a song is busy (default)">SMOOTH</button><button id="buf-fast" class="dim" title="Chrome's interactive buffer: quickest response for playing live, crackles sooner when the song is busy">FAST</button><span class="note" id="buf-note"></span></div>
   <div class="note" id="lat-now"></div>
   <div class="msg" id="lat-msg"></div>
@@ -425,6 +428,7 @@ async function diagReport() {
     L.push('audio: ' + c.state + ' · ' + c.sampleRate + ' Hz · buffer ' + E.buffer + ' · base ' + ((c.baseLatency || 0) * 1000).toFixed(1) + ' ms · output ' + ((c.outputLatency || 0) * 1000).toFixed(1) + ' ms · time ' + c.currentTime.toFixed(2) + ' s' + ('sinkId' in c ? ' · output device: ' + (c.sinkId || 'system default') : ''));
     try { const outs = (await navigator.mediaDevices.enumerateDevices()).filter(d => d.kind === 'audiooutput'); L.push('outputs: ' + (outs.map(d => (d.label || '(name hidden)') + (d.deviceId === 'default' ? ' [default]' : '')).join(' · ') || 'none listed')); } catch (e) {}
   } else L.push('audio: not started');
+  L.push('play: ' + E.playMode + (E._rendered ? ' (rendered now)' : '') + ' · live sound ' + E.liveQuality);
   L.push('transport: ' + (E.playing ? 'playing' : 'stopped') + ' · bpm ' + P.bpm + ' · loop ' + (P.loop.on ? P.loop.a + '–' + P.loop.b : 'off') + ' · song ' + E.songBars() + ' bars');
   for (const d of P.devices) {
     const inst = E.devices.get(d.id), v = inst && (inst.voices ? (Array.isArray(inst.voices) ? inst.voices.length : Object.keys(inst.voices).length) : '');
@@ -495,7 +499,7 @@ window.addEventListener('keydown', e => {
   const k = e.key.toLowerCase();
   if (k === 'z' && !e.shiftKey) { e.preventDefault(); undo(); } else if ((k === 'z' && e.shiftKey) || k === 'y') { e.preventDefault(); redo(); }
 }, true);
-function saveSoon() { undoCapture(); clearTimeout(saveT); saveT = setTimeout(async () => { try { await E.save(); $('b-save').textContent = 'saved ' + new Date().toLocaleTimeString(); $('b-save').className = 'badge ok'; } catch (e) { $('b-save').textContent = 'save failed'; $('b-save').className = 'badge bad'; } }, 1500); }
+function saveSoon() { if (E._rendered && !rEdited) { rEdited = true; rState = 'EDIT ▶'; playModeUI(); } undoCapture(); clearTimeout(saveT); saveT = setTimeout(async () => { try { await E.save(); $('b-save').textContent = 'saved ' + new Date().toLocaleTimeString(); $('b-save').className = 'badge ok'; } catch (e) { $('b-save').textContent = 'save failed'; $('b-save').className = 'badge bad'; } }, 1500); }
 
 // ═══════════════════════════════════════════════════════════════════
 // transport
@@ -511,11 +515,24 @@ function syncTransportUI() {
   punchUI();
   const M = P.master; $('m-vol').value = M.vol; $('m-verb').value = M.verbMix; $('m-size').value = M.verbSize; $('m-dmix').value = M.delayMix; $('m-dtime').value = M.delayBeats; $('m-dfb').value = M.delayFb;
 }
-$('play').addEventListener('click', () => E.playing ? E.stop() : E.play());
+$('play').addEventListener('click', () => E.playing || E._rplay ? E.stop() : E.playAuto());
+// the PLAY mode button doubles as the render's progress (the transport bar must stay one line on the Deck)
+let rState = '';
+function playModeUI() { const m = E.playMode; $('playmode').textContent = rState || (m === 'render' ? 'RENDER' : 'LIVE'); $('playmode').classList.toggle('on', m === 'live'); $('playmode').classList.toggle('warn', !!rState && rState !== 'RENDER'); }
+$('playmode').addEventListener('click', () => { const m = E.playMode === 'render' ? 'live' : 'render', was = E.playing || E._rplay; E.setPlayMode(m); playModeUI(); if (was) { const tk = E.playing ? E.tickNow() : undefined; E.stop(); E.playAuto(tk); } });
+playModeUI();
+let rEdited = false;
+E.on('render-progress', x => {
+  if (x.error) { rState = ''; playModeUI(); return; }             // the engine logged it (DIAG)
+  rState = x.p >= 1 || rEdited ? rState : '◔ ' + Math.round(x.p * 100) + '%';
+  if (x.p >= 1 && !rEdited) rState = '';
+  playModeUI();
+});
+E.on('transport', ({ playing }) => { if (!playing) { rEdited = false; if (!E._rplay) rState = ''; playModeUI(); } });
 $('stop').addEventListener('click', () => { if (!E.playing) E._stopTick = P.loop.on ? P.loop.a * BAR : 0; E.stop(); });
 $('rec').addEventListener('click', async () => { if (E.recording) await E.stopRecord(); else await E.startRecord(); });
 $('pname').addEventListener('change', () => { P.name = $('pname').value; saveSoon(); });
-$('bpm').addEventListener('change', () => { P.bpm = Math.max(40, Math.min(240, +$('bpm').value || 96)); E.applyMaster(); if (E.playing) E.play(E.tickNow()); saveSoon(); });
+$('bpm').addEventListener('change', () => { P.bpm = Math.max(40, Math.min(240, +$('bpm').value || 96)); E.applyMaster(); if (E.playing) E.playAuto(E.tickNow()); saveSoon(); });
 $('swing').addEventListener('input', () => { P.swing = +$('swing').value; saveSoon(); });
 $('key').addEventListener('change', () => { P.key = +$('key').value; drawRoll(); saveSoon(); });
 $('mode').addEventListener('change', () => { P.mode = $('mode').value; drawRoll(); saveSoon(); });
@@ -545,7 +562,7 @@ $('punchbtn').addEventListener('click', () => {
 const LAT_SRC = { checkout: 'CHECK-OUT', loopback: 'LOOPBACK', manual: 'MANUAL', default: 'DEFAULT' };
 function latUI() {
   const L = E.lat, k = E.audioLatencyKind();
-  $('latbtn').textContent = 'REC ⚙ ' + L[k].ms + ' ms';
+  $('latbtn').textContent = 'REC ⚙ ' + Math.round(L[k].ms) + ' ms';
   $('latbtn').classList.toggle('warn', L[k].src === 'default');
   $('latbtn').title = 'recording settings · audio takes: ' + L[k].ms + ' ms (' + (k === 'fm1' ? 'FM-1 return' : 'play-along input') + ', ' + (LAT_SRC[L[k].src] || L[k].src) + ') · MIDI nudge ' + L.midi.ms + ' ms';
   for (const x of ['fm1', 'input', 'midi']) {
@@ -555,6 +572,7 @@ function latUI() {
   $('lat-use').value = L.use;
   const c = E.audioComp(), la = (E.outDelay * 1000).toFixed(1);
   const want = (() => { try { return localStorage.getItem('mm_daw_buffer') || 'smooth'; } catch (e) { return 'smooth'; } })();
+  $('live-light').classList.toggle('on', E.liveQuality === 'light'); $('live-full').classList.toggle('on', E.liveQuality === 'full');
   $('buf-smooth').classList.toggle('on', want === 'smooth'); $('buf-fast').classList.toggle('on', want === 'fast');
   $('buf-note').textContent = 'output ' + E.outMs().toFixed(0) + ' ms' + (want !== E.buffer ? ' · RELOAD THE PAGE to switch' : '');
   $('lat-now').textContent = 'audio takes now shift by ' + c.total.toFixed(1) + ' ms (' + (k === 'fm1' ? 'FM-1 RETURN + ' + la + ' ms master look-ahead' : 'PLAY-ALONG INPUT') + (c.buf ? ' ' + (c.buf > 0 ? '+ ' : '− ') + Math.abs(c.buf).toFixed(1) + ' ms for this output buffer' : '') + ') · ' + (E.inputLabel ? 'input “' + E.inputLabel + '”' : 'no input picked yet (EXPORT → RECORDING)') +
@@ -565,6 +583,7 @@ $('latbtn').addEventListener('click', () => { $('latpanel').classList.toggle('sh
 $('lat-close').addEventListener('click', () => $('latpanel').classList.remove('show'));
 ['fm1', 'input', 'midi'].forEach(x => $('lat-' + x).addEventListener('change', () => E.setLatency(x, +$('lat-' + x).value, 'manual')));
 $('lat-use').addEventListener('change', () => E.setLatencyUse($('lat-use').value));
+for (const m of ['light', 'full']) $('live-' + m).addEventListener('click', async () => { await E.setLiveQuality(m); latUI(); msg('lat-msg', 'live sound: ' + m + '.'); });
 for (const m of ['smooth', 'fast']) $('buf-' + m).addEventListener('click', () => { E.setBufferMode(m); latUI(); msg('lat-msg', m === E.buffer ? 'buffer: ' + m + '.' : 'buffer → ' + m + ': reload the page (the project is saved) to switch.'); });
 $('lat-co').addEventListener('click', () => {
   const v = E.checkoutLatency(true);
@@ -874,7 +893,7 @@ function autoMove(ev) {
 function autoEnd() { if (!AUTO.drag) return false; AUTO.drag = null; drawArr(); saveSoon(); return true; }
 $('autodraw').addEventListener('click', () => { AUTO.draw = !AUTO.draw; $('autodraw').classList.toggle('on', AUTO.draw); drawArr(); });
 function arrRefresh() { renderHeads(); drawArr(); drawRoll(); renderDevDetail(); saveSoon(); }
-function arrSeek(h) { const tick = Math.floor(h.bar) * BAR; E._stopTick = tick; if (E.playing) E.play(tick); drawArr(tick); }
+function arrSeek(h) { const tick = Math.floor(h.bar) * BAR; E._stopTick = tick; if (E.playing) E.playAuto(tick); drawArr(tick); }
 function arrSelect(h) { if (!h.t) return false; sel.trackId = h.t.id; sel.clip = h.clip; return true; }
 function arrDeleteClip(h) {
   if (!h.t || h.clip < 0) return;
@@ -1403,7 +1422,7 @@ window.addEventListener('keydown', e => {
   const tag = (e.target.tagName || '').toUpperCase(); if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return;
   if (e.repeat) return;
   const k = e.key.toLowerCase();
-  if (k === ' ') { e.preventDefault(); E.playing ? E.stop() : E.play(); return; }
+  if (k === ' ') { e.preventDefault(); E.playing || E._rplay ? E.stop() : E.playAuto(); return; }
   if (k === 'r' && e.shiftKey) { $('rec').click(); return; }
   if (k === 'l' && !e.ctrlKey) { $('loopbtn').click(); return; }
   if (e.key === 'Delete' || e.key === 'Backspace') {

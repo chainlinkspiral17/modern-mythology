@@ -785,9 +785,13 @@ function buildSnap(synth, f) {
   };
   o.input = o.N(c.createGain());
   o.output = o.N(c.createGain());
+  // LIGHT (live playback on slow machines): the time-based effects pass straight through — the host can add the
+  // reverb back on a shared bus (lightReverb()). Rendering never uses light.
+  if (synth.light && LIGHT_BYPASS.has(f.type)) { o.input.connect(o.output); o.light = true; return o; }
   SNAP_BUILD[f.type](o, c, f.p, synth);
   return o;
 }
+const LIGHT_BYPASS = new Set(['reverb', 'delay', 'chorus', 'phaser', 'flanger', 'comb', 'tape']);
 
 const SNAP_BUILD = {
   filter(o, c, p) {
@@ -1113,6 +1117,9 @@ class ForgeSynth {
     if (!ctx) throw new Error('ForgeSynth needs an AudioContext');
     this.ctx = ctx;
     this.maxVoices = clamp(Math.round(opts.maxVoices || 12), 1, 64);
+    // light: one oscillator per unison stack and no time-based effects — about a third of the audio-thread cost,
+    // for live playback where a full patch would overload the audio thread (see the audio playbook, 2026-10-11)
+    this.light = !!opts.light;
     this._bpm = isNum(opts.bpm) ? clamp(opts.bpm, 20, 400) : 120;
     this.voices = [];
     this._ls = {};
@@ -1141,6 +1148,13 @@ class ForgeSynth {
     if (this._worklet && this._usesCrush()) { this._rebuildLanes(); this._rebuildGlobalRoutes(); }
     await this.loaded();
     return this;
+  }
+  // light only: how much reverb the bypassed snap-ins would have added (max mix of the active lanes' reverbs)
+  lightReverb() {
+    if (!this.light) return 0;
+    let m = 0;
+    for (const L of LANES) { const ln = this.state.lanes[L]; if (!ln || !(ln.gain > 0)) continue; for (const f of ln.fx || []) if (f.type === 'reverb' && f.on !== false) m = Math.max(m, +(f.p && f.p.mix) || 0); }
+    return m;
   }
   loaded() { return Promise.all([...this._pend]).then(() => this); }
   dispose() {
@@ -1797,7 +1811,7 @@ class ForgeSynth {
         budget--;
       } else {
         const per = g.type === 'wavetable' ? 2 : 1;
-        const n = Math.max(1, Math.min(g.unison, Math.floor(budget / per)));
+        const n = this.light ? 1 : Math.max(1, Math.min(g.unison, Math.floor(budget / per)));
         budget -= n * per;
         const uni = N(c.createGain()); uni.gain.value = 1 / Math.sqrt(n); uni.connect(vg.gain);
         let sb = null, rate = 1;

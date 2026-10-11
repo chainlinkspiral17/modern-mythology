@@ -60,7 +60,9 @@ const RENDER = `(async function () {
   }
   const dist = (a, b) => { let d = 0, e = 0; for (let i = 0; i < 24; i++) d += (a.fp[i] - b.fp[i]) ** 2; for (let i = 0; i < 16; i++) e += (a.ef[i] - b.ef[i]) ** 2;
     return Math.sqrt(d / 24) + Math.sqrt(e / 16) + 2 * Math.abs(a.mod - b.mod) + 2 * Math.abs(a.motion - b.motion); };
-  window.LIB = { render, dist, async all(ids, macros) { const out = []; for (let i = 0; i < ids.length; i += 8) out.push(...await Promise.all(ids.slice(i, i + 8).map(id => render(id, macros)))); return out; } };
+  // one at a time: the seed lives in the page-wide Math.random, so renders running side by side drew from each other's
+  // seeds (amb_rain's macros-up peak came out 1.009 once)
+  window.LIB = { render, dist, async all(ids, macros) { const out = []; for (const id of ids) out.push(await render(id, macros)); return out; } };
 })()`;
 
 suite('library · FORGE presets, composer pools, KIT styles, preset browser', async t => {

@@ -106,6 +106,21 @@ look-ahead loop. The audio→performance clock mapping comes from
 `ctx.getOutputTimestamp()`. 24 PPQN; Start at the tape's first frame
 (after count-in), Stop on stop.
 
+### The DAW plays renders; the Deck can't run a whole song live
+
+A busy generated song costs 0.7–1.15 cores of Web Audio. On the
+Deck, that load makes Chrome silently lose its PipeWire output: the
+context keeps running into a fake sink, and the meters still move.
+
+- ▶ defaults to **PLAY: RENDER** (`E.playAuto` → `playRendered`):
+  - the render streams back while it runs;
+  - playback starts once the render will stay ahead;
+  - the result is cached until the project changes.
+- **LIVE** (LIGHT by default) is for keys and recording.
+- Offline renders create notes one window ahead from `suspend()`
+  callbacks. Never create every note before `startRendering`: the
+  render cost goes quadratic.
+
 ## Recent lessons
 
 ### 2026-10-10 — the recording suite (first pass)
@@ -535,6 +550,61 @@ look-ahead loop. The audio→performance clock mapping comes from
     Chromium can drop the storage event.
   - `library`: unseeded noise flipped thresholds. Renders are now
     seeded per preset.
+
+### 2026-10-11 — the Deck drops Chrome's output under load: ▶ now plays a render
+
+- Root cause of "plays for under a second, then silence":
+  - DIAG showed output RMS 0.2–0.37 while nothing was heard.
+  - `wpctl status` showed no Chrome output stream at all.
+  - In AUDIO TEST every light row played and the heavy row (about
+    0.78 of a core on the audio thread) stopped or never started.
+
+  On the Deck, a heavy Web Audio load makes Chrome lose its PipeWire
+  stream. Chrome then renders into a silent fake sink, the context
+  keeps "running", and nothing tells the page. The RealtimeKit
+  flatpak override didn't help.
+- FORGE builds 20–40 nodes per voice, so a busy generated song costs
+  0.7–1.15 cores live. LIGHT live sound (no unison, a shared reverb
+  instead of per-patch reverb / delay / chorus) cuts only 25–30%,
+  which is not enough. Don't try to make the whole song fit the
+  real-time thread.
+- **PLAY: RENDER is the default ▶.**
+  - The loop or song is rendered offline, which never touches the
+    real-time thread. The output streams back while rendering: a tap
+    worklet posts 16384-frame blocks, and each block is scheduled as
+    a buffer source on the frame grid.
+  - Playback starts once the measured render rate says it will stay
+    ahead. That is about 0.8 s here. If the render falls behind, the
+    playhead holds back instead of glitching.
+  - Loops stream the first pass, then play the folded loop.
+  - The result is cached by the project JSON plus the region, so ▶
+    with no edits is instant.
+  - Streamed output equals the finished render to 6e-8, and that is
+    tested. The live master's gain is undone with `1/vol` because the
+    render already carries it.
+  - LIVE stays available for keys and recording, and recording
+    always plays live.
+- **Offline renders were quadratic.** Every note of the song was
+  created before `startRendering`, and every node in the graph costs
+  every render quantum: 16 bars took 39 s and 32 bars 101 s. Notes
+  now go in a 2 s window at a time from `suspend()` callbacks, one
+  window ahead, which makes it linear: 32 bars take 34 s, about 1.8×
+  real time. Exports and stems speed up too.
+- Window order matters for reproducibility. FORGE draws from the
+  page-wide `Math.random`, so the order across devices decides which
+  random numbers each device gets.
+  - Within a window, notes keep their old order.
+  - The first two windows go in as one batch, so short renders call
+    their devices exactly as before.
+  - The `daw_perf` old-vs-new check caught this: the audio was
+    0.35 off while each device's events were identical.
+- `library` flake (existed before this change): `LIB.all` ran 8
+  seeded renders at once, and each swapped the global `Math.random`.
+  The seeds mixed, and amb_rain's macros-up peak hit 1.009 once.
+  Seeded renders now run one at a time (19 s).
+- The transport bar must stay one line at 1280 px. The PLAY mode
+  button doubles as the render progress (`◔ 34%`) and the
+  "EDIT ▶" hint, rather than adding a status span.
 
 ## TEMPLATE
 

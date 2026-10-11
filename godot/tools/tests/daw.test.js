@@ -105,5 +105,69 @@ suite('daw · compose, render, stems, undo, temp tracks', async t => {
     t.ok(fs.statSync(path.join(game, 'assets/audio/bgm/test_club.wav')).size > 1e6, 'mix wav');
     fs.rmSync(game, { recursive: true, force: true });
   });
+  await t.test('PLAY: RENDER (the default ▶): streams the render — starts in about a second, sounds exactly like the bounce, loops, cached replay', async () => {
+    const r = await p.evaluate(async () => {
+      const sl = ms => new Promise(res => setTimeout(res, ms)), sr = E.ctx.sampleRate;
+      E._rcache = null; E.diag = [];
+      P.loop = { on: false, a: 0, b: 4 };
+      const songEnd = E.songBars();
+      const cap = new AK.Capture(E.ctx, E.out, { preRollSec: 0, maxChannels: 2 }); await cap.start(); cap.begin(0);
+      const t0 = performance.now(); let startMs = null;
+      E.on('transport', x => { if (x.playing && startMs === null) startMs = performance.now() - t0; });
+      document.getElementById('play').click();                       // the button: PLAY mode defaults to RENDER
+      while (startMs === null && performance.now() - t0 < 20000) await sl(20);
+      const rendered = !!E._rendered;
+      await sl(5000);
+      const tick = E.tickNow(); E.stop();
+      const res = cap.end(); cap.stop();
+      while (!E._rcache) await sl(100);                             // the render finishes on its own after ■
+      // streamed output == the finished render, sample for sample (the live master's gain is undone)
+      const R = E._rcache.buf.getChannelData(0), C = res.channels[0];
+      let first = 0; while (Math.abs(R[first]) < 0.05) first++;
+      let best = -1, bestErr = Infinity;
+      for (let o = 0; o + first + 2048 < C.length && o < sr * 3; o++) { let e = 0; for (let i = 0; i < 2048; i += 8) { const d = C[o + i] - R[first + i]; e += d * d; if (e > bestErr) break; } if (e < bestErr) { bestErr = e; best = o; } }
+      const at = best - first; let maxd = 0; for (let i = 0; i < Math.min(C.length - at, sr * 4); i++) maxd = Math.max(maxd, Math.abs(C[at + i] - R[i]));
+      // loop: the playhead wraps on the loop; ▶ again with no edits plays from the cache at once
+      P.loop = { on: true, a: 0, b: 1 };
+      await E.playRendered(); while (!E.playing) await sl(20);
+      const lenMs = BAR * E.spt() * 1000, ticks = [];
+      for (let i = 0; i < 8; i++) { await sl(lenMs / 3); ticks.push(E.tickNow()); }
+      E.stop(); while (E._rjob) await sl(100);
+      const t1 = performance.now(); await E.playRendered(); const cachedMs = performance.now() - t1, cachedOn = E.playing; E.stop();
+      P.loop = { on: true, a: 0, b: 2 };
+      return { bar: BAR, startMs, rendered, tick, maxd, ticks, cachedMs, cachedOn, songEnd, notes: E.diag.filter(x => x.kind === 'audio').map(x => x.msg) };
+    });
+    t.ok(r.rendered, 'the ▶ button played rendered');
+    t.ok(r.startMs < 5000, 'first sound after ' + Math.round(r.startMs) + ' ms');
+    t.ok(r.tick > r.bar, 'playhead moved: ' + r.tick);
+    t.ok(r.maxd < 1e-5, 'streamed output vs the finished render, max diff ' + r.maxd);
+    t.ok(r.ticks.every(x => x >= 0 && x < r.bar), 'loop playhead stays in bar 1: ' + r.ticks.map(Math.round).join(' '));
+    t.ok(r.ticks.some((x, i) => i && x < r.ticks[i - 1]), 'and wraps');
+    t.ok(r.cachedOn && r.cachedMs < 200, 'cached replay ' + Math.round(r.cachedMs) + ' ms');
+    t.ok(!r.notes.some(m => /fell behind/.test(m)), 'never fell behind: ' + JSON.stringify(r.notes));
+  });
+  await t.test('PLAY mode toggle (RENDER / LIVE) + LIVE SOUND light / full', async () => {
+    const r = await p.evaluate(async () => {
+      const sl = ms => new Promise(res => setTimeout(res, ms));
+      document.getElementById('playmode').click();
+      const mode = [E.playMode, document.getElementById('playmode').textContent];
+      document.getElementById('play').click(); await sl(600);
+      const live = [E.playing, !!E._rendered]; E.stop();
+      document.getElementById('playmode').click();
+      await E.setLiveQuality('full');
+      const full = [...E.devices.values()].filter(i => 'light' in i).map(i => i.light);
+      await E.setLiveQuality('light');
+      const light = [...E.devices.values()].filter(i => 'light' in i).map(i => i.light);
+      await E.play(0); await sl(1500); const lv = E._level(E._tap('out', E.out)); E.stop();
+      return { mode, live, back: E.playMode, full, light, lv, stored: localStorage.getItem('mm_daw_live') };
+    });
+    t.eq(r.mode, ['live', 'LIVE'], 'toggle → LIVE');
+    t.eq(r.live, [true, false], '▶ in LIVE plays live');
+    t.eq(r.back, 'render', 'toggle back');
+    t.ok(r.full.length >= 4 && r.full.every(x => x === false), 'FULL: no light devices');
+    t.ok(r.light.length >= 4 && r.light.every(x => x === true), 'LIGHT: every FORGE / KIT device light');
+    t.ok(r.lv > 0.01, 'light live playback sounds: ' + r.lv);
+    t.eq(r.stored, 'light');
+  });
   await t.test('no page / console errors', async () => t.noErrors(errors));
 });
