@@ -155,7 +155,7 @@ func _present_speaker(char_name: String) -> void:
 		_spk_rule.visible    = true
 		_spk_rule.position   = Vector2(_speaker.position.x,
 				_speaker.position.y + _speaker.get_minimum_size().y + 1.0)
-		_spk_rule.size       = Vector2(maxf(_speaker.get_minimum_size().x, 40.0), 3.0)
+		_spk_rule.size       = Vector2(maxf(_speaker.get_minimum_size().x, 40.0), 2.0)
 		_spk_rule.pivot_offset = Vector2.ZERO
 	var changed := char_name != _last_speaker
 	_last_speaker = char_name
@@ -210,17 +210,27 @@ func _anchor_to(slot: String) -> void:
 	var pad: Array = _skin.get("dlg_pad", [22.0, 48.0, 28.0, 48.0])
 	var left_pad: float  = float(pad[3])
 	var right_pad: float = float(pad[1])
-	# The column leans gently toward the speaker's portrait slot —
-	# a subtle bias, not a jump: the eye's path from face to words
-	# shortens without the box visibly rearranging itself.
+	# THE MEASURE (pass 82): the column is centred and capped at
+	# READ_MAX_COL (~75 characters) — an ereader's line, not the screen's
+	# — and leans gently toward the speaker's portrait slot, never past
+	# the pads. On a narrow viewport the cap never bites and there is no
+	# room to lean, so the column simply fills the box.
 	const COL_BIAS := 110.0
-	var target_l: float = left_pad
-	var target_r: float = -right_pad
+	var vp_w: float = 1280.0
+	var vpr := get_viewport_rect()
+	if vpr.size.x > 1.0:
+		vp_w = vpr.size.x
+	var usable: float = maxf(vp_w - left_pad - right_pad, 1.0)
+	var slack: float = maxf(usable - READ_MAX_COL, 0.0)
+	var shift: float = 0.0
 	match slot:
 		"left":
-			target_r = -right_pad - COL_BIAS
+			shift = -COL_BIAS
 		"right":
-			target_l = left_pad + COL_BIAS
+			shift = COL_BIAS
+	shift = clampf(shift, -slack * 0.5, slack * 0.5)
+	var target_l: float = left_pad + slack * 0.5 + shift
+	var target_r: float = -(right_pad + slack * 0.5 - shift)
 	var tw := create_tween().set_parallel(true)
 	tw.tween_property(_body, "offset_left", target_l, 0.25)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
@@ -251,42 +261,76 @@ func finish_typing() -> void:
 
 # ── Build variants ────────────────────────────────────────────────────────────
 
+# ── THE READING BAND (2026-10-11, pass 82) ────────────────────────────
+# User: "clean, elegant ereader type fonts for the visual novel … the whole
+# visual novel UI needs more passes, it's still a bit ugly." The 2026-07
+# modern-VN standard skin set 34 px type with an 11 px outline straight on
+# the art. This reads like an ereader instead: Literata at 28 px, 1.45
+# leading, a measure capped near 75 characters, NO outline — the words sit
+# on a soft reading band that fades up from the skin's dlg_bg (near-black
+# for the literary skins, cream paper for suburban) so the art stays
+# full-bleed above and the text has a calm ground. Draft 2 targets: the
+# band's top edge as a real gradient mask over the art (not a flat fade),
+# a hanging-punctuation / optical-margin pass, the backlog in the same face.
+const READ_BODY_PX := 28
+const READ_LEADING := 0.18        # extra line separation (Literata already carries ~1.44 em of line height)
+const READ_MAX_COL := 980.0       # the measure: ~75 characters of Literata at 28 px
+const READ_SPK_PX  := 19
+const READ_BAND_RISE := 56.0      # how far above the box the band begins its fade
+
+var _band: TextureRect = null
+
+
+func _band_texture(ground: Color) -> GradientTexture2D:
+	var g := Gradient.new()
+	g.offsets = PackedFloat32Array([0.0, 0.22, 0.52, 1.0])
+	g.colors = PackedColorArray([
+		Color(ground.r, ground.g, ground.b, 0.0),
+		Color(ground.r, ground.g, ground.b, ground.a * 0.58),
+		Color(ground.r, ground.g, ground.b, ground.a * 0.90),
+		Color(ground.r, ground.g, ground.b, ground.a * 0.96),
+	])
+	var t := GradientTexture2D.new()
+	t.gradient = g
+	t.fill_from = Vector2(0.0, 0.0)
+	t.fill_to = Vector2(0.0, 1.0)
+	t.width = 4
+	t.height = 256
+	return t
+
+
 func _build_standard() -> void:
-	# Modern-VN standard skin (2026-07-12 redesign): no bordered box —
-	# a soft bottom scrim only; the outlined text carries legibility so
-	# the background art reads full-bleed behind it. Larger type.
-	# Small edge margins (was 60 L/R) so the text has the full width to
-	# work with. Taller box so text can rise to just below mid-screen.
 	var pad: Array = _skin.get("dlg_pad", [22.0, 48.0, 28.0, 48.0])
 	# Box height is viewport-relative so the column reaches from just
-	# below mid-screen down to the bottom on any resolution/letterbox —
-	# giving long passages the room to fit without clipping. Overrides
-	# the skin's dlg_min_h (and the -210 default _apply_skin set on the
-	# root before setup ran) for the standard skin specifically.
+	# below mid-screen down to the bottom on any resolution/letterbox.
 	var vp_h: float = 720.0
 	var vpr := get_viewport_rect()
 	if vpr.size.y > 1.0:
 		vp_h = vpr.size.y
-	_std_box_h = clampf(vp_h * 0.46, 320.0, 480.0)
+	_std_box_h = clampf(vp_h * 0.44, 300.0, 460.0)
 	offset_top = -_std_box_h
 	offset_bottom = 0.0
 	custom_minimum_size.y = _std_box_h
-	# Inner text band (matches the body offsets set below): top pad+6,
-	# bottom pad+18. Cached so _fit_body_size measures against it.
 	_std_inner_top = float(pad[0]) + 6.0
 	_std_inner_bot = float(pad[2]) + 18.0
 
-	# No scrim, no border (2026-07-12 "no scrim" pass): the panel is
-	# fully transparent — the outlined text alone carries legibility so
-	# the background art reads uninterrupted. Kept as a node purely to
-	# hold the content-margin padding the text column inherits.
+	# The reading band: the skin's dlg_bg as a vertical fade that begins
+	# above the box (over the speaker name) and settles to near-opaque
+	# under the body. It is the only ground the text gets — no outline.
+	var ground: Color = _skin.get("dlg_bg", Color(0.03, 0.025, 0.02, 0.96))
+	_band = TextureRect.new()
+	_band.texture = _band_texture(ground)
+	_band.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	_band.stretch_mode = TextureRect.STRETCH_SCALE
+	_band.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_band.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_band.offset_top = -READ_BAND_RISE
+	add_child(_band)
+
+	# The panel stays transparent; it only carries the content margins.
 	_bg = Panel.new()
 	_bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	var style := StyleBoxFlat.new()
-	# FORCED transparent — ignore any skin-supplied dlg_bg. The skin's
-	# standard entry still carries an opaque colour, which was painting a
-	# ~200px black band under the text. Modern-VN wants the text sitting
-	# directly on the full-bleed background art, carried by its outline.
 	style.bg_color = Color(0.0, 0.0, 0.0, 0.0)
 	style.set_border_width_all(0)
 	style.content_margin_top    = pad[0] + 4
@@ -296,38 +340,31 @@ func _build_standard() -> void:
 	_bg.add_theme_stylebox_override("panel", style)
 	add_child(_bg)
 
-	# No rule bar (2026-07-12): the gradient rule drew a horizontal line
-	# across the screen at the box top. Keep an empty node so the _rule
-	# reference stays valid, but never render a bar.
+	# No rule bar; keep the node so the reference stays valid.
 	_rule = TextureRect.new()
 	add_child(_rule)
 
-	# Speaker name (above box)
+	# Speaker name: small tracked caps above the body (Cinzel on the
+	# literary skins, Inter on suburban), a 2 px edge instead of the old
+	# third-of-the-size outline.
 	_speaker = Label.new()
-	_speaker.position = Vector2(pad[3], -36.0)
+	_speaker.position = Vector2(pad[3], -34.0)
 	var sc: float = Settings.get_text_scale()
-	# Large modern-VN type — fixed big sizes (scaled by the accessibility
-	# text-scale), not the skin's smaller defaults.
 	_apply_font(_speaker, _skin.get("spk_font", SkinDB.F_CINZEL),
-				int(28 * sc),
-				_skin.get("spk_color", Color(0.96, 0.82, 0.42)))
+				int(READ_SPK_PX * sc),
+				_skin.get("spk_color", Color(0.96, 0.82, 0.42)), true)
 	_speaker.visible = false
 	add_child(_speaker)
 
-	# Accent underline bar under the speaker name — sized/positioned
-	# per line in _present_speaker, colored in _apply_speaker_accent.
 	_spk_rule = ColorRect.new()
 	_spk_rule.visible = false
 	_spk_rule.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(_spk_rule)
 
-	# Body text — top-aligned, no scrollbar. It fills the tall box from
-	# the top down (text rises to just below mid-screen); auto-fit
-	# (_fit_body_size) shrinks the font for long passages so nothing has
-	# to scroll. scroll_active=false is what kills the "jump to bottom on
-	# click" that was cutting off the opening lines.
-	_body_font_path = _skin.get("txt_font", SkinDB.F_IMFELL_I)
-	_body_base_size = int(34 * sc)
+	# Body: top-aligned, no scrollbar; auto-fit (_fit_body_size) steps the
+	# size down for long passages so nothing scrolls or clips.
+	_body_font_path = _skin.get("txt_font", SkinDB.F_LITERATA)
+	_body_base_size = int(READ_BODY_PX * sc)
 	_body = RichTextLabel.new()
 	_body.bbcode_enabled = true
 	_body.fit_content    = false
@@ -338,16 +375,17 @@ func _build_standard() -> void:
 	_body.offset_left   = pad[3]
 	_body.offset_right  = -pad[1]
 	_apply_rtl_font(_body, _body_font_path, _body_base_size,
-					_skin.get("txt_color", Color(0.98, 0.97, 0.94)))
+					_skin.get("txt_color", Color(0.98, 0.97, 0.94)), true)
 	add_child(_body)
 
 	# Advance cursor
 	_cursor = Label.new()
 	_cursor.text = CURSOR_CHAR
 	_apply_font(_cursor, _skin.get("spk_font", SkinDB.F_CINZEL), int(12 * sc),
-				_skin.get("cursor_col", Color(0.78, 0.66, 0.29)))
+				_skin.get("cursor_col", Color(0.78, 0.66, 0.29)), true)
 	_cursor.visible = false
 	add_child(_cursor)
+	_anchor_to("center")
 
 
 func _build_terminal() -> void:
@@ -488,6 +526,26 @@ func _start_type(text: String) -> void:
 	_cursor.visible = false
 	_fit_body_size(text)
 	_body.text = ""
+	# (pass 82) The first line after a setup() measures before the label
+	# has a layout and falls back to the character-count guess, which
+	# clipped a five-line passage's last line. Measure again one frame
+	# later, when get_content_height() is real.
+	_refit_pending = true
+	call_deferred("_refit_once")
+
+
+var _refit_pending: bool = false
+
+
+func _refit_once() -> void:
+	if not _refit_pending or _body == null or _full_text == "":
+		return
+	_refit_pending = false
+	_fit_body_size(_full_text)
+	if not _typing:
+		_body.text = _full_text
+	else:
+		_body.text = _substr_visible(_full_text, _char_idx)
 
 
 # Auto-fit: keep the big size for short/medium lines; step the font
@@ -509,7 +567,7 @@ func _fit_body_size(text: String) -> void:
 		# validates the line cache synchronously, so this is accurate in
 		# one call (no await needed).
 		while size > floor_size:
-			_apply_rtl_font(_body, _body_font_path, size, col)
+			_apply_rtl_font(_body, _body_font_path, size, col, true)
 			_body.text = vis
 			var ch: float = _body.get_content_height()
 			if ch <= 1.0:
@@ -522,7 +580,7 @@ func _fit_body_size(text: String) -> void:
 			size -= 2
 	else:
 		size = _fit_size_by_count(text)
-	_apply_rtl_font(_body, _body_font_path, size, col)
+	_apply_rtl_font(_body, _body_font_path, size, col, true)
 
 
 # Fallback shrink when we can't measure (layout not ready): scale the
@@ -627,29 +685,75 @@ static func _outline_for(col: Color) -> Color:
 	return Color(0, 0, 0, 0.92) if col.get_luminance() > 0.5 else Color(1, 1, 1, 0.92)
 
 
-func _apply_font(lbl: Label, font_path: String, size: int, col: Color) -> void:
+func _apply_font(lbl: Label, font_path: String, size: int, col: Color, reading: bool = false) -> void:
 	if ResourceLoader.exists(font_path):
 		var ff: FontFile = load(font_path)
-		lbl.add_theme_font_override("font", ff)
+		if reading:
+			# Tracked caps for the nameplate: the glyph spacing lives on a
+			# FontVariation, the file itself untouched.
+			var fv := FontVariation.new()
+			fv.base_font = ff
+			fv.set_spacing(TextServer.SPACING_GLYPH, 2)
+			lbl.add_theme_font_override("font", fv)
+		else:
+			lbl.add_theme_font_override("font", ff)
 	lbl.add_theme_font_size_override("font_size", size)
 	lbl.add_theme_color_override("font_color", col)
-	lbl.add_theme_color_override("font_outline_color", _outline_for(col))
-	lbl.add_theme_constant_override("outline_size", maxi(4, int(size * 0.34)))
+	if reading:
+		# No outline — the band under the text carries the legibility
+		# now; a 1 px shadow under light lettering only (a dark edge on
+		# gold caps over a dark band just dimmed the name).
+		lbl.add_theme_constant_override("outline_size", 0)
+		var shadow: Color = Color(0.0, 0.0, 0.0, 0.0)
+		if col.get_luminance() > 0.5:
+			shadow = Color(0.0, 0.0, 0.0, 0.5)
+		lbl.add_theme_color_override("font_shadow_color", shadow)
+		lbl.add_theme_constant_override("shadow_offset_x", 0)
+		lbl.add_theme_constant_override("shadow_offset_y", 1)
+		lbl.add_theme_constant_override("shadow_outline_size", 1)
+	else:
+		lbl.add_theme_color_override("font_outline_color", _outline_for(col))
+		lbl.add_theme_constant_override("outline_size", maxi(4, int(size * 0.34)))
 
 
-func _apply_rtl_font(rtl: RichTextLabel, font_path: String, size: int, col: Color) -> void:
+func _apply_rtl_font(rtl: RichTextLabel, font_path: String, size: int, col: Color, reading: bool = false) -> void:
 	if ResourceLoader.exists(font_path):
 		var ff: FontFile = load(font_path)
 		rtl.add_theme_font_override("normal_font",  ff)
 		rtl.add_theme_font_override("bold_font",    ff)
-		rtl.add_theme_font_override("italics_font", ff)
+		# The italic face is the real italic when the body is Literata;
+		# every other face slants itself (no italic file shipped).
+		var it_path: String = _italic_for(font_path)
+		if it_path != "" and ResourceLoader.exists(it_path):
+			var fi: FontFile = load(it_path)
+			rtl.add_theme_font_override("italics_font", fi)
+		else:
+			rtl.add_theme_font_override("italics_font", ff)
 	rtl.add_theme_font_size_override("normal_font_size",  size)
 	rtl.add_theme_font_size_override("bold_font_size",    size)
 	rtl.add_theme_font_size_override("italics_font_size", size)
 	rtl.add_theme_color_override("default_color", col)
-	# RichTextLabel outline: color override + outline_size constant.
-	rtl.add_theme_color_override("font_outline_color", _outline_for(col))
-	rtl.add_theme_constant_override("outline_size", maxi(4, int(size * 0.34)))
+	if reading:
+		# THE READING BAND: no outline; generous leading; a 1 px shadow
+		# under light text only (dark text on the cream band gets none).
+		rtl.add_theme_constant_override("outline_size", 0)
+		rtl.add_theme_constant_override("line_separation", int(round(size * READ_LEADING)))
+		var shadow: Color = Color(0.0, 0.0, 0.0, 0.0)
+		if col.get_luminance() > 0.5:
+			shadow = Color(0.0, 0.0, 0.0, 0.45)
+		rtl.add_theme_color_override("font_shadow_color", shadow)
+		rtl.add_theme_constant_override("shadow_offset_x", 0)
+		rtl.add_theme_constant_override("shadow_offset_y", 1)
+		rtl.add_theme_constant_override("shadow_outline_size", 1)
+	else:
+		rtl.add_theme_color_override("font_outline_color", _outline_for(col))
+		rtl.add_theme_constant_override("outline_size", maxi(4, int(size * 0.34)))
+
+
+static func _italic_for(font_path: String) -> String:
+	if font_path == SkinDB.F_LITERATA:
+		return SkinDB.F_LITERATA_I
+	return ""
 
 
 func _add_tape_strip(pos: Vector2, w: int, h: int, angle_deg: float, col: Color) -> void:

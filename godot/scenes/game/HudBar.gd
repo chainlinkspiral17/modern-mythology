@@ -105,8 +105,8 @@ func _build(skin: Dictionary, vol: int, skills: Dictionary) -> void:
 	_chapter_lbl.add_theme_font_size_override("font_size", 12)
 	_chapter_lbl.add_theme_color_override("font_color",
 			Color(hud_col.r, hud_col.g, hud_col.b, 0.55))
-	if ResourceLoader.exists(SkinDB.F_IMFELL_I):
-		_chapter_lbl.add_theme_font_override("font", load(SkinDB.F_IMFELL_I) as Font)
+	if ResourceLoader.exists(SkinDB.F_LITERATA_I):
+		_chapter_lbl.add_theme_font_override("font", load(SkinDB.F_LITERATA_I) as Font)
 	row.add_child(_chapter_lbl)
 
 	# The items strip — the same dim serif, a step dimmer.

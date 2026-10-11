@@ -228,6 +228,34 @@ through them in order.
 
 ## Recent lessons
 
+### 2026-10-11 · the VN reads like an ereader, not a poster
+
+- **Outlined type is the "ugly".** The 2026-07 standard dialogue skin
+  put 34 px type with an outline a third of its size straight on the
+  art, and the user's verdict was "courier like … still a bit ugly." An
+  outline that thick turns every face into a sticker; a reading surface
+  wants NO outline and a ground instead — a gradient band fading up from
+  the skin's dlg_bg under the text, a 1 px shadow at most. Legibility is
+  the band's job, never the glyph's.
+- **One reading face, chosen for long text.** Literata (opsz-variable,
+  OFL) at 28 px, ~1.6 effective line pitch (its own 1.44 em plus 0.18),
+  a measure capped near 75 characters. Display faces (Cinzel, IM Fell)
+  stay chrome — plates, kickers, nameplates — and the monos stay where a
+  screen is diegetic (`signal`). Fonts in Godot are font-size overrides
+  per Label; the skin holds the PATH and the box applies it, so a swap
+  is one constant in SkinDB.
+- **Measure before the label has a layout and you get a guess.** The
+  auto-fit (`get_content_height`) returns ~0 on the frame a box is
+  built, falls back to a character-count estimate, and the first
+  five-line passage clipped. Re-measure once, deferred, when the layout
+  is real.
+- **Screenshot the real components.** `tools/VNTypeSpecimen.tscn` boots
+  DialogueBox + ChoiceMenu over any render with the trip attached in
+  texture mode (join `"trip_local"`, `TripSync.attach(bg)`) exactly as
+  GameEngine does — without that the global trip layer halos the
+  letters and the sheet lies about the game. Hide the dialogue when the
+  choice menu is up, as the engine does.
+
 ### 2026-10-08 · the paint pass blotches a FLAT field into a disc
 
 - Under the new porch sun, the cabin's front door, one flat dark slab

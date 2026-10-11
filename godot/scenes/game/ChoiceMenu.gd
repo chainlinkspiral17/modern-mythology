@@ -58,9 +58,10 @@ func _build() -> void:
 	_prompt_label = Label.new()
 	_prompt_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_prompt_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	if ResourceLoader.exists(SkinDB.F_IMFELL_I):
-		_prompt_label.add_theme_font_override("font", load(SkinDB.F_IMFELL_I) as Font)
-	_prompt_label.add_theme_font_size_override("font_size", 22)
+	# (pass 82) the prompt in the reading face's italic, a step above the body
+	if ResourceLoader.exists(SkinDB.F_LITERATA_I):
+		_prompt_label.add_theme_font_override("font", load(SkinDB.F_LITERATA_I) as Font)
+	_prompt_label.add_theme_font_size_override("font_size", 26)
 	_prompt_label.add_theme_color_override("font_color", Color(0.93, 0.90, 0.83))
 	_column.add_child(_prompt_label)
 
@@ -163,14 +164,18 @@ func present(prompt: String, opts: Array, callback: Callable, style: String = ""
 		# Per-volume type character survives (skin font), but the size
 		# floor rises to reading distance — options were 13px under a
 		# 34px body.
-		var ch_font: String = _skin.get("ch_font", SkinDB.F_IMFELL_R)
+		var ch_font: String = _skin.get("ch_font", SkinDB.F_LITERATA)
 		if ResourceLoader.exists(ch_font):
 			btn.add_theme_font_override("font", load(ch_font) as Font)
-		btn.add_theme_font_size_override("font_size", maxi(19, int(_skin.get("ch_size", 13))))
+		# (pass 82) options at reading size; the hover colour is the skin's
+		# ch_hcolor so the cream suburban scrim keeps its contrast (gold on
+		# cream read as nothing).
+		btn.add_theme_font_size_override("font_size", maxi(22, int(_skin.get("ch_size", 22))))
+		var hot: Color = _skin.get("ch_hcolor", C_GOLD)
 		btn.add_theme_color_override("font_color",         _skin.get("ch_color",  Color(0.80, 0.75, 0.64)))
-		btn.add_theme_color_override("font_hover_color",   C_GOLD)
-		btn.add_theme_color_override("font_focus_color",   C_GOLD)
-		btn.add_theme_color_override("font_pressed_color", C_GOLD)
+		btn.add_theme_color_override("font_hover_color",   hot)
+		btn.add_theme_color_override("font_focus_color",   hot)
+		btn.add_theme_color_override("font_pressed_color", hot)
 
 		var idx := i
 		btn.pressed.connect(func() -> void: _on_chosen(idx))

@@ -3834,6 +3834,38 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-11 · pass 82: THE READING PASS (VN typography · draft 1).** User:
+"clean, elegant ereader type fonts for the visual novel. I don't like the
+courier like presentation in Planned Community. The whole visual novel UI
+needs more passes, it's still a bit ugly." The Courier was vol 6's
+`suburban` skin (Courier Prime, run by the standard dialogue variant at
+34 px with an 11 px white outline straight on the art); every literary
+skin ran IM Fell Italic the same way. Literata (Google Play Books' face,
+OFL, variable) and Inter now ship in `resources/fonts/`; SkinDB's
+literary / arcana / pastoral / suburban bodies and choices are Literata,
+suburban's nameplate and HUD are Inter; `signal` keeps Space Mono (a
+terminal is diegetic) and `zine` Special Elite (the paper is). The
+standard DialogueBox variant is a READING BAND: 28 px Literata, 1.18
+leading on top of its own 1.44 em line height, a ~75-character measure
+that leans toward the speaker's slot, NO outline, a gradient ground that
+fades up from the skin's dlg_bg (near-black on the literary skins, cream
+paper on suburban), a 19 px tracked-caps nameplate; the first passage
+after setup re-measures a frame later (it clipped its last line).
+ChoiceMenu: prompt in Literata Italic 26, options at 22 in the skin's
+hover colour (gold on the cream scrim read as nothing); HudBar's chapter
+whisper and UnlockToast in Literata. `tools/VNTypeSpecimen.tscn`
+screenshots the real DialogueBox + ChoiceMenu over any render, per skin,
+with the trip in texture mode as the engine runs it — the review loop
+for every further UI pass. **Draft 2 targets:** the backlog overlay,
+InGameMenu, InterludePanel and the save/slot picker in the same system;
+the chapter plate (Cinzel kicker + IM Fell 40) reconsidered against
+Literata; text scale 1.3 checked on the Deck; the engine's own 300 px
+scrim under the band is probably redundant now; CharLayer speaker
+accents need a contrast floor against the cream band; the four alternates
+(Crimson Pro, Source Serif 4, Lora, EB Garamond — the specimen page
+shows them) are a one-line swap in SkinDB if Literata reads wrong on the
+Deck's 7-inch panel.
+
 **2026-10-11 · pass 81: NAMED CLOSEUPS AT THE CABIN'S TABLE (D6).** The
 most-seen room's sixty named cues (tem 22, per 11, lena 7, kai 7, finn 6,
 cale 4, marina 2, roy 2) all fell to the plain pair. A seat per name on

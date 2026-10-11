@@ -98,9 +98,9 @@ func _build_card(data: Dictionary) -> void:
 
 	var title := Label.new()
 	title.text = str(data.get("title", ""))
-	if ResourceLoader.exists(SkinDB.F_IMFELL_R):
-		title.add_theme_font_override("font", load(SkinDB.F_IMFELL_R) as Font)
-	title.add_theme_font_size_override("font_size", 14)
+	if ResourceLoader.exists(SkinDB.F_LITERATA):
+		title.add_theme_font_override("font", load(SkinDB.F_LITERATA) as Font)
+	title.add_theme_font_size_override("font_size", 15)
 	title.add_theme_color_override("font_color", C_TXT)
 	title.clip_text = true
 	vbox.add_child(title)
@@ -109,8 +109,8 @@ func _build_card(data: Dictionary) -> void:
 	if sub_text != "":
 		var sub := Label.new()
 		sub.text = sub_text
-		if ResourceLoader.exists(SkinDB.F_IMFELL_I):
-			sub.add_theme_font_override("font", load(SkinDB.F_IMFELL_I) as Font)
+		if ResourceLoader.exists(SkinDB.F_LITERATA_I):
+			sub.add_theme_font_override("font", load(SkinDB.F_LITERATA_I) as Font)
 		sub.add_theme_font_size_override("font_size", 12)
 		sub.add_theme_color_override("font_color", C_DIM)
 		sub.clip_text = true
