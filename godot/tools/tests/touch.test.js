@@ -27,10 +27,15 @@ suite('touch · sliders, arrangement, piano roll', async t => {
   await t.test('piano roll: tap adds a note, long-press removes it', async () => {
     await p.evaluate(() => { sel = { trackId: P.tracks[3].id, clip: 0 }; roll.zoom = 3; drawRoll(); });
     const g = await p.evaluate(() => { const r = document.getElementById('rollcv').getBoundingClientRect(), w = document.getElementById('rollwrap').getBoundingClientRect(); return { x: r.left, y: r.top, keyw: roll.KEYW, tp: roll.tickPx, rh: roll.rowH, wy: w.top, wh: w.height, n: curClip().p.notes.length, sl: document.getElementById('rollwrap').scrollLeft }; });
-    // an empty cell: first bar, a sixteenth in, in the middle of the visible rows
-    const ri = Math.floor((g.wy + g.wh / 2 - g.y) / g.rh), x = g.x + g.keyw + 12 * g.tp + 3, y = g.y + ri * g.rh + g.rh / 2;
-    const occupied = await p.evaluate(({ ri }) => { const n = roll.rows[ri]; return curClip().p.notes.some(m => m.n === n && m.t <= 12 && m.t + m.d > 12); }, { ri });
-    if (occupied) return t.skip('roll tap', 'cell already has a note for this seed');
+    // an empty cell: first bar, a sixteenth in — the visible row nearest the middle that has no note there
+    const mid = Math.floor((g.wy + g.wh / 2 - g.y) / g.rh), lo = Math.ceil((g.wy - g.y) / g.rh), hi = Math.floor((g.wy + g.wh - g.y) / g.rh) - 1;
+    const ri = await p.evaluate(({ mid, lo, hi }) => {
+      const free = i => { const n = roll.rows[i]; return n !== undefined && !curClip().p.notes.some(m => m.n === n && m.t <= 12 && m.t + m.d > 12); };
+      for (let k = 0; k <= hi - lo; k++) for (const i of [mid - k, mid + k]) if (i >= lo && i <= hi && free(i)) return i;
+      return -1;
+    }, { mid, lo, hi });
+    t.ok(ri >= 0, 'no empty visible row at the first sixteenth');
+    const x = g.x + g.keyw + 12 * g.tp + 3, y = g.y + ri * g.rh + g.rh / 2;
     await f.tap(x, y); await new Promise(r => setTimeout(r, 300));
     const added = await p.evaluate(() => curClip().p.notes.length);
     await f.hold(x, y);
