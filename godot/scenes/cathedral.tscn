@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cathedral_clean"]
+[gd_scene load_steps=27 format=3 uid="uid://cathedral_clean"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/cathedral/cathedral_interior.glb" id="1_interior_glb"]
 [ext_resource type="PackedScene" path="res://assets/3d/props/workbench_props.glb" id="2_workbench_glb"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" path="res://assets/3d/dioramas/regions.glb" id="4_dioramas_glb"]
 [ext_resource type="PackedScene" path="res://assets/3d/atmosphere/atmosphere.glb" id="5_atmosphere_glb"]
 [ext_resource type="Script" path="res://scripts/FirstPersonController.gd" id="6_fpc"]
+[ext_resource type="Script" path="res://scripts/HeroProp.gd" id="20_hero_prop"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="7_hud"]
 [ext_resource type="PackedScene" path="res://assets/3d/characters/heroes/frasier_temple.glb" id="8_frasier"]
 [ext_resource type="Shader" path="res://assets/shaders/demoscene_post.gdshader" id="9_post"]
@@ -373,6 +374,18 @@ shadow_enabled = false
 [node name="WorkbenchProps" parent="." instance=ExtResource("2_workbench_glb")]
 
 [node name="DemonFigurines" parent="." instance=ExtResource("3_agents_glb")]
+; THE STEAMBOAT MODEL (Hero Studio, 2026-10-11): the Meshy GLB from the Drive,
+; fitted at runtime by HeroProp over the procedural fragment's spot on the
+; workbench (hull 0.90 m along Z, bench top 0.91). Missing GLB = the fragment stays.
+[node name="Steamboat_Model" type="Node3D" parent="."]
+position = Vector3(0, 0.92, 3.1)
+script = ExtResource("20_hero_prop")
+glb_path = "res://assets/3d/props/steamboat_model.glb"
+size_m = 0.9
+length_axis = "z"
+stand_in_root = NodePath("Interior")
+hide_prefixes = PackedStringArray("Magician_Steamboat_Hull", "Magician_Steamboat_Trim", "Magician_Steamboat_Deck", "Magician_Steamboat_Saloon", "Magician_Steamboat_Hurricane", "Magician_Steamboat_Pilot", "Magician_Steamboat_Stack", "Magician_Steamboat_Wheel")
+
 
 [node name="Dioramas" parent="." instance=ExtResource("4_dioramas_glb")]
 

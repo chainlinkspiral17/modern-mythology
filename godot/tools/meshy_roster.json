@@ -7092,6 +7092,69 @@
         ],
         "when": "ch4 — the Miller kitchen, a weekday evening"
       }
+    },
+    {
+      "slug": "nate_kestrel",
+      "kind": "hero",
+      "name": "Nate (the Kestrel trace, at sixteen)",
+      "file": "nate_kestrel.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "nate",
+        "nate_kestrel",
+        "the_boy"
+      ],
+      "tag": "vol7 ch11 Kestrel Mountain · the groove at the basement desk shaped like Nate at sixteen · NOT vol6's Nate the bassist",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Nate as the substrate renders him: a boy of about sixteen in 1993, slight, pale, dark hair falling over his forehead, a thin face a little too still — a trace of a person, not the person. A faded flannel shirt open over a plain tee, worn jeans, canvas sneakers; a designer's idea of a basement kid, drawn from memory.",
+      "texture_prompt": "faded flannel shirt, plain grey tee, worn blue jeans, canvas sneakers, dark hair, pale skin",
+      "notes": "SPARSE — canon gives the age and that the face is new to Kai; the clothes are proposed. Edit before spending credits.",
+      "canon": [
+        {
+          "src": "vol7/vol7_ch11_kestrel.json",
+          "text": "The boy turned. The boy was about sixteen. The boy had a face Kai had not seen before."
+        },
+        {
+          "src": "vol7/vol7_ch11_kestrel.json",
+          "text": "The groove has shaped itself into a person who looks like Nate did at sixteen and who knows what Nate knew at sixteen. I am not Nate. Nate is dead. Nate died in '42."
+        }
+      ],
+      "prompt_mode": "append"
+    },
+    {
+      "slug": "old_man_kestrel",
+      "kind": "hero",
+      "name": "The old man at the pool",
+      "file": "old_man_kestrel.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "old_man",
+        "old man",
+        "the_old_man",
+        "old_man_kestrel"
+      ],
+      "tag": "vol7 ch11 Kestrel Mountain · the Bergen carver's imprint · waders, wool cap, kneeling at the second pool",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "An old man of about seventy-five kneeling at the edge of a clear mountain pool: weathered face, white hair under a dark wool cap, eyes that have looked at water for decades. Rubber waders to the waist over a thick wool shirt, sleeves pushed up, big carver's hands.",
+      "texture_prompt": "dark olive rubber waders, grey wool shirt, charcoal wool cap, white hair, weathered tan skin",
+      "notes": "SPARSE — canon gives the cap, the waders, the age and the eyes; the shirt is proposed. Edit before spending credits.",
+      "canon": [
+        {
+          "src": "vol7/vol7_ch11_kestrel.json",
+          "text": "At the edge: an old man. In waders to the waist. Kneeling at the edge. White hair under a wool cap. Looking at the water."
+        },
+        {
+          "src": "vol7/vol7_ch11_kestrel.json",
+          "text": "The old man turned. His face: the face of a man maybe seventy-five, weathered, with the kind of eyes that had been looking at water for some decades."
+        }
+      ],
+      "prompt_mode": "append"
     }
   ]
 }

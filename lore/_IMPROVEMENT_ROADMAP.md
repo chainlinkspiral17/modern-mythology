@@ -3834,6 +3834,42 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-11 · pass 83: THE DRIVE'S NEW MODELS, INTO THE GAME.** User:
+"lots of new 3D models were put in the google drive, need to be added to
+godot game project." The day's Hero Studio run put 91 hero GLBs, 2 demons
+and 2 props on the Drive (the manifest commits came up with it: the newest
+are jessa, doug, maya_daigle_age7, coach_dale, jim_henderson,
+gracie_kowalski, bill_kowalski, anita_kowalski ×2, bt, coach_k_home — and
+the first HERO PROP, steamboat_model.glb at 106 MB). The heroes need no
+wiring: CharLayer resolves a speaker through the roster's keys and
+volumes, and every new file's keys already match the scripts (doug 61
+lines, coach_dale 44, jessa 25, bill 55, jim 56, gracie 26; the age-7
+Maya is a vol-5 LOOK of maya_daigle). The prop did: `scripts/HeroProp.gd`
+is the runtime fitter for Meshy props (merged AABB → longest extent along
+a chosen axis → scaled to a real size → seated on y 0 → matte materials →
+hides the named procedural stand-in), loaded DEFERRED so CathedralSetup's
+material pass does not flatten it; `cathedral.tscn` gets `Steamboat_Model`
+at the workbench (0, 0.92, 3.10), 0.90 m along Z, over the hidden
+`Magician_Steamboat_*` boxes (the glass case stays). A clone without the
+Drive's files renders the fragment as before. Roster: vol 7's `nate` (72
+lines, the Kestrel trace at sixteen) and `old_man` (51, the Bergen carver
+at the pool) were NOT IN THE ROSTER — added as SPARSE entries with their
+canon quotes, keyed and volume-gated so they do not collide with vol 6's
+Nate. **Still without a model (the Hero Studio queue, by lines):** vol 6
+russell 41, mark 41, carlos 38, jen 35, marisol 34, chess 29, hal 25,
+hugo 19, lucy 18, boyd 17, tucker 13, doyle 13, judge 10, brent 9 (all in
+the roster); vol 5 marcus 12; vol 1 helen / emily / deborah (roster) and
+the_human_being / the_writer / the_director / the_artist / woman (not —
+vol 1's abstractions, probably 2D on purpose); vol 7 figure 20, crow 12;
+vol 4 casper 8. **Draft N+1:** on the Deck, `drive-pull`, open the
+cathedral, check the steamboat's orientation (HeroProp prints the extents
+and scale; if the hull reads along X, set `length_axis` to "x"), and
+decide whether the fragment's glass case fits the model; the other roster
+props (fool_bindle, magician_iron, bbs_terminal, cassette_archive …) get
+the same HeroProp placement as they arrive; the Meshy heroes' standing
+poses in locale walk scenes (cathedral's Frasier is still an ext_resource
+under the flat material pass).
+
 **2026-10-11 · pass 82: THE READING PASS (VN typography · draft 1).** User:
 "clean, elegant ereader type fonts for the visual novel. I don't like the
 courier like presentation in Planned Community. The whole visual novel UI

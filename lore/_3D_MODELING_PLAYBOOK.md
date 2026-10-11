@@ -399,6 +399,38 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-10-11 · Meshy props land through a runtime fitter, never a transform
+
+**What happened.** The first Hero Studio PROP (the steamboat model, 106 MB
+on the Drive) had to sit on Frasier's workbench. The GLBs are gitignored
+(the Drive holds them; `meshy_pipeline.py drive-pull` fetches them), so a
+session without the files cannot measure one, and Meshy's frame and
+scale are its own — the heroes already auto-orient and scale to 1.80 m
+in Portrait3D for that reason.
+
+**Rules.**
+- **Place a prop with `scripts/HeroProp.gd`, not an ext_resource.** The
+  node sits where the prop stands (y = the surface); the script loads
+  the GLB if it exists, lays the longest extent along `length_axis` (or
+  stands it up with `upright`), scales it to `size_m`, centres and seats
+  it, mattes the materials, and hides the procedural stand-in by name
+  prefix under the locale GLB instance. No file = a warning and the
+  stand-in stays, so a fresh clone renders as before.
+- **Load deferred in any scene with a setup pass.** CathedralSetup puts a
+  flat vertex-colour `material_override` on EVERY MeshInstance3D it finds
+  on `_ready`; a textured prop added by a child's `_ready` is walked too
+  and comes out white. `call_deferred` lands the model after the pass.
+- **Keep the stand-in in the builder.** The procedural fragment is the
+  fallback and the size reference (the steamboat's 0.90 m hull along
+  blender Y told the fitter `length_axis = "z"`, 0.9 m). Name the
+  stand-in's parts with one prefix so the fitter can hide them all.
+- **Heroes need no scene work.** CharLayer resolves speakers through the
+  roster's keys and volumes; a new hero GLB named by its roster `file`
+  is in the game the moment it is pulled. Check coverage by scanning the
+  scripts' `char` keys against the roster + Drive manifest (pass 83's
+  roadmap entry has the list) — the gaps are roster entries to write,
+  not code.
+
 ### 2026-10-11 · opening a room to its roof (the cabin, interior drafts 10–11)
 
 **What happened.** The user: "Cabin needs more windows, more consideration
