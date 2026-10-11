@@ -4161,5 +4161,53 @@
     },
     "output": "godot/assets/3d/props/steamboat_model.glb",
     "file_size_kb": 104208.0
+  },
+  {
+    "at": "2026-10-11T21:20:29+00:00",
+    "stage": "image",
+    "slug": "doug",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Doug like this: Doug, who has not in three weeks called him by his name, has been calling him kid. Doug picks the Karamazov up off the floor and puts it in his jacket pocket. Additional direction: Doug, late 50s, a grocery night-shift lifer at the Centro. Rangy, stooped, grey stubble, deep-set eyes that keep people at the right distance. A dark-green store jacket with a name patch over a faded flannel shirt, worn jeans, black work shoes, a Brothers Karamazov paperback stuffed in the jacket pocket.\nFull-body concept render of Doug, a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/doug/doug_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/doug/doug_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/doug/doug_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-11T21:25:04+00:00",
+    "stage": "mesh",
+    "slug": "doug",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a12cd8-54a0-76dd-8624-222c29e10f3f",
+    "inputs": [
+      "godot/assets/concept/meshy/doug/front.png",
+      "godot/assets/concept/meshy/doug/side.png",
+      "godot/assets/concept/meshy/doug/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "smart-topology",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/doug.glb",
+    "file_size_kb": 54095.2
   }
 ]
