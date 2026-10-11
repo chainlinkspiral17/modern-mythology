@@ -172,23 +172,39 @@ glow_hdr_scale = 2.4
 environment = SubResource("Env_Locale")
 
 ; (2026-10-07) 4:11 AM: no sun — a cool sky-glow key, the kitchen lit by the light over the sink
-[node name="Key" type="DirectionalLight3D" parent="."]
+; (pass 61, 2026-10-11) the authored rig is suffixed to bianca_kitchen_morning: its time-of-day twin below brings its own
+[node name="Key__bianca_kitchen_morning" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 4, 8, 4)
 light_color = Color(0.62, 0.70, 0.86, 1)
 light_energy = 0.22
 shadow_enabled = false
 
-[node name="Fill" type="DirectionalLight3D" parent="."]
+[node name="Fill__bianca_kitchen_morning" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
 light_color = Color(0.96, 0.88, 0.72, 1)
 light_energy = 0.5
 shadow_enabled = false
 
-[node name="Back" type="DirectionalLight3D" parent="."]
+[node name="Back__bianca_kitchen_morning" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866, 0.354, -0.354, 0, 0.707, 0.707, 0.5, 0.612, -0.612, 0, 4, -6)
 light_color = Color(0.62, 0.74, 0.86, 1)
 light_energy = 0.3
 shadow_enabled = false
+
+; ── THE DAY (pass 61): bianca_kitchen_day — the sun through the sink window and the east window
+[node name="Day_Sun__bianca_kitchen_day" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.3420, -0.6645, 0.6645, 0.0000, 0.7071, 0.7071, -0.9397, -0.2418, 0.2418, 0, 6, -8)
+light_color = Color(1.00, 0.94, 0.84, 1)
+light_energy = 1.0
+shadow_enabled = true
+metadata/daylight = true
+
+[node name="Day_SkyFill__bianca_kitchen_day" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-1.0000, -0.0000, 0.0000, 0.0000, 0.2588, 0.9659, -0.0000, 0.9659, -0.2588, 0, 6, 0)
+light_color = Color(0.72, 0.80, 0.92, 1)
+light_energy = 0.5
+shadow_enabled = false
+metadata/daylight = true
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 

@@ -49,6 +49,10 @@
       "bed": "assets/audio/bgm/vol6_live_oak_field.wav",
       "gain": 1.0
     },
+    "school_field_day": {
+      "bed": "assets/audio/bgm/vol6_live_oak_field.wav",
+      "gain": 1.0
+    },
     "miller_back_porch": {
       "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
       "gain": 0.95
@@ -105,6 +109,10 @@
       "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
       "gain": 0.9
     },
+    "bianca_kitchen_day": {
+      "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
+      "gain": 0.9
+    },
     "caldwell_kitchen_night": {
       "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
       "gain": 0.9
@@ -122,6 +130,10 @@
       "gain": 0.9
     },
     "miller_kitchen": {
+      "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
+      "gain": 0.9
+    },
+    "miller_kitchen_night": {
       "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
       "gain": 0.9
     },

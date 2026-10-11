@@ -3834,6 +3834,26 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-11 · pass 61: THE KITCHENS AND THE FIELD AT THE OTHER HOUR.**
+`school_field_day` — the field was authored for the evening (the six floods
+at 3.2, the lot lamps) and played two-a-days at dawn and seven-thirty, the
+depth chart at twelve-forty, the six PM walk-through ("is light") and
+Vinton's bus under the floods: the floods, lamps and the evening rig are
+suffixed `__school_field_evening`; the day twin brings the August sun and
+a sky (the scene had a flat backdrop — a ProceduralSky added); six cuts
+routed. `bianca_kitchen_day` for ch23 Sunday's afternoon at her table (the
+four-thirty rig has the pendants off and a 0.22 key). `miller_kitchen_night`
+for ch2's kitchen table after the Gas & Go lot. `safehouse_bedroom`'s three
+cuts are all by day on a night sky: a day env on the base preset (the sun
+is daylight-tagged already). No Deck rebuild. **Draft N+1:** the field
+by day needs the stands' shadows (the sun has shadows on; check the
+floods' poles don't read lit); the field's `shot_insert_corkboard`
+and the field-house by day; Bianca's day twin should draw the blinds
+open (a prop state); the remaining scan rows — new_orleans_room (night /
+dawn), hans_bakery_back_kitchen (one candlelight cut among five mornings),
+salty_tome_alley (one 5:40 night cut), chillwave (one dusk), centro's
+dawn cut (ch16_dawn 85, 8:04 AM clock-out).
+
 **2026-10-11 · pass 60: THE BEDROOMS AT THE OTHER HOUR.** The mood-tag
 scan (every 3D cut's `[mood:]` against its scene's authored env) found four
 one-preset rooms played at both ends of the day on one rig: Maya's and

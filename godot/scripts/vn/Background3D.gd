@@ -685,6 +685,23 @@ const CAMERA_PRESETS := {
 		"fov": 62.0,
 		"suppress_input": true,
 	},
+	"miller_kitchen_night": {
+		"scene": "res://scenes/locales/miller_kitchen.tscn",
+		"requires_glb": "res://assets/3d/locales/miller_kitchen.glb",
+		# The Miller kitchen on Meadowlark Circle built big (2026-10-07): a
+		# 9 x 7 m open kitchen, family room and front hall (_props/miller_kitchen.py).
+		# From the family room side of the wide opening, looking N across the island to the sink window (the cul-de-sac), the range, the fridge; the breakfast table at right.
+		# (2026-10-11, pass 61) THE SAME PLACE at the other hour: ch2 (the kitchen table at night, after the Gas & Go lot) on the day
+		# key through the sink window.
+		# The authored rig is suffixed to miller_kitchen; this twin has its own lights and env.
+		"camera_origin": Vector3(1.60, 1.65, 0.50),
+		"camera_rotation": Vector3(-0.061, 0.391, 0.0),
+		"fov": 62.0,
+		"env": {"sky_top": Color(0.05, 0.06, 0.13, 1), "sky_horizon": Color(0.16, 0.15, 0.21, 1),
+			"ground_horizon": Color(0.08, 0.08, 0.10, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.36, 0.36, 0.46, 1), "ambient_energy": 0.40, "fog_color": Color(0.12, 0.12, 0.16, 1)},
+		"suppress_input": true,
+	},
 	"centro_grocery_aisle": {
 		"scene": "res://scenes/locales/centro_grocery_aisle.tscn",
 		"requires_glb": "res://assets/3d/locales/centro_grocery_aisle.glb",
@@ -1440,6 +1457,28 @@ const CAMERA_PRESETS := {
 		"fov": 62.0,
 		"suppress_input": true,
 	},
+	"school_field_day": {
+		"scene": "res://scenes/locales/school_field_evening.tscn",
+		"requires_glb": "res://assets/3d/locales/school_field_evening.glb",
+		# OUTDOOR: the true-scale gridiron (x sideline-to-sideline, +-24.4;
+		# y downfield, south end line 0 -> north 109.7; godot (x, z, -y)).
+		# Draft 5 (2026-10-09): the HOME stands and press box are EAST,
+		# behind the home bench ("third row, behind the home bench"); a
+		# visitors' stand west; the lot and the field gate south. Camera
+		# just past the south end line by the gate, looking downfield NW:
+		# striped turf and both goalposts, the home stands frame-right.
+		# (2026-10-11, pass 61) THE SAME PLACE at the other hour: two-a-days at dawn and seven-thirty (ch13), the depth chart at twelve
+		# forty (ch19), the six PM walk-through "is light" (ch19), Vinton's bus (ch22)
+		# played under the floods.
+		# The authored rig is suffixed to school_field_evening; this twin has its own lights and env.
+		"camera_origin": Vector3(6.0, 2.8, 3.5),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(31.0), 0.0),
+		"fov": 62.0,
+		"env": {"sky_top": Color(0.40, 0.56, 0.80, 1), "sky_horizon": Color(0.84, 0.86, 0.84, 1),
+			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
+			"ambient_color": Color(0.82, 0.82, 0.80, 1), "ambient_energy": 0.90, "fog_color": Color(0.80, 0.82, 0.80, 1)},
+		"suppress_input": true,
+	},
 	"ramos_kitchen_morning": {
 		"scene": "res://scenes/locales/ramos_kitchen_morning.tscn",
 		"requires_glb": "res://assets/3d/locales/ramos_kitchen_morning.glb",
@@ -1462,6 +1501,23 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(3.90, 1.60, -6.00),
 		"camera_rotation": Vector3(-0.106, 2.495, 0.0),
 		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"bianca_kitchen_day": {
+		"scene": "res://scenes/locales/bianca_kitchen_morning.tscn",
+		"requires_glb": "res://assets/3d/locales/bianca_kitchen_morning.glb",
+		# The Miller kitchen on Meadowlark Circle built big (2026-10-07): a
+		# 9 x 7 m open kitchen, family room and front hall (_props/miller_kitchen.py).
+		# From the sideboard by the east window, looking SW over Mike's chair and the table to the back door's robe and the dark family room.
+		# (2026-10-11, pass 61) THE SAME PLACE at the other hour: ch23 Sunday (the afternoon at Bianca's table, Sammy's cereal) on the
+		# four-thirty rig (key 0.22, the pendants off).
+		# The authored rig is suffixed to bianca_kitchen_morning; this twin has its own lights and env.
+		"camera_origin": Vector3(3.90, 1.60, -6.00),
+		"camera_rotation": Vector3(-0.106, 2.495, 0.0),
+		"fov": 62.0,
+		"env": {"sky_top": Color(0.40, 0.56, 0.80, 1), "sky_horizon": Color(0.84, 0.86, 0.84, 1),
+			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
+			"ambient_color": Color(0.82, 0.82, 0.80, 1), "ambient_energy": 0.90, "fog_color": Color(0.80, 0.82, 0.80, 1)},
 		"suppress_input": true,
 	},
 	"hospital_room": {
@@ -1502,6 +1558,11 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(2.0, 1.62, -0.55),
 		"camera_rotation": Vector3(-0.139, 0.957, 0.0),
 		"fov": 60.0,
+		# (pass 61) the set's sky is authored at night but ch6 Yes (afternoon), ch7 Family Only
+		# (day_bright) and ch9 Hi, Sam (afternoon) are its only cuts: a day sky by env.
+		"env": {"sky_top": Color(0.40, 0.56, 0.80, 1), "sky_horizon": Color(0.84, 0.86, 0.84, 1),
+			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
+			"ambient_color": Color(0.82, 0.82, 0.80, 1), "ambient_energy": 0.80, "fog_color": Color(0.80, 0.82, 0.80, 1)},
 		"suppress_input": true,
 	},
 	"el_rancho_drive_thru": {
