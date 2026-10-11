@@ -85,6 +85,11 @@
    "md5": "7cb8e8fa634b58d50ce18e72795ace09",
    "size": 51759116
   },
+  "godot/assets/3d/characters/heroes/anita_kowalski_scrubs.glb": {
+   "at": "2026-10-11T20:35:19+00:00",
+   "md5": "de7a2bbb089723cf3807206470790780",
+   "size": 43170424
+  },
   "godot/assets/3d/characters/heroes/anna_logue.glb": {
    "at": "2026-10-01T01:48:41+00:00",
    "md5": "c6805d678501fb6e2fe6e14e7ad6d682",
@@ -52399,6 +52404,41 @@
    "at": "2026-10-11T20:31:36+00:00",
    "md5": "07756196b0a8f59ff6c93863e5d320cb",
    "size": 2062641
+  },
+  "godot/assets/concept/meshy/anita_kowalski_scrubs/anita_kowalski_scrubs_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T20:35:29+00:00",
+   "md5": "4c7b3682e8d0ef81452ccb8c8c649ea9",
+   "size": 1909567
+  },
+  "godot/assets/concept/meshy/anita_kowalski_scrubs/anita_kowalski_scrubs_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T20:35:29+00:00",
+   "md5": "52fc1f6f4423b772a511a9abd063e178",
+   "size": 1943591
+  },
+  "godot/assets/concept/meshy/anita_kowalski_scrubs/anita_kowalski_scrubs_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T20:35:29+00:00",
+   "md5": "e3cfa7d64e6ee0e7c92a6e8d7abbdbc4",
+   "size": 1872705
+  },
+  "godot/assets/concept/meshy/anita_kowalski_scrubs/back.png": {
+   "at": "2026-10-11T20:35:29+00:00",
+   "md5": "4c7b3682e8d0ef81452ccb8c8c649ea9",
+   "size": 1909567
+  },
+  "godot/assets/concept/meshy/anita_kowalski_scrubs/front.png": {
+   "at": "2026-10-11T20:35:29+00:00",
+   "md5": "52fc1f6f4423b772a511a9abd063e178",
+   "size": 1943591
+  },
+  "godot/assets/concept/meshy/anita_kowalski_scrubs/meshy_thumb.png": {
+   "at": "2026-10-11T20:35:29+00:00",
+   "md5": "d246d208e3fd265e81c901a0d1a798a8",
+   "size": 78970
+  },
+  "godot/assets/concept/meshy/anita_kowalski_scrubs/side.png": {
+   "at": "2026-10-11T20:35:29+00:00",
+   "md5": "e3cfa7d64e6ee0e7c92a6e8d7abbdbc4",
+   "size": 1872705
   },
   "godot/assets/concept/meshy/anna_logue/anna_logue_front_meshy_recovered.png": {
    "at": "2026-10-01T01:23:48+00:00",
