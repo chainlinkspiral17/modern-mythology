@@ -4372,6 +4372,15 @@ func _audio_play_bgm_for_current_state() -> void:
 		_audio_play_bgm_track(_CP_BGM_STORM)
 	else:
 		_audio_play_bgm_track(_CP_BGM_STRATEGIC)
+	# Layered (stems) music follows the season: pad + chords through the
+	# onboarding weeks, bass / drums / lead come in as the summer crests,
+	# everything for the W13-W14 storm. Plain stereo tracks ignore this.
+	AudioMgr.set_music_intensity(clampf(0.25 + (pressure - 1.0) / 0.85 * 0.75, 0.25, 1.0))
+
+
+# Leaving the board: hand the next scene the full mix back.
+func _exit_tree() -> void:
+	AudioMgr.set_music_intensity(1.0, 0.0)
 
 
 # ── Logging ──────────────────────────────────────────────────────

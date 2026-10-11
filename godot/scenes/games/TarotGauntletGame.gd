@@ -5089,6 +5089,18 @@ func _render() -> void:
 		var d_max_for_audio: float = float(_doubt_max)
 		_audio_manipulator.update_stagnation(float(_stagnation) / max(1.0, s_max_for_audio))
 		_audio_manipulator.update_doubt(float(_doubt) / max(1.0, d_max_for_audio))
+	# Layered (stems) music follows the room: threats on the board and the
+	# run's losing stat bring in bass → drums → lead (AudioMgr layers at
+	# 0.25 / 0.5 / 0.75). Plain stereo tracks ignore this.
+	var threat_frac: float = clampf(float(_threats_active.size()) / 3.0, 0.0, 1.0)
+	var stat_frac: float = 0.0
+	if is_magician:
+		var s_max_i: float = float(_setup.get("loss_conditions", {}).get("stagnation_max", 12))
+		stat_frac = maxf(float(_stagnation) / maxf(1.0, s_max_i), float(_doubt) / maxf(1.0, float(_doubt_max)))
+	elif not is_major_arcana:
+		# the Fool: Inertia climbs toward 11, Sanity drains toward 0
+		stat_frac = maxf(float(_inertia) / 11.0, 1.0 - float(_sanity) / maxf(1.0, float(_sanity_max)))
+	AudioMgr.set_music_intensity(clampf(0.25 + 0.45 * threat_frac + 0.30 * clampf(stat_frac, 0.0, 1.0), 0.0, 1.0))
 	# Evocative tooltips driven by the current value — the player
 	# hovers and gets the room's mood at that pressure level.
 	_inertia_label.tooltip_text = _inertia_mood(_inertia)
@@ -9459,3 +9471,8 @@ func _build_draft_modal_body() -> Control:
 		note.add_theme_font_size_override("font_size", 10)
 		vb.add_child(note)
 	return vb
+
+
+# Leaving the table: hand the next scene the full mix back.
+func _exit_tree() -> void:
+	AudioMgr.set_music_intensity(1.0, 0.0)
