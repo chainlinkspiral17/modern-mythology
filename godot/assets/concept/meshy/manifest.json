@@ -2586,5 +2586,53 @@
     },
     "output": "godot/assets/3d/characters/heroes/mrs_gable.glb",
     "file_size_kb": 58445.9
+  },
+  {
+    "at": "2026-10-11T17:44:42+00:00",
+    "stage": "image",
+    "slug": "petra",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Petra like this: She was sixty-one. Petra came in with rain on her hair and the small canvas tote bag she carried up the river full of papers with mud on them. She watched Petra at the back door of the bookstore with her arms crossed against the morning cold, looking at the alley she had been the proprietor of for forty-one years. Petra set the cup down half-empty, pulled her coat off the hook by the office door, and was out the back through the alley in under ninety seconds.\nFull-body concept render of Petra, a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/petra/petra_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/petra/petra_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/petra/petra_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-11T17:48:55+00:00",
+    "stage": "mesh",
+    "slug": "petra",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a12c11-fadb-76ed-8684-2a1794f5c667",
+    "inputs": [
+      "godot/assets/concept/meshy/petra/front.png",
+      "godot/assets/concept/meshy/petra/side.png",
+      "godot/assets/concept/meshy/petra/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "smart-topology",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/petra.glb",
+    "file_size_kb": 64251.6
   }
 ]
