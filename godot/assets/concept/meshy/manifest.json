@@ -3810,5 +3810,95 @@
     },
     "output": "godot/assets/3d/characters/heroes/anita_kowalski_scrubs.glb",
     "file_size_kb": 42158.6
+  },
+  {
+    "at": "2026-10-11T20:36:02+00:00",
+    "stage": "image",
+    "slug": "bill_kowalski",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Bill Kowalski like this: Bill is by the cake, in his good Sunday shirt, doing the small specific Bill-thing of pretending he is annoyed about the ceremony while being, by anyone's read who has known him for more than ten minutes, deeply pleased. Daisy, the family's twelve-year-old golden, is at Bill's feet. Additional direction: Bill Kowalski, late 40s, Ben's father. Broad, heavy through the middle, a sun-reddened neck, thinning sandy hair. His good Sunday shirt \u2014 a pressed pale-blue button-down tucked into khakis, a brown belt, brown loafers \u2014 worn with the air of a man pretending to be annoyed by a ceremony he is deeply pleased by.\nFull-body concept render of Bill Kowalski, a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/bill_kowalski/bill_kowalski_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/bill_kowalski/bill_kowalski_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/bill_kowalski/bill_kowalski_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-11T20:37:20+00:00",
+    "stage": "image",
+    "slug": "bill_kowalski",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Bill Kowalski like this: No dog. Bill is by the cake, in his good Sunday shirt, doing the small specific Bill-thing of pretending he is annoyed about the ceremony while being, by anyone's read who has known him for more than ten minutes, deeply pleased.\n\nDaisy, the family's twelve-year-old golden, is at Bill's feet. Additional direction: Bill Kowalski, late 40s, Ben's father. Broad, heavy through the middle, a sun-reddened neck, thinning sandy hair. His good Sunday shirt \u2014 a pressed pale-blue button-down tucked into khakis, a brown belt, brown loafers \u2014 worn with the air of a man pretending to be annoyed by a ceremony he is deeply pleased by.\nFull-body concept render of Bill Kowalski, a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/bill_kowalski/bill_kowalski_front_openai_gpt-image-2.5-sunburst_02.png",
+      "godot/assets/concept/meshy/bill_kowalski/bill_kowalski_side_openai_gpt-image-2.5-sunburst_02.png",
+      "godot/assets/concept/meshy/bill_kowalski/bill_kowalski_back_openai_gpt-image-2.5-sunburst_02.png"
+    ]
+  },
+  {
+    "at": "2026-10-11T20:38:40+00:00",
+    "stage": "image",
+    "slug": "bill_kowalski",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Bill Kowalski like this: Bill is by the cake, in his good Sunday shirt, doing the small specific Bill-thing of pretending he is annoyed about the ceremony while being, by anyone's read who has known him for more than ten minutes, deeply pleased. Additional direction: Bill Kowalski, late 40s, Ben's father. Broad, heavy through the middle, a sun-reddened neck, thinning sandy hair. His good Sunday shirt \u2014 a pressed pale-blue button-down tucked into khakis, a brown belt, brown loafers \u2014 worn with the air of a man pretending to be annoyed by a ceremony he is deeply pleased by.\nFull-body concept render of Bill Kowalski, a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/bill_kowalski/bill_kowalski_front_openai_gpt-image-2.5-sunburst_03.png",
+      "godot/assets/concept/meshy/bill_kowalski/bill_kowalski_side_openai_gpt-image-2.5-sunburst_03.png",
+      "godot/assets/concept/meshy/bill_kowalski/bill_kowalski_back_openai_gpt-image-2.5-sunburst_03.png"
+    ]
+  },
+  {
+    "at": "2026-10-11T20:41:03+00:00",
+    "stage": "mesh",
+    "slug": "bill_kowalski",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a12cb0-8213-76e4-aee9-6f39ac0b2664",
+    "inputs": [
+      "godot/assets/concept/meshy/bill_kowalski/front.png",
+      "godot/assets/concept/meshy/bill_kowalski/side.png",
+      "godot/assets/concept/meshy/bill_kowalski/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "smart-topology",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/bill_kowalski.glb",
+    "file_size_kb": 36158.8
   }
 ]
