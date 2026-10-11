@@ -2229,5 +2229,26 @@
     },
     "output": "godot/assets/3d/characters/heroes/chief_miller.glb",
     "file_size_kb": 46477.2
+  },
+  {
+    "at": "2026-10-11T16:26:17+00:00",
+    "stage": "image",
+    "slug": "nate_bassist",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Nate (Gallatin Band bassist) like this: Nate \u2014 the bassist, seventeen, a skateboarder whose hair has, this month, been dyed the specific green of a traffic-light go. Nate's beat-up Mazda is in the lot. Nate on the second folding chair on his phone\nFull-body concept render of Nate (Gallatin Band bassist), a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/nate_bassist/nate_bassist_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/nate_bassist/nate_bassist_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/nate_bassist/nate_bassist_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
   }
 ]

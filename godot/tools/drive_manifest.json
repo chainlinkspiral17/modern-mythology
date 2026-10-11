@@ -256,9 +256,9 @@
    "size": 67660
   },
   "godot/assets/3d/characters/heroes/chief_miller.glb": {
-   "at": "2026-10-01T01:48:41+00:00",
-   "md5": "2dd9e93a085634a2e27a037298cc9dec",
-   "size": 40558688
+   "at": "2026-10-11T16:25:49+00:00",
+   "md5": "d74819f2e966106fd83bb7b2243b845e",
+   "size": 47592640
   },
   "godot/assets/3d/characters/heroes/chief_miller_0.jpg": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -1090,6 +1090,11 @@
    "md5": "a70413a5578008bdca07a805c7c40c03",
    "size": 72643
   },
+  "godot/assets/3d/characters/heroes/sam_miller.glb": {
+   "at": "2026-10-11T16:25:49+00:00",
+   "md5": "7867ad27b87148a21aad2f639e000e93",
+   "size": 63506904
+  },
   "godot/assets/3d/characters/heroes/sam_miller_apron.glb": {
    "at": "2026-10-01T01:48:41+00:00",
    "md5": "7f704705d35233026c37967ada9457aa",
@@ -1319,6 +1324,11 @@
    "at": "2026-10-01T01:48:41+00:00",
    "md5": "bc410fc85113b5d8c89c219ee4f4ad2e",
    "size": 67210
+  },
+  "godot/assets/3d/props/workbench_props.glb": {
+   "at": "2026-10-11T16:25:59+00:00",
+   "md5": "3e07eb206545df7fec52537b7969e078",
+   "size": 60412
   },
   "godot/assets/audio/voice/vol5_ch0_booth6/001.mp3": {
    "at": "2026-10-01T19:41:05+00:00",
@@ -52185,15 +52195,65 @@
    "md5": "8bdd895669a73937b0f6b9aa4af81a3f",
    "size": 71793
   },
+  "godot/assets/concept/meshy/chief_miller/back.png": {
+   "at": "2026-10-11T16:26:19+00:00",
+   "md5": "a30072dd230f7d45e12860c2d5dd87dd",
+   "size": 1678277
+  },
+  "godot/assets/concept/meshy/chief_miller/chief_miller_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T16:26:19+00:00",
+   "md5": "a30072dd230f7d45e12860c2d5dd87dd",
+   "size": 1678277
+  },
+  "godot/assets/concept/meshy/chief_miller/chief_miller_back_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-11T16:26:19+00:00",
+   "md5": "fd2e069921ec99089e354a57445948d5",
+   "size": 2126169
+  },
   "godot/assets/concept/meshy/chief_miller/chief_miller_front_meshy_recovered.png": {
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "003b7d8cac0af6acf9b067204c2f2a1d",
    "size": 76981
   },
+  "godot/assets/concept/meshy/chief_miller/chief_miller_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T16:26:19+00:00",
+   "md5": "365b43dcb5c827baec3fedce9f8438cd",
+   "size": 2173610
+  },
+  "godot/assets/concept/meshy/chief_miller/chief_miller_front_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-11T16:26:19+00:00",
+   "md5": "cf3074dea7d10060ae94527f041512dc",
+   "size": 2141069
+  },
+  "godot/assets/concept/meshy/chief_miller/chief_miller_front_openai_gpt-image-2.5-sunburst_03.png": {
+   "at": "2026-10-11T16:26:19+00:00",
+   "md5": "f93641f2859c7ca433561ea39a06d1d3",
+   "size": 1881638
+  },
+  "godot/assets/concept/meshy/chief_miller/chief_miller_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T16:26:19+00:00",
+   "md5": "0deb7128086713a12cb5e869dc3731ca",
+   "size": 1590728
+  },
+  "godot/assets/concept/meshy/chief_miller/chief_miller_side_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-11T16:26:19+00:00",
+   "md5": "393f0fd123297910e8b18fbcd2193148",
+   "size": 1888278
+  },
   "godot/assets/concept/meshy/chief_miller/front.png": {
-   "at": "2026-10-01T01:23:48+00:00",
-   "md5": "003b7d8cac0af6acf9b067204c2f2a1d",
-   "size": 76981
+   "at": "2026-10-11T16:26:19+00:00",
+   "md5": "f93641f2859c7ca433561ea39a06d1d3",
+   "size": 1881638
+  },
+  "godot/assets/concept/meshy/chief_miller/meshy_thumb.png": {
+   "at": "2026-10-11T16:26:19+00:00",
+   "md5": "652ae97c3bfa6554282cb934844e9e00",
+   "size": 87898
+  },
+  "godot/assets/concept/meshy/chief_miller/side.png": {
+   "at": "2026-10-11T16:26:19+00:00",
+   "md5": "0deb7128086713a12cb5e869dc3731ca",
+   "size": 1590728
   },
   "godot/assets/concept/meshy/claire_moyer/claire_moyer_front_meshy_recovered.png": {
    "at": "2026-10-01T01:23:48+00:00",
@@ -53184,6 +53244,41 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "c02b40b53613cfc2926b1f6be8b9e996",
    "size": 84004
+  },
+  "godot/assets/concept/meshy/sam_miller/back.png": {
+   "at": "2026-10-11T16:26:29+00:00",
+   "md5": "35655aa2c72c52a33c4fc0bf724f4f40",
+   "size": 1995072
+  },
+  "godot/assets/concept/meshy/sam_miller/front.png": {
+   "at": "2026-10-11T16:26:29+00:00",
+   "md5": "27f4e627057eb52308840eb556f66f3c",
+   "size": 2048545
+  },
+  "godot/assets/concept/meshy/sam_miller/meshy_thumb.png": {
+   "at": "2026-10-11T16:26:29+00:00",
+   "md5": "24e66a4534bfb6f82995c1a1340ba06b",
+   "size": 87375
+  },
+  "godot/assets/concept/meshy/sam_miller/sam_miller_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T16:26:29+00:00",
+   "md5": "35655aa2c72c52a33c4fc0bf724f4f40",
+   "size": 1995072
+  },
+  "godot/assets/concept/meshy/sam_miller/sam_miller_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T16:26:29+00:00",
+   "md5": "27f4e627057eb52308840eb556f66f3c",
+   "size": 2048545
+  },
+  "godot/assets/concept/meshy/sam_miller/sam_miller_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T16:26:29+00:00",
+   "md5": "a02f0a9a61c9b376df604336399a4682",
+   "size": 1926033
+  },
+  "godot/assets/concept/meshy/sam_miller/side.png": {
+   "at": "2026-10-11T16:26:29+00:00",
+   "md5": "a02f0a9a61c9b376df604336399a4682",
+   "size": 1926033
   },
   "godot/assets/concept/meshy/sam_miller_apron/front.png": {
    "at": "2026-10-01T01:23:48+00:00",
