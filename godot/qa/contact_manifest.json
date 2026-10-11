@@ -2076,51 +2076,6 @@
    "scene_missing": false
   },
   {
-   "id": "vehicle_cab",
-   "scene": "res://scenes/locales/vehicle_cab.tscn",
-   "vol": 6,
-   "uses": 6,
-   "moods": [
-    "day_bright",
-    "arcana"
-   ],
-   "markers": [
-    {
-     "name": "shot_closeup_person",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_person_b",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_insert_map",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_phone",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_radio",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_sedan",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_table",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_truck",
-     "type": "insert"
-    }
-   ],
-   "scene_missing": false
-  },
-  {
    "id": "bianca_kitchen_morning",
    "scene": "res://scenes/locales/bianca_kitchen_morning.tscn",
    "vol": 6,
@@ -2684,6 +2639,51 @@
    "scene_missing": false
   },
   {
+   "id": "vehicle_cab",
+   "scene": "res://scenes/locales/vehicle_cab.tscn",
+   "vol": 6,
+   "uses": 5,
+   "moods": [
+    "day_bright",
+    "arcana"
+   ],
+   "markers": [
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_map",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_phone",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_radio",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_sedan",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_table",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_truck",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
    "id": "briar_falls_rest_stop",
    "scene": "res://scenes/locales/briar_falls.tscn",
    "vol": 2,
@@ -3218,51 +3218,6 @@
     },
     {
      "name": "shot_insert_radio",
-     "type": "insert"
-    }
-   ],
-   "scene_missing": false
-  },
-  {
-   "id": "vehicle_cab_night",
-   "scene": "res://scenes/locales/vehicle_cab.tscn",
-   "vol": 6,
-   "uses": 4,
-   "moods": [
-    "night",
-    "candlelight_low"
-   ],
-   "markers": [
-    {
-     "name": "shot_closeup_person",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_person_b",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_insert_map",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_phone",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_radio",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_sedan",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_table",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_truck",
      "type": "insert"
     }
    ],
@@ -4267,6 +4222,50 @@
     },
     {
      "name": "shot_insert_phone__vehicle_cab_altima_night",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_radio",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_sedan",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_table",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_truck",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
+   "id": "vehicle_cab_night",
+   "scene": "res://scenes/locales/vehicle_cab.tscn",
+   "vol": 6,
+   "uses": 3,
+   "moods": [
+    "candlelight_low"
+   ],
+   "markers": [
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_map",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_phone",
      "type": "insert"
     },
     {
@@ -9906,6 +9905,102 @@
    "scene_missing": false
   },
   {
+   "id": "vehicle_cab_corolla",
+   "scene": "res://scenes/locales/vehicle_cab.tscn",
+   "vol": 6,
+   "uses": 1,
+   "moods": [
+    ""
+   ],
+   "markers": [
+    {
+     "name": "shot_closeup_person__vehicle_cab_corolla",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b__vehicle_cab_corolla",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_sam__vehicle_cab_corolla",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_map",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_phone__vehicle_cab_corolla",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_radio",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_sedan",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_table",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_truck",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
+   "id": "vehicle_cab_corolla_night",
+   "scene": "res://scenes/locales/vehicle_cab.tscn",
+   "vol": 6,
+   "uses": 1,
+   "moods": [
+    "night"
+   ],
+   "markers": [
+    {
+     "name": "shot_closeup_person__vehicle_cab_corolla_night",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b__vehicle_cab_corolla_night",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_sam__vehicle_cab_corolla_night",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_map",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_phone__vehicle_cab_corolla_night",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_radio",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_sedan",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_table",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_truck",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
    "id": "vehicle_cab_rear_night",
    "scene": "res://scenes/locales/vehicle_cab.tscn",
    "vol": 6,
@@ -10042,5 +10137,5 @@
   "tired",
   "nervous"
  ],
- "frames": 2253
+ "frames": 2272
 }

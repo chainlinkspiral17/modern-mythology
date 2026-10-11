@@ -1925,6 +1925,35 @@ const CAMERA_PRESETS := {
 		"fov": 72.0,
 		"suppress_input": true,
 	},
+	"vehicle_cab_corolla": {
+		"scene": "res://scenes/locales/vehicle_cab.tscn",
+		"requires_glb": "res://assets/3d/locales/vehicle_cab.glb",
+		# (pass 78, 2026-10-11) SAM'S COROLLA, west of the turnout (blender origin
+		# (-14, 0.5), the cab 16 cm lower than the truck's): ch7 Family Only —
+		# "Sam, in her Corolla in the parking lot of the Kwik Stop", on her break,
+		# the call with Graciela. Camera at the centre console looking forward.
+		"camera_origin": Vector3(-14.0, 1.12, -0.60),
+		"camera_rotation": Vector3(-0.14, 0.0, 0.0),
+		"fov": 72.0,
+		"suppress_input": true,
+	},
+	"vehicle_cab_corolla_night": {
+		"scene": "res://scenes/locales/vehicle_cab.tscn",
+		"requires_glb": "res://assets/3d/locales/vehicle_cab.glb",
+		# (pass 78, 2026-10-11) SAM'S COROLLA, west of the turnout (blender origin
+		# (-14, 0.5), the cab 16 cm lower than the truck's): ch7 Family Only —
+		# "Sam, in her Corolla in the parking lot of the Kwik Stop", on her break,
+		# the call with Graciela. Camera at the centre console looking forward.
+		# THE NIGHT: ch2 Gas & Go lot — parked in the Kwik Stop lot for eleven
+		# minutes, watching the Gas & Go through her windshield; Maya's reply.
+		"camera_origin": Vector3(-14.0, 1.12, -0.60),
+		"camera_rotation": Vector3(-0.14, 0.0, 0.0),
+		"fov": 72.0,
+		"env": {"sky_top": Color(0.04, 0.05, 0.11, 1), "sky_horizon": Color(0.16, 0.15, 0.20, 1),
+			"ground_horizon": Color(0.08, 0.08, 0.09, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.34, 0.36, 0.46, 1), "ambient_energy": 0.32, "fog_color": Color(0.10, 0.10, 0.14, 1)},
+		"suppress_input": true,
+	},
 	"vehicle_cab_altima_night": {
 		"scene": "res://scenes/locales/vehicle_cab.tscn",
 		"requires_glb": "res://assets/3d/locales/vehicle_cab.glb",

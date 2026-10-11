@@ -3834,6 +3834,21 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-11 · pass 78: SAM'S COROLLA (a cab area of its own).** Her car
+had been the pickup's cab (pass 66). The Altima's pattern again: the
+truck's cab run through `plan.shifted` 16 cm lower, in the Corolla's
+faded silver-blue, a sedan body round it, 23.5 m west of the turnout; her
+Kwik Stop apron and the break's paper bag on the passenger seat. Presets
+`vehicle_cab_corolla` and `vehicle_cab_corolla_night` (the practicals and
+four markers copied per preset — closeup person/person_b/sam, the phone
+insert; the moon and the Kwik Stop's lot light for the night). ch2 (the
+lot at night, Maya's reply) and ch7 (the call with Graciela on her break)
+routed. Deck must REBUILD vehicle_cab. **Draft 2 targets:** the Corolla's
+own dash (a 2009 Toyota's, not the truck's — the cab shell is shared
+code); the Kwik Stop's lit front through the windshield for ch2 ("watching
+the Gas & Go through her windshield" — three blocks on); the second row;
+Sam's things in the door pocket.
+
 **2026-10-11 · pass 77: THE HENDERSON KITCHEN, detail passes D2–D4.** The
 scan's next room (61 cues; two wear calls, no infrastructure): the
 traffic ribbon front door → table → sink, the stains at the sink's foot

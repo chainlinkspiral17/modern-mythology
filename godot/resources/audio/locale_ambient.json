@@ -485,6 +485,14 @@
       "bed": "assets/audio/bgm/vol6_two_lane.wav",
       "gain": 0.4
     },
+    "vehicle_cab_corolla": {
+      "bed": "assets/audio/bgm/vol6_two_lane.wav",
+      "gain": 0.4
+    },
+    "vehicle_cab_corolla_night": {
+      "bed": "assets/audio/bgm/vol6_two_lane.wav",
+      "gain": 0.4
+    },
     "vehicle_cab_altima_night": {
       "bed": "assets/audio/bgm/vol6_two_lane.wav",
       "gain": 0.4

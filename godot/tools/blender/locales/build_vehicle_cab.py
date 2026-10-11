@@ -408,6 +408,9 @@ def build_draft4_2026_09():
 
 
 ALT_X, ALT_Y, ALT_DZ = 9.5, 0.5, -0.14          # the Altima's cab origin and how much lower it rides
+COR_X, COR_Y, COR_DZ = -14.0, 0.5, -0.16        # (pass 78) Sam's Corolla, west of the turnout, lower still
+COROLLA = (0.60, 0.64, 0.68, 1.0)
+COROLLA_DK = (0.46, 0.50, 0.54, 1.0)
 BEIGE = (0.72, 0.64, 0.52, 1.0)
 BEIGE_DK = (0.58, 0.51, 0.42, 1.0)
 
@@ -464,6 +467,55 @@ def build_altima_2026_10():
         make_cyl("Socket_12V", (0.0, 0.925, 0.80), 0.014, 0.01, (0.12, 0.12, 0.13, 1.0), axis="Y", segments=8)
 
 
+def build_corolla_2026_10():
+    """SAM'S COROLLA (pass 78, 2026-10-11): "Sam, in her Corolla in the parking
+    lot of the Kwik Stop" (ch7), "watching the Gas & Go through her
+    windshield" (ch2), "She starts the Corolla. She drives home." — her car
+    had been the pickup's cab. The Altima's pattern: the cab run through
+    plan.shifted lower, in the Corolla's faded silver-blue, a sedan body round
+    it; on the passenger seat her Kwik Stop apron and the paper bag of her
+    break. Draft 2 targets: the Corolla's own dash (a 2009 Toyota's, not the
+    truck's); the kwik_stop lot through the windshield; the second-row seat."""
+    from _props.plan import shifted
+    ax, ay, dz = COR_X, COR_Y, COR_DZ
+    # the body round the cab: pan, floor, hood, cowl, fenders, fascia, trunk, quarters, wheels
+    make_box("Corolla_Pan", (ax, ay - 0.10, 0.21), (1.80, 5.00, 0.10), RUBBER)
+    make_box("Corolla_Cab_Floor", (ax, ay, 0.29), (1.80, 3.10, 0.06), DASH)
+    make_box("Corolla_Hood_Block", (ax, ay + 2.27, 0.575), (1.80, 1.34, 0.50), COROLLA)
+    make_wedge("Corolla_Hood_Slope", (ax, ay + 2.27, 0.89), (1.80, 1.34, 0.13), COROLLA, high_end="-Y")
+    make_box("Corolla_Cowl", (ax, ay + 1.575, 0.69), (1.86, 0.05, 0.74), COROLLA)
+    for sgn, nm in ((1, "R"), (-1, "L")):
+        make_box(f"Corolla_Fender_F_{nm}", (ax + sgn * 0.9125, ay + 2.27, 0.575), (0.025, 1.34, 0.50), COROLLA)
+        make_box(f"Corolla_Quarter_{nm}", (ax + sgn * 0.9125, ay - 2.05, 0.60), (0.025, 0.90, 0.56), COROLLA)
+        make_box(f"Corolla_Mirror_Arm_{nm}", (ax + sgn * 1.00, ay + 1.30, 1.12), (0.16, 0.04, 0.04), COROLLA_DK)
+        make_box(f"Corolla_Mirror_{nm}", (ax + sgn * 1.12, ay + 1.30, 1.12), (0.08, 0.14, 0.12), COROLLA)
+    make_box("Corolla_Fascia", (ax, ay + 2.965, 0.52), (1.84, 0.05, 0.40), COROLLA)
+    make_box("Corolla_Grille", (ax, ay + 2.995, 0.56), (1.00, 0.01, 0.20), (0.14, 0.14, 0.15, 1.0))
+    make_box("Corolla_Grille_Chrome", (ax, ay + 2.999, 0.67), (1.10, 0.004, 0.025), CHROME)
+    for sgn, nm in ((1, "R"), (-1, "L")):
+        make_box(f"Corolla_Headlight_{nm}", (ax + sgn * 0.66, ay + 2.995, 0.72), (0.38, 0.01, 0.10), (0.88, 0.88, 0.84, 1.0))
+        make_box(f"Corolla_Taillight_{nm}", (ax + sgn * 0.70, ay - 2.505, 0.80), (0.30, 0.01, 0.10), (0.70, 0.12, 0.10, 1.0))
+    make_box("Corolla_Plate", (ax, ay + 2.995, 0.40), (0.30, 0.01, 0.15), (0.88, 0.86, 0.80, 1.0))
+    make_box("Corolla_Trunk_Block", (ax, ay - 2.05, 0.60), (1.80, 0.90, 0.56), COROLLA)
+    make_box("Corolla_Trunk_Deck", (ax, ay - 2.05, 0.90), (1.80, 0.90, 0.04), COROLLA_DK)
+    make_box("Corolla_Rear_Fascia", (ax, ay - 2.52, 0.50), (1.84, 0.04, 0.36), COROLLA)
+    make_box("Corolla_Badge", (ax, ay - 2.542, 0.70), (0.16, 0.004, 0.05), CHROME)
+    for wi, (wx, wy) in enumerate(((-1.06, 2.20), (1.06, 2.20), (-1.06, -1.95), (1.06, -1.95))):
+        make_cyl(f"Corolla_Wheel_{wi}", (ax + wx, ay + wy, 0.32), 0.32, 0.22, RUBBER, axis="X", segments=14)
+        make_cyl(f"Corolla_Hubcap_{wi}", (ax + wx + (0.115 if wx > 0 else -0.115), ay + wy, 0.32), 0.19, 0.01, (0.66, 0.68, 0.70, 1.0), axis="X", segments=10)
+    # the cab, run lower and in the Altima's colours; the spread on its console
+    with shifted(globals(), ax, ay, prefix="Corolla_", dz=dz, extra=("make_blob", "make_wedge"),
+                 TRUCK_GREEN=COROLLA, TRUCK_GREEN_DK=COROLLA_DK, SEAT=(0.30, 0.30, 0.32, 1.0),
+                 SEAT_DK=(0.24, 0.24, 0.26, 1.0), HEADLINER=(0.70, 0.68, 0.64, 1.0)):
+        build_cab_shell()
+        build_dash()
+        build_seats()
+        make_box("Apron", (0.45, 0.30, 0.62), (0.40, 0.44, 0.03), (0.62, 0.16, 0.14, 1.0))   # her Kwik Stop apron on the passenger seat
+        make_box("Break_Bag", (0.50, 0.10, 0.72), (0.16, 0.12, 0.18), (0.72, 0.60, 0.42, 1.0))
+        make_tube("Cord_1", [(0.22, 1.07, 1.19), (0.22, 1.02, 1.05), (0.10, 0.96, 0.85), (0.02, 0.94, 0.80)], 0.004, (0.90, 0.90, 0.88, 1.0), segments=4)
+        make_cyl("Socket_12V", (0.0, 0.925, 0.80), 0.014, 0.01, (0.12, 0.12, 0.13, 1.0), axis="Y", segments=8)
+
+
 def main():
     clear_scene()
     build_ground()
@@ -476,6 +528,7 @@ def main():
     build_horizon()
     build_draft4_2026_09()
     build_altima_2026_10()
+    build_corolla_2026_10()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/vehicle_cab.glb"))
     print(f"\n[build_vehicle_cab] exporting to {out}")
