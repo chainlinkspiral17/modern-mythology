@@ -2373,5 +2373,53 @@
     },
     "output": "godot/assets/3d/characters/heroes/wren_vol6.glb",
     "file_size_kb": 86645.6
+  },
+  {
+    "at": "2026-10-11T16:57:51+00:00",
+    "stage": "image",
+    "slug": "lena_vargas",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Lena Vargas like this: She was in the work clothes from the Daily Grind morning shift. Lena in the wool sweater and the coat, Kai in his flannel. the small Cale-smile she had been getting from him since she was nineteen and walked into the store for the first time, when she had come up from the south coast with a duffel and a set of brushes Lena had her arms folded across her chest the way she folded them when she was holding a thing together. She opened the jar of bone black she had brought down in the canvas bag. Late 20s \u00b7 the protagonist \u00b7 works mornings at the Daily Grind Lena is a painter who has been, for almost a year, not painting\nFull-body concept render of Lena Vargas, a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/lena_vargas/lena_vargas_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/lena_vargas/lena_vargas_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/lena_vargas/lena_vargas_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-11T17:01:32+00:00",
+    "stage": "mesh",
+    "slug": "lena_vargas",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a12be6-b97c-76a2-a8ff-c66683cdaac4",
+    "inputs": [
+      "godot/assets/concept/meshy/lena_vargas/front.png",
+      "godot/assets/concept/meshy/lena_vargas/side.png",
+      "godot/assets/concept/meshy/lena_vargas/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "smart-topology",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/lena_vargas.glb",
+    "file_size_kb": 61894.5
   }
 ]
