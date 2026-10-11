@@ -865,6 +865,11 @@
    "md5": "c3befe4afea4b83953afed7254eb5275",
    "size": 2852012
   },
+  "godot/assets/3d/characters/heroes/kai.glb": {
+   "at": "2026-10-11T17:55:33+00:00",
+   "md5": "e613321a8cce76464756649595e83422",
+   "size": 61049056
+  },
   "godot/assets/3d/characters/heroes/lena_vargas.glb": {
    "at": "2026-10-11T17:04:16+00:00",
    "md5": "fcd2aec3d43396b117cfb1e99be19aa0",
@@ -52674,6 +52679,56 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "c295a835e50676569c1f608f003ac694",
    "size": 58123
+  },
+  "godot/assets/concept/meshy/kai/back.png": {
+   "at": "2026-10-11T17:55:46+00:00",
+   "md5": "98198a8f884cd929ff7ccdf46c707871",
+   "size": 2102988
+  },
+  "godot/assets/concept/meshy/kai/front.png": {
+   "at": "2026-10-11T17:55:46+00:00",
+   "md5": "d1079cf6cce6668ae49bfab69c0ae402",
+   "size": 2144608
+  },
+  "godot/assets/concept/meshy/kai/kai_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T17:55:46+00:00",
+   "md5": "f0894029e6e271cebfe6be8950fe2e8b",
+   "size": 2050727
+  },
+  "godot/assets/concept/meshy/kai/kai_back_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-11T17:55:46+00:00",
+   "md5": "98198a8f884cd929ff7ccdf46c707871",
+   "size": 2102988
+  },
+  "godot/assets/concept/meshy/kai/kai_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T17:55:46+00:00",
+   "md5": "b0888176633f32cfa1b121d3b4f4331b",
+   "size": 2050645
+  },
+  "godot/assets/concept/meshy/kai/kai_front_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-11T17:55:46+00:00",
+   "md5": "d1079cf6cce6668ae49bfab69c0ae402",
+   "size": 2144608
+  },
+  "godot/assets/concept/meshy/kai/kai_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T17:55:46+00:00",
+   "md5": "23e6f53367bb08d33f58fb942b247b6d",
+   "size": 1955686
+  },
+  "godot/assets/concept/meshy/kai/kai_side_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-11T17:55:46+00:00",
+   "md5": "eedde6201f85d7406941b2f52bd8cd70",
+   "size": 2020590
+  },
+  "godot/assets/concept/meshy/kai/meshy_thumb.png": {
+   "at": "2026-10-11T17:55:46+00:00",
+   "md5": "4615f34fbfb8b6dcbb8b7652b6774847",
+   "size": 90901
+  },
+  "godot/assets/concept/meshy/kai/side.png": {
+   "at": "2026-10-11T17:55:46+00:00",
+   "md5": "eedde6201f85d7406941b2f52bd8cd70",
+   "size": 2020590
   },
   "godot/assets/concept/meshy/lena_vargas/back.png": {
    "at": "2026-10-11T17:04:26+00:00",
