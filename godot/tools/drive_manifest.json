@@ -975,6 +975,11 @@
    "md5": "566465483d543a75d205601f7feb0110",
    "size": 67550
   },
+  "godot/assets/3d/characters/heroes/margaret_coop.glb": {
+   "at": "2026-10-11T19:41:51+00:00",
+   "md5": "f0067f63c3e86fa7cb504a8ec69974ce",
+   "size": 59592356
+  },
   "godot/assets/3d/characters/heroes/marina.glb": {
    "at": "2026-10-11T19:08:16+00:00",
    "md5": "fae0668517d3aec7a0773d22fe0442e9",
@@ -53084,6 +53089,41 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "97334bc2c7c690f246cd24923d6e1de9",
    "size": 80585
+  },
+  "godot/assets/concept/meshy/margaret_coop/back.png": {
+   "at": "2026-10-11T19:42:01+00:00",
+   "md5": "9bd121a473e63d82b56e37d8e9d6da80",
+   "size": 2094111
+  },
+  "godot/assets/concept/meshy/margaret_coop/front.png": {
+   "at": "2026-10-11T19:42:01+00:00",
+   "md5": "8217fd32ed225c5c2956ba4ea141f66e",
+   "size": 2107388
+  },
+  "godot/assets/concept/meshy/margaret_coop/margaret_coop_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T19:42:01+00:00",
+   "md5": "9bd121a473e63d82b56e37d8e9d6da80",
+   "size": 2094111
+  },
+  "godot/assets/concept/meshy/margaret_coop/margaret_coop_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T19:42:01+00:00",
+   "md5": "8217fd32ed225c5c2956ba4ea141f66e",
+   "size": 2107388
+  },
+  "godot/assets/concept/meshy/margaret_coop/margaret_coop_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T19:42:01+00:00",
+   "md5": "bd794a55a7b310cd795e5d72a35e98e9",
+   "size": 1980402
+  },
+  "godot/assets/concept/meshy/margaret_coop/meshy_thumb.png": {
+   "at": "2026-10-11T19:42:01+00:00",
+   "md5": "61ca7f5533fa376c46051a6299d16e1e",
+   "size": 87006
+  },
+  "godot/assets/concept/meshy/margaret_coop/side.png": {
+   "at": "2026-10-11T19:42:01+00:00",
+   "md5": "bd794a55a7b310cd795e5d72a35e98e9",
+   "size": 1980402
   },
   "godot/assets/concept/meshy/marina/back.png": {
    "at": "2026-10-11T19:08:27+00:00",
