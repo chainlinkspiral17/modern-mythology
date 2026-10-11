@@ -35,7 +35,7 @@ touching code:
    and their hardware bridges (`gamepad_input.js` for the Riffmaster
    guitar, `midi_input.js` / `fm1_dx7.js` for the M-VAVE FM-1 synth).
    Read before touching any `godot/tools/riffmaster_*.html`,
-   `tarot_synth.html`, `fm1_console.html`, FORGE (`forge_synth.js`),
+   `tarot_synth.html`, `fm1_console.html`, `fm1_checkout.html`, FORGE (`forge_synth.js`),
    the FM-1 emulators (`fm1_emu.js`), the PATCH BANK (`patch_bank.js`,
    `patch_sources.js` — generated, `sampler.js`, `dx7_synth.js`), or
    those helpers. Every

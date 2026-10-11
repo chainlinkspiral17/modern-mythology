@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>FM-1 CHECK-OUT · Modern Mythology</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+  FM-1 CHECK-OUT — a guided hardware verification for the M-VAVE FM-1 on the Steam Deck.
+  Walks the user through every FM-1 feature the tools were built for but never verified on the
+  device (notes, CC, DX7 voice push, clock follow, USB audio return + latency), records
+  pass / fail / skipped per check and keeps the results in this browser:
+    localStorage.mm_fm1_checkout    the whole record (JSON, shape below in freshResults())
+    localStorage.mm_fm1_latency_ms  measured MIDI-out → USB-audio-in round trip, median ms (plain number)
+  Steps adapt to the identified firmware through fm1_firmwares.js (parts / channels, DX7, clock).
+  Read-only towards the synth except for what each step says it sends; never sends the updater
+  protocol (only the one vendor identity query MidiInput already uses).
+-->
+<style>
+  :root {
+    --bg-0: #050304; --bg-1: #0e0908; --ink: #1a1410;
+    --rule: #553318; --gold: #d8a060; --gold-hi: #ffd896;
+    --text: #c8a878; --text-dim: #7a5828;
+    --emerald: #4ea060; --emerald-hi: #a8e89c; --rust: #c87633; --burgundy: #7a1e26;
+    --red: #c64a3a; --amber: #f0b94a;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100vh; overflow: hidden; background: var(--bg-0); color: var(--text); font-family: "Courier New", monospace; }
+  body { display: grid; grid-template-rows: auto 1fr auto; }
+  header { padding: 8px 16px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  header h1 { margin: 0; font-size: 15px; letter-spacing: 0.18em; color: var(--gold-hi); }
+  header .sub { color: var(--text-dim); font-size: 11px; font-style: italic; flex: 1; min-width: 80px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .badge { font-size: 11px; letter-spacing: 0.08em; padding: 3px 8px; border: 1px solid var(--rule); color: var(--text-dim); white-space: nowrap; max-width: 260px; overflow: hidden; text-overflow: ellipsis; }
+  .badge.ok { color: var(--emerald-hi); border-color: var(--emerald); }
+  .badge.warn { color: var(--amber); border-color: var(--amber); }
+  .badge.bad { color: var(--red); border-color: var(--red); }
+
+  main { display: grid; grid-template-columns: 228px 1fr 290px; overflow: hidden; min-height: 0; }
+  nav { border-right: 1px solid var(--rule); overflow-y: auto; padding: 8px; display: flex; flex-direction: column; gap: 6px; }
+  aside { border-left: 1px solid var(--rule); padding: 10px 12px; overflow: hidden; display: grid; grid-template-rows: auto auto auto 1fr; min-height: 0; }
+  #card { overflow-y: auto; padding: 14px 22px 30px; min-height: 0; }
+
+  button {
+    background: var(--ink); color: var(--gold-hi); border: 1px solid var(--gold);
+    padding: 6px 14px; min-height: 40px; font-family: inherit; font-size: 12px; letter-spacing: 0.08em; cursor: pointer;
+    touch-action: manipulation;
+  }
+  button:hover:not(:disabled) { background: var(--gold); color: var(--ink); }
+  button:disabled { opacity: 0.35; cursor: default; }
+  button.dim { color: var(--text-dim); border-color: var(--rule); }
+  button.dim:hover:not(:disabled) { color: var(--gold-hi); border-color: var(--gold); background: var(--ink); }
+  button.hot { background: var(--burgundy); }
+  button.big { min-height: 52px; font-size: 14px; padding: 8px 20px; }
+  a.btn { display: inline-flex; align-items: center; background: var(--ink); color: var(--gold-hi); border: 1px solid var(--gold); min-height: 52px; padding: 8px 20px; font-size: 14px; letter-spacing: 0.08em; text-decoration: none; }
+  a.btn:hover { background: var(--gold); color: var(--ink); }
+  button.chip { min-height: 44px; }
+  button.chip.sel, button.on { background: var(--rust); color: var(--ink); border-color: var(--gold-hi); }
+  button.small { min-height: 36px; font-size: 11px; padding: 4px 10px; }
+
+  .nav-step { display: grid; grid-template-columns: 26px 18px 1fr; align-items: center; gap: 4px; text-align: left; min-height: 50px; padding: 6px 8px; border-color: var(--rule); color: var(--text); }
+  .nav-step .ico { font-size: 18px; text-align: center; }
+  .nav-step .n { color: var(--text-dim); }
+  .nav-step i { grid-column: 3; font-style: normal; font-size: 10px; color: var(--text-dim); letter-spacing: 0.06em; }
+  .nav-step.cur { border-color: var(--gold-hi); background: #241a10; }
+  .nav-step:hover:not(:disabled) { background: #241a10; color: var(--gold-hi); }
+  .s-pass { color: var(--emerald-hi); } .s-fail { color: var(--red); } .s-partial { color: var(--amber); }
+  .s-skip, .s-na, .s-todo, .s-pending { color: var(--text-dim); } .s-info { color: var(--gold); }
+
+  .step-head { display: flex; align-items: baseline; gap: 14px; border-bottom: 1px solid var(--rule); padding-bottom: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+  .step-head .stepno { color: var(--text-dim); font-size: 11px; letter-spacing: 0.14em; }
+  .step-head h2 { margin: 0; color: var(--gold-hi); font-size: 18px; letter-spacing: 0.14em; }
+  .step-head .st { margin-left: auto; font-size: 12px; letter-spacing: 0.12em; }
+  h3 { color: var(--gold); font-size: 12px; letter-spacing: 0.16em; margin: 18px 0 8px; border-bottom: 1px solid #2a1c12; padding-bottom: 4px; font-weight: normal; }
+  aside h2 { margin: 0 0 6px; color: var(--gold); font-size: 11px; letter-spacing: 0.16em; border-bottom: 1px solid var(--rule); padding-bottom: 4px; font-weight: normal; }
+
+  .do { background: var(--bg-1); border: 1px solid var(--rule); border-left: 3px solid var(--gold); padding: 10px 14px; font-size: 14px; line-height: 1.55; color: var(--gold-hi); margin: 8px 0 12px; }
+  .do ol, .do ul { margin: 4px 0; padding-left: 22px; }
+  .do b { color: #fff0cc; }
+  .note { color: var(--text-dim); font-size: 12px; line-height: 1.5; margin: 6px 0; }
+  .note b { color: var(--text); }
+  .warnbox { border: 1px solid var(--amber); color: var(--amber); padding: 8px 12px; font-size: 13px; line-height: 1.5; margin: 8px 0; }
+  .na { border: 1px dashed var(--rule); padding: 14px; color: var(--text); font-size: 14px; line-height: 1.6; }
+  .actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin: 8px 0; }
+  .msg { color: var(--emerald-hi); font-size: 13px; min-height: 18px; margin: 6px 0; }
+  .msg.bad { color: var(--red); }
+
+  .chk { display: grid; grid-template-columns: 30px 1fr auto; gap: 10px; align-items: center; border: 1px solid #2a1c12; background: var(--bg-1); padding: 8px 10px; margin: 6px 0; }
+  .chk .ico { font-size: 22px; text-align: center; }
+  .chk .lbl { font-size: 14px; color: var(--text); line-height: 1.4; }
+  .chk .lbl .opt { font-size: 10px; color: var(--text-dim); font-style: normal; letter-spacing: 0.08em; border: 1px solid #2a1c12; padding: 0 4px; margin-left: 4px; }
+  .chk .val { font-size: 12px; color: var(--text-dim); margin-top: 3px; line-height: 1.4; word-break: break-word; }
+  .chk.st-pass { border-color: var(--emerald); } .chk.st-pass .ico { color: var(--emerald-hi); }
+  .chk.st-fail { border-color: var(--red); } .chk.st-fail .ico { color: var(--red); }
+  .chk.st-skip .ico, .chk.st-pending .ico { color: var(--text-dim); }
+  .yn { display: flex; gap: 6px; }
+  .yn button { min-width: 92px; min-height: 52px; font-size: 15px; }
+  .yn button.yes { color: var(--emerald-hi); border-color: var(--emerald); }
+  .yn button.no { color: #ff9a8a; border-color: var(--red); }
+  .yn button.skip { min-width: 64px; font-size: 12px; color: var(--text-dim); border-color: var(--rule); }
+  .yn button.yes.chosen { background: var(--emerald); color: var(--ink); }
+  .yn button.no.chosen { background: var(--red); color: #fff; }
+  .yn button.skip.chosen { background: var(--rule); color: var(--gold-hi); }
+
+  .part { display: grid; grid-template-columns: 230px 1fr; gap: 10px; align-items: center; }
+  .part > button { min-height: 52px; }
+  .bignote { display: flex; gap: 24px; align-items: baseline; margin: 10px 0; }
+  .bignote .p { font-size: 46px; color: var(--gold-hi); letter-spacing: 0.08em; min-width: 140px; }
+  .bignote .m { color: var(--text); font-size: 14px; }
+  .bar { height: 14px; background: var(--ink); border: 1px solid #2a1c12; position: relative; flex: 1; min-width: 120px; }
+  .bar i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--rust); width: 0; }
+  .ccrow { display: grid; grid-template-columns: 70px 1fr 100px; gap: 8px; align-items: center; font-size: 13px; margin: 4px 0; }
+  .meter { height: 22px; background: var(--ink); border: 1px solid var(--rule); position: relative; }
+  .meter i { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: linear-gradient(90deg, var(--emerald) 0%, var(--emerald) 70%, var(--amber) 88%, var(--red) 100%); }
+  .meter b { position: absolute; right: 6px; top: 2px; font-size: 12px; color: var(--gold-hi); font-weight: normal; }
+  .lamp { width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--rule); background: var(--ink); display: inline-block; vertical-align: middle; }
+  .lamp.lit { background: var(--gold-hi); box-shadow: 0 0 18px var(--gold); }
+  .lamp.down.lit { background: var(--rust); }
+  .chips { display: flex; gap: 6px; flex-wrap: wrap; margin: 6px 0; }
+  .ack { display: flex; gap: 10px; align-items: center; font-size: 14px; color: var(--amber); margin: 8px 0; cursor: pointer; min-height: 44px; }
+  .ack input { width: 28px; height: 28px; accent-color: var(--rust); }
+  details { margin: 10px 0; border: 1px solid #2a1c12; padding: 6px 10px; }
+  details summary { cursor: pointer; color: var(--gold); font-size: 13px; letter-spacing: 0.08em; min-height: 32px; line-height: 32px; }
+  details li { font-size: 13px; line-height: 1.6; margin: 3px 0; }
+  code, pre { font-family: inherit; background: var(--ink); color: var(--gold-hi); border: 1px solid #2a1c12; }
+  code { padding: 0 4px; }
+  pre { padding: 8px 10px; font-size: 12px; white-space: pre-wrap; word-break: break-word; margin: 6px 0; }
+  .navbtns { display: flex; justify-content: space-between; margin-top: 22px; border-top: 1px solid #2a1c12; padding-top: 12px; }
+  table.sum { border-collapse: collapse; width: 100%; font-size: 13px; }
+  table.sum td, table.sum th { border-bottom: 1px solid #2a1c12; padding: 5px 6px; text-align: left; vertical-align: top; }
+  table.sum th { color: var(--gold); font-weight: normal; letter-spacing: 0.08em; font-size: 11px; }
+  table.sum tr.stephdr td { color: var(--gold-hi); background: var(--bg-1); letter-spacing: 0.08em; }
+  table.sum td.v { color: var(--text-dim); font-size: 12px; }
+  .lat { font-size: 30px; color: var(--gold-hi); letter-spacing: 0.06em; }
+  #fwbox { font-size: 12px; line-height: 1.55; margin-bottom: 10px; color: var(--text); }
+  #fwbox b { color: var(--gold-hi); font-weight: normal; }
+  #fwbox .w { color: var(--amber); }
+  .mon { font-size: 10px; line-height: 1.45; overflow-y: auto; background: var(--bg-1); border: 1px solid var(--rule); padding: 6px 8px; white-space: pre-wrap; min-height: 0; }
+  .mon .t { color: var(--text-dim); } .mon .in { color: var(--emerald-hi); } .mon .out { color: var(--amber); }
+  footer { padding: 6px 16px; border-top: 1px solid var(--rule); color: var(--text-dim); font-size: 11px; font-style: italic; display: flex; gap: 18px; flex-wrap: wrap; }
+  footer a { color: var(--gold); text-decoration: none; }
+</style>
+</head>
+<body>
+  <header>
+    <h1>FM-1 CHECK-OUT</h1>
+    <span class="badge bad" id="b-midi">MIDI: not connected</span>
+    <span class="badge" id="b-sysex">SYSEX: —</span>
+    <span class="badge" id="b-fw">FW: —</span>
+    <span class="badge" id="b-audio">AUDIO IN: —</span>
+    <span class="sub">plug in · follow the steps · answer ✔ / ✘ · results stay in this browser</span>
+    <button class="dim small" id="new-run" title="Clear every answer and start again">NEW CHECK-OUT</button>
+  </header>
+
+  <main>
+    <nav id="nav"></nav>
+    <section id="card"></section>
+    <aside>
+      <h2>FIRMWARE</h2>
+      <div id="fwbox">not connected yet.</div>
+      <h2>MIDI MONITOR</h2>
+      <div class="mon" id="mon"></div>
+    </aside>
+  </main>
+
+  <footer>
+    <span>← <a href="index.html">all tools</a></span>
+    <span><a href="fm1_console.html">FM-1 console</a> · <a href="fm1_firmware_atlas.html">firmware atlas</a> · <a href="daw.html">DAW</a></span>
+    <span>results: localStorage <b>mm_fm1_checkout</b> · latency: <b>mm_fm1_latency_ms</b></span>
+  </footer>
+
+<script src="fm1_firmwares.js"></script>
+<script src="midi_input.js"></script>
+<script src="fm1_dx7.js"></script>
+<script src="dx7_synth.js"></script>
+<script src="audio_kit.js"></script>
+<script src="touch_controls.js"></script>
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const nowIso = () => new Date().toISOString();
+const fmtDate = iso => { const d = new Date(iso), z = n => String(n).padStart(2, '0'); return d.getFullYear() + '-' + z(d.getMonth() + 1) + '-' + z(d.getDate()) + ' ' + z(d.getHours()) + ':' + z(d.getMinutes()); };
+const hex = d => [...d].map(b => b.toString(16).toUpperCase().padStart(2, '0')).join(' ');
+const LS_RESULTS = 'mm_fm1_checkout', LS_LATENCY = 'mm_fm1_latency_ms';
+
+// Own MidiInput: identification is run by step 1 so every reply is recorded.
+const mi = new MidiInput({ autoIdentify: false });
+const TOOL_IN_CH = mi.channel;     // the other tools' IN filter (prefs) — reported, not changed
+const TOOL_OUT_CH = mi.outChannel; // a fixed OUT channel overrides auto routing in the tools
+mi.channel = 0;                    // listen omni here (never saved)
+
+const STEPS = [
+  { id: 'connect',   title: 'CONNECT & IDENTIFY' },
+  { id: 'notes_out', title: 'NOTES OUT' },
+  { id: 'notes_in',  title: 'NOTES IN' },
+  { id: 'cc',        title: 'KNOBS & CC' },
+  { id: 'dx7',       title: 'DX7 VOICE PUSH' },
+  { id: 'clock',     title: 'CLOCK FOLLOW' },
+  { id: 'audio',     title: 'USB AUDIO & LATENCY' },
+  { id: 'summary',   title: 'SUMMARY' },
+];
+
+// ═══ results record ═══════════════════════════════════════════════
+// {v, tool, started, updated, cur,
+//  device: {inName, outName, sysex, firmware, firmwareName, fwSource, vendor, info, parts:[{role,ch}],
+//           dx7, clock, toolInChannel, toolOutChannel, audioIn},
+//  steps: {<stepId>: {mode, checks: {<checkId>: {label, kind:'auto'|'ask', optional, status, value, at}}}},
+//  latency: {ms, jitterMs, minMs, maxMs, samples:[ms|null], found, of, sampleRate, input, part, at} | null}
+function freshResults() {
+  return { v: 1, tool: 'fm1_checkout', started: nowIso(), updated: nowIso(), cur: 'connect', device: {}, steps: {}, latency: null };
+}
+function loadResults() {
+  try { const r = JSON.parse(localStorage.getItem(LS_RESULTS) || 'null'); if (r && r.v === 1 && r.steps && r.device) return r; } catch (e) { /* blocked / corrupt */ }
+  return null;
+}
+let R = loadResults();
+const RESUMED = !!(R && Object.keys(R.steps).length);
+if (!R) R = freshResults();
+function save() {
+  R.updated = nowIso();
+  try { localStorage.setItem(LS_RESULTS, JSON.stringify(R)); } catch (e) { /* storage blocked: results still on screen */ }
+}
+
+// ═══ firmware context (everything from fm1_firmwares.js) ══════════
+// Per-firmware clock set-up wording. The FACTS (does it follow clock) come from the registry's
+// `clock` field; this only words the menu path where we know it.
+const CLOCK_HOWTO = {
+  felucca: 'Press <b>HOME</b> twice to reach the <b>CLOCK</b> page, then turn <b>knob 3</b> until it reads <b>CLK = USB</b>. (It is saved with the project.)',
+  sloop: 'Open <b>GLO › SYSTEM › SYNC</b> and set it to <b>USB</b>.',
+  sloop_alg: 'Open <b>GLO › SYSTEM › SYNC</b> and set it to <b>USB</b> (same menu as SLOOP).',
+};
+function fwc() {
+  const id = R.device.firmware || '';
+  const fw = id ? fm1Firmware(id) : null;
+  const family = id === 'felucca-family';
+  const label = R.device.firmwareName || (fw ? fw.name : family ? 'Felucca family (unknown fork)' : 'unknown firmware');
+  const roles = fw && fw.roles ? fw.roles : null;
+  const dx7 = fw ? fw.dx7 : family ? false : 'unknown';
+  const clockRaw = fw ? fw.clock : null;
+  let clock = 'unknown';
+  if (fw) {
+    if (clockRaw == null) clock = 'no';
+    else if (/unknown/i.test(clockRaw)) clock = 'unknown';
+    else if (/\bin\b|follow/i.test(clockRaw)) clock = 'yes';
+  }
+  return { id, fw, family, label, roles, dx7, clock, clockRaw };
+}
+const ROLE_ORDER = ['bass', 'chords', 'lead', 'drums'];
+function parts(c = fwc()) {
+  if (!c.roles) return [{ role: 'lead', ch: 1, single: true }];
+  return ROLE_ORDER.filter(r => c.roles[r]).map(r => ({ role: r, ch: c.roles[r] }));
+}
+function leadCh(c = fwc()) { return (c.roles && c.roles.lead) || 1; }
+
+// ═══ checks ═══════════════════════════════════════════════════════
+function stepRec(sid) { return R.steps[sid] || (R.steps[sid] = { checks: {} }); }
+let keepIds = null;   // ids rendered by the current card (stale ones are pruned)
+function ensure(sid, cid, label, o = {}) {
+  const st = stepRec(sid);
+  let c = st.checks[cid];
+  if (!c) c = st.checks[cid] = { label, kind: o.kind || 'ask', optional: !!o.optional, status: 'pending', value: '' };
+  else { c.label = label; c.kind = o.kind || 'ask'; c.optional = !!o.optional; }
+  if (keepIds) keepIds.add(cid);
+  return c;
+}
+function setCheck(sid, cid, status, value, label) {
+  const st = stepRec(sid);
+  const c = st.checks[cid] || (st.checks[cid] = { label: label || cid, kind: 'auto', optional: false, status: 'pending', value: '' });
+  if (label) c.label = label;
+  c.status = status;
+  if (value !== undefined) c.value = value;
+  c.at = nowIso();
+  save(); refreshChecks(); refreshNav();
+}
+function derive() {
+  // CC out: passes when any swept controller changed the sound.
+  const cc = R.steps.cc;
+  if (cc && cc.checks.cc_out) {
+    const rows = Object.entries(cc.checks).filter(([k]) => /^cc_out_\d+$/.test(k)).map(([, v]) => v);
+    const o = cc.checks.cc_out;
+    const passed = Object.entries(cc.checks).filter(([k, v]) => /^cc_out_\d+$/.test(k) && v.status === 'pass').map(([k]) => 'CC ' + k.slice(7));
+    if (passed.length) { o.status = 'pass'; o.value = passed.join(', ') + ' changed the sound'; }
+    else if (rows.length && rows.every(r => r.status !== 'pending')) {
+      o.status = rows.some(r => r.status === 'fail') ? 'fail' : 'skip';
+      o.value = o.status === 'fail' ? 'no swept controller changed the sound' : 'not tried';
+    } else { o.status = 'pending'; o.value = ''; }
+  }
+}
+function naReason(sid) {
+  const c = fwc();
+  if (sid === 'dx7' && c.dx7 === false) return c.label + ' has no DX7 engine (registry: dx7 false), so a DX7 voice dump has nothing to land in. Its sounds are edited in its own editor.';
+  if (sid === 'clock' && c.clock === 'no') return c.label + ' has no MIDI clock input.';
+  return '';
+}
+function stepStatus(sid) {
+  if (sid === 'summary') return 'info';
+  if (naReason(sid)) return 'na';
+  const st = R.steps[sid];
+  if (!st) return 'todo';
+  const cs = Object.values(st.checks);
+  if (!cs.length) return 'todo';
+  const req = cs.filter(c => !c.optional);
+  const anyPass = cs.some(c => c.status === 'pass'), anyFail = cs.some(c => c.status === 'fail');
+  if (req.some(c => c.status === 'fail')) return 'fail';
+  if (req.some(c => c.status === 'pending')) return anyPass || anyFail ? 'partial' : 'todo';
+  if (cs.every(c => c.status === 'skip' || c.status === 'pending')) return 'skip';
+  return 'pass';
+}
+const ICON = { pass: '✔', fail: '✘', skip: '–', na: '–', partial: '◐', todo: '○', pending: '○', info: '≡' };
+const WORD = { pass: 'PASS', fail: 'FAIL', skip: 'SKIPPED', na: 'N/A FOR THIS FIRMWARE', partial: 'IN PROGRESS', todo: 'NOT RUN', pending: 'WAITING', info: '' };
+
+function row(sid, cid, label, o = {}) {
+  ensure(sid, cid, label, o);
+  const auto = o.kind === 'auto';
+  const btns = o.btns || (auto ? [] : ['yes', 'no', 'skip']);
+  const BT = { yes: o.yes || '✔ YES', no: o.no || '✘ NO', skip: 'SKIP' };
+  return `<div class="chk ${auto ? 'auto' : 'ask'}" data-sid="${sid}" data-cid="${cid}">
+    <span class="ico"></span>
+    <div class="q"><div class="lbl">${esc(label)}${auto ? '<i class="opt">AUTOMATIC</i>' : ''}${o.optional ? '<i class="opt">OPTIONAL</i>' : ''}</div><div class="val"></div></div>
+    ${btns.length ? `<div class="yn">${btns.map(b => `<button class="${b}" data-ans="${b}">${BT[b]}</button>`).join('')}</div>` : '<span></span>'}
+  </div>`;
+}
+function refreshChecks() {
+  derive();
+  document.querySelectorAll('#card .chk').forEach(el => {
+    const st = R.steps[el.dataset.sid];
+    const c = st && st.checks[el.dataset.cid];
+    if (!c) return;
+    el.className = 'chk ' + (c.kind === 'auto' ? 'auto' : 'ask') + ' st-' + c.status;
+    el.querySelector('.ico').textContent = ICON[c.status] || '○';
+    el.querySelector('.val').textContent = c.value || (c.kind === 'auto' && c.status === 'pending' ? 'waiting…' : '');
+    el.querySelectorAll('.yn button').forEach(b => b.classList.toggle('chosen',
+      (b.dataset.ans === 'yes' && c.status === 'pass') || (b.dataset.ans === 'no' && c.status === 'fail') || (b.dataset.ans === 'skip' && c.status === 'skip')));
+  });
+  const cs = $('card-st');
+  if (cs) { const s = stepStatus(R.cur); cs.className = 'st s-' + s; cs.textContent = WORD[s]; }
+}
+
+// ═══ monitor + MIDI out helpers ═══════════════════════════════════
+const mon = $('mon');
+function log(kind, text, data) {
+  const line = document.createElement('div');
+  const d = new Date();
+  line.className = kind;
+  line.innerHTML = `<span class="t">${d.toLocaleTimeString([], { hour12: false })}.${String(d.getMilliseconds()).padStart(3, '0')}</span> ${kind === 'in' ? '◀' : kind === 'out' ? '▶' : '·'} ${esc(text)}` +
+    (data ? ` <span class="t">[${esc(data.length > 24 ? hex(data.slice(0, 12)) + ' … ' + hex(data.slice(-4)) : hex(data))}]</span>` : '');
+  mon.appendChild(line);
+  while (mon.children.length > 250) mon.removeChild(mon.firstChild);
+  mon.scrollTop = mon.scrollHeight;
+}
+let lastOutAt = -1e9;
+function out(bytes, ts) {
+  if (!mi.output) return false;
+  try { if (ts != null) mi.output.send(bytes, ts); else mi.output.send(bytes); }
+  catch (e) { log('t', 'send failed: ' + (e.message || e)); return false; }
+  lastOutAt = performance.now();
+  return true;
+}
+const active = { timers: new Set(), held: new Map() };
+function later(ms, fn) { const t = setTimeout(() => { active.timers.delete(t); fn(); }, ms); active.timers.add(t); return t; }
+function nOn(ch, n, v) { if (out([0x90 | ((ch - 1) & 15), n & 127, Math.max(1, Math.min(127, v | 0))])) active.held.set(ch * 128 + n, 1); }
+function nOff(ch, n) { out([0x80 | ((ch - 1) & 15), n & 127, 0]); active.held.delete(ch * 128 + n); }
+function stopAll() {
+  for (const t of active.timers) clearTimeout(t);
+  active.timers.clear();
+  for (const k of active.held.keys()) out([0x80 | (((k >> 7) - 1) & 15), k & 127, 0]);
+  active.held.clear();
+}
+// seq: [[notes…], …] one chord per slot of d ms.
+function playSeq(ch, seq, d, v, holdLastMs = 0) {
+  return new Promise(res => {
+    seq.forEach((chord, i) => {
+      const len = i === seq.length - 1 && holdLastMs ? holdLastMs : d * 0.85;
+      later(i * d, () => chord.forEach(n => nOn(ch, n, v)));
+      later(i * d + len, () => chord.forEach(n => nOff(ch, n)));
+    });
+    later((seq.length - 1) * d + Math.max(d, holdLastMs) + 30, res);
+  });
+}
+function needOut(msgId) {
+  if (mi.output) return true;
+  const m = $(msgId);
+  if (m) { m.className = 'msg bad'; m.textContent = 'No FM-1 connected — go back to step 1 and press CONNECT.'; }
+  return false;
+}
+function say(msgId, text, bad) { const m = $(msgId); if (m) { m.className = 'msg' + (bad ? ' bad' : ''); m.textContent = text; } }
+
+window.addEventListener('midiinput-message', e => {
+  const d = e.detail.data, st = d[0];
+  if (st >= 0xF8) return;   // realtime: not logged (clock floods)
+  let t;
+  if (st === 0xF0) {
+    if (d[1] === 0x00 && d[2] === 0x32 && d[3] === 0x45) { const id = fm1DecodeIdentity(d); t = 'version reply' + (id ? ' → ' + id.name : ''); }
+    else if (d[1] === 0x7D && d[2] === 0x46 && d[3] === 0x4C) { const i = fm1DecodeEditorInfo(d); t = 'editor INFO' + (i ? ' → "' + i.raw + '"' : ''); }
+    else t = 'sysex ' + d.length + 'B';
+  } else {
+    const ty = st & 0xF0, ch = (st & 15) + 1;
+    t = ty === 0x90 && d[2] > 0 ? 'note on ' + midiNoteNameMI(d[1]) + ' v' + d[2] + ' ch' + ch
+      : ty === 0x90 || ty === 0x80 ? 'note off ' + midiNoteNameMI(d[1]) + ' ch' + ch
+      : ty === 0xB0 ? 'cc ' + d[1] + ' = ' + d[2] + ' ch' + ch
+      : ty === 0xC0 ? 'program ' + d[1] + ' ch' + ch
+      : ty === 0xE0 ? 'pitch bend ch' + ch : 'status ' + st.toString(16);
+  }
+  log('in', t, st === 0xF0 ? d : null);
+});
+
+// ═══ header + side panel ══════════════════════════════════════════
+function refreshHeader() {
+  const b = $('b-midi');
+  const ok = mi.status === 'connected' && mi.input && mi.output;
+  b.className = 'badge ' + (ok ? 'ok' : mi.status === 'ota' ? 'warn' : 'bad');
+  b.textContent = 'MIDI: ' + (ok ? mi.output.name : mi.status === 'idle' ? 'not connected' : mi.status);
+  b.title = mi.statusDetail || '';
+  const s = $('b-sysex');
+  s.className = 'badge ' + (mi.access ? (mi.sysexOk ? 'ok' : 'bad') : '');
+  s.textContent = 'SYSEX: ' + (mi.access ? (mi.sysexOk ? 'allowed' : 'denied') : '—');
+  const c = fwc(), f = $('b-fw');
+  f.className = 'badge ' + (c.id ? 'ok' : '');
+  f.textContent = 'FW: ' + (c.id || R.device.fwSource ? c.label : '—');
+  const a = $('b-audio');
+  a.className = 'badge ' + (AUD.stream ? 'ok' : '');
+  a.textContent = 'AUDIO IN: ' + (AUD.stream ? AUD.label : '—');
+}
+function refreshSide() {
+  const c = fwc();
+  if (!R.device.fwSource && !c.id) { $('fwbox').textContent = 'not identified yet — step 1.'; return; }
+  const ps = parts(c);
+  const lines = [
+    `<b>${esc(c.label)}</b>${c.fw ? ' · ' + esc(c.fw.author) : ''}`,
+    `found by: ${esc(R.device.fwSource || '—')}${R.device.vendor ? ' · ' + esc(R.device.vendor) : ''}`,
+    'parts: ' + (ps[0].single ? 'one part, ch 1' : ps.map(p => p.role + ' ch' + p.ch).join(' · ')),
+    'DX7 SysEx: ' + (c.dx7 === true ? 'yes' : c.dx7 === 'editor' ? 'only via its editor' : c.dx7 === false ? 'no' : 'unknown'),
+    'clock in: ' + (c.clock === 'yes' ? 'follows (' + esc(c.clockRaw) + ')' : c.clock === 'no' ? 'none' : 'undocumented'),
+  ];
+  if (c.fw && c.fw.drums) lines.push('drums: ' + esc(c.fw.drums));
+  if (TOOL_OUT_CH) lines.push(`<span class="w">your tools use a FIXED OUT channel ${TOOL_OUT_CH} (FM-1 console) — it overrides these parts.</span>`);
+  if (c.fw && c.fw.warnings && c.fw.warnings.length) lines.push('<span class="w">' + c.fw.warnings.map(esc).join(' · ') + '</span>');
+  $('fwbox').innerHTML = lines.join('<br>');
+}
+function refreshNav() {
+  $('nav').innerHTML = STEPS.map((s, i) => {
+    const st = stepStatus(s.id);
+    return `<button class="nav-step${R.cur === s.id ? ' cur' : ''}" data-go="${s.id}"><span class="ico s-${st}">${ICON[st]}</span><span class="n">${i + 1}</span><span>${s.title}</span><i class="s-${st}">${WORD[st]}</i></button>`;
+  }).join('');
+}
+$('nav').addEventListener('click', e => { const b = e.target.closest('[data-go]'); if (b) go(b.dataset.go); });
+
+function go(sid) {
+  if (R.cur === 'clock' && sid !== 'clock') clkStop(true);
+  if (R.cur !== sid) stopAll();
+  R.cur = sid; save(); render();
+  $('card').scrollTop = 0;
+}
+
+// ═══ rendering ════════════════════════════════════════════════════
+function render() {
+  const sid = R.cur;
+  keepIds = new Set();
+  const i = STEPS.findIndex(s => s.id === sid);
+  const body = (RENDER[sid] || (() => ''))();
+  // drop checks this firmware's card no longer shows (e.g. parts of a previous firmware)
+  if (R.steps[sid] && sid !== 'connect') for (const k of Object.keys(R.steps[sid].checks)) if (!keepIds.has(k)) delete R.steps[sid].checks[k];
+  keepIds = null;
+  const st = stepStatus(sid);
+  $('card').innerHTML = `<div class="step-head"><span class="stepno">STEP ${i + 1} OF ${STEPS.length}</span><h2>${STEPS[i].title}</h2><span class="st s-${st}" id="card-st">${WORD[st]}</span></div>` +
+    body +
+    `<div class="navbtns"><button class="dim big" data-act="back"${i === 0 ? ' disabled' : ''}>◀ BACK</button>` +
+    (i < STEPS.length - 1 ? `<button class="big" data-act="next">NEXT: ${STEPS[i + 1].title} ▶</button>` : '<span></span>') + '</div>';
+  save();
+  refreshChecks(); refreshNav(); refreshHeader(); refreshSide();
+  if (AFTER[sid]) AFTER[sid]();
+}
+const RENDER = {}, AFTER = {}, ACT = {};
+$('card').addEventListener('click', e => {
+  const b = e.target.closest('button');
+  if (!b || b.disabled) return;
+  if (b.dataset.ans) {
+    const r = b.closest('.chk');
+    setCheck(r.dataset.sid, r.dataset.cid, { yes: 'pass', no: 'fail', skip: 'skip' }[b.dataset.ans]);
+    return;
+  }
+  const a = b.dataset.act;
+  if (a && ACT[a]) { try { const p = ACT[a](b); if (p && p.catch) p.catch(err => { console.warn(err); log('t', 'error: ' + (err.message || err)); }); } catch (err) { console.warn(err); log('t', 'error: ' + (err.message || err)); } }
+});
+ACT.next = () => { const i = STEPS.findIndex(s => s.id === R.cur); go(STEPS[Math.min(STEPS.length - 1, i + 1)].id); };
+ACT.back = () => { const i = STEPS.findIndex(s => s.id === R.cur); go(STEPS[Math.max(0, i - 1)].id); };
+function naCard(sid) {
+  return `<div class="na">— ${esc(naReason(sid))}<br><br>This step is <b>skipped</b> for this firmware. Nothing to do here — press NEXT.</div>`;
+}
+
+// ═══ STEP 1 · connect & identify ══════════════════════════════════
+RENDER.connect = () => {
+  const c = fwc();
+  const manyPorts = mi.access && (mi.inputs().length > 1 || mi.outputs().length > 1);
+  const nameLooks = mi.input && mi.output && MIDI_DEVICE_HINTS.some(rx => rx.test(mi.input.name + ' ' + mi.output.name));
+  const portAsk = mi.input && mi.output && !nameLooks;
+  const family = mi.input && MIDI_FELUCCA_PORT.test((mi.input.name || '') + ' ' + (mi.output ? mi.output.name : ''));
+  let h = '';
+  if (RESUMED && R.cur === 'connect') h += `<div class="note">Answers from ${esc(fmtDate(R.started))} are loaded — keep going, or press <b>NEW CHECK-OUT</b> (top right) to start clean.</div>`;
+  h += `<div class="do"><ol>
+    <li>Plug the FM-1 into the Deck (through the dock is fine) and switch it on. Wait for its normal screen.</li>
+    <li>Press <b>CONNECT</b>. Chrome asks to <b>"control and reprogram your MIDI devices"</b> — press <b>Allow</b>. (That is the SysEx permission: the version read and the DX7 test need it.)</li>
+  </ol></div>
+  <div class="actions"><button class="big" data-act="connect">CONNECT</button><button class="dim big" data-act="connect">RE-CHECK</button></div>
+  <div class="msg" id="conn-msg"></div>`;
+  h += row('connect', 'webmidi', 'This browser can talk MIDI (Web MIDI)', { kind: 'auto' });
+  h += row('connect', 'perm', 'MIDI permission granted', { kind: 'auto' });
+  h += row('connect', 'sysex', 'SysEx permission granted ("control and reprogram")', { kind: 'auto' });
+  h += portAsk
+    ? row('connect', 'port', `Is the port “${mi.output.name}” your FM-1?`, { yes: '✔ IT IS', no: '✘ NO' })
+    : row('connect', 'port', 'FM-1 MIDI port found', { kind: 'auto' });
+  if (manyPorts || portAsk) {
+    const chips = (ports, cur, act) => ports.map(p => `<button class="chip${cur && cur.id === p.id ? ' sel' : ''}" data-act="${act}" data-id="${esc(p.id)}">${esc(p.name || p.id)}</button>`).join('');
+    h += `<div class="note">${manyPorts ? 'More than one MIDI port. Tap the FM-1 if the wrong one is picked, then RE-CHECK.' : 'This is the only MIDI port Chrome can see. If it is not the FM-1, see TROUBLESHOOTING.'}</div>
+      <div class="chips"><span class="note">IN:</span>${chips(mi.inputs(), mi.input, 'port-in')}</div>
+      <div class="chips"><span class="note">OUT:</span>${chips(mi.outputs(), mi.output, 'port-out')}</div>`;
+  }
+  h += row('connect', 'identity', 'The synth answered the version query (read-only)', { kind: 'auto' });
+  h += row('connect', 'info', 'Felucca-family editor INFO answered (only sent to Felucca-family ports)', { kind: 'auto', optional: !family });
+  h += row('connect', 'fw', 'Firmware identified', { kind: 'auto' });
+  if (c.id && R.device.fwSource && R.device.fwSource !== 'picked by hand') {
+    h += row('connect', 'fw_ok', `Is “${c.label}” the firmware you installed?`);
+  }
+  h += `<h3>FIRMWARE ${c.id ? '· ' + esc(c.label) : '· NOT IDENTIFIED'}</h3>`;
+  h += `<div class="note">${c.id ? 'Wrong? Tap the right one — the steps adapt to it.' : 'If the synth did not answer but you know what is installed, tap it — the steps adapt to it. Leave it if you are not sure.'}</div><div class="chips">` +
+    FM1_FIRMWARES.filter(f => f.status === 'installable').map(f => `<button class="chip${c.id === f.id ? ' sel' : ''}" data-act="fw-pick" data-fw="${f.id}">${esc(f.name)}</button>`).join('') +
+    `<button class="chip${c.id === 'felucca-family' ? ' sel' : ''}" data-act="fw-pick" data-fw="felucca-family">other Felucca fork</button>` +
+    `<button class="chip dim${!c.id ? ' sel' : ''}" data-act="fw-pick" data-fw="">don't know</button></div>`;
+  h += `<details${(R.steps.connect && Object.values(R.steps.connect.checks).some(x => x.status === 'fail')) ? ' open' : ''}><summary>TROUBLESHOOTING</summary><ul>
+    <li><b>No port?</b> Unplug and replug the FM-1's cable, wait 3 seconds, press RE-CHECK. Through the dock is fine for MIDI; if it still is not seen, try the cable straight into the Deck.</li>
+    <li><b>Port names:</b> stock and FM-1+VA show as <code>FM-1</code>; Felucca and SLOOP show as <code>Felucca</code>; other forks as <code>X0X FM-1</code>, <code>Jangada</code>, <code>Melodee</code>. A port called <code>ota-FM-1</code> or <code>… Update</code> means the synth is in updater mode — finish the install or power-cycle it.</li>
+    <li><b>Version query got no reply?</b> Close the other tabs that use MIDI (FM-1 console, installers, editors) and anything else holding the synth (a DAW, <code>amidi</code>), then RE-CHECK. SysEx must be allowed.</li>
+    <li><b>Permission was denied?</b> Click the icon left of the address bar › Site settings › MIDI devices › Allow, then reload this page.</li>
+    <li><b>Flatpak Chrome sees no MIDI at all?</b> Give it device access, then restart Chrome:<pre>flatpak override --user --device=all com.google.Chrome</pre></li>
+  </ul></details>`;
+  return h;
+};
+AFTER.connect = () => {
+  if (!R.steps.connect || !R.steps.connect.checks.webmidi || R.steps.connect.checks.webmidi.status === 'pending')
+    say('conn-msg', mi.supported ? 'Ready — press CONNECT.' : 'This browser has no Web MIDI. Open the page in Chrome.', !mi.supported);
+};
+let connecting = false;
+ACT.connect = async () => {
+  if (connecting) return;
+  connecting = true;
+  try {
+    setCheck('connect', 'webmidi', mi.supported ? 'pass' : 'fail', mi.supported ? 'Web MIDI available' : 'no Web MIDI — use Chrome');
+    if (!mi.supported) return;
+    say('conn-msg', 'Asking Chrome for MIDI access — press Allow if it asks…');
+    if (!mi.access) await mi.start();
+    if (!mi.access) { setCheck('connect', 'perm', 'fail', mi.statusDetail || 'denied'); say('conn-msg', 'MIDI permission was denied — see TROUBLESHOOTING.', true); return; }
+    setCheck('connect', 'perm', 'pass', 'granted');
+    setCheck('connect', 'sysex', mi.sysexOk ? 'pass' : 'fail', mi.sysexOk ? 'allowed' : 'denied — the version read and DX7 push need it (TROUBLESHOOTING)');
+    say('conn-msg', 'Looking for the FM-1…');
+    for (let i = 0; i < 20 && !(mi.input && mi.output) && mi.status !== 'ota'; i++) { await sleep(150); mi._pickPorts(); }
+    const inN = mi.input ? mi.input.name : '', outN = mi.output ? mi.output.name : '';
+    Object.assign(R.device, { inName: inN || null, outName: outN || null, sysex: mi.sysexOk, toolInChannel: TOOL_IN_CH, toolOutChannel: TOOL_OUT_CH });
+    const all = [...mi.inputs(), ...mi.outputs()].map(p => p.name).filter(Boolean);
+    if (mi.status === 'ota') { setCheck('connect', 'port', 'fail', 'the synth is in UPDATER mode (' + all.join(', ') + ') — finish the install or power-cycle'); render(); say('conn-msg', 'The FM-1 is in updater mode, not playable.', true); return; }
+    if (!mi.input || !mi.output) {
+      setCheck('connect', 'port', 'fail', all.length ? 'ports seen: ' + [...new Set(all)].join(', ') + ' — none usable both ways' : 'no MIDI ports at all');
+      render(); say('conn-msg', 'No FM-1 port found — see TROUBLESHOOTING.', true); return;
+    }
+    const looks = MIDI_DEVICE_HINTS.some(rx => rx.test(inN + ' ' + outN));
+    if (looks) setCheck('connect', 'port', 'pass', 'in “' + inN + '” · out “' + outN + '”');
+    else { const c = stepRec('connect').checks.port; if (c && c.kind === 'auto') c.status = 'pending'; }
+    render();
+    if (!looks) say('conn-msg', '“' + outN + '” does not look like an FM-1 name — confirm below.');
+    log('t', 'ports: in “' + inN + '” · out “' + outN + '”');
+    let vendor = null, info = null;
+    if (!mi.sysexOk) {
+      setCheck('connect', 'identity', 'skip', 'needs SysEx permission');
+      setCheck('connect', 'info', 'skip', 'needs SysEx permission');
+    } else {
+      say('conn-msg', 'Reading the firmware version (read-only, up to 3 s)…');
+      log('out', 'version query (read-only)', [0xF0, 0x00, 0x32, 0x45, 0x00, 0x00, 0x00, 0x40, 0x7F, 0xF7]);
+      vendor = await mi.vendorIdentity(3000);
+      setCheck('connect', 'identity', vendor ? 'pass' : 'fail', vendor ? vendor.name : 'no reply in 3 s');
+      const family = MIDI_FELUCCA_PORT.test(inN + ' ' + outN) || (vendor && vendor.family);
+      if (family) {
+        log('out', 'Felucca editor INFO (read-only)', [0xF0, 0x7D, 0x46, 0x4C, 0x01, 0xF7]);
+        info = await mi.editorInfo(800);
+        setCheck('connect', 'info', info ? 'pass' : 'fail', info ? '“' + info.raw + '”' : 'no reply in 0.8 s');
+      } else setCheck('connect', 'info', 'skip', 'not a Felucca-family port — not sent');
+    }
+    R.device.vendor = vendor ? vendor.name : null;
+    R.device.info = info ? info.raw : null;
+    const id = fm1MergeIdentity(vendor, info, inN + ' ' + outN);
+    if (id && id.firmware === 'rescue') { setCheck('connect', 'fw', 'fail', id.name + ' — USB rescue mode, reinstall the firmware'); applyFirmware('', '', 'none'); }
+    else if (id && id.firmware === 'loader') { setCheck('connect', 'fw', 'fail', id.name); applyFirmware('', '', 'none'); }
+    else if (id && id.firmware && id.firmware !== 'unknown') {
+      applyFirmware(id.firmware, id.name, info ? 'editor INFO' : vendor ? 'version reply' : 'port name');
+      setCheck('connect', 'fw', 'pass', id.name + ' (registry: ' + id.firmware + ')');
+    } else {
+      if (R.device.fwSource !== 'picked by hand') applyFirmware('', '', 'none');   // RE-CHECK keeps a hand pick
+      setCheck('connect', 'fw', 'fail', vendor ? vendor.name + ' is not in the registry' : 'not identified — tap it below if you know it');
+    }
+    say('conn-msg', fwc().id ? 'Connected: ' + fwc().label + '. Check the answers below, then NEXT.' : 'Connected, firmware unknown. Pick it below if you know it, then NEXT.');
+  } finally {
+    connecting = false;
+    save(); render();
+    const m = $('conn-msg'); if (m && !m.textContent) say('conn-msg', '');
+  }
+};
+function applyFirmware(id, name, source) {
+  const prev = R.device.firmware || '';
+  if (prev && prev !== id && id) {
+    for (const k of Object.keys(R.steps)) if (k !== 'connect') delete R.steps[k];
+    R.latency = null;
+    log('t', 'firmware changed (' + prev + ' → ' + id + '): answers for steps 2–7 cleared');
+  }
+  const c = stepRec('connect').checks;
+  if (prev !== id && c.fw_ok) delete c.fw_ok;
+  // a bare package string (e.g. "FM-1_093") reads better with the registry name in front
+  const reg = fm1Firmware(id);
+  if (reg && name && !name.toLowerCase().includes(reg.name.toLowerCase().split(' ')[0])) name = reg.name + ' (' + name + ')';
+  R.device.firmware = id;
+  R.device.firmwareName = id ? (name || (reg || {}).name || (id === 'felucca-family' ? 'Felucca family (unknown fork)' : id)) : '';
+  R.device.fwSource = source;
+  const f = fwc();
+  R.device.parts = parts(f).map(p => ({ role: p.role, ch: p.ch }));
+  R.device.dx7 = f.dx7; R.device.clock = f.clock;
+  if (id && source !== 'none') mi.setFirmware(id, name || '');   // shared with every tool, as their IDENTIFY does
+  save(); refreshHeader(); refreshSide(); refreshNav();
+}
+ACT['fw-pick'] = b => {
+  const id = b.dataset.fw;
+  applyFirmware(id, '', id ? 'picked by hand' : 'none');
+  log('t', 'firmware ' + (id ? 'picked by hand: ' + fwc().label : 'cleared'));
+  render();
+};
+ACT['port-in'] = b => { mi.selectInput(b.dataset.id); render(); };
+ACT['port-out'] = b => { mi.selectOutput(b.dataset.id); render(); };
+
+// ═══ STEP 2 · notes out ═══════════════════════════════════════════
+const PHRASES = {
+  lead:   { what: 'a short high melody (7 notes)', seq: [[72], [74], [76], [79], [76], [74], [72]], d: 200, v: 100 },
+  bass:   { what: 'a low bass line (5 notes)', seq: [[36], [36], [43], [41], [36]], d: 300, v: 110 },
+  chords: { what: 'four chords', seq: [[60, 64, 67], [57, 60, 64], [62, 65, 69], [55, 59, 62]], d: 550, v: 90 },
+  drums:  { what: 'a drum beat (kick, hat, snare)', seq: [[36], [42], [38], [42], [36], [36], [38], [42]], d: 200, v: 110 },
+};
+const echoSeen = { count: 0 };
+RENDER.notes_out = () => {
+  const c = fwc(), ps = parts(c);
+  let h = `<div class="do">Turn the FM-1's volume up (its speaker or headphones). Press each <b>PLAY</b> button and listen, then answer.</div>`;
+  h += ps[0].single
+    ? `<div class="note">${esc(c.label)} plays one part: everything goes to <b>channel 1</b>.</div>`
+    : `<div class="note">${esc(c.label)} has several parts, one per MIDI channel (registry): ${ps.map(p => '<b>' + p.role + '</b> → ch ' + p.ch).join(' · ')}.${c.fw && c.fw.drums && c.roles.drums ? ' Drums: ' + esc(c.fw.drums) + '.' : ''}</div>`;
+  if (TOOL_OUT_CH) h += `<div class="warnbox">Your tools are set to a FIXED OUT channel (${TOOL_OUT_CH}) in the FM-1 console. That overrides these parts in every tool — set it back to “auto” there once this passes.</div>`;
+  for (const p of ps) {
+    const ph = PHRASES[p.role];
+    h += `<div class="part"><button class="big" data-act="play-part" data-role="${p.role}" data-ch="${p.ch}">▶ PLAY ${p.single ? '' : p.role.toUpperCase() + ' · '}CH ${p.ch}</button>` +
+      row('notes_out', 'part_' + p.role, p.single ? `Did you hear ${ph.what}?` : `Did you hear the ${p.role} part — ${ph.what}?`) + '</div>';
+  }
+  h += `<div class="msg" id="no-msg"></div>`;
+  h += `<div class="note">No sound at all? Check the FM-1's volume and that step 1 found the port. Only one part silent? On multi-part firmwares that track may be muted or set to an empty sound on the synth.</div>`;
+  return h;
+};
+ACT['play-part'] = async b => {
+  if (!needOut('no-msg')) return;
+  const role = b.dataset.role, ch = +b.dataset.ch, ph = PHRASES[role];
+  stopAll();
+  echoSeen.count = 0;
+  say('no-msg', 'playing ' + role + ' on ch ' + ch + '…');
+  log('out', 'phrase: ' + role + ' on ch ' + ch);
+  await playSeq(ch, ph.seq, ph.d, ph.v);
+  say('no-msg', 'played ' + role + ' on ch ' + ch + (echoSeen.count ? ' · the synth also sent ' + echoSeen.count + ' notes back (MIDI thru)' : '') + '. Did you hear it?');
+};
+
+// ═══ STEP 3 · notes in ════════════════════════════════════════════
+const NI = { count: 0, chans: new Set(), vmin: 127, vmax: 0, on: new Set(), lo: 127, hi: 0 };
+RENDER.notes_in = () => {
+  let h = `<div class="do">Play some keys on the FM-1: the <b>lowest</b>, the <b>highest</b>, a few in between — soft and hard.</div>
+    <div class="bignote"><div class="p" id="ni-p">—</div><div class="m" id="ni-m">waiting for a key…</div></div>`;
+  h += row('notes_in', 'received', 'Notes arrive from the FM-1', { kind: 'auto', btns: ['no', 'skip'], no: '✘ NOTHING' });
+  h += row('notes_in', 'release', 'Key releases arrive (no stuck notes)', { kind: 'auto' });
+  h += row('notes_in', 'channel', 'Channel the FM-1 sends on', { kind: 'auto', optional: true });
+  h += row('notes_in', 'match', 'Did the note names shown match the keys you pressed (right note, right octave)?');
+  h += `<div class="note">Velocity is recorded but not judged — small keybeds often send one fixed velocity.</div>`;
+  return h;
+};
+AFTER.notes_in = () => niShow();
+function niShow() {
+  if (!$('ni-m') || !NI.count) return;
+  $('ni-m').textContent = NI.count + ' notes · ch ' + [...NI.chans].join(', ') + ' · velocity ' + NI.vmin + '–' + NI.vmax + ' · range ' + midiNoteNameMI(NI.lo) + '–' + midiNoteNameMI(NI.hi);
+}
+window.addEventListener('midiinput-note', e => {
+  if (e.detail.on && performance.now() - lastOutAt < 400) { echoSeen.count++; return; }
+  if (R.cur !== 'notes_in' || performance.now() - lastOutAt < 400) return;
+  const d = e.detail;
+  if (d.on) {
+    NI.count++; NI.chans.add(d.ch); NI.on.add(d.note);
+    NI.vmin = Math.min(NI.vmin, d.raw); NI.vmax = Math.max(NI.vmax, d.raw);
+    NI.lo = Math.min(NI.lo, d.note); NI.hi = Math.max(NI.hi, d.note);
+    if ($('ni-p')) $('ni-p').textContent = midiNoteNameMI(d.note);
+    niShow();
+    setCheck('notes_in', 'received', 'pass', NI.count + ' notes · ' + midiNoteNameMI(NI.lo) + '–' + midiNoteNameMI(NI.hi) + ' · velocity ' + NI.vmin + '–' + NI.vmax);
+    const chs = [...NI.chans];
+    const filt = TOOL_IN_CH && !NI.chans.has(TOOL_IN_CH);
+    setCheck('notes_in', 'channel', filt ? 'fail' : 'pass', 'sends on ch ' + chs.join(', ') +
+      (filt ? ' — but your tools only listen to ch ' + TOOL_IN_CH + ' (FM-1 panel IN CH): set it to omni' : TOOL_IN_CH ? ' · tools listen on ch ' + TOOL_IN_CH : ' · tools listen omni'));
+  } else if (NI.on.has(d.note)) {
+    NI.on.delete(d.note);
+    const c = R.steps.notes_in && R.steps.notes_in.checks.release;
+    if (!c || c.status !== 'pass') setCheck('notes_in', 'release', 'pass', 'note-off received');
+  }
+});
+
+// ═══ STEP 4 · knobs & CC ══════════════════════════════════════════
+const CC_TESTS = [
+  { cc: 74, what: 'brightness / filter', path: [64, 127, 0, 64] },
+  { cc: 71, what: 'resonance / timbre', path: [64, 127, 0, 64] },
+  { cc: 1, what: 'mod wheel', path: [0, 127, 0] },
+  { cc: 7, what: 'volume', path: [100, 10, 127, 100] },
+];
+const CCIN = new Map();   // "cc@ch" → {cc, ch, n, last}
+RENDER.cc = () => {
+  const c = fwc(), ch = leadCh(c);
+  // a registry `cc: {filter: n}` field (not catalogued yet) would put that firmware's filter CC first
+  const regCc = c.fw && c.fw.cc && c.fw.cc.filter;
+  const tests = regCc && !CC_TESTS.some(t => t.cc === regCc) ? [{ cc: regCc, what: 'filter (registry)', path: [64, 127, 0, 64] }, ...CC_TESTS] : CC_TESTS;
+  let h = `<h3>A · FROM THIS PAGE TO THE FM-1</h3>
+    <div class="do">Press <b>SWEEP</b>: the FM-1 plays a held note on ch ${ch} while one controller moves up and down (the bar shows it). Listen for the sound changing.</div>`;
+  for (const t of tests) {
+    h += `<div class="part"><div><button class="big" data-act="cc-sweep" data-cc="${t.cc}" style="width:100%">∿ SWEEP CC ${t.cc}</button><div class="bar" style="margin-top:4px"><i id="ccbar-${t.cc}"></i></div></div>` +
+      row('cc', 'cc_out_' + t.cc, `CC ${t.cc} (${t.what}): did the sound change while the bar moved?`, { optional: true }) + '</div>';
+  }
+  h += row('cc', 'cc_out', 'At least one controller changes the sound', { kind: 'auto' });
+  h += `<div class="msg" id="cc-msg"></div>
+    <div class="note">Not every firmware maps every controller, so one YES is enough. Some ignore CC from USB completely — then NO everywhere is the honest answer.</div>
+    <h3>B · FROM THE FM-1 TO THIS PAGE</h3>
+    <div class="do">Turn each of the FM-1's <b>four knobs</b> slowly, one at a time.</div>
+    <div id="ccin-list" class="note">nothing yet…</div>`;
+  h += row('cc', 'cc_in', 'Knob moves arrive as CC messages', { kind: 'auto', btns: ['no', 'skip'], no: '✘ NOTHING' });
+  h += `<div class="note">The tools learn knobs by turning them (MIDI-learn), so any CC numbers work. Nothing arriving is a valid result too — that firmware keeps its knobs local.</div>`;
+  return h;
+};
+AFTER.cc = () => ccinShow();
+let sweeping = false;
+ACT['cc-sweep'] = async b => {
+  if (!needOut('cc-msg') || sweeping) return;
+  sweeping = true;
+  const cc = +b.dataset.cc, t = CC_TESTS.find(x => x.cc === cc) || { path: [64, 127, 0, 64] }, ch = leadCh();
+  stopAll();
+  try {
+    say('cc-msg', 'sweeping CC ' + cc + ' on ch ' + ch + '…');
+    log('out', 'CC ' + cc + ' sweep on ch ' + ch + ' (held C4)');
+    nOn(ch, 60, 100);
+    // the path's corners (e.g. 127 and 0) are always hit exactly
+    const stepMs = 30, per = Math.round(3000 / stepMs / (t.path.length - 1)), vals = [];
+    for (let k = 0; k < t.path.length - 1; k++) for (let j = 0; j < per; j++) vals.push(Math.round(t.path[k] + (t.path[k + 1] - t.path[k]) * j / per));
+    vals.push(t.path[t.path.length - 1]);
+    for (const v of vals) {
+      out([0xB0 | ((ch - 1) & 15), cc & 127, v]);
+      const bar = $('ccbar-' + cc); if (bar) bar.style.width = (v / 127 * 100).toFixed(1) + '%';
+      await sleep(stepMs);
+    }
+    nOff(ch, 60);
+    say('cc-msg', 'CC ' + cc + ' swept (left at ' + t.path[t.path.length - 1] + '). Did the sound change?');
+  } finally { sweeping = false; }
+};
+function ccinShow() {
+  const el = $('ccin-list');
+  if (!el) return;
+  if (!CCIN.size) { el.textContent = 'nothing yet…'; return; }
+  el.innerHTML = [...CCIN.values()].map(r => `<div class="ccrow"><b style="color:var(--gold-hi);font-weight:normal">CC ${r.cc}</b><div class="bar"><i style="width:${(r.last / 127 * 100).toFixed(0)}%"></i></div><span>ch ${r.ch} · ${r.last}</span></div>`).join('');
+}
+window.addEventListener('midiinput-cc', e => {
+  if (R.cur !== 'cc' || performance.now() - lastOutAt < 400) return;
+  const d = e.detail, k = d.cc + '@' + d.ch;
+  const r = CCIN.get(k) || { cc: d.cc, ch: d.ch, n: 0, last: 0 };
+  r.n++; r.last = d.value; CCIN.set(k, r);
+  ccinShow();
+  const moved = [...CCIN.values()].filter(x => x.n >= 2);
+  if (moved.length) setCheck('cc', 'cc_in', 'pass', 'knobs send: ' + moved.map(x => 'CC ' + x.cc + ' (ch ' + x.ch + ')').join(', '));
+});
+
+// ═══ STEP 5 · DX7 voice push ══════════════════════════════════════
+// Voices built from the dx7_synth.js voice object; dumps use DX7.voiceToSysex (F0 43 0n 00 01 1B,
+// the corrected bulk sub-status) and every dump is checked byte-by-byte before it is sent.
+const VOICES = {
+  sine: { name: 'MM SINE', what: 'a pure, soft whistle — no buzz, holds steady while the key is down', make() {
+    const v = DX7.defaultVoice(); v.name = 'MM SINE'; v.algorithm = 31;   // ALG 32: six carriers, only OP1 sounding
+    Object.assign(v.ops[0], { output: 99, rates: [95, 60, 60, 55], levels: [99, 99, 99, 0] });
+    return v; } },
+  brass: { name: 'MM BRASS', what: 'a bright, buzzy brass blare that swells in', make() {
+    const v = DX7.defaultVoice(); v.name = 'MM BRASS'; v.algorithm = 0;  // ALG 1: OP2 → OP1
+    Object.assign(v.ops[0], { output: 99, rates: [62, 45, 50, 55], levels: [99, 94, 90, 0], kvs: 2 });
+    Object.assign(v.ops[1], { output: 88, coarse: 1, fine: 0, rates: [52, 40, 45, 55], levels: [99, 88, 80, 0], kvs: 2 });
+    return v; } },
+  bell: { name: 'MM BELL', what: 'a clangy bell that rings out and fades even while held', make() {
+    const v = DX7.defaultVoice(); v.name = 'MM BELL'; v.algorithm = 0;   // OP2 at 3.5× → OP1
+    Object.assign(v.ops[0], { output: 99, rates: [99, 32, 25, 35], levels: [99, 0, 0, 0], kvs: 2 });
+    Object.assign(v.ops[1], { output: 82, coarse: 3, fine: 50, rates: [99, 35, 25, 35], levels: [99, 0, 0, 0] });
+    return v; } },
+};
+const DX7_PHRASE = [[60], [64], [67], [72]];
+let dx7Ack = false;
+function dx7Ch() { return leadCh(); }
+function checkDump(sx, ch) {
+  const n = (ch - 1) & 15, head = [0xF0, 0x43, n, 0x00, 0x01, 0x1B];
+  const errs = [];
+  if (sx.length !== 163) errs.push('length ' + sx.length + ' (want 163)');
+  if (head.some((b, i) => sx[i] !== b)) errs.push('header ' + hex(sx.slice(0, 6)) + ' (want ' + hex(head) + ')');
+  const data = sx.slice(6, 161);
+  if ([...data].some(b => b > 127)) errs.push('data byte > 127');
+  const cs = DX7.checksum(data);
+  if (sx[161] !== cs) errs.push('checksum ' + sx[161] + ' (want ' + cs + ')');
+  if (sx[162] !== 0xF7) errs.push('no F7');
+  return { ok: !errs.length, text: errs.length ? errs.join('; ') : 'header ' + hex(head) + ' (0n = single-voice dump) · 155 data bytes · checksum ' + cs.toString(16).toUpperCase().padStart(2, '0') + ' ok · F7' };
+}
+RENDER.dx7 = () => {
+  if (naReason('dx7')) return naCard('dx7');
+  const c = fwc(), ch = dx7Ch();
+  if (c.dx7 === 'editor') {
+    stepRec('dx7').mode = 'editor';
+    return `<div class="do">${esc(c.label)} takes DX7 patches only through its own web editor — not from this page.
+      ${c.fw && c.fw.editor ? `Open <b>${esc(c.fw.editor)}</b>, load any DX7 voice (.syx) into a track, and play it.` : 'Open its editor, load any DX7 voice (.syx) into a track, and play it.'}</div>` +
+      (c.fw && c.fw.editor ? `<div class="actions"><a class="btn big" href="${esc(c.fw.editor)}" target="_blank" rel="noopener">OPEN ITS EDITOR ↗</a></div>` : '') +
+      row('dx7', 'editor', 'Did the editor load a DX7 voice and did the FM-1 play it?', { optional: true }) +
+      `<div class="note">Close the editor tab afterwards — two pages holding the MIDI port can block each other.</div>`;
+  }
+  stepRec('dx7').mode = c.dx7 === true ? 'normal' : 'exploratory';
+  const warns = (c.fw && c.fw.warnings || []).filter(w => /dx7|dump|preset/i.test(w));
+  let h = '';
+  if (c.dx7 !== true) h += `<div class="warnbox">EXPLORATORY: nobody has documented whether ${esc(c.label)} accepts DX7 SysEx. Try it — “no change” is a useful answer.</div>`;
+  h += `<div class="do"><ol>
+    <li>On the FM-1, select a normal FM preset${warns.length ? ' <b>you don\'t mind losing</b>' : ''}.</li>
+    <li>For each voice: press <b>⇪ SEND</b> (it sends the voice, then plays C–E–G–C), listen, answer.</li>
+    <li>Not sure what it should sound like? <b>♪ HEAR IT HERE</b> plays the same voice in the browser.</li>
+  </ol></div>`;
+  if (warns.length) {
+    h += `<div class="warnbox">${warns.map(esc).join('<br>')}</div><label class="ack"><input type="checkbox" id="dx7-ack"${dx7Ack ? ' checked' : ''}> I selected a preset I don't mind overwriting</label>`;
+  }
+  h += `<div class="note">Sent as a single-voice dump to device ${ch} (MIDI ch ${ch}): <code>F0 43 ${((ch - 1) & 15).toString(16).toUpperCase().padStart(2, '0')} 00 01 1B … F7</code>, 163 bytes. Every dump is checked before it goes out.</div>`;
+  for (const k of Object.keys(VOICES)) {
+    const v = VOICES[k];
+    h += `<div class="actions"><button class="hot big" data-act="dx7-send" data-v="${k}">⇪ SEND “${v.name}”</button><button class="dim big" data-act="dx7-play" data-v="${k}">▶ PLAY AGAIN</button><button class="dim big" data-act="dx7-ref" data-v="${k}">♪ HEAR IT HERE</button></div>` +
+      row('dx7', 'voice_' + k, `After sending “${v.name}”, did the FM-1 sound like ${v.what}?`);
+  }
+  h += row('dx7', 'bytes', 'Voice dumps built correctly (header, 155 bytes, checksum)', { kind: 'auto' });
+  h += row('dx7', 'compare', 'Did the FM-1 sound like the ♪ browser version of the same voice?', { optional: true });
+  h += `<h3>PARAMETER CHANGE (one value at a time)</h3>
+    <div class="do">Send <b>MM BELL</b> first. Then press <b>ALG → 32</b>: it changes only the algorithm, so the bell's modulator becomes a plain second tone — the clang should vanish. Watch the FM-1's screen as you press it.</div>
+    <div class="actions"><button class="hot big" data-act="dx7-alg" data-alg="31">⇄ ALG → 32</button><button class="dim big" data-act="dx7-play" data-v="bell">▶ PLAY</button><button class="dim big" data-act="dx7-alg" data-alg="0">↺ ALG → 1</button></div>`;
+  h += row('dx7', 'param_sound', 'After ALG → 32, did the bell lose its clang (two plain tones)?');
+  h += row('dx7', 'param_screen', 'Did the FM-1\'s screen redraw (show a different algorithm)?', { optional: true });
+  h += `<div class="msg" id="dx7-msg"></div>`;
+  return h;
+};
+function dx7Ready() {
+  if (!needOut('dx7-msg')) return false;
+  if (!mi.sysexOk) { say('dx7-msg', 'SysEx was not allowed — reload the page and allow "control and reprogram".', true); return false; }
+  const ack = $('dx7-ack');
+  if (ack && !ack.checked) { say('dx7-msg', 'Tick the box first: this firmware overwrites the selected preset.', true); return false; }
+  return true;
+}
+ACT['dx7-send'] = async b => {
+  const ack = $('dx7-ack'); if (ack) dx7Ack = ack.checked;
+  if (!dx7Ready()) return;
+  const k = b.dataset.v, v = VOICES[k].make(), ch = dx7Ch();
+  const sx = DX7.voiceToSysex(v, ch);
+  const chk = checkDump(sx, ch);
+  setCheck('dx7', 'bytes', chk.ok ? 'pass' : 'fail', chk.text);
+  if (!chk.ok) { say('dx7-msg', 'dump failed its own check — not sent: ' + chk.text, true); return; }
+  stopAll();
+  out(sx);
+  log('out', 'DX7 voice dump “' + v.name + '” (' + sx.length + 'B)', sx);
+  say('dx7-msg', 'sent “' + v.name + '” — playing it…');
+  await sleep(200);
+  await playSeq(ch, DX7_PHRASE, 380, 100, 1400);
+  say('dx7-msg', 'sent “' + v.name + '” and played C–E–G–C. Same old sound = the firmware ignored the dump.');
+};
+ACT['dx7-play'] = async b => {
+  if (!needOut('dx7-msg')) return;
+  stopAll();
+  await playSeq(dx7Ch(), DX7_PHRASE, 380, 100, 1400);
+};
+ACT['dx7-alg'] = async b => {
+  if (!dx7Ready()) return;
+  const alg = +b.dataset.alg, ch = dx7Ch();
+  const sx = dx7ParamChangeSysex(134, alg, ch);
+  stopAll();
+  out(sx);
+  log('out', 'DX7 parameter change: algorithm → ' + (alg + 1), sx);
+  say('dx7-msg', 'sent parameter change: algorithm → ' + (alg + 1) + ' (' + hex(sx) + '). Playing…');
+  await sleep(150);
+  await playSeq(ch, DX7_PHRASE, 380, 100, 1400);
+};
+let refSynth = null;
+ACT['dx7-ref'] = async b => {
+  const ctx = await ensureCtx();
+  if (!refSynth) { refSynth = new DX7Synth(ctx, { output: ctx.destination, maxVoices: 8 }); await refSynth.init(); }
+  const v = VOICES[b.dataset.v].make();
+  refSynth.allOff();
+  refSynth.loadVoice(v);
+  const t0 = ctx.currentTime + 0.05;
+  DX7_PHRASE.forEach((ch, i) => {
+    const t = t0 + i * 0.38, len = i === DX7_PHRASE.length - 1 ? 1.4 : 0.32;
+    ch.forEach(n => { refSynth.noteOn(n, 100 / 127, t); refSynth.noteOff(n, t + len); });
+  });
+  say('dx7-msg', '♪ playing “' + v.name + '” in the browser (Deck speakers) — the FM-1 should sound like this.');
+};
+
+// ═══ STEP 6 · clock follow ════════════════════════════════════════
+const CLK = { running: false, bpm: 90, anchorPerf: 0, anchorTick: 0, next: 0, timer: 0, sent: 0, raf: 0 };
+function clkPer() { return 60000 / (CLK.bpm * 24); }
+function clkPump() {
+  const horizon = performance.now() + 200, per = clkPer();   // 200 ms ahead: survives a busy main thread
+  for (;;) {
+    const t = CLK.anchorPerf + (CLK.next - CLK.anchorTick) * per;
+    if (t > horizon) break;
+    out([0xF8], t); CLK.next++; CLK.sent++;
+  }
+}
+function clkStart() {
+  if (CLK.running) clkStop(true);
+  const t0 = performance.now() + 60;
+  out([0xFA], t0);
+  Object.assign(CLK, { running: true, anchorPerf: t0, anchorTick: 0, next: 0, sent: 0 });
+  log('out', 'START + clock at ' + CLK.bpm + ' BPM (24 per beat)', [0xFA]);
+  clkPump();
+  CLK.timer = setInterval(clkPump, 20);
+  clkLamp();
+}
+function clkTempo(bpm) {
+  if (CLK.running) {   // re-anchor at the next unsent tick so the grid never jumps
+    CLK.anchorPerf = CLK.anchorPerf + (CLK.next - CLK.anchorTick) * clkPer();
+    CLK.anchorTick = CLK.next;
+  }
+  CLK.bpm = bpm;
+  if (CLK.running) log('out', 'tempo → ' + bpm + ' BPM');
+}
+function clkStop(quiet) {
+  if (!CLK.running) return;
+  clearInterval(CLK.timer); CLK.timer = 0;
+  const t = Math.max(performance.now(), CLK.anchorPerf + (CLK.next - CLK.anchorTick) * clkPer());
+  out([0xFC], t);
+  CLK.running = false;
+  if (!quiet) log('out', 'STOP (' + CLK.sent + ' clocks sent)', [0xFC]);
+}
+function clkLamp() {
+  cancelAnimationFrame(CLK.raf);
+  const tick = () => {
+    const lamp = $('clk-lamp');
+    if (!CLK.running || !lamp) { if (lamp) lamp.classList.remove('lit'); return; }
+    const ticks = CLK.anchorTick + (performance.now() - CLK.anchorPerf) / clkPer();
+    const beat = Math.floor(ticks / 24), ph = ticks / 24 - beat;
+    lamp.classList.toggle('lit', ticks >= 0 && ph < 0.18);
+    lamp.classList.toggle('down', beat % 4 === 0);
+    const s = $('clk-stat'); if (s) s.textContent = CLK.bpm + ' BPM · beat ' + (Math.max(0, beat) + 1) + ' · ' + CLK.sent + ' clocks sent';
+    CLK.raf = requestAnimationFrame(tick);
+  };
+  CLK.raf = requestAnimationFrame(tick);
+}
+RENDER.clock = () => {
+  if (naReason('clock')) return naCard('clock');
+  const c = fwc();
+  stepRec('clock').mode = c.clock === 'yes' ? 'normal' : 'exploratory';
+  let setup;
+  if (CLOCK_HOWTO[c.id]) setup = CLOCK_HOWTO[c.id];
+  else if (c.clock === 'yes') setup = 'If it has a clock / sync source setting, set it to <b>USB</b>. (Registry: “' + esc(c.clockRaw) + '”.)';
+  else if (c.family) setup = 'Felucca-based firmwares usually have a CLOCK page — on Felucca it is <b>HOME</b>, <b>HOME</b>, <b>knob 3 → CLK = USB</b>. Try that.';
+  else setup = 'Nobody has documented whether ' + esc(c.label) + ' follows USB clock, or where its setting is. If its menus have a clock / sync option, set it to <b>USB</b> (or EXT); otherwise leave it as it is.';
+  let h = c.clock === 'yes' ? '' : `<div class="warnbox">EXPLORATORY: nobody has documented whether ${esc(c.label)} follows USB MIDI clock. Try it — “no” is a useful answer.</div>`;
+  h += `<div class="do"><ol>
+    <li>${setup}</li>
+    <li>Give it something to play: a sequencer pattern with a few steps (or a held arpeggio).</li>
+    <li>Press <b>▶ START</b> here. The lamp flashes on every beat — the FM-1 should play in time with it.</li>
+    <li>Switch between <b>90</b> and <b>140 BPM</b> while it runs, then press <b>■ STOP</b>.</li>
+  </ol></div>
+  <div class="actions">
+    <button class="chip big${CLK.bpm === 90 ? ' sel' : ''}" data-act="clk-bpm" data-bpm="90">90 BPM</button>
+    <button class="chip big${CLK.bpm === 140 ? ' sel' : ''}" data-act="clk-bpm" data-bpm="140">140 BPM</button>
+    <button class="big" data-act="clk-start">▶ START</button>
+    <button class="dim big" data-act="clk-stop">■ STOP</button>
+    <span class="lamp" id="clk-lamp"></span><span class="note" id="clk-stat">stopped</span>
+  </div>
+  <div class="msg" id="clk-msg"></div>`;
+  h += row('clock', 'start', 'When you pressed START, did the FM-1 start playing?');
+  h += row('clock', 'tempo', 'Did it follow the tempo — slower at 90, faster at 140, in time with the lamp?');
+  h += row('clock', 'stop', 'When you pressed STOP, did it stop?');
+  h += row('clock', 'sent', 'Clock, START and STOP sent (24 per beat, timestamped ahead)', { kind: 'auto', optional: true });
+  h += `<div class="note">If it plays but ignores the tempo, its clock source is still internal (step 1 above). If it needed its own PLAY button to start, answer NO to the first question — it follows tempo but not START.</div>`;
+  return h;
+};
+AFTER.clock = () => { if (CLK.running) clkLamp(); };
+ACT['clk-start'] = () => { if (!needOut('clk-msg')) return; clkStart(); say('clk-msg', 'running at ' + CLK.bpm + ' BPM — 24 clocks per beat, scheduled ahead with timestamps.'); };
+ACT['clk-stop'] = () => { const was = CLK.running; clkStop(); if (was) { say('clk-msg', 'stopped after ' + CLK.sent + ' clocks.'); setCheck('clock', 'sent', 'pass', CLK.sent + ' clocks sent between START and STOP'); } };
+ACT['clk-bpm'] = b => {
+  clkTempo(+b.dataset.bpm);
+  document.querySelectorAll('[data-act="clk-bpm"]').forEach(x => x.classList.toggle('sel', +x.dataset.bpm === CLK.bpm));
+  if (CLK.running) say('clk-msg', 'now ' + CLK.bpm + ' BPM — did the FM-1 change speed?');
+};
+
+// ═══ STEP 7 · USB audio return + latency ══════════════════════════
+const AUD = { ctx: null, stream: null, src: null, cap: null, probe: null, sink: null, label: '', deviceId: '', devices: [], blocks: [], raf: 0 };
+async function ensureCtx() {
+  if (!AUD.ctx) {
+    // Same settings as the DAW's context (44.1 kHz, interactive) so the latency number transfers.
+    try { AUD.ctx = new AudioContext({ sampleRate: 44100, latencyHint: 'interactive' }); }
+    catch (e) { AUD.ctx = new AudioContext({ latencyHint: 'interactive' }); }
+  }
+  if (AUD.ctx.state !== 'running') { try { await AUD.ctx.resume(); } catch (e) { /* needs a gesture */ } }
+  return AUD.ctx;
+}
+// ctx time → performance time, exactly as the DAW's Engine.perfTime() maps it.
+function perfOf(ctxTime) {
+  const ctx = AUD.ctx;
+  const ts = ctx.getOutputTimestamp ? ctx.getOutputTimestamp() : null;
+  if (ts && ts.performanceTime) return ts.performanceTime + (ctxTime - ts.contextTime) * 1000;
+  return performance.now() + (ctxTime - ctx.currentTime) * 1000;
+}
+// Frame-stamped peak probe: posts |x| (max over channels) per render quantum with the
+// context frame it belongs to, so an onset can be placed on the AudioContext clock.
+const PROBE_SRC = `
+class MMOnsetProbe extends AudioWorkletProcessor {
+  constructor() { super(); this.on = true; this.port.onmessage = e => { if (e.data === 'stop') this.on = false; }; }
+  process(inputs) {
+    const inp = inputs[0];
+    if (inp && inp.length && inp[0].length) {
+      const n = inp[0].length, m = new Float32Array(n);
+      for (const c of inp) for (let i = 0; i < n; i++) { const a = c[i] < 0 ? -c[i] : c[i]; if (a > m[i]) m[i] = a; }
+      this.port.postMessage({ f: currentFrame, d: m }, [m.buffer]);
+    }
+    return this.on;
+  }
+}
+registerProcessor('mm-onset-probe', MMOnsetProbe);
+`;
+const FM1_AUDIO_RX = [/felucca/i, /fm-?1/i, /m-?vave/i, ...(typeof MIDI_DEVICE_HINTS !== 'undefined' ? MIDI_DEVICE_HINTS : [])];
+RENDER.audio = () => {
+  const c = fwc(), ps = parts(c);
+  if (!AUD.part || !ps.some(p => p.role === AUD.part.role)) AUD.part = ps.find(p => p.role === 'lead') || ps[0];
+  let h = `<h3>A · FIND THE FM-1'S USB AUDIO</h3>
+    <div class="do">The FM-1 also sends its sound to the Deck over the USB cable. Press <b>FIND AUDIO INPUTS</b> — Chrome asks to use a microphone: press <b>Allow</b> (it is the FM-1, not a mic). Then tap the FM-1 in the list.</div>
+    <div class="actions"><button class="big" data-act="aud-find">FIND AUDIO INPUTS</button></div>
+    <div class="chips" id="aud-list">${AUD.devices.map(d => `<button class="chip${d.deviceId === AUD.deviceId ? ' sel' : ''}" data-act="aud-pick" data-id="${esc(d.deviceId)}">${esc(d.label || 'input ' + d.deviceId.slice(0, 6))}${FM1_AUDIO_RX.some(rx => rx.test(d.label)) ? ' ★' : ''}</button>`).join('')}</div>`;
+  h += row('audio', 'found', 'The FM-1\'s USB audio input is found', { kind: 'auto' });
+  h += `<div class="meter" style="margin:8px 0"><i id="aud-meter"></i><b id="aud-db">— dBFS</b></div>
+    <h3>B · LEVEL</h3>
+    <div class="do">Turn the FM-1's volume to about three-quarters, then press <b>PLAY TEST NOTE</b>. The meter should jump.</div>
+    <div class="actions"><button class="big" data-act="aud-level">▶ PLAY TEST NOTE</button></div>`;
+  h += row('audio', 'level', 'The FM-1\'s sound arrives on that input', { kind: 'auto' });
+  h += `<h3>C · LATENCY (ROUND TRIP)</h3>
+    <div class="do">Pick a sound with a <b>sharp start</b> on the FM-1 (piano, pluck, drum — not a slow pad). Then press <b>MEASURE</b>: it plays 8 short notes and times how long each takes to come back as audio.</div>
+    <div class="chips">${ps.map(p => `<button class="chip${AUD.part.role === p.role ? ' sel' : ''}" data-act="lat-part" data-role="${p.role}">${p.single ? 'ch ' + p.ch : p.role + ' · ch ' + p.ch}</button>`).join('')}</div>
+    <div class="actions"><button class="hot big" data-act="lat-run">⏱ MEASURE (8 NOTES)</button><span class="lat" id="lat-big">${R.latency ? R.latency.ms.toFixed(1) + ' ms' : ''}</span></div>
+    <div class="msg" id="aud-msg"></div>`;
+  h += row('audio', 'latency', 'Round-trip latency measured (MIDI out → FM-1 → USB audio in)', { kind: 'auto' });
+  h += `<div class="note">The median is saved for the DAW as <code>localStorage.${LS_LATENCY}</code> (milliseconds, on the same 44.1 kHz AudioContext clock the DAW uses to line up recordings). Jitter is the standard deviation of the 8 notes.</div>`;
+  return h;
+};
+AFTER.audio = () => { if (AUD.cap) audMeter(); };
+ACT['lat-part'] = b => { AUD.part = parts().find(p => p.role === b.dataset.role) || AUD.part; render(); };
+ACT['aud-find'] = async () => {
+  await ensureCtx();
+  say('aud-msg', 'asking for audio input access…');
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) { setCheck('audio', 'found', 'fail', 'this browser cannot record audio'); return; }
+  try { const s = await navigator.mediaDevices.getUserMedia({ audio: true, video: false }); s.getTracks().forEach(t => t.stop()); }
+  catch (e) { setCheck('audio', 'found', 'fail', 'audio input permission denied (' + (e.name || e.message) + ')'); say('aud-msg', 'Permission denied: icon left of the address bar › Site settings › Microphone › Allow, then reload.', true); return; }
+  AUD.devices = await AK.inputs.list();
+  const fm = AUD.devices.filter(d => FM1_AUDIO_RX.some(rx => rx.test(d.label)));
+  setCheck('audio', 'found', fm.length ? 'pass' : 'fail', fm.length ? fm.map(d => '“' + d.label + '”').join(', ')
+    : 'no input named like the FM-1 (' + (AUD.devices.map(d => d.label).filter(Boolean).join(', ') || 'none listed') + ') — replug it, or tap the right one if it has another name');
+  render();
+  if (fm.length) await audOpen(fm[0].deviceId);
+  else say('aud-msg', AUD.devices.length ? 'Tap the FM-1 in the list if it has another name.' : 'No audio inputs at all.', !AUD.devices.length);
+};
+ACT['aud-pick'] = b => {
+  const d = AUD.devices.find(x => x.deviceId === b.dataset.id);
+  if (d && !FM1_AUDIO_RX.some(rx => rx.test(d.label))) setCheck('audio', 'found', 'pass', 'picked by hand: “' + (d.label || d.deviceId) + '” (the level check below confirms it)');
+  return audOpen(b.dataset.id);
+};
+async function audOpen(deviceId) {
+  const ctx = await ensureCtx();
+  audClose();
+  const dev = AUD.devices.find(d => d.deviceId === deviceId) || { label: deviceId };
+  try { AUD.stream = await AK.inputs.open(deviceId, 2); }
+  catch (e) { say('aud-msg', 'could not open “' + dev.label + '”: ' + (e.name || e.message), true); return; }
+  AUD.deviceId = deviceId; AUD.label = dev.label || 'input';
+  AUD.src = ctx.createMediaStreamSource(AUD.stream);
+  AUD.cap = new AK.Capture(ctx, AUD.src, { preRollSec: 1, maxChannels: 2 });
+  await AUD.cap.start();
+  await AK.addWorklet(ctx, PROBE_SRC);
+  AUD.probe = new AudioWorkletNode(ctx, 'mm-onset-probe', { numberOfInputs: 1, numberOfOutputs: 1, outputChannelCount: [1], channelCount: 2, channelCountMode: 'explicit', channelInterpretation: 'discrete' });
+  AUD.blocks = [];
+  AUD.probe.port.onmessage = e => { AUD.blocks.push(e.data); if (AUD.blocks.length > 1400) AUD.blocks.splice(0, AUD.blocks.length - 1400); };
+  AUD.sink = ctx.createGain(); AUD.sink.gain.value = 0;
+  AUD.src.connect(AUD.probe); AUD.probe.connect(AUD.sink); AUD.sink.connect(ctx.destination);
+  R.device.audioIn = AUD.label; save();
+  log('t', 'audio in: “' + AUD.label + '” (' + AUD.cap.mode + ', ' + ctx.sampleRate + ' Hz)');
+  render();
+  say('aud-msg', 'listening to “' + AUD.label + '”. Next: PLAY TEST NOTE.');
+}
+function audClose() {
+  cancelAnimationFrame(AUD.raf);
+  if (AUD.cap) { try { AUD.cap.stop(); } catch (e) {} AUD.cap = null; }
+  if (AUD.probe) { try { AUD.probe.port.postMessage('stop'); AUD.probe.disconnect(); } catch (e) {} AUD.probe = null; }
+  if (AUD.src) { try { AUD.src.disconnect(); } catch (e) {} AUD.src = null; }
+  if (AUD.sink) { try { AUD.sink.disconnect(); } catch (e) {} AUD.sink = null; }
+  if (AUD.stream) { AUD.stream.getTracks().forEach(t => t.stop()); AUD.stream = null; }
+}
+const dbfs = x => x <= 1e-9 ? -120 : 20 * Math.log10(x);
+function audMeter() {
+  cancelAnimationFrame(AUD.raf);
+  const tick = () => {
+    if (!AUD.cap) return;
+    const pk = Math.max(AUD.cap.peak[0] || 0, AUD.cap.peak[1] || 0), db = dbfs(pk);
+    const m = $('aud-meter'), t = $('aud-db');
+    if (m) m.style.width = Math.max(0, Math.min(100, (db + 60) / 60 * 100)).toFixed(1) + '%';
+    if (t) t.textContent = (db < -99 ? '−∞' : db.toFixed(1)) + ' dBFS';
+    AUD.raf = requestAnimationFrame(tick);
+  };
+  AUD.raf = requestAnimationFrame(tick);
+}
+// peak |x| between two context times, from the frame-stamped probe blocks
+function peakBetween(t0, t1) {
+  const sr = AUD.ctx.sampleRate, f0 = t0 * sr, f1 = t1 * sr;
+  let pk = 0, n = 0;
+  for (const b of AUD.blocks) {
+    if (b.f + b.d.length < f0 || b.f > f1) continue;
+    for (let i = 0; i < b.d.length; i++) { const f = b.f + i; if (f >= f0 && f < f1) { n++; if (b.d[i] > pk) pk = b.d[i]; } }
+  }
+  return n ? pk : null;
+}
+function firstAbove(t0, t1, thr) {
+  const sr = AUD.ctx.sampleRate, f0 = t0 * sr, f1 = t1 * sr;
+  for (const b of AUD.blocks) {
+    if (b.f + b.d.length < f0 || b.f > f1) continue;
+    for (let i = 0; i < b.d.length; i++) { const f = b.f + i; if (f >= f0 && f < f1 && b.d[i] > thr) return f / sr; }
+  }
+  return null;
+}
+function lastFrameTime() { const b = AUD.blocks[AUD.blocks.length - 1]; return b ? (b.f + b.d.length) / AUD.ctx.sampleRate : 0; }
+async function waitCovered(t, maxMs = 1500) { const end = performance.now() + maxMs; while (lastFrameTime() < t && performance.now() < end) await sleep(20); }
+let audBusy = false;
+ACT['aud-level'] = async () => {
+  if (!needOut('aud-msg') || audBusy) return;
+  if (!AUD.cap) { say('aud-msg', 'Open the FM-1\'s audio input first (A).', true); return; }
+  audBusy = true;
+  try {
+    const ctx = AUD.ctx, p = AUD.part || parts()[0];
+    await sleep(350);
+    const floor = peakBetween(ctx.currentTime - 0.4, ctx.currentTime) || 0;
+    const T = ctx.currentTime + 0.06;
+    stopAll();
+    const ch = p.ch, n = p.role === 'drums' ? 38 : p.role === 'bass' ? 48 : 60;
+    out([0x90 | ((ch - 1) & 15), n, 110], perfOf(T)); out([0x80 | ((ch - 1) & 15), n, 0], perfOf(T + 1.0));
+    log('out', 'test note ' + midiNoteNameMI(n) + ' on ch ' + ch + ' (1 s)');
+    say('aud-msg', 'test note playing…');
+    await waitCovered(T + 1.1, 2500);
+    const pk = peakBetween(T, T + 1.1) || 0;
+    const ok = pk > 0.01 && pk > floor * 4;
+    setCheck('audio', 'level', ok ? 'pass' : 'fail', 'note peak ' + dbfs(pk).toFixed(1) + ' dBFS vs quiet ' + (floor > 0 ? dbfs(floor).toFixed(1) : '−∞') + ' dBFS' +
+      (ok ? '' : pk <= 0.01 ? ' — nothing arrived: wrong input, FM-1 volume down, or this firmware sends no USB audio' : ' — too close to the noise'));
+    say('aud-msg', ok ? 'level detected. Next: MEASURE.' : 'no clear level — see the result row.', !ok);
+  } finally { audBusy = false; }
+};
+ACT['lat-run'] = async () => {
+  if (!needOut('aud-msg') || audBusy) return;
+  if (!AUD.cap) { say('aud-msg', 'Open the FM-1\'s audio input first (A).', true); return; }
+  audBusy = true;
+  stopAll();
+  try {
+    const ctx = AUD.ctx, sr = ctx.sampleRate, p = AUD.part || parts()[0], ch = p.ch;
+    const n = p.role === 'drums' ? 38 : p.role === 'bass' ? 48 : 72;
+    const N = 8, samples = [];
+    await sleep(300);
+    const floor0 = peakBetween(ctx.currentTime - 0.3, ctx.currentTime) || 0;
+    for (let i = 0; i < N; i++) {
+      // wait for the previous note's tail to die away (max 2 s)
+      const qEnd = performance.now() + 2000;
+      while (performance.now() < qEnd) { const q = peakBetween(ctx.currentTime - 0.06, ctx.currentTime); if (q !== null && q < Math.max(0.006, floor0 * 2)) break; await sleep(40); }
+      const floor = peakBetween(ctx.currentTime - 0.15, ctx.currentTime) || 0;
+      const thr = Math.max(0.01, floor * 4);
+      const T = ctx.currentTime + 0.08;
+      out([0x90 | ((ch - 1) & 15), n, 127], perfOf(T));
+      out([0x80 | ((ch - 1) & 15), n, 0], perfOf(T + 0.12));
+      say('aud-msg', 'note ' + (i + 1) + ' of ' + N + '…');
+      await waitCovered(T + 0.5, 2500);
+      const on = firstAbove(T - 0.01, T + 0.5, thr);
+      const ms = on == null ? null : (on - T) * 1000;
+      samples.push(ms == null ? null : Math.round(ms * 100) / 100);
+      log('t', 'latency note ' + (i + 1) + ': ' + (ms == null ? 'no onset' : ms.toFixed(2) + ' ms'));
+    }
+    log('out', N + ' latency notes ' + midiNoteNameMI(n) + ' on ch ' + ch);
+    const got = samples.filter(x => x != null).sort((a, b) => a - b);
+    if (got.length < Math.ceil(N * 0.75)) {
+      setCheck('audio', 'latency', 'fail', 'only ' + got.length + ' of ' + N + ' notes came back — pick a louder / sharper sound and try again');
+      say('aud-msg', 'not enough notes came back.', true);
+      return;
+    }
+    const med = got.length % 2 ? got[(got.length - 1) / 2] : (got[got.length / 2 - 1] + got[got.length / 2]) / 2;
+    const mean = got.reduce((a, b) => a + b, 0) / got.length;
+    const sd = Math.sqrt(got.reduce((a, b) => a + (b - mean) * (b - mean), 0) / got.length);
+    R.latency = { ms: Math.round(med * 10) / 10, jitterMs: Math.round(sd * 100) / 100, minMs: got[0], maxMs: got[got.length - 1], samples, found: got.length, of: N,
+      sampleRate: sr, baseLatencyMs: Math.round((ctx.baseLatency || 0) * 10000) / 10, outputLatencyMs: Math.round((ctx.outputLatency || 0) * 10000) / 10,
+      input: AUD.label, part: { role: p.role, ch, note: n }, at: nowIso() };
+    try { localStorage.setItem(LS_LATENCY, String(R.latency.ms)); } catch (e) { /* blocked */ }
+    setCheck('audio', 'latency', 'pass', 'median ' + R.latency.ms.toFixed(1) + ' ms · jitter ±' + R.latency.jitterMs.toFixed(2) + ' ms · range ' + got[0].toFixed(1) + '–' + got[got.length - 1].toFixed(1) + ' ms · ' + got.length + '/' + N + ' notes · saved');
+    const big = $('lat-big'); if (big) big.textContent = R.latency.ms.toFixed(1) + ' ms';
+    say('aud-msg', 'saved ' + LS_LATENCY + ' = ' + R.latency.ms.toFixed(1));
+  } finally { audBusy = false; }
+};
+
+// ═══ STEP 8 · summary ═════════════════════════════════════════════
+function summaryRows() {
+  const out = [];
+  STEPS.filter(s => s.id !== 'summary').forEach((s, i) => {
+    const st = stepStatus(s.id), rec = R.steps[s.id];
+    const mode = rec && rec.mode && rec.mode !== 'normal' ? ' (' + rec.mode + ')' : '';
+    out.push({ hdr: true, n: i + 1, title: s.title + mode, status: st, value: st === 'na' ? naReason(s.id) : '' });
+    if (st === 'na' || !rec) return;
+    for (const [id, c] of Object.entries(rec.checks)) out.push({ id, label: c.label, status: c.status, value: c.value || '', kind: c.kind, optional: c.optional });
+  });
+  return out;
+}
+function summaryText() {
+  const d = R.device, c = fwc();
+  const L = [];
+  L.push('FM-1 CHECK-OUT · ' + fmtDate(R.updated) + ' (started ' + fmtDate(R.started) + ', local time)');
+  L.push('firmware: ' + (c.id ? c.label + ' [' + c.id + ']' : 'not identified') + ' · found by ' + (d.fwSource || '—') +
+    (d.vendor ? ' · version reply ' + d.vendor : '') + (d.info ? ' · INFO "' + d.info + '"' : ''));
+  L.push('MIDI ports: in "' + (d.inName || '—') + '" · out "' + (d.outName || '—') + '" · sysex ' + (d.sysex ? 'yes' : 'no'));
+  L.push('parts: ' + parts(c).map(p => p.role + ' ch' + p.ch).join(', ') + ' · DX7: ' + c.dx7 + ' · clock: ' + c.clock +
+    (TOOL_OUT_CH ? ' · tools fixed OUT ch ' + TOOL_OUT_CH : '') + (TOOL_IN_CH ? ' · tools IN ch ' + TOOL_IN_CH : ''));
+  L.push('audio in: ' + (d.audioIn ? '"' + d.audioIn + '"' : '—'));
+  if (R.latency) L.push('latency: median ' + R.latency.ms.toFixed(1) + ' ms · jitter ±' + R.latency.jitterMs.toFixed(2) + ' ms · ' + R.latency.found + '/' + R.latency.of +
+    ' notes · samples ' + R.latency.samples.map(x => x == null ? '-' : x.toFixed(1)).join(' ') + ' · ' + R.latency.sampleRate + ' Hz · saved mm_fm1_latency_ms');
+  L.push('');
+  const W = { pass: 'PASS', fail: 'FAIL', skip: 'SKIP', pending: 'NOT ANSWERED', na: 'N/A', todo: 'NOT RUN', partial: 'PARTIAL' };
+  for (const r of summaryRows()) {
+    if (r.hdr) L.push(r.n + ' ' + r.title + ' — ' + (W[r.status] || r.status) + (r.value ? ': ' + r.value : ''));
+    else L.push('   ' + (ICON[r.status] || '?') + ' ' + (W[r.status] || r.status).padEnd(12) + ' ' + r.label + (r.kind === 'auto' ? ' [auto]' : '') + (r.optional ? ' [optional]' : '') + (r.value ? ' — ' + r.value : ''));
+  }
+  L.push('');
+  L.push('page: godot/tools/fm1_checkout.html · ' + navigator.userAgent.replace(/^Mozilla\/5\.0 /, ''));
+  return L.join('\n');
+}
+RENDER.summary = () => {
+  const d = R.device, c = fwc();
+  let h = `<div class="do">Done. Press <b>COPY AS TEXT</b> and paste it back to Claude — that is how these results get into the playbook. The results also stay in this browser.</div>
+    <div class="actions"><button class="big" data-act="copy">⧉ COPY AS TEXT</button><button class="dim big" data-act="json">⇩ DOWNLOAD JSON</button><span class="msg" id="sum-msg"></span></div>
+    <table class="sum"><tr><th style="width:180px">FIRMWARE</th><td>${esc(c.id ? c.label + ' [' + c.id + ']' : 'not identified')} · found by ${esc(d.fwSource || '—')}${d.vendor ? ' · ' + esc(d.vendor) : ''}${d.info ? ' · “' + esc(d.info) + '”' : ''}</td></tr>
+    <tr><th>MIDI PORTS</th><td>in “${esc(d.inName || '—')}” · out “${esc(d.outName || '—')}” · SysEx ${d.sysex ? 'yes' : 'no'}</td></tr>
+    <tr><th>AUDIO IN</th><td>${esc(d.audioIn || '—')}</td></tr>
+    <tr><th>LATENCY</th><td>${R.latency ? `<b class="lat" style="font-size:20px">${R.latency.ms.toFixed(1)} ms</b> median · jitter ±${R.latency.jitterMs.toFixed(2)} ms · ${R.latency.found}/${R.latency.of} notes` : 'not measured'}</td></tr>
+    <tr><th>DATE</th><td>${esc(fmtDate(R.updated))} (started ${esc(fmtDate(R.started))})</td></tr></table>
+    <h3>RESULTS</h3><table class="sum"><tr><th style="width:34px"></th><th>CHECK</th><th style="width:110px">RESULT</th><th>DETAIL</th></tr>`;
+  for (const r of summaryRows()) {
+    if (r.hdr) h += `<tr class="stephdr"><td class="s-${r.status}">${ICON[r.status]}</td><td>${r.n} · ${esc(r.title)}</td><td class="s-${r.status}">${WORD[r.status] || ''}</td><td class="v">${esc(r.value)}</td></tr>`;
+    else h += `<tr><td class="s-${r.status}">${ICON[r.status]}</td><td>${esc(r.label)}${r.optional ? ' <span class="note">(optional)</span>' : ''}</td><td class="s-${r.status}">${{ pass: 'PASS', fail: 'FAIL', skip: 'SKIPPED', pending: 'NOT ANSWERED' }[r.status] || r.status}</td><td class="v">${esc(r.value)}</td></tr>`;
+  }
+  h += `</table><h3>AS TEXT</h3><pre id="sum-text">${esc(summaryText())}</pre>`;
+  return h;
+};
+ACT.copy = async () => {
+  const text = summaryText();
+  let ok = false;
+  try { if (navigator.clipboard && navigator.clipboard.writeText) { await navigator.clipboard.writeText(text); ok = true; } } catch (e) { /* fall back */ }
+  if (!ok) {
+    const ta = document.createElement('textarea');
+    ta.value = text; ta.style.cssText = 'position:fixed;left:-9999px;top:0;';
+    document.body.appendChild(ta); ta.select();
+    try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+    ta.remove();
+  }
+  say('sum-msg', ok ? 'copied — paste it to Claude.' : 'copy blocked — select the text below and copy it by hand.', !ok);
+};
+ACT.json = () => {
+  const stamp = new Date().toISOString().slice(0, 16).replace(/[-:]/g, '').replace('T', '_');
+  AK.util.download(new Blob([JSON.stringify(R, null, 2)], { type: 'application/json' }), 'fm1_checkout_' + stamp + '.json');
+  say('sum-msg', 'downloaded fm1_checkout_' + stamp + '.json');
+};
+
+// ═══ global wiring ════════════════════════════════════════════════
+let clearArmed = 0;
+$('new-run').addEventListener('click', () => {
+  const b = $('new-run');
+  if (!clearArmed) { clearArmed = setTimeout(() => { clearArmed = 0; b.textContent = 'NEW CHECK-OUT'; }, 3000); b.textContent = 'TAP AGAIN TO CLEAR'; return; }
+  clearTimeout(clearArmed); clearArmed = 0; b.textContent = 'NEW CHECK-OUT';
+  clkStop(true); stopAll();
+  R = freshResults(); save();
+  NI.count = 0; NI.chans.clear(); NI.on.clear(); NI.vmin = 127; NI.vmax = 0; NI.lo = 127; NI.hi = 0; CCIN.clear();
+  log('t', 'new check-out started');
+  render();
+});
+window.addEventListener('midiinput-status', () => { refreshHeader(); });
+window.addEventListener('midiinput-disconnected', () => { log('t', 'FM-1 disconnected'); clkStop(true); });
+window.addEventListener('beforeunload', () => { clkStop(true); stopAll(); });
+log('t', 'FM-1 check-out. Web MIDI: ' + (mi.supported ? 'available' : 'NOT available — use Chrome'));
+R.cur = 'connect';   // a reload needs the MIDI connection again: always start at step 1 (answers are kept)
+// Permission already granted (a reload mid-check-out): reconnect straight away.
+try { if (navigator.permissions && mi.supported) navigator.permissions.query({ name: 'midi', sysex: true }).then(s => { if (s.state === 'granted' && !mi.access) ACT.connect(); }).catch(() => {}); } catch (e) { /* no permissions API */ }
+render();
+</script>
+</body>
+</html>

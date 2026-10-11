@@ -403,6 +403,46 @@ those tools.
   had written were intact. Before re-delegating, check what's on disk:
   syntax, exports, then a real test.
 
+### 2026-10-11 — FM-1 CHECK-OUT: verifying hardware facts with the user
+
+- Hardware facts nobody has verified call for a guided check-out
+  page (`fm1_checkout.html`), not more console buttons. Split every
+  check into two kinds:
+  - what the browser can measure: replies, dump bytes, clock timing,
+    audio onset;
+  - what only the user can hear or see, answered ✔ / ✘.
+
+  Record both in one localStorage JSON (`mm_fm1_checkout`). COPY AS
+  TEXT hands it back to Claude, so registry claims can be promoted
+  from "documented" to "verified on the Deck".
+- Every step adapts from `fm1_firmwares.js`:
+  - part channels;
+  - whether INFO SysEx is sent (only Felucca-family ports or 9xx
+    version replies);
+  - DX7 (N/A, editor, or push);
+  - clock setup text.
+
+  No firmware fact lives in the page itself.
+- FM-1+VA overwrites the selected stored preset on a DX7 push. The
+  page refuses to send until the user ticks the acknowledgement.
+- Round-trip latency:
+  1. Schedule note-ons with the DAW's `perfTime` mapping.
+  2. Find the audio onset on the AudioContext frame clock with a
+     frame-stamped probe worklet.
+
+  The median then means exactly what the DAW's `latencyMs`
+  alignment means. It is saved as `mm_fm1_latency_ms`; the DAW
+  doesn't read it yet.
+- Chrome's MediaStream chunking adds about 10 ms jitter steps on a
+  real input. Keep the median, not the mean.
+- `tests/mocks/fm1_mock.js` is a fake FM-1 (version / INFO replies,
+  MIDI thru, a USB audio input gated N ms after each note-on). Use it
+  for any new FM-1 tool test instead of writing another mock.
+- Open items:
+  - The page is unverified on real hardware.
+  - The registry has no `cc` field yet, so X0X users just answer NO
+    on the CC step.
+
 ## TEMPLATE
 
 ```
