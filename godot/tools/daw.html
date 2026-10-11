@@ -900,7 +900,7 @@ async function tempTracks() {
   window.lastTempTracks = done;
   $('g-temp').disabled = false;
   const ok = done.filter(d => !d.error);
-  msg('g-tempmsg', 'wrote ' + ok.length + '/' + done.length + ' temp track(s): ' + ok.map(d => d.id + ' (' + d.style + ', ' + d.sec + ' s)').join(' · ') + (ok.length < done.length ? ' — failed: ' + done.filter(d => d.error).map(d => d.id + ': ' + d.error).join('; ') : ''), ok.length < done.length);
+  msg('g-tempmsg', 'wrote ' + ok.length + '/' + done.length + ' temp track(s): ' + ok.map(d => d.id + ' (' + d.style + ', ' + d.sec + ' s)').join(' · ') + (ok.length < done.length ? ' — failed: ' + done.filter(d => d.error).map(d => d.id + ': ' + d.error).join('; ') : '') + ' · music stays out of git: back it up with godot/tools/music_drive.sh push', ok.length < done.length);
   tempPick = null; refreshWanted();
 }
 $('g-temp').addEventListener('click', tempTracks);

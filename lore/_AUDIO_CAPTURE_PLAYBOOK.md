@@ -223,6 +223,34 @@ look-ahead loop. The audio→performance clock mapping comes from
   titles and manifest. A real file at the same path replaces one;
   delete its `.stems.json` / `.stems/` with it.
 
+### 2026-10-11 — music binaries live in Google Drive, not git
+
+- User rule: "Don't put large music files in GitHub, put them in the
+  Google Drive." The four temp tracks (19 MB with stems) were removed
+  from the session branch history. Never commit generated or recorded
+  audio.
+- `.gitignore` covers `godot/assets/audio/**` `*.ogg *.mp3 *.wav
+  *.flac`, `*.stems/`, `*.stems.json` and `*.credits.txt`. Audio that
+  was already tracked (title theme, Vol 5 beds, voice lines) stays
+  tracked until the user decides to migrate it.
+- Drive mirrors the repo: `My Drive/ModernMythology/godot/assets/audio/`
+  ⇄ `godot/assets/audio/`. This follows the existing convention of
+  binaries git-ignored and sourced from Drive (see
+  `assets/models/README.md`).
+- `godot/tools/music_drive.sh setup | pull | push | status` drives
+  rclone:
+  - `setup` installs rclone to `~/.local/bin` (falling back to a pinned
+    GitHub release) and links Google sign-in once.
+  - Copies are `--update` only and never delete on either side.
+  - In a sandbox, test with a `type=local` remote via
+    `MM_DRIVE_REMOTE` / `MM_DRIVE_DIR`.
+- The Drive connector can't carry audio: uploads go inline as base64
+  in the tool call, so multi-MB files are impractical. Uploads happen
+  from the user's machine (rclone). The connector is fine for folders
+  and small text.
+- `set -e` doesn't fire inside a function called from `a || b`. Give
+  installers explicit `|| return 1` checks.
+
 ## TEMPLATE
 
 ```

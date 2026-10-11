@@ -10,7 +10,8 @@ siblings fine, but they're big. This encodes them to the catalog's real path:
     options: --quality 5 (Vorbis -q, mix) --stem-quality 4 --keep-wav --dry-run --force
 
     .ogg → libvorbis · .mp3 → libmp3lame VBR · stems → .ogg, manifest paths rewritten
-Needs ffmpeg on PATH. Never touches music_catalog.json.
+Needs ffmpeg on PATH. Never touches music_catalog.json. The results are git-ignored —
+back them up with `godot/tools/music_drive.sh push` (Google Drive).
 """
 import argparse, json, os, shutil, subprocess, sys
 

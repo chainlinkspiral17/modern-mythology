@@ -29,3 +29,15 @@ godot/assets/sky/*.hdr
 godot/assets/sky/*.exr
 godot/assets/sky/*.png
 godot/assets/sky/*.jpg
+
+# Music / audio binaries — kept local, synced with Google Drive
+# (My Drive/ModernMythology/godot/assets/audio — `godot/tools/music_drive.sh pull|push`).
+# Files already tracked stay tracked; nothing new gets in. DAW TEMP TRACKS,
+# INTO GAME, TAPE STUDIO and FIELD RECORDER outputs all land under here.
+godot/assets/audio/**/*.ogg
+godot/assets/audio/**/*.mp3
+godot/assets/audio/**/*.wav
+godot/assets/audio/**/*.flac
+godot/assets/audio/**/*.stems/
+godot/assets/audio/**/*.stems.json
+godot/assets/audio/**/*.credits.txt
