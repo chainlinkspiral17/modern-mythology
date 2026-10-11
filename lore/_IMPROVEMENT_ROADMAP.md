@@ -3834,6 +3834,33 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-11 · pass 64: NATE'S GARAGE (new set, draft 1).** ch14
+Substation Nine's Wednesday practice — "Nate's garage is bigger than
+Jesse's", the rear half of a two-car garage Walt converted into a finished
+room — played in Jesse's single bay. New `build_nate_garage.py`: the front
+bay with the roll-up door UP (Walt's road cases, the shelving, the mower,
+the bikes), the partition with its door standing open, the finished room
+(carpet, foam panels in a checker on three walls, the window AC in the
+east window, two flush fixtures, the loveseat, the mini fridge, the
+wedding-band poster, the box fan by the door, the flyer with the set order
+taped to Amp_0) with Jesse's builder's band gear moved 2.4 m deeper (the
+kit faces the partition door, the mic at the room's front); outside the
+two-car driveway with the Civic, the street with Carl's mother's car at
+the curb, the house attached on the east with the side door and Walt's lit
+kitchen window, a porch light, the live oak, the neighbours across the
+street. Presets `nate_garage` (inside the door, at the kit) and
+`nate_driveway` (from the sidewalk); dusk sky; eleven markers. ch14
+routed: the drive with the map is the cab (a `shot_insert_map` in
+vehicle_cab, KNOWN_UNRESOLVED), the driveway at 7:02, the room for the
+practice, the driveway at 9:46; the chapter's opening stays in Jesse's
+garage. Deck must BUILD nate_garage. **Draft 2 targets:** Em's soft mic
+case on the loveseat; a music stand; Walt's own bass in a gig bag; the
+kitchen seen through its window (Walt at the counter); the house's front
+porch and a mailbox; the neighbours as more than slabs; the room under
+`arcana` (the map beat) — check the foam reads under the trip layer; a
+night preset for 9:46 (the dusk key is daylight-tagged, so `night` kills
+it already — the porch light and the street lamp carry it).
+
 **2026-10-11 · pass 63: THE KWIK STOP BY DAY.** Every one of the store's
 nine cuts is daytime (ch1 shift change and the stranger, ch2, ch3 Sam goes
 inside, ch4 the rain, ch6 the actual clock / blue raspberry / sixty-two

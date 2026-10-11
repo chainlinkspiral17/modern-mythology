@@ -203,7 +203,7 @@
   },
   {
    "t": "bg",
-   "src": "3d:henderson_garage"
+   "src": "3d:vehicle_cab"
   },
   {
    "t": "narrate",
@@ -288,6 +288,10 @@
   {
    "t": "hide",
    "pos": "center"
+  },
+  {
+    "t": "bg",
+    "src": "3d:nate_driveway"
   },
   {
    "t": "narrate",
@@ -387,6 +391,10 @@
    "text": "Go play. They're waiting.",
    "expr": "neutral",
    "voice": "assets/audio/voice/vol6_ch14_substation_nine/072.mp3"
+  },
+  {
+    "t": "bg",
+    "src": "3d:nate_garage"
   },
   {
    "t": "narrate",
@@ -788,6 +796,10 @@
    "char": "em",
    "expr": "neutral",
    "pos": "right"
+  },
+  {
+    "t": "bg",
+    "src": "3d:nate_driveway"
   },
   {
    "t": "narrate",

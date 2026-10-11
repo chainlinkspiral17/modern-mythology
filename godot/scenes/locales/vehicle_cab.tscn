@@ -618,3 +618,8 @@ position = Vector3(9.500, 1.140, -0.600)
 rotation = Vector3(-0.4200, 0.0000, 0.0)
 metadata/fov = 50.0
 
+; insert (pass 64, ch14): the map in the glove compartment, from the driver's eye
+[node name="shot_insert_map" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.000, 1.250, -0.300)
+rotation = Vector3(-0.5175, -0.6055, 0.0)
+metadata/fov = 42.0

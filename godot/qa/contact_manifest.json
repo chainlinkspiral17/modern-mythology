@@ -150,10 +150,10 @@
    "id": "miller_kitchen",
    "scene": "res://scenes/locales/miller_kitchen.tscn",
    "vol": 6,
-   "uses": 16,
+   "uses": 15,
    "moods": [
-    "macro_haze",
-    "kitchen_practical"
+    "kitchen_practical",
+    "morning_bright"
    ],
    "markers": [
     {
@@ -1234,71 +1234,6 @@
    "scene_missing": false
   },
   {
-   "id": "school_field_evening",
-   "scene": "res://scenes/locales/school_field_evening.tscn",
-   "vol": 6,
-   "uses": 9,
-   "moods": [
-    "day_bright",
-    "dusk"
-   ],
-   "markers": [
-    {
-     "name": "shot_establish_b",
-     "type": "establish"
-    },
-    {
-     "name": "shot_establish_c",
-     "type": "establish"
-    },
-    {
-     "name": "shot_closeup_person",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_person_b",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_insert_ball",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_bleachers",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_bus",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_corkboard",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_folding_chair",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_phone",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_scoreboard",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_stopwatch",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_truck",
-     "type": "insert"
-    }
-   ],
-   "scene_missing": false
-  },
-  {
    "id": "chillwave_backroom",
    "scene": "res://scenes/locales/chillwave_interior.tscn",
    "vol": 7,
@@ -1875,71 +1810,6 @@
    "scene_missing": false
   },
   {
-   "id": "bianca_kitchen_morning",
-   "scene": "res://scenes/locales/bianca_kitchen_morning.tscn",
-   "vol": 6,
-   "uses": 6,
-   "moods": [
-    "night",
-    "kitchen_practical"
-   ],
-   "markers": [
-    {
-     "name": "shot_closeup_person",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_person_b",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_insert_cinnamon_roll",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_cordless",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_french_toast",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_hands",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_jar",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_phone",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_porch_light",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_robe",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_sink_light",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_stationery",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_window",
-     "type": "insert"
-    }
-   ],
-   "scene_missing": false
-  },
-  {
    "id": "grandmother_kitchen_morning",
    "scene": "res://scenes/locales/grandmother_kitchen_morning.tscn",
    "vol": 6,
@@ -1970,43 +1840,6 @@
     },
     {
      "name": "shot_insert_radio",
-     "type": "insert"
-    }
-   ],
-   "scene_missing": false
-  },
-  {
-   "id": "henderson_garage",
-   "scene": "res://scenes/locales/henderson_garage.tscn",
-   "vol": 6,
-   "uses": 6,
-   "moods": [
-    "dusk",
-    "candlelight_low"
-   ],
-   "markers": [
-    {
-     "name": "shot_closeup_person",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_person_b",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_insert_drum_kit",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_flyer",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_map",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_truck",
      "type": "insert"
     }
    ],
@@ -2172,6 +2005,136 @@
     },
     {
      "name": "shot_insert_wicker",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
+   "id": "school_field_day",
+   "scene": "res://scenes/locales/school_field_evening.tscn",
+   "vol": 6,
+   "uses": 6,
+   "moods": [
+    "day_bright",
+    "dawn_warm"
+   ],
+   "markers": [
+    {
+     "name": "shot_establish_b",
+     "type": "establish"
+    },
+    {
+     "name": "shot_establish_c",
+     "type": "establish"
+    },
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_ball",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_bleachers",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_bus",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_corkboard",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_folding_chair",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_phone",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_scoreboard",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_stopwatch",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_truck",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
+   "id": "bianca_kitchen_morning",
+   "scene": "res://scenes/locales/bianca_kitchen_morning.tscn",
+   "vol": 6,
+   "uses": 5,
+   "moods": [
+    "night",
+    "dawn_warm"
+   ],
+   "markers": [
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_cinnamon_roll",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cordless",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_french_toast",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_hands",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_jar",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_phone",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_porch_light",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_robe",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_sink_light",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_stationery",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_window",
      "type": "insert"
     }
    ],
@@ -2635,6 +2598,43 @@
    "scene_missing": false
   },
   {
+   "id": "henderson_garage",
+   "scene": "res://scenes/locales/henderson_garage.tscn",
+   "vol": 6,
+   "uses": 5,
+   "moods": [
+    "dusk",
+    "candlelight_low"
+   ],
+   "markers": [
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_drum_kit",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_flyer",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_map",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_truck",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
    "id": "new_orleans_bar",
    "scene": "res://scenes/locales/new_orleans_bar.tscn",
    "vol": 1,
@@ -2666,6 +2666,51 @@
     },
     {
      "name": "shot_insert_tv",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
+   "id": "vehicle_cab",
+   "scene": "res://scenes/locales/vehicle_cab.tscn",
+   "vol": 6,
+   "uses": 5,
+   "moods": [
+    "day_bright",
+    "arcana"
+   ],
+   "markers": [
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_map",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_phone",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_radio",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_sedan",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_table",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_truck",
      "type": "insert"
     }
    ],
@@ -3246,47 +3291,6 @@
     },
     {
      "name": "shot_insert_radio",
-     "type": "insert"
-    }
-   ],
-   "scene_missing": false
-  },
-  {
-   "id": "vehicle_cab",
-   "scene": "res://scenes/locales/vehicle_cab.tscn",
-   "vol": 6,
-   "uses": 4,
-   "moods": [
-    "day_bright",
-    "morning_bright"
-   ],
-   "markers": [
-    {
-     "name": "shot_closeup_person",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_person_b",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_insert_phone",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_radio",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_sedan",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_table",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_truck",
      "type": "insert"
     }
    ],
@@ -4111,6 +4115,71 @@
    "scene_missing": false
   },
   {
+   "id": "school_field_evening",
+   "scene": "res://scenes/locales/school_field_evening.tscn",
+   "vol": 6,
+   "uses": 3,
+   "moods": [
+    "dusk",
+    "night"
+   ],
+   "markers": [
+    {
+     "name": "shot_establish_b",
+     "type": "establish"
+    },
+    {
+     "name": "shot_establish_c",
+     "type": "establish"
+    },
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_ball",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_bleachers",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_bus",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_corkboard",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_folding_chair",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_phone",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_scoreboard",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_stopwatch",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_truck",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
    "id": "smolvud_jetty",
    "scene": "res://scenes/locales/smolvud_jetty.tscn",
    "vol": 7,
@@ -4181,6 +4250,10 @@
      "type": "insert"
     },
     {
+     "name": "shot_insert_map",
+     "type": "insert"
+    },
+    {
      "name": "shot_insert_packet__vehicle_cab_altima_night",
      "type": "insert"
     },
@@ -4223,6 +4296,10 @@
     {
      "name": "shot_closeup_person_b",
      "type": "closeup"
+    },
+    {
+     "name": "shot_insert_map",
+     "type": "insert"
     },
     {
      "name": "shot_insert_phone",
@@ -5597,6 +5674,50 @@
    "scene_missing": false
   },
   {
+   "id": "nate_driveway",
+   "scene": "res://scenes/locales/nate_garage.tscn",
+   "vol": 6,
+   "uses": 2,
+   "moods": [
+    "dusk"
+   ],
+   "markers": [
+    {
+     "name": "shot_establish_b__nate_driveway",
+     "type": "establish"
+    },
+    {
+     "name": "shot_closeup_em__nate_driveway",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person__nate_driveway",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b__nate_driveway",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_walt__nate_driveway",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_civic__nate_driveway",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_drum_kit",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_flyer",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
    "id": "new_auburn_courtroom",
    "scene": "res://scenes/locales/new_auburn_courtroom.tscn",
    "vol": 6,
@@ -6037,6 +6158,10 @@
      "type": "closeup"
     },
     {
+     "name": "shot_insert_map",
+     "type": "insert"
+    },
+    {
      "name": "shot_insert_phone",
      "type": "insert"
     },
@@ -6103,6 +6228,70 @@
     {
      "name": "shot_closeup_person_b",
      "type": "closeup"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
+   "id": "bianca_kitchen_day",
+   "scene": "res://scenes/locales/bianca_kitchen_morning.tscn",
+   "vol": 6,
+   "uses": 1,
+   "moods": [
+    "kitchen_practical"
+   ],
+   "markers": [
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_cinnamon_roll",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cordless",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_french_toast",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_hands",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_jar",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_phone",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_porch_light",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_robe",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_sink_light",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_stationery",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_window",
+     "type": "insert"
     }
    ],
    "scene_missing": false
@@ -8109,6 +8298,86 @@
    "scene_missing": false
   },
   {
+   "id": "miller_kitchen_night",
+   "scene": "res://scenes/locales/miller_kitchen.tscn",
+   "vol": 6,
+   "uses": 1,
+   "moods": [
+    "macro_haze"
+   ],
+   "markers": [
+    {
+     "name": "shot_establish_b",
+     "type": "establish"
+    },
+    {
+     "name": "shot_establish_c",
+     "type": "establish"
+    },
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_cinnamon_roll",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_french_toast",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_fridge",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_hands",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_jar",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_kolaches",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_notebook",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_phone",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_photographs",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_sedan",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_sink_light",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_table",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_window",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
    "id": "miller_office",
    "scene": "res://scenes/locales/miller_office.tscn",
    "vol": 6,
@@ -8232,6 +8501,42 @@
     },
     {
      "name": "shot_insert_sign",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
+   "id": "nate_garage",
+   "scene": "res://scenes/locales/nate_garage.tscn",
+   "vol": 6,
+   "uses": 1,
+   "moods": [
+    ""
+   ],
+   "markers": [
+    {
+     "name": "shot_establish_b",
+     "type": "establish"
+    },
+    {
+     "name": "shot_closeup_em",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_drum_kit",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_flyer",
      "type": "insert"
     }
    ],
@@ -9135,6 +9440,10 @@
      "type": "closeup"
     },
     {
+     "name": "shot_insert_map",
+     "type": "insert"
+    },
+    {
      "name": "shot_insert_phone",
      "type": "insert"
     },
@@ -9249,5 +9558,5 @@
   "tired",
   "nervous"
  ],
- "frames": 2078
+ "frames": 2146
 }

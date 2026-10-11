@@ -87,6 +87,8 @@ DELIBERATE_MARKERS = {
     ("smolvud_jetty", "shot_insert_drone"),
     # (2026-10-10) the Altima's dash from the driver's eye: an abstract cue, the dash IS the frame
     ("vehicle_cab", "shot_insert_five__vehicle_cab_altima"),
+    ("vehicle_cab", "shot_insert_map"),   # the glove box from the driver's eye: the dash is the frame
+    ("nate_garage", "shot_closeup_walt__nate_driveway"),   # Walt at the side door: the house is the frame
     ("vehicle_cab", "shot_insert_five__vehicle_cab_altima_night"),
 }
 # Builders whose recorded boxes do not sit where the runtime puts them

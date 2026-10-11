@@ -913,6 +913,32 @@ const CAMERA_PRESETS := {
 		"fov": 66.0,
 		"suppress_input": true,
 	},
+	"nate_garage": {
+		"scene": "res://scenes/locales/nate_garage.tscn",
+		"requires_glb": "res://assets/3d/locales/nate_garage.glb",
+		# (pass 64, 2026-10-11) ch14 Substation Nine: "Nate's garage is bigger than
+		# Jesse's" — the rear half of a two-car garage converted by Walt into a
+		# finished room (foam on the walls, the window AC). The room is blender
+		# y 3.8..7.6 (godot z -3.8..-7.6), x +-3.6; the kit at the back facing the
+		# partition door, the mic at the front. Camera just inside the door,
+		# looking at the kit.
+		"camera_origin": Vector3(-0.90, 1.55, -4.20),
+		"camera_rotation": Vector3(-0.248, -0.236, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"nate_driveway": {
+		"scene": "res://scenes/locales/nate_garage.tscn",
+		"requires_glb": "res://assets/3d/locales/nate_garage.glb",
+		# (pass 64) the same set from the sidewalk: the open bay with the lit
+		# room behind it, the Civic in the two-car driveway, the house's side
+		# door and the kitchen window on the east, Carl's mother's car at the
+		# curb. Seven oh-two, dusk; nine forty-six, Em and Jesse in the driveway.
+		"camera_origin": Vector3(2.40, 1.60, 8.00),
+		"camera_rotation": Vector3(-0.019, 0.236, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
 	"henderson_garage": {
 		"scene": "res://scenes/locales/henderson_garage.tscn",
 		"requires_glb": "res://assets/3d/locales/henderson_garage.glb",

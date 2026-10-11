@@ -369,6 +369,14 @@
       "bed": "assets/audio/bgm/vol6_substation_nine.wav",
       "gain": 0.72
     },
+    "nate_garage": {
+      "bed": "assets/audio/bgm/vol6_substation_nine.wav",
+      "gain": 0.72
+    },
+    "nate_driveway": {
+      "bed": "assets/audio/bgm/vol6_substation_nine.wav",
+      "gain": 0.72
+    },
     "bindery": {
       "bed": "assets/audio/bgm/vol6_cosmic_comics_interior.wav",
       "gain": 0.7
