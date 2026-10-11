@@ -51,6 +51,10 @@
    "t": "narrate"
   },
   {
+    "t": "bg",
+    "src": "3d:board_lords_office"
+  },
+  {
    "text": "[shot:establish]The back office was the back office. Devon's old desk against the wall, a chair Devon had also left, two cardboard boxes of bearings on the floor. Finn sat at the chair. He took the cloth out of the bag. He laid the hexagon on the desk.",
    "t": "narrate"
   },

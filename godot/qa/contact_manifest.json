@@ -6326,6 +6326,94 @@
    "scene_missing": false
   },
   {
+   "id": "board_lords_office",
+   "scene": "res://scenes/locales/board_lords_interior.tscn",
+   "vol": 7,
+   "uses": 1,
+   "moods": [
+    ""
+   ],
+   "markers": [
+    {
+     "name": "shot_establish_b__board_lords_office",
+     "type": "establish"
+    },
+    {
+     "name": "shot_establish_c",
+     "type": "establish"
+    },
+    {
+     "name": "shot_closeup_finn__board_lords_office",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_kai__board_lords_office",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person__board_lords_office",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b__board_lords_office",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_bread",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_crow",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_deck",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_decks",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_deckwall",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_door",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_hexagon",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_lathe",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_note",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_patch",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_phone",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_sanderling",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_window",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
    "id": "briar_falls_building",
    "scene": "res://scenes/locales/briar_falls.tscn",
    "vol": 2,
@@ -9750,5 +9838,5 @@
   "tired",
   "nervous"
  ],
- "frames": 2190
+ "frames": 2210
 }

@@ -205,6 +205,21 @@ rotation = Vector3(-0.2475, 1.1023, 0.0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00, 1.55, -1.40)
 rotation = Vector3(-0.0954, -3.1416, 0.0)
 
+; (pass 68) the back office's own light: Devon's desk lamp, the bare bulb over the nook
+[node name="Devon_Desk_Lamp_Bulb_Practical" type="OmniLight3D" parent="."]
+position = Vector3(4.170, 1.020, -6.300)
+light_color = Color(1.0, 0.88, 0.62, 1)
+light_energy = 1.0
+shadow_enabled = false
+omni_range = 2.6
+
+[node name="Office_Bulb_Practical" type="OmniLight3D" parent="."]
+position = Vector3(3.550, 2.380, -6.850)
+light_color = Color(1.0, 0.90, 0.70, 1)
+light_energy = 1.3
+shadow_enabled = false
+omni_range = 3.6
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]
@@ -456,3 +471,35 @@ light_color = Color(0.960, 0.300, 0.220, 1)
 light_energy = 0.35
 shadow_enabled = false
 omni_range = 1.40
+
+; ── vn_shot coverage (pass 68) — the back office, suffixed __board_lords_office (x 2.6..4.5, y 6.1..7.6)
+; closeup (office): Finn at Devon's desk, from the door end
+[node name="shot_closeup_person__board_lords_office" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.900, 1.500, -7.300)
+rotation = Vector3(-0.1460, -2.1996, 0.0)
+metadata/fov = 42.0
+
+; closeup (office): the same frame
+[node name="shot_closeup_finn__board_lords_office" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.900, 1.500, -7.300)
+rotation = Vector3(-0.1460, -2.1996, 0.0)
+metadata/fov = 42.0
+
+; closeup (office): the reverse — Kai on the box of bearings, from the desk
+[node name="shot_closeup_person_b__board_lords_office" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(4.100, 1.400, -6.900)
+rotation = Vector3(-0.4609, 1.9974, 0.0)
+metadata/fov = 42.0
+
+; closeup (office): Kai on the box, elbows on his knees
+[node name="shot_closeup_kai__board_lords_office" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(4.100, 1.400, -6.900)
+rotation = Vector3(-0.4609, 1.9974, 0.0)
+metadata/fov = 42.0
+
+; establish (office): from the alley door, the desk and the boxes
+[node name="shot_establish_b__board_lords_office" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.150, 1.550, -7.400)
+rotation = Vector3(-0.5740, -3.0119, 0.0)
+metadata/fov = 58.0
+

@@ -2160,6 +2160,20 @@ const CAMERA_PRESETS := {
 		"fov": 52.0,
 		"suppress_input": true,
 	},
+	"board_lords_office": {
+		"scene": "res://scenes/locales/board_lords_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/board_lords_interior.glb",
+		# (pass 68, 2026-10-11) vol7 ch12 Kai: "The back office was the back
+		# office. Devon's old desk against the wall, a chair Devon had also left,
+		# two cardboard boxes of bearings on the floor." The nook behind the
+		# partition at blender y 6.1 (godot z -6.1), x 2.6..4.5, the alley door
+		# in its N wall. Camera at the partition's west end looking at the desk.
+		# Markers suffixed __board_lords_office.
+		"camera_origin": Vector3(2.72, 1.50, -6.25),
+		"camera_rotation": Vector3(-0.441, -1.041, 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
 	"board_lords_interior": {
 		"scene": "res://scenes/locales/board_lords_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/board_lords_interior.glb",

@@ -3834,6 +3834,24 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-11 · pass 68: BOARD LORDS' BACK OFFICE (preset, draft 1).** vol7
+ch12 Kai — sixty-five nodes behind the closed door ("The back office was
+the back office. Devon's old desk against the wall, a chair Devon had
+also left, two cardboard boxes of bearings on the floor"; Kai sits on a
+box and looks at the hexagon) — played from the shop's front. The nook
+behind the partition (x 2.6..4.5, y 6.1..7.6, the alley door in its N
+wall) was built in 2026-09; new preset `board_lords_office` with five
+suffixed markers (Finn at the desk, Kai on the box, from the alley door);
+the bearings boxes move INTO the office (they stood at the counter's east
+end, outside the room Kai closes the door of), clear of the alley door's
+swing. ch12 routed at the establish. Deck must REBUILD
+board_lords_interior. **Draft 2 targets:** the office has no light of its
+own (the shop's tubes reach over the 2.8 m partition — a desk lamp on
+Devon's desk as a practical); the door Kai closes (the partition's west
+end is an opening; a door leaf, open, at x 2.6); the hexagon in Kai's
+hands rather than on the counter (a prop state); the walkway report's
+0.12 m between Counter and Register is pre-existing — widen the gap.
+
 **2026-10-11 · pass 67: THE SALTY TOME'S BACK OFFICE (preset, draft 1).**
 Petra's office behind the annex partition was dressed in 2026-08 (desk,
 phone, couch, coat hook) but never shot and had no light: ch14 Petra's

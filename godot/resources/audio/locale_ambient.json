@@ -25,6 +25,10 @@
       "bed": "assets/audio/bgm/vol7_shop_signal_bell.wav",
       "gain": 0.82
     },
+    "board_lords_office": {
+      "bed": "assets/audio/bgm/vol7_shop_signal_bell.wav",
+      "gain": 0.82
+    },
     "riverboat_interior": {
       "bed": "assets/audio/bgm/vol5_venue_ambient.wav",
       "gain": 1.0

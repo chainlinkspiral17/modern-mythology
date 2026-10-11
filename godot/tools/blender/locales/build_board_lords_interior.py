@@ -234,10 +234,20 @@ def build_office():
     make_chair("Devon_Chair", 4.00, 6.95, yaw=_m.pi, wood=COL_WOOD, w=0.40)
     # two cardboard boxes of bearings — on the floor at the counter's
     # east end (ch12: Kai sits on one and looks at the hexagon), one flap open
-    for bi, by in enumerate((5.42, 5.75)):
-        make_box(f"Bearings_Box_{bi}", (3.75, by, 0.16), (0.34, 0.28, 0.32), (0.60, 0.48, 0.32, 1.0))
-    make_rot_box("Bearings_Box_1_Flap", (3.75, 5.62, 0.33), (0.34, 0.14, 0.008), (0.64, 0.52, 0.36, 1.0), roll=1.1)
-    make_box("Bearings_Box_0_Label", (3.58, 5.42, 0.18), (0.004, 0.16, 0.10), (0.92, 0.90, 0.84, 1.0))
+    # (pass 68, 2026-10-11) INSIDE the office, along its west end — "two cardboard
+    # boxes of bearings on the floor" in the room Kai closes the door of, the one he
+    # sits on to look at the hexagon (they stood at the counter's east end, outside)
+    for bi, bx in enumerate((2.85, 3.22)):   # side by side against the partition, clear of the alley door's 0.9 m
+        make_box(f"Bearings_Box_{bi}", (bx, 6.32, 0.16), (0.34, 0.28, 0.32), (0.60, 0.48, 0.32, 1.0))
+    make_rot_box("Bearings_Box_1_Flap", (3.22, 6.19, 0.33), (0.34, 0.14, 0.008), (0.64, 0.52, 0.36, 1.0), roll=1.1)
+    make_box("Bearings_Box_0_Label", (2.68, 6.32, 0.18), (0.004, 0.16, 0.10), (0.92, 0.90, 0.84, 1.0))
+    # (pass 68) the office's own light: Devon's gooseneck desk lamp, a bare bulb over the nook
+    make_cyl("Devon_Desk_Lamp_Base", (4.25, 6.22, 0.755), 0.07, 0.03, COL_STEEL, segments=10)
+    make_box("Devon_Desk_Lamp_Arm", (4.25, 6.22, 0.92), (0.02, 0.02, 0.30), COL_STEEL)
+    make_box("Devon_Desk_Lamp_Head", (4.17, 6.30, 1.08), (0.14, 0.12, 0.08), (0.30, 0.30, 0.32, 1.0))
+    make_box("Devon_Desk_Lamp_Bulb", (4.17, 6.30, 1.035), (0.08, 0.07, 0.01), (1.0, 0.92, 0.72, 1.0))
+    make_cyl("Office_Bulb_Cord", (3.55, 6.85, CEIL - 0.15), 0.006, 0.30, (0.20, 0.20, 0.22, 1.0), segments=4)
+    make_lathe("Office_Bulb", (3.55, 6.85, CEIL - 0.40), [(0.015, 0.0), (0.03, 0.03), (0.035, 0.08), (0.02, 0.10), (0.0, 0.10)], (1.0, 0.92, 0.72, 1.0), segments=8)
 
 
 def build_retail():
