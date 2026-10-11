@@ -168,6 +168,61 @@ look-ahead loop. The audio→performance clock mapping comes from
 - MIDI export puts drums on GM ch10 unless the track is routed to an
   emulator or hardware channel.
 
+### 2026-10-11 — offline render, mastering, stems, temp tracks
+
+- User asked for temp tracks for the missing catalog music, made with
+  the new features: offline bounce, loudness target, adaptive stems and
+  undo. 173 of 179 catalog tracks have no audio.
+- **LUFS meter bug:** the old `AK.dsp.lufs` built K-weighting from
+  Web Audio biquads. A `BiquadFilterNode` highpass takes **Q in dB**,
+  so the RLB stage barely cut the bass and bass-heavy mixes read
+  3.6 LU loud. It's now plain JS with libebur128's coefficients and
+  matches ffmpeg `ebur128` to 0.0–0.1 LU. Check any meter against
+  ffmpeg before trusting it.
+- **Mastering:** `AK.dsp.master(chs, sr, {lufs, truePeak, stems})`
+  applies gain to the target, then a look-ahead limiter, then a
+  4×-oversampled true-peak check, iterated.
+  - Master to −1.5 dBTP: Vorbis encoding raised peaks ~0.2 dB
+    (−1.0 → −0.8).
+  - Game music target is −14 LUFS. The existing hand-made tracks sit at
+    −12.5 LUFS and clip (+0.6 to +1.3 dBTP).
+- **Stems must share the limiter.** Stems mastered with gain alone were
+  5 dB quieter than the limited mix. `limitGain()` returns the
+  limiter's gain curve. Apply the SAME curve × gain to every stem; they
+  still sum exactly to the mastered mix, so the layered version plays
+  as loud as the stereo one.
+- **Offline render:** `E.renderOffline()` rebuilds FORGE, KIT,
+  sampler, DX7 and basic devices inside an `OfflineAudioContext` from
+  their live state; sampler AudioBuffers are reused across contexts.
+  - About 2.7× real time in the sandbox.
+  - Emulators and hardware still bounce in real time
+    (`canRenderOffline()`).
+  - Seamless loops: fold the tail past the loop end back onto the start
+    instead of playing two passes.
+- **Adaptive music contract with Godot:**
+  - Files: `<src base>.stems.json` holds `{stems: [{name, role, file,
+    layer}], mix, bpm, bars, lufs, credits}`.
+  - Layers: pad 0, chords 0, bass 0.25, drums 0.5, lead 0.75.
+  - AudioMgr builds an `AudioStreamSynchronized` and fades
+    `set_sync_stream_volume` per frame (it applies live, verified by
+    capture in headless 4.6). Call
+    `AudioMgr.set_music_intensity(0..1, fade)`.
+  - Any missing stem falls back to the mix.
+  - Godot exports `.json` as a resource, so manifests ship.
+- **Temp tracks:**
+  - The game plays a track once, then the next, so short loop / bed
+    forms are repeated to ≥ 90 s.
+  - `moodFromText` now scores TONE words for mode and PACE words for
+    tempo. It used to send almost everything to "ambient lydian".
+  - Seeded per-track instrument pools keep two noir themes from sharing
+    every instrument.
+  - Headless runs shim `AK.game.exists/readText/write` to node fs
+    (`page.exposeFunction`) to write straight into the repo. Then
+    `music_encode.py` makes the catalog's real `.ogg` / `.mp3`.
+- The temp tracks are placeholders, marked "(temp)" in their WAV / OGG
+  titles and manifest. A real file at the same path replaces one;
+  delete its `.stems.json` / `.stems/` with it.
+
 ## TEMPLATE
 
 ```

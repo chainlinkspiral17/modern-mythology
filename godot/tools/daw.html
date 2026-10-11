@@ -113,6 +113,7 @@
   <button id="metro" class="dim" title="click (never bounced)">♩</button>
   <label>QUANT</label><select id="quant"><option value="0">off</option><option value="12">1/32</option><option value="24" selected>1/16</option><option value="48">1/8</option><option value="96">1/4</option></select>
   <span style="flex:1"></span>
+  <button class="dim" id="undo" title="undo (Ctrl+Z)">↶</button><button class="dim" id="redo" title="redo (Ctrl+Shift+Z)">↷</button>
   <button class="dim" id="save">⎙ SAVE</button><button class="dim" id="new">✕ NEW</button>
 </div>
 
@@ -160,6 +161,8 @@
       <div class="msg" id="g-msg"></div>
 
       <h2>FOR THE GAME · catalog tracks with no audio</h2>
+      <div class="row"><button id="g-temp" title="write, render, master and save temp tracks for catalog entries with no audio">⚄ TEMP TRACKS</button><input type="number" id="g-tempn" min="1" max="50" value="3" title="how many (the selected one if you picked one)"><label style="cursor:pointer;min-width:0"><input type="checkbox" id="g-tempstems" checked> stems</label></div>
+      <div class="msg" id="g-tempmsg"></div>
       <div class="row"><button class="dim" id="g-link">⌂ LINK GAME FOLDER</button><label style="cursor:pointer;min-width:0"><input type="checkbox" id="g-musiconly" checked> music-like first</label></div>
       <div id="g-wanted" style="max-height:240px;overflow:auto"><div class="note">link the game folder to list the tracks still waiting for audio. Picking one sets style, mode and seed from its brief; GENERATE, then EXPORT → BOUNCE → INTO GAME writes it where the game looks.</div></div>
     </div>
@@ -191,11 +194,12 @@
     </div>
 
     <div class="pane" id="tab-exp">
-      <h2>BOUNCE · render the mix (real time)</h2>
-      <div class="row"><button id="b-song">⏺ SONG</button><button id="b-loop" title="plays the loop region twice and keeps the second pass — exact length, seamless">⏺ LOOP (seamless)</button></div>
+      <h2>BOUNCE · render the mix</h2>
+      <div class="row"><button id="b-song">⏺ SONG</button><button id="b-loop" title="the loop region, with its tail folded back onto the start — exact length, seamless">⏺ LOOP (seamless)</button><button id="b-stems" title="one file per part (drums, bass, chords, lead, pad…) that sum back to the mix — for adaptive music in the game">⏺ STEMS + MIX</button></div>
+      <div class="row"><label style="cursor:pointer;min-width:0"><input type="checkbox" id="b-master" checked> master to</label><select id="b-lufs"><option value="-14" selected>−14 LUFS (game music)</option><option value="-16">−16 LUFS</option><option value="-18">−18 LUFS (beds / ambience)</option><option value="-23">−23 LUFS (broadcast)</option></select><span class="note">true peak ≤ −1.5 dBTP (≤ −1 after OGG / MP3 encoding)</span></div>
       <div class="msg" id="b-msg"></div>
       <div class="row"><button class="dim" id="b-dl" disabled>⇩ WAV</button><button class="dim" id="b-game" disabled>⇢ INTO GAME</button><select id="b-target" style="flex:1"><option value="">assets/audio/daw/…</option></select></div>
-      <div class="note">Bounces land in the shared library too (TAPE STUDIO and FIELD RECORDER can open them). A seamless loop is written with WAV loop points, so the game loops it without a gap.</div>
+      <div class="note">Bounces render faster than real time unless a track plays on an FM-1 emulator or the hardware. They land in the shared library too. A seamless loop is written with WAV loop points. STEMS + MIX writes the stems and a <b>.stems.json</b> beside the track: the game layers them by intensity (pad → bass → drums → lead).</div>
       <h2>CREDITS · instruments this project uses</h2>
       <div id="credits" class="note">—</div>
       <div class="row"><button class="dim" id="cr-copy">⎘ COPY CREDITS</button></div>
@@ -299,7 +303,45 @@ E.on('transport', ({ playing }) => { $('play').classList.toggle('on', playing); 
 E.on('record', ({ on }) => $('rec').classList.toggle('on', on));
 
 let saveT = null;
-function saveSoon() { clearTimeout(saveT); saveT = setTimeout(async () => { try { await E.save(); $('b-save').textContent = 'saved ' + new Date().toLocaleTimeString(); $('b-save').className = 'badge ok'; } catch (e) { $('b-save').textContent = 'save failed'; $('b-save').className = 'badge bad'; } }, 1500); }
+// ── undo / redo: project snapshots (devices only reload when the device set itself changed) ──
+const UNDO = { past: [], future: [], cur: null, busy: false, t: null };
+const projJson = () => { E.snapshotStates(); return JSON.stringify(P); };
+function undoCapture() {
+  if (UNDO.busy || !P) return;
+  clearTimeout(UNDO.t);
+  UNDO.t = setTimeout(() => {
+    const j = projJson();
+    if (UNDO.cur === null) { UNDO.cur = j; return; }
+    if (j === UNDO.cur) return;
+    UNDO.past.push(UNDO.cur); if (UNDO.past.length > 120) UNDO.past.shift();
+    UNDO.cur = j; UNDO.future = []; undoButtons();
+  }, 250);
+}
+const devSig = p => JSON.stringify(p.devices.map(d => [d.id, d.type, d.patch || '', d.emuId || '', d.preset || '']));
+async function undoApply(j) {
+  UNDO.busy = true;
+  const snap = JSON.parse(j);
+  E.stop();
+  if (devSig(snap) === devSig(P)) {
+    // same instruments: swap the arrangement / mix in place (no reload, no re-download)
+    for (const k of Object.keys(snap)) if (k !== 'devices') P[k] = snap[k];
+    snap.devices.forEach((d, i) => { const live = P.devices[i]; live.mix = d.mix; live.name = d.name; live.clock = d.clock; live.state = d.state; const inst = E.devices.get(live.id); if (inst && d.state && inst.setState) { try { inst.setState(d.state); } catch (e) {} } });
+    for (const t of P.tracks) if (t.kind === 'audio') E.ensureStrip(t.id, t.mix);
+    E.applyMix(); E.applyMaster(); E.emit('project');
+  } else { await E.load(snap); P = E.project; }
+  if (sel.trackId && !E.track(sel.trackId)) sel = { trackId: null, clip: -1 };
+  UNDO.cur = j; UNDO.busy = false; undoButtons(); E.save().catch(() => {});
+}
+async function undo() { if (!UNDO.past.length) return; UNDO.future.push(projJson()); await undoApply(UNDO.past.pop()); }
+async function redo() { if (!UNDO.future.length) return; UNDO.past.push(projJson()); await undoApply(UNDO.future.pop()); }
+function undoButtons() { $('undo').disabled = !UNDO.past.length; $('redo').disabled = !UNDO.future.length; }
+$('undo').addEventListener('click', undo); $('redo').addEventListener('click', redo);
+window.addEventListener('keydown', e => {
+  if (!(e.ctrlKey || e.metaKey) || /^(INPUT|SELECT|TEXTAREA)$/.test(e.target.tagName)) return;
+  const k = e.key.toLowerCase();
+  if (k === 'z' && !e.shiftKey) { e.preventDefault(); undo(); } else if ((k === 'z' && e.shiftKey) || k === 'y') { e.preventDefault(); redo(); }
+}, true);
+function saveSoon() { undoCapture(); clearTimeout(saveT); saveT = setTimeout(async () => { try { await E.save(); $('b-save').textContent = 'saved ' + new Date().toLocaleTimeString(); $('b-save').className = 'badge ok'; } catch (e) { $('b-save').textContent = 'save failed'; $('b-save').className = 'badge bad'; } }, 1500); }
 
 // ═══════════════════════════════════════════════════════════════════
 // transport
@@ -710,6 +752,17 @@ const ROLE_LEVEL = { drums: 0.62, bass: 0.6, chords: 0.42, lead: 0.42, pad: 0.36
 // PATCH BANK picks per style — free-to-use and light: one GeneralUser GS download (32 MB) + jRhodes3d. GeneralUser ids are
 // 'gugs:<bank>.<program>' (GM program numbers from 0; bank 128 = drum kits: 0 standard, 8 room, 16 power, 24 electronic,
 // 25 TR-808, 32 jazz, 40 brush, 48 orchestra).
+// alternates per style and role (GeneralUser GS GM programs, bank 128 = kits) — the track seed picks one,
+// so two noir themes don't share all five instruments
+const PATCH_POOLS = {
+  noir:      { drums: ['gugs:128.32'], bass: ['gugs:0.35', 'gugs:0.33'], chords: ['gugs:0.4', 'gugs:0.0', 'gugs:0.26'], lead: ['gugs:0.66', 'gugs:0.59', 'gugs:0.71', 'gugs:0.11'], pad: ['gugs:0.49', 'gugs:0.92', 'gugs:0.52'] },
+  ambient:   { drums: ['gugs:128.40'], bass: ['gugs:0.35', 'gugs:0.42'], chords: ['gugs:0.92', 'gugs:0.4', 'gugs:0.46'], lead: ['gugs:0.12', 'gugs:0.14', 'gugs:0.98', 'gugs:0.75'], pad: ['gugs:0.89', 'gugs:0.95', 'gugs:0.99', 'gugs:0.52'] },
+  lofi:      { bass: ['gugs:0.33'], chords: ['gugs:0.4', 'gugs:0.0'], lead: ['gugs:0.11', 'gugs:0.24', 'gugs:0.12'], pad: ['gugs:0.49', 'gugs:0.52'] },
+  four_floor: { drums: ['gugs:128.25'], bass: ['gugs:0.39', 'gugs:0.87'], chords: ['gugs:0.81', 'gugs:0.95'], lead: ['gugs:0.84', 'gugs:0.98'], pad: ['gugs:0.90', 'gugs:0.95'] },
+  motorik:   { drums: ['gugs:128.24'], bass: ['gugs:0.38', 'gugs:0.34'], chords: ['gugs:0.90', 'gugs:0.27'], lead: ['gugs:0.81', 'gugs:0.84'], pad: ['gugs:0.89', 'gugs:0.95'] },
+  synthwave: { bass: ['gugs:0.39'], chords: ['gugs:0.81'], lead: ['gugs:0.84', 'gugs:0.86'], pad: ['gugs:0.95', 'gugs:0.90'] },
+  shuffle:   { drums: ['gugs:128.0'], bass: ['gugs:0.33'], chords: ['gugs:0.25', 'gugs:0.4'], lead: ['gugs:0.66', 'gugs:0.22', 'gugs:0.27'], pad: ['gugs:0.17'] },
+};
 const PATCH_PICKS = {
   four_floor: { drums: 'gugs:128.24', bass: 'gugs:0.38', chords: 'gugs:0.90', lead: 'gugs:0.80', pad: 'gugs:0.89' },
   boom_bap:   { drums: 'gugs:128.8',  bass: 'gugs:0.33', chords: 'jrhodes:st', lead: 'gugs:0.11', pad: 'gugs:0.48' },
@@ -733,13 +786,14 @@ function routing(inst) {
   return { map: {} };
 }
 async function generate(opts) {
-  if (P.tracks.length && !confirm('Replace this project\'s tracks with a generated song?')) return;
+  if (P.tracks.length && !(opts && opts.force) && !confirm('Replace this project\'s tracks with a generated song?')) return;
   E.stop();
   const o = Object.assign({
     seed: +$('g-seed').value || 1, style: $('g-style').value, form: $('g-form').value,
     key: $('g-key').value === '' ? undefined : +$('g-key').value, mode: $('g-mode').value || undefined,
     bpm: +$('g-bpm').value || undefined, density: +$('g-dens').value,
   }, opts || {});
+  delete o.force;
   song = SeqGen.song(o);
   const inst = $('g-inst').value, rt = routing(inst);
   // fresh project keeping name + master
@@ -755,7 +809,8 @@ async function generate(opts) {
     let dev, ch = 1;
     if (rt.map[role] && (emuDev || hwDev)) { dev = emuDev || hwDev; ch = rt.map[role]; }
     else if (rt.patch && typeof PatchBank !== 'undefined') {
-      const pick = (PATCH_PICKS[song.style] || PATCH_PICKS.lofi)[role];
+      const pool = (PATCH_POOLS[song.style] || {})[role], base = (PATCH_PICKS[song.style] || PATCH_PICKS.lofi)[role];
+      const pick = pool && pool.length ? [base, ...pool][SeqGen.hash(song.seed + ':' + role) % (pool.length + 1)] : base;
       const it = pick && await PatchBank.item(pick);
       dev = await E.addDevice('patch', { name: it ? it.name : pick, patch: pick });
     }
@@ -796,7 +851,7 @@ async function refreshWanted() {
     const d = document.createElement('div'); d.className = 'item';
     d.innerHTML = `<b>${esc(t.title)}</b> · v${t.vol} · <span style="color:var(--emerald-hi)">${esc(SeqGen.STYLES[m.style].name)} / ${m.form}</span><br><span class="note">${esc((t.desc || '').slice(0, 120))}</span>`;
     d.addEventListener('click', () => {
-      [...$('g-wanted').children].forEach(c => c.classList.toggle('sel', c === d));
+      [...$('g-wanted').children].forEach(c => c.classList.toggle('sel', c === d)); tempPick = t;
       $('g-style').value = m.style; $('g-form').value = m.form; $('g-mode').value = m.mode; $('g-key').value = ''; $('g-bpm').value = 0;
       $('g-seed').value = m.seed; $('g-dens').value = m.density;
       P.name = t.id; $('pname').value = t.id;
@@ -808,6 +863,47 @@ async function refreshWanted() {
   }
   $('b-target').innerHTML = '<option value="">assets/audio/daw/…</option>' + wanted.map(t => `<option value="${t.id}">fill: v${t.vol} ${esc(t.title)}</option>`).join('');
 }
+// TEMP TRACKS: for each catalog entry with no audio — compose from its brief, render offline, master,
+// write <src>.wav (+ stems + .stems.json) where AudioMgr looks. A placeholder until real music lands;
+// a real file at the .ogg / .mp3 path always wins over the .wav.
+let tempPick = null;
+const TEMP_MIN_SEC = 90;
+async function tempTracks() {
+  if (!AK.game.root && !(await AK.game.restore(true).catch(() => null))) { msg('g-tempmsg', 'link the game folder first.', true); return; }
+  if (!wanted.length) await refreshWanted();
+  const list = tempPick ? [tempPick] : ($('g-musiconly').checked ? wanted.slice().sort((a, b) => a.fieldScore - b.fieldScore) : wanted).slice(0, Math.max(1, +$('g-tempn').value || 1));
+  if (!list.length) { msg('g-tempmsg', 'every catalog track already has audio.'); return; }
+  if (P.tracks.length && !confirm('Temp tracks replace the open project for each track (it stays undoable). Go?')) return;
+  $('g-temp').disabled = true;
+  const done = [];
+  for (let i = 0; i < list.length; i++) {
+    const t = list[i], m = SeqGen.moodFromText(t.title, t.desc, t.id);
+    msg('g-tempmsg', (i + 1) + '/' + list.length + ' · ' + t.title + ' · ' + SeqGen.STYLES[m.style].name + ' ' + m.mode + ' — composing…');
+    try {
+      P.name = t.id;
+      await generate({ force: true, seed: m.seed, style: m.style, form: m.form, mode: m.mode, bpm: m.bpm, density: m.density, key: undefined });
+      P.name = t.id; $('pname').value = t.id;
+      // the game plays a track once, then the next: repeat short loops / beds to at least TEMP_MIN_SEC
+      const secs = song.bars * BAR * E.spt(), reps = Math.max(1, Math.ceil(TEMP_MIN_SEC / secs));
+      if (reps > 1) for (const tr of P.tracks) { const cl = tr.clips.slice(); for (let k = 1; k < reps; k++) for (const c of cl) tr.clips.push(Object.assign({}, c, { bar: c.bar + k * song.bars })); }
+      P.loop = { on: false, a: 0, b: song.bars * reps };
+      E.emit('project');
+      await E.whenReady();
+      msg('g-tempmsg', (i + 1) + '/' + list.length + ' · ' + t.title + ' — rendering…');
+      await doBounce(false, $('g-tempstems').checked && E.canRenderOffline());
+      if (!lastBounce) throw new Error('render failed');
+      const base = t.src.replace(/\.[^.\/]+$/, '');
+      const written = await writeToGame(base, lastBounce, lastStems, lastCredits, { title: t.title + ' (temp)' });
+      done.push({ id: t.id, style: song.style, mode: song.mode, bpm: song.bpm, sec: +(lastBounce.channels[0].length / lastBounce.sampleRate).toFixed(1), lufs: lastBounce.mastered ? +lastBounce.mastered.after.toFixed(1) : null, files: written });
+    } catch (e) { done.push({ id: t.id, error: e.message || String(e) }); }
+  }
+  window.lastTempTracks = done;
+  $('g-temp').disabled = false;
+  const ok = done.filter(d => !d.error);
+  msg('g-tempmsg', 'wrote ' + ok.length + '/' + done.length + ' temp track(s): ' + ok.map(d => d.id + ' (' + d.style + ', ' + d.sec + ' s)').join(' · ') + (ok.length < done.length ? ' — failed: ' + done.filter(d => d.error).map(d => d.id + ': ' + d.error).join('; ') : ''), ok.length < done.length);
+  tempPick = null; refreshWanted();
+}
+$('g-temp').addEventListener('click', tempTracks);
 $('g-link').addEventListener('click', async () => { try { await AK.game.link(); refreshWanted(); } catch (e) { if (e.name !== 'AbortError') msg('g-msg', e.message || String(e), true); } });
 $('g-musiconly').addEventListener('change', refreshWanted);
 AK.game.restore(false).then(h => { if (h) refreshWanted(); }).catch(() => {});
@@ -931,26 +1027,85 @@ $('m-dtime').addEventListener('change', () => { P.master.delayBeats = +$('m-dtim
 // ═══════════════════════════════════════════════════════════════════
 // export / bounce / record
 // ═══════════════════════════════════════════════════════════════════
-async function doBounce(loop) {
+// stems: one per generated role (drums / bass / chords / lead / pad), anything else one per track
+const STEM_LAYER = { pad: 0, chords: 0, bass: 0.25, drums: 0.5, lead: 0.75 };
+function stemGroups() {
+  const g = new Map();
+  for (const t of P.tracks) {
+    const hasContent = t.kind === 'midi' ? t.clips.length : t.audio.length; if (!hasContent) continue;
+    const key = t.role || ('t_' + AK.util.slug(t.name));
+    if (!g.has(key)) g.set(key, { name: t.role || AK.util.slug(t.name), role: t.role || '', trackIds: [] });
+    g.get(key).trackIds.push(t.id);
+  }
+  return [...g.values()];
+}
+const sumChannels = list => { const n = Math.max(...list.map(r => r.channels[0].length)); const o = [new Float32Array(n), new Float32Array(n)]; for (const r of list) for (let c = 0; c < 2; c++) { const d = r.channels[c]; for (let i = 0; i < d.length; i++) o[c][i] += d[i]; } return o; };
+async function masterIt(r) {
+  if (!$('b-master').checked) return r;
+  const m = await AK.dsp.master(r.channels, r.sampleRate, { lufs: +$('b-lufs').value, truePeak: -1.5 });
+  return Object.assign({}, r, { channels: m.channels, mastered: m });
+}
+let lastStems = null;
+async function doBounce(loop, stems) {
   if (!P.tracks.length) { msg('b-msg', 'nothing to bounce.', true); return; }
   const from = loop ? P.loop.a : 0, to = loop ? P.loop.b : E.songBars();
-  const secs = (to - from) * BAR * E.spt() * (loop ? 2 : 1);
-  msg('b-msg', 'bouncing ' + (to - from) + ' bars in real time (' + Math.round(secs + 2) + ' s)…');
-  $('b-song').disabled = $('b-loop').disabled = true;
+  const secs = (to - from) * BAR * E.spt() * (loop ? 2 : 1), offline = E.canRenderOffline();
+  msg('b-msg', 'bouncing ' + (to - from) + ' bars ' + (offline ? 'offline…' : 'in real time (' + Math.round(secs + 2) + ' s — an FM-1 emulator / hardware track is playing)…'));
+  $('b-song').disabled = $('b-loop').disabled = $('b-stems').disabled = true;
   try {
-    const r = await E.bounce({ fromBar: from, toBar: to, loop });
+    const t0 = performance.now();
+    let r;
+    lastStems = null;
+    if (stems) {
+      if (!offline) throw new Error('stems need every track on FORGE / KIT / PATCH BANK (emulator and hardware tracks render in real time only)');
+      const parts = await E.renderStems({ groups: stemGroups(), fromBar: from, toBar: to, loop, onProgress: p => msg('b-msg', 'stem ' + (p.done + 1) + '/' + p.total + ' · ' + p.name + '…') });
+      // master the sum; every stem gets the same gain and the same limiter curve → they still add up
+      // to the mastered mix exactly, so the game's layered version is as loud as the stereo one
+      const sum = sumChannels(parts), sr = parts[0].sampleRate;
+      let mixCh = sum, stats = null, stemCh = parts.map(p => p.channels);
+      if ($('b-master').checked) {
+        stats = await AK.dsp.master(sum, sr, { lufs: +$('b-lufs').value, truePeak: -1.5, stems: stemCh });
+        mixCh = stats.channels; stemCh = stats.stems;
+      }
+      lastStems = parts.map((p, i) => Object.assign(p, { channels: stemCh[i] }));
+      r = Object.assign({}, parts[0], { channels: mixCh, mastered: stats });
+    } else r = await masterIt(await E.bounce({ fromBar: from, toBar: to, loop }));
+    r.renderMs = Math.round(performance.now() - t0);
     lastBounce = r;
     const name = (P.name || 'daw') + (loop ? ' loop' : ' song');
     lastCredits = await E.credits();
     await AK.lib.put({ kind: 'daw-bounce', name: name + ' · ' + AK.util.stamp(), sampleRate: r.sampleRate, loop: r.loop, meta: { title: name, bpm: P.bpm, tags: ['daw', loop ? 'loop' : 'song'], key: SeqGen.NOTE_NAMES[P.key] + ' ' + P.mode, comment: lastCredits.text || undefined, credits: lastCredits.text || undefined } }, r.channels);
     const pk = AK.util.db(AK.util.peakOf(r.channels));
-    msg('b-msg', 'bounced ' + AK.util.fmtTime(r.channels[0].length / r.sampleRate) + ' · peak ' + pk.toFixed(1) + ' dBFS' + (r.loop ? ' · seamless loop' : '') + ' → library.');
+    const mst = r.mastered ? ' · ' + r.mastered.after.toFixed(1) + ' LUFS · ' + r.mastered.truePeak.toFixed(1) + ' dBTP' : ' · peak ' + pk.toFixed(1) + ' dBFS';
+    msg('b-msg', 'bounced ' + AK.util.fmtTime(r.channels[0].length / r.sampleRate) + mst + (r.loop ? ' · seamless loop' : '') + (lastStems ? ' · ' + lastStems.length + ' stems (' + lastStems.map(x => x.name).join(', ') + ')' : '') + ' in ' + (r.renderMs / 1000).toFixed(1) + ' s' + (r.offline ? ' (offline)' : '') + ' → library.');
     $('b-dl').disabled = $('b-game').disabled = false;
   } catch (e) { msg('b-msg', 'bounce failed: ' + (e.message || e), true); }
-  $('b-song').disabled = $('b-loop').disabled = false;
+  $('b-song').disabled = $('b-loop').disabled = $('b-stems').disabled = false;
+}
+// write a bounce (and its stems + manifest) where the game looks: <base>.wav · <base>.stems/<part>.wav · <base>.stems.json
+async function writeToGame(base, r, stems, credits, meta) {
+  const enc = (chs, extra) => AK.wav.encode(chs, r.sampleRate, { bitDepth: 16, loop: r.loop, meta: Object.assign({ title: meta.title, description: meta.title, originator: 'MM DAW', tags: ['daw'], bpm: P.bpm, date: new Date().toISOString(), comment: credits.text ? 'Instruments: ' + credits.text.replace(/\n/g, '; ') : undefined }, extra || {}) });
+  await AK.game.write(base + '.wav', enc(r.channels));
+  const written = [base + '.wav'];
+  if (stems && stems.length) {
+    const dir = base + '.stems/';
+    const man = { v: 1, title: meta.title, bpm: P.bpm, bars: r.bars, length_sec: +(r.channels[0].length / r.sampleRate).toFixed(3), loop: !!r.loop,
+      lufs: r.mastered ? +r.mastered.after.toFixed(1) : null, credits: credits.text || '', mix: base + '.wav', stems: [] };
+    for (const st of stems) {
+      const f = dir + AK.util.slug(st.name) + '.wav';
+      await AK.game.write(f, enc(st.channels, { title: meta.title + ' · ' + st.name }));
+      man.stems.push({ name: st.name, role: st.role || '', file: f, layer: STEM_LAYER[st.name] ?? 0 });
+      written.push(f);
+    }
+    await AK.game.write(base + '.stems.json', new Blob([JSON.stringify(man, null, 1)], { type: 'application/json' }));
+    written.push(base + '.stems.json');
+  }
+  if (credits.worst !== 'free') { await AK.game.write(base + '.wav.credits.txt', new Blob([credits.text + '\n'], { type: 'text/plain' })); written.push(base + '.wav.credits.txt'); }
+  return written;
 }
 $('b-song').addEventListener('click', () => doBounce(false));
 $('b-loop').addEventListener('click', () => doBounce(true));
+$('b-stems').addEventListener('click', () => doBounce(P.loop.on && confirm('Stems of the LOOP region (OK) or the whole SONG (Cancel)?'), true));
 let lastCredits = { lines: [], worst: 'free', text: '' };
 function bounceBlob() { return AK.wav.encode(lastBounce.channels, lastBounce.sampleRate, { bitDepth: 16, loop: lastBounce.loop, meta: { title: P.name, description: P.name, originator: 'MM DAW', tags: ['daw'], bpm: P.bpm, date: new Date().toISOString(), comment: lastCredits.text ? 'Instruments: ' + lastCredits.text.replace(/\n/g, '; ') : undefined, credits: lastCredits.text || undefined } }); }
 $('b-dl').addEventListener('click', () => lastBounce && AK.util.download(bounceBlob(), AK.util.slug(P.name) + '.wav'));
@@ -961,10 +1116,8 @@ $('b-game').addEventListener('click', async () => {
   let path = 'assets/audio/daw/' + AK.util.slug(P.name) + '.wav';
   if (id) { const cat = await AK.game.catalog(); const t = cat.find(x => x.id === id); if (t) path = t.src.replace(/\.[^.\/]+$/, '') + '.wav'; if (await AK.game.exists(path) && !confirm(path + ' exists. Replace?')) return; }
   try {
-    await AK.game.write(path, bounceBlob());
-    // instruments that need a credit leave a note beside the file (Godot ignores .txt) for the game's credits roll
-    if (lastCredits.worst !== 'free') await AK.game.write(path + '.credits.txt', new Blob([lastCredits.text + '\n'], { type: 'text/plain' }));
-    msg('b-msg', 'wrote godot/' + path + (id ? ' — the game plays it for ' + id : '') + (lastCredits.worst !== 'free' ? ' · credits in ' + path.split('/').pop() + '.credits.txt' : ''));
+    const written = await writeToGame(path.replace(/\.wav$/, ''), lastBounce, lastStems, lastCredits, { title: P.name });
+    msg('b-msg', 'wrote ' + written.length + ' file(s): godot/' + path + (id ? ' — the game plays it for ' + id : '') + (lastStems ? ' + stems' : '') + (lastCredits.worst !== 'free' ? ' + credits' : ''));
     if (id) refreshWanted();
   }
   catch (e) { msg('b-msg', 'write failed: ' + (e.message || e), true); }

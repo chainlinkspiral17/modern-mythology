@@ -635,20 +635,31 @@ AK.dsp = {
     const p = AK.util.peakOf(chs);
     return p > 0 ? this.gain(chs, AK.util.lin(dbfs) / p) : chs;
   },
-  // Approximate integrated loudness (ITU-R BS.1770 K-weighting, 400 ms
-  // blocks, absolute gate -70 LUFS, relative gate -10 LU).
+  // Integrated loudness, ITU-R BS.1770-4 / EBU R128: exact K-weighting biquads (libebur128's
+  // formulation, re-derived for any sample rate), 400 ms blocks with 75 % overlap, absolute gate
+  // −70 LUFS, relative gate −10 LU. Matches ffmpeg's ebur128 to ~0.1 LU. (Web Audio's highpass
+  // takes Q in dB, so a BiquadFilterNode can't build the RLB stage — hence plain JS.)
   async lufs(chs, sr) {
-    const k = await this.render(chs, sr, (ctx, src) => {
-      const shelf = ctx.createBiquadFilter(); shelf.type = 'highshelf'; shelf.frequency.value = 1681; shelf.gain.value = 4;
-      const hp = ctx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 38; hp.Q.value = 0.5;
-      src.connect(shelf); shelf.connect(hp); return hp;
-    });
+    const biquad = (x, b0, b1, b2, a1, a2) => {
+      const y = new Float32Array(x.length); let x1 = 0, x2 = 0, y1 = 0, y2 = 0;
+      for (let i = 0; i < x.length; i++) { const v = x[i], o = b0 * v + b1 * x1 + b2 * x2 - a1 * y1 - a2 * y2; x2 = x1; x1 = v; y2 = y1; y1 = o; y[i] = o; }
+      return y;
+    };
+    // stage 1: high shelf (+4 dB, 1681.97 Hz)
+    let f0 = 1681.974450955533, G = 3.999843853973347, Q = 0.7071752369554196, K = Math.tan(Math.PI * f0 / sr);
+    const Vh = Math.pow(10, G / 20), Vb = Math.pow(Vh, 0.4996667741545416);
+    let a0 = 1 + K / Q + K * K;
+    const s1 = [(Vh + Vb * K / Q + K * K) / a0, 2 * (K * K - Vh) / a0, (Vh - Vb * K / Q + K * K) / a0, 2 * (K * K - 1) / a0, (1 - K / Q + K * K) / a0];
+    // stage 2: RLB high-pass (38.14 Hz)
+    f0 = 38.13547087602444; Q = 0.5003270373238773; K = Math.tan(Math.PI * f0 / sr); a0 = 1 + K / Q + K * K;
+    const s2 = [1, -2, 1, 2 * (K * K - 1) / a0, (1 - K / Q + K * K) / a0];
+    const k = chs.map(c => biquad(biquad(c, ...s1), ...s2));
     const blk = Math.round(0.4 * sr), hop = Math.round(0.1 * sr), n = k[0].length;
     const ms = [];
     for (let s = 0; s + blk <= n; s += hop) {
       let sum = 0;
-      for (const c of k) { for (let i = s; i < s + blk; i++) sum += c[i] * c[i]; }
-      ms.push(sum / blk);
+      for (const c of k) { let cs = 0; for (let i = s; i < s + blk; i++) cs += c[i] * c[i]; sum += cs / blk; }
+      ms.push(sum);
     }
     if (!ms.length) return -70;
     const L = m => -0.691 + 10 * Math.log10(m || 1e-12);
@@ -657,6 +668,66 @@ AK.dsp = {
     const rel = L(gated.reduce((a, b) => a + b, 0) / gated.length) - 10;
     gated = gated.filter(m => L(m) > rel);
     return L(gated.reduce((a, b) => a + b, 0) / gated.length);
+  },
+  // True peak (dBTP): 4× oversampled through the browser's resampler, like a BS.1770 meter.
+  async truePeak(chs, sr) {
+    const n = chs[0].length, up = 4;
+    const off = new OfflineAudioContext(chs.length, n * up, sr * up);
+    const src = off.createBufferSource(); src.buffer = AK.util.toBuffer(off, chs, sr); src.connect(off.destination); src.start();
+    const b = await off.startRendering();
+    let p = 0; for (let c = 0; c < b.numberOfChannels; c++) { const d = b.getChannelData(c); for (let i = 0; i < d.length; i++) { const a = d[i] < 0 ? -d[i] : d[i]; if (a > p) p = a; } }
+    return AK.util.db(p);
+  },
+  // Look-ahead peak limiter (stereo-linked): the gain reaches its target before the peak arrives,
+  // releases over `releaseMs`. Transparent below the ceiling.
+  limit(chs, sr, ceilingDb = -1, lookMs = 1.5, releaseMs = 80) {
+    const g = this.limitGain(chs, sr, ceilingDb, lookMs, releaseMs), n = g.length;
+    return chs.map(c => { const o = new Float32Array(n); for (let i = 0; i < n; i++) o[i] = c[i] * g[i]; return o; });
+  },
+  // the limiter's gain curve alone — apply it to stems so they still sum to the limited mix
+  limitGain(chs, sr, ceilingDb = -1, lookMs = 1.5, releaseMs = 80) {
+    const n = chs[0].length, L = Math.max(1, Math.round(lookMs * sr / 1000)), ceil = AK.util.lin(ceilingDb);
+    const req = new Float32Array(n);
+    for (let i = 0; i < n; i++) { let a = 0; for (const c of chs) { const v = c[i] < 0 ? -c[i] : c[i]; if (v > a) a = v; } req[i] = a > ceil ? ceil / a : 1; }
+    // gmin[i] = min(req[i..i+L]) — monotonic deque
+    const gmin = new Float32Array(n), dq = new Int32Array(n); let h = 0, t = 0;
+    for (let i = n - 1; i >= 0; i--) {
+      while (t > h && req[dq[t - 1]] >= req[i]) t--;
+      dq[t++] = i;
+      while (dq[h] > i + L) h++;
+      gmin[i] = req[dq[h]];
+    }
+    // boxcar over the past L samples (≤ req at every peak), then release smoothing
+    const g = new Float32Array(n), rel = 1 - Math.exp(-1 / (releaseMs * sr / 1000));
+    let acc = 0, prev = 1;
+    for (let i = 0; i < n; i++) {
+      acc += gmin[i]; if (i >= L) acc -= gmin[i - L];
+      const box = acc / Math.min(i + 1, L);
+      const v = box < prev ? box : prev + (box - prev) * rel;
+      g[i] = prev = Math.min(v, gmin[i]);
+    }
+    return g;
+  },
+  // Master to a loudness target under a true-peak ceiling: gain to the LUFS target, limit, re-measure.
+  // stems: [[L, R], …] that sum to `chs` — they get the same gain and the same limiter curve, so
+  // they still sum to the mastered mix (returned as result.stems).
+  async master(chs, sr, { lufs = -14, truePeak = -1, limit = true, stems = null } = {}) {
+    const before = await this.lufs(chs, sr);
+    let g = AK.util.lin(lufs - before), out = this.gain(chs, g), ceiling = truePeak - 0.3, tp = 0, curve = null;
+    for (let k = 0; k < 4; k++) {
+      curve = limit ? this.limitGain(out, sr, ceiling) : null;
+      const lim = curve ? out.map(c => { const o = new Float32Array(c.length); for (let i = 0; i < c.length; i++) o[i] = c[i] * curve[i]; return o; }) : out;
+      tp = await this.truePeak(lim, sr);
+      if (tp <= truePeak + 0.05 || !limit) { out = lim; break; }
+      ceiling -= tp - truePeak + 0.1;
+      if (k === 3) out = lim;
+    }
+    let stemsOut = null;
+    if (stems) stemsOut = stems.map(st => st.map(c => { const o = new Float32Array(c.length); for (let i = 0; i < c.length; i++) o[i] = c[i] * g * (curve ? curve[i] : 1); return o; }));
+    if (!limit && tp > truePeak) { const s = AK.util.lin(truePeak - tp); out = this.gain(out, s); g *= s; tp = truePeak; }
+    if (stemsOut && !limit && tp > truePeak) { const s2 = AK.util.lin(truePeak - tp); stemsOut = stemsOut.map(st => this.gain(st, s2)); }
+    const after = await this.lufs(out, sr);
+    return { channels: out, stems: stemsOut, before, after, gainDb: AK.util.db(g), truePeak: tp };
   },
   async normalizeLufs(chs, sr, target = -23, ceilingDb = -1) {
     const now = await this.lufs(chs, sr);

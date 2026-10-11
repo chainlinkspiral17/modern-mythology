@@ -577,11 +577,129 @@
     }
 
     // ── bounce (real time: emulators and hardware can't render offline) ──
+    // ── offline render: faster than real time ───────────────────────
+    // Everything that is plain Web Audio (FORGE, KIT, PATCH BANK sampler / DX7, basic) re-creates
+    // itself inside an OfflineAudioContext from its current state. FM-1 emulators and hardware run in
+    // real time only → canRenderOffline() is false and bounce() keeps the real-time path.
+    canRenderOffline(trackIds) {
+      const P = this.project;
+      return P.tracks.filter(t => !trackIds || trackIds.includes(t.id)).every(t => {
+        if (t.kind === 'audio') return true;
+        const d = this.dev(t.deviceId); return !d || ['forge', 'kit', 'basic', 'patch'].includes(d.type) || !t.clips.length;
+      });
+    }
+    async _offlineDevice(off, d, output) {
+      const live = this.devices.get(d.id);
+      let inst = null;
+      if (d.type === 'forge' && typeof G.ForgeSynth === 'function') { inst = new G.ForgeSynth(off, { output, maxVoices: 16 }); await inst.init(); if (live && live.getState) inst.setState(live.getState()); }
+      else if (d.type === 'kit') { inst = new KitDevice(off, { output }); await inst.init(); if (live && live.getState) inst.setState(live.getState()); }
+      else if (d.type === 'patch') {
+        const inner = live && live.inner; if (!inner) return null;
+        if (inner.loadVoice) { inst = new inner.constructor(off, { output, maxVoices: 16 }); await inst.init(); inst.setState(inner.getState()); }
+        else { inst = new inner.constructor(off, { output, maxVoices: 64 }); await inst.init(); await inst.load(inner.instrument); inst.setState(inner.getState()); }
+        if ('bpm' in inst) inst.bpm = this.project.bpm;
+      }
+      else { inst = new BasicSynth(off, { output }); if (live && live.getState) inst.setState(live.getState()); }
+      return inst;
+    }
+    // opts: fromBar, toBar, loop (fold the tail onto the head → seamless, exact length), tailSec,
+    //       trackIds (only these — a stem), limiter (default true; stems render without it so they sum)
+    async renderOffline({ fromBar = 0, toBar, loop = false, tailSec = 3, trackIds = null, limiter = true, sampleRate = RATE, onProgress } = {}) {
+      await this.start(); await this.whenReady();
+      const P = this.project, M = P.master, spt = this.spt();
+      const t0 = fromBar * BAR, t1 = (toBar ?? this.songBars()) * BAR;
+      const lenSec = (t1 - t0) * spt, total = Math.ceil((lenSec + tailSec) * sampleRate);
+      const off = new OfflineAudioContext(2, total, sampleRate);
+      // master chain, same as live
+      const master = off.createGain(), out = off.createGain(); out.gain.value = M.vol;
+      if (limiter) { const lim = off.createDynamicsCompressor(); lim.threshold.value = -2; lim.knee.value = 0; lim.ratio.value = 20; lim.attack.value = 0.002; lim.release.value = 0.1; master.connect(lim); lim.connect(out); }
+      else master.connect(out);
+      out.connect(off.destination);
+      const verbIn = off.createGain(), verb = off.createConvolver(), verbOut = off.createGain();
+      verb.buffer = this.verb.buffer; verbOut.gain.value = M.verbMix; verbIn.connect(verb); verb.connect(verbOut); verbOut.connect(master);
+      const dIn = off.createGain(), dl = off.createDelay(4), dFb = off.createGain(), dTone = off.createBiquadFilter(), dOut = off.createGain();
+      dl.delayTime.value = Math.min(3.9, M.delayBeats * 60 / P.bpm); dFb.gain.value = M.delayFb; dTone.type = 'lowpass'; dTone.frequency.value = 4200; dOut.gain.value = M.delayMix;
+      dIn.connect(dl); dl.connect(dTone); dTone.connect(dFb); dFb.connect(dl); dTone.connect(dOut); dOut.connect(master);
+      const strip = mix => {
+        const s = { in: off.createGain(), pan: off.createStereoPanner(), vol: off.createGain(), a: off.createGain(), b: off.createGain() };
+        s.in.connect(s.pan); s.pan.connect(s.vol); s.vol.connect(master); s.vol.connect(s.a); s.vol.connect(s.b); s.a.connect(verbIn); s.b.connect(dIn);
+        s.pan.pan.value = mix.pan; s.vol.gain.value = mix.vol; s.a.gain.value = mix.sendA; s.b.gain.value = mix.sendB;
+        return s;
+      };
+      // which tracks sound: the project's mute/solo, narrowed to trackIds for a stem
+      const devMixes = [...P.devices.map(d => d.mix), ...P.tracks.filter(t => t.kind === 'audio').map(t => t.mix)].filter(Boolean);
+      const anyDevSolo = devMixes.some(m => m.solo);
+      const audible = mix => mix && !mix.mute && (!anyDevSolo || mix.solo);
+      const tracks = this.activeTracks().filter(t => !trackIds || trackIds.includes(t.id));
+      const insts = new Map(), strips = new Map();
+      for (const tr of tracks) {
+        if (tr.kind === 'midi') {
+          const d = this.dev(tr.deviceId); if (!d || insts.has(d.id) || !audible(d.mix)) continue;
+          const st = strip(d.mix); strips.set(d.id, st);
+          const inst = await this._offlineDevice(off, d, st.in);
+          if (!inst) throw new Error(d.name + ' cannot render offline');
+          insts.set(d.id, inst);
+          if (inst.syncAt) inst.syncAt(0);
+        } else if (audible(tr.mix)) strips.set(tr.id, strip(tr.mix));
+      }
+      // notes: same rules as live playback (patterns repeat inside clips, clipped at clip end, swing)
+      const at = tick => (tick - t0) * spt + this.swingDelay(tick);
+      let notes = 0;
+      for (const tr of tracks) {
+        if (tr.kind === 'midi') {
+          const inst = insts.get(tr.deviceId); if (!inst) continue;
+          for (const c of tr.clips) {
+            const p = tr.patterns[c.pid]; if (!p || !p.notes.length) continue;
+            const plen = p.lenBars * BAR, cs = c.bar * BAR, ce = cs + (c.bars || p.lenBars) * BAR;
+            if (ce <= t0 || cs >= t1) continue;
+            for (let base = cs; base < ce; base += plen) for (const n of p.notes) {
+              const on = base + n.t; if (on < t0 || on >= t1 || on >= ce) continue;
+              const offT = Math.min(on + n.d, ce, loop ? t1 : Infinity);
+              const vel = Math.max(0.02, Math.min(1, n.v * (tr.vel ?? 1)));
+              inst.noteOn(n.n, vel, at(on), tr.channel); inst.noteOff(n.n, Math.max(at(on) + 0.005, at(offT) - 0.002), tr.channel);
+              notes++;
+            }
+          }
+        } else {
+          const st = strips.get(tr.id); if (!st) continue;
+          for (const a of tr.audio) {
+            const s0 = a.t, s1 = a.t + a.len / spt; if (s1 <= t0 || s0 >= t1) continue;
+            const buf = await this.clipBuffer(a); if (!buf) continue;
+            const src = off.createBufferSource(); src.buffer = buf; const g = off.createGain(); g.gain.value = a.gain ?? 1; src.connect(g); g.connect(st.in);
+            const skip = Math.max(0, (t0 - s0) * spt), when = Math.max(0, (s0 - t0) * spt), dur = Math.min(a.len - skip, lenSec - when + (loop ? 0 : tailSec));
+            if (dur > 0) src.start(when, (a.offset || 0) + skip, dur);
+          }
+        }
+      }
+      for (const inst of insts.values()) if (inst.flush) await inst.flush();
+      if (onProgress) onProgress({ phase: 'render', notes });
+      const buf = await off.startRendering();
+      let chs = [buf.getChannelData(0).slice(0), buf.getChannelData(1).slice(0)];
+      const L = Math.round(lenSec * sampleRate);
+      if (loop) {            // what rings past the end belongs at the start of the next pass
+        chs = chs.map(c => { const o = c.slice(0, L); for (let i = L; i < c.length; i++) o[(i - L) % L] += c[i]; return o; });
+      }
+      for (const inst of insts.values()) { try { inst.dispose(); } catch (e) {} }
+      return { channels: chs, sampleRate, loop: loop ? { start: 0, end: L - 1 } : null, bars: (t1 - t0) / BAR, lenSec, notes, offline: true };
+    }
+    // stems: one render per group with no master limiter, so the stems sum back to the mix exactly.
+    // groups: [{ name, trackIds }]. The mix is rendered the same way (sum of everything).
+    async renderStems({ groups, fromBar = 0, toBar, loop = false, tailSec = 3, onProgress } = {}) {
+      const stems = [];
+      for (let i = 0; i < groups.length; i++) {
+        if (onProgress) onProgress({ phase: 'stem', done: i, total: groups.length, name: groups[i].name });
+        const r = await this.renderOffline({ fromBar, toBar, loop, tailSec, trackIds: groups[i].trackIds, limiter: false });
+        stems.push(Object.assign({}, groups[i], r));
+      }
+      return stems;
+    }
+
     // every device loaded (PATCH BANK instruments may still be downloading)
     async whenReady() { await Promise.all([...this.devices.values()].map(i => i.ready).filter(Boolean)); }
-    async bounce({ fromBar = 0, toBar, loop = false, tailSec = 2 } = {}) {
+    async bounce({ fromBar = 0, toBar, loop = false, tailSec = 2, realtime = false } = {}) {
       await this.start();
       await this.whenReady();
+      if (!realtime && this.canRenderOffline()) return this.renderOffline({ fromBar, toBar, loop, tailSec });
       const P = this.project, savedLoop = Object.assign({}, P.loop);
       const bars = (toBar ?? this.songBars()) - fromBar;
       const lenSec = bars * BAR * this.spt();

@@ -43,6 +43,23 @@ var _oneshot_resume_src: String = ""
 
 const HEARD_PATH := "user://progress/music_heard.cfg"
 
+# ── Adaptive music: stems layered by intensity ───────────────────────────────
+# A catalog track with a sibling "<basename>.stems.json" (written by the DAW's
+# STEMS + MIX export, godot/tools/daw.html) plays as an AudioStreamSynchronized
+# of its stems instead of the stereo mix. Each stem has a `layer` threshold
+# (pad 0 · chords 0 · bass 0.25 · drums 0.5 · lead 0.75); set_music_intensity()
+# fades in every stem whose threshold is at or below the level. Missing or
+# unreadable stems fall back to the mix, so a half-written export never breaks
+# playback. Intensity 1.0 = the full mix, which is the default.
+const STEM_FADE := 1.5
+var adaptive_music: bool = true
+var _intensity: float = 1.0
+var _stem_stream: AudioStreamSynchronized = null
+var _stem_layers: Array = []      # [{index, layer, name}]
+var _stem_gain: PackedFloat32Array = PackedFloat32Array()
+var _stem_target: PackedFloat32Array = PackedFloat32Array()
+var _stem_rate: float = 1.0 / STEM_FADE
+
 
 func _ready() -> void:
 	_setup_buses()
@@ -108,6 +125,7 @@ func _setup_players() -> void:
 
 
 func _process(delta: float) -> void:
+	_step_stems(delta)
 	if _fade_timer <= 0.0:
 		return
 	_fade_timer -= delta
@@ -248,7 +266,91 @@ func get_playback_position() -> float:
 func get_stream_length() -> float:
 	if _bgm.stream == null:
 		return 0.0
+	if _bgm.stream is AudioStreamSynchronized:
+		var sync := _bgm.stream as AudioStreamSynchronized
+		var longest := 0.0
+		for i in sync.stream_count:
+			var sub := sync.get_sync_stream(i)
+			if sub:
+				longest = maxf(longest, sub.get_length())
+		return longest
 	return _bgm.stream.get_length()
+
+
+## 0.0 … 1.0. With layered (stems) music, fades stems in or out over `fade`
+## seconds: 0 = pad / chords only, 0.25 + bass, 0.5 + drums, 0.75+ everything.
+## Remembered across tracks; plain stereo tracks ignore it.
+func set_music_intensity(level: float, fade: float = STEM_FADE) -> void:
+	_intensity = clampf(level, 0.0, 1.0)
+	_stem_rate = 1.0 / maxf(fade, 0.01)
+	for l in _stem_layers:
+		_stem_target[l.index] = 1.0 if _intensity + 0.0001 >= float(l.layer) else 0.0
+
+
+func get_music_intensity() -> float:
+	return _intensity
+
+
+## The stems of the playing track: [{name, layer, gain}] (empty for a stereo track).
+func get_music_layers() -> Array:
+	var out := []
+	for l in _stem_layers:
+		out.append({"name": l.name, "layer": l.layer, "gain": _stem_gain[l.index]})
+	return out
+
+
+func _load_stems(src: String) -> AudioStream:
+	var man_path := "res://" + src.get_basename() + ".stems.json"
+	if not FileAccess.file_exists(man_path):
+		return null
+	var man = JSON.parse_string(FileAccess.get_file_as_string(man_path))
+	if typeof(man) != TYPE_DICTIONARY or not man.has("stems"):
+		push_warning("AudioMgr: unreadable stems manifest, playing the mix: " + man_path)
+		return null
+	var stems: Array = man["stems"]
+	if stems.is_empty() or stems.size() > AudioStreamSynchronized.MAX_STREAMS:
+		return null
+	var sync := AudioStreamSynchronized.new()
+	sync.stream_count = stems.size()
+	var layers := []
+	var gain := PackedFloat32Array()
+	for i in stems.size():
+		var st: Dictionary = stems[i]
+		var sub := _load_audio(String(st.get("file", "")))
+		if sub == null:
+			push_warning("AudioMgr: stem missing, playing the mix instead: " + String(st.get("file", "")))
+			return null
+		var layer := float(st.get("layer", 0.0))
+		var g := 1.0 if _intensity + 0.0001 >= layer else 0.0
+		sync.set_sync_stream(i, sub)
+		sync.set_sync_stream_volume(i, linear_to_db(maxf(g, 0.0001)))
+		layers.append({"index": i, "layer": layer, "name": String(st.get("name", "stem %d" % i))})
+		gain.append(g)
+	_stem_stream = sync
+	_stem_layers = layers
+	_stem_gain = gain
+	_stem_target = gain.duplicate()
+	return sync
+
+
+func _clear_stems() -> void:
+	_stem_stream = null
+	_stem_layers = []
+	_stem_gain = PackedFloat32Array()
+	_stem_target = PackedFloat32Array()
+
+
+func _step_stems(delta: float) -> void:
+	if _stem_stream == null:
+		return
+	for i in _stem_gain.size():
+		var g := _stem_gain[i]
+		var t := _stem_target[i]
+		if g == t:
+			continue
+		g = move_toward(g, t, _stem_rate * delta)
+		_stem_gain[i] = g
+		_stem_stream.set_sync_stream_volume(i, linear_to_db(maxf(g, 0.0001)))
 
 
 # Seek the loaded BGM stream to an absolute position in seconds.
@@ -419,7 +521,10 @@ func _tween_bgm_bus(target_linear: float, duration: float) -> void:
 
 
 func _start_bgm(src: String) -> void:
-	var stream := _load_audio(src)
+	var stream: AudioStream = _load_stems(src) if adaptive_music else null
+	if stream == null:
+		_clear_stems()
+		stream = _load_audio(src)
 	if not stream:
 		# Don't double-log when _load_audio already warned about a
 		# fresh failure. Either way, mark the src failed (idempotent)

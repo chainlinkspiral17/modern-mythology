@@ -363,16 +363,35 @@
     { words: ['chase', 'tense', 'drive', 'service road', 'storm', 'highway'], style: 'motorik', form: 'loop' },
     { words: ['demon', 'weighing', 'judgement', 'tower', 'sinkhole'], style: 'trap', form: 'loop' },
   ];
+  // Mode by TONE words (weighted), style by SCENE words, tempo by pace words. The brief decides;
+  // the track id seeds the dice so the same catalog entry always writes the same piece.
+  const TONES = [
+    { mode: 'phrygian', w: ['stranger', 'uncanny', "doesn't quite", 'wrong', 'mirror', 'menace', 'threat', 'demon', 'sinkhole', 'weighing', 'judgement', 'underworld'] },
+    { mode: 'minor', w: ['dark', 'basement', 'night', 'rain', 'alone', 'grave', 'cemetery', 'empty', 'loss', 'leaving', 'no clock', 'cold', 'hospital', 'storm', 'low '] },
+    { mode: 'dorian', w: ['warm', 'echo', 'groove', 'smoke', 'cool', 'amp', 'bass', 'drive', 'headlights', 'club', 'loud'] },
+    { mode: 'lydian', w: ['dream', 'painting', 'wonder', 'float', 'room behind', 'sky', 'shimmer', 'glow', 'oil-tone'] },
+    { mode: 'mixolydian', w: ['road', 'juke', 'porch', 'saturday', 'band', 'diner'] },
+    { mode: 'major', w: ['resolved', 'released', 'breath', 'morning', 'family', 'sun', 'home', 'iced tea', 'credits', 'warm pad'] },
+  ];
+  const PACE = { slow: ['slow', 'slower', 'held', 'sustained', 'single', 'drone', 'still'], fast: ['loud', 'dancing', 'chase', 'thump', 'rush', 'headlights, then more'] };
   function moodFromText(title, desc, id) {
     const s = ((title || '') + ' ' + (desc || '') + ' ' + (id || '')).toLowerCase();
     let best = null, bestScore = 0;
     for (const m of MOODS) { const sc = m.words.reduce((n, w) => n + (s.includes(w) ? 1 : 0), 0); if (sc > bestScore) { best = m; bestScore = sc; } }
-    const m = best || { style: 'ambient', form: 'bed' };
-    const dark = /(night|dark|storm|noir|demon|death|hospital|weigh|grave|cemetery|blood|siren|static|empty|alone|leaving)/.test(s);
-    const bright = /(morning|saturday|sunday|iced tea|porch|bread|family|bell|garden|sun)/.test(s);
+    // a character / title theme is a piece with a shape (intro → A → B → A → outro), not a bed
+    const theme = /(theme|title|credits|signature|choice)/.test(s);
+    let m = best || { style: theme ? 'noir' : 'ambient', form: theme ? 'song' : 'bed' };
+    if (!best && /(bass swell|amp buzz|basement)/.test(s)) m = { style: 'noir', form: 'song' };
     const st = STYLES[m.style];
-    let mode = dark ? (st.modes.find(x => MINORISH[x]) || st.modes[0]) : bright ? (st.modes.find(x => !MINORISH[x]) || st.modes[0]) : st.modes[0];
-    return { style: m.style, form: m.form, mode, seed: hash(id || s), density: dark ? 0.45 : bright ? 0.7 : 0.55, matched: bestScore };
+    const score = {};
+    for (const t of TONES) score[t.mode] = t.w.reduce((n, w) => n + (s.includes(w) ? 1 : 0), 0);
+    let mode = Object.keys(score).sort((a, b) => score[b] - score[a])[0];
+    if (!score[mode]) mode = st.modes[0];
+    else if (!SCALES[mode]) mode = st.modes[0];
+    const slow = PACE.slow.some(w => s.includes(w)), fast = PACE.fast.some(w => s.includes(w));
+    const [lo, hi] = st.bpm, bpm = Math.round(slow ? lo : fast ? hi : (lo + hi) / 2);
+    const dark = ['phrygian', 'minor', 'harmonic'].includes(mode), bright = ['major', 'lydian', 'mixolydian'].includes(mode);
+    return { style: m.style, form: theme && m.form !== 'loop' ? 'song' : m.form, mode, bpm, seed: hash(id || s), density: dark ? 0.45 : bright ? 0.62 : 0.55, matched: bestScore, toneScore: score[mode] || 0 };
   }
 
   const API = { PPQ, BAR, S16, GM, SCALES, STYLES, FORMS, PROGS, NOTE_NAMES, rng, hash, deg2midi, chordPCs, song, part, moodFromText, romanFor };
