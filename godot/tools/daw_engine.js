@@ -2042,13 +2042,22 @@ registerProcessor('mm-daw-rec', MMDawRec);
     }
     // stems: one render per group with no master limiter, so the stems sum back to the mix exactly.
     // groups: [{ name, trackIds }]. The mix is rendered the same way (sum of everything).
+    // Worklet-free projects (chunkable()) render their stems 2–3 at a time: Chrome serialises offline renders that hold a
+    // worklet, and five full-length stems one after another took many minutes per take on the Deck.
     async renderStems({ groups, fromBar = 0, toBar, loop = false, tailSec = 3, onProgress } = {}) {
-      const stems = [];
-      for (let i = 0; i < groups.length; i++) {
-        if (onProgress) onProgress({ phase: 'stem', done: i, total: groups.length, name: groups[i].name });
-        const r = await this.renderOffline({ fromBar, toBar, loop, tailSec, trackIds: groups[i].trackIds, limiter: false });
-        stems.push(Object.assign({}, groups[i], r));
-      }
+      const stems = new Array(groups.length), par = this.chunkable() ? Math.max(1, Math.min(3, ((root.navigator && root.navigator.hardwareConcurrency) || 4) - 1)) : 1;
+      const t0 = performance.now(); let next = 0, done = 0;
+      this.note('render', 'stems: ' + groups.length + ' (' + groups.map(g => g.name).join(', ') + '), ' + par + ' at a time');
+      const work = async () => {
+        while (next < groups.length) {
+          const i = next++;
+          if (onProgress) onProgress({ phase: 'stem', done, total: groups.length, name: groups[i].name });
+          const r = await this.renderOffline({ fromBar, toBar, loop, tailSec, trackIds: groups[i].trackIds, limiter: false, worklets: par > 1 ? false : true });
+          stems[i] = Object.assign({}, groups[i], r); done++;
+          this.note('render', 'stem ' + groups[i].name + ' done (' + done + '/' + groups.length + ') after ' + ((performance.now() - t0) / 1000).toFixed(1) + ' s');
+        }
+      };
+      await Promise.all(Array.from({ length: par }, work));
       return stems;
     }
 
