@@ -39,7 +39,7 @@
   .work { display: grid; grid-template-rows: minmax(140px, 44%) 1fr; min-height: 0; overflow: hidden; }
   .arr { display: grid; grid-template-columns: 210px 1fr; min-height: 0; border-bottom: 1px solid var(--rule); }
   .heads { overflow: hidden; border-right: 1px solid var(--rule); }
-  .heads .ruler { height: 34px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 4px; padding: 0 4px; }
+  .heads .ruler { height: 40px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 4px; padding: 0 4px; }
   .th { height: 40px; border-bottom: 1px solid #2a1c12; display: grid; grid-template-columns: 6px 1fr auto; gap: 4px; align-items: center; padding: 0 4px 0 0; cursor: pointer; }
   .th.sel { background: var(--ink); }
   .th .c { width: 6px; height: 100%; }
@@ -108,7 +108,27 @@
   .kv3 input[type=range] { width: 100%; }
   .kv3 .pv { color: var(--gold-hi); font-size: 9px; text-align: right; white-space: nowrap; overflow: hidden; }
   .kv3 select { font-size: 10px; }
+  /* recording: count-in · punch · mode · latency (transport) and takes rows (under a track) */
+  .transport .rc { min-height: 24px; }
+  .transport button.warn { color: var(--amber); border-color: var(--amber); }
+  .th .b button.tk.on { background: var(--emerald); color: var(--ink); border-color: var(--emerald-hi); }
+  .tkh { display: flex; align-items: center; gap: 3px; padding: 0 4px 0 10px; border-bottom: 1px solid #1a1410; background: #0d0a08; }
+  .tkh button { min-width: 36px; min-height: 36px; padding: 0 5px; font-size: 11px; }
+  .tkh select { flex: 1; min-width: 0; min-height: 36px; font-size: 10px; }
+  #latpanel { position: fixed; z-index: 55; top: 76px; right: 12px; width: 470px; max-width: calc(100vw - 24px); max-height: calc(100vh - 90px); overflow-y: auto; background: var(--bg-0); border: 1px solid var(--gold); padding: 8px 12px 10px; display: none; box-shadow: 0 8px 30px rgba(0,0,0,0.7); }
+  #latpanel.show { display: block; }
+  #latpanel .lr2 { display: flex; gap: 8px; align-items: center; margin-top: 6px; }
+  #latpanel .lr2 b { color: var(--gold-hi); font-weight: normal; min-width: 70px; }
+  #latpanel .lr2 select { min-width: 90px; }
+  #latpanel .lr { display: grid; grid-template-columns: 128px 66px 22px 84px 1fr; gap: 6px; align-items: center; margin-top: 8px; }
+  #latpanel .lr b { color: var(--gold-hi); font-weight: normal; }
+  #latpanel .lr .src { font-size: 9px; letter-spacing: 0.06em; color: var(--emerald-hi); }
+  #latpanel .lr .src.default { color: var(--amber); }
+  #latpanel input[type=number] { width: 66px; }
+  #latpanel button, #latpanel select, #latpanel input { min-height: 36px; }
   @media (any-pointer: coarse) {
+    .transport .rc { min-height: 36px; min-width: 36px; }
+    .th .b button.tk { min-height: 36px; min-width: 32px; }
     .fx button, .fxbox button, .ah button { min-height: 28px; min-width: 30px; padding: 4px 9px; }
     .fxbox select, .ah select, .aadd select, .kv3 select { min-height: 28px; }
   }
@@ -135,10 +155,29 @@
   <label>KEY</label><select id="key"></select><select id="mode"></select>
   <button id="loopbtn" class="dim">⟲ LOOP</button><input type="number" id="loopa" min="1" value="1"> – <input type="number" id="loopb" min="2" value="9">
   <button id="metro" class="dim" title="click (never bounced)">♩</button>
-  <label>QUANT</label><select id="quant"><option value="0">off</option><option value="12">1/32</option><option value="24" selected>1/16</option><option value="48">1/8</option><option value="96">1/4</option></select>
+  <button id="punchbtn" class="dim rc" title="punch in / out: only the red region on the ruler is recorded — drag its edges or its middle">PUNCH</button>
+  <button id="latbtn" class="dim rc" title="recording: quantize · count-in · replace / overdub · latency">REC ⚙</button>
   <span style="flex:1"></span>
   <button class="dim" id="undo" title="undo (Ctrl+Z)">↶</button><button class="dim" id="redo" title="redo (Ctrl+Shift+Z)">↷</button>
   <button class="dim" id="save">⎙ SAVE</button><button class="dim" id="new">✕ NEW</button>
+</div>
+
+<div id="latpanel">
+  <div style="display:flex;justify-content:space-between;align-items:center"><b style="color:var(--gold-hi);letter-spacing:0.14em">RECORDING</b><button class="dim" id="lat-close">✕</button></div>
+  <div class="lr2"><b>QUANT</b><select id="quant" title="record quantize: notes snap to this grid as they are recorded (the piano roll's GRID uses the same values)"></select>
+    <b>COUNT-IN</b><select id="countin" title="bars of click before recording starts (the transport pre-rolls; the click is never bounced)"><option value="0">off</option><option value="1">1 bar</option><option value="2">2 bars</option></select></div>
+  <div class="lr2"><b>TAKES</b><select id="recmode"><option value="replace">REPLACE</option><option value="overdub">OVERDUB</option><option value="loop">OVERDUB LOOP</option></select></div>
+  <div class="note">REPLACE: a take replaces what was in its region · OVERDUB: it adds to it (audio: a layer on top) · OVERDUB LOOP: every loop pass adds into one MIDI take. With ⟲ LOOP on, each pass is its own take (pick them in the takes row under the track); PUNCH limits recording to the red region on the ruler.</div>
+  <div style="margin-top:10px;color:var(--gold);letter-spacing:0.14em">LATENCY</div>
+  <div class="lr"><b>FM-1 RETURN</b><input type="number" id="lat-fm1" min="0" max="500" step="0.1"><span>ms</span><span class="src" id="lat-fm1-src"></span><button class="dim" id="lat-co" title="use the median FM-1 CHECK-OUT measured (mm_fm1_latency_ms)">⟲ CHECK-OUT</button></div>
+  <div class="note">Audio of the FM-1 coming back on its own USB audio — played by the DAW over MIDI, or on its keys. MIDI out → synth → USB audio in, measured by <a href="fm1_checkout.html" style="color:var(--gold)">FM-1 CHECK-OUT</a> (step 7).</div>
+  <div class="lr"><b>PLAY-ALONG INPUT</b><input type="number" id="lat-input" min="0" max="500" step="0.1"><span>ms</span><span class="src" id="lat-input-src"></span><button class="dim" id="lat-cal" title="play 8 clicks out and time them coming back on the chosen input">⏱ LOOPBACK</button></div>
+  <div class="note">Any other input (mic, guitar, line) recording you playing along to the playback: output + input latency. LOOPBACK: cable the output into the input picked in EXPORT → RECORDING (or hold the mic to the speaker), then press it.</div>
+  <div class="lr"><b>MIDI NOTES</b><input type="number" id="lat-midi" min="-100" max="500" step="0.1"><span>ms</span><span class="src" id="lat-midi-src"></span><span></span></div>
+  <div class="note">FM-1 keys, any MIDI keyboard, the computer keys: notes land where they were heard, by each event's own time stamp. This is only an extra nudge (normally 0).</div>
+  <div class="lr" style="grid-template-columns:128px 1fr"><b>AUDIO TAKES USE</b><select id="lat-use"><option value="auto">auto (by the input's name)</option><option value="fm1">FM-1 RETURN</option><option value="input">PLAY-ALONG INPUT</option></select></div>
+  <div class="note" id="lat-now"></div>
+  <div class="msg" id="lat-msg"></div>
 </div>
 
 <main>
@@ -150,7 +189,7 @@
     <div class="roll">
       <div class="rollbar" id="rollbar">
         <b id="rolltitle">select a clip (double-click an empty lane to make one)</b>
-        <label>GRID</label><select id="grid"><option value="12">1/32</option><option value="24" selected>1/16</option><option value="48">1/8</option><option value="96">1/4</option><option value="32">1/16T</option></select>
+        <label>GRID</label><select id="grid"><option value="24" selected>1/16</option></select>
         <label>LEN</label><select id="plen"><option>1</option><option>2</option><option>4</option><option>8</option><option>16</option></select>
         <button class="dim" id="r-dup" title="give this clip its own copy of the pattern">UNIQUE</button>
         <button class="dim" id="r-up">+1</button><button class="dim" id="r-down">−1</button><button class="dim" id="r-oct">+12</button><button class="dim" id="r-octd">−12</button>
@@ -233,7 +272,7 @@
       <div class="row"><button class="dim" id="x-import">⇪ IMPORT .mid</button><input type="file" id="x-file" accept=".mid,.midi" style="display:none"></div>
       <h2>RECORDING</h2>
       <div class="row"><label>INPUT</label><select id="r-input" style="flex:1"><option value="">— none —</option></select></div>
-      <div class="row"><label>LATENCY</label><input type="number" id="r-lat" min="0" max="400" value="30"> ms</div>
+      <div class="row"><label>LATENCY</label><span class="note">set with <b>LAT</b> in the transport bar (FM-1 CHECK-OUT · loopback · manual)</span></div>
       <div class="note">Arm an AUDIO track to record the input (the FM-1's "Felucca" USB audio, a mic…). Arm a MIDI track to record from the FM-1 keys, any MIDI keyboard, or the computer keys (<kbd>Z</kbd>–<kbd>M</kbd>, <kbd>Q</kbd>–<kbd>U</kbd>).</div>
       <h2>PROJECT</h2>
       <div class="row"><button class="dim" id="p-export">⇩ PROJECT .json</button><button class="dim" id="p-import">⇪ OPEN .json</button><input type="file" id="p-file" accept=".json" style="display:none"></div>
@@ -282,7 +321,8 @@ let sel = { trackId: null, clip: -1 };
 let song = null;                  // last generator result
 let lastBounce = null;
 let wanted = [];
-const view = { barPx: 28, laneH: 40 };
+const view = { barPx: 28, laneH: 40, rulerH: 40 };
+const TAKES = { H: 42 };          // a takes row under a track (one per recorded region)
 const roll = { tickPx: 0.9, rowH: 12, lo: 24, hi: 96, drag: null, selNotes: new Set(), zoom: 1 };
 const COARSE = window.matchMedia && matchMedia('(any-pointer: coarse)').matches;   // a touchscreen: taller rows
 
@@ -295,6 +335,8 @@ const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '
 SeqGen.NOTE_NAMES.forEach((n, i) => { $('key').add(new Option(n, i)); $('g-key').add(new Option(n, i)); });
 Object.keys(SeqGen.SCALES).forEach(m => { $('mode').add(new Option(m, m)); $('g-mode').add(new Option(m, m)); });
 Object.entries(SeqGen.STYLES).forEach(([id, s]) => $('g-style').add(new Option(s.name, id)));
+// the piano roll's GRID and the record QUANT share one list (DAW.GRIDS, ticks at PPQ 96)
+(() => { const g = $('grid'), q = $('quant'); g.innerHTML = ''; q.innerHTML = '<option value="0">off</option>'; for (const x of DAW.GRIDS) { g.add(new Option(x.label, x.v)); q.add(new Option(x.label, x.v)); } g.value = '24'; q.value = '24'; })();
 $('g-seed').value = Math.floor(Math.random() * 1e6);
 
 $('gatebtn').addEventListener('click', async () => {
@@ -328,21 +370,24 @@ E.on('auto', d => { if (d && d.created) renderHeads(); saveSoon(); });
 E.on('error', m => msg('g-msg', m, true));
 E.on('transport', ({ playing }) => { $('play').classList.toggle('on', playing); });
 E.on('record', ({ on }) => $('rec').classList.toggle('on', on));
+E.on('takes', d => { if (!P) return; renderHeads(); drawArr(); drawRoll(); if (!d || !d.recording) saveSoon(); });
+E.on('record-arm', () => { if (!UNDO.busy && P) { clearTimeout(UNDO.t); undoTake(); } });    // a recording is one undo step
 
 let saveT = null;
 // ── undo / redo: project snapshots (devices only reload when the device set itself changed) ──
 const UNDO = { past: [], future: [], cur: null, busy: false, t: null };
 const projJson = () => { E.snapshotStates(); return JSON.stringify(P); };
+function undoTake() {
+  const j = projJson();
+  if (UNDO.cur === null) { UNDO.cur = j; return; }
+  if (j === UNDO.cur) return;
+  UNDO.past.push(UNDO.cur); if (UNDO.past.length > 120) UNDO.past.shift();
+  UNDO.cur = j; UNDO.future = []; undoButtons();
+}
 function undoCapture() {
-  if (UNDO.busy || !P) return;
+  if (UNDO.busy || !P || E.recording || E._recStopping) return;     // while recording: one step, taken when it ends
   clearTimeout(UNDO.t);
-  UNDO.t = setTimeout(() => {
-    const j = projJson();
-    if (UNDO.cur === null) { UNDO.cur = j; return; }
-    if (j === UNDO.cur) return;
-    UNDO.past.push(UNDO.cur); if (UNDO.past.length > 120) UNDO.past.shift();
-    UNDO.cur = j; UNDO.future = []; undoButtons();
-  }, 250);
+  UNDO.t = setTimeout(undoTake, 250);
 }
 const devSig = p => JSON.stringify(p.devices.map(d => [d.id, d.type, d.patch || '', d.emuId || '', d.preset || '']));
 async function undoApply(j) {
@@ -352,6 +397,7 @@ async function undoApply(j) {
   if (devSig(snap) === devSig(P)) {
     // same instruments: swap the arrangement / mix in place (no reload, no re-download)
     for (const k of Object.keys(snap)) if (k !== 'devices') P[k] = snap[k];
+    for (const k of Object.keys(P)) if (!(k in snap)) delete P[k];       // e.g. a punch region added since
     snap.devices.forEach((d, i) => { const live = P.devices[i]; live.mix = d.mix; live.name = d.name; live.clock = d.clock; live.state = d.state; const inst = E.devices.get(live.id); if (inst && d.state && inst.setState) { try { inst.setState(d.state); } catch (e) {} } });
     for (const t of P.tracks) if (t.kind === 'audio') E.ensureStrip(t.id, t.mix);
     E.applyMix(); E.applyMaster(); E.emit('project');
@@ -359,8 +405,8 @@ async function undoApply(j) {
   if (sel.trackId && !E.track(sel.trackId)) sel = { trackId: null, clip: -1 };
   UNDO.cur = j; UNDO.busy = false; undoButtons(); E.save().catch(() => {});
 }
-async function undo() { if (!UNDO.past.length) return; UNDO.future.push(projJson()); await undoApply(UNDO.past.pop()); }
-async function redo() { if (!UNDO.future.length) return; UNDO.past.push(projJson()); await undoApply(UNDO.future.pop()); }
+async function undo() { if (!UNDO.past.length || E.recording || E._recStopping) return; UNDO.future.push(projJson()); await undoApply(UNDO.past.pop()); }
+async function redo() { if (!UNDO.future.length || E.recording || E._recStopping) return; UNDO.past.push(projJson()); await undoApply(UNDO.future.pop()); }
 function undoButtons() { $('undo').disabled = !UNDO.past.length; $('redo').disabled = !UNDO.future.length; }
 $('undo').addEventListener('click', undo); $('redo').addEventListener('click', redo);
 window.addEventListener('keydown', e => {
@@ -377,6 +423,11 @@ function syncTransportUI() {
   $('pname').value = P.name; $('bpm').value = P.bpm; $('swing').value = P.swing; $('key').value = P.key; $('mode').value = P.mode;
   $('loopbtn').classList.toggle('on', P.loop.on); $('loopa').value = P.loop.a + 1; $('loopb').value = P.loop.b + 1;
   $('metro').classList.toggle('on', P.metro);
+  const RC = P.rec || {};
+  if (RC.quant != null && P === E.project) E.quantize = +RC.quant || 0;     // (load() fires 'project' before P follows)
+  $('quant').value = String(E.quantize); $('countin').value = String(Math.max(0, Math.min(2, RC.countIn | 0)));
+  $('recmode').value = DAW.REC_MODES.includes(RC.mode) ? RC.mode : 'replace';
+  punchUI();
   const M = P.master; $('m-vol').value = M.vol; $('m-verb').value = M.verbMix; $('m-size').value = M.verbSize; $('m-dmix').value = M.delayMix; $('m-dtime').value = M.delayBeats; $('m-dfb').value = M.delayFb;
 }
 $('play').addEventListener('click', () => E.playing ? E.stop() : E.play());
@@ -393,7 +444,61 @@ $('loopbtn').addEventListener('click', () => { P.loop.on = !P.loop.on; syncTrans
   P.loop.a = a; P.loop.b = b; syncTransportUI(); drawArr(); saveSoon();
 }));
 $('metro').addEventListener('click', () => { P.metro = !P.metro; syncTransportUI(); saveSoon(); });
-$('quant').addEventListener('change', () => { E.quantize = +$('quant').value; });
+// ── recording settings (project: P.rec = {countIn, mode, quant}, P.punch = {on, a, b} bars — all optional) ──
+const recSet = (k, v) => { P.rec = Object.assign({}, P.rec || {}, { [k]: v }); saveSoon(); };
+$('quant').addEventListener('change', () => { E.quantize = +$('quant').value; recSet('quant', E.quantize); });
+$('countin').addEventListener('change', () => recSet('countIn', +$('countin').value));
+$('recmode').addEventListener('change', () => recSet('mode', $('recmode').value));
+function punchUI() {
+  const u = P && P.punch, on = !!(u && u.on);
+  $('punchbtn').classList.toggle('on', on);
+  $('punchbtn').textContent = 'PUNCH' + (on ? ' ' + (u.a + 1) + (u.b - u.a > 1 ? '–' + u.b : '') : '');
+}
+$('punchbtn').addEventListener('click', () => {
+  if (!P) return;
+  if (!P.punch) { const a = P.loop.on ? P.loop.a : Math.max(0, Math.floor(E.tickNow() / BAR)); P.punch = { on: true, a, b: a + Math.max(1, Math.min(2, P.loop.on ? P.loop.b - P.loop.a : 2)) }; }
+  else P.punch.on = !P.punch.on;
+  punchUI(); drawArr(); saveSoon();
+});
+// ── latency: three numbers and where each came from (engine: E.lat, localStorage mm_daw_latency) ──
+const LAT_SRC = { checkout: 'CHECK-OUT', loopback: 'LOOPBACK', manual: 'MANUAL', default: 'DEFAULT' };
+function latUI() {
+  const L = E.lat, k = E.audioLatencyKind();
+  $('latbtn').textContent = 'REC ⚙ ' + L[k].ms + ' ms';
+  $('latbtn').classList.toggle('warn', L[k].src === 'default');
+  $('latbtn').title = 'recording settings · audio takes: ' + L[k].ms + ' ms (' + (k === 'fm1' ? 'FM-1 return' : 'play-along input') + ', ' + (LAT_SRC[L[k].src] || L[k].src) + ') · MIDI nudge ' + L.midi.ms + ' ms';
+  for (const x of ['fm1', 'input', 'midi']) {
+    if (document.activeElement !== $('lat-' + x)) $('lat-' + x).value = L[x].ms;
+    $('lat-' + x + '-src').textContent = LAT_SRC[L[x].src] || L[x].src; $('lat-' + x + '-src').className = 'src ' + L[x].src;
+  }
+  $('lat-use').value = L.use;
+  const c = E.audioComp(), la = (E.outDelay * 1000).toFixed(1);
+  $('lat-now').textContent = 'audio takes now shift by ' + c.total.toFixed(1) + ' ms (' + (k === 'fm1' ? 'FM-1 RETURN + ' + la + ' ms master look-ahead' : 'PLAY-ALONG INPUT') + ') · ' + (E.inputLabel ? 'input “' + E.inputLabel + '”' : 'no input picked yet (EXPORT → RECORDING)') +
+    ' · the master limiter looks ahead ' + la + ' ms; the click and the FM-1\'s MIDI are delayed to match, so a loopback reading includes it.';
+}
+E.on('latency', latUI);
+$('latbtn').addEventListener('click', () => { $('latpanel').classList.toggle('show'); latUI(); });
+$('lat-close').addEventListener('click', () => $('latpanel').classList.remove('show'));
+['fm1', 'input', 'midi'].forEach(x => $('lat-' + x).addEventListener('change', () => E.setLatency(x, +$('lat-' + x).value, 'manual')));
+$('lat-use').addEventListener('change', () => E.setLatencyUse($('lat-use').value));
+$('lat-co').addEventListener('click', () => {
+  const v = E.checkoutLatency(true);
+  if (v == null) { msg('lat-msg', 'no CHECK-OUT measurement yet: fm1_checkout.html → step 7 → MEASURE.', true); return; }
+  E.saveLatency(); latUI(); msg('lat-msg', 'FM-1 return = ' + E.lat.fm1.ms + ' ms (CHECK-OUT).');
+});
+$('lat-cal').addEventListener('click', async () => {
+  $('lat-cal').disabled = true; msg('lat-msg', 'LOOPBACK: 8 clicks…');
+  try { const r = await E.calibrateLoopback(); msg('lat-msg', 'loopback: median ' + r.ms + ' ms · jitter ±' + r.jitterMs + ' ms · ' + r.found + '/' + r.of + ' clicks · saved'); }
+  catch (e) { msg('lat-msg', e.message || String(e), true); }
+  finally { $('lat-cal').disabled = false; }
+});
+// CHECK-OUT measured in another tab: pick it up live
+window.addEventListener('storage', e => { if (e.key === 'mm_fm1_latency_ms' && E.checkoutLatency() != null) { E.saveLatency(); latUI(); } });
+latUI();
+// every MIDI / key event's own time stamp reaches the engine before its note does (recording places notes by it)
+window.addEventListener('midiinput-message', e => E.stampInput(e.detail && e.detail.ts));
+window.addEventListener('keydown', e => E.stampInput(e.timeStamp), true);
+window.addEventListener('keyup', e => E.stampInput(e.timeStamp), true);
 $('save').addEventListener('click', () => saveSoon());
 $('new').addEventListener('click', async () => { if (!confirm('Start an empty project? (the current one stays only if exported)')) return; await E.load(DAW.Engine.newProject()); P = E.project; sel = { trackId: null, clip: -1 }; });
 
@@ -411,22 +516,42 @@ function renderHeads() {
   for (const t of P.tracks) {
     const d = document.createElement('div');
     d.className = 'th' + (sel.trackId === t.id ? ' sel' : '');
-    const nAuto = (t.auto || []).length;
+    const nAuto = (t.auto || []).length, nTk = (t.takes || []).length;
     d.innerHTML = `<div class="c" style="background:${t.color}"></div><div class="nm"><b>${esc(t.name)}</b><i>${esc(trackDevLabel(t))}</i></div>
-      <div class="b"><button class="dim auto${t.autoOpen ? ' on' : ''}" data-a="auto" title="automation lanes">A${nAuto ? nAuto : ''}</button><button class="dim${t.mute ? ' on' : ''}" data-a="mute">M</button><button class="dim${t.solo ? ' on' : ''}" data-a="solo">S</button><button class="dim arm${t.arm ? ' on' : ''}" data-a="arm">●</button><button class="dim" data-a="del">✕</button></div>`;
+      <div class="b">${nTk ? `<button class="dim tk${takesOpen(t) ? ' on' : ''}" data-a="takes" title="takes: pick / cycle / delete / keep">T${nTk}</button>` : ''}<button class="dim auto${t.autoOpen ? ' on' : ''}" data-a="auto" title="automation lanes">A${nAuto ? nAuto : ''}</button><button class="dim${t.mute ? ' on' : ''}" data-a="mute">M</button><button class="dim${t.solo ? ' on' : ''}" data-a="solo">S</button><button class="dim arm${t.arm ? ' on' : ''}" data-a="arm">●</button><button class="dim" data-a="del">✕</button></div>`;
     d.addEventListener('click', e => {
       const a = e.target.dataset.a;
       if (a === 'mute') t.mute = !t.mute;
       else if (a === 'solo') t.solo = !t.solo;
       else if (a === 'arm') t.arm = !t.arm;
       else if (a === 'auto') t.autoOpen = !t.autoOpen;
+      else if (a === 'takes') t.takesOpen = !takesOpen(t);
       else if (a === 'del') { if (confirm('Delete track "' + t.name + '"?')) { E.removeTrack(t.id); if (sel.trackId === t.id) sel = { trackId: null, clip: -1 }; } return; }
       else { sel.trackId = t.id; if (sel.clip >= t.clips.length) sel.clip = -1; }
       renderHeads(); drawArr(); drawRoll(); renderDevDetail(); saveSoon();
     });
     d.addEventListener('dblclick', e => { if (e.target.dataset.a) return; const n = prompt('Track name', t.name); if (n) { t.name = n; renderHeads(); saveSoon(); } });
     L.appendChild(d);
+    if (takesOpen(t)) renderTakeHeads(L, t);
     if (t.autoOpen) renderAutoHeads(L, t);
+  }
+}
+// takes rows: shown when the track has a region with more than one take (or T is on)
+function takesOpen(t) { return !!(t.takes && t.takes.length) && (t.takesOpen ?? E.takeGroups(t).some(g => g.takes.length > 1)); }
+// one row per recorded region: ▶ next · pick · ✕ delete the playing take · KEEP only the playing take
+function renderTakeHeads(L, t) {
+  for (const g of E.takeGroups(t)) {
+    const h = document.createElement('div'); h.className = 'tkh'; h.style.height = TAKES.H + 'px'; h.dataset.group = g.key;
+    const opts = g.takes.map(k => `<option value="${esc(k.id)}"${k.active ? ' selected' : ''}>${esc(k.name)}</option>`).join('');
+    h.innerHTML = `<button class="dim" data-x="next" title="next take (or tap the takes row)">▶</button><select title="the take that plays in bars ${g.region.a + 1}–${g.region.b}${g.layer ? ' (overdub layer ' + (g.layer + 1) + ')' : ''}">${opts}</select><button class="dim" data-x="del" title="delete the playing take">✕</button><button class="dim" data-x="keep" title="keep only the playing take">KEEP</button>`;
+    h.querySelector('select').addEventListener('change', e => E.pickTake(t.id, e.target.value));
+    h.addEventListener('click', e => {
+      const x = e.target.dataset.x; if (!x) return;
+      if (x === 'next') E.cycleTake(t.id, g.key, 1);
+      else if (x === 'del' && g.active) E.deleteTake(t.id, g.active.id);
+      else if (x === 'keep') E.keepOnlyActive(t.id, g.key);
+    });
+    L.appendChild(h);
   }
 }
 // automation lane headers: target · on/off · clear · remove, then a "+ lane" picker
@@ -474,9 +599,10 @@ const arr = { drag: null };
 // automation lanes sit under their track (track.autoOpen); points {t ticks, v 0..1}
 const AUTO = { draw: false, drag: null, H: COARSE ? 52 : 44, ADD: COARSE ? 32 : 26, PAD: 7, SNAP: 12, labels: new Map() };
 function arrLayout() {
-  let y = 34; const rows = [];
+  let y = view.rulerH; const rows = [];
   for (const t of P.tracks) {
-    const r = { t, y, lanes: [] }; y += view.laneH;
+    const r = { t, y, lanes: [], takes: [] }; y += view.laneH;
+    if (takesOpen(t)) for (const g of E.takeGroups(t)) { r.takes.push({ g, y, t }); y += TAKES.H; }
     if (t.autoOpen) { for (const ln of (t.auto || [])) { r.lanes.push({ ln, y, t }); y += AUTO.H; } r.addY = y; y += AUTO.ADD; }
     r.end = y; rows.push(r);
   }
@@ -516,6 +642,24 @@ function drawAutoLane(g, a, w, left) {
   const d = AUTO.drag;
   if (d && d.ln === ln && d.p) { const txt = E.autoValueLabel(a.t, ln.target, d.p.v); g.fillStyle = '#ffd896'; g.fillText(txt, Math.min(w - 60, autoX(d.p.t) + 8), Math.max(a.y + 10, autoY(a, d.p.v) - 6)); }
 }
+// a takes row: the region, one slot per take (the playing one bright), its name; tap = next take
+function drawTakeRow(g, k, w) {
+  const G = k.g, col = k.t.color, x0 = G.region.a * view.barPx, x1 = G.region.b * view.barPx, n = G.takes.length, i = G.takes.indexOf(G.active);
+  g.fillStyle = '#0d0a08'; g.fillRect(0, k.y, w, TAKES.H); g.fillStyle = '#1a1410'; g.fillRect(0, k.y + TAKES.H - 1, w, 1);
+  g.fillStyle = col + '30'; g.fillRect(x0 + 1, k.y + 4, x1 - x0 - 2, TAKES.H - 9);
+  g.strokeStyle = col; g.strokeRect(x0 + 1.5, k.y + 4.5, x1 - x0 - 3, TAKES.H - 10);
+  const sw = (x1 - x0 - 6) / n;
+  for (let j = 0; j < n; j++) { g.fillStyle = j === i ? col : col + '50'; g.fillRect(x0 + 3 + j * sw, k.y + TAKES.H - 11, Math.max(2, sw - 2), 4); }
+  g.fillStyle = '#ffd896'; g.font = '10px "Courier New"';
+  const label = (G.active ? G.active.name : '—') + ' · ' + (i + 1) + '/' + n + (G.layer ? ' · layer ' + (G.layer + 1) : '') + ' · tap: next';
+  g.fillText(label.slice(0, Math.max(3, Math.floor((x1 - x0 - 8) / 6))), x0 + 5, k.y + 18);
+}
+// "k/n" on a clip that is one of several takes
+function takeBadges(t) {
+  const m = new Map();
+  for (const G of E.takeGroups(t)) if (G.takes.length > 1 && G.active) { const s = (G.takes.indexOf(G.active) + 1) + '/' + G.takes.length; m.set(G.active.kind === 'midi' ? 'p:' + G.active.pid : 'a:' + G.active.audioRef.libId + ':' + (G.active.audioRef.offset || 0), s); }
+  return m;
+}
 function drawArr(playTick) {
   if (!P) return;
   const { w, h, r, bars, Lo } = arrSize(), g = $('arrcv').getContext('2d'), left = $('lanes').scrollLeft;
@@ -523,11 +667,19 @@ function drawArr(playTick) {
   g.fillStyle = '#050304'; g.fillRect(0, 0, w, h);
   // loop region
   if (P.loop.on) { g.fillStyle = 'rgba(78,160,96,0.10)'; g.fillRect(P.loop.a * view.barPx, 0, (P.loop.b - P.loop.a) * view.barPx, h); }
-  g.fillStyle = P.loop.on ? '#4ea060' : '#553318'; g.fillRect(P.loop.a * view.barPx, 30, (P.loop.b - P.loop.a) * view.barPx, 3);
+  g.fillStyle = P.loop.on ? '#4ea060' : '#553318'; g.fillRect(P.loop.a * view.barPx, view.rulerH - 4, (P.loop.b - P.loop.a) * view.barPx, 3);
+  // punch region: a red band on the ruler (drag its edges / middle), faint over the lanes
+  if (P.punch && P.punch.on) {
+    const x0 = P.punch.a * view.barPx, x1 = P.punch.b * view.barPx;
+    g.fillStyle = 'rgba(198,74,58,0.07)'; g.fillRect(x0, view.rulerH, x1 - x0, h);
+    g.fillStyle = 'rgba(198,74,58,0.42)'; g.fillRect(x0, 17, x1 - x0, view.rulerH - 22);
+    g.fillStyle = '#ff9a88'; g.fillRect(x0, 15, 3, view.rulerH - 19); g.fillRect(x1 - 3, 15, 3, view.rulerH - 19);
+  }
   // sections
   for (const s of P.sections || []) { g.fillStyle = 'rgba(216,160,96,0.15)'; g.fillRect(s.bar * view.barPx, 0, s.bars * view.barPx, 16); g.fillStyle = '#ffd896'; g.font = '10px "Courier New"'; g.fillText(s.name, s.bar * view.barPx + 3, 11); }
   // automation lanes (under the grid lines)
   for (const row of Lo.rows) {
+    for (const k of row.takes) drawTakeRow(g, k, w);
     for (const a of row.lanes) drawAutoLane(g, a, w, left);
     if (row.addY !== undefined) { g.fillStyle = '#070505'; g.fillRect(0, row.addY, w, AUTO.ADD); g.fillStyle = '#2a1c12'; g.fillRect(0, row.addY + AUTO.ADD - 1, w, 1); }
   }
@@ -540,7 +692,8 @@ function drawArr(playTick) {
   }
   // lanes + clips
   Lo.rows.forEach(row => {
-    const t = row.t, y = row.y;
+    const t = row.t, y = row.y, badges = t.takes ? takeBadges(t) : null;
+    const badge = (key, x, cw) => { const s = badges && badges.get(key); if (!s || cw < 30) return; g.font = '9px "Courier New"'; g.fillStyle = '#050304'; g.fillRect(x + cw - 6 * s.length - 8, y + 4, 6 * s.length + 6, 11); g.fillStyle = '#a8e89c'; g.fillText(s, x + cw - 6 * s.length - 5, y + 13); };
     g.fillStyle = sel.trackId === t.id ? 'rgba(26,20,16,0.9)' : 'transparent'; g.fillRect(0, y, w, view.laneH);
     g.fillStyle = '#2a1c12'; g.fillRect(0, y + view.laneH - 1, w, 1);
     if (t.kind === 'midi') t.clips.forEach((c, ci) => {
@@ -560,12 +713,14 @@ function drawArr(playTick) {
         }
       }
       g.fillStyle = selected ? '#050304' : '#ffd896'; g.font = '9px "Courier New"'; g.fillText(p.name.slice(0, Math.floor(cw / 6)), x + 4, y + view.laneH - 7);
+      badge('p:' + c.pid, x, cw);
     });
     else t.audio.forEach((a, ai) => {
       const x = a.t / BAR * view.barPx, cw = Math.max(4, a.len / (E.spt() * BAR) * view.barPx);
       g.fillStyle = t.color + '66'; g.fillRect(x + 1, y + 3, cw - 2, view.laneH - 7);
       g.strokeStyle = t.color; g.strokeRect(x + 1.5, y + 3.5, cw - 3, view.laneH - 8);
       g.fillStyle = '#ffd896'; g.fillText((a.name || 'audio').slice(0, Math.floor(cw / 6)), x + 4, y + view.laneH - 7);
+      badge('a:' + a.libId + ':' + (a.offset || 0), x, cw);
     });
   });
   // playhead
@@ -575,19 +730,19 @@ function drawArr(playTick) {
 function arrHit(ev, edgePx = 7) {
   const r = $('arrcv').getBoundingClientRect(), x = ev.clientX - r.left, y = ev.clientY - r.top;
   const bar = x / view.barPx, Lo = arrLayout();
-  let li = -1, t = null, auto = null;
+  let li = -1, t = null, auto = null, take = null;
   Lo.rows.forEach((row, i) => {
     if (y < row.y || y >= row.end) return;
     li = i;
     if (y < row.y + view.laneH) t = row.t;
-    else { const a = row.lanes.find(a => y >= a.y && y < a.y + AUTO.H); if (a) auto = a; }
+    else { const k = row.takes.find(k => y >= k.y && y < k.y + TAKES.H); if (k) take = k; else { const a = row.lanes.find(a => y >= a.y && y < a.y + AUTO.H); if (a) auto = a; } }
   });
   let clip = -1, edge = false;
   if (t) {
     if (t.kind === 'midi') t.clips.forEach((c, ci) => { const p = t.patterns[c.pid], len = c.bars || (p ? p.lenBars : 1); if (bar >= c.bar && bar < c.bar + len) { clip = ci; edge = (c.bar + len - bar) * view.barPx < edgePx; } });
     else t.audio.forEach((a, ai) => { const s = a.t / BAR, l = a.len / (E.spt() * BAR); if (bar >= s && bar < s + l) clip = ai; });
   }
-  return { x, y, bar, t, li, clip, edge, ruler: y < 34, auto };
+  return { x, y, bar, t, li, clip, edge, ruler: y < view.rulerH, auto, take };
 }
 // ── automation editing (mouse + fingers) ──
 const clamp01 = v => Math.max(0, Math.min(1, v));
@@ -643,7 +798,26 @@ function arrGrab(h) {      // start dragging the clip under the pointer
   arr.drag = { t: h.t, c, startBar: h.bar, orig: h.t.kind === 'midi' ? c.bar : c.t, resize: h.edge && h.t.kind === 'midi', origLen: c.bars || (h.t.patterns[c.pid] || {}).lenBars };
   return true;
 }
+// punch region on the ruler: drag an edge (snaps to bars) or the middle (moves it)
+const punch = { drag: null };
+function punchHit(h, edge) {
+  const u = P.punch; if (!u || !u.on || !h.ruler) return null;
+  const xa = u.a * view.barPx, xb = u.b * view.barPx, da = Math.abs(h.x - xa), db = Math.abs(h.x - xb);
+  if (Math.min(da, db) <= edge) return da <= db ? 'a' : 'b';
+  return h.x > xa && h.x < xb ? 'move' : null;
+}
+function punchGrab(h, edge) { const m = punchHit(h, edge); if (!m) return false; punch.drag = { m, x0: h.x, a0: P.punch.a, b0: P.punch.b }; return true; }
+function punchMove(ev) {
+  const d = punch.drag; if (!d) return false;
+  const x = ev.clientX - $('arrcv').getBoundingClientRect().left, u = P.punch;
+  if (d.m === 'a') u.a = Math.max(0, Math.min(d.b0 - 1, Math.round(x / view.barPx)));
+  else if (d.m === 'b') u.b = Math.max(d.a0 + 1, Math.round(x / view.barPx));
+  else { u.a = Math.max(0, d.a0 + Math.round((x - d.x0) / view.barPx)); u.b = u.a + (d.b0 - d.a0); }
+  punchUI(); drawArr(); return true;
+}
+function punchEnd() { if (!punch.drag) return false; punch.drag = null; saveSoon(); return true; }
 function arrMove(ev) {
+  if (punchMove(ev)) return;
   if (autoMove(ev)) return;
   if (!arr.drag) return;
   const r = $('arrcv').getBoundingClientRect(), bar = (ev.clientX - r.left) / view.barPx, d = arr.drag;
@@ -652,7 +826,7 @@ function arrMove(ev) {
   else d.c.t = Math.max(0, Math.round((d.orig / BAR + (bar - d.startBar)) * 4) / 4 * BAR);
   drawArr();
 }
-function arrEnd() { autoEnd(); if (arr.drag) { arr.drag = null; saveSoon(); } }
+function arrEnd() { punchEnd(); autoEnd(); if (arr.drag) { arr.drag = null; saveSoon(); } }
 function arrNewClip(h) {
   if (!h.t || h.clip >= 0 || h.ruler || h.t.kind !== 'midi') return;
   const len = +$('plen').value || 4, pid = E.uid('pat');
@@ -665,6 +839,8 @@ function arrNewClip(h) {
 $('arrcv').addEventListener('mousedown', ev => {
   if (!P) return;
   const h = arrHit(ev);
+  if (h.take) { if (ev.button === 0) E.cycleTake(h.take.t.id, h.take.g.key, 1); return; }
+  if (h.ruler && ev.button === 0 && punchGrab(h, 6)) return;
   if (h.auto) {      // automation: click empty = add a point and drag it · drag a point · right-click deletes
     if (ev.button === 2) { autoDelete(h, 7); return; }
     if (!autoGrab(h, 7)) { const p = autoAdd(h); AUTO.drag = { a: h.auto, ln: h.auto.ln, p }; }
@@ -683,10 +859,10 @@ $('arrcv').addEventListener('dblclick', ev => arrNewClip(arrHit(ev)));
 // double-tap an empty lane = new clip · drag empty space to pan
 // automation lanes: tap = add a point · drag a point = move it · long-press a point = delete · ✎ DRAW: drag sketches
 TouchControls.gesture($('arrcv'), {
-  grab: ev => { if (!P) return false; const h = arrHit(ev, 16); if (h.auto) return autoGrab(h, 16); if (h.ruler || h.clip < 0) return false; arrSelect(h); arrGrab(h); arrRefresh(); return true; },
+  grab: ev => { if (!P) return false; const h = arrHit(ev, 16); if (h.ruler) return punchGrab(h, 18); if (h.take) return false; if (h.auto) return autoGrab(h, 16); if (h.ruler || h.clip < 0) return false; arrSelect(h); arrGrab(h); arrRefresh(); return true; },
   move: arrMove, end: arrEnd,
-  tap: ev => { if (!P) return; const h = arrHit(ev); if (h.auto) { if (!autoPointAt(h, 16)) { autoAdd(h); drawArr(); saveSoon(); } return; } if (h.ruler) { arrSeek(h); return; } if (arrSelect(h)) arrRefresh(); },
-  doubleTap: ev => { if (!P) return; const h = arrHit(ev); if (h.auto) { if (!autoPointAt(h, 16)) { autoAdd(h); drawArr(); saveSoon(); } return; } arrNewClip(h); },
+  tap: ev => { if (!P) return; const h = arrHit(ev); if (h.take) { E.cycleTake(h.take.t.id, h.take.g.key, 1); return; } if (h.auto) { if (!autoPointAt(h, 16)) { autoAdd(h); drawArr(); saveSoon(); } return; } if (h.ruler) { arrSeek(h); return; } if (arrSelect(h)) arrRefresh(); },
+  doubleTap: ev => { if (!P) return; const h = arrHit(ev); if (h.take) { E.cycleTake(h.take.t.id, h.take.g.key, 1); return; } if (h.auto) { if (!autoPointAt(h, 16)) { autoAdd(h); drawArr(); saveSoon(); } return; } arrNewClip(h); },
   longPress: ev => { if (!P) return; const h = arrHit(ev); if (h.auto) { autoDelete(h, 16); return; } if (h.clip >= 0) { arr.drag = null; arrSelect(h); arrDeleteClip(h); arrRefresh(); } },
 });
 // the headers follow the lanes' vertical scroll; the lane labels follow the horizontal one
@@ -898,7 +1074,7 @@ window.addEventListener('keyup', e => {
 window.addEventListener('midiinput-note', e => {
   if (!P || !sel.trackId) return;
   const t = E.track(sel.trackId), d = t && E.dev(t.deviceId);
-  if (d && d.type === 'hw') { if (E.recording && t.arm) E.recordMidi(t, e.detail.note, e.detail.vel, e.detail.on, E.ctx.currentTime - E.latencyMs / 1000); return; }  // it already sounds on the synth
+  if (d && d.type === 'hw') { if (E.recording && t.arm) E.recordMidi(t, e.detail.note, e.detail.vel, e.detail.on, E.recNow()); return; }  // it already sounds on the synth
   E.liveNote(sel.trackId, e.detail.note, e.detail.vel, e.detail.on);
 });
 
@@ -1389,7 +1565,6 @@ $('p-file').addEventListener('change', async e => { const f = e.target.files[0];
 // recording input
 AK.inputs.list().then(list => list.forEach(i => $('r-input').add(new Option((i.label || 'input') + (AK.inputs.hint(i.label) ? ' — ' + AK.inputs.hint(i.label) : ''), i.deviceId || 'default'))));
 $('r-input').addEventListener('change', async () => { try { const lab = await E.setInput($('r-input').value ? ($('r-input').value === 'default' ? '' : $('r-input').value) : null); msg('b-msg', lab ? 'input: ' + lab : 'no input.'); } catch (e) { msg('b-msg', 'input: ' + e.message, true); } });
-$('r-lat').addEventListener('change', () => { E.latencyMs = +$('r-lat').value || 0; });
 // library clips → audio track
 async function listLib() {
   const list = await AK.lib.list().catch(() => []);
@@ -1487,7 +1662,8 @@ function frame() {
     if (tk !== lastTick) {
       lastTick = tk;
       const bar = Math.floor(tk / BAR), beat = Math.floor(tk / PPQ) % 4, six = Math.floor(tk / (PPQ / 4)) % 4;
-      $('pos').textContent = (bar + 1) + '.' + (beat + 1) + '.' + (six + 1);
+      const R = E.rec, cin = R && E.recording && !R.fly && R.cfg.countIn && tk < R.a * BAR;
+      $('pos').textContent = cin ? 'IN ' + Math.max(1, Math.ceil((R.a * BAR - tk) / PPQ - 1e-6)) : (bar + 1) + '.' + (beat + 1) + '.' + (six + 1);
       drawArr(tk);
       if (E.playing) drawRoll();
     }

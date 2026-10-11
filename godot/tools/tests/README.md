@@ -22,6 +22,7 @@ In the cloud sandbox the browser must use `$HTTPS_PROXY` for network suites (the
 | `touch` | relative sliders, clip drag + long-press delete, piano-roll tap / hold (real CDP touch events) |
 | `daw` | compose, offline render, seamless loops, stems sum, undo/redo, MIDI export, TEMP TRACKS → game folder |
 | `daw_fx` | mixer inserts (every type renders; filter / EQ / drive move the sound the right way), sidechain ducking with the source muted, volume automation ramp, undo / redo reaching the audio graph |
+| `daw_rec` | recording (real-time transport, mock FM-1 MIDI + USB audio, ~30 s): count-in clicks + grace, punch in/out (MIDI replace / overdub), loop takes (MIDI per pass, overdub loop, audio slices sample-exact per pass), latency (CHECK-OUT `mm_fm1_latency_ms` pickup incl. from another tab, loopback calibration, ±2 ms alignment), take pick / undo / redo / delete / keep, save → reload, old projects unchanged, finger controls (punch drag, takes row, ≥ 36 px) |
 | `fm1_checkout` | the hardware check-out page against a mock FM-1 (`mocks/fm1_mock.js`): identity / INFO gating per firmware, part channels, DX7 dump bytes + FM-1+VA overwrite gate, 24 ppqn clock, round-trip latency, reload |
 | `godot_audiomgr` | the real `AudioMgr.gd` in a throwaway project: .wav fallback, stems → AudioStreamSynchronized, intensity, missing-stem fallback, track ending mid-fade |
 | `godot_director` | the VN `MusicDirector.gd`: writing → intensity, choice / interlude / cg, cue sheets + beats + auto, leitmotif, locale track, silence, smoothing into AudioMgr, replay |
