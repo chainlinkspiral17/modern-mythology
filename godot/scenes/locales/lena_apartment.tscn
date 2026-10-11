@@ -169,19 +169,19 @@ glow_hdr_scale = 2.4
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_Locale")
 
-[node name="Key" type="DirectionalLight3D" parent="."]
+[node name="Key__lena_apartment" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 3, 3, 1)
 light_color = Color(0.96, 0.78, 0.46, 1)
 light_energy = 1.05
 shadow_enabled = false
 
-[node name="Fill" type="DirectionalLight3D" parent="."]
+[node name="Fill__lena_apartment" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 4, -6)
 light_color = Color(0.86, 0.92, 0.98, 1)
 light_energy = 0.45
 shadow_enabled = false
 
-[node name="Back" type="DirectionalLight3D" parent="."]
+[node name="Back__lena_apartment" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866, 0.354, -0.354, 0, 0.707, 0.707, 0.5, 0.612, -0.612, -3, 4, 2)
 light_color = Color(0.86, 0.62, 0.96, 1)
 light_energy = 0.28
@@ -217,6 +217,15 @@ rotation = Vector3(-0.2618, 1.3090, 0.0)
 [node name="shot_insert_patch" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.383, 2.591, -0.383)
 rotation = Vector3(-0.2618, 1.3090, 0.0)
+
+; ── the night (2026-10-10, preset lena_apartment_night) — row-major
+; vol7 ch7 Night and the ch8 chain after nine, ch10 Morning at 5:40: the street lamp's cold spill through
+; the window; the floor lamp and the fairy lights (unsuffixed) are the room's light
+[node name="Street_Window__lena_apartment_night" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.3420, 0.3971, -0.8517, 0.0000, 0.9063, 0.4226, 0.9397, 0.1445, -0.3100, -6, 5, -6)
+light_color = Color(0.70, 0.76, 0.92, 1)
+light_energy = 0.35
+shadow_enabled = true
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -457,7 +466,7 @@ shadow_enabled = false
 omni_range = 3.60
 
 ; The laundromat's sodium through the kitchen window over the sink: blender (-2.30, 1.30, 1.50) → godot (-2.30, 1.50, -1.30).
-[node name="Kitchen_Window_Practical" type="OmniLight3D" parent="."]
+[node name="Kitchen_Window_Practical__lena_apartment" type="OmniLight3D" parent="."]
 position = Vector3(-3.300, 1.500, -1.300)
 light_color = Color(1.000, 0.620, 0.260, 1)
 light_energy = 1.00

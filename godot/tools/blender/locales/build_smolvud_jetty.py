@@ -37,9 +37,12 @@ smoke as a NONSOLID wisp; the tide line on the rocks.
 import math
 import os
 import random
+import re
 import sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
+_LOC = os.path.dirname(os.path.abspath(__file__))
+if _LOC not in sys.path: sys.path.insert(0, _LOC)
 from _props.geometry import clear_scene, make_box, make_cyl, make_rot_box, export_glb
 
 LAND_Z = 1.8
@@ -230,6 +233,52 @@ def build_harbor_and_town():
         make_cyl(f"Town_Tree_{k}_Crown", (tx, ty, LAND_Z + 7.0), 2.0, 7.0, (0.20, 0.30, 0.22, 1.0), segments=8)
 
 
+
+def build_wreck_2026_10():
+    """THE MINSTRAL'S GREEN AT SMOLVUD (2026-10-10; pass 53's draft-2 target).
+    vol5 ch21: Tem "sitting at the edge of a pier looking out at a rusted
+    steamship that had been relocated from Louisiana and set here because the
+    museum's curator ..." — the Minstral's Green, built once in build_graustark
+    (build_minstral_wreck_2026_10, draft 2 of 2026-10-04) and reused here: the
+    same function run with _props.geometry's helpers wrapped to shift every part
+    to the channel west of the jetty, prefix it, and drop the Louisiana slough,
+    reeds, knees, cypress and the life-ring in the grass. Its waterline (z -1.7 in
+    Graustark) comes to sea level; a shoal under the hull is what the museum set
+    it on."""
+    import contextlib
+    import _props.geometry as GEO
+    import build_graustark as G
+    SKIP = re.compile(r"(Cypress_Knee|Reeds_|Minstral_Slough_Water|Minstral_Lifering|Minstral_Cypress)")
+    dx, dy, dz = -30.0 - 38.0, 40.0 - (-120.0), 1.7     # the hull's (38, -120) -> (-30, 40)
+    PREFIX = "Wreck_"
+
+    def c3(f):
+        def w(name, center, *a, **k):
+            if SKIP.search(name): return None
+            return f(PREFIX + name, (center[0] + dx, center[1] + dy, center[2] + dz), *a, **k)
+        return w
+
+    def path(f):
+        def w(name, pts, *a, **k):
+            if SKIP.search(name): return None
+            return f(PREFIX + name, [(q[0] + dx, q[1] + dy, q[2] + dz) for q in pts], *a, **k)
+        return w
+
+    saved = {}
+    for n, wrap in (("make_box", c3), ("make_cyl", c3), ("make_rot_box", c3), ("make_prism", c3),
+                    ("make_taper_cyl", c3), ("make_lathe", c3), ("make_heightfield", c3), ("make_tube", path)):
+        saved[n] = getattr(GEO, n); setattr(GEO, n, wrap(saved[n]))
+    g_saved = {k: getattr(G, k) for k in ("terrain_surface_z", "_emit_cypress") if hasattr(G, k)}
+    try:
+        if "terrain_surface_z" in g_saved: G.terrain_surface_z = lambda x, y: -1.7
+        if "_emit_cypress" in g_saved: G._emit_cypress = lambda *a, **k: None
+        G.build_minstral_wreck_2026_10()
+    finally:
+        for n, f in saved.items(): setattr(GEO, n, f)
+        for k, f in g_saved.items(): setattr(G, k, f)
+    # the shoal the museum set her on: its top at the hull's bottom (z -3.0 + 1.7)
+    make_box("Channel_Shoal_Ground", (-30.0, 40.0, -1.3 - 0.6), (12.0, 26.0, 1.2), (0.30, 0.30, 0.26, 1.0))
+
 def main():
     clear_scene()
     build_ground()
@@ -237,6 +286,7 @@ def main():
     build_frog()
     build_shore()
     build_harbor_and_town()
+    build_wreck_2026_10()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/smolvud_jetty.glb"))
     print(f"\n[build_smolvud_jetty] exporting to {out}")

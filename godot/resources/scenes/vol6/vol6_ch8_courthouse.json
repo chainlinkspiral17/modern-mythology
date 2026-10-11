@@ -939,6 +939,10 @@
       "pos": "right"
     },
     {
+      "t": "bg",
+      "src": "3d:hospital_room"
+    },
+    {
       "t": "narrate",
       "text": "[shot:establish]In Room 318 of New Auburn General, Linda Caldwell turns on the small bedside radio that Anita has, before leaving with Gracie at noon, plugged in for her. The radio is not the shortwave at home. It is a hospital radio.",
       "voice": "assets/audio/voice/vol6_ch8_courthouse/170.ogg"
@@ -967,6 +971,10 @@
       "t": "narrate",
       "text": "The hum hums.",
       "voice": "assets/audio/voice/vol6_ch8_courthouse/175.mp3"
+    },
+    {
+      "t": "bg",
+      "src": "3d:new_auburn_courtroom"
     },
     {
       "t": "narrate",

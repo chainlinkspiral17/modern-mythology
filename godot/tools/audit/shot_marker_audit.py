@@ -111,6 +111,8 @@ EXCLUDE = {
     # aim point was dragged behind the counter by Scuff_Counter and
     # Outlet_Counter)
     "counter": ["scuff", "outlet", "socket", "plate", "cord", "wear"],
+    # (2026-10-10) "her grandmother's hand on hers": a hands insert is never the clock's hand
+    "hands": ["clock", "hourhand", "minutehand"],
 }
 
 SYNONYMS = {

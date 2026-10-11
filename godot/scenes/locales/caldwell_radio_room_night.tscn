@@ -360,3 +360,8 @@ position = Vector3(0.900, 1.550, -1.900)
 rotation = Vector3(-0.4058, -3.0319, 0.0)
 metadata/fov = 52.0
 
+; insert (2026-10-10, ch2 Maya's bedroom): "Her grandmother's hand on hers" — the edge of the bed, in the dark
+[node name="shot_insert_hands" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.300, 1.300, -2.900)
+rotation = Vector3(-0.5739, -0.7854, 0.0)
+metadata/fov = 40.0

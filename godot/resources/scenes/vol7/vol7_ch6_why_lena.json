@@ -7,7 +7,7 @@
  "nodes": [
   {
    "t": "bg",
-   "src": "3d:lena_apartment"
+   "src": "3d:chillwave_backroom"
   },
   {
    "t": "narrate",
@@ -17,11 +17,13 @@
    "t": "choice",
    "opts": [
     {
-     "text": "\"Why me and not her, Cale.\"", "skill": "rhetoric",
+     "text": "\"Why me and not her, Cale.\"",
+     "skill": "rhetoric",
      "goto": 3
     },
     {
-     "text": "[Say nothing. Wait for him to continue.]", "skill": "empathy",
+     "text": "[Say nothing. Wait for him to continue.]",
+     "skill": "empathy",
      "goto": 4
     }
    ]

@@ -438,3 +438,9 @@ metadata/fov = 42.0
 position = Vector3(9.550, 1.200, -1.050)
 rotation = Vector3(-0.1477, -0.3218, 0.0)
 metadata/fov = 42.0
+
+; insert (2026-10-10, ch16 Dawn): "for the first time in five weeks" — the Altima's dash from the driver's eye, an abstract cue
+[node name="shot_insert_five__vehicle_cab_altima" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(9.500, 1.140, -0.600)
+rotation = Vector3(-0.4200, 0.0000, 0.0)
+metadata/fov = 50.0

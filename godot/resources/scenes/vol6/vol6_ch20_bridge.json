@@ -486,6 +486,10 @@
       "voice": "assets/audio/voice/vol6_ch20_bridge/085.mp3"
     },
     {
+      "t": "bg",
+      "src": "3d:henderson_kitchen"
+    },
+    {
       "t": "narrate",
       "text": "Eileen is, this evening, out — she is at the bakery on Magnolia, picking up the cinnamon coffee cake she had promised to bring to the Sunday afternoon thing at the Kowalskis'.",
       "voice": "assets/audio/voice/vol6_ch20_bridge/086.mp3"

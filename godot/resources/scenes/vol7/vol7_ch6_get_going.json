@@ -7,7 +7,7 @@
  "nodes": [
   {
    "t": "bg",
-   "src": "3d:cabin_road"
+   "src": "3d:chillwave_backroom"
   },
   {
    "t": "say",
@@ -40,6 +40,10 @@
    "char": "Cale",
    "expr": "neutral",
    "text": "\"Go on.\""
+  },
+  {
+   "t": "bg",
+   "src": "3d:main_street"
   },
   {
    "t": "narrate",

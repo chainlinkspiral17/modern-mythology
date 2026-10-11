@@ -212,6 +212,10 @@
       "pos": "right"
     },
     {
+      "t": "bg",
+      "src": "3d:vehicle_cab"
+    },
+    {
       "t": "narrate",
       "text": "[shot:insert phone~]In the truck, before he starts it, his phone buzzes.",
       "voice": "assets/audio/voice/vol6_ch7_henderson_driveway/034.mp3"

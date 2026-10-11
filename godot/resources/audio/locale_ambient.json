@@ -201,6 +201,10 @@
       "bed": "assets/audio/bgm/vol7_apartment_rain.wav",
       "gain": 0.88
     },
+    "lena_apartment_night": {
+      "bed": "assets/audio/bgm/vol7_apartment_rain.wav",
+      "gain": 0.88
+    },
     "bungalow_interior": {
       "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
       "gain": 0.88

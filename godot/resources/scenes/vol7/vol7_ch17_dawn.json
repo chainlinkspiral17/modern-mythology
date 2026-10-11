@@ -208,6 +208,10 @@
       "t": "show"
     },
     {
+      "src": "3d:cabin_road",
+      "t": "bg"
+    },
+    {
       "text": "They left the cabin at five thirty-five.",
       "t": "narrate"
     },
@@ -265,6 +269,10 @@
     {
       "text": "The road went down through the alders. The Sitka stand opened. The coast highway took them in. At ten to six they were at Hemlock.",
       "t": "narrate"
+    },
+    {
+      "src": "3d:cabin_interior",
+      "t": "bg"
     },
     {
       "scene": "vol7_ch17_bakery",

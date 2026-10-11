@@ -1003,7 +1003,7 @@
    "t": "narrate"
   },
   {
-   "src": "3d:kestrel_mountain",
+   "src": "3d:accretion_corridor",
    "t": "bg"
   },
   {
@@ -1025,6 +1025,10 @@
   {
    "text": "The institutional walls of the corridor gave back to the hallway. The hallway gave back to the hedge.",
    "t": "narrate"
+  },
+  {
+   "src": "3d:kestrel_mountain",
+   "t": "bg"
   },
   {
    "text": "He pushed through the hedge and was on the mountain again.",

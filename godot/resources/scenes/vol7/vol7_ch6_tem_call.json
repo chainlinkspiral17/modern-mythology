@@ -7,7 +7,7 @@
  "nodes": [
   {
    "t": "bg",
-   "src": "3d:lena_apartment"
+   "src": "3d:main_street"
   },
   {
    "t": "say",
@@ -89,15 +89,18 @@
    "t": "choice",
    "opts": [
     {
-     "text": "Go home. Sit. Eat.", "skill": "composure",
+     "text": "Go home. Sit. Eat.",
+     "skill": "composure",
      "goto": 16
     },
     {
-     "text": "Walk to ChillWave.", "skill": "signal",
+     "text": "Walk to ChillWave.",
+     "skill": "signal",
      "goto": 16
     },
     {
-     "text": "[Stay on the corner a moment longer.]", "skill": "empathy",
+     "text": "[Stay on the corner a moment longer.]",
+     "skill": "empathy",
      "goto": 16
     }
    ]

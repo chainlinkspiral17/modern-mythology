@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "3d:miller_kitchen"
+      "src": "3d:bianca_kitchen_morning"
     },
     {
       "t": "hide",
@@ -431,6 +431,10 @@
       "t": "narrate",
       "text": "She turns the second slice.",
       "voice": "assets/audio/voice/vol6_ch11_kitchen/085.mp3"
+    },
+    {
+      "t": "bg",
+      "src": "3d:miller_kitchen"
     },
     {
       "t": "narrate",
@@ -1026,7 +1030,7 @@
     },
     {
       "t": "bg",
-      "src": "3d:miller_back_porch"
+      "src": "3d:miller_back_porch_morning"
     },
     {
       "t": "narrate",

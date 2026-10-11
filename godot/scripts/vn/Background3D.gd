@@ -2022,6 +2022,28 @@ const CAMERA_PRESETS := {
 		"fov": 60.0,
 		"suppress_input": true,
 	},
+	"lena_apartment_night": {
+		"scene": "res://scenes/locales/lena_apartment.tscn",
+		"requires_glb": "res://assets/3d/locales/lena_apartment.glb",
+		# (2026-10-10) THE SAME ROOM AFTER DARK: ch7 Night, the ch8 chain after
+		# nine (dark, goodnight, the_vessel, roy) and ch10 Morning at 5:40 played
+		# on the day key. The daylight rig and the kitchen-window practical are
+		# suffixed to lena_apartment; this preset brings the street lamp's spill
+		# through the window and a night env; the floor lamp and the fairy
+		# lights serve both.
+		# Studio apartment 5×5 (godot x∈[-2.5,2.5], z∈[0,-5], ceil 2.6). Bed
+		# on the W side (godot -1.25,-2.5), desk + laptop on the E (godot
+		# 1.25,-1.5), packed bookshelf on the E wall (godot 2.3,-3.8), rug
+		# centre, fairy lights on the N wall. Camera SE corner just inside
+		# the door looking NW across the rug to the bed, window/lights beyond.
+		"camera_origin": Vector3(1.5, 1.58, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(50.0), 0.0),
+		"fov": 60.0,
+		"env": {"sky_top": Color(0.05, 0.06, 0.12, 1), "sky_horizon": Color(0.16, 0.14, 0.20, 1),
+			"ground_horizon": Color(0.10, 0.09, 0.11, 1), "ground_bottom": Color(0.04, 0.04, 0.05, 1),
+			"ambient_color": Color(0.36, 0.34, 0.44, 1), "ambient_energy": 0.42, "fog_color": Color(0.14, 0.12, 0.18, 1)},
+		"suppress_input": true,
+	},
 	"missing_link_interior": {
 		"scene": "res://scenes/locales/missing_link_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/missing_link_interior.glb",

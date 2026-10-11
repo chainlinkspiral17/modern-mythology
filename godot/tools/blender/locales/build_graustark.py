@@ -5752,11 +5752,12 @@ def build_minstral_wreck_2026_10():
         for k, ry in enumerate(ys_):
             if (side, k) in (("S", 3), ("S", 4), ("P", 6)):
                 continue
-            _mb(f"Minstral_Rail_{side}_Post_{k}", (rx, ry, 3.13 + 0.45), (0.06, 0.06, 0.90), rust)
+            # (2026-10-10) forward of the aft deck (y > -120.2) a post stands on the hull's top, 3.10, not the deck's 3.13
+            _mb(f"Minstral_Rail_{side}_Post_{k}", (rx, ry, (3.13 if ry <= -120.2 else 3.10) + 0.45), (0.06, 0.06, 0.90), rust)
         for k in range(len(ys_) - 1):
             if (side, k) in (("S", 2), ("S", 3), ("S", 4), ("P", 5), ("P", 6)):
                 continue
-            _mb(f"Minstral_Rail_{side}_Top_{k}", (rx, (ys_[k] + ys_[k + 1]) / 2.0, 3.13 + 0.90 + 0.025),
+            _mb(f"Minstral_Rail_{side}_Top_{k}", (rx, (ys_[k] + ys_[k + 1]) / 2.0, (3.13 if ys_[k] <= -120.2 else 3.10) + 0.90 + 0.025),
                 (0.06, 1.5 - 0.06, 0.05), rust)
     for k, rx in enumerate((35.4, 36.9, 38.4, 39.9)):
         _mb(f"Minstral_Rail_Stern_Post_{k}", (rx, -129.75, 3.13 + 0.45), (0.06, 0.06, 0.90), rust)

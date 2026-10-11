@@ -345,6 +345,10 @@
    "pos": "right"
   },
   {
+   "t": "bg",
+   "src": "3d:kowalski_kitchen"
+  },
+  {
    "t": "narrate",
    "text": "The Kowalski house, when they arrive, is dark except for the kitchen light. Ben's mother is at the table. Ben's mother is in her scrubs.",
    "voice": "assets/audio/voice/vol6_ch7_hospital/056.ogg"

@@ -368,3 +368,8 @@ position = Vector3(-0.900, 1.450, -3.800)
 rotation = Vector3(-0.0832, -2.0195, 0.0)
 metadata/fov = 45.0
 
+; insert (2026-10-10, ch10 Home): his phone on the charger on the nightstand, in the dark
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.100, 1.150, -3.000)
+rotation = Vector3(-0.4882, 0.7076, 0.0)
+metadata/fov = 38.0

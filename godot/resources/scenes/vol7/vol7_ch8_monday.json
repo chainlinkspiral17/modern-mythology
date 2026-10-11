@@ -274,6 +274,10 @@
       "t": "narrate"
     },
     {
+      "src": "3d:salty_tome_interior",
+      "t": "bg"
+    },
+    {
       "text": "[shot:establish]The bookstore at seven-thirty on a Monday morning was Lena's.",
       "t": "narrate"
     },

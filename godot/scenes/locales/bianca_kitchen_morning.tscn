@@ -411,3 +411,38 @@ position = Vector3(3.300, 1.250, -4.200)
 rotation = Vector3(-0.0532, 2.0106, 0.0)
 metadata/fov = 45.0
 
+; ── (2026-10-10) ch11 Kitchen and ch17 Table moved here from miller_kitchen for their 4 AM; the same room's inserts, copied from miller_kitchen.tscn
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.650, 1.250, -2.450)
+rotation = Vector3(-0.4671, 0.7086, 0.0)
+metadata/fov = 40.0
+
+[node name="shot_insert_french_toast" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.000, 1.550, -5.700)
+rotation = Vector3(-0.5590, 0.5912, 0.0)
+metadata/fov = 40.0
+
+[node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.600, 1.550, -5.400)
+rotation = Vector3(0.0000, -0.0000, 0.0)
+metadata/fov = 50.0
+
+[node name="shot_insert_sink_light" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.200, 1.500, -5.600)
+rotation = Vector3(0.4155, 0.6288, 0.0)
+metadata/fov = 45.0
+
+[node name="shot_insert_hands" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.000, 1.350, -2.600)
+rotation = Vector3(-0.4615, -1.0304, 0.0)
+metadata/fov = 42.0
+
+[node name="shot_insert_cinnamon_roll" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.600, 1.250, -4.400)
+rotation = Vector3(-0.4506, 2.5088, 0.0)
+metadata/fov = 40.0
+
+[node name="shot_insert_jar" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.600, 1.200, -2.600)
+rotation = Vector3(-0.4565, -0.8330, 0.0)
+metadata/fov = 40.0

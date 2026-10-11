@@ -3834,6 +3834,94 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-10 · overnight run, pass 56: LENA'S APARTMENT AFTER DARK (the sweep's
+biggest time-of-day item).** Six vol7 chapters played after nine (ch7
+Night; the ch8 chain: dark, goodnight, the_vessel, roy) or before dawn
+(ch10 Morning, 5:40) on the apartment's day key. The pass-46/49 pattern:
+the three daylight directionals and the kitchen-window practical are
+suffixed `__lena_apartment`; the new `lena_apartment_night` brings the
+street lamp's cold spill through the window and a night env on the
+scene's ProceduralSky; the floor lamp and the fairy lights serve both.
+The six chapters' opening bgs are swapped (`ch8_goodnight` has gotos, so
+no node was inserted). The two six-o'clock chapters stay on the day
+preset with their dusk mood. No Deck rebuild.
+
+**2026-10-10 · overnight run, pass 55: THE SECOND SWEEP'S ROUTING (31 cuts in 27
+chapters, existing sets).** The biggest: the whole vol7 ch6 split chain
+(cale, chillwave, nate, brandon, why_lena, get_going) now plays in
+ChillWave's back room instead of the cabin, the apartment and the road;
+tem_call on Main Street; ch22 Bianca's Saturday on the back porch in the
+morning (its two kitchen re-sets with it) and her 10:14 doorbell in the
+day kitchen; ch11 Kitchen and ch17 Table at 4 AM on the dawn kitchen;
+ch8 Monday's Roy scene on the bookstore floor; Maya in her grandmother's
+room at night; Sam downstairs with her father; the Kowalski kitchen after
+the hospital; Diego's bedroom for his sleep; Linda's Room 318; the cab
+for four drives; the cabin road for three; Roy at the cabin porch; the
+Foxhole's dressing room after the set; the Kestrel corridor back to the
+mountain. Each cut was checked against the next node's text; four were
+corrected where an existing re-set overrode them or a cut landed a node
+early. ch2 Gas Oracles' montage was left on the Gas & Go (its
+thermometer and folder cues live there).
+
+What the cuts needed:
+- **Bianca's kitchen at 4 AM gets the four-thirty table.** ch11 and ch17's
+  cues (french_toast, cinnamon_roll, jar, hands, phone, window,
+  sink_light) were the family kitchen's props; `_props/miller_kitchen`
+  now builds the French toast and the table's props in BOTH variants
+  (`dress_french_toast`, `dress_four_thirty_table`), Mike's coffee and
+  the Sentinel stay family-only, and the seven markers are copied across
+  (same room, same coordinates), the phone re-aimed at her cordless.
+- **New markers**: the porch's cordless; Diego's phone on its charger; the
+  radio room's "her grandmother's hand on hers" at the bed; ChillWave's
+  back-room person/person_b at the workbench; the Altima's "five" (an
+  abstract dash insert, DELIBERATE + KNOWN_UNRESOLVED); the notebook on
+  Sam's table (KNOWN_UNRESOLVED: the prop lives in the safehouse).
+- **Audit grammar**: a "hands" insert excludes clock hands.
+
+Deck must REBUILD bianca_kitchen_morning (and graustark, smolvud_jetty
+from pass 54).
+
+Draft 2 targets: the notebook as a prop on Sam's table six weeks later;
+the night rooms the sweep listed (lena_apartment first).
+
+**2026-10-10 · overnight run, pass 54: THE MINSTRAL'S GREEN AT SMOLVUD (pass 53's
+draft-2 target) + THE SECOND VOL6/VOL7 SWEEP.** ch21: "a rusted steamship
+that had been relocated from Louisiana and set here". The jetty now has
+her, moored in the channel 24 m west of the crest on a shoal:
+- **Reuse, not a copy.** `build_smolvud_jetty.build_wreck_2026_10` runs
+  Graustark's own `build_minstral_wreck_2026_10` with `_props.geometry`'s
+  helpers wrapped for the call: every part shifted (the hull's (38,−120)
+  to (−30, 40), the waterline to sea level), prefixed `Wreck_`, and the
+  Louisiana slough, reeds, cypress knees, cypress and the life-ring in
+  the grass dropped by name. `terrain_surface_z` and `_emit_cypress` are
+  stubbed for the call. The pattern: a function that imports its
+  helpers LOCALLY cannot be moved by `plan.shifted` (which rebinds the
+  builder's globals); wrap the geometry module's attributes instead.
+- **A source fix.** The wreck's rail posts forward of the aft deck stood
+  3 cm above the hull's top (3.13 vs 3.10) — tolerated by Graustark's
+  float baseline, caught by the jetty's zero. Fixed in build_graustark;
+  Deck must REBUILD graustark as well as smolvud_jetty.
+
+**THE SECOND SWEEP** (an Explore agent over the vol6/vol7 chapters not yet
+checked) found 41 location mismatches and a long time-of-day list. The
+existing-set fixes ship in pass 55. Still open, NEW sets needed:
+- the Pit Stop back lot and dumpster (ch2 dumpster, MAJOR, a whole
+  chapter); the Kwik Stop lot with Sam's Corolla (ch2 gas_go_lot, ch7
+  safehouse); the safehouse front porch (ch7 safehouse, MAJOR);
+- Nate's converted-garage rehearsal room (ch14 substation_nine, MAJOR);
+  the Centro employee lot at dawn (ch10 night_shift, ch16 dawn);
+- vol7: Soren's door above the Daily Grind (ch9), the Board Lords back
+  office (ch12 kai), the sidewalk outside the bakery (ch18 stick), Hans
+  and Greta's kitchen (ch19 per), the Salty Tome back office (ch14).
+Time-of-day presets to make (the pass-46/49 pattern): lena_apartment at
+NIGHT (six vol7 chapters after 9 PM plus a 5:40 AM); vehicle_cab at
+night (three chapters); kwik_stop's exterior in daylight (eight
+chapters keep "watching the parking lot" past a near-black lot); the
+bedrooms (maya, jesse, safehouse) by day; henderson_kitchen at night
+and henderson_garage by day; school_field in the morning (two_a_days,
+depthchart); cedar_route and highway_101 by day; miriam_subaru in the
+afternoon; a thunderstorm for ch4's Meadowlark.
+
 **2026-10-10 · overnight run, pass 53: THE SWEEPS' MONTAGE ROUTING (existing
 sets).** Three stretches that played on the wrong set, fixed with bg
 nodes alone:

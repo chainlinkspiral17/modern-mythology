@@ -85,6 +85,8 @@ DELIBERATE_MARKERS = {
     ("county_line_station", "shot_insert_crow"),
     # (2026-10-10) vol7 ch2 over the jetty: "the sky over Smolvud was empty" — the insert IS the sky
     ("smolvud_jetty", "shot_insert_drone"),
+    # (2026-10-10) the Altima's dash from the driver's eye: an abstract cue, the dash IS the frame
+    ("vehicle_cab", "shot_insert_five__vehicle_cab_altima"),
 }
 # Builders whose recorded boxes do not sit where the runtime puts them
 # (harmony_terrain drapes its props over a heightfield the recorder

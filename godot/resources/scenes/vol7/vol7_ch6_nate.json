@@ -7,7 +7,7 @@
  "nodes": [
   {
    "t": "bg",
-   "src": "3d:cabin_interior"
+   "src": "3d:chillwave_backroom"
   },
   {
    "t": "say",
@@ -91,11 +91,13 @@
    "t": "choice",
    "opts": [
     {
-     "text": "\"What kind of things.\"", "skill": "logic",
+     "text": "\"What kind of things.\"",
+     "skill": "logic",
      "goto": 17
     },
     {
-     "text": "[Listen. Let him find the order.]", "skill": "empathy",
+     "text": "[Listen. Let him find the order.]",
+     "skill": "empathy",
      "goto": 17
     },
     {
@@ -110,11 +112,11 @@
    ]
   },
   {
-      "t": "think",
-      "char": "Lena",
-      "text": "His thumb went still on the table. He had found the order he was going to tell it in. She let him have it."
-    },
-    {
+   "t": "think",
+   "char": "Lena",
+   "text": "His thumb went still on the table. He had found the order he was going to tell it in. She let him have it."
+  },
+  {
    "t": "say",
    "char": "Cale",
    "expr": "neutral",

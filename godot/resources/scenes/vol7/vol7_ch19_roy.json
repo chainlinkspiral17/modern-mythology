@@ -222,6 +222,10 @@
    "t": "say"
   },
   {
+   "src": "3d:cabin_porch",
+   "t": "bg"
+  },
+  {
    "text": "[mood:dusk][shot:insert truck]Roy came up the road at four-twelve. His F-100 — the only one still on the road in town, by Per's count. Per had seen it parked on Cedar Place when he had walked past two summers ago.",
    "t": "narrate"
   },
@@ -315,6 +319,10 @@
   {
    "text": "He came in.",
    "t": "narrate"
+  },
+  {
+   "src": "3d:cabin_interior",
+   "t": "bg"
   },
   {
    "text": "[mood:candlelight_low][shot:closeup per]Per stood up at the table. The two of them looked at each other for a count.",

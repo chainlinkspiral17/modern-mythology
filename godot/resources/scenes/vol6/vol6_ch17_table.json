@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "3d:miller_kitchen"
+      "src": "3d:bianca_kitchen_morning"
     },
     {
       "t": "hide",
@@ -520,6 +520,10 @@
       "t": "narrate",
       "text": "[shot:closeup anita]Anita arrives at six twenty-one.",
       "voice": "assets/audio/voice/vol6_ch17_table/085.mp3"
+    },
+    {
+      "t": "bg",
+      "src": "3d:miller_kitchen"
     },
     {
       "t": "narrate",

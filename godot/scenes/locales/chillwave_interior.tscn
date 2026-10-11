@@ -387,3 +387,14 @@ metadata/fov = 42.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3, 1.4, -5.7)
 rotation = Vector3(-0.6712, -0.5220, 0.0)
 metadata/fov = 42.0
+
+; closeups (2026-10-10, the vol7 ch6 chain): Cale at the workbench, and the visitor in the folding chair
+[node name="shot_closeup_person__chillwave_backroom" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.700, 1.500, -6.000)
+rotation = Vector3(-0.1200, -1.0960, 0.0)
+metadata/fov = 42.0
+
+[node name="shot_closeup_person_b__chillwave_backroom" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.300, 1.500, -6.400)
+rotation = Vector3(-0.1000, 1.3000, 0.0)
+metadata/fov = 42.0

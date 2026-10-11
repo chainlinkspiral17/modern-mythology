@@ -28,6 +28,10 @@
    "duration": 2000
   },
   {
+   "t": "bg",
+   "src": "3d:vehicle_cab_altima"
+  },
+  {
    "t": "narrate",
    "text": "[trip:1.2][mood:dawn_warm]The drive back to Centro is four minutes.",
    "voice": "assets/audio/voice/vol6_ch16_dawn/005.mp3"

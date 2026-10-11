@@ -421,3 +421,9 @@ omni_range = 3.50
 position = Vector3(-0.550, 1.450, -1.350)
 rotation = Vector3(0.4186, 2.4062, 0.0)
 metadata/fov = 44.0
+
+; insert (2026-10-10, ch22 Bianca): the cordless on the side table by the rocker
+[node name="shot_insert_cordless" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.300, 1.050, -1.450)
+rotation = Vector3(-0.6474, -0.6030, 0.0)
+metadata/fov = 38.0

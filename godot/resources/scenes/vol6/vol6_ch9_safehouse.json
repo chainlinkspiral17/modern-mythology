@@ -336,6 +336,10 @@
       "pos": "right"
     },
     {
+      "t": "bg",
+      "src": "3d:miller_kitchen"
+    },
+    {
       "t": "interlude",
       "text": "Six Weeks Later",
       "sub": "The Notebook",

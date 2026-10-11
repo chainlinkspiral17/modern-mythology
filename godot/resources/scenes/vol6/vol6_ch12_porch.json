@@ -522,6 +522,10 @@
    "voice": "assets/audio/voice/vol6_ch12_porch/089.mp3"
   },
   {
+   "t": "bg",
+   "src": "3d:maya_bedroom"
+  },
+  {
    "t": "narrate",
    "text": "She gets up.",
    "voice": "assets/audio/voice/vol6_ch12_porch/090.mp3"

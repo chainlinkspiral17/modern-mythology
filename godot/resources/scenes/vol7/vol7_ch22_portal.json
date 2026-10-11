@@ -238,8 +238,8 @@
       "t": "narrate"
     },
     {
-      "t": "bg",
-      "src": "3d:cedar_tower_lobby"
+      "src": "3d:cedar_tower_lobby",
+      "t": "bg"
     },
     {
       "text": "[shot:insert photograph]The reception desk. The photograph of Dean at forty-eight. Tem stopped at the desk. She looked at the photograph.",
@@ -300,8 +300,8 @@
       "t": "narrate"
     },
     {
-      "t": "bg",
-      "src": "3d:cedar_tower_exterior"
+      "src": "3d:cedar_tower_exterior",
+      "t": "bg"
     },
     {
       "text": "[shot:insert tower]They walked to the wagon. They did not, for a count, get in. They stood in the clearing. The seventh floor's smart-glass was running the garden. The vegetation moved gently against the glass in the late-afternoon light.",
@@ -374,7 +374,7 @@
       "t": "narrate"
     },
     {
-      "src": "3d:cedar_tower_portal",
+      "src": "3d:cabin_road",
       "t": "bg"
     },
     {

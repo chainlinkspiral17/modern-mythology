@@ -391,11 +391,10 @@ def build_outside(sedan):
 
 
 # ── the dressings ──────────────────────────────────────────────────
-def dress_family():
-    """miller_kitchen: Mike's coffee and his phone at the counter (ch 0),
-    the French toast being made (ch 11), Eileen's cinnamon roll and the
-    kolaches and the jar on the table, the Sentinel folded at Mike's end,
-    the photographs fanned on the island, the white sedan at the curb."""
+def dress_french_toast():
+    """ch11 (4:11 AM): the French toast being made on the range's front-left
+    burner — shared by the family and the dawn kitchens (2026-10-10: ch11 and
+    ch17 moved to the 4 AM kitchen; their props moved with them)."""
     top = 0.77
     # the French toast, mid-making, on the range's front-left burner
     sx, sy = RANGE_X - 0.19, YN - 0.33 - 0.14
@@ -406,9 +405,12 @@ def dress_family():
     make_box("FrenchToast_Challah", (-1.70, YN - 0.36, TOP_Z + 0.055), (0.30, 0.13, 0.11), (0.62, 0.44, 0.24, 1.0))
     make_cyl("FrenchToast_EggBowl", (-1.40, YN - 0.42, TOP_Z + 0.0275), 0.095, 0.055, (0.90, 0.88, 0.84, 1.0), segments=12)
     make_cyl("FrenchToast_Cinnamon", (-1.20, YN - 0.20, TOP_Z + 0.0375), 0.028, 0.075, (0.55, 0.34, 0.18, 1.0), segments=8)
-    # Mike's coffee and his phone at the counter by the coffee maker
-    make_cyl("Mike_Coffee_Mug", (-2.95, YN - 0.42, TOP_Z + 0.048), 0.04, 0.095, (0.30, 0.36, 0.52, 1.0), segments=10)
-    make_box("Phone_Cell", (-2.75, YN - 0.46, TOP_Z + 0.006), (0.075, 0.15, 0.012), (0.12, 0.12, 0.14, 1.0))
+
+
+def dress_four_thirty_table():
+    """The four-thirty table: the hands' worn patches, Eileen's cinnamon roll,
+    the kolaches, the jar — shared by both kitchens."""
+    top = 0.77
     # the table: hands' worn patches, the cinnamon roll, the kolaches, the jar, the Sentinel
     make_box("Hands_Worn_Patch_A", (TX, TY - 0.28, top + 0.001), (0.16, 0.12, 0.002), (0.52, 0.40, 0.27, 1.0))
     make_box("Hands_Worn_Patch_B", (TX + 0.60, TY, top + 0.001), (0.12, 0.16, 0.002), (0.52, 0.40, 0.27, 1.0))
@@ -422,6 +424,19 @@ def dress_family():
         make_cyl(f"Kolache_{ki}", (TX - 0.05 + kx, TY + 0.24 + ky, top + 0.027), 0.045, 0.030, kc, segments=8)
     make_cyl("Mason_Jar", (TX - 0.55, TY - 0.30, top + 0.065), 0.045, 0.130, (0.72, 0.76, 0.70, 0.75), segments=10)
     make_cyl("Mason_Jar_Lid", (TX - 0.55, TY - 0.30, top + 0.1375), 0.047, 0.015, (0.62, 0.52, 0.30, 1.0), segments=10)
+
+
+def dress_family():
+    """miller_kitchen: Mike's coffee and his phone at the counter (ch 0),
+    the French toast being made (ch 11), Eileen's cinnamon roll and the
+    kolaches and the jar on the table, the Sentinel folded at Mike's end,
+    the photographs fanned on the island, the white sedan at the curb."""
+    top = 0.77
+    dress_french_toast()
+    # Mike's coffee and his phone at the counter by the coffee maker
+    make_cyl("Mike_Coffee_Mug", (-2.95, YN - 0.42, TOP_Z + 0.048), 0.04, 0.095, (0.30, 0.36, 0.52, 1.0), segments=10)
+    make_box("Phone_Cell", (-2.75, YN - 0.46, TOP_Z + 0.006), (0.075, 0.15, 0.012), (0.12, 0.12, 0.14, 1.0))
+    dress_four_thirty_table()
     make_box("Sentinel_Folded", (TX + 0.55, TY - 0.15, top + 0.0075), (0.30, 0.20, 0.015), (0.86, 0.84, 0.78, 1.0))
     make_box("Sentinel_Headline", (TX + 0.55, TY - 0.08, top + 0.0155), (0.22, 0.03, 0.002), (0.28, 0.26, 0.24, 1.0))
     # THE PHOTOGRAPHS fanned on the island ("He looks at the photographs")
@@ -452,6 +467,8 @@ def dress_dawn():
     make_cyl("Cereal_Bowl_Sammy_Milk", (TX - 0.55, TY, top + 0.055), 0.065, 0.004, (0.96, 0.94, 0.88, 1.0), segments=10)
     make_box("Cereal_Box", (TX - 0.62, TY + 0.30, top + 0.15), (0.20, 0.07, 0.30), (0.86, 0.62, 0.20, 1.0))
     make_box("Cereal_Spoon", (TX - 0.45, TY - 0.05, top + 0.003), (0.02, 0.15, 0.005), STEEL)
+    dress_french_toast()
+    dress_four_thirty_table()
 
 
 def build_wear_and_infra():

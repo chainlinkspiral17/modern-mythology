@@ -40,6 +40,10 @@
       "t": "narrate"
     },
     {
+      "src": "3d:chillwave_backroom",
+      "t": "bg"
+    },
+    {
       "text": "[shot:establish]The back was where the inventory lived.",
       "t": "narrate"
     },

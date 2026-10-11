@@ -810,6 +810,10 @@
    "voice": "assets/audio/voice/vol6_ch22_foxhole/149.mp3"
   },
   {
+   "t": "bg",
+   "src": "3d:foxhole_dressing_room"
+  },
+  {
    "t": "narrate",
    "text": "They walk off.",
    "voice": "assets/audio/voice/vol6_ch22_foxhole/150.mp3"
@@ -958,6 +962,10 @@
    "t": "narrate",
    "text": "She goes back out front to catch Chess's first track.",
    "voice": "assets/audio/voice/vol6_ch22_foxhole/175.mp3"
+  },
+  {
+   "t": "bg",
+   "src": "3d:foxhole_stage"
   },
   {
    "t": "hide",

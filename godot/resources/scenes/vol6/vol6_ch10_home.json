@@ -262,6 +262,10 @@
    "voice": "assets/audio/voice/vol6_ch10_home/044.ogg"
   },
   {
+   "t": "bg",
+   "src": "3d:diego_bedroom"
+  },
+  {
    "t": "narrate",
    "text": "He finishes the eggs. He kisses his grandmother on the cheek. He goes upstairs.",
    "voice": "assets/audio/voice/vol6_ch10_home/045.ogg"
@@ -291,7 +295,7 @@
   },
   {
    "t": "bg",
-   "src": "3d:ramos_kitchen_morning"
+   "src": "3d:diego_bedroom"
   },
   {
    "t": "narrate",

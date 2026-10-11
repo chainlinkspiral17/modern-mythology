@@ -95,6 +95,10 @@
       "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/016.mp3"
     },
     {
+      "t": "bg",
+      "src": "3d:miller_kitchen"
+    },
+    {
       "t": "narrate",
       "text": "[shot:establish]She sets the phone down. She stands. She goes downstairs.",
       "voice": "assets/audio/voice/vol6_ch6_sam_bedroom/017.mp3"
