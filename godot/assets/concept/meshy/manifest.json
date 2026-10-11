@@ -2538,5 +2538,53 @@
     },
     "output": "godot/assets/3d/characters/heroes/tem.glb",
     "file_size_kb": 56904.0
+  },
+  {
+    "at": "2026-10-11T17:38:31+00:00",
+    "stage": "image",
+    "slug": "mrs_gable",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Marian Gable like this: Mrs. Marian Gable \u2014 late 60s. The retired town librarian (still doing back-room archive work without pay because nobody stopped her). Mrs. Gable is in her late 60s, the retired librarian, still doing the anomalous-frequency archive work in the back room because nobody told her to stop. The retired town librarian \u00b7 morning seat at the Daily Grind\nFull-body concept render of Marian Gable, a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/mrs_gable/mrs_gable_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/mrs_gable/mrs_gable_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/mrs_gable/mrs_gable_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-11T17:41:45+00:00",
+    "stage": "mesh",
+    "slug": "mrs_gable",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a12c0b-8c3c-73da-b84b-81886b2518e6",
+    "inputs": [
+      "godot/assets/concept/meshy/mrs_gable/front.png",
+      "godot/assets/concept/meshy/mrs_gable/side.png",
+      "godot/assets/concept/meshy/mrs_gable/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "smart-topology",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/mrs_gable.glb",
+    "file_size_kb": 58445.9
   }
 ]
