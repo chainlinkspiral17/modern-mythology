@@ -3996,5 +3996,74 @@
     },
     "output": "godot/assets/3d/characters/heroes/jim_henderson.glb",
     "file_size_kb": 35796.8
+  },
+  {
+    "at": "2026-10-11T20:52:31+00:00",
+    "stage": "image",
+    "slug": "coach_dale",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Coach Dale like this: She sees Coach Dale, behind the offensive huddle, give the kid in the TE-1 jersey a small thumbs-up. Additional direction: Coach Dale, 40s, an assistant football coach. Stocky, a ruddy face, a dark moustache, a Vinton Athletics visor over short brown hair. A grey coach's polo, navy shorts, white sneakers, a whistle, a play sheet rolled in one fist; one thumb up.\nFull-body concept render of Coach Dale, a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/coach_dale/coach_dale_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/coach_dale/coach_dale_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/coach_dale/coach_dale_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-11T20:53:23+00:00",
+    "stage": "image",
+    "slug": "coach_dale",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Coach Dale like this: She sees Coach Dale, behind the offensive huddle, give the kid in the TE-1 jersey a small thumbs-up. Additional direction: Coach Dale, 40s, an assistant football coach. Stocky, a ruddy face, a dark moustache, a Vinton Athletics visor over short brown hair. A grey coach's polo, navy shorts, white sneakers, a whistle, a play sheet rolled in one fist; one thumb up.\nFull-body concept render of Coach Dale, a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/coach_dale/coach_dale_front_openai_gpt-image-2.5-sunburst_02.png",
+      "godot/assets/concept/meshy/coach_dale/coach_dale_side_openai_gpt-image-2.5-sunburst_02.png",
+      "godot/assets/concept/meshy/coach_dale/coach_dale_back_openai_gpt-image-2.5-sunburst_02.png"
+    ]
+  },
+  {
+    "at": "2026-10-11T21:01:54+00:00",
+    "stage": "mesh",
+    "slug": "coach_dale",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a12cc0-a5ad-77ff-8de3-a0839234bedb",
+    "inputs": [
+      "godot/assets/concept/meshy/coach_dale/front.png",
+      "godot/assets/concept/meshy/coach_dale/side.png",
+      "godot/assets/concept/meshy/coach_dale/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "smart-topology",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/coach_dale.glb",
+    "file_size_kb": 42982.0
   }
 ]
