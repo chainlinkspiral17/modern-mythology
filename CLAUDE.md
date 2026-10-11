@@ -46,8 +46,15 @@ touching code:
    audio reaches the game (`.wav` next to a catalog track's `src`;
    never hand-edit `music_catalog.json`). Read before touching any of
    them or `AudioMgr._load_audio`.
-9. The latest commit message on the working branch — recent context.
-10. If working on a specific volume, the relevant `lore/_VOL{N}_WIKI.md`.
+9. `lore/_MUSIC_DIRECTION_PLAYBOOK.md` — the VN MusicDirector:
+   which track a scene gets (cue sheet → music node → leitmotif →
+   locale → chapter queue) and how hard it plays (intensity → stems,
+   inferred from the writing). `resources/music/direction.json` is
+   the single source of truth; CI validates it. Read before touching
+   `MusicDirector.gd`, `direction.json`, `music_direction.py`, or
+   adding `{"t":"music"}` nodes.
+10. The latest commit message on the working branch — recent context.
+11. If working on a specific volume, the relevant `lore/_VOL{N}_WIKI.md`.
 
 ## DEBUG HUD — F4 IS THE MASTER TOGGLE (hard rule)
 
@@ -109,6 +116,9 @@ Playbooks currently maintained:
 - `lore/_AUDIO_CAPTURE_PLAYBOOK.md` — recording, cleanup, tape engine,
   take library, game-folder writes, WAV chunk + loop-point contract
   with Godot.
+- `lore/_MUSIC_DIRECTION_PLAYBOOK.md` — VN music direction: track
+  priority, intensity inference + smoothing, cue sheets / beats /
+  music nodes, replay on load, `direction.json` discipline.
 
 When a new domain accumulates ≥ 5 distinct lessons, spin up a
 playbook for it.

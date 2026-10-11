@@ -15,7 +15,7 @@ const C_DIM    := Color(0.45, 0.43, 0.36, 0.6)
 const C_SEL    := Color(0.78, 0.66, 0.29, 0.12)
 
 const NODE_TYPES := ["narrate", "say", "think", "choice", "show", "hide",
-					"bg", "bgm", "sfx", "flag", "jump", "interlude", "cg", "end"]
+					"bg", "bgm", "music", "sfx", "flag", "jump", "interlude", "cg", "end"]
 
 var _sel_vol:      int        = -1
 var _sel_scene_id: String     = ""
@@ -301,6 +301,15 @@ func _node_preview(node: Dictionary) -> String:
 			return _sv(node, "src")
 		"jump":
 			return "→ " + _sv(node, "scene")
+		"music":
+			# MusicDirector directive: track / intensity / stinger / silence
+			var bits: Array = []
+			if node.has("track"): bits.append("♪ " + str(node.track))
+			if node.has("intensity"): bits.append("◢ %s" % str(node.intensity))
+			if node.has("stinger"): bits.append("! " + str(node.stinger))
+			if bool(node.get("silence", false)): bits.append("silence")
+			if bool(node.get("auto", false)): bits.append("→ auto")
+			return "  ".join(bits)
 		"flag":
 			var val = node.get("val")
 			return "%s = %s" % [_sv(node, "key"), str(val) if val != null else ""]
@@ -378,6 +387,14 @@ func _refresh_detail() -> void:
 			_detail_vbox.add_child(_text_field("CAPTION", node, "caption", nodes))
 		"jump":
 			_detail_vbox.add_child(_text_field("SCENE", node, "scene", nodes))
+		"music":
+			# see scripts/vn/MusicDirector.gd · resources/music/direction.json
+			_detail_vbox.add_child(_text_field("TRACK (catalog id)", node, "track", nodes))
+			_detail_vbox.add_child(_text_field("INTENSITY 0–1 (0 pad · .25 bass · .5 drums · .75 lead)", node, "intensity", nodes, "auto"))
+			_detail_vbox.add_child(_text_field("STINGER (assets/audio/stingers/<name>.ogg)", node, "stinger", nodes))
+			_detail_vbox.add_child(_text_field("FADE (s)", node, "fade", nodes, "auto"))
+			_detail_vbox.add_child(_text_field("SILENCE (true/false)", node, "silence", nodes, "auto"))
+			_detail_vbox.add_child(_text_field("AUTO — hand back to inference (true/false)", node, "auto", nodes, "auto"))
 		"flag":
 			_detail_vbox.add_child(_text_field("KEY", node, "key", nodes))
 			_detail_vbox.add_child(_text_field("VAL", node, "val", nodes, "auto"))

@@ -287,6 +287,20 @@ func set_music_intensity(level: float, fade: float = STEM_FADE) -> void:
 		_stem_target[l.index] = 1.0 if _intensity + 0.0001 >= float(l.layer) else 0.0
 
 
+## True when `src` (a catalog path) has something playable on disk: the file,
+## the .wav sibling the tools write, or a stems manifest. The MusicDirector
+## only picks tracks that pass this, so missing catalog audio never silences
+## a scene that already has music playing.
+func can_play(src: String) -> bool:
+	if src == "" or src in _failed_srcs:
+		return false
+	var base := src.get_basename()
+	for p in ["res://" + src, "res://" + base + ".wav", "res://" + base + ".stems.json"]:
+		if ResourceLoader.exists(p) or FileAccess.file_exists(p):
+			return true
+	return false
+
+
 func get_music_intensity() -> float:
 	return _intensity
 

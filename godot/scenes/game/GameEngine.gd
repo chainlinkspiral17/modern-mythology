@@ -62,6 +62,8 @@ var _settings_ov: Control   = null
 var _music_ov:   Control     = null
 var _backlog_ov: Control     = null
 var _toast:      Control     = null
+# Directs the music the way this engine directs the scene (scripts/vn/MusicDirector.gd).
+var _music:      MusicDirector = null
 
 
 func _ready() -> void:
@@ -327,8 +329,14 @@ func _load_scene(scene_id: String, start_at: int = 0, replay_state: bool = false
 	_auto_load_substrate(scene_id)
 	_unlock_gallery_for_scene(scene_id)
 	_apply_chapter_music_context(scene_id)
+	if _music == null:
+		_music = MusicDirector.new()
+		_music.name = "MusicDirector"
+		add_child(_music)
+	_music.begin_scene(scene_id, _scene_data)
 	if replay_state and start_at > 0:
 		_replay_state(start_at)
+		_music.replay(start_at)
 	# Autosave on every scene entry (slot 0). Flush the seen-text
 	# buffer at the same boundary so skip mode survives a crash.
 	SaveSystem.write_save(SaveSystem.AUTOSAVE_SLOT, _vol, _scene_id, _node_idx,
@@ -478,6 +486,8 @@ func _run_next() -> void:
 
 
 func _dispatch(n: Dictionary) -> void:
+	if _music != null:
+		_music.on_node(_node_idx - 1, n)
 	match n.get("t", ""):
 		"narrate":    _do_narrate(n)
 		"say":        _do_say(n)
@@ -489,6 +499,7 @@ func _dispatch(n: Dictionary) -> void:
 		"substrate":  _do_substrate(n); _run_next()
 		"composition": _do_composition(n); _run_next()
 		"bgm":        _do_bgm(n);  _run_next()
+		"music":      _run_next()   # applied by the MusicDirector in on_node
 		"sfx":        _do_sfx(n);  _run_next()
 		"flag":       _do_flag(n); _run_next()
 		"skill":      _do_skill(n); _run_next()
