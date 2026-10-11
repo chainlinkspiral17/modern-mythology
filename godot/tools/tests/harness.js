@@ -94,4 +94,17 @@ async function suite(name, body) {
   await s.done();
 }
 
-module.exports = { suite, TOOLS, network: !!process.env.TEST_NETWORK };
+// Node side of the vendored Ogg Vorbis encoder (the same file AK.ogg loads), for fixture audio:
+// channels: Float32Array[] (1 or 2) → Buffer (.ogg)
+let oggMod = null;
+async function oggEncode(channels, sr, quality = 4) {
+  if (!oggMod) {
+    require('vm').runInThisContext(fs.readFileSync(path.join(TOOLS, 'vendor/oggvorbis/ogg_vorbis_encoder.js'), 'utf8'));
+    oggMod = await WebAssembly.compile(Buffer.from(globalThis.WasmMediaEncoderOggWasmB64, 'base64'));
+  }
+  const enc = await globalThis.WasmMediaEncoder.createEncoder('audio/ogg', oggMod);
+  enc.configure({ channels: channels.length, sampleRate: sr, vbrQuality: quality });
+  return Buffer.concat([Buffer.from(enc.encode(channels)), Buffer.from(enc.finalize())]);
+}
+
+module.exports = { suite, TOOLS, oggEncode, network: !!process.env.TEST_NETWORK };

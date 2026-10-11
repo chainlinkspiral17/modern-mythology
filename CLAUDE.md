@@ -43,10 +43,11 @@ touching code:
 8. `lore/_AUDIO_CAPTURE_PLAYBOOK.md` — FIELD RECORDER, TAPE STUDIO,
    the DAW (`daw.html` / `daw_engine.js` / `daw_fx.js` / `daw_perf.js` / `seqgen.js`), `field_ingest.py`,
    the AUDIO DIRECTOR (`audio_director.html`: review / approve / reject the DAW's
-   temp takes staged in `assets/audio/review/`), the shared `audio_kit.js`, and how recorded
-   audio reaches the game (`.wav` next to a catalog track's `src`;
-   never hand-edit `music_catalog.json`). Read before touching any of
-   them or `AudioMgr._load_audio`.
+   temp takes staged in `assets/audio/review/`), the shared `audio_kit.js`, the vendored
+   Ogg Vorbis encoder (`godot/tools/vendor/oggvorbis/`), and how audio reaches the game
+   (recordings: `.wav` next to a catalog track's `src`; temp music: small Ogg Vorbis
+   `<base>.temp.ogg` + `.stems/*.ogg` + `.stems.json`; never hand-edit `music_catalog.json`).
+   Read before touching any of them or `AudioMgr._load_audio`.
 9. `lore/_MUSIC_DIRECTION_PLAYBOOK.md` — the VN MusicDirector:
    which track a scene gets (cue sheet → music node → leitmotif →
    locale → chapter queue) and how hard it plays (intensity → stems,

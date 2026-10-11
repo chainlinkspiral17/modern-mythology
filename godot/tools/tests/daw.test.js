@@ -80,7 +80,7 @@ suite('daw · compose, render, stems, undo, temp tracks', async t => {
     t.ok(r.mb.density > r.plain.density, `busier than the text-only mood: ${r.mb.density} vs ${r.plain.density}`);
     t.ok(/12 scenes/.test(r.shown) && /leitmotif 12/.test(r.shown), 'the list says why');
   });
-  await t.test('TEMP TRACKS "straight into game (skip review)" writes a mastered ≥ 90 s track' + (SLOW ? ' + stems + manifest' : '') + ' into the game folder', async () => {
+  await t.test('TEMP TRACKS "straight into game (skip review)" writes a mastered ≥ 90 s track as small Ogg Vorbis' + (SLOW ? ' + Ogg stems' : '') + ' + manifest into the game folder, replacing an older .wav temp', async () => {
     const game = fs.mkdtempSync(path.join(os.tmpdir(), 'mmgame-'));
     fs.mkdirSync(path.join(game, 'resources'), { recursive: true });
     fs.writeFileSync(path.join(game, 'resources', 'music_catalog.json'), JSON.stringify([
@@ -88,21 +88,36 @@ suite('daw · compose, render, stems, undo, temp tracks', async t => {
     await p.exposeFunction('__exists', rel => fs.existsSync(path.join(game, rel)));
     await p.exposeFunction('__read', rel => fs.readFileSync(path.join(game, rel), 'utf8'));
     await p.exposeFunction('__write', (rel, b64) => { const f = path.join(game, rel); fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, Buffer.from(b64, 'base64')); return true; });
+    await p.exposeFunction('__rb', rel => fs.readFileSync(path.join(game, rel)).toString('base64'));
+    await p.exposeFunction('__ls', rel => { try { return fs.readdirSync(path.join(game, rel), { withFileTypes: true }).map(d => ({ name: d.name, kind: d.isDirectory() ? 'directory' : 'file' })); } catch (e) { return []; } });
+    await p.exposeFunction('__rm', rel => { const f = path.join(game, rel); if (!fs.existsSync(f)) return false; fs.rmSync(f, { recursive: true, force: true }); return true; });
     const r = await p.evaluate(async (SLOW) => {
       AK.game.root = { name: 'test' }; AK.game.exists = rel => window.__exists(rel); AK.game.readText = rel => window.__read(rel);
       AK.game.write = async (rel, blob) => { const u = new Uint8Array(await blob.arrayBuffer()); let s = ''; for (let i = 0; i < u.length; i += 0x8000) s += String.fromCharCode.apply(null, u.subarray(i, i + 0x8000)); return window.__write(rel, btoa(s)); };
+      AK.game.readFile = async rel => { const b = atob(await window.__rb(rel)), u = new Uint8Array(b.length); for (let i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return new Blob([u]); };
+      AK.game.list = rel => window.__ls(rel); AK.game.remove = rel => window.__rm(rel);
       document.getElementById('g-inst').value = 'forge'; document.getElementById('g-tempstems').checked = SLOW;
-      document.getElementById('g-skipreview').checked = true;      // the old direct write (review staging: audio_director suite)
-      await refreshWanted(); tempPick = wanted[0]; await tempTracks();
+      document.getElementById('g-skipreview').checked = true;      // the direct write (review staging: audio_director suite)
+      await refreshWanted(); tempPick = wanted[0];
+      // an older temp, from before Ogg: it would shadow the new .temp.ogg, so it has to go
+      const c = new Float32Array(4410); await AK.game.write('assets/audio/bgm/test_club.wav', AK.wav.encode([c, c], 44100, { meta: { title: 'Test Club (temp)', temp: true } }));
+      await tempTracks();
       return window.lastTempTracks[0];
     }, SLOW);
     t.ok(!r.error, r.error); t.ok(r.sec >= 90, 'length ' + r.sec); t.near(r.lufs, -14, 0.6, 'LUFS');
+    const B = path.join(game, 'assets/audio/bgm/test_club'), mbMin = f => fs.statSync(f).size / r.sec * 60 / 1048576;
+    const man = JSON.parse(fs.readFileSync(B + '.stems.json', 'utf8'));
+    t.eq([man.temp, man.format, man.mix, man.loop], [true, 'ogg', 'assets/audio/bgm/test_club.temp.ogg', false]); t.near(man.frames, r.sec * 44100, 50, 'frames');
     if (SLOW) {
-      const man = JSON.parse(fs.readFileSync(path.join(game, 'assets/audio/bgm/test_club.stems.json'), 'utf8'));
       t.eq(man.stems.map(s => s.name + '@' + s.layer), ['drums@0.5', 'bass@0.25', 'chords@0', 'lead@0.75', 'pad@0']);
-      for (const s of man.stems) t.ok(fs.statSync(path.join(game, s.file)).size > 100000, s.file);
+      for (const s of man.stems) { const m = mbMin(path.join(game, s.file)); t.ok(s.file.endsWith('.ogg') && m > 0.02 && m < 0.8, s.file + ' ' + m.toFixed(2) + ' MB/min'); }
+      console.log('    stems (MB/min): ' + man.stems.map(s => s.name + ' ' + mbMin(path.join(game, s.file)).toFixed(2)).join(', '));
     }
-    t.ok(fs.statSync(path.join(game, 'assets/audio/bgm/test_club.wav')).size > 1e6, 'mix wav');
+    t.eq(fs.readFileSync(B + '.temp.ogg').toString('ascii', 0, 4), 'OggS');
+    const mix = mbMin(B + '.temp.ogg');
+    console.log(`    temp mix: ${(fs.statSync(B + '.temp.ogg').size / 1048576).toFixed(2)} MB for ${r.sec.toFixed(1)} s = ${mix.toFixed(2)} MB/min (16-bit WAV: 10.1)`);
+    t.ok(mix > 0.1 && mix < 1.3, 'mix ' + mix.toFixed(2) + ' MB/min');
+    t.ok(!fs.existsSync(B + '.wav'), 'the older .wav temp is gone');
     fs.rmSync(game, { recursive: true, force: true });
   });
   await t.test('PLAY: RENDER (the default ▶): streams the render — starts in about a second, sounds exactly like the bounce, loops, cached replay', async () => {

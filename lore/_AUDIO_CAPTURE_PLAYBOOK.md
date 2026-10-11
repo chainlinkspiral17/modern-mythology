@@ -3,7 +3,8 @@
 How FIELD RECORDER, TAPE STUDIO and `field_ingest.py` record, process
 and deliver audio, and how that audio reaches Godot. Read before
 touching `godot/tools/audio_kit.js`, `field_recorder.html`,
-`tape_studio.html`, `field_ingest.py`, or `AudioMgr._load_audio`.
+`tape_studio.html`, `field_ingest.py`, `vendor/oggvorbis/`, or
+`AudioMgr._load_audio`.
 
 ## Core rules
 
@@ -18,12 +19,55 @@ catalog:
 - `<src without extension>.wav`. `AudioMgr._load_audio` falls back from
   a missing `.ogg` / `.mp3` to the same basename with `.wav`. This is
   what FIELD RECORDER, TAPE STUDIO and `field_ingest.py fill` write.
+  It is real audio.
 - or the real `.ogg` / `.mp3`, via `field_ingest.py fill --convert`
-  (needs ffmpeg).
+  (needs ffmpeg), or the DAW's BOUNCE → INTO GAME (Ogg).
+- a **temp track**: `<src without extension>.temp.ogg`, the last
+  fallback (see the next rule).
+
+Lookup order in `AudioMgr._load_audio`: the src → `<base>.wav` →
+`<base>.temp.ogg`. Real audio always wins over a temp.
 
 As of 2026-10-10, 173 of 179 catalog tracks have no file. The "wanted"
 list (`AK.game.wanted()`, `field_ingest.py wanted`) ranks them by how
 much their brief reads like a field recording.
+
+### Temp music goes into the game as small Ogg Vorbis
+
+The user: "I don't want 20 meg minute or two long audio tracks, the
+game will get bogged down." A 16-bit stereo WAV is 10.1 MB a minute
+per file, and a temp with five stems was six of them.
+
+- Everything the DAW / AUDIO DIRECTOR puts into the game as temp music
+  is Ogg Vorbis, written by one function, `AK.game.writeMusic`:
+
+  | File | What |
+  |---|---|
+  | `<base>.temp.ogg` | the mix, VBR q4: 0.93 MB/min on a 94 s DAW temp |
+  | `<base>.stems/<part>.ogg` | stems, VBR q1: 0.19–0.58 MB/min each |
+  | `<base>.stems.json` | always written, even with no stems: `temp: true`, `format: "ogg"`, `mix`, `loop`, `loop_offset`, `frames`, `bytes`, `quality` |
+  | `<base>.temp.ogg.credits.txt` | only for non-free instruments |
+
+- The `.temp` in the name keeps temp and real apart without reading
+  the file. A temp manifest's stems never layer over real audio.
+- The encoder is vendored: `godot/tools/vendor/oggvorbis/` holds
+  wasm-media-encoders 0.7.0 (MIT; libvorbis/libogg BSD) as ONE classic
+  script with the `.wasm` inside as base64, rebuilt by its `pack.py`.
+  `AK.ogg` loads it with a `<script>` on first use and compiles it once.
+  No network, works on file://. The UMD build's default fetches from
+  unpkg: never use `createOggEncoder()`, only
+  `createEncoder('audio/ogg', module)`.
+- Encoding runs on the page at ~60× real time here (10 s in 0.17 s),
+  in 4 s blocks with a `MessageChannel` yield between them (timers are
+  throttled in background tabs). Show progress; APPROVE does.
+- Review staging (`assets/audio/review/`) stays WAV: it is a working
+  area, never shipped. APPROVE decodes the staged WAVs with
+  `AK.wav.decode` (sample-exact; `decodeAudioData` resamples to the
+  context rate and drops `smpl`) and encodes them one file at a time.
+- Older temps are `<base>.wav` titled "(temp)": still recognised,
+  revocable, and the AUDIO DIRECTOR's ⇣ SHRINK re-encodes them in place.
+- FIELD RECORDER / TAPE STUDIO `.wav` and `field_ingest.py` are
+  unchanged: that is real audio.
 
 ### WAVs we write carry everything in chunks
 
@@ -39,7 +83,7 @@ much their brief reads like a field recording.
 
 `field_ingest.py` reads all of these plus recorder `iXML`.
 
-### `smpl` loop points ARE the in-game loop
+### `smpl` loop points ARE the in-game loop (WAV); the manifest is (Ogg)
 
 Godot 4.6's `AudioStreamWAV.load_from_buffer` (the path AudioMgr uses
 for files without an `.import` sidecar) reads `smpl` and sets
@@ -48,6 +92,24 @@ headless: a 2 s loop came back as `loop=0..95999`. A seamless loop made
 in FIELD RECORDER (equal-power head→tail crossfade, `AK.dsp.loop`) or a
 TAPE STUDIO print (an exact multiple of the loop length) therefore loops
 in-game with no seam, and needs no import settings.
+
+Ogg has no `smpl`. For an Ogg temp:
+
+- the file is cut at the loop end (`smpl` end + 1), so **the loop end
+  is the stream end**;
+- the manifest carries `loop: true` and `loop_offset` (seconds, a
+  quarter frame past the start so truncating or rounding both land on
+  it);
+- `AudioMgr._apply_ogg_loop` sets `AudioStreamOggVorbis.loop` /
+  `loop_offset` on every Ogg the manifest names (its mix and stems),
+  imported or loaded raw. Imported Oggs default to no loop.
+- Verified headless (`godot_audiomgr`): Godot reads the exact length
+  from the last granule; a 1.5 s temp with a 0.5 s offset loops with
+  no restart, gap or click (sine-predictor residual 0.0055 vs 0.17 for
+  a 20-frame offset error).
+- Chrome's `decodeAudioData` does NOT trim the last page: an Ogg decodes
+  up to ~1000 frames long at the end there. Never measure Ogg lengths
+  in the browser.
 
 ### Raw input or nothing
 
@@ -638,6 +700,64 @@ context keeps running into a fake sink, and the meters still move.
   × real time, every 5 s while stuck, done.
 - The AUDIO DIRECTOR got a **? HOW TO** guide after the user couldn't
   find how to approve. The flow needs ⌂ LINK GAME FOLDER first.
+
+### 2026-10-11 — temp music goes into the game as Ogg Vorbis, not WAV
+
+- The user: "The audio, especially for midi audio, needs to be small in
+  size, I don't want 20 meg minute or two long audio tracks, the game
+  will get bogged down." Approved temps were 16-bit WAV: 10.1 MB a
+  minute per file, about 60 MB a minute with five stems.
+- Now APPROVE, "straight into game (skip review)" and BOUNCE → INTO GAME
+  write Ogg Vorbis through one function, `AK.game.writeMusic`. Measured
+  on a 94 s generated temp (`TEST_SLOW=1 run_tests.sh daw` prints it):
+  - mix (q4): 1.47 MB = 0.93 MB/min;
+  - stems (q1): drums 0.58, bass 0.19, chords 0.44, lead 0.53,
+    pad 0.47 MB/min;
+  - the whole temp: 3.1 MB/min, down from 60.6 MB/min as six WAVs.
+  - Encoding speed: 10 s of stereo in 0.17–0.19 s in headless Chromium
+    here (~55× real time), so a 94 s temp with five stems is ~10 s.
+    Not yet timed on the Deck.
+- The encoder: wasm-media-encoders 0.7.0, vendored as one classic
+  script with the `.wasm` as base64 (`vendor/oggvorbis/pack.py` rebuilds
+  it from the npm tarball). Its UMD build fetches the wasm from unpkg by
+  default; `createEncoder('audio/ogg', compiledModule)` never touches the
+  network (the `dsp` suite asserts no non-file request).
+- **Temp naming keeps temp and real apart:** `<base>.temp.ogg` is the
+  last fallback in `_load_audio` (src → `.wav` → `.temp.ogg`), and a
+  manifest with `temp: true` never layers its stems over a real src or a
+  recorded `.wav`. The manifest is always written now, because it is
+  where an Ogg's loop lives.
+- **Loops:** the file is cut at the `smpl` end + 1, and the manifest's
+  `loop_offset` sits a quarter frame past the start. `start / sr` in
+  floating point can come back as start − ε; if Godot truncates
+  seconds × rate to a frame, that is one frame short. The quarter frame
+  covers truncation and rounding alike.
+- **Chrome pads, Godot doesn't.** `decodeAudioData` returned 441 920
+  frames for a 441 000-frame Ogg (no end trim from the last granule).
+  Godot 4.6 and ffmpeg read the exact length. Don't use the browser to
+  check Ogg lengths; the tests read the last page's granule position or
+  ask Godot.
+- **A sine at 882 Hz hid a wrong loop offset:** 50 frames is one whole
+  cycle, so the seam test passed with the offset 50 frames off. A
+  20-frame error gave a residual of 0.17 vs 0.0055. Pick test offsets
+  that aren't whole periods of the test tone.
+- `AK.wav.decode` reads staged WAVs sample-exact, keeping `smpl`.
+  `decodeAudioData` would resample to the context's rate (48 kHz on
+  many outputs) and drop the loop.
+- Older WAV temps keep working (recognised, revocable) and
+  ⇣ SHRINK WAV TEMPS → OGG converts them in place, moving the credits
+  and recording `shrink` in `temp_approvals.json`.
+- `music_encode.py` makes a `.wav` the REAL file; don't use it on a
+  "(temp)" `.wav` any more: SHRINK keeps it a temp.
+- `music_drive.sh` never deletes. After SHRINK the old `.wav` temps are
+  still in Google Drive, and a `pull` brings them back, where they
+  shadow the `.temp.ogg` (a `.wav` comes first). The AUDIO DIRECTOR then
+  offers SHRINK again. Delete the old temp `.wav` files and `.stems/*.wav`
+  from Drive by hand once every machine has shrunk.
+- Seen once, not reproduced in four more runs: `daw`'s PLAY: RENDER
+  test got its first sound after 6.6 s (its limit is 5 s). Nothing in
+  this change touches that path; if it comes back, check machine load
+  first.
 
 ## TEMPLATE
 

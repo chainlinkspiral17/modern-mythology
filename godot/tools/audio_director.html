@@ -105,6 +105,7 @@
   <span class="badge" id="b-folder">GAME FOLDER: —</span>
   <button id="link">⌂ LINK GAME FOLDER</button>
   <button class="dim" id="refresh" title="re-read catalog, briefs, approvals and review staging">⟳ RESCAN</button>
+  <button class="dim" id="shrink" disabled title="re-encode every temp still in the game as WAV (approved before Ogg) to Ogg Vorbis, about a tenth of the size; real audio is never touched">⇣ SHRINK WAV TEMPS</button>
   <span class="badge" id="b-counts">—</span>
   <span class="badge" id="b-daw" title="takes come from the DAW: an open, started DAW takes requests live; otherwise one opens">DAW: —</span>
   <span style="flex:1"></span>
@@ -181,7 +182,7 @@
         <div class="row"><label>STYLE</label><select id="r-style"><option value="">auto</option></select><select id="r-mode"><option value="">auto mode</option></select><select id="r-form"><option value="">auto form</option></select></div>
         <div class="row"><label>ENERGY</label><input type="range" id="r-energy" min="-0.5" max="0.5" step="0.05" value="0" data-default="0" style="width:160px"><b id="r-energyv">±0</b><span class="note">nudges tempo / density from the brief</span></div>
         <div class="row"><label>DENSITY</label><label class="note"><input type="checkbox" id="r-densauto" checked> auto</label><input type="range" id="r-dens" min="0.1" max="0.95" step="0.05" value="0.55" data-default="0.55" style="width:160px" disabled><b id="r-densv">auto</b></div>
-        <div class="row"><label>LENGTH</label><select id="r-lenmode"><option value="">auto (≥ 90 s)</option><option value="sec">seconds</option><option value="bars">bars</option></select><input type="number" id="r-len" min="1" max="900" value="90" disabled><label class="note" title="writes WAV loop points: Godot then loops the file forever (smpl chunk) — only for beds"><input type="checkbox" id="r-loop"> seamless loop points</label></div>
+        <div class="row"><label>LENGTH</label><select id="r-lenmode"><option value="">auto (≥ 90 s)</option><option value="sec">seconds</option><option value="bars">bars</option></select><input type="number" id="r-len" min="1" max="900" value="90" disabled><label class="note" title="a seamless loop: the game then loops it forever (the loop goes in the Ogg temp's manifest) — only for beds"><input type="checkbox" id="r-loop"> seamless loop points</label></div>
         <div class="row roles"><label>PARTS</label><span class="chipset" id="roles"></span></div>
         <div class="row"><label>EXTRA PADS</label><span class="chipset" id="pads"><button data-p="0" class="on">0</button><button data-p="1">+1 (octave up)</button><button data-p="2">+2 (+ sub drone)</button></span></div>
         <div class="row"><label>SEED</label><input type="number" id="r-seed" style="width:140px" placeholder="new"><span class="note">blank: a fresh seed per take, never a rejected one</span></div>
@@ -207,10 +208,11 @@
       <li>Pick a track in the list on the left. <b>CANDIDATES</b> shows tracks with takes waiting for a verdict; <b>MISSING</b> shows tracks with no music yet.</li>
       <li>No takes yet? In the box under TAKES set how many (1–6), optionally write a <b>DIRECTION</b> (“slower, a lonely piano over rain”), then <b>⚄ MAKE TAKES</b>. A DAW tab opens and renders them — leave it open; the takes appear here when done (<b>⟳ RESCAN</b> if they don't).</li>
       <li>Listen: <b>▶ PLAY</b> on a take (or keys 1–6). The intensity buttons show how its layers come in as a scene gets tense; <b>▶ PLAY AS SCENE</b> plays it against a real scene.</li>
-      <li>Like one? Optionally type why in the notes field, then <b>✓ APPROVE</b> on that take (key <b>a</b>). If another take was approved before, tap APPROVE a second time within 4 s to replace it. The take shows <b>APPROVED</b> and the game plays it from now on.</li>
+      <li>Like one? Optionally type why in the notes field, then <b>✓ APPROVE</b> on that take (key <b>a</b>). If another take was approved before, tap APPROVE a second time within 4 s to replace it. APPROVE turns the take into small <b>Ogg Vorbis</b> files for the game (a few seconds — the message counts up; about a tenth of the WAV size). The take then shows <b>APPROVED</b> and the game plays it from now on.</li>
       <li>Don't want one? <b>✕ REJECT</b>, then tap it again to confirm (key <b>x</b> twice). Tick <i>reject deletes files</i> to delete its audio too. Rejected seeds are never made again.</li>
       <li>None good? Change the DIRECTION / STYLE / ENERGY / INSTRUMENTS and <b>⚄ MAKE TAKES</b> again. <b>⟳ AGAIN</b> remakes one take from its saved settings.</li>
       <li>Changed your mind later: <b>✕ REVOKE APPROVED TEMP</b> (tap twice) takes it back out of the game. Real recorded audio is never touched.</li>
+      <li>Songs approved before the Ogg change are still big WAVs in the game: <b>⇣ SHRINK … WAV TEMPS → OGG</b> (top bar) re-encodes all of them in one go and deletes the WAVs. Only temps — never real audio.</li>
       <li>When you're done: back the music up (it never goes in git) and commit the approval list — see the commands at the bottom of the page / from Claude.</li>
     </ol>
     <div class="note">Keys: ↑ ↓ track · 1–6 pick a take · space play / stop · a approve · x reject · v revoke · l loop.</div>
@@ -233,11 +235,13 @@
 //
 // Staging (written by the DAW's TEMP TRACKS / director requests):
 //   godot/assets/audio/review/<track id>/<take id>/ mix.wav · stems/<role>.wav · stems.json · credits.txt · meta.json
-// APPROVE copies a take where AudioMgr looks for the catalog track:
-//   <src base>.wav · <src base>.stems/<role>.wav · <src base>.stems.json · <src base>.wav.credits.txt
+// APPROVE encodes a take to Ogg Vorbis (AK.game.writeMusic) where AudioMgr looks for the catalog track:
+//   <src base>.temp.ogg · <src base>.stems/<role>.ogg · <src base>.stems.json (temp, loop) · <src base>.temp.ogg.credits.txt
 // and records it in godot/resources/music/temp_approvals.json (committed: the take's mood / seed / request,
-// so it regenerates identically). A real .ogg / .mp3 at the catalog src always wins and is never touched;
-// a .wav that isn't a temp (a FIELD RECORDER / TAPE STUDIO take) counts as real audio too.
+// so it regenerates identically; format and bytes). A real .ogg / .mp3 at the catalog src always wins and is
+// never touched; a .wav that isn't a temp (a FIELD RECORDER / TAPE STUDIO take) counts as real audio too.
+// Temps approved before Ogg are <src base>.wav titled "(temp)": still recognised, revocable, and SHRINK
+// re-encodes them to Ogg in place.
 const $ = id => document.getElementById(id);
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
 const REVIEW_DIR = 'assets/audio/review';
@@ -289,14 +293,7 @@ async function writeApprovals(j) {
   DIR.approvals = out;
 }
 // a .wav at the game path: ours (a temp — "(temp)" title / mmjs temp flag) or real audio someone recorded?
-async function wavKind(path) {
-  if (!(await AK.game.exists(path))) return 'none';
-  try {
-    const f = await AK.game.readFile(path), head = await f.slice(0, 262144).arrayBuffer(), c = AK.wav.parseChunks(head);
-    const temp = (c.mmjs && c.mmjs.temp === true) || /\(temp\)/i.test((c.info && c.info.INAM) || '') || /\(temp\)/i.test((c.bext && c.bext.description) || '');
-    return temp ? 'temp' : 'real';
-  } catch (e) { return 'real'; }
-}
+const wavKind = path => AK.game.wavKind(path);
 async function scanTakes(id) {
   const out = [];
   for (const e of await AK.game.list(REVIEW_DIR + '/' + id)) {
@@ -310,11 +307,14 @@ async function scanTrack(t) {
   const ext = extOf(t.src).toLowerCase(), base = baseOf(t.src);
   const real = ext !== 'wav' && await AK.game.exists(t.src);
   const wav = await wavKind(base + '.wav');
+  // the temp in the game: 'ogg' (<base>.temp.ogg) · 'wav' (an older "(temp)" .wav — SHRINK makes it Ogg) · null
+  // (an older .wav temp plays before a .temp.ogg in AudioMgr, so while one is there it is what counts)
+  const temp = wav === 'temp' ? 'wav' : await AK.game.exists(base + '.temp.ogg') ? 'ogg' : null;
   const takes = await scanTakes(t.id);
   const approved = (DIR.approvals.tracks[t.id] || {}).approved || null;
   const cand = takes.filter(m => m.status !== 'rejected').length;
-  const status = real || wav === 'real' ? 'real' : wav === 'temp' ? 'approved' : cand ? 'candidates' : 'missing';
-  return DIR.state[t.id] = { real, wav, takes, approved, cand, status };
+  const status = real || wav === 'real' ? 'real' : temp ? 'approved' : cand ? 'candidates' : 'missing';
+  return DIR.state[t.id] = { real, wav, temp, takes, approved, cand, status };
 }
 async function refresh() {
   if (!AK.game.root) { folderBadge(); return; }
@@ -367,6 +367,8 @@ function renderList() {
   const n = s => DIR.cat.filter(t => DIR.state[t.id] && DIR.state[t.id].status === s).length;
   $('b-counts').textContent = DIR.cat.length + ' tracks · ' + n('missing') + ' missing · ' + DIR.cat.filter(t => DIR.state[t.id] && DIR.state[t.id].cand).length + ' with candidates · ' + n('approved') + ' approved temp · ' + n('real') + ' real';
   $('b-counts').title = $('b-counts').textContent;
+  const nw = DIR.cat.filter(t => DIR.state[t.id] && DIR.state[t.id].temp === 'wav').length;
+  $('shrink').textContent = nw ? '⇣ SHRINK ' + nw + ' WAV TEMP' + (nw === 1 ? '' : 'S') + ' → OGG' : '⇣ SHRINK WAV TEMPS'; $('shrink').disabled = !nw || !!DIR.busy;
   if (!vis.length) { L.innerHTML = '<div class="empty">' + (DIR.cat.length ? 'nothing matches the filter.' : 'no catalog read yet.') + '</div>'; return; }
   L.innerHTML = vis.map(t => {
     const st = DIR.state[t.id], b = DIR.briefs[t.id];
@@ -406,7 +408,7 @@ async function selectTrack(id, opts = {}) {
   const st = DIR.state[id], b = DIR.briefs[id];
   $('t-title').textContent = t.title + '  ·  v' + t.vol;
   $('t-status').innerHTML = statusBadge(st);
-  $('t-src').textContent = t.id + ' · godot/' + t.src + (st.wav !== 'none' ? ' · .wav: ' + st.wav : '') + (st.approved ? ' · approved take ' + st.approved.take + ' (' + (st.approved.date || '').slice(0, 10) + ', ' + (st.approved.by || '?') + ')' : '');
+  $('t-src').textContent = t.id + ' · godot/' + t.src + (st.wav !== 'none' ? ' · .wav: ' + st.wav : '') + (st.temp ? ' · temp: ' + (st.temp === 'ogg' ? '.temp.ogg' : '.wav (SHRINK makes it Ogg)') : '') + (st.approved ? ' · approved take ' + st.approved.take + ' (' + (st.approved.date || '').slice(0, 10) + ', ' + (st.approved.by || '?') + ')' : '');
   renderBrief(t, b);
   renderTakes();
   renderScenes(b);
@@ -419,8 +421,8 @@ async function selectTrack(id, opts = {}) {
     if (first >= 0) await pickTake(first, { autoplay: false });
     else PV.clear();
   }
-  $('revoke').disabled = !(st.wav === 'temp');
-  $('revnote').textContent = st.wav === 'temp' ? '' : st.real || st.wav === 'real' ? 'real audio here — nothing to revoke' : 'no approved temp in the game';
+  $('revoke').disabled = !st.temp;
+  $('revnote').textContent = st.temp ? (st.real || st.wav === 'real' ? 'real audio plays over this temp' : '') : st.real || st.wav === 'real' ? 'real audio here — nothing to revoke' : 'no approved temp in the game';
 }
 function renderBrief(t, b) {
   $('briefsrc').textContent = b ? 'resources/music/temp_briefs.json' : 'no brief — the scenes never pick this track';
@@ -732,45 +734,46 @@ function twoTap(key, btn, label) {
   if (btn) { const old = btn.textContent; btn.textContent = label; btn.classList.add('armed'); setTimeout(() => { if (btn.isConnected) { btn.textContent = old; btn.classList.remove('armed'); } }, 4000); }
   return false;
 }
+const mb = b => (b / 1048576).toFixed(b < 1048576 ? 2 : 1);
+// a staged / legacy WAV as a lazy PCM source for AK.game.writeMusic (decoded sample-exact, one file at a time);
+// `tally` adds up the WAV bytes read, for the before / after sizes
+const wavPcm = (path, tally) => async () => { const f = await AK.game.readFile(path); if (tally) tally.wav += f.size; return AK.wav.decode(await f.arrayBuffer()); };
 async function approve(i, btn) {
   const t = curTrack(), m = DIR.takes[i]; if (!t || !m) return { ok: false };
   if (m.status === 'rejected') { msg('take ' + (i + 1) + ' was rejected — make it again (⟳ AGAIN) to approve it.', true); return { ok: false, why: 'rejected' }; }
-  const st = await scanTrack(t), base = baseOf(t.src);
+  const st = await scanTrack(t), base = baseOf(t.src), dest = base + '.temp.ogg';
   if (st.real) { msg('REFUSED: real audio exists at godot/' + t.src + ' — it always wins over a temp, and it is never overwritten.', true); return { ok: false, why: 'real' }; }
   if (st.wav === 'real') { msg('REFUSED: godot/' + base + '.wav is real audio (not a temp — a FIELD RECORDER / TAPE STUDIO take?). Move it away first if you really mean to replace it.', true); return { ok: false, why: 'real-wav' }; }
-  if (st.approved && st.approved.take === m.take && st.wav === 'temp') { msg('take ' + (i + 1) + ' is already the approved temp.'); return { ok: true, same: true }; }
-  if (st.wav === 'temp' && !twoTap('ap:' + t.id + ':' + m.take, btn, 'TAP AGAIN: REPLACE')) {
+  if (st.approved && st.approved.take === m.take && st.temp === 'ogg') { msg('take ' + (i + 1) + ' is already the approved temp.'); return { ok: true, same: true }; }
+  if (st.temp && !twoTap('ap:' + t.id + ':' + m.take, btn, 'TAP AGAIN: REPLACE')) {
     msg('a temp is already approved here' + (st.approved ? ' (take ' + st.approved.take + ')' : ' (an older TEMP TRACKS write)') + ' — tap APPROVE again (or press a again) within 4 s to replace it.');
     return { ok: false, why: 'confirm' };
   }
-  msg('approving take ' + (i + 1) + ' → godot/' + base + '.wav …');
-  const files = [];
-  let man = null;
+  if (DIR.busy) { msg('wait: ' + DIR.busy + ' is still running.', true); return { ok: false, why: 'busy' }; }
+  const tag = 'approving take ' + (i + 1) + ' → godot/' + dest;
+  msg(tag + ' …');
+  let out; const tally = { wav: 0 };
+  DIR.busy = 'an approve';
   try {
-    // never leave an old manifest pointing at stems that are being replaced
-    await AK.game.remove(base + '.stems.json');
-    await AK.game.remove(base + '.stems');
-    if (m.stems && m.stems.length) {
-      const tm = await readJson(m.dir + 'stems.json', null);
-      if (tm && tm.stems) {
-        man = Object.assign({}, tm, { mix: base + '.wav', approved: { take: m.take, seed: (m.mood || {}).seed, date: new Date().toISOString() }, stems: [] });
-        for (const s of tm.stems) {
-          const f = base + '.stems/' + s.file.split('/').pop();
-          await AK.game.copy(s.file, f); files.push(f);
-          man.stems.push({ name: s.name, role: s.role || '', file: f, layer: s.layer });
-        }
-      }
-    }
-    await AK.game.copy(m.dir + 'mix.wav', base + '.wav'); files.unshift(base + '.wav');
-    if (man) { await AK.game.write(base + '.stems.json', new Blob([JSON.stringify(man, null, 1)], { type: 'application/json' })); files.push(base + '.stems.json'); }
-    if ((m.files || []).includes('credits.txt')) { await AK.game.copy(m.dir + 'credits.txt', base + '.wav.credits.txt'); files.push(base + '.wav.credits.txt'); }
-    else await AK.game.remove(base + '.wav.credits.txt');
+    const tm = m.stems && m.stems.length ? await readJson(m.dir + 'stems.json', null) : null;
+    const credits = (m.files || []).includes('credits.txt') ? await AK.game.readText(m.dir + 'credits.txt').catch(() => '') : '';
+    // the take's WAVs → Ogg Vorbis (a seamless take's smpl loop → the manifest's loop); writeMusic replaces the
+    // old manifest + stems
+    out = await AK.game.writeMusic(base, {
+      mix: wavPcm(m.dir + 'mix.wav', tally), stems: ((tm && tm.stems) || []).map(x => ({ name: x.name, role: x.role, layer: x.layer, pcm: wavPcm(x.file, tally) })),
+      title: (tm && tm.title) || t.title + ' (temp)', credits,
+      extra: { bpm: (tm && tm.bpm) || (m.mood || {}).bpm, bars: m.bars, lufs: m.lufs, credits: m.credits || '', approved: { take: m.take, seed: (m.mood || {}).seed, date: new Date().toISOString() } },
+      onProgress: (f, what) => msg(tag + ' — encoding Ogg Vorbis (' + what + ') ' + Math.round(f * 100) + '%') });
+    // an older .wav temp plays before the .temp.ogg: it goes now that the Ogg is there
+    if (st.wav === 'temp' && (await wavKind(base + '.wav')) === 'temp') { await AK.game.remove(base + '.wav'); await AK.game.remove(base + '.wav.credits.txt'); }
   } catch (e) { msg('approve failed: ' + (e.message || e), true); return { ok: false, why: 'error', error: String(e) }; }
+  finally { DIR.busy = null; }
+  const files = out.files, bytes = out.bytes.mix + out.bytes.stems;
   const ap = await readApprovals(), rec = ap.tracks[t.id] = ap.tracks[t.id] || { approved: null, rejected: [], history: [] };
   rec.rejected = rec.rejected || []; rec.history = rec.history || [];
   const prev = rec.approved;
   rec.approved = { take: m.take, seed: (m.mood || {}).seed, mood: m.mood, request: m.request || {}, instruments: m.instruments || {}, date: new Date().toISOString(), by: who(), notes: $('notes').value.trim(),
-    lufs: m.lufs, true_peak: m.true_peak, seconds: m.seconds, bars: m.bars, credits: m.credits || '', files };
+    lufs: m.lufs, true_peak: m.true_peak, seconds: m.seconds, bars: m.bars, credits: m.credits || '', files, format: 'ogg', bytes, quality: out.manifest.quality };
   rec.history.push({ action: prev ? 'replace' : 'approve', take: m.take, seed: (m.mood || {}).seed, replaced: prev ? prev.take : undefined, date: rec.approved.date, by: who(), notes: rec.approved.notes });
   await writeApprovals(ap);
   await setMetaStatus(m, 'approved');
@@ -779,8 +782,9 @@ async function approve(i, btn) {
   DIR.approvedThisSession = (DIR.approvedThisSession || 0) + 1;
   $('foot').textContent = DIR.approvedThisSession + ' approval(s) this session — music stays out of git; back it up to Google Drive:';
   await rescanOne(t.id);
-  msg('approved take ' + m.take + ' → godot/' + base + '.wav' + (man ? ' + ' + man.stems.length + ' stems + manifest' : '') + '. The game plays it now. Back it up: godot/tools/music_drive.sh push');
-  return { ok: true, files };
+  msg('approved take ' + m.take + ' → godot/' + dest + (out.manifest.stems.length ? ' + ' + out.manifest.stems.length + ' stems' : '') + ' + manifest' + (out.manifest.loop ? ' (loops)' : '') +
+    ' · Ogg ' + mb(bytes) + ' MB (the WAVs were ' + mb(tally.wav) + ' MB). The game plays it now. Back it up: godot/tools/music_drive.sh push');
+  return { ok: true, files, bytes, wavBytes: tally.wav };
 }
 async function setMetaStatus(m, status) {
   m.status = status;
@@ -790,7 +794,7 @@ async function setMetaStatus(m, status) {
 async function reject(i, btn) {
   const t = curTrack(), m = DIR.takes[i]; if (!t || !m) return { ok: false };
   const st = DIR.state[t.id];
-  if (st.approved && st.approved.take === m.take && st.wav === 'temp') { msg('take ' + (i + 1) + ' is the approved temp — REVOKE it first.', true); return { ok: false, why: 'approved' }; }
+  if (st.approved && st.approved.take === m.take && st.temp) { msg('take ' + (i + 1) + ' is the approved temp — REVOKE it first.', true); return { ok: false, why: 'approved' }; }
   if (!twoTap('rej:' + t.id + ':' + m.take, btn, 'TAP AGAIN: REJECT')) { msg('tap REJECT again (or press x again) to reject take ' + (i + 1) + (($('rejdel').checked) ? ' and delete its files' : '') + '.'); return { ok: false, why: 'confirm' }; }
   const ap = await readApprovals(), rec = ap.tracks[t.id] = ap.tracks[t.id] || { approved: null, rejected: [], history: [] };
   rec.rejected = rec.rejected || []; rec.history = rec.history || [];
@@ -817,11 +821,12 @@ async function deleteTake(i, btn) {
 async function revoke(btn) {
   const t = curTrack(); if (!t) return { ok: false };
   const st = await scanTrack(t), base = baseOf(t.src);
-  if (st.wav !== 'temp') { msg(st.wav === 'real' ? 'REFUSED: godot/' + base + '.wav is real audio, not a temp.' : 'nothing to revoke: no temp .wav in the game for this track.', true); return { ok: false, why: st.wav }; }
-  if (!twoTap('rev:' + t.id, btn, 'TAP AGAIN: REVOKE')) { msg('tap REVOKE again within 4 s: removes godot/' + base + '.wav + its stems + manifest (the real .ogg / .mp3 path is never touched).'); return { ok: false, why: 'confirm' }; }
-  if ((await wavKind(base + '.wav')) !== 'temp') { msg('REFUSED: the .wav changed under us and is no longer a temp.', true); return { ok: false }; }
-  const gone = [];
-  for (const p of [base + '.wav', base + '.stems.json', base + '.stems', base + '.wav.credits.txt']) if (await AK.game.remove(p)) gone.push(p);
+  if (!st.temp) { const real = st.wav === 'real' || st.real; msg(real ? 'REFUSED: the audio for this track is real, not a temp.' : 'nothing to revoke: no temp in the game for this track.', true); return { ok: false, why: real ? 'real' : st.wav }; }
+  if (!twoTap('rev:' + t.id, btn, 'TAP AGAIN: REVOKE')) { msg('tap REVOKE again within 4 s: removes the temp (godot/' + base + (st.temp === 'ogg' ? '.temp.ogg' : '.wav') + ') + its stems + manifest. Real audio is never touched.'); return { ok: false, why: 'confirm' }; }
+  if (DIR.busy) { msg('wait: ' + DIR.busy + ' is still running.', true); return { ok: false, why: 'busy' }; }
+  const wavTemp = (await wavKind(base + '.wav')) === 'temp';
+  if (st.temp === 'wav' && !wavTemp) { msg('REFUSED: the .wav changed under us and is no longer a temp.', true); return { ok: false }; }
+  const gone = await AK.game.removeTemp(base, wavTemp);
   const ap = await readApprovals(), rec = ap.tracks[t.id] = ap.tracks[t.id] || { approved: null, rejected: [], history: [] };
   rec.history = rec.history || []; rec.rejected = rec.rejected || [];
   const prev = rec.approved; rec.approved = null;
@@ -833,6 +838,52 @@ async function revoke(btn) {
   msg('revoked: removed ' + gone.join(', ') + '. The scenes fall back to their next playable track.');
   return { ok: true, removed: gone };
 }
+// SHRINK: every temp still in the game as WAV (approved before Ogg, or an old TEMP TRACKS write) → Ogg Vorbis in
+// place — <base>.temp.ogg + Ogg stems + manifest — then the .wav, its credits and its WAV stems go. Each .wav is
+// checked to be a temp again right before; real audio is never read, written or removed.
+async function shrinkAll() {
+  if (!AK.game.root) { msg('link the game folder first.', true); return { ok: false }; }
+  if (DIR.busy) { msg('wait: ' + DIR.busy + ' is still running.', true); return { ok: false, why: 'busy' }; }
+  const list = DIR.cat.filter(t => DIR.state[t.id] && DIR.state[t.id].temp === 'wav');
+  if (!list.length) { msg('no WAV temps in the game — nothing to shrink.'); return { ok: true, done: [], failed: [] }; }
+  const done = [], failed = [];
+  DIR.busy = 'SHRINK'; $('shrink').disabled = true;
+  try {
+    for (const [k, t] of list.entries()) {
+      const base = baseOf(t.src), tag = 'SHRINK ' + (k + 1) + '/' + list.length + ' · ' + t.id;
+      try {
+        if ((await wavKind(base + '.wav')) !== 'temp') throw new Error('the .wav is not a temp');
+        const man = await readJson(base + '.stems.json', null), tally = { wav: 0 };
+        const old = man && (!man.mix || man.mix === base + '.wav') && Array.isArray(man.stems) ? man.stems : [];
+        const stems = [];
+        for (const x of old) if (/\.wav$/i.test(x.file || '') && await AK.game.exists(x.file)) stems.push({ name: x.name, role: x.role, layer: x.layer, pcm: wavPcm(x.file, tally) });
+        const head = AK.wav.parseChunks(await (await AK.game.readFile(base + '.wav')).slice(0, 262144).arrayBuffer());
+        const credits = await AK.game.readText(base + '.wav.credits.txt').catch(() => '');
+        const extra = { shrunk_from: 'wav' };
+        for (const key of ['bpm', 'bars', 'lufs', 'credits', 'approved']) if (man && man[key] !== undefined) extra[key] = man[key];
+        const out = await AK.game.writeMusic(base, { mix: wavPcm(base + '.wav', tally), stems, title: (head.info && head.info.INAM) || t.title + ' (temp)', credits, extra,
+          onProgress: (f, what) => msg(tag + ' — encoding Ogg Vorbis (' + what + ') ' + Math.round(f * 100) + '%') });
+        await AK.game.remove(base + '.wav'); await AK.game.remove(base + '.wav.credits.txt');
+        done.push({ id: t.id, files: out.files, before: tally.wav, after: out.bytes.mix + out.bytes.stems, quality: out.manifest.quality });
+      } catch (e) { failed.push({ id: t.id, error: e.message || String(e) }); }
+    }
+    if (done.length) {
+      const ap = await readApprovals(), date = new Date().toISOString();
+      for (const d of done) {
+        const rec = ap.tracks[d.id] = ap.tracks[d.id] || { approved: null, rejected: [], history: [] };
+        rec.rejected = rec.rejected || []; rec.history = rec.history || [];
+        if (rec.approved) Object.assign(rec.approved, { files: d.files, format: 'ogg', bytes: d.after, quality: d.quality });
+        rec.history.push({ action: 'shrink', take: rec.approved ? rec.approved.take : undefined, date, by: who(), wav_bytes: d.before, bytes: d.after });
+      }
+      await writeApprovals(ap);
+    }
+  } finally { DIR.busy = null; }
+  await refresh();
+  const b = done.reduce((a, d) => a + d.before, 0), o = done.reduce((a, d) => a + d.after, 0);
+  msg('SHRINK: ' + done.length + ' temp(s) now Ogg Vorbis — ' + mb(b) + ' MB of WAV → ' + mb(o) + ' MB.' + (failed.length ? ' Failed: ' + failed.map(f => f.id + ' (' + f.error + ')').join('; ') : ' Back it up: godot/tools/music_drive.sh push'), !!failed.length);
+  return { ok: !failed.length, done, failed };
+}
+$('shrink').addEventListener('click', () => shrinkAll());
 $('revoke').addEventListener('click', e => revoke(e.currentTarget));
 
 // ═══════════════════════════════════════════════════════════════════

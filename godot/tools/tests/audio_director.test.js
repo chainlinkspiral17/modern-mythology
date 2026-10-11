@@ -18,6 +18,10 @@ function plainWav(sec = 1, sr = 22050) {
   for (let i = 0; i < n; i++) b.writeInt16LE(Math.round(8000 * Math.sin(2 * Math.PI * 330 * i / sr)), 44 + i * 2);
   return b;
 }
+// an Ogg file's length in frames: the granule position of its last page
+const oggFrames = rel => { const b = fs.readFileSync(G(rel)); const i = b.lastIndexOf('OggS'); return Number(b.readBigInt64LE(i + 6)); };
+const isOgg = rel => fs.readFileSync(G(rel)).toString('ascii', 0, 4) === 'OggS';
+const MB_MIN = (rel, sec) => fs.statSync(G(rel)).size / sec * 60 / 1048576;
 const wavFrames = rel => { const b = fs.readFileSync(G(rel)); let o = 12; while (o < b.length) { const id = b.toString('ascii', o, o + 4), sz = b.readUInt32LE(o + 4); if (id === 'data') return sz / 4; o += 8 + sz + (sz & 1); } return -1; };
 
 // ── fixture game folder ─────────────────────────────────────────────
@@ -173,21 +177,27 @@ suite('audio_director · review, preview, approve, DAW takes', async t => {
     await p.evaluate(() => { sceneStop(); PV.stop(); });
   });
 
-  await t.test('APPROVE writes exactly the files AudioMgr reads + temp_approvals.json', async () => {
+  await t.test('APPROVE encodes the take to small Ogg Vorbis files — exactly what AudioMgr reads — + temp_approvals.json', async () => {
     const before = fs.readdirSync(G('assets/audio/bgm')).sort();
     const r = await p.evaluate(async () => { document.getElementById('who').value = 'tester'; document.getElementById('notes').value = 'first pass'; return approve(0); });
     t.ok(r.ok, JSON.stringify(r));
     const added = fs.readdirSync(G('assets/audio/bgm')).sort().filter(x => !before.includes(x));
-    t.eq(added, ['tem_theme.stems', 'tem_theme.stems.json', 'tem_theme.wav']);
-    t.eq(fs.readdirSync(G('assets/audio/bgm/tem_theme.stems')).sort(), ['bass.wav', 'chords.wav', 'drums.wav', 'lead.wav', 'pad.wav']);
+    t.eq(added, ['tem_theme.stems', 'tem_theme.stems.json', 'tem_theme.temp.ogg']);
+    t.eq(fs.readdirSync(G('assets/audio/bgm/tem_theme.stems')).sort(), ['bass.ogg', 'chords.ogg', 'drums.ogg', 'lead.ogg', 'pad.ogg']);
     const man = json('assets/audio/bgm/tem_theme.stems.json');
-    t.eq(man.mix, 'assets/audio/bgm/tem_theme.wav');
+    t.eq([man.mix, man.temp, man.format, man.loop, man.loop_offset, man.frames], ['assets/audio/bgm/tem_theme.temp.ogg', true, 'ogg', false, 0, 6 * 22050]);
     t.eq(man.stems.map(s => s.name + '@' + s.layer), ['drums@0.5', 'bass@0.25', 'chords@0', 'lead@0.75', 'pad@0']);
-    for (const s of man.stems) t.ok(fs.existsSync(G(s.file)) && s.file.startsWith('assets/audio/bgm/tem_theme.stems/'), s.file);
-    t.ok(fs.readFileSync(G('assets/audio/bgm/tem_theme.wav')).equals(fs.readFileSync(G('assets/audio/review/tem_theme/take-a/mix.wav'))), 'mix copied byte for byte');
-    t.ok(!fs.existsSync(G('assets/audio/bgm/tem_theme.ogg')), 'the real src path untouched');
+    for (const s of man.stems) t.ok(fs.existsSync(G(s.file)) && s.file.startsWith('assets/audio/bgm/tem_theme.stems/') && isOgg(s.file), s.file);
+    t.ok(isOgg('assets/audio/bgm/tem_theme.temp.ogg'), 'the mix is Ogg');
+    t.eq(oggFrames('assets/audio/bgm/tem_theme.temp.ogg'), 6 * 22050, 'sample-exact length (last granule)');
+    for (const s of man.stems) t.eq(oggFrames(s.file), 6 * 22050, s.name + ' length');
+    const mix = MB_MIN('assets/audio/bgm/tem_theme.temp.ogg', 6), stem = Math.max(...man.stems.map(s => MB_MIN(s.file, 6)));
+    t.ok(mix < 1.3 && stem < 0.8, `mix ${mix.toFixed(2)} MB/min, biggest stem ${stem.toFixed(2)} MB/min`);
+    t.ok(r.bytes * 8 < r.wavBytes, `Ogg ${r.bytes} B vs the take's WAVs ${r.wavBytes} B`);
+    t.ok(!fs.existsSync(G('assets/audio/bgm/tem_theme.ogg')) && !fs.existsSync(G('assets/audio/bgm/tem_theme.wav')), 'the real src path untouched, no .wav');
     const ap = json('resources/music/temp_approvals.json').tracks.tem_theme;
     t.eq([ap.approved.take, ap.approved.seed, ap.approved.by, ap.approved.notes, ap.approved.mood.style], ['take-a', 1111, 'tester', 'first pass', 'noir']);
+    t.eq([ap.approved.format, ap.approved.bytes, ap.approved.quality], ['ogg', r.bytes, { mix: 4, stem: 1 }]);
     t.eq(ap.approved.files.length, 7); t.eq(ap.history.map(h => h.action), ['approve']);
     t.eq(json('assets/audio/review/tem_theme/take-a/meta.json').status, 'approved');
     t.eq(await p.evaluate(() => DIR.state.tem_theme.status), 'approved');
@@ -196,16 +206,19 @@ suite('audio_director · review, preview, approve, DAW takes', async t => {
     const ogg = fs.readFileSync(G('assets/audio/bgm/real_track.ogg')), wav = fs.readFileSync(G('assets/audio/bgm/field_rec.wav'));
     const r = await p.evaluate(async () => { await selectTrack('real_track'); const a = await approve(0); await approve(0); await selectTrack('field_rec'); const b = await approve(0); await approve(0); return { a, b, msg: document.getElementById('msg').textContent }; });
     t.eq([r.a.why, r.b.why], ['real', 'real-wav']); t.ok(/REFUSED/.test(r.msg), r.msg);
-    t.ok(!fs.existsSync(G('assets/audio/bgm/real_track.wav')), 'no temp next to the real .ogg');
+    t.ok(!fs.existsSync(G('assets/audio/bgm/real_track.wav')) && !fs.existsSync(G('assets/audio/bgm/real_track.temp.ogg')), 'no temp next to the real .ogg');
+    t.ok(!fs.existsSync(G('assets/audio/bgm/field_rec.temp.ogg')), 'no temp next to the real .wav');
     t.ok(fs.readFileSync(G('assets/audio/bgm/real_track.ogg')).equals(ogg) && fs.readFileSync(G('assets/audio/bgm/field_rec.wav')).equals(wav), 'real files unchanged');
   });
   await t.test('replacing an approved temp takes two taps', async () => {
+    const was = fs.readFileSync(G('assets/audio/bgm/tem_theme.temp.ogg'));
     const r = await p.evaluate(async () => { await selectTrack('tem_theme'); const first = await approve(1); return first; });
     t.eq(r.why, 'confirm');
-    t.ok(fs.readFileSync(G('assets/audio/bgm/tem_theme.wav')).equals(fs.readFileSync(G('assets/audio/review/tem_theme/take-a/mix.wav'))), 'one tap changed nothing');
+    t.ok(fs.readFileSync(G('assets/audio/bgm/tem_theme.temp.ogg')).equals(was), 'one tap changed nothing');
     const r2 = await p.evaluate(() => approve(1));
     t.ok(r2.ok, JSON.stringify(r2));
-    t.ok(fs.readFileSync(G('assets/audio/bgm/tem_theme.wav')).equals(fs.readFileSync(G('assets/audio/review/tem_theme/take-b/mix.wav'))), 'second tap replaced it');
+    t.ok(!fs.readFileSync(G('assets/audio/bgm/tem_theme.temp.ogg')).equals(was), 'second tap replaced it');
+    t.eq(json('assets/audio/bgm/tem_theme.stems.json').approved.take, 'take-b');
     const ap = json('resources/music/temp_approvals.json').tracks.tem_theme;
     t.eq([ap.approved.take, ap.history.map(h => h.action).join()], ['take-b', 'approve,replace']);
     t.eq([json('assets/audio/review/tem_theme/take-a/meta.json').status, json('assets/audio/review/tem_theme/take-b/meta.json').status], ['candidate', 'approved']);
@@ -220,16 +233,53 @@ suite('audio_director · review, preview, approve, DAW takes', async t => {
     t.ok(r2.ok); t.ok(!fs.existsSync(G('assets/audio/review/real_track/take-r')), 'take folder deleted');
     t.eq(json('resources/music/temp_approvals.json').tracks.real_track.rejected[0].seed, 3333);
   });
-  await t.test('REVOKE removes only an approved temp (two taps), never real audio', async () => {
+  await t.test('REVOKE removes only an approved temp (two taps) — an older .wav one or an Ogg one — never real audio', async () => {
     const r = await p.evaluate(async () => { await selectTrack('old_temp'); const a = await revoke(); const b = await revoke(); await selectTrack('field_rec'); const c = await revoke(); await revoke(); return { a, b, c, st: DIR.state.old_temp.status }; });
     t.eq([r.a.why, r.b.ok, r.c.why, r.st], ['confirm', true, 'real', 'missing']);
     for (const f of ['old_temp.wav', 'old_temp.stems.json', 'old_temp.stems']) t.ok(!fs.existsSync(G('assets/audio/bgm/' + f)), f + ' removed');
     t.ok(fs.existsSync(G('assets/audio/bgm/field_rec.wav')), 'the field recording stays');
     t.eq(json('resources/music/temp_approvals.json').tracks.old_temp.history.map(h => h.action), ['revoke']);
+    const o = await p.evaluate(async () => { await selectTrack('tem_theme'); await revoke(); const x = await revoke(); return { x, st: DIR.state.tem_theme.status }; });
+    t.ok(o.x.ok, JSON.stringify(o.x)); t.eq(o.st, 'candidates');
+    t.eq(o.x.removed.sort(), ['assets/audio/bgm/tem_theme.stems', 'assets/audio/bgm/tem_theme.stems.json', 'assets/audio/bgm/tem_theme.temp.ogg']);
+    t.eq(fs.readdirSync(G('assets/audio/bgm')).filter(f => f.startsWith('tem_theme')), [], 'nothing of the temp left');
+  });
+  await t.test('SHRINK: every older WAV temp → Ogg in place (stems, credits, approval record), real audio untouched', async () => {
+    const field = fs.readFileSync(G('assets/audio/bgm/field_rec.wav'));
+    await p.evaluate(async () => {   // a WAV temp approved before Ogg: mix + 2 stems + manifest + credits + an approval record
+      const sr = 22050, n = sr * 3, mk = f => { const c = new Float32Array(n); for (let i = 0; i < n; i++) c[i] = 0.2 * Math.sin(2 * Math.PI * f * i / sr); return [c, c.slice()]; };
+      const B = 'assets/audio/bgm/old_temp';
+      await AK.game.write(B + '.wav', AK.wav.encode(mk(220), sr, { bitDepth: 16, loop: { start: 0, end: n - 1 }, meta: { title: 'Old Temp (temp)', temp: true } }));
+      for (const [r, f] of [['pad', 110], ['lead', 440]]) await AK.game.write(B + '.stems/' + r + '.wav', AK.wav.encode(mk(f), sr, { bitDepth: 16, meta: { title: 'Old Temp (temp) · ' + r } }));
+      await AK.game.write(B + '.stems.json', new Blob([JSON.stringify({ v: 1, title: 'Old Temp (temp)', bpm: 80, loop: true, mix: B + '.wav', stems: [{ name: 'pad', role: 'pad', file: B + '.stems/pad.wav', layer: 0 }, { name: 'lead', role: 'lead', file: B + '.stems/lead.wav', layer: 0.75 }] })]));
+      await AK.game.write(B + '.wav.credits.txt', new Blob(['lead: some sampler, CC-BY\n']));
+      const ap = await readApprovals(); ap.tracks.old_temp.approved = { take: 'legacy-take', seed: 5, files: [B + '.wav'] }; await writeApprovals(ap);
+      await refresh();
+    });
+    const before = await p.evaluate(() => ({ st: DIR.state.old_temp.temp, label: document.getElementById('shrink').textContent, dis: document.getElementById('shrink').disabled }));
+    t.eq(before, { st: 'wav', label: '⇣ SHRINK 1 WAV TEMP → OGG', dis: false });
+    const r = await p.evaluate(() => shrinkAll());
+    t.ok(r.ok && r.done.length === 1, JSON.stringify(r));
+    const B = 'assets/audio/bgm/old_temp';
+    t.eq(fs.readdirSync(G('assets/audio/bgm')).filter(f => f.startsWith('old_temp')).sort(), ['old_temp.stems', 'old_temp.stems.json', 'old_temp.temp.ogg', 'old_temp.temp.ogg.credits.txt']);
+    t.eq(fs.readdirSync(G(B + '.stems')).sort(), ['lead.ogg', 'pad.ogg'], 'WAV stems replaced');
+    const man = json(B + '.stems.json');
+    t.eq([man.temp, man.format, man.mix, man.loop, man.loop_offset, man.frames, man.bpm, man.shrunk_from], [true, 'ogg', B + '.temp.ogg', true, 0, 3 * 22050, 80, 'wav']);
+    t.eq(man.stems.map(s => s.file), [B + '.stems/pad.ogg', B + '.stems/lead.ogg']);
+    t.eq(oggFrames(B + '.temp.ogg'), 3 * 22050, 'loop end = stream end');
+    t.ok(/CC-BY/.test(fs.readFileSync(G(B + '.temp.ogg.credits.txt'), 'utf8')), 'credits moved');
+    t.ok(r.done[0].after * 8 < r.done[0].before, `${r.done[0].before} B of WAV → ${r.done[0].after} B`);
+    const ap = json('resources/music/temp_approvals.json').tracks.old_temp;
+    t.eq([ap.approved.take, ap.approved.format, ap.approved.files.length, ap.history.map(h => h.action).join()], ['legacy-take', 'ogg', 4 + 1, 'revoke,shrink']);
+    t.ok(fs.readFileSync(G('assets/audio/bgm/field_rec.wav')).equals(field), 'the field recording is untouched');
+    const after = await p.evaluate(() => ({ st: DIR.state.old_temp.temp, status: DIR.state.old_temp.status, dis: document.getElementById('shrink').disabled }));
+    t.eq(after, { st: 'ogg', status: 'approved', dis: true });
+    // tidy for the next tests: revoke it again
+    await p.evaluate(async () => { await selectTrack('old_temp'); await revoke(); await revoke(); });
   });
 
   // ── the DAW: review staging, the request round trip, creative direction ──
-  let daw = null, first = null;
+  let daw = null, first = null, second = null;
   const leadPreset = await p.evaluate(() => FORGE_PRESETS.find(x => x.category === 'leads').id);
   const samSeed = await p.evaluate(() => SeqGen.moodFromBrief(DIR.cat.find(x => x.id === 'sam_theme'), DIR.briefs.sam_theme).seed);
   // a rejected seed — the very one the DAW would pick first for sam_theme
@@ -251,7 +301,7 @@ suite('audio_director · review, preview, approve, DAW takes', async t => {
     const dir = 'assets/audio/review/sam_theme/' + takes[0] + '/';
     first = json(dir + 'meta.json'); first.dir = dir;
     t.eq(fs.readdirSync(G(dir)).sort(), ['meta.json', 'mix.wav', 'stems', 'stems.json']);
-    t.ok(!fs.existsSync(G('assets/audio/bgm/sam_theme.wav')), 'nothing written into the game path');
+    t.ok(!fs.existsSync(G('assets/audio/bgm/sam_theme.wav')) && !fs.existsSync(G('assets/audio/bgm/sam_theme.temp.ogg')), 'nothing written into the game path');
     const log = await p.evaluate(() => DIR.netLog.filter(e => e.type === 'take'));
     t.ok(log.some(e => e.via === 'bc') && log.some(e => e.via === 'storage'), 'BroadcastChannel and storage event both arrived: ' + JSON.stringify(log));
     t.ok(log.filter(e => e.via === 'bc').every(e => log.some(x => x.via === 'storage' && x.uid === e.uid)), 'same notices on both');
@@ -283,7 +333,7 @@ suite('audio_director · review, preview, approve, DAW takes', async t => {
     t.near(wavFrames(first.dir + 'mix.wav'), want, 1, '2 bars');
     t.near(wavFrames(first.dir + 'stems/pad2.wav'), want, 1, 'stem');
     // the DAW is open and started now: the next request goes to it live (ack over BroadcastChannel)
-    const req = await p.evaluate(() => requestTakes(['sam_theme'], 1, { length: { sec: 7 }, form: 'loop', roles: ['pad'] }));
+    const req = await p.evaluate(() => requestTakes(['sam_theme'], 1, { length: { sec: 7 }, form: 'loop', roles: ['pad'], loop: true }));
     t.eq(req.live, true, 'open DAW took the request live');
     await p.waitForFunction(rid => DIR.requests[rid] && DIR.requests[rid].state === 'done', req.rid, { timeout: 40000 });
     const dirs = fs.readdirSync(G('assets/audio/review/sam_theme')).map(d => 'assets/audio/review/sam_theme/' + d + '/').filter(d => d !== first.dir);
@@ -293,6 +343,20 @@ suite('audio_director · review, preview, approve, DAW takes', async t => {
     t.near(m.bars * 240 / m.mood.bpm, 7, 1e-3, 'whole bars at the nudged tempo');
     t.ok(m.mood.seed !== first.mood.seed && m.mood.seed !== samSeed, 'a fresh seed');
     t.eq(json(dirs[0] + 'stems.json').stems.map(s => s.name), ['pad']);
+    second = dirs[0];
+  });
+  await t.test('APPROVE a seamless DAW take: Ogg mix + stem cut at the loop end, loop in the manifest, small; REVOKE restores', async () => {
+    const r = await p.evaluate(async take => { await refresh(); await selectTrack('sam_theme'); const i = DIR.takes.findIndex(m => m.take === take); return approve(i); }, json(second + 'meta.json').take);
+    t.ok(r.ok, JSON.stringify(r));
+    const man = json('assets/audio/bgm/sam_theme.stems.json');
+    t.eq([man.temp, man.loop, man.loop_offset, man.frames, man.stems.map(s => s.file)], [true, true, 0, 7 * 44100, ['assets/audio/bgm/sam_theme.stems/pad.ogg']]);
+    t.eq([oggFrames('assets/audio/bgm/sam_theme.temp.ogg'), oggFrames('assets/audio/bgm/sam_theme.stems/pad.ogg')], [7 * 44100, 7 * 44100]);
+    const mix = MB_MIN('assets/audio/bgm/sam_theme.temp.ogg', 7), stem = MB_MIN('assets/audio/bgm/sam_theme.stems/pad.ogg', 7);
+    console.log(`    DAW take (FORGE pad, 7 s): mix ${mix.toFixed(2)} MB/min, stem ${stem.toFixed(2)} MB/min; WAV ${(r.wavBytes / 7 * 60 / 1048576 / 2).toFixed(1)} MB/min per file`);
+    t.ok(mix < 1.3 && stem < 0.8, `mix ${mix.toFixed(2)} / stem ${stem.toFixed(2)} MB per minute`);
+    const v = await p.evaluate(async () => { await revoke(); return revoke(); });
+    t.ok(v.ok, JSON.stringify(v));
+    t.eq(fs.readdirSync(G('assets/audio/bgm')).filter(f => f.startsWith('sam_theme')), []);
   });
   await t.test('TEMP TRACKS stages into review by default (skip-review off)', async () => {
     const r = await daw.evaluate(() => ({ skip: document.getElementById('g-skipreview').checked, linkToDirector: !!document.querySelector('a[href="audio_director.html"]') }));
