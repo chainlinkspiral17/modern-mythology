@@ -3501,5 +3501,53 @@
     },
     "output": "godot/assets/3d/characters/heroes/soren.glb",
     "file_size_kb": 70151.6
+  },
+  {
+    "at": "2026-10-11T19:54:19+00:00",
+    "stage": "image",
+    "slug": "eileen_henderson",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Eileen Henderson like this: Eileen is in jeans and a sleeveless blouse. Eileen has, in her hand, a paper bag from the bakery on Magnolia. Eileen Henderson. In jeans and the lavender sleeveless blouse. Holding a paper bag from the bakery on Magnolia. Eileen is going to be in the third row. Additional direction: Eileen Henderson, late 40s, a coach's wife in a Gulf-coast planned community. Brown hair to the shoulder, a kind, tired, watchful face. Jeans and a lavender sleeveless blouse, flat sandals, a small white paper bakery bag held in one hand. Steady; the person who brings the coffee cake.\nFull-body concept render of Eileen Henderson, a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/eileen_henderson/eileen_henderson_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/eileen_henderson/eileen_henderson_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/eileen_henderson/eileen_henderson_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-11T20:00:24+00:00",
+    "stage": "mesh",
+    "slug": "eileen_henderson",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a12c8a-f850-7353-8afb-2bbb1eb3f1ef",
+    "inputs": [
+      "godot/assets/concept/meshy/eileen_henderson/front.png",
+      "godot/assets/concept/meshy/eileen_henderson/side.png",
+      "godot/assets/concept/meshy/eileen_henderson/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "smart-topology",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/eileen_henderson.glb",
+    "file_size_kb": 51795.0
   }
 ]
