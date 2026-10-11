@@ -1,0 +1,43 @@
+{
+ "v": 1,
+ "title": "Sharp (temp)",
+ "bpm": 72,
+ "bars": 32,
+ "length_sec": 109.667,
+ "loop": false,
+ "lufs": -14.4,
+ "credits": "GeneralUser GS by S. Christian Collins — GeneralUser GS licence v2.0",
+ "mix": "assets/audio/bgm/vol1_sharp_theme.ogg",
+ "stems": [
+  {
+   "name": "drums",
+   "role": "drums",
+   "file": "assets/audio/bgm/vol1_sharp_theme.stems/drums.ogg",
+   "layer": 0.5
+  },
+  {
+   "name": "bass",
+   "role": "bass",
+   "file": "assets/audio/bgm/vol1_sharp_theme.stems/bass.ogg",
+   "layer": 0.25
+  },
+  {
+   "name": "chords",
+   "role": "chords",
+   "file": "assets/audio/bgm/vol1_sharp_theme.stems/chords.ogg",
+   "layer": 0
+  },
+  {
+   "name": "lead",
+   "role": "lead",
+   "file": "assets/audio/bgm/vol1_sharp_theme.stems/lead.ogg",
+   "layer": 0.75
+  },
+  {
+   "name": "pad",
+   "role": "pad",
+   "file": "assets/audio/bgm/vol1_sharp_theme.stems/pad.ogg",
+   "layer": 0
+  }
+ ]
+}
