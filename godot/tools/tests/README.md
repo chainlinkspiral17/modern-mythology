@@ -1,6 +1,6 @@
 # godot/tools tests
 
-Headless checks for the browser tools (DAW, PATCH BANK, FORGE / DX7 / sampler engines,
+Headless checks for the browser tools (DAW, PATCH BANK, FORGE / DX7 / sampler engines, the FORGE preset library,
 audio_kit DSP, finger controls) and the game's `AudioMgr` music layering.
 
 ```bash
@@ -19,6 +19,7 @@ In the cloud sandbox the browser must use `$HTTPS_PROXY` for network suites (the
 | `data` | firmware + PATCH BANK registries, composer determinism + mood mapping, MIDI file round trip |
 | `dsp` | LUFS = ffmpeg ebur128, true peak (inter-sample), mastering, stems ⨉ limiter curve, worklets on file:// |
 | `engines` | DX7 SysEx (0n dump header), bank round trip, DX7 tuning, sampler mapping / round robin / respread |
+| `library` | FORGE instrument library (~25 s): every preset renders offline (finite, audible, ≤ limiter, pads sustain), distinct from its nearest neighbour, within ±8 dB of its category; every mod route / named macro resolves and the macros move the sound; the 29 original presets' data is unchanged; composer pools (role-fit, per-seed deterministic, varied, notes untouched); DAW KIT style pieces, old KIT maps kept, FORGE + PATCH pickers by CDP touch (≥ 36 px) |
 | `touch` | relative sliders, clip drag + long-press delete, piano-roll tap / hold (real CDP touch events) |
 | `daw` | compose, offline render, seamless loops, stems sum, undo/redo, MIDI export, TEMP TRACKS → game folder |
 | `daw_fx` | mixer inserts (every type renders; filter / EQ / drive move the sound the right way), sidechain ducking with the source muted, volume automation ramp, undo / redo reaching the audio graph |
@@ -27,7 +28,7 @@ In the cloud sandbox the browser must use `$HTTPS_PROXY` for network suites (the
 | `fm1_checkout` | the hardware check-out page against a mock FM-1 (`mocks/fm1_mock.js`): identity / INFO gating per firmware, part channels, DX7 dump bytes + FM-1+VA overwrite gate, 24 ppqn clock, round-trip latency, reload |
 | `godot_audiomgr` | the real `AudioMgr.gd` in a throwaway project: .wav fallback, stems → AudioStreamSynchronized, intensity, missing-stem fallback, track ending mid-fade |
 | `godot_director` | the VN `MusicDirector.gd`: writing → intensity, choice / interlude / cg, cue sheets + beats + auto, leitmotif, locale track, silence, smoothing into AudioMgr, replay |
-| `patchbank_network` | FluidR3 / DX7 ROM / tonejs instruments from GitHub, in tune, cached |
+| `patchbank_network` | FluidR3 / DX7 ROM / tonejs / VSCO 2 CE instruments from GitHub, in tune, cached |
 
 Rules: pages open from `file://` **without** `--allow-file-access-from-files` (that flag once hid
 a Deck-breaking bug); any page error or console error fails the suite. Every bug fixed in these

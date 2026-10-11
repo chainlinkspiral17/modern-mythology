@@ -84,7 +84,9 @@
  *
  * Device types (each exposes noteOn/noteOff/allOff/cc(/midi) + getState/setState):
  *   forge  ForgeSynth (forge_synth.js) — one patch
- *   kit    a drum kit: one ForgeSynth per GM drum note
+ *   kit    a drum kit: one ForgeSynth per FORGE drum preset, GM notes mapped onto them (KIT_MAP). A saved kit keeps
+ *          its own map; addDevice('kit', {kit: style}) starts from KIT_MAP + KIT_STYLES[style]. Voices are built for
+ *          the presets the map uses, also when setState() brings a map that names new ones.
  *   emu    an FM-1 firmware running in the browser (fm1_emu.js); tracks pick its MIDI channel
  *   hw     the real FM-1 (or anything) over Web MIDI; its USB audio can come back in on a strip
  *   basic  tiny built-in synth (used if forge_synth.js isn't loaded)
@@ -144,9 +146,20 @@
   const KIT_MAP = {   // GM note → [forge preset, note to play it at, gain]
     35: ['kick', 36, 1], 36: ['kick', 36, 1], 37: ['perc_rim', 60, 0.9], 38: ['snare', 60, 1], 39: ['clap', 60, 1], 40: ['snare', 62, 0.9],
     41: ['tom', 43, 1], 42: ['hat_closed', 60, 0.8], 43: ['tom', 45, 1], 44: ['hat_closed', 58, 0.6], 45: ['tom', 48, 1], 46: ['hat_open', 60, 0.8],
-    47: ['tom', 50, 1], 48: ['tom', 52, 1], 49: ['hat_open', 54, 0.9], 50: ['tom', 55, 1], 51: ['hat_closed', 66, 0.55], 56: ['perc_rim', 72, 0.7],
-    70: ['hat_closed', 72, 0.4],
+    47: ['tom', 50, 1], 48: ['tom', 52, 1], 49: ['cym_crash', 60, 0.8], 50: ['tom', 55, 1], 51: ['cym_ride', 60, 0.6], 53: ['cym_ride', 60, 0.75],
+    54: ['perc_tamb', 60, 0.7], 56: ['perc_cowbell', 60, 0.7], 57: ['cym_crash', 60, 0.9], 59: ['cym_ride', 60, 0.55],
+    60: ['perc_conga', 72, 0.8], 61: ['perc_conga', 67, 0.8], 62: ['perc_conga', 62, 0.85], 63: ['perc_conga', 60, 0.9], 64: ['perc_conga', 55, 0.9],
+    69: ['perc_shaker', 60, 0.45], 70: ['perc_shaker', 60, 0.5], 75: ['perc_clave', 60, 0.8], 76: ['perc_clave', 62, 0.7], 77: ['perc_clave', 55, 0.7],
   };
+  // per-style kit pieces on top of KIT_MAP (generated songs: addDevice('kit', {kit: song.style}))
+  const KIT_STYLES = {
+    trap: { 35: ['kick_808', 36, 1], 36: ['kick_808', 36, 1] },
+    lofi: { 35: ['kick_felt', 36, 1], 36: ['kick_felt', 36, 1] },
+    boom_bap: { 35: ['kick_felt', 36, 0.9], 36: ['kick', 36, 1] },
+    noir: { 38: ['snare_brush', 60, 1], 40: ['snare_brush', 62, 0.9] },
+    shuffle: { 40: ['snare_brush', 60, 0.9] },
+  };
+  const kitMapFor = style => Object.assign({}, KIT_MAP, KIT_STYLES[style] || {});
 
   // ── tiny fallback synth (no forge_synth.js) ───────────────────────
   class BasicSynth {
@@ -180,17 +193,27 @@
 
   // ── drum kit of FORGE voices ──────────────────────────────────────
   class KitDevice {
-    constructor(ctx, { output }) { this.ctx = ctx; this.output = ctx.createGain(); this.output.connect(output); this.voices = {}; this.map = Object.assign({}, KIT_MAP); this.basic = null; }
+    // map: a saved kit's own map (built as is, so nothing is made and thrown away); else KIT_MAP + the style's pieces
+    constructor(ctx, { output, kit, map } = {}) { this.ctx = ctx; this.output = ctx.createGain(); this.output.connect(output); this.voices = {}; this.map = map ? Object.assign({}, map) : kitMapFor(kit); this.basic = null; }
     async init() {
       if (typeof G.ForgeSynth !== 'function') { this.basic = new BasicSynth(this.ctx, { output: this.output, drums: true }); return; }
-      const presets = [...new Set(Object.values(this.map).map(m => m[0]))];
-      for (const id of presets) {
+      this._ensureVoices();
+      await Promise.all(Object.values(this.voices).map(s => s.init()));
+      this.measureHolds();
+    }
+    // one ForgeSynth per preset the map plays (built synchronously — init() only adds FORGE's worklet, which
+    // the drum presets don't need — so a map that arrives with setState() sounds at once); unused ones go
+    _ensureVoices() {
+      if (this.basic || typeof G.ForgeSynth !== 'function') return;
+      const want = new Set(Object.values(this.map).map(m => m && m[0]).filter(Boolean));
+      for (const id of want) {
+        if (this.voices[id]) continue;
         const s = new G.ForgeSynth(this.ctx, { output: this.output, maxVoices: 6 });
-        await s.init();
         try { s.loadPreset(id); } catch (e) { /* missing preset → stays init */ }
+        s.init().catch(() => {});
         this.voices[id] = s;
       }
-      this.measureHolds();
+      for (const id of Object.keys(this.voices)) if (!want.has(id)) { try { this.voices[id].dispose(); } catch (e) {} delete this.voices[id]; }
     }
     // how long to hold each one-shot: a decaying preset (sustain 0) rings out its attack+decay,
     // a sustaining one gets a short gate. Releasing early would cut the kick's tail.
@@ -214,7 +237,7 @@
     getState() { return { map: this.map, voices: Object.fromEntries(Object.entries(this.voices).map(([k, s]) => [k, s.getState()])) }; }
     setState(st) {
       if (!st) return;
-      if (st.map) this.map = st.map;
+      if (st.map) { this.map = st.map; this._ensureVoices(); }
       if (st.voices) for (const [k, s] of Object.entries(st.voices)) if (this.voices[k]) this.voices[k].setState(s);
       this.measureHolds();
     }
@@ -429,6 +452,7 @@ registerProcessor('mm-daw-rec', MMDawRec);
     // ── devices ─────────────────────────────────────────────────────
     async addDevice(type, opts = {}) {
       const d = { id: this.uid('dev'), type, name: opts.name || type, emuId: opts.emuId, preset: opts.preset, patch: opts.patch, state: null, mix: this.defaultMix() };
+      if (type === 'kit' && opts.kit) d.kit = opts.kit;
       this.project.devices.push(d);
       await this.createDeviceRuntime(d);
       if (opts.preset) this.setPreset(d.id, opts.preset);
@@ -439,7 +463,7 @@ registerProcessor('mm-daw-rec', MMDawRec);
       const strip = this.ensureStrip(d.id, d.mix || (d.mix = this.defaultMix()));
       let inst;
       if (d.type === 'forge' && typeof G.ForgeSynth === 'function') inst = new G.ForgeSynth(this.ctx, { output: strip.in, maxVoices: 12 });
-      else if (d.type === 'kit') inst = new KitDevice(this.ctx, { output: strip.in });
+      else if (d.type === 'kit') inst = new KitDevice(this.ctx, { output: strip.in, kit: d.kit, map: d.state && d.state.map });
       else if (d.type === 'emu' && typeof G.FM1Emu === 'function') inst = new G.FM1Emu(this.ctx, { id: d.emuId || 'felucca', output: strip.in });
       else if (d.type === 'hw') inst = new HwDevice(this.ctx, { output: strip.in, engine: this });
       else if (d.type === 'patch') inst = new PatchDevice(this.ctx, { output: strip.in, engine: this, patch: d.patch, devId: d.id });
@@ -1467,7 +1491,7 @@ registerProcessor('mm-daw-rec', MMDawRec);
       const live = this.devices.get(d.id);
       let inst = null;
       if (d.type === 'forge' && typeof G.ForgeSynth === 'function') { inst = new G.ForgeSynth(off, { output, maxVoices: 16 }); await inst.init(); if (live && live.getState) inst.setState(live.getState()); }
-      else if (d.type === 'kit') { inst = new KitDevice(off, { output }); await inst.init(); if (live && live.getState) inst.setState(live.getState()); }
+      else if (d.type === 'kit') { const ls = live && live.getState ? live.getState() : null; inst = new KitDevice(off, { output, kit: d.kit, map: ls && ls.map }); await inst.init(); if (live && live.getState) inst.setState(live.getState()); }
       else if (d.type === 'patch') {
         const inner = live && live.inner; if (!inner) return null;
         if (inner.loadVoice) { inst = new inner.constructor(off, { output, maxVoices: 16 }); await inst.init(); inst.setState(inner.getState()); }
@@ -1664,6 +1688,6 @@ registerProcessor('mm-daw-rec', MMDawRec);
     }
   }
 
-  const API = { Engine, BasicSynth, KitDevice, HwDevice, RecCapture, KIT_MAP, PPQ, BAR, RATE, GRIDS, REC_MODES };
+  const API = { Engine, BasicSynth, KitDevice, HwDevice, RecCapture, KIT_MAP, KIT_STYLES, kitMapFor, PPQ, BAR, RATE, GRIDS, REC_MODES };
   root.DAW = API;
 })(typeof window !== 'undefined' ? window : globalThis);
