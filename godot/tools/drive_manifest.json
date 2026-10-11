@@ -1075,6 +1075,11 @@
    "md5": "af04b943f6a53ca8808a4f5000a71c81",
    "size": 72060
   },
+  "godot/assets/3d/characters/heroes/per.glb": {
+   "at": "2026-10-11T17:59:42+00:00",
+   "md5": "1bd950a4f75206ca71db3a7ee2db2281",
+   "size": 54702408
+  },
   "godot/assets/3d/characters/heroes/petra.glb": {
    "at": "2026-10-11T17:49:19+00:00",
    "md5": "bb378ba9636989634b6ecb67a272fe75",
@@ -52894,6 +52899,41 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "bb75c34fd311617fdd324b83759f0a50",
    "size": 58955
+  },
+  "godot/assets/concept/meshy/per/back.png": {
+   "at": "2026-10-11T17:59:52+00:00",
+   "md5": "eba19aaa7d162037126998df26871233",
+   "size": 2133786
+  },
+  "godot/assets/concept/meshy/per/front.png": {
+   "at": "2026-10-11T17:59:52+00:00",
+   "md5": "846824cdfff6418b7df2f27e7d452b9a",
+   "size": 2202588
+  },
+  "godot/assets/concept/meshy/per/meshy_thumb.png": {
+   "at": "2026-10-11T17:59:52+00:00",
+   "md5": "3c309b22c1f6310354f923677a238f10",
+   "size": 95108
+  },
+  "godot/assets/concept/meshy/per/per_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T17:59:52+00:00",
+   "md5": "eba19aaa7d162037126998df26871233",
+   "size": 2133786
+  },
+  "godot/assets/concept/meshy/per/per_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T17:59:52+00:00",
+   "md5": "846824cdfff6418b7df2f27e7d452b9a",
+   "size": 2202588
+  },
+  "godot/assets/concept/meshy/per/per_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T17:59:52+00:00",
+   "md5": "2e13e39156d8d63cf9fd72516a4d94dd",
+   "size": 1993316
+  },
+  "godot/assets/concept/meshy/per/side.png": {
+   "at": "2026-10-11T17:59:52+00:00",
+   "md5": "2e13e39156d8d63cf9fd72516a4d94dd",
+   "size": 1993316
   },
   "godot/assets/concept/meshy/petra/back.png": {
    "at": "2026-10-11T17:49:30+00:00",
