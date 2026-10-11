@@ -8993,7 +8993,7 @@
    "scene_missing": false
   },
   {
-   "id": "pit_stop_interior",
+   "id": "pit_stop_back_lot",
    "scene": "res://scenes/locales/pit_stop_interior.tscn",
    "vol": 6,
    "uses": 1,
@@ -9003,11 +9003,23 @@
    ],
    "markers": [
     {
+     "name": "shot_establish_b__pit_stop_back_lot",
+     "type": "establish"
+    },
+    {
      "name": "shot_establish_diner",
      "type": "establish"
     },
     {
+     "name": "shot_closeup_ben__pit_stop_back_lot",
+     "type": "closeup"
+    },
+    {
      "name": "shot_closeup_booth",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_jesse__pit_stop_back_lot",
      "type": "closeup"
     },
     {
@@ -9015,11 +9027,11 @@
      "type": "closeup"
     },
     {
-     "name": "shot_closeup_person",
+     "name": "shot_closeup_person__pit_stop_back_lot",
      "type": "closeup"
     },
     {
-     "name": "shot_closeup_person_b",
+     "name": "shot_closeup_person_b__pit_stop_back_lot",
      "type": "closeup"
     },
     {
@@ -9031,7 +9043,7 @@
      "type": "insert"
     },
     {
-     "name": "shot_insert_door",
+     "name": "shot_insert_door__pit_stop_back_lot",
      "type": "insert"
     },
     {
@@ -9044,6 +9056,10 @@
     },
     {
      "name": "shot_insert_prints",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_truck__pit_stop_back_lot",
      "type": "insert"
     },
     {
@@ -9558,5 +9574,5 @@
   "tired",
   "nervous"
  ],
- "frames": 2146
+ "frames": 2150
 }

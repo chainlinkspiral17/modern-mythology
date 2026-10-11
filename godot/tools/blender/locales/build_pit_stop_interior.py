@@ -48,9 +48,10 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.furniture import make_table, make_chair
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, make_tube, export_glb
+from _props.vehicles import make_car
+from _props.geometry import make_blob, make_lathe,  clear_scene, make_box, make_cyl, make_tube, export_glb
 from _props.views import make_view
-from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_wall_with_openings
+from _props.structure import make_frame_ring,  make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_wall_with_openings
 from _props.store_fixtures import (make_counter, make_counter_bullnose, make_register,
                                    make_credit_card_terminal)
 from _props.food_service import (make_coffee_pots, make_donut_display,
@@ -85,7 +86,7 @@ def build_shell():
     make_wall("Wall_E", (+ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y',
                   palette=PAL_WALL, baseboard_face_sign=-1)
     make_wall_with_openings("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X',   # cut 2026-10-07: its window was a pane on a solid wall
-              palette=PAL_WALL, baseboard_face_sign=-1, openings=[(-3.2, 1.65, 1.40, 1.10)])
+              palette=PAL_WALL, baseboard_face_sign=-1, openings=[(-3.2, 1.65, 1.40, 1.10), (4.70, 1.05, 0.95, 2.10)])   # (pass 65) the back door, E end
     # South wall with a centred entry-door gap.
     make_wall_with_openings("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL,   # cut 2026-10-07: its window was a pane on a solid wall
               axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(-3.18, 1.60, 1.96, 1.50)])
@@ -245,9 +246,10 @@ def build_kitchen():
         make_box(f"Kitchen_Floor_Grout_Y_{gy:.1f}", (0.0, gy, 0.009), (XE - XW, 0.012, 0.002), grout)
         gy += 0.6
     frp, cap = (0.62, 0.68, 0.58, 1.0), (0.48, 0.52, 0.46, 1.0)
-    for nm, x0, x1, z1 in (("N_W", XW, -3.9, 2.0), ("N_Sill", -3.9, -2.5, 1.10), ("N_E", -2.5, XE, 2.0)):
+    for nm, x0, x1, z1 in (("N_W", XW, -3.9, 2.0), ("N_Sill", -3.9, -2.5, 1.10), ("N_E", -2.5, 4.225, 2.0), ("N_E2", 5.175, XE, 2.0)):   # (pass 65) a gap at the back door
         make_box(f"Kitchen_FRP_{nm}", ((x0 + x1) / 2.0, KN - 0.005, z1 / 2.0), (x1 - x0, 0.01, z1), frp)
-    make_box("Kitchen_FRP_Cap_N", (0.0, KN - 0.01, 2.01), (XE - XW, 0.02, 0.03), cap)
+    make_box("Kitchen_FRP_Cap_N", ((XW + 4.225) / 2.0, KN - 0.01, 2.01), (4.225 - XW, 0.02, 0.03), cap)
+    make_box("Kitchen_FRP_Cap_N_E", ((5.175 + XE) / 2.0, KN - 0.01, 2.01), (XE - 5.175, 0.02, 0.03), cap)
     make_box("Kitchen_FRP_W", (XW + 0.005, (KS + KN) / 2.0, 1.0), (0.01, KN - KS, 2.0), frp)
     for nm, y0, y1 in (("E_S", KS, 6.85), ("E_N", 7.95, KN)):
         make_box(f"Kitchen_FRP_{nm}", (XE - 0.005, (y0 + y1) / 2.0, 1.0), (0.01, y1 - y0, 2.0), frp)
@@ -393,34 +395,34 @@ def build_kitchen():
     make_box("Office_Door", (ROOM_W/2.0-0.12, 7.4, 1.05), (0.06, 0.95, 2.10), (0.48, 0.38, 0.28, 1.0))
     make_box("Office_Door_Frame", (ROOM_W/2.0-0.10, 7.4, 2.16), (0.08, 1.10, 0.10), COL_WOOD)
     make_cyl("Office_Door_Knob", (ROOM_W/2.0-0.16, 7.05, 1.05), 0.035, 0.04, (0.72, 0.66, 0.40, 1.0), segments=8)
-    dy0, dy1 = 8.30, 10.50
+    dy0, dy1 = 8.30, 10.05   # (pass 65) clear of the back door's 0.9 m
     dyc = (dy0 + dy1) / 2.0
     make_box("Dish_Sink_Body", (XE - 0.35, dyc, 0.42), (0.70, dy1 - dy0, 0.84), steel)
     make_box("Dish_Sink_Top", (XE - 0.36, dyc, 0.855), (0.72, dy1 - dy0 + 0.04, 0.03), steel)
-    for bi, by_ in enumerate((9.05, 9.55, 10.05)):
+    for bi, by_ in enumerate((8.75, 9.20, 9.65)):   # (pass 65) on the shortened sink
         make_box(f"Dish_Sink_Basin_{bi}", (XE - 0.36, by_, 0.873), (0.50, 0.44, 0.006), (0.40, 0.46, 0.50, 1.0))
         make_cyl(f"Dish_Sink_Faucet_{bi}", (XE - 0.03, by_, 1.05), 0.015, 0.36, steel, segments=6)
         make_box(f"Dish_Sink_Spout_{bi}", (XE - 0.14, by_, 1.22), (0.22, 0.025, 0.025), steel)
     make_box("Dish_Backsplash", (XE - 0.015, dyc, 1.085), (0.01, dy1 - dy0 + 0.04, 0.43), steel)
-    make_cyl("Dish_Sprayer_Riser", (XE - 0.08, 10.30, 1.32), 0.015, 0.92, steel, segments=6)
-    make_tube("Dish_Sprayer_Hose", [(XE - 0.08, 10.30, 1.78), (XE - 0.30, 10.30, 1.70), (XE - 0.36, 10.30, 1.20)], 0.012, knob, segments=5)
+    make_cyl("Dish_Sprayer_Riser", (XE - 0.08, 9.85, 1.32), 0.015, 0.92, steel, segments=6)
+    make_tube("Dish_Sprayer_Hose", [(XE - 0.08, 9.85, 1.78), (XE - 0.30, 9.85, 1.70), (XE - 0.36, 9.85, 1.20)], 0.012, knob, segments=5)
     make_box("Dish_Shelf", (XE - 0.20, dyc, 1.75), (0.40, 2.0, 0.03), steel)
     for bi, by_ in enumerate((dyc - 0.70, dyc + 0.70)):
         make_box(f"Dish_Shelf_Bracket_{bi}", (XE - 0.12, by_, 1.66), (0.24, 0.03, 0.15), steel_dk)
-    for ri, by_ in enumerate((8.80, 9.40, 10.00)):
+    for ri, by_ in enumerate((8.70, 9.20, 9.70)):   # (pass 65) clear of the back door
         make_box(f"Dish_Rack_{ri}", (XE - 0.20, by_, 1.815), (0.38, 0.50, 0.10), (0.30, 0.40, 0.56, 1.0))
     make_box("Bus_Tub", (XE - 0.36, 8.55, 0.93), (0.40, 0.30, 0.12), (0.44, 0.44, 0.46, 1.0))
     make_box("Bus_Tub_Dishes", (XE - 0.36, 8.55, 1.0), (0.32, 0.22, 0.02), (0.90, 0.88, 0.84, 1.0))
     make_box("Floor_Drain", (XE - 0.95, dyc, 0.011), (0.25, 0.25, 0.004), (0.20, 0.20, 0.20, 1.0))
     make_trash_can("Trash_K", (3.15, 8.60, 0.0), branded=False, palette={"body": (0.30, 0.34, 0.30, 1.0)})
     # paper goods shelving on the N wall's E end; the K-class extinguisher
-    px0, px1 = 3.25, 4.65
+    px0, px1 = 3.25, 4.05   # (pass 65) two columns: the back door is at x 4.225..5.175
     for pi, (ox, oy) in enumerate(((px0 + 0.02, -0.20), (px1 - 0.02, -0.20), (px0 + 0.02, 0.20), (px1 - 0.02, 0.20))):
         make_cyl(f"Paper_Shelf_Post_{pi}", (ox, KN - 0.225 + oy, 0.90), 0.012, 1.80, steel, segments=6)
     for zi, z in enumerate((0.30, 0.85, 1.40)):
         make_box(f"Paper_Shelf_{zi}", ((px0 + px1) / 2.0, KN - 0.225, z), (px1 - px0, 0.44, 0.02), steel)
-        for ci in range(3):
-            make_box(f"Paper_Goods_{zi}_{ci}", (px0 + 0.25 + ci * 0.45, KN - 0.225, z + 0.13),
+        for ci in range(2):
+            make_box(f"Paper_Goods_{zi}_{ci}", (px0 + 0.22 + ci * 0.38, KN - 0.225, z + 0.13),
                      (0.36, 0.34, 0.24), ((0.86, 0.84, 0.78, 1.0), (0.62, 0.48, 0.32, 1.0), (0.80, 0.80, 0.82, 1.0))[(zi + ci) % 3])
     make_fire_extinguisher("Extinguisher_K", (2.45, KS + 0.11, 0.30), palette={"red": (0.70, 0.72, 0.74, 1.0)})
 
@@ -573,8 +575,8 @@ def build_beyond_glass_2026_08():
     # ── North strip (out the kitchen window): the lot corner Ben
     # catalogues + the same treeline running behind ──
     # (2026-10-09: the building runs 2 m further N; the back lot with it)
-    make_box("Lot_Asphalt_N", (0.65, ROOM_D + 3.1, -0.02), (12.7, 6.0, 0.04), (0.30, 0.30, 0.32, 1.0))
-    make_box("Lot_Field_N", (-0.15, ROOM_D + 15.1, -0.03), (26.5, 18.0, 0.04), (0.36, 0.40, 0.26, 1.0))
+    make_box("Lot_Asphalt_N", (0.65, ROOM_D + 5.6, -0.02), (14.0, 11.0, 0.04), (0.30, 0.30, 0.32, 1.0))   # (pass 65) y 11.1..22.1
+    make_box("Lot_Field_N", (-0.15, ROOM_D + 17.6, -0.03), (26.5, 13.0, 0.04), (0.36, 0.40, 0.26, 1.0))   # (pass 65) past the fence at 22.1
     make_box("Lot_Treeline_N", (-2.0, ROOM_D + 24.3, 1.0), (30.0, 0.6, 2.0), (0.22, 0.28, 0.19, 1.0))
     # "Dumpster at two-fifteen": the enclosure out back, framed by Ben's window
     dmx, dmy = -1.0, ROOM_D + 3.0
@@ -598,6 +600,88 @@ def build_beyond_glass_2026_08():
     make_box("Road_S_Centerline", (0.0, -3.2, 0.005), (14.0, 0.10, 0.01), (0.85, 0.76, 0.30, 1.0))
     make_box("Strip_Across", (1.5, -6.4, 1.7), (10.0, 0.8, 3.4), (0.42, 0.38, 0.34, 1.0))
     make_box("Strip_Across_Sign", (-2.0, -5.94, 3.0), (1.6, 0.12, 0.7), (0.66, 0.58, 0.42, 1.0))   # on the facade (2026-09-23: 4 cm off it)
+
+
+def build_back_lot_2026_10():
+    """THE BACK LOT (pass 65, 2026-10-11): vol6 ch2 Dumpster — a whole
+    chapter at the dumpster behind the kitchen, played on the diner's
+    interior. "Ben has been off shift for four minutes. He is at the
+    dumpster... Jesse leans against the dumpster... slides down the side of
+    the dumpster until he is crouched at the base of it... At the back door
+    he paused... The screen door slapped shut behind him. Ben stood at the
+    dumpster for another minute... crushed the Powerade bottle one more
+    time... and walked to his truck."
+    The BACK DOOR in the N wall's east end (the steel leaf standing open
+    outward, the screen door closed in the opening, the wall-pack light
+    over it, the rubber mat, the crates and the bread rack beside it); the
+    ENCLOSURE's gates swung open, a second (recycling) dumpster, the grease
+    bin, the crushed Powerade bottle, the butt can; BEN'S TRUCK in the
+    employee spots; the parapet and the roof units (the hood's exhaust fan,
+    the condenser); the pole with its transformer; the slatted fence on the
+    lot's north edge. Draft 2 targets: the dumpster's stencil and sliding
+    side door; the screen door's spring and the latch; the kitchen's exhaust
+    fan over the window; a delivery truck's tire marks; the heat shimmer
+    (a mood); the lot at night for the ch4 rain scene if it ever cuts out."""
+    steel, steel_dk = (0.60, 0.62, 0.64, 1.0), (0.30, 0.31, 0.34, 1.0)
+    dmx, dmy = -1.0, ROOM_D + 3.0
+    # ── the back door: steel leaf open outward on its W hinge, the screen door shut in the opening ──
+    dx = 4.70
+    make_box("Back_Door_Frame_Head", (dx, ROOM_D, 2.13), (1.07, 0.24, 0.06), steel_dk)
+    for e, nm in ((-1, "W"), (1, "E")):
+        make_box(f"Back_Door_Jamb_{nm}", (dx + e * 0.505, ROOM_D, 1.05), (0.06, 0.24, 2.10), steel_dk)
+    make_box("Back_Door", (dx - 0.475 + 0.025, ROOM_D + 0.12 + 0.475, 1.05), (0.045, 0.95, 2.10), (0.52, 0.54, 0.50, 1.0))   # open to 90, out
+    make_box("Back_Door_Push_Bar", (dx - 0.475 + 0.06, ROOM_D + 0.12 + 0.475, 1.02), (0.03, 0.70, 0.05), steel)
+    make_frame_ring("Screen_Door_Frame", (dx, ROOM_D + 0.13, 1.05), (0.95, 0.04, 2.10), (0.42, 0.42, 0.44, 1.0), bar=0.05)
+    make_box("Screen_Door_Mesh", (dx, ROOM_D + 0.13, 1.05), (0.85, 0.006, 2.00), (0.16, 0.16, 0.18, 0.35))
+    make_box("Screen_Door_Kick", (dx, ROOM_D + 0.125, 0.30), (0.85, 0.02, 0.40), (0.42, 0.42, 0.44, 1.0))
+    make_box("Back_Door_Mat", (dx, ROOM_D + 0.70, -0.005), (1.10, 0.80, 0.03), (0.14, 0.14, 0.15, 1.0))
+    make_box("Back_Door_Light", (dx, ROOM_D + 0.17, 2.45), (0.26, 0.14, 0.18), (1.0, 0.92, 0.70, 1.0))
+    make_box("Back_Door_Light_Hood", (dx, ROOM_D + 0.19, 2.56), (0.30, 0.20, 0.03), steel_dk)
+    # milk crates and the bread rack beside the door
+    for ci, (cx_, cy_, cz_, col) in enumerate(((3.0, ROOM_D + 0.275, 0.17, (0.68, 0.30, 0.14, 1.0)), (3.0, ROOM_D + 0.275, 0.49, (0.30, 0.40, 0.62, 1.0)), (3.0, ROOM_D + 0.665, 0.17, (0.68, 0.30, 0.14, 1.0)))):
+        make_box(f"Milk_Crate_{ci}", (cx_, cy_, cz_), (0.33, 0.33, 0.32), col)
+    make_box("Bread_Rack_Base", (2.3, ROOM_D + 0.55, 0.02), (0.70, 0.60, 0.04), steel)
+    for pi_, (ox, oy) in enumerate(((-0.32, -0.27), (0.32, -0.27), (-0.32, 0.27), (0.32, 0.27))):
+        make_cyl(f"Bread_Rack_Post_{pi_}", (2.3 + ox, ROOM_D + 0.55 + oy, 0.81), 0.012, 1.54, steel, segments=6)
+    for zi, z in enumerate((0.45, 0.85, 1.25)):
+        make_box(f"Bread_Rack_Tray_{zi}", (2.3, ROOM_D + 0.55, z), (0.66, 0.56, 0.02), steel)
+    # ── the enclosure's gates swung open against its sides; a second dumpster; the grease bin ──
+    # (the enclosure is three-sided, open to the lot: gates here corralled every closeup)
+    make_box("Lot_Dumpster_Skid_W", (dmx - 0.80, dmy, 0.05), (0.10, 1.0, 0.10), (0.12, 0.12, 0.12, 1.0))
+    make_box("Lot_Dumpster_Skid_E", (dmx + 0.80, dmy, 0.05), (0.10, 1.0, 0.10), (0.12, 0.12, 0.12, 1.0))
+    make_box("Lot_Recycling_Body", (dmx + 3.6, dmy, 0.55), (1.4, 1.0, 1.1), (0.26, 0.34, 0.52, 1.0))
+    make_box("Lot_Recycling_Lid", (dmx + 3.6, dmy, 1.13), (1.45, 1.05, 0.06), (0.14, 0.18, 0.30, 1.0))
+    make_box("Grease_Bin", (dmx + 2.3, dmy + 0.2, 0.50), (0.80, 0.80, 1.00), (0.20, 0.18, 0.14, 1.0))
+    make_box("Grease_Bin_Lid", (dmx + 2.3, dmy + 0.2, 1.03), (0.84, 0.84, 0.06), (0.14, 0.12, 0.10, 1.0))
+    make_box("Grease_Bin_Stain", (dmx + 2.3, dmy - 0.5, -0.015), (0.9, 0.6, 0.01), (0.20, 0.18, 0.14, 1.0))
+    # the crushed Powerade bottle by the dumpster's foot; the butt can by the door
+    make_cyl("Powerade_Bottle", (dmx + 0.6, dmy - 0.85, 0.03), 0.034, 0.20, (0.30, 0.46, 0.80, 0.8), segments=8, axis='X')
+    make_cyl("Butt_Can", (1.7, ROOM_D + 0.30, 0.08), 0.07, 0.16, (0.72, 0.60, 0.42, 1.0), segments=10)
+    # ── Ben's truck in the employee spots east of the door ──
+    make_car("Pickup_Truck", 3.4, ROOM_D + 6.6, 5.2, (0.40, 0.44, 0.40, 1.0), pickup=True, along="Y")
+    make_box("Lot_Stripe_N_3", (5.4, ROOM_D + 6.6, 0.005), (0.10, 5.0, 0.01), (0.86, 0.84, 0.78, 1.0))
+    make_box("Lot_Stripe_N_4", (1.4, ROOM_D + 6.6, 0.005), (0.10, 5.0, 0.01), (0.86, 0.84, 0.78, 1.0))
+    make_box("Lot_Wheel_Stop_0", (3.4, ROOM_D + 3.9, 0.07), (1.6, 0.18, 0.14), (0.56, 0.55, 0.52, 1.0))
+    make_box("Lot_Wheel_Stop_1", (-6.6, ROOM_D + 1.3, 0.07), (1.6, 0.18, 0.14), (0.56, 0.55, 0.52, 1.0))
+    # ── the parapet and the roof units ──
+    make_box("Parapet_N", (0.0, ROOM_D + 0.05, CEIL + 0.40), (ROOM_W + 0.4, 0.30, 0.60), PAL_WALL["wall"])
+    make_box("Parapet_N_Cap", (0.0, ROOM_D + 0.05, CEIL + 0.72), (ROOM_W + 0.5, 0.36, 0.04), steel_dk)
+    make_box("Roof_Condenser", (3.6, ROOM_D - 1.6, CEIL + 0.10 + 0.45), (1.10, 1.10, 0.90), (0.62, 0.62, 0.60, 1.0))
+    make_cyl("Roof_Condenser_Fan", (3.6, ROOM_D - 1.6, CEIL + 0.10 + 0.905), 0.42, 0.01, (0.20, 0.20, 0.22, 1.0), segments=16)
+    make_lathe("Roof_Hood_Fan", (0.25, ROOM_D - 0.9, CEIL + 0.10),
+               [(0.45, 0.0), (0.45, 0.25), (0.55, 0.42), (0.50, 0.55), (0.0, 0.55)], (0.52, 0.52, 0.50, 1.0), segments=14)
+    make_box("Roof_Vent_Pipe", (-3.2, ROOM_D - 0.6, CEIL + 0.10 + 0.40), (0.14, 0.14, 0.80), steel_dk)
+    # ── the pole, the fence on the lot's north edge, what the fence keeps out ──
+    make_cyl("Lot_Pole_N", (6.9, ROOM_D + 7.5, 3.6), 0.14, 7.2, (0.38, 0.32, 0.26, 1.0), segments=8)
+    make_box("Lot_Pole_N_Crossarm", (6.9, ROOM_D + 7.5, 6.6), (1.60, 0.10, 0.10), (0.38, 0.32, 0.26, 1.0))
+    make_cyl("Lot_Pole_N_Transformer", (6.9, ROOM_D + 7.1, 5.6), 0.28, 0.70, (0.40, 0.42, 0.40, 1.0), segments=10)
+    fy = ROOM_D + 11.0
+    for pi_, px in enumerate([-6.4 + 2.3 * i for i in range(7)]):
+        make_cyl(f"Lot_Fence_Post_{pi_}", (px, fy, 0.9), 0.03, 1.8, (0.50, 0.52, 0.54, 1.0), segments=6)
+    make_box("Lot_Fence_Rail", (0.5, fy, 1.78), (13.9, 0.03, 0.03), (0.50, 0.52, 0.54, 1.0))
+    make_box("Lot_Fence_Slats", (0.5, fy, 0.88), (13.9, 0.02, 1.72), (0.36, 0.40, 0.34, 0.6))
+    for bi, (bx, by, br) in enumerate(((-4.0, fy + 2.6, 1.1), (2.6, fy + 3.1, 1.3), (6.8, fy + 2.4, 0.9))):
+        make_blob(f"Lot_Scrub_{bi}", (bx, by, -0.03 + br * 0.55), br, (0.28, 0.36, 0.22, 1.0), noise=0.3, seed=50 + bi, squash=0.6)
 
 
 def build_hero_props_2026_09():
@@ -643,7 +727,7 @@ def build_hero_props_2026_09():
     make_box("Bill_Pencil_Line", (1.7, 4.45, 1.0109), (0.100, 0.008, 0.0005),
              (0.38, 0.37, 0.36, 1.0))
     # ── BEN'S PHONE · on the prep line (top 0.95) ──
-    make_box("Bens_Phone", (1.15, 8.12, 0.9555), (0.070, 0.140, 0.011),
+    make_box("Island_Phone", (1.15, 8.12, 0.9555), (0.070, 0.140, 0.011),
              (0.13, 0.13, 0.15, 1.0))
 
 
@@ -670,6 +754,7 @@ def main():
     build_detail_pass_2026_08()
     build_use_states_2026_08()
     build_beyond_glass_2026_08()
+    build_back_lot_2026_10()
     build_hero_props_2026_09()
     build_prints_2026_09()
     # what is outside the window (2026-10-07, _props/views.py)

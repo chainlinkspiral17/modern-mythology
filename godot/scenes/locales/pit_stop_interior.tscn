@@ -187,6 +187,14 @@ light_color = Color(0.78, 0.86, 0.92, 1)
 light_energy = 0.25
 shadow_enabled = false
 
+; (pass 65) the wall-pack over the back door — on all day, like every diner's
+[node name="Back_Door_Light_Practical" type="OmniLight3D" parent="."]
+position = Vector3(4.700, 2.40, -11.300)
+light_color = Color(1.0, 0.90, 0.68, 1)
+light_energy = 0.6
+shadow_enabled = false
+omni_range = 3.5
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]
@@ -499,4 +507,47 @@ metadata/fov = 45.0
 position = Vector3(-0.300, 1.620, -9.550)
 rotation = Vector3(-0.0534, -2.2440, 0.0)
 metadata/fov = 45.0
+
+; ── vn_shot coverage (pass 65) — the back lot, suffixed __pit_stop_back_lot
+; closeup (back lot): Ben at the dumpster, the first Powerade
+[node name="shot_closeup_ben__pit_stop_back_lot" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.800, 1.550, -12.300)
+rotation = Vector3(-0.0354, 1.1706, 0.0)
+metadata/fov = 45.0
+
+; closeup (back lot): the same frame — whoever is at the dumpster
+[node name="shot_closeup_person__pit_stop_back_lot" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.800, 1.550, -12.300)
+rotation = Vector3(-0.0354, 1.1706, 0.0)
+metadata/fov = 45.0
+
+; closeup (back lot): Jesse leaning on the dumpster, then crouched at its foot
+[node name="shot_closeup_jesse__pit_stop_back_lot" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.600, 1.550, -12.300)
+rotation = Vector3(-0.0354, -1.1706, 0.0)
+metadata/fov = 45.0
+
+; closeup (back lot): the reverse
+[node name="shot_closeup_person_b__pit_stop_back_lot" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.600, 1.550, -12.300)
+rotation = Vector3(-0.0354, -1.1706, 0.0)
+metadata/fov = 45.0
+
+; establish (back lot): from the back door, the enclosure and the lot
+[node name="shot_establish_b__pit_stop_back_lot" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(5.000, 1.600, -12.600)
+rotation = Vector3(-0.0983, 1.4056, 0.0)
+metadata/fov = 60.0
+
+; insert (back lot): the back door, the screen door shut in it
+[node name="shot_insert_door__pit_stop_back_lot" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(5.900, 1.500, -12.700)
+rotation = Vector3(-0.1489, 2.4981, 0.0)
+metadata/fov = 42.0
+
+; insert (back lot): Ben's truck in the employee spots
+[node name="shot_insert_truck__pit_stop_back_lot" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.600, 1.500, -13.200)
+rotation = Vector3(-0.1354, -0.6889, 0.0)
+metadata/fov = 42.0
 

@@ -1382,6 +1382,20 @@ const CAMERA_PRESETS := {
 		"fov": 62.0,
 		"suppress_input": true,
 	},
+	"pit_stop_back_lot": {
+		"scene": "res://scenes/locales/pit_stop_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/pit_stop_interior.glb",
+		# (pass 65, 2026-10-11) vol6 ch2 Dumpster — the whole chapter at the
+		# dumpster behind the kitchen. The lot is blender y 11.1..22.1 (godot z
+		# -11.1..-22.1): the enclosure at x -1 with its gates open, the back door
+		# at x 4.7, Ben's truck east of it. Camera east of the enclosure looking
+		# west along the kitchen's back wall: the dumpster, Ben's window beyond.
+		# Markers suffixed __pit_stop_back_lot.
+		"camera_origin": Vector3(3.60, 1.60, -12.60),
+		"camera_rotation": Vector3(-0.106, 1.357, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
 	"pit_stop_kitchen": {
 		"scene": "res://scenes/locales/pit_stop_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/pit_stop_interior.glb",

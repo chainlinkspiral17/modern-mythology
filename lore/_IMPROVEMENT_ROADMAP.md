@@ -3834,6 +3834,28 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-11 · pass 65: THE PIT STOP BACK LOT (draft 1).** vol6 ch2
+Dumpster — a whole chapter at the dumpster behind the kitchen — played on
+the diner's front room. The kitchen gets a BACK DOOR in its north wall's
+east end (the paper shelving narrowed to two columns beside it, the dish
+sink shortened clear of its 0.9 m, the FRP panels and cap gapped): the
+steel leaf standing open outward, the screen door shut in the opening
+("the screen door slapped shut"), the wall-pack over it (a practical),
+the rubber mat, the milk crates and the bread rack. The lot grows to
+y 11.1..22.1: the enclosure (three-sided now — gates corralled every
+closeup), the dumpster on its skids, a recycling dumpster, the grease bin
+and its stain, the crushed Powerade bottle at the dumpster's foot, the
+butt can by the door, Ben's pickup backed into the employee spots with
+its wheel stop, the parapet with its cap, the hood's exhaust fan and the
+condenser on the roof, the vent pipe, the pole with its transformer, the
+slatted fence on the north edge and the scrub past it. Preset
+`pit_stop_back_lot` on the same scene (markers suffixed), ch2 routed. Deck
+must REBUILD pit_stop_interior. **Draft 2 targets:** the dumpster's
+stencil and sliding side door; the screen door's spring and latch; the
+kitchen's exhaust fan over Ben's window; tire marks; Ben's Powerade in
+hand (a prop state); the lot at night for ch4's rain if it ever cuts out;
+the W lot's cars are still the old box silhouettes — `make_car` them.
+
 **2026-10-11 · pass 64: NATE'S GARAGE (new set, draft 1).** ch14
 Substation Nine's Wednesday practice — "Nate's garage is bigger than
 Jesse's", the rear half of a two-car garage Walt converted into a finished

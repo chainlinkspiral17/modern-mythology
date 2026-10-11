@@ -101,6 +101,10 @@
       "bed": "assets/audio/bgm/vol6_kwik_stop_interior.wav",
       "gain": 0.82
     },
+    "pit_stop_back_lot": {
+      "bed": "assets/audio/bgm/vol6_kwik_stop_interior.wav",
+      "gain": 0.82
+    },
     "centro_grocery_aisle": {
       "bed": "assets/audio/bgm/vol6_kwik_stop_interior.wav",
       "gain": 0.82
