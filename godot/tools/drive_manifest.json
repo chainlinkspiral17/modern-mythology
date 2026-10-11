@@ -1070,6 +1070,11 @@
    "md5": "75210763c3b660cf80627c8f31d35999",
    "size": 66188
   },
+  "godot/assets/3d/characters/heroes/maya_daigle_age7.glb": {
+   "at": "2026-10-11T21:10:14+00:00",
+   "md5": "8042abee9e767f191ead06ffe9ccb2d2",
+   "size": 86234016
+  },
   "godot/assets/3d/characters/heroes/miriam.glb": {
    "at": "2026-10-01T01:48:41+00:00",
    "md5": "6acfaa9347113e8f11a4a7fe3b210846",
@@ -53704,6 +53709,41 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "68b3f6a02679cc7e81076cbed3c625c6",
    "size": 75428
+  },
+  "godot/assets/concept/meshy/maya_daigle_age7/back.png": {
+   "at": "2026-10-11T21:10:23+00:00",
+   "md5": "b7b72d83580db6595094ee2e973cb8ef",
+   "size": 1928070
+  },
+  "godot/assets/concept/meshy/maya_daigle_age7/front.png": {
+   "at": "2026-10-11T21:10:23+00:00",
+   "md5": "64b8f614c4ba41f823ab9ebc66e39cdc",
+   "size": 1995465
+  },
+  "godot/assets/concept/meshy/maya_daigle_age7/maya_daigle_age7_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T21:10:23+00:00",
+   "md5": "b7b72d83580db6595094ee2e973cb8ef",
+   "size": 1928070
+  },
+  "godot/assets/concept/meshy/maya_daigle_age7/maya_daigle_age7_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T21:10:23+00:00",
+   "md5": "64b8f614c4ba41f823ab9ebc66e39cdc",
+   "size": 1995465
+  },
+  "godot/assets/concept/meshy/maya_daigle_age7/maya_daigle_age7_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T21:10:23+00:00",
+   "md5": "3a70ab2bd02206b6e895e320416b6888",
+   "size": 1925828
+  },
+  "godot/assets/concept/meshy/maya_daigle_age7/meshy_thumb.png": {
+   "at": "2026-10-11T21:10:23+00:00",
+   "md5": "68584456025eb645b01acb33af53b2fd",
+   "size": 66736
+  },
+  "godot/assets/concept/meshy/maya_daigle_age7/side.png": {
+   "at": "2026-10-11T21:10:23+00:00",
+   "md5": "3a70ab2bd02206b6e895e320416b6888",
+   "size": 1925828
   },
   "godot/assets/concept/meshy/miriam/front.png": {
    "at": "2026-10-01T01:23:48+00:00",
