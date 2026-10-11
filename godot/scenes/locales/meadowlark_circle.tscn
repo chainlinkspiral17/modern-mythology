@@ -177,6 +177,7 @@ transform = Transform3D(-0.707, 0.354, -0.612, 0, 0.865, 0.5, 0.707, 0.354, -0.6
 light_color = Color(1, 0.90, 0.72, 1)
 light_energy = 1.0
 shadow_enabled = false
+metadata/daylight = true
 
 [node name="Sky_Fill" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 4, 5)
@@ -186,6 +187,8 @@ shadow_enabled = false
 
 ; Practicals: the Geller porch light and Don's window (the end of
 ; the cul-de-sac), the streetlamp over the bulb
+metadata/daylight = true
+
 [node name="Geller_Porch" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.25, 2.25, 4.1)
 light_color = Color(1, 0.86, 0.58, 1)
@@ -228,6 +231,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 2.3, -8.2)
 light_color = Color(1, 0.84, 0.54, 1)
 light_energy = 1.1
 omni_range = 5.0
+shadow_enabled = false
+
+; (pass 72, 2026-10-11) the suns above carry metadata/daylight and follow the mood's hour;
+; this cool fill stays on so a night cut keeps its shapes
+[node name="Night_Sky_Fill" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.2588, 0.9659, 0, -0.9659, 0.2588, 0, 8, 0)
+light_color = Color(0.56, 0.64, 0.86, 1)
+light_energy = 0.18
 shadow_enabled = false
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]

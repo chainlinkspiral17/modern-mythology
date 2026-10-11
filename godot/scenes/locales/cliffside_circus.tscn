@@ -180,18 +180,21 @@ transform = Transform3D(1, 0, 0, 0, 0.707, 0.707, 0, -0.707, 0.707, 0, 9, 0)
 light_color = Color(0.8, 0.83, 0.85, 1)
 light_energy = 0.85
 shadow_enabled = false
+metadata/daylight = true
 
 [node name="Fill" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, -3, 5, 0)
 light_color = Color(0.72, 0.7, 0.68, 1)
 light_energy = 0.35
 shadow_enabled = false
+metadata/daylight = true
 
 [node name="Back_Sea" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 5, 6)
 light_color = Color(0.6, 0.68, 0.74, 1)
 light_energy = 0.35
 shadow_enabled = false
+metadata/daylight = true
 
 [node name="Porch_Warm" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0, 1.8, -8.1)
@@ -220,6 +223,14 @@ light_color = Color(0.98, 0.8, 0.48, 1)
 light_energy = 0.8
 shadow_enabled = false
 omni_range = 3.0
+
+; (pass 72, 2026-10-11) the suns above carry metadata/daylight and follow the mood's hour;
+; this cool fill stays on so a night cut keeps its shapes
+[node name="Night_Sky_Fill" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.2588, 0.9659, 0, -0.9659, 0.2588, 0, 8, 0)
+light_color = Color(0.56, 0.64, 0.86, 1)
+light_energy = 0.18
+shadow_enabled = false
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 

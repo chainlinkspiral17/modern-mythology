@@ -179,12 +179,14 @@ transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 4,
 light_color = Color(1.00, 0.84, 0.56, 1)
 light_energy = 0.80
 shadow_enabled = false
+metadata/daylight = true
 
 [node name="Fill_LimestoneBounce" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, -3, 4, 0)
 light_color = Color(0.92, 0.78, 0.58, 1)
 light_energy = 0.45
 shadow_enabled = false
+metadata/daylight = true
 
 [node name="Back_PrairieSky" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866, 0.354, -0.354, 0, 0.707, 0.707, 0.5, 0.612, -0.612, 0, 4, -8)
@@ -206,6 +208,8 @@ shadow_enabled = false
 ; writing candle on the desk in the patched shotgun house — blender
 ; (54.05, -379.75, 1.365) → godot (54.05, 1.365, 379.75). It lights the
 ; room and the east and south panes from outside at dusk and night.
+metadata/daylight = true
+
 [node name="Practical_Candle" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.05, 1.40, 379.75)
 light_color = Color(1.0, 0.66, 0.34, 1)
@@ -306,6 +310,14 @@ metadata/fov = 50.0
 position = Vector3(45.200, 0.900, 129.200)
 rotation = Vector3(-0.1028, 0.4636, 0.0)
 metadata/fov = 46.0
+
+; (pass 72, 2026-10-11) the suns above carry metadata/daylight and follow the mood's hour;
+; this cool fill stays on so a night cut keeps its shapes
+[node name="Night_Sky_Fill" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.2588, 0.9659, 0, -0.9659, 0.2588, 0, 8, 0)
+light_color = Color(0.56, 0.64, 0.86, 1)
+light_energy = 0.18
+shadow_enabled = false
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 

@@ -3834,6 +3834,39 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-11 · pass 72: DAYLIGHT-TAG THE EXTERIOR SUNS.** Six exterior
+sets serve day and night presets off one unsuffixed sun: Graustark (eight
+presets — the chalk wall at night under the Texas sun), Meadowlark Circle
+(two night presets), Small Wood Road (two), Highway 101, the cabin road,
+the circus. Pass 62 gave their night presets a night env, but the sun kept
+shining; per-preset light copies would mean 24 nodes for Graustark alone.
+The mechanism that already exists does it: a light carrying
+`metadata/daylight` follows the mood's hour (`DAYLIGHT_BY_MOOD`: night 0,
+dusk 0.35, dawn_warm 0.55, rain 0.25), so the suns, fills and sky backs of
+the six sets are tagged, and each gets one dim cool `Night_Sky_Fill`
+(unsuffixed, 0.18, harmless by day) so a night cut keeps its shapes. No
+Deck rebuild. **Draft N+1:** New Auburn Road is the mirror case (a Moon
+key authored for the strip mall's nights; its lot and bypass by day) — a
+`metadata/nightlight` that the day moods scale to 0 would finish it; the
+night presets want their own practicals (the chalk wall's lantern, the
+circle's porch lights are there; the ruins' sinkhole at night has none).
+
+**2026-10-11 · pass 71: THE INSERTS ANSWERED, AND THE PIT STOP'S LOT CARS.**
+Two insert cues had lived on the marker-aim allow-list because the prop
+did not exist: Sam's spiral notebook on the Millers' kitchen table (ch9
+Safehouse's coda — a notebook, its page, its coil, at Sam's place; in
+`dress_family()` only, so Bianca's dawn does not get it) and the map in
+the cab (ch14 — a folded sheet on the dash over the glove box; the cab's
+`shot_insert_map` re-aimed at it). Both allow-list entries removed. The
+Pit Stop's west lot — what the booth windows of the model chapter look
+at — had two box-silhouette cars and a box pickup: `make_car` vehicles
+now (two sedans nose-in, the black Louisiana pickup). Deck must REBUILD
+miller_kitchen, bianca_kitchen_morning (the shared module), vehicle_cab,
+pit_stop_interior. **Draft N+1:** the remaining allow-list entries
+(`shot_insert_five` — abstract; `shot_insert_hands` — the grandmother's
+hand, a prop state) stay; the cab's map could be the Altima's too; the
+Pit Stop's lot stripes and the pole by day.
+
 **2026-10-11 · pass 70: THE LAST SINGLE-PRESET ROOMS AT THE OTHER HOUR.**
 `henderson_garage_day` (ch20 Bridge: "Practice today is at his garage" —
 Carl at four forty-eight, Em at five-oh-one, the driveway after — on the
