@@ -191,11 +191,11 @@ def build_shell():
     # (2026-10-07, window_backing_audit) the loop unrolled: Wall_E is cut
     # (draft 10) a window in the W wall NORTH of Olaf's shop (the shop abuts y 0.4..6.1)
     make_wall_with_openings("Wall_W", (-ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(7.10, 1.55, 1.00, 1.00)])
-    make_wall_with_openings("Wall_E", (+ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=-1, openings=[(1.450, 1.750, 1.060, 0.820), (6.200, 1.600, 1.240, 0.940)])   # (2026-10-09) the main room's E window with the stove corner (+2)
+    make_wall_with_openings("Wall_E", (+ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=-1, openings=[(1.450, 1.750, 1.460, 1.020), (6.200, 1.600, 1.240, 0.940)])   # (draft 14: the bed window a third larger)   # (2026-10-09) the main room's E window with the stove corner (+2)
     # the N wall built round a REAL opening for the kitchen window
     # (2026-09-23: the wall was solid, so the crow "seen through the
     # glass" on the outside sill was never in any frame)
-    kw_x0, kw_x1, kw_z0, kw_z1 = -3.10, -2.10, 1.005, 1.955   # (2026-10-09) with the kitchen, -1 m
+    kw_x0, kw_x1, kw_z0, kw_z1 = -3.40, -1.80, 1.005, 1.955   # (draft 14: a pair, 1.60) (2026-10-09) with the kitchen, -1 m
     wn_x0, wn_x1 = -(ROOM_W + 0.2) / 2.0, (ROOM_W + 0.4) / 2.0   # west end flush with Wall_W's outer face: Olaf's shop abuts it (2026-10-08)
     wcol = PAL_WALL["wall"]
     # (draft 10) the N wall east of the kitchen window is cut for a SECOND window
@@ -216,7 +216,7 @@ def build_shell():
     make_box("Wall_N_Head_Pier_E", ((lw_x1 + kw_x1) / 2.0, ROOM_D, (lw_z0 + lw_z1) / 2.0), (kw_x1 - lw_x1, 0.20, lw_z1 - lw_z0), wcol)
     make_box("Wall_N_Base", (0.0, ROOM_D - 0.106, 0.08), (ROOM_W + 0.4, 0.012, 0.16), PAL_WALL["baseboard"])
     # the outside sill the crow stands on
-    make_box("Kitchen_Window_OutSill", ((kw_x0 + kw_x1) / 2.0, ROOM_D + 0.275, 1.04), (1.10, 0.35, 0.04), wcol)
+    make_box("Kitchen_Window_OutSill", ((kw_x0 + kw_x1) / 2.0, ROOM_D + 0.275, 1.04), (1.70, 0.35, 0.04), wcol)
     make_wall_with_openings("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(-2.000, 1.450, 1.700, 1.000)])   # (draft 10: a pair, 1.70) cut 2026-10-07 (window_backing_audit): the window was a pane on a solid wall
     make_wall_with_openings("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(2.250, 1.450, 0.950, 0.950)])   # (2026-10-09: with the east room's desk, +0.25) cut 2026-10-07 (window_backing_audit): the window was a pane on a solid wall
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.45), (2.0, 0.20, 0.90), PAL_WALL["wall"])
@@ -314,7 +314,7 @@ def build_kitchen():
     # see_through (2026-09-24): the crow on the OUTSIDE sill is the reason
     # this window exists, and the glass + warm pane render opaque — the
     # crow insert was filming a grey pane
-    make_window("Kitchen_Window", (-1.6, ROOM_D - 0.10, 1.48), width=1.00, height=0.95,
+    make_window("Kitchen_Window", (-1.6, ROOM_D - 0.10, 1.48), width=1.60, height=0.95,
                 see_through=True)
     # …and the black rotary phone on a small table beside it
     make_box("Phone_Table", (-2.60, 5.35, 0.30), (0.45, 0.45, 0.60), COL_WOOD)
@@ -596,13 +596,13 @@ def build_east_room():
         # The window above the bed (E wall) — cedars beyond
         # on the wall's room face, glass in front of the frame (2026-09-24: frame and glass
         # were offset from the wall's CENTRE line — inside the wall, never visible)
-        make_frame_ring("EBed_Win_Frame", (2.88, 1.45, 1.75), (0.04, 1.20, 0.95), COL_WOOD_DK)
+        make_frame_ring("EBed_Win_Frame", (2.88, 1.45, 1.75), (0.04, 1.60, 1.15), COL_WOOD_DK)
         # "the window above the bed gave her the gray-green of cedars" (ch1):
         # the glass was a dark solid pane with nothing behind it (sheet 42) —
         # it is the cedars' grey-green now, with a cross of glazing bars
-        make_box("EBed_Win_Glass", (2.85, 1.45, 1.75), (0.02, 1.06, 0.82), (0.50, 0.58, 0.52, 1.0))
-        make_box("EBed_Win_Muntin_V", (2.835, 1.45, 1.75), (0.01, 0.04, 0.82), COL_WOOD_DK)
-        make_box("EBed_Win_Muntin_H", (2.835, 1.45, 1.75), (0.01, 1.06, 0.04), COL_WOOD_DK)
+        make_box("EBed_Win_Glass", (2.85, 1.45, 1.75), (0.02, 1.46, 1.02), (0.50, 0.58, 0.52, 1.0))
+        make_box("EBed_Win_Muntin_V", (2.835, 1.45, 1.75), (0.01, 0.04, 1.02), COL_WOOD_DK)
+        make_box("EBed_Win_Muntin_H", (2.835, 1.45, 1.75), (0.01, 1.46, 0.04), COL_WOOD_DK)
     with _shift(0.25, 0.0):   # the desk under its S window (+0.25)
         # Writing desk against the S wall + the south window over it —
         # the kit table: turned legs, an apron, a stretcher (draft 5)
@@ -752,10 +752,16 @@ def build_architecture_2026_10():
     under_n = lambda y: ridge_z - pitch * (y - ridge_y)
     plank, timber = (0.60, 0.45, 0.30, 1.0), (0.38, 0.27, 0.17, 1.0)
     # the roof's underside, planked (a hair under the slabs so it does not fight them)
-    for nm, ya, yb, under in (("S", -0.10, ridge_y, under_s), ("N", ridge_y, ROOM_D + 0.10, under_n)):
-        _prism_ccw(f"Roof_Plank_{nm}", (0.0, 0.0, 0.0),
+    def plank_piece(name, ya, yb, under, x0, x1):
+        _prism_ccw(name, ((x0 + x1) / 2.0, 0.0, 0.0),
                    [(ya, under(ya) - 0.035), (yb, under(yb) - 0.035), (yb, under(yb) - 0.005), (ya, under(ya) - 0.005)],
-                   ROOM_W, plank)
+                   x1 - x0, plank)
+    plank_piece("Roof_Plank_N", ridge_y, ROOM_D + 0.10, under_n, -ROOM_W / 2.0, ROOM_W / 2.0)
+    # (draft 14) the S planking in four round the skylight (x -0.9..0.9, y 1.6..2.8)
+    plank_piece("Roof_Plank_S", -0.10, 1.6, under_s, -ROOM_W / 2.0, ROOM_W / 2.0)
+    plank_piece("Roof_Plank_S_Hi", 2.8, ridge_y, under_s, -ROOM_W / 2.0, ROOM_W / 2.0)
+    plank_piece("Roof_Plank_S_Mid_W", 1.6, 2.8, under_s, -ROOM_W / 2.0, -0.9)
+    plank_piece("Roof_Plank_S_Mid_E", 1.6, 2.8, under_s, 0.9, ROOM_W / 2.0)
     # the ridge beam, and the rafters down each side of it
     make_box("Ridge_Beam", (0.0, ridge_y, ridge_z - 0.17), (ROOM_W + 0.2, 0.14, 0.26), timber)
     for ri, rx in enumerate([-3.5 + 1.0 * i for i in range(8)]):
@@ -935,6 +941,43 @@ def build_draft12_2026_10():
     make_lathe("Loft_Newel_E", (-1.0, 5.30, LOFT_Z + 0.10),
                [(0.05, 0.0), (0.05, 0.05), (0.034, 0.08), (0.046, 0.30), (0.030, 0.50), (0.044, 0.62), (0.036, 0.70), (0.058, 0.76), (0.058, 0.80), (0.03, 0.86), (0.0, 0.88)],
                cedar_dk, segments=10)
+
+
+def build_draft13_2026_10():
+    """INTERIOR DRAFT 13 (2026-10-11): the leaf relief on each knee brace;
+    the end-blocks on the west, north and loft window sills; the gable
+    windows' outside casing; the front door's inside face dressed — two
+    battens, the latch bar, the coat pegs beside it — since the door
+    insert framed a flat slab. (The porch posts' cedar faces are in the
+    porch builder's loop.) Draft 14 targets: the kitchen window as a pair;
+    a carved lintel over the east room's door; the tie beams' ends shaped;
+    the loft's footboard; the day room's brightness under day_bright."""
+    cedar_lt, timber = (0.72, 0.54, 0.34, 1.0), (0.38, 0.27, 0.17, 1.0)
+    leaf = [(0.0, -0.11), (0.05, -0.05), (0.065, 0.03), (0.0, 0.11), (-0.065, 0.03), (-0.05, -0.05)]
+    for bi, by in enumerate((1.50, 3.90, 6.30)):
+        for e, nm in ((1, "E"), (-1, "W")):
+            if by > 6.0 and e < 0:
+                continue
+            _prism_ccw(f"Tie_Beam_{bi}_Brace_{nm}_Leaf", (0.0, by - 0.06 - 0.005, 0.0),
+                       [(e * 3.46 + u, 2.86 + v) for u, v in leaf], 0.01, cedar_lt, axis="Y")
+            make_box(f"Tie_Beam_{bi}_Brace_{nm}_Leaf_Vein", (e * 3.46, by - 0.06 - 0.012, 2.86), (0.006, 0.004, 0.18), timber)
+    # the sills' end-blocks
+    for e in (-1, 1):
+        make_box(f"West_Window_Sill_Block_{'S' if e < 0 else 'N'}", (-ROOM_W / 2.0 + 0.17, 7.10 + e * 0.61, 1.03), (0.16, 0.06, 0.06), COL_WOOD_DK)
+        make_box(f"North_Window_E_Sill_Block_{'W' if e < 0 else 'E'}", (1.95 + e * 0.66, ROOM_D - 0.17, 1.28), (0.06, 0.16, 0.06), COL_WOOD_DK)
+        make_box(f"Loft_Window_Sill_Block_{'W' if e < 0 else 'E'}", (-2.60 + e * 0.51, ROOM_D - 0.17, 2.53), (0.06, 0.16, 0.06), COL_WOOD_DK)
+    # the gable windows' outside casing
+    for e, nm in ((-1, "W"), (1, "E")):
+        make_frame_ring(f"Gable_{nm}_Win_Casing", (e * (ROOM_W / 2.0 + 0.12), 4.0, 4.75), (0.04, 1.42, 1.12), (0.46, 0.34, 0.22, 1.0))
+    # the front door's inside face: two battens, the latch bar, the coat pegs beside it
+    fy = 0.06 + 0.025 + 0.012
+    for ri, rz in enumerate((0.40, 1.70)):
+        make_box(f"Front_Door_In_Batten_{ri}", (0.0, fy, rz), (0.84, 0.024, 0.14), (0.40, 0.29, 0.19, 1.0))
+    make_box("Front_Door_In_Latch_Bar", (-0.30, fy + 0.012, 1.05), (0.34, 0.02, 0.05), COL_IRON)
+    make_box("Front_Door_In_Latch_Keeper", (-0.44, fy + 0.012, 1.05), (0.04, 0.03, 0.09), COL_IRON)
+    for pi_, px in enumerate((-0.72, -0.90)):
+        make_cyl(f"Coat_Peg_{pi_}", (px, 0.10 + 0.05, 1.75), 0.012, 0.10, COL_WOOD_DK, axis='Y', segments=6)
+    make_chamfer_box("Coat_Peg_Coat", (-0.90, 0.10 + 0.08, 1.30), (0.26, 0.10, 0.86), (0.28, 0.30, 0.34, 1.0), chamfer=0.02)
 
 
 def build_crow_2026_08():
@@ -1289,7 +1332,29 @@ def build_exterior_2026_10():
                    [(ya, under(ya)), (yb, under(yb)), (yb, under(yb) + th), (ya, under(ya) + th)], ROOM_W + 1.2, shake)
     under_n = lambda y: ridge_z - pitch * (y - ridge_y)
     slab("Roof_S_Eave", -0.20 - eave, -0.20, under_s)
-    slab("Roof_S", -0.20, ridge_y, under_s)
+    # (draft 14) the S slab in four pieces round the SKYLIGHT over the table
+    # (x -0.9..0.9, y 1.6..2.8): the sun's shaft falls through it onto the floor
+    SK_X0, SK_X1, SK_Y0, SK_Y1 = -0.9, 0.9, 1.6, 2.8
+    slab("Roof_S", -0.20, SK_Y0, under_s)
+    slab("Roof_S_Hi", SK_Y1, ridge_y, under_s)
+    def slab_x(name, ya, yb, under, x0, x1):
+        _prism_ccw(name, ((x0 + x1) / 2.0, 0.0, 0.0),
+                   [(ya, under(ya)), (yb, under(yb)), (yb, under(yb) + th), (ya, under(ya) + th)], x1 - x0, shake)
+    slab_x("Roof_S_Mid_W", SK_Y0, SK_Y1, under_s, -(ROOM_W + 1.2) / 2.0, SK_X0)
+    slab_x("Roof_S_Mid_E", SK_Y0, SK_Y1, under_s, SK_X1, (ROOM_W + 1.2) / 2.0)
+    # the skylight's curb and its glass, sloped with the roof
+    sk_zc = under_s((SK_Y0 + SK_Y1) / 2.0) + th / 2.0
+    for e, nm in ((-1, "W"), (1, "E")):
+        _prism_ccw(f"Roof_Skylight_Curb_{nm}", (e * (0.9 + 0.04), 0.0, 0.0),
+                   [(SK_Y0, under_s(SK_Y0) - 0.02), (SK_Y1, under_s(SK_Y1) - 0.02), (SK_Y1, under_s(SK_Y1) + th + 0.10), (SK_Y0, under_s(SK_Y0) + th + 0.10)],
+                   0.08, (0.30, 0.26, 0.22, 1.0))
+    for nm, yy in (("S", SK_Y0 - 0.04), ("N", SK_Y1 + 0.04)):
+        _prism_ccw(f"Roof_Skylight_Curb_{nm}", (0.0, 0.0, 0.0),
+                   [(yy - 0.04, under_s(yy) - 0.02), (yy + 0.04, under_s(yy) - 0.02), (yy + 0.04, under_s(yy) + th + 0.10), (yy - 0.04, under_s(yy) + th + 0.10)],
+                   1.88, (0.30, 0.26, 0.22, 1.0))
+    _prism_ccw("Roof_Skylight_Glass", (0.0, 0.0, 0.0),
+               [(SK_Y0, under_s(SK_Y0) + th + 0.06), (SK_Y1, under_s(SK_Y1) + th + 0.06), (SK_Y1, under_s(SK_Y1) + th + 0.08), (SK_Y0, under_s(SK_Y0) + th + 0.08)],
+               1.80, (0.42, 0.52, 0.55, 0.45))
     slab("Roof_N", ridge_y, ROOM_D + 0.20, under_n)
     slab("Roof_N_Eave", ROOM_D + 0.20, ROOM_D + 0.20 + eave, under_n)
     # the frieze boards close the slit between the wall tops and the roof
@@ -1325,7 +1390,7 @@ def build_exterior_2026_10():
             runs.append((cur, hi))
         return runs
     s_holes = [((-2.85, -1.15), (0.95, 1.95)), ((1.775, 2.725), (0.975, 1.925)), ((-0.50, 0.50), (0.0, 2.10))]
-    e_holes = [((0.92, 1.98), (1.34, 2.16)), ((5.58, 6.82), (1.13, 2.07))]
+    e_holes = [((0.72, 2.18), (1.24, 2.26)), ((5.58, 6.82), (1.13, 2.07))]
     w_holes = [((6.60, 7.60), (1.05, 2.05))]   # (draft 10) the west window north of the shop
     for k in range(1, 15):
         z = k * 0.225
@@ -1538,6 +1603,13 @@ def build_porch_2026_10():
     beam_top = 2.66
     for pi, px in enumerate(post_xs):
         make_box(f"Porch_Post_{pi}", (px, PY, (beam_top - 0.16) / 2.0), (0.12, 0.12, beam_top - 0.16), rail_col)
+        # (draft 13) Olaf's cedar face on the post's yard side, as on the loft's posts inside
+        _fy = PY - 0.06 - 0.014
+        make_chamfer_box(f"Porch_Post_{pi}_Face", (px, _fy, 1.55), (0.10, 0.028, 0.15), (0.72, 0.54, 0.34, 1.0), chamfer=0.03)
+        make_box(f"Porch_Post_{pi}_Face_Brow", (px, _fy - 0.016, 1.595), (0.08, 0.008, 0.012), COL_WOOD_DK)
+        make_box(f"Porch_Post_{pi}_Face_Nose", (px, _fy - 0.016, 1.555), (0.016, 0.008, 0.055), COL_WOOD_DK)
+        for _e in (-1, 1):
+            make_box(f"Porch_Post_{pi}_Face_Eye_{'L' if _e < 0 else 'R'}", (px + _e * 0.025, _fy - 0.015, 1.578), (0.02, 0.006, 0.01), (0.22, 0.14, 0.09, 1.0))
     make_box("Porch_Beam", (0.0, PY, beam_top - 0.08), (X1 - X0, 0.14, 0.16), rail_col)
     make_box("Porch_Ledger", (0.0, Y0 - 0.03, 2.86), (X1 - X0, 0.06, 0.14), rail_col)
     r_wall, r_beam = 2.94, beam_top
@@ -1648,6 +1720,7 @@ def main():
     build_architecture_2026_10()
     build_nature_let_in_2026_10()
     build_draft12_2026_10()
+    build_draft13_2026_10()
     with _shift(1.0, 2.0):
         build_stove_corner()
     with _shift(0.0, 1.0):

@@ -3834,6 +3834,26 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-11 · pass 74: THE CABIN, interior drafts 13 + 14 (the user's two
+notes, again).** *"More windows ... lets nature in through windows,
+lighting, art and wood sculpture in the build itself."* A SKYLIGHT in the
+south roof slab over the table (x −0.9..0.9, y 1.6..2.8): the slab and
+its interior planking are four pieces round the opening, the two rafters
+at ±0.5 become its dividing bars, a curb and a sloped glass; the day
+sun's shadows put its shaft on the floor north of the table. The kitchen
+window widened to a pair (1.60) with the crow's sill under it; the bed's
+east window a third larger (the cedars). THE CARVED FRAME, more: a leaf
+in relief on every knee brace; the cedar face on each of the four porch
+posts, as on the loft's; end-blocks on the west, north and loft sills; the
+gable windows' outside casing; the front door's inside face dressed (two
+battens, the latch bar, the coat pegs and a coat beside it — the door
+insert had framed a flat slab). Deck must REBUILD cabin_interior.
+**Draft 15 targets:** the skylight's shaft wants a day-preset spot
+through the opening so it reads under any sun angle; the kitchen pair's
+outside casing; a window seat under the widened south pair; the loft's
+footboard; the east room door's carved lintel; the tie beams' ends
+shaped; the day room's brightness under `day_bright`.
+
 **2026-10-11 · pass 73: `metadata/nightlight` — THE MIRROR, AND NEW AUBURN
 ROAD BY DAY.** MoodCycler gains the mirror of the daylight tag: a light
 carrying `metadata/nightlight` (a moon, a lot's sodium) follows

@@ -444,6 +444,13 @@ frame. Rules that came out of it:
   (Background3D sets the PostProcess `default_style_pack` before
   add_child); `raw_observation` (mood raw, lighting scene_default) keeps
   the preset's own light.
+- **A scene variant shares the GLB and copies the markers.**
+  `cabin_interior_bed.tscn` loads the same cabin GLB with its own copy
+  of the markers. Widening the kitchen window put a mullion across the
+  crow insert's line; the fix in `cabin_interior.tscn` passed the
+  per-locale gate, and the repo-wide suite failed on the variant's copy.
+  When a builder change moves a sightline, grep every `.tscn` that
+  references the GLB and fix the marker in each.
 - **Carving is geometry the kit already has.** The cedar face is a
   chamfered oval + a brow box + a nose box + two dark eye slots; a crow is
   a blob, a small lathe head, a tapered beak; a knee brace is one concave

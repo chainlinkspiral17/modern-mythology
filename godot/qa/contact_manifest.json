@@ -3124,7 +3124,7 @@
    "uses": 4,
    "moods": [
     "night",
-    "arcana_cool"
+    "day_bright"
    ],
    "markers": [
     {
@@ -8823,7 +8823,7 @@
    "vol": 6,
    "uses": 1,
    "moods": [
-    ""
+    "dusk"
    ],
    "markers": [
     {
