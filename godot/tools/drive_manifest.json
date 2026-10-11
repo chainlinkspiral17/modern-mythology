@@ -710,6 +710,11 @@
    "md5": "c048a9f343d60a853483381ba0d60f9e",
    "size": 358555
   },
+  "godot/assets/3d/characters/heroes/gracie_kowalski.glb": {
+   "at": "2026-10-11T20:46:34+00:00",
+   "md5": "4c2e27a5d4a780d36a7c045831de3d5f",
+   "size": 56090164
+  },
   "godot/assets/3d/characters/heroes/graciela_ramos.glb": {
    "at": "2026-10-01T01:48:41+00:00",
    "md5": "80521aab28fad2bb164a1fccaccda12e",
@@ -53114,6 +53119,41 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "34b0753e67842656f14cbba7f3d65291",
    "size": 72148
+  },
+  "godot/assets/concept/meshy/gracie_kowalski/back.png": {
+   "at": "2026-10-11T20:46:44+00:00",
+   "md5": "13beba05d4a93bd79c54842258ad2efd",
+   "size": 1978500
+  },
+  "godot/assets/concept/meshy/gracie_kowalski/front.png": {
+   "at": "2026-10-11T20:46:44+00:00",
+   "md5": "acf60eb7c32c816e68263e170b9f5120",
+   "size": 1983913
+  },
+  "godot/assets/concept/meshy/gracie_kowalski/gracie_kowalski_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T20:46:44+00:00",
+   "md5": "13beba05d4a93bd79c54842258ad2efd",
+   "size": 1978500
+  },
+  "godot/assets/concept/meshy/gracie_kowalski/gracie_kowalski_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T20:46:44+00:00",
+   "md5": "acf60eb7c32c816e68263e170b9f5120",
+   "size": 1983913
+  },
+  "godot/assets/concept/meshy/gracie_kowalski/gracie_kowalski_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T20:46:44+00:00",
+   "md5": "b6388a5318856e8a16a34c1c54c4c468",
+   "size": 1905138
+  },
+  "godot/assets/concept/meshy/gracie_kowalski/meshy_thumb.png": {
+   "at": "2026-10-11T20:46:44+00:00",
+   "md5": "b4f912d4eff6067ed5c71dc135f0ecc5",
+   "size": 76474
+  },
+  "godot/assets/concept/meshy/gracie_kowalski/side.png": {
+   "at": "2026-10-11T20:46:44+00:00",
+   "md5": "b6388a5318856e8a16a34c1c54c4c468",
+   "size": 1905138
   },
   "godot/assets/concept/meshy/graciela_ramos/front.png": {
    "at": "2026-10-01T01:23:48+00:00",
