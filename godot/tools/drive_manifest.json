@@ -990,6 +990,11 @@
    "md5": "dda0b75377d03d8d7709a773dcf2011d",
    "size": 67325
   },
+  "godot/assets/3d/characters/heroes/mrs_gable.glb": {
+   "at": "2026-10-11T17:44:05+00:00",
+   "md5": "ad257525f6a5d2da85382600608be4a9",
+   "size": 59848568
+  },
   "godot/assets/3d/characters/heroes/natalie_david.glb": {
    "at": "2026-10-01T01:48:41+00:00",
    "md5": "db3edf9fdb3a972f7623c15685cbdc6f",
@@ -52739,6 +52744,41 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "1e31482a27b2bfac9b9acc9d6dcd317b",
    "size": 82401
+  },
+  "godot/assets/concept/meshy/mrs_gable/back.png": {
+   "at": "2026-10-11T17:44:14+00:00",
+   "md5": "d189abb7b4f2a49cd0a7c9b278b1ec95",
+   "size": 2198196
+  },
+  "godot/assets/concept/meshy/mrs_gable/front.png": {
+   "at": "2026-10-11T17:44:14+00:00",
+   "md5": "9c2c738bb5cfcc996b1f20970c7d7553",
+   "size": 2214998
+  },
+  "godot/assets/concept/meshy/mrs_gable/meshy_thumb.png": {
+   "at": "2026-10-11T17:44:14+00:00",
+   "md5": "d2ad52d65244b457bbd3afa19e1ff78e",
+   "size": 85829
+  },
+  "godot/assets/concept/meshy/mrs_gable/mrs_gable_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T17:44:14+00:00",
+   "md5": "d189abb7b4f2a49cd0a7c9b278b1ec95",
+   "size": 2198196
+  },
+  "godot/assets/concept/meshy/mrs_gable/mrs_gable_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T17:44:14+00:00",
+   "md5": "9c2c738bb5cfcc996b1f20970c7d7553",
+   "size": 2214998
+  },
+  "godot/assets/concept/meshy/mrs_gable/mrs_gable_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T17:44:14+00:00",
+   "md5": "537878476a06e155b77167c1dd14c286",
+   "size": 2067144
+  },
+  "godot/assets/concept/meshy/mrs_gable/side.png": {
+   "at": "2026-10-11T17:44:14+00:00",
+   "md5": "537878476a06e155b77167c1dd14c286",
+   "size": 2067144
   },
   "godot/assets/concept/meshy/natalie_david/front.png": {
    "at": "2026-10-01T01:23:48+00:00",
