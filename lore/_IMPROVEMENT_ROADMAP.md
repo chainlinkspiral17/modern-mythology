@@ -3834,6 +3834,26 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-11 · pass 62: SKIES FOR THE FLAT BACKDROPS.** Fifty-six scenes
+still rendered `background_mode = 1` — a flat colour behind every cut
+window and over every exterior (a light-blue slab over the cabin road, the
+cemetery, the jetty, Little Switzerland; black behind the courtroom's and
+the bindery's windows). Thirty-four get a ProceduralSky at their majority
+hour (25 day · 3 dusk · 6 night), and the presets at the other hour get
+their sky by env: meadowlark_circle's two night presets, Graustark's
+wreck/cottage/St Jude (day) and chalk wall (night) on its dusk sky, New
+Auburn's lot (day) and bypass (6:42 dawn) on the road's night sky;
+natalie_apartment_night gets the sky keys its env lacked. Left flat on
+purpose: the diner, the Kwik Stop (a pass of its own — every one of its
+cuts is by day on a night-authored set), the cathedral, the darkroom, the
+nightmare cell, the no-window interiors (centro's aisles, the garages, the
+basements, the clubs). No Deck rebuild. **Draft N+1:** the Kwik Stop by
+day (sky, a day env, the streetlamp practicals off); new_orleans_room
+(night / afternoon on one preset — a twin); a sun for each exterior that
+got a day sky but kept a template Key (check `light_direction` travel vs
+the new sky's sun); the skies' horizon colours per region (Oregon grey,
+Texas white, Louisiana haze) instead of one day palette.
+
 **2026-10-11 · pass 61: THE KITCHENS AND THE FIELD AT THE OTHER HOUR.**
 `school_field_day` — the field was authored for the evening (the six floods
 at 3.2, the lot lamps) and played two-a-days at dawn and seven-thirty, the

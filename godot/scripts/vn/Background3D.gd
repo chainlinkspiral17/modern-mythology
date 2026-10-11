@@ -296,6 +296,10 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(-194.50, 1.65, -168.60),
 		"camera_rotation": Vector3(0.273, 0.383, 0.0),
 		"fov": 60.0,
+		# (pass 62) ch5 lunch on the dusk sky added to Graustark
+		"env": {"sky_top": Color(0.40, 0.56, 0.80, 1), "sky_horizon": Color(0.84, 0.86, 0.84, 1),
+			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
+			"ambient_color": Color(0.82, 0.82, 0.80, 1), "ambient_energy": 0.90, "fog_color": Color(0.80, 0.82, 0.80, 1)},
 		"suppress_input": true,
 	},
 	"graustark_armory_park": {
@@ -339,6 +343,10 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(35.20, 1.75, 370.40),
 		"camera_rotation": Vector3(-0.021, -2.023, 0.0),
 		"fov": 56.0,
+		# (pass 62) ch17 Star / ch9 Hermit at night and dusk on the dusk sky added to Graustark
+		"env": {"sky_top": Color(0.05, 0.06, 0.13, 1), "sky_horizon": Color(0.16, 0.15, 0.21, 1),
+			"ground_horizon": Color(0.08, 0.08, 0.10, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.36, 0.36, 0.46, 1), "ambient_energy": 0.40, "fog_color": Color(0.12, 0.12, 0.16, 1)},
 		"suppress_input": true,
 	},
 	# ── VOL 5 — Star — the cottage (the annual offering) ─────────
@@ -371,6 +379,10 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(49.20, 1.65, 394.00),
 		"camera_rotation": Vector3(0.041, -0.234, 0.0),
 		"fov": 55.0,
+		# (pass 62) ch21 afternoon on the dusk sky added to Graustark
+		"env": {"sky_top": Color(0.40, 0.56, 0.80, 1), "sky_horizon": Color(0.84, 0.86, 0.84, 1),
+			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
+			"ambient_color": Color(0.82, 0.82, 0.80, 1), "ambient_energy": 0.90, "fog_color": Color(0.80, 0.82, 0.80, 1)},
 		"suppress_input": true,
 	},
 	# ── VOL 5 — Judgement — the Minstral's Green wreck ────────────
@@ -386,6 +398,10 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(45.50, 0.37, 141.50),
 		"camera_rotation": Vector3(0.041, 0.275, 0.0),
 		"fov": 60.0,
+		# (pass 62) ch20/ch21 mornings on the dusk sky added to Graustark
+		"env": {"sky_top": Color(0.40, 0.56, 0.80, 1), "sky_horizon": Color(0.84, 0.86, 0.84, 1),
+			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
+			"ambient_color": Color(0.82, 0.82, 0.80, 1), "ambient_energy": 0.90, "fog_color": Color(0.80, 0.82, 0.80, 1)},
 		"suppress_input": true,
 	},
 	# ── VOL 5 — Lovers — Roberts house kitchen ───────────────────
@@ -449,7 +465,8 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(-2.6, 1.62, -0.7),
 		"camera_rotation": Vector3(-0.05, deg_to_rad(-60.7), 0.0),
 		"fov": 62.0,
-		"env": {"ambient_color": Color(0.34, 0.34, 0.46, 1), "ambient_energy": 0.42, "fog_color": Color(0.14, 0.14, 0.20, 1)},
+		"env": {"sky_top": Color(0.05, 0.06, 0.13, 1), "sky_horizon": Color(0.16, 0.15, 0.21, 1), "ground_horizon": Color(0.08, 0.08, 0.10, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.34, 0.34, 0.46, 1), "ambient_energy": 0.42, "fog_color": Color(0.14, 0.14, 0.20, 1)},
 		"suppress_input": true,
 	},
 	"simon_apartment": {
@@ -1678,6 +1695,10 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(24.0, 1.6, -4.0),
 		"camera_rotation": Vector3(-0.02, 1.5708, 0.0),
 		"fov": 62.0,
+		# (pass 62) the circle at night, on the day sky added to the set
+		"env": {"sky_top": Color(0.05, 0.06, 0.13, 1), "sky_horizon": Color(0.16, 0.15, 0.21, 1),
+			"ground_horizon": Color(0.08, 0.08, 0.10, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.36, 0.36, 0.46, 1), "ambient_energy": 0.40, "fog_color": Color(0.12, 0.12, 0.16, 1)},
 		"suppress_input": true,
 	},
 	# ── VOL 6 — the cab (re-homed off louisiana_road 2026-09-03): every
@@ -1863,6 +1884,10 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(0.0, 1.5, -1.5),
 		"camera_rotation": Vector3(0.02, -0.11, 0.0),
 		"fov": 58.0,
+		# (pass 62) the Hendersons' drive at night, on the day sky added to the set
+		"env": {"sky_top": Color(0.05, 0.06, 0.13, 1), "sky_horizon": Color(0.16, 0.15, 0.21, 1),
+			"ground_horizon": Color(0.08, 0.08, 0.10, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.36, 0.36, 0.46, 1), "ambient_energy": 0.40, "fog_color": Color(0.12, 0.12, 0.16, 1)},
 		"suppress_input": true,
 	},
 	# ── VOL 7 — Tideline Survey, inside the stick (re-homed off cabin_road
@@ -1982,6 +2007,10 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(23.0, 1.6, -44.0),
 		"camera_rotation": Vector3(-0.04, -0.896, 0.0),
 		"fov": 56.0,
+		# (pass 62) ch3 Cosmic Comics' lot by day on the night sky added to the road set
+		"env": {"sky_top": Color(0.40, 0.56, 0.80, 1), "sky_horizon": Color(0.84, 0.86, 0.84, 1),
+			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
+			"ambient_color": Color(0.82, 0.82, 0.80, 1), "ambient_energy": 0.90, "fog_color": Color(0.80, 0.82, 0.80, 1)},
 		"suppress_input": true,
 	},
 	"new_auburn_two_lane": {
@@ -2004,6 +2033,10 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(-3.0, 1.7, -104.0),
 		"camera_rotation": Vector3(-0.03, 0.95, 0.0),
 		"fov": 60.0,
+		# (pass 62) ch6 Service Roads at 6:42 on the night sky added to the road set
+		"env": {"sky_top": Color(0.30, 0.36, 0.58, 1), "sky_horizon": Color(0.92, 0.70, 0.52, 1),
+			"ground_horizon": Color(0.30, 0.28, 0.26, 1), "ground_bottom": Color(0.12, 0.12, 0.12, 1),
+			"ambient_color": Color(0.72, 0.62, 0.58, 1), "ambient_energy": 0.70, "fog_color": Color(0.60, 0.50, 0.46, 1)},
 		"suppress_input": true,
 	},
 	"new_auburn_cedar_route": {
