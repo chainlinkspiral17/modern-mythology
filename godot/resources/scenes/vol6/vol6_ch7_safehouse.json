@@ -49,6 +49,10 @@
       "pos": "left"
     },
     {
+      "t": "bg",
+      "src": "3d:safehouse_porch"
+    },
+    {
       "t": "narrate",
       "text": "[shot:closeup graciela]Outside, on the porch, Diego's grandmother — Graciela Ramos, who has not left the safehouse since arriving last night at ten — is on the phone.",
       "voice": "assets/audio/voice/vol6_ch7_safehouse/009.mp3"
@@ -104,6 +108,10 @@
       "char": "sam",
       "expr": "sad",
       "pos": "right"
+    },
+    {
+      "t": "bg",
+      "src": "3d:vehicle_cab"
     },
     {
       "t": "narrate",

@@ -410,3 +410,29 @@ metadata/fov = 44.0
 position = Vector3(0.000, 1.500, -2.600)
 rotation = Vector3(-0.0218, -0.2873, 0.0)
 metadata/fov = 44.0
+
+; ── vn_shot coverage (pass 66) — the back porch, suffixed __safehouse_porch (the glider at blender (1.55, 5.8))
+; closeup (porch): Graciela in the glider, the phone, forty minutes in
+[node name="shot_closeup_graciela__safehouse_porch" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.200, 1.300, -6.250)
+rotation = Vector3(-0.2119, -1.8245, 0.0)
+metadata/fov = 42.0
+
+; closeup (porch): the same frame
+[node name="shot_closeup_person__safehouse_porch" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.200, 1.300, -6.250)
+rotation = Vector3(-0.2119, -1.8245, 0.0)
+metadata/fov = 42.0
+
+; closeup (porch): the reverse, from the east end
+[node name="shot_closeup_person_b__safehouse_porch" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.000, 1.300, -6.250)
+rotation = Vector3(-0.1985, 1.8076, 0.0)
+metadata/fov = 42.0
+
+; establish (porch): along the porch from its west end, the glider, the step, the yard
+[node name="shot_establish_b__safehouse_porch" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.000, 1.550, -6.000)
+rotation = Vector3(-0.1610, -1.4841, 0.0)
+metadata/fov = 58.0
+

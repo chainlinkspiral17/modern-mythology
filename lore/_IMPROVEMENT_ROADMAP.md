@@ -3834,6 +3834,24 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-11 · pass 66: THE SAFEHOUSE PORCH + SAM IN HER COROLLA.** ch7
+Family Only — Graciela on the back porch on the phone with Sam for forty
+minutes — played in the bedroom; the porch was already built (the deck,
+the posts, the shed roof, the glider she phones from, the mug) beyond
+the N window. New preset `safehouse_porch` on the same scene (camera in
+the yard past the rail, the glider with the house behind it; four
+suffixed markers; the bedroom's day env). Sam's side of the call — "in
+her Corolla in the parking lot of the Kwik Stop" — and ch2's Gas & Go
+lot (Sam parked in the Kwik Stop lot at night watching the Gas & Go
+through her windshield, the phone, Maya's reply) both played on store
+interiors: the cab now (`vehicle_cab` by day, `vehicle_cab_night` for
+ch2, whose phone insert the cab has). No Deck rebuild. **Draft N+1:** the
+porch at night for ch6 (candlelight_low — a porch bulb practical, the
+builder promises one); the Corolla as its own cab dressing (a sedan, not
+Ben's pickup — a `vehicle_cab_corolla` area like the Altima's); the
+Kwik Stop lot from the car (the windshield's view: the store's lit
+front, the Gas & Go three blocks on).
+
 **2026-10-11 · pass 65: THE PIT STOP BACK LOT (draft 1).** vol6 ch2
 Dumpster — a whole chapter at the dumpster behind the kitchen — played on
 the diner's front room. The kitchen gets a BACK DOOR in its north wall's

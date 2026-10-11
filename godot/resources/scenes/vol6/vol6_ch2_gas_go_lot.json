@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "3d:nexcorp_gas_go"
+      "src": "3d:vehicle_cab_night"
     },
     {
       "t": "hide",

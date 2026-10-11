@@ -1622,6 +1622,22 @@ const CAMERA_PRESETS := {
 			"ambient_color": Color(0.82, 0.82, 0.80, 1), "ambient_energy": 0.80, "fog_color": Color(0.80, 0.82, 0.80, 1)},
 		"suppress_input": true,
 	},
+	"safehouse_porch": {
+		"scene": "res://scenes/locales/safehouse_bedroom.tscn",
+		"requires_glb": "res://assets/3d/locales/safehouse_bedroom.glb",
+		# (pass 66, 2026-10-11) ch7 Family Only: "Outside, on the porch, Diego's
+		# grandmother ... is on the phone" — the back porch beyond the bedroom's N
+		# window (blender y 4.8..7.2, godot z -4.8..-7.2), the glider she phones
+		# from at x 1.55. Camera in the yard past the rail, looking at the glider
+		# with the house behind it. Markers suffixed __safehouse_porch.
+		"camera_origin": Vector3(1.30, 1.50, -8.70),
+		"camera_rotation": Vector3(-0.170, -3.056, 0.0),
+		"fov": 58.0,
+		"env": {"sky_top": Color(0.40, 0.56, 0.80, 1), "sky_horizon": Color(0.84, 0.86, 0.84, 1),
+			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
+			"ambient_color": Color(0.82, 0.82, 0.80, 1), "ambient_energy": 0.80, "fog_color": Color(0.80, 0.82, 0.80, 1)},
+		"suppress_input": true,
+	},
 	"el_rancho_drive_thru": {
 		"scene": "res://scenes/locales/el_rancho_taqueria.tscn",
 		"requires_glb": "res://assets/3d/locales/el_rancho_taqueria.glb",

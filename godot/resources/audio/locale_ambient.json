@@ -185,6 +185,10 @@
       "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
       "gain": 0.85
     },
+    "safehouse_porch": {
+      "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
+      "gain": 0.85
+    },
     "elicia_apartment": {
       "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
       "gain": 0.88
