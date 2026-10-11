@@ -261,24 +261,24 @@
    "size": 47592640
   },
   "godot/assets/3d/characters/heroes/chief_miller_0.jpg": {
-   "at": "2026-10-01T01:23:48+00:00",
-   "md5": "1a02afd8a673d2e99f139f3a71838dd3",
-   "size": 11393236
+   "at": "2026-10-11T17:33:38+00:00",
+   "md5": "039034d371fd25e8a869f3bc48b402f9",
+   "size": 10904855
   },
   "godot/assets/3d/characters/heroes/chief_miller_1.jpg": {
-   "at": "2026-10-01T01:23:48+00:00",
-   "md5": "e319ae34a40fc711b590758ed0711ae5",
-   "size": 1491860
+   "at": "2026-10-11T17:33:38+00:00",
+   "md5": "a7550fd0774f4a47fa493c44c229d0b9",
+   "size": 1560356
   },
   "godot/assets/3d/characters/heroes/chief_miller_2.jpg": {
-   "at": "2026-10-01T01:23:48+00:00",
-   "md5": "e207408928bf8c5e7390bcef438eec5d",
-   "size": 7639674
+   "at": "2026-10-11T17:33:38+00:00",
+   "md5": "513625d95684b28eb1bb7ccb5b17e6bf",
+   "size": 7293480
   },
   "godot/assets/3d/characters/heroes/chief_miller_3.jpg": {
-   "at": "2026-10-01T01:23:48+00:00",
-   "md5": "dc4126da4e030d30f9f3b4a0fe1e2721",
-   "size": 72765
+   "at": "2026-10-11T17:33:38+00:00",
+   "md5": "ce16d61b76c2a3bd754ddfdc5eeec382",
+   "size": 66684
   },
   "godot/assets/3d/characters/heroes/claire_moyer.glb": {
    "at": "2026-10-01T01:48:41+00:00",
@@ -509,6 +509,26 @@
    "at": "2026-10-11T16:46:47+00:00",
    "md5": "14f82824cdfb1c5355a15b65d0427af5",
    "size": 106243392
+  },
+  "godot/assets/3d/characters/heroes/em_keys_0.jpg": {
+   "at": "2026-10-11T17:33:38+00:00",
+   "md5": "50c409e74118d97b7782d2c53cc2ed0d",
+   "size": 12143098
+  },
+  "godot/assets/3d/characters/heroes/em_keys_1.jpg": {
+   "at": "2026-10-11T17:33:38+00:00",
+   "md5": "173c8ddba1ebf3a4c671dedcfc8d8a8b",
+   "size": 1992749
+  },
+  "godot/assets/3d/characters/heroes/em_keys_2.jpg": {
+   "at": "2026-10-11T17:33:38+00:00",
+   "md5": "09252d2b08cad89e6bb138f5ca6dd182",
+   "size": 8223536
+  },
+  "godot/assets/3d/characters/heroes/em_keys_3.jpg": {
+   "at": "2026-10-11T17:33:38+00:00",
+   "md5": "bdec60d33e9f455dfd45c162038482f9",
+   "size": 66326
   },
   "godot/assets/3d/characters/heroes/erica_campbell.glb": {
    "at": "2026-10-01T01:48:41+00:00",
@@ -850,6 +870,26 @@
    "md5": "fcd2aec3d43396b117cfb1e99be19aa0",
    "size": 63379996
   },
+  "godot/assets/3d/characters/heroes/lena_vargas_0.jpg": {
+   "at": "2026-10-11T17:33:38+00:00",
+   "md5": "a921a16335e8060b9b03bd3593c9837a",
+   "size": 12953085
+  },
+  "godot/assets/3d/characters/heroes/lena_vargas_1.jpg": {
+   "at": "2026-10-11T17:33:38+00:00",
+   "md5": "e1dfa1b5a0d66d67ac2760b63897d407",
+   "size": 2079103
+  },
+  "godot/assets/3d/characters/heroes/lena_vargas_2.jpg": {
+   "at": "2026-10-11T17:33:38+00:00",
+   "md5": "065d250e0dbd0b9e0d191fd40ba01b1d",
+   "size": 8784208
+  },
+  "godot/assets/3d/characters/heroes/lena_vargas_3.jpg": {
+   "at": "2026-10-11T17:33:38+00:00",
+   "md5": "1e4fec7c70e7d0a0341f853be67077cd",
+   "size": 67222
+  },
   "godot/assets/3d/characters/heroes/linda_caldwell.glb": {
    "at": "2026-10-01T01:48:41+00:00",
    "md5": "94396791f2a0a830a0ac4e0533189cf8",
@@ -980,6 +1020,26 @@
    "md5": "496d9c806cfae5b9a2312158ebb1eb58",
    "size": 60975900
   },
+  "godot/assets/3d/characters/heroes/nate_bassist_0.jpg": {
+   "at": "2026-10-11T17:33:38+00:00",
+   "md5": "970d303f4fac21ebdac73686224b451c",
+   "size": 14726743
+  },
+  "godot/assets/3d/characters/heroes/nate_bassist_1.jpg": {
+   "at": "2026-10-11T17:33:38+00:00",
+   "md5": "1b512a3a6ba162db1a35c6bb2a547b4b",
+   "size": 1581072
+  },
+  "godot/assets/3d/characters/heroes/nate_bassist_2.jpg": {
+   "at": "2026-10-11T17:33:38+00:00",
+   "md5": "e9e565aacf03ea623225bed5dd3898ae",
+   "size": 9967231
+  },
+  "godot/assets/3d/characters/heroes/nate_bassist_3.jpg": {
+   "at": "2026-10-11T17:33:38+00:00",
+   "md5": "f634998803d3b0196b1d4a6d19de51f9",
+   "size": 68638
+  },
   "godot/assets/3d/characters/heroes/nicola.glb": {
    "at": "2026-10-01T01:48:41+00:00",
    "md5": "1f5a67b6f9aef1480812a7d16e3e48d0",
@@ -1109,6 +1169,26 @@
    "at": "2026-10-11T16:25:49+00:00",
    "md5": "7867ad27b87148a21aad2f639e000e93",
    "size": 63506904
+  },
+  "godot/assets/3d/characters/heroes/sam_miller_0.jpg": {
+   "at": "2026-10-11T17:33:38+00:00",
+   "md5": "40c07702c45b085feea3aeafffbcc825",
+   "size": 14459829
+  },
+  "godot/assets/3d/characters/heroes/sam_miller_1.jpg": {
+   "at": "2026-10-11T17:33:38+00:00",
+   "md5": "ac84b95b8499516b56931abf9adf35d9",
+   "size": 1606225
+  },
+  "godot/assets/3d/characters/heroes/sam_miller_2.jpg": {
+   "at": "2026-10-11T17:33:38+00:00",
+   "md5": "3a503ea5b269c5964a960f318fe9705e",
+   "size": 9614524
+  },
+  "godot/assets/3d/characters/heroes/sam_miller_3.jpg": {
+   "at": "2026-10-11T17:33:38+00:00",
+   "md5": "a3136c862448f7c0307851dc589c2e4d",
+   "size": 67140
   },
   "godot/assets/3d/characters/heroes/sam_miller_apron.glb": {
    "at": "2026-10-01T01:48:41+00:00",
@@ -1340,10 +1420,35 @@
    "md5": "bc410fc85113b5d8c89c219ee4f4ad2e",
    "size": 67210
   },
+  "godot/assets/3d/characters/heroes/wren.glb": {
+   "at": "2026-10-11T17:33:38+00:00",
+   "md5": "65b8e490eb07dfde3f983f011d444e5b",
+   "size": 76036692
+  },
   "godot/assets/3d/characters/heroes/wren_vol6.glb": {
    "at": "2026-10-11T16:57:07+00:00",
    "md5": "da719770a8060f38c4ded90f38578c60",
    "size": 88725060
+  },
+  "godot/assets/3d/characters/heroes/wren_vol6_0.jpg": {
+   "at": "2026-10-11T17:33:38+00:00",
+   "md5": "329cd08dd0073294a211988c332be48f",
+   "size": 12005771
+  },
+  "godot/assets/3d/characters/heroes/wren_vol6_1.jpg": {
+   "at": "2026-10-11T17:33:38+00:00",
+   "md5": "bf837ed8c50232e4e19d5c1f0dfb2ac6",
+   "size": 1902583
+  },
+  "godot/assets/3d/characters/heroes/wren_vol6_2.jpg": {
+   "at": "2026-10-11T17:33:38+00:00",
+   "md5": "9c47caba978adb188718ce1b31630720",
+   "size": 7932193
+  },
+  "godot/assets/3d/characters/heroes/wren_vol6_3.jpg": {
+   "at": "2026-10-11T17:33:38+00:00",
+   "md5": "7af787d1fbbacc22eb2bb26ed704f3c5",
+   "size": 67404
   },
   "godot/assets/3d/props/workbench_props.glb": {
    "at": "2026-10-11T16:25:59+00:00",
@@ -53514,6 +53619,56 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "c718dea9d7a5ae4af3186c8887c6e535",
    "size": 86975
+  },
+  "godot/assets/concept/meshy/wren/back.png": {
+   "at": "2026-10-11T17:33:50+00:00",
+   "md5": "1d93e87f3552e0047f62348173730f78",
+   "size": 1959635
+  },
+  "godot/assets/concept/meshy/wren/front.png": {
+   "at": "2026-10-11T17:33:50+00:00",
+   "md5": "a64f9124226a3842149549e4180282f0",
+   "size": 1811160
+  },
+  "godot/assets/concept/meshy/wren/meshy_thumb.png": {
+   "at": "2026-10-11T17:33:50+00:00",
+   "md5": "af6a514a48bb09e4d5583f62ed028011",
+   "size": 71282
+  },
+  "godot/assets/concept/meshy/wren/side.png": {
+   "at": "2026-10-11T17:33:50+00:00",
+   "md5": "ab6c11f24cd6bf4cdad5aa9f53f07c0f",
+   "size": 1861409
+  },
+  "godot/assets/concept/meshy/wren/wren_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T17:33:50+00:00",
+   "md5": "1d93e87f3552e0047f62348173730f78",
+   "size": 1959635
+  },
+  "godot/assets/concept/meshy/wren/wren_back_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-11T17:33:50+00:00",
+   "md5": "98845a320dd9385288fecacec850c901",
+   "size": 1972288
+  },
+  "godot/assets/concept/meshy/wren/wren_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T17:33:50+00:00",
+   "md5": "a64f9124226a3842149549e4180282f0",
+   "size": 1811160
+  },
+  "godot/assets/concept/meshy/wren/wren_front_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-11T17:33:50+00:00",
+   "md5": "2da45543657b031099b57410c603b27d",
+   "size": 1936424
+  },
+  "godot/assets/concept/meshy/wren/wren_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T17:33:50+00:00",
+   "md5": "ab6c11f24cd6bf4cdad5aa9f53f07c0f",
+   "size": 1861409
+  },
+  "godot/assets/concept/meshy/wren/wren_side_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-11T17:33:50+00:00",
+   "md5": "df8aa25f603393b3451c6fd73fb1ea16",
+   "size": 1868319
   },
   "godot/assets/concept/meshy/wren_vol6/back.png": {
    "at": "2026-10-11T16:57:17+00:00",
