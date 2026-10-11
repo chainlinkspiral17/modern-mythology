@@ -1087,7 +1087,11 @@ async function audOpen(deviceId) {
   const dev = AUD.devices.find(d => d.deviceId === deviceId) || { label: deviceId };
   try { AUD.stream = await AK.inputs.open(deviceId, 2); }
   catch (e) { say('aud-msg', 'could not open “' + dev.label + '”: ' + (e.name || e.message), true); return; }
-  AUD.deviceId = deviceId; AUD.label = dev.label || '(unnamed — Chrome hid it; maybe not the FM-1)';
+  // the open stream's own track often carries the name even when Chrome hides it in the device list
+  const trackLabel = (AUD.stream.getAudioTracks()[0] || {}).label || '';
+  const name = dev.label || trackLabel;     // (MediaDeviceInfo.label is read-only: never assign to it)
+  if (!dev.label && trackLabel && FM1_AUDIO_RX.some(rx => rx.test(trackLabel))) setCheck('audio', 'found', 'pass', '“' + trackLabel + '” (named by the open stream — Chrome hid it in the device list)');
+  AUD.deviceId = deviceId; AUD.named = !!name; AUD.label = name || '(unnamed — Chrome hid it; maybe not the FM-1)';
   AUD.src = ctx.createMediaStreamSource(AUD.stream);
   AUD.cap = new AK.Capture(ctx, AUD.src, { preRollSec: 1, maxChannels: 2 });
   await AUD.cap.start();
@@ -1164,6 +1168,12 @@ ACT['aud-level'] = async () => {
     setCheck('audio', 'level', ok ? 'pass' : 'fail', 'note peak ' + dbfs(pk).toFixed(1) + ' dBFS vs quiet ' + (floor > 0 ? dbfs(floor).toFixed(1) : '−∞') + ' dBFS' +
       (ok ? '' : pk <= 0.01 ? ' — nothing arrived: wrong input, FM-1 volume down, or this firmware sends no USB audio' : ' — too close to the noise'));
     say('aud-msg', ok ? 'level detected. Next: MEASURE.' : 'no clear level — see the result row.', !ok);
+    // Chrome hid the input's name: tell a digital (USB) input from a microphone by its silence. A mic or an
+    // analog input always has a noise floor; USB audio from a synth between notes is exact digital silence.
+    if (ok && !AUD.named) {
+      if (floor < 1e-5) setCheck('audio', 'found', 'pass', 'unnamed input (Chrome hid its name), but it is digitally silent between notes (quiet ' + (floor > 0 ? dbfs(floor).toFixed(1) + ' dBFS' : '−∞') + ') — a USB audio input like the FM-1\'s, not a microphone');
+      else setCheck('audio', 'found', 'fail', 'unnamed input with background noise (quiet ' + dbfs(floor).toFixed(1) + ' dBFS) — probably a microphone hearing the FM-1, not its USB audio');
+    }
   } finally { audBusy = false; }
 };
 ACT['lat-run'] = async () => {

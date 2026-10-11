@@ -141,6 +141,24 @@ suite('fm1 checkout · mock hardware', async t => {
     t.noErrors(o.errors);
   });
 
+  await t.test('names hidden for good: an unnamed pick fails until its digital silence shows it is USB audio', async () => {
+    const o = await open('felucca', { hideLabels: true }), { p } = o;
+    await o.connect();
+    await o.goto('audio');
+    await o.press('[data-act="aud-find"]'); await p.waitForTimeout(300);
+    const msg = await p.evaluate(() => document.getElementById('aud-msg').textContent);
+    t.ok(/hiding the input names/i.test(msg), 'explains hidden names: ' + msg.slice(0, 60));
+    await o.press('[data-act="aud-pick"]');
+    t.ok(await o.waitFor(() => !!AUD.cap, 5000), 'unnamed input opened');
+    t.eq(await p.evaluate(() => R.steps.audio.checks.found.status), 'fail', 'unnamed pick not trusted yet');
+    await p.waitForTimeout(400);
+    await o.press('[data-act="aud-level"]');
+    t.ok(await o.waitFor(() => R.steps.audio.checks.level.status !== 'pending', 6000), 'level check ran');
+    const r = await p.evaluate(() => ({ found: R.steps.audio.checks.found.status, why: R.steps.audio.checks.found.value }));
+    t.eq(r.found, 'pass', 'digital silence between notes → USB input: ' + r.why.slice(0, 80));
+    t.noErrors(o.errors);
+  });
+
   await t.test('answers persist across a reload', async () => {
     const o = await open('felucca'), { p } = o;
     await o.connect();

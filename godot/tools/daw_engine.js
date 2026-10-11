@@ -1038,7 +1038,14 @@ registerProcessor('mm-daw-rec', MMDawRec);
     }
     setLatencyUse(use) { if (['auto', 'fm1', 'input'].includes(use)) { this.lat.use = use; this.saveLatency(); this.emit('latency', this.lat); } }
     // which audio number an audio take uses: the FM-1's when the input is the FM-1's USB audio
-    audioLatencyKind() { const u = this.lat.use; return u === 'fm1' || u === 'input' ? u : FM1_INPUT_RX.test(this.inputLabel || '') ? 'fm1' : 'input'; }
+    // auto: an input named like the FM-1 → FM-1 RETURN. Chrome can hide input names (seen on the Deck's Flatpak
+    // Chrome): an UNNAMED input then counts as the FM-1 when CHECK-OUT measured it and play-along was never calibrated
+    audioLatencyKind() {
+      const u = this.lat.use; if (u === 'fm1' || u === 'input') return u;
+      if (FM1_INPUT_RX.test(this.inputLabel || '')) return 'fm1';
+      if (this.inputStream && !this.inputLabel && this.lat.fm1.src !== 'default' && this.lat.input.src === 'default') return 'fm1';
+      return 'input';
+    }
     // what an audio take is shifted by: the FM-1 number + the master look-ahead (the DAW sends its MIDI that much
     // late, see HwDevice._send; CHECK-OUT has no limiter), or the play-along number as it stands (the loopback
     // clicks go through the same delayed click bus, so the look-ahead is already inside it)

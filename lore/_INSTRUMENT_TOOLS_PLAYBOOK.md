@@ -606,6 +606,31 @@ those tools.
   `getOutputTimestamp()`, which jitters a few ms under load. Tests now
   allow ±1 tick / ±4 ms. Don't promise sub-tick MIDI placement.
 
+### 2026-10-11 — third pass: telling USB audio from a mic when Chrome hides names
+
+- On the Deck's Flatpak Chrome, input names stayed hidden even when
+  the list was re-read during a live permission stream. Headless
+  Chromium with auto-granted permissions always shows names (on
+  `file://` too), so the real prompt couldn't be reproduced. The cause
+  is unconfirmed.
+- **Evidence beats names.** That run's quiet level was −∞ dBFS: exact
+  digital silence between notes. A microphone (the first run read
+  −71 dBFS) always has a noise floor, and USB audio from a synth does
+  not. The check-out now passes an unnamed input on digital silence
+  and fails it on a noise floor.
+- It also reads the open stream's own track label, which Chrome often
+  fills in when the device list is blank.
+- `MediaDeviceInfo.label` is read-only, and the page is `"use strict"`.
+  The first draft assigned to it and would have thrown on the Deck the
+  moment Chrome gave a track label. The mock's streams have no tracks,
+  so the tests couldn't catch it.
+- The DAW's "Auto" latency picked FM-1 RETURN only for an FM-1-named
+  input. An unnamed input now counts as the FM-1 when CHECK-OUT
+  measured it and play-along was never calibrated.
+- Verified: FM-1 USB audio on the Deck; round trip 142.9 ms
+  (jitter 3.3 ms) in Flatpak Chrome, 149.9 ms in an earlier run. Takes
+  align. Never monitor through the browser at this latency.
+
 ## TEMPLATE
 
 ```

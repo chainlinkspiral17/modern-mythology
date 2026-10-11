@@ -71,7 +71,7 @@ module.exports.MOCK = () => {
     const s = new MediaStream(); fake.add(s); return s;
   };
   let enumN = 0;
-  navigator.mediaDevices.enumerateDevices = async () => (P.hideLabelsOnce && enumN++ === 0) ? [
+  navigator.mediaDevices.enumerateDevices = async () => (P.hideLabels || (P.hideLabelsOnce && enumN++ === 0)) ? [
     { deviceId: '', kind: 'audioinput', label: '', groupId: '' },
   ] : [
     { deviceId: 'default', kind: 'audioinput', label: 'Default', groupId: 'a' },

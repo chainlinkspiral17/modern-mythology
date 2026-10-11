@@ -72,8 +72,10 @@ const FM1_REGISTRY = /*FM1-JSON-BEGIN*/{
                   "keys send on ch 1 at a fixed velocity of 90, note-offs arrive", "CC 74 changes the sound; CC 71, 1 and 7 do not",
                   "the knobs send no MIDI CC",
                   "single-voice DX7 dumps load and play as sent (MM SINE / BRASS / BELL)",
-                  "a DX7 parameter change (algorithm) is heard at once and redraws the screen"],
-        "pending": ["clock follow", "USB audio + latency on a named FM-1 input (the first run used an unnamed input: 149.9 ms ±0.4)"] },
+                  "a DX7 parameter change (algorithm) is heard at once and redraws the screen",
+                  "USB audio reaches the Deck: a digitally silent input carried the FM-1 at -14 dBFS (Chrome hid the input's name)",
+                  "round trip MIDI out -> FM-1 -> USB audio in, Flatpak Chrome on the Deck: 142.9 ms (jitter 3.3 ms); an earlier run 149.9 ms"],
+        "pending": ["clock follow"] },
       "summary": "Keeps the stock FM engine; adds VA (303 / supersaw), 8-bit, bitcrush, a 64-step sequencer, list menus, live knobs."
     },
     {
