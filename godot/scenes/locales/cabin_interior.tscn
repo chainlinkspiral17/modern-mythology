@@ -301,6 +301,14 @@ shadow_enabled = false
 spot_range = 8.0
 spot_angle = 28.0
 
+; (draft 12) the second oil lamp off the north tie beam, over the stove: blender (2.4, 6.3, 2.58) -> godot (2.4, 2.58, -6.3)
+[node name="OilLamp2_Font_Practical" type="OmniLight3D" parent="."]
+position = Vector3(2.400, 2.620, -6.300)
+light_color = Color(1.0, 0.78, 0.46, 1)
+light_energy = 1.10
+shadow_enabled = false
+omni_range = 4.2
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]

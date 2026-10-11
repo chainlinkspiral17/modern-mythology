@@ -207,7 +207,13 @@ def build_shell():
     make_box("Wall_N_E_Head", ((ne_x0 + ne_x1) / 2.0, ROOM_D, (ne_z1 + CEIL) / 2.0), (ne_x1 - ne_x0, 0.20, CEIL - ne_z1), wcol)
     make_box("Wall_N_W", ((wn_x0 + kw_x0) / 2.0, ROOM_D, CEIL / 2.0), (kw_x0 - wn_x0, 0.20, CEIL), wcol)
     make_box("Wall_N_Sill", ((kw_x0 + kw_x1) / 2.0, ROOM_D, kw_z0 / 2.0), (kw_x1 - kw_x0, 0.20, kw_z0), wcol)
-    make_box("Wall_N_Head", ((kw_x0 + kw_x1) / 2.0, ROOM_D, (kw_z1 + CEIL) / 2.0), (kw_x1 - kw_x0, 0.20, CEIL - kw_z1), wcol)
+    # (draft 12) the head over the kitchen window is cut for the LOFT'S window
+    # (x -3.0..-2.2, z 2.55..3.15): from the mattress, the lean-to and the creek
+    lw_x0, lw_x1, lw_z0, lw_z1 = -3.00, -2.20, 2.55, 3.15
+    make_box("Wall_N_Head", ((kw_x0 + kw_x1) / 2.0, ROOM_D, (kw_z1 + lw_z0) / 2.0), (kw_x1 - kw_x0, 0.20, lw_z0 - kw_z1), wcol)
+    make_box("Wall_N_Head_Top", ((kw_x0 + kw_x1) / 2.0, ROOM_D, (lw_z1 + CEIL) / 2.0), (kw_x1 - kw_x0, 0.20, CEIL - lw_z1), wcol)
+    make_box("Wall_N_Head_Pier_W", ((kw_x0 + lw_x0) / 2.0, ROOM_D, (lw_z0 + lw_z1) / 2.0), (lw_x0 - kw_x0, 0.20, lw_z1 - lw_z0), wcol)
+    make_box("Wall_N_Head_Pier_E", ((lw_x1 + kw_x1) / 2.0, ROOM_D, (lw_z0 + lw_z1) / 2.0), (kw_x1 - lw_x1, 0.20, lw_z1 - lw_z0), wcol)
     make_box("Wall_N_Base", (0.0, ROOM_D - 0.106, 0.08), (ROOM_W + 0.4, 0.012, 0.16), PAL_WALL["baseboard"])
     # the outside sill the crow stands on
     make_box("Kitchen_Window_OutSill", ((kw_x0 + kw_x1) / 2.0, ROOM_D + 0.275, 1.04), (1.10, 0.35, 0.04), wcol)
@@ -880,6 +886,55 @@ def build_nature_let_in_2026_10():
     for bi, (bx, by, br) in enumerate(((0.9, 9.7, 0.75), (2.75, 10.8, 0.90), (4.5, 9.6, 0.70))):
         make_blob(f"Thru_N_Salmonberry_{bi}", (bx, by, YARD_Z + br * 0.6), br, (0.30, 0.44, 0.22, 1.0), noise=0.28, seed=30 + bi, squash=0.7)
     make_lathe("Thru_N_Stump", (2.4, 9.1, YARD_Z), [(0.28, 0.0), (0.26, 0.28), (0.22, 0.42), (0.0, 0.42)], (0.40, 0.31, 0.22, 1.0), segments=10)
+
+
+def build_draft12_2026_10():
+    """INTERIOR DRAFT 12 (2026-10-11): the loft's own window in the north
+    wall over the kitchen window (from Eddvard's mattress: the lean-to, the
+    creek); the ridge beam's ends carved as crow heads at both gables ("The
+    Crow Rang"); a carved lintel band of five salmon over the front door
+    inside, above the 1979 thermometer; a second oil lamp off the north tie
+    beam over the stove (its practical is in the .tscn); moss on Olaf's
+    stump; the east newel capped like the west. Draft 13 targets: the
+    braces' leaf relief; the window sills' end-blocks; the porch posts
+    carved to match the loft's; the gable windows' outside casing."""
+    cedar_dk, timber = COL_WOOD_DK, (0.38, 0.27, 0.17, 1.0)
+    crow = (0.12, 0.11, 0.12, 1.0)
+    # the loft's window: frame, glass, muntins, sill on the room face
+    make_frame_ring("Loft_Window_Frame", (-2.60, ROOM_D - 0.12, 2.85), (0.90, 0.04, 0.70), cedar_dk)
+    make_box("Loft_Window_Glass", (-2.60, ROOM_D - 0.15, 2.85), (0.76, 0.02, 0.56), COL_GLASS)
+    make_box("Loft_Window_Muntin_V", (-2.60, ROOM_D - 0.135, 2.85), (0.04, 0.01, 0.56), cedar_dk)
+    make_box("Loft_Window_Sill", (-2.60, ROOM_D - 0.16, 2.52), (0.96, 0.14, 0.04), cedar_dk)
+    # the ridge beam's crow heads, out of each gable's inner face
+    pitch = 0.80
+    ridge_z = CEIL + pitch * (ROOM_D / 2.0 + 0.20)
+    hz = ridge_z - 0.17
+    for e, nm in ((-1, "W"), (1, "E")):
+        hx = e * (ROOM_W / 2.0 - 0.10)
+        make_lathe(f"Ridge_Beam_Head_{nm}", (hx, ROOM_D / 2.0, hz),
+                   [(0.0, 0.0), (0.09, 0.02), (0.11, 0.10), (0.10, 0.20), (0.07, 0.30), (0.0, 0.34)],
+                   crow, segments=9, yaw=0.0)
+        make_taper_cyl(f"Ridge_Beam_Head_{nm}_Beak", (hx - e * 0.22, ROOM_D / 2.0, hz + 0.24), 0.035, 0.006, 0.18, (0.30, 0.26, 0.20, 1.0), segments=6, axis='X')
+    # the carved lintel band over the front door, above the thermometer
+    make_box("Front_Door_Lintel", (0.0, 0.125, 2.86), (1.40, 0.05, 0.18), timber)
+    fish = [(-0.09, 0.0), (-0.055, 0.025), (0.025, 0.028), (0.065, 0.01), (0.09, 0.028), (0.09, -0.028), (0.065, -0.01), (0.025, -0.028), (-0.055, -0.025)]
+    for si, sx_ in enumerate((-0.52, -0.26, 0.0, 0.26, 0.52)):
+        _prism_ccw(f"Front_Door_Lintel_Salmon_{si}", (0.0, 0.125 + 0.025 + 0.008, 0.0),
+                   [(sx_ + u, 2.86 + v) for u, v in fish], 0.016, (0.70, 0.52, 0.34, 1.0), axis="Y")
+    # a second oil lamp off the north tie beam, over the stove's side of the room
+    lx, ly = 2.4, 6.30   # west of the tie beam's east brace (it hangs at x 2.96..3.9)
+    for ci, ang in enumerate((0.0, 2.094, 4.189)):
+        make_tube(f"OilLamp2_Chain_{ci}", [(lx, ly, CEIL - 0.12), (lx + 0.11 * _m.cos(ang), ly + 0.11 * _m.sin(ang), CEIL - 0.60)],
+                  0.004, COL_IRON, segments=4)
+    make_lathe("OilLamp2_Shade", (lx, ly, CEIL - 0.66), [(0.0, 0.0), (0.06, 0.0), (0.16, 0.08), (0.17, 0.10), (0.0, 0.10)], (0.30, 0.30, 0.32, 1.0), segments=14)
+    make_lathe("OilLamp2_Font", (lx, ly, CEIL - 0.82), [(0.03, 0.0), (0.07, 0.03), (0.075, 0.10), (0.05, 0.14), (0.035, 0.16)], COL_COPPER, segments=12)
+    make_lathe("OilLamp2_Chimney", (lx, ly, CEIL - 0.67), [(0.025, 0.0), (0.035, 0.04), (0.03, 0.09), (0.02, 0.12)], (0.80, 0.84, 0.86, 0.6), segments=10)
+    make_cyl("OilLamp2_Flame", (lx, ly, CEIL - 0.64), 0.010, 0.04, (1.0, 0.72, 0.24, 1.0), segments=5)
+    # moss on the stump, and the east newel's cap
+    make_blob("Thru_W_Stump_Moss", (-5.25, 7.05, YARD_Z + 0.57), 0.22, (0.30, 0.46, 0.20, 1.0), noise=0.3, seed=41, squash=0.35)
+    make_lathe("Loft_Newel_E", (-1.0, 5.30, LOFT_Z + 0.10),
+               [(0.05, 0.0), (0.05, 0.05), (0.034, 0.08), (0.046, 0.30), (0.030, 0.50), (0.044, 0.62), (0.036, 0.70), (0.058, 0.76), (0.058, 0.80), (0.03, 0.86), (0.0, 0.88)],
+               cedar_dk, segments=10)
 
 
 def build_crow_2026_08():
@@ -1592,6 +1647,7 @@ def main():
     build_loft()                      # (draft 10) actual coordinates
     build_architecture_2026_10()
     build_nature_let_in_2026_10()
+    build_draft12_2026_10()
     with _shift(1.0, 2.0):
         build_stove_corner()
     with _shift(0.0, 1.0):

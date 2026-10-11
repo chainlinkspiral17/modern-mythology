@@ -3834,6 +3834,20 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-11 · pass 59: THE CABIN, interior draft 12.** The loft's own
+window in the north wall over the kitchen window (the kitchen window's
+head cut again: from Eddvard's mattress, the lean-to and the creek); the
+ridge beam's ends carved as crow heads at both gables; a carved lintel band
+of five salmon over the front door inside, above the 1979 thermometer; a
+second oil lamp off the north tie beam over the stove's side (its
+practical in the .tscn, unsuffixed — it burns day and night); moss on
+Olaf's stump; the east newel capped. Deck must REBUILD cabin_interior.
+**Draft 13 targets:** the braces' leaf relief; the window sills'
+end-blocks; the porch posts carved to match the loft's; the gable windows'
+outside casing; the day room under `day_bright` is still the paint pass's
+dim orange — try a `lunch`-style mood for the daylight chapters or a
+brighter day env; the kitchen window as a pair.
+
 **2026-10-11 · pass 58: THE CABIN'S ARCHITECTURE (interior drafts 10 + 11) +
 the cabin by day.** The user, mid-run: *"Cabin needs more windows, more
 consideration to the space, a better architecture. Not a box."* and *"The
