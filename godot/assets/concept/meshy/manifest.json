@@ -3762,5 +3762,53 @@
     },
     "output": "godot/assets/3d/characters/heroes/anita_kowalski.glb",
     "file_size_kb": 50546.0
+  },
+  {
+    "at": "2026-10-11T20:31:59+00:00",
+    "stage": "image",
+    "slug": "anita_kowalski_scrubs",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Anita Kowalski (scrubs, ch17) like this: the scrubs she had changed into at the hospital before coming off shift, which is what Anita does on nights she is coming directly somewhere rather than going home. Her ponytail is low and loose. Additional direction: Anita Kowalski, mid-40s, a nurse coming straight from a hospital shift: teal scrubs, white sneakers, a lanyard badge tucked into the pocket, brown hair in a low loose ponytail, the tired steadiness of the end of a shift.\nFull-body concept render of Anita Kowalski (scrubs, ch17), a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/anita_kowalski_scrubs/anita_kowalski_scrubs_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/anita_kowalski_scrubs/anita_kowalski_scrubs_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/anita_kowalski_scrubs/anita_kowalski_scrubs_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-11T20:34:59+00:00",
+    "stage": "mesh",
+    "slug": "anita_kowalski_scrubs",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a12caa-7ac8-75ce-8e12-f7a1552a2748",
+    "inputs": [
+      "godot/assets/concept/meshy/anita_kowalski_scrubs/front.png",
+      "godot/assets/concept/meshy/anita_kowalski_scrubs/side.png",
+      "godot/assets/concept/meshy/anita_kowalski_scrubs/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "smart-topology",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/anita_kowalski_scrubs.glb",
+    "file_size_kb": 42158.6
   }
 ]
