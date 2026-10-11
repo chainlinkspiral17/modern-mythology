@@ -1070,6 +1070,11 @@
    "md5": "af04b943f6a53ca8808a4f5000a71c81",
    "size": 72060
   },
+  "godot/assets/3d/characters/heroes/petra.glb": {
+   "at": "2026-10-11T17:49:19+00:00",
+   "md5": "bb378ba9636989634b6ecb67a272fe75",
+   "size": 65793688
+  },
   "godot/assets/3d/characters/heroes/philip_roberts.glb": {
    "at": "2026-10-01T01:48:41+00:00",
    "md5": "25e99c18e3c732dbc0352f221ae9db42",
@@ -52834,6 +52839,41 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "bb75c34fd311617fdd324b83759f0a50",
    "size": 58955
+  },
+  "godot/assets/concept/meshy/petra/back.png": {
+   "at": "2026-10-11T17:49:30+00:00",
+   "md5": "b3697a4943b0c09a912f9b61cd73f169",
+   "size": 2024842
+  },
+  "godot/assets/concept/meshy/petra/front.png": {
+   "at": "2026-10-11T17:49:30+00:00",
+   "md5": "a6067997f6f55d3837b752fd71808278",
+   "size": 2104508
+  },
+  "godot/assets/concept/meshy/petra/meshy_thumb.png": {
+   "at": "2026-10-11T17:49:30+00:00",
+   "md5": "04988cfd04789c45a55cee5a52d7bd33",
+   "size": 94986
+  },
+  "godot/assets/concept/meshy/petra/petra_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T17:49:30+00:00",
+   "md5": "b3697a4943b0c09a912f9b61cd73f169",
+   "size": 2024842
+  },
+  "godot/assets/concept/meshy/petra/petra_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T17:49:30+00:00",
+   "md5": "a6067997f6f55d3837b752fd71808278",
+   "size": 2104508
+  },
+  "godot/assets/concept/meshy/petra/petra_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T17:49:30+00:00",
+   "md5": "c027b3e8ab4ef7ebcd35bd6e56e1c342",
+   "size": 1952500
+  },
+  "godot/assets/concept/meshy/petra/side.png": {
+   "at": "2026-10-11T17:49:30+00:00",
+   "md5": "c027b3e8ab4ef7ebcd35bd6e56e1c342",
+   "size": 1952500
   },
   "godot/assets/concept/meshy/philip_roberts/front.png": {
    "at": "2026-10-01T01:23:48+00:00",
