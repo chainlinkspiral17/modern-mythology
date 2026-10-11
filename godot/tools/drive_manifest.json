@@ -340,6 +340,11 @@
    "md5": "aae857e7f0c456d4c7d8be423ca3c86a",
    "size": 67016
   },
+  "godot/assets/3d/characters/heroes/coach_k.glb": {
+   "at": "2026-10-11T20:11:27+00:00",
+   "md5": "0946df41d10638c15d94a325cda3ade3",
+   "size": 40623668
+  },
   "godot/assets/3d/characters/heroes/curtis.glb": {
    "at": "2026-10-01T01:48:41+00:00",
    "md5": "586c434c49f4df772d33666b56e518d5",
@@ -52579,6 +52584,41 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "52a12c85f2b43c346bfd7f7df89e5a86",
    "size": 70738
+  },
+  "godot/assets/concept/meshy/coach_k/back.png": {
+   "at": "2026-10-11T20:11:37+00:00",
+   "md5": "f70c6690b447ec36d46da8884078f3f2",
+   "size": 2024735
+  },
+  "godot/assets/concept/meshy/coach_k/coach_k_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T20:11:37+00:00",
+   "md5": "f70c6690b447ec36d46da8884078f3f2",
+   "size": 2024735
+  },
+  "godot/assets/concept/meshy/coach_k/coach_k_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T20:11:37+00:00",
+   "md5": "e97ba8cc54edb0d171d05ec40b220430",
+   "size": 2094139
+  },
+  "godot/assets/concept/meshy/coach_k/coach_k_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T20:11:37+00:00",
+   "md5": "9adbb375addbdbfbb652b5b8390f1901",
+   "size": 1956256
+  },
+  "godot/assets/concept/meshy/coach_k/front.png": {
+   "at": "2026-10-11T20:11:37+00:00",
+   "md5": "e97ba8cc54edb0d171d05ec40b220430",
+   "size": 2094139
+  },
+  "godot/assets/concept/meshy/coach_k/meshy_thumb.png": {
+   "at": "2026-10-11T20:11:37+00:00",
+   "md5": "8dbd30c4c30e4d6a11b72f2544e0379f",
+   "size": 84853
+  },
+  "godot/assets/concept/meshy/coach_k/side.png": {
+   "at": "2026-10-11T20:11:37+00:00",
+   "md5": "9adbb375addbdbfbb652b5b8390f1901",
+   "size": 1956256
   },
   "godot/assets/concept/meshy/curtis/curtis_front_meshy_recovered.png": {
    "at": "2026-10-01T01:23:48+00:00",
