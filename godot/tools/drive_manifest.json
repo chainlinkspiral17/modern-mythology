@@ -830,6 +830,11 @@
    "md5": "b41c97ce511a2c9db21f815a4dd267fd",
    "size": 84280
   },
+  "godot/assets/3d/characters/heroes/jim_henderson.glb": {
+   "at": "2026-10-11T20:51:36+00:00",
+   "md5": "b1e0719949a21444717058a6cf27a87c",
+   "size": 36655876
+  },
   "godot/assets/3d/characters/heroes/jimmy_daigle.glb": {
    "at": "2026-10-01T01:48:41+00:00",
    "md5": "20c10e962249347860a6e2e0e438c987",
@@ -53314,6 +53319,41 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "89a9e1b61d6d4af42dddcd3761e20607",
    "size": 68793
+  },
+  "godot/assets/concept/meshy/jim_henderson/back.png": {
+   "at": "2026-10-11T20:51:46+00:00",
+   "md5": "a62a26de6faa9f06868828d2d3c1a60e",
+   "size": 1891986
+  },
+  "godot/assets/concept/meshy/jim_henderson/front.png": {
+   "at": "2026-10-11T20:51:46+00:00",
+   "md5": "f0d98d67b23097a2e127f6f8aec44d27",
+   "size": 1826457
+  },
+  "godot/assets/concept/meshy/jim_henderson/jim_henderson_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T20:51:46+00:00",
+   "md5": "a62a26de6faa9f06868828d2d3c1a60e",
+   "size": 1891986
+  },
+  "godot/assets/concept/meshy/jim_henderson/jim_henderson_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T20:51:46+00:00",
+   "md5": "f0d98d67b23097a2e127f6f8aec44d27",
+   "size": 1826457
+  },
+  "godot/assets/concept/meshy/jim_henderson/jim_henderson_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T20:51:46+00:00",
+   "md5": "d4c415b7139b7474a21041a1ad930e92",
+   "size": 1856134
+  },
+  "godot/assets/concept/meshy/jim_henderson/meshy_thumb.png": {
+   "at": "2026-10-11T20:51:46+00:00",
+   "md5": "a482ed30dd62e6ac187461f0b3e5849e",
+   "size": 57847
+  },
+  "godot/assets/concept/meshy/jim_henderson/side.png": {
+   "at": "2026-10-11T20:51:46+00:00",
+   "md5": "d4c415b7139b7474a21041a1ad930e92",
+   "size": 1856134
   },
   "godot/assets/concept/meshy/jimmy_daigle/front.png": {
    "at": "2026-10-01T01:23:48+00:00",
