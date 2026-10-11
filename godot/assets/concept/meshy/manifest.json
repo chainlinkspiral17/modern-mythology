@@ -2751,5 +2751,74 @@
     },
     "output": "godot/assets/3d/characters/heroes/per.glb",
     "file_size_kb": 53420.3
+  },
+  {
+    "at": "2026-10-11T18:00:30+00:00",
+    "stage": "image",
+    "slug": "sal_carratura",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Sal Carratura like this: Sal is Sal Carratura, sixty-four, the proprietor of Pizza Pirate since 1991. Additional direction: Sal Carratura, 64, Pizza Pirate since '91 and custodian of the SCUMM Machine since '07. Thick build, grey hair under a paper pizzeria hat, a flour-dusted red apron over a white t-shirt, black trousers, black non-slip shoes, a ring of small brass keys on his belt.\nFull-body concept render of Sal Carratura, a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/sal_carratura/sal_carratura_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/sal_carratura/sal_carratura_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/sal_carratura/sal_carratura_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-11T18:01:25+00:00",
+    "stage": "image",
+    "slug": "sal_carratura",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Sal Carratura like this: Sal is Sal Carratura, sixty-four, the proprietor of Pizza Pirate since 1991. Additional direction: Sal Carratura, 64, Pizza Pirate since '91 and custodian of the SCUMM Machine since '07. Thick build, grey hair under a paper pizzeria hat, a flour-dusted red apron over a white t-shirt, black trousers, black non-slip shoes, a ring of small brass keys on his belt.\nFull-body concept render of Sal Carratura, a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/sal_carratura/sal_carratura_front_openai_gpt-image-2.5-sunburst_02.png",
+      "godot/assets/concept/meshy/sal_carratura/sal_carratura_side_openai_gpt-image-2.5-sunburst_02.png",
+      "godot/assets/concept/meshy/sal_carratura/sal_carratura_back_openai_gpt-image-2.5-sunburst_02.png"
+    ]
+  },
+  {
+    "at": "2026-10-11T18:04:30+00:00",
+    "stage": "mesh",
+    "slug": "sal_carratura",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a12c20-d78b-7732-a391-09e01f20ab31",
+    "inputs": [
+      "godot/assets/concept/meshy/sal_carratura/front.png",
+      "godot/assets/concept/meshy/sal_carratura/side.png",
+      "godot/assets/concept/meshy/sal_carratura/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "smart-topology",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/sal_carratura.glb",
+    "file_size_kb": 42584.5
   }
 ]
