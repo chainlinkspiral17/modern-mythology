@@ -500,6 +500,11 @@
    "md5": "ef7476fa596294f1b9afcf0ce9f6c57a",
    "size": 69278
   },
+  "godot/assets/3d/characters/heroes/doug.glb": {
+   "at": "2026-10-11T21:25:27+00:00",
+   "md5": "25248ebbbedd039eefba2b0e5e88a944",
+   "size": 55393436
+  },
   "godot/assets/3d/characters/heroes/douglas_forte.glb": {
    "at": "2026-10-01T01:48:41+00:00",
    "md5": "560a9493ba6524564bef5508dfd581df",
@@ -52989,6 +52994,41 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "adeb840d548cb305b2b73fd71443a882",
    "size": 76252
+  },
+  "godot/assets/concept/meshy/doug/back.png": {
+   "at": "2026-10-11T21:25:37+00:00",
+   "md5": "cad349c49d2f538a2a800e4ab7a6ba1b",
+   "size": 2001906
+  },
+  "godot/assets/concept/meshy/doug/doug_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T21:25:37+00:00",
+   "md5": "cad349c49d2f538a2a800e4ab7a6ba1b",
+   "size": 2001906
+  },
+  "godot/assets/concept/meshy/doug/doug_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T21:25:37+00:00",
+   "md5": "5e9aee862ef2e6c9d500d0eed92887f0",
+   "size": 2022778
+  },
+  "godot/assets/concept/meshy/doug/doug_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T21:25:37+00:00",
+   "md5": "f766c37ff090158f9bb08049ecc29f3c",
+   "size": 1939130
+  },
+  "godot/assets/concept/meshy/doug/front.png": {
+   "at": "2026-10-11T21:25:37+00:00",
+   "md5": "5e9aee862ef2e6c9d500d0eed92887f0",
+   "size": 2022778
+  },
+  "godot/assets/concept/meshy/doug/meshy_thumb.png": {
+   "at": "2026-10-11T21:25:37+00:00",
+   "md5": "2abcdd1601b01d266f1a851233fb0b64",
+   "size": 90674
+  },
+  "godot/assets/concept/meshy/doug/side.png": {
+   "at": "2026-10-11T21:25:37+00:00",
+   "md5": "f766c37ff090158f9bb08049ecc29f3c",
+   "size": 1939130
   },
   "godot/assets/concept/meshy/douglas_forte/douglas_forte_front_meshy_recovered.png": {
    "at": "2026-10-01T01:23:48+00:00",
