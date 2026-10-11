@@ -310,6 +310,25 @@ light_energy = 1.10
 shadow_enabled = false
 omni_range = 4.2
 
+; (draft 17) the solar roof's two electric lights: the 12 V LED bar under the loft deck over the
+; counter (blender (-2.85, 6.60, LOFT_Z-0.05) -> godot (-2.85, 2.25, -6.60)) and the loft's battery
+; lantern on the low table (blender (-1.75, 7.25, 2.95)). Cool, low; they follow the night.
+[node name="Loft_LED_Bar_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-2.850, 2.230, -6.600)
+light_color = Color(0.86, 0.90, 1.0, 1)
+light_energy = 0.55
+shadow_enabled = false
+omni_range = 2.8
+metadata/nightlight = true
+
+[node name="Loft_Lantern_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-1.750, 2.980, -7.250)
+light_color = Color(0.92, 0.93, 0.98, 1)
+light_energy = 0.40
+shadow_enabled = false
+omni_range = 2.2
+metadata/nightlight = true
+
 ; (draft 15) the skylight's shaft — a day-preset spot through the opening over the table, so it reads under any sun
 [node name="Skylight_Shaft__cabin_interior_day" type="SpotLight3D" parent="."]
 position = Vector3(0.000, 5.300, -2.200)

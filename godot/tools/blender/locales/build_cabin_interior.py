@@ -326,42 +326,102 @@ def build_kitchen():
 def build_loft():
     """The sleeping loft above the kitchen + its ladder ("Marina
     woke at four-twenty in the loft above the kitchen. She came down
-    the loft ladder."). INTERIOR DRAFT 10 (2026-10-11): a real mezzanine,
-    x -4.0..-1.0 by y 5.3..8.0, its deck LOFT_Z — "the cedar ceiling above
-    the kitchen was the cedar Eddvard had milled in '79" is its underside —
-    on a front beam carried by two turned posts, railed on its two open
-    sides with turned balusters; Eddvard's old mattress at the north end
-    under the roof's low side. Built in actual coordinates (the old loft
-    was a 2.6 x 2.4 box in the kitchen's shifted frame)."""
-    X0, X1, Y0, Y1 = -4.0, -1.0, 5.30, ROOM_D
+    the loft ladder."). INTERIOR DRAFT 16 (2026-10-11, the user, three
+    times: "I don't want loft pillars going through furniture or furniture
+    arranged strangely around them … The island." / "More loft space."):
+    NO POSTS. The mezzanine is x -4.0..-0.5 by y 4.6..8.0 (3.5 x 3.4 m,
+    was 3 x 2.7), its deck LOFT_Z — "the cedar ceiling above the kitchen
+    was the cedar Eddvard had milled in '79" is its underside. It sits on
+    LEDGERS on its two walls and HANGS from the roof on 22 mm steel rods:
+    a steel strongback bolted across the rafters' undersides at the front
+    edge carries three rods to the front beam; the east beam hangs on two
+    from the rafter above it. Turnbuckles at the deck, plates at the roof.
+    Nothing stands on the kitchen floor. Rails on the two open sides with
+    turned balusters, a gap at the ladder; Eddvard's mattress at the north
+    end under the roof's low side; a reading end to the east (a cushion,
+    a low table, the battery lantern the solar roof charges, a rag rug);
+    a low shelf of books under the gable window.
+    Draft 17 targets: the rods' sway-brace pair; the strongback's bolt
+    heads; a second cushion; the lantern as a night practical."""
+    X0, X1, Y0, Y1 = -4.0, -0.5, 4.60, ROOM_D
     cedar, cedar_dk = (0.64, 0.48, 0.31, 1.0), COL_WOOD_DK
+    steel, steel_dk = (0.46, 0.47, 0.50, 1.0), (0.26, 0.27, 0.30, 1.0)
     make_box("Loft_Deck", ((X0 + X1) / 2.0, (Y0 + Y1) / 2.0, LOFT_Z + 0.05), (X1 - X0, Y1 - Y0, 0.10), cedar)
     # the deck's plank lines on its underside — the cedar ceiling, seen from the kitchen
-    for pi_, px in enumerate([X0 + 0.25 + 0.25 * i for i in range(12)]):
+    for pi_, px in enumerate([X0 + 0.25 + 0.25 * i for i in range(13)]):
         make_box(f"Loft_Deck_Seam_{pi_}", (px, (Y0 + Y1) / 2.0, LOFT_Z - 0.004), (0.008, Y1 - Y0 - 0.02, 0.008), (0.36, 0.26, 0.16, 1.0))
-    make_box("Loft_Beam", ((X0 + X1) / 2.0 + 0.1, Y0, LOFT_Z - 0.09), (X1 - X0 + 0.2, 0.14, 0.18), cedar_dk)
-    make_box("Loft_Beam_E", (X1, (Y0 + Y1) / 2.0, LOFT_Z - 0.09), (0.14, Y1 - Y0, 0.18), cedar_dk)
-    # two turned posts under the front beam (clear of the table's chair ring and the counter)
-    for pi_, px in enumerate((-1.0, -2.2)):
-        make_lathe(f"Loft_Post_{pi_}", (px, Y0, 0.0),
-                   [(0.075, 0.0), (0.075, 0.10), (0.06, 0.14), (0.066, 0.90), (0.056, 1.10), (0.066, 1.60), (0.06, 1.95), (0.075, 2.02), (0.075, LOFT_Z - 0.18)],
-                   cedar_dk, segments=10)
-    # the rails: along the front and down the east edge, turned balusters every 0.30
-    make_box("Loft_Rail", ((X0 + X1) / 2.0, Y0, LOFT_Z + 0.10 + 0.46), (X1 - X0, 0.05, 0.06), cedar_dk)
-    make_box("Loft_Rail_E", (X1, (Y0 + Y1) / 2.0, LOFT_Z + 0.10 + 0.46), (0.05, Y1 - Y0, 0.06), cedar_dk)
+    # the beams: the front (y Y0) and the east (x X1), and the ledgers on the W and N walls
+    make_box("Loft_Beam", ((X0 + X1) / 2.0 + 0.1, Y0, LOFT_Z - 0.11), (X1 - X0 + 0.2, 0.14, 0.22), cedar_dk)
+    make_box("Loft_Beam_E", (X1, (Y0 + Y1) / 2.0, LOFT_Z - 0.11), (0.14, Y1 - Y0, 0.22), cedar_dk)
+    make_box("Loft_Ledger_W", (-ROOM_W / 2.0 + 0.10 + 0.06, (Y0 + Y1) / 2.0, LOFT_Z - 0.09), (0.12, Y1 - Y0 - 0.1, 0.18), cedar_dk)
+    make_box("Loft_Ledger_N", ((X0 + X1) / 2.0, ROOM_D - 0.10 - 0.06, LOFT_Z - 0.09), (X1 - X0 - 0.1, 0.12, 0.18), cedar_dk)
+    # ── THE HANGERS (draft 16): no post touches the floor ──
+    pitch = 0.80
+    ridge_z = CEIL + pitch * (ROOM_D / 2.0 + 0.20)
+    under_n = lambda y: ridge_z - pitch * (y - ROOM_D / 2.0)
+    rafter_bot = lambda y: under_n(y) - 0.21
+    # the strongback: a steel channel across the rafters' undersides at the front edge
+    sb_z = rafter_bot(Y0) - 0.04
+    make_box("Roof_Hanger_Strongback", ((X0 + X1) / 2.0 + 0.05, Y0, sb_z), (X1 - X0 + 0.3, 0.10, 0.08), steel_dk)
+    for bi, bx in enumerate((-3.5, -2.5, -1.5, -0.5)):   # the bolts up into each rafter
+        make_cyl(f"Roof_Hanger_Strongback_Bolt_{bi}", (bx, Y0, sb_z + 0.045), 0.012, 0.012, steel, segments=6)
+    def rod(name, x, y, top_z):
+        bot = LOFT_Z + 0.10 + 0.06        # the turnbuckle's top sits on the deck plate
+        make_cyl(f"{name}", (x, y, (bot + top_z) / 2.0), 0.011, top_z - bot, steel, segments=8)
+        make_cyl(f"{name}_Plate", (x, y, LOFT_Z + 0.10 + 0.01), 0.06, 0.02, steel_dk, segments=10)
+        make_lathe(f"{name}_Turnbuckle", (x, y, LOFT_Z + 0.10 + 0.02),
+                   [(0.012, 0.0), (0.022, 0.02), (0.022, 0.12), (0.012, 0.14)], steel_dk, segments=8)
+    for ri, rx in enumerate((-3.0, -1.85, -0.72)):   # the east one just inside the corner newel
+        rod(f"Roof_Hanger_Rod_F{ri}", rx, Y0, sb_z - 0.04)
+    for ri, ry in enumerate((6.1, 7.4)):   # from the rafter at x -0.5, through a plate on its underside
+        make_box(f"Roof_Hanger_Rafter_Plate_{ri}", (X1, ry, rafter_bot(ry) - 0.012), (0.12, 0.16, 0.024), steel_dk)
+        rod(f"Roof_Hanger_Rod_E{ri}", X1, ry, rafter_bot(ry) - 0.024)
+    # the rails: along the front (a gap at the ladder, x -3.65..-2.95) and down the east edge
+    rail_z = LOFT_Z + 0.10 + 0.46
+    make_box("Loft_Rail_F_E", ((-2.95 + X1) / 2.0, Y0, rail_z), (X1 + 2.95, 0.05, 0.06), cedar_dk)
+    make_box("Loft_Rail_F_W", ((X0 + 0.10 - 3.65) / 2.0, Y0, rail_z), (3.65 - X0 - 0.10, 0.05, 0.06), cedar_dk)
+    make_box("Loft_Rail_E", (X1, (Y0 + Y1) / 2.0, rail_z), (0.05, Y1 - Y0, 0.06), cedar_dk)
     bal = [(0.024, 0.0), (0.024, 0.03), (0.014, 0.06), (0.022, 0.16), (0.012, 0.28), (0.020, 0.38), (0.024, 0.43)]
-    for bi, bx in enumerate([X0 + 0.15 + 0.30 * i for i in range(10)]):
+    for bi, bx in enumerate([-2.80 + 0.30 * i for i in range(8)]):
         make_lathe(f"Loft_Rail_Bal_{bi}", (bx, Y0, LOFT_Z + 0.10), bal, cedar_dk, segments=8)
-    for bi, by in enumerate([Y0 + 0.30 + 0.30 * i for i in range(8)]):
+    for bi, by in enumerate([Y0 + 0.30 + 0.30 * i for i in range(11)]):
         make_lathe(f"Loft_Rail_E_Bal_{bi}", (X1, by, LOFT_Z + 0.10), bal, cedar_dk, segments=8)
+    # the newel at the ladder gap's east side (the west one, with Olaf's crow, is in build_nature_let_in)
+    make_lathe("Loft_Newel_Gap", (-2.95, Y0, LOFT_Z + 0.10),
+               [(0.05, 0.0), (0.05, 0.05), (0.034, 0.08), (0.046, 0.30), (0.030, 0.50), (0.044, 0.62), (0.036, 0.70), (0.058, 0.76), (0.058, 0.80), (0.03, 0.86), (0.0, 0.88)],
+               cedar_dk, segments=10)
     # Eddvard's mattress at the north end, the head under the eave
     make_chamfer_box("Loft_Mattress", (-3.25, 7.00, LOFT_Z + 0.10 + 0.09), (1.30, 1.90, 0.18), (0.88, 0.84, 0.76, 1.0), chamfer=0.04)
     make_chamfer_box("Loft_Blanket", (-3.25, 6.65, LOFT_Z + 0.10 + 0.21), (1.26, 1.10, 0.06), COL_WOOL, chamfer=0.02)
     make_chamfer_box("Loft_Pillow", (-3.25, 7.70, LOFT_Z + 0.10 + 0.22), (0.60, 0.34, 0.08), (0.94, 0.90, 0.84, 1.0), chamfer=0.03)
     # Marina's things at the loft's foot: a folded sweater and the
     # flashlight she came down the ladder with
-    make_chamfer_box("Loft_Sweater", (-2.1, 5.75, LOFT_Z + 0.10 + 0.03), (0.30, 0.24, 0.06), (0.46, 0.26, 0.24, 1.0), chamfer=0.015)
-    make_cyl("Loft_Flashlight", (-1.7, 5.9, LOFT_Z + 0.10 + 0.02), 0.02, 0.18, (0.16, 0.16, 0.18, 1.0), axis='Y', segments=8)
+    make_chamfer_box("Loft_Sweater", (-2.1, 5.55, LOFT_Z + 0.10 + 0.03), (0.30, 0.24, 0.06), (0.46, 0.26, 0.24, 1.0), chamfer=0.015)
+    make_cyl("Loft_Flashlight", (-1.7, 5.7, LOFT_Z + 0.10 + 0.02), 0.02, 0.18, (0.16, 0.16, 0.18, 1.0), axis='Y', segments=8)
+    # ── the reading end (draft 16, "more loft space"): a rag rug, a floor
+    # cushion against the east rail, a low table with the battery lantern
+    make_box("Loft_Rug", (-1.45, 6.70, LOFT_Z + 0.10 + 0.006), (1.50, 1.60, 0.012), (0.48, 0.32, 0.26, 1.0))
+    for si, sy in enumerate((6.10, 6.50, 6.90, 7.30)):
+        make_box(f"Loft_Rug_Stripe_{si}", (-1.45, sy, LOFT_Z + 0.10 + 0.013), (1.46, 0.10, 0.004), (0.30, 0.36, 0.42, 1.0))
+    make_chamfer_box("Loft_Cushion", (-0.95, 7.10, LOFT_Z + 0.10 + 0.08), (0.60, 0.60, 0.16), (0.40, 0.44, 0.34, 1.0), chamfer=0.05)
+    make_chamfer_box("Loft_Cushion_Back", (-0.72, 7.10, LOFT_Z + 0.10 + 0.30), (0.14, 0.56, 0.36), (0.36, 0.40, 0.30, 1.0), chamfer=0.04)
+    make_chamfer_box("Loft_LowTable", (-1.75, 7.25, LOFT_Z + 0.10 + 0.30), (0.50, 0.40, 0.03), COL_WOOD, chamfer=0.01)
+    for li, (lx, ly) in enumerate(((-1.95, 7.08), (-1.55, 7.08), (-1.95, 7.42), (-1.55, 7.42))):
+        make_box(f"Loft_LowTable_Leg_{li}", (lx, ly, LOFT_Z + 0.10 + 0.14), (0.03, 0.03, 0.28), COL_WOOD_DK)
+    # the battery lantern — the solar roof's one lamp up here (a flat LED
+    # panel in a cedar frame; the oil lamps stay downstairs)
+    make_box("Loft_Lantern_Base", (-1.75, 7.25, LOFT_Z + 0.10 + 0.33), (0.14, 0.14, 0.03), cedar_dk)
+    make_box("Loft_Lantern_Stem", (-1.75, 7.25, LOFT_Z + 0.10 + 0.43), (0.02, 0.02, 0.18), steel_dk)
+    make_box("Loft_Lantern_Panel", (-1.75, 7.25, LOFT_Z + 0.10 + 0.54), (0.16, 0.02, 0.10), (0.96, 0.94, 0.86, 1.0))
+    make_chamfer_box("Loft_Book_Open", (-1.62, 7.30, LOFT_Z + 0.10 + 0.33), (0.22, 0.16, 0.02), (0.90, 0.88, 0.80, 1.0), chamfer=0.004)
+    # the low shelf under the gable window, along the W wall: Eddvard's books
+    make_box("Loft_Shelf", (-ROOM_W / 2.0 + 0.10 + 0.16, 5.60, LOFT_Z + 0.10 + 0.36), (0.28, 1.20, 0.72), cedar_dk)
+    make_box("Loft_Shelf_Board", (-ROOM_W / 2.0 + 0.10 + 0.16, 5.60, LOFT_Z + 0.10 + 0.38), (0.26, 1.14, 0.02), cedar)
+    for bi, (by, bh, bc) in enumerate(((5.12, 0.26, (0.50, 0.24, 0.18, 1.0)), (5.20, 0.22, (0.24, 0.30, 0.42, 1.0)), (5.27, 0.28, (0.62, 0.56, 0.40, 1.0)),
+                                       (5.34, 0.24, (0.36, 0.40, 0.30, 1.0)), (5.42, 0.30, (0.56, 0.30, 0.24, 1.0)), (5.50, 0.26, (0.30, 0.26, 0.24, 1.0)),
+                                       (5.58, 0.22, (0.70, 0.62, 0.48, 1.0)), (5.66, 0.28, (0.28, 0.34, 0.46, 1.0)))):
+        make_box(f"Loft_Shelf_Book_{bi}", (-ROOM_W / 2.0 + 0.10 + 0.16, by, LOFT_Z + 0.10 + 0.39 + bh / 2.0), (0.20, 0.06, bh), bc)
+    make_rot_box("Loft_Shelf_Book_Leaning", (-ROOM_W / 2.0 + 0.10 + 0.16, 5.80, LOFT_Z + 0.10 + 0.39 + 0.12), (0.20, 0.05, 0.26), (0.48, 0.44, 0.30, 1.0), roll=0.35)
     # the ladder at the loft's west end, against the front beam, hooked over it
     for rx in (-3.45, -3.15):
         make_box(f"Ladder_Rail_{rx:.2f}", (rx, Y0 - 0.08, 1.10), (0.05, 0.05, 2.20), COL_WOOD)
@@ -838,19 +898,19 @@ def build_nature_let_in_2026_10():
             poly = [(e * 3.90, 2.46), (e * 3.90, 2.70), (e * 3.66, 2.95), (e * 3.30, 3.16), (e * 3.00, 3.18),
                     (e * 2.96, 3.14), (e * 3.28, 3.00), (e * 3.60, 2.78)]
             _prism_ccw(f"Tie_Beam_{bi}_Brace_{nm}", (0.0, by, 0.0), poly, 0.12, timber, axis="Y")
-    # the loft posts' capitals, and the cedar face cut into each post's room side
-    for pi_, px in enumerate((-1.0, -2.2)):
-        make_lathe(f"Loft_Post_{pi_}_Cap", (px, 5.30, LOFT_Z - 0.18 - 0.16),
-                   [(0.076, 0.0), (0.09, 0.05), (0.125, 0.12), (0.135, 0.16)], cedar_dk, segments=10)
-        fy = 5.30 - 0.066 - 0.012
-        make_chamfer_box(f"Loft_Post_{pi_}_Face", (px, fy, 1.55), (0.10, 0.028, 0.15), cedar_lt, chamfer=0.03)
-        make_box(f"Loft_Post_{pi_}_Face_Brow", (px, fy - 0.016, 1.595), (0.08, 0.008, 0.012), cedar_dk)
-        make_box(f"Loft_Post_{pi_}_Face_Nose", (px, fy - 0.016, 1.555), (0.016, 0.008, 0.055), cedar_dk)
+    # (draft 16: the posts are gone — the loft hangs from the roof) Olaf's
+    # two cedar faces, carved into the front beam's room face at its ends
+    for fi, px in enumerate((-3.70, -0.80)):
+        fy = 4.60 - 0.07 - 0.012
+        fz = LOFT_Z - 0.11
+        make_chamfer_box(f"Loft_Beam_Face_{fi}", (px, fy, fz), (0.10, 0.028, 0.15), cedar_lt, chamfer=0.03)
+        make_box(f"Loft_Beam_Face_{fi}_Brow", (px, fy - 0.016, fz + 0.045), (0.08, 0.008, 0.012), cedar_dk)
+        make_box(f"Loft_Beam_Face_{fi}_Nose", (px, fy - 0.016, fz + 0.005), (0.016, 0.008, 0.055), cedar_dk)
         for e in (-1, 1):
-            make_box(f"Loft_Post_{pi_}_Face_Eye_{'L' if e < 0 else 'R'}", (px + e * 0.025, fy - 0.015, 1.578), (0.02, 0.006, 0.01), (0.22, 0.14, 0.09, 1.0))
-        make_box(f"Loft_Post_{pi_}_Face_Mouth", (px, fy - 0.015, 1.505), (0.034, 0.006, 0.008), (0.22, 0.14, 0.09, 1.0))
+            make_box(f"Loft_Beam_Face_{fi}_Eye_{'L' if e < 0 else 'R'}", (px + e * 0.025, fy - 0.015, fz + 0.028), (0.02, 0.006, 0.01), (0.22, 0.14, 0.09, 1.0))
+        make_box(f"Loft_Beam_Face_{fi}_Mouth", (px, fy - 0.015, fz - 0.045), (0.034, 0.006, 0.008), (0.22, 0.14, 0.09, 1.0))
     # the rail's west newel, turned, with Olaf's crow on its cap
-    nx, ny, nz = -3.85, 5.30, LOFT_Z + 0.10
+    nx, ny, nz = -3.85, 4.60, LOFT_Z + 0.10   # (draft 16) the loft's front edge is y 4.60 now
     make_lathe("Loft_Newel", (nx, ny, nz),
                [(0.05, 0.0), (0.05, 0.05), (0.034, 0.08), (0.046, 0.30), (0.030, 0.50), (0.044, 0.62), (0.036, 0.70), (0.058, 0.76), (0.058, 0.80)],
                cedar_dk, segments=10)
@@ -938,7 +998,7 @@ def build_draft12_2026_10():
     make_cyl("OilLamp2_Flame", (lx, ly, CEIL - 0.64), 0.010, 0.04, (1.0, 0.72, 0.24, 1.0), segments=5)
     # moss on the stump, and the east newel's cap
     make_blob("Thru_W_Stump_Moss", (-5.25, 7.05, YARD_Z + 0.57), 0.22, (0.30, 0.46, 0.20, 1.0), noise=0.3, seed=41, squash=0.35)
-    make_lathe("Loft_Newel_E", (-1.0, 5.30, LOFT_Z + 0.10),
+    make_lathe("Loft_Newel_E", (-0.5, 4.60, LOFT_Z + 0.10),   # (draft 16) the corner of the bigger loft
                [(0.05, 0.0), (0.05, 0.05), (0.034, 0.08), (0.046, 0.30), (0.030, 0.50), (0.044, 0.62), (0.036, 0.70), (0.058, 0.76), (0.058, 0.80), (0.03, 0.86), (0.0, 0.88)],
                cedar_dk, segments=10)
 
@@ -993,6 +1053,78 @@ def build_draft15_2026_10():
     make_box("East_Room_Door_Lintel", (1.975, 2.90 - 0.10 - 0.025, 2.13), (1.02, 0.05, 0.14), (0.38, 0.27, 0.17, 1.0))
     for ci, cx_ in enumerate([1.975 - 0.40 + 0.16 * i for i in range(6)]):
         make_rot_box(f"East_Room_Door_Lintel_Chip_{ci}", (cx_, 2.90 - 0.10 - 0.052, 2.13), (0.07, 0.006, 0.07), (0.70, 0.52, 0.34, 1.0), roll=0.0, yaw=0.0, pitch=0.785)
+
+
+def build_solar_roof_2026_10():
+    """THE SOLAR ROOF (draft 16, 2026-10-11 — the user: "Roof with solar
+    panels. Semi futuristic"). Eight panels on the south slab, two arrays
+    flanking the skylight (x -3.45..-1.35 and 1.35..3.45, y 0.25..3.65), each
+    panel 1.0 x 1.65 m, frameless black glass on a slim aluminium carrier,
+    standing 0.08 m off the shakes on two rails per column; a combiner box
+    at the west array's eave end; the conduit down the south wall's outside
+    to the foundation and in; inside the south-west corner a battery box on
+    the floor with the charge controller on the wall over it (its green
+    LED), and under the loft deck over the counter a 12 V LED bar — the one
+    electric light in a cabin of oil lamps (the loft's lantern is the
+    other). The oil lamps stay: the panels run the radio, the phone, Finn's
+    UV light. Draft 17 targets: the LED bar as a night practical in the
+    .tscn (cool 4000 K, low); a snow-slide stop below the arrays; the
+    panels' cells as a faint grid; the controller's cable to the radio."""
+    pitch = 0.80
+    under_s = lambda y: CEIL + pitch * (y + 0.20)
+    th = 0.18
+    top = lambda y: under_s(y) + th
+    glass, carrier, rail = (0.07, 0.09, 0.14, 1.0), (0.58, 0.60, 0.62, 1.0), (0.42, 0.43, 0.45, 1.0)
+    cols = {"W": (-3.45, -2.40, -1.35), "E": (1.35, 2.40, 3.45)}   # the column edges per array
+    rows = ((0.25, 1.90), (2.00, 3.65))
+    lift = 0.08
+    for arr, xs in cols.items():
+        for ci in range(2):
+            x0, x1 = xs[ci] + 0.02, xs[ci + 1] - 0.02
+            # two rails per column, the full run, on standoffs
+            for ri, rx in enumerate((x0 + 0.18, x1 - 0.18)):
+                _prism_ccw(f"Roof_Solar_Rail_{arr}{ci}_{ri}", (rx, 0.0, 0.0),
+                           [(0.20, top(0.20) + lift - 0.04), (3.70, top(3.70) + lift - 0.04), (3.70, top(3.70) + lift), (0.20, top(0.20) + lift)],
+                           0.05, rail)
+                for si, sy in enumerate((0.40, 1.95, 3.50)):
+                    _prism_ccw(f"Roof_Solar_Standoff_{arr}{ci}_{ri}_{si}", (rx, 0.0, 0.0),
+                               [(sy - 0.03, top(sy - 0.03)), (sy + 0.03, top(sy + 0.03)), (sy + 0.03, top(sy + 0.03) + lift - 0.04), (sy - 0.03, top(sy - 0.03) + lift - 0.04)],
+                               0.05, rail)
+            for pi_, (y0, y1) in enumerate(rows):
+                _prism_ccw(f"Roof_Solar_Carrier_{arr}{ci}_{pi_}", ((x0 + x1) / 2.0, 0.0, 0.0),
+                           [(y0, top(y0) + lift), (y1, top(y1) + lift), (y1, top(y1) + lift + 0.03), (y0, top(y0) + lift + 0.03)],
+                           x1 - x0, carrier)
+                _prism_ccw(f"Roof_Solar_Panel_{arr}{ci}_{pi_}", ((x0 + x1) / 2.0, 0.0, 0.0),
+                           [(y0 + 0.01, top(y0 + 0.01) + lift + 0.03), (y1 - 0.01, top(y1 - 0.01) + lift + 0.03),
+                            (y1 - 0.01, top(y1 - 0.01) + lift + 0.045), (y0 + 0.01, top(y0 + 0.01) + lift + 0.045)],
+                           x1 - x0 - 0.02, glass)
+    # the combiner box at the west array's eave end, and the conduit: along the
+    # eave to the wall's corner, down the south wall outside, in at the foundation
+    make_box("Roof_Solar_Combiner", (-3.90, 0.05, top(0.05) + 0.12), (0.22, 0.16, 0.20), (0.30, 0.31, 0.33, 1.0))
+    make_box("Roof_Solar_Combiner_LED", (-3.90, -0.04, top(0.05) + 0.16), (0.03, 0.006, 0.03), (0.30, 0.90, 0.40, 1.0))
+    make_tube("Solar_Conduit", [(-3.90, -0.02, top(0.05) + 0.02), (-3.90, -0.28, top(-0.20) - 0.06), (-3.90, -0.28, CEIL - 0.30),
+                                (-3.90, -0.28, 0.60), (-3.90, -0.14, 0.60)], 0.016, (0.40, 0.41, 0.43, 1.0), segments=6)
+    for ci, cz in enumerate((3.0, 2.0, 1.0)):
+        make_box(f"Solar_Conduit_Clip_{ci}", (-3.90, -0.25, cz), (0.05, 0.03, 0.04), (0.34, 0.35, 0.37, 1.0))
+    # inside: the battery box in the south-west corner, the controller on the wall over it
+    make_chamfer_box("Solar_Battery_Box", (-3.62, 0.42, 0.24), (0.50, 0.36, 0.48), (0.26, 0.27, 0.29, 1.0), chamfer=0.01)
+    make_box("Solar_Battery_Box_Lid", (-3.62, 0.42, 0.49), (0.52, 0.38, 0.02), (0.22, 0.23, 0.25, 1.0))
+    make_box("Solar_Battery_Vent", (-3.62, 0.235, 0.30), (0.30, 0.01, 0.06), (0.16, 0.17, 0.18, 1.0))
+    make_box("Solar_Controller", (-3.62, 0.10 + 0.03, 1.10), (0.22, 0.06, 0.16), (0.90, 0.90, 0.88, 1.0))
+    make_box("Solar_Controller_Screen", (-3.62, 0.10 + 0.062, 1.13), (0.12, 0.004, 0.05), (0.14, 0.20, 0.24, 1.0))
+    make_box("Solar_Controller_LED", (-3.70, 0.10 + 0.062, 1.05), (0.012, 0.004, 0.012), (0.30, 0.90, 0.40, 1.0))
+    make_tube("Solar_Controller_Cable", [(-3.62, 0.14, 1.02), (-3.62, 0.14, 0.52)], 0.006, (0.12, 0.12, 0.13, 1.0), segments=5)
+    make_tube("Solar_Controller_Feed", [(-3.90, 0.14, 0.60), (-3.72, 0.14, 0.60), (-3.72, 0.14, 1.02)], 0.008, (0.40, 0.41, 0.43, 1.0), segments=5)
+    # the LED bar under the loft deck, over the counter
+    make_box("Loft_LED_Bar", (-2.85, 6.60, LOFT_Z - 0.03), (1.30, 0.04, 0.03), (0.50, 0.51, 0.53, 1.0))
+    make_box("Loft_LED_Bar_Lens", (-2.85, 6.60, LOFT_Z - 0.047), (1.26, 0.03, 0.004), (0.96, 0.95, 0.90, 1.0))
+    # (two tubes: the run under the deck and the drop down the wall — one
+    # tube's box would span the pot rack's bar)
+    make_tube("Loft_LED_Bar_Wire", [(-2.20, 6.60, LOFT_Z - 0.02), (-2.20, 6.60, LOFT_Z - 0.005), (-3.85, 6.60, LOFT_Z - 0.005)],
+              0.005, (0.12, 0.12, 0.13, 1.0), segments=5)
+    make_tube("Loft_LED_Bar_Wire_Drop", [(-3.86, 6.60, LOFT_Z - 0.005), (-3.86, 6.60, 1.60)],
+              0.005, (0.12, 0.12, 0.13, 1.0), segments=5)
+    make_box("Loft_LED_Switch", (-3.85, 6.60, 1.50), (0.03, 0.07, 0.11), (0.90, 0.90, 0.88, 1.0))
 
 
 def build_crow_2026_08():
@@ -1070,7 +1202,7 @@ def build_wear_personality_2026_08():
     with _shift(-1.0, 2.0):   # the loft ladder
         # Ladder rungs worn pale at the grab line (the loft, decades).
         for s in (2, 3, 4):
-            make_box("Wear_Rung_%d" % s, (-2.15, 3.2775, 0.305 + s * 0.36),
+            make_box("Wear_Rung_%d" % s, (-2.15, 2.5775, 0.305 + s * 0.36),   # (draft 16) the ladder is at y 4.52 now
                      (0.20, 0.045, 0.012), handworn)
     with _shift(0.25, 0.0):   # the desk shelf
         # The reader's shelf shadow: "on the shelf where it had been
@@ -1737,6 +1869,7 @@ def main():
     build_draft12_2026_10()
     build_draft13_2026_10()
     build_draft15_2026_10()
+    build_solar_roof_2026_10()
     with _shift(1.0, 2.0):
         build_stove_corner()
     with _shift(0.0, 1.0):

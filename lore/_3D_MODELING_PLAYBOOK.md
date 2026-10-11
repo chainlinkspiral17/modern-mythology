@@ -399,6 +399,34 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-10-11 · a post that stands NEAR furniture reads as a post THROUGH it
+
+**What happened.** The loft's two turned posts were placed "clear of the
+table's chair ring and the counter" — 0.35 m off the counter's corner, in
+the recorder a clean miss. The user, three times: "Loft pillars going
+through furniture … Still not fixing the pillar through the furniture.
+The island." From every camera in the room the post and the counter's
+corner overlapped in the frame; the audit's zero-overlap was not the
+picture's. The fix was not a bigger gap: the posts are gone and the loft
+hangs from the roof on steel rods.
+
+**Rules.**
+- **Judge a post by the frame, not the plan.** A column within ~0.6 m of
+  a counter, a table or a bed will read as standing in it from most of
+  the room's cameras. Either put it in open floor with air on every side
+  in the renders, or do not put it on the floor at all.
+- **A mezzanine can hang.** Ledgers on its walls + rods from a strongback
+  across the rafters (or from a rafter line) carry a loft with nothing
+  on the floor beneath. The rods hang from RAFTER LINES or a strongback,
+  never from a bare plank, and never through a collar tie (check x
+  against the tie positions before placing one).
+- **When furniture is "arranged strangely around" a structural member,
+  move the member.** The furniture is the prose's; the structure is ours.
+- **Solar on a gable roof:** prisms along the slope with the slab's own
+  `top(y)` function, ROOFISH names (`Roof_Solar_*`) so the stacking on the
+  slab passes the overlap gate, rails on standoffs so the panels stand
+  off the shakes. Keep the skylight's cut clear.
+
 ### 2026-10-11 · Meshy props land through a runtime fitter, never a transform
 
 **What happened.** The first Hero Studio PROP (the steamboat model, 106 MB

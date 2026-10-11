@@ -3834,6 +3834,41 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-11 · pass 84: THE CABIN, interior draft 16 — THE LOFT HANGS, THE
+ROOF MAKES POWER.** The user, three times: *"Loft pillars going through
+furniture … I don't want loft pillars going through furniture or furniture
+arranged strangely around them … Still not fixing the pillar through the
+furniture. The island."* + *"More loft space. Better cabin design."* +
+*"Roof with solar panels. Semi futuristic."* The posts stood 0.35 m off the
+kitchen counter's corner and read, from every room camera, as a pillar
+through the island. NO POSTS NOW: the loft sits on ledgers on its two
+walls and HANGS from the roof — a steel strongback bolted across four
+rafters' undersides at the front edge, three 22 mm rods to the front beam,
+two more from the rafter over the east beam, turnbuckles at the deck,
+plates at the roof. Nothing stands on the kitchen floor. The loft grew to
+3.5 × 3.4 m (x −4..−0.5, y 4.6..8; was 3 × 2.7): the mattress end as it was,
+a READING END east of it (rag rug, floor cushion against the rail, a low
+table with the battery lantern and an open book), a low shelf of Eddvard's
+books under the gable window, the rail with a gap at the ladder and a newel
+each side; Olaf's two cedar faces moved from the posts to the front beam's
+ends. THE SOLAR ROOF: eight panels on the south slab in two arrays flanking
+the skylight (frameless black glass on slim carriers, two rails per column
+on standoffs), a combiner box at the west eave, the conduit down the south
+wall's outside and in at the foundation to a battery box and a charge
+controller (green LED) in the south-west corner, a 12 V LED bar under the
+loft deck over the counter — both lit in the .tscn as cool, low `nightlight`
+practicals (they fade with the day). The oil lamps stay — the panels run the
+radio, the phone, Finn's UV light, the loft's lantern. The ladder-rung wear
+marks followed the ladder; the hangers are named `Roof_Hanger_*` so the
+overlap gate reads them in the roof family (a sloped prism records as its
+bounding box — anything hung from the roof lives inside it). Local stub build + nine renders reviewed (default,
+establish b/c, coffee, marina, phone, porch ×2, night): no post anywhere,
+the rods read, the arrays read from the yard. **Deck must REBUILD
+cabin_interior.** **Draft 17 targets:** the rods' sway-brace pair; the
+strongback's bolt heads; a snow-slide stop below the arrays; the panels' cells
+as a faint grid; the controller's cable to the radio; a second cushion; the
+porch preset's hour (it renders dusk-dark under `day_bright`).
+
 **2026-10-11 · pass 83: THE DRIVE'S NEW MODELS, INTO THE GAME.** User:
 "lots of new 3D models were put in the google drive, need to be added to
 godot game project." The day's Hero Studio run put 91 hero GLBs, 2 demons
