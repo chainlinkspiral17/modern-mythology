@@ -1,0 +1,5 @@
+{
+ "_doc": "Written by godot/tools/audio_director.html — never hand-edit. Per catalog track id: the APPROVED temp take (take id, mood {style, form, mode, key, bpm, density, seed}, the request it was made with, instruments, date, who, notes, loudness, files it wrote) so it can be regenerated identically, every REJECTED seed (new takes skip them) and the history. The audio itself lives in Google Drive (godot/tools/music_drive.sh), never in git. See lore/_MUSIC_DIRECTION_PLAYBOOK.md.",
+ "v": 1,
+ "tracks": {}
+}

@@ -389,6 +389,39 @@ look-ahead loop. The audio→performance clock mapping comes from
   - OVERDUB LOOP stacks MIDI only; audio stays one take per pass.
   - LOOPBACK and the FM-1 RETURN + `outDelay` sum are unverified on the Deck's hardware.
 
+### 2026-10-11 — review staging, the AUDIO DIRECTOR, and file:// messaging
+
+- TEMP TRACKS writes candidate takes to
+  `assets/audio/review/<track id>/<take id>/` (see
+  `_MUSIC_DIRECTION_PLAYBOOK.md` §8). `audio_director.html` approves one
+  into `<src base>.wav` plus stems and manifest. Staging is ignored by
+  version control, excluded from `music_drive.sh`, and carries a
+  `.gdignore` so Godot never imports or exports it.
+- `music_drive.sh` now uses ordered `--filter` rules, because mixing
+  `--exclude` with `--include` leaves the order to rclone. Checked with
+  rclone 1.68.2 `ls`: staging is skipped, and the game audio, manifests
+  and credits still sync.
+- **Cross-page notices on file://:**
+  - BroadcastChannel messages and localStorage `storage` events both
+    cross between two file:// tool pages in headless Chromium. Both
+    were tested, with the same uid on each.
+  - OPFS does **not** work on file:// without
+    `--allow-file-access-from-files` (SecurityError).
+  - Shim the game folder with `exposeFunction` instead. The harness's
+    `ctxInit` / `expose` options install the shim in pop-ups too.
+- **Headless touch waits for a frame.** Once a pop-up took the
+  foreground, every CDP touch on the opener took ~4 s, because a
+  background page gets no frames. Close the pop-up or call
+  `bringToFront()` before driving touch.
+- `AK.game` gained `readFile`, `list`, `remove` and `copy`.
+- **Exact length:** a length in seconds nudges the tempo
+  (`bpm = bars × 240 / sec`) so whole bars land on it exactly.
+  - The render folds the tail onto the head (`doBounce(true)`).
+  - 7 s came out at exactly 308 700 frames.
+  - The tempo may be fractional; the engine and SeqGen accept that.
+- Taps can outrun decoding. Two quick take picks raced, and the older
+  decode won. A pick sequence number now makes the latest pick win.
+
 ## TEMPLATE
 
 ```

@@ -42,7 +42,8 @@ touching code:
    FM-1 firmware fact lives in `godot/tools/fm1_firmwares.js`.
 8. `lore/_AUDIO_CAPTURE_PLAYBOOK.md` — FIELD RECORDER, TAPE STUDIO,
    the DAW (`daw.html` / `daw_engine.js` / `daw_fx.js` / `daw_perf.js` / `seqgen.js`), `field_ingest.py`,
-   the shared `audio_kit.js`, and how recorded
+   the AUDIO DIRECTOR (`audio_director.html`: review / approve / reject the DAW's
+   temp takes staged in `assets/audio/review/`), the shared `audio_kit.js`, and how recorded
    audio reaches the game (`.wav` next to a catalog track's `src`;
    never hand-edit `music_catalog.json`). Read before touching any of
    them or `AudioMgr._load_audio`.
@@ -52,7 +53,9 @@ touching code:
    inferred from the writing). `resources/music/direction.json` is
    the single source of truth; CI validates it. Read before touching
    `MusicDirector.gd`, `direction.json`, `music_direction.py`, or
-   adding `{"t":"music"}` nodes.
+   adding `{"t":"music"}` nodes. Temp tracks reach the game through
+   the AUDIO DIRECTOR's APPROVE by default (`resources/music/temp_approvals.json`
+   records each approval and rejected seed; never hand-edit it).
 10. The latest commit message on the working branch — recent context.
 11. If working on a specific volume, the relevant `lore/_VOL{N}_WIKI.md`.
 

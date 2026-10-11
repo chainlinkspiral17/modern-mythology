@@ -164,7 +164,12 @@ every catalog track has audio. For each track it records:
 - lexicon words, focal characters, locales;
 - choice / cg / interlude moments;
 - `energy` / `darkness`: the track's rank (0..1) against the game's
-  other music.
+  other music;
+- `curves`: for each listed scene (≤ 16), the director's per-node target
+  compacted to ≤ 32 steps `{n, at: [node index], v: [target]}` (each
+  step holds its bucket's PEAK, 2 decimals). The AUDIO DIRECTOR's PLAY
+  AS SCENE drives the stems along it. `brief` writes every all-number
+  list on one line so the file stays ~4k lines.
 
 The DAW's TEMP TRACKS (the "VN scenes first" box, on by default) uses
 it in four ways:
@@ -180,6 +185,85 @@ it in four ways:
 director's scoring. **Change both together.** The `godot_director`
 test runs the real GDScript and the port over every 20th real scene
 and fails on any per-node difference above 1e-4.
+
+### 8. Temp tracks are reviewed before the game hears them (AUDIO DIRECTOR)
+
+By default the DAW no longer writes temp tracks straight into the game.
+TEMP TRACKS (and every request from the AUDIO DIRECTOR) stages
+**candidate takes**. `godot/tools/audio_director.html` previews them, and
+APPROVE puts one where AudioMgr looks.
+
+| Where | What |
+|---|---|
+| `assets/audio/review/<track id>/<take id>/` | Staging: `mix.wav`, `stems/<role>.wav`, `stems.json`, `credits.txt` (only for non-free instruments) and `meta.json`. It is ignored by version control, excluded from `music_drive.sh`, and `review/.gdignore` stops Godot importing or exporting it. |
+| `<src base>.wav` · `<src base>.stems/<role>.wav` · `<src base>.stems.json` · `<src base>.wav.credits.txt` | What APPROVE writes: exactly what `AudioMgr._load_audio` / `_load_stems` read. Verified headless: an approved take plays as `AudioStreamSynchronized`, and intensity drops its layers. |
+| `resources/music/temp_approvals.json` | Committed, and written only by the AUDIO DIRECTOR. Per track: `approved` (take, seed, mood, the request, instruments, date, `by`, notes, loudness, files), `rejected` [{take, seed, …}] and `history`. |
+
+- **Take id** = `YYYYMMDD-HHMMSS-s<seed>`. `meta.json` holds:
+  - `mood` `{style, form, mode, key, bpm, density, seed}` and `why`;
+  - `request` (the creative direction below) and `instruments` (what
+    each role actually played on);
+  - `arrangement`, `roles`, `stems` [{name, role, layer}];
+  - `lufs`, `true_peak`, `seconds`, `bars`;
+  - credits, a summary of the brief, and `status` (candidate / approved
+    / rejected).
+- **Seeds:** each new take of a track uses a seed that no take in
+  review, no approved take and **no rejected seed** has used. The first
+  seed tried is the track's own (`hash(id)`), then
+  `hash(id + '#takeN')`.
+- **Identical regeneration:** ⟳ AGAIN sends the take's request plus its
+  resolved mood and instruments. `key` is sent only if it was asked for:
+  passing it changes `SeqGen.song`'s dice even when it is the same key.
+- **Creative direction.** All of it is optional and is recorded in
+  `meta.json` and the approval.
+  - `description` goes through `SeqGen.moodFromBrief(track, brief,
+    text)`. Words in it override the catalog's style / mode / pace /
+    density words.
+  - `instruments` per role (`kit`, `forge:<preset>`, `patch:<uid>`),
+    picked from `window.FORGE_PRESETS` and `PatchBank.all()` at runtime.
+  - `length` is `{bars}` or `{sec}`. Seconds nudge the tempo so that
+    whole bars land on the length exactly. An asked-for length renders
+    folded (the tail wraps onto the head), so it is exact and seamless.
+  - `loop: true` also writes WAV loop points. Godot then loops the file
+    forever, so use it only for beds.
+  - `roles` chooses which of drums / bass / chords / lead / pad play.
+  - `extraPads`: pad2 is the pad an octave up, pad3 its root an octave
+    down. Each gets its own stem on layer 0.
+  - `density`, `energy` (a ± nudge to the brief's rank), `style`,
+    `mode`, `form`, `bpm` and `seed`.
+- **Status per track:**
+  - REAL AUDIO: a real `.ogg` / `.mp3`, or a `.wav` without the temp
+    marker (a FIELD RECORDER take).
+  - APPROVED TEMP: a `.wav` titled "(temp)" or carrying `mmjs.temp`.
+  - CANDIDATES (n).
+  - MISSING.
+- **Safety:**
+  - APPROVE refuses real audio.
+  - Replacing an approved temp, REJECT and REVOKE each need a second tap
+    within 4 s.
+  - REVOKE deletes only the temp `.wav` plus its stems, manifest and
+    credits.
+- **Preview = the game.**
+  - The player layers the stems with AudioMgr's rule
+    (`level + 0.0001 >= layer`) and linear `1 / fade` per second fades.
+  - PLAY AS SCENE replays a scene's curve with the director's attack /
+    release from `direction.json`. It sends to the stems when the level
+    changes by ≥ 0.02, with the 0.4 s fade, and shows the scene's lines.
+- **Request protocol** (AUDIO DIRECTOR → DAW):
+  1. The director stores `{rid, ids, takes, opts}` in localStorage
+     `mm_director_req:<rid>`.
+  2. It posts `{type: 'request', req}` on BroadcastChannel `mm_director`.
+     An open, started DAW answers `ack` and runs the request.
+  3. With no ack in 0.9 s, it opens
+     `daw.html?director=<id,id>&takes=N&rid=<rid>&…` (simple overrides
+     go in the URL too). That DAW shows the request on its START gate.
+     One tap starts audio, re-grants the folder and makes the takes.
+  4. The DAW reports `progress` / `take` / `done` on the BroadcastChannel
+     **and** as a localStorage `mm_director_event` write (a `storage`
+     event). Both reach other file:// pages in Chrome; the director
+     de-duplicates by `uid`.
+- The DAW's "straight into game (skip review)" box keeps the old direct
+  write, for when you don't want a review step. It is off by default.
 
 ## Anti-patterns
 
@@ -257,6 +341,30 @@ and fails on any per-node difference above 1e-4.
   ranks. The real fix is in the director: a bigger lexicon or a larger
   tension gain. That's a tuning decision for the user, so it was not
   changed silently.
+
+### 2026-10-11 — AUDIO DIRECTOR: review, approve, reject, regenerate
+
+- The user asked for "an audio director tool that lets me preview and
+  approve or reject the temp tracks and put them in the game files".
+  They then asked for regeneration "with added description, instruments,
+  length, and complexity". The DAW now stages candidate takes. Nothing
+  reaches `<src>.wav` without an APPROVE, unless skip-review is ticked.
+- `simulate()` was left untouched. The per-scene curves only compact its
+  `targets`, inside `brief()`, so the GDScript parity test and the
+  `validate` staleness check kept passing.
+- A curve bucket keeps its **peak**, not its mean. The director attacks
+  in 2.5 s and releases over 8 s, so a peak rules its neighbourhood. A
+  mean flattened every choice / cg lift away.
+- An approved temp is recognised from the WAV itself, not only from the
+  approvals file: a "(temp)" INAM title or `mmjs.temp`. Without that
+  check, a FIELD RECORDER `.wav` at the same path would read as a temp
+  and could be revoked or replaced.
+- APPROVE removes the old `.stems.json` and `.stems/` **before** it
+  copies. If the new take had no stems, a stale manifest would keep
+  playing the old stems over the new mix.
+- `SeqGen.song` rolls the key only when none is given. Sending the
+  recorded key to "regenerate identically" changed every note. So a
+  regenerate request leaves `key` out unless the original asked for one.
 
 ## TEMPLATE
 

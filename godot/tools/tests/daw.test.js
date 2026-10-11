@@ -80,7 +80,7 @@ suite('daw · compose, render, stems, undo, temp tracks', async t => {
     t.ok(r.mb.density > r.plain.density, `busier than the text-only mood: ${r.mb.density} vs ${r.plain.density}`);
     t.ok(/12 scenes/.test(r.shown) && /leitmotif 12/.test(r.shown), 'the list says why');
   });
-  await t.test('TEMP TRACKS writes a mastered ≥ 90 s track' + (SLOW ? ' + stems + manifest' : '') + ' into the game folder', async () => {
+  await t.test('TEMP TRACKS "straight into game (skip review)" writes a mastered ≥ 90 s track' + (SLOW ? ' + stems + manifest' : '') + ' into the game folder', async () => {
     const game = fs.mkdtempSync(path.join(os.tmpdir(), 'mmgame-'));
     fs.mkdirSync(path.join(game, 'resources'), { recursive: true });
     fs.writeFileSync(path.join(game, 'resources', 'music_catalog.json'), JSON.stringify([
@@ -92,6 +92,7 @@ suite('daw · compose, render, stems, undo, temp tracks', async t => {
       AK.game.root = { name: 'test' }; AK.game.exists = rel => window.__exists(rel); AK.game.readText = rel => window.__read(rel);
       AK.game.write = async (rel, blob) => { const u = new Uint8Array(await blob.arrayBuffer()); let s = ''; for (let i = 0; i < u.length; i += 0x8000) s += String.fromCharCode.apply(null, u.subarray(i, i + 0x8000)); return window.__write(rel, btoa(s)); };
       document.getElementById('g-inst').value = 'forge'; document.getElementById('g-tempstems').checked = SLOW;
+      document.getElementById('g-skipreview').checked = true;      // the old direct write (review staging: audio_director suite)
       await refreshWanted(); tempPick = wanted[0]; await tempTracks();
       return window.lastTempTracks[0];
     }, SLOW);

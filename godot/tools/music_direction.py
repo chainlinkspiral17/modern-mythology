@@ -371,6 +371,29 @@ def _pct(xs, q):
     return xs[min(len(xs) - 1, max(0, int(round(q * (len(xs) - 1)))))] if xs else 0.0
 
 
+CURVE_POINTS = 32
+
+
+def curve(targets, points=CURVE_POINTS):
+    """A scene's per-node director target, compacted for the AUDIO DIRECTOR's PLAY AS SCENE:
+    {n: node count, at: [first node index of each step], v: [target 0..1, 2 decimals]}. Up to `points`
+    equal node buckets, each holding its PEAK (the director rises in 2.5 s and releases over 8 s, so a peak
+    rules its neighbourhood); consecutive equal steps merge. Node i plays v[j] for the last at[j] <= i."""
+    n = len(targets)
+    at, v = [], []
+    if not n:
+        return {'n': 0, 'at': [], 'v': []}
+    buckets = min(points, n)
+    for b in range(buckets):
+        lo, hi = b * n // buckets, (b + 1) * n // buckets
+        val = round(max(targets[lo:hi]), 2)
+        if v and v[-1] == val:
+            continue
+        at.append(lo)
+        v.append(val)
+    return {'n': n, 'at': at, 'v': v}
+
+
 def brief(direction, cat, sc):
     """What each catalog track has to do for the scenes the director will play it in."""
     by_id = {c['id']: c for c in cat}
@@ -378,7 +401,8 @@ def brief(direction, cat, sc):
     lex = direction.get('lexicon', {})
     acc = collections.defaultdict(lambda: {'scenes': [], 'roles': collections.Counter(), 'targets': [], 'baselines': [],
                                            'words': collections.Counter(), 'chars': collections.Counter(),
-                                           'locales': collections.Counter(), 'moments': collections.Counter()})
+                                           'locales': collections.Counter(), 'moments': collections.Counter(),
+                                           'curves': {}})
     for sid, s in sorted(sc.items()):
         sim = simulate(sid, s, direction, cat_by_src)
         used = list(dict.fromkeys(sim['tracks']))
@@ -391,6 +415,8 @@ def brief(direction, cat, sc):
                 continue
             a = acc[tid]
             a['scenes'].append(sid)
+            if len(a['curves']) < 16 and sid not in a['curves']:
+                a['curves'][sid] = curve(sim['targets'])
             a['roles'][role] += 1
             a['targets'] += sim['targets']
             a['baselines'].append(sim['baseline'])
@@ -417,6 +443,7 @@ def brief(direction, cat, sc):
             'chars': [k for k, _ in a['chars'].most_common(4)],
             'locales': [k for k, _ in a['locales'].most_common(4)],
             'moments': dict(a['moments']),
+            'curves': {k: a['curves'][k] for k in a['scenes'][:16] if k in a['curves']},
         }
     # the director's absolute levels sit close together across the game (most lines carry no lexicon words), so
     # also rank each track against the others: energy = its scenes' mean intensity, darkness = their tension
@@ -432,12 +459,22 @@ def brief(direction, cat, sc):
                     'every track has audio), why (cue / bgm / leitmotif / locale / chapter), the intensity those scenes '
                     'drive (0..1: p10 / mean / p90 of the director\'s per-node target), whether stems are needed, the '
                     'lexicon words, focal characters, locales and choice / cg / interlude moments; energy / darkness rank the '
-                    'track against the others (0..1). The DAW\'s TEMP TRACKS '
-                    'compose from it. See lore/_MUSIC_DIRECTION_PLAYBOOK.md.',
+                    'track against the others (0..1); curves = each listed scene\'s director target over its nodes '
+                    '({n, at: node index, v: target}, peak per step, ≤ 32 steps). The DAW\'s TEMP TRACKS '
+                    'compose from it; the AUDIO DIRECTOR\'s PLAY AS SCENE drives the stems with the curves. '
+                    'See lore/_MUSIC_DIRECTION_PLAYBOOK.md.',
             'tracks': ranked}
 
 
 BRIEFS = os.path.join(GODOT, 'resources', 'music', 'temp_briefs.json')
+
+
+def dump_compact(obj):
+    """indent=1 JSON with every all-number list on one line (the curves would otherwise be ~30k lines)."""
+    txt = json.dumps(obj, indent=1, ensure_ascii=False)
+    txt = re.sub(r'\[\s*(-?[0-9.eE+-]+(?:,\s*-?[0-9.eE+-]+)*)\s*\]',
+                 lambda m: '[' + ', '.join(x.strip() for x in m.group(1).split(',')) + ']', txt)
+    return txt + '\n'
 
 
 def report(direction, cat, sc):
@@ -506,8 +543,7 @@ def main():
     elif cmd == 'brief':
         b = brief(direction, cat, sc)
         with open(BRIEFS, 'w', encoding='utf-8') as f:
-            json.dump(b, f, indent=1, ensure_ascii=False)
-            f.write('\n')
+            f.write(dump_compact(b))
         t = b['tracks']
         print(f'wrote {os.path.relpath(BRIEFS, GODOT)}: {len(t)} tracks the director plays, '
               f'{sum(1 for x in t if x["stems"])} need stems; top: ' + ', '.join(f'{x["id"]} ({x["scene_count"]})' for x in t[:5]))

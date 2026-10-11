@@ -18,7 +18,9 @@
  *                    plus a BroadcastChannel so open pages refresh.
  *   AK.game          link the godot/ folder once (File System Access),
  *                    read the music catalog, list tracks with no audio
- *                    yet ("wanted"), write files straight into assets/.
+ *                    yet ("wanted"), write files straight into assets/;
+ *                    readFile / list / remove / copy for the AUDIO
+ *                    DIRECTOR's review staging.
  *   AK.dsp           offline cleanup: high-pass, normalise (peak or
  *                    approx. LUFS), fades, trim, seamless loop crossfade,
  *                    spectral noise gate, mixdown.
@@ -585,6 +587,26 @@ AK.game = {
     await w.write(blob); await w.close();
     return path;
   },
+  // the File at a path (decode audio / copy bytes); throws if missing
+  async readFile(path) {
+    const parts = path.split('/').filter(Boolean), name = parts.pop();
+    const d = await this._dir(parts.join('/'), false);
+    return (await d.getFileHandle(name)).getFile();
+  },
+  // [{name, kind: 'file' | 'directory'}] in a folder, sorted by name; [] if it doesn't exist
+  async list(path) {
+    let d; try { d = await this._dir(path, false); } catch (e) { return []; }
+    const out = [];
+    for await (const [name, h] of d.entries()) out.push({ name, kind: h.kind });
+    return out.sort((a, b) => a.name < b.name ? -1 : a.name > b.name ? 1 : 0);
+  },
+  // delete a file, or a folder with everything in it; false if it wasn't there
+  async remove(path) {
+    const parts = path.split('/').filter(Boolean), name = parts.pop();
+    try { const d = await this._dir(parts.join('/'), false); await d.removeEntry(name, { recursive: true }); return true; }
+    catch (e) { if (e && e.name === 'NotFoundError') return false; throw e; }
+  },
+  async copy(from, to) { return this.write(to, await this.readFile(from)); },
   async catalog() { return JSON.parse(await this.readText('resources/music_catalog.json')); },
   // Field-friendliness: how much a track's brief reads like something
   // you can go and record, vs. something you'd compose.

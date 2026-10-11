@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AUDIO DIRECTOR · Modern Mythology</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --bg-0: #050304; --bg-1: #0e0908; --ink: #1a1410;
+    --rule: #553318; --gold: #d8a060; --gold-hi: #ffd896;
+    --text: #c8a878; --text-dim: #7a5828;
+    --emerald: #4ea060; --emerald-hi: #a8e89c; --rust: #c87633; --burgundy: #7a1e26;
+    --red: #c64a3a; --amber: #f0b94a; --violet: #c8a4f0; --blue: #8ab4f0;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100vh; overflow: hidden; background: var(--bg-0); color: var(--text); font-family: "Courier New", monospace; font-size: 12px; }
+  body { display: grid; grid-template-rows: auto 1fr auto; }
+  header { padding: 6px 12px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  header h1 { margin: 0; font-size: 15px; letter-spacing: 0.2em; color: var(--gold-hi); font-weight: normal; }
+  .badge { font-size: 10px; letter-spacing: 0.08em; padding: 3px 7px; border: 1px solid var(--rule); color: var(--text-dim); white-space: nowrap; }
+  .badge.ok { color: var(--emerald-hi); border-color: var(--emerald); }
+  .badge.warn { color: var(--amber); border-color: var(--amber); }
+  .badge.bad { color: var(--red); border-color: var(--red); }
+  .badge.cand { color: var(--blue); border-color: var(--blue); }
+  .badge.real { color: var(--violet); border-color: var(--violet); }
+  #b-counts { max-width: 330px; overflow: hidden; text-overflow: ellipsis; }
+  select, input[type=number], input[type=text], textarea { background: var(--ink); color: var(--gold-hi); border: 1px solid var(--rule); font-family: inherit; font-size: 12px; padding: 4px 6px; min-height: 36px; }
+  textarea { width: 100%; min-height: 54px; resize: vertical; }
+  input[type=number] { width: 70px; }
+  input[type=range] { accent-color: var(--rust); min-height: 36px; }
+  input[type=checkbox] { width: 18px; height: 18px; accent-color: var(--rust); vertical-align: middle; }
+  button { background: var(--ink); color: var(--gold-hi); border: 1px solid var(--gold); padding: 4px 10px; min-height: 36px; min-width: 36px; font-family: inherit; font-size: 11px; letter-spacing: 0.06em; cursor: pointer; touch-action: manipulation; }
+  button:hover:not(:disabled) { background: var(--gold); color: var(--ink); }
+  button:disabled { opacity: 0.35; cursor: default; }
+  button.dim { color: var(--text-dim); border-color: var(--rule); }
+  button.on { background: var(--rust); color: var(--ink); border-color: var(--gold-hi); }
+  button.armed { background: var(--red); color: #fff; border-color: #ffb0a0; }
+  button.go { border-color: var(--emerald); color: var(--emerald-hi); }
+  button.no { border-color: var(--red); color: #f0a090; }
+  main { display: grid; grid-template-columns: 410px 1fr; min-height: 0; overflow: hidden; }
+  .left { border-right: 1px solid var(--rule); display: grid; grid-template-rows: auto auto 1fr; min-height: 0; }
+  .filters { padding: 6px 8px; border-bottom: 1px solid var(--rule); display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+  .filters input[type=text] { flex: 1; min-width: 120px; }
+  .chips button { padding: 4px 7px; }
+  #list { overflow-y: auto; min-height: 0; }
+  .tr { display: grid; grid-template-columns: 30px 1fr auto; gap: 4px; align-items: center; padding: 5px 8px 5px 4px; border-bottom: 1px solid #2a1c12; cursor: pointer; min-height: 48px; }
+  .tr:hover { background: var(--bg-1); }
+  .tr.sel { background: var(--ink); box-shadow: inset 3px 0 0 var(--rust); }
+  .tr .nm b { color: var(--gold-hi); font-weight: normal; }
+  .tr .nm { min-width: 0; }
+  #t-status .badge + .badge { margin-left: 4px; }
+  .tr .nm i { color: var(--text-dim); font-style: normal; font-size: 10px; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .tr > div:last-child { display: flex; flex-direction: column; gap: 2px; align-items: flex-end; }
+  .tr .cb { display: flex; align-items: center; justify-content: center; height: 40px; width: 30px; cursor: pointer; }
+  .right { overflow-y: auto; min-height: 0; padding: 8px 14px 40px; }
+  h2 { margin: 12px 0 6px; color: var(--gold); font-size: 11px; letter-spacing: 0.16em; border-bottom: 1px solid var(--rule); padding-bottom: 3px; font-weight: normal; display: flex; gap: 8px; align-items: center; }
+  h2 .sp { flex: 1; }
+  .row { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; margin: 4px 0; }
+  .row > label { color: var(--text-dim); min-width: 70px; }
+  .note { color: var(--text-dim); font-size: 11px; line-height: 1.45; font-style: italic; }
+  .msg { color: var(--emerald-hi); font-size: 11px; min-height: 15px; margin: 4px 0; }
+  .msg.err { color: var(--red); }
+  .kv { display: grid; grid-template-columns: 90px 1fr; gap: 2px 8px; font-size: 11px; }
+  .kv b { color: var(--text-dim); font-weight: normal; }
+  .take { border: 1px solid var(--rule); background: var(--bg-1); padding: 6px 8px; margin-bottom: 6px; display: grid; grid-template-columns: 40px 1fr auto; gap: 8px; align-items: start; }
+  .take.cur { border-color: var(--rust); box-shadow: 0 0 0 1px var(--rust) inset; }
+  .take.rejected { opacity: 0.5; }
+  .take.approved { border-color: var(--emerald); }
+  .take .num { font-size: 20px; color: var(--gold-hi); text-align: center; border: 1px solid var(--rule); min-height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+  .take .bt { display: flex; flex-direction: column; gap: 4px; }
+  .take .mood { color: var(--emerald-hi); }
+  .take .req { color: var(--amber); font-size: 11px; }
+  .transport { position: sticky; top: -8px; z-index: 3; background: var(--bg-0); border: 1px solid var(--rule); padding: 6px 8px; margin: 6px 0; }
+  #seek { width: 100%; height: 54px; display: block; background: var(--bg-1); border: 1px solid var(--rule); cursor: pointer; touch-action: none; }
+  .time { font-size: 16px; color: var(--gold-hi); min-width: 130px; }
+  .layers { display: flex; gap: 6px; flex-wrap: wrap; }
+  .lamp { border: 1px solid var(--rule); padding: 3px 6px; font-size: 10px; min-width: 64px; position: relative; overflow: hidden; }
+  .lamp i { position: absolute; left: 0; bottom: 0; height: 3px; background: var(--emerald-hi); }
+  .lamp.on { color: var(--emerald-hi); border-color: var(--emerald); }
+  #curve { width: 100%; height: 90px; display: block; background: var(--bg-1); border: 1px solid var(--rule); touch-action: none; }
+  .line { border-left: 3px solid var(--rust); padding: 4px 8px; margin: 4px 0; min-height: 40px; color: var(--gold-hi); font-size: 13px; }
+  .line.next { border-color: var(--rule); color: var(--text-dim); font-size: 11px; min-height: 0; }
+  .line .who { color: var(--amber); }
+  .box { border: 1px solid var(--rule); padding: 6px 8px; background: var(--bg-1); }
+  .roles button { min-width: 64px; }
+  .instr { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 4px; }
+  .instr button { text-align: left; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+  .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.78); display: none; z-index: 60; }
+  .modal.show { display: flex; align-items: center; justify-content: center; }
+  .modal .mbox { background: var(--bg-0); border: 1px solid var(--gold); width: min(1100px, 96vw); height: min(720px, 94vh); display: grid; grid-template-rows: auto 1fr; }
+  .modal .mhead { display: flex; gap: 8px; align-items: center; padding: 6px 10px; border-bottom: 1px solid var(--rule); }
+  .modal .mbody { overflow-y: auto; padding: 6px 10px 30px; }
+  .grp { margin: 8px 0 3px; color: var(--gold); letter-spacing: 0.12em; font-size: 11px; }
+  .chipset { display: flex; flex-wrap: wrap; gap: 4px; }
+  .chipset button { min-height: 38px; }
+  footer { border-top: 1px solid var(--rule); padding: 4px 12px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  footer code { color: var(--gold-hi); background: var(--ink); padding: 2px 6px; }
+  .empty { padding: 30px; color: var(--text-dim); text-align: center; line-height: 1.7; }
+  kbd { border: 1px solid var(--rule); padding: 0 4px; color: var(--gold-hi); font-family: inherit; }
+</style>
+</head>
+<body>
+<header>
+  <h1>AUDIO DIRECTOR</h1>
+  <span class="badge" id="b-folder">GAME FOLDER: —</span>
+  <button id="link">⌂ LINK GAME FOLDER</button>
+  <button class="dim" id="refresh" title="re-read catalog, briefs, approvals and review staging">⟳ RESCAN</button>
+  <span class="badge" id="b-counts">—</span>
+  <span class="badge" id="b-daw" title="takes come from the DAW: an open, started DAW takes requests live; otherwise one opens">DAW: —</span>
+  <span style="flex:1"></span>
+  <label class="note">who <input type="text" id="who" style="width:110px" placeholder="your name"></label>
+  <a href="index.html" style="color:var(--text-dim)">tools</a>
+</header>
+<main>
+  <div class="left">
+    <div class="filters chips" id="chips">
+      <button data-f="all" class="on">ALL</button><button data-f="missing">MISSING</button><button data-f="candidates">CANDIDATES</button><button data-f="approved">APPROVED TEMP</button><button data-f="real">REAL AUDIO</button>
+    </div>
+    <div class="filters">
+      <select id="vol"><option value="">every volume</option></select>
+      <input type="text" id="q" placeholder="search id / title / character">
+      <label class="note" title="only tracks the VN scenes play (from the director's briefs)"><input type="checkbox" id="played"> played</label>
+    </div>
+    <div id="list"><div class="empty">Link the game folder (the modern-mythology folder or its godot/ folder).<br>Tracks, their briefs and the DAW's candidate takes show up here.</div></div>
+  </div>
+  <div class="right" id="right">
+    <div class="empty" id="welcome">
+      Pick a track on the left.<br>
+      <kbd>↑</kbd><kbd>↓</kbd> track · <kbd>1</kbd>–<kbd>9</kbd> take (A/B at the same spot) · <kbd>space</kbd> play / stop · <kbd>[</kbd><kbd>]</kbd> intensity · <kbd>a</kbd> approve · <kbd>x</kbd> reject (twice) · <kbd>l</kbd> loop
+    </div>
+    <div id="track" style="display:none">
+      <div class="row">
+        <button class="dim" id="prev" title="previous track (↑)">◀</button>
+        <div style="flex:1"><b id="t-title" style="color:var(--gold-hi);font-size:15px;font-weight:normal"></b> <span id="t-status"></span><br><span class="note" id="t-src"></span></div>
+        <button class="dim" id="next" title="next track (↓)">▶</button>
+      </div>
+      <div class="msg" id="msg" style="height:30px;overflow-y:auto"></div>
+
+      <div class="transport">
+        <div class="row">
+          <button id="play" title="space">▶ PLAY</button>
+          <span class="time" id="time">0:00 / 0:00</span>
+          <button class="dim" id="loop" title="l">⟲ LOOP</button>
+          <span class="note" id="ab">—</span>
+        </div>
+        <canvas id="seek"></canvas>
+        <div class="row">
+          <label title="the game's stem layers: 0 pad + chords · 0.25 + bass · 0.5 + drums · 0.75 + lead">INTENSITY</label>
+          <input type="range" id="int" min="0" max="1" step="0.01" value="1" data-default="1" style="width:180px">
+          <b id="intv" style="color:var(--gold-hi);min-width:36px">1.00</b>
+          <button class="dim" data-int="0">0</button><button class="dim" data-int="0.25">.25</button><button class="dim" data-int="0.5">.5</button><button class="dim" data-int="0.75">.75</button><button class="dim" data-int="1">1</button>
+        </div>
+        <div class="layers" id="layers"></div>
+      </div>
+
+      <h2>PLAY AS SCENE <span class="sp"></span><span class="note">drives the intensity along the director's curve for that scene, as AudioMgr would</span></h2>
+      <div class="row">
+        <select id="scene" style="flex:1;min-width:200px"></select>
+        <select id="pace" title="reading pace"><option value="0.5">fast reader</option><option value="1" selected>normal reader</option><option value="2">slow reader</option></select>
+        <button id="sceneplay">▶ PLAY AS SCENE</button>
+      </div>
+      <canvas id="curve"></canvas>
+      <div class="line" id="line">—</div>
+      <div class="line next" id="line2"></div>
+      <div class="note" id="sceneinfo"></div>
+
+      <h2>TAKES <span class="sp"></span><label class="note"><input type="checkbox" id="showrej"> rejected</label><label class="note" title="REJECT also deletes the take's files (its seed stays recorded)"><input type="checkbox" id="rejdel"> reject deletes files</label></h2>
+      <div class="row"><label>NOTES</label><input type="text" id="notes" style="flex:1" placeholder="why — goes into temp_approvals.json with the approval / rejection"></div>
+      <div id="takes"></div>
+      <div class="row"><button class="dim" id="revoke" title="remove the approved temp from the game path (never real audio)">✕ REVOKE APPROVED TEMP</button><span class="note" id="revnote"></span></div>
+
+      <h2>BRIEF <span class="sp"></span><span class="note" id="briefsrc"></span></h2>
+      <div class="kv" id="brief"></div>
+
+      <h2>MAKE TAKES <span class="sp"></span><span class="note">the DAW composes them into review staging</span></h2>
+      <div class="box" id="regen">
+        <div class="row"><label>FOR</label><span id="forwho" class="note"></span></div>
+        <div class="row"><label>TAKES</label><span class="chipset" id="ntakes"><button data-n="1">1</button><button data-n="2" class="on">2</button><button data-n="3">3</button><button data-n="4">4</button><button data-n="6">6</button></span></div>
+        <div class="row"><label>DIRECTION</label><textarea id="desc" placeholder="e.g. slower, more dread, a lonely piano over rain — overrides style / mode / pace words from the catalog text"></textarea></div>
+        <div class="row"><label>STYLE</label><select id="r-style"><option value="">auto</option></select><select id="r-mode"><option value="">auto mode</option></select><select id="r-form"><option value="">auto form</option></select></div>
+        <div class="row"><label>ENERGY</label><input type="range" id="r-energy" min="-0.5" max="0.5" step="0.05" value="0" data-default="0" style="width:160px"><b id="r-energyv">±0</b><span class="note">nudges tempo / density from the brief</span></div>
+        <div class="row"><label>DENSITY</label><label class="note"><input type="checkbox" id="r-densauto" checked> auto</label><input type="range" id="r-dens" min="0.1" max="0.95" step="0.05" value="0.55" data-default="0.55" style="width:160px" disabled><b id="r-densv">auto</b></div>
+        <div class="row"><label>LENGTH</label><select id="r-lenmode"><option value="">auto (≥ 90 s)</option><option value="sec">seconds</option><option value="bars">bars</option></select><input type="number" id="r-len" min="1" max="900" value="90" disabled><label class="note" title="writes WAV loop points: Godot then loops the file forever (smpl chunk) — only for beds"><input type="checkbox" id="r-loop"> seamless loop points</label></div>
+        <div class="row roles"><label>PARTS</label><span class="chipset" id="roles"></span></div>
+        <div class="row"><label>EXTRA PADS</label><span class="chipset" id="pads"><button data-p="0" class="on">0</button><button data-p="1">+1 (octave up)</button><button data-p="2">+2 (+ sub drone)</button></span></div>
+        <div class="row"><label>SEED</label><input type="number" id="r-seed" style="width:140px" placeholder="new"><span class="note">blank: a fresh seed per take, never a rejected one</span></div>
+        <div class="grp">INSTRUMENTS</div>
+        <div class="instr" id="instr"></div>
+        <div class="row" style="margin-top:8px"><button class="go" id="make">⚄ MAKE TAKES</button><button class="dim" id="resetregen">reset</button><span class="msg" id="makemsg"></span></div>
+      </div>
+    </div>
+  </div>
+</main>
+<footer>
+  <span class="note" id="foot">music stays out of git — after approving, back it up to Google Drive:</span><code>godot/tools/music_drive.sh push</code>
+  <span style="flex:1"></span>
+  <span class="note" id="dawmsg"></span>
+</footer>
+
+<div class="modal" id="picker"><div class="mbox">
+  <div class="mhead"><b id="pk-title" style="color:var(--gold-hi);font-weight:normal"></b><input type="text" id="pk-q" placeholder="search" style="flex:1"><button id="pk-close">✕ CLOSE</button></div>
+  <div class="mbody" id="pk-body"></div>
+</div></div>
+
+<script src="audio_kit.js"></script>
+<script src="touch_controls.js"></script>
+<script src="seqgen.js"></script>
+<script src="forge_synth.js"></script>
+<script src="patch_sources.js"></script>
+<script src="patch_bank.js"></script>
+<script>
+"use strict";
+// AUDIO DIRECTOR — review the DAW's candidate temp tracks, approve one into the game, reject the rest.
+//
+// Staging (written by the DAW's TEMP TRACKS / director requests):
+//   godot/assets/audio/review/<track id>/<take id>/ mix.wav · stems/<role>.wav · stems.json · credits.txt · meta.json
+// APPROVE copies a take where AudioMgr looks for the catalog track:
+//   <src base>.wav · <src base>.stems/<role>.wav · <src base>.stems.json · <src base>.wav.credits.txt
+// and records it in godot/resources/music/temp_approvals.json (committed: the take's mood / seed / request,
+// so it regenerates identically). A real .ogg / .mp3 at the catalog src always wins and is never touched;
+// a .wav that isn't a temp (a FIELD RECORDER / TAPE STUDIO take) counts as real audio too.
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+const REVIEW_DIR = 'assets/audio/review';
+const APPROVALS = 'resources/music/temp_approvals.json';
+const ROLES = ['drums', 'bass', 'chords', 'lead', 'pad'];
+const EXTRA_PADS = ['pad2', 'pad3'];
+// AudioMgr.gd: stem layer thresholds, its fade (STEM_FADE) and the director's send fade
+const LAYER = { pad: 0, chords: 0, bass: 0.25, drums: 0.5, lead: 0.75 };
+const STEM_FADE = 1.5, DIRECTOR_FADE = 0.4;
+const layerOn = (layer, level) => level + 0.0001 >= layer;          // AudioMgr.set_music_intensity's rule
+const fmt = s => { s = Math.max(0, s || 0); return Math.floor(s / 60) + ':' + String(Math.floor(s % 60)).padStart(2, '0'); };
+const baseOf = src => src.replace(/\.[^.\/]+$/, '');
+const extOf = src => (src.match(/\.([^.\/]+)$/) || [])[1] || '';
+function msg(text, err, id = 'msg') { const e = $(id); if (!e) return; e.textContent = text; e.classList.toggle('err', !!err); }
+
+const DIR = {
+  cat: [], briefs: {}, approvals: { tracks: {} }, state: {}, order: [], filter: 'all',
+  sel: null,            // selected track id
+  checked: new Set(),   // tracks ticked for batch MAKE TAKES
+  takes: [],            // metas of the selected track's takes (shown order)
+  cur: -1,              // index into takes of the take loaded in the player
+  netLog: [],           // cross-page notices received: {via: 'bc' | 'storage', uid, type}
+  defaults: { attack_sec: 2.5, release_sec: 8 },
+  regen: null,
+};
+
+// ═══════════════════════════════════════════════════════════════════
+// game folder · catalog · briefs · approvals · staging scan
+// ═══════════════════════════════════════════════════════════════════
+function folderBadge() {
+  const ok = !!AK.game.root;
+  $('b-folder').textContent = ok ? 'GAME FOLDER: ' + (AK.game.root.name || 'linked') : AK.game._pending ? 'GAME FOLDER: tap to re-allow' : 'GAME FOLDER: not linked';
+  $('b-folder').className = 'badge ' + (ok ? 'ok' : 'warn');
+  $('link').textContent = AK.game._pending && !ok ? '⌂ ALLOW GAME FOLDER' : '⌂ LINK GAME FOLDER';
+}
+async function readJson(path, fallback) { try { return JSON.parse(await AK.game.readText(path)); } catch (e) { return fallback; } }
+async function readApprovals() {
+  const j = await readJson(APPROVALS, null) || {};
+  return Object.assign({ _doc: APPROVALS_DOC, v: 1, tracks: {} }, j, { tracks: j.tracks || {} });
+}
+const APPROVALS_DOC = 'Written by godot/tools/audio_director.html — never hand-edit. Per catalog track id: the APPROVED temp take ' +
+  '(take id, mood {style, form, mode, key, bpm, density, seed}, the request it was made with, instruments, date, who, notes, ' +
+  'loudness, files it wrote) so it can be regenerated identically, every REJECTED seed (new takes skip them) and the history. ' +
+  'The audio itself lives in Google Drive (godot/tools/music_drive.sh), never in git. See lore/_MUSIC_DIRECTION_PLAYBOOK.md.';
+async function writeApprovals(j) {
+  const out = { _doc: APPROVALS_DOC, v: 1, tracks: {} };
+  for (const id of Object.keys(j.tracks).sort()) out.tracks[id] = j.tracks[id];
+  await AK.game.write(APPROVALS, new Blob([JSON.stringify(out, null, 1) + '\n'], { type: 'application/json' }));
+  DIR.approvals = out;
+}
+// a .wav at the game path: ours (a temp — "(temp)" title / mmjs temp flag) or real audio someone recorded?
+async function wavKind(path) {
+  if (!(await AK.game.exists(path))) return 'none';
+  try {
+    const f = await AK.game.readFile(path), head = await f.slice(0, 262144).arrayBuffer(), c = AK.wav.parseChunks(head);
+    const temp = (c.mmjs && c.mmjs.temp === true) || /\(temp\)/i.test((c.info && c.info.INAM) || '') || /\(temp\)/i.test((c.bext && c.bext.description) || '');
+    return temp ? 'temp' : 'real';
+  } catch (e) { return 'real'; }
+}
+async function scanTakes(id) {
+  const out = [];
+  for (const e of await AK.game.list(REVIEW_DIR + '/' + id)) {
+    if (e.kind !== 'directory') continue;
+    const m = await readJson(REVIEW_DIR + '/' + id + '/' + e.name + '/meta.json', null);
+    if (m) out.push(Object.assign(m, { take: m.take || e.name, dir: REVIEW_DIR + '/' + id + '/' + e.name + '/' }));
+  }
+  return out.sort((a, b) => (a.created || '').localeCompare(b.created || '') || a.take.localeCompare(b.take));
+}
+async function scanTrack(t) {
+  const ext = extOf(t.src).toLowerCase(), base = baseOf(t.src);
+  const real = ext !== 'wav' && await AK.game.exists(t.src);
+  const wav = await wavKind(base + '.wav');
+  const takes = await scanTakes(t.id);
+  const approved = (DIR.approvals.tracks[t.id] || {}).approved || null;
+  const cand = takes.filter(m => m.status !== 'rejected').length;
+  const status = real || wav === 'real' ? 'real' : wav === 'temp' ? 'approved' : cand ? 'candidates' : 'missing';
+  return DIR.state[t.id] = { real, wav, takes, approved, cand, status };
+}
+async function refresh() {
+  if (!AK.game.root) { folderBadge(); return; }
+  folderBadge();
+  try { DIR.cat = (await AK.game.catalog()).filter(t => t.src); } catch (e) { msg('catalog unreadable: ' + e.message, true); return; }
+  const b = await readJson('resources/music/temp_briefs.json', { tracks: [] });
+  DIR.briefs = Object.fromEntries((b.tracks || []).map(x => [x.id, x]));
+  DIR.approvals = await readApprovals();
+  const dj = await readJson('resources/music/direction.json', null);
+  if (dj && dj.defaults) for (const k of ['attack_sec', 'release_sec']) if (+dj.defaults[k] > 0) DIR.defaults[k] = +dj.defaults[k];
+  DIR.state = {};
+  await Promise.all(DIR.cat.map(t => scanTrack(t)));
+  const vols = [...new Set(DIR.cat.map(t => t.vol))].sort((a, b) => a - b);
+  const vv = $('vol').value; $('vol').innerHTML = '<option value="">every volume</option>' + vols.map(v => `<option value="${v}">vol ${v}</option>`).join(''); $('vol').value = vv;
+  // most-played first (how many scenes the director plays it in), then volume, then id
+  DIR.order = DIR.cat.slice().sort((a, b) => ((DIR.briefs[b.id] || {}).scene_count || 0) - ((DIR.briefs[a.id] || {}).scene_count || 0) || (a.vol || 0) - (b.vol || 0) || a.id.localeCompare(b.id));
+  renderList();
+  if (DIR.sel && DIR.state[DIR.sel]) await selectTrack(DIR.sel, { keep: true });
+}
+async function rescanOne(id) {
+  const t = DIR.cat.find(x => x.id === id); if (!t) return;
+  DIR.approvals = await readApprovals();
+  await scanTrack(t);
+  renderList();
+  if (DIR.sel === id) await selectTrack(id, { keep: true });
+}
+const STATUS_LABEL = { missing: ['MISSING', 'bad'], candidates: ['CANDIDATES', 'cand'], approved: ['APPROVED TEMP', 'ok'], real: ['REAL AUDIO', 'real'] };
+function statusBadge(st) {
+  const [l, c] = STATUS_LABEL[st.status];
+  return `<span class="badge ${c}">${l}${st.status === 'candidates' ? ' (' + st.cand + ')' : ''}</span>` + (st.status !== 'candidates' && st.cand ? `<span class="badge cand">+${st.cand} cand.</span>` : '');
+}
+function whyOf(b) {
+  if (!b) return 'no scene plays it (chapter / volume queue only)';
+  return b.scene_count + ' scene' + (b.scene_count === 1 ? '' : 's') + ' · ' + Object.entries(b.roles || {}).map(([k, v]) => k + ' ' + v).join(', ') +
+    ' · energy ' + Math.round((b.energy ?? 0.5) * 100) + '% · dark ' + Math.round((b.darkness ?? 0.5) * 100) + '%' + (b.chars && b.chars.length ? ' · theme: ' + b.chars.join(', ') : '');
+}
+function visible() {
+  const q = $('q').value.trim().toLowerCase(), vol = $('vol').value, played = $('played').checked;
+  return DIR.order.filter(t => {
+    const st = DIR.state[t.id]; if (!st) return false;
+    if (DIR.filter !== 'all' && st.status !== DIR.filter && !(DIR.filter === 'candidates' && st.cand)) return false;
+    if (vol && String(t.vol) !== vol) return false;
+    if (played && !DIR.briefs[t.id]) return false;
+    if (q) { const b = DIR.briefs[t.id]; const s = (t.id + ' ' + t.title + ' ' + (t.desc || '') + ' ' + (b ? b.chars.join(' ') : '')).toLowerCase(); if (!s.includes(q)) return false; }
+    return true;
+  });
+}
+function renderList() {
+  const vis = visible(), L = $('list');
+  const n = s => DIR.cat.filter(t => DIR.state[t.id] && DIR.state[t.id].status === s).length;
+  $('b-counts').textContent = DIR.cat.length + ' tracks · ' + n('missing') + ' missing · ' + DIR.cat.filter(t => DIR.state[t.id] && DIR.state[t.id].cand).length + ' with candidates · ' + n('approved') + ' approved temp · ' + n('real') + ' real';
+  $('b-counts').title = $('b-counts').textContent;
+  if (!vis.length) { L.innerHTML = '<div class="empty">' + (DIR.cat.length ? 'nothing matches the filter.' : 'no catalog read yet.') + '</div>'; return; }
+  L.innerHTML = vis.map(t => {
+    const st = DIR.state[t.id], b = DIR.briefs[t.id];
+    return `<div class="tr${t.id === DIR.sel ? ' sel' : ''}" data-id="${esc(t.id)}"><label class="cb" title="tick for batch MAKE TAKES"><input type="checkbox" data-ck="${esc(t.id)}"${DIR.checked.has(t.id) ? ' checked' : ''}></label>` +
+      `<div class="nm"><b>${esc(t.title)}</b> <span class="note">v${t.vol} · ${esc(t.id)}</span><i>${esc(whyOf(b))}</i></div><div>${statusBadge(st)}</div></div>`;
+  }).join('');
+}
+$('list').addEventListener('click', e => {
+  const ck = e.target.closest('[data-ck]');
+  if (ck) { if (ck.checked) DIR.checked.add(ck.dataset.ck); else DIR.checked.delete(ck.dataset.ck); forWho(); return; }
+  if (e.target.closest('.cb')) return;                 // the tick cell (its label forwards the tap to the box)
+  const r = e.target.closest('.tr'); if (r) selectTrack(r.dataset.id);
+});
+document.querySelectorAll('#chips [data-f]').forEach(b => b.addEventListener('click', () => { DIR.filter = b.dataset.f; document.querySelectorAll('#chips [data-f]').forEach(x => x.classList.toggle('on', x === b)); renderList(); }));
+$('q').addEventListener('input', renderList); $('vol').addEventListener('change', renderList); $('played').addEventListener('change', renderList);
+$('link').addEventListener('click', async () => {
+  try { if (!(AK.game._pending && await AK.game.restore(true))) await AK.game.link(); await refresh(); }
+  catch (e) { if (e.name !== 'AbortError') msg(e.message || String(e), true); }
+});
+$('refresh').addEventListener('click', refresh);
+$('who').value = (() => { try { return localStorage.getItem('mm_director_who') || ''; } catch (e) { return ''; } })();
+$('who').addEventListener('change', () => { try { localStorage.setItem('mm_director_who', $('who').value.trim()); } catch (e) {} });
+const who = () => $('who').value.trim() || 'user';
+
+// ═══════════════════════════════════════════════════════════════════
+// track view
+// ═══════════════════════════════════════════════════════════════════
+const curTrack = () => DIR.cat.find(t => t.id === DIR.sel) || null;
+async function selectTrack(id, opts = {}) {
+  const t = DIR.cat.find(x => x.id === id); if (!t) return;
+  const changed = DIR.sel !== id;
+  if (changed) { sceneStop(); PV.stop(); PV.pos = 0; DIR.cur = -1; }
+  DIR.sel = id;
+  document.querySelectorAll('#list .tr').forEach(r => r.classList.toggle('sel', r.dataset.id === id));
+  const sr = document.querySelector('#list .tr.sel'); if (sr && changed) sr.scrollIntoView({ block: 'nearest' });
+  $('welcome').style.display = 'none'; $('track').style.display = '';
+  const st = DIR.state[id], b = DIR.briefs[id];
+  $('t-title').textContent = t.title + '  ·  v' + t.vol;
+  $('t-status').innerHTML = statusBadge(st);
+  $('t-src').textContent = t.id + ' · godot/' + t.src + (st.wav !== 'none' ? ' · .wav: ' + st.wav : '') + (st.approved ? ' · approved take ' + st.approved.take + ' (' + (st.approved.date || '').slice(0, 10) + ', ' + (st.approved.by || '?') + ')' : '');
+  renderBrief(t, b);
+  renderTakes();
+  renderScenes(b);
+  forWho();
+  if (changed && !opts.keep) msg('');
+  const visibleTakes = DIR.takes;
+  if (changed || DIR.cur >= visibleTakes.length) {
+    const ai = visibleTakes.findIndex(m => st.approved && m.take === st.approved.take);
+    const first = ai >= 0 ? ai : visibleTakes.findIndex(m => m.status !== 'rejected');
+    if (first >= 0) await pickTake(first, { autoplay: false });
+    else PV.clear();
+  }
+  $('revoke').disabled = !(st.wav === 'temp');
+  $('revnote').textContent = st.wav === 'temp' ? '' : st.real || st.wav === 'real' ? 'real audio here — nothing to revoke' : 'no approved temp in the game';
+}
+function renderBrief(t, b) {
+  $('briefsrc').textContent = b ? 'resources/music/temp_briefs.json' : 'no brief — the scenes never pick this track';
+  const kv = (k, v) => v ? `<b>${k}</b><span>${v}</span>` : '';
+  $('brief').innerHTML = kv('catalog', esc(t.desc || '')) + (b ? kv('scenes', b.scene_count + ' — ' + esc((b.scenes || []).join(', ')) + (b.scene_count > (b.scenes || []).length ? ' …' : '')) +
+    kv('roles', esc(Object.entries(b.roles || {}).map(([k, v]) => k + ' ' + v).join(', '))) +
+    kv('intensity', 'p10 ' + b.intensity.p10 + ' · mean ' + b.intensity.mean + ' · p90 ' + b.intensity.p90 + (b.stems ? ' · moves → stems' : '')) +
+    kv('rank', 'energy ' + Math.round(b.energy * 100) + '% · darkness ' + Math.round(b.darkness * 100) + '%') +
+    kv('words', esc((b.words || []).join(', '))) + kv('characters', esc((b.chars || []).join(', '))) + kv('locales', esc((b.locales || []).join(', '))) +
+    kv('moments', esc(Object.entries(b.moments || {}).map(([k, v]) => k + ' ' + v).join(', '))) : '');
+}
+function reqText(r) {
+  if (!r) return '';
+  const a = [];
+  if (r.description) a.push('“' + r.description + '”');
+  if (r.style) a.push('style ' + r.style); if (r.mode) a.push('mode ' + r.mode); if (r.form) a.push('form ' + r.form);
+  if (r.energy) a.push('energy ' + (r.energy > 0 ? '+' : '') + r.energy); if (r.density !== undefined) a.push('density ' + r.density);
+  if (r.length) a.push(r.length.sec ? r.length.sec + ' s' : r.length.bars + ' bars'); if (r.loop) a.push('loop points');
+  if (r.roles) a.push('parts ' + r.roles.join('+')); if (r.extraPads) a.push('+' + r.extraPads + ' pad' + (r.extraPads > 1 ? 's' : ''));
+  if (r.instruments) a.push(Object.entries(r.instruments).map(([k, v]) => k + '=' + v).join(' '));
+  return a.join(' · ');
+}
+function renderTakes() {
+  const st = DIR.state[DIR.sel]; if (!st) return;
+  const all = st.takes, show = $('showrej').checked;
+  const keepTake = DIR.cur >= 0 && DIR.takes[DIR.cur] ? DIR.takes[DIR.cur].take : null;
+  DIR.takes = all.filter(m => show || m.status !== 'rejected');
+  DIR.cur = keepTake ? DIR.takes.findIndex(m => m.take === keepTake) : -1;
+  if (!DIR.takes.length) { $('takes').innerHTML = '<div class="note">no candidate takes yet — MAKE TAKES below asks the DAW for some.</div>'; return; }
+  $('takes').innerHTML = DIR.takes.map((m, i) => {
+    const mo = m.mood || {}, S = SeqGen.STYLES[mo.style], isAp = st.approved && st.approved.take === m.take;
+    const cls = 'take' + (i === DIR.cur ? ' cur' : '') + (m.status === 'rejected' ? ' rejected' : '') + (isAp ? ' approved' : '');
+    const inst = m.instruments ? Object.entries(m.instruments).map(([k, v]) => k + ': ' + v).join(' · ') : '';
+    return `<div class="${cls}" data-i="${i}"><div class="num" data-pick="${i}" title="key ${i + 1}">${i + 1}</div><div>` +
+      `<b style="color:var(--gold-hi);font-weight:normal">${esc(m.take)}</b> ${isAp ? '<span class="badge ok">APPROVED</span>' : m.status === 'rejected' ? '<span class="badge bad">REJECTED</span>' : '<span class="badge cand">CANDIDATE</span>'}<br>` +
+      `<span class="mood">${esc(S ? S.name : mo.style)} · ${esc(mo.form)} · ${esc(SeqGen.NOTE_NAMES[mo.key] || '')} ${esc(mo.mode)} · ${(+mo.bpm).toFixed(+mo.bpm % 1 ? 2 : 0)} BPM · density ${mo.density} · seed ${mo.seed}</span><br>` +
+      `<span>${m.lufs != null ? m.lufs.toFixed(1) + ' LUFS · ' : ''}${m.true_peak != null ? m.true_peak.toFixed(1) + ' dBTP · ' : ''}${(+m.seconds).toFixed(1)} s · ${m.bars} bars · ${m.stems && m.stems.length ? m.stems.length + ' stems (' + m.stems.map(s => s.name).join(', ') + ')' : 'no stems'}</span><br>` +
+      (m.why ? `<span class="note">${esc(m.why)}</span><br>` : '') +
+      (reqText(m.request) ? `<span class="req">asked: ${esc(reqText(m.request))}</span><br>` : '') +
+      (inst ? `<span class="note">instruments: ${esc(inst)}</span>` : '') +
+      (m.credits ? `<br><span class="note">credits: ${esc(m.credits.replace(/\n/g, '; '))}</span>` : '') +
+      `</div><div class="bt"><button data-play="${i}">▶ PLAY</button>` +
+      (m.status === 'rejected' ? `<button class="dim" data-del="${i}">DELETE FILES</button>` : `<button class="go" data-ap="${i}">✓ APPROVE</button><button class="no" data-rej="${i}">✕ REJECT</button>`) +
+      `<button class="dim" data-again="${i}" title="ask the DAW to make this take again from its recorded settings">⟳ AGAIN</button></div></div>`;
+  }).join('');
+}
+$('showrej').addEventListener('change', () => { renderTakes(); });
+$('takes').addEventListener('click', e => {
+  const g = (k) => { const el = e.target.closest('[data-' + k + ']'); return el ? +el.dataset[k] : null; };
+  let i;
+  if ((i = g('pick')) !== null || (i = g('play')) !== null) { pickTake(i, { autoplay: true }); return; }
+  if ((i = g('ap')) !== null) { approve(i, e.target.closest('button')); return; }
+  if ((i = g('rej')) !== null) { reject(i, e.target.closest('button')); return; }
+  if ((i = g('del')) !== null) { deleteTake(i, e.target.closest('button')); return; }
+  if ((i = g('again')) !== null) { const m = DIR.takes[i]; requestTakes([DIR.sel], 1, regenOpts(m)); }
+});
+$('prev').addEventListener('click', () => stepTrack(-1));
+$('next').addEventListener('click', () => stepTrack(1));
+function stepTrack(d) {
+  const vis = visible(); if (!vis.length) return;
+  const i = vis.findIndex(t => t.id === DIR.sel);
+  const j = i < 0 ? 0 : Math.max(0, Math.min(vis.length - 1, i + d));
+  selectTrack(vis[j].id);
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// preview player: the take's stems layered exactly like AudioMgr
+// ═══════════════════════════════════════════════════════════════════
+const PV = {
+  ctx: null, out: null, take: null, layers: [], dur: 0, playing: false, loop: false, pos: 0, t0: 0, p0: 0, gen: 0, intensity: 1, cache: new Map(), peaks: null,
+  ensure() {
+    if (!this.ctx) { this.ctx = new AudioContext({ latencyHint: 'playback' }); this.out = this.ctx.createGain(); this.out.gain.value = 0.9; this.out.connect(this.ctx.destination); }
+    if (this.ctx.state === 'suspended') this.ctx.resume().catch(() => {});
+    return this.ctx;
+  },
+  async decode(path) { const f = await AK.game.readFile(path); return this.ctx.decodeAudioData(await f.arrayBuffer()); },
+  // stems when the take has them (AudioMgr plays only the stems then), else the mix
+  async load(meta) {
+    this.ensure();
+    const key = meta.dir;
+    let L = this.cache.get(key);
+    if (!L) {
+      L = [];
+      const man = meta.stems && meta.stems.length ? await readJson(meta.dir + 'stems.json', null) : null;
+      if (man && man.stems && man.stems.length) for (const s of man.stems) L.push({ name: s.name, layer: +s.layer || 0, buf: await this.decode(s.file) });
+      else L.push({ name: 'mix', layer: 0, buf: await this.decode(meta.dir + 'mix.wav'), mix: true });
+      this.cache.set(key, L);
+      while (this.cache.size > 3) this.cache.delete(this.cache.keys().next().value);   // the A/B pair + one
+    }
+    return L;
+  },
+  use(meta, L) {
+    this.take = meta;
+    this.layers = L.map(x => Object.assign({}, x, { g: null, src: null, gain: layerOn(x.layer, this.intensity) || x.mix ? 1 : 0 }));
+    this.dur = Math.max(...L.map(x => x.buf.duration));
+    this.peaks = null;
+    return this;
+  },
+  clear() { this.stop(); this.take = null; this.layers = []; this.dur = 0; this.pos = 0; drawSeek(); renderLayers(); },
+  position() {
+    if (!this.playing) return this.pos;
+    const p = this.p0 + Math.max(0, this.ctx.currentTime - this.t0);      // starts are scheduled 30 ms ahead
+    return this.loop ? p % this.dur : Math.min(p, this.dur);
+  },
+  play(at) {
+    if (!this.take) return;
+    this.ensure(); this.stop(true);
+    const pos = Math.max(0, Math.min(this.dur - 0.01, at ?? this.pos)), now = this.ctx.currentTime + 0.03, gen = ++this.gen;
+    for (const l of this.layers) {
+      const s = this.ctx.createBufferSource(); s.buffer = l.buf; s.loop = this.loop;
+      const g = this.ctx.createGain(); g.gain.value = l.mix ? 1 : l.gain;
+      s.connect(g); g.connect(this.out); s.start(now, pos % l.buf.duration);
+      l.src = s; l.g = g;
+    }
+    this.layers[0].src.onended = () => { if (gen === this.gen && !this.loop) { this.playing = false; this.pos = 0; uiPlay(); } };
+    this.t0 = now; this.p0 = pos; this.playing = true; uiPlay();
+  },
+  stop(keep) {
+    if (this.playing) this.pos = this.position();
+    this.gen++;
+    for (const l of this.layers) { if (l.src) { try { l.src.onended = null; l.src.stop(); } catch (e) {} l.src.disconnect(); l.g.disconnect(); } l.src = l.g = null; }
+    this.playing = false; if (!keep) uiPlay();
+  },
+  seek(pos) { pos = Math.max(0, Math.min(this.dur, pos)); if (this.playing) this.play(pos); else this.pos = pos; drawSeek(); },
+  setLoop(on) { this.loop = !!on; for (const l of this.layers) if (l.src) l.src.loop = this.loop; },
+  // AudioMgr.set_music_intensity(level, fade): each stem's gain moves linearly (move_toward, amplitude) to
+  // 1 if level ≥ its layer else 0, at 1/fade per second
+  setIntensity(level, fade = STEM_FADE) {
+    this.intensity = Math.max(0, Math.min(1, level));
+    const now = this.ctx ? this.ctx.currentTime : 0;
+    for (const l of this.layers) {
+      if (l.mix) continue;
+      const target = layerOn(l.layer, this.intensity) ? 1 : 0;
+      if (l.g) {
+        const cur = l.g.gain.value, p = l.g.gain;
+        p.cancelScheduledValues(now); p.setValueAtTime(cur, now);
+        if (fade <= 0.001) p.setValueAtTime(target, now); else p.linearRampToValueAtTime(target, now + Math.abs(target - cur) * fade);
+      }
+      l.gain = target;
+    }
+    uiIntensity();
+  },
+  // [{name, layer, target, gain}] — target by AudioMgr's rule, gain = what the graph plays right now
+  layerGains() { return this.layers.map(l => ({ name: l.name, layer: l.layer, target: l.mix ? 1 : (layerOn(l.layer, this.intensity) ? 1 : 0), gain: l.g ? l.g.gain.value : l.gain })); },
+};
+function uiPlay() { $('play').textContent = PV.playing ? '■ STOP' : '▶ PLAY'; $('play').classList.toggle('on', PV.playing); }
+function uiIntensity() { $('int').value = PV.intensity; $('intv').textContent = PV.intensity.toFixed(2); renderLayers(); }
+function renderLayers() {
+  if (!PV.layers.length) { $('layers').innerHTML = '<span class="note">no take loaded</span>'; return; }
+  if (PV.layers.length === 1 && PV.layers[0].mix) { $('layers').innerHTML = '<span class="note">no stems: intensity does nothing for this take (the game plays the mix)</span>'; return; }
+  $('layers').innerHTML = PV.layerGains().map(l => `<span class="lamp${l.target ? ' on' : ''}" data-lamp="${esc(l.name)}">${esc(l.name)} ≥${l.layer}<i style="width:${Math.round(l.gain * 100)}%"></i></span>`).join('');
+}
+async function pickTake(i, { autoplay } = {}) {
+  const m = DIR.takes[i]; if (!m) return;
+  const seq = DIR.pickSeq = (DIR.pickSeq || 0) + 1;     // taps can outrun decoding: the latest pick wins
+  let L;
+  try { L = await PV.load(m); } catch (e) { msg('could not load take ' + m.take + ': ' + (e.message || e), true); return; }
+  if (seq !== DIR.pickSeq) return;
+  const was = PV.playing, pos = PV.position(), prev = PV.take;
+  PV.stop(true);
+  PV.use(m, L);
+  DIR.cur = i;
+  document.querySelectorAll('#takes .take').forEach(el => el.classList.toggle('cur', +el.dataset.i === i));
+  // A/B: same position in the other take
+  PV.pos = Math.min(pos, Math.max(0, PV.dur - 0.05));
+  DIR.lastAB = { from: prev ? prev.take : null, to: m.take, at: pos };
+  if (was || autoplay) PV.play(PV.pos); else uiPlay();
+  $('ab').textContent = 'take ' + (i + 1) + (prev && prev.dir !== m.dir ? ' (A/B from take ' + (DIR.takes.findIndex(x => x.dir === prev.dir) + 1 || '?') + ' at ' + fmt(pos) + ')' : '');
+  renderLayers(); drawSeek(true);
+}
+$('play').addEventListener('click', () => { if (!PV.take) { if (DIR.takes.length) pickTake(0, { autoplay: true }); return; } if (PV.playing) PV.stop(); else PV.play(); });
+$('loop').addEventListener('click', () => { PV.setLoop(!PV.loop); $('loop').classList.toggle('on', PV.loop); });
+$('int').addEventListener('input', () => { sceneStop(); PV.setIntensity(+$('int').value); });
+document.querySelectorAll('[data-int]').forEach(b => b.addEventListener('click', () => { sceneStop(); PV.setIntensity(+b.dataset.int); }));
+// seek canvas: the take's waveform (sum of its layers) + playhead; tap / drag to seek
+function fitCanvas(cv) { const r = cv.getBoundingClientRect(), d = window.devicePixelRatio || 1; const w = Math.max(10, Math.round(r.width * d)), h = Math.max(10, Math.round(r.height * d)); if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; } return { w, h, d }; }
+function drawSeek(rebuild) {
+  const cv = $('seek'), { w, h } = fitCanvas(cv), g = cv.getContext('2d');
+  g.fillStyle = '#0e0908'; g.fillRect(0, 0, w, h);
+  if (!PV.layers.length) return;
+  if (rebuild || !PV.peaks || PV.peaks.length !== w) {
+    const pk = new Float32Array(w);
+    for (const l of PV.layers) { const d = l.buf.getChannelData(0), step = d.length / w; for (let x = 0; x < w; x++) { let m = 0; const a = Math.floor(x * step), b = Math.min(d.length, Math.floor((x + 1) * step)); for (let i = a; i < b; i += 16) { const v = Math.abs(d[i]); if (v > m) m = v; } pk[x] += m; } }
+    PV.peaks = pk;
+  }
+  g.fillStyle = '#7a5828';
+  for (let x = 0; x < w; x++) { const v = Math.min(1, PV.peaks[x]) * h * 0.46; g.fillRect(x, h / 2 - v, 1, v * 2 || 1); }
+  const x = PV.dur ? PV.position() / PV.dur * w : 0;
+  g.fillStyle = '#ffd896'; g.fillRect(Math.round(x), 0, 2, h);
+  $('time').textContent = fmt(PV.position()) + ' / ' + fmt(PV.dur);
+}
+(() => {
+  const cv = $('seek'); let down = false;
+  const at = e => { const r = cv.getBoundingClientRect(); return (e.clientX - r.left) / r.width * PV.dur; };
+  cv.addEventListener('pointerdown', e => { if (!PV.take) return; down = true; cv.setPointerCapture(e.pointerId); PV.seek(at(e)); });
+  cv.addEventListener('pointermove', e => { if (down) PV.seek(at(e)); });
+  cv.addEventListener('pointerup', () => { down = false; });
+  cv.addEventListener('pointercancel', () => { down = false; });
+})();
+
+// ═══════════════════════════════════════════════════════════════════
+// PLAY AS SCENE: the director's per-scene curve (temp_briefs.json "curves") → intensity over time
+// ═══════════════════════════════════════════════════════════════════
+const SC = { id: null, nodes: [], curve: null, timeline: [], idx: 0, t: 0, level: 0, target: 0, sent: 0, playing: false, manual: false, trace: [] };
+function renderScenes(b) {
+  const sel = $('scene'), keys = b && b.curves ? Object.keys(b.curves) : [];
+  sel.innerHTML = keys.length ? keys.map(k => `<option value="${esc(k)}">${esc(k)} · ${b.curves[k].n} nodes · peak ${Math.max(...b.curves[k].v).toFixed(2)}</option>`).join('') : '<option value="">no scene plays this track</option>';
+  $('sceneplay').disabled = !keys.length;
+  SC.curve = keys.length ? b.curves[keys[0]] : null;
+  if (SC.id && !keys.includes(SC.id)) { SC.id = null; SC.trace = []; $('line').textContent = '—'; $('line2').textContent = ''; $('sceneinfo').textContent = ''; }
+  drawCurve();
+}
+$('scene').addEventListener('change', () => { const b = DIR.briefs[DIR.sel]; sceneStop(); SC.curve = b && b.curves ? b.curves[$('scene').value] : null; drawCurve(); });
+const curveAt = (c, i) => { let v = c.v[0] ?? 0.5; for (let j = 0; j < c.at.length && c.at[j] <= i; j++) v = c.v[j]; return v; };
+// how long a reader stays on each node (seconds at "normal" pace)
+function nodeSec(n) {
+  const t = n.t, len = String(n.text || '').length;
+  if (t === 'say' || t === 'narrate' || t === 'think') return Math.max(1.6, Math.min(9, 1.2 + len * 0.045));
+  if (t === 'choice') return 4; if (t === 'cg') return 3; if (t === 'interlude') return Math.min(5, (+n.duration || 2000) / 1000);
+  return 0;
+}
+async function sceneStart(sid, opts = {}) {
+  const b = DIR.briefs[DIR.sel]; if (!b || !b.curves || !b.curves[sid]) return false;
+  sceneStop();
+  SC.id = sid; SC.curve = b.curves[sid]; SC.manual = !!opts.manual;
+  const vol = (sid.match(/^(vol\d+)/) || [])[1] || '';
+  const sc = await readJson('resources/scenes/' + vol + '/' + sid + '.json', null);
+  SC.nodes = sc && Array.isArray(sc.nodes) ? sc.nodes : Array.from({ length: SC.curve.n }, () => ({ t: 'narrate', text: '' }));
+  if (!sc) msg('scene file resources/scenes/' + vol + '/' + sid + '.json not found — driving the curve without its lines', true);
+  const pace = +$('pace').value || 1;
+  let t = 0; SC.timeline = SC.nodes.map((n, i) => { const d = nodeSec(n) * pace; const e = { i, t0: t, dur: d }; t += d; return e; });
+  SC.total = t; SC.idx = 0; SC.t = 0; SC.trace = [];
+  // a scene opens on its first target (the director's replay lands there), then smooths like MusicDirector._process
+  SC.target = curveAt(SC.curve, 0); SC.level = SC.target; SC.sent = SC.level;
+  if (!PV.take && DIR.takes.length) await pickTake(0, { autoplay: false });
+  PV.setIntensity(SC.level, 0);
+  if (PV.take && !opts.noAudio) PV.play(0);
+  SC.playing = true; $('sceneplay').textContent = '■ STOP SCENE'; $('sceneplay').classList.add('on');
+  sceneShow(); drawCurve();
+  return true;
+}
+function sceneStop() {
+  if (!SC.playing) return;
+  SC.playing = false; $('sceneplay').textContent = '▶ PLAY AS SCENE'; $('sceneplay').classList.remove('on');
+}
+// advance the scene clock by dt seconds: node by reading time, target from the curve, level smoothed with the
+// director's attack / release (move_toward at dt / tau), sent to the stems when it moved ≥ 0.02 (fade 0.4)
+function sceneTick(dt) {
+  if (!SC.playing) return;
+  SC.t += dt;
+  while (SC.idx < SC.timeline.length - 1 && SC.t >= SC.timeline[SC.idx].t0 + SC.timeline[SC.idx].dur) SC.idx++;
+  SC.target = curveAt(SC.curve, SC.idx);
+  const tau = SC.target > SC.level ? DIR.defaults.attack_sec : DIR.defaults.release_sec, step = dt / Math.max(0.05, tau);
+  SC.level = SC.level < SC.target ? Math.min(SC.target, SC.level + step) : Math.max(SC.target, SC.level - step);
+  if (Math.abs(SC.level - SC.sent) >= 0.02 || (SC.level === SC.target && SC.sent !== SC.level)) { SC.sent = SC.level; PV.setIntensity(SC.level, DIRECTOR_FADE); }
+  SC.trace.push([SC.idx, SC.level]); if (SC.trace.length > 4000) SC.trace.shift();
+  if (SC.t >= SC.total + 2) sceneStop();
+  sceneShow();
+}
+function lineOf(n) {
+  if (!n) return '';
+  if (n.t === 'say' || n.t === 'think') return `<span class="who">${esc(n.char || '')}${n.t === 'think' ? ' (thinks)' : ''}:</span> ${esc(n.text || '')}`;
+  if (n.t === 'narrate') return esc(n.text || '');
+  if (n.t === 'choice') return '<span class="who">CHOICE</span> ' + esc((n.options || n.choices || []).map(o => o.text || o.label || o).join(' / '));
+  if (n.t === 'interlude') return '<span class="who">INTERLUDE</span> ' + esc((n.text || '') + ' ' + (n.sub || ''));
+  if (n.t === 'cg') return '<span class="who">CG</span> ' + esc(n.src || n.id || '');
+  return '<span class="note">' + esc(n.t) + '</span>';
+}
+function sceneShow() {
+  if (!SC.id) return;
+  let i = SC.idx; while (i < SC.nodes.length - 1 && !nodeSec(SC.nodes[i])) i++;
+  let j = i + 1; while (j < SC.nodes.length && !nodeSec(SC.nodes[j])) j++;
+  $('line').innerHTML = lineOf(SC.nodes[i]) || '—'; $('line2').innerHTML = lineOf(SC.nodes[j]);
+  $('sceneinfo').textContent = SC.id + ' · node ' + SC.idx + '/' + SC.nodes.length + ' · target ' + SC.target.toFixed(2) + ' · level ' + SC.level.toFixed(2) +
+    ' · layers ' + PV.layerGains().filter(l => l.target).map(l => l.name).join(' + ');
+  drawCurve();
+}
+function drawCurve() {
+  const cv = $('curve'), { w, h } = fitCanvas(cv), g = cv.getContext('2d');
+  g.fillStyle = '#0e0908'; g.fillRect(0, 0, w, h);
+  const c = SC.curve; if (!c || !c.n) return;
+  const X = i => i / c.n * w, Y = v => h - 4 - v * (h - 8);
+  g.strokeStyle = '#3a2416'; g.setLineDash([3, 4]);
+  for (const th of [0.25, 0.5, 0.75]) { g.beginPath(); g.moveTo(0, Y(th)); g.lineTo(w, Y(th)); g.stroke(); }
+  g.setLineDash([]); g.fillStyle = '#7a5828'; g.font = (10 * (window.devicePixelRatio || 1)) + 'px monospace';
+  g.fillText('bass', 4, Y(0.25) - 2); g.fillText('drums', 4, Y(0.5) - 2); g.fillText('lead', 4, Y(0.75) - 2);
+  g.strokeStyle = '#d8a060'; g.lineWidth = 2; g.beginPath();
+  for (let j = 0; j < c.at.length; j++) { const x0 = X(c.at[j]), x1 = X(j + 1 < c.at.length ? c.at[j + 1] : c.n); if (j === 0) g.moveTo(x0, Y(c.v[j])); else g.lineTo(x0, Y(c.v[j])); g.lineTo(x1, Y(c.v[j])); }
+  g.stroke();
+  if (SC.trace.length && SC.id) { g.strokeStyle = '#a8e89c'; g.lineWidth = 1.5; g.beginPath(); SC.trace.forEach(([i, v], k) => { const x = X(i), y = Y(v); if (k) g.lineTo(x, y); else g.moveTo(x, y); }); g.stroke(); }
+  if (SC.id) { g.fillStyle = '#ffd896'; g.fillRect(X(SC.idx), 0, 2, h); }
+  g.lineWidth = 1;
+}
+$('sceneplay').addEventListener('click', () => { if (SC.playing) { sceneStop(); PV.stop(); } else sceneStart($('scene').value); });
+let lastT = performance.now();
+setInterval(() => { const now = performance.now(), dt = (now - lastT) / 1000; lastT = now; if (SC.playing && !SC.manual) sceneTick(dt); }, 50);
+(function frame() { if (PV.take) drawSeek(); if (PV.playing && PV.layers.some(l => l.g)) renderLayersLight(); requestAnimationFrame(frame); })();
+function renderLayersLight() { for (const l of PV.layerGains()) { const el = document.querySelector(`[data-lamp="${CSS.escape(l.name)}"] i`); if (el) el.style.width = Math.round(l.gain * 100) + '%'; } }
+
+// ═══════════════════════════════════════════════════════════════════
+// approve · reject · revoke · delete
+// ═══════════════════════════════════════════════════════════════════
+// destructive steps ask twice: first tap arms the button for 4 s, the second does it
+const ARM = new Map();
+function twoTap(key, btn, label) {
+  const t = ARM.get(key);
+  if (t && Date.now() - t < 4000) { ARM.delete(key); return true; }
+  ARM.set(key, Date.now());
+  if (btn) { const old = btn.textContent; btn.textContent = label; btn.classList.add('armed'); setTimeout(() => { if (btn.isConnected) { btn.textContent = old; btn.classList.remove('armed'); } }, 4000); }
+  return false;
+}
+async function approve(i, btn) {
+  const t = curTrack(), m = DIR.takes[i]; if (!t || !m) return { ok: false };
+  if (m.status === 'rejected') { msg('take ' + (i + 1) + ' was rejected — make it again (⟳ AGAIN) to approve it.', true); return { ok: false, why: 'rejected' }; }
+  const st = await scanTrack(t), base = baseOf(t.src);
+  if (st.real) { msg('REFUSED: real audio exists at godot/' + t.src + ' — it always wins over a temp, and it is never overwritten.', true); return { ok: false, why: 'real' }; }
+  if (st.wav === 'real') { msg('REFUSED: godot/' + base + '.wav is real audio (not a temp — a FIELD RECORDER / TAPE STUDIO take?). Move it away first if you really mean to replace it.', true); return { ok: false, why: 'real-wav' }; }
+  if (st.approved && st.approved.take === m.take && st.wav === 'temp') { msg('take ' + (i + 1) + ' is already the approved temp.'); return { ok: true, same: true }; }
+  if (st.wav === 'temp' && !twoTap('ap:' + t.id + ':' + m.take, btn, 'TAP AGAIN: REPLACE')) {
+    msg('a temp is already approved here' + (st.approved ? ' (take ' + st.approved.take + ')' : ' (an older TEMP TRACKS write)') + ' — tap APPROVE again (or press a again) within 4 s to replace it.');
+    return { ok: false, why: 'confirm' };
+  }
+  msg('approving take ' + (i + 1) + ' → godot/' + base + '.wav …');
+  const files = [];
+  let man = null;
+  try {
+    // never leave an old manifest pointing at stems that are being replaced
+    await AK.game.remove(base + '.stems.json');
+    await AK.game.remove(base + '.stems');
+    if (m.stems && m.stems.length) {
+      const tm = await readJson(m.dir + 'stems.json', null);
+      if (tm && tm.stems) {
+        man = Object.assign({}, tm, { mix: base + '.wav', approved: { take: m.take, seed: (m.mood || {}).seed, date: new Date().toISOString() }, stems: [] });
+        for (const s of tm.stems) {
+          const f = base + '.stems/' + s.file.split('/').pop();
+          await AK.game.copy(s.file, f); files.push(f);
+          man.stems.push({ name: s.name, role: s.role || '', file: f, layer: s.layer });
+        }
+      }
+    }
+    await AK.game.copy(m.dir + 'mix.wav', base + '.wav'); files.unshift(base + '.wav');
+    if (man) { await AK.game.write(base + '.stems.json', new Blob([JSON.stringify(man, null, 1)], { type: 'application/json' })); files.push(base + '.stems.json'); }
+    if ((m.files || []).includes('credits.txt')) { await AK.game.copy(m.dir + 'credits.txt', base + '.wav.credits.txt'); files.push(base + '.wav.credits.txt'); }
+    else await AK.game.remove(base + '.wav.credits.txt');
+  } catch (e) { msg('approve failed: ' + (e.message || e), true); return { ok: false, why: 'error', error: String(e) }; }
+  const ap = await readApprovals(), rec = ap.tracks[t.id] = ap.tracks[t.id] || { approved: null, rejected: [], history: [] };
+  rec.rejected = rec.rejected || []; rec.history = rec.history || [];
+  const prev = rec.approved;
+  rec.approved = { take: m.take, seed: (m.mood || {}).seed, mood: m.mood, request: m.request || {}, instruments: m.instruments || {}, date: new Date().toISOString(), by: who(), notes: $('notes').value.trim(),
+    lufs: m.lufs, true_peak: m.true_peak, seconds: m.seconds, bars: m.bars, credits: m.credits || '', files };
+  rec.history.push({ action: prev ? 'replace' : 'approve', take: m.take, seed: (m.mood || {}).seed, replaced: prev ? prev.take : undefined, date: rec.approved.date, by: who(), notes: rec.approved.notes });
+  await writeApprovals(ap);
+  await setMetaStatus(m, 'approved');
+  if (prev && prev.take !== m.take) { const pm = DIR.state[t.id].takes.find(x => x.take === prev.take); if (pm) await setMetaStatus(pm, 'candidate'); }
+  $('notes').value = '';
+  DIR.approvedThisSession = (DIR.approvedThisSession || 0) + 1;
+  $('foot').textContent = DIR.approvedThisSession + ' approval(s) this session — music stays out of git; back it up to Google Drive:';
+  await rescanOne(t.id);
+  msg('approved take ' + m.take + ' → godot/' + base + '.wav' + (man ? ' + ' + man.stems.length + ' stems + manifest' : '') + '. The game plays it now. Back it up: godot/tools/music_drive.sh push');
+  return { ok: true, files };
+}
+async function setMetaStatus(m, status) {
+  m.status = status;
+  const clean = Object.assign({}, m); delete clean.dir;
+  try { await AK.game.write(m.dir + 'meta.json', new Blob([JSON.stringify(clean, null, 1)], { type: 'application/json' })); } catch (e) {}
+}
+async function reject(i, btn) {
+  const t = curTrack(), m = DIR.takes[i]; if (!t || !m) return { ok: false };
+  const st = DIR.state[t.id];
+  if (st.approved && st.approved.take === m.take && st.wav === 'temp') { msg('take ' + (i + 1) + ' is the approved temp — REVOKE it first.', true); return { ok: false, why: 'approved' }; }
+  if (!twoTap('rej:' + t.id + ':' + m.take, btn, 'TAP AGAIN: REJECT')) { msg('tap REJECT again (or press x again) to reject take ' + (i + 1) + (($('rejdel').checked) ? ' and delete its files' : '') + '.'); return { ok: false, why: 'confirm' }; }
+  const ap = await readApprovals(), rec = ap.tracks[t.id] = ap.tracks[t.id] || { approved: null, rejected: [], history: [] };
+  rec.rejected = rec.rejected || []; rec.history = rec.history || [];
+  const entry = { take: m.take, seed: (m.mood || {}).seed, date: new Date().toISOString(), by: who(), notes: $('notes').value.trim() };
+  if (!rec.rejected.some(r => r.take === m.take)) rec.rejected.push(entry);
+  rec.history.push(Object.assign({ action: 'reject' }, entry));
+  await writeApprovals(ap);
+  const del = $('rejdel').checked;
+  if (del) await AK.game.remove(m.dir.replace(/\/$/, '')); else await setMetaStatus(m, 'rejected');
+  if (PV.take && PV.take.dir === m.dir) PV.clear();
+  $('notes').value = '';
+  await rescanOne(t.id);
+  msg('rejected take ' + m.take + ' (seed ' + entry.seed + ' — new takes will skip it)' + (del ? '; files deleted.' : '.'));
+  return { ok: true };
+}
+async function deleteTake(i, btn) {
+  const m = DIR.takes[i]; if (!m || m.status !== 'rejected') return;
+  if (!twoTap('del:' + m.dir, btn, 'TAP AGAIN: DELETE')) return;
+  await AK.game.remove(m.dir.replace(/\/$/, ''));
+  if (PV.take && PV.take.dir === m.dir) PV.clear();
+  await rescanOne(DIR.sel);
+  msg('deleted the files of rejected take ' + m.take + ' (its seed stays recorded).');
+}
+async function revoke(btn) {
+  const t = curTrack(); if (!t) return { ok: false };
+  const st = await scanTrack(t), base = baseOf(t.src);
+  if (st.wav !== 'temp') { msg(st.wav === 'real' ? 'REFUSED: godot/' + base + '.wav is real audio, not a temp.' : 'nothing to revoke: no temp .wav in the game for this track.', true); return { ok: false, why: st.wav }; }
+  if (!twoTap('rev:' + t.id, btn, 'TAP AGAIN: REVOKE')) { msg('tap REVOKE again within 4 s: removes godot/' + base + '.wav + its stems + manifest (the real .ogg / .mp3 path is never touched).'); return { ok: false, why: 'confirm' }; }
+  if ((await wavKind(base + '.wav')) !== 'temp') { msg('REFUSED: the .wav changed under us and is no longer a temp.', true); return { ok: false }; }
+  const gone = [];
+  for (const p of [base + '.wav', base + '.stems.json', base + '.stems', base + '.wav.credits.txt']) if (await AK.game.remove(p)) gone.push(p);
+  const ap = await readApprovals(), rec = ap.tracks[t.id] = ap.tracks[t.id] || { approved: null, rejected: [], history: [] };
+  rec.history = rec.history || []; rec.rejected = rec.rejected || [];
+  const prev = rec.approved; rec.approved = null;
+  rec.history.push({ action: 'revoke', take: prev ? prev.take : undefined, seed: prev ? prev.seed : undefined, date: new Date().toISOString(), by: who(), notes: $('notes').value.trim() });
+  await writeApprovals(ap);
+  if (prev) { const pm = st.takes.find(x => x.take === prev.take); if (pm) await setMetaStatus(pm, 'candidate'); }
+  $('notes').value = '';
+  await rescanOne(t.id);
+  msg('revoked: removed ' + gone.join(', ') + '. The scenes fall back to their next playable track.');
+  return { ok: true, removed: gone };
+}
+$('revoke').addEventListener('click', e => revoke(e.currentTarget));
+
+// ═══════════════════════════════════════════════════════════════════
+// MAKE TAKES: a request to the DAW (live over BroadcastChannel, or a new DAW tab with the request in the URL)
+// ═══════════════════════════════════════════════════════════════════
+const RG = { n: 2, roles: ROLES.slice(), pads: 0, instruments: {} };
+Object.entries(SeqGen.STYLES).forEach(([id, s]) => $('r-style').add(new Option(s.name, id)));
+Object.keys(SeqGen.SCALES).forEach(m => $('r-mode').add(new Option(m, m)));
+Object.keys(SeqGen.FORMS).forEach(f => $('r-form').add(new Option(f, f)));
+function renderRegen() {
+  document.querySelectorAll('#ntakes [data-n]').forEach(b => b.classList.toggle('on', +b.dataset.n === RG.n));
+  $('roles').innerHTML = ROLES.map(r => `<button data-role="${r}" class="${RG.roles.includes(r) ? 'on' : 'dim'}">${r}</button>`).join('');
+  document.querySelectorAll('#pads [data-p]').forEach(b => b.classList.toggle('on', +b.dataset.p === RG.pads));
+  const roles = ROLES.concat(EXTRA_PADS.slice(0, RG.pads));
+  $('instr').innerHTML = roles.map(r => `<button data-inst="${r}" class="${RG.instruments[r] ? 'on' : 'dim'}" title="pick the ${r} instrument">${r}: ${esc(instLabel(RG.instruments[r]))}</button>`).join('');
+  $('r-energyv').textContent = (+$('r-energy').value > 0 ? '+' : +$('r-energy').value < 0 ? '' : '±') + (+$('r-energy').value).toFixed(2);
+  $('r-dens').disabled = $('r-densauto').checked; $('r-densv').textContent = $('r-densauto').checked ? 'auto' : (+$('r-dens').value).toFixed(2);
+  $('r-len').disabled = !$('r-lenmode').value;
+}
+function instLabel(v) {
+  if (!v) return 'auto';
+  if (v === 'kit') return 'KIT';
+  const [k, ...r] = v.split(':'), id = r.join(':');
+  if (k === 'forge') { const p = (window.FORGE_PRESETS || []).find(x => x.id === id); return 'FORGE ' + (p ? p.name : id); }
+  if (k === 'patch') return 'PATCH ' + (DIR.patchNames && DIR.patchNames[id] || id);
+  return v;
+}
+$('ntakes').addEventListener('click', e => { const b = e.target.closest('[data-n]'); if (b) { RG.n = +b.dataset.n; renderRegen(); } });
+$('roles').addEventListener('click', e => { const b = e.target.closest('[data-role]'); if (!b) return; const r = b.dataset.role; if (RG.roles.includes(r)) { if (RG.roles.length > 1) RG.roles = RG.roles.filter(x => x !== r); } else RG.roles = ROLES.filter(x => x === r || RG.roles.includes(x)); renderRegen(); });
+$('pads').addEventListener('click', e => { const b = e.target.closest('[data-p]'); if (b) { RG.pads = +b.dataset.p; renderRegen(); } });
+$('instr').addEventListener('click', e => { const b = e.target.closest('[data-inst]'); if (b) openPicker(b.dataset.inst); });
+['r-energy', 'r-dens'].forEach(id => $(id).addEventListener('input', renderRegen));
+['r-densauto', 'r-lenmode'].forEach(id => $(id).addEventListener('change', renderRegen));
+$('resetregen').addEventListener('click', () => {
+  Object.assign(RG, { n: 2, roles: ROLES.slice(), pads: 0, instruments: {} });
+  $('desc').value = ''; $('r-style').value = $('r-mode').value = $('r-form').value = ''; $('r-energy').value = 0; $('r-densauto').checked = true; $('r-lenmode').value = ''; $('r-loop').checked = false; $('r-seed').value = '';
+  renderRegen();
+});
+function regenForm() {
+  const o = {};
+  if ($('desc').value.trim()) o.description = $('desc').value.trim();
+  if ($('r-style').value) o.style = $('r-style').value;
+  if ($('r-mode').value) o.mode = $('r-mode').value;
+  if ($('r-form').value) o.form = $('r-form').value;
+  if (+$('r-energy').value) o.energy = +$('r-energy').value;
+  if (!$('r-densauto').checked) o.density = +$('r-dens').value;
+  if ($('r-lenmode').value && +$('r-len').value > 0) o.length = { [$('r-lenmode').value]: +$('r-len').value };
+  if ($('r-loop').checked) o.loop = true;
+  if (RG.roles.length < ROLES.length) o.roles = RG.roles.slice();
+  if (RG.pads) o.extraPads = RG.pads;
+  const ins = {}; for (const [k, v] of Object.entries(RG.instruments)) if (v && (ROLES.includes(k) || EXTRA_PADS.slice(0, RG.pads).includes(k))) ins[k] = v;
+  if (Object.keys(ins).length) o.instruments = ins;
+  if ($('r-seed').value !== '') o.seed = +$('r-seed').value;
+  return o;
+}
+// the settings a take was made with, for an identical take: the request + the mood it resolved to + its
+// instruments (so a later change to the DAW's per-style picks can't change it). Key only if it was asked.
+function regenOpts(m) {
+  const mo = m.mood || {}, r = Object.assign({}, m.request || {});
+  Object.assign(r, { style: mo.style, form: mo.form, mode: mo.mode, bpm: mo.bpm, density: mo.density, seed: mo.seed });
+  if (m.request && m.request.key === undefined) delete r.key;
+  const ins = {}; for (const [k, v] of Object.entries(m.instruments || {})) if (/^(kit|forge:.+|patch:.+)$/.test(v)) ins[k] = v;
+  if (Object.keys(ins).length) r.instruments = ins;
+  return r;
+}
+function forWho() {
+  const n = DIR.checked.size;
+  $('forwho').innerHTML = n ? `<b style="color:var(--gold-hi);font-weight:normal">${n} ticked track${n > 1 ? 's' : ''}</b> (${esc([...DIR.checked].slice(0, 6).join(', '))}${n > 6 ? ' …' : ''}) — untick them to make takes for this track only` : 'this track' + (DIR.sel ? ' (' + esc(DIR.sel) + ')' : '');
+}
+$('make').addEventListener('click', () => {
+  const ids = DIR.checked.size ? [...DIR.checked] : DIR.sel ? [DIR.sel] : [];
+  if (!ids.length) { msg('pick a track (or tick some) first.', true, 'makemsg'); return; }
+  requestTakes(ids, RG.n, regenForm());
+});
+let bc = null; try { bc = new BroadcastChannel('mm_director'); } catch (e) {}
+const waiting = new Map();          // rid → resolve(ack)
+DIR.requests = {};
+function dawUrl(req) {
+  const o = req.opts || {}, q = new URLSearchParams({ director: req.ids.join(','), takes: String(req.takes), rid: req.rid });
+  if (o.style) q.set('style', o.style); if (o.mode) q.set('mode', o.mode); if (o.form) q.set('form', o.form);
+  if (o.energy) q.set('energy', String(o.energy)); if (o.density !== undefined) q.set('density', String(o.density)); if (o.bpm) q.set('bpm', String(o.bpm));
+  if (o.length && o.length.sec) q.set('sec', String(o.length.sec)); if (o.length && o.length.bars) q.set('bars', String(o.length.bars));
+  if (o.loop) q.set('loop', '1'); if (o.roles) q.set('roles', o.roles.join(',')); if (o.extraPads) q.set('pads', String(o.extraPads));
+  if (o.seed !== undefined) q.set('seed', String(o.seed)); if (o.description) q.set('desc', o.description);
+  for (const [k, v] of Object.entries(o.instruments || {})) q.set('inst.' + k, v);
+  return 'daw.html?' + q.toString();
+}
+async function requestTakes(ids, takes, opts) {
+  const rid = 'r' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+  const req = { rid, ids, takes, opts, from: 'director', at: Date.now() };
+  try {
+    localStorage.setItem('mm_director_req:' + rid, JSON.stringify(req));
+    for (let i = localStorage.length - 1; i >= 0; i--) { const k = localStorage.key(i); if (k && k.startsWith('mm_director_req:')) { try { if (Date.now() - (JSON.parse(localStorage.getItem(k)).at || 0) > 864e5) localStorage.removeItem(k); } catch (e) { localStorage.removeItem(k); } } }
+  } catch (e) {}
+  DIR.requests[rid] = { ids, takes, made: 0, failed: 0, state: 'sent' };
+  msg('asking the DAW for ' + takes + ' take(s) of ' + ids.join(', ') + ' …', false, 'makemsg');
+  const live = await new Promise(res => {
+    if (!bc) return res(false);
+    const to = setTimeout(() => { waiting.delete(rid); res(false); }, 900);
+    waiting.set(rid, () => { clearTimeout(to); res(true); });
+    bc.postMessage({ type: 'request', req, from: 'director' });
+  });
+  if (live) { DIR.requests[rid].state = 'live'; msg('the open DAW is making ' + takes + ' take(s) of ' + ids.join(', ') + ' — they appear here when they land.', false, 'makemsg'); }
+  else {
+    DIR.requests[rid].state = 'opened';
+    const w = window.open(dawUrl(req), 'mm_daw');
+    msg(w ? 'opened the DAW — tap START there; the takes appear here when they land.' : 'pop-up blocked — open ' + dawUrl(req) + ' yourself.', !w, 'makemsg');
+  }
+  return { rid, live };
+}
+// notices from the DAW: BroadcastChannel and the localStorage 'storage' event both work between file:// pages
+// in Chrome; whichever arrives first is used, the other is recognised by its uid
+const SEEN = new Set();
+function onNotice(ev, via) {
+  if (!ev || !ev.uid || ev.from === 'director') return;
+  DIR.netLog.push({ via, uid: ev.uid, type: ev.type });
+  if (DIR.netLog.length > 500) DIR.netLog.shift();
+  if (SEEN.has(ev.uid)) return; SEEN.add(ev.uid);
+  if (ev.type === 'ack') { const f = waiting.get(ev.rid); if (f) { waiting.delete(ev.rid); f(); } return; }
+  if (ev.type === 'pong') { $('b-daw').textContent = 'DAW: open' + (ev.busy ? ' · busy' : ''); $('b-daw').className = 'badge ok'; return; }
+  const R = DIR.requests[ev.rid];
+  if (ev.type === 'progress') { $('dawmsg').textContent = 'DAW: ' + ev.text; return; }
+  if (ev.type === 'take') {
+    if (R) { if (ev.error) R.failed++; else R.made++; }
+    $('dawmsg').textContent = ev.error ? 'DAW: a take of ' + ev.id + ' failed: ' + ev.error : 'DAW: new take of ' + ev.id + ' (seed ' + ev.seed + ')';
+    if (ev.id && AK.game.root) rescanOne(ev.id);
+    return;
+  }
+  if (ev.type === 'done') {
+    if (R) R.state = 'done';
+    $('dawmsg').textContent = 'DAW: done — ' + (ev.made || []).length + ' take(s) made' + ((ev.failed || []).length ? ', ' + ev.failed.length + ' failed' : '');
+    msg($('dawmsg').textContent.replace(/^DAW: /, 'the DAW is '), !!(ev.failed || []).length, 'makemsg');
+  }
+}
+if (bc) bc.onmessage = e => onNotice(e.data, 'bc');
+window.addEventListener('storage', e => { if (e.key === 'mm_director_event' && e.newValue) { try { onNotice(JSON.parse(e.newValue), 'storage'); } catch (err) {} } });
+function pingDaw() { if (bc) { $('b-daw').textContent = 'DAW: not open'; $('b-daw').className = 'badge'; bc.postMessage({ type: 'ping', from: 'director', rid: 'ping' }); } }
+
+// instrument picker: FORGE presets and PATCH BANK patches, read at runtime (both libraries grow)
+async function openPicker(role) {
+  $('pk-title').textContent = role.toUpperCase() + ' — instrument';
+  $('pk-q').value = '';
+  $('picker').classList.add('show');
+  $('picker').dataset.role = role;
+  $('pk-body').innerHTML = '<div class="note">reading the libraries…</div>';
+  DIR.pickItems = await instrumentChoices(role);
+  renderPicker();
+}
+async function instrumentChoices(role) {
+  const drums = role === 'drums', groups = [{ name: 'AUTO', items: [{ v: '', name: 'auto — the DAW picks for the style' }] }];
+  if (drums) groups.push({ name: 'KIT', items: [{ v: 'kit', name: 'KIT — FORGE drum kit' }] });
+  const fp = (window.FORGE_PRESETS || []).filter(p => drums ? false : p.category !== 'drums');
+  const fcats = [...new Set(fp.map(p => p.category || 'other'))];
+  for (const c of fcats) groups.push({ name: 'FORGE · ' + c, items: fp.filter(p => (p.category || 'other') === c).map(p => ({ v: 'forge:' + p.id, name: p.name })) });
+  let items = [];
+  try { if (typeof PatchBank !== 'undefined') items = await PatchBank.all(); } catch (e) {}
+  DIR.patchNames = DIR.patchNames || {};
+  items = items.filter(it => it.category !== 'waveform' && (drums ? /drum|perc/.test(it.category || '') : !/drum|perc/.test(it.category || '')));
+  for (const it of items) DIR.patchNames[it.uid] = it.name;
+  const pcats = [...new Set(items.map(it => it.category || 'other'))].sort();
+  for (const c of pcats) groups.push({ name: 'PATCH BANK · ' + c, items: items.filter(it => (it.category || 'other') === c).map(it => ({ v: 'patch:' + it.uid, name: it.name + (it.source ? ' · ' + it.source : '') })) });
+  return groups;
+}
+function renderPicker() {
+  const q = $('pk-q').value.trim().toLowerCase(), role = $('picker').dataset.role, cur = RG.instruments[role] || '';
+  $('pk-body').innerHTML = (DIR.pickItems || []).map(g => {
+    const its = g.items.filter(it => !q || (it.name + ' ' + it.v + ' ' + g.name).toLowerCase().includes(q)).slice(0, 160);
+    if (!its.length) return '';
+    return `<div class="grp">${esc(g.name)} (${its.length})</div><div class="chipset">` + its.map(it => `<button data-pv="${esc(it.v)}" class="${it.v === cur ? 'on' : 'dim'}">${esc(it.name)}</button>`).join('') + '</div>';
+  }).join('') || '<div class="note">nothing matches.</div>';
+}
+$('pk-q').addEventListener('input', renderPicker);
+$('pk-close').addEventListener('click', () => $('picker').classList.remove('show'));
+$('pk-body').addEventListener('click', e => {
+  const b = e.target.closest('[data-pv]'); if (!b) return;
+  const role = $('picker').dataset.role;
+  if (b.dataset.pv) { RG.instruments[role] = b.dataset.pv; if (b.dataset.pv.startsWith('patch:')) DIR.patchNames[b.dataset.pv.slice(6)] = b.textContent.replace(/ · .*$/, ''); } else delete RG.instruments[role];
+  $('picker').classList.remove('show'); renderRegen();
+});
+
+// ═══════════════════════════════════════════════════════════════════
+// keys: ↑↓ / j k track · 1–9 take (A/B) · space play · [ ] intensity · a approve · x reject · v revoke · l loop
+// ═══════════════════════════════════════════════════════════════════
+window.addEventListener('keydown', e => {
+  if (e.target.closest('input[type=text], input[type=number], textarea, select') || e.ctrlKey || e.metaKey || e.altKey) return;
+  if ($('picker').classList.contains('show')) { if (e.key === 'Escape') $('picker').classList.remove('show'); return; }
+  const k = e.key;
+  if (k === 'ArrowDown' || k === 'j') { stepTrack(1); e.preventDefault(); }
+  else if (k === 'ArrowUp' || k === 'k') { stepTrack(-1); e.preventDefault(); }
+  else if (/^[1-9]$/.test(k)) { const i = +k - 1; if (DIR.takes[i]) pickTake(i, { autoplay: PV.playing }); }
+  else if (k === ' ') { $('play').click(); e.preventDefault(); }
+  else if (k === '[' || k === ']') { sceneStop(); PV.setIntensity(Math.round((PV.intensity + (k === ']' ? 0.25 : -0.25)) * 4) / 4); }
+  else if (k === 'a' && DIR.cur >= 0) approve(DIR.cur, document.querySelector(`[data-ap="${DIR.cur}"]`));
+  else if (k === 'x' && DIR.cur >= 0) reject(DIR.cur, document.querySelector(`[data-rej="${DIR.cur}"]`));
+  else if (k === 'v') revoke($('revoke'));
+  else if (k === 'l') $('loop').click();
+});
+window.addEventListener('resize', () => { drawSeek(true); drawCurve(); });
+
+// boot
+renderRegen(); forWho(); renderLayers();
+AK.game.restore(false).then(h => { folderBadge(); if (h) refresh(); }).catch(() => folderBadge());
+pingDaw();
+</script>
+</body>
+</html>

@@ -41,3 +41,5 @@ godot/assets/audio/**/*.flac
 godot/assets/audio/**/*.stems/
 godot/assets/audio/**/*.stems.json
 godot/assets/audio/**/*.credits.txt
+# AUDIO DIRECTOR review staging (DAW candidate takes + their meta.json) — local only
+godot/assets/audio/review/

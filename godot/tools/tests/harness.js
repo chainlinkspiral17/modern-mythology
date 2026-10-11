@@ -39,12 +39,12 @@ class Suite {
   async page(file, opts = {}) {
     const b = opts.browser || await this.browser(opts);
     const ctx = await b.newContext({ viewport: { width: 1280, height: 800 }, hasTouch: !!opts.touch, ignoreHTTPSErrors: !!opts.network, permissions: opts.fakeMedia ? ['microphone'] : [] });
+    // context-wide hooks reach pop-ups too (a page's own init script doesn't)
+    for (const [name, fn] of Object.entries(opts.expose || {})) await ctx.exposeFunction(name, fn);
+    if (opts.ctxInit) await ctx.addInitScript(opts.ctxInit);
     const p = await ctx.newPage();
     const errors = [];
-    p.on('pageerror', e => errors.push('pageerror: ' + e.message));
-    // network suites: GitHub rate-limits bursts (429) and PatchBank.fetchBytes retries — Chrome still logs them
-    const transient = opts.network ? /ERR_TOO_MANY_RETRIES|status of (429|5\d\d)/ : /ERR_TOO_MANY_RETRIES/;
-    p.on('console', m => { if (m.type() === 'error' && !transient.test(m.text())) errors.push('console: ' + m.text().slice(0, 300)); });
+    this.watch(p, errors, opts);
     if (opts.init) await p.addInitScript(opts.init);
     await p.goto('file://' + path.join(TOOLS, file));
     await p.waitForTimeout(opts.settle ?? 300);
@@ -52,6 +52,13 @@ class Suite {
     if (opts.touch) out.cdp = await ctx.newCDPSession(p);
     if (opts.start) { await p.evaluate(() => document.getElementById('gatebtn') && document.getElementById('gatebtn').click()); await p.waitForTimeout(800); }
     return out;
+  }
+  // collect page errors and console errors of a page (also a pop-up) into `errors`
+  watch(p, errors, opts = {}) {
+    p.on('pageerror', e => errors.push('pageerror: ' + e.message));
+    // network suites: GitHub rate-limits bursts (429) and PatchBank.fetchBytes retries — Chrome still logs them
+    const transient = opts.network ? /ERR_TOO_MANY_RETRIES|status of (429|5\d\d)/ : /ERR_TOO_MANY_RETRIES/;
+    p.on('console', m => { if (m.type() === 'error' && !transient.test(m.text())) errors.push('console: ' + m.text().slice(0, 300)); });
   }
   async test(name, fn) {
     const t0 = Date.now();

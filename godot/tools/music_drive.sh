@@ -20,8 +20,11 @@ REMOTE="${MM_DRIVE_REMOTE:-gdrive}"
 DRIVE_DIR="${MM_DRIVE_DIR:-ModernMythology/godot/assets/audio}"
 HERE="$(cd "$(dirname "$0")" && pwd)"
 LOCAL="$(cd "$HERE/../assets" && pwd)/audio"
-FILTERS=(--include "*.ogg" --include "*.mp3" --include "*.wav" --include "*.flac"
-         --include "*.stems.json" --include "*.credits.txt")
+# assets/audio/review/ is the AUDIO DIRECTOR's local staging (candidate takes): approved takes are copied
+# out of it to their game paths and travel from there; the staging itself stays on this machine
+# (--filter rules apply in order; mixing --include with --exclude would leave the order to rclone)
+FILTERS=(--filter "- /review/**" --filter "+ *.ogg" --filter "+ *.mp3" --filter "+ *.wav" --filter "+ *.flac"
+         --filter "+ *.stems.json" --filter "+ *.credits.txt" --filter "- **")
 
 find_rclone() {
   if command -v rclone >/dev/null 2>&1; then command -v rclone

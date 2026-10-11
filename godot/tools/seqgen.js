@@ -10,7 +10,8 @@
  *         parts: { drums|bass|chords|lead|pad: { role, patterns{pid:{name,lenBars,notes[]}}, clips[{bar,pid}], preset } } }
  *   SeqGen.part(role, songResult, { seed })    re-roll one part in place
  *   SeqGen.moodFromText(title, desc, id)       catalog brief → song options
- *   SeqGen.moodFromBrief(track, brief)        + the MusicDirector's per-track brief (temp_briefs.json)
+ *   SeqGen.moodFromBrief(track, brief, text)  + the MusicDirector's per-track brief (temp_briefs.json)
+ *                                             + optional creative direction typed in the AUDIO DIRECTOR
  *
  * Notes are { t, d, n, v } — start tick, duration ticks, MIDI note,
  * velocity 0..1 — at SeqGen.PPQ ticks per quarter note.
@@ -397,7 +398,51 @@
   // The MusicDirector's brief for a track (resources/music/temp_briefs.json, from music_direction.py brief):
   // start from the catalog text (+ the scenes' lexicon words, locales, characters), then move tempo, density and
   // mode toward the intensity the director will actually drive in those scenes. No brief → moodFromText as is.
-  function moodFromBrief(t, b) {
+  function moodFromBrief(t, b, direction) {
+    const m = moodFromBrief0(t, b);
+    return direction && String(direction).trim() ? applyDirection(m, String(direction)) : m;
+  }
+  // Creative direction typed for one request ("slower, more dread, a lonely piano over rain"). It is the
+  // newest word on the piece, so where it names a style, a mode, a pace or a density it overrides the
+  // catalog text and the brief; where it says nothing, they stand.
+  const DIRECTION = {
+    modes: [
+      { mode: 'phrygian', w: ['dread', 'ominous', 'sinister', 'creepy', 'eerie', 'menacing', 'horror', 'unsettling', 'wrong'] },
+      { mode: 'minor', w: ['sad', 'sadder', 'lonely', 'melancholy', 'melancholic', 'grief', 'mournful', 'somber', 'sombre', 'dark', 'darker', 'bleak', 'loss'] },
+      { mode: 'dorian', w: ['cool', 'groovy', 'smoky', 'bittersweet', 'wistful'] },
+      { mode: 'lydian', w: ['dreamy', 'ethereal', 'magical', 'floating', 'wonder', 'shimmering'] },
+      { mode: 'mixolydian', w: ['bluesy', 'rootsy', 'twangy', 'swagger'] },
+      { mode: 'major', w: ['happy', 'hopeful', 'bright', 'brighter', 'uplifting', 'joyful', 'warm', 'warmer', 'triumphant', 'sunny'] },
+    ],
+    slow: ['slow', 'slower', 'slowly', 'calm', 'calmer', 'gentle', 'lazy', 'languid', 'still', 'stiller', 'unhurried', 'drifting'],
+    fast: ['fast', 'faster', 'urgent', 'frantic', 'driving', 'upbeat', 'energetic', 'racing', 'tense', 'tenser', 'quicker'],
+    sparse: ['sparse', 'sparser', 'minimal', 'bare', 'thin', 'empty', 'simple', 'simpler', 'quiet', 'quieter', 'lonely'],
+    busy: ['busy', 'busier', 'dense', 'denser', 'full', 'fuller', 'lush', 'layered', 'complex', 'intricate', 'bigger'],
+  };
+  function applyDirection(m, text) {
+    const s = text.toLowerCase(), has = w => new RegExp('(^|[^a-z])' + w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '([^a-z]|$)').test(s);
+    const d = moodFromText('', text, '');
+    const st0 = STYLES[m.style], pos = (m.bpm - st0.bpm[0]) / Math.max(1, st0.bpm[1] - st0.bpm[0]);
+    if (d.matched && d.style !== m.style) {
+      m.style = d.style;
+      if (m.form !== 'song') m.form = d.form;
+      const st = STYLES[m.style]; m.bpm = Math.round(st.bpm[0] + Math.max(0, Math.min(1, pos)) * (st.bpm[1] - st.bpm[0]));
+    }
+    let best = null, bestN = 0;
+    for (const x of DIRECTION.modes) { const n = x.w.filter(has).length; if (n > bestN) { best = x.mode; bestN = n; } }
+    if (best) m.mode = best;
+    else if (d.toneScore && SCALES[d.mode]) m.mode = d.mode;
+    const [lo, hi] = STYLES[m.style].bpm;
+    const slow = DIRECTION.slow.some(has), fast = DIRECTION.fast.some(has);
+    if (slow && !fast) m.bpm = lo; else if (fast && !slow) m.bpm = hi;
+    const sparse = DIRECTION.sparse.some(has), busy = DIRECTION.busy.some(has);
+    if (sparse && !busy) m.density = +Math.max(0.15, m.density - 0.2).toFixed(2);
+    else if (busy && !sparse) m.density = +Math.min(0.95, m.density + 0.2).toFixed(2);
+    m.direction = text.trim();
+    m.why = (m.why ? m.why + ' · ' : '') + 'direction: "' + m.direction.slice(0, 60) + '"';
+    return m;
+  }
+  function moodFromBrief0(t, b) {
     const m = moodFromText(t.title, t.desc, t.id);
     if (!b || !b.intensity) return Object.assign(m, { why: 'catalog text' });
     // the catalog text was written for this track: it decides style / mode; the scenes' words only fill a blank
@@ -422,7 +467,7 @@
     return m;
   }
 
-  const API = { PPQ, BAR, S16, GM, SCALES, STYLES, FORMS, PROGS, NOTE_NAMES, rng, hash, deg2midi, chordPCs, song, part, moodFromText, moodFromBrief, romanFor };
+  const API = { PPQ, BAR, S16, GM, SCALES, STYLES, FORMS, PROGS, NOTE_NAMES, rng, hash, deg2midi, chordPCs, song, part, moodFromText, moodFromBrief, applyDirection, romanFor };
   if (typeof module !== 'undefined' && module.exports) module.exports = API;
   root.SeqGen = API;
 })(typeof window !== 'undefined' ? window : globalThis);
