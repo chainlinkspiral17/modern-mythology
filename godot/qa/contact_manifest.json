@@ -1317,6 +1317,18 @@
      "type": "establish"
     },
     {
+     "name": "shot_closeup_jesse",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_jim",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_mr_henderson",
+     "type": "closeup"
+    },
+    {
      "name": "shot_closeup_person",
      "type": "closeup"
     },
@@ -10169,5 +10181,5 @@
   "tired",
   "nervous"
  ],
- "frames": 2280
+ "frames": 2283
 }

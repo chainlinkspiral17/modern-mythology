@@ -420,3 +420,23 @@ metadata/fov = 45.0
 position = Vector3(-1.051, 1.612, -3.682)
 rotation = Vector3(-0.2618, -2.3562, 0.0)
 metadata/fov = 45.0
+
+; ── named closeups at the Hendersons' table (pass 80): each seat framed from across the table
+; closeup: Jesse at the south chair, from the north side (the sink window behind the lens)
+[node name="shot_closeup_jesse" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.350, 1.400, -3.550)
+rotation = Vector3(-0.1892, 2.8999, 0.0)
+metadata/fov = 42.0
+
+; closeup: Jim Henderson at the east chair, from the west side
+[node name="shot_closeup_jim" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.450, 1.400, -2.450)
+rotation = Vector3(-0.2145, -1.3353, 0.0)
+metadata/fov = 42.0
+
+; closeup: the same frame, named for the cue
+[node name="shot_closeup_mr_henderson" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.450, 1.400, -2.450)
+rotation = Vector3(-0.2145, -1.3353, 0.0)
+metadata/fov = 42.0
+

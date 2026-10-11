@@ -3834,6 +3834,14 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-11 · pass 80: NAMED CLOSEUPS AT THE HENDERSONS' TABLE (D6).**
+`closeup jesse` (4), `jim` (2) and `mr_henderson` (2) resolved to the plain
+frame; three markers now frame the south chair (Jesse, from the sink
+window's side) and the east chair (his father, from the west). No
+rebuild. **Draft N+1:** the cabin's seven chairs by name; the Kwik Stop's
+`closeup jen`; the pendants over both kitchen tables intrude at the top
+of the across-the-table frames — raise the lamps or lower the lens.
+
 **2026-10-11 · pass 79: NAMED CLOSEUPS AT THE MILLERS' TABLE (D6).** The
 second most-seen room resolves `closeup miller` (8), `closeup bianca`
 (8), `closeup sammy` and `closeup mrs_miller` to the one plain
