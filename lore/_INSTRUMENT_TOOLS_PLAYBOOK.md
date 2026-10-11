@@ -513,6 +513,21 @@ those tools.
   - Arp latch, chord learn and the PERF chain are unverified with the
     FM-1 keys on the Deck.
 
+### 2026-10-11 — firmware names are what the user calls them
+
+- The user runs Baud Girl's firmware and reported it "isn't in the
+  list". It was there all along, as `FM-1+VA`, which is the product
+  name. The user knows it by its maker. The registry `name` is what
+  every picker, chip and status line shows, so it now reads
+  `Baud Girl FM-1+VA`. Name an entry so its owner would recognise it,
+  maker included when that's how people refer to it.
+- Vendor identity used to name a registry firmware by its raw version
+  string (`FM-1_097`). `fm1MergeIdentity` now gives the registry name
+  plus the version, e.g. `Baud Girl FM-1+VA (FM-1_097)`.
+- The identified name is cached in localStorage (`mm_fm1_firmware`
+  plus its name key). An old label stays until the next IDENTIFY or
+  CONNECT.
+
 ## TEMPLATE
 
 ```

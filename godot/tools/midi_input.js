@@ -558,6 +558,7 @@ function fm1MergeIdentity(vendor, info, portName) {
   if (vendor) {
     let fw = vendor.firmware, name = vendor.name;
     if (byPort && (fw === 'felucca-family' || fw === 'unknown')) { fw = byPort; name = ((fm1Firmware(byPort) || {}).name || byPort) + ' (' + vendor.name + ')'; }
+    else if (fm1Firmware(fw)) name = fm1Firmware(fw).name + ' (' + vendor.name + ')';   // e.g. "Baud Girl FM-1+VA (FM-1_097)", not just the version string
     if (fw === 'felucca-family') name += ' (Felucca family; editor silent)';
     if (fw === 'rescue') name += ' (USB rescue mode — reinstall)';
     if (fw === 'loader') name += ' (updater — finish the install)';

@@ -50,7 +50,7 @@ const FM1_REGISTRY = /*FM1-JSON-BEGIN*/{
       "warnings": [], "summary": "6-op FM (Dexed core), 128 tones, 16-step sequencer."
     },
     {
-      "id": "baudgirl", "name": "FM-1+VA", "author": "Madeline (Baud Girl)", "url": "https://baudgirl.com/work/FM-1+VA",
+      "id": "baudgirl", "name": "Baud Girl FM-1+VA", "author": "Madeline (Baud Girl)", "url": "https://baudgirl.com/work/FM-1+VA",
       "license": "closed (free)", "version": "FM-1_097", "date": "2026-10-09", "kind": "synth", "base": "stock app",
       "status": "installable", "installer": "https://baudgirl.com/work/FM-1+VA/install", "editor": null, "cli": null,
       "usb": { "vidpid": "4c4a:c755", "products": ["FM-1"] },
