@@ -695,6 +695,11 @@
    "md5": "ec6df2f98636a2cf0397cd9873930348",
    "size": 67574
   },
+  "godot/assets/3d/characters/heroes/greta.glb": {
+   "at": "2026-10-11T18:42:29+00:00",
+   "md5": "4bf0ae991e5ec0befc1af4156ed3cb61",
+   "size": 51304820
+  },
   "godot/assets/3d/characters/heroes/hans.glb": {
    "at": "2026-10-11T18:35:35+00:00",
    "md5": "ddf667a8a77b56fe4cc690723610babe",
@@ -52719,6 +52724,41 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "59b7654b16aa9581f63d89b61869462e",
    "size": 80210
+  },
+  "godot/assets/concept/meshy/greta/back.png": {
+   "at": "2026-10-11T18:42:39+00:00",
+   "md5": "7de06b8e5f911668955af30e26fc0d8f",
+   "size": 2252323
+  },
+  "godot/assets/concept/meshy/greta/front.png": {
+   "at": "2026-10-11T18:42:39+00:00",
+   "md5": "b1893c3fc31f1a63b851670580f8c306",
+   "size": 2267969
+  },
+  "godot/assets/concept/meshy/greta/greta_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T18:42:39+00:00",
+   "md5": "7de06b8e5f911668955af30e26fc0d8f",
+   "size": 2252323
+  },
+  "godot/assets/concept/meshy/greta/greta_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T18:42:39+00:00",
+   "md5": "b1893c3fc31f1a63b851670580f8c306",
+   "size": 2267969
+  },
+  "godot/assets/concept/meshy/greta/greta_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T18:42:39+00:00",
+   "md5": "87666338daf8828673449f36f28398c7",
+   "size": 2101080
+  },
+  "godot/assets/concept/meshy/greta/meshy_thumb.png": {
+   "at": "2026-10-11T18:42:39+00:00",
+   "md5": "f25ca8be76d1d90e0ed7d55a0ab7dd42",
+   "size": 93413
+  },
+  "godot/assets/concept/meshy/greta/side.png": {
+   "at": "2026-10-11T18:42:39+00:00",
+   "md5": "87666338daf8828673449f36f28398c7",
+   "size": 2101080
   },
   "godot/assets/concept/meshy/hans/back.png": {
    "at": "2026-10-11T18:35:49+00:00",
