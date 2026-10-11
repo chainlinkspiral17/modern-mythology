@@ -1215,6 +1215,11 @@
    "md5": "a70413a5578008bdca07a805c7c40c03",
    "size": 72643
   },
+  "godot/assets/3d/characters/heroes/roy.glb": {
+   "at": "2026-10-11T19:18:21+00:00",
+   "md5": "e91c809bb00e2e34d60473ce8c6c3293",
+   "size": 67363200
+  },
   "godot/assets/3d/characters/heroes/sal_carratura.glb": {
    "at": "2026-10-11T18:04:51+00:00",
    "md5": "c8c292ccc0a8865b858544a8c073e51b",
@@ -53929,6 +53934,56 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "c02b40b53613cfc2926b1f6be8b9e996",
    "size": 84004
+  },
+  "godot/assets/concept/meshy/roy/back.png": {
+   "at": "2026-10-11T19:18:35+00:00",
+   "md5": "a521a5b4f00a249ecb61e61e017847f7",
+   "size": 2116684
+  },
+  "godot/assets/concept/meshy/roy/front.png": {
+   "at": "2026-10-11T19:18:35+00:00",
+   "md5": "b10b479aed5e589de789b53e376cb5e2",
+   "size": 2234425
+  },
+  "godot/assets/concept/meshy/roy/meshy_thumb.png": {
+   "at": "2026-10-11T19:18:35+00:00",
+   "md5": "caf22fcd3c293f74322a8e9dcb675ae7",
+   "size": 98026
+  },
+  "godot/assets/concept/meshy/roy/roy_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T19:18:35+00:00",
+   "md5": "16fa64bb4ce042dad1bf9d1446987630",
+   "size": 2068003
+  },
+  "godot/assets/concept/meshy/roy/roy_back_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-11T19:18:35+00:00",
+   "md5": "a521a5b4f00a249ecb61e61e017847f7",
+   "size": 2116684
+  },
+  "godot/assets/concept/meshy/roy/roy_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T19:18:35+00:00",
+   "md5": "59d01bbfd605717377dcf989a43fa42d",
+   "size": 2194542
+  },
+  "godot/assets/concept/meshy/roy/roy_front_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-11T19:18:35+00:00",
+   "md5": "b10b479aed5e589de789b53e376cb5e2",
+   "size": 2234425
+  },
+  "godot/assets/concept/meshy/roy/roy_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T19:18:35+00:00",
+   "md5": "9dd1fffcbc42c37c6187bd62215e0c80",
+   "size": 2027368
+  },
+  "godot/assets/concept/meshy/roy/roy_side_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-11T19:18:35+00:00",
+   "md5": "acf4ebc38ef736c878d172e8b7d14b42",
+   "size": 2045685
+  },
+  "godot/assets/concept/meshy/roy/side.png": {
+   "at": "2026-10-11T19:18:35+00:00",
+   "md5": "acf4ebc38ef736c878d172e8b7d14b42",
+   "size": 2045685
   },
   "godot/assets/concept/meshy/sal_carratura/back.png": {
    "at": "2026-10-11T18:05:05+00:00",
