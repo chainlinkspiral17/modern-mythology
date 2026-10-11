@@ -472,6 +472,33 @@ look-ahead loop. The audio→performance clock mapping comes from
   exactly 1.4e-4. Tolerance is now 3e-4, and events must still match
   exactly.
 
+### 2026-10-11 — "every song stops after a second or two" — make the DAW report itself
+
+- The cuts happened in the same place each time and in most songs, on
+  the Deck only. Headless Chrome played every song continuously, with
+  no errors. So the failure depends on that machine, and guessing
+  stopped being useful.
+- `scheduleRange` used to wrap each `noteOn` in a silent
+  `try/catch` ("device mid-reload"). A device that failed on every
+  note gave a song with *no sound and no error*. The other scheduling
+  sections had no guard at all, so one exception killed the
+  scheduler, and the song stopped once the ~120 ms look-ahead plus
+  release tails ran out (a second or two).
+- Now:
+  - every section is guarded, and each fault goes to `E.fault()` →
+    `E.diag`;
+  - the scheduler logs stalls longer than the look-ahead;
+  - the context's `statechange` / `sinkchange` are logged, and a
+    suspended or interrupted context is resumed while the transport
+    plays. Plugging in the FM-1 can make its USB audio the default
+    output.
+  - DIAG (transport) shows a ⚠ when something went wrong. COPY gives a
+    text report: Chrome version, context state and latencies, output
+    device, outputs, transport, every device (loaded? voices?), and
+    the log.
+- Rule: never swallow an exception in an audio path. Log it where the
+  user can copy it.
+
 ## TEMPLATE
 
 ```

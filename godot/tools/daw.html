@@ -146,6 +146,11 @@
   .tkh { display: flex; align-items: center; gap: 3px; padding: 0 4px 0 10px; border-bottom: 1px solid #1a1410; background: #0d0a08; }
   .tkh button { min-width: 36px; min-height: 36px; padding: 0 5px; font-size: 11px; }
   .tkh select { flex: 1; min-width: 0; min-height: 36px; font-size: 10px; }
+  #diagpanel { position: fixed; z-index: 56; top: 76px; right: 12px; width: 560px; max-width: calc(100vw - 24px); max-height: calc(100vh - 90px); overflow-y: auto; background: var(--bg-0); border: 1px solid var(--gold); padding: 8px 12px 10px; display: none; box-shadow: 0 8px 30px rgba(0,0,0,0.7); }
+  #diagpanel.show { display: block; }
+  #diagpanel pre { white-space: pre-wrap; font-size: 10px; color: var(--text); max-height: 52vh; overflow-y: auto; margin: 6px 0; }
+  #diagpanel button { min-height: 36px; min-width: 44px; }
+  #diagbtn.bad { color: #ff8a7a; border-color: #c64a3a; }
   #latpanel { position: fixed; z-index: 55; top: 76px; right: 12px; width: 470px; max-width: calc(100vw - 24px); max-height: calc(100vh - 90px); overflow-y: auto; background: var(--bg-0); border: 1px solid var(--gold); padding: 8px 12px 10px; display: none; box-shadow: 0 8px 30px rgba(0,0,0,0.7); }
   #latpanel.show { display: block; }
   #latpanel .lr2 { display: flex; gap: 8px; align-items: center; margin-top: 6px; }
@@ -188,12 +193,15 @@
   <button id="loopbtn" class="dim">⟲ LOOP</button><input type="number" id="loopa" min="1" value="1"> – <input type="number" id="loopb" min="2" value="9">
   <button id="metro" class="dim" title="click (never bounced)">♩</button>
   <button id="punchbtn" class="dim rc" title="punch in / out: only the red region on the ruler is recorded — drag its edges or its middle">PUNCH</button>
-  <button id="latbtn" class="dim rc" title="recording: quantize · count-in · replace / overdub · latency">REC ⚙</button>
+  <button id="latbtn" class="dim rc" title="recording: quantize · count-in · replace / overdub · latency">REC ⚙</button><button id="diagbtn" class="dim rc" title="diagnostics: errors, audio state, scheduler stalls — COPY and paste them to Claude">DIAG</button>
   <span style="flex:1"></span>
   <button class="dim" id="undo" title="undo (Ctrl+Z)">↶</button><button class="dim" id="redo" title="redo (Ctrl+Shift+Z)">↷</button>
   <button class="dim" id="save">⎙ SAVE</button><button class="dim" id="new">✕ NEW</button>
 </div>
 
+<div id="diagpanel"><div class="row"><b style="flex:1;color:var(--gold-hi);font-weight:normal;letter-spacing:0.1em">DIAGNOSTICS</b><button id="diag-copy">COPY</button><button id="diag-clear" class="dim">CLEAR</button><button id="diag-close" class="dim">✕</button></div>
+  <div class="note">Play the song until the sound stops, then COPY and paste this to Claude. It lists errors, audio-context changes, scheduler stalls and this machine's audio setup.</div>
+  <pre id="diag-text"></pre><div class="msg" id="diag-msg"></div></div>
 <div id="latpanel">
   <div style="display:flex;justify-content:space-between;align-items:center"><b style="color:var(--gold-hi);letter-spacing:0.14em">RECORDING</b><button class="dim" id="lat-close">✕</button></div>
   <div class="lr2"><b>QUANT</b><select id="quant" title="record quantize: notes snap to this grid as they are recorded (the piano roll's GRID uses the same values)"></select>
@@ -407,6 +415,37 @@ E.on('project', () => { if (!P) return; syncTransportUI(); renderHeads(); drawAr
 E.on('notes', () => { drawRoll(); drawArr(); saveSoon(); });
 E.on('auto', d => { if (d && d.created) renderHeads(); saveSoon(); });
 E.on('error', m => msg('g-msg', m, true));
+// ── diagnostics ─────────────────────────────────────────────────────
+window.addEventListener('error', e => { try { E.note('page', (e.message || 'error') + (e.filename ? ' @ ' + e.filename.split('/').pop() + ':' + e.lineno : '')); } catch (x) {} });
+window.addEventListener('unhandledrejection', e => { try { E.fault('promise', e.reason); } catch (x) {} });
+async function diagReport() {
+  const c = E.ctx, L = [];
+  L.push('MM DAW diagnostics · ' + new Date().toISOString() + ' · ' + navigator.userAgent.replace(/^.*?\) /, ''));
+  if (c) {
+    L.push('audio: ' + c.state + ' · ' + c.sampleRate + ' Hz · buffer ' + E.buffer + ' · base ' + ((c.baseLatency || 0) * 1000).toFixed(1) + ' ms · output ' + ((c.outputLatency || 0) * 1000).toFixed(1) + ' ms · time ' + c.currentTime.toFixed(2) + ' s' + ('sinkId' in c ? ' · output device: ' + (c.sinkId || 'system default') : ''));
+    try { const outs = (await navigator.mediaDevices.enumerateDevices()).filter(d => d.kind === 'audiooutput'); L.push('outputs: ' + (outs.map(d => (d.label || '(name hidden)') + (d.deviceId === 'default' ? ' [default]' : '')).join(' · ') || 'none listed')); } catch (e) {}
+  } else L.push('audio: not started');
+  L.push('transport: ' + (E.playing ? 'playing' : 'stopped') + ' · bpm ' + P.bpm + ' · loop ' + (P.loop.on ? P.loop.a + '–' + P.loop.b : 'off') + ' · song ' + E.songBars() + ' bars');
+  for (const d of P.devices) {
+    const inst = E.devices.get(d.id), v = inst && (inst.voices ? (Array.isArray(inst.voices) ? inst.voices.length : Object.keys(inst.voices).length) : '');
+    const users = P.tracks.filter(t => t.deviceId === d.id).map(t => t.name + (t.mute ? '(muted)' : ''));
+    L.push('device ' + d.name + ' · ' + d.type + (d.preset ? ' ' + d.preset : '') + (d.patch ? ' ' + d.patch : '') + (inst ? '' : ' · NOT LOADED') + (inst && inst.error ? ' · error: ' + inst.error : '') + (v !== '' ? ' · voices ' + v : '') + ' · plays ' + (users.join(', ') || '—'));
+  }
+  L.push('— log (' + (E.diag || []).length + ') —');
+  const t0 = (E.diag && E.diag[0] && E.diag[0].at) || 0;
+  for (const x of E.diag || []) L.push('+' + ((x.at - t0) / 1000).toFixed(2) + 's ' + x.kind + (x.n > 1 ? ' ×' + x.n : '') + ' [' + x.ctx + '] ' + x.msg);
+  return L.join('\n');
+}
+async function diagUI() { $('diag-text').textContent = await diagReport(); }
+E.on('diag', D => { const bad = D.some(x => x.kind === 'error' || x.kind === 'page' || x.kind === 'stall' || (x.kind === 'audio' && /suspended|interrupted|closed|changed/.test(x.msg))); $('diagbtn').classList.toggle('bad', bad); $('diagbtn').textContent = bad ? 'DIAG ⚠' : 'DIAG'; if ($('diagpanel').classList.contains('show')) diagUI(); });
+$('diagbtn').addEventListener('click', () => { $('diagpanel').classList.toggle('show'); diagUI(); });
+$('diag-close').addEventListener('click', () => $('diagpanel').classList.remove('show'));
+$('diag-clear').addEventListener('click', () => { E.diag = []; $('diagbtn').classList.remove('bad'); $('diagbtn').textContent = 'DIAG'; diagUI(); });
+$('diag-copy').addEventListener('click', async () => {
+  const txt = await diagReport();
+  try { await navigator.clipboard.writeText(txt); msg('diag-msg', 'copied — paste it to Claude.'); }
+  catch (e) { const ta = document.createElement('textarea'); ta.value = txt; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); msg('diag-msg', 'copied — paste it to Claude.'); } catch (x) { msg('diag-msg', 'copy blocked: select the text above and copy it.', true); } ta.remove(); }
+});
 E.on('transport', ({ playing }) => { $('play').classList.toggle('on', playing); });
 E.on('record', ({ on }) => $('rec').classList.toggle('on', on));
 E.on('takes', d => { if (!P) return; renderHeads(); drawArr(); drawRoll(); if (!d || !d.recording) saveSoon(); });

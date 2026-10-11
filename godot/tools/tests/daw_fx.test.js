@@ -105,4 +105,26 @@ suite('daw fx · inserts, ducking, automation', async t => {
     t.eq(r.redone, { fx: 1, duck: true, stripFx: 1, duckNode: true }, 'after redo');
     t.noErrors(errors);
   });
+  await t.test('a failing device can\'t silence the song: faults are logged (DIAG), the rest plays, a suspended context resumes', async () => {
+    const r = await p.evaluate(async () => {
+      const { reset } = FXT; reset(); E.diag = [];
+      const t = P.tracks.find(x => x.role === 'drums'), kit = E.devices.get(t.deviceId), keep = kit.noteOn;
+      const b0 = Math.min(...t.clips.map(c => c.bar)); P.loop = { on: true, a: b0, b: b0 + 2 };      // where the drums play
+      kit.noteOn = () => { throw new Error('test boom'); };
+      let others = 0; const wraps = [];
+      for (const x of P.tracks.filter(x => x.role !== 'drums')) { const i = E.devices.get(x.deviceId), on = i.noteOn; wraps.push([i, on]); i.noteOn = function (...a) { others++; return on.apply(this, a); }; }
+      await E.play(b0 * BAR); await new Promise(res => setTimeout(res, 1500));
+      await E.ctx.suspend(); await new Promise(res => setTimeout(res, 500));
+      const state = E.ctx.state, playing = E.playing;
+      E.stop(); kit.noteOn = keep; for (const [i, on] of wraps) i.noteOn = on;
+      await diagUI();
+      return { others, state, playing, faults: E.diag.filter(x => x.kind === 'error').map(x => x.msg), audio: E.diag.filter(x => x.kind === 'audio').map(x => x.msg), report: document.getElementById('diag-text').textContent };
+    });
+    t.ok(r.others > 0, 'other tracks kept playing: ' + r.others + ' notes');
+    t.ok(r.faults.some(m => /note · drums: test boom/.test(m)), 'device fault logged: ' + JSON.stringify(r.faults.slice(0, 1)));
+    t.ok(r.audio.includes('context suspended') && r.audio.includes('resumed'), 'suspend → resume logged: ' + JSON.stringify(r.audio));
+    t.eq([r.state, r.playing], ['running', true], 'context resumed while playing');
+    t.ok(/MM DAW diagnostics/.test(r.report) && /device KIT/.test(r.report) && /test boom/.test(r.report), 'DIAG report text');
+    t.noErrors(errors);
+  });
 });

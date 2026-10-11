@@ -423,11 +423,29 @@ registerProcessor('mm-daw-rec', MMDawRec);
     }
     emit(ev, d) { (this.listeners[ev] || []).forEach(f => { try { f(d); } catch (e) { console.error(e); } }); }
 
+    // ── diagnostics: what went wrong on THIS machine (DAW → DIAG copies it as text) ──
+    note(kind, msg) {
+      const D = this.diag || (this.diag = []);
+      const c = this.ctx, last = D[D.length - 1];
+      if (last && last.kind === kind && last.msg === msg) { last.n++; last.at = performance.now(); return; }
+      D.push({ at: performance.now(), kind, msg: String(msg), n: 1, ctx: c ? c.state + ' ' + c.currentTime.toFixed(2) : '' });
+      if (D.length > 200) D.shift();
+      this.emit('diag', D);
+    }
+    fault(where, e) { this.note('error', where + ': ' + (e && e.message ? e.message : e) + (e && e.stack ? ' @ ' + String(e.stack).split('\n').slice(1, 3).map(x => x.trim()).join(' ← ') : '')); }
     async start() {
-      if (this.ctx) { if (this.ctx.state === 'suspended') await this.ctx.resume(); return; }
+      if (this.ctx) { if (this.ctx.state !== 'running' && this.ctx.state !== 'closed') await this.ctx.resume(); return; }
       this.buffer = bufferMode();
       this.ctx = new (root.AudioContext || root.webkitAudioContext)({ sampleRate: RATE, latencyHint: BUFFERS[this.buffer] });
       const c = this.ctx;
+      // the system can suspend / interrupt audio (another app, an output device switch — e.g. a USB audio device
+      // such as the FM-1 plugged in becomes the default output): log it, and resume while the transport plays
+      c.onstatechange = () => {
+        this.note('audio', 'context ' + c.state);
+        if (this.playing && c.state !== 'running' && c.state !== 'closed') c.resume().then(() => this.note('audio', 'resumed')).catch(e => this.fault('resume', e));
+      };
+      if ('onsinkchange' in c) c.onsinkchange = () => this.note('audio', 'output device changed → ' + (c.sinkId || 'system default'));
+      this.note('audio', 'context ' + c.state + ' · ' + c.sampleRate + ' Hz · buffer ' + this.buffer);
       this.master = c.createGain();
       this.limiter = c.createDynamicsCompressor(); this.limiter.threshold.value = -2; this.limiter.knee.value = 0; this.limiter.ratio.value = 20; this.limiter.attack.value = 0.002; this.limiter.release.value = 0.1;
       this.out = c.createGain();
@@ -785,6 +803,8 @@ registerProcessor('mm-daw-rec', MMDawRec);
     schedule() {
       this.clockOffset();                    // keep the clock-offset median fed every tick
       if (!this.playing) return;
+      const now = performance.now(), gap = this._lastSched ? now - this._lastSched : 0; this._lastSched = now;
+      if (gap > LOOKAHEAD * 1000) this.note('stall', 'scheduler ran ' + Math.round(gap) + ' ms late (look-ahead ' + LOOKAHEAD * 1000 + ' ms): notes in that gap were late or lost');
       const P = this.project, horizon = this.ctx.currentTime + LOOKAHEAD;
       for (let guard = 0; guard < 8; guard++) {
         const byTime = this.anchor.tick + (horizon - this.anchor.ctx) / this.spt();
@@ -793,7 +813,7 @@ registerProcessor('mm-daw-rec', MMDawRec);
         const songEnd = this.recording ? Infinity : this.songBars() * BAR;     // recording runs on past the song
         const limit = P.loop.on ? loopEnd : songEnd;
         const end = Math.min(byTime, limit);
-        if (end > this.schedTick) this.scheduleRange(this.schedTick, end);
+        if (end > this.schedTick) { try { this.scheduleRange(this.schedTick, end); } catch (e) { this.fault('scheduler', e); } }
         this.schedTick = end;
         if (end < limit) return;
         if (P.loop.on) {
@@ -806,7 +826,7 @@ registerProcessor('mm-daw-rec', MMDawRec);
           this.emit('loop', { at: tWrap });
         } else {
           const tEnd = this.timeOf(songEnd);
-          setTimeout(() => { if (this.playing && this.ctx.currentTime >= tEnd - 0.01) { this.stop(); this.emit('ended'); } }, Math.max(0, (tEnd - this.ctx.currentTime) * 1000 + 30));
+          setTimeout(() => { if (this.playing && this.ctx.currentTime >= tEnd - 0.01) { this.note('stop', 'song end at bar ' + this.songBars() + ' (loop off)'); this.stop(); this.emit('ended'); } }, Math.max(0, (tEnd - this.ctx.currentTime) * 1000 + 30));
           return;
         }
       }
@@ -844,25 +864,25 @@ registerProcessor('mm-daw-rec', MMDawRec);
                 const offT = Math.min(at + n.d, ce), q = gr.note(at, offT, n.n, n.v * (tr.vel ?? 1));
                 when = this.timeOf(at) + q.on; off = this.timeOf(offT) + q.off - 0.002; vel = q.v;
               }
-              try { inst.noteOn(n.n, vel, when, tr.channel); inst.noteOff(n.n, Math.max(when + 0.005, off), tr.channel); } catch (e) { /* device mid-reload */ }
+              try { inst.noteOn(n.n, vel, when, tr.channel); inst.noteOff(n.n, Math.max(when + 0.005, off), tr.channel); } catch (e) { this.fault('note · ' + tr.name, e); }
             }
           }
         }
       }
       for (const tr of this.activeTracks()) {
         if (tr.kind !== 'audio') continue;
-        for (const a of tr.audio) if (a.t >= t0 && a.t < t1) this.startAudioClip(tr, a, this.timeOf(a.t), 0);
+        for (const a of tr.audio) if (a.t >= t0 && a.t < t1) { try { this.startAudioClip(tr, a, this.timeOf(a.t), 0); } catch (e) { this.fault('audio clip · ' + tr.name, e); } }
       }
       const ci = this._countIn;       // the count-in clicks even with the metronome off (first pass only: by time)
       if (ci && ci.endCtx == null) { ci.fromCtx = this.timeOf(ci.from); ci.endCtx = this.timeOf(ci.to); }
-      if (P.metro || ci) for (let b = Math.ceil(t0 / PPQ) * PPQ; b < t1; b += PPQ) { const w = this.timeOf(b); if (P.metro || (w > ci.fromCtx - 1e-4 && w < ci.endCtx - 1e-4)) this.clickAt(w, b % BAR === 0); }
-      this.clockRange(t0, t1);
-      if (this._perf) this._perf.range(t0, t1);              // live arps on the transport grid
-      if (this._auto) {
+      try { if (P.metro || ci) for (let b = Math.ceil(t0 / PPQ) * PPQ; b < t1; b += PPQ) { const w = this.timeOf(b); if (P.metro || (w > ci.fromCtx - 1e-4 && w < ci.endCtx - 1e-4)) this.clickAt(w, b % BAR === 0); } } catch (e) { this.fault('metronome', e); }
+      try { this.clockRange(t0, t1); } catch (e) { this.fault('MIDI clock', e); }
+      try { if (this._perf) this._perf.range(t0, t1); } catch (e) { this.fault('PERF arp', e); }              // live arps on the transport grid
+      if (this._auto) try {
         const A = this._auto;
         this._autoRange({ live: true, timeOf: tk => this.timeOf(tk), strip: id => this.strips.get(id), inst: id => this.devices.get(id), cache: A.cache, seen: A.seen, fresh: A.fresh, cancel: A.cancel }, t0, t1);
         A.fresh = false; A.cancel = null;
-      }
+      } catch (e) { this.fault('automation', e); }
     }
 
     // ── automation ──────────────────────────────────────────────────
