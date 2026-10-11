@@ -16,7 +16,8 @@
  */
 (function (root) {
   'use strict';
-  const SG = () => root.SeqGen, AKg = () => root.AK;
+  // audio_kit.js declares AK with a top-level const (not a window property): reach it lexically
+  const SG = () => root.SeqGen, AKg = () => (typeof AK !== 'undefined' ? AK : root.AK);
   const BAR = () => root.DAW.BAR;
 
   const ROLE_ORDER = ['drums', 'bass', 'chords', 'lead', 'pad'];
@@ -373,10 +374,11 @@
           E.emit('project');
           await E.whenReady();
           say('render', 'rendering…');
-          const stems = (req.stems ?? ctx.stems ?? true) && E.canRenderOffline();
+          // stems: as asked; else the page's default (ctx.stems), or when the brief's scenes swing in intensity (m.stems)
+          const stems = (req.stems ?? (ctx.stems === undefined ? true : !!(ctx.stems || m.stems))) && E.canRenderOffline();
           // an asked-for length renders folded (the tail wraps onto the head): exactly `bars` long and seamless
           const r = await render(E, { loop: !!o.length, stems, master: ctx.master !== false, lufs: ctx.lufs ?? -14,
-            onProgress: p => p && p.phase === 'stem' && say('render', 'rendering stem ' + (p.done + 1) + '/' + p.total + '…') });
+            onProgress: p => p && p.phase === 'stem' && say('render', 'rendering stems: ' + p.done + ' of ' + p.total + ' done…') });
           const credits = await E.credits();
           const sec = r.channels[0].length / r.sampleRate;
           const mood = { style: song.style, form: song.form, mode: song.mode, key: song.key, bpm: +(+song.bpm).toFixed(4), density: song.density, seed: song.seed };

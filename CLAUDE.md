@@ -42,8 +42,8 @@ touching code:
    FM-1 firmware fact lives in `godot/tools/fm1_firmwares.js`.
 8. `lore/_AUDIO_CAPTURE_PLAYBOOK.md` — FIELD RECORDER, TAPE STUDIO,
    the DAW (`daw.html` / `daw_engine.js` / `daw_fx.js` / `daw_perf.js` / `seqgen.js`), `field_ingest.py`,
-   the AUDIO DIRECTOR (`audio_director.html`: review / approve / reject the DAW's
-   temp takes staged in `assets/audio/review/`), the shared `audio_kit.js`, the vendored
+   the AUDIO DIRECTOR (`audio_director.html`: make, review / approve / reject
+   temp takes staged in `assets/audio/review/`; both pages make takes through `temp_maker.js`), the shared `audio_kit.js`, the vendored
    Ogg Vorbis encoder (`godot/tools/vendor/oggvorbis/`), and how audio reaches the game
    (recordings: `.wav` next to a catalog track's `src`; temp music: small Ogg Vorbis
    `<base>.temp.ogg` + `.stems/*.ogg` + `.stems.json`; never hand-edit `music_catalog.json`).

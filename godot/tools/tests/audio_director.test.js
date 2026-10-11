@@ -279,32 +279,33 @@ suite('audio_director · review, preview, approve, DAW takes', async t => {
   });
 
   // ── the DAW: review staging, the request round trip, creative direction ──
-  let daw = null, first = null, second = null;
+  let first = null, second = null;
   const leadPreset = await p.evaluate(() => FORGE_PRESETS.find(x => x.category === 'leads').id);
   const samSeed = await p.evaluate(() => SeqGen.moodFromBrief(DIR.cat.find(x => x.id === 'sam_theme'), DIR.briefs.sam_theme).seed);
   // a rejected seed — the very one the DAW would pick first for sam_theme
   const apj = json('resources/music/temp_approvals.json'); apj.tracks.sam_theme = { approved: null, rejected: [{ take: 'gone', seed: samSeed }], history: [] }; put('resources/music/temp_approvals.json', JSON.stringify(apj));
-  await t.test('MAKE TAKES opens the DAW with the request; it stages a take and notifies this page (both channels)', async () => {
-    const popup = ctx.waitForEvent('page');
-    const req = await p.evaluate(({ leadPreset }) => { DIR.netLog.length = 0; return requestTakes(['sam_theme'], 1, { description: 'slower, more dread, a lonely piano', form: 'loop', length: { bars: 2 }, roles: ['bass', 'chords', 'lead', 'pad'], extraPads: 1, instruments: { lead: 'forge:' + leadPreset } }); }, { leadPreset });
-    t.eq(req.live, false, 'no DAW open → a new tab');
-    daw = await popup; const dawErr = []; t.watch(daw, dawErr);
-    await daw.waitForLoadState('domcontentloaded');
-    t.ok(/director=sam_theme/.test(daw.url()) && /rid=/.test(daw.url()), daw.url());
-    await daw.waitForSelector('#gate-director');
-    await daw.click('#gatebtn');
-    await p.waitForFunction(rid => DIR.requests[rid] && DIR.requests[rid].state === 'done', req.rid, { timeout: 60000 });
+  await t.test('MAKE TAKES renders right here (no DAW tab): progress on the page, a take staged in review, listed under TAKES', async () => {
+    const pages = ctx.pages().length;
+    const r = await p.evaluate(async ({ leadPreset }) => {
+      const req = requestTakes(['sam_theme'], 1, { description: 'slower, more dread, a lonely piano', form: 'loop', length: { bars: 2 }, roles: ['bass', 'chords', 'lead', 'pad'], extraPads: 1, instruments: { lead: 'forge:' + leadPreset } });
+      const busy = [document.getElementById('make').textContent, document.getElementById('make').disabled, document.getElementById('b-daw').textContent];
+      const seen = new Set(), el = document.getElementById('makemsg');
+      const mo = new MutationObserver(() => seen.add(el.textContent.replace(/ · \d+ s$/, '').replace(/^.* — /, ''))); mo.observe(el, { childList: true, characterData: true, subtree: true });
+      const R = await req.done; mo.disconnect();
+      return { state: R.state, made: R.made, errors: R.errors, busy, seen: [...seen], after: [document.getElementById('make').textContent, document.getElementById('b-daw').textContent, document.getElementById('makemsg').textContent] };
+    }, { leadPreset });
+    t.eq([r.state, r.made, r.errors], ['done', 1, []], 'request');
+    t.eq(r.busy, ['⚄ MAKING…', true, 'STUDIO: making'], 'busy while it works');
+    t.ok(['composing…', 'rendering stems: 5 of 5 done…', 'saving…'].every(x => r.seen.includes(x)), 'progress: ' + JSON.stringify(r.seen));
+    t.ok(r.after[0] === '⚄ MAKE TAKES' && r.after[1] === 'STUDIO: ready' && /1 take\(s\) made in \d+ s — ▶ PLAY them under TAKES/.test(r.after[2]), JSON.stringify(r.after));
+    t.eq(ctx.pages().length, pages, 'no other tab opened');
     await p.waitForFunction(() => DIR.state.sam_theme && DIR.state.sam_theme.cand === 1, null, { timeout: 5000 });
-    t.noErrors(dawErr);
     const takes = fs.readdirSync(G('assets/audio/review/sam_theme'));
     t.eq(takes.length, 1);
     const dir = 'assets/audio/review/sam_theme/' + takes[0] + '/';
     first = json(dir + 'meta.json'); first.dir = dir;
     t.eq(fs.readdirSync(G(dir)).sort(), ['meta.json', 'mix.wav', 'stems', 'stems.json']);
     t.ok(!fs.existsSync(G('assets/audio/bgm/sam_theme.wav')) && !fs.existsSync(G('assets/audio/bgm/sam_theme.temp.ogg')), 'nothing written into the game path');
-    const log = await p.evaluate(() => DIR.netLog.filter(e => e.type === 'take'));
-    t.ok(log.some(e => e.via === 'bc') && log.some(e => e.via === 'storage'), 'BroadcastChannel and storage event both arrived: ' + JSON.stringify(log));
-    t.ok(log.filter(e => e.via === 'bc').every(e => log.some(x => x.via === 'storage' && x.uid === e.uid)), 'same notices on both');
   });
   await t.test('the take avoids the rejected seed and records the request', async () => {
     t.ok(first.mood.seed !== samSeed, `seed ${first.mood.seed} vs rejected ${samSeed}`);
@@ -325,17 +326,15 @@ suite('audio_director · review, preview, approve, DAW takes', async t => {
     const man = json(first.dir + 'stems.json');
     t.eq(man.stems.map(s => s.name + '@' + s.layer), ['bass@0.25', 'chords@0', 'lead@0.75', 'pad@0', 'pad2@0']);
     t.eq(fs.readdirSync(G(first.dir + 'stems')).sort(), ['bass.wav', 'chords.wav', 'lead.wav', 'pad.wav', 'pad2.wav']);
-    const dev = await daw.evaluate(() => { const t = P.tracks.find(x => x.role === 'lead'); return E.dev(t.deviceId).preset; });
+    const dev = await p.evaluate(() => { const E = STUDIO.E, t = E.project.tracks.find(x => x.role === 'lead'); return E.dev(t.deviceId).preset; });
     t.eq(dev, leadPreset);
   });
   await t.test('length is exact: 2 bars, and 7 s on a bar line (tempo nudged), mix + stems the same length', async () => {
     const want = Math.round(2 * 240 / first.mood.bpm * 44100);
     t.near(wavFrames(first.dir + 'mix.wav'), want, 1, '2 bars');
     t.near(wavFrames(first.dir + 'stems/pad2.wav'), want, 1, 'stem');
-    // the DAW is open and started now: the next request goes to it live (ack over BroadcastChannel)
-    const req = await p.evaluate(() => requestTakes(['sam_theme'], 1, { length: { sec: 7 }, form: 'loop', roles: ['pad'], loop: true }));
-    t.eq(req.live, true, 'open DAW took the request live');
-    await p.waitForFunction(rid => DIR.requests[rid] && DIR.requests[rid].state === 'done', req.rid, { timeout: 40000 });
+    const st = await p.evaluate(async () => (await requestTakes(['sam_theme'], 1, { length: { sec: 7 }, form: 'loop', roles: ['pad'], loop: true }).done).state);
+    t.eq(st, 'done', 'second request');
     const dirs = fs.readdirSync(G('assets/audio/review/sam_theme')).map(d => 'assets/audio/review/sam_theme/' + d + '/').filter(d => d !== first.dir);
     t.eq(dirs.length, 1);
     const m = json(dirs[0] + 'meta.json');
@@ -359,13 +358,15 @@ suite('audio_director · review, preview, approve, DAW takes', async t => {
     t.eq(fs.readdirSync(G('assets/audio/bgm')).filter(f => f.startsWith('sam_theme')), []);
   });
   await t.test('TEMP TRACKS stages into review by default (skip-review off)', async () => {
+    const daw = await ctx.newPage(); await daw.goto(p.url().replace(/audio_director\.html.*$/, 'daw.html'));
     const r = await daw.evaluate(() => ({ skip: document.getElementById('g-skipreview').checked, linkToDirector: !!document.querySelector('a[href="audio_director.html"]') }));
+    await daw.close();
     t.eq(r, { skip: false, linkToDirector: true });
   });
 
   await t.test('finger controls: track row, take, play, intensity, two-tap reject (CDP touch, ≥ 36 px)', async () => {
-    // a background page gets no frames in headless Chromium, and touch input waits for one: close the DAW tab
-    await daw.close(); await p.bringToFront(); await p.evaluate(() => refresh());
+    // a background page gets no frames in headless Chromium, and touch input waits for one
+    await p.bringToFront(); await p.evaluate(() => refresh());
     const box = s => p.evaluate(s => { const e = document.querySelector(s); e.scrollIntoView({ block: 'center' }); const r = e.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2, h: r.height, w: r.width }; }, s);
     let b = await box('#list .tr[data-id="sam_theme"] .nm'); await f.tap(b.x, b.y); await p.waitForTimeout(200);
     t.eq(await p.evaluate(() => DIR.sel), 'sam_theme');

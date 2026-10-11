@@ -2057,6 +2057,7 @@ registerProcessor('mm-daw-rec', MMDawRec);
           if (onProgress) onProgress({ phase: 'stem', done, total: groups.length, name: groups[i].name });
           const r = await this.renderOffline({ fromBar, toBar, loop, tailSec, trackIds: groups[i].trackIds, limiter: false, worklets: par > 1 ? false : true });
           stems[i] = Object.assign({}, groups[i], r); done++;
+          if (onProgress) onProgress({ phase: 'stem', done, total: groups.length, name: groups[i].name, finished: true });
           this.note('render', 'stem ' + groups[i].name + ' done (' + done + '/' + groups.length + ') after ' + ((performance.now() - t0) / 1000).toFixed(1) + ' s');
         }
       };

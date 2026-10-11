@@ -759,6 +759,42 @@ context keeps running into a fake sink, and the meters still move.
   this change touches that path; if it comes back, check machine load
   first.
 
+### 2026-10-11 — the AUDIO DIRECTOR makes takes itself (temp_maker.js)
+
+- The user's feedback: "this is not intuitive. can't I just render
+  from the director and then listen to it there once it's done
+  rendering?" Before this, MAKE TAKES opened a DAW tab, which then
+  needed its own START tap and its own folder permission.
+  - Takes looked like they "didn't save". Each take rendered 5 full
+    stems serially, all on Chrome's one worklet thread, so on the Deck
+    it ran many minutes.
+  - Stems now render 2–3 at a time; see the chunked-render lesson for
+    why that needs worklet-free contexts.
+- `temp_maker.js` holds the whole take pipeline as functions over a
+  `DAW.Engine`: compose, shape arrangement, arrangeTo, render (stems +
+  mastering), writeTake, and writeTempToGame (Ogg).
+  - The director loads the engine scripts plus temp_maker.
+  - It starts one engine on the first MAKE TAKES tap; the
+    AudioContext needs the gesture.
+  - Requests queue, and progress shows under the button: composing →
+    rendering stems k of n → saving.
+  - Each take appears under TAKES as soon as it's written.
+  - The DAW's TEMP TRACKS calls the same code. The DAW-side request
+    plumbing (URL request, BroadcastChannel ack, gate) is gone.
+- `temp_maker.render()` throws on failure. The DAW's `doBounce`
+  swallowed errors, and makeTakes' `if (!lastBounce)` check couldn't
+  catch it, so a failed render could write the previous take's audio.
+- audio_kit.js declares `AK` with a top-level `const`. A classic
+  script in another file can see it lexically, but `window.AK` is
+  undefined, so shared modules must use `typeof AK`.
+- The daw.html `'project'` handler now syncs `P = E.project` first.
+  temp_maker swaps projects inside the engine, so the page's `P` can
+  be stale when the event fires.
+- The test harness launches Chromium with
+  `--autoplay-policy=no-user-gesture-required`, so it can't catch an
+  engine started outside a tap. Keep the director's engine start on
+  the MAKE TAKES / ⟳ AGAIN click path.
+
 ## TEMPLATE
 
 ```

@@ -107,7 +107,7 @@
   <button class="dim" id="refresh" title="re-read catalog, briefs, approvals and review staging">⟳ RESCAN</button>
   <button class="dim" id="shrink" disabled title="re-encode every temp still in the game as WAV (approved before Ogg) to Ogg Vorbis, about a tenth of the size; real audio is never touched">⇣ SHRINK WAV TEMPS</button>
   <span class="badge" id="b-counts">—</span>
-  <span class="badge" id="b-daw" title="takes come from the DAW: an open, started DAW takes requests live; otherwise one opens">DAW: —</span>
+  <span class="badge" id="b-daw" title="MAKE TAKES composes and renders right here (no DAW tab)">STUDIO: ready</span>
   <span style="flex:1"></span>
   <label class="note">who <input type="text" id="who" style="width:110px" placeholder="your name"></label>
   <button id="helpbtn" title="how to approve a song, step by step">? HOW TO</button>
@@ -174,7 +174,7 @@
       <h2>BRIEF <span class="sp"></span><span class="note" id="briefsrc"></span></h2>
       <div class="kv" id="brief"></div>
 
-      <h2>MAKE TAKES <span class="sp"></span><span class="note">the DAW composes them into review staging</span></h2>
+      <h2>MAKE TAKES <span class="sp"></span><span class="note">composed and rendered right here — each take shows up under TAKES when it's done</span></h2>
       <div class="box" id="regen">
         <div class="row"><label>FOR</label><span id="forwho" class="note"></span></div>
         <div class="row"><label>TAKES</label><span class="chipset" id="ntakes"><button data-n="1">1</button><button data-n="2" class="on">2</button><button data-n="3">3</button><button data-n="4">4</button><button data-n="6">6</button></span></div>
@@ -206,7 +206,7 @@
       <li><b>⌂ LINK GAME FOLDER</b> (top left) → pick the <code>godot</code> folder inside your checkout (<code>…/mm-fm1/godot</code>) → Chrome asks to let the page edit files → <b>Allow</b>. The badge then reads <i>GAME FOLDER: godot</i>. After a restart the button may say <b>⌂ ALLOW GAME FOLDER</b>: tap it once. <b>Without this, APPROVE can't put anything in the game.</b></li>
       <li>Type your name in <b>who</b> (top right) — it goes into the approval record.</li>
       <li>Pick a track in the list on the left. <b>CANDIDATES</b> shows tracks with takes waiting for a verdict; <b>MISSING</b> shows tracks with no music yet.</li>
-      <li>No takes yet? In the box under TAKES set how many (1–6), optionally write a <b>DIRECTION</b> (“slower, a lonely piano over rain”), then <b>⚄ MAKE TAKES</b>. A DAW tab opens and renders them — leave it open; the takes appear here when done (<b>⟳ RESCAN</b> if they don't).</li>
+      <li>No takes yet? In the box under TAKES set how many (1–6), optionally write a <b>DIRECTION</b> (“slower, a lonely piano over rain”), then <b>⚄ MAKE TAKES</b>. They are composed and rendered right here — the message under the button counts through each take (composing → rendering stems → saving), and each one appears under TAKES as soon as it's done. Keep this page open while it works.</li>
       <li>Listen: <b>▶ PLAY</b> on a take (or keys 1–6). The intensity buttons show how its layers come in as a scene gets tense; <b>▶ PLAY AS SCENE</b> plays it against a real scene.</li>
       <li>Like one? Optionally type why in the notes field, then <b>✓ APPROVE</b> on that take (key <b>a</b>). If another take was approved before, tap APPROVE a second time within 4 s to replace it. APPROVE turns the take into small <b>Ogg Vorbis</b> files for the game (a few seconds — the message counts up; about a tenth of the WAV size). The take then shows <b>APPROVED</b> and the game plays it from now on.</li>
       <li>Don't want one? <b>✕ REJECT</b>, then tap it again to confirm (key <b>x</b> twice). Tick <i>reject deletes files</i> to delete its audio too. Rejected seeds are never made again.</li>
@@ -228,12 +228,18 @@
 <script src="seqgen.js"></script>
 <script src="forge_synth.js"></script>
 <script src="patch_sources.js"></script>
+<script src="sampler.js"></script>
+<script src="dx7_synth.js"></script>
 <script src="patch_bank.js"></script>
+<script src="daw_fx.js"></script>
+<script src="daw_perf.js"></script>
+<script src="daw_engine.js"></script>
+<script src="temp_maker.js"></script>
 <script>
 "use strict";
 // AUDIO DIRECTOR — review the DAW's candidate temp tracks, approve one into the game, reject the rest.
 //
-// Staging (written by the DAW's TEMP TRACKS / director requests):
+// Staging (MAKE TAKES here, or the DAW's TEMP TRACKS — both through temp_maker.js):
 //   godot/assets/audio/review/<track id>/<take id>/ mix.wav · stems/<role>.wav · stems.json · credits.txt · meta.json
 // APPROVE encodes a take to Ogg Vorbis (AK.game.writeMusic) where AudioMgr looks for the catalog track:
 //   <src base>.temp.ogg · <src base>.stems/<role>.ogg · <src base>.stems.json (temp, loop) · <src base>.temp.ogg.credits.txt
@@ -263,7 +269,6 @@ const DIR = {
   checked: new Set(),   // tracks ticked for batch MAKE TAKES
   takes: [],            // metas of the selected track's takes (shown order)
   cur: -1,              // index into takes of the take loaded in the player
-  netLog: [],           // cross-page notices received: {via: 'bc' | 'storage', uid, type}
   defaults: { attack_sec: 2.5, release_sec: 8 },
   regen: null,
 };
@@ -466,7 +471,7 @@ function renderTakes() {
       (m.credits ? `<br><span class="note">credits: ${esc(m.credits.replace(/\n/g, '; '))}</span>` : '') +
       `</div><div class="bt"><button data-play="${i}">▶ PLAY</button>` +
       (m.status === 'rejected' ? `<button class="dim" data-del="${i}">DELETE FILES</button>` : `<button class="go" data-ap="${i}">✓ APPROVE</button><button class="no" data-rej="${i}">✕ REJECT</button>`) +
-      `<button class="dim" data-again="${i}" title="ask the DAW to make this take again from its recorded settings">⟳ AGAIN</button></div></div>`;
+      `<button class="dim" data-again="${i}" title="make this take again from its recorded settings">⟳ AGAIN</button></div></div>`;
   }).join('');
 }
 $('showrej').addEventListener('change', () => { renderTakes(); });
@@ -887,7 +892,7 @@ $('shrink').addEventListener('click', () => shrinkAll());
 $('revoke').addEventListener('click', e => revoke(e.currentTarget));
 
 // ═══════════════════════════════════════════════════════════════════
-// MAKE TAKES: a request to the DAW (live over BroadcastChannel, or a new DAW tab with the request in the URL)
+// MAKE TAKES: composed, rendered and staged right here (temp_maker.js on a DAW engine of our own — no DAW tab)
 // ═══════════════════════════════════════════════════════════════════
 const RG = { n: 2, roles: ROLES.slice(), pads: 0, instruments: {} };
 Object.entries(SeqGen.STYLES).forEach(([id, s]) => $('r-style').add(new Option(s.name, id)));
@@ -958,69 +963,61 @@ $('make').addEventListener('click', () => {
   if (!ids.length) { msg('pick a track (or tick some) first.', true, 'makemsg'); return; }
   requestTakes(ids, RG.n, regenForm());
 });
-let bc = null; try { bc = new BroadcastChannel('mm_director'); } catch (e) {}
-const waiting = new Map();          // rid → resolve(ack)
+// One engine for the page, started on the first MAKE TAKES tap (its AudioContext needs the gesture); requests queue
+// and run one after another. Each take lands in review staging and shows up under TAKES as soon as it's written.
+const STUDIO = { E: null, busy: false, queue: [] };
 DIR.requests = {};
-function dawUrl(req) {
-  const o = req.opts || {}, q = new URLSearchParams({ director: req.ids.join(','), takes: String(req.takes), rid: req.rid });
-  if (o.style) q.set('style', o.style); if (o.mode) q.set('mode', o.mode); if (o.form) q.set('form', o.form);
-  if (o.energy) q.set('energy', String(o.energy)); if (o.density !== undefined) q.set('density', String(o.density)); if (o.bpm) q.set('bpm', String(o.bpm));
-  if (o.length && o.length.sec) q.set('sec', String(o.length.sec)); if (o.length && o.length.bars) q.set('bars', String(o.length.bars));
-  if (o.loop) q.set('loop', '1'); if (o.roles) q.set('roles', o.roles.join(',')); if (o.extraPads) q.set('pads', String(o.extraPads));
-  if (o.seed !== undefined) q.set('seed', String(o.seed)); if (o.description) q.set('desc', o.description);
-  for (const [k, v] of Object.entries(o.instruments || {})) q.set('inst.' + k, v);
-  return 'daw.html?' + q.toString();
+async function studio() {
+  if (!STUDIO.E) STUDIO.E = new DAW.Engine();
+  const E = STUDIO.E; await E.start();
+  if (!E.project) await E.load(DAW.Engine.newProject());
+  return E;
 }
-async function requestTakes(ids, takes, opts) {
+function studioUI(text, err) {
+  if (text != null) msg(text, err, 'makemsg');
+  $('make').disabled = STUDIO.busy; $('make').textContent = STUDIO.busy ? '⚄ MAKING…' : '⚄ MAKE TAKES';
+  $('b-daw').textContent = 'STUDIO: ' + (STUDIO.busy ? 'making' + (STUDIO.queue.length ? ' (+' + STUDIO.queue.length + ' queued)' : '') : 'ready');
+  $('b-daw').className = 'badge' + (STUDIO.busy ? ' warn' : '');
+}
+// → { rid, done: Promise<request> } — the request records made / failed / state
+function requestTakes(ids, takes, opts) {
   const rid = 'r' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
-  const req = { rid, ids, takes, opts, from: 'director', at: Date.now() };
+  const R = DIR.requests[rid] = { ids, takes, opts, made: 0, failed: 0, errors: [], state: 'queued' };
+  R.done = new Promise(res => { R.resolve = res; });
+  STUDIO.queue.push(rid);
+  if (STUDIO.busy) studioUI('queued: ' + takes + ' take(s) of ' + ids.join(', ') + ' — after the one in progress.');
+  runStudio();
+  return { rid, done: R.done };
+}
+async function runStudio() {
+  if (STUDIO.busy) return;
+  STUDIO.busy = true; studioUI();
   try {
-    localStorage.setItem('mm_director_req:' + rid, JSON.stringify(req));
-    for (let i = localStorage.length - 1; i >= 0; i--) { const k = localStorage.key(i); if (k && k.startsWith('mm_director_req:')) { try { if (Date.now() - (JSON.parse(localStorage.getItem(k)).at || 0) > 864e5) localStorage.removeItem(k); } catch (e) { localStorage.removeItem(k); } } }
-  } catch (e) {}
-  DIR.requests[rid] = { ids, takes, made: 0, failed: 0, state: 'sent' };
-  msg('asking the DAW for ' + takes + ' take(s) of ' + ids.join(', ') + ' …', false, 'makemsg');
-  const live = await new Promise(res => {
-    if (!bc) return res(false);
-    const to = setTimeout(() => { waiting.delete(rid); res(false); }, 900);
-    waiting.set(rid, () => { clearTimeout(to); res(true); });
-    bc.postMessage({ type: 'request', req, from: 'director' });
-  });
-  if (live) { DIR.requests[rid].state = 'live'; msg('the open DAW is making ' + takes + ' take(s) of ' + ids.join(', ') + ' — they appear here when they land.', false, 'makemsg'); }
-  else {
-    DIR.requests[rid].state = 'opened';
-    const w = window.open(dawUrl(req), 'mm_daw');
-    msg(w ? 'opened the DAW — tap START there; the takes appear here when they land.' : 'pop-up blocked — open ' + dawUrl(req) + ' yourself.', !w, 'makemsg');
-  }
-  return { rid, live };
+    while (STUDIO.queue.length) {
+      const rid = STUDIO.queue.shift(), R = DIR.requests[rid]; R.state = 'making'; studioUI();
+      const fail = text => { R.state = 'failed'; R.errors.push(text); studioUI(text, true); R.resolve(R); };
+      if (!AK.game.root) { fail('link the game folder first (⌂ LINK GAME FOLDER, top left) — takes are saved into it.'); continue; }
+      const list = R.ids.map(id => DIR.cat.find(c => c.id === id)).filter(Boolean);
+      if (!list.length) { fail('not in the catalog: ' + R.ids.join(', ')); continue; }
+      let E; try { E = await studio(); } catch (e) { fail('could not start the audio engine: ' + (e.message || e)); continue; }
+      const t0 = performance.now(), el = () => Math.round((performance.now() - t0) / 1000) + ' s';
+      try {
+        await TempMaker.makeTakes(E, list, { takes: R.takes, review: true, stems: true, opts: R.opts }, { briefs: DIR.briefs,
+          onEvent: ev => {
+            if (ev.type === 'progress') { studioUI(ev.text + ' · ' + el()); $('dawmsg').textContent = ev.text; }
+            else if (ev.type === 'take') {
+              if (ev.error) { R.failed++; R.errors.push(ev.id + ': ' + ev.error); } else R.made++;
+              if (ev.id && AK.game.root) rescanOne(ev.id);
+            }
+          } });
+        R.state = 'done';
+        studioUI(R.made + ' take(s) made in ' + el() + (R.failed ? ', ' + R.failed + ' failed: ' + R.errors.join('; ') : '') + (R.made ? ' — ▶ PLAY them under TAKES.' : ''), !!R.failed);
+        $('dawmsg').textContent = '';
+      } catch (e) { fail('making takes failed: ' + (e.message || e)); continue; }
+      R.resolve(R);
+    }
+  } finally { STUDIO.busy = false; studioUI(); }
 }
-// notices from the DAW: BroadcastChannel and the localStorage 'storage' event both work between file:// pages
-// in Chrome; whichever arrives first is used, the other is recognised by its uid
-const SEEN = new Set();
-function onNotice(ev, via) {
-  if (!ev || !ev.uid || ev.from === 'director') return;
-  DIR.netLog.push({ via, uid: ev.uid, type: ev.type });
-  if (DIR.netLog.length > 500) DIR.netLog.shift();
-  if (SEEN.has(ev.uid)) return; SEEN.add(ev.uid);
-  if (ev.type === 'ack') { const f = waiting.get(ev.rid); if (f) { waiting.delete(ev.rid); f(); } return; }
-  if (ev.type === 'pong') { $('b-daw').textContent = 'DAW: open' + (ev.busy ? ' · busy' : ''); $('b-daw').className = 'badge ok'; return; }
-  const R = DIR.requests[ev.rid];
-  if (ev.type === 'progress') { $('dawmsg').textContent = 'DAW: ' + ev.text; return; }
-  if (ev.type === 'take') {
-    if (R) { if (ev.error) R.failed++; else R.made++; }
-    $('dawmsg').textContent = ev.error ? 'DAW: a take of ' + ev.id + ' failed: ' + ev.error : 'DAW: new take of ' + ev.id + ' (seed ' + ev.seed + ')';
-    if (ev.id && AK.game.root) rescanOne(ev.id);
-    return;
-  }
-  if (ev.type === 'done') {
-    if (R) R.state = 'done';
-    $('dawmsg').textContent = 'DAW: done — ' + (ev.made || []).length + ' take(s) made' + ((ev.failed || []).length ? ', ' + ev.failed.length + ' failed' : '');
-    msg($('dawmsg').textContent.replace(/^DAW: /, 'the DAW is '), !!(ev.failed || []).length, 'makemsg');
-  }
-}
-if (bc) bc.onmessage = e => onNotice(e.data, 'bc');
-window.addEventListener('storage', e => { if (e.key === 'mm_director_event' && e.newValue) { try { onNotice(JSON.parse(e.newValue), 'storage'); } catch (err) {} } });
-function pingDaw() { if (bc) { $('b-daw').textContent = 'DAW: not open'; $('b-daw').className = 'badge'; bc.postMessage({ type: 'ping', from: 'director', rid: 'ping' }); } }
 
 // instrument picker: FORGE presets and PATCH BANK patches, read at runtime (both libraries grow)
 async function openPicker(role) {
@@ -1090,7 +1087,6 @@ window.addEventListener('resize', () => { drawSeek(true); drawCurve(); });
 // boot
 renderRegen(); forWho(); renderLayers();
 AK.game.restore(false).then(h => { folderBadge(); if (h) refresh(); }).catch(() => folderBadge());
-pingDaw();
 </script>
 </body>
 </html>
