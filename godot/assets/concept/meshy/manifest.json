@@ -2634,5 +2634,74 @@
     },
     "output": "godot/assets/3d/characters/heroes/petra.glb",
     "file_size_kb": 64251.6
+  },
+  {
+    "at": "2026-10-11T17:49:58+00:00",
+    "stage": "image",
+    "slug": "kai",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Kai like this: Kai in his grandmother's wool. He took the wool sweater off and hung it over the back of the kitchen chair. He was in a long-sleeve under it that had the thrift-store wear at the elbows that Lena recognized as the wear-pattern Margit's stuff had after it had been through a dryer too many times. He put on the long-sleeve thermal his grandmother had given him when she had been alive \u2014 the dark green one, that he had been wearing on the kind of evening he had been thinking about her on. Lena in the wool sweater and the coat, Kai in his flannel. Kai took off the boots. He took off the wax canvas. Kai came in at six oh-two with the crow on his shoulder. Kai's mother had told him in 2046, when Kai was eighteen: don't get into a conversation with that one.\nFull-body concept render of Kai, a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/kai/kai_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/kai/kai_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/kai/kai_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-11T17:51:56+00:00",
+    "stage": "image",
+    "slug": "kai",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Kai like this: Kai is half-asian, long dark hair. No Raven/crow on shoulder. Kai in his grandmother's wool.\n\nHe took the wool sweater off and hung it over the back of the kitchen chair. He was in a long-sleeve under it that had the thrift-store wear at the elbows that Lena recognized as the wear-pattern Margit's stuff had after it had been through a dryer too many times.\n\nHe put on the long-sleeve thermal his grandmother had given him when she had been alive \u2014 the dark green one, that he had been wearing on the kind of evening he had been thinking about her on.\n\nLena in the wool sweater and the coat, Kai in his flannel.Kai took off the boots. He took off the wax canvas.\n\nKai came in at six oh-two with the crow on his shoulder.\n\nKai's mother had told him in 2046, when Kai was eighteen: don't get into a conversation with that one. Additional direction: Kai, 30s, runs the Board Lords skate shop. A worn black cap, a faded hoodie with the sleeves cut off, wide skate pants, skate shoes, forearms inked, a skateboard held by the nose. Has known the SCUMM Machine since he was 13.\nFull-body concept render of Kai, a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/kai/kai_front_openai_gpt-image-2.5-sunburst_02.png",
+      "godot/assets/concept/meshy/kai/kai_side_openai_gpt-image-2.5-sunburst_02.png",
+      "godot/assets/concept/meshy/kai/kai_back_openai_gpt-image-2.5-sunburst_02.png"
+    ]
+  },
+  {
+    "at": "2026-10-11T17:55:06+00:00",
+    "stage": "mesh",
+    "slug": "kai",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a12c17-f1f4-73bd-8dd7-ed00a5bdfced",
+    "inputs": [
+      "godot/assets/concept/meshy/kai/front.png",
+      "godot/assets/concept/meshy/kai/side.png",
+      "godot/assets/concept/meshy/kai/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "smart-topology",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/kai.glb",
+    "file_size_kb": 59618.2
   }
 ]
