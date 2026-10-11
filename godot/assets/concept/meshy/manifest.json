@@ -3219,5 +3219,53 @@
     },
     "output": "godot/assets/3d/characters/heroes/roy.glb",
     "file_size_kb": 65784.4
+  },
+  {
+    "at": "2026-10-11T19:19:00+00:00",
+    "stage": "image",
+    "slug": "aud",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Aud like this: Aud was seventy-three. She was in the wool coat, the same brown leather boots, the same cap of white hair. Aud came at seven-oh-one \u2014 in the wool coat she had been in at the bakery yesterday. Aud at the counter, seventy-three years old, knows everyone by name. Additional direction: Aud, 73, runs the Missing Link bar in Smolvud. Tall, gaunt, white hair cropped close, a long black wool coat, a bar towel over one shoulder, dark trousers, boots. Says little.\nFull-body concept render of Aud, a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/aud/aud_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/aud/aud_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/aud/aud_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-11T19:22:39+00:00",
+    "stage": "mesh",
+    "slug": "aud",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a12c68-66b6-709c-88cc-e5715954157d",
+    "inputs": [
+      "godot/assets/concept/meshy/aud/front.png",
+      "godot/assets/concept/meshy/aud/side.png",
+      "godot/assets/concept/meshy/aud/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "smart-topology",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/aud.glb",
+    "file_size_kb": 42037.0
   }
 ]
