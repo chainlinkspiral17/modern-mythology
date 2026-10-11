@@ -127,7 +127,7 @@ suite('daw rec · count-in, punch, loop takes, latency', async t => {
       for (let k = 0; k < 3; k++) RT.key(a0.ctx + k * BAR * spt + 96 * spt, 60 + k);
       await RT.untilCtx(a0.ctx + 3 * BAR * spt + 0.1); await E.stopRecord(); E.stop();
       const tr = { get id() { return id; }, get patterns() { return E.track(id).patterns; }, get clips() { return E.track(id).clips; } };   // undo swaps the track objects
-      const g = () => E.takeGroups(E.track(id))[0], out = { n: g().takes.length, names: g().takes.map(k => k.name), active: g().active.name, plays: RT.notes(tr.id) };
+      const g = () => E.takeGroups(E.track(id))[0], out = { n: g().takes.length, names: g().takes.map(k => k.name), active: g().active.name, plays: RT.notes(tr.id), spt };
       await RT.sleep(400);                                          // the recording's undo step lands
       E.pickTake(tr.id, g().takes[0].id); out.picked = RT.notes(tr.id);
       await RT.sleep(400); await undo(); out.undone = RT.notes(tr.id); await redo(); out.redone = RT.notes(tr.id);
@@ -135,11 +135,14 @@ suite('daw rec · count-in, punch, loop takes, latency', async t => {
       E.keepOnlyActive(tr.id, g().key); out.afterKeep = [g().takes.length, Object.keys(tr.patterns).length, tr.clips.length];
       return out;
     });
+    // the pitch says which take plays; timing is unquantized at 300 BPM, where the MIDI→audio clock mapping's
+    // jitter under load (seen: 15 ms after the suite's long render = 7 ticks) is several ticks — allow 20 ms
+    const tol = Math.ceil(0.02 / r.spt), is = (got, n, msg) => { t.eq(got.map(x => x[0]), [n], msg); t.near(got[0][1], 96, tol, msg + ' (ticks)'); };
     t.eq([r.n, r.names, r.active], [3, ['take 1', 'take 2', 'take 3'], 'take 3']);
-    t.eq(r.plays, [[62, 96]], 'take 3 plays');
-    t.eq(r.picked, [[60, 96]], 'picking take 1 changes what plays');
-    t.eq([r.undone, r.redone], [[[62, 96]], [[60, 96]]], 'undo / redo the pick');
-    t.eq(r.afterDel, [2, 'take 3', [[62, 96]]], 'deleting the playing take hands over to the newest other');
+    is(r.plays, 62, 'take 3 plays');
+    is(r.picked, 60, 'picking take 1 changes what plays');
+    is(r.undone, 62, 'undo the pick'); is(r.redone, 60, 'redo the pick');
+    t.eq(r.afterDel.slice(0, 2), [2, 'take 3'], 'deleting the playing take hands over to the newest other'); is(r.afterDel[2], 62, 'after delete');
     t.eq(r.afterKeep, [1, 1, 1], 'keep only active: one take, one pattern, one clip');
   });
 
