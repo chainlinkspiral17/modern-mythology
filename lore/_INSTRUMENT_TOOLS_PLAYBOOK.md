@@ -443,6 +443,71 @@ those tools.
   - The registry has no `cc` field yet, so X0X users just answer NO
     on the CC step.
 
+### 2026-10-11 — DAW performance tools: scale lock, chords, arp, groove, STEP view
+
+- `daw_perf.js` (global `DawPerf`) holds the per-track live chain:
+  keys → scale lock → chord → arp → device. Settings live in
+  `track.perf`, the project groove in `project.groove`. Everything is
+  optional; a project without them takes the old code paths untouched.
+  Theory comes from `seqgen.js` (`SCALES`, `deg2midi`, `rng`, `hash`).
+  Never copy the scale tables.
+- **Record what you hear.** Every note the chain plays goes through
+  `engine.perfRecord(tr, n, vel, on, when, {generated})`:
+  - arp steps are already on the grid, so they get no latency
+    correction;
+  - chord / scale-locked notes follow the key, so they get the usual
+    `latencyMs`.
+
+  The recording code owns `recordMidi` and may replace the hook. With a
+  chain on a hardware track, the processed notes go out to the synth,
+  so set its local control off.
+- **Arp clock.**
+  - While the transport plays, steps come out of the engine's own
+    look-ahead windows (`scheduleRange` → `Live.range`), so loops,
+    tempo and groove follow for free.
+  - A first key also catches up the steps between now and the
+    scheduled horizon, after a 15 ms chord window.
+  - Stopped, a 25 ms timer free-runs the arp at the project tempo from
+    the first key.
+  - The free → transport hand-over skips any step within half a step
+    of the last one played.
+- **Live = offline needs pure functions, not counters.**
+  - The clip chain (`processNotes`) is a pure function of the pattern,
+    cached per pattern and settings signature.
+  - Step probability and humanize are keyed by (seed, track id,
+    absolute tick, note), never by "how many notes so far".
+
+  Live notes then matched offline to < 1e-6 s and the same velocities.
+- **Proving "unchanged" needs the right oracle.** Chromium offline
+  renders are not sample-reproducible, not even the old engine against
+  itself:
+  - a bare oscillator differs by about 1 float ULP (6e-8);
+  - FORGE differs by about 1e-5, and also reaps voices on wall-clock
+    `setTimeout`.
+
+  So the suite compares the device event stream (every noteOn /
+  noteOff: note, velocity, time, channel) against the engine from
+  before PERF (`git show <commit that added daw_perf.js>^`), and holds
+  the audio to that noise floor.
+- **BasicSynth bug.** `noteOff(n, when, immediate)` received the
+  engine's MIDI channel as `immediate`, so every note was cut the
+  moment it was scheduled; basic-synth bounces were silent. The
+  signature is now `(n, when, ch, immediate)`. When spying on a
+  BasicSynth, ignore its own time-less retrigger `noteOff`.
+- **STEP view.**
+  - It draws the same pattern notes as the piano roll; a note shows in
+    the step its start rounds to.
+  - `pattern.steps` keeps the resolution; `note.p` is the step's
+    probability.
+  - Tap toggles a step, a vertical drag sets velocity, and long-press
+    or right-click opens VEL / LEN / PROB.
+  - Cells and panel buttons are ≥ 36 px on every pointer.
+- Open items:
+  - A note pushed ahead of the very first tick of a bounce (negative
+    role offset or humanize) starts at 0 offline; live plays it early.
+  - Arp latch, chord learn and the PERF chain are unverified with the
+    FM-1 keys on the Deck.
+
 ## TEMPLATE
 
 ```

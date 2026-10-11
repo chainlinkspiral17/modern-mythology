@@ -41,7 +41,7 @@ touching code:
    those helpers. Every
    FM-1 firmware fact lives in `godot/tools/fm1_firmwares.js`.
 8. `lore/_AUDIO_CAPTURE_PLAYBOOK.md` — FIELD RECORDER, TAPE STUDIO,
-   the DAW (`daw.html` / `daw_engine.js` / `daw_fx.js` / `seqgen.js`), `field_ingest.py`,
+   the DAW (`daw.html` / `daw_engine.js` / `daw_fx.js` / `daw_perf.js` / `seqgen.js`), `field_ingest.py`,
    the shared `audio_kit.js`, and how recorded
    audio reaches the game (`.wav` next to a catalog track's `src`;
    never hand-edit `music_catalog.json`). Read before touching any of

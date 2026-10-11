@@ -18,6 +18,16 @@
  *               'cc.<n>'              MIDI CC n through the device's cc() on the track's channel
  *   track.autoOpen? — automation lanes shown under the track. Every new field is optional: old
  *   projects load and render exactly as before.
+ *   PERF (daw_perf.js — its header has the full field list):
+ *     track.perf?    { scale, chord, arp, onClips, seed, groove, nudge }   the live chain per track:
+ *                    keys → scale lock → chord → arp → device; with onClips also the track's clip notes
+ *     project.groove? { on, type: mpc16|shuffle8|triplet|flat, swing, roles{role: ms}, accent, accentDepth,
+ *                    human{ms, vel, seed} }   replaces project.swing while on; absent / on:false → the old
+ *                    swingDelay path, untouched (same device events as before PERF)
+ *     note.p?        step probability 0..1, decided per occurrence from (track.perf.seed, track id, tick, note)
+ *     pattern.steps? the STEP view's resolution (8|12|16|24|32), display only
+ *   Live scheduleRange and renderOffline share _playCtx(track): the notes a pattern plays (PERF chain on
+ *   clips), the groove and the probability gate — the same notes, times and velocities in both.
  *
  * Strip: in → [inserts] → post (sidechain tap, pre-fader) → duck → pan → vol → on (mute/solo)
  *        → master + sendA (reverb bus) + sendB (delay bus). Built by _buildStrip() for live
@@ -39,6 +49,13 @@
  *   autoLanes() → the lanes that drive something · recordAuto(stripId, key, value) / recordAutoEnd(…)
  *   (a mixer slider moved while recording an armed track writes a lane, touch mode).
  *
+ * PERF API: liveNote(trackId, n, vel, on) runs the track's chain when track.perf is on (perfActive(tr)) ·
+ *   perfLive (DawPerf.Live, lazy) · perfReset(trackId) after a settings change · swingDelay(tick, tr?)
+ *   (with a track and a groove on: that track's groove offset) ·
+ *   perfRecord(tr, n, vel, on, when, {generated}) — THE RECORDING HOOK: every note the chain plays (what you
+ *   hear) passes through it; `when` is the AudioContext time it sounds, generated = arp step (already on the
+ *   grid, no latency correction). The default records via recordMidi; recording code may replace it.
+ *
  * Timing: a 25 ms timer schedules 120 ms ahead in AudioContext time; Web
  * Audio devices get exact times, the emulator dispatches messages on time,
  * hardware MIDI goes out with performance-time stamps.
@@ -56,6 +73,7 @@
     get SMF() { return typeof SMF !== 'undefined' ? SMF : root.SMF; },
     get PatchBank() { return typeof PatchBank !== 'undefined' ? PatchBank : root.PatchBank; },
     get DawFX() { return typeof DawFX !== 'undefined' ? DawFX : root.DawFX; },
+    get DawPerf() { return typeof DawPerf !== 'undefined' ? DawPerf : root.DawPerf; },
   };
 
   // ── automation helpers ────────────────────────────────────────────
@@ -98,10 +116,10 @@
       const f = c.createBiquadFilter(); f.frequency.value = this.state.cutoff; o.connect(f); f.connect(g);
       g.gain.setValueAtTime(0, when); g.gain.linearRampToValueAtTime(v * 0.3, when + 0.01);
       o.start(when);
-      this.noteOff(n, undefined, true);
+      this.noteOff(n, undefined, undefined, true);
       this.voices.set(n, { o, g });
     }
-    noteOff(n, when = this.ctx.currentTime, immediate) {
+    noteOff(n, when = this.ctx.currentTime, ch, immediate) {     // (n, when, channel) like every device: the channel used to land in `immediate` and cut each note at once
       const v = this.voices.get(n); if (!v) return; this.voices.delete(n);
       const t = immediate ? this.ctx.currentTime : when;
       v.g.gain.cancelScheduledValues(t); v.g.gain.setTargetAtTime(0, t, this.state.rel / 4); v.o.stop(t + this.state.rel * 2);
@@ -257,6 +275,7 @@
       for (const id of [...this.devices.keys()]) this.removeDeviceRuntime(id);
       for (const id of [...this.strips.keys()]) this.removeStrip(id);
       this.project = project;
+      if (this._perf) this._perf.resetAll();
       for (const d of project.devices) await this.createDeviceRuntime(d);
       for (const t of project.tracks) if (t.kind === 'audio') this.ensureStrip(t.id, t.mix || (t.mix = this.defaultMix()));
       this.applyMaster(); this.applyMix();
@@ -317,6 +336,7 @@
       return t;
     }
     removeTrack(id) {
+      this.perfReset(id);
       this.project.tracks = this.project.tracks.filter(t => t.id !== id);
       this.removeStrip(id); this.emit('project');
     }
@@ -487,10 +507,25 @@
       if (ts && ts.performanceTime) return ts.performanceTime + (ctxTime - ts.contextTime) * 1000;
       return performance.now() + (ctxTime - this.ctx.currentTime) * 1000;
     }
-    swingDelay(tick) {
+    swingDelay(tick, tr) {
+      if (tr && this.project.groove) { const g = this._groove(tr); if (g) return g.delay(tick); }   // a groove replaces the swing slider
       const s = this.project.swing || 0; if (!s) return 0;
       const pos = ((tick % (PPQ / 2)) + PPQ / 2) % (PPQ / 2);
       return Math.abs(pos - PPQ / 4) <= 2 ? s * (PPQ / 4) * 0.5 * this.spt() : 0;
+    }
+    // ── PERF: groove, clip chain, step probability (daw_perf.js) ────
+    // project.groove (on) → { delay(tick), note(at, offTick, n, vel) → {on, off, v} } for this track; null → the
+    // old swing path, untouched (a project without a groove feeds its devices exactly the events it did before PERF)
+    _groove(tr) { const PF = G.DawPerf; return PF && this.project.groove ? PF.groove(this.project, tr, this.spt()) : null; }
+    // per track, for one scheduling pass: the notes a pattern plays (the PERF chain when track.perf.onClips),
+    // the groove, and the step-probability gate. Live scheduleRange and renderOffline both use it.
+    _playCtx(tr) {
+      const PF = G.DawPerf, P = this.project, clips = !!(PF && PF.clipsActive(tr.perf)), seed = (tr.perf && tr.perf.seed) || 1;
+      return {
+        groove: this._groove(tr),
+        notes: p => (clips ? PF.clipNotes(p, tr.perf, P) : p.notes),
+        plays: (base, n) => (PF ? PF.plays(seed, tr.id, base + (n.pt ?? n.t), n.pn ?? n.n, n.p) : true),
+      };
     }
 
     // ── transport ───────────────────────────────────────────────────
@@ -505,6 +540,7 @@
       this._auto = { fresh: true, cancel: this.ctx.currentTime, cache: new Map(), seen: new Set() };
       this._recAuto = new Map();
       this.sendClock('start', this.anchor.ctx);
+      if (this._perf) this._perf.onPlay();
       this.syncDevices(this.anchor.ctx);
       this.startCovering(startTick, this.anchor.ctx);
       this.timer = setInterval(() => this.schedule(), TICK_MS);
@@ -523,12 +559,13 @@
       if (!this.ctx) return;
       if (this.recording) this.stopRecord();
       if (this.timer) { clearInterval(this.timer); this.timer = null; }
-      const now = this.ctx.currentTime;
+      const now = this.ctx.currentTime, wasPlaying = this.playing;
       if (this.playing) { this._stopTick = this.tickNow(); this.sendClock('stop', now); }
       this.playing = false;
       for (const inst of this.devices.values()) { try { inst.allOff(now); } catch (e) {} }
       for (const s of this.sources) { try { s.stop(now + 0.02); } catch (e) {} }
       this.sources = [];
+      if (this._perf && wasPlaying) this._perf.onStop(now);     // held / latched arps free-run from here
       this._autoRelease(now);
       this.emit('transport', { playing: false });
     }
@@ -569,6 +606,7 @@
       for (const tr of this.activeTracks()) {
         if (tr.kind !== 'midi') continue;
         const inst = this.devices.get(tr.deviceId); if (!inst) continue;
+        const pc = this._playCtx(tr), gr = pc.groove;
         for (const c of tr.clips) {
           const p = tr.patterns[c.pid]; if (!p || !p.notes.length) continue;
           const plen = p.lenBars * BAR, cs = c.bar * BAR, ce = cs + (c.bars || p.lenBars) * BAR;
@@ -576,14 +614,22 @@
           // windows are fractional ticks: "- 1" here dropped the notes on a loop start when the window after
           // the wrap was under one tick long
           const rep0 = Math.max(0, Math.floor((t0 - cs) / plen)), rep1 = Math.floor((Math.min(t1, ce) - cs - 1e-6) / plen);
+          const notes = pc.notes(p);
           for (let r = rep0; r <= rep1; r++) {
             const base = cs + r * plen;
-            for (const n of p.notes) {
+            for (const n of notes) {
               const at = base + n.t;
               if (at < t0 || at >= t1 || at >= ce) continue;
-              const when = this.timeOf(at) + this.swingDelay(at);
-              const off = this.timeOf(Math.min(at + n.d, ce)) + this.swingDelay(at + n.d) - 0.002;
-              const vel = Math.max(0.02, Math.min(1, n.v * (tr.vel ?? 1)));
+              if (n.p !== undefined && !pc.plays(base, n)) continue;          // step probability (seeded)
+              let when, off, vel;
+              if (!gr) {
+                when = this.timeOf(at) + this.swingDelay(at);
+                off = this.timeOf(Math.min(at + n.d, ce)) + this.swingDelay(at + n.d) - 0.002;
+                vel = Math.max(0.02, Math.min(1, n.v * (tr.vel ?? 1)));
+              } else {
+                const offT = Math.min(at + n.d, ce), q = gr.note(at, offT, n.n, n.v * (tr.vel ?? 1));
+                when = this.timeOf(at) + q.on; off = this.timeOf(offT) + q.off - 0.002; vel = q.v;
+              }
               try { inst.noteOn(n.n, vel, when, tr.channel); inst.noteOff(n.n, Math.max(when + 0.005, off), tr.channel); } catch (e) { /* device mid-reload */ }
             }
           }
@@ -595,6 +641,7 @@
       }
       if (P.metro) for (let b = Math.ceil(t0 / PPQ) * PPQ; b < t1; b += PPQ) this.clickAt(this.timeOf(b), b % BAR === 0);
       this.clockRange(t0, t1);
+      if (this._perf) this._perf.range(t0, t1);              // live arps on the transport grid
       if (this._auto) {
         const A = this._auto;
         this._autoRange({ live: true, timeOf: tk => this.timeOf(tk), strip: id => this.strips.get(id), inst: id => this.devices.get(id), cache: A.cache, seen: A.seen, fresh: A.fresh, cancel: A.cancel }, t0, t1);
@@ -798,8 +845,21 @@
       const tr = this.track(trackId); if (!tr || tr.kind !== 'midi') return;
       const inst = this.devices.get(tr.deviceId); if (!inst) return;
       const now = this.ctx.currentTime;
+      if (this.perfActive(tr)) { this.perfLive.input(tr, note, vel, on, now); return; }   // scale lock → chord → arp → device
       if (on) inst.noteOn(note, vel, now, tr.channel); else inst.noteOff(note, now, tr.channel);
       if (this.recording && this.playing && tr.arm) this.recordMidi(tr, note, vel, on, now - this.latencyMs / 1000);
+    }
+    // ── PERF live chain (daw_perf.js) ───────────────────────────────
+    get perfLive() { if (!this._perf && G.DawPerf) this._perf = new G.DawPerf.Live(this); return this._perf || null; }
+    perfActive(tr) { const PF = G.DawPerf; return !!(PF && tr && (PF.active(tr.perf) || (this._perf && this._perf.learning(tr.id)))); }
+    perfReset(trackId) { if (this._perf) this._perf.reset(trackId); }
+    // THE RECORDING HOOK. Every note the PERF chain plays — what you hear — comes through here:
+    //   tr, n, vel (0 on note-off), on, when = the AudioContext time it sounds,
+    //   info.generated = true for arp steps (already on the grid: no latency correction),
+    //                    false for notes that follow the player's key (scale lock / chord: same timing as the key).
+    // The default records into the armed track's take through recordMidi; recording code may replace this method.
+    perfRecord(tr, n, vel, on, when, info) {
+      if (this.recording && this.playing && tr.arm) this.recordMidi(tr, n, vel, on, info && info.generated ? when : when - this.latencyMs / 1000);
     }
     recordMidi(tr, note, vel, on, when) {
       const take = this.recTakes.get(tr.id); if (!take) return;
@@ -949,13 +1009,21 @@
       for (const tr of playing) {
         if (tr.kind === 'midi') {
           const inst = insts.get(tr.deviceId); if (!inst) continue;
+          const pc = this._playCtx(tr), gr = pc.groove;      // the same PERF clip chain / groove / probability as live
           for (const c of tr.clips) {
             const p = tr.patterns[c.pid]; if (!p || !p.notes.length) continue;
             const plen = p.lenBars * BAR, cs = c.bar * BAR, ce = cs + (c.bars || p.lenBars) * BAR;
             if (ce <= t0 || cs >= t1) continue;
-            for (let base = cs; base < ce; base += plen) for (const n of p.notes) {
+            const pnotes = pc.notes(p);
+            for (let base = cs; base < ce; base += plen) for (const n of pnotes) {
               const on = base + n.t; if (on < t0 || on >= t1 || on >= ce) continue;
+              if (n.p !== undefined && !pc.plays(base, n)) continue;
               const offT = Math.min(on + n.d, ce, loop ? t1 : Infinity);
+              if (gr) {
+                const q = gr.note(on, Math.min(on + n.d, ce), n.n, n.v * (tr.vel ?? 1)), w = Math.max(0, (on - t0) * spt + q.on);
+                inst.noteOn(n.n, q.v, w, tr.channel); inst.noteOff(n.n, Math.max(w + 0.005, (offT - t0) * spt + q.off - 0.002), tr.channel);
+                notes++; continue;
+              }
               const vel = Math.max(0.02, Math.min(1, n.v * (tr.vel ?? 1)));
               inst.noteOn(n.n, vel, at(on), tr.channel); inst.noteOff(n.n, Math.max(at(on) + 0.005, at(offT) - 0.002), tr.channel);
               notes++;

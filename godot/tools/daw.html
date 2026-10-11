@@ -108,7 +108,33 @@
   .kv3 input[type=range] { width: 100%; }
   .kv3 .pv { color: var(--gold-hi); font-size: 9px; text-align: right; white-space: nowrap; overflow: hidden; }
   .kv3 select { font-size: 10px; }
+  /* PERF panel (per track: scale lock · chord · arp · groove) + STEP view — every control ≥ 36 px for fingers */
+  .th .b button.perf { min-width: 30px; min-height: 30px; font-size: 10px; }
+  .th .b button.perf.on { background: var(--emerald); color: var(--ink); border-color: var(--emerald-hi); }
+  #perfpanel { position: fixed; top: 64px; right: 6px; width: 400px; max-width: calc(100vw - 12px); max-height: calc(100vh - 72px); overflow-y: auto; background: var(--bg-0); border: 1px solid var(--gold); z-index: 55; display: none; padding: 6px 10px 12px; box-shadow: 0 8px 28px rgba(0,0,0,0.8); }
+  #perfpanel.show { display: block; }
+  .pf .ph { display: flex; align-items: center; gap: 6px; position: sticky; top: -6px; background: var(--bg-0); padding: 4px 0; z-index: 1; }
+  .pf .ph b { flex: 1; color: var(--gold-hi); font-weight: normal; letter-spacing: 0.1em; }
+  .pf h3 { display: flex; align-items: center; gap: 6px; margin: 10px 0 3px; color: var(--gold); font-size: 11px; letter-spacing: 0.14em; font-weight: normal; border-bottom: 1px solid var(--rule); padding-bottom: 3px; }
+  .pf h3 span { flex: 1; }
+  .pf button, .stepbar button, #stepedit button { min-height: 36px; min-width: 36px; padding: 4px 8px; font-size: 11px; }
+  .pf .seg { display: flex; flex-wrap: wrap; gap: 3px; margin: 3px 0; align-items: center; }
+  .pf .seg > i { color: var(--text-dim); font-style: normal; min-width: 54px; font-size: 10px; }
+  .pf .sl { display: grid; grid-template-columns: 70px 1fr 58px; gap: 4px; align-items: center; color: var(--text-dim); font-size: 10px; }
+  .pf .sl input[type=range] { width: 100%; min-height: 36px; }
+  .pf .sl .pv { color: var(--gold-hi); text-align: right; }
+  .pf input[type=text] { min-height: 36px; font-size: 12px; }
+  .pf .dis { opacity: 0.45; }
+  .stepbar { display: none; gap: 4px; align-items: center; flex-wrap: wrap; }
+  .stepbar.on { display: flex; }
+  #stepcv { display: none; }
+  #stepedit { position: fixed; z-index: 58; display: none; background: var(--bg-0); border: 1px solid var(--gold); padding: 6px 8px; box-shadow: 0 6px 20px rgba(0,0,0,0.8); width: 300px; }
+  #stepedit.show { display: block; }
+  #stepedit .seg { display: flex; flex-wrap: wrap; gap: 3px; align-items: center; margin: 3px 0; }
+  #stepedit .seg i { color: var(--text-dim); font-style: normal; min-width: 40px; }
+  #stepedit .seg b { color: var(--gold-hi); font-weight: normal; min-width: 56px; text-align: center; }
   @media (any-pointer: coarse) {
+    .th .b button.perf { min-width: 36px; min-height: 36px; }
     .fx button, .fxbox button, .ah button { min-height: 28px; min-width: 30px; padding: 4px 9px; }
     .fxbox select, .ah select, .aadd select, .kv3 select { min-height: 28px; }
   }
@@ -157,9 +183,11 @@
         <button class="dim" id="r-human">HUMANIZE</button><button class="dim" id="r-clear">CLEAR</button>
         <button class="dim" id="r-regen" title="re-roll this part with the generator">⚄ RE-ROLL</button>
         <button class="dim" id="r-zout" title="zoom out">ZOOM −</button><button class="dim" id="r-zin" title="zoom in (bigger notes for fingers)">ZOOM +</button>
-        <span class="note">click/tap: add · drag: move · edge: length · right-click / long-press: delete · drag empty: scroll</span>
+        <button class="dim" id="r-step" title="step sequencer view of this clip (same notes as the piano roll)">▦ STEP</button>
+        <span class="stepbar" id="stepbar"><button class="dim" id="s-res" title="steps per bar">16 / BAR</button><button class="dim" id="s-len" title="length of new steps">LEN 1</button><button class="dim" id="s-octd" title="rows an octave down">OCT −</button><button class="dim" id="s-octu" title="rows an octave up">OCT +</button><button class="dim" id="s-seed" title="new seed for step probability (same seed → same result, live and bounced)">⚄ PROB</button></span>
+        <span class="note" id="rollhint">click/tap: add · drag: move · edge: length · right-click / long-press: delete · drag empty: scroll</span>
       </div>
-      <div class="rollwrap" id="rollwrap"><canvas id="rollcv"></canvas></div>
+      <div class="rollwrap" id="rollwrap"><canvas id="rollcv"></canvas><canvas id="stepcv"></canvas></div>
     </div>
   </div>
 
@@ -249,6 +277,8 @@
   <span><kbd>␣</kbd> play/stop · <kbd>⇧R</kbd> record · <kbd>L</kbd> loop · <kbd>Ctrl D</kbd> duplicate clip · <kbd>Del</kbd> delete · <kbd>Z</kbd>–<kbd>M</kbd> <kbd>Q</kbd>–<kbd>U</kbd> play (<kbd>⇧Z</kbd>/<kbd>⇧X</kbd> octave)</span>
 </footer>
 
+<div id="perfpanel" class="pf"></div>
+<div id="stepedit"></div>
 <div class="modal" id="modal"><div class="box"><div class="mh"><b style="color:var(--gold-hi)" id="modaltitle">EDITOR</b><button class="dim" id="modalclose">✕ CLOSE</button></div><div class="mb" id="modalbody"></div></div></div>
 
 <script src="fm1_firmwares.js"></script>
@@ -268,6 +298,7 @@
 <script src="dx7_synth.js"></script>
 <script src="patch_bank.js"></script>
 <script src="daw_fx.js"></script>
+<script src="daw_perf.js"></script>
 <script src="daw_engine.js"></script>
 <script>
 "use strict";
@@ -322,7 +353,7 @@ function badges() {
 window.addEventListener('midiinput-firmware', () => P && badges());
 window.addEventListener('midiinput-status', () => P && badges());
 
-E.on('project', () => { if (!P) return; syncTransportUI(); renderHeads(); drawArr(); drawRoll(); renderDevices(); renderMixer(); saveSoon(); });
+E.on('project', () => { if (!P) return; syncTransportUI(); renderHeads(); drawArr(); drawRoll(); renderDevices(); renderMixer(); renderPerf(); saveSoon(); });
 E.on('notes', () => { drawRoll(); drawArr(); saveSoon(); });
 E.on('auto', d => { if (d && d.created) renderHeads(); saveSoon(); });
 E.on('error', m => msg('g-msg', m, true));
@@ -413,13 +444,14 @@ function renderHeads() {
     d.className = 'th' + (sel.trackId === t.id ? ' sel' : '');
     const nAuto = (t.auto || []).length;
     d.innerHTML = `<div class="c" style="background:${t.color}"></div><div class="nm"><b>${esc(t.name)}</b><i>${esc(trackDevLabel(t))}</i></div>
-      <div class="b"><button class="dim auto${t.autoOpen ? ' on' : ''}" data-a="auto" title="automation lanes">A${nAuto ? nAuto : ''}</button><button class="dim${t.mute ? ' on' : ''}" data-a="mute">M</button><button class="dim${t.solo ? ' on' : ''}" data-a="solo">S</button><button class="dim arm${t.arm ? ' on' : ''}" data-a="arm">●</button><button class="dim" data-a="del">✕</button></div>`;
+      <div class="b">${t.kind === 'midi' ? `<button class="dim perf${DawPerf.active(t.perf) || (t.perf && t.perf.groove != null && t.perf.groove !== 1) ? ' on' : ''}${PERF.trackId === t.id ? ' sel' : ''}" data-a="perf" title="PERF: scale lock · chord · arp · groove">P</button>` : ''}<button class="dim auto${t.autoOpen ? ' on' : ''}" data-a="auto" title="automation lanes">A${nAuto ? nAuto : ''}</button><button class="dim${t.mute ? ' on' : ''}" data-a="mute">M</button><button class="dim${t.solo ? ' on' : ''}" data-a="solo">S</button><button class="dim arm${t.arm ? ' on' : ''}" data-a="arm">●</button><button class="dim" data-a="del">✕</button></div>`;
     d.addEventListener('click', e => {
       const a = e.target.dataset.a;
       if (a === 'mute') t.mute = !t.mute;
       else if (a === 'solo') t.solo = !t.solo;
       else if (a === 'arm') t.arm = !t.arm;
       else if (a === 'auto') t.autoOpen = !t.autoOpen;
+      else if (a === 'perf') { sel.trackId = t.id; openPerf(PERF.trackId === t.id ? null : t.id); renderHeads(); drawArr(); drawRoll(); renderDevDetail(); return; }
       else if (a === 'del') { if (confirm('Delete track "' + t.name + '"?')) { E.removeTrack(t.id); if (sel.trackId === t.id) sel = { trackId: null, clip: -1 }; } return; }
       else { sel.trackId = t.id; if (sel.clip >= t.clips.length) sel.clip = -1; }
       renderHeads(); drawArr(); drawRoll(); renderDevDetail(); saveSoon();
@@ -707,6 +739,11 @@ function rollRows(t) {
   const out = []; for (let n = roll.hi; n >= roll.lo; n--) out.push(n); return out;
 }
 function drawRoll() {
+  const stepOn = STEP.on;
+  $('rollcv').style.display = stepOn ? 'none' : 'block'; $('stepcv').style.display = stepOn ? 'block' : 'none';
+  $('stepbar').classList.toggle('on', stepOn); $('r-step').classList.toggle('on', stepOn);
+  $('rollhint').textContent = stepOn ? 'tap: step on/off · drag a step up/down: velocity · long-press / right-click: velocity · length · probability' : 'click/tap: add · drag: move · edge: length · right-click / long-press: delete · drag empty: scroll';
+  if (stepOn) return drawStep();
   const cv = $('rollcv'), wrap = $('rollwrap'), r = window.devicePixelRatio || 1, cc = P && curClip();
   if (!cc) {
     cv.style.width = wrap.clientWidth + 'px'; cv.style.height = '60px'; cv.width = wrap.clientWidth * r; cv.height = 60 * r;
@@ -864,6 +901,266 @@ $('r-clear').addEventListener('click', () => { if (confirm('Clear every note in 
 $('r-regen').addEventListener('click', () => { const cc = curClip(); if (cc && cc.t.role && song) reroll(cc.t.role); else msg('g-msg', 'RE-ROLL works on generated parts (GENERATE first).', true); });
 
 // ═══════════════════════════════════════════════════════════════════
+// PERF panel (per track, from the header's P): scale lock → chord → arp → device, + groove (daw_perf.js)
+// Settings live in track.perf / project.groove; every edit goes through saveSoon() → undoable.
+// ═══════════════════════════════════════════════════════════════════
+const PERF = { trackId: null, learning: false };
+const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII'];
+const noteName = n => SeqGen.NOTE_NAMES[((n % 12) + 12) % 12] + (Math.floor(n / 12) - 1);
+const PF_FMT = { pct: v => Math.round(v * 100) + '%', ms: v => (v > 0 ? '+' : '') + Math.round(v) + ' ms', msu: v => Math.round(v) + ' ms', vel: v => '±' + Math.round(v * 100) + '%' };
+function openPerf(id) {
+  if (PERF.learning && PERF.trackId && E.perfLive) E.perfLive.learnChord(PERF.trackId, null);
+  PERF.trackId = id; PERF.learning = false; renderPerf();
+}
+function setPath(o, path, v) { const ks = path.split('.'); for (let i = 0; i < ks.length - 1; i++) o = o[ks[i]] = o[ks[i]] && typeof o[ks[i]] === 'object' ? o[ks[i]] : {}; o[ks[ks.length - 1]] = v; }
+const perfSet = (t, path, v) => setPath(t.perf || (t.perf = {}), path, v);
+const grooveSet = (path, v) => setPath(P.groove || (P.groove = { on: true, type: 'mpc16', swing: 0.58 }), path, v);
+function perfChanged(t) { E.perfReset(t.id); renderPerf(); renderHeads(); drawRoll(); saveSoon(); }
+function swingHint() {
+  const on = !!(P && P.groove && P.groove.on !== false);
+  $('swing').style.opacity = on ? 0.35 : ''; $('swing').title = on ? 'a groove is on (PERF panel): it replaces this swing' : '';
+}
+function renderPerf() {
+  const box = $('perfpanel'), t = P && PERF.trackId ? E.track(PERF.trackId) : null;
+  if (P) swingHint();
+  if (!t || t.kind !== 'midi') { PERF.trackId = null; box.classList.remove('show'); box.innerHTML = ''; return; }
+  const f = DawPerf.norm(t.perf), G0 = P.groove, g = DawPerf.grooveNorm(G0), gOn = !!(G0 && G0.on !== false);
+  const sc = DawPerf.scaleOf(P), keyName = SeqGen.NOTE_NAMES[P.key] + ' ' + P.mode;
+  const seg = (attr, path, cur, items) => items.map(([v, label]) => `<button class="${String(cur) === String(v) ? 'on' : 'dim'}" data-${attr}="${path}" data-v="${v}">${label}</button>`).join('');
+  const tog = (path, on, label) => `<button class="${on ? 'on' : 'dim'}" data-p="${path}" data-v="${on ? 0 : 1}" data-bool="1">${label || (on ? 'ON' : 'OFF')}</button>`;
+  const sl = (attr, path, val, min, max, step, label, fmt) => `<div class="sl"><span>${label}</span><input type="range" data-${attr}="${path}" data-fmt="${fmt}" min="${min}" max="${max}" step="${step}" value="${val}"><span class="pv">${PF_FMT[fmt](val)}</span></div>`;
+  const chords = ROMAN.map((r, d) => { const root = SeqGen.deg2midi(P.key, sc, d, 3); return r + ' ' + DawPerf.chordOf(root, f.chord, P.key, sc).map(noteName).join('·'); }).join('  ');
+  box.innerHTML = `
+    <div class="ph"><b>PERF · ${esc(t.name)}</b><button class="dim" data-x="close" title="close">✕</button></div>
+    <div class="note">live keys run scale lock → chord → arp → device. What you hear is what records.</div>
+    <h3><span>SCALE LOCK · ${esc(keyName)}</span>${tog('scale.on', f.scale.on)}</h3>
+    <div class="seg${f.scale.on ? '' : ' dis'}">${seg('p', 'scale.mode', f.scale.mode, [['nearest', 'NEAREST'], ['up', 'UP'], ['down', 'DOWN'], ['filter', 'FILTER']])}</div>
+    <h3><span>CHORD</span>${tog('chord.on', f.chord.on)}</h3>
+    <div class="${f.chord.on ? '' : 'dis'}">
+      <div class="seg"><i>TYPE</i>${seg('p', 'chord.type', f.chord.type, [['triad', 'TRIAD'], ['seventh', '7TH'], ['sus2', 'SUS2'], ['sus4', 'SUS4'], ['power', 'POWER'], ['custom', 'CUSTOM']])}</div>
+      <div class="seg"><i>INVERSION</i>${seg('p', 'chord.inv', f.chord.inv, [[0, 'ROOT'], [1, '1ST'], [2, '2ND'], [3, '3RD']])}</div>
+      <div class="seg"><i>SPREAD</i>${seg('p', 'chord.spread', f.chord.spread, [['close', 'CLOSE'], ['open', 'OPEN'], ['wide', 'WIDE']])}</div>
+      <div class="seg"><i>CUSTOM</i><input type="text" id="pf-shape" value="${f.chord.shape.join(' ')}" style="width:120px" title="semitones above the key you press, e.g. 0 3 7 10"><button class="${PERF.learning ? 'on' : 'dim'}" data-x="learn" title="hold a chord on the keys, let go: that shape">${PERF.learning ? 'HOLD A CHORD…' : 'LEARN'}</button></div>
+      <div class="note" id="pf-chords">${esc(chords)}</div>
+    </div>
+    <h3><span>ARPEGGIATOR</span>${tog('arp.on', f.arp.on)}</h3>
+    <div class="${f.arp.on ? '' : 'dis'}">
+      <div class="seg"><i>MODE</i>${seg('p', 'arp.mode', f.arp.mode, [['up', 'UP'], ['down', 'DOWN'], ['updown', 'UP-DN'], ['random', 'RAND'], ['played', 'PLAYED'], ['chord', 'CHORD']])}</div>
+      <div class="seg"><i>RATE</i>${seg('p', 'arp.rate', f.arp.rate, Object.keys(DawPerf.RATES).map(r => [r, r]))}</div>
+      <div class="seg"><i>OCTAVES</i>${seg('p', 'arp.oct', f.arp.oct, [[1, '1'], [2, '2'], [3, '3'], [4, '4']])}<span style="flex:1"></span>${tog('arp.latch', f.arp.latch, f.arp.latch ? 'LATCH ON' : 'LATCH')}</div>
+      ${sl('p', 'arp.gate', f.arp.gate, 0.05, 2, 0.05, 'GATE', 'pct')}
+      <div class="note">steps sit on the transport grid while it plays (tempo, loop and groove follow); stopped, the arp runs on its own at ${P.bpm} BPM.</div>
+    </div>
+    <h3><span>ON CLIPS</span>${tog('onClips', f.onClips)}</h3>
+    <div class="note">the chain above also rewrites this track's clip notes on playback and in every bounce — seeded, the same each time.</div>
+    <div class="seg"><i>SEED</i><b style="color:var(--gold-hi);font-weight:normal;min-width:64px">${f.seed}</b><button class="dim" data-x="seed">⚄ NEW SEED</button><span class="note">random arp · step probability</span></div>
+    <h3><span>GROOVE · this track</span></h3>
+    ${sl('p', 'groove', f.groove, 0, 1, 0.05, 'AMOUNT', 'pct')}
+    ${sl('p', 'nudge', f.nudge, -40, 40, 1, 'NUDGE', 'ms')}
+    <h3><span>GROOVE · project</span></h3>
+    <div class="seg"><button class="${gOn ? 'dim' : 'on'}" data-x="goff" title="no groove: the transport SWING slider applies">OFF</button>${Object.entries(DawPerf.GROOVES).map(([id, G]) => `<button class="${gOn && g.type === id ? 'on' : 'dim'}" data-g="type" data-v="${id}">${G.name}</button>`).join('')}</div>
+    <div class="${gOn ? '' : 'dis'}">
+      ${sl('g', 'swing', g.swing, 0.5, 0.75, 0.01, 'SWING', 'pct')}
+      <div class="seg"><i>ACCENT</i>${seg('g', 'accent', typeof g.accent === 'string' ? g.accent : 'custom', Object.keys(DawPerf.ACCENTS).map(a => [a, a.toUpperCase()]))}</div>
+      ${sl('g', 'accentDepth', g.accentDepth, 0, 1, 0.05, 'DEPTH', 'pct')}
+      ${sl('g', 'human.ms', g.human.ms, 0, 30, 1, 'HUMAN TIME', 'msu')}
+      ${sl('g', 'human.vel', g.human.vel, 0, 0.5, 0.01, 'HUMAN VEL', 'vel')}
+      <div class="seg"><i>SEED</i><b style="color:var(--gold-hi);font-weight:normal;min-width:64px">${g.human.seed}</b><button class="dim" data-x="gseed">⚄ NEW SEED</button></div>
+      ${DawPerf.ROLES.map(r => sl('g', 'roles.' + r, g.roles[r], -30, 30, 1, r.toUpperCase(), 'ms')).join('')}
+      <div class="note">roles: − pushes ahead of the beat, + lays back. While a groove is on it replaces the transport SWING. Live and bounced play the same.</div>
+    </div>`;
+  box.classList.add('show');
+}
+$('perfpanel').addEventListener('click', e => {
+  const b = e.target.closest('button'), t = P && E.track(PERF.trackId); if (!b || !t) return;
+  const x = b.dataset.x;
+  if (x === 'close') { openPerf(null); renderHeads(); return; }
+  if (x === 'learn') {
+    PERF.learning = !PERF.learning; E.perfReset(t.id);
+    E.perfLive.learnChord(t.id, PERF.learning ? shape => { perfSet(t, 'chord.shape', shape); perfSet(t, 'chord.type', 'custom'); perfSet(t, 'chord.on', true); PERF.learning = false; perfChanged(t); } : null);
+    renderPerf(); return;
+  }
+  if (x === 'seed') { perfSet(t, 'seed', 1 + Math.floor(Math.random() * 99998)); perfChanged(t); return; }
+  if (x === 'gseed') { grooveSet('human.seed', 1 + Math.floor(Math.random() * 99998)); renderPerf(); saveSoon(); return; }
+  if (x === 'goff') { if (P.groove) P.groove.on = false; renderPerf(); saveSoon(); return; }
+  const raw = b.dataset.v; if (raw === undefined) return;
+  const v = b.dataset.bool ? raw === '1' : /^-?\d+(\.\d+)?$/.test(raw) ? +raw : raw;
+  if (b.dataset.p) { perfSet(t, b.dataset.p, v); perfChanged(t); }
+  else if (b.dataset.g) { grooveSet(b.dataset.g, v); if (b.dataset.g === 'type') P.groove.on = true; renderPerf(); saveSoon(); }
+});
+$('perfpanel').addEventListener('input', e => {
+  const el = e.target, t = P && E.track(PERF.trackId); if (!t || el.type !== 'range') return;
+  const v = +el.value;
+  if (el.dataset.p) perfSet(t, el.dataset.p, v); else if (el.dataset.g) grooveSet(el.dataset.g, v);
+  const pv = el.parentElement.querySelector('.pv'); if (pv) pv.textContent = PF_FMT[el.dataset.fmt](v);
+  saveSoon();
+});
+$('perfpanel').addEventListener('change', e => {
+  const t = P && E.track(PERF.trackId); if (!t || e.target.id !== 'pf-shape') return;
+  const a = e.target.value.split(/[\s,]+/).filter(Boolean).map(Number).filter(Number.isFinite);
+  if (a.length) { perfSet(t, 'chord.shape', a); perfSet(t, 'chord.type', 'custom'); perfChanged(t); }
+});
+
+// ═══════════════════════════════════════════════════════════════════
+// STEP view: the selected clip as a step grid — rows are the kit's drums or the scale's degrees.
+// It edits the same pattern notes as the piano roll (no second model); pattern.steps keeps the
+// resolution, note.p a step's probability (seeded by track.perf.seed: live = bounce).
+// ═══════════════════════════════════════════════════════════════════
+const STEP = { on: false, len: 1, oct: {}, W: 36, H: 36, LBL: 84, TOP: 18, drag: null, edit: null, rows: [], st: 24, total: 16 };
+const STEP_RES = [8, 12, 16, 24, 32], STEP_LENS = [1, 2, 3, 4, 8];
+const stepRes = p => (STEP_RES.includes(p.steps) ? p.steps : 16);
+function drumName(inst, n) {
+  if (GM_NAMES[n]) return GM_NAMES[n];
+  const km = inst && Array.isArray(inst.keymap) && inst.keymap.find(k => k.key === n); if (km) return km.name;
+  const m = (inst && inst.map && inst.map[n]) || DAW.KIT_MAP[n]; return m ? m[0].replace(/_/g, ' ') : noteName(n);
+}
+function stepRows(t, p) {
+  if (isDrum(t)) {
+    const inst = E.devices.get(t.deviceId), extra = [...new Set(p.notes.map(n => n.n))].filter(n => !DRUM_ROWS.includes(n)).sort((a, b) => a - b);
+    STEP.curOct = null;
+    return [...DRUM_ROWS, ...extra].reverse().map(n => ({ n, label: drumName(inst, n) }));
+  }
+  const sc = DawPerf.scaleOf(P);
+  let oct = STEP.oct[t.id];
+  if (oct == null) { const ns = p.notes.map(n => n.n).sort((a, b) => a - b), med = ns.length ? ns[ns.length >> 1] : 60; oct = Math.max(0, Math.min(8, Math.floor((med - 4 - P.key) / 12) - 1)); }
+  STEP.curOct = oct;
+  const rows = [];
+  for (let d = 14; d >= 0; d--) { const n = SeqGen.deg2midi(P.key, sc, d, oct); if (n >= 0 && n <= 127) rows.push({ n, label: (d % 7 + 1) + ' · ' + noteName(n) }); }
+  return rows;
+}
+function drawStep() {
+  const cv = $('stepcv'), wrap = $('rollwrap'), r = window.devicePixelRatio || 1, cc = P && curClip();
+  if (!cc) {
+    cv.style.width = wrap.clientWidth + 'px'; cv.style.height = '60px'; cv.width = wrap.clientWidth * r; cv.height = 60 * r;
+    const g = cv.getContext('2d'); g.setTransform(r, 0, 0, r, 0, 0); g.fillStyle = '#050304'; g.fillRect(0, 0, wrap.clientWidth, 60);
+    $('rolltitle').textContent = P ? 'STEP · select a clip (double-click an empty lane to make one)' : '';
+    return;
+  }
+  const { t, p } = cc, res = stepRes(p), st = BAR / res, total = p.lenBars * res, rows = stepRows(t, p), per = res / 4;
+  const W = STEP.W = Math.max(36, Math.floor((wrap.clientWidth - STEP.LBL - 4) / total)), H = STEP.H, L = STEP.LBL, T = STEP.TOP;
+  const w = L + total * W + 2, h = T + rows.length * H + 2;
+  cv.style.width = w + 'px'; cv.style.height = h + 'px';
+  if (cv.width !== Math.round(w * r) || cv.height !== Math.round(h * r)) { cv.width = Math.round(w * r); cv.height = Math.round(h * r); }
+  const g = cv.getContext('2d'); g.setTransform(r, 0, 0, r, 0, 0);
+  g.fillStyle = '#050304'; g.fillRect(0, 0, w, h);
+  g.font = '9px "Courier New"';
+  for (let i = 0; i < total; i++) {
+    const x = L + i * W;
+    g.fillStyle = Math.floor(i / per) % 2 ? '#0e0908' : '#140e0b'; g.fillRect(x, T, W, rows.length * H);
+    if (i % per === 0) { g.fillStyle = i % res === 0 ? '#d8a060' : '#7a5828'; g.fillText(String(i % res + 1), x + 3, 12); }
+    g.fillStyle = i % res === 0 ? '#553318' : i % per === 0 ? '#2a1c12' : '#1a1410'; g.fillRect(x, T, 1, rows.length * H);
+  }
+  const rowOf = new Map();
+  rows.forEach((row, ri) => {
+    rowOf.set(row.n, ri);
+    const y = T + ri * H;
+    g.fillStyle = ri % 2 ? '#0e0908' : '#120c0a'; g.fillRect(0, y, L - 2, H - 1);
+    g.fillStyle = '#1a1410'; g.fillRect(L, y + H - 1, total * W, 1);
+    g.fillStyle = '#d8a060'; g.fillText(row.label, 4, y + H / 2 + 3);
+  });
+  let hidden = 0;
+  for (const x of p.notes) {
+    const ri = rowOf.get(x.n), i = Math.round(x.t / st);
+    if (ri === undefined || i >= total) { hidden++; continue; }
+    const cx = L + i * W, cy = T + ri * H, prob = x.p ?? 1;
+    const tail = L + Math.min(total * W, (x.t + x.d) / st * W);
+    if (tail > cx + W + 1) { g.fillStyle = t.color; g.globalAlpha = 0.4; g.fillRect(cx + W - 3, cy + H / 2 - 3, tail - cx - W, 6); g.globalAlpha = 1; }
+    g.fillStyle = t.color; g.globalAlpha = 0.22; g.fillRect(cx + 3, cy + 3, W - 6, H - 6);
+    g.globalAlpha = prob < 1 ? 0.55 : 1; const vh = (H - 8) * x.v; g.fillRect(cx + 4, cy + H - 4 - vh, W - 8, vh); g.globalAlpha = 1;
+    g.strokeStyle = prob < 1 ? '#ffd896' : t.color; g.lineWidth = 1.5; if (prob < 1) g.setLineDash([3, 2]);
+    g.strokeRect(cx + 3.5, cy + 3.5, W - 7, H - 7); g.setLineDash([]);
+    if (prob < 1) { g.fillStyle = '#ffd896'; g.fillText(Math.round(prob * 100) + '%', cx + 5, cy + 12); }
+  }
+  const tk = E.tickNow(), cs = cc.c.bar * BAR, ce = cs + (cc.c.bars || p.lenBars) * BAR, len = p.lenBars * BAR;
+  if (E.playing && tk >= cs && tk < ce) { const i = Math.floor(((tk - cs) % len) / st); g.strokeStyle = '#ffd896'; g.lineWidth = 1; g.strokeRect(L + i * W + 0.5, T + 0.5, W - 1, rows.length * H - 1); }
+  STEP.rows = rows; STEP.st = st; STEP.total = total;
+  $('rolltitle').textContent = 'STEP · ' + t.name + ' · ' + p.name + ' · ' + p.lenBars + ' bar' + (p.lenBars > 1 ? 's' : '') + (isDrum(t) ? ' · kit' : ' · ' + SeqGen.NOTE_NAMES[P.key] + ' ' + P.mode) + (hidden ? ' · ' + hidden + ' note' + (hidden > 1 ? 's' : '') + ' off these rows (piano roll)' : '');
+  $('s-res').textContent = res + ' / BAR'; $('s-len').textContent = 'LEN ' + STEP.len;
+  $('s-octd').disabled = $('s-octu').disabled = isDrum(t);
+  $('plen').value = String(p.lenBars);
+  const key = t.id + '/' + cc.c.pid;
+  if (STEP.shown !== key) {          // a newly shown clip scrolls to its notes
+    STEP.shown = key;
+    const idx = p.notes.map(n => rowOf.get(n.n)).filter(i => i !== undefined).sort((a, b) => a - b);
+    wrap.scrollTop = idx.length ? Math.max(0, T + idx[idx.length >> 1] * H - wrap.clientHeight / 2) : (isDrum(t) ? wrap.scrollHeight : 0);
+  }
+}
+function stepHit(ev) {
+  const r = $('stepcv').getBoundingClientRect(), x = ev.clientX - r.left, y = ev.clientY - r.top;
+  const i = Math.floor((x - STEP.LBL) / STEP.W), ri = Math.floor((y - STEP.TOP) / STEP.H), row = y >= STEP.TOP ? STEP.rows[ri] : null;
+  return { i, row, ok: !!row && x >= STEP.LBL && i >= 0 && i < STEP.total };
+}
+const stepNotes = (p, i, n) => p.notes.filter(x => x.n === n && Math.round(x.t / STEP.st) === i);
+function stepEdited() { drawRoll(); drawArr(); saveSoon(); }
+function stepToggle(h) {
+  const cc = curClip(); if (!cc || !h.ok) return;
+  const cur = stepNotes(cc.p, h.i, h.row.n);
+  if (cur.length) cc.p.notes = cc.p.notes.filter(x => !cur.includes(x));
+  else {
+    const d = Math.min(STEP.len, STEP.total - h.i) * STEP.st;
+    cc.p.notes.push({ t: h.i * STEP.st, d, n: h.row.n, v: 0.8 }); cc.p.notes.sort((a, b) => a.t - b.t);
+    previewNote(cc.t, h.row.n);
+  }
+  stepEdited();
+}
+// long-press / right-click: VEL · LEN · PROB for one step (an empty step is made first)
+function openStepEdit(ev) {
+  const cc = curClip(); if (!cc) return; const h = stepHit(ev); if (!h.ok) return;
+  if (!stepNotes(cc.p, h.i, h.row.n).length) stepToggle(h);
+  STEP.edit = { i: h.i, n: h.row.n, label: h.row.label };
+  renderStepEdit(ev.clientX, ev.clientY);
+}
+function closeStepEdit() { STEP.edit = null; $('stepedit').classList.remove('show'); }
+function renderStepEdit(x, y) {
+  const box = $('stepedit'), cc = curClip(), S = STEP.edit; if (!cc || !S) return closeStepEdit();
+  const ns = stepNotes(cc.p, S.i, S.n); if (!ns.length) return closeStepEdit();
+  const v = ns[0].v, len = Math.max(1, Math.round(ns[0].d / STEP.st)), pr = ns[0].p ?? 1;
+  box.innerHTML = `<div class="seg"><b style="flex:1;text-align:left">STEP ${S.i + 1} · ${esc(S.label)}</b><button class="dim" data-se="close">✕</button></div>
+    <div class="seg"><i>VEL</i><button class="dim" data-se="vel" data-v="-0.1">−</button><b id="se-vel">${Math.round(v * 100)}%</b><button class="dim" data-se="vel" data-v="0.1">+</button></div>
+    <div class="seg"><i>LEN</i><button class="dim" data-se="len" data-v="-1">−</button><b id="se-len">${len} step${len > 1 ? 's' : ''}</b><button class="dim" data-se="len" data-v="1">+</button></div>
+    <div class="seg"><i>PROB</i>${[1, 0.75, 0.5, 0.25, 0.1].map(q => `<button class="${Math.abs(pr - q) < 1e-6 ? 'on' : 'dim'}" data-se="prob" data-v="${q}">${Math.round(q * 100)}%</button>`).join('')}</div>
+    <div class="seg"><button class="dim" data-se="del">DELETE STEP</button></div>`;
+  if (x !== undefined) {
+    box.style.left = Math.max(4, Math.min(window.innerWidth - 310, x - 150)) + 'px';
+    box.style.top = (y + 250 < window.innerHeight ? y + 24 : Math.max(4, y - 240)) + 'px';
+  }
+  box.classList.add('show');
+}
+$('stepedit').addEventListener('click', e => {
+  const b = e.target.closest('button'), cc = curClip(), S = STEP.edit; if (!b) return;
+  if (!cc || !S || b.dataset.se === 'close') return closeStepEdit();
+  const ns = stepNotes(cc.p, S.i, S.n), v = +b.dataset.v, a = b.dataset.se;
+  if (a === 'del') { cc.p.notes = cc.p.notes.filter(q => !ns.includes(q)); closeStepEdit(); stepEdited(); return; }
+  for (const q of ns) {
+    if (a === 'vel') q.v = +Math.max(0.05, Math.min(1, q.v + v)).toFixed(3);
+    else if (a === 'len') q.d = Math.max(1, Math.min(STEP.total - S.i, Math.round(q.d / STEP.st) + v)) * STEP.st;
+    else if (a === 'prob') { if (v >= 1) delete q.p; else q.p = v; }
+  }
+  stepEdited(); renderStepEdit();
+});
+// mouse right-click opens the step editor (before the gesture sees the press)
+$('stepcv').addEventListener('pointerdown', e => { if (e.pointerType === 'mouse' && e.button === 2) { e.stopImmediatePropagation(); e.preventDefault(); openStepEdit(e); } });
+// tap / click: step on / off · drag a step up / down: velocity · long-press: the step editor · drag empty: scroll
+TouchControls.gesture($('stepcv'), {
+  mouse: true, scroller: $('rollwrap'),
+  grab: ev => {
+    const cc = curClip(); if (!cc) return false; const h = stepHit(ev); if (!h.ok) return false;
+    const ns = stepNotes(cc.p, h.i, h.row.n); if (!ns.length) return false;
+    STEP.drag = { ns, y0: ev.clientY, v0: ns[0].v, moved: false }; return true;
+  },
+  move: ev => { const d = STEP.drag; if (!d) return; d.moved = true; const v = Math.max(0.05, Math.min(1, d.v0 + (d.y0 - ev.clientY) / 120)); d.ns.forEach(n => { n.v = +v.toFixed(3); }); drawStep(); },
+  end: () => { const d = STEP.drag; STEP.drag = null; if (d && d.moved) stepEdited(); },
+  tap: ev => { closeStepEdit(); stepToggle(stepHit(ev)); },
+  longPress: ev => { STEP.drag = null; openStepEdit(ev); },
+});
+$('r-step').addEventListener('click', () => { STEP.on = !STEP.on; closeStepEdit(); drawRoll(); });
+$('s-res').addEventListener('click', () => { const cc = curClip(); if (!cc) return; cc.p.steps = STEP_RES[(STEP_RES.indexOf(stepRes(cc.p)) + 1) % STEP_RES.length]; closeStepEdit(); stepEdited(); });
+$('s-len').addEventListener('click', () => { STEP.len = STEP_LENS[(STEP_LENS.indexOf(STEP.len) + 1) % STEP_LENS.length]; drawRoll(); });
+const stepOct = k => () => { const cc = curClip(); if (!cc || isDrum(cc.t) || STEP.curOct == null) return; STEP.oct[cc.t.id] = Math.max(0, Math.min(8, STEP.curOct + k)); closeStepEdit(); drawRoll(); };
+$('s-octd').addEventListener('click', stepOct(-1)); $('s-octu').addEventListener('click', stepOct(1));
+$('s-seed').addEventListener('click', () => { const cc = curClip(); if (!cc) return; perfSet(cc.t, 'seed', 1 + Math.floor(Math.random() * 99998)); renderPerf(); stepEdited(); });
+
+// ═══════════════════════════════════════════════════════════════════
 // keys: transport, computer keyboard, FM-1 / MIDI keyboard
 // ═══════════════════════════════════════════════════════════════════
 const KB = { z: 0, s: 1, x: 2, d: 3, c: 4, v: 5, g: 6, b: 7, h: 8, n: 9, j: 10, m: 11, q: 12, 2: 13, w: 14, 3: 15, e: 16, r: 17, 5: 18, t: 19, 6: 20, y: 21, 7: 22, u: 23 };
@@ -898,7 +1195,8 @@ window.addEventListener('keyup', e => {
 window.addEventListener('midiinput-note', e => {
   if (!P || !sel.trackId) return;
   const t = E.track(sel.trackId), d = t && E.dev(t.deviceId);
-  if (d && d.type === 'hw') { if (E.recording && t.arm) E.recordMidi(t, e.detail.note, e.detail.vel, e.detail.on, E.ctx.currentTime - E.latencyMs / 1000); return; }  // it already sounds on the synth
+  // it already sounds on the synth — unless a PERF chain is on: then the processed notes go out (set the synth's local control off)
+  if (d && d.type === 'hw' && !E.perfActive(t)) { if (E.recording && t.arm) E.recordMidi(t, e.detail.note, e.detail.vel, e.detail.on, E.ctx.currentTime - E.latencyMs / 1000); return; }
   E.liveNote(sel.trackId, e.detail.note, e.detail.vel, e.detail.on);
 });
 
