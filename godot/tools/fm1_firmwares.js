@@ -70,8 +70,10 @@ const FM1_REGISTRY = /*FM1-JSON-BEGIN*/{
       "verified": { "date": "2026-10-11", "version": "FM-1_093", "how": "FM-1 CHECK-OUT on the Steam Deck (USB-C)",
         "facts": ["port name FM-1 MIDI 1 (in and out)", "answers the version query", "plays notes from USB on ch 1",
                   "keys send on ch 1 at a fixed velocity of 90, note-offs arrive", "CC 74 changes the sound; CC 71, 1 and 7 do not",
-                  "the knobs send no MIDI CC"],
-        "pending": ["DX7 voice push", "clock follow", "USB audio and latency"] },
+                  "the knobs send no MIDI CC",
+                  "single-voice DX7 dumps load and play as sent (MM SINE / BRASS / BELL)",
+                  "a DX7 parameter change (algorithm) is heard at once and redraws the screen"],
+        "pending": ["clock follow", "USB audio + latency on a named FM-1 input (the first run used an unnamed input: 149.9 ms ±0.4)"] },
       "summary": "Keeps the stock FM engine; adds VA (303 / supersaw), 8-bit, bitcrush, a 64-step sequencer, list menus, live knobs."
     },
     {

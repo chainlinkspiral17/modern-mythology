@@ -70,7 +70,10 @@ module.exports.MOCK = () => {
     }
     const s = new MediaStream(); fake.add(s); return s;
   };
-  navigator.mediaDevices.enumerateDevices = async () => [
+  let enumN = 0;
+  navigator.mediaDevices.enumerateDevices = async () => (P.hideLabelsOnce && enumN++ === 0) ? [
+    { deviceId: '', kind: 'audioinput', label: '', groupId: '' },
+  ] : [
     { deviceId: 'default', kind: 'audioinput', label: 'Default', groupId: 'a' },
     { deviceId: 'deck', kind: 'audioinput', label: 'Steam Deck Internal Microphone', groupId: 'b' },
     { deviceId: 'fm1', kind: 'audioinput', label: P.audioLabel, groupId: 'c' },

@@ -7,8 +7,8 @@ const init = (name, extra = {}) =>
   `window.__FM1_PROFILE = ${JSON.stringify(Object.assign({ audioMode: 'gate' }, PROFILES[name], extra))};(${MOCK})();`;
 
 suite('fm1 checkout · mock hardware', async t => {
-  async function open(name) {
-    const o = await t.page('fm1_checkout.html', { init: init(name), settle: 400 });
+  async function open(name, extra) {
+    const o = await t.page('fm1_checkout.html', { init: init(name, extra), settle: 400 });
     const { p } = o;
     o.press = async sel => {
       const r = await p.evaluate(s => { const el = document.querySelector(s); if (!el) return null; el.scrollIntoView({ block: 'center' });
@@ -126,6 +126,18 @@ suite('fm1 checkout · mock hardware', async t => {
     t.ok(!r.ask, 'no "is this your FM-1?" question');
     t.ok(/loopback/i.test(r.msg) && /cable/i.test(r.msg), 'explains it: ' + r.msg.slice(0, 80));
     t.eq((await o.sentSince(0)).length, 0, 'nothing sent to the loopback port');
+    t.noErrors(o.errors);
+  });
+
+  await t.test('Chrome hides input names at first: the list is re-read and the FM-1 still found by name', async () => {
+    const o = await open('felucca', { hideLabelsOnce: true }), { p } = o;
+    await o.connect();
+    await o.goto('audio');
+    await o.press('[data-act="aud-find"]');
+    t.ok(await o.waitFor(() => !!AUD.cap, 5000), 'FM-1 audio input opened automatically');
+    const r = await p.evaluate(() => ({ found: R.steps.audio.checks.found.status, label: AUD.label, id: AUD.deviceId }));
+    t.eq([r.found, r.id], ['pass', 'fm1'], 'the named FM-1 input, not the unnamed default');
+    t.ok(/felucca/i.test(r.label), 'label ' + r.label);
     t.noErrors(o.errors);
   });
 

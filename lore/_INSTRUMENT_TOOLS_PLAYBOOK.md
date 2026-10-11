@@ -576,6 +576,36 @@ those tools.
   dynamics. Use the piano roll's HUMANIZE or the groove accents if a
   part needs them.
 
+### 2026-10-11 — second CHECK-OUT pass: DX7 works; the audio input had no name
+
+- **DX7 on Baud Girl FM-1+VA (FM-1_093) is verified.** The three
+  single-voice dumps sounded as described, and an algorithm parameter
+  change was heard at once and redrew the screen. The registry moved
+  DX7 from `pending` to `facts`. Clock follow was skipped and is still
+  pending.
+- **The latency run measured 149.9 ms ± 0.4**, on an input whose name
+  *and* device id were empty. Chrome hides both unless a capture is
+  live or the permission was kept; "Allow this time" ends with the
+  stream. The page opened the permission stream, stopped it, *then*
+  enumerated, and got one blank entry. Opening a blank device id gives
+  the system default input, which on the Deck may be the built-in mic
+  hearing the FM-1's speaker. So that number is not trusted as the
+  FM-1's USB round trip.
+- Fixes:
+  - `AK.inputs.list()` re-enumerates *while* a short permission stream
+    is open whenever names are hidden. This applies to every tool that
+    records.
+  - The check-out fails "input found" for an unnamed pick and says why.
+  - Test: the mock hides names on the first enumerate.
+- Whatever the input was, ±0.4 ms jitter means a fixed buffer, so
+  takes line up once it's measured. But 150 ms is far too late to
+  *monitor* through the browser. Listen on the FM-1's own output while
+  recording.
+- `daw_rec`'s count-in check once landed at tick 193 instead of 192
+  (+3.4 ms). MIDI event time → AudioContext time goes through
+  `getOutputTimestamp()`, which jitters a few ms under load. Tests now
+  allow ±1 tick / ±4 ms. Don't promise sub-tick MIDI placement.
+
 ## TEMPLATE
 
 ```

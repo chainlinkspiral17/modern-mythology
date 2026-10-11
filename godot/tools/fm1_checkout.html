@@ -1042,7 +1042,7 @@ RENDER.audio = () => {
   let h = `<h3>A · FIND THE FM-1'S USB AUDIO</h3>
     <div class="do">The FM-1 also sends its sound to the Deck over the USB cable. Press <b>FIND AUDIO INPUTS</b> — Chrome asks to use a microphone: press <b>Allow</b> (it is the FM-1, not a mic). Then tap the FM-1 in the list.</div>
     <div class="actions"><button class="big" data-act="aud-find">FIND AUDIO INPUTS</button></div>
-    <div class="chips" id="aud-list">${AUD.devices.map(d => `<button class="chip${d.deviceId === AUD.deviceId ? ' sel' : ''}" data-act="aud-pick" data-id="${esc(d.deviceId)}">${esc(d.label || 'input ' + d.deviceId.slice(0, 6))}${FM1_AUDIO_RX.some(rx => rx.test(d.label)) ? ' ★' : ''}</button>`).join('')}</div>`;
+    <div class="chips" id="aud-list">${AUD.devices.map(d => `<button class="chip${d.deviceId === AUD.deviceId ? ' sel' : ''}" data-act="aud-pick" data-id="${esc(d.deviceId)}">${esc(d.label || 'unnamed input (Chrome hid its name)')}${FM1_AUDIO_RX.some(rx => rx.test(d.label)) ? ' ★' : ''}</button>`).join('')}</div>`;
   h += row('audio', 'found', 'The FM-1\'s USB audio input is found', { kind: 'auto' });
   h += `<div class="meter" style="margin:8px 0"><i id="aud-meter"></i><b id="aud-db">— dBFS</b></div>
     <h3>B · LEVEL</h3>
@@ -1072,11 +1072,13 @@ ACT['aud-find'] = async () => {
     : 'no input named like the FM-1 (' + (AUD.devices.map(d => d.label).filter(Boolean).join(', ') || 'none listed') + ') — replug it, or tap the right one if it has another name');
   render();
   if (fm.length) await audOpen(fm[0].deviceId);
+  else if (AUD.devices.length && AUD.devices.every(d => !d.label)) say('aud-msg', 'Chrome is hiding the input names, so the FM-1 can\'t be told apart from the Deck\'s microphone. Press FIND AUDIO INPUTS again and choose “Allow” (not “Allow this time”), or: icon left of the address bar › Site settings › Microphone › Allow.', true);
   else say('aud-msg', AUD.devices.length ? 'Tap the FM-1 in the list if it has another name.' : 'No audio inputs at all.', !AUD.devices.length);
 };
 ACT['aud-pick'] = b => {
   const d = AUD.devices.find(x => x.deviceId === b.dataset.id);
-  if (d && !FM1_AUDIO_RX.some(rx => rx.test(d.label))) setCheck('audio', 'found', 'pass', 'picked by hand: “' + (d.label || d.deviceId) + '” (the level check below confirms it)');
+  if (d && !d.label) setCheck('audio', 'found', 'fail', 'picked an unnamed input — Chrome hid its name, so it may be the Deck\'s microphone or the default input, not the FM-1\'s USB audio');
+  else if (d && !FM1_AUDIO_RX.some(rx => rx.test(d.label))) setCheck('audio', 'found', 'pass', 'picked by hand: “' + d.label + '” (the level check below confirms it)');
   return audOpen(b.dataset.id);
 };
 async function audOpen(deviceId) {
@@ -1085,7 +1087,7 @@ async function audOpen(deviceId) {
   const dev = AUD.devices.find(d => d.deviceId === deviceId) || { label: deviceId };
   try { AUD.stream = await AK.inputs.open(deviceId, 2); }
   catch (e) { say('aud-msg', 'could not open “' + dev.label + '”: ' + (e.name || e.message), true); return; }
-  AUD.deviceId = deviceId; AUD.label = dev.label || 'input';
+  AUD.deviceId = deviceId; AUD.label = dev.label || '(unnamed — Chrome hid it; maybe not the FM-1)';
   AUD.src = ctx.createMediaStreamSource(AUD.stream);
   AUD.cap = new AK.Capture(ctx, AUD.src, { preRollSec: 1, maxChannels: 2 });
   await AUD.cap.start();

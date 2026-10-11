@@ -36,10 +36,21 @@ const AK = {};
 // Inputs
 // ═══════════════════════════════════════════════════════════════════
 AK.inputs = {
+  // Chrome hides input names (empty label AND deviceId) unless a capture is live or the permission
+  // is kept — "Allow this time" ends with the stream. So when names are hidden, enumerate again
+  // WHILE a short permission stream is open; an empty deviceId would otherwise open the default
+  // input (on the Deck: often the built-in mic, not the FM-1).
   async list() {
     if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) return [];
-    const ds = await navigator.mediaDevices.enumerateDevices();
-    return ds.filter(d => d.kind === 'audioinput');
+    const ins = async () => (await navigator.mediaDevices.enumerateDevices()).filter(d => d.kind === 'audioinput');
+    let ds = await ins();
+    if (ds.some(d => !d.label || !d.deviceId) && navigator.mediaDevices.getUserMedia) {
+      let s = null;
+      try { s = await navigator.mediaDevices.getUserMedia({ audio: true, video: false }); ds = await ins(); }
+      catch (e) {}
+      finally { if (s) s.getTracks().forEach(t => t.stop()); }
+    }
+    return ds;
   },
   // Raw input: no processing, stereo if the device has it.
   async open(deviceId, channels = 2) {
