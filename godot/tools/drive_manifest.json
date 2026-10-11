@@ -760,6 +760,11 @@
    "md5": "8f57246b55b6d28611aadc3c981657fa",
    "size": 75040
   },
+  "godot/assets/3d/characters/heroes/jameson.glb": {
+   "at": "2026-10-11T19:30:48+00:00",
+   "md5": "9228f513342fc715fd3379303a5e6fc7",
+   "size": 61049560
+  },
   "godot/assets/3d/characters/heroes/jesse_henderson.glb": {
    "at": "2026-10-01T01:48:41+00:00",
    "md5": "fb75ce63956b265f98660f2c98823e87",
@@ -52884,6 +52889,41 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "feef1b6f1e09a460df920c3758354352",
    "size": 80426
+  },
+  "godot/assets/concept/meshy/jameson/back.png": {
+   "at": "2026-10-11T19:30:58+00:00",
+   "md5": "bc5a203ecda7b31b222272eaff18f98f",
+   "size": 2037116
+  },
+  "godot/assets/concept/meshy/jameson/front.png": {
+   "at": "2026-10-11T19:30:58+00:00",
+   "md5": "007714dc8e310efe86871f7d3af01d09",
+   "size": 2171695
+  },
+  "godot/assets/concept/meshy/jameson/jameson_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T19:30:58+00:00",
+   "md5": "bc5a203ecda7b31b222272eaff18f98f",
+   "size": 2037116
+  },
+  "godot/assets/concept/meshy/jameson/jameson_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T19:30:58+00:00",
+   "md5": "007714dc8e310efe86871f7d3af01d09",
+   "size": 2171695
+  },
+  "godot/assets/concept/meshy/jameson/jameson_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T19:30:58+00:00",
+   "md5": "e47f10f110e900bf6ac307cdb9cc18f6",
+   "size": 1978691
+  },
+  "godot/assets/concept/meshy/jameson/meshy_thumb.png": {
+   "at": "2026-10-11T19:30:58+00:00",
+   "md5": "56591cc79956b01cc4a154ba0c995715",
+   "size": 87865
+  },
+  "godot/assets/concept/meshy/jameson/side.png": {
+   "at": "2026-10-11T19:30:58+00:00",
+   "md5": "e47f10f110e900bf6ac307cdb9cc18f6",
+   "size": 1978691
   },
   "godot/assets/concept/meshy/jesse_henderson/front.png": {
    "at": "2026-10-01T01:23:48+00:00",
