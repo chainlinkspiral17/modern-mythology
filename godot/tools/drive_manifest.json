@@ -815,6 +815,11 @@
    "md5": "9228f513342fc715fd3379303a5e6fc7",
    "size": 61049560
   },
+  "godot/assets/3d/characters/heroes/jessa.glb": {
+   "at": "2026-10-11T21:31:59+00:00",
+   "md5": "8161199f8da96005e56016fbedc5b44e",
+   "size": 39049100
+  },
   "godot/assets/3d/characters/heroes/jesse_henderson.glb": {
    "at": "2026-10-01T01:48:41+00:00",
    "md5": "fb75ce63956b265f98660f2c98823e87",
@@ -53414,6 +53419,41 @@
    "at": "2026-10-11T19:30:58+00:00",
    "md5": "e47f10f110e900bf6ac307cdb9cc18f6",
    "size": 1978691
+  },
+  "godot/assets/concept/meshy/jessa/back.png": {
+   "at": "2026-10-11T21:32:08+00:00",
+   "md5": "17835843188d33eec1757101dc7f4a60",
+   "size": 1853323
+  },
+  "godot/assets/concept/meshy/jessa/front.png": {
+   "at": "2026-10-11T21:32:08+00:00",
+   "md5": "6af626f995021471723b4220b09705b7",
+   "size": 1926903
+  },
+  "godot/assets/concept/meshy/jessa/jessa_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T21:32:08+00:00",
+   "md5": "17835843188d33eec1757101dc7f4a60",
+   "size": 1853323
+  },
+  "godot/assets/concept/meshy/jessa/jessa_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T21:32:08+00:00",
+   "md5": "6af626f995021471723b4220b09705b7",
+   "size": 1926903
+  },
+  "godot/assets/concept/meshy/jessa/jessa_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T21:32:08+00:00",
+   "md5": "044d90297bf0ae4d9db7941675492f9a",
+   "size": 1827529
+  },
+  "godot/assets/concept/meshy/jessa/meshy_thumb.png": {
+   "at": "2026-10-11T21:32:08+00:00",
+   "md5": "381f5138a511f9c983e523ffadfaf4ba",
+   "size": 67698
+  },
+  "godot/assets/concept/meshy/jessa/side.png": {
+   "at": "2026-10-11T21:32:08+00:00",
+   "md5": "044d90297bf0ae4d9db7941675492f9a",
+   "size": 1827529
   },
   "godot/assets/concept/meshy/jesse_henderson/front.png": {
    "at": "2026-10-01T01:23:48+00:00",
