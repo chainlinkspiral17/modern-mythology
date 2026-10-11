@@ -175,14 +175,15 @@ environment = SubResource("Env_Locale")
 ; in through the passenger window, caught on Nicola's face." The KEY is
 ; a low warm sun on the passenger (+X, east) side; the FILL is the pale
 ; sky over the roof; the head unit's display is the cabin's practical.
-[node name="Sun_Dawn" type="DirectionalLight3D" parent="."]
+; (pass 70, 2026-10-11) the authored rig is suffixed to miriam_subaru: its time-of-day twin below brings its own
+[node name="Sun_Dawn__miriam_subaru" type="DirectionalLight3D" parent="."]
 position = Vector3(40.00, 7.00, -8.00)
 rotation = Vector3(-0.1556, 1.7682, 0.0)
 light_color = Color(1, 0.80, 0.56, 1)
 light_energy = 1.1
 shadow_enabled = false
 
-[node name="Sky_Fill" type="DirectionalLight3D" parent="."]
+[node name="Sky_Fill__miriam_subaru" type="DirectionalLight3D" parent="."]
 position = Vector3(-20.00, 30.00, -10.00)
 rotation = Vector3(-0.9303, -2.0344, 0.0)
 light_color = Color(0.72, 0.78, 0.90, 1)
@@ -201,6 +202,14 @@ position = Vector3(13.00, 4.40, -264.00)
 light_color = Color(0.92, 0.96, 1, 1)
 light_energy = 1.2
 omni_range = 12.0
+shadow_enabled = false
+
+; ── THE NIGHT (pass 70): miriam_subaru_night — the moon on the road; the head unit and the
+; station canopy (unsuffixed) carry the cab
+[node name="Moon_Road__miriam_subaru_night" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660, -0.3830, 0.3214, 0.0000, 0.6428, 0.7660, -0.5000, 0.6634, -0.5567, 0, 8, 0)
+light_color = Color(0.60, 0.68, 0.90, 1)
+light_energy = 0.3
 shadow_enabled = false
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]

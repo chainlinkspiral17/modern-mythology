@@ -622,6 +622,26 @@ const CAMERA_PRESETS := {
 		"fov": 58.0,
 		"suppress_input": true,
 	},
+	"new_orleans_room_day": {
+		"scene": "res://scenes/locales/new_orleans_room.tscn",
+		"requires_glb": "res://assets/3d/locales/new_orleans_room.glb",
+		# Spare boarding-house room 4×5 (godot x∈[-2,2], z∈[0,-5], ceil
+		# 2.8). Single bed centre-north (blender 0,3.5 → godot 0,-3.5),
+		# porcelain washbasin NE corner (godot 1.6,-4.5), nightstand NW,
+		# sash window N wall, bare bulb on a cord. Camera in the SW corner
+		# just inside the door looking NE across the room: bed centre-back,
+		# washbasin at frame right, the worn geography in one contained wide.
+		# (2026-10-11, pass 70) THE SAME PLACE at the other hour: ch20 Judgement: Jimmy Daigle at three o'clock, "the humid haze thickened",
+		# the room above the laundromat by day on the bare-bulb night rig.
+		# The authored rig is suffixed to new_orleans_room; this twin has its own lights and env.
+		"camera_origin": Vector3(-1.3, 1.55, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(-28.7), 0.0),
+		"fov": 58.0,
+		"env": {"sky_top": Color(0.56, 0.62, 0.72, 1), "sky_horizon": Color(0.90, 0.86, 0.78, 1),
+			"ground_horizon": Color(0.44, 0.42, 0.38, 1), "ground_bottom": Color(0.18, 0.18, 0.16, 1),
+			"ambient_color": Color(0.84, 0.80, 0.74, 1), "ambient_energy": 0.85, "fog_color": Color(0.84, 0.80, 0.74, 1)},
+		"suppress_input": true,
+	},
 	"hospice_room": {
 		"scene": "res://scenes/locales/hospice_room.tscn",
 		"requires_glb": "res://assets/3d/locales/hospice_room.glb",
@@ -952,6 +972,27 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(1.9, 1.5, 2.2),
 		"camera_rotation": Vector3(-0.078, 0.351, 0.0),
 		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"henderson_garage_day": {
+		"scene": "res://scenes/locales/henderson_garage.tscn",
+		"requires_glb": "res://assets/3d/locales/henderson_garage.glb",
+		# Jesse Henderson's garage, vol6 — Suburban Blight's practice
+		# space. Single bay 5.6×5.8 (godot x∈[-2.8,2.8], z∈[0,-5.8],
+		# ceil 2.7), the roll-up door UP (August rule) at z=0 with the
+		# driveway extending +Z. Kit at back-centre facing the door,
+		# amps flanking W, bass rig E, Tele on its stand, mic front-
+		# centre. Camera on the DRIVEWAY looking in: the lit interior
+		# framed by the open door at dusk, bulb practical warm inside.
+		# (2026-10-11, pass 70) THE SAME PLACE at the other hour: ch20 Bridge: "Practice today is at his garage" — Carl at four forty-eight,
+		# Em at five-oh-one, the driveway at the end — on the dusk rig.
+		# The authored rig is suffixed to henderson_garage; this twin has its own lights and env.
+		"camera_origin": Vector3(1.9, 1.5, 2.2),
+		"camera_rotation": Vector3(-0.078, 0.351, 0.0),
+		"fov": 62.0,
+		"env": {"sky_top": Color(0.40, 0.56, 0.80, 1), "sky_horizon": Color(0.84, 0.86, 0.84, 1),
+			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
+			"ambient_color": Color(0.82, 0.82, 0.80, 1), "ambient_energy": 0.90, "fog_color": Color(0.80, 0.82, 0.80, 1)},
 		"suppress_input": true,
 	},
 	"bindery": {
@@ -1773,6 +1814,26 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(-0.18, 1.36, 0.72),
 		"camera_rotation": Vector3(-0.101, -0.107, 0.0),
 		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"miriam_subaru_night": {
+		"scene": "res://scenes/locales/miriam_subaru.tscn",
+		"requires_glb": "res://assets/3d/locales/miriam_subaru.glb",
+		# vol 5's car (2026-10-04): Miriam's dark-green 2009 Subaru wagon
+		# on a two-lane road through cane fields at dawn. The camera is
+		# Natalie in the back seat, left of centre, looking through the
+		# gap between the front seats over the dash at the road; Nicola's
+		# window (and the sun) on the right. The Moon and Judgement
+		# borrowed vol 6's parked pickup (vehicle_cab) until now.
+		# (2026-10-11, pass 70) THE SAME PLACE at the other hour: ch20 Judgement's chorus (mood:night) in the Subaru on the night road,
+		# on the dawn rig.
+		# The authored rig is suffixed to miriam_subaru; this twin has its own lights and env.
+		"camera_origin": Vector3(-0.18, 1.36, 0.72),
+		"camera_rotation": Vector3(-0.101, -0.107, 0.0),
+		"fov": 62.0,
+		"env": {"sky_top": Color(0.05, 0.06, 0.13, 1), "sky_horizon": Color(0.16, 0.15, 0.21, 1),
+			"ground_horizon": Color(0.08, 0.08, 0.10, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.36, 0.36, 0.46, 1), "ambient_energy": 0.40, "fog_color": Color(0.12, 0.12, 0.16, 1)},
 		"suppress_input": true,
 	},
 	"vehicle_cab": {

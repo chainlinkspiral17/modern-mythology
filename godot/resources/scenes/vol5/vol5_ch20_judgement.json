@@ -470,7 +470,7 @@
     },
     {
       "t": "bg",
-      "src": "3d:miriam_subaru"
+      "src": "3d:miriam_subaru_night"
     },
     {
       "t": "narrate",
@@ -645,7 +645,7 @@
     },
     {
       "t": "bg",
-      "src": "3d:new_orleans_room"
+      "src": "3d:new_orleans_room_day"
     },
     {
       "t": "narrate",

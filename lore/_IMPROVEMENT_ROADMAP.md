@@ -3834,6 +3834,20 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-11 · pass 70: THE LAST SINGLE-PRESET ROOMS AT THE OTHER HOUR.**
+`henderson_garage_day` (ch20 Bridge: "Practice today is at his garage" —
+Carl at four forty-eight, Em at five-oh-one, the driveway after — on the
+dusk rig; the dusk key, the cool fill and the dusk spill suffixed; the
+August sun into the open bay; a dusk ProceduralSky added to the set),
+`new_orleans_room_day` (ch20 Judgement: Jimmy Daigle at three o'clock in
+the Marigny haze, on the bare-bulb night rig; a night sky added, a haze
+env for the day), `miriam_subaru_night` (ch20's chorus on the night
+road, on the dawn rig). Four cuts routed. With this the mood-tag scan's
+single-preset mismatches are all answered; what remains are the
+SHARED-scene rooms (Graustark's ruins at night, the Salty Tome alley at
+5:40, chillwave at dusk, centro's dawn clock-out) whose rigs serve several
+presets and would need per-preset light copies. No Deck rebuild.
+
 **2026-10-11 · pass 69: THE BAKERY'S BACK DOOR (draft 1).** vol7 ch18
 Stick — "Eight twelve at the back door of the bakery": Tem comes out
 with the brown paper bag, Finn at his truck, the wagon waiting on Hemlock

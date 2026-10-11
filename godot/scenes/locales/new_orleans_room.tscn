@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://new_orleans_room_cameo"]
+[gd_scene load_steps=26 format=3 uid="uid://new_orleans_room_cameo"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/new_orleans_room.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
@@ -128,13 +128,28 @@ shader_parameter/wobble_freq = 0.85
 shader_parameter/tint_amount = 0.18
 shader_parameter/tint_color = Color(0.96, 0.78, 0.32, 1)
 
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_Win"]
+; (2026-10-07: the window is cut — a night sky past it, not a flat backdrop)
+sky_top_color = Color(0.06, 0.08, 0.16, 1)
+sky_horizon_color = Color(0.22, 0.24, 0.32, 1)
+sky_curve = 0.25
+ground_bottom_color = Color(0.05, 0.05, 0.06, 1)
+ground_horizon_color = Color(0.12, 0.12, 0.14, 1)
+sun_angle_max = 8.0
+
+[sub_resource type="Sky" id="Sky_Win"]
+sky_material = SubResource("SkyMat_Win")
+radiance_size = 3
+
 [sub_resource type="Environment" id="Env_Locale"]
-background_mode = 1
+background_mode = 2
+sky = SubResource("Sky_Win")
 background_color = Color(0.04, 0.04, 0.04, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.46, 0.36, 0.24, 1)
 ambient_light_energy = 0.7
 fog_enabled = true
+fog_sky_affect = 0.0
 fog_light_color = Color(0.32, 0.22, 0.14, 1)
 fog_light_energy = 0.4
 fog_density = 0.006
@@ -154,13 +169,14 @@ glow_hdr_scale = 2.4
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_Locale")
 
-[node name="Key_BareBulb" type="DirectionalLight3D" parent="."]
+; (pass 70, 2026-10-11) the authored rig is suffixed to new_orleans_room: its time-of-day twin below brings its own
+[node name="Key_BareBulb__new_orleans_room" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866, 0, -0.866, 0.5, 0, 6, 0)
 light_color = Color(0.96, 0.86, 0.46, 1)
 light_energy = 0.85
 shadow_enabled = false
 
-[node name="Fill_SashWindow" type="DirectionalLight3D" parent="."]
+[node name="Fill_SashWindow__new_orleans_room" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 4, -5)
 light_color = Color(0.62, 0.62, 0.74, 1)
 light_energy = 0.4
@@ -184,11 +200,26 @@ light_energy = 1.1
 omni_range = 4.5
 shadow_enabled = false
 
-[node name="Back_None" type="DirectionalLight3D" parent="."]
+[node name="Back_None__new_orleans_room" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 4, 4)
 light_color = Color(0.42, 0.32, 0.22, 1)
 light_energy = 0.15
 shadow_enabled = false
+
+; ── THE AFTERNOON (pass 70): new_orleans_room_day — the Marigny haze through the sash window
+[node name="Day_Sun__new_orleans_room_day" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.7071, -0.4545, 0.5417, 0.0000, 0.7660, 0.6428, -0.7071, 0.4545, -0.5417, 0, 5, -4)
+light_color = Color(1.00, 0.92, 0.80, 1)
+light_energy = 0.9
+shadow_enabled = true
+metadata/daylight = true
+
+[node name="Day_SkyFill__new_orleans_room_day" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-1.0000, -0.0000, 0.0000, 0.0000, 0.2588, 0.9659, -0.0000, 0.9659, -0.2588, 0, 5, 0)
+light_color = Color(0.80, 0.80, 0.84, 1)
+light_energy = 0.5
+shadow_enabled = false
+metadata/daylight = true
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 

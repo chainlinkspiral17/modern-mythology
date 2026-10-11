@@ -241,6 +241,10 @@
       "bed": "assets/audio/bgm/vol5_venue_ambient.wav",
       "gain": 0.88
     },
+    "new_orleans_room_day": {
+      "bed": "assets/audio/bgm/vol5_venue_ambient.wav",
+      "gain": 0.88
+    },
     "lena_studio": {
       "bed": "assets/audio/bgm/vol7_apartment_rain.wav",
       "gain": 0.85
@@ -385,6 +389,10 @@
       "bed": "assets/audio/bgm/vol6_substation_nine.wav",
       "gain": 0.72
     },
+    "henderson_garage_day": {
+      "bed": "assets/audio/bgm/vol6_substation_nine.wav",
+      "gain": 0.72
+    },
     "nate_garage": {
       "bed": "assets/audio/bgm/vol6_substation_nine.wav",
       "gain": 0.72
@@ -490,6 +498,10 @@
       "gain": 0.64
     },
     "miriam_subaru": {
+      "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
+      "gain": 0.4
+    },
+    "miriam_subaru_night": {
       "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
       "gain": 0.4
     },

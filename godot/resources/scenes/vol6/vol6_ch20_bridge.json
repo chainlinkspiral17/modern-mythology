@@ -84,7 +84,7 @@
     },
     {
       "t": "bg",
-      "src": "3d:henderson_garage"
+      "src": "3d:henderson_garage_day"
     },
     {
       "t": "show",
@@ -360,7 +360,7 @@
     },
     {
       "t": "bg",
-      "src": "3d:henderson_garage"
+      "src": "3d:henderson_garage_day"
     },
     {
       "t": "hide",
