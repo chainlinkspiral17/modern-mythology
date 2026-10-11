@@ -965,6 +965,11 @@
    "md5": "489726f71f4161e38a35156822db7ff6",
    "size": 67993
   },
+  "godot/assets/3d/characters/heroes/nate_bassist.glb": {
+   "at": "2026-10-11T16:32:14+00:00",
+   "md5": "496d9c806cfae5b9a2312158ebb1eb58",
+   "size": 60975900
+  },
   "godot/assets/3d/characters/heroes/nicola.glb": {
    "at": "2026-10-01T01:48:41+00:00",
    "md5": "1f5a67b6f9aef1480812a7d16e3e48d0",
@@ -52549,6 +52554,41 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "e3b352c7deb5055b9e62c762154bb8f4",
    "size": 76406
+  },
+  "godot/assets/concept/meshy/nate_bassist/back.png": {
+   "at": "2026-10-11T16:32:26+00:00",
+   "md5": "be2897b48e7eacb9b247968b8f9d7e46",
+   "size": 2005154
+  },
+  "godot/assets/concept/meshy/nate_bassist/front.png": {
+   "at": "2026-10-11T16:32:26+00:00",
+   "md5": "801f9b2b65be021bbc1c0793f0963f87",
+   "size": 2062187
+  },
+  "godot/assets/concept/meshy/nate_bassist/meshy_thumb.png": {
+   "at": "2026-10-11T16:32:26+00:00",
+   "md5": "00cd39485b59b329b3805189640b4828",
+   "size": 78835
+  },
+  "godot/assets/concept/meshy/nate_bassist/nate_bassist_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T16:32:26+00:00",
+   "md5": "be2897b48e7eacb9b247968b8f9d7e46",
+   "size": 2005154
+  },
+  "godot/assets/concept/meshy/nate_bassist/nate_bassist_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T16:32:26+00:00",
+   "md5": "801f9b2b65be021bbc1c0793f0963f87",
+   "size": 2062187
+  },
+  "godot/assets/concept/meshy/nate_bassist/nate_bassist_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T16:32:26+00:00",
+   "md5": "069eea37ddeca1f3362f9356c7957b96",
+   "size": 1894834
+  },
+  "godot/assets/concept/meshy/nate_bassist/side.png": {
+   "at": "2026-10-11T16:32:26+00:00",
+   "md5": "069eea37ddeca1f3362f9356c7957b96",
+   "size": 1894834
   },
   "godot/assets/concept/meshy/nicola/front.png": {
    "at": "2026-10-01T01:23:48+00:00",
