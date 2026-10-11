@@ -985,6 +985,11 @@
    "md5": "0d472ea6c486e81f061fabe309c72e24",
    "size": 39510960
   },
+  "godot/assets/3d/characters/heroes/mateo.glb": {
+   "at": "2026-10-11T19:37:20+00:00",
+   "md5": "a3691117abd969e86fc3d0eeb7ecceff",
+   "size": 58718412
+  },
   "godot/assets/3d/characters/heroes/maya_daigle.glb": {
    "at": "2026-10-01T01:48:41+00:00",
    "md5": "205e019387e2eea804a9fb95535091d9",
@@ -53149,6 +53154,41 @@
    "at": "2026-10-11T18:53:25+00:00",
    "md5": "b89b20bdf24416da1f416801a3a8189e",
    "size": 2033040
+  },
+  "godot/assets/concept/meshy/mateo/back.png": {
+   "at": "2026-10-11T19:37:30+00:00",
+   "md5": "92a8d2c9bfd9479cc39cd5a0678b83df",
+   "size": 1969405
+  },
+  "godot/assets/concept/meshy/mateo/front.png": {
+   "at": "2026-10-11T19:37:30+00:00",
+   "md5": "b29db5fc5751bfad8ebe526e243fc8b4",
+   "size": 2062371
+  },
+  "godot/assets/concept/meshy/mateo/mateo_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T19:37:30+00:00",
+   "md5": "92a8d2c9bfd9479cc39cd5a0678b83df",
+   "size": 1969405
+  },
+  "godot/assets/concept/meshy/mateo/mateo_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T19:37:30+00:00",
+   "md5": "b29db5fc5751bfad8ebe526e243fc8b4",
+   "size": 2062371
+  },
+  "godot/assets/concept/meshy/mateo/mateo_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T19:37:30+00:00",
+   "md5": "7fa9f1d39e0807bf7f44a25fe176631f",
+   "size": 1943761
+  },
+  "godot/assets/concept/meshy/mateo/meshy_thumb.png": {
+   "at": "2026-10-11T19:37:30+00:00",
+   "md5": "c67c79394a114e1494af3336acaff77c",
+   "size": 92133
+  },
+  "godot/assets/concept/meshy/mateo/side.png": {
+   "at": "2026-10-11T19:37:30+00:00",
+   "md5": "7fa9f1d39e0807bf7f44a25fe176631f",
+   "size": 1943761
   },
   "godot/assets/concept/meshy/maya_daigle/front.png": {
    "at": "2026-10-01T01:23:48+00:00",
