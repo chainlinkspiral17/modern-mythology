@@ -383,7 +383,8 @@ function needOut(msgId) {
   if (m) { m.className = 'msg bad'; m.textContent = 'No FM-1 connected — go back to step 1 and press CONNECT.'; }
   return false;
 }
-function say(msgId, text, bad) { const m = $(msgId); if (m) { m.className = 'msg' + (bad ? ' bad' : ''); m.textContent = text; } }
+let lastConnMsg = null;   // the connect step re-renders its card when it finishes: keep what it last said
+function say(msgId, text, bad) { if (msgId === 'conn-msg') lastConnMsg = { text, bad }; const m = $(msgId); if (m) { m.className = 'msg' + (bad ? ' bad' : ''); m.textContent = text; } }
 
 window.addEventListener('midiinput-message', e => {
   const d = e.detail.data, st = d[0];
@@ -527,6 +528,7 @@ RENDER.connect = () => {
     `<button class="chip${c.id === 'felucca-family' ? ' sel' : ''}" data-act="fw-pick" data-fw="felucca-family">other Felucca fork</button>` +
     `<button class="chip dim${!c.id ? ' sel' : ''}" data-act="fw-pick" data-fw="">don't know</button></div>`;
   h += `<details${(R.steps.connect && Object.values(R.steps.connect.checks).some(x => x.status === 'fail')) ? ' open' : ''}><summary>TROUBLESHOOTING</summary><ul>
+    <li><b>Only “Midi Through Port-0”?</b> That is a loopback port Linux always has, not the FM-1 — the synth is not reaching Linux as MIDI. Switch it on, use a USB-C <i>data</i> cable (many charge-only cables look the same), and try straight into the Deck. In Konsole, <code>cat /proc/asound/cards</code> should list the FM-1 once Linux sees it.</li>
     <li><b>No port?</b> Unplug and replug the FM-1's cable, wait 3 seconds, press RE-CHECK. Through the dock is fine for MIDI; if it still is not seen, try the cable straight into the Deck.</li>
     <li><b>Port names:</b> stock and FM-1+VA show as <code>FM-1</code>; Felucca and SLOOP show as <code>Felucca</code>; other forks as <code>X0X FM-1</code>, <code>Jangada</code>, <code>Melodee</code>. A port called <code>ota-FM-1</code> or <code>… Update</code> means the synth is in updater mode — finish the install or power-cycle it.</li>
     <li><b>Version query got no reply?</b> Close the other tabs that use MIDI (FM-1 console, installers, editors) and anything else holding the synth (a DAW, <code>amidi</code>), then RE-CHECK. SysEx must be allowed.</li>
@@ -557,6 +559,10 @@ ACT.connect = async () => {
     Object.assign(R.device, { inName: inN || null, outName: outN || null, sysex: mi.sysexOk, toolInChannel: TOOL_IN_CH, toolOutChannel: TOOL_OUT_CH });
     const all = [...mi.inputs(), ...mi.outputs()].map(p => p.name).filter(Boolean);
     if (mi.status === 'ota') { setCheck('connect', 'port', 'fail', 'the synth is in UPDATER mode (' + all.join(', ') + ') — finish the install or power-cycle'); render(); say('conn-msg', 'The FM-1 is in updater mode, not playable.', true); return; }
+    if ((!mi.input || !mi.output) && all.length && all.every(n => MIDI_SYSTEM_PORT.test(n))) {
+      setCheck('connect', 'port', 'fail', 'only Linux\'s built-in “' + all[0] + '” — the FM-1 is not showing up as a MIDI device');
+      render(); say('conn-msg', 'Chrome only sees “' + all[0] + '”, a loopback port Linux always has — not your FM-1. Linux itself is not seeing the FM-1 as MIDI yet: check it is switched on, try a different USB-C cable (charge-only cables carry no data), or plug straight into the Deck instead of the dock. Then RE-CHECK.', true); return;
+    }
     if (!mi.input || !mi.output) {
       setCheck('connect', 'port', 'fail', all.length ? 'ports seen: ' + [...new Set(all)].join(', ') + ' — none usable both ways' : 'no MIDI ports at all');
       render(); say('conn-msg', 'No FM-1 port found — see TROUBLESHOOTING.', true); return;
@@ -599,7 +605,7 @@ ACT.connect = async () => {
   } finally {
     connecting = false;
     save(); render();
-    const m = $('conn-msg'); if (m && !m.textContent) say('conn-msg', '');
+    if (lastConnMsg) say('conn-msg', lastConnMsg.text, lastConnMsg.bad);
   }
 };
 function applyFirmware(id, name, source) {

@@ -72,6 +72,8 @@ const _FAMILY_PRODUCTS = [...new Set(_FM1_REG.firmwares.filter(f => f.usb && f.u
 const MIDI_FELUCCA_PORT = _FAMILY_PRODUCTS.length ? new RegExp(_FAMILY_PRODUCTS.map(_rxEsc).join('|'), 'i') : /felucca/i;
 // Updater / boot modes: never a playable port.
 const MIDI_OTA_HINT = /ota-?fm-?1|\bupdate\b|wl80uboot/i;
+// Linux's built-in ALSA loopback ("Midi Through Port-0"): always present, never an instrument — never auto-pick it
+const MIDI_SYSTEM_PORT = /^midi through\b/i;
 
 // Per-firmware routing, built from the registry. roles: tool role → OUT
 // channel (multitimbral firmwares only). dx7: only `true` means F0 43
@@ -187,6 +189,7 @@ class MidiInput {
   _rank(port, preferredName) {
     if (!port) return -1;
     const name = port.name || '';
+    if (MIDI_SYSTEM_PORT.test(name)) return -9;
     if (MIDI_OTA_HINT.test(name)) return -2;
     if (preferredName && name === preferredName) return 3;
     if (MIDI_DEVICE_HINTS.some(rx => rx.test(name))) return 2;
@@ -197,7 +200,7 @@ class MidiInput {
     let best = null, bestRank = -3;
     for (const p of ports) {
       const r = this._rank(p, preferredName);
-      if (r > bestRank) { best = p; bestRank = r; }
+      if (r > bestRank && r > -9) { best = p; bestRank = r; }
     }
     return best;
   }

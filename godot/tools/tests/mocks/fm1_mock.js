@@ -9,6 +9,7 @@ module.exports.PROFILES = {
   felucca: { port: 'Felucca MIDI 1', identity: 'FM-1_915', info: 'FELUCCA v1.5.1', keyCh: 3, audioLabel: 'Felucca Analog Stereo', latencyMs: 23 },
   sloop:   { port: 'Felucca MIDI 1', identity: 'FM-1_925', info: 'FELUCCA SLOOP 2.5', keyCh: 1, audioLabel: 'Felucca Analog Stereo', latencyMs: 23 },
   x0x:     { port: 'X0X FM-1 MIDI 1', identity: 'FM-1_9010005', info: 'X0X 1.0.5 BETA', keyCh: 10, audioLabel: 'X0X FM-1 Analog Stereo', latencyMs: 23 },
+  through: { port: 'Midi Through Port-0', identity: null, info: null, keyCh: 1, audioLabel: 'Steam Deck Internal Microphone', latencyMs: 23 },
   unknown: { port: 'USB MIDI Interface MIDI 1', identity: null, info: null, keyCh: 1, audioLabel: 'USB Audio Device Analog Stereo', latencyMs: 23 },
 };
 

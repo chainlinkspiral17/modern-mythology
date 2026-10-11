@@ -528,6 +528,26 @@ those tools.
   plus its name key). An old label stays until the next IDENTIFY or
   CONNECT.
 
+### 2026-10-11 — "Midi Through Port-0" is never the FM-1
+
+- On the Deck, the check-out asked the user "Is “Midi Through Port-0”
+  your FM-1?" while the FM-1 was plugged in over USB-C. That port is
+  the ALSA loopback Linux always creates. Chrome reached it through
+  the same ALSA sequencer the FM-1 would use, so the sandbox was fine:
+  Linux itself had no FM-1 MIDI device. Suspect, in order:
+  1. the cable (charge-only USB-C);
+  2. the synth not switched on;
+  3. the dock.
+
+  `cat /proc/asound/cards` on the host settles it.
+- `midi_input.js` now ranks `MIDI_SYSTEM_PORT` (`/^midi through\b/i`)
+  below every other port and never auto-picks it, in every tool. The
+  check-out explains it in plain words instead of asking.
+- The check-out's connect step re-rendered its card in `finally`. That
+  erased every connect message: no port, permission denied, updater
+  mode. The last message is now restored after the re-render. Tests
+  should assert the words the user sees, not just check statuses.
+
 ## TEMPLATE
 
 ```

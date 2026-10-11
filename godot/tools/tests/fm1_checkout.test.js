@@ -117,6 +117,18 @@ suite('fm1 checkout · mock hardware', async t => {
     t.noErrors(o.errors);
   });
 
+  await t.test('only Linux\'s "Midi Through" port: never offered as the FM-1, clear failure', async () => {
+    const o = await open('through'), { p } = o;
+    await o.press('[data-act="connect"]');
+    t.ok(await o.waitFor(() => !connecting && R.steps.connect && R.steps.connect.checks.port && R.steps.connect.checks.port.status === 'fail', 9000), 'port check failed');
+    const r = await p.evaluate(() => ({ inPort: mi.input && mi.input.name, ask: !!document.querySelector('.chk[data-cid="port"] button.yes'), msg: document.getElementById('conn-msg').textContent }));
+    t.eq(r.inPort, null, 'Midi Through not attached');
+    t.ok(!r.ask, 'no "is this your FM-1?" question');
+    t.ok(/loopback/i.test(r.msg) && /cable/i.test(r.msg), 'explains it: ' + r.msg.slice(0, 80));
+    t.eq((await o.sentSince(0)).length, 0, 'nothing sent to the loopback port');
+    t.noErrors(o.errors);
+  });
+
   await t.test('answers persist across a reload', async () => {
     const o = await open('felucca'), { p } = o;
     await o.connect();
