@@ -490,6 +490,11 @@
    "md5": "518f192f645565bd565b61277b4c128f",
    "size": 69848
   },
+  "godot/assets/3d/characters/heroes/eileen_henderson.glb": {
+   "at": "2026-10-11T20:02:39+00:00",
+   "md5": "3f3078b680ba87082339bfb684b871b6",
+   "size": 53038080
+  },
   "godot/assets/3d/characters/heroes/elicia_temple.glb": {
    "at": "2026-10-01T01:48:41+00:00",
    "md5": "03bf2ef488bbe8be456a73939ab7fae1",
@@ -52634,6 +52639,41 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "58adb7331a44b57216870f92965470c5",
    "size": 75505
+  },
+  "godot/assets/concept/meshy/eileen_henderson/back.png": {
+   "at": "2026-10-11T20:02:49+00:00",
+   "md5": "0779e1a890671bbe6106ea610f0cc5f4",
+   "size": 2084470
+  },
+  "godot/assets/concept/meshy/eileen_henderson/eileen_henderson_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T20:02:49+00:00",
+   "md5": "0779e1a890671bbe6106ea610f0cc5f4",
+   "size": 2084470
+  },
+  "godot/assets/concept/meshy/eileen_henderson/eileen_henderson_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T20:02:49+00:00",
+   "md5": "58f5cf48864c03ddad1297fd2e4a5d5f",
+   "size": 2138487
+  },
+  "godot/assets/concept/meshy/eileen_henderson/eileen_henderson_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T20:02:49+00:00",
+   "md5": "345b277dec75e45745ede702afef882a",
+   "size": 1982348
+  },
+  "godot/assets/concept/meshy/eileen_henderson/front.png": {
+   "at": "2026-10-11T20:02:49+00:00",
+   "md5": "58f5cf48864c03ddad1297fd2e4a5d5f",
+   "size": 2138487
+  },
+  "godot/assets/concept/meshy/eileen_henderson/meshy_thumb.png": {
+   "at": "2026-10-11T20:02:49+00:00",
+   "md5": "5a2ae562981b54e0a50dd984948d532f",
+   "size": 77090
+  },
+  "godot/assets/concept/meshy/eileen_henderson/side.png": {
+   "at": "2026-10-11T20:02:49+00:00",
+   "md5": "345b277dec75e45745ede702afef882a",
+   "size": 1982348
   },
   "godot/assets/concept/meshy/elicia_temple/elicia_temple_front_meshy_recovered.png": {
    "at": "2026-10-01T01:23:48+00:00",
