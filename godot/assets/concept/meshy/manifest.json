@@ -3102,5 +3102,53 @@
     },
     "output": "godot/assets/3d/characters/heroes/marit.glb",
     "file_size_kb": 38584.9
+  },
+  {
+    "at": "2026-10-11T18:54:03+00:00",
+    "stage": "image",
+    "slug": "marina",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Marina like this: She was forty-one. She was in a wax canvas coat that had been on her for some hours by the wet darkening of the canvas at the shoulders. She had hair the color of cedar bark and tied back in a way that suggested she had tied it back six hours ago in Eugene and had not, on the drive up, retied it. She was wearing the kind of boots a woman who had walked the foundation's beaches in winter for six years wore. She had a bag in her left hand. She had, in her right hand, a wooden box. She was in her foundation coat. She pulled on the wool sweater she had worn yesterday and the jeans.\nFull-body concept render of Marina, a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/marina/marina_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/marina/marina_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/marina/marina_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-11T18:57:29+00:00",
+    "stage": "mesh",
+    "slug": "marina",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a12c50-c0b6-724c-8463-ff682dbcba3c",
+    "inputs": [
+      "godot/assets/concept/meshy/marina/front.png",
+      "godot/assets/concept/meshy/marina/side.png",
+      "godot/assets/concept/meshy/marina/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "smart-topology",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/marina.glb",
+    "file_size_kb": 58570.2
   }
 ]
