@@ -1584,6 +1584,27 @@ const CAMERA_PRESETS := {
 		"fov": 72.0,
 		"suppress_input": true,
 	},
+	"vehicle_cab_night": {
+		"scene": "res://scenes/locales/vehicle_cab.tscn",
+		"requires_glb": "res://assets/3d/locales/vehicle_cab.glb",
+		# Truck at the origin facing blender +Y; camera at the center
+		# console between the front buckets, eye 1.28 under a 1.72
+		# roof, looking forward over the dash through the windshield
+		# at the two-lane road and the scrub beyond. Wide lens: a cab
+		# is a small room.
+		# (2026-10-11) THE SAME SEAT AT NIGHT: ch5 1776 kHz (Maya "in the dark of the passenger seat"), ch7 (Ben in the truck
+		# after the Hendersons' steps, the text about Sam's grandmother), ch20 (Jesse
+		# in the Civic in the Foxhole lot at ten-fifteen). The sun and sky fill are
+		# suffixed per day preset; this one brings a moon, the lot light /
+		# streetlight, and a night sky. The dash practicals serve both.
+		"camera_origin": Vector3(0.0, 1.28, -0.10),
+		"camera_rotation": Vector3(-0.14, 0.0, 0.0),
+		"fov": 72.0,
+		"env": {"sky_top": Color(0.04, 0.05, 0.11, 1), "sky_horizon": Color(0.16, 0.15, 0.20, 1),
+			"ground_horizon": Color(0.08, 0.08, 0.09, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.34, 0.36, 0.46, 1), "ambient_energy": 0.32, "fog_color": Color(0.10, 0.10, 0.14, 1)},
+		"suppress_input": true,
+	},
 	"vehicle_cab_side": {
 		"scene": "res://scenes/locales/vehicle_cab.tscn",
 		"requires_glb": "res://assets/3d/locales/vehicle_cab.glb",
@@ -1639,6 +1660,27 @@ const CAMERA_PRESETS := {
 		"fov": 72.0,
 		"suppress_input": true,
 	},
+	"vehicle_cab_altima_night": {
+		"scene": "res://scenes/locales/vehicle_cab.tscn",
+		"requires_glb": "res://assets/3d/locales/vehicle_cab.glb",
+		# ch16 El Rancho: BT's beige 2017 Altima, parked in the same
+		# turnout east of the truck (blender origin (9.5, 0.5), the cab
+		# 14 cm lower). Camera at its center console, looking forward
+		# over the dash through the windshield at the road (draft 3,
+		# 2026-10-09: the spread was dressed into Ben's pickup).
+		# (2026-10-11) THE SAME SEAT AT NIGHT: ch16 El Rancho + Dawn (the four-minute drive at four AM, "past a single
+		# working streetlight", the headlights' "small cone of yellow into the
+		# August night"). The sun and sky fill are
+		# suffixed per day preset; this one brings a moon, the lot light /
+		# streetlight, and a night sky. The dash practicals serve both.
+		"camera_origin": Vector3(9.5, 1.14, -0.60),
+		"camera_rotation": Vector3(-0.14, 0.0, 0.0),
+		"fov": 72.0,
+		"env": {"sky_top": Color(0.04, 0.05, 0.11, 1), "sky_horizon": Color(0.16, 0.15, 0.20, 1),
+			"ground_horizon": Color(0.08, 0.08, 0.09, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.34, 0.36, 0.46, 1), "ambient_energy": 0.32, "fog_color": Color(0.10, 0.10, 0.14, 1)},
+		"suppress_input": true,
+	},
 	"vehicle_cab_rear": {
 		"scene": "res://scenes/locales/vehicle_cab.tscn",
 		"requires_glb": "res://assets/3d/locales/vehicle_cab.glb",
@@ -1649,6 +1691,25 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(0.0, 1.20, 0.95),
 		"camera_rotation": Vector3(-0.06, 0.0, 0.0),
 		"fov": 76.0,
+		"suppress_input": true,
+	},
+	"vehicle_cab_rear_night": {
+		"scene": "res://scenes/locales/vehicle_cab.tscn",
+		"requires_glb": "res://assets/3d/locales/vehicle_cab.glb",
+		# ch5 Eight Minutes: four of them in the truck. Camera on the
+		# rear bench, center, eye 1.20, looking forward between the two
+		# headrests at the dash and the windshield — Ben and Maya's
+		# seat backs frame the shot, Sam and Jesse are where we sit.
+		# (2026-10-11) THE SAME SEAT AT NIGHT: ch5 Eight Minutes (mood:night — "Ben, in the driver's seat, does not
+		# start the engine"). The sun and sky fill are
+		# suffixed per day preset; this one brings a moon, the lot light /
+		# streetlight, and a night sky. The dash practicals serve both.
+		"camera_origin": Vector3(0.0, 1.20, 0.95),
+		"camera_rotation": Vector3(-0.06, 0.0, 0.0),
+		"fov": 76.0,
+		"env": {"sky_top": Color(0.04, 0.05, 0.11, 1), "sky_horizon": Color(0.16, 0.15, 0.20, 1),
+			"ground_horizon": Color(0.08, 0.08, 0.09, 1), "ground_bottom": Color(0.03, 0.03, 0.04, 1),
+			"ambient_color": Color(0.34, 0.36, 0.46, 1), "ambient_energy": 0.32, "fog_color": Color(0.10, 0.10, 0.14, 1)},
 		"suppress_input": true,
 	},
 	"lake_palestine_dock": {
@@ -2041,7 +2102,7 @@ const CAMERA_PRESETS := {
 		"fov": 60.0,
 		"env": {"sky_top": Color(0.05, 0.06, 0.12, 1), "sky_horizon": Color(0.16, 0.14, 0.20, 1),
 			"ground_horizon": Color(0.10, 0.09, 0.11, 1), "ground_bottom": Color(0.04, 0.04, 0.05, 1),
-			"ambient_color": Color(0.36, 0.34, 0.44, 1), "ambient_energy": 0.42, "fog_color": Color(0.14, 0.12, 0.18, 1)},
+			"ambient_color": Color(0.36, 0.34, 0.44, 1), "ambient_energy": 0.52, "fog_color": Color(0.14, 0.12, 0.18, 1)},
 		"suppress_input": true,
 	},
 	"missing_link_interior": {

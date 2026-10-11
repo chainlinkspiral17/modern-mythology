@@ -221,6 +221,15 @@ rotation = Vector3(-0.2618, 1.3090, 0.0)
 ; ── the night (2026-10-10, preset lena_apartment_night) — row-major
 ; vol7 ch7 Night and the ch8 chain after nine, ch10 Morning at 5:40: the street lamp's cold spill through
 ; the window; the floor lamp and the fairy lights (unsuffixed) are the room's light
+; the lamp's spill across the whole room at night (the day's three directionals are gone;
+; 1.4 at 3.2 m reaches the sofa, not the table): a wide, dim second omni at the floor lamp
+[node name="Floor_Lamp_Room_Spill__lena_apartment_night" type="OmniLight3D" parent="."]
+position = Vector3(2.180, 1.400, -4.900)
+light_color = Color(0.950, 0.800, 0.560, 1)
+light_energy = 0.70
+shadow_enabled = false
+omni_range = 7.50
+
 [node name="Street_Window__lena_apartment_night" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.3420, 0.3971, -0.8517, 0.0000, 0.9063, 0.4226, 0.9397, 0.1445, -0.3100, -6, 5, -6)
 light_color = Color(0.70, 0.76, 0.92, 1)

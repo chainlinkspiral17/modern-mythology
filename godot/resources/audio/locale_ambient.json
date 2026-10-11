@@ -409,7 +409,15 @@
       "bed": "assets/audio/bgm/vol6_two_lane.wav",
       "gain": 0.4
     },
+    "vehicle_cab_night": {
+      "bed": "assets/audio/bgm/vol6_two_lane.wav",
+      "gain": 0.4
+    },
     "vehicle_cab_altima": {
+      "bed": "assets/audio/bgm/vol6_two_lane.wav",
+      "gain": 0.4
+    },
+    "vehicle_cab_altima_night": {
       "bed": "assets/audio/bgm/vol6_two_lane.wav",
       "gain": 0.4
     },
@@ -438,6 +446,10 @@
       "gain": 0.3
     },
     "vehicle_cab_rear": {
+      "bed": "assets/audio/bgm/vol6_two_lane.wav",
+      "gain": 0.4
+    },
+    "vehicle_cab_rear_night": {
       "bed": "assets/audio/bgm/vol6_two_lane.wav",
       "gain": 0.4
     },

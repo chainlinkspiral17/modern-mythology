@@ -3834,6 +3834,33 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-11 · overnight run, pass 57: THE CAB AT NIGHT (three presets) + Lena's
+night fill.** Seven vol6 cab cuts played at night on the turnout's day
+sun: ch5 1776 kHz ("Maya smiles in the dark of the passenger seat"), ch5
+Eight Minutes (mood:night, the rear bench), ch7 Ben in the truck after
+the Hendersons' steps, ch20 Jesse in the Civic in the Foxhole lot at
+ten-fifteen, ch16 El Rancho ×2 and ch16 Dawn (the Altima at four AM
+"past a single working streetlight"). New `vehicle_cab_night`,
+`vehicle_cab_rear_night`, `vehicle_cab_altima_night`: each a moon out of
+the SE (energy 0.30) plus a sodium lot light / the one streetlight as a
+wide omni, a night env on a ProceduralSky added to the scene (day), the
+dash practicals shared. Two mechanics the pass had to meet: (1) a light
+suffixed `__preset` is kept only for THAT preset, so the shared Sun +
+Sky_Fill became four copies, one per day preset (cab/rear/side/altima);
+(2) `find_shot_marker` matches the suffix exactly, so the Altima's eight
+`__vehicle_cab_altima` markers are copied again as
+`__vehicle_cab_altima_night` (the plain fallbacks are the pickup's). Audit
+twins for `shot_insert_five` (marker_aim KNOWN_UNRESOLVED, vantage
+DELIBERATE_MARKERS). Lena's night render was black past the lamp's 3.2 m:
+a wide dim omni at the floor lamp (`__lena_apartment_night`, 0.7 at 7.5 m)
+and ambient 0.42 → 0.52. No Deck rebuild. **Draft N+1:** ch8 Two Vehicles
+(pre-dawn blue on the highway, 5 AM) wants a `vehicle_cab_dawn` env, not
+the day sun; the Civic/Altima/pickup are one cab — a headlight cone on
+the road for the driving cuts (ch16, ch20 "he starts the Civic"); a
+marker-family rule in `find_shot_marker` (`X_night` inherits `X`'s
+suffixed markers) would retire the eight copies — do it when a third
+family needs it.
+
 **2026-10-10 · overnight run, pass 56: LENA'S APARTMENT AFTER DARK (the sweep's
 biggest time-of-day item).** Six vol7 chapters played after nine (ch7
 Night; the ch8 chain: dark, goodnight, the_vessel, roy) or before dawn

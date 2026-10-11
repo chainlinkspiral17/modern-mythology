@@ -151,6 +151,29 @@ Position note: lamp omnis are placed AT the lamp-head mesh position
 
 ## Recent lessons
 
+### 2026-10-11 · a night twin for a set that already has per-preset areas
+
+- **A `__preset` suffix is exact, for lights AND markers.** The cab
+  scene served four day presets (cab / rear / side / altima) off one
+  unsuffixed Sun + Sky_Fill. Adding `vehicle_cab_night` meant the sun
+  could no longer be unsuffixed (it would light the night), and a
+  light can carry only one suffix — so the pair is written four times,
+  once per day preset. Cheap; do it rather than invent a multi-suffix.
+- **Markers do not inherit either.** The Altima's closeups/inserts are
+  `shot_*__vehicle_cab_altima`; `find_shot_marker` tries
+  `<name>__<loaded preset>` then the PLAIN name, so
+  `vehicle_cab_altima_night` would have cut to the pickup's plain
+  closeups (11 m away — inside wrong_room's 12 m, so no audit catches
+  it). The night twin gets its own copies of the area's markers.
+  Audit allow-lists keyed on the full marker name
+  (`vantage DELIBERATE_MARKERS`, `marker_aim KNOWN_UNRESOLVED`) need
+  the twin's entry too.
+- **A night room's practicals are sized for the day.** Lena's floor lamp
+  (1.4 at 3.2 m) lit a sofa, not a room, once the three daylight
+  directionals were gone: the night render was black past the lamp.
+  Pair every night preset with one wide, dim omni at the main
+  practical (0.7 at 7.5 m here) and check the render before the suite.
+
 ### 2026-10-10 · a .tscn Transform3D lists basis ROWS: write a light's rotation that way
 
 - A helper that built a directional light from yaw and pitch wrote the

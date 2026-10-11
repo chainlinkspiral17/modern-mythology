@@ -54,6 +54,7 @@ KNOWN_UNRESOLVED = {
     ("smolvud_jetty", "shot_insert_drone"): "vol7 ch2: the drones are docked and the sky over Smolvud is empty — the cue reads the sky",
     ("caldwell_radio_room_night", "shot_insert_hands"): "ch2: her grandmother's hand on hers, on the bed in the dark — the cue reads the bed",
     ("vehicle_cab", "shot_insert_five__vehicle_cab_altima"): "ch16 Dawn: \"for the first time in five weeks\" — an abstract cue; the marker reads the Altima's dash",
+    ("vehicle_cab", "shot_insert_five__vehicle_cab_altima_night"): "ch16 Dawn: \"for the first time in five weeks\" — an abstract cue; the marker reads the Altima's dash",
     ("miller_kitchen", "shot_insert_notebook"): "ch9 Safehouse's coda: the spiral notebook on Sam's kitchen table six weeks later — the prop lives in safehouse_bedroom; the cue reads the table",
 }
 
