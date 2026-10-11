@@ -483,3 +483,31 @@ metadata/fov = 45.0
 position = Vector3(1.750, 1.300, -2.450)
 rotation = Vector3(-0.6062, -0.6435, 0.0)
 metadata/fov = 45.0
+
+; ── named closeups at the breakfast table (pass 79): "Her old chair had been at the long side of the
+; table, with Mike across from her and Sammy at the head. Since June she has been sitting in Mike's
+; chair, which is on the short side near the window." Each seat framed from across the table.
+; closeup: Mike Miller in his chair at the short side by the east window, from across the table
+[node name="shot_closeup_miller" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.400, 1.400, -2.450)
+rotation = Vector3(-0.1453, -0.9812, 0.0)
+metadata/fov = 42.0
+
+; closeup: Bianca at the long side (her old chair), from the island side of the table
+[node name="shot_closeup_bianca" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.000, 1.400, -4.450)
+rotation = Vector3(-0.1260, 2.9889, 0.0)
+metadata/fov = 42.0
+
+; closeup: Sammy at the head of the table, from Mike's end
+[node name="shot_closeup_sammy" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.650, 1.400, -3.950)
+rotation = Vector3(-0.1392, 1.8305, 0.0)
+metadata/fov = 42.0
+
+; closeup: Bianca in Mike's chair since June — the short side by the window, from the long side
+[node name="shot_closeup_mrs_miller" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.900, 1.400, -4.400)
+rotation = Vector3(-0.1819, -2.3978, 0.0)
+metadata/fov = 42.0
+

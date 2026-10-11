@@ -3834,6 +3834,18 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-11 · pass 79: NAMED CLOSEUPS AT THE MILLERS' TABLE (D6).** The
+second most-seen room resolves `closeup miller` (8), `closeup bianca`
+(8), `closeup sammy` and `closeup mrs_miller` to the one plain
+`closeup_person` frame. The prose seats them: "Her old chair had been at
+the long side of the table, with Mike across from her and Sammy at the
+head. Since June she has been sitting in Mike's chair, which is on the
+short side near the window." Four markers now frame each seat from
+across the table. No rebuild. **Draft N+1:** the same for the Henderson
+table (jesse / jim / mr_henderson), the cabin's seven chairs (per / cale
+/ marina / roy at the table), the Kwik Stop's `closeup jen`; Sam at the
+Millers' island.
+
 **2026-10-11 · pass 78: SAM'S COROLLA (a cab area of its own).** Her car
 had been the pickup's cab (pass 66). The Altima's pattern again: the
 truck's cab run through `plan.shifted` 16 cm lower, in the Corolla's

@@ -165,11 +165,27 @@
      "type": "establish"
     },
     {
+     "name": "shot_closeup_bianca",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_miller",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_mrs_miller",
+     "type": "closeup"
+    },
+    {
      "name": "shot_closeup_person",
      "type": "closeup"
     },
     {
      "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_sammy",
      "type": "closeup"
     },
     {
@@ -8501,11 +8517,27 @@
      "type": "establish"
     },
     {
+     "name": "shot_closeup_bianca",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_miller",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_mrs_miller",
+     "type": "closeup"
+    },
+    {
      "name": "shot_closeup_person",
      "type": "closeup"
     },
     {
      "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_sammy",
      "type": "closeup"
     },
     {
@@ -10137,5 +10169,5 @@
   "tired",
   "nervous"
  ],
- "frames": 2272
+ "frames": 2280
 }
