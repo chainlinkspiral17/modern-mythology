@@ -4209,5 +4209,53 @@
     },
     "output": "godot/assets/3d/characters/heroes/doug.glb",
     "file_size_kb": 54095.2
+  },
+  {
+    "at": "2026-10-11T21:26:33+00:00",
+    "stage": "image",
+    "slug": "jessa",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Jessa like this: Young, serious, hard black woman. Jessa will not, externally, react, but she will register the sentence.\n\nHe puts his cup in the small dishwasher Jessa runs at the end of every shift. Additional direction: Jessa, 30s, the Centro's night manager. Tall, straight-backed, dark hair in a clip, a face that registers everything and reacts to nothing. A store polo with a manager's badge, black trousers, black flats, a clipboard against her hip, a set of keys on a coil at her wrist.\nFull-body concept render of Jessa, a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/jessa/jessa_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/jessa/jessa_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/jessa/jessa_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-11T21:31:38+00:00",
+    "stage": "mesh",
+    "slug": "jessa",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a12cde-d300-7665-a2dc-c0c611e4c834",
+    "inputs": [
+      "godot/assets/concept/meshy/jessa/front.png",
+      "godot/assets/concept/meshy/jessa/side.png",
+      "godot/assets/concept/meshy/jessa/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "smart-topology",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/jessa.glb",
+    "file_size_kb": 38133.9
   }
 ]
