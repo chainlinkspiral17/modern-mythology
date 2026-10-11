@@ -102,6 +102,7 @@ function render() {
         <dt>MIDI OUT</dt><dd>${esc(roles)}${f.drums ? ' · drums: ' + esc(f.drums) : ''}</dd>
         <dt>clock</dt><dd>${esc(f.clock || '—')}</dd>
         <dt>recovery</dt><dd>${esc(f.recovery || '—')}</dd>
+        ${f.verified ? `<dt>verified</dt><dd>✔ ${esc(f.verified.date)} · ${esc(f.verified.version)} · ${esc(f.verified.how)}: ${esc(f.verified.facts.join(' · '))}${f.verified.pending && f.verified.pending.length ? ' — still untested: ' + esc(f.verified.pending.join(', ')) : ''}</dd>` : ''}
         ${f.warnings && f.warnings.length ? `<dt>watch out</dt><dd>${esc(f.warnings.join(' · '))}</dd>` : ''}
         <dt>source</dt><dd>${link(f.url)}</dd>
       </dl>`;

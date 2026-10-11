@@ -548,6 +548,34 @@ those tools.
   mode. The last message is now restored after the re-render. Tests
   should assert the words the user sees, not just check statuses.
 
+### 2026-10-11 — first real CHECK-OUT: Baud Girl FM-1+VA (FM-1_093)
+
+- First hardware-verified facts, stored in the registry's new
+  `verified` / `cc` / `keys` fields. All of them came from the user's
+  check-out on the Deck over USB-C:
+  - the port is "FM-1 MIDI 1";
+  - it answers the version query;
+  - it plays USB notes on ch 1;
+  - its keys send ch 1 at a **fixed velocity of 90**;
+  - **CC 74 moves the sound; CC 71, 1 and 7 don't**;
+  - **the knobs send no CC at all**.
+- DX7 push, clock and audio latency are still `pending`. Never
+  promote a fact from documentation to `verified` without a
+  check-out (or equal) result.
+- What the tools now do with these facts:
+  - DAW CC lanes on a hardware FM-1 list the answered CCs first (✔)
+    and mark ignored ones "no effect on …".
+  - Knob LEARN says the knobs are silent and to use another
+    controller.
+  - The check-out treats "no knob CC" as a finding, not a FAIL (the
+    check is optional now).
+- Lesson: when a check's "no" is a legitimate property of a firmware,
+  don't mark it required. The step showed FAIL for a synth that works
+  fine.
+- Fixed velocity 90 means takes recorded from the FM-1 keys have flat
+  dynamics. Use the piano roll's HUMANIZE or the groove accents if a
+  part needs them.
+
 ## TEMPLATE
 
 ```

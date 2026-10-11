@@ -27,6 +27,13 @@
  *                    sounds (TRK_DEF): track 1 bass, 2 pad/keys, 3 lead.
  *   dx7              true: F0 43 voice dumps work · "editor": only via
  *                    the firmware's web editor · false: no FM-DX7 engine.
+ *   cc               (optional, hardware-verified) filter: the CC that moves
+ *                    the filter · responds / ignores: CCs tested from USB ·
+ *                    knobsSend: whether turning the knobs sends CC.
+ *   keys             (optional) channel / fixed velocity the keys send.
+ *   verified         (optional) what a real unit confirmed, when, on which
+ *                    version and how; `pending` lists what is still untested.
+ *                    Only FM-1 CHECK-OUT results (or equal) go here.
  */
 "use strict";
 
@@ -58,6 +65,13 @@ const FM1_REGISTRY = /*FM1-JSON-BEGIN*/{
       "roles": null, "drums": null, "clock": "unknown", "dx7": true,
       "recovery": "M-UPGRADE with V15 or the installer's restore; a dongle if it will not boot",
       "warnings": ["a single-voice DX7 dump overwrites the selected stored preset without asking"],
+      "cc": { "filter": 74, "responds": [74], "ignores": [1, 7, 71], "knobsSend": false },
+      "keys": { "channel": 1, "velocity": 90 },
+      "verified": { "date": "2026-10-11", "version": "FM-1_093", "how": "FM-1 CHECK-OUT on the Steam Deck (USB-C)",
+        "facts": ["port name FM-1 MIDI 1 (in and out)", "answers the version query", "plays notes from USB on ch 1",
+                  "keys send on ch 1 at a fixed velocity of 90, note-offs arrive", "CC 74 changes the sound; CC 71, 1 and 7 do not",
+                  "the knobs send no MIDI CC"],
+        "pending": ["DX7 voice push", "clock follow", "USB audio and latency"] },
       "summary": "Keeps the stock FM engine; adds VA (303 / supersaw), 8-bit, bitcrush, a 64-step sequencer, list menus, live knobs."
     },
     {

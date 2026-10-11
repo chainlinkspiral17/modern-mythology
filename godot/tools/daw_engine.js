@@ -830,9 +830,19 @@ registerProcessor('mm-daw-rec', MMDawRec);
           out.push({ target: 'dev.master.gain', label: 'synth master' });
           for (const L of ['A', 'B', 'C']) out.push({ target: 'dev.lane.' + L + '.gain', label: 'synth lane ' + L });
         }
-        for (const [n, nm] of [[1, 'mod wheel'], [7, 'volume'], [10, 'pan'], [11, 'expression'], [71, 'resonance'], [74, 'cutoff'], [91, 'reverb'], [93, 'chorus']]) out.push({ target: 'cc.' + n, label: 'CC ' + n + ' · ' + nm });
+        // a hardware FM-1: the registry's hardware-verified CC map (fm1_firmwares.js) — answered CCs first, ignored ones say so
+        const d = this.dev(tr.deviceId), fw = d && d.type === 'hw' ? this.hwFirmware() : null, cc = fw && fw.cc;
+        const ccs = [[1, 'mod wheel'], [7, 'volume'], [10, 'pan'], [11, 'expression'], [71, 'resonance'], [74, 'cutoff'], [91, 'reverb'], [93, 'chorus']]
+          .map(([n, nm]) => ({ n, nm, ok: cc && (cc.responds || []).includes(n), no: cc && (cc.ignores || []).includes(n) }))
+          .sort((a, b) => (b.ok - a.ok) || (a.no - b.no));
+        for (const x of ccs) out.push({ target: 'cc.' + x.n, label: 'CC ' + x.n + ' · ' + x.nm + (x.ok ? ' ✔ ' + fw.name : x.no ? ' · no effect on ' + fw.name : '') });
       }
       return out;
+    }
+    // the firmware the FM-1 tools last identified (midi_input.js stores it), as its registry entry
+    hwFirmware() {
+      let id = ''; try { id = localStorage.getItem('mm_fm1_firmware') || ''; } catch (e) {}
+      return id && typeof fm1Firmware === 'function' ? fm1Firmware(id) : null;
     }
     // a lane's 0..1 as the value it sets, for labels
     autoValueLabel(tr, target, v) {

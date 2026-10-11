@@ -728,6 +728,8 @@ function mountMidiOverlay(mi, opts = {}) {
     mi.learn(targetSel.value);
     learnBtn.textContent = 'TURN IT…';
     msgEl.textContent = 'turn the knob on the FM-1 you want to drive ' + targetSel.selectedOptions[0].textContent + '.';
+    const p = mi.profile && mi.profile(), fw = p && p.fw;
+    if (fw && fw.cc && fw.cc.knobsSend === false) msgEl.textContent = fw.name + "'s knobs send no MIDI (checked on a real unit) — turn a knob on another MIDI controller instead.";
   });
   forgetBtn.addEventListener('click', () => { mi.forget(targetSel.value); refreshMap(); msgEl.textContent = 'forgot.'; });
   $('mio-panic').addEventListener('click', () => { mi.allNotesOff(); msgEl.textContent = 'all notes off sent.'; });

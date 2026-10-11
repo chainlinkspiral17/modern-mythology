@@ -737,7 +737,8 @@ RENDER.cc = () => {
     <h3>B · FROM THE FM-1 TO THIS PAGE</h3>
     <div class="do">Turn each of the FM-1's <b>four knobs</b> slowly, one at a time.</div>
     <div id="ccin-list" class="note">nothing yet…</div>`;
-  h += row('cc', 'cc_in', 'Knob moves arrive as CC messages', { kind: 'auto', btns: ['no', 'skip'], no: '✘ NOTHING' });
+  h += row('cc', 'cc_in', 'Knob moves arrive as CC messages', { kind: 'auto', btns: ['no', 'skip'], no: '✘ NOTHING', optional: true });
+  if (c.fw && c.fw.cc && c.fw.cc.knobsSend === false) h += `<div class="note">Already checked on a real unit (${esc(c.fw.verified ? c.fw.verified.date : 'earlier')}): ${esc(c.label)}'s knobs keep to themselves — nothing arriving is the expected answer here.</div>`;
   h += `<div class="note">The tools learn knobs by turning them (MIDI-learn), so any CC numbers work. Nothing arriving is a valid result too — that firmware keeps its knobs local.</div>`;
   return h;
 };
