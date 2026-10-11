@@ -552,19 +552,12 @@ def build_beyond_glass_2026_08():
         make_box(f"Lot_Stripe_W_{si}", (-7.2, sy, 0.005), (0.10, 1.8, 0.01), (0.86, 0.84, 0.78, 1.0))
     # Two parked cars + THE LOUISIANA PICKUP (nose-in, engine cold,
     # driver never enters) framed by the W_Mid booth window.
-    for tag, cy2, col in [("A", 1.9, (0.32, 0.34, 0.40, 1.0)), ("B", 6.6, (0.62, 0.60, 0.56, 1.0))]:
-        make_box(f"Lot_Car_{tag}_Body", (-7.72, cy2, 0.55), (4.2, 1.75, 0.55), col)   # clear of the wall (2026-09-23: 10 cm into it)
-        make_box(f"Lot_Car_{tag}_Cabin", (-8.02, cy2, 1.02), (2.2, 1.6, 0.45), col)
-        for wx_ in (-9.22, -6.22):   # wheels (2026-09-23: the wall had been holding the cars up)
-            for wy_ in (-0.70, 0.70):
-                make_cyl(f"Lot_Car_{tag}_Wheel_{wx_:.1f}_{wy_:+.1f}", (wx_, cy2 + wy_, 0.30), 0.30, 0.24, (0.10, 0.10, 0.11, 1.0), axis='Y', segments=10)
-    # "a black pickup with Louisiana plates" (vol6_ch2) — it was brown
-    make_box("Lot_LA_Pickup_Body", (-8.1, 4.35, 0.62), (4.8, 1.85, 0.70), (0.10, 0.10, 0.11, 1.0))
-    make_box("Lot_LA_Pickup_Cab", (-9.1, 4.35, 1.25), (1.8, 1.75, 0.55), (0.10, 0.10, 0.11, 1.0))
-    make_box("Lot_LA_Pickup_Bed_Rim", (-6.9, 4.35, 1.02), (2.3, 1.85, 0.08), (0.07, 0.07, 0.08, 1.0))
-    for wx_ in (-9.8, -6.4):   # the pickup had no wheels — it hung 27 cm over the lot (2026-09-23)
-        for wy_ in (3.55, 5.15):
-            make_cyl(f"Lot_LA_Pickup_Wheel_{wx_:.1f}_{wy_:.2f}", (wx_, wy_, 0.32), 0.32, 0.26, (0.10, 0.10, 0.11, 1.0), axis='Y', segments=10)
+    # (pass 71, 2026-10-11) the two cars and THE LOUISIANA PICKUP ("a black pickup with
+    # Louisiana plates", vol6_ch2 — the driver never enters) as vehicles, nose-in to
+    # the building, where the booth windows look at them (they were box silhouettes)
+    make_car("Lot_Car_A", -7.95, 1.9, 4.2, (0.32, 0.34, 0.40, 1.0), along="X")
+    make_car("Lot_Car_B", -7.95, 6.6, 4.2, (0.62, 0.60, 0.56, 1.0), along="X", hatch=True)
+    make_car("Lot_LA_Pickup", -8.3, 4.35, 4.8, (0.10, 0.10, 0.11, 1.0), pickup=True, along="X")
     # Lot light pole + far treeline wall (edge-of-set).
     make_cyl("Lot_Pole", (-11.5, 4.5, 3.0), 0.09, 6.0, (0.40, 0.40, 0.42, 1.0), segments=8)
     make_box("Lot_Pole_Head", (-11.2, 4.5, 6.0), (0.7, 0.25, 0.18), (0.30, 0.30, 0.32, 1.0))

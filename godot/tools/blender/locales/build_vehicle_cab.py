@@ -263,6 +263,9 @@ def build_dash():
         make_box(f"Floor_Mat_F_{nm}", (sgn * 0.46, 0.65, 0.463), (0.55, 0.60, 0.006), (0.15, 0.15, 0.15, 1.0))
         make_box(f"Floor_Mat_R_{nm}", (sgn * 0.46, -0.60, 0.463), (0.55, 0.50, 0.006), (0.15, 0.15, 0.15, 1.0))
     make_box("Glovebox_Door", (0.46, 0.945, 0.86), (0.50, 0.01, 0.26), DASH_LT)
+    # (pass 71) ch14: the map — a folded sheet of printer paper on the dash over the glove box
+    make_box("Map_Folded", (0.46, 1.10, 1.186), (0.22, 0.16, 0.012), (0.92, 0.90, 0.82, 1.0))
+    make_box("Map_Folded_Crease", (0.46, 1.10, 1.193), (0.004, 0.16, 0.002), (0.60, 0.58, 0.52, 1.0))
 
 
 def build_seats():

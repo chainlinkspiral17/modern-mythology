@@ -431,6 +431,11 @@ def dress_family():
     the French toast being made (ch 11), Eileen's cinnamon roll and the
     kolaches and the jar on the table, the Sentinel folded at Mike's end,
     the photographs fanned on the island, the white sedan at the curb."""
+    # (pass 71, 2026-10-11) "The notebook is the small spiral-bound one Sam brought to the
+    # safehouse" — on the table at Sam's place, six weeks later (ch9 Safehouse's coda)
+    make_box("Notebook_Spiral", (TX - 0.50, TY - 0.35, 0.776), (0.21, 0.27, 0.012), (0.30, 0.30, 0.34, 1.0))
+    make_box("Notebook_Spiral_Page", (TX - 0.50, TY - 0.35, 0.783), (0.19, 0.25, 0.002), (0.94, 0.94, 0.90, 1.0))
+    make_cyl("Notebook_Spiral_Coil", (TX - 0.50 - 0.10, TY - 0.35, 0.779), 0.006, 0.26, (0.70, 0.70, 0.72, 1.0), axis='Y', segments=6)
     top = 0.77
     dress_french_toast()
     # Mike's coffee and his phone at the counter by the coffee maker

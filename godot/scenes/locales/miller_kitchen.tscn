@@ -480,6 +480,6 @@ metadata/fov = 45.0
 
 ; insert (2026-10-10, ch9 Safehouse coda): the notebook on Sam's table — the table insert's eye (no notebook prop here yet)
 [node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.600, 1.450, -2.400)
-rotation = Vector3(-0.4234, -0.8330, 0.0)
+position = Vector3(1.750, 1.300, -2.450)
+rotation = Vector3(-0.6062, -0.6435, 0.0)
 metadata/fov = 45.0

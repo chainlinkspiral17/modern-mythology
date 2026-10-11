@@ -2643,43 +2643,6 @@
    "scene_missing": false
   },
   {
-   "id": "henderson_garage",
-   "scene": "res://scenes/locales/henderson_garage.tscn",
-   "vol": 6,
-   "uses": 5,
-   "moods": [
-    "dusk",
-    "candlelight_low"
-   ],
-   "markers": [
-    {
-     "name": "shot_closeup_person",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_person_b",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_insert_drum_kit",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_flyer",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_map",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_truck",
-     "type": "insert"
-    }
-   ],
-   "scene_missing": false
-  },
-  {
    "id": "new_orleans_bar",
    "scene": "res://scenes/locales/new_orleans_bar.tscn",
    "vol": 1,
@@ -3150,46 +3113,6 @@
     {
      "name": "shot_insert_window",
      "type": "insert"
-    }
-   ],
-   "scene_missing": false
-  },
-  {
-   "id": "miriam_subaru",
-   "scene": "res://scenes/locales/miriam_subaru.tscn",
-   "vol": 5,
-   "uses": 4,
-   "moods": [
-    "dawn_warm"
-   ],
-   "markers": [
-    {
-     "name": "shot_closeup_natalie",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_nicola",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_person",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_person_b",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_insert_blanket",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_crow",
-     "type": "insert"
-    },
-    {
-     "name": "shot_wide_station",
-     "type": "wide"
     }
    ],
    "scene_missing": false
@@ -3732,6 +3655,43 @@
    "scene_missing": false
   },
   {
+   "id": "henderson_garage",
+   "scene": "res://scenes/locales/henderson_garage.tscn",
+   "vol": 6,
+   "uses": 3,
+   "moods": [
+    "dusk",
+    "candlelight_low"
+   ],
+   "markers": [
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_drum_kit",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_flyer",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_map",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_truck",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
    "id": "houston_office",
    "scene": "res://scenes/locales/houston_office.tscn",
    "vol": 5,
@@ -3837,6 +3797,46 @@
     {
      "name": "shot_insert_vanity",
      "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
+   "id": "miriam_subaru",
+   "scene": "res://scenes/locales/miriam_subaru.tscn",
+   "vol": 5,
+   "uses": 3,
+   "moods": [
+    "dawn_warm"
+   ],
+   "markers": [
+    {
+     "name": "shot_closeup_natalie",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_nicola",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_blanket",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_crow",
+     "type": "insert"
+    },
+    {
+     "name": "shot_wide_station",
+     "type": "wide"
     }
    ],
    "scene_missing": false
@@ -5273,6 +5273,42 @@
    "scene_missing": false
   },
   {
+   "id": "henderson_garage_day",
+   "scene": "res://scenes/locales/henderson_garage.tscn",
+   "vol": 6,
+   "uses": 2,
+   "moods": [
+    ""
+   ],
+   "markers": [
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_drum_kit",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_flyer",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_map",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_truck",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
    "id": "henderson_porch_front",
    "scene": "res://scenes/locales/henderson_porch_front.tscn",
    "vol": 6,
@@ -5758,39 +5794,6 @@
     },
     {
      "name": "shot_insert_phone",
-     "type": "insert"
-    }
-   ],
-   "scene_missing": false
-  },
-  {
-   "id": "new_orleans_room",
-   "scene": "res://scenes/locales/new_orleans_room.tscn",
-   "vol": 5,
-   "uses": 2,
-   "moods": [
-    "night",
-    "tv_glow_blue"
-   ],
-   "markers": [
-    {
-     "name": "shot_establish_b",
-     "type": "establish"
-    },
-    {
-     "name": "shot_closeup_douglas",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_insert_letter",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_mirror",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_tv",
      "type": "insert"
     }
    ],
@@ -8651,6 +8654,46 @@
    "scene_missing": false
   },
   {
+   "id": "miriam_subaru_night",
+   "scene": "res://scenes/locales/miriam_subaru.tscn",
+   "vol": 5,
+   "uses": 1,
+   "moods": [
+    ""
+   ],
+   "markers": [
+    {
+     "name": "shot_closeup_natalie",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_nicola",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_blanket",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_crow",
+     "type": "insert"
+    },
+    {
+     "name": "shot_wide_station",
+     "type": "wide"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
    "id": "missing_link_exterior",
    "scene": "res://scenes/locales/missing_link_exterior.tscn",
    "vol": 1,
@@ -8925,6 +8968,71 @@
     },
     {
      "name": "shot_insert_van",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
+   "id": "new_orleans_room",
+   "scene": "res://scenes/locales/new_orleans_room.tscn",
+   "vol": 5,
+   "uses": 1,
+   "moods": [
+    "night",
+    "tv_glow_blue"
+   ],
+   "markers": [
+    {
+     "name": "shot_establish_b",
+     "type": "establish"
+    },
+    {
+     "name": "shot_closeup_douglas",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_letter",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_mirror",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_tv",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
+   "id": "new_orleans_room_day",
+   "scene": "res://scenes/locales/new_orleans_room.tscn",
+   "vol": 5,
+   "uses": 1,
+   "moods": [
+    "dawn_warm"
+   ],
+   "markers": [
+    {
+     "name": "shot_establish_b",
+     "type": "establish"
+    },
+    {
+     "name": "shot_closeup_douglas",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_letter",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_mirror",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_tv",
      "type": "insert"
     }
    ],
@@ -9930,5 +10038,5 @@
   "tired",
   "nervous"
  ],
- "frames": 2231
+ "frames": 2252
 }
