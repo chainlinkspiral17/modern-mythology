@@ -845,6 +845,11 @@
    "md5": "c3befe4afea4b83953afed7254eb5275",
    "size": 2852012
   },
+  "godot/assets/3d/characters/heroes/lena_vargas.glb": {
+   "at": "2026-10-11T17:04:16+00:00",
+   "md5": "fcd2aec3d43396b117cfb1e99be19aa0",
+   "size": 63379996
+  },
   "godot/assets/3d/characters/heroes/linda_caldwell.glb": {
    "at": "2026-10-01T01:48:41+00:00",
    "md5": "94396791f2a0a830a0ac4e0533189cf8",
@@ -52549,6 +52554,41 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "c295a835e50676569c1f608f003ac694",
    "size": 58123
+  },
+  "godot/assets/concept/meshy/lena_vargas/back.png": {
+   "at": "2026-10-11T17:04:26+00:00",
+   "md5": "5a5e671d025cc081c4bdf9087b2d9d0b",
+   "size": 1988488
+  },
+  "godot/assets/concept/meshy/lena_vargas/front.png": {
+   "at": "2026-10-11T17:04:26+00:00",
+   "md5": "bd4a75094c73399535d8a92c39fe1820",
+   "size": 1755776
+  },
+  "godot/assets/concept/meshy/lena_vargas/lena_vargas_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T17:04:26+00:00",
+   "md5": "5a5e671d025cc081c4bdf9087b2d9d0b",
+   "size": 1988488
+  },
+  "godot/assets/concept/meshy/lena_vargas/lena_vargas_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T17:04:26+00:00",
+   "md5": "bd4a75094c73399535d8a92c39fe1820",
+   "size": 1755776
+  },
+  "godot/assets/concept/meshy/lena_vargas/lena_vargas_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T17:04:26+00:00",
+   "md5": "f56b066e38f4e3fd118a3e406f7aea27",
+   "size": 1878125
+  },
+  "godot/assets/concept/meshy/lena_vargas/meshy_thumb.png": {
+   "at": "2026-10-11T17:04:26+00:00",
+   "md5": "d7ee8e99d47124fc3f3c5cc1369b293d",
+   "size": 80374
+  },
+  "godot/assets/concept/meshy/lena_vargas/side.png": {
+   "at": "2026-10-11T17:04:26+00:00",
+   "md5": "f56b066e38f4e3fd118a3e406f7aea27",
+   "size": 1878125
   },
   "godot/assets/concept/meshy/linda_caldwell/front.png": {
    "at": "2026-10-01T01:23:48+00:00",
