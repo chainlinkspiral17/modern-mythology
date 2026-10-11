@@ -3,6 +3,8 @@ import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.furniture import make_table, make_chair
+from _props.detail import (make_traffic_wear, make_floor_stain, make_scuff_band, make_wall_tint_band,
+                           make_wall_outlet, make_light_switch, make_cord_run, make_thermostat)
 from _props import palette as P
 from _props.geometry import make_blob, clear_scene, make_box, make_chamfer_box, make_cyl, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_wall_with_openings
@@ -303,12 +305,50 @@ def build_hero_props_2026_09():
     make_box("Guitar_Stand_Cradle", (gx, gy - 0.035, 0.035), (0.30, 0.07, 0.03), (0.20, 0.20, 0.22, 1.0))
 
 
+def build_detail_2026_10():
+    """DETAIL PASSES D2–D4 (pass 77, 2026-10-11 — lore/_SET_DETAIL_PLAYBOOK.md).
+    D2: the traffic ribbon front door → table → sink, the stain at the sink's
+    foot and the fridge's, the counter's kick scuff, the ceiling-shadow bands.
+    D3: outlets over the counter (two), by the fridge and on the west wall,
+    the switch by the front door, the thermostat, the fridge's cord. D4: the
+    dish towel over the oven handle, a coffee ring on the table, the mail
+    stacked off-square on the counter's end, a chair pushed back. The views
+    past both windows were D5 already (make_view S/N). Draft N+1: the
+    coffee maker's cord (the kit's anchor is a function local); a cabinet
+    door ajar once the kitchen kit names its doors; the phone on the wall
+    the Hendersons must have."""
+    W = ROOM_W / 2.0
+    # ── D2 ──
+    make_traffic_wear("Wear_Door_Table", [(0.0, 0.25), (0.0, 1.9)], width=0.7)
+    make_traffic_wear("Wear_Table_Sink", [(-0.5, 3.1), (-1.6, 4.6)], width=0.6)
+    make_floor_stain("Stain_Sink", (SINK_X, 4.45), radius=0.17)
+    make_floor_stain("Stain_Fridge", (W - 0.95, 3.0), radius=0.14)
+    make_scuff_band("Scuff_Counter", (0.0, Y_BACK - 0.60 - 0.005), 5.4, axis='X', height=0.12, band_z=0.07)
+    make_wall_tint_band("Tint_N_Top", (0.0, ROOM_D - 0.10), ROOM_W - 0.2, axis='X', height=0.28, band_z=CEIL - 0.16)
+    make_wall_tint_band("Tint_W_Top", (-W + 0.10, ROOM_D / 2.0), ROOM_D - 0.2, axis='Y', height=0.28, band_z=CEIL - 0.16)
+    # ── D3 ──
+    make_wall_outlet("Outlet_Counter_W", (-0.60, ROOM_D), axis='X', face_sign=-1, z=1.10)
+    make_wall_outlet("Outlet_Counter_E", (2.40, ROOM_D), axis='X', face_sign=-1, z=1.10)
+    make_wall_outlet("Outlet_Fridge", (W, 3.60), axis='Y', face_sign=-1, z=0.30)
+    make_wall_outlet("Outlet_W", (-W, 1.20), axis='Y', face_sign=1, z=0.30)
+    make_light_switch("Switch_Door", (-1.25, 0.0), axis='X', face_sign=1, z=1.20)
+    make_thermostat("Thermostat", (-W, 1.55), axis='Y', face_sign=1, z=1.45)
+    make_cord_run("Cord_Fridge", (W - 0.50 + 0.34, 3.32, 0.22), (W - 0.10, 3.60, 0.30), sag=0.04)
+    # ── D4 ──
+    make_box("Oven_Towel", (RANGE_X, Y_BACK - 0.60 - 0.012, 0.76), (0.30, 0.02, 0.30), (0.56, 0.62, 0.70, 1.0))
+    make_cyl("Table_Coffee_Ring", (0.42, 2.55, 0.761), 0.045, 0.002, (0.48, 0.36, 0.22, 1.0), segments=12)
+    for mi, (dx, dy, dz) in enumerate(((0.0, 0.0, 0.0), (0.03, -0.02, 0.004), (-0.02, 0.03, 0.008))):
+        make_box(f"Mail_{mi}", (2.55 + dx, Y_BACK - 0.40 + dy, TOP_Z + 0.003 + dz), (0.24, 0.11, 0.004), ((0.92, 0.92, 0.88, 1.0), (0.86, 0.84, 0.78, 1.0), (0.94, 0.90, 0.80, 1.0))[mi])
+    make_chair("Chair_Pushed", 1.35, 1.55, yaw=2.35, wood=COL_WOOD)
+
+
 def main():
     clear_scene()
     build_shell()
     build_counter()
     build_table()
     build_dressing()
+    build_detail_2026_10()
     build_hero_props()
     build_clock()
     build_fridge()

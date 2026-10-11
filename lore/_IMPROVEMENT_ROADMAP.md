@@ -3834,6 +3834,19 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-11 · pass 77: THE HENDERSON KITCHEN, detail passes D2–D4.** The
+scan's next room (61 cues; two wear calls, no infrastructure): the
+traffic ribbon front door → table → sink, the stains at the sink's foot
+and the fridge's, the counter's kick scuff, the ceiling-shadow bands;
+outlets over the counter (two), by the fridge and on the west wall, the
+switch by the front door, the thermostat, the fridge's cord; the dish
+towel over the oven handle, a coffee ring on the table, the mail stacked
+off-square on the counter's end, a chair pushed back. Deck must REBUILD
+henderson_kitchen. **Draft N+1:** the coffee maker's cord (the kit's
+anchor is a function local); a cabinet door ajar once the kitchen kit
+names its doors; the wall phone the Hendersons must have; the basement
+stair's well end sits past the floor slab (a pre-existing OUTSIDE report).
+
 **2026-10-11 · pass 76: THE CENTRO BREAK ROOM, detail passes D2–D5.** A
 scan of the busiest rooms against the detail passes they carry (wear /
 infrastructure / through-the-glass / use states) found the break room —
