@@ -1185,6 +1185,11 @@
    "md5": "a70413a5578008bdca07a805c7c40c03",
    "size": 72643
   },
+  "godot/assets/3d/characters/heroes/sal_carratura.glb": {
+   "at": "2026-10-11T18:04:51+00:00",
+   "md5": "c8c292ccc0a8865b858544a8c073e51b",
+   "size": 43606532
+  },
   "godot/assets/3d/characters/heroes/sam_miller.glb": {
    "at": "2026-10-11T16:25:49+00:00",
    "md5": "7867ad27b87148a21aad2f639e000e93",
@@ -53654,6 +53659,56 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "c02b40b53613cfc2926b1f6be8b9e996",
    "size": 84004
+  },
+  "godot/assets/concept/meshy/sal_carratura/back.png": {
+   "at": "2026-10-11T18:05:05+00:00",
+   "md5": "194cf905bd209ce4b2d2e1ac66743d48",
+   "size": 1964668
+  },
+  "godot/assets/concept/meshy/sal_carratura/front.png": {
+   "at": "2026-10-11T18:05:05+00:00",
+   "md5": "ee8e97a77b1a0a49b145453a8ba82bea",
+   "size": 2143624
+  },
+  "godot/assets/concept/meshy/sal_carratura/meshy_thumb.png": {
+   "at": "2026-10-11T18:05:05+00:00",
+   "md5": "884558042d526872c39410fef01b15c3",
+   "size": 93738
+  },
+  "godot/assets/concept/meshy/sal_carratura/sal_carratura_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T18:05:05+00:00",
+   "md5": "194cf905bd209ce4b2d2e1ac66743d48",
+   "size": 1964668
+  },
+  "godot/assets/concept/meshy/sal_carratura/sal_carratura_back_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-11T18:05:05+00:00",
+   "md5": "56cffe27bcf24429a7e39360da192564",
+   "size": 1966539
+  },
+  "godot/assets/concept/meshy/sal_carratura/sal_carratura_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T18:05:05+00:00",
+   "md5": "ee8e97a77b1a0a49b145453a8ba82bea",
+   "size": 2143624
+  },
+  "godot/assets/concept/meshy/sal_carratura/sal_carratura_front_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-11T18:05:05+00:00",
+   "md5": "4bd7e23a61abd4e5c5254e96fee363a5",
+   "size": 2088465
+  },
+  "godot/assets/concept/meshy/sal_carratura/sal_carratura_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T18:05:05+00:00",
+   "md5": "775826aa4e7d8570865d1b3433822164",
+   "size": 1962811
+  },
+  "godot/assets/concept/meshy/sal_carratura/sal_carratura_side_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-11T18:05:05+00:00",
+   "md5": "904168296fcc496bba37c4bb1ef54990",
+   "size": 1943756
+  },
+  "godot/assets/concept/meshy/sal_carratura/side.png": {
+   "at": "2026-10-11T18:05:05+00:00",
+   "md5": "775826aa4e7d8570865d1b3433822164",
+   "size": 1962811
   },
   "godot/assets/concept/meshy/sam_miller/back.png": {
    "at": "2026-10-11T16:26:29+00:00",
