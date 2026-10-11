@@ -3315,5 +3315,53 @@
     },
     "output": "godot/assets/3d/characters/heroes/jameson.glb",
     "file_size_kb": 59618.7
+  },
+  {
+    "at": "2026-10-11T19:31:38+00:00",
+    "stage": "image",
+    "slug": "mateo",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Mateo like this: The other was younger, maybe thirteen, with a wool cap pulled too low over the ears and a board under his arm that was not, by Kai's first look, his own board. Mateo was the kind of thirteen-year-old who knew more about boards than fifteen-year-olds usually did Additional direction: Mateo, 13, a skater. Small, a helmet hanging from one wrist, an oversized hoodie, shorts over leggings, knee pads, skate shoes, a skateboard under one arm.\nFull-body concept render of Mateo, a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/mateo/mateo_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/mateo/mateo_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/mateo/mateo_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-11T19:34:54+00:00",
+    "stage": "mesh",
+    "slug": "mateo",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a12c73-2caa-758e-a970-7ccaea8cc8aa",
+    "inputs": [
+      "godot/assets/concept/meshy/mateo/front.png",
+      "godot/assets/concept/meshy/mateo/side.png",
+      "godot/assets/concept/meshy/mateo/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "smart-topology",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/mateo.glb",
+    "file_size_kb": 57342.2
   }
 ]
