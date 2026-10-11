@@ -3948,5 +3948,53 @@
     },
     "output": "godot/assets/3d/characters/heroes/gracie_kowalski.glb",
     "file_size_kb": 54775.6
+  },
+  {
+    "at": "2026-10-11T20:47:59+00:00",
+    "stage": "image",
+    "slug": "jim_henderson",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Jim like this: Jim is nerdy, glasses, wan look, haunted and slightly robotic. Jim is beside her, in the careful clothes he has been wearing this summer for any public appearance.\n\nJim is, by one fifteen, asleep with the shirt on, which is the first time in four years Jim has, on a Saturday, fallen asleep in a shirt he means to wear in the morning. Additional direction: Jim, 50s, a man in a Gulf-coast planned community who has spent a summer dressing carefully for every public appearance. Lean, grey at the temples, a face held very still. A pressed white short-sleeve shirt buttoned to the collar, pleated grey trousers, a brown belt, polished brown shoes; the shirt he fell asleep in.\nFull-body concept render of Jim, a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/jim_henderson/jim_henderson_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/jim_henderson/jim_henderson_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/jim_henderson/jim_henderson_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-11T20:51:17+00:00",
+    "stage": "mesh",
+    "slug": "jim_henderson",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a12cb9-3d6e-72d3-b410-e5a6908131bb",
+    "inputs": [
+      "godot/assets/concept/meshy/jim_henderson/front.png",
+      "godot/assets/concept/meshy/jim_henderson/side.png",
+      "godot/assets/concept/meshy/jim_henderson/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "smart-topology",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/jim_henderson.glb",
+    "file_size_kb": 35796.8
   }
 ]
