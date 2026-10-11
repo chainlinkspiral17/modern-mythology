@@ -220,6 +220,11 @@
    "md5": "f52ba972f9a1050d9b136ac64d8e876c",
    "size": 66622
   },
+  "godot/assets/3d/characters/heroes/bill_kowalski.glb": {
+   "at": "2026-10-11T20:42:09+00:00",
+   "md5": "ed9bcec5905b1152f43cb58d656d849c",
+   "size": 37026636
+  },
   "godot/assets/3d/characters/heroes/bt.glb": {
    "at": "2026-10-11T20:22:59+00:00",
    "md5": "5b8fffe3e5997af772ec22d9cd3fd00a",
@@ -52524,6 +52529,71 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "a79cca1bc6c415c7323a67b512afff48",
    "size": 71924
+  },
+  "godot/assets/concept/meshy/bill_kowalski/back.png": {
+   "at": "2026-10-11T20:42:22+00:00",
+   "md5": "68065c0ee1637729bf8a14fb87ded86c",
+   "size": 1944194
+  },
+  "godot/assets/concept/meshy/bill_kowalski/bill_kowalski_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T20:42:22+00:00",
+   "md5": "2b303023b2fb7d1a3813ed5c03379cf6",
+   "size": 2129265
+  },
+  "godot/assets/concept/meshy/bill_kowalski/bill_kowalski_back_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-11T20:42:22+00:00",
+   "md5": "b9b3e6fa12324370a4a937c9d778e980",
+   "size": 1957887
+  },
+  "godot/assets/concept/meshy/bill_kowalski/bill_kowalski_back_openai_gpt-image-2.5-sunburst_03.png": {
+   "at": "2026-10-11T20:42:22+00:00",
+   "md5": "68065c0ee1637729bf8a14fb87ded86c",
+   "size": 1944194
+  },
+  "godot/assets/concept/meshy/bill_kowalski/bill_kowalski_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T20:42:22+00:00",
+   "md5": "53fe252bf1a28eb5a6dc1e0023d57997",
+   "size": 2262881
+  },
+  "godot/assets/concept/meshy/bill_kowalski/bill_kowalski_front_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-11T20:42:22+00:00",
+   "md5": "31b8d2d5ca4a550c840b3362a973da78",
+   "size": 2106866
+  },
+  "godot/assets/concept/meshy/bill_kowalski/bill_kowalski_front_openai_gpt-image-2.5-sunburst_03.png": {
+   "at": "2026-10-11T20:42:22+00:00",
+   "md5": "8561e98e3ecc3dafb3cf2021d260fcb0",
+   "size": 1972379
+  },
+  "godot/assets/concept/meshy/bill_kowalski/bill_kowalski_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T20:42:22+00:00",
+   "md5": "43a35fe2d5706693702217c5445ad8f4",
+   "size": 2103739
+  },
+  "godot/assets/concept/meshy/bill_kowalski/bill_kowalski_side_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-11T20:42:22+00:00",
+   "md5": "c8afe490ff8113d99a8d186e88d97e84",
+   "size": 1914186
+  },
+  "godot/assets/concept/meshy/bill_kowalski/bill_kowalski_side_openai_gpt-image-2.5-sunburst_03.png": {
+   "at": "2026-10-11T20:42:22+00:00",
+   "md5": "0de91ec8aebe3a90c30fbeaac917ead4",
+   "size": 1861850
+  },
+  "godot/assets/concept/meshy/bill_kowalski/front.png": {
+   "at": "2026-10-11T20:42:22+00:00",
+   "md5": "8561e98e3ecc3dafb3cf2021d260fcb0",
+   "size": 1972379
+  },
+  "godot/assets/concept/meshy/bill_kowalski/meshy_thumb.png": {
+   "at": "2026-10-11T20:42:22+00:00",
+   "md5": "c9a7acaa44250e79a61e6bc677b8e328",
+   "size": 82594
+  },
+  "godot/assets/concept/meshy/bill_kowalski/side.png": {
+   "at": "2026-10-11T20:42:22+00:00",
+   "md5": "0de91ec8aebe3a90c30fbeaac917ead4",
+   "size": 1861850
   },
   "godot/assets/concept/meshy/bt/back.png": {
    "at": "2026-10-11T20:23:12+00:00",
