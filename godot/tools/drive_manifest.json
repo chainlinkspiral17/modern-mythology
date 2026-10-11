@@ -1295,6 +1295,11 @@
    "md5": "689275b05d9401abe334d8cf61ddecaf",
    "size": 66582
   },
+  "godot/assets/3d/characters/heroes/tem.glb": {
+   "at": "2026-10-11T17:37:51+00:00",
+   "md5": "1a2b3af57d772ec3d191ed3b9e0bd17d",
+   "size": 58269736
+  },
   "godot/assets/3d/characters/heroes/the_frog.glb": {
    "at": "2026-10-01T01:48:41+00:00",
    "md5": "8b6928ab85d8ed0a1d7868b5480a9add",
@@ -53549,6 +53554,41 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "5155e7561bc4220fb8617f767ecea7f7",
    "size": 58774
+  },
+  "godot/assets/concept/meshy/tem/back.png": {
+   "at": "2026-10-11T17:38:00+00:00",
+   "md5": "1b035cd5d18f59860d22cf9e4efc7367",
+   "size": 2145208
+  },
+  "godot/assets/concept/meshy/tem/front.png": {
+   "at": "2026-10-11T17:38:00+00:00",
+   "md5": "90b58af7c4add95a08ca16263b3010ad",
+   "size": 2122553
+  },
+  "godot/assets/concept/meshy/tem/meshy_thumb.png": {
+   "at": "2026-10-11T17:38:00+00:00",
+   "md5": "30a7a921fb2b547cc9f5715505244255",
+   "size": 73855
+  },
+  "godot/assets/concept/meshy/tem/side.png": {
+   "at": "2026-10-11T17:38:00+00:00",
+   "md5": "40878b9e03bef3f040b3a6c6313cdb30",
+   "size": 1954165
+  },
+  "godot/assets/concept/meshy/tem/tem_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T17:38:00+00:00",
+   "md5": "1b035cd5d18f59860d22cf9e4efc7367",
+   "size": 2145208
+  },
+  "godot/assets/concept/meshy/tem/tem_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T17:38:00+00:00",
+   "md5": "90b58af7c4add95a08ca16263b3010ad",
+   "size": 2122553
+  },
+  "godot/assets/concept/meshy/tem/tem_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T17:38:00+00:00",
+   "md5": "40878b9e03bef3f040b3a6c6313cdb30",
+   "size": 1954165
   },
   "godot/assets/concept/meshy/the_demon/front.png": {
    "at": "2026-10-01T01:23:48+00:00",
