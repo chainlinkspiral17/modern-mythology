@@ -335,6 +335,11 @@
    "md5": "b21f52241dd868dbf5ad88ba0287f191",
    "size": 67828
   },
+  "godot/assets/3d/characters/heroes/coach_dale.glb": {
+   "at": "2026-10-11T21:02:17+00:00",
+   "md5": "8c00755fbb4008a40812eb0a6eccbcc7",
+   "size": 44013588
+  },
   "godot/assets/3d/characters/heroes/coach_guidry.glb": {
    "at": "2026-10-01T01:48:41+00:00",
    "md5": "fb022fb107c7f0b0d4b992cb40f70dcd",
@@ -52794,6 +52799,56 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "5559b5b585f9ed43f485b56548d69a90",
    "size": 76288
+  },
+  "godot/assets/concept/meshy/coach_dale/back.png": {
+   "at": "2026-10-11T21:02:30+00:00",
+   "md5": "deda4e0d5c385df29c4028c48cdf7659",
+   "size": 2003641
+  },
+  "godot/assets/concept/meshy/coach_dale/coach_dale_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T21:02:30+00:00",
+   "md5": "a9db24dcb1d869f7054ebf4ee59fbfe5",
+   "size": 2076982
+  },
+  "godot/assets/concept/meshy/coach_dale/coach_dale_back_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-11T21:02:30+00:00",
+   "md5": "deda4e0d5c385df29c4028c48cdf7659",
+   "size": 2003641
+  },
+  "godot/assets/concept/meshy/coach_dale/coach_dale_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T21:02:30+00:00",
+   "md5": "8530b7537c989f756a24805e8c9e1844",
+   "size": 2183658
+  },
+  "godot/assets/concept/meshy/coach_dale/coach_dale_front_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-11T21:02:30+00:00",
+   "md5": "f3c3a7483fd240621ad1913e8c78eb1b",
+   "size": 2055157
+  },
+  "godot/assets/concept/meshy/coach_dale/coach_dale_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T21:02:30+00:00",
+   "md5": "2ca147f28858dc388f2b735c1ac88270",
+   "size": 1996598
+  },
+  "godot/assets/concept/meshy/coach_dale/coach_dale_side_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-11T21:02:30+00:00",
+   "md5": "996ddced5c9d622bf7f3c7aa825eaac0",
+   "size": 1955718
+  },
+  "godot/assets/concept/meshy/coach_dale/front.png": {
+   "at": "2026-10-11T21:02:30+00:00",
+   "md5": "f3c3a7483fd240621ad1913e8c78eb1b",
+   "size": 2055157
+  },
+  "godot/assets/concept/meshy/coach_dale/meshy_thumb.png": {
+   "at": "2026-10-11T21:02:30+00:00",
+   "md5": "5a38edffd985eb4e3de13f4ef4aac5e8",
+   "size": 82123
+  },
+  "godot/assets/concept/meshy/coach_dale/side.png": {
+   "at": "2026-10-11T21:02:30+00:00",
+   "md5": "996ddced5c9d622bf7f3c7aa825eaac0",
+   "size": 1955718
   },
   "godot/assets/concept/meshy/coach_guidry/coach_guidry_front_meshy_recovered.png": {
    "at": "2026-10-01T01:23:48+00:00",
