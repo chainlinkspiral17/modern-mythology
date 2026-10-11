@@ -965,6 +965,11 @@
    "md5": "566465483d543a75d205601f7feb0110",
    "size": 67550
   },
+  "godot/assets/3d/characters/heroes/marit.glb": {
+   "at": "2026-10-11T18:53:14+00:00",
+   "md5": "0d472ea6c486e81f061fabe309c72e24",
+   "size": 39510960
+  },
   "godot/assets/3d/characters/heroes/maya_daigle.glb": {
    "at": "2026-10-01T01:48:41+00:00",
    "md5": "205e019387e2eea804a9fb95535091d9",
@@ -52984,6 +52989,41 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "97334bc2c7c690f246cd24923d6e1de9",
    "size": 80585
+  },
+  "godot/assets/concept/meshy/marit/back.png": {
+   "at": "2026-10-11T18:53:25+00:00",
+   "md5": "1204955dfedbb63d4c1ca3125cc1a772",
+   "size": 2135523
+  },
+  "godot/assets/concept/meshy/marit/front.png": {
+   "at": "2026-10-11T18:53:25+00:00",
+   "md5": "7153f34d156d78310e58b04471745287",
+   "size": 2186642
+  },
+  "godot/assets/concept/meshy/marit/marit_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T18:53:25+00:00",
+   "md5": "1204955dfedbb63d4c1ca3125cc1a772",
+   "size": 2135523
+  },
+  "godot/assets/concept/meshy/marit/marit_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T18:53:25+00:00",
+   "md5": "7153f34d156d78310e58b04471745287",
+   "size": 2186642
+  },
+  "godot/assets/concept/meshy/marit/marit_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T18:53:25+00:00",
+   "md5": "b89b20bdf24416da1f416801a3a8189e",
+   "size": 2033040
+  },
+  "godot/assets/concept/meshy/marit/meshy_thumb.png": {
+   "at": "2026-10-11T18:53:25+00:00",
+   "md5": "ed1a1d4f1852b1f4c8463b4a7deedfa1",
+   "size": 67213
+  },
+  "godot/assets/concept/meshy/marit/side.png": {
+   "at": "2026-10-11T18:53:25+00:00",
+   "md5": "b89b20bdf24416da1f416801a3a8189e",
+   "size": 2033040
   },
   "godot/assets/concept/meshy/maya_daigle/front.png": {
    "at": "2026-10-01T01:23:48+00:00",
