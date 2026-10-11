@@ -3834,6 +3834,22 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-11 · pass 63: THE KWIK STOP BY DAY.** Every one of the store's
+nine cuts is daytime (ch1 shift change and the stranger, ch2, ch3 Sam goes
+inside, ch4 the rain, ch6 the actual clock / blue raspberry / sixty-two
+minutes, ch15 the red Peugeot) and the set was authored at night: a black
+backdrop, sodium through the south windows (`Fill_StreetSpill`), a
+streetlamp practical at 3.0 and its spill. Now: a day ProceduralSky, the
+afternoon sun through the south windows (daylight-tagged, so
+`rain_interior` dims it to a quarter), the two streetlamp practicals
+removed, ambient 0.65 → 0.80 and a lighter fog. The fluorescents carry the
+room as before. No Deck rebuild. **Draft N+1:** the streetlamp outside is
+still a lit fixture in the builder (its head glows) — a day version; the
+pumps' canopy lights off by day; a `kwik_stop_night` if a night cut ever
+lands (none does); the model-chapter detail pass (D2–D6) has not been
+re-run since the day rig — check the counter's sightline to the door
+under the sun.
+
 **2026-10-11 · pass 62: SKIES FOR THE FLAT BACKDROPS.** Fifty-six scenes
 still rendered `background_mode = 1` — a flat colour behind every cut
 window and over every exterior (a light-blue slab over the cabin road, the
