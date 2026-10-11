@@ -326,6 +326,69 @@ look-ahead loop. The audio→performance clock mapping comes from
   at build time; realtime bounces are slow and occasionally slip in
   headless Chromium.
 
+### 2026-10-11 — DAW recording: count-in, punch, loop takes, latency
+
+- **One clock for every recorded position: SCHEDULED context time** (`timeOf(tick)`).
+  - MIDI notes are mapped back from their own event time stamps.
+  - Audio is cut from a frame-stamped capture: a worklet posts `currentFrame` with each block.
+  - The old `AK.Capture.begin()` + `currentTime` guess was off by the message delay.
+  - The test shows the per-pass slices start exactly one loop length apart (±1 sample).
+- **The master limiter looks ahead 6 ms.** A `DynamicsCompressorNode` delays everything on the
+  master by 264 samples at 44.1 kHz. The click went straight to the speakers, so it flammed 6 ms
+  ahead of the music. Hardware MIDI, timed to the undelayed clock, put the FM-1 6 ms ahead of the
+  DAW's own synths.
+  - `start()` measures the delay (`outDelay`, an impulse through an identical compressor offline).
+  - The click bus and `HwDevice._send` are delayed by the same amount.
+  - Offline renders and bounces still begin 6 ms late (unchanged). Compare onsets with
+    `limiter: false`.
+- **Three latency numbers, because three paths really differ** (header of `daw_engine.js`):
+  - **FM-1 RETURN** = CHECK-OUT's `mm_fm1_latency_ms`; the DAW adds `outDelay` because it sends
+    its MIDI that late. It applies to the FM-1's USB audio whether the DAW or the player's keys
+    triggered it, so it follows the input, not the player.
+  - **PLAY-ALONG INPUT** = LOOPBACK CALIBRATE. Its clicks run through the delayed click bus, so the
+    reading already contains `outDelay` and is used as it stands.
+  - **MIDI NOTES** need no round trip: event time stamp → `ctxAtPerf()` − `outDelay`. A manual
+    nudge stays, normally 0.
+  - Auto picks FM-1 RETURN when the input label looks like the FM-1.
+  - Machine settings live in localStorage `mm_daw_latency`. A CHECK-OUT run in another tab reaches
+    the DAW live through the `storage` event.
+- **Stamp each event, don't read "now".** `midiinput-message` carries `ts` and fires before
+  `midiinput-note`. The page hands it (and `KeyboardEvent.timeStamp`) to `E.stampInput()` in
+  capture-phase window listeners. `recNow()` uses it only within the same dispatch (< 20 ms), so
+  timer-driven notes (arpeggiator) fall back to the present. `liveNote` itself changed by one
+  call site only.
+- **Anchors move ~120 ms before a wrap sounds** (look-ahead). The engine keeps an anchor history
+  `{ctx, tick, n}` per play / wrap. A note or a pass is placed by looking up the anchor in effect
+  at its context time, never "the current anchor".
+- **Takes are data, not a playback feature.**
+  - `track.takes[]` holds one active take per (region, kind, layer). Activating a take swaps the
+    region clip's `pid` or audio ref, so playback, render, MIDI export and undo needed no change.
+  - Inactive MIDI takes are plain patterns no clip points at.
+  - An empty recording restores the track's snapshot exactly.
+  - A recording is one undo step: the page snapshots on `record-arm` and skips captures while
+    recording.
+- Bugs found on the way:
+  - `BasicSynth.noteOff(n, when, immediate)` received the MIDI channel third, so every note was cut
+    when scheduled; the fallback synth had been silent in playback and renders.
+  - The piano roll's "1/16T" was 32 ticks (an eighth triplet). `DAW.GRIDS` now feeds GRID and QUANT
+    (1/16T = 16, 1/8T = 32).
+  - `E.load()` fires `'project'` before the page's `P` follows it, so UI sync read the old project.
+  - `undoApply` never removed top-level keys added since the snapshot.
+- **Headless testing:**
+  - `fm1_mock.raw(bytes, ts)` sends MIDI with an exact time stamp.
+  - A `DelayNode` off the click bus stands in for a loopback cable.
+  - The real-time transport runs at 300 BPM so `daw_rec` stays at about 30 s.
+  - `getOutputTimestamp` is stable to ±1–2 ms in headless Chromium but steps after an audio
+    glitch, so a simulated performer works out its time stamp just before striking, as a person
+    would.
+  - The first FORGE offline render in a session differs from later ones (warm-up). Old-vs-new
+    engine renders matched to −97.5 dB from the second render on.
+- Not done:
+  - Comping is whole-region only (no per-bar swipe).
+  - REPLACE trims the old audio clips without fades.
+  - OVERDUB LOOP stacks MIDI only; audio stays one take per pass.
+  - LOOPBACK and the FM-1 RETURN + `outDelay` sum are unverified on the Deck's hardware.
+
 ## TEMPLATE
 
 ```

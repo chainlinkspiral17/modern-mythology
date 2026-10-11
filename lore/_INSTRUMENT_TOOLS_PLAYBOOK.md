@@ -431,8 +431,9 @@ those tools.
      frame-stamped probe worklet.
 
   The median then means exactly what the DAW's `latencyMs`
-  alignment means. It is saved as `mm_fm1_latency_ms`; the DAW
-  doesn't read it yet.
+  alignment means. It is saved as `mm_fm1_latency_ms`. The DAW reads
+  it as its FM-1 RETURN latency, at start and live when CHECK-OUT runs
+  in another tab (see the audio playbook's recording lesson).
 - Chrome's MediaStream chunking adds about 10 ms jitter steps on a
   real input. Keep the median, not the mean.
 - `tests/mocks/fm1_mock.js` is a fake FM-1 (version / INFO replies,
@@ -453,10 +454,14 @@ those tools.
   Never copy the scale tables.
 - **Record what you hear.** Every note the chain plays goes through
   `engine.perfRecord(tr, n, vel, on, when, {generated})`:
-  - arp steps are already on the grid, so they get no latency
-    correction;
-  - chord / scale-locked notes follow the key, so they get the usual
-    `latencyMs`.
+  - arp steps are already on the grid, so they are recorded at their
+    scheduled time;
+  - chord / scale-locked notes follow the key, so they get exactly the
+    timing a raw MIDI note gets: `recNow()`, the input event's own
+    time stamp. Never `latencyMs`, which is the *audio* round trip.
+    (Merge note: the PERF branch first used `when − latencyMs`. Once
+    recording split latency into three numbers, that recorded chord
+    notes about 13 ms early. The `daw_perf` hook test now pins this.)
 
   The recording code owns `recordMidi` and may replace the hook. With a
   chain on a hardware track, the processed notes go out to the synth,

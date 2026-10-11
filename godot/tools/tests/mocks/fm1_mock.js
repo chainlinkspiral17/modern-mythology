@@ -2,7 +2,7 @@
  * Injected as an init script with window.__FM1_PROFILE set. It answers the vendor
  * version query and the Felucca-family INFO request, echoes notes (MIDI thru),
  * records every send in window.__fm1sent, and fakes a USB audio input whose tone
- * starts P.latencyMs after each note-on's MIDI timestamp. Exposes __fm1mock.key/knob. */
+ * starts P.latencyMs after each note-on's MIDI timestamp. Exposes __fm1mock.key/knob/raw. */
 module.exports.PROFILES = {
   fm1va:   { port: 'FM-1 MIDI 1', identity: 'FM-1_093', info: null, keyCh: 1, audioLabel: 'FM-1 Analog Stereo', latencyMs: 23 },
   stock:   { port: 'FM-1 MIDI 1', identity: 'FM-1_015', info: null, keyCh: 1, audioLabel: 'FM-1 Analog Stereo', latencyMs: 23 },
@@ -46,6 +46,8 @@ module.exports.MOCK = () => {
   window.__fm1mock = {
     key(n, v, ch = P.keyCh) { emit([0x90 | (ch - 1), n, v]); setTimeout(() => emit([0x80 | (ch - 1), n, 0]), 150); },
     knob(cc, vals, ch = P.keyCh) { vals.forEach((v, i) => setTimeout(() => emit([0xB0 | (ch - 1), cc, v]), i * 30)); },
+    // one message with an explicit MIDIMessageEvent.timeStamp (performance time) — a key struck at `ts`
+    raw(bytes, ts = performance.now()) { const ev = { data: Uint8Array.from(bytes), timeStamp: ts }; for (const l of listeners) l(ev); },
   };
   // ── audio: an oscillator that "plays" P.latencyMs after each note-on's MIDI timestamp ──
   const fake = new WeakSet();

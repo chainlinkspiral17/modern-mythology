@@ -29,6 +29,54 @@
  *   Live scheduleRange and renderOffline share _playCtx(track): the notes a pattern plays (PERF chain on
  *   clips), the groove and the probability gate — the same notes, times and velocities in both.
  *
+ * Recording (all optional too):
+ *   project.rec?   = { countIn: 0|1|2 (bars of click first), mode: 'replace'|'overdub'|'loop', quant: ticks (0 = off) }
+ *                    'loop' = overdub loop: every pass of a MIDI loop recording goes into one take
+ *   project.punch? = { on, a, b }  bars [a, b): only this is recorded (separate from the loop region)
+ *   track.takes?   = [{ id, region: {a, b} (bars), kind: 'midi'|'audio', pid | audioRef: {libId, t (ticks), offset, len (s)},
+ *                       name, at (ISO), pass, rec (recording id), active, layer?, latMs?, latFrom? }]
+ *                    one ACTIVE take per (region, kind, layer); the active one is what the region's clip plays (MIDI: the
+ *                    clip's pid; audio: a track.audio clip). An audio OVERDUB over a region that already has a take opens
+ *                    a new layer (both play). track.takesOpen? — takes rows shown under the track.
+ *   What a take covers: punch ∩ loop › loop region (one take per pass) › punch › "open" (playhead bar → stop).
+ *   REPLACE splits the clips at the region edges and drops what was inside (MIDI clips that resume mid-pattern
+ *   get a rotated copy of the pattern; audio clips are trimmed by offset / len); OVERDUB copies what was inside into
+ *   every MIDI take (audio: layers). Notes struck up to a 1/16 before the record start land on it (count-in grace);
+ *   with QUANT on, a note quantized onto a looping region's end goes to the next pass's downbeat. Nothing recorded →
+ *   the track is restored exactly. Audio: ONE frame-stamped capture (RecCapture, worklet posts currentFrame) cut per
+ *   pass at the region's scheduled start + latency, every full pass exactly the loop length, 5 ms fades at the cuts;
+ *   one library item per pass (AK.lib kind 'daw-rec'). A recording is one undo step (the page snapshots on 'record-arm').
+ *   API: startRecord() / stopRecord() · takeGroups(track) → [{key, region, kind, layer, takes, active}] ·
+ *   pickTake(trackId, takeId) · cycleTake(trackId, groupKey, ±1) · deleteTake(trackId, takeId) ·
+ *   keepOnlyActive(trackId, groupKey?) · recNow() · stampInput(perfMs) · calibrateLoopback({n, gap}) ·
+ *   setLatency(kind, ms, src) · setLatencyUse('auto'|'fm1'|'input') · checkoutLatency(force) · audioComp() ·
+ *   events: 'record-arm', 'record' {on}, 'takes', 'latency'. DAW.GRIDS = the grid / record-quantize values
+ *   (1/32 12 · 1/16 24 · 1/8 48 · 1/4 96 · 1/16T 16 · 1/8T 32 ticks) shared with the piano roll.
+ *
+ * Latency — which compensation applies where. Every recorded position is put back on SCHEDULED context time
+ * (timeOf(tick): when the transport scheduled that tick). Facts it rests on:
+ *   • perfTime(T) is when context time T reaches the speakers (getOutputTimestamp); ctxAtPerf() is its inverse.
+ *   • The master limiter (DynamicsCompressorNode) looks ahead: everything on the master is HEARD outDelay after it
+ *     is scheduled (measured at start(); 264 samples = 6.0 ms in Chrome). The click bus and hardware MIDI
+ *     (HwDevice._send) are delayed by the same amount, so music, click and the FM-1 are heard together at T + outDelay.
+ *   • A take's input sample is stamped with the context frame it was processed in (RecCapture), the same clock
+ *     FM-1 CHECK-OUT's onset probe uses.
+ *   Hence three separate numbers (machine settings, localStorage 'mm_daw_latency' = {fm1, input, midi: {ms, src}, use}):
+ *   1. FM-1 RETURN (lat.fm1, from CHECK-OUT's 'mm_fm1_latency_ms', or manual): audio of the FM-1 on its own USB
+ *      audio input. CHECK-OUT measured: note-on scheduled at ctx T (perfTime) → onset on the input frame clock = synth
+ *      + USB + output/input buffering. The DAW sends the note at T + outDelay, so an audio take is shifted back by
+ *      fm1 + outDelay. The same holds when the performer plays the FM-1's KEYS along to the playback (they strike at
+ *      the heard time T + outDelay; only the ~1 ms USB-MIDI leg differs), so it follows the INPUT, not who played.
+ *   2. PLAY-ALONG INPUT (lat.input, from LOOPBACK CALIBRATE or manual): any other input — a performer playing along.
+ *      They hear T at T + outDelay (+ output buffering), the sound comes back with the input's latency. The loopback
+ *      clicks run through the same delayed click bus, so the measured number (onset − scheduled T) already holds
+ *      outDelay + output + input latency and is used as it stands.
+ *   3. MIDI NOTES (lat.midi, manual, normally 0): FM-1 keys / MIDI keyboard / computer keys. Each event carries its
+ *      own time stamp (MIDIMessageEvent / KeyboardEvent .timeStamp, handed over by the page via stampInput()), mapped
+ *      with ctxAtPerf() − outDelay, so no round-trip number applies at all; this is only a nudge for a slow controller.
+ *   'auto' (lat.use) picks 1 when the input's label looks like the FM-1's USB audio (felucca / fm-1 / m-vave / x0x), else 2.
+ *   E.latencyMs is kept as an alias of the number audio takes use (1 or 2), without outDelay.
+ *
  * Strip: in → [inserts] → post (sidechain tap, pre-fader) → duck → pan → vol → on (mute/solo)
  *        → master + sendA (reverb bus) + sendB (delay bus). Built by _buildStrip() for live
  *        playback AND renderOffline(), so both sound the same; automation runs through
@@ -58,7 +106,7 @@
  *
  * Timing: a 25 ms timer schedules 120 ms ahead in AudioContext time; Web
  * Audio devices get exact times, the emulator dispatches messages on time,
- * hardware MIDI goes out with performance-time stamps.
+ * hardware MIDI goes out with performance-time stamps (+ outDelay, to sound with the limited master).
  */
 (function (root) {
   "use strict";
@@ -207,7 +255,8 @@
     get mi() { return this.engine.midi; }
     _send(bytes, when) {
       const mi = this.mi; if (!mi || !mi.output) return;
-      try { mi.output.send(bytes, this.engine.perfTime(when ?? this.ctx.currentTime)); } catch (e) { /* port gone */ }
+      // + outDelay: heard together with the DAW's own synths, which reach the speakers through the master limiter
+      try { mi.output.send(bytes, this.engine.perfTime((when ?? this.ctx.currentTime) + (this.engine.outDelay || 0))); } catch (e) { /* port gone */ }
     }
     noteOn(n, v, when, ch = 1) { this.held.add(ch * 128 + n); this._send([0x90 | ((ch - 1) & 15), n & 127, Math.max(1, Math.round(v * 127))], when); }
     noteOff(n, when, ch = 1) { this.held.delete(ch * 128 + n); this._send([0x80 | ((ch - 1) & 15), n & 127, 0], when); }
@@ -229,15 +278,103 @@
     dispose() { this.allOff(); this.setReturn(''); this.output.disconnect(); }
   }
 
+  // ── recording helpers ─────────────────────────────────────────────
+  // grid / record-quantize values in ticks (PPQ 96): the piano roll's GRID and the transport's QUANT share these
+  const GRIDS = [{ v: 12, label: '1/32' }, { v: 24, label: '1/16' }, { v: 48, label: '1/8' }, { v: 96, label: '1/4' }, { v: 16, label: '1/16T' }, { v: 32, label: '1/8T' }];
+  const REC_MODES = ['replace', 'overdub', 'loop'];       // 'loop' = overdub loop: every pass into one pattern
+  const GRACE = PPQ / 4;          // a note struck up to a 1/16 before the record start lands on it
+  const FADE_MS = 5;              // audio takes: fade in / out at the cut
+  const LS_FM1 = 'mm_fm1_latency_ms', LS_LAT = 'mm_daw_latency';
+  const FM1_INPUT_RX = /felucca|fm-?1|m-?vave|x0x/i;      // an input named like the FM-1's own USB audio
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+  // Frame-stamped input capture: every render quantum's input with the context frame it belongs to
+  // (currentFrame), so a take is cut on the same AudioContext clock the transport schedules on —
+  // the same stamping FM-1 CHECK-OUT's onset probe uses, so its latency number means the same thing here.
+  const REC_WORKLET = `
+class MMDawRec extends AudioWorkletProcessor {
+  constructor() { super(); this.on = true; this.port.onmessage = e => { if (e.data === 'stop') this.on = false; }; }
+  process(inputs) {
+    const inp = inputs[0];
+    if (inp && inp.length && inp[0].length) { const ch = inp.map(c => c.slice(0)); this.port.postMessage({ f: currentFrame, ch }, ch.map(c => c.buffer)); }
+    return this.on;
+  }
+}
+registerProcessor('mm-daw-rec', MMDawRec);
+`;
+  class RecCapture {
+    constructor(ctx, src, maxCh = 2) { this.ctx = ctx; this.src = src; this.maxCh = maxCh; this.chunks = []; this.node = null; this.sink = null; this.first = null; this.last = null; }
+    async start() {
+      const c = this.ctx;
+      this.sink = c.createGain(); this.sink.gain.value = 0; this.sink.connect(c.destination);
+      try {
+        if (!c.__mmDawRec) { await AK.addWorklet(c, REC_WORKLET); c.__mmDawRec = true; }
+        // 'speakers': a mono mic fills both channels instead of only the left
+        this.node = new AudioWorkletNode(c, 'mm-daw-rec', { numberOfInputs: 1, numberOfOutputs: 1, outputChannelCount: [1], channelCount: this.maxCh, channelCountMode: 'explicit', channelInterpretation: 'speakers' });
+        this.node.port.onmessage = e => this._push(e.data.f, e.data.ch);
+      } catch (e) {     // ScriptProcessor fallback: block frames estimated from playbackTime (not sample exact)
+        const sp = c.createScriptProcessor(1024, this.maxCh, 1);
+        sp.onaudioprocess = ev => { const ib = ev.inputBuffer, ch = []; for (let i = 0; i < ib.numberOfChannels; i++) ch.push(ib.getChannelData(i).slice(0)); this._push(Math.round(ev.playbackTime * c.sampleRate) - ib.length, ch); };
+        this.node = sp;
+      }
+      this.src.connect(this.node); this.node.connect(this.sink);
+    }
+    _push(f, ch) { if (!ch || !ch.length || !ch[0].length) return; if (this.first === null) this.first = f; this.chunks.push({ f, ch }); this.last = f + ch[0].length; }
+    stop() {
+      try { this.src.disconnect(this.node); } catch (e) {}
+      if (this.node && this.node.port) { try { this.node.port.postMessage('stop'); } catch (e) {} }
+      try { this.node.disconnect(); this.sink.disconnect(); } catch (e) {}
+    }
+    async until(frame, maxMs = 1500) { const end = performance.now() + maxMs; while ((this.last === null || this.last < frame) && performance.now() < end) await sleep(15); }
+    _from(f0) { const C = this.chunks; let lo = 0, hi = C.length; while (lo < hi) { const m = (lo + hi) >> 1; if (C[m].f + C[m].ch[0].length <= f0) lo = m + 1; else hi = m; } return lo; }
+    // frames [f0, f0 + n) on the context frame clock; zeros where nothing was captured
+    slice(f0, n) {
+      const nch = this.chunks.length ? this.chunks[0].ch.length : 1, out = [];
+      for (let c = 0; c < nch; c++) out.push(new Float32Array(n));
+      for (let i = this._from(f0); i < this.chunks.length; i++) {
+        const k = this.chunks[i], len = k.ch[0].length; if (k.f >= f0 + n) break;
+        const a = Math.max(f0, k.f), b = Math.min(f0 + n, k.f + len);
+        for (let c = 0; c < nch; c++) out[c].set((k.ch[c] || k.ch[0]).subarray(a - k.f, b - k.f), a - f0);
+      }
+      return out;
+    }
+    _scan(f0, f1, fn) {
+      for (let i = this._from(f0); i < this.chunks.length; i++) {
+        const k = this.chunks[i], len = k.ch[0].length; if (k.f >= f1) break;
+        for (let j = Math.max(0, f0 - k.f); j < len && k.f + j < f1; j++) { let m = 0; for (const c of k.ch) { const v = c[j] < 0 ? -c[j] : c[j]; if (v > m) m = v; } if (fn(k.f + j, m)) return; }
+      }
+    }
+    peak(f0, f1) { let p = 0; this._scan(f0, f1, (f, m) => { if (m > p) p = m; }); return p; }
+    firstAbove(f0, f1, thr) { let at = null; this._scan(f0, f1, (f, m) => { if (m > thr) { at = f; return true; } }); return at; }
+  }
+  function fadeEdges(chs, sr, ms) {
+    const len = chs[0].length, n = Math.min(Math.round(ms / 1000 * sr), len >> 1);
+    for (const c of chs) for (let i = 0; i < n; i++) { const g = 0.5 - 0.5 * Math.cos(Math.PI * i / n); c[i] *= g; c[len - 1 - i] *= g; }
+  }
+  const clone = o => JSON.parse(JSON.stringify(o));
+
   // ═══════════════════════════════════════════════════════════════════
   class Engine {
     constructor() {
       this.ctx = null; this.project = null; this.devices = new Map(); this.strips = new Map();
       this.playing = false; this.recording = false; this.anchor = null; this.schedTick = 0; this.timer = null;
-      this.sources = []; this.midi = null; this.listeners = {}; this.recTakes = new Map(); this.inputStream = null;
-      this.latencyMs = 30; this.quantize = 24;
+      this.sources = []; this.midi = null; this.listeners = {}; this.inputStream = null; this.inputLabel = '';
+      this.quantize = 24; this.rec = null; this._anchors = []; this._countIn = null; this._evIn = null; this.outDelay = 0;
+      this.loadLatency();
+      this.on('loop', () => this._pushAnchor());      // every loop wrap: a new pass for loop recording
     }
     on(ev, fn) { (this.listeners[ev] = this.listeners[ev] || []).push(fn); }
+    // the master limiter's look-ahead, measured: an impulse through an identical DynamicsCompressorNode
+    async _measureOutDelay() {
+      try {
+        const sr = this.ctx.sampleRate, off = new OfflineAudioContext(1, 2048, sr), b = off.createBuffer(1, 2048, sr); b.getChannelData(0)[16] = 0.5;
+        const s = off.createBufferSource(); s.buffer = b;
+        const lim = off.createDynamicsCompressor(); lim.threshold.value = -2; lim.knee.value = 0; lim.ratio.value = 20; lim.attack.value = 0.002; lim.release.value = 0.1;
+        s.connect(lim); lim.connect(off.destination); s.start();
+        const o = (await off.startRendering()).getChannelData(0); let pk = 0, at = 16;
+        for (let i = 0; i < o.length; i++) { const v = Math.abs(o[i]); if (v > pk) { pk = v; at = i; } }
+        return Math.max(0, at - 16) / sr;
+      } catch (e) { return 0.006; }
+    }
     emit(ev, d) { (this.listeners[ev] || []).forEach(f => { try { f(d); } catch (e) { console.error(e); } }); }
 
     async start() {
@@ -258,7 +395,12 @@
       this.delayTone.type = 'lowpass'; this.delayTone.frequency.value = 4200;
       this.delayIn.connect(this.delay); this.delay.connect(this.delayTone); this.delayTone.connect(this.delayFb); this.delayFb.connect(this.delay);
       this.delayTone.connect(this.delayOut); this.delayOut.connect(this.master);
-      this.click = c.createGain(); this.click.gain.value = 0.5; this.click.connect(c.destination);   // never in a bounce
+      // the master limiter looks ahead: everything on the master is heard outDelay (~6 ms) after it is scheduled.
+      // The click (never in a bounce) and hardware MIDI are delayed to match, so all of it lands together.
+      this.outDelay = await this._measureOutDelay();
+      this.click = c.createGain(); this.click.gain.value = 0.5;
+      this.clickDelay = c.createDelay(0.1); this.clickDelay.delayTime.value = this.outDelay;
+      this.click.connect(this.clickDelay); this.clickDelay.connect(c.destination);
       if (G.DawFX) await G.DawFX.prepare(c);       // insert / gate / duck worklets before any strip exists
       if (G.MidiInput) { this.midi = new G.MidiInput({ role: 'chords', autoIdentify: true }); this.midi.start().catch(() => {}); }
     }
@@ -276,6 +418,7 @@
       for (const id of [...this.strips.keys()]) this.removeStrip(id);
       this.project = project;
       if (this._perf) this._perf.resetAll();
+      this.quantize = project.rec && project.rec.quant != null ? +project.rec.quant || 0 : 24;
       for (const d of project.devices) await this.createDeviceRuntime(d);
       for (const t of project.tracks) if (t.kind === 'audio') this.ensureStrip(t.id, t.mix || (t.mix = this.defaultMix()));
       this.applyMaster(); this.applyMix();
@@ -535,6 +678,7 @@
       const P = this.project;
       const startTick = fromTick ?? (P.loop.on ? P.loop.a * BAR : 0);
       this.anchor = { ctx: this.ctx.currentTime + 0.08, tick: startTick };
+      this._anchors = [{ ctx: this.anchor.ctx, tick: startTick, n: 0 }];     // + one per loop wrap (recording passes)
       this.schedTick = startTick;
       this.playing = true;
       this._auto = { fresh: true, cancel: this.ctx.currentTime, cache: new Map(), seen: new Set() };
@@ -576,7 +720,7 @@
         const byTime = this.anchor.tick + (horizon - this.anchor.ctx) / this.spt();
         if (byTime <= this.schedTick) return;
         const loopEnd = P.loop.on ? P.loop.b * BAR : Infinity;
-        const songEnd = this.songBars() * BAR;
+        const songEnd = this.recording ? Infinity : this.songBars() * BAR;     // recording runs on past the song
         const limit = P.loop.on ? loopEnd : songEnd;
         const end = Math.min(byTime, limit);
         if (end > this.schedTick) this.scheduleRange(this.schedTick, end);
@@ -639,7 +783,9 @@
         if (tr.kind !== 'audio') continue;
         for (const a of tr.audio) if (a.t >= t0 && a.t < t1) this.startAudioClip(tr, a, this.timeOf(a.t), 0);
       }
-      if (P.metro) for (let b = Math.ceil(t0 / PPQ) * PPQ; b < t1; b += PPQ) this.clickAt(this.timeOf(b), b % BAR === 0);
+      const ci = this._countIn;       // the count-in clicks even with the metronome off (first pass only: by time)
+      if (ci && ci.endCtx == null) { ci.fromCtx = this.timeOf(ci.from); ci.endCtx = this.timeOf(ci.to); }
+      if (P.metro || ci) for (let b = Math.ceil(t0 / PPQ) * PPQ; b < t1; b += PPQ) { const w = this.timeOf(b); if (P.metro || (w > ci.fromCtx - 1e-4 && w < ci.endCtx - 1e-4)) this.clickAt(w, b % BAR === 0); }
       this.clockRange(t0, t1);
       if (this._perf) this._perf.range(t0, t1);              // live arps on the transport grid
       if (this._auto) {
@@ -847,7 +993,112 @@
       const now = this.ctx.currentTime;
       if (this.perfActive(tr)) { this.perfLive.input(tr, note, vel, on, now); return; }   // scale lock → chord → arp → device
       if (on) inst.noteOn(note, vel, now, tr.channel); else inst.noteOff(note, now, tr.channel);
-      if (this.recording && this.playing && tr.arm) this.recordMidi(tr, note, vel, on, now - this.latencyMs / 1000);
+      if (this.recording && this.playing && tr.arm) this.recordMidi(tr, note, vel, on, this.recNow());
+    }
+
+    // ── recording latency ───────────────────────────────────────────
+    // Three numbers, because three different paths are being lined up (see the header):
+    //   fm1   audio from the FM-1's own USB audio input: MIDI out (or its keys) → synth → USB audio in
+    //   input audio from any other input: a performer playing along to playback (output + input latency)
+    //   midi  extra nudge for MIDI notes, which are already placed by their own event time stamps
+    // Machine settings, not project ones: kept in localStorage 'mm_daw_latency'.
+    loadLatency() {
+      const L = this.lat = { fm1: { ms: 30, src: 'default' }, input: { ms: 30, src: 'default' }, midi: { ms: 0, src: 'default' }, use: 'auto' };
+      let saved = null; try { saved = JSON.parse(root.localStorage.getItem(LS_LAT) || 'null'); } catch (e) { /* blocked / bad JSON */ }
+      if (saved && typeof saved === 'object') {
+        for (const k of ['fm1', 'input', 'midi']) if (saved[k] && Number.isFinite(+saved[k].ms)) L[k] = { ms: +saved[k].ms, src: String(saved[k].src || 'manual') };
+        if (['auto', 'fm1', 'input'].includes(saved.use)) L.use = saved.use;
+      }
+      this.checkoutLatency();
+      return L;
+    }
+    // FM-1 CHECK-OUT's measured median round trip (localStorage 'mm_fm1_latency_ms'); a manual value wins unless forced
+    checkoutLatency(force) {
+      let v = NaN; try { v = parseFloat(root.localStorage.getItem(LS_FM1)); } catch (e) {}
+      if (!(v >= 0 && v < 1000)) return null;
+      if (force || this.lat.fm1.src !== 'manual') this.lat.fm1 = { ms: Math.round(v * 10) / 10, src: 'checkout' };
+      return v;
+    }
+    saveLatency() { try { root.localStorage.setItem(LS_LAT, JSON.stringify(this.lat)); } catch (e) {} }
+    setLatency(kind, ms, src = 'manual') {
+      if (!['fm1', 'input', 'midi'].includes(kind)) return;
+      const v = Math.max(kind === 'midi' ? -100 : 0, Math.min(500, +ms || 0));
+      this.lat[kind] = { ms: Math.round(v * 10) / 10, src };
+      this.saveLatency(); this.emit('latency', this.lat);
+    }
+    setLatencyUse(use) { if (['auto', 'fm1', 'input'].includes(use)) { this.lat.use = use; this.saveLatency(); this.emit('latency', this.lat); } }
+    // which audio number an audio take uses: the FM-1's when the input is the FM-1's USB audio
+    audioLatencyKind() { const u = this.lat.use; return u === 'fm1' || u === 'input' ? u : FM1_INPUT_RX.test(this.inputLabel || '') ? 'fm1' : 'input'; }
+    // what an audio take is shifted by: the FM-1 number + the master look-ahead (the DAW sends its MIDI that much
+    // late, see HwDevice._send; CHECK-OUT has no limiter), or the play-along number as it stands (the loopback
+    // clicks go through the same delayed click bus, so the look-ahead is already inside it)
+    audioComp() {
+      const kind = this.audioLatencyKind(), ms = this.lat[kind].ms, extra = kind === 'fm1' ? Math.round((this.outDelay || 0) * 1e5) / 100 : 0;
+      return { kind, ms, extra, total: ms + extra };
+    }
+    get latencyMs() { return this.lat[this.audioLatencyKind()].ms; }
+    set latencyMs(v) { this.setLatency(this.audioLatencyKind(), v); }
+
+    // ── input time stamps ───────────────────────────────────────────
+    // performance time → the context time that was AUDIBLE then (inverse of perfTime): what a performer
+    // heard when they struck the note. MIDI / key events carry their own stamp, so handler delays drop out.
+    ctxAtPerf(perf) {
+      const ts = this.ctx.getOutputTimestamp ? this.ctx.getOutputTimestamp() : null;
+      if (ts && ts.performanceTime) return ts.contextTime + (perf - ts.performanceTime) / 1000;
+      return this.ctx.currentTime + (perf - performance.now()) / 1000;
+    }
+    // the page stamps each MIDI / key event before it reaches liveNote (window listeners, capture phase)
+    stampInput(perf) { if (Number.isFinite(perf)) this._evIn = { perf, at: performance.now() }; }
+    // when "now" is for a recorded note: the current input event's own stamp if one was just set
+    // (same dispatch), else the present; minus the MIDI nudge
+    recNow() {
+      const now = performance.now(), ev = this._evIn;
+      const perf = ev && now - ev.at < 20 && ev.perf <= now + 1 && now - ev.perf < 1000 ? ev.perf : now;
+      return this.ctxAtPerf(perf) - (this.outDelay || 0) - this.lat.midi.ms / 1000;
+    }
+
+    // ── recording: settings, region, passes ─────────────────────────
+    recCfg() {
+      const R = (this.project && this.project.rec) || {};
+      return { countIn: Math.max(0, Math.min(2, R.countIn | 0)), mode: REC_MODES.includes(R.mode) ? R.mode : 'replace' };
+    }
+    punchOn() { const u = this.project && this.project.punch; return !!(u && u.on && u.b > u.a); }
+    // what a take covers: the punch region, else the loop region (passes), else open (from the playhead to stop)
+    recRegion() {
+      const P = this.project, L = P.loop, pu = this.punchOn() ? P.punch : null;
+      if (L.on) {
+        if (pu) { const a = Math.max(pu.a, L.a), b = Math.min(pu.b, L.b); if (b <= a) return { error: 'the punch region is outside the loop' }; return { a, b, loop: true, punch: true }; }
+        return { a: L.a, b: L.b, loop: true };
+      }
+      if (pu) return { a: pu.a, b: pu.b, punch: true };
+      return { a: null, b: null };
+    }
+    _pushAnchor() {
+      const A = this._anchors, n = A.length ? A[A.length - 1].n + 1 : 0;
+      A.push({ ctx: this.anchor.ctx, tick: this.anchor.tick, n });
+      if (A.length > 256) A.splice(0, A.length - 256);
+      const R = this.rec;
+      if (R && R.loop && this.recording && n - R.n0 > 0) {     // a new pass: MIDI takes switch to a fresh pattern before it plays
+        for (const rt of R.tracks.values()) if (rt.kind === 'midi' && !rt.accum) this._recPass(rt, n - R.n0);
+        this.emit('takes', { recording: true });
+      }
+    }
+    // the anchor (transport segment) in effect at a context time; anchors move ~120 ms before a wrap sounds
+    _anchorAt(when) { const A = this._anchors; for (let i = A.length - 1; i >= 0; i--) if (A[i].ctx <= when + 1e-9) return A[i]; return A[0] || { ctx: this.anchor.ctx, tick: this.anchor.tick, n: 0 }; }
+    // where a note struck at context time `when` goes: { p (pass), rel (ticks from the region start) } or null
+    _recPos(when) {
+      const R = this.rec, spt = this.spt();
+      if (when < R.liveCtx - GRACE * spt - 1e-6) return null;
+      const an = this._anchorAt(when), tick = an.tick + (when - an.ctx) / spt;
+      let p = R.loop ? an.n - R.n0 : 0, rel = tick - R.a * BAR;
+      if (rel < 0) { if (rel >= -GRACE - 1e-6) rel = 0; else return null; }        // count-in / pre-roll grace
+      const q = this.quantize; rel = q ? Math.round(rel / q) * q : Math.round(rel);
+      if (R.b != null) {
+        const len = (R.b - R.a) * BAR;
+        if (rel >= len) { if (R.wraps && rel - len < len) { p += 1; rel -= len; } else return null; }   // quantized onto the next pass's downbeat
+      }
+      if (p < 0) return null;
+      return { p, rel, raw: tick };
     }
     // ── PERF live chain (daw_perf.js) ───────────────────────────────
     get perfLive() { if (!this._perf && G.DawPerf) this._perf = new G.DawPerf.Live(this); return this._perf || null; }
@@ -855,76 +1106,332 @@
     perfReset(trackId) { if (this._perf) this._perf.reset(trackId); }
     // THE RECORDING HOOK. Every note the PERF chain plays — what you hear — comes through here:
     //   tr, n, vel (0 on note-off), on, when = the AudioContext time it sounds,
-    //   info.generated = true for arp steps (already on the grid: no latency correction),
-    //                    false for notes that follow the player's key (scale lock / chord: same timing as the key).
-    // The default records into the armed track's take through recordMidi; recording code may replace this method.
+    //   info.generated = true for arp steps (already on the grid: recorded at `when` as scheduled),
+    //                    false for notes that follow the player's key (scale lock / chord): recNow(), the same
+    //                    event-stamp timing a raw MIDI note gets (latencyMs is the AUDIO round trip — never for MIDI).
+    // The chain runs inside the input event's dispatch, so recNow() still sees that event's stamp.
     perfRecord(tr, n, vel, on, when, info) {
-      if (this.recording && this.playing && tr.arm) this.recordMidi(tr, n, vel, on, info && info.generated ? when : when - this.latencyMs / 1000);
+      if (this.recording && this.playing && tr.arm) this.recordMidi(tr, n, vel, on, info && info.generated ? when : this.recNow());
     }
     recordMidi(tr, note, vel, on, when) {
-      const take = this.recTakes.get(tr.id); if (!take) return;
-      let tick = this.anchor.tick + (when - this.anchor.ctx) / this.spt();
-      if (on) { take.open.set(note, { tick, vel }); return; }
-      const o = take.open.get(note); if (!o) return; take.open.delete(note);
-      const p = tr.patterns[take.pid], plen = p.lenBars * BAR, cs = take.bar * BAR;
-      let t = o.tick, q = this.quantize;
-      if (q) t = Math.round(t / q) * q;
-      const rel = ((t - cs) % plen + plen) % plen;
-      p.notes.push({ t: Math.round(rel), d: Math.max(6, Math.round(tick - o.tick)), n: note, v: o.vel });
-      p.notes.sort((a, b) => a.t - b.t);
-      this.emit('notes', { trackId: tr.id, pid: take.pid });
+      const R = this.rec, rt = R && R.tracks.get(tr.id); if (!rt || rt.kind !== 'midi') return;
+      if (on) { const pos = this._recPos(when); rt.last = pos; if (pos) rt.open.set(note, Object.assign(pos, { whenOn: when, vel })); return; }
+      const o = rt.open.get(note); if (!o) return; rt.open.delete(note);
+      this._recCommit(rt, note, o, when);
     }
+    _recCommit(rt, note, o, whenOff) {
+      const R = this.rec, ps = this._recPass(rt, o.p), pat = rt.tr.patterns[ps.pid];
+      let d = Math.max(6, Math.round((whenOff - o.whenOn) / this.spt()));
+      if (R.b != null) d = Math.max(1, Math.min(d, (R.b - R.a) * BAR - o.rel));
+      else pat.lenBars = Math.max(pat.lenBars, Math.ceil((o.rel + d) / BAR));
+      const n = { t: o.rel, d, n: note, v: Math.max(0.02, Math.min(1, o.vel)) };
+      pat.notes.push(n); pat.notes.sort((x, y) => x.t - y.t);
+      ps.notes.push(n);
+      this.emit('notes', { trackId: rt.tr.id, pid: ps.pid });
+    }
+    // the take (pattern) a pass records into — created on demand and made the active take of its region
+    _recPass(rt, p) {
+      const R = this.rec, tr = rt.tr; if (rt.accum) p = 0;
+      if (rt.passes.has(p)) return rt.passes.get(p);
+      const closed = R.b != null, lenBars = closed ? R.b - R.a : 1, pid = this.uid('rec');
+      tr.patterns[pid] = { name: '', lenBars, notes: rt.base.map(n => Object.assign({}, n)) };
+      tr.takes = Array.isArray(tr.takes) ? tr.takes : [];
+      const k = { id: this.uid('take'), region: { a: R.a, b: R.a + lenBars }, kind: 'midi', pid, name: '', at: R.at, pass: p, rec: R.id, active: false };
+      k.name = tr.patterns[pid].name = 'take ' + (this._group(tr, k).length + 1) + (rt.accum ? ' · loop' : '');
+      tr.takes.push(k);
+      if (closed) this._activate(tr, k);
+      else { tr.clips.push({ bar: R.a, pid }); k.active = true; }    // open: the clip grows with the pattern
+      const ps = { pid, take: k, notes: [] }; rt.passes.set(p, ps);
+      return ps;
+    }
+
+    // ── recording: start / stop ─────────────────────────────────────
     async startRecord() {
       await this.start();
+      if (this.recording || this._recStopping) return false;
       const P = this.project, armed = P.tracks.filter(t => t.arm);
       if (!armed.length) { this.emit('error', 'arm a track first'); return false; }
-      const bar = P.loop.on ? P.loop.a : Math.floor((this._stopTick || 0) / BAR);
-      for (const tr of armed) {
-        if (tr.kind === 'midi') {
-          const lenBars = P.loop.on ? P.loop.b - P.loop.a : 4;
-          const pid = this.uid('rec');
-          tr.patterns[pid] = { name: 'take ' + (Object.keys(tr.patterns).length + 1), lenBars, notes: [] };
-          tr.clips = tr.clips.filter(c => !(c.bar >= bar && c.bar < bar + lenBars));
-          tr.clips.push({ bar, pid });
-          this.recTakes.set(tr.id, { pid, bar, open: new Map() });
-        } else {
-          if (!this.inputStream) { this.emit('error', 'pick an audio input first'); continue; }
-          const cap = new AK.Capture(this.ctx, this.inputSrc, { preRollSec: 0, maxChannels: 2 });
-          await cap.start();
-          this.recTakes.set(tr.id, { cap, tick: bar * BAR, began: false });
+      const reg = this.recRegion(); if (reg.error) { this.emit('error', reg.error); return false; }
+      const midi = armed.filter(t => t.kind === 'midi'), audio = armed.filter(t => t.kind === 'audio');
+      if (audio.length && !this.inputSrc) { this.emit('error', 'pick an audio input first'); if (!midi.length) return false; }
+      const cfg = this.recCfg(), fly = this.playing;
+      this.emit('record-arm');              // the page takes its undo snapshot before anything changes
+      const a = reg.a != null ? reg.a : Math.floor(Math.max(0, fly ? this.tickNow() : (this._stopTick || 0)) / BAR);
+      const R = this.rec = { id: this.uid('rec'), at: new Date().toISOString(), a, b: reg.b, loop: !!reg.loop, wraps: !!reg.loop && reg.b === P.loop.b,
+                             punch: !!reg.punch, cfg, fly, tracks: new Map(), cap: null, n0: 0, liveCtx: Infinity, lat: null };
+      const closed = R.b != null;
+      for (const tr of midi) {
+        const rt = { kind: 'midi', tr, open: new Map(), passes: new Map(), base: [], snap: this._snap(tr), accum: cfg.mode === 'loop' };
+        if (closed) { const base = this._carveMidi(tr, a, R.b); if (cfg.mode !== 'replace') rt.base = base; }
+        R.tracks.set(tr.id, rt);
+        this._recPass(rt, 0);
+      }
+      if (audio.length && this.inputSrc) {
+        R.cap = new RecCapture(this.ctx, this.inputSrc);
+        await R.cap.start();
+        R.lat = this.audioComp();
+        for (const tr of audio) {
+          const rt = { kind: 'audio', tr, snap: this._snap(tr), layer: 0 };
+          if (closed && cfg.mode === 'replace') this._carveAudio(tr, a, R.b);
+          else if (closed) rt.layer = this._overdubLayer(tr, { a, b: R.b });
+          R.tracks.set(tr.id, rt);
         }
       }
       this.recording = true;
-      if (!this.playing) await this.play(bar * BAR);
-      for (const [id, take] of this.recTakes) if (take.cap) { take.cap.begin(0); take.beganCtx = this.ctx.currentTime; take.anchorCtx = this.anchor.ctx; take.tick = this.anchor.tick; }
-      this.emit('record', { on: true });
+      if (!fly) {
+        const pre = cfg.countIn * BAR, head = this._stopTick || 0;
+        let start = a * BAR - pre;
+        if (reg.punch && !reg.loop && head < start) start = Math.floor(head / BAR) * BAR;    // pre-roll from the playhead
+        this._countIn = pre ? { from: a * BAR - pre, to: a * BAR } : null;
+        await this.play(start);
+        R.liveCtx = this.timeOf(a * BAR);
+      } else R.liveCtx = this.ctxAtPerf(performance.now()) - (this.outDelay || 0);
+      R.n0 = this._anchorAt(R.liveCtx).n;
+      this.emit('record', { on: true }); this.emit('takes', { recording: true });
       return true;
     }
     async stopRecord() {
       if (!this.recording) return;
-      this.recording = false;
-      for (const [id, take] of this.recTakes) {
-        if (!take.cap) continue;
-        const res = take.cap.end(); take.cap.stop();
-        if (!res) continue;
-        // align: drop what was captured before the transport started + the round-trip latency
-        const drop = Math.max(0, Math.round(((take.anchorCtx - take.beganCtx) + this.latencyMs / 1000) * RATE));
-        const chs = res.channels.map(c => c.slice(Math.min(drop, c.length - 1)));
-        const tr = this.track(id);
-        const rec = await AK.lib.put({ kind: 'daw-rec', name: (tr ? tr.name : 'audio') + ' take ' + AK.util.stamp(), sampleRate: res.sampleRate, meta: { title: 'DAW take', tags: ['daw'] } }, chs);
-        if (tr) tr.audio.push({ t: take.tick, libId: rec.id, name: rec.name, offset: 0, len: chs[0].length / res.sampleRate, gain: 1 });
+      const R = this.rec;
+      this.recording = false; this._recStopping = true; this._countIn = null;
+      try {
+        const stopCtx = this.ctxAtPerf(performance.now()) - (this.outDelay || 0);    // the scheduled time that was audible at stop
+        const lastN = this._anchorAt(stopCtx).n, lastP = R.loop ? Math.max(0, lastN - R.n0) : 0;
+        for (const rt of R.tracks.values()) if (rt.kind === 'midi') {
+          for (const [note, o] of rt.open) this._recCommit(rt, note, o, stopCtx);
+          rt.open.clear();
+          this._recFinishMidi(rt, lastP, stopCtx);
+        }
+        const aud = [...R.tracks.values()].filter(rt => rt.kind === 'audio');
+        if (R.cap) {
+          try { if (aud.length) await this._recFinishAudio(R, aud, stopCtx, lastP); }
+          catch (e) { this.emit('error', 'recording: ' + (e.message || e)); for (const rt of aud) this._restore(rt.tr, rt.snap); }
+          finally { R.cap.stop(); }
+        }
+      } finally {
+        this.rec = null; this._recStopping = false;
+        this.emit('record', { on: false }); this.emit('takes', {}); this.emit('project');
       }
-      this.recTakes.clear();
-      this.emit('record', { on: false }); this.emit('project');
+    }
+    _recFinishMidi(rt, lastP, stopCtx) {
+      const R = this.rec, tr = rt.tr;
+      // a note quantized onto a downbeat that never came (stopped first) lands on the last pass's downbeat
+      if (!rt.accum) for (const [p, ps] of [...rt.passes]) if (p > lastP) {
+        const into = this._recPass(rt, lastP), pat = tr.patterns[into.pid];
+        for (const n of ps.notes) { pat.notes.push(n); into.notes.push(n); }
+        pat.notes.sort((x, y) => x.t - y.t);
+        ps.notes = []; this._dropTake(tr, ps.take); rt.passes.delete(p);
+      }
+      if (R.b == null) {          // open take: the region is wherever the recording went
+        const ps = rt.passes.get(0);
+        if (ps) {
+          const pat = tr.patterns[ps.pid], an = this._anchorAt(stopCtx), stopRel = an.tick + (stopCtx - an.ctx) / this.spt() - R.a * BAR;
+          pat.lenBars = Math.max(1, pat.lenBars, Math.ceil(stopRel / BAR - 1e-6));
+          ps.take.region = { a: R.a, b: R.a + pat.lenBars };
+          const c = tr.clips.find(x => x.pid === ps.pid); if (c) c.bars = pat.lenBars;
+          if (ps.notes.length) {
+            const base = this._carveMidi(tr, R.a, R.a + pat.lenBars, ps.pid);
+            if (R.cfg.mode !== 'replace') { pat.notes.push(...base); pat.notes.sort((x, y) => x.t - y.t); }
+          }
+        }
+      }
+      for (const [p, ps] of [...rt.passes]) if (!ps.notes.length) { this._dropTake(tr, ps.take); rt.passes.delete(p); }
+      if (!rt.passes.size) { this._restore(tr, rt.snap); return; }
+      const last = [...rt.passes.keys()].sort((x, y) => x - y).pop();
+      this._activate(tr, rt.passes.get(last).take);
+    }
+    // audio: one capture, cut per pass on the context frame clock. The region's start in pass p is
+    // anchor(p).ctx + (a − anchor.tick)·spt — the time the transport scheduled it — and its sound
+    // arrives `latency` later, at frame round((start + latency)·sr). Full passes all get the loop's exact length.
+    async _recFinishAudio(R, rts, stopCtx, lastP) {
+      const cap = R.cap, sr = this.ctx.sampleRate, spt = this.spt(), L = R.lat.total / 1000, A = R.a * BAR;
+      const segs = [];
+      for (let p = 0; p <= lastP; p++) {
+        const an = this._anchors.find(x => x.n === R.n0 + p); if (!an) continue;
+        const rs = an.ctx + (A - an.tick) * spt, re = R.b != null ? rs + (R.b - R.a) * BAR * spt : Infinity;
+        const s = Math.max(rs, p === 0 ? R.liveCtx : -Infinity), e = Math.min(re, stopCtx);
+        if (!(e > s)) continue;
+        const full = s === rs && e === re;
+        if (!full && e - s < PPQ * spt && (segs.length || p > 0)) continue;     // a sliver of a pass after the last wrap
+        segs.push({ p, s, e, rs, full });
+      }
+      if (!segs.length) { for (const rt of rts) this._restore(rt.tr, rt.snap); return; }
+      await cap.until(Math.round((segs[segs.length - 1].e + L) * sr) + 128, 400 + R.lat.total * 4);
+      const Nfull = R.b != null ? Math.round((R.b - R.a) * BAR * spt * sr) : 0, made = [];
+      for (const g of segs) {
+        const f0 = Math.round((g.s + L) * sr), n = g.full ? Nfull : Math.max(1, Math.round((g.e - g.s) * sr));
+        const chs = cap.slice(f0, n); fadeEdges(chs, sr, FADE_MS);
+        const rec = await AK.lib.put({ kind: 'daw-rec', name: (rts[0].tr.name || 'audio') + ' take ' + AK.util.stamp() + (segs.length > 1 ? ' p' + (g.p + 1) : ''), sampleRate: sr, meta: { title: 'DAW take', tags: ['daw', 'take'] } }, chs);
+        made.push({ g, rec, len: n / sr, t: A + (g.s - g.rs) / spt, f0, n });
+      }
+      R.made = made.map(m => ({ p: m.g.p, f0: m.f0, n: m.n, libId: m.rec.id }));     // for tests / diagnostics
+      for (const rt of rts) {
+        const tr = rt.tr; let b = R.b;
+        if (b == null) { const m = made[0]; b = R.a + Math.max(1, Math.ceil((m.t - A + m.len / spt) / BAR - 1e-6)); if (R.cfg.mode === 'replace') this._carveAudio(tr, R.a, b); }
+        tr.takes = Array.isArray(tr.takes) ? tr.takes : [];
+        let last = null;
+        for (const m of made) {
+          const k = { id: this.uid('take'), region: { a: R.a, b }, kind: 'audio', audioRef: { libId: m.rec.id, t: m.t, offset: 0, len: m.len }, name: '', at: R.at, pass: m.g.p, rec: R.id, latMs: R.lat.total, latFrom: R.lat.kind, active: false };
+          if (rt.layer) k.layer = rt.layer;
+          k.name = 'take ' + (this._group(tr, k).length + 1);
+          tr.takes.push(k); last = k;
+        }
+        this._activate(tr, last);
+      }
+      this.lastRec = R;
+    }
+
+    // ── takes ───────────────────────────────────────────────────────
+    // track.takes = [{ id, region:{a,b} (bars), kind:'midi'|'audio', pid | audioRef:{libId,t,offset,len}, name, at,
+    //                  pass, rec, active, layer?, latMs?, latFrom? }] — one active take per (region, kind, layer)
+    _group(tr, k) { const L = k.layer || 0; return (tr.takes || []).filter(x => x.kind === k.kind && x.region.a === k.region.a && x.region.b === k.region.b && (x.layer || 0) === L); }
+    _clipMatches(ref, x) { return !!ref && x.libId === ref.libId && (x.offset || 0) === (ref.offset || 0); }
+    // make k the take that plays: its region's clip(s) switch to it (or it gets a clip)
+    _activate(tr, k) {
+      const g = this._group(tr, k);
+      if (k.kind === 'midi') {
+        const pids = new Set(g.map(x => x.pid)); let hit = false;
+        for (const c of tr.clips) if (pids.has(c.pid)) { c.pid = k.pid; hit = true; }
+        if (!hit) tr.clips.push({ bar: k.region.a, pid: k.pid, bars: k.region.b - k.region.a });
+      } else {
+        const ref = k.audioRef, name = tr.name + ' · ' + k.name;
+        const idx = tr.audio.map((x, i) => g.some(y => this._clipMatches(y.audioRef, x)) ? i : -1).filter(i => i >= 0);
+        const mk = old => ({ t: ref.t, libId: ref.libId, name, offset: ref.offset || 0, len: ref.len, gain: old && old.gain != null ? old.gain : 1 });
+        if (idx.length) { tr.audio[idx[0]] = mk(tr.audio[idx[0]]); for (const i of idx.slice(1).reverse()) tr.audio.splice(i, 1); }
+        else tr.audio.push(mk(null));
+      }
+      for (const x of g) x.active = x === k;
+    }
+    // remove a take record (+ its pattern when nothing uses it); if it was playing, the newest other take of
+    // its region takes over, or its clip goes
+    _dropTake(tr, k) {
+      const others = this._group(tr, k).filter(x => x !== k);
+      if (k.active) {
+        if (others.length) this._activate(tr, others[others.length - 1]);
+        else if (k.kind === 'midi') tr.clips = tr.clips.filter(c => c.pid !== k.pid);
+        else tr.audio = tr.audio.filter(x => !this._clipMatches(k.audioRef, x));
+      }
+      tr.takes = (tr.takes || []).filter(x => x !== k);
+      if (k.kind === 'midi' && !tr.clips.some(c => c.pid === k.pid) && !tr.takes.some(x => x.pid === k.pid)) delete tr.patterns[k.pid];
+      if (!tr.takes.length) delete tr.takes;
+    }
+    // take groups for the UI: [{ key, region, kind, layer, takes, active }]
+    takeGroups(tr) {
+      const out = new Map();
+      for (const k of (tr && tr.takes) || []) {
+        const key = k.kind + ':' + k.region.a + ':' + k.region.b + ':' + (k.layer || 0);
+        if (!out.has(key)) out.set(key, { key, region: k.region, kind: k.kind, layer: k.layer || 0, takes: [], active: null });
+        const g = out.get(key); g.takes.push(k); if (k.active) g.active = k;
+      }
+      return [...out.values()].sort((x, y) => x.region.a - y.region.a || x.layer - y.layer);
+    }
+    _takeOf(trackId, takeId) { const tr = this.track(trackId), k = tr && (tr.takes || []).find(x => x.id === takeId); return k ? { tr, k } : null; }
+    pickTake(trackId, takeId) { const o = this._takeOf(trackId, takeId); if (!o || this.rec) return false; this._activate(o.tr, o.k); this.emit('takes', { trackId }); return true; }
+    cycleTake(trackId, groupKey, dir = 1) {
+      const tr = this.track(trackId), g = this.takeGroups(tr).find(x => x.key === groupKey); if (!g || this.rec) return null;
+      const i = g.takes.indexOf(g.active), k = g.takes[((i < 0 ? -1 : i) + dir + g.takes.length) % g.takes.length];
+      this._activate(tr, k); this.emit('takes', { trackId }); return k;
+    }
+    deleteTake(trackId, takeId) { const o = this._takeOf(trackId, takeId); if (!o || this.rec) return false; this._dropTake(o.tr, o.k); this.emit('takes', { trackId }); return true; }
+    keepOnlyActive(trackId, groupKey) {
+      const tr = this.track(trackId); if (!tr || this.rec) return 0;
+      let n = 0;
+      for (const g of this.takeGroups(tr)) if ((!groupKey || g.key === groupKey) && g.active) for (const k of g.takes) if (!k.active) { this._dropTake(tr, k); n++; }
+      this.emit('takes', { trackId }); return n;
+    }
+
+    // ── recording: editing what is already there ────────────────────
+    _snap(tr) { return { clips: clone(tr.clips), audio: clone(tr.audio), takes: tr.takes ? clone(tr.takes) : null, pids: new Set(Object.keys(tr.patterns)) }; }
+    _restore(tr, s) {
+      tr.clips = s.clips; tr.audio = s.audio;
+      if (s.takes) tr.takes = s.takes; else delete tr.takes;
+      for (const k of Object.keys(tr.patterns)) if (!s.pids.has(k)) delete tr.patterns[k];
+    }
+    // cut bars [a, b) out of a MIDI track's clips (clips are split at a and b; a right-hand piece that starts
+    // mid-pattern gets a rotated copy of the pattern). Returns the notes that were sounding there, relative to a.
+    _carveMidi(tr, a, b, keepPid) {
+      const A = a * BAR, B = b * BAR, base = [], out = [];
+      for (const c of tr.clips) {
+        const p = tr.patterns[c.pid];
+        if (!p || c.pid === keepPid) { out.push(c); continue; }
+        const plen = p.lenBars * BAR, cs = c.bar * BAR, ce = cs + (c.bars || p.lenBars) * BAR;
+        if (ce <= A || cs >= B) { out.push(c); continue; }
+        for (let r0 = cs; r0 < ce; r0 += plen) for (const n of p.notes) {
+          const at = r0 + n.t; if (at < A || at >= B || at >= ce) continue;
+          base.push({ t: at - A, d: Math.max(1, Math.min(n.d, ce - at, B - at)), n: n.n, v: n.v });
+        }
+        if (cs < A) out.push(Object.assign({}, c, { bars: a - c.bar }));
+        if (ce > B) {
+          const ph = ((B - cs) % plen + plen) % plen; let pid = c.pid;
+          if (ph) { pid = this.uid('pat'); tr.patterns[pid] = { name: p.name + ' ›', lenBars: p.lenBars, notes: p.notes.map(n => Object.assign({}, n, { t: ((n.t - ph) % plen + plen) % plen })).sort((x, y) => x.t - y.t) }; }
+          out.push(Object.assign({}, c, { bar: b, pid, bars: (ce - B) / BAR }));
+        }
+      }
+      tr.clips = out;
+      return base.sort((x, y) => x.t - y.t || x.n - y.n);
+    }
+    // cut bars [a, b) out of an audio track's clips (offset / len trims; the cut originals get no fades)
+    _carveAudio(tr, a, b) {
+      const A = a * BAR, B = b * BAR, spt = this.spt(), out = [];
+      for (const x of tr.audio) {
+        const s = x.t, e = x.t + x.len / spt;
+        if (e <= A || s >= B) { out.push(x); continue; }
+        if (s < A) out.push(Object.assign({}, x, { len: (A - s) * spt }));
+        if (e > B) out.push(Object.assign({}, x, { t: B, offset: (x.offset || 0) + (B - s) * spt, len: (e - B) * spt }));
+      }
+      tr.audio = out;
+    }
+    // OVERDUB on audio layers a new take group over a region that already has an active audio take
+    _overdubLayer(tr, region) {
+      const used = (tr.takes || []).filter(k => k.kind === 'audio' && k.region.a === region.a && k.region.b === region.b && k.active).map(k => k.layer || 0);
+      return used.length ? Math.max(...used) + 1 : 0;
+    }
+
+    // ── loopback calibration: the play-along input's round trip ─────
+    // Short tone bursts on the click bus (never bounced) at scheduled context times T; the chosen input
+    // hears them back; onset = first frame above max(0.01, 4 × floor) on the same frame clock a take is cut
+    // on — the same quantity and detector as FM-1 CHECK-OUT's MIDI → audio measurement. Median of n.
+    async calibrateLoopback({ n = 8, gap = 0.32 } = {}) {
+      await this.start();
+      if (!this.inputSrc) throw new Error('pick an audio input first (EXPORT → RECORDING)');
+      if (this.playing) this.stop();
+      const c = this.ctx, sr = c.sampleRate, cap = new RecCapture(c, this.inputSrc);
+      await cap.start();
+      try {
+        await sleep(300);
+        const t0 = c.currentTime, floor = cap.peak(Math.round((t0 - 0.25) * sr), Math.round(t0 * sr));
+        const T0 = c.currentTime + 0.15, Ts = [];
+        for (let i = 0; i < n; i++) { const T = T0 + i * gap; Ts.push(T); this._pulse(T); }
+        await cap.until(Math.round((Ts[n - 1] + 0.3) * sr), (T0 - c.currentTime + n * gap) * 1000 + 2000);
+        const thr = Math.max(0.01, floor * 4), samples = [];
+        for (const T of Ts) { const f = cap.firstAbove(Math.round((T - 0.002) * sr), Math.round((T + 0.28) * sr), thr); samples.push(f == null ? null : Math.round((f / sr - T) * 100000) / 100); }
+        const got = samples.filter(x => x != null).sort((x, y) => x - y);
+        if (got.length < Math.ceil(n * 0.75)) throw new Error('only ' + got.length + ' of ' + n + ' clicks came back — cable the output into the input (or hold the mic to the speaker) and turn it up');
+        const med = got.length % 2 ? got[(got.length - 1) / 2] : (got[got.length / 2 - 1] + got[got.length / 2]) / 2;
+        const mean = got.reduce((x, y) => x + y, 0) / got.length, sd = Math.sqrt(got.reduce((x, y) => x + (y - mean) ** 2, 0) / got.length);
+        this.setLatency('input', med, 'loopback');
+        return { ms: Math.round(med * 10) / 10, jitterMs: Math.round(sd * 100) / 100, samples, found: got.length, of: n };
+      } finally { cap.stop(); }
+    }
+    _pulse(T) {
+      const c = this.ctx, o = c.createOscillator(), g = c.createGain();
+      o.frequency.value = 2000; g.gain.setValueAtTime(0.9, T); g.gain.exponentialRampToValueAtTime(0.001, T + 0.02);
+      o.connect(g); g.connect(this.click); o.start(T); o.stop(T + 0.03);
     }
     async setInput(deviceId) {
       if (this.inputSrc) { try { this.inputSrc.disconnect(); } catch (e) {} this.inputSrc = null; }
       if (this.inputStream) { this.inputStream.getTracks().forEach(t => t.stop()); this.inputStream = null; }
-      if (deviceId === null) return;
+      this.inputLabel = '';
+      if (deviceId === null) { this.emit('latency', this.lat); return; }
       await this.start();
       this.inputStream = await AK.inputs.open(deviceId || undefined, 2);
       this.inputSrc = this.ctx.createMediaStreamSource(this.inputStream);
-      return this.inputStream.getAudioTracks()[0].label;
+      const at = this.inputStream.getAudioTracks()[0];
+      let label = at && at.label;
+      if (!label) { const list = await AK.inputs.list().catch(() => []); const d = list.find(x => x.deviceId === (deviceId || 'default')); label = d ? d.label : ''; }
+      this.inputLabel = label || '';
+      this.emit('latency', this.lat);
+      return label;
     }
 
     // ── bounce (real time: emulators and hardware can't render offline) ──
@@ -1140,6 +1647,6 @@
     }
   }
 
-  const API = { Engine, BasicSynth, KitDevice, HwDevice, KIT_MAP, PPQ, BAR, RATE };
+  const API = { Engine, BasicSynth, KitDevice, HwDevice, RecCapture, KIT_MAP, PPQ, BAR, RATE, GRIDS, REC_MODES };
   root.DAW = API;
 })(typeof window !== 'undefined' ? window : globalThis);

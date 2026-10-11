@@ -15,8 +15,8 @@ suite('touch · sliders, arrangement, piano roll', async t => {
     const reset = +(await p.evaluate(() => document.getElementById('swing').value));
     t.ok(up > 0.25, 'after slide ' + up); t.eq(reset, 0);
   });
-  const geo = await p.evaluate(() => { const r = document.getElementById('arrcv').getBoundingClientRect(); return { x: r.left, y: r.top, bar: view.barPx, lane: view.laneH }; });
-  const laneY = i => geo.y + 34 + i * geo.lane + geo.lane / 2;
+  const geo = await p.evaluate(() => { const r = document.getElementById('arrcv').getBoundingClientRect(); return { x: r.left, y: r.top, bar: view.barPx, lane: view.laneH, ruler: view.rulerH || 34 }; });
+  const laneY = i => geo.y + geo.ruler + i * geo.lane + geo.lane / 2;
   await t.test('arrangement: drag a clip two bars, long-press deletes', async () => {
     await f.drag(geo.x + geo.bar * 2, laneY(0), geo.bar * 2, 0);
     const bar = await p.evaluate(() => P.tracks[0].clips[0].bar);

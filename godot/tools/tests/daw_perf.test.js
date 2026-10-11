@@ -322,15 +322,15 @@ suite('daw perf · scale lock, chords, arp, groove, step sequencer', async t => 
       tr.perf = { scale: { on: true }, chord: { on: true } }; E.perfReset(tr.id);
       await E.play(0); await PT.sleep(150);
       E.recordMidi = (t, n, v, on, when) => rec.push({ n, on, when }); E.recording = true;
-      const now = E.ctx.currentTime; PT.press(tr, [61]); PT.press(tr, [61], false);
-      const chord = rec.map(e => (e.on ? '+' : '-') + e.n).join(' '), lat = now - E.latencyMs / 1000 - rec[0].when;
+      const want = E.recNow(); PT.press(tr, [61]); PT.press(tr, [61], false);   // played notes: the raw-MIDI timing (event stamp, recNow), not the audio round trip
+      const chord = rec.map(e => (e.on ? '+' : '-') + e.n).join(' '), lat = want - rec[0].when;
       rec.length = 0; tr.perf = { arp: { on: true, rate: '1/8' } }; E.perfReset(tr.id);
       PT.press(tr, [64]); await PT.sleep(400); PT.press(tr, [64], false);
       const arp = rec.filter(e => e.on).map(e => E.anchor.tick + (e.when - E.anchor.ctx) / E.spt());
       E.recording = false; delete E.recordMidi; tr.arm = false; E.stop();
       return { chord, lat, arp };
     });
-    t.eq(r.chord, '+60 +64 +67 -60 -64 -67', 'C# → scale lock → C major chord recorded'); t.near(r.lat, 0, 0.002, 'played notes keep the latency correction');
+    t.eq(r.chord, '+60 +64 +67 -60 -64 -67', 'C# → scale lock → C major chord recorded'); t.near(r.lat, 0, 0.002, 'played notes recorded with raw-MIDI timing (recNow)');
     t.ok(r.arp.length >= 2, 'arp steps recorded: ' + r.arp.length);
     for (const tk of r.arp) t.near(tk, Math.round(tk / 48) * 48, 0.2, 'recorded arp steps on the grid');
   });
