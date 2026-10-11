@@ -5,7 +5,7 @@
    "id": "cabin_interior",
    "scene": "res://scenes/locales/cabin_interior.tscn",
    "vol": 7,
-   "uses": 31,
+   "uses": 17,
    "moods": [
     "candlelight_low",
     "dawn_warm"
@@ -218,6 +218,151 @@
     },
     {
      "name": "shot_insert_table",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_window",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
+   "id": "cabin_interior_day",
+   "scene": "res://scenes/locales/cabin_interior.tscn",
+   "vol": 7,
+   "uses": 14,
+   "moods": [
+    "dusk",
+    "day_bright"
+   ],
+   "markers": [
+    {
+     "name": "shot_establish_b",
+     "type": "establish"
+    },
+    {
+     "name": "shot_establish_c",
+     "type": "establish"
+    },
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_bowl",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_bowls",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cap",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cedar",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_charred_wood",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_chest",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_coffee",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_crow",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_cup",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_desk",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_disc",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_disc_case",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_door",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_doorknob",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_eggs",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_face",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_hand",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_hands",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_headset",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_hexagon",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_notebook",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_package",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_phone",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_player",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_stick",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_table",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_truck",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_wagon",
      "type": "insert"
     },
     {
@@ -1872,47 +2017,6 @@
    "scene_missing": false
   },
   {
-   "id": "vehicle_cab",
-   "scene": "res://scenes/locales/vehicle_cab.tscn",
-   "vol": 6,
-   "uses": 7,
-   "moods": [
-    "day_bright",
-    "morning_bright"
-   ],
-   "markers": [
-    {
-     "name": "shot_closeup_person",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_person_b",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_insert_phone",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_radio",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_sedan",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_table",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_truck",
-     "type": "insert"
-    }
-   ],
-   "scene_missing": false
-  },
-  {
    "id": "bianca_kitchen_morning",
    "scene": "res://scenes/locales/bianca_kitchen_morning.tscn",
    "vol": 6,
@@ -3176,6 +3280,47 @@
    "scene_missing": false
   },
   {
+   "id": "vehicle_cab",
+   "scene": "res://scenes/locales/vehicle_cab.tscn",
+   "vol": 6,
+   "uses": 4,
+   "moods": [
+    "day_bright",
+    "morning_bright"
+   ],
+   "markers": [
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_phone",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_radio",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_sedan",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_table",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_truck",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
    "id": "caldwell_radio_room_night",
    "scene": "res://scenes/locales/caldwell_radio_room_night.tscn",
    "vol": 6,
@@ -3878,7 +4023,7 @@
    "scene_missing": false
   },
   {
-   "id": "vehicle_cab_altima",
+   "id": "vehicle_cab_altima_night",
    "scene": "res://scenes/locales/vehicle_cab.tscn",
    "vol": 6,
    "uses": 3,
@@ -3887,35 +4032,75 @@
    ],
    "markers": [
     {
-     "name": "shot_closeup_bt__vehicle_cab_altima",
+     "name": "shot_closeup_bt__vehicle_cab_altima_night",
      "type": "closeup"
     },
     {
-     "name": "shot_closeup_person__vehicle_cab_altima",
+     "name": "shot_closeup_person__vehicle_cab_altima_night",
      "type": "closeup"
     },
     {
-     "name": "shot_closeup_person_b__vehicle_cab_altima",
+     "name": "shot_closeup_person_b__vehicle_cab_altima_night",
      "type": "closeup"
     },
     {
-     "name": "shot_insert_cup__vehicle_cab_altima",
+     "name": "shot_insert_cup__vehicle_cab_altima_night",
      "type": "insert"
     },
     {
-     "name": "shot_insert_five__vehicle_cab_altima",
+     "name": "shot_insert_five__vehicle_cab_altima_night",
      "type": "insert"
     },
     {
-     "name": "shot_insert_flautas__vehicle_cab_altima",
+     "name": "shot_insert_flautas__vehicle_cab_altima_night",
      "type": "insert"
     },
     {
-     "name": "shot_insert_packet__vehicle_cab_altima",
+     "name": "shot_insert_packet__vehicle_cab_altima_night",
      "type": "insert"
     },
     {
-     "name": "shot_insert_phone__vehicle_cab_altima",
+     "name": "shot_insert_phone__vehicle_cab_altima_night",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_radio",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_sedan",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_table",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_truck",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
+   "id": "vehicle_cab_night",
+   "scene": "res://scenes/locales/vehicle_cab.tscn",
+   "vol": 6,
+   "uses": 3,
+   "moods": [
+    "candlelight_low"
+   ],
+   "markers": [
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_phone",
      "type": "insert"
     },
     {
@@ -8584,7 +8769,7 @@
    "scene_missing": false
   },
   {
-   "id": "vehicle_cab_rear",
+   "id": "vehicle_cab_rear_night",
    "scene": "res://scenes/locales/vehicle_cab.tscn",
    "vol": 6,
    "uses": 1,
@@ -8716,5 +8901,5 @@
   "tired",
   "nervous"
  ],
- "frames": 1955
+ "frames": 1998
 }

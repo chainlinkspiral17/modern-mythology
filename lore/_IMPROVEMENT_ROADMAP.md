@@ -3834,6 +3834,39 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-11 · pass 58: THE CABIN'S ARCHITECTURE (interior drafts 10 + 11) +
+the cabin by day.** The user, mid-run: *"Cabin needs more windows, more
+consideration to the space, a better architecture. Not a box."* and *"The
+cabin exists in nature but lets it in through windows, lighting, art and
+wood sculpture in the build itself."* The 8 x 8 box lost its flat ceiling:
+the room is open to the gable (planked underside, eight rafter pairs, the
+ridge beam, four collar ties), three tie beams span it at the eave height
+with a curved knee brace under each end (the oil lamp hangs from the middle
+one), the loft is a real mezzanine (x −4..−1, y 5.3..8) on two turned posts
+with carved capitals and Olaf's cedar face cut into each, railed with turned
+balusters, a turned newel with a carved crow; the east room — "a small annex
+Eddvard added in '85" — keeps its own low cedar ceiling on joists so the
+height reads against it. WINDOWS: one in each gable under the ridge, a west
+window north of the shop, a second north window by the stove, the south-west
+pair widened; each has the clearing past it (a bigleaf maple, Olaf's stump,
+ferns and the creek's bend to the west; salmonberry and a stump to the
+north). ART: three pressed sword-fern frames on the partition, driftwood
+over the daybed, a cedar panel of three salmon in relief over the stove's
+thimble. LIGHT: the day preset `cabin_interior_day` (sun through the south
+windows, a sky fill, the windows' light on the floor, a shaft from the east
+gable window across the rafters onto the table, a day env; fourteen vol7
+daylight cuts routed onto it) and the moon through the west gable for the
+night. Mechanics: ROOFISH naming for the frame (see the 3D playbook
+lesson), the gable as four prisms, a preset `"style_pack"` key so the
+scene's `kitchen_clean` pack stops rewriting the day env. Deck must REBUILD
+cabin_interior. **Draft 12 targets:** the braces' leaf relief; the ridge
+beam's ends as bird heads at the gables; a carved lintel over the front
+door; the window sills' end-blocks; a second lamp off the north tie beam
+over the stove; the salmon panel's river line; the gable windows' outside
+casing; the day room is still dim under `day_bright` — raise the day env's
+ambient or add a bounce; ch8 Two Vehicles-style dawn for the cabin's 5 AM
+cuts (ch14, ch15, ch17, ch20 are on the night rig with dawn_warm).
+
 **2026-10-11 · overnight run, pass 57: THE CAB AT NIGHT (three presets) + Lena's
 night fill.** Seven vol6 cab cuts played at night on the turnout's day
 sun: ch5 1776 kHz ("Maya smiles in the dark of the passenger seat"), ch5

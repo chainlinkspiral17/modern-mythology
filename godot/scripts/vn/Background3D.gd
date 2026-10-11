@@ -2137,6 +2137,32 @@ const CAMERA_PRESETS := {
 		"fov": 62.0,
 		"suppress_input": true,
 	},
+	"cabin_interior_day": {
+		"scene": "res://scenes/locales/cabin_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
+		# SURVEYED 2026-07-12: old vantage sat blender y=-0.5 OUTSIDE
+		# the south door. RE-SURVEYED 2026-09-03 (user: "first view of
+		# the cabin, 90 percent obstructed/wall"): x=2.0 stood INSIDE
+		# the bed alcove east of the East_Part partition (x 1.0,
+		# y 0..2.6), so the partition filled the left of frame. Now just
+		# inside the door WEST of the partition (blender 0.3, 0.9),
+		# looking NNW across the table + rockers to the kitchenette
+		# counter and the wood stove. Eye 1.62 (ceiling 3.4).
+		# (2026-10-11) THE SAME ROOM BY DAY: vol7 plays fourteen cabin cuts in
+		# daylight (ch1 Morning, ch1 Finn, ch2, ch10, ch11 Stick, ch13 Marina,
+		# ch19 Cedar/Per, ch21, ch22, ch4 Finn, the epilogue) on the lamp-lit
+		# dusk rig. The night directionals are suffixed to cabin_interior; this
+		# preset brings the sun through the south windows, a sky fill, the
+		# windows' light on the floor, and a day sky. Lamps and stove serve both.
+		"camera_origin": Vector3(0.3, 1.62, -0.9),
+		"camera_rotation": Vector3(-0.04, 0.35, 0.0),
+		"fov": 62.0,
+		"env": {"sky_top": Color(0.40, 0.56, 0.80, 1), "sky_horizon": Color(0.84, 0.86, 0.84, 1),
+			"ground_horizon": Color(0.42, 0.44, 0.38, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
+			"ambient_color": Color(0.80, 0.80, 0.76, 1), "ambient_energy": 0.95, "fog_color": Color(0.78, 0.80, 0.78, 1)},
+		"style_pack": "raw_observation",
+		"suppress_input": true,
+	},
 	"cabin_porch": {
 		"scene": "res://scenes/locales/cabin_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
@@ -2912,6 +2938,17 @@ func load_location(preset_id: String) -> bool:
 	# AREA of a shared set and is dropped, before it enters the tree (so the
 	# mood stack never collects it), for every other preset. The cabin's
 	# porch has a morning sun; the room inside must not.
+	# (2026-10-11) a preset may name the style pack its locale starts on,
+	# overriding the scene's `default_style_pack` for that preset: the
+	# cabin's kitchen_clean (dawn_diner lighting) re-aims the key, tints
+	# the directionals and writes a dusk ambient + sky over whatever the
+	# preset's env set, so the day twin names raw_observation (lighting
+	# scene_default) and keeps its own light. Set before add_child so
+	# PostProcess._ready reads it.
+	if spec.has("style_pack"):
+		var pp: Node = _location_instance.get_node_or_null("PostProcess")
+		if pp != null:
+			pp.set("default_style_pack", String(spec["style_pack"]))
 	_strip_other_preset_lights(_location_instance, preset_id)
 	_apply_preset_env(_location_instance, spec)
 	# CRITICAL: suppress interactive nodes BEFORE adding to tree.

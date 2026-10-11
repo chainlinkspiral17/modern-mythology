@@ -213,6 +213,10 @@
       "bed": "assets/audio/bgm/vol7_cabin_woodstove.wav",
       "gain": 0.9
     },
+    "cabin_interior_day": {
+      "bed": "assets/audio/bgm/vol7_cabin_woodstove.wav",
+      "gain": 0.9
+    },
     "hospice_room": {
       "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
       "gain": 0.82

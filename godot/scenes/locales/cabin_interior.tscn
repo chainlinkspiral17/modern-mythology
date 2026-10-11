@@ -169,19 +169,21 @@ glow_hdr_scale = 2.4
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_Locale")
 
-[node name="Key" type="DirectionalLight3D" parent="."]
+; (2026-10-11) the night rig, suffixed to cabin_interior: the day preset below must not
+; get these; cabin_porch has its own daylight pair.
+[node name="Key__cabin_interior" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 6, 0)
 light_color = Color(0.70, 0.76, 0.86, 1)
 light_energy = 0.45
 shadow_enabled = false
 
-[node name="Fill" type="DirectionalLight3D" parent="."]
+[node name="Fill__cabin_interior" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, -3, 4, 0)
 light_color = Color(0.96, 0.78, 0.52, 1)
 light_energy = 0.30
 shadow_enabled = false
 
-[node name="Back" type="DirectionalLight3D" parent="."]
+[node name="Back__cabin_interior" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 4, 5)
 light_color = Color(0.32, 0.42, 0.62, 1)
 light_energy = 0.25
@@ -215,6 +217,89 @@ rotation = Vector3(-0.50, 0.42, 0.0)
 [node name="shot_insert_cedar" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.850, 0.820, -4.950)
 rotation = Vector3(-0.4252, -0.8622, 0.0)
+
+; ── THE DAY (2026-10-11, preset cabin_interior_day): ch1 Morning ("the light at this hour
+; in this room"), ch1 Finn (ten-thirty to two), ch2 (Finn at the cabin until eleven), ch10
+; (the morning, the rain), ch11 Stick (lunch), ch13 Marina (seven, eggs), ch19 Cedar / Per
+; (the afternoon), ch21 Cabin / Tower, ch22 (six-forty), ch4 Finn (two-twenty), the epilogue
+; (six forty-seven). The sun through the two SOUTH windows (blender y=0; godot z=0), out of
+; the SE and travelling NW-down; a cool fill from the sky. Row-major transforms.
+[node name="Day_Sun__cabin_interior_day" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.8660, -0.3536, 0.3536, 0.0000, 0.7071, 0.7071, -0.5000, -0.6124, 0.6124, 0, 8, 6)
+light_color = Color(1.0, 0.94, 0.84, 1)
+light_energy = 1.05
+shadow_enabled = true
+shadow_bias = 0.06
+shadow_normal_bias = 1.5
+directional_shadow_mode = 0
+directional_shadow_max_distance = 30.0
+metadata/daylight = true
+
+[node name="Day_SkyFill__cabin_interior_day" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-1.0000, -0.0000, 0.0000, 0.0000, 0.1736, 0.9848, -0.0000, 0.9848, -0.1736, 0, 8, 0)
+light_color = Color(0.70, 0.78, 0.90, 1)
+light_energy = 0.55
+shadow_enabled = false
+metadata/daylight = true
+
+; the two south windows' daylight on the floor inside (the porch preset has the reverse:
+; the lamps' square of yellow on the deck)
+[node name="South_Window_W_Day__cabin_interior_day" type="SpotLight3D" parent="."]
+position = Vector3(-2.000, 1.900, -0.250)
+rotation = Vector3(-0.9000, 0.0000, 0)
+light_color = Color(1.0, 0.96, 0.88, 1)
+light_energy = 1.8
+shadow_enabled = false
+spot_range = 5.0
+spot_angle = 34.0
+
+[node name="South_Window_E_Day__cabin_interior_day" type="SpotLight3D" parent="."]
+position = Vector3(2.250, 1.900, -0.250)
+rotation = Vector3(-0.9000, 0.0000, 0)
+light_color = Color(1.0, 0.96, 0.88, 1)
+light_energy = 1.8
+shadow_enabled = false
+spot_range = 5.0
+spot_angle = 34.0
+
+; ── nature let in (draft 11): the light through every opening
+; day: a shaft from the EAST gable window across the rafters onto the table; the west and
+; north windows on the floor. night: the moon through the west gable onto the loft rail.
+[node name="Gable_E_Shaft__cabin_interior_day" type="SpotLight3D" parent="."]
+position = Vector3(3.850, 4.750, -4.000)
+rotation = Vector3(-0.7980, 1.5968, 0)
+light_color = Color(1.00, 0.94, 0.80, 1)
+light_energy = 2.4
+shadow_enabled = false
+spot_range = 9.0
+spot_angle = 24.0
+
+[node name="West_Window_Day__cabin_interior_day" type="SpotLight3D" parent="."]
+position = Vector3(-3.850, 1.550, -7.100)
+rotation = Vector3(-0.5365, -1.7033, 0)
+light_color = Color(1.00, 0.96, 0.88, 1)
+light_energy = 1.6
+shadow_enabled = false
+spot_range = 5.0
+spot_angle = 36.0
+
+[node name="North_Window_E_Day__cabin_interior_day" type="SpotLight3D" parent="."]
+position = Vector3(1.950, 1.800, -7.850)
+rotation = Vector3(-0.7086, -3.0073, 0)
+light_color = Color(1.00, 0.96, 0.88, 1)
+light_energy = 1.6
+shadow_enabled = false
+spot_range = 5.0
+spot_angle = 36.0
+
+[node name="Gable_W_Moon__cabin_interior" type="SpotLight3D" parent="."]
+position = Vector3(-3.850, 4.750, -4.000)
+rotation = Vector3(-0.6908, -0.9730, 0)
+light_color = Color(0.62, 0.70, 0.90, 1)
+light_energy = 0.6
+shadow_enabled = false
+spot_range = 8.0
+spot_angle = 28.0
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -373,8 +458,9 @@ rotation = Vector3(-0.1599, -3.0633, 0.0)
 
 ; [shot:insert window] — the kitchen window over the basin (north)
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.677, 2.325, -6.900)
-rotation = Vector3(-0.3943, 1.0259, 0.0)
+; (draft 11: it stood on the mezzanine's east beam — under it now, from the table's side)
+position = Vector3(-0.300, 1.700, -6.600)
+rotation = Vector3(-0.0749, 1.0400, 0.0)
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
 layer = 100
@@ -507,7 +593,8 @@ metadata/fov = 45.0
 ; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
 ; the far side of the same spot, so two speakers alternate sides
 [node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.078, 1.612, -6.022)
+; (draft 11: 0.6 m east — the loft's post stood at the frame's edge)
+position = Vector3(-0.450, 1.612, -6.100)
 rotation = Vector3(-0.2618, -2.8798, 0.0)
 metadata/fov = 45.0
 

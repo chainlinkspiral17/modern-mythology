@@ -399,6 +399,56 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-10-11 · opening a room to its roof (the cabin, interior drafts 10–11)
+
+**What happened.** The user: "Cabin needs more windows, more consideration
+to the space, a better architecture. Not a box." / "The cabin exists in
+nature but lets it in through windows, lighting, art and wood sculpture in
+the build itself." The flat `make_ceiling` went; the room is open to the
+gable's underside with exposed rafters, a ridge beam, collar ties, three
+tie beams at the eave height, knee braces, a mezzanine loft on carved
+posts, windows in both gables, two more windows, and the carving in the
+frame. Rules that came out of it:
+- **A roof slab's underside is already there.** The exterior `slab()`
+  prisms are closed solids: drop the ceiling and you see their undersides.
+  Add a 3 cm "plank" prism a hair under them (`under(y) - 0.035 ..
+  under(y) - 0.005`) in a planed tone so the inside reads as cedar, not
+  shakes, and never coplanar (z-fight).
+- **The eave walls need a plate.** A wall box stops at `CEIL`; the roof's
+  underside at the wall's INNER face is `CEIL + pitch * thickness`
+  higher — a visible slit the exterior frieze does not cover. One box
+  `(ROOM_W, 0.22, 0.26)` at `CEIL + 0.13` on each eave wall.
+- **Name every member that touches the roof as a roof member.**
+  `prop_overlap_audit` reads a prism as its bounding box, so sloped
+  rafters "clip" the slab they sit under by metres. ROOFISH names
+  (`eave|ridge|roof|gable|chimney|awning`) JOIN each other:
+  `Roof_Rafter_*`, `Roof_Plank_*`, `Roof_Collar_Tie_*`, `Wall_S_Eave_Plate`.
+  Rafters must still stop at the eave walls' inner faces (`y 0.12 ..
+  ROOM_D - 0.12`), or they clip the wall tops for real.
+- **A gable with a window is four prisms.** `make_wall_with_openings`
+  only cuts rectangles; a triangle round an opening is a bottom
+  trapezoid, two side trapezoids and the peak, every slanted edge on the
+  roof line `y_lo(z) = (z - CEIL) / pitch - 0.2`, `y_hi(z) = ROOM_D + 0.2
+  - (z - CEIL) / pitch`. Frame + glass + muntins go on the room face.
+- **A mezzanine is a ceiling for what is under it** (the pot rack's
+  straps reached `CEIL` through the deck) and a floor for what is on it
+  (a knee brace under the beam over the loft hung 6 cm above the
+  mattress — skip braces over a sleeping deck). Posts must clear the
+  table's chair ring (r 1.22 + a chair's half-width); check the closeup
+  markers afterwards — a post at a frame's edge is not an obstruction
+  the audit sees.
+- **A scene's `default_style_pack` overrides a preset's `env`.** The
+  cabin's `kitchen_clean` pack (lighting `dawn_diner`: dir_mult 3, warm
+  tint, sun re-aimed to pitch −10, a dusk sky, ambient 0.78) rewrote the
+  day twin's env at load. A preset may now name `"style_pack"`
+  (Background3D sets the PostProcess `default_style_pack` before
+  add_child); `raw_observation` (mood raw, lighting scene_default) keeps
+  the preset's own light.
+- **Carving is geometry the kit already has.** The cedar face is a
+  chamfered oval + a brow box + a nose box + two dark eye slots; a crow is
+  a blob, a small lathe head, a tapered beak; a knee brace is one concave
+  prism; a salmon in relief is a 9-point prism 2.4 cm proud of its panel.
+
 ### 2026-10-10 · a raised floor, a stocked store, and helpers that guess the wall
 
 **What happened.** The drugstore (draft 2, 26 x 22 m) put its pharmacy

@@ -93,6 +93,18 @@ ROOM_W = 8.0; ROOM_D = 8.0; CEIL = 3.4
 #   table + everything on it (0, +1) · daybed (-1, +0.6)
 #   east room: the bed wall (+1, 0), the desk wall (+0.25, 0), partition 1.4
 OLD_W = 6.0; OLD_D = 6.0
+# THE ARCHITECTURE (interior draft 10, 2026-10-11, the user: "Cabin needs more
+# windows, more consideration to the space, a better architecture. Not a
+# box."): the flat ceiling is gone — the room is open to the roof (the
+# planked underside of the gable, eight rafter pairs, a ridge beam, four
+# collar ties) with three TIE BEAMS across at the eave height CEIL (the lamp
+# hangs from the middle one); the loft is a real mezzanine over the kitchen
+# on two turned posts, LOFT_Z its deck; the east room, "a small annex
+# Eddvard added in '85", keeps a low cedar ceiling of its own; windows in
+# both gables, a west window north of the shop, a second north window by
+# the stove, the south-west window widened to a pair.
+LOFT_Z = 2.30      # the loft deck's underside — "the cedar ceiling above the kitchen"
+ANNEX_CEIL = 2.60  # the east room's ceiling
 PAL_WALL = {"wall": (0.62, 0.46, 0.32, 1.0), "baseboard": (0.32, 0.22, 0.14, 1.0)}
 COL_FLOOR = (0.42, 0.30, 0.20, 1.0); COL_SEAM = (0.22, 0.14, 0.10, 1.0)
 COL_WOOD = (0.42, 0.30, 0.18, 1.0)
@@ -177,7 +189,8 @@ def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
                palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
     # (2026-10-07, window_backing_audit) the loop unrolled: Wall_E is cut
-    make_wall("Wall_W", (-ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=+1)
+    # (draft 10) a window in the W wall NORTH of Olaf's shop (the shop abuts y 0.4..6.1)
+    make_wall_with_openings("Wall_W", (-ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(7.10, 1.55, 1.00, 1.00)])
     make_wall_with_openings("Wall_E", (+ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=-1, openings=[(1.450, 1.750, 1.060, 0.820), (6.200, 1.600, 1.240, 0.940)])   # (2026-10-09) the main room's E window with the stove corner (+2)
     # the N wall built round a REAL opening for the kitchen window
     # (2026-09-23: the wall was solid, so the crow "seen through the
@@ -185,19 +198,27 @@ def build_shell():
     kw_x0, kw_x1, kw_z0, kw_z1 = -3.10, -2.10, 1.005, 1.955   # (2026-10-09) with the kitchen, -1 m
     wn_x0, wn_x1 = -(ROOM_W + 0.2) / 2.0, (ROOM_W + 0.4) / 2.0   # west end flush with Wall_W's outer face: Olaf's shop abuts it (2026-10-08)
     wcol = PAL_WALL["wall"]
-    make_box("Wall_N", ((kw_x1 + wn_x1) / 2.0, ROOM_D, CEIL / 2.0), (wn_x1 - kw_x1, 0.20, CEIL), wcol)
+    # (draft 10) the N wall east of the kitchen window is cut for a SECOND window
+    # by the stove (x 1.40..2.50, z 1.30..2.30), between the antlers and the pipe
+    ne_x0, ne_x1, ne_z0, ne_z1 = 1.40, 2.50, 1.30, 2.30
+    make_box("Wall_N", ((kw_x1 + ne_x0) / 2.0, ROOM_D, CEIL / 2.0), (ne_x0 - kw_x1, 0.20, CEIL), wcol)
+    make_box("Wall_N_E", ((ne_x1 + wn_x1) / 2.0, ROOM_D, CEIL / 2.0), (wn_x1 - ne_x1, 0.20, CEIL), wcol)
+    make_box("Wall_N_E_Sill", ((ne_x0 + ne_x1) / 2.0, ROOM_D, ne_z0 / 2.0), (ne_x1 - ne_x0, 0.20, ne_z0), wcol)
+    make_box("Wall_N_E_Head", ((ne_x0 + ne_x1) / 2.0, ROOM_D, (ne_z1 + CEIL) / 2.0), (ne_x1 - ne_x0, 0.20, CEIL - ne_z1), wcol)
     make_box("Wall_N_W", ((wn_x0 + kw_x0) / 2.0, ROOM_D, CEIL / 2.0), (kw_x0 - wn_x0, 0.20, CEIL), wcol)
     make_box("Wall_N_Sill", ((kw_x0 + kw_x1) / 2.0, ROOM_D, kw_z0 / 2.0), (kw_x1 - kw_x0, 0.20, kw_z0), wcol)
     make_box("Wall_N_Head", ((kw_x0 + kw_x1) / 2.0, ROOM_D, (kw_z1 + CEIL) / 2.0), (kw_x1 - kw_x0, 0.20, CEIL - kw_z1), wcol)
     make_box("Wall_N_Base", (0.0, ROOM_D - 0.106, 0.08), (ROOM_W + 0.4, 0.012, 0.16), PAL_WALL["baseboard"])
     # the outside sill the crow stands on
     make_box("Kitchen_Window_OutSill", ((kw_x0 + kw_x1) / 2.0, ROOM_D + 0.275, 1.04), (1.10, 0.35, 0.04), wcol)
-    make_wall_with_openings("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(-2.000, 1.450, 1.100, 1.000)])   # cut 2026-10-07 (window_backing_audit): the window was a pane on a solid wall
+    make_wall_with_openings("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(-2.000, 1.450, 1.700, 1.000)])   # (draft 10: a pair, 1.70) cut 2026-10-07 (window_backing_audit): the window was a pane on a solid wall
     make_wall_with_openings("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(2.250, 1.450, 0.950, 0.950)])   # (2026-10-09: with the east room's desk, +0.25) cut 2026-10-07 (window_backing_audit): the window was a pane on a solid wall
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.45), (2.0, 0.20, 0.90), PAL_WALL["wall"])
-    make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
-                 with_grid=False, with_stains=False,
-                 palette={"tile": (0.48, 0.36, 0.26, 1.0)})
+    # (draft 10) no flat ceiling: the room is open to the roof — see
+    # build_architecture_2026_10(). The eave walls get a plate that meets the
+    # roof's underside (it rises 0.24 m across the wall's thickness).
+    for e, nm in ((0.0, "S"), (ROOM_D, "N")):
+        make_box(f"Wall_{nm}_Eave_Plate", (0.0, e, CEIL + 0.13), (ROOM_W + 0.4, 0.22, 0.26), PAL_WALL["wall"])   # (an eave member: it meets the roof)
     # The thermometer above the door, nailed there in 1979
     make_box("Thermometer_Back", (0.0, 0.12, 2.60), (0.10, 0.03, 0.26), (0.82, 0.78, 0.68, 1.0))
     make_box("Thermometer_Tube", (0.0, 0.13, 2.60), (0.02, 0.02, 0.20), (0.72, 0.24, 0.20, 1.0))
@@ -277,7 +298,7 @@ def build_kitchen():
     # Hanging pot rack over the counter
     make_box("PotRack_Bar", (-1.7, 4.6, 2.0), (0.04, 1.4, 0.04), COL_IRON)
     for si, sy in enumerate((4.0, 5.2)):   # (2026-09-22: straps to the ceiling — the bar hung on nothing)
-        make_box(f"PotRack_Strap_{si}", (-1.7, sy, (2.02 + CEIL) / 2.0), (0.03, 0.03, CEIL - 2.02), COL_IRON)
+        make_box(f"PotRack_Strap_{si}", (-1.7, sy, (2.02 + LOFT_Z) / 2.0), (0.03, 0.03, LOFT_Z - 2.02), COL_IRON)   # (draft 10: to the loft deck)
     for i, (py, r, h, col) in enumerate([(4.2, 0.11, 0.14, COL_IRON), (4.6, 0.13, 0.16, (0.55, 0.35, 0.18, 1.0)),
                                          (5.0, 0.10, 0.12, COL_IRON)]):
         make_cyl(f"PotRack_Hook_{i}", (-1.7, py, 1.9), 0.006, 0.16, COL_IRON_WM, segments=4)
@@ -299,33 +320,48 @@ def build_kitchen():
 def build_loft():
     """The sleeping loft above the kitchen + its ladder ("Marina
     woke at four-twenty in the loft above the kitchen. She came down
-    the loft ladder.")"""
-    make_box("Loft_Deck", (-1.6, 4.8, 2.10), (2.6, 2.4, 0.10), COL_WOOD)
-    make_box("Loft_Beam", (-1.6, 3.62, 2.02), (2.6, 0.12, 0.16), COL_WOOD_DK)
-    make_chamfer_box("Loft_Mattress", (-1.9, 5.0, 2.24), (1.30, 1.90, 0.18), (0.88, 0.84, 0.76, 1.0), chamfer=0.04)   # (draft 9: soft edges)
-    make_chamfer_box("Loft_Blanket", (-1.9, 4.7, 2.36), (1.26, 1.10, 0.06), COL_WOOL, chamfer=0.02)
-    make_chamfer_box("Loft_Pillow", (-1.9, 5.65, 2.37), (0.60, 0.34, 0.08), (0.94, 0.90, 0.84, 1.0), chamfer=0.03)
+    the loft ladder."). INTERIOR DRAFT 10 (2026-10-11): a real mezzanine,
+    x -4.0..-1.0 by y 5.3..8.0, its deck LOFT_Z — "the cedar ceiling above
+    the kitchen was the cedar Eddvard had milled in '79" is its underside —
+    on a front beam carried by two turned posts, railed on its two open
+    sides with turned balusters; Eddvard's old mattress at the north end
+    under the roof's low side. Built in actual coordinates (the old loft
+    was a 2.6 x 2.4 box in the kitchen's shifted frame)."""
+    X0, X1, Y0, Y1 = -4.0, -1.0, 5.30, ROOM_D
+    cedar, cedar_dk = (0.64, 0.48, 0.31, 1.0), COL_WOOD_DK
+    make_box("Loft_Deck", ((X0 + X1) / 2.0, (Y0 + Y1) / 2.0, LOFT_Z + 0.05), (X1 - X0, Y1 - Y0, 0.10), cedar)
+    # the deck's plank lines on its underside — the cedar ceiling, seen from the kitchen
+    for pi_, px in enumerate([X0 + 0.25 + 0.25 * i for i in range(12)]):
+        make_box(f"Loft_Deck_Seam_{pi_}", (px, (Y0 + Y1) / 2.0, LOFT_Z - 0.004), (0.008, Y1 - Y0 - 0.02, 0.008), (0.36, 0.26, 0.16, 1.0))
+    make_box("Loft_Beam", ((X0 + X1) / 2.0 + 0.1, Y0, LOFT_Z - 0.09), (X1 - X0 + 0.2, 0.14, 0.18), cedar_dk)
+    make_box("Loft_Beam_E", (X1, (Y0 + Y1) / 2.0, LOFT_Z - 0.09), (0.14, Y1 - Y0, 0.18), cedar_dk)
+    # two turned posts under the front beam (clear of the table's chair ring and the counter)
+    for pi_, px in enumerate((-1.0, -2.2)):
+        make_lathe(f"Loft_Post_{pi_}", (px, Y0, 0.0),
+                   [(0.075, 0.0), (0.075, 0.10), (0.06, 0.14), (0.066, 0.90), (0.056, 1.10), (0.066, 1.60), (0.06, 1.95), (0.075, 2.02), (0.075, LOFT_Z - 0.18)],
+                   cedar_dk, segments=10)
+    # the rails: along the front and down the east edge, turned balusters every 0.30
+    make_box("Loft_Rail", ((X0 + X1) / 2.0, Y0, LOFT_Z + 0.10 + 0.46), (X1 - X0, 0.05, 0.06), cedar_dk)
+    make_box("Loft_Rail_E", (X1, (Y0 + Y1) / 2.0, LOFT_Z + 0.10 + 0.46), (0.05, Y1 - Y0, 0.06), cedar_dk)
+    bal = [(0.024, 0.0), (0.024, 0.03), (0.014, 0.06), (0.022, 0.16), (0.012, 0.28), (0.020, 0.38), (0.024, 0.43)]
+    for bi, bx in enumerate([X0 + 0.15 + 0.30 * i for i in range(10)]):
+        make_lathe(f"Loft_Rail_Bal_{bi}", (bx, Y0, LOFT_Z + 0.10), bal, cedar_dk, segments=8)
+    for bi, by in enumerate([Y0 + 0.30 + 0.30 * i for i in range(8)]):
+        make_lathe(f"Loft_Rail_E_Bal_{bi}", (X1, by, LOFT_Z + 0.10), bal, cedar_dk, segments=8)
+    # Eddvard's mattress at the north end, the head under the eave
+    make_chamfer_box("Loft_Mattress", (-3.25, 7.00, LOFT_Z + 0.10 + 0.09), (1.30, 1.90, 0.18), (0.88, 0.84, 0.76, 1.0), chamfer=0.04)
+    make_chamfer_box("Loft_Blanket", (-3.25, 6.65, LOFT_Z + 0.10 + 0.21), (1.26, 1.10, 0.06), COL_WOOL, chamfer=0.02)
+    make_chamfer_box("Loft_Pillow", (-3.25, 7.70, LOFT_Z + 0.10 + 0.22), (0.60, 0.34, 0.08), (0.94, 0.90, 0.84, 1.0), chamfer=0.03)
     # Marina's things at the loft's foot: a folded sweater and the
     # flashlight she came down the ladder with
-    make_chamfer_box("Loft_Sweater", (-1.2, 4.3, 2.18), (0.30, 0.24, 0.06), (0.46, 0.26, 0.24, 1.0), chamfer=0.015)
-    make_cyl("Loft_Flashlight", (-1.0, 4.5, 2.17), 0.02, 0.18, (0.16, 0.16, 0.18, 1.0), axis='Y', segments=8)
-    make_box("Loft_Rail", (-1.0, 3.66, 2.45), (1.6, 0.05, 0.06), COL_WOOD_DK)
-    for bi, bx in enumerate((-1.6, -1.0, -0.4)):
-        make_lathe(f"Loft_Rail_Bal_{bi}", (bx, 3.66, 2.12),   # turned (interior draft 8)
-                   [(0.024, 0.0), (0.024, 0.03), (0.014, 0.06), (0.022, 0.14), (0.012, 0.24), (0.020, 0.32), (0.024, 0.36)],
-                   COL_WOOD_DK, segments=8)
-    # Ladder — against the loft's FRONT edge (the beam at y 3.62), rails
-    # reaching the deck (2026-09-07 Deck: it stood UNDER the deck at
-    # y 3.95, climbing into the loft's underside — "turned 90 degrees")
-    # west end of the loft edge — clear of the table's chair ring (r 1.22) and the daybed
-    # (2026-09-23: at y 3.50 the ladder stood 13 cm inside the kitchen
-    # counter, which runs under the loft's open end. It stands in front
-    # of the counter now and hooks over the loft beam.)
-    for rx in (-2.30, -2.00):
-        make_box(f"Ladder_Rail_{rx:.2f}", (rx, 3.30, 1.10), (0.05, 0.05, 2.20), COL_WOOD)
-        make_box(f"Ladder_Hook_{rx:.2f}", (rx, 3.44, 2.125), (0.05, 0.24, 0.05), COL_WOOD_DK)
-    for s in range(6):
-        make_box(f"Ladder_Rung_{s}", (-2.15, 3.30, 0.30 + s * 0.36), (0.34, 0.04, 0.04), COL_WOOD_DK)
+    make_chamfer_box("Loft_Sweater", (-2.1, 5.75, LOFT_Z + 0.10 + 0.03), (0.30, 0.24, 0.06), (0.46, 0.26, 0.24, 1.0), chamfer=0.015)
+    make_cyl("Loft_Flashlight", (-1.7, 5.9, LOFT_Z + 0.10 + 0.02), 0.02, 0.18, (0.16, 0.16, 0.18, 1.0), axis='Y', segments=8)
+    # the ladder at the loft's west end, against the front beam, hooked over it
+    for rx in (-3.45, -3.15):
+        make_box(f"Ladder_Rail_{rx:.2f}", (rx, Y0 - 0.08, 1.10), (0.05, 0.05, 2.20), COL_WOOD)
+        make_box(f"Ladder_Hook_{rx:.2f}", (rx, Y0 + 0.02, LOFT_Z + 0.125), (0.05, 0.24, 0.05), COL_WOOD_DK)
+    for st in range(6):
+        make_box(f"Ladder_Rung_{st}", (-3.30, Y0 - 0.08, 0.30 + st * 0.36), (0.34, 0.04, 0.04), COL_WOOD_DK)
 
 
 def build_stove_corner():
@@ -532,7 +568,8 @@ def build_daybed():
     # Chair by the SOUTH window, main room ("The chair by the south
     # window" / "Finn on the floor by the south window")
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
-    make_window("South_Window_W", (-2.0, 0.10, 1.45), width=1.10, height=1.00, room_dir=+1)
+    make_window("South_Window_W", (-2.0, 0.10, 1.45), width=1.70, height=1.00, room_dir=+1)   # (draft 10: a pair, was 1.10)
+    make_box("South_Window_W_Mullion", (-2.0, 0.155, 1.45), (0.06, 0.07, 1.00), COL_WOOD_DK)
     make_chair("SWChair", -1.70, 0.95, yaw=3.1416, wood=COL_WOOD, w=0.44)
 
 
@@ -684,6 +721,165 @@ def build_cabin_draft9_2026_10():
     for bi, bx in enumerate((2.80, 2.95)):
         make_chamfer_box(f"Coat_Boot_{bi}_Foot", (bx, 3.32, 0.064), (0.10, 0.26, 0.08), (0.30, 0.22, 0.14, 1.0), chamfer=0.02)
         make_cyl(f"Coat_Boot_{bi}_Shaft", (bx, 3.38, 0.24), 0.05, 0.27, (0.30, 0.22, 0.14, 1.0), segments=10)
+
+
+def build_architecture_2026_10():
+    """INTERIOR DRAFT 10 · THE ARCHITECTURE (2026-10-11, the user: "Cabin
+    needs more windows, more consideration to the space, a better
+    architecture. Not a box."). The room is open to its roof: the planked
+    underside of the two slabs, eight rafter pairs 1 m apart, the ridge
+    beam, four collar ties at 4.9; three TIE BEAMS span the room at the
+    eave height CEIL (the oil lamp hangs from the middle one over the
+    table). Windows in both gables under the ridge, a west window north of
+    the shop, a second north window by the stove (their frames and glass;
+    the openings are cut in build_shell / the exterior). The east room —
+    "a small annex Eddvard had added in '85" — gets its own low cedar
+    ceiling on two joists, so the main room's height is read against it.
+    Draft 11 targets: the posts' plinths; a pegged knee brace at each tie
+    beam's end; the gable windows' outside casing; the W window's view
+    (the lean-to is NW — a stump and the creek's bend); the loft's
+    footboard; a second lamp off the north tie beam over the stove."""
+    pitch = 0.80
+    under_s = lambda y: CEIL + pitch * (y + 0.20)
+    ridge_y = ROOM_D / 2.0
+    ridge_z = under_s(ridge_y)
+    under_n = lambda y: ridge_z - pitch * (y - ridge_y)
+    plank, timber = (0.60, 0.45, 0.30, 1.0), (0.38, 0.27, 0.17, 1.0)
+    # the roof's underside, planked (a hair under the slabs so it does not fight them)
+    for nm, ya, yb, under in (("S", -0.10, ridge_y, under_s), ("N", ridge_y, ROOM_D + 0.10, under_n)):
+        _prism_ccw(f"Roof_Plank_{nm}", (0.0, 0.0, 0.0),
+                   [(ya, under(ya) - 0.035), (yb, under(yb) - 0.035), (yb, under(yb) - 0.005), (ya, under(ya) - 0.005)],
+                   ROOM_W, plank)
+    # the ridge beam, and the rafters down each side of it
+    make_box("Ridge_Beam", (0.0, ridge_y, ridge_z - 0.17), (ROOM_W + 0.2, 0.14, 0.26), timber)
+    for ri, rx in enumerate([-3.5 + 1.0 * i for i in range(8)]):
+        for nm, ya, yb, under in (("S", 0.12, ridge_y - 0.07, under_s), ("N", ridge_y + 0.07, ROOM_D - 0.12, under_n)):
+            _prism_ccw(f"Roof_Rafter_{ri}_{nm}", (rx, 0.0, 0.0),
+                       [(ya, under(ya) - 0.21), (yb, under(yb) - 0.21), (yb, under(yb) - 0.04), (ya, under(ya) - 0.04)],
+                       0.08, timber)
+    # collar ties at 4.9 m on every other rafter
+    tie_y0 = (4.90 - CEIL) / pitch - 0.20
+    for ti, tx in enumerate((-2.5, -0.5, 1.5, 3.5)):
+        make_box(f"Roof_Collar_Tie_{ti}", (tx, ridge_y, 4.82), (0.08, ROOM_D - 2.0 * tie_y0, 0.16), timber)
+    # the three tie beams at the eave height, wall to wall (the lamp's chains
+    # start at CEIL - 0.01: inside the middle one)
+    for bi, by in enumerate((1.50, 3.90, 6.30)):
+        make_box(f"Tie_Beam_{bi}", (0.0, by, CEIL - 0.11), (ROOM_W + 0.2, 0.16, 0.22), timber)
+    # ── the windows' frames and glass on the room faces ──
+    glass = COL_GLASS
+    # the gables: frame and pane on the inside face (x -3.9 / +3.9)
+    for e, nm in ((-1, "W"), (1, "E")):
+        fx = e * (ROOM_W / 2.0 - 0.12)
+        make_frame_ring(f"Gable_{nm}_Win_Frame", (fx, 4.0, 4.75), (0.04, 1.30, 1.00), COL_WOOD_DK)
+        make_box(f"Gable_{nm}_Win_Glass", (fx - e * 0.03, 4.0, 4.75), (0.02, 1.16, 0.86), glass)
+        make_box(f"Gable_{nm}_Win_Muntin_V", (fx - e * 0.015, 4.0, 4.75), (0.01, 0.04, 0.86), COL_WOOD_DK)
+        make_box(f"Gable_{nm}_Win_Muntin_H", (fx - e * 0.015, 4.0, 4.75), (0.01, 1.16, 0.04), COL_WOOD_DK)
+    # the west window north of the shop (opening y 6.60..7.60, z 1.05..2.05)
+    make_frame_ring("West_Window_Frame", (-ROOM_W / 2.0 + 0.12, 7.10, 1.55), (0.04, 1.10, 1.10), COL_WOOD_DK)
+    make_box("West_Window_Glass", (-ROOM_W / 2.0 + 0.15, 7.10, 1.55), (0.02, 0.96, 0.96), glass)
+    make_box("West_Window_Muntin_V", (-ROOM_W / 2.0 + 0.135, 7.10, 1.55), (0.01, 0.04, 0.96), COL_WOOD_DK)
+    make_box("West_Window_Muntin_H", (-ROOM_W / 2.0 + 0.135, 7.10, 1.55), (0.01, 0.96, 0.04), COL_WOOD_DK)
+    make_box("West_Window_Sill", (-ROOM_W / 2.0 + 0.16, 7.10, 1.02), (0.14, 1.16, 0.04), COL_WOOD_DK)
+    # the second north window, by the stove (opening x 1.40..2.50, z 1.30..2.30)
+    make_frame_ring("North_Window_E_Frame", (1.95, ROOM_D - 0.12, 1.80), (1.20, 0.04, 1.10), COL_WOOD_DK)
+    make_box("North_Window_E_Glass", (1.95, ROOM_D - 0.15, 1.80), (1.06, 0.02, 0.96), glass)
+    make_box("North_Window_E_Muntin_V", (1.95, ROOM_D - 0.135, 1.80), (0.04, 0.01, 0.96), COL_WOOD_DK)
+    make_box("North_Window_E_Muntin_H", (1.95, ROOM_D - 0.135, 1.80), (1.06, 0.01, 0.04), COL_WOOD_DK)
+    make_box("North_Window_E_Sill", (1.95, ROOM_D - 0.16, 1.27), (1.26, 0.14, 0.04), COL_WOOD_DK)
+    # ── the annex's ceiling: the east room under its own low cedar lid ──
+    make_box("East_Room_Ceil", (2.65, 1.50, ANNEX_CEIL + 0.03), (2.50, 2.80, 0.06), (0.52, 0.38, 0.25, 1.0))   # inside the walls' faces (x 1.4..3.9, y 0.1..2.9)
+    for ji, jy in enumerate((0.90, 2.00)):
+        make_box(f"East_Room_Joist_{ji}", (2.65, jy, ANNEX_CEIL - 0.06), (2.46, 0.08, 0.12), timber)
+
+
+def build_nature_let_in_2026_10():
+    """INTERIOR DRAFT 11 · NATURE LET IN (2026-10-11, the user: "The cabin
+    exists in nature but lets it in through windows, lighting, art and wood
+    sculpture in the build itself").
+    WINDOWS — every opening has the clearing past it: a bigleaf maple, a
+    stump and ferns and the creek's bend past the new west window; a
+    salmonberry thicket and a stump past the north window by the stove
+    (the gable windows look into the Sitkas' crowns).
+    LIGHT — in the .tscn: a shaft from the east gable window across the
+    rafters onto the table, the west and north windows' light on the
+    floor (cabin_interior_day), and the moon through the west gable at
+    night.
+    ART — pressed sword-fern frames on the east room's partition, a
+    driftwood branch over the daybed, a cedar panel of three salmon in
+    relief on the north wall over the stove's thimble.
+    THE CARVED FRAME — Olaf's work in the structure: a curved knee brace
+    under each tie beam's end, carved capitals on the loft's posts with
+    the cedar face (vol 7's face in the wall) cut into each, a turned
+    newel at the loft rail's west end with a carved crow on it.
+    Draft 12 targets: the braces' leaf relief; the ridge beam's ends as
+    bird heads at the gables; a carved lintel over the front door; the
+    window sills' end-blocks; a second lamp off the north tie beam; the
+    salmon panel's river line; moss on the stump."""
+    cedar_lt, cedar, cedar_dk = (0.72, 0.54, 0.34, 1.0), (0.64, 0.48, 0.31, 1.0), COL_WOOD_DK
+    timber = (0.38, 0.27, 0.17, 1.0)
+    # ── THE CARVED FRAME ──
+    # knee braces: a curved, tapering brace from the gable wall to each tie beam's underside
+    for bi, by in enumerate((1.50, 3.90, 6.30)):
+        for e, nm in ((1, "E"), (-1, "W")):
+            if by > 6.0 and e < 0:
+                continue   # the north beam's west end is over the loft: a brace there hangs at a sleeper's head
+            poly = [(e * 3.90, 2.46), (e * 3.90, 2.70), (e * 3.66, 2.95), (e * 3.30, 3.16), (e * 3.00, 3.18),
+                    (e * 2.96, 3.14), (e * 3.28, 3.00), (e * 3.60, 2.78)]
+            _prism_ccw(f"Tie_Beam_{bi}_Brace_{nm}", (0.0, by, 0.0), poly, 0.12, timber, axis="Y")
+    # the loft posts' capitals, and the cedar face cut into each post's room side
+    for pi_, px in enumerate((-1.0, -2.2)):
+        make_lathe(f"Loft_Post_{pi_}_Cap", (px, 5.30, LOFT_Z - 0.18 - 0.16),
+                   [(0.076, 0.0), (0.09, 0.05), (0.125, 0.12), (0.135, 0.16)], cedar_dk, segments=10)
+        fy = 5.30 - 0.066 - 0.012
+        make_chamfer_box(f"Loft_Post_{pi_}_Face", (px, fy, 1.55), (0.10, 0.028, 0.15), cedar_lt, chamfer=0.03)
+        make_box(f"Loft_Post_{pi_}_Face_Brow", (px, fy - 0.016, 1.595), (0.08, 0.008, 0.012), cedar_dk)
+        make_box(f"Loft_Post_{pi_}_Face_Nose", (px, fy - 0.016, 1.555), (0.016, 0.008, 0.055), cedar_dk)
+        for e in (-1, 1):
+            make_box(f"Loft_Post_{pi_}_Face_Eye_{'L' if e < 0 else 'R'}", (px + e * 0.025, fy - 0.015, 1.578), (0.02, 0.006, 0.01), (0.22, 0.14, 0.09, 1.0))
+        make_box(f"Loft_Post_{pi_}_Face_Mouth", (px, fy - 0.015, 1.505), (0.034, 0.006, 0.008), (0.22, 0.14, 0.09, 1.0))
+    # the rail's west newel, turned, with Olaf's crow on its cap
+    nx, ny, nz = -3.85, 5.30, LOFT_Z + 0.10
+    make_lathe("Loft_Newel", (nx, ny, nz),
+               [(0.05, 0.0), (0.05, 0.05), (0.034, 0.08), (0.046, 0.30), (0.030, 0.50), (0.044, 0.62), (0.036, 0.70), (0.058, 0.76), (0.058, 0.80)],
+               cedar_dk, segments=10)
+    make_blob("Loft_Newel_Crow", (nx + 0.015, ny, nz + 0.86), 0.055, (0.12, 0.11, 0.12, 1.0), noise=0.10, seed=3, squash=0.75)
+    make_lathe("Loft_Newel_Crow_Head", (nx - 0.05, ny, nz + 0.90), [(0.0, 0.0), (0.03, 0.01), (0.034, 0.03), (0.02, 0.05), (0.0, 0.055)], (0.12, 0.11, 0.12, 1.0), segments=8)
+    make_taper_cyl("Loft_Newel_Crow_Beak", (nx - 0.095, ny, nz + 0.925), 0.012, 0.003, 0.05, (0.30, 0.26, 0.20, 1.0), segments=5, axis='X')
+    # ── ART OF THE PLACE ──
+    # three pressed sword-fern frames on the partition's main-room face (x 1.30)
+    for fi, fy in enumerate((1.10, 1.70, 2.30)):
+        make_box(f"Fern_Frame_{fi}", (1.285, fy, 1.78), (0.03, 0.30, 0.40), cedar_dk)
+        make_box(f"Fern_Frame_{fi}_Mat", (1.268, fy, 1.78), (0.006, 0.25, 0.35), (0.90, 0.88, 0.80, 1.0))
+        make_box(f"Fern_Frame_{fi}_Stem", (1.264, fy, 1.78), (0.003, 0.006, 0.28), (0.26, 0.40, 0.20, 1.0))
+        for li, lz in enumerate((-0.10, -0.04, 0.02, 0.08)):
+            for e in (-1, 1):
+                make_rot_box(f"Fern_Frame_{fi}_Leaf_{li}_{'L' if e < 0 else 'R'}", (1.264, fy + e * 0.045, 1.78 + lz + 0.015),
+                             (0.003, 0.09, 0.014), (0.30, 0.46, 0.22, 1.0), roll=e * 0.55)
+    # a driftwood branch over the daybed on the W wall, on two pegs
+    make_tube("Daybed_Driftwood", [(-3.86, 1.70, 1.92), (-3.845, 2.10, 2.00), (-3.86, 2.50, 1.95), (-3.84, 2.90, 2.03), (-3.86, 3.20, 1.94)],
+              0.035, (0.66, 0.60, 0.50, 1.0), segments=7)
+    for pi_, py in enumerate((2.05, 2.95)):
+        make_cyl(f"Daybed_Driftwood_Peg_{pi_}", (-3.88, py, 1.86), 0.012, 0.06, cedar_dk, axis='X', segments=6)
+    # the cedar panel over the stove's thimble: three salmon in relief
+    make_box("Stove_Wall_Panel", (3.30, ROOM_D - 0.115, 3.05), (1.20, 0.03, 0.60), cedar)
+    fish = [(-0.18, 0.0), (-0.11, 0.045), (0.05, 0.05), (0.13, 0.02), (0.18, 0.05), (0.18, -0.05), (0.13, -0.02), (0.05, -0.05), (-0.11, -0.045)]
+    for si, (sx_, sz_) in enumerate(((2.95, 3.14), (3.30, 2.98), (3.65, 3.14))):
+        _prism_ccw(f"Stove_Wall_Panel_Salmon_{si}", (0.0, ROOM_D - 0.115 - 0.015 - 0.012, 0.0),
+                   [(sx_ + u, sz_ + v) for u, v in fish], 0.024, (0.74, 0.56, 0.36, 1.0), axis="Y")
+    # ── THE CLEARING PAST THE WINDOWS ──
+    trunk, fern = (0.36, 0.28, 0.22, 1.0), (0.24, 0.36, 0.20, 1.0)
+    # west: a bigleaf maple, the stump Olaf split on, ferns, the creek's bend north of the shop
+    make_taper_cyl("Thru_W_Maple_Trunk", (-6.5, 7.6, YARD_Z + 2.4), 0.24, 0.15, 4.8, trunk, segments=8)
+    make_blob("Thru_W_Maple_Crown", (-6.5, 7.6, YARD_Z + 5.6), 1.8, (0.36, 0.50, 0.22, 1.0), noise=0.22, seed=11, squash=0.75)
+    make_blob("Thru_W_Maple_Crown_Low", (-5.9, 8.2, YARD_Z + 4.6), 1.1, (0.32, 0.46, 0.20, 1.0), noise=0.22, seed=12, squash=0.7)
+    make_lathe("Thru_W_Stump", (-5.3, 7.1, YARD_Z), [(0.34, 0.0), (0.31, 0.30), (0.28, 0.52), (0.24, 0.56), (0.0, 0.56)], (0.40, 0.31, 0.22, 1.0), segments=10)
+    for fi, (fx, fy, fr) in enumerate(((-5.9, 6.6, 0.55), (-4.9, 7.9, 0.5), (-6.2, 8.6, 0.6))):
+        make_blob(f"Thru_W_Fern_{fi}", (fx, fy, YARD_Z + fr * 0.45), fr, fern, noise=0.30, seed=20 + fi, squash=0.55)
+    make_box("Thru_W_Creek_Bend", (-8.0, 9.6, YARD_Z + 0.02), (1.2, 5.2, 0.04), (0.35, 0.42, 0.44, 0.9))
+    # north, past the window by the stove: salmonberry, a stump
+    for bi, (bx, by, br) in enumerate(((0.9, 9.7, 0.75), (2.75, 10.8, 0.90), (4.5, 9.6, 0.70))):
+        make_blob(f"Thru_N_Salmonberry_{bi}", (bx, by, YARD_Z + br * 0.6), br, (0.30, 0.44, 0.22, 1.0), noise=0.28, seed=30 + bi, squash=0.7)
+    make_lathe("Thru_N_Stump", (2.4, 9.1, YARD_Z), [(0.28, 0.0), (0.26, 0.28), (0.22, 0.42), (0.0, 0.42)], (0.40, 0.31, 0.22, 1.0), segments=10)
 
 
 def build_crow_2026_08():
@@ -1045,9 +1241,21 @@ def build_exterior_2026_10():
     for e, nm in ((-1, "S"), (1, "N")):
         make_box(f"Roof_Frieze_{nm}", (0.0, ROOM_D / 2.0 + e * (ROOM_D / 2.0 + 0.103), CEIL - 0.05), (ROOM_W - 0.2, 0.006, 0.10), shake)
     make_box("Roof_Ridge", (0.0, ridge_y, ridge_z + th + 0.03), (ROOM_W + 1.2, 0.26, 0.06), (0.24, 0.20, 0.17, 1.0))
+    # (draft 10) each gable carries a WINDOW under the ridge (y 3.40..4.60,
+    # z 4.30..5.20): the triangle is four pieces round the opening, every
+    # edge on the roof line (y_lo/y_hi at a height z)
+    gw_y0, gw_y1, gw_z0, gw_z1 = 3.40, 4.60, 4.30, 5.20
+    y_lo = lambda z: (z - CEIL) / pitch - 0.20
+    y_hi = lambda z: ROOM_D + 0.20 - (z - CEIL) / pitch
     for e, nm in ((-1, "W"), (1, "E")):
         _prism_ccw(f"Gable_{nm}", (e * ROOM_W / 2.0, 0.0, 0.0),
-                   [(-0.20, CEIL), (ROOM_D + 0.20, CEIL), (ridge_y, ridge_z - 0.02)], 0.20, PAL_WALL["wall"])
+                   [(-0.20, CEIL), (ROOM_D + 0.20, CEIL), (y_hi(gw_z0), gw_z0), (y_lo(gw_z0), gw_z0)], 0.20, PAL_WALL["wall"])
+        _prism_ccw(f"Gable_{nm}_S", (e * ROOM_W / 2.0, 0.0, 0.0),
+                   [(y_lo(gw_z0), gw_z0), (gw_y0, gw_z0), (gw_y0, gw_z1), (y_lo(gw_z1), gw_z1)], 0.20, PAL_WALL["wall"])
+        _prism_ccw(f"Gable_{nm}_N", (e * ROOM_W / 2.0, 0.0, 0.0),
+                   [(gw_y1, gw_z0), (y_hi(gw_z0), gw_z0), (y_hi(gw_z1), gw_z1), (gw_y1, gw_z1)], 0.20, PAL_WALL["wall"])
+        _prism_ccw(f"Gable_{nm}_Peak", (e * ROOM_W / 2.0, 0.0, 0.0),
+                   [(y_lo(gw_z1), gw_z1), (y_hi(gw_z1), gw_z1), (ridge_y, ridge_z - 0.02)], 0.20, PAL_WALL["wall"])
         # the gable's vent, under the ridge
         make_box(f"Gable_{nm}_Vent", (e * (ROOM_W / 2.0 + 0.105), ridge_y, ridge_z - 0.55), (0.01, 0.40, 0.30), (0.20, 0.15, 0.11, 1.0))
     # siding: the board lines on the outside faces, broken at the openings
@@ -1061,8 +1269,9 @@ def build_exterior_2026_10():
         if cur < hi:
             runs.append((cur, hi))
         return runs
-    s_holes = [((-2.55, -1.45), (0.95, 1.95)), ((1.775, 2.725), (0.975, 1.925)), ((-0.50, 0.50), (0.0, 2.10))]
+    s_holes = [((-2.85, -1.15), (0.95, 1.95)), ((1.775, 2.725), (0.975, 1.925)), ((-0.50, 0.50), (0.0, 2.10))]
     e_holes = [((0.92, 1.98), (1.34, 2.16)), ((5.58, 6.82), (1.13, 2.07))]
+    w_holes = [((6.60, 7.60), (1.05, 2.05))]   # (draft 10) the west window north of the shop
     for k in range(1, 15):
         z = k * 0.225
         if z > CEIL - 0.30:
@@ -1073,7 +1282,9 @@ def build_exterior_2026_10():
         for ri, (a, b) in enumerate(rows(-0.20, ROOM_D - 0.10, [h[0] for h in e_holes if h[1][0] - 0.01 < z < h[1][1] + 0.01])):
             if b - a > 0.05:
                 make_box(f"Siding_E_{k}_{ri}", (ROOM_W / 2.0 + 0.103, (a + b) / 2.0, z), (0.006, b - a, 0.012), seam)
-        make_box(f"Siding_W_{k}", (-ROOM_W / 2.0 - 0.103, (ROOM_D - 0.30) / 2.0, z), (0.006, ROOM_D - 0.10, 0.012), seam)
+        for ri, (a, b) in enumerate(rows(-0.20, ROOM_D - 0.10, [h[0] for h in w_holes if h[1][0] - 0.01 < z < h[1][1] + 0.01])):
+            if b - a > 0.05:
+                make_box(f"Siding_W_{k}_{ri}", (-ROOM_W / 2.0 - 0.103, (a + b) / 2.0, z), (0.006, b - a, 0.012), seam)
     # the stovepipe outside: out of the thimble, past the eave, up over the roof
     sx, pz = 3.3, 2.48   # the stove moved +1 with its corner (2026-10-09)
     py = ROOM_D + 0.20 + eave + 0.20
@@ -1377,8 +1588,10 @@ def main():
     build_shell()
     with _shift(-1.0, 2.0):
         build_kitchen()
-        build_loft()
         build_crow_2026_08()
+    build_loft()                      # (draft 10) actual coordinates
+    build_architecture_2026_10()
+    build_nature_let_in_2026_10()
     with _shift(1.0, 2.0):
         build_stove_corner()
     with _shift(0.0, 1.0):

@@ -6,7 +6,7 @@
   "title": "Tem at the Cabin — Afternoon",
   "nodes": [
     {
-      "src": "3d:cabin_interior",
+      "src": "3d:cabin_interior_day",
       "t": "bg"
     },
     {
