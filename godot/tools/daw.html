@@ -199,7 +199,7 @@
   <button class="dim" id="save">⎙ SAVE</button><button class="dim" id="new">✕ NEW</button>
 </div>
 
-<div id="diagpanel"><div class="row"><b style="flex:1;color:var(--gold-hi);font-weight:normal;letter-spacing:0.1em">DIAGNOSTICS</b><button id="diag-copy">COPY</button><button id="diag-clear" class="dim">CLEAR</button><button id="diag-close" class="dim">✕</button></div>
+<div id="diagpanel"><div class="row"><b style="flex:1;color:var(--gold-hi);font-weight:normal;letter-spacing:0.1em">DIAGNOSTICS</b><button id="diag-restart" title="suspend + resume the audio: Chrome reopens its output (try it when the meters move but you hear nothing)">RESTART AUDIO</button><button id="diag-copy">COPY</button><button id="diag-clear" class="dim">CLEAR</button><button id="diag-close" class="dim">✕</button></div>
   <div class="note">Play the song until the sound stops, then COPY and paste this to Claude. It lists errors, audio-context changes, scheduler stalls and this machine's audio setup.</div>
   <pre id="diag-text"></pre><div class="msg" id="diag-msg"></div></div>
 <div id="latpanel">
@@ -442,6 +442,7 @@ async function diagUI() { $('diag-text').textContent = await diagReport(); }
 E.on('diag', D => { const bad = D.some(x => x.kind === 'error' || x.kind === 'page' || x.kind === 'stall' || (x.kind === 'audio' && /suspended|interrupted|closed|changed/.test(x.msg))); $('diagbtn').classList.toggle('bad', bad); $('diagbtn').textContent = bad ? 'DIAG ⚠' : 'DIAG'; if ($('diagpanel').classList.contains('show')) diagUI(); });
 $('diagbtn').addEventListener('click', () => { $('diagpanel').classList.toggle('show'); diagUI(); });
 $('diag-close').addEventListener('click', () => $('diagpanel').classList.remove('show'));
+$('diag-restart').addEventListener('click', async () => { const ok = await E.restartAudio(); msg('diag-msg', ok ? 'audio restarted — hear it again?' : 'could not restart (see the log)', !ok); diagUI(); });
 $('diag-clear').addEventListener('click', () => { E.diag = []; $('diagbtn').classList.remove('bad'); $('diagbtn').textContent = 'DIAG'; diagUI(); });
 $('diag-copy').addEventListener('click', async () => {
   const txt = await diagReport();

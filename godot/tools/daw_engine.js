@@ -458,6 +458,9 @@ registerProcessor('mm-daw-rec', MMDawRec);
       const lv = { out: this._level(this._tap('out', this.out)), master: this._level(this._tap('master', this.master)), limiter: this._level(this._tap('limiter', this.limiter)) };
       const W = this._watch || (this._watch = { hist: [], silent: 0, t: 0 });
       W.t++;
+      const ol = Math.round(((this.ctx.baseLatency || 0) + (this.ctx.outputLatency || 0)) * 1000);
+      if (W.ol != null && Math.abs(ol - W.ol) >= 8) this.note('audio', 'output latency ' + W.ol + ' → ' + ol + ' ms (the output path changed?)');
+      W.ol = ol;
       if (W.t % 4 === 0) { W.hist.push(Number.isNaN(lv.out) ? 'NaN' : lv.out.toFixed(3)); if (W.hist.length > 20) W.hist.shift(); }
       if (Number.isNaN(lv.out) || Number.isNaN(lv.master) || Number.isNaN(lv.limiter)) {
         const bad = [];
@@ -477,6 +480,12 @@ registerProcessor('mm-daw-rec', MMDawRec);
       } else W.silent = 0;
     }
     outputHistory() { return this._watch ? this._watch.hist.slice() : []; }
+    // suspend + resume: Chrome reopens its output stream (a stream that failed falls back to a silent fake output)
+    async restartAudio() {
+      const c = this.ctx; if (!c || c.state === 'closed') return false;
+      try { await c.suspend(); await new Promise(r => setTimeout(r, 150)); await c.resume(); this.note('audio', 'output restarted (suspend → resume) · output ' + ((c.outputLatency || 0) * 1000).toFixed(0) + ' ms'); return true; }
+      catch (e) { this.fault('restart audio', e); return false; }
+    }
     // ── diagnostics: what went wrong on THIS machine (DAW → DIAG copies it as text) ──
     note(kind, msg) {
       const D = this.diag || (this.diag = []);
@@ -499,6 +508,9 @@ registerProcessor('mm-daw-rec', MMDawRec);
         if (this.playing && c.state !== 'running' && c.state !== 'closed') c.resume().then(() => this.note('audio', 'resumed')).catch(e => this.fault('resume', e));
       };
       if ('onsinkchange' in c) c.onsinkchange = () => this.note('audio', 'output device changed → ' + (c.sinkId || 'system default'));
+      // Chrome reports a failed audio device here (newer versions); its fallback is a silent fake output while the
+      // context keeps running — exactly "levels fine, nothing heard". Log it and try to reopen the real output.
+      if ('onerror' in c) c.onerror = e => { this.note('error', 'audio device error' + (e && e.message ? ': ' + e.message : '') + ' — reopening the output'); this.restartAudio(); };
       this.note('audio', 'context ' + c.state + ' · ' + c.sampleRate + ' Hz · buffer ' + this.buffer);
       this.master = c.createGain();
       this.out = c.createGain();
