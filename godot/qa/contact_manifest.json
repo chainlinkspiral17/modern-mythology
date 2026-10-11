@@ -1283,91 +1283,6 @@
    "scene_missing": false
   },
   {
-   "id": "hans_bakery_back_kitchen",
-   "scene": "res://scenes/locales/hans_bakery_back_kitchen.tscn",
-   "vol": 7,
-   "uses": 8,
-   "moods": [
-    "morning_bright",
-    "day_bright"
-   ],
-   "markers": [
-    {
-     "name": "shot_establish_b",
-     "type": "establish"
-    },
-    {
-     "name": "shot_establish_c",
-     "type": "establish"
-    },
-    {
-     "name": "shot_closeup_person",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_closeup_person_b",
-     "type": "closeup"
-    },
-    {
-     "name": "shot_insert_bag",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_bakery_light",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_bowl",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_bowls",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_box",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_brioche",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_brotchen",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_chapbook",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_coffee",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_crow",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_hands",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_mixer",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_window",
-     "type": "insert"
-    },
-    {
-     "name": "shot_insert_wooden_box",
-     "type": "insert"
-    }
-   ],
-   "scene_missing": false
-  },
-  {
    "id": "henderson_kitchen",
    "scene": "res://scenes/locales/henderson_kitchen.tscn",
    "vol": 6,
@@ -1735,6 +1650,91 @@
     },
     {
      "name": "shot_insert_tea",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
+   "id": "hans_bakery_back_kitchen",
+   "scene": "res://scenes/locales/hans_bakery_back_kitchen.tscn",
+   "vol": 7,
+   "uses": 7,
+   "moods": [
+    "morning_bright",
+    "day_bright"
+   ],
+   "markers": [
+    {
+     "name": "shot_establish_b",
+     "type": "establish"
+    },
+    {
+     "name": "shot_establish_c",
+     "type": "establish"
+    },
+    {
+     "name": "shot_closeup_person",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_bag",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_bakery_light",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_bowl",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_bowls",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_box",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_brioche",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_brotchen",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_chapbook",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_coffee",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_crow",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_hands",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_mixer",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_window",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_wooden_box",
      "type": "insert"
     }
    ],
@@ -7867,6 +7867,98 @@
    "scene_missing": false
   },
   {
+   "id": "hans_bakery_back_door",
+   "scene": "res://scenes/locales/hans_bakery_back_kitchen.tscn",
+   "vol": 7,
+   "uses": 1,
+   "moods": [
+    "lunch"
+   ],
+   "markers": [
+    {
+     "name": "shot_establish_b__hans_bakery_back_door",
+     "type": "establish"
+    },
+    {
+     "name": "shot_establish_c",
+     "type": "establish"
+    },
+    {
+     "name": "shot_closeup_finn__hans_bakery_back_door",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person__hans_bakery_back_door",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_person_b__hans_bakery_back_door",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_closeup_tem__hans_bakery_back_door",
+     "type": "closeup"
+    },
+    {
+     "name": "shot_insert_bag__hans_bakery_back_door",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_bakery_light",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_bowl",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_bowls",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_box",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_brioche",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_brotchen",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_chapbook",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_coffee",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_crow",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_hands",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_mixer",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_window",
+     "type": "insert"
+    },
+    {
+     "name": "shot_insert_wooden_box",
+     "type": "insert"
+    }
+   ],
+   "scene_missing": false
+  },
+  {
    "id": "highway_101",
    "scene": "res://scenes/locales/highway_101.tscn",
    "vol": 7,
@@ -9838,5 +9930,5 @@
   "tired",
   "nervous"
  ],
- "frames": 2210
+ "frames": 2231
 }

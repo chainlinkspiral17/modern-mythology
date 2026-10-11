@@ -157,6 +157,10 @@
       "bed": "assets/audio/bgm/vol7_bread_table.wav",
       "gain": 0.9
     },
+    "hans_bakery_back_door": {
+      "bed": "assets/audio/bgm/vol7_bread_table.wav",
+      "gain": 0.9
+    },
     "diego_bedroom": {
       "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
       "gain": 0.85

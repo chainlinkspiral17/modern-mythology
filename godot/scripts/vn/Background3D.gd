@@ -2257,6 +2257,24 @@ const CAMERA_PRESETS := {
 		"fov": 62.0,
 		"suppress_input": true,
 	},
+	"hans_bakery_back_door": {
+		"scene": "res://scenes/locales/hans_bakery_back_kitchen.tscn",
+		"requires_glb": "res://assets/3d/locales/hans_bakery_back_kitchen.glb",
+		# (pass 69, 2026-10-11) vol7 ch18 Stick: "Eight twelve at the back door
+		# of the bakery" — the door cut in the W wall north of the Hemlock window
+		# (blender y 5.6; godot z -5.6), the gravel side lot with Finn's truck,
+		# Hemlock Street and the wagon at the curb beyond. Camera on the gravel north
+		# of the stoop looking S at the door, the truck at right (the first camera
+		# stood inside the truck once the truck moved). Markers suffixed
+		# __hans_bakery_back_door.
+		"camera_origin": Vector3(-6.80, 1.60, -9.60),
+		"camera_rotation": Vector3(-0.112, -2.698, 0.0),
+		"fov": 60.0,
+		"env": {"sky_top": Color(0.46, 0.56, 0.72, 1), "sky_horizon": Color(0.80, 0.82, 0.80, 1),
+			"ground_horizon": Color(0.40, 0.42, 0.36, 1), "ground_bottom": Color(0.18, 0.20, 0.16, 1),
+			"ambient_color": Color(0.78, 0.80, 0.80, 1), "ambient_energy": 0.85, "fog_color": Color(0.76, 0.78, 0.78, 1)},
+		"suppress_input": true,
+	},
 	"daily_grind_interior": {
 		"scene": "res://scenes/locales/daily_grind_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/daily_grind_interior.glb",

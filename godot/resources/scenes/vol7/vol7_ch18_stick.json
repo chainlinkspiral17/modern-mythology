@@ -5,7 +5,7 @@
   "type": "scene",
   "nodes": [
     {
-      "src": "3d:hans_bakery_back_kitchen",
+      "src": "3d:hans_bakery_back_door",
       "t": "bg"
     },
     {

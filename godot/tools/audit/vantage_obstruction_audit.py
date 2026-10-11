@@ -90,6 +90,7 @@ DELIBERATE_MARKERS = {
     ("salty_tome_interior", "shot_closeup_lena__salty_tome_office"),   # Lena asleep on the couch: the couch is the frame
     ("board_lords_interior", "shot_closeup_kai__board_lords_office"),   # a 1.5 m nook: the desk and the chair are the frame
     ("board_lords_interior", "shot_closeup_person_b__board_lords_office"),
+    ("hans_bakery_back_kitchen", "shot_closeup_finn__hans_bakery_back_door"),   # Finn beside his pickup: the truck is the frame
     ("vehicle_cab", "shot_insert_map"),   # the glove box from the driver's eye: the dash is the frame
     ("nate_garage", "shot_closeup_walt__nate_driveway"),   # Walt at the side door: the house is the frame
     ("vehicle_cab", "shot_insert_five__vehicle_cab_altima_night"),

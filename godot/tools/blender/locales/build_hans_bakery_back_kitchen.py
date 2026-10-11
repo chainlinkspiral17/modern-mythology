@@ -56,6 +56,7 @@ import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
+from _props.vehicles import make_car
 from _props.geometry import clear_scene, make_box, make_chamfer_box, make_blob, make_cyl, make_lathe, make_tube, make_taper_cyl, make_rot_box, export_glb
 from _props.furniture import make_chair, make_pendant
 from _props.detail import make_traffic_wear, make_floor_stain, make_scuff_band, make_light_switch, make_wall_outlet, make_cord_run
@@ -77,7 +78,7 @@ def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
                palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
     # (2026-10-07) Wall_W out of the loop: its window is cut
-    make_wall_with_openings("Wall_W", (-ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(2.6 + SH_W[1], 1.50, 1.10, 1.10)])
+    make_wall_with_openings("Wall_W", (-ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=+1, openings=[(2.6 + SH_W[1], 1.50, 1.10, 1.10), (5.60, 1.05, 0.95, 2.10)])   # (pass 69) the back door, N of the window
     make_wall("Wall_E", (+ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=-1)
     make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
     # Baseboards face INTO the room (+Y) on the south segments — the
@@ -352,7 +353,7 @@ def build_communal_table():
             make_chair(f"TChair_{si}_{xi}", cx, cy, yaw=(-_m.pi/2.0 if cx < 0 else _m.pi/2.0), wood=wood, w=0.42)
     # Head chairs: Tem's (near, back to the door) and ROY'S (far —
     # distinct, darker, a hair wider)
-    make_chair("HeadChair_Tem", 0.0, 0.45, yaw=0.0, wood=wood, w=0.42)
+    make_chair("Head_Chair", 0.0, 0.45, yaw=0.0, wood=wood, w=0.42)
     make_chair("Roys_Chair", 0.0, 4.15, yaw=_m.pi, wood=wood_dk, w=0.44)
     # Table dressing: coffee press, brotchen basket, preserves, butter
     make_cyl("Coffee_Press", (0.0, 2.7, 0.90), 0.06, 0.24, (0.55, 0.62, 0.66, 0.6), segments=10)
@@ -572,12 +573,59 @@ def build_d3_e():
 def build_hemlock():
     # ── D5 · the hemlock outside Win_W (4 AM: near-black green) ──
     make_box("Hemlock_Ground", (-5.6, 2.6, -0.03), (5.0, 7.0, 0.05), (0.16, 0.18, 0.14, 1.0))
-    make_taper_cyl("Hemlock_Trunk", (-4.7, 3.1, 0.0), 0.20, 0.08, 4.2, (0.20, 0.16, 0.13, 1.0), segments=8)
+    make_taper_cyl("Hemlock_Trunk", (-4.7, 2.3, 0.0), 0.20, 0.08, 4.2, (0.20, 0.16, 0.13, 1.0), segments=8)
     for ci, (cz, cr) in enumerate(((2.4, 1.4), (3.4, 1.1), (4.3, 0.7))):
-        make_blob(f"Hemlock_Canopy_{ci}", (-4.7, 3.1, cz), cr, (0.14, 0.24, 0.18, 1.0), noise=0.24, seed=31+ci, squash=0.7)
+        make_blob(f"Hemlock_Canopy_{ci}", (-4.7, 2.3, cz), cr, (0.14, 0.24, 0.18, 1.0), noise=0.24, seed=31+ci, squash=0.7)
     make_taper_cyl("Hemlock_Trunk_Far", (-6.4, 1.2, 0.0), 0.16, 0.07, 4.0, (0.16, 0.13, 0.11, 1.0), segments=6)
     make_blob("Hemlock_Canopy_Far", (-6.4, 1.2, 3.0), 1.5, (0.11, 0.19, 0.15, 1.0), noise=0.24, seed=37, squash=0.75)
-    make_box("Hemlock_Far_Band", (-8.2, 2.6, 2.2), (0.20, 10.0, 4.6), (0.06, 0.08, 0.12, 1.0))
+    make_box("Hemlock_Far_Band", (-24.0, 2.6, 2.2), (0.20, 40.0, 4.6), (0.06, 0.08, 0.12, 1.0))   # (pass 69) past Hemlock Street now
+
+
+def build_back_door_2026_10():
+    """THE BACK DOOR AND THE SIDE LOT (pass 69, 2026-10-11): vol7 ch18 Stick
+    — "Eight twelve at the back door of the bakery... Finn had been at the
+    truck. He had been about to get in when Tem came out of the back door
+    with a brown paper bag in her hand... She went to the wagon. The wagon
+    had been waiting on Hemlock at the curb." The door in the W wall north
+    of the Hemlock window (the steel leaf open outward, the frame, the
+    stoop, the flour-dust mat, the wall-pack over it, bread crates stacked
+    beside it, the delivery rack), the gravel side lot with Finn's truck
+    (the crow's dashboard), the sidewalk and Hemlock Street with the wagon
+    at the curb, Cale's empty spot, the houses across the street. Draft 2
+    targets: the bakery's W facade as boards with the window's outside
+    casing; the front of house's corner and the sidewalk Lena and Kai stand
+    on; the crow on the truck's dashboard; the wagon as the station wagon
+    it is; Hans's house up the street."""
+    steel_dk = (0.30, 0.31, 0.34, 1.0)
+    dx, dy = -ROOM_W / 2.0, 5.60
+    make_box("Bakery_Back_Door_Head", (dx, dy, 2.13), (0.24, 1.07, 0.06), steel_dk)
+    for e, nm in ((-1, "S"), (1, "N")):
+        make_box(f"Bakery_Back_Door_Jamb_{nm}", (dx, dy + e * 0.505, 1.05), (0.24, 0.06, 2.10), steel_dk)
+    make_box("Bakery_Back_Door", (dx - 0.12 - 0.475, dy + 0.475 - 0.025, 1.05), (0.95, 0.045, 2.10), (0.52, 0.50, 0.46, 1.0))   # open outward, on its N hinge
+    make_box("Bakery_Back_Door_Bar", (dx - 0.12 - 0.475, dy + 0.475 - 0.06, 1.02), (0.70, 0.03, 0.05), (0.60, 0.62, 0.64, 1.0))
+    make_box("Bakery_Back_Stoop", (dx - 0.72, dy, -0.015), (1.20, 1.40, 0.03), (0.60, 0.59, 0.58, 1.0))
+    make_box("Bakery_Back_Mat", (dx - 0.72, dy, 0.012), (0.80, 0.60, 0.024), (0.30, 0.28, 0.26, 1.0))
+    make_box("Bakery_Back_Light", (dx - 0.18, dy, 2.45), (0.14, 0.26, 0.18), (1.0, 0.92, 0.70, 1.0))
+    make_box("Bakery_Back_Light_Hood", (dx - 0.20, dy, 2.56), (0.20, 0.30, 0.03), steel_dk)
+    for ci, (cy_, cz_) in enumerate(((7.4, 0.14), (7.4, 0.42), (7.9, 0.14))):   # clear of the leaf's 0.9 m
+        make_box(f"Bread_Crate_{ci}", (dx - 0.42, cy_, cz_), (0.44, 0.44, 0.28), (0.30, 0.44, 0.62, 1.0) if ci != 1 else (0.62, 0.30, 0.26, 1.0))
+    # the gravel side lot, Finn's truck (the crow on its dashboard), the paper bag on the hood
+    make_box("Hemlock_Lot_Gravel", (-7.2, 5.0, -0.02), (5.2, 11.6, 0.03), (0.52, 0.50, 0.44, 1.0))
+    make_car("Pickup_Toyota", -8.6, 7.0, 4.9, (0.56, 0.54, 0.48, 1.0), pickup=True, along="Y")
+    make_box("Paper_Bag", (-4.92, 7.4, 0.67), (0.16, 0.12, 0.22), (0.72, 0.60, 0.42, 1.0))   # on the bread crates by the door
+    # the sidewalk, the curb, Hemlock Street with the wagon at the curb, Cale's empty spot, the houses across
+    make_box("Hemlock_Sidewalk", (-10.4, 4.0, -0.02), (1.4, 40.0, 0.04), (0.60, 0.59, 0.58, 1.0))
+    make_box("Hemlock_Curb", (-11.2, 4.0, -0.03), (0.2, 40.0, 0.10), (0.58, 0.57, 0.55, 1.0))
+    make_box("Hemlock_Street", (-16.15, 4.0, -0.06), (5.1, 40.0, 0.04), (0.26, 0.26, 0.28, 1.0))
+    make_box("Hemlock_Street_Centerline", (-16.15, 4.0, -0.038), (0.10, 40.0, 0.004), (0.84, 0.78, 0.30, 1.0))
+    make_box("Hemlock_Curb_Parking_Asphalt", (-12.45, 4.0, -0.055), (2.3, 40.0, 0.03), (0.28, 0.28, 0.30, 1.0))   # the parking strip along the curb
+    make_car("Station_Wagon", -12.45, 8.5, 4.9, (0.34, 0.40, 0.36, 1.0), along="Y")
+    make_box("Hemlock_Far_Ground", (-22.0, 4.0, -0.03), (8.0, 40.0, 0.03), (0.22, 0.30, 0.16, 1.0))
+    for hi, hy in enumerate((-4.0, 6.0, 16.0)):
+        make_box(f"Hemlock_House_{hi}", (-21.5, hy, 1.6), (7.0, 7.0, 3.2), ((0.56, 0.52, 0.48, 1.0), (0.64, 0.60, 0.52, 1.0), (0.50, 0.54, 0.50, 1.0))[hi])
+        make_box(f"Hemlock_House_{hi}_Roof", (-21.5, hy, 3.45), (7.6, 7.6, 0.50), (0.32, 0.30, 0.30, 1.0))
+    make_box("Hemlock_Lamp_Post", (-10.9, 10.5, 2.4), (0.14, 0.14, 4.8), steel_dk)
+    make_box("Hemlock_Lamp_Head", (-11.15, 10.5, 4.85), (0.70, 0.30, 0.18), steel_dk)
 
 
 def build_foh():
@@ -705,6 +753,7 @@ def main():
     build_door_props()
     build_d3_s()
     build_foh()
+    build_back_door_2026_10()
     build_draft4_2026_09()
     build_ceiling_infra()
     build_draft5_fill_2026_10()

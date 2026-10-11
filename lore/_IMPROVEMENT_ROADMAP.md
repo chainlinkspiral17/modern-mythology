@@ -3834,6 +3834,30 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-11 · pass 69: THE BAKERY'S BACK DOOR (draft 1).** vol7 ch18
+Stick — "Eight twelve at the back door of the bakery": Tem comes out
+with the brown paper bag, Finn at his truck, the wagon waiting on Hemlock
+at the curb — played in the back kitchen. The back door is cut in the W
+wall north of the Hemlock window (the steel leaf open outward, the
+frame, the stoop and the flour-dust mat, the wall-pack as a practical,
+the bread crates with the bag on them); outside, the gravel side lot on
+Hemlock with Finn's Toyota, the sidewalk and the curb's parking strip
+with the station wagon on it, Hemlock Street, the houses across, the
+hemlocks kept (the near one a metre south, off the door's swing), the
+4 AM "far band" moved past the street as a treeline. Preset
+`hans_bakery_back_door` (camera in the lot's NW corner; six suffixed
+markers; a grey-morning env), ch18 routed. Lessons re-learned: a vehicle
+named for its owner (`Finns_Toyota`, `Tems_Wagon`) answers the owner's
+closeup cue — name vehicles by what they are; a parked car needs a
+`*Parking*` strip, not a street (the lane rule); a crown over a door's
+0.9 m is a doorway block. Deck must REBUILD hans_bakery_back_kitchen.
+**Draft 2 targets:** the bakery's W facade as boards with the window's
+outside casing; the front of house's corner and the sidewalk Lena and
+Kai stand on; the crow on the truck's dashboard; the wagon as the
+station wagon it is; Hans's house up the street; the 4 AM scenes now
+see the street past the window — a night env on `hans_bakery_back_kitchen`
+for them (the set's sky is dusk).
+
 **2026-10-11 · pass 68: BOARD LORDS' BACK OFFICE (preset, draft 1).** vol7
 ch12 Kai — sixty-five nodes behind the closed door ("The back office was
 the back office. Devon's old desk against the wall, a chair Devon had

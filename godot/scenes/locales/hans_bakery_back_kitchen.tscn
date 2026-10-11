@@ -207,6 +207,14 @@ rotation = Vector3(-0.5466, -3.0924, 0.0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 1.1, -4.2)
 rotation = Vector3(-0.1923, 0.7548, 0.0)
 
+; (pass 69) the wall-pack over the back door
+[node name="Bakery_Back_Light_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-4.820, 2.380, -5.600)
+light_color = Color(1.0, 0.90, 0.68, 1)
+light_energy = 0.6
+shadow_enabled = false
+omni_range = 3.5
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]
@@ -464,3 +472,41 @@ light_color = Color(1.0, 0.82, 0.56, 1)
 light_energy = 1.7
 shadow_enabled = false
 omni_range = 5.0
+
+; ── vn_shot coverage (pass 69) — the back door and the side lot, suffixed __hans_bakery_back_door
+; closeup (back door): Tem in the door with the bag
+[node name="shot_closeup_tem__hans_bakery_back_door" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-6.300, 1.550, -4.900)
+rotation = Vector3(-0.0319, -1.1071, 0.0)
+metadata/fov = 42.0
+
+; closeup (back door): the same frame
+[node name="shot_closeup_person__hans_bakery_back_door" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-6.300, 1.550, -4.900)
+rotation = Vector3(-0.0319, -1.1071, 0.0)
+metadata/fov = 42.0
+
+; closeup (back door): the reverse — Finn, from the door
+[node name="shot_closeup_person_b__hans_bakery_back_door" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-5.600, 1.550, -6.900)
+rotation = Vector3(-0.0265, 2.5830, 0.0)
+metadata/fov = 42.0
+
+; closeup (back door): Finn beside his truck
+[node name="shot_closeup_finn__hans_bakery_back_door" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-7.000, 1.550, -4.600)
+rotation = Vector3(-0.0274, 0.1651, 0.0)
+metadata/fov = 42.0
+
+; establish (back door): from the stoop, the lot, the truck, Hemlock and the wagon
+[node name="shot_establish_b__hans_bakery_back_door" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-5.000, 1.600, -5.600)
+rotation = Vector3(-0.1300, 1.3734, 0.0)
+metadata/fov = 60.0
+
+; insert (back door): the brown paper bag on the truck's hood
+[node name="shot_insert_bag__hans_bakery_back_door" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-6.000, 1.300, -6.600)
+rotation = Vector3(-0.4383, -0.9332, 0.0)
+metadata/fov = 38.0
+
