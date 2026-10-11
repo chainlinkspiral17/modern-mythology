@@ -753,6 +753,10 @@
       "bed": "assets/audio/bgm/vol7_shop_signal_bell.wav",
       "gain": 0.82
     },
+    "salty_tome_office": {
+      "bed": "assets/audio/bgm/vol7_shop_signal_bell.wav",
+      "gain": 0.82
+    },
     "sapo_falls": {
       "bed": "assets/audio/bgm/vol2_seagash_drone.wav",
       "gain": 0.82

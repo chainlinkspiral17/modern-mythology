@@ -229,6 +229,21 @@ light_energy = 0.6
 omni_range = 4.5
 shadow_enabled = false
 
+; (pass 67) the back office's two lights: the desk lamp, the flush fixture
+[node name="Office_Desk_Lamp_Shade_Practical" type="OmniLight3D" parent="."]
+position = Vector3(3.300, 1.160, -8.450)
+light_color = Color(1.0, 0.86, 0.58, 1)
+light_energy = 1.1
+shadow_enabled = false
+omni_range = 3.2
+
+[node name="Office_Ceiling_Light_Practical" type="OmniLight3D" parent="."]
+position = Vector3(2.450, 2.660, -7.500)
+light_color = Color(1.0, 0.94, 0.84, 1)
+light_energy = 1.2
+shadow_enabled = false
+omni_range = 4.0
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]
@@ -516,3 +531,41 @@ metadata/fov = 58.0
 position = Vector3(4.000, 1.620, -10.200)
 rotation = Vector3(-0.0220, 1.5408, 0)
 metadata/fov = 58.0
+
+; ── vn_shot coverage (pass 67) — the back office, suffixed __salty_tome_office
+; closeup (office): at the desk, from the door
+[node name="shot_closeup_person__salty_tome_office" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.500, 1.500, -7.300)
+rotation = Vector3(-0.1326, -0.9273, 0.0)
+metadata/fov = 42.0
+
+; closeup (office): Petra at the desk on the phone
+[node name="shot_closeup_petra__salty_tome_office" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.500, 1.500, -7.300)
+rotation = Vector3(-0.1326, -0.9273, 0.0)
+metadata/fov = 42.0
+
+; closeup (office): the reverse, from the desk toward the door
+[node name="shot_closeup_person_b__salty_tome_office" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.400, 1.500, -8.000)
+rotation = Vector3(-0.0455, 2.0956, 0.0)
+metadata/fov = 42.0
+
+; closeup (office): Lena on the couch under the blanket
+[node name="shot_closeup_lena__salty_tome_office" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.200, 1.150, -6.250)
+rotation = Vector3(-0.6141, -0.8622, 0.0)
+metadata/fov = 42.0
+
+; establish (office): from the desk corner, the couch and the door
+[node name="shot_establish_b__salty_tome_office" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.700, 1.550, -8.600)
+rotation = Vector3(-0.2205, 2.3318, 0.0)
+metadata/fov = 58.0
+
+; insert (office): the phone on the desk
+[node name="shot_insert_phone__salty_tome_office" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.000, 1.300, -7.600)
+rotation = Vector3(-0.5502, -0.4636, 0.0)
+metadata/fov = 38.0
+

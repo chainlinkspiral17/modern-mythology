@@ -3834,6 +3834,21 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-11 · pass 67: THE SALTY TOME'S BACK OFFICE (preset, draft 1).**
+Petra's office behind the annex partition was dressed in 2026-08 (desk,
+phone, couch, coat hook) but never shot and had no light: ch14 Petra's
+"The bookstore has a couch in the back office. Take it." — Lena asleep
+under Petra's wool blanket at candlelight_low — played in the kitchenette.
+New preset `salty_tome_office` (camera inside the door, six suffixed
+markers: Petra at the desk, Lena on the couch, the phone), the desk lamp
+and the flush fixture as practicals, the blanket folded on the couch's
+arm, the filing cabinet, the rug, the pinboard with the invoices, the
+wastebasket, the desk chair. ch14 routed; ch8 Monday keeps Lena's POV
+outside the closed door. Deck must REBUILD salty_tome_interior. **Draft
+2 targets:** Petra's reading glasses on the papers; the ledger; a framed
+photo of the shop in 2009; the cordless on its base; a transom over the
+door; Petra's coat on the hook as a prop state (it is Tem's in ch8 Aria).
+
 **2026-10-11 · pass 66: THE SAFEHOUSE PORCH + SAM IN HER COROLLA.** ch7
 Family Only — Graciela on the back porch on the phone with Sam for forty
 minutes — played in the bedroom; the porch was already built (the deck,

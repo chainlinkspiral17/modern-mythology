@@ -87,6 +87,7 @@ DELIBERATE_MARKERS = {
     ("smolvud_jetty", "shot_insert_drone"),
     # (2026-10-10) the Altima's dash from the driver's eye: an abstract cue, the dash IS the frame
     ("vehicle_cab", "shot_insert_five__vehicle_cab_altima"),
+    ("salty_tome_interior", "shot_closeup_lena__salty_tome_office"),   # Lena asleep on the couch: the couch is the frame
     ("vehicle_cab", "shot_insert_map"),   # the glove box from the driver's eye: the dash is the frame
     ("nate_garage", "shot_closeup_walt__nate_driveway"),   # Walt at the side door: the house is the frame
     ("vehicle_cab", "shot_insert_five__vehicle_cab_altima_night"),

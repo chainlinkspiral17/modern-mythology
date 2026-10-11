@@ -2202,6 +2202,20 @@ const CAMERA_PRESETS := {
 		"fov": 60.0,
 		"suppress_input": true,
 	},
+	"salty_tome_office": {
+		"scene": "res://scenes/locales/salty_tome_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/salty_tome_interior.glb",
+		# (pass 67, 2026-10-11) Petra's BACK OFFICE behind the annex partition:
+		# blender x 0.9..4.0, y 6..9 (godot z -6..-9) — the desk and phone on the
+		# N wall, the couch on the S, the coat hook by the door. ch8 Monday
+		# (Petra on the phone, door closed), ch14 (Lena asleep on the couch).
+		# Camera just inside the door looking NE at the desk, the couch at right.
+		# Markers suffixed __salty_tome_office.
+		"camera_origin": Vector3(1.25, 1.55, -6.35),
+		"camera_rotation": Vector3(-0.272, -0.785, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
 	"salty_tome_alley": {
 		"scene": "res://scenes/locales/salty_tome_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/salty_tome_interior.glb",

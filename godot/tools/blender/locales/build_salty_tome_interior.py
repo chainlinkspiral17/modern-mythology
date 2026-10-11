@@ -345,6 +345,45 @@ def build_back_annex_2026_08():
         make_box(f"Cat_Ear_{ei2}", (-0.33, 6.74+eyo, 0.66), (0.03, 0.025, 0.03), (0.26, 0.24, 0.22, 1.0))
 
 
+def build_office_2026_10():
+    """THE BACK OFFICE as a room to shoot (pass 67, 2026-10-11): x 0.9..4.0,
+    y 6..9 behind the partition. "Petra was in the back office with the door
+    closed" (ch8 Monday, the phone in mediation register); "The bookstore has
+    a couch in the back office. Take it." / "Petra came in behind her with a
+    wool blanket" (ch14). Draft 1: the desk lamp and the flush ceiling
+    fixture (their practicals in the .tscn), the wool blanket folded on the
+    couch's arm, the two-drawer filing cabinet, the rug, the pinboard, the
+    wastebasket, the desk chair. Draft 2 targets: Petra's reading glasses on
+    the papers; the ledger; a framed photo of the shop in 2009; the
+    mediation-register phone as a cordless on its base; a transom over the
+    door so the shop's light reaches in."""
+    # the desk lamp on the desk's east end, the flush fixture over the room's middle
+    make_lathe("Office_Desk_Lamp_Base", (3.30, 8.45, 0.76), [(0.09, 0.0), (0.09, 0.015), (0.04, 0.03), (0.02, 0.06)], COL_BRASS, segments=10)
+    make_cyl("Office_Desk_Lamp_Stem", (3.30, 8.45, 0.96), 0.012, 0.34, COL_BRASS, segments=6)
+    make_lathe("Office_Desk_Lamp_Shade", (3.30, 8.45, 1.10), [(0.03, 0.0), (0.11, 0.0), (0.14, 0.16), (0.0, 0.16)], (0.26, 0.40, 0.34, 1.0), segments=12)
+    make_cyl("Office_Ceiling_Light", (2.45, 7.5, CEIL - 0.05), 0.17, 0.10, (0.94, 0.92, 0.86, 1.0), segments=14)
+    # Petra's wool blanket folded on the couch's west arm
+    make_box("Office_Blanket", (2.15, 6.85, 0.40), (0.40, 0.56, 0.12), (0.36, 0.30, 0.34, 1.0))
+    make_box("Office_Blanket_Fold", (2.15, 6.85, 0.475), (0.36, 0.50, 0.03), (0.40, 0.33, 0.37, 1.0))
+    # the filing cabinet in the NE corner, the wastebasket, the rug, the desk chair
+    make_box("Office_File_Cabinet", (3.72, 8.70, 0.36), (0.42, 0.56, 0.72), (0.44, 0.46, 0.44, 1.0))
+    for di in range(2):
+        make_box(f"Office_File_Drawer_{di}", (3.72, 8.405, 0.20 + di * 0.34), (0.38, 0.012, 0.30), (0.50, 0.52, 0.50, 1.0))
+        make_box(f"Office_File_Pull_{di}", (3.72, 8.39, 0.30 + di * 0.34), (0.10, 0.02, 0.02), COL_BRASS)
+    make_cyl("Office_Wastebasket", (1.25, 8.40, 0.15), 0.13, 0.30, (0.30, 0.32, 0.30, 1.0), segments=10)
+    make_box("Office_Rug", (2.45, 7.55, 0.006), (1.80, 1.20, 0.012), (0.34, 0.30, 0.26, 1.0))
+    make_box("Office_Chair_Seat", (2.7, 7.75, 0.45), (0.44, 0.44, 0.05), COL_WOOD)
+    make_box("Office_Chair_Back", (2.7, 7.53, 0.75), (0.44, 0.05, 0.55), COL_WOOD)
+    for lx_ in (-1, 1):
+        for ly_ in (-1, 1):
+            make_box(f"Office_Chair_Leg_{lx_:+d}_{ly_:+d}", (2.7 + lx_ * 0.18, 7.75 + ly_ * 0.18, 0.22), (0.035, 0.035, 0.44), COL_WOOD)
+    # the pinboard over the desk: invoices, the calendar, a postcard
+    make_box("Office_Pinboard", (2.7, 8.88, 1.55), (1.20, 0.03, 0.80), (0.60, 0.46, 0.30, 1.0))
+    for pi_, (px, pz, pw, ph, col) in enumerate(((2.30, 1.65, 0.20, 0.26, (0.92, 0.90, 0.84, 1.0)), (2.62, 1.50, 0.22, 0.30, (0.90, 0.88, 0.80, 1.0)),
+                                                 (2.98, 1.68, 0.24, 0.18, (0.60, 0.70, 0.76, 1.0)), (3.12, 1.42, 0.18, 0.24, (0.92, 0.90, 0.84, 1.0)))):
+        make_box(f"Office_Pin_{pi_}", (px, 8.86, pz), (pw, 0.004, ph), col)
+
+
 def build_alley_2026_08():
     """The alley behind the store: asphalt, the dumpster Petra reads
     beside, and the MURAL WALL with the three-foot painted face
@@ -692,6 +731,7 @@ def main():
     build_ceiling_and_sign()
     build_decor()
     build_back_annex_2026_08()
+    build_office_2026_10()
     build_alley_2026_08()
     build_detail_pass_2026_08()
     build_use_states_2026_08()

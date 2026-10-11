@@ -521,6 +521,10 @@
    "t": "say"
   },
   {
+    "t": "bg",
+    "src": "3d:salty_tome_office"
+  },
+  {
    "text": "[mood:candlelight_low][shot:establish]She walked into the back office. The couch was the couch. She lay down. Petra came in behind her with a wool blanket and put it over her without saying anything. Petra went back out and closed the door behind her.",
    "t": "narrate"
   },
