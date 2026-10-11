@@ -205,6 +205,11 @@
    "md5": "f52ba972f9a1050d9b136ac64d8e876c",
    "size": 66622
   },
+  "godot/assets/3d/characters/heroes/cale.glb": {
+   "at": "2026-10-11T18:21:46+00:00",
+   "md5": "e5417a65c6245c64583175b653f8529c",
+   "size": 49122952
+  },
   "godot/assets/3d/characters/heroes/carl_drummer.glb": {
    "at": "2026-10-01T01:48:41+00:00",
    "md5": "779b2ee69311c23cd1d611503536ccc6",
@@ -52334,6 +52339,56 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "a79cca1bc6c415c7323a67b512afff48",
    "size": 71924
+  },
+  "godot/assets/concept/meshy/cale/back.png": {
+   "at": "2026-10-11T18:21:59+00:00",
+   "md5": "1478db22823e7b8b51effb77e7926121",
+   "size": 2036453
+  },
+  "godot/assets/concept/meshy/cale/cale_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T18:21:59+00:00",
+   "md5": "9fd10acc23a8a99654543cdd065e0b90",
+   "size": 2046227
+  },
+  "godot/assets/concept/meshy/cale/cale_back_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-11T18:21:59+00:00",
+   "md5": "1478db22823e7b8b51effb77e7926121",
+   "size": 2036453
+  },
+  "godot/assets/concept/meshy/cale/cale_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T18:21:59+00:00",
+   "md5": "48e5d5b45cfa69fe0cc5f2b65a2eddd9",
+   "size": 2064395
+  },
+  "godot/assets/concept/meshy/cale/cale_front_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-11T18:21:59+00:00",
+   "md5": "2ed12c22ea85cce69ca7efce73840b80",
+   "size": 2144873
+  },
+  "godot/assets/concept/meshy/cale/cale_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T18:21:59+00:00",
+   "md5": "d9d35cfbba70d0fbdc7d6c81baf13ac2",
+   "size": 1957630
+  },
+  "godot/assets/concept/meshy/cale/cale_side_openai_gpt-image-2.5-sunburst_02.png": {
+   "at": "2026-10-11T18:21:59+00:00",
+   "md5": "62166398d2be37157be5ce592ea16e55",
+   "size": 1999620
+  },
+  "godot/assets/concept/meshy/cale/front.png": {
+   "at": "2026-10-11T18:21:59+00:00",
+   "md5": "2ed12c22ea85cce69ca7efce73840b80",
+   "size": 2144873
+  },
+  "godot/assets/concept/meshy/cale/meshy_thumb.png": {
+   "at": "2026-10-11T18:21:59+00:00",
+   "md5": "5b44e56c13ee8e7025858659d776d4f0",
+   "size": 91779
+  },
+  "godot/assets/concept/meshy/cale/side.png": {
+   "at": "2026-10-11T18:21:59+00:00",
+   "md5": "62166398d2be37157be5ce592ea16e55",
+   "size": 1999620
   },
   "godot/assets/concept/meshy/carl_drummer/carl_drummer_front_meshy_recovered.png": {
    "at": "2026-10-01T01:23:48+00:00",
