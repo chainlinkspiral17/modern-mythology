@@ -965,6 +965,11 @@
    "md5": "566465483d543a75d205601f7feb0110",
    "size": 67550
   },
+  "godot/assets/3d/characters/heroes/marina.glb": {
+   "at": "2026-10-11T19:08:16+00:00",
+   "md5": "fae0668517d3aec7a0773d22fe0442e9",
+   "size": 59975896
+  },
   "godot/assets/3d/characters/heroes/marit.glb": {
    "at": "2026-10-11T18:53:14+00:00",
    "md5": "0d472ea6c486e81f061fabe309c72e24",
@@ -52989,6 +52994,41 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "97334bc2c7c690f246cd24923d6e1de9",
    "size": 80585
+  },
+  "godot/assets/concept/meshy/marina/back.png": {
+   "at": "2026-10-11T19:08:27+00:00",
+   "md5": "8383693769f4db127b3812f0b78dc5ef",
+   "size": 2080012
+  },
+  "godot/assets/concept/meshy/marina/front.png": {
+   "at": "2026-10-11T19:08:27+00:00",
+   "md5": "c31ad77248925303fb6b56b563764dbb",
+   "size": 2239442
+  },
+  "godot/assets/concept/meshy/marina/marina_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T19:08:27+00:00",
+   "md5": "8383693769f4db127b3812f0b78dc5ef",
+   "size": 2080012
+  },
+  "godot/assets/concept/meshy/marina/marina_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T19:08:27+00:00",
+   "md5": "c31ad77248925303fb6b56b563764dbb",
+   "size": 2239442
+  },
+  "godot/assets/concept/meshy/marina/marina_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T19:08:27+00:00",
+   "md5": "6fabe2fbcdf42e751ed14a39abb2c504",
+   "size": 1994702
+  },
+  "godot/assets/concept/meshy/marina/meshy_thumb.png": {
+   "at": "2026-10-11T19:08:27+00:00",
+   "md5": "3821008e34ee243e9bdaccdc96e8bc9b",
+   "size": 93304
+  },
+  "godot/assets/concept/meshy/marina/side.png": {
+   "at": "2026-10-11T19:08:27+00:00",
+   "md5": "6fabe2fbcdf42e751ed14a39abb2c504",
+   "size": 1994702
   },
   "godot/assets/concept/meshy/marit/back.png": {
    "at": "2026-10-11T18:53:25+00:00",
