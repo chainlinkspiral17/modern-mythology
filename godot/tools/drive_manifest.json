@@ -1335,6 +1335,11 @@
    "md5": "bc410fc85113b5d8c89c219ee4f4ad2e",
    "size": 67210
   },
+  "godot/assets/3d/characters/heroes/wren_vol6.glb": {
+   "at": "2026-10-11T16:57:07+00:00",
+   "md5": "da719770a8060f38c4ded90f38578c60",
+   "size": 88725060
+  },
   "godot/assets/3d/props/workbench_props.glb": {
    "at": "2026-10-11T16:25:59+00:00",
    "md5": "3e07eb206545df7fec52537b7969e078",
@@ -53469,6 +53474,41 @@
    "at": "2026-10-01T01:23:48+00:00",
    "md5": "c718dea9d7a5ae4af3186c8887c6e535",
    "size": 86975
+  },
+  "godot/assets/concept/meshy/wren_vol6/back.png": {
+   "at": "2026-10-11T16:57:17+00:00",
+   "md5": "4cedca9504e7cf948767daa9088f6e89",
+   "size": 2084599
+  },
+  "godot/assets/concept/meshy/wren_vol6/front.png": {
+   "at": "2026-10-11T16:57:17+00:00",
+   "md5": "6f92392c7b75aeb4df6d12981f04f5ca",
+   "size": 2138960
+  },
+  "godot/assets/concept/meshy/wren_vol6/meshy_thumb.png": {
+   "at": "2026-10-11T16:57:17+00:00",
+   "md5": "633749a372bcf06464ae001a24890581",
+   "size": 83184
+  },
+  "godot/assets/concept/meshy/wren_vol6/side.png": {
+   "at": "2026-10-11T16:57:17+00:00",
+   "md5": "6e7522958fd77d9d7ea6ad4255bb09dd",
+   "size": 1957121
+  },
+  "godot/assets/concept/meshy/wren_vol6/wren_vol6_back_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T16:57:17+00:00",
+   "md5": "4cedca9504e7cf948767daa9088f6e89",
+   "size": 2084599
+  },
+  "godot/assets/concept/meshy/wren_vol6/wren_vol6_front_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T16:57:17+00:00",
+   "md5": "6f92392c7b75aeb4df6d12981f04f5ca",
+   "size": 2138960
+  },
+  "godot/assets/concept/meshy/wren_vol6/wren_vol6_side_openai_gpt-image-2.5-sunburst_01.png": {
+   "at": "2026-10-11T16:57:17+00:00",
+   "md5": "6e7522958fd77d9d7ea6ad4255bb09dd",
+   "size": 1957121
   },
   "godot/assets/video/intro.ogv": {
    "at": "2026-10-01T05:59:49+00:00",
