@@ -35,6 +35,9 @@
  *   activeVoices · output (GainNode → opts.output) · dispose()
  *   statics: ForgeSynth.defaultState() / normalizeState(s) / userPresets() /
  *            saveUserPreset(name, state) / deleteUserPreset(name)
+ *            effectSpecs() / prepareEffects(ctx) / createEffect(ctx, type, params, {bpm})
+ *              — a snap-in as a standalone insert {input, output, set, sync, bpm, dispose}
+ *                (the DAW's mixer FX, daw_fx.js)
  *   window.ForgeSynth, window.FORGE_PRESETS
  *
  * SIGNAL FLOW
@@ -3274,6 +3277,45 @@ ForgeSynth.saveUserPreset = (name, state) => {
 };
 ForgeSynth.deleteUserPreset = name => saveUserPresets(userPresets().filter(p => p.name !== name));
 ForgeSynth.USER_PRESETS_KEY = USER_KEY;
+
+// ── Snap-in effects outside a synth (the DAW's mixer inserts, daw_fx.js) ──
+// The same builders FORGE's lanes use, wrapped as a standalone unit:
+//   await ForgeSynth.prepareEffects(ctx)          registers the crush worklet in ctx (once)
+//   const fx = ForgeSynth.createEffect(ctx, type, params, {bpm})
+//   fx.input / fx.output (GainNodes) · fx.params (live values) · fx.spec · fx.mods
+//   fx.set(param, value, when) → bool   fx.bpm = 120   fx.sync(when)   fx.dispose()
+// Works in an OfflineAudioContext too. FORGE itself does not use this path.
+ForgeSynth.effectSpecs = () => clone(Object.fromEntries(Object.keys(SNAP_SPECS).map(k => [k, { label: SNAP_SPECS[k].label, params: SNAP_SPECS[k].params, mods: SNAP_SPECS[k].mods, structural: SNAP_SPECS[k].structural || [] }])));
+ForgeSynth.prepareEffects = ctx => loadWorklet(ctx).then(() => { cacheOf(ctx).workletOk = true; return true; }, () => false);
+ForgeSynth.createEffect = (ctx, type, params, opts = {}) => {
+  const spec = SNAP_SPECS[type];
+  if (!spec) throw new Error('no snap-in ' + type);
+  const host = { ctx, _worklet: !!cacheOf(ctx).workletOk, bpm: isNum(opts.bpm) ? opts.bpm : 120 };
+  const f = { id: 'x', type, on: true, p: normObj(params || {}, spec.params) };
+  const input = ctx.createGain(), output = ctx.createGain();
+  let o = null, dead = false;
+  const build = () => {
+    if (o) { try { input.disconnect(); } catch (e) { /* ok */ } o.dispose(); }
+    o = buildSnap(host, f);
+    input.connect(o.input); o.output.connect(output);
+  };
+  build();
+  return {
+    type, input, output, params: f.p, spec: clone(spec.params), mods: spec.mods.slice(),
+    get bpm() { return host.bpm; },
+    set bpm(v) { if (!isNum(v) || dead) return; host.bpm = clamp(v, 20, 400); o.tempo(ctx.currentTime); },
+    set(k, v, when) {
+      if (dead || !(k in spec.params)) return false;
+      f.p[k] = normField(v, spec.params[k]);
+      const t = when === null ? null : Math.max(ctx.currentTime, isNum(when) ? when : ctx.currentTime);
+      const res = (spec.structural && spec.structural.includes(k)) ? 'rebuild' : o.set(k, t);
+      if (res === 'rebuild') build();
+      return true;
+    },
+    sync(when) { if (!dead) o.sync(Math.max(ctx.currentTime, isNum(when) ? when : 0)); },
+    dispose() { if (dead) return; dead = true; o.dispose(); try { input.disconnect(); output.disconnect(); } catch (e) { /* ok */ } },
+  };
+};
 
 window.ForgeSynth = ForgeSynth;
 window.FORGE_PRESETS = FORGE_PRESETS;

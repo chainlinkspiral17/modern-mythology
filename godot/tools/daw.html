@@ -88,6 +88,30 @@
   footer { padding: 4px 12px; border-top: 1px solid var(--rule); color: var(--text-dim); font-size: 10px; display: flex; gap: 14px; flex-wrap: wrap; }
   footer a { color: var(--gold); text-decoration: none; }
   kbd { border: 1px solid var(--rule); padding: 0 3px; color: var(--gold-hi); }
+  /* automation lanes (headers; the lanes themselves are drawn on the arrangement canvas) */
+  #thlist { padding-bottom: 60px; }
+  .th .b button.auto.on { background: var(--violet); color: var(--ink); border-color: #e8d8ff; }
+  .ah, .aadd { display: flex; align-items: center; gap: 3px; padding: 0 4px 0 12px; border-bottom: 1px solid #1a1410; background: #0b0807; }
+  .ah select, .aadd select { flex: 1; min-width: 0; font-size: 10px; }
+  .ah button { padding: 2px 6px; font-size: 9px; }
+  .aadd { background: #070505; border-bottom-color: #2a1c12; }
+  /* mixer inserts + ducking */
+  .fxbox { margin-top: 4px; border-top: 1px dashed #2a1c12; padding-top: 3px; }
+  .fxbox .row { margin: 2px 0; }
+  .fxbox select { font-size: 10px; }
+  .fx { border: 1px solid #2a1c12; margin-top: 3px; padding: 2px 3px; background: #0b0807; }
+  .fx .fh { display: flex; align-items: center; gap: 3px; }
+  .fx .fh b { flex: 1; color: var(--gold-hi); font-weight: normal; cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .fx.off .fh b { color: var(--text-dim); text-decoration: line-through; }
+  .fx button, .fxbox button { padding: 3px 7px; min-height: 20px; min-width: 22px; }
+  .kv3 { display: grid; grid-template-columns: 50px 1fr 50px; gap: 1px 5px; align-items: center; color: var(--text-dim); margin-top: 2px; }
+  .kv3 input[type=range] { width: 100%; }
+  .kv3 .pv { color: var(--gold-hi); font-size: 9px; text-align: right; white-space: nowrap; overflow: hidden; }
+  .kv3 select { font-size: 10px; }
+  @media (any-pointer: coarse) {
+    .fx button, .fxbox button, .ah button { min-height: 28px; min-width: 30px; padding: 4px 9px; }
+    .fxbox select, .ah select, .aadd select, .kv3 select { min-height: 28px; }
+  }
 </style>
 </head>
 <body>
@@ -120,7 +144,7 @@
 <main>
   <div class="work">
     <div class="arr">
-      <div class="heads" id="heads"><div class="ruler"><button class="dim" id="addmidi">+ MIDI</button><button class="dim" id="addaudio">+ AUDIO</button></div><div id="thlist"></div></div>
+      <div class="heads" id="heads"><div class="ruler"><button class="dim" id="addmidi">+ MIDI</button><button class="dim" id="addaudio">+ AUDIO</button><button class="dim" id="autodraw" title="automation: drag across a lane to sketch points (off: tap adds a point, drag moves one, long-press / right-click deletes)">✎ DRAW</button></div><div id="thlist"></div></div>
       <div class="lanes" id="lanes"><canvas id="arrcv"></canvas></div>
     </div>
     <div class="roll">
@@ -243,6 +267,7 @@
 <script src="sampler.js"></script>
 <script src="dx7_synth.js"></script>
 <script src="patch_bank.js"></script>
+<script src="daw_fx.js"></script>
 <script src="daw_engine.js"></script>
 <script>
 "use strict";
@@ -280,6 +305,7 @@ $('gatebtn').addEventListener('click', async () => {
     await E.load(saved && saved.v ? saved : DAW.Engine.newProject());
     P = E.project;
     $('gate').style.display = 'none';
+    E.emit('project');               // load() fired 'project' before P was set: draw the restored project now
     badges(); takeInbox();
   } catch (e) { $('gatebtn').textContent = 'failed: ' + (e.message || e); }
 });
@@ -298,6 +324,7 @@ window.addEventListener('midiinput-status', () => P && badges());
 
 E.on('project', () => { if (!P) return; syncTransportUI(); renderHeads(); drawArr(); drawRoll(); renderDevices(); renderMixer(); saveSoon(); });
 E.on('notes', () => { drawRoll(); drawArr(); saveSoon(); });
+E.on('auto', d => { if (d && d.created) renderHeads(); saveSoon(); });
 E.on('error', m => msg('g-msg', m, true));
 E.on('transport', ({ playing }) => { $('play').classList.toggle('on', playing); });
 E.on('record', ({ on }) => $('rec').classList.toggle('on', on));
@@ -384,20 +411,53 @@ function renderHeads() {
   for (const t of P.tracks) {
     const d = document.createElement('div');
     d.className = 'th' + (sel.trackId === t.id ? ' sel' : '');
+    const nAuto = (t.auto || []).length;
     d.innerHTML = `<div class="c" style="background:${t.color}"></div><div class="nm"><b>${esc(t.name)}</b><i>${esc(trackDevLabel(t))}</i></div>
-      <div class="b"><button class="dim${t.mute ? ' on' : ''}" data-a="mute">M</button><button class="dim${t.solo ? ' on' : ''}" data-a="solo">S</button><button class="dim arm${t.arm ? ' on' : ''}" data-a="arm">●</button><button class="dim" data-a="del">✕</button></div>`;
+      <div class="b"><button class="dim auto${t.autoOpen ? ' on' : ''}" data-a="auto" title="automation lanes">A${nAuto ? nAuto : ''}</button><button class="dim${t.mute ? ' on' : ''}" data-a="mute">M</button><button class="dim${t.solo ? ' on' : ''}" data-a="solo">S</button><button class="dim arm${t.arm ? ' on' : ''}" data-a="arm">●</button><button class="dim" data-a="del">✕</button></div>`;
     d.addEventListener('click', e => {
       const a = e.target.dataset.a;
       if (a === 'mute') t.mute = !t.mute;
       else if (a === 'solo') t.solo = !t.solo;
       else if (a === 'arm') t.arm = !t.arm;
+      else if (a === 'auto') t.autoOpen = !t.autoOpen;
       else if (a === 'del') { if (confirm('Delete track "' + t.name + '"?')) { E.removeTrack(t.id); if (sel.trackId === t.id) sel = { trackId: null, clip: -1 }; } return; }
       else { sel.trackId = t.id; if (sel.clip >= t.clips.length) sel.clip = -1; }
       renderHeads(); drawArr(); drawRoll(); renderDevDetail(); saveSoon();
     });
     d.addEventListener('dblclick', e => { if (e.target.dataset.a) return; const n = prompt('Track name', t.name); if (n) { t.name = n; renderHeads(); saveSoon(); } });
     L.appendChild(d);
+    if (t.autoOpen) renderAutoHeads(L, t);
   }
+}
+// automation lane headers: target · on/off · clear · remove, then a "+ lane" picker
+function renderAutoHeads(L, t) {
+  const targets = E.autoTargets(t), opt = (x, cur) => `<option value="${esc(x.target)}" ${x.target === cur ? 'selected' : ''}>${esc(x.label)}</option>`;
+  for (const x of targets) AUTO.labels.set(t.id + '|' + x.target, x.label);     // the canvas draws these every frame
+  (t.auto || []).forEach((ln, i) => {
+    const h = document.createElement('div'); h.className = 'ah'; h.style.height = AUTO.H + 'px';
+    const known = targets.some(x => x.target === ln.target);
+    h.innerHTML = `<select data-i="${i}" title="what this lane moves">${known ? '' : opt({ target: ln.target, label: '? ' + ln.target }, ln.target)}${targets.map(x => opt(x, ln.target)).join('')}</select>
+      <button class="${ln.on !== false ? 'on' : 'dim'}" data-x="on" title="lane on / off">ON</button><button class="dim" data-x="clr" title="clear the points">CLR</button><button class="dim" data-x="rm" title="remove the lane">✕</button>`;
+    h.querySelector('select').addEventListener('change', e => { ln.target = e.target.value; drawArr(); saveSoon(); });
+    h.addEventListener('click', e => {
+      const x = e.target.dataset.x; if (!x) return;
+      if (x === 'on') ln.on = ln.on === false;
+      else if (x === 'clr') { if (ln.points.length && !confirm('Clear ' + ln.points.length + ' point(s)?')) return; ln.points = []; }
+      else if (x === 'rm') { if (ln.points.length && !confirm('Remove this automation lane?')) return; t.auto.splice(i, 1); }
+      E.applyMix(); renderHeads(); drawArr(); saveSoon();
+    });
+    L.appendChild(h);
+  });
+  const add = document.createElement('div'); add.className = 'aadd'; add.style.height = AUTO.ADD + 'px';
+  const used = new Set((t.auto || []).map(l => l.target));
+  add.innerHTML = `<select title="add an automation lane"><option value="">+ automation lane…</option>${targets.filter(x => !used.has(x.target)).map(x => opt(x, '')).join('')}</select>`;
+  add.querySelector('select').addEventListener('change', e => {
+    if (!e.target.value) return;
+    t.auto = Array.isArray(t.auto) ? t.auto : [];
+    t.auto.push({ target: e.target.value, points: [], on: true });
+    renderHeads(); drawArr(); saveSoon();
+  });
+  L.appendChild(add);
 }
 $('addmidi').addEventListener('click', async () => {
   let dev = P.devices.find(d => d.type === 'forge');
@@ -411,17 +471,54 @@ $('addaudio').addEventListener('click', () => { const t = E.addTrack('audio', { 
 // arrangement canvas
 // ═══════════════════════════════════════════════════════════════════
 const arr = { drag: null };
+// automation lanes sit under their track (track.autoOpen); points {t ticks, v 0..1}
+const AUTO = { draw: false, drag: null, H: COARSE ? 52 : 44, ADD: COARSE ? 32 : 26, PAD: 7, SNAP: 12, labels: new Map() };
+function arrLayout() {
+  let y = 34; const rows = [];
+  for (const t of P.tracks) {
+    const r = { t, y, lanes: [] }; y += view.laneH;
+    if (t.autoOpen) { for (const ln of (t.auto || [])) { r.lanes.push({ ln, y, t }); y += AUTO.H; } r.addY = y; y += AUTO.ADD; }
+    r.end = y; rows.push(r);
+  }
+  return { rows, h: y };
+}
 function arrSize() {
-  const bars = Math.max(64, E.songBars() + 16, P.loop.b + 8);
-  const w = bars * view.barPx, h = 34 + P.tracks.length * view.laneH + 20;
+  const bars = Math.max(64, E.songBars() + 16, P.loop.b + 8), Lo = arrLayout();
+  const w = bars * view.barPx, h = Lo.h + 20;
   const cv = $('arrcv'), r = window.devicePixelRatio || 1;
   cv.style.width = w + 'px'; cv.style.height = h + 'px';
   if (cv.width !== Math.round(w * r) || cv.height !== Math.round(h * r)) { cv.width = Math.round(w * r); cv.height = Math.round(h * r); }
-  return { w, h, r, bars };
+  return { w, h, r, bars, Lo };
+}
+const autoY = (a, v) => a.y + AUTO.PAD + (1 - v) * (AUTO.H - 2 * AUTO.PAD);
+const autoX = tk => tk / BAR * view.barPx;
+function drawAutoLane(g, a, w, left) {
+  const ln = a.ln, pts = ln.points || [], col = a.t.color, on = ln.on !== false;
+  g.fillStyle = '#0b0807'; g.fillRect(0, a.y, w, AUTO.H);
+  g.fillStyle = '#1a1410'; g.fillRect(0, a.y + AUTO.H - 1, w, 1); g.fillRect(0, Math.round(autoY(a, 0.5)), w, 1);
+  g.globalAlpha = on ? 1 : 0.35;
+  if (pts.length) {
+    g.beginPath(); g.moveTo(0, autoY(a, pts[0].v));
+    for (const p of pts) g.lineTo(autoX(p.t), autoY(a, p.v));
+    g.lineTo(w, autoY(a, pts[pts.length - 1].v));
+    g.strokeStyle = col; g.lineWidth = 1.5; g.stroke();
+    g.lineTo(w, a.y + AUTO.H - AUTO.PAD); g.lineTo(0, a.y + AUTO.H - AUTO.PAD); g.closePath(); g.fillStyle = col + '1e'; g.fill();
+    const rad = COARSE ? 5 : 4;
+    for (const p of pts) {
+      const hot = AUTO.drag && AUTO.drag.p === p;
+      g.beginPath(); g.arc(autoX(p.t), autoY(a, p.v), hot ? rad + 2 : rad, 0, Math.PI * 2);
+      g.fillStyle = hot ? '#ffd896' : '#050304'; g.fill(); g.strokeStyle = hot ? '#ffd896' : col; g.lineWidth = 1.5; g.stroke();
+    }
+  }
+  g.globalAlpha = 1; g.lineWidth = 1;
+  g.font = '9px "Courier New"'; g.fillStyle = on ? '#7a5828' : '#3a2614';
+  g.fillText((AUTO.labels.get(a.t.id + '|' + ln.target) || ln.target) + (pts.length ? '' : ' — tap to add points' + (AUTO.draw ? ', drag to sketch' : ' · ✎ DRAW to sketch')) + (on ? '' : ' (off)'), left + 4, a.y + 10);
+  const d = AUTO.drag;
+  if (d && d.ln === ln && d.p) { const txt = E.autoValueLabel(a.t, ln.target, d.p.v); g.fillStyle = '#ffd896'; g.fillText(txt, Math.min(w - 60, autoX(d.p.t) + 8), Math.max(a.y + 10, autoY(a, d.p.v) - 6)); }
 }
 function drawArr(playTick) {
   if (!P) return;
-  const { w, h, r, bars } = arrSize(), g = $('arrcv').getContext('2d');
+  const { w, h, r, bars, Lo } = arrSize(), g = $('arrcv').getContext('2d'), left = $('lanes').scrollLeft;
   g.setTransform(r, 0, 0, r, 0, 0);
   g.fillStyle = '#050304'; g.fillRect(0, 0, w, h);
   // loop region
@@ -429,6 +526,11 @@ function drawArr(playTick) {
   g.fillStyle = P.loop.on ? '#4ea060' : '#553318'; g.fillRect(P.loop.a * view.barPx, 30, (P.loop.b - P.loop.a) * view.barPx, 3);
   // sections
   for (const s of P.sections || []) { g.fillStyle = 'rgba(216,160,96,0.15)'; g.fillRect(s.bar * view.barPx, 0, s.bars * view.barPx, 16); g.fillStyle = '#ffd896'; g.font = '10px "Courier New"'; g.fillText(s.name, s.bar * view.barPx + 3, 11); }
+  // automation lanes (under the grid lines)
+  for (const row of Lo.rows) {
+    for (const a of row.lanes) drawAutoLane(g, a, w, left);
+    if (row.addY !== undefined) { g.fillStyle = '#070505'; g.fillRect(0, row.addY, w, AUTO.ADD); g.fillStyle = '#2a1c12'; g.fillRect(0, row.addY + AUTO.ADD - 1, w, 1); }
+  }
   // bar grid
   g.font = '9px "Courier New"';
   for (let b = 0; b <= bars; b++) {
@@ -437,8 +539,8 @@ function drawArr(playTick) {
     if (b % 4 === 0) { g.fillStyle = '#7a5828'; g.fillText(String(b + 1), x + 2, 27); }
   }
   // lanes + clips
-  P.tracks.forEach((t, i) => {
-    const y = 34 + i * view.laneH;
+  Lo.rows.forEach(row => {
+    const t = row.t, y = row.y;
     g.fillStyle = sel.trackId === t.id ? 'rgba(26,20,16,0.9)' : 'transparent'; g.fillRect(0, y, w, view.laneH);
     g.fillStyle = '#2a1c12'; g.fillRect(0, y + view.laneH - 1, w, 1);
     if (t.kind === 'midi') t.clips.forEach((c, ci) => {
@@ -472,14 +574,61 @@ function drawArr(playTick) {
 }
 function arrHit(ev, edgePx = 7) {
   const r = $('arrcv').getBoundingClientRect(), x = ev.clientX - r.left, y = ev.clientY - r.top;
-  const bar = x / view.barPx, li = Math.floor((y - 34) / view.laneH), t = P.tracks[li];
+  const bar = x / view.barPx, Lo = arrLayout();
+  let li = -1, t = null, auto = null;
+  Lo.rows.forEach((row, i) => {
+    if (y < row.y || y >= row.end) return;
+    li = i;
+    if (y < row.y + view.laneH) t = row.t;
+    else { const a = row.lanes.find(a => y >= a.y && y < a.y + AUTO.H); if (a) auto = a; }
+  });
   let clip = -1, edge = false;
   if (t) {
     if (t.kind === 'midi') t.clips.forEach((c, ci) => { const p = t.patterns[c.pid], len = c.bars || (p ? p.lenBars : 1); if (bar >= c.bar && bar < c.bar + len) { clip = ci; edge = (c.bar + len - bar) * view.barPx < edgePx; } });
     else t.audio.forEach((a, ai) => { const s = a.t / BAR, l = a.len / (E.spt() * BAR); if (bar >= s && bar < s + l) clip = ai; });
   }
-  return { x, y, bar, t, li, clip, edge, ruler: y < 34 };
+  return { x, y, bar, t, li, clip, edge, ruler: y < 34, auto };
 }
+// ── automation editing (mouse + fingers) ──
+const clamp01 = v => Math.max(0, Math.min(1, v));
+const autoTickAt = x => Math.max(0, Math.round(x / view.barPx * BAR / AUTO.SNAP) * AUTO.SNAP);
+const autoVAt = (a, y) => +clamp01(1 - (y - a.y - AUTO.PAD) / (AUTO.H - 2 * AUTO.PAD)).toFixed(4);
+function autoPointAt(h, rad) {
+  const a = h.auto; if (!a) return null;
+  let best = null, bd = rad;
+  for (const p of a.ln.points) { const dd = Math.hypot(autoX(p.t) - h.x, autoY(a, p.v) - h.y); if (dd <= bd) { bd = dd; best = p; } }
+  return best;
+}
+function autoSort(ln) { ln.points.sort((p, q) => p.t - q.t); }
+function autoAdd(h) {
+  const a = h.auto, p = { t: autoTickAt(h.x), v: autoVAt(a, h.y) };
+  a.ln.points = a.ln.points.filter(q => q.t !== p.t); a.ln.points.push(p); autoSort(a.ln);
+  return p;
+}
+function autoDelete(h, rad) { const p = autoPointAt(h, rad); if (!p) return false; h.auto.ln.points = h.auto.ln.points.filter(q => q !== p); AUTO.drag = null; drawArr(); saveSoon(); return true; }
+function autoSketch(x, y) {        // draw mode: the stroke replaces what it passes over
+  const d = AUTO.drag, a = d.a, tick = autoTickAt(x), v = autoVAt(a, y), from = d.last ?? tick;
+  const lo = Math.min(from, tick), hi = Math.max(from, tick);
+  a.ln.points = a.ln.points.filter(q => q.t < lo || q.t > hi || (q === d.lastP && from !== tick));
+  d.lastP = { t: tick, v }; a.ln.points.push(d.lastP); autoSort(a.ln); d.last = tick;
+}
+function autoGrab(h, rad) {
+  if (!h.auto) return false;
+  const p = autoPointAt(h, rad);
+  if (p) { AUTO.drag = { a: h.auto, ln: h.auto.ln, p }; drawArr(); return true; }
+  if (AUTO.draw) { AUTO.drag = { a: h.auto, ln: h.auto.ln, draw: true, last: null }; autoSketch(h.x, h.y); drawArr(); return true; }
+  return false;
+}
+function autoMove(ev) {
+  const d = AUTO.drag; if (!d) return false;
+  const r = $('arrcv').getBoundingClientRect(), x = ev.clientX - r.left, y = ev.clientY - r.top;
+  if (d.draw) autoSketch(x, y);
+  else { d.p.t = autoTickAt(x); d.p.v = autoVAt(d.a, y); autoSort(d.ln); }
+  drawArr();
+  return true;
+}
+function autoEnd() { if (!AUTO.drag) return false; AUTO.drag = null; drawArr(); saveSoon(); return true; }
+$('autodraw').addEventListener('click', () => { AUTO.draw = !AUTO.draw; $('autodraw').classList.toggle('on', AUTO.draw); drawArr(); });
 function arrRefresh() { renderHeads(); drawArr(); drawRoll(); renderDevDetail(); saveSoon(); }
 function arrSeek(h) { const tick = Math.floor(h.bar) * BAR; E._stopTick = tick; if (E.playing) E.play(tick); drawArr(tick); }
 function arrSelect(h) { if (!h.t) return false; sel.trackId = h.t.id; sel.clip = h.clip; return true; }
@@ -495,6 +644,7 @@ function arrGrab(h) {      // start dragging the clip under the pointer
   return true;
 }
 function arrMove(ev) {
+  if (autoMove(ev)) return;
   if (!arr.drag) return;
   const r = $('arrcv').getBoundingClientRect(), bar = (ev.clientX - r.left) / view.barPx, d = arr.drag;
   if (d.resize) d.c.bars = Math.max(1, Math.round(d.origLen + (bar - d.startBar)));
@@ -502,7 +652,7 @@ function arrMove(ev) {
   else d.c.t = Math.max(0, Math.round((d.orig / BAR + (bar - d.startBar)) * 4) / 4 * BAR);
   drawArr();
 }
-function arrEnd() { if (arr.drag) { arr.drag = null; saveSoon(); } }
+function arrEnd() { autoEnd(); if (arr.drag) { arr.drag = null; saveSoon(); } }
 function arrNewClip(h) {
   if (!h.t || h.clip >= 0 || h.ruler || h.t.kind !== 'midi') return;
   const len = +$('plen').value || 4, pid = E.uid('pat');
@@ -515,6 +665,11 @@ function arrNewClip(h) {
 $('arrcv').addEventListener('mousedown', ev => {
   if (!P) return;
   const h = arrHit(ev);
+  if (h.auto) {      // automation: click empty = add a point and drag it · drag a point · right-click deletes
+    if (ev.button === 2) { autoDelete(h, 7); return; }
+    if (!autoGrab(h, 7)) { const p = autoAdd(h); AUTO.drag = { a: h.auto, ln: h.auto.ln, p }; }
+    drawArr(); return;
+  }
   if (h.ruler) { arrSeek(h); return; }
   if (!arrSelect(h)) return;
   if (ev.button === 2) arrDeleteClip(h); else arrGrab(h);
@@ -526,13 +681,17 @@ window.addEventListener('mouseup', () => { arrEnd(); rollEnd(); });
 $('arrcv').addEventListener('dblclick', ev => arrNewClip(arrHit(ev)));
 // fingers: drag a clip (its right edge = length) · long-press deletes · tap selects / seeks on the ruler ·
 // double-tap an empty lane = new clip · drag empty space to pan
+// automation lanes: tap = add a point · drag a point = move it · long-press a point = delete · ✎ DRAW: drag sketches
 TouchControls.gesture($('arrcv'), {
-  grab: ev => { if (!P) return false; const h = arrHit(ev, 16); if (h.ruler || h.clip < 0) return false; arrSelect(h); arrGrab(h); arrRefresh(); return true; },
+  grab: ev => { if (!P) return false; const h = arrHit(ev, 16); if (h.auto) return autoGrab(h, 16); if (h.ruler || h.clip < 0) return false; arrSelect(h); arrGrab(h); arrRefresh(); return true; },
   move: arrMove, end: arrEnd,
-  tap: ev => { if (!P) return; const h = arrHit(ev); if (h.ruler) { arrSeek(h); return; } if (arrSelect(h)) arrRefresh(); },
-  doubleTap: ev => P && arrNewClip(arrHit(ev)),
-  longPress: ev => { if (!P) return; const h = arrHit(ev); if (h.clip >= 0) { arr.drag = null; arrSelect(h); arrDeleteClip(h); arrRefresh(); } },
+  tap: ev => { if (!P) return; const h = arrHit(ev); if (h.auto) { if (!autoPointAt(h, 16)) { autoAdd(h); drawArr(); saveSoon(); } return; } if (h.ruler) { arrSeek(h); return; } if (arrSelect(h)) arrRefresh(); },
+  doubleTap: ev => { if (!P) return; const h = arrHit(ev); if (h.auto) { if (!autoPointAt(h, 16)) { autoAdd(h); drawArr(); saveSoon(); } return; } arrNewClip(h); },
+  longPress: ev => { if (!P) return; const h = arrHit(ev); if (h.auto) { autoDelete(h, 16); return; } if (h.clip >= 0) { arr.drag = null; arrSelect(h); arrDeleteClip(h); arrRefresh(); } },
 });
+// the headers follow the lanes' vertical scroll; the lane labels follow the horizontal one
+$('lanes').addEventListener('scroll', () => { $('heads').scrollTop = $('lanes').scrollTop; drawArr(); });
+$('heads').addEventListener('wheel', e => { $('lanes').scrollTop += e.deltaY; }, { passive: true });
 
 // ═══════════════════════════════════════════════════════════════════
 // piano roll / drum grid
@@ -1005,18 +1164,99 @@ function openPanel(d) {
 // ═══════════════════════════════════════════════════════════════════
 // mixer
 // ═══════════════════════════════════════════════════════════════════
+// per strip: VOL / PAN / sends, then the insert chain (add · bypass · reorder · remove · parameters ·
+// presets) and sidechain ducking. Parameter sliders are 0..1 along each param's own curve (log for Hz / s).
+const mixUI = { open: new Set() };          // inserts with their parameter panel open (UI only, not saved)
+const DUCK_SPEC = {
+  amount: { min: 0, max: 1, def: 0.5, label: 'DEPTH', unit: '%' },
+  attack: { min: 0.0005, max: 0.1, curve: 'log', def: 0.005, label: 'ATK', unit: 's' },
+  release: { min: 0.02, max: 1.5, curve: 'log', def: 0.15, label: 'REL', unit: 's' },
+  thresh: { min: -60, max: 0, def: -10, label: 'THRESH', unit: 'dB' },
+};
+function fmtVal(sp, v) {
+  if (typeof v !== 'number') return String(v);
+  switch (sp.unit) {
+    case 'Hz': return v >= 1000 ? (v / 1000).toFixed(v >= 10000 ? 1 : 2) + 'k' : Math.round(v) + '';
+    case '%': return Math.round(v * 100) + '%';
+    case 'dB': return v.toFixed(1) + 'dB';
+    case 's': return v < 0.1 ? (v * 1000).toFixed(v < 0.01 ? 1 : 0) + 'ms' : v.toFixed(2) + 's';
+    case 'ms': return Math.round(v) + 'ms';
+    case ':1': return v.toFixed(1) + ':1';
+    default: return Math.abs(v) >= 100 ? Math.round(v) + '' : v.toFixed(2);
+  }
+}
+function paramRow(attr, k, sp, v) {
+  const lab = esc(sp.label || k.toUpperCase());
+  if (sp.opts) return `<span>${lab}</span><select ${attr}="${k}">${sp.opts.map(o => `<option ${o === v ? 'selected' : ''}>${o}</option>`).join('')}</select><span></span>`;
+  if (sp.bool) return `<span>${lab}</span><label style="cursor:pointer"><input type="checkbox" ${attr}="${k}" ${v ? 'checked' : ''}> on</label><span></span>`;
+  if (sp.pattern) return `<span>${lab}</span><input type="text" ${attr}="${k}" value="${esc(v)}" maxlength="16" style="font-size:10px"><span></span>`;
+  return `<span>${lab}</span><input type="range" min="0" max="1" step="0.001" value="${DawFX.toNorm(sp, v)}" data-default="${DawFX.toNorm(sp, sp.def)}" ${attr}="${k}"><span class="pv">${fmtVal(sp, v)}</span>`;
+}
+function fxPanel(f) {
+  const sp = DawFX.spec(f.type), np = DawFX.normParams(f.type, f.params), pre = DawFX.presets(f.type);
+  return `<div class="kv3">${Object.keys(sp).map(k => paramRow('data-p', k, sp[k], np[k])).join('')}</div>` +
+    (pre.length ? `<div class="row"><select data-preset="1"><option value="">preset…</option>${pre.map((x, i) => `<option value="${i}">${esc(x.name)}</option>`).join('')}</select><button class="dim" data-f="reset" title="back to the defaults">INIT</button></div>` : '');
+}
 function renderMixer() {
   const L = $('mixlist'); L.innerHTML = '';
   const rows = [...P.devices.map(d => ({ id: d.id, name: d.name, mix: d.mix })), ...P.tracks.filter(t => t.kind === 'audio').map(t => ({ id: t.id, name: t.name + ' (audio)', mix: t.mix }))];
+  const hasFX = typeof DawFX !== 'undefined';
   for (const r of rows) {
-    const s = document.createElement('div'); s.className = 'strip';
+    const s = document.createElement('div'); s.className = 'strip'; s.dataset.strip = r.id;
+    const fx = Array.isArray(r.mix.fx) ? r.mix.fx : [], dk = r.mix.duck;
     s.innerHTML = `<div class="top"><b>${esc(r.name)}</b><span><button class="dim${r.mix.mute ? ' on' : ''}" data-k="mute">M</button> <button class="dim${r.mix.solo ? ' on' : ''}" data-k="solo">S</button></span></div>
       <div class="kv"><span>VOL</span><input type="range" min="0" max="1.4" step="0.01" value="${r.mix.vol}" data-k="vol">
-      <span>PAN</span><input type="range" min="-1" max="1" step="0.01" value="${r.mix.pan}" data-k="pan">
+      <span>PAN</span><input type="range" min="-1" max="1" step="0.01" value="${r.mix.pan}" data-k="pan" data-default="0">
       <span>VERB</span><input type="range" min="0" max="1" step="0.01" value="${r.mix.sendA}" data-k="sendA">
-      <span>DLY</span><input type="range" min="0" max="1" step="0.01" value="${r.mix.sendB}" data-k="sendB"></div><canvas class="meter" data-meter="${r.id}"></canvas>`;
-    s.addEventListener('input', e => { const k = e.target.dataset.k; if (k) { r.mix[k] = +e.target.value; E.applyMix(); saveSoon(); } });
-    s.addEventListener('click', e => { const k = e.target.dataset.k; if (k === 'mute' || k === 'solo') { r.mix[k] = !r.mix[k]; e.target.classList.toggle('on', r.mix[k]); E.applyMix(); saveSoon(); } });
+      <span>DLY</span><input type="range" min="0" max="1" step="0.01" value="${r.mix.sendB}" data-k="sendB"></div><canvas class="meter" data-meter="${r.id}"></canvas>` +
+      (hasFX ? `<div class="fxbox">
+        ${fx.map((f, i) => `<div class="fx${f.on === false ? ' off' : ''}" data-fx="${f.id}"><div class="fh"><button class="${f.on === false ? 'dim' : 'on'}" data-f="on" title="bypass">⏻</button><b data-f="open" title="parameters">${mixUI.open.has(f.id) ? '▾' : '▸'} ${esc(DawFX.label(f.type))}</b><button class="dim" data-f="up" ${i ? '' : 'disabled'} title="earlier in the chain">▲</button><button class="dim" data-f="down" ${i < fx.length - 1 ? '' : 'disabled'} title="later in the chain">▼</button><button class="dim" data-f="rm" title="remove">✕</button></div>${mixUI.open.has(f.id) ? fxPanel(f) : ''}</div>`).join('')}
+        <div class="row"><select data-a="addfx" style="flex:1"><option value="">+ INSERT FX…</option>${DawFX.TYPES.filter(x => DawFX.spec(x.id)).map(x => `<option value="${x.id}">${esc(x.label)}</option>`).join('')}</select></div>
+        <div class="row"><label style="min-width:40px">DUCK ←</label><select data-d="source" style="flex:1" title="sidechain: this strip dips when the source hits"><option value="">— off —</option>${rows.filter(x => x.id !== r.id).map(x => `<option value="${x.id}" ${dk && dk.source === x.id ? 'selected' : ''}>${esc(x.name)}</option>`).join('')}</select></div>
+        ${dk && dk.source ? `<div class="kv3">${Object.keys(DUCK_SPEC).map(k => paramRow('data-d', k, DUCK_SPEC[k], dk[k] ?? DUCK_SPEC[k].def)).join('')}</div>` : ''}
+      </div>` : '');
+    const fxOf = el => { const box = el.closest('[data-fx]'); return box && fx.find(f => f.id === box.dataset.fx); };
+    const label = (el, sp, v) => { const pv = el.parentElement && el.nextElementSibling; if (pv && pv.classList.contains('pv')) pv.textContent = fmtVal(sp, v); };
+    const onEdit = (e, ranges) => {
+      const el = e.target;
+      if (!ranges && el.type === 'range' && E.recording && ['vol', 'pan', 'sendA', 'sendB'].includes(el.dataset.k)) { E.recordAutoEnd(r.id, el.dataset.k); return; }   // let go: touch mode ends
+      if ((el.type === 'range') !== ranges) return;
+      const k = el.dataset.k;
+      if (k && ['vol', 'pan', 'sendA', 'sendB'].includes(k)) {
+        r.mix[k] = +el.value;
+        if (E.recording && E.recordAuto(r.id, k, +el.value)) drawArr();    // armed track + record = write automation
+        E.applyMix(); saveSoon(); return;
+      }
+      if (el.dataset.p) {
+        const f = fxOf(el); if (!f) return;
+        const sp = DawFX.spec(f.type)[el.dataset.p];
+        const v = el.type === 'range' ? DawFX.toValue(sp, +el.value) : el.type === 'checkbox' ? el.checked : el.value;
+        E.setFxParam(r.id, f.id, el.dataset.p, v); label(el, sp, v); saveSoon(); return;
+      }
+      if (el.dataset.d) {
+        if (el.dataset.d === 'source') { E.setDuck(r.id, el.value ? { source: el.value } : null); renderMixer(); saveSoon(); return; }
+        const sp = DUCK_SPEC[el.dataset.d], v = DawFX.toValue(sp, +el.value);
+        E.setDuck(r.id, { source: r.mix.duck.source, [el.dataset.d]: +v.toFixed(5) }); label(el, sp, v); saveSoon(); return;
+      }
+      if (el.dataset.a === 'addfx' && el.value) { const f = E.addFx(r.id, el.value); if (f) mixUI.open.add(f.id); renderMixer(); renderHeads(); saveSoon(); return; }
+      if (el.dataset.preset && el.value !== '') {
+        const f = fxOf(el), pr = f && DawFX.presets(f.type)[+el.value]; if (!pr) return;
+        f.params = DawFX.normParams(f.type, Object.assign(DawFX.defaults(f.type), pr.params)); E.applyMix(); renderMixer(); saveSoon();
+      }
+    };
+    s.addEventListener('input', e => onEdit(e, true));
+    s.addEventListener('change', e => onEdit(e, false));
+    s.addEventListener('click', e => {
+      const k = e.target.dataset.k;
+      if (k === 'mute' || k === 'solo') { r.mix[k] = !r.mix[k]; e.target.classList.toggle('on', r.mix[k]); E.applyMix(); saveSoon(); return; }
+      const fa = e.target.dataset.f, f = fa && fxOf(e.target); if (!f) return;
+      if (fa === 'on') { f.on = f.on === false; E.applyMix(); }
+      else if (fa === 'open') { if (mixUI.open.has(f.id)) mixUI.open.delete(f.id); else mixUI.open.add(f.id); }
+      else if (fa === 'up' || fa === 'down') E.moveFx(r.id, f.id, fa === 'up' ? -1 : 1);
+      else if (fa === 'rm') { E.removeFx(r.id, f.id); mixUI.open.delete(f.id); renderHeads(); drawArr(); }
+      else if (fa === 'reset') { f.params = DawFX.defaults(f.type); E.applyMix(); }
+      renderMixer(); if (fa !== 'open') saveSoon();
+    });
     L.appendChild(s);
   }
 }

@@ -8,6 +8,21 @@
  *                           clips:[{bar, pid, bars?}], audio:[{t, libId, name, offset, len, gain}], mix? }],
  *               sections: [{name, bar, bars}], master:{vol, verb, delay} }
  *   Notes { t, d, n, v } in ticks at PPQ (96 per quarter) — same as seqgen.js / smf.js.
+ *   mix (a device's strip, or an audio track's) = { vol, pan, mute, solo, sendA, sendB,
+ *               fx?:   [{ id, type, on, params }]      insert chain, in order (daw_fx.js types)
+ *               duck?: { source: stripId, amount, attack, release, thresh } }   sidechain ducking
+ *   track.auto? = [{ target, points: [{t (ticks), v (0..1)}], on }]   automation lanes; targets:
+ *               'strip.vol' | 'strip.pan' | 'strip.sendA' | 'strip.sendB'   the track's strip
+ *               'fx.<fxId>.<param>'   an insert on the track's strip
+ *               'dev.<path>'          ForgeSynth.setParam path (macro.N.value, master.gain, lane.X.gain)
+ *               'cc.<n>'              MIDI CC n through the device's cc() on the track's channel
+ *   track.autoOpen? — automation lanes shown under the track. Every new field is optional: old
+ *   projects load and render exactly as before.
+ *
+ * Strip: in → [inserts] → post (sidechain tap, pre-fader) → duck → pan → vol → on (mute/solo)
+ *        → master + sendA (reverb bus) + sendB (delay bus). Built by _buildStrip() for live
+ *        playback AND renderOffline(), so both sound the same; automation runs through
+ *        _autoRange() in both (live: per look-ahead window, offline: the whole timeline).
  *
  * Device types (each exposes noteOn/noteOff/allOff/cc(/midi) + getState/setState):
  *   forge  ForgeSynth (forge_synth.js) — one patch
@@ -15,6 +30,14 @@
  *   emu    an FM-1 firmware running in the browser (fm1_emu.js); tracks pick its MIDI channel
  *   hw     the real FM-1 (or anything) over Web MIDI; its USB audio can come back in on a strip
  *   basic  tiny built-in synth (used if forge_synth.js isn't loaded)
+ *
+ * Mixer API (the UI edits through these, then saves): addFx(stripId, type, params) → entry ·
+ *   removeFx(stripId, fxId) (its lanes go too) · moveFx(stripId, fxId, ±1) · setFxParam(stripId, fxId, k, v) ·
+ *   setDuck(stripId, {source, amount, attack, release, thresh} | null) · applyMix() re-syncs everything
+ *   from the project (undo / redo just swap the JSON and call it).
+ * Automation API: autoTargets(track) → [{target, label}] · autoValueLabel(track, target, v01) ·
+ *   autoLanes() → the lanes that drive something · recordAuto(stripId, key, value) / recordAutoEnd(…)
+ *   (a mixer slider moved while recording an armed track writes a lane, touch mode).
  *
  * Timing: a 25 ms timer schedules 120 ms ahead in AudioContext time; Web
  * Audio devices get exact times, the emulator dispatches messages on time,
@@ -32,7 +55,25 @@
     get MidiInput() { return typeof MidiInput !== 'undefined' ? MidiInput : root.MidiInput; },
     get SMF() { return typeof SMF !== 'undefined' ? SMF : root.SMF; },
     get PatchBank() { return typeof PatchBank !== 'undefined' ? PatchBank : root.PatchBank; },
+    get DawFX() { return typeof DawFX !== 'undefined' ? DawFX : root.DawFX; },
   };
+
+  // ── automation helpers ────────────────────────────────────────────
+  const AUTO_STEP = 6;                 // discrete targets (insert params, device params, CCs): every 1/64 note
+  const STRIP_RANGE = { vol: [0, 1.4], pan: [-1, 1], sendA: [0, 1], sendB: [0, 1] };   // = the mixer sliders
+  const DEV_RANGES = [[/^macro\.[1-8]\.value$/, 0, 1], [/^master\.gain$/, 0, 1.5], [/^lane\.[ABC]\.gain$/, 0, 1.5]];
+  const devRange = path => { for (const [rx, a, b] of DEV_RANGES) if (rx.test(path)) return [a, b]; return null; };
+  // piecewise linear through the points, flat before the first and after the last
+  function autoValueAt(pts, tick) {
+    const n = pts.length; if (!n) return 0;
+    if (tick <= pts[0].t) return pts[0].v;
+    if (tick >= pts[n - 1].t) return pts[n - 1].v;
+    let lo = 0, hi = n - 1;
+    while (hi - lo > 1) { const m = (lo + hi) >> 1; if (pts[m].t <= tick) lo = m; else hi = m; }
+    const a = pts[lo], b = pts[hi];
+    return b.t === a.t ? b.v : a.v + (b.v - a.v) * (tick - a.t) / (b.t - a.t);
+  }
+  const sortedPts = pts => { for (let i = 1; i < pts.length; i++) if (pts[i].t < pts[i - 1].t) return pts.slice().sort((a, b) => a.t - b.t); return pts; };
 
   const KIT_MAP = {   // GM note → [forge preset, note to play it at, gain]
     35: ['kick', 36, 1], 36: ['kick', 36, 1], 37: ['perc_rim', 60, 0.9], 38: ['snare', 60, 1], 39: ['clap', 60, 1], 40: ['snare', 62, 0.9],
@@ -200,6 +241,7 @@
       this.delayIn.connect(this.delay); this.delay.connect(this.delayTone); this.delayTone.connect(this.delayFb); this.delayFb.connect(this.delay);
       this.delayTone.connect(this.delayOut); this.delayOut.connect(this.master);
       this.click = c.createGain(); this.click.gain.value = 0.5; this.click.connect(c.destination);   // never in a bounce
+      if (G.DawFX) await G.DawFX.prepare(c);       // insert / gate / duck worklets before any strip exists
       if (G.MidiInput) { this.midi = new G.MidiInput({ role: 'chords', autoIdentify: true }); this.midi.start().catch(() => {}); }
     }
 
@@ -288,29 +330,126 @@
     }
 
     // ── mixer ───────────────────────────────────────────────────────
+    // one builder for live strips and renderOffline()'s: in → inserts → post → duck → pan → vol → on → buses
+    _buildStrip(c, mix, bus) {
+      const s = { in: c.createGain(), post: c.createGain(), duck: c.createGain(), pan: c.createStereoPanner(), vol: c.createGain(), on: c.createGain(),
+                  sendA: c.createGain(), sendB: c.createGain(), mix, fxUnits: new Map(), fxSig: '', duckNode: null, duckSrc: null };
+      s.in.connect(s.post); s.post.connect(s.duck); s.duck.connect(s.pan); s.pan.connect(s.vol); s.vol.connect(s.on);
+      s.on.connect(bus.master); s.on.connect(s.sendA); s.on.connect(s.sendB); s.sendA.connect(bus.verbIn); s.sendB.connect(bus.delayIn);
+      s.pan.pan.value = mix.pan; s.vol.gain.value = mix.vol; s.sendA.gain.value = mix.sendA; s.sendB.gain.value = mix.sendB;
+      return s;
+    }
+    // bring a strip's inserts in line with mix.fx: create / dispose units, relink on order or bypass
+    // changes, push edited params (automation moves a unit's own copy, never the project's)
+    _syncFx(c, s, mix, bpm, when) {
+      const FX = G.DawFX; if (!FX) return;
+      const list = (Array.isArray(mix.fx) ? mix.fx : []).filter(f => f && f.id && FX.spec(f.type));
+      const want = new Map(list.map(f => [f.id, f]));
+      for (const [id, u] of s.fxUnits) if (!want.has(id) || want.get(id).type !== u.type) { u.dispose(); s.fxUnits.delete(id); s.fxSig = '?'; }
+      for (const f of list) if (!s.fxUnits.has(f.id)) {
+        let u; try { u = FX.create(c, f, { bpm }); } catch (e) { this.emit('error', 'fx ' + f.type + ': ' + (e.message || e)); continue; }
+        u.applied = Object.assign({}, u.params); s.fxUnits.set(f.id, u); s.fxSig = '?';
+      }
+      const sig = list.map(f => f.id + (f.on === false ? '-' : '+')).join(',');
+      if (sig !== s.fxSig) {
+        try { s.in.disconnect(); } catch (e) {}
+        for (const u of s.fxUnits.values()) { try { u.output.disconnect(); } catch (e) {} }
+        let node = s.in;
+        for (const f of list) { const u = s.fxUnits.get(f.id); if (!u || f.on === false) continue; node.connect(u.input); node = u.output; }
+        node.connect(s.post);
+        s.fxSig = sig;
+      }
+      for (const f of list) {
+        const u = s.fxUnits.get(f.id); if (!u) continue;
+        const np = FX.normParams(f.type, f.params);
+        for (const k in np) if (np[k] !== u.applied[k]) { u.set(k, np[k], when); u.applied[k] = np[k]; }
+      }
+    }
+    // sidechain: the source strip's post-insert, pre-fader signal drives an envelope follower whose
+    // output (1 − depth) is the target's duck gain. Tapping before the fader means a muted source still ducks.
+    _syncDuck(c, strips, id, s, when) {
+      const FX = G.DawFX, d = s.mix && s.mix.duck;
+      const src = d && d.source && d.source !== id ? strips.get(d.source) : null;
+      if (!src || !FX) {
+        if (s.duckNode) { try { s.duckNode.port.postMessage('stop'); s.duckNode.disconnect(); if (s.duckSrc) s.duckSrc.post.disconnect(s.duckNode); } catch (e) {} s.duckNode = null; s.duckSrc = null; s.duck.gain.value = 1; }
+        return;
+      }
+      if (!s.duckNode) {
+        s.duckNode = FX.createDuck(c); if (!s.duckNode) return;
+        s.duck.gain.value = 0; s.duckNode.connect(s.duck.gain);
+      }
+      if (s.duckSrc !== src) {
+        if (s.duckSrc) { try { s.duckSrc.post.disconnect(s.duckNode); } catch (e) {} }
+        src.post.connect(s.duckNode); s.duckSrc = src;
+      }
+      FX.setDuck(s.duckNode, d, when);
+    }
     ensureStrip(id, mix) {
       if (this.strips.has(id)) return this.strips.get(id);
-      const c = this.ctx, s = { in: c.createGain(), pan: c.createStereoPanner(), vol: c.createGain(), sendA: c.createGain(), sendB: c.createGain(), an: c.createAnalyser(), mix };
-      s.an.fftSize = 512;
-      s.in.connect(s.pan); s.pan.connect(s.vol); s.vol.connect(this.master); s.vol.connect(s.sendA); s.vol.connect(s.sendB); s.vol.connect(s.an);
-      s.sendA.connect(this.verbIn); s.sendB.connect(this.delayIn);
+      const s = this._buildStrip(this.ctx, mix, { master: this.master, verbIn: this.verbIn, delayIn: this.delayIn });
+      s.an = this.ctx.createAnalyser(); s.an.fftSize = 512; s.on.connect(s.an);
       this.strips.set(id, s);
       return s;
     }
-    removeStrip(id) { const s = this.strips.get(id); if (!s) return; try { s.vol.disconnect(); s.in.disconnect(); } catch (e) {} this.strips.delete(id); }
+    removeStrip(id) {
+      const s = this.strips.get(id); if (!s) return;
+      try { s.on.disconnect(); s.in.disconnect(); s.post.disconnect(); } catch (e) {}
+      for (const u of s.fxUnits.values()) u.dispose();
+      if (s.duckNode) { try { s.duckNode.port.postMessage('stop'); s.duckNode.disconnect(); } catch (e) {} }
+      this.strips.delete(id);
+      for (const [oid, o] of this.strips) if (o.duckSrc === s) { o.duckSrc = null; try { if (o.duckNode) { o.duckNode.port.postMessage('stop'); o.duckNode.disconnect(); } } catch (e) {} o.duckNode = null; o.duck.gain.value = 1; }
+    }
+    stripOwner(id) { return this.project ? (this.dev(id) || this.project.tracks.find(t => t.id === id && t.kind === 'audio')) : null; }
+    stripOf(tr) { return tr ? (tr.kind === 'audio' ? tr.id : tr.deviceId) : null; }
     applyMix() {
       if (!this.ctx) return;
       const now = this.ctx.currentTime;
+      // undo / redo swap mix objects in the project: follow them
+      for (const [id, s] of this.strips) { const o = this.stripOwner(id); if (o && o.mix) s.mix = o.mix; }
       const mixes = [...this.strips.values()].map(s => s.mix);
       const anySolo = mixes.some(m => m && m.solo);
-      for (const s of this.strips.values()) {
+      const auto = this.playing ? this.autoParams() : new Set();   // automation owns these while playing
+      for (const [id, s] of this.strips) {
         const m = s.mix; if (!m) continue;
         const on = !m.mute && (!anySolo || m.solo);
-        s.vol.gain.setTargetAtTime(on ? m.vol : 0, now, 0.02);
-        s.pan.pan.setTargetAtTime(m.pan, now, 0.02);
-        s.sendA.gain.setTargetAtTime(m.sendA, now, 0.02);
-        s.sendB.gain.setTargetAtTime(m.sendB, now, 0.02);
+        s.on.gain.setTargetAtTime(on ? 1 : 0, now, 0.02);
+        if (!auto.has(id + ':vol')) s.vol.gain.setTargetAtTime(m.vol, now, 0.02);
+        if (!auto.has(id + ':pan')) s.pan.pan.setTargetAtTime(m.pan, now, 0.02);
+        if (!auto.has(id + ':sendA')) s.sendA.gain.setTargetAtTime(m.sendA, now, 0.02);
+        if (!auto.has(id + ':sendB')) s.sendB.gain.setTargetAtTime(m.sendB, now, 0.02);
+        this._syncFx(this.ctx, s, m, this.project ? this.project.bpm : 120, now);
       }
+      for (const [id, s] of this.strips) this._syncDuck(this.ctx, this.strips, id, s, now);
+    }
+    // ── FX chain edits (the UI calls these, then saves) ─────────────
+    addFx(stripId, type, params) {
+      const o = this.stripOwner(stripId), FX = G.DawFX; if (!o || !FX || !FX.spec(type)) return null;
+      const f = { id: this.uid('fx'), type, on: true, params: FX.normParams(type, params) };
+      (o.mix.fx = Array.isArray(o.mix.fx) ? o.mix.fx : []).push(f);
+      this.applyMix(); return f;
+    }
+    removeFx(stripId, fxId) {
+      const o = this.stripOwner(stripId); if (!o || !Array.isArray(o.mix.fx)) return;
+      o.mix.fx = o.mix.fx.filter(f => f.id !== fxId);
+      // its automation lanes go with it
+      for (const t of this.project.tracks) if (Array.isArray(t.auto)) t.auto = t.auto.filter(l => !l.target.startsWith('fx.' + fxId + '.'));
+      this.applyMix();
+    }
+    moveFx(stripId, fxId, delta) {
+      const o = this.stripOwner(stripId); if (!o || !Array.isArray(o.mix.fx)) return;
+      const a = o.mix.fx, i = a.findIndex(f => f.id === fxId), j = i + delta; if (i < 0 || j < 0 || j >= a.length) return;
+      [a[i], a[j]] = [a[j], a[i]]; this.applyMix();
+    }
+    setFxParam(stripId, fxId, k, v) {
+      const o = this.stripOwner(stripId), f = o && (o.mix.fx || []).find(x => x.id === fxId); if (!f) return;
+      const sp = G.DawFX.spec(f.type); if (!sp || !sp[k]) return;
+      f.params = f.params || {}; f.params[k] = G.DawFX.normField(v, sp[k]); this.applyMix();
+    }
+    setDuck(stripId, duck) {
+      const o = this.stripOwner(stripId); if (!o) return;
+      if (!duck || !duck.source) delete o.mix.duck;
+      else o.mix.duck = Object.assign({}, G.DawFX ? G.DawFX.DUCK_DEF : {}, o.mix.duck || {}, duck);
+      this.applyMix();
     }
     applyMaster() {
       const M = this.project.master, now = this.ctx.currentTime;
@@ -327,6 +466,7 @@
       for (const inst of this.devices.values()) {
         for (const x of [inst, ...Object.values(inst.voices || {})]) if (x && 'bpm' in x) { try { x.bpm = this.project.bpm; } catch (e) {} }
       }
+      for (const st of this.strips.values()) for (const u of st.fxUnits.values()) u.bpm = this.project.bpm;
     }
     levels(id) {
       const s = id ? this.strips.get(id) : null;
@@ -362,6 +502,8 @@
       this.anchor = { ctx: this.ctx.currentTime + 0.08, tick: startTick };
       this.schedTick = startTick;
       this.playing = true;
+      this._auto = { fresh: true, cancel: this.ctx.currentTime, cache: new Map(), seen: new Set() };
+      this._recAuto = new Map();
       this.sendClock('start', this.anchor.ctx);
       this.syncDevices(this.anchor.ctx);
       this.startCovering(startTick, this.anchor.ctx);
@@ -375,6 +517,7 @@
         if (inst.syncAt) { try { inst.syncAt(when); } catch (e) {} }
         if (inst.voices) for (const v of Object.values(inst.voices)) if (v.syncAt) { try { v.syncAt(when); } catch (e) {} }
       }
+      for (const st of this.strips.values()) for (const u of st.fxUnits.values()) { try { u.sync(when); } catch (e) {} }   // trance gates on the bar
     }
     stop() {
       if (!this.ctx) return;
@@ -386,6 +529,7 @@
       for (const inst of this.devices.values()) { try { inst.allOff(now); } catch (e) {} }
       for (const s of this.sources) { try { s.stop(now + 0.02); } catch (e) {} }
       this.sources = [];
+      this._autoRelease(now);
       this.emit('transport', { playing: false });
     }
     schedule() {
@@ -407,6 +551,7 @@
           this.schedTick = P.loop.a * BAR;
           this.startCovering(this.schedTick, tWrap, true);
           this.syncDevices(tWrap);
+          if (this._auto) this._auto.fresh = true;          // automation jumps back with the loop
           this.emit('loop', { at: tWrap });
         } else {
           const tEnd = this.timeOf(songEnd);
@@ -428,7 +573,9 @@
           const p = tr.patterns[c.pid]; if (!p || !p.notes.length) continue;
           const plen = p.lenBars * BAR, cs = c.bar * BAR, ce = cs + (c.bars || p.lenBars) * BAR;
           if (ce <= t0 || cs >= t1) continue;
-          const rep0 = Math.max(0, Math.floor((t0 - cs) / plen)), rep1 = Math.floor((Math.min(t1, ce) - 1 - cs) / plen);
+          // windows are fractional ticks: "- 1" here dropped the notes on a loop start when the window after
+          // the wrap was under one tick long
+          const rep0 = Math.max(0, Math.floor((t0 - cs) / plen)), rep1 = Math.floor((Math.min(t1, ce) - cs - 1e-6) / plen);
           for (let r = rep0; r <= rep1; r++) {
             const base = cs + r * plen;
             for (const n of p.notes) {
@@ -448,6 +595,150 @@
       }
       if (P.metro) for (let b = Math.ceil(t0 / PPQ) * PPQ; b < t1; b += PPQ) this.clickAt(this.timeOf(b), b % BAR === 0);
       this.clockRange(t0, t1);
+      if (this._auto) {
+        const A = this._auto;
+        this._autoRange({ live: true, timeOf: tk => this.timeOf(tk), strip: id => this.strips.get(id), inst: id => this.devices.get(id), cache: A.cache, seen: A.seen, fresh: A.fresh, cancel: A.cancel }, t0, t1);
+        A.fresh = false; A.cancel = null;
+      }
+    }
+
+    // ── automation ──────────────────────────────────────────────────
+    // the lanes that drive something, first lane wins when two tracks share a strip / device param
+    autoLanes() {
+      const out = [], seen = new Set();
+      for (const tr of this.project.tracks) for (const ln of (Array.isArray(tr.auto) ? tr.auto : [])) {
+        if (!ln || ln.on === false || !Array.isArray(ln.points) || !ln.points.length || typeof ln.target !== 'string') continue;
+        const m = /^(strip|fx|dev|cc)\.(.+)$/.exec(ln.target); if (!m) continue;
+        const sid = this.stripOf(tr); if (!sid) continue;
+        const d = { tr, lane: ln, sid, kind: m[1] };
+        if (d.kind === 'strip') { if (!STRIP_RANGE[m[2]]) continue; d.key = m[2]; }
+        else if (d.kind === 'fx') { const i = m[2].indexOf('.'); if (i < 1) continue; d.fxId = m[2].slice(0, i); d.key = m[2].slice(i + 1); }
+        else if (d.kind === 'dev') { if (tr.kind !== 'midi' || !devRange(m[2])) continue; d.key = m[2]; }
+        else { d.cc = parseInt(m[2], 10); if (!(d.cc >= 0 && d.cc < 128) || tr.kind !== 'midi') continue; d.key = d.cc + '@' + tr.channel; }
+        const key = d.kind + ':' + sid + ':' + (d.fxId || '') + ':' + d.key;
+        if (seen.has(key)) continue; seen.add(key); d.id = key;
+        out.push(d);
+      }
+      return out;
+    }
+    autoParams() { return new Set(this.autoLanes().filter(d => d.kind === 'strip').map(d => d.sid + ':' + d.key)); }
+    // what a lane can point at, for the UI: [{target, label}]
+    autoTargets(tr) {
+      const out = [], sid = this.stripOf(tr), own = sid && this.stripOwner(sid);
+      if (!own) return out;
+      out.push({ target: 'strip.vol', label: 'volume' }, { target: 'strip.pan', label: 'pan' }, { target: 'strip.sendA', label: 'send A · reverb' }, { target: 'strip.sendB', label: 'send B · delay' });
+      const FX = G.DawFX;
+      if (FX) for (const f of own.mix.fx || []) for (const k of FX.auto(f.type)) { const sp = FX.spec(f.type)[k]; if (sp) out.push({ target: 'fx.' + f.id + '.' + k, label: FX.label(f.type) + ' · ' + (sp.label || k).toLowerCase() }); }
+      if (tr.kind === 'midi') {
+        const inst = this.devices.get(tr.deviceId);
+        if (inst && inst.setParam && inst.__type === 'forge') {
+          let st = null; try { st = inst.getState(); } catch (e) {}
+          for (let i = 1; i <= 8; i++) out.push({ target: 'dev.macro.' + i + '.value', label: 'macro ' + i + (st && st.macros && st.macros[i - 1] ? ' · ' + st.macros[i - 1].name.toLowerCase() : '') });
+          out.push({ target: 'dev.master.gain', label: 'synth master' });
+          for (const L of ['A', 'B', 'C']) out.push({ target: 'dev.lane.' + L + '.gain', label: 'synth lane ' + L });
+        }
+        for (const [n, nm] of [[1, 'mod wheel'], [7, 'volume'], [10, 'pan'], [11, 'expression'], [71, 'resonance'], [74, 'cutoff'], [91, 'reverb'], [93, 'chorus']]) out.push({ target: 'cc.' + n, label: 'CC ' + n + ' · ' + nm });
+      }
+      return out;
+    }
+    // a lane's 0..1 as the value it sets, for labels
+    autoValueLabel(tr, target, v) {
+      let m = /^strip\.(\w+)$/.exec(target);
+      if (m && STRIP_RANGE[m[1]]) { const R = STRIP_RANGE[m[1]], x = R[0] + (R[1] - R[0]) * v; return m[1] === 'pan' ? (Math.abs(x) < 0.01 ? 'C' : (x < 0 ? 'L' : 'R') + Math.round(Math.abs(x) * 100)) : x.toFixed(2); }
+      if ((m = /^fx\.([^.]+)\.(\w+)$/.exec(target))) {
+        const own = this.stripOwner(this.stripOf(tr)), f = own && (own.mix.fx || []).find(x => x.id === m[1]), sp = f && G.DawFX && G.DawFX.spec(f.type)[m[2]];
+        if (sp) {
+          const x = G.DawFX.toValue(sp, v);
+          if (typeof x !== 'number') return String(x);
+          if (sp.unit === '%') return Math.round(x * 100) + '%';
+          if (sp.unit === 'Hz' && x >= 1000) return (x / 1000).toFixed(2) + ' kHz';
+          return (Math.abs(x) >= 100 ? Math.round(x) : +x.toFixed(Math.abs(x) < 1 ? 3 : 2)) + (sp.unit ? ' ' + sp.unit : '');
+        }
+      }
+      if ((m = /^dev\.(.+)$/.exec(target))) { const R = devRange(m[1]); if (R) return (R[0] + (R[1] - R[0]) * v).toFixed(2); }
+      if (/^cc\./.test(target)) return String(Math.round(v * 127));
+      return v.toFixed(2);
+    }
+    // schedule every lane over [t0, t1) ticks. env: { timeOf, strip(id), inst(id), cache, seen, fresh, cancel }
+    // AudioParams (strip vol / pan / sends) get exact breakpoints + a ramp to the window end, so contiguous
+    // windows draw one continuous line. Inserts, device params and CCs are discrete calls on a 1/64 grid.
+    _autoRange(env, t0, t1) {
+      const FX = G.DawFX;
+      for (const d of this.autoLanes()) {
+        const pts = sortedPts(d.lane.points), rec = env.live && this.recording && this._recAuto ? this._recAuto.get(d.tr.id + ':' + d.lane.target) : null;
+        const val = rec ? (tk => tk >= rec.tick ? rec.v : autoValueAt(pts, tk)) : (tk => autoValueAt(pts, tk));   // a slider being written holds its value
+        const fresh = env.fresh || !env.seen.has(d.id); env.seen.add(d.id);
+        if (d.kind === 'strip') {
+          const s = env.strip(d.sid); if (!s) continue;
+          const prm = d.key === 'vol' ? s.vol.gain : d.key === 'pan' ? s.pan.pan : d.key === 'sendA' ? s.sendA.gain : s.sendB.gain;
+          const R = STRIP_RANGE[d.key], map = v => R[0] + (R[1] - R[0]) * v;
+          if (fresh) {
+            if (env.cancel != null) { if (prm.cancelAndHoldAtTime) prm.cancelAndHoldAtTime(env.cancel); else prm.cancelScheduledValues(env.cancel); }
+            prm.setValueAtTime(map(val(t0)), Math.max(0, env.timeOf(t0)));
+          }
+          for (const p of pts) if (p.t > t0 && p.t < t1) prm.linearRampToValueAtTime(map(p.v), env.timeOf(p.t));
+          prm.linearRampToValueAtTime(map(val(t1)), env.timeOf(t1));
+          continue;
+        }
+        let call = null;
+        if (d.kind === 'fx') {
+          const s = env.strip(d.sid), u = s && s.fxUnits.get(d.fxId), sp = u && FX && FX.spec(u.type)[d.key];
+          if (!sp || !FX.auto(u.type).includes(d.key)) continue;
+          call = (v, w) => u.set(d.key, FX.toValue(sp, v), w);
+        } else if (d.kind === 'dev') {
+          const inst = env.inst(d.sid); if (!inst || typeof inst.setParam !== 'function') continue;
+          const R = devRange(d.key); call = (v, w) => inst.setParam(d.key, R[0] + (R[1] - R[0]) * v, w);
+        } else {
+          const inst = env.inst(d.sid); if (!inst || typeof inst.cc !== 'function') continue;
+          call = (v, w) => inst.cc(d.cc, v, w, d.tr.channel);
+        }
+        let last = fresh ? undefined : env.cache.get(d.id);
+        const emit = tk => {
+          let v = val(tk); if (d.kind === 'cc') v = Math.round(v * 127) / 127;
+          if (last !== undefined && Math.abs(v - last) < 1e-4) return;
+          last = v;
+          try { call(v, Math.max(0, env.timeOf(tk))); } catch (e) { /* device mid-reload */ }
+        };
+        if (fresh) emit(t0);
+        for (let k = Math.ceil(t0 / AUTO_STEP) * AUTO_STEP; k < t1; k += AUTO_STEP) if (k > t0 || !fresh) emit(k);
+        env.cache.set(d.id, last);
+      }
+    }
+    // transport stopped: hand the strips back to the mixer and the inserts back to their knobs
+    _autoRelease(now) {
+      if (!this._auto) return;
+      this._auto = null;
+      for (const s of this.strips.values()) {
+        for (const prm of [s.vol.gain, s.pan.pan, s.sendA.gain, s.sendB.gain]) { if (prm.cancelAndHoldAtTime) prm.cancelAndHoldAtTime(now); else prm.cancelScheduledValues(now); }
+        for (const u of s.fxUnits.values()) for (const k in u.applied) if (u.params[k] !== u.applied[k]) u.set(k, u.applied[k], now);
+      }
+      this.applyMix();
+    }
+    // writing automation: a mixer slider moved while recording, on an armed track that plays through this strip
+    recordAuto(stripId, key, value) {
+      if (!this.recording || !this.playing || !STRIP_RANGE[key]) return false;
+      const R = STRIP_RANGE[key], v = Math.max(0, Math.min(1, (value - R[0]) / (R[1] - R[0]))), tick = Math.round(this.tickNow());
+      let wrote = false, created = false;
+      for (const tr of this.project.tracks) {
+        if (!tr.arm || this.stripOf(tr) !== stripId) continue;
+        const target = 'strip.' + key;
+        tr.auto = Array.isArray(tr.auto) ? tr.auto : [];
+        let ln = tr.auto.find(l => l.target === target);
+        if (!ln) { ln = { target, points: [], on: true }; tr.auto.push(ln); tr.autoOpen = true; created = true; }
+        const rk = tr.id + ':' + target, prev = this._recAuto && this._recAuto.get(rk), from = prev && prev.tick <= tick ? prev.tick : tick - 1;   // (a loop wrap restarts the pass)
+        // touch mode: what was under the pass we just made is replaced
+        ln.points = ln.points.filter(p => !(p.t > Math.min(from, tick) && p.t <= Math.max(from, tick)));
+        ln.points.push({ t: tick, v: +v.toFixed(4) }); ln.points.sort((a, b) => a.t - b.t);
+        if (this._recAuto) this._recAuto.set(rk, { tick, v });      // held (latched) until the slider is let go
+        wrote = true;
+      }
+      if (wrote) this.emit('auto', { stripId, key, created });
+      return wrote;
+    }
+    // the slider was let go: playback follows the lane again from here (touch mode)
+    recordAutoEnd(stripId, key) {
+      if (!this._recAuto) return;
+      for (const tr of this.project.tracks) if (this.stripOf(tr) === stripId) this._recAuto.delete(tr.id + ':strip.' + key);
     }
     // audio clips already sounding at a (re)start point
     startCovering(tick, when, loopWrap) {
@@ -620,32 +911,42 @@
       const dIn = off.createGain(), dl = off.createDelay(4), dFb = off.createGain(), dTone = off.createBiquadFilter(), dOut = off.createGain();
       dl.delayTime.value = Math.min(3.9, M.delayBeats * 60 / P.bpm); dFb.gain.value = M.delayFb; dTone.type = 'lowpass'; dTone.frequency.value = 4200; dOut.gain.value = M.delayMix;
       dIn.connect(dl); dl.connect(dTone); dTone.connect(dFb); dFb.connect(dl); dTone.connect(dOut); dOut.connect(master);
-      const strip = mix => {
-        const s = { in: off.createGain(), pan: off.createStereoPanner(), vol: off.createGain(), a: off.createGain(), b: off.createGain() };
-        s.in.connect(s.pan); s.pan.connect(s.vol); s.vol.connect(master); s.vol.connect(s.a); s.vol.connect(s.b); s.a.connect(verbIn); s.b.connect(dIn);
-        s.pan.pan.value = mix.pan; s.vol.gain.value = mix.vol; s.a.gain.value = mix.sendA; s.b.gain.value = mix.sendB;
-        return s;
-      };
-      // which tracks sound: the project's mute/solo, narrowed to trackIds for a stem
+      if (G.DawFX) await G.DawFX.prepare(off);
+      const bus = { master, verbIn, delayIn: dIn };
+      // which strips sound: the project's mute/solo, narrowed to trackIds for a stem
       const devMixes = [...P.devices.map(d => d.mix), ...P.tracks.filter(t => t.kind === 'audio').map(t => t.mix)].filter(Boolean);
       const anyDevSolo = devMixes.some(m => m.solo);
       const audible = mix => mix && !mix.mute && (!anyDevSolo || mix.solo);
-      const tracks = this.activeTracks().filter(t => !trackIds || trackIds.includes(t.id));
+      const active = this.activeTracks(), tracks = active.filter(t => !trackIds || trackIds.includes(t.id));
+      const sidOf = t => this.stripOf(t), mixOf = sid => { const o = this.stripOwner(sid); return o && o.mix; };
+      const sounding = new Set();
+      for (const tr of tracks) { const sid = sidOf(tr); if (!sid || (tr.kind === 'midi' && !this.dev(sid))) continue; if (audible(mixOf(sid))) sounding.add(sid); }
+      // a sidechain source that isn't sounding here (another stem, or a muted strip) still plays — silently —
+      // so its envelope ducks the target exactly as in the full mix
+      const needed = new Set(sounding);
+      for (const sid of sounding) { const dk = (mixOf(sid) || {}).duck; if (dk && dk.source && dk.source !== sid && mixOf(dk.source)) needed.add(dk.source); }
       const insts = new Map(), strips = new Map();
-      for (const tr of tracks) {
-        if (tr.kind === 'midi') {
-          const d = this.dev(tr.deviceId); if (!d || insts.has(d.id) || !audible(d.mix)) continue;
-          const st = strip(d.mix); strips.set(d.id, st);
+      for (const sid of needed) {
+        const mix = mixOf(sid), st = this._buildStrip(off, mix, bus);
+        st.on.gain.value = sounding.has(sid) ? 1 : 0;
+        this._syncFx(off, st, mix, P.bpm, null);
+        for (const u of st.fxUnits.values()) u.sync(0);
+        strips.set(sid, st);
+        const d = this.dev(sid);
+        if (d) {
           const inst = await this._offlineDevice(off, d, st.in);
           if (!inst) throw new Error(d.name + ' cannot render offline');
-          insts.set(d.id, inst);
+          insts.set(sid, inst);
           if (inst.syncAt) inst.syncAt(0);
-        } else if (audible(tr.mix)) strips.set(tr.id, strip(tr.mix));
+        }
       }
+      for (const [sid, st] of strips) this._syncDuck(off, strips, sid, st, null);
+      // the tracks whose notes / clips play: this render's, plus whatever feeds a silent sidechain source
+      const playing = active.filter(t => { const sid = sidOf(t); return strips.has(sid) && (sounding.has(sid) ? tracks.includes(t) : true); });
       // notes: same rules as live playback (patterns repeat inside clips, clipped at clip end, swing)
       const at = tick => (tick - t0) * spt + this.swingDelay(tick);
       let notes = 0;
-      for (const tr of tracks) {
+      for (const tr of playing) {
         if (tr.kind === 'midi') {
           const inst = insts.get(tr.deviceId); if (!inst) continue;
           for (const c of tr.clips) {
@@ -671,6 +972,8 @@
           }
         }
       }
+      // automation: the whole timeline up front
+      this._autoRange({ timeOf: tk => (tk - t0) * spt, strip: id => strips.get(id), inst: id => insts.get(id), cache: new Map(), seen: new Set(), fresh: true, cancel: null }, t0, t1);
       for (const inst of insts.values()) if (inst.flush) await inst.flush();
       if (onProgress) onProgress({ phase: 'render', notes });
       const buf = await off.startRendering();
@@ -680,6 +983,7 @@
         chs = chs.map(c => { const o = c.slice(0, L); for (let i = L; i < c.length; i++) o[(i - L) % L] += c[i]; return o; });
       }
       for (const inst of insts.values()) { try { inst.dispose(); } catch (e) {} }
+      for (const st of strips.values()) { for (const u of st.fxUnits.values()) u.dispose(); if (st.duckNode) { try { st.duckNode.port.postMessage('stop'); } catch (e) {} } }
       return { channels: chs, sampleRate, loop: loop ? { start: 0, end: L - 1 } : null, bars: (t1 - t0) / BAR, lenSec, notes, offline: true };
     }
     // stems: one render per group with no master limiter, so the stems sum back to the mix exactly.

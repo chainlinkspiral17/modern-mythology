@@ -10,7 +10,7 @@
 set -uo pipefail
 cd "$(dirname "$0")"
 export NODE_PATH="${NODE_PATH:-$(npm root -g 2>/dev/null)}"
-suites=("$@"); [ ${#suites[@]} -eq 0 ] && suites=(data dsp engines touch daw fm1_checkout godot_audiomgr godot_director patchbank_network)
+suites=("$@"); [ ${#suites[@]} -eq 0 ] && suites=(data dsp engines touch daw daw_fx fm1_checkout godot_audiomgr godot_director patchbank_network)
 failed=0; t0=$(date +%s)
 for s in "${suites[@]}"; do
   f="$s.test.js"; [ -f "$f" ] || { echo "no suite $s"; failed=$((failed+1)); continue; }

@@ -280,6 +280,52 @@ look-ahead loop. The audio→performance clock mapping comes from
   ~5 min for a 95 s track in a CPU-shared sandbox. Keep slow paths out
   of the default run, and watch render time on the Deck.
 
+### 2026-10-11 — mixer inserts, sidechain ducking, automation lanes
+
+- **One strip builder for live and offline.** `_buildStrip()` builds
+  every strip for live playback, `renderOffline` and `renderStems`.
+  That is what keeps the realtime bounce and the offline render
+  matching. At build time the envelope correlation was ≥ 0.89 for
+  every insert; the compressor was lowest. Never add a feature to
+  only one side.
+- **Strip signal chain:**
+  `in → inserts → post (sidechain tap) → duck → pan → vol → on → buses`.
+- **Mixer inserts are FORGE's snap-ins.** `ForgeSynth.createEffect`
+  provides them, so the DAW and FORGE share one implementation.
+  `daw_fx.js` adds only what FORGE lacks:
+  - low and high cut;
+  - bitcrush;
+  - noise gate;
+  - the sidechain envelope follower.
+- **Automation works on a copy.** It never writes into the project
+  JSON. The project value is the knob, and it comes back on stop, so
+  undo and save stay clean.
+- **Strip AudioParams.** Schedule breakpoints plus a ramp to each
+  look-ahead window's end. A loop wrap is a fresh `setValueAtTime`.
+  Never call `cancelScheduledValues` at the wrap; it deletes the ramp
+  that ends there.
+- **Sidechain tap and stems.**
+  - Tap the source after its inserts and before its fader, so a
+    muted or soloed-away source still ducks.
+  - In a stem whose source isn't rendering, build the source
+    silently (its `on` gain is 0) so it still drives the duck.
+- **Duck threshold.** The default is −10 dB with a 12 dB knee. At
+  −30 dB the long FORGE kick held the duck shut and nothing pumped.
+- **Look-ahead windows are fractional ticks.**
+  `floor((t1 − 1 − cs) / len)` silently skipped the notes on the loop
+  start when the window after the wrap was under one tick. Use an
+  epsilon.
+- **`applyMix()` must re-read each strip's mix object from the
+  project.** Undo swaps mix objects, and strips that keep the old
+  reference stop hearing edits.
+- **Device-parameter automation is limited to FORGE macros, master
+  gain and lane gains.** FORGE reads per-voice parameters at
+  note-on. Route a macro to them in the mod matrix instead.
+- **Tests stay offline.** The permanent `daw_fx` suite runs in about
+  10 s on offline renders. Live-vs-offline matching was measured once
+  at build time; realtime bounces are slow and occasionally slip in
+  headless Chromium.
+
 ## TEMPLATE
 
 ```

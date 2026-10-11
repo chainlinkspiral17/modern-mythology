@@ -21,6 +21,7 @@ In the cloud sandbox the browser must use `$HTTPS_PROXY` for network suites (the
 | `engines` | DX7 SysEx (0n dump header), bank round trip, DX7 tuning, sampler mapping / round robin / respread |
 | `touch` | relative sliders, clip drag + long-press delete, piano-roll tap / hold (real CDP touch events) |
 | `daw` | compose, offline render, seamless loops, stems sum, undo/redo, MIDI export, TEMP TRACKS → game folder |
+| `daw_fx` | mixer inserts (every type renders; filter / EQ / drive move the sound the right way), sidechain ducking with the source muted, volume automation ramp, undo / redo reaching the audio graph |
 | `fm1_checkout` | the hardware check-out page against a mock FM-1 (`mocks/fm1_mock.js`): identity / INFO gating per firmware, part channels, DX7 dump bytes + FM-1+VA overwrite gate, 24 ppqn clock, round-trip latency, reload |
 | `godot_audiomgr` | the real `AudioMgr.gd` in a throwaway project: .wav fallback, stems → AudioStreamSynchronized, intensity, missing-stem fallback, track ending mid-fade |
 | `godot_director` | the VN `MusicDirector.gd`: writing → intensity, choice / interlude / cg, cue sheets + beats + auto, leitmotif, locale track, silence, smoothing into AudioMgr, replay |
