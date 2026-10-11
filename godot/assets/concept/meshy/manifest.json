@@ -3006,5 +3006,53 @@
     },
     "output": "godot/assets/3d/characters/heroes/hans.glb",
     "file_size_kb": 46442.1
+  },
+  {
+    "at": "2026-10-11T18:36:23+00:00",
+    "stage": "image",
+    "slug": "greta",
+    "kind": "hero",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "aspect": "3:4",
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "count": 1,
+    "prompt": "The story describes Greta like this: Greta was at the kettle. Sixty-six. She had a wool sweater on under the apron. She had the same brown eyes as Hans's wedding-photo on the wall behind her. The kind of woman who had been keeping a house and a bakery and a Swiss husband running for forty-five years by being competent at every job nobody had thought to thank her for. Marit got out of the back, slowly, in the blue cardigan with Greta's wool coat pulled over it \u2014 too big for her at the shoulders. Additional direction: Greta, 66, Hans's wife. Brown eyes, grey hair pinned up, a wool sweater under a canvas apron, a long skirt, wool socks, clogs, a bread peel in one hand.\nFull-body concept render of Greta, a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.\nNo text, no captions, no labels, no watermark, no border.",
+    "outputs": [
+      "godot/assets/concept/meshy/greta/greta_front_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/greta/greta_side_openai_gpt-image-2.5-sunburst_01.png",
+      "godot/assets/concept/meshy/greta/greta_back_openai_gpt-image-2.5-sunburst_01.png"
+    ]
+  },
+  {
+    "at": "2026-10-11T18:42:05+00:00",
+    "stage": "mesh",
+    "slug": "greta",
+    "kind": "hero",
+    "resource": "multi-image-to-3d",
+    "task_id": "01a12c42-2d4d-72e9-b370-a71c159a8155",
+    "inputs": [
+      "godot/assets/concept/meshy/greta/front.png",
+      "godot/assets/concept/meshy/greta/side.png",
+      "godot/assets/concept/meshy/greta/back.png"
+    ],
+    "options": {
+      "texture": true,
+      "pbr": true,
+      "texture_resolution": "4k",
+      "model_type": "smart-topology",
+      "polycount": 10000,
+      "ultra": false,
+      "pose": "a-pose",
+      "ai_model": null,
+      "remove_lighting": true,
+      "image_enhancement": true
+    },
+    "output": "godot/assets/3d/characters/heroes/greta.glb",
+    "file_size_kb": 50102.4
   }
 ]
