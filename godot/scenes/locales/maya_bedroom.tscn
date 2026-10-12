@@ -453,3 +453,10 @@ position = Vector3(0.000, 1.050, 4.200)
 rotation = Vector3(-0.2787, -2.7595, 0.0)
 metadata/fov = 38.0
 
+; ── named closeup (pass 93): Maya on the bed under the north window, from the foot
+; closeup: Maya lying on the bedspread ("looks at the pale yellow ceiling"), from the foot of the bed
+[node name="shot_closeup_maya" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.900, 1.600, -3.300)
+rotation = Vector3(-0.4884, 0.5730, 0.0)
+metadata/fov = 42.0
+

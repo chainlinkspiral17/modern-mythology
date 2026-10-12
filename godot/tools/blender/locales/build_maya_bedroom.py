@@ -299,11 +299,11 @@ def build_draft4_2026_09():
     bx, by = 0.0, ROOM_D - 1.15
     dx, dy = ROOM_W/2.0 - 0.54, 1.5
     # ── her door in the south opening, with knob and frame ──
-    make_box("Mayas_Door", (0.0, 0.06, 1.02), (0.90, 0.05, 2.04), (0.90, 0.88, 0.86, 1.0))
-    make_lathe("Mayas_Door_Knob_Rose", (0.34, 0.09, 1.00), [(0.03, 0.0), (0.03, 0.01), (0.0, 0.01)], (0.66, 0.60, 0.42, 1.0), segments=8)
-    make_cyl("Mayas_Door_Knob", (0.34, 0.115, 1.00), 0.028, 0.04, (0.66, 0.60, 0.42, 1.0), axis='Y', segments=8)
+    make_box("Bedroom_Door", (0.0, 0.06, 1.02), (0.90, 0.05, 2.04), (0.90, 0.88, 0.86, 1.0))
+    make_lathe("Bedroom_Door_Knob_Rose", (0.34, 0.09, 1.00), [(0.03, 0.0), (0.03, 0.01), (0.0, 0.01)], (0.66, 0.60, 0.42, 1.0), segments=8)
+    make_cyl("Bedroom_Door_Knob", (0.34, 0.115, 1.00), 0.028, 0.04, (0.66, 0.60, 0.42, 1.0), axis='Y', segments=8)
     for sgn in (-1, 1):
-        make_box(f"Mayas_Door_Frame_{'W' if sgn < 0 else 'E'}", (0.49 * sgn, 0.06, 1.06), (0.07, 0.09, 2.12), (0.78, 0.74, 0.80, 1.0))
+        make_box(f"Bedroom_Door_Frame_{'W' if sgn < 0 else 'E'}", (0.49 * sgn, 0.06, 1.06), (0.07, 0.09, 2.12), (0.78, 0.74, 0.80, 1.0))
     for si, (sx_, sz_, sc_) in enumerate(((0.10, 1.30, (0.36, 0.72, 0.70, 1.0)), (0.22, 1.42, (0.86, 0.62, 0.72, 1.0)), (-0.15, 1.36, (0.92, 0.82, 0.42, 1.0)))):
         make_box(f"Sticker_{si}", (sx_, 0.087, sz_), (0.06, 0.002, 0.06), sc_)
     # ── WEAR ──
@@ -331,10 +331,10 @@ def build_draft4_2026_09():
 
 
 def build_door_infill_mayas_door_2026_09():
-    """Mayas_Door was narrower than its wall opening (the user, 2026-09-24:
+    """Bedroom_Door was narrower than its wall opening (the user, 2026-09-24:
     "doorways ... misaligned"): close the gap to the door and its frame."""
-    make_wall("Wall_Fill_Mayas_Door_W", (-0.762, 0.000, 0), length=0.475, height=2.000, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
-    make_wall("Wall_Fill_Mayas_Door_E", (0.762, 0.000, 0), length=0.475, height=2.000, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall("Wall_Fill_Bedroom_Door_W", (-0.762, 0.000, 0), length=0.475, height=2.000, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall("Wall_Fill_Bedroom_Door_E", (0.762, 0.000, 0), length=0.475, height=2.000, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
 
 def build_upstairs_2026_10():
     """DRAFT 5 (2026-10-09) · THE HALL AND HER GRANDMOTHER'S ROOM. vol6 ch2

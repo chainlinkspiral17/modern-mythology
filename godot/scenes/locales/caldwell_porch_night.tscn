@@ -435,3 +435,17 @@ metadata/fov = 42.0
 position = Vector3(12.600, 1.700, -2.600)
 rotation = Vector3(-0.0268, 1.8982, 0.0)
 metadata/fov = 60.0
+
+; ── named closeups (pass 93): the two porch chairs, each from its outer side along the porch
+; closeup: Maya in her porch chair with the iced tea, from the east along the porch
+[node name="shot_closeup_maya" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.600, 1.400, -1.600)
+rotation = Vector3(-0.2217, 1.3102, 0.0)
+metadata/fov = 42.0
+
+; closeup: Linda in the wicker chair, from the west along the porch
+[node name="shot_closeup_linda" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.900, 1.400, -1.600)
+rotation = Vector3(-0.2228, -1.3290, 0.0)
+metadata/fov = 42.0
+

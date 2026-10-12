@@ -258,7 +258,7 @@ def build_hero_props_2026_09():
     make_box("Street_Strip", (0.0, -6.0, -0.03), (12.0, 4.0, 0.05), (0.26, 0.26, 0.28, 1.0))
     from _props.vehicles import make_car
     make_car("Slow_Car", 1.5, -6.0, 4.4, (0.24, 0.26, 0.30, 1.0), along="X", z0=-0.005)   # draft 4: the kit car, going slow
-    make_box("Mayas_Phone", (1.9, 0.10, 1.0355), (0.14, 0.07, 0.011), (0.13, 0.13, 0.15, 1.0))
+    make_box("SideTable_Phone", (1.9, 0.10, 1.0355), (0.14, 0.07, 0.011), (0.13, 0.13, 0.15, 1.0))
 
 
 def build_draft4_2026_09():

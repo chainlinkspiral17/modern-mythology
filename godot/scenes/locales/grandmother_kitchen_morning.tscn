@@ -389,3 +389,11 @@ metadata/fov = 45.0
 position = Vector3(-1.020, 1.300, -2.420)
 rotation = Vector3(-0.1056, 0.4874, 0.0)
 metadata/fov = 45.0
+
+; ── named closeup (pass 93): the abuela at the table under the kitchen window
+; closeup: the grandmother at the table by the window ("at the kitchen window every morning"), from the room
+[node name="shot_closeup_abuela" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.250, 1.450, -2.250)
+rotation = Vector3(-0.2058, 1.2679, 0.0)
+metadata/fov = 42.0
+

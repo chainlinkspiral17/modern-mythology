@@ -551,3 +551,22 @@ position = Vector3(0.600, 1.500, -13.200)
 rotation = Vector3(-0.1354, -0.6889, 0.0)
 metadata/fov = 42.0
 
+; ── named closeups (pass 93): the back corner booth and the kitchen line, per preset
+; closeup: Eileen in the back corner booth, from the aisle
+[node name="shot_closeup_eileen__pit_stop_back_booth" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-3.000, 1.350, -1.200)
+rotation = Vector3(-0.1512, 1.9617, 0.0)
+metadata/fov = 42.0
+
+; closeup: Ben on the grill ("on the grill since eleven"), from the line's east end
+[node name="shot_closeup_ben__pit_stop_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.600, 1.600, -9.000)
+rotation = Vector3(-0.0672, 1.2278, 0.0)
+metadata/fov = 42.0
+
+; closeup: Jesse through the kitchen's swinging door, from inside the kitchen
+[node name="shot_closeup_jesse__pit_stop_kitchen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.200, 1.600, -7.600)
+rotation = Vector3(-0.0523, -2.3192, 0.0)
+metadata/fov = 42.0
+
