@@ -3834,6 +3834,29 @@ dish rack with one plate and one mug), a rug under the table. Deck must
 REBUILD henderson_garage, centro_stockroom, hospital_room,
 pit_stop_office, ben_bedroom, coach_k_bedroom, kai_apartment.
 
+**2026-10-12 · pass 98: THE HERO ART AUDIT.** The user: "Do an audit to find
+what more can be given a hero art pass. Flat backdrops for skies, backlots,
+windows, posters, monitors, TV screens, paintings." New report
+`tools/audit/hero_art_candidates.py` (every locale builder through the
+recorder, every scene script): PAINTED (pictures faked from flat coloured
+boxes on one wall plane — found by geometry, not names: the Starfish
+Nebula outside Lena's window and in the alley, the key-issue cover wall,
+the scoreboard, the tapestries), PICTURE, SCREEN, SIGN, WINDOW (with or
+without a built view), BACKLOT (bands that stand up at a set's edge) and
+SKY (procedural-sky presets); ranked by the room's lines × prose mentions
+× visible area, each with the line that calls it out and a draft `apply`
+row facing the room's camera. 624 surfaces across 121 locales. Report
+page published for the user. **Recommended first batch:** the cabin's
+forest past the windows; the Starfish Nebula (one image, two apply rows);
+the sanderling mural and its patch; the key-issue cover wall as one grid
+image; the Daily Grind's five viewless windows; the Kowalski TV, the New
+Orleans apartment TV, the Houston office monitor; the Main Street shop
+signs; the Kestrel mountain. **The pipeline needs, before the rest:** an
+emissive/unlit option for screens; an art suffix that allows exact
+lettering (the shared suffix says "no text"); a sky mode (a 2:1 panorama
+swapped into a preset's sky); an atlas or grid-image approach for repeated
+small items; window cards placed outside the glass.
+
 **2026-10-12 · pass 97: HERO ART — 2D PICTURES ON THE WORLD'S SURFACES.**
 The user: "For 2D images, art, specific textures like the Aria street
 painting, add them to the hero prop as image generations or textures that
