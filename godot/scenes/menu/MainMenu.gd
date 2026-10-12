@@ -422,9 +422,10 @@ func _populate_chapters(vol: int) -> void:
 		title_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		title_lbl.clip_text = true
 		title_lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		if ResourceLoader.exists(SkinDB.F_IMFELL_R):
-			title_lbl.add_theme_font_override("font", load(SkinDB.F_IMFELL_R) as Font)
-		title_lbl.add_theme_font_size_override("font_size", 15)
+		# (pass 89) the chapter list in the reading face
+		if ResourceLoader.exists(SkinDB.F_LITERATA):
+			title_lbl.add_theme_font_override("font", load(SkinDB.F_LITERATA) as Font)
+		title_lbl.add_theme_font_size_override("font_size", 17)
 		title_lbl.add_theme_color_override("font_color", C_TXT)
 		row.add_child(title_lbl)
 
@@ -666,13 +667,17 @@ func _build_achievements_panel() -> Control:
 		row.add_child(meta)
 		var name_lbl := Label.new()
 		name_lbl.text = String(a.get("title", a.get("id", "?")))
-		name_lbl.add_theme_font_size_override("font_size", 12)
+		if ResourceLoader.exists(SkinDB.F_LITERATA):
+			name_lbl.add_theme_font_override("font", load(SkinDB.F_LITERATA) as Font)
+		name_lbl.add_theme_font_size_override("font_size", 14)
 		name_lbl.add_theme_color_override("font_color",
 			Color(0.83, 0.79, 0.69) if unlocked else Color(0.45, 0.43, 0.36, 0.85))
 		meta.add_child(name_lbl)
 		var desc_lbl := Label.new()
 		desc_lbl.text = String(a.get("desc", ""))
-		desc_lbl.add_theme_font_size_override("font_size", 12)
+		if ResourceLoader.exists(SkinDB.F_LITERATA_I):
+			desc_lbl.add_theme_font_override("font", load(SkinDB.F_LITERATA_I) as Font)
+		desc_lbl.add_theme_font_size_override("font_size", 13)
 		desc_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		desc_lbl.custom_minimum_size = Vector2(620, 0)
 		desc_lbl.add_theme_color_override("font_color",
@@ -869,7 +874,7 @@ func _nav_btn(text: String) -> Button:
 func _nav_btn_small(text: String) -> Button:
 	var btn := _nav_btn(text)
 	btn.custom_minimum_size.y = 34
-	btn.add_theme_font_size_override("font_size", 13)
+	btn.add_theme_font_size_override("font_size", 14)
 	btn.add_theme_color_override("font_color", C_DIM)
 	return btn
 

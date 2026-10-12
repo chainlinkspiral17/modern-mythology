@@ -91,7 +91,7 @@ func _build(skin: Dictionary, vol: int, skills: Dictionary) -> void:
 	var title_lbl := Label.new()
 	title_lbl.text               = (VOL_TITLES.get(vol, "") as String).to_upper()
 	title_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	title_lbl.add_theme_font_size_override("font_size", 12)
+	title_lbl.add_theme_font_size_override("font_size", 13)   # (pass 89) the bar's type up a step
 	title_lbl.add_theme_color_override("font_color", hud_col)
 	if ResourceLoader.exists(hud_font):
 		title_lbl.add_theme_font_override("font", load(hud_font) as Font)
@@ -102,7 +102,7 @@ func _build(skin: Dictionary, vol: int, skills: Dictionary) -> void:
 	_chapter_lbl.text = _chapter_text
 	_chapter_lbl.visible = _chapter_text != ""
 	_chapter_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	_chapter_lbl.add_theme_font_size_override("font_size", 12)
+	_chapter_lbl.add_theme_font_size_override("font_size", 14)
 	_chapter_lbl.add_theme_color_override("font_color",
 			Color(hud_col.r, hud_col.g, hud_col.b, 0.55))
 	if ResourceLoader.exists(SkinDB.F_LITERATA_I):
@@ -114,7 +114,7 @@ func _build(skin: Dictionary, vol: int, skills: Dictionary) -> void:
 	_items_lbl.text = _items_text
 	_items_lbl.visible = _items_text != ""
 	_items_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	_items_lbl.add_theme_font_size_override("font_size", 11)
+	_items_lbl.add_theme_font_size_override("font_size", 12)
 	_items_lbl.add_theme_color_override("font_color",
 			Color(hud_col.r, hud_col.g, hud_col.b, 0.45))
 	if ResourceLoader.exists(hud_font):
@@ -166,7 +166,7 @@ func _build(skin: Dictionary, vol: int, skills: Dictionary) -> void:
 	# button was the one stock control left on the reading screen.
 	var menu_btn := Button.new()
 	menu_btn.text = "MENU"
-	menu_btn.custom_minimum_size = Vector2(74, 30)
+	menu_btn.custom_minimum_size = Vector2(80, 32)
 	menu_btn.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	var mst := StyleBoxFlat.new()
 	mst.bg_color = Color(0, 0, 0, 0)
@@ -182,7 +182,7 @@ func _build(skin: Dictionary, vol: int, skills: Dictionary) -> void:
 	menu_btn.add_theme_stylebox_override("pressed", mst_h)
 	if ResourceLoader.exists(hud_font):
 		menu_btn.add_theme_font_override("font", load(hud_font) as Font)
-	menu_btn.add_theme_font_size_override("font_size", 12)
+	menu_btn.add_theme_font_size_override("font_size", 13)
 	menu_btn.add_theme_color_override("font_color", hud_col)
 	menu_btn.add_theme_color_override("font_hover_color",
 			Color(minf(hud_col.r + 0.1, 1.0), minf(hud_col.g + 0.1, 1.0), hud_col.b, 1.0))

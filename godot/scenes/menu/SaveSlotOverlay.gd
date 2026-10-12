@@ -110,12 +110,13 @@ func _rebuild() -> void:
 		btn.add_theme_stylebox_override("focus",   hover_style)
 		btn.add_theme_stylebox_override("pressed", hover_style)
 
-		if ResourceLoader.exists(SkinDB.F_IMFELL_R):
-			btn.add_theme_font_override("font", load(SkinDB.F_IMFELL_R) as Font)
+		# (pass 89) the slot lines in the reading face at reading size
+		if ResourceLoader.exists(SkinDB.F_LITERATA):
+			btn.add_theme_font_override("font", load(SkinDB.F_LITERATA) as Font)
 		btn.add_theme_color_override("font_color",        C_TXT)
 		btn.add_theme_color_override("font_hover_color",  C_GOLD)
 		btn.add_theme_color_override("font_focus_color",  C_GOLD)
-		btn.add_theme_font_size_override("font_size", 14)
+		btn.add_theme_font_size_override("font_size", 17)
 
 		if is_empty:
 			btn.text = "  SLOT %d    —    EMPTY" % slot
@@ -196,7 +197,9 @@ func _thumb_box(slot: int, is_empty: bool) -> Control:
 		none.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		none.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		none.add_theme_color_override("font_color", C_DIM)
-		none.add_theme_font_size_override("font_size", 12)
+		if ResourceLoader.exists(SkinDB.F_LITERATA_I):
+			none.add_theme_font_override("font", load(SkinDB.F_LITERATA_I) as Font)
+		none.add_theme_font_size_override("font_size", 14)
 		frame.add_child(none)
 	return frame
 
@@ -208,7 +211,9 @@ func _notes_box(slot: int, notes: String) -> TextEdit:
 	te.wrap_mode = TextEdit.LINE_WRAPPING_BOUNDARY
 	te.placeholder_text = "notes…"
 	te.text = notes
-	te.add_theme_font_size_override("font_size", 12)
+	if ResourceLoader.exists(SkinDB.F_LITERATA):
+		te.add_theme_font_override("font", load(SkinDB.F_LITERATA) as Font)
+	te.add_theme_font_size_override("font_size", 15)
 	te.add_theme_color_override("font_color", C_TXT)
 	var st := StyleBoxFlat.new()
 	st.bg_color = Color(0.02, 0.016, 0.01, 0.9)
