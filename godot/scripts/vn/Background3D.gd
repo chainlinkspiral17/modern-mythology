@@ -2533,6 +2533,21 @@ const CAMERA_PRESETS := {
 		"fov": 60.0,
 		"suppress_input": true,
 	},
+	"cabin_porch_day": {
+		"scene": "res://scenes/locales/cabin_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
+		# (pass 91, 2026-10-12) THE PORCH BY DAY: ch1 Finn's morning, ch5, ch10, ch15
+		# the wagon — the same camera in the turnaround, the interior-day sky and
+		# light; its nodes are the porch's, cloned with the __cabin_porch_day suffix.
+		"camera_origin": Vector3(-0.60, 1.25, 8.00),
+		"camera_rotation": Vector3(0.0921, 0.1732, 0.0),
+		"fov": 60.0,
+		"env": {"sky_top": Color(0.40, 0.56, 0.80, 1), "sky_horizon": Color(0.84, 0.86, 0.84, 1),
+			"ground_horizon": Color(0.40, 0.44, 0.36, 1), "ground_bottom": Color(0.20, 0.22, 0.18, 1),
+			"ambient_color": Color(0.80, 0.80, 0.76, 1), "ambient_energy": 0.95, "fog_color": Color(0.78, 0.80, 0.78, 1)},
+		"style_pack": "raw_observation",
+		"suppress_input": true,
+	},
 	"cabin_interior_bed": {
 		"scene": "res://scenes/locales/cabin_interior_bed.tscn",
 		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",

@@ -69,6 +69,10 @@
       "bed": "assets/audio/bgm/vol7_cabin_woodstove.wav",
       "gain": 0.82
     },
+    "cabin_porch_day": {
+      "bed": "assets/audio/bgm/vol7_cabin_woodstove.wav",
+      "gain": 0.82
+    },
     "caldwell_yard_afternoon": {
       "bed": "assets/audio/bgm/vol6_live_oak_field.wav",
       "gain": 0.82
