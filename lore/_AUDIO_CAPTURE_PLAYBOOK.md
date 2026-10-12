@@ -752,8 +752,8 @@ context keeps running into a fake sink, and the meters still move.
 - `music_drive.sh` never deletes. After SHRINK the old `.wav` temps are
   still in Google Drive, and a `pull` brings them back, where they
   shadow the `.temp.ogg` (a `.wav` comes first). The AUDIO DIRECTOR then
-  offers SHRINK again. Delete the old temp `.wav` files and `.stems/*.wav`
-  from Drive by hand once every machine has shrunk.
+  offers SHRINK again. `music_drive.sh tidy` removes them from Drive
+  (see the 2026-10-12 tidy lesson).
 - Seen once, not reproduced in four more runs: `daw`'s PLAY: RENDER
   test got its first sound after 6.6 s (its limit is 5 s). Nothing in
   this change touches that path; if it comes back, check machine load
@@ -812,8 +812,23 @@ context keeps running into a fake sink, and the meters still move.
     music_drive.sh backs it up.
   - Then it approves. The approval history records `moved_aside`.
 - Drive caveat: `music_drive.sh pull` never deletes, and Drive may
-  still hold the old `<base>.wav`, so a pull brings it back. Delete it
-  in Drive too (same as after SHRINK).
+  still hold the old `<base>.wav`, so a pull brings it back.
+  `music_drive.sh tidy` removes it.
+
+### 2026-10-12 — "can't delete tracks I can't find on google drive": music_drive.sh tidy
+
+- Asking the user to hand-delete replaced WAVs in Drive was a dead end:
+  they couldn't find them (or had never pushed them).
+- `music_drive.sh tidy` lists the Drive files this machine no longer
+  has because the tools replaced them, and deletes only those after a
+  y/N:
+  - `<base>.wav` / `<base>.wav.credits.txt` when `<base>.temp.ogg` is
+    here, or the .wav was moved to `replaced/`;
+  - `<base>.stems/*.wav` when the Ogg temp or its manifest is here.
+  - Anything else only in Drive (new on another machine) is listed and
+    left alone. `--yes` skips the prompt.
+- Tested against a stub rclone (listremotes / lsf / deletefile) on a
+  scratch tree; there's no rclone in the cloud sandbox.
 
 ## TEMPLATE
 

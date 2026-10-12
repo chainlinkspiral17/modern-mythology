@@ -10,9 +10,12 @@
 #   godot/tools/music_drive.sh pull     Drive → game folder  (new / newer files only)
 #   godot/tools/music_drive.sh push     game folder → Drive  (new / newer files only)
 #   godot/tools/music_drive.sh status   what differs, nothing copied
+#   godot/tools/music_drive.sh tidy     delete from Drive what the tools replaced here (older WAV temps
+#                                       shrunk to Ogg, .wav files APPROVE moved to replaced/) — lists
+#                                       them first and asks; anything else only in Drive is left alone
 #
 # Only audio and its sidecars move (.ogg .mp3 .wav .flac, .stems/ folders, .stems.json,
-# .credits.txt). Nothing is ever deleted on either side — remove files by hand.
+# .credits.txt). push / pull never delete; `tidy` is the only command that removes anything (in Drive).
 # Env overrides: MM_DRIVE_REMOTE (default gdrive), MM_DRIVE_DIR.
 set -euo pipefail
 
@@ -78,8 +81,39 @@ case "${1:-}" in
     need
     "$RCLONE" check "$LOCAL" "$REMOTE:$DRIVE_DIR" "${FILTERS[@]}" --size-only 2>&1 | tail -n 25 || true
     ;;
+  tidy)
+    need
+    yes=""; [ "${2:-}" = "--yes" ] && yes=1
+    # a Drive file this machine no longer has is "replaced" when the tools put something in its place here:
+    #   <base>.wav / <base>.wav.credits.txt   → <base>.temp.ogg here (SHRINK / APPROVE), or the .wav was moved
+    #                                           to replaced/<name>.<stamp>.wav by APPROVE
+    #   <base>.stems/<part>.wav                → <base>.temp.ogg or <base>.stems.json here (the Ogg stems)
+    # anything else that is only in Drive (new on another machine) is listed and left alone — pull brings it here
+    gone=(); other=()
+    while IFS= read -r f; do
+      [ -n "$f" ] || continue
+      [ -e "$LOCAL/$f" ] && continue
+      b=""
+      case "$f" in
+        replaced/*) continue ;;
+        *.stems/*.wav) b="${f%%.stems/*}"; if [ -e "$LOCAL/$b.temp.ogg" ] || [ -e "$LOCAL/$b.stems.json" ]; then gone+=("$f"); else other+=("$f"); fi; continue ;;
+        *.wav.credits.txt) b="${f%.wav.credits.txt}" ;;
+        *.wav) b="${f%.wav}" ;;
+      esac
+      if [ -n "$b" ] && { [ -e "$LOCAL/$b.temp.ogg" ] || compgen -G "$LOCAL/replaced/$(basename "$b").*.wav" >/dev/null; }; then gone+=("$f"); else other+=("$f"); fi
+    done < <("$RCLONE" lsf -R --files-only "$REMOTE:$DRIVE_DIR" "${FILTERS[@]}")
+    if [ ${#other[@]} -gt 0 ]; then
+      echo "· only in Drive, left alone (\`$0 pull\` brings these here):"; printf '    %s\n' "${other[@]}"
+    fi
+    if [ ${#gone[@]} -eq 0 ]; then echo "✓ nothing to tidy: Drive has no replaced temps"; exit 0; fi
+    echo "· replaced here — these would come back on the next pull and play instead of the new Ogg temps:"
+    printf '    %s\n' "${gone[@]}"
+    if [ -z "$yes" ]; then read -r -p "delete these ${#gone[@]} file(s) from Drive? [y/N] " a; case "$a" in y|Y|yes) ;; *) echo "nothing deleted"; exit 0 ;; esac; fi
+    for f in "${gone[@]}"; do "$RCLONE" deletefile "$REMOTE:$DRIVE_DIR/$f" && echo "  deleted $f"; done
+    echo "✓ tidied ${#gone[@]} file(s) from $REMOTE:$DRIVE_DIR"
+    ;;
   *)
-    sed -n '2,18p' "$0" | sed 's/^# \{0,1\}//'
+    sed -n '2,21p' "$0" | sed 's/^# \{0,1\}//'
     exit 1
     ;;
 esac
