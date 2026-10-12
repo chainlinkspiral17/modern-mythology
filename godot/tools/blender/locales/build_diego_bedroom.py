@@ -208,6 +208,8 @@ def build_closet_duffel():
     make_box("Duffel_Broken_Zip", (gx + 0.05, gy - 0.257, 0.22), (0.20, 0.006, 0.01), (0.66, 0.62, 0.50, 1.0))
     make_box("Duffel_Shirt_0", (gx - 0.08, gy + 0.02, 0.33), (0.26, 0.20, 0.04), (0.84, 0.84, 0.82, 1.0))
     make_box("Duffel_Shirt_1", (gx + 0.06, gy + 0.05, 0.36), (0.24, 0.18, 0.03), (0.30, 0.34, 0.46, 1.0))
+    # (pass 95) "Three shirts, a phone charger, a pair of boots" — the third, half out of the bag
+    make_rot_box("Duffel_Shirt_2", (gx - 0.02, gy - 0.10, 0.38), (0.24, 0.20, 0.025), (0.62, 0.20, 0.18, 1.0), yaw=0.35, pitch=0.12)
     make_tube("Duffel_Charger_Cord", [(gx + 0.14, gy - 0.02, 0.37), (gx + 0.22, gy - 0.10, 0.35), (gx + 0.30, gy - 0.05, 0.02)], 0.004, COL_WHITE, segments=4)
     for k, ox in enumerate((-0.10, 0.10)):
         make_box(f"Duffel_Boot_{k}", (gx + ox + 0.48, gy + 0.10, 0.12), (0.12, 0.30, 0.24), (0.36, 0.26, 0.18, 1.0))

@@ -3309,6 +3309,52 @@ func set_paint(amount: float) -> void:
 # node must NOT resolve against the PREVIOUS locale. Marking the
 # load pending makes has_locale_loaded() gate the director's
 # pending-retry loop until the deferred load actually lands.
+# ── A MISSING SET IS SHOWN AS MISSING (pass 95, 2026-10-12) ─────────────
+# Every failed load_location tears down the room that was on screen, so the
+# next chapter cannot play over the last room that did build (Sam's chapters
+# showed Maya's room on a Deck missing sam_bedroom.glb). The frame goes to
+# the viewport's clear colour and a notice names the builder to run.
+var _missing_notice: CanvasLayer = null
+
+
+func _unload_for_missing(preset_id: String, what: String) -> void:
+	if _location_instance != null and is_instance_valid(_location_instance):
+		_location_instance.queue_free()
+	_location_instance = null
+	_staged_cast.clear()
+	_loaded_preset = ""
+	var builder: String = what.get_file().get_basename()
+	if builder == "" or not what.ends_with(".glb"):
+		builder = preset_id
+	_show_missing_notice("SET NOT BUILT · %s\ncd godot/tools/blender && ./run_cathedral.sh build_%s.py" % [preset_id, builder])
+
+
+func _show_missing_notice(text: String) -> void:
+	if _missing_notice == null or not is_instance_valid(_missing_notice):
+		_missing_notice = CanvasLayer.new()
+		_missing_notice.layer = 90
+		_missing_notice.add_to_group("ui")
+		var lbl := Label.new()
+		lbl.name = "Text"
+		lbl.set_anchors_and_offsets_preset(Control.PRESET_TOP_LEFT)
+		lbl.position = Vector2(24, 24)
+		lbl.add_theme_font_size_override("font_size", 16)
+		lbl.add_theme_color_override("font_color", Color(0.96, 0.78, 0.42))
+		lbl.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.9))
+		lbl.add_theme_constant_override("outline_size", 4)
+		_missing_notice.add_child(lbl)
+		add_child(_missing_notice)
+	_missing_notice.visible = FirstPersonController.hud_visible
+	var t: Label = _missing_notice.get_node("Text") as Label
+	t.text = text
+
+
+func _hide_missing_notice() -> void:
+	if _missing_notice != null and is_instance_valid(_missing_notice):
+		_missing_notice.queue_free()
+	_missing_notice = null
+
+
 func queue_load(preset_id: String) -> void:
 	_pending_preset = preset_id
 	call_deferred("load_location", preset_id)
@@ -3327,6 +3373,7 @@ func load_location(preset_id: String) -> bool:
 	if not CAMERA_PRESETS.has(preset_id):
 		push_warning("[Background3D] Unknown preset: %s" % preset_id)
 		last_load_error = "unknown preset"
+		_unload_for_missing(preset_id, "unknown preset")
 		return false
 	var spec: Dictionary = CAMERA_PRESETS[preset_id]
 	# Pre-check the required GLB BEFORE asking Godot to parse the
@@ -3338,6 +3385,7 @@ func load_location(preset_id: String) -> bool:
 	if req_glb != "" and not FileAccess.file_exists(req_glb):
 		push_warning("[Background3D] GLB missing: %s — build it with `cd godot/tools/blender && ./run_cathedral.sh build_<name>.py`. Falling back to 2D bg." % req_glb)
 		last_load_error = "GLB missing: %s" % req_glb
+		_unload_for_missing(preset_id, req_glb)
 		return false
 	# Tear down the previously-loaded location
 	if _location_instance != null and is_instance_valid(_location_instance):
@@ -3349,6 +3397,7 @@ func load_location(preset_id: String) -> bool:
 	if ps == null:
 		push_warning("[Background3D] Could not load scene %s" % spec.get("scene", ""))
 		last_load_error = "scene failed to load (GLB present — import error?): %s" % String(spec.get("scene", ""))
+		_unload_for_missing(preset_id, String(spec.get("scene", "")))
 		return false
 	_location_instance = ps.instantiate()
 	# Glass is glass (2026-10-02): the builders' vertex alpha becomes
@@ -3392,6 +3441,7 @@ func load_location(preset_id: String) -> bool:
 	_camera.make_current()
 	_start_camera_track(spec)
 	_loaded_preset = preset_id
+	_hide_missing_notice()
 	# Re-apply any user-stamped MoodCycler overrides for this preset.
 	# Deferred a frame so the locale's PostProcess _ready has run and
 	# index properties / apply methods are ready to be called.

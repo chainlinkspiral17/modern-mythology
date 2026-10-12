@@ -399,6 +399,32 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-10-12 · a failed load must clear the screen, or the last room lies
+
+**What happened.** The user, after a fresh pull: "maya and sam's room have
+the same decorations, diego's room is missing all the items the narration
+calls out." Both builders were correct. The Deck lacked the GLBs, and
+`Background3D.load_location` returned on the missing file BEFORE tearing
+down the previous location — so the last room that loaded kept playing
+under the next chapter. A missing asset looked like a wrong asset, and a
+correct builder looked like a broken one.
+
+**Rules.**
+- **Every early return from a loader unloads what it replaces.** A
+  fallback that leaves the previous state on screen is worse than a blank
+  frame: it hides the failure inside a plausible picture.
+- **Name the fix on screen.** The notice prints the preset and the
+  builder to run; it lives in a CanvasLayer in the "ui" group so F4 hides
+  it, and a successful load clears it.
+- **Locale GLBs are build outputs.** They are gitignored and never on the
+  Drive (SAVE uploads heroes, demons, props, concepts, video, voice and
+  audio only). After a pull on a new or old checkout,
+  `godot/tools/blender/build_scenes.sh` (everything) or
+  `list_stale_builds.sh` (what changed) is the only way to have them.
+- **When a user reports a room "missing what the prose says", check the
+  builder against the prose first.** If the builder has the objects, the
+  picture is not this room.
+
 ### 2026-10-11 · a post that stands NEAR furniture reads as a post THROUGH it
 
 **What happened.** The loft's two turned posts were placed "clear of the
